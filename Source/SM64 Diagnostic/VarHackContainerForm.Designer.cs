@@ -61,14 +61,14 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 8;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 71F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 108F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 72F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 59F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 69F));
             this.tableLayoutPanel1.Controls.Add(this.checkBox1, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this._textBoxGetSet, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.betterTextbox1, 0, 0);
@@ -99,14 +99,14 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(806, 110);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(551, 99);
             this.tableLayoutPanel1.TabIndex = 39;
             // 
             // checkBox1
             // 
-            this.checkBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.checkBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(81, 59);
+            this.checkBox1.Location = new System.Drawing.Point(75, 51);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(81, 17);
             this.checkBox1.TabIndex = 4;
@@ -115,130 +115,130 @@
             // 
             // _textBoxGetSet
             // 
-            this._textBoxGetSet.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this._textBoxGetSet.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this._textBoxGetSet.BackColor = System.Drawing.Color.White;
-            this._textBoxGetSet.Location = new System.Drawing.Point(76, 3);
+            this._textBoxGetSet.Location = new System.Drawing.Point(75, 3);
             this._textBoxGetSet.Name = "_textBoxGetSet";
-            this._textBoxGetSet.Size = new System.Drawing.Size(91, 20);
+            this._textBoxGetSet.Size = new System.Drawing.Size(75, 20);
             this._textBoxGetSet.TabIndex = 10;
             this._textBoxGetSet.Text = "Mario X";
             this._textBoxGetSet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // betterTextbox1
             // 
-            this.betterTextbox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.betterTextbox1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.betterTextbox1.BackColor = System.Drawing.SystemColors.Control;
             this.betterTextbox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.betterTextbox1.Location = new System.Drawing.Point(3, 7);
+            this.betterTextbox1.Location = new System.Drawing.Point(3, 5);
             this.betterTextbox1.Name = "betterTextbox1";
             this.betterTextbox1.ReadOnly = true;
-            this.betterTextbox1.Size = new System.Drawing.Size(65, 13);
+            this.betterTextbox1.Size = new System.Drawing.Size(66, 13);
             this.betterTextbox1.TabIndex = 10;
             this.betterTextbox1.Text = "Name:";
-            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // betterTextbox2
             // 
-            this.betterTextbox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.betterTextbox2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.betterTextbox2.BackColor = System.Drawing.SystemColors.Control;
             this.betterTextbox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.betterTextbox2.Location = new System.Drawing.Point(3, 34);
+            this.betterTextbox2.Location = new System.Drawing.Point(3, 29);
             this.betterTextbox2.Name = "betterTextbox2";
             this.betterTextbox2.ReadOnly = true;
-            this.betterTextbox2.Size = new System.Drawing.Size(65, 13);
+            this.betterTextbox2.Size = new System.Drawing.Size(66, 13);
             this.betterTextbox2.TabIndex = 10;
             this.betterTextbox2.Text = "Address:";
-            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // betterTextbox3
             // 
-            this.betterTextbox3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.betterTextbox3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.betterTextbox3.BackColor = System.Drawing.Color.White;
-            this.betterTextbox3.Location = new System.Drawing.Point(76, 30);
+            this.betterTextbox3.Location = new System.Drawing.Point(75, 27);
             this.betterTextbox3.Name = "betterTextbox3";
-            this.betterTextbox3.Size = new System.Drawing.Size(91, 20);
+            this.betterTextbox3.Size = new System.Drawing.Size(75, 20);
             this.betterTextbox3.TabIndex = 10;
             this.betterTextbox3.Text = "0x8033B1AC";
             this.betterTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // betterTextbox5
             // 
-            this.betterTextbox5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.betterTextbox5.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.betterTextbox5.BackColor = System.Drawing.SystemColors.Control;
             this.betterTextbox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.betterTextbox5.Location = new System.Drawing.Point(3, 89);
+            this.betterTextbox5.Location = new System.Drawing.Point(3, 79);
             this.betterTextbox5.Name = "betterTextbox5";
             this.betterTextbox5.ReadOnly = true;
-            this.betterTextbox5.Size = new System.Drawing.Size(65, 13);
+            this.betterTextbox5.Size = new System.Drawing.Size(66, 13);
             this.betterTextbox5.TabIndex = 10;
             this.betterTextbox5.Text = "Pointer Offset:";
-            this.betterTextbox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.betterTextbox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // betterTextbox6
             // 
-            this.betterTextbox6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.betterTextbox6.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.betterTextbox6.BackColor = System.Drawing.Color.White;
             this.betterTextbox6.Enabled = false;
-            this.betterTextbox6.Location = new System.Drawing.Point(76, 85);
+            this.betterTextbox6.Location = new System.Drawing.Point(75, 75);
             this.betterTextbox6.Name = "betterTextbox6";
-            this.betterTextbox6.Size = new System.Drawing.Size(91, 20);
+            this.betterTextbox6.Size = new System.Drawing.Size(75, 20);
             this.betterTextbox6.TabIndex = 10;
             this.betterTextbox6.Text = "0x10";
             this.betterTextbox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // betterTextbox7
             // 
-            this.betterTextbox7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.betterTextbox7.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.betterTextbox7.BackColor = System.Drawing.SystemColors.Control;
             this.betterTextbox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.betterTextbox7.Location = new System.Drawing.Point(405, 7);
+            this.betterTextbox7.Location = new System.Drawing.Point(300, 5);
             this.betterTextbox7.Name = "betterTextbox7";
             this.betterTextbox7.ReadOnly = true;
-            this.betterTextbox7.Size = new System.Drawing.Size(65, 13);
+            this.betterTextbox7.Size = new System.Drawing.Size(31, 13);
             this.betterTextbox7.TabIndex = 10;
             this.betterTextbox7.Text = "X Pos:";
-            this.betterTextbox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.betterTextbox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // betterTextbox8
             // 
-            this.betterTextbox8.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.betterTextbox8.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.betterTextbox8.BackColor = System.Drawing.SystemColors.Control;
             this.betterTextbox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.betterTextbox8.Location = new System.Drawing.Point(405, 34);
+            this.betterTextbox8.Location = new System.Drawing.Point(300, 29);
             this.betterTextbox8.Name = "betterTextbox8";
             this.betterTextbox8.ReadOnly = true;
-            this.betterTextbox8.Size = new System.Drawing.Size(65, 13);
+            this.betterTextbox8.Size = new System.Drawing.Size(31, 13);
             this.betterTextbox8.TabIndex = 10;
             this.betterTextbox8.Text = "Y Pos:";
-            this.betterTextbox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.betterTextbox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // betterTextbox9
             // 
-            this.betterTextbox9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.betterTextbox9.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.betterTextbox9.BackColor = System.Drawing.Color.White;
-            this.betterTextbox9.Location = new System.Drawing.Point(488, 3);
+            this.betterTextbox9.Location = new System.Drawing.Point(337, 3);
             this.betterTextbox9.Name = "betterTextbox9";
-            this.betterTextbox9.Size = new System.Drawing.Size(88, 20);
+            this.betterTextbox9.Size = new System.Drawing.Size(50, 20);
             this.betterTextbox9.TabIndex = 10;
             this.betterTextbox9.Text = "100";
             this.betterTextbox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // betterTextbox10
             // 
-            this.betterTextbox10.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.betterTextbox10.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.betterTextbox10.BackColor = System.Drawing.Color.White;
-            this.betterTextbox10.Location = new System.Drawing.Point(488, 30);
+            this.betterTextbox10.Location = new System.Drawing.Point(337, 27);
             this.betterTextbox10.Name = "betterTextbox10";
-            this.betterTextbox10.Size = new System.Drawing.Size(88, 20);
+            this.betterTextbox10.Size = new System.Drawing.Size(50, 20);
             this.betterTextbox10.TabIndex = 10;
             this.betterTextbox10.Text = "200";
             this.betterTextbox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // checkBox2
             // 
-            this.checkBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.checkBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(302, 87);
+            this.checkBox2.Location = new System.Drawing.Point(226, 77);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(67, 17);
             this.checkBox2.TabIndex = 4;
@@ -247,9 +247,9 @@
             // 
             // radioButton1
             // 
-            this.radioButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.radioButton1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(202, 5);
+            this.radioButton1.Location = new System.Drawing.Point(170, 3);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(50, 17);
             this.radioButton1.TabIndex = 11;
@@ -258,9 +258,9 @@
             // 
             // radioButton2
             // 
-            this.radioButton2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.radioButton2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(313, 5);
+            this.radioButton2.Location = new System.Drawing.Point(226, 3);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(45, 17);
             this.radioButton2.TabIndex = 11;
@@ -269,9 +269,9 @@
             // 
             // radioButton3
             // 
-            this.radioButton3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.radioButton3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(203, 32);
+            this.radioButton3.Location = new System.Drawing.Point(170, 27);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(48, 17);
             this.radioButton3.TabIndex = 11;
@@ -280,9 +280,9 @@
             // 
             // radioButton4
             // 
-            this.radioButton4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.radioButton4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(309, 32);
+            this.radioButton4.Location = new System.Drawing.Point(226, 27);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(54, 17);
             this.radioButton4.TabIndex = 11;
@@ -291,9 +291,9 @@
             // 
             // radioButton5
             // 
-            this.radioButton5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.radioButton5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(209, 59);
+            this.radioButton5.Location = new System.Drawing.Point(170, 51);
             this.radioButton5.Name = "radioButton5";
             this.radioButton5.Size = new System.Drawing.Size(36, 17);
             this.radioButton5.TabIndex = 11;
@@ -302,9 +302,9 @@
             // 
             // radioButton6
             // 
-            this.radioButton6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.radioButton6.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(315, 59);
+            this.radioButton6.Location = new System.Drawing.Point(226, 51);
             this.radioButton6.Name = "radioButton6";
             this.radioButton6.Size = new System.Drawing.Size(42, 17);
             this.radioButton6.TabIndex = 11;
@@ -313,10 +313,10 @@
             // 
             // radioButton7
             // 
-            this.radioButton7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.radioButton7.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.radioButton7.AutoSize = true;
             this.radioButton7.Checked = true;
-            this.radioButton7.Location = new System.Drawing.Point(204, 87);
+            this.radioButton7.Location = new System.Drawing.Point(170, 77);
             this.radioButton7.Name = "radioButton7";
             this.radioButton7.Size = new System.Drawing.Size(45, 17);
             this.radioButton7.TabIndex = 11;
@@ -329,10 +329,10 @@
             this.pictureBox1.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.Up_Arrow;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(582, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(394, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.tableLayoutPanel1.SetRowSpan(this.pictureBox1, 2);
-            this.pictureBox1.Size = new System.Drawing.Size(91, 48);
+            this.pictureBox1.Size = new System.Drawing.Size(53, 42);
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
@@ -341,10 +341,10 @@
             this.pictureBox2.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.Down_Arrow;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox2.Location = new System.Drawing.Point(582, 57);
+            this.pictureBox2.Location = new System.Drawing.Point(394, 51);
             this.pictureBox2.Name = "pictureBox2";
             this.tableLayoutPanel1.SetRowSpan(this.pictureBox2, 2);
-            this.pictureBox2.Size = new System.Drawing.Size(91, 50);
+            this.pictureBox2.Size = new System.Drawing.Size(53, 45);
             this.pictureBox2.TabIndex = 12;
             this.pictureBox2.TabStop = false;
             // 
@@ -353,10 +353,10 @@
             this.pictureBox3.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.Red_X;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox3.Location = new System.Drawing.Point(679, 3);
+            this.pictureBox3.Location = new System.Drawing.Point(453, 3);
             this.pictureBox3.Name = "pictureBox3";
             this.tableLayoutPanel1.SetRowSpan(this.pictureBox3, 4);
-            this.pictureBox3.Size = new System.Drawing.Size(124, 104);
+            this.pictureBox3.Size = new System.Drawing.Size(95, 93);
             this.pictureBox3.TabIndex = 12;
             this.pictureBox3.TabStop = false;
             // 
@@ -364,7 +364,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(806, 110);
+            this.ClientSize = new System.Drawing.Size(551, 99);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
