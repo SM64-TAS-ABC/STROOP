@@ -30,32 +30,32 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VarHackContainerForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this._textBoxGetSet = new SM64_Diagnostic.BetterTextbox();
-            this.betterTextbox1 = new SM64_Diagnostic.BetterTextbox();
-            this.betterTextbox2 = new SM64_Diagnostic.BetterTextbox();
-            this.betterTextbox3 = new SM64_Diagnostic.BetterTextbox();
-            this.betterTextbox5 = new SM64_Diagnostic.BetterTextbox();
-            this.betterTextbox6 = new SM64_Diagnostic.BetterTextbox();
-            this.betterTextbox7 = new SM64_Diagnostic.BetterTextbox();
-            this.betterTextbox8 = new SM64_Diagnostic.BetterTextbox();
-            this.betterTextbox9 = new SM64_Diagnostic.BetterTextbox();
-            this.betterTextbox10 = new SM64_Diagnostic.BetterTextbox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.checkBoxUsePointer = new System.Windows.Forms.CheckBox();
+            this.textBoxNameValue = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxNameLabel = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxAddressLabel = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxAddressValue = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxPointerOffsetLabel = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxPointerOffsetValue = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxXPosLabel = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxYPosLabel = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxXPosValue = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxYPosValue = new SM64_Diagnostic.BetterTextbox();
+            this.checkBoxUseHex = new System.Windows.Forms.CheckBox();
+            this.radioButtonSByte = new System.Windows.Forms.RadioButton();
+            this.radioButtonByte = new System.Windows.Forms.RadioButton();
+            this.radioButtonShort = new System.Windows.Forms.RadioButton();
+            this.radioButtonUShort = new System.Windows.Forms.RadioButton();
+            this.radioButtonInt = new System.Windows.Forms.RadioButton();
+            this.radioButtonUInt = new System.Windows.Forms.RadioButton();
+            this.radioButtonFloat = new System.Windows.Forms.RadioButton();
+            this.pictureBoxUpArrow = new System.Windows.Forms.PictureBox();
+            this.pictureBoxDownArrow = new System.Windows.Forms.PictureBox();
+            this.pictureBoxRedX = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpArrow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRedX)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -67,28 +67,28 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 73F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel1.Controls.Add(this.checkBox1, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this._textBoxGetSet, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.betterTextbox1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.betterTextbox2, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.betterTextbox3, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.betterTextbox5, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.betterTextbox6, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.radioButton1, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.radioButton2, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.radioButton3, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.radioButton4, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.radioButton5, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.radioButton6, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.radioButton7, 2, 3);
-            this.tableLayoutPanel1.Controls.Add(this.checkBox2, 3, 3);
-            this.tableLayoutPanel1.Controls.Add(this.betterTextbox7, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.betterTextbox9, 5, 0);
-            this.tableLayoutPanel1.Controls.Add(this.betterTextbox8, 4, 1);
-            this.tableLayoutPanel1.Controls.Add(this.betterTextbox10, 5, 1);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 4, 2);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox2, 4, 3);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox3, 5, 2);
+            this.tableLayoutPanel1.Controls.Add(this.checkBoxUsePointer, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxNameValue, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxNameLabel, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxAddressLabel, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxAddressValue, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxPointerOffsetLabel, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxPointerOffsetValue, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.radioButtonSByte, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.radioButtonByte, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.radioButtonShort, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.radioButtonUShort, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.radioButtonInt, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.radioButtonUInt, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.radioButtonFloat, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.checkBoxUseHex, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxXPosLabel, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxXPosValue, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxYPosLabel, 4, 1);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxYPosValue, 5, 1);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBoxUpArrow, 4, 2);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBoxDownArrow, 4, 3);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBoxRedX, 5, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -100,267 +100,267 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(401, 99);
             this.tableLayoutPanel1.TabIndex = 39;
             // 
-            // checkBox1
+            // checkBoxUsePointer
             // 
-            this.checkBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(81, 51);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(81, 17);
-            this.checkBox1.TabIndex = 4;
-            this.checkBox1.Text = "Use Pointer";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBoxUsePointer.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.checkBoxUsePointer.AutoSize = true;
+            this.checkBoxUsePointer.Location = new System.Drawing.Point(81, 51);
+            this.checkBoxUsePointer.Name = "checkBoxUsePointer";
+            this.checkBoxUsePointer.Size = new System.Drawing.Size(81, 17);
+            this.checkBoxUsePointer.TabIndex = 4;
+            this.checkBoxUsePointer.Text = "Use Pointer";
+            this.checkBoxUsePointer.UseVisualStyleBackColor = true;
             // 
-            // _textBoxGetSet
+            // textBoxNameValue
             // 
-            this._textBoxGetSet.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this._textBoxGetSet.BackColor = System.Drawing.Color.White;
-            this._textBoxGetSet.Location = new System.Drawing.Point(81, 3);
-            this._textBoxGetSet.Name = "_textBoxGetSet";
-            this._textBoxGetSet.Size = new System.Drawing.Size(100, 20);
-            this._textBoxGetSet.TabIndex = 10;
-            this._textBoxGetSet.Text = "Mario X";
-            this._textBoxGetSet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxNameValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxNameValue.BackColor = System.Drawing.Color.White;
+            this.textBoxNameValue.Location = new System.Drawing.Point(81, 3);
+            this.textBoxNameValue.Name = "textBoxNameValue";
+            this.textBoxNameValue.Size = new System.Drawing.Size(100, 20);
+            this.textBoxNameValue.TabIndex = 10;
+            this.textBoxNameValue.Text = "Mario X";
+            this.textBoxNameValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // betterTextbox1
+            // textBoxNameLabel
             // 
-            this.betterTextbox1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.betterTextbox1.BackColor = System.Drawing.SystemColors.Control;
-            this.betterTextbox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.betterTextbox1.Location = new System.Drawing.Point(3, 5);
-            this.betterTextbox1.Name = "betterTextbox1";
-            this.betterTextbox1.ReadOnly = true;
-            this.betterTextbox1.Size = new System.Drawing.Size(72, 13);
-            this.betterTextbox1.TabIndex = 10;
-            this.betterTextbox1.Text = "Name:";
-            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.textBoxNameLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxNameLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxNameLabel.Location = new System.Drawing.Point(3, 5);
+            this.textBoxNameLabel.Name = "textBoxNameLabel";
+            this.textBoxNameLabel.ReadOnly = true;
+            this.textBoxNameLabel.Size = new System.Drawing.Size(72, 13);
+            this.textBoxNameLabel.TabIndex = 10;
+            this.textBoxNameLabel.Text = "Name:";
+            this.textBoxNameLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // betterTextbox2
+            // textBoxAddressLabel
             // 
-            this.betterTextbox2.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.betterTextbox2.BackColor = System.Drawing.SystemColors.Control;
-            this.betterTextbox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.betterTextbox2.Location = new System.Drawing.Point(3, 29);
-            this.betterTextbox2.Name = "betterTextbox2";
-            this.betterTextbox2.ReadOnly = true;
-            this.betterTextbox2.Size = new System.Drawing.Size(72, 13);
-            this.betterTextbox2.TabIndex = 10;
-            this.betterTextbox2.Text = "Address:";
-            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxAddressLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.textBoxAddressLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxAddressLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxAddressLabel.Location = new System.Drawing.Point(3, 29);
+            this.textBoxAddressLabel.Name = "textBoxAddressLabel";
+            this.textBoxAddressLabel.ReadOnly = true;
+            this.textBoxAddressLabel.Size = new System.Drawing.Size(72, 13);
+            this.textBoxAddressLabel.TabIndex = 10;
+            this.textBoxAddressLabel.Text = "Address:";
+            this.textBoxAddressLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // betterTextbox3
+            // textBoxAddressValue
             // 
-            this.betterTextbox3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.betterTextbox3.BackColor = System.Drawing.Color.White;
-            this.betterTextbox3.Location = new System.Drawing.Point(81, 27);
-            this.betterTextbox3.Name = "betterTextbox3";
-            this.betterTextbox3.Size = new System.Drawing.Size(100, 20);
-            this.betterTextbox3.TabIndex = 10;
-            this.betterTextbox3.Text = "0x8033B1AC";
-            this.betterTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxAddressValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxAddressValue.BackColor = System.Drawing.Color.White;
+            this.textBoxAddressValue.Location = new System.Drawing.Point(81, 27);
+            this.textBoxAddressValue.Name = "textBoxAddressValue";
+            this.textBoxAddressValue.Size = new System.Drawing.Size(100, 20);
+            this.textBoxAddressValue.TabIndex = 10;
+            this.textBoxAddressValue.Text = "0x8033B1AC";
+            this.textBoxAddressValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // betterTextbox5
+            // textBoxPointerOffsetLabel
             // 
-            this.betterTextbox5.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.betterTextbox5.BackColor = System.Drawing.SystemColors.Control;
-            this.betterTextbox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.betterTextbox5.Location = new System.Drawing.Point(3, 79);
-            this.betterTextbox5.Name = "betterTextbox5";
-            this.betterTextbox5.ReadOnly = true;
-            this.betterTextbox5.Size = new System.Drawing.Size(72, 13);
-            this.betterTextbox5.TabIndex = 10;
-            this.betterTextbox5.Text = "Pointer Offset:";
-            this.betterTextbox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxPointerOffsetLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.textBoxPointerOffsetLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxPointerOffsetLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxPointerOffsetLabel.Location = new System.Drawing.Point(3, 79);
+            this.textBoxPointerOffsetLabel.Name = "textBoxPointerOffsetLabel";
+            this.textBoxPointerOffsetLabel.ReadOnly = true;
+            this.textBoxPointerOffsetLabel.Size = new System.Drawing.Size(72, 13);
+            this.textBoxPointerOffsetLabel.TabIndex = 10;
+            this.textBoxPointerOffsetLabel.Text = "Pointer Offset:";
+            this.textBoxPointerOffsetLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // betterTextbox6
+            // textBoxPointerOffsetValue
             // 
-            this.betterTextbox6.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.betterTextbox6.BackColor = System.Drawing.Color.White;
-            this.betterTextbox6.Enabled = false;
-            this.betterTextbox6.Location = new System.Drawing.Point(81, 75);
-            this.betterTextbox6.Name = "betterTextbox6";
-            this.betterTextbox6.Size = new System.Drawing.Size(100, 20);
-            this.betterTextbox6.TabIndex = 10;
-            this.betterTextbox6.Text = "0x10";
-            this.betterTextbox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxPointerOffsetValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxPointerOffsetValue.BackColor = System.Drawing.Color.White;
+            this.textBoxPointerOffsetValue.Enabled = false;
+            this.textBoxPointerOffsetValue.Location = new System.Drawing.Point(81, 75);
+            this.textBoxPointerOffsetValue.Name = "textBoxPointerOffsetValue";
+            this.textBoxPointerOffsetValue.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPointerOffsetValue.TabIndex = 10;
+            this.textBoxPointerOffsetValue.Text = "0x10";
+            this.textBoxPointerOffsetValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // betterTextbox7
+            // textBoxXPosLabel
             // 
-            this.betterTextbox7.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.betterTextbox7.BackColor = System.Drawing.SystemColors.Control;
-            this.betterTextbox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.betterTextbox7.Location = new System.Drawing.Point(317, 5);
-            this.betterTextbox7.Name = "betterTextbox7";
-            this.betterTextbox7.ReadOnly = true;
-            this.betterTextbox7.Size = new System.Drawing.Size(30, 13);
-            this.betterTextbox7.TabIndex = 10;
-            this.betterTextbox7.Text = "X Pos:";
-            this.betterTextbox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxXPosLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.textBoxXPosLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxXPosLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxXPosLabel.Location = new System.Drawing.Point(317, 5);
+            this.textBoxXPosLabel.Name = "textBoxXPosLabel";
+            this.textBoxXPosLabel.ReadOnly = true;
+            this.textBoxXPosLabel.Size = new System.Drawing.Size(30, 13);
+            this.textBoxXPosLabel.TabIndex = 10;
+            this.textBoxXPosLabel.Text = "X Pos:";
+            this.textBoxXPosLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // betterTextbox8
+            // textBoxYPosLabel
             // 
-            this.betterTextbox8.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.betterTextbox8.BackColor = System.Drawing.SystemColors.Control;
-            this.betterTextbox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.betterTextbox8.Location = new System.Drawing.Point(317, 29);
-            this.betterTextbox8.Name = "betterTextbox8";
-            this.betterTextbox8.ReadOnly = true;
-            this.betterTextbox8.Size = new System.Drawing.Size(30, 13);
-            this.betterTextbox8.TabIndex = 10;
-            this.betterTextbox8.Text = "Y Pos:";
-            this.betterTextbox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxYPosLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.textBoxYPosLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxYPosLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxYPosLabel.Location = new System.Drawing.Point(317, 29);
+            this.textBoxYPosLabel.Name = "textBoxYPosLabel";
+            this.textBoxYPosLabel.ReadOnly = true;
+            this.textBoxYPosLabel.Size = new System.Drawing.Size(30, 13);
+            this.textBoxYPosLabel.TabIndex = 10;
+            this.textBoxYPosLabel.Text = "Y Pos:";
+            this.textBoxYPosLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // betterTextbox9
+            // textBoxXPosValue
             // 
-            this.betterTextbox9.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.betterTextbox9.BackColor = System.Drawing.Color.White;
-            this.betterTextbox9.Location = new System.Drawing.Point(353, 3);
-            this.betterTextbox9.Name = "betterTextbox9";
-            this.betterTextbox9.Size = new System.Drawing.Size(45, 20);
-            this.betterTextbox9.TabIndex = 10;
-            this.betterTextbox9.Text = "100";
-            this.betterTextbox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxXPosValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxXPosValue.BackColor = System.Drawing.Color.White;
+            this.textBoxXPosValue.Location = new System.Drawing.Point(353, 3);
+            this.textBoxXPosValue.Name = "textBoxXPosValue";
+            this.textBoxXPosValue.Size = new System.Drawing.Size(45, 20);
+            this.textBoxXPosValue.TabIndex = 10;
+            this.textBoxXPosValue.Text = "100";
+            this.textBoxXPosValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // betterTextbox10
+            // textBoxYPosValue
             // 
-            this.betterTextbox10.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.betterTextbox10.BackColor = System.Drawing.Color.White;
-            this.betterTextbox10.Location = new System.Drawing.Point(353, 27);
-            this.betterTextbox10.Name = "betterTextbox10";
-            this.betterTextbox10.Size = new System.Drawing.Size(45, 20);
-            this.betterTextbox10.TabIndex = 10;
-            this.betterTextbox10.Text = "200";
-            this.betterTextbox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxYPosValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxYPosValue.BackColor = System.Drawing.Color.White;
+            this.textBoxYPosValue.Location = new System.Drawing.Point(353, 27);
+            this.textBoxYPosValue.Name = "textBoxYPosValue";
+            this.textBoxYPosValue.Size = new System.Drawing.Size(45, 20);
+            this.textBoxYPosValue.TabIndex = 10;
+            this.textBoxYPosValue.Text = "200";
+            this.textBoxYPosValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // checkBox2
+            // checkBoxUseHex
             // 
-            this.checkBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(244, 77);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(67, 17);
-            this.checkBox2.TabIndex = 4;
-            this.checkBox2.Text = "Use Hex";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBoxUseHex.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.checkBoxUseHex.AutoSize = true;
+            this.checkBoxUseHex.Location = new System.Drawing.Point(244, 77);
+            this.checkBoxUseHex.Name = "checkBoxUseHex";
+            this.checkBoxUseHex.Size = new System.Drawing.Size(67, 17);
+            this.checkBoxUseHex.TabIndex = 4;
+            this.checkBoxUseHex.Text = "Use Hex";
+            this.checkBoxUseHex.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // radioButtonSByte
             // 
-            this.radioButton1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(188, 3);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(50, 17);
-            this.radioButton1.TabIndex = 11;
-            this.radioButton1.Text = "sbyte";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButtonSByte.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButtonSByte.AutoSize = true;
+            this.radioButtonSByte.Location = new System.Drawing.Point(188, 3);
+            this.radioButtonSByte.Name = "radioButtonSByte";
+            this.radioButtonSByte.Size = new System.Drawing.Size(50, 17);
+            this.radioButtonSByte.TabIndex = 11;
+            this.radioButtonSByte.Text = "sbyte";
+            this.radioButtonSByte.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // radioButtonByte
             // 
-            this.radioButton2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(244, 3);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(45, 17);
-            this.radioButton2.TabIndex = 11;
-            this.radioButton2.Text = "byte";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButtonByte.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButtonByte.AutoSize = true;
+            this.radioButtonByte.Location = new System.Drawing.Point(244, 3);
+            this.radioButtonByte.Name = "radioButtonByte";
+            this.radioButtonByte.Size = new System.Drawing.Size(45, 17);
+            this.radioButtonByte.TabIndex = 11;
+            this.radioButtonByte.Text = "byte";
+            this.radioButtonByte.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // radioButtonShort
             // 
-            this.radioButton3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(188, 27);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(48, 17);
-            this.radioButton3.TabIndex = 11;
-            this.radioButton3.Text = "short";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButtonShort.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButtonShort.AutoSize = true;
+            this.radioButtonShort.Location = new System.Drawing.Point(188, 27);
+            this.radioButtonShort.Name = "radioButtonShort";
+            this.radioButtonShort.Size = new System.Drawing.Size(48, 17);
+            this.radioButtonShort.TabIndex = 11;
+            this.radioButtonShort.Text = "short";
+            this.radioButtonShort.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // radioButtonUShort
             // 
-            this.radioButton4.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(244, 27);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(54, 17);
-            this.radioButton4.TabIndex = 11;
-            this.radioButton4.Text = "ushort";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButtonUShort.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButtonUShort.AutoSize = true;
+            this.radioButtonUShort.Location = new System.Drawing.Point(244, 27);
+            this.radioButtonUShort.Name = "radioButtonUShort";
+            this.radioButtonUShort.Size = new System.Drawing.Size(54, 17);
+            this.radioButtonUShort.TabIndex = 11;
+            this.radioButtonUShort.Text = "ushort";
+            this.radioButtonUShort.UseVisualStyleBackColor = true;
             // 
-            // radioButton5
+            // radioButtonInt
             // 
-            this.radioButton5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(188, 51);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(36, 17);
-            this.radioButton5.TabIndex = 11;
-            this.radioButton5.Text = "int";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButtonInt.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButtonInt.AutoSize = true;
+            this.radioButtonInt.Location = new System.Drawing.Point(188, 51);
+            this.radioButtonInt.Name = "radioButtonInt";
+            this.radioButtonInt.Size = new System.Drawing.Size(36, 17);
+            this.radioButtonInt.TabIndex = 11;
+            this.radioButtonInt.Text = "int";
+            this.radioButtonInt.UseVisualStyleBackColor = true;
             // 
-            // radioButton6
+            // radioButtonUInt
             // 
-            this.radioButton6.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(244, 51);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(42, 17);
-            this.radioButton6.TabIndex = 11;
-            this.radioButton6.Text = "uint";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.radioButtonUInt.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButtonUInt.AutoSize = true;
+            this.radioButtonUInt.Location = new System.Drawing.Point(244, 51);
+            this.radioButtonUInt.Name = "radioButtonUInt";
+            this.radioButtonUInt.Size = new System.Drawing.Size(42, 17);
+            this.radioButtonUInt.TabIndex = 11;
+            this.radioButtonUInt.Text = "uint";
+            this.radioButtonUInt.UseVisualStyleBackColor = true;
             // 
-            // radioButton7
+            // radioButtonFloat
             // 
-            this.radioButton7.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Checked = true;
-            this.radioButton7.Location = new System.Drawing.Point(188, 77);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(45, 17);
-            this.radioButton7.TabIndex = 11;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "float";
-            this.radioButton7.UseVisualStyleBackColor = true;
+            this.radioButtonFloat.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioButtonFloat.AutoSize = true;
+            this.radioButtonFloat.Checked = true;
+            this.radioButtonFloat.Location = new System.Drawing.Point(188, 77);
+            this.radioButtonFloat.Name = "radioButtonFloat";
+            this.radioButtonFloat.Size = new System.Drawing.Size(45, 17);
+            this.radioButtonFloat.TabIndex = 11;
+            this.radioButtonFloat.TabStop = true;
+            this.radioButtonFloat.Text = "float";
+            this.radioButtonFloat.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
+            // pictureBoxUpArrow
             // 
-            this.pictureBox1.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.Up_Arrow;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(317, 51);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(30, 18);
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxUpArrow.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.Up_Arrow;
+            this.pictureBoxUpArrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxUpArrow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxUpArrow.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxUpArrow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxUpArrow.Location = new System.Drawing.Point(317, 51);
+            this.pictureBoxUpArrow.Name = "pictureBoxUpArrow";
+            this.pictureBoxUpArrow.Size = new System.Drawing.Size(30, 18);
+            this.pictureBoxUpArrow.TabIndex = 12;
+            this.pictureBoxUpArrow.TabStop = false;
             // 
-            // pictureBox2
+            // pictureBoxDownArrow
             // 
-            this.pictureBox2.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.Down_Arrow;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox2.Location = new System.Drawing.Point(317, 75);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(30, 21);
-            this.pictureBox2.TabIndex = 12;
-            this.pictureBox2.TabStop = false;
+            this.pictureBoxDownArrow.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.Down_Arrow;
+            this.pictureBoxDownArrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxDownArrow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxDownArrow.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxDownArrow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxDownArrow.Location = new System.Drawing.Point(317, 75);
+            this.pictureBoxDownArrow.Name = "pictureBoxDownArrow";
+            this.pictureBoxDownArrow.Size = new System.Drawing.Size(30, 21);
+            this.pictureBoxDownArrow.TabIndex = 12;
+            this.pictureBoxDownArrow.TabStop = false;
             // 
-            // pictureBox3
+            // pictureBoxRedX
             // 
-            this.pictureBox3.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.Red_X;
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox3.Location = new System.Drawing.Point(353, 51);
-            this.pictureBox3.Name = "pictureBox3";
-            this.tableLayoutPanel1.SetRowSpan(this.pictureBox3, 2);
-            this.pictureBox3.Size = new System.Drawing.Size(45, 45);
-            this.pictureBox3.TabIndex = 12;
-            this.pictureBox3.TabStop = false;
+            this.pictureBoxRedX.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.Red_X;
+            this.pictureBoxRedX.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxRedX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxRedX.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxRedX.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxRedX.Location = new System.Drawing.Point(353, 51);
+            this.pictureBoxRedX.Name = "pictureBoxRedX";
+            this.tableLayoutPanel1.SetRowSpan(this.pictureBoxRedX, 2);
+            this.pictureBoxRedX.Size = new System.Drawing.Size(45, 45);
+            this.pictureBoxRedX.TabIndex = 12;
+            this.pictureBoxRedX.TabStop = false;
             // 
             // VarHackContainerForm
             // 
@@ -377,36 +377,36 @@
             this.Text = "Variable Controller";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpArrow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRedX)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private BetterTextbox _textBoxGetSet;
-        private BetterTextbox betterTextbox1;
-        private BetterTextbox betterTextbox2;
-        private BetterTextbox betterTextbox3;
-        private BetterTextbox betterTextbox5;
-        private BetterTextbox betterTextbox6;
-        private BetterTextbox betterTextbox7;
-        private BetterTextbox betterTextbox9;
-        private BetterTextbox betterTextbox10;
-        private BetterTextbox betterTextbox8;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.RadioButton radioButton7;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.CheckBox checkBoxUsePointer;
+        private BetterTextbox textBoxNameValue;
+        private BetterTextbox textBoxNameLabel;
+        private BetterTextbox textBoxAddressLabel;
+        private BetterTextbox textBoxAddressValue;
+        private BetterTextbox textBoxPointerOffsetLabel;
+        private BetterTextbox textBoxPointerOffsetValue;
+        private BetterTextbox textBoxXPosLabel;
+        private BetterTextbox textBoxXPosValue;
+        private BetterTextbox textBoxYPosValue;
+        private BetterTextbox textBoxYPosLabel;
+        private System.Windows.Forms.CheckBox checkBoxUseHex;
+        private System.Windows.Forms.RadioButton radioButtonSByte;
+        private System.Windows.Forms.RadioButton radioButtonByte;
+        private System.Windows.Forms.RadioButton radioButtonShort;
+        private System.Windows.Forms.RadioButton radioButtonUShort;
+        private System.Windows.Forms.RadioButton radioButtonInt;
+        private System.Windows.Forms.RadioButton radioButtonUInt;
+        private System.Windows.Forms.RadioButton radioButtonFloat;
+        private System.Windows.Forms.PictureBox pictureBoxUpArrow;
+        private System.Windows.Forms.PictureBox pictureBoxDownArrow;
+        private System.Windows.Forms.PictureBox pictureBoxRedX;
     }
 }
