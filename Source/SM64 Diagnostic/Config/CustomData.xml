@@ -9,4 +9,6 @@
   <Data type="float" offset="0xA4" base="Object" coord="Y">Object Y</Data>
   <Data type="float" offset="0xA8" base="Object" coord="Z">Object Z</Data>
 
+  <Data type="float" offset="0x00C5BA80" base="Absolute">test</Data>
+  
 </Data>

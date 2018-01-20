@@ -1,4 +1,5 @@
 ﻿using SM64_Diagnostic.Structs;
+using SM64_Diagnostic.Structs.Configurations;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -50,13 +51,19 @@ namespace SM64_Diagnostic.Controls
 
         public void ApplyVariables()
         {
+
+            uint applyVariableAddress = 0x80370000;
+
             System.Diagnostics.Trace.WriteLine("-----------------------------------------");
             foreach (VarHackContainer varHackContainer in Controls)
             {
                 System.Diagnostics.Trace.WriteLine(varHackContainer.ToString());
                 System.Diagnostics.Trace.WriteLine("");
+                Config.Stream.WriteRamLittleEndian(
+                    varHackContainer.GetByteArray(), applyVariableAddress);
             }
             System.Diagnostics.Trace.WriteLine("-----------------------------------------");
+
         }
     }
 }

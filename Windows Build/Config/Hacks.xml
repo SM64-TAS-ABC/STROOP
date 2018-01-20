@@ -7,4 +7,5 @@
   <Hack name="Pu Visibility (by Peter Fedak)" path="PuVisible.hck" />
   <Hack name="Camera 45 Degrees" path="Camera45Hack.hck" />
   <Hack name="Quarter Frame Info" path="QFrameInfoHack.hck" />
+  <Hack name="Display Variable" path="DisplayVariable.hck" />
 </Hacks>

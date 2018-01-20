@@ -59,22 +59,29 @@ namespace SM64_Diagnostic.Controls
             uint? pointerOffsetNullable = GetCurrentPointerOffset();
             Type type = GetCurrentType();
             bool useHex = GetCurrentUseHex();
-            int? xPosNullable = GetCurrentXPosition();
-            int? yPosNullable = GetCurrentYPosition();
+            ushort? xPosNullable = GetCurrentXPosition();
+            ushort? yPosNullable = GetCurrentYPosition();
 
             if (!addressNullable.HasValue) return null;
             uint address = addressNullable.Value;
             if (!pointerOffsetNullable.HasValue) return null;
             uint pointerOffset = pointerOffsetNullable.Value;
             if (!xPosNullable.HasValue) return null;
-            int xPos = xPosNullable.Value;
+            ushort xPos = xPosNullable.Value;
             if (!yPosNullable.HasValue) return null;
-            int yPos = yPosNullable.Value;
+            ushort yPos = yPosNullable.Value;
 
             byte[] bytes = new byte[32];
 
             byte[] addressBytes = BitConverter.GetBytes(address);
-            WriteBytes(addressBytes, bytes, 0, true);
+            WriteBytes(addressBytes, bytes, 0, false);
+
+            byte[] xPosBytes = BitConverter.GetBytes(xPos);
+            WriteBytes(xPosBytes, bytes, 4, false);
+
+            byte[] yPosBytes = BitConverter.GetBytes(yPos);
+            WriteBytes(yPosBytes, bytes, 6, false);
+
 
             return bytes;
         }
@@ -139,14 +146,14 @@ namespace SM64_Diagnostic.Controls
             return checkBoxUseHex.Checked;
         }
 
-        private int? GetCurrentXPosition()
+        private ushort? GetCurrentXPosition()
         {
-            return ParsingUtilities.ParseIntNullable(textBoxXPosValue.Text);
+            return ParsingUtilities.ParseUShortNullable(textBoxXPosValue.Text);
         }
 
-        private int? GetCurrentYPosition()
+        private ushort? GetCurrentYPosition()
         {
-            return ParsingUtilities.ParseIntNullable(textBoxYPosValue.Text);
+            return ParsingUtilities.ParseUShortNullable(textBoxYPosValue.Text);
         }
 
         private void InitializeComponent()
