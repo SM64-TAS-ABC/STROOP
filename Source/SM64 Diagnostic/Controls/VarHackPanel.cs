@@ -47,5 +47,16 @@ namespace SM64_Diagnostic.Controls
         {
             Controls.Clear();
         }
+
+        public void ApplyVariables()
+        {
+            System.Diagnostics.Trace.WriteLine("-----------------------------------------");
+            foreach (VarHackContainer varHackContainer in Controls)
+            {
+                System.Diagnostics.Trace.WriteLine(varHackContainer.ToString());
+                System.Diagnostics.Trace.WriteLine("");
+            }
+            System.Diagnostics.Trace.WriteLine("-----------------------------------------");
+        }
     }
 }

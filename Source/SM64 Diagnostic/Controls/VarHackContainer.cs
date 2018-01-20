@@ -1,4 +1,6 @@
 ﻿using SM64_Diagnostic.Structs;
+using SM64_Diagnostic.Structs.Configurations;
+using SM64_Diagnostic.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -46,6 +48,93 @@ namespace SM64_Diagnostic.Controls
             pictureBoxUpArrow.Click += (sender, e) => _varHackPanel.MoveUpControl(this);
             pictureBoxDownArrow.Click += (sender, e) => _varHackPanel.MoveDownControl(this);
             pictureBoxRedX.Click += (sender, e) => _varHackPanel.RemoveControl(this);
+            checkBoxUsePointer.Click += (sender, e) => textBoxPointerOffsetValue.Enabled = checkBoxUsePointer.Checked;
+        }
+
+        public byte[] GetByteArray()
+        {
+            string name = GetCurrentName();
+            uint? addressNullable = GetCurrentAddress();
+            bool usePointer = GetCurrentUsePointer();
+            uint? pointerOffsetNullable = GetCurrentPointerOffset();
+            Type type = GetCurrentType();
+            bool useHex = GetCurrentUseHex();
+            int? xPosNullable = GetCurrentXPosition();
+            int? yPosNullable = GetCurrentYPosition();
+
+            if (!addressNullable.HasValue) return null;
+            uint address = addressNullable.Value;
+            if (!pointerOffsetNullable.HasValue) return null;
+            uint pointerOffset = pointerOffsetNullable.Value;
+            if (!xPosNullable.HasValue) return null;
+            int xPos = xPosNullable.Value;
+            if (!yPosNullable.HasValue) return null;
+            int yPos = yPosNullable.Value;
+
+            byte[] bytes = new byte[32];
+
+            return bytes;
+        }
+
+        public override string ToString()
+        {
+            byte[] bytes = GetByteArray();
+            if (bytes == null) return "NULL";
+            StringBuilder stringBuilder = new StringBuilder();
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                if (i == 16) stringBuilder.Append("\n");
+                stringBuilder.Append(String.Format("{0:X2}", bytes[i]));
+                stringBuilder.Append(" ");
+            }
+            return stringBuilder.ToString();
+        }
+
+        private string GetCurrentName()
+        {
+            return textBoxNameValue.Text;
+        }
+
+        private uint? GetCurrentAddress()
+        {
+            return ParsingUtilities.ParseHexNullable(textBoxAddressValue.Text);
+        }
+
+        private bool GetCurrentUsePointer()
+        {
+            return checkBoxUsePointer.Checked;
+        }
+
+        private uint? GetCurrentPointerOffset()
+        {
+            return ParsingUtilities.ParseHexNullable(textBoxPointerOffsetValue.Text);
+        }
+
+        private Type GetCurrentType()
+        {
+            if (radioButtonSByte.Checked) return typeof(sbyte);
+            if (radioButtonByte.Checked) return typeof(byte);
+            if (radioButtonShort.Checked) return typeof(short);
+            if (radioButtonUShort.Checked) return typeof(ushort);
+            if (radioButtonInt.Checked) return typeof(int);
+            if (radioButtonUInt.Checked) return typeof(uint);
+            if (radioButtonFloat.Checked) return typeof(float);
+            throw new ArgumentOutOfRangeException();
+        }
+
+        private bool GetCurrentUseHex()
+        {
+            return checkBoxUseHex.Checked;
+        }
+
+        private int? GetCurrentXPosition()
+        {
+            return ParsingUtilities.ParseIntNullable(textBoxXPosValue.Text);
+        }
+
+        private int? GetCurrentYPosition()
+        {
+            return ParsingUtilities.ParseIntNullable(textBoxYPosValue.Text);
         }
 
         private void InitializeComponent()

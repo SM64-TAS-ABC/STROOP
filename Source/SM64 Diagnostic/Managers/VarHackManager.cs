@@ -24,12 +24,7 @@ namespace SM64_Diagnostic.Managers
             SplitContainer splitContainerVarHack = varHackControlControl.Controls["splitContainerVarHack"] as SplitContainer;
 
             Button buttonVarHackApplyVariables = splitContainerVarHack.Panel1.Controls["buttonVarHackApplyVariables"] as Button;
-            buttonVarHackApplyVariables.Click += (sender, e) =>
-            {
-                VarHackContainerForm varHackContainerForm =
-                    new VarHackContainerForm();
-                varHackContainerForm.Show();
-            };
+            buttonVarHackApplyVariables.Click += (sender, e) => varHackPanel.ApplyVariables();
 
             Button buttonVarHackClearVariables = splitContainerVarHack.Panel1.Controls["buttonVarHackClearVariables"] as Button;
             buttonVarHackClearVariables.Click += (sender, e) => varHackPanel.ClearControls();
