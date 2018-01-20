@@ -34,6 +34,8 @@ namespace SM64_Diagnostic.Controls
         private PictureBox pictureBoxDownArrow;
         private PictureBox pictureBoxRedX;
 
+        private static readonly Pen _borderPen = new Pen(Color.Black, 3);
+
         public VarHackContainer()
         {
             InitializeComponent();
@@ -386,6 +388,16 @@ namespace SM64_Diagnostic.Controls
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRedX)).EndInit();
             */
         }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            var rec = DisplayRectangle;
+            rec.Width -= 1;
+            rec.Height -= 1;
+            e.Graphics.DrawRectangle(_borderPen, rec);
+        }
+
     }
 }
 
