@@ -11,7 +11,7 @@ namespace SM64_Diagnostic.Controls
 {
     public class VarHackContainer : TableLayoutPanel
     {
-
+        /*
         private CheckBox checkBoxUsePointer;
         private BetterTextbox textBoxNameValue;
         private BetterTextbox textBoxNameLabel;
@@ -34,12 +34,13 @@ namespace SM64_Diagnostic.Controls
         private PictureBox pictureBoxUpArrow;
         private PictureBox pictureBoxDownArrow;
         private PictureBox pictureBoxRedX;
-
+        */
         public VarHackContainer()
         {
+            InitializeOldWay();
             //InitializeComponent();
         }
-
+        /*
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VarHackContainerForm));
@@ -384,7 +385,7 @@ namespace SM64_Diagnostic.Controls
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRedX)).EndInit();
 
         }
-
+        */
 
         //START
 
