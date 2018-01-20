@@ -36,11 +36,16 @@ namespace SM64_Diagnostic.Controls
 
         private static readonly Pen _borderPen = new Pen(Color.Black, 3);
 
-        public VarHackPanel VarHackPanel;
+        private readonly VarHackPanel _varHackPanel;
 
-        public VarHackContainer()
+        public VarHackContainer(VarHackPanel varHackPanel)
         {
             InitializeComponent();
+            _varHackPanel = varHackPanel;
+
+            pictureBoxUpArrow.Click += (sender, e) => _varHackPanel.MoveUpControl(this);
+            pictureBoxDownArrow.Click += (sender, e) => _varHackPanel.MoveDownControl(this);
+            pictureBoxRedX.Click += (sender, e) => _varHackPanel.RemoveControl(this);
         }
 
         private void InitializeComponent()

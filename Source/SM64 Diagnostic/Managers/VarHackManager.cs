@@ -31,12 +31,11 @@ namespace SM64_Diagnostic.Managers
                 varHackContainerForm.Show();
             };
 
+            Button buttonVarHackClearVariables = splitContainerVarHack.Panel1.Controls["buttonVarHackClearVariables"] as Button;
+            buttonVarHackClearVariables.Click += (sender, e) => varHackPanel.ClearControls();
+
             Button buttonVarHackAddNewVariable = splitContainerVarHack.Panel1.Controls["buttonVarHackAddNewVariable"] as Button;
-            buttonVarHackAddNewVariable.Click += (sender, e) =>
-            {
-                VarHackContainer varHackContainer = new VarHackContainer();
-                varHackPanel.AddControl(varHackContainer);
-            };
+            buttonVarHackAddNewVariable.Click += (sender, e) => varHackPanel.AddNewControl();
         }
 
         public void Update(bool updateView)
