@@ -115,7 +115,7 @@ namespace SM64_Diagnostic
             currentContext.AreaManager = new AreaManager(tabPageArea, _areaData, watchVariablePanelArea);
             currentContext.QuarterFrameManager = new DataManager(_quarterFrameData, watchVariablePanelQuarterFrame);
             currentContext.CustomManager = new CustomManager(_watchVarControlList, tabPageCustom, watchVariablePanelCustom);
-            currentContext.VarHackManager = new VarHackManager(tabPageVarHack, watchVariablePanelCustom);
+            currentContext.VarHackManager = new VarHackManager(tabPageVarHack, varHackPanel);
             currentContext.CameraHackManager = new CamHackManager(_camHackData, tabPageCamHack, watchVariablePanelCamHack);
             currentContext.ObjectManager = new ObjectManager(_objectData, tabPageObjects, WatchVariablePanelObject);
             currentContext.OptionsManager = new OptionsManager(tabPageOptions);

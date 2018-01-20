@@ -17,7 +17,7 @@ namespace SM64_Diagnostic.Managers
     {
         public static VarHackManager Instance;
 
-        public VarHackManager(Control varHackControlControl, WatchVariablePanel variableTable)
+        public VarHackManager(Control varHackControlControl, VarHackPanel varHackPanel)
         {
             Instance = this;
 
