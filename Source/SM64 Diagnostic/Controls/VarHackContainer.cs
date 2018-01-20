@@ -71,10 +71,13 @@ namespace SM64_Diagnostic.Controls
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRedX)).BeginInit();
             this.SuspendLayout();
+            */
             // 
             // tableLayoutPanel1
             // 
+
             this.ColumnCount = 6;
+            this.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
             this.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
             this.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 107F));
             this.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
@@ -103,7 +106,6 @@ namespace SM64_Diagnostic.Controls
             this.Controls.Add(this.pictureBoxUpArrow, 4, 2);
             this.Controls.Add(this.pictureBoxDownArrow, 4, 3);
             this.Controls.Add(this.pictureBoxRedX, 5, 2);
-            this.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "tableLayoutPanel1";
             this.RowCount = 4;
@@ -378,6 +380,7 @@ namespace SM64_Diagnostic.Controls
             // 
             // VarHackContainerForm
             // 
+            /*
             this.ResumeLayout(false);
             this.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpArrow)).EndInit();
@@ -412,6 +415,7 @@ namespace SM64_Diagnostic.Controls
 
         public void InitializeOldWay()
         {
+            return;
 
             // Initialize size fields
             _variableNameWidth = VariableNameWidth;
