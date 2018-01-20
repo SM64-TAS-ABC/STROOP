@@ -33,7 +33,7 @@ namespace SM64_Diagnostic
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -529,27 +529,6 @@ namespace SM64_Diagnostic
             this.watchVariablePanelMisc = new SM64_Diagnostic.Controls.WatchVariablePanel();
             this.tabPageVarHack = new System.Windows.Forms.TabPage();
             this.splitContainerVarHack = new System.Windows.Forms.SplitContainer();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.betterTextbox1 = new SM64_Diagnostic.BetterTextbox();
-            this.betterTextbox2 = new SM64_Diagnostic.BetterTextbox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.betterTextbox3 = new SM64_Diagnostic.BetterTextbox();
-            this.betterTextbox5 = new SM64_Diagnostic.BetterTextbox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.betterTextbox6 = new SM64_Diagnostic.BetterTextbox();
-            this.betterTextbox7 = new SM64_Diagnostic.BetterTextbox();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.watchVariablePanelVarHack = new SM64_Diagnostic.Controls.WatchVariablePanel();
@@ -1034,6 +1013,7 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1268,9 +1248,6 @@ namespace SM64_Diagnostic
             this.splitContainerVarHack.Panel1.SuspendLayout();
             this.splitContainerVarHack.Panel2.SuspendLayout();
             this.splitContainerVarHack.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.tabPageCustom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerCustom)).BeginInit();
             this.splitContainerCustom.Panel1.SuspendLayout();
@@ -7717,9 +7694,7 @@ namespace SM64_Diagnostic
             // splitContainerVarHack.Panel1
             // 
             this.splitContainerVarHack.Panel1.AutoScroll = true;
-            this.splitContainerVarHack.Panel1.Controls.Add(this.groupBox1);
-            this.splitContainerVarHack.Panel1.Controls.Add(this.groupBox2);
-            this.splitContainerVarHack.Panel1.Controls.Add(this.groupBox3);
+            this.splitContainerVarHack.Panel1.Controls.Add(this.button1);
             this.splitContainerVarHack.Panel1.Controls.Add(this.button15);
             this.splitContainerVarHack.Panel1.Controls.Add(this.button16);
             this.splitContainerVarHack.Panel1MinSize = 0;
@@ -7733,250 +7708,13 @@ namespace SM64_Diagnostic
             this.splitContainerVarHack.SplitterWidth = 1;
             this.splitContainerVarHack.TabIndex = 20;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.betterTextbox1);
-            this.groupBox1.Controls.Add(this.betterTextbox2);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Location = new System.Drawing.Point(4, 247);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(185, 70);
-            this.groupBox1.TabIndex = 30;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Var Height";
-            // 
-            // betterTextbox1
-            // 
-            this.betterTextbox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox1.Location = new System.Drawing.Point(67, 44);
-            this.betterTextbox1.Name = "betterTextbox1";
-            this.betterTextbox1.Size = new System.Drawing.Size(51, 20);
-            this.betterTextbox1.TabIndex = 33;
-            this.betterTextbox1.Text = "20";
-            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // betterTextbox2
-            // 
-            this.betterTextbox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox2.Location = new System.Drawing.Point(67, 19);
-            this.betterTextbox2.Name = "betterTextbox2";
-            this.betterTextbox2.Size = new System.Drawing.Size(51, 20);
-            this.betterTextbox2.TabIndex = 33;
-            this.betterTextbox2.Text = "2";
-            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(3, 41);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(61, 25);
-            this.button1.TabIndex = 35;
-            this.button1.Text = "Get";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(3, 16);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(61, 25);
-            this.button2.TabIndex = 35;
-            this.button2.Text = "Height-";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(121, 41);
-            this.button3.Margin = new System.Windows.Forms.Padding(0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(61, 25);
-            this.button3.TabIndex = 35;
-            this.button3.Text = "Set";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(121, 16);
-            this.button4.Margin = new System.Windows.Forms.Padding(0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(61, 25);
-            this.button4.TabIndex = 35;
-            this.button4.Text = "Height+";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.betterTextbox3);
-            this.groupBox2.Controls.Add(this.betterTextbox5);
-            this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Controls.Add(this.button6);
-            this.groupBox2.Controls.Add(this.button7);
-            this.groupBox2.Controls.Add(this.button10);
-            this.groupBox2.Location = new System.Drawing.Point(4, 171);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(185, 70);
-            this.groupBox2.TabIndex = 30;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Var Value Width";
-            // 
-            // betterTextbox3
-            // 
-            this.betterTextbox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox3.Location = new System.Drawing.Point(67, 44);
-            this.betterTextbox3.Name = "betterTextbox3";
-            this.betterTextbox3.Size = new System.Drawing.Size(51, 20);
-            this.betterTextbox3.TabIndex = 33;
-            this.betterTextbox3.Text = "85";
-            this.betterTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // betterTextbox5
-            // 
-            this.betterTextbox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox5.Location = new System.Drawing.Point(67, 19);
-            this.betterTextbox5.Name = "betterTextbox5";
-            this.betterTextbox5.Size = new System.Drawing.Size(51, 20);
-            this.betterTextbox5.TabIndex = 33;
-            this.betterTextbox5.Text = "5";
-            this.betterTextbox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // button5
-            // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button5.Location = new System.Drawing.Point(3, 41);
-            this.button5.Margin = new System.Windows.Forms.Padding(0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(61, 25);
-            this.button5.TabIndex = 35;
-            this.button5.Text = "Get";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.Location = new System.Drawing.Point(3, 16);
-            this.button6.Margin = new System.Windows.Forms.Padding(0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(61, 25);
-            this.button6.TabIndex = 35;
-            this.button6.Text = "Width-";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button7.Location = new System.Drawing.Point(121, 41);
-            this.button7.Margin = new System.Windows.Forms.Padding(0);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(61, 25);
-            this.button7.TabIndex = 35;
-            this.button7.Text = "Set";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button10
-            // 
-            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button10.Location = new System.Drawing.Point(121, 16);
-            this.button10.Margin = new System.Windows.Forms.Padding(0);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(61, 25);
-            this.button10.TabIndex = 35;
-            this.button10.Text = "Width+";
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.betterTextbox6);
-            this.groupBox3.Controls.Add(this.betterTextbox7);
-            this.groupBox3.Controls.Add(this.button11);
-            this.groupBox3.Controls.Add(this.button12);
-            this.groupBox3.Controls.Add(this.button13);
-            this.groupBox3.Controls.Add(this.button14);
-            this.groupBox3.Location = new System.Drawing.Point(4, 95);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(185, 70);
-            this.groupBox3.TabIndex = 30;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Var Name Width";
-            // 
-            // betterTextbox6
-            // 
-            this.betterTextbox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox6.Location = new System.Drawing.Point(67, 44);
-            this.betterTextbox6.Name = "betterTextbox6";
-            this.betterTextbox6.Size = new System.Drawing.Size(51, 20);
-            this.betterTextbox6.TabIndex = 33;
-            this.betterTextbox6.Text = "120";
-            this.betterTextbox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // betterTextbox7
-            // 
-            this.betterTextbox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox7.Location = new System.Drawing.Point(67, 19);
-            this.betterTextbox7.Name = "betterTextbox7";
-            this.betterTextbox7.Size = new System.Drawing.Size(51, 20);
-            this.betterTextbox7.TabIndex = 33;
-            this.betterTextbox7.Text = "5";
-            this.betterTextbox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // button11
-            // 
-            this.button11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button11.Location = new System.Drawing.Point(3, 41);
-            this.button11.Margin = new System.Windows.Forms.Padding(0);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(61, 25);
-            this.button11.TabIndex = 35;
-            this.button11.Text = "Get";
-            this.button11.UseVisualStyleBackColor = true;
-            // 
-            // button12
-            // 
-            this.button12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button12.Location = new System.Drawing.Point(3, 16);
-            this.button12.Margin = new System.Windows.Forms.Padding(0);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(61, 25);
-            this.button12.TabIndex = 35;
-            this.button12.Text = "Width-";
-            this.button12.UseVisualStyleBackColor = true;
-            // 
-            // button13
-            // 
-            this.button13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button13.Location = new System.Drawing.Point(121, 41);
-            this.button13.Margin = new System.Windows.Forms.Padding(0);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(61, 25);
-            this.button13.TabIndex = 35;
-            this.button13.Text = "Set";
-            this.button13.UseVisualStyleBackColor = true;
-            // 
-            // button14
-            // 
-            this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button14.Location = new System.Drawing.Point(121, 16);
-            this.button14.Margin = new System.Windows.Forms.Padding(0);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(61, 25);
-            this.button14.TabIndex = 35;
-            this.button14.Text = "Width+";
-            this.button14.UseVisualStyleBackColor = true;
-            // 
             // button15
             // 
             this.button15.Location = new System.Drawing.Point(7, 51);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(179, 38);
             this.button15.TabIndex = 4;
-            this.button15.Text = "Reset Variable Size to Default";
+            this.button15.Text = "Add New Variable";
             this.button15.UseVisualStyleBackColor = true;
             // 
             // button16
@@ -8770,7 +8508,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(705, 437);
+            this.glControlMap.Size = new System.Drawing.Size(696, 437);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -9997,8 +9735,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -13507,6 +13245,15 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(7, 420);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(179, 38);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Apply Variables";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -13790,12 +13537,6 @@ namespace SM64_Diagnostic
             this.splitContainerVarHack.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerVarHack)).EndInit();
             this.splitContainerVarHack.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.tabPageCustom.ResumeLayout(false);
             this.splitContainerCustom.Panel1.ResumeLayout(false);
             this.splitContainerCustom.Panel2.ResumeLayout(false);
@@ -14912,30 +14653,10 @@ namespace SM64_Diagnostic
         private Button buttonDecompilerNext;
         private TabPage tabPageVarHack;
         private SplitContainer splitContainerVarHack;
-        private GroupBox groupBox1;
-        private BetterTextbox betterTextbox1;
-        private BetterTextbox betterTextbox2;
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private GroupBox groupBox2;
-        private BetterTextbox betterTextbox3;
-        private BetterTextbox betterTextbox5;
-        private Button button5;
-        private Button button6;
-        private Button button7;
-        private Button button10;
-        private GroupBox groupBox3;
-        private BetterTextbox betterTextbox6;
-        private BetterTextbox betterTextbox7;
-        private Button button11;
-        private Button button12;
-        private Button button13;
-        private Button button14;
         private Button button15;
         private Button button16;
         private WatchVariablePanel watchVariablePanelVarHack;
+        private Button button1;
     }
 }
 
