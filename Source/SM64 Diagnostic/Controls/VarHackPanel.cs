@@ -60,7 +60,7 @@ namespace SM64_Diagnostic.Controls
                 System.Diagnostics.Trace.WriteLine(varHackContainer.ToString());
                 System.Diagnostics.Trace.WriteLine("");
                 Config.Stream.WriteRamLittleEndian(
-                    varHackContainer.GetByteArray(), applyVariableAddress);
+                    varHackContainer.GetLittleEndianByteArray(), applyVariableAddress);
             }
             System.Diagnostics.Trace.WriteLine("-----------------------------------------");
 

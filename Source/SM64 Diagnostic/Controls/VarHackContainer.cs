@@ -51,7 +51,7 @@ namespace SM64_Diagnostic.Controls
             checkBoxUsePointer.Click += (sender, e) => textBoxPointerOffsetValue.Enabled = checkBoxUsePointer.Checked;
         }
 
-        public byte[] GetByteArray()
+        public byte[] GetBigEndianByteArray()
         {
             string name = GetCurrentName();
             uint? addressNullable = GetCurrentAddress();
@@ -74,6 +74,7 @@ namespace SM64_Diagnostic.Controls
 
             byte[] bytes = new byte[32];
 
+            /*
             byte[] addressBytes = BitConverter.GetBytes(address);
             WriteBytes(addressBytes, bytes, 0x00, false);
 
@@ -100,13 +101,27 @@ namespace SM64_Diagnostic.Controls
 
             byte[] typeBytes = new byte[] { typeByte };
             WriteBytes(typeBytes, bytes, 0x1C, false);
-
-
-
+            */
 
 
 
             return bytes;
+        }
+
+        public byte[] GetLittleEndianByteArray()
+        {
+            byte[] bigEndianArray = GetBigEndianByteArray();
+            byte[] littleEndianArray = new byte[bigEndianArray.Length];
+
+            for (int i = 0; i < bigEndianArray.Length; i++)
+            {
+                int baseValue = (i / 4) * 4;
+                int offsetValue = i % 4;
+                int newIndex = baseValue + offsetValue;
+                littleEndianArray[newIndex] = bigEndianArray[i];
+            }
+
+            return littleEndianArray;
         }
 
         private void WriteBytes(byte[] bytesToWrite, byte[] byteHolder, uint offset, bool reversedOrder)
@@ -120,7 +135,7 @@ namespace SM64_Diagnostic.Controls
 
         public override string ToString()
         {
-            byte[] bytes = GetByteArray();
+            byte[] bytes = GetLittleEndianByteArray();
             if (bytes == null) return "NULL";
             StringBuilder stringBuilder = new StringBuilder();
             for (int i = 0; i < bytes.Length; i++)
