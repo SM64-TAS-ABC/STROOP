@@ -30,14 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VarHackContainerForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this._textBoxGetSet = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox1 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox2 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox3 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox4 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox5 = new SM64_Diagnostic.BetterTextbox();
+            this.betterTextbox6 = new SM64_Diagnostic.BetterTextbox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,14 +49,14 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 305F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.04242F));
-            this.tableLayoutPanel1.Controls.Add(this.textBox2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.textBox3, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBox4, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.checkBox1, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textBox5, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.textBox6, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.textBox7, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this._textBoxGetSet, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.betterTextbox1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.betterTextbox2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.betterTextbox3, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.betterTextbox4, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.betterTextbox5, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.betterTextbox6, 1, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -69,79 +69,100 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(778, 277);
             this.tableLayoutPanel1.TabIndex = 39;
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(93, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "Mario X";
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Location = new System.Drawing.Point(3, 3);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(84, 13);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.Text = "Name:";
-            // 
-            // textBox3
-            // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Location = new System.Drawing.Point(3, 72);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(84, 13);
-            this.textBox3.TabIndex = 2;
-            this.textBox3.Text = "Address:";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(93, 72);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 3;
-            this.textBox4.Text = "0x8033B1AC";
-            // 
             // checkBox1
             // 
+            this.checkBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(93, 141);
+            this.checkBox1.Location = new System.Drawing.Point(167, 165);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(15, 14);
             this.checkBox1.TabIndex = 4;
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // textBox5
+            // _textBoxGetSet
             // 
-            this.textBox5.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Location = new System.Drawing.Point(3, 210);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(84, 13);
-            this.textBox5.TabIndex = 5;
-            this.textBox5.Text = "Pointer Offset:";
+            this._textBoxGetSet.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this._textBoxGetSet.BackColor = System.Drawing.Color.White;
+            this._textBoxGetSet.Location = new System.Drawing.Point(129, 24);
+            this._textBoxGetSet.Name = "_textBoxGetSet";
+            this._textBoxGetSet.Size = new System.Drawing.Size(91, 20);
+            this._textBoxGetSet.TabIndex = 10;
+            this._textBoxGetSet.Text = "Mario X";
+            this._textBoxGetSet.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox6
+            // betterTextbox1
             // 
-            this.textBox6.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.Location = new System.Drawing.Point(3, 141);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(82, 13);
-            this.textBox6.TabIndex = 6;
-            this.textBox6.Text = "Use Pointer:";
+            this.betterTextbox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.betterTextbox1.BackColor = System.Drawing.SystemColors.Control;
+            this.betterTextbox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.betterTextbox1.Location = new System.Drawing.Point(3, 28);
+            this.betterTextbox1.Name = "betterTextbox1";
+            this.betterTextbox1.ReadOnly = true;
+            this.betterTextbox1.Size = new System.Drawing.Size(84, 13);
+            this.betterTextbox1.TabIndex = 10;
+            this.betterTextbox1.Text = "Name:";
+            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox7
+            // betterTextbox2
             // 
-            this.textBox7.Enabled = false;
-            this.textBox7.Location = new System.Drawing.Point(93, 210);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 7;
-            this.textBox7.Text = "0x10";
+            this.betterTextbox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.betterTextbox2.BackColor = System.Drawing.SystemColors.Control;
+            this.betterTextbox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.betterTextbox2.Location = new System.Drawing.Point(3, 97);
+            this.betterTextbox2.Name = "betterTextbox2";
+            this.betterTextbox2.ReadOnly = true;
+            this.betterTextbox2.Size = new System.Drawing.Size(84, 13);
+            this.betterTextbox2.TabIndex = 10;
+            this.betterTextbox2.Text = "Address:";
+            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox3
+            // 
+            this.betterTextbox3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.betterTextbox3.BackColor = System.Drawing.Color.White;
+            this.betterTextbox3.Location = new System.Drawing.Point(129, 93);
+            this.betterTextbox3.Name = "betterTextbox3";
+            this.betterTextbox3.Size = new System.Drawing.Size(91, 20);
+            this.betterTextbox3.TabIndex = 10;
+            this.betterTextbox3.Text = "0x8033B1AC";
+            this.betterTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox4
+            // 
+            this.betterTextbox4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.betterTextbox4.BackColor = System.Drawing.SystemColors.Control;
+            this.betterTextbox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.betterTextbox4.Location = new System.Drawing.Point(3, 166);
+            this.betterTextbox4.Name = "betterTextbox4";
+            this.betterTextbox4.ReadOnly = true;
+            this.betterTextbox4.Size = new System.Drawing.Size(84, 13);
+            this.betterTextbox4.TabIndex = 10;
+            this.betterTextbox4.Text = "Use Pointer:";
+            this.betterTextbox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox5
+            // 
+            this.betterTextbox5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.betterTextbox5.BackColor = System.Drawing.SystemColors.Control;
+            this.betterTextbox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.betterTextbox5.Location = new System.Drawing.Point(3, 235);
+            this.betterTextbox5.Name = "betterTextbox5";
+            this.betterTextbox5.ReadOnly = true;
+            this.betterTextbox5.Size = new System.Drawing.Size(84, 13);
+            this.betterTextbox5.TabIndex = 10;
+            this.betterTextbox5.Text = "Pointer Offset:";
+            this.betterTextbox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox6
+            // 
+            this.betterTextbox6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.betterTextbox6.BackColor = System.Drawing.Color.White;
+            this.betterTextbox6.Location = new System.Drawing.Point(129, 232);
+            this.betterTextbox6.Name = "betterTextbox6";
+            this.betterTextbox6.Size = new System.Drawing.Size(91, 20);
+            this.betterTextbox6.TabIndex = 10;
+            this.betterTextbox6.Text = "0x10";
+            this.betterTextbox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // VarHackContainerForm
             // 
@@ -164,13 +185,13 @@
 
         #endregion
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private BetterTextbox _textBoxGetSet;
+        private BetterTextbox betterTextbox1;
+        private BetterTextbox betterTextbox2;
+        private BetterTextbox betterTextbox3;
+        private BetterTextbox betterTextbox4;
+        private BetterTextbox betterTextbox5;
+        private BetterTextbox betterTextbox6;
     }
 }
