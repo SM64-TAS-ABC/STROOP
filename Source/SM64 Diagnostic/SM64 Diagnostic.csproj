@@ -132,6 +132,9 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\VarHackContainer.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\WatchVariableLock.cs" />
     <Compile Include="Controls\BetterContextMenuStrip.cs">
       <SubType>Component</SubType>
