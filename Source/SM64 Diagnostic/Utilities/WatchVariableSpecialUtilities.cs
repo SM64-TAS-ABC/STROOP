@@ -1981,6 +1981,18 @@ namespace SM64_Diagnostic.Structs
                             marioPos.X, marioPos.Z, triStruct.X1, triStruct.Z1);
                         return angleToV1.ToString();
                     };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleNullable.HasValue) return false;
+                        double angle = angleNullable.Value;
+                        (double newMarioX, double newMarioZ) =
+                            MoreMath.RotatePointAboutPointToAngle(
+                                marioPos.X, marioPos.Z, triStruct.X1, triStruct.Z1, angle);
+                        return SetMarioPosition(newMarioX, null, newMarioZ);
+                    };
                     break;
 
                 case "DeltaAngleMarioToV1":
@@ -2018,6 +2030,18 @@ namespace SM64_Diagnostic.Structs
                             triStruct.X1, triStruct.Z1, marioPos.X, marioPos.Z);
                         return angleV1ToMario.ToString();
                     };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleNullable.HasValue) return false;
+                        double angle = MoreMath.ReverseAngle(angleNullable.Value);
+                        (double newMarioX, double newMarioZ) =
+                            MoreMath.RotatePointAboutPointToAngle(
+                                marioPos.X, marioPos.Z, triStruct.X1, triStruct.Z1, angle);
+                        return SetMarioPosition(newMarioX, null, newMarioZ);
+                    };
                     break;
 
                 case "AngleMarioToV2":
@@ -2028,6 +2052,18 @@ namespace SM64_Diagnostic.Structs
                         double angleToV2 = MoreMath.AngleTo_AngleUnits(
                             marioPos.X, marioPos.Z, triStruct.X2, triStruct.Z2);
                         return angleToV2.ToString();
+                    };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleNullable.HasValue) return false;
+                        double angle = angleNullable.Value;
+                        (double newMarioX, double newMarioZ) =
+                            MoreMath.RotatePointAboutPointToAngle(
+                                marioPos.X, marioPos.Z, triStruct.X2, triStruct.Z2, angle);
+                        return SetMarioPosition(newMarioX, null, newMarioZ);
                     };
                     break;
 
@@ -2066,6 +2102,18 @@ namespace SM64_Diagnostic.Structs
                             triStruct.X2, triStruct.Z2, marioPos.X, marioPos.Z);
                         return angleV2ToMario.ToString();
                     };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleNullable.HasValue) return false;
+                        double angle = MoreMath.ReverseAngle(angleNullable.Value);
+                        (double newMarioX, double newMarioZ) =
+                            MoreMath.RotatePointAboutPointToAngle(
+                                marioPos.X, marioPos.Z, triStruct.X2, triStruct.Z2, angle);
+                        return SetMarioPosition(newMarioX, null, newMarioZ);
+                    };
                     break;
 
                 case "AngleMarioToV3":
@@ -2076,6 +2124,18 @@ namespace SM64_Diagnostic.Structs
                         double angleToV3 = MoreMath.AngleTo_AngleUnits(
                             marioPos.X, marioPos.Z, triStruct.X3, triStruct.Z3);
                         return angleToV3.ToString();
+                    };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleNullable.HasValue) return false;
+                        double angle = angleNullable.Value;
+                        (double newMarioX, double newMarioZ) =
+                            MoreMath.RotatePointAboutPointToAngle(
+                                marioPos.X, marioPos.Z, triStruct.X3, triStruct.Z3, angle);
+                        return SetMarioPosition(newMarioX, null, newMarioZ);
                     };
                     break;
 
@@ -2113,6 +2173,18 @@ namespace SM64_Diagnostic.Structs
                         double angleV3ToMario = MoreMath.AngleTo_AngleUnits(
                             triStruct.X3, triStruct.Z3, marioPos.X, marioPos.Z);
                         return angleV3ToMario.ToString();
+                    };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleNullable.HasValue) return false;
+                        double angle = MoreMath.ReverseAngle(angleNullable.Value);
+                        (double newMarioX, double newMarioZ) =
+                            MoreMath.RotatePointAboutPointToAngle(
+                                marioPos.X, marioPos.Z, triStruct.X3, triStruct.Z3, angle);
+                        return SetMarioPosition(newMarioX, null, newMarioZ);
                     };
                     break;
 
