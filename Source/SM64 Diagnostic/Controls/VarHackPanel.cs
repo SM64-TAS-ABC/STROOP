@@ -17,6 +17,12 @@ namespace SM64_Diagnostic.Controls
 
         }
 
+        public void AddControl(VarHackContainer varHackContainer)
+        {
+            Controls.Add(varHackContainer);
+            varHackContainer.VarHackPanel = this;
+        }
+
         protected override CreateParams CreateParams
         {
             get

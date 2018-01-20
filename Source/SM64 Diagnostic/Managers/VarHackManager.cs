@@ -35,7 +35,7 @@ namespace SM64_Diagnostic.Managers
             buttonVarHackAddNewVariable.Click += (sender, e) =>
             {
                 VarHackContainer varHackContainer = new VarHackContainer();
-                varHackPanel.Controls.Add(varHackContainer);
+                varHackPanel.AddControl(varHackContainer);
             };
         }
 

@@ -36,6 +36,8 @@ namespace SM64_Diagnostic.Controls
 
         private static readonly Pen _borderPen = new Pen(Color.Black, 3);
 
+        public VarHackPanel VarHackPanel;
+
         public VarHackContainer()
         {
             InitializeComponent();
