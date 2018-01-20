@@ -1479,6 +1479,18 @@ namespace SM64_Diagnostic.Structs
                             marioPos.X, marioPos.Y, marioPos.Z, triStruct.X1, triStruct.Y1, triStruct.Z1);
                         return distToV1.ToString();
                     };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!distAwayNullable.HasValue) return false;
+                        double distAway = distAwayNullable.Value;
+                        (double newMarioX, double newMarioY, double newMarioZ) =
+                            MoreMath.ExtrapolateLine3D(
+                                triStruct.X1, triStruct.Y1, triStruct.Z1, marioPos.X, marioPos.Y, marioPos.Z, distAway);
+                        return SetMarioPosition(newMarioX, newMarioY, newMarioZ);
+                    };
                     break;
 
                 case "XDistanceToV1":
@@ -1488,6 +1500,15 @@ namespace SM64_Diagnostic.Structs
                         TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
                         double xDistToV1 = marioX - triStruct.X1;
                         return xDistToV1.ToString();
+                    };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double? xDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!xDistNullable.HasValue) return false;
+                        double xDist = xDistNullable.Value;
+                        double newMarioX = triStruct.X1 + xDist;
+                        return Config.Stream.SetValue((float)newMarioX, Config.Mario.StructAddress + Config.Mario.XOffset);
                     };
                     break;
 
@@ -1499,6 +1520,15 @@ namespace SM64_Diagnostic.Structs
                         double yDistToV1 = marioY - triStruct.Y1;
                         return yDistToV1.ToString();
                     };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double? yDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!yDistNullable.HasValue) return false;
+                        double yDist = yDistNullable.Value;
+                        double newMarioY = triStruct.Y1 + yDist;
+                        return Config.Stream.SetValue((float)newMarioY, Config.Mario.StructAddress + Config.Mario.YOffset);
+                    };
                     break;
 
                 case "ZDistanceToV1":
@@ -1508,6 +1538,15 @@ namespace SM64_Diagnostic.Structs
                         TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
                         double zDistToV1 = marioZ - triStruct.Z1;
                         return zDistToV1.ToString();
+                    };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double? zDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!zDistNullable.HasValue) return false;
+                        double zDist = zDistNullable.Value;
+                        double newMarioZ = triStruct.Z1 + zDist;
+                        return Config.Stream.SetValue((float)newMarioZ, Config.Mario.StructAddress + Config.Mario.ZOffset);
                     };
                     break;
 
@@ -1520,6 +1559,17 @@ namespace SM64_Diagnostic.Structs
                             marioPos.X, marioPos.Z, triStruct.X1, triStruct.Z1);
                         return hDistToV1.ToString();
                     };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double? hDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!hDistNullable.HasValue) return false;
+                        double hDist = hDistNullable.Value;
+                        (double newMarioX, double newMarioZ) =
+                            MoreMath.ExtrapolateLineHorizontally(triStruct.X1, triStruct.Z1, marioPos.X, marioPos.Z, hDist);
+                        return SetMarioPosition(newMarioX, null, newMarioZ);
+                    };
                     break;
 
                 case "DistanceToV2":
@@ -1531,6 +1581,18 @@ namespace SM64_Diagnostic.Structs
                             marioPos.X, marioPos.Y, marioPos.Z, triStruct.X2, triStruct.Y2, triStruct.Z2);
                         return distToV2.ToString();
                     };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!distAwayNullable.HasValue) return false;
+                        double distAway = distAwayNullable.Value;
+                        (double newMarioX, double newMarioY, double newMarioZ) =
+                            MoreMath.ExtrapolateLine3D(
+                                triStruct.X2, triStruct.Y2, triStruct.Z2, marioPos.X, marioPos.Y, marioPos.Z, distAway);
+                        return SetMarioPosition(newMarioX, newMarioY, newMarioZ);
+                    };
                     break;
 
                 case "XDistanceToV2":
@@ -1540,6 +1602,15 @@ namespace SM64_Diagnostic.Structs
                         TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
                         double xDistToV2 = marioX - triStruct.X2;
                         return xDistToV2.ToString();
+                    };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double? xDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!xDistNullable.HasValue) return false;
+                        double xDist = xDistNullable.Value;
+                        double newMarioX = triStruct.X2 + xDist;
+                        return Config.Stream.SetValue((float)newMarioX, Config.Mario.StructAddress + Config.Mario.XOffset);
                     };
                     break;
 
@@ -1551,6 +1622,15 @@ namespace SM64_Diagnostic.Structs
                         double yDistToV2 = marioY - triStruct.Y2;
                         return yDistToV2.ToString();
                     };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double? yDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!yDistNullable.HasValue) return false;
+                        double yDist = yDistNullable.Value;
+                        double newMarioY = triStruct.Y2 + yDist;
+                        return Config.Stream.SetValue((float)newMarioY, Config.Mario.StructAddress + Config.Mario.YOffset);
+                    };
                     break;
 
                 case "ZDistanceToV2":
@@ -1560,6 +1640,15 @@ namespace SM64_Diagnostic.Structs
                         TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
                         double zDistToV2 = marioZ - triStruct.Z2;
                         return zDistToV2.ToString();
+                    };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double? zDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!zDistNullable.HasValue) return false;
+                        double zDist = zDistNullable.Value;
+                        double newMarioZ = triStruct.Z2 + zDist;
+                        return Config.Stream.SetValue((float)newMarioZ, Config.Mario.StructAddress + Config.Mario.ZOffset);
                     };
                     break;
 
@@ -1572,6 +1661,17 @@ namespace SM64_Diagnostic.Structs
                             marioPos.X, marioPos.Z, triStruct.X2, triStruct.Z2);
                         return hDistToV2.ToString();
                     };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double? hDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!hDistNullable.HasValue) return false;
+                        double hDist = hDistNullable.Value;
+                        (double newMarioX, double newMarioZ) =
+                            MoreMath.ExtrapolateLineHorizontally(triStruct.X2, triStruct.Z2, marioPos.X, marioPos.Z, hDist);
+                        return SetMarioPosition(newMarioX, null, newMarioZ);
+                    };
                     break;
 
                 case "DistanceToV3":
@@ -1583,6 +1683,18 @@ namespace SM64_Diagnostic.Structs
                             marioPos.X, marioPos.Y, marioPos.Z, triStruct.X3, triStruct.Y3, triStruct.Z3);
                         return distToV3.ToString();
                     };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!distAwayNullable.HasValue) return false;
+                        double distAway = distAwayNullable.Value;
+                        (double newMarioX, double newMarioY, double newMarioZ) =
+                            MoreMath.ExtrapolateLine3D(
+                                triStruct.X3, triStruct.Y3, triStruct.Z3, marioPos.X, marioPos.Y, marioPos.Z, distAway);
+                        return SetMarioPosition(newMarioX, newMarioY, newMarioZ);
+                    };
                     break;
 
                 case "XDistanceToV3":
@@ -1592,6 +1704,15 @@ namespace SM64_Diagnostic.Structs
                         TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
                         double xDistToV3 = marioX - triStruct.X3;
                         return xDistToV3.ToString();
+                    };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double? xDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!xDistNullable.HasValue) return false;
+                        double xDist = xDistNullable.Value;
+                        double newMarioX = triStruct.X3 + xDist;
+                        return Config.Stream.SetValue((float)newMarioX, Config.Mario.StructAddress + Config.Mario.XOffset);
                     };
                     break;
 
@@ -1603,6 +1724,15 @@ namespace SM64_Diagnostic.Structs
                         double yDistToV3 = marioY - triStruct.Y3;
                         return yDistToV3.ToString();
                     };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double? yDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!yDistNullable.HasValue) return false;
+                        double yDist = yDistNullable.Value;
+                        double newMarioY = triStruct.Y3 + yDist;
+                        return Config.Stream.SetValue((float)newMarioY, Config.Mario.StructAddress + Config.Mario.YOffset);
+                    };
                     break;
 
                 case "ZDistanceToV3":
@@ -1612,6 +1742,15 @@ namespace SM64_Diagnostic.Structs
                         TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
                         double zDistToV3 = marioZ - triStruct.Z3;
                         return zDistToV3.ToString();
+                    };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double? zDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!zDistNullable.HasValue) return false;
+                        double zDist = zDistNullable.Value;
+                        double newMarioZ = triStruct.Z3 + zDist;
+                        return Config.Stream.SetValue((float)newMarioZ, Config.Mario.StructAddress + Config.Mario.ZOffset);
                     };
                     break;
 
@@ -1623,6 +1762,17 @@ namespace SM64_Diagnostic.Structs
                         double hDistToV3 = MoreMath.GetDistanceBetween(
                             marioPos.X, marioPos.Z, triStruct.X3, triStruct.Z3);
                         return hDistToV3.ToString();
+                    };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = TriangleManager.Instance.GetTriangleStruct(triAddress);
+                        double? hDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!hDistNullable.HasValue) return false;
+                        double hDist = hDistNullable.Value;
+                        (double newMarioX, double newMarioZ) =
+                            MoreMath.ExtrapolateLineHorizontally(triStruct.X3, triStruct.Z3, marioPos.X, marioPos.Z, hDist);
+                        return SetMarioPosition(newMarioX, null, newMarioZ);
                     };
                     break;
 
