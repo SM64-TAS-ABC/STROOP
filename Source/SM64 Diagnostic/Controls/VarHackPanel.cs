@@ -88,16 +88,24 @@ namespace SM64_Diagnostic.Controls
 
         public void ApplyVariablesToMemory()
         {
-            ClearVariablesInMemory();
-
             uint applyVariableAddress = 0x80370000;
             uint structSize = 0x20;
+            int maxPossibleVars = 432;
+            byte[] emptyBytes = new byte[structSize];
 
-            for (int i = 0; i < Controls.Count; i++)
+            for (int i = 0; i < maxPossibleVars; i++)
             {
                 uint address = applyVariableAddress + (uint)i * structSize;
-                VarHackContainer varHackContainer = Controls[i] as VarHackContainer;
-                byte[] bytes = varHackContainer.GetLittleEndianByteArray();
+                byte[] bytes;
+                if (i < Controls.Count)
+                {
+                    VarHackContainer varHackContainer = Controls[i] as VarHackContainer;
+                    bytes = varHackContainer.GetLittleEndianByteArray();
+                }
+                else
+                {
+                    bytes = emptyBytes;
+                }
                 if (bytes == null) continue;
                 Config.Stream.WriteRamLittleEndian(bytes, address);
             }
