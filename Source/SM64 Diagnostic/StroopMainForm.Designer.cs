@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
@@ -682,6 +682,9 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
+            this.buttonVarHackShowVariableBytesInLittleEndian = new System.Windows.Forms.Button();
+            this.buttonVarHackShowVariableBytesInBigEndian = new System.Windows.Forms.Button();
+            this.buttonVarHackApplyVariablesToMemory = new System.Windows.Forms.Button();
             this.buttonObjRelease = new SM64_Diagnostic.BinaryButton();
             this.buttonObjInteract = new SM64_Diagnostic.BinaryButton();
             this.textBoxObjHomeY = new SM64_Diagnostic.BetterTextbox();
@@ -1014,9 +1017,6 @@ namespace SM64_Diagnostic
             this.betterTextboxGotoY = new SM64_Diagnostic.BetterTextbox();
             this.betterTextboxGotoX = new SM64_Diagnostic.BetterTextbox();
             this.WatchVariablePanelObjects = new SM64_Diagnostic.Controls.WatchVariablePanel();
-            this.buttonVarHackShowVariableBytesInLittleEndian = new System.Windows.Forms.Button();
-            this.buttonVarHackShowVariableBytesInBigEndian = new System.Windows.Forms.Button();
-            this.buttonVarHackApplyVariablesToMemory = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -4007,7 +4007,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 187F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 190F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -5180,7 +5180,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(705, 437);
+            this.glControlMap.Size = new System.Drawing.Size(696, 437);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -6089,7 +6089,7 @@ namespace SM64_Diagnostic
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(323, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(391, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -6121,7 +6121,7 @@ namespace SM64_Diagnostic
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(317, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(385, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -6305,8 +6305,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -6593,7 +6593,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(630, 456);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(606, 456);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -6668,7 +6668,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(609, 355);
+            this.listBoxSpawn.Size = new System.Drawing.Size(594, 355);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -9249,6 +9249,34 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.TabIndex = 20;
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
+            // 
+            // buttonVarHackShowVariableBytesInLittleEndian
+            // 
+            this.buttonVarHackShowVariableBytesInLittleEndian.Location = new System.Drawing.Point(7, 96);
+            this.buttonVarHackShowVariableBytesInLittleEndian.Name = "buttonVarHackShowVariableBytesInLittleEndian";
+            this.buttonVarHackShowVariableBytesInLittleEndian.Size = new System.Drawing.Size(188, 38);
+            this.buttonVarHackShowVariableBytesInLittleEndian.TabIndex = 4;
+            this.buttonVarHackShowVariableBytesInLittleEndian.Text = "Show Variable Bytes in Little Endian\r\n(for Process Memory)";
+            this.buttonVarHackShowVariableBytesInLittleEndian.UseVisualStyleBackColor = true;
+            // 
+            // buttonVarHackShowVariableBytesInBigEndian
+            // 
+            this.buttonVarHackShowVariableBytesInBigEndian.Location = new System.Drawing.Point(7, 140);
+            this.buttonVarHackShowVariableBytesInBigEndian.Name = "buttonVarHackShowVariableBytesInBigEndian";
+            this.buttonVarHackShowVariableBytesInBigEndian.Size = new System.Drawing.Size(188, 38);
+            this.buttonVarHackShowVariableBytesInBigEndian.TabIndex = 4;
+            this.buttonVarHackShowVariableBytesInBigEndian.Text = "Show Variable Bytes in Big Endian\r\n(for ROM Memory)";
+            this.buttonVarHackShowVariableBytesInBigEndian.UseVisualStyleBackColor = true;
+            // 
+            // buttonVarHackApplyVariablesToMemory
+            // 
+            this.buttonVarHackApplyVariablesToMemory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonVarHackApplyVariablesToMemory.Location = new System.Drawing.Point(7, 376);
+            this.buttonVarHackApplyVariablesToMemory.Name = "buttonVarHackApplyVariablesToMemory";
+            this.buttonVarHackApplyVariablesToMemory.Size = new System.Drawing.Size(188, 38);
+            this.buttonVarHackApplyVariablesToMemory.TabIndex = 4;
+            this.buttonVarHackApplyVariablesToMemory.Text = "Apply Variables to Memory";
+            this.buttonVarHackApplyVariablesToMemory.UseVisualStyleBackColor = true;
             // 
             // buttonObjRelease
             // 
@@ -13257,37 +13285,9 @@ namespace SM64_Diagnostic
             this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
             this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 156);
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 153);
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
-            // 
-            // buttonVarHackShowVariableBytesInLittleEndian
-            // 
-            this.buttonVarHackShowVariableBytesInLittleEndian.Location = new System.Drawing.Point(7, 96);
-            this.buttonVarHackShowVariableBytesInLittleEndian.Name = "buttonVarHackShowVariableBytesInLittleEndian";
-            this.buttonVarHackShowVariableBytesInLittleEndian.Size = new System.Drawing.Size(188, 38);
-            this.buttonVarHackShowVariableBytesInLittleEndian.TabIndex = 4;
-            this.buttonVarHackShowVariableBytesInLittleEndian.Text = "Show Variable Bytes in Little Endian\r\n(for process memory)";
-            this.buttonVarHackShowVariableBytesInLittleEndian.UseVisualStyleBackColor = true;
-            // 
-            // buttonVarHackShowVariableBytesInBigEndian
-            // 
-            this.buttonVarHackShowVariableBytesInBigEndian.Location = new System.Drawing.Point(7, 140);
-            this.buttonVarHackShowVariableBytesInBigEndian.Name = "buttonVarHackShowVariableBytesInBigEndian";
-            this.buttonVarHackShowVariableBytesInBigEndian.Size = new System.Drawing.Size(188, 38);
-            this.buttonVarHackShowVariableBytesInBigEndian.TabIndex = 4;
-            this.buttonVarHackShowVariableBytesInBigEndian.Text = "Show Variable Bytes in Big Endian\r\n(for ROM memory)\r\n";
-            this.buttonVarHackShowVariableBytesInBigEndian.UseVisualStyleBackColor = true;
-            // 
-            // buttonVarHackApplyVariablesToMemory
-            // 
-            this.buttonVarHackApplyVariablesToMemory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonVarHackApplyVariablesToMemory.Location = new System.Drawing.Point(7, 376);
-            this.buttonVarHackApplyVariablesToMemory.Name = "buttonVarHackApplyVariablesToMemory";
-            this.buttonVarHackApplyVariablesToMemory.Size = new System.Drawing.Size(188, 38);
-            this.buttonVarHackApplyVariablesToMemory.TabIndex = 4;
-            this.buttonVarHackApplyVariablesToMemory.Text = "Apply Variables to Memory";
-            this.buttonVarHackApplyVariablesToMemory.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
