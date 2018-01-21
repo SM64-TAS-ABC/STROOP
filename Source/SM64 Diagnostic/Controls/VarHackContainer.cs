@@ -39,12 +39,8 @@ namespace SM64_Diagnostic.Controls
         private static readonly Pen _borderPen = new Pen(Color.Black, 3);
 
         private readonly VarHackPanel _varHackPanel;
-        private string varName;
-        private uint address;
-        private Type memoryType;
-        private bool useHex;
 
-        public VarHackContainer(VarHackPanel varHackPanel, int creationIndex = 0)
+        public VarHackContainer(VarHackPanel varHackPanel, int creationIndex, bool usePreWrittenVar)
         {
             InitializeComponent();
             _varHackPanel = varHackPanel;
@@ -54,7 +50,7 @@ namespace SM64_Diagnostic.Controls
             pictureBoxRedX.Click += (sender, e) => _varHackPanel.RemoveControl(this);
             checkBoxUsePointer.Click += (sender, e) => textBoxPointerOffsetValue.Enabled = checkBoxUsePointer.Checked;
 
-            SetDefaultValues(creationIndex);
+            SetDefaultValues(creationIndex, usePreWrittenVar);
         }
 
         public VarHackContainer(
@@ -64,18 +60,21 @@ namespace SM64_Diagnostic.Controls
             uint address,
             Type memoryType,
             bool useHex)
-            : this(varHackPanel, creationIndex)
+            : this(varHackPanel, creationIndex, false)
         {
-            textBoxNameValue.Text = varName;
+            textBoxNameValue.Text = CapString(varName + " ");
             textBoxAddressValue.Text = "0x" + String.Format("{0:X}", address);
             GetRadioButtonForType(memoryType).Checked = true;
             checkBoxUseHex.Checked = useHex;
         }
 
-        private void SetDefaultValues(int creationIndex)
+        private void SetDefaultValues(int creationIndex, bool usePreWrittenVar)
         {
             int xPos = 10;
             int yPos = 192 - creationIndex * 17;
+            textBoxXPosValue.Text = xPos.ToString();
+            textBoxYPosValue.Text = yPos.ToString();
+            if (!usePreWrittenVar) return;
 
             string name;
             uint address;
@@ -142,8 +141,6 @@ namespace SM64_Diagnostic.Controls
                     break;
             }
 
-            textBoxXPosValue.Text = xPos.ToString();
-            textBoxYPosValue.Text = yPos.ToString();
             textBoxNameValue.Text = name;
             textBoxAddressValue.Text = "0x" + String.Format("{0:X}", address);
             typeRadioButton.Checked = true;
@@ -190,10 +187,9 @@ namespace SM64_Diagnostic.Controls
             byte[] yPosBytes = BitConverter.GetBytes(yPos);
             WriteBytes(yPosBytes, bytes, Config.VarHack.YPosOffset, true);
 
-            name = name.Length > Config.VarHack.MaxStringLength ?
-                name.Substring(0, Config.VarHack.MaxStringLength) : name;
-            string nameAndNumberSystem = name + (useHex ? "%x" : "%d");
-            byte[] nameAndNumberSystemBytes = Encoding.ASCII.GetBytes(nameAndNumberSystem);
+            string cappedName = CapString(name);
+            string cappedNameAndNumberSystem = cappedName + (useHex ? "%x" : "%d");
+            byte[] nameAndNumberSystemBytes = Encoding.ASCII.GetBytes(cappedNameAndNumberSystem);
             WriteBytes(nameAndNumberSystemBytes, bytes, Config.VarHack.StringOffset, false);
 
             byte[] usePointerBytes = BitConverter.GetBytes(usePointer);
@@ -251,6 +247,12 @@ namespace SM64_Diagnostic.Controls
                 if (i % 16 == 15) stringBuilder.Append("\r\n");
             }
             return stringBuilder.ToString();
+        }
+
+        private string CapString(string text)
+        {
+            return text.Length > Config.VarHack.MaxStringLength ?
+                text.Substring(0, Config.VarHack.MaxStringLength) : text;
         }
 
         private string GetCurrentName()
