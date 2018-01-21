@@ -2378,7 +2378,7 @@ namespace SM64_Diagnostic.Utilities
                         string name = element.Attribute(XName.Get("name")).Value;
                         RomHack romHack = new RomHack(hackPath, name);
                         hacks.Add(romHack);
-                        if (path == "DisplayVariable.hck") Config.VarHack.ShowVarRomHack = romHack;
+                        if (name == "Display Variable") Config.VarHack.ShowVarRomHack = romHack;
                         break;
                 }
             }

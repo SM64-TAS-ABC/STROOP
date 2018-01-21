@@ -17,6 +17,8 @@ namespace SM64_Diagnostic.Managers
     {
         public static VarHackManager Instance;
 
+        private BinaryButton _buttonEnableDisableRomHack;
+
         public VarHackManager(Control varHackControlControl, VarHackPanel varHackPanel)
         {
             Instance = this;
@@ -53,6 +55,15 @@ namespace SM64_Diagnostic.Managers
                 splitContainerVarHack.Panel1.Controls["buttonVarHackClearVariablesInMemory"] as Button;
             buttonVarHackClearVariablesInMemory.Click +=
                 (sender, e) => varHackPanel.ClearVariablesInMemory();
+
+            _buttonEnableDisableRomHack =
+                splitContainerVarHack.Panel1.Controls["buttonEnableDisableRomHack"] as BinaryButton;
+            _buttonEnableDisableRomHack.Initialize(
+                "Enable ROM Hack",
+                "Disable ROM Hack",
+                () => Config.VarHack.ShowVarRomHack.LoadPayload(),
+                () => Config.VarHack.ShowVarRomHack.ClearPayload(),
+                () => Config.VarHack.ShowVarRomHack.Enabled);
         }
 
         public void Update(bool updateView)
@@ -60,6 +71,7 @@ namespace SM64_Diagnostic.Managers
             if (!updateView)
                 return;
 
+            _buttonEnableDisableRomHack.UpdateButton();
         }
     }
 }
