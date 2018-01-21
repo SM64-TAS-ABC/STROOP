@@ -40,7 +40,7 @@ namespace SM64_Diagnostic.Controls
 
         private readonly VarHackPanel _varHackPanel;
 
-        public VarHackContainer(VarHackPanel varHackPanel)
+        public VarHackContainer(VarHackPanel varHackPanel, int creationIndex = 0)
         {
             InitializeComponent();
             _varHackPanel = varHackPanel;
@@ -49,6 +49,23 @@ namespace SM64_Diagnostic.Controls
             pictureBoxDownArrow.Click += (sender, e) => _varHackPanel.MoveDownControl(this);
             pictureBoxRedX.Click += (sender, e) => _varHackPanel.RemoveControl(this);
             checkBoxUsePointer.Click += (sender, e) => textBoxPointerOffsetValue.Enabled = checkBoxUsePointer.Checked;
+
+            SetDefaultValues(creationIndex);
+        }
+
+        private void SetDefaultValues(int creationIndex)
+        {
+            switch (creationIndex)
+            {
+                case 0:
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                default:
+                    break;
+            }
         }
 
         public byte[] GetBigEndianByteArray()

@@ -43,7 +43,7 @@ namespace SM64_Diagnostic.Controls
 
         public void AddNewControl()
         {
-            VarHackContainer varHackContainer = new VarHackContainer(this);
+            VarHackContainer varHackContainer = new VarHackContainer(this, Controls.Count);
             Controls.Add(varHackContainer);
         }
 
