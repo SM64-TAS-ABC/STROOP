@@ -55,15 +55,25 @@ namespace SM64_Diagnostic.Controls
 
         private void SetDefaultValues(int creationIndex)
         {
+            int xPos = 10;
+            int yPos = 192 - creationIndex * 17;
+
+            textBoxXPosValue.Text = xPos.ToString();
+            textBoxYPosValue.Text = yPos.ToString();
+
             switch (creationIndex)
             {
                 case 0:
+                    textBoxNameValue.Text = "HSPD ";
                     break;
                 case 1:
+                    textBoxNameValue.Text = "Angle ";
                     break;
                 case 2:
+                    textBoxNameValue.Text = "HP ";
                     break;
                 default:
+                    textBoxNameValue.Text = "Floor Room ";
                     break;
             }
         }
