@@ -39,6 +39,10 @@ namespace SM64_Diagnostic.Controls
         private static readonly Pen _borderPen = new Pen(Color.Black, 3);
 
         private readonly VarHackPanel _varHackPanel;
+        private string varName;
+        private uint address;
+        private Type memoryType;
+        private bool useHex;
 
         public VarHackContainer(VarHackPanel varHackPanel, int creationIndex = 0)
         {
@@ -51,6 +55,21 @@ namespace SM64_Diagnostic.Controls
             checkBoxUsePointer.Click += (sender, e) => textBoxPointerOffsetValue.Enabled = checkBoxUsePointer.Checked;
 
             SetDefaultValues(creationIndex);
+        }
+
+        public VarHackContainer(
+            VarHackPanel varHackPanel,
+            int creationIndex,
+            string varName,
+            uint address,
+            Type memoryType,
+            bool useHex)
+            : this(varHackPanel, creationIndex)
+        {
+            textBoxNameValue.Text = varName;
+            textBoxAddressValue.Text = "0x" + String.Format("{0:X}", address);
+            GetRadioButtonForType(memoryType).Checked = true;
+            checkBoxUseHex.Checked = useHex;
         }
 
         private void SetDefaultValues(int creationIndex)
@@ -290,6 +309,18 @@ namespace SM64_Diagnostic.Controls
             if (radioButtonInt.Checked) return typeof(int);
             if (radioButtonUInt.Checked) return typeof(uint);
             if (radioButtonFloat.Checked) return typeof(float);
+            throw new ArgumentOutOfRangeException();
+        }
+
+        private RadioButton GetRadioButtonForType(Type type)
+        {
+            if (type == typeof(sbyte)) return radioButtonSByte;
+            if (type == typeof(byte)) return radioButtonByte;
+            if (type == typeof(short)) return radioButtonShort;
+            if (type == typeof(ushort)) return radioButtonUShort;
+            if (type == typeof(int)) return radioButtonInt;
+            if (type == typeof(uint)) return radioButtonUInt;
+            if (type == typeof(float)) return radioButtonFloat;
             throw new ArgumentOutOfRangeException();
         }
 

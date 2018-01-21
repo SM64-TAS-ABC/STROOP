@@ -17,8 +17,8 @@ namespace SM64_Diagnostic.Managers
     {
         public static VarHackManager Instance;
 
-        private VarHackPanel _varHackPanel;
-        private BinaryButton _buttonEnableDisableRomHack;
+        private readonly VarHackPanel _varHackPanel;
+        private readonly BinaryButton _buttonEnableDisableRomHack;
 
         public VarHackManager(Control varHackControlControl, VarHackPanel varHackPanel)
         {
@@ -78,7 +78,7 @@ namespace SM64_Diagnostic.Managers
 
         public void AddVariable(string varName, uint address, Type memoryType, bool useHex)
         {
-            //throw new NotImplementedException();
+            _varHackPanel.AddNewControlWithParameters(varName, address, memoryType, useHex);
         }
     }
 }
