@@ -171,6 +171,12 @@ namespace SM64_Diagnostic.Controls
             byte[] yPosBytes = BitConverter.GetBytes(yPos);
             WriteBytes(yPosBytes, bytes, Config.VarHack.YPosOffset, true);
 
+            name = name.Length > Config.VarHack.MaxStringLength ?
+                name.Substring(0, Config.VarHack.MaxStringLength) : name;
+            string nameAndNumberSystem = name + (useHex ? "%x" : "%d");
+            byte[] nameAndNumberSystemBytes = Encoding.ASCII.GetBytes(nameAndNumberSystem);
+            WriteBytes(nameAndNumberSystemBytes, bytes, Config.VarHack.StringOffset, false);
+
             byte[] usePointerBytes = BitConverter.GetBytes(usePointer);
             WriteBytes(usePointerBytes, bytes, Config.VarHack.UsePointerOffset, true);
 
@@ -185,12 +191,6 @@ namespace SM64_Diagnostic.Controls
 
             byte[] typeBytes = new byte[] { typeByte };
             WriteBytes(typeBytes, bytes, Config.VarHack.TypeOffset, true);
-
-            name = name.Length > Config.VarHack.MaxStringLength ?
-                name.Substring(0, Config.VarHack.MaxStringLength) : name;
-            string nameAndNumberSystem = name + (useHex ? "%x" : "%d");
-            byte[] nameAndNumberSystemBytes = Encoding.ASCII.GetBytes(nameAndNumberSystem);
-            WriteBytes(nameAndNumberSystemBytes, bytes, Config.VarHack.StringOffset, false);
 
             return bytes;
         }
