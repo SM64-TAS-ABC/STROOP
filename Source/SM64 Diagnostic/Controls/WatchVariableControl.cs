@@ -55,6 +55,7 @@ namespace SM64_Diagnostic.Controls
         public static readonly Color REORDER_START_COLOR = Color.DarkGreen;
         public static readonly Color REORDER_END_COLOR = Color.LightGreen;
         public static readonly Color REORDER_RESET_COLOR = Color.Black;
+        public static readonly Color ADD_TO_VAR_HACK_TAB_COLOR = Color.SandyBrown;
         private static readonly int FLASH_DURATION_MS = 1000;
 
         private Color _baseColor;
@@ -596,7 +597,7 @@ namespace SM64_Diagnostic.Controls
         public void AddToVarHackTab()
         {
             _watchVarWrapper.AddToVarHackTab(FixedAddressList);
-            FlashColor(Color.SandyBrown);
+            FlashColor(ADD_TO_VAR_HACK_TAB_COLOR);
         }
 
         public void EnableCustomFunctionality()
