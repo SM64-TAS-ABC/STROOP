@@ -126,5 +126,11 @@ namespace SM64_Diagnostic
             textBoxTriangleInfo.Text = text;
         }
 
+        public void SetTitleAndText(string title, string text)
+        {
+            textBoxTitle.Text = title;
+            textBoxTriangleInfo.Text = text;
+        }
+
     }
 }

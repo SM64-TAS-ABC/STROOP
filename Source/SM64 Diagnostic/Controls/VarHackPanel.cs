@@ -46,7 +46,19 @@ namespace SM64_Diagnostic.Controls
 
         public void ClearControls()
         {
-            Controls.Clear();
+            TriangleInfoForm form = new TriangleInfoForm();
+            StringBuilder stringBuilder = new StringBuilder();
+            foreach (Control control in Controls)
+            {
+                VarHackContainer varHackContainer = control as VarHackContainer;
+                byte[] bytes = varHackContainer.GetLittleEndianByteArray();
+                string bytesString = VarHackContainer.ConvertBytesToString(bytes);
+                stringBuilder.Append(bytesString);
+            }
+            form.SetTitleAndText("Little Endian Bytes", stringBuilder.ToString());
+            form.Show();
+
+            //Controls.Clear();
         }
 
         public void ApplyVariables()

@@ -131,16 +131,15 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
-        public override string ToString()
+        public static string ConvertBytesToString(byte[] bytes)
         {
-            byte[] bytes = GetLittleEndianByteArray();
-            if (bytes == null) return "NULL";
+            if (bytes == null) return "";
             StringBuilder stringBuilder = new StringBuilder();
             for (int i = 0; i < bytes.Length; i++)
             {
-                if (i == 16) stringBuilder.Append("\n");
                 stringBuilder.Append(String.Format("{0:X2}", bytes[i]));
                 stringBuilder.Append(" ");
+                if (i % 16 == 15) stringBuilder.Append("\r\n");
             }
             return stringBuilder.ToString();
         }
