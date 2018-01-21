@@ -272,6 +272,7 @@ namespace SM64_Diagnostic
                 currentContext.FileManager.Update(tabControlMain.SelectedTab == tabPageFile);
                 currentContext.QuarterFrameManager.Update(tabControlMain.SelectedTab == tabPageQuarterFrame);
                 currentContext.CustomManager.Update(tabControlMain.SelectedTab == tabPageCustom);
+                currentContext.VarHackManager.Update(tabControlMain.SelectedTab == tabPageVarHack);
                 currentContext.CameraHackManager.Update(tabControlMain.SelectedTab == tabPageCamHack);
                 currentContext.MiscManager.Update(tabControlMain.SelectedTab == tabPageMisc);
                 currentContext.TriangleManager.Update(tabControlMain.SelectedTab == tabPageTriangles);
@@ -542,6 +543,8 @@ namespace SM64_Diagnostic
                 selectedTabSplitContainer = selectedTabPage.Controls["splitContainerFile"] as SplitContainer;
             else if (selectedTabPage == tabPageCustom)
                 selectedTabSplitContainer = selectedTabPage.Controls["splitContainerCustom"] as SplitContainer;
+            else if (selectedTabPage == tabPageVarHack)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerVarHack"] as SplitContainer;
             else if (selectedTabPage == tabPageMisc)
                 selectedTabSplitContainer = selectedTabPage.Controls["splitContainerMisc"] as SplitContainer;
             else if (selectedTabPage == tabPageDebug)
