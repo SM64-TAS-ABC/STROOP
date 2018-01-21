@@ -14,14 +14,9 @@ namespace SM64_Diagnostic.Controls
     {
         public VarHackPanel()
         {
-
         }
 
-        public void AddNewControl()
-        {
-            VarHackContainer varHackContainer = new VarHackContainer(this);
-            Controls.Add(varHackContainer);
-        }
+        // Methods for buttons on the controls
 
         public void MoveUpControl(VarHackContainer varHackContainer)
         {
@@ -44,7 +39,22 @@ namespace SM64_Diagnostic.Controls
             Controls.Remove(varHackContainer);
         }
 
+        // Methods for buttons to modify the controls
+
+        public void AddNewControl()
+        {
+            VarHackContainer varHackContainer = new VarHackContainer(this);
+            Controls.Add(varHackContainer);
+        }
+
         public void ClearControls()
+        {
+            Controls.Clear();
+        }
+
+        // Methods to show variable bytes
+
+        public void ShowVariableBytesInLittleEndian()
         {
             TriangleInfoForm form = new TriangleInfoForm();
             StringBuilder stringBuilder = new StringBuilder();
@@ -57,11 +67,26 @@ namespace SM64_Diagnostic.Controls
             }
             form.SetTitleAndText("Little Endian Bytes", stringBuilder.ToString());
             form.Show();
-
-            //Controls.Clear();
         }
 
-        public void ApplyVariables()
+        public void ShowVariableBytesInBigEndian()
+        {
+            TriangleInfoForm form = new TriangleInfoForm();
+            StringBuilder stringBuilder = new StringBuilder();
+            foreach (Control control in Controls)
+            {
+                VarHackContainer varHackContainer = control as VarHackContainer;
+                byte[] bytes = varHackContainer.GetBigEndianByteArray();
+                string bytesString = VarHackContainer.ConvertBytesToString(bytes);
+                stringBuilder.Append(bytesString);
+            }
+            form.SetTitleAndText("Big Endian Bytes", stringBuilder.ToString());
+            form.Show();
+        }
+
+        // Methods to modify memory
+
+        public void ApplyVariablesToMemory()
         {
             uint applyVariableAddress = 0x80370000;
             uint structSize = 0x20;
@@ -74,5 +99,20 @@ namespace SM64_Diagnostic.Controls
                 Config.Stream.WriteRamLittleEndian(bytes, address);
             }
         }
+
+        public void ClearVariablesInMemory()
+        {
+            uint applyVariableAddress = 0x80370000;
+            uint structSize = 0x20;
+            int maxPossibleVars = 432;
+
+            byte[] emptyBytes = new byte[structSize];
+            for (int i = 0; i < maxPossibleVars; i++)
+            {
+                uint address = applyVariableAddress + (uint)i * structSize;
+                Config.Stream.WriteRamLittleEndian(emptyBytes, address);
+            }
+        }
+
     }
 }

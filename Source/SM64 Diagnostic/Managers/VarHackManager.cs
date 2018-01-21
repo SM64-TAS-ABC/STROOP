@@ -21,16 +21,38 @@ namespace SM64_Diagnostic.Managers
         {
             Instance = this;
 
-            SplitContainer splitContainerVarHack = varHackControlControl.Controls["splitContainerVarHack"] as SplitContainer;
+            SplitContainer splitContainerVarHack =
+                varHackControlControl.Controls["splitContainerVarHack"] as SplitContainer;
 
-            Button buttonVarHackApplyVariables = splitContainerVarHack.Panel1.Controls["buttonVarHackApplyVariables"] as Button;
-            buttonVarHackApplyVariables.Click += (sender, e) => varHackPanel.ApplyVariables();
+            Button buttonVarHackAddNewVariable =
+                splitContainerVarHack.Panel1.Controls["buttonVarHackAddNewVariable"] as Button;
+            buttonVarHackAddNewVariable.Click +=
+                (sender, e) => varHackPanel.AddNewControl();
 
-            Button buttonVarHackClearVariables = splitContainerVarHack.Panel1.Controls["buttonVarHackClearVariables"] as Button;
-            buttonVarHackClearVariables.Click += (sender, e) => varHackPanel.ClearControls();
+            Button buttonVarHackClearVariables =
+                splitContainerVarHack.Panel1.Controls["buttonVarHackClearVariables"] as Button;
+            buttonVarHackClearVariables.Click +=
+                (sender, e) => varHackPanel.ClearControls();
 
-            Button buttonVarHackAddNewVariable = splitContainerVarHack.Panel1.Controls["buttonVarHackAddNewVariable"] as Button;
-            buttonVarHackAddNewVariable.Click += (sender, e) => varHackPanel.AddNewControl();
+            Button buttonVarHackShowVariableBytesInLittleEndian =
+                splitContainerVarHack.Panel1.Controls["buttonVarHackShowVariableBytesInLittleEndian"] as Button;
+            buttonVarHackShowVariableBytesInLittleEndian.Click +=
+                (sender, e) => varHackPanel.ShowVariableBytesInLittleEndian();
+
+            Button buttonVarHackShowVariableBytesInBigEndian =
+                splitContainerVarHack.Panel1.Controls["buttonVarHackShowVariableBytesInBigEndian"] as Button;
+            buttonVarHackShowVariableBytesInBigEndian.Click +=
+                (sender, e) => varHackPanel.ShowVariableBytesInBigEndian();
+
+            Button buttonVarHackApplyVariablesToMemory =
+                splitContainerVarHack.Panel1.Controls["buttonVarHackApplyVariablesToMemory"] as Button;
+            buttonVarHackApplyVariablesToMemory.Click +=
+                (sender, e) => varHackPanel.ApplyVariablesToMemory();
+
+            Button buttonVarHackClearVariablesInMemory =
+                splitContainerVarHack.Panel1.Controls["buttonVarHackClearVariablesInMemory"] as Button;
+            buttonVarHackClearVariablesInMemory.Click +=
+                (sender, e) => varHackPanel.ClearVariablesInMemory();
         }
 
         public void Update(bool updateView)
