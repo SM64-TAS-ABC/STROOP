@@ -51,19 +51,16 @@ namespace SM64_Diagnostic.Controls
 
         public void ApplyVariables()
         {
-
             uint applyVariableAddress = 0x80370000;
+            uint structSize = 0x20;
 
-            System.Diagnostics.Trace.WriteLine("-----------------------------------------");
-            foreach (VarHackContainer varHackContainer in Controls)
+            for (int i = 0; i < Controls.Count; i++)
             {
-                System.Diagnostics.Trace.WriteLine(varHackContainer.ToString());
-                System.Diagnostics.Trace.WriteLine("");
-                Config.Stream.WriteRamLittleEndian(
-                    varHackContainer.GetLittleEndianByteArray(), applyVariableAddress);
+                uint address = applyVariableAddress + (uint)i * structSize;
+                VarHackContainer varHackContainer = Controls[i] as VarHackContainer;
+                byte[] bytes = varHackContainer.GetLittleEndianByteArray();
+                Config.Stream.WriteRamLittleEndian(bytes, address);
             }
-            System.Diagnostics.Trace.WriteLine("-----------------------------------------");
-
         }
     }
 }
