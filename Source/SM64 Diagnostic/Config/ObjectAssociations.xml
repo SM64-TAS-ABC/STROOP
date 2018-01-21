@@ -248,7 +248,7 @@
     <MapImage path="Chuckya Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x127" base="Object" subclass="Boolean">Grabbed</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x150" base="Object">Phase</Data>
-    <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Stopping </Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Phase Timer</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x178" base="Object">Throwing Phase</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x100" base="Object">Escape Counter</Data>
     <Data groupList="ObjectSpecific" type="int" offsetUS="0x80361270" offsetJP="0x8035FF00" base="Relative" subclass="Boolean">Control Stick Held</Data>
