@@ -32,7 +32,7 @@ namespace SM64_Diagnostic
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
@@ -4477,7 +4477,7 @@ namespace SM64_Diagnostic
             this.splitContainerVarHack.Panel2.Controls.Add(this.varHackPanel);
             this.splitContainerVarHack.Panel2MinSize = 0;
             this.splitContainerVarHack.Size = new System.Drawing.Size(915, 463);
-            this.splitContainerVarHack.SplitterDistance = 225;
+            this.splitContainerVarHack.SplitterDistance = 217;
             this.splitContainerVarHack.SplitterWidth = 1;
             this.splitContainerVarHack.TabIndex = 20;
             // 
@@ -4486,7 +4486,7 @@ namespace SM64_Diagnostic
             this.buttonVarHackClearVariablesInMemory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonVarHackClearVariablesInMemory.Location = new System.Drawing.Point(7, 420);
             this.buttonVarHackClearVariablesInMemory.Name = "buttonVarHackClearVariablesInMemory";
-            this.buttonVarHackClearVariablesInMemory.Size = new System.Drawing.Size(179, 38);
+            this.buttonVarHackClearVariablesInMemory.Size = new System.Drawing.Size(188, 38);
             this.buttonVarHackClearVariablesInMemory.TabIndex = 4;
             this.buttonVarHackClearVariablesInMemory.Text = "Clear Variables in Memory";
             this.buttonVarHackClearVariablesInMemory.UseVisualStyleBackColor = true;
@@ -6305,8 +6305,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -12479,7 +12479,7 @@ namespace SM64_Diagnostic
             this.varHackPanel.Margin = new System.Windows.Forms.Padding(0);
             this.varHackPanel.Name = "varHackPanel";
             this.varHackPanel.Padding = new System.Windows.Forms.Padding(2);
-            this.varHackPanel.Size = new System.Drawing.Size(687, 461);
+            this.varHackPanel.Size = new System.Drawing.Size(695, 461);
             this.varHackPanel.TabIndex = 3;
             // 
             // betterTextboxVarHeightGetSet
@@ -13284,7 +13284,7 @@ namespace SM64_Diagnostic
             this.buttonVarHackApplyVariablesToMemory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonVarHackApplyVariablesToMemory.Location = new System.Drawing.Point(7, 376);
             this.buttonVarHackApplyVariablesToMemory.Name = "buttonVarHackApplyVariablesToMemory";
-            this.buttonVarHackApplyVariablesToMemory.Size = new System.Drawing.Size(179, 38);
+            this.buttonVarHackApplyVariablesToMemory.Size = new System.Drawing.Size(188, 38);
             this.buttonVarHackApplyVariablesToMemory.TabIndex = 4;
             this.buttonVarHackApplyVariablesToMemory.Text = "Apply Variables to Memory";
             this.buttonVarHackApplyVariablesToMemory.UseVisualStyleBackColor = true;
