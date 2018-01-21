@@ -1017,7 +1017,7 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.buttonEnableDisableRomHack = new System.Windows.Forms.Button();
+            this.buttonEnableDisableRomHack = new BinaryButton();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -14707,7 +14707,7 @@ namespace SM64_Diagnostic
         private Button buttonVarHackApplyVariablesToMemory;
         private Button buttonVarHackShowVariableBytesInBigEndian;
         private Button buttonVarHackShowVariableBytesInLittleEndian;
-        private Button buttonEnableDisableRomHack;
+        private BinaryButton buttonEnableDisableRomHack;
     }
 }
 
