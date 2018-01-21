@@ -88,6 +88,8 @@ namespace SM64_Diagnostic.Controls
 
         public void ApplyVariablesToMemory()
         {
+            ClearVariablesInMemory();
+
             uint applyVariableAddress = 0x80370000;
             uint structSize = 0x20;
 
