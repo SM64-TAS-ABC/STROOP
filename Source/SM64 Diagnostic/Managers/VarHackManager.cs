@@ -76,9 +76,9 @@ namespace SM64_Diagnostic.Managers
             _buttonEnableDisableRomHack.UpdateButton();
         }
 
-        public void AddVariable(string varName, uint address, Type memoryType, bool useHex)
+        public void AddVariable(string varName, uint address, Type memoryType, bool useHex, uint? pointerOffset)
         {
-            _varHackPanel.AddNewControlWithParameters(varName, address, memoryType, useHex);
+            _varHackPanel.AddNewControlWithParameters(varName, address, memoryType, useHex, pointerOffset);
         }
     }
 }

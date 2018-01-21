@@ -40,7 +40,7 @@ namespace SM64_Diagnostic.Controls
 
         private bool UseAbsoluteAddressing { get { return BaseAddressType == BaseAddressTypeEnum.Absolute; } }
 
-        private uint Offset
+        public uint Offset
         {
             get
             {
@@ -61,12 +61,19 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
+        public List<uint> BaseAddressList
+        {
+            get
+            {
+                return WatchVariableUtilities.GetBaseAddressListFromBaseAddressType(BaseAddressType);
+            }
+        }
+
         public List<uint> AddressList
         {
             get
             {
-                return WatchVariableUtilities.GetBaseAddressListFromBaseAddressType(BaseAddressType)
-                    .ConvertAll(baseAddress => baseAddress + Offset);
+                return BaseAddressList.ConvertAll(baseAddress => baseAddress + Offset);
             }
         }
 

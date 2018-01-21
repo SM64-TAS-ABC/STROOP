@@ -59,13 +59,21 @@ namespace SM64_Diagnostic.Controls
             string varName,
             uint address,
             Type memoryType,
-            bool useHex)
+            bool useHex,
+            uint? pointerOffset)
             : this(varHackPanel, creationIndex, false)
         {
             textBoxNameValue.Text = CapString(varName + " ");
             textBoxAddressValue.Text = "0x" + String.Format("{0:X}", address);
             GetRadioButtonForType(memoryType).Checked = true;
             checkBoxUseHex.Checked = useHex;
+
+            if (pointerOffset.HasValue)
+            {
+                checkBoxUsePointer.Checked = true;
+                textBoxPointerOffsetValue.Enabled = true;
+                textBoxPointerOffsetValue.Text = "0x" + String.Format("{0:X}", pointerOffset.Value);
+            }
         }
 
         private void SetDefaultValues(int creationIndex, bool usePreWrittenVar)

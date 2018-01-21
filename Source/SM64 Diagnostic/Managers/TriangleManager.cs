@@ -34,6 +34,8 @@ namespace SM64_Diagnostic.Managers
         Label _recordTriangleCountLabel;
         List<short[]> _triangleData;
 
+        public uint TrianglePointerAddress;
+
         public uint TriangleAddress
         {
             get
@@ -324,15 +326,22 @@ namespace SM64_Diagnostic.Managers
             switch (Mode)
             {
                 case TriangleMode.Ceiling:
-                    TriangleAddress = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.CeilingTriangleOffset);
+                    TrianglePointerAddress = Config.Mario.StructAddress + Config.Mario.CeilingTriangleOffset;
+                    TriangleAddress = Config.Stream.GetUInt32(TrianglePointerAddress);
                     break;
 
                 case TriangleMode.Floor:
-                    TriangleAddress = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
+                    TrianglePointerAddress = Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset;
+                    TriangleAddress = Config.Stream.GetUInt32(TrianglePointerAddress);
                     break;
 
                 case TriangleMode.Wall:
-                    TriangleAddress = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.WallTriangleOffset);
+                    TrianglePointerAddress = Config.Mario.StructAddress + Config.Mario.WallTriangleOffset;
+                    TriangleAddress = Config.Stream.GetUInt32(TrianglePointerAddress);
+                    break;
+
+                default:
+                    TrianglePointerAddress = 0;
                     break;
             }
 

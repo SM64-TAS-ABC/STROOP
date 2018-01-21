@@ -41,10 +41,10 @@ namespace SM64_Diagnostic.Controls
 
         // Methods from a watch var control
 
-        public void AddNewControlWithParameters(string varName, uint address, Type memoryType, bool useHex)
+        public void AddNewControlWithParameters(string varName, uint address, Type memoryType, bool useHex, uint? pointerOffset)
         {
             if (Controls.Count >= Config.VarHack.MaxPossibleVars) return;
-            VarHackContainer varHackContainer = new VarHackContainer(this, Controls.Count, varName, address, memoryType, useHex);
+            VarHackContainer varHackContainer = new VarHackContainer(this, Controls.Count, varName, address, memoryType, useHex, pointerOffset);
             Controls.Add(varHackContainer);
         }
 

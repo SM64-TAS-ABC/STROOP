@@ -302,14 +302,27 @@ namespace SM64_Diagnostic.Controls
 
         public void AddToVarHackTab(List<uint> addresses = null)
         {
-            List<uint> addressList = addresses ?? GetCurrentAddresses();
-            foreach (uint address in addressList)
+            if (_watchVar.BaseAddressType == BaseAddressTypeEnum.Triangle)
             {
                 VarHackManager.Instance.AddVariable(
                     _watchVarControl.VarName,
-                    address,
+                    TriangleManager.Instance.TrianglePointerAddress,
                     _watchVar.MemoryType,
-                    GetUseHex());
+                    GetUseHex(),
+                    _watchVar.Offset);
+            }
+            else
+            {
+                List<uint> addressList = addresses ?? _watchVar.AddressList;
+                foreach (uint address in addressList)
+                {
+                    VarHackManager.Instance.AddVariable(
+                        _watchVarControl.VarName,
+                        address,
+                        _watchVar.MemoryType,
+                        GetUseHex(),
+                        null);
+                }
             }
         }
 
