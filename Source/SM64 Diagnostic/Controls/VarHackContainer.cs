@@ -98,7 +98,10 @@ namespace SM64_Diagnostic.Controls
             byte[] typeBytes = new byte[] { typeByte };
             WriteBytes(typeBytes, bytes, 0x1F, true);
 
-
+            name = name.Length > 17 ? name.Substring(0, 17) : name;
+            string nameAndNumberSystem = name + (useHex ? "%x" : "%d");
+            byte[] nameAndNumberSystemBytes = Encoding.ASCII.GetBytes(nameAndNumberSystem);
+            WriteBytes(nameAndNumberSystemBytes, bytes, 0x08, false);
 
             return bytes;
         }
@@ -312,6 +315,7 @@ namespace SM64_Diagnostic.Controls
             this.textBoxNameValue.TabIndex = 10;
             this.textBoxNameValue.Text = "Mario X";
             this.textBoxNameValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxNameValue.MaxLength = 17;
             // 
             // textBoxNameLabel
             // 
