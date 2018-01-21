@@ -404,7 +404,7 @@ namespace SM64_Diagnostic.Controls
             this.textBoxNameValue.TabIndex = 10;
             this.textBoxNameValue.Text = "Mario X";
             this.textBoxNameValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxNameValue.MaxLength = 17;
+            this.textBoxNameValue.MaxLength = Config.VarHack.MaxStringLength;
             // 
             // textBoxNameLabel
             // 
