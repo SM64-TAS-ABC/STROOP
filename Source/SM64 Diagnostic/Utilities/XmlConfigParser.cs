@@ -2376,7 +2376,9 @@ namespace SM64_Diagnostic.Utilities
                     case "Hack":
                         string hackPath = hackDir + element.Attribute(XName.Get("path")).Value;
                         string name = element.Attribute(XName.Get("name")).Value;
-                        hacks.Add(new RomHack(hackPath, name));
+                        RomHack romHack = new RomHack(hackPath, name);
+                        hacks.Add(romHack);
+                        if (path == "DisplayVariable.hck") Config.VarHack.ShowVarRomHack = romHack;
                         break;
                 }
             }

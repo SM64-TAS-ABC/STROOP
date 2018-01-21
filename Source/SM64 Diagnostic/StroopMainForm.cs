@@ -225,7 +225,7 @@ namespace SM64_Diagnostic
             loadingForm.UpdateStatus("Loading Scripts", statusNum++);
             _scriptParser = XmlConfigParser.OpenScripts(@"Config/Scripts.xml");
             loadingForm.UpdateStatus("Loading Hacks", statusNum++);
-            var hacksConfig = XmlConfigParser.OpenHacks(@"Config/Hacks.xml");
+            Tuple<HackConfig, List<RomHack>> hacksConfig = XmlConfigParser.OpenHacks(@"Config/Hacks.xml");
             Config.Hacks = hacksConfig.Item1;
             _romHacks = hacksConfig.Item2;
             loadingForm.UpdateStatus("Loading Mario Actions", statusNum++);

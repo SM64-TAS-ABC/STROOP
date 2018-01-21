@@ -22,5 +22,7 @@ namespace SM64_Diagnostic.Structs.Configurations
         public readonly uint TypeOffset = 0x1F;
 
         public readonly int MaxStringLength = 17;
+
+        public RomHack ShowVarRomHack;
     }
 }
