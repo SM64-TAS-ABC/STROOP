@@ -58,24 +58,54 @@ namespace SM64_Diagnostic.Controls
             int xPos = 10;
             int yPos = 192 - creationIndex * 17;
 
-            textBoxXPosValue.Text = xPos.ToString();
-            textBoxYPosValue.Text = yPos.ToString();
+            string name;
+            uint address;
+            RadioButton typeRadioButton;
+            bool useHex = false;
+            bool usePointer = false;
+            uint pointerOffset = 0;
 
             switch (creationIndex)
             {
                 case 0:
-                    textBoxNameValue.Text = "HSPD ";
+                    name = "HSPD ";
+                    address = Config.Mario.StructAddress + Config.Mario.HSpeedOffset;
+                    typeRadioButton = radioButtonFloat;
                     break;
                 case 1:
-                    textBoxNameValue.Text = "Angle ";
+                    name = "Angle ";
+                    address = Config.Mario.StructAddress + Config.Mario.YawFacingOffset;
+                    typeRadioButton = radioButtonUShort;
                     break;
                 case 2:
-                    textBoxNameValue.Text = "HP ";
+                    name = "HP ";
+                    address = Config.Mario.StructAddress + Config.Hud.HpCountOffset;
+                    typeRadioButton = radioButtonShort;
+                    useHex = true;
                     break;
                 default:
-                    textBoxNameValue.Text = "Floor Room ";
+                    name = "Floor Room ";
+                    address = Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset;
+                    typeRadioButton = radioButtonByte;
+                    usePointer = true;
+                    pointerOffset = 0x05;
                     break;
             }
+
+            textBoxXPosValue.Text = xPos.ToString();
+            textBoxYPosValue.Text = yPos.ToString();
+            textBoxNameValue.Text = name;
+            textBoxAddressValue.Text = "0x" + String.Format("{0:X}", address);
+            typeRadioButton.Checked = true;
+
+            if (useHex) checkBoxUseHex.Checked = true;
+            if (usePointer)
+            {
+                checkBoxUsePointer.Checked = true;
+                textBoxPointerOffsetValue.Enabled = true;
+                textBoxPointerOffsetValue.Text = "0x" + String.Format("{0:X}", pointerOffset);
+            }
+
         }
 
         public byte[] GetBigEndianByteArray()
