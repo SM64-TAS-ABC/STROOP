@@ -17,11 +17,14 @@ namespace SM64_Diagnostic.Managers
     {
         public static VarHackManager Instance;
 
+        private VarHackPanel _varHackPanel;
         private BinaryButton _buttonEnableDisableRomHack;
 
         public VarHackManager(Control varHackControlControl, VarHackPanel varHackPanel)
         {
             Instance = this;
+
+            _varHackPanel = varHackPanel;
 
             SplitContainer splitContainerVarHack =
                 varHackControlControl.Controls["splitContainerVarHack"] as SplitContainer;
@@ -29,32 +32,32 @@ namespace SM64_Diagnostic.Managers
             Button buttonVarHackAddNewVariable =
                 splitContainerVarHack.Panel1.Controls["buttonVarHackAddNewVariable"] as Button;
             buttonVarHackAddNewVariable.Click +=
-                (sender, e) => varHackPanel.AddNewControl();
+                (sender, e) => _varHackPanel.AddNewControl();
 
             Button buttonVarHackClearVariables =
                 splitContainerVarHack.Panel1.Controls["buttonVarHackClearVariables"] as Button;
             buttonVarHackClearVariables.Click +=
-                (sender, e) => varHackPanel.ClearControls();
+                (sender, e) => _varHackPanel.ClearControls();
 
             Button buttonVarHackShowVariableBytesInLittleEndian =
                 splitContainerVarHack.Panel1.Controls["buttonVarHackShowVariableBytesInLittleEndian"] as Button;
             buttonVarHackShowVariableBytesInLittleEndian.Click +=
-                (sender, e) => varHackPanel.ShowVariableBytesInLittleEndian();
+                (sender, e) => _varHackPanel.ShowVariableBytesInLittleEndian();
 
             Button buttonVarHackShowVariableBytesInBigEndian =
                 splitContainerVarHack.Panel1.Controls["buttonVarHackShowVariableBytesInBigEndian"] as Button;
             buttonVarHackShowVariableBytesInBigEndian.Click +=
-                (sender, e) => varHackPanel.ShowVariableBytesInBigEndian();
+                (sender, e) => _varHackPanel.ShowVariableBytesInBigEndian();
 
             Button buttonVarHackApplyVariablesToMemory =
                 splitContainerVarHack.Panel1.Controls["buttonVarHackApplyVariablesToMemory"] as Button;
             buttonVarHackApplyVariablesToMemory.Click +=
-                (sender, e) => varHackPanel.ApplyVariablesToMemory();
+                (sender, e) => _varHackPanel.ApplyVariablesToMemory();
 
             Button buttonVarHackClearVariablesInMemory =
                 splitContainerVarHack.Panel1.Controls["buttonVarHackClearVariablesInMemory"] as Button;
             buttonVarHackClearVariablesInMemory.Click +=
-                (sender, e) => varHackPanel.ClearVariablesInMemory();
+                (sender, e) => _varHackPanel.ClearVariablesInMemory();
 
             _buttonEnableDisableRomHack =
                 splitContainerVarHack.Panel1.Controls["buttonEnableDisableRomHack"] as BinaryButton;
@@ -68,10 +71,14 @@ namespace SM64_Diagnostic.Managers
 
         public void Update(bool updateView)
         {
-            if (!updateView)
-                return;
+            if (!updateView) return;
 
             _buttonEnableDisableRomHack.UpdateButton();
+        }
+
+        public void AddVariable(string varName, uint address, Type memoryType, bool useHex)
+        {
+            //throw new NotImplementedException();
         }
     }
 }

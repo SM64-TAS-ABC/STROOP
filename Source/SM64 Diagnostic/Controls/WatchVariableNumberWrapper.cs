@@ -197,5 +197,10 @@ namespace SM64_Diagnostic.Controls
         {
             return _watchVar.NibbleCount;
         }
+
+        protected override bool GetUseHex()
+        {
+            return _displayAsHex;
+        }
     }
 }

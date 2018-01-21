@@ -374,6 +374,7 @@ namespace SM64_Diagnostic.Controls
                 keyboardState.IsKeyDown(Key.Delete) ||
                 keyboardState.IsKeyDown(Key.BackSpace) ||
                 keyboardState.IsKeyDown(Key.Escape);
+            bool isBacktickHeld = keyboardState.IsKeyDown(Key.Grave);
 
             if (isFKeyHeld && isCtrlKeyHeld)
             {
@@ -415,6 +416,12 @@ namespace SM64_Diagnostic.Controls
             if (isAltKeyHeld)
             {
                 EnableCustomFunctionality();
+                return;
+            }
+
+            if (isBacktickHeld)
+            {
+                AddToVarHackTab();
                 return;
             }
 
@@ -584,6 +591,12 @@ namespace SM64_Diagnostic.Controls
             CustomManager.Instance.AddVariable(newControl);
             FlashColor(ADD_TO_CUSTOM_TAB_COLOR);
             return newControl;
+        }
+
+        public void AddToVarHackTab()
+        {
+            _watchVarWrapper.AddToVarHackTab(FixedAddressList);
+            FlashColor(Color.SandyBrown);
         }
 
         public void EnableCustomFunctionality()

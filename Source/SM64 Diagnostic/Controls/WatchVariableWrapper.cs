@@ -300,6 +300,19 @@ namespace SM64_Diagnostic.Controls
             _itemDelete.Visible = true;
         }
 
+        public void AddToVarHackTab(List<uint> addresses = null)
+        {
+            List<uint> addressList = addresses ?? GetCurrentAddresses();
+            foreach (uint address in addressList)
+            {
+                VarHackManager.Instance.AddVariable(
+                    _watchVarControl.VarName,
+                    address,
+                    _watchVar.MemoryType,
+                    GetUseHex());
+            }
+        }
+
 
 
 
@@ -397,5 +410,12 @@ namespace SM64_Diagnostic.Controls
         }
 
 
+
+        // Getter methods
+
+        protected virtual bool GetUseHex()
+        {
+            return false;
+        }
     }
 }
