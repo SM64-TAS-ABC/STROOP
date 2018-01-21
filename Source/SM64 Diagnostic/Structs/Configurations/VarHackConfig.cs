@@ -8,7 +8,7 @@ namespace SM64_Diagnostic.Structs.Configurations
 {
     public class VarHackConfig
     {
-        public readonly uint VarHackMemoryStart = 0x80370000;
+        public readonly uint VarHackMemoryAddress = 0x80370000;
         public readonly uint StructSize = 0x20;
         public readonly uint MaxPossibleVars = 432;
 
@@ -21,6 +21,6 @@ namespace SM64_Diagnostic.Structs.Configurations
         public readonly uint SignedOffset = 0x1E;
         public readonly uint TypeOffset = 0x1F;
 
-        public readonly uint MaxStringLength = 17;
+        public readonly int MaxStringLength = 17;
     }
 }

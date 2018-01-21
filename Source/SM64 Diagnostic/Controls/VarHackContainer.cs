@@ -160,36 +160,37 @@ namespace SM64_Diagnostic.Controls
             if (!yPosNullable.HasValue) return null;
             ushort yPos = yPosNullable.Value;
 
-            byte[] bytes = new byte[32];
+            byte[] bytes = new byte[Config.VarHack.StructSize];
 
             byte[] addressBytes = BitConverter.GetBytes(address);
-            WriteBytes(addressBytes, bytes, 0x00, true);
+            WriteBytes(addressBytes, bytes, Config.VarHack.AddressOffset, true);
 
             byte[] xPosBytes = BitConverter.GetBytes(xPos);
-            WriteBytes(xPosBytes, bytes, 0x04, true);
+            WriteBytes(xPosBytes, bytes, Config.VarHack.XPosOffset, true);
 
             byte[] yPosBytes = BitConverter.GetBytes(yPos);
-            WriteBytes(yPosBytes, bytes, 0x06, true);
+            WriteBytes(yPosBytes, bytes, Config.VarHack.YPosOffset, true);
 
             byte[] usePointerBytes = BitConverter.GetBytes(usePointer);
-            WriteBytes(usePointerBytes, bytes, 0x1B, true);
+            WriteBytes(usePointerBytes, bytes, Config.VarHack.UsePointerOffset, true);
 
             if (usePointer)
             {
                 byte[] pointerOffsetBytes = BitConverter.GetBytes(pointerOffset);
-                WriteBytes(pointerOffsetBytes, bytes, 0x1C, true);
+                WriteBytes(pointerOffsetBytes, bytes, Config.VarHack.PointerOffsetOffset, true);
             }
 
             byte[] signedBytes = BitConverter.GetBytes(signed);
-            WriteBytes(signedBytes, bytes, 0x1E, true);
+            WriteBytes(signedBytes, bytes, Config.VarHack.SignedOffset, true);
 
             byte[] typeBytes = new byte[] { typeByte };
-            WriteBytes(typeBytes, bytes, 0x1F, true);
+            WriteBytes(typeBytes, bytes, Config.VarHack.TypeOffset, true);
 
-            name = name.Length > 17 ? name.Substring(0, 17) : name;
+            name = name.Length > Config.VarHack.MaxStringLength ?
+                name.Substring(0, Config.VarHack.MaxStringLength) : name;
             string nameAndNumberSystem = name + (useHex ? "%x" : "%d");
             byte[] nameAndNumberSystemBytes = Encoding.ASCII.GetBytes(nameAndNumberSystem);
-            WriteBytes(nameAndNumberSystemBytes, bytes, 0x08, false);
+            WriteBytes(nameAndNumberSystemBytes, bytes, Config.VarHack.StringOffset, false);
 
             return bytes;
         }

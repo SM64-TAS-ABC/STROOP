@@ -88,14 +88,10 @@ namespace SM64_Diagnostic.Controls
 
         public void ApplyVariablesToMemory()
         {
-            uint applyVariableAddress = 0x80370000;
-            uint structSize = 0x20;
-            int maxPossibleVars = 432;
-            byte[] emptyBytes = new byte[structSize];
-
-            for (int i = 0; i < maxPossibleVars; i++)
+            byte[] emptyBytes = new byte[Config.VarHack.StructSize];
+            for (int i = 0; i < Config.VarHack.MaxPossibleVars; i++)
             {
-                uint address = applyVariableAddress + (uint)i * structSize;
+                uint address = Config.VarHack.VarHackMemoryAddress + (uint)i * Config.VarHack.StructSize;
                 byte[] bytes;
                 if (i < Controls.Count)
                 {
@@ -113,14 +109,10 @@ namespace SM64_Diagnostic.Controls
 
         public void ClearVariablesInMemory()
         {
-            uint applyVariableAddress = 0x80370000;
-            uint structSize = 0x20;
-            int maxPossibleVars = 432;
-
-            byte[] emptyBytes = new byte[structSize];
-            for (int i = 0; i < maxPossibleVars; i++)
+            byte[] emptyBytes = new byte[Config.VarHack.StructSize];
+            for (int i = 0; i < Config.VarHack.MaxPossibleVars; i++)
             {
-                uint address = applyVariableAddress + (uint)i * structSize;
+                uint address = Config.VarHack.VarHackMemoryAddress + (uint)i * Config.VarHack.StructSize;
                 Config.Stream.WriteRamLittleEndian(emptyBytes, address);
             }
         }
