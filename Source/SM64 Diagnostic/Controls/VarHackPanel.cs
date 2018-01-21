@@ -96,6 +96,7 @@ namespace SM64_Diagnostic.Controls
                 uint address = applyVariableAddress + (uint)i * structSize;
                 VarHackContainer varHackContainer = Controls[i] as VarHackContainer;
                 byte[] bytes = varHackContainer.GetLittleEndianByteArray();
+                if (bytes == null) continue;
                 Config.Stream.WriteRamLittleEndian(bytes, address);
             }
         }

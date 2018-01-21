@@ -83,12 +83,43 @@ namespace SM64_Diagnostic.Controls
                     typeRadioButton = radioButtonShort;
                     useHex = true;
                     break;
-                default:
+                case 3:
                     name = "Floor Room ";
                     address = Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset;
                     typeRadioButton = radioButtonByte;
                     usePointer = true;
                     pointerOffset = 0x05;
+                    break;
+                case 4:
+                    name = "X ";
+                    address = Config.Mario.StructAddress + Config.Mario.XOffset;
+                    typeRadioButton = radioButtonFloat;
+                    break;
+                case 5:
+                    name = "Y ";
+                    address = Config.Mario.StructAddress + Config.Mario.YOffset;
+                    typeRadioButton = radioButtonFloat;
+                    break;
+                case 6:
+                    name = "Z ";
+                    address = Config.Mario.StructAddress + Config.Mario.ZOffset;
+                    typeRadioButton = radioButtonFloat;
+                    break;
+                case 7:
+                    name = "HOLP X ";
+                    address = Config.Mario.StructAddress + Config.Mario.HOLPXOffset;
+                    typeRadioButton = radioButtonFloat;
+                    break;
+                case 8:
+                    name = "HOLP Y ";
+                    address = Config.Mario.StructAddress + Config.Mario.HOLPYOffset;
+                    typeRadioButton = radioButtonFloat;
+                    break;
+                case 9:
+                default:
+                    name = "HOLP Z ";
+                    address = Config.Mario.StructAddress + Config.Mario.HOLPZOffset;
+                    typeRadioButton = radioButtonFloat;
                     break;
             }
 
@@ -166,6 +197,7 @@ namespace SM64_Diagnostic.Controls
         public byte[] GetLittleEndianByteArray()
         {
             byte[] bigEndianArray = GetBigEndianByteArray();
+            if (bigEndianArray == null) return null;
             byte[] littleEndianArray = new byte[bigEndianArray.Length];
 
             for (int i = 0; i < bigEndianArray.Length; i++)
