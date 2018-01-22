@@ -14,6 +14,7 @@ namespace SM64_Diagnostic.Controls
     public class VarHackContainer : TableLayoutPanel
     {
         private CheckBox checkBoxUsePointer;
+        private CheckBox checkBoxNoNumber;
         private BetterTextbox textBoxNameValue;
         private BetterTextbox textBoxNameLabel;
         private BetterTextbox textBoxAddressLabel;
@@ -172,6 +173,7 @@ namespace SM64_Diagnostic.Controls
             byte typeByte = GetCurrentTypeByte();
             bool signed = GetCurrentSigned();
             bool useHex = GetCurrentUseHex();
+            bool noNumber = GetCurrentNoNumber();
             ushort? xPosNullable = GetCurrentXPosition();
             ushort? yPosNullable = GetCurrentYPosition();
 
@@ -195,10 +197,11 @@ namespace SM64_Diagnostic.Controls
             byte[] yPosBytes = BitConverter.GetBytes(yPos);
             WriteBytes(yPosBytes, bytes, Config.VarHack.YPosOffset, true);
 
-            string cappedName = CapString(name);
-            string cappedNameAndNumberSystem = cappedName + (useHex ? "%x" : "%d");
-            byte[] nameAndNumberSystemBytes = Encoding.ASCII.GetBytes(cappedNameAndNumberSystem);
-            WriteBytes(nameAndNumberSystemBytes, bytes, Config.VarHack.StringOffset, false);
+            string cappedName = CapString(name, !noNumber);
+            string numberAddon = noNumber ? "" : (useHex ? "%x" : "%d");
+            string cappedNameAndNumberAddon = cappedName + numberAddon;
+            byte[] nameAndNumberAddonBytes = Encoding.ASCII.GetBytes(cappedNameAndNumberAddon);
+            WriteBytes(nameAndNumberAddonBytes, bytes, Config.VarHack.StringOffset, false);
 
             byte[] usePointerBytes = BitConverter.GetBytes(usePointer);
             WriteBytes(usePointerBytes, bytes, Config.VarHack.UsePointerOffset, true);
@@ -257,10 +260,10 @@ namespace SM64_Diagnostic.Controls
             return stringBuilder.ToString();
         }
 
-        private string CapString(string text)
+        private string CapString(string text, bool factorInNumberAddon = true)
         {
-            return text.Length > Config.VarHack.MaxStringLength ?
-                text.Substring(0, Config.VarHack.MaxStringLength) : text;
+            int maxLength = Config.VarHack.MaxStringLength + (factorInNumberAddon ? 0 : 2);
+            return text.Length > maxLength ? text.Substring(0, maxLength) : text;
         }
 
         public void SetPosition(int xPos, int yPos)
@@ -345,6 +348,11 @@ namespace SM64_Diagnostic.Controls
             return checkBoxUseHex.Checked;
         }
 
+        private bool GetCurrentNoNumber()
+        {
+            return checkBoxNoNumber.Checked;
+        }
+
         private ushort? GetCurrentXPosition()
         {
             return ParsingUtilities.ParseUShortNullable(textBoxXPosValue.Text);
@@ -359,6 +367,7 @@ namespace SM64_Diagnostic.Controls
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VarHackContainerForm));
             this.checkBoxUsePointer = new System.Windows.Forms.CheckBox();
+            this.checkBoxNoNumber = new System.Windows.Forms.CheckBox();
             this.textBoxNameValue = new SM64_Diagnostic.BetterTextbox();
             this.textBoxNameLabel = new SM64_Diagnostic.BetterTextbox();
             this.textBoxAddressLabel = new SM64_Diagnostic.BetterTextbox();
@@ -399,6 +408,7 @@ namespace SM64_Diagnostic.Controls
             this.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.Controls.Add(this.checkBoxUsePointer, 1, 2);
+            this.Controls.Add(this.checkBoxNoNumber, 0, 2);
             this.Controls.Add(this.textBoxNameValue, 1, 0);
             this.Controls.Add(this.textBoxNameLabel, 0, 0);
             this.Controls.Add(this.textBoxAddressLabel, 0, 1);
@@ -441,6 +451,18 @@ namespace SM64_Diagnostic.Controls
             this.checkBoxUsePointer.Text = "Use Pointer";
             this.checkBoxUsePointer.UseVisualStyleBackColor = true;
             // 
+            // checkBoxNoNumber
+            // 
+            this.checkBoxNoNumber.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.checkBoxNoNumber.AutoSize = true;
+            this.checkBoxNoNumber.Location = new System.Drawing.Point(81, 51);
+            this.checkBoxNoNumber.Name = "checkBoxNoNumber";
+            this.checkBoxNoNumber.Size = new System.Drawing.Size(81, 17);
+            this.checkBoxNoNumber.TabIndex = 4;
+            this.checkBoxNoNumber.Text = "No Num";
+            this.checkBoxNoNumber.UseVisualStyleBackColor = true;
+            this.checkBoxNoNumber.ForeColor = Color.DarkRed;
+            // 
             // textBoxNameValue
             // 
             this.textBoxNameValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -451,7 +473,7 @@ namespace SM64_Diagnostic.Controls
             this.textBoxNameValue.TabIndex = 10;
             this.textBoxNameValue.Text = "Mario X";
             this.textBoxNameValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxNameValue.MaxLength = Config.VarHack.MaxStringLength;
+            //this.textBoxNameValue.MaxLength = Config.VarHack.MaxStringLength;
             // 
             // textBoxNameLabel
             // 
