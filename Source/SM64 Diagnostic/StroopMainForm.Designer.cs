@@ -33,7 +33,7 @@ namespace SM64_Diagnostic
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -9688,8 +9688,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -13339,7 +13339,7 @@ namespace SM64_Diagnostic
             this.textBoxYDeltaValue.Name = "textBoxYDeltaValue";
             this.textBoxYDeltaValue.Size = new System.Drawing.Size(52, 20);
             this.textBoxYDeltaValue.TabIndex = 32;
-            this.textBoxYDeltaValue.Text = "100";
+            this.textBoxYDeltaValue.Text = "17";
             this.textBoxYDeltaValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxYPosValue
@@ -13348,7 +13348,7 @@ namespace SM64_Diagnostic
             this.textBoxYPosValue.Name = "textBoxYPosValue";
             this.textBoxYPosValue.Size = new System.Drawing.Size(52, 20);
             this.textBoxYPosValue.TabIndex = 33;
-            this.textBoxYPosValue.Text = "100";
+            this.textBoxYPosValue.Text = "192";
             this.textBoxYPosValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxXPosValue
@@ -13357,7 +13357,7 @@ namespace SM64_Diagnostic
             this.textBoxXPosValue.Name = "textBoxXPosValue";
             this.textBoxXPosValue.Size = new System.Drawing.Size(52, 20);
             this.textBoxXPosValue.TabIndex = 34;
-            this.textBoxXPosValue.Text = "100";
+            this.textBoxXPosValue.Text = "10";
             this.textBoxXPosValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // labelVarHackYDeltaLabel
@@ -13419,7 +13419,7 @@ namespace SM64_Diagnostic
             this.textBoxXPosChange.Name = "textBoxXPosChange";
             this.textBoxXPosChange.Size = new System.Drawing.Size(31, 20);
             this.textBoxXPosChange.TabIndex = 34;
-            this.textBoxXPosChange.Text = "2";
+            this.textBoxXPosChange.Text = "5";
             this.textBoxXPosChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // buttonYPosSubtract
@@ -13448,7 +13448,7 @@ namespace SM64_Diagnostic
             this.textBoxYPosChange.Name = "textBoxYPosChange";
             this.textBoxYPosChange.Size = new System.Drawing.Size(31, 20);
             this.textBoxYPosChange.TabIndex = 34;
-            this.textBoxYPosChange.Text = "2";
+            this.textBoxYPosChange.Text = "5";
             this.textBoxYPosChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // buttonYDeltaSubtract
@@ -13477,7 +13477,7 @@ namespace SM64_Diagnostic
             this.textBoxYDeltaChange.Name = "textBoxYDeltaChange";
             this.textBoxYDeltaChange.Size = new System.Drawing.Size(31, 20);
             this.textBoxYDeltaChange.TabIndex = 34;
-            this.textBoxYDeltaChange.Text = "2";
+            this.textBoxYDeltaChange.Text = "1";
             this.textBoxYDeltaChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // buttonUpdatePositionsAndApply
