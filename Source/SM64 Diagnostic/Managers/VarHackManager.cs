@@ -20,6 +20,10 @@ namespace SM64_Diagnostic.Managers
         private readonly VarHackPanel _varHackPanel;
         private readonly BinaryButton _buttonEnableDisableRomHack;
 
+        private readonly TextBox _textBoxXPosValue;
+        private readonly TextBox _textBoxYPosValue;
+        private readonly TextBox _textBoxYDeltaValue;
+
         public VarHackManager(Control varHackControlControl, VarHackPanel varHackPanel)
         {
             Instance = this;
@@ -67,6 +71,38 @@ namespace SM64_Diagnostic.Managers
                 () => Config.VarHack.ShowVarRomHack.LoadPayload(),
                 () => Config.VarHack.ShowVarRomHack.ClearPayload(),
                 () => Config.VarHack.ShowVarRomHack.Enabled);
+
+
+
+            _textBoxXPosValue = splitContainerVarHack.Panel1.Controls["textBoxXPosValue"] as TextBox;
+            InitializePositionControls(
+                _textBoxXPosValue,
+                splitContainerVarHack.Panel1.Controls["textBoxXPosChange"] as TextBox,
+                splitContainerVarHack.Panel1.Controls["buttonXPosSubtract"] as Button,
+                splitContainerVarHack.Panel1.Controls["buttonXPosAdd"] as Button);
+
+            _textBoxYPosValue = splitContainerVarHack.Panel1.Controls["textBoxYPosValue"] as TextBox;
+            InitializePositionControls(
+                _textBoxYPosValue,
+                splitContainerVarHack.Panel1.Controls["textBoxYPosChange"] as TextBox,
+                splitContainerVarHack.Panel1.Controls["buttonYPosSubtract"] as Button,
+                splitContainerVarHack.Panel1.Controls["buttonYPosAdd"] as Button);
+
+            _textBoxYDeltaValue = splitContainerVarHack.Panel1.Controls["textBoxYDeltaValue"] as TextBox;
+            InitializePositionControls(
+                _textBoxYDeltaValue,
+                splitContainerVarHack.Panel1.Controls["textBoxYDeltaChange"] as TextBox,
+                splitContainerVarHack.Panel1.Controls["buttonYDeltaSubtract"] as Button,
+                splitContainerVarHack.Panel1.Controls["buttonYDeltaAdd"] as Button);
+        }
+
+        private void InitializePositionControls(
+            TextBox valueTextbox,
+            TextBox changeTextbox,
+            Button subtractButton,
+            Button addButton)
+        {
+
         }
 
         public void Update(bool updateView)
