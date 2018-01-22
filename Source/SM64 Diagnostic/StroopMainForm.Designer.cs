@@ -33,7 +33,7 @@ namespace SM64_Diagnostic
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -818,6 +818,7 @@ namespace SM64_Diagnostic
             this.tabPageVarHack = new System.Windows.Forms.TabPage();
             this.splitContainerVarHack = new System.Windows.Forms.SplitContainer();
             this.buttonVarHackApplyVariablesToMemory = new System.Windows.Forms.Button();
+            this.buttonEnableDisableRomHack = new SM64_Diagnostic.BinaryButton();
             this.buttonVarHackClearVariablesInMemory = new System.Windows.Forms.Button();
             this.buttonVarHackAddNewVariable = new System.Windows.Forms.Button();
             this.buttonVarHackShowVariableBytesInBigEndian = new System.Windows.Forms.Button();
@@ -1017,7 +1018,22 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.buttonEnableDisableRomHack = new BinaryButton();
+            this.textBoxYDeltaValue = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxYPosValue = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxXPosValue = new SM64_Diagnostic.BetterTextbox();
+            this.labelVarHackYDeltaLabel = new System.Windows.Forms.Label();
+            this.labelVarHackYPosLabel = new System.Windows.Forms.Label();
+            this.labelVarHackXPosLabel = new System.Windows.Forms.Label();
+            this.buttonXPosSubtract = new System.Windows.Forms.Button();
+            this.buttonXPosAdd = new System.Windows.Forms.Button();
+            this.textBoxXPosChange = new SM64_Diagnostic.BetterTextbox();
+            this.buttonYPosSubtract = new System.Windows.Forms.Button();
+            this.buttonYPosAdd = new System.Windows.Forms.Button();
+            this.textBoxYPosChange = new SM64_Diagnostic.BetterTextbox();
+            this.buttonYDeltaSubtract = new System.Windows.Forms.Button();
+            this.buttonYDeltaAdd = new System.Windows.Forms.Button();
+            this.textBoxYDeltaChange = new SM64_Diagnostic.BetterTextbox();
+            this.buttonUpdatePositionsAndApply = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1371,7 +1387,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 354);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 355);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1436,7 +1452,7 @@ namespace SM64_Diagnostic
             this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
             this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 152);
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 153);
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
@@ -4618,7 +4634,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 191F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 192F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8445,7 +8461,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(696, 437);
+            this.glControlMap.Size = new System.Drawing.Size(699, 437);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -9456,7 +9472,7 @@ namespace SM64_Diagnostic
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(390, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(373, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -9488,7 +9504,7 @@ namespace SM64_Diagnostic
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(379, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(362, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -9672,8 +9688,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -10000,7 +10016,7 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
             this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(609, 456);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(612, 456);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -10099,7 +10115,7 @@ namespace SM64_Diagnostic
             this.listBoxSpawn.FormattingEnabled = true;
             this.listBoxSpawn.Location = new System.Drawing.Point(6, 19);
             this.listBoxSpawn.Name = "listBoxSpawn";
-            this.listBoxSpawn.Size = new System.Drawing.Size(597, 355);
+            this.listBoxSpawn.Size = new System.Drawing.Size(600, 355);
             this.listBoxSpawn.Sorted = true;
             this.listBoxSpawn.TabIndex = 12;
             // 
@@ -11008,6 +11024,22 @@ namespace SM64_Diagnostic
             // splitContainerVarHack.Panel1
             // 
             this.splitContainerVarHack.Panel1.AutoScroll = true;
+            this.splitContainerVarHack.Panel1.Controls.Add(this.textBoxYDeltaValue);
+            this.splitContainerVarHack.Panel1.Controls.Add(this.textBoxYPosValue);
+            this.splitContainerVarHack.Panel1.Controls.Add(this.textBoxYDeltaChange);
+            this.splitContainerVarHack.Panel1.Controls.Add(this.textBoxYPosChange);
+            this.splitContainerVarHack.Panel1.Controls.Add(this.textBoxXPosChange);
+            this.splitContainerVarHack.Panel1.Controls.Add(this.textBoxXPosValue);
+            this.splitContainerVarHack.Panel1.Controls.Add(this.labelVarHackYDeltaLabel);
+            this.splitContainerVarHack.Panel1.Controls.Add(this.labelVarHackYPosLabel);
+            this.splitContainerVarHack.Panel1.Controls.Add(this.labelVarHackXPosLabel);
+            this.splitContainerVarHack.Panel1.Controls.Add(this.buttonYDeltaAdd);
+            this.splitContainerVarHack.Panel1.Controls.Add(this.buttonYDeltaSubtract);
+            this.splitContainerVarHack.Panel1.Controls.Add(this.buttonYPosAdd);
+            this.splitContainerVarHack.Panel1.Controls.Add(this.buttonYPosSubtract);
+            this.splitContainerVarHack.Panel1.Controls.Add(this.buttonXPosAdd);
+            this.splitContainerVarHack.Panel1.Controls.Add(this.buttonXPosSubtract);
+            this.splitContainerVarHack.Panel1.Controls.Add(this.buttonUpdatePositionsAndApply);
             this.splitContainerVarHack.Panel1.Controls.Add(this.buttonVarHackApplyVariablesToMemory);
             this.splitContainerVarHack.Panel1.Controls.Add(this.buttonEnableDisableRomHack);
             this.splitContainerVarHack.Panel1.Controls.Add(this.buttonVarHackClearVariablesInMemory);
@@ -11035,6 +11067,16 @@ namespace SM64_Diagnostic
             this.buttonVarHackApplyVariablesToMemory.TabIndex = 4;
             this.buttonVarHackApplyVariablesToMemory.Text = "Apply Variables to Memory";
             this.buttonVarHackApplyVariablesToMemory.UseVisualStyleBackColor = true;
+            // 
+            // buttonEnableDisableRomHack
+            // 
+            this.buttonEnableDisableRomHack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonEnableDisableRomHack.Location = new System.Drawing.Point(7, 420);
+            this.buttonEnableDisableRomHack.Name = "buttonEnableDisableRomHack";
+            this.buttonEnableDisableRomHack.Size = new System.Drawing.Size(188, 38);
+            this.buttonEnableDisableRomHack.TabIndex = 4;
+            this.buttonEnableDisableRomHack.Text = "Enable ROM Hack";
+            this.buttonEnableDisableRomHack.UseVisualStyleBackColor = true;
             // 
             // buttonVarHackClearVariablesInMemory
             // 
@@ -13291,15 +13333,162 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // buttonEnableDisableRomHack
+            // textBoxYDeltaValue
             // 
-            this.buttonEnableDisableRomHack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonEnableDisableRomHack.Location = new System.Drawing.Point(7, 420);
-            this.buttonEnableDisableRomHack.Name = "buttonEnableDisableRomHack";
-            this.buttonEnableDisableRomHack.Size = new System.Drawing.Size(188, 38);
-            this.buttonEnableDisableRomHack.TabIndex = 4;
-            this.buttonEnableDisableRomHack.Text = "Enable ROM Hack";
-            this.buttonEnableDisableRomHack.UseVisualStyleBackColor = true;
+            this.textBoxYDeltaValue.Location = new System.Drawing.Point(31, 244);
+            this.textBoxYDeltaValue.Name = "textBoxYDeltaValue";
+            this.textBoxYDeltaValue.Size = new System.Drawing.Size(52, 20);
+            this.textBoxYDeltaValue.TabIndex = 32;
+            this.textBoxYDeltaValue.Text = "100";
+            this.textBoxYDeltaValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxYPosValue
+            // 
+            this.textBoxYPosValue.Location = new System.Drawing.Point(31, 219);
+            this.textBoxYPosValue.Name = "textBoxYPosValue";
+            this.textBoxYPosValue.Size = new System.Drawing.Size(52, 20);
+            this.textBoxYPosValue.TabIndex = 33;
+            this.textBoxYPosValue.Text = "100";
+            this.textBoxYPosValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxXPosValue
+            // 
+            this.textBoxXPosValue.Location = new System.Drawing.Point(31, 193);
+            this.textBoxXPosValue.Name = "textBoxXPosValue";
+            this.textBoxXPosValue.Size = new System.Drawing.Size(52, 20);
+            this.textBoxXPosValue.TabIndex = 34;
+            this.textBoxXPosValue.Text = "100";
+            this.textBoxXPosValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelVarHackYDeltaLabel
+            // 
+            this.labelVarHackYDeltaLabel.AutoSize = true;
+            this.labelVarHackYDeltaLabel.Location = new System.Drawing.Point(5, 247);
+            this.labelVarHackYDeltaLabel.MinimumSize = new System.Drawing.Size(20, 2);
+            this.labelVarHackYDeltaLabel.Name = "labelVarHackYDeltaLabel";
+            this.labelVarHackYDeltaLabel.Size = new System.Drawing.Size(24, 13);
+            this.labelVarHackYDeltaLabel.TabIndex = 29;
+            this.labelVarHackYDeltaLabel.Text = "ΔY:";
+            this.labelVarHackYDeltaLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelVarHackYPosLabel
+            // 
+            this.labelVarHackYPosLabel.AutoSize = true;
+            this.labelVarHackYPosLabel.Location = new System.Drawing.Point(5, 222);
+            this.labelVarHackYPosLabel.MinimumSize = new System.Drawing.Size(24, 2);
+            this.labelVarHackYPosLabel.Name = "labelVarHackYPosLabel";
+            this.labelVarHackYPosLabel.Size = new System.Drawing.Size(24, 13);
+            this.labelVarHackYPosLabel.TabIndex = 30;
+            this.labelVarHackYPosLabel.Text = "Y:";
+            this.labelVarHackYPosLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelVarHackXPosLabel
+            // 
+            this.labelVarHackXPosLabel.AutoSize = true;
+            this.labelVarHackXPosLabel.Location = new System.Drawing.Point(5, 196);
+            this.labelVarHackXPosLabel.MinimumSize = new System.Drawing.Size(24, 2);
+            this.labelVarHackXPosLabel.Name = "labelVarHackXPosLabel";
+            this.labelVarHackXPosLabel.Size = new System.Drawing.Size(24, 13);
+            this.labelVarHackXPosLabel.TabIndex = 31;
+            this.labelVarHackXPosLabel.Text = "X:";
+            this.labelVarHackXPosLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // buttonXPosSubtract
+            // 
+            this.buttonXPosSubtract.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonXPosSubtract.Location = new System.Drawing.Point(100, 193);
+            this.buttonXPosSubtract.Name = "buttonXPosSubtract";
+            this.buttonXPosSubtract.Size = new System.Drawing.Size(30, 20);
+            this.buttonXPosSubtract.TabIndex = 4;
+            this.buttonXPosSubtract.Text = "-";
+            this.buttonXPosSubtract.UseVisualStyleBackColor = true;
+            // 
+            // buttonXPosAdd
+            // 
+            this.buttonXPosAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonXPosAdd.Location = new System.Drawing.Point(165, 193);
+            this.buttonXPosAdd.Name = "buttonXPosAdd";
+            this.buttonXPosAdd.Size = new System.Drawing.Size(30, 20);
+            this.buttonXPosAdd.TabIndex = 4;
+            this.buttonXPosAdd.Text = "+";
+            this.buttonXPosAdd.UseVisualStyleBackColor = true;
+            // 
+            // textBoxXPosChange
+            // 
+            this.textBoxXPosChange.Location = new System.Drawing.Point(132, 193);
+            this.textBoxXPosChange.Name = "textBoxXPosChange";
+            this.textBoxXPosChange.Size = new System.Drawing.Size(31, 20);
+            this.textBoxXPosChange.TabIndex = 34;
+            this.textBoxXPosChange.Text = "2";
+            this.textBoxXPosChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonYPosSubtract
+            // 
+            this.buttonYPosSubtract.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonYPosSubtract.Location = new System.Drawing.Point(100, 219);
+            this.buttonYPosSubtract.Name = "buttonYPosSubtract";
+            this.buttonYPosSubtract.Size = new System.Drawing.Size(30, 20);
+            this.buttonYPosSubtract.TabIndex = 4;
+            this.buttonYPosSubtract.Text = "-";
+            this.buttonYPosSubtract.UseVisualStyleBackColor = true;
+            // 
+            // buttonYPosAdd
+            // 
+            this.buttonYPosAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonYPosAdd.Location = new System.Drawing.Point(165, 219);
+            this.buttonYPosAdd.Name = "buttonYPosAdd";
+            this.buttonYPosAdd.Size = new System.Drawing.Size(30, 20);
+            this.buttonYPosAdd.TabIndex = 4;
+            this.buttonYPosAdd.Text = "+";
+            this.buttonYPosAdd.UseVisualStyleBackColor = true;
+            // 
+            // textBoxYPosChange
+            // 
+            this.textBoxYPosChange.Location = new System.Drawing.Point(132, 219);
+            this.textBoxYPosChange.Name = "textBoxYPosChange";
+            this.textBoxYPosChange.Size = new System.Drawing.Size(31, 20);
+            this.textBoxYPosChange.TabIndex = 34;
+            this.textBoxYPosChange.Text = "2";
+            this.textBoxYPosChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonYDeltaSubtract
+            // 
+            this.buttonYDeltaSubtract.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonYDeltaSubtract.Location = new System.Drawing.Point(100, 244);
+            this.buttonYDeltaSubtract.Name = "buttonYDeltaSubtract";
+            this.buttonYDeltaSubtract.Size = new System.Drawing.Size(30, 20);
+            this.buttonYDeltaSubtract.TabIndex = 4;
+            this.buttonYDeltaSubtract.Text = "-";
+            this.buttonYDeltaSubtract.UseVisualStyleBackColor = true;
+            // 
+            // buttonYDeltaAdd
+            // 
+            this.buttonYDeltaAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonYDeltaAdd.Location = new System.Drawing.Point(165, 244);
+            this.buttonYDeltaAdd.Name = "buttonYDeltaAdd";
+            this.buttonYDeltaAdd.Size = new System.Drawing.Size(30, 20);
+            this.buttonYDeltaAdd.TabIndex = 4;
+            this.buttonYDeltaAdd.Text = "+";
+            this.buttonYDeltaAdd.UseVisualStyleBackColor = true;
+            // 
+            // textBoxYDeltaChange
+            // 
+            this.textBoxYDeltaChange.Location = new System.Drawing.Point(132, 244);
+            this.textBoxYDeltaChange.Name = "textBoxYDeltaChange";
+            this.textBoxYDeltaChange.Size = new System.Drawing.Size(31, 20);
+            this.textBoxYDeltaChange.TabIndex = 34;
+            this.textBoxYDeltaChange.Text = "2";
+            this.textBoxYDeltaChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonUpdatePositionsAndApply
+            // 
+            this.buttonUpdatePositionsAndApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonUpdatePositionsAndApply.Location = new System.Drawing.Point(7, 270);
+            this.buttonUpdatePositionsAndApply.Name = "buttonUpdatePositionsAndApply";
+            this.buttonUpdatePositionsAndApply.Size = new System.Drawing.Size(188, 38);
+            this.buttonUpdatePositionsAndApply.TabIndex = 4;
+            this.buttonUpdatePositionsAndApply.Text = "Update Positions && Apply";
+            this.buttonUpdatePositionsAndApply.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -13684,6 +13873,7 @@ namespace SM64_Diagnostic
             this.tabPageQuarterFrame.ResumeLayout(false);
             this.tabPageVarHack.ResumeLayout(false);
             this.splitContainerVarHack.Panel1.ResumeLayout(false);
+            this.splitContainerVarHack.Panel1.PerformLayout();
             this.splitContainerVarHack.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerVarHack)).EndInit();
             this.splitContainerVarHack.ResumeLayout(false);
@@ -14708,6 +14898,22 @@ namespace SM64_Diagnostic
         private Button buttonVarHackShowVariableBytesInBigEndian;
         private Button buttonVarHackShowVariableBytesInLittleEndian;
         private BinaryButton buttonEnableDisableRomHack;
+        private BetterTextbox textBoxYDeltaValue;
+        private BetterTextbox textBoxYPosValue;
+        private BetterTextbox textBoxYDeltaChange;
+        private BetterTextbox textBoxYPosChange;
+        private BetterTextbox textBoxXPosChange;
+        private BetterTextbox textBoxXPosValue;
+        private Label labelVarHackYDeltaLabel;
+        private Label labelVarHackYPosLabel;
+        private Label labelVarHackXPosLabel;
+        private Button buttonYDeltaAdd;
+        private Button buttonYDeltaSubtract;
+        private Button buttonYPosAdd;
+        private Button buttonYPosSubtract;
+        private Button buttonXPosAdd;
+        private Button buttonXPosSubtract;
+        private Button buttonUpdatePositionsAndApply;
     }
 }
 
