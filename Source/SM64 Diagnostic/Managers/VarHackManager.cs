@@ -94,6 +94,11 @@ namespace SM64_Diagnostic.Managers
                 splitContainerVarHack.Panel1.Controls["textBoxYDeltaChange"] as TextBox,
                 splitContainerVarHack.Panel1.Controls["buttonYDeltaSubtract"] as Button,
                 splitContainerVarHack.Panel1.Controls["buttonYDeltaAdd"] as Button);
+
+            Button buttonSetPositionsAndApplyVariablesToMemory =
+                splitContainerVarHack.Panel1.Controls["buttonSetPositionsAndApplyVariablesToMemory"] as Button;
+            buttonSetPositionsAndApplyVariablesToMemory.Click +=
+                (sender, e) => SetPositionsAndApplyVariablesToMemory();
         }
 
         private void InitializePositionControls(
@@ -110,6 +115,7 @@ namespace SM64_Diagnostic.Managers
                 if (!oldValue.HasValue) return;
                 int newValue = oldValue.Value - change.Value;
                 valueTextbox.Text = newValue.ToString();
+                SetPositionsAndApplyVariablesToMemory();
             };
 
             addButton.Click += (sender, e) =>
@@ -120,10 +126,11 @@ namespace SM64_Diagnostic.Managers
                 if (!oldValue.HasValue) return;
                 int newValue = oldValue.Value + change.Value;
                 valueTextbox.Text = newValue.ToString();
+                SetPositionsAndApplyVariablesToMemory();
             };
         }
 
-        private void UpdatePositionsAndApplyVariablesToMemory()
+        private void SetPositionsAndApplyVariablesToMemory()
         {
             int? xPos = ParsingUtilities.ParseIntNullable(_textBoxXPosValue.Text);
             int? yPos = ParsingUtilities.ParseIntNullable(_textBoxYPosValue.Text);

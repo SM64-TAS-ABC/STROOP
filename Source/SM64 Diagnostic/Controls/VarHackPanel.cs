@@ -67,7 +67,7 @@ namespace SM64_Diagnostic.Controls
             for (int i = 0; i < Controls.Count; i++)
             {
                 VarHackContainer varHackContainer = Controls[i] as VarHackContainer;
-                varHackContainer.SetPosition(xPos, yPos + i * yDelta);
+                varHackContainer.SetPosition(xPos, yPos - i * yDelta);
             }
         }
 
