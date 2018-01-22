@@ -102,7 +102,25 @@ namespace SM64_Diagnostic.Managers
             Button subtractButton,
             Button addButton)
         {
+            subtractButton.Click += (sender, e) =>
+            {
+                int? change = ParsingUtilities.ParseIntNullable(changeTextbox.Text);
+                if (!change.HasValue) return;
+                int? oldValue = ParsingUtilities.ParseIntNullable(valueTextbox.Text);
+                if (!oldValue.HasValue) return;
+                int newValue = oldValue.Value - change.Value;
+                valueTextbox.Text = newValue.ToString();
+            };
 
+            addButton.Click += (sender, e) =>
+            {
+                int? change = ParsingUtilities.ParseIntNullable(changeTextbox.Text);
+                if (!change.HasValue) return;
+                int? oldValue = ParsingUtilities.ParseIntNullable(valueTextbox.Text);
+                if (!oldValue.HasValue) return;
+                int newValue = oldValue.Value + change.Value;
+                valueTextbox.Text = newValue.ToString();
+            };
         }
 
         public void Update(bool updateView)
