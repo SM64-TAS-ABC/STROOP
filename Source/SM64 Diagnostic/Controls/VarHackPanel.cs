@@ -62,6 +62,15 @@ namespace SM64_Diagnostic.Controls
             Controls.Clear();
         }
 
+        public void SetPositions(int xPos, int yPos, int yDelta)
+        {
+            for (int i = 0; i < Controls.Count; i++)
+            {
+                VarHackContainer varHackContainer = Controls[i] as VarHackContainer;
+                varHackContainer.SetPosition(xPos, yPos + i * yDelta);
+            }
+        }
+
         // Methods to show variable bytes
 
         public void ShowVariableBytesInLittleEndian()

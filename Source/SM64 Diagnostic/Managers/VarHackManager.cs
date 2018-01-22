@@ -123,6 +123,16 @@ namespace SM64_Diagnostic.Managers
             };
         }
 
+        private void UpdatePositionsAndApplyVariablesToMemory()
+        {
+            int? xPos = ParsingUtilities.ParseIntNullable(_textBoxXPosValue.Text);
+            int? yPos = ParsingUtilities.ParseIntNullable(_textBoxYPosValue.Text);
+            int? yDelta = ParsingUtilities.ParseIntNullable(_textBoxYDeltaValue.Text);
+            if (!xPos.HasValue || !yPos.HasValue || !yDelta.HasValue) return;
+            _varHackPanel.SetPositions(xPos.Value, yPos.Value, yDelta.Value);
+            _varHackPanel.ApplyVariablesToMemory();
+        }
+
         public void Update(bool updateView)
         {
             if (!updateView) return;

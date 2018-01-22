@@ -263,6 +263,12 @@ namespace SM64_Diagnostic.Controls
                 text.Substring(0, Config.VarHack.MaxStringLength) : text;
         }
 
+        public void SetPosition(int xPos, int yPos)
+        {
+            textBoxXPosValue.Text = xPos.ToString();
+            textBoxYPosValue.Text = yPos.ToString();
+        }
+
         private string GetCurrentName()
         {
             return textBoxNameValue.Text;
