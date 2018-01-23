@@ -64,7 +64,7 @@ namespace SM64_Diagnostic.Controls
             uint? pointerOffset)
             : this(varHackPanel, creationIndex, false)
         {
-            textBoxNameValue.Text = CapString(varName + " ");
+            textBoxNameValue.Text = varName + " ";
             textBoxAddressValue.Text = "0x" + String.Format("{0:X}", address);
             GetRadioButtonForType(memoryType).Checked = true;
             checkBoxUseHex.Checked = useHex;
