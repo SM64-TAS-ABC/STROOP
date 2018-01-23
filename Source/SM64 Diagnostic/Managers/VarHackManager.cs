@@ -20,9 +20,9 @@ namespace SM64_Diagnostic.Managers
         private readonly VarHackPanel _varHackPanel;
         private readonly BinaryButton _buttonEnableDisableRomHack;
 
-        private readonly TextBox _textBoxXPosValue;
-        private readonly TextBox _textBoxYPosValue;
-        private readonly TextBox _textBoxYDeltaValue;
+        private readonly BetterTextbox _textBoxXPosValue;
+        private readonly BetterTextbox _textBoxYPosValue;
+        private readonly BetterTextbox _textBoxYDeltaValue;
 
         public VarHackManager(Control varHackControlControl, VarHackPanel varHackPanel)
         {
@@ -74,21 +74,24 @@ namespace SM64_Diagnostic.Managers
 
 
 
-            _textBoxXPosValue = splitContainerVarHack.Panel1.Controls["textBoxXPosValue"] as TextBox;
+            _textBoxXPosValue = splitContainerVarHack.Panel1.Controls["textBoxXPosValue"] as BetterTextbox;
+            _textBoxXPosValue.AddEnterAction(() => SetPositionsAndApplyVariablesToMemory());
             InitializePositionControls(
                 _textBoxXPosValue,
                 splitContainerVarHack.Panel1.Controls["textBoxXPosChange"] as TextBox,
                 splitContainerVarHack.Panel1.Controls["buttonXPosSubtract"] as Button,
                 splitContainerVarHack.Panel1.Controls["buttonXPosAdd"] as Button);
 
-            _textBoxYPosValue = splitContainerVarHack.Panel1.Controls["textBoxYPosValue"] as TextBox;
+            _textBoxYPosValue = splitContainerVarHack.Panel1.Controls["textBoxYPosValue"] as BetterTextbox;
+            _textBoxYPosValue.AddEnterAction(() => SetPositionsAndApplyVariablesToMemory());
             InitializePositionControls(
                 _textBoxYPosValue,
                 splitContainerVarHack.Panel1.Controls["textBoxYPosChange"] as TextBox,
                 splitContainerVarHack.Panel1.Controls["buttonYPosSubtract"] as Button,
                 splitContainerVarHack.Panel1.Controls["buttonYPosAdd"] as Button);
 
-            _textBoxYDeltaValue = splitContainerVarHack.Panel1.Controls["textBoxYDeltaValue"] as TextBox;
+            _textBoxYDeltaValue = splitContainerVarHack.Panel1.Controls["textBoxYDeltaValue"] as BetterTextbox;
+            _textBoxYDeltaValue.AddEnterAction(() => SetPositionsAndApplyVariablesToMemory());
             InitializePositionControls(
                 _textBoxYDeltaValue,
                 splitContainerVarHack.Panel1.Controls["textBoxYDeltaChange"] as TextBox,
