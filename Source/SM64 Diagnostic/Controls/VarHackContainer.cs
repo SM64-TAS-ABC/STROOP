@@ -340,7 +340,7 @@ namespace SM64_Diagnostic.Controls
             if (type == typeof(int)) return radioButtonInt;
             if (type == typeof(uint)) return radioButtonUInt;
             if (type == typeof(float)) return radioButtonFloat;
-            throw new ArgumentOutOfRangeException();
+            return radioButtonFloat;
         }
 
         private bool GetCurrentUseHex()
