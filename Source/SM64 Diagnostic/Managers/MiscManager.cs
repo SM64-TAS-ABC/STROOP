@@ -20,7 +20,22 @@ namespace SM64_Diagnostic.Managers
             : base(variables, variableTable)
         {
             SplitContainer splitContainerMisc = miscControl.Controls["splitContainerMisc"] as SplitContainer;
+
             _checkBoxTurnOffMusic = splitContainerMisc.Panel1.Controls["checkBoxTurnOffMusic"] as CheckBox;
+
+            GroupBox groupBoxRNGIndexTester = splitContainerMisc.Panel1.Controls["groupBoxRNGIndexTester"] as GroupBox;
+            TextBox textBoxRNGIndexTester = groupBoxRNGIndexTester.Controls["textBoxRNGIndexTester"] as TextBox;
+            Button buttonRNGIndexTester = groupBoxRNGIndexTester.Controls["buttonRNGIndexTester"] as Button;
+            buttonRNGIndexTester.Click += (sender, e) =>
+            {
+                int? rngIndexNullable = ParsingUtilities.ParseIntNullable(textBoxRNGIndexTester.Text);
+                if (!rngIndexNullable.HasValue) return;
+                int rngIndex = rngIndexNullable.Value;
+                ushort rngValue = RngIndexer.GetRngValue(rngIndex);
+                Config.Stream.SetValue(rngValue, Config.RngAddress);
+                int nextRngIndex = rngIndex + 1;
+                textBoxRNGIndexTester.Text = nextRngIndex.ToString();
+            };
         }
 
         public override void Update(bool updateView)
