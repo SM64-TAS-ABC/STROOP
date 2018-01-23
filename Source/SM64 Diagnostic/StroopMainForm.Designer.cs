@@ -33,7 +33,7 @@ namespace SM64_Diagnostic
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -1456,7 +1456,7 @@ namespace SM64_Diagnostic
             this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
             this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 154);
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 153);
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
@@ -8466,7 +8466,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(699, 437);
+            this.glControlMap.Size = new System.Drawing.Size(696, 437);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -9562,7 +9562,7 @@ namespace SM64_Diagnostic
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(379, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(362, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -9693,8 +9693,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -9957,11 +9957,13 @@ namespace SM64_Diagnostic
             // splitContainerHacks.Panel1
             // 
             this.splitContainerHacks.Panel1.Controls.Add(this.groupBoxHackRam);
+            this.splitContainerHacks.Panel1.Padding = new System.Windows.Forms.Padding(2);
             this.splitContainerHacks.Panel1MinSize = 0;
             // 
             // splitContainerHacks.Panel2
             // 
             this.splitContainerHacks.Panel2.Controls.Add(this.groupBoxHackSpawn);
+            this.splitContainerHacks.Panel2.Padding = new System.Windows.Forms.Padding(2);
             this.splitContainerHacks.Panel2MinSize = 0;
             this.splitContainerHacks.Size = new System.Drawing.Size(915, 463);
             this.splitContainerHacks.SplitterDistance = 301;
@@ -9970,14 +9972,14 @@ namespace SM64_Diagnostic
             // 
             // groupBoxHackRam
             // 
-            this.groupBoxHackRam.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxHackRam.Controls.Add(this.labelPureInterpretterRequire);
             this.groupBoxHackRam.Controls.Add(this.checkedListBoxHacks);
-            this.groupBoxHackRam.Location = new System.Drawing.Point(3, 3);
+            this.groupBoxHackRam.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxHackRam.Location = new System.Drawing.Point(2, 2);
+            this.groupBoxHackRam.Margin = new System.Windows.Forms.Padding(0);
             this.groupBoxHackRam.Name = "groupBoxHackRam";
-            this.groupBoxHackRam.Size = new System.Drawing.Size(295, 457);
+            this.groupBoxHackRam.Padding = new System.Windows.Forms.Padding(0);
+            this.groupBoxHackRam.Size = new System.Drawing.Size(297, 459);
             this.groupBoxHackRam.TabIndex = 13;
             this.groupBoxHackRam.TabStop = false;
             this.groupBoxHackRam.Text = "RAM Hacks*";
@@ -9987,7 +9989,7 @@ namespace SM64_Diagnostic
             this.labelPureInterpretterRequire.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelPureInterpretterRequire.AutoSize = true;
             this.labelPureInterpretterRequire.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPureInterpretterRequire.Location = new System.Drawing.Point(166, 1);
+            this.labelPureInterpretterRequire.Location = new System.Drawing.Point(170, -1);
             this.labelPureInterpretterRequire.Name = "labelPureInterpretterRequire";
             this.labelPureInterpretterRequire.Size = new System.Drawing.Size(129, 13);
             this.labelPureInterpretterRequire.TabIndex = 8;
@@ -9999,16 +10001,13 @@ namespace SM64_Diagnostic
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.checkedListBoxHacks.FormattingEnabled = true;
-            this.checkedListBoxHacks.Location = new System.Drawing.Point(6, 19);
+            this.checkedListBoxHacks.Location = new System.Drawing.Point(3, 19);
             this.checkedListBoxHacks.Name = "checkedListBoxHacks";
-            this.checkedListBoxHacks.Size = new System.Drawing.Size(283, 349);
+            this.checkedListBoxHacks.Size = new System.Drawing.Size(291, 349);
             this.checkedListBoxHacks.TabIndex = 9;
             // 
             // groupBoxHackSpawn
             // 
-            this.groupBoxHackSpawn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxHackSpawn.Controls.Add(this.labelSpawnBehavior);
             this.groupBoxHackSpawn.Controls.Add(this.textBoxSpawnBehavior);
             this.groupBoxHackSpawn.Controls.Add(this.labelSpawnHint);
@@ -10019,9 +10018,11 @@ namespace SM64_Diagnostic
             this.groupBoxHackSpawn.Controls.Add(this.textBoxSpawnGfxId);
             this.groupBoxHackSpawn.Controls.Add(this.buttonHackSpawn);
             this.groupBoxHackSpawn.Controls.Add(this.listBoxSpawn);
-            this.groupBoxHackSpawn.Location = new System.Drawing.Point(4, 4);
+            this.groupBoxHackSpawn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxHackSpawn.Location = new System.Drawing.Point(2, 2);
+            this.groupBoxHackSpawn.Margin = new System.Windows.Forms.Padding(0);
             this.groupBoxHackSpawn.Name = "groupBoxHackSpawn";
-            this.groupBoxHackSpawn.Size = new System.Drawing.Size(609, 456);
+            this.groupBoxHackSpawn.Size = new System.Drawing.Size(609, 459);
             this.groupBoxHackSpawn.TabIndex = 0;
             this.groupBoxHackSpawn.TabStop = false;
             this.groupBoxHackSpawn.Text = "Spawner";
@@ -10030,7 +10031,7 @@ namespace SM64_Diagnostic
             // 
             this.labelSpawnBehavior.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelSpawnBehavior.AutoSize = true;
-            this.labelSpawnBehavior.Location = new System.Drawing.Point(3, 408);
+            this.labelSpawnBehavior.Location = new System.Drawing.Point(3, 411);
             this.labelSpawnBehavior.Name = "labelSpawnBehavior";
             this.labelSpawnBehavior.Size = new System.Drawing.Size(52, 13);
             this.labelSpawnBehavior.TabIndex = 27;
@@ -10039,7 +10040,7 @@ namespace SM64_Diagnostic
             // textBoxSpawnBehavior
             // 
             this.textBoxSpawnBehavior.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxSpawnBehavior.Location = new System.Drawing.Point(57, 405);
+            this.textBoxSpawnBehavior.Location = new System.Drawing.Point(57, 408);
             this.textBoxSpawnBehavior.Name = "textBoxSpawnBehavior";
             this.textBoxSpawnBehavior.Size = new System.Drawing.Size(138, 20);
             this.textBoxSpawnBehavior.TabIndex = 26;
@@ -10048,7 +10049,7 @@ namespace SM64_Diagnostic
             // 
             this.labelSpawnHint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelSpawnHint.AutoSize = true;
-            this.labelSpawnHint.Location = new System.Drawing.Point(315, 435);
+            this.labelSpawnHint.Location = new System.Drawing.Point(315, 438);
             this.labelSpawnHint.Name = "labelSpawnHint";
             this.labelSpawnHint.Size = new System.Drawing.Size(127, 13);
             this.labelSpawnHint.TabIndex = 25;
@@ -10057,7 +10058,7 @@ namespace SM64_Diagnostic
             // buttonSpawnReset
             // 
             this.buttonSpawnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonSpawnReset.Location = new System.Drawing.Point(200, 431);
+            this.buttonSpawnReset.Location = new System.Drawing.Point(200, 434);
             this.buttonSpawnReset.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSpawnReset.Name = "buttonSpawnReset";
             this.buttonSpawnReset.Size = new System.Drawing.Size(110, 21);
@@ -10069,7 +10070,7 @@ namespace SM64_Diagnostic
             // 
             this.labelSpawnExtra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelSpawnExtra.AutoSize = true;
-            this.labelSpawnExtra.Location = new System.Drawing.Point(109, 434);
+            this.labelSpawnExtra.Location = new System.Drawing.Point(109, 437);
             this.labelSpawnExtra.Name = "labelSpawnExtra";
             this.labelSpawnExtra.Size = new System.Drawing.Size(34, 13);
             this.labelSpawnExtra.TabIndex = 23;
@@ -10079,7 +10080,7 @@ namespace SM64_Diagnostic
             // 
             this.labelSpawnGfxId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelSpawnGfxId.AutoSize = true;
-            this.labelSpawnGfxId.Location = new System.Drawing.Point(6, 435);
+            this.labelSpawnGfxId.Location = new System.Drawing.Point(6, 438);
             this.labelSpawnGfxId.Name = "labelSpawnGfxId";
             this.labelSpawnGfxId.Size = new System.Drawing.Size(45, 13);
             this.labelSpawnGfxId.TabIndex = 22;
@@ -10088,7 +10089,7 @@ namespace SM64_Diagnostic
             // textBoxSpawnExtra
             // 
             this.textBoxSpawnExtra.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxSpawnExtra.Location = new System.Drawing.Point(149, 431);
+            this.textBoxSpawnExtra.Location = new System.Drawing.Point(149, 434);
             this.textBoxSpawnExtra.Name = "textBoxSpawnExtra";
             this.textBoxSpawnExtra.Size = new System.Drawing.Size(46, 20);
             this.textBoxSpawnExtra.TabIndex = 21;
@@ -10096,7 +10097,7 @@ namespace SM64_Diagnostic
             // textBoxSpawnGfxId
             // 
             this.textBoxSpawnGfxId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxSpawnGfxId.Location = new System.Drawing.Point(57, 431);
+            this.textBoxSpawnGfxId.Location = new System.Drawing.Point(57, 434);
             this.textBoxSpawnGfxId.Name = "textBoxSpawnGfxId";
             this.textBoxSpawnGfxId.Size = new System.Drawing.Size(46, 20);
             this.textBoxSpawnGfxId.TabIndex = 20;
@@ -10104,7 +10105,7 @@ namespace SM64_Diagnostic
             // buttonHackSpawn
             // 
             this.buttonHackSpawn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonHackSpawn.Location = new System.Drawing.Point(200, 404);
+            this.buttonHackSpawn.Location = new System.Drawing.Point(200, 407);
             this.buttonHackSpawn.Margin = new System.Windows.Forms.Padding(2);
             this.buttonHackSpawn.Name = "buttonHackSpawn";
             this.buttonHackSpawn.Size = new System.Drawing.Size(110, 21);
