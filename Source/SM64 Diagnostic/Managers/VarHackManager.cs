@@ -143,18 +143,18 @@ namespace SM64_Diagnostic.Managers
             _varHackPanel.ApplyVariablesToMemory();
         }
 
-        public void Update(bool updateView)
+        public void AddVariable(string varName, uint address, Type memoryType, bool useHex, uint? pointerOffset)
         {
-            if (!updateView) return;
-
-            _buttonEnableDisableRomHack.UpdateButton();
+            _varHackPanel.AddNewControlWithParameters(varName, address, memoryType, useHex, pointerOffset);
         }
 
-        public void AddVariable(string varName, uint address, Type memoryType, bool useHex, uint? pointerOffset)
+        public void Update(bool updateView)
         {
             _varHackPanel.UpdateControls();
 
-            _varHackPanel.AddNewControlWithParameters(varName, address, memoryType, useHex, pointerOffset);
+            if (!updateView) return;
+
+            _buttonEnableDisableRomHack.UpdateButton();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SM64_Diagnostic.Structs.Configurations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -65,6 +66,11 @@ namespace SM64_Diagnostic.Utilities
                 rng = (ushort)(s1 ^ 0x8180);
 
             return rng;
+        }
+
+        public static int GetRngIndex()
+        {
+            return GetRngIndex(Config.Stream.GetUInt16(Config.RngAddress));
         }
 
         public static int GetRngIndex(ushort rngValue)

@@ -87,6 +87,7 @@ namespace SM64_Diagnostic.Controls
             : this(varHackPanel, creationIndex, false)
         {
             _getterFunction = getterFunction;
+            checkBoxNoNumber.Checked = true;
         }
 
         private void SetDefaultValues(int creationIndex, bool usePreWrittenVar)

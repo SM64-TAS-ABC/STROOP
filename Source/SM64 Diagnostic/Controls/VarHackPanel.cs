@@ -1,5 +1,6 @@
 ﻿using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Structs.Configurations;
+using SM64_Diagnostic.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -65,6 +66,16 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
+        public void AddNewControlWithGetterFunction(Func<string> getterFunction)
+        {
+            if (Controls.Count >= Config.VarHack.MaxPossibleVars) return;
+            VarHackContainer varHackContainer = new VarHackContainer(this, Controls.Count, getterFunction);
+            lock (_objectLock)
+            {
+                Controls.Add(varHackContainer);
+            }
+        }
+
         // Methods for buttons to modify the controls
 
         public void AddNewControl()
@@ -119,6 +130,14 @@ namespace SM64_Diagnostic.Controls
 
         public void ShowVariableBytesInBigEndian()
         {
+            //////////////////////////////
+
+            Func<string> getterFunction = () => "INDEX " + RngIndexer.GetRngIndex().ToString();
+            AddNewControlWithGetterFunction(getterFunction);
+            return;
+
+            //////////////////////////////
+
             TriangleInfoForm form = new TriangleInfoForm();
             StringBuilder stringBuilder = new StringBuilder();
             lock (_objectLock)
