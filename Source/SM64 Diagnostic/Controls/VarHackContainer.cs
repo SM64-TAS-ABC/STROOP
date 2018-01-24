@@ -37,6 +37,8 @@ namespace SM64_Diagnostic.Controls
         private PictureBox pictureBoxDownArrow;
         private PictureBox pictureBoxRedX;
 
+        private Func<string> _getterFunction;
+
         private static readonly Pen _borderPen = new Pen(Color.Black, 3);
 
         private readonly VarHackPanel _varHackPanel;
@@ -45,6 +47,7 @@ namespace SM64_Diagnostic.Controls
         {
             InitializeComponent();
             _varHackPanel = varHackPanel;
+            _getterFunction = null;
 
             pictureBoxUpArrow.Click += (sender, e) => _varHackPanel.MoveUpControl(this);
             pictureBoxDownArrow.Click += (sender, e) => _varHackPanel.MoveDownControl(this);
@@ -363,9 +366,17 @@ namespace SM64_Diagnostic.Controls
             return ParsingUtilities.ParseUShortNullable(textBoxYPosValue.Text);
         }
 
+        public bool UpdatesContinuously()
+        {
+            return _getterFunction != null;
+        }
+
         public void UpdateControl()
         {
-
+            if (_getterFunction != null)
+            {
+                textBoxNameValue.Text = _getterFunction();
+            }
         }
 
         private void InitializeComponent()
