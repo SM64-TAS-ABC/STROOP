@@ -30,6 +30,8 @@ namespace SM64_Diagnostic.Managers
 
             _varHackPanel = varHackPanel;
 
+            // Top buttons
+
             SplitContainer splitContainerVarHack =
                 varHackControlControl.Controls["splitContainerVarHack"] as SplitContainer;
 
@@ -37,6 +39,21 @@ namespace SM64_Diagnostic.Managers
                 splitContainerVarHack.Panel1.Controls["buttonVarHackAddNewVariable"] as Button;
             buttonVarHackAddNewVariable.Click +=
                 (sender, e) => _varHackPanel.AddNewControl();
+
+            ControlUtilities.AddContextMenuStripFunctions(
+                buttonVarHackAddNewVariable,
+                new List<string>()
+                {
+                    "RNG Index",
+                    "Mario Action",
+                    "Mario Animation",
+                },
+                new List<Action>()
+                {
+                    () => AddVariable(() => "INDEX " + RngIndexer.GetRngIndex()),
+                    () => AddVariable(() => "ACTION " + Config.MarioActions.GetActionName()),
+                    () => AddVariable(() => "ANIMATION " + Config.MarioAnimations.GetAnimationName()),
+                });
 
             Button buttonVarHackClearVariables =
                 splitContainerVarHack.Panel1.Controls["buttonVarHackClearVariables"] as Button;
@@ -52,6 +69,8 @@ namespace SM64_Diagnostic.Managers
                 splitContainerVarHack.Panel1.Controls["buttonVarHackShowVariableBytesInBigEndian"] as Button;
             buttonVarHackShowVariableBytesInBigEndian.Click +=
                 (sender, e) => _varHackPanel.ShowVariableBytesInBigEndian();
+
+            // Bottom buttons
 
             Button buttonVarHackApplyVariablesToMemory =
                 splitContainerVarHack.Panel1.Controls["buttonVarHackApplyVariablesToMemory"] as Button;
@@ -72,7 +91,7 @@ namespace SM64_Diagnostic.Managers
                 () => Config.VarHack.ShowVarRomHack.ClearPayload(),
                 () => Config.VarHack.ShowVarRomHack.Enabled);
 
-
+            // Middle buttons
 
             _textBoxXPosValue = splitContainerVarHack.Panel1.Controls["textBoxXPosValue"] as BetterTextbox;
             _textBoxXPosValue.AddEnterAction(() => SetPositionsAndApplyVariablesToMemory());
@@ -146,6 +165,11 @@ namespace SM64_Diagnostic.Managers
         public void AddVariable(string varName, uint address, Type memoryType, bool useHex, uint? pointerOffset)
         {
             _varHackPanel.AddNewControlWithParameters(varName, address, memoryType, useHex, pointerOffset);
+        }
+
+        public void AddVariable(Func<string> getterFunction)
+        {
+            _varHackPanel.AddNewControlWithGetterFunction(getterFunction);
         }
 
         public void Update(bool updateView)

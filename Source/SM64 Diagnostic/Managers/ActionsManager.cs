@@ -32,16 +32,8 @@ namespace SM64_Diagnostic.Managers
 
             base.Update();
 
-            // Update action label
-            uint action = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.ActionOffset);
-            string actionDescription = Config.MarioActions.GetActionName(action);
-            actionDescriptionLabel.Text = actionDescription;
-
-            // Update animation label
-            uint marioObjRef = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
-            short animation = Config.Stream.GetInt16(marioObjRef + Config.Mario.ObjectAnimationOffset);
-            string animationDescription = Config.MarioAnimations.GetAnimationName(animation);
-            animationDescriptionLabel.Text = animationDescription;
+            actionDescriptionLabel.Text = Config.MarioActions.GetActionName();
+            animationDescriptionLabel.Text = Config.MarioAnimations.GetAnimationName();
         }
     }
 }

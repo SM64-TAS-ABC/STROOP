@@ -130,14 +130,6 @@ namespace SM64_Diagnostic.Controls
 
         public void ShowVariableBytesInBigEndian()
         {
-            //////////////////////////////
-
-            Func<string> getterFunction = () => "INDEX " + RngIndexer.GetRngIndex().ToString();
-            AddNewControlWithGetterFunction(getterFunction);
-            return;
-
-            //////////////////////////////
-
             TriangleInfoForm form = new TriangleInfoForm();
             StringBuilder stringBuilder = new StringBuilder();
             lock (_objectLock)

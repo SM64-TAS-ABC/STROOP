@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SM64_Diagnostic.Structs.Configurations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -51,6 +52,18 @@ namespace SM64_Diagnostic.Structs
 
             // Add action to table
             _table.Add(actionRef.Action, actionRef);
+        }
+
+        public string GetActionName()
+        {
+            uint currentAction = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.ActionOffset);
+            return GetActionName(currentAction);
+        }
+
+        public string GetPrevActionName()
+        {
+            uint prevAction = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.PrevActionOffset);
+            return GetActionName(prevAction);
         }
 
         public string GetActionName(uint action)

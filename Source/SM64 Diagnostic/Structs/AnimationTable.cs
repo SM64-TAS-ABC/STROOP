@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SM64_Diagnostic.Structs.Configurations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +29,13 @@ namespace SM64_Diagnostic.Structs
         public void Add(AnimationReference animationRef)
         {
             _table.Add(animationRef.AnimationValue, animationRef);
+        }
+
+        public string GetAnimationName()
+        {
+            uint marioObjRef = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
+            short animation = Config.Stream.GetInt16(marioObjRef + Config.Mario.ObjectAnimationOffset);
+            return GetAnimationName(animation);
         }
 
         public string GetAnimationName(int animation)
