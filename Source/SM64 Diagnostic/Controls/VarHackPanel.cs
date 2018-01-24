@@ -12,31 +12,43 @@ namespace SM64_Diagnostic.Controls
 {
     public class VarHackPanel : NoTearFlowLayoutPanel
     {
+        private readonly Object _objectLock;
+
         public VarHackPanel()
         {
+            _objectLock = new Object();
         }
 
         // Methods for buttons on the controls
 
         public void MoveUpControl(VarHackContainer varHackContainer)
         {
-            int index = Controls.IndexOf(varHackContainer);
-            if (index == 0) return;
-            int newIndex = index - 1;
-            Controls.SetChildIndex(varHackContainer, newIndex);
+            lock (_objectLock)
+            {
+                int index = Controls.IndexOf(varHackContainer);
+                if (index == 0) return;
+                int newIndex = index - 1;
+                Controls.SetChildIndex(varHackContainer, newIndex);
+            }
         }
 
         public void MoveDownControl(VarHackContainer varHackContainer)
         {
-            int index = Controls.IndexOf(varHackContainer);
-            if (index == Controls.Count - 1) return;
-            int newIndex = index + 1;
-            Controls.SetChildIndex(varHackContainer, newIndex);
+            lock (_objectLock)
+            {
+                int index = Controls.IndexOf(varHackContainer);
+                if (index == Controls.Count - 1) return;
+                int newIndex = index + 1;
+                Controls.SetChildIndex(varHackContainer, newIndex);
+            }
         }
 
         public void RemoveControl(VarHackContainer varHackContainer)
         {
-            Controls.Remove(varHackContainer);
+            lock (_objectLock)
+            {
+                Controls.Remove(varHackContainer);
+            }
         }
 
         // Methods from a watch var control
@@ -45,7 +57,10 @@ namespace SM64_Diagnostic.Controls
         {
             if (Controls.Count >= Config.VarHack.MaxPossibleVars) return;
             VarHackContainer varHackContainer = new VarHackContainer(this, Controls.Count, varName, address, memoryType, useHex, pointerOffset);
-            Controls.Add(varHackContainer);
+            lock (_objectLock)
+            {
+                Controls.Add(varHackContainer);
+            }
         }
 
         // Methods for buttons to modify the controls
@@ -54,20 +69,29 @@ namespace SM64_Diagnostic.Controls
         {
             if (Controls.Count >= Config.VarHack.MaxPossibleVars) return;
             VarHackContainer varHackContainer = new VarHackContainer(this, Controls.Count, true);
-            Controls.Add(varHackContainer);
+            lock (_objectLock)
+            {
+                Controls.Add(varHackContainer);
+            }
         }
 
         public void ClearControls()
         {
-            Controls.Clear();
+            lock (_objectLock)
+            {
+                Controls.Clear();
+            }
         }
 
         public void SetPositions(int xPos, int yPos, int yDelta)
         {
-            for (int i = 0; i < Controls.Count; i++)
+            lock (_objectLock)
             {
-                VarHackContainer varHackContainer = Controls[i] as VarHackContainer;
-                varHackContainer.SetPosition(xPos, yPos - i * yDelta);
+                for (int i = 0; i < Controls.Count; i++)
+                {
+                    VarHackContainer varHackContainer = Controls[i] as VarHackContainer;
+                    varHackContainer.SetPosition(xPos, yPos - i * yDelta);
+                }
             }
         }
 
@@ -77,12 +101,15 @@ namespace SM64_Diagnostic.Controls
         {
             TriangleInfoForm form = new TriangleInfoForm();
             StringBuilder stringBuilder = new StringBuilder();
-            foreach (Control control in Controls)
+            lock (_objectLock)
             {
-                VarHackContainer varHackContainer = control as VarHackContainer;
-                byte[] bytes = varHackContainer.GetLittleEndianByteArray();
-                string bytesString = VarHackContainer.ConvertBytesToString(bytes);
-                stringBuilder.Append(bytesString);
+                foreach (Control control in Controls)
+                {
+                    VarHackContainer varHackContainer = control as VarHackContainer;
+                    byte[] bytes = varHackContainer.GetLittleEndianByteArray();
+                    string bytesString = VarHackContainer.ConvertBytesToString(bytes);
+                    stringBuilder.Append(bytesString);
+                }
             }
             form.SetTitleAndText("Little Endian Bytes", stringBuilder.ToString());
             form.Show();
@@ -92,12 +119,15 @@ namespace SM64_Diagnostic.Controls
         {
             TriangleInfoForm form = new TriangleInfoForm();
             StringBuilder stringBuilder = new StringBuilder();
-            foreach (Control control in Controls)
+            lock (_objectLock)
             {
-                VarHackContainer varHackContainer = control as VarHackContainer;
-                byte[] bytes = varHackContainer.GetBigEndianByteArray();
-                string bytesString = VarHackContainer.ConvertBytesToString(bytes);
-                stringBuilder.Append(bytesString);
+                foreach (Control control in Controls)
+                {
+                    VarHackContainer varHackContainer = control as VarHackContainer;
+                    byte[] bytes = varHackContainer.GetBigEndianByteArray();
+                    string bytesString = VarHackContainer.ConvertBytesToString(bytes);
+                    stringBuilder.Append(bytesString);
+                }
             }
             form.SetTitleAndText("Big Endian Bytes", stringBuilder.ToString());
             form.Show();
@@ -107,22 +137,25 @@ namespace SM64_Diagnostic.Controls
 
         public void ApplyVariablesToMemory()
         {
-            byte[] emptyBytes = new byte[Config.VarHack.StructSize];
-            for (int i = 0; i < Config.VarHack.MaxPossibleVars; i++)
+            lock (_objectLock)
             {
-                uint address = Config.VarHack.VarHackMemoryAddress + (uint)i * Config.VarHack.StructSize;
-                byte[] bytes;
-                if (i < Controls.Count)
+                byte[] emptyBytes = new byte[Config.VarHack.StructSize];
+                for (int i = 0; i < Config.VarHack.MaxPossibleVars; i++)
                 {
-                    VarHackContainer varHackContainer = Controls[i] as VarHackContainer;
-                    bytes = varHackContainer.GetLittleEndianByteArray();
+                    uint address = Config.VarHack.VarHackMemoryAddress + (uint)i * Config.VarHack.StructSize;
+                    byte[] bytes;
+                    if (i < Controls.Count)
+                    {
+                        VarHackContainer varHackContainer = Controls[i] as VarHackContainer;
+                        bytes = varHackContainer.GetLittleEndianByteArray();
+                    }
+                    else
+                    {
+                        bytes = emptyBytes;
+                    }
+                    if (bytes == null) continue;
+                    Config.Stream.WriteRamLittleEndian(bytes, address);
                 }
-                else
-                {
-                    bytes = emptyBytes;
-                }
-                if (bytes == null) continue;
-                Config.Stream.WriteRamLittleEndian(bytes, address);
             }
         }
 
