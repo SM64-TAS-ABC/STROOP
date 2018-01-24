@@ -80,6 +80,15 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
+        public VarHackContainer(
+            VarHackPanel varHackPanel,
+            int creationIndex,
+            Func<string> getterFunction)
+            : this(varHackPanel, creationIndex, false)
+        {
+            _getterFunction = getterFunction;
+        }
+
         private void SetDefaultValues(int creationIndex, bool usePreWrittenVar)
         {
             int xPos = 10;

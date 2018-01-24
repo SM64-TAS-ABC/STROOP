@@ -12,6 +12,8 @@ namespace SM64_Diagnostic.Controls
 {
     public class VarHackPanel : NoTearFlowLayoutPanel
     {
+        private static byte[] EMPTY_BYTES = new byte[Config.VarHack.StructSize];
+
         private readonly Object _objectLock;
 
         public VarHackPanel()
@@ -139,24 +141,28 @@ namespace SM64_Diagnostic.Controls
         {
             lock (_objectLock)
             {
-                byte[] emptyBytes = new byte[Config.VarHack.StructSize];
                 for (int i = 0; i < Config.VarHack.MaxPossibleVars; i++)
                 {
-                    uint address = Config.VarHack.VarHackMemoryAddress + (uint)i * Config.VarHack.StructSize;
-                    byte[] bytes;
-                    if (i < Controls.Count)
-                    {
-                        VarHackContainer varHackContainer = Controls[i] as VarHackContainer;
-                        bytes = varHackContainer.GetLittleEndianByteArray();
-                    }
-                    else
-                    {
-                        bytes = emptyBytes;
-                    }
-                    if (bytes == null) continue;
-                    Config.Stream.WriteRamLittleEndian(bytes, address);
+                    ApplyVariableToMemory(i);
                 }
             }
+        }
+
+        private void ApplyVariableToMemory(int index)
+        {
+            uint address = Config.VarHack.VarHackMemoryAddress + (uint)index * Config.VarHack.StructSize;
+            byte[] bytes;
+            if (index < Controls.Count)
+            {
+                VarHackContainer varHackContainer = Controls[index] as VarHackContainer;
+                bytes = varHackContainer.GetLittleEndianByteArray();
+            }
+            else
+            {
+                bytes = EMPTY_BYTES;
+            }
+            if (bytes == null) return;
+            Config.Stream.WriteRamLittleEndian(bytes, address);
         }
 
         public void ClearVariablesInMemory()
@@ -168,15 +174,21 @@ namespace SM64_Diagnostic.Controls
                 Config.Stream.WriteRamLittleEndian(emptyBytes, address);
             }
         }
+        
+        // Update method
 
         public void UpdateControls()
         {
             lock (_objectLock)
             {
-                foreach (Control control in Controls)
+                for (int i = 0; i < Controls.Count; i++)
                 {
-                    VarHackContainer varHackContainer = control as VarHackContainer;
+                    VarHackContainer varHackContainer = Controls[i] as VarHackContainer;
                     varHackContainer.UpdateControl();
+                    if (varHackContainer.UpdatesContinuously())
+                    {
+                        ApplyVariableToMemory(i);
+                    }
                 }
             }
         }
