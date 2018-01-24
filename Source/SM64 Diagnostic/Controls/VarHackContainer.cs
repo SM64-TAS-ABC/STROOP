@@ -363,6 +363,11 @@ namespace SM64_Diagnostic.Controls
             return ParsingUtilities.ParseUShortNullable(textBoxYPosValue.Text);
         }
 
+        public void UpdateControl()
+        {
+
+        }
+
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VarHackContainerForm));

@@ -169,5 +169,17 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
+        public void UpdateControls()
+        {
+            lock (_objectLock)
+            {
+                foreach (Control control in Controls)
+                {
+                    VarHackContainer varHackContainer = control as VarHackContainer;
+                    varHackContainer.UpdateControl();
+                }
+            }
+        }
+
     }
 }
