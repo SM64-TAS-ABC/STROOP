@@ -181,7 +181,7 @@ namespace SM64_Diagnostic.Managers
             _varHackPanel.AddNewControlWithGetterFunction(getterFunction);
         }
 
-        public string GetDecimalDisplayString(double value, int numDigits = 4, bool usePadding = false)
+        public string GetDecimalDisplayString(double value, int numDigits = 4, bool usePadding = true)
         {
             string stringValue = Math.Round(value, numDigits).ToString();
             if (usePadding)
