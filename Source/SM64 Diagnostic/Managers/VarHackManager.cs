@@ -45,6 +45,7 @@ namespace SM64_Diagnostic.Managers
                 {
                     "RNG Index",
                     "Floor YNorm",
+                    "Defacto Speed",
                     "Mario Action",
                     "Mario Animation",
                 },
@@ -55,8 +56,9 @@ namespace SM64_Diagnostic.Managers
                     {
                         uint triFloorAddress = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
                         float yNorm = Config.Stream.GetSingle(triFloorAddress + Config.TriangleOffsets.NormY);
-                        return "YNorm " + GetDecimalDisplayString(yNorm, 4, true);
+                        return "YNorm " + FormatDouble(yNorm, 4, true);
                     }),
+                    () => AddVariable(() => "Defacto " + FormatInteger(WatchVariableSpecialUtilities.GetMarioDeFactoSpeed())),
                     () => AddVariable(() => "Action " + Config.MarioActions.GetActionName()),
                     () => AddVariable(() => "Animation " + Config.MarioAnimations.GetAnimationName()),
                 });
@@ -181,7 +183,7 @@ namespace SM64_Diagnostic.Managers
             _varHackPanel.AddNewControlWithGetterFunction(getterFunction);
         }
 
-        public string GetDecimalDisplayString(double value, int numDigits = 4, bool usePadding = true)
+        public string FormatDouble(double value, int numDigits = 4, bool usePadding = true)
         {
             string stringValue = Math.Round(value, numDigits).ToString();
             if (usePadding)
@@ -198,6 +200,13 @@ namespace SM64_Diagnostic.Managers
                 }
             }
             stringValue = stringValue.Replace(".", Config.VarHack.CoinChar);
+            return stringValue;
+        }
+
+        public string FormatInteger(double value)
+        {
+            string stringValue = Math.Truncate(value).ToString();
+            stringValue = stringValue.Replace("-", "M");
             return stringValue;
         }
 
