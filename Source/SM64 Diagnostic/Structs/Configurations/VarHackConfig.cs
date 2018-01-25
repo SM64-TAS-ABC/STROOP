@@ -25,6 +25,9 @@ namespace SM64_Diagnostic.Structs.Configurations
         public readonly int DefaultYPos = 192;
         public readonly int DefaultYDelta = 17;
 
+        public readonly int CharacterWidth = 8;
+        public readonly int CharacterHeight = 12;
+
         public readonly int MaxStringLength = 17;
 
         public RomHack ShowVarRomHack;
