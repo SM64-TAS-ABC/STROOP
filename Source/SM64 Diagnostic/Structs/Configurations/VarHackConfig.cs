@@ -28,6 +28,10 @@ namespace SM64_Diagnostic.Structs.Configurations
         public readonly int CharacterWidth = 8;
         public readonly int CharacterHeight = 12;
 
+        public readonly string CoinChar = Char.ConvertFromUtf32(43);
+        public readonly string MarioHeadChar = Char.ConvertFromUtf32(44);
+        public readonly string StarChar = Char.ConvertFromUtf32(45);
+
         public readonly int MaxStringLength = 17;
 
         public RomHack ShowVarRomHack;
