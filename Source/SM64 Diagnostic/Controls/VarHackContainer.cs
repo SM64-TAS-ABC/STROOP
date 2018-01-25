@@ -92,8 +92,8 @@ namespace SM64_Diagnostic.Controls
 
         private void SetDefaultValues(int creationIndex, bool usePreWrittenVar)
         {
-            int xPos = 10;
-            int yPos = 192 - creationIndex * 17;
+            int xPos = Config.VarHack.DefaultXPos;
+            int yPos = Config.VarHack.DefaultYPos - creationIndex * Config.VarHack.DefaultYDelta;
             textBoxXPosValue.Text = xPos.ToString();
             textBoxYPosValue.Text = yPos.ToString();
             if (!usePreWrittenVar) return;

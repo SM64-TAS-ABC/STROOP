@@ -94,6 +94,7 @@ namespace SM64_Diagnostic.Managers
 
             _textBoxXPosValue = splitContainerVarHack.Panel1.Controls["textBoxXPosValue"] as BetterTextbox;
             _textBoxXPosValue.AddEnterAction(() => SetPositionsAndApplyVariablesToMemory());
+            _textBoxXPosValue.Text = Config.VarHack.DefaultXPos.ToString();
             InitializePositionControls(
                 _textBoxXPosValue,
                 splitContainerVarHack.Panel1.Controls["textBoxXPosChange"] as TextBox,
@@ -102,6 +103,7 @@ namespace SM64_Diagnostic.Managers
 
             _textBoxYPosValue = splitContainerVarHack.Panel1.Controls["textBoxYPosValue"] as BetterTextbox;
             _textBoxYPosValue.AddEnterAction(() => SetPositionsAndApplyVariablesToMemory());
+            _textBoxYPosValue.Text = Config.VarHack.DefaultYPos.ToString();
             InitializePositionControls(
                 _textBoxYPosValue,
                 splitContainerVarHack.Panel1.Controls["textBoxYPosChange"] as TextBox,
@@ -110,6 +112,7 @@ namespace SM64_Diagnostic.Managers
 
             _textBoxYDeltaValue = splitContainerVarHack.Panel1.Controls["textBoxYDeltaValue"] as BetterTextbox;
             _textBoxYDeltaValue.AddEnterAction(() => SetPositionsAndApplyVariablesToMemory());
+            _textBoxYDeltaValue.Text = Config.VarHack.DefaultYDelta.ToString();
             InitializePositionControls(
                 _textBoxYDeltaValue,
                 splitContainerVarHack.Panel1.Controls["textBoxYDeltaChange"] as TextBox,

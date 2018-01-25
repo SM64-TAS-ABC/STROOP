@@ -21,6 +21,10 @@ namespace SM64_Diagnostic.Structs.Configurations
         public readonly uint SignedOffset = 0x1E;
         public readonly uint TypeOffset = 0x1F;
 
+        public readonly int DefaultXPos = 10;
+        public readonly int DefaultYPos = 192;
+        public readonly int DefaultYDelta = 17;
+
         public readonly int MaxStringLength = 17;
 
         public RomHack ShowVarRomHack;
