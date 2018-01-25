@@ -130,6 +130,12 @@ namespace SM64_Diagnostic.Controls
 
         private void AddExternalContextMenuStripItems()
         {
+            ToolStripMenuItem itemPanelOptions = new ToolStripMenuItem("Panel Options");
+            itemPanelOptions.Click += (sender, e) =>
+            {
+                _watchVarControl.OpenPanelOptions(_contextMenuStrip.Bounds.Location);
+            };
+
             ToolStripMenuItem itemOpenController = new ToolStripMenuItem("Open Controller");
             itemOpenController.Click += (sender, e) => { ShowVarController(); };
 
@@ -137,6 +143,7 @@ namespace SM64_Diagnostic.Controls
             itemAddToCustomTab.Click += (sender, e) => { _watchVarControl.AddCopyToCustomTab(); };
 
             _contextMenuStrip.AddToEndingList(new ToolStripSeparator());
+            _contextMenuStrip.AddToEndingList(itemPanelOptions);
             _contextMenuStrip.AddToEndingList(itemOpenController);
             _contextMenuStrip.AddToEndingList(itemAddToCustomTab);
         }

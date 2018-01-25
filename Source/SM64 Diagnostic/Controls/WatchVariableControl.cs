@@ -586,6 +586,11 @@ namespace SM64_Diagnostic.Controls
             _watchVariablePanel?.RemoveVariable(this);
         }
 
+        public void OpenPanelOptions(Point point)
+        {
+            _watchVariablePanel?.ContextMenuStrip?.Show(point);
+        }
+
         public WatchVariableControl AddCopyToCustomTab()
         {
             WatchVariableControl newControl = _watchVarPrecursor.CreateWatchVariableControl();
