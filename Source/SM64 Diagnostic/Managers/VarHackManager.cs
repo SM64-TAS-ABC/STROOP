@@ -44,14 +44,21 @@ namespace SM64_Diagnostic.Managers
                 new List<string>()
                 {
                     "RNG Index",
+                    "Floor YNorm",
                     "Mario Action",
                     "Mario Animation",
                 },
                 new List<Action>()
                 {
-                    () => AddVariable(() => "INDEX " + RngIndexer.GetRngIndex()),
-                    () => AddVariable(() => "ACTION " + Config.MarioActions.GetActionName()),
-                    () => AddVariable(() => "ANIMATION " + Config.MarioAnimations.GetAnimationName()),
+                    () => AddVariable(() => "Index " + RngIndexer.GetRngIndex()),
+                    () => AddVariable(() =>
+                    {
+                        uint triFloorAddress = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
+                        float yNorm = Config.Stream.GetSingle(triFloorAddress + Config.TriangleOffsets.NormY);
+                        return "YNorm " + GetDecimalDisplayString(yNorm, 4, true);
+                    }),
+                    () => AddVariable(() => "Action " + Config.MarioActions.GetActionName()),
+                    () => AddVariable(() => "Animation " + Config.MarioAnimations.GetAnimationName()),
                 });
 
             Button buttonVarHackClearVariables =
@@ -172,6 +179,26 @@ namespace SM64_Diagnostic.Managers
         public void AddVariable(Func<string> getterFunction)
         {
             _varHackPanel.AddNewControlWithGetterFunction(getterFunction);
+        }
+
+        public string GetDecimalDisplayString(double value, int numDigits = 4, bool usePadding = false)
+        {
+            string stringValue = Math.Round(value, numDigits).ToString();
+            if (usePadding)
+            {
+                int decimalIndex = stringValue.IndexOf(".");
+                if (decimalIndex == -1)
+                {
+                    stringValue += ".";
+                    decimalIndex = stringValue.Length - 1;
+                }
+                while (stringValue.Length <= decimalIndex + numDigits)
+                {
+                    stringValue += "0";
+                }
+            }
+            stringValue = stringValue.Replace(".", Config.VarHack.CoinChar);
+            return stringValue;
         }
 
         public void Update(bool updateView)
