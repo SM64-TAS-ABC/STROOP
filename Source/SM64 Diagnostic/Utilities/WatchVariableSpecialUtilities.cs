@@ -2253,28 +2253,21 @@ namespace SM64_Diagnostic.Structs
                 case "ActionDescription":
                     getterFunction = (uint dummy) =>
                     {
-                        uint action = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.ActionOffset);
-                        string actionDescription = Config.MarioActions.GetActionName(action);
-                        return actionDescription;
+                        return Config.MarioActions.GetActionName();
                     };
                     break;
 
                 case "PrevActionDescription":
                     getterFunction = (uint dummy) =>
                     {
-                        uint prevAction = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.PrevActionOffset);
-                        string prevActionDescription = Config.MarioActions.GetActionName(prevAction);
-                        return prevActionDescription;
+                        return Config.MarioActions.GetPrevActionName();
                     };
                     break;
 
                 case "MarioAnimationDescription":
                     getterFunction = (uint dummy) =>
                     {
-                        uint marioObjRef = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
-                        short animation = Config.Stream.GetInt16(marioObjRef + Config.Mario.ObjectAnimationOffset);
-                        string animationDescription = Config.MarioAnimations.GetAnimationName(animation);
-                        return animationDescription;
+                        return Config.MarioAnimations.GetAnimationName();
                     };
                     break;
 
