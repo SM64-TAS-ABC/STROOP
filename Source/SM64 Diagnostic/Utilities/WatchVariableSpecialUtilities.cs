@@ -978,16 +978,7 @@ namespace SM64_Diagnostic.Structs
                 case "DeFactoSpeed":
                     getterFunction = (uint dummy) =>
                     {
-                        uint floorTri = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
-                        float yNorm = floorTri == 0 ? 1 : Config.Stream.GetSingle(floorTri + Config.TriangleOffsets.NormY);
-                        float hSpeed = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HSpeedOffset);
-
-                        float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
-                        float floorY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.FloorYOffset);
-                        float distAboveFloor = marioY - floorY;
-
-                        float defactoSpeed = distAboveFloor == 0 ? hSpeed * yNorm : hSpeed;
-                        return defactoSpeed.ToString();
+                        return GetMarioDeFactoSpeed().ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
@@ -2691,6 +2682,22 @@ namespace SM64_Diagnostic.Structs
             float totalDistance = speedUpDistance + slowDownDistance;
             float amplitude = angle + totalDistance;
             return amplitude;
+        }
+
+        // public methods
+
+        public static double GetMarioDeFactoSpeed()
+        {
+            uint floorTri = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
+            float yNorm = floorTri == 0 ? 1 : Config.Stream.GetSingle(floorTri + Config.TriangleOffsets.NormY);
+            float hSpeed = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HSpeedOffset);
+
+            float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
+            float floorY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.FloorYOffset);
+            float distAboveFloor = marioY - floorY;
+
+            float defactoSpeed = distAboveFloor == 0 ? hSpeed * yNorm : hSpeed;
+            return defactoSpeed;
         }
     }
 }
