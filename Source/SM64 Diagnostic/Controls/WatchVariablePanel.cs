@@ -50,19 +50,23 @@ namespace SM64_Diagnostic.Controls
 
         private void AddItemsToContextMenuStrip()
         {
-            ToolStripMenuItem resetVariablesItem = new ToolStripMenuItem("Reset");
+            ToolStripMenuItem enableCustomization = new ToolStripMenuItem("Enable Customization");
+            enableCustomization.Click += (sender, e) => EnableCustomVariableFunctionality();
+
+            ToolStripMenuItem resetVariablesItem = new ToolStripMenuItem("Reset Variables");
             resetVariablesItem.Click += (sender, e) => ResetVariables();
 
-            ToolStripMenuItem filterItem = new ToolStripMenuItem("Filter...");
+            ToolStripMenuItem filterVariablesItem = new ToolStripMenuItem("Filter Variables...");
             List<ToolStripMenuItem> filteringDropDownItems =
                 _allGroups.ConvertAll(varGroup =>
                     CreateFilterItem(varGroup, _visibleGroups.Contains(varGroup)));
-            filteringDropDownItems.ForEach(item => filterItem.DropDownItems.Add(item));
-            filterItem.DropDown.AutoClose = false;
-            filterItem.DropDown.MouseLeave += (sender, e) => { filterItem.DropDown.Close(); };
+            filteringDropDownItems.ForEach(item => filterVariablesItem.DropDownItems.Add(item));
+            filterVariablesItem.DropDown.AutoClose = false;
+            filterVariablesItem.DropDown.MouseLeave += (sender, e) => { filterVariablesItem.DropDown.Close(); };
 
+            ContextMenuStrip.Items.Add(enableCustomization);
             ContextMenuStrip.Items.Add(resetVariablesItem);
-            ContextMenuStrip.Items.Add(filterItem);
+            ContextMenuStrip.Items.Add(filterVariablesItem);
         }
 
         private ToolStripMenuItem CreateFilterItem(VariableGroup varGroup, bool visible)
