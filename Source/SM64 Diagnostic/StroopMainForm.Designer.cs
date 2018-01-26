@@ -33,7 +33,7 @@ namespace SM64_Diagnostic
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -523,6 +523,9 @@ namespace SM64_Diagnostic
             this.watchVariablePanelFile = new SM64_Diagnostic.Controls.WatchVariablePanel();
             this.tabPageMisc = new System.Windows.Forms.TabPage();
             this.splitContainerMisc = new System.Windows.Forms.SplitContainer();
+            this.groupBoxRNGIndexTester = new System.Windows.Forms.GroupBox();
+            this.textBoxRNGIndexTester = new SM64_Diagnostic.BetterTextbox();
+            this.buttonRNGIndexTester = new System.Windows.Forms.Button();
             this.checkBoxTurnOffMusic = new System.Windows.Forms.CheckBox();
             this.panelMiscBorder = new System.Windows.Forms.Panel();
             this.pictureBoxMisc = new SM64_Diagnostic.Controls.IntPictureBox();
@@ -1034,9 +1037,6 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.groupBoxRNGIndexTester = new System.Windows.Forms.GroupBox();
-            this.textBoxRNGIndexTester = new SM64_Diagnostic.BetterTextbox();
-            this.buttonRNGIndexTester = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1264,6 +1264,7 @@ namespace SM64_Diagnostic
             this.splitContainerMisc.Panel1.SuspendLayout();
             this.splitContainerMisc.Panel2.SuspendLayout();
             this.splitContainerMisc.SuspendLayout();
+            this.groupBoxRNGIndexTester.SuspendLayout();
             this.panelMiscBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).BeginInit();
             this.tabPageCustom.SuspendLayout();
@@ -1361,7 +1362,6 @@ namespace SM64_Diagnostic
             this.groupBoxGoto.SuspendLayout();
             this.groupBoxRecording.SuspendLayout();
             this.panelConnect.SuspendLayout();
-            this.groupBoxRNGIndexTester.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -1391,7 +1391,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 358);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 359);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1456,7 +1456,7 @@ namespace SM64_Diagnostic
             this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
             this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 153);
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 154);
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
@@ -4638,7 +4638,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 198F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 199F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -7646,9 +7646,39 @@ namespace SM64_Diagnostic
             this.splitContainerMisc.Panel2.Controls.Add(this.watchVariablePanelMisc);
             this.splitContainerMisc.Panel2MinSize = 0;
             this.splitContainerMisc.Size = new System.Drawing.Size(915, 463);
-            this.splitContainerMisc.SplitterDistance = 218;
+            this.splitContainerMisc.SplitterDistance = 130;
             this.splitContainerMisc.SplitterWidth = 1;
             this.splitContainerMisc.TabIndex = 18;
+            // 
+            // groupBoxRNGIndexTester
+            // 
+            this.groupBoxRNGIndexTester.Controls.Add(this.textBoxRNGIndexTester);
+            this.groupBoxRNGIndexTester.Controls.Add(this.buttonRNGIndexTester);
+            this.groupBoxRNGIndexTester.Location = new System.Drawing.Point(3, 94);
+            this.groupBoxRNGIndexTester.Name = "groupBoxRNGIndexTester";
+            this.groupBoxRNGIndexTester.Size = new System.Drawing.Size(107, 72);
+            this.groupBoxRNGIndexTester.TabIndex = 33;
+            this.groupBoxRNGIndexTester.TabStop = false;
+            this.groupBoxRNGIndexTester.Text = "RNG Index Tester";
+            // 
+            // textBoxRNGIndexTester
+            // 
+            this.textBoxRNGIndexTester.Location = new System.Drawing.Point(7, 19);
+            this.textBoxRNGIndexTester.Name = "textBoxRNGIndexTester";
+            this.textBoxRNGIndexTester.Size = new System.Drawing.Size(93, 20);
+            this.textBoxRNGIndexTester.TabIndex = 33;
+            this.textBoxRNGIndexTester.Text = "0";
+            this.textBoxRNGIndexTester.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonRNGIndexTester
+            // 
+            this.buttonRNGIndexTester.Location = new System.Drawing.Point(7, 42);
+            this.buttonRNGIndexTester.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonRNGIndexTester.Name = "buttonRNGIndexTester";
+            this.buttonRNGIndexTester.Size = new System.Drawing.Size(93, 25);
+            this.buttonRNGIndexTester.TabIndex = 35;
+            this.buttonRNGIndexTester.Text = "Set && Increment";
+            this.buttonRNGIndexTester.UseVisualStyleBackColor = true;
             // 
             // checkBoxTurnOffMusic
             // 
@@ -7693,7 +7723,7 @@ namespace SM64_Diagnostic
             this.watchVariablePanelMisc.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMisc.Name = "watchVariablePanelMisc";
             this.watchVariablePanelMisc.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMisc.Size = new System.Drawing.Size(694, 461);
+            this.watchVariablePanelMisc.Size = new System.Drawing.Size(782, 461);
             this.watchVariablePanelMisc.TabIndex = 5;
             // 
             // tabPageCustom
@@ -8466,7 +8496,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(696, 437);
+            this.glControlMap.Size = new System.Drawing.Size(699, 437);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -9477,7 +9507,7 @@ namespace SM64_Diagnostic
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(373, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(356, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -9509,7 +9539,7 @@ namespace SM64_Diagnostic
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(362, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(345, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -9693,8 +9723,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -11030,6 +11060,9 @@ namespace SM64_Diagnostic
             // splitContainerVarHack.Panel1
             // 
             this.splitContainerVarHack.Panel1.AutoScroll = true;
+            this.splitContainerVarHack.Panel1.Controls.Add(this.buttonVarHackApplyVariablesToMemory);
+            this.splitContainerVarHack.Panel1.Controls.Add(this.buttonEnableDisableRomHack);
+            this.splitContainerVarHack.Panel1.Controls.Add(this.buttonVarHackClearVariablesInMemory);
             this.splitContainerVarHack.Panel1.Controls.Add(this.textBoxYDeltaValue);
             this.splitContainerVarHack.Panel1.Controls.Add(this.textBoxYPosValue);
             this.splitContainerVarHack.Panel1.Controls.Add(this.textBoxYDeltaChange);
@@ -11046,9 +11079,6 @@ namespace SM64_Diagnostic
             this.splitContainerVarHack.Panel1.Controls.Add(this.buttonXPosAdd);
             this.splitContainerVarHack.Panel1.Controls.Add(this.buttonXPosSubtract);
             this.splitContainerVarHack.Panel1.Controls.Add(this.buttonSetPositionsAndApplyVariablesToMemory);
-            this.splitContainerVarHack.Panel1.Controls.Add(this.buttonVarHackApplyVariablesToMemory);
-            this.splitContainerVarHack.Panel1.Controls.Add(this.buttonEnableDisableRomHack);
-            this.splitContainerVarHack.Panel1.Controls.Add(this.buttonVarHackClearVariablesInMemory);
             this.splitContainerVarHack.Panel1.Controls.Add(this.buttonVarHackAddNewVariable);
             this.splitContainerVarHack.Panel1.Controls.Add(this.buttonVarHackShowVariableBytesInBigEndian);
             this.splitContainerVarHack.Panel1.Controls.Add(this.buttonVarHackShowVariableBytesInLittleEndian);
@@ -13489,36 +13519,6 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // groupBoxRNGIndexTester
-            // 
-            this.groupBoxRNGIndexTester.Controls.Add(this.textBoxRNGIndexTester);
-            this.groupBoxRNGIndexTester.Controls.Add(this.buttonRNGIndexTester);
-            this.groupBoxRNGIndexTester.Location = new System.Drawing.Point(3, 94);
-            this.groupBoxRNGIndexTester.Name = "groupBoxRNGIndexTester";
-            this.groupBoxRNGIndexTester.Size = new System.Drawing.Size(107, 72);
-            this.groupBoxRNGIndexTester.TabIndex = 33;
-            this.groupBoxRNGIndexTester.TabStop = false;
-            this.groupBoxRNGIndexTester.Text = "RNG Index Tester";
-            // 
-            // textBoxRNGIndexTester
-            // 
-            this.textBoxRNGIndexTester.Location = new System.Drawing.Point(7, 19);
-            this.textBoxRNGIndexTester.Name = "textBoxRNGIndexTester";
-            this.textBoxRNGIndexTester.Size = new System.Drawing.Size(93, 20);
-            this.textBoxRNGIndexTester.TabIndex = 33;
-            this.textBoxRNGIndexTester.Text = "0";
-            this.textBoxRNGIndexTester.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // buttonRNGIndexTester
-            // 
-            this.buttonRNGIndexTester.Location = new System.Drawing.Point(7, 42);
-            this.buttonRNGIndexTester.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonRNGIndexTester.Name = "buttonRNGIndexTester";
-            this.buttonRNGIndexTester.Size = new System.Drawing.Size(93, 25);
-            this.buttonRNGIndexTester.TabIndex = 35;
-            this.buttonRNGIndexTester.Text = "Set && Increment";
-            this.buttonRNGIndexTester.UseVisualStyleBackColor = true;
-            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -13795,6 +13795,8 @@ namespace SM64_Diagnostic
             this.splitContainerMisc.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMisc)).EndInit();
             this.splitContainerMisc.ResumeLayout(false);
+            this.groupBoxRNGIndexTester.ResumeLayout(false);
+            this.groupBoxRNGIndexTester.PerformLayout();
             this.panelMiscBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).EndInit();
             this.tabPageCustom.ResumeLayout(false);
@@ -13937,8 +13939,6 @@ namespace SM64_Diagnostic
             this.groupBoxRecording.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            this.groupBoxRNGIndexTester.ResumeLayout(false);
-            this.groupBoxRNGIndexTester.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
