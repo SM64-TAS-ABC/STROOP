@@ -15,7 +15,7 @@ namespace SM64_Diagnostic.Structs
         {
             for (int i = 0; i < 8; i++)
             {
-                uint address = (uint)(Config.Area.AreaStartAddress + i * Config.Area.AreaStructSize);
+                uint address = (uint)(AreaConfig.AreaStartAddress + i * AreaConfig.AreaStructSize);
                 if (address == areaAddress) return i;
             }
             return null;
@@ -28,7 +28,7 @@ namespace SM64_Diagnostic.Structs
 
         public static uint GetAreaAddress(int index)
         {
-            return (uint)(Config.Area.AreaStartAddress + index * Config.Area.AreaStructSize);
+            return (uint)(AreaConfig.AreaStartAddress + index * AreaConfig.AreaStructSize);
         }
 
         public static string GetTerrainDescription(short terrainType)

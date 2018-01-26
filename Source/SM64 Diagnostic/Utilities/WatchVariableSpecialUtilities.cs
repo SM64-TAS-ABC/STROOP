@@ -2353,7 +2353,7 @@ namespace SM64_Diagnostic.Structs
                 case "CurrentAreaIndex":
                     getterFunction = (uint dummy) =>
                     {
-                        uint currentArea = Config.Stream.GetUInt32(Config.Area.CurrentAreaPointerAddress);
+                        uint currentArea = Config.Stream.GetUInt32(AreaConfig.CurrentAreaPointerAddress);
                         string currentAreaIndex = AreaUtilities.GetAreaIndexString(currentArea);
                         return currentAreaIndex;
                     };
@@ -2364,14 +2364,14 @@ namespace SM64_Diagnostic.Structs
                         int currentAreaIndex = intValueNullable.Value;
                         if (currentAreaIndex < 0 || currentAreaIndex >= 8) return false;
                         uint currentAreaAddress = AreaUtilities.GetAreaAddress(currentAreaIndex);
-                        return Config.Stream.SetValue(currentAreaAddress, Config.Area.CurrentAreaPointerAddress);
+                        return Config.Stream.SetValue(currentAreaAddress, AreaConfig.CurrentAreaPointerAddress);
                     };
                     break;
 
                 case "AreaTerrainDescription":
                     getterFunction = (uint dummy) =>
                     {
-                        short terrainType = Config.Stream.GetInt16(AreaManager.Instance.SelectedAreaAddress + Config.Area.TerrainTypeOffset);
+                        short terrainType = Config.Stream.GetInt16(AreaManager.Instance.SelectedAreaAddress + AreaConfig.TerrainTypeOffset);
                         string terrainDescription = AreaUtilities.GetTerrainDescription(terrainType);
                         return terrainDescription;
                     };
@@ -2380,7 +2380,7 @@ namespace SM64_Diagnostic.Structs
                         short? terrainTypeNullable = AreaUtilities.GetTerrainType(stringValue);
                         if (!terrainTypeNullable.HasValue) return false;
                         short terrainType = terrainTypeNullable.Value;
-                        return Config.Stream.SetValue(terrainType, AreaManager.Instance.SelectedAreaAddress + Config.Area.TerrainTypeOffset);
+                        return Config.Stream.SetValue(terrainType, AreaManager.Instance.SelectedAreaAddress + AreaConfig.TerrainTypeOffset);
                     };
                     break;
 

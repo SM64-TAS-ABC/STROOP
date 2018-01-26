@@ -68,7 +68,6 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static HackConfig Hacks;
         public static DebugConfig Debug;
         public static CameraConfig Camera;
-        public static AreaConfig Area = new AreaConfig();
         public static InputConfig Input;
         public static FileConfig File;
         public static WaypointConfig Waypoint;
