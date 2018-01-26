@@ -583,12 +583,14 @@ namespace SM64_Diagnostic.Controls
 
         public void DeleteFromPanel()
         {
-            _watchVariablePanel?.RemoveVariable(this);
+            if (_watchVariablePanel == null) return;
+            _watchVariablePanel.RemoveVariable(this);
         }
 
         public void OpenPanelOptions(Point point)
         {
-            _watchVariablePanel?.ContextMenuStrip?.Show(point);
+            if (_watchVariablePanel == null) return;
+            _watchVariablePanel.ContextMenuStrip.Show(point);
         }
 
         public WatchVariableControl AddCopyToCustomTab()
