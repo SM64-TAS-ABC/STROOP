@@ -26,6 +26,7 @@ namespace SM64_Diagnostic
         public override void Initialize(uint addressOffset)
         {
             base.Initialize(addressOffset);
+            this.Text = _currentValue.ToString();
         }
 
         private short GetHatLocationValueFromMemory()

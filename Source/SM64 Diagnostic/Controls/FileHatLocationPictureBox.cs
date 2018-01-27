@@ -104,15 +104,16 @@ namespace SM64_Diagnostic
             Config.Stream.SetValue(newByte, Config.FileManager.CurrentFileAddress + FileConfig.HatLocationModeOffset);
         }
 
-        public override void UpdateImage(bool force = false)
+        public override void UpdateImage()
         {
             HatLocation? currentHatLocation = GetCurrentHatLocation();
-            if (_currentHatLocation != currentHatLocation || force)
+            if (_currentHatLocation != currentHatLocation || !_hasUpdated)
             {
                 this.Image = GetImageForValue(currentHatLocation);
                 _currentHatLocation = currentHatLocation;
                 Invalidate();
             }
+            _hasUpdated = true;
         }
     }
 }

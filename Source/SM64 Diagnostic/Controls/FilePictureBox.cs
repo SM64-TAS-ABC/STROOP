@@ -20,6 +20,7 @@ namespace SM64_Diagnostic
         protected uint _addressOffset;
         protected byte _mask;
         protected byte _currentValue;
+        protected bool _hasUpdated;
 
         public FilePictureBox()
         {
@@ -29,6 +30,7 @@ namespace SM64_Diagnostic
         {
             _addressOffset = addressOffset;
             _mask = mask;
+            _hasUpdated = false;
 
             this.Click += ClickAction;
             this.MouseEnter += (s, e) => this.Cursor = Cursors.Hand;
@@ -74,15 +76,16 @@ namespace SM64_Diagnostic
             SetValue(newValue);
         }
 
-        public virtual void UpdateImage(bool force = false)
+        public virtual void UpdateImage()
         {
             byte value = GetValue();
-            if (_currentValue != value || force)
+            if (_currentValue != value || !_hasUpdated)
             {
                 this.Image = GetImageForValue(value);
                 _currentValue = value;
                 Invalidate();
             }
+            _hasUpdated = true;
         }
     }
 }
