@@ -19,7 +19,6 @@ namespace SM64_Diagnostic.Managers
         MaskedTextBox _addressBox;
         uint _triangleAddress = 0;
         CheckBox _useMisalignmentOffsetCheckbox;
-        int _closestVertex = 0;
 
         public enum TriangleMode { Floor, Wall, Ceiling, Other };
         public TriangleMode Mode = TriangleMode.Floor;
@@ -101,9 +100,8 @@ namespace SM64_Diagnostic.Managers
                 += (sender, e) => ButtonUtilities.GotoTriangle(_triangleAddress, 3, _useMisalignmentOffsetCheckbox.Checked);
             (splitContainerTriangles.Panel1.Controls["buttonGotoVClosest"] as Button).Click += (sender, e) =>
             {
-                if (_closestVertex == 0)
-                    return;
-                ButtonUtilities.GotoTriangle(_triangleAddress, _closestVertex, _useMisalignmentOffsetCheckbox.Checked);
+                int closestVertex = WatchVariableSpecialUtilities.GetClosestTriangleVertexIndex(_triangleAddress);
+                ButtonUtilities.GotoTriangle(_triangleAddress, closestVertex, _useMisalignmentOffsetCheckbox.Checked);
             };
 
             (splitContainerTriangles.Panel1.Controls["buttonRetrieveTriangle"] as Button).Click

@@ -2503,7 +2503,7 @@ namespace SM64_Diagnostic.Structs
 
         // Triangle utilitiy methods
 
-        private static int GetClosestTriangleVertexIndex(uint triAddress)
+        public static int GetClosestTriangleVertexIndex(uint triAddress)
         {
             Position marioPos = GetMarioPosition();
             TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
