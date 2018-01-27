@@ -317,13 +317,13 @@ namespace SM64_Diagnostic.Managers
                 uint processGroupStructAddress = ObjectSlotsConfig.FirstGroupingAddress + objectProcessGroup * ObjectSlotsConfig.ProcessGroupStructSize;
 
                 // Calculate start and ending objects
-                uint currentGroupObject = Config.Stream.GetUInt32(processGroupStructAddress + ObjectSlotsConfig.ProcessNextLinkOffset);
+                uint currentGroupObject = Config.Stream.GetUInt32(processGroupStructAddress + ObjectConfig.ProcessNextLinkOffset);
 
                 // Loop through every object within the group
                  while ((currentGroupObject != processGroupStructAddress && currentSlot < ObjectSlotsConfig.MaxSlots))
                 {
                     // Validate current object
-                    if (Config.Stream.GetUInt16(currentGroupObject + ObjectSlotsConfig.HeaderOffset) != 0x18)
+                    if (Config.Stream.GetUInt16(currentGroupObject + ObjectConfig.HeaderOffset) != 0x18)
                         return null;
 
                     // Get data
@@ -336,7 +336,7 @@ namespace SM64_Diagnostic.Managers
                     };
 
                     // Move to next object
-                    currentGroupObject = Config.Stream.GetUInt32(currentGroupObject + ObjectSlotsConfig.ProcessNextLinkOffset);
+                    currentGroupObject = Config.Stream.GetUInt32(currentGroupObject + ObjectConfig.ProcessNextLinkOffset);
 
                     // Mark next slot
                     currentSlot++;
@@ -350,7 +350,7 @@ namespace SM64_Diagnostic.Managers
             for (; currentSlot < ObjectSlotsConfig.MaxSlots; currentSlot++)
             {
                 // Validate current object
-                if (Config.Stream.GetUInt16(currentObject + ObjectSlotsConfig.HeaderOffset) != 0x18)
+                if (Config.Stream.GetUInt16(currentObject + ObjectConfig.HeaderOffset) != 0x18)
                     return null;
 
                 newObjectSlotData[currentSlot] = new ObjectSlotData()
@@ -361,7 +361,7 @@ namespace SM64_Diagnostic.Managers
                     VacantSlotIndex = currentSlot - vacantSlotStart
                 };
 
-                currentObject = Config.Stream.GetUInt32(currentObject + ObjectSlotsConfig.ProcessNextLinkOffset);
+                currentObject = Config.Stream.GetUInt32(currentObject + ObjectConfig.ProcessNextLinkOffset);
             }
 
             return newObjectSlotData.ToList();
@@ -472,7 +472,7 @@ namespace SM64_Diagnostic.Managers
             ObjectSlot hoverObjectSlot = ObjectSlotsConfig.HoverObjectSlot;
             if (hoverObjectSlot != null)
             {
-                _parentObject = Config.Stream.GetUInt32(hoverObjectSlot.Address + ObjectSlotsConfig.ParentOffset);
+                _parentObject = Config.Stream.GetUInt32(hoverObjectSlot.Address + ObjectConfig.ParentOffset);
                 _parentUnusedObject = _parentObject == ObjectSlotsConfig.UnusedSlotAddress ? hoverObjectSlot.Address : 0;
                 _parentNoneObject = _parentObject == 0 ? hoverObjectSlot.Address : 0;
             }
@@ -653,7 +653,7 @@ namespace SM64_Diagnostic.Managers
 
                 case SlotLabelType.SlotIndex:
                     labelText = String.Format("{0}", (objData.Address - ObjectSlotsConfig.LinkStartAddress)
-                        / ObjectSlotsConfig.StructSize + (OptionsConfig.SlotIndexsFromOne ? 1 : 0));
+                        / ObjectConfig.StructSize + (OptionsConfig.SlotIndexsFromOne ? 1 : 0));
                     break;
 
                 case SlotLabelType.SlotPos:

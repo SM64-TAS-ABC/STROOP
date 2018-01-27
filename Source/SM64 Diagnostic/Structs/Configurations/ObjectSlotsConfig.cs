@@ -48,14 +48,5 @@ namespace SM64_Diagnostic.Structs
         public static uint UnusedSlotAddress { get { return Config.SwitchRomVersion(UnusedSlotAddressUS, UnusedSlotAddressJP); } }
         public static readonly uint UnusedSlotAddressUS = 0x80360E88;
         public static readonly uint UnusedSlotAddressJP = 0x8035FB18;
-
-        public static readonly uint ProcessNextLinkOffset = 0x60;
-        public static readonly uint ProcessPreviousLinkOffset = 0x64;
-        public static readonly uint ParentObjectOffset = 0x68;
-        public static readonly uint StructSize = 0x0260;
-        public static readonly uint HeaderOffset = 0x00;
-        public static readonly uint NextLinkOffset = 0x08;
-        public static readonly uint PreviousLinkOffset = 0x04;
-        public static readonly uint ParentOffset = 0x68;
     }
 }

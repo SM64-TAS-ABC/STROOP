@@ -61,6 +61,19 @@ namespace SM64_Diagnostic.Structs
         public static readonly uint ReleaseStatusDroppedValue = 0x800EE5F0;
         public static readonly uint InteractionStatusOffset = 0x134;
 
+
+
+        public static readonly uint ProcessNextLinkOffset = 0x60;
+        public static readonly uint ProcessPreviousLinkOffset = 0x64;
+        public static readonly uint ParentObjectOffset = 0x68;
+        public static readonly uint StructSize = 0x0260;
+        public static readonly uint HeaderOffset = 0x00;
+        public static readonly uint NextLinkOffset = 0x08;
+        public static readonly uint PreviousLinkOffset = 0x04;
+        public static readonly uint ParentOffset = 0x68;
+
+
+
         // Object specific vars
 
         public static readonly uint DustSpawnerBehavior = 0x130024AC;
