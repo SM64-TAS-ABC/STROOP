@@ -540,7 +540,7 @@ namespace SM64_Diagnostic.Utilities
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            var marioObjRef = Config.Stream.GetUInt32(MarioConfig.ObjectReferenceAddress);
+            var marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.ObjectReferenceAddress);
             if (marioObjRef != 0x00000000U)
             {
                 var marioGraphics = Config.Stream.GetUInt32(marioObjRef + ObjectSlotsConfig.BehaviorGfxOffset);

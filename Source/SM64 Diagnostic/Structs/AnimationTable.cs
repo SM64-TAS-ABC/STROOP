@@ -33,8 +33,8 @@ namespace SM64_Diagnostic.Structs
 
         public string GetAnimationName()
         {
-            uint marioObjRef = Config.Stream.GetUInt32(MarioConfig.ObjectReferenceAddress);
-            short animation = Config.Stream.GetInt16(marioObjRef + MarioConfig.ObjectAnimationOffset);
+            uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.ObjectReferenceAddress);
+            short animation = Config.Stream.GetInt16(marioObjRef + MarioObjectConfig.ObjectAnimationOffset);
             return GetAnimationName(animation);
         }
 

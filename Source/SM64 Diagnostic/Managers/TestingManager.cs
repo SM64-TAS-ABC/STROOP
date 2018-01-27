@@ -508,7 +508,7 @@ namespace SM64_Diagnostic.Managers
             switch (_varToRecord)
             {
                 case VarToRecord.Mario:
-                    uint marioObjAddress = Config.Stream.GetUInt32(MarioConfig.ObjectReferenceAddress);
+                    uint marioObjAddress = Config.Stream.GetUInt32(MarioObjectConfig.ObjectReferenceAddress);
                     _currentTimer = Config.Stream.GetInt32(marioObjAddress + ObjectSlotsConfig.TimerOffset);
                     break;
                 case VarToRecord.Penguin:

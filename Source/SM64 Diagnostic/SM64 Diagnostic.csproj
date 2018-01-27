@@ -260,6 +260,7 @@
     </Compile>
     <Compile Include="Managers\ObjectSlotsManager.cs" />
     <Compile Include="Structs\Configurations\AreaConfig.cs" />
+    <Compile Include="Structs\Configurations\MarioObjectConfig.cs" />
     <Compile Include="Structs\Configurations\TableConfig.cs" />
     <Compile Include="Structs\Configurations\OverlayConfig.cs" />
     <Compile Include="Structs\Configurations\OptionsConfig.cs" />

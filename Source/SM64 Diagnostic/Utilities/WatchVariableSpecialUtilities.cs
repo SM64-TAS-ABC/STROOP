@@ -377,7 +377,7 @@ namespace SM64_Diagnostic.Structs
                 case "MarioHitboxAwayFromObject":
                     getterFunction = (uint objAddress) =>
                     {
-                        uint marioObjRef = Config.Stream.GetUInt32(MarioConfig.ObjectReferenceAddress);
+                        uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.ObjectReferenceAddress);
                         float mObjX = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.ObjectXOffset);
                         float mObjZ = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.ObjectZOffset);
                         float mObjHitboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.HitboxRadius);
@@ -391,7 +391,7 @@ namespace SM64_Diagnostic.Structs
                     };
                     setterFunction = (string stringValue, uint objAddress) =>
                     {
-                        uint marioObjRef = Config.Stream.GetUInt32(MarioConfig.ObjectReferenceAddress);
+                        uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.ObjectReferenceAddress);
                         float mObjX = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.ObjectXOffset);
                         float mObjZ = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.ObjectZOffset);
                         float mObjHitboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.HitboxRadius);
@@ -416,7 +416,7 @@ namespace SM64_Diagnostic.Structs
                 case "MarioHitboxAboveObject":
                     getterFunction = (uint objAddress) =>
                     {
-                        uint marioObjRef = Config.Stream.GetUInt32(MarioConfig.ObjectReferenceAddress);
+                        uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.ObjectReferenceAddress);
                         float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.ObjectYOffset);
                         float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.HitboxHeight);
                         float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.HitboxDownOffset);
@@ -432,7 +432,7 @@ namespace SM64_Diagnostic.Structs
                     };
                     setterFunction = (string stringValue, uint objAddress) =>
                     {
-                        uint marioObjRef = Config.Stream.GetUInt32(MarioConfig.ObjectReferenceAddress);
+                        uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.ObjectReferenceAddress);
                         float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.ObjectYOffset);
                         float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.HitboxDownOffset);
 
@@ -452,7 +452,7 @@ namespace SM64_Diagnostic.Structs
                 case "MarioHitboxBelowObject":
                     getterFunction = (uint objAddress) =>
                     {
-                        uint marioObjRef = Config.Stream.GetUInt32(MarioConfig.ObjectReferenceAddress);
+                        uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.ObjectReferenceAddress);
                         float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.ObjectYOffset);
                         float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.HitboxHeight);
                         float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.HitboxDownOffset);
@@ -468,7 +468,7 @@ namespace SM64_Diagnostic.Structs
                     };
                     setterFunction = (string stringValue, uint objAddress) =>
                     {
-                        uint marioObjRef = Config.Stream.GetUInt32(MarioConfig.ObjectReferenceAddress);
+                        uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.ObjectReferenceAddress);
                         float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.ObjectYOffset);
                         float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.HitboxHeight);
                         float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.HitboxDownOffset);
@@ -490,7 +490,7 @@ namespace SM64_Diagnostic.Structs
                 case "MarioHitboxOverlapsObject":
                     getterFunction = (uint objAddress) =>
                     {
-                        uint marioObjRef = Config.Stream.GetUInt32(MarioConfig.ObjectReferenceAddress);
+                        uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.ObjectReferenceAddress);
                         float mObjX = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.ObjectXOffset);
                         float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.ObjectYOffset);
                         float mObjZ = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.ObjectZOffset);
@@ -2429,7 +2429,7 @@ namespace SM64_Diagnostic.Structs
 
         private static bool SetMarioPositionAndMarioObjectPosition(double? x, double? y, double? z, ushort? angle = null)
         {
-            uint marioObjRef = Config.Stream.GetUInt32(MarioConfig.ObjectReferenceAddress);
+            uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.ObjectReferenceAddress);
             bool success = true;
             success &= SetMarioPosition(x, y, z, angle);
             success &= SetObjectPosition(marioObjRef, x, y, z, angle);

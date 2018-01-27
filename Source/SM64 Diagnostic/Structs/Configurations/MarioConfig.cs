@@ -53,14 +53,5 @@ namespace SM64_Diagnostic.Structs
         public static readonly uint PeakHeightOffset = 0xBC;
         public static readonly uint WaterLevelOffset = 0x76;
         public static readonly uint AreaPointerOffset = 0x90;
-
-        // Mario Object
-
-        public static uint ObjectReferenceAddress { get { return Config.SwitchRomVersion(ObjectReferenceAddressUS, ObjectReferenceAddressJP); } }
-        public static readonly uint ObjectReferenceAddressUS = 0x80361158;
-        public static readonly uint ObjectReferenceAddressJP = 0x8035FDE8;
-
-        public static readonly uint ObjectAnimationOffset = 0x38;
-        public static readonly uint ObjectAnimationTimerOffset = 0x40;
     }
 }
