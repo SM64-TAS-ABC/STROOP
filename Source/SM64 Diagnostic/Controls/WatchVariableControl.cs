@@ -226,6 +226,7 @@ namespace SM64_Diagnostic.Controls
             SetUseCheckbox(_watchVarWrapper.StartsAsCheckbox());
 
             // Add functions
+            _namePanel.Click += (sender, e) => OnNameTextBoxClick();
             _nameTextBox.Click += (sender, e) => OnNameTextBoxClick();
             _nameTextBox.Leave += (sender, e) => { RenameMode = false; };
             _nameTextBox.KeyDown += (sender, e) => OnNameTextValueKeyDown(e);
