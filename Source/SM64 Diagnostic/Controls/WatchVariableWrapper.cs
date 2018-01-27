@@ -313,7 +313,7 @@ namespace SM64_Diagnostic.Controls
             {
                 VarHackManager.Instance.AddVariable(
                     _watchVarControl.VarName,
-                    TriangleManager.Instance.TrianglePointerAddress,
+                    Config.TriangleManager.TrianglePointerAddress,
                     _watchVar.MemoryType,
                     GetUseHex(),
                     _watchVar.Offset);

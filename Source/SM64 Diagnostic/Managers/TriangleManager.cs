@@ -14,8 +14,6 @@ namespace SM64_Diagnostic.Managers
 {
     public class TriangleManager : DataManager
     {
-        public static TriangleManager Instance = null;
-
         private Dictionary<uint, TriangleStruct> _triangleCache;
 
         MaskedTextBox _addressBox;
@@ -73,8 +71,6 @@ namespace SM64_Diagnostic.Managers
         public TriangleManager(Control tabControl, List<WatchVariableControlPrecursor> variables, WatchVariablePanel watchVariablePanel) 
             : base(variables, watchVariablePanel, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
         {
-            Instance = this;
-
             _triangleCache = new Dictionary<uint, TriangleStruct>();
 
             _triangleData = new List<short[]>();

@@ -121,7 +121,7 @@ namespace SM64_Diagnostic.Structs
 
                 case BaseAddressTypeEnum.Triangle:
                     {
-                        uint triangleAddress = TriangleManager.Instance.TriangleAddress;
+                        uint triangleAddress = Config.TriangleManager.TriangleAddress;
                         return triangleAddress != 0 ? new List<uint>() { triangleAddress } : BaseAddressListEmpy;
                     }
 
