@@ -546,7 +546,7 @@ namespace SM64_Diagnostic.Utilities
                 var marioGraphics = Config.Stream.GetUInt32(marioObjRef + ObjectSlotsConfig.BehaviorGfxOffset);
                 if (marioGraphics == 0)
                 { 
-                    success &= Config.Stream.SetValue(ObjectSlotsConfig.MarioGraphic, marioObjRef + ObjectSlotsConfig.BehaviorGfxOffset);
+                    success &= Config.Stream.SetValue(MarioObjectConfig.MarioGraphic, marioObjRef + ObjectSlotsConfig.BehaviorGfxOffset);
                 }
                 else
                 {

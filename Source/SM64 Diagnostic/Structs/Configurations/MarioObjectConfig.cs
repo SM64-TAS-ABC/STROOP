@@ -15,5 +15,8 @@ namespace SM64_Diagnostic.Structs
 
         public static readonly uint ObjectAnimationOffset = 0x38;
         public static readonly uint ObjectAnimationTimerOffset = 0x40;
+
+        public static readonly uint MarioGraphic = 0x800F0860;
+        public static readonly uint MarioBehavior = 0x13002EC0;
     }
 }

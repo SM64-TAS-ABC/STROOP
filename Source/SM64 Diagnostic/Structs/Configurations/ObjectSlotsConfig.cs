@@ -35,9 +35,7 @@ namespace SM64_Diagnostic.Structs
         public static readonly uint ObjectActiveOffset = 0x74;
         public static readonly uint TimerOffset = 0x154;
         public static readonly uint AnimationOffset = 0x3C;
-        public static readonly uint MarioGraphic = 0x800F0860;
 
-        public static readonly uint MarioBehavior = 0x13002EC0;
         public static readonly uint DustSpawnerBehavior = 0x130024AC;
         public static readonly uint DustBallBehavior = 0x130024DC;
         public static readonly uint DustBehavior = 0x13002500;
