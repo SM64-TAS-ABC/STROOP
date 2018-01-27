@@ -10,6 +10,8 @@ namespace SM64_Diagnostic.Structs
 {
     public static class ObjectSlotsConfig
     {
+        public static ObjectSlot HoverObjectSlot;
+
         public static readonly Dictionary<byte, Color> ProcessingGroupsColor =
             new Dictionary<byte, Color>()
             {
@@ -25,38 +27,35 @@ namespace SM64_Diagnostic.Structs
                 [0x0C] = ColorTranslator.FromHtml("#FF00FF"),
             };
         public static readonly List<byte> ProcessingGroups = ProcessingGroupsColor.Keys.ToList();
-
-        public static uint VactantPointerAddress { get { return Config.SwitchRomVersion(VactantPointerAddressUS, VactantPointerAddressJP); } }
-        public static readonly uint VactantPointerAddressUS = 0x80361150;
-        public static readonly uint VactantPointerAddressJP = 0x8035FDE0;
-
         public static readonly Color VacantSlotColor = ColorTranslator.FromHtml("#AAAAAA");
-        public static readonly uint ProcessNextLinkOffset = 0x60;
-        public static readonly uint ProcessPreviousLinkOffset = 0x64;
-        public static readonly uint ParentObjectOffset = 0x68;
 
         public static uint FirstGroupingAddress { get { return Config.SwitchRomVersion(FirstGroupingAddressUS, FirstGroupingAddressJP); } }
         public static readonly uint FirstGroupingAddressUS = 0x8033CBE0;
         public static readonly uint FirstGroupingAddressJP = 0x8033B870;
 
-        public static readonly uint ProcessGroupStructSize = 0x68;
-
-        public static ObjectSlot HoverObjectSlot;
-
-        public static readonly int MaxSlots = 240;
-
         public static uint LinkStartAddress { get { return Config.SwitchRomVersion(LinkStartAddressUS, LinkStartAddressJP); } }
         public static readonly uint LinkStartAddressUS = 0x8033D488;
         public static readonly uint LinkStartAddressJP = 0x8033C118;
 
+        public static uint VactantPointerAddress { get { return Config.SwitchRomVersion(VactantPointerAddressUS, VactantPointerAddressJP); } }
+        public static readonly uint VactantPointerAddressUS = 0x80361150;
+        public static readonly uint VactantPointerAddressJP = 0x8035FDE0;
+
+        public static readonly uint ProcessGroupStructSize = 0x68;
+
+        public static readonly int MaxSlots = 240;
+
+        public static uint UnusedSlotAddress { get { return Config.SwitchRomVersion(UnusedSlotAddressUS, UnusedSlotAddressJP); } }
+        public static readonly uint UnusedSlotAddressUS = 0x80360E88;
+        public static readonly uint UnusedSlotAddressJP = 0x8035FB18;
+
+        public static readonly uint ProcessNextLinkOffset = 0x60;
+        public static readonly uint ProcessPreviousLinkOffset = 0x64;
+        public static readonly uint ParentObjectOffset = 0x68;
         public static readonly uint StructSize = 0x0260;
         public static readonly uint HeaderOffset = 0x00;
         public static readonly uint NextLinkOffset = 0x08;
         public static readonly uint PreviousLinkOffset = 0x04;
         public static readonly uint ParentOffset = 0x68;
-
-        public static uint UnusedSlotAddress { get { return Config.SwitchRomVersion(UnusedSlotAddressUS, UnusedSlotAddressJP); } }
-        public static readonly uint UnusedSlotAddressUS = 0x80360E88;
-        public static readonly uint UnusedSlotAddressJP = 0x8035FB18;
     }
 }
