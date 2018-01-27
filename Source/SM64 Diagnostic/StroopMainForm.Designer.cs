@@ -33,7 +33,7 @@ namespace SM64_Diagnostic
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
@@ -820,6 +820,9 @@ namespace SM64_Diagnostic
             this.watchVariablePanelQuarterFrame = new SM64_Diagnostic.Controls.WatchVariablePanel();
             this.tabPageVarHack = new System.Windows.Forms.TabPage();
             this.splitContainerVarHack = new System.Windows.Forms.SplitContainer();
+            this.buttonVarHackApplyVariablesToMemory = new System.Windows.Forms.Button();
+            this.buttonEnableDisableRomHack = new SM64_Diagnostic.BinaryButton();
+            this.buttonVarHackClearVariablesInMemory = new System.Windows.Forms.Button();
             this.textBoxYDeltaValue = new SM64_Diagnostic.BetterTextbox();
             this.textBoxYPosValue = new SM64_Diagnostic.BetterTextbox();
             this.textBoxYDeltaChange = new SM64_Diagnostic.BetterTextbox();
@@ -836,9 +839,6 @@ namespace SM64_Diagnostic
             this.buttonXPosAdd = new System.Windows.Forms.Button();
             this.buttonXPosSubtract = new System.Windows.Forms.Button();
             this.buttonSetPositionsAndApplyVariablesToMemory = new System.Windows.Forms.Button();
-            this.buttonVarHackApplyVariablesToMemory = new System.Windows.Forms.Button();
-            this.buttonEnableDisableRomHack = new SM64_Diagnostic.BinaryButton();
-            this.buttonVarHackClearVariablesInMemory = new System.Windows.Forms.Button();
             this.buttonVarHackAddNewVariable = new System.Windows.Forms.Button();
             this.buttonVarHackShowVariableBytesInBigEndian = new System.Windows.Forms.Button();
             this.buttonVarHackShowVariableBytesInLittleEndian = new System.Windows.Forms.Button();
@@ -1391,7 +1391,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 359);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 360);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1456,7 +1456,7 @@ namespace SM64_Diagnostic
             this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
             this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 153);
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 154);
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
@@ -4638,7 +4638,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 199F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -7358,7 +7358,7 @@ namespace SM64_Diagnostic
             this.textBoxHatLocationPositionZ.Name = "textBoxHatLocationPositionZ";
             this.textBoxHatLocationPositionZ.Size = new System.Drawing.Size(42, 20);
             this.textBoxHatLocationPositionZ.TabIndex = 57;
-            this.textBoxHatLocationPositionZ.Text = "-32768";
+            this.textBoxHatLocationPositionZ.Text = "0";
             this.textBoxHatLocationPositionZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxHatLocationPositionY
@@ -7367,7 +7367,7 @@ namespace SM64_Diagnostic
             this.textBoxHatLocationPositionY.Name = "textBoxHatLocationPositionY";
             this.textBoxHatLocationPositionY.Size = new System.Drawing.Size(42, 20);
             this.textBoxHatLocationPositionY.TabIndex = 58;
-            this.textBoxHatLocationPositionY.Text = "-32768";
+            this.textBoxHatLocationPositionY.Text = "0";
             this.textBoxHatLocationPositionY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxHatLocationPositionX
@@ -7376,7 +7376,7 @@ namespace SM64_Diagnostic
             this.textBoxHatLocationPositionX.Name = "textBoxHatLocationPositionX";
             this.textBoxHatLocationPositionX.Size = new System.Drawing.Size(42, 20);
             this.textBoxHatLocationPositionX.TabIndex = 59;
-            this.textBoxHatLocationPositionX.Text = "-32768";
+            this.textBoxHatLocationPositionX.Text = "0";
             this.textBoxHatLocationPositionX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // labelHatLocationPositionZ
@@ -8496,7 +8496,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(696, 437);
+            this.glControlMap.Size = new System.Drawing.Size(699, 437);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -9507,7 +9507,7 @@ namespace SM64_Diagnostic
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(356, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(339, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -9539,7 +9539,7 @@ namespace SM64_Diagnostic
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(345, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(328, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -9723,8 +9723,8 @@ namespace SM64_Diagnostic
             this.dataGridViewExpressions.AllowUserToAddRows = false;
             this.dataGridViewExpressions.AllowUserToDeleteRows = false;
             this.dataGridViewExpressions.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridViewExpressions.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewExpressions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -11094,6 +11094,36 @@ namespace SM64_Diagnostic
             this.splitContainerVarHack.SplitterWidth = 1;
             this.splitContainerVarHack.TabIndex = 20;
             // 
+            // buttonVarHackApplyVariablesToMemory
+            // 
+            this.buttonVarHackApplyVariablesToMemory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonVarHackApplyVariablesToMemory.Location = new System.Drawing.Point(7, 332);
+            this.buttonVarHackApplyVariablesToMemory.Name = "buttonVarHackApplyVariablesToMemory";
+            this.buttonVarHackApplyVariablesToMemory.Size = new System.Drawing.Size(188, 38);
+            this.buttonVarHackApplyVariablesToMemory.TabIndex = 4;
+            this.buttonVarHackApplyVariablesToMemory.Text = "Apply Variables to Memory";
+            this.buttonVarHackApplyVariablesToMemory.UseVisualStyleBackColor = true;
+            // 
+            // buttonEnableDisableRomHack
+            // 
+            this.buttonEnableDisableRomHack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonEnableDisableRomHack.Location = new System.Drawing.Point(7, 420);
+            this.buttonEnableDisableRomHack.Name = "buttonEnableDisableRomHack";
+            this.buttonEnableDisableRomHack.Size = new System.Drawing.Size(188, 38);
+            this.buttonEnableDisableRomHack.TabIndex = 4;
+            this.buttonEnableDisableRomHack.Text = "Enable ROM Hack";
+            this.buttonEnableDisableRomHack.UseVisualStyleBackColor = true;
+            // 
+            // buttonVarHackClearVariablesInMemory
+            // 
+            this.buttonVarHackClearVariablesInMemory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonVarHackClearVariablesInMemory.Location = new System.Drawing.Point(7, 376);
+            this.buttonVarHackClearVariablesInMemory.Name = "buttonVarHackClearVariablesInMemory";
+            this.buttonVarHackClearVariablesInMemory.Size = new System.Drawing.Size(188, 38);
+            this.buttonVarHackClearVariablesInMemory.TabIndex = 4;
+            this.buttonVarHackClearVariablesInMemory.Text = "Clear Variables in Memory";
+            this.buttonVarHackClearVariablesInMemory.UseVisualStyleBackColor = true;
+            // 
             // textBoxYDeltaValue
             // 
             this.textBoxYDeltaValue.Location = new System.Drawing.Point(31, 244);
@@ -11243,36 +11273,6 @@ namespace SM64_Diagnostic
             this.buttonSetPositionsAndApplyVariablesToMemory.TabIndex = 4;
             this.buttonSetPositionsAndApplyVariablesToMemory.Text = "Set Positions &&\r\nApply Variables to Memory";
             this.buttonSetPositionsAndApplyVariablesToMemory.UseVisualStyleBackColor = true;
-            // 
-            // buttonVarHackApplyVariablesToMemory
-            // 
-            this.buttonVarHackApplyVariablesToMemory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonVarHackApplyVariablesToMemory.Location = new System.Drawing.Point(7, 332);
-            this.buttonVarHackApplyVariablesToMemory.Name = "buttonVarHackApplyVariablesToMemory";
-            this.buttonVarHackApplyVariablesToMemory.Size = new System.Drawing.Size(188, 38);
-            this.buttonVarHackApplyVariablesToMemory.TabIndex = 4;
-            this.buttonVarHackApplyVariablesToMemory.Text = "Apply Variables to Memory";
-            this.buttonVarHackApplyVariablesToMemory.UseVisualStyleBackColor = true;
-            // 
-            // buttonEnableDisableRomHack
-            // 
-            this.buttonEnableDisableRomHack.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonEnableDisableRomHack.Location = new System.Drawing.Point(7, 420);
-            this.buttonEnableDisableRomHack.Name = "buttonEnableDisableRomHack";
-            this.buttonEnableDisableRomHack.Size = new System.Drawing.Size(188, 38);
-            this.buttonEnableDisableRomHack.TabIndex = 4;
-            this.buttonEnableDisableRomHack.Text = "Enable ROM Hack";
-            this.buttonEnableDisableRomHack.UseVisualStyleBackColor = true;
-            // 
-            // buttonVarHackClearVariablesInMemory
-            // 
-            this.buttonVarHackClearVariablesInMemory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonVarHackClearVariablesInMemory.Location = new System.Drawing.Point(7, 376);
-            this.buttonVarHackClearVariablesInMemory.Name = "buttonVarHackClearVariablesInMemory";
-            this.buttonVarHackClearVariablesInMemory.Size = new System.Drawing.Size(188, 38);
-            this.buttonVarHackClearVariablesInMemory.TabIndex = 4;
-            this.buttonVarHackClearVariablesInMemory.Text = "Clear Variables in Memory";
-            this.buttonVarHackClearVariablesInMemory.UseVisualStyleBackColor = true;
             // 
             // buttonVarHackAddNewVariable
             // 
