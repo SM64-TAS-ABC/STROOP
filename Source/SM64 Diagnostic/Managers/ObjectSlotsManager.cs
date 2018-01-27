@@ -317,7 +317,7 @@ namespace SM64_Diagnostic.Managers
                 uint processGroupStructAddress = ObjectSlotsConfig.FirstGroupingAddress + objectProcessGroup * ObjectSlotsConfig.ProcessGroupStructSize;
 
                 // Calculate start and ending objects
-                uint currentGroupObject = Config.Stream.GetUInt32(processGroupStructAddress + ObjectConfig.ProcessNextLinkOffset);
+                uint currentGroupObject = Config.Stream.GetUInt32(processGroupStructAddress + ObjectConfig.ProcessedNextLinkOffset);
 
                 // Loop through every object within the group
                  while ((currentGroupObject != processGroupStructAddress && currentSlot < ObjectSlotsConfig.MaxSlots))
@@ -336,7 +336,7 @@ namespace SM64_Diagnostic.Managers
                     };
 
                     // Move to next object
-                    currentGroupObject = Config.Stream.GetUInt32(currentGroupObject + ObjectConfig.ProcessNextLinkOffset);
+                    currentGroupObject = Config.Stream.GetUInt32(currentGroupObject + ObjectConfig.ProcessedNextLinkOffset);
 
                     // Mark next slot
                     currentSlot++;
@@ -361,7 +361,7 @@ namespace SM64_Diagnostic.Managers
                     VacantSlotIndex = currentSlot - vacantSlotStart
                 };
 
-                currentObject = Config.Stream.GetUInt32(currentObject + ObjectConfig.ProcessNextLinkOffset);
+                currentObject = Config.Stream.GetUInt32(currentObject + ObjectConfig.ProcessedNextLinkOffset);
             }
 
             return newObjectSlotData.ToList();

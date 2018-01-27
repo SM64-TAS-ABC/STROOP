@@ -397,11 +397,11 @@ namespace SM64_Diagnostic.Utilities
 
                 // Loop through and find last object in group
                 uint lastGroupObj = groupAddress;
-                while (Config.Stream.GetUInt32(lastGroupObj + ObjectConfig.ProcessNextLinkOffset) != groupAddress)
-                    lastGroupObj = Config.Stream.GetUInt32(lastGroupObj + ObjectConfig.ProcessNextLinkOffset);
+                while (Config.Stream.GetUInt32(lastGroupObj + ObjectConfig.ProcessedNextLinkOffset) != groupAddress)
+                    lastGroupObj = Config.Stream.GetUInt32(lastGroupObj + ObjectConfig.ProcessedNextLinkOffset);
 
                 // Remove object from current group
-                uint nextObj = Config.Stream.GetUInt32(address + ObjectConfig.ProcessNextLinkOffset);
+                uint nextObj = Config.Stream.GetUInt32(address + ObjectConfig.ProcessedNextLinkOffset);
                 uint prevObj = Config.Stream.GetUInt32(ObjectSlotsConfig.VactantPointerAddress);
                 if (prevObj == address)
                 {
@@ -412,20 +412,20 @@ namespace SM64_Diagnostic.Utilities
                 {
                     for (int i = 0; i < ObjectSlotsConfig.MaxSlots; i++)
                     {
-                        uint obj = Config.Stream.GetUInt32(prevObj + ObjectConfig.ProcessNextLinkOffset);
+                        uint obj = Config.Stream.GetUInt32(prevObj + ObjectConfig.ProcessedNextLinkOffset);
                         if (obj == address)
                             break;
                         prevObj = obj;
                     }
-                    success &= Config.Stream.SetValue(nextObj, prevObj + ObjectConfig.ProcessNextLinkOffset);
+                    success &= Config.Stream.SetValue(nextObj, prevObj + ObjectConfig.ProcessedNextLinkOffset);
                 }
 
                 // Insert object in new group
-                nextObj = Config.Stream.GetUInt32(lastGroupObj + ObjectConfig.ProcessNextLinkOffset);
-                success &= Config.Stream.SetValue(address, nextObj + ObjectConfig.ProcessPreviousLinkOffset);
-                success &= Config.Stream.SetValue(address, lastGroupObj + ObjectConfig.ProcessNextLinkOffset);
-                success &= Config.Stream.SetValue(lastGroupObj, address + ObjectConfig.ProcessPreviousLinkOffset);
-                success &= Config.Stream.SetValue(nextObj, address + ObjectConfig.ProcessNextLinkOffset);
+                nextObj = Config.Stream.GetUInt32(lastGroupObj + ObjectConfig.ProcessedNextLinkOffset);
+                success &= Config.Stream.SetValue(address, nextObj + ObjectConfig.ProcessedPreviousLinkOffset);
+                success &= Config.Stream.SetValue(address, lastGroupObj + ObjectConfig.ProcessedNextLinkOffset);
+                success &= Config.Stream.SetValue(lastGroupObj, address + ObjectConfig.ProcessedPreviousLinkOffset);
+                success &= Config.Stream.SetValue(nextObj, address + ObjectConfig.ProcessedNextLinkOffset);
 
                 success &= Config.Stream.SetValue((short)0x0101, address + ObjectConfig.ActiveOffset);
 

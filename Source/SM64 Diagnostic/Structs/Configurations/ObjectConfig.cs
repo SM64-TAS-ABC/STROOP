@@ -9,6 +9,15 @@ namespace SM64_Diagnostic.Structs
 {
     public static class ObjectConfig
     {
+        public static readonly uint StructSize = 0x0260;
+
+        public static readonly uint HeaderOffset = 0x00;
+        public static readonly uint NextLinkOffset = 0x08;
+        public static readonly uint PreviousLinkOffset = 0x04;
+        public static readonly uint ProcessedNextLinkOffset = 0x60;
+        public static readonly uint ProcessedPreviousLinkOffset = 0x64;
+        public static readonly uint ParentOffset = 0x68;
+
         public static readonly uint BehaviorScriptOffset = 0x020C;
         public static readonly uint BehaviorGfxOffset = 0x14;
         public static readonly uint BehaviorAppearanceOffset = 0xF0;
@@ -60,19 +69,6 @@ namespace SM64_Diagnostic.Structs
         public static readonly uint ReleaseStatusThrownValue = 0x800EE5F8;
         public static readonly uint ReleaseStatusDroppedValue = 0x800EE5F0;
         public static readonly uint InteractionStatusOffset = 0x134;
-
-
-
-        public static readonly uint ProcessNextLinkOffset = 0x60;
-        public static readonly uint ProcessPreviousLinkOffset = 0x64;
-        public static readonly uint ParentObjectOffset = 0x68;
-        public static readonly uint StructSize = 0x0260;
-        public static readonly uint HeaderOffset = 0x00;
-        public static readonly uint NextLinkOffset = 0x08;
-        public static readonly uint PreviousLinkOffset = 0x04;
-        public static readonly uint ParentOffset = 0x68;
-
-
 
         // Object specific vars
 
