@@ -117,7 +117,7 @@ namespace SM64_Diagnostic.Structs
                     return new List<uint> { FileManager.Instance.CurrentFileAddress };
 
                 case BaseAddressTypeEnum.Object:
-                    return ObjectManager.Instance.CurrentAddresses;
+                    return Config.ObjectManager.CurrentAddresses;
 
                 case BaseAddressTypeEnum.Triangle:
                     {

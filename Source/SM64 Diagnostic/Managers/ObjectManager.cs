@@ -15,8 +15,6 @@ namespace SM64_Diagnostic.Managers
 {
     public class ObjectManager : DataManager
     {
-        public static ObjectManager Instance = null;
-
         string _slotIndex;
         string _slotPos;
         string _behavior;
@@ -181,8 +179,6 @@ namespace SM64_Diagnostic.Managers
         public ObjectManager(List<WatchVariableControlPrecursor> variables, Control objectControl, WatchVariablePanel variableTable)
             : base(variables, variableTable, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
         {
-            Instance = this;
-
             SplitContainer splitContainerObject = objectControl.Controls["splitContainerObject"] as SplitContainer;
 
             _objAddressLabelValue = splitContainerObject.Panel1.Controls["labelObjAddValue"] as Label;
