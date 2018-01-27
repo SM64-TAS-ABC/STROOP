@@ -155,13 +155,13 @@ namespace SM64_Diagnostic.Structs
                         .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.WaypointOffset));
 
                 case BaseAddressTypeEnum.Water:
-                    return new List<uint> { Config.Stream.GetUInt32(Config.WaterPointerAddress) };
+                    return new List<uint> { Config.Stream.GetUInt32(MiscConfig.WaterPointerAddress) };
 
                 case BaseAddressTypeEnum.Area:
                     return new List<uint> { AreaManager.Instance.SelectedAreaAddress };
 
                 case BaseAddressTypeEnum.HackedArea:
-                    return new List<uint> { Config.HackedAreaAddress };
+                    return new List<uint> { MiscConfig.HackedAreaAddress };
 
                 case BaseAddressTypeEnum.CamHack:
                     return new List<uint> { CameraHackConfig.CameraHackStruct };

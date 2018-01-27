@@ -521,11 +521,11 @@ namespace SM64_Diagnostic.Structs
                 case "ObjectRngCallsPerFrame":
                     getterFunction = (uint objAddress) =>
                     {
-                        uint numberOfRngObjs = Config.Stream.GetUInt32(Config.HackedAreaAddress);
+                        uint numberOfRngObjs = Config.Stream.GetUInt32(MiscConfig.HackedAreaAddress);
                         int numOfCalls = 0;
                         for (int i = 0; i < Math.Min(numberOfRngObjs, Config.ObjectSlots.MaxSlots); i++)
                         {
-                            uint rngStructAdd = (uint)(Config.HackedAreaAddress + 0x30 + 0x08 * i);
+                            uint rngStructAdd = (uint)(MiscConfig.HackedAreaAddress + 0x30 + 0x08 * i);
                             uint address = Config.Stream.GetUInt32(rngStructAdd + 0x04);
                             if (address != objAddress) continue;
                             ushort preRng = Config.Stream.GetUInt16(rngStructAdd + 0x00);
@@ -1059,8 +1059,8 @@ namespace SM64_Diagnostic.Structs
                 case "MovementX":
                     getterFunction = (uint dummy) =>
                     {
-                        float endX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x10);
-                        float startX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x1C);
+                        float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
+                        float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
                         float movementX = endX - startX;
                         return movementX.ToString();
                     };
@@ -1069,8 +1069,8 @@ namespace SM64_Diagnostic.Structs
                 case "MovementY":
                     getterFunction = (uint dummy) =>
                     {
-                        float endY = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x14);
-                        float startY = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x20);
+                        float endY = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x14);
+                        float startY = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x20);
                         float movementY = endY - startY;
                         return movementY.ToString();
                     };
@@ -1079,8 +1079,8 @@ namespace SM64_Diagnostic.Structs
                 case "MovementZ":
                     getterFunction = (uint dummy) =>
                     {
-                        float endZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x18);
-                        float startZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x24);
+                        float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
+                        float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
                         float movementZ = endZ - startZ;
                         return movementZ.ToString();
                     };
@@ -1089,11 +1089,11 @@ namespace SM64_Diagnostic.Structs
                 case "MovementForwards":
                     getterFunction = (uint dummy) =>
                     {
-                        float endX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x10);
-                        float startX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x1C);
+                        float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
+                        float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
                         float movementX = endX - startX;
-                        float endZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x18);
-                        float startZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x24);
+                        float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
+                        float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
                         float movementZ = endZ - startZ;
                         double movementHorizontal = MoreMath.GetHypotenuse(movementX, movementZ);
                         double movementAngle = MoreMath.AngleTo_AngleUnits(movementX, movementZ);
@@ -1107,11 +1107,11 @@ namespace SM64_Diagnostic.Structs
                 case "MovementSideways":
                     getterFunction = (uint dummy) =>
                     {
-                        float endX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x10);
-                        float startX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x1C);
+                        float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
+                        float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
                         float movementX = endX - startX;
-                        float endZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x18);
-                        float startZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x24);
+                        float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
+                        float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
                         float movementZ = endZ - startZ;
                         double movementHorizontal = MoreMath.GetHypotenuse(movementX, movementZ);
                         double movementAngle = MoreMath.AngleTo_AngleUnits(movementX, movementZ);
@@ -1125,11 +1125,11 @@ namespace SM64_Diagnostic.Structs
                 case "MovementHorizontal":
                     getterFunction = (uint dummy) =>
                     {
-                        float endX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x10);
-                        float startX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x1C);
+                        float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
+                        float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
                         float movementX = endX - startX;
-                        float endZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x18);
-                        float startZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x24);
+                        float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
+                        float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
                         float movementZ = endZ - startZ;
                         double movementHorizontal = MoreMath.GetHypotenuse(movementX, movementZ);
                         return movementHorizontal.ToString();
@@ -1139,14 +1139,14 @@ namespace SM64_Diagnostic.Structs
                 case "MovementTotal":
                     getterFunction = (uint dummy) =>
                     {
-                        float endX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x10);
-                        float startX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x1C);
+                        float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
+                        float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
                         float movementX = endX - startX;
-                        float endY = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x14);
-                        float startY = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x20);
+                        float endY = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x14);
+                        float startY = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x20);
                         float movementY = endY - startY;
-                        float endZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x18);
-                        float startZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x24);
+                        float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
+                        float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
                         float movementZ = endZ - startZ;
                         double movementTotal = MoreMath.GetHypotenuse(movementX, movementY, movementZ);
                         return movementTotal.ToString();
@@ -1156,11 +1156,11 @@ namespace SM64_Diagnostic.Structs
                 case "MovementAngle":
                     getterFunction = (uint dummy) =>
                     {
-                        float endX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x10);
-                        float startX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x1C);
+                        float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
+                        float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
                         float movementX = endX - startX;
-                        float endZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x18);
-                        float startZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x24);
+                        float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
+                        float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
                         float movementZ = endZ - startZ;
                         double movementAngle = MoreMath.AngleTo_AngleUnits(movementX, movementZ);
                         return movementAngle.ToString();
@@ -1170,16 +1170,16 @@ namespace SM64_Diagnostic.Structs
                 case "QFrameCountEstimate":
                     getterFunction = (uint dummy) =>
                     {
-                        float endX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x10);
-                        float startX = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x1C);
+                        float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
+                        float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
                         float movementX = endX - startX;
-                        float endY = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x14);
-                        float startY = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x20);
+                        float endY = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x14);
+                        float startY = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x20);
                         float movementY = endY - startY;
-                        float endZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x18);
-                        float startZ = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x24);
+                        float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
+                        float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
                         float movementZ = endZ - startZ;
-                        float oldHSpeed = Config.Stream.GetSingle(Config.HackedAreaAddress + 0x28);
+                        float oldHSpeed = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x28);
                         double qframes = Math.Abs(Math.Round(Math.Sqrt(movementX * movementX + movementZ * movementZ) / (oldHSpeed / 4)));
                         if (qframes > 4) qframes = double.NaN;
                         return qframes.ToString();
@@ -2268,7 +2268,7 @@ namespace SM64_Diagnostic.Structs
                     getterFunction = (uint dummy) =>
                     {
                         short waterLevel = Config.Stream.GetInt16(MarioConfig.StructAddress + MarioConfig.WaterLevelOffset);
-                        short waterLevelMedian = Config.Stream.GetInt16(Config.WaterLevelMedianAddress);
+                        short waterLevelMedian = Config.Stream.GetInt16(MiscConfig.WaterLevelMedianAddress);
                         double waterAboveMedian = waterLevel - waterLevelMedian;
                         return waterAboveMedian.ToString();
                     };
@@ -2299,7 +2299,7 @@ namespace SM64_Diagnostic.Structs
                 case "RngIndex":
                     getterFunction = (uint dummy) =>
                     {
-                        ushort rngValue = Config.Stream.GetUInt16(Config.RngAddress);
+                        ushort rngValue = Config.Stream.GetUInt16(MiscConfig.RngAddress);
                         string rngIndexString = RngIndexer.GetRngIndexString(rngValue);
                         return rngIndexString;
                     };
@@ -2308,15 +2308,15 @@ namespace SM64_Diagnostic.Structs
                         int? index = ParsingUtilities.ParseIntNullable(stringValue);
                         if (!index.HasValue) return false;
                         ushort rngValue = RngIndexer.GetRngValue(index.Value);
-                        return Config.Stream.SetValue(rngValue, Config.RngAddress);
+                        return Config.Stream.SetValue(rngValue, MiscConfig.RngAddress);
                     };
                     break;
 
                 case "RngCallsPerFrame":
                     getterFunction = (uint dummy) =>
                     {
-                        ushort preRng = Config.Stream.GetUInt16(Config.HackedAreaAddress + 0x0C);
-                        ushort currentRng = Config.Stream.GetUInt16(Config.HackedAreaAddress + 0x0E);
+                        ushort preRng = Config.Stream.GetUInt16(MiscConfig.HackedAreaAddress + 0x0C);
+                        ushort currentRng = Config.Stream.GetUInt16(MiscConfig.HackedAreaAddress + 0x0E);
                         int rngDiff = RngIndexer.GetRngIndexDiff(preRng, currentRng);
                         return rngDiff.ToString();
                     };

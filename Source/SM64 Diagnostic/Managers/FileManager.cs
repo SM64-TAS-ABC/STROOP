@@ -700,7 +700,7 @@ namespace SM64_Diagnostic.Managers
 
         public uint GetInGameFileAddress()
         {
-            short inGameFile = Config.Stream.GetInt16(Config.CurrentFileAddress);
+            short inGameFile = Config.Stream.GetInt16(MiscConfig.CurrentFileAddress);
             switch (inGameFile)
             {
                 case 1:

@@ -150,10 +150,10 @@ namespace SM64_Diagnostic.Managers
                 return;
 
             // Get level and area
-            byte level = Config.Stream.GetByte(Config.LevelAddress);
-            byte area = Config.Stream.GetByte(Config.AreaAddress);
-            ushort loadingPoint = Config.Stream.GetUInt16(Config.LoadingPointAddress);
-            ushort missionLayout = Config.Stream.GetUInt16(Config.MissionAddress);
+            byte level = Config.Stream.GetByte(MiscConfig.LevelAddress);
+            byte area = Config.Stream.GetByte(MiscConfig.AreaAddress);
+            ushort loadingPoint = Config.Stream.GetUInt16(MiscConfig.LoadingPointAddress);
+            ushort missionLayout = Config.Stream.GetUInt16(MiscConfig.MissionAddress);
 
             // Find new map list
             if (_currentMapList == null || _currentLevel != level || _currentArea != area 

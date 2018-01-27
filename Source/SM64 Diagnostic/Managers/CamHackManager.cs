@@ -204,7 +204,7 @@ namespace SM64_Diagnostic.Managers
             uint objAddress = Config.Stream.GetUInt32(CameraHackConfig.CameraHackStruct + CameraHackConfig.ObjectOffset);
             if (objAddress == 0) return;
 
-            int currentGlobalTimer = Config.Stream.GetInt32(Config.GlobalTimerAddress);
+            int currentGlobalTimer = Config.Stream.GetInt32(MiscConfig.GlobalTimerAddress);
             if (currentGlobalTimer == _globalTimer) return;
             _globalTimer = currentGlobalTimer;
 

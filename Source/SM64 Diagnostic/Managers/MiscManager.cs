@@ -32,7 +32,7 @@ namespace SM64_Diagnostic.Managers
                 if (!rngIndexNullable.HasValue) return;
                 int rngIndex = rngIndexNullable.Value;
                 ushort rngValue = RngIndexer.GetRngValue(rngIndex);
-                Config.Stream.SetValue(rngValue, Config.RngAddress);
+                Config.Stream.SetValue(rngValue, MiscConfig.RngAddress);
                 int nextRngIndex = rngIndex + 1;
                 textBoxRNGIndexTester.Text = nextRngIndex.ToString();
             };
@@ -42,10 +42,10 @@ namespace SM64_Diagnostic.Managers
         {
             if (_checkBoxTurnOffMusic.Checked)
             {
-                byte oldMusicByte = Config.Stream.GetByte(Config.MusicOnAddress);
-                byte newMusicByte = MoreMath.ApplyValueToMaskedByte(oldMusicByte, Config.MusicOnMask, true);
-                Config.Stream.SetValue(newMusicByte, Config.MusicOnAddress);
-                Config.Stream.SetValue(0f, Config.MusicVolumeAddress);
+                byte oldMusicByte = Config.Stream.GetByte(MiscConfig.MusicOnAddress);
+                byte newMusicByte = MoreMath.ApplyValueToMaskedByte(oldMusicByte, MiscConfig.MusicOnMask, true);
+                Config.Stream.SetValue(newMusicByte, MiscConfig.MusicOnAddress);
+                Config.Stream.SetValue(0f, MiscConfig.MusicVolumeAddress);
             }
 
             if (!updateView)

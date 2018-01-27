@@ -121,52 +121,7 @@
     <RetrieveAboveDefault>300</RetrieveAboveDefault>
     <RetrieveInfrontDefault>0</RetrieveInfrontDefault>
   </GotoRetrieve>
-  <LevelAddressUS>0x8033B249</LevelAddressUS>
-  <LevelAddressJP>0x80339ED9</LevelAddressJP>
-
-  <AreaAddressUS>0x8033B24A</AreaAddressUS>
-  <AreaAddressJP>0x80339EDA</AreaAddressJP>
-
-  <LoadingPointAddressUS>0x8033BACA</LoadingPointAddressUS>
-  <LoadingPointAddressJP>0x8033A75A</LoadingPointAddressJP>
-
-  <MissionLayoutAddressUS>0x8033BAC8</MissionLayoutAddressUS>
-  <MissionLayoutAddressJP>0x8033A758</MissionLayoutAddressJP>
-
-  <LevelIndexAddressUS>0x8033BAC6</LevelIndexAddressUS>
-  <LevelIndexAddressJP>0x8033A756</LevelIndexAddressJP>
-
-  <WaterLevelMedianAddressUS>0x8036118A</WaterLevelMedianAddressUS>
-  <WaterLevelMedianAddressJP>0x8035FE1A</WaterLevelMedianAddressJP>
-
-  <WaterPointerAddressUS>0x80361184</WaterPointerAddressUS>
-  <WaterPointerAddressJP>0x8035FE14</WaterPointerAddressJP>
-
-  <GlobalTimerAddressUS>0x8032D5D4</GlobalTimerAddressUS>
-  <GlobalTimerAddressJP>0x8032C694</GlobalTimerAddressJP>
-
-  <RngAddressUS>0x8038EEE0</RngAddressUS>
-  <RngAddressJP>0x8038EEE0</RngAddressJP>
-
-  <AnimationTimerAddressUS>0x8032DF08</AnimationTimerAddressUS>
-  <AnimationTimerAddressJP>0x8032CFA8</AnimationTimerAddressJP>
-
-  <MusicOnAddressUS>0x80222618</MusicOnAddressUS>
-  <MusicOnAddressJP>0x80222A18</MusicOnAddressJP>
-
-  <MusicOnMask>0x20</MusicOnMask>
-
-  <MusicVolumeAddressUS>0x80222630</MusicVolumeAddressUS>
-  <MusicVolumeAddressJP>0x80222A30</MusicVolumeAddressJP>
-
-  <CurrentFileAddressUS>0x8032DDF4</CurrentFileAddressUS>
-  <CurrentFileAddressJP>0x8032CE94</CurrentFileAddressJP>
-
-  <SpecialTripleJumpAddressUS>0x8032DD94</SpecialTripleJumpAddressUS>
-  <SpecialTripleJumpAddressJP>0x8032CE34</SpecialTripleJumpAddressJP>
-
-  <HackedAreaAddressUS>0x803E0000</HackedAreaAddressUS>
-  <HackedAreaAddressJP>0x803E0000</HackedAreaAddressJP>
+  
   <DebugAddress></DebugAddress>
   <DebugModeAddress></DebugModeAddress>
 </Config>

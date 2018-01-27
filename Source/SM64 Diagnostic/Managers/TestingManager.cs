@@ -447,7 +447,7 @@ namespace SM64_Diagnostic.Managers
             // Schedule
             {
                 (int frame, double? x, double? y, double? z, double? hspd, string description) = _rollingRocksScheduleList[_rollingRocksScheduleIndex];
-                _labelSchedule1.Text = Config.Stream.GetInt32(Config.GlobalTimerAddress).ToString();
+                _labelSchedule1.Text = Config.Stream.GetInt32(MiscConfig.GlobalTimerAddress).ToString();
                 _labelSchedule2.Text = (frame + _rollingRocksScheduleIndexOffset).ToString();
                 if (x.HasValue) _labelSchedule3.Text = x.Value.ToString();
                 if (y.HasValue) _labelSchedule4.Text = y.Value.ToString();
@@ -691,8 +691,8 @@ namespace SM64_Diagnostic.Managers
 
         private void StateTransferUpdate()
         {
-            _betterTextboxStateTransferVar1Current.Text = Config.Stream.GetInt32(Config.GlobalTimerAddress).ToString();
-            _betterTextboxStateTransferVar2Current.Text = Config.Stream.GetUInt16(Config.RngAddress).ToString();
+            _betterTextboxStateTransferVar1Current.Text = Config.Stream.GetInt32(MiscConfig.GlobalTimerAddress).ToString();
+            _betterTextboxStateTransferVar2Current.Text = Config.Stream.GetUInt16(MiscConfig.RngAddress).ToString();
             _betterTextboxStateTransferVar3Current.Text = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPXOffset).ToString();
             _betterTextboxStateTransferVar4Current.Text = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPYOffset).ToString();
             _betterTextboxStateTransferVar5Current.Text = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPZOffset).ToString();
@@ -705,8 +705,8 @@ namespace SM64_Diagnostic.Managers
             _betterTextboxStateTransferVar10Current.Text = Config.Stream.GetInt16(MarioConfig.StructAddress + HudConfig.HpCountOffset).ToString();
             _betterTextboxStateTransferVar11Current.Text = Config.Stream.GetSByte(MarioConfig.StructAddress + HudConfig.LifeCountOffset).ToString();
             _betterTextboxStateTransferVar12Current.Text = Config.Stream.GetInt16(MarioConfig.StructAddress + HudConfig.StarCountOffset).ToString();
-            _betterTextboxStateTransferVar13Current.Text = Config.Stream.GetByte(Config.SpecialTripleJumpAddress).ToString();
-            _betterTextboxStateTransferVar14Current.Text = Config.Stream.GetInt16(Config.AnimationTimerAddress).ToString();
+            _betterTextboxStateTransferVar13Current.Text = Config.Stream.GetByte(MiscConfig.SpecialTripleJumpAddress).ToString();
+            _betterTextboxStateTransferVar14Current.Text = Config.Stream.GetInt16(MiscConfig.AnimationTimerAddress).ToString();
         }
 
         private void StateTransferSave()
@@ -732,10 +732,10 @@ namespace SM64_Diagnostic.Managers
         {
             int timersOffset = _checkBoxStateTransferOffsetTimers.Checked ? -1 : 0;
             int? value1 = ParsingUtilities.ParseIntNullable(_betterTextboxStateTransferVar1Saved.Text);
-            if (value1.HasValue) Config.Stream.SetValue(value1.Value + timersOffset, Config.GlobalTimerAddress);
+            if (value1.HasValue) Config.Stream.SetValue(value1.Value + timersOffset, MiscConfig.GlobalTimerAddress);
 
             ushort? value2 = ParsingUtilities.ParseUShortNullable(_betterTextboxStateTransferVar2Saved.Text);
-            if (value2.HasValue) Config.Stream.SetValue(value2.Value, Config.RngAddress);
+            if (value2.HasValue) Config.Stream.SetValue(value2.Value, MiscConfig.RngAddress);
 
             float? value3 = ParsingUtilities.ParseFloatNullable(_betterTextboxStateTransferVar3Saved.Text);
             if (value3.HasValue) Config.Stream.SetValue(value3.Value, MarioConfig.StructAddress + MarioConfig.HOLPXOffset);
@@ -784,10 +784,10 @@ namespace SM64_Diagnostic.Managers
             }
 
             byte? value13 = ParsingUtilities.ParseByteNullable(_betterTextboxStateTransferVar13Saved.Text);
-            if (value13.HasValue) Config.Stream.SetValue(value13.Value, Config.SpecialTripleJumpAddress);
+            if (value13.HasValue) Config.Stream.SetValue(value13.Value, MiscConfig.SpecialTripleJumpAddress);
 
             short? value14 = ParsingUtilities.ParseShortNullable(_betterTextboxStateTransferVar14Saved.Text);
-            if (value14.HasValue) Config.Stream.SetValue((short)(value14.Value + timersOffset), Config.AnimationTimerAddress);
+            if (value14.HasValue) Config.Stream.SetValue((short)(value14.Value + timersOffset), MiscConfig.AnimationTimerAddress);
         }
 
         private static int _rollingRocksScheduleIndexOffset = -8582;

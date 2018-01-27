@@ -76,68 +76,6 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static GotoRetrieveConfig GotoRetrieve;
         public static PositionControllerRelativeAngleConfig PositionControllerRelativeAngle;
 
-        public static uint LevelAddress { get { return Config.SwitchRomVersion(LevelAddressUS, LevelAddressJP); } }
-        public static uint LevelAddressUS;
-        public static uint LevelAddressJP;
-
-        public static uint AreaAddress { get { return Config.SwitchRomVersion(AreaAddressUS, AreaAddressJP); } }
-        public static uint AreaAddressUS;
-        public static uint AreaAddressJP;
-
-        public static uint LoadingPointAddress { get { return Config.SwitchRomVersion(LoadingPointAddressUS, LoadingPointAddressJP); } }
-        public static uint LoadingPointAddressUS;
-        public static uint LoadingPointAddressJP;
-
-        public static uint MissionAddress { get { return Config.SwitchRomVersion(MissionAddressUS, MissionAddressJP); } }
-        public static uint MissionAddressUS;
-        public static uint MissionAddressJP;
-
-        public static uint LevelIndexAddress { get { return Config.SwitchRomVersion(LevelIndexAddressUS, LevelIndexAddressJP); } }
-        public static uint LevelIndexAddressUS;
-        public static uint LevelIndexAddressJP;
-
-        public static uint WaterLevelMedianAddress { get { return Config.SwitchRomVersion(WaterLevelMedianAddressUS, WaterLevelMedianAddressJP); } }
-        public static uint WaterLevelMedianAddressUS;
-        public static uint WaterLevelMedianAddressJP;
-
-        public static uint WaterPointerAddress { get { return Config.SwitchRomVersion(WaterPointerAddressUS, WaterPointerAddressJP); } }
-        public static uint WaterPointerAddressUS;
-        public static uint WaterPointerAddressJP;
-
-        public static uint CurrentFileAddress { get { return Config.SwitchRomVersion(CurrentFileAddressUS, CurrentFileAddressJP); } }
-        public static uint CurrentFileAddressUS;
-        public static uint CurrentFileAddressJP;
-
-        public static uint SpecialTripleJumpAddress { get { return Config.SwitchRomVersion(SpecialTripleJumpAddressUS, SpecialTripleJumpAddressJP); } }
-        public static uint SpecialTripleJumpAddressUS;
-        public static uint SpecialTripleJumpAddressJP;
-
-        public static uint HackedAreaAddress { get { return Config.SwitchRomVersion(HackedAreaAddressUS, HackedAreaAddressJP); } }
-        public static uint HackedAreaAddressUS;
-        public static uint HackedAreaAddressJP;
-
-        public static uint GlobalTimerAddress { get { return Config.SwitchRomVersion(GlobalTimerAddressUS, GlobalTimerAddressJP); } }
-        public static uint GlobalTimerAddressUS;
-        public static uint GlobalTimerAddressJP;
-
-        public static uint RngAddress { get { return Config.SwitchRomVersion(RngAddressUS, RngAddressJP); } }
-        public static uint RngAddressUS;
-        public static uint RngAddressJP;
-
-        public static uint AnimationTimerAddress { get { return Config.SwitchRomVersion(AnimationTimerAddressUS, AnimationTimerAddressJP); } }
-        public static uint AnimationTimerAddressUS;
-        public static uint AnimationTimerAddressJP;
-
-        public static uint MusicOnAddress { get { return Config.SwitchRomVersion(MusicOnAddressUS, MusicOnAddressJP); } }
-        public static uint MusicOnAddressUS;
-        public static uint MusicOnAddressJP;
-
-        public static byte MusicOnMask;
-
-        public static uint MusicVolumeAddress { get { return Config.SwitchRomVersion(MusicVolumeAddressUS, MusicVolumeAddressJP); } }
-        public static uint MusicVolumeAddressUS;
-        public static uint MusicVolumeAddressJP;
-
         public static bool SlotIndexsFromOne = true;
         public static bool MoveCameraWithPu = true;
         public static bool ScaleDiagonalPositionControllerButtons = false;
