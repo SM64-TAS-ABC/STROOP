@@ -311,18 +311,18 @@ namespace SM64_Diagnostic.Managers
             return slot?.Address;
         }
 
-        private List<ObjectSlotData> GetProcessedObjects(ObjectGroupsConfig groupConfig)
+        private List<ObjectSlotData> GetProcessedObjects()
         {
             var newObjectSlotData = new ObjectSlotData[ObjectSlotsConfig.MaxSlots];
 
             // Loop through each processing group
             int currentSlot = 0;
-            foreach (var objectProcessGroup in groupConfig.ProcessingGroups)
+            foreach (var objectProcessGroup in ObjectGroupsConfig.ProcessingGroups)
             {
-                uint processGroupStructAddress = groupConfig.FirstGroupingAddress + objectProcessGroup * groupConfig.ProcessGroupStructSize;
+                uint processGroupStructAddress = ObjectGroupsConfig.FirstGroupingAddress + objectProcessGroup * ObjectGroupsConfig.ProcessGroupStructSize;
 
                 // Calculate start and ending objects
-                uint currentGroupObject = Config.Stream.GetUInt32(processGroupStructAddress + groupConfig.ProcessNextLinkOffset);
+                uint currentGroupObject = Config.Stream.GetUInt32(processGroupStructAddress + ObjectGroupsConfig.ProcessNextLinkOffset);
 
                 // Loop through every object within the group
                  while ((currentGroupObject != processGroupStructAddress && currentSlot < ObjectSlotsConfig.MaxSlots))
@@ -341,7 +341,7 @@ namespace SM64_Diagnostic.Managers
                     };
 
                     // Move to next object
-                    currentGroupObject = Config.Stream.GetUInt32(currentGroupObject + groupConfig.ProcessNextLinkOffset);
+                    currentGroupObject = Config.Stream.GetUInt32(currentGroupObject + ObjectGroupsConfig.ProcessNextLinkOffset);
 
                     // Mark next slot
                     currentSlot++;
@@ -351,7 +351,7 @@ namespace SM64_Diagnostic.Managers
             var vacantSlotStart = currentSlot;
 
             // Now calculate vacant addresses
-            uint currentObject = Config.Stream.GetUInt32(groupConfig.VactantPointerAddress);
+            uint currentObject = Config.Stream.GetUInt32(ObjectGroupsConfig.VactantPointerAddress);
             for (; currentSlot < ObjectSlotsConfig.MaxSlots; currentSlot++)
             {
                 // Validate current object
@@ -366,7 +366,7 @@ namespace SM64_Diagnostic.Managers
                     VacantSlotIndex = currentSlot - vacantSlotStart
                 };
 
-                currentObject = Config.Stream.GetUInt32(currentObject + groupConfig.ProcessNextLinkOffset);
+                currentObject = Config.Stream.GetUInt32(currentObject + ObjectGroupsConfig.ProcessNextLinkOffset);
             }
 
             return newObjectSlotData.ToList();
@@ -376,9 +376,8 @@ namespace SM64_Diagnostic.Managers
         {
             LabelMethod = (SlotLabelType) ManagerGui.LabelMethodComboBox.SelectedItem;
             SortMethod = (SortMethodType) ManagerGui.SortMethodComboBox.SelectedItem;
-            var groupConfig = Config.ObjectGroups;
 
-            var newObjectSlotData = GetProcessedObjects(groupConfig);
+            var newObjectSlotData = GetProcessedObjects();
             if (newObjectSlotData == null)
                 return;
 
@@ -537,7 +536,7 @@ namespace SM64_Diagnostic.Managers
                             objManager.Behavior = String.Format("0x{0}", multiBehavior.Value.BehaviorAddress.ToString("X4"));
                             objManager.SetBehaviorWatchVariables(
                                 Config.ObjectAssociations.GetWatchVarControls(multiBehavior.Value),
-                                Config.ObjectGroups.VacantSlotColor.Lighten(0.8));
+                                ObjectGroupsConfig.VacantSlotColor.Lighten(0.8));
                         }
                         else
                         {
@@ -571,7 +570,7 @@ namespace SM64_Diagnostic.Managers
                     objManager.Image = _multiImage;
 
                     objManager.Name = SelectedSlotsAddresses.Count + " Objects Selected";
-                    objManager.BackColor = Config.ObjectGroups.VacantSlotColor;
+                    objManager.BackColor = ObjectGroupsConfig.VacantSlotColor;
                     objManager.SlotIndex = "";
                     objManager.SlotPos = "";
 
@@ -581,7 +580,7 @@ namespace SM64_Diagnostic.Managers
             else if (SelectedSlotsAddresses.Count == 0)
             {
                 objManager.Name = "No Object Selected";
-                objManager.BackColor = Config.ObjectGroups.VacantSlotColor;
+                objManager.BackColor = ObjectGroupsConfig.VacantSlotColor;
                 objManager.Behavior = "";
                 objManager.SlotIndex = "";
                 objManager.SlotPos = "";
@@ -644,8 +643,8 @@ namespace SM64_Diagnostic.Managers
             var processGroup = objData.ObjectProcessGroup;
             objSlot.ProcessGroup = processGroup;
 
-            var newColor = objData.ObjectProcessGroup == VacantGroup ? Config.ObjectGroups.VacantSlotColor :
-                Config.ObjectGroups.ProcessingGroupsColor[objData.ObjectProcessGroup];
+            var newColor = objData.ObjectProcessGroup == VacantGroup ? ObjectGroupsConfig.VacantSlotColor :
+                ObjectGroupsConfig.ProcessingGroupsColor[objData.ObjectProcessGroup];
             objSlot.BackColor = newColor;
 
             if (!_labelsLocked)

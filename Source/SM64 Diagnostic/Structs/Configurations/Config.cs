@@ -47,7 +47,6 @@ namespace SM64_Diagnostic.Structs.Configurations
 
         public static ProcessStream Stream;
         public static ObjectAssociations ObjectAssociations;
-        public static ObjectGroupsConfig ObjectGroups;
 
         public static uint RefreshRateFreq;
         public static double RefreshRateInterval

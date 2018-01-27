@@ -44,9 +44,6 @@ namespace SM64_Diagnostic.Utilities
 
         public static void OpenConfig(string path)
         {
-            Config.ObjectGroups = new ObjectGroupsConfig();
-            Config.ObjectGroups.ProcessingGroups = new List<byte>();
-            Config.ObjectGroups.ProcessingGroupsColor = new Dictionary<byte, Color>();
             var assembly = Assembly.GetExecutingAssembly();
 
             Config.PositionControllerRelativeAngle.Relativity = RelativityType.Recommended;
@@ -87,53 +84,6 @@ namespace SM64_Diagnostic.Utilities
                         break;
                     case "RamSize":
                         Config.RamSize = ParsingUtilities.ParseHex(element.Value);
-                        break;
-               
-                    case "ObjectGroups":
-                        foreach (XElement subElement in element.Elements())
-                        {
-                            switch (subElement.Name.ToString())
-                            {
-                                case "ProcessNextLinkOffset":
-                                    Config.ObjectGroups.ProcessNextLinkOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "ProcessPreviousLinkOffset":
-                                    Config.ObjectGroups.ProcessPreviousLinkOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "ParentObjectOffset":
-                                    Config.ObjectGroups.ParentObjectOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "FirstObjectGroupingAddressUS":
-                                    Config.ObjectGroups.FirstGroupingAddressUS = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "FirstObjectGroupingAddressJP":
-                                    Config.ObjectGroups.FirstGroupingAddressJP = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "VacantPointerAddressUS":
-                                    Config.ObjectGroups.VactantPointerAddressUS = ParsingUtilities.ParseHex(subElement.Value);
-                                    Config.ObjectGroups.VacantSlotColor = ColorTranslator.FromHtml(subElement.Attribute(XName.Get("color")).Value);
-                                    break;
-                                case "VacantPointerAddressJP":
-                                    Config.ObjectGroups.VactantPointerAddressJP = ParsingUtilities.ParseHex(subElement.Value);
-                                    Config.ObjectGroups.VacantSlotColor = ColorTranslator.FromHtml(subElement.Attribute(XName.Get("color")).Value);
-                                    break;
-                                case "ProcessGroupStructSize":
-                                    Config.ObjectGroups.ProcessGroupStructSize = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "ProcessGroupsOrdering":
-                                    foreach(var subSubElement in subElement.Elements())
-                                    {
-                                        var group = (byte)ParsingUtilities.ParseHex(
-                                            subSubElement.Attribute(XName.Get("index")).Value);
-                                        var color = ColorTranslator.FromHtml(
-                                            subSubElement.Attribute(XName.Get("color")).Value);
-
-                                        Config.ObjectGroups.ProcessingGroups.Add(group);
-                                        Config.ObjectGroups.ProcessingGroupsColor.Add(group,color);
-                                    }
-                                    break;
-                            }
-                        }
                         break;
                 }
             }
