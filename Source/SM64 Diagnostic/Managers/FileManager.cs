@@ -14,8 +14,6 @@ namespace SM64_Diagnostic.Managers
 {
     public class FileManager : DataManager
     {
-        public static FileManager Instance = null;
-
         public enum FileMode { FileA, FileB, FileC, FileD, FileASaved, FileBSaved, FileCSaved, FileDSaved };
         private enum AllCoinsMeaning { Coins100, Coins255, MaxWithoutGlitches, MaxWithGlitches };
         private enum FileCategory { Stars, Cannons, Doors, Coins, Misc };
@@ -55,7 +53,6 @@ namespace SM64_Diagnostic.Managers
         public FileManager(List<WatchVariableControlPrecursor> variables, TabPage tabControl, WatchVariablePanel watchVariablePanelFile, FileImageGui gui)
             : base(variables, watchVariablePanelFile)
         {
-            Instance = this;
             _tabControl = tabControl;
             _gui = gui;
 
