@@ -68,13 +68,13 @@ namespace SM64_Diagnostic.Structs
                     getterFunction = (uint objAddress) =>
                     {
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                        float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
+                        float objY = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectYOffset);
                         float yDist = marioY - objY;
                         return yDist.ToString();
                     };
                     setterFunction = (string stringValue, uint objAddress) =>
                     {
-                        float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
+                        float objY = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectYOffset);
                         double? distAbove = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!distAbove.HasValue) return false;
                         double newMarioY = objY + distAbove.Value;
@@ -130,13 +130,13 @@ namespace SM64_Diagnostic.Structs
                     getterFunction = (uint objAddress) =>
                     {
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                        float homeY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
+                        float homeY = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.HomeYOffset);
                         float yDist = marioY - homeY;
                         return yDist.ToString();
                     };
                     setterFunction = (string stringValue, uint objAddress) =>
                     {
-                        float homeY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
+                        float homeY = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.HomeYOffset);
                         double? distAbove = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!distAbove.HasValue) return false;
                         double newMarioY = homeY + distAbove.Value;
@@ -191,18 +191,18 @@ namespace SM64_Diagnostic.Structs
                 case "VerticalObjectDistanceToHome":
                     getterFunction = (uint objAddress) =>
                     {
-                        float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
-                        float homeY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
+                        float objY = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectYOffset);
+                        float homeY = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.HomeYOffset);
                         float yDist = objY - homeY;
                         return yDist.ToString();
                     };
                     setterFunction = (string stringValue, uint objAddress) =>
                     {
-                        float homeY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
+                        float homeY = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.HomeYOffset);
                         double? distAbove = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!distAbove.HasValue) return false;
                         double newObjY = homeY + distAbove.Value;
-                        return Config.Stream.SetValue((float)newObjY, objAddress + Config.ObjectSlots.ObjectYOffset);
+                        return Config.Stream.SetValue((float)newObjY, objAddress + ObjectSlotsConfig.ObjectYOffset);
                     };
                     break;
 
@@ -378,13 +378,13 @@ namespace SM64_Diagnostic.Structs
                     getterFunction = (uint objAddress) =>
                     {
                         uint marioObjRef = Config.Stream.GetUInt32(MarioConfig.ObjectReferenceAddress);
-                        float mObjX = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectXOffset);
-                        float mObjZ = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectZOffset);
-                        float mObjHitboxRadius = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxRadius);
+                        float mObjX = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.ObjectXOffset);
+                        float mObjZ = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.ObjectZOffset);
+                        float mObjHitboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.HitboxRadius);
 
-                        float objX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
-                        float objZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
-                        float objHitboxRadius = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxRadius);
+                        float objX = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectXOffset);
+                        float objZ = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectZOffset);
+                        float objHitboxRadius = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.HitboxRadius);
 
                         double marioHitboxAwayFromObject = MoreMath.GetDistanceBetween(mObjX, mObjZ, objX, objZ) - mObjHitboxRadius - objHitboxRadius;
                         return marioHitboxAwayFromObject.ToString();
@@ -392,13 +392,13 @@ namespace SM64_Diagnostic.Structs
                     setterFunction = (string stringValue, uint objAddress) =>
                     {
                         uint marioObjRef = Config.Stream.GetUInt32(MarioConfig.ObjectReferenceAddress);
-                        float mObjX = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectXOffset);
-                        float mObjZ = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectZOffset);
-                        float mObjHitboxRadius = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxRadius);
+                        float mObjX = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.ObjectXOffset);
+                        float mObjZ = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.ObjectZOffset);
+                        float mObjHitboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.HitboxRadius);
 
-                        float objX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
-                        float objZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
-                        float objHitboxRadius = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxRadius);
+                        float objX = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectXOffset);
+                        float objZ = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectZOffset);
+                        float objHitboxRadius = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.HitboxRadius);
 
                         Position marioPos = GetMarioPosition();
                         Position objPos = GetObjectPosition(objAddress);
@@ -417,14 +417,14 @@ namespace SM64_Diagnostic.Structs
                     getterFunction = (uint objAddress) =>
                     {
                         uint marioObjRef = Config.Stream.GetUInt32(MarioConfig.ObjectReferenceAddress);
-                        float mObjY = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectYOffset);
-                        float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxHeight);
-                        float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxDownOffset);
+                        float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.ObjectYOffset);
+                        float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.HitboxHeight);
+                        float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.HitboxDownOffset);
                         float mObjHitboxBottom = mObjY - mObjHitboxDownOffset;
 
-                        float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
-                        float objHitboxHeight = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxHeight);
-                        float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxDownOffset);
+                        float objY = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectYOffset);
+                        float objHitboxHeight = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.HitboxHeight);
+                        float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.HitboxDownOffset);
                         float objHitboxTop = objY + objHitboxHeight - objHitboxDownOffset;
 
                         double marioHitboxAboveObject = mObjHitboxBottom - objHitboxTop;
@@ -433,12 +433,12 @@ namespace SM64_Diagnostic.Structs
                     setterFunction = (string stringValue, uint objAddress) =>
                     {
                         uint marioObjRef = Config.Stream.GetUInt32(MarioConfig.ObjectReferenceAddress);
-                        float mObjY = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectYOffset);
-                        float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxDownOffset);
+                        float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.ObjectYOffset);
+                        float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.HitboxDownOffset);
 
-                        float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
-                        float objHitboxHeight = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxHeight);
-                        float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxDownOffset);
+                        float objY = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectYOffset);
+                        float objHitboxHeight = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.HitboxHeight);
+                        float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.HitboxDownOffset);
                         float objHitboxTop = objY + objHitboxHeight - objHitboxDownOffset;
 
                         double? hitboxDistAboveNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
@@ -453,14 +453,14 @@ namespace SM64_Diagnostic.Structs
                     getterFunction = (uint objAddress) =>
                     {
                         uint marioObjRef = Config.Stream.GetUInt32(MarioConfig.ObjectReferenceAddress);
-                        float mObjY = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectYOffset);
-                        float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxHeight);
-                        float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxDownOffset);
+                        float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.ObjectYOffset);
+                        float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.HitboxHeight);
+                        float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.HitboxDownOffset);
                         float mObjHitboxTop = mObjY + mObjHitboxHeight - mObjHitboxDownOffset;
 
-                        float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
-                        float objHitboxHeight = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxHeight);
-                        float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxDownOffset);
+                        float objY = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectYOffset);
+                        float objHitboxHeight = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.HitboxHeight);
+                        float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.HitboxDownOffset);
                         float objHitboxBottom = objY - objHitboxDownOffset;
 
                         double marioHitboxBelowObject = objHitboxBottom - mObjHitboxTop;
@@ -469,14 +469,14 @@ namespace SM64_Diagnostic.Structs
                     setterFunction = (string stringValue, uint objAddress) =>
                     {
                         uint marioObjRef = Config.Stream.GetUInt32(MarioConfig.ObjectReferenceAddress);
-                        float mObjY = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectYOffset);
-                        float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxHeight);
-                        float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxDownOffset);
+                        float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.ObjectYOffset);
+                        float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.HitboxHeight);
+                        float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.HitboxDownOffset);
                         float mObjHitboxTop = mObjY + mObjHitboxHeight - mObjHitboxDownOffset;
 
-                        float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
-                        float objHitboxHeight = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxHeight);
-                        float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxDownOffset);
+                        float objY = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectYOffset);
+                        float objHitboxHeight = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.HitboxHeight);
+                        float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.HitboxDownOffset);
                         float objHitboxBottom = objY - objHitboxDownOffset;
 
                         double? hitboxDistBelowNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
@@ -491,21 +491,21 @@ namespace SM64_Diagnostic.Structs
                     getterFunction = (uint objAddress) =>
                     {
                         uint marioObjRef = Config.Stream.GetUInt32(MarioConfig.ObjectReferenceAddress);
-                        float mObjX = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectXOffset);
-                        float mObjY = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectYOffset);
-                        float mObjZ = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.ObjectZOffset);
-                        float mObjHitboxRadius = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxRadius);
-                        float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxHeight);
-                        float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + Config.ObjectSlots.HitboxDownOffset);
+                        float mObjX = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.ObjectXOffset);
+                        float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.ObjectYOffset);
+                        float mObjZ = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.ObjectZOffset);
+                        float mObjHitboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.HitboxRadius);
+                        float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.HitboxHeight);
+                        float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectSlotsConfig.HitboxDownOffset);
                         float mObjHitboxBottom = mObjY - mObjHitboxDownOffset;
                         float mObjHitboxTop = mObjY + mObjHitboxHeight - mObjHitboxDownOffset;
 
-                        float objX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
-                        float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
-                        float objZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
-                        float objHitboxRadius = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxRadius);
-                        float objHitboxHeight = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxHeight);
-                        float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HitboxDownOffset);
+                        float objX = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectXOffset);
+                        float objY = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectYOffset);
+                        float objZ = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectZOffset);
+                        float objHitboxRadius = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.HitboxRadius);
+                        float objHitboxHeight = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.HitboxHeight);
+                        float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.HitboxDownOffset);
                         float objHitboxBottom = objY - objHitboxDownOffset;
                         float objHitboxTop = objY + objHitboxHeight - objHitboxDownOffset;
 
@@ -523,7 +523,7 @@ namespace SM64_Diagnostic.Structs
                     {
                         uint numberOfRngObjs = Config.Stream.GetUInt32(MiscConfig.HackedAreaAddress);
                         int numOfCalls = 0;
-                        for (int i = 0; i < Math.Min(numberOfRngObjs, Config.ObjectSlots.MaxSlots); i++)
+                        for (int i = 0; i < Math.Min(numberOfRngObjs, ObjectSlotsConfig.MaxSlots); i++)
                         {
                             uint rngStructAdd = (uint)(MiscConfig.HackedAreaAddress + 0x30 + 0x08 * i);
                             uint address = Config.Stream.GetUInt32(rngStructAdd + 0x04);
@@ -553,9 +553,9 @@ namespace SM64_Diagnostic.Structs
                         float accelerationDirection = amplitude > 0 ? -1 : 1;
 
                         bool success = true;
-                        success |= Config.Stream.SetValue(accelerationDirection, objAddress + Config.ObjectSlots.PendulumAccelerationDirection);
-                        success |= Config.Stream.SetValue(0f, objAddress + Config.ObjectSlots.PendulumAngularVelocity);
-                        success |= Config.Stream.SetValue((float)amplitude, objAddress + Config.ObjectSlots.PendulumAngle);
+                        success |= Config.Stream.SetValue(accelerationDirection, objAddress + ObjectSlotsConfig.PendulumAccelerationDirection);
+                        success |= Config.Stream.SetValue(0f, objAddress + ObjectSlotsConfig.PendulumAngularVelocity);
+                        success |= Config.Stream.SetValue((float)amplitude, objAddress + ObjectSlotsConfig.PendulumAngle);
                         return success;
                     };
                     break;
@@ -582,9 +582,9 @@ namespace SM64_Diagnostic.Structs
                         float accelerationDirection = amplitude > 0 ? -1 : 1;
 
                         bool success = true;
-                        success |= Config.Stream.SetValue(accelerationDirection, objAddress + Config.ObjectSlots.PendulumAccelerationDirection);
-                        success |= Config.Stream.SetValue(0f, objAddress + Config.ObjectSlots.PendulumAngularVelocity);
-                        success |= Config.Stream.SetValue(amplitude, objAddress + Config.ObjectSlots.PendulumAngle);
+                        success |= Config.Stream.SetValue(accelerationDirection, objAddress + ObjectSlotsConfig.PendulumAccelerationDirection);
+                        success |= Config.Stream.SetValue(0f, objAddress + ObjectSlotsConfig.PendulumAngularVelocity);
+                        success |= Config.Stream.SetValue(amplitude, objAddress + ObjectSlotsConfig.PendulumAngle);
                         return success;
                     };
                     break;
@@ -661,7 +661,7 @@ namespace SM64_Diagnostic.Structs
                     {
                         (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget) =
                             GetRacingPenguinSpecialVars(objAddress);
-                        float hSpeed = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HSpeedOffset);
+                        float hSpeed = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.HSpeedOffset);
                         double hSpeedDiff = hSpeed - hSpeedTarget;
                         return hSpeedDiff.ToString();
                     };
@@ -775,7 +775,7 @@ namespace SM64_Diagnostic.Structs
                     getterFunction = (uint objAddress) =>
                     {
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                        float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
+                        float objY = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectYOffset);
                         double heightDiff = marioY - objY;
                         if (heightDiff < -400) return "Low";
                         if (heightDiff > -200) return "High";
@@ -786,7 +786,7 @@ namespace SM64_Diagnostic.Structs
                 case "FlyGuyRelativeHeight":
                     getterFunction = (uint objAddress) =>
                     {
-                        int oscillationTimer = Config.Stream.GetInt32(objAddress + Config.ObjectSlots.FlyGuyOscillationTimerOffset);
+                        int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectSlotsConfig.FlyGuyOscillationTimerOffset);
                         double relativeHeight = Config.FlyGuyData.GetRelativeHeight(oscillationTimer);
                         return relativeHeight.ToString();
                     };
@@ -795,7 +795,7 @@ namespace SM64_Diagnostic.Structs
                 case "FlyGuyNextHeightDiff":
                     getterFunction = (uint objAddress) =>
                     {
-                        int oscillationTimer = Config.Stream.GetInt32(objAddress + Config.ObjectSlots.FlyGuyOscillationTimerOffset);
+                        int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectSlotsConfig.FlyGuyOscillationTimerOffset);
                         double nextRelativeHeight = Config.FlyGuyData.GetNextHeightDiff(oscillationTimer);
                         return nextRelativeHeight.ToString();
                     };
@@ -804,8 +804,8 @@ namespace SM64_Diagnostic.Structs
                 case "FlyGuyMinHeight":
                     getterFunction = (uint objAddress) =>
                     {
-                        float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
-                        int oscillationTimer = Config.Stream.GetInt32(objAddress + Config.ObjectSlots.FlyGuyOscillationTimerOffset);
+                        float objY = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectYOffset);
+                        int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectSlotsConfig.FlyGuyOscillationTimerOffset);
                         double minHeight = Config.FlyGuyData.GetMinHeight(oscillationTimer, objY);
                         return minHeight.ToString();
                     };
@@ -814,8 +814,8 @@ namespace SM64_Diagnostic.Structs
                 case "FlyGuyMaxHeight":
                     getterFunction = (uint objAddress) =>
                     {
-                        float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
-                        int oscillationTimer = Config.Stream.GetInt32(objAddress + Config.ObjectSlots.FlyGuyOscillationTimerOffset);
+                        float objY = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectYOffset);
+                        int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectSlotsConfig.FlyGuyOscillationTimerOffset);
                         double maxHeight = Config.FlyGuyData.GetMaxHeight(oscillationTimer, objY);
                         return maxHeight.ToString();
                     };
@@ -826,7 +826,7 @@ namespace SM64_Diagnostic.Structs
                 case "BobombBloatSize":
                     getterFunction = (uint objAddress) =>
                     {
-                        float scale = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ScaleWidthOffset);
+                        float scale = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ScaleWidthOffset);
                         float bloatSize = (scale - 1) * 5;
                         return bloatSize.ToString();
                     };
@@ -838,9 +838,9 @@ namespace SM64_Diagnostic.Structs
                         float scale = (float)(bloatSize / 5 + 1);
 
                         bool success = true;
-                        success &= Config.Stream.SetValue(scale, objAddress + Config.ObjectSlots.ScaleWidthOffset);
-                        success &= Config.Stream.SetValue(scale, objAddress + Config.ObjectSlots.ScaleHeightOffset);
-                        success &= Config.Stream.SetValue(scale, objAddress + Config.ObjectSlots.ScaleDepthOffset);
+                        success &= Config.Stream.SetValue(scale, objAddress + ObjectSlotsConfig.ScaleWidthOffset);
+                        success &= Config.Stream.SetValue(scale, objAddress + ObjectSlotsConfig.ScaleHeightOffset);
+                        success &= Config.Stream.SetValue(scale, objAddress + ObjectSlotsConfig.ScaleDepthOffset);
                         return success;
                     };
                     break;
@@ -848,7 +848,7 @@ namespace SM64_Diagnostic.Structs
                 case "BobombRadius":
                     getterFunction = (uint objAddress) =>
                     {
-                        float scale = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ScaleWidthOffset);
+                        float scale = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ScaleWidthOffset);
                         float radius = 32 + scale * 65;
                         return radius.ToString();
                     };
@@ -860,9 +860,9 @@ namespace SM64_Diagnostic.Structs
                         float scale = (float)((radius -32) / 65);
 
                         bool success = true;
-                        success &= Config.Stream.SetValue(scale, objAddress + Config.ObjectSlots.ScaleWidthOffset);
-                        success &= Config.Stream.SetValue(scale, objAddress + Config.ObjectSlots.ScaleHeightOffset);
-                        success &= Config.Stream.SetValue(scale, objAddress + Config.ObjectSlots.ScaleDepthOffset);
+                        success &= Config.Stream.SetValue(scale, objAddress + ObjectSlotsConfig.ScaleWidthOffset);
+                        success &= Config.Stream.SetValue(scale, objAddress + ObjectSlotsConfig.ScaleHeightOffset);
+                        success &= Config.Stream.SetValue(scale, objAddress + ObjectSlotsConfig.ScaleDepthOffset);
                         return success;
                     };
                     break;
@@ -874,7 +874,7 @@ namespace SM64_Diagnostic.Structs
                         Position objPos = GetObjectPosition(objAddress);
                         double hDist = MoreMath.GetDistanceBetween(
                             marioPos.X, marioPos.Z, objPos.X, objPos.Z);
-                        float scale = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ScaleWidthOffset);
+                        float scale = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ScaleWidthOffset);
                         float radius = 32 + scale * 65;
                         double spaceBetween = hDist - radius;
                         return spaceBetween.ToString();
@@ -884,7 +884,7 @@ namespace SM64_Diagnostic.Structs
                         double? spaceBetweenNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!spaceBetweenNullable.HasValue) return false;
                         double spaceBetween = spaceBetweenNullable.Value;
-                        float scale = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ScaleWidthOffset);
+                        float scale = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ScaleWidthOffset);
                         float radius = 32 + scale * 65;
                         double distAway = spaceBetween + radius;
 
@@ -901,8 +901,8 @@ namespace SM64_Diagnostic.Structs
                 case "ScuttlebugDeltaAngleToTarget":
                     getterFunction = (uint objAddress) =>
                     {
-                        ushort facingAngle = Config.Stream.GetUInt16(objAddress + Config.ObjectSlots.YawFacingOffset);
-                        ushort targetAngle = Config.Stream.GetUInt16(objAddress + Config.ObjectSlots.ScuttlebugTargetAngleOffset);
+                        ushort facingAngle = Config.Stream.GetUInt16(objAddress + ObjectSlotsConfig.YawFacingOffset);
+                        ushort targetAngle = Config.Stream.GetUInt16(objAddress + ObjectSlotsConfig.ScuttlebugTargetAngleOffset);
                         int angleDiff = facingAngle - targetAngle;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
                     };
@@ -911,7 +911,7 @@ namespace SM64_Diagnostic.Structs
                         double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!angleDiffNullable.HasValue) return false;
                         double angleDiff = angleDiffNullable.Value;
-                        ushort targetAngle = Config.Stream.GetUInt16(objAddress + Config.ObjectSlots.ScuttlebugTargetAngleOffset);
+                        ushort targetAngle = Config.Stream.GetUInt16(objAddress + ObjectSlotsConfig.ScuttlebugTargetAngleOffset);
                         double newObjAngleDouble = targetAngle + angleDiff;
                         ushort newObjAngleUShort = MoreMath.NormalizeAngleUshort(newObjAngleDouble);
                         return SetObjectPosition(objAddress, null, null, null, newObjAngleUShort);
@@ -924,7 +924,7 @@ namespace SM64_Diagnostic.Structs
                     getterFunction = (uint objAddress) =>
                     {
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                        float ghostY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.GraphicsYOffset);
+                        float ghostY = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.GraphicsYOffset);
                         float yDiff = marioY - ghostY;
                         return yDiff.ToString();
                     };
@@ -2439,47 +2439,47 @@ namespace SM64_Diagnostic.Structs
 
         private static Position GetObjectPosition(uint objAddress)
         {
-            float objX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
-            float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
-            float objZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
-            ushort objAngle = Config.Stream.GetUInt16(objAddress + Config.ObjectSlots.YawFacingOffset);
+            float objX = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectXOffset);
+            float objY = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectYOffset);
+            float objZ = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectZOffset);
+            ushort objAngle = Config.Stream.GetUInt16(objAddress + ObjectSlotsConfig.YawFacingOffset);
             return new Position(objX, objY, objZ, objAngle);
         }
 
         private static bool SetObjectPosition(uint objAddress, double? x, double? y, double? z, ushort? angle = null)
         {
             bool success = true;
-            if (x.HasValue) success &= Config.Stream.SetValue((float)x.Value, objAddress + Config.ObjectSlots.ObjectXOffset);
-            if (y.HasValue) success &= Config.Stream.SetValue((float)y.Value, objAddress + Config.ObjectSlots.ObjectYOffset);
-            if (z.HasValue) success &= Config.Stream.SetValue((float)z.Value, objAddress + Config.ObjectSlots.ObjectZOffset);
-            if (angle.HasValue) success &= Config.Stream.SetValue(angle.Value, objAddress + Config.ObjectSlots.YawFacingOffset);
-            if (angle.HasValue) success &= Config.Stream.SetValue(angle.Value, objAddress + Config.ObjectSlots.YawMovingOffset);
+            if (x.HasValue) success &= Config.Stream.SetValue((float)x.Value, objAddress + ObjectSlotsConfig.ObjectXOffset);
+            if (y.HasValue) success &= Config.Stream.SetValue((float)y.Value, objAddress + ObjectSlotsConfig.ObjectYOffset);
+            if (z.HasValue) success &= Config.Stream.SetValue((float)z.Value, objAddress + ObjectSlotsConfig.ObjectZOffset);
+            if (angle.HasValue) success &= Config.Stream.SetValue(angle.Value, objAddress + ObjectSlotsConfig.YawFacingOffset);
+            if (angle.HasValue) success &= Config.Stream.SetValue(angle.Value, objAddress + ObjectSlotsConfig.YawMovingOffset);
             return success;
         }
 
         private static Position GetObjectHomePosition(uint objAddress)
         {
-            float homeX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeXOffset);
-            float homeY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeYOffset);
-            float homeZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.HomeZOffset);
+            float homeX = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.HomeXOffset);
+            float homeY = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.HomeYOffset);
+            float homeZ = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.HomeZOffset);
             return new Position(homeX, homeY, homeZ);
         }
 
         private static bool SetObjectHomePosition(uint objAddress, double? x, double? y, double? z)
         {
             bool success = true;
-            if (x.HasValue) success &= Config.Stream.SetValue((float)x.Value, objAddress + Config.ObjectSlots.HomeXOffset);
-            if (y.HasValue) success &= Config.Stream.SetValue((float)y.Value, objAddress + Config.ObjectSlots.HomeYOffset);
-            if (z.HasValue) success &= Config.Stream.SetValue((float)z.Value, objAddress + Config.ObjectSlots.HomeZOffset);
+            if (x.HasValue) success &= Config.Stream.SetValue((float)x.Value, objAddress + ObjectSlotsConfig.HomeXOffset);
+            if (y.HasValue) success &= Config.Stream.SetValue((float)y.Value, objAddress + ObjectSlotsConfig.HomeYOffset);
+            if (z.HasValue) success &= Config.Stream.SetValue((float)z.Value, objAddress + ObjectSlotsConfig.HomeZOffset);
             return success;
         }
 
         private static Position GetObjectGraphicsPosition(uint objAddress)
         {
-            float graphicsX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.GraphicsXOffset);
-            float graphicsY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.GraphicsYOffset);
-            float graphicsZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.GraphicsZOffset);
-            ushort graphicsAngle = Config.Stream.GetUInt16(objAddress + Config.ObjectSlots.GraphicsYawOffset);
+            float graphicsX = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.GraphicsXOffset);
+            float graphicsY = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.GraphicsYOffset);
+            float graphicsZ = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.GraphicsZOffset);
+            ushort graphicsAngle = Config.Stream.GetUInt16(objAddress + ObjectSlotsConfig.GraphicsYawOffset);
             return new Position(graphicsX, graphicsY, graphicsZ, graphicsAngle);
         }
 
@@ -2543,11 +2543,11 @@ namespace SM64_Diagnostic.Structs
         private static (double dotProduct, double distToWaypointPlane, double distToWaypoint)
             GetWaypointSpecialVars(uint objAddress)
         {
-            float objX = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
-            float objY = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
-            float objZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
+            float objX = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectXOffset);
+            float objY = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectYOffset);
+            float objZ = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectZOffset);
 
-            uint prevWaypointAddress = Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.WaypointOffset);
+            uint prevWaypointAddress = Config.Stream.GetUInt32(objAddress + ObjectSlotsConfig.WaypointOffset);
             short prevWaypointIndex = Config.Stream.GetInt16(prevWaypointAddress + WaypointConfig.IndexOffset);
             short prevWaypointX = Config.Stream.GetInt16(prevWaypointAddress + WaypointConfig.XOffset);
             short prevWaypointY = Config.Stream.GetInt16(prevWaypointAddress + WaypointConfig.YOffset);
@@ -2577,12 +2577,12 @@ namespace SM64_Diagnostic.Structs
             GetRacingPenguinSpecialVars(uint racingPenguinAddress)
         {
             double marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            double objectY = Config.Stream.GetSingle(racingPenguinAddress + Config.ObjectSlots.ObjectYOffset);
+            double objectY = Config.Stream.GetSingle(racingPenguinAddress + ObjectSlotsConfig.ObjectYOffset);
             double heightDiff = marioY - objectY;
 
-            uint prevWaypointAddress = Config.Stream.GetUInt32(racingPenguinAddress + Config.ObjectSlots.WaypointOffset);
+            uint prevWaypointAddress = Config.Stream.GetUInt32(racingPenguinAddress + ObjectSlotsConfig.WaypointOffset);
             short prevWaypointIndex = Config.Stream.GetInt16(prevWaypointAddress);
-            double effort = Config.Stream.GetSingle(racingPenguinAddress + Config.ObjectSlots.RacingPenguinEffortOffset);
+            double effort = Config.Stream.GetSingle(racingPenguinAddress + ObjectSlotsConfig.RacingPenguinEffortOffset);
 
             double effortTarget;
             double effortChange;
@@ -2609,8 +2609,8 @@ namespace SM64_Diagnostic.Structs
         private static (double hSpeedTarget, double hSpeedChange)
             GetKoopaTheQuickSpecialVars(uint koopaTheQuickAddress)
         {
-            double hSpeedMultiplier = Config.Stream.GetSingle(koopaTheQuickAddress + Config.ObjectSlots.KoopaTheQuickHSpeedMultiplierOffset);
-            short pitchToWaypointAngleUnits = Config.Stream.GetInt16(koopaTheQuickAddress + Config.ObjectSlots.PitchToWaypointOffset);
+            double hSpeedMultiplier = Config.Stream.GetSingle(koopaTheQuickAddress + ObjectSlotsConfig.KoopaTheQuickHSpeedMultiplierOffset);
+            short pitchToWaypointAngleUnits = Config.Stream.GetInt16(koopaTheQuickAddress + ObjectSlotsConfig.PitchToWaypointOffset);
             double pitchToWaypointRadians = MoreMath.AngleUnitsToRadians(pitchToWaypointAngleUnits);
 
             double hSpeedTarget = hSpeedMultiplier * (Math.Sin(pitchToWaypointRadians) + 1) * 6;
@@ -2622,10 +2622,10 @@ namespace SM64_Diagnostic.Structs
         private static float GetPendulumAmplitude(uint pendulumAddress)
         {
             // Get pendulum variables
-            float accelerationDirection = Config.Stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAccelerationDirection);
-            float accelerationMagnitude = Config.Stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAccelerationMagnitude);
-            float angularVelocity = Config.Stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAngularVelocity);
-            float angle = Config.Stream.GetSingle(pendulumAddress + Config.ObjectSlots.PendulumAngle);
+            float accelerationDirection = Config.Stream.GetSingle(pendulumAddress + ObjectSlotsConfig.PendulumAccelerationDirection);
+            float accelerationMagnitude = Config.Stream.GetSingle(pendulumAddress + ObjectSlotsConfig.PendulumAccelerationMagnitude);
+            float angularVelocity = Config.Stream.GetSingle(pendulumAddress + ObjectSlotsConfig.PendulumAngularVelocity);
+            float angle = Config.Stream.GetSingle(pendulumAddress + ObjectSlotsConfig.PendulumAngle);
             float acceleration = accelerationDirection * accelerationMagnitude;
 
             // Calculate one frame forwards to see if pendulum is speeding up or slowing down

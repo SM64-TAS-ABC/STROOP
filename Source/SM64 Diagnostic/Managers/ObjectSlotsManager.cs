@@ -82,8 +82,8 @@ namespace SM64_Diagnostic.Managers
 
             // Create and setup object slots
             ObjectSlot.tabControlMain = tabControlMain;
-            ObjectSlots = new ObjectSlot[Config.ObjectSlots.MaxSlots];
-            for (int i = 0; i < Config.ObjectSlots.MaxSlots; i++)
+            ObjectSlots = new ObjectSlot[ObjectSlotsConfig.MaxSlots];
+            for (int i = 0; i < ObjectSlotsConfig.MaxSlots; i++)
             {
                 var objectSlot = new ObjectSlot(i, this, ManagerGui, new Size(DefaultSlotSize, DefaultSlotSize));
                 ObjectSlots[i] = objectSlot;
@@ -311,9 +311,9 @@ namespace SM64_Diagnostic.Managers
             return slot?.Address;
         }
 
-        private List<ObjectSlotData> GetProcessedObjects(ObjectGroupsConfig groupConfig, ObjectSlotsConfig slotConfig)
+        private List<ObjectSlotData> GetProcessedObjects(ObjectGroupsConfig groupConfig)
         {
-            var newObjectSlotData = new ObjectSlotData[slotConfig.MaxSlots];
+            var newObjectSlotData = new ObjectSlotData[ObjectSlotsConfig.MaxSlots];
 
             // Loop through each processing group
             int currentSlot = 0;
@@ -325,10 +325,10 @@ namespace SM64_Diagnostic.Managers
                 uint currentGroupObject = Config.Stream.GetUInt32(processGroupStructAddress + groupConfig.ProcessNextLinkOffset);
 
                 // Loop through every object within the group
-                 while ((currentGroupObject != processGroupStructAddress && currentSlot < slotConfig.MaxSlots))
+                 while ((currentGroupObject != processGroupStructAddress && currentSlot < ObjectSlotsConfig.MaxSlots))
                 {
                     // Validate current object
-                    if (Config.Stream.GetUInt16(currentGroupObject + Config.ObjectSlots.HeaderOffset) != 0x18)
+                    if (Config.Stream.GetUInt16(currentGroupObject + ObjectSlotsConfig.HeaderOffset) != 0x18)
                         return null;
 
                     // Get data
@@ -352,10 +352,10 @@ namespace SM64_Diagnostic.Managers
 
             // Now calculate vacant addresses
             uint currentObject = Config.Stream.GetUInt32(groupConfig.VactantPointerAddress);
-            for (; currentSlot < slotConfig.MaxSlots; currentSlot++)
+            for (; currentSlot < ObjectSlotsConfig.MaxSlots; currentSlot++)
             {
                 // Validate current object
-                if (Config.Stream.GetUInt16(currentObject + Config.ObjectSlots.HeaderOffset) != 0x18)
+                if (Config.Stream.GetUInt16(currentObject + ObjectSlotsConfig.HeaderOffset) != 0x18)
                     return null;
 
                 newObjectSlotData[currentSlot] = new ObjectSlotData()
@@ -377,9 +377,8 @@ namespace SM64_Diagnostic.Managers
             LabelMethod = (SlotLabelType) ManagerGui.LabelMethodComboBox.SelectedItem;
             SortMethod = (SortMethodType) ManagerGui.SortMethodComboBox.SelectedItem;
             var groupConfig = Config.ObjectGroups;
-            var slotConfig = Config.ObjectSlots;
 
-            var newObjectSlotData = GetProcessedObjects(groupConfig, slotConfig);
+            var newObjectSlotData = GetProcessedObjects(groupConfig);
             if (newObjectSlotData == null)
                 return;
 
@@ -409,16 +408,16 @@ namespace SM64_Diagnostic.Managers
             {
                 // Get object relative-to-maario position
                 float dX, dY, dZ;
-                dX = marioX - Config.Stream.GetSingle(objSlot.Address + Config.ObjectSlots.ObjectXOffset);
-                dY = marioY - Config.Stream.GetSingle(objSlot.Address + Config.ObjectSlots.ObjectYOffset);
-                dZ = marioZ - Config.Stream.GetSingle(objSlot.Address + Config.ObjectSlots.ObjectZOffset);
+                dX = marioX - Config.Stream.GetSingle(objSlot.Address + ObjectSlotsConfig.ObjectXOffset);
+                dY = marioY - Config.Stream.GetSingle(objSlot.Address + ObjectSlotsConfig.ObjectYOffset);
+                dZ = marioZ - Config.Stream.GetSingle(objSlot.Address + ObjectSlotsConfig.ObjectZOffset);
 
                 objSlot.DistanceToMario = (float)Math.Sqrt(dX * dX + dY * dY + dZ * dZ);
 
                 // Check if active/loaded
-                objSlot.IsActive = Config.Stream.GetUInt16(objSlot.Address + Config.ObjectSlots.ObjectActiveOffset) != 0x0000;
+                objSlot.IsActive = Config.Stream.GetUInt16(objSlot.Address + ObjectSlotsConfig.ObjectActiveOffset) != 0x0000;
 
-                objSlot.Behavior = Config.Stream.GetUInt32(objSlot.Address + Config.ObjectSlots.BehaviorScriptOffset) & 0x7FFFFFFF;
+                objSlot.Behavior = Config.Stream.GetUInt32(objSlot.Address + ObjectSlotsConfig.BehaviorScriptOffset) & 0x7FFFFFFF;
             }
 
             // Processing sort order
@@ -456,14 +455,14 @@ namespace SM64_Diagnostic.Managers
             List<ObjectSlotData> closestObjectCandidates =
                 newObjectSlotData.FindAll(s =>
                     s.IsActive &&
-                    s.Behavior != (Config.ObjectSlots.MarioBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart);
+                    s.Behavior != (ObjectSlotsConfig.MarioBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart);
             if (Config.ExcludeDustForClosestObject)
             {
                 closestObjectCandidates =
                     closestObjectCandidates.FindAll(s =>
-                        s.Behavior != (Config.ObjectSlots.DustSpawnerBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart &&
-                        s.Behavior != (Config.ObjectSlots.DustBallBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart &&
-                        s.Behavior != (Config.ObjectSlots.DustBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart);
+                        s.Behavior != (ObjectSlotsConfig.DustSpawnerBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart &&
+                        s.Behavior != (ObjectSlotsConfig.DustBallBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart &&
+                        s.Behavior != (ObjectSlotsConfig.DustBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart);
             }
             _closestObject = closestObjectCandidates.OrderBy(s => s.DistanceToMario).FirstOrDefault()?.Address ?? 0;
 
@@ -476,11 +475,11 @@ namespace SM64_Diagnostic.Managers
             uint ceilingTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
             _ceilingObject = ceilingTriangleAddress == 0 ? 0 : Config.Stream.GetUInt32(ceilingTriangleAddress + TriangleOffsetsConfig.AssociatedObject);
 
-            ObjectSlot hoverObjectSlot = Config.ObjectSlots.HoverObjectSlot;
+            ObjectSlot hoverObjectSlot = ObjectSlotsConfig.HoverObjectSlot;
             if (hoverObjectSlot != null)
             {
-                _parentObject = Config.Stream.GetUInt32(hoverObjectSlot.Address + Config.ObjectSlots.ParentOffset);
-                _parentUnusedObject = _parentObject == Config.ObjectSlots.UnusedSlotAddress ? hoverObjectSlot.Address : 0;
+                _parentObject = Config.Stream.GetUInt32(hoverObjectSlot.Address + ObjectSlotsConfig.ParentOffset);
+                _parentUnusedObject = _parentObject == ObjectSlotsConfig.UnusedSlotAddress ? hoverObjectSlot.Address : 0;
                 _parentNoneObject = _parentObject == 0 ? hoverObjectSlot.Address : 0;
             }
             else
@@ -499,7 +498,7 @@ namespace SM64_Diagnostic.Managers
             // Lock label update
             _labelsLocked = ManagerGui.LockLabelsCheckbox.Checked;
 
-            for (int i = 0; i < Config.ObjectSlots.MaxSlots; i++)
+            for (int i = 0; i < ObjectSlotsConfig.MaxSlots; i++)
             {
                 UpdateSlot(newObjectSlotData[i], ObjectSlots[i]);
                 MemoryAddressSortedSlot[newObjectSlotData[i].Address] = ObjectSlots[i];
@@ -619,9 +618,9 @@ namespace SM64_Diagnostic.Managers
             if (objData.IsActive)
                 _activeObjectCount++;
 
-            var gfxId = Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.BehaviorGfxOffset);
-            var subType = Config.Stream.GetInt32(objAddress + Config.ObjectSlots.BehaviorSubtypeOffset);
-            var appearance = Config.Stream.GetInt32(objAddress + Config.ObjectSlots.BehaviorAppearance);
+            var gfxId = Config.Stream.GetUInt32(objAddress + ObjectSlotsConfig.BehaviorGfxOffset);
+            var subType = Config.Stream.GetInt32(objAddress + ObjectSlotsConfig.BehaviorSubtypeOffset);
+            var appearance = Config.Stream.GetInt32(objAddress + ObjectSlotsConfig.BehaviorAppearance);
 
             uint segmentedBehavior = 0x13000000 + objData.Behavior - Config.ObjectAssociations.BehaviorBankStart;
             if (objData.Behavior == 0) // uninitialized object
@@ -661,8 +660,8 @@ namespace SM64_Diagnostic.Managers
                     goto case SlotLabelType.SlotPosVs;
 
                 case SlotLabelType.SlotIndex:
-                    labelText = String.Format("{0}", (objData.Address - Config.ObjectSlots.LinkStartAddress)
-                        / Config.ObjectSlots.StructSize + (Config.SlotIndexsFromOne ? 1 : 0));
+                    labelText = String.Format("{0}", (objData.Address - ObjectSlotsConfig.LinkStartAddress)
+                        / ObjectSlotsConfig.StructSize + (Config.SlotIndexsFromOne ? 1 : 0));
                     break;
 
                 case SlotLabelType.SlotPos:
@@ -751,13 +750,13 @@ namespace SM64_Diagnostic.Managers
                 var mapObj = _mapObjects[objAddress];
                 mapObj.Show = SelectedOnMapSlotsAddresses.Contains(objAddress);
                 objSlot.Show = _mapObjects[objAddress].Show;
-                mapObj.X = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectXOffset);
-                mapObj.Y = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectYOffset);
-                mapObj.Z = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
+                mapObj.X = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectXOffset);
+                mapObj.Y = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectYOffset);
+                mapObj.Z = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectZOffset);
                 mapObj.IsActive = objData.IsActive;
                 mapObj.Transparent = !mapObj.IsActive;
                 mapObj.Rotation = (float)((UInt16)(
-                    Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.ObjectRotationOffset)) / 65536f * 360f);
+                    Config.Stream.GetUInt32(objAddress + ObjectSlotsConfig.ObjectRotationOffset)) / 65536f * 360f);
                 mapObj.UsesRotation = Config.ObjectAssociations.GetObjectMapRotates(behaviorCriteria);
             }
         }
