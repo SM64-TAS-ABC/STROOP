@@ -12,8 +12,6 @@ namespace SM64_Diagnostic.Managers
 {
     public class TestingManager
     {
-        public static TestingManager Instance;
-
         // Recording
         GroupBox _groupBoxRecording;
         CheckBox _checkBoxTestingRecord;
@@ -143,8 +141,6 @@ namespace SM64_Diagnostic.Managers
 
         public TestingManager(TabPage tabControl)
         {
-            Instance = this;
-
             // Recording
             _groupBoxRecording = tabControl.Controls["groupBoxRecording"] as GroupBox;
 

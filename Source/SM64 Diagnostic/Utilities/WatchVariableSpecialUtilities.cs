@@ -678,8 +678,7 @@ namespace SM64_Diagnostic.Structs
                 case "RacingPenguinProgressDiff":
                     getterFunction = (uint objAddress) =>
                     {
-                        TestingManager testingManager = TestingManager.Instance;
-                        Dictionary<int, TestingManager.VarState> dictionary = testingManager.VarStateDictionary;
+                        Dictionary<int, TestingManager.VarState> dictionary = Config.TestingManager.VarStateDictionary;
                         var currentTimer = Config.Stream.GetInt32(Config.SwitchRomVersion(0x803493DC, 0x803463EC));
                         if (!dictionary.ContainsKey(currentTimer))
                         {
