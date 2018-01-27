@@ -277,42 +277,42 @@ namespace SM64_Diagnostic.Utilities
         public byte GetByte(uint address, bool absoluteAddress = false, uint? mask = null)
         {
             byte value = ReadRamLittleEndian(new UIntPtr(address), 1, absoluteAddress)[0];
-            if (mask != null) value = (byte)(value & mask.Value);
+            if (mask.HasValue) value = (byte)(value & mask.Value);
             return value;
         }
 
         public sbyte GetSByte(uint address, bool absoluteAddress = false, uint? mask = null)
         {
             sbyte value = (sbyte)ReadRamLittleEndian(new UIntPtr(address), 1, absoluteAddress)[0];
-            if (mask != null) value = (sbyte)(value & mask.Value);
+            if (mask.HasValue) value = (sbyte)(value & mask.Value);
             return value;
         }
 
         public short GetInt16(uint address, bool absoluteAddress = false, uint? mask = null)
         { 
             short value = BitConverter.ToInt16(ReadRamLittleEndian(new UIntPtr(address), 2, absoluteAddress), 0);
-            if (mask != null) value = (short)(value & mask.Value);
+            if (mask.HasValue) value = (short)(value & mask.Value);
             return value;
         }
 
         public ushort GetUInt16(uint address, bool absoluteAddress = false, uint? mask = null)
         {
             ushort value = BitConverter.ToUInt16(ReadRamLittleEndian(new UIntPtr(address), 2, absoluteAddress), 0);
-            if (mask != null) value = (ushort)(value & mask.Value);
+            if (mask.HasValue) value = (ushort)(value & mask.Value);
             return value;
         }
 
         public int GetInt32(uint address, bool absoluteAddress = false, uint? mask = null)
         {
             int value = BitConverter.ToInt32(ReadRamLittleEndian(new UIntPtr(address), 4, absoluteAddress), 0);
-            if (mask != null) value = (int)(value & mask.Value);
+            if (mask.HasValue) value = (int)(value & mask.Value);
             return value;
         }
 
         public uint GetUInt32(uint address, bool absoluteAddress = false, uint? mask = null)
         {
             uint value = BitConverter.ToUInt32(ReadRamLittleEndian(new UIntPtr(address), 4, absoluteAddress), 0);
-            if (mask != null) value = (uint)(value & mask.Value);
+            if (mask.HasValue) value = (uint)(value & mask.Value);
             return value;
         }
 
@@ -409,7 +409,7 @@ namespace SM64_Diagnostic.Utilities
 
         public bool SetValue(byte value, uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            if (mask != null)
+            if (mask.HasValue)
             {
                 byte oldValue = GetByte(address, absoluteAddress);
                 value = (byte)((oldValue & ~mask.Value) | (value & mask.Value));
@@ -419,7 +419,7 @@ namespace SM64_Diagnostic.Utilities
 
         public bool SetValue(sbyte value, uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            if (mask != null)
+            if (mask.HasValue)
             {
                 sbyte oldValue = GetSByte(address, absoluteAddress);
                 value = (sbyte)((oldValue & ~mask.Value) | (value & mask.Value));
@@ -429,7 +429,7 @@ namespace SM64_Diagnostic.Utilities
 
         public bool SetValue(Int16 value, uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            if (mask != null)
+            if (mask.HasValue)
             {
                 short oldValue = GetInt16(address, absoluteAddress);
                 value = (short)((oldValue & ~mask.Value) | (value & mask.Value));
@@ -439,7 +439,7 @@ namespace SM64_Diagnostic.Utilities
 
         public bool SetValue(UInt16 value, uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            if (mask != null)
+            if (mask.HasValue)
             {
                 ushort oldValue = GetUInt16(address, absoluteAddress);
                 value = (ushort)((oldValue & ~mask.Value) | (value & mask.Value));
@@ -449,7 +449,7 @@ namespace SM64_Diagnostic.Utilities
 
         public bool SetValue(Int32 value, uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            if (mask != null)
+            if (mask.HasValue)
             {
                 int oldValue = GetInt32(address, absoluteAddress);
                 value = (int)((oldValue & ~mask.Value) | (value & mask.Value));
@@ -459,7 +459,7 @@ namespace SM64_Diagnostic.Utilities
 
         public bool SetValue(UInt32 value, uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            if (mask != null)
+            if (mask.HasValue)
             {
                 uint oldValue = GetUInt32(address, absoluteAddress);
                 value = (uint)((oldValue & ~mask.Value) | (value & mask.Value));
