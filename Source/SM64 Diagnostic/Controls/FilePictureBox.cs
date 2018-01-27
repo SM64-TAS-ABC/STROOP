@@ -29,12 +29,10 @@ namespace SM64_Diagnostic
         {
             _addressOffset = addressOffset;
             _mask = mask;
-            _currentValue = GetValue();
 
             this.Click += ClickAction;
             this.MouseEnter += (s, e) => this.Cursor = Cursors.Hand;
             this.MouseLeave += (s, e) => this.Cursor = Cursors.Arrow;
-            UpdateImage(true);
         }
 
         private void SetValue(bool boolValue)
@@ -47,14 +45,14 @@ namespace SM64_Diagnostic
 
         private void SetValue(byte value)
         {
-            byte oldByte = Config.Stream.GetByte(FileManager.Instance.CurrentFileAddress + _addressOffset);
+            byte oldByte = Config.Stream.GetByte(Config.FileManager.CurrentFileAddress + _addressOffset);
             byte newByte = MoreMath.ApplyValueToMaskedByte(oldByte, _mask, value);
-            Config.Stream.SetValue(newByte, FileManager.Instance.CurrentFileAddress + _addressOffset);
+            Config.Stream.SetValue(newByte, Config.FileManager.CurrentFileAddress + _addressOffset);
         }
 
         private byte GetValue()
         {
-            byte currentByte = Config.Stream.GetByte(FileManager.Instance.CurrentFileAddress + _addressOffset);
+            byte currentByte = Config.Stream.GetByte(Config.FileManager.CurrentFileAddress + _addressOffset);
             byte maskedCurrentByte = (byte)(currentByte & _mask);
             return maskedCurrentByte;
         }
