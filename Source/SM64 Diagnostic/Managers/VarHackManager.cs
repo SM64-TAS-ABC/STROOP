@@ -95,15 +95,15 @@ namespace SM64_Diagnostic.Managers
             _buttonEnableDisableRomHack.Initialize(
                 "Enable ROM Hack",
                 "Disable ROM Hack",
-                () => Config.VarHack.ShowVarRomHack.LoadPayload(),
-                () => Config.VarHack.ShowVarRomHack.ClearPayload(),
-                () => Config.VarHack.ShowVarRomHack.Enabled);
+                () => VarHackConfig.ShowVarRomHack.LoadPayload(),
+                () => VarHackConfig.ShowVarRomHack.ClearPayload(),
+                () => VarHackConfig.ShowVarRomHack.Enabled);
 
             // Middle buttons
 
             _textBoxXPosValue = splitContainerVarHack.Panel1.Controls["textBoxXPosValue"] as BetterTextbox;
             _textBoxXPosValue.AddEnterAction(() => SetPositionsAndApplyVariablesToMemory());
-            _textBoxXPosValue.Text = Config.VarHack.DefaultXPos.ToString();
+            _textBoxXPosValue.Text = VarHackConfig.DefaultXPos.ToString();
             InitializePositionControls(
                 _textBoxXPosValue,
                 splitContainerVarHack.Panel1.Controls["textBoxXPosChange"] as TextBox,
@@ -112,7 +112,7 @@ namespace SM64_Diagnostic.Managers
 
             _textBoxYPosValue = splitContainerVarHack.Panel1.Controls["textBoxYPosValue"] as BetterTextbox;
             _textBoxYPosValue.AddEnterAction(() => SetPositionsAndApplyVariablesToMemory());
-            _textBoxYPosValue.Text = Config.VarHack.DefaultYPos.ToString();
+            _textBoxYPosValue.Text = VarHackConfig.DefaultYPos.ToString();
             InitializePositionControls(
                 _textBoxYPosValue,
                 splitContainerVarHack.Panel1.Controls["textBoxYPosChange"] as TextBox,
@@ -121,7 +121,7 @@ namespace SM64_Diagnostic.Managers
 
             _textBoxYDeltaValue = splitContainerVarHack.Panel1.Controls["textBoxYDeltaValue"] as BetterTextbox;
             _textBoxYDeltaValue.AddEnterAction(() => SetPositionsAndApplyVariablesToMemory());
-            _textBoxYDeltaValue.Text = Config.VarHack.DefaultYDelta.ToString();
+            _textBoxYDeltaValue.Text = VarHackConfig.DefaultYDelta.ToString();
             InitializePositionControls(
                 _textBoxYDeltaValue,
                 splitContainerVarHack.Panel1.Controls["textBoxYDeltaChange"] as TextBox,
@@ -199,7 +199,7 @@ namespace SM64_Diagnostic.Managers
                     stringValue += "0";
                 }
             }
-            stringValue = stringValue.Replace(".", Config.VarHack.CoinChar);
+            stringValue = stringValue.Replace(".", VarHackConfig.CoinChar);
             return stringValue;
         }
 

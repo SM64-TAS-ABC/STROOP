@@ -13,7 +13,7 @@ namespace SM64_Diagnostic.Controls
 {
     public class VarHackPanel : NoTearFlowLayoutPanel
     {
-        private static byte[] EMPTY_BYTES = new byte[Config.VarHack.StructSize];
+        private static byte[] EMPTY_BYTES = new byte[VarHackConfig.StructSize];
 
         private readonly Object _objectLock;
 
@@ -58,7 +58,7 @@ namespace SM64_Diagnostic.Controls
 
         public void AddNewControlWithParameters(string varName, uint address, Type memoryType, bool useHex, uint? pointerOffset)
         {
-            if (Controls.Count >= Config.VarHack.MaxPossibleVars) return;
+            if (Controls.Count >= VarHackConfig.MaxPossibleVars) return;
             VarHackContainer varHackContainer = new VarHackContainer(this, Controls.Count, varName, address, memoryType, useHex, pointerOffset);
             lock (_objectLock)
             {
@@ -68,7 +68,7 @@ namespace SM64_Diagnostic.Controls
 
         public void AddNewControlWithGetterFunction(Func<string> getterFunction)
         {
-            if (Controls.Count >= Config.VarHack.MaxPossibleVars) return;
+            if (Controls.Count >= VarHackConfig.MaxPossibleVars) return;
             VarHackContainer varHackContainer = new VarHackContainer(this, Controls.Count, getterFunction);
             lock (_objectLock)
             {
@@ -80,7 +80,7 @@ namespace SM64_Diagnostic.Controls
 
         public void AddNewControl()
         {
-            if (Controls.Count >= Config.VarHack.MaxPossibleVars) return;
+            if (Controls.Count >= VarHackConfig.MaxPossibleVars) return;
             VarHackContainer varHackContainer = new VarHackContainer(this, Controls.Count, true);
             lock (_objectLock)
             {
@@ -152,7 +152,7 @@ namespace SM64_Diagnostic.Controls
         {
             lock (_objectLock)
             {
-                for (int i = 0; i < Config.VarHack.MaxPossibleVars; i++)
+                for (int i = 0; i < VarHackConfig.MaxPossibleVars; i++)
                 {
                     ApplyVariableToMemory(i);
                 }
@@ -161,7 +161,7 @@ namespace SM64_Diagnostic.Controls
 
         private void ApplyVariableToMemory(int index)
         {
-            uint address = Config.VarHack.VarHackMemoryAddress + (uint)index * Config.VarHack.StructSize;
+            uint address = VarHackConfig.VarHackMemoryAddress + (uint)index * VarHackConfig.StructSize;
             byte[] bytes;
             if (index < Controls.Count)
             {
@@ -178,10 +178,10 @@ namespace SM64_Diagnostic.Controls
 
         public void ClearVariablesInMemory()
         {
-            byte[] emptyBytes = new byte[Config.VarHack.StructSize];
-            for (int i = 0; i < Config.VarHack.MaxPossibleVars; i++)
+            byte[] emptyBytes = new byte[VarHackConfig.StructSize];
+            for (int i = 0; i < VarHackConfig.MaxPossibleVars; i++)
             {
-                uint address = Config.VarHack.VarHackMemoryAddress + (uint)i * Config.VarHack.StructSize;
+                uint address = VarHackConfig.VarHackMemoryAddress + (uint)i * VarHackConfig.StructSize;
                 Config.Stream.WriteRamLittleEndian(emptyBytes, address);
             }
         }

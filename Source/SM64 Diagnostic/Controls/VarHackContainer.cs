@@ -92,8 +92,8 @@ namespace SM64_Diagnostic.Controls
 
         private void SetDefaultValues(int creationIndex, bool usePreWrittenVar)
         {
-            int xPos = Config.VarHack.DefaultXPos;
-            int yPos = Config.VarHack.DefaultYPos - creationIndex * Config.VarHack.DefaultYDelta;
+            int xPos = VarHackConfig.DefaultXPos;
+            int yPos = VarHackConfig.DefaultYPos - creationIndex * VarHackConfig.DefaultYDelta;
             textBoxXPosValue.Text = xPos.ToString();
             textBoxYPosValue.Text = yPos.ToString();
             if (!usePreWrittenVar) return;
@@ -199,37 +199,37 @@ namespace SM64_Diagnostic.Controls
             if (!yPosNullable.HasValue) return null;
             ushort yPos = yPosNullable.Value;
 
-            byte[] bytes = new byte[Config.VarHack.StructSize];
+            byte[] bytes = new byte[VarHackConfig.StructSize];
 
             byte[] addressBytes = BitConverter.GetBytes(address);
-            WriteBytes(addressBytes, bytes, Config.VarHack.AddressOffset, true);
+            WriteBytes(addressBytes, bytes, VarHackConfig.AddressOffset, true);
 
             byte[] xPosBytes = BitConverter.GetBytes(xPos);
-            WriteBytes(xPosBytes, bytes, Config.VarHack.XPosOffset, true);
+            WriteBytes(xPosBytes, bytes, VarHackConfig.XPosOffset, true);
 
             byte[] yPosBytes = BitConverter.GetBytes(yPos);
-            WriteBytes(yPosBytes, bytes, Config.VarHack.YPosOffset, true);
+            WriteBytes(yPosBytes, bytes, VarHackConfig.YPosOffset, true);
 
             string cappedName = CapString(name, !noNumber);
             string numberAddon = noNumber ? "" : (useHex ? "%x" : "%d");
             string cappedNameAndNumberAddon = cappedName + numberAddon;
             byte[] nameAndNumberAddonBytes = Encoding.ASCII.GetBytes(cappedNameAndNumberAddon);
-            WriteBytes(nameAndNumberAddonBytes, bytes, Config.VarHack.StringOffset, false);
+            WriteBytes(nameAndNumberAddonBytes, bytes, VarHackConfig.StringOffset, false);
 
             byte[] usePointerBytes = BitConverter.GetBytes(usePointer);
-            WriteBytes(usePointerBytes, bytes, Config.VarHack.UsePointerOffset, true);
+            WriteBytes(usePointerBytes, bytes, VarHackConfig.UsePointerOffset, true);
 
             if (usePointer)
             {
                 byte[] pointerOffsetBytes = BitConverter.GetBytes(pointerOffset);
-                WriteBytes(pointerOffsetBytes, bytes, Config.VarHack.PointerOffsetOffset, true);
+                WriteBytes(pointerOffsetBytes, bytes, VarHackConfig.PointerOffsetOffset, true);
             }
 
             byte[] signedBytes = BitConverter.GetBytes(signed);
-            WriteBytes(signedBytes, bytes, Config.VarHack.SignedOffset, true);
+            WriteBytes(signedBytes, bytes, VarHackConfig.SignedOffset, true);
 
             byte[] typeBytes = new byte[] { typeByte };
-            WriteBytes(typeBytes, bytes, Config.VarHack.TypeOffset, true);
+            WriteBytes(typeBytes, bytes, VarHackConfig.TypeOffset, true);
 
             return bytes;
         }
@@ -275,7 +275,7 @@ namespace SM64_Diagnostic.Controls
 
         private string CapString(string text, bool factorInNumberAddon = true)
         {
-            int maxLength = Config.VarHack.MaxStringLength + (factorInNumberAddon ? 0 : 2);
+            int maxLength = VarHackConfig.MaxStringLength + (factorInNumberAddon ? 0 : 2);
             return text.Length > maxLength ? text.Substring(0, maxLength) : text;
         }
 
@@ -499,7 +499,7 @@ namespace SM64_Diagnostic.Controls
             this.textBoxNameValue.TabIndex = 10;
             this.textBoxNameValue.Text = "Mario X";
             this.textBoxNameValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            //this.textBoxNameValue.MaxLength = Config.VarHack.MaxStringLength;
+            //this.textBoxNameValue.MaxLength = VarHackConfig.MaxStringLength;
             // 
             // textBoxNameLabel
             // 
