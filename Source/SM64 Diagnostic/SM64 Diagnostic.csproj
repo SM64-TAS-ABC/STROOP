@@ -256,6 +256,7 @@
     </Compile>
     <Compile Include="Managers\ObjectSlotsManager.cs" />
     <Compile Include="Structs\Configurations\AreaConfig.cs" />
+    <Compile Include="Structs\Configurations\OverlayConfig.cs" />
     <Compile Include="Structs\Configurations\OptionsConfig.cs" />
     <Compile Include="Structs\Configurations\MiscConfig.cs" />
     <Compile Include="Structs\Configurations\VarHackConfig.cs" />

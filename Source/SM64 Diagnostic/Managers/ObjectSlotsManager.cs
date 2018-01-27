@@ -598,20 +598,20 @@ namespace SM64_Diagnostic.Managers
 
             // Update Overlays
             objSlot.DrawSelectedOverlay = SelectedSlotsAddresses.Contains(objAddress);
-            objSlot.DrawStoodOnOverlay = OptionsConfig.ShowOverlayStoodOnObject && objAddress == _stoodOnObject;
-            objSlot.DrawInteractionOverlay = OptionsConfig.ShowOverlayInteractionObject && objAddress == _interactionObject;
-            objSlot.DrawHeldOverlay = OptionsConfig.ShowOverlayHeldObject && objAddress == _heldObject;
-            objSlot.DrawUsedOverlay = OptionsConfig.ShowOverlayUsedObject && objAddress == _usedObject;
-            objSlot.DrawClosestOverlay = OptionsConfig.ShowOverlayClosestObject && objAddress == _closestObject;
-            objSlot.DrawCameraOverlay = OptionsConfig.ShowOverlayCameraObject && objAddress == _cameraObject;
-            objSlot.DrawCameraHackOverlay = OptionsConfig.ShowOverlayCameraHackObject && objAddress == _cameraHackObject;
+            objSlot.DrawStoodOnOverlay = OverlayConfig.ShowOverlayStoodOnObject && objAddress == _stoodOnObject;
+            objSlot.DrawInteractionOverlay = OverlayConfig.ShowOverlayInteractionObject && objAddress == _interactionObject;
+            objSlot.DrawHeldOverlay = OverlayConfig.ShowOverlayHeldObject && objAddress == _heldObject;
+            objSlot.DrawUsedOverlay = OverlayConfig.ShowOverlayUsedObject && objAddress == _usedObject;
+            objSlot.DrawClosestOverlay = OverlayConfig.ShowOverlayClosestObject && objAddress == _closestObject;
+            objSlot.DrawCameraOverlay = OverlayConfig.ShowOverlayCameraObject && objAddress == _cameraObject;
+            objSlot.DrawCameraHackOverlay = OverlayConfig.ShowOverlayCameraHackObject && objAddress == _cameraHackObject;
             objSlot.DrawModelOverlay = objAddress == _modelObject;
-            objSlot.DrawFloorOverlay = OptionsConfig.ShowOverlayFloorObject && objAddress == _floorObject;
-            objSlot.DrawWallOverlay = OptionsConfig.ShowOverlayWallObject && objAddress == _wallObject;
-            objSlot.DrawCeilingOverlay = OptionsConfig.ShowOverlayCeilingObject && objAddress == _ceilingObject;
-            objSlot.DrawParentOverlay = OptionsConfig.ShowOverlayParentObject && objAddress == _parentObject;
-            objSlot.DrawParentUnusedOverlay = OptionsConfig.ShowOverlayParentObject && objAddress == _parentUnusedObject;
-            objSlot.DrawParentNoneOverlay = OptionsConfig.ShowOverlayParentObject && objAddress == _parentNoneObject;
+            objSlot.DrawFloorOverlay = OverlayConfig.ShowOverlayFloorObject && objAddress == _floorObject;
+            objSlot.DrawWallOverlay = OverlayConfig.ShowOverlayWallObject && objAddress == _wallObject;
+            objSlot.DrawCeilingOverlay = OverlayConfig.ShowOverlayCeilingObject && objAddress == _ceilingObject;
+            objSlot.DrawParentOverlay = OverlayConfig.ShowOverlayParentObject && objAddress == _parentObject;
+            objSlot.DrawParentUnusedOverlay = OverlayConfig.ShowOverlayParentObject && objAddress == _parentUnusedObject;
+            objSlot.DrawParentNoneOverlay = OverlayConfig.ShowOverlayParentObject && objAddress == _parentNoneObject;
             objSlot.DrawMarkedOverlay = MarkedSlotsAddresses.Contains(objAddress);
 
             if (objData.IsActive)
