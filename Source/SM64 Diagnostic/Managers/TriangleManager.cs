@@ -326,17 +326,17 @@ namespace SM64_Diagnostic.Managers
             switch (Mode)
             {
                 case TriangleMode.Ceiling:
-                    TrianglePointerAddress = Config.Mario.StructAddress + Config.Mario.CeilingTriangleOffset;
+                    TrianglePointerAddress = MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset;
                     TriangleAddress = Config.Stream.GetUInt32(TrianglePointerAddress);
                     break;
 
                 case TriangleMode.Floor:
-                    TrianglePointerAddress = Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset;
+                    TrianglePointerAddress = MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset;
                     TriangleAddress = Config.Stream.GetUInt32(TrianglePointerAddress);
                     break;
 
                 case TriangleMode.Wall:
-                    TrianglePointerAddress = Config.Mario.StructAddress + Config.Mario.WallTriangleOffset;
+                    TrianglePointerAddress = MarioConfig.StructAddress + MarioConfig.WallTriangleOffset;
                     TriangleAddress = Config.Stream.GetUInt32(TrianglePointerAddress);
                     break;
 

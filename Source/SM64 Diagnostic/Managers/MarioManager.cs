@@ -187,12 +187,12 @@ namespace SM64_Diagnostic.Managers
             MapManager mapManager = ManagerContext.Current.MapManager;
             // Get Mario position and rotation
             float x, y, z, rot;
-            var marioAddress = Config.Mario.StructAddress;
-            x = Config.Stream.GetSingle(marioAddress + Config.Mario.XOffset);
-            y = Config.Stream.GetSingle(marioAddress + Config.Mario.YOffset);
-            z = Config.Stream.GetSingle(marioAddress + Config.Mario.ZOffset);
-            ushort marioFacing = Config.Stream.GetUInt16(marioAddress + Config.Mario.YawFacingOffset);
-            rot = (float) (((Config.Stream.GetUInt32(marioAddress + Config.Mario.RotationOffset) >> 16) % 65536) / 65536f * 360f); 
+            var marioAddress = MarioConfig.StructAddress;
+            x = Config.Stream.GetSingle(marioAddress + MarioConfig.XOffset);
+            y = Config.Stream.GetSingle(marioAddress + MarioConfig.YOffset);
+            z = Config.Stream.GetSingle(marioAddress + MarioConfig.ZOffset);
+            ushort marioFacing = Config.Stream.GetUInt16(marioAddress + MarioConfig.YawFacingOffset);
+            rot = (float) (((Config.Stream.GetUInt32(marioAddress + MarioConfig.RotationOffset) >> 16) % 65536) / 65536f * 360f); 
 
             // Update Mario map object
             mapManager.MarioMapObject.X = x;
@@ -203,9 +203,9 @@ namespace SM64_Diagnostic.Managers
 
             // Get holp position
             float holpX, holpY, holpZ;
-            holpX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPXOffset);
-            holpY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPYOffset);
-            holpZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPZOffset);
+            holpX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPXOffset);
+            holpY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPYOffset);
+            holpZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPZOffset);
 
             // Update holp map object position
             mapManager.HolpMapObject.X = holpX;
@@ -221,7 +221,7 @@ namespace SM64_Diagnostic.Managers
             cameraRot = (float)((Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.YawFacingOffset) / 65536f * 360f));
 
             // Update floor triangle
-            UInt32 floorTriangle = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
+            UInt32 floorTriangle = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
             if (floorTriangle != 0x00)
             {
                 Int16 x1 = Config.Stream.GetInt16(floorTriangle + TriangleOffsetsConfig.X1);
@@ -244,7 +244,7 @@ namespace SM64_Diagnostic.Managers
             mapManager.FloorTriangleMapObject.Show = (floorTriangle != 0x00);
 
             // Update ceiling triangle
-            UInt32 ceilingTriangle = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.CeilingTriangleOffset);
+            UInt32 ceilingTriangle = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
             if (ceilingTriangle != 0x00)
             {
                 Int16 x1 = Config.Stream.GetInt16(ceilingTriangle + TriangleOffsetsConfig.X1);
@@ -268,13 +268,13 @@ namespace SM64_Diagnostic.Managers
 
             // Update intended next position map object position
             float normY = floorTriangle == 0 ? 1 : Config.Stream.GetSingle(floorTriangle + TriangleOffsetsConfig.NormY);
-            float hSpeed = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HSpeedOffset);
-            float floorY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.FloorYOffset);
+            float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+            float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
             bool aboveFloor = y > floorY + 0.001;
             double multiplier = aboveFloor ? 1 : normY;
             double defactoSpeed = hSpeed * multiplier;
             double defactoSpeedQStep = defactoSpeed * 0.25;
-            ushort marioAngle = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+            ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
             ushort marioAngleTruncated = MoreMath.NormalizeAngleTruncated(marioAngle);
             (double xDist, double zDist) = MoreMath.GetComponentsFromVector(defactoSpeedQStep, marioAngleTruncated);
             double intendedNextPositionX = MoreMath.MaybeNegativeModulus(x + xDist, 65536);

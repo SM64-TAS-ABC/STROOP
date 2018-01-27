@@ -54,7 +54,7 @@ namespace SM64_Diagnostic.Managers
         {
             if (_selectCurrentAreaCheckbox.Checked)
             {
-                _selectedAreaAddress = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.AreaPointerOffset);
+                _selectedAreaAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.AreaPointerOffset);
             }
 
             if (!updateView) return;

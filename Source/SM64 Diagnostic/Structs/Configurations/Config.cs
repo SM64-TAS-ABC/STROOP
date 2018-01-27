@@ -63,7 +63,6 @@ namespace SM64_Diagnostic.Structs.Configurations
 
         public static List<Emulator> Emulators = new List<Emulator>();
         public static uint RamSize;
-        public static MarioConfig Mario;
         public static VarHackConfig VarHack = new VarHackConfig();
         public static ActionTable MarioActions;
         public static AnimationTable MarioAnimations;

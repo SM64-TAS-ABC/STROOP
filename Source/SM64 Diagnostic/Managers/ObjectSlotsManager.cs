@@ -400,9 +400,9 @@ namespace SM64_Diagnostic.Managers
 
             // Get mario position
             float marioX, marioY, marioZ;
-            marioX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
-            marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
-            marioZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
+            marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
 
             // Calculate distance to Mario
             foreach (var objSlot in newObjectSlotData)
@@ -445,10 +445,10 @@ namespace SM64_Diagnostic.Managers
 
             _activeObjectCount = 0;
 
-            _stoodOnObject = Config.Stream.GetUInt32(Config.Mario.StoodOnObjectPointer);
-            _interactionObject = Config.Stream.GetUInt32(Config.Mario.InteractionObjectPointerOffset + Config.Mario.StructAddress);
-            _heldObject = Config.Stream.GetUInt32(Config.Mario.HeldObjectPointerOffset + Config.Mario.StructAddress);
-            _usedObject = Config.Stream.GetUInt32(Config.Mario.UsedObjectPointerOffset + Config.Mario.StructAddress);
+            _stoodOnObject = Config.Stream.GetUInt32(MarioConfig.StoodOnObjectPointer);
+            _interactionObject = Config.Stream.GetUInt32(MarioConfig.InteractionObjectPointerOffset + MarioConfig.StructAddress);
+            _heldObject = Config.Stream.GetUInt32(MarioConfig.HeldObjectPointerOffset + MarioConfig.StructAddress);
+            _usedObject = Config.Stream.GetUInt32(MarioConfig.UsedObjectPointerOffset + MarioConfig.StructAddress);
             _cameraObject = Config.Stream.GetUInt32(CameraConfig.SecondaryObjectAddress);
             _cameraHackObject = Config.Stream.GetUInt32(CameraHackConfig.CameraHackStruct + CameraHackConfig.ObjectOffset);
             _modelObject = ManagerContext.Current.ModelManager.ModelObjectAddress;
@@ -467,13 +467,13 @@ namespace SM64_Diagnostic.Managers
             }
             _closestObject = closestObjectCandidates.OrderBy(s => s.DistanceToMario).FirstOrDefault()?.Address ?? 0;
 
-            uint floorTriangleAddress = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
+            uint floorTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
             _floorObject = floorTriangleAddress == 0 ? 0 : Config.Stream.GetUInt32(floorTriangleAddress + TriangleOffsetsConfig.AssociatedObject);
 
-            uint wallTriangleAddress = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.WallTriangleOffset);
+            uint wallTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
             _wallObject = wallTriangleAddress == 0 ? 0 : Config.Stream.GetUInt32(wallTriangleAddress + TriangleOffsetsConfig.AssociatedObject);
 
-            uint ceilingTriangleAddress = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.CeilingTriangleOffset);
+            uint ceilingTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
             _ceilingObject = ceilingTriangleAddress == 0 ? 0 : Config.Stream.GetUInt32(ceilingTriangleAddress + TriangleOffsetsConfig.AssociatedObject);
 
             ObjectSlot hoverObjectSlot = Config.ObjectSlots.HoverObjectSlot;

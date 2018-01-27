@@ -94,9 +94,9 @@ namespace SM64_Diagnostic.Managers
             }
             else // pivot on Mario
             {
-                pivotX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
-                pivotY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
-                pivotZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
+                pivotX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                pivotY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                pivotZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
             }
             return (pivotX, pivotY, pivotZ);
         }

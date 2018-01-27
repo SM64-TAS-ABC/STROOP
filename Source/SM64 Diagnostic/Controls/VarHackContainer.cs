@@ -109,56 +109,56 @@ namespace SM64_Diagnostic.Controls
             {
                 case 0:
                     name = "HSPD ";
-                    address = Config.Mario.StructAddress + Config.Mario.HSpeedOffset;
+                    address = MarioConfig.StructAddress + MarioConfig.HSpeedOffset;
                     typeRadioButton = radioButtonFloat;
                     break;
                 case 1:
                     name = "Angle ";
-                    address = Config.Mario.StructAddress + Config.Mario.YawFacingOffset;
+                    address = MarioConfig.StructAddress + MarioConfig.YawFacingOffset;
                     typeRadioButton = radioButtonUShort;
                     break;
                 case 2:
                     name = "HP ";
-                    address = Config.Mario.StructAddress + HudConfig.HpCountOffset;
+                    address = MarioConfig.StructAddress + HudConfig.HpCountOffset;
                     typeRadioButton = radioButtonShort;
                     useHex = true;
                     break;
                 case 3:
                     name = "Floor Room ";
-                    address = Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset;
+                    address = MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset;
                     typeRadioButton = radioButtonByte;
                     usePointer = true;
                     pointerOffset = 0x05;
                     break;
                 case 4:
                     name = "X ";
-                    address = Config.Mario.StructAddress + Config.Mario.XOffset;
+                    address = MarioConfig.StructAddress + MarioConfig.XOffset;
                     typeRadioButton = radioButtonFloat;
                     break;
                 case 5:
                     name = "Y ";
-                    address = Config.Mario.StructAddress + Config.Mario.YOffset;
+                    address = MarioConfig.StructAddress + MarioConfig.YOffset;
                     typeRadioButton = radioButtonFloat;
                     break;
                 case 6:
                     name = "Z ";
-                    address = Config.Mario.StructAddress + Config.Mario.ZOffset;
+                    address = MarioConfig.StructAddress + MarioConfig.ZOffset;
                     typeRadioButton = radioButtonFloat;
                     break;
                 case 7:
                     name = "HOLP X ";
-                    address = Config.Mario.StructAddress + Config.Mario.HOLPXOffset;
+                    address = MarioConfig.StructAddress + MarioConfig.HOLPXOffset;
                     typeRadioButton = radioButtonFloat;
                     break;
                 case 8:
                     name = "HOLP Y ";
-                    address = Config.Mario.StructAddress + Config.Mario.HOLPYOffset;
+                    address = MarioConfig.StructAddress + MarioConfig.HOLPYOffset;
                     typeRadioButton = radioButtonFloat;
                     break;
                 case 9:
                 default:
                     name = "HOLP Z ";
-                    address = Config.Mario.StructAddress + Config.Mario.HOLPZOffset;
+                    address = MarioConfig.StructAddress + MarioConfig.HOLPZOffset;
                     typeRadioButton = radioButtonFloat;
                     break;
             }

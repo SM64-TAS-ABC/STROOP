@@ -54,7 +54,7 @@ namespace SM64_Diagnostic.Managers
                     () => AddVariable(() => "Index " + RngIndexer.GetRngIndex()),
                     () => AddVariable(() =>
                     {
-                        uint triFloorAddress = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
+                        uint triFloorAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
                         float yNorm = Config.Stream.GetSingle(triFloorAddress + TriangleOffsetsConfig.NormY);
                         return "YNorm " + FormatDouble(yNorm, 4, true);
                     }),

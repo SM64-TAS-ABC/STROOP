@@ -56,13 +56,13 @@ namespace SM64_Diagnostic.Structs
 
         public string GetActionName()
         {
-            uint currentAction = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.ActionOffset);
+            uint currentAction = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.ActionOffset);
             return GetActionName(currentAction);
         }
 
         public string GetPrevActionName()
         {
-            uint prevAction = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.PrevActionOffset);
+            uint prevAction = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.PrevActionOffset);
             return GetActionName(prevAction);
         }
 

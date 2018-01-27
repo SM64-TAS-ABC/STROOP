@@ -317,12 +317,12 @@ namespace SM64_Diagnostic.Managers
             {
                 return new VarStateMario()
                 {
-                    X = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset),
-                    Y = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset),
-                    Z = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset),
-                    Angle = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawFacingOffset),
-                    Vspd = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.VSpeedOffset),
-                    Hspd = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HSpeedOffset),
+                    X = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset),
+                    Y = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset),
+                    Z = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset),
+                    Angle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset),
+                    Vspd = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.VSpeedOffset),
+                    Hspd = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset),
                 };
             }
 
@@ -464,9 +464,9 @@ namespace SM64_Diagnostic.Managers
                 uint? objAddress = ParsingUtilities.ParseHexNullable(_betterTextboxObjAtHOLP.Text);
                 if (objAddress.HasValue)
                 {
-                    float holpX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPXOffset);
-                    float holpY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPYOffset);
-                    float holpZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPZOffset);
+                    float holpX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPXOffset);
+                    float holpY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPYOffset);
+                    float holpZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPZOffset);
 
                     Config.Stream.SetValue(holpX, objAddress.Value + Config.ObjectSlots.ObjectXOffset);
                     Config.Stream.SetValue(holpY, objAddress.Value + Config.ObjectSlots.ObjectYOffset);
@@ -514,7 +514,7 @@ namespace SM64_Diagnostic.Managers
             switch (_varToRecord)
             {
                 case VarToRecord.Mario:
-                    uint marioObjAddress = Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress);
+                    uint marioObjAddress = Config.Stream.GetUInt32(MarioConfig.ObjectReferenceAddress);
                     _currentTimer = Config.Stream.GetInt32(marioObjAddress + Config.ObjectSlots.TimerOffset);
                     break;
                 case VarToRecord.Penguin:
@@ -592,7 +592,7 @@ namespace SM64_Diagnostic.Managers
             _labelControlStick3.Text = Math.Round(angle, 0).ToString();
             int angleGuess = MoreMath.NormalizeAngleUshort(angle);
             _labelControlStick4.Text = angleGuess.ToString();
-            int angleInteded = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.YawIntendedOffset);
+            int angleInteded = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawIntendedOffset);
             _labelControlStick5.Text = angleInteded.ToString();
             int diff = angleGuess - angleInteded;
             _labelControlStick6.Text = diff.ToString();
@@ -616,24 +616,24 @@ namespace SM64_Diagnostic.Managers
             // Schedule
             {
                 (int frame, double? x, double? y, double? z, double? hspd, string description) = _rollingRocksScheduleList[_rollingRocksScheduleIndex];
-                if (x.HasValue) Config.Stream.SetValue((float)x.Value, Config.Mario.StructAddress + Config.Mario.XOffset);
-                if (y.HasValue) Config.Stream.SetValue((float)y.Value, Config.Mario.StructAddress + Config.Mario.YOffset);
-                if (z.HasValue) Config.Stream.SetValue((float)z.Value, Config.Mario.StructAddress + Config.Mario.ZOffset);
-                if (hspd.HasValue) Config.Stream.SetValue((float)hspd.Value, Config.Mario.StructAddress + Config.Mario.HSpeedOffset);
+                if (x.HasValue) Config.Stream.SetValue((float)x.Value, MarioConfig.StructAddress + MarioConfig.XOffset);
+                if (y.HasValue) Config.Stream.SetValue((float)y.Value, MarioConfig.StructAddress + MarioConfig.YOffset);
+                if (z.HasValue) Config.Stream.SetValue((float)z.Value, MarioConfig.StructAddress + MarioConfig.ZOffset);
+                if (hspd.HasValue) Config.Stream.SetValue((float)hspd.Value, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
 
                 if (frame == 8288)
                 {
-                    Config.Stream.SetValue((uint)0x04000471, Config.Mario.StructAddress + Config.Mario.ActionOffset);
+                    Config.Stream.SetValue((uint)0x04000471, MarioConfig.StructAddress + MarioConfig.ActionOffset);
                 }
 
                 if (frame == 8819 || frame == 9926 || frame == 10060 || frame == 10463 || frame == 10475)
                 {
-                    Config.Stream.SetValue((uint)16779404, Config.Mario.StructAddress + Config.Mario.ActionOffset);
+                    Config.Stream.SetValue((uint)16779404, MarioConfig.StructAddress + MarioConfig.ActionOffset);
                 }
 
                 if (frame == 10476)
                 {
-                    Config.Stream.SetValue((float)0, Config.Mario.StructAddress + Config.Mario.VSpeedOffset);
+                    Config.Stream.SetValue((float)0, MarioConfig.StructAddress + MarioConfig.VSpeedOffset);
                 }
 
                 if (frame == 10060)
@@ -643,7 +643,7 @@ namespace SM64_Diagnostic.Managers
 
                 if (frame == 10475)
                 {
-                    Config.Stream.SetValue((ushort)32832, Config.Mario.StructAddress + Config.Mario.YawFacingOffset);
+                    Config.Stream.SetValue((ushort)32832, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
                 }
 
                 _rollingRocksScheduleIndex++;
@@ -669,9 +669,9 @@ namespace SM64_Diagnostic.Managers
 
         private void GotoGetCurrentClick()
         {
-            float marioX = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.XOffset);
-            float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
-            float marioZ = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.ZOffset);
+            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
             _betterTextboxGotoX.Text = marioX.ToString();
             _betterTextboxGotoY.Text = marioY.ToString();
             _betterTextboxGotoZ.Text = marioZ.ToString();
@@ -693,18 +693,18 @@ namespace SM64_Diagnostic.Managers
         {
             _betterTextboxStateTransferVar1Current.Text = Config.Stream.GetInt32(Config.GlobalTimerAddress).ToString();
             _betterTextboxStateTransferVar2Current.Text = Config.Stream.GetUInt16(Config.RngAddress).ToString();
-            _betterTextboxStateTransferVar3Current.Text = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPXOffset).ToString();
-            _betterTextboxStateTransferVar4Current.Text = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPYOffset).ToString();
-            _betterTextboxStateTransferVar5Current.Text = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HOLPZOffset).ToString();
-            _betterTextboxStateTransferVar6Current.Text = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.SlidingYawOffset).ToString();
-            _betterTextboxStateTransferVar7Current.Text = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.TwirlYawOffset).ToString();
+            _betterTextboxStateTransferVar3Current.Text = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPXOffset).ToString();
+            _betterTextboxStateTransferVar4Current.Text = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPYOffset).ToString();
+            _betterTextboxStateTransferVar5Current.Text = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPZOffset).ToString();
+            _betterTextboxStateTransferVar6Current.Text = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.SlidingYawOffset).ToString();
+            _betterTextboxStateTransferVar7Current.Text = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.TwirlYawOffset).ToString();
             _betterTextboxStateTransferVar8Current.Text =
                 ((Config.Stream.GetByte(
                     CameraConfig.CameraStructAddress + CameraConfig.MarioCamPossibleOffset) & CameraConfig.MarioCamPossibleMask) != 0).ToString();
             _betterTextboxStateTransferVar9Current.Text = FileManager.Instance.GetChecksum(FileManager.Instance.GetInGameFileAddress()).ToString();
-            _betterTextboxStateTransferVar10Current.Text = Config.Stream.GetInt16(Config.Mario.StructAddress + HudConfig.HpCountOffset).ToString();
-            _betterTextboxStateTransferVar11Current.Text = Config.Stream.GetSByte(Config.Mario.StructAddress + HudConfig.LifeCountOffset).ToString();
-            _betterTextboxStateTransferVar12Current.Text = Config.Stream.GetInt16(Config.Mario.StructAddress + HudConfig.StarCountOffset).ToString();
+            _betterTextboxStateTransferVar10Current.Text = Config.Stream.GetInt16(MarioConfig.StructAddress + HudConfig.HpCountOffset).ToString();
+            _betterTextboxStateTransferVar11Current.Text = Config.Stream.GetSByte(MarioConfig.StructAddress + HudConfig.LifeCountOffset).ToString();
+            _betterTextboxStateTransferVar12Current.Text = Config.Stream.GetInt16(MarioConfig.StructAddress + HudConfig.StarCountOffset).ToString();
             _betterTextboxStateTransferVar13Current.Text = Config.Stream.GetByte(Config.SpecialTripleJumpAddress).ToString();
             _betterTextboxStateTransferVar14Current.Text = Config.Stream.GetInt16(Config.AnimationTimerAddress).ToString();
         }
@@ -738,19 +738,19 @@ namespace SM64_Diagnostic.Managers
             if (value2.HasValue) Config.Stream.SetValue(value2.Value, Config.RngAddress);
 
             float? value3 = ParsingUtilities.ParseFloatNullable(_betterTextboxStateTransferVar3Saved.Text);
-            if (value3.HasValue) Config.Stream.SetValue(value3.Value, Config.Mario.StructAddress + Config.Mario.HOLPXOffset);
+            if (value3.HasValue) Config.Stream.SetValue(value3.Value, MarioConfig.StructAddress + MarioConfig.HOLPXOffset);
 
             float? value4 = ParsingUtilities.ParseFloatNullable(_betterTextboxStateTransferVar4Saved.Text);
-            if (value4.HasValue) Config.Stream.SetValue(value4.Value, Config.Mario.StructAddress + Config.Mario.HOLPYOffset);
+            if (value4.HasValue) Config.Stream.SetValue(value4.Value, MarioConfig.StructAddress + MarioConfig.HOLPYOffset);
 
             float? value5 = ParsingUtilities.ParseFloatNullable(_betterTextboxStateTransferVar5Saved.Text);
-            if (value5.HasValue) Config.Stream.SetValue(value5.Value, Config.Mario.StructAddress + Config.Mario.HOLPZOffset);
+            if (value5.HasValue) Config.Stream.SetValue(value5.Value, MarioConfig.StructAddress + MarioConfig.HOLPZOffset);
 
             ushort? value6 = ParsingUtilities.ParseUShortNullable(_betterTextboxStateTransferVar6Saved.Text);
-            if (value6.HasValue) Config.Stream.SetValue(value6.Value, Config.Mario.StructAddress + Config.Mario.SlidingYawOffset);
+            if (value6.HasValue) Config.Stream.SetValue(value6.Value, MarioConfig.StructAddress + MarioConfig.SlidingYawOffset);
 
             ushort? value7 = ParsingUtilities.ParseUShortNullable(_betterTextboxStateTransferVar7Saved.Text);
-            if (value7.HasValue) Config.Stream.SetValue(value7.Value, Config.Mario.StructAddress + Config.Mario.TwirlYawOffset);
+            if (value7.HasValue) Config.Stream.SetValue(value7.Value, MarioConfig.StructAddress + MarioConfig.TwirlYawOffset);
 
             bool? value8 = ParsingUtilities.ParseBoolNullable(_betterTextboxStateTransferVar8Saved.Text);
             if (value8.HasValue)
@@ -765,22 +765,22 @@ namespace SM64_Diagnostic.Managers
             short? value10 = ParsingUtilities.ParseShortNullable(_betterTextboxStateTransferVar10Saved.Text);
             if (value10.HasValue)
             {
-                Config.Stream.SetValue(value10.Value, Config.Mario.StructAddress + HudConfig.HpCountOffset);
-                Config.Stream.SetValue((short)(value10.Value / 256), Config.Mario.StructAddress + HudConfig.HpDisplayOffset);
+                Config.Stream.SetValue(value10.Value, MarioConfig.StructAddress + HudConfig.HpCountOffset);
+                Config.Stream.SetValue((short)(value10.Value / 256), MarioConfig.StructAddress + HudConfig.HpDisplayOffset);
             }
 
             sbyte? value11 = ParsingUtilities.ParseSByteNullable(_betterTextboxStateTransferVar11Saved.Text);
             if (value11.HasValue)
             {
-                Config.Stream.SetValue(value11.Value, Config.Mario.StructAddress + HudConfig.LifeCountOffset);
-                Config.Stream.SetValue((short)value11.Value, Config.Mario.StructAddress + HudConfig.LifeDisplayOffset);
+                Config.Stream.SetValue(value11.Value, MarioConfig.StructAddress + HudConfig.LifeCountOffset);
+                Config.Stream.SetValue((short)value11.Value, MarioConfig.StructAddress + HudConfig.LifeDisplayOffset);
             }
 
             short? value12 = ParsingUtilities.ParseShortNullable(_betterTextboxStateTransferVar12Saved.Text);
             if (value12.HasValue)
             {
-                Config.Stream.SetValue(value12.Value, Config.Mario.StructAddress + HudConfig.StarCountOffset);
-                Config.Stream.SetValue(value12.Value, Config.Mario.StructAddress + HudConfig.StarDisplayOffset);
+                Config.Stream.SetValue(value12.Value, MarioConfig.StructAddress + HudConfig.StarCountOffset);
+                Config.Stream.SetValue(value12.Value, MarioConfig.StructAddress + HudConfig.StarDisplayOffset);
             }
 
             byte? value13 = ParsingUtilities.ParseByteNullable(_betterTextboxStateTransferVar13Saved.Text);

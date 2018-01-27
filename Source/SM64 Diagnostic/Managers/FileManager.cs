@@ -463,8 +463,8 @@ namespace SM64_Diagnostic.Managers
         private void NumStarsButton_Click(object sender, EventArgs e)
         {
             short numStars = CalculateNumStars();
-            Config.Stream.SetValue(numStars, Config.Mario.StructAddress + HudConfig.StarCountOffset);
-            Config.Stream.SetValue(numStars, Config.Mario.StructAddress + HudConfig.StarDisplayOffset);
+            Config.Stream.SetValue(numStars, MarioConfig.StructAddress + HudConfig.StarCountOffset);
+            Config.Stream.SetValue(numStars, MarioConfig.StructAddress + HudConfig.StarDisplayOffset);
         }
 
         public ushort GetChecksum(uint? nullableFileAddress = null)

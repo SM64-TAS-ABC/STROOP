@@ -105,10 +105,10 @@ namespace SM64_Diagnostic.Structs
                     return BaseAddressListZero;
 
                 case BaseAddressTypeEnum.Mario:
-                    return new List<uint> { Config.Mario.StructAddress };
+                    return new List<uint> { MarioConfig.StructAddress };
 
                 case BaseAddressTypeEnum.MarioObj:
-                    return new List<uint> { Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress) };
+                    return new List<uint> { Config.Stream.GetUInt32(MarioConfig.ObjectReferenceAddress) };
 
                 case BaseAddressTypeEnum.Camera:
                     return new List<uint> { CameraConfig.CameraStructAddress };
