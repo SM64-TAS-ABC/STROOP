@@ -9,7 +9,6 @@ namespace SM64_Diagnostic.Structs.Configurations
 {
     public static class Config
     {
-        public enum RomVersion { US, JP, PAL };
         public static RomVersion Version = RomVersion.US;
 
         public static uint SwitchRomVersion(uint? valUS = null, uint? valJP = null, uint? valPAL = null)

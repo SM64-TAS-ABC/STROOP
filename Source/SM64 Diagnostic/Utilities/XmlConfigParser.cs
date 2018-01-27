@@ -76,7 +76,7 @@ namespace SM64_Diagnostic.Utilities
                         }
                         break;
                     case "RomVersion":
-                        Config.Version = (Config.RomVersion)Enum.Parse(typeof(Config.RomVersion), element.Value);
+                        Config.Version = (RomVersion)Enum.Parse(typeof(RomVersion), element.Value);
                         break;
                     case "RefreshRateFreq":
                         Config.RefreshRateFreq = uint.Parse(element.Value);

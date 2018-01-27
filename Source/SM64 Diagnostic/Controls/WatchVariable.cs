@@ -46,17 +46,17 @@ namespace SM64_Diagnostic.Controls
             {
                 switch (Config.Version)
                 {
-                    case Config.RomVersion.US:
-                        if (OffsetUS != null) return OffsetUS.Value;
+                    case RomVersion.US:
+                        if (OffsetUS.HasValue) return OffsetUS.Value;
                         break;
-                    case Config.RomVersion.JP:
-                        if (OffsetJP != null) return OffsetJP.Value;
+                    case RomVersion.JP:
+                        if (OffsetJP.HasValue) return OffsetJP.Value;
                         break;
-                    case Config.RomVersion.PAL:
-                        if (OffsetPAL != null) return OffsetPAL.Value;
+                    case RomVersion.PAL:
+                        if (OffsetPAL.HasValue) return OffsetPAL.Value;
                         break;
                 }
-                if (OffsetDefault != null) return OffsetDefault.Value;
+                if (OffsetDefault.HasValue) return OffsetDefault.Value;
                 return 0;
             }
         }
