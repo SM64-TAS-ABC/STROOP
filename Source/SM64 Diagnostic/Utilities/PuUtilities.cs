@@ -68,27 +68,23 @@ namespace SM64_Diagnostic.Utilities
         public static bool MoveToRelativePu(int newPuX, int newPuY, int newPuZ)
         {
             // Get Mario position
-            float marioX, marioY, marioZ;
-            marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
 
             // Get Camera Position
-            float cameraX, cameraY, cameraZ;
-            cameraX = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.XOffset);
-            cameraY = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.YOffset);
-            cameraZ = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
+            float cameraX = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.XOffset);
+            float cameraY = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.YOffset);
+            float cameraZ = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
 
             // Calculate new coordinates
-            float newMarioX, newMarioY, newMarioZ;
-            newMarioX = marioX + newPuX * PuSize;
-            newMarioY = marioY + newPuY * PuSize;
-            newMarioZ = marioZ + newPuZ * PuSize;
+            float newMarioX = marioX + newPuX * PuSize;
+            float newMarioY = marioY + newPuY * PuSize;
+            float newMarioZ = marioZ + newPuZ * PuSize;
 
-            float newCamX, newCamY, newCamZ;
-            newCamX = cameraX + newPuX * PuSize;
-            newCamY = cameraY + newPuY * PuSize;
-            newCamZ = cameraZ + newPuZ * PuSize;
+            float newCamX = cameraX + newPuX * PuSize;
+            float newCamY = cameraY + newPuY * PuSize;
+            float newCamZ = cameraZ + newPuZ * PuSize;
 
             // Set new mario + camera position
             bool success = true;
@@ -107,17 +103,15 @@ namespace SM64_Diagnostic.Utilities
         public static bool MoveToPu(int newPuX, int newPuY, int newPuZ)
         {
             // Get Mario position
-            float marioX, marioY, marioZ;
-            marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
 
 
             // Get Camera Position
-            float cameraX, cameraY, cameraZ;
-            cameraX = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.XOffset);
-            cameraY = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.YOffset);
-            cameraZ = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
+            float cameraX = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.XOffset);
+            float cameraY = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.YOffset);
+            float cameraZ = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
 
             // Calculate new coordinates
             float newMarioX, newMarioY, newMarioZ;
@@ -147,9 +141,8 @@ namespace SM64_Diagnostic.Utilities
         public static string GetPuPosString()
         {
             // Get Mario position
-            float marioX, marioZ;
-            marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
 
             // Update PU
             int puX = PuUtilities.GetPUFromCoord(marioX);
@@ -161,9 +154,8 @@ namespace SM64_Diagnostic.Utilities
         public static string GetQpuPosString()
         {
             // Get Mario position
-            float marioX, marioZ;
-            marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
 
             // Update PU
             int puX = PuUtilities.GetPUFromCoord(marioX);
