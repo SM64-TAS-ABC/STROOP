@@ -11,8 +11,6 @@ namespace SM64_Diagnostic.Managers
 {
     public class CamHackManager : DataManager
     {
-        public enum CamHackMode { REGULAR, RELATIVE_ANGLE, ABSOLUTE_ANGLE, FIXED_POS, FIXED_ORIENTATION };
-
         public CamHackMode _currentCamHackMode;
 
         RadioButton _mode0RadioButton;

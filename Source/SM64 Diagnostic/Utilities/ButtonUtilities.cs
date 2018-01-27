@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Structs.Configurations;
-using static SM64_Diagnostic.Managers.CamHackManager;
 using SM64_Diagnostic.Managers;
-using static SM64_Diagnostic.Structs.Configurations.PositionControllerRelativityConfig;
 
 namespace SM64_Diagnostic.Utilities
 {
