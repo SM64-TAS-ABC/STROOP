@@ -1105,10 +1105,10 @@ namespace SM64_Diagnostic.Utilities
             List<TripleAddressAngle> posAddressAngles =
                 new List<TripleAddressAngle> {
                     new TripleAddressAngle(
-                        Config.Camera.CameraStructAddress + Config.Camera.XOffset,
-                        Config.Camera.CameraStructAddress + Config.Camera.YOffset,
-                        Config.Camera.CameraStructAddress + Config.Camera.ZOffset,
-                        Config.Stream.GetUInt16(Config.Camera.CameraStructAddress + Config.Camera.YawFacingOffset))
+                        CameraConfig.CameraStructAddress + CameraConfig.XOffset,
+                        CameraConfig.CameraStructAddress + CameraConfig.YOffset,
+                        CameraConfig.CameraStructAddress + CameraConfig.ZOffset,
+                        Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.YawFacingOffset))
                 };
 
             return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
@@ -1122,9 +1122,9 @@ namespace SM64_Diagnostic.Utilities
             HandleScaling(ref thetaOffset, ref phiOffset);
 
             float oldX, oldY, oldZ;
-            oldX = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.XOffset);
-            oldY = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.YOffset);
-            oldZ = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
+            oldX = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.XOffset);
+            oldY = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.YOffset);
+            oldZ = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
 
             double newX, newY, newZ;
             (newX, newY, newZ) = MoreMath.OffsetSphericallyAboutPivot(oldX, oldY, oldZ, radiusOffset, thetaOffset, phiOffset, pivotX, pivotY, pivotZ);
@@ -1133,9 +1133,9 @@ namespace SM64_Diagnostic.Utilities
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= Config.Stream.SetValue((float)newX, Config.Camera.CameraStructAddress + Config.Camera.XOffset);
-            success &= Config.Stream.SetValue((float)newY, Config.Camera.CameraStructAddress + Config.Camera.YOffset);
-            success &= Config.Stream.SetValue((float)newZ, Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
+            success &= Config.Stream.SetValue((float)newX, CameraConfig.CameraStructAddress + CameraConfig.XOffset);
+            success &= Config.Stream.SetValue((float)newY, CameraConfig.CameraStructAddress + CameraConfig.YOffset);
+            success &= Config.Stream.SetValue((float)newZ, CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
@@ -1146,7 +1146,7 @@ namespace SM64_Diagnostic.Utilities
             switch (camHackMode)
             {
                 case CamHackMode.REGULAR:
-                    return Config.Stream.GetUInt16(Config.Camera.CameraStructAddress + Config.Camera.YawFacingOffset);
+                    return Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.YawFacingOffset);
 
                 case CamHackMode.RELATIVE_ANGLE:
                 case CamHackMode.ABSOLUTE_ANGLE:
@@ -1170,9 +1170,9 @@ namespace SM64_Diagnostic.Utilities
             {
                 case CamHackMode.REGULAR:
                     return new TripleAddressAngle(
-                        Config.Camera.CameraStructAddress + Config.Camera.FocusXOffset,
-                        Config.Camera.CameraStructAddress + Config.Camera.FocusYOffset,
-                        Config.Camera.CameraStructAddress + Config.Camera.FocusZOffset,
+                        CameraConfig.CameraStructAddress + CameraConfig.FocusXOffset,
+                        CameraConfig.CameraStructAddress + CameraConfig.FocusYOffset,
+                        CameraConfig.CameraStructAddress + CameraConfig.FocusZOffset,
                         getCamHackYawFacing(camHackMode));
                 
                 case CamHackMode.RELATIVE_ANGLE:
@@ -1283,9 +1283,9 @@ namespace SM64_Diagnostic.Utilities
             {
                 case CamHackMode.REGULAR:
                 {
-                    float xFocus = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.FocusXOffset);
-                    float yFocus = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.FocusYOffset);
-                    float zFocus = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.FocusZOffset);
+                    float xFocus = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.FocusXOffset);
+                    float yFocus = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.FocusYOffset);
+                    float zFocus = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.FocusZOffset);
                     return TranslateCameraSpherically(radiusOffset, thetaOffset, phiOffset, (xFocus, yFocus, zFocus));
                 }
 

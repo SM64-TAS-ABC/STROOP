@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 
 namespace SM64_Diagnostic.Structs.Configurations
 {
-    public struct CameraConfig
+    public static class CameraConfig
     {
-        public uint CameraStructAddress { get { return Config.SwitchRomVersion(CameraStructAddressUS, CameraStructAddressJP); } }
-        public uint CameraStructAddressUS;
-        public uint CameraStructAddressJP;
+        public static uint CameraStructAddress { get { return Config.SwitchRomVersion(CameraStructAddressUS, CameraStructAddressJP); } }
+        public static readonly uint CameraStructAddressUS = 0x8033C618;
+        public static readonly uint CameraStructAddressJP = 0x8033B2A8;
 
-        public uint XOffset;
-        public uint YOffset;
-        public uint ZOffset;
-        public uint FocusXOffset;
-        public uint FocusYOffset;
-        public uint FocusZOffset;
-        public uint YawFacingOffset;
-        public uint MarioCamPossibleOffset;
-        public byte MarioCamPossibleMask;
+        public static readonly uint XOffset = 0x8C;
+        public static readonly uint YOffset = 0x90;
+        public static readonly uint ZOffset = 0x94;
+        public static readonly uint FocusXOffset = 0x80;
+        public static readonly uint FocusYOffset = 0x84;
+        public static readonly uint FocusZOffset = 0x88;
+        public static readonly uint YawFacingOffset = 0xCE;
+        public static readonly uint MarioCamPossibleOffset = 0x6D;
+        public static readonly byte MarioCamPossibleMask = 0x04;
 
-        public uint SecondaryObjectAddress { get { return Config.SwitchRomVersion(SecondaryObjectAddressUS, SecondaryObjectAddressJP); } }
-        public uint SecondaryObjectAddressUS;
-        public uint SecondaryObjectAddressJP;
+        public static uint SecondaryObjectAddress { get { return Config.SwitchRomVersion(SecondaryObjectAddressUS, SecondaryObjectAddressJP); } }
+        public static readonly uint SecondaryObjectAddressUS = 0x8032DF30;
+        public static readonly uint SecondaryObjectAddressJP = 0x8032CFD0;
     }
 }

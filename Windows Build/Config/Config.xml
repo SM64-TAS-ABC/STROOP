@@ -230,21 +230,6 @@
     <ExertionForceTableAddressUS>0x8032DD38</ExertionForceTableAddressUS>
     <ExertionForceTableAddressJP>0x8032CDD8</ExertionForceTableAddressJP>
   </Triangle>
-  <Camera>
-    <CameraStructAddressUS>0x8033C618</CameraStructAddressUS>
-    <CameraStructAddressJP>0x8033B2A8</CameraStructAddressJP>
-    <XOffset>0x8C</XOffset>
-    <YOffset>0x90</YOffset>
-    <ZOffset>0x94</ZOffset>
-    <FocusXOffset>0x80</FocusXOffset>
-    <FocusYOffset>0x84</FocusYOffset>
-    <FocusZOffset>0x88</FocusZOffset>
-    <YawFacingOffset>0xCE</YawFacingOffset>
-    <MarioCamPossibleOffset>0x6D</MarioCamPossibleOffset>
-    <MarioCamPossibleMask>0x04</MarioCamPossibleMask>
-    <SecondaryObjectAddressUS>0x8032DF30</SecondaryObjectAddressUS>
-    <SecondaryObjectAddressJP>0x8032CFD0</SecondaryObjectAddressJP>
-  </Camera>
   <File>
     <FileStructAddressUS>0x80207700</FileStructAddressUS>
     <FileStructAddressJP>0x80207B00</FileStructAddressJP>

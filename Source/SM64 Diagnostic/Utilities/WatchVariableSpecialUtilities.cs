@@ -2485,20 +2485,20 @@ namespace SM64_Diagnostic.Structs
 
         private static Position GetCameraPosition()
         {
-            float cameraX = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.XOffset);
-            float cameraY = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.YOffset);
-            float cameraZ = Config.Stream.GetSingle(Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
-            ushort cameraAngle = Config.Stream.GetUInt16(Config.Camera.CameraStructAddress + Config.Camera.YawFacingOffset);
+            float cameraX = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.XOffset);
+            float cameraY = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.YOffset);
+            float cameraZ = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
+            ushort cameraAngle = Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.YawFacingOffset);
             return new Position(cameraX, cameraY, cameraZ, cameraAngle);
         }
 
         private static bool SetCameraPosition(double? x, double? y, double? z, ushort? angle = null)
         {
             bool success = true;
-            if (x.HasValue) success &= Config.Stream.SetValue((float)x.Value, Config.Camera.CameraStructAddress + Config.Camera.XOffset);
-            if (y.HasValue) success &= Config.Stream.SetValue((float)y.Value, Config.Camera.CameraStructAddress + Config.Camera.YOffset);
-            if (z.HasValue) success &= Config.Stream.SetValue((float)z.Value, Config.Camera.CameraStructAddress + Config.Camera.ZOffset);
-            if (angle.HasValue) success &= Config.Stream.SetValue(angle.Value, Config.Camera.CameraStructAddress + Config.Camera.YawFacingOffset);
+            if (x.HasValue) success &= Config.Stream.SetValue((float)x.Value, CameraConfig.CameraStructAddress + CameraConfig.XOffset);
+            if (y.HasValue) success &= Config.Stream.SetValue((float)y.Value, CameraConfig.CameraStructAddress + CameraConfig.YOffset);
+            if (z.HasValue) success &= Config.Stream.SetValue((float)z.Value, CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
+            if (angle.HasValue) success &= Config.Stream.SetValue(angle.Value, CameraConfig.CameraStructAddress + CameraConfig.YawFacingOffset);
             return success;
         }
 

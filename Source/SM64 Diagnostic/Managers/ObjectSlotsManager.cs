@@ -449,7 +449,7 @@ namespace SM64_Diagnostic.Managers
             _interactionObject = Config.Stream.GetUInt32(Config.Mario.InteractionObjectPointerOffset + Config.Mario.StructAddress);
             _heldObject = Config.Stream.GetUInt32(Config.Mario.HeldObjectPointerOffset + Config.Mario.StructAddress);
             _usedObject = Config.Stream.GetUInt32(Config.Mario.UsedObjectPointerOffset + Config.Mario.StructAddress);
-            _cameraObject = Config.Stream.GetUInt32(Config.Camera.SecondaryObjectAddress);
+            _cameraObject = Config.Stream.GetUInt32(CameraConfig.SecondaryObjectAddress);
             _cameraHackObject = Config.Stream.GetUInt32(CameraHackConfig.CameraHackStruct + CameraHackConfig.ObjectOffset);
             _modelObject = ManagerContext.Current.ModelManager.ModelObjectAddress;
 

@@ -65,7 +65,6 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static uint RamSize;
         public static MarioConfig Mario;
         public static DebugConfig Debug;
-        public static CameraConfig Camera;
         public static FileConfig File;
         public static WaypointConfig Waypoint;
         public static VarHackConfig VarHack = new VarHackConfig();

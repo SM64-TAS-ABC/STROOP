@@ -686,54 +686,6 @@ namespace SM64_Diagnostic.Utilities
                         }
                         break;
 
-                    case "Camera":
-                        foreach (XElement subElement in element.Elements())
-                        {
-                            switch (subElement.Name.ToString())
-                            {
-                                case "CameraStructAddressUS":
-                                    Config.Camera.CameraStructAddressUS = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "CameraStructAddressJP":
-                                    Config.Camera.CameraStructAddressJP = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "XOffset":
-                                    Config.Camera.XOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "YOffset":
-                                    Config.Camera.YOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "ZOffset":
-                                    Config.Camera.ZOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "FocusXOffset":
-                                    Config.Camera.FocusXOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "FocusYOffset":
-                                    Config.Camera.FocusYOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "FocusZOffset":
-                                    Config.Camera.FocusZOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "YawFacingOffset":
-                                    Config.Camera.YawFacingOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "MarioCamPossibleOffset":
-                                    Config.Camera.MarioCamPossibleOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "MarioCamPossibleMask":
-                                    Config.Camera.MarioCamPossibleMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "SecondaryObjectAddressUS":
-                                    Config.Camera.SecondaryObjectAddressUS = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "SecondaryObjectAddressJP":
-                                    Config.Camera.SecondaryObjectAddressJP = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                            }
-                        }
-                        break;
-
                     case "File":
                         foreach (XElement subElement in element.Elements())
                         {

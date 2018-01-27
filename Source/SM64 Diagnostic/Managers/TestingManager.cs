@@ -587,7 +587,7 @@ namespace SM64_Diagnostic.Managers
             _labelControlStick1.Text = Math.Round(effectiveX, 3).ToString();
             _labelControlStick2.Text = Math.Round(effectiveY, 3).ToString();
             double angle = MoreMath.AngleTo_AngleUnits(effectiveX, effectiveY);
-            ushort cameraAngle = Config.Stream.GetUInt16(Config.Camera.CameraStructAddress + 0xFC);
+            ushort cameraAngle = Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + 0xFC);
             angle = MoreMath.NormalizeAngleDouble(angle + cameraAngle);
             _labelControlStick3.Text = Math.Round(angle, 0).ToString();
             int angleGuess = MoreMath.NormalizeAngleUshort(angle);
@@ -700,7 +700,7 @@ namespace SM64_Diagnostic.Managers
             _betterTextboxStateTransferVar7Current.Text = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Mario.TwirlYawOffset).ToString();
             _betterTextboxStateTransferVar8Current.Text =
                 ((Config.Stream.GetByte(
-                    Config.Camera.CameraStructAddress + Config.Camera.MarioCamPossibleOffset) & Config.Camera.MarioCamPossibleMask) != 0).ToString();
+                    CameraConfig.CameraStructAddress + CameraConfig.MarioCamPossibleOffset) & CameraConfig.MarioCamPossibleMask) != 0).ToString();
             _betterTextboxStateTransferVar9Current.Text = FileManager.Instance.GetChecksum(FileManager.Instance.GetInGameFileAddress()).ToString();
             _betterTextboxStateTransferVar10Current.Text = Config.Stream.GetInt16(Config.Mario.StructAddress + HudConfig.HpCountOffset).ToString();
             _betterTextboxStateTransferVar11Current.Text = Config.Stream.GetSByte(Config.Mario.StructAddress + HudConfig.LifeCountOffset).ToString();
@@ -755,9 +755,9 @@ namespace SM64_Diagnostic.Managers
             bool? value8 = ParsingUtilities.ParseBoolNullable(_betterTextboxStateTransferVar8Saved.Text);
             if (value8.HasValue)
             {
-                byte oldByte = Config.Stream.GetByte(Config.Camera.CameraStructAddress + Config.Camera.MarioCamPossibleOffset);
-                byte newByte = MoreMath.ApplyValueToMaskedByte(oldByte, Config.Camera.MarioCamPossibleMask, value8.Value);
-                Config.Stream.SetValue(newByte, Config.Camera.CameraStructAddress + Config.Camera.MarioCamPossibleOffset);
+                byte oldByte = Config.Stream.GetByte(CameraConfig.CameraStructAddress + CameraConfig.MarioCamPossibleOffset);
+                byte newByte = MoreMath.ApplyValueToMaskedByte(oldByte, CameraConfig.MarioCamPossibleMask, value8.Value);
+                Config.Stream.SetValue(newByte, CameraConfig.CameraStructAddress + CameraConfig.MarioCamPossibleOffset);
             }
 
             if (_stateTransferFileData != null) FileManager.Instance.SetBufferedBytes(_stateTransferFileData, FileManager.Instance.GetInGameFileAddress());

@@ -111,7 +111,7 @@ namespace SM64_Diagnostic.Structs
                     return new List<uint> { Config.Stream.GetUInt32(Config.Mario.ObjectReferenceAddress) };
 
                 case BaseAddressTypeEnum.Camera:
-                    return new List<uint> { Config.Camera.CameraStructAddress };
+                    return new List<uint> { CameraConfig.CameraStructAddress };
 
                 case BaseAddressTypeEnum.File:
                     return new List<uint> { FileManager.Instance.CurrentFileAddress };
