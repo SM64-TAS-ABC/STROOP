@@ -449,7 +449,7 @@ namespace SM64_Diagnostic.Managers
             List<ObjectSlotData> closestObjectCandidates =
                 newObjectSlotData.FindAll(s =>
                     s.IsActive &&
-                    s.Behavior != (MarioObjectConfig.MarioBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart);
+                    s.Behavior != (MarioObjectConfig.BehaviorValue & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart);
             if (OptionsConfig.ExcludeDustForClosestObject)
             {
                 closestObjectCandidates =

@@ -540,13 +540,13 @@ namespace SM64_Diagnostic.Utilities
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            var marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.ObjectReferenceAddress);
+            var marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
             if (marioObjRef != 0x00000000U)
             {
                 var marioGraphics = Config.Stream.GetUInt32(marioObjRef + ObjectSlotsConfig.BehaviorGfxOffset);
                 if (marioGraphics == 0)
                 { 
-                    success &= Config.Stream.SetValue(MarioObjectConfig.MarioGraphic, marioObjRef + ObjectSlotsConfig.BehaviorGfxOffset);
+                    success &= Config.Stream.SetValue(MarioObjectConfig.GraphicValue, marioObjRef + ObjectSlotsConfig.BehaviorGfxOffset);
                 }
                 else
                 {
