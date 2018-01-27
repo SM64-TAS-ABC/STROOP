@@ -36,7 +36,6 @@ namespace SM64_Diagnostic.Structs
         public static readonly uint VSpeedOffset = 0x4C;
         public static readonly uint FloorYOffset = 0x70;
         public static readonly uint CeilingYOffset = 0x6C;
-        public static readonly uint StructSize = 0xC4;
         public static readonly uint SlidingSpeedXOffset = 0x58;
         public static readonly uint SlidingSpeedZOffset = 0x5C;
         public static readonly uint SlidingYawOffset = 0x38;
