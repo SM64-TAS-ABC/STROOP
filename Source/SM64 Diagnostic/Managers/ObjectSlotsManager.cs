@@ -216,11 +216,10 @@ namespace SM64_Diagnostic.Managers
         {
             if (click == ClickType.ModelClick)
             {
-                ModelManager modelManager = ManagerContext.Current.ModelManager;
-                uint currentModelObjectAddress = modelManager.ModelObjectAddress;
+                uint currentModelObjectAddress = Config.ModelManager.ModelObjectAddress;
                 uint newModelObjectAddress = currentModelObjectAddress == selectedSlot.Address ? 0 : selectedSlot.Address;
-                modelManager.ModelObjectAddress = newModelObjectAddress;
-                modelManager.ManualMode = false;
+                Config.ModelManager.ModelObjectAddress = newModelObjectAddress;
+                Config.ModelManager.ManualMode = false;
             }
             else if (click == ClickType.CamHackClick)
             {
@@ -292,7 +291,7 @@ namespace SM64_Diagnostic.Managers
 
                 if (click == ClickType.ObjectClick)
                 {
-                    ManagerContext.Current.ObjectManager.CurrentAddresses = selection;
+                    Config.ObjectManager.CurrentAddresses = selection;
                 }
             }
         }
@@ -449,7 +448,7 @@ namespace SM64_Diagnostic.Managers
             _usedObject = Config.Stream.GetUInt32(MarioConfig.UsedObjectPointerOffset + MarioConfig.StructAddress);
             _cameraObject = Config.Stream.GetUInt32(CameraConfig.SecondaryObjectAddress);
             _cameraHackObject = Config.Stream.GetUInt32(CameraHackConfig.CameraHackStruct + CameraHackConfig.ObjectOffset);
-            _modelObject = ManagerContext.Current.ModelManager.ModelObjectAddress;
+            _modelObject = Config.ModelManager.ModelObjectAddress;
 
             List<ObjectSlotData> closestObjectCandidates =
                 newObjectSlotData.FindAll(s =>
@@ -523,8 +522,6 @@ namespace SM64_Diagnostic.Managers
                 }
             }
 
-            ObjectManager objManager = ManagerContext.Current.ObjectManager;
-
             if (SelectedSlotsAddresses.Count > 1)
             {
                 if (_selectedUpdatePending)
@@ -533,15 +530,15 @@ namespace SM64_Diagnostic.Managers
                     {
                         if (multiBehavior.HasValue)
                         {
-                            objManager.Behavior = String.Format("0x{0}", multiBehavior.Value.BehaviorAddress.ToString("X4"));
-                            objManager.SetBehaviorWatchVariables(
+                            Config.ObjectManager.Behavior = String.Format("0x{0}", multiBehavior.Value.BehaviorAddress.ToString("X4"));
+                            Config.ObjectManager.SetBehaviorWatchVariables(
                                 Config.ObjectAssociations.GetWatchVarControls(multiBehavior.Value),
                                 ObjectGroupsConfig.VacantSlotColor.Lighten(0.8));
                         }
                         else
                         {
-                            objManager.Behavior = "";
-                            objManager.SetBehaviorWatchVariables(new List<WatchVariableControl>(), Color.White);
+                            Config.ObjectManager.Behavior = "";
+                            Config.ObjectManager.SetBehaviorWatchVariables(new List<WatchVariableControl>(), Color.White);
                         }
                         _lastSelectedBehavior = multiBehavior;
                     }
@@ -567,24 +564,24 @@ namespace SM64_Diagnostic.Managers
                         }
                     }
                     _multiImage = multiBitmap;
-                    objManager.Image = _multiImage;
+                    Config.ObjectManager.Image = _multiImage;
 
-                    objManager.Name = SelectedSlotsAddresses.Count + " Objects Selected";
-                    objManager.BackColor = ObjectGroupsConfig.VacantSlotColor;
-                    objManager.SlotIndex = "";
-                    objManager.SlotPos = "";
+                    Config.ObjectManager.Name = SelectedSlotsAddresses.Count + " Objects Selected";
+                    Config.ObjectManager.BackColor = ObjectGroupsConfig.VacantSlotColor;
+                    Config.ObjectManager.SlotIndex = "";
+                    Config.ObjectManager.SlotPos = "";
 
                     _selectedUpdatePending = false;
                 }
             }
             else if (SelectedSlotsAddresses.Count == 0)
             {
-                objManager.Name = "No Object Selected";
-                objManager.BackColor = ObjectGroupsConfig.VacantSlotColor;
-                objManager.Behavior = "";
-                objManager.SlotIndex = "";
-                objManager.SlotPos = "";
-                objManager.Image = null;
+                Config.ObjectManager.Name = "No Object Selected";
+                Config.ObjectManager.BackColor = ObjectGroupsConfig.VacantSlotColor;
+                Config.ObjectManager.Behavior = "";
+                Config.ObjectManager.SlotIndex = "";
+                Config.ObjectManager.SlotPos = "";
+                Config.ObjectManager.Image = null;
             }
         }
 
@@ -693,29 +690,27 @@ namespace SM64_Diagnostic.Managers
 
         void UpdateObjectManager(ObjectSlot objSlot, BehaviorCriteria behaviorCriteria, ObjectSlotData objData)
         {
-            ObjectManager objManager = ManagerContext.Current.ObjectManager;
             var objAssoc = Config.ObjectAssociations.FindObjectAssociation(behaviorCriteria);
             var newBehavior = objAssoc != null ? objAssoc.BehaviorCriteria : behaviorCriteria;
             if (_lastSelectedBehavior != newBehavior || SelectedSlotsAddresses.Count == 0)
             {
-                objManager.Behavior = String.Format("0x{0}", (behaviorCriteria.BehaviorAddress & 0xffffff).ToString("X4"));
-                objManager.Name = Config.ObjectAssociations.GetObjectName(behaviorCriteria);
+                Config.ObjectManager.Behavior = String.Format("0x{0}", (behaviorCriteria.BehaviorAddress & 0xffffff).ToString("X4"));
+                Config.ObjectManager.Name = Config.ObjectAssociations.GetObjectName(behaviorCriteria);
 
-                objManager.SetBehaviorWatchVariables(Config.ObjectAssociations.GetWatchVarControls(behaviorCriteria), objSlot.BackColor.Lighten(0.8));
+                Config.ObjectManager.SetBehaviorWatchVariables(Config.ObjectAssociations.GetWatchVarControls(behaviorCriteria), objSlot.BackColor.Lighten(0.8));
                 _lastSelectedBehavior = newBehavior;
             }
-            objManager.Image = objSlot.ObjectImage;
-            objManager.BackColor = objSlot.BackColor;
+            Config.ObjectManager.Image = objSlot.ObjectImage;
+            Config.ObjectManager.BackColor = objSlot.BackColor;
             int slotPos = objData.ObjectProcessGroup == VacantGroup ? objData.VacantSlotIndex.Value : objData.ProcessIndex;
-            objManager.SlotIndex = (_memoryAddressSlotIndex[objData.Address] + (OptionsConfig.SlotIndexsFromOne ? 1 : 0)).ToString();
-            objManager.SlotPos = (objData.ObjectProcessGroup == VacantGroup ? "VS " : "")
+            Config.ObjectManager.SlotIndex = (_memoryAddressSlotIndex[objData.Address] + (OptionsConfig.SlotIndexsFromOne ? 1 : 0)).ToString();
+            Config.ObjectManager.SlotPos = (objData.ObjectProcessGroup == VacantGroup ? "VS " : "")
                 + (slotPos + (OptionsConfig.SlotIndexsFromOne ? 1 : 0)).ToString();
         }
 
         void UpdateMapObject(ObjectSlotData objData, ObjectSlot objSlot, BehaviorCriteria behaviorCriteria)
         {
-            MapManager mapManager = ManagerContext.Current.MapManager;
-            if (ActiveTab != TabType.Map || !mapManager.IsLoaded)
+            if (ActiveTab != TabType.Map || !Config.MapManager.IsLoaded)
                 return;
 
             var objAddress = objData.Address;
@@ -728,15 +723,15 @@ namespace SM64_Diagnostic.Managers
                 var mapObj = new MapObject(mapObjImage);
                 mapObj.UsesRotation = mapObjRotates;
                 _mapObjects.Add(objAddress, mapObj);
-                mapManager.AddMapObject(mapObj);
+                Config.MapManager.AddMapObject(mapObj);
             }
             else if (_mapObjects[objAddress].Image != mapObjImage)
             {
-                mapManager.RemoveMapObject(_mapObjects[objAddress]);
+                Config.MapManager.RemoveMapObject(_mapObjects[objAddress]);
                 var mapObj = new MapObject(mapObjImage);
                 mapObj.UsesRotation = mapObjRotates;
                 _mapObjects[objAddress] = mapObj;
-                mapManager.AddMapObject(mapObj);
+                Config.MapManager.AddMapObject(mapObj);
             }
 
             if (objData.Behavior == (Config.ObjectAssociations.MarioBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart)

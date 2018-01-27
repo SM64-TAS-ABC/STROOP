@@ -1,4 +1,5 @@
 ﻿using SM64_Diagnostic.Controls;
+using SM64_Diagnostic.Structs.Configurations;
 using SM64_Diagnostic.Utilities;
 using System;
 using System.Collections.Generic;
@@ -29,8 +30,8 @@ namespace SM64_Diagnostic.Managers
 
         private void _output_LinkClicked(object sender, LinkClickedEventArgs e)
         {
-            ManagerContext.Current.DecompilerManager.Decompile(e.LinkText);
-            ManagerContext.Current.StroopMainForm.SwitchTab("tabPageDecompiler");
+            Config.DecompilerManager.Decompile(e.LinkText);
+            Config.StroopMainForm.SwitchTab("tabPageDecompiler");
         }
 
         public void Go(uint? scriptAddress = null)

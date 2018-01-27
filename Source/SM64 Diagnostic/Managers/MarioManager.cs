@@ -183,7 +183,6 @@ namespace SM64_Diagnostic.Managers
 
         public override void Update(bool updateView)
         {
-            MapManager mapManager = ManagerContext.Current.MapManager;
             // Get Mario position and rotation
             float x, y, z, rot;
             x = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
@@ -193,11 +192,11 @@ namespace SM64_Diagnostic.Managers
             rot = (float) (((Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.RotationOffset) >> 16) % 65536) / 65536f * 360f); 
 
             // Update Mario map object
-            mapManager.MarioMapObject.X = x;
-            mapManager.MarioMapObject.Y = y;
-            mapManager.MarioMapObject.Z = z;
-            mapManager.MarioMapObject.Rotation = rot;
-            mapManager.MarioMapObject.Show = true;
+            Config.MapManager.MarioMapObject.X = x;
+            Config.MapManager.MarioMapObject.Y = y;
+            Config.MapManager.MarioMapObject.Z = z;
+            Config.MapManager.MarioMapObject.Rotation = rot;
+            Config.MapManager.MarioMapObject.Show = true;
 
             // Get holp position
             float holpX, holpY, holpZ;
@@ -206,10 +205,10 @@ namespace SM64_Diagnostic.Managers
             holpZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPZOffset);
 
             // Update holp map object position
-            mapManager.HolpMapObject.X = holpX;
-            mapManager.HolpMapObject.Y = holpY;
-            mapManager.HolpMapObject.Z = holpZ;
-            mapManager.HolpMapObject.Show = true;
+            Config.MapManager.HolpMapObject.X = holpX;
+            Config.MapManager.HolpMapObject.Y = holpY;
+            Config.MapManager.HolpMapObject.Z = holpZ;
+            Config.MapManager.HolpMapObject.Show = true;
 
             // Update camera position and rotation
             float cameraX, cameraY, cameraZ , cameraRot;
@@ -231,15 +230,15 @@ namespace SM64_Diagnostic.Managers
                 Int16 x3 = Config.Stream.GetInt16(floorTriangle + TriangleOffsetsConfig.X3);
                 Int16 y3 = Config.Stream.GetInt16(floorTriangle + TriangleOffsetsConfig.Y3);
                 Int16 z3 = Config.Stream.GetInt16(floorTriangle + TriangleOffsetsConfig.Z3);
-                mapManager.FloorTriangleMapObject.X1 = x1;
-                mapManager.FloorTriangleMapObject.Z1 = z1;
-                mapManager.FloorTriangleMapObject.X2 = x2;
-                mapManager.FloorTriangleMapObject.Z2 = z2;
-                mapManager.FloorTriangleMapObject.X3 = x3;
-                mapManager.FloorTriangleMapObject.Z3 = z3;
-                mapManager.FloorTriangleMapObject.Y = (y1 + y2 + y3) / 3;
+                Config.MapManager.FloorTriangleMapObject.X1 = x1;
+                Config.MapManager.FloorTriangleMapObject.Z1 = z1;
+                Config.MapManager.FloorTriangleMapObject.X2 = x2;
+                Config.MapManager.FloorTriangleMapObject.Z2 = z2;
+                Config.MapManager.FloorTriangleMapObject.X3 = x3;
+                Config.MapManager.FloorTriangleMapObject.Z3 = z3;
+                Config.MapManager.FloorTriangleMapObject.Y = (y1 + y2 + y3) / 3;
             }
-            mapManager.FloorTriangleMapObject.Show = (floorTriangle != 0x00);
+            Config.MapManager.FloorTriangleMapObject.Show = (floorTriangle != 0x00);
 
             // Update ceiling triangle
             UInt32 ceilingTriangle = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
@@ -254,15 +253,15 @@ namespace SM64_Diagnostic.Managers
                 Int16 x3 = Config.Stream.GetInt16(ceilingTriangle + TriangleOffsetsConfig.X3);
                 Int16 y3 = Config.Stream.GetInt16(ceilingTriangle + TriangleOffsetsConfig.Y3);
                 Int16 z3 = Config.Stream.GetInt16(ceilingTriangle + TriangleOffsetsConfig.Z3);
-                mapManager.CeilingTriangleMapObject.X1 = x1;
-                mapManager.CeilingTriangleMapObject.Z1 = z1;
-                mapManager.CeilingTriangleMapObject.X2 = x2;
-                mapManager.CeilingTriangleMapObject.Z2 = z2;
-                mapManager.CeilingTriangleMapObject.X3 = x3;
-                mapManager.CeilingTriangleMapObject.Z3 = z3;
-                mapManager.CeilingTriangleMapObject.Y = (y1 + y2 + y3) / 3;
+                Config.MapManager.CeilingTriangleMapObject.X1 = x1;
+                Config.MapManager.CeilingTriangleMapObject.Z1 = z1;
+                Config.MapManager.CeilingTriangleMapObject.X2 = x2;
+                Config.MapManager.CeilingTriangleMapObject.Z2 = z2;
+                Config.MapManager.CeilingTriangleMapObject.X3 = x3;
+                Config.MapManager.CeilingTriangleMapObject.Z3 = z3;
+                Config.MapManager.CeilingTriangleMapObject.Y = (y1 + y2 + y3) / 3;
             }
-            mapManager.CeilingTriangleMapObject.Show = (ceilingTriangle != 0x00);
+            Config.MapManager.CeilingTriangleMapObject.Show = (ceilingTriangle != 0x00);
 
             // Update intended next position map object position
             float normY = floorTriangle == 0 ? 1 : Config.Stream.GetSingle(floorTriangle + TriangleOffsetsConfig.NormY);
@@ -277,21 +276,21 @@ namespace SM64_Diagnostic.Managers
             (double xDist, double zDist) = MoreMath.GetComponentsFromVector(defactoSpeedQStep, marioAngleTruncated);
             double intendedNextPositionX = MoreMath.MaybeNegativeModulus(x + xDist, 65536);
             double intendedNextPositionZ = MoreMath.MaybeNegativeModulus(z + zDist, 65536);
-            mapManager.IntendedNextPositionMapObject.X = (float)intendedNextPositionX;
-            mapManager.IntendedNextPositionMapObject.Z = (float)intendedNextPositionZ;
+            Config.MapManager.IntendedNextPositionMapObject.X = (float)intendedNextPositionX;
+            Config.MapManager.IntendedNextPositionMapObject.Z = (float)intendedNextPositionZ;
             bool marioStationary = x == intendedNextPositionX && z == intendedNextPositionZ;
             double angleToIntendedNextPosition = MoreMath.AngleTo_AngleUnits(x, z, intendedNextPositionX, intendedNextPositionZ);
             /*
             _mapManager.IntendedNextPositionMapObject.Rotation =
                 marioStationary ? (float)MoreMath.AngleUnitsToDegrees(marioAngle) : (float)MoreMath.AngleUnitsToDegrees(angleToIntendedNextPosition);
                 */
-            mapManager.IntendedNextPositionMapObject.Rotation = rot;
+            Config.MapManager.IntendedNextPositionMapObject.Rotation = rot;
 
             // Update camera map object position
-            mapManager.CameraMapObject.X = cameraX;
-            mapManager.CameraMapObject.Y = cameraY;
-            mapManager.CameraMapObject.Z = cameraZ;
-            mapManager.CameraMapObject.Rotation = cameraRot;
+            Config.MapManager.CameraMapObject.X = cameraX;
+            Config.MapManager.CameraMapObject.Y = cameraY;
+            Config.MapManager.CameraMapObject.Z = cameraZ;
+            Config.MapManager.CameraMapObject.Rotation = cameraRot;
 
             // We are done if we don't need to update the Mario Manager view
             if (!updateView)

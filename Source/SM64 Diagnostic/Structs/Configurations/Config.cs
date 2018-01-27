@@ -1,4 +1,5 @@
-﻿using SM64_Diagnostic.Utilities;
+﻿using SM64_Diagnostic.Managers;
+using SM64_Diagnostic.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,7 +59,34 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static List<Emulator> Emulators = new List<Emulator>();
         public static ProcessStream Stream;
         public static ObjectAssociations ObjectAssociations;
+        public static StroopMainForm StroopMainForm;
 
-
+        public static CameraManager CameraManager;
+        public static DebugManager DebugManager;
+        public static DisassemblyManager DisassemblyManager;
+        public static DecompilerManager DecompilerManager;
+        public static HackManager HackManager;
+        public static HudManager HudManager;
+        public static MapManager MapManager;
+        public static ModelManager ModelManager;
+        public static MarioManager MarioManager;
+        public static MiscManager MiscManager;
+        public static ObjectManager ObjectManager;
+        public static ObjectSlotsManager ObjectSlotManager;
+        public static OptionsManager OptionsManager;
+        public static TestingManager TestingManager;
+        public static InjectionManager InjectionManager;
+        public static TriangleManager TriangleManager;
+        public static DataManager WaterManager;
+        public static InputManager InputManager;
+        public static ActionsManager ActionsManager;
+        public static PuManager PuManager;
+        public static FileManager FileManager;
+        public static AreaManager AreaManager;
+        public static DataManager QuarterFrameManager;
+        public static DataManager CustomManager;
+        public static VarHackManager VarHackManager;
+        public static DataManager CameraHackManager;
+        public static ScriptManager ScriptManager;
     }
 }

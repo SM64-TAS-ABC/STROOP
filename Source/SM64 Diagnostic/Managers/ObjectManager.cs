@@ -435,10 +435,9 @@ namespace SM64_Diagnostic.Managers
             if (CurrentAddresses.Count == 0)
                 return;
 
-            ScriptManager scriptManager = ManagerContext.Current.ScriptManager;
             var scriptAddress = Config.Stream.GetUInt32(CurrentAddresses[0] + ObjectSlotsConfig.BehaviorScriptOffset);
-            scriptManager.Go(scriptAddress);
-            ManagerContext.Current.StroopMainForm.SwitchTab("tabPageScripts");
+            Config.ScriptManager.Go(scriptAddress);
+            Config.StroopMainForm.SwitchTab("tabPageScripts");
         }
 
         private void AddressChanged()

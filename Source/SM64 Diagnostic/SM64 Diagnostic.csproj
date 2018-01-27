@@ -240,7 +240,6 @@
     <Compile Include="Managers\FileManager.cs" />
     <Compile Include="Managers\HudManager.cs" />
     <Compile Include="Managers\HackManager.cs" />
-    <Compile Include="Managers\ManagerContext.cs" />
     <Compile Include="Managers\ActionsManager.cs" />
     <Compile Include="Managers\InputManager.cs" />
     <Compile Include="Managers\MiscManager.cs" />

@@ -62,11 +62,6 @@ namespace SM64_Diagnostic
 #if RELEASE
             tabControlMain.TabPages.Remove(tabPageExpressions);
 #endif
-
-            // Create new manager context
-            var currentContext = new ManagerContext();
-            ManagerContext.Current = currentContext;
-
             Config.Stream = new ProcessStream();
             Config.Stream.OnUpdate += OnUpdate;
             Config.Stream.FpsUpdated += _sm64Stream_FpsUpdated;
@@ -74,12 +69,12 @@ namespace SM64_Diagnostic
             Config.Stream.WarnReadonlyOff += _sm64Stream_WarnReadonlyOff;
             Config.Stream.OnClose += _sm64Stream_OnClose;
 
-            currentContext.StroopMainForm = this;
+            Config.StroopMainForm = this;
 
-            currentContext.DisassemblyManager = new DisassemblyManager(tabPageDisassembly);
-            currentContext.DecompilerManager = new DecompilerManager(tabPageDecompiler);
-            currentContext.InjectionManager = new InjectionManager(_scriptParser, checkBoxUseRomHack);
-            currentContext.HackManager = new HackManager(_romHacks, Config.ObjectAssociations.SpawnHacks, tabPageHacks);
+            Config.DisassemblyManager = new DisassemblyManager(tabPageDisassembly);
+            Config.DecompilerManager = new DecompilerManager(tabPageDecompiler);
+            Config.InjectionManager = new InjectionManager(_scriptParser, checkBoxUseRomHack);
+            Config.HackManager = new HackManager(_romHacks, Config.ObjectAssociations.SpawnHacks, tabPageHacks);
 
             // Create map manager
             MapGui mapGui = new MapGui();
@@ -98,29 +93,29 @@ namespace SM64_Diagnostic
             mapGui.MapShowCamera = checkBoxMapShowCamera;
             mapGui.MapShowFloorTriangle = checkBoxMapShowFloor;
             mapGui.MapShowCeilingTriangle = checkBoxMapShowCeiling;
-            currentContext.MapManager = new MapManager(_mapAssoc, mapGui);
-            currentContext.ModelManager = new ModelManager(tabPageModel);
+            Config.MapManager = new MapManager(_mapAssoc, mapGui);
+            Config.ModelManager = new ModelManager(tabPageModel);
 
-            currentContext.ActionsManager = new ActionsManager(_actionsData, watchVariablePanelActions, tabPageActions);
-            currentContext.WaterManager = new WaterManager(_waterData, watchVariablePanelWater);
-            currentContext.InputManager = new InputManager(_inputData, tabPageInput, watchVariablePanelInput, _inputImageGui);
-            currentContext.MarioManager = new MarioManager(_marioData, tabPageMario, WatchVariablePanelMario);
-            currentContext.HudManager = new HudManager(_hudData, tabPageHud, watchVariablePanelHud);
-            currentContext.MiscManager = new MiscManager(_miscData, watchVariablePanelMisc, tabPageMisc);
-            currentContext.CameraManager = new CameraManager(_cameraData, tabPageCamera, watchVariablePanelCamera);
-            currentContext.TriangleManager = new TriangleManager(tabPageTriangles, _triangleData, watchVariablePanelTriangles);
-            currentContext.DebugManager = new DebugManager(_debugData, tabPageDebug, watchVariablePanelDebug);
-            currentContext.PuManager = new PuManager(groupBoxPuController);
-            currentContext.FileManager = new FileManager(_fileData, tabPageFile, watchVariablePanelFile, _fileImageGui);
-            currentContext.AreaManager = new AreaManager(tabPageArea, _areaData, watchVariablePanelArea);
-            currentContext.QuarterFrameManager = new DataManager(_quarterFrameData, watchVariablePanelQuarterFrame);
-            currentContext.CustomManager = new CustomManager(_watchVarControlList, tabPageCustom, watchVariablePanelCustom);
-            currentContext.VarHackManager = new VarHackManager(tabPageVarHack, varHackPanel);
-            currentContext.CameraHackManager = new CamHackManager(_camHackData, tabPageCamHack, watchVariablePanelCamHack);
-            currentContext.ObjectManager = new ObjectManager(_objectData, tabPageObjects, WatchVariablePanelObject);
-            currentContext.OptionsManager = new OptionsManager(tabPageOptions);
-            currentContext.TestingManager = new TestingManager(tabPageTesting);
-            currentContext.ScriptManager = new ScriptManager(tabPageScripts);
+            Config.ActionsManager = new ActionsManager(_actionsData, watchVariablePanelActions, tabPageActions);
+            Config.WaterManager = new WaterManager(_waterData, watchVariablePanelWater);
+            Config.InputManager = new InputManager(_inputData, tabPageInput, watchVariablePanelInput, _inputImageGui);
+            Config.MarioManager = new MarioManager(_marioData, tabPageMario, WatchVariablePanelMario);
+            Config.HudManager = new HudManager(_hudData, tabPageHud, watchVariablePanelHud);
+            Config.MiscManager = new MiscManager(_miscData, watchVariablePanelMisc, tabPageMisc);
+            Config.CameraManager = new CameraManager(_cameraData, tabPageCamera, watchVariablePanelCamera);
+            Config.TriangleManager = new TriangleManager(tabPageTriangles, _triangleData, watchVariablePanelTriangles);
+            Config.DebugManager = new DebugManager(_debugData, tabPageDebug, watchVariablePanelDebug);
+            Config.PuManager = new PuManager(groupBoxPuController);
+            Config.FileManager = new FileManager(_fileData, tabPageFile, watchVariablePanelFile, _fileImageGui);
+            Config.AreaManager = new AreaManager(tabPageArea, _areaData, watchVariablePanelArea);
+            Config.QuarterFrameManager = new DataManager(_quarterFrameData, watchVariablePanelQuarterFrame);
+            Config.CustomManager = new CustomManager(_watchVarControlList, tabPageCustom, watchVariablePanelCustom);
+            Config.VarHackManager = new VarHackManager(tabPageVarHack, varHackPanel);
+            Config.CameraHackManager = new CamHackManager(_camHackData, tabPageCamHack, watchVariablePanelCamHack);
+            Config.ObjectManager = new ObjectManager(_objectData, tabPageObjects, WatchVariablePanelObject);
+            Config.OptionsManager = new OptionsManager(tabPageOptions);
+            Config.TestingManager = new TestingManager(tabPageTesting);
+            Config.ScriptManager = new ScriptManager(tabPageScripts);
 
             // Create Object Slots
             _slotManagerGui.TabControl = tabControlMain;
@@ -128,7 +123,7 @@ namespace SM64_Diagnostic
             _slotManagerGui.FlowLayoutContainer = WatchVariablePanelObjects;
             _slotManagerGui.SortMethodComboBox = comboBoxSortMethod;
             _slotManagerGui.LabelMethodComboBox = comboBoxLabelMethod;
-            currentContext.ObjectSlotManager = new ObjectSlotsManager(_slotManagerGui, tabControlMain);
+            Config.ObjectSlotManager = new ObjectSlotsManager(_slotManagerGui, tabControlMain);
 
             SetupViews();
 
@@ -258,30 +253,29 @@ namespace SM64_Diagnostic
         {
             Invoke(new Action(() =>
             {
-                var currentContext = ManagerContext.Current;
-                currentContext.ObjectSlotManager.Update();
-                currentContext.ObjectManager.Update(tabControlMain.SelectedTab == tabPageObjects);
-                currentContext.MarioManager.Update(tabControlMain.SelectedTab == tabPageMario);
-                currentContext.CameraManager.Update(tabControlMain.SelectedTab == tabPageCamera);
-                currentContext.HudManager.Update(tabControlMain.SelectedTab == tabPageHud);
-                currentContext.ActionsManager.Update(tabControlMain.SelectedTab == tabPageActions);
-                currentContext.WaterManager.Update(tabControlMain.SelectedTab == tabPageWater);
-                currentContext.InputManager.Update(tabControlMain.SelectedTab == tabPageInput);
-                currentContext.FileManager.Update(tabControlMain.SelectedTab == tabPageFile);
-                currentContext.QuarterFrameManager.Update(tabControlMain.SelectedTab == tabPageQuarterFrame);
-                currentContext.CustomManager.Update(tabControlMain.SelectedTab == tabPageCustom);
-                currentContext.VarHackManager.Update(tabControlMain.SelectedTab == tabPageVarHack);
-                currentContext.CameraHackManager.Update(tabControlMain.SelectedTab == tabPageCamHack);
-                currentContext.MiscManager.Update(tabControlMain.SelectedTab == tabPageMisc);
-                currentContext.TriangleManager.Update(tabControlMain.SelectedTab == tabPageTriangles);
-                currentContext.AreaManager.Update(tabControlMain.SelectedTab == tabPageArea);
-                currentContext.DebugManager.Update(tabControlMain.SelectedTab == tabPageDebug);
-                currentContext.PuManager.Update(tabControlMain.SelectedTab == tabPagePu);
-                currentContext.TestingManager.Update(tabControlMain.SelectedTab == tabPageTesting);
-                currentContext.MapManager?.Update();
-                currentContext.ModelManager?.Update();
-                currentContext.InjectionManager.Update();
-                currentContext.HackManager.Update();
+                Config.ObjectSlotManager.Update();
+                Config.ObjectManager.Update(tabControlMain.SelectedTab == tabPageObjects);
+                Config.MarioManager.Update(tabControlMain.SelectedTab == tabPageMario);
+                Config.CameraManager.Update(tabControlMain.SelectedTab == tabPageCamera);
+                Config.HudManager.Update(tabControlMain.SelectedTab == tabPageHud);
+                Config.ActionsManager.Update(tabControlMain.SelectedTab == tabPageActions);
+                Config.WaterManager.Update(tabControlMain.SelectedTab == tabPageWater);
+                Config.InputManager.Update(tabControlMain.SelectedTab == tabPageInput);
+                Config.FileManager.Update(tabControlMain.SelectedTab == tabPageFile);
+                Config.QuarterFrameManager.Update(tabControlMain.SelectedTab == tabPageQuarterFrame);
+                Config.CustomManager.Update(tabControlMain.SelectedTab == tabPageCustom);
+                Config.VarHackManager.Update(tabControlMain.SelectedTab == tabPageVarHack);
+                Config.CameraHackManager.Update(tabControlMain.SelectedTab == tabPageCamHack);
+                Config.MiscManager.Update(tabControlMain.SelectedTab == tabPageMisc);
+                Config.TriangleManager.Update(tabControlMain.SelectedTab == tabPageTriangles);
+                Config.AreaManager.Update(tabControlMain.SelectedTab == tabPageArea);
+                Config.DebugManager.Update(tabControlMain.SelectedTab == tabPageDebug);
+                Config.PuManager.Update(tabControlMain.SelectedTab == tabPagePu);
+                Config.TestingManager.Update(tabControlMain.SelectedTab == tabPageTesting);
+                Config.MapManager?.Update();
+                Config.ModelManager?.Update();
+                Config.InjectionManager.Update();
+                Config.HackManager.Update();
                 WatchVariableLockManager.Update();
             }));
         }
@@ -435,12 +429,10 @@ namespace SM64_Diagnostic
             WatchVariablePanelObjects.Visible = false;
             WatchVariablePanelObject.Visible = false;
             WatchVariablePanelMario.Visible = false;
-            MapManager mapManager = ManagerContext.Current.MapManager;
-            if (mapManager != null && mapManager.IsLoaded)
-                mapManager.Visible = false;
-            ModelManager modelManager = ManagerContext.Current.ModelManager;
-            if (modelManager != null && modelManager.IsLoaded)
-                modelManager.Visible = false;
+            if (Config.MapManager != null && Config.MapManager.IsLoaded)
+                Config.MapManager.Visible = false;
+            if (Config.ModelManager != null && Config.ModelManager.IsLoaded)
+                Config.ModelManager.Visible = false;
             await Task.Run(() =>
             {
                 while (_resizeTimeLeft > 0)
@@ -452,24 +444,23 @@ namespace SM64_Diagnostic
             WatchVariablePanelObjects.Visible = true;
             WatchVariablePanelObject.Visible = true;
             WatchVariablePanelMario.Visible = true;
-            if (mapManager != null && mapManager.IsLoaded)
-                mapManager.Visible = true;
-            if (modelManager != null && modelManager.IsLoaded)
-                modelManager.Visible = true;
+            if (Config.MapManager != null && Config.MapManager.IsLoaded)
+                Config.MapManager.Visible = true;
+            if (Config.ModelManager != null && Config.ModelManager.IsLoaded)
+                Config.ModelManager.Visible = true;
 
             _resizing = false;
         }
 
         private async void glControlMap_Load(object sender, EventArgs e)
         {
-            MapManager mapManager = ManagerContext.Current.MapManager;
             await Task.Run(() => {
-                while (mapManager == null)
+                while (Config.MapManager == null)
                 {
                     Task.Delay(1).Wait();
                 }
             });
-            mapManager.Load();
+            Config.MapManager.Load();
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -492,14 +483,13 @@ namespace SM64_Diagnostic
 
         private async void glControlModelView_Load(object sender, EventArgs e)
         {
-            ModelManager modelManager = ManagerContext.Current.ModelManager;
             await Task.Run(() => {
-                while (modelManager == null)
+                while (Config.ModelManager == null)
                 {
                     Task.Delay(1).Wait();
                 }
             });
-            modelManager.Load();
+            Config.ModelManager.Load();
         }
 
         private void buttonShowTopPanel_Click(object sender, EventArgs e)
@@ -665,7 +655,7 @@ namespace SM64_Diagnostic
             });
 
             WatchVariablePanelObjects.Visible = false;
-            ManagerContext.Current.ObjectSlotManager.ChangeSlotSize(trackBarObjSlotSize.Value);
+            Config.ObjectSlotManager.ChangeSlotSize(trackBarObjSlotSize.Value);
             WatchVariablePanelObjects.Visible = true;
             _objSlotResizing = false;
         }
