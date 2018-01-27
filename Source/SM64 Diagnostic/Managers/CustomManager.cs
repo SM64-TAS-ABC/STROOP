@@ -14,13 +14,9 @@ namespace SM64_Diagnostic.Managers
 {
     public class CustomManager : DataManager
     {
-        public static CustomManager Instance;
-
         public CustomManager(List<WatchVariableControlPrecursor> variables, Control customControl, WatchVariablePanel variableTable)
             : base(variables, variableTable)
         {
-            Instance = this;
-
             EnableCustomVariableFunctionality();
 
             SplitContainer splitContainerCustom = customControl.Controls["splitContainerCustom"] as SplitContainer;

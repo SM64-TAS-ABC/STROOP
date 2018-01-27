@@ -2,6 +2,7 @@
 using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Managers;
 using SM64_Diagnostic.Structs;
+using SM64_Diagnostic.Structs.Configurations;
 using SM64_Diagnostic.Utilities;
 using System;
 using System.Collections.Generic;
@@ -596,7 +597,7 @@ namespace SM64_Diagnostic.Controls
         public WatchVariableControl AddCopyToCustomTab()
         {
             WatchVariableControl newControl = _watchVarPrecursor.CreateWatchVariableControl();
-            CustomManager.Instance.AddVariable(newControl);
+            Config.CustomManager.AddVariable(newControl);
             FlashColor(ADD_TO_CUSTOM_TAB_COLOR);
             return newControl;
         }
