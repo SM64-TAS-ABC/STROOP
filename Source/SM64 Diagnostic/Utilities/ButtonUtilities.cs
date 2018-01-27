@@ -92,7 +92,7 @@ namespace SM64_Diagnostic.Utilities
 
         public static void HandleScaling(ref float xOffset, ref float zOffset)
         {
-            if (Config.ScaleDiagonalPositionControllerButtons)
+            if (OptionsConfig.ScaleDiagonalPositionControllerButtons)
             {
                 (xOffset, zOffset) = ((float, float))MoreMath.ScaleValues(xOffset, zOffset);
             }
@@ -921,7 +921,7 @@ namespace SM64_Diagnostic.Utilities
                 return false;
 
 
-            short neutralizeValue = Config.NeutralizeTriangleValue(use21Nullable);
+            short neutralizeValue = OptionsConfig.NeutralizeTriangleValue(use21Nullable);
 
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;

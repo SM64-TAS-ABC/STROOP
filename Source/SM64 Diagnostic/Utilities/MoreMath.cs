@@ -1,4 +1,5 @@
-﻿using SM64_Diagnostic.Structs.Configurations;
+﻿using SM64_Diagnostic.Structs;
+using SM64_Diagnostic.Structs.Configurations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -129,7 +130,7 @@ namespace SM64_Diagnostic.Utilities
             bool onSideOfLineTowardsTri = floorTri == leftOfLine;
             double signedDist = dist * (onSideOfLineTowardsTri ? 1 : -1);
 
-            bool misalignmentOffset = misalignmentOffsetNullable ?? Config.UseMisalignmentOffsetForDistanceToLine;
+            bool misalignmentOffset = misalignmentOffsetNullable ?? OptionsConfig.UseMisalignmentOffsetForDistanceToLine;
             if (misalignmentOffset)
             {
                 if (p1X == p2X)

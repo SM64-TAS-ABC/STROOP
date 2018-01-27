@@ -99,7 +99,7 @@ namespace SM64_Diagnostic.Utilities
             success &= Config.Stream.SetValue(newMarioX, marioAddress + MarioConfig.XOffset);
             success &= Config.Stream.SetValue(newMarioY, marioAddress + MarioConfig.YOffset);
             success &= Config.Stream.SetValue(newMarioZ, marioAddress + MarioConfig.ZOffset);
-            if (Config.MoveCameraWithPu)
+            if (OptionsConfig.MoveCameraWithPu)
             {
                 success &= Config.Stream.SetValue(newCamX, CameraConfig.CameraStructAddress + CameraConfig.XOffset);
                 success &= Config.Stream.SetValue(newCamY, CameraConfig.CameraStructAddress + CameraConfig.YOffset);
@@ -141,7 +141,7 @@ namespace SM64_Diagnostic.Utilities
             success &= Config.Stream.SetValue(newMarioX, marioAddress + MarioConfig.XOffset);
             success &= Config.Stream.SetValue(newMarioY, marioAddress + MarioConfig.YOffset);
             success &= Config.Stream.SetValue(newMarioZ, marioAddress + MarioConfig.ZOffset);
-            if (Config.MoveCameraWithPu)
+            if (OptionsConfig.MoveCameraWithPu)
             {
                 success &= Config.Stream.SetValue(newCamX, CameraConfig.CameraStructAddress + CameraConfig.XOffset);
                 success &= Config.Stream.SetValue(newCamY, CameraConfig.CameraStructAddress + CameraConfig.YOffset);

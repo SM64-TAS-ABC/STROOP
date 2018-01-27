@@ -455,7 +455,7 @@ namespace SM64_Diagnostic.Managers
                 newObjectSlotData.FindAll(s =>
                     s.IsActive &&
                     s.Behavior != (ObjectSlotsConfig.MarioBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart);
-            if (Config.ExcludeDustForClosestObject)
+            if (OptionsConfig.ExcludeDustForClosestObject)
             {
                 closestObjectCandidates =
                     closestObjectCandidates.FindAll(s =>
@@ -598,20 +598,20 @@ namespace SM64_Diagnostic.Managers
 
             // Update Overlays
             objSlot.DrawSelectedOverlay = SelectedSlotsAddresses.Contains(objAddress);
-            objSlot.DrawStoodOnOverlay = Config.ShowOverlayStoodOnObject && objAddress == _stoodOnObject;
-            objSlot.DrawInteractionOverlay = Config.ShowOverlayInteractionObject && objAddress == _interactionObject;
-            objSlot.DrawHeldOverlay = Config.ShowOverlayHeldObject && objAddress == _heldObject;
-            objSlot.DrawUsedOverlay = Config.ShowOverlayUsedObject && objAddress == _usedObject;
-            objSlot.DrawClosestOverlay = Config.ShowOverlayClosestObject && objAddress == _closestObject;
-            objSlot.DrawCameraOverlay = Config.ShowOverlayCameraObject && objAddress == _cameraObject;
-            objSlot.DrawCameraHackOverlay = Config.ShowOverlayCameraHackObject && objAddress == _cameraHackObject;
+            objSlot.DrawStoodOnOverlay = OptionsConfig.ShowOverlayStoodOnObject && objAddress == _stoodOnObject;
+            objSlot.DrawInteractionOverlay = OptionsConfig.ShowOverlayInteractionObject && objAddress == _interactionObject;
+            objSlot.DrawHeldOverlay = OptionsConfig.ShowOverlayHeldObject && objAddress == _heldObject;
+            objSlot.DrawUsedOverlay = OptionsConfig.ShowOverlayUsedObject && objAddress == _usedObject;
+            objSlot.DrawClosestOverlay = OptionsConfig.ShowOverlayClosestObject && objAddress == _closestObject;
+            objSlot.DrawCameraOverlay = OptionsConfig.ShowOverlayCameraObject && objAddress == _cameraObject;
+            objSlot.DrawCameraHackOverlay = OptionsConfig.ShowOverlayCameraHackObject && objAddress == _cameraHackObject;
             objSlot.DrawModelOverlay = objAddress == _modelObject;
-            objSlot.DrawFloorOverlay = Config.ShowOverlayFloorObject && objAddress == _floorObject;
-            objSlot.DrawWallOverlay = Config.ShowOverlayWallObject && objAddress == _wallObject;
-            objSlot.DrawCeilingOverlay = Config.ShowOverlayCeilingObject && objAddress == _ceilingObject;
-            objSlot.DrawParentOverlay = Config.ShowOverlayParentObject && objAddress == _parentObject;
-            objSlot.DrawParentUnusedOverlay = Config.ShowOverlayParentObject && objAddress == _parentUnusedObject;
-            objSlot.DrawParentNoneOverlay = Config.ShowOverlayParentObject && objAddress == _parentNoneObject;
+            objSlot.DrawFloorOverlay = OptionsConfig.ShowOverlayFloorObject && objAddress == _floorObject;
+            objSlot.DrawWallOverlay = OptionsConfig.ShowOverlayWallObject && objAddress == _wallObject;
+            objSlot.DrawCeilingOverlay = OptionsConfig.ShowOverlayCeilingObject && objAddress == _ceilingObject;
+            objSlot.DrawParentOverlay = OptionsConfig.ShowOverlayParentObject && objAddress == _parentObject;
+            objSlot.DrawParentUnusedOverlay = OptionsConfig.ShowOverlayParentObject && objAddress == _parentUnusedObject;
+            objSlot.DrawParentNoneOverlay = OptionsConfig.ShowOverlayParentObject && objAddress == _parentNoneObject;
             objSlot.DrawMarkedOverlay = MarkedSlotsAddresses.Contains(objAddress);
 
             if (objData.IsActive)
@@ -660,12 +660,12 @@ namespace SM64_Diagnostic.Managers
 
                 case SlotLabelType.SlotIndex:
                     labelText = String.Format("{0}", (objData.Address - ObjectSlotsConfig.LinkStartAddress)
-                        / ObjectSlotsConfig.StructSize + (Config.SlotIndexsFromOne ? 1 : 0));
+                        / ObjectSlotsConfig.StructSize + (OptionsConfig.SlotIndexsFromOne ? 1 : 0));
                     break;
 
                 case SlotLabelType.SlotPos:
                     labelText = String.Format("{0}", _lastSlotLabel[objAddress].Item1
-                        + (Config.SlotIndexsFromOne ? 1 : 0));
+                        + (OptionsConfig.SlotIndexsFromOne ? 1 : 0));
                     break;
 
                 case SlotLabelType.SlotPosVs:
@@ -674,7 +674,7 @@ namespace SM64_Diagnostic.Managers
                         goto case SlotLabelType.SlotPos;
 
                     labelText = String.Format("VS{0}", vacantSlotIndex.Value
-                        + (Config.SlotIndexsFromOne ? 1 : 0));
+                        + (OptionsConfig.SlotIndexsFromOne ? 1 : 0));
                     break;
             }
 
@@ -707,9 +707,9 @@ namespace SM64_Diagnostic.Managers
             objManager.Image = objSlot.ObjectImage;
             objManager.BackColor = objSlot.BackColor;
             int slotPos = objData.ObjectProcessGroup == VacantGroup ? objData.VacantSlotIndex.Value : objData.ProcessIndex;
-            objManager.SlotIndex = (_memoryAddressSlotIndex[objData.Address] + (Config.SlotIndexsFromOne ? 1 : 0)).ToString();
+            objManager.SlotIndex = (_memoryAddressSlotIndex[objData.Address] + (OptionsConfig.SlotIndexsFromOne ? 1 : 0)).ToString();
             objManager.SlotPos = (objData.ObjectProcessGroup == VacantGroup ? "VS " : "")
-                + (slotPos + (Config.SlotIndexsFromOne ? 1 : 0)).ToString();
+                + (slotPos + (OptionsConfig.SlotIndexsFromOne ? 1 : 0)).ToString();
         }
 
         void UpdateMapObject(ObjectSlotData objData, ObjectSlot objSlot, BehaviorCriteria behaviorCriteria)
