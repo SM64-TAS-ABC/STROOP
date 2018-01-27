@@ -10,7 +10,6 @@ namespace SM64_Diagnostic.Structs.Configurations
     public static class Config
     {
         public static RomVersion Version = RomVersion.US;
-
         public static uint SwitchRomVersion(uint? valUS = null, uint? valJP = null, uint? valPAL = null)
         {
             switch (Version)
@@ -44,9 +43,7 @@ namespace SM64_Diagnostic.Structs.Configurations
             return 0;
         }
 
-        public static ProcessStream Stream;
-        public static ObjectAssociations ObjectAssociations;
-
+        public static uint RamSize;
         public static uint RefreshRateFreq;
         public static double RefreshRateInterval
         {
@@ -59,6 +56,9 @@ namespace SM64_Diagnostic.Structs.Configurations
         }
 
         public static List<Emulator> Emulators = new List<Emulator>();
-        public static uint RamSize;
+        public static ProcessStream Stream;
+        public static ObjectAssociations ObjectAssociations;
+
+
     }
 }
