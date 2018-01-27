@@ -164,7 +164,7 @@ namespace SM64_Diagnostic.Structs
                     return new List<uint> { Config.HackedAreaAddress };
 
                 case BaseAddressTypeEnum.CamHack:
-                    return new List<uint> { Config.CameraHack.CameraHackStruct };
+                    return new List<uint> { CameraHackConfig.CameraHackStruct };
 
                 default:
                     throw new ArgumentOutOfRangeException();

@@ -1239,69 +1239,6 @@ namespace SM64_Diagnostic.Utilities
                         }
                         break;
 
-                    case "CameraHack":
-                        foreach (XElement subElement in element.Elements())
-                        {
-                            switch (subElement.Name.ToString())
-                            {
-                                case "CameraHackStructUS":
-                                    Config.CameraHack.CameraHackStructUS = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "CameraHackStructJP":
-                                    Config.CameraHack.CameraHackStructJP = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "CameraModeOffset":
-                                    Config.CameraHack.CameraModeOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "CameraXOffset":
-                                    Config.CameraHack.CameraXOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "CameraYOffset":
-                                    Config.CameraHack.CameraYOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "CameraZOffset":
-                                    Config.CameraHack.CameraZOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "FocusXOffset":
-                                    Config.CameraHack.FocusXOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "FocusYOffset":
-                                    Config.CameraHack.FocusYOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "FocusZOffset":
-                                    Config.CameraHack.FocusZOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "AbsoluteAngleOffset":
-                                    Config.CameraHack.AbsoluteAngleOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "ThetaOffset":
-                                    Config.CameraHack.ThetaOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "RadiusOffset":
-                                    Config.CameraHack.RadiusOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "RelativeHeightOffset":
-                                    Config.CameraHack.RelativeHeightOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "ObjectOffset":
-                                    Config.CameraHack.ObjectOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                            }
-                        }
-                        break;
-
                     case "GotoRetrieve":
                         foreach (XElement subElement in element.Elements())
                         {

@@ -392,23 +392,6 @@
     <YOffset>0x04</YOffset>
     <ZOffset>0x06</ZOffset>
   </Waypoint>
-  <CameraHack>
-    <CameraHackStructUS>0x803E0000</CameraHackStructUS>
-    <CameraHackStructJP>0x803E0000</CameraHackStructJP>
-
-    <CameraModeOffset>0x00</CameraModeOffset>
-    <CameraXOffset>0x04</CameraXOffset>
-    <CameraYOffset>0x08</CameraYOffset>
-    <CameraZOffset>0x0C</CameraZOffset>
-    <FocusXOffset>0x10</FocusXOffset>
-    <FocusYOffset>0x14</FocusYOffset>
-    <FocusZOffset>0x18</FocusZOffset>
-    <AbsoluteAngleOffset>0x1C</AbsoluteAngleOffset>
-    <ThetaOffset>0x1E</ThetaOffset>
-    <RadiusOffset>0x20</RadiusOffset>
-    <RelativeHeightOffset>0x24</RelativeHeightOffset>
-    <ObjectOffset>0x28</ObjectOffset>
-  </CameraHack>
   <GotoRetrieve>
     <GotoAboveDefault>300</GotoAboveDefault>
     <GotoInfrontDefault>0</GotoInfrontDefault>

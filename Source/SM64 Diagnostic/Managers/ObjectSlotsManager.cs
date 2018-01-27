@@ -224,9 +224,9 @@ namespace SM64_Diagnostic.Managers
             }
             else if (click == ClickType.CamHackClick)
             {
-                uint currentCamHackSlot = Config.Stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
+                uint currentCamHackSlot = Config.Stream.GetUInt32(CameraHackConfig.CameraHackStruct + CameraHackConfig.ObjectOffset);
                 uint newCamHackSlot = currentCamHackSlot == selectedSlot.Address ? 0 : selectedSlot.Address;
-                Config.Stream.SetValue(newCamHackSlot, Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
+                Config.Stream.SetValue(newCamHackSlot, CameraHackConfig.CameraHackStruct + CameraHackConfig.ObjectOffset);
             }
             else
             {
@@ -450,7 +450,7 @@ namespace SM64_Diagnostic.Managers
             _heldObject = Config.Stream.GetUInt32(Config.Mario.HeldObjectPointerOffset + Config.Mario.StructAddress);
             _usedObject = Config.Stream.GetUInt32(Config.Mario.UsedObjectPointerOffset + Config.Mario.StructAddress);
             _cameraObject = Config.Stream.GetUInt32(Config.Camera.SecondaryObjectAddress);
-            _cameraHackObject = Config.Stream.GetUInt32(Config.CameraHack.CameraHackStruct + Config.CameraHack.ObjectOffset);
+            _cameraHackObject = Config.Stream.GetUInt32(CameraHackConfig.CameraHackStruct + CameraHackConfig.ObjectOffset);
             _modelObject = ManagerContext.Current.ModelManager.ModelObjectAddress;
 
             List<ObjectSlotData> closestObjectCandidates =

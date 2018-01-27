@@ -71,7 +71,6 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static InputConfig Input;
         public static FileConfig File;
         public static WaypointConfig Waypoint;
-        public static CameraHackConfig CameraHack;
         public static VarHackConfig VarHack = new VarHackConfig();
         public static TriangleOffsetsConfig TriangleOffsets;
         public static TriangleConfig Triangle;
