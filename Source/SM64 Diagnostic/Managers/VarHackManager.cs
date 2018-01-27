@@ -14,8 +14,6 @@ namespace SM64_Diagnostic.Managers
 {
     public class VarHackManager
     {
-        public static VarHackManager Instance;
-
         private readonly VarHackPanel _varHackPanel;
         private readonly BinaryButton _buttonEnableDisableRomHack;
 
@@ -25,8 +23,6 @@ namespace SM64_Diagnostic.Managers
 
         public VarHackManager(Control varHackControlControl, VarHackPanel varHackPanel)
         {
-            Instance = this;
-
             _varHackPanel = varHackPanel;
 
             // Top buttons

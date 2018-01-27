@@ -311,7 +311,7 @@ namespace SM64_Diagnostic.Controls
         {
             if (_watchVar.BaseAddressType == BaseAddressTypeEnum.Triangle)
             {
-                VarHackManager.Instance.AddVariable(
+                Config.VarHackManager.AddVariable(
                     _watchVarControl.VarName,
                     Config.TriangleManager.TrianglePointerAddress,
                     _watchVar.MemoryType,
@@ -323,7 +323,7 @@ namespace SM64_Diagnostic.Controls
                 List<uint> addressList = addresses ?? _watchVar.AddressList;
                 foreach (uint address in addressList)
                 {
-                    VarHackManager.Instance.AddVariable(
+                    Config.VarHackManager.AddVariable(
                         _watchVarControl.VarName,
                         address,
                         _watchVar.MemoryType,
