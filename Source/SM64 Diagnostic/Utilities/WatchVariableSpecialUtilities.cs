@@ -553,9 +553,9 @@ namespace SM64_Diagnostic.Structs
                         float accelerationDirection = amplitude > 0 ? -1 : 1;
 
                         bool success = true;
-                        success |= Config.Stream.SetValue(accelerationDirection, objAddress + ObjectSlotsConfig.PendulumAccelerationDirection);
-                        success |= Config.Stream.SetValue(0f, objAddress + ObjectSlotsConfig.PendulumAngularVelocity);
-                        success |= Config.Stream.SetValue((float)amplitude, objAddress + ObjectSlotsConfig.PendulumAngle);
+                        success &= Config.Stream.SetValue(accelerationDirection, objAddress + ObjectSlotsConfig.PendulumAccelerationDirection);
+                        success &= Config.Stream.SetValue(0f, objAddress + ObjectSlotsConfig.PendulumAngularVelocity);
+                        success &= Config.Stream.SetValue((float)amplitude, objAddress + ObjectSlotsConfig.PendulumAngle);
                         return success;
                     };
                     break;
@@ -582,9 +582,9 @@ namespace SM64_Diagnostic.Structs
                         float accelerationDirection = amplitude > 0 ? -1 : 1;
 
                         bool success = true;
-                        success |= Config.Stream.SetValue(accelerationDirection, objAddress + ObjectSlotsConfig.PendulumAccelerationDirection);
-                        success |= Config.Stream.SetValue(0f, objAddress + ObjectSlotsConfig.PendulumAngularVelocity);
-                        success |= Config.Stream.SetValue(amplitude, objAddress + ObjectSlotsConfig.PendulumAngle);
+                        success &= Config.Stream.SetValue(accelerationDirection, objAddress + ObjectSlotsConfig.PendulumAccelerationDirection);
+                        success &= Config.Stream.SetValue(0f, objAddress + ObjectSlotsConfig.PendulumAngularVelocity);
+                        success &= Config.Stream.SetValue(amplitude, objAddress + ObjectSlotsConfig.PendulumAngle);
                         return success;
                     };
                     break;
@@ -1023,8 +1023,8 @@ namespace SM64_Diagnostic.Structs
                         double newZSlidingSpeed = zSlidingSpeed * multiplier;
 
                         bool success = true;
-                        success |= Config.Stream.SetValue((float)newXSlidingSpeed, MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
-                        success |= Config.Stream.SetValue((float)newZSlidingSpeed, MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
+                        success &= Config.Stream.SetValue((float)newXSlidingSpeed, MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
+                        success &= Config.Stream.SetValue((float)newZSlidingSpeed, MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
                         return success;
                     };
                     break;
@@ -1050,8 +1050,8 @@ namespace SM64_Diagnostic.Structs
                             MoreMath.GetComponentsFromVector(hSlidingSpeed, newHSlidingAngle);
 
                         bool success = true;
-                        success |= Config.Stream.SetValue((float)newXSlidingSpeed, MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
-                        success |= Config.Stream.SetValue((float)newZSlidingSpeed, MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
+                        success &= Config.Stream.SetValue((float)newXSlidingSpeed, MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
+                        success &= Config.Stream.SetValue((float)newZSlidingSpeed, MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
                         return success;
                     };
                     break;
@@ -2432,8 +2432,8 @@ namespace SM64_Diagnostic.Structs
         {
             uint marioObjRef = Config.Stream.GetUInt32(MarioConfig.ObjectReferenceAddress);
             bool success = true;
-            success |= SetMarioPosition(x, y, z, angle);
-            success |= SetObjectPosition(marioObjRef, x, y, z, angle);
+            success &= SetMarioPosition(x, y, z, angle);
+            success &= SetObjectPosition(marioObjRef, x, y, z, angle);
             return success;
         }
 
