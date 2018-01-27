@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SM64_Diagnostic.Structs
 {
-    public static class ObjectSlotsConfig
+    public static class ObjectConfig
     {
         public static ObjectSlot HoverObjectSlot;
 

@@ -75,7 +75,7 @@ namespace SM64_Diagnostic.Structs
 
         public double GetProgress(uint objAddress)
         {
-            uint waypointAddress = Config.Stream.GetUInt32(objAddress + ObjectSlotsConfig.WaypointOffset);
+            uint waypointAddress = Config.Stream.GetUInt32(objAddress + ObjectConfig.WaypointOffset);
             if (waypointAddress == 0) return 0;
             short prevWaypointIndex = Config.Stream.GetInt16(waypointAddress + WaypointConfig.IndexOffset);
 
@@ -98,9 +98,9 @@ namespace SM64_Diagnostic.Structs
                 nextWaypoint = nullableNextWaypoint.Value;
             }
 
-            float objX = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectXOffset);
-            float objY = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectYOffset);
-            float objZ = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectZOffset);
+            float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.ObjectXOffset);
+            float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.ObjectYOffset);
+            float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ObjectZOffset);
 
             if (!_distanceDictionary.ContainsKey(previousWaypoint)) return 0;
             double previousDistance = _distanceDictionary[previousWaypoint];

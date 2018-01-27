@@ -300,7 +300,7 @@
     <Compile Include="Structs\Configurations\MarioConfig.cs" />
     <Compile Include="Structs\ObjectBehaviorAssociation.cs" />
     <Compile Include="Structs\ObjectAssociations.cs" />
-    <Compile Include="Structs\Configurations\ObjectSlotsConfig.cs" />
+    <Compile Include="Structs\Configurations\ObjectConfig.cs" />
     <Compile Include="Structs\Configurations\ObjectGroupsConfig.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Structs\RomHack.cs" />

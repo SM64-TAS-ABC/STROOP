@@ -257,8 +257,8 @@ namespace SM64_Diagnostic.Managers
                 () => _currentAddresses.Count > 0 && _currentAddresses.All(
                     address =>
                     {
-                        uint releasedValue = Config.Stream.GetUInt32(address + ObjectSlotsConfig.ReleaseStatusOffset);
-                        return releasedValue == ObjectSlotsConfig.ReleaseStatusThrownValue || releasedValue == ObjectSlotsConfig.ReleaseStatusDroppedValue;
+                        uint releasedValue = Config.Stream.GetUInt32(address + ObjectConfig.ReleaseStatusOffset);
+                        return releasedValue == ObjectConfig.ReleaseStatusThrownValue || releasedValue == ObjectConfig.ReleaseStatusDroppedValue;
                     }));
             ControlUtilities.AddContextMenuStripFunctions(
                 _releaseButton,
@@ -276,7 +276,7 @@ namespace SM64_Diagnostic.Managers
                 () => ButtonUtilities.InteractObject(_currentAddresses),
                 () => ButtonUtilities.UnInteractObject(_currentAddresses),
                 () => _currentAddresses.Count > 0 && _currentAddresses.All(
-                    address => Config.Stream.GetUInt32(address + ObjectSlotsConfig.InteractionStatusOffset) != 0));
+                    address => Config.Stream.GetUInt32(address + ObjectConfig.InteractionStatusOffset) != 0));
             ControlUtilities.AddContextMenuStripFunctions(
                 _interactButton,
                 new List<string>() { "Interact", "UnInteract" },
@@ -315,7 +315,7 @@ namespace SM64_Diagnostic.Managers
                 () => ButtonUtilities.UnloadObject(_currentAddresses),
                 () => ButtonUtilities.ReviveObject(_currentAddresses),
                 () => _currentAddresses.Count > 0 && _currentAddresses.All(
-                    address => Config.Stream.GetUInt16(address + ObjectSlotsConfig.ObjectActiveOffset) == 0x0000));
+                    address => Config.Stream.GetUInt16(address + ObjectConfig.ObjectActiveOffset) == 0x0000));
             ControlUtilities.AddContextMenuStripFunctions(
                 _unloadButton,
                 new List<string>() { "Unload", "Revive" },
@@ -431,7 +431,7 @@ namespace SM64_Diagnostic.Managers
             if (CurrentAddresses.Count == 0)
                 return;
 
-            var scriptAddress = Config.Stream.GetUInt32(CurrentAddresses[0] + ObjectSlotsConfig.BehaviorScriptOffset);
+            var scriptAddress = Config.Stream.GetUInt32(CurrentAddresses[0] + ObjectConfig.BehaviorScriptOffset);
             Config.ScriptManager.Go(scriptAddress);
             Config.StroopMainForm.SwitchTab("tabPageScripts");
         }

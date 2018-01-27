@@ -144,15 +144,15 @@ namespace SM64_Diagnostic.Structs
 
                 case BaseAddressTypeEnum.Graphics:
                     return GetBaseAddressListFromBaseAddressType(BaseAddressTypeEnum.Object)
-                        .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + ObjectSlotsConfig.BehaviorGfxOffset));
+                        .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + ObjectConfig.BehaviorGfxOffset));
 
                 case BaseAddressTypeEnum.Animation:
                     return GetBaseAddressListFromBaseAddressType(BaseAddressTypeEnum.Object)
-                        .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + ObjectSlotsConfig.AnimationOffset));
+                        .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + ObjectConfig.AnimationOffset));
 
                 case BaseAddressTypeEnum.Waypoint:
                     return GetBaseAddressListFromBaseAddressType(BaseAddressTypeEnum.Object)
-                        .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + ObjectSlotsConfig.WaypointOffset));
+                        .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + ObjectConfig.WaypointOffset));
 
                 case BaseAddressTypeEnum.Water:
                     return new List<uint> { Config.Stream.GetUInt32(MiscConfig.WaterPointerAddress) };

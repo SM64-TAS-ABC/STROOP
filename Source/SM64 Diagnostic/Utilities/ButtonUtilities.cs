@@ -133,9 +133,9 @@ namespace SM64_Diagnostic.Utilities
                         MarioConfig.StructAddress + MarioConfig.ZOffset)
                 };
 
-            float xDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + ObjectSlotsConfig.ObjectXOffset));
-            float yDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + ObjectSlotsConfig.ObjectYOffset));
-            float zDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + ObjectSlotsConfig.ObjectZOffset));
+            float xDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + ObjectConfig.ObjectXOffset));
+            float yDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + ObjectConfig.ObjectYOffset));
+            float zDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + ObjectConfig.ObjectZOffset));
 
             HandleGotoOffset(ref xDestination, ref yDestination, ref zDestination);
 
@@ -147,9 +147,9 @@ namespace SM64_Diagnostic.Utilities
             List<TripleAddressAngle> posAddressAngles =
                 objAddresses.ConvertAll<TripleAddressAngle>(
                     objAddress => new TripleAddressAngle(
-                        objAddress + ObjectSlotsConfig.ObjectXOffset,
-                        objAddress + ObjectSlotsConfig.ObjectYOffset,
-                        objAddress + ObjectSlotsConfig.ObjectZOffset));
+                        objAddress + ObjectConfig.ObjectXOffset,
+                        objAddress + ObjectConfig.ObjectYOffset,
+                        objAddress + ObjectConfig.ObjectZOffset));
 
             float xDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
             float yDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
@@ -194,10 +194,10 @@ namespace SM64_Diagnostic.Utilities
             List<TripleAddressAngle> posAddressAngles =
                 objAddresses.ConvertAll<TripleAddressAngle>(
                     objAddress => new TripleAddressAngle(
-                        objAddress + ObjectSlotsConfig.ObjectXOffset,
-                        objAddress + ObjectSlotsConfig.ObjectYOffset,
-                        objAddress + ObjectSlotsConfig.ObjectZOffset,
-                        Config.Stream.GetUInt16(objAddress + ObjectSlotsConfig.YawFacingOffset)));
+                        objAddress + ObjectConfig.ObjectXOffset,
+                        objAddress + ObjectConfig.ObjectYOffset,
+                        objAddress + ObjectConfig.ObjectZOffset,
+                        Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset)));
 
             return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
@@ -208,10 +208,10 @@ namespace SM64_Diagnostic.Utilities
             List<TripleAddressAngle> posAddressAngles =
                 objAddresses.ConvertAll<TripleAddressAngle>(
                     objAddress => new TripleAddressAngle(
-                        objAddress + ObjectSlotsConfig.HomeXOffset,
-                        objAddress + ObjectSlotsConfig.HomeYOffset,
-                        objAddress + ObjectSlotsConfig.HomeZOffset,
-                        Config.Stream.GetUInt16(objAddress + ObjectSlotsConfig.YawFacingOffset)));
+                        objAddress + ObjectConfig.HomeXOffset,
+                        objAddress + ObjectConfig.HomeYOffset,
+                        objAddress + ObjectConfig.HomeZOffset,
+                        Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset)));
 
             return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
@@ -229,12 +229,12 @@ namespace SM64_Diagnostic.Utilities
             foreach (var objAddress in objAddresses)
             {
                 ushort yawFacing, pitchFacing, rollFacing, yawMoving, pitchMoving, rollMoving;
-                yawFacing = Config.Stream.GetUInt16(objAddress + ObjectSlotsConfig.YawFacingOffset);
-                pitchFacing = Config.Stream.GetUInt16(objAddress + ObjectSlotsConfig.PitchFacingOffset);
-                rollFacing = Config.Stream.GetUInt16(objAddress + ObjectSlotsConfig.RollFacingOffset);
-                yawMoving = Config.Stream.GetUInt16(objAddress + ObjectSlotsConfig.YawMovingOffset);
-                pitchMoving = Config.Stream.GetUInt16(objAddress + ObjectSlotsConfig.PitchMovingOffset);
-                rollMoving = Config.Stream.GetUInt16(objAddress + ObjectSlotsConfig.RollMovingOffset);
+                yawFacing = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset);
+                pitchFacing = Config.Stream.GetUInt16(objAddress + ObjectConfig.PitchFacingOffset);
+                rollFacing = Config.Stream.GetUInt16(objAddress + ObjectConfig.RollFacingOffset);
+                yawMoving = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawMovingOffset);
+                pitchMoving = Config.Stream.GetUInt16(objAddress + ObjectConfig.PitchMovingOffset);
+                rollMoving = Config.Stream.GetUInt16(objAddress + ObjectConfig.RollMovingOffset);
 
                 yawFacing += (ushort)yawOffset;
                 pitchFacing += (ushort)pitchOffset;
@@ -243,12 +243,12 @@ namespace SM64_Diagnostic.Utilities
                 pitchMoving += (ushort)pitchOffset;
                 rollMoving += (ushort)rollOffset;
 
-                success &= Config.Stream.SetValue(yawFacing, objAddress + ObjectSlotsConfig.YawFacingOffset);
-                success &= Config.Stream.SetValue(pitchFacing, objAddress + ObjectSlotsConfig.PitchFacingOffset);
-                success &= Config.Stream.SetValue(rollFacing, objAddress + ObjectSlotsConfig.RollFacingOffset);
-                success &= Config.Stream.SetValue(yawMoving, objAddress + ObjectSlotsConfig.YawMovingOffset);
-                success &= Config.Stream.SetValue(pitchMoving, objAddress + ObjectSlotsConfig.PitchMovingOffset);
-                success &= Config.Stream.SetValue(rollMoving, objAddress + ObjectSlotsConfig.RollMovingOffset);
+                success &= Config.Stream.SetValue(yawFacing, objAddress + ObjectConfig.YawFacingOffset);
+                success &= Config.Stream.SetValue(pitchFacing, objAddress + ObjectConfig.PitchFacingOffset);
+                success &= Config.Stream.SetValue(rollFacing, objAddress + ObjectConfig.RollFacingOffset);
+                success &= Config.Stream.SetValue(yawMoving, objAddress + ObjectConfig.YawMovingOffset);
+                success &= Config.Stream.SetValue(pitchMoving, objAddress + ObjectConfig.PitchMovingOffset);
+                success &= Config.Stream.SetValue(rollMoving, objAddress + ObjectConfig.RollMovingOffset);
             }
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
@@ -261,9 +261,9 @@ namespace SM64_Diagnostic.Utilities
             List<TripleAddressAngle> posAddressAngles =
                 objAddresses.ConvertAll<TripleAddressAngle>(
                     objAddress => new TripleAddressAngle(
-                        objAddress + ObjectSlotsConfig.ScaleWidthOffset,
-                        objAddress + ObjectSlotsConfig.ScaleHeightOffset,
-                        objAddress + ObjectSlotsConfig.ScaleDepthOffset));
+                        objAddress + ObjectConfig.ScaleWidthOffset,
+                        objAddress + ObjectConfig.ScaleHeightOffset,
+                        objAddress + ObjectConfig.ScaleDepthOffset));
 
             return ChangeValues(posAddressAngles, widthChange, heightChange, depthChange, multiply ? Change.MULTIPLY : Change.ADD);
         }
@@ -281,9 +281,9 @@ namespace SM64_Diagnostic.Utilities
                         MarioConfig.StructAddress + MarioConfig.ZOffset)
                 };
 
-            float xDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + ObjectSlotsConfig.HomeXOffset));
-            float yDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + ObjectSlotsConfig.HomeYOffset));
-            float zDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + ObjectSlotsConfig.HomeZOffset));
+            float xDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + ObjectConfig.HomeXOffset));
+            float yDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + ObjectConfig.HomeYOffset));
+            float zDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + ObjectConfig.HomeZOffset));
 
             HandleGotoOffset(ref xDestination, ref yDestination, ref zDestination);
 
@@ -295,9 +295,9 @@ namespace SM64_Diagnostic.Utilities
             List<TripleAddressAngle> posAddressAngles =
                 objAddresses.ConvertAll<TripleAddressAngle>(
                     objAddress => new TripleAddressAngle(
-                        objAddress + ObjectSlotsConfig.HomeXOffset,
-                        objAddress + ObjectSlotsConfig.HomeYOffset,
-                        objAddress + ObjectSlotsConfig.HomeZOffset));
+                        objAddress + ObjectConfig.HomeXOffset,
+                        objAddress + ObjectConfig.HomeYOffset,
+                        objAddress + ObjectConfig.HomeZOffset));
 
             float xDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
             float yDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
@@ -364,8 +364,8 @@ namespace SM64_Diagnostic.Utilities
 
             foreach (var address in addresses)
             {
-                var test = Config.Stream.GetUInt16(address + ObjectSlotsConfig.ObjectActiveOffset);
-                success &= Config.Stream.SetValue((short) 0x0000, address + ObjectSlotsConfig.ObjectActiveOffset);
+                var test = Config.Stream.GetUInt16(address + ObjectConfig.ObjectActiveOffset);
+                success &= Config.Stream.SetValue((short) 0x0000, address + ObjectConfig.ObjectActiveOffset);
             }
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
@@ -384,7 +384,7 @@ namespace SM64_Diagnostic.Utilities
             foreach (var address in addresses)
             {
                 // Find process group
-                uint scriptAddress = Config.Stream.GetUInt32(address + ObjectSlotsConfig.BehaviorScriptOffset);
+                uint scriptAddress = Config.Stream.GetUInt32(address + ObjectConfig.BehaviorScriptOffset);
                 if (scriptAddress == 0x00000000)
                     continue;
                 uint firstScriptAction = Config.Stream.GetUInt32(scriptAddress);
@@ -410,7 +410,7 @@ namespace SM64_Diagnostic.Utilities
                 }
                 else
                 {
-                    for (int i = 0; i < ObjectSlotsConfig.MaxSlots; i++)
+                    for (int i = 0; i < ObjectConfig.MaxSlots; i++)
                     {
                         uint obj = Config.Stream.GetUInt32(prevObj + ObjectGroupsConfig.ProcessNextLinkOffset);
                         if (obj == address)
@@ -427,7 +427,7 @@ namespace SM64_Diagnostic.Utilities
                 success &= Config.Stream.SetValue(lastGroupObj, address + ObjectGroupsConfig.ProcessPreviousLinkOffset);
                 success &= Config.Stream.SetValue(nextObj, address + ObjectGroupsConfig.ProcessNextLinkOffset);
 
-                success &= Config.Stream.SetValue((short)0x0101, address + ObjectSlotsConfig.ObjectActiveOffset);
+                success &= Config.Stream.SetValue((short)0x0101, address + ObjectConfig.ObjectActiveOffset);
 
                 if (addresses.Count > 1)
                     if (!Config.Stream.RefreshRam() || !success)
@@ -443,7 +443,7 @@ namespace SM64_Diagnostic.Utilities
             if (addresses.Count == 0)
                 return false;
 
-            uint releasedValue = useThrownValue ? ObjectSlotsConfig.ReleaseStatusThrownValue : ObjectSlotsConfig.ReleaseStatusDroppedValue;
+            uint releasedValue = useThrownValue ? ObjectConfig.ReleaseStatusThrownValue : ObjectConfig.ReleaseStatusDroppedValue;
 
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
@@ -451,8 +451,8 @@ namespace SM64_Diagnostic.Utilities
 
             foreach (var address in addresses)
             {
-                success &= Config.Stream.SetValue(releasedValue, address + ObjectSlotsConfig.ReleaseStatusOffset);
-                success &= Config.Stream.SetValue(ObjectSlotsConfig.StackIndexReleasedValue, address + ObjectSlotsConfig.StackIndexOffset);
+                success &= Config.Stream.SetValue(releasedValue, address + ObjectConfig.ReleaseStatusOffset);
+                success &= Config.Stream.SetValue(ObjectConfig.StackIndexReleasedValue, address + ObjectConfig.StackIndexOffset);
             }
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
@@ -470,9 +470,9 @@ namespace SM64_Diagnostic.Utilities
 
             foreach (var address in addresses)
             {
-                uint initialReleaseStatus = Config.Stream.GetUInt32(address + ObjectSlotsConfig.InitialReleaseStatusOffset);
-                success &= Config.Stream.SetValue(initialReleaseStatus, address + ObjectSlotsConfig.ReleaseStatusOffset);
-                success &= Config.Stream.SetValue(ObjectSlotsConfig.StackIndexUnReleasedValue, address + ObjectSlotsConfig.StackIndexOffset);
+                uint initialReleaseStatus = Config.Stream.GetUInt32(address + ObjectConfig.InitialReleaseStatusOffset);
+                success &= Config.Stream.SetValue(initialReleaseStatus, address + ObjectConfig.ReleaseStatusOffset);
+                success &= Config.Stream.SetValue(ObjectConfig.StackIndexUnReleasedValue, address + ObjectConfig.StackIndexOffset);
             }
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
@@ -490,7 +490,7 @@ namespace SM64_Diagnostic.Utilities
 
             foreach (var address in addresses)
             {
-                success &= Config.Stream.SetValue(0xFFFFFFFF, address + ObjectSlotsConfig.InteractionStatusOffset);
+                success &= Config.Stream.SetValue(0xFFFFFFFF, address + ObjectConfig.InteractionStatusOffset);
             }
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
@@ -508,7 +508,7 @@ namespace SM64_Diagnostic.Utilities
 
             foreach (var address in addresses)
             {
-                success &= Config.Stream.SetValue(0x00000000, address + ObjectSlotsConfig.InteractionStatusOffset);
+                success &= Config.Stream.SetValue(0x00000000, address + ObjectConfig.InteractionStatusOffset);
             }
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
@@ -543,14 +543,14 @@ namespace SM64_Diagnostic.Utilities
             var marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
             if (marioObjRef != 0x00000000U)
             {
-                var marioGraphics = Config.Stream.GetUInt32(marioObjRef + ObjectSlotsConfig.BehaviorGfxOffset);
+                var marioGraphics = Config.Stream.GetUInt32(marioObjRef + ObjectConfig.BehaviorGfxOffset);
                 if (marioGraphics == 0)
                 { 
-                    success &= Config.Stream.SetValue(MarioObjectConfig.GraphicValue, marioObjRef + ObjectSlotsConfig.BehaviorGfxOffset);
+                    success &= Config.Stream.SetValue(MarioObjectConfig.GraphicValue, marioObjRef + ObjectConfig.BehaviorGfxOffset);
                 }
                 else
                 {
-                    success &= Config.Stream.SetValue(0x00000000U, marioObjRef + ObjectSlotsConfig.BehaviorGfxOffset);
+                    success &= Config.Stream.SetValue(0x00000000U, marioObjRef + ObjectConfig.BehaviorGfxOffset);
                 }
             }
 
@@ -1173,9 +1173,9 @@ namespace SM64_Diagnostic.Utilities
                     else // focused on object
                     {
                         return new TripleAddressAngle(
-                            camHackObject + ObjectSlotsConfig.ObjectXOffset,
-                            camHackObject + ObjectSlotsConfig.ObjectYOffset,
-                            camHackObject + ObjectSlotsConfig.ObjectZOffset,
+                            camHackObject + ObjectConfig.ObjectXOffset,
+                            camHackObject + ObjectConfig.ObjectYOffset,
+                            camHackObject + ObjectConfig.ObjectZOffset,
                             getCamHackYawFacing(camHackMode));
                     }
                 
@@ -1241,7 +1241,7 @@ namespace SM64_Diagnostic.Utilities
                         uint camHackObject = Config.Stream.GetUInt32(CameraHackConfig.CameraHackStruct + CameraHackConfig.ObjectOffset);
                         relativeYawOffset = camHackObject == 0
                             ? Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset)
-                            : Config.Stream.GetUInt16(camHackObject + ObjectSlotsConfig.YawFacingOffset);
+                            : Config.Stream.GetUInt16(camHackObject + ObjectConfig.YawFacingOffset);
                     }
 
                     bool success = true;
@@ -1333,7 +1333,7 @@ namespace SM64_Diagnostic.Utilities
                         uint camHackObject = Config.Stream.GetUInt32(CameraHackConfig.CameraHackStruct + CameraHackConfig.ObjectOffset);
                         relativeYawOffset = camHackObject == 0
                             ? Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset)
-                            : Config.Stream.GetUInt16(camHackObject + ObjectSlotsConfig.YawFacingOffset);
+                            : Config.Stream.GetUInt16(camHackObject + ObjectConfig.YawFacingOffset);
                     }
 
                     bool success = true;

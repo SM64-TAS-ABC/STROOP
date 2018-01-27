@@ -400,13 +400,13 @@ namespace SM64_Diagnostic
             this.MouseUp += (s, e) => { MouseState = MouseStateType.None; UpdateColors(); };
             this.MouseEnter += (s, e) =>
             {
-                ObjectSlotsConfig.HoverObjectSlot = this;
+                ObjectConfig.HoverObjectSlot = this;
                 MouseState = MouseStateType.Over;
                 UpdateColors();
             };
             this.MouseLeave += (s, e) =>
             {
-                ObjectSlotsConfig.HoverObjectSlot = null;
+                ObjectConfig.HoverObjectSlot = null;
                 MouseState = MouseStateType.None;
                 UpdateColors();
             };

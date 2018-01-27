@@ -462,9 +462,9 @@ namespace SM64_Diagnostic.Managers
                     float holpY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPYOffset);
                     float holpZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPZOffset);
 
-                    Config.Stream.SetValue(holpX, objAddress.Value + ObjectSlotsConfig.ObjectXOffset);
-                    Config.Stream.SetValue(holpY, objAddress.Value + ObjectSlotsConfig.ObjectYOffset);
-                    Config.Stream.SetValue(holpZ, objAddress.Value + ObjectSlotsConfig.ObjectZOffset);
+                    Config.Stream.SetValue(holpX, objAddress.Value + ObjectConfig.ObjectXOffset);
+                    Config.Stream.SetValue(holpY, objAddress.Value + ObjectConfig.ObjectYOffset);
+                    Config.Stream.SetValue(holpZ, objAddress.Value + ObjectConfig.ObjectZOffset);
                 }
             }
 
@@ -475,13 +475,13 @@ namespace SM64_Diagnostic.Managers
                 uint? homeObjAddress = ParsingUtilities.ParseHexNullable(_betterTextboxObjAtHomeHome.Text);
                 if (objAddress.HasValue && homeObjAddress.HasValue)
                 {
-                    float homeX = Config.Stream.GetSingle(homeObjAddress.Value + ObjectSlotsConfig.HomeXOffset);
-                    float homeY = Config.Stream.GetSingle(homeObjAddress.Value + ObjectSlotsConfig.HomeYOffset);
-                    float homeZ = Config.Stream.GetSingle(homeObjAddress.Value + ObjectSlotsConfig.HomeZOffset);
+                    float homeX = Config.Stream.GetSingle(homeObjAddress.Value + ObjectConfig.HomeXOffset);
+                    float homeY = Config.Stream.GetSingle(homeObjAddress.Value + ObjectConfig.HomeYOffset);
+                    float homeZ = Config.Stream.GetSingle(homeObjAddress.Value + ObjectConfig.HomeZOffset);
 
-                    Config.Stream.SetValue(homeX, objAddress.Value + ObjectSlotsConfig.ObjectXOffset);
-                    Config.Stream.SetValue(homeY, objAddress.Value + ObjectSlotsConfig.ObjectYOffset);
-                    Config.Stream.SetValue(homeZ, objAddress.Value + ObjectSlotsConfig.ObjectZOffset);
+                    Config.Stream.SetValue(homeX, objAddress.Value + ObjectConfig.ObjectXOffset);
+                    Config.Stream.SetValue(homeY, objAddress.Value + ObjectConfig.ObjectYOffset);
+                    Config.Stream.SetValue(homeZ, objAddress.Value + ObjectConfig.ObjectZOffset);
                 }
             }
 
@@ -492,13 +492,13 @@ namespace SM64_Diagnostic.Managers
                 uint? obj2Address = ParsingUtilities.ParseHexNullable(_betterTextboxObjAtObj2.Text);
                 if (obj1Address.HasValue && obj2Address.HasValue)
                 {
-                    float posX = Config.Stream.GetSingle(obj2Address.Value + ObjectSlotsConfig.ObjectXOffset);
-                    float posY = Config.Stream.GetSingle(obj2Address.Value + ObjectSlotsConfig.ObjectYOffset);
-                    float posZ = Config.Stream.GetSingle(obj2Address.Value + ObjectSlotsConfig.ObjectZOffset);
+                    float posX = Config.Stream.GetSingle(obj2Address.Value + ObjectConfig.ObjectXOffset);
+                    float posY = Config.Stream.GetSingle(obj2Address.Value + ObjectConfig.ObjectYOffset);
+                    float posZ = Config.Stream.GetSingle(obj2Address.Value + ObjectConfig.ObjectZOffset);
 
-                    Config.Stream.SetValue(posX, obj1Address.Value + ObjectSlotsConfig.ObjectXOffset);
-                    Config.Stream.SetValue(posY, obj1Address.Value + ObjectSlotsConfig.ObjectYOffset);
-                    Config.Stream.SetValue(posZ, obj1Address.Value + ObjectSlotsConfig.ObjectZOffset);
+                    Config.Stream.SetValue(posX, obj1Address.Value + ObjectConfig.ObjectXOffset);
+                    Config.Stream.SetValue(posY, obj1Address.Value + ObjectConfig.ObjectYOffset);
+                    Config.Stream.SetValue(posZ, obj1Address.Value + ObjectConfig.ObjectZOffset);
                 }
             }
 
@@ -509,7 +509,7 @@ namespace SM64_Diagnostic.Managers
             {
                 case VarToRecord.Mario:
                     uint marioObjAddress = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                    _currentTimer = Config.Stream.GetInt32(marioObjAddress + ObjectSlotsConfig.TimerOffset);
+                    _currentTimer = Config.Stream.GetInt32(marioObjAddress + ObjectConfig.TimerOffset);
                     break;
                 case VarToRecord.Penguin:
                     _currentTimer = Config.Stream.GetInt32(Config.SwitchRomVersion(0x803493DC, 0x803463EC));
