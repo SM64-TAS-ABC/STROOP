@@ -474,57 +474,6 @@ namespace SM64_Diagnostic.Utilities
                             }
                         }
                         break;
-                        
-                    case "Triangle":
-                        foreach (XElement subElement in element.Elements())
-                        {
-                            switch (subElement.Name.ToString())
-                            {
-                                case "TriangleStructSize":
-                                    Config.Triangle.TriangleStructSize = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "TriangleListPointerAddress":
-                                    Config.Triangle.TriangleListPointerAddress = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "LevelTriangleCountAddressUS":
-                                    Config.Triangle.LevelTriangleCountAddressUS = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "LevelTriangleCountAddressJP":
-                                    Config.Triangle.LevelTriangleCountAddressJP = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "TotalTriangleCountAddressUS":
-                                    Config.Triangle.TotalTriangleCountAddressUS = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "TotalTriangleCountAddressJP":
-                                    Config.Triangle.TotalTriangleCountAddressJP = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "NodeListPointerAddress":
-                                    Config.Triangle.NodeListPointerAddress = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "LevelNodeCountAddressUS":
-                                    Config.Triangle.LevelNodeCountAddressUS = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "LevelNodeCountAddressJP":
-                                    Config.Triangle.LevelNodeCountAddressJP = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "TotalNodeCountAddressUS":
-                                    Config.Triangle.TotalNodeCountAddressUS = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "TotalNodeCountAddressJP":
-                                    Config.Triangle.TotalNodeCountAddressJP = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "ExertionForceTableAddressUS":
-                                    Config.Triangle.ExertionForceTableAddressUS = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "ExertionForceTableAddressJP":
-                                    Config.Triangle.ExertionForceTableAddressJP = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                            }
-                        }
-                        break;
 
                     case "Waypoint":
                         foreach (XElement subElement in element.Elements())

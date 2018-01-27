@@ -130,7 +130,7 @@ namespace SM64_Diagnostic.Structs
                         .ConvertAll(triangleAddress =>
                         {
                             uint exertionForceIndex = Config.Stream.GetByte(triangleAddress + TriangleOffsetsConfig.ExertionForceIndex);
-                            return Config.Triangle.ExertionForceTableAddress + 2 * exertionForceIndex;
+                            return TriangleConfig.ExertionForceTableAddress + 2 * exertionForceIndex;
                         });
 
                 case BaseAddressTypeEnum.InputCurrent:

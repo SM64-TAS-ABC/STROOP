@@ -12,25 +12,25 @@ namespace SM64_Diagnostic.Utilities
     {
         public static List<TriangleStruct> GetLevelTriangles()
         {
-            uint triangleListAddress = Config.Stream.GetUInt32(Config.Triangle.TriangleListPointerAddress);
-            int numLevelTriangles = Config.Stream.GetInt32(Config.Triangle.LevelTriangleCountAddress);
+            uint triangleListAddress = Config.Stream.GetUInt32(TriangleConfig.TriangleListPointerAddress);
+            int numLevelTriangles = Config.Stream.GetInt32(TriangleConfig.LevelTriangleCountAddress);
             return GetTrianglesInRange(triangleListAddress, numLevelTriangles);
         }
 
         public static List<uint> GetLevelTriangleAddresses()
         {
-            uint triangleListAddress = Config.Stream.GetUInt32(Config.Triangle.TriangleListPointerAddress);
-            int numLevelTriangles = Config.Stream.GetInt32(Config.Triangle.LevelTriangleCountAddress);
+            uint triangleListAddress = Config.Stream.GetUInt32(TriangleConfig.TriangleListPointerAddress);
+            int numLevelTriangles = Config.Stream.GetInt32(TriangleConfig.LevelTriangleCountAddress);
             return GetTriangleAddressesInRange(triangleListAddress, numLevelTriangles);
         }
 
         public static List<TriangleStruct> GetObjectTriangles()
         {
-            uint triangleListAddress = Config.Stream.GetUInt32(Config.Triangle.TriangleListPointerAddress);
-            int numTotalTriangles = Config.Stream.GetInt32(Config.Triangle.TotalTriangleCountAddress);
-            int numLevelTriangles = Config.Stream.GetInt32(Config.Triangle.LevelTriangleCountAddress);
+            uint triangleListAddress = Config.Stream.GetUInt32(TriangleConfig.TriangleListPointerAddress);
+            int numTotalTriangles = Config.Stream.GetInt32(TriangleConfig.TotalTriangleCountAddress);
+            int numLevelTriangles = Config.Stream.GetInt32(TriangleConfig.LevelTriangleCountAddress);
 
-            uint objectTriangleListAddress = triangleListAddress + (uint)(numLevelTriangles * Config.Triangle.TriangleStructSize);
+            uint objectTriangleListAddress = triangleListAddress + (uint)(numLevelTriangles * TriangleConfig.TriangleStructSize);
             int numObjectTriangles = numTotalTriangles - numLevelTriangles;
 
             return GetTrianglesInRange(objectTriangleListAddress, numObjectTriangles);
@@ -38,8 +38,8 @@ namespace SM64_Diagnostic.Utilities
 
         public static List<TriangleStruct> GetAllTriangles()
         {
-            uint triangleListAddress = Config.Stream.GetUInt32(Config.Triangle.TriangleListPointerAddress);
-            int numTotalTriangles = Config.Stream.GetInt32(Config.Triangle.TotalTriangleCountAddress);
+            uint triangleListAddress = Config.Stream.GetUInt32(TriangleConfig.TriangleListPointerAddress);
+            int numTotalTriangles = Config.Stream.GetInt32(TriangleConfig.TotalTriangleCountAddress);
             return GetTrianglesInRange(triangleListAddress, numTotalTriangles);
         }
 
@@ -48,7 +48,7 @@ namespace SM64_Diagnostic.Utilities
             List<TriangleStruct> triangleList = new List<TriangleStruct>();
             for (int i = 0; i < numTriangles; i++)
             {
-                uint address = startAddress + (uint)(i * Config.Triangle.TriangleStructSize);
+                uint address = startAddress + (uint)(i * TriangleConfig.TriangleStructSize);
                 TriangleStruct triangle = new TriangleStruct(address);
                 triangleList.Add(triangle);
             }
@@ -60,7 +60,7 @@ namespace SM64_Diagnostic.Utilities
             List<uint> triangleAddressList = new List<uint>();
             for (int i = 0; i < numTriangles; i++)
             {
-                uint address = startAddress + (uint)(i * Config.Triangle.TriangleStructSize);
+                uint address = startAddress + (uint)(i * TriangleConfig.TriangleStructSize);
                 triangleAddressList.Add(address);
             }
             return triangleAddressList;
