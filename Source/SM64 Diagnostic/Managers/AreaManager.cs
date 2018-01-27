@@ -14,8 +14,6 @@ namespace SM64_Diagnostic.Managers
 {
     public class AreaManager : DataManager
     {
-        public static AreaManager Instance = null;
-
         public uint SelectedAreaAddress { get {return _selectedAreaAddress; } }
         private uint _selectedAreaAddress;
 
@@ -25,8 +23,6 @@ namespace SM64_Diagnostic.Managers
         public AreaManager(Control tabControl, List<WatchVariableControlPrecursor> variables, WatchVariablePanel watchVariableLayoutPanel) 
             : base(variables, watchVariableLayoutPanel)
         {
-            Instance = this;
-
             _selectedAreaAddress = AreaUtilities.GetAreaAddress(0);
 
             SplitContainer splitContainerArea = tabControl.Controls["splitContainerArea"] as SplitContainer;

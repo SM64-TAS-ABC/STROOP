@@ -158,7 +158,7 @@ namespace SM64_Diagnostic.Structs
                     return new List<uint> { Config.Stream.GetUInt32(MiscConfig.WaterPointerAddress) };
 
                 case BaseAddressTypeEnum.Area:
-                    return new List<uint> { AreaManager.Instance.SelectedAreaAddress };
+                    return new List<uint> { Config.AreaManager.SelectedAreaAddress };
 
                 case BaseAddressTypeEnum.HackedArea:
                     return new List<uint> { MiscConfig.HackedAreaAddress };

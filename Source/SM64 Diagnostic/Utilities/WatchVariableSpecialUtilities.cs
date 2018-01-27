@@ -2371,7 +2371,7 @@ namespace SM64_Diagnostic.Structs
                 case "AreaTerrainDescription":
                     getterFunction = (uint dummy) =>
                     {
-                        short terrainType = Config.Stream.GetInt16(AreaManager.Instance.SelectedAreaAddress + AreaConfig.TerrainTypeOffset);
+                        short terrainType = Config.Stream.GetInt16(Config.AreaManager.SelectedAreaAddress + AreaConfig.TerrainTypeOffset);
                         string terrainDescription = AreaUtilities.GetTerrainDescription(terrainType);
                         return terrainDescription;
                     };
@@ -2380,7 +2380,7 @@ namespace SM64_Diagnostic.Structs
                         short? terrainTypeNullable = AreaUtilities.GetTerrainType(stringValue);
                         if (!terrainTypeNullable.HasValue) return false;
                         short terrainType = terrainTypeNullable.Value;
-                        return Config.Stream.SetValue(terrainType, AreaManager.Instance.SelectedAreaAddress + AreaConfig.TerrainTypeOffset);
+                        return Config.Stream.SetValue(terrainType, Config.AreaManager.SelectedAreaAddress + AreaConfig.TerrainTypeOffset);
                     };
                     break;
 
