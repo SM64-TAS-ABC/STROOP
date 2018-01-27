@@ -134,13 +134,13 @@ namespace SM64_Diagnostic.Structs
                         });
 
                 case BaseAddressTypeEnum.InputCurrent:
-                    return new List<uint> { Config.Input.CurrentInputAddress };
+                    return new List<uint> { InputConfig.CurrentInputAddress };
 
                 case BaseAddressTypeEnum.InputJustPressed:
-                    return new List<uint> { Config.Input.JustPressedInputAddress };
+                    return new List<uint> { InputConfig.JustPressedInputAddress };
 
                 case BaseAddressTypeEnum.InputBuffered:
-                    return new List<uint> { Config.Input.BufferedInputAddress };
+                    return new List<uint> { InputConfig.BufferedInputAddress };
 
                 case BaseAddressTypeEnum.Graphics:
                     return GetBaseAddressListFromBaseAddressType(BaseAddressTypeEnum.Object)

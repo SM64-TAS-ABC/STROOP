@@ -575,8 +575,8 @@ namespace SM64_Diagnostic.Managers
             // Control stick
             if (_checkBoxUseInput.Checked)
             {
-                sbyte currentX = Config.Stream.GetSByte(Config.Input.CurrentInputAddress + Config.Input.ControlStickXOffset);
-                sbyte currentY = Config.Stream.GetSByte(Config.Input.CurrentInputAddress + Config.Input.ControlStickYOffset);
+                sbyte currentX = Config.Stream.GetSByte(InputConfig.CurrentInputAddress + InputConfig.ControlStickXOffset);
+                sbyte currentY = Config.Stream.GetSByte(InputConfig.CurrentInputAddress + InputConfig.ControlStickYOffset);
                 _betterTextboxControlStick1.Text = currentX.ToString();
                 _betterTextboxControlStick2.Text = currentY.ToString();
             }

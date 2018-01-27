@@ -6,49 +6,50 @@ using System.Threading.Tasks;
 
 namespace SM64_Diagnostic.Structs.Configurations
 {
-    public struct InputConfig
+    public static class InputConfig
     {
-        public uint CurrentInputAddress { get { return Config.SwitchRomVersion(CurrentInputAddressUS, CurrentInputAddressJP); } }
-        public uint CurrentInputAddressUS;
-        public uint CurrentInputAddressJP;
+        public static uint CurrentInputAddress { get { return Config.SwitchRomVersion(CurrentInputAddressUS, CurrentInputAddressJP); } }
+        public static readonly uint CurrentInputAddressUS = 0x8033AFF8;
+        public static readonly uint CurrentInputAddressJP = 0x80339C88;
 
-        public uint JustPressedInputAddress { get { return Config.SwitchRomVersion(JustPressedInputAddressUS, JustPressedInputAddressJP); } }
-        public uint JustPressedInputAddressUS;
-        public uint JustPressedInputAddressJP;
+        public static uint JustPressedInputAddress { get { return Config.SwitchRomVersion(JustPressedInputAddressUS, JustPressedInputAddressJP); } }
+        public static readonly uint JustPressedInputAddressUS = 0x8033AFA2;
+        public static readonly uint JustPressedInputAddressJP = 0x80339C32;
 
-        public uint BufferedInputAddress { get { return Config.SwitchRomVersion(BufferedInputAddressUS, BufferedInputAddressJP); } }
-        public uint BufferedInputAddressUS;
-        public uint BufferedInputAddressJP;
+        public static uint BufferedInputAddress { get { return Config.SwitchRomVersion(BufferedInputAddressUS, BufferedInputAddressJP); } }
+        public static readonly uint BufferedInputAddressUS = 0x80367054;
+        public static readonly uint BufferedInputAddressJP = 0x80365CE4;
 
-        public uint ButtonAOffset;
-        public uint ButtonBOffset;
-        public uint ButtonZOffset;
-        public uint ButtonStartOffset;
-        public uint ButtonROffset;
-        public uint ButtonLOffset;
-        public uint ButtonCUpOffset;
-        public uint ButtonCDownOffset;
-        public uint ButtonCLeftOffset;
-        public uint ButtonCRightOffset;
-        public uint ButtonDUpOffset;
-        public uint ButtonDDownOffset;
-        public uint ButtonDLeftOffset;
-        public uint ButtonDRightOffset;
-        public uint ControlStickXOffset;
-        public uint ControlStickYOffset;
-        public uint ButtonAMask;
-        public uint ButtonBMask;
-        public uint ButtonZMask;
-        public uint ButtonStartMask;
-        public uint ButtonRMask;
-        public uint ButtonLMask;
-        public uint ButtonCUpMask;
-        public uint ButtonCDownMask;
-        public uint ButtonCLeftMask;
-        public uint ButtonCRightMask;
-        public uint ButtonDUpMask;
-        public uint ButtonDDownMask;
-        public uint ButtonDLeftMask;
-        public uint ButtonDRightMask;
+        public static readonly uint ButtonAOffset = 0x00;
+        public static readonly uint ButtonBOffset = 0x00;
+        public static readonly uint ButtonZOffset = 0x00;
+        public static readonly uint ButtonStartOffset = 0x00;
+        public static readonly uint ButtonROffset = 0x01;
+        public static readonly uint ButtonLOffset = 0x01;
+        public static readonly uint ButtonCUpOffset = 0x01;
+        public static readonly uint ButtonCDownOffset = 0x01;
+        public static readonly uint ButtonCLeftOffset = 0x01;
+        public static readonly uint ButtonCRightOffset = 0x01;
+        public static readonly uint ButtonDUpOffset = 0x00;
+        public static readonly uint ButtonDDownOffset = 0x00;
+        public static readonly uint ButtonDLeftOffset = 0x00;
+        public static readonly uint ButtonDRightOffset = 0x00;
+        public static readonly uint ControlStickXOffset = 0x02;
+        public static readonly uint ControlStickYOffset = 0x03;
+
+        public static readonly uint ButtonAMask = 0x80;
+        public static readonly uint ButtonBMask = 0x40;
+        public static readonly uint ButtonZMask = 0x20;
+        public static readonly uint ButtonStartMask = 0x10;
+        public static readonly uint ButtonRMask = 0x10;
+        public static readonly uint ButtonLMask = 0x20;
+        public static readonly uint ButtonCUpMask = 0x08;
+        public static readonly uint ButtonCDownMask = 0x04;
+        public static readonly uint ButtonCLeftMask = 0x02;
+        public static readonly uint ButtonCRightMask = 0x01;
+        public static readonly uint ButtonDUpMask = 0x08;
+        public static readonly uint ButtonDDownMask = 0x04;
+        public static readonly uint ButtonDLeftMask = 0x02;
+        public static readonly uint ButtonDRightMask = 0x01;
     }
 }
