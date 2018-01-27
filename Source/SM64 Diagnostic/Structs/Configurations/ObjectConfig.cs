@@ -9,24 +9,6 @@ namespace SM64_Diagnostic.Structs
 {
     public static class ObjectConfig
     {
-        public static ObjectSlot HoverObjectSlot;
-
-        public static readonly int MaxSlots = 240;
-
-        public static uint LinkStartAddress { get { return Config.SwitchRomVersion(LinkStartAddressUS, LinkStartAddressJP); } }
-        public static readonly uint LinkStartAddressUS = 0x8033D488;
-        public static readonly uint LinkStartAddressJP = 0x8033C118;
-
-        public static readonly uint StructSize = 0x0260;
-        public static readonly uint HeaderOffset = 0x00;
-        public static readonly uint NextLinkOffset = 0x08;
-        public static readonly uint PreviousLinkOffset = 0x04;
-        public static readonly uint ParentOffset = 0x68;
-
-        public static uint UnusedSlotAddress { get { return Config.SwitchRomVersion(UnusedSlotAddressUS, UnusedSlotAddressJP); } }
-        public static readonly uint UnusedSlotAddressUS = 0x80360E88;
-        public static readonly uint UnusedSlotAddressJP = 0x8035FB18;
-
         public static readonly uint BehaviorScriptOffset = 0x020C;
         public static readonly uint BehaviorGfxOffset = 0x14;
         public static readonly uint BehaviorSubtypeOffset = 0x0144;

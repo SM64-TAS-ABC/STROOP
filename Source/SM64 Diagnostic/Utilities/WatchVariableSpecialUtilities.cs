@@ -523,7 +523,7 @@ namespace SM64_Diagnostic.Structs
                     {
                         uint numberOfRngObjs = Config.Stream.GetUInt32(MiscConfig.HackedAreaAddress);
                         int numOfCalls = 0;
-                        for (int i = 0; i < Math.Min(numberOfRngObjs, ObjectConfig.MaxSlots); i++)
+                        for (int i = 0; i < Math.Min(numberOfRngObjs, ObjectSlotsConfig.MaxSlots); i++)
                         {
                             uint rngStructAdd = (uint)(MiscConfig.HackedAreaAddress + 0x30 + 0x08 * i);
                             uint address = Config.Stream.GetUInt32(rngStructAdd + 0x04);

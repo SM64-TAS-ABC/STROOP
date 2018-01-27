@@ -410,7 +410,7 @@ namespace SM64_Diagnostic.Utilities
                 }
                 else
                 {
-                    for (int i = 0; i < ObjectConfig.MaxSlots; i++)
+                    for (int i = 0; i < ObjectSlotsConfig.MaxSlots; i++)
                     {
                         uint obj = Config.Stream.GetUInt32(prevObj + ObjectSlotsConfig.ProcessNextLinkOffset);
                         if (obj == address)

@@ -78,8 +78,8 @@ namespace SM64_Diagnostic.Managers
 
             // Create and setup object slots
             ObjectSlot.tabControlMain = tabControlMain;
-            ObjectSlots = new ObjectSlot[ObjectConfig.MaxSlots];
-            for (int i = 0; i < ObjectConfig.MaxSlots; i++)
+            ObjectSlots = new ObjectSlot[ObjectSlotsConfig.MaxSlots];
+            for (int i = 0; i < ObjectSlotsConfig.MaxSlots; i++)
             {
                 var objectSlot = new ObjectSlot(i, this, ManagerGui, new Size(DefaultSlotSize, DefaultSlotSize));
                 ObjectSlots[i] = objectSlot;
@@ -308,7 +308,7 @@ namespace SM64_Diagnostic.Managers
 
         private List<ObjectSlotData> GetProcessedObjects()
         {
-            var newObjectSlotData = new ObjectSlotData[ObjectConfig.MaxSlots];
+            var newObjectSlotData = new ObjectSlotData[ObjectSlotsConfig.MaxSlots];
 
             // Loop through each processing group
             int currentSlot = 0;
@@ -320,10 +320,10 @@ namespace SM64_Diagnostic.Managers
                 uint currentGroupObject = Config.Stream.GetUInt32(processGroupStructAddress + ObjectSlotsConfig.ProcessNextLinkOffset);
 
                 // Loop through every object within the group
-                 while ((currentGroupObject != processGroupStructAddress && currentSlot < ObjectConfig.MaxSlots))
+                 while ((currentGroupObject != processGroupStructAddress && currentSlot < ObjectSlotsConfig.MaxSlots))
                 {
                     // Validate current object
-                    if (Config.Stream.GetUInt16(currentGroupObject + ObjectConfig.HeaderOffset) != 0x18)
+                    if (Config.Stream.GetUInt16(currentGroupObject + ObjectSlotsConfig.HeaderOffset) != 0x18)
                         return null;
 
                     // Get data
@@ -347,10 +347,10 @@ namespace SM64_Diagnostic.Managers
 
             // Now calculate vacant addresses
             uint currentObject = Config.Stream.GetUInt32(ObjectSlotsConfig.VactantPointerAddress);
-            for (; currentSlot < ObjectConfig.MaxSlots; currentSlot++)
+            for (; currentSlot < ObjectSlotsConfig.MaxSlots; currentSlot++)
             {
                 // Validate current object
-                if (Config.Stream.GetUInt16(currentObject + ObjectConfig.HeaderOffset) != 0x18)
+                if (Config.Stream.GetUInt16(currentObject + ObjectSlotsConfig.HeaderOffset) != 0x18)
                     return null;
 
                 newObjectSlotData[currentSlot] = new ObjectSlotData()
@@ -469,11 +469,11 @@ namespace SM64_Diagnostic.Managers
             uint ceilingTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
             _ceilingObject = ceilingTriangleAddress == 0 ? 0 : Config.Stream.GetUInt32(ceilingTriangleAddress + TriangleOffsetsConfig.AssociatedObject);
 
-            ObjectSlot hoverObjectSlot = ObjectConfig.HoverObjectSlot;
+            ObjectSlot hoverObjectSlot = ObjectSlotsConfig.HoverObjectSlot;
             if (hoverObjectSlot != null)
             {
-                _parentObject = Config.Stream.GetUInt32(hoverObjectSlot.Address + ObjectConfig.ParentOffset);
-                _parentUnusedObject = _parentObject == ObjectConfig.UnusedSlotAddress ? hoverObjectSlot.Address : 0;
+                _parentObject = Config.Stream.GetUInt32(hoverObjectSlot.Address + ObjectSlotsConfig.ParentOffset);
+                _parentUnusedObject = _parentObject == ObjectSlotsConfig.UnusedSlotAddress ? hoverObjectSlot.Address : 0;
                 _parentNoneObject = _parentObject == 0 ? hoverObjectSlot.Address : 0;
             }
             else
@@ -492,7 +492,7 @@ namespace SM64_Diagnostic.Managers
             // Lock label update
             _labelsLocked = ManagerGui.LockLabelsCheckbox.Checked;
 
-            for (int i = 0; i < ObjectConfig.MaxSlots; i++)
+            for (int i = 0; i < ObjectSlotsConfig.MaxSlots; i++)
             {
                 UpdateSlot(newObjectSlotData[i], ObjectSlots[i]);
                 MemoryAddressSortedSlot[newObjectSlotData[i].Address] = ObjectSlots[i];
@@ -652,8 +652,8 @@ namespace SM64_Diagnostic.Managers
                     goto case SlotLabelType.SlotPosVs;
 
                 case SlotLabelType.SlotIndex:
-                    labelText = String.Format("{0}", (objData.Address - ObjectConfig.LinkStartAddress)
-                        / ObjectConfig.StructSize + (OptionsConfig.SlotIndexsFromOne ? 1 : 0));
+                    labelText = String.Format("{0}", (objData.Address - ObjectSlotsConfig.LinkStartAddress)
+                        / ObjectSlotsConfig.StructSize + (OptionsConfig.SlotIndexsFromOne ? 1 : 0));
                     break;
 
                 case SlotLabelType.SlotPos:
