@@ -72,7 +72,7 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static MarioManager MarioManager;
         public static MiscManager MiscManager;
         public static ObjectManager ObjectManager;
-        public static ObjectSlotsManager ObjectSlotManager;
+        public static ObjectSlotsManager ObjectSlotsManager;
         public static OptionsManager OptionsManager;
         public static TestingManager TestingManager;
         public static InjectionManager InjectionManager;

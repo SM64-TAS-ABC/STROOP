@@ -421,21 +421,21 @@ namespace SM64_Diagnostic
             ToolStripMenuItem itemSelect = new ToolStripMenuItem("Select");
             itemSelect.Click += (sender, e) =>
             {
-                ObjectSlotsManager.Instance.DoSlotClickUsingSpecifications(
+                Config.ObjectSlotsManager.DoSlotClickUsingSpecifications(
                     this, ObjectSlotsManager.ClickType.ObjectClick, false, false);
             };
 
             ToolStripMenuItem itemSelectAndSwitch = new ToolStripMenuItem("Select && Switch to Obj Tab");
             itemSelectAndSwitch.Click += (sender, e) =>
             {
-                ObjectSlotsManager.Instance.DoSlotClickUsingSpecifications(
+                Config.ObjectSlotsManager.DoSlotClickUsingSpecifications(
                     this, ObjectSlotsManager.ClickType.ObjectClick, false, false, true);
             };
 
             ToolStripMenuItem itemSelectAndDontSwitch = new ToolStripMenuItem("Select && Don't Switch to Obj Tab");
             itemSelectAndDontSwitch.Click += (sender, e) =>
             {
-                ObjectSlotsManager.Instance.DoSlotClickUsingSpecifications(
+                Config.ObjectSlotsManager.DoSlotClickUsingSpecifications(
                     this, ObjectSlotsManager.ClickType.ObjectClick, false, false, false);
             };
 

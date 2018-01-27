@@ -16,8 +16,6 @@ namespace SM64_Diagnostic.Managers
 {
     public class ObjectSlotsManager
     {
-        public static ObjectSlotsManager Instance;
-
         public class ObjectSlotData
         {
             public uint Address;
@@ -67,8 +65,6 @@ namespace SM64_Diagnostic.Managers
 
         public ObjectSlotsManager(ObjectSlotManagerGui managerGui, TabControl tabControlMain)
         {
-            Instance = this;
-
             ManagerGui = managerGui;
 
             // Add SortMethods

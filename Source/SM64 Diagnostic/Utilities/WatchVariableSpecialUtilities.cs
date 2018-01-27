@@ -2325,7 +2325,7 @@ namespace SM64_Diagnostic.Structs
                 case "NumberOfLoadedObjects":
                     getterFunction = (uint dummy) =>
                     {
-                        int numberOfLoadedObjects = ObjectSlotsManager.Instance.ActiveObjectCount;
+                        int numberOfLoadedObjects = Config.ObjectSlotsManager.ActiveObjectCount;
                         return numberOfLoadedObjects.ToString();
                     };
                     break;

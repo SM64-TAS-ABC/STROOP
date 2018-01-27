@@ -123,7 +123,7 @@ namespace SM64_Diagnostic
             _slotManagerGui.FlowLayoutContainer = WatchVariablePanelObjects;
             _slotManagerGui.SortMethodComboBox = comboBoxSortMethod;
             _slotManagerGui.LabelMethodComboBox = comboBoxLabelMethod;
-            Config.ObjectSlotManager = new ObjectSlotsManager(_slotManagerGui, tabControlMain);
+            Config.ObjectSlotsManager = new ObjectSlotsManager(_slotManagerGui, tabControlMain);
 
             SetupViews();
 
@@ -253,7 +253,7 @@ namespace SM64_Diagnostic
         {
             Invoke(new Action(() =>
             {
-                Config.ObjectSlotManager.Update();
+                Config.ObjectSlotsManager.Update();
                 Config.ObjectManager.Update(tabControlMain.SelectedTab == tabPageObjects);
                 Config.MarioManager.Update(tabControlMain.SelectedTab == tabPageMario);
                 Config.CameraManager.Update(tabControlMain.SelectedTab == tabPageCamera);
@@ -655,7 +655,7 @@ namespace SM64_Diagnostic
             });
 
             WatchVariablePanelObjects.Visible = false;
-            Config.ObjectSlotManager.ChangeSlotSize(trackBarObjSlotSize.Value);
+            Config.ObjectSlotsManager.ChangeSlotSize(trackBarObjSlotSize.Value);
             WatchVariablePanelObjects.Visible = true;
             _objSlotResizing = false;
         }
