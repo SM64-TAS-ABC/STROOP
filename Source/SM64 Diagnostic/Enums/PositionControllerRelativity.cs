@@ -9,12 +9,10 @@ using System.Threading.Tasks;
 
 namespace SM64_Diagnostic.Structs
 {
-    public enum AngleUnitType
+    public enum PositionControllerRelativity
     {
-        InGameUnits,
-        HAU,
-        Degrees,
-        Radians,
-        Revolutions,
+        Recommended,
+        Mario,
+        Custom,
     };
 }

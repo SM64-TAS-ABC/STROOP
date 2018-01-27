@@ -8,13 +8,6 @@ namespace SM64_Diagnostic.Structs.Configurations
 {
     public static class PositionControllerRelativityConfig
     {
-        public enum PositionControllerRelativity
-        {
-            Recommended,
-            Mario,
-            Custom,
-        };
-
         public static PositionControllerRelativity Relativity;
         public static double CustomAngle;
     }

@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Structs.Configurations;
 using System.Windows.Forms;
-using static SM64_Diagnostic.Structs.Configurations.Config;
-using static SM64_Diagnostic.Structs.Configurations.PositionControllerRelativityConfig;
 
 namespace SM64_Diagnostic.Managers
 {

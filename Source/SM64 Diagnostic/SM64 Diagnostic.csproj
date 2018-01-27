@@ -211,7 +211,8 @@
     <Compile Include="Controls\RichTextBoxEx.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Enums\WatchVariableSubclass - Copy.cs" />
+    <Compile Include="Enums\RomVersion.cs" />
+    <Compile Include="Enums\PositionControllerRelativity.cs" />
     <Compile Include="Extensions\BitmapExtensions.cs" />
     <Compile Include="Extensions\ControlCollectionsExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
