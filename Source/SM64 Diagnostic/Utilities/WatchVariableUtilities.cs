@@ -114,7 +114,7 @@ namespace SM64_Diagnostic.Structs
                     return new List<uint> { CameraConfig.CameraStructAddress };
 
                 case BaseAddressTypeEnum.File:
-                    return new List<uint> { FileManager.Instance.CurrentFileAddress };
+                    return new List<uint> { Config.FileManager.CurrentFileAddress };
 
                 case BaseAddressTypeEnum.Object:
                     return Config.ObjectManager.CurrentAddresses;

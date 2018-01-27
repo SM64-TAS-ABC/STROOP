@@ -695,7 +695,7 @@ namespace SM64_Diagnostic.Managers
             _betterTextboxStateTransferVar8Current.Text =
                 ((Config.Stream.GetByte(
                     CameraConfig.CameraStructAddress + CameraConfig.MarioCamPossibleOffset) & CameraConfig.MarioCamPossibleMask) != 0).ToString();
-            _betterTextboxStateTransferVar9Current.Text = FileManager.Instance.GetChecksum(FileManager.Instance.GetInGameFileAddress()).ToString();
+            _betterTextboxStateTransferVar9Current.Text = Config.FileManager.GetChecksum(Config.FileManager.GetInGameFileAddress()).ToString();
             _betterTextboxStateTransferVar10Current.Text = Config.Stream.GetInt16(MarioConfig.StructAddress + HudConfig.HpCountOffset).ToString();
             _betterTextboxStateTransferVar11Current.Text = Config.Stream.GetSByte(MarioConfig.StructAddress + HudConfig.LifeCountOffset).ToString();
             _betterTextboxStateTransferVar12Current.Text = Config.Stream.GetInt16(MarioConfig.StructAddress + HudConfig.StarCountOffset).ToString();
@@ -719,7 +719,7 @@ namespace SM64_Diagnostic.Managers
             _betterTextboxStateTransferVar12Saved.Text = _betterTextboxStateTransferVar12Current.Text;
             _betterTextboxStateTransferVar13Saved.Text = _betterTextboxStateTransferVar13Current.Text;
             _betterTextboxStateTransferVar14Saved.Text = _betterTextboxStateTransferVar14Current.Text;
-            _stateTransferFileData = FileManager.Instance.GetBufferedBytes();
+            _stateTransferFileData = Config.FileManager.GetBufferedBytes();
         }
 
         private void StateTransferApply()
@@ -754,7 +754,7 @@ namespace SM64_Diagnostic.Managers
                 Config.Stream.SetValue(newByte, CameraConfig.CameraStructAddress + CameraConfig.MarioCamPossibleOffset);
             }
 
-            if (_stateTransferFileData != null) FileManager.Instance.SetBufferedBytes(_stateTransferFileData, FileManager.Instance.GetInGameFileAddress());
+            if (_stateTransferFileData != null) Config.FileManager.SetBufferedBytes(_stateTransferFileData, Config.FileManager.GetInGameFileAddress());
 
             short? value10 = ParsingUtilities.ParseShortNullable(_betterTextboxStateTransferVar10Saved.Text);
             if (value10.HasValue)
