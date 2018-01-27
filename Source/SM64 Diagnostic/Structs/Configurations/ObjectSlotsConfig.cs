@@ -12,6 +12,10 @@ namespace SM64_Diagnostic.Structs
     {
         public static ObjectSlot HoverObjectSlot;
 
+        public static readonly uint ProcessGroupStructSize = 0x68;
+
+        public static readonly int MaxSlots = 240;
+
         public static readonly Dictionary<byte, Color> ProcessingGroupsColor =
             new Dictionary<byte, Color>()
             {
@@ -40,10 +44,6 @@ namespace SM64_Diagnostic.Structs
         public static uint VactantPointerAddress { get { return Config.SwitchRomVersion(VactantPointerAddressUS, VactantPointerAddressJP); } }
         public static readonly uint VactantPointerAddressUS = 0x80361150;
         public static readonly uint VactantPointerAddressJP = 0x8035FDE0;
-
-        public static readonly uint ProcessGroupStructSize = 0x68;
-
-        public static readonly int MaxSlots = 240;
 
         public static uint UnusedSlotAddress { get { return Config.SwitchRomVersion(UnusedSlotAddressUS, UnusedSlotAddressJP); } }
         public static readonly uint UnusedSlotAddressUS = 0x80360E88;
