@@ -72,7 +72,6 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static MissionTable Missions;
         public static CourseDataTable CourseData;
         public static FlyGuyDataTable FlyGuyData;
-        public static GotoRetrieveConfig GotoRetrieve;
         public static PositionControllerRelativeAngleConfig PositionControllerRelativeAngle;
 
         public static bool SlotIndexsFromOne = true;

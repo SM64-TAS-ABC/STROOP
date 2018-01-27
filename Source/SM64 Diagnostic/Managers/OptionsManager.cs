@@ -31,16 +31,16 @@ namespace SM64_Diagnostic.Managers
             GroupBox groupBoxGotoRetrieveOffsets = tabControl.Controls["groupBoxGotoRetrieveOffsets"] as GroupBox;
             BetterTextbox textBoxGotoAbove = groupBoxGotoRetrieveOffsets.Controls["textBoxGotoAbove"] as BetterTextbox;
             textBoxGotoAbove.LostFocus += (sender, e) => textBoxGotoRetrieve_LostFocus(
-                sender, ref Config.GotoRetrieve.GotoAboveOffset, Config.GotoRetrieve.GotoAboveDefault);
+                sender, ref GotoRetrieveConfig.GotoAboveOffset, GotoRetrieveConfig.GotoAboveDefault);
             BetterTextbox textBoxGotoInfront = groupBoxGotoRetrieveOffsets.Controls["textBoxGotoInfront"] as BetterTextbox;
             textBoxGotoInfront.LostFocus += (sender, e) => textBoxGotoRetrieve_LostFocus(
-                sender, ref Config.GotoRetrieve.GotoInfrontOffset, Config.GotoRetrieve.GotoInfrontDefault);
+                sender, ref GotoRetrieveConfig.GotoInfrontOffset, GotoRetrieveConfig.GotoInfrontDefault);
             BetterTextbox textBoxRetrieveAbove = groupBoxGotoRetrieveOffsets.Controls["textBoxRetrieveAbove"] as BetterTextbox;
             textBoxRetrieveAbove.LostFocus += (sender, e) => textBoxGotoRetrieve_LostFocus(
-                sender, ref Config.GotoRetrieve.RetrieveAboveOffset, Config.GotoRetrieve.RetrieveAboveDefault);
+                sender, ref GotoRetrieveConfig.RetrieveAboveOffset, GotoRetrieveConfig.RetrieveAboveDefault);
             BetterTextbox textBoxRetrieveInfront = groupBoxGotoRetrieveOffsets.Controls["textBoxRetrieveInfront"] as BetterTextbox;
             textBoxRetrieveInfront.LostFocus += (sender, e) => textBoxGotoRetrieve_LostFocus(
-                sender, ref Config.GotoRetrieve.RetrieveInfrontOffset, Config.GotoRetrieve.RetrieveInfrontDefault);
+                sender, ref GotoRetrieveConfig.RetrieveInfrontOffset, GotoRetrieveConfig.RetrieveInfrontDefault);
 
             // position controller relative angle
             GroupBox groupBoxPositionControllerRelativeAngle = tabControl.Controls["groupBoxPositionControllerRelativeAngle"] as GroupBox;

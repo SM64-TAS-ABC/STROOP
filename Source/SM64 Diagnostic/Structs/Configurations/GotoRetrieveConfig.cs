@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace SM64_Diagnostic.Structs.Configurations
 {
-    public struct GotoRetrieveConfig
+    public static class GotoRetrieveConfig
     {
-        public float GotoAboveOffset;
-        public float GotoAboveDefault;
-        public float GotoInfrontOffset;
-        public float GotoInfrontDefault;
-        public float RetrieveAboveOffset;
-        public float RetrieveAboveDefault;
-        public float RetrieveInfrontOffset;
-        public float RetrieveInfrontDefault;
+        public static readonly float GotoAboveDefault = 300;
+        public static readonly float GotoInfrontDefault = 0;
+        public static readonly float RetrieveAboveDefault = 300;
+        public static readonly float RetrieveInfrontDefault = 0;
+
+        public static float GotoAboveOffset = GotoAboveDefault;
+        public static float GotoInfrontOffset = GotoInfrontDefault;
+        public static float RetrieveAboveOffset = RetrieveAboveDefault;
+        public static float RetrieveInfrontOffset = RetrieveInfrontDefault;
     }
 }

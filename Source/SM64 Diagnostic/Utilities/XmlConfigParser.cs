@@ -354,31 +354,6 @@ namespace SM64_Diagnostic.Utilities
                             }
                         }
                         break;
-
-                    case "GotoRetrieve":
-                        foreach (XElement subElement in element.Elements())
-                        {
-                            switch (subElement.Name.ToString())
-                            {
-                                case "GotoAboveDefault":
-                                    Config.GotoRetrieve.GotoAboveDefault = int.Parse(subElement.Value);
-                                    Config.GotoRetrieve.GotoAboveOffset = int.Parse(subElement.Value);
-                                    break;
-                                case "GotoInfrontDefault":
-                                    Config.GotoRetrieve.GotoInfrontDefault = int.Parse(subElement.Value);
-                                    Config.GotoRetrieve.GotoInfrontOffset = int.Parse(subElement.Value);
-                                    break;
-                                case "RetrieveAboveDefault":
-                                    Config.GotoRetrieve.RetrieveAboveDefault = int.Parse(subElement.Value);
-                                    Config.GotoRetrieve.RetrieveAboveOffset = int.Parse(subElement.Value);
-                                    break;
-                                case "RetrieveInfrontDefault":
-                                    Config.GotoRetrieve.RetrieveInfrontDefault = int.Parse(subElement.Value);
-                                    Config.GotoRetrieve.RetrieveInfrontOffset = int.Parse(subElement.Value);
-                                    break;
-                            }
-                        }
-                        break;
                 }
             }
         }

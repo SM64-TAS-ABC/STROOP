@@ -115,12 +115,6 @@
     <VacantPointerAddressUS color="#AAAAAA">0x80361150</VacantPointerAddressUS>
     <VacantPointerAddressJP color="#AAAAAA">0x8035FDE0</VacantPointerAddressJP>
   </ObjectGroups>
-  <GotoRetrieve>
-    <GotoAboveDefault>300</GotoAboveDefault>
-    <GotoInfrontDefault>0</GotoInfrontDefault>
-    <RetrieveAboveDefault>300</RetrieveAboveDefault>
-    <RetrieveInfrontDefault>0</RetrieveInfrontDefault>
-  </GotoRetrieve>
   
   <DebugAddress></DebugAddress>
   <DebugModeAddress></DebugModeAddress>

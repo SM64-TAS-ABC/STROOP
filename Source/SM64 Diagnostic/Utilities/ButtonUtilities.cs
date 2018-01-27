@@ -164,8 +164,8 @@ namespace SM64_Diagnostic.Utilities
 
         private static void HandleGotoOffset(ref float xPos, ref float yPos, ref float zPos)
         {
-            float gotoAbove = Config.GotoRetrieve.GotoAboveOffset;
-            float gotoInfront = Config.GotoRetrieve.GotoInfrontOffset;
+            float gotoAbove = GotoRetrieveConfig.GotoAboveOffset;
+            float gotoInfront = GotoRetrieveConfig.GotoInfrontOffset;
             ushort marioYaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
 
             double xOffset, zOffset;
@@ -178,8 +178,8 @@ namespace SM64_Diagnostic.Utilities
 
         private static void HandleRetrieveOffset(ref float xPos, ref float yPos, ref float zPos)
         {
-            float retrieveAbove = Config.GotoRetrieve.RetrieveAboveOffset;
-            float retrieveInfront = Config.GotoRetrieve.RetrieveInfrontOffset;
+            float retrieveAbove = GotoRetrieveConfig.RetrieveAboveOffset;
+            float retrieveInfront = GotoRetrieveConfig.RetrieveInfrontOffset;
             ushort marioYaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
 
             double xOffset, zOffset;
