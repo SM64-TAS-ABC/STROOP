@@ -402,14 +402,14 @@ namespace SM64_Diagnostic.Managers
             {
                 // Get object relative-to-maario position
                 float dX, dY, dZ;
-                dX = marioX - Config.Stream.GetSingle(objSlot.Address + ObjectConfig.ObjectXOffset);
-                dY = marioY - Config.Stream.GetSingle(objSlot.Address + ObjectConfig.ObjectYOffset);
-                dZ = marioZ - Config.Stream.GetSingle(objSlot.Address + ObjectConfig.ObjectZOffset);
+                dX = marioX - Config.Stream.GetSingle(objSlot.Address + ObjectConfig.XOffset);
+                dY = marioY - Config.Stream.GetSingle(objSlot.Address + ObjectConfig.YOffset);
+                dZ = marioZ - Config.Stream.GetSingle(objSlot.Address + ObjectConfig.ZOffset);
 
                 objSlot.DistanceToMario = (float)Math.Sqrt(dX * dX + dY * dY + dZ * dZ);
 
                 // Check if active/loaded
-                objSlot.IsActive = Config.Stream.GetUInt16(objSlot.Address + ObjectConfig.ObjectActiveOffset) != 0x0000;
+                objSlot.IsActive = Config.Stream.GetUInt16(objSlot.Address + ObjectConfig.ActiveOffset) != 0x0000;
 
                 objSlot.Behavior = Config.Stream.GetUInt32(objSlot.Address + ObjectConfig.BehaviorScriptOffset) & 0x7FFFFFFF;
             }
@@ -612,7 +612,7 @@ namespace SM64_Diagnostic.Managers
 
             var gfxId = Config.Stream.GetUInt32(objAddress + ObjectConfig.BehaviorGfxOffset);
             var subType = Config.Stream.GetInt32(objAddress + ObjectConfig.BehaviorSubtypeOffset);
-            var appearance = Config.Stream.GetInt32(objAddress + ObjectConfig.BehaviorAppearance);
+            var appearance = Config.Stream.GetInt32(objAddress + ObjectConfig.BehaviorAppearanceOffset);
 
             uint segmentedBehavior = 0x13000000 + objData.Behavior - Config.ObjectAssociations.BehaviorBankStart;
             if (objData.Behavior == 0) // uninitialized object
@@ -740,9 +740,9 @@ namespace SM64_Diagnostic.Managers
                 var mapObj = _mapObjects[objAddress];
                 mapObj.Show = SelectedOnMapSlotsAddresses.Contains(objAddress);
                 objSlot.Show = _mapObjects[objAddress].Show;
-                mapObj.X = Config.Stream.GetSingle(objAddress + ObjectConfig.ObjectXOffset);
-                mapObj.Y = Config.Stream.GetSingle(objAddress + ObjectConfig.ObjectYOffset);
-                mapObj.Z = Config.Stream.GetSingle(objAddress + ObjectConfig.ObjectZOffset);
+                mapObj.X = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
+                mapObj.Y = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                mapObj.Z = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
                 mapObj.IsActive = objData.IsActive;
                 mapObj.Transparent = !mapObj.IsActive;
                 ushort objYaw = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset);

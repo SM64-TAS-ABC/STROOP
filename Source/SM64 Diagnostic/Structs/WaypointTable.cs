@@ -98,9 +98,9 @@ namespace SM64_Diagnostic.Structs
                 nextWaypoint = nullableNextWaypoint.Value;
             }
 
-            float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.ObjectXOffset);
-            float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.ObjectYOffset);
-            float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ObjectZOffset);
+            float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
+            float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+            float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
 
             if (!_distanceDictionary.ContainsKey(previousWaypoint)) return 0;
             double previousDistance = _distanceDictionary[previousWaypoint];

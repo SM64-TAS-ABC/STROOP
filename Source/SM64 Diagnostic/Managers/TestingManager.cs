@@ -462,9 +462,9 @@ namespace SM64_Diagnostic.Managers
                     float holpY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPYOffset);
                     float holpZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPZOffset);
 
-                    Config.Stream.SetValue(holpX, objAddress.Value + ObjectConfig.ObjectXOffset);
-                    Config.Stream.SetValue(holpY, objAddress.Value + ObjectConfig.ObjectYOffset);
-                    Config.Stream.SetValue(holpZ, objAddress.Value + ObjectConfig.ObjectZOffset);
+                    Config.Stream.SetValue(holpX, objAddress.Value + ObjectConfig.XOffset);
+                    Config.Stream.SetValue(holpY, objAddress.Value + ObjectConfig.YOffset);
+                    Config.Stream.SetValue(holpZ, objAddress.Value + ObjectConfig.ZOffset);
                 }
             }
 
@@ -479,9 +479,9 @@ namespace SM64_Diagnostic.Managers
                     float homeY = Config.Stream.GetSingle(homeObjAddress.Value + ObjectConfig.HomeYOffset);
                     float homeZ = Config.Stream.GetSingle(homeObjAddress.Value + ObjectConfig.HomeZOffset);
 
-                    Config.Stream.SetValue(homeX, objAddress.Value + ObjectConfig.ObjectXOffset);
-                    Config.Stream.SetValue(homeY, objAddress.Value + ObjectConfig.ObjectYOffset);
-                    Config.Stream.SetValue(homeZ, objAddress.Value + ObjectConfig.ObjectZOffset);
+                    Config.Stream.SetValue(homeX, objAddress.Value + ObjectConfig.XOffset);
+                    Config.Stream.SetValue(homeY, objAddress.Value + ObjectConfig.YOffset);
+                    Config.Stream.SetValue(homeZ, objAddress.Value + ObjectConfig.ZOffset);
                 }
             }
 
@@ -492,13 +492,13 @@ namespace SM64_Diagnostic.Managers
                 uint? obj2Address = ParsingUtilities.ParseHexNullable(_betterTextboxObjAtObj2.Text);
                 if (obj1Address.HasValue && obj2Address.HasValue)
                 {
-                    float posX = Config.Stream.GetSingle(obj2Address.Value + ObjectConfig.ObjectXOffset);
-                    float posY = Config.Stream.GetSingle(obj2Address.Value + ObjectConfig.ObjectYOffset);
-                    float posZ = Config.Stream.GetSingle(obj2Address.Value + ObjectConfig.ObjectZOffset);
+                    float posX = Config.Stream.GetSingle(obj2Address.Value + ObjectConfig.XOffset);
+                    float posY = Config.Stream.GetSingle(obj2Address.Value + ObjectConfig.YOffset);
+                    float posZ = Config.Stream.GetSingle(obj2Address.Value + ObjectConfig.ZOffset);
 
-                    Config.Stream.SetValue(posX, obj1Address.Value + ObjectConfig.ObjectXOffset);
-                    Config.Stream.SetValue(posY, obj1Address.Value + ObjectConfig.ObjectYOffset);
-                    Config.Stream.SetValue(posZ, obj1Address.Value + ObjectConfig.ObjectZOffset);
+                    Config.Stream.SetValue(posX, obj1Address.Value + ObjectConfig.XOffset);
+                    Config.Stream.SetValue(posY, obj1Address.Value + ObjectConfig.YOffset);
+                    Config.Stream.SetValue(posZ, obj1Address.Value + ObjectConfig.ZOffset);
                 }
             }
 

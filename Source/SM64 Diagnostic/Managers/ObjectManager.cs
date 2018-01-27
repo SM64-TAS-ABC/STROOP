@@ -315,7 +315,7 @@ namespace SM64_Diagnostic.Managers
                 () => ButtonUtilities.UnloadObject(_currentAddresses),
                 () => ButtonUtilities.ReviveObject(_currentAddresses),
                 () => _currentAddresses.Count > 0 && _currentAddresses.All(
-                    address => Config.Stream.GetUInt16(address + ObjectConfig.ObjectActiveOffset) == 0x0000));
+                    address => Config.Stream.GetUInt16(address + ObjectConfig.ActiveOffset) == 0x0000));
             ControlUtilities.AddContextMenuStripFunctions(
                 _unloadButton,
                 new List<string>() { "Unload", "Revive" },

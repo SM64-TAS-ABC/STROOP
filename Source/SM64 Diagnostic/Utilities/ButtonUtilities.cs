@@ -133,9 +133,9 @@ namespace SM64_Diagnostic.Utilities
                         MarioConfig.StructAddress + MarioConfig.ZOffset)
                 };
 
-            float xDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + ObjectConfig.ObjectXOffset));
-            float yDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + ObjectConfig.ObjectYOffset));
-            float zDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + ObjectConfig.ObjectZOffset));
+            float xDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + ObjectConfig.XOffset));
+            float yDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + ObjectConfig.YOffset));
+            float zDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + ObjectConfig.ZOffset));
 
             HandleGotoOffset(ref xDestination, ref yDestination, ref zDestination);
 
@@ -147,9 +147,9 @@ namespace SM64_Diagnostic.Utilities
             List<TripleAddressAngle> posAddressAngles =
                 objAddresses.ConvertAll<TripleAddressAngle>(
                     objAddress => new TripleAddressAngle(
-                        objAddress + ObjectConfig.ObjectXOffset,
-                        objAddress + ObjectConfig.ObjectYOffset,
-                        objAddress + ObjectConfig.ObjectZOffset));
+                        objAddress + ObjectConfig.XOffset,
+                        objAddress + ObjectConfig.YOffset,
+                        objAddress + ObjectConfig.ZOffset));
 
             float xDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
             float yDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
@@ -194,9 +194,9 @@ namespace SM64_Diagnostic.Utilities
             List<TripleAddressAngle> posAddressAngles =
                 objAddresses.ConvertAll<TripleAddressAngle>(
                     objAddress => new TripleAddressAngle(
-                        objAddress + ObjectConfig.ObjectXOffset,
-                        objAddress + ObjectConfig.ObjectYOffset,
-                        objAddress + ObjectConfig.ObjectZOffset,
+                        objAddress + ObjectConfig.XOffset,
+                        objAddress + ObjectConfig.YOffset,
+                        objAddress + ObjectConfig.ZOffset,
                         Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset)));
 
             return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
@@ -364,8 +364,8 @@ namespace SM64_Diagnostic.Utilities
 
             foreach (var address in addresses)
             {
-                var test = Config.Stream.GetUInt16(address + ObjectConfig.ObjectActiveOffset);
-                success &= Config.Stream.SetValue((short) 0x0000, address + ObjectConfig.ObjectActiveOffset);
+                var test = Config.Stream.GetUInt16(address + ObjectConfig.ActiveOffset);
+                success &= Config.Stream.SetValue((short) 0x0000, address + ObjectConfig.ActiveOffset);
             }
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
@@ -427,7 +427,7 @@ namespace SM64_Diagnostic.Utilities
                 success &= Config.Stream.SetValue(lastGroupObj, address + ObjectSlotsConfig.ProcessPreviousLinkOffset);
                 success &= Config.Stream.SetValue(nextObj, address + ObjectSlotsConfig.ProcessNextLinkOffset);
 
-                success &= Config.Stream.SetValue((short)0x0101, address + ObjectConfig.ObjectActiveOffset);
+                success &= Config.Stream.SetValue((short)0x0101, address + ObjectConfig.ActiveOffset);
 
                 if (addresses.Count > 1)
                     if (!Config.Stream.RefreshRam() || !success)
@@ -1173,9 +1173,9 @@ namespace SM64_Diagnostic.Utilities
                     else // focused on object
                     {
                         return new TripleAddressAngle(
-                            camHackObject + ObjectConfig.ObjectXOffset,
-                            camHackObject + ObjectConfig.ObjectYOffset,
-                            camHackObject + ObjectConfig.ObjectZOffset,
+                            camHackObject + ObjectConfig.XOffset,
+                            camHackObject + ObjectConfig.YOffset,
+                            camHackObject + ObjectConfig.ZOffset,
                             getCamHackYawFacing(camHackMode));
                     }
                 
