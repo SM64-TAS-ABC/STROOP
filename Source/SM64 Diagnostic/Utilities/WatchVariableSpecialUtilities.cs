@@ -8,7 +8,7 @@ namespace SM64_Diagnostic.Structs
 {
     public static class WatchVariableSpecialUtilities
     {
-        private readonly static Func<uint, string> DEFAULT_GETTER = (uint address) => "UNIMPLEMENTED";
+        private readonly static Func<uint, string> DEFAULT_GETTER = (uint address) => "NOT IMPL";
         private readonly static Func<string, uint, bool> DEFAULT_SETTER = (string value, uint address) => false;
 
         public static (Func<uint, string> getter, Func<string, uint, bool> setter) CreateGetterSetterFunctions(string specialType)
@@ -674,7 +674,7 @@ namespace SM64_Diagnostic.Structs
                         return progress.ToString();
                     };
                     break;
-
+                    /*
                 case "RacingPenguinProgressDiff":
                     getterFunction = (uint objAddress) =>
                     {
@@ -696,6 +696,7 @@ namespace SM64_Diagnostic.Structs
                         return progressDiff.ToString();
                     };
                     break;
+                    */
                     /*
                 case "RacingPenguinProgressDiffDelta":
                     getterFunction = (uint objAddress) =>
