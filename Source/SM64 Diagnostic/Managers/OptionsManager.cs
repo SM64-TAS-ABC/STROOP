@@ -47,15 +47,15 @@ namespace SM64_Diagnostic.Managers
             RadioButton radioButtonPositionControllerRelativeAngleRecommended =
                 groupBoxPositionControllerRelativeAngle.Controls["radioButtonPositionControllerRelativeAngleRecommended"] as RadioButton;
             radioButtonPositionControllerRelativeAngleRecommended.Click += (sender, e) =>
-                Config.PositionControllerRelativeAngle.Relativity = RelativityType.Recommended;
+                PositionControllerRelativeAngleConfig.Relativity = RelativityType.Recommended;
             RadioButton radioButtonPositionControllerRelativeAngleMario =
                 groupBoxPositionControllerRelativeAngle.Controls["radioButtonPositionControllerRelativeAngleMario"] as RadioButton;
             radioButtonPositionControllerRelativeAngleMario.Click += (sender, e) =>
-                Config.PositionControllerRelativeAngle.Relativity = RelativityType.Mario;
+                PositionControllerRelativeAngleConfig.Relativity = RelativityType.Mario;
             RadioButton radioButtonPositionControllerRelativeAngleCustom =
                 groupBoxPositionControllerRelativeAngle.Controls["radioButtonPositionControllerRelativeAngleCustom"] as RadioButton;
             radioButtonPositionControllerRelativeAngleCustom.Click += (sender, e) =>
-                Config.PositionControllerRelativeAngle.Relativity = RelativityType.Custom;
+                PositionControllerRelativeAngleConfig.Relativity = RelativityType.Custom;
             BetterTextbox textBoxPositionControllerRelativeAngleCustom =
                 groupBoxPositionControllerRelativeAngle.Controls["textBoxPositionControllerRelativeAngleCustom"] as BetterTextbox;
             textBoxPositionControllerRelativeAngleCustom.LostFocus += (sender, e) =>
@@ -63,11 +63,11 @@ namespace SM64_Diagnostic.Managers
                 double value;
                 if (double.TryParse((sender as TextBox).Text, out value))
                 {
-                    Config.PositionControllerRelativeAngle.CustomAngle = value;
+                    PositionControllerRelativeAngleConfig.CustomAngle = value;
                 }
                 else
                 {
-                    (sender as TextBox).Text = Config.PositionControllerRelativeAngle.CustomAngle.ToString();
+                    (sender as TextBox).Text = PositionControllerRelativeAngleConfig.CustomAngle.ToString();
                 }
             };
 

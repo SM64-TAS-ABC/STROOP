@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SM64_Diagnostic.Structs.Configurations
 {
-    public struct PositionControllerRelativeAngleConfig
+    public static class PositionControllerRelativeAngleConfig
     {
         public enum RelativityType
         {
@@ -15,7 +15,7 @@ namespace SM64_Diagnostic.Structs.Configurations
             Custom,
         };
 
-        public RelativityType Relativity;
-        public double CustomAngle;
+        public static RelativityType Relativity;
+        public static double CustomAngle;
     }
 }

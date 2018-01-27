@@ -105,7 +105,7 @@ namespace SM64_Diagnostic.Utilities
                 if (!relativeAngle.HasValue)
                     throw new ArgumentNullException();
 
-                switch (Config.PositionControllerRelativeAngle.Relativity)
+                switch (PositionControllerRelativeAngleConfig.Relativity)
                 {
                     case RelativityType.Recommended:
                         // relativeAngle is already correct
@@ -114,7 +114,7 @@ namespace SM64_Diagnostic.Utilities
                         relativeAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
                         break;
                     case RelativityType.Custom:
-                        relativeAngle = MoreMath.NormalizeAngleUshort(Config.PositionControllerRelativeAngle.CustomAngle);
+                        relativeAngle = MoreMath.NormalizeAngleUshort(PositionControllerRelativeAngleConfig.CustomAngle);
                         break;
                 }
                 double thetaChange = MoreMath.NormalizeAngleDouble(relativeAngle.Value - 32768);
