@@ -11,7 +11,6 @@ using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Extensions;
 using System.Drawing.Drawing2D;
-using static SM64_Diagnostic.Managers.FileManager;
 using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic

@@ -17,8 +17,6 @@ namespace SM64_Diagnostic.Managers
         public static FileManager Instance = null;
 
         public enum FileMode { FileA, FileB, FileC, FileD, FileASaved, FileBSaved, FileCSaved, FileDSaved };
-        public enum HatLocation { Mario, SSLKlepto, SSLGround, SLSnowman, SLGround, TTMUkiki, TTMGround };
-
         private enum AllCoinsMeaning { Coins100, Coins255, MaxWithoutGlitches, MaxWithGlitches };
         private enum FileCategory { Stars, Cannons, Doors, Coins, Misc };
 

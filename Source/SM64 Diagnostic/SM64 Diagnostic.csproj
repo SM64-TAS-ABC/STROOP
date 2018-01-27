@@ -215,6 +215,7 @@
     <Compile Include="Enums\CamHackMode.cs" />
     <Compile Include="Enums\RomVersion.cs" />
     <Compile Include="Enums\PositionControllerRelativity.cs" />
+    <Compile Include="Enums\HatLocation.cs" />
     <Compile Include="Extensions\BitmapExtensions.cs" />
     <Compile Include="Extensions\ControlCollectionsExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
