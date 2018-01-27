@@ -12,16 +12,11 @@ namespace SM64_Diagnostic.Utilities
     {
         public static readonly int RNG_COUNT = 65114;
 
-        private static Dictionary<int, ushort> IndexToRNGDictionary;
-        private static Dictionary<ushort, int> RNGToIndexDictionary;
-        private static Dictionary<ushort, string> RNGToIndexStringDictionary;
+        private static readonly Dictionary<int, ushort> IndexToRNGDictionary;
+        private static readonly Dictionary<ushort, int> RNGToIndexDictionary;
+        private static readonly Dictionary<ushort, string> RNGToIndexStringDictionary;
 
         static RngIndexer()
-        {
-            GenerateRngDictionaries();
-        }
-
-        private static void GenerateRngDictionaries()
         {
             IndexToRNGDictionary = new Dictionary<int, ushort>();
             RNGToIndexDictionary = new Dictionary<ushort, int>();
