@@ -154,37 +154,6 @@
     <WaterLevelOffset>0x76</WaterLevelOffset>
     <AreaPointerOffset>0x90</AreaPointerOffset>
   </Mario>
-  <Debug>
-    <AdvancedModeAddressUS>0x8033D263</AdvancedModeAddressUS>
-    <AdvancedModeAddressJP>0x8033BEF3</AdvancedModeAddressJP>
-
-    <AdvancedModeSettingAddressUS>0x80330E94</AdvancedModeSettingAddressUS>
-    <AdvancedModeSettingAddressJP>0x8032FF34</AdvancedModeSettingAddressJP>
-
-    <ResourceMeterAddressUS>0x8032D594</ResourceMeterAddressUS>
-    <ResourceMeterAddressJP>0x8032C654</ResourceMeterAddressJP>
-
-    <ResourceMeterSettingAddressUS>0x8032DF10</ResourceMeterSettingAddressUS>
-    <ResourceMeterSettingAddressJP>0x8032CFB0</ResourceMeterSettingAddressJP>
-
-    <ClassicModeAddressUS>0x8032D598</ClassicModeAddressUS>
-    <ClassicModeAddressJP>0x8032C658</ClassicModeAddressJP>
-
-    <SpawnModeAddressUS>0x8033D2DF</SpawnModeAddressUS>
-    <SpawnModeAddressJP>0x8033BF6F</SpawnModeAddressJP>
-
-    <StageSelectAddressUS>0x8032D58C</StageSelectAddressUS>
-    <StageSelectAddressJP>0x8032C64C</StageSelectAddressJP>
-
-    <FreeMovementAddressUS>0x80269BDA</FreeMovementAddressUS>
-    <FreeMovementAddressJP>0x8026976E</FreeMovementAddressJP>
-
-    <FreeMovementOnValueUS>0x5FAB</FreeMovementOnValueUS>
-    <FreeMovementOnValueJP>0x5F0D</FreeMovementOnValueJP>
-
-    <FreeMovementOffValueUS>0x98D5</FreeMovementOffValueUS>
-    <FreeMovementOffValueJP>0x97D1</FreeMovementOffValueJP>
-  </Debug>
   <TriangleOffsets>
     <SurfaceType>0x00</SurfaceType>
     <ExertionForceIndex>0x02</ExertionForceIndex>
