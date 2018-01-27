@@ -745,8 +745,8 @@ namespace SM64_Diagnostic.Managers
                 mapObj.Z = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectZOffset);
                 mapObj.IsActive = objData.IsActive;
                 mapObj.Transparent = !mapObj.IsActive;
-                mapObj.Rotation = (float)((UInt16)(
-                    Config.Stream.GetUInt32(objAddress + ObjectSlotsConfig.ObjectRotationOffset)) / 65536f * 360f);
+                ushort objYaw = Config.Stream.GetUInt16(objAddress + ObjectSlotsConfig.YawFacingOffset);
+                mapObj.Rotation = (float)MoreMath.AngleUnitsToDegrees(objYaw);
                 mapObj.UsesRotation = Config.ObjectAssociations.GetObjectMapRotates(behaviorCriteria);
             }
         }

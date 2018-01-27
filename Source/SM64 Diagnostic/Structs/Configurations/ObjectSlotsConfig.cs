@@ -52,7 +52,6 @@ namespace SM64_Diagnostic.Structs
         public static readonly uint HomeXOffset = 0x164;
         public static readonly uint HomeYOffset = 0x168;
         public static readonly uint HomeZOffset = 0x16C;
-        public static readonly uint ObjectRotationOffset = 0xD4;
 
         public static readonly uint GraphicsXOffset = 0x20;
         public static readonly uint GraphicsYOffset = 0x24;
