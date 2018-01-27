@@ -184,12 +184,11 @@ namespace SM64_Diagnostic.Managers
         public override void Update(bool updateView)
         {
             // Get Mario position and rotation
-            float x, y, z, rot;
-            x = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            y = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            z = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float x = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float y = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float z = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
             ushort marioFacing = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
-            rot = (float) (((Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.RotationOffset) >> 16) % 65536) / 65536f * 360f); 
+            float rot = (float)MoreMath.AngleUnitsToDegrees(marioFacing);
 
             // Update Mario map object
             Config.MapManager.MarioMapObject.X = x;
@@ -199,10 +198,9 @@ namespace SM64_Diagnostic.Managers
             Config.MapManager.MarioMapObject.Show = true;
 
             // Get holp position
-            float holpX, holpY, holpZ;
-            holpX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPXOffset);
-            holpY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPYOffset);
-            holpZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPZOffset);
+            float holpX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPXOffset);
+            float holpY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPYOffset);
+            float holpZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPZOffset);
 
             // Update holp map object position
             Config.MapManager.HolpMapObject.X = holpX;
@@ -211,11 +209,11 @@ namespace SM64_Diagnostic.Managers
             Config.MapManager.HolpMapObject.Show = true;
 
             // Update camera position and rotation
-            float cameraX, cameraY, cameraZ , cameraRot;
-            cameraX = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.XOffset);
-            cameraY = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.YOffset);
-            cameraZ = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
-            cameraRot = (float)((Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.YawFacingOffset) / 65536f * 360f));
+            float cameraX = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.XOffset);
+            float cameraY = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.YOffset);
+            float cameraZ = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
+            ushort cameraYaw = Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.YawFacingOffset);
+            float cameraRot = (float)MoreMath.AngleUnitsToDegrees(cameraYaw);
 
             // Update floor triangle
             UInt32 floorTriangle = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);

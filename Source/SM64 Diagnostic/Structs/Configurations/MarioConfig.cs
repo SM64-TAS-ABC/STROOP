@@ -18,7 +18,6 @@ namespace SM64_Diagnostic.Structs
         public static readonly uint XOffset = 0x3C;
         public static readonly uint YOffset = 0x40;
         public static readonly uint ZOffset = 0x44;
-        public static readonly uint RotationOffset = 0x2A;
         public static readonly uint YawFacingOffset = 0x2E;
         public static readonly uint YawIntendedOffset = 0x24;
 
