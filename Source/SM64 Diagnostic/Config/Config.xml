@@ -11,28 +11,6 @@
 
   <RefreshRateFreq>30</RefreshRateFreq>
   <RamSize>0x400000</RamSize>
-  <ObjectGroups>
-    <ProcessNextLinkOffset>0x60</ProcessNextLinkOffset>
-    <ProcessPreviousLinkOffset>0x64</ProcessPreviousLinkOffset>
-    <ParentObjectOffset>0x68</ParentObjectOffset>
-    <FirstObjectGroupingAddressUS>0x8033CBE0</FirstObjectGroupingAddressUS>
-    <FirstObjectGroupingAddressJP>0x8033B870</FirstObjectGroupingAddressJP>
-    <ProcessGroupStructSize>0x68</ProcessGroupStructSize>
-    <ProcessGroupsOrdering>
-      <Group index ="0x0B" color="#FF00A5"/>
-      <Group index ="0x09" color="#FF0000"/>
-      <Group index ="0x0A" color="#FF5400"/>
-      <Group index ="0x00" color="#FFA100"/>
-      <Group index ="0x05" color="#FFF600"/>
-      <Group index ="0x04" color="#10FF00"/>
-      <Group index ="0x02" color="#00FFE9"/>
-      <Group index ="0x06" color="#0015FF"/>
-      <Group index ="0x08" color="#8000FF"/>
-      <Group index ="0x0C" color="#FF00FF"/>
-    </ProcessGroupsOrdering>
-    <VacantPointerAddressUS color="#AAAAAA">0x80361150</VacantPointerAddressUS>
-    <VacantPointerAddressJP color="#AAAAAA">0x8035FDE0</VacantPointerAddressJP>
-  </ObjectGroups>
   
   <DebugAddress></DebugAddress>
   <DebugModeAddress></DebugModeAddress>
