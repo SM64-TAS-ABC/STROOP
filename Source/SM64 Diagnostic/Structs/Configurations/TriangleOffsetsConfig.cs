@@ -32,6 +32,6 @@ namespace SM64_Diagnostic.Structs.Configurations
 
         public static readonly byte BelongsToObjectMask = 0x01;
         public static readonly byte NoCamCollisionMask = 0x02;
-        public static readonly byte ProjectionMask = 0x08;
+        public static readonly byte XProjectionMask = 0x08;
     }
 }

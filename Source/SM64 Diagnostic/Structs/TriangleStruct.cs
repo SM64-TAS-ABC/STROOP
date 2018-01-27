@@ -107,7 +107,7 @@ namespace SM64_Diagnostic.Structs
 
             Classification = TriangleUtilities.CalculateClassification(NormY);
 
-            XProjection = (Flags & TriangleOffsetsConfig.ProjectionMask) != 0;
+            XProjection = (Flags & TriangleOffsetsConfig.XProjectionMask) != 0;
             BelongsToObject = (Flags & TriangleOffsetsConfig.BelongsToObjectMask) != 0;
             NoCamCollision = (Flags & TriangleOffsetsConfig.NoCamCollisionMask) != 0;
 
