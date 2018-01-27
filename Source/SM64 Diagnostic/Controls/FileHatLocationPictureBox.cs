@@ -36,8 +36,8 @@ namespace SM64_Diagnostic
 
         private HatLocation? GetCurrentHatLocation()
         {
-            ushort hatLocationCourse = Config.Stream.GetUInt16(FileManager.Instance.CurrentFileAddress + FileConfig.HatLocationCourseOffset);
-            byte hatLocationMode = (byte)(Config.Stream.GetByte(FileManager.Instance.CurrentFileAddress + FileConfig.HatLocationModeOffset) & FileConfig.HatLocationModeMask);
+            ushort hatLocationCourse = Config.Stream.GetUInt16(Config.FileManager.CurrentFileAddress + FileConfig.HatLocationCourseOffset);
+            byte hatLocationMode = (byte)(Config.Stream.GetByte(Config.FileManager.CurrentFileAddress + FileConfig.HatLocationModeOffset) & FileConfig.HatLocationModeMask);
 
             return hatLocationMode == FileConfig.HatLocationMarioMask ? HatLocation.Mario :
                    hatLocationMode == FileConfig.HatLocationKleptoMask ? HatLocation.SSLKlepto :
@@ -74,7 +74,7 @@ namespace SM64_Diagnostic
 
                 case HatLocation.SSLGround:
                     SetHatMode(FileConfig.HatLocationGroundMask);
-                    Config.Stream.SetValue(FileConfig.HatLocationCourseSSLValue, FileManager.Instance.CurrentFileAddress + FileConfig.HatLocationCourseOffset);
+                    Config.Stream.SetValue(FileConfig.HatLocationCourseSSLValue, Config.FileManager.CurrentFileAddress + FileConfig.HatLocationCourseOffset);
                     break;
 
                 case HatLocation.SLSnowman:
@@ -83,7 +83,7 @@ namespace SM64_Diagnostic
 
                 case HatLocation.SLGround:
                     SetHatMode(FileConfig.HatLocationGroundMask);
-                    Config.Stream.SetValue(FileConfig.HatLocationCourseSLValue, FileManager.Instance.CurrentFileAddress + FileConfig.HatLocationCourseOffset);
+                    Config.Stream.SetValue(FileConfig.HatLocationCourseSLValue, Config.FileManager.CurrentFileAddress + FileConfig.HatLocationCourseOffset);
                     break;
 
                 case HatLocation.TTMUkiki:
@@ -92,16 +92,16 @@ namespace SM64_Diagnostic
 
                 case HatLocation.TTMGround:
                     SetHatMode(FileConfig.HatLocationGroundMask);
-                    Config.Stream.SetValue(FileConfig.HatLocationCourseTTMValue, FileManager.Instance.CurrentFileAddress + FileConfig.HatLocationCourseOffset);
+                    Config.Stream.SetValue(FileConfig.HatLocationCourseTTMValue, Config.FileManager.CurrentFileAddress + FileConfig.HatLocationCourseOffset);
                     break;
             }
         }
 
         private void SetHatMode(byte hatModeByte)
         {
-            byte oldByte = Config.Stream.GetByte(FileManager.Instance.CurrentFileAddress + FileConfig.HatLocationModeOffset);
+            byte oldByte = Config.Stream.GetByte(Config.FileManager.CurrentFileAddress + FileConfig.HatLocationModeOffset);
             byte newByte = MoreMath.ApplyValueToMaskedByte(oldByte, FileConfig.HatLocationModeMask, hatModeByte);
-            Config.Stream.SetValue(newByte, FileManager.Instance.CurrentFileAddress + FileConfig.HatLocationModeOffset);
+            Config.Stream.SetValue(newByte, Config.FileManager.CurrentFileAddress + FileConfig.HatLocationModeOffset);
         }
 
         public override void UpdateImage(bool force = false)
