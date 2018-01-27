@@ -39,16 +39,14 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool MoveToInCurrentPu(float x, float y, float z)
         {
-            var marioAddress = MarioConfig.StructAddress;
-
             x = GetRelativePuPosition(x);
             y = GetRelativePuPosition(y);
             z = GetRelativePuPosition(z);
 
             float marioX, marioY, marioZ;
-            marioX = Config.Stream.GetSingle(marioAddress + MarioConfig.XOffset);
-            marioY = Config.Stream.GetSingle(marioAddress + MarioConfig.YOffset);
-            marioZ = Config.Stream.GetSingle(marioAddress + MarioConfig.ZOffset);
+            marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
 
             int curPuX, curPuY, curPuZ;
             curPuX = GetPUFromCoord(marioX);
@@ -61,9 +59,9 @@ namespace SM64_Diagnostic.Utilities
             newMarioZ = z + curPuZ * PuSize;
 
             bool success = true;
-            success &= Config.Stream.SetValue(newMarioX, marioAddress + MarioConfig.XOffset);
-            success &= Config.Stream.SetValue(newMarioY, marioAddress + MarioConfig.YOffset);
-            success &= Config.Stream.SetValue(newMarioZ, marioAddress + MarioConfig.ZOffset);
+            success &= Config.Stream.SetValue(newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
+            success &= Config.Stream.SetValue(newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
+            success &= Config.Stream.SetValue(newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
             return success;
         }
 
@@ -162,12 +160,10 @@ namespace SM64_Diagnostic.Utilities
 
         public static string GetQpuPosString()
         {
-            var marioAddress = MarioConfig.StructAddress;
-
             // Get Mario position
             float marioX, marioZ;
-            marioX = Config.Stream.GetSingle(marioAddress + MarioConfig.XOffset);
-            marioZ = Config.Stream.GetSingle(marioAddress + MarioConfig.ZOffset);
+            marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
 
             // Update PU
             int puX = PuUtilities.GetPUFromCoord(marioX);

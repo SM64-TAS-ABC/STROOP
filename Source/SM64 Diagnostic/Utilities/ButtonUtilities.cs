@@ -312,25 +312,23 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool CloneObject(uint objAddress, bool updateAction = true)
         {
-            var marioAddress = MarioConfig.StructAddress;
-
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            uint lastObject = Config.Stream.GetUInt32(marioAddress + MarioConfig.HeldObjectPointerOffset);
+            uint lastObject = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.HeldObjectPointerOffset);
             
             // Set clone action flags
             if (lastObject == 0x00000000U && updateAction)
             {
                 // Set Next action
-                uint currentAction = Config.Stream.GetUInt32(marioAddress + MarioConfig.ActionOffset);
+                uint currentAction = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.ActionOffset);
                 uint nextAction = Config.MarioActions.GetAfterCloneValue(currentAction);
-                success &= Config.Stream.SetValue(nextAction, marioAddress + MarioConfig.ActionOffset);
+                success &= Config.Stream.SetValue(nextAction, MarioConfig.StructAddress + MarioConfig.ActionOffset);
             }
 
             // Set new held value
-            success &= Config.Stream.SetValue(objAddress, marioAddress + MarioConfig.HeldObjectPointerOffset);
+            success &= Config.Stream.SetValue(objAddress, MarioConfig.StructAddress + MarioConfig.HeldObjectPointerOffset);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
@@ -338,8 +336,6 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool UnCloneObject(bool updateAction = true)
         {
-            var marioAddress = MarioConfig.StructAddress;
-
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
@@ -347,13 +343,13 @@ namespace SM64_Diagnostic.Utilities
             // Set mario's next action
             if (updateAction)
             {
-                uint currentAction = Config.Stream.GetUInt32(marioAddress + MarioConfig.ActionOffset);
+                uint currentAction = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.ActionOffset);
                 uint nextAction = Config.MarioActions.GetAfterUncloneValue(currentAction);
-                success &= Config.Stream.SetValue(nextAction, marioAddress + MarioConfig.ActionOffset);
+                success &= Config.Stream.SetValue(nextAction, MarioConfig.StructAddress + MarioConfig.ActionOffset);
             }
 
             // Clear mario's held object
-            success &= Config.Stream.SetValue(0x00000000U, marioAddress + MarioConfig.HeldObjectPointerOffset);
+            success &= Config.Stream.SetValue(0x00000000U, MarioConfig.StructAddress + MarioConfig.HeldObjectPointerOffset);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
@@ -523,19 +519,17 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool ToggleHandsfree()
         {
-            var marioAddress = MarioConfig.StructAddress;
-
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            var heldObj = Config.Stream.GetUInt32(marioAddress + MarioConfig.HeldObjectPointerOffset);
+            var heldObj = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.HeldObjectPointerOffset);
 
             if (heldObj != 0x00000000U)
             {
-                uint currentAction = Config.Stream.GetUInt32(marioAddress + MarioConfig.ActionOffset);
+                uint currentAction = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.ActionOffset);
                 uint nextAction = Config.MarioActions.GetHandsfreeValue(currentAction);
-                success = Config.Stream.SetValue(nextAction, marioAddress + MarioConfig.ActionOffset);
+                success = Config.Stream.SetValue(nextAction, MarioConfig.StructAddress + MarioConfig.ActionOffset);
             }
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
@@ -643,16 +637,14 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool MarioChangeYaw(int yawOffset)
         {
-            var marioAddress = MarioConfig.StructAddress;
-
-            ushort yaw = Config.Stream.GetUInt16(marioAddress + MarioConfig.YawFacingOffset);
+            ushort yaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
             yaw += (ushort)yawOffset;
 
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= Config.Stream.SetValue(yaw, marioAddress + MarioConfig.YawFacingOffset);
+            success &= Config.Stream.SetValue(yaw, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
@@ -660,16 +652,14 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool MarioChangeHspd(float hspdOffset)
         {
-            var marioAddress = MarioConfig.StructAddress;
-
-            float hspd = Config.Stream.GetSingle(marioAddress + MarioConfig.HSpeedOffset);
+            float hspd = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
             hspd += hspdOffset;
 
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= Config.Stream.SetValue(hspd, marioAddress + MarioConfig.HSpeedOffset);
+            success &= Config.Stream.SetValue(hspd, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
@@ -677,16 +667,14 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool MarioChangeVspd(float vspdOffset)
         {
-            var marioAddress = MarioConfig.StructAddress;
-
-            float vspd = Config.Stream.GetSingle(marioAddress + MarioConfig.VSpeedOffset);
+            float vspd = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.VSpeedOffset);
             vspd += vspdOffset;
 
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= Config.Stream.SetValue(vspd, marioAddress + MarioConfig.VSpeedOffset);
+            success &= Config.Stream.SetValue(vspd, MarioConfig.StructAddress + MarioConfig.VSpeedOffset);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
@@ -882,10 +870,9 @@ namespace SM64_Diagnostic.Utilities
 
             // Get Mario position
             float marioX, marioY, marioZ;
-            var marioAddress = MarioConfig.StructAddress;
-            marioX = Config.Stream.GetSingle(marioAddress + MarioConfig.XOffset);
-            marioY = Config.Stream.GetSingle(marioAddress + MarioConfig.YOffset);
-            marioZ = Config.Stream.GetSingle(marioAddress + MarioConfig.ZOffset);
+            marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
 
             float normOffset = -(normX * marioX + normY * marioY + normZ * marioZ);
             float normDiff = normOffset - oldNormOffset;

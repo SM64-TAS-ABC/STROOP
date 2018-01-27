@@ -187,12 +187,11 @@ namespace SM64_Diagnostic.Managers
             MapManager mapManager = ManagerContext.Current.MapManager;
             // Get Mario position and rotation
             float x, y, z, rot;
-            var marioAddress = MarioConfig.StructAddress;
-            x = Config.Stream.GetSingle(marioAddress + MarioConfig.XOffset);
-            y = Config.Stream.GetSingle(marioAddress + MarioConfig.YOffset);
-            z = Config.Stream.GetSingle(marioAddress + MarioConfig.ZOffset);
-            ushort marioFacing = Config.Stream.GetUInt16(marioAddress + MarioConfig.YawFacingOffset);
-            rot = (float) (((Config.Stream.GetUInt32(marioAddress + MarioConfig.RotationOffset) >> 16) % 65536) / 65536f * 360f); 
+            x = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            y = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            z = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            ushort marioFacing = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+            rot = (float) (((Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.RotationOffset) >> 16) % 65536) / 65536f * 360f); 
 
             // Update Mario map object
             mapManager.MarioMapObject.X = x;
