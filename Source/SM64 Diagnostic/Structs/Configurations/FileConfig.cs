@@ -6,90 +6,92 @@ using System.Threading.Tasks;
 
 namespace SM64_Diagnostic.Structs.Configurations
 {
-    public struct FileConfig
+    public static class FileConfig
     {
-        public uint FileStructAddress { get { return Config.SwitchRomVersion(FileStructAddressUS, FileStructAddressJP); } }
-        public uint FileStructAddressUS;
-        public uint FileStructAddressJP;
+        public static uint FileStructAddress { get { return Config.SwitchRomVersion(FileStructAddressUS, FileStructAddressJP); } }
+        public static readonly uint FileStructAddressUS = 0x80207700;
+        public static readonly uint FileStructAddressJP = 0x80207B00;
 
-        public uint FileStructSize;
-        public uint FileAAddress { get { return FileStructAddress + 0 * FileStructSize; } }
-        public uint FileBAddress { get { return FileStructAddress + 2 * FileStructSize; } }
-        public uint FileCAddress { get { return FileStructAddress + 4 * FileStructSize; } }
-        public uint FileDAddress { get { return FileStructAddress + 6 * FileStructSize; } }
-        public uint FileASavedAddress { get { return FileStructAddress + 1 * FileStructSize; } }
-        public uint FileBSavedAddress { get { return FileStructAddress + 3 * FileStructSize; } }
-        public uint FileCSavedAddress { get { return FileStructAddress + 5 * FileStructSize; } }
-        public uint FileDSavedAddress { get { return FileStructAddress + 7 * FileStructSize; } }
+        public static readonly uint FileStructSize = 0x38;
 
-        public uint ChecksumConstantOffset;
-        public ushort ChecksumConstantValue;
-        public uint ChecksumOffset;
+        public static uint FileAAddress { get { return FileStructAddress + 0 * FileStructSize; } }
+        public static uint FileBAddress { get { return FileStructAddress + 2 * FileStructSize; } }
+        public static uint FileCAddress { get { return FileStructAddress + 4 * FileStructSize; } }
+        public static uint FileDAddress { get { return FileStructAddress + 6 * FileStructSize; } }
+        public static uint FileASavedAddress { get { return FileStructAddress + 1 * FileStructSize; } }
+        public static uint FileBSavedAddress { get { return FileStructAddress + 3 * FileStructSize; } }
+        public static uint FileCSavedAddress { get { return FileStructAddress + 5 * FileStructSize; } }
+        public static uint FileDSavedAddress { get { return FileStructAddress + 7 * FileStructSize; } }
 
-        public uint CourseStarsOffsetStart;
-        public uint TotWCStarOffset;
-        public uint CotMCStarOffset;
-        public uint VCutMStarOffset;
-        public uint PSSStarsOffset;
-        public uint SAStarOffset;
-        public uint WMotRStarOffset;
-        public uint BitDWStarOffset;
-        public uint BitFSStarOffset;
-        public uint BitSStarOffset;
-        public uint ToadMIPSStarsOffset;
+        public static readonly uint ChecksumConstantOffset = 0x34;
+        public static readonly ushort ChecksumConstantValue = 0x4441;
+        public static readonly uint ChecksumOffset = 0x36;
 
-        public uint MainCourseCannonsOffsetStart;
-        public uint WMotRCannonOffset;
-        public byte CannonMask;
+        public static readonly uint CourseStarsOffsetStart = 0x0C;
+        public static readonly uint TotWCStarOffset = 0x20;
+        public static readonly uint CotMCStarOffset = 0x1F;
+        public static readonly uint VCutMStarOffset = 0x21;
+        public static readonly uint PSSStarsOffset = 0x1E;
+        public static readonly uint SAStarOffset = 0x23;
+        public static readonly uint WMotRStarOffset = 0x22;
+        public static readonly uint BitDWStarOffset = 0x1B;
+        public static readonly uint BitFSStarOffset = 0x1C;
+        public static readonly uint BitSStarOffset = 0x1D;
+        public static readonly uint ToadMIPSStarsOffset = 0x08;
 
-        public uint WFDoorOffset;
-        public uint JRBDoorOffset;
-        public uint CCMDoorOffset;
-        public uint PSSDoorOffset;
-        public uint BitDWDoorOffset;
-        public uint BitFSDoorOffset;
-        public uint BitSDoorOffset;
+        public static readonly uint MainCourseCannonsOffsetStart = 0x0D;
+        public static readonly uint WMotRCannonOffset = 0x23;
+        public static readonly byte CannonMask = 0x80;
 
-        public byte WFDoorMask;
-        public byte JRBDoorMask;
-        public byte CCMDoorMask;
-        public byte PSSDoorMask;
-        public byte BitDWDoorMask;
-        public byte BitFSDoorMask;
-        public byte BitSDoorMask;
+        public static readonly uint WFDoorOffset = 0x0A;
+        public static readonly uint JRBDoorOffset = 0x0A;
+        public static readonly uint CCMDoorOffset = 0x0A;
+        public static readonly uint PSSDoorOffset = 0x0A;
+        public static readonly uint BitDWDoorOffset = 0x0A;
+        public static readonly uint BitFSDoorOffset = 0x0A;
+        public static readonly uint BitSDoorOffset = 0x09;
 
-        public uint CoinScoreOffsetStart;
+        public static readonly byte WFDoorMask = 0x08;
+        public static readonly byte JRBDoorMask = 0x20;
+        public static readonly byte CCMDoorMask = 0x10;
+        public static readonly byte PSSDoorMask = 0x04;
+        public static readonly byte BitDWDoorMask = 0x40;
+        public static readonly byte BitFSDoorMask = 0x80;
+        public static readonly byte BitSDoorMask = 0x10;
 
-        public uint FileStartedOffset;
-        public byte FileStartedMask;
-        public uint CapSwitchPressedOffset;
-        public byte RedCapSwitchMask;
-        public byte GreenCapSwitchMask;
-        public byte BlueCapSwitchMask;
-        public uint KeyDoorOffset;
-        public byte KeyDoor1KeyMask;
-        public byte KeyDoor1OpenedMask;
-        public byte KeyDoor2KeyMask;
-        public byte KeyDoor2OpenedMask;
-        public uint MoatDrainedOffset;
-        public byte MoatDrainedMask;
-        public uint DDDMovedBackOffset;
-        public byte DDDMovedBackMask;
+        public static readonly uint CoinScoreOffsetStart = 0x25;
 
-        public uint HatLocationModeOffset;
-        public byte HatLocationModeMask;
-        public byte HatLocationMarioMask;
-        public byte HatLocationGroundMask;
-        public byte HatLocationKleptoMask;
-        public byte HatLocationUkikiMask;
-        public byte HatLocationSnowmanMask;
-        public uint HatLocationCourseOffset;
-        public ushort HatLocationCourseSSLValue;
-        public ushort HatLocationCourseSLValue;
-        public ushort HatLocationCourseTTMValue;
+        public static readonly uint FileStartedOffset = 0x0B;
+        public static readonly byte FileStartedMask = 0x01;
+        public static readonly uint CapSwitchPressedOffset = 0x0B;
+        public static readonly byte RedCapSwitchMask = 0x02;
+        public static readonly byte GreenCapSwitchMask = 0x04;
+        public static readonly byte BlueCapSwitchMask = 0x08;
+        public static readonly uint KeyDoorOffset = 0x0B;
+        public static readonly byte KeyDoor1KeyMask = 0x10;
+        public static readonly byte KeyDoor1OpenedMask = 0x40;
+        public static readonly byte KeyDoor2KeyMask = 0x20;
+        public static readonly byte KeyDoor2OpenedMask = 0x80;
+        public static readonly uint MoatDrainedOffset = 0x0A;
+        public static readonly byte MoatDrainedMask = 0x02;
+        public static readonly uint DDDMovedBackOffset = 0x0A;
+        public static readonly byte DDDMovedBackMask = 0x01;
 
-        public uint HatPositionXOffset;
-        public uint HatPositionYOffset;
-        public uint HatPositionZOffset;
+        public static readonly uint HatLocationModeOffset = 0x09;
+        public static readonly byte HatLocationModeMask = 0x0F;
+        public static readonly byte HatLocationMarioMask = 0x00;
+        public static readonly byte HatLocationGroundMask = 0x01;
+        public static readonly byte HatLocationKleptoMask = 0x02;
+        public static readonly byte HatLocationUkikiMask = 0x04;
+        public static readonly byte HatLocationSnowmanMask = 0x08;
+
+        public static readonly uint HatLocationCourseOffset = 0x00;
+        public static readonly ushort HatLocationCourseSSLValue = 0x0801;
+        public static readonly ushort HatLocationCourseSLValue = 0x0A01;
+        public static readonly ushort HatLocationCourseTTMValue = 0x2401;
+
+        public static readonly uint HatPositionXOffset = 0x02;
+        public static readonly uint HatPositionYOffset = 0x04;
+        public static readonly uint HatPositionZOffset = 0x06;
     }
 }

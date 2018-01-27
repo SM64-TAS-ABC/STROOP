@@ -132,7 +132,7 @@ namespace SM64_Diagnostic.Managers
                 if (fileCannonPictureBox == null) continue;
 
                 uint addressOffset = GetCannonAddressOffset(row);
-                byte mask = Config.File.CannonMask;
+                byte mask = FileConfig.CannonMask;
                 fileCannonPictureBox.Initialize(addressOffset, mask, _gui.CannonImage, _gui.CannonLidImage);
                 _filePictureBoxList.Add(fileCannonPictureBox);
 
@@ -164,7 +164,7 @@ namespace SM64_Diagnostic.Managers
                 int col = 9;
                 string controlName = String.Format("textBoxTableRow{0}Col{1}", row + 1, col + 1);
                 FileCoinScoreTextbox fileCoinScoreTextBox = fileTable.Controls[controlName] as FileCoinScoreTextbox;
-                fileCoinScoreTextBox.Initialize(Config.File.CoinScoreOffsetStart + (uint)row);
+                fileCoinScoreTextBox.Initialize(FileConfig.CoinScoreOffsetStart + (uint)row);
                 _fileTextboxList.Add(fileCoinScoreTextBox);
             }
 
@@ -201,48 +201,48 @@ namespace SM64_Diagnostic.Managers
 
             // hat position textboxes
             FileHatPositionTextbox textboxHatLocationPositionX = hatLocationGroupbox.Controls["textboxHatLocationPositionX"] as FileHatPositionTextbox;
-            textboxHatLocationPositionX.Initialize(Config.File.HatPositionXOffset);
+            textboxHatLocationPositionX.Initialize(FileConfig.HatPositionXOffset);
             _fileTextboxList.Add(textboxHatLocationPositionX);
 
             FileHatPositionTextbox textboxHatLocationPositionY = hatLocationGroupbox.Controls["textboxHatLocationPositionY"] as FileHatPositionTextbox;
-            textboxHatLocationPositionY.Initialize(Config.File.HatPositionYOffset);
+            textboxHatLocationPositionY.Initialize(FileConfig.HatPositionYOffset);
             _fileTextboxList.Add(textboxHatLocationPositionY);
 
             FileHatPositionTextbox textboxHatLocationPositionZ = hatLocationGroupbox.Controls["textboxHatLocationPositionZ"] as FileHatPositionTextbox;
-            textboxHatLocationPositionZ.Initialize(Config.File.HatPositionZOffset);
+            textboxHatLocationPositionZ.Initialize(FileConfig.HatPositionZOffset);
             _fileTextboxList.Add(textboxHatLocationPositionZ);
 
             // miscellaneous checkbox pictures
             FileBinaryPictureBox filePictureBoxFileStarted = splitContainerFile.Panel1.Controls["filePictureBoxFileStarted"] as FileBinaryPictureBox;
-            filePictureBoxFileStarted.Initialize(Config.File.FileStartedOffset, Config.File.FileStartedMask, _gui.FileStartedImage, _gui.FileNotStartedImage);
+            filePictureBoxFileStarted.Initialize(FileConfig.FileStartedOffset, FileConfig.FileStartedMask, _gui.FileStartedImage, _gui.FileNotStartedImage);
             _filePictureBoxList.Add(filePictureBoxFileStarted);
 
             FileBinaryPictureBox filePictureBoxRedCapSwitchPressed = splitContainerFile.Panel1.Controls["filePictureBoxRedCapSwitchPressed"] as FileBinaryPictureBox;
-            filePictureBoxRedCapSwitchPressed.Initialize(Config.File.CapSwitchPressedOffset, Config.File.RedCapSwitchMask, _gui.CapSwitchRedPressedImage, _gui.CapSwitchRedUnpressedImage);
+            filePictureBoxRedCapSwitchPressed.Initialize(FileConfig.CapSwitchPressedOffset, FileConfig.RedCapSwitchMask, _gui.CapSwitchRedPressedImage, _gui.CapSwitchRedUnpressedImage);
             _filePictureBoxList.Add(filePictureBoxRedCapSwitchPressed);
 
             FileBinaryPictureBox filePictureBoxGreenCapSwitchPressed = splitContainerFile.Panel1.Controls["filePictureBoxGreenCapSwitchPressed"] as FileBinaryPictureBox;
-            filePictureBoxGreenCapSwitchPressed.Initialize(Config.File.CapSwitchPressedOffset, Config.File.GreenCapSwitchMask, _gui.CapSwitchGreenPressedImage, _gui.CapSwitchGreenUnpressedImage);
+            filePictureBoxGreenCapSwitchPressed.Initialize(FileConfig.CapSwitchPressedOffset, FileConfig.GreenCapSwitchMask, _gui.CapSwitchGreenPressedImage, _gui.CapSwitchGreenUnpressedImage);
             _filePictureBoxList.Add(filePictureBoxGreenCapSwitchPressed);
 
             FileBinaryPictureBox filePictureBoxBlueCapSwitchPressed = splitContainerFile.Panel1.Controls["filePictureBoxBlueCapSwitchPressed"] as FileBinaryPictureBox;
-            filePictureBoxBlueCapSwitchPressed.Initialize(Config.File.CapSwitchPressedOffset, Config.File.BlueCapSwitchMask, _gui.CapSwitchBluePressedImage, _gui.CapSwitchBlueUnpressedImage);
+            filePictureBoxBlueCapSwitchPressed.Initialize(FileConfig.CapSwitchPressedOffset, FileConfig.BlueCapSwitchMask, _gui.CapSwitchBluePressedImage, _gui.CapSwitchBlueUnpressedImage);
             _filePictureBoxList.Add(filePictureBoxBlueCapSwitchPressed);
 
             FileKeyDoorPictureBox filePictureBoxKeyDoor1Opened = splitContainerFile.Panel1.Controls["filePictureBoxKeyDoor1Opened"] as FileKeyDoorPictureBox;
-            filePictureBoxKeyDoor1Opened.Initialize(Config.File.KeyDoorOffset, Config.File.KeyDoor1KeyMask, Config.File.KeyDoor1OpenedMask, _gui.KeyDoorOpenKeyImage, _gui.KeyDoorClosedKeyImage, _gui.KeyDoorOpenImage, _gui.KeyDoorClosedImage);
+            filePictureBoxKeyDoor1Opened.Initialize(FileConfig.KeyDoorOffset, FileConfig.KeyDoor1KeyMask, FileConfig.KeyDoor1OpenedMask, _gui.KeyDoorOpenKeyImage, _gui.KeyDoorClosedKeyImage, _gui.KeyDoorOpenImage, _gui.KeyDoorClosedImage);
             _filePictureBoxList.Add(filePictureBoxKeyDoor1Opened);
 
             FileKeyDoorPictureBox filePictureBoxKeyDoor2Opened = splitContainerFile.Panel1.Controls["filePictureBoxKeyDoor2Opened"] as FileKeyDoorPictureBox;
-            filePictureBoxKeyDoor2Opened.Initialize(Config.File.KeyDoorOffset, Config.File.KeyDoor2KeyMask, Config.File.KeyDoor2OpenedMask, _gui.KeyDoorOpenKeyImage, _gui.KeyDoorClosedKeyImage, _gui.KeyDoorOpenImage, _gui.KeyDoorClosedImage);
+            filePictureBoxKeyDoor2Opened.Initialize(FileConfig.KeyDoorOffset, FileConfig.KeyDoor2KeyMask, FileConfig.KeyDoor2OpenedMask, _gui.KeyDoorOpenKeyImage, _gui.KeyDoorClosedKeyImage, _gui.KeyDoorOpenImage, _gui.KeyDoorClosedImage);
             _filePictureBoxList.Add(filePictureBoxKeyDoor2Opened);
 
             FileBinaryPictureBox filePictureBoxMoatDrained = splitContainerFile.Panel1.Controls["filePictureBoxMoatDrained"] as FileBinaryPictureBox;
-            filePictureBoxMoatDrained.Initialize(Config.File.MoatDrainedOffset, Config.File.MoatDrainedMask, _gui.MoatDrainedImage, _gui.MoatNotDrainedImage);
+            filePictureBoxMoatDrained.Initialize(FileConfig.MoatDrainedOffset, FileConfig.MoatDrainedMask, _gui.MoatDrainedImage, _gui.MoatNotDrainedImage);
             _filePictureBoxList.Add(filePictureBoxMoatDrained);
 
             FileBinaryPictureBox filePictureBoxDDDMovedBack = splitContainerFile.Panel1.Controls["filePictureBoxDDDMovedBack"] as FileBinaryPictureBox;
-            filePictureBoxDDDMovedBack.Initialize(Config.File.DDDMovedBackOffset, Config.File.DDDMovedBackMask, _gui.DDDPaintingMovedBackImage, _gui.DDDPaintingNotMovedBackImage);
+            filePictureBoxDDDMovedBack.Initialize(FileConfig.DDDMovedBackOffset, FileConfig.DDDMovedBackMask, _gui.DDDPaintingMovedBackImage, _gui.DDDPaintingNotMovedBackImage);
             _filePictureBoxList.Add(filePictureBoxDDDMovedBack);
 
             //checkbox
@@ -334,7 +334,7 @@ namespace SM64_Diagnostic.Managers
             // go through the 25 contiguous star bytes
             for (int i = 0; i < 25; i++)
             {
-                starByte = Config.Stream.GetByte(CurrentFileAddress + Config.File.CourseStarsOffsetStart + (uint)i);
+                starByte = Config.Stream.GetByte(CurrentFileAddress + FileConfig.CourseStarsOffsetStart + (uint)i);
                 for (int b = 0; b < 7; b++)
                 {
                     starCount += (byte)((starByte >> b) & 1);
@@ -342,7 +342,7 @@ namespace SM64_Diagnostic.Managers
             }
 
             // go through the 1 non-contiguous star byte (for toads and MIPS)
-            starByte = Config.Stream.GetByte(CurrentFileAddress + Config.File.ToadMIPSStarsOffset);
+            starByte = Config.Stream.GetByte(CurrentFileAddress + FileConfig.ToadMIPSStarsOffset);
             for (int b = 0; b < 7; b++)
             {
                 starCount += (byte)((starByte >> b) & 1);
@@ -375,19 +375,19 @@ namespace SM64_Diagnostic.Managers
             switch (row)
             {
                 case 1:
-                    return Config.File.WFDoorOffset;
+                    return FileConfig.WFDoorOffset;
                 case 2:
-                    return Config.File.JRBDoorOffset;
+                    return FileConfig.JRBDoorOffset;
                 case 3:
-                    return Config.File.CCMDoorOffset;
+                    return FileConfig.CCMDoorOffset;
                 case 18:
-                    return Config.File.PSSDoorOffset;
+                    return FileConfig.PSSDoorOffset;
                 case 21:
-                    return Config.File.BitDWDoorOffset;
+                    return FileConfig.BitDWDoorOffset;
                 case 22:
-                    return Config.File.BitFSDoorOffset;
+                    return FileConfig.BitFSDoorOffset;
                 case 23:
-                    return Config.File.BitSDoorOffset;
+                    return FileConfig.BitSDoorOffset;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -398,19 +398,19 @@ namespace SM64_Diagnostic.Managers
             switch (row)
             {
                 case 1:
-                    return Config.File.WFDoorMask;
+                    return FileConfig.WFDoorMask;
                 case 2:
-                    return Config.File.JRBDoorMask;
+                    return FileConfig.JRBDoorMask;
                 case 3:
-                    return Config.File.CCMDoorMask;
+                    return FileConfig.CCMDoorMask;
                 case 18:
-                    return Config.File.PSSDoorMask;
+                    return FileConfig.PSSDoorMask;
                 case 21:
-                    return Config.File.BitDWDoorMask;
+                    return FileConfig.BitDWDoorMask;
                 case 22:
-                    return Config.File.BitFSDoorMask;
+                    return FileConfig.BitFSDoorMask;
                 case 23:
-                    return Config.File.BitSDoorMask;
+                    return FileConfig.BitSDoorMask;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -419,9 +419,9 @@ namespace SM64_Diagnostic.Managers
         private uint GetCannonAddressOffset(int row)
         {
             if (row == 20)
-                return Config.File.WMotRCannonOffset;
+                return FileConfig.WMotRCannonOffset;
             else
-                return Config.File.MainCourseCannonsOffsetStart + (uint)row;
+                return FileConfig.MainCourseCannonsOffsetStart + (uint)row;
         }
 
         private uint GetStarAddressOffset(int row)
@@ -429,28 +429,28 @@ namespace SM64_Diagnostic.Managers
             switch (row)
             {
                 default:
-                    return Config.File.CourseStarsOffsetStart + (uint)row;
+                    return FileConfig.CourseStarsOffsetStart + (uint)row;
                 case 15:
-                    return Config.File.TotWCStarOffset;
+                    return FileConfig.TotWCStarOffset;
                 case 16:
-                    return Config.File.CotMCStarOffset;
+                    return FileConfig.CotMCStarOffset;
                 case 17:
-                    return Config.File.VCutMStarOffset;
+                    return FileConfig.VCutMStarOffset;
                 case 18:
-                    return Config.File.PSSStarsOffset;
+                    return FileConfig.PSSStarsOffset;
                 case 19:
-                    return Config.File.SAStarOffset;
+                    return FileConfig.SAStarOffset;
                 case 20:
-                    return Config.File.WMotRStarOffset;
+                    return FileConfig.WMotRStarOffset;
                 case 21:
-                    return Config.File.BitDWStarOffset;
+                    return FileConfig.BitDWStarOffset;
                 case 22:
-                    return Config.File.BitFSStarOffset;
+                    return FileConfig.BitFSStarOffset;
                 case 23:
-                    return Config.File.BitSStarOffset;
+                    return FileConfig.BitSStarOffset;
                 case 24:
                 case 25:
-                    return Config.File.ToadMIPSStarsOffset;
+                    return FileConfig.ToadMIPSStarsOffset;
             }
         }
 
@@ -470,8 +470,8 @@ namespace SM64_Diagnostic.Managers
         public ushort GetChecksum(uint? nullableFileAddress = null)
         {
             uint fileAddress = nullableFileAddress ?? CurrentFileAddress;
-            ushort checksum = (ushort)(Config.File.ChecksumConstantValue % 256 + Config.File.ChecksumConstantValue / 256);
-            for (uint i = 0; i < Config.File.FileStructSize - 4; i++)
+            ushort checksum = (ushort)(FileConfig.ChecksumConstantValue % 256 + FileConfig.ChecksumConstantValue / 256);
+            for (uint i = 0; i < FileConfig.FileStructSize - 4; i++)
             {
                 byte b = Config.Stream.GetByte(fileAddress + i);
                 checksum += b;
@@ -485,47 +485,47 @@ namespace SM64_Diagnostic.Managers
             uint nonSavedAddress = GetNonSavedFileAddress();
 
             // Set the checksum constant
-            Config.Stream.SetValue(Config.File.ChecksumConstantValue, nonSavedAddress + Config.File.ChecksumConstantOffset);
+            Config.Stream.SetValue(FileConfig.ChecksumConstantValue, nonSavedAddress + FileConfig.ChecksumConstantOffset);
 
             // Sum up all bytes to calculate the checksum
-            ushort checksum = (ushort)(Config.File.ChecksumConstantValue % 256 + Config.File.ChecksumConstantValue / 256);
-            for (uint i = 0; i < Config.File.FileStructSize-4; i++)
+            ushort checksum = (ushort)(FileConfig.ChecksumConstantValue % 256 + FileConfig.ChecksumConstantValue / 256);
+            for (uint i = 0; i < FileConfig.FileStructSize-4; i++)
             {
                 byte b = Config.Stream.GetByte(nonSavedAddress + i);
                 checksum += b;
             }
 
             // Set the checksum
-            Config.Stream.SetValue(checksum, nonSavedAddress + Config.File.ChecksumOffset);
+            Config.Stream.SetValue(checksum, nonSavedAddress + FileConfig.ChecksumOffset);
 
             // Copy all values from the unsaved struct to the saved struct
-            uint savedAddress = nonSavedAddress + Config.File.FileStructSize;
-            for (uint i = 0; i < Config.File.FileStructSize - 4; i++)
+            uint savedAddress = nonSavedAddress + FileConfig.FileStructSize;
+            for (uint i = 0; i < FileConfig.FileStructSize - 4; i++)
             {
                 byte b = Config.Stream.GetByte(nonSavedAddress + i);
                 Config.Stream.SetValue(b, savedAddress + i);
             }
-            Config.Stream.SetValue(Config.File.ChecksumConstantValue, savedAddress + Config.File.ChecksumConstantOffset);
-            Config.Stream.SetValue(checksum, savedAddress + Config.File.ChecksumOffset);
+            Config.Stream.SetValue(FileConfig.ChecksumConstantValue, savedAddress + FileConfig.ChecksumConstantOffset);
+            Config.Stream.SetValue(checksum, savedAddress + FileConfig.ChecksumOffset);
         }
 
         private void FileEraseButton_Click(object sender, EventArgs e)
         {
             // Get the corresponding unsaved and saved file struct address
             uint nonSavedAddress = GetNonSavedFileAddress();
-            uint savedAddress = nonSavedAddress + Config.File.FileStructSize;
+            uint savedAddress = nonSavedAddress + FileConfig.FileStructSize;
 
             // Get checksum value
-            ushort checksum = (ushort)(Config.File.ChecksumConstantValue % 256 + Config.File.ChecksumConstantValue / 256);
+            ushort checksum = (ushort)(FileConfig.ChecksumConstantValue % 256 + FileConfig.ChecksumConstantValue / 256);
 
             // Set the checksum constant and checksum (in both unsaved and saved)
-            Config.Stream.SetValue(Config.File.ChecksumConstantValue, nonSavedAddress + Config.File.ChecksumConstantOffset);
-            Config.Stream.SetValue(Config.File.ChecksumConstantValue, savedAddress + Config.File.ChecksumConstantOffset);
-            Config.Stream.SetValue(checksum, nonSavedAddress + Config.File.ChecksumOffset);
-            Config.Stream.SetValue(checksum, savedAddress + Config.File.ChecksumOffset);
+            Config.Stream.SetValue(FileConfig.ChecksumConstantValue, nonSavedAddress + FileConfig.ChecksumConstantOffset);
+            Config.Stream.SetValue(FileConfig.ChecksumConstantValue, savedAddress + FileConfig.ChecksumConstantOffset);
+            Config.Stream.SetValue(checksum, nonSavedAddress + FileConfig.ChecksumOffset);
+            Config.Stream.SetValue(checksum, savedAddress + FileConfig.ChecksumOffset);
 
             // Set all bytes to 0 (in both unsaved and saved)
-            for (uint i = 0; i < Config.File.FileStructSize - 4; i++)
+            for (uint i = 0; i < FileConfig.FileStructSize - 4; i++)
             {
                 Config.Stream.SetValue((byte)0, nonSavedAddress + i);
                 Config.Stream.SetValue((byte)0, savedAddress + i);
@@ -546,7 +546,7 @@ namespace SM64_Diagnostic.Managers
 
             uint nonSavedAddress = GetNonSavedFileAddress();
             List<uint> addressesToPaste = _inGameCopyPasteCheckbox.Checked ?
-                new List<uint> { nonSavedAddress, nonSavedAddress + Config.File.FileStructSize } :
+                new List<uint> { nonSavedAddress, nonSavedAddress + FileConfig.FileStructSize } :
                 new List<uint> { CurrentFileAddress };
 
             foreach (uint addressToPaste in addressesToPaste)
@@ -558,8 +558,8 @@ namespace SM64_Diagnostic.Managers
         public byte[] GetBufferedBytes(uint? nullableFileAddress = null)
         {
             uint fileAddress = nullableFileAddress ?? CurrentFileAddress;
-            byte[] bufferedBytes = new byte[Config.File.FileStructSize];
-            for (int i = 0; i < Config.File.FileStructSize; i++)
+            byte[] bufferedBytes = new byte[FileConfig.FileStructSize];
+            for (int i = 0; i < FileConfig.FileStructSize; i++)
             {
                 bufferedBytes[i] = Config.Stream.GetByte(fileAddress + (uint)i);
             }
@@ -569,7 +569,7 @@ namespace SM64_Diagnostic.Managers
         public void SetBufferedBytes(byte[] bufferedBytes, uint? nullableFileAddress = null)
         {
             uint fileAddress = nullableFileAddress ?? CurrentFileAddress;
-            for (int i = 0; i < Config.File.FileStructSize; i++)
+            for (int i = 0; i < FileConfig.FileStructSize; i++)
             {
                 Config.Stream.SetValue(bufferedBytes[i], fileAddress + (uint)i);
             }
@@ -624,27 +624,27 @@ namespace SM64_Diagnostic.Managers
             {
                 for (int i = 0; i < 15; i++)
                 {
-                    bufferedBytes[Config.File.CoinScoreOffsetStart + (uint)i] = setOn ? GetCoinScoreForCourse(i + 1) : (byte)0;
+                    bufferedBytes[FileConfig.CoinScoreOffsetStart + (uint)i] = setOn ? GetCoinScoreForCourse(i + 1) : (byte)0;
                 }
             }
 
             if (fileCategories.Contains(FileCategory.Doors))
             {
-                setValues(Config.File.KeyDoorOffset, Config.File.KeyDoor1KeyMask, false);
-                setValues(Config.File.KeyDoorOffset, Config.File.KeyDoor1OpenedMask, setOn);
-                setValues(Config.File.KeyDoorOffset, Config.File.KeyDoor2KeyMask, false);
-                setValues(Config.File.KeyDoorOffset, Config.File.KeyDoor2OpenedMask, setOn);
+                setValues(FileConfig.KeyDoorOffset, FileConfig.KeyDoor1KeyMask, false);
+                setValues(FileConfig.KeyDoorOffset, FileConfig.KeyDoor1OpenedMask, setOn);
+                setValues(FileConfig.KeyDoorOffset, FileConfig.KeyDoor2KeyMask, false);
+                setValues(FileConfig.KeyDoorOffset, FileConfig.KeyDoor2OpenedMask, setOn);
             }
 
             if (fileCategories.Contains(FileCategory.Misc))
             {
-                setValues(Config.File.FileStartedOffset, Config.File.FileStartedMask, setOn);
-                setValues(Config.File.CapSwitchPressedOffset, Config.File.RedCapSwitchMask, setOn);
-                setValues(Config.File.CapSwitchPressedOffset, Config.File.GreenCapSwitchMask, setOn);
-                setValues(Config.File.CapSwitchPressedOffset, Config.File.BlueCapSwitchMask, setOn);
-                setValues(Config.File.MoatDrainedOffset, Config.File.MoatDrainedMask, setOn);
-                setValues(Config.File.DDDMovedBackOffset, Config.File.DDDMovedBackMask, setOn);
-                setValues(Config.File.HatLocationModeOffset, Config.File.HatLocationModeMask, false);
+                setValues(FileConfig.FileStartedOffset, FileConfig.FileStartedMask, setOn);
+                setValues(FileConfig.CapSwitchPressedOffset, FileConfig.RedCapSwitchMask, setOn);
+                setValues(FileConfig.CapSwitchPressedOffset, FileConfig.GreenCapSwitchMask, setOn);
+                setValues(FileConfig.CapSwitchPressedOffset, FileConfig.BlueCapSwitchMask, setOn);
+                setValues(FileConfig.MoatDrainedOffset, FileConfig.MoatDrainedMask, setOn);
+                setValues(FileConfig.DDDMovedBackOffset, FileConfig.DDDMovedBackMask, setOn);
+                setValues(FileConfig.HatLocationModeOffset, FileConfig.HatLocationModeMask, false);
             }
 
             SetBufferedBytes(bufferedBytes);
@@ -657,16 +657,16 @@ namespace SM64_Diagnostic.Managers
             {
                 case FileMode.FileA:
                 case FileMode.FileASaved:
-                    return Config.File.FileAAddress;
+                    return FileConfig.FileAAddress;
                 case FileMode.FileB:
                 case FileMode.FileBSaved:
-                    return Config.File.FileBAddress;
+                    return FileConfig.FileBAddress;
                 case FileMode.FileC:
                 case FileMode.FileCSaved:
-                    return Config.File.FileCAddress;
+                    return FileConfig.FileCAddress;
                 case FileMode.FileD:
                 case FileMode.FileDSaved:
-                    return Config.File.FileDAddress;
+                    return FileConfig.FileDAddress;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -678,21 +678,21 @@ namespace SM64_Diagnostic.Managers
             switch (mode)
             {
                 case FileMode.FileA:
-                    return Config.File.FileAAddress;
+                    return FileConfig.FileAAddress;
                 case FileMode.FileB:
-                    return Config.File.FileBAddress;
+                    return FileConfig.FileBAddress;
                 case FileMode.FileC:
-                    return Config.File.FileCAddress;
+                    return FileConfig.FileCAddress;
                 case FileMode.FileD:
-                    return Config.File.FileDAddress;
+                    return FileConfig.FileDAddress;
                 case FileMode.FileASaved:
-                    return Config.File.FileASavedAddress;
+                    return FileConfig.FileASavedAddress;
                 case FileMode.FileBSaved:
-                    return Config.File.FileBSavedAddress;
+                    return FileConfig.FileBSavedAddress;
                 case FileMode.FileCSaved:
-                    return Config.File.FileCSavedAddress;
+                    return FileConfig.FileCSavedAddress;
                 case FileMode.FileDSaved:
-                    return Config.File.FileDSavedAddress;
+                    return FileConfig.FileDSavedAddress;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -704,15 +704,15 @@ namespace SM64_Diagnostic.Managers
             switch (inGameFile)
             {
                 case 1:
-                    return Config.File.FileAAddress;
+                    return FileConfig.FileAAddress;
                 case 2:
-                    return Config.File.FileBAddress;
+                    return FileConfig.FileBAddress;
                 case 3:
-                    return Config.File.FileCAddress;
+                    return FileConfig.FileCAddress;
                 case 4:
-                    return Config.File.FileDAddress;
+                    return FileConfig.FileDAddress;
                 default:
-                    return Config.File.FileAAddress;
+                    return FileConfig.FileAAddress;
             }
         }
 
