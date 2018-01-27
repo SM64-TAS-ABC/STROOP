@@ -119,7 +119,7 @@ namespace SM64_Diagnostic.Controls
                     break;
                 case 2:
                     name = "HP ";
-                    address = Config.Mario.StructAddress + Config.Hud.HpCountOffset;
+                    address = Config.Mario.StructAddress + HudConfig.HpCountOffset;
                     typeRadioButton = radioButtonShort;
                     useHex = true;
                     break;

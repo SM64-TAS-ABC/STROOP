@@ -36,7 +36,7 @@ namespace SM64_Diagnostic.Managers
                 "Turn On HUD",
                 () => ButtonUtilities.SetHudVisibility(false),
                 () => ButtonUtilities.SetHudVisibility(true),
-                () => (Config.Stream.GetByte(Config.Mario.StructAddress + Config.Hud.VisibilityOffset) & Config.Hud.VisibilityMask) == 0);
+                () => (Config.Stream.GetByte(Config.Mario.StructAddress + HudConfig.VisibilityOffset) & HudConfig.VisibilityMask) == 0);
 
             _checkBoxFullHP = splitContainerHud.Panel1.Controls["checkBoxFullHP"] as CheckBox;
         }

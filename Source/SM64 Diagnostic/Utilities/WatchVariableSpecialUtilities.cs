@@ -1223,7 +1223,7 @@ namespace SM64_Diagnostic.Structs
                 case "HudTimeText":
                     getterFunction = (uint dummy) =>
                     {
-                        ushort time = Config.Stream.GetUInt16(Config.Mario.StructAddress + Config.Hud.TimeOffset);
+                        ushort time = Config.Stream.GetUInt16(Config.Mario.StructAddress + HudConfig.TimeOffset);
                         int totalDeciSeconds = time / 3;
                         int deciSecondComponent = totalDeciSeconds % 10;
                         int secondComponent = (totalDeciSeconds / 10) % 60;
@@ -1264,7 +1264,7 @@ namespace SM64_Diagnostic.Structs
 
                         int time = totalDeciSeconds * 3;
                         ushort timeUShort = ParsingUtilities.ParseUShortRoundingCapping(time);
-                        return Config.Stream.SetValue(timeUShort, Config.Mario.StructAddress + Config.Hud.TimeOffset);
+                        return Config.Stream.SetValue(timeUShort, Config.Mario.StructAddress + HudConfig.TimeOffset);
                     };
                     break;
 

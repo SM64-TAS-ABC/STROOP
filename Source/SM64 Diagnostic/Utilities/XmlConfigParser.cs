@@ -475,67 +475,6 @@ namespace SM64_Diagnostic.Utilities
                         }
                         break;
 
-                    case "Hud":
-                        foreach (XElement subElement in element.Elements())
-                        {
-                            switch (subElement.Name.ToString())
-                            {
-                                case "LifeCountOffset":
-                                    Config.Hud.LifeCountOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "HpCountOffset":
-                                    Config.Hud.HpCountOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "CoinCountOffset":
-                                    Config.Hud.CoinCountOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "StarCountOffset":
-                                    Config.Hud.StarCountOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "LifeDisplayOffset":
-                                    Config.Hud.LifeDisplayOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "HpDisplayOffset":
-                                    Config.Hud.HpDisplayOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "CoinDisplayOffset":
-                                    Config.Hud.CoinDisplayOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "StarDisplayOffset":
-                                    Config.Hud.StarDisplayOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "TimeOffset":
-                                    Config.Hud.TimeOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "VisibilityOffset":
-                                    Config.Hud.VisibilityOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                                case "VisibilityMask":
-                                    Config.Hud.VisibilityMask = (byte)ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "FullHpInt":
-                                    Config.Hud.FullHpInt = short.Parse(subElement.Value);
-                                    break;
-                                case "FullHp":
-                                    Config.Hud.FullHp = short.Parse(subElement.Value);
-                                    break;
-                                case "StandardLives":
-                                    Config.Hud.StandardLives = sbyte.Parse(subElement.Value);
-                                    break;
-                                case "StandardCoins":
-                                    Config.Hud.StandardCoins = short.Parse(subElement.Value);
-                                    break;
-                                case "StandardStars":
-                                    Config.Hud.StandardStars = short.Parse(subElement.Value);
-                                    break;
-                            }
-                        }
-                        break;
-
                     case "Debug":
                         foreach (XElement subElement in element.Elements())
                         {

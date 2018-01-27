@@ -776,12 +776,12 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool FullHp()
         {
-            return Config.Stream.SetValue(Config.Hud.FullHp, Config.Mario.StructAddress + Config.Hud.HpCountOffset);
+            return Config.Stream.SetValue(HudConfig.FullHp, Config.Mario.StructAddress + HudConfig.HpCountOffset);
         }
 
         public static bool Die()
         {
-            return Config.Stream.SetValue((short)255, Config.Mario.StructAddress + Config.Hud.HpCountOffset);
+            return Config.Stream.SetValue((short)255, Config.Mario.StructAddress + HudConfig.HpCountOffset);
         }
 
         public static bool StandardHud()
@@ -790,15 +790,15 @@ namespace SM64_Diagnostic.Utilities
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= Config.Stream.SetValue(Config.Hud.FullHp, Config.Mario.StructAddress + Config.Hud.HpCountOffset);
-            success &= Config.Stream.SetValue(Config.Hud.StandardCoins, Config.Mario.StructAddress + Config.Hud.CoinCountOffset);
-            success &= Config.Stream.SetValue(Config.Hud.StandardLives, Config.Mario.StructAddress + Config.Hud.LifeCountOffset);
-            success &= Config.Stream.SetValue(Config.Hud.StandardStars, Config.Mario.StructAddress + Config.Hud.StarCountOffset);
+            success &= Config.Stream.SetValue(HudConfig.FullHp, Config.Mario.StructAddress + HudConfig.HpCountOffset);
+            success &= Config.Stream.SetValue(HudConfig.StandardCoins, Config.Mario.StructAddress + HudConfig.CoinCountOffset);
+            success &= Config.Stream.SetValue(HudConfig.StandardLives, Config.Mario.StructAddress + HudConfig.LifeCountOffset);
+            success &= Config.Stream.SetValue(HudConfig.StandardStars, Config.Mario.StructAddress + HudConfig.StarCountOffset);
 
-            success &= Config.Stream.SetValue(Config.Hud.FullHpInt, Config.Mario.StructAddress + Config.Hud.HpDisplayOffset);
-            success &= Config.Stream.SetValue(Config.Hud.StandardCoins, Config.Mario.StructAddress + Config.Hud.CoinDisplayOffset);
-            success &= Config.Stream.SetValue((short)Config.Hud.StandardLives, Config.Mario.StructAddress + Config.Hud.LifeDisplayOffset);
-            success &= Config.Stream.SetValue(Config.Hud.StandardStars, Config.Mario.StructAddress + Config.Hud.StarDisplayOffset);
+            success &= Config.Stream.SetValue(HudConfig.FullHpInt, Config.Mario.StructAddress + HudConfig.HpDisplayOffset);
+            success &= Config.Stream.SetValue(HudConfig.StandardCoins, Config.Mario.StructAddress + HudConfig.CoinDisplayOffset);
+            success &= Config.Stream.SetValue((short)HudConfig.StandardLives, Config.Mario.StructAddress + HudConfig.LifeDisplayOffset);
+            success &= Config.Stream.SetValue(HudConfig.StandardStars, Config.Mario.StructAddress + HudConfig.StarDisplayOffset);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
@@ -810,8 +810,8 @@ namespace SM64_Diagnostic.Utilities
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= Config.Stream.SetValue((short)99, Config.Mario.StructAddress + Config.Hud.CoinCountOffset);
-            success &= Config.Stream.SetValue((short)99, Config.Mario.StructAddress + Config.Hud.CoinDisplayOffset);
+            success &= Config.Stream.SetValue((short)99, Config.Mario.StructAddress + HudConfig.CoinCountOffset);
+            success &= Config.Stream.SetValue((short)99, Config.Mario.StructAddress + HudConfig.CoinDisplayOffset);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
@@ -823,8 +823,8 @@ namespace SM64_Diagnostic.Utilities
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= Config.Stream.SetValue((sbyte)100, Config.Mario.StructAddress + Config.Hud.LifeCountOffset);
-            success &= Config.Stream.SetValue((short)100, Config.Mario.StructAddress + Config.Hud.LifeDisplayOffset);
+            success &= Config.Stream.SetValue((sbyte)100, Config.Mario.StructAddress + HudConfig.LifeCountOffset);
+            success &= Config.Stream.SetValue((short)100, Config.Mario.StructAddress + HudConfig.LifeDisplayOffset);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
@@ -1426,14 +1426,14 @@ namespace SM64_Diagnostic.Utilities
 
         public static bool SetHudVisibility(bool hudOn)
         {
-            byte currentHudVisibility = Config.Stream.GetByte(Config.Mario.StructAddress + Config.Hud.VisibilityOffset);
-            byte newHudVisibility = MoreMath.ApplyValueToMaskedByte(currentHudVisibility, Config.Hud.VisibilityMask, hudOn);
+            byte currentHudVisibility = Config.Stream.GetByte(Config.Mario.StructAddress + HudConfig.VisibilityOffset);
+            byte newHudVisibility = MoreMath.ApplyValueToMaskedByte(currentHudVisibility, HudConfig.VisibilityMask, hudOn);
 
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= Config.Stream.SetValue(newHudVisibility, Config.Mario.StructAddress + Config.Hud.VisibilityOffset);
+            success &= Config.Stream.SetValue(newHudVisibility, Config.Mario.StructAddress + HudConfig.VisibilityOffset);
             success &= Config.Stream.SetValue((short)(hudOn ? 1 : 0), Config.LevelIndexAddress);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();

@@ -154,28 +154,6 @@
     <WaterLevelOffset>0x76</WaterLevelOffset>
     <AreaPointerOffset>0x90</AreaPointerOffset>
   </Mario>
-  <Hud>
-    <LifeCountOffset>0xAD</LifeCountOffset>
-    <HpCountOffset>0xAE</HpCountOffset>
-    <CoinCountOffset>0xA8</CoinCountOffset>
-    <StarCountOffset>0xAA</StarCountOffset>
-
-    <LifeDisplayOffset>0xF0</LifeDisplayOffset>
-    <HpDisplayOffset>0xF6</HpDisplayOffset>
-    <CoinDisplayOffset>0xF2</CoinDisplayOffset>
-    <StarDisplayOffset>0xF4</StarDisplayOffset>
-
-    <TimeOffset>0xFC</TimeOffset>
-
-    <VisibilityOffset>0xFB</VisibilityOffset>
-    <VisibilityMask>0x0F</VisibilityMask>
-
-    <FullHp>2176</FullHp>
-    <FullHpInt>8</FullHpInt>
-    <StandardLives>4</StandardLives>
-    <StandardCoins>0</StandardCoins>
-    <StandardStars>120</StandardStars>
-  </Hud>
   <Debug>
     <AdvancedModeAddressUS>0x8033D263</AdvancedModeAddressUS>
     <AdvancedModeAddressJP>0x8033BEF3</AdvancedModeAddressJP>

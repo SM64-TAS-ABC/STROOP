@@ -702,9 +702,9 @@ namespace SM64_Diagnostic.Managers
                 ((Config.Stream.GetByte(
                     Config.Camera.CameraStructAddress + Config.Camera.MarioCamPossibleOffset) & Config.Camera.MarioCamPossibleMask) != 0).ToString();
             _betterTextboxStateTransferVar9Current.Text = FileManager.Instance.GetChecksum(FileManager.Instance.GetInGameFileAddress()).ToString();
-            _betterTextboxStateTransferVar10Current.Text = Config.Stream.GetInt16(Config.Mario.StructAddress + Config.Hud.HpCountOffset).ToString();
-            _betterTextboxStateTransferVar11Current.Text = Config.Stream.GetSByte(Config.Mario.StructAddress + Config.Hud.LifeCountOffset).ToString();
-            _betterTextboxStateTransferVar12Current.Text = Config.Stream.GetInt16(Config.Mario.StructAddress + Config.Hud.StarCountOffset).ToString();
+            _betterTextboxStateTransferVar10Current.Text = Config.Stream.GetInt16(Config.Mario.StructAddress + HudConfig.HpCountOffset).ToString();
+            _betterTextboxStateTransferVar11Current.Text = Config.Stream.GetSByte(Config.Mario.StructAddress + HudConfig.LifeCountOffset).ToString();
+            _betterTextboxStateTransferVar12Current.Text = Config.Stream.GetInt16(Config.Mario.StructAddress + HudConfig.StarCountOffset).ToString();
             _betterTextboxStateTransferVar13Current.Text = Config.Stream.GetByte(Config.SpecialTripleJumpAddress).ToString();
             _betterTextboxStateTransferVar14Current.Text = Config.Stream.GetInt16(Config.AnimationTimerAddress).ToString();
         }
@@ -765,22 +765,22 @@ namespace SM64_Diagnostic.Managers
             short? value10 = ParsingUtilities.ParseShortNullable(_betterTextboxStateTransferVar10Saved.Text);
             if (value10.HasValue)
             {
-                Config.Stream.SetValue(value10.Value, Config.Mario.StructAddress + Config.Hud.HpCountOffset);
-                Config.Stream.SetValue((short)(value10.Value / 256), Config.Mario.StructAddress + Config.Hud.HpDisplayOffset);
+                Config.Stream.SetValue(value10.Value, Config.Mario.StructAddress + HudConfig.HpCountOffset);
+                Config.Stream.SetValue((short)(value10.Value / 256), Config.Mario.StructAddress + HudConfig.HpDisplayOffset);
             }
 
             sbyte? value11 = ParsingUtilities.ParseSByteNullable(_betterTextboxStateTransferVar11Saved.Text);
             if (value11.HasValue)
             {
-                Config.Stream.SetValue(value11.Value, Config.Mario.StructAddress + Config.Hud.LifeCountOffset);
-                Config.Stream.SetValue((short)value11.Value, Config.Mario.StructAddress + Config.Hud.LifeDisplayOffset);
+                Config.Stream.SetValue(value11.Value, Config.Mario.StructAddress + HudConfig.LifeCountOffset);
+                Config.Stream.SetValue((short)value11.Value, Config.Mario.StructAddress + HudConfig.LifeDisplayOffset);
             }
 
             short? value12 = ParsingUtilities.ParseShortNullable(_betterTextboxStateTransferVar12Saved.Text);
             if (value12.HasValue)
             {
-                Config.Stream.SetValue(value12.Value, Config.Mario.StructAddress + Config.Hud.StarCountOffset);
-                Config.Stream.SetValue(value12.Value, Config.Mario.StructAddress + Config.Hud.StarDisplayOffset);
+                Config.Stream.SetValue(value12.Value, Config.Mario.StructAddress + HudConfig.StarCountOffset);
+                Config.Stream.SetValue(value12.Value, Config.Mario.StructAddress + HudConfig.StarDisplayOffset);
             }
 
             byte? value13 = ParsingUtilities.ParseByteNullable(_betterTextboxStateTransferVar13Saved.Text);
