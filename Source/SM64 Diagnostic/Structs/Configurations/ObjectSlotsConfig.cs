@@ -8,7 +8,7 @@ using SM64_Diagnostic.Structs.Configurations;
 
 namespace SM64_Diagnostic.Structs
 {
-    public static class ObjectGroupsConfig
+    public static class ObjectSlotsConfig
     {
         public static readonly Dictionary<byte, Color> ProcessingGroupsColor =
             new Dictionary<byte, Color>()
