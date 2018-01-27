@@ -72,14 +72,14 @@ namespace SM64_Diagnostic.Structs
 
         // Object specific vars
 
-        public static readonly uint DustSpawnerBehavior = 0x130024AC;
-        public static readonly uint DustBallBehavior = 0x130024DC;
-        public static readonly uint DustBehavior = 0x13002500;
+        public static readonly uint DustSpawnerBehaviorValue = 0x130024AC;
+        public static readonly uint DustBallBehaviorValue = 0x130024DC;
+        public static readonly uint DustBehaviorValue = 0x13002500;
 
-        public static readonly uint PendulumAccelerationDirection = 0xF4;
-        public static readonly uint PendulumAccelerationMagnitude = 0x100;
-        public static readonly uint PendulumAngularVelocity = 0xFC;
-        public static readonly uint PendulumAngle = 0xF8;
+        public static readonly uint PendulumAccelerationDirectionOffset = 0xF4;
+        public static readonly uint PendulumAccelerationMagnitudeOffset = 0x100;
+        public static readonly uint PendulumAngularVelocityOffset = 0xFC;
+        public static readonly uint PendulumAngleOffset = 0xF8;
 
         public static readonly uint WaypointOffset = 0x100;
         public static readonly uint PitchToWaypointOffset = 0x10A;

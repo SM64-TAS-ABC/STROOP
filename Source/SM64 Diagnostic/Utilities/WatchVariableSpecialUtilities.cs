@@ -553,9 +553,9 @@ namespace SM64_Diagnostic.Structs
                         float accelerationDirection = amplitude > 0 ? -1 : 1;
 
                         bool success = true;
-                        success &= Config.Stream.SetValue(accelerationDirection, objAddress + ObjectConfig.PendulumAccelerationDirection);
-                        success &= Config.Stream.SetValue(0f, objAddress + ObjectConfig.PendulumAngularVelocity);
-                        success &= Config.Stream.SetValue((float)amplitude, objAddress + ObjectConfig.PendulumAngle);
+                        success &= Config.Stream.SetValue(accelerationDirection, objAddress + ObjectConfig.PendulumAccelerationDirectionOffset);
+                        success &= Config.Stream.SetValue(0f, objAddress + ObjectConfig.PendulumAngularVelocityOffset);
+                        success &= Config.Stream.SetValue((float)amplitude, objAddress + ObjectConfig.PendulumAngleOffset);
                         return success;
                     };
                     break;
@@ -582,9 +582,9 @@ namespace SM64_Diagnostic.Structs
                         float accelerationDirection = amplitude > 0 ? -1 : 1;
 
                         bool success = true;
-                        success &= Config.Stream.SetValue(accelerationDirection, objAddress + ObjectConfig.PendulumAccelerationDirection);
-                        success &= Config.Stream.SetValue(0f, objAddress + ObjectConfig.PendulumAngularVelocity);
-                        success &= Config.Stream.SetValue(amplitude, objAddress + ObjectConfig.PendulumAngle);
+                        success &= Config.Stream.SetValue(accelerationDirection, objAddress + ObjectConfig.PendulumAccelerationDirectionOffset);
+                        success &= Config.Stream.SetValue(0f, objAddress + ObjectConfig.PendulumAngularVelocityOffset);
+                        success &= Config.Stream.SetValue(amplitude, objAddress + ObjectConfig.PendulumAngleOffset);
                         return success;
                     };
                     break;
@@ -2621,10 +2621,10 @@ namespace SM64_Diagnostic.Structs
         private static float GetPendulumAmplitude(uint pendulumAddress)
         {
             // Get pendulum variables
-            float accelerationDirection = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAccelerationDirection);
-            float accelerationMagnitude = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAccelerationMagnitude);
-            float angularVelocity = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAngularVelocity);
-            float angle = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAngle);
+            float accelerationDirection = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAccelerationDirectionOffset);
+            float accelerationMagnitude = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAccelerationMagnitudeOffset);
+            float angularVelocity = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAngularVelocityOffset);
+            float angle = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAngleOffset);
             float acceleration = accelerationDirection * accelerationMagnitude;
 
             // Calculate one frame forwards to see if pendulum is speeding up or slowing down

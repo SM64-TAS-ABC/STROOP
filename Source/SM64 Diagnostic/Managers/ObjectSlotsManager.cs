@@ -454,9 +454,9 @@ namespace SM64_Diagnostic.Managers
             {
                 closestObjectCandidates =
                     closestObjectCandidates.FindAll(s =>
-                        s.Behavior != (ObjectConfig.DustSpawnerBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart &&
-                        s.Behavior != (ObjectConfig.DustBallBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart &&
-                        s.Behavior != (ObjectConfig.DustBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart);
+                        s.Behavior != (ObjectConfig.DustSpawnerBehaviorValue & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart &&
+                        s.Behavior != (ObjectConfig.DustBallBehaviorValue & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart &&
+                        s.Behavior != (ObjectConfig.DustBehaviorValue & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart);
             }
             _closestObject = closestObjectCandidates.OrderBy(s => s.DistanceToMario).FirstOrDefault()?.Address ?? 0;
 
