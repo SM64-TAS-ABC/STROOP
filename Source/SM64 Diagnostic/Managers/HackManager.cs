@@ -50,7 +50,7 @@ namespace SM64_Diagnostic.Managers
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
-            Config.Hacks.SpawnHack.ClearPayload();
+            HackConfig.SpawnHack.ClearPayload();
         }
 
         private void _spawnList_SelectedIndexChanged(object sender, EventArgs e)
@@ -89,11 +89,11 @@ namespace SM64_Diagnostic.Managers
 
             Config.Stream.Suspend();
 
-            Config.Hacks.SpawnHack.LoadPayload(false);
+            HackConfig.SpawnHack.LoadPayload(false);
 
-            Config.Stream.SetValue(behavior, Config.Hacks.BehaviorAddress);
-            Config.Stream.SetValue((UInt16)gfxId, Config.Hacks.GfxIdAddress);
-            Config.Stream.SetValue((UInt16)extra, Config.Hacks.ExtraAddress);
+            Config.Stream.SetValue(behavior, HackConfig.BehaviorAddress);
+            Config.Stream.SetValue((UInt16)gfxId, HackConfig.GfxIdAddress);
+            Config.Stream.SetValue((UInt16)extra, HackConfig.ExtraAddress);
 
             Config.Stream.Resume();
         }

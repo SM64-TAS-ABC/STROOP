@@ -64,7 +64,6 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static List<Emulator> Emulators = new List<Emulator>();
         public static uint RamSize;
         public static MarioConfig Mario;
-        public static HackConfig Hacks;
         public static DebugConfig Debug;
         public static CameraConfig Camera;
         public static InputConfig Input;

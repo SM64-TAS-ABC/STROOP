@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace SM64_Diagnostic.Structs.Configurations
 {
-    public struct HackConfig
+    public static class HackConfig
     {
-        public RomHack SpawnHack;
-        public uint BehaviorAddress;
-        public uint GfxIdAddress;
-        public uint ExtraAddress;
+        public static RomHack SpawnHack;
+        public static readonly uint BehaviorAddress = 0x8033D3D0;
+        public static readonly uint GfxIdAddress = 0x8033D3D4;
+        public static readonly uint ExtraAddress = 0x8033D3D8;
     }
 }

@@ -2208,10 +2208,9 @@ namespace SM64_Diagnostic.Utilities
             return parser;
         }
 
-        public static Tuple<HackConfig, List<RomHack>> OpenHacks(string path)
+        public static List<RomHack> OpenHacks(string path)
         {
             var hacks = new List<RomHack>();
-            var hackConfig = new HackConfig();
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
@@ -2243,10 +2242,7 @@ namespace SM64_Diagnostic.Utilities
 
                     case "SpawnHack":
                         string spawnHackPath = hackDir + element.Attribute(XName.Get("path")).Value;
-                        hackConfig.SpawnHack = new RomHack(spawnHackPath, "Spawn Hack");
-                        hackConfig.BehaviorAddress = ParsingUtilities.ParseHex(element.Attribute(XName.Get("behavior")).Value);
-                        hackConfig.GfxIdAddress = ParsingUtilities.ParseHex(element.Attribute(XName.Get("gfxId")).Value);
-                        hackConfig.ExtraAddress = ParsingUtilities.ParseHex(element.Attribute(XName.Get("extra")).Value);
+                        HackConfig.SpawnHack = new RomHack(spawnHackPath, "Spawn Hack");
                         break;
 
                     case "Hack":
@@ -2259,7 +2255,7 @@ namespace SM64_Diagnostic.Utilities
                 }
             }
 
-            return new Tuple<HackConfig, List<RomHack>>(hackConfig, hacks);
+            return hacks;
         }
 
         public static WatchVariableControl GetWatchVariableControlFromElement(XElement element)
