@@ -45,8 +45,8 @@ namespace SM64_Diagnostic.Utilities
         {
             var assembly = Assembly.GetExecutingAssembly();
 
-            PositionControllerRelativeAngleConfig.Relativity = PositionControllerRelativeAngleConfig.RelativityType.Recommended;
-            PositionControllerRelativeAngleConfig.CustomAngle = 32768;
+            PositionControllerRelativityConfig.Relativity = PositionControllerRelativityConfig.PositionControllerRelativity.Recommended;
+            PositionControllerRelativityConfig.CustomAngle = 32768;
 
             // Create schema set
             var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };

@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace SM64_Diagnostic.Structs.Configurations
 {
-    public static class PositionControllerRelativeAngleConfig
+    public static class PositionControllerRelativityConfig
     {
-        public enum RelativityType
+        public enum PositionControllerRelativity
         {
             Recommended,
             Mario,
             Custom,
         };
 
-        public static RelativityType Relativity;
+        public static PositionControllerRelativity Relativity;
         public static double CustomAngle;
     }
 }

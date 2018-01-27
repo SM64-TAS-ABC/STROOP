@@ -262,7 +262,7 @@
     <Compile Include="Structs\Configurations\OptionsConfig.cs" />
     <Compile Include="Structs\Configurations\MiscConfig.cs" />
     <Compile Include="Structs\Configurations\VarHackConfig.cs" />
-    <Compile Include="Structs\Configurations\PositionControllerRelativeAngleConfig.cs" />
+    <Compile Include="Structs\Configurations\PositionControllerRelativityConfig.cs" />
     <Compile Include="Structs\Configurations\TriangleConfig.cs" />
     <Compile Include="Structs\Configurations\WaypointConfig.cs" />
     <Compile Include="Structs\FlyGuyDataTable.cs" />

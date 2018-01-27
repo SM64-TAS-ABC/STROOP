@@ -7,7 +7,7 @@ using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Structs.Configurations;
 using System.Windows.Forms;
 using static SM64_Diagnostic.Structs.Configurations.Config;
-using static SM64_Diagnostic.Structs.Configurations.PositionControllerRelativeAngleConfig;
+using static SM64_Diagnostic.Structs.Configurations.PositionControllerRelativityConfig;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -47,15 +47,15 @@ namespace SM64_Diagnostic.Managers
             RadioButton radioButtonPositionControllerRelativeAngleRecommended =
                 groupBoxPositionControllerRelativeAngle.Controls["radioButtonPositionControllerRelativeAngleRecommended"] as RadioButton;
             radioButtonPositionControllerRelativeAngleRecommended.Click += (sender, e) =>
-                PositionControllerRelativeAngleConfig.Relativity = RelativityType.Recommended;
+                PositionControllerRelativityConfig.Relativity = PositionControllerRelativity.Recommended;
             RadioButton radioButtonPositionControllerRelativeAngleMario =
                 groupBoxPositionControllerRelativeAngle.Controls["radioButtonPositionControllerRelativeAngleMario"] as RadioButton;
             radioButtonPositionControllerRelativeAngleMario.Click += (sender, e) =>
-                PositionControllerRelativeAngleConfig.Relativity = RelativityType.Mario;
+                PositionControllerRelativityConfig.Relativity = PositionControllerRelativity.Mario;
             RadioButton radioButtonPositionControllerRelativeAngleCustom =
                 groupBoxPositionControllerRelativeAngle.Controls["radioButtonPositionControllerRelativeAngleCustom"] as RadioButton;
             radioButtonPositionControllerRelativeAngleCustom.Click += (sender, e) =>
-                PositionControllerRelativeAngleConfig.Relativity = RelativityType.Custom;
+                PositionControllerRelativityConfig.Relativity = PositionControllerRelativity.Custom;
             BetterTextbox textBoxPositionControllerRelativeAngleCustom =
                 groupBoxPositionControllerRelativeAngle.Controls["textBoxPositionControllerRelativeAngleCustom"] as BetterTextbox;
             textBoxPositionControllerRelativeAngleCustom.LostFocus += (sender, e) =>
@@ -63,11 +63,11 @@ namespace SM64_Diagnostic.Managers
                 double value;
                 if (double.TryParse((sender as TextBox).Text, out value))
                 {
-                    PositionControllerRelativeAngleConfig.CustomAngle = value;
+                    PositionControllerRelativityConfig.CustomAngle = value;
                 }
                 else
                 {
-                    (sender as TextBox).Text = PositionControllerRelativeAngleConfig.CustomAngle.ToString();
+                    (sender as TextBox).Text = PositionControllerRelativityConfig.CustomAngle.ToString();
                 }
             };
 
