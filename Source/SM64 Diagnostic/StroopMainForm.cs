@@ -227,15 +227,15 @@ namespace SM64_Diagnostic
             loadingForm.UpdateStatus("Loading Hacks", statusNum++);
             _romHacks = XmlConfigParser.OpenHacks(@"Config/Hacks.xml");
             loadingForm.UpdateStatus("Loading Mario Actions", statusNum++);
-            Config.MarioActions = XmlConfigParser.OpenActionTable(@"Config/MarioActions.xml");
-            Config.MarioAnimations = XmlConfigParser.OpenAnimationTable(@"Config/MarioAnimations.xml");
-            Config.PendulumSwings = XmlConfigParser.OpenPendulumSwingTable(@"Config/PendulumSwings.xml");
-            Config.RacingPenguinWaypoints = XmlConfigParser.OpenWaypointTable(@"Config/RacingPenguinWaypoints.xml");
-            Config.KoopaTheQuick1Waypoints = XmlConfigParser.OpenWaypointTable(@"Config/KoopaTheQuick1Waypoints.xml");
-            Config.KoopaTheQuick2Waypoints = XmlConfigParser.OpenWaypointTable(@"Config/KoopaTheQuick2Waypoints.xml");
-            Config.Missions = XmlConfigParser.OpenMissionTable(@"Config/Missions.xml");
-            Config.CourseData = XmlConfigParser.OpenCourseDataTable(@"Config/CourseData.xml");
-            Config.FlyGuyData = new FlyGuyDataTable();
+            TableConfig.MarioActions = XmlConfigParser.OpenActionTable(@"Config/MarioActions.xml");
+            TableConfig.MarioAnimations = XmlConfigParser.OpenAnimationTable(@"Config/MarioAnimations.xml");
+            TableConfig.PendulumSwings = XmlConfigParser.OpenPendulumSwingTable(@"Config/PendulumSwings.xml");
+            TableConfig.RacingPenguinWaypoints = XmlConfigParser.OpenWaypointTable(@"Config/RacingPenguinWaypoints.xml");
+            TableConfig.KoopaTheQuick1Waypoints = XmlConfigParser.OpenWaypointTable(@"Config/KoopaTheQuick1Waypoints.xml");
+            TableConfig.KoopaTheQuick2Waypoints = XmlConfigParser.OpenWaypointTable(@"Config/KoopaTheQuick2Waypoints.xml");
+            TableConfig.Missions = XmlConfigParser.OpenMissionTable(@"Config/Missions.xml");
+            TableConfig.CourseData = XmlConfigParser.OpenCourseDataTable(@"Config/CourseData.xml");
+            TableConfig.FlyGuyData = new FlyGuyDataTable();
 
             loadingForm.UpdateStatus("Finishing", statusNum);
         }

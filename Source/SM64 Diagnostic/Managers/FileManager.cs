@@ -106,7 +106,7 @@ namespace SM64_Diagnostic.Managers
 
                     uint addressOffset = GetStarAddressOffset(row);
                     byte mask = GetStarMask(row, col);
-                    string missionName = Config.Missions.GetMissionName(row + 1, col + 1);
+                    string missionName = TableConfig.Missions.GetMissionName(row + 1, col + 1);
                     fileStarPictureBox.Initialize(_gui, addressOffset, mask, _gui.PowerStarImage, _gui.PowerStarBlackImage, missionName);
                     _filePictureBoxList.Add(fileStarPictureBox);
 
@@ -584,9 +584,9 @@ namespace SM64_Diagnostic.Managers
                 case AllCoinsMeaning.Coins255:
                     return 255;
                 case AllCoinsMeaning.MaxWithoutGlitches:
-                    return (byte)Config.CourseData.GetMaxCoinsWithoutGlitches(courseIndex);
+                    return (byte)TableConfig.CourseData.GetMaxCoinsWithoutGlitches(courseIndex);
                 case AllCoinsMeaning.MaxWithGlitches:
-                    return (byte)Config.CourseData.GetMaxCoinsWithGlitches(courseIndex);
+                    return (byte)TableConfig.CourseData.GetMaxCoinsWithGlitches(courseIndex);
                 default:
                     throw new ArgumentOutOfRangeException();
             }

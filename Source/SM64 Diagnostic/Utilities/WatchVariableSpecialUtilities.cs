@@ -568,7 +568,7 @@ namespace SM64_Diagnostic.Structs
                         int? pendulumAmplitudeIntNullable = ParsingUtilities.ParseIntNullable(pendulumAmplitudeFloat);
                         if (!pendulumAmplitudeIntNullable.HasValue) return badValue;
                         int pendulumAmplitudeInt = pendulumAmplitudeIntNullable.Value;
-                        int? pendulumSwingIndexNullable = Config.PendulumSwings.GetPendulumSwingIndex(pendulumAmplitudeInt);
+                        int? pendulumSwingIndexNullable = TableConfig.PendulumSwings.GetPendulumSwingIndex(pendulumAmplitudeInt);
                         if (!pendulumSwingIndexNullable.HasValue) return badValue;
                         int pendulumSwingIndex = pendulumSwingIndexNullable.Value;
                         return pendulumSwingIndex.ToString();
@@ -578,7 +578,7 @@ namespace SM64_Diagnostic.Structs
                         int? indexNullable = ParsingUtilities.ParseIntNullable(stringValue);
                         if (!indexNullable.HasValue) return false;
                         int index = indexNullable.Value;
-                        float amplitude = Config.PendulumSwings.GetPendulumAmplitude(index);
+                        float amplitude = TableConfig.PendulumSwings.GetPendulumAmplitude(index);
                         float accelerationDirection = amplitude > 0 ? -1 : 1;
 
                         bool success = true;
@@ -670,7 +670,7 @@ namespace SM64_Diagnostic.Structs
                 case "RacingPenguinProgress":
                     getterFunction = (uint objAddress) =>
                     {
-                        double progress = Config.RacingPenguinWaypoints.GetProgress(objAddress);
+                        double progress = TableConfig.RacingPenguinWaypoints.GetProgress(objAddress);
                         return progress.ToString();
                     };
                     break;
@@ -692,7 +692,7 @@ namespace SM64_Diagnostic.Structs
                         }
                         TestingManager.VarStatePenguin varStatePenguin = varState as TestingManager.VarStatePenguin;
                         double varStateProgress = varStatePenguin.Progress;
-                        double currentProgress = Config.RacingPenguinWaypoints.GetProgress(objAddress);
+                        double currentProgress = TableConfig.RacingPenguinWaypoints.GetProgress(objAddress);
                         double progressDiff = currentProgress - varStateProgress;
                         return progressDiff.ToString();
                     };
@@ -756,7 +756,7 @@ namespace SM64_Diagnostic.Structs
                 case "KoopaTheQuick1Progress":
                     getterFunction = (uint objAddress) =>
                     {
-                        double progress = Config.KoopaTheQuick1Waypoints.GetProgress(objAddress);
+                        double progress = TableConfig.KoopaTheQuick1Waypoints.GetProgress(objAddress);
                         return progress.ToString();
                     };
                     break;
@@ -764,7 +764,7 @@ namespace SM64_Diagnostic.Structs
                 case "KoopaTheQuick2Progress":
                     getterFunction = (uint objAddress) =>
                     {
-                        double progress = Config.KoopaTheQuick2Waypoints.GetProgress(objAddress);
+                        double progress = TableConfig.KoopaTheQuick2Waypoints.GetProgress(objAddress);
                         return progress.ToString();
                     };
                     break;
@@ -787,7 +787,7 @@ namespace SM64_Diagnostic.Structs
                     getterFunction = (uint objAddress) =>
                     {
                         int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectSlotsConfig.FlyGuyOscillationTimerOffset);
-                        double relativeHeight = Config.FlyGuyData.GetRelativeHeight(oscillationTimer);
+                        double relativeHeight = TableConfig.FlyGuyData.GetRelativeHeight(oscillationTimer);
                         return relativeHeight.ToString();
                     };
                     break;
@@ -796,7 +796,7 @@ namespace SM64_Diagnostic.Structs
                     getterFunction = (uint objAddress) =>
                     {
                         int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectSlotsConfig.FlyGuyOscillationTimerOffset);
-                        double nextRelativeHeight = Config.FlyGuyData.GetNextHeightDiff(oscillationTimer);
+                        double nextRelativeHeight = TableConfig.FlyGuyData.GetNextHeightDiff(oscillationTimer);
                         return nextRelativeHeight.ToString();
                     };
                     break;
@@ -806,7 +806,7 @@ namespace SM64_Diagnostic.Structs
                     {
                         float objY = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectYOffset);
                         int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectSlotsConfig.FlyGuyOscillationTimerOffset);
-                        double minHeight = Config.FlyGuyData.GetMinHeight(oscillationTimer, objY);
+                        double minHeight = TableConfig.FlyGuyData.GetMinHeight(oscillationTimer, objY);
                         return minHeight.ToString();
                     };
                     break;
@@ -816,7 +816,7 @@ namespace SM64_Diagnostic.Structs
                     {
                         float objY = Config.Stream.GetSingle(objAddress + ObjectSlotsConfig.ObjectYOffset);
                         int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectSlotsConfig.FlyGuyOscillationTimerOffset);
-                        double maxHeight = Config.FlyGuyData.GetMaxHeight(oscillationTimer, objY);
+                        double maxHeight = TableConfig.FlyGuyData.GetMaxHeight(oscillationTimer, objY);
                         return maxHeight.ToString();
                     };
                     break;
@@ -2244,21 +2244,21 @@ namespace SM64_Diagnostic.Structs
                 case "ActionDescription":
                     getterFunction = (uint dummy) =>
                     {
-                        return Config.MarioActions.GetActionName();
+                        return TableConfig.MarioActions.GetActionName();
                     };
                     break;
 
                 case "PrevActionDescription":
                     getterFunction = (uint dummy) =>
                     {
-                        return Config.MarioActions.GetPrevActionName();
+                        return TableConfig.MarioActions.GetPrevActionName();
                     };
                     break;
 
                 case "MarioAnimationDescription":
                     getterFunction = (uint dummy) =>
                     {
-                        return Config.MarioAnimations.GetAnimationName();
+                        return TableConfig.MarioAnimations.GetAnimationName();
                     };
                     break;
 

@@ -61,15 +61,7 @@ namespace SM64_Diagnostic.Structs.Configurations
 
         public static List<Emulator> Emulators = new List<Emulator>();
         public static uint RamSize;
-        public static ActionTable MarioActions;
-        public static AnimationTable MarioAnimations;
-        public static PendulumSwingTable PendulumSwings;
-        public static WaypointTable RacingPenguinWaypoints;
-        public static WaypointTable KoopaTheQuick1Waypoints;
-        public static WaypointTable KoopaTheQuick2Waypoints;
-        public static MissionTable Missions;
-        public static CourseDataTable CourseData;
-        public static FlyGuyDataTable FlyGuyData;
+
         public static PositionControllerRelativeAngleConfig PositionControllerRelativeAngle;
     }
 }

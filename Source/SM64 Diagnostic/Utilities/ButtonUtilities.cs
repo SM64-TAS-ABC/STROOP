@@ -323,7 +323,7 @@ namespace SM64_Diagnostic.Utilities
             {
                 // Set Next action
                 uint currentAction = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.ActionOffset);
-                uint nextAction = Config.MarioActions.GetAfterCloneValue(currentAction);
+                uint nextAction = TableConfig.MarioActions.GetAfterCloneValue(currentAction);
                 success &= Config.Stream.SetValue(nextAction, MarioConfig.StructAddress + MarioConfig.ActionOffset);
             }
 
@@ -344,7 +344,7 @@ namespace SM64_Diagnostic.Utilities
             if (updateAction)
             {
                 uint currentAction = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.ActionOffset);
-                uint nextAction = Config.MarioActions.GetAfterUncloneValue(currentAction);
+                uint nextAction = TableConfig.MarioActions.GetAfterUncloneValue(currentAction);
                 success &= Config.Stream.SetValue(nextAction, MarioConfig.StructAddress + MarioConfig.ActionOffset);
             }
 
@@ -528,7 +528,7 @@ namespace SM64_Diagnostic.Utilities
             if (heldObj != 0x00000000U)
             {
                 uint currentAction = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.ActionOffset);
-                uint nextAction = Config.MarioActions.GetHandsfreeValue(currentAction);
+                uint nextAction = TableConfig.MarioActions.GetHandsfreeValue(currentAction);
                 success = Config.Stream.SetValue(nextAction, MarioConfig.StructAddress + MarioConfig.ActionOffset);
             }
 

@@ -368,7 +368,7 @@ namespace SM64_Diagnostic.Managers
             {
                 return new VarStatePenguin()
                 {
-                    Progress = Config.RacingPenguinWaypoints.GetProgress(Config.SwitchRomVersion(0x80348448, 0x803451F8)),
+                    Progress = TableConfig.RacingPenguinWaypoints.GetProgress(Config.SwitchRomVersion(0x80348448, 0x803451F8)),
                 };
             }
 

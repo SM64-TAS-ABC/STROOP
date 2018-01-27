@@ -52,7 +52,7 @@ namespace SM64_Diagnostic
             this.MouseEnter += (s, e) => this.Cursor = Cursors.Hand;
             this.MouseLeave += (s, e) => this.Cursor = Cursors.Arrow;
 
-            string fullCourseName = Config.CourseData.GetFullName(courseIndex);
+            string fullCourseName = TableConfig.CourseData.GetFullName(courseIndex);
             AddressToolTip.SetToolTip(this, fullCourseName);
         }
 

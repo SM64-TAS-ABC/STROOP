@@ -32,8 +32,8 @@ namespace SM64_Diagnostic.Managers
 
             base.Update();
 
-            actionDescriptionLabel.Text = Config.MarioActions.GetActionName();
-            animationDescriptionLabel.Text = Config.MarioAnimations.GetAnimationName();
+            actionDescriptionLabel.Text = TableConfig.MarioActions.GetActionName();
+            animationDescriptionLabel.Text = TableConfig.MarioAnimations.GetAnimationName();
         }
     }
 }

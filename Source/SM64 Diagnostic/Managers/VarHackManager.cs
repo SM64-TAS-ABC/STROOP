@@ -59,8 +59,8 @@ namespace SM64_Diagnostic.Managers
                         return "YNorm " + FormatDouble(yNorm, 4, true);
                     }),
                     () => AddVariable(() => "Defacto " + FormatInteger(WatchVariableSpecialUtilities.GetMarioDeFactoSpeed())),
-                    () => AddVariable(() => "Action " + Config.MarioActions.GetActionName()),
-                    () => AddVariable(() => "Animation " + Config.MarioAnimations.GetAnimationName()),
+                    () => AddVariable(() => "Action " + TableConfig.MarioActions.GetActionName()),
+                    () => AddVariable(() => "Animation " + TableConfig.MarioAnimations.GetAnimationName()),
                 });
 
             Button buttonVarHackClearVariables =
