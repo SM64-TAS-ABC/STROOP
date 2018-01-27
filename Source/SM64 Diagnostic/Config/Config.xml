@@ -11,7 +11,4 @@
 
   <RefreshRateFreq>30</RefreshRateFreq>
   <RamSize>0x400000</RamSize>
-  
-  <DebugAddress></DebugAddress>
-  <DebugModeAddress></DebugModeAddress>
 </Config>
