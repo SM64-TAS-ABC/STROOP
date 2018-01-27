@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace SM64_Diagnostic.Structs.Configurations
 {
-    public struct WaypointConfig
+    public static class WaypointConfig
     {
-        public uint StructSize;
-        public uint IndexOffset;
-        public uint XOffset;
-        public uint YOffset;
-        public uint ZOffset;
+        public static readonly uint StructSize = 0x08;
+        public static readonly uint IndexOffset = 0x00;
+        public static readonly uint XOffset = 0x02;
+        public static readonly uint YOffset = 0x04;
+        public static readonly uint ZOffset = 0x06;
     }
 }

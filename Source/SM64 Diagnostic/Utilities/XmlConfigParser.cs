@@ -475,34 +475,6 @@ namespace SM64_Diagnostic.Utilities
                         }
                         break;
 
-                    case "Waypoint":
-                        foreach (XElement subElement in element.Elements())
-                        {
-                            switch (subElement.Name.ToString())
-                            {
-                                case "StructSize":
-                                    Config.Waypoint.StructSize = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "IndexOffset":
-                                    Config.Waypoint.IndexOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "XOffset":
-                                    Config.Waypoint.XOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "YOffset":
-                                    Config.Waypoint.YOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-
-                                case "ZOffset":
-                                    Config.Waypoint.ZOffset = ParsingUtilities.ParseHex(subElement.Value);
-                                    break;
-                            }
-                        }
-                        break;
-
                     case "GotoRetrieve":
                         foreach (XElement subElement in element.Elements())
                         {

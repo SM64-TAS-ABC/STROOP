@@ -154,13 +154,6 @@
     <WaterLevelOffset>0x76</WaterLevelOffset>
     <AreaPointerOffset>0x90</AreaPointerOffset>
   </Mario>
-  <Waypoint>
-    <StructSize>0x08</StructSize>
-    <IndexOffset>0x00</IndexOffset>
-    <XOffset>0x02</XOffset>
-    <YOffset>0x04</YOffset>
-    <ZOffset>0x06</ZOffset>
-  </Waypoint>
   <GotoRetrieve>
     <GotoAboveDefault>300</GotoAboveDefault>
     <GotoInfrontDefault>0</GotoInfrontDefault>

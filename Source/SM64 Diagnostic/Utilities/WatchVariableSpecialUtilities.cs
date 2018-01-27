@@ -2548,15 +2548,15 @@ namespace SM64_Diagnostic.Structs
             float objZ = Config.Stream.GetSingle(objAddress + Config.ObjectSlots.ObjectZOffset);
 
             uint prevWaypointAddress = Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.WaypointOffset);
-            short prevWaypointIndex = Config.Stream.GetInt16(prevWaypointAddress + Config.Waypoint.IndexOffset);
-            short prevWaypointX = Config.Stream.GetInt16(prevWaypointAddress + Config.Waypoint.XOffset);
-            short prevWaypointY = Config.Stream.GetInt16(prevWaypointAddress + Config.Waypoint.YOffset);
-            short prevWaypointZ = Config.Stream.GetInt16(prevWaypointAddress + Config.Waypoint.ZOffset);
-            uint nextWaypointAddress = prevWaypointAddress + Config.Waypoint.StructSize;
-            short nextWaypointIndex = Config.Stream.GetInt16(nextWaypointAddress + Config.Waypoint.IndexOffset);
-            short nextWaypointX = Config.Stream.GetInt16(nextWaypointAddress + Config.Waypoint.XOffset);
-            short nextWaypointY = Config.Stream.GetInt16(nextWaypointAddress + Config.Waypoint.YOffset);
-            short nextWaypointZ = Config.Stream.GetInt16(nextWaypointAddress + Config.Waypoint.ZOffset);
+            short prevWaypointIndex = Config.Stream.GetInt16(prevWaypointAddress + WaypointConfig.IndexOffset);
+            short prevWaypointX = Config.Stream.GetInt16(prevWaypointAddress + WaypointConfig.XOffset);
+            short prevWaypointY = Config.Stream.GetInt16(prevWaypointAddress + WaypointConfig.YOffset);
+            short prevWaypointZ = Config.Stream.GetInt16(prevWaypointAddress + WaypointConfig.ZOffset);
+            uint nextWaypointAddress = prevWaypointAddress + WaypointConfig.StructSize;
+            short nextWaypointIndex = Config.Stream.GetInt16(nextWaypointAddress + WaypointConfig.IndexOffset);
+            short nextWaypointX = Config.Stream.GetInt16(nextWaypointAddress + WaypointConfig.XOffset);
+            short nextWaypointY = Config.Stream.GetInt16(nextWaypointAddress + WaypointConfig.YOffset);
+            short nextWaypointZ = Config.Stream.GetInt16(nextWaypointAddress + WaypointConfig.ZOffset);
 
             float objToWaypointX = nextWaypointX - objX;
             float objToWaypointY = nextWaypointY - objY;

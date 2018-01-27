@@ -77,7 +77,7 @@ namespace SM64_Diagnostic.Structs
         {
             uint waypointAddress = Config.Stream.GetUInt32(objAddress + Config.ObjectSlots.WaypointOffset);
             if (waypointAddress == 0) return 0;
-            short prevWaypointIndex = Config.Stream.GetInt16(waypointAddress + Config.Waypoint.IndexOffset);
+            short prevWaypointIndex = Config.Stream.GetInt16(waypointAddress + WaypointConfig.IndexOffset);
 
             if (!_waypointDictionary.ContainsKey(prevWaypointIndex)) return 0;
             WaypointReference previousWaypoint = _waypointDictionary[prevWaypointIndex];
