@@ -26,14 +26,11 @@ namespace SM64_Diagnostic
         public override void Initialize(uint addressOffset)
         {
             base.Initialize(addressOffset);
-
-            _currentValue = GetCoinScoreFromMemory();
-            this.Text = _currentValue.ToString();
         }
 
         private byte GetCoinScoreFromMemory()
         {
-            return Config.Stream.GetByte(FileManager.Instance.CurrentFileAddress + _addressOffset);
+            return Config.Stream.GetByte(Config.FileManager.CurrentFileAddress + _addressOffset);
         }
 
         protected override void SubmitValue()
@@ -45,7 +42,7 @@ namespace SM64_Diagnostic
                 return;
             }
 
-            Config.Stream.SetValue(value, FileManager.Instance.CurrentFileAddress + _addressOffset);
+            Config.Stream.SetValue(value, Config.FileManager.CurrentFileAddress + _addressOffset);
         }
 
         protected override void ResetValue()
