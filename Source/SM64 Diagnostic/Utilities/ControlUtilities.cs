@@ -7,12 +7,12 @@ using System.Globalization;
 using System.Xml;
 using System.Windows.Forms;
 using System.Drawing;
+using SM64_Diagnostic.Structs;
 
 namespace SM64_Diagnostic.Utilities
 {
     public static class ControlUtilities
     {
-        public enum CoordinateSystem { Euler, Spherical };
         private enum FacingDirection { Left, Right, Up, Down, UpLeft, DownLeft, UpRight, DownRight };
 
         private static readonly string SUBTRACT_SYMBOL = "-";

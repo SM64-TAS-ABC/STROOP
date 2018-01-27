@@ -5,7 +5,6 @@ using SM64_Diagnostic.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using static SM64_Diagnostic.Utilities.ControlUtilities;
 
 namespace SM64_Diagnostic.Managers
 {
