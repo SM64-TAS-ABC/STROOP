@@ -31,9 +31,9 @@ namespace SM64_Diagnostic.Structs
         public static readonly uint HOLPYOffset = 0x25C;
         public static readonly uint HOLPZOffset = 0x260;
 
-        public static uint StoodOnObjectPointer { get { return Config.SwitchRomVersion(StoodOnObjectPointerUS, StoodOnObjectPointerJP); } }
-        public static readonly uint StoodOnObjectPointerUS = 0x80330E34;
-        public static readonly uint StoodOnObjectPointerJP = 0x8032FED4;
+        public static uint StoodOnObjectPointerAddress { get { return Config.SwitchRomVersion(StoodOnObjectPointerAddressUS, StoodOnObjectPointerAddressJP); } }
+        public static readonly uint StoodOnObjectPointerAddressUS = 0x80330E34;
+        public static readonly uint StoodOnObjectPointerAddressJP = 0x8032FED4;
 
         public static readonly uint InteractionObjectPointerOffset = 0x78;
         public static readonly uint HeldObjectPointerOffset = 0x7C;

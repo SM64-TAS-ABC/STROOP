@@ -438,7 +438,7 @@ namespace SM64_Diagnostic.Managers
 
             _activeObjectCount = 0;
 
-            _stoodOnObject = Config.Stream.GetUInt32(MarioConfig.StoodOnObjectPointer);
+            _stoodOnObject = Config.Stream.GetUInt32(MarioConfig.StoodOnObjectPointerAddress);
             _interactionObject = Config.Stream.GetUInt32(MarioConfig.InteractionObjectPointerOffset + MarioConfig.StructAddress);
             _heldObject = Config.Stream.GetUInt32(MarioConfig.HeldObjectPointerOffset + MarioConfig.StructAddress);
             _usedObject = Config.Stream.GetUInt32(MarioConfig.UsedObjectPointerOffset + MarioConfig.StructAddress);
