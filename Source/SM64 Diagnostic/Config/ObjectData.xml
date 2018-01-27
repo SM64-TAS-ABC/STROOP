@@ -34,6 +34,7 @@
   <Data groupList="Advanced" base="Object" specialType="ObjectDistanceToHome">Dist Obj to Home</Data>
   <Data groupList="Advanced" base="Object" specialType="HorizontalObjectDistanceToHome">HDist Obj to Home</Data>
   <Data groupList="Advanced" base="Object" specialType="VerticalObjectDistanceToHome">VDist Obj to Home</Data>
+  
   <Data groupList="Advanced" type="ushort" offset="0x0162" base="Object" subclass="Angle">"Angle to Mario"</Data>
   <Data groupList="Intermediate" base="Object" specialType="AngleObjectToMario" subclass="Angle" type="ushort">Angle Obj to Mario</Data>
   <Data groupList="Intermediate" base="Object" specialType="DeltaAngleObjectToMario" subclass="Angle" type="short">DAngle Obj to Mario</Data>
@@ -42,6 +43,7 @@
   <Data groupList="Advanced" base="Object" specialType="AngleObjectToHome" subclass="Angle" type="ushort">Angle Obj to Home</Data>
   <Data groupList="Advanced" base="Object" specialType="DeltaAngleObjectToHome" subclass="Angle" type="short">DAngle Obj to Home</Data>
   <Data groupList="Advanced" base="Object" specialType="AngleHomeToObject" subclass="Angle" type="ushort">Angle Home to Obj</Data>
+  
   <Data groupList="Advanced" type="uint" offset="0x218" base="Object" useHex="true">Hitbox Pointer</Data>
   <Data groupList="Advanced" type="float" offset="0x1f8" base="Object">Hitbox Radius</Data>
   <Data groupList="Advanced" type="float" offset="0x1fc" base="Object">Hitbox Height</Data>
@@ -50,6 +52,7 @@
   <Data groupList="Intermediate" base="Object" specialType="MarioHitboxAboveObject">Mario Hitbox Above</Data>
   <Data groupList="Intermediate" base="Object" specialType="MarioHitboxBelowObject">Mario Hitbox Below</Data>
   <Data groupList="Intermediate" base="Object" specialType="MarioHitboxOverlapsObject" subclass="Boolean">Mario Hitbox Overlap</Data>
+  
   <Data groupList="Advanced" type="float" offset="0x128" base="Object">Min Wall Dist</Data>
   <Data groupList="Advanced" type="float" offset="0x0194" base="Object">Tangible Dist</Data>
   <Data groupList="Advanced" type="float" offset="0x019C" base="Object">Drawing Dist</Data>
@@ -57,14 +60,23 @@
   <Data groupList="Advanced" type="float" offset="0xE4" base="Object">Gravity</Data>
   <Data groupList="Advanced" type="int" offset="0x180" base="Object">Damage</Data>
   <Data groupList="Advanced" type="int" offset="0x1A0" base="Object">Native Room</Data>
+  
   <Data groupList="Advanced" base="Object" specialType="ObjectRngCallsPerFrame">RNG Calls/Frame</Data>
+
+  <Data groupList="Advanced" type="uint" offset="0x04" base="Object" subclass="Object">Prev Memory Object</Data>
+  <Data groupList="Advanced" type="uint" offset="0x08" base="Object" subclass="Object">Next Memory Object</Data>
+  <Data groupList="Advanced" type="uint" offset="0x64" base="Object" subclass="Object">Prev Processed Object</Data>
+  <Data groupList="Advanced" type="uint" offset="0x60" base="Object" subclass="Object">Next Processed Object</Data>
   <Data groupList="Advanced" type="uint" offset="0x68" base="Object" subclass="Object">Parent Object</Data>
+
   <Data groupList="Advanced" type="uint" offset="0x020C" base="Object" useHex="true">Behavior Script</Data>
   <Data groupList="Intermediate" type="uint" offset="0x14" base="Object" useHex="true">Graphics</Data>
   <Data groupList="Intermediate" type="uint" offset="0x218" base="Object" useHex="true">Model</Data>
+  
   <Data groupList="Advanced" type="short" offset="0x14" base="Graphics">Shadow Radius</Data>
   <Data groupList="Advanced" type="byte" offset="0x16" base="Graphics">Shadow Opacity</Data>
   <Data groupList="Advanced" type="byte" offset="0x17" base="Graphics">Shadow Type</Data>
+  
   <Data groupList="Intermediate" type="byte" offset="0x3" mask="0x10" base="Object" subclass="Boolean" invertBool="true">Visible</Data>
   <Data groupList="Intermediate" type="byte" offset="0x3" mask="0x01" base="Object" subclass="Boolean">Rendered</Data>
   <Data groupList="Advanced" type="int" offset="0x8c" base="Object" subclass="Boolean" mask="0x00000200">Locked to Origin</Data>
@@ -74,8 +86,8 @@
   <Data groupList="Advanced" type="int" offset="0x8c" base="Object" subclass="Boolean" mask="0x00000002">Forward Movement</Data>
   <Data groupList="Advanced" type="byte" offset="0x77" base="Object" subclass="Boolean">Mario Close</Data>
   <Data groupList="Advanced" type="int" offset="0x9C" base="Object">Tangible</Data>
+  
   <Data groupList="Advanced,Collision" type="int" offset="0x130" base="Object" useHex="true">Collision Type</Data>
- 
   <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x80000000">Collision Flag 1</Data>
   <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x40000000">Igloo Barrier</Data>
   <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x20000000">Shocks</Data>
@@ -115,14 +127,18 @@
   <Data groupList="Advanced" type="short" offset="0x00" base="Animation" mask="0x0004" subclass="Boolean">Freeze Animation</Data>
   <Data groupList="Intermediate" type="short" offset="0x40" base="Object">Animation Timer</Data>
   <Data groupList="Intermediate" type="int" offset="0xF0" base="Object">Graphics Timer</Data>
+  
   <Data groupList="Intermediate" type="float" offset="0x2C" base="Object">Scale (Width)</Data>
   <Data groupList="Intermediate" type="float" offset="0x30" base="Object">Scale (Height)</Data>
   <Data groupList="Intermediate" type="float" offset="0x34" base="Object">Scale (Depth)</Data>
+  
   <Data groupList="Basic" type="float" offset="0x164" base="Object" coord="X">Home X</Data>
   <Data groupList="Basic" type="float" offset="0x168" base="Object" coord="Y">Home Y</Data>
   <Data groupList="Basic" type="float" offset="0x16C" base="Object" coord="Z">Home Z</Data>
+  
   <Data groupList="Basic" type="uint" offset="0x1CC" base="Object" useHex="true">Release Status</Data>
   <Data groupList="Basic" type="uint" offset="0x134" base="Object" useHex="true">Interaction Status</Data>
+  
   <Data groupList="Basic" type="int" offset="0x144" base="Object">Subtype</Data>
   <Data groupList="Basic" type="int" offset="0x14C" base="Object">State</Data>
   <Data groupList="Basic" type="int" offset="0x154" base="Object">Timer</Data>
