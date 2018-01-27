@@ -17,13 +17,13 @@ namespace SM64_Diagnostic.Structs.Configurations
             switch (Version)
             {
                 case RomVersion.US:
-                    if (valUS != null) return (uint)valUS;
+                    if (valUS.HasValue) return valUS.Value;
                     break;
                 case RomVersion.JP:
-                    if (valJP != null) return (uint)valJP;
+                    if (valJP.HasValue) return valJP.Value;
                     break;
                 case RomVersion.PAL:
-                    if (valPAL != null) return (uint)valPAL;
+                    if (valPAL.HasValue) return valPAL.Value;
                     break;
             }
             return 0;
@@ -33,13 +33,13 @@ namespace SM64_Diagnostic.Structs.Configurations
             switch (Version)
             {
                 case RomVersion.US:
-                    if (valUS != null) return (ushort)valUS;
+                    if (valUS.HasValue) return valUS.Value;
                     break;
                 case RomVersion.JP:
-                    if (valJP != null) return (ushort)valJP;
+                    if (valJP.HasValue) return valJP.Value;
                     break;
                 case RomVersion.PAL:
-                    if (valPAL != null) return (ushort)valPAL;
+                    if (valPAL.HasValue) return valPAL.Value;
                     break;
             }
             return 0;
