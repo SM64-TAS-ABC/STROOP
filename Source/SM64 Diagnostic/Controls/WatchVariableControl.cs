@@ -371,6 +371,8 @@ namespace SM64_Diagnostic.Controls
             bool isShiftKeyHeld = keyboardState.IsKeyDown(Key.ShiftLeft) || keyboardState.IsKeyDown(Key.ShiftRight);
             bool isAltKeyHeld = keyboardState.IsKeyDown(Key.AltLeft) || keyboardState.IsKeyDown(Key.AltRight);
             bool isFKeyHeld = keyboardState.IsKeyDown(Key.F);
+            bool isHKeyHeld = keyboardState.IsKeyDown(Key.H);
+            bool isLKeyHeld = keyboardState.IsKeyDown(Key.L);
             bool isRKeyHeld = keyboardState.IsKeyDown(Key.R);
             bool isDeleteKeyHeld =
                 keyboardState.IsKeyDown(Key.Delete) ||
@@ -388,6 +390,18 @@ namespace SM64_Diagnostic.Controls
             if (isFKeyHeld)
             {
                 ToggleFixedAddress();
+                return;
+            }
+
+            if (isHKeyHeld)
+            {
+                _watchVarWrapper.ToggleHighlighted();
+                return;
+            }
+
+            if (isLKeyHeld)
+            {
+                _watchVarWrapper.ToggleLocked(FixedAddressList);
                 return;
             }
 

@@ -24,7 +24,8 @@ namespace SM64_Diagnostic.Controls
         protected readonly WatchVariableControl _watchVarControl;
         protected readonly BetterContextMenuStrip _contextMenuStrip;
 
-        // Lock items
+        // Main items
+        private ToolStripMenuItem _itemHighlight;
         private ToolStripMenuItem _itemLock;
         private ToolStripMenuItem _itemRemoveAllLocks;
 
@@ -97,13 +98,9 @@ namespace SM64_Diagnostic.Controls
 
         private void AddContextMenuStripItems()
         {
-            ToolStripMenuItem itemHighlight = new ToolStripMenuItem("Highlight");
-            itemHighlight.Click += (sender, e) =>
-            {
-                _watchVarControl.ShowBorder = !_watchVarControl.ShowBorder;
-                itemHighlight.Checked = _watchVarControl.ShowBorder;
-            };
-            itemHighlight.Checked = _watchVarControl.ShowBorder;
+            _itemHighlight = new ToolStripMenuItem("Highlight");
+            _itemHighlight.Click += (sender, e) => ToggleHighlighted();
+            _itemHighlight.Checked = _watchVarControl.ShowBorder;
 
             _itemLock = new ToolStripMenuItem("Lock");
             _itemLock.Click += (sender, e) => ToggleLocked(_watchVarControl.FixedAddressList);
@@ -121,7 +118,7 @@ namespace SM64_Diagnostic.Controls
                 if (!success) _watchVarControl.FlashColor(WatchVariableControl.FAILURE_COLOR);
             };
 
-            _contextMenuStrip.AddToBeginningList(itemHighlight);
+            _contextMenuStrip.AddToBeginningList(_itemHighlight);
             _contextMenuStrip.AddToBeginningList(_itemLock);
             _contextMenuStrip.AddToBeginningList(_itemRemoveAllLocks);
             _contextMenuStrip.AddToBeginningList(itemCopyUnrounded);
@@ -212,6 +209,12 @@ namespace SM64_Diagnostic.Controls
             _itemLock.Checked = GetLockedBool(addresses);
             _itemRemoveAllLocks.Visible = WatchVariableLockManager.ContainsAnyLocks();
             _itemFixAddress.Checked = _watchVarControl.FixedAddressList != null;
+        }
+
+        public void ToggleHighlighted()
+        {
+            _watchVarControl.ShowBorder = !_watchVarControl.ShowBorder;
+            _itemHighlight.Checked = _watchVarControl.ShowBorder;
         }
 
         public void ToggleLocked(List<uint> addresses = null)
