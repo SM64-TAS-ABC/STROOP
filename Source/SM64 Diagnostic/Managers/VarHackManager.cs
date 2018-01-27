@@ -55,7 +55,7 @@ namespace SM64_Diagnostic.Managers
                     () => AddVariable(() =>
                     {
                         uint triFloorAddress = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
-                        float yNorm = Config.Stream.GetSingle(triFloorAddress + Config.TriangleOffsets.NormY);
+                        float yNorm = Config.Stream.GetSingle(triFloorAddress + TriangleOffsetsConfig.NormY);
                         return "YNorm " + FormatDouble(yNorm, 4, true);
                     }),
                     () => AddVariable(() => "Defacto " + FormatInteger(WatchVariableSpecialUtilities.GetMarioDeFactoSpeed())),

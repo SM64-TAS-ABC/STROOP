@@ -224,15 +224,15 @@ namespace SM64_Diagnostic.Managers
             UInt32 floorTriangle = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
             if (floorTriangle != 0x00)
             {
-                Int16 x1 = Config.Stream.GetInt16(floorTriangle + Config.TriangleOffsets.X1);
-                Int16 y1 = Config.Stream.GetInt16(floorTriangle + Config.TriangleOffsets.Y1);
-                Int16 z1 = Config.Stream.GetInt16(floorTriangle + Config.TriangleOffsets.Z1);
-                Int16 x2 = Config.Stream.GetInt16(floorTriangle + Config.TriangleOffsets.X2);
-                Int16 y2 = Config.Stream.GetInt16(floorTriangle + Config.TriangleOffsets.Y2);
-                Int16 z2 = Config.Stream.GetInt16(floorTriangle + Config.TriangleOffsets.Z2);
-                Int16 x3 = Config.Stream.GetInt16(floorTriangle + Config.TriangleOffsets.X3);
-                Int16 y3 = Config.Stream.GetInt16(floorTriangle + Config.TriangleOffsets.Y3);
-                Int16 z3 = Config.Stream.GetInt16(floorTriangle + Config.TriangleOffsets.Z3);
+                Int16 x1 = Config.Stream.GetInt16(floorTriangle + TriangleOffsetsConfig.X1);
+                Int16 y1 = Config.Stream.GetInt16(floorTriangle + TriangleOffsetsConfig.Y1);
+                Int16 z1 = Config.Stream.GetInt16(floorTriangle + TriangleOffsetsConfig.Z1);
+                Int16 x2 = Config.Stream.GetInt16(floorTriangle + TriangleOffsetsConfig.X2);
+                Int16 y2 = Config.Stream.GetInt16(floorTriangle + TriangleOffsetsConfig.Y2);
+                Int16 z2 = Config.Stream.GetInt16(floorTriangle + TriangleOffsetsConfig.Z2);
+                Int16 x3 = Config.Stream.GetInt16(floorTriangle + TriangleOffsetsConfig.X3);
+                Int16 y3 = Config.Stream.GetInt16(floorTriangle + TriangleOffsetsConfig.Y3);
+                Int16 z3 = Config.Stream.GetInt16(floorTriangle + TriangleOffsetsConfig.Z3);
                 mapManager.FloorTriangleMapObject.X1 = x1;
                 mapManager.FloorTriangleMapObject.Z1 = z1;
                 mapManager.FloorTriangleMapObject.X2 = x2;
@@ -247,15 +247,15 @@ namespace SM64_Diagnostic.Managers
             UInt32 ceilingTriangle = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.CeilingTriangleOffset);
             if (ceilingTriangle != 0x00)
             {
-                Int16 x1 = Config.Stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.X1);
-                Int16 y1 = Config.Stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.Y1);
-                Int16 z1 = Config.Stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.Z1);
-                Int16 x2 = Config.Stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.X2);
-                Int16 y2 = Config.Stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.Y2);
-                Int16 z2 = Config.Stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.Z2);
-                Int16 x3 = Config.Stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.X3);
-                Int16 y3 = Config.Stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.Y3);
-                Int16 z3 = Config.Stream.GetInt16(ceilingTriangle + Config.TriangleOffsets.Z3);
+                Int16 x1 = Config.Stream.GetInt16(ceilingTriangle + TriangleOffsetsConfig.X1);
+                Int16 y1 = Config.Stream.GetInt16(ceilingTriangle + TriangleOffsetsConfig.Y1);
+                Int16 z1 = Config.Stream.GetInt16(ceilingTriangle + TriangleOffsetsConfig.Z1);
+                Int16 x2 = Config.Stream.GetInt16(ceilingTriangle + TriangleOffsetsConfig.X2);
+                Int16 y2 = Config.Stream.GetInt16(ceilingTriangle + TriangleOffsetsConfig.Y2);
+                Int16 z2 = Config.Stream.GetInt16(ceilingTriangle + TriangleOffsetsConfig.Z2);
+                Int16 x3 = Config.Stream.GetInt16(ceilingTriangle + TriangleOffsetsConfig.X3);
+                Int16 y3 = Config.Stream.GetInt16(ceilingTriangle + TriangleOffsetsConfig.Y3);
+                Int16 z3 = Config.Stream.GetInt16(ceilingTriangle + TriangleOffsetsConfig.Z3);
                 mapManager.CeilingTriangleMapObject.X1 = x1;
                 mapManager.CeilingTriangleMapObject.Z1 = z1;
                 mapManager.CeilingTriangleMapObject.X2 = x2;
@@ -267,7 +267,7 @@ namespace SM64_Diagnostic.Managers
             mapManager.CeilingTriangleMapObject.Show = (ceilingTriangle != 0x00);
 
             // Update intended next position map object position
-            float normY = floorTriangle == 0 ? 1 : Config.Stream.GetSingle(floorTriangle + Config.TriangleOffsets.NormY);
+            float normY = floorTriangle == 0 ? 1 : Config.Stream.GetSingle(floorTriangle + TriangleOffsetsConfig.NormY);
             float hSpeed = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HSpeedOffset);
             float floorY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.FloorYOffset);
             bool aboveFloor = y > floorY + 0.001;

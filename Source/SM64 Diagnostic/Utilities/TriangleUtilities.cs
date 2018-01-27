@@ -78,7 +78,7 @@ namespace SM64_Diagnostic.Utilities
             List<uint> triangleAddresses = GetLevelTriangleAddresses();
             triangleAddresses.ForEach(address =>
             {
-                float ynorm = Config.Stream.GetSingle(address + Config.TriangleOffsets.NormY);
+                float ynorm = Config.Stream.GetSingle(address + TriangleOffsetsConfig.NormY);
                 TriangleClassification triClassification = CalculateClassification(ynorm);
                 if (classification == null || classification == triClassification)
                 {
@@ -92,7 +92,7 @@ namespace SM64_Diagnostic.Utilities
             List<uint> triangleAddresses = GetLevelTriangleAddresses();
             triangleAddresses.ForEach(address =>
             {
-                float ynorm = Config.Stream.GetSingle(address + Config.TriangleOffsets.NormY);
+                float ynorm = Config.Stream.GetSingle(address + TriangleOffsetsConfig.NormY);
                 TriangleClassification triClassification = CalculateClassification(ynorm);
                 if (classification == null || classification == triClassification)
                 {

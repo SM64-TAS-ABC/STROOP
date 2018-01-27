@@ -154,33 +154,6 @@
     <WaterLevelOffset>0x76</WaterLevelOffset>
     <AreaPointerOffset>0x90</AreaPointerOffset>
   </Mario>
-  <TriangleOffsets>
-    <SurfaceType>0x00</SurfaceType>
-    <ExertionForceIndex>0x02</ExertionForceIndex>
-    <ExertionAngle>0x03</ExertionAngle>
-    <Flags>0x04</Flags>
-    <Room>0x05</Room>
-    <YMin>0x06</YMin>
-    <YMax>0x08</YMax>
-    <X1>0x0A</X1>
-    <Y1>0x0C</Y1>
-    <Z1>0x0E</Z1>
-    <X2>0x10</X2>
-    <Y2>0x12</Y2>
-    <Z2>0x14</Z2>
-    <X3>0x16</X3>
-    <Y3>0x18</Y3>
-    <Z3>0x1A</Z3>
-    <NormX>0x1C</NormX>
-    <NormY>0x20</NormY>
-    <NormZ>0x24</NormZ>
-    <NormOffset>0x28</NormOffset>
-    <AssociatedObject>0x2C</AssociatedObject>
-
-    <BelongsToObjectMask>0x01</BelongsToObjectMask>
-    <NoCamCollisionMask>0x02</NoCamCollisionMask>
-    <ProjectionMask>0x08</ProjectionMask>
-  </TriangleOffsets>
   <Triangle>
     <TriangleStructSize>0x30</TriangleStructSize>
 

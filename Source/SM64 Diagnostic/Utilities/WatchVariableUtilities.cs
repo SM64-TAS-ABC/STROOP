@@ -129,7 +129,7 @@ namespace SM64_Diagnostic.Structs
                     return GetBaseAddressListFromBaseAddressType(BaseAddressTypeEnum.Triangle)
                         .ConvertAll(triangleAddress =>
                         {
-                            uint exertionForceIndex = Config.Stream.GetByte(triangleAddress + Config.TriangleOffsets.ExertionForceIndex);
+                            uint exertionForceIndex = Config.Stream.GetByte(triangleAddress + TriangleOffsetsConfig.ExertionForceIndex);
                             return Config.Triangle.ExertionForceTableAddress + 2 * exertionForceIndex;
                         });
 

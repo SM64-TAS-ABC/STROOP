@@ -987,7 +987,7 @@ namespace SM64_Diagnostic.Structs
                         double defactoSpeed = defactoSpeedNullable.Value;
 
                         uint floorTri = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
-                        float yNorm = floorTri == 0 ? 1 : Config.Stream.GetSingle(floorTri + Config.TriangleOffsets.NormY);
+                        float yNorm = floorTri == 0 ? 1 : Config.Stream.GetSingle(floorTri + TriangleOffsetsConfig.NormY);
                         float hSpeed = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HSpeedOffset);
 
                         float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);
@@ -2689,7 +2689,7 @@ namespace SM64_Diagnostic.Structs
         public static double GetMarioDeFactoSpeed()
         {
             uint floorTri = Config.Stream.GetUInt32(Config.Mario.StructAddress + Config.Mario.FloorTriangleOffset);
-            float yNorm = floorTri == 0 ? 1 : Config.Stream.GetSingle(floorTri + Config.TriangleOffsets.NormY);
+            float yNorm = floorTri == 0 ? 1 : Config.Stream.GetSingle(floorTri + TriangleOffsetsConfig.NormY);
             float hSpeed = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.HSpeedOffset);
 
             float marioY = Config.Stream.GetSingle(Config.Mario.StructAddress + Config.Mario.YOffset);

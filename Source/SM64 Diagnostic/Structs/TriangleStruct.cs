@@ -79,37 +79,37 @@ namespace SM64_Diagnostic.Structs
         {
             Address = triangleAddress;
 
-            SurfaceType = Config.Stream.GetUInt16(triangleAddress + Config.TriangleOffsets.SurfaceType);
-            ExertionForceIndex = Config.Stream.GetByte(triangleAddress + Config.TriangleOffsets.ExertionForceIndex);
-            ExertionAngle = Config.Stream.GetByte(triangleAddress + Config.TriangleOffsets.ExertionAngle);
-            Flags = Config.Stream.GetByte(triangleAddress + Config.TriangleOffsets.Flags);
-            Room = Config.Stream.GetByte(triangleAddress + Config.TriangleOffsets.Room);
+            SurfaceType = Config.Stream.GetUInt16(triangleAddress + TriangleOffsetsConfig.SurfaceType);
+            ExertionForceIndex = Config.Stream.GetByte(triangleAddress + TriangleOffsetsConfig.ExertionForceIndex);
+            ExertionAngle = Config.Stream.GetByte(triangleAddress + TriangleOffsetsConfig.ExertionAngle);
+            Flags = Config.Stream.GetByte(triangleAddress + TriangleOffsetsConfig.Flags);
+            Room = Config.Stream.GetByte(triangleAddress + TriangleOffsetsConfig.Room);
 
-            YMin = Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.YMin);
-            YMax = Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.YMax);
+            YMin = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.YMin);
+            YMax = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.YMax);
 
-            X1 = Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.X1);
-            Y1 = Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y1);
-            Z1 = Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z1);
-            X2 = Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.X2);
-            Y2 = Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y2);
-            Z2 = Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z2);
-            X3 = Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.X3);
-            Y3 = Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Y3);
-            Z3 = Config.Stream.GetInt16(triangleAddress + Config.TriangleOffsets.Z3);
+            X1 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.X1);
+            Y1 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.Y1);
+            Z1 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.Z1);
+            X2 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.X2);
+            Y2 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.Y2);
+            Z2 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.Z2);
+            X3 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.X3);
+            Y3 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.Y3);
+            Z3 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.Z3);
 
-            NormX = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormX);
-            NormY = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormY);
-            NormZ = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormZ);
-            NormOffset = Config.Stream.GetSingle(triangleAddress + Config.TriangleOffsets.NormOffset);
+            NormX = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormX);
+            NormY = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormY);
+            NormZ = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormZ);
+            NormOffset = Config.Stream.GetSingle(triangleAddress + TriangleOffsetsConfig.NormOffset);
 
-            AssociatedObject = Config.Stream.GetUInt32(triangleAddress + Config.TriangleOffsets.AssociatedObject);
+            AssociatedObject = Config.Stream.GetUInt32(triangleAddress + TriangleOffsetsConfig.AssociatedObject);
 
             Classification = TriangleUtilities.CalculateClassification(NormY);
 
-            XProjection = (Flags & Config.TriangleOffsets.ProjectionMask) != 0;
-            BelongsToObject = (Flags & Config.TriangleOffsets.BelongsToObjectMask) != 0;
-            NoCamCollision = (Flags & Config.TriangleOffsets.NoCamCollisionMask) != 0;
+            XProjection = (Flags & TriangleOffsetsConfig.ProjectionMask) != 0;
+            BelongsToObject = (Flags & TriangleOffsetsConfig.BelongsToObjectMask) != 0;
+            NoCamCollision = (Flags & TriangleOffsetsConfig.NoCamCollisionMask) != 0;
 
             FieldValueList = new List<object> {
                 "0x" + Address.ToString("X8"),

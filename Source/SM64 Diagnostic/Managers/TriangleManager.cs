@@ -232,15 +232,15 @@ namespace SM64_Diagnostic.Managers
         {
             uint triAddress = nullableTriAddress ?? TriangleAddress;
             short[] coordinates = new short[9];
-            coordinates[0] = Config.Stream.GetInt16(triAddress + Config.TriangleOffsets.X1);
-            coordinates[1] = Config.Stream.GetInt16(triAddress + Config.TriangleOffsets.Y1);
-            coordinates[2] = Config.Stream.GetInt16(triAddress + Config.TriangleOffsets.Z1);
-            coordinates[3] = Config.Stream.GetInt16(triAddress + Config.TriangleOffsets.X2);
-            coordinates[4] = Config.Stream.GetInt16(triAddress + Config.TriangleOffsets.Y2);
-            coordinates[5] = Config.Stream.GetInt16(triAddress + Config.TriangleOffsets.Z2);
-            coordinates[6] = Config.Stream.GetInt16(triAddress + Config.TriangleOffsets.X3);
-            coordinates[7] = Config.Stream.GetInt16(triAddress + Config.TriangleOffsets.Y3);
-            coordinates[8] = Config.Stream.GetInt16(triAddress + Config.TriangleOffsets.Z3);
+            coordinates[0] = Config.Stream.GetInt16(triAddress + TriangleOffsetsConfig.X1);
+            coordinates[1] = Config.Stream.GetInt16(triAddress + TriangleOffsetsConfig.Y1);
+            coordinates[2] = Config.Stream.GetInt16(triAddress + TriangleOffsetsConfig.Z1);
+            coordinates[3] = Config.Stream.GetInt16(triAddress + TriangleOffsetsConfig.X2);
+            coordinates[4] = Config.Stream.GetInt16(triAddress + TriangleOffsetsConfig.Y2);
+            coordinates[5] = Config.Stream.GetInt16(triAddress + TriangleOffsetsConfig.Z2);
+            coordinates[6] = Config.Stream.GetInt16(triAddress + TriangleOffsetsConfig.X3);
+            coordinates[7] = Config.Stream.GetInt16(triAddress + TriangleOffsetsConfig.Y3);
+            coordinates[8] = Config.Stream.GetInt16(triAddress + TriangleOffsetsConfig.Z3);
             return coordinates;
         }
 
@@ -257,10 +257,10 @@ namespace SM64_Diagnostic.Managers
             if (TriangleAddress == 0) return;
 
             float normX, normY, normZ, normOffset;
-            normX = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormX);
-            normY = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormY);
-            normZ = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormZ);
-            normOffset = Config.Stream.GetSingle(TriangleAddress + Config.TriangleOffsets.NormOffset);
+            normX = Config.Stream.GetSingle(TriangleAddress + TriangleOffsetsConfig.NormX);
+            normY = Config.Stream.GetSingle(TriangleAddress + TriangleOffsetsConfig.NormY);
+            normZ = Config.Stream.GetSingle(TriangleAddress + TriangleOffsetsConfig.NormZ);
+            normOffset = Config.Stream.GetSingle(TriangleAddress + TriangleOffsetsConfig.NormOffset);
 
             var triangleInfoForm = new TriangleInfoForm();
             triangleInfoForm.SetEquation(normX, normY, normZ, normOffset);

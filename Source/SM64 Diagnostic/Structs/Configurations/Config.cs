@@ -66,7 +66,6 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static MarioConfig Mario;
         public static WaypointConfig Waypoint;
         public static VarHackConfig VarHack = new VarHackConfig();
-        public static TriangleOffsetsConfig TriangleOffsets;
         public static TriangleConfig Triangle;
         public static ActionTable MarioActions;
         public static AnimationTable MarioAnimations;
