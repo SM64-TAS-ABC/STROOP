@@ -420,7 +420,7 @@ namespace SM64_Diagnostic.Managers
 
         private void ShowData()
         {
-            var triangleInfoForm = new InfoForm();
+            InfoForm infoForm = new InfoForm();
             string varNamesString;
             switch (_varToRecord)
             {
@@ -433,8 +433,8 @@ namespace SM64_Diagnostic.Managers
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            triangleInfoForm.SetDictionary(VarStateDictionary, "Timer", varNamesString);
-            triangleInfoForm.Show();
+            infoForm.SetDictionary(VarStateDictionary, "Timer", varNamesString);
+            infoForm.Show();
         }
 
         public void Update(bool updateView)

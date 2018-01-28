@@ -241,9 +241,9 @@ namespace SM64_Diagnostic.Managers
         private void ShowTriangleCoordinates()
         {
             if (TriangleAddress == 0) return;
-            var triangleInfoForm = new InfoForm();
-            triangleInfoForm.SetTriangleCoordinates(GetTriangleCoordinates());
-            triangleInfoForm.Show();
+            InfoForm infoForm = new InfoForm();
+            infoForm.SetTriangleCoordinates(GetTriangleCoordinates());
+            infoForm.Show();
         }
 
         private void ShowTriangleEquation()
@@ -256,23 +256,23 @@ namespace SM64_Diagnostic.Managers
             normZ = Config.Stream.GetSingle(TriangleAddress + TriangleOffsetsConfig.NormZ);
             normOffset = Config.Stream.GetSingle(TriangleAddress + TriangleOffsetsConfig.NormOffset);
 
-            var triangleInfoForm = new InfoForm();
-            triangleInfoForm.SetTriangleEquation(normX, normY, normZ, normOffset);
-            triangleInfoForm.Show();
+            InfoForm infoForm = new InfoForm();
+            infoForm.SetTriangleEquation(normX, normY, normZ, normOffset);
+            infoForm.Show();
         }
 
         private void ShowTriangleData()
         {
-            var triangleInfoForm = new InfoForm();
-            triangleInfoForm.SetTriangleData(_triangleData, _repeatFirstVertexCheckbox.Checked);
-            triangleInfoForm.Show();
+            InfoForm infoForm = new InfoForm();
+            infoForm.SetTriangleData(_triangleData, _repeatFirstVertexCheckbox.Checked);
+            infoForm.Show();
         }
 
         private void ShowTriangleVertices()
         {
-            var triangleInfoForm = new InfoForm();
-            triangleInfoForm.SetTriangleVertices(_triangleData);
-            triangleInfoForm.Show();
+            InfoForm infoForm = new InfoForm();
+            infoForm.SetTriangleVertices(_triangleData);
+            infoForm.Show();
         }
 
         private void ClearTriangleData()

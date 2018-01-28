@@ -113,7 +113,7 @@ namespace SM64_Diagnostic.Controls
 
         public void ShowVariableBytesInLittleEndian()
         {
-            InfoForm form = new InfoForm();
+            InfoForm infoForm = new InfoForm();
             StringBuilder stringBuilder = new StringBuilder();
             lock (_objectLock)
             {
@@ -125,13 +125,13 @@ namespace SM64_Diagnostic.Controls
                     stringBuilder.Append(bytesString);
                 }
             }
-            form.SetText("Var Hack Info", "Little Endian Bytes", stringBuilder.ToString());
-            form.Show();
+            infoForm.SetText("Var Hack Info", "Little Endian Bytes", stringBuilder.ToString());
+            infoForm.Show();
         }
 
         public void ShowVariableBytesInBigEndian()
         {
-            InfoForm form = new InfoForm();
+            InfoForm infoForm = new InfoForm();
             StringBuilder stringBuilder = new StringBuilder();
             lock (_objectLock)
             {
@@ -143,8 +143,8 @@ namespace SM64_Diagnostic.Controls
                     stringBuilder.Append(bytesString);
                 }
             }
-            form.SetText("Var Hack Info", "Big Endian Bytes", stringBuilder.ToString());
-            form.Show();
+            infoForm.SetText("Var Hack Info", "Big Endian Bytes", stringBuilder.ToString());
+            infoForm.Show();
         }
 
         // Methods to modify memory
