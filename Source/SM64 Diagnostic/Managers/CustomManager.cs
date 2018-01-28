@@ -21,7 +21,7 @@ namespace SM64_Diagnostic.Managers
         private Button _buttonCustomClearValues;
         private CheckBox _checkBoxUseValueAtStartOfGlobalTimer;
 
-        private List<List<object>> _recordedValues;
+        private List<List<string>> _recordedValues;
 
         public CustomManager(List<WatchVariableControlPrecursor> variables, Control customControl, WatchVariablePanel variableTable)
             : base(variables, variableTable)
@@ -48,7 +48,7 @@ namespace SM64_Diagnostic.Managers
 
             _checkBoxUseValueAtStartOfGlobalTimer = splitContainerCustomControls.Panel1.Controls["checkBoxUseValueAtStartOfGlobalTimer"] as CheckBox;
 
-            _recordedValues = new List<List<object>>();
+            _recordedValues = new List<List<string>>();
 
             // Panel 2 controls
 

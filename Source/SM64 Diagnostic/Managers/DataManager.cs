@@ -54,6 +54,16 @@ namespace SM64_Diagnostic.Managers
             _variablePanel.EnableCustomVariableFunctionality();
         }
 
+        public virtual List<string> GetCurrentVariableValues(bool useRounding = false)
+        {
+            return _variablePanel.GetCurrentVariableValues(useRounding);
+        }
+
+        public virtual List<string> GetCurrentVariableNames()
+        {
+            return _variablePanel.GetCurrentVariableNames();
+        }
+
         public virtual void Update(bool updateView)
         {
             if (!updateView) return;

@@ -646,6 +646,11 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
+        public string GetValue(bool useRounding)
+        {
+            return _watchVarWrapper.GetStringValue(useRounding);
+        }
+
 
 
 

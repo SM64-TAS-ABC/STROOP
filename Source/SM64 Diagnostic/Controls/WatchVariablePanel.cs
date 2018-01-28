@@ -213,6 +213,22 @@ namespace SM64_Diagnostic.Controls
             }
         }
 
+        public List<string> GetCurrentVariableValues(bool useRounding)
+        {
+            lock (_objectLock)
+            {
+                return _watchVarControlsList.ConvertAll(control => control.GetValue(useRounding));
+            }
+        }
+
+        public List<string> GetCurrentVariableNames()
+        {
+            lock (_objectLock)
+            {
+                return _watchVarControlsList.ConvertAll(control => control.VarName);
+            }
+        }
+
         public void UpdateControls()
         {
             _watchVarControlsList.ForEach(watchVarControl => watchVarControl.UpdateControl());
