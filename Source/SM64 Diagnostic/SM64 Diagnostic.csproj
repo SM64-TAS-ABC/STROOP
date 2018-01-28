@@ -56,7 +56,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icon2.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
@@ -600,8 +601,6 @@
     <None Include="EmbeddedResources\Right_Arrow.png" />
     <None Include="EmbeddedResources\Up_Arrow.png" />
     <None Include="EmbeddedResources\Red_X.png" />
-    <Content Include="icon.ico" />
-    <Content Include="icon2.ico" />
     <Content Include="Lib\abc.py" />
     <Content Include="Lib\aifc.py" />
     <Content Include="Lib\antigravity.py" />
