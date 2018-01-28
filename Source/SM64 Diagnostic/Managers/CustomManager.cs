@@ -150,7 +150,7 @@ namespace SM64_Diagnostic.Managers
             List<string> variableValueRowStrings = _recordedValues.ToList()
                 .ConvertAll(pair => pair.Key + "\t" + String.Join("\t", pair.Value));
             string variableValueText =
-                String.Join("\t", variableNames) +"\r\n" +
+                "Timer\t" + String.Join("\t", variableNames) +"\r\n" +
                 String.Join("\r\n", variableValueRowStrings);
             infoForm.SetText(
                 "Variable Value Info",
