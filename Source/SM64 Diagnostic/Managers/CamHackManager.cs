@@ -181,8 +181,7 @@ namespace SM64_Diagnostic.Managers
         public override void Update(bool updateView)
         {
             if (!updateView) return;
-
-            base.Update();
+            base.Update(updateView);
 
             CamHackMode correctCamHackMode = getCorrectCamHackMode();
             if (_currentCamHackMode != correctCamHackMode)

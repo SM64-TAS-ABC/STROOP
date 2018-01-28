@@ -48,10 +48,8 @@ namespace SM64_Diagnostic.Managers
                 Config.Stream.SetValue(0f, MiscConfig.MusicVolumeAddress);
             }
 
-            if (!updateView)
-                return;
-
-            base.Update();
+            if (!updateView) return;
+            base.Update(updateView);
         }
 
     }

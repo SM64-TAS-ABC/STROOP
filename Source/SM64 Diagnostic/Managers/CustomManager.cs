@@ -133,10 +133,8 @@ namespace SM64_Diagnostic.Managers
 
         public override void Update(bool updateView)
         {
-            if (!updateView)
-                return;
-
-            base.Update();
+            if (!updateView) return;
+            base.Update(updateView);
         }
     }
 }

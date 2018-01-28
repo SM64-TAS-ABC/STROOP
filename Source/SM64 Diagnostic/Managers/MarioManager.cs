@@ -290,11 +290,8 @@ namespace SM64_Diagnostic.Managers
             Config.MapManager.CameraMapObject.Z = cameraZ;
             Config.MapManager.CameraMapObject.Rotation = cameraRot;
 
-            // We are done if we don't need to update the Mario Manager view
-            if (!updateView)
-                return;
-
-            base.Update();
+            if (!updateView) return;
+            base.Update(updateView);
         }
     }
 }

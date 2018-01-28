@@ -114,8 +114,8 @@ namespace SM64_Diagnostic.Managers
 
         public override void Update(bool updateView)
         {
-            if (!updateView)
-                return;
+            if (!updateView) return;
+            base.Update(updateView);
 
             // Advanced mode
             byte advancedModeOn = Config.Stream.GetByte(DebugConfig.AdvancedModeAddress);
@@ -153,8 +153,6 @@ namespace SM64_Diagnostic.Managers
                  && Config.Stream.GetByte(DebugConfig.SpawnModeAddress) == 0x01;
             _stageSelectCheckbox.Checked = Config.Stream.GetByte(DebugConfig.StageSelectAddress) == 0x01;
             _freeMovementCheckbox.Checked = Config.Stream.GetUInt16(DebugConfig.FreeMovementAddress) == DebugConfig.FreeMovementOnValue;
-
-            base.Update();
         }
     }
 }

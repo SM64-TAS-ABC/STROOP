@@ -26,11 +26,8 @@ namespace SM64_Diagnostic.Managers
 
         public override void Update(bool updateView)
         {
-            // We are done if we don't need to update the Mario Manager view
-            if (!updateView)
-                return;
-
-            base.Update();
+            if (!updateView) return;
+            base.Update(updateView);
 
             actionDescriptionLabel.Text = TableConfig.MarioActions.GetActionName();
             animationDescriptionLabel.Text = TableConfig.MarioAnimations.GetAnimationName();

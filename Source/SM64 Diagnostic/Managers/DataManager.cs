@@ -54,9 +54,9 @@ namespace SM64_Diagnostic.Managers
             _variablePanel.EnableCustomVariableFunctionality();
         }
 
-        public virtual void Update(bool updateView = false)
+        public virtual void Update(bool updateView)
         {
-            //if (!updateView) return;
+            if (!updateView) return;
             _variablePanel.UpdateControls();
         }
     }
