@@ -309,7 +309,6 @@
     <Compile Include="Enums\AngleUnitType.cs" />
     <Compile Include="Utilities\ColorUtilities.cs" />
     <Compile Include="Managers\WatchVariableLockManager.cs" />
-    <Compile Include="Utilities\XmlBuilder.cs" />
     <Compile Include="Enums\WatchVariableCoordinate.cs" />
     <Compile Include="Enums\WatchVariableSubclass.cs" />
     <Compile Include="Enums\VariableGroup.cs" />

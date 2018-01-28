@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace SM64_Diagnostic.Controls
 {
@@ -59,64 +60,64 @@ namespace SM64_Diagnostic.Controls
 
         public override string ToString()
         {
-            XmlBuilder xmlBuilder = new XmlBuilder();
-            xmlBuilder.SetRootElement("Data");
-            xmlBuilder.SetValue(_name);
+            XDocument xmlBuild = new XDocument();
+            XElement root = new XElement("Data", _name);
 
             if (_groupList.Count > 0)
-                xmlBuilder.SetElement("groupList", String.Join(",", _groupList));
+                root.Add(new XElement("groupList", String.Join(",", _groupList)));
 
-            xmlBuilder.SetElement("base", _watchVar.BaseAddressType.ToString());
+            root.Add(new XElement("base", _watchVar.BaseAddressType.ToString()));
 
             if (_watchVar.OffsetDefault != null)
-                xmlBuilder.SetElement(
+                root.Add(new XElement(
                     "offset",
-                    String.Format("0x{0:X}", _watchVar.OffsetDefault.Value));
+                    String.Format("0x{0:X}", _watchVar.OffsetDefault.Value)));
 
             if (_watchVar.OffsetUS != null)
-                xmlBuilder.SetElement(
+                root.Add(new XElement(
                     "offsetUS",
-                    String.Format("0x{0:X}", _watchVar.OffsetUS.Value));
+                    String.Format("0x{0:X}", _watchVar.OffsetUS.Value)));
 
             if (_watchVar.OffsetJP != null)
-                xmlBuilder.SetElement(
+                root.Add(new XElement(
                     "offsetJP",
-                    String.Format("0x{0:X}", _watchVar.OffsetJP.Value));
+                    String.Format("0x{0:X}", _watchVar.OffsetJP.Value)));
 
             if (_watchVar.OffsetPAL != null)
-                xmlBuilder.SetElement(
+                root.Add(new XElement(
                     "offsetPAL",
-                    String.Format("0x{0:X}", _watchVar.OffsetPAL.Value));
+                    String.Format("0x{0:X}", _watchVar.OffsetPAL.Value)));
 
             if (_watchVar.MemoryTypeName != null)
-                xmlBuilder.SetElement("type", _watchVar.MemoryTypeName);
+                root.Add(new XElement("type", _watchVar.MemoryTypeName));
 
             if (_watchVar.SpecialType != null)
-                xmlBuilder.SetElement("specialType", _watchVar.SpecialType);
+                root.Add(new XElement("specialType", _watchVar.SpecialType));
 
             if (_watchVar.Mask != null)
-                xmlBuilder.SetElement(
+                root.Add(new XElement(
                     "mask",
-                    String.Format("0x{0:X" + _watchVar.NibbleCount + "}", _watchVar.Mask.Value));
+                    String.Format("0x{0:X" + _watchVar.NibbleCount + "}", _watchVar.Mask.Value)));
 
             if (_subclass != WatchVariableSubclass.Number)
-                xmlBuilder.SetElement("subclass", _subclass.ToString());
+                root.Add(new XElement("subclass", _subclass.ToString()));
 
             if (_invertBool.HasValue)
-                xmlBuilder.SetElement("invertBool", _invertBool.Value.ToString().ToLower());
+                root.Add(new XElement("invertBool", _invertBool.Value.ToString().ToLower()));
 
             if (_useHex.HasValue)
-                xmlBuilder.SetElement("useHex", _useHex.Value.ToString().ToLower());
+                root.Add(new XElement("useHex", _useHex.Value.ToString().ToLower()));
 
             if (_coordinate.HasValue)
-                xmlBuilder.SetElement("coord", _coordinate.Value.ToString());
+                root.Add(new XElement("coord", _coordinate.Value.ToString()));
 
             if (_backgroundColor.HasValue)
-                xmlBuilder.SetElement(
+                root.Add(new XElement(
                     "color",
-                    "#" + ColorUtilities.ToString(_backgroundColor.Value));
+                    "#" + ColorUtilities.ToString(_backgroundColor.Value)));
 
-            return xmlBuilder.ToString();
+            xmlBuild.Add(root);
+            return root.ToString();
         }
 
     }
