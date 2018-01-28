@@ -21,7 +21,7 @@ namespace SM64_Diagnostic.Managers
         private Button _buttonCustomClearValues;
         private CheckBox _checkBoxUseValueAtStartOfGlobalTimer;
 
-        private List<List<string>> _recordedValues;
+        private Dictionary<int, List<string>> _recordedValues;
 
         public CustomManager(List<WatchVariableControlPrecursor> variables, Control customControl, WatchVariablePanel variableTable)
             : base(variables, variableTable)
@@ -48,7 +48,7 @@ namespace SM64_Diagnostic.Managers
 
             _checkBoxUseValueAtStartOfGlobalTimer = splitContainerCustomControls.Panel1.Controls["checkBoxUseValueAtStartOfGlobalTimer"] as CheckBox;
 
-            _recordedValues = new List<List<string>>();
+            _recordedValues = new Dictionary<int, List<string>>();
 
             // Panel 2 controls
 
@@ -145,6 +145,18 @@ namespace SM64_Diagnostic.Managers
         private void ShowRecordedValues()
         {
             InfoForm infoForm = new InfoForm();
+
+            List<string> variableNames = GetCurrentVariableNames();
+            List<string> variableValueRowStrings = _recordedValues.ToList()
+                .ConvertAll(pair => pair.Key + "\t" + String.Join("\t", pair.Value));
+            string variableValueText =
+                String.Join("\t", variableNames) +"\r\n" +
+                String.Join("\r\n", variableValueRowStrings);
+            infoForm.SetText(
+                "Variable Value Info",
+                "Variable Values",
+                variableValueText);
+
             infoForm.Show();
         }
 
@@ -155,6 +167,19 @@ namespace SM64_Diagnostic.Managers
 
         public override void Update(bool updateView)
         {
+            if (_checkBoxCustomRecordValues.Checked)
+            {
+                int currentTimer = Config.Stream.GetInt32(MiscConfig.GlobalTimerAddress);
+
+                // record new values if we don't already have values
+                // or we record at the end of the timer
+                if (!_recordedValues.ContainsKey(currentTimer) ||
+                    !_checkBoxUseValueAtStartOfGlobalTimer.Checked)
+                {
+                    List<string> currentValues = GetCurrentVariableValues();
+                    _recordedValues[currentTimer] = currentValues;
+                }
+            }
             _textBoxRecordValuesCount.Text = _recordedValues.Count.ToString();
 
             if (!updateView) return;
