@@ -14,17 +14,32 @@ namespace SM64_Diagnostic.Managers
 {
     public class CustomManager : DataManager
     {
+        private CheckBox _checkBoxCustomRecordValues;
+        private BetterTextbox _textBoxRecordValuesCount;
+        private Button _buttonCustomShowValues;
+        private Button _buttonCustomClearValues;
+        private CheckBox _checkBoxUseValueAtStartOfGlobalTimer;
+
         public CustomManager(List<WatchVariableControlPrecursor> variables, Control customControl, WatchVariablePanel variableTable)
             : base(variables, variableTable)
         {
             EnableCustomVariableFunctionality();
 
             SplitContainer splitContainerCustom = customControl.Controls["splitContainerCustom"] as SplitContainer;
-
             SplitContainer splitContainerCustomControls = splitContainerCustom.Panel1.Controls["splitContainerCustomControls"] as SplitContainer;
+
+            // Panel 1 controls
 
             Button buttonClearVariables = splitContainerCustomControls.Panel1.Controls["buttonClearVariables"] as Button;
             buttonClearVariables.Click += (sender, e) => ClearVariables();
+
+            _checkBoxCustomRecordValues = splitContainerCustomControls.Panel1.Controls["checkBoxCustomRecordValues"] as CheckBox;
+            _textBoxRecordValuesCount = splitContainerCustomControls.Panel1.Controls["textBoxRecordValuesCount"] as BetterTextbox;
+            _buttonCustomShowValues = splitContainerCustomControls.Panel1.Controls["buttonCustomShowValues"] as Button;
+            _buttonCustomClearValues = splitContainerCustomControls.Panel1.Controls["buttonCustomClearValues"] as Button;
+            _checkBoxUseValueAtStartOfGlobalTimer = splitContainerCustomControls.Panel1.Controls["checkBoxUseValueAtStartOfGlobalTimer"] as CheckBox;
+
+            // Panel 2 controls
 
             Button buttonResetVariableSizeToDefault = splitContainerCustomControls.Panel2.Controls["buttonResetVariableSizeToDefault"] as Button;
             buttonResetVariableSizeToDefault.Click += (sender, e) =>
