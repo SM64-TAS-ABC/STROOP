@@ -1392,7 +1392,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 364);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 366);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1457,7 +1457,7 @@ namespace SM64_Diagnostic
             this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
             this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 156);
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 153);
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
@@ -4638,7 +4638,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 205F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 207F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -7811,6 +7811,7 @@ namespace SM64_Diagnostic
             this.textBoxRecordValuesCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxRecordValuesCount.Location = new System.Drawing.Point(137, 46);
             this.textBoxRecordValuesCount.Name = "textBoxRecordValuesCount";
+            this.textBoxRecordValuesCount.ReadOnly = true;
             this.textBoxRecordValuesCount.Size = new System.Drawing.Size(51, 20);
             this.textBoxRecordValuesCount.TabIndex = 34;
             this.textBoxRecordValuesCount.Text = "0";
@@ -8575,7 +8576,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(705, 437);
+            this.glControlMap.Size = new System.Drawing.Size(696, 437);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -9586,7 +9587,7 @@ namespace SM64_Diagnostic
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(331, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(391, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -9618,7 +9619,7 @@ namespace SM64_Diagnostic
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(320, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(380, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -9674,7 +9675,7 @@ namespace SM64_Diagnostic
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(320, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(380, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
