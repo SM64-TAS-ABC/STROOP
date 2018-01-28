@@ -125,7 +125,7 @@ namespace SM64_Diagnostic.Controls
                     stringBuilder.Append(bytesString);
                 }
             }
-            form.SetTitleAndText("Little Endian Bytes", stringBuilder.ToString());
+            form.SetText("Var Hack Info", "Little Endian Bytes", stringBuilder.ToString());
             form.Show();
         }
 
@@ -143,7 +143,7 @@ namespace SM64_Diagnostic.Controls
                     stringBuilder.Append(bytesString);
                 }
             }
-            form.SetTitleAndText("Big Endian Bytes", stringBuilder.ToString());
+            form.SetText("Var Hack Info", "Big Endian Bytes", stringBuilder.ToString());
             form.Show();
         }
 

@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InfoForm));
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonOk = new System.Windows.Forms.Button();
             this.textBoxTriangleInfo = new System.Windows.Forms.TextBox();
+            this.buttonOk = new System.Windows.Forms.Button();
             this.textBoxTitle = new System.Windows.Forms.TextBox();
             this.tableLayoutPanelMain.SuspendLayout();
             this.SuspendLayout();
@@ -56,16 +56,6 @@
             this.tableLayoutPanelMain.Size = new System.Drawing.Size(317, 182);
             this.tableLayoutPanelMain.TabIndex = 0;
             // 
-            // buttonOk
-            // 
-            this.buttonOk.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonOk.Location = new System.Drawing.Point(121, 155);
-            this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(75, 23);
-            this.buttonOk.TabIndex = 0;
-            this.buttonOk.Text = "OK";
-            this.buttonOk.UseVisualStyleBackColor = true;
-            // 
             // textBoxTriangleInfo
             // 
             this.textBoxTriangleInfo.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -78,6 +68,16 @@
             this.textBoxTriangleInfo.Size = new System.Drawing.Size(311, 116);
             this.textBoxTriangleInfo.TabIndex = 3;
             this.textBoxTriangleInfo.Text = "\r\n";
+            // 
+            // buttonOk
+            // 
+            this.buttonOk.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonOk.Location = new System.Drawing.Point(121, 155);
+            this.buttonOk.Name = "buttonOk";
+            this.buttonOk.Size = new System.Drawing.Size(75, 23);
+            this.buttonOk.TabIndex = 0;
+            this.buttonOk.Text = "OK";
+            this.buttonOk.UseVisualStyleBackColor = true;
             // 
             // textBoxTitle
             // 
@@ -93,7 +93,7 @@
             this.textBoxTitle.Text = "Triangle Info";
             this.textBoxTitle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // TriangleInfoForm
+            // InfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -103,9 +103,9 @@
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(10000, 10000);
             this.MinimizeBox = false;
-            this.Name = "TriangleInfoForm";
+            this.Name = "InfoForm";
             this.ShowIcon = false;
-            this.Text = "Triangle Info";
+            this.Text = "Info";
             this.tableLayoutPanelMain.ResumeLayout(false);
             this.tableLayoutPanelMain.PerformLayout();
             this.ResumeLayout(false);

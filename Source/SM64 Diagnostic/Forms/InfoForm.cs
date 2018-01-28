@@ -22,21 +22,24 @@ namespace SM64_Diagnostic.Forms
             textBoxTriangleInfo.Click += (sender, e) => textBoxTriangleInfo.SelectAll();
         }
 
-        public void SetCoordinates(short[] coordinates)
+        public void SetTriangleCoordinates(short[] coordinates)
         {
+            this.Text = "Triangle Info";
             textBoxTitle.Text = "Triangle Coordinates";
             textBoxTriangleInfo.Text = StringifyCoordinates(coordinates);
         }
 
-        public void SetEquation(float normalX, float normalY, float normalZ, float normalOffset)
+        public void SetTriangleEquation(float normalX, float normalY, float normalZ, float normalOffset)
         {
+            this.Text = "Triangle Info";
             textBoxTitle.Text = "Triangle Equation";
             textBoxTriangleInfo.Text =
                 normalX + "x + " + normalY + "y + " + normalZ + "z + " + normalOffset + " = 0";
         }
 
-        public void SetData(List<short[]> coordinateList, bool repeatFirstVertex)
+        public void SetTriangleData(List<short[]> coordinateList, bool repeatFirstVertex)
         {
+            this.Text = "Triangle Info";
             textBoxTitle.Text = "Triangle Data";
             textBoxTriangleInfo.Text = String.Join(
                 "\r\n\r\n",
@@ -44,8 +47,9 @@ namespace SM64_Diagnostic.Forms
                     coordinates => StringifyCoordinates(coordinates, repeatFirstVertex)));
         }
 
-        public void SetVertices(List<short[]> coordinateList)
+        public void SetTriangleVertices(List<short[]> coordinateList)
         {
+            this.Text = "Triangle Info";
             textBoxTitle.Text = "Triangle Vertices";
             List<short[]> vertexList = new List<short[]>();
             coordinateList.ForEach(
@@ -83,6 +87,7 @@ namespace SM64_Diagnostic.Forms
 
         public void SetTriangles(List<TriangleStruct> triangleList)
         {
+            this.Text = "Triangle Info";
             textBoxTitle.Text = "Triangles";
             textBoxTriangleInfo.Text = TriangleStruct.GetFieldNameString() + "\n" + String.Join("\n", triangleList);
         }
@@ -113,6 +118,7 @@ namespace SM64_Diagnostic.Forms
 
         public void SetDictionary<TKey, TValue>(Dictionary<TKey, TValue> dictionary, string keyName = null, string valueName = null)
         {
+            this.Text = "Dictionary Info";
             textBoxTitle.Text = "Dictionary";
             String text = "";
             if (keyName != null && valueName != null)
@@ -126,9 +132,10 @@ namespace SM64_Diagnostic.Forms
             textBoxTriangleInfo.Text = text;
         }
 
-        public void SetTitleAndText(string title, string text)
+        public void SetText(string formTitle, string textTitle, string text)
         {
-            textBoxTitle.Text = title;
+            this.Text = formTitle;
+            textBoxTitle.Text = textTitle;
             textBoxTriangleInfo.Text = text;
         }
 

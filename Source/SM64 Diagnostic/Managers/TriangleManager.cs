@@ -242,7 +242,7 @@ namespace SM64_Diagnostic.Managers
         {
             if (TriangleAddress == 0) return;
             var triangleInfoForm = new InfoForm();
-            triangleInfoForm.SetCoordinates(GetTriangleCoordinates());
+            triangleInfoForm.SetTriangleCoordinates(GetTriangleCoordinates());
             triangleInfoForm.Show();
         }
 
@@ -257,21 +257,21 @@ namespace SM64_Diagnostic.Managers
             normOffset = Config.Stream.GetSingle(TriangleAddress + TriangleOffsetsConfig.NormOffset);
 
             var triangleInfoForm = new InfoForm();
-            triangleInfoForm.SetEquation(normX, normY, normZ, normOffset);
+            triangleInfoForm.SetTriangleEquation(normX, normY, normZ, normOffset);
             triangleInfoForm.Show();
         }
 
         private void ShowTriangleData()
         {
             var triangleInfoForm = new InfoForm();
-            triangleInfoForm.SetData(_triangleData, _repeatFirstVertexCheckbox.Checked);
+            triangleInfoForm.SetTriangleData(_triangleData, _repeatFirstVertexCheckbox.Checked);
             triangleInfoForm.Show();
         }
 
         private void ShowTriangleVertices()
         {
             var triangleInfoForm = new InfoForm();
-            triangleInfoForm.SetVertices(_triangleData);
+            triangleInfoForm.SetTriangleVertices(_triangleData);
             triangleInfoForm.Show();
         }
 
