@@ -595,11 +595,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <None Include="EmbeddedResources\Left_Arrow.png" />
-    <None Include="EmbeddedResources\Down_Arrow.png" />
-    <None Include="EmbeddedResources\Right_Arrow.png" />
-    <None Include="EmbeddedResources\Up_Arrow.png" />
-    <None Include="EmbeddedResources\Red_X.png" />
     <Content Include="Lib\abc.py" />
     <Content Include="Lib\aifc.py" />
     <Content Include="Lib\antigravity.py" />
