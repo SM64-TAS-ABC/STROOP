@@ -9,6 +9,7 @@ using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Structs.Configurations;
+using SM64_Diagnostic.Forms;
 
 namespace SM64_Diagnostic.Managers
 {
@@ -19,6 +20,8 @@ namespace SM64_Diagnostic.Managers
         private Button _buttonCustomShowValues;
         private Button _buttonCustomClearValues;
         private CheckBox _checkBoxUseValueAtStartOfGlobalTimer;
+
+        private List<List<object>> _recordedValues;
 
         public CustomManager(List<WatchVariableControlPrecursor> variables, Control customControl, WatchVariablePanel variableTable)
             : base(variables, variableTable)
@@ -34,10 +37,18 @@ namespace SM64_Diagnostic.Managers
             buttonClearVariables.Click += (sender, e) => ClearVariables();
 
             _checkBoxCustomRecordValues = splitContainerCustomControls.Panel1.Controls["checkBoxCustomRecordValues"] as CheckBox;
+
             _textBoxRecordValuesCount = splitContainerCustomControls.Panel1.Controls["textBoxRecordValuesCount"] as BetterTextbox;
+
             _buttonCustomShowValues = splitContainerCustomControls.Panel1.Controls["buttonCustomShowValues"] as Button;
+            _buttonCustomShowValues.Click += (sender, e) => ShowRecordedValues();
+
             _buttonCustomClearValues = splitContainerCustomControls.Panel1.Controls["buttonCustomClearValues"] as Button;
+            _buttonCustomClearValues.Click += (sender, e) => ClearRecordedValues();
+
             _checkBoxUseValueAtStartOfGlobalTimer = splitContainerCustomControls.Panel1.Controls["checkBoxUseValueAtStartOfGlobalTimer"] as CheckBox;
+
+            _recordedValues = new List<List<object>>();
 
             // Panel 2 controls
 
@@ -131,8 +142,21 @@ namespace SM64_Diagnostic.Managers
             watchVarControl.EnableCustomFunctionality();
         }
 
+        private void ShowRecordedValues()
+        {
+            InfoForm infoForm = new InfoForm();
+            infoForm.Show();
+        }
+
+        private void ClearRecordedValues()
+        {
+            _recordedValues.Clear();
+        }
+
         public override void Update(bool updateView)
         {
+            _textBoxRecordValuesCount.Text = _recordedValues.Count.ToString();
+
             if (!updateView) return;
             base.Update(updateView);
         }
