@@ -531,6 +531,13 @@ namespace SM64_Diagnostic
             this.watchVariablePanelMisc = new SM64_Diagnostic.Controls.WatchVariablePanel();
             this.tabPageCustom = new System.Windows.Forms.TabPage();
             this.splitContainerCustom = new System.Windows.Forms.SplitContainer();
+            this.splitContainerCustomControls = new System.Windows.Forms.SplitContainer();
+            this.checkBoxUseValueAtStartOfGlobalTimer = new System.Windows.Forms.CheckBox();
+            this.textBoxRecordValuesCount = new SM64_Diagnostic.BetterTextbox();
+            this.buttonCustomClearValues = new System.Windows.Forms.Button();
+            this.buttonCustomShowValues = new System.Windows.Forms.Button();
+            this.checkBoxCustomRecordValues = new System.Windows.Forms.CheckBox();
+            this.buttonClearVariables = new System.Windows.Forms.Button();
             this.groupBoxVarHeight = new System.Windows.Forms.GroupBox();
             this.betterTextboxVarHeightGetSet = new SM64_Diagnostic.BetterTextbox();
             this.betterTextboxVarHeightAddSubtract = new SM64_Diagnostic.BetterTextbox();
@@ -538,6 +545,7 @@ namespace SM64_Diagnostic
             this.buttonVarHeightSubtract = new System.Windows.Forms.Button();
             this.buttonVarHeightSet = new System.Windows.Forms.Button();
             this.buttonVarHeightAdd = new System.Windows.Forms.Button();
+            this.buttonResetVariableSizeToDefault = new System.Windows.Forms.Button();
             this.groupBoxVarValueWidth = new System.Windows.Forms.GroupBox();
             this.betterTextboxVarValueWidthGetSet = new SM64_Diagnostic.BetterTextbox();
             this.betterTextboxVarValueWidthAddSubtract = new SM64_Diagnostic.BetterTextbox();
@@ -552,8 +560,6 @@ namespace SM64_Diagnostic
             this.buttonVarNameWidthSubtract = new System.Windows.Forms.Button();
             this.buttonVarNameWidthSet = new System.Windows.Forms.Button();
             this.buttonVarNameWidthAdd = new System.Windows.Forms.Button();
-            this.buttonResetVariableSizeToDefault = new System.Windows.Forms.Button();
-            this.buttonClearVariables = new System.Windows.Forms.Button();
             this.watchVariablePanelCustom = new SM64_Diagnostic.Controls.WatchVariablePanel();
             this.tabPageDebug = new System.Windows.Forms.TabPage();
             this.splitContainerDebug = new System.Windows.Forms.SplitContainer();
@@ -1030,12 +1036,6 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.splitContainerCustomControls = new System.Windows.Forms.SplitContainer();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.betterTextbox1 = new SM64_Diagnostic.BetterTextbox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1271,6 +1271,10 @@ namespace SM64_Diagnostic
             this.splitContainerCustom.Panel1.SuspendLayout();
             this.splitContainerCustom.Panel2.SuspendLayout();
             this.splitContainerCustom.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCustomControls)).BeginInit();
+            this.splitContainerCustomControls.Panel1.SuspendLayout();
+            this.splitContainerCustomControls.Panel2.SuspendLayout();
+            this.splitContainerCustomControls.SuspendLayout();
             this.groupBoxVarHeight.SuspendLayout();
             this.groupBoxVarValueWidth.SuspendLayout();
             this.groupBoxVarNameWidth.SuspendLayout();
@@ -1359,10 +1363,6 @@ namespace SM64_Diagnostic
             this.groupBoxGoto.SuspendLayout();
             this.groupBoxRecording.SuspendLayout();
             this.panelConnect.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCustomControls)).BeginInit();
-            this.splitContainerCustomControls.Panel1.SuspendLayout();
-            this.splitContainerCustomControls.Panel2.SuspendLayout();
-            this.splitContainerCustomControls.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -1392,7 +1392,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 363);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 364);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1457,7 +1457,7 @@ namespace SM64_Diagnostic
             this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
             this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 155);
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 156);
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
@@ -4638,7 +4638,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 204F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 205F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -7761,6 +7761,98 @@ namespace SM64_Diagnostic
             this.splitContainerCustom.SplitterWidth = 1;
             this.splitContainerCustom.TabIndex = 19;
             // 
+            // splitContainerCustomControls
+            // 
+            this.splitContainerCustomControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerCustomControls.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerCustomControls.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerCustomControls.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerCustomControls.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerCustomControls.Name = "splitContainerCustomControls";
+            this.splitContainerCustomControls.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerCustomControls.Panel1
+            // 
+            this.splitContainerCustomControls.Panel1.Controls.Add(this.checkBoxUseValueAtStartOfGlobalTimer);
+            this.splitContainerCustomControls.Panel1.Controls.Add(this.textBoxRecordValuesCount);
+            this.splitContainerCustomControls.Panel1.Controls.Add(this.buttonCustomClearValues);
+            this.splitContainerCustomControls.Panel1.Controls.Add(this.buttonCustomShowValues);
+            this.splitContainerCustomControls.Panel1.Controls.Add(this.checkBoxCustomRecordValues);
+            this.splitContainerCustomControls.Panel1.Controls.Add(this.buttonClearVariables);
+            // 
+            // splitContainerCustomControls.Panel2
+            // 
+            this.splitContainerCustomControls.Panel2.AutoScroll = true;
+            this.splitContainerCustomControls.Panel2.Controls.Add(this.groupBoxVarHeight);
+            this.splitContainerCustomControls.Panel2.Controls.Add(this.buttonResetVariableSizeToDefault);
+            this.splitContainerCustomControls.Panel2.Controls.Add(this.groupBoxVarValueWidth);
+            this.splitContainerCustomControls.Panel2.Controls.Add(this.groupBoxVarNameWidth);
+            this.splitContainerCustomControls.Size = new System.Drawing.Size(221, 463);
+            this.splitContainerCustomControls.SplitterDistance = 172;
+            this.splitContainerCustomControls.SplitterWidth = 1;
+            this.splitContainerCustomControls.TabIndex = 31;
+            // 
+            // checkBoxUseValueAtStartOfGlobalTimer
+            // 
+            this.checkBoxUseValueAtStartOfGlobalTimer.AutoSize = true;
+            this.checkBoxUseValueAtStartOfGlobalTimer.Checked = true;
+            this.checkBoxUseValueAtStartOfGlobalTimer.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxUseValueAtStartOfGlobalTimer.Location = new System.Drawing.Point(11, 103);
+            this.checkBoxUseValueAtStartOfGlobalTimer.Name = "checkBoxUseValueAtStartOfGlobalTimer";
+            this.checkBoxUseValueAtStartOfGlobalTimer.Size = new System.Drawing.Size(186, 17);
+            this.checkBoxUseValueAtStartOfGlobalTimer.TabIndex = 35;
+            this.checkBoxUseValueAtStartOfGlobalTimer.Text = "Use Value at Start of Global Timer";
+            this.checkBoxUseValueAtStartOfGlobalTimer.UseVisualStyleBackColor = true;
+            // 
+            // textBoxRecordValuesCount
+            // 
+            this.textBoxRecordValuesCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxRecordValuesCount.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxRecordValuesCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxRecordValuesCount.Location = new System.Drawing.Point(137, 46);
+            this.textBoxRecordValuesCount.Name = "textBoxRecordValuesCount";
+            this.textBoxRecordValuesCount.Size = new System.Drawing.Size(51, 20);
+            this.textBoxRecordValuesCount.TabIndex = 34;
+            this.textBoxRecordValuesCount.Text = "0";
+            this.textBoxRecordValuesCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonCustomClearValues
+            // 
+            this.buttonCustomClearValues.Location = new System.Drawing.Point(102, 72);
+            this.buttonCustomClearValues.Name = "buttonCustomClearValues";
+            this.buttonCustomClearValues.Size = new System.Drawing.Size(87, 25);
+            this.buttonCustomClearValues.TabIndex = 19;
+            this.buttonCustomClearValues.Text = "Clear Values";
+            this.buttonCustomClearValues.UseVisualStyleBackColor = true;
+            // 
+            // buttonCustomShowValues
+            // 
+            this.buttonCustomShowValues.Location = new System.Drawing.Point(10, 72);
+            this.buttonCustomShowValues.Name = "buttonCustomShowValues";
+            this.buttonCustomShowValues.Size = new System.Drawing.Size(87, 25);
+            this.buttonCustomShowValues.TabIndex = 18;
+            this.buttonCustomShowValues.Text = "Show Values";
+            this.buttonCustomShowValues.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxCustomRecordValues
+            // 
+            this.checkBoxCustomRecordValues.AutoSize = true;
+            this.checkBoxCustomRecordValues.Location = new System.Drawing.Point(11, 47);
+            this.checkBoxCustomRecordValues.Name = "checkBoxCustomRecordValues";
+            this.checkBoxCustomRecordValues.Size = new System.Drawing.Size(96, 17);
+            this.checkBoxCustomRecordValues.TabIndex = 17;
+            this.checkBoxCustomRecordValues.Text = "Record Values";
+            this.checkBoxCustomRecordValues.UseVisualStyleBackColor = true;
+            // 
+            // buttonClearVariables
+            // 
+            this.buttonClearVariables.Location = new System.Drawing.Point(10, 3);
+            this.buttonClearVariables.Name = "buttonClearVariables";
+            this.buttonClearVariables.Size = new System.Drawing.Size(179, 38);
+            this.buttonClearVariables.TabIndex = 4;
+            this.buttonClearVariables.Text = "Clear Variables";
+            this.buttonClearVariables.UseVisualStyleBackColor = true;
+            // 
             // groupBoxVarHeight
             // 
             this.groupBoxVarHeight.Controls.Add(this.betterTextboxVarHeightGetSet);
@@ -7839,6 +7931,15 @@ namespace SM64_Diagnostic
             this.buttonVarHeightAdd.TabIndex = 35;
             this.buttonVarHeightAdd.Text = "Height+";
             this.buttonVarHeightAdd.UseVisualStyleBackColor = true;
+            // 
+            // buttonResetVariableSizeToDefault
+            // 
+            this.buttonResetVariableSizeToDefault.Location = new System.Drawing.Point(10, 3);
+            this.buttonResetVariableSizeToDefault.Name = "buttonResetVariableSizeToDefault";
+            this.buttonResetVariableSizeToDefault.Size = new System.Drawing.Size(179, 38);
+            this.buttonResetVariableSizeToDefault.TabIndex = 4;
+            this.buttonResetVariableSizeToDefault.Text = "Reset Variable Size to Default";
+            this.buttonResetVariableSizeToDefault.UseVisualStyleBackColor = true;
             // 
             // groupBoxVarValueWidth
             // 
@@ -7997,24 +8098,6 @@ namespace SM64_Diagnostic
             this.buttonVarNameWidthAdd.TabIndex = 35;
             this.buttonVarNameWidthAdd.Text = "Width+";
             this.buttonVarNameWidthAdd.UseVisualStyleBackColor = true;
-            // 
-            // buttonResetVariableSizeToDefault
-            // 
-            this.buttonResetVariableSizeToDefault.Location = new System.Drawing.Point(10, 3);
-            this.buttonResetVariableSizeToDefault.Name = "buttonResetVariableSizeToDefault";
-            this.buttonResetVariableSizeToDefault.Size = new System.Drawing.Size(179, 38);
-            this.buttonResetVariableSizeToDefault.TabIndex = 4;
-            this.buttonResetVariableSizeToDefault.Text = "Reset Variable Size to Default";
-            this.buttonResetVariableSizeToDefault.UseVisualStyleBackColor = true;
-            // 
-            // buttonClearVariables
-            // 
-            this.buttonClearVariables.Location = new System.Drawing.Point(10, 3);
-            this.buttonClearVariables.Name = "buttonClearVariables";
-            this.buttonClearVariables.Size = new System.Drawing.Size(179, 38);
-            this.buttonClearVariables.TabIndex = 4;
-            this.buttonClearVariables.Text = "Clear Variables";
-            this.buttonClearVariables.UseVisualStyleBackColor = true;
             // 
             // watchVariablePanelCustom
             // 
@@ -8492,7 +8575,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(702, 437);
+            this.glControlMap.Size = new System.Drawing.Size(705, 437);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -9503,7 +9586,7 @@ namespace SM64_Diagnostic
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(348, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(331, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -9535,7 +9618,7 @@ namespace SM64_Diagnostic
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(337, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(320, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -9591,7 +9674,7 @@ namespace SM64_Diagnostic
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(337, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(320, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -13433,89 +13516,6 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // splitContainerCustomControls
-            // 
-            this.splitContainerCustomControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainerCustomControls.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerCustomControls.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerCustomControls.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerCustomControls.Margin = new System.Windows.Forms.Padding(0);
-            this.splitContainerCustomControls.Name = "splitContainerCustomControls";
-            this.splitContainerCustomControls.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainerCustomControls.Panel1
-            // 
-            this.splitContainerCustomControls.Panel1.Controls.Add(this.checkBox2);
-            this.splitContainerCustomControls.Panel1.Controls.Add(this.betterTextbox1);
-            this.splitContainerCustomControls.Panel1.Controls.Add(this.button1);
-            this.splitContainerCustomControls.Panel1.Controls.Add(this.button2);
-            this.splitContainerCustomControls.Panel1.Controls.Add(this.checkBox1);
-            this.splitContainerCustomControls.Panel1.Controls.Add(this.buttonClearVariables);
-            // 
-            // splitContainerCustomControls.Panel2
-            // 
-            this.splitContainerCustomControls.Panel2.AutoScroll = true;
-            this.splitContainerCustomControls.Panel2.Controls.Add(this.groupBoxVarHeight);
-            this.splitContainerCustomControls.Panel2.Controls.Add(this.buttonResetVariableSizeToDefault);
-            this.splitContainerCustomControls.Panel2.Controls.Add(this.groupBoxVarValueWidth);
-            this.splitContainerCustomControls.Panel2.Controls.Add(this.groupBoxVarNameWidth);
-            this.splitContainerCustomControls.Size = new System.Drawing.Size(221, 463);
-            this.splitContainerCustomControls.SplitterDistance = 172;
-            this.splitContainerCustomControls.SplitterWidth = 1;
-            this.splitContainerCustomControls.TabIndex = 31;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(104, 72);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 25);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Clear Values";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(10, 72);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(87, 25);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "Show Values";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(11, 47);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(96, 17);
-            this.checkBox1.TabIndex = 17;
-            this.checkBox1.Text = "Record Values";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // betterTextbox1
-            // 
-            this.betterTextbox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox1.BackColor = System.Drawing.SystemColors.Control;
-            this.betterTextbox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.betterTextbox1.Location = new System.Drawing.Point(129, 46);
-            this.betterTextbox1.Name = "betterTextbox1";
-            this.betterTextbox1.Size = new System.Drawing.Size(51, 20);
-            this.betterTextbox1.TabIndex = 34;
-            this.betterTextbox1.Text = "Record";
-            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Checked = true;
-            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Location = new System.Drawing.Point(11, 103);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(186, 17);
-            this.checkBox2.TabIndex = 35;
-            this.checkBox2.Text = "Use Value at Start of Global Timer";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -13801,6 +13801,11 @@ namespace SM64_Diagnostic
             this.splitContainerCustom.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerCustom)).EndInit();
             this.splitContainerCustom.ResumeLayout(false);
+            this.splitContainerCustomControls.Panel1.ResumeLayout(false);
+            this.splitContainerCustomControls.Panel1.PerformLayout();
+            this.splitContainerCustomControls.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCustomControls)).EndInit();
+            this.splitContainerCustomControls.ResumeLayout(false);
             this.groupBoxVarHeight.ResumeLayout(false);
             this.groupBoxVarHeight.PerformLayout();
             this.groupBoxVarValueWidth.ResumeLayout(false);
@@ -13933,11 +13938,6 @@ namespace SM64_Diagnostic
             this.groupBoxRecording.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            this.splitContainerCustomControls.Panel1.ResumeLayout(false);
-            this.splitContainerCustomControls.Panel1.PerformLayout();
-            this.splitContainerCustomControls.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCustomControls)).EndInit();
-            this.splitContainerCustomControls.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -14942,11 +14942,11 @@ namespace SM64_Diagnostic
         private BetterTextbox textBoxRNGIndexTester;
         private Button buttonRNGIndexTester;
         private SplitContainer splitContainerCustomControls;
-        private CheckBox checkBox2;
-        private BetterTextbox betterTextbox1;
-        private Button button1;
-        private Button button2;
-        private CheckBox checkBox1;
+        private CheckBox checkBoxUseValueAtStartOfGlobalTimer;
+        private BetterTextbox textBoxRecordValuesCount;
+        private Button buttonCustomClearValues;
+        private Button buttonCustomShowValues;
+        private CheckBox checkBoxCustomRecordValues;
     }
 }
 
