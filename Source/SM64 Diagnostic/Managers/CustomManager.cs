@@ -21,10 +21,12 @@ namespace SM64_Diagnostic.Managers
 
             SplitContainer splitContainerCustom = customControl.Controls["splitContainerCustom"] as SplitContainer;
 
-            Button buttonClearVariables = splitContainerCustom.Panel1.Controls["buttonClearVariables"] as Button;
+            SplitContainer splitContainerCustomControls = splitContainerCustom.Panel1.Controls["splitContainerCustomControls"] as SplitContainer;
+
+            Button buttonClearVariables = splitContainerCustomControls.Panel1.Controls["buttonClearVariables"] as Button;
             buttonClearVariables.Click += (sender, e) => ClearVariables();
 
-            Button buttonResetVariableSizeToDefault = splitContainerCustom.Panel1.Controls["buttonResetVariableSizeToDefault"] as Button;
+            Button buttonResetVariableSizeToDefault = splitContainerCustomControls.Panel2.Controls["buttonResetVariableSizeToDefault"] as Button;
             buttonResetVariableSizeToDefault.Click += (sender, e) =>
             {
                 WatchVariableControl.VariableNameWidth = WatchVariableControl.DEFAULT_VARIABLE_NAME_WIDTH;
@@ -32,7 +34,7 @@ namespace SM64_Diagnostic.Managers
                 WatchVariableControl.VariableHeight = WatchVariableControl.DEFAULT_VARIABLE_HEIGHT;
             };
 
-            GroupBox groupBoxVarNameWidth = splitContainerCustom.Panel1.Controls["groupBoxVarNameWidth"] as GroupBox;
+            GroupBox groupBoxVarNameWidth = splitContainerCustomControls.Panel2.Controls["groupBoxVarNameWidth"] as GroupBox;
             InitializeAddSubtractGetSetFuncionality(
                 groupBoxVarNameWidth.Controls["buttonVarNameWidthSubtract"] as Button,
                 groupBoxVarNameWidth.Controls["buttonVarNameWidthAdd"] as Button,
@@ -43,7 +45,7 @@ namespace SM64_Diagnostic.Managers
                 (int value) => { WatchVariableControl.VariableNameWidth = value; },
                 () => WatchVariableControl.VariableNameWidth);
 
-            GroupBox groupBoxVarValueWidth = splitContainerCustom.Panel1.Controls["groupBoxVarValueWidth"] as GroupBox;
+            GroupBox groupBoxVarValueWidth = splitContainerCustomControls.Panel2.Controls["groupBoxVarValueWidth"] as GroupBox;
             InitializeAddSubtractGetSetFuncionality(
                 groupBoxVarValueWidth.Controls["buttonVarValueWidthSubtract"] as Button,
                 groupBoxVarValueWidth.Controls["buttonVarValueWidthAdd"] as Button,
@@ -54,7 +56,7 @@ namespace SM64_Diagnostic.Managers
                 (int value) => { WatchVariableControl.VariableValueWidth = value; },
                 () => WatchVariableControl.VariableValueWidth);
 
-            GroupBox groupBoxVarHeight = splitContainerCustom.Panel1.Controls["groupBoxVarHeight"] as GroupBox;
+            GroupBox groupBoxVarHeight = splitContainerCustomControls.Panel2.Controls["groupBoxVarHeight"] as GroupBox;
             InitializeAddSubtractGetSetFuncionality(
                 groupBoxVarHeight.Controls["buttonVarHeightSubtract"] as Button,
                 groupBoxVarHeight.Controls["buttonVarHeightAdd"] as Button,
