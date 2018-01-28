@@ -18,6 +18,7 @@ namespace SM64_Diagnostic.Controls
         private readonly List<VariableGroup> _allGroups;
         private readonly List<VariableGroup> _initialVisibleGroups;
         private readonly List<VariableGroup> _visibleGroups;
+        private List<ToolStripMenuItem> _filteringDropDownItems;
 
         private WatchVariableControl _reorderingWatchVarControl;
 
@@ -61,10 +62,9 @@ namespace SM64_Diagnostic.Controls
             resetVariablesItem.Click += (sender, e) => ResetVariables();
 
             ToolStripMenuItem filterVariablesItem = new ToolStripMenuItem("Filter Variables...");
-            List<ToolStripMenuItem> filteringDropDownItems =
-                _allGroups.ConvertAll(varGroup =>
-                    CreateFilterItem(varGroup, _visibleGroups.Contains(varGroup)));
-            filteringDropDownItems.ForEach(item => filterVariablesItem.DropDownItems.Add(item));
+            _filteringDropDownItems = _allGroups.ConvertAll(varGroup => CreateFilterItem(varGroup));
+            UpdateFilterItemCheckedStatuses();
+            _filteringDropDownItems.ForEach(item => filterVariablesItem.DropDownItems.Add(item));
             filterVariablesItem.DropDown.AutoClose = false;
             filterVariablesItem.DropDown.MouseLeave += (sender, e) => { filterVariablesItem.DropDown.Close(); };
 
@@ -74,7 +74,7 @@ namespace SM64_Diagnostic.Controls
             ContextMenuStrip.Items.Add(filterVariablesItem);
         }
 
-        private ToolStripMenuItem CreateFilterItem(VariableGroup varGroup, bool visible)
+        private ToolStripMenuItem CreateFilterItem(VariableGroup varGroup)
         {
             ToolStripMenuItem item = new ToolStripMenuItem(varGroup.ToString());
             item.Click += (sender, e) =>
@@ -91,8 +91,17 @@ namespace SM64_Diagnostic.Controls
                 item.Checked = newVisibility;
                 UpdateControlsBasedOnFilters();
             };
-            item.Checked = visible;
             return item;
+        }
+
+        private void UpdateFilterItemCheckedStatuses()
+        {
+            if (_allGroups.Count != _filteringDropDownItems.Count) throw new ArgumentOutOfRangeException();
+
+            for (int i = 0; i < _allGroups.Count; i++)
+            {
+                _filteringDropDownItems[i].Checked = _visibleGroups.Contains(_allGroups[i]);
+            }
         }
 
         private void UpdateControlsBasedOnFilters()
@@ -161,10 +170,10 @@ namespace SM64_Diagnostic.Controls
 
         public void ResetVariables()
         {
-            _watchVarControlsList.ForEach(control => System.Diagnostics.Trace.WriteLine(control));
             ClearVariables();
             _visibleGroups.Clear();
             _visibleGroups.AddRange(_initialVisibleGroups);
+            UpdateFilterItemCheckedStatuses();
             AddVariables(_precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
         }
 
