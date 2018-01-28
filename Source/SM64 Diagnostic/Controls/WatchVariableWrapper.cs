@@ -1,4 +1,5 @@
 ﻿using SM64_Diagnostic.Extensions;
+using SM64_Diagnostic.Forms;
 using SM64_Diagnostic.Managers;
 using SM64_Diagnostic.Structs;
 using SM64_Diagnostic.Structs.Configurations;

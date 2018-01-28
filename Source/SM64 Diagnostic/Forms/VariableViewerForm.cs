@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Utilities;
 
-namespace SM64_Diagnostic
+namespace SM64_Diagnostic.Forms
 {
     public partial class VariableViewerForm : Form
     {

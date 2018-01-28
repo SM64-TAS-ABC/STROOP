@@ -221,10 +221,10 @@
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Extensions\RectangleExtensions.cs" />
     <Compile Include="Extensions\WatchExpressionExtensions.cs" />
-    <Compile Include="LoadingForm.cs">
+    <Compile Include="Forms\LoadingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoadingForm.Designer.cs">
+    <Compile Include="Forms\LoadingForm.Designer.cs">
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoadingHandler.cs" />
@@ -328,10 +328,10 @@
     <Compile Include="Utilities\N64Disassembler.cs" />
     <Compile Include="Utilities\ButtonUtilities.cs" />
     <Compile Include="Structs\ProcessSelection.cs" />
-    <Compile Include="StroopMainForm.cs">
+    <Compile Include="Forms\StroopMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StroopMainForm.Designer.cs">
+    <Compile Include="Forms\StroopMainForm.Designer.cs">
       <DependentUpon>StroopMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -344,34 +344,34 @@
     <Compile Include="Utilities\PuUtilities.cs" />
     <Compile Include="Utilities\RngIndexer.cs" />
     <Compile Include="Utilities\XmlConfigParser.cs" />
-    <Compile Include="TriangleInfoForm.cs">
+    <Compile Include="Forms\TriangleInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TriangleInfoForm.Designer.cs">
+    <Compile Include="Forms\TriangleInfoForm.Designer.cs">
       <DependentUpon>TriangleInfoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="VarHackContainerForm.cs">
+    <Compile Include="Forms\VarHackContainerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VarHackContainerForm.Designer.cs">
+    <Compile Include="Forms\VarHackContainerForm.Designer.cs">
       <DependentUpon>VarHackContainerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="VariableControllerForm.cs">
+    <Compile Include="Forms\VariableControllerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VariableControllerForm.Designer.cs">
+    <Compile Include="Forms\VariableControllerForm.Designer.cs">
       <DependentUpon>VariableControllerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="VariableViewerForm.cs">
+    <Compile Include="Forms\VariableViewerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VariableViewerForm.Designer.cs">
+    <Compile Include="Forms\VariableViewerForm.Designer.cs">
       <DependentUpon>VariableViewerForm.cs</DependentUpon>
     </Compile>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <EmbeddedResource Include="LoadingForm.resx">
+    <EmbeddedResource Include="Forms\LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -438,7 +438,7 @@
     <Content Include="Config\WaterData.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="StroopMainForm.resx">
+    <EmbeddedResource Include="Forms\StroopMainForm.resx">
       <DependentUpon>StroopMainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -458,16 +458,16 @@
     <Content Include="Config\Hacks.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="TriangleInfoForm.resx">
+    <EmbeddedResource Include="Forms\TriangleInfoForm.resx">
       <DependentUpon>TriangleInfoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VarHackContainerForm.resx">
+    <EmbeddedResource Include="Forms\VarHackContainerForm.resx">
       <DependentUpon>VarHackContainerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VariableControllerForm.resx">
+    <EmbeddedResource Include="Forms\VariableControllerForm.resx">
       <DependentUpon>VariableControllerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VariableViewerForm.resx">
+    <EmbeddedResource Include="Forms\VariableViewerForm.resx">
       <DependentUpon>VariableViewerForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Lib\ensurepip\_bundled\pip-8.1.1-py2.py3-none-any.whl" />

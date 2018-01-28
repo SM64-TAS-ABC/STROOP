@@ -1,4 +1,4 @@
-﻿namespace SM64_Diagnostic
+﻿namespace SM64_Diagnostic.Forms
 {
     partial class VariableControllerForm
     {

@@ -12,7 +12,7 @@ using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Controls;
 
-namespace SM64_Diagnostic
+namespace SM64_Diagnostic.Forms
 {
     public partial class VarHackContainerForm : Form
     {

@@ -9,6 +9,7 @@ using SM64_Diagnostic.Utilities;
 using SM64_Diagnostic.Controls;
 using SM64_Diagnostic.Extensions;
 using SM64_Diagnostic.Structs.Configurations;
+using SM64_Diagnostic.Forms;
 
 namespace SM64_Diagnostic.Managers
 {
