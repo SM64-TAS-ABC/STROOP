@@ -113,7 +113,7 @@ namespace SM64_Diagnostic.Controls
 
         public void ShowVariableBytesInLittleEndian()
         {
-            TriangleInfoForm form = new TriangleInfoForm();
+            InfoForm form = new InfoForm();
             StringBuilder stringBuilder = new StringBuilder();
             lock (_objectLock)
             {
@@ -131,7 +131,7 @@ namespace SM64_Diagnostic.Controls
 
         public void ShowVariableBytesInBigEndian()
         {
-            TriangleInfoForm form = new TriangleInfoForm();
+            InfoForm form = new InfoForm();
             StringBuilder stringBuilder = new StringBuilder();
             lock (_objectLock)
             {

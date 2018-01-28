@@ -69,7 +69,7 @@ namespace SM64_Diagnostic.Utilities
 
         public static void ShowTriangles(List<TriangleStruct> triangleList)
         {
-            TriangleInfoForm triangleInfoForm = new TriangleInfoForm();
+            InfoForm triangleInfoForm = new InfoForm();
             triangleInfoForm.SetTriangles(triangleList);
             triangleInfoForm.Show();
         }

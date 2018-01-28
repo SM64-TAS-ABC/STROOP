@@ -420,7 +420,7 @@ namespace SM64_Diagnostic.Managers
 
         private void ShowData()
         {
-            var triangleInfoForm = new TriangleInfoForm();
+            var triangleInfoForm = new InfoForm();
             string varNamesString;
             switch (_varToRecord)
             {

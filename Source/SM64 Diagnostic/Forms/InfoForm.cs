@@ -13,9 +13,9 @@ using SM64_Diagnostic.Utilities;
 
 namespace SM64_Diagnostic.Forms
 {
-    public partial class TriangleInfoForm : Form
+    public partial class InfoForm : Form
     {
-        public TriangleInfoForm()
+        public InfoForm()
         {
             InitializeComponent();
             buttonOk.Click += (sender, e) => Close();

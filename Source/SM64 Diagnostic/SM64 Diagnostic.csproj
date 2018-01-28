@@ -344,11 +344,11 @@
     <Compile Include="Utilities\PuUtilities.cs" />
     <Compile Include="Utilities\RngIndexer.cs" />
     <Compile Include="Utilities\XmlConfigParser.cs" />
-    <Compile Include="Forms\TriangleInfoForm.cs">
+    <Compile Include="Forms\InfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\TriangleInfoForm.Designer.cs">
-      <DependentUpon>TriangleInfoForm.cs</DependentUpon>
+    <Compile Include="Forms\InfoForm.Designer.cs">
+      <DependentUpon>InfoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\VarHackContainerForm.cs">
       <SubType>Form</SubType>
@@ -458,8 +458,8 @@
     <Content Include="Config\Hacks.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="Forms\TriangleInfoForm.resx">
-      <DependentUpon>TriangleInfoForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\InfoForm.resx">
+      <DependentUpon>InfoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\VarHackContainerForm.resx">
       <DependentUpon>VarHackContainerForm.cs</DependentUpon>

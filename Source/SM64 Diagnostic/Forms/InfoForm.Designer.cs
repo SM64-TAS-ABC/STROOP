@@ -1,6 +1,6 @@
 ﻿namespace SM64_Diagnostic.Forms
 {
-    partial class TriangleInfoForm
+    partial class InfoForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TriangleInfoForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InfoForm));
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.buttonOk = new System.Windows.Forms.Button();
             this.textBoxTriangleInfo = new System.Windows.Forms.TextBox();
