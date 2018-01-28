@@ -1,4 +1,5 @@
-﻿using SM64_Diagnostic.Structs;
+﻿using SM64_Diagnostic.Forms;
+using SM64_Diagnostic.Structs;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -53,6 +54,9 @@ namespace SM64_Diagnostic.Controls
             ToolStripMenuItem enableCustomization = new ToolStripMenuItem("Enable Customization");
             enableCustomization.Click += (sender, e) => EnableCustomVariableFunctionality();
 
+            ToolStripMenuItem showVariableXmlItem = new ToolStripMenuItem("Show Variable XML");
+            showVariableXmlItem.Click += (sender, e) => ShowVariableXml();
+
             ToolStripMenuItem resetVariablesItem = new ToolStripMenuItem("Reset Variables");
             resetVariablesItem.Click += (sender, e) => ResetVariables();
 
@@ -65,6 +69,7 @@ namespace SM64_Diagnostic.Controls
             filterVariablesItem.DropDown.MouseLeave += (sender, e) => { filterVariablesItem.DropDown.Close(); };
 
             ContextMenuStrip.Items.Add(enableCustomization);
+            ContextMenuStrip.Items.Add(showVariableXmlItem);
             ContextMenuStrip.Items.Add(resetVariablesItem);
             ContextMenuStrip.Items.Add(filterVariablesItem);
         }
@@ -161,6 +166,16 @@ namespace SM64_Diagnostic.Controls
             _visibleGroups.Clear();
             _visibleGroups.AddRange(_initialVisibleGroups);
             AddVariables(_precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
+        }
+
+        public void ShowVariableXml()
+        {
+            InfoForm infoForm = new InfoForm();
+            infoForm.SetText(
+                "Variable Info",
+                "Variable XML",
+                String.Join("\r\n", _precursors));
+            infoForm.Show();
         }
 
         public void EnableCustomVariableFunctionality()
