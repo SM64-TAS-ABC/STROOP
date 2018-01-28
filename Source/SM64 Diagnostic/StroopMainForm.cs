@@ -58,10 +58,6 @@ namespace SM64_Diagnostic
 
         private void StroopMainForm_Load(object sender, EventArgs e)
         {
-            // Temp: Remove "Other" tab
-#if RELEASE
-            tabControlMain.TabPages.Remove(tabPageExpressions);
-#endif
             Config.Stream = new ProcessStream();
             Config.Stream.OnUpdate += OnUpdate;
             Config.Stream.FpsUpdated += _sm64Stream_FpsUpdated;
@@ -314,108 +310,6 @@ namespace SM64_Diagnostic
             pictureBoxMisc.Image = Config.ObjectAssociations.MiscImage;
             panelMiscBorder.BackColor = Config.ObjectAssociations.MiscColor;
             pictureBoxMisc.BackColor = Config.ObjectAssociations.MiscColor.Lighten(0.5);
-
-            // Setup data columns
-            var nameColumn = new DataColumn("Name");
-            nameColumn.ReadOnly = true;
-            nameColumn.DataType = typeof(string);
-            _tableOtherData.Columns.Add(nameColumn);
-            _tableOtherData.Columns.Add("Type", typeof(string));
-            _tableOtherData.Columns.Add("Value", typeof(string));
-            _tableOtherData.Columns.Add("Address", typeof(uint));
-
-            // Setup grid view
-            dataGridViewExpressions.DataSource = _tableOtherData;
-
-            // Setup other data table
-            /*
-            for (int index = 0; index < _miscData.Count; index++)
-            {
-                var watchVar = _miscData[index];
-                if (watchVar.IsSpecial)
-                    continue;
-                var row = _tableOtherData.Rows.Add(watchVar.Name, watchVar.TypeName, "", watchVar.Address);
-                _otherDataRowAssoc.Add(index, row);
-            }
-            */
-
-#if !DEBUG
-            tabControlMain.TabPages.Remove(tabPageExpressions);
-#endif
-        }
-
-        private void buttonOtherModify_Click(object sender, EventArgs e)
-        {
-            var row = _tableOtherData.Rows[dataGridViewExpressions.SelectedRows[0].Index];
-            int assoc = _otherDataRowAssoc.FirstOrDefault(v => v.Value == row).Key;
-
-            //var modifyVar = new ModifyAddWatchVariableForm(_miscData[assoc]);
-            //modifyVar.ShowDialog();
-        }
-
-        private void buttonOtherDelete_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Delete selected variables?", "Delete Variables", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
-                == DialogResult.Yes)
-            {
-                // Find indexes to delete
-                var deleteVars = new List<int>();
-                foreach (DataGridViewRow selectedRow in dataGridViewExpressions.SelectedRows)
-                {
-                    var row = _tableOtherData.Rows[selectedRow.Index];
-                    int assoc = _otherDataRowAssoc.FirstOrDefault(v => v.Value == row).Key;
-                    deleteVars.Add(assoc);
-                }
-
-                // Delete rows
-                foreach (int i in deleteVars)
-                {
-                    DataRow row = _otherDataRowAssoc[i];
-                    _miscData.RemoveAt(i);
-                    _otherDataRowAssoc.Remove(i);
-                    row.Delete();
-                }
-
-                // Delete from xml file
-                //XmlConfigParser.DeleteWatchVariablesOtherData(deleteVars);
-            }
-        }
-
-        private void dataGridViewOther_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.ColumnIndex == 2)
-                return;
-
-            var row = _tableOtherData.Rows[dataGridViewExpressions.SelectedRows[0].Index];
-            int assoc = _otherDataRowAssoc.FirstOrDefault(v => v.Value == row).Key;
-
-            //var modifyVar = new ModifyAddWatchVariableForm(_miscData[assoc]);
-            //modifyVar.ShowDialog();
-        }
-
-        private void buttonOtherAdd_Click(object sender, EventArgs e)
-        {
-            /*var modifyVar = new ModifyAddWatchVariableForm();
-            if(modifyVar.ShowDialog() == DialogResult.OK)
-            {
-                var watchVar = modifyVar.Value;
-
-                // Create new row
-                var row = _tableOtherData.Rows.Add(watchVar.Name, watchVar.Type.ToString(), "", 
-                    watchVar.AbsoluteAddressing ? watchVar.Address 
-                    : watchVar.Address + Config.RamStartAddress);
-
-                // Add variable to lists
-                int newIndex = _miscData.Count;
-                _miscData.Add(watchVar);
-                _otherDataRowAssoc.Add(newIndex, row);
-
-                XmlConfigParser.AddWatchVariableOtherData(watchVar);
-            }*/
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
 
         }
 
