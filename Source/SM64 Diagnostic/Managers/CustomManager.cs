@@ -25,6 +25,7 @@ namespace SM64_Diagnostic.Managers
 
         private Dictionary<int, List<string>> _recordedValues;
         private int? _lastTimer;
+        private int _recordFreq;
 
         public CustomManager(List<WatchVariableControlPrecursor> variables, Control customControl, WatchVariablePanel variableTable)
             : base(variables, variableTable)
@@ -58,6 +59,7 @@ namespace SM64_Diagnostic.Managers
 
             _recordedValues = new Dictionary<int, List<string>>();
             _lastTimer = null;
+            _recordFreq = 1;
 
             // Panel 2 controls
 
@@ -178,6 +180,7 @@ namespace SM64_Diagnostic.Managers
         {
             _recordedValues.Clear();
             _lastTimer = null;
+            _recordFreq = 1;
         }
 
         public override void Update(bool updateView)
@@ -188,6 +191,16 @@ namespace SM64_Diagnostic.Managers
 
                 bool alreadyContainsKey = _recordedValues.ContainsKey(currentTimer);
                 bool recordEvenIfAlreadyHave = !_checkBoxUseValueAtStartOfGlobalTimer.Checked;
+
+                if (alreadyContainsKey)
+                {
+                    _recordFreq++;
+                }
+                else
+                {
+                    _labelCustomRecordingFrequencyValue.Text = _recordFreq.ToString();
+                    _recordFreq = 1;
+                }
 
                 if (_lastTimer.HasValue)
                 {
