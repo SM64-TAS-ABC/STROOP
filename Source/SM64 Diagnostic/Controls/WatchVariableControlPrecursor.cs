@@ -62,61 +62,61 @@ namespace SM64_Diagnostic.Controls
         {
             XDocument xmlBuild = new XDocument();
             XElement root = new XElement("Data", _name);
+            xmlBuild.Add(root);
 
             if (_groupList.Count > 0)
-                root.Add(new XElement("groupList", String.Join(",", _groupList)));
+                root.Add(new XAttribute("groupList", String.Join(",", _groupList)));
 
-            root.Add(new XElement("base", _watchVar.BaseAddressType.ToString()));
+            root.Add(new XAttribute("base", _watchVar.BaseAddressType.ToString()));
 
             if (_watchVar.OffsetDefault != null)
-                root.Add(new XElement(
+                root.Add(new XAttribute(
                     "offset",
                     String.Format("0x{0:X}", _watchVar.OffsetDefault.Value)));
 
             if (_watchVar.OffsetUS != null)
-                root.Add(new XElement(
+                root.Add(new XAttribute(
                     "offsetUS",
                     String.Format("0x{0:X}", _watchVar.OffsetUS.Value)));
 
             if (_watchVar.OffsetJP != null)
-                root.Add(new XElement(
+                root.Add(new XAttribute(
                     "offsetJP",
                     String.Format("0x{0:X}", _watchVar.OffsetJP.Value)));
 
             if (_watchVar.OffsetPAL != null)
-                root.Add(new XElement(
+                root.Add(new XAttribute(
                     "offsetPAL",
                     String.Format("0x{0:X}", _watchVar.OffsetPAL.Value)));
 
             if (_watchVar.MemoryTypeName != null)
-                root.Add(new XElement("type", _watchVar.MemoryTypeName));
+                root.Add(new XAttribute("type", _watchVar.MemoryTypeName));
 
             if (_watchVar.SpecialType != null)
-                root.Add(new XElement("specialType", _watchVar.SpecialType));
+                root.Add(new XAttribute("specialType", _watchVar.SpecialType));
 
             if (_watchVar.Mask != null)
-                root.Add(new XElement(
+                root.Add(new XAttribute(
                     "mask",
                     String.Format("0x{0:X" + _watchVar.NibbleCount + "}", _watchVar.Mask.Value)));
 
             if (_subclass != WatchVariableSubclass.Number)
-                root.Add(new XElement("subclass", _subclass.ToString()));
+                root.Add(new XAttribute("subclass", _subclass.ToString()));
 
             if (_invertBool.HasValue)
-                root.Add(new XElement("invertBool", _invertBool.Value.ToString().ToLower()));
+                root.Add(new XAttribute("invertBool", _invertBool.Value.ToString().ToLower()));
 
             if (_useHex.HasValue)
-                root.Add(new XElement("useHex", _useHex.Value.ToString().ToLower()));
+                root.Add(new XAttribute("useHex", _useHex.Value.ToString().ToLower()));
 
             if (_coordinate.HasValue)
-                root.Add(new XElement("coord", _coordinate.Value.ToString()));
+                root.Add(new XAttribute("coord", _coordinate.Value.ToString()));
 
             if (_backgroundColor.HasValue)
-                root.Add(new XElement(
+                root.Add(new XAttribute(
                     "color",
                     "#" + ColorUtilities.ToString(_backgroundColor.Value)));
 
-            xmlBuild.Add(root);
             return root.ToString();
         }
 
