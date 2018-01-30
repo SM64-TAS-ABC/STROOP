@@ -20,6 +20,8 @@ namespace SM64_Diagnostic.Managers
         private Button _buttonCustomShowValues;
         private Button _buttonCustomClearValues;
         private CheckBox _checkBoxUseValueAtStartOfGlobalTimer;
+        private Label _labelCustomRecordingFrequencyValue;
+        private Label _labelCustomRecordingGapsValue;
 
         private Dictionary<int, List<string>> _recordedValues;
 
@@ -48,6 +50,10 @@ namespace SM64_Diagnostic.Managers
             _buttonCustomClearValues.Click += (sender, e) => ClearRecordedValues();
 
             _checkBoxUseValueAtStartOfGlobalTimer = splitContainerCustomControls.Panel1.Controls["checkBoxUseValueAtStartOfGlobalTimer"] as CheckBox;
+
+            _labelCustomRecordingFrequencyValue = splitContainerCustomControls.Panel1.Controls["labelCustomRecordingFrequencyValue"] as Label;
+
+            _labelCustomRecordingGapsValue = splitContainerCustomControls.Panel1.Controls["labelCustomRecordingGapsValue"] as Label;
 
             _recordedValues = new Dictionary<int, List<string>>();
 
