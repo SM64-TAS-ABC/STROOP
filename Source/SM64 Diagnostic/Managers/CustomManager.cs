@@ -25,6 +25,7 @@ namespace SM64_Diagnostic.Managers
 
         private Dictionary<int, List<string>> _recordedValues;
         private int? _lastTimer;
+        private int _numGaps;
         private int _recordFreq;
 
         public CustomManager(List<WatchVariableControlPrecursor> variables, Control customControl, WatchVariablePanel variableTable)
@@ -59,6 +60,7 @@ namespace SM64_Diagnostic.Managers
 
             _recordedValues = new Dictionary<int, List<string>>();
             _lastTimer = null;
+            _numGaps = 0;
             _recordFreq = 1;
 
             // Panel 2 controls
@@ -180,6 +182,7 @@ namespace SM64_Diagnostic.Managers
         {
             _recordedValues.Clear();
             _lastTimer = null;
+            _numGaps = 0;
             _recordFreq = 1;
         }
 
@@ -205,12 +208,7 @@ namespace SM64_Diagnostic.Managers
                 if (_lastTimer.HasValue)
                 {
                     int diff = currentTimer - _lastTimer.Value;
-                    if (diff > 1)
-                    {
-                        int currentGaps = ParsingUtilities.ParseInt(_labelCustomRecordingGapsValue.Text);
-                        int newGaps = currentGaps + (diff - 1);
-                        _labelCustomRecordingGapsValue.Text = newGaps.ToString();
-                    }
+                    if (diff > 1) _numGaps += (diff - 1);
                 }
                 _lastTimer = currentTimer;
 
@@ -223,9 +221,9 @@ namespace SM64_Diagnostic.Managers
             else
             {
                 _labelCustomRecordingFrequencyValue.Text = "0";
-                _labelCustomRecordingGapsValue.Text = "0";
             }
             _textBoxRecordValuesCount.Text = _recordedValues.Count.ToString();
+            _labelCustomRecordingGapsValue.Text = _numGaps.ToString();
 
             if (!updateView) return;
             base.Update(updateView);
