@@ -606,7 +606,7 @@ namespace SM64_Diagnostic.Utilities
 
                 // Calculate delay to match correct FPS
                 prevTime.Stop();
-                timeToWait = (int)Config.RefreshRateInterval - (int)prevTime.ElapsedMilliseconds;
+                timeToWait = (int)RefreshRateConfig.RefreshRateInterval - (int)prevTime.ElapsedMilliseconds;
                 timeToWait = Math.Max(timeToWait, 0);
 
                 // Calculate Fps

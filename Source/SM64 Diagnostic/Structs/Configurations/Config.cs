@@ -43,18 +43,7 @@ namespace SM64_Diagnostic.Structs.Configurations
             }
             return 0;
         }
-
         public static uint RamSize;
-        public static uint RefreshRateFreq;
-        public static double RefreshRateInterval
-        {
-            get
-            {
-                uint freq = RefreshRateFreq;
-                if (freq == 0) return 0;
-                else return 1000.0 / freq;
-            }
-        }
 
         public static List<Emulator> Emulators = new List<Emulator>();
         public static ProcessStream Stream;

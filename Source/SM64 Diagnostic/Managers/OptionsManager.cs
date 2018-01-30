@@ -121,11 +121,11 @@ namespace SM64_Diagnostic.Managers
                     uint value;
                     if (uint.TryParse(betterTextboxFPS.Text, out value))
                     {
-                        Config.RefreshRateFreq = value;
+                        RefreshRateConfig.RefreshRateFreq = value;
                     }
                     else
                     {
-                        betterTextboxFPS.Text = Config.RefreshRateFreq.ToString();
+                        betterTextboxFPS.Text = RefreshRateConfig.RefreshRateFreq.ToString();
                     }
                 });
 

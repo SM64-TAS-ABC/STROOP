@@ -403,8 +403,8 @@ namespace SM64_Diagnostic.Managers
 
         private void SetRecordOn(bool recordOn)
         {
-            if (recordOn) Config.RefreshRateFreq = 0;
-            else Config.RefreshRateFreq = 30;
+            if (recordOn) RefreshRateConfig.RefreshRateFreq = 0;
+            else RefreshRateConfig.RefreshRateFreq = 30;
         }
 
         private void ClearData()
