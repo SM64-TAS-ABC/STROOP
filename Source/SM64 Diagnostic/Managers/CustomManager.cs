@@ -24,6 +24,7 @@ namespace SM64_Diagnostic.Managers
         private Label _labelCustomRecordingGapsValue;
 
         private Dictionary<int, List<string>> _recordedValues;
+        private int? _lastTimer;
 
         public CustomManager(List<WatchVariableControlPrecursor> variables, Control customControl, WatchVariablePanel variableTable)
             : base(variables, variableTable)
@@ -56,6 +57,7 @@ namespace SM64_Diagnostic.Managers
             _labelCustomRecordingGapsValue = splitContainerCustomControls.Panel1.Controls["labelCustomRecordingGapsValue"] as Label;
 
             _recordedValues = new Dictionary<int, List<string>>();
+            _lastTimer = null;
 
             // Panel 2 controls
 
@@ -175,6 +177,7 @@ namespace SM64_Diagnostic.Managers
         private void ClearRecordedValues()
         {
             _recordedValues.Clear();
+            _lastTimer = null;
         }
 
         public override void Update(bool updateView)
@@ -183,14 +186,31 @@ namespace SM64_Diagnostic.Managers
             {
                 int currentTimer = Config.Stream.GetInt32(MiscConfig.GlobalTimerAddress);
 
-                // record new values if we don't already have values
-                // or we record at the end of the timer
-                if (!_recordedValues.ContainsKey(currentTimer) ||
-                    !_checkBoxUseValueAtStartOfGlobalTimer.Checked)
+                bool alreadyContainsKey = _recordedValues.ContainsKey(currentTimer);
+                bool recordEvenIfAlreadyHave = !_checkBoxUseValueAtStartOfGlobalTimer.Checked;
+
+                if (_lastTimer.HasValue)
+                {
+                    int diff = currentTimer - _lastTimer.Value;
+                    if (diff > 1)
+                    {
+                        int currentGaps = ParsingUtilities.ParseInt(_labelCustomRecordingGapsValue.Text);
+                        int newGaps = currentGaps + (diff - 1);
+                        _labelCustomRecordingGapsValue.Text = newGaps.ToString();
+                    }
+                }
+                _lastTimer = currentTimer;
+
+                if (!alreadyContainsKey || recordEvenIfAlreadyHave)
                 {
                     List<string> currentValues = GetCurrentVariableValues();
                     _recordedValues[currentTimer] = currentValues;
                 }
+            }
+            else
+            {
+                _labelCustomRecordingFrequencyValue.Text = "0";
+                _labelCustomRecordingGapsValue.Text = "0";
             }
             _textBoxRecordValuesCount.Text = _recordedValues.Count.ToString();
 
