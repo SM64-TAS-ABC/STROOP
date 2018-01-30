@@ -37,6 +37,7 @@ namespace SM64_Diagnostic.Managers
             buttonClearVariables.Click += (sender, e) => ClearVariables();
 
             _checkBoxCustomRecordValues = splitContainerCustomControls.Panel1.Controls["checkBoxCustomRecordValues"] as CheckBox;
+            _checkBoxCustomRecordValues.Click += (sender, e) => ToggleRecording();
 
             _textBoxRecordValuesCount = splitContainerCustomControls.Panel1.Controls["textBoxRecordValuesCount"] as BetterTextbox;
 
@@ -140,6 +141,11 @@ namespace SM64_Diagnostic.Managers
         {
             base.AddVariable(watchVarControl);
             watchVarControl.EnableCustomFunctionality();
+        }
+
+        private void ToggleRecording()
+        {
+            RefreshRateConfig.LimitRefreshRate = !_checkBoxCustomRecordValues.Checked;
         }
 
         private void ShowRecordedValues()
