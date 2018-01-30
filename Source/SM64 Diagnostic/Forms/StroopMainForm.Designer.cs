@@ -1036,6 +1036,10 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
+            this.labelCustomRecordingFrequencyValue = new System.Windows.Forms.Label();
+            this.labelCustomRecordingFrequencyLabel = new System.Windows.Forms.Label();
+            this.labelCustomRecordingGapsValue = new System.Windows.Forms.Label();
+            this.labelCustomRecordingGapsLabel = new System.Windows.Forms.Label();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1392,7 +1396,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 366);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 367);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1457,7 +1461,7 @@ namespace SM64_Diagnostic
             this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
             this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 153);
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 154);
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
@@ -4638,7 +4642,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 207F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 208F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -7773,6 +7777,10 @@ namespace SM64_Diagnostic
             // 
             // splitContainerCustomControls.Panel1
             // 
+            this.splitContainerCustomControls.Panel1.Controls.Add(this.labelCustomRecordingGapsValue);
+            this.splitContainerCustomControls.Panel1.Controls.Add(this.labelCustomRecordingFrequencyValue);
+            this.splitContainerCustomControls.Panel1.Controls.Add(this.labelCustomRecordingGapsLabel);
+            this.splitContainerCustomControls.Panel1.Controls.Add(this.labelCustomRecordingFrequencyLabel);
             this.splitContainerCustomControls.Panel1.Controls.Add(this.checkBoxUseValueAtStartOfGlobalTimer);
             this.splitContainerCustomControls.Panel1.Controls.Add(this.textBoxRecordValuesCount);
             this.splitContainerCustomControls.Panel1.Controls.Add(this.buttonCustomClearValues);
@@ -8576,7 +8584,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(696, 437);
+            this.glControlMap.Size = new System.Drawing.Size(699, 437);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -9587,7 +9595,7 @@ namespace SM64_Diagnostic
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(391, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(374, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -9619,7 +9627,7 @@ namespace SM64_Diagnostic
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(380, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(363, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -9675,7 +9683,7 @@ namespace SM64_Diagnostic
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(380, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(363, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -13517,6 +13525,52 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
+            // labelCustomRecordingFrequencyValue
+            // 
+            this.labelCustomRecordingFrequencyValue.AutoSize = true;
+            this.labelCustomRecordingFrequencyValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelCustomRecordingFrequencyValue.Location = new System.Drawing.Point(47, 123);
+            this.labelCustomRecordingFrequencyValue.MinimumSize = new System.Drawing.Size(40, 2);
+            this.labelCustomRecordingFrequencyValue.Name = "labelCustomRecordingFrequencyValue";
+            this.labelCustomRecordingFrequencyValue.Size = new System.Drawing.Size(40, 15);
+            this.labelCustomRecordingFrequencyValue.TabIndex = 36;
+            this.labelCustomRecordingFrequencyValue.Text = "0";
+            this.labelCustomRecordingFrequencyValue.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // labelCustomRecordingFrequencyLabel
+            // 
+            this.labelCustomRecordingFrequencyLabel.AutoSize = true;
+            this.labelCustomRecordingFrequencyLabel.Location = new System.Drawing.Point(5, 124);
+            this.labelCustomRecordingFrequencyLabel.MinimumSize = new System.Drawing.Size(40, 2);
+            this.labelCustomRecordingFrequencyLabel.Name = "labelCustomRecordingFrequencyLabel";
+            this.labelCustomRecordingFrequencyLabel.Size = new System.Drawing.Size(40, 13);
+            this.labelCustomRecordingFrequencyLabel.TabIndex = 36;
+            this.labelCustomRecordingFrequencyLabel.Text = "Freq:";
+            this.labelCustomRecordingFrequencyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelCustomRecordingGapsValue
+            // 
+            this.labelCustomRecordingGapsValue.AutoSize = true;
+            this.labelCustomRecordingGapsValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelCustomRecordingGapsValue.Location = new System.Drawing.Point(148, 123);
+            this.labelCustomRecordingGapsValue.MinimumSize = new System.Drawing.Size(40, 2);
+            this.labelCustomRecordingGapsValue.Name = "labelCustomRecordingGapsValue";
+            this.labelCustomRecordingGapsValue.Size = new System.Drawing.Size(40, 15);
+            this.labelCustomRecordingGapsValue.TabIndex = 36;
+            this.labelCustomRecordingGapsValue.Text = "0";
+            this.labelCustomRecordingGapsValue.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // labelCustomRecordingGapsLabel
+            // 
+            this.labelCustomRecordingGapsLabel.AutoSize = true;
+            this.labelCustomRecordingGapsLabel.Location = new System.Drawing.Point(106, 124);
+            this.labelCustomRecordingGapsLabel.MinimumSize = new System.Drawing.Size(40, 2);
+            this.labelCustomRecordingGapsLabel.Name = "labelCustomRecordingGapsLabel";
+            this.labelCustomRecordingGapsLabel.Size = new System.Drawing.Size(40, 13);
+            this.labelCustomRecordingGapsLabel.TabIndex = 36;
+            this.labelCustomRecordingGapsLabel.Text = "Gaps:";
+            this.labelCustomRecordingGapsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -14948,6 +15002,10 @@ namespace SM64_Diagnostic
         private Button buttonCustomClearValues;
         private Button buttonCustomShowValues;
         private CheckBox checkBoxCustomRecordValues;
+        private Label labelCustomRecordingGapsValue;
+        private Label labelCustomRecordingFrequencyValue;
+        private Label labelCustomRecordingGapsLabel;
+        private Label labelCustomRecordingFrequencyLabel;
     }
 }
 
