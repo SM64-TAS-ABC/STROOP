@@ -180,10 +180,13 @@ namespace SM64_Diagnostic.Controls
         public void ShowVariableXml()
         {
             InfoForm infoForm = new InfoForm();
-            infoForm.SetText(
-                "Variable Info",
-                "Variable XML",
-                String.Join("\r\n", _precursors));
+            lock (_objectLock)
+            {
+                infoForm.SetText(
+                    "Variable Info",
+                    "Variable XML",
+                    String.Join("\r\n", _watchVarControlsList));
+            }
             infoForm.Show();
         }
 
