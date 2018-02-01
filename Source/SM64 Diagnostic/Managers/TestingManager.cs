@@ -148,6 +148,15 @@ namespace SM64_Diagnostic.Managers
         RadioButton _radioButtonScuttlebugStuffHMCRedCoins;
         Button _buttonScuttlebugStuffLungeToHome;
 
+        enum ScuttlebugMission
+        {
+            BBHBalconyEye,
+            BBHMerryGoRound,
+            HMCAmazing,
+            HMCRedCoins,
+        }
+        ScuttlebugMission _scuttlebugMission = ScuttlebugMission.BBHBalconyEye;
+
         public TestingManager(TabPage tabControl)
         {
             // Recording
@@ -308,6 +317,45 @@ namespace SM64_Diagnostic.Managers
             _radioButtonScuttlebugStuffHMCAmazing = _groupBoxScuttlebugStuff.Controls["radioButtonScuttlebugStuffHMCAmazing"] as RadioButton;
             _radioButtonScuttlebugStuffHMCRedCoins = _groupBoxScuttlebugStuff.Controls["radioButtonScuttlebugStuffHMCRedCoins"] as RadioButton;
             _buttonScuttlebugStuffLungeToHome = _groupBoxScuttlebugStuff.Controls["buttonScuttlebugStuffLungeToHome"] as Button;
+
+            _radioButtonScuttlebugStuffBBHBalconyEye.Click += (sender, e) => _scuttlebugMission = ScuttlebugMission.BBHBalconyEye;
+            _radioButtonScuttlebugStuffBBHMerryGoRound.Click += (sender, e) => _scuttlebugMission = ScuttlebugMission.BBHMerryGoRound;
+            _radioButtonScuttlebugStuffHMCAmazing.Click += (sender, e) => _scuttlebugMission = ScuttlebugMission.HMCAmazing;
+            _radioButtonScuttlebugStuffHMCRedCoins.Click += (sender, e) => _scuttlebugMission = ScuttlebugMission.HMCRedCoins;
+            _buttonScuttlebugStuffLungeToHome.Click += (sender, e) => InvokeScuttlebugsLungeToHome();
+        }
+
+        private List<uint> GetScuttlebugAddresses()
+        {
+            switch (_scuttlebugMission)
+            {
+                case ScuttlebugMission.BBHBalconyEye:
+                    return new List<uint>() { 0x803441C8, 0x80344428, 0x80344B48 };
+                case ScuttlebugMission.BBHMerryGoRound:
+                    return new List<uint>() { 0x803441C8 };
+                case ScuttlebugMission.HMCAmazing:
+                    return new List<uint>() { 0x803408C8 };
+                case ScuttlebugMission.HMCRedCoins:
+                    return new List<uint>() { 0x803422E8 };
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private void InvokeScuttlebugsLungeToHome()
+        {
+            List<uint> scuttlebugAddresses = GetScuttlebugAddresses();
+            foreach (uint objAddress in scuttlebugAddresses)
+            {
+                float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
+                float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
+                float homeX = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeXOffset);
+                float homeZ = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeZOffset);
+                ushort angleToHome = MoreMath.AngleTo_AngleUnitsRounded(objX, objZ, homeX, homeZ);
+                Config.Stream.SetValue(angleToHome, objAddress + ObjectConfig.YawFacingOffset);
+                Config.Stream.SetValue(angleToHome, objAddress + ObjectConfig.YawMovingOffset);
+                Config.Stream.SetValue(20f, objAddress + ObjectConfig.YSpeedOffset);
+            }
         }
 
         public abstract class VarState
