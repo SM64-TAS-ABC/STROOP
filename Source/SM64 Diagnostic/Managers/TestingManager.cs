@@ -140,6 +140,14 @@ namespace SM64_Diagnostic.Managers
         Button _buttonScheduleNext;
         Button _buttonScheduleButtonReset;
 
+        // Scuttlebug Stuff
+        GroupBox _groupBoxScuttlebugStuff;
+        RadioButton _radioButtonScuttlebugStuffBBHBalconyEye;
+        RadioButton _radioButtonScuttlebugStuffBBHMerryGoRound;
+        RadioButton _radioButtonScuttlebugStuffHMCAmazing;
+        RadioButton _radioButtonScuttlebugStuffHMCRedCoins;
+        Button _buttonScuttlebugStuffLungeToHome;
+
         public TestingManager(TabPage tabControl)
         {
             // Recording
@@ -292,6 +300,14 @@ namespace SM64_Diagnostic.Managers
             _buttonScheduleNext.Click += (sender, e) => buttonScheduleButtonNextClick();
             _buttonScheduleButtonReset = _groupBoxSchedule.Controls["buttonScheduleButtonReset"] as Button;
             _buttonScheduleButtonReset.Click += (sender, e) => buttonScheduleButtonResetClick();
+
+            // Scuttlebug Stuff
+            _groupBoxScuttlebugStuff = tabControl.Controls["groupBoxScuttlebugStuff"] as GroupBox;
+            _radioButtonScuttlebugStuffBBHBalconyEye = _groupBoxScuttlebugStuff.Controls["radioButtonScuttlebugStuffBBHBalconyEye"] as RadioButton;
+            _radioButtonScuttlebugStuffBBHMerryGoRound = _groupBoxScuttlebugStuff.Controls["radioButtonScuttlebugStuffBBHMerryGoRound"] as RadioButton;
+            _radioButtonScuttlebugStuffHMCAmazing = _groupBoxScuttlebugStuff.Controls["radioButtonScuttlebugStuffHMCAmazing"] as RadioButton;
+            _radioButtonScuttlebugStuffHMCRedCoins = _groupBoxScuttlebugStuff.Controls["radioButtonScuttlebugStuffHMCRedCoins"] as RadioButton;
+            _buttonScuttlebugStuffLungeToHome = _groupBoxScuttlebugStuff.Controls["buttonScuttlebugStuffLungeToHome"] as Button;
         }
 
         public abstract class VarState
