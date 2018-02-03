@@ -893,6 +893,12 @@ namespace SM64_Diagnostic
             this.checkBoxUseRomHack = new System.Windows.Forms.CheckBox();
             this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
             this.tabPageTesting = new System.Windows.Forms.TabPage();
+            this.groupBoxScuttlebugStuff = new System.Windows.Forms.GroupBox();
+            this.radioButtonScuttlebugStuffHMCRedCoins = new System.Windows.Forms.RadioButton();
+            this.radioButtonScuttlebugStuffHMCAmazing = new System.Windows.Forms.RadioButton();
+            this.radioButtonScuttlebugStuffBBHMerryGoRound = new System.Windows.Forms.RadioButton();
+            this.radioButtonScuttlebugStuffBBHBalconyEye = new System.Windows.Forms.RadioButton();
+            this.buttonScuttlebugStuffLungeToHome = new System.Windows.Forms.Button();
             this.groupBoxSchedule = new System.Windows.Forms.GroupBox();
             this.buttonScheduleButtonSet = new System.Windows.Forms.Button();
             this.buttonScheduleNext = new System.Windows.Forms.Button();
@@ -1040,12 +1046,12 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.groupBoxScuttlebugStuff = new System.Windows.Forms.GroupBox();
-            this.radioButtonScuttlebugStuffBBHMerryGoRound = new System.Windows.Forms.RadioButton();
-            this.radioButtonScuttlebugStuffBBHBalconyEye = new System.Windows.Forms.RadioButton();
-            this.buttonScuttlebugStuffLungeToHome = new System.Windows.Forms.Button();
-            this.radioButtonScuttlebugStuffHMCAmazing = new System.Windows.Forms.RadioButton();
-            this.radioButtonScuttlebugStuffHMCRedCoins = new System.Windows.Forms.RadioButton();
+            this.groupBoxMapBounds = new System.Windows.Forms.GroupBox();
+            this.betterTextbox2 = new SM64_Diagnostic.BetterTextbox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1364,6 +1370,7 @@ namespace SM64_Diagnostic
             this.groupBoxGotoRetrieveOffsets.SuspendLayout();
             this.groupBoxShowOverlay.SuspendLayout();
             this.tabPageTesting.SuspendLayout();
+            this.groupBoxScuttlebugStuff.SuspendLayout();
             this.groupBoxSchedule.SuspendLayout();
             this.groupBoxStateTransfer.SuspendLayout();
             this.groupBoxControlStick.SuspendLayout();
@@ -1373,7 +1380,7 @@ namespace SM64_Diagnostic
             this.groupBoxGoto.SuspendLayout();
             this.groupBoxRecording.SuspendLayout();
             this.panelConnect.SuspendLayout();
-            this.groupBoxScuttlebugStuff.SuspendLayout();
+            this.groupBoxMapBounds.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -1403,7 +1410,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 369);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 370);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1468,7 +1475,7 @@ namespace SM64_Diagnostic
             this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
             this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 153);
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 154);
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
@@ -4649,7 +4656,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 210F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 211F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8452,6 +8459,7 @@ namespace SM64_Diagnostic
             // 
             // splitContainerMap.Panel1
             // 
+            this.splitContainerMap.Panel1.Controls.Add(this.groupBoxMapBounds);
             this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowIntendedNextPosition);
             this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowCeiling);
             this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowFloor);
@@ -8637,7 +8645,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(696, 437);
+            this.glControlMap.Size = new System.Drawing.Size(699, 437);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -9648,7 +9656,7 @@ namespace SM64_Diagnostic
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(340, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(323, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -9680,7 +9688,7 @@ namespace SM64_Diagnostic
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(329, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(312, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -9736,7 +9744,7 @@ namespace SM64_Diagnostic
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(329, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(312, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -11930,6 +11938,72 @@ namespace SM64_Diagnostic
             this.tabPageTesting.TabIndex = 19;
             this.tabPageTesting.Text = "Testing";
             // 
+            // groupBoxScuttlebugStuff
+            // 
+            this.groupBoxScuttlebugStuff.Controls.Add(this.radioButtonScuttlebugStuffHMCRedCoins);
+            this.groupBoxScuttlebugStuff.Controls.Add(this.radioButtonScuttlebugStuffHMCAmazing);
+            this.groupBoxScuttlebugStuff.Controls.Add(this.radioButtonScuttlebugStuffBBHMerryGoRound);
+            this.groupBoxScuttlebugStuff.Controls.Add(this.radioButtonScuttlebugStuffBBHBalconyEye);
+            this.groupBoxScuttlebugStuff.Controls.Add(this.buttonScuttlebugStuffLungeToHome);
+            this.groupBoxScuttlebugStuff.Location = new System.Drawing.Point(760, 6);
+            this.groupBoxScuttlebugStuff.Name = "groupBoxScuttlebugStuff";
+            this.groupBoxScuttlebugStuff.Size = new System.Drawing.Size(144, 160);
+            this.groupBoxScuttlebugStuff.TabIndex = 43;
+            this.groupBoxScuttlebugStuff.TabStop = false;
+            this.groupBoxScuttlebugStuff.Text = "Scuttlebug Stuff";
+            // 
+            // radioButtonScuttlebugStuffHMCRedCoins
+            // 
+            this.radioButtonScuttlebugStuffHMCRedCoins.AutoSize = true;
+            this.radioButtonScuttlebugStuffHMCRedCoins.Location = new System.Drawing.Point(13, 78);
+            this.radioButtonScuttlebugStuffHMCRedCoins.Name = "radioButtonScuttlebugStuffHMCRedCoins";
+            this.radioButtonScuttlebugStuffHMCRedCoins.Size = new System.Drawing.Size(101, 17);
+            this.radioButtonScuttlebugStuffHMCRedCoins.TabIndex = 12;
+            this.radioButtonScuttlebugStuffHMCRedCoins.Text = "HMC Red Coins";
+            this.radioButtonScuttlebugStuffHMCRedCoins.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonScuttlebugStuffHMCAmazing
+            // 
+            this.radioButtonScuttlebugStuffHMCAmazing.AutoSize = true;
+            this.radioButtonScuttlebugStuffHMCAmazing.Location = new System.Drawing.Point(13, 57);
+            this.radioButtonScuttlebugStuffHMCAmazing.Name = "radioButtonScuttlebugStuffHMCAmazing";
+            this.radioButtonScuttlebugStuffHMCAmazing.Size = new System.Drawing.Size(92, 17);
+            this.radioButtonScuttlebugStuffHMCAmazing.TabIndex = 12;
+            this.radioButtonScuttlebugStuffHMCAmazing.Text = "HMC Amazing";
+            this.radioButtonScuttlebugStuffHMCAmazing.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonScuttlebugStuffBBHMerryGoRound
+            // 
+            this.radioButtonScuttlebugStuffBBHMerryGoRound.AutoSize = true;
+            this.radioButtonScuttlebugStuffBBHMerryGoRound.Location = new System.Drawing.Point(13, 37);
+            this.radioButtonScuttlebugStuffBBHMerryGoRound.Name = "radioButtonScuttlebugStuffBBHMerryGoRound";
+            this.radioButtonScuttlebugStuffBBHMerryGoRound.Size = new System.Drawing.Size(128, 17);
+            this.radioButtonScuttlebugStuffBBHMerryGoRound.TabIndex = 12;
+            this.radioButtonScuttlebugStuffBBHMerryGoRound.Text = "BBH Merry Go Round";
+            this.radioButtonScuttlebugStuffBBHMerryGoRound.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonScuttlebugStuffBBHBalconyEye
+            // 
+            this.radioButtonScuttlebugStuffBBHBalconyEye.AutoSize = true;
+            this.radioButtonScuttlebugStuffBBHBalconyEye.Checked = true;
+            this.radioButtonScuttlebugStuffBBHBalconyEye.Location = new System.Drawing.Point(12, 18);
+            this.radioButtonScuttlebugStuffBBHBalconyEye.Name = "radioButtonScuttlebugStuffBBHBalconyEye";
+            this.radioButtonScuttlebugStuffBBHBalconyEye.Size = new System.Drawing.Size(111, 17);
+            this.radioButtonScuttlebugStuffBBHBalconyEye.TabIndex = 11;
+            this.radioButtonScuttlebugStuffBBHBalconyEye.TabStop = true;
+            this.radioButtonScuttlebugStuffBBHBalconyEye.Text = "BBH Balcony/Eye";
+            this.radioButtonScuttlebugStuffBBHBalconyEye.UseVisualStyleBackColor = true;
+            // 
+            // buttonScuttlebugStuffLungeToHome
+            // 
+            this.buttonScuttlebugStuffLungeToHome.Location = new System.Drawing.Point(14, 101);
+            this.buttonScuttlebugStuffLungeToHome.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonScuttlebugStuffLungeToHome.Name = "buttonScuttlebugStuffLungeToHome";
+            this.buttonScuttlebugStuffLungeToHome.Size = new System.Drawing.Size(117, 48);
+            this.buttonScuttlebugStuffLungeToHome.TabIndex = 16;
+            this.buttonScuttlebugStuffLungeToHome.Text = "Lunge to Home";
+            this.buttonScuttlebugStuffLungeToHome.UseVisualStyleBackColor = true;
+            // 
             // groupBoxSchedule
             // 
             this.groupBoxSchedule.Controls.Add(this.buttonScheduleButtonSet);
@@ -13579,71 +13653,68 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // groupBoxScuttlebugStuff
+            // groupBoxMapBounds
             // 
-            this.groupBoxScuttlebugStuff.Controls.Add(this.radioButtonScuttlebugStuffHMCRedCoins);
-            this.groupBoxScuttlebugStuff.Controls.Add(this.radioButtonScuttlebugStuffHMCAmazing);
-            this.groupBoxScuttlebugStuff.Controls.Add(this.radioButtonScuttlebugStuffBBHMerryGoRound);
-            this.groupBoxScuttlebugStuff.Controls.Add(this.radioButtonScuttlebugStuffBBHBalconyEye);
-            this.groupBoxScuttlebugStuff.Controls.Add(this.buttonScuttlebugStuffLungeToHome);
-            this.groupBoxScuttlebugStuff.Location = new System.Drawing.Point(760, 6);
-            this.groupBoxScuttlebugStuff.Name = "groupBoxScuttlebugStuff";
-            this.groupBoxScuttlebugStuff.Size = new System.Drawing.Size(144, 160);
-            this.groupBoxScuttlebugStuff.TabIndex = 43;
-            this.groupBoxScuttlebugStuff.TabStop = false;
-            this.groupBoxScuttlebugStuff.Text = "Scuttlebug Stuff";
+            this.groupBoxMapBounds.Controls.Add(this.betterTextbox2);
+            this.groupBoxMapBounds.Controls.Add(this.button4);
+            this.groupBoxMapBounds.Controls.Add(this.button6);
+            this.groupBoxMapBounds.Controls.Add(this.button7);
+            this.groupBoxMapBounds.Controls.Add(this.button11);
+            this.groupBoxMapBounds.Location = new System.Drawing.Point(5, 168);
+            this.groupBoxMapBounds.Name = "groupBoxMapBounds";
+            this.groupBoxMapBounds.Size = new System.Drawing.Size(134, 146);
+            this.groupBoxMapBounds.TabIndex = 31;
+            this.groupBoxMapBounds.TabStop = false;
+            this.groupBoxMapBounds.Text = "Map Bounds";
             // 
-            // radioButtonScuttlebugStuffBBHMerryGoRound
+            // betterTextbox2
             // 
-            this.radioButtonScuttlebugStuffBBHMerryGoRound.AutoSize = true;
-            this.radioButtonScuttlebugStuffBBHMerryGoRound.Location = new System.Drawing.Point(13, 37);
-            this.radioButtonScuttlebugStuffBBHMerryGoRound.Name = "radioButtonScuttlebugStuffBBHMerryGoRound";
-            this.radioButtonScuttlebugStuffBBHMerryGoRound.Size = new System.Drawing.Size(128, 17);
-            this.radioButtonScuttlebugStuffBBHMerryGoRound.TabIndex = 12;
-            this.radioButtonScuttlebugStuffBBHMerryGoRound.Text = "BBH Merry Go Round";
-            this.radioButtonScuttlebugStuffBBHMerryGoRound.UseVisualStyleBackColor = true;
+            this.betterTextbox2.Location = new System.Drawing.Point(45, 70);
+            this.betterTextbox2.Name = "betterTextbox2";
+            this.betterTextbox2.Size = new System.Drawing.Size(42, 20);
+            this.betterTextbox2.TabIndex = 27;
+            this.betterTextbox2.Text = "100";
+            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // radioButtonScuttlebugStuffBBHBalconyEye
+            // button4
             // 
-            this.radioButtonScuttlebugStuffBBHBalconyEye.AutoSize = true;
-            this.radioButtonScuttlebugStuffBBHBalconyEye.Checked = true;
-            this.radioButtonScuttlebugStuffBBHBalconyEye.Location = new System.Drawing.Point(12, 18);
-            this.radioButtonScuttlebugStuffBBHBalconyEye.Name = "radioButtonScuttlebugStuffBBHBalconyEye";
-            this.radioButtonScuttlebugStuffBBHBalconyEye.Size = new System.Drawing.Size(111, 17);
-            this.radioButtonScuttlebugStuffBBHBalconyEye.TabIndex = 11;
-            this.radioButtonScuttlebugStuffBBHBalconyEye.TabStop = true;
-            this.radioButtonScuttlebugStuffBBHBalconyEye.Text = "BBH Balcony/Eye";
-            this.radioButtonScuttlebugStuffBBHBalconyEye.UseVisualStyleBackColor = true;
+            this.button4.Image = global::SM64_Diagnostic.Properties.Resources.img_arrow_right;
+            this.button4.Location = new System.Drawing.Point(87, 58);
+            this.button4.Margin = new System.Windows.Forms.Padding(0);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(42, 42);
+            this.button4.TabIndex = 31;
+            this.button4.UseVisualStyleBackColor = true;
             // 
-            // buttonScuttlebugStuffLungeToHome
+            // button6
             // 
-            this.buttonScuttlebugStuffLungeToHome.Location = new System.Drawing.Point(14, 101);
-            this.buttonScuttlebugStuffLungeToHome.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonScuttlebugStuffLungeToHome.Name = "buttonScuttlebugStuffLungeToHome";
-            this.buttonScuttlebugStuffLungeToHome.Size = new System.Drawing.Size(117, 48);
-            this.buttonScuttlebugStuffLungeToHome.TabIndex = 16;
-            this.buttonScuttlebugStuffLungeToHome.Text = "Lunge to Home";
-            this.buttonScuttlebugStuffLungeToHome.UseVisualStyleBackColor = true;
+            this.button6.Image = global::SM64_Diagnostic.Properties.Resources.img_arrow_up;
+            this.button6.Location = new System.Drawing.Point(45, 16);
+            this.button6.Margin = new System.Windows.Forms.Padding(0);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(42, 42);
+            this.button6.TabIndex = 29;
+            this.button6.UseVisualStyleBackColor = true;
             // 
-            // radioButtonScuttlebugStuffHMCAmazing
+            // button7
             // 
-            this.radioButtonScuttlebugStuffHMCAmazing.AutoSize = true;
-            this.radioButtonScuttlebugStuffHMCAmazing.Location = new System.Drawing.Point(13, 57);
-            this.radioButtonScuttlebugStuffHMCAmazing.Name = "radioButtonScuttlebugStuffHMCAmazing";
-            this.radioButtonScuttlebugStuffHMCAmazing.Size = new System.Drawing.Size(92, 17);
-            this.radioButtonScuttlebugStuffHMCAmazing.TabIndex = 12;
-            this.radioButtonScuttlebugStuffHMCAmazing.Text = "HMC Amazing";
-            this.radioButtonScuttlebugStuffHMCAmazing.UseVisualStyleBackColor = true;
+            this.button7.Image = global::SM64_Diagnostic.Properties.Resources.img_arrow_down;
+            this.button7.Location = new System.Drawing.Point(45, 100);
+            this.button7.Margin = new System.Windows.Forms.Padding(0);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(42, 42);
+            this.button7.TabIndex = 28;
+            this.button7.UseVisualStyleBackColor = true;
             // 
-            // radioButtonScuttlebugStuffHMCRedCoins
+            // button11
             // 
-            this.radioButtonScuttlebugStuffHMCRedCoins.AutoSize = true;
-            this.radioButtonScuttlebugStuffHMCRedCoins.Location = new System.Drawing.Point(13, 78);
-            this.radioButtonScuttlebugStuffHMCRedCoins.Name = "radioButtonScuttlebugStuffHMCRedCoins";
-            this.radioButtonScuttlebugStuffHMCRedCoins.Size = new System.Drawing.Size(101, 17);
-            this.radioButtonScuttlebugStuffHMCRedCoins.TabIndex = 12;
-            this.radioButtonScuttlebugStuffHMCRedCoins.Text = "HMC Red Coins";
-            this.radioButtonScuttlebugStuffHMCRedCoins.UseVisualStyleBackColor = true;
+            this.button11.Image = global::SM64_Diagnostic.Properties.Resources.img_arrow_left;
+            this.button11.Location = new System.Drawing.Point(3, 58);
+            this.button11.Margin = new System.Windows.Forms.Padding(0);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(42, 42);
+            this.button11.TabIndex = 26;
+            this.button11.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -14049,6 +14120,8 @@ namespace SM64_Diagnostic
             this.groupBoxShowOverlay.ResumeLayout(false);
             this.groupBoxShowOverlay.PerformLayout();
             this.tabPageTesting.ResumeLayout(false);
+            this.groupBoxScuttlebugStuff.ResumeLayout(false);
+            this.groupBoxScuttlebugStuff.PerformLayout();
             this.groupBoxSchedule.ResumeLayout(false);
             this.groupBoxSchedule.PerformLayout();
             this.groupBoxStateTransfer.ResumeLayout(false);
@@ -14067,8 +14140,8 @@ namespace SM64_Diagnostic
             this.groupBoxRecording.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            this.groupBoxScuttlebugStuff.ResumeLayout(false);
-            this.groupBoxScuttlebugStuff.PerformLayout();
+            this.groupBoxMapBounds.ResumeLayout(false);
+            this.groupBoxMapBounds.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -15088,6 +15161,12 @@ namespace SM64_Diagnostic
         private RadioButton radioButtonScuttlebugStuffBBHMerryGoRound;
         private RadioButton radioButtonScuttlebugStuffBBHBalconyEye;
         private Button buttonScuttlebugStuffLungeToHome;
+        private GroupBox groupBoxMapBounds;
+        private BetterTextbox betterTextbox2;
+        private Button button4;
+        private Button button6;
+        private Button button7;
+        private Button button11;
     }
 }
 
