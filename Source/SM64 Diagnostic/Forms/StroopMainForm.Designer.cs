@@ -589,7 +589,24 @@ namespace SM64_Diagnostic
             this.watchVariablePanelDebug = new SM64_Diagnostic.Controls.WatchVariablePanel();
             this.tabPageMap = new System.Windows.Forms.TabPage();
             this.splitContainerMap = new System.Windows.Forms.SplitContainer();
+            this.groupBoxMapBounds = new System.Windows.Forms.GroupBox();
+            this.textBoxMapBoundsZoom = new SM64_Diagnostic.BetterTextbox();
+            this.buttonMapBoundsZoomIn = new System.Windows.Forms.Button();
+            this.buttonMapBoundsZoomOut = new System.Windows.Forms.Button();
+            this.buttonMapBoundsDownRight = new System.Windows.Forms.Button();
+            this.textBoxMapBoundsPosition = new SM64_Diagnostic.BetterTextbox();
+            this.buttonMapBoundsRight = new System.Windows.Forms.Button();
+            this.buttonMapBoundsUpRight = new System.Windows.Forms.Button();
+            this.buttonMapBoundsUp = new System.Windows.Forms.Button();
+            this.buttonMapBoundsDown = new System.Windows.Forms.Button();
+            this.buttonMapBoundsDownLeft = new System.Windows.Forms.Button();
+            this.buttonMapBoundsLeft = new System.Windows.Forms.Button();
+            this.buttonMapBoundsUpLeft = new System.Windows.Forms.Button();
+            this.labelMapQpu = new System.Windows.Forms.Label();
+            this.labelMapPu = new System.Windows.Forms.Label();
+            this.labelMapQpuValue = new System.Windows.Forms.Label();
             this.checkBoxMapShowIntendedNextPosition = new System.Windows.Forms.CheckBox();
+            this.labelMapPuValue = new System.Windows.Forms.Label();
             this.checkBoxMapShowCeiling = new System.Windows.Forms.CheckBox();
             this.checkBoxMapShowFloor = new System.Windows.Forms.CheckBox();
             this.checkBoxMapShowCamera = new System.Windows.Forms.CheckBox();
@@ -604,10 +621,6 @@ namespace SM64_Diagnostic
             this.labelMapSubName = new System.Windows.Forms.Label();
             this.trackBarMapZoom = new System.Windows.Forms.TrackBar();
             this.glControlMap = new OpenTK.GLControl();
-            this.labelMapPu = new System.Windows.Forms.Label();
-            this.labelMapPuValue = new System.Windows.Forms.Label();
-            this.labelMapQpu = new System.Windows.Forms.Label();
-            this.labelMapQpuValue = new System.Windows.Forms.Label();
             this.tabPagePu = new System.Windows.Forms.TabPage();
             this.groupBoxPuController = new System.Windows.Forms.GroupBox();
             this.labelPuConPu = new System.Windows.Forms.Label();
@@ -1046,19 +1059,6 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.groupBoxMapBounds = new System.Windows.Forms.GroupBox();
-            this.textBoxMapBoundsZoom = new SM64_Diagnostic.BetterTextbox();
-            this.buttonMapBoundsZoomIn = new System.Windows.Forms.Button();
-            this.buttonMapBoundsZoomOut = new System.Windows.Forms.Button();
-            this.buttonMapBoundsDownRight = new System.Windows.Forms.Button();
-            this.textBoxMapBoundsPosition = new SM64_Diagnostic.BetterTextbox();
-            this.buttonMapBoundsRight = new System.Windows.Forms.Button();
-            this.buttonMapBoundsUpRight = new System.Windows.Forms.Button();
-            this.buttonMapBoundsUp = new System.Windows.Forms.Button();
-            this.buttonMapBoundsDown = new System.Windows.Forms.Button();
-            this.buttonMapBoundsDownLeft = new System.Windows.Forms.Button();
-            this.buttonMapBoundsLeft = new System.Windows.Forms.Button();
-            this.buttonMapBoundsUpLeft = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1316,6 +1316,7 @@ namespace SM64_Diagnostic
             this.splitContainerMap.Panel1.SuspendLayout();
             this.splitContainerMap.Panel2.SuspendLayout();
             this.splitContainerMap.SuspendLayout();
+            this.groupBoxMapBounds.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapIconSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapZoom)).BeginInit();
             this.tabPagePu.SuspendLayout();
@@ -1387,7 +1388,6 @@ namespace SM64_Diagnostic
             this.groupBoxGoto.SuspendLayout();
             this.groupBoxRecording.SuspendLayout();
             this.panelConnect.SuspendLayout();
-            this.groupBoxMapBounds.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -1417,7 +1417,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 370);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 371);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1482,7 +1482,7 @@ namespace SM64_Diagnostic
             this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
             this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 154);
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 153);
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
@@ -4663,7 +4663,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 211F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 212F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8496,6 +8496,181 @@ namespace SM64_Diagnostic
             this.splitContainerMap.SplitterWidth = 1;
             this.splitContainerMap.TabIndex = 16;
             // 
+            // groupBoxMapBounds
+            // 
+            this.groupBoxMapBounds.Controls.Add(this.textBoxMapBoundsZoom);
+            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsZoomIn);
+            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsZoomOut);
+            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsDownRight);
+            this.groupBoxMapBounds.Controls.Add(this.textBoxMapBoundsPosition);
+            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsRight);
+            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsUpRight);
+            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsUp);
+            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsDown);
+            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsDownLeft);
+            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsLeft);
+            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsUpLeft);
+            this.groupBoxMapBounds.Location = new System.Drawing.Point(7, 171);
+            this.groupBoxMapBounds.Name = "groupBoxMapBounds";
+            this.groupBoxMapBounds.Size = new System.Drawing.Size(185, 146);
+            this.groupBoxMapBounds.TabIndex = 37;
+            this.groupBoxMapBounds.TabStop = false;
+            this.groupBoxMapBounds.Text = "Map Bounds";
+            // 
+            // textBoxMapBoundsZoom
+            // 
+            this.textBoxMapBoundsZoom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxMapBoundsZoom.Location = new System.Drawing.Point(140, 70);
+            this.textBoxMapBoundsZoom.Name = "textBoxMapBoundsZoom";
+            this.textBoxMapBoundsZoom.Size = new System.Drawing.Size(42, 20);
+            this.textBoxMapBoundsZoom.TabIndex = 33;
+            this.textBoxMapBoundsZoom.Text = "100";
+            this.textBoxMapBoundsZoom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonMapBoundsZoomIn
+            // 
+            this.buttonMapBoundsZoomIn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMapBoundsZoomIn.Location = new System.Drawing.Point(140, 16);
+            this.buttonMapBoundsZoomIn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapBoundsZoomIn.Name = "buttonMapBoundsZoomIn";
+            this.buttonMapBoundsZoomIn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapBoundsZoomIn.TabIndex = 35;
+            this.buttonMapBoundsZoomIn.Text = "Z+";
+            this.buttonMapBoundsZoomIn.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapBoundsZoomOut
+            // 
+            this.buttonMapBoundsZoomOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMapBoundsZoomOut.Location = new System.Drawing.Point(140, 100);
+            this.buttonMapBoundsZoomOut.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapBoundsZoomOut.Name = "buttonMapBoundsZoomOut";
+            this.buttonMapBoundsZoomOut.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapBoundsZoomOut.TabIndex = 34;
+            this.buttonMapBoundsZoomOut.Text = "Z-";
+            this.buttonMapBoundsZoomOut.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapBoundsDownRight
+            // 
+            this.buttonMapBoundsDownRight.Location = new System.Drawing.Point(87, 100);
+            this.buttonMapBoundsDownRight.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapBoundsDownRight.Name = "buttonMapBoundsDownRight";
+            this.buttonMapBoundsDownRight.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapBoundsDownRight.TabIndex = 32;
+            this.buttonMapBoundsDownRight.Text = "DR";
+            this.buttonMapBoundsDownRight.UseVisualStyleBackColor = true;
+            // 
+            // textBoxMapBoundsPosition
+            // 
+            this.textBoxMapBoundsPosition.Location = new System.Drawing.Point(45, 70);
+            this.textBoxMapBoundsPosition.Name = "textBoxMapBoundsPosition";
+            this.textBoxMapBoundsPosition.Size = new System.Drawing.Size(42, 20);
+            this.textBoxMapBoundsPosition.TabIndex = 27;
+            this.textBoxMapBoundsPosition.Text = "100";
+            this.textBoxMapBoundsPosition.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonMapBoundsRight
+            // 
+            this.buttonMapBoundsRight.Location = new System.Drawing.Point(87, 58);
+            this.buttonMapBoundsRight.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapBoundsRight.Name = "buttonMapBoundsRight";
+            this.buttonMapBoundsRight.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapBoundsRight.TabIndex = 31;
+            this.buttonMapBoundsRight.Text = "R";
+            this.buttonMapBoundsRight.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapBoundsUpRight
+            // 
+            this.buttonMapBoundsUpRight.Location = new System.Drawing.Point(87, 16);
+            this.buttonMapBoundsUpRight.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapBoundsUpRight.Name = "buttonMapBoundsUpRight";
+            this.buttonMapBoundsUpRight.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapBoundsUpRight.TabIndex = 30;
+            this.buttonMapBoundsUpRight.Text = "UR";
+            this.buttonMapBoundsUpRight.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapBoundsUp
+            // 
+            this.buttonMapBoundsUp.Location = new System.Drawing.Point(45, 16);
+            this.buttonMapBoundsUp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapBoundsUp.Name = "buttonMapBoundsUp";
+            this.buttonMapBoundsUp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapBoundsUp.TabIndex = 29;
+            this.buttonMapBoundsUp.Text = "U";
+            this.buttonMapBoundsUp.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapBoundsDown
+            // 
+            this.buttonMapBoundsDown.Location = new System.Drawing.Point(45, 100);
+            this.buttonMapBoundsDown.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapBoundsDown.Name = "buttonMapBoundsDown";
+            this.buttonMapBoundsDown.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapBoundsDown.TabIndex = 28;
+            this.buttonMapBoundsDown.Text = "D";
+            this.buttonMapBoundsDown.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapBoundsDownLeft
+            // 
+            this.buttonMapBoundsDownLeft.Location = new System.Drawing.Point(3, 100);
+            this.buttonMapBoundsDownLeft.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapBoundsDownLeft.Name = "buttonMapBoundsDownLeft";
+            this.buttonMapBoundsDownLeft.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapBoundsDownLeft.TabIndex = 27;
+            this.buttonMapBoundsDownLeft.Text = "DL";
+            this.buttonMapBoundsDownLeft.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapBoundsLeft
+            // 
+            this.buttonMapBoundsLeft.Location = new System.Drawing.Point(3, 58);
+            this.buttonMapBoundsLeft.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapBoundsLeft.Name = "buttonMapBoundsLeft";
+            this.buttonMapBoundsLeft.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapBoundsLeft.TabIndex = 26;
+            this.buttonMapBoundsLeft.Text = "L";
+            this.buttonMapBoundsLeft.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapBoundsUpLeft
+            // 
+            this.buttonMapBoundsUpLeft.Location = new System.Drawing.Point(3, 16);
+            this.buttonMapBoundsUpLeft.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapBoundsUpLeft.Name = "buttonMapBoundsUpLeft";
+            this.buttonMapBoundsUpLeft.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapBoundsUpLeft.TabIndex = 25;
+            this.buttonMapBoundsUpLeft.Text = "UL";
+            this.buttonMapBoundsUpLeft.UseVisualStyleBackColor = true;
+            // 
+            // labelMapQpu
+            // 
+            this.labelMapQpu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelMapQpu.AutoSize = true;
+            this.labelMapQpu.Location = new System.Drawing.Point(0, 444);
+            this.labelMapQpu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelMapQpu.Name = "labelMapQpu";
+            this.labelMapQpu.Size = new System.Drawing.Size(69, 13);
+            this.labelMapQpu.TabIndex = 6;
+            this.labelMapQpu.Text = "QPU [X:Y:Z]:";
+            // 
+            // labelMapPu
+            // 
+            this.labelMapPu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelMapPu.AutoSize = true;
+            this.labelMapPu.Location = new System.Drawing.Point(8, 427);
+            this.labelMapPu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelMapPu.Name = "labelMapPu";
+            this.labelMapPu.Size = new System.Drawing.Size(61, 13);
+            this.labelMapPu.TabIndex = 5;
+            this.labelMapPu.Text = "PU [X:Y:Z]:";
+            // 
+            // labelMapQpuValue
+            // 
+            this.labelMapQpuValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelMapQpuValue.AutoSize = true;
+            this.labelMapQpuValue.Location = new System.Drawing.Point(73, 444);
+            this.labelMapQpuValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelMapQpuValue.Name = "labelMapQpuValue";
+            this.labelMapQpuValue.Size = new System.Drawing.Size(37, 13);
+            this.labelMapQpuValue.TabIndex = 1;
+            this.labelMapQpuValue.Text = "[0:0:0]";
+            // 
             // checkBoxMapShowIntendedNextPosition
             // 
             this.checkBoxMapShowIntendedNextPosition.AutoSize = true;
@@ -8505,6 +8680,17 @@ namespace SM64_Diagnostic
             this.checkBoxMapShowIntendedNextPosition.TabIndex = 19;
             this.checkBoxMapShowIntendedNextPosition.Text = "Show Intended Next Position";
             this.checkBoxMapShowIntendedNextPosition.UseVisualStyleBackColor = true;
+            // 
+            // labelMapPuValue
+            // 
+            this.labelMapPuValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelMapPuValue.AutoSize = true;
+            this.labelMapPuValue.Location = new System.Drawing.Point(73, 427);
+            this.labelMapPuValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelMapPuValue.Name = "labelMapPuValue";
+            this.labelMapPuValue.Size = new System.Drawing.Size(37, 13);
+            this.labelMapPuValue.TabIndex = 8;
+            this.labelMapPuValue.Text = "[0:0:0]";
             // 
             // checkBoxMapShowCeiling
             // 
@@ -8652,54 +8838,10 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(699, 454);
+            this.glControlMap.Size = new System.Drawing.Size(696, 454);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
-            // 
-            // labelMapPu
-            // 
-            this.labelMapPu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelMapPu.AutoSize = true;
-            this.labelMapPu.Location = new System.Drawing.Point(8, 427);
-            this.labelMapPu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMapPu.Name = "labelMapPu";
-            this.labelMapPu.Size = new System.Drawing.Size(61, 13);
-            this.labelMapPu.TabIndex = 5;
-            this.labelMapPu.Text = "PU [X:Y:Z]:";
-            // 
-            // labelMapPuValue
-            // 
-            this.labelMapPuValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelMapPuValue.AutoSize = true;
-            this.labelMapPuValue.Location = new System.Drawing.Point(73, 427);
-            this.labelMapPuValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMapPuValue.Name = "labelMapPuValue";
-            this.labelMapPuValue.Size = new System.Drawing.Size(37, 13);
-            this.labelMapPuValue.TabIndex = 8;
-            this.labelMapPuValue.Text = "[0:0:0]";
-            // 
-            // labelMapQpu
-            // 
-            this.labelMapQpu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelMapQpu.AutoSize = true;
-            this.labelMapQpu.Location = new System.Drawing.Point(0, 444);
-            this.labelMapQpu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMapQpu.Name = "labelMapQpu";
-            this.labelMapQpu.Size = new System.Drawing.Size(69, 13);
-            this.labelMapQpu.TabIndex = 6;
-            this.labelMapQpu.Text = "QPU [X:Y:Z]:";
-            // 
-            // labelMapQpuValue
-            // 
-            this.labelMapQpuValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelMapQpuValue.AutoSize = true;
-            this.labelMapQpuValue.Location = new System.Drawing.Point(73, 444);
-            this.labelMapQpuValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMapQpuValue.Name = "labelMapQpuValue";
-            this.labelMapQpuValue.Size = new System.Drawing.Size(37, 13);
-            this.labelMapQpuValue.TabIndex = 1;
-            this.labelMapQpuValue.Text = "[0:0:0]";
             // 
             // tabPagePu
             // 
@@ -9663,7 +9805,7 @@ namespace SM64_Diagnostic
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(323, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(385, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -9695,7 +9837,7 @@ namespace SM64_Diagnostic
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(312, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(374, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -9751,7 +9893,7 @@ namespace SM64_Diagnostic
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(312, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(374, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -13660,148 +13802,6 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // groupBoxMapBounds
-            // 
-            this.groupBoxMapBounds.Controls.Add(this.textBoxMapBoundsZoom);
-            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsZoomIn);
-            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsZoomOut);
-            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsDownRight);
-            this.groupBoxMapBounds.Controls.Add(this.textBoxMapBoundsPosition);
-            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsRight);
-            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsUpRight);
-            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsUp);
-            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsDown);
-            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsDownLeft);
-            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsLeft);
-            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsUpLeft);
-            this.groupBoxMapBounds.Location = new System.Drawing.Point(7, 171);
-            this.groupBoxMapBounds.Name = "groupBoxMapBounds";
-            this.groupBoxMapBounds.Size = new System.Drawing.Size(185, 146);
-            this.groupBoxMapBounds.TabIndex = 37;
-            this.groupBoxMapBounds.TabStop = false;
-            this.groupBoxMapBounds.Text = "Map Bounds";
-            // 
-            // textBoxMapBoundsZoom
-            // 
-            this.textBoxMapBoundsZoom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxMapBoundsZoom.Location = new System.Drawing.Point(140, 70);
-            this.textBoxMapBoundsZoom.Name = "textBoxMapBoundsZoom";
-            this.textBoxMapBoundsZoom.Size = new System.Drawing.Size(42, 20);
-            this.textBoxMapBoundsZoom.TabIndex = 33;
-            this.textBoxMapBoundsZoom.Text = "100";
-            this.textBoxMapBoundsZoom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // buttonMapBoundsZoomIn
-            // 
-            this.buttonMapBoundsZoomIn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMapBoundsZoomIn.Location = new System.Drawing.Point(140, 16);
-            this.buttonMapBoundsZoomIn.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapBoundsZoomIn.Name = "buttonMapBoundsZoomIn";
-            this.buttonMapBoundsZoomIn.Size = new System.Drawing.Size(42, 42);
-            this.buttonMapBoundsZoomIn.TabIndex = 35;
-            this.buttonMapBoundsZoomIn.Text = "Z+";
-            this.buttonMapBoundsZoomIn.UseVisualStyleBackColor = true;
-            // 
-            // buttonMapBoundsZoomOut
-            // 
-            this.buttonMapBoundsZoomOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMapBoundsZoomOut.Location = new System.Drawing.Point(140, 100);
-            this.buttonMapBoundsZoomOut.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapBoundsZoomOut.Name = "buttonMapBoundsZoomOut";
-            this.buttonMapBoundsZoomOut.Size = new System.Drawing.Size(42, 42);
-            this.buttonMapBoundsZoomOut.TabIndex = 34;
-            this.buttonMapBoundsZoomOut.Text = "Z-";
-            this.buttonMapBoundsZoomOut.UseVisualStyleBackColor = true;
-            // 
-            // buttonMapBoundsDownRight
-            // 
-            this.buttonMapBoundsDownRight.Location = new System.Drawing.Point(87, 100);
-            this.buttonMapBoundsDownRight.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapBoundsDownRight.Name = "buttonMapBoundsDownRight";
-            this.buttonMapBoundsDownRight.Size = new System.Drawing.Size(42, 42);
-            this.buttonMapBoundsDownRight.TabIndex = 32;
-            this.buttonMapBoundsDownRight.Text = "DR";
-            this.buttonMapBoundsDownRight.UseVisualStyleBackColor = true;
-            // 
-            // textBoxMapBoundsPosition
-            // 
-            this.textBoxMapBoundsPosition.Location = new System.Drawing.Point(45, 70);
-            this.textBoxMapBoundsPosition.Name = "textBoxMapBoundsPosition";
-            this.textBoxMapBoundsPosition.Size = new System.Drawing.Size(42, 20);
-            this.textBoxMapBoundsPosition.TabIndex = 27;
-            this.textBoxMapBoundsPosition.Text = "100";
-            this.textBoxMapBoundsPosition.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // buttonMapBoundsRight
-            // 
-            this.buttonMapBoundsRight.Location = new System.Drawing.Point(87, 58);
-            this.buttonMapBoundsRight.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapBoundsRight.Name = "buttonMapBoundsRight";
-            this.buttonMapBoundsRight.Size = new System.Drawing.Size(42, 42);
-            this.buttonMapBoundsRight.TabIndex = 31;
-            this.buttonMapBoundsRight.Text = "R";
-            this.buttonMapBoundsRight.UseVisualStyleBackColor = true;
-            // 
-            // buttonMapBoundsUpRight
-            // 
-            this.buttonMapBoundsUpRight.Location = new System.Drawing.Point(87, 16);
-            this.buttonMapBoundsUpRight.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapBoundsUpRight.Name = "buttonMapBoundsUpRight";
-            this.buttonMapBoundsUpRight.Size = new System.Drawing.Size(42, 42);
-            this.buttonMapBoundsUpRight.TabIndex = 30;
-            this.buttonMapBoundsUpRight.Text = "UR";
-            this.buttonMapBoundsUpRight.UseVisualStyleBackColor = true;
-            // 
-            // buttonMapBoundsUp
-            // 
-            this.buttonMapBoundsUp.Location = new System.Drawing.Point(45, 16);
-            this.buttonMapBoundsUp.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapBoundsUp.Name = "buttonMapBoundsUp";
-            this.buttonMapBoundsUp.Size = new System.Drawing.Size(42, 42);
-            this.buttonMapBoundsUp.TabIndex = 29;
-            this.buttonMapBoundsUp.Text = "U";
-            this.buttonMapBoundsUp.UseVisualStyleBackColor = true;
-            // 
-            // buttonMapBoundsDown
-            // 
-            this.buttonMapBoundsDown.Location = new System.Drawing.Point(45, 100);
-            this.buttonMapBoundsDown.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapBoundsDown.Name = "buttonMapBoundsDown";
-            this.buttonMapBoundsDown.Size = new System.Drawing.Size(42, 42);
-            this.buttonMapBoundsDown.TabIndex = 28;
-            this.buttonMapBoundsDown.Text = "D";
-            this.buttonMapBoundsDown.UseVisualStyleBackColor = true;
-            // 
-            // buttonMapBoundsDownLeft
-            // 
-            this.buttonMapBoundsDownLeft.Location = new System.Drawing.Point(3, 100);
-            this.buttonMapBoundsDownLeft.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapBoundsDownLeft.Name = "buttonMapBoundsDownLeft";
-            this.buttonMapBoundsDownLeft.Size = new System.Drawing.Size(42, 42);
-            this.buttonMapBoundsDownLeft.TabIndex = 27;
-            this.buttonMapBoundsDownLeft.Text = "DL";
-            this.buttonMapBoundsDownLeft.UseVisualStyleBackColor = true;
-            // 
-            // buttonMapBoundsLeft
-            // 
-            this.buttonMapBoundsLeft.Location = new System.Drawing.Point(3, 58);
-            this.buttonMapBoundsLeft.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapBoundsLeft.Name = "buttonMapBoundsLeft";
-            this.buttonMapBoundsLeft.Size = new System.Drawing.Size(42, 42);
-            this.buttonMapBoundsLeft.TabIndex = 26;
-            this.buttonMapBoundsLeft.Text = "L";
-            this.buttonMapBoundsLeft.UseVisualStyleBackColor = true;
-            // 
-            // buttonMapBoundsUpLeft
-            // 
-            this.buttonMapBoundsUpLeft.Location = new System.Drawing.Point(3, 16);
-            this.buttonMapBoundsUpLeft.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapBoundsUpLeft.Name = "buttonMapBoundsUpLeft";
-            this.buttonMapBoundsUpLeft.Size = new System.Drawing.Size(42, 42);
-            this.buttonMapBoundsUpLeft.TabIndex = 25;
-            this.buttonMapBoundsUpLeft.Text = "UL";
-            this.buttonMapBoundsUpLeft.UseVisualStyleBackColor = true;
-            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -14117,6 +14117,8 @@ namespace SM64_Diagnostic
             this.splitContainerMap.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap)).EndInit();
             this.splitContainerMap.ResumeLayout(false);
+            this.groupBoxMapBounds.ResumeLayout(false);
+            this.groupBoxMapBounds.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapIconSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapZoom)).EndInit();
             this.tabPagePu.ResumeLayout(false);
@@ -14225,8 +14227,6 @@ namespace SM64_Diagnostic
             this.groupBoxRecording.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            this.groupBoxMapBounds.ResumeLayout(false);
-            this.groupBoxMapBounds.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
