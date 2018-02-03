@@ -82,7 +82,7 @@
   </Map>
   <Map name="Big Boo's Haunt" subName="Basement" level="4" area="1">
     <Image path="BBH Basement.png"/>
-    <Coordinates x1="-3675" x2="3686" z1="-1535" z2="6102"/>
+    <Coordinates x1="-4197" x2="5530" z1="-3993" z2="6758"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Big Boo's Haunt" subName="Floor 1" level="4" area="1">
