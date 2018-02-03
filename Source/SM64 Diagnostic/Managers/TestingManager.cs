@@ -355,6 +355,7 @@ namespace SM64_Diagnostic.Managers
                 Config.Stream.SetValue(angleToHome, objAddress + ObjectConfig.YawFacingOffset);
                 Config.Stream.SetValue(angleToHome, objAddress + ObjectConfig.YawMovingOffset);
                 Config.Stream.SetValue(20f, objAddress + ObjectConfig.YSpeedOffset);
+                Config.Stream.SetValue(1, objAddress + ObjectConfig.ScuttlebugPhaseOffset);
             }
         }
 

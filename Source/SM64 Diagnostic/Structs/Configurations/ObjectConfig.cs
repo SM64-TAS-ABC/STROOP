@@ -88,6 +88,7 @@ namespace SM64_Diagnostic.Structs
 
         public static readonly uint FlyGuyOscillationTimerOffset = 0xF8;
 
+        public static readonly uint ScuttlebugPhaseOffset = 0x150;
         public static readonly uint ScuttlebugTargetAngleOffset = 0x162;
     }
 }
