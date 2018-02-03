@@ -26,5 +26,11 @@ namespace SM64_Diagnostic.Structs
         public CheckBox MapShowCamera;
         public CheckBox MapShowFloorTriangle;
         public CheckBox MapShowCeilingTriangle;
+
+        public Button MapBoundsUpButton;
+        public Button MapBoundsDownButton;
+        public Button MapBoundsLeftButton;
+        public Button MapBoundsRightButton;
+        public BetterTextbox MapBoundsTextBox;
     }
 }
