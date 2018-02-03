@@ -2058,13 +2058,16 @@
     <Image path="Scuttlebug.png"/>
     <MapImage path="Scuttlebug Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x198" base="Object">Num Coins</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x150" base="Object">Phase</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xFB" base="Object" subclass="Boolean">Lunging</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Lunging Timer</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="MarioHorizontalDistanceToObjectHome">HDist Mario to Home</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0xCA" base="Object" subclass="Angle">Yaw (Moving)</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0x162" base="Object" subclass="Angle">Target Angle</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ScuttlebugDeltaAngleToTarget" subclass="Angle" type="short">DAngle to Target</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="AngleObjectToMario" subclass="Angle" type="ushort">Angle Obj to Mario</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="DeltaAngleObjectToMario" subclass="Angle" type="short">DAngle Obj to Mario</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="AngleObjectToHome" subclass="Angle" type="ushort">Angle Obj to Home</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="DeltaAngleObjectToHome" subclass="Angle" type="short">DAngle Obj to Home</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xB0" base="Object">Y Speed</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xA4" base="Object">Y</Data>
