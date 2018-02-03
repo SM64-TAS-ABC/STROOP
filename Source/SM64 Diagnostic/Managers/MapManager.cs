@@ -141,6 +141,17 @@ namespace SM64_Diagnostic.Managers
             //----- Register events ------
             // Set image
             _mapGui.MapIconSizeTrackbar.ValueChanged += (sender, e) => _mapGraphics.IconSize = _mapGui.MapIconSizeTrackbar.Value;
+
+            Func<int> getMapBoundsChange = () => ParsingUtilities.ParseInt(_mapGui.MapBoundsTextBox.Text);
+            _mapGui.MapBoundsUpButton.Click += (sender, e) => ChangeMapSize(getMapBoundsChange(), 0, 0, 0);
+            _mapGui.MapBoundsDownButton.Click += (sender, e) => ChangeMapSize(0, getMapBoundsChange(), 0, 0);
+            _mapGui.MapBoundsLeftButton.Click += (sender, e) => ChangeMapSize(0, 0, getMapBoundsChange(), 0);
+            _mapGui.MapBoundsRightButton.Click += (sender, e) => ChangeMapSize(0, 0, 0, getMapBoundsChange());
+        }
+
+        private void ChangeMapSize(int upDiff, int downDiff, int leftDiff, int rightDiff)
+        {
+
         }
 
         public void Update()
