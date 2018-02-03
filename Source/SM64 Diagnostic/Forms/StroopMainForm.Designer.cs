@@ -8460,7 +8460,11 @@ namespace SM64_Diagnostic
             // splitContainerMap.Panel1
             // 
             this.splitContainerMap.Panel1.Controls.Add(this.groupBoxMapBounds);
+            this.splitContainerMap.Panel1.Controls.Add(this.labelMapQpu);
+            this.splitContainerMap.Panel1.Controls.Add(this.labelMapPu);
+            this.splitContainerMap.Panel1.Controls.Add(this.labelMapQpuValue);
             this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowIntendedNextPosition);
+            this.splitContainerMap.Panel1.Controls.Add(this.labelMapPuValue);
             this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowCeiling);
             this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowFloor);
             this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowCamera);
@@ -8479,10 +8483,6 @@ namespace SM64_Diagnostic
             // splitContainerMap.Panel2
             // 
             this.splitContainerMap.Panel2.Controls.Add(this.glControlMap);
-            this.splitContainerMap.Panel2.Controls.Add(this.labelMapPu);
-            this.splitContainerMap.Panel2.Controls.Add(this.labelMapPuValue);
-            this.splitContainerMap.Panel2.Controls.Add(this.labelMapQpu);
-            this.splitContainerMap.Panel2.Controls.Add(this.labelMapQpuValue);
             this.splitContainerMap.Panel2MinSize = 0;
             this.splitContainerMap.Size = new System.Drawing.Size(915, 463);
             this.splitContainerMap.SplitterDistance = 208;
@@ -8645,7 +8645,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(699, 437);
+            this.glControlMap.Size = new System.Drawing.Size(699, 454);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -8654,7 +8654,7 @@ namespace SM64_Diagnostic
             // 
             this.labelMapPu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelMapPu.AutoSize = true;
-            this.labelMapPu.Location = new System.Drawing.Point(2, 445);
+            this.labelMapPu.Location = new System.Drawing.Point(8, 427);
             this.labelMapPu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMapPu.Name = "labelMapPu";
             this.labelMapPu.Size = new System.Drawing.Size(61, 13);
@@ -8665,7 +8665,7 @@ namespace SM64_Diagnostic
             // 
             this.labelMapPuValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelMapPuValue.AutoSize = true;
-            this.labelMapPuValue.Location = new System.Drawing.Point(67, 445);
+            this.labelMapPuValue.Location = new System.Drawing.Point(73, 427);
             this.labelMapPuValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMapPuValue.Name = "labelMapPuValue";
             this.labelMapPuValue.Size = new System.Drawing.Size(37, 13);
@@ -8676,7 +8676,7 @@ namespace SM64_Diagnostic
             // 
             this.labelMapQpu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelMapQpu.AutoSize = true;
-            this.labelMapQpu.Location = new System.Drawing.Point(123, 445);
+            this.labelMapQpu.Location = new System.Drawing.Point(0, 444);
             this.labelMapQpu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMapQpu.Name = "labelMapQpu";
             this.labelMapQpu.Size = new System.Drawing.Size(69, 13);
@@ -8687,7 +8687,7 @@ namespace SM64_Diagnostic
             // 
             this.labelMapQpuValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelMapQpuValue.AutoSize = true;
-            this.labelMapQpuValue.Location = new System.Drawing.Point(196, 445);
+            this.labelMapQpuValue.Location = new System.Drawing.Point(73, 444);
             this.labelMapQpuValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMapQpuValue.Name = "labelMapQpuValue";
             this.labelMapQpuValue.Size = new System.Drawing.Size(37, 13);
@@ -14029,7 +14029,6 @@ namespace SM64_Diagnostic
             this.splitContainerMap.Panel1.ResumeLayout(false);
             this.splitContainerMap.Panel1.PerformLayout();
             this.splitContainerMap.Panel2.ResumeLayout(false);
-            this.splitContainerMap.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap)).EndInit();
             this.splitContainerMap.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapIconSize)).EndInit();
