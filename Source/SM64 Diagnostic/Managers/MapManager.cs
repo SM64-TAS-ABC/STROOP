@@ -142,24 +142,39 @@ namespace SM64_Diagnostic.Managers
             // Set image
             _mapGui.MapIconSizeTrackbar.ValueChanged += (sender, e) => _mapGraphics.IconSize = _mapGui.MapIconSizeTrackbar.Value;
 
-            _mapGui.MapBoundsUpButton.Click += (sender, e) => ChangeMapPosition(0, -1);
-            _mapGui.MapBoundsDownButton.Click += (sender, e) => ChangeMapPosition(0, 1);
-            _mapGui.MapBoundsLeftButton.Click += (sender, e) => ChangeMapPosition(1, 0);
-            _mapGui.MapBoundsRightButton.Click += (sender, e) => ChangeMapPosition(-1, 0);
-            _mapGui.MapBoundsUpLeftButton.Click += (sender, e) => ChangeMapPosition(1, -1);
-            _mapGui.MapBoundsUpRightButton.Click += (sender, e) => ChangeMapPosition(-1, -1);
-            _mapGui.MapBoundsDownLeftButton.Click += (sender, e) => ChangeMapPosition(1, 1);
-            _mapGui.MapBoundsDownRightButton.Click += (sender, e) => ChangeMapPosition(-1, 1);
+            _mapGui.MapBoundsUpButton.Click += (sender, e) => ChangeMapPosition(0, 1);
+            _mapGui.MapBoundsDownButton.Click += (sender, e) => ChangeMapPosition(0, -1);
+            _mapGui.MapBoundsLeftButton.Click += (sender, e) => ChangeMapPosition(-1, 0);
+            _mapGui.MapBoundsRightButton.Click += (sender, e) => ChangeMapPosition(1, 0);
+            _mapGui.MapBoundsUpLeftButton.Click += (sender, e) => ChangeMapPosition(-1, 1);
+            _mapGui.MapBoundsUpRightButton.Click += (sender, e) => ChangeMapPosition(1, 1);
+            _mapGui.MapBoundsDownLeftButton.Click += (sender, e) => ChangeMapPosition(-1, -1);
+            _mapGui.MapBoundsDownRightButton.Click += (sender, e) => ChangeMapPosition(1, -1);
+
+            _mapGui.MapBoundsZoomInButton.Click += (sender, e) => ChangeMapZoom(1);
+            _mapGui.MapBoundsZoomOutButton.Click += (sender, e) => ChangeMapZoom(-1);
+
         }
 
         private void ChangeMapPosition(int xSign, int ySign)
         {
-            int positionChange = ParsingUtilities.ParseInt(_mapGui.MapBoundsZoomTextBox.Text);
+            int positionChange = ParsingUtilities.ParseInt(_mapGui.MapBoundsPositionTextBox.Text);
             int xChange = positionChange * xSign;
             int yChange = positionChange * ySign;
             int newX = _mapGui.GLControl.Left - xChange;
             int newY = _mapGui.GLControl.Top + yChange;
             _mapGui.GLControl.Location = new Point(newX, newY);
+        }
+
+        private void ChangeMapZoom(int sign)
+        {
+            int change = ParsingUtilities.ParseInt(_mapGui.MapBoundsZoomTextBox.Text);
+            int zoomChange = change * sign;
+            int newX = _mapGui.GLControl.Left - zoomChange;
+            int newY = _mapGui.GLControl.Top - zoomChange;
+            int newWidth = _mapGui.GLControl.Width + 2 * zoomChange;
+            int newHeight = _mapGui.GLControl.Height + 2 * zoomChange;
+            _mapGui.GLControl.SetBounds(newX, newY, newWidth, newHeight);
         }
 
         public void Update()
