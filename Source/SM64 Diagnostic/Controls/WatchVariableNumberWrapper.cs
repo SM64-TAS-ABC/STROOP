@@ -97,16 +97,29 @@ namespace SM64_Diagnostic.Controls
             _contextMenuStrip.AddToBeginningList(_itemPasteCoordinates);
         }
 
-        public void AddCoordinateContextMenuStripItemFunctionality(List<WatchVariableNumberWrapper> coordinateVarList)
+        public void EnableCoordinateContextMenuStripItemFunctionality(List<WatchVariableNumberWrapper> coordinateVarList)
         {
             if (coordinateVarList.Count != 3) throw new ArgumentOutOfRangeException();
 
-            _itemCopyCoordinates.Click += (sender, e) =>
+            Action<string> copyCoordinatesWithSeparator = (string separator) =>
             {
                 Clipboard.SetText(
-                    String.Join(",", coordinateVarList.ConvertAll(
+                    String.Join(separator, coordinateVarList.ConvertAll(
                         coord => coord.GetStringValue(false))));
             };
+
+            ToolStripMenuItem itemCopyCoordinatesCommas = new ToolStripMenuItem("Copy Coordinates with Commas");
+            itemCopyCoordinatesCommas.Click += (sender, e) => copyCoordinatesWithSeparator(",");
+
+            ToolStripMenuItem itemCopyCoordinatesTabs = new ToolStripMenuItem("Copy Coordinates with Tabs");
+            itemCopyCoordinatesTabs.Click += (sender, e) => copyCoordinatesWithSeparator("\t");
+
+            ToolStripMenuItem itemCopyCoordinatesLineBreaks = new ToolStripMenuItem("Copy Coordinates with Line Breaks");
+            itemCopyCoordinatesLineBreaks.Click += (sender, e) => copyCoordinatesWithSeparator("\r\n");
+
+            _itemCopyCoordinates.DropDownItems.Add(itemCopyCoordinatesCommas);
+            _itemCopyCoordinates.DropDownItems.Add(itemCopyCoordinatesTabs);
+            _itemCopyCoordinates.DropDownItems.Add(itemCopyCoordinatesLineBreaks);
 
             _itemPasteCoordinates.Click += (sender, e) =>
             {

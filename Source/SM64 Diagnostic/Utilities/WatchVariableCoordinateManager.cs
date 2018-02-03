@@ -37,7 +37,7 @@ namespace SM64_Diagnostic.Structs
                 foreach (WatchVariableNumberWrapper coordinateVar in coordinateVarList)
                 {
                     List<WatchVariableNumberWrapper> coordinateVarListCopy = new List<WatchVariableNumberWrapper>(coordinateVarList);
-                    coordinateVar.AddCoordinateContextMenuStripItemFunctionality(coordinateVarListCopy);
+                    coordinateVar.EnableCoordinateContextMenuStripItemFunctionality(coordinateVarListCopy);
                 }
                 coordinateVarList.Clear();
             }
