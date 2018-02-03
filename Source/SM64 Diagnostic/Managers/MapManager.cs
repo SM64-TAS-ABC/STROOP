@@ -151,7 +151,11 @@ namespace SM64_Diagnostic.Managers
 
         private void ChangeMapSize(int upDiff, int downDiff, int leftDiff, int rightDiff)
         {
-
+            int newTop = _mapGui.GLControl.Top - upDiff;
+            int newLeft = _mapGui.GLControl.Left - leftDiff;
+            int newHeight = _mapGui.GLControl.Height + upDiff + downDiff;
+            int newWidth = _mapGui.GLControl.Width + leftDiff + rightDiff;
+            _mapGui.GLControl.SetBounds(newLeft, newTop, newWidth, newHeight);
         }
 
         public void Update()
