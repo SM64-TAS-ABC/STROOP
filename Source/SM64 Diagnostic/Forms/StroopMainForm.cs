@@ -90,11 +90,21 @@ namespace SM64_Diagnostic
             mapGui.MapShowCamera = checkBoxMapShowCamera;
             mapGui.MapShowFloorTriangle = checkBoxMapShowFloor;
             mapGui.MapShowCeilingTriangle = checkBoxMapShowCeiling;
+
             mapGui.MapBoundsUpButton = buttonMapBoundsUp;
             mapGui.MapBoundsDownButton = buttonMapBoundsDown;
             mapGui.MapBoundsLeftButton = buttonMapBoundsLeft;
             mapGui.MapBoundsRightButton = buttonMapBoundsRight;
-            mapGui.MapBoundsTextBox = textBoxMapBounds;
+            mapGui.MapBoundsUpLeftButton = buttonMapBoundsUpLeft;
+            mapGui.MapBoundsUpRightButton = buttonMapBoundsUpRight;
+            mapGui.MapBoundsDownLeftButton = buttonMapBoundsDownLeft;
+            mapGui.MapBoundsDownRightButton = buttonMapBoundsDownRight;
+            mapGui.MapBoundsPositionTextBox = textBoxMapBoundsPosition;
+
+            mapGui.MapBoundsZoomInButton = buttonMapBoundsZoomIn;
+            mapGui.MapBoundsZoomOutButton = buttonMapBoundsZoomOut;
+            mapGui.MapBoundsZoomTextBox = textBoxMapBoundsZoom;
+
             Config.MapManager = new MapManager(_mapAssoc, mapGui);
             Config.ModelManager = new ModelManager(tabPageModel);
 

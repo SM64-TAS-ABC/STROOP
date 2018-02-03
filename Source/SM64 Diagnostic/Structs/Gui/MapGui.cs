@@ -31,6 +31,14 @@ namespace SM64_Diagnostic.Structs
         public Button MapBoundsDownButton;
         public Button MapBoundsLeftButton;
         public Button MapBoundsRightButton;
-        public BetterTextbox MapBoundsTextBox;
+        public Button MapBoundsUpLeftButton;
+        public Button MapBoundsUpRightButton;
+        public Button MapBoundsDownLeftButton;
+        public Button MapBoundsDownRightButton;
+        public BetterTextbox MapBoundsPositionTextBox;
+
+        public Button MapBoundsZoomInButton;
+        public Button MapBoundsZoomOutButton;
+        public BetterTextbox MapBoundsZoomTextBox;
     }
 }

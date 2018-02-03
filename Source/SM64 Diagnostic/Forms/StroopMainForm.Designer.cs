@@ -1047,11 +1047,18 @@ namespace SM64_Diagnostic
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
             this.groupBoxMapBounds = new System.Windows.Forms.GroupBox();
-            this.textBoxMapBounds = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxMapBoundsZoom = new SM64_Diagnostic.BetterTextbox();
+            this.buttonMapBoundsZoomIn = new System.Windows.Forms.Button();
+            this.buttonMapBoundsZoomOut = new System.Windows.Forms.Button();
+            this.buttonMapBoundsDownRight = new System.Windows.Forms.Button();
+            this.textBoxMapBoundsPosition = new SM64_Diagnostic.BetterTextbox();
             this.buttonMapBoundsRight = new System.Windows.Forms.Button();
+            this.buttonMapBoundsUpRight = new System.Windows.Forms.Button();
             this.buttonMapBoundsUp = new System.Windows.Forms.Button();
             this.buttonMapBoundsDown = new System.Windows.Forms.Button();
+            this.buttonMapBoundsDownLeft = new System.Windows.Forms.Button();
             this.buttonMapBoundsLeft = new System.Windows.Forms.Button();
+            this.buttonMapBoundsUpLeft = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -13655,66 +13662,145 @@ namespace SM64_Diagnostic
             // 
             // groupBoxMapBounds
             // 
-            this.groupBoxMapBounds.Controls.Add(this.textBoxMapBounds);
+            this.groupBoxMapBounds.Controls.Add(this.textBoxMapBoundsZoom);
+            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsZoomIn);
+            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsZoomOut);
+            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsDownRight);
+            this.groupBoxMapBounds.Controls.Add(this.textBoxMapBoundsPosition);
             this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsRight);
+            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsUpRight);
             this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsUp);
             this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsDown);
+            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsDownLeft);
             this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsLeft);
-            this.groupBoxMapBounds.Location = new System.Drawing.Point(5, 168);
+            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsUpLeft);
+            this.groupBoxMapBounds.Location = new System.Drawing.Point(7, 171);
             this.groupBoxMapBounds.Name = "groupBoxMapBounds";
-            this.groupBoxMapBounds.Size = new System.Drawing.Size(134, 146);
-            this.groupBoxMapBounds.TabIndex = 31;
+            this.groupBoxMapBounds.Size = new System.Drawing.Size(185, 146);
+            this.groupBoxMapBounds.TabIndex = 37;
             this.groupBoxMapBounds.TabStop = false;
             this.groupBoxMapBounds.Text = "Map Bounds";
             // 
-            // textBoxMapBounds
+            // textBoxMapBoundsZoom
             // 
-            this.textBoxMapBounds.Location = new System.Drawing.Point(45, 70);
-            this.textBoxMapBounds.Name = "textBoxMapBounds";
-            this.textBoxMapBounds.Size = new System.Drawing.Size(42, 20);
-            this.textBoxMapBounds.TabIndex = 27;
-            this.textBoxMapBounds.Text = "100";
-            this.textBoxMapBounds.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMapBoundsZoom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxMapBoundsZoom.Location = new System.Drawing.Point(140, 70);
+            this.textBoxMapBoundsZoom.Name = "textBoxMapBoundsZoom";
+            this.textBoxMapBoundsZoom.Size = new System.Drawing.Size(42, 20);
+            this.textBoxMapBoundsZoom.TabIndex = 33;
+            this.textBoxMapBoundsZoom.Text = "100";
+            this.textBoxMapBoundsZoom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonMapBoundsZoomIn
+            // 
+            this.buttonMapBoundsZoomIn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMapBoundsZoomIn.Location = new System.Drawing.Point(140, 16);
+            this.buttonMapBoundsZoomIn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapBoundsZoomIn.Name = "buttonMapBoundsZoomIn";
+            this.buttonMapBoundsZoomIn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapBoundsZoomIn.TabIndex = 35;
+            this.buttonMapBoundsZoomIn.Text = "Z+";
+            this.buttonMapBoundsZoomIn.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapBoundsZoomOut
+            // 
+            this.buttonMapBoundsZoomOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMapBoundsZoomOut.Location = new System.Drawing.Point(140, 100);
+            this.buttonMapBoundsZoomOut.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapBoundsZoomOut.Name = "buttonMapBoundsZoomOut";
+            this.buttonMapBoundsZoomOut.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapBoundsZoomOut.TabIndex = 34;
+            this.buttonMapBoundsZoomOut.Text = "Z-";
+            this.buttonMapBoundsZoomOut.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapBoundsDownRight
+            // 
+            this.buttonMapBoundsDownRight.Location = new System.Drawing.Point(87, 100);
+            this.buttonMapBoundsDownRight.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapBoundsDownRight.Name = "buttonMapBoundsDownRight";
+            this.buttonMapBoundsDownRight.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapBoundsDownRight.TabIndex = 32;
+            this.buttonMapBoundsDownRight.Text = "DR";
+            this.buttonMapBoundsDownRight.UseVisualStyleBackColor = true;
+            // 
+            // textBoxMapBoundsPosition
+            // 
+            this.textBoxMapBoundsPosition.Location = new System.Drawing.Point(45, 70);
+            this.textBoxMapBoundsPosition.Name = "textBoxMapBoundsPosition";
+            this.textBoxMapBoundsPosition.Size = new System.Drawing.Size(42, 20);
+            this.textBoxMapBoundsPosition.TabIndex = 27;
+            this.textBoxMapBoundsPosition.Text = "100";
+            this.textBoxMapBoundsPosition.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // buttonMapBoundsRight
             // 
-            this.buttonMapBoundsRight.Image = global::SM64_Diagnostic.Properties.Resources.img_arrow_right;
             this.buttonMapBoundsRight.Location = new System.Drawing.Point(87, 58);
             this.buttonMapBoundsRight.Margin = new System.Windows.Forms.Padding(0);
             this.buttonMapBoundsRight.Name = "buttonMapBoundsRight";
             this.buttonMapBoundsRight.Size = new System.Drawing.Size(42, 42);
             this.buttonMapBoundsRight.TabIndex = 31;
+            this.buttonMapBoundsRight.Text = "R";
             this.buttonMapBoundsRight.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapBoundsUpRight
+            // 
+            this.buttonMapBoundsUpRight.Location = new System.Drawing.Point(87, 16);
+            this.buttonMapBoundsUpRight.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapBoundsUpRight.Name = "buttonMapBoundsUpRight";
+            this.buttonMapBoundsUpRight.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapBoundsUpRight.TabIndex = 30;
+            this.buttonMapBoundsUpRight.Text = "UR";
+            this.buttonMapBoundsUpRight.UseVisualStyleBackColor = true;
             // 
             // buttonMapBoundsUp
             // 
-            this.buttonMapBoundsUp.Image = global::SM64_Diagnostic.Properties.Resources.img_arrow_up;
             this.buttonMapBoundsUp.Location = new System.Drawing.Point(45, 16);
             this.buttonMapBoundsUp.Margin = new System.Windows.Forms.Padding(0);
             this.buttonMapBoundsUp.Name = "buttonMapBoundsUp";
             this.buttonMapBoundsUp.Size = new System.Drawing.Size(42, 42);
             this.buttonMapBoundsUp.TabIndex = 29;
+            this.buttonMapBoundsUp.Text = "U";
             this.buttonMapBoundsUp.UseVisualStyleBackColor = true;
             // 
             // buttonMapBoundsDown
             // 
-            this.buttonMapBoundsDown.Image = global::SM64_Diagnostic.Properties.Resources.img_arrow_down;
             this.buttonMapBoundsDown.Location = new System.Drawing.Point(45, 100);
             this.buttonMapBoundsDown.Margin = new System.Windows.Forms.Padding(0);
             this.buttonMapBoundsDown.Name = "buttonMapBoundsDown";
             this.buttonMapBoundsDown.Size = new System.Drawing.Size(42, 42);
             this.buttonMapBoundsDown.TabIndex = 28;
+            this.buttonMapBoundsDown.Text = "D";
             this.buttonMapBoundsDown.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapBoundsDownLeft
+            // 
+            this.buttonMapBoundsDownLeft.Location = new System.Drawing.Point(3, 100);
+            this.buttonMapBoundsDownLeft.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapBoundsDownLeft.Name = "buttonMapBoundsDownLeft";
+            this.buttonMapBoundsDownLeft.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapBoundsDownLeft.TabIndex = 27;
+            this.buttonMapBoundsDownLeft.Text = "DL";
+            this.buttonMapBoundsDownLeft.UseVisualStyleBackColor = true;
             // 
             // buttonMapBoundsLeft
             // 
-            this.buttonMapBoundsLeft.Image = global::SM64_Diagnostic.Properties.Resources.img_arrow_left;
             this.buttonMapBoundsLeft.Location = new System.Drawing.Point(3, 58);
             this.buttonMapBoundsLeft.Margin = new System.Windows.Forms.Padding(0);
             this.buttonMapBoundsLeft.Name = "buttonMapBoundsLeft";
             this.buttonMapBoundsLeft.Size = new System.Drawing.Size(42, 42);
             this.buttonMapBoundsLeft.TabIndex = 26;
+            this.buttonMapBoundsLeft.Text = "L";
             this.buttonMapBoundsLeft.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapBoundsUpLeft
+            // 
+            this.buttonMapBoundsUpLeft.Location = new System.Drawing.Point(3, 16);
+            this.buttonMapBoundsUpLeft.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapBoundsUpLeft.Name = "buttonMapBoundsUpLeft";
+            this.buttonMapBoundsUpLeft.Size = new System.Drawing.Size(42, 42);
+            this.buttonMapBoundsUpLeft.TabIndex = 25;
+            this.buttonMapBoundsUpLeft.Text = "UL";
+            this.buttonMapBoundsUpLeft.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -15161,11 +15247,18 @@ namespace SM64_Diagnostic
         private RadioButton radioButtonScuttlebugStuffBBHBalconyEye;
         private Button buttonScuttlebugStuffLungeToHome;
         private GroupBox groupBoxMapBounds;
-        private BetterTextbox textBoxMapBounds;
+        private BetterTextbox textBoxMapBoundsZoom;
+        private Button buttonMapBoundsZoomIn;
+        private Button buttonMapBoundsZoomOut;
+        private Button buttonMapBoundsDownRight;
+        private BetterTextbox textBoxMapBoundsPosition;
         private Button buttonMapBoundsRight;
+        private Button buttonMapBoundsUpRight;
         private Button buttonMapBoundsUp;
         private Button buttonMapBoundsDown;
+        private Button buttonMapBoundsDownLeft;
         private Button buttonMapBoundsLeft;
+        private Button buttonMapBoundsUpLeft;
     }
 }
 
