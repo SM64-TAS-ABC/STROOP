@@ -1059,6 +1059,8 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
+            this.labelMapArtificialMarioYLabel = new System.Windows.Forms.Label();
+            this.textBoxMapArtificialMarioYLabel = new SM64_Diagnostic.BetterTextbox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1417,7 +1419,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 371);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 372);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1482,7 +1484,7 @@ namespace SM64_Diagnostic
             this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
             this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 153);
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 154);
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
@@ -4663,7 +4665,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 212F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 213F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8466,9 +8468,11 @@ namespace SM64_Diagnostic
             // 
             // splitContainerMap.Panel1
             // 
+            this.splitContainerMap.Panel1.Controls.Add(this.labelMapArtificialMarioYLabel);
             this.splitContainerMap.Panel1.Controls.Add(this.groupBoxMapBounds);
             this.splitContainerMap.Panel1.Controls.Add(this.labelMapQpu);
             this.splitContainerMap.Panel1.Controls.Add(this.labelMapPu);
+            this.splitContainerMap.Panel1.Controls.Add(this.textBoxMapArtificialMarioYLabel);
             this.splitContainerMap.Panel1.Controls.Add(this.labelMapQpuValue);
             this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowIntendedNextPosition);
             this.splitContainerMap.Panel1.Controls.Add(this.labelMapPuValue);
@@ -8838,7 +8842,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(696, 454);
+            this.glControlMap.Size = new System.Drawing.Size(699, 454);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -9805,7 +9809,7 @@ namespace SM64_Diagnostic
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(385, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(368, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -9837,7 +9841,7 @@ namespace SM64_Diagnostic
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(374, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(357, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -9893,7 +9897,7 @@ namespace SM64_Diagnostic
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(374, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(357, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -13802,6 +13806,25 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
+            // labelMapArtificialMarioYLabel
+            // 
+            this.labelMapArtificialMarioYLabel.AutoSize = true;
+            this.labelMapArtificialMarioYLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMapArtificialMarioYLabel.Location = new System.Drawing.Point(10, 326);
+            this.labelMapArtificialMarioYLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelMapArtificialMarioYLabel.Name = "labelMapArtificialMarioYLabel";
+            this.labelMapArtificialMarioYLabel.Size = new System.Drawing.Size(85, 13);
+            this.labelMapArtificialMarioYLabel.TabIndex = 38;
+            this.labelMapArtificialMarioYLabel.Text = "Artificial Mario Y:";
+            // 
+            // textBoxMapArtificialMarioYLabel
+            // 
+            this.textBoxMapArtificialMarioYLabel.Location = new System.Drawing.Point(98, 323);
+            this.textBoxMapArtificialMarioYLabel.Name = "textBoxMapArtificialMarioYLabel";
+            this.textBoxMapArtificialMarioYLabel.Size = new System.Drawing.Size(91, 20);
+            this.textBoxMapArtificialMarioYLabel.TabIndex = 27;
+            this.textBoxMapArtificialMarioYLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -15259,6 +15282,8 @@ namespace SM64_Diagnostic
         private Button buttonMapBoundsDownLeft;
         private Button buttonMapBoundsLeft;
         private Button buttonMapBoundsUpLeft;
+        private Label labelMapArtificialMarioYLabel;
+        private BetterTextbox textBoxMapArtificialMarioYLabel;
     }
 }
 
