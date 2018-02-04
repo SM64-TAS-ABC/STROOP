@@ -72,21 +72,21 @@
   <Data groupList="Advanced" base="None" specialType="ObjectNodeCount" color="#d0d0d0">Object Node Count</Data>
   <Data groupList="Advanced" type="int" offsetUS="0x8036116C" offsetJP="0x8035FDFC" base="Relative" color="#d0d0d0">Total Node Count</Data>
 
-  <Data groupList="Advanced" base="Triangle" specialType="DistanceToV1" color="#e5ccff">Dist to V1</Data>
   <Data groupList="Advanced" base="Triangle" specialType="XDistanceToV1" color="#e5ccff" coord="X">XDist to V1</Data>
   <Data groupList="Advanced" base="Triangle" specialType="YDistanceToV1" color="#e5ccff" coord="Y">YDist to V1</Data>
   <Data groupList="Advanced" base="Triangle" specialType="ZDistanceToV1" color="#e5ccff" coord="Z">ZDist to V1</Data>
   <Data groupList="Advanced" base="Triangle" specialType="HDistanceToV1" color="#e5ccff">HDist to V1</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="DistanceToV2" color="#e5ccff">Dist to V2</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="DistanceToV1" color="#e5ccff">Dist to V1</Data>
   <Data groupList="Advanced" base="Triangle" specialType="XDistanceToV2" color="#e5ccff" coord="X">XDist to V2</Data>
   <Data groupList="Advanced" base="Triangle" specialType="YDistanceToV2" color="#e5ccff" coord="Y">YDist to V2</Data>
   <Data groupList="Advanced" base="Triangle" specialType="ZDistanceToV2" color="#e5ccff" coord="Z">ZDist to V2</Data>
   <Data groupList="Advanced" base="Triangle" specialType="HDistanceToV2" color="#e5ccff">HDist to V2</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="DistanceToV3" color="#e5ccff">Dist to V3</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="DistanceToV2" color="#e5ccff">Dist to V2</Data>
   <Data groupList="Advanced" base="Triangle" specialType="XDistanceToV3" color="#e5ccff" coord="X">XDist to V3</Data>
   <Data groupList="Advanced" base="Triangle" specialType="YDistanceToV3" color="#e5ccff" coord="Y">YDist to V3</Data>
   <Data groupList="Advanced" base="Triangle" specialType="ZDistanceToV3" color="#e5ccff" coord="Z">ZDist to V3</Data>
   <Data groupList="Advanced" base="Triangle" specialType="HDistanceToV3" color="#e5ccff">HDist to V3</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="DistanceToV3" color="#e5ccff">Dist to V3</Data>
 
   <Data groupList="Advanced" base="Triangle" specialType="DistanceToLine12" color="#ccfffa">Dist to Line12</Data>
   <Data groupList="Advanced" base="Triangle" specialType="DistanceToLine23" color="#ccfffa">Dist to Line23</Data>

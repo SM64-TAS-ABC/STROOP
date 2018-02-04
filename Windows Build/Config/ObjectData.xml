@@ -18,12 +18,12 @@
   <Data groupList="Basic" type="short" offset="0x116" base="Object" subclass="Angle">Pitch Velocity</Data>
   <Data groupList="Basic" type="short" offset="0x11E" base="Object" subclass="Angle">Roll Velocity</Data>
 
-  <Data groupList="Advanced" type="float" offset="0x20" base="Object" coord="X">Gfx X</Data>
-  <Data groupList="Advanced" type="float" offset="0x24" base="Object" coord="Y">Gfx Y</Data>
-  <Data groupList="Advanced" type="float" offset="0x28" base="Object" coord="Z">Gfx Z</Data>
-  <Data groupList="Advanced" type="ushort" offset="0x1C" base="Object" subclass="Angle">Gfx Yaw</Data>
-  <Data groupList="Advanced" type="short" offset="0x1A" base="Object" subclass="Angle">Gfx Pitch</Data>
-  <Data groupList="Advanced" type="short" offset="0x1E" base="Object" subclass="Angle">Gfx Roll</Data>
+  <Data groupList="Advanced" type="float" offset="0x20" base="Object" coord="X">Graphics X</Data>
+  <Data groupList="Advanced" type="float" offset="0x24" base="Object" coord="Y">Graphics Y</Data>
+  <Data groupList="Advanced" type="float" offset="0x28" base="Object" coord="Z">Graphics Z</Data>
+  <Data groupList="Advanced" type="ushort" offset="0x1C" base="Object" subclass="Angle">Graphics Yaw</Data>
+  <Data groupList="Advanced" type="short" offset="0x1A" base="Object" subclass="Angle">Graphics Pitch</Data>
+  <Data groupList="Advanced" type="short" offset="0x1E" base="Object" subclass="Angle">Graphics Roll</Data>
 
   <Data groupList="Advanced" type="float" offset="0x015C" base="Object">"Dist to Mario"</Data>
   <Data groupList="Intermediate" base="Object" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
@@ -138,9 +138,9 @@
   <Data groupList="Advanced" type="short" offset="0x44" base="Object">Animation Timer 2</Data>
   <Data groupList="Intermediate" type="int" offset="0xF0" base="Object">Graphics Timer</Data>
   
-  <Data groupList="Intermediate" type="float" offset="0x2C" base="Object">Scale (Width)</Data>
-  <Data groupList="Intermediate" type="float" offset="0x30" base="Object">Scale (Height)</Data>
-  <Data groupList="Intermediate" type="float" offset="0x34" base="Object">Scale (Depth)</Data>
+  <Data groupList="Intermediate" type="float" offset="0x2C" base="Object">Scale Width</Data>
+  <Data groupList="Intermediate" type="float" offset="0x30" base="Object">Scale Height</Data>
+  <Data groupList="Intermediate" type="float" offset="0x34" base="Object">Scale Depth</Data>
   
   <Data groupList="Basic" type="float" offset="0x164" base="Object" coord="X">Home X</Data>
   <Data groupList="Basic" type="float" offset="0x168" base="Object" coord="Y">Home Y</Data>

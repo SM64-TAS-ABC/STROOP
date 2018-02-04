@@ -1543,29 +1543,6 @@ namespace SM64_Diagnostic.Structs
                     };
                     break;
 
-                case "DistanceToV1":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double distToV1 = MoreMath.GetDistanceBetween(
-                            marioPos.X, marioPos.Y, marioPos.Z, triStruct.X1, triStruct.Y1, triStruct.Z1);
-                        return distToV1.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!distAwayNullable.HasValue) return false;
-                        double distAway = distAwayNullable.Value;
-                        (double newMarioX, double newMarioY, double newMarioZ) =
-                            MoreMath.ExtrapolateLine3D(
-                                triStruct.X1, triStruct.Y1, triStruct.Z1, marioPos.X, marioPos.Y, marioPos.Z, distAway);
-                        return SetMarioPosition(newMarioX, newMarioY, newMarioZ);
-                    };
-                    break;
-
                 case "XDistanceToV1":
                     getterFunction = (uint triAddress) =>
                     {
@@ -1645,14 +1622,14 @@ namespace SM64_Diagnostic.Structs
                     };
                     break;
 
-                case "DistanceToV2":
+                case "DistanceToV1":
                     getterFunction = (uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double distToV2 = MoreMath.GetDistanceBetween(
-                            marioPos.X, marioPos.Y, marioPos.Z, triStruct.X2, triStruct.Y2, triStruct.Z2);
-                        return distToV2.ToString();
+                        double distToV1 = MoreMath.GetDistanceBetween(
+                            marioPos.X, marioPos.Y, marioPos.Z, triStruct.X1, triStruct.Y1, triStruct.Z1);
+                        return distToV1.ToString();
                     };
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
@@ -1663,7 +1640,7 @@ namespace SM64_Diagnostic.Structs
                         double distAway = distAwayNullable.Value;
                         (double newMarioX, double newMarioY, double newMarioZ) =
                             MoreMath.ExtrapolateLine3D(
-                                triStruct.X2, triStruct.Y2, triStruct.Z2, marioPos.X, marioPos.Y, marioPos.Z, distAway);
+                                triStruct.X1, triStruct.Y1, triStruct.Z1, marioPos.X, marioPos.Y, marioPos.Z, distAway);
                         return SetMarioPosition(newMarioX, newMarioY, newMarioZ);
                     };
                     break;
@@ -1747,14 +1724,14 @@ namespace SM64_Diagnostic.Structs
                     };
                     break;
 
-                case "DistanceToV3":
+                case "DistanceToV2":
                     getterFunction = (uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double distToV3 = MoreMath.GetDistanceBetween(
-                            marioPos.X, marioPos.Y, marioPos.Z, triStruct.X3, triStruct.Y3, triStruct.Z3);
-                        return distToV3.ToString();
+                        double distToV2 = MoreMath.GetDistanceBetween(
+                            marioPos.X, marioPos.Y, marioPos.Z, triStruct.X2, triStruct.Y2, triStruct.Z2);
+                        return distToV2.ToString();
                     };
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
@@ -1765,7 +1742,7 @@ namespace SM64_Diagnostic.Structs
                         double distAway = distAwayNullable.Value;
                         (double newMarioX, double newMarioY, double newMarioZ) =
                             MoreMath.ExtrapolateLine3D(
-                                triStruct.X3, triStruct.Y3, triStruct.Z3, marioPos.X, marioPos.Y, marioPos.Z, distAway);
+                                triStruct.X2, triStruct.Y2, triStruct.Z2, marioPos.X, marioPos.Y, marioPos.Z, distAway);
                         return SetMarioPosition(newMarioX, newMarioY, newMarioZ);
                     };
                     break;
@@ -1846,6 +1823,29 @@ namespace SM64_Diagnostic.Structs
                         (double newMarioX, double newMarioZ) =
                             MoreMath.ExtrapolateLineHorizontally(triStruct.X3, triStruct.Z3, marioPos.X, marioPos.Z, hDist);
                         return SetMarioPosition(newMarioX, null, newMarioZ);
+                    };
+                    break;
+
+                case "DistanceToV3":
+                    getterFunction = (uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        double distToV3 = MoreMath.GetDistanceBetween(
+                            marioPos.X, marioPos.Y, marioPos.Z, triStruct.X3, triStruct.Y3, triStruct.Z3);
+                        return distToV3.ToString();
+                    };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!distAwayNullable.HasValue) return false;
+                        double distAway = distAwayNullable.Value;
+                        (double newMarioX, double newMarioY, double newMarioZ) =
+                            MoreMath.ExtrapolateLine3D(
+                                triStruct.X3, triStruct.Y3, triStruct.Z3, marioPos.X, marioPos.Y, marioPos.Z, distAway);
+                        return SetMarioPosition(newMarioX, newMarioY, newMarioZ);
                     };
                     break;
 
