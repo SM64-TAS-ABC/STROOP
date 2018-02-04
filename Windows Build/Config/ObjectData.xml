@@ -8,12 +8,12 @@
   <Data groupList="Basic" type="float" offset="0xB0" base="Object" coord="Y">Y Speed</Data>
   <Data groupList="Basic" type="float" offset="0xB4" base="Object" coord="Z">Z Speed</Data>
   <Data groupList="Basic" type="float" offset="0xB8" base="Object">H Speed</Data>
-  <Data groupList="Basic" type="ushort" offset="0xD6" base="Object" subclass="Angle">Yaw (Facing)</Data>
-  <Data groupList="Basic" type="short" offset="0xD2" base="Object" subclass="Angle">Pitch (Facing)</Data>
-  <Data groupList="Basic" type="short" offset="0xDA" base="Object" subclass="Angle">Roll (Facing)</Data>
-  <Data groupList="Basic" type="ushort" offset="0xCA" base="Object" subclass="Angle">Yaw (Moving)</Data>
-  <Data groupList="Basic" type="short" offset="0xC6" base="Object" subclass="Angle">Pitch (Moving)</Data>
-  <Data groupList="Basic" type="short" offset="0xCE" base="Object" subclass="Angle">Roll (Moving)</Data>
+  <Data groupList="Basic" type="ushort" offset="0xD6" base="Object" subclass="Angle">Yaw Facing</Data>
+  <Data groupList="Basic" type="short" offset="0xD2" base="Object" subclass="Angle">Pitch Facing</Data>
+  <Data groupList="Basic" type="short" offset="0xDA" base="Object" subclass="Angle">Roll Facing</Data>
+  <Data groupList="Basic" type="ushort" offset="0xCA" base="Object" subclass="Angle">Yaw Moving</Data>
+  <Data groupList="Basic" type="short" offset="0xC6" base="Object" subclass="Angle">Pitch Moving</Data>
+  <Data groupList="Basic" type="short" offset="0xCE" base="Object" subclass="Angle">Roll Moving</Data>
   <Data groupList="Basic" type="short" offset="0x11A" base="Object" subclass="Angle">Yaw Velocity</Data>
   <Data groupList="Basic" type="short" offset="0x116" base="Object" subclass="Angle">Pitch Velocity</Data>
   <Data groupList="Basic" type="short" offset="0x11E" base="Object" subclass="Angle">Roll Velocity</Data>

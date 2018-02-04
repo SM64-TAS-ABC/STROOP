@@ -2062,7 +2062,7 @@
     <Data groupList="ObjectSpecific" type="byte" offset="0xFB" base="Object" subclass="Boolean">Lunging</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Lunging Timer</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="MarioHorizontalDistanceToObjectHome">HDist Mario to Home</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xCA" base="Object" subclass="Angle">Yaw (Moving)</Data>
+    <Data groupList="ObjectSpecific" type="ushort" offset="0xCA" base="Object" subclass="Angle">Yaw Moving</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0x162" base="Object" subclass="Angle">Target Angle</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ScuttlebugDeltaAngleToTarget" subclass="Angle" type="short">DAngle to Target</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="AngleObjectToMario" subclass="Angle" type="ushort">Angle Obj to Mario</Data>
@@ -2974,7 +2974,7 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" base="Object" subclass="Angle">Yaw (Facing)</Data>
+    <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" base="Object" subclass="Angle">Yaw Facing</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0x10E" base="Object" subclass="Angle">Yaw to Next WP</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x10A" base="Object" subclass="Angle">Pitch to Next WP</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xB8" base="Object">H Speed</Data>
@@ -2999,7 +2999,7 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" base="Object" subclass="Angle">Yaw (Facing)</Data>
+    <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" base="Object" subclass="Angle">Yaw Facing</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0x10E" base="Object" subclass="Angle">Yaw to Next WP</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x10A" base="Object" subclass="Angle">Pitch to Next WP</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xB8" base="Object">H Speed</Data>
@@ -3046,7 +3046,7 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" base="Object" subclass="Angle">Yaw (Facing)</Data>
+    <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" base="Object" subclass="Angle">Yaw Facing</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0x10E" base="Object" subclass="Angle">Yaw to Next WP</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x10A" base="Object" subclass="Angle">Pitch to Next WP</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
@@ -3079,7 +3079,7 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" base="Object" subclass="Angle">Yaw (Facing)</Data>
+    <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" base="Object" subclass="Angle">Yaw Facing</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0x10E" base="Object" subclass="Angle">Yaw to Next WP</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x10A" base="Object" subclass="Angle">Pitch to Next WP</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
@@ -3157,9 +3157,9 @@
     <Image path="Swooper.png"/>
     <MapImage path="Swooper Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x45" base="Object">Wing Flap</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0xDA" base="Object" subclass="Angle">Roll (Facing)</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0xDA" base="Object" subclass="Angle">Roll Facing</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0xFE" base="Object" subclass="Angle">Target Angle</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xCA" base="Object" subclass="Angle">Yaw (Moving)</Data>
+    <Data groupList="ObjectSpecific" type="ushort" offset="0xCA" base="Object" subclass="Angle">Yaw Moving</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="AngleObjectToMario" subclass="Angle" type="ushort">Angle Obj to Mario</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="DeltaAngleObjectToMario" subclass="Angle" type="short">DAngle Obj to Mario</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x11A" base="Object" subclass="Angle">Yaw Velocity</Data>
@@ -3182,7 +3182,7 @@
     <Data groupList="ObjectSpecific" type="int" offset="0x14C" base="Object">State</Data>
     <Data groupList="ObjectSpecific" type="uint" offset="0x108" base="Object" useHex="true">Spiraling</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0xDA" base="Object" subclass="Angle">Yaw Velocity</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xCA" base="Object" subclass="Angle">Yaw (Moving)</Data>
+    <Data groupList="ObjectSpecific" type="ushort" offset="0xCA" base="Object" subclass="Angle">Yaw Moving</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="AngleObjectToHome" subclass="Angle" type="ushort">Angle Obj to Home</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="DeltaAngleObjectToHome" subclass="Angle" type="short">DAngle Obj to Home</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
@@ -3207,7 +3207,7 @@
     <Data groupList="ObjectSpecific" type="int" offset="0x14C" base="Object">State</Data>
     <Data groupList="ObjectSpecific" type="uint" offset="0x108" base="Object" useHex="true">Spiraling</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0xDA" base="Object" subclass="Angle">Yaw Velocity</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xCA" base="Object" subclass="Angle">Yaw (Moving)</Data>
+    <Data groupList="ObjectSpecific" type="ushort" offset="0xCA" base="Object" subclass="Angle">Yaw Moving</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="AngleObjectToHome" subclass="Angle" type="ushort">Angle Obj to Home</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="DeltaAngleObjectToHome" subclass="Angle" type="short">DAngle Obj to Home</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
@@ -3988,7 +3988,7 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" base="Object" subclass="Angle">Yaw (Facing)</Data>
+    <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" base="Object" subclass="Angle">Yaw Facing</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0x10E" base="Object" subclass="Angle">Yaw to Next WP</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x10A" base="Object" subclass="Angle">Pitch to Next WP</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>

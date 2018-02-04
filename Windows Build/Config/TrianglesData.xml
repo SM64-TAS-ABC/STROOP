@@ -37,8 +37,8 @@
   <Data groupList="Intermediate" base="Triangle" specialType="DownHillAngle" subclass="Angle" type="ushort" color="#ccd0ff">Downhill Angle</Data>
   <Data groupList="Intermediate" base="Triangle" specialType="LeftHillAngle" subclass="Angle" type="ushort" color="#ccd0ff">Left Hill Angle</Data>
   <Data groupList="Intermediate" base="Triangle" specialType="RightHillAngle" subclass="Angle" type="ushort" color="#ccd0ff">Right Hill Angle</Data>
-  <Data groupList="Intermediate" type="ushort" offset="0x24" base="Mario" subclass="Angle" color="#ffcccc">M. Yaw (Intended)</Data>
-  <Data groupList="Intermediate" type="ushort" offset="0x2E" base="Mario" subclass="Angle" color="#ffcccc">M. Yaw (Facing)</Data>
+  <Data groupList="Intermediate" type="ushort" offset="0x24" base="Mario" subclass="Angle" color="#ffcccc">M. Yaw Intended</Data>
+  <Data groupList="Intermediate" type="ushort" offset="0x2E" base="Mario" subclass="Angle" color="#ffcccc">M. Yaw Facing</Data>
   <Data groupList="Intermediate" base="Triangle" specialType="UpHillDeltaAngle" subclass="Angle" type="short" color="#e5ccff">Uphill DAngle</Data>
   <Data groupList="Intermediate" base="Triangle" specialType="DownHillDeltaAngle" subclass="Angle" type="short" color="#e5ccff">Downhill DAngle</Data>
   <Data groupList="Intermediate" base="Triangle" specialType="LeftHillDeltaAngle" subclass="Angle" type="short" color="#e5ccff">Left Hill DAngle</Data>
