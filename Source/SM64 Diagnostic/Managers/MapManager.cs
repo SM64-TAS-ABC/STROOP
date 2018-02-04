@@ -32,6 +32,7 @@ namespace SM64_Diagnostic.Managers
         List<MapObject> _mapObjects = new List<MapObject>();
         MapGui _mapGui;
         bool _isLoaded = false;
+        float? _artificialMarioY = null;
 
         public bool IsLoaded
         {
@@ -154,6 +155,9 @@ namespace SM64_Diagnostic.Managers
             _mapGui.MapBoundsZoomInButton.Click += (sender, e) => ChangeMapZoom(1);
             _mapGui.MapBoundsZoomOutButton.Click += (sender, e) => ChangeMapZoom(-1);
 
+            _mapGui.MapArtificialMarioYLabelTextBox.AddEnterAction(() =>
+                _artificialMarioY = ParsingUtilities.ParseFloatNullable(
+                    _mapGui.MapArtificialMarioYLabelTextBox.Text));
         }
 
         private void ChangeMapPosition(int xSign, int ySign)
@@ -232,7 +236,7 @@ namespace SM64_Diagnostic.Managers
 
             // Adjust mario coordinates relative from current PU
             float marioRelX = PuUtilities.GetRelativePuPosition(_marioMapObj.X, puX);
-            float marioRelY = PuUtilities.GetRelativePuPosition(_marioMapObj.Y, puY);
+            float marioRelY = _artificialMarioY ?? PuUtilities.GetRelativePuPosition(_marioMapObj.Y, puY);
             float marioRelZ = PuUtilities.GetRelativePuPosition(_marioMapObj.Z, puZ);
             var marioCoord = new PointF(marioRelX, marioRelZ);
 
