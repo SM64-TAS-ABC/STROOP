@@ -40,5 +40,7 @@ namespace SM64_Diagnostic.Structs
         public Button MapBoundsZoomInButton;
         public Button MapBoundsZoomOutButton;
         public BetterTextbox MapBoundsZoomTextBox;
+
+        public BetterTextbox MapArtificialMarioYLabelTextBox;
     }
 }

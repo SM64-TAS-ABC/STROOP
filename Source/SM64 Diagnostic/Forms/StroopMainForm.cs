@@ -105,6 +105,8 @@ namespace SM64_Diagnostic
             mapGui.MapBoundsZoomOutButton = buttonMapBoundsZoomOut;
             mapGui.MapBoundsZoomTextBox = textBoxMapBoundsZoom;
 
+            mapGui.MapArtificialMarioYLabelTextBox = textBoxMapArtificialMarioYLabel;
+
             Config.MapManager = new MapManager(_mapAssoc, mapGui);
             Config.ModelManager = new ModelManager(tabPageModel);
 
