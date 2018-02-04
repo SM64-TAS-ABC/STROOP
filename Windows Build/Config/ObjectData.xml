@@ -136,6 +136,7 @@
   <Data groupList="Advanced" type="short" offset="0x00" base="Animation" mask="0x0004" subclass="Boolean">Freeze Animation</Data>
   <Data groupList="Intermediate" type="short" offset="0x40" base="Object">Animation Timer</Data>
   <Data groupList="Advanced" type="short" offset="0x44" base="Object">Animation Timer 2</Data>
+  <Data groupList="Intermediate" type="short" offset="0x48" base="Object">Animation Speed</Data>
   <Data groupList="Intermediate" type="int" offset="0xF0" base="Object">Graphics Timer</Data>
   
   <Data groupList="Intermediate" type="float" offset="0x2C" base="Object">Scale Width</Data>
