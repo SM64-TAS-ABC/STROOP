@@ -26,6 +26,7 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static readonly uint SecondaryObjectAddressUS = 0x8032DF30;
         public static readonly uint SecondaryObjectAddressJP = 0x8032CFD0;
 
+
         public static uint FovFunctionStartSleepingAddress { get { return Config.SwitchRomVersion(FovFunctionStartSleepingAddressUS, FovFunctionStartSleepingAddressJP); } }
         public static readonly uint FovFunctionStartSleepingAddressUS = 0x8029A774;
         public static readonly uint FovFunctionStartSleepingAddressJP = 0x8029A058;
@@ -42,6 +43,7 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static readonly uint FovFunctionCollectStarAddressUS = 0x80289A70;
         public static readonly uint FovFunctionCollectStarAddressJP = 0x80289488;
 
+
         public static uint FovFunctionStartSleepingValue { get { return Config.SwitchRomVersion(FovFunctionStartSleepingValueUS, FovFunctionStartSleepingValueJP); } }
         public static readonly uint FovFunctionStartSleepingValueUS = 0x0C0A2673;
         public static readonly uint FovFunctionStartSleepingValueJP = 0x0C0A24F9;
@@ -57,5 +59,33 @@ namespace SM64_Diagnostic.Structs.Configurations
         public static uint FovFunctionCollectStarValue { get { return Config.SwitchRomVersion(FovFunctionCollectStarValueUS, FovFunctionCollectStarValueJP); } }
         public static readonly uint FovFunctionCollectStarValueUS = 0xE4920000;
         public static readonly uint FovFunctionCollectStarValueJP = 0xE4920000;
+
+        public static List<uint> FovFunctionAddresses
+        {
+            get
+            {
+                return new List<uint>()
+                {
+                    FovFunctionStartSleepingAddress,
+                    FovFunctionStopSleepingAddress,
+                    FovFunctionUseDoorAddress,
+                    FovFunctionCollectStarAddress,
+                };
+            }
+        }
+
+        public static List<uint> FovFunctionValues
+        {
+            get
+            {
+                return new List<uint>()
+                {
+                    FovFunctionStartSleepingValue,
+                    FovFunctionStopSleepingValue,
+                    FovFunctionUseDoorValue,
+                    FovFunctionCollectStarValue,
+                };
+            }
+        }
     }
 }

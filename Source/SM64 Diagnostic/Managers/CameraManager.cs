@@ -14,11 +14,13 @@ namespace SM64_Diagnostic.Managers
 {
     public class CameraManager : DataManager
     {
+        private BinaryButton _buttonDisableFOVFunctions;
+
         public CameraManager(List<WatchVariableControlPrecursor> cameraData, Control tabControl, WatchVariablePanel variableTable)
             : base(cameraData, variableTable)
         {
             var splitContainer = tabControl.Controls["splitContainerCamera"] as SplitContainer;
-            
+
             var cameraPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraPos"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
@@ -70,12 +72,41 @@ namespace SM64_Diagnostic.Managers
                         -1 * vOffset,
                         getSphericalPivotPoint(pivotOnFocus));
                 });
+
+            _buttonDisableFOVFunctions = splitContainer.Panel1.Controls["buttonDisableFOVFunctions"] as BinaryButton;
+            _buttonDisableFOVFunctions.Initialize(
+                "Disable FOV Functions",
+                "Enable FOV Functions",
+                () =>
+                {
+                    List<uint> addresses = CameraConfig.FovFunctionAddresses;
+                    for (int i = 0; i < addresses.Count; i++)
+                    {
+                        Config.Stream.SetValue(0, addresses[i]);
+                    }
+                },
+                () =>
+                {
+                    List<uint> addresses = CameraConfig.FovFunctionAddresses;
+                    List<uint> values = CameraConfig.FovFunctionValues;
+                    for (int i = 0; i < addresses.Count; i++)
+                    {
+                        Config.Stream.SetValue(values[i], addresses[i]);
+                    }
+                },
+                () =>
+                {
+                    return CameraConfig.FovFunctionAddresses.All(
+                        address => Config.Stream.GetUInt32(address) == 0);
+                });
         }
 
         public override void Update(bool updateView)
         {
             if (!updateView) return;
             base.Update(updateView);
+
+            _buttonDisableFOVFunctions.UpdateButton();
         }
 
         private (float pivotX, float pivotY, float pivotZ) getSphericalPivotPoint(bool pivotOnFocus)
