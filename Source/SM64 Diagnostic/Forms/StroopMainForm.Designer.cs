@@ -1061,6 +1061,7 @@ namespace SM64_Diagnostic
             this.betterTextboxGotoY = new SM64_Diagnostic.BetterTextbox();
             this.betterTextboxGotoX = new SM64_Diagnostic.BetterTextbox();
             this.WatchVariablePanelObjects = new SM64_Diagnostic.Controls.WatchVariablePanel();
+            this.buttonDisableFOVFunctions = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -2919,6 +2920,7 @@ namespace SM64_Diagnostic
             // SplitContainerCamera.Panel1
             // 
             this.SplitContainerCamera.Panel1.AutoScroll = true;
+            this.SplitContainerCamera.Panel1.Controls.Add(this.buttonDisableFOVFunctions);
             this.SplitContainerCamera.Panel1.Controls.Add(this.groupBoxCameraSphericalPos);
             this.SplitContainerCamera.Panel1.Controls.Add(this.panelCameraBorder);
             this.SplitContainerCamera.Panel1.Controls.Add(this.groupBoxCameraPos);
@@ -13825,6 +13827,15 @@ namespace SM64_Diagnostic
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
+            // buttonDisableFOVFunctions
+            // 
+            this.buttonDisableFOVFunctions.Location = new System.Drawing.Point(3, 366);
+            this.buttonDisableFOVFunctions.Name = "buttonDisableFOVFunctions";
+            this.buttonDisableFOVFunctions.Size = new System.Drawing.Size(184, 33);
+            this.buttonDisableFOVFunctions.TabIndex = 31;
+            this.buttonDisableFOVFunctions.Text = "Disable FOV Functions";
+            this.buttonDisableFOVFunctions.UseVisualStyleBackColor = true;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -15284,6 +15295,7 @@ namespace SM64_Diagnostic
         private Button buttonMapBoundsUpLeft;
         private Label labelMapArtificialMarioYLabel;
         private BetterTextbox textBoxMapArtificialMarioYLabel;
+        private Button buttonDisableFOVFunctions;
     }
 }
 
