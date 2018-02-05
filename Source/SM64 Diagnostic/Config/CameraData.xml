@@ -24,10 +24,10 @@
   <Data base="None" specialType="CameraDistanceToMario">Cam Dist from Mario</Data>
 
   <Data type="float" offsetUS="0x8033C5A4" offsetJP="0x8033B234" base="Relative">FOV</Data>
-  <Data type="uint" offsetUS="0x8029A774" offsetJP="0x8029A058" base="Relative" useHex="true">FOV Func 1</Data>
-  <Data type="uint" offsetUS="0x8029A7C8" offsetJP="0x8029A0AC" base="Relative" useHex="true">FOV Func 2</Data>
-  <Data type="uint" offsetUS="0x8029AA20" offsetJP="0x8029A304" base="Relative" useHex="true">FOV Func 3</Data>
-  <Data type="uint" offsetUS="0x80289A70" offsetJP="0x80289488" base="Relative" useHex="true">FOV Func 4</Data>
+  <Data type="uint" offsetUS="0x8029A774" offsetJP="0x8029A058" base="Relative" useHex="true">FOV Start Sleeping</Data>
+  <Data type="uint" offsetUS="0x8029A7C8" offsetJP="0x8029A0AC" base="Relative" useHex="true">FOV Stop Sleeping</Data>
+  <Data type="uint" offsetUS="0x8029AA20" offsetJP="0x8029A304" base="Relative" useHex="true">FOV Use Door</Data>
+  <Data type="uint" offsetUS="0x80289A70" offsetJP="0x80289488" base="Relative" useHex="true">FOV Collect Star</Data>
 
   <Data type="short" offset="0xD4" base="Camera">Yaw Shake</Data>
   <Data type="short" offset="0x120" base="Camera">Yaw Shake Speed</Data>
