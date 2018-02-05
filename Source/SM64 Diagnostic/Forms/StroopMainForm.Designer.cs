@@ -329,6 +329,7 @@ namespace SM64_Diagnostic
             this.radioButtonAdvancedModeMapInfo = new System.Windows.Forms.RadioButton();
             this.tabPageMap = new System.Windows.Forms.TabPage();
             this.splitContainerMap = new System.Windows.Forms.SplitContainer();
+            this.labelMapArtificialMarioYLabel = new System.Windows.Forms.Label();
             this.groupBoxMapBounds = new System.Windows.Forms.GroupBox();
             this.buttonMapBoundsZoomIn = new System.Windows.Forms.Button();
             this.buttonMapBoundsZoomOut = new System.Windows.Forms.Button();
@@ -716,7 +717,6 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.labelMapArtificialMarioYLabel = new System.Windows.Forms.Label();
             this.buttonObjRelease = new SM64_Diagnostic.BinaryButton();
             this.buttonObjInteract = new SM64_Diagnostic.BinaryButton();
             this.textBoxObjHomeY = new SM64_Diagnostic.BetterTextbox();
@@ -751,6 +751,7 @@ namespace SM64_Diagnostic
             this.button100Lives = new SM64_Diagnostic.BinaryButton();
             this.buttonTurnOnOffHud = new SM64_Diagnostic.BinaryButton();
             this.watchVariablePanelHud = new SM64_Diagnostic.Controls.WatchVariablePanel();
+            this.buttonDisableFOVFunctions = new SM64_Diagnostic.BinaryButton();
             this.textBoxCameraSphericalPosR = new SM64_Diagnostic.BetterTextbox();
             this.textBoxCameraSphericalPosTP = new SM64_Diagnostic.BetterTextbox();
             this.pictureBoxCamera = new SM64_Diagnostic.Controls.IntPictureBox();
@@ -1061,7 +1062,6 @@ namespace SM64_Diagnostic
             this.betterTextboxGotoY = new SM64_Diagnostic.BetterTextbox();
             this.betterTextboxGotoX = new SM64_Diagnostic.BetterTextbox();
             this.WatchVariablePanelObjects = new SM64_Diagnostic.Controls.WatchVariablePanel();
-            this.buttonDisableFOVFunctions = new BinaryButton();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1420,7 +1420,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 372);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 373);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -4057,7 +4057,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 214F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 217F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -5147,6 +5147,17 @@ namespace SM64_Diagnostic
             this.splitContainerMap.SplitterDistance = 208;
             this.splitContainerMap.SplitterWidth = 1;
             this.splitContainerMap.TabIndex = 16;
+            // 
+            // labelMapArtificialMarioYLabel
+            // 
+            this.labelMapArtificialMarioYLabel.AutoSize = true;
+            this.labelMapArtificialMarioYLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMapArtificialMarioYLabel.Location = new System.Drawing.Point(10, 326);
+            this.labelMapArtificialMarioYLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelMapArtificialMarioYLabel.Name = "labelMapArtificialMarioYLabel";
+            this.labelMapArtificialMarioYLabel.Size = new System.Drawing.Size(85, 13);
+            this.labelMapArtificialMarioYLabel.TabIndex = 38;
+            this.labelMapArtificialMarioYLabel.Text = "Artificial Mario Y:";
             // 
             // groupBoxMapBounds
             // 
@@ -9692,17 +9703,6 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // labelMapArtificialMarioYLabel
-            // 
-            this.labelMapArtificialMarioYLabel.AutoSize = true;
-            this.labelMapArtificialMarioYLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMapArtificialMarioYLabel.Location = new System.Drawing.Point(10, 326);
-            this.labelMapArtificialMarioYLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMapArtificialMarioYLabel.Name = "labelMapArtificialMarioYLabel";
-            this.labelMapArtificialMarioYLabel.Size = new System.Drawing.Size(85, 13);
-            this.labelMapArtificialMarioYLabel.TabIndex = 38;
-            this.labelMapArtificialMarioYLabel.Text = "Artificial Mario Y:";
-            // 
             // buttonObjRelease
             // 
             this.buttonObjRelease.Location = new System.Drawing.Point(2, 53);
@@ -10058,6 +10058,15 @@ namespace SM64_Diagnostic
             this.watchVariablePanelHud.Padding = new System.Windows.Forms.Padding(2);
             this.watchVariablePanelHud.Size = new System.Drawing.Size(795, 461);
             this.watchVariablePanelHud.TabIndex = 3;
+            // 
+            // buttonDisableFOVFunctions
+            // 
+            this.buttonDisableFOVFunctions.Location = new System.Drawing.Point(3, 366);
+            this.buttonDisableFOVFunctions.Name = "buttonDisableFOVFunctions";
+            this.buttonDisableFOVFunctions.Size = new System.Drawing.Size(184, 33);
+            this.buttonDisableFOVFunctions.TabIndex = 31;
+            this.buttonDisableFOVFunctions.Text = "Disable FOV Functions";
+            this.buttonDisableFOVFunctions.UseVisualStyleBackColor = true;
             // 
             // textBoxCameraSphericalPosR
             // 
@@ -13826,15 +13835,6 @@ namespace SM64_Diagnostic
             this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 153);
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
-            // 
-            // buttonDisableFOVFunctions
-            // 
-            this.buttonDisableFOVFunctions.Location = new System.Drawing.Point(3, 366);
-            this.buttonDisableFOVFunctions.Name = "buttonDisableFOVFunctions";
-            this.buttonDisableFOVFunctions.Size = new System.Drawing.Size(184, 33);
-            this.buttonDisableFOVFunctions.TabIndex = 31;
-            this.buttonDisableFOVFunctions.Text = "Disable FOV Functions";
-            this.buttonDisableFOVFunctions.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
