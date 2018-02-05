@@ -1061,7 +1061,7 @@ namespace SM64_Diagnostic
             this.betterTextboxGotoY = new SM64_Diagnostic.BetterTextbox();
             this.betterTextboxGotoX = new SM64_Diagnostic.BetterTextbox();
             this.WatchVariablePanelObjects = new SM64_Diagnostic.Controls.WatchVariablePanel();
-            this.buttonDisableFOVFunctions = new System.Windows.Forms.Button();
+            this.buttonDisableFOVFunctions = new BinaryButton();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -15295,7 +15295,7 @@ namespace SM64_Diagnostic
         private Button buttonMapBoundsUpLeft;
         private Label labelMapArtificialMarioYLabel;
         private BetterTextbox textBoxMapArtificialMarioYLabel;
-        private Button buttonDisableFOVFunctions;
+        private BinaryButton buttonDisableFOVFunctions;
     }
 }
 
