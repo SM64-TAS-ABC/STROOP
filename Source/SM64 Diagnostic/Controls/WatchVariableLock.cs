@@ -32,7 +32,7 @@ namespace SM64_Diagnostic.Controls
             Type memoryType,
             int? byteCount,
             uint? mask,
-            uint effectiveAddress,
+            uint address,
             string specialType,
             Func<string, uint, bool> setterFunction,
             string value)
@@ -41,7 +41,7 @@ namespace SM64_Diagnostic.Controls
             MemoryType = memoryType;
             ByteCount = byteCount;
             Mask = mask;
-            Address = effectiveAddress;
+            Address = address;
             SpecialType = specialType;
             SetterFunction = setterFunction;
 

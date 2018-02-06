@@ -59,7 +59,6 @@ namespace SM64_Diagnostic.Structs
         {
             if (!ContainsAnyLocks()) return;
             List<WatchVariableLock> newLocks = variable.GetLocks(addresses);
-
             foreach (WatchVariableLock newLock in newLocks)
             {
                 foreach (WatchVariableLock currentLock in _lockList)
