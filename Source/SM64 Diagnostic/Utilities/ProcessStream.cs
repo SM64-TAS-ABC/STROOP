@@ -415,7 +415,7 @@ namespace SM64_Diagnostic.Utilities
                 value = (byte)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             bool returnValue = WriteRamLittleEndian(new byte[] { value }, address, absoluteAddress);
-            if (returnValue) WatchVariableLockManager.UpdateLockValue(value.ToString(), address, typeof(byte), mask);
+            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value.ToString(), address, typeof(byte), mask);
             return returnValue;
         }
 
@@ -427,7 +427,7 @@ namespace SM64_Diagnostic.Utilities
                 value = (sbyte)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             bool returnValue = WriteRamLittleEndian(new byte[] { (byte)value }, address, absoluteAddress);
-            if (returnValue) WatchVariableLockManager.UpdateLockValue(value.ToString(), address, typeof(sbyte), mask);
+            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value.ToString(), address, typeof(sbyte), mask);
             return returnValue;
         }
 
@@ -439,7 +439,7 @@ namespace SM64_Diagnostic.Utilities
                 value = (short)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             bool returnValue = WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
-            if (returnValue) WatchVariableLockManager.UpdateLockValue(value.ToString(), address, typeof(short), mask);
+            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value.ToString(), address, typeof(short), mask);
             return returnValue;
         }
 
@@ -451,7 +451,7 @@ namespace SM64_Diagnostic.Utilities
                 value = (ushort)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             bool returnValue = WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
-            if (returnValue) WatchVariableLockManager.UpdateLockValue(value.ToString(), address, typeof(ushort), mask);
+            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value.ToString(), address, typeof(ushort), mask);
             return returnValue;
         }
 
@@ -463,7 +463,7 @@ namespace SM64_Diagnostic.Utilities
                 value = (int)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             bool returnValue = WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
-            if (returnValue) WatchVariableLockManager.UpdateLockValue(value.ToString(), address, typeof(int), mask);
+            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value.ToString(), address, typeof(int), mask);
             return returnValue;
         }
 
@@ -475,14 +475,14 @@ namespace SM64_Diagnostic.Utilities
                 value = (uint)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             bool returnValue = WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
-            if (returnValue) WatchVariableLockManager.UpdateLockValue(value.ToString(), address, typeof(uint), mask);
+            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value.ToString(), address, typeof(uint), mask);
             return returnValue;
         }
 
         public bool SetValue(float value, uint address, bool absoluteAddress = false, uint? mask = null)
         {
             bool returnValue = WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
-            if (returnValue) WatchVariableLockManager.UpdateLockValue(value.ToString(), address, typeof(float), mask);
+            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value.ToString(), address, typeof(float), mask);
             return returnValue;
         }
 

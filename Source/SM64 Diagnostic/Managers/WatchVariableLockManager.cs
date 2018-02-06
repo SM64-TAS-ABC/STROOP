@@ -57,18 +57,31 @@ namespace SM64_Diagnostic.Structs
 
         public static void UpdateLockValues(WatchVariable variable, string newValue, List<uint> addresses = null)
         {
+            if (!ContainsAnyLocks()) return;
             List<WatchVariableLock> newLocks = variable.GetLocks(addresses);
+
             foreach (WatchVariableLock newLock in newLocks)
             {
-                WatchVariableLock currentLock = _lockList.FirstOrDefault(current => current.Equals(newLock));
-                if (currentLock == null) continue;
-                currentLock.UpdateLockValue(newValue);
+                foreach (WatchVariableLock currentLock in _lockList)
+                {
+                    if (currentLock.Equals(newLock))
+                    {
+                        currentLock.UpdateLockValue(newValue);
+                    }
+                }
             }
         }
 
-        public static void UpdateLockValue(string newValue, uint address, Type type, uint? mask)
+        public static void UpdateMemoryLockValue(string newValue, uint address, Type type, uint? mask)
         {
-
+            if (!ContainsAnyLocks()) return;
+            foreach (WatchVariableLock currentLock in _lockList)
+            {
+                if (currentLock.EqualsMemorySignature(address, type, mask))
+                {
+                    currentLock.UpdateLockValue(newValue);
+                }
+            }
         }
 
         public static void RemoveAllLocks()

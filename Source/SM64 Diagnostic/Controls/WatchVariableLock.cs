@@ -20,7 +20,7 @@ namespace SM64_Diagnostic.Controls
         public readonly Type MemoryType;
         public readonly int? ByteCount;
         public readonly uint? Mask;
-        public readonly uint EffectiveAddress;
+        public readonly uint Address;
         public readonly string SpecialType;
         public readonly Func<string, uint, bool> SetterFunction;
 
@@ -41,7 +41,7 @@ namespace SM64_Diagnostic.Controls
             MemoryType = memoryType;
             ByteCount = byteCount;
             Mask = mask;
-            EffectiveAddress = effectiveAddress;
+            Address = effectiveAddress;
             SpecialType = specialType;
             SetterFunction = setterFunction;
 
@@ -50,7 +50,7 @@ namespace SM64_Diagnostic.Controls
 
         public void Invoke()
         {
-            SetterFunction(_value, EffectiveAddress);
+            SetterFunction(_value, Address);
         }
 
         public void UpdateLockValue(string value)
@@ -66,15 +66,23 @@ namespace SM64_Diagnostic.Controls
                    this.MemoryType == other.MemoryType &&
                    this.ByteCount == other.ByteCount &&
                    this.Mask == other.Mask &&
-                   this.EffectiveAddress == other.EffectiveAddress &&
+                   this.Address == other.Address &&
                    this.SpecialType == other.SpecialType;
+        }
+
+        public bool EqualsMemorySignature(uint address, Type type, uint? mask)
+        {
+            return IsSpecial == false &&
+                Address == address &&
+                MemoryType == type &&
+                Mask == mask;
         }
 
         public override int GetHashCode()
         {
             return IsSpecial ?
                 SpecialType.GetHashCode() :
-                unchecked((int)EffectiveAddress);
+                unchecked((int)Address);
         }
 
     }
