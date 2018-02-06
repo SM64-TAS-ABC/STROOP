@@ -66,6 +66,11 @@ namespace SM64_Diagnostic.Structs
             }
         }
 
+        public static void UpdateLockValue(string newValue, uint address, Type type, uint? mask)
+        {
+
+        }
+
         public static void RemoveAllLocks()
         {
             _lockList.Clear();

@@ -414,7 +414,9 @@ namespace SM64_Diagnostic.Utilities
                 byte oldValue = GetByte(address, absoluteAddress);
                 value = (byte)((oldValue & ~mask.Value) | (value & mask.Value));
             }
-            return WriteRamLittleEndian(new byte[] { value }, address, absoluteAddress);
+            bool returnValue = WriteRamLittleEndian(new byte[] { value }, address, absoluteAddress);
+            if (returnValue) WatchVariableLockManager.UpdateLockValue(value.ToString(), address, typeof(byte), mask);
+            return returnValue;
         }
 
         public bool SetValue(sbyte value, uint address, bool absoluteAddress = false, uint? mask = null)
@@ -424,7 +426,9 @@ namespace SM64_Diagnostic.Utilities
                 sbyte oldValue = GetSByte(address, absoluteAddress);
                 value = (sbyte)((oldValue & ~mask.Value) | (value & mask.Value));
             }
-            return WriteRamLittleEndian(new byte[] { (byte)value }, address, absoluteAddress);
+            bool returnValue = WriteRamLittleEndian(new byte[] { (byte)value }, address, absoluteAddress);
+            if (returnValue) WatchVariableLockManager.UpdateLockValue(value.ToString(), address, typeof(sbyte), mask);
+            return returnValue;
         }
 
         public bool SetValue(Int16 value, uint address, bool absoluteAddress = false, uint? mask = null)
@@ -434,7 +438,9 @@ namespace SM64_Diagnostic.Utilities
                 short oldValue = GetInt16(address, absoluteAddress);
                 value = (short)((oldValue & ~mask.Value) | (value & mask.Value));
             }
-            return WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
+            bool returnValue = WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
+            if (returnValue) WatchVariableLockManager.UpdateLockValue(value.ToString(), address, typeof(short), mask);
+            return returnValue;
         }
 
         public bool SetValue(UInt16 value, uint address, bool absoluteAddress = false, uint? mask = null)
@@ -444,7 +450,9 @@ namespace SM64_Diagnostic.Utilities
                 ushort oldValue = GetUInt16(address, absoluteAddress);
                 value = (ushort)((oldValue & ~mask.Value) | (value & mask.Value));
             }
-            return WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
+            bool returnValue = WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
+            if (returnValue) WatchVariableLockManager.UpdateLockValue(value.ToString(), address, typeof(ushort), mask);
+            return returnValue;
         }
 
         public bool SetValue(Int32 value, uint address, bool absoluteAddress = false, uint? mask = null)
@@ -454,7 +462,9 @@ namespace SM64_Diagnostic.Utilities
                 int oldValue = GetInt32(address, absoluteAddress);
                 value = (int)((oldValue & ~mask.Value) | (value & mask.Value));
             }
-            return WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
+            bool returnValue = WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
+            if (returnValue) WatchVariableLockManager.UpdateLockValue(value.ToString(), address, typeof(int), mask);
+            return returnValue;
         }
 
         public bool SetValue(UInt32 value, uint address, bool absoluteAddress = false, uint? mask = null)
@@ -464,12 +474,16 @@ namespace SM64_Diagnostic.Utilities
                 uint oldValue = GetUInt32(address, absoluteAddress);
                 value = (uint)((oldValue & ~mask.Value) | (value & mask.Value));
             }
-            return WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
+            bool returnValue = WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
+            if (returnValue) WatchVariableLockManager.UpdateLockValue(value.ToString(), address, typeof(uint), mask);
+            return returnValue;
         }
 
         public bool SetValue(float value, uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            return WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
+            bool returnValue = WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
+            if (returnValue) WatchVariableLockManager.UpdateLockValue(value.ToString(), address, typeof(float), mask);
+            return returnValue;
         }
 
         public bool WriteRamLittleEndian(byte[] buffer, uint address, bool absoluteAddress = false, int bufferStart = 0, int? length = null, bool safeWrite = true)
