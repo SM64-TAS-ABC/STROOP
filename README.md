@@ -10,7 +10,7 @@
 
 The latest release of Stroop can be downloaded from our [Releases Page](https://github.com/SM64-STROOP/STROOP/releases). From here .zip files of recent builds can be found. The files can then be extracted and Stroop.exe can be opened.
 
-Latest development builds with the newest features, bug fixes (...I mean bug introductions) can be found on the [Development Branch](https://github.com/SM64-STROOP/STROOP/tree/Development). Likewise, Stroop.exe can be found under (Windows Build) and ran.
+Latest development builds with the newest features, bug fixes (...I mean bug introductions) can be found on the continous [Development Release](https://github.com/SM64-STROOP/STROOP/tree/vDev). Likewise, Stroop.exe can be ran.
   
 ## Requirements
 
