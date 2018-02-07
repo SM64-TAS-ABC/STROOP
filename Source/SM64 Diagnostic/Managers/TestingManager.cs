@@ -418,6 +418,11 @@ namespace SM64_Diagnostic.Managers
                 VarStateMario other = obj as VarStateMario;
                 return Enumerable.SequenceEqual(this.VarValues(), other.VarValues());
             }
+
+            public override int GetHashCode()
+            {
+                return VarValues().GetHashCode();
+            }
         }
 
         public class VarStatePenguin : VarState
@@ -463,6 +468,11 @@ namespace SM64_Diagnostic.Managers
                 if (!(obj is VarStatePenguin)) return false;
                 VarStatePenguin other = obj as VarStatePenguin;
                 return Enumerable.SequenceEqual(this.VarValues(), other.VarValues());
+            }
+
+            public override int GetHashCode()
+            {
+                return VarValues().GetHashCode();
             }
         }
 
