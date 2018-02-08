@@ -70,6 +70,8 @@ namespace SM64_Diagnostic.Structs
         public static readonly uint ReleaseStatusDroppedValue = 0x800EE5F0;
         public static readonly uint InteractionStatusOffset = 0x134;
 
+        public static readonly uint NativeRoomOffset = 0x1A0;
+
         // Object specific vars
 
         public static readonly uint DustSpawnerBehaviorValue = 0x130024AC;

@@ -383,6 +383,7 @@ namespace SM64_Diagnostic.Managers
             }
         }
 
+        private static readonly byte Dummy_Room = 127;
         private static readonly byte Outside_Room = 13;
         private static readonly byte Balcony_3rdFloor_Room = 2;
         private static readonly byte MerryGoRound_3rdFloor_Room = 6;
@@ -397,7 +398,7 @@ namespace SM64_Diagnostic.Managers
                     switch (transition)
                     {
                         case 3:
-                            HandleScuttlebugRoomTransition(Outside_Room, Balcony_3rdFloor_Room);
+                            HandleScuttlebugRoomTransition(Balcony_3rdFloor_Room);
                             break;
                     }
                     break;
@@ -405,25 +406,48 @@ namespace SM64_Diagnostic.Managers
                     switch (transition)
                     {
                         case 3:
-                            HandleScuttlebugRoomTransition(Outside_Room, MerryGoRound_3rdFloor_Room);
+                            HandleScuttlebugRoomTransition(MerryGoRound_3rdFloor_Room);
                             break;
                         case 2:
                             // do nothing
                             break;
                         case 1:
-                            HandleScuttlebugRoomTransition(MerryGoRound_3rdFloor_Room, MerryGoRound_1stFloor_Room);
+                            HandleScuttlebugRoomTransition(MerryGoRound_1stFloor_Room);
                             break;
                         case 0:
-                            HandleScuttlebugRoomTransition(MerryGoRound_1stFloor_Room, MerryGoRound_Basement_Room);
+                            HandleScuttlebugRoomTransition(MerryGoRound_Basement_Room);
                             break;
                     }
                     break;
             }
         }
 
-        private void HandleScuttlebugRoomTransition(byte beforeRoom, byte afterRoom)
+        private void HandleScuttlebugRoomTransition(byte newRoom)
         {
+            // Convert new room triangles to dummy room value
+            foreach (TriangleStruct triStruct in _scuttlebugTriangleList)
+            {
+                if (triStruct.Room == newRoom)
+                {
+                    Config.Stream.SetValue(Dummy_Room, triStruct.Address + TriangleOffsetsConfig.Room);
+                }
+            }
+            
+            // Convert all outside triangles to the new room value
+            foreach (TriangleStruct triStruct in _scuttlebugTriangleList)
+            {
+                if (triStruct.Room == Outside_Room)
+                {
+                    Config.Stream.SetValue(newRoom, triStruct.Address + TriangleOffsetsConfig.Room);
+                }
+            }
 
+            // Convert scuttlebugs to have native room as new room value
+            List<uint> scuttlebugAddresses = GetScuttlebugAddresses();
+            foreach (uint objAddress in scuttlebugAddresses)
+            {
+                Config.Stream.SetValue(newRoom, objAddress + ObjectConfig.NativeRoomOffset);
+            }
         }
 
         public abstract class VarState
