@@ -446,7 +446,7 @@ namespace SM64_Diagnostic.Managers
             List<uint> scuttlebugAddresses = GetScuttlebugAddresses();
             foreach (uint objAddress in scuttlebugAddresses)
             {
-                Config.Stream.SetValue(newRoom, objAddress + ObjectConfig.NativeRoomOffset);
+                Config.Stream.SetValue((int)newRoom, objAddress + ObjectConfig.NativeRoomOffset);
             }
         }
 
