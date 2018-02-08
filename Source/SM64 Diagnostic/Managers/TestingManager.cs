@@ -151,6 +151,7 @@ namespace SM64_Diagnostic.Managers
         Button _buttonScuttlebugStuff2ndFloor;
         Button _buttonScuttlebugStuff1stFloor;
         Button _buttonScuttlebugStuffBasement;
+        BinaryButton _buttonScuttlebugStuffGetTris;
 
         enum ScuttlebugMission
         {
@@ -160,6 +161,8 @@ namespace SM64_Diagnostic.Managers
             HMCRedCoins,
         }
         ScuttlebugMission _scuttlebugMission = ScuttlebugMission.BBHBalconyEye;
+
+        List<TriangleStruct> _scuttlebugTriangleList = new List<TriangleStruct>();
 
         public TestingManager(TabPage tabControl)
         {
@@ -326,6 +329,7 @@ namespace SM64_Diagnostic.Managers
             _buttonScuttlebugStuff2ndFloor = _groupBoxScuttlebugStuff.Controls["buttonScuttlebugStuff2ndFloor"] as Button;
             _buttonScuttlebugStuff1stFloor = _groupBoxScuttlebugStuff.Controls["buttonScuttlebugStuff1stFloor"] as Button;
             _buttonScuttlebugStuffBasement = _groupBoxScuttlebugStuff.Controls["buttonScuttlebugStuffBasement"] as Button;
+            _buttonScuttlebugStuffGetTris = _groupBoxScuttlebugStuff.Controls["buttonScuttlebugStuffGetTris"] as BinaryButton;
 
             _radioButtonScuttlebugStuffBBHBalconyEye.Click += (sender, e) => _scuttlebugMission = ScuttlebugMission.BBHBalconyEye;
             _radioButtonScuttlebugStuffBBHMerryGoRound.Click += (sender, e) => _scuttlebugMission = ScuttlebugMission.BBHMerryGoRound;
@@ -337,6 +341,12 @@ namespace SM64_Diagnostic.Managers
             _buttonScuttlebugStuff2ndFloor.Click += (sender, e) => HandleScuttlebugRoomTransition(2);
             _buttonScuttlebugStuff1stFloor.Click += (sender, e) => HandleScuttlebugRoomTransition(1);
             _buttonScuttlebugStuffBasement.Click += (sender, e) => HandleScuttlebugRoomTransition(0);
+            _buttonScuttlebugStuffGetTris.Initialize(
+                "Get Tris",
+                "Clear Tris",
+                () => _scuttlebugTriangleList = TriangleUtilities.GetLevelTriangles(),
+                () => _scuttlebugTriangleList.Clear(),
+                () => _scuttlebugTriangleList.Count != 0);
         }
 
         private List<uint> GetScuttlebugAddresses()
@@ -726,6 +736,9 @@ namespace SM64_Diagnostic.Managers
 
             // State Transfer
             StateTransferUpdate();
+
+            // Scuttlebug stuff
+            _buttonScuttlebugStuffGetTris.UpdateButton();
         }
 
         private void buttonScheduleButtonPreviousClick()

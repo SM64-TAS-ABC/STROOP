@@ -1066,6 +1066,7 @@ namespace SM64_Diagnostic
             this.buttonScuttlebugStuff2ndFloor = new System.Windows.Forms.Button();
             this.buttonScuttlebugStuff1stFloor = new System.Windows.Forms.Button();
             this.buttonScuttlebugStuffBasement = new System.Windows.Forms.Button();
+            this.buttonScuttlebugStuffGetTris = new SM64_Diagnostic.BinaryButton();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -12127,6 +12128,7 @@ namespace SM64_Diagnostic
             // 
             // groupBoxScuttlebugStuff
             // 
+            this.groupBoxScuttlebugStuff.Controls.Add(this.buttonScuttlebugStuffGetTris);
             this.groupBoxScuttlebugStuff.Controls.Add(this.radioButtonScuttlebugStuffHMCRedCoins);
             this.groupBoxScuttlebugStuff.Controls.Add(this.radioButtonScuttlebugStuffHMCAmazing);
             this.groupBoxScuttlebugStuff.Controls.Add(this.radioButtonScuttlebugStuffBBHMerryGoRound);
@@ -13846,43 +13848,53 @@ namespace SM64_Diagnostic
             // 
             // buttonScuttlebugStuff3rdFloor
             // 
-            this.buttonScuttlebugStuff3rdFloor.Location = new System.Drawing.Point(38, 130);
+            this.buttonScuttlebugStuff3rdFloor.Location = new System.Drawing.Point(53, 130);
             this.buttonScuttlebugStuff3rdFloor.Margin = new System.Windows.Forms.Padding(2);
             this.buttonScuttlebugStuff3rdFloor.Name = "buttonScuttlebugStuff3rdFloor";
-            this.buttonScuttlebugStuff3rdFloor.Size = new System.Drawing.Size(93, 25);
+            this.buttonScuttlebugStuff3rdFloor.Size = new System.Drawing.Size(78, 25);
             this.buttonScuttlebugStuff3rdFloor.TabIndex = 16;
             this.buttonScuttlebugStuff3rdFloor.Text = "3rd Floor";
             this.buttonScuttlebugStuff3rdFloor.UseVisualStyleBackColor = true;
             // 
             // buttonScuttlebugStuff2ndFloor
             // 
-            this.buttonScuttlebugStuff2ndFloor.Location = new System.Drawing.Point(38, 159);
+            this.buttonScuttlebugStuff2ndFloor.Location = new System.Drawing.Point(53, 159);
             this.buttonScuttlebugStuff2ndFloor.Margin = new System.Windows.Forms.Padding(2);
             this.buttonScuttlebugStuff2ndFloor.Name = "buttonScuttlebugStuff2ndFloor";
-            this.buttonScuttlebugStuff2ndFloor.Size = new System.Drawing.Size(93, 25);
+            this.buttonScuttlebugStuff2ndFloor.Size = new System.Drawing.Size(78, 25);
             this.buttonScuttlebugStuff2ndFloor.TabIndex = 16;
             this.buttonScuttlebugStuff2ndFloor.Text = "2nd Floor";
             this.buttonScuttlebugStuff2ndFloor.UseVisualStyleBackColor = true;
             // 
             // buttonScuttlebugStuff1stFloor
             // 
-            this.buttonScuttlebugStuff1stFloor.Location = new System.Drawing.Point(38, 188);
+            this.buttonScuttlebugStuff1stFloor.Location = new System.Drawing.Point(53, 188);
             this.buttonScuttlebugStuff1stFloor.Margin = new System.Windows.Forms.Padding(2);
             this.buttonScuttlebugStuff1stFloor.Name = "buttonScuttlebugStuff1stFloor";
-            this.buttonScuttlebugStuff1stFloor.Size = new System.Drawing.Size(93, 25);
+            this.buttonScuttlebugStuff1stFloor.Size = new System.Drawing.Size(78, 25);
             this.buttonScuttlebugStuff1stFloor.TabIndex = 16;
             this.buttonScuttlebugStuff1stFloor.Text = "1st Floor";
             this.buttonScuttlebugStuff1stFloor.UseVisualStyleBackColor = true;
             // 
             // buttonScuttlebugStuffBasement
             // 
-            this.buttonScuttlebugStuffBasement.Location = new System.Drawing.Point(38, 217);
+            this.buttonScuttlebugStuffBasement.Location = new System.Drawing.Point(53, 217);
             this.buttonScuttlebugStuffBasement.Margin = new System.Windows.Forms.Padding(2);
             this.buttonScuttlebugStuffBasement.Name = "buttonScuttlebugStuffBasement";
-            this.buttonScuttlebugStuffBasement.Size = new System.Drawing.Size(93, 25);
+            this.buttonScuttlebugStuffBasement.Size = new System.Drawing.Size(78, 25);
             this.buttonScuttlebugStuffBasement.TabIndex = 16;
             this.buttonScuttlebugStuffBasement.Text = "Basement";
             this.buttonScuttlebugStuffBasement.UseVisualStyleBackColor = true;
+            // 
+            // buttonScuttlebugStuffGetTris
+            // 
+            this.buttonScuttlebugStuffGetTris.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonScuttlebugStuffGetTris.Location = new System.Drawing.Point(14, 130);
+            this.buttonScuttlebugStuffGetTris.Name = "buttonScuttlebugStuffGetTris";
+            this.buttonScuttlebugStuffGetTris.Size = new System.Drawing.Size(34, 112);
+            this.buttonScuttlebugStuffGetTris.TabIndex = 17;
+            this.buttonScuttlebugStuffGetTris.Text = "Get Tris";
+            this.buttonScuttlebugStuffGetTris.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -15348,6 +15360,7 @@ namespace SM64_Diagnostic
         private Button buttonScuttlebugStuff1stFloor;
         private Button buttonScuttlebugStuff2ndFloor;
         private Button buttonScuttlebugStuff3rdFloor;
+        private BinaryButton buttonScuttlebugStuffGetTris;
     }
 }
 
