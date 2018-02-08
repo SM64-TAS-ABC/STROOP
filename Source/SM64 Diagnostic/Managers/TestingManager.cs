@@ -147,6 +147,10 @@ namespace SM64_Diagnostic.Managers
         RadioButton _radioButtonScuttlebugStuffHMCAmazing;
         RadioButton _radioButtonScuttlebugStuffHMCRedCoins;
         Button _buttonScuttlebugStuffLungeToHome;
+        Button _buttonScuttlebugStuff3rdFloor;
+        Button _buttonScuttlebugStuff2ndFloor;
+        Button _buttonScuttlebugStuff1stFloor;
+        Button _buttonScuttlebugStuffBasement;
 
         enum ScuttlebugMission
         {
@@ -318,11 +322,21 @@ namespace SM64_Diagnostic.Managers
             _radioButtonScuttlebugStuffHMCRedCoins = _groupBoxScuttlebugStuff.Controls["radioButtonScuttlebugStuffHMCRedCoins"] as RadioButton;
             _buttonScuttlebugStuffLungeToHome = _groupBoxScuttlebugStuff.Controls["buttonScuttlebugStuffLungeToHome"] as Button;
 
+            _buttonScuttlebugStuff3rdFloor = _groupBoxScuttlebugStuff.Controls["buttonScuttlebugStuff3rdFloor"] as Button;
+            _buttonScuttlebugStuff2ndFloor = _groupBoxScuttlebugStuff.Controls["buttonScuttlebugStuff2ndFloor"] as Button;
+            _buttonScuttlebugStuff1stFloor = _groupBoxScuttlebugStuff.Controls["buttonScuttlebugStuff1stFloor"] as Button;
+            _buttonScuttlebugStuffBasement = _groupBoxScuttlebugStuff.Controls["buttonScuttlebugStuffBasement"] as Button;
+
             _radioButtonScuttlebugStuffBBHBalconyEye.Click += (sender, e) => _scuttlebugMission = ScuttlebugMission.BBHBalconyEye;
             _radioButtonScuttlebugStuffBBHMerryGoRound.Click += (sender, e) => _scuttlebugMission = ScuttlebugMission.BBHMerryGoRound;
             _radioButtonScuttlebugStuffHMCAmazing.Click += (sender, e) => _scuttlebugMission = ScuttlebugMission.HMCAmazing;
             _radioButtonScuttlebugStuffHMCRedCoins.Click += (sender, e) => _scuttlebugMission = ScuttlebugMission.HMCRedCoins;
             _buttonScuttlebugStuffLungeToHome.Click += (sender, e) => InvokeScuttlebugsLungeToHome();
+
+            _buttonScuttlebugStuff3rdFloor.Click += (sender, e) => HandleScuttlebugRoomTransition(3); 
+            _buttonScuttlebugStuff2ndFloor.Click += (sender, e) => HandleScuttlebugRoomTransition(2);
+            _buttonScuttlebugStuff1stFloor.Click += (sender, e) => HandleScuttlebugRoomTransition(1);
+            _buttonScuttlebugStuffBasement.Click += (sender, e) => HandleScuttlebugRoomTransition(0);
         }
 
         private List<uint> GetScuttlebugAddresses()
@@ -357,6 +371,49 @@ namespace SM64_Diagnostic.Managers
                 Config.Stream.SetValue(20f, objAddress + ObjectConfig.YSpeedOffset);
                 Config.Stream.SetValue(1, objAddress + ObjectConfig.ScuttlebugPhaseOffset);
             }
+        }
+
+        private static readonly byte Outside_Room = 13;
+        private static readonly byte Balcony_3rdFloor_Room = 2;
+        private static readonly byte MerryGoRound_3rdFloor_Room = 6;
+        private static readonly byte MerryGoRound_1stFloor_Room = 5;
+        private static readonly byte MerryGoRound_Basement_Room = 10;
+
+        private void HandleScuttlebugRoomTransition(int transition)
+        {
+            switch (_scuttlebugMission)
+            {
+                case ScuttlebugMission.BBHBalconyEye:
+                    switch (transition)
+                    {
+                        case 3:
+                            HandleScuttlebugRoomTransition(Outside_Room, Balcony_3rdFloor_Room);
+                            break;
+                    }
+                    break;
+                case ScuttlebugMission.BBHMerryGoRound:
+                    switch (transition)
+                    {
+                        case 3:
+                            HandleScuttlebugRoomTransition(Outside_Room, MerryGoRound_3rdFloor_Room);
+                            break;
+                        case 2:
+                            // do nothing
+                            break;
+                        case 1:
+                            HandleScuttlebugRoomTransition(MerryGoRound_3rdFloor_Room, MerryGoRound_1stFloor_Room);
+                            break;
+                        case 0:
+                            HandleScuttlebugRoomTransition(MerryGoRound_1stFloor_Room, MerryGoRound_Basement_Room);
+                            break;
+                    }
+                    break;
+            }
+        }
+
+        private void HandleScuttlebugRoomTransition(byte beforeRoom, byte afterRoom)
+        {
+
         }
 
         public abstract class VarState
