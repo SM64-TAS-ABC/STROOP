@@ -1068,8 +1068,8 @@ namespace SM64_Diagnostic
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
             this.groupBoxTriRooms = new System.Windows.Forms.GroupBox();
-            this.labelTriRoomsToValue = new SM64_Diagnostic.BetterTextbox();
-            this.labelTriRoomsFromValue = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxTriRoomsToValue = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxTriRoomsFromValue = new SM64_Diagnostic.BetterTextbox();
             this.buttonTriRoomsConvert = new System.Windows.Forms.Button();
             this.labelTriRoomsToLabel = new System.Windows.Forms.Label();
             this.labelTriRoomsFromLabel = new System.Windows.Forms.Label();
@@ -13906,8 +13906,8 @@ namespace SM64_Diagnostic
             // 
             // groupBoxTriRooms
             // 
-            this.groupBoxTriRooms.Controls.Add(this.labelTriRoomsToValue);
-            this.groupBoxTriRooms.Controls.Add(this.labelTriRoomsFromValue);
+            this.groupBoxTriRooms.Controls.Add(this.textBoxTriRoomsToValue);
+            this.groupBoxTriRooms.Controls.Add(this.textBoxTriRoomsFromValue);
             this.groupBoxTriRooms.Controls.Add(this.buttonTriRoomsConvert);
             this.groupBoxTriRooms.Controls.Add(this.labelTriRoomsToLabel);
             this.groupBoxTriRooms.Controls.Add(this.labelTriRoomsFromLabel);
@@ -13918,23 +13918,23 @@ namespace SM64_Diagnostic
             this.groupBoxTriRooms.TabStop = false;
             this.groupBoxTriRooms.Text = "Tri Rooms";
             // 
-            // labelTriRoomsToValue
+            // textBoxTriRoomsToValue
             // 
-            this.labelTriRoomsToValue.Location = new System.Drawing.Point(40, 42);
-            this.labelTriRoomsToValue.Name = "labelTriRoomsToValue";
-            this.labelTriRoomsToValue.Size = new System.Drawing.Size(67, 20);
-            this.labelTriRoomsToValue.TabIndex = 28;
-            this.labelTriRoomsToValue.Text = "2";
-            this.labelTriRoomsToValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxTriRoomsToValue.Location = new System.Drawing.Point(40, 42);
+            this.textBoxTriRoomsToValue.Name = "textBoxTriRoomsToValue";
+            this.textBoxTriRoomsToValue.Size = new System.Drawing.Size(67, 20);
+            this.textBoxTriRoomsToValue.TabIndex = 28;
+            this.textBoxTriRoomsToValue.Text = "2";
+            this.textBoxTriRoomsToValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // labelTriRoomsFromValue
+            // textBoxTriRoomsFromValue
             // 
-            this.labelTriRoomsFromValue.Location = new System.Drawing.Point(40, 16);
-            this.labelTriRoomsFromValue.Name = "labelTriRoomsFromValue";
-            this.labelTriRoomsFromValue.Size = new System.Drawing.Size(67, 20);
-            this.labelTriRoomsFromValue.TabIndex = 28;
-            this.labelTriRoomsFromValue.Text = "1";
-            this.labelTriRoomsFromValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxTriRoomsFromValue.Location = new System.Drawing.Point(40, 16);
+            this.textBoxTriRoomsFromValue.Name = "textBoxTriRoomsFromValue";
+            this.textBoxTriRoomsFromValue.Size = new System.Drawing.Size(67, 20);
+            this.textBoxTriRoomsFromValue.TabIndex = 28;
+            this.textBoxTriRoomsFromValue.Text = "1";
+            this.textBoxTriRoomsFromValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // buttonTriRoomsConvert
             // 
@@ -15436,8 +15436,8 @@ namespace SM64_Diagnostic
         private Button buttonScuttlebugStuff3rdFloor;
         private BinaryButton buttonScuttlebugStuffGetTris;
         private GroupBox groupBoxTriRooms;
-        private BetterTextbox labelTriRoomsToValue;
-        private BetterTextbox labelTriRoomsFromValue;
+        private BetterTextbox textBoxTriRoomsToValue;
+        private BetterTextbox textBoxTriRoomsFromValue;
         private Button buttonTriRoomsConvert;
         private Label labelTriRoomsToLabel;
         private Label labelTriRoomsFromLabel;

@@ -153,6 +153,11 @@ namespace SM64_Diagnostic.Managers
         Button _buttonScuttlebugStuffBasement;
         BinaryButton _buttonScuttlebugStuffGetTris;
 
+        // Tri Rooms
+        TextBox _textBoxTriRoomsFromValue;
+        TextBox _textBoxTriRoomsToValue;
+        Button _buttonTriRoomsConvert;
+
         enum ScuttlebugMission
         {
             BBHBalconyEye,
@@ -347,6 +352,12 @@ namespace SM64_Diagnostic.Managers
                 () => _scuttlebugTriangleList = TriangleUtilities.GetLevelTriangles(),
                 () => _scuttlebugTriangleList.Clear(),
                 () => _scuttlebugTriangleList.Count != 0);
+
+            // Tri Rooms
+            GroupBox groupBoxTriRooms = tabControl.Controls["groupBoxTriRooms"] as GroupBox;
+            _textBoxTriRoomsFromValue = groupBoxTriRooms.Controls["textBoxTriRoomsFromValue"] as TextBox;
+            _textBoxTriRoomsToValue = groupBoxTriRooms.Controls["textBoxTriRoomsToValue"] as TextBox;
+            _buttonTriRoomsConvert = groupBoxTriRooms.Controls["buttonTriRoomsConvert"] as Button;
         }
 
         private List<uint> GetScuttlebugAddresses()
