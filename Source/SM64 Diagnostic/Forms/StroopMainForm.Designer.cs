@@ -910,10 +910,15 @@ namespace SM64_Diagnostic
             this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
             this.tabPageTesting = new System.Windows.Forms.TabPage();
             this.groupBoxScuttlebugStuff = new System.Windows.Forms.GroupBox();
+            this.buttonScuttlebugStuffGetTris = new SM64_Diagnostic.BinaryButton();
             this.radioButtonScuttlebugStuffHMCRedCoins = new System.Windows.Forms.RadioButton();
             this.radioButtonScuttlebugStuffHMCAmazing = new System.Windows.Forms.RadioButton();
             this.radioButtonScuttlebugStuffBBHMerryGoRound = new System.Windows.Forms.RadioButton();
             this.radioButtonScuttlebugStuffBBHBalconyEye = new System.Windows.Forms.RadioButton();
+            this.buttonScuttlebugStuffBasement = new System.Windows.Forms.Button();
+            this.buttonScuttlebugStuff1stFloor = new System.Windows.Forms.Button();
+            this.buttonScuttlebugStuff2ndFloor = new System.Windows.Forms.Button();
+            this.buttonScuttlebugStuff3rdFloor = new System.Windows.Forms.Button();
             this.buttonScuttlebugStuffLungeToHome = new System.Windows.Forms.Button();
             this.groupBoxSchedule = new System.Windows.Forms.GroupBox();
             this.buttonScheduleButtonSet = new System.Windows.Forms.Button();
@@ -1062,11 +1067,12 @@ namespace SM64_Diagnostic
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.buttonScuttlebugStuff3rdFloor = new System.Windows.Forms.Button();
-            this.buttonScuttlebugStuff2ndFloor = new System.Windows.Forms.Button();
-            this.buttonScuttlebugStuff1stFloor = new System.Windows.Forms.Button();
-            this.buttonScuttlebugStuffBasement = new System.Windows.Forms.Button();
-            this.buttonScuttlebugStuffGetTris = new SM64_Diagnostic.BinaryButton();
+            this.groupBoxTriRooms = new System.Windows.Forms.GroupBox();
+            this.labelTriRoomsToValue = new SM64_Diagnostic.BetterTextbox();
+            this.labelTriRoomsFromValue = new SM64_Diagnostic.BetterTextbox();
+            this.buttonTriRoomsConvert = new System.Windows.Forms.Button();
+            this.labelTriRoomsToLabel = new System.Windows.Forms.Label();
+            this.labelTriRoomsFromLabel = new System.Windows.Forms.Label();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1396,6 +1402,7 @@ namespace SM64_Diagnostic
             this.groupBoxGoto.SuspendLayout();
             this.groupBoxRecording.SuspendLayout();
             this.panelConnect.SuspendLayout();
+            this.groupBoxTriRooms.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -1425,7 +1432,7 @@ namespace SM64_Diagnostic
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 374);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 375);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1490,7 +1497,7 @@ namespace SM64_Diagnostic
             this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
             this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 154);
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 155);
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
@@ -4681,7 +4688,7 @@ namespace SM64_Diagnostic
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 218F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 219F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8877,7 +8884,7 @@ namespace SM64_Diagnostic
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(699, 454);
+            this.glControlMap.Size = new System.Drawing.Size(702, 454);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -9844,7 +9851,7 @@ namespace SM64_Diagnostic
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(374, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(357, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -9876,7 +9883,7 @@ namespace SM64_Diagnostic
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(363, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(346, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -9932,7 +9939,7 @@ namespace SM64_Diagnostic
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(363, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(346, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -12110,6 +12117,7 @@ namespace SM64_Diagnostic
             // tabPageTesting
             // 
             this.tabPageTesting.AutoScroll = true;
+            this.tabPageTesting.Controls.Add(this.groupBoxTriRooms);
             this.tabPageTesting.Controls.Add(this.groupBoxScuttlebugStuff);
             this.tabPageTesting.Controls.Add(this.groupBoxSchedule);
             this.tabPageTesting.Controls.Add(this.groupBoxStateTransfer);
@@ -12140,10 +12148,20 @@ namespace SM64_Diagnostic
             this.groupBoxScuttlebugStuff.Controls.Add(this.buttonScuttlebugStuffLungeToHome);
             this.groupBoxScuttlebugStuff.Location = new System.Drawing.Point(760, 6);
             this.groupBoxScuttlebugStuff.Name = "groupBoxScuttlebugStuff";
-            this.groupBoxScuttlebugStuff.Size = new System.Drawing.Size(144, 257);
+            this.groupBoxScuttlebugStuff.Size = new System.Drawing.Size(144, 247);
             this.groupBoxScuttlebugStuff.TabIndex = 43;
             this.groupBoxScuttlebugStuff.TabStop = false;
             this.groupBoxScuttlebugStuff.Text = "Scuttlebug Stuff";
+            // 
+            // buttonScuttlebugStuffGetTris
+            // 
+            this.buttonScuttlebugStuffGetTris.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonScuttlebugStuffGetTris.Location = new System.Drawing.Point(14, 130);
+            this.buttonScuttlebugStuffGetTris.Name = "buttonScuttlebugStuffGetTris";
+            this.buttonScuttlebugStuffGetTris.Size = new System.Drawing.Size(34, 112);
+            this.buttonScuttlebugStuffGetTris.TabIndex = 17;
+            this.buttonScuttlebugStuffGetTris.Text = "Get Tris";
+            this.buttonScuttlebugStuffGetTris.UseVisualStyleBackColor = true;
             // 
             // radioButtonScuttlebugStuffHMCRedCoins
             // 
@@ -12187,6 +12205,46 @@ namespace SM64_Diagnostic
             this.radioButtonScuttlebugStuffBBHBalconyEye.Text = "BBH Balcony/Eye";
             this.radioButtonScuttlebugStuffBBHBalconyEye.UseVisualStyleBackColor = true;
             // 
+            // buttonScuttlebugStuffBasement
+            // 
+            this.buttonScuttlebugStuffBasement.Location = new System.Drawing.Point(53, 217);
+            this.buttonScuttlebugStuffBasement.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonScuttlebugStuffBasement.Name = "buttonScuttlebugStuffBasement";
+            this.buttonScuttlebugStuffBasement.Size = new System.Drawing.Size(78, 25);
+            this.buttonScuttlebugStuffBasement.TabIndex = 16;
+            this.buttonScuttlebugStuffBasement.Text = "Basement";
+            this.buttonScuttlebugStuffBasement.UseVisualStyleBackColor = true;
+            // 
+            // buttonScuttlebugStuff1stFloor
+            // 
+            this.buttonScuttlebugStuff1stFloor.Location = new System.Drawing.Point(53, 188);
+            this.buttonScuttlebugStuff1stFloor.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonScuttlebugStuff1stFloor.Name = "buttonScuttlebugStuff1stFloor";
+            this.buttonScuttlebugStuff1stFloor.Size = new System.Drawing.Size(78, 25);
+            this.buttonScuttlebugStuff1stFloor.TabIndex = 16;
+            this.buttonScuttlebugStuff1stFloor.Text = "1st Floor";
+            this.buttonScuttlebugStuff1stFloor.UseVisualStyleBackColor = true;
+            // 
+            // buttonScuttlebugStuff2ndFloor
+            // 
+            this.buttonScuttlebugStuff2ndFloor.Location = new System.Drawing.Point(53, 159);
+            this.buttonScuttlebugStuff2ndFloor.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonScuttlebugStuff2ndFloor.Name = "buttonScuttlebugStuff2ndFloor";
+            this.buttonScuttlebugStuff2ndFloor.Size = new System.Drawing.Size(78, 25);
+            this.buttonScuttlebugStuff2ndFloor.TabIndex = 16;
+            this.buttonScuttlebugStuff2ndFloor.Text = "2nd Floor";
+            this.buttonScuttlebugStuff2ndFloor.UseVisualStyleBackColor = true;
+            // 
+            // buttonScuttlebugStuff3rdFloor
+            // 
+            this.buttonScuttlebugStuff3rdFloor.Location = new System.Drawing.Point(53, 130);
+            this.buttonScuttlebugStuff3rdFloor.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonScuttlebugStuff3rdFloor.Name = "buttonScuttlebugStuff3rdFloor";
+            this.buttonScuttlebugStuff3rdFloor.Size = new System.Drawing.Size(78, 25);
+            this.buttonScuttlebugStuff3rdFloor.TabIndex = 16;
+            this.buttonScuttlebugStuff3rdFloor.Text = "3rd Floor";
+            this.buttonScuttlebugStuff3rdFloor.UseVisualStyleBackColor = true;
+            // 
             // buttonScuttlebugStuffLungeToHome
             // 
             this.buttonScuttlebugStuffLungeToHome.Location = new System.Drawing.Point(14, 101);
@@ -12219,7 +12277,7 @@ namespace SM64_Diagnostic
             this.groupBoxSchedule.Controls.Add(this.labelSchedule5);
             this.groupBoxSchedule.Controls.Add(this.labelSchedule7);
             this.groupBoxSchedule.Controls.Add(this.labelSchedule6);
-            this.groupBoxSchedule.Location = new System.Drawing.Point(610, 278);
+            this.groupBoxSchedule.Location = new System.Drawing.Point(610, 364);
             this.groupBoxSchedule.Name = "groupBoxSchedule";
             this.groupBoxSchedule.Size = new System.Drawing.Size(283, 168);
             this.groupBoxSchedule.TabIndex = 42;
@@ -13846,55 +13904,69 @@ namespace SM64_Diagnostic
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // buttonScuttlebugStuff3rdFloor
+            // groupBoxTriRooms
             // 
-            this.buttonScuttlebugStuff3rdFloor.Location = new System.Drawing.Point(53, 130);
-            this.buttonScuttlebugStuff3rdFloor.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonScuttlebugStuff3rdFloor.Name = "buttonScuttlebugStuff3rdFloor";
-            this.buttonScuttlebugStuff3rdFloor.Size = new System.Drawing.Size(78, 25);
-            this.buttonScuttlebugStuff3rdFloor.TabIndex = 16;
-            this.buttonScuttlebugStuff3rdFloor.Text = "3rd Floor";
-            this.buttonScuttlebugStuff3rdFloor.UseVisualStyleBackColor = true;
+            this.groupBoxTriRooms.Controls.Add(this.labelTriRoomsToValue);
+            this.groupBoxTriRooms.Controls.Add(this.labelTriRoomsFromValue);
+            this.groupBoxTriRooms.Controls.Add(this.buttonTriRoomsConvert);
+            this.groupBoxTriRooms.Controls.Add(this.labelTriRoomsToLabel);
+            this.groupBoxTriRooms.Controls.Add(this.labelTriRoomsFromLabel);
+            this.groupBoxTriRooms.Location = new System.Drawing.Point(760, 259);
+            this.groupBoxTriRooms.Name = "groupBoxTriRooms";
+            this.groupBoxTriRooms.Size = new System.Drawing.Size(116, 99);
+            this.groupBoxTriRooms.TabIndex = 44;
+            this.groupBoxTriRooms.TabStop = false;
+            this.groupBoxTriRooms.Text = "Tri Rooms";
             // 
-            // buttonScuttlebugStuff2ndFloor
+            // labelTriRoomsToValue
             // 
-            this.buttonScuttlebugStuff2ndFloor.Location = new System.Drawing.Point(53, 159);
-            this.buttonScuttlebugStuff2ndFloor.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonScuttlebugStuff2ndFloor.Name = "buttonScuttlebugStuff2ndFloor";
-            this.buttonScuttlebugStuff2ndFloor.Size = new System.Drawing.Size(78, 25);
-            this.buttonScuttlebugStuff2ndFloor.TabIndex = 16;
-            this.buttonScuttlebugStuff2ndFloor.Text = "2nd Floor";
-            this.buttonScuttlebugStuff2ndFloor.UseVisualStyleBackColor = true;
+            this.labelTriRoomsToValue.Location = new System.Drawing.Point(40, 42);
+            this.labelTriRoomsToValue.Name = "labelTriRoomsToValue";
+            this.labelTriRoomsToValue.Size = new System.Drawing.Size(67, 20);
+            this.labelTriRoomsToValue.TabIndex = 28;
+            this.labelTriRoomsToValue.Text = "2";
+            this.labelTriRoomsToValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // buttonScuttlebugStuff1stFloor
+            // labelTriRoomsFromValue
             // 
-            this.buttonScuttlebugStuff1stFloor.Location = new System.Drawing.Point(53, 188);
-            this.buttonScuttlebugStuff1stFloor.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonScuttlebugStuff1stFloor.Name = "buttonScuttlebugStuff1stFloor";
-            this.buttonScuttlebugStuff1stFloor.Size = new System.Drawing.Size(78, 25);
-            this.buttonScuttlebugStuff1stFloor.TabIndex = 16;
-            this.buttonScuttlebugStuff1stFloor.Text = "1st Floor";
-            this.buttonScuttlebugStuff1stFloor.UseVisualStyleBackColor = true;
+            this.labelTriRoomsFromValue.Location = new System.Drawing.Point(40, 16);
+            this.labelTriRoomsFromValue.Name = "labelTriRoomsFromValue";
+            this.labelTriRoomsFromValue.Size = new System.Drawing.Size(67, 20);
+            this.labelTriRoomsFromValue.TabIndex = 28;
+            this.labelTriRoomsFromValue.Text = "1";
+            this.labelTriRoomsFromValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // buttonScuttlebugStuffBasement
+            // buttonTriRoomsConvert
             // 
-            this.buttonScuttlebugStuffBasement.Location = new System.Drawing.Point(53, 217);
-            this.buttonScuttlebugStuffBasement.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonScuttlebugStuffBasement.Name = "buttonScuttlebugStuffBasement";
-            this.buttonScuttlebugStuffBasement.Size = new System.Drawing.Size(78, 25);
-            this.buttonScuttlebugStuffBasement.TabIndex = 16;
-            this.buttonScuttlebugStuffBasement.Text = "Basement";
-            this.buttonScuttlebugStuffBasement.UseVisualStyleBackColor = true;
+            this.buttonTriRoomsConvert.Location = new System.Drawing.Point(12, 67);
+            this.buttonTriRoomsConvert.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTriRoomsConvert.Name = "buttonTriRoomsConvert";
+            this.buttonTriRoomsConvert.Size = new System.Drawing.Size(95, 23);
+            this.buttonTriRoomsConvert.TabIndex = 16;
+            this.buttonTriRoomsConvert.Text = "Convert";
+            this.buttonTriRoomsConvert.UseVisualStyleBackColor = true;
             // 
-            // buttonScuttlebugStuffGetTris
+            // labelTriRoomsToLabel
             // 
-            this.buttonScuttlebugStuffGetTris.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonScuttlebugStuffGetTris.Location = new System.Drawing.Point(14, 130);
-            this.buttonScuttlebugStuffGetTris.Name = "buttonScuttlebugStuffGetTris";
-            this.buttonScuttlebugStuffGetTris.Size = new System.Drawing.Size(34, 112);
-            this.buttonScuttlebugStuffGetTris.TabIndex = 17;
-            this.buttonScuttlebugStuffGetTris.Text = "Get Tris";
-            this.buttonScuttlebugStuffGetTris.UseVisualStyleBackColor = true;
+            this.labelTriRoomsToLabel.AutoSize = true;
+            this.labelTriRoomsToLabel.Location = new System.Drawing.Point(8, 45);
+            this.labelTriRoomsToLabel.MinimumSize = new System.Drawing.Size(20, 2);
+            this.labelTriRoomsToLabel.Name = "labelTriRoomsToLabel";
+            this.labelTriRoomsToLabel.Size = new System.Drawing.Size(23, 13);
+            this.labelTriRoomsToLabel.TabIndex = 18;
+            this.labelTriRoomsToLabel.Text = "To:";
+            this.labelTriRoomsToLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelTriRoomsFromLabel
+            // 
+            this.labelTriRoomsFromLabel.AutoSize = true;
+            this.labelTriRoomsFromLabel.Location = new System.Drawing.Point(8, 19);
+            this.labelTriRoomsFromLabel.MinimumSize = new System.Drawing.Size(20, 2);
+            this.labelTriRoomsFromLabel.Name = "labelTriRoomsFromLabel";
+            this.labelTriRoomsFromLabel.Size = new System.Drawing.Size(33, 13);
+            this.labelTriRoomsFromLabel.TabIndex = 18;
+            this.labelTriRoomsFromLabel.Text = "From:";
+            this.labelTriRoomsFromLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // StroopMainForm
             // 
@@ -14321,6 +14393,8 @@ namespace SM64_Diagnostic
             this.groupBoxRecording.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
+            this.groupBoxTriRooms.ResumeLayout(false);
+            this.groupBoxTriRooms.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -15361,6 +15435,12 @@ namespace SM64_Diagnostic
         private Button buttonScuttlebugStuff2ndFloor;
         private Button buttonScuttlebugStuff3rdFloor;
         private BinaryButton buttonScuttlebugStuffGetTris;
+        private GroupBox groupBoxTriRooms;
+        private BetterTextbox labelTriRoomsToValue;
+        private BetterTextbox labelTriRoomsFromValue;
+        private Button buttonTriRoomsConvert;
+        private Label labelTriRoomsToLabel;
+        private Label labelTriRoomsFromLabel;
     }
 }
 
