@@ -358,6 +358,30 @@ namespace SM64_Diagnostic.Managers
             _textBoxTriRoomsFromValue = groupBoxTriRooms.Controls["textBoxTriRoomsFromValue"] as TextBox;
             _textBoxTriRoomsToValue = groupBoxTriRooms.Controls["textBoxTriRoomsToValue"] as TextBox;
             _buttonTriRoomsConvert = groupBoxTriRooms.Controls["buttonTriRoomsConvert"] as Button;
+            _buttonTriRoomsConvert.Click += (sender, e) =>
+            {
+                bool fromEmpty = _textBoxTriRoomsFromValue.Text == "";
+                List<string> fromListStrings = ParsingUtilities.ParseTextIntoStrings(_textBoxTriRoomsFromValue.Text);
+                List<byte> fromListBytes = new List<byte>();
+                fromListStrings.ForEach(fromString =>
+                {
+                    byte? fromByteNullable = ParsingUtilities.ParseByteNullable(fromString);
+                    if (fromByteNullable.HasValue) fromListBytes.Add(fromByteNullable.Value);
+                });
+
+                byte? toByteNullable = ParsingUtilities.ParseByteNullable(_textBoxTriRoomsToValue.Text);
+                if (!toByteNullable.HasValue) return;
+                byte toByte = toByteNullable.Value;
+
+                List<TriangleStruct> tris = TriangleUtilities.GetLevelTriangles();
+                tris.ForEach(tri =>
+                {
+                    if (fromEmpty || fromListBytes.Contains(tri.Room))
+                    {
+                        Config.Stream.SetValue(toByte, tri.Address + TriangleOffsetsConfig.Room);
+                    }
+                });
+            };
         }
 
         private List<uint> GetScuttlebugAddresses()
