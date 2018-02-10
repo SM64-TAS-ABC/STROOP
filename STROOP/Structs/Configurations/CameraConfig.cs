@@ -40,8 +40,8 @@ namespace STROOP.Structs.Configurations
         public static readonly uint FovFunctionUseDoorAddressJP = 0x8029A304;
 
         public static uint FovFunctionCollectStarAddress { get { return Config.SwitchRomVersion(FovFunctionCollectStarAddressUS, FovFunctionCollectStarAddressJP); } }
-        public static readonly uint FovFunctionCollectStarAddressUS = 0x80289A70;
-        public static readonly uint FovFunctionCollectStarAddressJP = 0x80289488;
+        public static readonly uint FovFunctionCollectStarAddressUS = 0x8029A984;
+        public static readonly uint FovFunctionCollectStarAddressJP = 0x8029A268;
 
 
         public static uint FovFunctionStartSleepingValue { get { return Config.SwitchRomVersion(FovFunctionStartSleepingValueUS, FovFunctionStartSleepingValueJP); } }
@@ -57,8 +57,8 @@ namespace STROOP.Structs.Configurations
         public static readonly uint FovFunctionUseDoorValueJP = 0xE420B234;
 
         public static uint FovFunctionCollectStarValue { get { return Config.SwitchRomVersion(FovFunctionCollectStarValueUS, FovFunctionCollectStarValueJP); } }
-        public static readonly uint FovFunctionCollectStarValueUS = 0xE4920000;
-        public static readonly uint FovFunctionCollectStarValueJP = 0xE4920000;
+        public static readonly uint FovFunctionCollectStarValueUS = 0x0C0A2673;
+        public static readonly uint FovFunctionCollectStarValueJP = 0x0C0A24F9;
 
         public static List<uint> FovFunctionAddresses
         {
