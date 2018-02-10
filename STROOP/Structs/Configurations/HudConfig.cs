@@ -25,6 +25,7 @@ namespace STROOP.Structs.Configurations
 
         public static readonly short FullHp = 2176;
         public static readonly short FullHpInt = 8;
+        public static readonly short DeathHp = 255;
         public static readonly sbyte StandardLives = 4;
         public static readonly short StandardCoins = 0;
         public static readonly short StandardStars = 120;

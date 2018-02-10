@@ -766,7 +766,7 @@ namespace STROOP.Utilities
 
         public static bool Die()
         {
-            return Config.Stream.SetValue((short)255, MarioConfig.StructAddress + HudConfig.HpCountOffset);
+            return Config.Stream.SetValue(HudConfig.DeathHp, MarioConfig.StructAddress + HudConfig.HpCountOffset);
         }
 
         public static bool StandardHud()
