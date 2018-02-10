@@ -24,8 +24,8 @@
   <Data base="None" specialType="CameraDistanceToMario">Cam Dist from Mario</Data>
 
   <Data type="float" offsetUS="0x8033C5A4" offsetJP="0x8033B234" base="Relative">FOV</Data>
-  <Data type="uint" offsetUS="0x8029A774" offsetJP="0x8029A058" base="Relative" useHex="true">FOV Start Sleeping</Data>
-  <Data type="uint" offsetUS="0x8029A7C8" offsetJP="0x8029A0AC" base="Relative" useHex="true">FOV Stop Sleeping</Data>
+  <Data type="uint" offsetUS="0x8029A7C8" offsetJP="0x8029A0AC" base="Relative" useHex="true">FOV Awake</Data>
+  <Data type="uint" offsetUS="0x8029A774" offsetJP="0x8029A058" base="Relative" useHex="true">FOV Sleeping</Data>
   <Data type="uint" offsetUS="0x8029AA20" offsetJP="0x8029A304" base="Relative" useHex="true">FOV Use Door</Data>
   <Data type="uint" offsetUS="0x8029A984" offsetJP="0x8029A268" base="Relative" useHex="true">FOV Collect Star</Data>
 
