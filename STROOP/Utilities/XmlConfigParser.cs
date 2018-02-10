@@ -7,16 +7,16 @@ using System.Xml.Linq;
 using System.Xml.Schema;
 using System.IO;
 using System.Reflection;
-using SM64_Diagnostic.Structs;
+using STROOP.Structs;
 using System.Drawing;
 using System.Windows.Forms;
-using SM64_Diagnostic.Extensions;
+using STROOP.Extensions;
 using System.Xml;
 using System.Net;
-using SM64_Diagnostic.Structs.Configurations;
-using SM64_Diagnostic.Controls;
+using STROOP.Structs.Configurations;
+using STROOP.Controls;
 
-namespace SM64_Diagnostic.Utilities
+namespace STROOP.Utilities
 {
     public static class XmlConfigParser
     {
@@ -34,7 +34,7 @@ namespace SM64_Diagnostic.Utilities
                 // If ofObjectToReturn is null, then any of the following types can be returned for correct processing:
                 // Stream, TextReader, XmlReader or descendants of XmlSchema
                 var result = this.GetType().Assembly.GetManifestResourceStream(
-                    string.Format("SM64_Diagnostic.Schemas.{0}", Path.GetFileName(absoluteUri.ToString())));
+                    string.Format("STROOP.Schemas.{0}", Path.GetFileName(absoluteUri.ToString())));
 
                 // set a conditional breakpoint "result==null" here
                 return result;

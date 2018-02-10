@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace SM64_Diagnostic.Utilities
+namespace STROOP.Utilities
 {
     public static class RichTextBoxExtensions
     {

@@ -10,10 +10,10 @@ using OpenTK.Input;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Imaging;
-using SM64_Diagnostic.Structs;
-using SM64_Diagnostic.Utilities;
+using STROOP.Structs;
+using STROOP.Utilities;
 
-namespace SM64_Diagnostic.Controls
+namespace STROOP.Controls
 {
     public class ModelGraphics
     {

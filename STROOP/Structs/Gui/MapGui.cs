@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using OpenTK.Graphics.OpenGL;
 using OpenTK;
 
-namespace SM64_Diagnostic.Structs
+namespace STROOP.Structs
 {
     public class MapGui
     {

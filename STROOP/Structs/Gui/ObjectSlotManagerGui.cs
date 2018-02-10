@@ -1,4 +1,4 @@
-﻿using SM64_Diagnostic.Controls;
+﻿using STROOP.Controls;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SM64_Diagnostic.Structs
+namespace STROOP.Structs
 {
     public class ObjectSlotManagerGui
     {

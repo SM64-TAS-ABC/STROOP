@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SM64_Diagnostic.Utilities;
+using STROOP.Utilities;
 using System.Drawing;
-using SM64_Diagnostic.Structs;
-using SM64_Diagnostic.Structs.Configurations;
-using SM64_Diagnostic.Controls;
+using STROOP.Structs;
+using STROOP.Structs.Configurations;
+using STROOP.Controls;
 
-namespace SM64_Diagnostic.Managers
+namespace STROOP.Managers
 {
     public class DisassemblyManager
     {

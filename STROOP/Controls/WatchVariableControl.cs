@@ -1,9 +1,9 @@
 ﻿using OpenTK.Input;
-using SM64_Diagnostic.Extensions;
-using SM64_Diagnostic.Managers;
-using SM64_Diagnostic.Structs;
-using SM64_Diagnostic.Structs.Configurations;
-using SM64_Diagnostic.Utilities;
+using STROOP.Extensions;
+using STROOP.Managers;
+using STROOP.Structs;
+using STROOP.Structs.Configurations;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SM64_Diagnostic.Controls
+namespace STROOP.Controls
 {
     public class WatchVariableControl : TableLayoutPanel
     {

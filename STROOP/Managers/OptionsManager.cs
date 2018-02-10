@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SM64_Diagnostic.Structs;
-using SM64_Diagnostic.Structs.Configurations;
+using STROOP.Structs;
+using STROOP.Structs.Configurations;
 using System.Windows.Forms;
 
-namespace SM64_Diagnostic.Managers
+namespace STROOP.Managers
 {
     public class OptionsManager
     {

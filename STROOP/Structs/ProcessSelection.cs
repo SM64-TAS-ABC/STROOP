@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
-namespace SM64_Diagnostic.Utilities
+namespace STROOP.Utilities
 {
     public struct ProcessSelection
     {

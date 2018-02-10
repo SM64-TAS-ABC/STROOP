@@ -1,4 +1,4 @@
-﻿namespace SM64_Diagnostic.Forms
+﻿namespace STROOP.Forms
 {
     partial class VariableControllerForm
     {
@@ -36,10 +36,10 @@
             this._checkBoxLock = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this._checkBoxFixAddress = new System.Windows.Forms.CheckBox();
-            this._textBoxGetSet = new SM64_Diagnostic.BetterTextbox();
-            this._textBoxAddSubtract = new SM64_Diagnostic.BetterTextbox();
-            this._textBoxCurrentValue = new SM64_Diagnostic.BetterTextbox();
-            this._textBoxVarName = new SM64_Diagnostic.BetterTextbox();
+            this._textBoxGetSet = new STROOP.BetterTextbox();
+            this._textBoxAddSubtract = new STROOP.BetterTextbox();
+            this._textBoxCurrentValue = new STROOP.BetterTextbox();
+            this._textBoxVarName = new STROOP.BetterTextbox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 

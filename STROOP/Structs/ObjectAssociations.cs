@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
-using SM64_Diagnostic.Utilities;
-using SM64_Diagnostic.Extensions;
-using SM64_Diagnostic.Structs.Configurations;
-using SM64_Diagnostic.Controls;
+using STROOP.Utilities;
+using STROOP.Extensions;
+using STROOP.Structs.Configurations;
+using STROOP.Controls;
 
-namespace SM64_Diagnostic.Structs
+namespace STROOP.Structs
 {
     public class ObjectAssociations
     {

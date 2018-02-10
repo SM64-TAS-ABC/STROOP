@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SM64_Diagnostic.Extensions
+namespace STROOP.Extensions
 {
     public static class IEnumerableExtensions
     {

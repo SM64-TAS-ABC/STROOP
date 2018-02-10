@@ -7,9 +7,9 @@ using System.Globalization;
 using System.Xml;
 using System.Windows.Forms;
 using System.Drawing;
-using SM64_Diagnostic.Structs;
+using STROOP.Structs;
 
-namespace SM64_Diagnostic.Utilities
+namespace STROOP.Utilities
 {
     public static class ControlUtilities
     {

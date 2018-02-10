@@ -1,4 +1,4 @@
-﻿namespace SM64_Diagnostic.Forms
+﻿namespace STROOP.Forms
 {
     partial class LoadingForm
     {

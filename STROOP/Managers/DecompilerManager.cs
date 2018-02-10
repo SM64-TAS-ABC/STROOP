@@ -8,14 +8,14 @@ using IronPython.Hosting;
 using Microsoft.Scripting.Hosting;
 using IronPython.Runtime;
 using Microsoft.Scripting.Hosting.Providers;
-using SM64_Diagnostic.Structs.Configurations;
+using STROOP.Structs.Configurations;
 using System.IO;
-using SM64_Diagnostic.Controls;
+using STROOP.Controls;
 using System.Windows.Forms.Integration;
-using SM64_Diagnostic.Utilities;
-using SM64_Diagnostic.Properties;
+using STROOP.Utilities;
+using STROOP.Properties;
 
-namespace SM64_Diagnostic.Managers
+namespace STROOP.Managers
 {
     public class DecompilerManager
     {

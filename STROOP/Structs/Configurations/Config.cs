@@ -1,12 +1,12 @@
-﻿using SM64_Diagnostic.Managers;
-using SM64_Diagnostic.Utilities;
+﻿using STROOP.Managers;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SM64_Diagnostic.Structs.Configurations
+namespace STROOP.Structs.Configurations
 {
     public static class Config
     {

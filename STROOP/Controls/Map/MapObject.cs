@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
-using SM64_Diagnostic.Controls.Map;
-using SM64_Diagnostic.ManagerClasses;
+using STROOP.Controls.Map;
+using STROOP.ManagerClasses;
 using OpenTK.Graphics.OpenGL;
 
-namespace SM64_Diagnostic.Structs
+namespace STROOP.Structs
 {
     public class MapObject : MapBaseObject
     {

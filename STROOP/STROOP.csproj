@@ -7,7 +7,7 @@
     <ProjectGuid>{D309A4ED-54AF-4BC7-83CA-BCD38543AEB3}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SM64_Diagnostic</RootNamespace>
+    <RootNamespace>STROOP</RootNamespace>
     <AssemblyName>STROOP</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

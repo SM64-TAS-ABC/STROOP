@@ -9,10 +9,10 @@ using OpenTK.Graphics.OpenGL;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Imaging;
-using SM64_Diagnostic.Structs;
-using SM64_Diagnostic.Controls.Map;
+using STROOP.Structs;
+using STROOP.Controls.Map;
 
-namespace SM64_Diagnostic.ManagerClasses
+namespace STROOP.ManagerClasses
 {
     public class MapGraphics
     {

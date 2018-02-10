@@ -1,5 +1,5 @@
-﻿using SM64_Diagnostic.Structs.Configurations;
-using SM64_Diagnostic.Utilities;
+﻿using STROOP.Structs.Configurations;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace SM64_Diagnostic.Structs
+namespace STROOP.Structs
 {
     public class RomHack
     {

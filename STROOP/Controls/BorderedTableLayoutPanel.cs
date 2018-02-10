@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SM64_Diagnostic.Controls
+namespace STROOP.Controls
 {
     class BorderedTableLayoutPanel : TableLayoutPanel
     {

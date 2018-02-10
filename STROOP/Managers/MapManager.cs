@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SM64_Diagnostic.Structs;
-using SM64_Diagnostic.Utilities;
+using STROOP.Structs;
+using STROOP.Utilities;
 using System.Windows.Forms;
 using System.Drawing;
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
-using SM64_Diagnostic.ManagerClasses;
-using SM64_Diagnostic.Structs.Configurations;
+using STROOP.ManagerClasses;
+using STROOP.Structs.Configurations;
 
-namespace SM64_Diagnostic.Managers
+namespace STROOP.Managers
 {
     public class MapManager
     {

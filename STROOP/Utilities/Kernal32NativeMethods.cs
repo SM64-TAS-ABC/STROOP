@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SM64_Diagnostic.Utilities
+namespace STROOP.Utilities
 {
     public static class Kernal32NativeMethods
     {

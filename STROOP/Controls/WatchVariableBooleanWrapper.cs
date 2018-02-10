@@ -1,7 +1,7 @@
-﻿using SM64_Diagnostic.Utilities;
+﻿using STROOP.Utilities;
 using System.Windows.Forms;
 
-namespace SM64_Diagnostic.Controls
+namespace STROOP.Controls
 {
     public class WatchVariableBooleanWrapper : WatchVariableNumberWrapper
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SM64_Diagnostic.Structs.Configurations
+namespace STROOP.Structs.Configurations
 {
     public static class TriangleOffsetsConfig
     {

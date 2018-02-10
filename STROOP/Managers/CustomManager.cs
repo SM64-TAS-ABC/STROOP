@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SM64_Diagnostic.Structs;
+using STROOP.Structs;
 using System.Windows.Forms;
-using SM64_Diagnostic.Utilities;
-using SM64_Diagnostic.Controls;
-using SM64_Diagnostic.Extensions;
-using SM64_Diagnostic.Structs.Configurations;
-using SM64_Diagnostic.Forms;
+using STROOP.Utilities;
+using STROOP.Controls;
+using STROOP.Extensions;
+using STROOP.Structs.Configurations;
+using STROOP.Forms;
 
-namespace SM64_Diagnostic.Managers
+namespace STROOP.Managers
 {
     public class CustomManager : DataManager
     {

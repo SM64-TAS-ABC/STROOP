@@ -1,5 +1,5 @@
-﻿using SM64_Diagnostic.Structs.Configurations;
-using SM64_Diagnostic.Utilities;
+﻿using STROOP.Structs.Configurations;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SM64_Diagnostic.Managers
+namespace STROOP.Managers
 {
     public class PuManager
     {

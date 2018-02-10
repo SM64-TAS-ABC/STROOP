@@ -8,16 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
-using SM64_Diagnostic.Utilities;
-using SM64_Diagnostic.Structs;
-using SM64_Diagnostic.ManagerClasses;
-using SM64_Diagnostic.Managers;
-using SM64_Diagnostic.Extensions;
-using SM64_Diagnostic.Structs.Configurations;
-using SM64_Diagnostic.Controls;
-using SM64_Diagnostic.Forms;
+using STROOP.Utilities;
+using STROOP.Structs;
+using STROOP.ManagerClasses;
+using STROOP.Managers;
+using STROOP.Extensions;
+using STROOP.Structs.Configurations;
+using STROOP.Controls;
+using STROOP.Forms;
 
-namespace SM64_Diagnostic
+namespace STROOP
 {
     public partial class StroopMainForm : Form
     {

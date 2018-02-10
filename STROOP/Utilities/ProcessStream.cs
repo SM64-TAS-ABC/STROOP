@@ -1,5 +1,5 @@
-﻿using SM64_Diagnostic.Structs;
-using SM64_Diagnostic.Structs.Configurations;
+﻿using STROOP.Structs;
+using STROOP.Structs.Configurations;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SM64_Diagnostic.Utilities
+namespace STROOP.Utilities
 {
     public class ProcessStream
     {

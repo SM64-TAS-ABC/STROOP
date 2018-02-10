@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SM64_Diagnostic.Structs;
-using SM64_Diagnostic.Utilities;
+using STROOP.Structs;
+using STROOP.Utilities;
 
-namespace SM64_Diagnostic.Extensions
+namespace STROOP.Extensions
 {
     public static class WatchExpressionExtensions
     {

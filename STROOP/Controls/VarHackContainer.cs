@@ -1,7 +1,7 @@
-﻿using SM64_Diagnostic.Forms;
-using SM64_Diagnostic.Structs;
-using SM64_Diagnostic.Structs.Configurations;
-using SM64_Diagnostic.Utilities;
+﻿using STROOP.Forms;
+using STROOP.Structs;
+using STROOP.Structs.Configurations;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SM64_Diagnostic.Controls
+namespace STROOP.Controls
 {
     public class VarHackContainer : TableLayoutPanel
     {
@@ -395,16 +395,16 @@ namespace SM64_Diagnostic.Controls
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VarHackContainerForm));
             this.checkBoxUsePointer = new System.Windows.Forms.CheckBox();
             this.checkBoxNoNumber = new System.Windows.Forms.CheckBox();
-            this.textBoxNameValue = new SM64_Diagnostic.BetterTextbox();
-            this.textBoxNameLabel = new SM64_Diagnostic.BetterTextbox();
-            this.textBoxAddressLabel = new SM64_Diagnostic.BetterTextbox();
-            this.textBoxAddressValue = new SM64_Diagnostic.BetterTextbox();
-            this.textBoxPointerOffsetLabel = new SM64_Diagnostic.BetterTextbox();
-            this.textBoxPointerOffsetValue = new SM64_Diagnostic.BetterTextbox();
-            this.textBoxXPosLabel = new SM64_Diagnostic.BetterTextbox();
-            this.textBoxYPosLabel = new SM64_Diagnostic.BetterTextbox();
-            this.textBoxXPosValue = new SM64_Diagnostic.BetterTextbox();
-            this.textBoxYPosValue = new SM64_Diagnostic.BetterTextbox();
+            this.textBoxNameValue = new STROOP.BetterTextbox();
+            this.textBoxNameLabel = new STROOP.BetterTextbox();
+            this.textBoxAddressLabel = new STROOP.BetterTextbox();
+            this.textBoxAddressValue = new STROOP.BetterTextbox();
+            this.textBoxPointerOffsetLabel = new STROOP.BetterTextbox();
+            this.textBoxPointerOffsetValue = new STROOP.BetterTextbox();
+            this.textBoxXPosLabel = new STROOP.BetterTextbox();
+            this.textBoxYPosLabel = new STROOP.BetterTextbox();
+            this.textBoxXPosValue = new STROOP.BetterTextbox();
+            this.textBoxYPosValue = new STROOP.BetterTextbox();
             this.checkBoxUseHex = new System.Windows.Forms.CheckBox();
             this.radioButtonSByte = new System.Windows.Forms.RadioButton();
             this.radioButtonByte = new System.Windows.Forms.RadioButton();
@@ -704,7 +704,7 @@ namespace SM64_Diagnostic.Controls
             // 
             // pictureBoxUpArrow
             // 
-            this.pictureBoxUpArrow.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.Up_Arrow;
+            this.pictureBoxUpArrow.BackgroundImage = global::STROOP.Properties.Resources.Up_Arrow;
             this.pictureBoxUpArrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             //this.pictureBoxUpArrow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxUpArrow.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -717,7 +717,7 @@ namespace SM64_Diagnostic.Controls
             // 
             // pictureBoxDownArrow
             // 
-            this.pictureBoxDownArrow.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.Down_Arrow;
+            this.pictureBoxDownArrow.BackgroundImage = global::STROOP.Properties.Resources.Down_Arrow;
             this.pictureBoxDownArrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             //this.pictureBoxDownArrow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxDownArrow.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -730,7 +730,7 @@ namespace SM64_Diagnostic.Controls
             // 
             // pictureBoxRedX
             // 
-            this.pictureBoxRedX.BackgroundImage = global::SM64_Diagnostic.Properties.Resources.Red_X;
+            this.pictureBoxRedX.BackgroundImage = global::STROOP.Properties.Resources.Red_X;
             this.pictureBoxRedX.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             //this.pictureBoxRedX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxRedX.Cursor = System.Windows.Forms.Cursors.Hand;

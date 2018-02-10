@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace SM64_Diagnostic.Utilities
+namespace STROOP.Utilities
 {
     public static class ColorExtensions
     {

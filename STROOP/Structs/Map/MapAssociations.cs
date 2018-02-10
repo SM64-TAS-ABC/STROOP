@@ -7,7 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace SM64_Diagnostic.Structs
+namespace STROOP.Structs
 {
     public class MapAssociations
     {

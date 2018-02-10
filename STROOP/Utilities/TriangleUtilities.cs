@@ -1,13 +1,13 @@
-﻿using SM64_Diagnostic.Forms;
-using SM64_Diagnostic.Structs;
-using SM64_Diagnostic.Structs.Configurations;
+﻿using STROOP.Forms;
+using STROOP.Structs;
+using STROOP.Structs.Configurations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SM64_Diagnostic.Utilities
+namespace STROOP.Utilities
 {
     public static class TriangleUtilities
     {

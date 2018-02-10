@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Drawing.Imaging;
 
-namespace SM64_Diagnostic.Extensions
+namespace STROOP.Extensions
 {
     public static class BitmapExtensions
     {

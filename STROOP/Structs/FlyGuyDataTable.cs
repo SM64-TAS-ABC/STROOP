@@ -1,11 +1,11 @@
-﻿using SM64_Diagnostic.Utilities;
+﻿using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SM64_Diagnostic.Structs
+namespace STROOP.Structs
 {
     public class FlyGuyDataTable
     {

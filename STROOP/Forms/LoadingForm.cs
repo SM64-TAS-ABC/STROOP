@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SM64_Diagnostic.Forms
+namespace STROOP.Forms
 {
     public partial class LoadingForm : Form
     {

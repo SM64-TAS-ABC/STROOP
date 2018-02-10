@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SM64_Diagnostic.Extensions
+namespace STROOP.Extensions
 {
     public static class ControlCollectionsExtensions
     {

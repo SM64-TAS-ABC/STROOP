@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
-namespace SM64_Diagnostic.Controls
+namespace STROOP.Controls
 {
 	public class RichTextBoxEx : RichTextBox
 	{

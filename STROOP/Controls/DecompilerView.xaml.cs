@@ -17,7 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml;
 
-namespace SM64_Diagnostic.Controls
+namespace STROOP.Controls
 {
     /// <summary>
     /// Interaction logic for DecompilerView.xaml

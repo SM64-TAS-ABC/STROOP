@@ -1,10 +1,10 @@
-﻿using SM64_Diagnostic.Managers;
-using SM64_Diagnostic.Structs.Configurations;
-using SM64_Diagnostic.Utilities;
+﻿using STROOP.Managers;
+using STROOP.Structs.Configurations;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 
-namespace SM64_Diagnostic.Structs
+namespace STROOP.Structs
 {
     public static class WatchVariableSpecialUtilities
     {

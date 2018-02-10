@@ -8,7 +8,7 @@ using System.Xml;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace SM64_Diagnostic.Utilities
+namespace STROOP.Utilities
 {
     public static class ColorUtilities
     {

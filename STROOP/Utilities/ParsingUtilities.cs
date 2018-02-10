@@ -7,7 +7,7 @@ using System.Globalization;
 using System.Xml;
 using System.Text.RegularExpressions;
 
-namespace SM64_Diagnostic.Utilities
+namespace STROOP.Utilities
 {
     public static class ParsingUtilities
     {

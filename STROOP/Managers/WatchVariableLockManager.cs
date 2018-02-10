@@ -1,6 +1,6 @@
-﻿using SM64_Diagnostic.Controls;
-using SM64_Diagnostic.Managers;
-using SM64_Diagnostic.Structs.Configurations;
+﻿using STROOP.Controls;
+using STROOP.Managers;
+using STROOP.Structs.Configurations;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SM64_Diagnostic.Structs
+namespace STROOP.Structs
 {
     public static class WatchVariableLockManager
     {

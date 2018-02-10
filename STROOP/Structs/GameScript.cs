@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SM64_Diagnostic.Structs
+namespace STROOP.Structs
 {
     public enum ExecuteModeType {Once, Always, UserCalledS };
     public class GameScript

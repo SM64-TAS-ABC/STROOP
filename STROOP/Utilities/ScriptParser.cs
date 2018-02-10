@@ -7,7 +7,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Globalization;
 
-namespace SM64_Diagnostic.Structs
+namespace STROOP.Structs
 {
     public class ScriptParser
     {

@@ -1,4 +1,4 @@
-﻿using SM64_Diagnostic.Controls;
+﻿using STROOP.Controls;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SM64_Diagnostic.Structs
+namespace STROOP.Structs
 {
     public class ObjectBehaviorAssociation
     {
