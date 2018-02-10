@@ -650,6 +650,11 @@ namespace STROOP.Controls
             return _watchVarWrapper.GetStringValue(useRounding);
         }
 
+        public WatchVariableControlPrecursor GetPrecursor()
+        {
+            return _watchVarPrecursor;
+        }
+
 
 
 

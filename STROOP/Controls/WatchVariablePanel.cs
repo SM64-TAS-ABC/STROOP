@@ -181,6 +181,18 @@ namespace STROOP.Controls
             AddVariables(_watchVarPrecursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
         }
 
+        /** Gets the precursors for the currently shown controls in order. */
+        private List<WatchVariableControlPrecursor> GetCurrentControlPrecursors()
+        {
+            List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
+            foreach (Control control in Controls)
+            {
+                WatchVariableControl watchVarControl = control as WatchVariableControl;
+                precursors.Add(watchVarControl.GetPrecursor());
+            }
+            return precursors;
+        }
+
         public void ShowVariableXml()
         {
             InfoForm infoForm = new InfoForm();
@@ -189,7 +201,7 @@ namespace STROOP.Controls
                 infoForm.SetText(
                     "Variable Info",
                     "Variable XML",
-                    String.Join("\r\n", _watchVarControls));
+                    String.Join("\r\n", GetCurrentControlPrecursors()));
             }
             infoForm.Show();
         }
@@ -202,7 +214,7 @@ namespace STROOP.Controls
 
         public void SaveVariables()
         {
-            WatchVariableFileUtilities.SaveVariables(_watchVarPrecursors);
+            WatchVariableFileUtilities.SaveVariables(GetCurrentControlPrecursors());
         }
 
         public void EnableCustomVariableFunctionality()
