@@ -10,6 +10,8 @@ using STROOP.Controls;
 using STROOP.Extensions;
 using STROOP.Structs.Configurations;
 using STROOP.Forms;
+using System.IO;
+using System.Xml.Linq;
 
 namespace STROOP.Managers
 {
@@ -22,6 +24,8 @@ namespace STROOP.Managers
         private CheckBox _checkBoxUseValueAtStartOfGlobalTimer;
         private Label _labelCustomRecordingFrequencyValue;
         private Label _labelCustomRecordingGapsValue;
+        private SaveFileDialog _saveFileDialogCustom;
+        private OpenFileDialog _openFileDialogCustom;
 
         private Dictionary<int, List<string>> _recordedValues;
         private int? _lastTimer;
@@ -32,6 +36,17 @@ namespace STROOP.Managers
             : base(variables, variableTable)
         {
             EnableCustomVariableFunctionality();
+
+            _saveFileDialogCustom = new SaveFileDialog()
+            {
+                CheckPathExists = true,
+                Filter = "STROOP Variables|*.stv",
+            };
+            _openFileDialogCustom = new OpenFileDialog()
+            {
+                CheckFileExists = true,
+                Filter = "STROOP Variables|*.stv",
+            };
 
             SplitContainer splitContainerCustom = customControl.Controls["splitContainerCustom"] as SplitContainer;
             SplitContainer splitContainerCustomControls = splitContainerCustom.Panel1.Controls["splitContainerCustomControls"] as SplitContainer;
@@ -162,14 +177,53 @@ namespace STROOP.Managers
             watchVarControl.EnableCustomFunctionality();
         }
 
+        public override void AddVariables(IEnumerable<WatchVariableControl> watchVarControls)
+        {
+            base.AddVariables(watchVarControls);
+            foreach (WatchVariableControl watchVarControl in watchVarControls)
+            {
+                watchVarControl.EnableCustomFunctionality();
+            }
+        }
+
         public void OpenVariables()
         {
-            // TODO implement this
+            DialogResult result = _openFileDialogCustom.ShowDialog();
+            if (result != DialogResult.OK)
+                return;
+
+            XDocument varXml = XDocument.Load(_openFileDialogCustom.FileName);
+            AddVariables(WatchVariablesFromXML(varXml).Select(w => w.CreateWatchVariableControl()));
         }
 
         public void SaveVariables()
         {
-            // TODO implement this
+            DialogResult result = _saveFileDialogCustom.ShowDialog();
+            if (result != DialogResult.OK)
+                return;
+
+            WatchVariablesToXML(_variablePanel.WatchVarPreCursors).Save(_saveFileDialogCustom.FileName);
+        }
+
+        public XDocument WatchVariablesToXML(IEnumerable<WatchVariableControlPrecursor> watchVars)
+        {
+            XDocument doc = new XDocument();
+            XElement root = new XElement(XName.Get("CustomData"));
+            doc.Add(root);
+
+            foreach (WatchVariableControlPrecursor watchVar in watchVars)
+                root.Add(watchVar.ToXML());
+
+            return doc;
+        }
+
+        public IEnumerable<WatchVariableControlPrecursor> WatchVariablesFromXML(XContainer xml)
+        {
+            // Retreive the root node
+            if (xml is XDocument)
+                xml = (xml as XDocument).Root;
+
+            return xml.Elements().Select(e => new WatchVariableControlPrecursor(e));
         }
 
         private void ToggleRecording()
