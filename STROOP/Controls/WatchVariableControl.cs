@@ -1,5 +1,4 @@
-﻿using OpenTK.Input;
-using STROOP.Extensions;
+﻿using STROOP.Extensions;
 using STROOP.Managers;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
@@ -12,6 +11,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace STROOP.Controls
 {
@@ -265,7 +265,7 @@ namespace STROOP.Controls
         {
             TextBox nameTextBox = new TextBox();
             nameTextBox.Text = VarName;
-            nameTextBox.Cursor = Cursors.Default;
+            nameTextBox.Cursor = System.Windows.Forms.Cursors.Default;
             nameTextBox.ReadOnly = true;
             nameTextBox.BorderStyle = BorderStyle.None;
             nameTextBox.TextAlign = HorizontalAlignment.Left;
@@ -341,7 +341,7 @@ namespace STROOP.Controls
             }
         }
 
-        private void OnValueTextValueKeyDown(KeyEventArgs e)
+        private void OnValueTextValueKeyDown(System.Windows.Forms.KeyEventArgs e)
         {
             if (_editMode)
             {
@@ -367,19 +367,18 @@ namespace STROOP.Controls
         {
             this.Focus();
 
-            KeyboardState keyboardState = Keyboard.GetState();
-            bool isCtrlKeyHeld = keyboardState.IsKeyDown(Key.ControlLeft) || keyboardState.IsKeyDown(Key.ControlRight);
-            bool isShiftKeyHeld = keyboardState.IsKeyDown(Key.ShiftLeft) || keyboardState.IsKeyDown(Key.ShiftRight);
-            bool isAltKeyHeld = keyboardState.IsKeyDown(Key.AltLeft) || keyboardState.IsKeyDown(Key.AltRight);
-            bool isFKeyHeld = keyboardState.IsKeyDown(Key.F);
-            bool isHKeyHeld = keyboardState.IsKeyDown(Key.H);
-            bool isLKeyHeld = keyboardState.IsKeyDown(Key.L);
-            bool isRKeyHeld = keyboardState.IsKeyDown(Key.R);
+            bool isCtrlKeyHeld = ModifierKeys == Keys.Control;
+            bool isShiftKeyHeld = ModifierKeys == Keys.Shift;
+            bool isAltKeyHeld = ModifierKeys == Keys.Alt;
+            bool isFKeyHeld =  Keyboard.IsKeyDown(Key.F);
+            bool isHKeyHeld =  Keyboard.IsKeyDown(Key.H);
+            bool isLKeyHeld =  Keyboard.IsKeyDown(Key.L);
+            bool isRKeyHeld =  Keyboard.IsKeyDown(Key.R);
             bool isDeleteKeyHeld =
-                keyboardState.IsKeyDown(Key.Delete) ||
-                keyboardState.IsKeyDown(Key.BackSpace) ||
-                keyboardState.IsKeyDown(Key.Escape);
-            bool isBacktickHeld = keyboardState.IsKeyDown(Key.Grave);
+                 Keyboard.IsKeyDown(Key.Delete) ||
+                 Keyboard.IsKeyDown(Key.Back) ||
+                 Keyboard.IsKeyDown(Key.Escape);
+            bool isBacktickHeld =  Keyboard.IsKeyDown(Key.OemTilde);
 
             if (isFKeyHeld && isCtrlKeyHeld)
             {
@@ -449,7 +448,7 @@ namespace STROOP.Controls
             }
         }
 
-        private void OnNameTextValueKeyDown(KeyEventArgs e)
+        private void OnNameTextValueKeyDown(System.Windows.Forms.KeyEventArgs e)
         {
             if (_renameMode)
             {

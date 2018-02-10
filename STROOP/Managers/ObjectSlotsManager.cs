@@ -135,7 +135,7 @@ namespace STROOP.Managers
             _selectedUpdatePending = true;
             ObjectSlot selectedSlot = sender as ObjectSlot;
             selectedSlot.Focus();
-            KeyboardState keyboardState = Keyboard.GetState();
+
             bool isCtrlKeyHeld = Control.ModifierKeys == Keys.Control; 
             bool isShiftKeyHeld = Control.ModifierKeys == Keys.Shift;
             bool isAltKeyHeld = Control.ModifierKeys == Keys.Alt;
