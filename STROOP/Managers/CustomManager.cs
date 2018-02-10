@@ -38,8 +38,15 @@ namespace STROOP.Managers
 
             // Panel 1 controls
 
-            Button buttonClearVariables = splitContainerCustomControls.Panel1.Controls["buttonClearVariables"] as Button;
-            buttonClearVariables.Click += (sender, e) => ClearVariables();
+            Button buttonOpenVars = splitContainerCustomControls.Panel1.Controls["buttonOpenVars"] as Button;
+            buttonOpenVars.Click += (sender, e) => OpenVariables();
+
+            Button buttonSaveVars = splitContainerCustomControls.Panel1.Controls["buttonSaveVars"] as Button;
+            buttonSaveVars.Click += (sender, e) => SaveVariables();
+
+            Button buttonClearVars = splitContainerCustomControls.Panel1.Controls["buttonClearVars"] as Button;
+            buttonClearVars.Click += (sender, e) => ClearVariables();
+
 
             _checkBoxCustomRecordValues = splitContainerCustomControls.Panel1.Controls["checkBoxCustomRecordValues"] as CheckBox;
             _checkBoxCustomRecordValues.Click += (sender, e) => ToggleRecording();
@@ -153,6 +160,16 @@ namespace STROOP.Managers
         {
             base.AddVariable(watchVarControl);
             watchVarControl.EnableCustomFunctionality();
+        }
+
+        public void OpenVariables()
+        {
+            // TODO implement this
+        }
+
+        public void SaveVariables()
+        {
+            // TODO implement this
         }
 
         private void ToggleRecording()

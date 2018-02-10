@@ -542,7 +542,7 @@ namespace STROOP
             this.buttonCustomClearValues = new System.Windows.Forms.Button();
             this.buttonCustomShowValues = new System.Windows.Forms.Button();
             this.checkBoxCustomRecordValues = new System.Windows.Forms.CheckBox();
-            this.buttonClearVariables = new System.Windows.Forms.Button();
+            this.buttonOpenVars = new System.Windows.Forms.Button();
             this.groupBoxVarHeight = new System.Windows.Forms.GroupBox();
             this.betterTextboxVarHeightGetSet = new STROOP.BetterTextbox();
             this.betterTextboxVarHeightAddSubtract = new STROOP.BetterTextbox();
@@ -909,6 +909,12 @@ namespace STROOP
             this.checkBoxUseRomHack = new System.Windows.Forms.CheckBox();
             this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
             this.tabPageTesting = new System.Windows.Forms.TabPage();
+            this.groupBoxTriRooms = new System.Windows.Forms.GroupBox();
+            this.textBoxTriRoomsToValue = new STROOP.BetterTextbox();
+            this.textBoxTriRoomsFromValue = new STROOP.BetterTextbox();
+            this.buttonTriRoomsConvert = new System.Windows.Forms.Button();
+            this.labelTriRoomsToLabel = new System.Windows.Forms.Label();
+            this.labelTriRoomsFromLabel = new System.Windows.Forms.Label();
             this.groupBoxScuttlebugStuff = new System.Windows.Forms.GroupBox();
             this.buttonScuttlebugStuffGetTris = new STROOP.BinaryButton();
             this.radioButtonScuttlebugStuffHMCRedCoins = new System.Windows.Forms.RadioButton();
@@ -1067,12 +1073,8 @@ namespace STROOP
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.groupBoxTriRooms = new System.Windows.Forms.GroupBox();
-            this.textBoxTriRoomsToValue = new STROOP.BetterTextbox();
-            this.textBoxTriRoomsFromValue = new STROOP.BetterTextbox();
-            this.buttonTriRoomsConvert = new System.Windows.Forms.Button();
-            this.labelTriRoomsToLabel = new System.Windows.Forms.Label();
-            this.labelTriRoomsFromLabel = new System.Windows.Forms.Label();
+            this.buttonSaveVars = new System.Windows.Forms.Button();
+            this.buttonClearVars = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1392,6 +1394,7 @@ namespace STROOP
             this.groupBoxGotoRetrieveOffsets.SuspendLayout();
             this.groupBoxShowOverlay.SuspendLayout();
             this.tabPageTesting.SuspendLayout();
+            this.groupBoxTriRooms.SuspendLayout();
             this.groupBoxScuttlebugStuff.SuspendLayout();
             this.groupBoxSchedule.SuspendLayout();
             this.groupBoxStateTransfer.SuspendLayout();
@@ -1402,7 +1405,6 @@ namespace STROOP
             this.groupBoxGoto.SuspendLayout();
             this.groupBoxRecording.SuspendLayout();
             this.panelConnect.SuspendLayout();
-            this.groupBoxTriRooms.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -1432,7 +1434,7 @@ namespace STROOP
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 375);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 376);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1497,7 +1499,7 @@ namespace STROOP
             this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
             this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 153);
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 154);
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
@@ -4688,7 +4690,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 219F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 220F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -7832,7 +7834,9 @@ namespace STROOP
             this.splitContainerCustomControls.Panel1.Controls.Add(this.buttonCustomClearValues);
             this.splitContainerCustomControls.Panel1.Controls.Add(this.buttonCustomShowValues);
             this.splitContainerCustomControls.Panel1.Controls.Add(this.checkBoxCustomRecordValues);
-            this.splitContainerCustomControls.Panel1.Controls.Add(this.buttonClearVariables);
+            this.splitContainerCustomControls.Panel1.Controls.Add(this.buttonClearVars);
+            this.splitContainerCustomControls.Panel1.Controls.Add(this.buttonSaveVars);
+            this.splitContainerCustomControls.Panel1.Controls.Add(this.buttonOpenVars);
             // 
             // splitContainerCustomControls.Panel2
             // 
@@ -7842,7 +7846,7 @@ namespace STROOP
             this.splitContainerCustomControls.Panel2.Controls.Add(this.groupBoxVarValueWidth);
             this.splitContainerCustomControls.Panel2.Controls.Add(this.groupBoxVarNameWidth);
             this.splitContainerCustomControls.Size = new System.Drawing.Size(221, 463);
-            this.splitContainerCustomControls.SplitterDistance = 172;
+            this.splitContainerCustomControls.SplitterDistance = 160;
             this.splitContainerCustomControls.SplitterWidth = 1;
             this.splitContainerCustomControls.TabIndex = 31;
             // 
@@ -7850,7 +7854,7 @@ namespace STROOP
             // 
             this.labelCustomRecordingGapsValue.AutoSize = true;
             this.labelCustomRecordingGapsValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelCustomRecordingGapsValue.Location = new System.Drawing.Point(148, 123);
+            this.labelCustomRecordingGapsValue.Location = new System.Drawing.Point(148, 129);
             this.labelCustomRecordingGapsValue.MinimumSize = new System.Drawing.Size(40, 2);
             this.labelCustomRecordingGapsValue.Name = "labelCustomRecordingGapsValue";
             this.labelCustomRecordingGapsValue.Size = new System.Drawing.Size(40, 15);
@@ -7862,7 +7866,7 @@ namespace STROOP
             // 
             this.labelCustomRecordingFrequencyValue.AutoSize = true;
             this.labelCustomRecordingFrequencyValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelCustomRecordingFrequencyValue.Location = new System.Drawing.Point(47, 123);
+            this.labelCustomRecordingFrequencyValue.Location = new System.Drawing.Point(47, 129);
             this.labelCustomRecordingFrequencyValue.MinimumSize = new System.Drawing.Size(40, 2);
             this.labelCustomRecordingFrequencyValue.Name = "labelCustomRecordingFrequencyValue";
             this.labelCustomRecordingFrequencyValue.Size = new System.Drawing.Size(40, 15);
@@ -7873,7 +7877,7 @@ namespace STROOP
             // labelCustomRecordingGapsLabel
             // 
             this.labelCustomRecordingGapsLabel.AutoSize = true;
-            this.labelCustomRecordingGapsLabel.Location = new System.Drawing.Point(106, 124);
+            this.labelCustomRecordingGapsLabel.Location = new System.Drawing.Point(106, 130);
             this.labelCustomRecordingGapsLabel.MinimumSize = new System.Drawing.Size(40, 2);
             this.labelCustomRecordingGapsLabel.Name = "labelCustomRecordingGapsLabel";
             this.labelCustomRecordingGapsLabel.Size = new System.Drawing.Size(40, 13);
@@ -7884,7 +7888,7 @@ namespace STROOP
             // labelCustomRecordingFrequencyLabel
             // 
             this.labelCustomRecordingFrequencyLabel.AutoSize = true;
-            this.labelCustomRecordingFrequencyLabel.Location = new System.Drawing.Point(5, 124);
+            this.labelCustomRecordingFrequencyLabel.Location = new System.Drawing.Point(5, 130);
             this.labelCustomRecordingFrequencyLabel.MinimumSize = new System.Drawing.Size(40, 2);
             this.labelCustomRecordingFrequencyLabel.Name = "labelCustomRecordingFrequencyLabel";
             this.labelCustomRecordingFrequencyLabel.Size = new System.Drawing.Size(40, 13);
@@ -7897,7 +7901,7 @@ namespace STROOP
             this.checkBoxUseValueAtStartOfGlobalTimer.AutoSize = true;
             this.checkBoxUseValueAtStartOfGlobalTimer.Checked = true;
             this.checkBoxUseValueAtStartOfGlobalTimer.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxUseValueAtStartOfGlobalTimer.Location = new System.Drawing.Point(11, 103);
+            this.checkBoxUseValueAtStartOfGlobalTimer.Location = new System.Drawing.Point(11, 109);
             this.checkBoxUseValueAtStartOfGlobalTimer.Name = "checkBoxUseValueAtStartOfGlobalTimer";
             this.checkBoxUseValueAtStartOfGlobalTimer.Size = new System.Drawing.Size(186, 17);
             this.checkBoxUseValueAtStartOfGlobalTimer.TabIndex = 35;
@@ -7909,7 +7913,7 @@ namespace STROOP
             this.textBoxRecordValuesCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxRecordValuesCount.BackColor = System.Drawing.SystemColors.Control;
             this.textBoxRecordValuesCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxRecordValuesCount.Location = new System.Drawing.Point(137, 46);
+            this.textBoxRecordValuesCount.Location = new System.Drawing.Point(137, 52);
             this.textBoxRecordValuesCount.Name = "textBoxRecordValuesCount";
             this.textBoxRecordValuesCount.ReadOnly = true;
             this.textBoxRecordValuesCount.Size = new System.Drawing.Size(51, 20);
@@ -7919,7 +7923,7 @@ namespace STROOP
             // 
             // buttonCustomClearValues
             // 
-            this.buttonCustomClearValues.Location = new System.Drawing.Point(102, 72);
+            this.buttonCustomClearValues.Location = new System.Drawing.Point(102, 78);
             this.buttonCustomClearValues.Name = "buttonCustomClearValues";
             this.buttonCustomClearValues.Size = new System.Drawing.Size(87, 25);
             this.buttonCustomClearValues.TabIndex = 19;
@@ -7928,7 +7932,7 @@ namespace STROOP
             // 
             // buttonCustomShowValues
             // 
-            this.buttonCustomShowValues.Location = new System.Drawing.Point(10, 72);
+            this.buttonCustomShowValues.Location = new System.Drawing.Point(10, 78);
             this.buttonCustomShowValues.Name = "buttonCustomShowValues";
             this.buttonCustomShowValues.Size = new System.Drawing.Size(87, 25);
             this.buttonCustomShowValues.TabIndex = 18;
@@ -7938,21 +7942,21 @@ namespace STROOP
             // checkBoxCustomRecordValues
             // 
             this.checkBoxCustomRecordValues.AutoSize = true;
-            this.checkBoxCustomRecordValues.Location = new System.Drawing.Point(11, 47);
+            this.checkBoxCustomRecordValues.Location = new System.Drawing.Point(11, 53);
             this.checkBoxCustomRecordValues.Name = "checkBoxCustomRecordValues";
             this.checkBoxCustomRecordValues.Size = new System.Drawing.Size(96, 17);
             this.checkBoxCustomRecordValues.TabIndex = 17;
             this.checkBoxCustomRecordValues.Text = "Record Values";
             this.checkBoxCustomRecordValues.UseVisualStyleBackColor = true;
             // 
-            // buttonClearVariables
+            // buttonOpenVars
             // 
-            this.buttonClearVariables.Location = new System.Drawing.Point(10, 3);
-            this.buttonClearVariables.Name = "buttonClearVariables";
-            this.buttonClearVariables.Size = new System.Drawing.Size(179, 38);
-            this.buttonClearVariables.TabIndex = 4;
-            this.buttonClearVariables.Text = "Clear Variables";
-            this.buttonClearVariables.UseVisualStyleBackColor = true;
+            this.buttonOpenVars.Location = new System.Drawing.Point(11, 6);
+            this.buttonOpenVars.Name = "buttonOpenVars";
+            this.buttonOpenVars.Size = new System.Drawing.Size(58, 38);
+            this.buttonOpenVars.TabIndex = 4;
+            this.buttonOpenVars.Text = "Open\r\nVars";
+            this.buttonOpenVars.UseVisualStyleBackColor = true;
             // 
             // groupBoxVarHeight
             // 
@@ -7962,7 +7966,7 @@ namespace STROOP
             this.groupBoxVarHeight.Controls.Add(this.buttonVarHeightSubtract);
             this.groupBoxVarHeight.Controls.Add(this.buttonVarHeightSet);
             this.groupBoxVarHeight.Controls.Add(this.buttonVarHeightAdd);
-            this.groupBoxVarHeight.Location = new System.Drawing.Point(7, 199);
+            this.groupBoxVarHeight.Location = new System.Drawing.Point(7, 189);
             this.groupBoxVarHeight.Name = "groupBoxVarHeight";
             this.groupBoxVarHeight.Size = new System.Drawing.Size(185, 70);
             this.groupBoxVarHeight.TabIndex = 30;
@@ -8035,9 +8039,9 @@ namespace STROOP
             // 
             // buttonResetVariableSizeToDefault
             // 
-            this.buttonResetVariableSizeToDefault.Location = new System.Drawing.Point(10, 3);
+            this.buttonResetVariableSizeToDefault.Location = new System.Drawing.Point(10, 6);
             this.buttonResetVariableSizeToDefault.Name = "buttonResetVariableSizeToDefault";
-            this.buttonResetVariableSizeToDefault.Size = new System.Drawing.Size(179, 38);
+            this.buttonResetVariableSizeToDefault.Size = new System.Drawing.Size(179, 25);
             this.buttonResetVariableSizeToDefault.TabIndex = 4;
             this.buttonResetVariableSizeToDefault.Text = "Reset Variable Size to Default";
             this.buttonResetVariableSizeToDefault.UseVisualStyleBackColor = true;
@@ -8050,7 +8054,7 @@ namespace STROOP
             this.groupBoxVarValueWidth.Controls.Add(this.buttonVarValueWidthSubtract);
             this.groupBoxVarValueWidth.Controls.Add(this.buttonVarValueWidthSet);
             this.groupBoxVarValueWidth.Controls.Add(this.buttonVarValueWidthAdd);
-            this.groupBoxVarValueWidth.Location = new System.Drawing.Point(7, 123);
+            this.groupBoxVarValueWidth.Location = new System.Drawing.Point(7, 113);
             this.groupBoxVarValueWidth.Name = "groupBoxVarValueWidth";
             this.groupBoxVarValueWidth.Size = new System.Drawing.Size(185, 70);
             this.groupBoxVarValueWidth.TabIndex = 30;
@@ -8129,7 +8133,7 @@ namespace STROOP
             this.groupBoxVarNameWidth.Controls.Add(this.buttonVarNameWidthSubtract);
             this.groupBoxVarNameWidth.Controls.Add(this.buttonVarNameWidthSet);
             this.groupBoxVarNameWidth.Controls.Add(this.buttonVarNameWidthAdd);
-            this.groupBoxVarNameWidth.Location = new System.Drawing.Point(7, 47);
+            this.groupBoxVarNameWidth.Location = new System.Drawing.Point(7, 37);
             this.groupBoxVarNameWidth.Name = "groupBoxVarNameWidth";
             this.groupBoxVarNameWidth.Size = new System.Drawing.Size(185, 70);
             this.groupBoxVarNameWidth.TabIndex = 30;
@@ -8884,7 +8888,7 @@ namespace STROOP
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(696, 454);
+            this.glControlMap.Size = new System.Drawing.Size(699, 454);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -9851,7 +9855,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(391, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(374, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -9883,7 +9887,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(380, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(363, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -9939,7 +9943,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(380, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(363, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -12134,6 +12138,70 @@ namespace STROOP
             this.tabPageTesting.TabIndex = 19;
             this.tabPageTesting.Text = "Testing";
             // 
+            // groupBoxTriRooms
+            // 
+            this.groupBoxTriRooms.Controls.Add(this.textBoxTriRoomsToValue);
+            this.groupBoxTriRooms.Controls.Add(this.textBoxTriRoomsFromValue);
+            this.groupBoxTriRooms.Controls.Add(this.buttonTriRoomsConvert);
+            this.groupBoxTriRooms.Controls.Add(this.labelTriRoomsToLabel);
+            this.groupBoxTriRooms.Controls.Add(this.labelTriRoomsFromLabel);
+            this.groupBoxTriRooms.Location = new System.Drawing.Point(760, 259);
+            this.groupBoxTriRooms.Name = "groupBoxTriRooms";
+            this.groupBoxTriRooms.Size = new System.Drawing.Size(116, 99);
+            this.groupBoxTriRooms.TabIndex = 44;
+            this.groupBoxTriRooms.TabStop = false;
+            this.groupBoxTriRooms.Text = "Tri Rooms";
+            // 
+            // textBoxTriRoomsToValue
+            // 
+            this.textBoxTriRoomsToValue.Location = new System.Drawing.Point(40, 42);
+            this.textBoxTriRoomsToValue.Name = "textBoxTriRoomsToValue";
+            this.textBoxTriRoomsToValue.Size = new System.Drawing.Size(67, 20);
+            this.textBoxTriRoomsToValue.TabIndex = 28;
+            this.textBoxTriRoomsToValue.Text = "2";
+            this.textBoxTriRoomsToValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxTriRoomsFromValue
+            // 
+            this.textBoxTriRoomsFromValue.Location = new System.Drawing.Point(40, 16);
+            this.textBoxTriRoomsFromValue.Name = "textBoxTriRoomsFromValue";
+            this.textBoxTriRoomsFromValue.Size = new System.Drawing.Size(67, 20);
+            this.textBoxTriRoomsFromValue.TabIndex = 28;
+            this.textBoxTriRoomsFromValue.Text = "1";
+            this.textBoxTriRoomsFromValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonTriRoomsConvert
+            // 
+            this.buttonTriRoomsConvert.Location = new System.Drawing.Point(12, 67);
+            this.buttonTriRoomsConvert.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTriRoomsConvert.Name = "buttonTriRoomsConvert";
+            this.buttonTriRoomsConvert.Size = new System.Drawing.Size(95, 23);
+            this.buttonTriRoomsConvert.TabIndex = 16;
+            this.buttonTriRoomsConvert.Text = "Convert";
+            this.buttonTriRoomsConvert.UseVisualStyleBackColor = true;
+            // 
+            // labelTriRoomsToLabel
+            // 
+            this.labelTriRoomsToLabel.AutoSize = true;
+            this.labelTriRoomsToLabel.Location = new System.Drawing.Point(8, 45);
+            this.labelTriRoomsToLabel.MinimumSize = new System.Drawing.Size(20, 2);
+            this.labelTriRoomsToLabel.Name = "labelTriRoomsToLabel";
+            this.labelTriRoomsToLabel.Size = new System.Drawing.Size(23, 13);
+            this.labelTriRoomsToLabel.TabIndex = 18;
+            this.labelTriRoomsToLabel.Text = "To:";
+            this.labelTriRoomsToLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelTriRoomsFromLabel
+            // 
+            this.labelTriRoomsFromLabel.AutoSize = true;
+            this.labelTriRoomsFromLabel.Location = new System.Drawing.Point(8, 19);
+            this.labelTriRoomsFromLabel.MinimumSize = new System.Drawing.Size(20, 2);
+            this.labelTriRoomsFromLabel.Name = "labelTriRoomsFromLabel";
+            this.labelTriRoomsFromLabel.Size = new System.Drawing.Size(33, 13);
+            this.labelTriRoomsFromLabel.TabIndex = 18;
+            this.labelTriRoomsFromLabel.Text = "From:";
+            this.labelTriRoomsFromLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // groupBoxScuttlebugStuff
             // 
             this.groupBoxScuttlebugStuff.Controls.Add(this.buttonScuttlebugStuffGetTris);
@@ -13904,69 +13972,23 @@ namespace STROOP
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // groupBoxTriRooms
+            // buttonSaveVars
             // 
-            this.groupBoxTriRooms.Controls.Add(this.textBoxTriRoomsToValue);
-            this.groupBoxTriRooms.Controls.Add(this.textBoxTriRoomsFromValue);
-            this.groupBoxTriRooms.Controls.Add(this.buttonTriRoomsConvert);
-            this.groupBoxTriRooms.Controls.Add(this.labelTriRoomsToLabel);
-            this.groupBoxTriRooms.Controls.Add(this.labelTriRoomsFromLabel);
-            this.groupBoxTriRooms.Location = new System.Drawing.Point(760, 259);
-            this.groupBoxTriRooms.Name = "groupBoxTriRooms";
-            this.groupBoxTriRooms.Size = new System.Drawing.Size(116, 99);
-            this.groupBoxTriRooms.TabIndex = 44;
-            this.groupBoxTriRooms.TabStop = false;
-            this.groupBoxTriRooms.Text = "Tri Rooms";
+            this.buttonSaveVars.Location = new System.Drawing.Point(71, 6);
+            this.buttonSaveVars.Name = "buttonSaveVars";
+            this.buttonSaveVars.Size = new System.Drawing.Size(58, 38);
+            this.buttonSaveVars.TabIndex = 4;
+            this.buttonSaveVars.Text = "Save\r\nVars";
+            this.buttonSaveVars.UseVisualStyleBackColor = true;
             // 
-            // textBoxTriRoomsToValue
+            // buttonClearVars
             // 
-            this.textBoxTriRoomsToValue.Location = new System.Drawing.Point(40, 42);
-            this.textBoxTriRoomsToValue.Name = "textBoxTriRoomsToValue";
-            this.textBoxTriRoomsToValue.Size = new System.Drawing.Size(67, 20);
-            this.textBoxTriRoomsToValue.TabIndex = 28;
-            this.textBoxTriRoomsToValue.Text = "2";
-            this.textBoxTriRoomsToValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxTriRoomsFromValue
-            // 
-            this.textBoxTriRoomsFromValue.Location = new System.Drawing.Point(40, 16);
-            this.textBoxTriRoomsFromValue.Name = "textBoxTriRoomsFromValue";
-            this.textBoxTriRoomsFromValue.Size = new System.Drawing.Size(67, 20);
-            this.textBoxTriRoomsFromValue.TabIndex = 28;
-            this.textBoxTriRoomsFromValue.Text = "1";
-            this.textBoxTriRoomsFromValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // buttonTriRoomsConvert
-            // 
-            this.buttonTriRoomsConvert.Location = new System.Drawing.Point(12, 67);
-            this.buttonTriRoomsConvert.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonTriRoomsConvert.Name = "buttonTriRoomsConvert";
-            this.buttonTriRoomsConvert.Size = new System.Drawing.Size(95, 23);
-            this.buttonTriRoomsConvert.TabIndex = 16;
-            this.buttonTriRoomsConvert.Text = "Convert";
-            this.buttonTriRoomsConvert.UseVisualStyleBackColor = true;
-            // 
-            // labelTriRoomsToLabel
-            // 
-            this.labelTriRoomsToLabel.AutoSize = true;
-            this.labelTriRoomsToLabel.Location = new System.Drawing.Point(8, 45);
-            this.labelTriRoomsToLabel.MinimumSize = new System.Drawing.Size(20, 2);
-            this.labelTriRoomsToLabel.Name = "labelTriRoomsToLabel";
-            this.labelTriRoomsToLabel.Size = new System.Drawing.Size(23, 13);
-            this.labelTriRoomsToLabel.TabIndex = 18;
-            this.labelTriRoomsToLabel.Text = "To:";
-            this.labelTriRoomsToLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // labelTriRoomsFromLabel
-            // 
-            this.labelTriRoomsFromLabel.AutoSize = true;
-            this.labelTriRoomsFromLabel.Location = new System.Drawing.Point(8, 19);
-            this.labelTriRoomsFromLabel.MinimumSize = new System.Drawing.Size(20, 2);
-            this.labelTriRoomsFromLabel.Name = "labelTriRoomsFromLabel";
-            this.labelTriRoomsFromLabel.Size = new System.Drawing.Size(33, 13);
-            this.labelTriRoomsFromLabel.TabIndex = 18;
-            this.labelTriRoomsFromLabel.Text = "From:";
-            this.labelTriRoomsFromLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.buttonClearVars.Location = new System.Drawing.Point(131, 6);
+            this.buttonClearVars.Name = "buttonClearVars";
+            this.buttonClearVars.Size = new System.Drawing.Size(58, 38);
+            this.buttonClearVars.TabIndex = 4;
+            this.buttonClearVars.Text = "Clear\r\nVars";
+            this.buttonClearVars.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -14373,6 +14395,8 @@ namespace STROOP
             this.groupBoxShowOverlay.ResumeLayout(false);
             this.groupBoxShowOverlay.PerformLayout();
             this.tabPageTesting.ResumeLayout(false);
+            this.groupBoxTriRooms.ResumeLayout(false);
+            this.groupBoxTriRooms.PerformLayout();
             this.groupBoxScuttlebugStuff.ResumeLayout(false);
             this.groupBoxScuttlebugStuff.PerformLayout();
             this.groupBoxSchedule.ResumeLayout(false);
@@ -14393,8 +14417,6 @@ namespace STROOP
             this.groupBoxRecording.PerformLayout();
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
-            this.groupBoxTriRooms.ResumeLayout(false);
-            this.groupBoxTriRooms.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -15365,7 +15387,7 @@ namespace STROOP
         private Button buttonVarNameWidthSubtract;
         private Button buttonVarNameWidthSet;
         private Button buttonVarNameWidthAdd;
-        private Button buttonClearVariables;
+        private Button buttonOpenVars;
         private Button buttonResetVariableSizeToDefault;
         private Button buttonDecompilerBack;
         private Button buttonDecompilerNext;
@@ -15441,6 +15463,8 @@ namespace STROOP
         private Button buttonTriRoomsConvert;
         private Label labelTriRoomsToLabel;
         private Label labelTriRoomsFromLabel;
+        private Button buttonClearVars;
+        private Button buttonSaveVars;
     }
 }
 
