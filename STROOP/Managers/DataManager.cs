@@ -64,6 +64,17 @@ namespace STROOP.Managers
             return _variablePanel.GetCurrentVariableNames();
         }
 
+        public void OpenVariables()
+        {
+            IEnumerable<WatchVariableControlPrecursor> precursors = WatchVariableFileUtilities.OpenVariables();
+            AddVariables(precursors.Select(w => w.CreateWatchVariableControl()));
+        }
+
+        public void SaveVariables()
+        {
+            WatchVariableFileUtilities.SaveVariables(_variablePanel.WatchVarPreCursors);
+        }
+
         public virtual void Update(bool updateView)
         {
             if (!updateView) return;

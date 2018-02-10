@@ -173,17 +173,6 @@ namespace STROOP.Managers
             }
         }
 
-        public void OpenVariables()
-        {
-            IEnumerable<WatchVariableControlPrecursor> precursors = WatchVariableFileUtilities.OpenVariables();
-            AddVariables(precursors.Select(w => w.CreateWatchVariableControl()));
-        }
-
-        public void SaveVariables()
-        {
-            WatchVariableFileUtilities.SaveVariables(_variablePanel.WatchVarPreCursors);
-        }
-
         private void ToggleRecording()
         {
             RefreshRateConfig.LimitRefreshRate = !_checkBoxCustomRecordValues.Checked;
