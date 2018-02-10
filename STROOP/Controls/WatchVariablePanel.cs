@@ -194,6 +194,17 @@ namespace STROOP.Controls
             infoForm.Show();
         }
 
+        public void OpenVariables()
+        {
+            IEnumerable<WatchVariableControlPrecursor> precursors = WatchVariableFileUtilities.OpenVariables();
+            AddVariables(precursors.Select(w => w.CreateWatchVariableControl()));
+        }
+
+        public void SaveVariables()
+        {
+            WatchVariableFileUtilities.SaveVariables(WatchVarPreCursors);
+        }
+
         public void EnableCustomVariableFunctionality()
         {
             WatchVarControls.ForEach(control => control.EnableCustomFunctionality());
