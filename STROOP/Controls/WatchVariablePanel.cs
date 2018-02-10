@@ -140,10 +140,8 @@ namespace STROOP.Controls
 
         public void RemoveVariable(WatchVariableControl watchVarControl)
         {
-            lock (_objectLock)
-            {
-                RemoveVariables(new List<WatchVariableControl>() { watchVarControl });
-            }
+            // No need to lock, since this calls into a method that locks
+            RemoveVariables(new List<WatchVariableControl>() { watchVarControl });
         }
 
         public void RemoveVariables(IEnumerable<WatchVariableControl> watchVarControls)
