@@ -28,6 +28,7 @@
   <Data type="uint" offsetUS="0x8029A774" offsetJP="0x8029A058" base="Relative" useHex="true">FOV Sleeping</Data>
   <Data type="uint" offsetUS="0x8029AA20" offsetJP="0x8029A304" base="Relative" useHex="true">FOV Use Door</Data>
   <Data type="uint" offsetUS="0x8029A984" offsetJP="0x8029A268" base="Relative" useHex="true">FOV Collect Star</Data>
+  <Data type="uint" offsetUS="0x8029AB68" offsetJP="0x8029A44C" base="Relative" useHex="true">FOV Updating</Data>
 
   <Data type="short" offset="0xD4" base="Camera">Yaw Shake</Data>
   <Data type="short" offset="0x120" base="Camera">Yaw Shake Speed</Data>
