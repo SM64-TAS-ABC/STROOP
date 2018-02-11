@@ -1408,7 +1408,7 @@ namespace STROOP.Utilities
             return success;
         }
 
-        public static bool SetHudVisibility(bool setHudOn)
+        public static bool SetHudVisibility(bool setHudOn, bool changeLevelIndex = true)
         {
             byte currentHudVisibility = Config.Stream.GetByte(MarioConfig.StructAddress + HudConfig.VisibilityOffset);
             byte newHudVisibility = MoreMath.ApplyValueToMaskedByte(currentHudVisibility, HudConfig.VisibilityMask, setHudOn);
@@ -1419,8 +1419,21 @@ namespace STROOP.Utilities
 
             success &= Config.Stream.SetValue(newHudVisibility, MarioConfig.StructAddress + HudConfig.VisibilityOffset);
 
-            if (setHudOn) Config.Stream.SetValue(0, HudConfig.FunctionDisableCoinDisplayAddress);
-            else Config.Stream.SetValue(0, HudConfig.FunctionEnableCoinDisplayAddress);
+            if (changeLevelIndex)
+            {
+                success &= Config.Stream.SetValue((short)(setHudOn ? 1 : 0), MiscConfig.LevelIndexAddress);
+            }
+            else
+            {
+                if (setHudOn)
+                {
+                    success &= Config.Stream.SetValue(0, HudConfig.FunctionDisableCoinDisplayAddress);
+                }
+                else
+                {
+                    success &= Config.Stream.SetValue(0, HudConfig.FunctionEnableCoinDisplayAddress);
+                }
+            }
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
