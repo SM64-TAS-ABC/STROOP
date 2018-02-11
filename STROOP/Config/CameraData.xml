@@ -30,18 +30,29 @@
   <Data type="uint" offsetUS="0x8029A984" offsetJP="0x8029A268" base="Relative" useHex="true">FOV Collect Star</Data>
   <Data type="uint" offsetUS="0x8029AB68" offsetJP="0x8029A44C" base="Relative" useHex="true">FOV Updating</Data>
 
+  <Data type="uint" offsetUS="0x8028AFE8" offsetJP="0x8028AA00" base="Relative" useHex="true">Func 1</Data>
+  <Data type="uint" offsetUS="0x8028B044" offsetJP="0x8028AA5C" base="Relative" useHex="true">Func 2</Data>
+
+  <Data type="float" offsetUS="0x8033C5B0" offsetJP="0x8033B240" base="Relative">Zoom Shake</Data>
+  <Data type="short" offsetUS="0x8033C5B6" offsetJP="0x8033B246" base="Relative">Zoom Shake Speed</Data>
+  <Data type="short" offsetUS="0x8033C5B8" offsetJP="0x8033B248" base="Relative">Zoom Shake Decrease</Data>
+  <Data type="short" offsetUS="0x8033C5B4" offsetJP="0x8033B244" base="Relative">Zoom Shake Osc.</Data>
+
   <Data type="short" offset="0xD4" base="Camera">Yaw Shake</Data>
   <Data type="short" offset="0x120" base="Camera">Yaw Shake Speed</Data>
   <Data type="short" offset="0x122" base="Camera">Yaw Shake Decrease</Data>
   <Data type="short" offset="0x11E" base="Camera">Yaw Shake Osc.</Data>
+  
   <Data type="short" offset="0xD2" base="Camera">Pitch Shake</Data>
   <Data type="short" offset="0xDA" base="Camera">Pitch Shake Speed</Data>
   <Data type="short" offset="0xDC" base="Camera">Pitch Shake Decrease</Data>
   <Data type="short" offset="0xD8" base="Camera">Pitch Shake Osc.</Data>
+  
   <Data type="short" offset="0xD6" base="Camera">Roll Shake</Data>
   <Data type="short" offset="0x11A" base="Camera">Roll Shake Speed</Data>
   <Data type="short" offset="0x11C" base="Camera">Roll Shake Decrease</Data>
   <Data type="short" offset="0x118" base="Camera">Roll Shake Osc.</Data>
+  
   <Data type="short" offset="0xBC" base="Camera">Camera Mode</Data>
   <Data type="uint" offsetUS="0x8032DF30" offsetJP="0x8032CFD0" base="Relative" subclass="Object">Secondary Object</Data>
 </CameraData>
