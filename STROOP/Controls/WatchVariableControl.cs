@@ -379,6 +379,7 @@ namespace STROOP.Controls
                  Keyboard.IsKeyDown(Key.Back) ||
                  Keyboard.IsKeyDown(Key.Escape);
             bool isBacktickHeld =  Keyboard.IsKeyDown(Key.OemTilde);
+            bool isZHeld = Keyboard.IsKeyDown(Key.Z);
 
             if (isFKeyHeld && isCtrlKeyHeld)
             {
@@ -438,6 +439,12 @@ namespace STROOP.Controls
             if (isBacktickHeld)
             {
                 AddToVarHackTab();
+                return;
+            }
+
+            if (isZHeld)
+            {
+                _watchVarWrapper.SetStringValue("0");
                 return;
             }
 
