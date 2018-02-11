@@ -380,6 +380,8 @@ namespace STROOP.Controls
                  Keyboard.IsKeyDown(Key.Escape);
             bool isBacktickHeld =  Keyboard.IsKeyDown(Key.OemTilde);
             bool isZHeld = Keyboard.IsKeyDown(Key.Z);
+            bool isMinusHeld = Keyboard.IsKeyDown(Key.OemMinus);
+            bool isPlusHeld = Keyboard.IsKeyDown(Key.OemPlus);
 
             if (isFKeyHeld && isCtrlKeyHeld)
             {
@@ -444,7 +446,19 @@ namespace STROOP.Controls
 
             if (isZHeld)
             {
-                _watchVarWrapper.SetStringValue("0");
+                _watchVarWrapper.SetStringValue("0", FixedAddressList);
+                return;
+            }
+
+            if (isMinusHeld)
+            {
+                _watchVarWrapper.AddValue("1", false, FixedAddressList);
+                return;
+            }
+
+            if (isPlusHeld)
+            {
+                _watchVarWrapper.AddValue("1", true, FixedAddressList);
                 return;
             }
 
