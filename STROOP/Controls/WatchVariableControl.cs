@@ -354,9 +354,8 @@ namespace STROOP.Controls
 
                 if (e.KeyData == Keys.Enter)
                 {
-                    bool success = _watchVarWrapper.SetStringValue(_valueTextBox.Text, FixedAddressList);
                     EditMode = false;
-                    if (!success) FlashColor(FAILURE_COLOR);
+                    SetValue(_valueTextBox.Text);
                     this.Focus();
                     return;
                 }
@@ -664,6 +663,12 @@ namespace STROOP.Controls
             {
                 FixedAddressList = null;
             }
+        }
+
+        public void SetValue(string value)
+        {
+            bool success = _watchVarWrapper.SetStringValue(value, FixedAddressList);
+            if (!success) FlashColor(FAILURE_COLOR);
         }
 
         public string GetValue(bool useRounding)
