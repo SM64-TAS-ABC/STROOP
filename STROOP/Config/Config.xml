@@ -10,5 +10,5 @@
   <RomVersion>US</RomVersion>
 
   <RefreshRateFreq>30</RefreshRateFreq>
-  <RamSize>0x800000</RamSize>
+  <RamSize>0x400000</RamSize>
 </Config>

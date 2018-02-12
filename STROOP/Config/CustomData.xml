@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Data>
+  
+  <Data type="ushort" offset="0x80400000" base="Relative">Ghost</Data>
+
 
   <Data type="float" offset="0x3C" base="Mario" coord="X">Mario X</Data>
   <Data type="float" offset="0x40" base="Mario" coord="Y">Mario Y</Data>
