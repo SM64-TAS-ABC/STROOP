@@ -39,7 +39,7 @@ namespace STROOP.Controls
             ToolStripMenuItem itemSelectObject = new ToolStripMenuItem("Select Object");
             itemSelectObject.Click += (sender, e) =>
             {
-                string stringValue = GetStringValue(true, false);
+                string stringValue = GetValue(true, false);
                 uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(stringValue);
                 if (!uintValueNullable.HasValue) return;
                 uint uintValue = uintValueNullable.Value;

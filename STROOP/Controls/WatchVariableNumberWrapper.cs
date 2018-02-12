@@ -105,7 +105,7 @@ namespace STROOP.Controls
             {
                 Clipboard.SetText(
                     String.Join(separator, coordinateVarList.ConvertAll(
-                        coord => coord.GetStringValue(false))));
+                        coord => coord.GetValue(false))));
             };
 
             ToolStripMenuItem itemCopyCoordinatesCommas = new ToolStripMenuItem("Copy Coordinates with Commas");
@@ -129,7 +129,7 @@ namespace STROOP.Controls
                 Config.Stream.Suspend();
                 for (int i = 0; i < 3; i++)
                 {
-                    coordinateVarList[i].SetStringValue(stringList[i]);
+                    coordinateVarList[i].SetValue(stringList[i]);
                 }
                 Config.Stream.Resume();
             };
