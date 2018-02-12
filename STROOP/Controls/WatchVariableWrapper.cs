@@ -107,17 +107,13 @@ namespace STROOP.Controls
             _itemLock.Click += (sender, e) => ToggleLocked(_watchVarControl.FixedAddressList);
 
             _itemRemoveAllLocks = new ToolStripMenuItem("Remove All Locks");
-            _itemRemoveAllLocks.Click += (sender, e) => { WatchVariableLockManager.RemoveAllLocks(); };
+            _itemRemoveAllLocks.Click += (sender, e) => WatchVariableLockManager.RemoveAllLocks();
 
             ToolStripMenuItem itemCopyUnrounded = new ToolStripMenuItem("Copy");
-            itemCopyUnrounded.Click += (sender, e) => { Clipboard.SetText(GetValue(false)); };
+            itemCopyUnrounded.Click += (sender, e) => Clipboard.SetText(GetValue(false));
 
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
-            itemPaste.Click += (sender, e) =>
-            {
-                bool success = SetValue(Clipboard.GetText());
-                if (!success) _watchVarControl.FlashColor(WatchVariableControl.FAILURE_COLOR);
-            };
+            itemPaste.Click += (sender, e) => _watchVarControl.SetValue(Clipboard.GetText());
 
             _contextMenuStrip.AddToBeginningList(_itemHighlight);
             _contextMenuStrip.AddToBeginningList(_itemLock);

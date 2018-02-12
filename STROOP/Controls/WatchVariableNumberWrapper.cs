@@ -129,7 +129,7 @@ namespace STROOP.Controls
                 Config.Stream.Suspend();
                 for (int i = 0; i < 3; i++)
                 {
-                    coordinateVarList[i].SetValue(stringList[i]);
+                    coordinateVarList[i]._watchVarControl.SetValue(stringList[i]);
                 }
                 Config.Stream.Resume();
             };
