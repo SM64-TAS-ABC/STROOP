@@ -166,6 +166,9 @@ namespace STROOP.Structs
                 case BaseAddressTypeEnum.CamHack:
                     return new List<uint> { CameraHackConfig.CameraHackStruct };
 
+                case BaseAddressTypeEnum.GhostHack:
+                    return new List<uint> { 0x80400000 + 0x10 * (Config.Stream.GetUInt32(0x804003FC) + 67) };
+
                 default:
                     throw new ArgumentOutOfRangeException();
             }

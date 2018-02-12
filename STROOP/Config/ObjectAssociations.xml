@@ -1991,6 +1991,9 @@
   <Object behaviorScriptAddress="0x13002A48" name="Mario Ghost" subType="1717986918">
     <Image path="Mario Back.png"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x804003FC" base="Relative">Frame</Data>
+
+    <Data groupList="ObjectSpecific" type="float" offset="0x0" base="GhostHack">X</Data>
+
     <Data groupList="ObjectSpecific" type="ushort" offset="0x1C" base="Object" subclass="Angle">Angle</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x20" base="Object">X</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x24" base="Object">Y</Data>
