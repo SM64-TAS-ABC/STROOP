@@ -266,6 +266,7 @@
     <Compile Include="Structs\Configurations\OverlayConfig.cs" />
     <Compile Include="Structs\Configurations\OptionsConfig.cs" />
     <Compile Include="Structs\Configurations\MiscConfig.cs" />
+    <Compile Include="Structs\Configurations\GhostHackConfig.cs" />
     <Compile Include="Structs\Configurations\VarHackConfig.cs" />
     <Compile Include="Structs\Configurations\PositionControllerRelativityConfig.cs" />
     <Compile Include="Structs\Configurations\TriangleConfig.cs" />
