@@ -445,19 +445,19 @@ namespace STROOP.Controls
 
             if (isZHeld)
             {
-                _watchVarWrapper.SetStringValue("0", FixedAddressList);
+                SetValue("0");
                 return;
             }
 
             if (isMinusHeld)
             {
-                _watchVarWrapper.AddValue("1", false, FixedAddressList);
+                AddValue("1", false);
                 return;
             }
 
             if (isPlusHeld)
             {
-                _watchVarWrapper.AddValue("1", true, FixedAddressList);
+                AddValue("1", true);
                 return;
             }
 
@@ -665,15 +665,21 @@ namespace STROOP.Controls
             }
         }
 
+        public string GetValue(bool useRounding)
+        {
+            return _watchVarWrapper.GetStringValue(useRounding);
+        }
+
         public void SetValue(string value)
         {
             bool success = _watchVarWrapper.SetStringValue(value, FixedAddressList);
             if (!success) FlashColor(FAILURE_COLOR);
         }
 
-        public string GetValue(bool useRounding)
+        public void AddValue(string value, bool add)
         {
-            return _watchVarWrapper.GetStringValue(useRounding);
+            bool success = _watchVarWrapper.AddValue(value, add, FixedAddressList);
+            if (!success) FlashColor(FAILURE_COLOR);
         }
 
         public WatchVariableControlPrecursor GetPrecursor()
