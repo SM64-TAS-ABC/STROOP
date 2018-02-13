@@ -87,14 +87,16 @@ namespace STROOP.Managers
         // Build a GFX tree for every object that is selected in the object slot view
         private void RefreshButtonObject_Click(object sender, EventArgs e)
         {
-            _treeView.Nodes.Clear();
+            
             var list = Config.ObjectSlotsManager.SelectedSlotsAddresses;
             if (list != null && list.Count>0)
             {
-                foreach(var address in list)
+                _treeView.Nodes.Clear();
+                foreach (var address in list)
                 {
                     AddToTreeView(address);
                 }
+                ExpandNodesUpTo(_treeView.Nodes, 4);
             }
             else
             {
@@ -121,12 +123,24 @@ namespace STROOP.Managers
 
             // A pointer to the root node of the GFX tree is stored at a fixed address
             AddToTreeView(Config.Stream.GetUInt32(Config.SwitchRomVersion(0x33B910, 0x33A5A0)));
+            ExpandNodesUpTo(_treeView.Nodes, 4);
+        }
+
+        // By default, a new TreeNode is collapsed. If you expand all, then the treeview will be overwhelmed with 240 object nodes
+        // This function allows to expand only the nodes a certain amount of levels deep while keeping the deeper ones collapsed
+        private void ExpandNodesUpTo(TreeNodeCollection nodes, int level) {
+            if (level <= 0) return;
+
+            foreach (TreeNode node in nodes)
+            {
+                node.Expand();
+                ExpandNodesUpTo(node.Nodes, level-1);
+            }
         }
 
         public void AddToTreeView(uint rootAddress)
         {
             var root = GfxNode.ReadGfxNode(rootAddress);
-            
             _treeView.Nodes.Add(GfxToTreeNode(root));
         }
 
@@ -397,7 +411,7 @@ namespace STROOP.Managers
 
     internal class GfxTranslationNode : GfxNode
     {
-        public override string Name { get { return "Animation"; } }
+        public override string Name { get { return "Translation"; } }
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
             var res = new List<WatchVariableControlPrecursor>();
