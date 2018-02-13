@@ -13831,7 +13831,7 @@ namespace STROOP
             // 
             this.splitContainerGfxLeft.Panel2.Controls.Add(this.splitContainerGfxRight);
             this.splitContainerGfxLeft.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerGfxLeft.SplitterDistance = 250;
+            this.splitContainerGfxLeft.SplitterDistance = 300;
             this.splitContainerGfxLeft.TabIndex = 0;
             // 
             // treeViewGfx
@@ -13840,7 +13840,7 @@ namespace STROOP
             this.treeViewGfx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeViewGfx.Location = new System.Drawing.Point(0, 0);
             this.treeViewGfx.Name = "treeViewGfx";
-            this.treeViewGfx.Size = new System.Drawing.Size(250, 457);
+            this.treeViewGfx.Size = new System.Drawing.Size(300, 457);
             this.treeViewGfx.TabIndex = 0;
             // 
             // splitContainerGfxRight
@@ -13856,8 +13856,8 @@ namespace STROOP
             // splitContainerGfxRight.Panel2
             // 
             this.splitContainerGfxRight.Panel2.Controls.Add(this.richTextBoxGfx);
-            this.splitContainerGfxRight.Size = new System.Drawing.Size(655, 457);
-            this.splitContainerGfxRight.SplitterDistance = 350;
+            this.splitContainerGfxRight.Size = new System.Drawing.Size(605, 457);
+            this.splitContainerGfxRight.SplitterDistance = 323;
             this.splitContainerGfxRight.TabIndex = 0;
             // 
             // splitContainerGfxMiddle
@@ -13878,17 +13878,17 @@ namespace STROOP
             // splitContainerGfxMiddle.Panel2
             // 
             this.splitContainerGfxMiddle.Panel2.Controls.Add(this.watchVariablePanelGfx);
-            this.splitContainerGfxMiddle.Size = new System.Drawing.Size(350, 457);
-            this.splitContainerGfxMiddle.SplitterDistance = 40;
+            this.splitContainerGfxMiddle.Size = new System.Drawing.Size(323, 457);
+            this.splitContainerGfxMiddle.SplitterDistance = 60;
             this.splitContainerGfxMiddle.TabIndex = 1;
             // 
             // buttonGfxRefresh
             // 
             this.buttonGfxRefresh.Location = new System.Drawing.Point(3, 3);
             this.buttonGfxRefresh.Name = "buttonGfxRefresh";
-            this.buttonGfxRefresh.Size = new System.Drawing.Size(75, 23);
+            this.buttonGfxRefresh.Size = new System.Drawing.Size(85, 23);
             this.buttonGfxRefresh.TabIndex = 0;
-            this.buttonGfxRefresh.Text = "Refresh root";
+            this.buttonGfxRefresh.Text = "Build from root";
             this.buttonGfxRefresh.UseVisualStyleBackColor = true;
             // 
             // watchVariablePanelGfx
@@ -13896,7 +13896,7 @@ namespace STROOP
             this.watchVariablePanelGfx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.watchVariablePanelGfx.Location = new System.Drawing.Point(0, 0);
             this.watchVariablePanelGfx.Name = "watchVariablePanelGfx";
-            this.watchVariablePanelGfx.Size = new System.Drawing.Size(350, 413);
+            this.watchVariablePanelGfx.Size = new System.Drawing.Size(323, 393);
             this.watchVariablePanelGfx.TabIndex = 0;
             // 
             // richTextBoxGfx
@@ -13905,7 +13905,7 @@ namespace STROOP
             this.richTextBoxGfx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBoxGfx.Location = new System.Drawing.Point(0, 0);
             this.richTextBoxGfx.Name = "richTextBoxGfx";
-            this.richTextBoxGfx.Size = new System.Drawing.Size(301, 457);
+            this.richTextBoxGfx.Size = new System.Drawing.Size(278, 457);
             this.richTextBoxGfx.TabIndex = 0;
             this.richTextBoxGfx.Text = "";
             // 
@@ -14098,16 +14098,16 @@ namespace STROOP
             // 
             // buttonGfxRefreshObject
             // 
-            this.buttonGfxRefreshObject.Location = new System.Drawing.Point(84, 3);
+            this.buttonGfxRefreshObject.Location = new System.Drawing.Point(94, 3);
             this.buttonGfxRefreshObject.Name = "buttonGfxRefreshObject";
-            this.buttonGfxRefreshObject.Size = new System.Drawing.Size(135, 23);
+            this.buttonGfxRefreshObject.Size = new System.Drawing.Size(147, 23);
             this.buttonGfxRefreshObject.TabIndex = 1;
-            this.buttonGfxRefreshObject.Text = "Refresh selected object";
+            this.buttonGfxRefreshObject.Text = "Build from selected objects";
             this.buttonGfxRefreshObject.UseVisualStyleBackColor = true;
             // 
             // buttonGfxDumpDisplayList
             // 
-            this.buttonGfxDumpDisplayList.Location = new System.Drawing.Point(225, 3);
+            this.buttonGfxDumpDisplayList.Location = new System.Drawing.Point(3, 31);
             this.buttonGfxDumpDisplayList.Name = "buttonGfxDumpDisplayList";
             this.buttonGfxDumpDisplayList.Size = new System.Drawing.Size(104, 23);
             this.buttonGfxDumpDisplayList.TabIndex = 2;

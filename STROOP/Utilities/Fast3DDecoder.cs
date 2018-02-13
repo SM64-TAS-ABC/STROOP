@@ -7,9 +7,15 @@ using STROOP.Structs.Configurations;
 
 namespace STROOP.Utilities
 {
+    /**
+     * Decodes Fast 3D Display lists.
+     * A display list is an array of 8 byte instructions that ends in a 'G_ENDDL' instruction
+     * The instruction is contained in the first byte, the other 7 bytes are parameters depending on the type.
+     * A notable instructions is the G_VTX instruction which buffers up to 16 vertices. Subsequently, 
+     */
     public class Fast3DDecoder
     {
-        private const int MaxDisplayListLength = 5000; 
+        private const int MaxDisplayListLength = 5000; // Prevents long / endless loops when a malformed display list is decoded
 
         public enum F3DOpcode
         {
@@ -70,10 +76,11 @@ namespace STROOP.Utilities
             G_SETCIMG = 0xFF,
         }
 
+        // Gives a string decoding the display list starting at a given address
         public static string DecodeList(uint address)
         {
             var res = new StringBuilder();
-
+            res.AppendLine($"Decoding list at 0x{address:X8}");
             for(int i = 0; i < MaxDisplayListLength; i++)
             {
                 
@@ -83,8 +90,39 @@ namespace STROOP.Utilities
                 var name = Enum.GetName(typeof(F3DOpcode), opcode);
                 res.AppendLine($"{firstWord:X8} {secondWord:X8} "+name);
 
+                switch (opcode)
+                {
+                    case F3DOpcode.G_VTX:
+                        var vertexAmount = ((firstWord >> 28) & 0xF) + 1;
+                        var vertexAddress = DecodeSegmentedAddress(secondWord);
+                        res.AppendLine($"{vertexAmount} vertices at 0x{address:X8}");
+                        for (byte j = 0; j < vertexAmount; j++)
+                        {
+                            uint add = (uint) (vertexAddress + (j * 0x10));
+                            var x = Config.Stream.GetInt16(add + 0x00);
+                            var y = Config.Stream.GetInt16(add + 0x02);
+                            var z = Config.Stream.GetInt16(add + 0x04);
+                            var flags = Config.Stream.GetUInt16(add + 0x06);
+                            var texX = Config.Stream.GetInt16(add + 0x08);
+                            var texY = Config.Stream.GetInt16(add + 0x0A);
+                            var r = Config.Stream.GetByte(add + 0x0C);
+                            var g = Config.Stream.GetByte(add + 0x0D);
+                            var b = Config.Stream.GetByte(add + 0x0E);
+                            var a = Config.Stream.GetByte(add + 0x0F);
+                            res.AppendLine($"pos ({x}, {y}, {z}) flags 0x{flags:X4} tex ({texX}, {texY}) normal/color ({r}, {g}, {b}, {a})");
+                        }
+                        break;
+                    case F3DOpcode.G_TRI1:
+                        var v1 = ((secondWord >> 16) & 0xFF) / 0x0A;
+                        var v2 = ((secondWord >> 8) & 0xFF) / 0x0A;
+                        var v3 = ((secondWord >> 0) & 0xFF) / 0x0A;
+                        res.AppendLine($"Triangle ({v1}, {v2}, {v3})");
+                        break;
+                    default: break;
+                }
+
                 if (opcode == F3DOpcode.G_ENDDL) break;
-                address += 4;
+                address += 8;   //Fast 3D instructions are always 8 bytes long
             }
 
             return res.ToString();
@@ -94,12 +132,11 @@ namespace STROOP.Utilities
         // other 3 bytes are the offset from the segment. Segmented addresses are used for locating object behavior scripts, 
         // display lists, textures and other resources.
         // todo: not limited to Fast3D display lists, can be put in a more general utilitiies class
-        public static uint DecodeSegmentedAddress(uint address)
+        public static uint DecodeSegmentedAddress(uint segmentedAddress)
         {
-            var val = Config.Stream.GetUInt32(address);
-            var offset = val & 0xFFFFFF;
-            var segment = (val >> 24) & 0xFF;
-            return offset + Config.Stream.GetUInt32(4 * segment + Config.SwitchRomVersion(0x33b400, 0x33A090));
+            var offset = segmentedAddress & 0xFFFFFF;
+            var segment = (segmentedAddress >> 24);
+            return offset + Config.Stream.GetUInt32(4 * segment + Config.SwitchRomVersion(0x33B400, 0x33A090));
         }
     }
 }

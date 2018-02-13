@@ -36,8 +36,8 @@ namespace STROOP.Managers
             var dumpButton = middle.Panel1.Controls["buttonGfxDumpDisplayList"] as Button;
 
             _outputTextBox = right.Panel2.Controls["richTextBoxGfx"] as RichTextBox;
-            _outputTextBox.Font = new System.Drawing.Font("Courier New", 12);
-            _outputTextBox.ForeColor = System.Drawing.Color.Red;
+            _outputTextBox.Font = new System.Drawing.Font("Courier New", 8);
+            _outputTextBox.ForeColor = System.Drawing.Color.Black;
 
             _watchVariablePanel = watchVariablePanel;
             _treeView = left.Panel1.Controls["treeViewGfx"] as TreeView;
@@ -56,12 +56,14 @@ namespace STROOP.Managers
 
         }
 
+        // Dump the display list of the currently selected gfx node (if applicable)
+        // This can contain vertices and triangles, but also draw settings like lighting and fog
         private void DumpButton_Click(object sender, EventArgs e)
         {
             if (SelectedNode != null && SelectedNode is GfxDisplayList)
             {
                 var address = Config.Stream.GetUInt32(SelectedNode.address + 0x14);
-                Fast3DDecoder.DecodeList(Fast3DDecoder.DecodeSegmentedAddress(address));
+                _outputTextBox.Text = Fast3DDecoder.DecodeList(Fast3DDecoder.DecodeSegmentedAddress(address));
 
             } else
             {
@@ -69,6 +71,7 @@ namespace STROOP.Managers
             }
         }
 
+        // The variables in the first 0x14 bytes in a GFX node are common, but after that there are type-specific variables
         void UpdateSpecificVariables(GfxNode node)
         {
             _watchVariablePanel.RemoveVariables(SpecificVariables);
@@ -80,6 +83,7 @@ namespace STROOP.Managers
             _watchVariablePanel.AddVariables(SpecificVariables);
         }
 
+        // Build a GFX tree for every object that is selected in the object slot view
         private void RefreshButtonObject_Click(object sender, EventArgs e)
         {
             _treeView.Nodes.Clear();
@@ -225,10 +229,11 @@ namespace STROOP.Managers
             res.Add(gfxProperty("Type", "ushort", 0x00));
             res.Add(gfxProperty("Active", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x01));
             res.Add(gfxProperty("Bit 1", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x02));
-            res.Add(gfxProperty("Billboard", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x04));
+            res.Add(gfxProperty("Billboard object", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x04));
             res.Add(gfxProperty("Bit 3", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x08));
-            res.Add(gfxProperty("Invisible", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x10));
-            res.Add(gfxProperty("Always on?", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x20));
+            res.Add(gfxProperty("Invisible object", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x10));
+            res.Add(gfxProperty("Bit 5", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x20));
+            res.Add(gfxProperty("Is object", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x20));
             res.Add(gfxProperty("Previous", "uint", 0x04));
             res.Add(gfxProperty("Next", "uint", 0x08));
             res.Add(gfxProperty("Parent", "uint", 0x0C));
@@ -238,13 +243,14 @@ namespace STROOP.Managers
             res.Add(gfxProperty("1C", "uint", 0x1C));
             res.Add(gfxProperty("20", "uint", 0x20));
             return res;
+
         }
 
         // Wrapper to make defining variables easier
         protected static WatchVariableControlPrecursor gfxProperty(string name, string type, uint offset, Structs.WatchVariableSubclass subclass = Structs.WatchVariableSubclass.Number, uint? mask = null)
         {
             var wv = new WatchVariable(type, null, Structs.BaseAddressTypeEnum.GfxNode, offset, offset, offset, offset, mask);
-            var wvp = new WatchVariableControlPrecursor(name, wv, subclass, System.Drawing.Color.Beige, true, false, null, new List<Structs.VariableGroup>());
+            var wvp = new WatchVariableControlPrecursor(name, wv, subclass, (offset <= 0x13) ? System.Drawing.Color.Beige : System.Drawing.Color.PowderBlue, true, false, null, new List<Structs.VariableGroup>());
             return wvp;
         }
 
@@ -293,6 +299,17 @@ namespace STROOP.Managers
     internal class GfxCamera : GfxNode
     {
         public override string Name { get { return "Camera"; } }
+        public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
+        {
+            var res = new List<WatchVariableControlPrecursor>();
+            res.Add(gfxProperty("x from", "float", 0x1C));
+            res.Add(gfxProperty("y from", "float", 0x20));
+            res.Add(gfxProperty("z from", "float", 0x24));
+            res.Add(gfxProperty("x2 from", "float", 0x28));
+            res.Add(gfxProperty("y2 from", "float", 0x2C));
+            res.Add(gfxProperty("z2 from", "float", 0x30));
+            return res;
+        }
     }
 
     internal class GfxProjection3D : GfxNode
@@ -301,6 +318,7 @@ namespace STROOP.Managers
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
             var res = new List<WatchVariableControlPrecursor>();
+            res.Add(gfxProperty("angle", "float", 0x1C));
             res.Add(gfxProperty("znear", "short", 0x20));
             res.Add(gfxProperty("zfar", "short", 0x22));
             return res;
@@ -325,7 +343,7 @@ namespace STROOP.Managers
         {
             var res = new List<WatchVariableControlPrecursor>();
             res.Add(gfxProperty("radius", "short", 0x14));
-            res.Add(gfxProperty("opacity", "ubyte", 0x16));
+            res.Add(gfxProperty("opacity", "byte", 0x16));
             res.Add(gfxProperty("type", "byte", 0x17));
             return res;
         }
