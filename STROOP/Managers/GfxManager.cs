@@ -28,7 +28,7 @@ namespace STROOP.Managers
             var right = left.Panel2.Controls["splitContainerGfxright"] as SplitContainer;
             var middle = right.Panel1.Controls["splitContainerGfxmiddle"] as SplitContainer;
             var output = right.Panel2.Controls["richTextBoxGfx"] as RichTextBox;
-            var refreshButtonRoot = middle.Panel1.Controls["buttonGfxRefreshRoot"] as Button;
+            var refreshButtonRoot = middle.Panel1.Controls["buttonGfxRefresh"] as Button;
             var refreshButtonObject = middle.Panel1.Controls["buttonGfxRefreshObject"] as Button;
             var dumpButton = middle.Panel1.Controls["buttonGfxDumpDisplayList"] as Button;
 
@@ -138,9 +138,9 @@ namespace STROOP.Managers
                 case 0x00B: res = new GfxHeightGate(); break;
                 case 0x015: res = new GfxUnknown15(); break;
                 case 0x016: res = new GfxUnknown16(); break;
-                case 0x017: res = new GfxTransformNode(); break;
+                case 0x017: res = new GfxRotationNode(); break;
                 case 0x018: res = new GfxGameObject(); break;
-                case 0x019: res = new GfxAnimationNode(); break;
+                case 0x019: res = new GfxTranslationNode(); break;
                 case 0x01A: res = new GfxMenuModel(); break;
                 case 0x01B: res = new GfxDisplayList(); break;
                 case 0x01C: res = new GfxScalingNode(); break;
@@ -229,6 +229,7 @@ namespace STROOP.Managers
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
             var res = new List<WatchVariableControlPrecursor>();
+            res.Add(gfxProperty("Selection function", "uint", 0x14));
             res.Add(gfxProperty("Selected child", "ushort", 0x1E));
             return res;
         }
@@ -264,6 +265,13 @@ namespace STROOP.Managers
     internal class GfxProjection3D : GfxNode
     {
         public override string Name { get { return "Projection 3D"; } }
+        public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
+        {
+            var res = new List<WatchVariableControlPrecursor>();
+            res.Add(gfxProperty("znear", "short", 0x14));
+            res.Add(gfxProperty("zfar", "short", 0x14));
+            return res;
+        }
     }
 
     internal class GfxObjectParent : GfxNode
@@ -280,21 +288,53 @@ namespace STROOP.Managers
     internal class GfxShadowNode : GfxNode
     {
         public override string Name { get { return "Shadow"; } }
+        public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
+        {
+            var res = new List<WatchVariableControlPrecursor>();
+            res.Add(gfxProperty("radius", "short", 0x14));
+            res.Add(gfxProperty("opacity", "ubyte", 0x16));
+            res.Add(gfxProperty("type", "byte", 0x17));
+            return res;
+        }
     }
 
     internal class GfxScalingNode : GfxNode
     {
         public override string Name { get { return "Scaling node"; } }
+        public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
+        {
+            var res = new List<WatchVariableControlPrecursor>();
+            res.Add(gfxProperty("Scale", "float", 0x18));
+            return res;
+        }
     }
 
+    // Temporary name. This is used to draw the "S U P E R M A R I O" in debug level select
     internal class GfxMenuModel : GfxNode
     {
         public override string Name { get { return "Menu model"; } }
+        public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
+        {
+            var res = new List<WatchVariableControlPrecursor>();
+            res.Add(gfxProperty("Segmented address", "uint", 0x14));
+            res.Add(gfxProperty("x offset", "short", 0x18)); //todo: check these
+            res.Add(gfxProperty("y offset", "short", 0x1A));
+            return res;
+        }
     }
 
-    internal class GfxAnimationNode : GfxNode
+    internal class GfxTranslationNode : GfxNode
     {
         public override string Name { get { return "Animation"; } }
+        public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
+        {
+            var res = new List<WatchVariableControlPrecursor>();
+            res.Add(gfxProperty("Segmented address", "uint", 0x14));
+            res.Add(gfxProperty("x", "short", 0x18));
+            res.Add(gfxProperty("y", "short", 0x1A));
+            res.Add(gfxProperty("z", "short", 0x1C));
+            return res;
+        }
     }
 
     internal class GfxGameObject : GfxNode
@@ -302,9 +342,19 @@ namespace STROOP.Managers
         public override string Name { get { return "Game object"; } }
     }
 
-    internal class GfxTransformNode : GfxNode
+    internal class GfxRotationNode : GfxNode
     {
         public override string Name { get { return "Transformation"; } }
+
+        public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
+        {
+            var res = new List<WatchVariableControlPrecursor>();
+            res.Add(gfxProperty("Segmented address", "uint", 0x14));
+            res.Add(gfxProperty("angle x", "short", 0x18));
+            res.Add(gfxProperty("angle y", "short", 0x1A));
+            res.Add(gfxProperty("angle z", "short", 0x1C));
+            return res;
+        }
     }
 
     internal class GfxUnknown16 : GfxNode
@@ -340,10 +390,26 @@ namespace STROOP.Managers
     internal class GfxRootnode : GfxNode
     {
         public override string Name { get { return "Root"; } }
+        public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
+        {
+            var res = new List<WatchVariableControlPrecursor>();
+            res.Add(gfxProperty("Some short", "short", 0x14));
+            res.Add(gfxProperty("Screen xoffset", "short", 0x16));
+            res.Add(gfxProperty("Screen yoffset", "short", 0x18));
+            res.Add(gfxProperty("Screen half width", "short", 0x1A));
+            res.Add(gfxProperty("Screen half height", "short", 0x1C));
+            return res;
+        }
     }
 
     internal class GfxDisplayList : GfxNode
     {
         public override string Name { get { return "DisplayList"; } }
+        public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
+        {
+            var res = new List<WatchVariableControlPrecursor>();
+            res.Add(gfxProperty("Segmented address", "uint", 0x14));
+            return res;
+        }
     }
 }
