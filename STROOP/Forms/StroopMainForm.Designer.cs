@@ -46,7 +46,6 @@ namespace STROOP
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.Gfx = new System.Windows.Forms.TabControl();
             this.tabPageObjects = new System.Windows.Forms.TabPage();
-            this.watchVariablePanel1 = new STROOP.Controls.WatchVariablePanel();
             this.splitContainerObject = new System.Windows.Forms.SplitContainer();
             this.panelObj = new System.Windows.Forms.Panel();
             this.buttonObjRelease = new STROOP.BinaryButton();
@@ -1614,7 +1613,6 @@ namespace STROOP
             // tabPageObjects
             // 
             this.tabPageObjects.BackColor = System.Drawing.Color.Transparent;
-            this.tabPageObjects.Controls.Add(this.watchVariablePanel1);
             this.tabPageObjects.Controls.Add(this.splitContainerObject);
             this.tabPageObjects.Location = new System.Drawing.Point(4, 22);
             this.tabPageObjects.Margin = new System.Windows.Forms.Padding(0);
@@ -1622,13 +1620,6 @@ namespace STROOP
             this.tabPageObjects.Size = new System.Drawing.Size(915, 463);
             this.tabPageObjects.TabIndex = 0;
             this.tabPageObjects.Text = "Object";
-            // 
-            // watchVariablePanel1
-            // 
-            this.watchVariablePanel1.Location = new System.Drawing.Point(10, 10);
-            this.watchVariablePanel1.Name = "watchVariablePanel1";
-            this.watchVariablePanel1.Size = new System.Drawing.Size(200, 100);
-            this.watchVariablePanel1.TabIndex = 21;
             // 
             // splitContainerObject
             // 
@@ -13843,6 +13834,7 @@ namespace STROOP
             // 
             // treeViewGfx
             // 
+            this.treeViewGfx.BackColor = System.Drawing.SystemColors.Control;
             this.treeViewGfx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeViewGfx.Location = new System.Drawing.Point(0, 0);
             this.treeViewGfx.Name = "treeViewGfx";
@@ -13876,6 +13868,7 @@ namespace STROOP
             // 
             // richTextBoxGfx
             // 
+            this.richTextBoxGfx.BackColor = System.Drawing.SystemColors.Control;
             this.richTextBoxGfx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBoxGfx.Location = new System.Drawing.Point(0, 0);
             this.richTextBoxGfx.Name = "richTextBoxGfx";
@@ -14072,6 +14065,7 @@ namespace STROOP
             // 
             // splitContainerGfxMiddle
             // 
+            this.splitContainerGfxMiddle.BackColor = System.Drawing.SystemColors.Control;
             this.splitContainerGfxMiddle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerGfxMiddle.IsSplitterFixed = true;
             this.splitContainerGfxMiddle.Location = new System.Drawing.Point(0, 0);
@@ -15584,7 +15578,6 @@ namespace STROOP
         private Label labelTriRoomsToLabel;
         private Label labelTriRoomsFromLabel;
         private TabPage tabPageGfx;
-        private WatchVariablePanel watchVariablePanel1;
         private SplitContainer splitContainerGfxLeft;
         private TreeView treeViewGfx;
         private SplitContainer splitContainerGfxRight;
