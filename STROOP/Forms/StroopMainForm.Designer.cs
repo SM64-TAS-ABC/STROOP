@@ -1061,6 +1061,8 @@ namespace STROOP
             this.splitContainerGfxLeft = new System.Windows.Forms.SplitContainer();
             this.treeViewGfx = new System.Windows.Forms.TreeView();
             this.splitContainerGfxRight = new System.Windows.Forms.SplitContainer();
+            this.splitContainerGfxMiddle = new System.Windows.Forms.SplitContainer();
+            this.buttonGfxRefresh = new System.Windows.Forms.Button();
             this.watchVariablePanelGfx = new STROOP.Controls.WatchVariablePanel();
             this.richTextBoxGfx = new System.Windows.Forms.RichTextBox();
             this.labelVersionNumber = new System.Windows.Forms.Label();
@@ -1079,8 +1081,8 @@ namespace STROOP
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.splitContainerGfxMiddle = new System.Windows.Forms.SplitContainer();
-            this.buttonGfxRefresh = new System.Windows.Forms.Button();
+            this.buttonGfxRefreshObject = new System.Windows.Forms.Button();
+            this.buttonGfxDumpDisplayList = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1419,11 +1421,11 @@ namespace STROOP
             this.splitContainerGfxRight.Panel1.SuspendLayout();
             this.splitContainerGfxRight.Panel2.SuspendLayout();
             this.splitContainerGfxRight.SuspendLayout();
-            this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerGfxMiddle)).BeginInit();
             this.splitContainerGfxMiddle.Panel1.SuspendLayout();
             this.splitContainerGfxMiddle.Panel2.SuspendLayout();
             this.splitContainerGfxMiddle.SuspendLayout();
+            this.panelConnect.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -1453,7 +1455,7 @@ namespace STROOP
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 378);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 379);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1518,7 +1520,7 @@ namespace STROOP
             this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
             this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 156);
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 157);
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
@@ -4711,7 +4713,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 222F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 223F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8907,7 +8909,7 @@ namespace STROOP
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(705, 454);
+            this.glControlMap.Size = new System.Drawing.Size(708, 454);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -9874,7 +9876,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(340, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(323, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -9906,7 +9908,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(329, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(312, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -9962,7 +9964,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(329, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(312, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -13858,12 +13860,43 @@ namespace STROOP
             this.splitContainerGfxRight.SplitterDistance = 350;
             this.splitContainerGfxRight.TabIndex = 0;
             // 
+            // splitContainerGfxMiddle
+            // 
+            this.splitContainerGfxMiddle.BackColor = System.Drawing.SystemColors.Control;
+            this.splitContainerGfxMiddle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerGfxMiddle.IsSplitterFixed = true;
+            this.splitContainerGfxMiddle.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerGfxMiddle.Name = "splitContainerGfxMiddle";
+            this.splitContainerGfxMiddle.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerGfxMiddle.Panel1
+            // 
+            this.splitContainerGfxMiddle.Panel1.Controls.Add(this.buttonGfxDumpDisplayList);
+            this.splitContainerGfxMiddle.Panel1.Controls.Add(this.buttonGfxRefreshObject);
+            this.splitContainerGfxMiddle.Panel1.Controls.Add(this.buttonGfxRefresh);
+            // 
+            // splitContainerGfxMiddle.Panel2
+            // 
+            this.splitContainerGfxMiddle.Panel2.Controls.Add(this.watchVariablePanelGfx);
+            this.splitContainerGfxMiddle.Size = new System.Drawing.Size(350, 457);
+            this.splitContainerGfxMiddle.SplitterDistance = 40;
+            this.splitContainerGfxMiddle.TabIndex = 1;
+            // 
+            // buttonGfxRefresh
+            // 
+            this.buttonGfxRefresh.Location = new System.Drawing.Point(3, 3);
+            this.buttonGfxRefresh.Name = "buttonGfxRefresh";
+            this.buttonGfxRefresh.Size = new System.Drawing.Size(75, 23);
+            this.buttonGfxRefresh.TabIndex = 0;
+            this.buttonGfxRefresh.Text = "Refresh root";
+            this.buttonGfxRefresh.UseVisualStyleBackColor = true;
+            // 
             // watchVariablePanelGfx
             // 
             this.watchVariablePanelGfx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.watchVariablePanelGfx.Location = new System.Drawing.Point(0, 0);
             this.watchVariablePanelGfx.Name = "watchVariablePanelGfx";
-            this.watchVariablePanelGfx.Size = new System.Drawing.Size(350, 403);
+            this.watchVariablePanelGfx.Size = new System.Drawing.Size(350, 413);
             this.watchVariablePanelGfx.TabIndex = 0;
             // 
             // richTextBoxGfx
@@ -14063,33 +14096,23 @@ namespace STROOP
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // splitContainerGfxMiddle
+            // buttonGfxRefreshObject
             // 
-            this.splitContainerGfxMiddle.BackColor = System.Drawing.SystemColors.Control;
-            this.splitContainerGfxMiddle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerGfxMiddle.IsSplitterFixed = true;
-            this.splitContainerGfxMiddle.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerGfxMiddle.Name = "splitContainerGfxMiddle";
-            this.splitContainerGfxMiddle.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.buttonGfxRefreshObject.Location = new System.Drawing.Point(84, 3);
+            this.buttonGfxRefreshObject.Name = "buttonGfxRefreshObject";
+            this.buttonGfxRefreshObject.Size = new System.Drawing.Size(135, 23);
+            this.buttonGfxRefreshObject.TabIndex = 1;
+            this.buttonGfxRefreshObject.Text = "Refresh selected object";
+            this.buttonGfxRefreshObject.UseVisualStyleBackColor = true;
             // 
-            // splitContainerGfxMiddle.Panel1
+            // buttonGfxDumpDisplayList
             // 
-            this.splitContainerGfxMiddle.Panel1.Controls.Add(this.buttonGfxRefresh);
-            // 
-            // splitContainerGfxMiddle.Panel2
-            // 
-            this.splitContainerGfxMiddle.Panel2.Controls.Add(this.watchVariablePanelGfx);
-            this.splitContainerGfxMiddle.Size = new System.Drawing.Size(350, 457);
-            this.splitContainerGfxMiddle.TabIndex = 1;
-            // 
-            // buttonGfxRefresh
-            // 
-            this.buttonGfxRefresh.Location = new System.Drawing.Point(3, 3);
-            this.buttonGfxRefresh.Name = "buttonGfxRefresh";
-            this.buttonGfxRefresh.Size = new System.Drawing.Size(75, 23);
-            this.buttonGfxRefresh.TabIndex = 0;
-            this.buttonGfxRefresh.Text = "refresh";
-            this.buttonGfxRefresh.UseVisualStyleBackColor = true;
+            this.buttonGfxDumpDisplayList.Location = new System.Drawing.Point(225, 3);
+            this.buttonGfxDumpDisplayList.Name = "buttonGfxDumpDisplayList";
+            this.buttonGfxDumpDisplayList.Size = new System.Drawing.Size(104, 23);
+            this.buttonGfxDumpDisplayList.TabIndex = 2;
+            this.buttonGfxDumpDisplayList.Text = "Export display list";
+            this.buttonGfxDumpDisplayList.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -14525,12 +14548,12 @@ namespace STROOP
             this.splitContainerGfxRight.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerGfxRight)).EndInit();
             this.splitContainerGfxRight.ResumeLayout(false);
-            this.panelConnect.ResumeLayout(false);
-            this.panelConnect.PerformLayout();
             this.splitContainerGfxMiddle.Panel1.ResumeLayout(false);
             this.splitContainerGfxMiddle.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerGfxMiddle)).EndInit();
             this.splitContainerGfxMiddle.ResumeLayout(false);
+            this.panelConnect.ResumeLayout(false);
+            this.panelConnect.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -15585,6 +15608,8 @@ namespace STROOP
         private RichTextBox richTextBoxGfx;
         private SplitContainer splitContainerGfxMiddle;
         private Button buttonGfxRefresh;
+        private Button buttonGfxRefreshObject;
+        private Button buttonGfxDumpDisplayList;
     }
 }
 

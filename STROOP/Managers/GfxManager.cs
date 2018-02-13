@@ -7,11 +7,19 @@ using STROOP.Structs.Configurations;
 
 namespace STROOP.Managers
 {
+    /**
+    * The Gfx tree is responsible for drawing everything in SM64 except HUD text
+    * Nodes that actually draw things are 'DisplayLists' for static things (like level geometry) or 'GeoLayout scripts'
+    * for more complex things (like water rectangles, snow, painting wobble).
+    * Other nodes affect everything below it. There is a child selector that ensures only one room in the castle / BBH / HMC is drawn at a time,
+    * there are nodes setting up a camera, rotationg / scaling models, handling animation, all kinds of stuff
+    * This manager makes it easy to browse all the nodes and edit them
+    */
     public class GfxManager : DataManager
     {
         Control _tabControl;
         TreeView _treeView;
-        GfxNode currentNode;
+        public GfxNode SelectedNode;
 
         public GfxManager(Control tabControl, List<WatchVariableControlPrecursor> variables, WatchVariablePanel watchVariablePanel)
             : base(variables, watchVariablePanel)
@@ -20,46 +28,68 @@ namespace STROOP.Managers
             var right = left.Panel2.Controls["splitContainerGfxright"] as SplitContainer;
             var middle = right.Panel1.Controls["splitContainerGfxmiddle"] as SplitContainer;
             var output = right.Panel2.Controls["richTextBoxGfx"] as RichTextBox;
-            var refreshButton = middle.Panel1.Controls["buttonGfxRefresh"] as Button;
-            
+            var refreshButtonRoot = middle.Panel1.Controls["buttonGfxRefreshRoot"] as Button;
+            var refreshButtonObject = middle.Panel1.Controls["buttonGfxRefreshObject"] as Button;
+            var dumpButton = middle.Panel1.Controls["buttonGfxDumpDisplayList"] as Button;
+
             _treeView = left.Panel1.Controls["treeViewGfx"] as TreeView;
             _treeView.AfterSelect += _treeView_AfterSelect;
-            refreshButton.Click += RefreshButton_Click;
+            refreshButtonRoot.Click += RefreshButton_Click;
+            refreshButtonObject.Click += RefreshButtonObject_Click;
             _tabControl = tabControl;
 
-            var wv = new WatchVariable("uint", null, Structs.BaseAddressTypeEnum.Relative, 0x8032D5D4, 0x8032C694, null, null, null);
-            var wvp = new WatchVariableControlPrecursor("Global timer", wv, Structs.WatchVariableSubclass.Number, System.Drawing.Color.Goldenrod, true, false, null, new List<Structs.VariableGroup>());
-            var wvc = wvp.CreateWatchVariableControl();
-            watchVariablePanel.AddVariable(wvc);
-            watchVariablePanel.AddVariable(wvc);
-            watchVariablePanel.AddVariable(wvc);
-            watchVariablePanel.AddVariable(wvc);
-            watchVariablePanel.AddVariable(wvc);
-            watchVariablePanel.AddVariable(wvc);
-            watchVariablePanel.AddVariable(wvc);
-            watchVariablePanel.AddVariable(wvc);
-            watchVariablePanel.AddVariable(wvc);
-            watchVariablePanel.AddVariable(wvc);
-            watchVariablePanel.AddVariable(wvc);
-            watchVariablePanel.AddVariable(wvc);
-            watchVariablePanel.AddVariable(wvc);
-            watchVariablePanel.AddVariable(wvc);
-            watchVariablePanel.AddVariable(wvc);
-            watchVariablePanel.AddVariable(wvc);
+            foreach (var wvc in GfxNode.GetCommonVariables())
+            {
+                watchVariablePanel.AddVariable(wvc.CreateWatchVariableControl());
+            }
         }
 
+        private void RefreshButtonObject_Click(object sender, EventArgs e)
+        {
+            var list = Config.ObjectSlotsManager.SelectedSlotsAddresses;
+            if (list != null && list.Count>0)
+            {
+                foreach(var address in list)
+                {
+                    AddToTreeView(address);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Select at least one object slot.");
+            }
+        }
+
+        /**
+         * When selecting a node, ensure the variable containers are related to that node
+         */
         private void _treeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            GfxNode node = (GfxNode)e.Node.Tag;
-            MessageBox.Show(node.name);
+            GfxNode node = (GfxNode) e.Node.Tag;
+            SelectedNode = node;
         }
 
+        /**
+         * When refresh is clicked, the old GFX tree is discarded and a new one is read
+         */
         private void RefreshButton_Click(object sender, EventArgs e)
         {
-            //Config.SwitchRomVersion(0x33A5A0, 0x33A5A0);
-            var root = GfxNode.ReadGfxNode(Config.Stream.GetUInt32(0x33A5A0));
-            _treeView.Nodes.Add("Test");
+            _treeView.Nodes.Clear();
+
+            // A pointer to the root node of the GFX tree is stored at a fixed address
+            AddToTreeView(Config.Stream.GetUInt32(Config.SwitchRomVersion(0x33B910, 0x33A5A0)));
+        }
+
+        public void AddToTreeView(uint rootAddress)
+        {
+            var root = GfxNode.ReadGfxNode(rootAddress);
+            
             _treeView.Nodes.Add(GfxToTreeNode(root));
+
+            foreach (TreeNode n in _treeView.Nodes)
+            {
+                n.ExpandAll();
+            }
         }
 
         public override void Update(bool updateView)
@@ -68,10 +98,15 @@ namespace STROOP.Managers
             base.Update(true);
         }
 
+        /*
+         * Recursively converts a tree of GfxNodes to a tree of TreeNodes so that they can be displayed in the tree viewer
+         */
         public TreeNode GfxToTreeNode(GfxNode node)
         {
-            if (node == null) return new TreeNode("Invalid Gfx Node");
-            TreeNode res = new TreeNode(node.name, node.children.Select(x => GfxToTreeNode(x)).ToArray());
+            // Should only happen when memory is invalid (for example when the US setting is used on a JP ROM)
+            if (node == null) return new TreeNode("Invalid Gfx Node"); 
+
+            TreeNode res = new TreeNode(node.Name, node.children.Select(x => GfxToTreeNode(x)).ToArray());
             res.Tag = node;
             return res;
         }
@@ -79,11 +114,9 @@ namespace STROOP.Managers
 
     public class GfxNode
     {
-        private const int maxSiblings = 1000; //To prevent infinite loops on malformed memory
-
-        public string name = "GFX node";
+        private const int maxSiblings = 1000; //Siblings are stored as a circular list. This limit prevent infinite loops on malformed memory.
+        public virtual string Name { get { return "GFX node"; } } //This name is overridden by all the sub classes corresponding 
         public uint address;
-        GfxNode parent;
         public List<GfxNode> children;
 
         public static GfxNode ReadGfxNode(uint address)
@@ -123,15 +156,29 @@ namespace STROOP.Managers
             }
             res.address = address;
             res.children = new List<GfxNode>();
-            var childAddress = Config.Stream.GetUInt32(address + 0x10);  //offset 0x10 = child pointer
+
+            uint childAddress;
+            
+            if (type == 0x018 || type == 0x029)
+            {
+                // For some reason, the object parent has a null pointer as a child inbetween frames,
+                // but during updatng it temporarily sets it to the pointer at offset 0x14
+                // Object nodes also do something like that
+                childAddress = Config.Stream.GetUInt32(address + 0x14);
+            }
+            else
+            {
+                childAddress = Config.Stream.GetUInt32(address + 0x10);  //offset 0x10 = child pointer
+            }
 
             if (childAddress != 0)
             {
+                //Traverse the circularly linked list of siblings until the first child is seen again
                 var currentAddress = childAddress;
                 for (int i = 0; i < maxSiblings; i++)
                 {
                     res.children.Add(ReadGfxNode(currentAddress));
-                    currentAddress = Config.Stream.GetUInt32(currentAddress + 0x08); //offset 0x08 = next pointer
+                    currentAddress = Config.Stream.GetUInt32(currentAddress + 0x08); //offset 0x08 = next pointer 
                     if (currentAddress == childAddress) break;
                 }
             }
@@ -139,7 +186,37 @@ namespace STROOP.Managers
             return res;
         }
 
-        public virtual List<WatchVariableControlPrecursor> getSpecialVars()
+        public static List<WatchVariableControlPrecursor> GetCommonVariables()
+        {
+            var res = new List<WatchVariableControlPrecursor>();
+            res.Add(gfxProperty("Type", "ushort", 0x00));
+            res.Add(gfxProperty("Active", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x01));
+            res.Add(gfxProperty("Bit 1", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x02));
+            res.Add(gfxProperty("Billboard", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x04));
+            res.Add(gfxProperty("Bit 3", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x08));
+            res.Add(gfxProperty("Invisible", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x10));
+            res.Add(gfxProperty("Always on?", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x20));
+            res.Add(gfxProperty("Previous", "uint", 0x04));
+            res.Add(gfxProperty("Next", "uint", 0x08));
+            res.Add(gfxProperty("Parent", "uint", 0x0C));
+            res.Add(gfxProperty("Child", "uint", 0x10));
+            res.Add(gfxProperty("14", "uint", 0x14)); //Placeholders, used for investigating type-specific variables
+            res.Add(gfxProperty("18", "uint", 0x18));
+            res.Add(gfxProperty("1C", "uint", 0x1C));
+            res.Add(gfxProperty("20", "uint", 0x20));
+            return res;
+        }
+
+        // Wrapper to make defining variables easier
+        protected static WatchVariableControlPrecursor gfxProperty(string name, string type, uint offset, Structs.WatchVariableSubclass subclass = Structs.WatchVariableSubclass.Number, uint? mask = null)
+        {
+            var wv = new WatchVariable(type, null, Structs.BaseAddressTypeEnum.GfxNode, offset, offset, offset, offset, mask);
+            var wvp = new WatchVariableControlPrecursor(name, wv, subclass, System.Drawing.Color.Beige, true, false, null, new List<Structs.VariableGroup>());
+            return wvp;
+        }
+
+        // If there are type specific variables, this should be overridden 
+        public virtual List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
             return new List<WatchVariableControlPrecursor>();
         }
@@ -147,106 +224,126 @@ namespace STROOP.Managers
 
     internal class GfxChildSelector : GfxNode
     {
-        new string name = "Child selector";
+        public override string Name { get { return "Child selector"; } }
+
+        public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
+        {
+            var res = new List<WatchVariableControlPrecursor>();
+            res.Add(gfxProperty("Selected child", "ushort", 0x1E));
+            return res;
+        }
     }
 
     internal class GfxBackgroundImage : GfxNode
     {
-        new string name = "Background image";
+        public override string Name { get { return "Background image"; } }
     }
 
     internal class GfxHeldObject : GfxNode
     {
-        new string name = "Held object";
+        public override string Name { get { return "Held object"; } }
     }
 
     internal class GfxGeoLayoutScript : GfxNode
     {
-        new string name = "Geo Layout script";
+        public override string Name { get { return "Geo Layout script"; } }
+
+        public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
+        {
+            var res = new List<WatchVariableControlPrecursor>();
+            res.Add(gfxProperty("Function", "uint", 0x14));
+            return res;
+        }
     }
 
     internal class GfxCamera : GfxNode
     {
-        new string name = "Camera";
+        public override string Name { get { return "Camera"; } }
     }
 
     internal class GfxProjection3D : GfxNode
     {
-        new string name = "Projection 3D";
+        public override string Name { get { return "Projection 3D"; } }
     }
 
     internal class GfxObjectParent : GfxNode
     {
-        new string name = "Object parent";
+        public override string Name { get { return "Object parent"; } }
+        public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
+        {
+            var res = new List<WatchVariableControlPrecursor>();
+            res.Add(gfxProperty("Gfx tree root", "uint", 0x14));
+            return res;
+        }
     }
 
     internal class GfxShadowNode : GfxNode
     {
-        new string name = "Shadow";
+        public override string Name { get { return "Shadow"; } }
     }
 
     internal class GfxScalingNode : GfxNode
     {
-        new string name = "Scaling node";
+        public override string Name { get { return "Scaling node"; } }
     }
 
     internal class GfxMenuModel : GfxNode
     {
-        new string name = "Menu model";
+        public override string Name { get { return "Menu model"; } }
     }
 
     internal class GfxAnimationNode : GfxNode
     {
-        new string name = "Animation";
+        public override string Name { get { return "Animation"; } }
     }
 
     internal class GfxGameObject : GfxNode
     {
-        new string name = "Game object";
+        public override string Name { get { return "Game object"; } }
     }
 
     internal class GfxTransformNode : GfxNode
     {
-        new string name = "Transformation";
+        public override string Name { get { return "Transformation"; } }
     }
 
     internal class GfxUnknown16 : GfxNode
     {
-        new string name = "Unknown 0x16";
+        public override string Name { get { return "Unknown 0x16"; } }
     }
 
     internal class GfxUnknown15 : GfxNode
     {
-        new string name = "Unknown 0x15";
+        public override string Name { get { return "Unknown 0x15"; } }
     }
 
     internal class GfxHeightGate : GfxNode
     {
-        new string name = "Height gate";
+        public override string Name { get { return "Height gate"; } }
     }
 
     internal class GfxMasterList : GfxNode
     {
-        new string name = "Master list";
+        public override string Name { get { return "Master list"; } }
     }
 
     internal class GfxRoomObjectParent : GfxNode
     {
-        new string name = "Room/Object parent";
+        public override string Name { get { return "Room/Object parent"; } }
     }
 
     internal class GfxScreenSpace : GfxNode
     {
-        new string name = "Screenspace";
+        public override string Name { get { return "Screenspace"; } }
     }
 
     internal class GfxRootnode : GfxNode
     {
-        new string name = "Root";
+        public override string Name { get { return "Root"; } }
     }
 
     internal class GfxDisplayList : GfxNode
     {
-        new string name = "DisplayList";
+        public override string Name { get { return "DisplayList"; } }
     }
 }

@@ -34,5 +34,6 @@ namespace STROOP.Structs
         Area,
         HackedArea,
         CamHack,
+        GfxNode,
     };
 }
