@@ -1593,6 +1593,7 @@ namespace STROOP
             this.Gfx.Controls.Add(this.tabPagePu);
             this.Gfx.Controls.Add(this.tabPageArea);
             this.Gfx.Controls.Add(this.tabPageModel);
+            this.Gfx.Controls.Add(this.tabPageGfx);
             this.Gfx.Controls.Add(this.tabPageDisassembly);
             this.Gfx.Controls.Add(this.tabPageDecompiler);
             this.Gfx.Controls.Add(this.tabPageScripts);
@@ -1602,7 +1603,6 @@ namespace STROOP
             this.Gfx.Controls.Add(this.tabPageVarHack);
             this.Gfx.Controls.Add(this.tabPageOptions);
             this.Gfx.Controls.Add(this.tabPageTesting);
-            this.Gfx.Controls.Add(this.tabPageGfx);
             this.Gfx.Cursor = System.Windows.Forms.Cursors.Default;
             this.Gfx.HotTrack = true;
             this.Gfx.Location = new System.Drawing.Point(2, 2);

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Drawing;
 using System.Linq;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
@@ -247,10 +248,13 @@ namespace STROOP.Managers
         }
 
         // Wrapper to make defining variables easier
-        protected static WatchVariableControlPrecursor gfxProperty(string name, string type, uint offset, Structs.WatchVariableSubclass subclass = Structs.WatchVariableSubclass.Number, uint? mask = null)
+        protected static WatchVariableControlPrecursor gfxProperty(string name, string type, uint offset, 
+            Structs.WatchVariableSubclass subclass = Structs.WatchVariableSubclass.Number, uint? mask = null)
         {
+            var col = (offset <= 0x13) ? Color.Beige : Color.PowderBlue;
             var wv = new WatchVariable(type, null, Structs.BaseAddressTypeEnum.GfxNode, offset, offset, offset, offset, mask);
-            var wvp = new WatchVariableControlPrecursor(name, wv, subclass, (offset <= 0x13) ? System.Drawing.Color.Beige : System.Drawing.Color.PowderBlue, true, false, null, new List<Structs.VariableGroup>());
+            var wvp = new WatchVariableControlPrecursor(name, wv, subclass, col, 
+                type == "uint" || type == "ushort", false, null, new List<Structs.VariableGroup>());
             return wvp;
         }
 
@@ -282,6 +286,21 @@ namespace STROOP.Managers
     internal class GfxHeldObject : GfxNode
     {
         public override string Name { get { return "Held object"; } }
+        //function gfxFunction  0x14
+        //int marioOffset  0x18        memory offset from marioData to check
+        //void* heldObj      0x1c        another struct
+        //short[3] position     0x20,2,4
+        public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
+        {
+            var res = new List<WatchVariableControlPrecursor>();
+            res.Add(gfxProperty("Function", "uint", 0x14));
+            res.Add(gfxProperty("Mario offset", "int", 0x18));
+            res.Add(gfxProperty("Held object", "uint", 0x1C));
+            res.Add(gfxProperty("Position x", "short", 0x20));
+            res.Add(gfxProperty("Position y", "short", 0x22));
+            res.Add(gfxProperty("Position z", "short", 0x24));
+            return res;
+        }
     }
 
     internal class GfxGeoLayoutScript : GfxNode
@@ -302,12 +321,13 @@ namespace STROOP.Managers
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
             var res = new List<WatchVariableControlPrecursor>();
-            res.Add(gfxProperty("x from", "float", 0x1C));
-            res.Add(gfxProperty("y from", "float", 0x20));
-            res.Add(gfxProperty("z from", "float", 0x24));
-            res.Add(gfxProperty("x2 from", "float", 0x28));
-            res.Add(gfxProperty("y2 from", "float", 0x2C));
-            res.Add(gfxProperty("z2 from", "float", 0x30));
+            res.Add(gfxProperty("Update function", "uint", 0x14));
+            res.Add(gfxProperty("X from", "float", 0x1C));
+            res.Add(gfxProperty("X from", "float", 0x20));
+            res.Add(gfxProperty("Z from", "float", 0x24));
+            res.Add(gfxProperty("X to", "float", 0x28));
+            res.Add(gfxProperty("Y to", "float", 0x2C));
+            res.Add(gfxProperty("Z to", "float", 0x30));
             return res;
         }
     }
@@ -318,9 +338,10 @@ namespace STROOP.Managers
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
             var res = new List<WatchVariableControlPrecursor>();
-            res.Add(gfxProperty("angle", "float", 0x1C));
-            res.Add(gfxProperty("znear", "short", 0x20));
-            res.Add(gfxProperty("zfar", "short", 0x22));
+            res.Add(gfxProperty("Update function", "uint", 0x14));
+            res.Add(gfxProperty("Fov", "float", 0x1C));
+            res.Add(gfxProperty("Z clip near", "short", 0x20));
+            res.Add(gfxProperty("Z clip far", "short", 0x22));
             return res;
         }
     }
@@ -368,8 +389,8 @@ namespace STROOP.Managers
         {
             var res = new List<WatchVariableControlPrecursor>();
             res.Add(gfxProperty("Segmented address", "uint", 0x14));
-            res.Add(gfxProperty("x offset", "short", 0x18)); //todo: check these
-            res.Add(gfxProperty("y offset", "short", 0x1A));
+            res.Add(gfxProperty("X offset", "short", 0x18)); //todo: check these
+            res.Add(gfxProperty("Y offset", "short", 0x1A));
             return res;
         }
     }
@@ -381,9 +402,9 @@ namespace STROOP.Managers
         {
             var res = new List<WatchVariableControlPrecursor>();
             res.Add(gfxProperty("Segmented address", "uint", 0x14));
-            res.Add(gfxProperty("x", "short", 0x18));
-            res.Add(gfxProperty("y", "short", 0x1A));
-            res.Add(gfxProperty("z", "short", 0x1C));
+            res.Add(gfxProperty("X", "short", 0x18));
+            res.Add(gfxProperty("Y", "short", 0x1A));
+            res.Add(gfxProperty("Z", "short", 0x1C));
             return res;
         }
     }
@@ -407,9 +428,9 @@ namespace STROOP.Managers
         {
             var res = new List<WatchVariableControlPrecursor>();
             res.Add(gfxProperty("Segmented address", "uint", 0x14));
-            res.Add(gfxProperty("angle x", "short", 0x18));
-            res.Add(gfxProperty("angle y", "short", 0x1A));
-            res.Add(gfxProperty("angle z", "short", 0x1C));
+            res.Add(gfxProperty("Angle x", "short", 0x18)); //Todo: make these angle types
+            res.Add(gfxProperty("Angle y", "short", 0x1A));
+            res.Add(gfxProperty("Angle z", "short", 0x1C));
             return res;
         }
     }

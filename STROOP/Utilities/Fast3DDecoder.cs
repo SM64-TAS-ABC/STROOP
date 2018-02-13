@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using STROOP.Structs.Configurations;
 
 namespace STROOP.Utilities
@@ -15,7 +12,8 @@ namespace STROOP.Utilities
      */
     public class Fast3DDecoder
     {
-        private const int MaxDisplayListLength = 5000; // Prevents long / endless loops when a malformed display list is decoded
+        private const int MaxDisplayListLength = 1000; // Prevents long / endless loops when a malformed display list is decoded
+        private const int MaxRecursionDepth = 5;
 
         public enum F3DOpcode
         {
@@ -76,11 +74,19 @@ namespace STROOP.Utilities
             G_SETCIMG = 0xFF,
         }
 
-        // Gives a string decoding the display list starting at a given address
-        public static string DecodeList(uint address)
+        // For indentation of the decoded list
+        public static string Indent(int level)
         {
+            return "".PadLeft(level*4);
+        }
+
+        // Gives a string decoding the display list starting at a given address
+        public static string DecodeList(uint address, int recursionDepth = 0)
+        {
+            if (recursionDepth > MaxRecursionDepth) return "Recursion too deep";
+
             var res = new StringBuilder();
-            res.AppendLine($"Decoding list at 0x{address:X8}");
+            res.AppendLine(Indent(recursionDepth) + $"Decoding list at 0x{address:X8}");
             for(int i = 0; i < MaxDisplayListLength; i++)
             {
                 
@@ -88,14 +94,16 @@ namespace STROOP.Utilities
                 var secondWord = Config.Stream.GetUInt32(address + 4);
                 var opcode = (F3DOpcode)((firstWord >> 24) & 0xFF);
                 var name = Enum.GetName(typeof(F3DOpcode), opcode);
-                res.AppendLine($"{firstWord:X8} {secondWord:X8} "+name);
+                res.Append(Indent(recursionDepth) + $"{firstWord:X8} {secondWord:X8} "+name+" ");
 
+                // todo: interpret the other commands
                 switch (opcode)
                 {
                     case F3DOpcode.G_VTX:
-                        var vertexAmount = ((firstWord >> 28) & 0xF) + 1;
+                        var vertexAmount = ((firstWord >> 20) & 0xF) + 1;
+                        var startIndex = ((firstWord >> 16) & 0xF) + 1;
                         var vertexAddress = DecodeSegmentedAddress(secondWord);
-                        res.AppendLine($"{vertexAmount} vertices at 0x{address:X8}");
+                        res.AppendLine($"{vertexAmount} vertices at 0x{address:X8}, start index {startIndex}");
                         for (byte j = 0; j < vertexAmount; j++)
                         {
                             uint add = (uint) (vertexAddress + (j * 0x10));
@@ -109,16 +117,22 @@ namespace STROOP.Utilities
                             var g = Config.Stream.GetByte(add + 0x0D);
                             var b = Config.Stream.GetByte(add + 0x0E);
                             var a = Config.Stream.GetByte(add + 0x0F);
-                            res.AppendLine($"pos ({x}, {y}, {z}) flags 0x{flags:X4} tex ({texX}, {texY}) normal/color ({r}, {g}, {b}, {a})");
+                            res.AppendLine(Indent(recursionDepth) + $"pos ({x}, {y}, {z}) flags 0x{flags:X4} tex ({texX}, {texY}) normal/color ({r}, {g}, {b}, {a})");
                         }
                         break;
                     case F3DOpcode.G_TRI1:
                         var v1 = ((secondWord >> 16) & 0xFF) / 0x0A;
                         var v2 = ((secondWord >> 8) & 0xFF) / 0x0A;
                         var v3 = ((secondWord >> 0) & 0xFF) / 0x0A;
-                        res.AppendLine($"Triangle ({v1}, {v2}, {v3})");
+                        res.AppendLine($"indices ({v1}, {v2}, {v3})");
                         break;
-                    default: break;
+                    case F3DOpcode.G_DL:
+                        res.AppendLine();
+                        res.AppendLine(DecodeList(DecodeSegmentedAddress(secondWord), recursionDepth+1));
+                        break;
+                    default:
+                        res.AppendLine();
+                        break;
                 }
 
                 if (opcode == F3DOpcode.G_ENDDL) break;
