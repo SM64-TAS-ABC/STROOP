@@ -6,6 +6,7 @@
   <Data base="None" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
   <Data base="None" specialType="NumberOfLoadedObjects">Num Loaded Objs</Data>
   <Data type="short" offsetUS="0x8032DF08" offsetJP="0x8032CFA8" base="Relative">Animation Timer</Data>
+  <Data type="float" offsetUS="0x80336f98" offsetJP="0x80335DF8" base="Relative">Max Obj Render Dist</Data>
 
   <Data type="byte" offsetUS="0x80222618" offsetJP="0x80222A18" base="Relative" subclass="Boolean" mask="0x20" invertBool="true">Music On</Data>
   <Data type="float" offsetUS="0x80222630" offsetJP="0x80222A30" base="Relative">Volume</Data>

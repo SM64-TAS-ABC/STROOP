@@ -114,7 +114,7 @@ namespace STROOP.Utilities
                 if (element.Name.ToString() != "Data")
                     continue;
 
-                WatchVariableControlPrecursor watchVarControl = GetWatchVariablePrecursorFromElement(element);
+                WatchVariableControlPrecursor watchVarControl = new WatchVariableControlPrecursor(element);
                 objectData.Add(watchVarControl);
             }
 
@@ -338,7 +338,7 @@ namespace STROOP.Utilities
                         List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
                         foreach (var subElement in element.Elements().Where(x => x.Name == "Data"))
                         {
-                            WatchVariableControlPrecursor precursor = GetWatchVariablePrecursorFromElement(subElement);
+                            WatchVariableControlPrecursor precursor = new WatchVariableControlPrecursor(subElement);
                             precursors.Add(precursor);
                         }
 
@@ -1029,120 +1029,6 @@ namespace STROOP.Utilities
             }
 
             return hacks;
-        }
-
-        public static WatchVariableControl GetWatchVariableControlFromElement(XElement element)
-        {
-            return GetWatchVariablePrecursorFromElement(element).CreateWatchVariableControl();
-        }
-
-        public static WatchVariableControlPrecursor GetWatchVariablePrecursorFromElement(XElement element)
-        {
-            string name = element.Value;
-
-            BaseAddressTypeEnum baseAddressType = WatchVariableUtilities.GetBaseAddressType(element.Attribute(XName.Get("base")).Value);
-
-            WatchVariableSubclass subclass = WatchVariableUtilities.GetSubclass(element.Attribute(XName.Get("subclass"))?.Value);
-
-            List<VariableGroup> groupList = WatchVariableUtilities.ParseVariableGroupList(element.Attribute(XName.Get("groupList"))?.Value);
-
-            string specialType = element.Attribute(XName.Get("specialType"))?.Value;
-
-            Color? backgroundColor = (element.Attribute(XName.Get("color")) != null) ?
-                ColorTranslator.FromHtml(element.Attribute(XName.Get("color")).Value) : (Color?)null;
-
-            string typeName = (element.Attribute(XName.Get("type"))?.Value);
-
-            uint? mask = element.Attribute(XName.Get("mask")) != null ?
-                (uint?)ParsingUtilities.ParseHex(element.Attribute(XName.Get("mask")).Value) : null;
-
-            uint? offsetUS = ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetUS"))?.Value);
-            uint? offsetJP = ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetJP"))?.Value);
-            uint? offsetPAL = ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetPAL"))?.Value);
-            uint? offsetDefault = ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offset"))?.Value);
-
-            if (offsetDefault.HasValue && (offsetUS.HasValue || offsetJP.HasValue || offsetPAL.HasValue))
-            {
-                throw new ArgumentOutOfRangeException("Can't have both a default offset value and a rom-specific offset value");
-            }
-
-            if (specialType != null)
-            {
-                if (baseAddressType != BaseAddressTypeEnum.None &&
-                    baseAddressType != BaseAddressTypeEnum.Object &&
-                    baseAddressType != BaseAddressTypeEnum.Triangle)
-                {
-                    throw new ArgumentOutOfRangeException("Special var cannot have base address type " + baseAddressType);
-                }
-
-                if (offsetDefault.HasValue || offsetUS.HasValue || offsetJP.HasValue || offsetPAL.HasValue)
-                {
-                    throw new ArgumentOutOfRangeException("Special var cannot have any type of offset");
-                }
-
-                if (mask != null)
-                {
-                    throw new ArgumentOutOfRangeException("Special var cannot have mask");
-                }
-            }
-
-            WatchVariable watchVar =
-                new WatchVariable(
-                    typeName,
-                    specialType,
-                    baseAddressType,
-                    offsetUS,
-                    offsetJP,
-                    offsetPAL,
-                    offsetDefault,
-                    mask);
-
-            bool? useHex = (element.Attribute(XName.Get("useHex")) != null) ?
-                bool.Parse(element.Attribute(XName.Get("useHex")).Value) : (bool?)null;
-
-            bool? invertBool = element.Attribute(XName.Get("invertBool")) != null ?
-                bool.Parse(element.Attribute(XName.Get("invertBool")).Value) : (bool?)null;
-
-            WatchVariableCoordinate? coordinate = element.Attribute(XName.Get("coord")) != null ?
-                WatchVariableUtilities.GetCoordinate(element.Attribute(XName.Get("coord")).Value) : (WatchVariableCoordinate?)null;
-
-            if (subclass == WatchVariableSubclass.Angle && specialType != null)
-            {
-                if (typeName != "ushort" && typeName != "short" && typeName != "uint" && typeName != "int")
-                {
-                    throw new ArgumentOutOfRangeException("Special angle vars must have a good type");
-                }
-            }
-
-            if (useHex.HasValue && (subclass == WatchVariableSubclass.String))
-            {
-                throw new ArgumentOutOfRangeException("useHex cannot be used with var subclass String");
-            }
-
-            if ((useHex == true) && (subclass == WatchVariableSubclass.Object))
-            {
-                throw new ArgumentOutOfRangeException("useHex as true is redundant with var subclass Object");
-            }
-
-            if (invertBool.HasValue && (subclass != WatchVariableSubclass.Boolean))
-            {
-                throw new ArgumentOutOfRangeException("invertBool must be used with var subclass Boolean");
-            }
-
-            if (coordinate.HasValue && (subclass == WatchVariableSubclass.String))
-            {
-                throw new ArgumentOutOfRangeException("coordinate cannot be used with var subclass String");
-            }
-
-            return new WatchVariableControlPrecursor(
-                name,
-                watchVar,
-                subclass,
-                backgroundColor,
-                useHex,
-                invertBool,
-                coordinate,
-                groupList);
         }
 
         public static ActionTable OpenActionTable(string path)

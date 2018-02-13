@@ -13,8 +13,8 @@ namespace STROOP.Controls
     public class WatchVariablePanel : NoTearFlowLayoutPanel
     {
         private readonly Object _objectLock;
-        private readonly List<WatchVariableControlPrecursor> _precursors;
-        private readonly List<WatchVariableControl> _watchVarControlsList;
+        private List<WatchVariableControlPrecursor> _watchVarPrecursors;
+        private List<WatchVariableControl> _watchVarControls;
         private readonly List<VariableGroup> _allGroups;
         private readonly List<VariableGroup> _initialVisibleGroups;
         private readonly List<VariableGroup> _visibleGroups;
@@ -25,8 +25,8 @@ namespace STROOP.Controls
         public WatchVariablePanel()
         {
             _objectLock = new Object();
-            _precursors = new List<WatchVariableControlPrecursor>();
-            _watchVarControlsList = new List<WatchVariableControl>();
+            _watchVarPrecursors = new List<WatchVariableControlPrecursor>();
+            _watchVarControls = new List<WatchVariableControl>();
             _allGroups = new List<VariableGroup>();
             _initialVisibleGroups = new List<VariableGroup>();
             _visibleGroups = new List<VariableGroup>();
@@ -44,8 +44,8 @@ namespace STROOP.Controls
             if (allGroups != null) _allGroups.AddRange(allGroups);
             if (visibleGroups != null) _initialVisibleGroups.AddRange(visibleGroups);
             if (visibleGroups != null) _visibleGroups.AddRange(visibleGroups);
-            _precursors.AddRange(precursors);
-            AddVariables(_precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
+            _watchVarPrecursors.AddRange(precursors);
+            AddVariables(_watchVarPrecursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
 
             AddItemsToContextMenuStrip();
         }
@@ -109,7 +109,7 @@ namespace STROOP.Controls
             lock (_objectLock)
             {
                 Controls.Clear();
-                _watchVarControlsList.ForEach(watchVarControl =>
+                _watchVarControls.ForEach(watchVarControl =>
                 {
                     if (watchVarControl.BelongsToAnyGroup(_visibleGroups))
                         Controls.Add(watchVarControl);
@@ -119,44 +119,48 @@ namespace STROOP.Controls
 
         public void AddVariable(WatchVariableControl watchVarControl)
         {
-            AddVariables(new List<WatchVariableControl>() { watchVarControl });
+            lock (_objectLock)
+            {
+                AddVariables(new List<WatchVariableControl>() { watchVarControl });
+            }
         }
 
-        public void AddVariables(List<WatchVariableControl> watchVarControls)
+        public void AddVariables(IEnumerable<WatchVariableControl> watchVarControls)
         {
             lock (_objectLock)
             {
-                watchVarControls.ForEach(watchVarControl =>
+                foreach (WatchVariableControl watchVarControl in watchVarControls)
                 {
-                    _watchVarControlsList.Add(watchVarControl);
+                    _watchVarControls.Add(watchVarControl);
                     if (ShouldShow(watchVarControl)) Controls.Add(watchVarControl);
                     watchVarControl.SetPanel(this);
-                });
+                }
             }
         }
 
         public void RemoveVariable(WatchVariableControl watchVarControl)
         {
+            // No need to lock, since this calls into a method that locks
             RemoveVariables(new List<WatchVariableControl>() { watchVarControl });
         }
 
-        public void RemoveVariables(List<WatchVariableControl> watchVarControls)
+        public void RemoveVariables(IEnumerable<WatchVariableControl> watchVarControls)
         {
             lock (_objectLock)
             {
-                watchVarControls.ForEach(watchVarControl =>
+                foreach (WatchVariableControl watchVarControl in watchVarControls)
                 {
-                    _watchVarControlsList.Remove(watchVarControl);
+                    _watchVarControls.Remove(watchVarControl);
                     if (ShouldShow(watchVarControl)) Controls.Remove(watchVarControl);
                     watchVarControl.SetPanel(null);
-                });
+                }
             }
         }
 
         public void RemoveVariables(VariableGroup varGroup)
         {
             List<WatchVariableControl> watchVarControls =
-                _watchVarControlsList.FindAll(
+                _watchVarControls.FindAll(
                     watchVarControl => watchVarControl.BelongsToGroup(varGroup));
             RemoveVariables(watchVarControls);
         }
@@ -164,7 +168,7 @@ namespace STROOP.Controls
         public void ClearVariables()
         {
             List<WatchVariableControl> watchVarControlListCopy =
-                new List<WatchVariableControl>(_watchVarControlsList);
+                new List<WatchVariableControl>(_watchVarControls);
             RemoveVariables(watchVarControlListCopy);
         }
 
@@ -174,7 +178,19 @@ namespace STROOP.Controls
             _visibleGroups.Clear();
             _visibleGroups.AddRange(_initialVisibleGroups);
             UpdateFilterItemCheckedStatuses();
-            AddVariables(_precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
+            AddVariables(_watchVarPrecursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
+        }
+
+        /** Gets the precursors for the currently shown controls in order. */
+        private List<WatchVariableControlPrecursor> GetCurrentControlPrecursors()
+        {
+            List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
+            foreach (Control control in Controls)
+            {
+                WatchVariableControl watchVarControl = control as WatchVariableControl;
+                precursors.Add(watchVarControl.GetPrecursor());
+            }
+            return precursors;
         }
 
         public void ShowVariableXml()
@@ -185,14 +201,25 @@ namespace STROOP.Controls
                 infoForm.SetText(
                     "Variable Info",
                     "Variable XML",
-                    String.Join("\r\n", _watchVarControlsList));
+                    String.Join("\r\n", GetCurrentControlPrecursors()));
             }
             infoForm.Show();
         }
 
+        public void OpenVariables()
+        {
+            IEnumerable<WatchVariableControlPrecursor> precursors = WatchVariableFileUtilities.OpenVariables();
+            AddVariables(precursors.Select(w => w.CreateWatchVariableControl()));
+        }
+
+        public void SaveVariables()
+        {
+            WatchVariableFileUtilities.SaveVariables(GetCurrentControlPrecursors());
+        }
+
         public void EnableCustomVariableFunctionality()
         {
-            _watchVarControlsList.ForEach(control => control.EnableCustomFunctionality());
+            _watchVarControls.ForEach(control => control.EnableCustomFunctionality());
         }
 
         public void NotifyOfReordering(WatchVariableControl watchVarControl)
@@ -220,7 +247,7 @@ namespace STROOP.Controls
         {
             lock (_objectLock)
             {
-                return _watchVarControlsList.ConvertAll(control => control.GetValue(useRounding));
+                return _watchVarControls.ConvertAll(control => control.GetValue(useRounding));
             }
         }
 
@@ -228,13 +255,13 @@ namespace STROOP.Controls
         {
             lock (_objectLock)
             {
-                return _watchVarControlsList.ConvertAll(control => control.VarName);
+                return _watchVarControls.ConvertAll(control => control.VarName);
             }
         }
 
         public void UpdateControls()
         {
-            _watchVarControlsList.ForEach(watchVarControl => watchVarControl.UpdateControl());
+            _watchVarControls.ForEach(watchVarControl => watchVarControl.UpdateControl());
         }
 
         private bool ShouldShow(WatchVariableControl watchVarControl)

@@ -171,6 +171,13 @@ namespace STROOP.Structs
                         var node  = Config.GfxManager.SelectedNode;
                         return node != null ? new List<uint>() { node.address } : BaseAddressListEmpy;
                     }
+                case BaseAddressTypeEnum.GhostHack:
+                    return new List<uint>
+                    {
+                        GhostHackConfig.MemoryAddress +
+                        GhostHackConfig.FrameDataStructSize *
+                            (Config.Stream.GetUInt32(GhostHackConfig.NumFramesAddress) + GhostHackConfig.FrameOffset)
+                    };
 
                 default:
                     throw new ArgumentOutOfRangeException();

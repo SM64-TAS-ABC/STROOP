@@ -107,17 +107,13 @@ namespace STROOP.Controls
             _itemLock.Click += (sender, e) => ToggleLocked(_watchVarControl.FixedAddressList);
 
             _itemRemoveAllLocks = new ToolStripMenuItem("Remove All Locks");
-            _itemRemoveAllLocks.Click += (sender, e) => { WatchVariableLockManager.RemoveAllLocks(); };
+            _itemRemoveAllLocks.Click += (sender, e) => WatchVariableLockManager.RemoveAllLocks();
 
             ToolStripMenuItem itemCopyUnrounded = new ToolStripMenuItem("Copy");
-            itemCopyUnrounded.Click += (sender, e) => { Clipboard.SetText(GetStringValue(false)); };
+            itemCopyUnrounded.Click += (sender, e) => Clipboard.SetText(GetValue(false));
 
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
-            itemPaste.Click += (sender, e) =>
-            {
-                bool success = SetStringValue(Clipboard.GetText());
-                if (!success) _watchVarControl.FlashColor(WatchVariableControl.FAILURE_COLOR);
-            };
+            itemPaste.Click += (sender, e) => _watchVarControl.SetValue(Clipboard.GetText());
 
             _contextMenuStrip.AddToBeginningList(_itemHighlight);
             _contextMenuStrip.AddToBeginningList(_itemLock);
@@ -233,7 +229,7 @@ namespace STROOP.Controls
 
 
 
-        public string GetStringValue(
+        public string GetValue(
             bool handleRounding = true,
             bool handleFormatting = true,
             List<uint> addresses = null)
@@ -252,7 +248,7 @@ namespace STROOP.Controls
             return value;
         }
 
-        public bool SetStringValue(string value, List<uint> addresses = null)
+        public bool SetValue(string value, List<uint> addresses = null)
         {
             value = HandleObjectUndisplaying(value);
             value = HandleHexUndisplaying(value);
@@ -289,13 +285,13 @@ namespace STROOP.Controls
             if (!doubleValueNullable.HasValue) return false;
             double doubleValue = doubleValueNullable.Value;
 
-            string currentValueString = GetStringValue(false, false, addresses);
+            string currentValueString = GetValue(false, false, addresses);
             double? currentValueNullable = ParsingUtilities.ParseDoubleNullable(currentValueString);
             if (!currentValueNullable.HasValue) return false;
             double currentValue = currentValueNullable.Value;
 
             double newValue = currentValue + doubleValue * (add ? +1 : -1);
-            return SetStringValue(newValue.ToString(), addresses);
+            return SetValue(newValue.ToString(), addresses);
         }
 
         public List<uint> GetCurrentAddresses()

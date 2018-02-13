@@ -8,7 +8,6 @@ using STROOP.Structs;
 using STROOP.Utilities;
 using System.Drawing;
 using STROOP.Extensions;
-using OpenTK.Input;
 using STROOP.Structs.Configurations;
 using STROOP.Controls;
 
@@ -136,10 +135,10 @@ namespace STROOP.Managers
             _selectedUpdatePending = true;
             ObjectSlot selectedSlot = sender as ObjectSlot;
             selectedSlot.Focus();
-            KeyboardState keyboardState = Keyboard.GetState();
-            bool isCtrlKeyHeld = keyboardState.IsKeyDown(Key.ControlLeft) || keyboardState.IsKeyDown(Key.ControlRight);
-            bool isShiftKeyHeld = keyboardState.IsKeyDown(Key.ShiftLeft) || keyboardState.IsKeyDown(Key.ShiftRight);
-            bool isAltKeyHeld = keyboardState.IsKeyDown(Key.AltLeft) || keyboardState.IsKeyDown(Key.AltRight);
+
+            bool isCtrlKeyHeld = Control.ModifierKeys == Keys.Control; 
+            bool isShiftKeyHeld = Control.ModifierKeys == Keys.Shift;
+            bool isAltKeyHeld = Control.ModifierKeys == Keys.Alt;
 
             DoSlotClickUsingInput(selectedSlot, isCtrlKeyHeld, isShiftKeyHeld, isAltKeyHeld);
         }

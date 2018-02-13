@@ -140,8 +140,8 @@ namespace STROOP.Controls
 
         public List<WatchVariableLock> GetLocks(List<uint> addresses = null)
         {
-            List<string> values = GetValues(addresses);
             List<uint> addressList = addresses ?? AddressList;
+            List<string> values = GetValues(addressList);
             if (values.Count != addressList.Count) return new List<WatchVariableLock>();
 
             List<WatchVariableLock> locks = new List<WatchVariableLock>();

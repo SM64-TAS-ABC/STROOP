@@ -32,8 +32,10 @@ namespace STROOP.Structs
         Waypoint,
         Water,
         Area,
+
         HackedArea,
         CamHack,
         GfxNode,
+        GhostHack,
     };
 }

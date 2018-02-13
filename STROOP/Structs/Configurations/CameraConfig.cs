@@ -27,38 +27,38 @@ namespace STROOP.Structs.Configurations
         public static readonly uint SecondaryObjectAddressJP = 0x8032CFD0;
 
 
-        public static uint FovFunctionStartSleepingAddress { get { return Config.SwitchRomVersion(FovFunctionStartSleepingAddressUS, FovFunctionStartSleepingAddressJP); } }
-        public static readonly uint FovFunctionStartSleepingAddressUS = 0x8029A774;
-        public static readonly uint FovFunctionStartSleepingAddressJP = 0x8029A058;
+        public static uint FovFunctionAwakeAddress { get { return Config.SwitchRomVersion(FovFunctionAwakeAddressUS, FovFunctionAwakeAddressJP); } }
+        public static readonly uint FovFunctionAwakeAddressUS = 0x8029A7C8;
+        public static readonly uint FovFunctionAwakeAddressJP = 0x8029A0AC;
 
-        public static uint FovFunctionStopSleepingAddress { get { return Config.SwitchRomVersion(FovFunctionStopSleepingAddressUS, FovFunctionStopSleepingAddressJP); } }
-        public static readonly uint FovFunctionStopSleepingAddressUS = 0x8029A7C8;
-        public static readonly uint FovFunctionStopSleepingAddressJP = 0x8029A0AC;
+        public static uint FovFunctionSleepingAddress { get { return Config.SwitchRomVersion(FovFunctionSleepingAddressUS, FovFunctionSleepingAddressJP); } }
+        public static readonly uint FovFunctionSleepingAddressUS = 0x8029A774;
+        public static readonly uint FovFunctionSleepingAddressJP = 0x8029A058;
 
         public static uint FovFunctionUseDoorAddress { get { return Config.SwitchRomVersion(FovFunctionUseDoorAddressUS, FovFunctionUseDoorAddressJP); } }
         public static readonly uint FovFunctionUseDoorAddressUS = 0x8029AA20;
         public static readonly uint FovFunctionUseDoorAddressJP = 0x8029A304;
 
         public static uint FovFunctionCollectStarAddress { get { return Config.SwitchRomVersion(FovFunctionCollectStarAddressUS, FovFunctionCollectStarAddressJP); } }
-        public static readonly uint FovFunctionCollectStarAddressUS = 0x80289A70;
-        public static readonly uint FovFunctionCollectStarAddressJP = 0x80289488;
+        public static readonly uint FovFunctionCollectStarAddressUS = 0x8029A984;
+        public static readonly uint FovFunctionCollectStarAddressJP = 0x8029A268;
 
 
-        public static uint FovFunctionStartSleepingValue { get { return Config.SwitchRomVersion(FovFunctionStartSleepingValueUS, FovFunctionStartSleepingValueJP); } }
-        public static readonly uint FovFunctionStartSleepingValueUS = 0x0C0A2673;
-        public static readonly uint FovFunctionStartSleepingValueJP = 0x0C0A24F9;
+        public static uint FovFunctionAwakeValue { get { return Config.SwitchRomVersion(FovFunctionAwakeValueUS, FovFunctionAwakeValueJP); } }
+        public static readonly uint FovFunctionAwakeValueUS = 0x0C0A2673;
+        public static readonly uint FovFunctionAwakeValueJP = 0x0C0A24F9;
 
-        public static uint FovFunctionStopSleepingValue { get { return Config.SwitchRomVersion(FovFunctionStopSleepingValueUS, FovFunctionStopSleepingValueJP); } }
-        public static readonly uint FovFunctionStopSleepingValueUS = 0x0C0A2673;
-        public static readonly uint FovFunctionStopSleepingValueJP = 0x0C0A24F9;
+        public static uint FovFunctionSleepingValue { get { return Config.SwitchRomVersion(FovFunctionSleepingValueUS, FovFunctionSleepingValueJP); } }
+        public static readonly uint FovFunctionSleepingValueUS = 0x0C0A2673;
+        public static readonly uint FovFunctionSleepingValueJP = 0x0C0A24F9;
 
         public static uint FovFunctionUseDoorValue { get { return Config.SwitchRomVersion(FovFunctionUseDoorValueUS, FovFunctionUseDoorValueJP); } }
         public static readonly uint FovFunctionUseDoorValueUS = 0xE420C5A4;
         public static readonly uint FovFunctionUseDoorValueJP = 0xE420B234;
 
         public static uint FovFunctionCollectStarValue { get { return Config.SwitchRomVersion(FovFunctionCollectStarValueUS, FovFunctionCollectStarValueJP); } }
-        public static readonly uint FovFunctionCollectStarValueUS = 0xE4920000;
-        public static readonly uint FovFunctionCollectStarValueJP = 0xE4920000;
+        public static readonly uint FovFunctionCollectStarValueUS = 0x0C0A2673;
+        public static readonly uint FovFunctionCollectStarValueJP = 0x0C0A24F9;
 
         public static List<uint> FovFunctionAddresses
         {
@@ -66,8 +66,8 @@ namespace STROOP.Structs.Configurations
             {
                 return new List<uint>()
                 {
-                    FovFunctionStartSleepingAddress,
-                    FovFunctionStopSleepingAddress,
+                    FovFunctionAwakeAddress,
+                    FovFunctionSleepingAddress,
                     FovFunctionUseDoorAddress,
                     FovFunctionCollectStarAddress,
                 };
@@ -80,8 +80,8 @@ namespace STROOP.Structs.Configurations
             {
                 return new List<uint>()
                 {
-                    FovFunctionStartSleepingValue,
-                    FovFunctionStopSleepingValue,
+                    FovFunctionAwakeValue,
+                    FovFunctionSleepingValue,
                     FovFunctionUseDoorValue,
                     FovFunctionCollectStarValue,
                 };

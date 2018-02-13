@@ -14,7 +14,7 @@ namespace STROOP.Managers
 {
     public class DataManager
     {
-        private WatchVariablePanel _variablePanel;
+        protected WatchVariablePanel _variablePanel;
 
         public DataManager(
             List<WatchVariableControlPrecursor> variables,
@@ -39,7 +39,7 @@ namespace STROOP.Managers
             _variablePanel.AddVariable(watchVarControl);
         }
 
-        public virtual void AddVariables(List<WatchVariableControl> watchVarControls)
+        public virtual void AddVariables(IEnumerable<WatchVariableControl> watchVarControls)
         {
             _variablePanel.AddVariables(watchVarControls);
         }
@@ -47,6 +47,16 @@ namespace STROOP.Managers
         public virtual void ClearVariables()
         {
             _variablePanel.ClearVariables();
+        }
+
+        public void OpenVariables()
+        {
+            _variablePanel.OpenVariables();
+        }
+
+        public void SaveVariables()
+        {
+            _variablePanel.SaveVariables();
         }
 
         public virtual void EnableCustomVariableFunctionality()

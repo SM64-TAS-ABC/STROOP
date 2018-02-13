@@ -44,6 +44,97 @@ namespace STROOP.Controls
             _groupList = groupList;
         }
 
+        public WatchVariableControlPrecursor(XElement element)
+        {
+
+            /// Watchvariable params
+            string typeName = (element.Attribute(XName.Get("type"))?.Value);
+            string specialType = element.Attribute(XName.Get("specialType"))?.Value;
+            BaseAddressTypeEnum baseAddressType = WatchVariableUtilities.GetBaseAddressType(element.Attribute(XName.Get("base")).Value);
+            uint? offsetUS = ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetUS"))?.Value);
+            uint? offsetJP = ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetJP"))?.Value);
+            uint? offsetPAL = ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetPAL"))?.Value);
+            uint? offsetDefault = ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offset"))?.Value);
+            uint? mask = element.Attribute(XName.Get("mask")) != null ?
+                (uint?)ParsingUtilities.ParseHex(element.Attribute(XName.Get("mask")).Value) : null;
+
+            if (offsetDefault.HasValue && (offsetUS.HasValue || offsetJP.HasValue || offsetPAL.HasValue))
+            {
+                throw new ArgumentOutOfRangeException("Can't have both a default offset value and a rom-specific offset value");
+            }
+
+            if (specialType != null)
+            {
+                if (baseAddressType != BaseAddressTypeEnum.None &&
+                    baseAddressType != BaseAddressTypeEnum.Object &&
+                    baseAddressType != BaseAddressTypeEnum.Triangle)
+                {
+                    throw new ArgumentOutOfRangeException("Special var cannot have base address type " + baseAddressType);
+                }
+
+                if (offsetDefault.HasValue || offsetUS.HasValue || offsetJP.HasValue || offsetPAL.HasValue)
+                {
+                    throw new ArgumentOutOfRangeException("Special var cannot have any type of offset");
+                }
+
+                if (mask != null)
+                {
+                    throw new ArgumentOutOfRangeException("Special var cannot have mask");
+                }
+            }
+
+            _watchVar = 
+                new WatchVariable(
+                    typeName,
+                    specialType,
+                    baseAddressType,
+                    offsetUS,
+                    offsetJP,
+                    offsetPAL,
+                    offsetDefault,
+                    mask);
+
+            _name = element.Value;
+            _subclass = WatchVariableUtilities.GetSubclass(element.Attribute(XName.Get("subclass"))?.Value);
+            _groupList = WatchVariableUtilities.ParseVariableGroupList(element.Attribute(XName.Get("groupList"))?.Value);
+            _backgroundColor = (element.Attribute(XName.Get("color")) != null) ?
+                ColorTranslator.FromHtml(element.Attribute(XName.Get("color")).Value) : (Color?)null;
+            _useHex = (element.Attribute(XName.Get("useHex")) != null) ?
+                bool.Parse(element.Attribute(XName.Get("useHex")).Value) : (bool?)null;
+            _invertBool = element.Attribute(XName.Get("invertBool")) != null ?
+                bool.Parse(element.Attribute(XName.Get("invertBool")).Value) : (bool?)null;
+            _coordinate = element.Attribute(XName.Get("coord")) != null ?
+                WatchVariableUtilities.GetCoordinate(element.Attribute(XName.Get("coord")).Value) : (WatchVariableCoordinate?)null;
+
+            if (_subclass == WatchVariableSubclass.Angle && specialType != null)
+            {
+                if (typeName != "ushort" && typeName != "short" && typeName != "uint" && typeName != "int")
+                {
+                    throw new ArgumentOutOfRangeException("Special angle vars must have a good type");
+                }
+            }
+
+            if (_useHex.HasValue && (_subclass == WatchVariableSubclass.String))
+            {
+                throw new ArgumentOutOfRangeException("useHex cannot be used with var subclass String");
+            }
+
+            if ((_useHex == true) && (_subclass == WatchVariableSubclass.Object))
+            {
+                throw new ArgumentOutOfRangeException("useHex as true is redundant with var subclass Object");
+            }
+
+            if (_invertBool.HasValue && (_subclass != WatchVariableSubclass.Boolean))
+            {
+                throw new ArgumentOutOfRangeException("invertBool must be used with var subclass Boolean");
+            }
+
+            if (_coordinate.HasValue && (_subclass == WatchVariableSubclass.String))
+            {
+                throw new ArgumentOutOfRangeException("coordinate cannot be used with var subclass String");
+            }
+        }
+
         public WatchVariableControl CreateWatchVariableControl(Color? newColor = null)
         {
             return new WatchVariableControl(
@@ -58,11 +149,9 @@ namespace STROOP.Controls
                 _groupList);
         }
 
-        public override string ToString()
+        public XElement ToXML()
         {
-            XDocument xmlBuild = new XDocument();
             XElement root = new XElement("Data", _name);
-            xmlBuild.Add(root);
 
             if (_groupList.Count > 0)
                 root.Add(new XAttribute("groupList", String.Join(",", _groupList)));
@@ -117,8 +206,12 @@ namespace STROOP.Controls
                     "color",
                     "#" + ColorUtilities.ToString(_backgroundColor.Value)));
 
-            return root.ToString();
+            return root;
         }
 
+        public override string ToString()
+        {
+            return ToXML().ToString();
+        }
     }
 }

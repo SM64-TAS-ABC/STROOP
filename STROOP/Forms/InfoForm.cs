@@ -139,5 +139,11 @@ namespace STROOP.Forms
             textBoxTriangleInfo.Text = text;
         }
 
+        public static void ShowValue(object value)
+        {
+            InfoForm infoForm = new InfoForm();
+            infoForm.SetText("Info", "Text", value.ToString());
+            infoForm.Show();
+        }
     }
 }

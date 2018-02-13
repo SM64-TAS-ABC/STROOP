@@ -27,6 +27,9 @@
   <Data type="byte" offset="0xFB" mask="0x40" base="Mario" subclass="Boolean">HUD On Time</Data>
   <Data type="short" offsetUS="0x8033BAC6" offsetJP="0x8033A756" base="Relative">Level Index</Data>
 
+  <Data type="uint" offsetUS="0x8024B19C" offsetJP="0x8024B01C" base="Relative" useHex="true">Enable Coin Display</Data>
+  <Data type="uint" offsetUS="0x8024B1B4" offsetJP="0x8024B034" base="Relative" useHex="true">Disable Coin Display</Data>
+
   <Data type="byte" offsetUS="0x803325F0" offsetJP="0x803314E0" base="Relative">HP HUD State</Data>
   <Data type="int" offsetUS="0x803325FC" offsetJP="0x803314EC" base="Relative">HP HUD Timer</Data>
   <Data type="short" offsetUS="0x803325F2" offsetJP="0x803314E2" base="Relative">HP HUD X</Data>

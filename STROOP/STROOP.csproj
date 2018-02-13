@@ -132,6 +132,12 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\Map\MapObjectControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Map\MapObjectControl.Designer.cs">
+      <DependentUpon>MapObjectControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\VarHackContainer.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -267,6 +273,7 @@
     <Compile Include="Structs\Configurations\OverlayConfig.cs" />
     <Compile Include="Structs\Configurations\OptionsConfig.cs" />
     <Compile Include="Structs\Configurations\MiscConfig.cs" />
+    <Compile Include="Structs\Configurations\GhostHackConfig.cs" />
     <Compile Include="Structs\Configurations\VarHackConfig.cs" />
     <Compile Include="Structs\Configurations\PositionControllerRelativityConfig.cs" />
     <Compile Include="Structs\Configurations\TriangleConfig.cs" />
@@ -318,6 +325,7 @@
     <Compile Include="Utilities\WatchVariableSpecialUtilities.cs" />
     <Compile Include="Utilities\WatchVariableCoordinateManager.cs" />
     <Compile Include="Utilities\AreaUtilities.cs" />
+    <Compile Include="Utilities\WatchVariableFileUtilities.cs" />
     <Compile Include="Utilities\WatchVariableUtilities.cs" />
     <Compile Include="Utilities\BehaviorDecoder.cs" />
     <Compile Include="Utilities\Kernal32NativeMethods.cs" />
@@ -373,6 +381,9 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <EmbeddedResource Include="Controls\Map\MapObjectControl.resx">
+      <DependentUpon>MapObjectControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>
       <SubType>Designer</SubType>

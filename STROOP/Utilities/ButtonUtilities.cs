@@ -766,7 +766,7 @@ namespace STROOP.Utilities
 
         public static bool Die()
         {
-            return Config.Stream.SetValue((short)255, MarioConfig.StructAddress + HudConfig.HpCountOffset);
+            return Config.Stream.SetValue(HudConfig.DeathHp, MarioConfig.StructAddress + HudConfig.HpCountOffset);
         }
 
         public static bool StandardHud()
@@ -1408,17 +1408,32 @@ namespace STROOP.Utilities
             return success;
         }
 
-        public static bool SetHudVisibility(bool hudOn)
+        public static bool SetHudVisibility(bool setHudOn, bool changeLevelIndex = true)
         {
             byte currentHudVisibility = Config.Stream.GetByte(MarioConfig.StructAddress + HudConfig.VisibilityOffset);
-            byte newHudVisibility = MoreMath.ApplyValueToMaskedByte(currentHudVisibility, HudConfig.VisibilityMask, hudOn);
+            byte newHudVisibility = MoreMath.ApplyValueToMaskedByte(currentHudVisibility, HudConfig.VisibilityMask, setHudOn);
 
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
             success &= Config.Stream.SetValue(newHudVisibility, MarioConfig.StructAddress + HudConfig.VisibilityOffset);
-            success &= Config.Stream.SetValue((short)(hudOn ? 1 : 0), MiscConfig.LevelIndexAddress);
+
+            if (changeLevelIndex)
+            {
+                success &= Config.Stream.SetValue((short)(setHudOn ? 1 : 0), MiscConfig.LevelIndexAddress);
+            }
+            else
+            {
+                if (setHudOn)
+                {
+                    success &= Config.Stream.SetValue(0, HudConfig.FunctionDisableCoinDisplayAddress);
+                }
+                else
+                {
+                    success &= Config.Stream.SetValue(0, HudConfig.FunctionEnableCoinDisplayAddress);
+                }
+            }
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
