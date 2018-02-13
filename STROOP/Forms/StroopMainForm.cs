@@ -133,12 +133,12 @@ namespace STROOP
             Config.GfxManager = new GfxManager(tabPageGfx, _gfxData, watchVariablePanelGfx);
 
             // Create Object Slots
-            _slotManagerGui.TabControl = Gfx;
+            _slotManagerGui.TabControl = tabControlMain;
             _slotManagerGui.LockLabelsCheckbox = checkBoxObjLockLabels;
             _slotManagerGui.FlowLayoutContainer = WatchVariablePanelObjects;
             _slotManagerGui.SortMethodComboBox = comboBoxSortMethod;
             _slotManagerGui.LabelMethodComboBox = comboBoxLabelMethod;
-            Config.ObjectSlotsManager = new ObjectSlotsManager(_slotManagerGui, Gfx);
+            Config.ObjectSlotsManager = new ObjectSlotsManager(_slotManagerGui, tabControlMain);
 
             SetupViews();
 
@@ -271,25 +271,25 @@ namespace STROOP
             Invoke(new Action(() =>
             {
                 Config.ObjectSlotsManager.Update();
-                Config.ObjectManager.Update(Gfx.SelectedTab == tabPageObjects);
-                Config.MarioManager.Update(Gfx.SelectedTab == tabPageMario);
-                Config.CameraManager.Update(Gfx.SelectedTab == tabPageCamera);
-                Config.HudManager.Update(Gfx.SelectedTab == tabPageHud);
-                Config.ActionsManager.Update(Gfx.SelectedTab == tabPageActions);
-                Config.WaterManager.Update(Gfx.SelectedTab == tabPageWater);
-                Config.InputManager.Update(Gfx.SelectedTab == tabPageInput);
-                Config.FileManager.Update(Gfx.SelectedTab == tabPageFile);
-                Config.QuarterFrameManager.Update(Gfx.SelectedTab == tabPageQuarterFrame);
-                Config.CustomManager.Update(Gfx.SelectedTab == tabPageCustom);
-                Config.VarHackManager.Update(Gfx.SelectedTab == tabPageVarHack);
-                Config.CameraHackManager.Update(Gfx.SelectedTab == tabPageCamHack);
-                Config.MiscManager.Update(Gfx.SelectedTab == tabPageMisc);
-                Config.TriangleManager.Update(Gfx.SelectedTab == tabPageTriangles);
-                Config.AreaManager.Update(Gfx.SelectedTab == tabPageArea);
-                Config.DebugManager.Update(Gfx.SelectedTab == tabPageDebug);
-                Config.PuManager.Update(Gfx.SelectedTab == tabPagePu);
-                Config.TestingManager.Update(Gfx.SelectedTab == tabPageTesting);
-                Config.GfxManager.Update(Gfx.SelectedTab == tabPageGfx);
+                Config.ObjectManager.Update(tabControlMain.SelectedTab == tabPageObjects);
+                Config.MarioManager.Update(tabControlMain.SelectedTab == tabPageMario);
+                Config.CameraManager.Update(tabControlMain.SelectedTab == tabPageCamera);
+                Config.HudManager.Update(tabControlMain.SelectedTab == tabPageHud);
+                Config.ActionsManager.Update(tabControlMain.SelectedTab == tabPageActions);
+                Config.WaterManager.Update(tabControlMain.SelectedTab == tabPageWater);
+                Config.InputManager.Update(tabControlMain.SelectedTab == tabPageInput);
+                Config.FileManager.Update(tabControlMain.SelectedTab == tabPageFile);
+                Config.QuarterFrameManager.Update(tabControlMain.SelectedTab == tabPageQuarterFrame);
+                Config.CustomManager.Update(tabControlMain.SelectedTab == tabPageCustom);
+                Config.VarHackManager.Update(tabControlMain.SelectedTab == tabPageVarHack);
+                Config.CameraHackManager.Update(tabControlMain.SelectedTab == tabPageCamHack);
+                Config.MiscManager.Update(tabControlMain.SelectedTab == tabPageMisc);
+                Config.TriangleManager.Update(tabControlMain.SelectedTab == tabPageTriangles);
+                Config.AreaManager.Update(tabControlMain.SelectedTab == tabPageArea);
+                Config.DebugManager.Update(tabControlMain.SelectedTab == tabPageDebug);
+                Config.PuManager.Update(tabControlMain.SelectedTab == tabPagePu);
+                Config.TestingManager.Update(tabControlMain.SelectedTab == tabPageTesting);
+                Config.GfxManager.Update(tabControlMain.SelectedTab == tabPageGfx);
                 Config.MapManager?.Update();
                 Config.ModelManager?.Update();
                 Config.InjectionManager.Update();
@@ -429,7 +429,7 @@ namespace STROOP
         private SplitContainer getSelectedTabSplitContainer()
         {
             SplitContainer selectedTabSplitContainer = null;
-            TabPage selectedTabPage = Gfx.SelectedTab;
+            TabPage selectedTabPage = tabControlMain.SelectedTab;
 
             if (selectedTabPage == tabPageObjects)
                 selectedTabSplitContainer = selectedTabPage.Controls["splitContainerObject"] as SplitContainer;
@@ -578,7 +578,7 @@ namespace STROOP
 
         public void SwitchTab(string name)
         {
-            Gfx.SelectTab(name);
+            tabControlMain.SelectTab(name);
         }
     }
 }
