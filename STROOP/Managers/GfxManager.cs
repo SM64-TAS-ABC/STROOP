@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Linq;
 using STROOP.Structs.Configurations;
+using STROOP.Utilities;
 
 namespace STROOP.Managers
 {
@@ -20,6 +21,9 @@ namespace STROOP.Managers
         Control _tabControl;
         TreeView _treeView;
         public GfxNode SelectedNode;
+        List<WatchVariableControl> SpecificVariables;
+        WatchVariablePanel _watchVariablePanel;
+        RichTextBox _outputTextBox;
 
         public GfxManager(Control tabControl, List<WatchVariableControlPrecursor> variables, WatchVariablePanel watchVariablePanel)
             : base(variables, watchVariablePanel)
@@ -27,25 +31,58 @@ namespace STROOP.Managers
             var left = tabControl.Controls["splitContainerGfxLeft"] as SplitContainer;
             var right = left.Panel2.Controls["splitContainerGfxright"] as SplitContainer;
             var middle = right.Panel1.Controls["splitContainerGfxmiddle"] as SplitContainer;
-            var output = right.Panel2.Controls["richTextBoxGfx"] as RichTextBox;
             var refreshButtonRoot = middle.Panel1.Controls["buttonGfxRefresh"] as Button;
             var refreshButtonObject = middle.Panel1.Controls["buttonGfxRefreshObject"] as Button;
             var dumpButton = middle.Panel1.Controls["buttonGfxDumpDisplayList"] as Button;
 
+            _outputTextBox = right.Panel2.Controls["richTextBoxGfx"] as RichTextBox;
+            _outputTextBox.Font = new System.Drawing.Font("Courier New", 12);
+            _outputTextBox.ForeColor = System.Drawing.Color.Red;
+
+            _watchVariablePanel = watchVariablePanel;
             _treeView = left.Panel1.Controls["treeViewGfx"] as TreeView;
             _treeView.AfterSelect += _treeView_AfterSelect;
             refreshButtonRoot.Click += RefreshButton_Click;
             refreshButtonObject.Click += RefreshButtonObject_Click;
+            dumpButton.Click += DumpButton_Click;
             _tabControl = tabControl;
 
-            foreach (var wvc in GfxNode.GetCommonVariables())
+            foreach (var factory in GfxNode.GetCommonVariables())
             {
-                watchVariablePanel.AddVariable(wvc.CreateWatchVariableControl());
+                watchVariablePanel.AddVariable(factory.CreateWatchVariableControl());
             }
+
+            SpecificVariables = new List<WatchVariableControl>();
+
+        }
+
+        private void DumpButton_Click(object sender, EventArgs e)
+        {
+            if (SelectedNode != null && SelectedNode is GfxDisplayList)
+            {
+                var address = Config.Stream.GetUInt32(SelectedNode.address + 0x14);
+                Fast3DDecoder.DecodeList(Fast3DDecoder.DecodeSegmentedAddress(address));
+
+            } else
+            {
+                MessageBox.Show("Select a display list node first");
+            }
+        }
+
+        void UpdateSpecificVariables(GfxNode node)
+        {
+            _watchVariablePanel.RemoveVariables(SpecificVariables);
+            SpecificVariables.Clear();
+            if (node != null) foreach (var factory in node.GetTypeSpecificVariables())
+                {
+                    SpecificVariables.Add(factory.CreateWatchVariableControl());
+                }
+            _watchVariablePanel.AddVariables(SpecificVariables);
         }
 
         private void RefreshButtonObject_Click(object sender, EventArgs e)
         {
+            _treeView.Nodes.Clear();
             var list = Config.ObjectSlotsManager.SelectedSlotsAddresses;
             if (list != null && list.Count>0)
             {
@@ -67,6 +104,7 @@ namespace STROOP.Managers
         {
             GfxNode node = (GfxNode) e.Node.Tag;
             SelectedNode = node;
+            UpdateSpecificVariables(SelectedNode);
         }
 
         /**
@@ -85,11 +123,6 @@ namespace STROOP.Managers
             var root = GfxNode.ReadGfxNode(rootAddress);
             
             _treeView.Nodes.Add(GfxToTreeNode(root));
-
-            foreach (TreeNode n in _treeView.Nodes)
-            {
-                n.ExpandAll();
-            }
         }
 
         public override void Update(bool updateView)
@@ -134,7 +167,7 @@ namespace STROOP.Managers
                 case 0x001: res = new GfxRootnode(); break;
                 case 0x002: res = new GfxScreenSpace(); break;
                 case 0x004: res = new GfxMasterList(); break;
-                case 0x00A: res = new GfxRoomObjectParent(); break;
+                case 0x00A: res = new GfxGroupParent(); break;
                 case 0x00B: res = new GfxHeightGate(); break;
                 case 0x015: res = new GfxUnknown15(); break;
                 case 0x016: res = new GfxUnknown16(); break;
@@ -268,8 +301,8 @@ namespace STROOP.Managers
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
             var res = new List<WatchVariableControlPrecursor>();
-            res.Add(gfxProperty("znear", "short", 0x14));
-            res.Add(gfxProperty("zfar", "short", 0x14));
+            res.Add(gfxProperty("znear", "short", 0x20));
+            res.Add(gfxProperty("zfar", "short", 0x22));
             return res;
         }
     }
@@ -340,11 +373,17 @@ namespace STROOP.Managers
     internal class GfxGameObject : GfxNode
     {
         public override string Name { get { return "Game object"; } }
+        public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
+        {
+            var res = new List<WatchVariableControlPrecursor>();
+            res.Add(gfxProperty("Actual child", "uint", 0x14));
+            return res;
+        }
     }
 
     internal class GfxRotationNode : GfxNode
     {
-        public override string Name { get { return "Transformation"; } }
+        public override string Name { get { return "Rotation"; } }
 
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
@@ -377,9 +416,10 @@ namespace STROOP.Managers
         public override string Name { get { return "Master list"; } }
     }
 
-    internal class GfxRoomObjectParent : GfxNode
+    // Possibly some extra things?
+    internal class GfxGroupParent : GfxNode
     {
-        public override string Name { get { return "Room/Object parent"; } }
+        public override string Name { get { return "Group"; } }
     }
 
     internal class GfxScreenSpace : GfxNode
@@ -404,7 +444,7 @@ namespace STROOP.Managers
 
     internal class GfxDisplayList : GfxNode
     {
-        public override string Name { get { return "DisplayList"; } }
+        public override string Name { get { return "Display List"; } }
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
             var res = new List<WatchVariableControlPrecursor>();
