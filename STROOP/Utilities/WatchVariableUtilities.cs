@@ -166,6 +166,11 @@ namespace STROOP.Structs
                 case BaseAddressTypeEnum.CamHack:
                     return new List<uint> { CameraHackConfig.CameraHackStruct };
 
+                case BaseAddressTypeEnum.GfxNode:
+                    {
+                        var node  = Config.GfxManager.SelectedNode;
+                        return node != null ? new List<uint>() { node.address } : BaseAddressListEmpy;
+                    }
                 case BaseAddressTypeEnum.GhostHack:
                     return new List<uint>
                     {

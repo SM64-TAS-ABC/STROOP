@@ -77,5 +77,6 @@ namespace STROOP.Structs.Configurations
         public static VarHackManager VarHackManager;
         public static DataManager CameraHackManager;
         public static ScriptManager ScriptManager;
+        public static GfxManager GfxManager;
     }
 }

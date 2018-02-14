@@ -28,7 +28,7 @@ namespace STROOP
         FileImageGui _fileImageGui = new FileImageGui();
         List<WatchVariableControlPrecursor> _watchVarControlList, _waterData, _miscData, _areaData, _inputData, _fileData,
             _debugData, _camHackData, _hudData, _cameraData, _quarterFrameData, _actionsData,
-            _triangleData, _marioData, _objectData;
+            _triangleData, _marioData, _objectData, _gfxData;
         MapAssociations _mapAssoc;
         ScriptParser _scriptParser;
         List<RomHack> _romHacks;
@@ -130,6 +130,7 @@ namespace STROOP
             Config.OptionsManager = new OptionsManager(tabPageOptions);
             Config.TestingManager = new TestingManager(tabPageTesting);
             Config.ScriptManager = new ScriptManager(tabPageScripts);
+            Config.GfxManager = new GfxManager(tabPageGfx, _gfxData, watchVariablePanelGfx);
 
             // Create Object Slots
             _slotManagerGui.TabControl = tabControlMain;
@@ -235,7 +236,9 @@ namespace STROOP
             _scriptParser = XmlConfigParser.OpenScripts(@"Config/Scripts.xml");
             loadingForm.UpdateStatus("Loading Hacks", statusNum++);
             _romHacks = XmlConfigParser.OpenHacks(@"Config/Hacks.xml");
+            _gfxData = new List<WatchVariableControlPrecursor>();
             loadingForm.UpdateStatus("Loading Mario Actions", statusNum++);
+
             TableConfig.MarioActions = XmlConfigParser.OpenActionTable(@"Config/MarioActions.xml");
             TableConfig.MarioAnimations = XmlConfigParser.OpenAnimationTable(@"Config/MarioAnimations.xml");
             TableConfig.PendulumSwings = XmlConfigParser.OpenPendulumSwingTable(@"Config/PendulumSwings.xml");
@@ -286,6 +289,7 @@ namespace STROOP
                 Config.DebugManager.Update(tabControlMain.SelectedTab == tabPageDebug);
                 Config.PuManager.Update(tabControlMain.SelectedTab == tabPagePu);
                 Config.TestingManager.Update(tabControlMain.SelectedTab == tabPageTesting);
+                Config.GfxManager.Update(tabControlMain.SelectedTab == tabPageGfx);
                 Config.MapManager?.Update();
                 Config.ModelManager?.Update();
                 Config.InjectionManager.Update();

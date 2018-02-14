@@ -236,6 +236,7 @@
     <Compile Include="LoadingHandler.cs" />
     <Compile Include="Managers\AreaManager.cs" />
     <Compile Include="Managers\CamHackManager.cs" />
+    <Compile Include="Managers\GfxManager.cs" />
     <Compile Include="Managers\VarHackManager.cs" />
     <Compile Include="Managers\DecompilerManager.cs" />
     <Compile Include="Managers\CustomManager.cs" />
@@ -320,6 +321,7 @@
     <Compile Include="Enums\WatchVariableSubclass.cs" />
     <Compile Include="Enums\VariableGroup.cs" />
     <Compile Include="Enums\BaseAddressTypeEnum.cs" />
+    <Compile Include="Utilities\Fast3DDecoder.cs" />
     <Compile Include="Utilities\WatchVariableSpecialUtilities.cs" />
     <Compile Include="Utilities\WatchVariableCoordinateManager.cs" />
     <Compile Include="Utilities\AreaUtilities.cs" />

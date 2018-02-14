@@ -542,6 +542,8 @@ namespace STROOP
             this.buttonCustomClearValues = new System.Windows.Forms.Button();
             this.buttonCustomShowValues = new System.Windows.Forms.Button();
             this.checkBoxCustomRecordValues = new System.Windows.Forms.CheckBox();
+            this.buttonClearVars = new System.Windows.Forms.Button();
+            this.buttonSaveVars = new System.Windows.Forms.Button();
             this.buttonOpenVars = new System.Windows.Forms.Button();
             this.groupBoxVarHeight = new System.Windows.Forms.GroupBox();
             this.betterTextboxVarHeightGetSet = new STROOP.BetterTextbox();
@@ -721,6 +723,16 @@ namespace STROOP
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxModelAddress = new System.Windows.Forms.TextBox();
             this.glControlModelView = new OpenTK.GLControl();
+            this.tabPageGfx = new System.Windows.Forms.TabPage();
+            this.splitContainerGfxLeft = new System.Windows.Forms.SplitContainer();
+            this.treeViewGfx = new System.Windows.Forms.TreeView();
+            this.splitContainerGfxRight = new System.Windows.Forms.SplitContainer();
+            this.splitContainerGfxMiddle = new System.Windows.Forms.SplitContainer();
+            this.buttonGfxDumpDisplayList = new System.Windows.Forms.Button();
+            this.buttonGfxRefreshObject = new System.Windows.Forms.Button();
+            this.buttonGfxRefresh = new System.Windows.Forms.Button();
+            this.watchVariablePanelGfx = new STROOP.Controls.WatchVariablePanel();
+            this.richTextBoxGfx = new System.Windows.Forms.RichTextBox();
             this.tabPageDisassembly = new System.Windows.Forms.TabPage();
             this.textBoxDisAddress = new System.Windows.Forms.TextBox();
             this.buttonDisMore = new System.Windows.Forms.Button();
@@ -1073,8 +1085,6 @@ namespace STROOP
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.buttonSaveVars = new System.Windows.Forms.Button();
-            this.buttonClearVars = new System.Windows.Forms.Button();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1357,6 +1367,19 @@ namespace STROOP
             this.splitContainerModelTables.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVertices)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTriangles)).BeginInit();
+            this.tabPageGfx.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerGfxLeft)).BeginInit();
+            this.splitContainerGfxLeft.Panel1.SuspendLayout();
+            this.splitContainerGfxLeft.Panel2.SuspendLayout();
+            this.splitContainerGfxLeft.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerGfxRight)).BeginInit();
+            this.splitContainerGfxRight.Panel1.SuspendLayout();
+            this.splitContainerGfxRight.Panel2.SuspendLayout();
+            this.splitContainerGfxRight.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerGfxMiddle)).BeginInit();
+            this.splitContainerGfxMiddle.Panel1.SuspendLayout();
+            this.splitContainerGfxMiddle.Panel2.SuspendLayout();
+            this.splitContainerGfxMiddle.SuspendLayout();
             this.tabPageDisassembly.SuspendLayout();
             this.tabPageDecompiler.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerDecompiler)).BeginInit();
@@ -1434,7 +1457,7 @@ namespace STROOP
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 376);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 377);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1499,7 +1522,7 @@ namespace STROOP
             this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
             this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 154);
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 155);
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
@@ -1572,6 +1595,7 @@ namespace STROOP
             this.tabControlMain.Controls.Add(this.tabPagePu);
             this.tabControlMain.Controls.Add(this.tabPageArea);
             this.tabControlMain.Controls.Add(this.tabPageModel);
+            this.tabControlMain.Controls.Add(this.tabPageGfx);
             this.tabControlMain.Controls.Add(this.tabPageDisassembly);
             this.tabControlMain.Controls.Add(this.tabPageDecompiler);
             this.tabControlMain.Controls.Add(this.tabPageScripts);
@@ -1581,6 +1605,7 @@ namespace STROOP
             this.tabControlMain.Controls.Add(this.tabPageVarHack);
             this.tabControlMain.Controls.Add(this.tabPageOptions);
             this.tabControlMain.Controls.Add(this.tabPageTesting);
+            this.tabControlMain.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabControlMain.HotTrack = true;
             this.tabControlMain.Location = new System.Drawing.Point(2, 2);
             this.tabControlMain.Margin = new System.Windows.Forms.Padding(2);
@@ -4690,7 +4715,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 220F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 221F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -7949,6 +7974,24 @@ namespace STROOP
             this.checkBoxCustomRecordValues.Text = "Record Values";
             this.checkBoxCustomRecordValues.UseVisualStyleBackColor = true;
             // 
+            // buttonClearVars
+            // 
+            this.buttonClearVars.Location = new System.Drawing.Point(131, 6);
+            this.buttonClearVars.Name = "buttonClearVars";
+            this.buttonClearVars.Size = new System.Drawing.Size(58, 38);
+            this.buttonClearVars.TabIndex = 4;
+            this.buttonClearVars.Text = "Clear\r\nVars";
+            this.buttonClearVars.UseVisualStyleBackColor = true;
+            // 
+            // buttonSaveVars
+            // 
+            this.buttonSaveVars.Location = new System.Drawing.Point(71, 6);
+            this.buttonSaveVars.Name = "buttonSaveVars";
+            this.buttonSaveVars.Size = new System.Drawing.Size(58, 38);
+            this.buttonSaveVars.TabIndex = 4;
+            this.buttonSaveVars.Text = "Save\r\nVars";
+            this.buttonSaveVars.UseVisualStyleBackColor = true;
+            // 
             // buttonOpenVars
             // 
             this.buttonOpenVars.Location = new System.Drawing.Point(11, 6);
@@ -8888,7 +8931,7 @@ namespace STROOP
             this.glControlMap.Location = new System.Drawing.Point(4, 3);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(699, 454);
+            this.glControlMap.Size = new System.Drawing.Size(702, 454);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -9855,7 +9898,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(374, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(357, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -9887,7 +9930,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(363, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(346, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -9943,7 +9986,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(363, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(346, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -10005,6 +10048,127 @@ namespace STROOP
             this.glControlModelView.TabIndex = 0;
             this.glControlModelView.VSync = false;
             this.glControlModelView.Load += new System.EventHandler(this.glControlModelView_Load);
+            // 
+            // tabPageGfx
+            // 
+            this.tabPageGfx.Controls.Add(this.splitContainerGfxLeft);
+            this.tabPageGfx.Location = new System.Drawing.Point(4, 22);
+            this.tabPageGfx.Name = "tabPageGfx";
+            this.tabPageGfx.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageGfx.Size = new System.Drawing.Size(915, 463);
+            this.tabPageGfx.TabIndex = 25;
+            this.tabPageGfx.Text = "Gfx";
+            this.tabPageGfx.UseVisualStyleBackColor = true;
+            // 
+            // splitContainerGfxLeft
+            // 
+            this.splitContainerGfxLeft.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerGfxLeft.Location = new System.Drawing.Point(3, 3);
+            this.splitContainerGfxLeft.Name = "splitContainerGfxLeft";
+            // 
+            // splitContainerGfxLeft.Panel1
+            // 
+            this.splitContainerGfxLeft.Panel1.Controls.Add(this.treeViewGfx);
+            // 
+            // splitContainerGfxLeft.Panel2
+            // 
+            this.splitContainerGfxLeft.Panel2.Controls.Add(this.splitContainerGfxRight);
+            this.splitContainerGfxLeft.Size = new System.Drawing.Size(909, 457);
+            this.splitContainerGfxLeft.SplitterDistance = 300;
+            this.splitContainerGfxLeft.TabIndex = 0;
+            // 
+            // treeViewGfx
+            // 
+            this.treeViewGfx.BackColor = System.Drawing.SystemColors.Control;
+            this.treeViewGfx.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewGfx.Location = new System.Drawing.Point(0, 0);
+            this.treeViewGfx.Name = "treeViewGfx";
+            this.treeViewGfx.Size = new System.Drawing.Size(300, 457);
+            this.treeViewGfx.TabIndex = 0;
+            // 
+            // splitContainerGfxRight
+            // 
+            this.splitContainerGfxRight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerGfxRight.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerGfxRight.Name = "splitContainerGfxRight";
+            // 
+            // splitContainerGfxRight.Panel1
+            // 
+            this.splitContainerGfxRight.Panel1.Controls.Add(this.splitContainerGfxMiddle);
+            // 
+            // splitContainerGfxRight.Panel2
+            // 
+            this.splitContainerGfxRight.Panel2.Controls.Add(this.richTextBoxGfx);
+            this.splitContainerGfxRight.Size = new System.Drawing.Size(605, 457);
+            this.splitContainerGfxRight.SplitterDistance = 323;
+            this.splitContainerGfxRight.TabIndex = 0;
+            // 
+            // splitContainerGfxMiddle
+            // 
+            this.splitContainerGfxMiddle.BackColor = System.Drawing.SystemColors.Control;
+            this.splitContainerGfxMiddle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerGfxMiddle.IsSplitterFixed = true;
+            this.splitContainerGfxMiddle.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerGfxMiddle.Name = "splitContainerGfxMiddle";
+            this.splitContainerGfxMiddle.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerGfxMiddle.Panel1
+            // 
+            this.splitContainerGfxMiddle.Panel1.Controls.Add(this.buttonGfxDumpDisplayList);
+            this.splitContainerGfxMiddle.Panel1.Controls.Add(this.buttonGfxRefreshObject);
+            this.splitContainerGfxMiddle.Panel1.Controls.Add(this.buttonGfxRefresh);
+            // 
+            // splitContainerGfxMiddle.Panel2
+            // 
+            this.splitContainerGfxMiddle.Panel2.Controls.Add(this.watchVariablePanelGfx);
+            this.splitContainerGfxMiddle.Size = new System.Drawing.Size(323, 457);
+            this.splitContainerGfxMiddle.SplitterDistance = 60;
+            this.splitContainerGfxMiddle.TabIndex = 1;
+            // 
+            // buttonGfxDumpDisplayList
+            // 
+            this.buttonGfxDumpDisplayList.Location = new System.Drawing.Point(3, 31);
+            this.buttonGfxDumpDisplayList.Name = "buttonGfxDumpDisplayList";
+            this.buttonGfxDumpDisplayList.Size = new System.Drawing.Size(104, 23);
+            this.buttonGfxDumpDisplayList.TabIndex = 2;
+            this.buttonGfxDumpDisplayList.Text = "Export display list";
+            this.buttonGfxDumpDisplayList.UseVisualStyleBackColor = true;
+            // 
+            // buttonGfxRefreshObject
+            // 
+            this.buttonGfxRefreshObject.Location = new System.Drawing.Point(94, 3);
+            this.buttonGfxRefreshObject.Name = "buttonGfxRefreshObject";
+            this.buttonGfxRefreshObject.Size = new System.Drawing.Size(147, 23);
+            this.buttonGfxRefreshObject.TabIndex = 1;
+            this.buttonGfxRefreshObject.Text = "Build from selected objects";
+            this.buttonGfxRefreshObject.UseVisualStyleBackColor = true;
+            // 
+            // buttonGfxRefresh
+            // 
+            this.buttonGfxRefresh.Location = new System.Drawing.Point(3, 3);
+            this.buttonGfxRefresh.Name = "buttonGfxRefresh";
+            this.buttonGfxRefresh.Size = new System.Drawing.Size(85, 23);
+            this.buttonGfxRefresh.TabIndex = 0;
+            this.buttonGfxRefresh.Text = "Build from root";
+            this.buttonGfxRefresh.UseVisualStyleBackColor = true;
+            // 
+            // watchVariablePanelGfx
+            // 
+            this.watchVariablePanelGfx.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.watchVariablePanelGfx.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelGfx.Name = "watchVariablePanelGfx";
+            this.watchVariablePanelGfx.Size = new System.Drawing.Size(323, 393);
+            this.watchVariablePanelGfx.TabIndex = 0;
+            // 
+            // richTextBoxGfx
+            // 
+            this.richTextBoxGfx.BackColor = System.Drawing.SystemColors.Control;
+            this.richTextBoxGfx.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxGfx.Location = new System.Drawing.Point(0, 0);
+            this.richTextBoxGfx.Name = "richTextBoxGfx";
+            this.richTextBoxGfx.Size = new System.Drawing.Size(278, 457);
+            this.richTextBoxGfx.TabIndex = 0;
+            this.richTextBoxGfx.Text = "";
             // 
             // tabPageDisassembly
             // 
@@ -13972,24 +14136,6 @@ namespace STROOP
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // buttonSaveVars
-            // 
-            this.buttonSaveVars.Location = new System.Drawing.Point(71, 6);
-            this.buttonSaveVars.Name = "buttonSaveVars";
-            this.buttonSaveVars.Size = new System.Drawing.Size(58, 38);
-            this.buttonSaveVars.TabIndex = 4;
-            this.buttonSaveVars.Text = "Save\r\nVars";
-            this.buttonSaveVars.UseVisualStyleBackColor = true;
-            // 
-            // buttonClearVars
-            // 
-            this.buttonClearVars.Location = new System.Drawing.Point(131, 6);
-            this.buttonClearVars.Name = "buttonClearVars";
-            this.buttonClearVars.Size = new System.Drawing.Size(58, 38);
-            this.buttonClearVars.TabIndex = 4;
-            this.buttonClearVars.Text = "Clear\r\nVars";
-            this.buttonClearVars.UseVisualStyleBackColor = true;
-            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -14340,6 +14486,19 @@ namespace STROOP
             this.splitContainerModelTables.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVertices)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTriangles)).EndInit();
+            this.tabPageGfx.ResumeLayout(false);
+            this.splitContainerGfxLeft.Panel1.ResumeLayout(false);
+            this.splitContainerGfxLeft.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerGfxLeft)).EndInit();
+            this.splitContainerGfxLeft.ResumeLayout(false);
+            this.splitContainerGfxRight.Panel1.ResumeLayout(false);
+            this.splitContainerGfxRight.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerGfxRight)).EndInit();
+            this.splitContainerGfxRight.ResumeLayout(false);
+            this.splitContainerGfxMiddle.Panel1.ResumeLayout(false);
+            this.splitContainerGfxMiddle.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerGfxMiddle)).EndInit();
+            this.splitContainerGfxMiddle.ResumeLayout(false);
             this.tabPageDisassembly.ResumeLayout(false);
             this.tabPageDisassembly.PerformLayout();
             this.tabPageDecompiler.ResumeLayout(false);
@@ -15463,6 +15622,16 @@ namespace STROOP
         private Button buttonTriRoomsConvert;
         private Label labelTriRoomsToLabel;
         private Label labelTriRoomsFromLabel;
+        private TabPage tabPageGfx;
+        private SplitContainer splitContainerGfxLeft;
+        private TreeView treeViewGfx;
+        private SplitContainer splitContainerGfxRight;
+        private WatchVariablePanel watchVariablePanelGfx;
+        private RichTextBox richTextBoxGfx;
+        private SplitContainer splitContainerGfxMiddle;
+        private Button buttonGfxRefresh;
+        private Button buttonGfxRefreshObject;
+        private Button buttonGfxDumpDisplayList;
         private Button buttonClearVars;
         private Button buttonSaveVars;
     }
