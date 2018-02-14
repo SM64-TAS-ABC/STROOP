@@ -77,10 +77,35 @@ namespace STROOP.Controls
             }
         }
 
-        public WatchVariable(string memoryTypeName, string specialType, BaseAddressTypeEnum baseAddress,
+        public WatchVariable(string memoryTypeName, string specialType, BaseAddressTypeEnum baseAddressType,
             uint? offsetUS, uint? offsetJP, uint? offsetPAL, uint? offsetDefault, uint? mask)
         {
-            BaseAddressType = baseAddress;
+            if (offsetDefault.HasValue && (offsetUS.HasValue || offsetJP.HasValue || offsetPAL.HasValue))
+            {
+                throw new ArgumentOutOfRangeException("Can't have both a default offset value and a rom-specific offset value");
+            }
+
+            if (specialType != null)
+            {
+                if (baseAddressType != BaseAddressTypeEnum.None &&
+                    baseAddressType != BaseAddressTypeEnum.Object &&
+                    baseAddressType != BaseAddressTypeEnum.Triangle)
+                {
+                    throw new ArgumentOutOfRangeException("Special var cannot have base address type " + baseAddressType);
+                }
+
+                if (offsetDefault.HasValue || offsetUS.HasValue || offsetJP.HasValue || offsetPAL.HasValue)
+                {
+                    throw new ArgumentOutOfRangeException("Special var cannot have any type of offset");
+                }
+
+                if (mask != null)
+                {
+                    throw new ArgumentOutOfRangeException("Special var cannot have mask");
+                }
+            }
+
+            BaseAddressType = baseAddressType;
 
             OffsetUS = offsetUS;
             OffsetJP = offsetJP;
