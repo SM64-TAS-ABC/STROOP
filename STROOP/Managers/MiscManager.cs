@@ -16,7 +16,7 @@ namespace STROOP.Managers
     {
         CheckBox _checkBoxTurnOffMusic;
 
-        public MiscManager(List<WatchVariableControlPrecursor> variables, WatchVariablePanel variableTable, Control miscControl)
+        public MiscManager(List<WatchVariableControlPrecursor> variables, WatchVariableFlowLayoutPanel variableTable, Control miscControl)
             : base(variables, variableTable)
         {
             SplitContainer splitContainerMisc = miscControl.Controls["splitContainerMisc"] as SplitContainer;

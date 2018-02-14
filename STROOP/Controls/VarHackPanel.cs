@@ -12,13 +12,13 @@ using System.Windows.Forms;
 
 namespace STROOP.Controls
 {
-    public class VarHackPanel : NoTearFlowLayoutPanel
+    public class VarHackFlowLayoutPanel : NoTearFlowLayoutPanel
     {
         private static byte[] EMPTY_BYTES = new byte[VarHackConfig.StructSize];
 
         private readonly Object _objectLock;
 
-        public VarHackPanel()
+        public VarHackFlowLayoutPanel()
         {
             _objectLock = new Object();
         }

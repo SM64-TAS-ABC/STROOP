@@ -14,11 +14,11 @@ namespace STROOP.Managers
 {
     public class DataManager
     {
-        protected WatchVariablePanel _variablePanel;
+        protected WatchVariableFlowLayoutPanel _variablePanel;
 
         public DataManager(
             List<WatchVariableControlPrecursor> variables,
-            WatchVariablePanel variablePanel,
+            WatchVariableFlowLayoutPanel variablePanel,
             List<VariableGroup> allVariableGroups = null,
             List<VariableGroup> visibleVariableGroups = null)
         {

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace STROOP.Controls
 {
-    public class WatchVariablePanel : NoTearFlowLayoutPanel
+    public class WatchVariableFlowLayoutPanel : NoTearFlowLayoutPanel
     {
         private readonly Object _objectLock;
         private List<WatchVariableControlPrecursor> _watchVarPrecursors;
@@ -22,7 +22,7 @@ namespace STROOP.Controls
 
         private WatchVariableControl _reorderingWatchVarControl;
 
-        public WatchVariablePanel()
+        public WatchVariableFlowLayoutPanel()
         {
             _objectLock = new Object();
             _watchVarPrecursors = new List<WatchVariableControlPrecursor>();

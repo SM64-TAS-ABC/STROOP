@@ -14,14 +14,14 @@ namespace STROOP.Managers
 {
     public class VarHackManager
     {
-        private readonly VarHackPanel _varHackPanel;
+        private readonly VarHackFlowLayoutPanel _varHackPanel;
         private readonly BinaryButton _buttonEnableDisableRomHack;
 
         private readonly BetterTextbox _textBoxXPosValue;
         private readonly BetterTextbox _textBoxYPosValue;
         private readonly BetterTextbox _textBoxYDeltaValue;
 
-        public VarHackManager(Control varHackControlControl, VarHackPanel varHackPanel)
+        public VarHackManager(Control varHackControlControl, VarHackFlowLayoutPanel varHackPanel)
         {
             _varHackPanel = varHackPanel;
 

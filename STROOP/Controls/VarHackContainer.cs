@@ -42,9 +42,9 @@ namespace STROOP.Controls
 
         private static readonly Pen _borderPen = new Pen(Color.Black, 3);
 
-        private readonly VarHackPanel _varHackPanel;
+        private readonly VarHackFlowLayoutPanel _varHackPanel;
 
-        public VarHackContainer(VarHackPanel varHackPanel, int creationIndex, bool usePreWrittenVar)
+        public VarHackContainer(VarHackFlowLayoutPanel varHackPanel, int creationIndex, bool usePreWrittenVar)
         {
             InitializeComponent();
             _varHackPanel = varHackPanel;
@@ -59,7 +59,7 @@ namespace STROOP.Controls
         }
 
         public VarHackContainer(
-            VarHackPanel varHackPanel,
+            VarHackFlowLayoutPanel varHackPanel,
             int creationIndex,
             string varName,
             uint address,
@@ -82,7 +82,7 @@ namespace STROOP.Controls
         }
 
         public VarHackContainer(
-            VarHackPanel varHackPanel,
+            VarHackFlowLayoutPanel varHackPanel,
             int creationIndex,
             Func<string> getterFunction)
             : this(varHackPanel, creationIndex, false)

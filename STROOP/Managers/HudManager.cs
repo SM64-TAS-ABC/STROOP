@@ -17,7 +17,7 @@ namespace STROOP.Managers
         BinaryButton _turnOnOffHudButton;
         CheckBox _checkBoxFullHP;
 
-        public HudManager(List<WatchVariableControlPrecursor> variables, Control tabControl, WatchVariablePanel watchVariablePanelHud)
+        public HudManager(List<WatchVariableControlPrecursor> variables, Control tabControl, WatchVariableFlowLayoutPanel watchVariablePanelHud)
             : base(variables, watchVariablePanelHud)
         {
             _tabControl = tabControl;

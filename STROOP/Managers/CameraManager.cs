@@ -16,7 +16,7 @@ namespace STROOP.Managers
     {
         private BinaryButton _buttonDisableFOVFunctions;
 
-        public CameraManager(List<WatchVariableControlPrecursor> cameraData, Control tabControl, WatchVariablePanel variableTable)
+        public CameraManager(List<WatchVariableControlPrecursor> cameraData, Control tabControl, WatchVariableFlowLayoutPanel variableTable)
             : base(cameraData, variableTable)
         {
             var splitContainer = tabControl.Controls["splitContainerCamera"] as SplitContainer;

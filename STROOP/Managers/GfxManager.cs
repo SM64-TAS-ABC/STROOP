@@ -23,10 +23,10 @@ namespace STROOP.Managers
         TreeView _treeView;
         public GfxNode SelectedNode;
         List<WatchVariableControl> SpecificVariables;
-        WatchVariablePanel _watchVariablePanel;
+        WatchVariableFlowLayoutPanel _watchVariablePanel;
         RichTextBox _outputTextBox;
 
-        public GfxManager(Control tabControl, List<WatchVariableControlPrecursor> variables, WatchVariablePanel watchVariablePanel)
+        public GfxManager(Control tabControl, List<WatchVariableControlPrecursor> variables, WatchVariableFlowLayoutPanel watchVariablePanel)
             : base(variables, watchVariablePanel)
         {
             var left = tabControl.Controls["splitContainerGfxLeft"] as SplitContainer;

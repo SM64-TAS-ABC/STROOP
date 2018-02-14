@@ -33,7 +33,7 @@ namespace STROOP.Controls
         private readonly ContextMenuStrip _nameTextboxOriginalContextMenuStrip;
 
         // Parent control
-        private WatchVariablePanel _watchVariablePanel;
+        private WatchVariableFlowLayoutPanel _watchVariablePanel;
 
         public string TextBoxValue
         {
@@ -611,7 +611,7 @@ namespace STROOP.Controls
 
 
 
-        public void SetPanel(WatchVariablePanel panel)
+        public void SetPanel(WatchVariableFlowLayoutPanel panel)
         {
             _watchVariablePanel = panel;
         }

@@ -177,7 +177,7 @@ namespace STROOP.Managers
                 VariableGroup.ObjectSpecific,
             };
 
-        public ObjectManager(List<WatchVariableControlPrecursor> variables, Control objectControl, WatchVariablePanel variableTable)
+        public ObjectManager(List<WatchVariableControlPrecursor> variables, Control objectControl, WatchVariableFlowLayoutPanel variableTable)
             : base(variables, variableTable, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
         {
             SplitContainer splitContainerObject = objectControl.Controls["splitContainerObject"] as SplitContainer;
