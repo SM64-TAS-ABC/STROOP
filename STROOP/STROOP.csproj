@@ -144,6 +144,8 @@
     <Compile Include="Controls\NoTearFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\VisualLinkLineText.cs" />
+    <Compile Include="Controls\VisualRegexLinkGenerator.cs" />
     <Compile Include="Controls\WatchVariableLock.cs" />
     <Compile Include="Controls\BetterContextMenuStrip.cs">
       <SubType>Component</SubType>
@@ -321,6 +323,7 @@
     <Compile Include="Enums\WatchVariableSubclass.cs" />
     <Compile Include="Enums\VariableGroup.cs" />
     <Compile Include="Enums\BaseAddressTypeEnum.cs" />
+    <Compile Include="Utilities\DecompilerFunctionUtilities.cs" />
     <Compile Include="Utilities\Fast3DDecoder.cs" />
     <Compile Include="Utilities\WatchVariableSpecialUtilities.cs" />
     <Compile Include="Utilities\WatchVariableCoordinateManager.cs" />

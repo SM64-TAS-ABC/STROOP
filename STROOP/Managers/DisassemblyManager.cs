@@ -30,7 +30,7 @@ namespace STROOP.Managers
             _moreButton = tabControl.Controls["buttonDisMore"] as Button;
 
             _output.LinkClicked += _output_LinkClicked;
-            _goButton.Click += GoButton_Pressed;
+            _goButton.Click += (sender, e) => Disassemble(_textBoxStartAdd.Text, _currentLines);
             _moreButton.Click += MoreButton_Click;
             _textBoxStartAdd.TextChanged += (sender, e) =>
             {
@@ -45,8 +45,16 @@ namespace STROOP.Managers
             if (!ParsingUtilities.TryParseHex(e.LinkText, out address))
                 return;
 
-            _textBoxStartAdd.Text = e.LinkText;
-            StartShowDisassmbly(address, NumberOfLinesAdd);
+            if (Control.ModifierKeys == Keys.Shift)
+            {
+                Config.DecompilerManager.Decompile(address, false);
+                Config.StroopMainForm.SwitchTab("tabPageDecompiler");
+            }
+            else
+            {
+                _textBoxStartAdd.Text = e.LinkText;
+                StartShowDisassmbly(address, NumberOfLinesAdd);
+            }
         }
 
         private void MoreButton_Click(object sender, EventArgs e)
@@ -55,16 +63,17 @@ namespace STROOP.Managers
             _currentLines += NumberOfLinesAdd;
         }
 
-        private void GoButton_Pressed(object sender, EventArgs e)
+        public void Disassemble(string strAddress, int numberOfLines = NumberOfLinesAdd)
         {
             uint newAddress;
-            if (!ParsingUtilities.TryParseHex(_textBoxStartAdd.Text, out newAddress))
+            if (!ParsingUtilities.TryParseHex(strAddress, out newAddress))
             {
-                MessageBox.Show(String.Format("Address {0} is not valid!", _textBoxStartAdd.Text),
+                MessageBox.Show(String.Format("Address {0} is not valid!", strAddress),
                     "Address Invalid", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
+            _currentLines = NumberOfLinesAdd;
+            _textBoxStartAdd.Text = strAddress;
             StartShowDisassmbly(newAddress, _currentLines);
         }
 

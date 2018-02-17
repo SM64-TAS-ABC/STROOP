@@ -19,6 +19,7 @@
     ShowLineNumbers="True"
     WordWrap="True"
             
+            
     IsReadOnly="True"
     FontSize="10pt" Initialized="textEditor_Initialized"/>
     </Grid>

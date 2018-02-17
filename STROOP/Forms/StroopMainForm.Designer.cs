@@ -746,7 +746,6 @@ namespace STROOP
             this.buttonDecompilerDecompile = new System.Windows.Forms.Button();
             this.labelDecompilerAddress = new System.Windows.Forms.Label();
             this.splitContainerDecompiler = new System.Windows.Forms.SplitContainer();
-            this.listViewDecompiler = new System.Windows.Forms.ListView();
             this.decompilerViewHost = new System.Windows.Forms.Integration.ElementHost();
             this.decompilerView = new STROOP.Controls.DecompilerView();
             this.tabPageScripts = new System.Windows.Forms.TabPage();
@@ -1085,6 +1084,7 @@ namespace STROOP
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
+            this.treeViewDecompile = new System.Windows.Forms.TreeView();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -10258,7 +10258,7 @@ namespace STROOP
             this.buttonDecompilerBack.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.buttonDecompilerBack.BackgroundImage = global::STROOP.Properties.Resources.img_arrow_left;
             this.buttonDecompilerBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonDecompilerBack.Location = new System.Drawing.Point(220, -2);
+            this.buttonDecompilerBack.Location = new System.Drawing.Point(220, 1);
             this.buttonDecompilerBack.Name = "buttonDecompilerBack";
             this.buttonDecompilerBack.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
             this.buttonDecompilerBack.Size = new System.Drawing.Size(25, 25);
@@ -10270,7 +10270,7 @@ namespace STROOP
             this.buttonDecompilerNext.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.buttonDecompilerNext.BackgroundImage = global::STROOP.Properties.Resources.img_arrow_right;
             this.buttonDecompilerNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonDecompilerNext.Location = new System.Drawing.Point(251, -2);
+            this.buttonDecompilerNext.Location = new System.Drawing.Point(251, 1);
             this.buttonDecompilerNext.Name = "buttonDecompilerNext";
             this.buttonDecompilerNext.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
             this.buttonDecompilerNext.Size = new System.Drawing.Size(25, 25);
@@ -10311,7 +10311,7 @@ namespace STROOP
             // 
             // splitContainerDecompiler.Panel1
             // 
-            this.splitContainerDecompiler.Panel1.Controls.Add(this.listViewDecompiler);
+            this.splitContainerDecompiler.Panel1.Controls.Add(this.treeViewDecompile);
             // 
             // splitContainerDecompiler.Panel2
             // 
@@ -10320,22 +10320,9 @@ namespace STROOP
             this.splitContainerDecompiler.SplitterDistance = 301;
             this.splitContainerDecompiler.TabIndex = 1;
             // 
-            // listViewDecompiler
-            // 
-            this.listViewDecompiler.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewDecompiler.Location = new System.Drawing.Point(4, 4);
-            this.listViewDecompiler.Name = "listViewDecompiler";
-            this.listViewDecompiler.Size = new System.Drawing.Size(294, 423);
-            this.listViewDecompiler.TabIndex = 0;
-            this.listViewDecompiler.UseCompatibleStateImageBehavior = false;
-            // 
             // decompilerViewHost
             // 
-            this.decompilerViewHost.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.decompilerViewHost.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.decompilerViewHost.Location = new System.Drawing.Point(3, 3);
             this.decompilerViewHost.Name = "decompilerViewHost";
             this.decompilerViewHost.Size = new System.Drawing.Size(592, 424);
@@ -14137,6 +14124,14 @@ namespace STROOP
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
+            // treeViewDecompile
+            // 
+            this.treeViewDecompile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewDecompile.Location = new System.Drawing.Point(0, 0);
+            this.treeViewDecompile.Name = "treeViewDecompile";
+            this.treeViewDecompile.Size = new System.Drawing.Size(301, 430);
+            this.treeViewDecompile.TabIndex = 0;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -15524,7 +15519,6 @@ namespace STROOP
         private TextBox textBoxDecompilerAddress;
         private Button buttonDecompilerDecompile;
         private Label labelDecompilerAddress;
-        private ListView listViewDecompiler;
         private SplitContainer splitContainerCustom;
         private GroupBox groupBoxVarHeight;
         private BetterTextbox betterTextboxVarHeightGetSet;
@@ -15635,6 +15629,7 @@ namespace STROOP
         private Button buttonGfxDumpDisplayList;
         private Button buttonClearVars;
         private Button buttonSaveVars;
+        private TreeView treeViewDecompile;
     }
 }
 

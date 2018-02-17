@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -36,6 +37,8 @@ namespace STROOP.Controls
             }
         }
 
+        public event EventHandler<string> OnFunctionClicked;
+
         public DecompilerView()
         {
             InitializeComponent();
@@ -52,6 +55,10 @@ namespace STROOP.Controls
         private void textEditor_Initialized(object sender, EventArgs e)
         {
             textEditor.SyntaxHighlighting = _pythonSyntax;
+
+            var generator = new VisualRegexLinkGenerator(new Regex("fn[0-9a-fA-F]{8}"));
+            generator.LinkClick += (s, link) => OnFunctionClicked?.Invoke(this, link);
+            textEditor.TextArea.TextView.ElementGenerators.Add(generator);
         }
     }
 }
