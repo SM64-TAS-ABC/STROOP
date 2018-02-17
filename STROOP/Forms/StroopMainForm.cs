@@ -258,8 +258,18 @@ namespace STROOP
             List<Process> resortList = new List<Process>();
             foreach (Process p in AvailableProcesses)
             {
-                if (!Config.Emulators.Select(e => e.ProcessName.ToLower()).Any(s => s.Contains(p.ProcessName.ToLower())))
+                try
+                {
+                    if (p.HasExited)
+                        continue;
+
+                    if (!Config.Emulators.Select(e => e.ProcessName.ToLower()).Any(s => s.Contains(p.ProcessName.ToLower())))
+                        continue;
+                }
+                catch (Win32Exception) // Access is denied
+                {
                     continue;
+                }
 
                 resortList.Add(p);
             }
