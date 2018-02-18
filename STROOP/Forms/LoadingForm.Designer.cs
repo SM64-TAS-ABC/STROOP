@@ -41,10 +41,10 @@
             this.progressBarLoading.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBarLoading.Location = new System.Drawing.Point(2, 52);
-            this.progressBarLoading.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.progressBarLoading.Location = new System.Drawing.Point(2, 27);
+            this.progressBarLoading.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarLoading.Name = "progressBarLoading";
-            this.progressBarLoading.Size = new System.Drawing.Size(427, 46);
+            this.progressBarLoading.Size = new System.Drawing.Size(423, 51);
             this.progressBarLoading.TabIndex = 0;
             // 
             // labelLoading
@@ -57,7 +57,7 @@
             this.labelLoading.Location = new System.Drawing.Point(2, 0);
             this.labelLoading.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelLoading.Name = "labelLoading";
-            this.labelLoading.Size = new System.Drawing.Size(427, 50);
+            this.labelLoading.Size = new System.Drawing.Size(423, 25);
             this.labelLoading.TabIndex = 1;
             this.labelLoading.Text = "Loading STROOP";
             this.labelLoading.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -66,8 +66,8 @@
             // 
             this.labelLoadingStatus.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelLoadingStatus.AutoSize = true;
-            this.labelLoadingStatus.Location = new System.Drawing.Point(188, 102);
-            this.labelLoadingStatus.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.labelLoadingStatus.Location = new System.Drawing.Point(186, 82);
+            this.labelLoadingStatus.Margin = new System.Windows.Forms.Padding(2);
             this.labelLoadingStatus.Name = "labelLoadingStatus";
             this.labelLoadingStatus.Size = new System.Drawing.Size(54, 13);
             this.labelLoadingStatus.TabIndex = 2;
@@ -80,14 +80,16 @@
             this.tableLayoutPanel1.Controls.Add(this.labelLoading, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.labelLoadingStatus, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.progressBarLoading, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(8, 8);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 10);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(431, 151);
+            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(427, 146);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // LoadingForm
@@ -98,8 +100,9 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "LoadingForm";
+            this.Padding = new System.Windows.Forms.Padding(10);
             this.Text = "LoadingForm";
             this.Load += new System.EventHandler(this.LoadingForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
