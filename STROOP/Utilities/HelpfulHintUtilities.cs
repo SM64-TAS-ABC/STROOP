@@ -11,10 +11,18 @@ namespace STROOP.Structs
 {
     public static class HelpfulHintUtilities
     {
+        private static readonly List<string> helpfulHints =
+            new List<string>()
+            {
+                "Hint 1",
+                "Hint 2",
+            };
+
         public static string GetRandomHelpfulHint()
         {
-            return System.DateTime.Now.ToString();
+            Random random = new Random();
+            int randomIndex = (int)(helpfulHints.Count * random.NextDouble());
+            return helpfulHints[randomIndex];
         }
-
     }
 }
