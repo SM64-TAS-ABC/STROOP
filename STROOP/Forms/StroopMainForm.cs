@@ -68,11 +68,23 @@ namespace STROOP
 
             Config.StroopMainForm = this;
 
-            Config.DisassemblyManager = new DisassemblyManager(tabPageDisassembly);
-            Config.DecompilerManager = new DecompilerManager(tabPageDecompiler);
-            Config.InjectionManager = new InjectionManager(_scriptParser, checkBoxUseRomHack);
-            Config.HackManager = new HackManager(_romHacks, Config.ObjectAssociations.SpawnHacks, tabPageHacks);
+            SetupViews();
 
+            _resizing = false;
+            labelVersionNumber.Text = _version;
+
+            // Collect garbage, we are fully loaded now!
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+
+            // Load process
+            buttonRefresh_Click(this, new EventArgs());
+            panelConnect.Location = new Point();
+            panelConnect.Size = this.Size;
+        }
+
+        private void CreateManagers()
+        {
             // Create map manager
             MapGui mapGui = new MapGui();
             mapGui.GLControl = glControlMap;
@@ -108,8 +120,8 @@ namespace STROOP
             mapGui.MapArtificialMarioYLabelTextBox = textBoxMapArtificialMarioYLabel;
 
             Config.MapManager = new MapManager(_mapAssoc, mapGui);
-            Config.ModelManager = new ModelManager(tabPageModel);
 
+            Config.ModelManager = new ModelManager(tabPageModel);
             Config.ActionsManager = new ActionsManager(_actionsData, watchVariablePanelActions, tabPageActions);
             Config.WaterManager = new WaterManager(_waterData, watchVariablePanelWater);
             Config.InputManager = new InputManager(_inputData, tabPageInput, watchVariablePanelInput, _inputImageGui);
@@ -132,6 +144,11 @@ namespace STROOP
             Config.ScriptManager = new ScriptManager(tabPageScripts);
             Config.GfxManager = new GfxManager(tabPageGfx, _gfxData, watchVariablePanelGfx);
 
+            Config.DisassemblyManager = new DisassemblyManager(tabPageDisassembly);
+            Config.DecompilerManager = new DecompilerManager(tabPageDecompiler);
+            Config.InjectionManager = new InjectionManager(_scriptParser, checkBoxUseRomHack);
+            Config.HackManager = new HackManager(_romHacks, Config.ObjectAssociations.SpawnHacks, tabPageHacks);
+
             // Create Object Slots
             _slotManagerGui.TabControl = tabControlMain;
             _slotManagerGui.LockLabelsCheckbox = checkBoxObjLockLabels;
@@ -139,20 +156,6 @@ namespace STROOP
             _slotManagerGui.SortMethodComboBox = comboBoxSortMethod;
             _slotManagerGui.LabelMethodComboBox = comboBoxLabelMethod;
             Config.ObjectSlotsManager = new ObjectSlotsManager(_slotManagerGui, tabControlMain);
-
-            SetupViews();
-
-            _resizing = false;
-            labelVersionNumber.Text = _version;
-
-            // Collect garbage, we are fully loaded now!
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-
-            // Load process
-            buttonRefresh_Click(this, new EventArgs());
-            panelConnect.Location = new Point();
-            panelConnect.Size = this.Size;
         }
 
         private void _sm64Stream_WarnReadonlyOff(object sender, EventArgs e)
@@ -248,6 +251,9 @@ namespace STROOP
             TableConfig.Missions = XmlConfigParser.OpenMissionTable(@"Config/Missions.xml");
             TableConfig.CourseData = XmlConfigParser.OpenCourseDataTable(@"Config/CourseData.xml");
             TableConfig.FlyGuyData = new FlyGuyDataTable();
+
+            loadingForm.UpdateStatus("Creating Managers", statusNum++);
+            CreateManagers();
 
             loadingForm.UpdateStatus("Finishing", statusNum);
         }
