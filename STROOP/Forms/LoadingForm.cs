@@ -18,6 +18,7 @@ namespace STROOP.Forms
         {
             InitializeComponent();
             _maxStatus = maxStatus;
+            textBoxLoadingHelpfulHint.Text = System.DateTime.Now.ToString();
         }
 
         private void LoadingForm_Load(object sender, EventArgs e)
