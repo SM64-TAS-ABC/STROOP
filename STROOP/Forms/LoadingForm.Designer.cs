@@ -91,26 +91,26 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(427, 146);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(427, 162);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // richTextBoxGfx
             // 
             this.richTextBoxGfx.BackColor = System.Drawing.SystemColors.Control;
-            this.richTextBoxGfx.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxGfx.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.richTextBoxGfx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBoxGfx.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBoxGfx.Location = new System.Drawing.Point(3, 103);
             this.richTextBoxGfx.Name = "richTextBoxGfx";
-            this.richTextBoxGfx.Size = new System.Drawing.Size(421, 40);
+            this.richTextBoxGfx.Size = new System.Drawing.Size(421, 56);
             this.richTextBoxGfx.TabIndex = 3;
-            this.richTextBoxGfx.Text = "Helpful Hint: Do something.";
+            this.richTextBoxGfx.Text = "Helpful Hint: Do something.\nLine 2\nLine 3";
             // 
             // LoadingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(447, 166);
+            this.ClientSize = new System.Drawing.Size(447, 182);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
