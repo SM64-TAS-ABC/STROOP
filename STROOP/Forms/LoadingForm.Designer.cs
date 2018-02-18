@@ -33,6 +33,7 @@
             this.labelLoading = new System.Windows.Forms.Label();
             this.labelLoadingStatus = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.richTextBoxGfx = new System.Windows.Forms.RichTextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,6 +78,7 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.richTextBoxGfx, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.labelLoading, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.labelLoadingStatus, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.progressBarLoading, 0, 1);
@@ -91,6 +93,18 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(427, 146);
             this.tableLayoutPanel1.TabIndex = 3;
+            // 
+            // richTextBoxGfx
+            // 
+            this.richTextBoxGfx.BackColor = System.Drawing.SystemColors.Control;
+            this.richTextBoxGfx.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxGfx.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxGfx.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxGfx.Location = new System.Drawing.Point(3, 103);
+            this.richTextBoxGfx.Name = "richTextBoxGfx";
+            this.richTextBoxGfx.Size = new System.Drawing.Size(421, 40);
+            this.richTextBoxGfx.TabIndex = 3;
+            this.richTextBoxGfx.Text = "Helpful Hint: Do something.";
             // 
             // LoadingForm
             // 
@@ -117,5 +131,6 @@
         private System.Windows.Forms.Label labelLoading;
         private System.Windows.Forms.Label labelLoadingStatus;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.RichTextBox richTextBoxGfx;
     }
 }
