@@ -1189,12 +1189,7 @@ namespace STROOP.Structs
                 case "DeltaYawIntendedFacing":
                     getterFunction = (uint dummy) =>
                     {
-                        ushort marioYawFacing = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
-                        ushort marioYawFacingTruncated = MoreMath.NormalizeAngleTruncated(marioYawFacing);
-                        ushort marioYawIntended = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawIntendedOffset);
-                        ushort marioYawIntendedTruncated = MoreMath.NormalizeAngleTruncated(marioYawIntended);
-                        int deltaYaw = marioYawIntendedTruncated - marioYawFacingTruncated;
-                        return MoreMath.NormalizeAngleDoubleSigned(deltaYaw).ToString();
+                        return GetDeltaYawIntendedFacing().ToString();
                     };
                     break;
 
@@ -2698,6 +2693,16 @@ namespace STROOP.Structs
 
             float defactoSpeed = distAboveFloor == 0 ? hSpeed * yNorm : hSpeed;
             return defactoSpeed;
+        }
+
+        public static short GetDeltaYawIntendedFacing()
+        {
+            ushort marioYawFacing = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+            ushort marioYawFacingTruncated = MoreMath.NormalizeAngleTruncated(marioYawFacing);
+            ushort marioYawIntended = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawIntendedOffset);
+            ushort marioYawIntendedTruncated = MoreMath.NormalizeAngleTruncated(marioYawIntended);
+            int deltaYaw = marioYawIntendedTruncated - marioYawFacingTruncated;
+            return MoreMath.NormalizeAngleShort(deltaYaw);
         }
     }
 }
