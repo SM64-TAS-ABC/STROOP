@@ -44,6 +44,8 @@ namespace STROOP.Managers
                     "Defacto Speed",
                     "Mario Action",
                     "Mario Animation",
+                    "DYaw Facing - Intended",
+                    "DYaw Facing - Intended (HAU)",
                 },
                 new List<Action>()
                 {
@@ -57,6 +59,8 @@ namespace STROOP.Managers
                     () => AddVariable(() => "Defacto " + FormatInteger(WatchVariableSpecialUtilities.GetMarioDeFactoSpeed())),
                     () => AddVariable(() => "Action " + TableConfig.MarioActions.GetActionName()),
                     () => AddVariable(() => "Animation " + TableConfig.MarioAnimations.GetAnimationName()),
+                    () => AddVariable(() => "DYaw " + FormatInteger(WatchVariableSpecialUtilities.GetDeltaYawIntendedFacing())),
+                    () => AddVariable(() => "DYaw " + FormatInteger(WatchVariableSpecialUtilities.GetDeltaYawIntendedFacing() / 16)),
                 });
 
             Button buttonVarHackClearVariables =
