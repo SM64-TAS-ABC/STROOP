@@ -110,18 +110,20 @@ namespace STROOP.Controls
             }
         }
 
-        public WatchVariableControl CreateWatchVariableControl(Color? newColor = null)
+        public WatchVariableControl CreateWatchVariableControl(
+            Color? newColor = null, string name = null, List<uint> fixedAddresses = null)
         {
             return new WatchVariableControl(
                 this,
-                _name,
+                name ?? _name,
                 _watchVar,
                 _subclass,
                 newColor ?? _backgroundColor,
                 _useHex,
                 _invertBool,
                 _coordinate,
-                _groupList);
+                _groupList,
+                fixedAddresses);
         }
 
         public XElement ToXML()
