@@ -208,13 +208,13 @@ namespace STROOP.Controls
 
         public void OpenVariables()
         {
-            List<WatchVariableControlPrecursor> precursors = WatchVariableFileUtilities.OpenVariables();
+            List<WatchVariableControlPrecursor> precursors = FileUtilities.OpenVariables();
             AddVariables(precursors.ConvertAll(w => w.CreateWatchVariableControl()));
         }
 
         public void SaveVariables()
         {
-            WatchVariableFileUtilities.SaveVariables(GetCurrentXmlElements(), "CustomData");
+            FileUtilities.SaveVariables(GetCurrentXmlElements(), "CustomData");
         }
 
         public void EnableCustomVariableFunctionality()

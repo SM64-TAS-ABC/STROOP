@@ -12,7 +12,7 @@ using System.Xml.Linq;
 
 namespace STROOP.Structs
 {
-    public static class WatchVariableFileUtilities
+    public static class FileUtilities
     {
         private static string GetFilterString(FileType fileType)
         {

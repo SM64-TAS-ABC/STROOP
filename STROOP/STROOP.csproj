@@ -330,7 +330,7 @@
     <Compile Include="Utilities\WatchVariableSpecialUtilities.cs" />
     <Compile Include="Utilities\WatchVariableCoordinateManager.cs" />
     <Compile Include="Utilities\AreaUtilities.cs" />
-    <Compile Include="Utilities\WatchVariableFileUtilities.cs" />
+    <Compile Include="Utilities\FileUtilities.cs" />
     <Compile Include="Utilities\WatchVariableUtilities.cs" />
     <Compile Include="Utilities\BehaviorDecoder.cs" />
     <Compile Include="Utilities\Kernal32NativeMethods.cs" />
