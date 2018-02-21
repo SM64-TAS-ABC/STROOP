@@ -185,10 +185,13 @@ namespace STROOP.Controls
         private List<XElement> GetCurrentXmlElements(bool useCurrentState = true)
         {
             List<XElement> elements = new List<XElement>();
-            foreach (Control control in Controls)
+            lock (_objectLock)
             {
-                WatchVariableControl watchVarControl = control as WatchVariableControl;
-                elements.Add(watchVarControl.ToXML(useCurrentState));
+                foreach (Control control in Controls)
+                {
+                    WatchVariableControl watchVarControl = control as WatchVariableControl;
+                    elements.Add(watchVarControl.ToXml(useCurrentState));
+                }
             }
             return elements;
         }

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Controls
 {
@@ -89,17 +90,38 @@ namespace STROOP.Controls
             }
         }
 
-        public void OpenVars()
+        private List<XElement> GetCurrentXmlElements()
         {
-            
+            List<XElement> elements = new List<XElement>();
+            lock (_objectLock)
+            {
+                foreach (Control control in Controls)
+                {
+                    VarHackContainer varHackContainer = control as VarHackContainer;
+                    elements.Add(varHackContainer.ToXml());
+                }
+            }
+            return elements;
         }
 
-        public void SaveVars()
+        public void OpenVariables()
         {
-            
+            List<XElement> elements = FileUtilities.OpenXmlElements(FileType.StroopVarHackVariables);
+            List<VarHackContainer> varHackContainers =
+                elements.ConvertAll(element => new VarHackContainer(element));
+            lock (_objectLock)
+            {
+                varHackContainers.ForEach(varHackContainer => Controls.Add(varHackContainer));
+            }
         }
 
-        public void ClearVars()
+        public void SaveVariables()
+        {
+            FileUtilities.SaveXmlElements(
+                FileType.StroopVarHackVariables, "CustomVarHackData", GetCurrentXmlElements());
+        }
+
+        public void ClearVariables()
         {
             lock (_objectLock)
             {

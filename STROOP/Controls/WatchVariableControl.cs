@@ -702,7 +702,7 @@ namespace STROOP.Controls
             if (!success) FlashColor(FAILURE_COLOR);
         }
 
-        public XElement ToXML(bool useCurrentState = true)
+        public XElement ToXml(bool useCurrentState = true)
         {
             Color? color = _baseColor == DEFAULT_COLOR ? (Color?)null : _baseColor;
             if (useCurrentState)

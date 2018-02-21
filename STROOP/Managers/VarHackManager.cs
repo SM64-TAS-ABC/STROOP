@@ -66,17 +66,17 @@ namespace STROOP.Managers
             Button buttonVarHackOpenVars =
                 splitContainerVarHack.Panel1.Controls["buttonVarHackOpenVars"] as Button;
             buttonVarHackOpenVars.Click +=
-                (sender, e) => _varHackPanel.OpenVars();
+                (sender, e) => _varHackPanel.OpenVariables();
 
             Button buttonVarHackSaveVars =
                 splitContainerVarHack.Panel1.Controls["buttonVarHackSaveVars"] as Button;
             buttonVarHackSaveVars.Click +=
-                (sender, e) => _varHackPanel.SaveVars();
+                (sender, e) => _varHackPanel.SaveVariables();
 
             Button buttonVarHackClearVariables =
                 splitContainerVarHack.Panel1.Controls["buttonVarHackClearVars"] as Button;
             buttonVarHackClearVariables.Click +=
-                (sender, e) => _varHackPanel.ClearVars();
+                (sender, e) => _varHackPanel.ClearVariables();
 
             Button buttonVarHackShowVariableBytesInLittleEndian =
                 splitContainerVarHack.Panel1.Controls["buttonVarHackShowVariableBytesInLittleEndian"] as Button;
