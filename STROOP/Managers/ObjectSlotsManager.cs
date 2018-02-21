@@ -33,7 +33,6 @@ namespace STROOP.Managers
 
         public const byte VacantGroup = 0xFF;
 
-        Dictionary<uint, MapObject> _mapObjects = new Dictionary<uint, MapObject>();
         Dictionary<uint, int> _memoryAddressSlotIndex;
         public Dictionary<uint, ObjectSlot> MemoryAddressSortedSlot = new Dictionary<uint, ObjectSlot>();
         Dictionary<uint, Tuple<int?, int?>> _lastSlotLabel = new Dictionary<uint, Tuple<int?, int?>>();
@@ -678,9 +677,6 @@ namespace STROOP.Managers
             {
                 UpdateObjectManager(objSlot, behaviorCriteria, objData);
             }
-
-            // Update the map
-            UpdateMapObject(objData, objSlot, behaviorCriteria);
         }
 
         void UpdateObjectManager(ObjectSlot objSlot, BehaviorCriteria behaviorCriteria, ObjectSlotData objData)
@@ -701,53 +697,6 @@ namespace STROOP.Managers
             Config.ObjectManager.SlotIndex = (_memoryAddressSlotIndex[objData.Address] + (OptionsConfig.SlotIndexsFromOne ? 1 : 0)).ToString();
             Config.ObjectManager.SlotPos = (objData.ObjectProcessGroup == VacantGroup ? "VS " : "")
                 + (slotPos + (OptionsConfig.SlotIndexsFromOne ? 1 : 0)).ToString();
-        }
-
-        void UpdateMapObject(ObjectSlotData objData, ObjectSlot objSlot, BehaviorCriteria behaviorCriteria)
-        {
-            if (ActiveTab != TabType.Map || !Config.MapManager.IsLoaded)
-                return;
-
-            var objAddress = objData.Address;
-
-            // Update image
-            var mapObjImage = Config.ObjectAssociations.GetObjectMapImage(behaviorCriteria);
-            var mapObjRotates = Config.ObjectAssociations.GetObjectMapRotates(behaviorCriteria);
-            if (!_mapObjects.ContainsKey(objAddress))
-            {
-                var mapObj = new MapObject(mapObjImage);
-                mapObj.UsesRotation = mapObjRotates;
-                _mapObjects.Add(objAddress, mapObj);
-                Config.MapManager.AddMapObject(mapObj);
-            }
-            else if (_mapObjects[objAddress].Image != mapObjImage)
-            {
-                Config.MapManager.RemoveMapObject(_mapObjects[objAddress]);
-                var mapObj = new MapObject(mapObjImage);
-                mapObj.UsesRotation = mapObjRotates;
-                _mapObjects[objAddress] = mapObj;
-                Config.MapManager.AddMapObject(mapObj);
-            }
-
-            if (objData.Behavior == (Config.ObjectAssociations.MarioBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart)
-            {
-                _mapObjects[objAddress].Show = false;
-            }
-            else
-            {
-                // Update map object coordinates and rotation
-                var mapObj = _mapObjects[objAddress];
-                mapObj.Show = SelectedOnMapSlotsAddresses.Contains(objAddress);
-                objSlot.Show = _mapObjects[objAddress].Show;
-                mapObj.X = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
-                mapObj.Y = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                mapObj.Z = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
-                mapObj.IsActive = objData.IsActive;
-                mapObj.Transparent = !mapObj.IsActive;
-                ushort objYaw = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset);
-                mapObj.Rotation = (float)MoreMath.AngleUnitsToDegrees(objYaw);
-                mapObj.UsesRotation = Config.ObjectAssociations.GetObjectMapRotates(behaviorCriteria);
-            }
         }
     }
 }

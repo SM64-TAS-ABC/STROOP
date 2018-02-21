@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using STROOP.Utilities;
 using STROOP.Structs;
-using STROOP.ManagerClasses;
 using STROOP.Managers;
 using STROOP.Extensions;
 using STROOP.Structs.Configurations;

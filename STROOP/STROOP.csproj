@@ -132,6 +132,14 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\Map\Graphics\IMapCamera.cs" />
+    <Compile Include="Controls\Map\Graphics\Items\MapGraphicsItem.cs" />
+    <Compile Include="Controls\Map\Graphics\MapCameraTopView.cs" />
+    <Compile Include="Controls\Map\Graphics\MapGraphics.cs" />
+    <Compile Include="Controls\Map\Graphics\Items\MapGraphicsBackgroundItem.cs" />
+    <None Include="Controls\Map\Graphics\Items\MapGraphicsIconItem.cs" />
+    <Compile Include="Controls\Map\Graphics\GraphicsUtilities.cs" />
+    <Compile Include="Controls\Map\Graphics\Vertex.cs" />
     <Compile Include="Controls\Map\MapObjectControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -212,7 +220,6 @@
     <Compile Include="Controls\IntPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\Map\MapBaseObject.cs" />
     <Compile Include="Controls\WatchVariablePanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -254,7 +261,6 @@
     <Compile Include="Managers\MiscManager.cs" />
     <Compile Include="Managers\DataManager.cs" />
     <Compile Include="Managers\DisassemblyManager.cs" />
-    <Compile Include="Controls\Map\MapGraphics.cs" />
     <Compile Include="Managers\MapManager.cs" />
     <Compile Include="Managers\CameraManager.cs" />
     <Compile Include="Managers\MarioManager.cs" />
@@ -307,7 +313,6 @@
     <Compile Include="Structs\Gui\ObjectSlotManagerGui.cs" />
     <Compile Include="Structs\Map\Map.cs" />
     <Compile Include="Structs\Map\MapAssociations.cs" />
-    <Compile Include="Controls\Map\MapObject.cs" />
     <Compile Include="Structs\Configurations\MarioConfig.cs" />
     <Compile Include="Structs\ObjectBehaviorAssociation.cs" />
     <Compile Include="Structs\ObjectAssociations.cs" />
@@ -336,7 +341,6 @@
     <Compile Include="Utilities\ControlUtilities.cs" />
     <Compile Include="Utilities\TriangleUtilities.cs" />
     <Compile Include="Utilities\ScriptParser.cs" />
-    <Compile Include="Controls\Map\TriangleMapObject.cs" />
     <Compile Include="Structs\WatchExpression.cs" />
     <Compile Include="Utilities\N64Disassembler.cs" />
     <Compile Include="Utilities\ButtonUtilities.cs" />
@@ -1128,7 +1132,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Controls\Map\Objects\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>del "$(TargetDir)OpenTK.dll.config"

@@ -106,7 +106,7 @@ namespace STROOP.Controls
                 speedMul = 0.3f;
 
             // Handle mouse
-            MouseState mouseState = Mouse.GetCursorState();
+            MouseState mouseState = Mouse.GetState();
             if (mouseState.LeftButton == OpenTK.Input.ButtonState.Pressed && _mousePressedWithin)
             {
                 // Reset previous coordinates so no movement occurs during the initial press 
@@ -153,10 +153,10 @@ namespace STROOP.Controls
                 return;
 
             if (!_pMouseScroll.HasValue)
-                _pMouseScroll = mouseState.Scroll.Y;
-            float deltaScroll = mouseState.Scroll.Y - _pMouseScroll.Value;
+                _pMouseScroll = mouseState.ScrollWheelValue;
+            float deltaScroll = mouseState.ScrollWheelValue - _pMouseScroll.Value;
             _zoom += deltaScroll * 0.1f * speedMul;
-            _pMouseScroll = mouseState.Scroll.Y;
+            _pMouseScroll = mouseState.ScrollWheelValue;
 
             Vector3 relDeltaPos = new Vector3(0, 0, 0);
             float posSpeed = speedMul * _modelRadius * 0.01f; // Move at a rate relative to the model size
