@@ -83,7 +83,7 @@ namespace STROOP.Controls
             _coordinate = element.Attribute(XName.Get("coord")) != null ?
                 WatchVariableUtilities.GetCoordinate(element.Attribute(XName.Get("coord")).Value) : (WatchVariableCoordinate?)null;
             _fixedAddresses = element.Attribute(XName.Get("fixed")) != null ?
-                ParsingUtilities.ParseUIntList(element.Attribute(XName.Get("fixed")).Value) : null;
+                ParsingUtilities.ParseHexList(element.Attribute(XName.Get("fixed")).Value) : null;
 
             if (_subclass == WatchVariableSubclass.Angle && specialType != null)
             {
@@ -191,7 +191,9 @@ namespace STROOP.Controls
 
             List<uint> fixedAddresses = newFixedAddresses ?? _fixedAddresses;
             if (fixedAddresses != null)
-                root.Add(new XAttribute("fixed", String.Join(",", fixedAddresses)));
+                root.Add(new XAttribute("fixed", String.Join(
+                    ",", fixedAddresses.ConvertAll(
+                        address => String.Format("0x{0:X}", address)))));
 
             return root;
         }

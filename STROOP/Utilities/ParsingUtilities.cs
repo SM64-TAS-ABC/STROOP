@@ -270,9 +270,9 @@ namespace STROOP.Utilities
             return stringList;
         }
 
-        public static List<uint> ParseUIntList(string text)
+        public static List<uint> ParseHexList(string text)
         {
-            return ParseStringList(text).ConvertAll(stringValue => ParseUInt(stringValue));
+            return ParseStringList(text).ConvertAll(stringValue => ParseHex(stringValue));
         }
 
         public static byte? ParseByteRoundingWrapping(object value)
