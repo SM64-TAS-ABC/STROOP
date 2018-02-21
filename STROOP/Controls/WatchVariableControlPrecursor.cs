@@ -115,11 +115,11 @@ namespace STROOP.Controls
         }
 
         public WatchVariableControl CreateWatchVariableControl(
-            Color? newColor = null, string name = null, List<uint> fixedAddresses = null)
+            Color? newColor = null, string newName = null, List<uint> newFixedAddresses = null)
         {
             return new WatchVariableControl(
                 this,
-                name ?? _name,
+                newName ?? _name,
                 _watchVar,
                 _subclass,
                 newColor ?? _backgroundColor,
@@ -127,12 +127,13 @@ namespace STROOP.Controls
                 _invertBool,
                 _coordinate,
                 _groupList,
-                fixedAddresses ?? _fixedAddresses);
+                newFixedAddresses ?? _fixedAddresses);
         }
 
-        public XElement ToXML()
+        public XElement ToXML(Color? newColor = null, string newName = null, List<uint> newFixedAddresses = null)
         {
-            XElement root = new XElement("Data", _name);
+            string name = newName ?? _name;
+            XElement root = new XElement("Data", name);
 
             if (_groupList.Count > 0)
                 root.Add(new XAttribute("groupList", String.Join(",", _groupList)));
@@ -182,13 +183,15 @@ namespace STROOP.Controls
             if (_coordinate.HasValue)
                 root.Add(new XAttribute("coord", _coordinate.Value.ToString()));
 
-            if (_backgroundColor.HasValue)
+            Color? color = newColor ?? _backgroundColor;
+            if (color.HasValue)
                 root.Add(new XAttribute(
                     "color",
-                    "#" + ColorUtilities.ToString(_backgroundColor.Value)));
+                    "#" + ColorUtilities.ToString(color.Value)));
 
-            if (_fixedAddresses != null)
-                root.Add(new XAttribute("fixed", String.Join(",", _fixedAddresses)));
+            List<uint> fixedAddresses = newFixedAddresses ?? _fixedAddresses;
+            if (fixedAddresses != null)
+                root.Add(new XAttribute("fixed", String.Join(",", fixedAddresses)));
 
             return root;
         }
