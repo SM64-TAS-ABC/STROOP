@@ -14,18 +14,31 @@ namespace STROOP.Structs
 {
     public static class WatchVariableFileUtilities
     {
+        private static string GetFilterString(FileType fileType)
+        {
+            switch (fileType)
+            {
+                case FileType.StroopVariables:
+                    return "STROOP Variables|*.stv";
+                case FileType.StroopVarHackVariables:
+                    return "STROOP Var Hack Variables|*.stvhv";
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
         private static SaveFileDialog _saveFileDialogCustom =
             new SaveFileDialog()
             {
                 CheckPathExists = true,
-                Filter = "STROOP Variables|*.stv",
+                Filter = GetFilterString(FileType.StroopVariables)
             };
 
         private static OpenFileDialog _openFileDialogCustom =
             new OpenFileDialog()
             {
                 CheckFileExists = true,
-                Filter = "STROOP Variables|*.stv",
+                Filter = GetFilterString(FileType.StroopVariables)
             };
 
         public static List<WatchVariableControlPrecursor> OpenVariables()

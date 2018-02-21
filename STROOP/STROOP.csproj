@@ -219,6 +219,7 @@
     <Compile Include="Controls\RichTextBoxEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Enums\FileType.cs" />
     <Compile Include="Enums\CoordinateSystem.cs" />
     <Compile Include="Enums\CamHackMode.cs" />
     <Compile Include="Enums\RomVersion.cs" />
