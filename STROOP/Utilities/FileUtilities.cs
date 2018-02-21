@@ -39,7 +39,7 @@ namespace STROOP.Structs
             if (result != DialogResult.OK) return new List<XElement>();
 
             XDocument varXml = XDocument.Load(openFileDialog.FileName);
-            return ConvertContainerIntoElements(varXml);
+            return ConvertDocumentIntoElements(varXml);
         }
 
         public static void SaveVariables(List<XElement> elements, string xmlName)
@@ -69,13 +69,10 @@ namespace STROOP.Structs
             return doc;
         }
 
-        private static List<XElement> ConvertContainerIntoElements(XContainer xml)
+        private static List<XElement> ConvertDocumentIntoElements(XDocument doc)
         {
-            // Retreive the root node
-            if (xml is XDocument)
-                xml = (xml as XDocument).Root;
-
-            return xml.Elements().ToList();
+            XElement root = doc.Root;
+            return root.Elements().ToList();
         }
 
     }
