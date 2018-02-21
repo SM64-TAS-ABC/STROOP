@@ -28,7 +28,7 @@ namespace STROOP.Structs
                 Filter = "STROOP Variables|*.stv",
             };
 
-        public static IEnumerable<WatchVariableControlPrecursor> OpenVariables()
+        public static List<WatchVariableControlPrecursor> OpenVariables()
         {
             DialogResult result = _openFileDialogCustom.ShowDialog();
             if (result != DialogResult.OK)
@@ -38,7 +38,7 @@ namespace STROOP.Structs
             return WatchVariablesFromXML(varXml);
         }
 
-        public static void SaveVariables(IEnumerable<WatchVariableControlPrecursor> precursors, string xmlName = null)
+        public static void SaveVariables(List<WatchVariableControlPrecursor> precursors, string xmlName = null)
         {
             DialogResult result = _saveFileDialogCustom.ShowDialog();
             if (result != DialogResult.OK)
@@ -47,7 +47,7 @@ namespace STROOP.Structs
             WatchVariablesToXML(precursors, xmlName).Save(_saveFileDialogCustom.FileName);
         }
 
-        private static XDocument WatchVariablesToXML(IEnumerable<WatchVariableControlPrecursor> watchVars, string xmlName = null)
+        private static XDocument WatchVariablesToXML(List<WatchVariableControlPrecursor> watchVars, string xmlName = null)
         {
             XDocument doc = new XDocument();
             XElement root = new XElement(XName.Get(xmlName ?? "CustomData"));
@@ -59,13 +59,13 @@ namespace STROOP.Structs
             return doc;
         }
 
-        private static IEnumerable<WatchVariableControlPrecursor> WatchVariablesFromXML(XContainer xml)
+        private static List<WatchVariableControlPrecursor> WatchVariablesFromXML(XContainer xml)
         {
             // Retreive the root node
             if (xml is XDocument)
                 xml = (xml as XDocument).Root;
 
-            return xml.Elements().Select(e => new WatchVariableControlPrecursor(e));
+            return xml.Elements().ToList().ConvertAll(e => new WatchVariableControlPrecursor(e));
         }
 
     }
