@@ -23,6 +23,7 @@ namespace STROOP.Controls
         private readonly bool? _invertBool;
         private readonly WatchVariableCoordinate? _coordinate;
         private readonly List<VariableGroup> _groupList;
+        private readonly List<uint> _fixedAddresses;
 
         public WatchVariableControlPrecursor(
             string name,
@@ -32,7 +33,8 @@ namespace STROOP.Controls
             bool? useHex,
             bool? invertBool,
             WatchVariableCoordinate? coordinate,
-            List<VariableGroup> groupList)
+            List<VariableGroup> groupList,
+            List<uint> fixedAddresses = null)
         {
             _name = name;
             _watchVar = watchVar;
@@ -42,11 +44,11 @@ namespace STROOP.Controls
             _invertBool = invertBool;
             _coordinate = coordinate;
             _groupList = groupList;
+            _fixedAddresses = fixedAddresses;
         }
 
         public WatchVariableControlPrecursor(XElement element)
         {
-
             /// Watchvariable params
             string typeName = (element.Attribute(XName.Get("type"))?.Value);
             string specialType = element.Attribute(XName.Get("specialType"))?.Value;
@@ -80,6 +82,8 @@ namespace STROOP.Controls
                 bool.Parse(element.Attribute(XName.Get("invertBool")).Value) : (bool?)null;
             _coordinate = element.Attribute(XName.Get("coord")) != null ?
                 WatchVariableUtilities.GetCoordinate(element.Attribute(XName.Get("coord")).Value) : (WatchVariableCoordinate?)null;
+            _fixedAddresses = element.Attribute(XName.Get("fixed")) != null ?
+                ParsingUtilities.ParseHexList(element.Attribute(XName.Get("fixed")).Value) : null;
 
             if (_subclass == WatchVariableSubclass.Angle && specialType != null)
             {
@@ -110,23 +114,26 @@ namespace STROOP.Controls
             }
         }
 
-        public WatchVariableControl CreateWatchVariableControl(Color? newColor = null)
+        public WatchVariableControl CreateWatchVariableControl(
+            Color? newColor = null, string newName = null, List<uint> newFixedAddresses = null)
         {
             return new WatchVariableControl(
                 this,
-                _name,
+                newName ?? _name,
                 _watchVar,
                 _subclass,
                 newColor ?? _backgroundColor,
                 _useHex,
                 _invertBool,
                 _coordinate,
-                _groupList);
+                _groupList,
+                newFixedAddresses ?? _fixedAddresses);
         }
 
-        public XElement ToXML()
+        public XElement ToXML(Color? newColor = null, string newName = null, List<uint> newFixedAddresses = null)
         {
-            XElement root = new XElement("Data", _name);
+            string name = newName ?? _name;
+            XElement root = new XElement("Data", name);
 
             if (_groupList.Count > 0)
                 root.Add(new XAttribute("groupList", String.Join(",", _groupList)));
@@ -176,10 +183,17 @@ namespace STROOP.Controls
             if (_coordinate.HasValue)
                 root.Add(new XAttribute("coord", _coordinate.Value.ToString()));
 
-            if (_backgroundColor.HasValue)
+            Color? color = newColor ?? _backgroundColor;
+            if (color.HasValue)
                 root.Add(new XAttribute(
                     "color",
-                    "#" + ColorUtilities.ToString(_backgroundColor.Value)));
+                    "#" + ColorUtilities.ToString(color.Value)));
+
+            List<uint> fixedAddresses = newFixedAddresses ?? _fixedAddresses;
+            if (fixedAddresses != null)
+                root.Add(new XAttribute("fixed", String.Join(
+                    ",", fixedAddresses.ConvertAll(
+                        address => String.Format("0x{0:X}", address)))));
 
             return root;
         }

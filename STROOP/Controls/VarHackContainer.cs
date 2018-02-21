@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Controls
 {
@@ -89,6 +90,17 @@ namespace STROOP.Controls
         {
             _getterFunction = getterFunction;
             checkBoxNoNumber.Checked = true;
+        }
+
+        public VarHackContainer(XElement element)
+        {
+            // TODO implement this
+        }
+
+        public XElement ToXml()
+        {
+            // TODO implement this
+            return new XElement("dummy");
         }
 
         private void SetDefaultValues(int creationIndex, bool usePreWrittenVar)

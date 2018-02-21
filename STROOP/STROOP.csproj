@@ -182,7 +182,7 @@
     <Compile Include="Controls\WatchVariableObjectWrapper.cs" />
     <Compile Include="Controls\WatchVariableAngleWrapper.cs" />
     <Compile Include="Controls\WatchVariableNumberWrapper.cs" />
-    <Compile Include="Controls\VarHackPanel.cs">
+    <Compile Include="Controls\VarHackFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\WatchVariableWrapper.cs" />
@@ -220,12 +220,14 @@
     <Compile Include="Controls\IntPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\WatchVariablePanel.cs">
+    <Compile Include="Controls\Map\MapBaseObject.cs" />
+    <Compile Include="Controls\WatchVariableFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\RichTextBoxEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Enums\FileType.cs" />
     <Compile Include="Enums\CoordinateSystem.cs" />
     <Compile Include="Enums\CamHackMode.cs" />
     <Compile Include="Enums\RomVersion.cs" />
@@ -322,6 +324,7 @@
     <Compile Include="Structs\RomHack.cs" />
     <Compile Include="Structs\SpawnHack.cs" />
     <Compile Include="Enums\AngleUnitType.cs" />
+    <Compile Include="Utilities\HelpfulHintUtilities.cs" />
     <Compile Include="Utilities\ColorUtilities.cs" />
     <Compile Include="Managers\WatchVariableLockManager.cs" />
     <Compile Include="Enums\WatchVariableCoordinate.cs" />
@@ -333,7 +336,7 @@
     <Compile Include="Utilities\WatchVariableSpecialUtilities.cs" />
     <Compile Include="Utilities\WatchVariableCoordinateManager.cs" />
     <Compile Include="Utilities\AreaUtilities.cs" />
-    <Compile Include="Utilities\WatchVariableFileUtilities.cs" />
+    <Compile Include="Utilities\FileUtilities.cs" />
     <Compile Include="Utilities\WatchVariableUtilities.cs" />
     <Compile Include="Utilities\BehaviorDecoder.cs" />
     <Compile Include="Utilities\Kernal32NativeMethods.cs" />

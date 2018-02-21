@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Controls
 {
@@ -181,16 +182,18 @@ namespace STROOP.Controls
             AddVariables(_watchVarPrecursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
         }
 
-        /** Gets the precursors for the currently shown controls in order. */
-        private List<WatchVariableControlPrecursor> GetCurrentControlPrecursors()
+        private List<XElement> GetCurrentXmlElements(bool useCurrentState = true)
         {
-            List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
-            foreach (Control control in Controls)
+            List<XElement> elements = new List<XElement>();
+            lock (_objectLock)
             {
-                WatchVariableControl watchVarControl = control as WatchVariableControl;
-                precursors.Add(watchVarControl.GetPrecursor());
+                foreach (Control control in Controls)
+                {
+                    WatchVariableControl watchVarControl = control as WatchVariableControl;
+                    elements.Add(watchVarControl.ToXml(useCurrentState));
+                }
             }
-            return precursors;
+            return elements;
         }
 
         public void ShowVariableXml()
@@ -201,20 +204,23 @@ namespace STROOP.Controls
                 infoForm.SetText(
                     "Variable Info",
                     "Variable XML",
-                    String.Join("\r\n", GetCurrentControlPrecursors()));
+                    String.Join("\r\n", GetCurrentXmlElements()));
             }
             infoForm.Show();
         }
 
         public void OpenVariables()
         {
-            IEnumerable<WatchVariableControlPrecursor> precursors = WatchVariableFileUtilities.OpenVariables();
-            AddVariables(precursors.Select(w => w.CreateWatchVariableControl()));
+            List<XElement> elements = FileUtilities.OpenXmlElements(FileType.StroopVariables);
+            List<WatchVariableControlPrecursor> precursors =
+                elements.ConvertAll(element => new WatchVariableControlPrecursor(element));
+            AddVariables(precursors.ConvertAll(w => w.CreateWatchVariableControl()));
         }
 
         public void SaveVariables()
         {
-            WatchVariableFileUtilities.SaveVariables(GetCurrentControlPrecursors());
+            FileUtilities.SaveXmlElements(
+                FileType.StroopVariables, "CustomData", GetCurrentXmlElements());
         }
 
         public void EnableCustomVariableFunctionality()

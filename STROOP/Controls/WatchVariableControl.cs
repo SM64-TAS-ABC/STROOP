@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
+using System.Xml.Linq;
 
 namespace STROOP.Controls
 {
@@ -170,7 +171,8 @@ namespace STROOP.Controls
             bool? useHex,
             bool? invertBool,
             WatchVariableCoordinate? coordinate,
-            List<VariableGroup> groupList)
+            List<VariableGroup> groupList,
+            List<uint> fixedAddresses)
         {
             // Store the precursor
             _watchVarPrecursor = watchVarPrecursor;
@@ -181,7 +183,7 @@ namespace STROOP.Controls
             _showBorder = false;
             _editMode = false;
             _renameMode = false;
-            FixedAddressList = null;
+            FixedAddressList = fixedAddresses;
 
             // Initialize color fields
             _baseColor = backgroundColor ?? DEFAULT_COLOR;
@@ -369,7 +371,8 @@ namespace STROOP.Controls
             bool isCtrlKeyHeld = ModifierKeys == Keys.Control;
             bool isShiftKeyHeld = ModifierKeys == Keys.Shift;
             bool isAltKeyHeld = ModifierKeys == Keys.Alt;
-            bool isFKeyHeld =  Keyboard.IsKeyDown(Key.F);
+            bool isFKeyHeld = Keyboard.IsKeyDown(Key.F);
+            bool isAKeyHeld = Keyboard.IsKeyDown(Key.A);
             bool isHKeyHeld =  Keyboard.IsKeyDown(Key.H);
             bool isLKeyHeld =  Keyboard.IsKeyDown(Key.L);
             bool isRKeyHeld =  Keyboard.IsKeyDown(Key.R);
@@ -382,10 +385,9 @@ namespace STROOP.Controls
             bool isMinusHeld = Keyboard.IsKeyDown(Key.OemMinus);
             bool isPlusHeld = Keyboard.IsKeyDown(Key.OemPlus);
 
-            if (isFKeyHeld && isCtrlKeyHeld)
+            if (isCtrlKeyHeld && isFKeyHeld)
             {
-                WatchVariableControl newControl = AddCopyToCustomTab();
-                newControl.ToggleFixedAddress();
+                AddToCustomTab(true, false);
                 return;
             }
 
@@ -419,9 +421,15 @@ namespace STROOP.Controls
                 return;
             }
 
+            if (isCtrlKeyHeld && isAKeyHeld)
+            {
+                AddToCustomTab(true, true);
+                return;
+            }
+
             if (isCtrlKeyHeld)
             {
-                AddCopyToCustomTab();
+                AddToCustomTab(false, false);
                 return;
             }
 
@@ -628,12 +636,24 @@ namespace STROOP.Controls
             _watchVariablePanel.ContextMenuStrip.Show(point);
         }
 
-        public WatchVariableControl AddCopyToCustomTab()
+        public void AddToCustomTab(bool useFixedAddress, bool useIndidualAddresses)
         {
-            WatchVariableControl newControl = _watchVarPrecursor.CreateWatchVariableControl();
-            Config.CustomManager.AddVariable(newControl);
+            List<uint> addressList = _watchVarWrapper.GetCurrentAddresses();
+            List<List<uint>> addressesLists =
+                useIndidualAddresses ?
+                    addressList.ConvertAll(address => new List<uint>() { address }) :
+                    new List<List<uint>>() { addressList };
+            for (int i = 0; i < addressesLists.Count; i++)
+            {
+                string name = VarName;
+                if (useIndidualAddresses && addressesLists.Count > 1) name += " " + (i + 1);
+                List<uint> constructorAddressList = useFixedAddress ? addressesLists[i] : null;
+                WatchVariableControl newControl =
+                    _watchVarPrecursor.CreateWatchVariableControl(
+                        null, name, constructorAddressList);
+                Config.CustomManager.AddVariable(newControl);
+            }
             FlashColor(ADD_TO_CUSTOM_TAB_COLOR);
-            return newControl;
         }
 
         public void AddToVarHackTab()
@@ -682,11 +702,14 @@ namespace STROOP.Controls
             if (!success) FlashColor(FAILURE_COLOR);
         }
 
-        public WatchVariableControlPrecursor GetPrecursor()
+        public XElement ToXml(bool useCurrentState = true)
         {
-            return _watchVarPrecursor;
+            Color? color = _baseColor == DEFAULT_COLOR ? (Color?)null : _baseColor;
+            if (useCurrentState)
+                return _watchVarPrecursor.ToXML(color, VarName, FixedAddressList);
+            else
+                return _watchVarPrecursor.ToXML();
         }
-
 
 
 

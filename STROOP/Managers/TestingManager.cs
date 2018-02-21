@@ -361,7 +361,7 @@ namespace STROOP.Managers
             _buttonTriRoomsConvert.Click += (sender, e) =>
             {
                 bool fromEmpty = _textBoxTriRoomsFromValue.Text == "";
-                List<string> fromListStrings = ParsingUtilities.ParseTextIntoStrings(_textBoxTriRoomsFromValue.Text);
+                List<string> fromListStrings = ParsingUtilities.ParseStringList(_textBoxTriRoomsFromValue.Text);
                 List<byte> fromListBytes = new List<byte>();
                 fromListStrings.ForEach(fromString =>
                 {
@@ -879,7 +879,7 @@ namespace STROOP.Managers
         private void PasteAndGotoClick()
         {
             string clipboardText = Clipboard.GetText();
-            List<string> parsedStrings = ParsingUtilities.ParseTextIntoStrings(clipboardText);
+            List<string> parsedStrings = ParsingUtilities.ParseStringList(clipboardText);
             List<TextBox> textboxes = new List<TextBox>() { _betterTextboxGotoX, _betterTextboxGotoY, _betterTextboxGotoZ };
             for (int i = 0; i < parsedStrings.Count && i < textboxes.Count; i++)
             {

@@ -134,7 +134,7 @@ namespace STROOP.Controls
             itemOpenController.Click += (sender, e) => { ShowVarController(); };
 
             ToolStripMenuItem itemAddToCustomTab = new ToolStripMenuItem("Add to Custom Tab");
-            itemAddToCustomTab.Click += (sender, e) => { _watchVarControl.AddCopyToCustomTab(); };
+            itemAddToCustomTab.Click += (sender, e) => { _watchVarControl.AddToCustomTab(false, false); };
 
             _contextMenuStrip.AddToEndingList(new ToolStripSeparator());
             _contextMenuStrip.AddToEndingList(itemPanelOptions);

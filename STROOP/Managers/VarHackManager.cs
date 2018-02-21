@@ -44,6 +44,8 @@ namespace STROOP.Managers
                     "Defacto Speed",
                     "Mario Action",
                     "Mario Animation",
+                    "DYaw Intended - Facing",
+                    "DYaw Intended - Facing (HAU)",
                 },
                 new List<Action>()
                 {
@@ -57,12 +59,24 @@ namespace STROOP.Managers
                     () => AddVariable(() => "Defacto " + FormatInteger(WatchVariableSpecialUtilities.GetMarioDeFactoSpeed())),
                     () => AddVariable(() => "Action " + TableConfig.MarioActions.GetActionName()),
                     () => AddVariable(() => "Animation " + TableConfig.MarioAnimations.GetAnimationName()),
+                    () => AddVariable(() => "DYaw " + FormatInteger(WatchVariableSpecialUtilities.GetDeltaYawIntendedFacing())),
+                    () => AddVariable(() => "DYaw " + FormatInteger(WatchVariableSpecialUtilities.GetDeltaYawIntendedFacing() / 16)),
                 });
 
+            Button buttonVarHackOpenVars =
+                splitContainerVarHack.Panel1.Controls["buttonVarHackOpenVars"] as Button;
+            buttonVarHackOpenVars.Click +=
+                (sender, e) => _varHackPanel.OpenVariables();
+
+            Button buttonVarHackSaveVars =
+                splitContainerVarHack.Panel1.Controls["buttonVarHackSaveVars"] as Button;
+            buttonVarHackSaveVars.Click +=
+                (sender, e) => _varHackPanel.SaveVariables();
+
             Button buttonVarHackClearVariables =
-                splitContainerVarHack.Panel1.Controls["buttonVarHackClearVariables"] as Button;
+                splitContainerVarHack.Panel1.Controls["buttonVarHackClearVars"] as Button;
             buttonVarHackClearVariables.Click +=
-                (sender, e) => _varHackPanel.ClearControls();
+                (sender, e) => _varHackPanel.ClearVariables();
 
             Button buttonVarHackShowVariableBytesInLittleEndian =
                 splitContainerVarHack.Panel1.Controls["buttonVarHackShowVariableBytesInLittleEndian"] as Button;

@@ -123,7 +123,7 @@ namespace STROOP.Controls
 
             _itemPasteCoordinates.Click += (sender, e) =>
             {
-                List<string> stringList = ParsingUtilities.ParseTextIntoStrings(Clipboard.GetText());
+                List<string> stringList = ParsingUtilities.ParseStringList(Clipboard.GetText());
                 if (stringList.Count < 3) return;
 
                 Config.Stream.Suspend();
