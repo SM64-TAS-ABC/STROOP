@@ -174,7 +174,7 @@
     <Compile Include="Controls\WatchVariableObjectWrapper.cs" />
     <Compile Include="Controls\WatchVariableAngleWrapper.cs" />
     <Compile Include="Controls\WatchVariableNumberWrapper.cs" />
-    <Compile Include="Controls\VarHackPanel.cs">
+    <Compile Include="Controls\VarHackFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\WatchVariableWrapper.cs" />
@@ -213,7 +213,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\Map\MapBaseObject.cs" />
-    <Compile Include="Controls\WatchVariablePanel.cs">
+    <Compile Include="Controls\WatchVariableFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\RichTextBoxEx.cs">
