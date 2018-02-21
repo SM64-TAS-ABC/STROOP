@@ -51,7 +51,7 @@ namespace STROOP.Structs
             return WatchVariablesFromXML(varXml);
         }
 
-        public static void SaveVariables(List<XElement> elements, string xmlName = null)
+        public static void SaveVariables(List<XElement> elements, string xmlName)
         {
             DialogResult result = _saveFileDialogCustom.ShowDialog();
             if (result != DialogResult.OK)
@@ -61,10 +61,10 @@ namespace STROOP.Structs
             document.Save(_saveFileDialogCustom.FileName);
         }
 
-        private static XDocument AggregateElementsIntoDocument(List<XElement> elements, string xmlName = null)
+        private static XDocument AggregateElementsIntoDocument(List<XElement> elements, string xmlName)
         {
             XDocument doc = new XDocument();
-            XElement root = new XElement(XName.Get(xmlName ?? "CustomData"));
+            XElement root = new XElement(XName.Get(xmlName));
             doc.Add(root);
 
             foreach (XElement element in elements)

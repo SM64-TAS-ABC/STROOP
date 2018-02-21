@@ -214,7 +214,7 @@ namespace STROOP.Controls
 
         public void SaveVariables()
         {
-            WatchVariableFileUtilities.SaveVariables(GetCurrentXmlElements());
+            WatchVariableFileUtilities.SaveVariables(GetCurrentXmlElements(), "CustomData");
         }
 
         public void EnableCustomVariableFunctionality()
