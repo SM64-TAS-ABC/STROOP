@@ -27,13 +27,13 @@ namespace STROOP.Structs
             }
         }
 
-        public static List<XElement> OpenVariables()
+        public static List<XElement> OpenVariables(FileType fileType)
         {
             OpenFileDialog openFileDialog =
                 new OpenFileDialog()
                 {
                     CheckFileExists = true,
-                    Filter = GetFilterString(FileType.StroopVariables),
+                    Filter = GetFilterString(fileType),
                 };
             DialogResult result = openFileDialog.ShowDialog();
             if (result != DialogResult.OK) return new List<XElement>();
@@ -42,13 +42,14 @@ namespace STROOP.Structs
             return ConvertDocumentIntoElements(varXml);
         }
 
-        public static void SaveVariables(List<XElement> elements, string xmlName)
+        public static void SaveVariables(
+            FileType fileType, string xmlName, List<XElement> elements)
         {
             SaveFileDialog saveFileDialog =
                 new SaveFileDialog()
                 {
                     CheckPathExists = true,
-                    Filter = GetFilterString(FileType.StroopVariables),
+                    Filter = GetFilterString(fileType),
                 };
             DialogResult result = saveFileDialog.ShowDialog();
             if (result != DialogResult.OK) return;
