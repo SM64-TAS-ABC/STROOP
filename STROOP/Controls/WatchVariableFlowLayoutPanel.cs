@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Controls
 {
@@ -181,16 +182,15 @@ namespace STROOP.Controls
             AddVariables(_watchVarPrecursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
         }
 
-        /** Gets the precursors for the currently shown controls in order. */
-        private List<WatchVariableControlPrecursor> GetCurrentControlPrecursors()
+        private List<XElement> GetCurrentXmlElements(bool useCurrentState = true)
         {
-            List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
+            List<XElement> elements = new List<XElement>();
             foreach (Control control in Controls)
             {
                 WatchVariableControl watchVarControl = control as WatchVariableControl;
-                precursors.Add(watchVarControl.GetPrecursor());
+                elements.Add(watchVarControl.ToXML(useCurrentState));
             }
-            return precursors;
+            return elements;
         }
 
         public void ShowVariableXml()
@@ -201,7 +201,7 @@ namespace STROOP.Controls
                 infoForm.SetText(
                     "Variable Info",
                     "Variable XML",
-                    String.Join("\r\n", GetCurrentControlPrecursors()));
+                    String.Join("\r\n", GetCurrentXmlElements()));
             }
             infoForm.Show();
         }
@@ -214,7 +214,7 @@ namespace STROOP.Controls
 
         public void SaveVariables()
         {
-            WatchVariableFileUtilities.SaveVariables(GetCurrentControlPrecursors());
+            WatchVariableFileUtilities.SaveVariables(GetCurrentXmlElements());
         }
 
         public void EnableCustomVariableFunctionality()

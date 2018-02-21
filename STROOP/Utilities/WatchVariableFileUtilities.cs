@@ -38,23 +38,24 @@ namespace STROOP.Structs
             return WatchVariablesFromXML(varXml);
         }
 
-        public static void SaveVariables(List<WatchVariableControlPrecursor> precursors, string xmlName = null)
+        public static void SaveVariables(List<XElement> elements, string xmlName = null)
         {
             DialogResult result = _saveFileDialogCustom.ShowDialog();
             if (result != DialogResult.OK)
                 return;
 
-            WatchVariablesToXML(precursors, xmlName).Save(_saveFileDialogCustom.FileName);
+            XDocument document = AggregateElementsIntoDocument(elements, xmlName);
+            document.Save(_saveFileDialogCustom.FileName);
         }
 
-        private static XDocument WatchVariablesToXML(List<WatchVariableControlPrecursor> watchVars, string xmlName = null)
+        private static XDocument AggregateElementsIntoDocument(List<XElement> elements, string xmlName = null)
         {
             XDocument doc = new XDocument();
             XElement root = new XElement(XName.Get(xmlName ?? "CustomData"));
             doc.Add(root);
 
-            foreach (WatchVariableControlPrecursor watchVar in watchVars)
-                root.Add(watchVar.ToXML());
+            foreach (XElement element in elements)
+                root.Add(element);
 
             return doc;
         }

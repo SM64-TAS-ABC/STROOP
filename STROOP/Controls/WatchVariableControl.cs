@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
+using System.Xml.Linq;
 
 namespace STROOP.Controls
 {
@@ -701,11 +702,14 @@ namespace STROOP.Controls
             if (!success) FlashColor(FAILURE_COLOR);
         }
 
-        public WatchVariableControlPrecursor GetPrecursor()
+        public XElement ToXML(bool useCurrentState = true)
         {
-            return _watchVarPrecursor;
+            Color? color = _baseColor == DEFAULT_COLOR ? (Color?)null : _baseColor;
+            if (useCurrentState)
+                return _watchVarPrecursor.ToXML(color, VarName, FixedAddressList);
+            else
+                return _watchVarPrecursor.ToXML();
         }
-
 
 
 
