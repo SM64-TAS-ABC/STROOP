@@ -27,41 +27,37 @@ namespace STROOP.Structs
             }
         }
 
-        private static SaveFileDialog _saveFileDialogCustom =
-            new SaveFileDialog()
-            {
-                CheckPathExists = true,
-                Filter = GetFilterString(FileType.StroopVariables)
-            };
-
-        private static OpenFileDialog _openFileDialogCustom =
-            new OpenFileDialog()
-            {
-                CheckFileExists = true,
-                Filter = GetFilterString(FileType.StroopVariables)
-            };
-
         public static List<XElement> OpenVariables()
         {
-            DialogResult result = _openFileDialogCustom.ShowDialog();
-            if (result != DialogResult.OK)
-                return new List<XElement>();
+            OpenFileDialog openFileDialog =
+                new OpenFileDialog()
+                {
+                    CheckFileExists = true,
+                    Filter = GetFilterString(FileType.StroopVariables),
+                };
+            DialogResult result = openFileDialog.ShowDialog();
+            if (result != DialogResult.OK) return new List<XElement>();
 
-            XDocument varXml = XDocument.Load(_openFileDialogCustom.FileName);
-            return WatchVariablesFromXML(varXml);
+            XDocument varXml = XDocument.Load(openFileDialog.FileName);
+            return ConvertContainerIntoElements(varXml);
         }
 
         public static void SaveVariables(List<XElement> elements, string xmlName)
         {
-            DialogResult result = _saveFileDialogCustom.ShowDialog();
-            if (result != DialogResult.OK)
-                return;
+            SaveFileDialog saveFileDialog =
+                new SaveFileDialog()
+                {
+                    CheckPathExists = true,
+                    Filter = GetFilterString(FileType.StroopVariables),
+                };
+            DialogResult result = saveFileDialog.ShowDialog();
+            if (result != DialogResult.OK) return;
 
-            XDocument document = AggregateElementsIntoDocument(elements, xmlName);
-            document.Save(_saveFileDialogCustom.FileName);
+            XDocument document = ConvertElementsIntoDocument(elements, xmlName);
+            document.Save(saveFileDialog.FileName);
         }
 
-        private static XDocument AggregateElementsIntoDocument(List<XElement> elements, string xmlName)
+        private static XDocument ConvertElementsIntoDocument(List<XElement> elements, string xmlName)
         {
             XDocument doc = new XDocument();
             XElement root = new XElement(XName.Get(xmlName));
@@ -73,7 +69,7 @@ namespace STROOP.Structs
             return doc;
         }
 
-        private static List<XElement> WatchVariablesFromXML(XContainer xml)
+        private static List<XElement> ConvertContainerIntoElements(XContainer xml)
         {
             // Retreive the root node
             if (xml is XDocument)
