@@ -44,8 +44,8 @@ namespace STROOP.Managers
                     "Defacto Speed",
                     "Mario Action",
                     "Mario Animation",
-                    "DYaw Facing - Intended",
-                    "DYaw Facing - Intended (HAU)",
+                    "DYaw Intended - Facing",
+                    "DYaw Intended - Facing (HAU)",
                 },
                 new List<Action>()
                 {
