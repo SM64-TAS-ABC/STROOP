@@ -63,10 +63,20 @@ namespace STROOP.Managers
                     () => AddVariable(() => "DYaw " + FormatInteger(WatchVariableSpecialUtilities.GetDeltaYawIntendedFacing() / 16)),
                 });
 
+            Button buttonVarHackOpenVars =
+                splitContainerVarHack.Panel1.Controls["buttonVarHackOpenVars"] as Button;
+            buttonVarHackOpenVars.Click +=
+                (sender, e) => _varHackPanel.OpenVars();
+
+            Button buttonVarHackSaveVars =
+                splitContainerVarHack.Panel1.Controls["buttonVarHackSaveVars"] as Button;
+            buttonVarHackSaveVars.Click +=
+                (sender, e) => _varHackPanel.SaveVars();
+
             Button buttonVarHackClearVariables =
                 splitContainerVarHack.Panel1.Controls["buttonVarHackClearVars"] as Button;
             buttonVarHackClearVariables.Click +=
-                (sender, e) => _varHackPanel.ClearControls();
+                (sender, e) => _varHackPanel.ClearVars();
 
             Button buttonVarHackShowVariableBytesInLittleEndian =
                 splitContainerVarHack.Panel1.Controls["buttonVarHackShowVariableBytesInLittleEndian"] as Button;

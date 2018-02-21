@@ -89,7 +89,17 @@ namespace STROOP.Controls
             }
         }
 
-        public void ClearControls()
+        public void OpenVars()
+        {
+            
+        }
+
+        public void SaveVars()
+        {
+            
+        }
+
+        public void ClearVars()
         {
             lock (_objectLock)
             {
