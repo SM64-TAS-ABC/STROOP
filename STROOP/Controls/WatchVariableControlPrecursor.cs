@@ -23,6 +23,7 @@ namespace STROOP.Controls
         private readonly bool? _invertBool;
         private readonly WatchVariableCoordinate? _coordinate;
         private readonly List<VariableGroup> _groupList;
+        private readonly List<uint> _fixedAddresses;
 
         public WatchVariableControlPrecursor(
             string name,
@@ -32,7 +33,8 @@ namespace STROOP.Controls
             bool? useHex,
             bool? invertBool,
             WatchVariableCoordinate? coordinate,
-            List<VariableGroup> groupList)
+            List<VariableGroup> groupList,
+            List<uint> fixedAddresses = null)
         {
             _name = name;
             _watchVar = watchVar;
@@ -42,11 +44,11 @@ namespace STROOP.Controls
             _invertBool = invertBool;
             _coordinate = coordinate;
             _groupList = groupList;
+            _fixedAddresses = fixedAddresses;
         }
 
         public WatchVariableControlPrecursor(XElement element)
         {
-
             /// Watchvariable params
             string typeName = (element.Attribute(XName.Get("type"))?.Value);
             string specialType = element.Attribute(XName.Get("specialType"))?.Value;
@@ -80,6 +82,8 @@ namespace STROOP.Controls
                 bool.Parse(element.Attribute(XName.Get("invertBool")).Value) : (bool?)null;
             _coordinate = element.Attribute(XName.Get("coord")) != null ?
                 WatchVariableUtilities.GetCoordinate(element.Attribute(XName.Get("coord")).Value) : (WatchVariableCoordinate?)null;
+            _fixedAddresses = element.Attribute(XName.Get("fixed")) != null ?
+                ParsingUtilities.ParseUIntList(element.Attribute(XName.Get("fixed")).Value) : null;
 
             if (_subclass == WatchVariableSubclass.Angle && specialType != null)
             {
@@ -123,7 +127,7 @@ namespace STROOP.Controls
                 _invertBool,
                 _coordinate,
                 _groupList,
-                fixedAddresses);
+                fixedAddresses ?? _fixedAddresses);
         }
 
         public XElement ToXML()

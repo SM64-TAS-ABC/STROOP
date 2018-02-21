@@ -253,7 +253,7 @@ namespace STROOP.Utilities
             return ParseBoolNullable(obj) ?? false;
         }
 
-        public static List<string> ParseTextIntoStrings(string text)
+        public static List<string> ParseStringList(string text)
         {
             text = text
                 .Replace('\n', ' ')
@@ -268,6 +268,11 @@ namespace STROOP.Utilities
             List<string> stringList = new List<string>();
             stringList.AddRange(stringArray);
             return stringList;
+        }
+
+        public static List<uint> ParseUIntList(string text)
+        {
+            return ParseStringList(text).ConvertAll(stringValue => ParseUInt(stringValue));
         }
 
         public static byte? ParseByteRoundingWrapping(object value)
