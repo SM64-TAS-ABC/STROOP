@@ -187,6 +187,9 @@ namespace STROOP.Controls
                     "color",
                     "#" + ColorUtilities.ToString(_backgroundColor.Value)));
 
+            if (_fixedAddresses != null)
+                root.Add(new XAttribute("fixed", String.Join(",", _fixedAddresses)));
+
             return root;
         }
 
