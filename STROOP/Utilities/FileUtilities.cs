@@ -41,11 +41,11 @@ namespace STROOP.Structs
                 Filter = GetFilterString(FileType.StroopVariables)
             };
 
-        public static List<WatchVariableControlPrecursor> OpenVariables()
+        public static List<XElement> OpenVariables()
         {
             DialogResult result = _openFileDialogCustom.ShowDialog();
             if (result != DialogResult.OK)
-                return new List<WatchVariableControlPrecursor>();
+                return new List<XElement>();
 
             XDocument varXml = XDocument.Load(_openFileDialogCustom.FileName);
             return WatchVariablesFromXML(varXml);
@@ -73,13 +73,13 @@ namespace STROOP.Structs
             return doc;
         }
 
-        private static List<WatchVariableControlPrecursor> WatchVariablesFromXML(XContainer xml)
+        private static List<XElement> WatchVariablesFromXML(XContainer xml)
         {
             // Retreive the root node
             if (xml is XDocument)
                 xml = (xml as XDocument).Root;
 
-            return xml.Elements().ToList().ConvertAll(e => new WatchVariableControlPrecursor(e));
+            return xml.Elements().ToList();
         }
 
     }

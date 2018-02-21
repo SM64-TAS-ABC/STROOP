@@ -208,7 +208,9 @@ namespace STROOP.Controls
 
         public void OpenVariables()
         {
-            List<WatchVariableControlPrecursor> precursors = FileUtilities.OpenVariables();
+            List<XElement> elements = FileUtilities.OpenVariables();
+            List<WatchVariableControlPrecursor> precursors =
+                elements.ConvertAll(element => new WatchVariableControlPrecursor(element));
             AddVariables(precursors.ConvertAll(w => w.CreateWatchVariableControl()));
         }
 
