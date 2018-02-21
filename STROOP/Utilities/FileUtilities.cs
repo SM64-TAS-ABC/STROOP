@@ -27,7 +27,7 @@ namespace STROOP.Structs
             }
         }
 
-        public static List<XElement> OpenVariables(FileType fileType)
+        public static List<XElement> OpenXmlElements(FileType fileType)
         {
             OpenFileDialog openFileDialog =
                 new OpenFileDialog()
@@ -42,7 +42,7 @@ namespace STROOP.Structs
             return ConvertDocumentIntoElements(varXml);
         }
 
-        public static void SaveVariables(
+        public static void SaveXmlElements(
             FileType fileType, string xmlName, List<XElement> elements)
         {
             SaveFileDialog saveFileDialog =
