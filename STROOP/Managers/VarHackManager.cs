@@ -64,7 +64,7 @@ namespace STROOP.Managers
                 });
 
             Button buttonVarHackClearVariables =
-                splitContainerVarHack.Panel1.Controls["buttonVarHackClearVariables"] as Button;
+                splitContainerVarHack.Panel1.Controls["buttonVarHackClearVars"] as Button;
             buttonVarHackClearVariables.Click +=
                 (sender, e) => _varHackPanel.ClearControls();
 
