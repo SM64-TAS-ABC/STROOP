@@ -54,11 +54,12 @@ namespace STROOP.Structs
             DialogResult result = saveFileDialog.ShowDialog();
             if (result != DialogResult.OK) return;
 
-            XDocument document = ConvertElementsIntoDocument(elements, xmlName);
+            XDocument document = ConvertElementsIntoDocument(xmlName, elements);
             document.Save(saveFileDialog.FileName);
         }
 
-        private static XDocument ConvertElementsIntoDocument(List<XElement> elements, string xmlName)
+        private static XDocument ConvertElementsIntoDocument(
+            string xmlName, List<XElement> elements)
         {
             XDocument doc = new XDocument();
             XElement root = new XElement(XName.Get(xmlName));
