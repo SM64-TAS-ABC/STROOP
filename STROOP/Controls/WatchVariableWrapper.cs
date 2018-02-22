@@ -262,26 +262,39 @@ namespace STROOP.Controls
             (bool meaningfulValue, string value) = CombineValues(values);
             if (!meaningfulValue) return value;
 
+            value = ConvertValue(value, handleRounding, handleFormatting);
+            return value;
+        }
+
+        private string ConvertValue(
+            string value,
+            bool handleRounding = true,
+            bool handleFormatting = true)
+        {
             value = HandleAngleConverting(value);
             if (handleRounding) value = HandleRounding(value);
             value = HandleAngleRoundingOut(value);
             value = HandleNegating(value);
             if (handleFormatting) value = HandleHexDisplaying(value);
             if (handleFormatting) value = HandleObjectDisplaying(value);
-
             return value;
         }
 
         public bool SetValue(string value, List<uint> addresses = null)
         {
+            value = UnconvertValue(value);
+            bool success = _watchVar.SetValue(value, addresses);
+            if (success && GetLockedBool(addresses)) WatchVariableLockManager.UpdateLockValues(_watchVar, value, addresses);
+            return success;
+        }
+
+        public string UnconvertValue(string value)
+        {
             value = HandleObjectUndisplaying(value);
             value = HandleHexUndisplaying(value);
             value = HandleUnnegating(value);
             value = HandleAngleUnconverting(value);
-
-            bool success = _watchVar.SetValue(value, addresses);
-            if (success && GetLockedBool(addresses)) WatchVariableLockManager.UpdateLockValues(_watchVar, value, addresses);
-            return success;
+            return value;
         }
 
         public CheckState GetCheckStateValue(List<uint> addresses = null)
@@ -296,26 +309,38 @@ namespace STROOP.Controls
         {
             string value = ConvertCheckStateToValue(checkState);
             bool success = _watchVar.SetValue(value, addresses);
-            if (success && GetLockedBool(addresses)) WatchVariableLockManager.UpdateLockValues(_watchVar, value, addresses);
+            if (success && GetLockedBool(addresses))
+                WatchVariableLockManager.UpdateLockValues(_watchVar, value, addresses);
             return success;
         }
 
-
-
-
         public bool AddValue(string stringValue, bool add, List<uint> addresses = null)
         {
-            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-            if (!doubleValueNullable.HasValue) return false;
-            double doubleValue = doubleValueNullable.Value;
+            double? changeValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+            if (!changeValueNullable.HasValue) return false;
+            double changeValue = changeValueNullable.Value;
 
-            string currentValueString = GetValue(false, false, addresses);
-            double? currentValueNullable = ParsingUtilities.ParseDoubleNullable(currentValueString);
-            if (!currentValueNullable.HasValue) return false;
-            double currentValue = currentValueNullable.Value;
+            List<string> currentValuesString = _watchVar.GetValues(addresses);
+            List<double?> currentValuesDoubleNullable =
+                currentValuesString.ConvertAll(
+                    currentStringValue => ParsingUtilities.ParseDoubleNullable(currentStringValue));
+            List<string> newValuesString = currentValuesDoubleNullable.ConvertAll(currentValueDoubleNullable =>
+            {
+                if (!currentValueDoubleNullable.HasValue) return null;
+                double currentValueDouble = currentValueDoubleNullable.Value;
+                string currentValueString = currentValueDouble.ToString();
+                string convertedValueString = ConvertValue(currentValueDouble.ToString(), false, false);
+                double convertedValueDouble = ParsingUtilities.ParseDouble(convertedValueString);
+                double modifiedValueDouble = convertedValueDouble + changeValue * (add ? +1 : -1);
+                string modifiedValueString = modifiedValueDouble.ToString();
+                string unconvertedValueString = UnconvertValue(modifiedValueString);
+                return unconvertedValueString;
+            });
 
-            double newValue = currentValue + doubleValue * (add ? +1 : -1);
-            return SetValue(newValue.ToString(), addresses);
+            bool success = _watchVar.SetValues(newValuesString, addresses);
+            if (success && GetLockedBool(addresses))
+                WatchVariableLockManager.UpdateLockValues(_watchVar, newValuesString, addresses);
+            return success;
         }
 
         public List<uint> GetCurrentAddresses()

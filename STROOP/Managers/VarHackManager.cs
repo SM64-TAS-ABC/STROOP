@@ -49,18 +49,13 @@ namespace STROOP.Managers
                 },
                 new List<Action>()
                 {
-                    () => AddVariable(() => "Index " + RngIndexer.GetRngIndex()),
-                    () => AddVariable(() =>
-                    {
-                        uint triFloorAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
-                        float yNorm = Config.Stream.GetSingle(triFloorAddress + TriangleOffsetsConfig.NormY);
-                        return "YNorm " + FormatDouble(yNorm, 4, true);
-                    }),
-                    () => AddVariable(() => "Defacto " + FormatInteger(WatchVariableSpecialUtilities.GetMarioDeFactoSpeed())),
-                    () => AddVariable(() => "Action " + TableConfig.MarioActions.GetActionName()),
-                    () => AddVariable(() => "Animation " + TableConfig.MarioAnimations.GetAnimationName()),
-                    () => AddVariable(() => "DYaw " + FormatInteger(WatchVariableSpecialUtilities.GetDeltaYawIntendedFacing())),
-                    () => AddVariable(() => "DYaw " + FormatInteger(WatchVariableSpecialUtilities.GetDeltaYawIntendedFacing() / 16)),
+                    () => AddVariable("RngIndex"),
+                    () => AddVariable("FloorYNorm"),
+                    () => AddVariable("DefactoSpeed"),
+                    () => AddVariable("MarioAction"),
+                    () => AddVariable("MarioAnimation"),
+                    () => AddVariable("DYawIntendFacing"),
+                    () => AddVariable("DYawIntendFacingHau"),
                 });
 
             Button buttonVarHackOpenVars =
@@ -185,39 +180,12 @@ namespace STROOP.Managers
 
         public void AddVariable(string varName, uint address, Type memoryType, bool useHex, uint? pointerOffset)
         {
-            _varHackPanel.AddNewControlWithParameters(varName, address, memoryType, useHex, pointerOffset);
+            _varHackPanel.AddNewControl(varName, address, memoryType, useHex, pointerOffset);
         }
 
-        public void AddVariable(Func<string> getterFunction)
+        public void AddVariable(string specialType)
         {
-            _varHackPanel.AddNewControlWithGetterFunction(getterFunction);
-        }
-
-        public string FormatDouble(double value, int numDigits = 4, bool usePadding = true)
-        {
-            string stringValue = Math.Round(value, numDigits).ToString();
-            if (usePadding)
-            {
-                int decimalIndex = stringValue.IndexOf(".");
-                if (decimalIndex == -1)
-                {
-                    stringValue += ".";
-                    decimalIndex = stringValue.Length - 1;
-                }
-                while (stringValue.Length <= decimalIndex + numDigits)
-                {
-                    stringValue += "0";
-                }
-            }
-            stringValue = stringValue.Replace(".", VarHackConfig.CoinChar);
-            return stringValue;
-        }
-
-        public string FormatInteger(double value)
-        {
-            string stringValue = Math.Truncate(value).ToString();
-            stringValue = stringValue.Replace("-", "M");
-            return stringValue;
+            _varHackPanel.AddNewControl(specialType);
         }
 
         public void Update(bool updateView)
