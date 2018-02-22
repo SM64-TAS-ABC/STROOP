@@ -1293,7 +1293,7 @@ namespace STROOP.Structs
                 case "Classification":
                     getterFunction = (uint triAddress) =>
                     {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         return triStruct.Classification.ToString();
                     };
                     break;
@@ -1329,7 +1329,7 @@ namespace STROOP.Structs
                 case "Steepness":
                     getterFunction = (uint triAddress) =>
                     {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double steepness = MoreMath.RadiansToAngleUnits(Math.Acos(triStruct.NormY));
                         return steepness.ToString();
                     };
@@ -1452,7 +1452,7 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double normalDistAway =
                             marioPos.X * triStruct.NormX +
                             marioPos.Y * triStruct.NormY +
@@ -1463,7 +1463,7 @@ namespace STROOP.Structs
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!distAwayNullable.HasValue) return false;
                         double distAway = distAwayNullable.Value;
@@ -1490,7 +1490,7 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double verticalDistAway =
                             marioPos.Y + (marioPos.X * triStruct.NormX + marioPos.Z * triStruct.NormZ + triStruct.NormOffset) / triStruct.NormY;
                         return verticalDistAway.ToString();
@@ -1498,7 +1498,7 @@ namespace STROOP.Structs
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? distAboveNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!distAboveNullable.HasValue) return false;
                         double distAbove = distAboveNullable.Value;
@@ -1511,7 +1511,7 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double heightOnTriangle =
                             (-marioPos.X * triStruct.NormX - marioPos.Z * triStruct.NormZ - triStruct.NormOffset) / triStruct.NormY;
                         return heightOnTriangle.ToString();
@@ -1542,13 +1542,13 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double xDistToV1 = marioX - triStruct.X1;
                         return xDistToV1.ToString();
                     };
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? xDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!xDistNullable.HasValue) return false;
                         double xDist = xDistNullable.Value;
@@ -1561,13 +1561,13 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double yDistToV1 = marioY - triStruct.Y1;
                         return yDistToV1.ToString();
                     };
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? yDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!yDistNullable.HasValue) return false;
                         double yDist = yDistNullable.Value;
@@ -1580,13 +1580,13 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double zDistToV1 = marioZ - triStruct.Z1;
                         return zDistToV1.ToString();
                     };
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? zDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!zDistNullable.HasValue) return false;
                         double zDist = zDistNullable.Value;
@@ -1599,7 +1599,7 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double hDistToV1 = MoreMath.GetDistanceBetween(
                             marioPos.X, marioPos.Z, triStruct.X1, triStruct.Z1);
                         return hDistToV1.ToString();
@@ -1607,7 +1607,7 @@ namespace STROOP.Structs
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? hDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!hDistNullable.HasValue) return false;
                         double hDist = hDistNullable.Value;
@@ -1621,7 +1621,7 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double distToV1 = MoreMath.GetDistanceBetween(
                             marioPos.X, marioPos.Y, marioPos.Z, triStruct.X1, triStruct.Y1, triStruct.Z1);
                         return distToV1.ToString();
@@ -1629,7 +1629,7 @@ namespace STROOP.Structs
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!distAwayNullable.HasValue) return false;
                         double distAway = distAwayNullable.Value;
@@ -1644,13 +1644,13 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double xDistToV2 = marioX - triStruct.X2;
                         return xDistToV2.ToString();
                     };
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? xDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!xDistNullable.HasValue) return false;
                         double xDist = xDistNullable.Value;
@@ -1663,13 +1663,13 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double yDistToV2 = marioY - triStruct.Y2;
                         return yDistToV2.ToString();
                     };
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? yDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!yDistNullable.HasValue) return false;
                         double yDist = yDistNullable.Value;
@@ -1682,13 +1682,13 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double zDistToV2 = marioZ - triStruct.Z2;
                         return zDistToV2.ToString();
                     };
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? zDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!zDistNullable.HasValue) return false;
                         double zDist = zDistNullable.Value;
@@ -1701,7 +1701,7 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double hDistToV2 = MoreMath.GetDistanceBetween(
                             marioPos.X, marioPos.Z, triStruct.X2, triStruct.Z2);
                         return hDistToV2.ToString();
@@ -1709,7 +1709,7 @@ namespace STROOP.Structs
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? hDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!hDistNullable.HasValue) return false;
                         double hDist = hDistNullable.Value;
@@ -1723,7 +1723,7 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double distToV2 = MoreMath.GetDistanceBetween(
                             marioPos.X, marioPos.Y, marioPos.Z, triStruct.X2, triStruct.Y2, triStruct.Z2);
                         return distToV2.ToString();
@@ -1731,7 +1731,7 @@ namespace STROOP.Structs
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!distAwayNullable.HasValue) return false;
                         double distAway = distAwayNullable.Value;
@@ -1746,13 +1746,13 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double xDistToV3 = marioX - triStruct.X3;
                         return xDistToV3.ToString();
                     };
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? xDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!xDistNullable.HasValue) return false;
                         double xDist = xDistNullable.Value;
@@ -1765,13 +1765,13 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double yDistToV3 = marioY - triStruct.Y3;
                         return yDistToV3.ToString();
                     };
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? yDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!yDistNullable.HasValue) return false;
                         double yDist = yDistNullable.Value;
@@ -1784,13 +1784,13 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double zDistToV3 = marioZ - triStruct.Z3;
                         return zDistToV3.ToString();
                     };
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? zDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!zDistNullable.HasValue) return false;
                         double zDist = zDistNullable.Value;
@@ -1803,7 +1803,7 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double hDistToV3 = MoreMath.GetDistanceBetween(
                             marioPos.X, marioPos.Z, triStruct.X3, triStruct.Z3);
                         return hDistToV3.ToString();
@@ -1811,7 +1811,7 @@ namespace STROOP.Structs
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? hDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!hDistNullable.HasValue) return false;
                         double hDist = hDistNullable.Value;
@@ -1825,7 +1825,7 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double distToV3 = MoreMath.GetDistanceBetween(
                             marioPos.X, marioPos.Y, marioPos.Z, triStruct.X3, triStruct.Y3, triStruct.Z3);
                         return distToV3.ToString();
@@ -1833,7 +1833,7 @@ namespace STROOP.Structs
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!distAwayNullable.HasValue) return false;
                         double distAway = distAwayNullable.Value;
@@ -1848,7 +1848,7 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double signedDistToLine12 = MoreMath.GetSignedDistanceFromPointToLine(
                             marioPos.X, marioPos.Z,
                             triStruct.X1, triStruct.Z1,
@@ -1859,7 +1859,7 @@ namespace STROOP.Structs
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double signedDistToLine12 = MoreMath.GetSignedDistanceFromPointToLine(
                             marioPos.X, marioPos.Z,
                             triStruct.X1, triStruct.Z1,
@@ -1886,7 +1886,7 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double signedDistToLine23 = MoreMath.GetSignedDistanceFromPointToLine(
                             marioPos.X, marioPos.Z,
                             triStruct.X1, triStruct.Z1,
@@ -1897,7 +1897,7 @@ namespace STROOP.Structs
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double signedDistToLine23 = MoreMath.GetSignedDistanceFromPointToLine(
                             marioPos.X, marioPos.Z,
                             triStruct.X1, triStruct.Z1,
@@ -1924,7 +1924,7 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double signedDistToLine31 = MoreMath.GetSignedDistanceFromPointToLine(
                             marioPos.X, marioPos.Z,
                             triStruct.X1, triStruct.Z1,
@@ -1935,7 +1935,7 @@ namespace STROOP.Structs
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double signedDistToLine31 = MoreMath.GetSignedDistanceFromPointToLine(
                             marioPos.X, marioPos.Z,
                             triStruct.X1, triStruct.Z1,
@@ -1962,7 +1962,7 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double angleToV1 = MoreMath.AngleTo_AngleUnits(
                             marioPos.X, marioPos.Z, triStruct.X1, triStruct.Z1);
                         return angleToV1.ToString();
@@ -1970,7 +1970,7 @@ namespace STROOP.Structs
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!angleNullable.HasValue) return false;
                         double angle = angleNullable.Value;
@@ -1985,7 +1985,7 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double angleToV1 = MoreMath.AngleTo_AngleUnits(
                             marioPos.X, marioPos.Z, triStruct.X1, triStruct.Z1);
                         double angleDiff = marioPos.Angle.Value - angleToV1;
@@ -1994,7 +1994,7 @@ namespace STROOP.Structs
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!angleDiffNullable.HasValue) return false;
                         double angleDiff = angleDiffNullable.Value;
@@ -2011,7 +2011,7 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double angleV1ToMario = MoreMath.AngleTo_AngleUnits(
                             triStruct.X1, triStruct.Z1, marioPos.X, marioPos.Z);
                         return angleV1ToMario.ToString();
@@ -2019,7 +2019,7 @@ namespace STROOP.Structs
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!angleNullable.HasValue) return false;
                         double angle = MoreMath.ReverseAngle(angleNullable.Value);
@@ -2034,7 +2034,7 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double angleToV2 = MoreMath.AngleTo_AngleUnits(
                             marioPos.X, marioPos.Z, triStruct.X2, triStruct.Z2);
                         return angleToV2.ToString();
@@ -2042,7 +2042,7 @@ namespace STROOP.Structs
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!angleNullable.HasValue) return false;
                         double angle = angleNullable.Value;
@@ -2057,7 +2057,7 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double angleToV2 = MoreMath.AngleTo_AngleUnits(
                             marioPos.X, marioPos.Z, triStruct.X2, triStruct.Z2);
                         double angleDiff = marioPos.Angle.Value - angleToV2;
@@ -2066,7 +2066,7 @@ namespace STROOP.Structs
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!angleDiffNullable.HasValue) return false;
                         double angleDiff = angleDiffNullable.Value;
@@ -2083,7 +2083,7 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double angleV2ToMario = MoreMath.AngleTo_AngleUnits(
                             triStruct.X2, triStruct.Z2, marioPos.X, marioPos.Z);
                         return angleV2ToMario.ToString();
@@ -2091,7 +2091,7 @@ namespace STROOP.Structs
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!angleNullable.HasValue) return false;
                         double angle = MoreMath.ReverseAngle(angleNullable.Value);
@@ -2106,7 +2106,7 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double angleToV3 = MoreMath.AngleTo_AngleUnits(
                             marioPos.X, marioPos.Z, triStruct.X3, triStruct.Z3);
                         return angleToV3.ToString();
@@ -2114,7 +2114,7 @@ namespace STROOP.Structs
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!angleNullable.HasValue) return false;
                         double angle = angleNullable.Value;
@@ -2129,7 +2129,7 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double angleToV3 = MoreMath.AngleTo_AngleUnits(
                             marioPos.X, marioPos.Z, triStruct.X3, triStruct.Z3);
                         double angleDiff = marioPos.Angle.Value - angleToV3;
@@ -2138,7 +2138,7 @@ namespace STROOP.Structs
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!angleDiffNullable.HasValue) return false;
                         double angleDiff = angleDiffNullable.Value;
@@ -2155,7 +2155,7 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double angleV3ToMario = MoreMath.AngleTo_AngleUnits(
                             triStruct.X3, triStruct.Z3, marioPos.X, marioPos.Z);
                         return angleV3ToMario.ToString();
@@ -2163,7 +2163,7 @@ namespace STROOP.Structs
                     setterFunction = (string stringValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!angleNullable.HasValue) return false;
                         double angle = MoreMath.ReverseAngle(angleNullable.Value);
@@ -2177,7 +2177,7 @@ namespace STROOP.Structs
                 case "AngleV1ToV2":
                     getterFunction = (uint triAddress) =>
                     {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double angleV1ToV2 = MoreMath.AngleTo_AngleUnits(
                             triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
                         return angleV1ToV2.ToString();
@@ -2187,7 +2187,7 @@ namespace STROOP.Structs
                 case "AngleV2ToV1":
                     getterFunction = (uint triAddress) =>
                     {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double angleV2ToV1 = MoreMath.AngleTo_AngleUnits(
                             triStruct.X2, triStruct.Z2, triStruct.X1, triStruct.Z1);
                         return angleV2ToV1.ToString();
@@ -2197,7 +2197,7 @@ namespace STROOP.Structs
                 case "AngleV2ToV3":
                     getterFunction = (uint triAddress) =>
                     {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double angleV2ToV3 = MoreMath.AngleTo_AngleUnits(
                             triStruct.X2, triStruct.Z2, triStruct.X3, triStruct.Z3);
                         return angleV2ToV3.ToString();
@@ -2207,7 +2207,7 @@ namespace STROOP.Structs
                 case "AngleV3ToV2":
                     getterFunction = (uint triAddress) =>
                     {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double angleV3ToV2 = MoreMath.AngleTo_AngleUnits(
                             triStruct.X3, triStruct.Z3, triStruct.X2, triStruct.Z2);
                         return angleV3ToV2.ToString();
@@ -2217,7 +2217,7 @@ namespace STROOP.Structs
                 case "AngleV1ToV3":
                     getterFunction = (uint triAddress) =>
                     {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double angleV1ToV3 = MoreMath.AngleTo_AngleUnits(
                             triStruct.X1, triStruct.Z1, triStruct.X3, triStruct.Z3);
                         return angleV1ToV3.ToString();
@@ -2227,7 +2227,7 @@ namespace STROOP.Structs
                 case "AngleV3ToV1":
                     getterFunction = (uint triAddress) =>
                     {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double angleV3ToV1 = MoreMath.AngleTo_AngleUnits(
                             triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1);
                         return angleV3ToV1.ToString();
@@ -2502,7 +2502,7 @@ namespace STROOP.Structs
         public static int GetClosestTriangleVertexIndex(uint triAddress)
         {
             Position marioPos = GetMarioPosition();
-            TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+            TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
             double distToV1 = MoreMath.GetDistanceBetween(
                 marioPos.X, marioPos.Y, marioPos.Z, triStruct.X1, triStruct.Y1, triStruct.Z1);
             double distToV2 = MoreMath.GetDistanceBetween(
@@ -2517,7 +2517,7 @@ namespace STROOP.Structs
         private static Position GetClosestTriangleVertexPosition(uint triAddress)
         {
             int closestTriangleVertexIndex = GetClosestTriangleVertexIndex(triAddress);
-            TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+            TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
             if (closestTriangleVertexIndex == 1) return new Position(triStruct.X1, triStruct.Y1, triStruct.Z1);
             if (closestTriangleVertexIndex == 2) return new Position(triStruct.X2, triStruct.Y2, triStruct.Z2);
             if (closestTriangleVertexIndex == 3) return new Position(triStruct.X3, triStruct.Y3, triStruct.Z3);
@@ -2526,7 +2526,7 @@ namespace STROOP.Structs
 
         private static double GetTriangleUphillAngle(uint triAddress)
         {
-            TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+            TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
             double uphillAngleRadians = Math.PI + Math.Atan2(triStruct.NormX, triStruct.NormZ);
             if (triStruct.NormX == 0 && triStruct.NormZ == 0) uphillAngleRadians = double.NaN;
             if (triStruct.IsCeiling()) uphillAngleRadians += Math.PI;

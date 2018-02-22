@@ -117,7 +117,7 @@ namespace STROOP.Managers
 
         private void SwitchLevelModel()
         {
-            List<TriangleStruct> triangleStructs = TriangleUtilities.GetLevelTriangles();
+            List<TriangleDataModel> triangleStructs = TriangleUtilities.GetLevelTriangles();
 
             // Build vertice and triangle list from triangle set
             List<int[]> triangles = new List<int[]>();

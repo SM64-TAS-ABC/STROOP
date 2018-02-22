@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace STROOP.Structs
 {
-    public class TriangleStruct
+    public class TriangleDataModel
     {
         public readonly uint Address;
 
@@ -75,7 +75,7 @@ namespace STROOP.Structs
 
         private readonly List<Object> FieldValueList;
 
-        public TriangleStruct(uint triangleAddress)
+        public TriangleDataModel(uint triangleAddress)
         {
             Address = triangleAddress;
 

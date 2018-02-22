@@ -15,7 +15,7 @@ namespace STROOP.Managers
 {
     public class TriangleManager : DataManager
     {
-        private Dictionary<uint, TriangleStruct> _triangleCache;
+        private Dictionary<uint, TriangleDataModel> _triangleCache;
 
         MaskedTextBox _addressBox;
         uint _triangleAddress = 0;
@@ -71,7 +71,7 @@ namespace STROOP.Managers
         public TriangleManager(Control tabControl, List<WatchVariableControlPrecursor> variables, WatchVariableFlowLayoutPanel watchVariablePanel) 
             : base(variables, watchVariablePanel, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
         {
-            _triangleCache = new Dictionary<uint, TriangleStruct>();
+            _triangleCache = new Dictionary<uint, TriangleDataModel>();
 
             _triangleData = new List<short[]>();
 
@@ -306,10 +306,10 @@ namespace STROOP.Managers
             (_addressBox.Parent.Controls["radioButtonTriOther"] as RadioButton).Checked = true;
         }
 
-        public TriangleStruct GetTriangleStruct(uint address)
+        public TriangleDataModel GetTriangleStruct(uint address)
         {
             if (_triangleCache.ContainsKey(address)) return _triangleCache[address];
-            TriangleStruct triStruct = new TriangleStruct(address);
+            TriangleDataModel triStruct = new TriangleDataModel(address);
             _triangleCache.Add(address, triStruct);
             return triStruct;
         }

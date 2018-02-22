@@ -11,7 +11,7 @@ namespace STROOP.Utilities
     public static class PuUtilities
     {
         private static int PuOffset = 32768;
-        private static int PuSize = 65536;
+        public static int PuSize = 65536;
 
         public static float GetRelativePuPosition(float coord, int puCoord)
         {

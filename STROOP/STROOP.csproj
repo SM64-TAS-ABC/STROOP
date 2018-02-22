@@ -274,6 +274,11 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Managers\ObjectSlotsManager.cs" />
+    <Compile Include="Models\CameraDataModel.cs" />
+    <Compile Include="Models\MarioDataModel.cs" />
+    <Compile Include="Models\DataModels.cs" />
+    <Compile Include="Models\UpdatableDataModel.cs" />
+    <Compile Include="Models\LevelDataModel.cs" />
     <Compile Include="Structs\Configurations\AreaConfig.cs" />
     <Compile Include="Structs\Configurations\RefreshRateConfig.cs" />
     <Compile Include="Structs\Configurations\MarioObjectConfig.cs" />
@@ -296,7 +301,7 @@
     <Compile Include="Structs\Gui\InputImageGui.cs" />
     <Compile Include="Structs\MissionTable.cs" />
     <Compile Include="Enums\TriangleClassification.cs" />
-    <Compile Include="Structs\TriangleStruct.cs" />
+    <Compile Include="Models\TriangleDataModel.cs" />
     <Compile Include="Structs\WaypointTable.cs" />
     <Compile Include="Structs\PendulumSwingTable.cs" />
     <Compile Include="Structs\AnimationTable.cs" />

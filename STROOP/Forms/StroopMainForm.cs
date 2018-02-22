@@ -15,6 +15,7 @@ using STROOP.Extensions;
 using STROOP.Structs.Configurations;
 using STROOP.Controls;
 using STROOP.Forms;
+using STROOP.Models;
 
 namespace STROOP
 {
@@ -285,6 +286,8 @@ namespace STROOP
         {
             Invoke(new Action(() =>
             {
+                DataModels.Update();
+
                 Config.ObjectSlotsManager.Update();
                 Config.ObjectManager.Update(tabControlMain.SelectedTab == tabPageObjects);
                 Config.MarioManager.Update(tabControlMain.SelectedTab == tabPageMario);

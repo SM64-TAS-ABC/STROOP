@@ -167,7 +167,7 @@ namespace STROOP.Managers
         }
         ScuttlebugMission _scuttlebugMission = ScuttlebugMission.BBHBalconyEye;
 
-        List<TriangleStruct> _scuttlebugTriangleList = new List<TriangleStruct>();
+        List<TriangleDataModel> _scuttlebugTriangleList = new List<TriangleDataModel>();
 
         public TestingManager(TabPage tabControl)
         {
@@ -373,7 +373,7 @@ namespace STROOP.Managers
                 if (!toByteNullable.HasValue) return;
                 byte toByte = toByteNullable.Value;
 
-                List<TriangleStruct> tris = TriangleUtilities.GetLevelTriangles();
+                List<TriangleDataModel> tris = TriangleUtilities.GetLevelTriangles();
                 tris.ForEach(tri =>
                 {
                     if (fromEmpty || fromListBytes.Contains(tri.Room))
@@ -460,7 +460,7 @@ namespace STROOP.Managers
         private void HandleScuttlebugRoomTransition(byte newRoom)
         {
             // Convert new room triangles to dummy room value
-            foreach (TriangleStruct triStruct in _scuttlebugTriangleList)
+            foreach (TriangleDataModel triStruct in _scuttlebugTriangleList)
             {
                 if (triStruct.Room == newRoom)
                 {
@@ -469,7 +469,7 @@ namespace STROOP.Managers
             }
             
             // Convert all outside triangles to the new room value
-            foreach (TriangleStruct triStruct in _scuttlebugTriangleList)
+            foreach (TriangleDataModel triStruct in _scuttlebugTriangleList)
             {
                 if (triStruct.Room == Outside_Room)
                 {

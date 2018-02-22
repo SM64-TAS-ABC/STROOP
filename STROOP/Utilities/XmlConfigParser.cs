@@ -882,7 +882,7 @@ namespace STROOP.Utilities
                                     assoc.FolderPath = subElement.Value;
                                     break;
                                 case "DefaultImage":
-                                    var defaultMap = new Map() { ImagePath = subElement.Value };
+                                    var defaultMap = new MapMap() { ImagePath = subElement.Value };
                                     assoc.DefaultMap = defaultMap;
                                     break;
                                 case "DefaultCoordinates":
@@ -922,7 +922,7 @@ namespace STROOP.Utilities
 
                         var coordinates = new RectangleF(x1, z1, x2 - x1, z2 - z1);
 
-                        Map map = new Map() { Level = level, Area = area, LoadingPoint = loadingPoint, MissionLayout = missionLayout,
+                        MapMap map = new MapMap() { Level = level, Area = area, LoadingPoint = loadingPoint, MissionLayout = missionLayout,
                             Coordinates = coordinates, ImagePath = imagePath, Y = y, Name = name, SubName = subName, BackgroundPath = bgImagePath};
 
                         assoc.AddAssociation(map);
