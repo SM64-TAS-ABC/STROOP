@@ -71,6 +71,23 @@ namespace STROOP.Structs
             }
         }
 
+        public static void UpdateLockValues(WatchVariable variable, List<string> newValues, List<uint> addresses = null)
+        {
+            if (!ContainsAnyLocks()) return;
+            List<WatchVariableLock> newLocks = variable.GetLocks(addresses);
+            for (int i = 0; i < newLocks.Count; i++)
+            {
+                if (newValues[i] == null) continue;
+                foreach (WatchVariableLock currentLock in _lockList)
+                {
+                    if (currentLock.Equals(newLocks[i]))
+                    {
+                        currentLock.UpdateLockValue(newValues[i]);
+                    }
+                }
+            }
+        }
+
         public static void UpdateMemoryLockValue(string newValue, uint address, Type type, uint? mask)
         {
             if (!ContainsAnyLocks()) return;

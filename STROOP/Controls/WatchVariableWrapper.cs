@@ -309,7 +309,8 @@ namespace STROOP.Controls
         {
             string value = ConvertCheckStateToValue(checkState);
             bool success = _watchVar.SetValue(value, addresses);
-            if (success && GetLockedBool(addresses)) WatchVariableLockManager.UpdateLockValues(_watchVar, value, addresses);
+            if (success && GetLockedBool(addresses))
+                WatchVariableLockManager.UpdateLockValues(_watchVar, value, addresses);
             return success;
         }
 
@@ -335,7 +336,11 @@ namespace STROOP.Controls
                 string unconvertedValueString = UnconvertValue(modifiedValueString);
                 return unconvertedValueString;
             });
-            return _watchVar.SetValues(newValuesString, addresses);
+
+            bool success = _watchVar.SetValues(newValuesString, addresses);
+            if (success && GetLockedBool(addresses))
+                WatchVariableLockManager.UpdateLockValues(_watchVar, newValuesString, addresses);
+            return success;
         }
 
         public List<uint> GetCurrentAddresses()
