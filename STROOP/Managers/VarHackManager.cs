@@ -49,18 +49,13 @@ namespace STROOP.Managers
                 },
                 new List<Action>()
                 {
-                    () => AddVariable(() => "Index " + RngIndexer.GetRngIndex()),
-                    () => AddVariable(() =>
-                    {
-                        uint triFloorAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
-                        float yNorm = Config.Stream.GetSingle(triFloorAddress + TriangleOffsetsConfig.NormY);
-                        return "YNorm " + FormatDouble(yNorm, 4, true);
-                    }),
-                    () => AddVariable(() => "Defacto " + FormatInteger(WatchVariableSpecialUtilities.GetMarioDeFactoSpeed())),
-                    () => AddVariable(() => "Action " + TableConfig.MarioActions.GetActionName()),
-                    () => AddVariable(() => "Animation " + TableConfig.MarioAnimations.GetAnimationName()),
-                    () => AddVariable(() => "DYaw " + FormatInteger(WatchVariableSpecialUtilities.GetDeltaYawIntendedFacing())),
-                    () => AddVariable(() => "DYaw " + FormatInteger(WatchVariableSpecialUtilities.GetDeltaYawIntendedFacing() / 16)),
+                    () => AddVariable(VarHackSpecialUtilities.CreateGetterFunction("RngIndex")),
+                    () => AddVariable(VarHackSpecialUtilities.CreateGetterFunction("FloorYNorm")),
+                    () => AddVariable(VarHackSpecialUtilities.CreateGetterFunction("DefactoSpeed")),
+                    () => AddVariable(VarHackSpecialUtilities.CreateGetterFunction("MarioAction")),
+                    () => AddVariable(VarHackSpecialUtilities.CreateGetterFunction("MarioAnimation")),
+                    () => AddVariable(VarHackSpecialUtilities.CreateGetterFunction("DYawIntendFacing")),
+                    () => AddVariable(VarHackSpecialUtilities.CreateGetterFunction("DYawIntendFacingHau")),
                 });
 
             Button buttonVarHackOpenVars =
@@ -191,33 +186,6 @@ namespace STROOP.Managers
         public void AddVariable(Func<string> getterFunction)
         {
             _varHackPanel.AddNewControlWithGetterFunction(getterFunction);
-        }
-
-        public string FormatDouble(double value, int numDigits = 4, bool usePadding = true)
-        {
-            string stringValue = Math.Round(value, numDigits).ToString();
-            if (usePadding)
-            {
-                int decimalIndex = stringValue.IndexOf(".");
-                if (decimalIndex == -1)
-                {
-                    stringValue += ".";
-                    decimalIndex = stringValue.Length - 1;
-                }
-                while (stringValue.Length <= decimalIndex + numDigits)
-                {
-                    stringValue += "0";
-                }
-            }
-            stringValue = stringValue.Replace(".", VarHackConfig.CoinChar);
-            return stringValue;
-        }
-
-        public string FormatInteger(double value)
-        {
-            string stringValue = Math.Truncate(value).ToString();
-            stringValue = stringValue.Replace("-", "M");
-            return stringValue;
         }
 
         public void Update(bool updateView)
