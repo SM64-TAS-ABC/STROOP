@@ -236,7 +236,6 @@
     <Compile Include="Extensions\ControlCollectionsExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Extensions\RectangleExtensions.cs" />
-    <Compile Include="Extensions\WatchExpressionExtensions.cs" />
     <Compile Include="Forms\LoadingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -343,7 +342,6 @@
     <Compile Include="Utilities\ControlUtilities.cs" />
     <Compile Include="Utilities\TriangleUtilities.cs" />
     <Compile Include="Utilities\ScriptParser.cs" />
-    <Compile Include="Structs\WatchExpression.cs" />
     <Compile Include="Utilities\N64Disassembler.cs" />
     <Compile Include="Utilities\ButtonUtilities.cs" />
     <Compile Include="Structs\ProcessSelection.cs" />
