@@ -163,6 +163,24 @@ namespace STROOP.Controls
             return success;
         }
 
+        public bool SetValues(List<string> values, List<uint> addresses = null)
+        {
+            List<uint> addressList = addresses ?? AddressList;
+            if (addressList.Count == 0) return false;
+            if (addressList.Count != values.Count) return false;
+
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
+            bool success = true;
+            for (int i = 0; i < addressList.Count; i++)
+            {
+                if (values[i] == null) continue;
+                success &= _setterFunction(values[i], addressList[i]);
+            }
+            if (!streamAlreadySuspended) Config.Stream.Resume();
+            return success;
+        }
+
         public List<WatchVariableLock> GetLocks(List<uint> addresses = null)
         {
             List<uint> addressList = addresses ?? AddressList;
