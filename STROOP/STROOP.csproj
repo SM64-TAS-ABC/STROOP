@@ -220,7 +220,6 @@
     <Compile Include="Controls\IntPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\Map\MapBaseObject.cs" />
     <Compile Include="Controls\WatchVariableFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
