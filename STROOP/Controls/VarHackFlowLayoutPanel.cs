@@ -58,7 +58,7 @@ namespace STROOP.Controls
 
         // Methods from a watch var control
 
-        public void AddNewControlWithParameters(string varName, uint address, Type memoryType, bool useHex, uint? pointerOffset)
+        public void AddNewControl(string varName, uint address, Type memoryType, bool useHex, uint? pointerOffset)
         {
             if (Controls.Count >= VarHackConfig.MaxPossibleVars) return;
             VarHackContainer varHackContainer = new VarHackContainer(this, Controls.Count, varName, address, memoryType, useHex, pointerOffset);
@@ -68,10 +68,10 @@ namespace STROOP.Controls
             }
         }
 
-        public void AddNewControlWithGetterFunction(Func<string> getterFunction)
+        public void AddNewControl(string specialType)
         {
             if (Controls.Count >= VarHackConfig.MaxPossibleVars) return;
-            VarHackContainer varHackContainer = new VarHackContainer(this, Controls.Count, getterFunction);
+            VarHackContainer varHackContainer = new VarHackContainer(this, Controls.Count, specialType);
             lock (_objectLock)
             {
                 Controls.Add(varHackContainer);

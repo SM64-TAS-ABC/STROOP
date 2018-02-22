@@ -49,13 +49,13 @@ namespace STROOP.Managers
                 },
                 new List<Action>()
                 {
-                    () => AddVariable(VarHackSpecialUtilities.CreateGetterFunction("RngIndex")),
-                    () => AddVariable(VarHackSpecialUtilities.CreateGetterFunction("FloorYNorm")),
-                    () => AddVariable(VarHackSpecialUtilities.CreateGetterFunction("DefactoSpeed")),
-                    () => AddVariable(VarHackSpecialUtilities.CreateGetterFunction("MarioAction")),
-                    () => AddVariable(VarHackSpecialUtilities.CreateGetterFunction("MarioAnimation")),
-                    () => AddVariable(VarHackSpecialUtilities.CreateGetterFunction("DYawIntendFacing")),
-                    () => AddVariable(VarHackSpecialUtilities.CreateGetterFunction("DYawIntendFacingHau")),
+                    () => AddVariable("RngIndex"),
+                    () => AddVariable("FloorYNorm"),
+                    () => AddVariable("DefactoSpeed"),
+                    () => AddVariable("MarioAction"),
+                    () => AddVariable("MarioAnimation"),
+                    () => AddVariable("DYawIntendFacing"),
+                    () => AddVariable("DYawIntendFacingHau"),
                 });
 
             Button buttonVarHackOpenVars =
@@ -180,12 +180,12 @@ namespace STROOP.Managers
 
         public void AddVariable(string varName, uint address, Type memoryType, bool useHex, uint? pointerOffset)
         {
-            _varHackPanel.AddNewControlWithParameters(varName, address, memoryType, useHex, pointerOffset);
+            _varHackPanel.AddNewControl(varName, address, memoryType, useHex, pointerOffset);
         }
 
-        public void AddVariable(Func<string> getterFunction)
+        public void AddVariable(string specialType)
         {
-            _varHackPanel.AddNewControlWithGetterFunction(getterFunction);
+            _varHackPanel.AddNewControl(specialType);
         }
 
         public void Update(bool updateView)

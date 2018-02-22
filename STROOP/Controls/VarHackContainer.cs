@@ -39,6 +39,7 @@ namespace STROOP.Controls
         private PictureBox pictureBoxDownArrow;
         private PictureBox pictureBoxRedX;
 
+        private string _specialType;
         private Func<string> _getterFunction;
 
         private static readonly Pen _borderPen = new Pen(Color.Black, 3);
@@ -49,6 +50,7 @@ namespace STROOP.Controls
         {
             InitializeComponent();
             _varHackPanel = varHackPanel;
+            _specialType = null;
             _getterFunction = null;
 
             pictureBoxUpArrow.Click += (sender, e) => _varHackPanel.MoveUpControl(this);
@@ -85,10 +87,11 @@ namespace STROOP.Controls
         public VarHackContainer(
             VarHackFlowLayoutPanel varHackPanel,
             int creationIndex,
-            Func<string> getterFunction)
+            string specialType)
             : this(varHackPanel, creationIndex, false)
         {
-            _getterFunction = getterFunction;
+            _specialType = specialType;
+            _getterFunction = VarHackSpecialUtilities.CreateGetterFunction(specialType);
             checkBoxNoNumber.Checked = true;
         }
 
