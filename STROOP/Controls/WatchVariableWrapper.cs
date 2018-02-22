@@ -181,6 +181,30 @@ namespace STROOP.Controls
             varInfo.Show();
         }
 
+        public List<string> GetVarInfo()
+        {
+            return new List<string>()
+            {
+                _watchVarControl.VarName,
+                _watchVar.GetTypeDescription(),
+                _watchVar.GetBaseOffsetDescription(),
+                _watchVar.GetRamAddressString(true, _watchVarControl.FixedAddressList),
+                _watchVar.GetProcessAddressString(_watchVarControl.FixedAddressList),
+            };
+        }
+
+        public static List<string> GetVarInfoLabels()
+        {
+            return new List<string>()
+            {
+                "Name",
+                "Type",
+                "Base + Offset",
+                "N64 Address",
+                "Emulator Address",
+            };
+        }
+
         public void ShowVarController()
         {
             VariableControllerForm varController =
