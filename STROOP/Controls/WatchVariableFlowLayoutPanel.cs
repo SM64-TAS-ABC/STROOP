@@ -59,6 +59,9 @@ namespace STROOP.Controls
             ToolStripMenuItem showVariableXmlItem = new ToolStripMenuItem("Show Variable XML");
             showVariableXmlItem.Click += (sender, e) => ShowVariableXml();
 
+            ToolStripMenuItem showVariableInfoItem = new ToolStripMenuItem("Show Variable Info");
+            showVariableInfoItem.Click += (sender, e) => ShowVariableInfo();
+
             ToolStripMenuItem resetVariablesItem = new ToolStripMenuItem("Reset Variables");
             resetVariablesItem.Click += (sender, e) => ResetVariables();
 
@@ -71,6 +74,7 @@ namespace STROOP.Controls
 
             ContextMenuStrip.Items.Add(enableCustomization);
             ContextMenuStrip.Items.Add(showVariableXmlItem);
+            ContextMenuStrip.Items.Add(showVariableInfoItem);
             ContextMenuStrip.Items.Add(resetVariablesItem);
             ContextMenuStrip.Items.Add(filterVariablesItem);
         }
@@ -182,18 +186,28 @@ namespace STROOP.Controls
             AddVariables(_watchVarPrecursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
         }
 
-        private List<XElement> GetCurrentXmlElements(bool useCurrentState = true)
+        private List<WatchVariableControl> GetCurrentControls()
         {
-            List<XElement> elements = new List<XElement>();
+            List<WatchVariableControl> watchVarControls = new List<WatchVariableControl>();
             lock (_objectLock)
             {
                 foreach (Control control in Controls)
                 {
                     WatchVariableControl watchVarControl = control as WatchVariableControl;
-                    elements.Add(watchVarControl.ToXml(useCurrentState));
+                    watchVarControls.Add(watchVarControl);
                 }
             }
-            return elements;
+            return watchVarControls;
+        }
+
+        private List<XElement> GetCurrentVarXmlElements(bool useCurrentState = true)
+        {
+            return GetCurrentControls().ConvertAll(control => control.ToXml(useCurrentState));
+        }
+
+        private List<List<string>> GetCurrentVarInfo()
+        {
+            return GetCurrentControls().ConvertAll(control => control.GetVarInfo());
         }
 
         public void ShowVariableXml()
@@ -204,7 +218,25 @@ namespace STROOP.Controls
                 infoForm.SetText(
                     "Variable Info",
                     "Variable XML",
-                    String.Join("\r\n", GetCurrentXmlElements()));
+                    String.Join("\r\n", GetCurrentVarXmlElements()));
+            }
+            infoForm.Show();
+        }
+
+        public void ShowVariableInfo()
+        {
+            InfoForm infoForm = new InfoForm();
+            lock (_objectLock)
+            {
+                infoForm.SetText(
+                    "Variable Info",
+                    "Variable Info",
+                    String.Join("\t",
+                        WatchVariableWrapper.GetVarInfoLabels()) +
+                        "\r\n" +
+                        String.Join("\r\n",
+                            GetCurrentVarInfo().ConvertAll(
+                                infoList => String.Join("\t", infoList))));
             }
             infoForm.Show();
         }
@@ -220,7 +252,7 @@ namespace STROOP.Controls
         public void SaveVariables()
         {
             FileUtilities.SaveXmlElements(
-                FileType.StroopVariables, "CustomData", GetCurrentXmlElements());
+                FileType.StroopVariables, "CustomData", GetCurrentVarXmlElements());
         }
 
         public void EnableCustomVariableFunctionality()

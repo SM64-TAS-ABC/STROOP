@@ -711,6 +711,11 @@ namespace STROOP.Controls
                 return _watchVarPrecursor.ToXML();
         }
 
+        public List<string> GetVarInfo()
+        {
+            return _watchVarWrapper.GetVarInfo();
+        }
+
 
 
 
