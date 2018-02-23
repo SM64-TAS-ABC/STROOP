@@ -361,7 +361,7 @@ namespace STROOP.Controls
             if (_watchVar.BaseAddressType == BaseAddressTypeEnum.Triangle)
             {
                 Config.VarHackManager.AddVariable(
-                    _watchVarControl.VarName,
+                    _watchVarControl.VarName + " ",
                     Config.TriangleManager.TrianglePointerAddress,
                     _watchVar.MemoryType,
                     GetUseHex(),
@@ -373,7 +373,7 @@ namespace STROOP.Controls
                 foreach (uint address in addressList)
                 {
                     Config.VarHackManager.AddVariable(
-                        _watchVarControl.VarName,
+                        _watchVarControl.VarName + " ",
                         address,
                         _watchVar.MemoryType,
                         GetUseHex(),

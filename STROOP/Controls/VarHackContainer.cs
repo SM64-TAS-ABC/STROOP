@@ -76,17 +76,18 @@ namespace STROOP.Controls
             _specialType = specialType;
             _isSpecial = specialType != null;
             if (_isSpecial) _getterFunction = VarHackSpecialUtilities.CreateGetterFunction(specialType);
+            checkBoxNoNumber.Checked = _isSpecial;
 
             // Misc
             textBoxNameValue.Text = varName ?? "";
-            textBoxAddressValue.Text = address.HasValue ? "0x" + String.Format("{0:X}", address.Value) : "";
+            textBoxAddressValue.Text = address.HasValue ? "0x" + String.Format("{0:X}", address.Value) : "0x8033B1AC";
             GetRadioButtonForType(memoryType).Checked = true;
             checkBoxUseHex.Checked = useHex;
 
             // Pointer
             checkBoxUsePointer.Checked = pointerOffset.HasValue;
             textBoxPointerOffsetValue.Enabled = pointerOffset.HasValue;
-            textBoxPointerOffsetValue.Text = pointerOffset.HasValue ? "0x" + String.Format("{0:X}", pointerOffset.Value) : "";
+            textBoxPointerOffsetValue.Text = pointerOffset.HasValue ? "0x" + String.Format("{0:X}", pointerOffset.Value) : "0x10";
 
             // Position
             textBoxXPosValue.Text = xPos.ToString();
@@ -99,64 +100,15 @@ namespace STROOP.Controls
             checkBoxUsePointer.Click += (sender, e) => textBoxPointerOffsetValue.Enabled = checkBoxUsePointer.Checked;
         }
 
-        private VarHackContainer(VarHackFlowLayoutPanel varHackPanel, int creationIndex, bool usePreWrittenVar)
-        {
-            InitializeComponent();
-            _varHackPanel = varHackPanel;
-            _specialType = null;
-            _getterFunction = null;
-
-            pictureBoxUpArrow.Click += (sender, e) => _varHackPanel.MoveUpControl(this);
-            pictureBoxDownArrow.Click += (sender, e) => _varHackPanel.MoveDownControl(this);
-            pictureBoxRedX.Click += (sender, e) => _varHackPanel.RemoveControl(this);
-            checkBoxUsePointer.Click += (sender, e) => textBoxPointerOffsetValue.Enabled = checkBoxUsePointer.Checked;
-
-            SetDefaultValues(creationIndex, usePreWrittenVar);
-        }
-
-        private VarHackContainer(
-            VarHackFlowLayoutPanel varHackPanel,
-            int creationIndex,
-            string varName,
-            uint address,
-            Type memoryType,
-            bool useHex,
-            uint? pointerOffset)
-            : this(varHackPanel, creationIndex, false)
-        {
-            textBoxNameValue.Text = varName + " ";
-            textBoxAddressValue.Text = "0x" + String.Format("{0:X}", address);
-            GetRadioButtonForType(memoryType).Checked = true;
-            checkBoxUseHex.Checked = useHex;
-
-            if (pointerOffset.HasValue)
-            {
-                checkBoxUsePointer.Checked = true;
-                textBoxPointerOffsetValue.Enabled = true;
-                textBoxPointerOffsetValue.Text = "0x" + String.Format("{0:X}", pointerOffset.Value);
-            }
-        }
-
-        private VarHackContainer(
-            VarHackFlowLayoutPanel varHackPanel,
-            int creationIndex,
-            string specialType)
-            : this(varHackPanel, creationIndex, false)
-        {
-            _specialType = specialType;
-            _getterFunction = VarHackSpecialUtilities.CreateGetterFunction(specialType);
-            checkBoxNoNumber.Checked = true;
-        }
-
-        private VarHackContainer(XElement element)
-        {
-            // TODO implement this
-        }
-
         public static VarHackContainer Create(
-            VarHackFlowLayoutPanel varHackPanel, int creationIndex, bool usePreWrittenVar)
+            VarHackFlowLayoutPanel varHackPanel,
+            int creationIndex,
+            bool useDefaults)
         {
-            return new VarHackContainer(varHackPanel, creationIndex, usePreWrittenVar);
+            return new VarHackContainer(
+                varHackPanel,
+                creationIndex,
+                useDefaults);
         }
 
         public static VarHackContainer Create(
@@ -169,7 +121,15 @@ namespace STROOP.Controls
             uint? pointerOffset)
         {
             return new VarHackContainer(
-                varHackPanel, creationIndex, varName, address, memoryType, useHex, pointerOffset);
+                varHackPanel,
+                creationIndex,
+                false,
+                null,
+                varName,
+                address,
+                memoryType,
+                useHex,
+                pointerOffset);
         }
 
         public static VarHackContainer Create(
@@ -177,12 +137,17 @@ namespace STROOP.Controls
             int creationIndex,
             string specialType)
         {
-            return new VarHackContainer(varHackPanel, creationIndex, specialType);
+            return new VarHackContainer(
+                varHackPanel,
+                creationIndex,
+                false,
+                specialType);
         }
 
         public static VarHackContainer Create(XElement element)
         {
-            return new VarHackContainer(element);
+            // TODO implement this
+            throw new NotImplementedException();
         }
 
         public XElement ToXml()
@@ -479,12 +444,12 @@ namespace STROOP.Controls
 
         public bool UpdatesContinuously()
         {
-            return _getterFunction != null;
+            return _isSpecial;
         }
 
         public void UpdateControl()
         {
-            if (_getterFunction != null)
+            if (_isSpecial)
             {
                 textBoxNameValue.Text = _getterFunction();
             }
