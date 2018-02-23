@@ -148,14 +148,46 @@ namespace STROOP.Controls
             VarHackFlowLayoutPanel varHackPanel,
             XElement element)
         {
-            // TODO implement this
-            throw new NotImplementedException();
+
+            int xPos = ParsingUtilities.ParseInt(element.Attribute(XName.Get("xPos"))?.Value);
+            int yPos = ParsingUtilities.ParseInt(element.Attribute(XName.Get("yPos"))?.Value);
+
+            string specialType = element.Attribute(XName.Get("specialType"))?.Value;
+            if (specialType != null)
+            {
+                return new VarHackContainer(
+                    varHackPanel, 0, false, specialType, null, null, null, null, null, xPos, yPos);
+            }
+            else
+            {
+                string varName = element.Attribute(XName.Get("name")).Value;
+                uint address = ParsingUtilities.ParseHex(element.Attribute(XName.Get("address")).Value);
+                Type type = TypeUtilities.StringToType[element.Attribute(XName.Get("type")).Value];
+                bool useHex = ParsingUtilities.ParseBool(element.Attribute(XName.Get("useHex")).Value);
+                uint? pointerOffset = ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("pointerOffset"))?.Value);
+
+                return new VarHackContainer(
+                    varHackPanel, 0, false, null, varName, address, type, useHex, pointerOffset, xPos, yPos);
+            }
         }
 
         public XElement ToXml()
         {
-            // TODO implement this
-            return new XElement("dummy");
+            XElement root = new XElement("Data");
+            if (_isSpecial)
+            {
+                root.Add(new XAttribute("specialType", _specialType));
+            }
+            else
+            {
+                root.Add(new XAttribute("name", textBoxNameValue.Text));
+                root.Add(new XAttribute("address", textBoxAddressValue.Text));
+                root.Add(new XAttribute("type", GetCurrentType()));
+                root.Add(new XAttribute("useHex", checkBoxUseHex.Checked));
+                if (checkBoxUsePointer.Checked)
+                    root.Add(new XAttribute("pointerOffset", textBoxPointerOffsetValue.Text));
+            }
+            return root;
         }
 
         public byte[] GetBigEndianByteArray()
