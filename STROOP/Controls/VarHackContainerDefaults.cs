@@ -10,6 +10,12 @@ namespace STROOP.Structs
 {
     public class VarHackContainerDefaults
     {
+        public static readonly string StaticVarName = "";
+        public static readonly uint StaticAddres = 0x8033B1AC;
+        public static readonly Type StaticMemoryType = typeof(float);
+        public static readonly bool StaticUseHex = false;
+        public static readonly uint StaticPointerOffset = 0x10;
+
         public readonly string SpecialType;
         public readonly string VarName;
         public readonly uint Address;

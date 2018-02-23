@@ -64,13 +64,13 @@ namespace STROOP.Controls
             VarHackContainerDefaults defaults = new VarHackContainerDefaults(creationIndex);
 
             string specialType = useDefaults ? defaults.SpecialType : specialTypeIn;
-            string varName = useDefaults ? defaults.VarName : (varNameIn ?? "");
-            uint address = useDefaults ? defaults.Address : (addressIn ?? 0x8033B1AC);
-            Type memoryType = useDefaults ? defaults.MemoryType : (memoryTypeIn ?? typeof(float));
-            bool useHex = useDefaults ? defaults.UseHex : (useHexIn ?? false);
+            string varName = useDefaults ? defaults.VarName : (varNameIn ?? VarHackContainerDefaults.StaticVarName);
+            uint address = useDefaults ? defaults.Address : (addressIn ?? VarHackContainerDefaults.StaticAddres);
+            Type memoryType = useDefaults ? defaults.MemoryType : (memoryTypeIn ?? VarHackContainerDefaults.StaticMemoryType);
+            bool useHex = useDefaults ? defaults.UseHex : (useHexIn ?? VarHackContainerDefaults.StaticUseHex);
             uint? tempPointerOffset = useDefaults ? defaults.PointerOffset : pointerOffsetIn;
             bool usePointer = tempPointerOffset.HasValue;
-            uint pointerOffset = tempPointerOffset ?? 0x10;
+            uint pointerOffset = tempPointerOffset ?? VarHackContainerDefaults.StaticPointerOffset;
             int xPos = (useDefaults || !xPosIn.HasValue) ? defaults.XPos : xPosIn.Value;
             int yPos = (useDefaults || !yPosIn.HasValue) ? defaults.YPos : yPosIn.Value;
 
