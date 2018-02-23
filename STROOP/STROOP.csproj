@@ -302,6 +302,7 @@
     <Compile Include="Structs\MissionTable.cs" />
     <Compile Include="Enums\TriangleClassification.cs" />
     <Compile Include="Models\TriangleDataModel.cs" />
+    <Compile Include="Controls\VarHackContainerDefaults.cs" />
     <Compile Include="Structs\WaypointTable.cs" />
     <Compile Include="Structs\PendulumSwingTable.cs" />
     <Compile Include="Structs\AnimationTable.cs" />

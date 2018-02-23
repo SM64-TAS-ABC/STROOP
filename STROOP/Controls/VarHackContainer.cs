@@ -46,6 +46,46 @@ namespace STROOP.Controls
 
         private readonly VarHackFlowLayoutPanel _varHackPanel;
 
+        private VarHackContainer(
+            VarHackFlowLayoutPanel varHackPanel,
+            int creationIndex,
+            string specialType,
+            string varName,
+            uint? address,
+            Type memoryType,
+            bool? useHex,
+            uint? pointerOffset,
+            int? xPos,
+            int? yPos)
+        {
+            InitializeComponent();
+            _varHackPanel = varHackPanel;
+
+            /*
+            _specialType = null;
+            _getterFunction = null;
+
+            pictureBoxUpArrow.Click += (sender, e) => _varHackPanel.MoveUpControl(this);
+            pictureBoxDownArrow.Click += (sender, e) => _varHackPanel.MoveDownControl(this);
+            pictureBoxRedX.Click += (sender, e) => _varHackPanel.RemoveControl(this);
+            checkBoxUsePointer.Click += (sender, e) => textBoxPointerOffsetValue.Enabled = checkBoxUsePointer.Checked;
+
+            SetDefaultValues(creationIndex, true);
+
+            textBoxNameValue.Text = varName + " ";
+            textBoxAddressValue.Text = "0x" + String.Format("{0:X}", address);
+            GetRadioButtonForType(memoryType).Checked = true;
+            checkBoxUseHex.Checked = useHex;
+
+            if (pointerOffset.HasValue)
+            {
+                checkBoxUsePointer.Checked = true;
+                textBoxPointerOffsetValue.Enabled = true;
+                textBoxPointerOffsetValue.Text = "0x" + String.Format("{0:X}", pointerOffset.Value);
+            }
+            */
+        }
+
         private VarHackContainer(VarHackFlowLayoutPanel varHackPanel, int creationIndex, bool usePreWrittenVar)
         {
             InitializeComponent();
