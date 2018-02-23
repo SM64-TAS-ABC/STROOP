@@ -39,12 +39,12 @@ namespace STROOP.Controls
         private PictureBox pictureBoxDownArrow;
         private PictureBox pictureBoxRedX;
 
-        private string _specialType;
-        private Func<string> _getterFunction;
-
         private static readonly Pen _borderPen = new Pen(Color.Black, 3);
-
         private readonly VarHackFlowLayoutPanel _varHackPanel;
+
+        private string _specialType;
+        private bool _isSpecial;
+        private Func<string> _getterFunction;
 
         private VarHackContainer(
             VarHackFlowLayoutPanel varHackPanel,
@@ -72,29 +72,31 @@ namespace STROOP.Controls
             int xPos = (useDefaults || !xPosIn.HasValue) ? defaults.XPos : xPosIn.Value;
             int yPos = (useDefaults || !yPosIn.HasValue) ? defaults.YPos : yPosIn.Value;
 
-            /*
-            _specialType = null;
-            _getterFunction = null;
+            // Special
+            _specialType = specialType;
+            _isSpecial = specialType != null;
+            if (_isSpecial) _getterFunction = VarHackSpecialUtilities.CreateGetterFunction(specialType);
 
+            // Misc
+            textBoxNameValue.Text = varName ?? "";
+            textBoxAddressValue.Text = address.HasValue ? "0x" + String.Format("{0:X}", address.Value) : "";
+            GetRadioButtonForType(memoryType).Checked = true;
+            checkBoxUseHex.Checked = useHex;
+
+            // Pointer
+            checkBoxUsePointer.Checked = pointerOffset.HasValue;
+            textBoxPointerOffsetValue.Enabled = pointerOffset.HasValue;
+            textBoxPointerOffsetValue.Text = pointerOffset.HasValue ? "0x" + String.Format("{0:X}", pointerOffset.Value) : "";
+
+            // Position
+            textBoxXPosValue.Text = xPos.ToString();
+            textBoxYPosValue.Text = yPos.ToString();
+
+            // Clicking functionality
             pictureBoxUpArrow.Click += (sender, e) => _varHackPanel.MoveUpControl(this);
             pictureBoxDownArrow.Click += (sender, e) => _varHackPanel.MoveDownControl(this);
             pictureBoxRedX.Click += (sender, e) => _varHackPanel.RemoveControl(this);
             checkBoxUsePointer.Click += (sender, e) => textBoxPointerOffsetValue.Enabled = checkBoxUsePointer.Checked;
-
-            SetDefaultValues(creationIndex, true);
-
-            textBoxNameValue.Text = varName + " ";
-            textBoxAddressValue.Text = "0x" + String.Format("{0:X}", address);
-            GetRadioButtonForType(memoryType).Checked = true;
-            checkBoxUseHex.Checked = useHex;
-
-            if (pointerOffset.HasValue)
-            {
-                checkBoxUsePointer.Checked = true;
-                textBoxPointerOffsetValue.Enabled = true;
-                textBoxPointerOffsetValue.Text = "0x" + String.Format("{0:X}", pointerOffset.Value);
-            }
-            */
         }
 
         private VarHackContainer(VarHackFlowLayoutPanel varHackPanel, int creationIndex, bool usePreWrittenVar)
