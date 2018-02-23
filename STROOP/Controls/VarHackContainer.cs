@@ -49,17 +49,28 @@ namespace STROOP.Controls
         private VarHackContainer(
             VarHackFlowLayoutPanel varHackPanel,
             int creationIndex,
-            string specialType,
-            string varName,
-            uint? address,
-            Type memoryType,
-            bool? useHex,
-            uint? pointerOffset,
-            int? xPos,
-            int? yPos)
+            bool useDefaults,
+            string specialTypeIn = null,
+            string varNameIn = null,
+            uint? addressIn = null,
+            Type memoryTypeIn = null,
+            bool? useHexIn = null,
+            uint? pointerOffsetIn = null,
+            int? xPosIn = null,
+            int? yPosIn = null)
         {
             InitializeComponent();
             _varHackPanel = varHackPanel;
+            VarHackContainerDefaults defaults = new VarHackContainerDefaults(creationIndex);
+
+            string specialType = useDefaults ? defaults.SpecialType : specialTypeIn;
+            string varName = useDefaults ? defaults.VarName : varNameIn;
+            uint? address = useDefaults ? defaults.Address : addressIn;
+            Type memoryType = useDefaults ? defaults.MemoryType : (memoryTypeIn ?? typeof(float));
+            bool useHex = useDefaults ? defaults.UseHex : (useHexIn ?? false);
+            uint? pointerOffset = useDefaults ? defaults.PointerOffset : pointerOffsetIn;
+            int xPos = (useDefaults || !xPosIn.HasValue) ? defaults.XPos : xPosIn.Value;
+            int yPos = (useDefaults || !yPosIn.HasValue) ? defaults.YPos : yPosIn.Value;
 
             /*
             _specialType = null;
