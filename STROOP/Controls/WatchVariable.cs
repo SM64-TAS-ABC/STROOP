@@ -115,10 +115,10 @@ namespace STROOP.Controls
             SpecialType = specialType;
 
             MemoryTypeName = memoryTypeName;
-            MemoryType = memoryTypeName == null ? null : WatchVariableUtilities.StringToType[MemoryTypeName];
-            ByteCount = memoryTypeName == null ? (int?)null : WatchVariableUtilities.TypeSize[MemoryType];
-            NibbleCount = memoryTypeName == null ? (int?)null : WatchVariableUtilities.TypeSize[MemoryType] * 2;
-            SignedType = memoryTypeName == null ? (bool?)null : WatchVariableUtilities.TypeSign[MemoryType];
+            MemoryType = memoryTypeName == null ? null : TypeUtilities.StringToType[MemoryTypeName];
+            ByteCount = memoryTypeName == null ? (int?)null : TypeUtilities.TypeSize[MemoryType];
+            NibbleCount = memoryTypeName == null ? (int?)null : TypeUtilities.TypeSize[MemoryType] * 2;
+            SignedType = memoryTypeName == null ? (bool?)null : TypeUtilities.TypeSign[MemoryType];
 
             Mask = mask;
             
