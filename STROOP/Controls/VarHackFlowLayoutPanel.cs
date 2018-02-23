@@ -61,7 +61,9 @@ namespace STROOP.Controls
         public void AddNewControl(string varName, uint address, Type memoryType, bool useHex, uint? pointerOffset)
         {
             if (Controls.Count >= VarHackConfig.MaxPossibleVars) return;
-            VarHackContainer varHackContainer = new VarHackContainer(this, Controls.Count, varName, address, memoryType, useHex, pointerOffset);
+            VarHackContainer varHackContainer =
+                VarHackContainer.Create(
+                    this, Controls.Count, varName, address, memoryType, useHex, pointerOffset);
             lock (_objectLock)
             {
                 Controls.Add(varHackContainer);
@@ -71,7 +73,8 @@ namespace STROOP.Controls
         public void AddNewControl(string specialType)
         {
             if (Controls.Count >= VarHackConfig.MaxPossibleVars) return;
-            VarHackContainer varHackContainer = new VarHackContainer(this, Controls.Count, specialType);
+            VarHackContainer varHackContainer =
+                VarHackContainer.Create(this, Controls.Count, specialType);
             lock (_objectLock)
             {
                 Controls.Add(varHackContainer);
@@ -83,7 +86,7 @@ namespace STROOP.Controls
         public void AddNewControl()
         {
             if (Controls.Count >= VarHackConfig.MaxPossibleVars) return;
-            VarHackContainer varHackContainer = new VarHackContainer(this, Controls.Count, true);
+            VarHackContainer varHackContainer = VarHackContainer.Create(this, Controls.Count, true);
             lock (_objectLock)
             {
                 Controls.Add(varHackContainer);
@@ -108,7 +111,7 @@ namespace STROOP.Controls
         {
             List<XElement> elements = FileUtilities.OpenXmlElements(FileType.StroopVarHackVariables);
             List<VarHackContainer> varHackContainers =
-                elements.ConvertAll(element => new VarHackContainer(element));
+                elements.ConvertAll(element => VarHackContainer.Create(element));
             lock (_objectLock)
             {
                 varHackContainers.ForEach(varHackContainer => Controls.Add(varHackContainer));

@@ -46,7 +46,7 @@ namespace STROOP.Controls
 
         private readonly VarHackFlowLayoutPanel _varHackPanel;
 
-        public VarHackContainer(VarHackFlowLayoutPanel varHackPanel, int creationIndex, bool usePreWrittenVar)
+        private VarHackContainer(VarHackFlowLayoutPanel varHackPanel, int creationIndex, bool usePreWrittenVar)
         {
             InitializeComponent();
             _varHackPanel = varHackPanel;
@@ -61,7 +61,7 @@ namespace STROOP.Controls
             SetDefaultValues(creationIndex, usePreWrittenVar);
         }
 
-        public VarHackContainer(
+        private VarHackContainer(
             VarHackFlowLayoutPanel varHackPanel,
             int creationIndex,
             string varName,
@@ -84,7 +84,7 @@ namespace STROOP.Controls
             }
         }
 
-        public VarHackContainer(
+        private VarHackContainer(
             VarHackFlowLayoutPanel varHackPanel,
             int creationIndex,
             string specialType)
@@ -95,9 +95,41 @@ namespace STROOP.Controls
             checkBoxNoNumber.Checked = true;
         }
 
-        public VarHackContainer(XElement element)
+        private VarHackContainer(XElement element)
         {
             // TODO implement this
+        }
+
+        public static VarHackContainer Create(
+            VarHackFlowLayoutPanel varHackPanel, int creationIndex, bool usePreWrittenVar)
+        {
+            return new VarHackContainer(varHackPanel, creationIndex, usePreWrittenVar);
+        }
+
+        public static VarHackContainer Create(
+            VarHackFlowLayoutPanel varHackPanel,
+            int creationIndex,
+            string varName,
+            uint address,
+            Type memoryType,
+            bool useHex,
+            uint? pointerOffset)
+        {
+            return new VarHackContainer(
+                varHackPanel, creationIndex, varName, address, memoryType, useHex, pointerOffset);
+        }
+
+        public static VarHackContainer Create(
+            VarHackFlowLayoutPanel varHackPanel,
+            int creationIndex,
+            string specialType)
+        {
+            return new VarHackContainer(varHackPanel, creationIndex, specialType);
+        }
+
+        public static VarHackContainer Create(XElement element)
+        {
+            return new VarHackContainer(element);
         }
 
         public XElement ToXml()
