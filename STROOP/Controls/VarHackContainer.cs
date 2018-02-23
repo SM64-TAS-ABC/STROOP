@@ -144,7 +144,9 @@ namespace STROOP.Controls
                 specialType);
         }
 
-        public static VarHackContainer Create(XElement element)
+        public static VarHackContainer Create(
+            VarHackFlowLayoutPanel varHackPanel,
+            XElement element)
         {
             // TODO implement this
             throw new NotImplementedException();

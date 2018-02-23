@@ -111,7 +111,7 @@ namespace STROOP.Controls
         {
             List<XElement> elements = FileUtilities.OpenXmlElements(FileType.StroopVarHackVariables);
             List<VarHackContainer> varHackContainers =
-                elements.ConvertAll(element => VarHackContainer.Create(element));
+                elements.ConvertAll(element => VarHackContainer.Create(this, element));
             lock (_objectLock)
             {
                 varHackContainers.ForEach(varHackContainer => Controls.Add(varHackContainer));
