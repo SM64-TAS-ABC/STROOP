@@ -11,30 +11,44 @@ namespace STROOP.Structs
 {
     public static class TypeUtilities
     {
-        public readonly static Dictionary<String, Type> StringToType = new Dictionary<string, Type>()
+        public readonly static Dictionary<string, Type> StringToType = new Dictionary<string, Type>()
         {
             { "byte", typeof(byte) },
             { "sbyte", typeof(sbyte) },
-            { "short", typeof(Int16) },
-            { "ushort", typeof(UInt16) },
-            { "int", typeof(Int32) },
-            { "uint", typeof(UInt32) },
-            { "long", typeof(Int64) },
-            { "ulong", typeof(UInt64) },
+            { "short", typeof(short) },
+            { "ushort", typeof(ushort) },
+            { "int", typeof(int) },
+            { "uint", typeof(uint) },
+            { "long", typeof(long) },
+            { "ulong", typeof(ulong) },
             { "float", typeof(float) },
             { "double", typeof(double) },
+        };
+
+        public readonly static Dictionary<Type, string> TypeToString = new Dictionary<Type, string>()
+        {
+            { typeof(byte), "byte" },
+            { typeof(sbyte), "sbyte" },
+            { typeof(short), "short" },
+            { typeof(ushort), "ushort" },
+            { typeof(int), "int" },
+            { typeof(uint), "uint" },
+            { typeof(long), "long" },
+            { typeof(ulong), "ulong" },
+            { typeof(float), "float" },
+            { typeof(double), "double" },
         };
 
         public readonly static Dictionary<Type, int> TypeSize = new Dictionary<Type, int>()
         {
             {typeof(byte), 1},
             {typeof(sbyte), 1},
-            {typeof(Int16), 2},
-            {typeof(UInt16), 2},
-            {typeof(Int32), 4},
-            {typeof(UInt32), 4},
-            {typeof(Int64), 8},
-            {typeof(UInt64), 8},
+            {typeof(short), 2},
+            {typeof(ushort), 2},
+            {typeof(int), 4},
+            {typeof(uint), 4},
+            {typeof(long), 8},
+            {typeof(ulong), 8},
             {typeof(float), 4},
             {typeof(double), 4},
         };
@@ -43,12 +57,12 @@ namespace STROOP.Structs
         {
             {typeof(byte), false},
             {typeof(sbyte), true},
-            {typeof(Int16), true},
-            {typeof(UInt16), false},
-            {typeof(Int32), true},
-            {typeof(UInt32), false},
-            {typeof(Int64), true},
-            {typeof(UInt64), false},
+            {typeof(short), true},
+            {typeof(ushort), false},
+            {typeof(int), true},
+            {typeof(uint), false},
+            {typeof(long), true},
+            {typeof(ulong), false},
             {typeof(float), true},
             {typeof(double), true},
         };       

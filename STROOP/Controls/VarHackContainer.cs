@@ -148,9 +148,8 @@ namespace STROOP.Controls
             VarHackFlowLayoutPanel varHackPanel,
             XElement element)
         {
-
-            int xPos = ParsingUtilities.ParseInt(element.Attribute(XName.Get("xPos"))?.Value);
-            int yPos = ParsingUtilities.ParseInt(element.Attribute(XName.Get("yPos"))?.Value);
+            int xPos = ParsingUtilities.ParseInt(element.Attribute(XName.Get("xPos")).Value);
+            int yPos = ParsingUtilities.ParseInt(element.Attribute(XName.Get("yPos")).Value);
 
             string specialType = element.Attribute(XName.Get("specialType"))?.Value;
             if (specialType != null)
@@ -174,6 +173,8 @@ namespace STROOP.Controls
         public XElement ToXml()
         {
             XElement root = new XElement("Data");
+            root.Add(new XAttribute("xPos", textBoxXPosValue.Text));
+            root.Add(new XAttribute("yPos", textBoxYPosValue.Text));
             if (_isSpecial)
             {
                 root.Add(new XAttribute("specialType", _specialType));
@@ -182,7 +183,7 @@ namespace STROOP.Controls
             {
                 root.Add(new XAttribute("name", textBoxNameValue.Text));
                 root.Add(new XAttribute("address", textBoxAddressValue.Text));
-                root.Add(new XAttribute("type", GetCurrentType()));
+                root.Add(new XAttribute("type", TypeUtilities.TypeToString[GetCurrentType()]));
                 root.Add(new XAttribute("useHex", checkBoxUseHex.Checked));
                 if (checkBoxUsePointer.Checked)
                     root.Add(new XAttribute("pointerOffset", textBoxPointerOffsetValue.Text));
