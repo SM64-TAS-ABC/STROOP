@@ -74,7 +74,7 @@ namespace STROOP.Structs
             return getterFunction;
         }
 
-        private static string FormatDouble(double value, int numDigits = 4, bool usePadding = true)
+        private static string FormatDouble(double value, int numDigits, bool usePadding)
         {
             string stringValue = Math.Round(value, numDigits).ToString();
             if (usePadding)
