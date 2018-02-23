@@ -64,11 +64,13 @@ namespace STROOP.Controls
             VarHackContainerDefaults defaults = new VarHackContainerDefaults(creationIndex);
 
             string specialType = useDefaults ? defaults.SpecialType : specialTypeIn;
-            string varName = useDefaults ? defaults.VarName : varNameIn;
-            uint? address = useDefaults ? defaults.Address : addressIn;
+            string varName = useDefaults ? defaults.VarName : (varNameIn ?? "");
+            uint address = useDefaults ? defaults.Address : (addressIn ?? 0x8033B1AC);
             Type memoryType = useDefaults ? defaults.MemoryType : (memoryTypeIn ?? typeof(float));
             bool useHex = useDefaults ? defaults.UseHex : (useHexIn ?? false);
-            uint? pointerOffset = useDefaults ? defaults.PointerOffset : pointerOffsetIn;
+            uint? tempPointerOffset = useDefaults ? defaults.PointerOffset : pointerOffsetIn;
+            bool usePointer = tempPointerOffset.HasValue;
+            uint pointerOffset = tempPointerOffset ?? 0x10;
             int xPos = (useDefaults || !xPosIn.HasValue) ? defaults.XPos : xPosIn.Value;
             int yPos = (useDefaults || !yPosIn.HasValue) ? defaults.YPos : yPosIn.Value;
 
@@ -79,15 +81,15 @@ namespace STROOP.Controls
             checkBoxNoNumber.Checked = _isSpecial;
 
             // Misc
-            textBoxNameValue.Text = varName ?? "";
-            textBoxAddressValue.Text = address.HasValue ? "0x" + String.Format("{0:X}", address.Value) : "0x8033B1AC";
+            textBoxNameValue.Text = varName;
+            textBoxAddressValue.Text = "0x" + String.Format("{0:X}", address);
             GetRadioButtonForType(memoryType).Checked = true;
             checkBoxUseHex.Checked = useHex;
 
             // Pointer
-            checkBoxUsePointer.Checked = pointerOffset.HasValue;
-            textBoxPointerOffsetValue.Enabled = pointerOffset.HasValue;
-            textBoxPointerOffsetValue.Text = pointerOffset.HasValue ? "0x" + String.Format("{0:X}", pointerOffset.Value) : "0x10";
+            checkBoxUsePointer.Checked = usePointer;
+            textBoxPointerOffsetValue.Enabled = usePointer;
+            textBoxPointerOffsetValue.Text = "0x" + String.Format("{0:X}", pointerOffset);
 
             // Position
             textBoxXPosValue.Text = xPos.ToString();
