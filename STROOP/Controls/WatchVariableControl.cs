@@ -636,17 +636,17 @@ namespace STROOP.Controls
             _watchVariablePanel.ContextMenuStrip.Show(point);
         }
 
-        public void AddToCustomTab(bool useFixedAddress, bool useIndidualAddresses)
+        public void AddToCustomTab(bool useFixedAddress, bool useIndividualAddresses)
         {
             List<uint> addressList = _watchVarWrapper.GetCurrentAddresses();
             List<List<uint>> addressesLists =
-                useIndidualAddresses ?
+                useIndividualAddresses ?
                     addressList.ConvertAll(address => new List<uint>() { address }) :
                     new List<List<uint>>() { addressList };
             for (int i = 0; i < addressesLists.Count; i++)
             {
                 string name = VarName;
-                if (useIndidualAddresses && addressesLists.Count > 1) name += " " + (i + 1);
+                if (useIndividualAddresses && addressesLists.Count > 1) name += " " + (i + 1);
                 List<uint> constructorAddressList = useFixedAddress ? addressesLists[i] : null;
                 WatchVariableControl newControl =
                     _watchVarPrecursor.CreateWatchVariableControl(

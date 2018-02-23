@@ -370,11 +370,12 @@ namespace STROOP.Controls
             else
             {
                 List<uint> addressList = addresses ?? _watchVar.AddressList;
-                foreach (uint address in addressList)
+                for (int i = 0; i < addressList.Count; i++)
                 {
+                    string indexSuffix = addressList.Count > 1 ? (i + 1).ToString() : "";
                     Config.VarHackManager.AddVariable(
-                        _watchVarControl.VarName + " ",
-                        address,
+                        _watchVarControl.VarName + indexSuffix + " ",
+                        addressList[i],
                         _watchVar.MemoryType,
                         GetUseHex(),
                         null);
