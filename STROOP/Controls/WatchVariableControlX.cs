@@ -185,7 +185,6 @@ namespace STROOP.Controls
             // Initialize color fields
             _baseColor = backgroundColor ?? DEFAULT_COLOR;
             _currentColor = _baseColor;
-            _tableLayoutPanel.BackColor = _currentColor; //TODO check if this is necessary
             _isFlashing = false;
             _flashStartTime = DateTime.Now;
 
