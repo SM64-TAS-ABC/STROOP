@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this._tableLayoutPanel = new BorderedTableLayoutPanel();
+            this._tableLayoutPanel = new STROOP.Controls.BorderedTableLayoutPanel();
             this._namePanel = new System.Windows.Forms.Panel();
             this._pinPictureBox = new System.Windows.Forms.PictureBox();
             this._lockPictureBox = new System.Windows.Forms.PictureBox();
@@ -45,7 +45,9 @@
             // 
             // _tableLayoutPanel
             // 
-            this._tableLayoutPanel.BackColor = System.Drawing.Color.Transparent;
+            this._tableLayoutPanel.BackColor = System.Drawing.SystemColors.Control;
+            this._tableLayoutPanel.BorderColor = System.Drawing.Color.Black;
+            this._tableLayoutPanel.BorderWidth = 1F;
             this._tableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this._tableLayoutPanel.ColumnCount = 2;
             this._tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
@@ -58,6 +60,7 @@
             this._tableLayoutPanel.Name = "_tableLayoutPanel";
             this._tableLayoutPanel.RowCount = 1;
             this._tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this._tableLayoutPanel.ShowBorder = false;
             this._tableLayoutPanel.Size = new System.Drawing.Size(205, 22);
             this._tableLayoutPanel.TabIndex = 0;
             // 
