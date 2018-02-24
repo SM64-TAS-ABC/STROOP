@@ -158,9 +158,6 @@
     <Compile Include="Controls\Map\MapObjectControl.Designer.cs">
       <DependentUpon>MapObjectControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\VarHackContainer.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Controls\NoTearFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
