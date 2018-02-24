@@ -132,11 +132,11 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\WatchVariableControlX.cs">
+    <Compile Include="Controls\WatchVariableControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\WatchVariableControlX.Designer.cs">
-      <DependentUpon>WatchVariableControlX.cs</DependentUpon>
+    <Compile Include="Controls\WatchVariableControl.Designer.cs">
+      <DependentUpon>WatchVariableControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\VarHackContainer.cs">
       <SubType>UserControl</SubType>
@@ -396,8 +396,8 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <EmbeddedResource Include="Controls\WatchVariableControlX.resx">
-      <DependentUpon>WatchVariableControlX.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\WatchVariableControl.resx">
+      <DependentUpon>WatchVariableControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\VarHackContainer.resx">
       <DependentUpon>VarHackContainer.cs</DependentUpon>
