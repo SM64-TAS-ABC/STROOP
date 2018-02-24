@@ -45,6 +45,7 @@
             // 
             // _tableLayoutPanel
             // 
+            this._tableLayoutPanel.BackColor = System.Drawing.Color.Transparent;
             this._tableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this._tableLayoutPanel.ColumnCount = 2;
             this._tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
@@ -104,7 +105,7 @@
             this._nameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this._nameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this._nameTextBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this._nameTextBox.Location = new System.Drawing.Point(4, 2);
+            this._nameTextBox.Location = new System.Drawing.Point(4, 3);
             this._nameTextBox.Name = "_nameTextBox";
             this._nameTextBox.ReadOnly = true;
             this._nameTextBox.Size = new System.Drawing.Size(200, 13);
@@ -126,7 +127,7 @@
             // 
             this._valueTextBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this._valueTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this._valueTextBox.Location = new System.Drawing.Point(-116, 2);
+            this._valueTextBox.Location = new System.Drawing.Point(-121, 3);
             this._valueTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 6, 0);
             this._valueTextBox.Name = "_valueTextBox";
             this._valueTextBox.ReadOnly = true;
