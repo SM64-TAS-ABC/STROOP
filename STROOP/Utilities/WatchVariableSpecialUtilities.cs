@@ -1056,10 +1056,40 @@ namespace STROOP.Structs
                     };
                     break;
 
+                case "TrajectoryRemainingHeight":
+                    getterFunction = (uint dummy) =>
+                    {
+                        float vSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.VSpeedOffset);
+                        double remainingHeight = ComputeHeightFromVerticalSpeed(vSpeed);
+                        return remainingHeight.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return false;
+                    };
+                    break;
+
+                case "TrajectoryPeakHeight":
+                    getterFunction = (uint dummy) =>
+                    {
+                        float vSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.VSpeedOffset);
+                        double remainingHeight = ComputeHeightFromVerticalSpeed(vSpeed);
+                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                        double peakHeight = marioY + remainingHeight;
+                        return peakHeight.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return false;
+                    };
+                    break;
+
                 case "DoubleJumpVerticalSpeed":
                     getterFunction = (uint dummy) =>
                     {
-                        return "1";
+                        float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                        double vSpeed = ConvertDoubleJumpHSpeedToVSpeed(hSpeed);
+                        return vSpeed.ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
@@ -1070,7 +1100,10 @@ namespace STROOP.Structs
                 case "DoubleJumpHeight":
                     getterFunction = (uint dummy) =>
                     {
-                        return "2";
+                        float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                        double vSpeed = ConvertDoubleJumpHSpeedToVSpeed(hSpeed);
+                        double doubleJumpHeight = ComputeHeightFromVerticalSpeed(vSpeed);
+                        return doubleJumpHeight.ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
@@ -1081,7 +1114,12 @@ namespace STROOP.Structs
                 case "DoubleJumpPeakHeight":
                     getterFunction = (uint dummy) =>
                     {
-                        return "3";
+                        float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                        double vSpeed = ConvertDoubleJumpHSpeedToVSpeed(hSpeed);
+                        double doubleJumpHeight = ComputeHeightFromVerticalSpeed(vSpeed);
+                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                        double doubleJumpPeakHeight = marioY + doubleJumpHeight;
+                        return doubleJumpPeakHeight.ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
@@ -2736,6 +2774,26 @@ namespace STROOP.Structs
             ushort marioYawIntendedTruncated = MoreMath.NormalizeAngleTruncated(marioYawIntended);
             int deltaYaw = marioYawIntendedTruncated - marioYawFacingTruncated;
             return MoreMath.NormalizeAngleShort(deltaYaw);
+        }
+
+        // Mario trajectory methods
+
+        public static double ConvertDoubleJumpHSpeedToVSpeed(double hSpeed)
+        {
+            return (hSpeed / 4) + 52;
+        }
+
+        public static double ConvertDoubleJumpVSpeedToHSpeed(double vSpeed)
+        {
+            return (vSpeed - 52) * 4;
+        }
+
+        public static double ComputeHeightFromVerticalSpeed(double initialVSpeed)
+        {
+            int numFrames = (int) Math.Ceiling(initialVSpeed / 4);
+            double finalVSpeed = initialVSpeed - (numFrames - 1) * 4;
+            double height = numFrames * (initialVSpeed + finalVSpeed) / 2;
+            return height;
         }
     }
 }
