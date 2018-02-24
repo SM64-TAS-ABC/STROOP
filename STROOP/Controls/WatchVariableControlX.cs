@@ -480,7 +480,7 @@ namespace STROOP.Controls
                 }
             }
 
-            BackColor = _currentColor;
+            _tableLayoutPanel.BackColor = _currentColor;
             if (!_editMode) _valueTextBox.BackColor = _currentColor;
             if (!_renameMode) _nameTextBox.BackColor = _currentColor;
         }
