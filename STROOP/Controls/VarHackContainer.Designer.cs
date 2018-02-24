@@ -60,7 +60,7 @@
             // 
             // tableLayoutPanelVarHack
             // 
-            this.tableLayoutPanelVarHack.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanelVarHack.BackColor = System.Drawing.SystemColors.Control;
             this.tableLayoutPanelVarHack.BorderColor = System.Drawing.Color.Black;
             this.tableLayoutPanelVarHack.BorderWidth = 1F;
             this.tableLayoutPanelVarHack.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
@@ -70,7 +70,7 @@
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 73F));
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
+            this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 57F));
             this.tableLayoutPanelVarHack.Controls.Add(this.checkBoxUsePointer, 1, 2);
             this.tableLayoutPanelVarHack.Controls.Add(this.textBoxNameValue, 1, 0);
             this.tableLayoutPanelVarHack.Controls.Add(this.textBoxNameLabel, 0, 0);
@@ -104,7 +104,7 @@
             this.tableLayoutPanelVarHack.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanelVarHack.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelVarHack.ShowBorder = false;
-            this.tableLayoutPanelVarHack.Size = new System.Drawing.Size(408, 99);
+            this.tableLayoutPanelVarHack.Size = new System.Drawing.Size(414, 99);
             this.tableLayoutPanelVarHack.TabIndex = 40;
             // 
             // checkBoxUsePointer
@@ -317,6 +317,7 @@
             // 
             // pictureBoxRedX
             // 
+            this.pictureBoxRedX.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBoxRedX.BackgroundImage = global::STROOP.Properties.Resources.Red_X;
             this.pictureBoxRedX.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxRedX.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -324,7 +325,7 @@
             this.pictureBoxRedX.Location = new System.Drawing.Point(359, 4);
             this.pictureBoxRedX.Name = "pictureBoxRedX";
             this.tableLayoutPanelVarHack.SetRowSpan(this.pictureBoxRedX, 2);
-            this.pictureBoxRedX.Size = new System.Drawing.Size(50, 41);
+            this.pictureBoxRedX.Size = new System.Drawing.Size(51, 41);
             this.pictureBoxRedX.TabIndex = 12;
             this.pictureBoxRedX.TabStop = false;
             // 
@@ -382,11 +383,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.tableLayoutPanelVarHack);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "VarHackContainer";
-            this.Size = new System.Drawing.Size(408, 99);
+            this.Size = new System.Drawing.Size(414, 99);
             this.tableLayoutPanelVarHack.ResumeLayout(false);
             this.tableLayoutPanelVarHack.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRedX)).EndInit();
