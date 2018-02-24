@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,10 +11,15 @@ namespace STROOP.Controls
 {
     class BorderedTableLayoutPanel : TableLayoutPanel
     {
-        static Random rng = new Random();
-        Pen _borderPen = new Pen(Color.Red, 5);
+        private readonly Pen _borderPen;
 
-        bool _showBorder = true;
+        public BorderedTableLayoutPanel()
+        {
+            _borderPen = new Pen(Color.Black, 1);
+            _borderPen.Alignment = PenAlignment.Inset;
+        }
+
+    bool _showBorder = true;
         public bool ShowBorder
         {
             get

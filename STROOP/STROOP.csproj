@@ -184,9 +184,7 @@
     </Compile>
     <Compile Include="Controls\WatchVariable.cs" />
     <Compile Include="Controls\WatchVariableControlPrecursor.cs" />
-    <Compile Include="Controls\WatchVariableControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Controls\WatchVariableControl.cs" />
     <Compile Include="Controls\WatchVariableBooleanWrapper.cs" />
     <Compile Include="Controls\WatchVariableObjectWrapper.cs" />
     <Compile Include="Controls\WatchVariableAngleWrapper.cs" />
