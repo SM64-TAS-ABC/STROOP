@@ -1,4 +1,4 @@
-﻿namespace STROOP.Controls.Map
+﻿namespace STROOP.Controls
 {
     partial class WatchVariableControlX
     {

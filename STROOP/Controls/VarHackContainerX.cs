@@ -12,7 +12,7 @@ using STROOP.Utilities;
 using System.Xml.Linq;
 using STROOP.Structs.Configurations;
 
-namespace STROOP.Controls.Map
+namespace STROOP.Controls
 {
     public partial class VarHackContainerX : UserControl
     {

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace STROOP.Controls.Map
+namespace STROOP.Controls
 {
     public partial class WatchVariableControlX : UserControl
     {
