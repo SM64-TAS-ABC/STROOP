@@ -52,6 +52,7 @@
             this._tableLayoutPanel.Controls.Add(this._valuePanel, 1, 0);
             this._tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this._tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this._tableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
             this._tableLayoutPanel.Name = "_tableLayoutPanel";
             this._tableLayoutPanel.RowCount = 1;
             this._tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -86,50 +87,71 @@
             // 
             // _nameTextBox
             // 
-            this._nameTextBox.Location = new System.Drawing.Point(64, 55);
+            this._nameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this._nameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this._nameTextBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this._nameTextBox.Location = new System.Drawing.Point(27, 36);
             this._nameTextBox.Name = "_nameTextBox";
-            this._nameTextBox.Size = new System.Drawing.Size(144, 20);
+            this._nameTextBox.ReadOnly = true;
+            this._nameTextBox.Size = new System.Drawing.Size(200, 13);
             this._nameTextBox.TabIndex = 0;
             // 
             // _valueTextBox
             // 
+            this._valueTextBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this._valueTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this._valueTextBox.Location = new System.Drawing.Point(51, 36);
+            this._valueTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 6, 0);
             this._valueTextBox.Name = "_valueTextBox";
-            this._valueTextBox.Size = new System.Drawing.Size(154, 20);
+            this._valueTextBox.ReadOnly = true;
+            this._valueTextBox.Size = new System.Drawing.Size(200, 13);
             this._valueTextBox.TabIndex = 0;
+            this._valueTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // _valueCheckBox
             // 
             this._valueCheckBox.AutoSize = true;
-            this._valueCheckBox.Location = new System.Drawing.Point(72, 93);
+            this._valueCheckBox.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this._valueCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._valueCheckBox.Location = new System.Drawing.Point(0, 0);
+            this._valueCheckBox.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this._valueCheckBox.Name = "_valueCheckBox";
-            this._valueCheckBox.Size = new System.Drawing.Size(80, 17);
+            this._valueCheckBox.Size = new System.Drawing.Size(259, 129);
             this._valueCheckBox.TabIndex = 1;
-            this._valueCheckBox.Text = "checkBox1";
             this._valueCheckBox.UseVisualStyleBackColor = true;
             // 
             // _lockPictureBox
             // 
+            this._lockPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this._lockPictureBox.Image = global::STROOP.Properties.Resources.img_lock;
             this._lockPictureBox.Location = new System.Drawing.Point(125, 90);
+            this._lockPictureBox.Margin = new System.Windows.Forms.Padding(0);
             this._lockPictureBox.Name = "_lockPictureBox";
-            this._lockPictureBox.Size = new System.Drawing.Size(37, 19);
+            this._lockPictureBox.Size = new System.Drawing.Size(16, 18);
+            this._lockPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this._lockPictureBox.TabIndex = 1;
             this._lockPictureBox.TabStop = false;
+            this._lockPictureBox.Visible = false;
             // 
             // _pinPictureBox
             // 
-            this._pinPictureBox.Location = new System.Drawing.Point(64, 77);
+            this._pinPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this._pinPictureBox.Image = global::STROOP.Properties.Resources.img_pin;
+            this._pinPictureBox.Location = new System.Drawing.Point(70, 90);
+            this._pinPictureBox.Margin = new System.Windows.Forms.Padding(0);
             this._pinPictureBox.Name = "_pinPictureBox";
-            this._pinPictureBox.Size = new System.Drawing.Size(40, 32);
+            this._pinPictureBox.Size = new System.Drawing.Size(10, 17);
+            this._pinPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this._pinPictureBox.TabIndex = 2;
             this._pinPictureBox.TabStop = false;
+            this._pinPictureBox.Visible = false;
             // 
             // WatchVariableControlX
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this._tableLayoutPanel);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "WatchVariableControlX";
             this.Size = new System.Drawing.Size(517, 129);
             this._tableLayoutPanel.ResumeLayout(false);

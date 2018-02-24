@@ -266,7 +266,7 @@ namespace STROOP.Controls
         private TextBox CreateNameTextBox()
         {
             TextBox nameTextBox = new TextBox();
-            nameTextBox.Text = VarName;
+            nameTextBox.Text = VarName;//TODO
             nameTextBox.Cursor = System.Windows.Forms.Cursors.Default;
             nameTextBox.ReadOnly = true;
             nameTextBox.BorderStyle = BorderStyle.None;
