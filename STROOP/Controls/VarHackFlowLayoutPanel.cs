@@ -26,7 +26,7 @@ namespace STROOP.Controls
 
         // Methods for buttons on the controls
 
-        public void MoveUpControl(VarHackContainerX varHackContainer)
+        public void MoveUpControl(VarHackContainer varHackContainer)
         {
             lock (_objectLock)
             {
@@ -37,7 +37,7 @@ namespace STROOP.Controls
             }
         }
 
-        public void MoveDownControl(VarHackContainerX varHackContainer)
+        public void MoveDownControl(VarHackContainer varHackContainer)
         {
             lock (_objectLock)
             {
@@ -48,7 +48,7 @@ namespace STROOP.Controls
             }
         }
 
-        public void RemoveControl(VarHackContainerX varHackContainer)
+        public void RemoveControl(VarHackContainer varHackContainer)
         {
             lock (_objectLock)
             {
@@ -61,8 +61,8 @@ namespace STROOP.Controls
         public void AddNewControl(string varName, uint address, Type memoryType, bool useHex, uint? pointerOffset)
         {
             if (Controls.Count >= VarHackConfig.MaxPossibleVars) return;
-            VarHackContainerX varHackContainer =
-                VarHackContainerX.Create(
+            VarHackContainer varHackContainer =
+                VarHackContainer.Create(
                     this, Controls.Count, varName, address, memoryType, useHex, pointerOffset);
             lock (_objectLock)
             {
@@ -73,8 +73,8 @@ namespace STROOP.Controls
         public void AddNewControl(string specialType)
         {
             if (Controls.Count >= VarHackConfig.MaxPossibleVars) return;
-            VarHackContainerX varHackContainer =
-                VarHackContainerX.Create(this, Controls.Count, specialType);
+            VarHackContainer varHackContainer =
+                VarHackContainer.Create(this, Controls.Count, specialType);
             lock (_objectLock)
             {
                 Controls.Add(varHackContainer);
@@ -86,7 +86,7 @@ namespace STROOP.Controls
         public void AddNewControl()
         {
             if (Controls.Count >= VarHackConfig.MaxPossibleVars) return;
-            VarHackContainerX varHackContainer = VarHackContainerX.Create(this, Controls.Count, true);
+            VarHackContainer varHackContainer = VarHackContainer.Create(this, Controls.Count, true);
             lock (_objectLock)
             {
                 Controls.Add(varHackContainer);
@@ -100,7 +100,7 @@ namespace STROOP.Controls
             {
                 foreach (Control control in Controls)
                 {
-                    VarHackContainerX varHackContainer = control as VarHackContainerX;
+                    VarHackContainer varHackContainer = control as VarHackContainer;
                     elements.Add(varHackContainer.ToXml());
                 }
             }
@@ -110,8 +110,8 @@ namespace STROOP.Controls
         public void OpenVariables()
         {
             List<XElement> elements = FileUtilities.OpenXmlElements(FileType.StroopVarHackVariables);
-            List<VarHackContainerX> varHackContainers =
-                elements.ConvertAll(element => VarHackContainerX.Create(this, element));
+            List<VarHackContainer> varHackContainers =
+                elements.ConvertAll(element => VarHackContainer.Create(this, element));
             lock (_objectLock)
             {
                 varHackContainers.ForEach(varHackContainer => Controls.Add(varHackContainer));
@@ -138,7 +138,7 @@ namespace STROOP.Controls
             {
                 for (int i = 0; i < Controls.Count; i++)
                 {
-                    VarHackContainerX varHackContainer = Controls[i] as VarHackContainerX;
+                    VarHackContainer varHackContainer = Controls[i] as VarHackContainer;
                     varHackContainer.SetPosition(xPos, yPos - i * yDelta);
                 }
             }
@@ -154,9 +154,9 @@ namespace STROOP.Controls
             {
                 foreach (Control control in Controls)
                 {
-                    VarHackContainerX varHackContainer = control as VarHackContainerX;
+                    VarHackContainer varHackContainer = control as VarHackContainer;
                     byte[] bytes = varHackContainer.GetLittleEndianByteArray();
-                    string bytesString = VarHackContainerX.ConvertBytesToString(bytes);
+                    string bytesString = VarHackContainer.ConvertBytesToString(bytes);
                     stringBuilder.Append(bytesString);
                 }
             }
@@ -172,9 +172,9 @@ namespace STROOP.Controls
             {
                 foreach (Control control in Controls)
                 {
-                    VarHackContainerX varHackContainer = control as VarHackContainerX;
+                    VarHackContainer varHackContainer = control as VarHackContainer;
                     byte[] bytes = varHackContainer.GetBigEndianByteArray();
-                    string bytesString = VarHackContainerX.ConvertBytesToString(bytes);
+                    string bytesString = VarHackContainer.ConvertBytesToString(bytes);
                     stringBuilder.Append(bytesString);
                 }
             }
@@ -201,7 +201,7 @@ namespace STROOP.Controls
             byte[] bytes;
             if (index < Controls.Count)
             {
-                VarHackContainerX varHackContainer = Controls[index] as VarHackContainerX;
+                VarHackContainer varHackContainer = Controls[index] as VarHackContainer;
                 bytes = varHackContainer.GetLittleEndianByteArray();
             }
             else
@@ -230,7 +230,7 @@ namespace STROOP.Controls
             {
                 for (int i = 0; i < Controls.Count; i++)
                 {
-                    VarHackContainerX varHackContainer = Controls[i] as VarHackContainerX;
+                    VarHackContainer varHackContainer = Controls[i] as VarHackContainer;
                     varHackContainer.UpdateControl();
                     if (varHackContainer.UpdatesContinuously())
                     {

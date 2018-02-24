@@ -138,11 +138,11 @@
     <Compile Include="Controls\WatchVariableControlX.Designer.cs">
       <DependentUpon>WatchVariableControlX.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\VarHackContainerX.cs">
+    <Compile Include="Controls\VarHackContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\VarHackContainerX.Designer.cs">
-      <DependentUpon>VarHackContainerX.cs</DependentUpon>
+    <Compile Include="Controls\VarHackContainer.Designer.cs">
+      <DependentUpon>VarHackContainer.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\Map\Graphics\IMapCamera.cs" />
     <Compile Include="Controls\Map\Graphics\Items\MapGraphicsItem.cs" />
@@ -408,8 +408,8 @@
     <EmbeddedResource Include="Controls\WatchVariableControlX.resx">
       <DependentUpon>WatchVariableControlX.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\VarHackContainerX.resx">
-      <DependentUpon>VarHackContainerX.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\VarHackContainer.resx">
+      <DependentUpon>VarHackContainer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Map\MapObjectControl.resx">
       <DependentUpon>MapObjectControl.cs</DependentUpon>

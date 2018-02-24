@@ -14,7 +14,7 @@ using STROOP.Structs.Configurations;
 
 namespace STROOP.Controls
 {
-    public partial class VarHackContainerX : UserControl
+    public partial class VarHackContainer : UserControl
     {
         private static readonly Pen _borderPen = new Pen(Color.Black, 3);
         private readonly VarHackFlowLayoutPanel _varHackPanel;
@@ -23,7 +23,7 @@ namespace STROOP.Controls
         private bool _isSpecial;
         private Func<string> _getterFunction;
 
-        private VarHackContainerX(
+        private VarHackContainer(
             VarHackFlowLayoutPanel varHackPanel,
             int creationIndex,
             bool useDefaults,
@@ -79,18 +79,18 @@ namespace STROOP.Controls
             checkBoxUsePointer.Click += (sender, e) => textBoxPointerOffsetValue.Enabled = checkBoxUsePointer.Checked;
         }
 
-        public static VarHackContainerX Create(
+        public static VarHackContainer Create(
             VarHackFlowLayoutPanel varHackPanel,
             int creationIndex,
             bool useDefaults)
         {
-            return new VarHackContainerX(
+            return new VarHackContainer(
                 varHackPanel,
                 creationIndex,
                 useDefaults);
         }
 
-        public static VarHackContainerX Create(
+        public static VarHackContainer Create(
             VarHackFlowLayoutPanel varHackPanel,
             int creationIndex,
             string varName,
@@ -99,7 +99,7 @@ namespace STROOP.Controls
             bool useHex,
             uint? pointerOffset)
         {
-            return new VarHackContainerX(
+            return new VarHackContainer(
                 varHackPanel,
                 creationIndex,
                 false,
@@ -111,19 +111,19 @@ namespace STROOP.Controls
                 pointerOffset);
         }
 
-        public static VarHackContainerX Create(
+        public static VarHackContainer Create(
             VarHackFlowLayoutPanel varHackPanel,
             int creationIndex,
             string specialType)
         {
-            return new VarHackContainerX(
+            return new VarHackContainer(
                 varHackPanel,
                 creationIndex,
                 false,
                 specialType);
         }
 
-        public static VarHackContainerX Create(
+        public static VarHackContainer Create(
             VarHackFlowLayoutPanel varHackPanel,
             XElement element)
         {
@@ -133,7 +133,7 @@ namespace STROOP.Controls
             string specialType = element.Attribute(XName.Get("specialType"))?.Value;
             if (specialType != null)
             {
-                return new VarHackContainerX(
+                return new VarHackContainer(
                     varHackPanel, 0, false, specialType, null, null, null, null, null, xPos, yPos);
             }
             else
@@ -144,7 +144,7 @@ namespace STROOP.Controls
                 bool useHex = ParsingUtilities.ParseBool(element.Attribute(XName.Get("useHex")).Value);
                 uint? pointerOffset = ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("pointerOffset"))?.Value);
 
-                return new VarHackContainerX(
+                return new VarHackContainer(
                     varHackPanel, 0, false, null, varName, address, type, useHex, pointerOffset, xPos, yPos);
             }
         }
