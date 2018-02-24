@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Xml.Linq;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
+using System.Drawing.Drawing2D;
 
 namespace STROOP.Controls
 {
@@ -41,7 +42,7 @@ namespace STROOP.Controls
             set { _valueCheckBox.CheckState = value; }
         }
 
-        private static readonly Pen _borderPen = new Pen(Color.Red, 5);
+        private readonly Pen _borderPen;
 
         public static readonly Color DEFAULT_COLOR = SystemColors.Control;
         public static readonly Color FAILURE_COLOR = Color.Red;
@@ -169,6 +170,8 @@ namespace STROOP.Controls
         {
             // Initialize controls
             InitializeComponent();
+            _borderPen = new Pen(Color.Red, 3);
+            _borderPen.Alignment = PenAlignment.Inset;
             _nameTextBox.Text = name;
 
             // Store the precursor
@@ -478,7 +481,6 @@ namespace STROOP.Controls
                     _isFlashing = false;
                 }
             }
-
             _tableLayoutPanel.BackColor = _currentColor;
             if (!_editMode) _valueTextBox.BackColor = _currentColor;
             if (!_renameMode) _nameTextBox.BackColor = _currentColor;
@@ -611,11 +613,8 @@ namespace STROOP.Controls
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            var rec = DisplayRectangle;
-            rec.Width -= 1;
-            rec.Height -= 1;
             if (_showBorder)
-                e.Graphics.DrawRectangle(_borderPen, rec);
+                e.Graphics.DrawRectangle(_borderPen, DisplayRectangle);
         }
 
         public override string ToString()
