@@ -133,7 +133,6 @@ namespace STROOP.Controls
         private static readonly Image _someLockedImage = Properties.Resources.img_lock_grey;
         private static readonly Image _pinnedImage = Properties.Resources.img_pin;
 
-        private static readonly int LOCK_PADDING = 16;
         private static readonly int PIN_OUTER_PADDING = 11;
         private static readonly int PIN_INNER_PADDING = 24;
 
