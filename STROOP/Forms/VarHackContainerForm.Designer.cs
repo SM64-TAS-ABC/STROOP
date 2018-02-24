@@ -37,11 +37,6 @@
             this.textBoxAddressValue = new STROOP.BetterTextbox();
             this.textBoxPointerOffsetLabel = new STROOP.BetterTextbox();
             this.textBoxPointerOffsetValue = new STROOP.BetterTextbox();
-            this.textBoxXPosLabel = new STROOP.BetterTextbox();
-            this.textBoxYPosLabel = new STROOP.BetterTextbox();
-            this.textBoxXPosValue = new STROOP.BetterTextbox();
-            this.textBoxYPosValue = new STROOP.BetterTextbox();
-            this.checkBoxUseHex = new System.Windows.Forms.CheckBox();
             this.radioButtonSByte = new System.Windows.Forms.RadioButton();
             this.radioButtonByte = new System.Windows.Forms.RadioButton();
             this.radioButtonShort = new System.Windows.Forms.RadioButton();
@@ -49,6 +44,11 @@
             this.radioButtonInt = new System.Windows.Forms.RadioButton();
             this.radioButtonUInt = new System.Windows.Forms.RadioButton();
             this.radioButtonFloat = new System.Windows.Forms.RadioButton();
+            this.checkBoxUseHex = new System.Windows.Forms.CheckBox();
+            this.textBoxXPosLabel = new STROOP.BetterTextbox();
+            this.textBoxXPosValue = new STROOP.BetterTextbox();
+            this.textBoxYPosLabel = new STROOP.BetterTextbox();
+            this.textBoxYPosValue = new STROOP.BetterTextbox();
             this.pictureBoxUpArrow = new System.Windows.Forms.PictureBox();
             this.pictureBoxDownArrow = new System.Windows.Forms.PictureBox();
             this.pictureBoxRedX = new System.Windows.Forms.PictureBox();
@@ -66,7 +66,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 73F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 51F));
             this.tableLayoutPanel1.Controls.Add(this.checkBoxUsePointer, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.textBoxNameValue, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.textBoxNameLabel, 0, 0);
@@ -184,65 +184,6 @@
             this.textBoxPointerOffsetValue.Text = "0x10";
             this.textBoxPointerOffsetValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBoxXPosLabel
-            // 
-            this.textBoxXPosLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.textBoxXPosLabel.BackColor = System.Drawing.SystemColors.Control;
-            this.textBoxXPosLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxXPosLabel.Location = new System.Drawing.Point(317, 5);
-            this.textBoxXPosLabel.Name = "textBoxXPosLabel";
-            this.textBoxXPosLabel.ReadOnly = true;
-            this.textBoxXPosLabel.Size = new System.Drawing.Size(30, 13);
-            this.textBoxXPosLabel.TabIndex = 10;
-            this.textBoxXPosLabel.Text = "X Pos:";
-            this.textBoxXPosLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBoxYPosLabel
-            // 
-            this.textBoxYPosLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.textBoxYPosLabel.BackColor = System.Drawing.SystemColors.Control;
-            this.textBoxYPosLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxYPosLabel.Location = new System.Drawing.Point(317, 29);
-            this.textBoxYPosLabel.Name = "textBoxYPosLabel";
-            this.textBoxYPosLabel.ReadOnly = true;
-            this.textBoxYPosLabel.Size = new System.Drawing.Size(30, 13);
-            this.textBoxYPosLabel.TabIndex = 10;
-            this.textBoxYPosLabel.Text = "Y Pos:";
-            this.textBoxYPosLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBoxXPosValue
-            // 
-            this.textBoxXPosValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxXPosValue.BackColor = System.Drawing.Color.White;
-            this.textBoxXPosValue.Location = new System.Drawing.Point(353, 3);
-            this.textBoxXPosValue.Name = "textBoxXPosValue";
-            this.textBoxXPosValue.Size = new System.Drawing.Size(45, 20);
-            this.textBoxXPosValue.TabIndex = 10;
-            this.textBoxXPosValue.Text = "100";
-            this.textBoxXPosValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxYPosValue
-            // 
-            this.textBoxYPosValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxYPosValue.BackColor = System.Drawing.Color.White;
-            this.textBoxYPosValue.Location = new System.Drawing.Point(353, 27);
-            this.textBoxYPosValue.Name = "textBoxYPosValue";
-            this.textBoxYPosValue.Size = new System.Drawing.Size(45, 20);
-            this.textBoxYPosValue.TabIndex = 10;
-            this.textBoxYPosValue.Text = "200";
-            this.textBoxYPosValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // checkBoxUseHex
-            // 
-            this.checkBoxUseHex.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBoxUseHex.AutoSize = true;
-            this.checkBoxUseHex.Location = new System.Drawing.Point(244, 77);
-            this.checkBoxUseHex.Name = "checkBoxUseHex";
-            this.checkBoxUseHex.Size = new System.Drawing.Size(67, 17);
-            this.checkBoxUseHex.TabIndex = 4;
-            this.checkBoxUseHex.Text = "Use Hex";
-            this.checkBoxUseHex.UseVisualStyleBackColor = true;
-            // 
             // radioButtonSByte
             // 
             this.radioButtonSByte.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -321,6 +262,65 @@
             this.radioButtonFloat.TabStop = true;
             this.radioButtonFloat.Text = "float";
             this.radioButtonFloat.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxUseHex
+            // 
+            this.checkBoxUseHex.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.checkBoxUseHex.AutoSize = true;
+            this.checkBoxUseHex.Location = new System.Drawing.Point(244, 77);
+            this.checkBoxUseHex.Name = "checkBoxUseHex";
+            this.checkBoxUseHex.Size = new System.Drawing.Size(67, 17);
+            this.checkBoxUseHex.TabIndex = 4;
+            this.checkBoxUseHex.Text = "Use Hex";
+            this.checkBoxUseHex.UseVisualStyleBackColor = true;
+            // 
+            // textBoxXPosLabel
+            // 
+            this.textBoxXPosLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.textBoxXPosLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxXPosLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxXPosLabel.Location = new System.Drawing.Point(317, 5);
+            this.textBoxXPosLabel.Name = "textBoxXPosLabel";
+            this.textBoxXPosLabel.ReadOnly = true;
+            this.textBoxXPosLabel.Size = new System.Drawing.Size(30, 13);
+            this.textBoxXPosLabel.TabIndex = 10;
+            this.textBoxXPosLabel.Text = "X Pos:";
+            this.textBoxXPosLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBoxXPosValue
+            // 
+            this.textBoxXPosValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxXPosValue.BackColor = System.Drawing.Color.White;
+            this.textBoxXPosValue.Location = new System.Drawing.Point(353, 3);
+            this.textBoxXPosValue.Name = "textBoxXPosValue";
+            this.textBoxXPosValue.Size = new System.Drawing.Size(45, 20);
+            this.textBoxXPosValue.TabIndex = 10;
+            this.textBoxXPosValue.Text = "100";
+            this.textBoxXPosValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxYPosLabel
+            // 
+            this.textBoxYPosLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.textBoxYPosLabel.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxYPosLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxYPosLabel.Location = new System.Drawing.Point(317, 29);
+            this.textBoxYPosLabel.Name = "textBoxYPosLabel";
+            this.textBoxYPosLabel.ReadOnly = true;
+            this.textBoxYPosLabel.Size = new System.Drawing.Size(30, 13);
+            this.textBoxYPosLabel.TabIndex = 10;
+            this.textBoxYPosLabel.Text = "Y Pos:";
+            this.textBoxYPosLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBoxYPosValue
+            // 
+            this.textBoxYPosValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxYPosValue.BackColor = System.Drawing.Color.White;
+            this.textBoxYPosValue.Location = new System.Drawing.Point(353, 27);
+            this.textBoxYPosValue.Name = "textBoxYPosValue";
+            this.textBoxYPosValue.Size = new System.Drawing.Size(45, 20);
+            this.textBoxYPosValue.TabIndex = 10;
+            this.textBoxYPosValue.Text = "200";
+            this.textBoxYPosValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBoxUpArrow
             // 
