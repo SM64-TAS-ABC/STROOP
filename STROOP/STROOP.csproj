@@ -132,6 +132,18 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\WatchVariableControlX.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WatchVariableControlX.Designer.cs">
+      <DependentUpon>WatchVariableControlX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\VarHackContainerX.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\VarHackContainerX.Designer.cs">
+      <DependentUpon>VarHackContainerX.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Map\Graphics\IMapCamera.cs" />
     <Compile Include="Controls\Map\Graphics\Items\MapGraphicsItem.cs" />
     <Compile Include="Controls\Map\Graphics\MapCameraTopView.cs" />
@@ -396,6 +408,12 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <EmbeddedResource Include="Controls\WatchVariableControlX.resx">
+      <DependentUpon>WatchVariableControlX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\VarHackContainerX.resx">
+      <DependentUpon>VarHackContainerX.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\Map\MapObjectControl.resx">
       <DependentUpon>MapObjectControl.cs</DependentUpon>
     </EmbeddedResource>
