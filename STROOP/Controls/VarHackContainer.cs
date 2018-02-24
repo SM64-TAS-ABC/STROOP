@@ -96,9 +96,11 @@ namespace STROOP.Controls
             textBoxYPosValue.Text = yPos.ToString();
 
             // Clicking functionality
+            /*
             pictureBoxUpArrow.Click += (sender, e) => _varHackPanel.MoveUpControl(this);
             pictureBoxDownArrow.Click += (sender, e) => _varHackPanel.MoveDownControl(this);
             pictureBoxRedX.Click += (sender, e) => _varHackPanel.RemoveControl(this);
+            */
             checkBoxUsePointer.Click += (sender, e) => textBoxPointerOffsetValue.Enabled = checkBoxUsePointer.Checked;
         }
 

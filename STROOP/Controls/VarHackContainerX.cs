@@ -73,11 +73,9 @@ namespace STROOP.Controls
             textBoxYPosValue.Text = yPos.ToString();
 
             // Clicking functionality
-            /*
             pictureBoxUpArrow.Click += (sender, e) => _varHackPanel.MoveUpControl(this);
             pictureBoxDownArrow.Click += (sender, e) => _varHackPanel.MoveDownControl(this);
             pictureBoxRedX.Click += (sender, e) => _varHackPanel.RemoveControl(this);
-            */
             checkBoxUsePointer.Click += (sender, e) => textBoxPointerOffsetValue.Enabled = checkBoxUsePointer.Checked;
         }
 
@@ -384,6 +382,13 @@ namespace STROOP.Controls
             }
         }
 
-
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            var rec = tableLayoutPanelVarHack.DisplayRectangle;
+            rec.Width -= 1;
+            rec.Height -= 1;
+            e.Graphics.DrawRectangle(_borderPen, rec);
+        }
     }
 }
