@@ -1056,6 +1056,39 @@ namespace STROOP.Structs
                     };
                     break;
 
+                case "DoubleJumpVerticalSpeed":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return "1";
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return false;
+                    };
+                    break;
+
+                case "DoubleJumpHeight":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return "2";
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return false;
+                    };
+                    break;
+
+                case "DoubleJumpPeakHeight":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return "3";
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return false;
+                    };
+                    break;
+
                 case "MovementX":
                     getterFunction = (uint dummy) =>
                     {
