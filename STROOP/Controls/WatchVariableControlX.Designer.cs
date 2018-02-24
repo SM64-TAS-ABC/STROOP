@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this._tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this._tableLayoutPanel = new BorderedTableLayoutPanel();
             this._namePanel = new System.Windows.Forms.Panel();
             this._pinPictureBox = new System.Windows.Forms.PictureBox();
             this._lockPictureBox = new System.Windows.Forms.PictureBox();
@@ -170,7 +170,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel _tableLayoutPanel;
+        private BorderedTableLayoutPanel _tableLayoutPanel;
         private System.Windows.Forms.Panel _namePanel;
         private System.Windows.Forms.Panel _valuePanel;
         private System.Windows.Forms.TextBox _nameTextBox;

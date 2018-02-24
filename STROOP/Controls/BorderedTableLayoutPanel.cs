@@ -19,7 +19,7 @@ namespace STROOP.Controls
             _borderPen.Alignment = PenAlignment.Inset;
         }
 
-    bool _showBorder = true;
+        bool _showBorder = false;
         public bool ShowBorder
         {
             get
@@ -48,7 +48,9 @@ namespace STROOP.Controls
                     return;
 
                 _borderPen.Color = value;
-                Invalidate();
+
+                if (_showBorder)
+                    Invalidate();
             }
         }
 
@@ -64,18 +66,17 @@ namespace STROOP.Controls
                     return;
 
                 _borderPen.Width = value;
-                Invalidate();
+
+                if (_showBorder)
+                    Invalidate();
             }
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            var rec = DisplayRectangle;
-            rec.Width -= 1;
-            rec.Height -= 1;
             if (_showBorder)
-                e.Graphics.DrawRectangle(_borderPen, rec);
+                e.Graphics.DrawRectangle(_borderPen, DisplayRectangle);
         }
 
         protected override void Dispose(bool disposing)

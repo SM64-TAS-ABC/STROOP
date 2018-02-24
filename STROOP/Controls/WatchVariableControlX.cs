@@ -42,8 +42,6 @@ namespace STROOP.Controls
             set { _valueCheckBox.CheckState = value; }
         }
 
-        private readonly Pen _borderPen;
-
         public static readonly Color DEFAULT_COLOR = SystemColors.Control;
         public static readonly Color FAILURE_COLOR = Color.Red;
         public static readonly Color ENABLE_CUSTOM_FUNCIONALITY_COLOR = Color.Yellow;
@@ -75,20 +73,15 @@ namespace STROOP.Controls
             }
         }
 
-        private bool _showBorder;
         public bool ShowBorder
         {
             get
             {
-                return _showBorder;
+                return _tableLayoutPanel.ShowBorder;
             }
             set
             {
-                if (_showBorder == value)
-                    return;
-
-                _showBorder = value;
-                Invalidate();
+                _tableLayoutPanel.ShowBorder = value;
             }
         }
 
@@ -170,8 +163,8 @@ namespace STROOP.Controls
         {
             // Initialize controls
             InitializeComponent();
-            _borderPen = new Pen(Color.Red, 3);
-            _borderPen.Alignment = PenAlignment.Inset;
+            _tableLayoutPanel.BorderColor = Color.Red;
+            _tableLayoutPanel.BorderWidth = 3;
             _nameTextBox.Text = name;
 
             // Store the precursor
@@ -180,7 +173,6 @@ namespace STROOP.Controls
             // Initialize main fields
             _varName = name;
             GroupList = groupList;
-            _showBorder = false;
             _editMode = false;
             _renameMode = false;
             FixedAddressList = fixedAddresses;
@@ -605,16 +597,6 @@ namespace STROOP.Controls
         public List<string> GetVarInfo()
         {
             return _watchVarWrapper.GetVarInfo();
-        }
-
-
-
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            if (_showBorder)
-                e.Graphics.DrawRectangle(_borderPen, DisplayRectangle);
         }
 
         public override string ToString()
