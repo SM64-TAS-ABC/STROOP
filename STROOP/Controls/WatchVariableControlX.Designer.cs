@@ -28,130 +28,130 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this._tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this._namePanel = new System.Windows.Forms.Panel();
+            this._valuePanel = new System.Windows.Forms.Panel();
+            this._nameTextBox = new System.Windows.Forms.TextBox();
+            this._valueTextBox = new System.Windows.Forms.TextBox();
+            this._valueCheckBox = new System.Windows.Forms.CheckBox();
+            this._lockPictureBox = new System.Windows.Forms.PictureBox();
+            this._pinPictureBox = new System.Windows.Forms.PictureBox();
+            this._tableLayoutPanel.SuspendLayout();
+            this._namePanel.SuspendLayout();
+            this._valuePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._lockPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._pinPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // _tableLayoutPanel
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel2, 1, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(517, 129);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this._tableLayoutPanel.ColumnCount = 2;
+            this._tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this._tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this._tableLayoutPanel.Controls.Add(this._namePanel, 0, 0);
+            this._tableLayoutPanel.Controls.Add(this._valuePanel, 1, 0);
+            this._tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this._tableLayoutPanel.Name = "_tableLayoutPanel";
+            this._tableLayoutPanel.RowCount = 1;
+            this._tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this._tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this._tableLayoutPanel.Size = new System.Drawing.Size(517, 129);
+            this._tableLayoutPanel.TabIndex = 0;
             // 
-            // panel1
+            // _namePanel
             // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(258, 129);
-            this.panel1.TabIndex = 0;
+            this._namePanel.BackColor = System.Drawing.Color.Transparent;
+            this._namePanel.Controls.Add(this._pinPictureBox);
+            this._namePanel.Controls.Add(this._lockPictureBox);
+            this._namePanel.Controls.Add(this._nameTextBox);
+            this._namePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._namePanel.Location = new System.Drawing.Point(0, 0);
+            this._namePanel.Margin = new System.Windows.Forms.Padding(0);
+            this._namePanel.Name = "_namePanel";
+            this._namePanel.Size = new System.Drawing.Size(258, 129);
+            this._namePanel.TabIndex = 0;
             // 
-            // panel2
+            // _valuePanel
             // 
-            this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.Controls.Add(this.checkBox1);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(258, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(259, 129);
-            this.panel2.TabIndex = 1;
+            this._valuePanel.BackColor = System.Drawing.Color.Transparent;
+            this._valuePanel.Controls.Add(this._valueCheckBox);
+            this._valuePanel.Controls.Add(this._valueTextBox);
+            this._valuePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._valuePanel.Location = new System.Drawing.Point(258, 0);
+            this._valuePanel.Margin = new System.Windows.Forms.Padding(0);
+            this._valuePanel.Name = "_valuePanel";
+            this._valuePanel.Size = new System.Drawing.Size(259, 129);
+            this._valuePanel.TabIndex = 1;
             // 
-            // textBox1
+            // _nameTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(64, 55);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(144, 20);
-            this.textBox1.TabIndex = 0;
+            this._nameTextBox.Location = new System.Drawing.Point(64, 55);
+            this._nameTextBox.Name = "_nameTextBox";
+            this._nameTextBox.Size = new System.Drawing.Size(144, 20);
+            this._nameTextBox.TabIndex = 0;
             // 
-            // textBox2
+            // _valueTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(51, 36);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(154, 20);
-            this.textBox2.TabIndex = 0;
+            this._valueTextBox.Location = new System.Drawing.Point(51, 36);
+            this._valueTextBox.Name = "_valueTextBox";
+            this._valueTextBox.Size = new System.Drawing.Size(154, 20);
+            this._valueTextBox.TabIndex = 0;
             // 
-            // checkBox1
+            // _valueCheckBox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(72, 93);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
-            this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this._valueCheckBox.AutoSize = true;
+            this._valueCheckBox.Location = new System.Drawing.Point(72, 93);
+            this._valueCheckBox.Name = "_valueCheckBox";
+            this._valueCheckBox.Size = new System.Drawing.Size(80, 17);
+            this._valueCheckBox.TabIndex = 1;
+            this._valueCheckBox.Text = "checkBox1";
+            this._valueCheckBox.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
+            // _lockPictureBox
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(125, 90);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(37, 19);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this._lockPictureBox.Location = new System.Drawing.Point(125, 90);
+            this._lockPictureBox.Name = "_lockPictureBox";
+            this._lockPictureBox.Size = new System.Drawing.Size(37, 19);
+            this._lockPictureBox.TabIndex = 1;
+            this._lockPictureBox.TabStop = false;
             // 
-            // pictureBox2
+            // _pinPictureBox
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(191, 87);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(40, 32);
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
+            this._pinPictureBox.Location = new System.Drawing.Point(64, 77);
+            this._pinPictureBox.Name = "_pinPictureBox";
+            this._pinPictureBox.Size = new System.Drawing.Size(40, 32);
+            this._pinPictureBox.TabIndex = 2;
+            this._pinPictureBox.TabStop = false;
             // 
             // WatchVariableControlX
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this._tableLayoutPanel);
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "WatchVariableControlX";
             this.Size = new System.Drawing.Size(517, 129);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this._tableLayoutPanel.ResumeLayout(false);
+            this._namePanel.ResumeLayout(false);
+            this._namePanel.PerformLayout();
+            this._valuePanel.ResumeLayout(false);
+            this._valuePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._lockPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._pinPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TableLayoutPanel _tableLayoutPanel;
+        private System.Windows.Forms.Panel _namePanel;
+        private System.Windows.Forms.Panel _valuePanel;
+        private System.Windows.Forms.TextBox _nameTextBox;
+        private System.Windows.Forms.TextBox _valueTextBox;
+        private System.Windows.Forms.PictureBox _pinPictureBox;
+        private System.Windows.Forms.PictureBox _lockPictureBox;
+        private System.Windows.Forms.CheckBox _valueCheckBox;
     }
 }
