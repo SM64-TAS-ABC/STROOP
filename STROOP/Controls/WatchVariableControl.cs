@@ -251,7 +251,7 @@ namespace STROOP.Controls
             base.Padding = new Padding(0);
             base.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _variableNameWidth));
             base.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _variableValueWidth));
-            base.BackColor = _currentColor;
+            base.BackColor = _currentColor;//TODO
         }
 
         private Panel CreateNamePanel()
