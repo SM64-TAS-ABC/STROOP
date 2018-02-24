@@ -17,6 +17,7 @@ namespace STROOP.Structs
 
         ObjectSpecific,
 
+        DoubleJump,
         Collision,
         Environment,
         Hacks,

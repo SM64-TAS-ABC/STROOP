@@ -20,6 +20,7 @@ namespace STROOP.Managers
                 VariableGroup.Basic,
                 VariableGroup.Intermediate,
                 VariableGroup.Advanced,
+                VariableGroup.DoubleJump,
                 VariableGroup.Hacks,
             };
 

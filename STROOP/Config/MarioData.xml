@@ -7,6 +7,9 @@
   <Data groupList="Basic" type="float" offset="0x4C" base="Mario" coord="Y">Y Speed</Data>
   <Data groupList="Basic" type="float" offset="0x50" base="Mario" coord="Z">Z Speed</Data>
   <Data groupList="Basic" type="float" offset="0x54" base="Mario">H Speed</Data>
+  <Data groupList="DoubleJump" base="None" specialType="DoubleJumpVerticalSpeed">DJ V Speed</Data>
+  <Data groupList="DoubleJump" base="None" specialType="DoubleJumpHeight">DJ Height</Data>
+  <Data groupList="DoubleJump" base="None" specialType="DoubleJumpPeakHeight">DJ Peak Height</Data>
   <Data groupList="Basic" base="None" specialType="DeFactoSpeed">De Facto Speed</Data>
   <Data groupList="Basic" type="float" offset="0x58" base="Mario">X Sliding Speed</Data>
   <Data groupList="Basic" type="float" offset="0x5C" base="Mario">Z Sliding Speed</Data>
