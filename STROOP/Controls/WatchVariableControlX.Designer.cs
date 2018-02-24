@@ -78,7 +78,7 @@
             // 
             this._pinPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this._pinPictureBox.Image = global::STROOP.Properties.Resources.img_pin;
-            this._pinPictureBox.Location = new System.Drawing.Point(109, 1);
+            this._pinPictureBox.Location = new System.Drawing.Point(109, 2);
             this._pinPictureBox.Margin = new System.Windows.Forms.Padding(0);
             this._pinPictureBox.Name = "_pinPictureBox";
             this._pinPictureBox.Size = new System.Drawing.Size(10, 17);
@@ -91,7 +91,7 @@
             // 
             this._lockPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this._lockPictureBox.Image = global::STROOP.Properties.Resources.img_lock;
-            this._lockPictureBox.Location = new System.Drawing.Point(104, 0);
+            this._lockPictureBox.Location = new System.Drawing.Point(104, 1);
             this._lockPictureBox.Margin = new System.Windows.Forms.Padding(0);
             this._lockPictureBox.Name = "_lockPictureBox";
             this._lockPictureBox.Size = new System.Drawing.Size(16, 18);
