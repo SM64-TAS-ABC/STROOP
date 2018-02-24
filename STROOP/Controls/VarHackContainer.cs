@@ -11,12 +11,13 @@ using STROOP.Structs;
 using STROOP.Utilities;
 using System.Xml.Linq;
 using STROOP.Structs.Configurations;
+using System.Drawing.Drawing2D;
 
 namespace STROOP.Controls
 {
     public partial class VarHackContainer : UserControl
     {
-        private static readonly Pen _borderPen = new Pen(Color.Black, 3);
+        private readonly Pen _borderPen;
         private readonly VarHackFlowLayoutPanel _varHackPanel;
 
         private string _specialType;
@@ -37,6 +38,8 @@ namespace STROOP.Controls
             int? yPosIn = null)
         {
             InitializeComponent();
+            _borderPen = new Pen(Color.Black, 2);
+            _borderPen.Alignment = PenAlignment.Inset;
             _varHackPanel = varHackPanel;
             VarHackContainerDefaults defaults = new VarHackContainerDefaults(creationIndex);
 
@@ -385,10 +388,7 @@ namespace STROOP.Controls
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            var rec = tableLayoutPanelVarHack.DisplayRectangle;
-            rec.Width -= 1;
-            rec.Height -= 1;
-            e.Graphics.DrawRectangle(_borderPen, rec);
+            e.Graphics.DrawRectangle(_borderPen, DisplayRectangle);
         }
     }
 }
