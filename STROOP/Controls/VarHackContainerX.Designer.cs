@@ -51,6 +51,7 @@
             this.pictureBoxUpArrow = new System.Windows.Forms.PictureBox();
             this.pictureBoxDownArrow = new System.Windows.Forms.PictureBox();
             this.pictureBoxRedX = new System.Windows.Forms.PictureBox();
+            this.checkBoxNoNumber = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpArrow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).BeginInit();
@@ -88,6 +89,7 @@
             this.tableLayoutPanel1.Controls.Add(this.pictureBoxUpArrow, 4, 2);
             this.tableLayoutPanel1.Controls.Add(this.pictureBoxDownArrow, 4, 3);
             this.tableLayoutPanel1.Controls.Add(this.pictureBoxRedX, 5, 2);
+            this.tableLayoutPanel1.Controls.Add(this.checkBoxNoNumber, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -96,6 +98,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(401, 99);
             this.tableLayoutPanel1.TabIndex = 40;
             // 
@@ -361,6 +364,18 @@
             this.pictureBoxRedX.TabIndex = 12;
             this.pictureBoxRedX.TabStop = false;
             // 
+            // checkBoxNoNumber
+            // 
+            this.checkBoxNoNumber.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.checkBoxNoNumber.AutoSize = true;
+            this.checkBoxNoNumber.ForeColor = System.Drawing.Color.DarkRed;
+            this.checkBoxNoNumber.Location = new System.Drawing.Point(3, 51);
+            this.checkBoxNoNumber.Name = "checkBoxNoNumber";
+            this.checkBoxNoNumber.Size = new System.Drawing.Size(65, 17);
+            this.checkBoxNoNumber.TabIndex = 4;
+            this.checkBoxNoNumber.Text = "No Num";
+            this.checkBoxNoNumber.UseVisualStyleBackColor = true;
+            // 
             // VarHackContainerX
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -403,5 +418,6 @@
         private System.Windows.Forms.PictureBox pictureBoxUpArrow;
         private System.Windows.Forms.PictureBox pictureBoxDownArrow;
         private System.Windows.Forms.PictureBox pictureBoxRedX;
+        private System.Windows.Forms.CheckBox checkBoxNoNumber;
     }
 }
