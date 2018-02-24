@@ -39,7 +39,7 @@ namespace STROOP.Managers
             _variablePanel.AddVariable(watchVarControl);
         }
 
-        public virtual void AddVariables(IEnumerable<WatchVariableControl> watchVarControls)
+        public virtual void AddVariables(List<WatchVariableControl> watchVarControls)
         {
             _variablePanel.AddVariables(watchVarControls);
         }

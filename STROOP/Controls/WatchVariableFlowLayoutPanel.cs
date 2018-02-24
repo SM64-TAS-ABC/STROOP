@@ -130,7 +130,7 @@ namespace STROOP.Controls
             }
         }
 
-        public void AddVariables(IEnumerable<WatchVariableControl> watchVarControls)
+        public void AddVariables(List<WatchVariableControl> watchVarControls)
         {
             lock (_objectLock)
             {
@@ -149,7 +149,7 @@ namespace STROOP.Controls
             RemoveVariables(new List<WatchVariableControl>() { watchVarControl });
         }
 
-        public void RemoveVariables(IEnumerable<WatchVariableControl> watchVarControls)
+        public void RemoveVariables(List<WatchVariableControl> watchVarControls)
         {
             lock (_objectLock)
             {
