@@ -18,6 +18,7 @@ namespace STROOP.Structs
         ObjectSpecific,
 
         Collision,
+        Environment,
         Hacks,
     };
 }

@@ -130,6 +130,40 @@
   <Data groupList="Advanced" type="uint" offset="0x80" base="Object" subclass="Object">Collided Obj 3</Data>
   <Data groupList="Advanced" type="uint" offset="0x84" base="Object" subclass="Object">Collided Obj 4</Data>
 
+  <Data groupList="Advanced,Environment" type="uint" offset="0xEC" base="Object" useHex="true">Environment Flags</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x80000000">CF 01</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x40000000">CF 02</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x20000000">CF 03</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x10000000">CF 04</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x08000000">CF 05</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x04000000">CF 06</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x02000000">CF 07</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x01000000">CF 08</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00800000">CF 09</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00400000">CF 10</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00200000">CF 11</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00100000">CF 12</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00080000">CF 13</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00040000">CF 14</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00020000">CF 15</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00010000">CF 16</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00008000">CF 17</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00004000">CF 18 Above Death Barrier</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00002000">CF 19 Landing on Death Barrier</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00001000">CF 20</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000800">CF 21 Above Lava</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000400">CF 22 Ledge</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000200">CF 23 Wall</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000100">CF 24</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000080">CF 25 In Air</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000040">CF 26 On Ground Under Water</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000020">CF 27 In Water</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000010">CF 28</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000008">CF 29 Entering Water</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000004">CF 30 Leaving Ground</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000002">CF 31 On Ground</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000001">CF 32 Landing</Data>
+
   <Data groupList="Intermediate" type="uint" offset="0x3C" base="Object" useHex="true">Animation</Data>
   <Data groupList="Advanced" type="short" offset="0x00" base="Animation" mask="0x0001" subclass="Boolean">Don't Loop Animation</Data>
   <Data groupList="Advanced" type="short" offset="0x00" base="Animation" mask="0x0002" subclass="Boolean">Reverse Animation</Data>
