@@ -15,7 +15,7 @@ using STROOP.Utilities;
 
 namespace STROOP.Controls
 {
-    public partial class WatchVariableControlX : UserControl
+    public partial class WatchVariableControl : UserControl
     {
         // Main objects
         private readonly WatchVariableControlPrecursor _watchVarPrecursor;
@@ -155,7 +155,7 @@ namespace STROOP.Controls
         private int _variableValueWidth;
         private int _variableHeight;
 
-        public WatchVariableControlX(
+        public WatchVariableControl(
             WatchVariableControlPrecursor watchVarPrecursor,
             string name,
             WatchVariable watchVar,
@@ -169,6 +169,7 @@ namespace STROOP.Controls
         {
             // Initialize controls
             InitializeComponent();
+            _nameTextBox.Text = name;
 
             // Store the precursor
             _watchVarPrecursor = watchVarPrecursor;
@@ -184,6 +185,7 @@ namespace STROOP.Controls
             // Initialize color fields
             _baseColor = backgroundColor ?? DEFAULT_COLOR;
             _currentColor = _baseColor;
+            _tableLayoutPanel.BackColor = _currentColor; //TODO check if this is necessary
             _isFlashing = false;
             _flashStartTime = DateTime.Now;
 
@@ -193,10 +195,8 @@ namespace STROOP.Controls
             _variableHeight = VariableHeight;
 
             // Create var x
-            /*
             _watchVarWrapper = WatchVariableWrapper.CreateWatchVariableWrapper(
                 watchVar, this, subclass, useHex, invertBool, coordinate);
-                */
 
             // Initialize context menu strip
             _valueTextboxOriginalContextMenuStrip = _valueTextBox.ContextMenuStrip;
@@ -517,8 +517,7 @@ namespace STROOP.Controls
         public void DeleteFromPanel()
         {
             if (_watchVariablePanel == null) return;
-            // TODO add this back
-            //_watchVariablePanel.RemoveVariable(this);
+            _watchVariablePanel.RemoveVariable(this);
         }
 
         public void OpenPanelOptions(Point point)
@@ -561,8 +560,7 @@ namespace STROOP.Controls
 
         public void NotifyPanelOfReodering()
         {
-            // TODO add this back
-            //_watchVariablePanel.NotifyOfReordering(this);
+            _watchVariablePanel.NotifyOfReordering(this);
         }
 
         public void ToggleFixedAddress()

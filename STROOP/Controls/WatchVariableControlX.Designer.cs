@@ -1,6 +1,6 @@
 ﻿namespace STROOP.Controls
 {
-    partial class WatchVariableControlX
+    partial class WatchVariableControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -34,8 +34,8 @@
             this._lockPictureBox = new System.Windows.Forms.PictureBox();
             this._nameTextBox = new System.Windows.Forms.TextBox();
             this._valuePanel = new System.Windows.Forms.Panel();
-            this._valueCheckBox = new System.Windows.Forms.CheckBox();
             this._valueTextBox = new System.Windows.Forms.TextBox();
+            this._valueCheckBox = new System.Windows.Forms.CheckBox();
             this._tableLayoutPanel.SuspendLayout();
             this._namePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._pinPictureBox)).BeginInit();
@@ -45,6 +45,7 @@
             // 
             // _tableLayoutPanel
             // 
+            this._tableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this._tableLayoutPanel.ColumnCount = 2;
             this._tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this._tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
@@ -66,17 +67,17 @@
             this._namePanel.Controls.Add(this._lockPictureBox);
             this._namePanel.Controls.Add(this._nameTextBox);
             this._namePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._namePanel.Location = new System.Drawing.Point(0, 0);
+            this._namePanel.Location = new System.Drawing.Point(1, 1);
             this._namePanel.Margin = new System.Windows.Forms.Padding(0);
             this._namePanel.Name = "_namePanel";
-            this._namePanel.Size = new System.Drawing.Size(120, 22);
+            this._namePanel.Size = new System.Drawing.Size(120, 20);
             this._namePanel.TabIndex = 0;
             // 
             // _pinPictureBox
             // 
             this._pinPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this._pinPictureBox.Image = global::STROOP.Properties.Resources.img_pin;
-            this._pinPictureBox.Location = new System.Drawing.Point(109, 2);
+            this._pinPictureBox.Location = new System.Drawing.Point(109, 1);
             this._pinPictureBox.Margin = new System.Windows.Forms.Padding(0);
             this._pinPictureBox.Name = "_pinPictureBox";
             this._pinPictureBox.Size = new System.Drawing.Size(10, 17);
@@ -89,7 +90,7 @@
             // 
             this._lockPictureBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this._lockPictureBox.Image = global::STROOP.Properties.Resources.img_lock;
-            this._lockPictureBox.Location = new System.Drawing.Point(104, 1);
+            this._lockPictureBox.Location = new System.Drawing.Point(104, 0);
             this._lockPictureBox.Margin = new System.Windows.Forms.Padding(0);
             this._lockPictureBox.Name = "_lockPictureBox";
             this._lockPictureBox.Size = new System.Drawing.Size(16, 18);
@@ -103,7 +104,7 @@
             this._nameTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this._nameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this._nameTextBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this._nameTextBox.Location = new System.Drawing.Point(4, 3);
+            this._nameTextBox.Location = new System.Drawing.Point(4, 2);
             this._nameTextBox.Name = "_nameTextBox";
             this._nameTextBox.ReadOnly = true;
             this._nameTextBox.Size = new System.Drawing.Size(200, 13);
@@ -115,11 +116,23 @@
             this._valuePanel.Controls.Add(this._valueTextBox);
             this._valuePanel.Controls.Add(this._valueCheckBox);
             this._valuePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._valuePanel.Location = new System.Drawing.Point(120, 0);
+            this._valuePanel.Location = new System.Drawing.Point(122, 1);
             this._valuePanel.Margin = new System.Windows.Forms.Padding(0);
             this._valuePanel.Name = "_valuePanel";
-            this._valuePanel.Size = new System.Drawing.Size(85, 22);
+            this._valuePanel.Size = new System.Drawing.Size(85, 20);
             this._valuePanel.TabIndex = 1;
+            // 
+            // _valueTextBox
+            // 
+            this._valueTextBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this._valueTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this._valueTextBox.Location = new System.Drawing.Point(-116, 2);
+            this._valueTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 6, 0);
+            this._valueTextBox.Name = "_valueTextBox";
+            this._valueTextBox.ReadOnly = true;
+            this._valueTextBox.Size = new System.Drawing.Size(200, 13);
+            this._valueTextBox.TabIndex = 0;
+            this._valueTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // _valueCheckBox
             // 
@@ -130,29 +143,17 @@
             this._valueCheckBox.Margin = new System.Windows.Forms.Padding(0);
             this._valueCheckBox.Name = "_valueCheckBox";
             this._valueCheckBox.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this._valueCheckBox.Size = new System.Drawing.Size(85, 22);
+            this._valueCheckBox.Size = new System.Drawing.Size(85, 20);
             this._valueCheckBox.TabIndex = 1;
             this._valueCheckBox.UseVisualStyleBackColor = true;
             // 
-            // _valueTextBox
-            // 
-            this._valueTextBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this._valueTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this._valueTextBox.Location = new System.Drawing.Point(-116, 3);
-            this._valueTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 6, 0);
-            this._valueTextBox.Name = "_valueTextBox";
-            this._valueTextBox.ReadOnly = true;
-            this._valueTextBox.Size = new System.Drawing.Size(200, 13);
-            this._valueTextBox.TabIndex = 0;
-            this._valueTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // WatchVariableControlX
+            // WatchVariableControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this._tableLayoutPanel);
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.Name = "WatchVariableControlX";
+            this.Name = "WatchVariableControl";
             this.Size = new System.Drawing.Size(205, 22);
             this._tableLayoutPanel.ResumeLayout(false);
             this._namePanel.ResumeLayout(false);
