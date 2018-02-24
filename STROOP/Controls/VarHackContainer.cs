@@ -17,7 +17,6 @@ namespace STROOP.Controls
 {
     public partial class VarHackContainer : UserControl
     {
-        private readonly Pen _borderPen;
         private readonly VarHackFlowLayoutPanel _varHackPanel;
 
         private string _specialType;
@@ -38,8 +37,9 @@ namespace STROOP.Controls
             int? yPosIn = null)
         {
             InitializeComponent();
-            _borderPen = new Pen(Color.Black, 2);
-            _borderPen.Alignment = PenAlignment.Inset;
+            tableLayoutPanelVarHack.BorderWidth = 2;
+            tableLayoutPanelVarHack.ShowBorder = true;
+
             _varHackPanel = varHackPanel;
             VarHackContainerDefaults defaults = new VarHackContainerDefaults(creationIndex);
 
@@ -383,12 +383,6 @@ namespace STROOP.Controls
             {
                 textBoxNameValue.Text = _getterFunction();
             }
-        }
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            e.Graphics.DrawRectangle(_borderPen, DisplayRectangle);
         }
     }
 }
