@@ -158,7 +158,7 @@
   <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000080">CF 25 In Air</Data>
   <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000040">CF 26 On Ground Under Water</Data>
   <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000020">CF 27 In Water</Data>
-  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000010">CF 28</Data>
+  <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000010">CF 28 Surface of Water</Data>
   <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000008">CF 29 Entering Water</Data>
   <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000004">CF 30 Leaving Ground</Data>
   <Data groupList="Environment" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000002">CF 31 On Ground</Data>
