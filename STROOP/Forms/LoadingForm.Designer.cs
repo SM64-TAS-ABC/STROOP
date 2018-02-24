@@ -91,7 +91,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 55F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(427, 162);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(427, 179);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // textBoxLoadingHelpfulHint
@@ -102,15 +102,16 @@
             this.textBoxLoadingHelpfulHint.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxLoadingHelpfulHint.Location = new System.Drawing.Point(3, 103);
             this.textBoxLoadingHelpfulHint.Name = "textBoxLoadingHelpfulHint";
-            this.textBoxLoadingHelpfulHint.Size = new System.Drawing.Size(421, 56);
+            this.textBoxLoadingHelpfulHint.ReadOnly = true;
+            this.textBoxLoadingHelpfulHint.Size = new System.Drawing.Size(421, 73);
             this.textBoxLoadingHelpfulHint.TabIndex = 3;
-            this.textBoxLoadingHelpfulHint.Text = "Helpful Hint: Do something.\nLine 2\nLine 3";
+            this.textBoxLoadingHelpfulHint.Text = "Helpful Hint: Do something.\nLine 2\nLine 3\nLine 4";
             // 
             // LoadingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(447, 182);
+            this.ClientSize = new System.Drawing.Size(447, 199);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
