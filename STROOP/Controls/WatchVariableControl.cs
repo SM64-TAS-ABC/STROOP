@@ -455,7 +455,8 @@ namespace STROOP.Controls
 
             _valueTextBox.TextAlign = _leftFlush ? HorizontalAlignment.Left : HorizontalAlignment.Right;
             _valueTextBox.Anchor = _leftFlush ? AnchorStyles.Left : AnchorStyles.Right;
-            _valueTextBox.Left = _leftFlush ? VALUE_TEXTBOX_LEFT_MARGIN : -1 * VALUE_TEXTBOX_RIGHT_MARGIN;
+            _valueTextBox.Left = _leftFlush ? VALUE_TEXTBOX_LEFT_MARGIN : 0;
+            _valueTextBox.Width = _leftFlush ? _valuePanel.Width - VALUE_TEXTBOX_LEFT_MARGIN - 4 : _valuePanel.Width - VALUE_TEXTBOX_RIGHT_MARGIN - 1;
             _valueCheckBox.CheckAlign = _leftFlush ? ContentAlignment.MiddleLeft : ContentAlignment.MiddleRight;
         }
 
@@ -496,7 +497,7 @@ namespace STROOP.Controls
             _tableLayoutPanel.BackColor = _currentColor;
             if (!_editMode) _valueTextBox.BackColor = _currentColor;
             if (!_renameMode) _nameTextBox.BackColor = _currentColor;
-            if (VarName == "X") _valueTextBox.BackColor = Color.HotPink;//TODO remove this
+            if (VarName.Contains("X")) _valueTextBox.BackColor = Color.HotPink;//TODO remove this
         }
 
         public void FlashColor(Color color)
