@@ -449,6 +449,10 @@ namespace STROOP.Controls
             if (_leftFlush == LeftFlush) return;
 
             _leftFlush = LeftFlush;
+
+            _valueTextBox.TextAlign = _leftFlush ? HorizontalAlignment.Left : HorizontalAlignment.Right;
+            _valueTextBox.Anchor = _leftFlush ? AnchorStyles.Left : AnchorStyles.Right;
+            _valueCheckBox.CheckAlign = _leftFlush ? ContentAlignment.MiddleLeft : ContentAlignment.MiddleRight;
         }
 
         private void UpdateSize()
