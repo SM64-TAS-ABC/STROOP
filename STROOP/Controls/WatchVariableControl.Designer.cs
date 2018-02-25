@@ -51,7 +51,7 @@
             this._tableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this._tableLayoutPanel.ColumnCount = 2;
             this._tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this._tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
+            this._tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
             this._tableLayoutPanel.Controls.Add(this._namePanel, 0, 0);
             this._tableLayoutPanel.Controls.Add(this._valuePanel, 1, 0);
             this._tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -123,14 +123,14 @@
             this._valuePanel.Location = new System.Drawing.Point(122, 1);
             this._valuePanel.Margin = new System.Windows.Forms.Padding(0);
             this._valuePanel.Name = "_valuePanel";
-            this._valuePanel.Size = new System.Drawing.Size(85, 20);
+            this._valuePanel.Size = new System.Drawing.Size(86, 20);
             this._valuePanel.TabIndex = 1;
             // 
             // _valueTextBox
             // 
             this._valueTextBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this._valueTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this._valueTextBox.Location = new System.Drawing.Point(-121, 3);
+            this._valueTextBox.Location = new System.Drawing.Point(-120, 3);
             this._valueTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 6, 0);
             this._valueTextBox.Name = "_valueTextBox";
             this._valueTextBox.ReadOnly = true;
@@ -146,8 +146,8 @@
             this._valueCheckBox.Location = new System.Drawing.Point(0, 0);
             this._valueCheckBox.Margin = new System.Windows.Forms.Padding(0);
             this._valueCheckBox.Name = "_valueCheckBox";
-            this._valueCheckBox.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
-            this._valueCheckBox.Size = new System.Drawing.Size(85, 20);
+            this._valueCheckBox.Padding = new System.Windows.Forms.Padding(2, 0, 5, 0);
+            this._valueCheckBox.Size = new System.Drawing.Size(86, 20);
             this._valueCheckBox.TabIndex = 1;
             this._valueCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -160,7 +160,7 @@
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "WatchVariableControl";
             this.Size = new System.Drawing.Size(205, 22);
-            this._tableLayoutPanel.ResumeLayout(true);
+            this._tableLayoutPanel.ResumeLayout(false);
             this._namePanel.ResumeLayout(false);
             this._namePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this._pinPictureBox)).EndInit();
