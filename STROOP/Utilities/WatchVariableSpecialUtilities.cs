@@ -1060,12 +1060,16 @@ namespace STROOP.Structs
                     getterFunction = (uint dummy) =>
                     {
                         float vSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.VSpeedOffset);
-                        double remainingHeight = ComputeHeightFromVerticalSpeed(vSpeed);
+                        double remainingHeight = ComputeHeightChangeFromInitialVerticalSpeed(vSpeed);
                         return remainingHeight.ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
-                        return false;
+                        double? newRemainingHeightNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!newRemainingHeightNullable.HasValue) return false;
+                        double newRemainingHeight = newRemainingHeightNullable.Value;
+                        double initialVSpeed = ComputeInitialVerticalSpeedFromHeightChange(newRemainingHeight);
+                        return Config.Stream.SetValue((float)initialVSpeed, MarioConfig.StructAddress + MarioConfig.VSpeedOffset);
                     };
                     break;
 
@@ -1073,7 +1077,7 @@ namespace STROOP.Structs
                     getterFunction = (uint dummy) =>
                     {
                         float vSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.VSpeedOffset);
-                        double remainingHeight = ComputeHeightFromVerticalSpeed(vSpeed);
+                        double remainingHeight = ComputeHeightChangeFromInitialVerticalSpeed(vSpeed);
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
                         double peakHeight = marioY + remainingHeight;
                         return peakHeight.ToString();
@@ -1102,7 +1106,7 @@ namespace STROOP.Structs
                     {
                         float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
                         double vSpeed = ConvertDoubleJumpHSpeedToVSpeed(hSpeed);
-                        double doubleJumpHeight = ComputeHeightFromVerticalSpeed(vSpeed);
+                        double doubleJumpHeight = ComputeHeightChangeFromInitialVerticalSpeed(vSpeed);
                         return doubleJumpHeight.ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
@@ -1116,7 +1120,7 @@ namespace STROOP.Structs
                     {
                         float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
                         double vSpeed = ConvertDoubleJumpHSpeedToVSpeed(hSpeed);
-                        double doubleJumpHeight = ComputeHeightFromVerticalSpeed(vSpeed);
+                        double doubleJumpHeight = ComputeHeightChangeFromInitialVerticalSpeed(vSpeed);
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
                         double doubleJumpPeakHeight = marioY + doubleJumpHeight;
                         return doubleJumpPeakHeight.ToString();
@@ -2788,12 +2792,20 @@ namespace STROOP.Structs
             return (vSpeed - 52) * 4;
         }
 
-        public static double ComputeHeightFromVerticalSpeed(double initialVSpeed)
+        public static double ComputeHeightChangeFromInitialVerticalSpeed(double initialVSpeed)
         {
             int numFrames = (int) Math.Ceiling(initialVSpeed / 4);
             double finalVSpeed = initialVSpeed - (numFrames - 1) * 4;
-            double height = numFrames * (initialVSpeed + finalVSpeed) / 2;
-            return height;
+            double heightChange = numFrames * (initialVSpeed + finalVSpeed) / 2;
+            return heightChange;
+        }
+
+        public static double ComputeInitialVerticalSpeedFromHeightChange(double heightChange)
+        {
+            int numFrames = (int) Math.Ceiling((-2 + Math.Sqrt(4 + 8 * heightChange)) / 4);
+            double triangleConstant = 2 * numFrames * (numFrames - 1);
+            double initialSpeed = (heightChange + triangleConstant) / numFrames;
+            return initialSpeed;
         }
     }
 }
