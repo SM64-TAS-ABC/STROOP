@@ -492,6 +492,7 @@ namespace STROOP.Controls
             _tableLayoutPanel.BackColor = _currentColor;
             if (!_editMode) _valueTextBox.BackColor = _currentColor;
             if (!_renameMode) _nameTextBox.BackColor = _currentColor;
+            if (VarName == "X") _valueTextBox.BackColor = Color.HotPink;//TODO remove this
         }
 
         public void FlashColor(Color color)
