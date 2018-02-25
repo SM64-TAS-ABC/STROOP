@@ -14,14 +14,14 @@ namespace STROOP.Managers
 {
     public class ActionsManager : DataManager
     {
-        Label actionDescriptionLabel;
-        Label animationDescriptionLabel;
+        BetterTextbox textBoxActionDescription;
+        BetterTextbox textBoxAnimationDescription;
 
         public ActionsManager(List<WatchVariableControlPrecursor> variables, WatchVariableFlowLayoutPanel variableTable, Control actionsControl)
             : base(variables, variableTable)
         {
-            actionDescriptionLabel = actionsControl.Controls["labelActionDescription"] as Label;
-            animationDescriptionLabel = actionsControl.Controls["labelAnimationDescription"] as Label;
+            textBoxActionDescription = actionsControl.Controls["textBoxActionDescription"] as BetterTextbox;
+            textBoxAnimationDescription = actionsControl.Controls["textBoxAnimationDescription"] as BetterTextbox;
         }
 
         public override void Update(bool updateView)
@@ -29,8 +29,8 @@ namespace STROOP.Managers
             if (!updateView) return;
             base.Update(updateView);
 
-            actionDescriptionLabel.Text = TableConfig.MarioActions.GetActionName();
-            animationDescriptionLabel.Text = TableConfig.MarioAnimations.GetAnimationName();
+            textBoxActionDescription.Text = TableConfig.MarioActions.GetActionName();
+            textBoxAnimationDescription.Text = TableConfig.MarioAnimations.GetAnimationName();
         }
     }
 }
