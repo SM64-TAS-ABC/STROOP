@@ -444,6 +444,9 @@ namespace STROOP.Controls
             }
         }
 
+        private static int VALUE_TEXTBOX_RIGHT_MARGIN = 6;
+        private static int VALUE_TEXTBOX_LEFT_MARGIN = 3;
+
         private void UpdateFlush()
         {
             if (_leftFlush == LeftFlush) return;
@@ -452,6 +455,7 @@ namespace STROOP.Controls
 
             _valueTextBox.TextAlign = _leftFlush ? HorizontalAlignment.Left : HorizontalAlignment.Right;
             _valueTextBox.Anchor = _leftFlush ? AnchorStyles.Left : AnchorStyles.Right;
+            _valueTextBox.Left = _leftFlush ? VALUE_TEXTBOX_LEFT_MARGIN : -1 * VALUE_TEXTBOX_RIGHT_MARGIN;
             _valueCheckBox.CheckAlign = _leftFlush ? ContentAlignment.MiddleLeft : ContentAlignment.MiddleRight;
         }
 

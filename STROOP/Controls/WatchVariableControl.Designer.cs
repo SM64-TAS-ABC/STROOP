@@ -130,11 +130,11 @@
             // 
             this._valueTextBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this._valueTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this._valueTextBox.Location = new System.Drawing.Point(0, 3);
+            this._valueTextBox.Location = new System.Drawing.Point(-6, 3);
             this._valueTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 6, 0);
             this._valueTextBox.Name = "_valueTextBox";
             this._valueTextBox.ReadOnly = true;
-            this._valueTextBox.Size = new System.Drawing.Size(79, 13);
+            this._valueTextBox.Size = new System.Drawing.Size(85, 13);
             this._valueTextBox.TabIndex = 0;
             this._valueTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
