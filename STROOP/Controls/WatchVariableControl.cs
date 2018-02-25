@@ -133,7 +133,9 @@ namespace STROOP.Controls
         private static readonly Image _someLockedImage = Properties.Resources.img_lock_grey;
         private static readonly Image _pinnedImage = Properties.Resources.img_pin;
 
-        public static bool LeftFlush;
+        private static readonly bool DEFAULT_LEFT_FLUSH = false;
+        public static bool LeftFlush = DEFAULT_LEFT_FLUSH;
+        private bool _leftFlush;
 
         private static readonly int PIN_OUTER_PADDING = 11;
         private static readonly int PIN_INNER_PADDING = 24;
@@ -184,7 +186,8 @@ namespace STROOP.Controls
             _isFlashing = false;
             _flashStartTime = DateTime.Now;
 
-            // Initialize size fields
+            // Initialize flush/size fields
+            _leftFlush = LeftFlush;
             _variableNameWidth = VariableNameWidth;
             _variableValueWidth = VariableValueWidth;
             _variableHeight = VariableHeight;
@@ -399,6 +402,7 @@ namespace STROOP.Controls
 
             _watchVarWrapper.UpdateItemCheckStates();
 
+            UpdateFlush();
             UpdateSize();
             UpdateColor();
             UpdatePictureBoxes();
@@ -438,6 +442,13 @@ namespace STROOP.Controls
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+
+        private void UpdateFlush()
+        {
+            if (_leftFlush == LeftFlush) return;
+
+            _leftFlush = LeftFlush;
         }
 
         private void UpdateSize()
