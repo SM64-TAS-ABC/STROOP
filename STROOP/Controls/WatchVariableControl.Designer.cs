@@ -160,7 +160,7 @@
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "WatchVariableControl";
             this.Size = new System.Drawing.Size(205, 22);
-            this._tableLayoutPanel.ResumeLayout(false);
+            this._tableLayoutPanel.ResumeLayout(true);
             this._namePanel.ResumeLayout(false);
             this._namePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this._pinPictureBox)).EndInit();
