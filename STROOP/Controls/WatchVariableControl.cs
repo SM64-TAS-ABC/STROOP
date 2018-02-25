@@ -140,6 +140,9 @@ namespace STROOP.Controls
         private static readonly int PIN_OUTER_PADDING = 11;
         private static readonly int PIN_INNER_PADDING = 24;
 
+        private static readonly int VALUE_TEXTBOX_SIZE_DIFF = 6;
+        private static readonly int VALUE_TEXTBOX_MARGIN = 3;
+
         public static readonly int DEFAULT_VARIABLE_NAME_WIDTH = 120;
         public static readonly int DEFAULT_VARIABLE_VALUE_WIDTH = 85;
         public static readonly int DEFAULT_VARIABLE_HEIGHT = 20;
@@ -444,9 +447,6 @@ namespace STROOP.Controls
             }
         }
 
-        private static int VALUE_TEXTBOX_SIZE_DIFF = 6;
-        private static int VALUE_TEXTBOX_MARGIN = 3;
-
         private void UpdateFlush()
         {
             if (_leftFlush == LeftFlush) return;
@@ -454,7 +454,6 @@ namespace STROOP.Controls
             _leftFlush = LeftFlush;
 
             _valueTextBox.TextAlign = _leftFlush ? HorizontalAlignment.Left : HorizontalAlignment.Right;
-            //_valueTextBox.Anchor = _leftFlush ? AnchorStyles.Left : AnchorStyles.Right;
             _valueTextBox.Left = _leftFlush ? VALUE_TEXTBOX_MARGIN : 0;
             _valueCheckBox.CheckAlign = _leftFlush ? ContentAlignment.MiddleLeft : ContentAlignment.MiddleRight;
         }
@@ -497,7 +496,6 @@ namespace STROOP.Controls
             _tableLayoutPanel.BackColor = _currentColor;
             if (!_editMode) _valueTextBox.BackColor = _currentColor;
             if (!_renameMode) _nameTextBox.BackColor = _currentColor;
-            if (VarName.Contains("X")) _valueTextBox.BackColor = Color.HotPink;//TODO remove this
         }
 
         public void FlashColor(Color color)
