@@ -873,6 +873,8 @@ namespace STROOP
             this.buttonVarHackAddNewVariable = new System.Windows.Forms.Button();
             this.buttonVarHackShowVariableBytesInBigEndian = new System.Windows.Forms.Button();
             this.buttonVarHackShowVariableBytesInLittleEndian = new System.Windows.Forms.Button();
+            this.buttonVarHackOpenVars = new System.Windows.Forms.Button();
+            this.buttonVarHackSaveVars = new System.Windows.Forms.Button();
             this.buttonVarHackClearVars = new System.Windows.Forms.Button();
             this.varHackPanel = new STROOP.Controls.VarHackFlowLayoutPanel();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
@@ -1085,8 +1087,8 @@ namespace STROOP
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.buttonVarHackOpenVars = new System.Windows.Forms.Button();
-            this.buttonVarHackSaveVars = new System.Windows.Forms.Button();
+            this.radioButtonCustomTabFlushLeft = new System.Windows.Forms.RadioButton();
+            this.radioButtonCustomTabFlushRight = new System.Windows.Forms.RadioButton();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1459,7 +1461,7 @@ namespace STROOP
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 379);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 380);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1524,7 +1526,7 @@ namespace STROOP
             this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
             this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 157);
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 158);
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
@@ -4717,7 +4719,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 223F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 224F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -7868,6 +7870,8 @@ namespace STROOP
             // splitContainerCustomControls.Panel2
             // 
             this.splitContainerCustomControls.Panel2.AutoScroll = true;
+            this.splitContainerCustomControls.Panel2.Controls.Add(this.radioButtonCustomTabFlushRight);
+            this.splitContainerCustomControls.Panel2.Controls.Add(this.radioButtonCustomTabFlushLeft);
             this.splitContainerCustomControls.Panel2.Controls.Add(this.groupBoxVarHeight);
             this.splitContainerCustomControls.Panel2.Controls.Add(this.buttonResetVariableSizeToDefault);
             this.splitContainerCustomControls.Panel2.Controls.Add(this.groupBoxVarValueWidth);
@@ -8011,7 +8015,7 @@ namespace STROOP
             this.groupBoxVarHeight.Controls.Add(this.buttonVarHeightSubtract);
             this.groupBoxVarHeight.Controls.Add(this.buttonVarHeightSet);
             this.groupBoxVarHeight.Controls.Add(this.buttonVarHeightAdd);
-            this.groupBoxVarHeight.Location = new System.Drawing.Point(7, 189);
+            this.groupBoxVarHeight.Location = new System.Drawing.Point(7, 209);
             this.groupBoxVarHeight.Name = "groupBoxVarHeight";
             this.groupBoxVarHeight.Size = new System.Drawing.Size(185, 70);
             this.groupBoxVarHeight.TabIndex = 30;
@@ -8084,7 +8088,7 @@ namespace STROOP
             // 
             // buttonResetVariableSizeToDefault
             // 
-            this.buttonResetVariableSizeToDefault.Location = new System.Drawing.Point(10, 6);
+            this.buttonResetVariableSizeToDefault.Location = new System.Drawing.Point(10, 26);
             this.buttonResetVariableSizeToDefault.Name = "buttonResetVariableSizeToDefault";
             this.buttonResetVariableSizeToDefault.Size = new System.Drawing.Size(179, 25);
             this.buttonResetVariableSizeToDefault.TabIndex = 4;
@@ -8099,7 +8103,7 @@ namespace STROOP
             this.groupBoxVarValueWidth.Controls.Add(this.buttonVarValueWidthSubtract);
             this.groupBoxVarValueWidth.Controls.Add(this.buttonVarValueWidthSet);
             this.groupBoxVarValueWidth.Controls.Add(this.buttonVarValueWidthAdd);
-            this.groupBoxVarValueWidth.Location = new System.Drawing.Point(7, 113);
+            this.groupBoxVarValueWidth.Location = new System.Drawing.Point(7, 133);
             this.groupBoxVarValueWidth.Name = "groupBoxVarValueWidth";
             this.groupBoxVarValueWidth.Size = new System.Drawing.Size(185, 70);
             this.groupBoxVarValueWidth.TabIndex = 30;
@@ -8178,7 +8182,7 @@ namespace STROOP
             this.groupBoxVarNameWidth.Controls.Add(this.buttonVarNameWidthSubtract);
             this.groupBoxVarNameWidth.Controls.Add(this.buttonVarNameWidthSet);
             this.groupBoxVarNameWidth.Controls.Add(this.buttonVarNameWidthAdd);
-            this.groupBoxVarNameWidth.Location = new System.Drawing.Point(7, 37);
+            this.groupBoxVarNameWidth.Location = new System.Drawing.Point(7, 57);
             this.groupBoxVarNameWidth.Name = "groupBoxVarNameWidth";
             this.groupBoxVarNameWidth.Size = new System.Drawing.Size(185, 70);
             this.groupBoxVarNameWidth.TabIndex = 30;
@@ -9898,7 +9902,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(323, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(306, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -9930,7 +9934,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(312, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(295, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -9986,7 +9990,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(312, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(295, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -11728,6 +11732,24 @@ namespace STROOP
             this.buttonVarHackShowVariableBytesInLittleEndian.TabIndex = 4;
             this.buttonVarHackShowVariableBytesInLittleEndian.Text = "Show Variable Bytes in Little Endian\r\n(for Process Memory)";
             this.buttonVarHackShowVariableBytesInLittleEndian.UseVisualStyleBackColor = true;
+            // 
+            // buttonVarHackOpenVars
+            // 
+            this.buttonVarHackOpenVars.Location = new System.Drawing.Point(7, 52);
+            this.buttonVarHackOpenVars.Name = "buttonVarHackOpenVars";
+            this.buttonVarHackOpenVars.Size = new System.Drawing.Size(60, 38);
+            this.buttonVarHackOpenVars.TabIndex = 4;
+            this.buttonVarHackOpenVars.Text = "Open\r\nVars";
+            this.buttonVarHackOpenVars.UseVisualStyleBackColor = true;
+            // 
+            // buttonVarHackSaveVars
+            // 
+            this.buttonVarHackSaveVars.Location = new System.Drawing.Point(71, 52);
+            this.buttonVarHackSaveVars.Name = "buttonVarHackSaveVars";
+            this.buttonVarHackSaveVars.Size = new System.Drawing.Size(60, 38);
+            this.buttonVarHackSaveVars.TabIndex = 4;
+            this.buttonVarHackSaveVars.Text = "Save\r\nVars";
+            this.buttonVarHackSaveVars.UseVisualStyleBackColor = true;
             // 
             // buttonVarHackClearVars
             // 
@@ -14134,23 +14156,27 @@ namespace STROOP
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // buttonVarHackOpenVars
+            // radioButtonCustomTabFlushLeft
             // 
-            this.buttonVarHackOpenVars.Location = new System.Drawing.Point(7, 52);
-            this.buttonVarHackOpenVars.Name = "buttonVarHackOpenVars";
-            this.buttonVarHackOpenVars.Size = new System.Drawing.Size(60, 38);
-            this.buttonVarHackOpenVars.TabIndex = 4;
-            this.buttonVarHackOpenVars.Text = "Open\r\nVars";
-            this.buttonVarHackOpenVars.UseVisualStyleBackColor = true;
+            this.radioButtonCustomTabFlushLeft.AutoSize = true;
+            this.radioButtonCustomTabFlushLeft.Location = new System.Drawing.Point(18, 4);
+            this.radioButtonCustomTabFlushLeft.Name = "radioButtonCustomTabFlushLeft";
+            this.radioButtonCustomTabFlushLeft.Size = new System.Drawing.Size(71, 17);
+            this.radioButtonCustomTabFlushLeft.TabIndex = 31;
+            this.radioButtonCustomTabFlushLeft.Text = "Flush Left";
+            this.radioButtonCustomTabFlushLeft.UseVisualStyleBackColor = true;
             // 
-            // buttonVarHackSaveVars
+            // radioButtonCustomTabFlushRight
             // 
-            this.buttonVarHackSaveVars.Location = new System.Drawing.Point(71, 52);
-            this.buttonVarHackSaveVars.Name = "buttonVarHackSaveVars";
-            this.buttonVarHackSaveVars.Size = new System.Drawing.Size(60, 38);
-            this.buttonVarHackSaveVars.TabIndex = 4;
-            this.buttonVarHackSaveVars.Text = "Save\r\nVars";
-            this.buttonVarHackSaveVars.UseVisualStyleBackColor = true;
+            this.radioButtonCustomTabFlushRight.AutoSize = true;
+            this.radioButtonCustomTabFlushRight.Checked = true;
+            this.radioButtonCustomTabFlushRight.Location = new System.Drawing.Point(105, 4);
+            this.radioButtonCustomTabFlushRight.Name = "radioButtonCustomTabFlushRight";
+            this.radioButtonCustomTabFlushRight.Size = new System.Drawing.Size(78, 17);
+            this.radioButtonCustomTabFlushRight.TabIndex = 31;
+            this.radioButtonCustomTabFlushRight.TabStop = true;
+            this.radioButtonCustomTabFlushRight.Text = "Flush Right";
+            this.radioButtonCustomTabFlushRight.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -14440,6 +14466,7 @@ namespace STROOP
             this.splitContainerCustomControls.Panel1.ResumeLayout(false);
             this.splitContainerCustomControls.Panel1.PerformLayout();
             this.splitContainerCustomControls.Panel2.ResumeLayout(false);
+            this.splitContainerCustomControls.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerCustomControls)).EndInit();
             this.splitContainerCustomControls.ResumeLayout(false);
             this.groupBoxVarHeight.ResumeLayout(false);
@@ -15652,6 +15679,8 @@ namespace STROOP
         private TreeView treeViewDecompile;
         private Button buttonVarHackOpenVars;
         private Button buttonVarHackSaveVars;
+        private RadioButton radioButtonCustomTabFlushRight;
+        private RadioButton radioButtonCustomTabFlushLeft;
     }
 }
 
