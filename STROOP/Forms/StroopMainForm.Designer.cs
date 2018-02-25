@@ -34,15 +34,22 @@ namespace STROOP
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
             this.labelProcessSelect = new System.Windows.Forms.Label();
-            this.groupBoxObjects = new System.Windows.Forms.GroupBox();
-            this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
-            this.labelLabelMethod = new System.Windows.Forms.Label();
-            this.labelSlotSize = new System.Windows.Forms.Label();
-            this.checkBoxObjLockLabels = new System.Windows.Forms.CheckBox();
-            this.labelSortMethod = new System.Windows.Forms.Label();
-            this.WatchVariablePanelObjects = new STROOP.Controls.WatchVariableFlowLayoutPanel();
-            this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
-            this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
+            this.labelVersionNumber = new System.Windows.Forms.Label();
+            this.buttonDisconnect = new System.Windows.Forms.Button();
+            this.panelConnect = new System.Windows.Forms.Panel();
+            this.buttonRefreshAndConnect = new System.Windows.Forms.Button();
+            this.buttonRefresh = new System.Windows.Forms.Button();
+            this.labelNotConnected = new System.Windows.Forms.Label();
+            this.buttonConnect = new System.Windows.Forms.Button();
+            this.listBoxProcessesList = new System.Windows.Forms.ListBox();
+            this.labelFpsCounter = new System.Windows.Forms.Label();
+            this.buttonShowTopPane = new System.Windows.Forms.Button();
+            this.buttonShowTopBottomPane = new System.Windows.Forms.Button();
+            this.buttonReadOnly = new System.Windows.Forms.Button();
+            this.buttonShowBottomPane = new System.Windows.Forms.Button();
+            this.buttonShowRightPane = new System.Windows.Forms.Button();
+            this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
+            this.buttonShowLeftPane = new System.Windows.Forms.Button();
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageObjects = new System.Windows.Forms.TabPage();
@@ -1073,24 +1080,16 @@ namespace STROOP
             this.labelMetric3Value = new System.Windows.Forms.Label();
             this.labelMetric5Value = new System.Windows.Forms.Label();
             this.labelMetric4Value = new System.Windows.Forms.Label();
-            this.labelVersionNumber = new System.Windows.Forms.Label();
-            this.buttonDisconnect = new System.Windows.Forms.Button();
-            this.panelConnect = new System.Windows.Forms.Panel();
-            this.buttonRefreshAndConnect = new System.Windows.Forms.Button();
-            this.buttonRefresh = new System.Windows.Forms.Button();
-            this.labelNotConnected = new System.Windows.Forms.Label();
-            this.buttonConnect = new System.Windows.Forms.Button();
-            this.listBoxProcessesList = new System.Windows.Forms.ListBox();
-            this.labelFpsCounter = new System.Windows.Forms.Label();
-            this.buttonShowTopPane = new System.Windows.Forms.Button();
-            this.buttonShowTopBottomPane = new System.Windows.Forms.Button();
-            this.buttonReadOnly = new System.Windows.Forms.Button();
-            this.buttonShowBottomPane = new System.Windows.Forms.Button();
-            this.buttonShowRightPane = new System.Windows.Forms.Button();
-            this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
-            this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.groupBoxObjects.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
+            this.groupBoxObjects = new System.Windows.Forms.GroupBox();
+            this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
+            this.labelLabelMethod = new System.Windows.Forms.Label();
+            this.labelSlotSize = new System.Windows.Forms.Label();
+            this.checkBoxObjLockLabels = new System.Windows.Forms.CheckBox();
+            this.labelSortMethod = new System.Windows.Forms.Label();
+            this.WatchVariablePanelObjects = new STROOP.Controls.WatchVariableFlowLayoutPanel();
+            this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
+            this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
+            this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
             this.splitContainerMain.Panel2.SuspendLayout();
@@ -1431,7 +1430,8 @@ namespace STROOP
             this.groupBoxObjAtHOLP.SuspendLayout();
             this.groupBoxGoto.SuspendLayout();
             this.groupBoxRecording.SuspendLayout();
-            this.panelConnect.SuspendLayout();
+            this.groupBoxObjects.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -1444,113 +1444,192 @@ namespace STROOP
             this.labelProcessSelect.TabIndex = 1;
             this.labelProcessSelect.Text = "Connected To:";
             // 
-            // groupBoxObjects
+            // labelVersionNumber
             // 
-            this.groupBoxObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxObjects.Controls.Add(this.comboBoxLabelMethod);
-            this.groupBoxObjects.Controls.Add(this.labelLabelMethod);
-            this.groupBoxObjects.Controls.Add(this.labelSlotSize);
-            this.groupBoxObjects.Controls.Add(this.checkBoxObjLockLabels);
-            this.groupBoxObjects.Controls.Add(this.labelSortMethod);
-            this.groupBoxObjects.Controls.Add(this.WatchVariablePanelObjects);
-            this.groupBoxObjects.Controls.Add(this.comboBoxSortMethod);
-            this.groupBoxObjects.Controls.Add(this.trackBarObjSlotSize);
-            this.groupBoxObjects.Location = new System.Drawing.Point(2, 2);
-            this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Name = "groupBoxObjects";
-            this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 383);
-            this.groupBoxObjects.TabIndex = 2;
-            this.groupBoxObjects.TabStop = false;
-            this.groupBoxObjects.Text = "Objects";
+            this.labelVersionNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelVersionNumber.AutoSize = true;
+            this.labelVersionNumber.Location = new System.Drawing.Point(894, 15);
+            this.labelVersionNumber.Name = "labelVersionNumber";
+            this.labelVersionNumber.Size = new System.Drawing.Size(41, 13);
+            this.labelVersionNumber.TabIndex = 5;
+            this.labelVersionNumber.Text = "version";
+            this.labelVersionNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // comboBoxLabelMethod
+            // buttonDisconnect
             // 
-            this.comboBoxLabelMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxLabelMethod.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBoxLabelMethod.Location = new System.Drawing.Point(641, 15);
-            this.comboBoxLabelMethod.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxLabelMethod.Name = "comboBoxLabelMethod";
-            this.comboBoxLabelMethod.Size = new System.Drawing.Size(102, 21);
-            this.comboBoxLabelMethod.TabIndex = 13;
+            this.buttonDisconnect.Location = new System.Drawing.Point(11, 11);
+            this.buttonDisconnect.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDisconnect.Name = "buttonDisconnect";
+            this.buttonDisconnect.Size = new System.Drawing.Size(72, 21);
+            this.buttonDisconnect.TabIndex = 17;
+            this.buttonDisconnect.Text = "Disconnect";
+            this.buttonDisconnect.UseVisualStyleBackColor = true;
+            this.buttonDisconnect.Click += new System.EventHandler(this.buttonDisconnect_Click);
             // 
-            // labelLabelMethod
+            // panelConnect
             // 
-            this.labelLabelMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelLabelMethod.AutoSize = true;
-            this.labelLabelMethod.Location = new System.Drawing.Point(561, 18);
-            this.labelLabelMethod.Name = "labelLabelMethod";
-            this.labelLabelMethod.Size = new System.Drawing.Size(75, 13);
-            this.labelLabelMethod.TabIndex = 12;
-            this.labelLabelMethod.Text = "Label Method:";
+            this.panelConnect.Controls.Add(this.buttonRefreshAndConnect);
+            this.panelConnect.Controls.Add(this.buttonRefresh);
+            this.panelConnect.Controls.Add(this.labelNotConnected);
+            this.panelConnect.Controls.Add(this.buttonConnect);
+            this.panelConnect.Controls.Add(this.listBoxProcessesList);
+            this.panelConnect.Location = new System.Drawing.Point(246, 12);
+            this.panelConnect.Name = "panelConnect";
+            this.panelConnect.Size = new System.Drawing.Size(441, 20);
+            this.panelConnect.TabIndex = 17;
             // 
-            // labelSlotSize
+            // buttonRefreshAndConnect
             // 
-            this.labelSlotSize.AutoSize = true;
-            this.labelSlotSize.Location = new System.Drawing.Point(110, 19);
-            this.labelSlotSize.Name = "labelSlotSize";
-            this.labelSlotSize.Size = new System.Drawing.Size(51, 13);
-            this.labelSlotSize.TabIndex = 11;
-            this.labelSlotSize.Text = "Slot Size:";
+            this.buttonRefreshAndConnect.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonRefreshAndConnect.Location = new System.Drawing.Point(134, 133);
+            this.buttonRefreshAndConnect.Name = "buttonRefreshAndConnect";
+            this.buttonRefreshAndConnect.Size = new System.Drawing.Size(172, 37);
+            this.buttonRefreshAndConnect.TabIndex = 3;
+            this.buttonRefreshAndConnect.Text = "Refresh && Connect";
+            this.buttonRefreshAndConnect.UseVisualStyleBackColor = true;
+            this.buttonRefreshAndConnect.Click += new System.EventHandler(this.buttonRefreshAndConnect_Click);
             // 
-            // checkBoxObjLockLabels
+            // buttonRefresh
             // 
-            this.checkBoxObjLockLabels.AutoSize = true;
-            this.checkBoxObjLockLabels.Location = new System.Drawing.Point(4, 18);
-            this.checkBoxObjLockLabels.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxObjLockLabels.Name = "checkBoxObjLockLabels";
-            this.checkBoxObjLockLabels.Size = new System.Drawing.Size(84, 17);
-            this.checkBoxObjLockLabels.TabIndex = 7;
-            this.checkBoxObjLockLabels.Text = "Lock Labels";
-            this.checkBoxObjLockLabels.UseVisualStyleBackColor = true;
+            this.buttonRefresh.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonRefresh.Location = new System.Drawing.Point(134, 92);
+            this.buttonRefresh.Name = "buttonRefresh";
+            this.buttonRefresh.Size = new System.Drawing.Size(84, 37);
+            this.buttonRefresh.TabIndex = 3;
+            this.buttonRefresh.Text = "Refresh";
+            this.buttonRefresh.UseVisualStyleBackColor = true;
+            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
             // 
-            // labelSortMethod
+            // labelNotConnected
             // 
-            this.labelSortMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelSortMethod.AutoSize = true;
-            this.labelSortMethod.Location = new System.Drawing.Point(747, 18);
-            this.labelSortMethod.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelSortMethod.Name = "labelSortMethod";
-            this.labelSortMethod.Size = new System.Drawing.Size(68, 13);
-            this.labelSortMethod.TabIndex = 5;
-            this.labelSortMethod.Text = "Sort Method:";
+            this.labelNotConnected.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelNotConnected.AutoSize = true;
+            this.labelNotConnected.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNotConnected.Location = new System.Drawing.Point(141, -111);
+            this.labelNotConnected.Name = "labelNotConnected";
+            this.labelNotConnected.Size = new System.Drawing.Size(157, 26);
+            this.labelNotConnected.TabIndex = 2;
+            this.labelNotConnected.Text = "Not Connected";
             // 
-            // WatchVariablePanelObjects
+            // buttonConnect
             // 
-            this.WatchVariablePanelObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.WatchVariablePanelObjects.AutoScroll = true;
-            this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
-            this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
-            this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 161);
-            this.WatchVariablePanelObjects.TabIndex = 0;
-            this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
+            this.buttonConnect.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonConnect.Location = new System.Drawing.Point(222, 92);
+            this.buttonConnect.Name = "buttonConnect";
+            this.buttonConnect.Size = new System.Drawing.Size(84, 37);
+            this.buttonConnect.TabIndex = 1;
+            this.buttonConnect.Text = "Connect";
+            this.buttonConnect.UseVisualStyleBackColor = true;
+            this.buttonConnect.Click += new System.EventHandler(this.buttonConnect_Click);
             // 
-            // comboBoxSortMethod
+            // listBoxProcessesList
             // 
-            this.comboBoxSortMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxSortMethod.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBoxSortMethod.Location = new System.Drawing.Point(817, 15);
-            this.comboBoxSortMethod.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxSortMethod.Name = "comboBoxSortMethod";
-            this.comboBoxSortMethod.Size = new System.Drawing.Size(102, 21);
-            this.comboBoxSortMethod.TabIndex = 4;
+            this.listBoxProcessesList.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.listBoxProcessesList.FormattingEnabled = true;
+            this.listBoxProcessesList.Location = new System.Drawing.Point(134, -61);
+            this.listBoxProcessesList.Name = "listBoxProcessesList";
+            this.listBoxProcessesList.Size = new System.Drawing.Size(172, 147);
+            this.listBoxProcessesList.TabIndex = 0;
             // 
-            // trackBarObjSlotSize
+            // labelFpsCounter
             // 
-            this.trackBarObjSlotSize.Location = new System.Drawing.Point(167, 15);
-            this.trackBarObjSlotSize.Maximum = 100;
-            this.trackBarObjSlotSize.Minimum = 15;
-            this.trackBarObjSlotSize.Name = "trackBarObjSlotSize";
-            this.trackBarObjSlotSize.Size = new System.Drawing.Size(104, 45);
-            this.trackBarObjSlotSize.TabIndex = 3;
-            this.trackBarObjSlotSize.TickFrequency = 10;
-            this.trackBarObjSlotSize.Value = 40;
-            this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
+            this.labelFpsCounter.AutoSize = true;
+            this.labelFpsCounter.Location = new System.Drawing.Point(88, 15);
+            this.labelFpsCounter.Name = "labelFpsCounter";
+            this.labelFpsCounter.Size = new System.Drawing.Size(39, 13);
+            this.labelFpsCounter.TabIndex = 18;
+            this.labelFpsCounter.Text = "FPS: 0";
+            // 
+            // buttonShowTopPane
+            // 
+            this.buttonShowTopPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonShowTopPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowTopPane.BackgroundImage")));
+            this.buttonShowTopPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonShowTopPane.Location = new System.Drawing.Point(866, 11);
+            this.buttonShowTopPane.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonShowTopPane.Name = "buttonShowTopPane";
+            this.buttonShowTopPane.Size = new System.Drawing.Size(21, 21);
+            this.buttonShowTopPane.TabIndex = 19;
+            this.buttonShowTopPane.UseVisualStyleBackColor = true;
+            this.buttonShowTopPane.Click += new System.EventHandler(this.buttonShowTopPanel_Click);
+            // 
+            // buttonShowTopBottomPane
+            // 
+            this.buttonShowTopBottomPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonShowTopBottomPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowTopBottomPane.BackgroundImage")));
+            this.buttonShowTopBottomPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonShowTopBottomPane.Location = new System.Drawing.Point(841, 11);
+            this.buttonShowTopBottomPane.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonShowTopBottomPane.Name = "buttonShowTopBottomPane";
+            this.buttonShowTopBottomPane.Size = new System.Drawing.Size(21, 21);
+            this.buttonShowTopBottomPane.TabIndex = 20;
+            this.buttonShowTopBottomPane.UseVisualStyleBackColor = true;
+            this.buttonShowTopBottomPane.Click += new System.EventHandler(this.buttonShowTopBottomPanel_Click);
+            // 
+            // buttonReadOnly
+            // 
+            this.buttonReadOnly.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonReadOnly.Location = new System.Drawing.Point(611, 11);
+            this.buttonReadOnly.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonReadOnly.Name = "buttonReadOnly";
+            this.buttonReadOnly.Size = new System.Drawing.Size(126, 21);
+            this.buttonReadOnly.TabIndex = 21;
+            this.buttonReadOnly.Tag = "";
+            this.buttonReadOnly.Text = "Switch to Read-Only";
+            this.buttonReadOnly.UseVisualStyleBackColor = true;
+            this.buttonReadOnly.Click += new System.EventHandler(this.buttonReadOnly_Click);
+            // 
+            // buttonShowBottomPane
+            // 
+            this.buttonShowBottomPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonShowBottomPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowBottomPane.BackgroundImage")));
+            this.buttonShowBottomPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonShowBottomPane.Location = new System.Drawing.Point(816, 11);
+            this.buttonShowBottomPane.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonShowBottomPane.Name = "buttonShowBottomPane";
+            this.buttonShowBottomPane.Size = new System.Drawing.Size(21, 21);
+            this.buttonShowBottomPane.TabIndex = 20;
+            this.buttonShowBottomPane.UseVisualStyleBackColor = true;
+            this.buttonShowBottomPane.Click += new System.EventHandler(this.buttonShowBottomPanel_Click);
+            // 
+            // buttonShowRightPane
+            // 
+            this.buttonShowRightPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonShowRightPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowRightPane.BackgroundImage")));
+            this.buttonShowRightPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonShowRightPane.Location = new System.Drawing.Point(791, 11);
+            this.buttonShowRightPane.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonShowRightPane.Name = "buttonShowRightPane";
+            this.buttonShowRightPane.Size = new System.Drawing.Size(21, 21);
+            this.buttonShowRightPane.TabIndex = 19;
+            this.buttonShowRightPane.UseVisualStyleBackColor = true;
+            this.buttonShowRightPane.Click += new System.EventHandler(this.buttonShowRightPanel_Click);
+            // 
+            // buttonShowLeftRightPane
+            // 
+            this.buttonShowLeftRightPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonShowLeftRightPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowLeftRightPane.BackgroundImage")));
+            this.buttonShowLeftRightPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonShowLeftRightPane.Location = new System.Drawing.Point(766, 11);
+            this.buttonShowLeftRightPane.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonShowLeftRightPane.Name = "buttonShowLeftRightPane";
+            this.buttonShowLeftRightPane.Size = new System.Drawing.Size(21, 21);
+            this.buttonShowLeftRightPane.TabIndex = 20;
+            this.buttonShowLeftRightPane.UseVisualStyleBackColor = true;
+            this.buttonShowLeftRightPane.Click += new System.EventHandler(this.buttonShowLeftRightPanel_Click);
+            // 
+            // buttonShowLeftPane
+            // 
+            this.buttonShowLeftPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonShowLeftPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowLeftPane.BackgroundImage")));
+            this.buttonShowLeftPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonShowLeftPane.Location = new System.Drawing.Point(741, 11);
+            this.buttonShowLeftPane.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonShowLeftPane.Name = "buttonShowLeftPane";
+            this.buttonShowLeftPane.Size = new System.Drawing.Size(21, 21);
+            this.buttonShowLeftPane.TabIndex = 20;
+            this.buttonShowLeftPane.UseVisualStyleBackColor = true;
+            this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
             // splitContainerMain
             // 
@@ -4281,6 +4360,7 @@ namespace STROOP
             this.textBoxAnimationDescription.ForeColor = System.Drawing.Color.MediumBlue;
             this.textBoxAnimationDescription.Location = new System.Drawing.Point(12, 41);
             this.textBoxAnimationDescription.Name = "textBoxAnimationDescription";
+            this.textBoxAnimationDescription.ReadOnly = true;
             this.textBoxAnimationDescription.Size = new System.Drawing.Size(692, 31);
             this.textBoxAnimationDescription.TabIndex = 34;
             this.textBoxAnimationDescription.Text = "Animation Description";
@@ -4293,6 +4373,7 @@ namespace STROOP
             this.textBoxActionDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
             this.textBoxActionDescription.Location = new System.Drawing.Point(12, 8);
             this.textBoxActionDescription.Name = "textBoxActionDescription";
+            this.textBoxActionDescription.ReadOnly = true;
             this.textBoxActionDescription.Size = new System.Drawing.Size(692, 31);
             this.textBoxActionDescription.TabIndex = 34;
             this.textBoxActionDescription.Text = "Action Description";
@@ -4723,7 +4804,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 229F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 230F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9928,7 +10009,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(255, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(238, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -9960,7 +10041,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(244, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(227, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -10016,7 +10097,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(244, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(227, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -13995,192 +14076,113 @@ namespace STROOP
             this.labelMetric4Value.Text = "Value";
             this.labelMetric4Value.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // labelVersionNumber
+            // groupBoxObjects
             // 
-            this.labelVersionNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelVersionNumber.AutoSize = true;
-            this.labelVersionNumber.Location = new System.Drawing.Point(894, 15);
-            this.labelVersionNumber.Name = "labelVersionNumber";
-            this.labelVersionNumber.Size = new System.Drawing.Size(41, 13);
-            this.labelVersionNumber.TabIndex = 5;
-            this.labelVersionNumber.Text = "version";
-            this.labelVersionNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.groupBoxObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxObjects.Controls.Add(this.comboBoxLabelMethod);
+            this.groupBoxObjects.Controls.Add(this.labelLabelMethod);
+            this.groupBoxObjects.Controls.Add(this.labelSlotSize);
+            this.groupBoxObjects.Controls.Add(this.checkBoxObjLockLabels);
+            this.groupBoxObjects.Controls.Add(this.labelSortMethod);
+            this.groupBoxObjects.Controls.Add(this.WatchVariablePanelObjects);
+            this.groupBoxObjects.Controls.Add(this.comboBoxSortMethod);
+            this.groupBoxObjects.Controls.Add(this.trackBarObjSlotSize);
+            this.groupBoxObjects.Location = new System.Drawing.Point(2, 2);
+            this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBoxObjects.Name = "groupBoxObjects";
+            this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 384);
+            this.groupBoxObjects.TabIndex = 2;
+            this.groupBoxObjects.TabStop = false;
+            this.groupBoxObjects.Text = "Objects";
             // 
-            // buttonDisconnect
+            // comboBoxLabelMethod
             // 
-            this.buttonDisconnect.Location = new System.Drawing.Point(11, 11);
-            this.buttonDisconnect.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonDisconnect.Name = "buttonDisconnect";
-            this.buttonDisconnect.Size = new System.Drawing.Size(72, 21);
-            this.buttonDisconnect.TabIndex = 17;
-            this.buttonDisconnect.Text = "Disconnect";
-            this.buttonDisconnect.UseVisualStyleBackColor = true;
-            this.buttonDisconnect.Click += new System.EventHandler(this.buttonDisconnect_Click);
+            this.comboBoxLabelMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxLabelMethod.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBoxLabelMethod.Location = new System.Drawing.Point(641, 15);
+            this.comboBoxLabelMethod.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxLabelMethod.Name = "comboBoxLabelMethod";
+            this.comboBoxLabelMethod.Size = new System.Drawing.Size(102, 21);
+            this.comboBoxLabelMethod.TabIndex = 13;
             // 
-            // panelConnect
+            // labelLabelMethod
             // 
-            this.panelConnect.Controls.Add(this.buttonRefreshAndConnect);
-            this.panelConnect.Controls.Add(this.buttonRefresh);
-            this.panelConnect.Controls.Add(this.labelNotConnected);
-            this.panelConnect.Controls.Add(this.buttonConnect);
-            this.panelConnect.Controls.Add(this.listBoxProcessesList);
-            this.panelConnect.Location = new System.Drawing.Point(246, 12);
-            this.panelConnect.Name = "panelConnect";
-            this.panelConnect.Size = new System.Drawing.Size(441, 20);
-            this.panelConnect.TabIndex = 17;
+            this.labelLabelMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelLabelMethod.AutoSize = true;
+            this.labelLabelMethod.Location = new System.Drawing.Point(561, 18);
+            this.labelLabelMethod.Name = "labelLabelMethod";
+            this.labelLabelMethod.Size = new System.Drawing.Size(75, 13);
+            this.labelLabelMethod.TabIndex = 12;
+            this.labelLabelMethod.Text = "Label Method:";
             // 
-            // buttonRefreshAndConnect
+            // labelSlotSize
             // 
-            this.buttonRefreshAndConnect.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonRefreshAndConnect.Location = new System.Drawing.Point(134, 133);
-            this.buttonRefreshAndConnect.Name = "buttonRefreshAndConnect";
-            this.buttonRefreshAndConnect.Size = new System.Drawing.Size(172, 37);
-            this.buttonRefreshAndConnect.TabIndex = 3;
-            this.buttonRefreshAndConnect.Text = "Refresh && Connect";
-            this.buttonRefreshAndConnect.UseVisualStyleBackColor = true;
-            this.buttonRefreshAndConnect.Click += new System.EventHandler(this.buttonRefreshAndConnect_Click);
+            this.labelSlotSize.AutoSize = true;
+            this.labelSlotSize.Location = new System.Drawing.Point(110, 19);
+            this.labelSlotSize.Name = "labelSlotSize";
+            this.labelSlotSize.Size = new System.Drawing.Size(51, 13);
+            this.labelSlotSize.TabIndex = 11;
+            this.labelSlotSize.Text = "Slot Size:";
             // 
-            // buttonRefresh
+            // checkBoxObjLockLabels
             // 
-            this.buttonRefresh.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonRefresh.Location = new System.Drawing.Point(134, 92);
-            this.buttonRefresh.Name = "buttonRefresh";
-            this.buttonRefresh.Size = new System.Drawing.Size(84, 37);
-            this.buttonRefresh.TabIndex = 3;
-            this.buttonRefresh.Text = "Refresh";
-            this.buttonRefresh.UseVisualStyleBackColor = true;
-            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
+            this.checkBoxObjLockLabels.AutoSize = true;
+            this.checkBoxObjLockLabels.Location = new System.Drawing.Point(4, 18);
+            this.checkBoxObjLockLabels.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxObjLockLabels.Name = "checkBoxObjLockLabels";
+            this.checkBoxObjLockLabels.Size = new System.Drawing.Size(84, 17);
+            this.checkBoxObjLockLabels.TabIndex = 7;
+            this.checkBoxObjLockLabels.Text = "Lock Labels";
+            this.checkBoxObjLockLabels.UseVisualStyleBackColor = true;
             // 
-            // labelNotConnected
+            // labelSortMethod
             // 
-            this.labelNotConnected.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelNotConnected.AutoSize = true;
-            this.labelNotConnected.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNotConnected.Location = new System.Drawing.Point(141, -111);
-            this.labelNotConnected.Name = "labelNotConnected";
-            this.labelNotConnected.Size = new System.Drawing.Size(157, 26);
-            this.labelNotConnected.TabIndex = 2;
-            this.labelNotConnected.Text = "Not Connected";
+            this.labelSortMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelSortMethod.AutoSize = true;
+            this.labelSortMethod.Location = new System.Drawing.Point(747, 18);
+            this.labelSortMethod.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelSortMethod.Name = "labelSortMethod";
+            this.labelSortMethod.Size = new System.Drawing.Size(68, 13);
+            this.labelSortMethod.TabIndex = 5;
+            this.labelSortMethod.Text = "Sort Method:";
             // 
-            // buttonConnect
+            // WatchVariablePanelObjects
             // 
-            this.buttonConnect.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonConnect.Location = new System.Drawing.Point(222, 92);
-            this.buttonConnect.Name = "buttonConnect";
-            this.buttonConnect.Size = new System.Drawing.Size(84, 37);
-            this.buttonConnect.TabIndex = 1;
-            this.buttonConnect.Text = "Connect";
-            this.buttonConnect.UseVisualStyleBackColor = true;
-            this.buttonConnect.Click += new System.EventHandler(this.buttonConnect_Click);
+            this.WatchVariablePanelObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.WatchVariablePanelObjects.AutoScroll = true;
+            this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
+            this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
+            this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 162);
+            this.WatchVariablePanelObjects.TabIndex = 0;
+            this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
-            // listBoxProcessesList
+            // comboBoxSortMethod
             // 
-            this.listBoxProcessesList.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.listBoxProcessesList.FormattingEnabled = true;
-            this.listBoxProcessesList.Location = new System.Drawing.Point(134, -61);
-            this.listBoxProcessesList.Name = "listBoxProcessesList";
-            this.listBoxProcessesList.Size = new System.Drawing.Size(172, 147);
-            this.listBoxProcessesList.TabIndex = 0;
+            this.comboBoxSortMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxSortMethod.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.comboBoxSortMethod.Location = new System.Drawing.Point(817, 15);
+            this.comboBoxSortMethod.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxSortMethod.Name = "comboBoxSortMethod";
+            this.comboBoxSortMethod.Size = new System.Drawing.Size(102, 21);
+            this.comboBoxSortMethod.TabIndex = 4;
             // 
-            // labelFpsCounter
+            // trackBarObjSlotSize
             // 
-            this.labelFpsCounter.AutoSize = true;
-            this.labelFpsCounter.Location = new System.Drawing.Point(88, 15);
-            this.labelFpsCounter.Name = "labelFpsCounter";
-            this.labelFpsCounter.Size = new System.Drawing.Size(39, 13);
-            this.labelFpsCounter.TabIndex = 18;
-            this.labelFpsCounter.Text = "FPS: 0";
-            // 
-            // buttonShowTopPane
-            // 
-            this.buttonShowTopPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonShowTopPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowTopPane.BackgroundImage")));
-            this.buttonShowTopPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonShowTopPane.Location = new System.Drawing.Point(866, 11);
-            this.buttonShowTopPane.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonShowTopPane.Name = "buttonShowTopPane";
-            this.buttonShowTopPane.Size = new System.Drawing.Size(21, 21);
-            this.buttonShowTopPane.TabIndex = 19;
-            this.buttonShowTopPane.UseVisualStyleBackColor = true;
-            this.buttonShowTopPane.Click += new System.EventHandler(this.buttonShowTopPanel_Click);
-            // 
-            // buttonShowTopBottomPane
-            // 
-            this.buttonShowTopBottomPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonShowTopBottomPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowTopBottomPane.BackgroundImage")));
-            this.buttonShowTopBottomPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonShowTopBottomPane.Location = new System.Drawing.Point(841, 11);
-            this.buttonShowTopBottomPane.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonShowTopBottomPane.Name = "buttonShowTopBottomPane";
-            this.buttonShowTopBottomPane.Size = new System.Drawing.Size(21, 21);
-            this.buttonShowTopBottomPane.TabIndex = 20;
-            this.buttonShowTopBottomPane.UseVisualStyleBackColor = true;
-            this.buttonShowTopBottomPane.Click += new System.EventHandler(this.buttonShowTopBottomPanel_Click);
-            // 
-            // buttonReadOnly
-            // 
-            this.buttonReadOnly.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonReadOnly.Location = new System.Drawing.Point(611, 11);
-            this.buttonReadOnly.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonReadOnly.Name = "buttonReadOnly";
-            this.buttonReadOnly.Size = new System.Drawing.Size(126, 21);
-            this.buttonReadOnly.TabIndex = 21;
-            this.buttonReadOnly.Tag = "";
-            this.buttonReadOnly.Text = "Switch to Read-Only";
-            this.buttonReadOnly.UseVisualStyleBackColor = true;
-            this.buttonReadOnly.Click += new System.EventHandler(this.buttonReadOnly_Click);
-            // 
-            // buttonShowBottomPane
-            // 
-            this.buttonShowBottomPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonShowBottomPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowBottomPane.BackgroundImage")));
-            this.buttonShowBottomPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonShowBottomPane.Location = new System.Drawing.Point(816, 11);
-            this.buttonShowBottomPane.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonShowBottomPane.Name = "buttonShowBottomPane";
-            this.buttonShowBottomPane.Size = new System.Drawing.Size(21, 21);
-            this.buttonShowBottomPane.TabIndex = 20;
-            this.buttonShowBottomPane.UseVisualStyleBackColor = true;
-            this.buttonShowBottomPane.Click += new System.EventHandler(this.buttonShowBottomPanel_Click);
-            // 
-            // buttonShowRightPane
-            // 
-            this.buttonShowRightPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonShowRightPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowRightPane.BackgroundImage")));
-            this.buttonShowRightPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonShowRightPane.Location = new System.Drawing.Point(791, 11);
-            this.buttonShowRightPane.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonShowRightPane.Name = "buttonShowRightPane";
-            this.buttonShowRightPane.Size = new System.Drawing.Size(21, 21);
-            this.buttonShowRightPane.TabIndex = 19;
-            this.buttonShowRightPane.UseVisualStyleBackColor = true;
-            this.buttonShowRightPane.Click += new System.EventHandler(this.buttonShowRightPanel_Click);
-            // 
-            // buttonShowLeftRightPane
-            // 
-            this.buttonShowLeftRightPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonShowLeftRightPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowLeftRightPane.BackgroundImage")));
-            this.buttonShowLeftRightPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonShowLeftRightPane.Location = new System.Drawing.Point(766, 11);
-            this.buttonShowLeftRightPane.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonShowLeftRightPane.Name = "buttonShowLeftRightPane";
-            this.buttonShowLeftRightPane.Size = new System.Drawing.Size(21, 21);
-            this.buttonShowLeftRightPane.TabIndex = 20;
-            this.buttonShowLeftRightPane.UseVisualStyleBackColor = true;
-            this.buttonShowLeftRightPane.Click += new System.EventHandler(this.buttonShowLeftRightPanel_Click);
-            // 
-            // buttonShowLeftPane
-            // 
-            this.buttonShowLeftPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonShowLeftPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowLeftPane.BackgroundImage")));
-            this.buttonShowLeftPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonShowLeftPane.Location = new System.Drawing.Point(741, 11);
-            this.buttonShowLeftPane.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonShowLeftPane.Name = "buttonShowLeftPane";
-            this.buttonShowLeftPane.Size = new System.Drawing.Size(21, 21);
-            this.buttonShowLeftPane.TabIndex = 20;
-            this.buttonShowLeftPane.UseVisualStyleBackColor = true;
-            this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
+            this.trackBarObjSlotSize.Location = new System.Drawing.Point(167, 15);
+            this.trackBarObjSlotSize.Maximum = 100;
+            this.trackBarObjSlotSize.Minimum = 15;
+            this.trackBarObjSlotSize.Name = "trackBarObjSlotSize";
+            this.trackBarObjSlotSize.Size = new System.Drawing.Size(104, 45);
+            this.trackBarObjSlotSize.TabIndex = 3;
+            this.trackBarObjSlotSize.TickFrequency = 10;
+            this.trackBarObjSlotSize.Value = 40;
+            this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
             // StroopMainForm
             // 
@@ -14207,9 +14209,8 @@ namespace STROOP
             this.Text = "STROOP";
             this.Load += new System.EventHandler(this.StroopMainForm_Load);
             this.Resize += new System.EventHandler(this.StroopMainForm_Resize);
-            this.groupBoxObjects.ResumeLayout(false);
-            this.groupBoxObjects.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
+            this.panelConnect.ResumeLayout(false);
+            this.panelConnect.PerformLayout();
             this.splitContainerMain.Panel1.ResumeLayout(false);
             this.splitContainerMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
@@ -14621,8 +14622,9 @@ namespace STROOP
             this.groupBoxGoto.PerformLayout();
             this.groupBoxRecording.ResumeLayout(false);
             this.groupBoxRecording.PerformLayout();
-            this.panelConnect.ResumeLayout(false);
-            this.panelConnect.PerformLayout();
+            this.groupBoxObjects.ResumeLayout(false);
+            this.groupBoxObjects.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
