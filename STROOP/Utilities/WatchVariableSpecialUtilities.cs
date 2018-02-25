@@ -1084,7 +1084,13 @@ namespace STROOP.Structs
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
-                        return false;
+                        double? newPeakHeightNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!newPeakHeightNullable.HasValue) return false;
+                        double newPeakHeight = newPeakHeightNullable.Value;
+                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                        double newRemainingHeight = newPeakHeight - marioY;
+                        double initialVSpeed = ComputeInitialVerticalSpeedFromHeightChange(newRemainingHeight);
+                        return Config.Stream.SetValue((float)initialVSpeed, MarioConfig.StructAddress + MarioConfig.VSpeedOffset);
                     };
                     break;
 
@@ -1097,7 +1103,11 @@ namespace STROOP.Structs
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
-                        return false;
+                        double? newVSpeedNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!newVSpeedNullable.HasValue) return false;
+                        double newVSpeed = newVSpeedNullable.Value;
+                        double newHSpeed = ConvertDoubleJumpVSpeedToHSpeed(newVSpeed);
+                        return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
                     };
                     break;
 
@@ -1111,7 +1121,12 @@ namespace STROOP.Structs
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
-                        return false;
+                        double? newHeightNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!newHeightNullable.HasValue) return false;
+                        double newHeight = newHeightNullable.Value;
+                        double initialVSpeed = ComputeInitialVerticalSpeedFromHeightChange(newHeight);
+                        double newHSpeed = ConvertDoubleJumpVSpeedToHSpeed(initialVSpeed);
+                        return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
                     };
                     break;
 
@@ -1127,7 +1142,14 @@ namespace STROOP.Structs
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
-                        return false;
+                        double? newPeakHeightNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!newPeakHeightNullable.HasValue) return false;
+                        double newPeakHeight = newPeakHeightNullable.Value;
+                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                        double newHeight = newPeakHeight - marioY;
+                        double initialVSpeed = ComputeInitialVerticalSpeedFromHeightChange(newHeight);
+                        double newHSpeed = ConvertDoubleJumpVSpeedToHSpeed(initialVSpeed);
+                        return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
                     };
                     break;
 
