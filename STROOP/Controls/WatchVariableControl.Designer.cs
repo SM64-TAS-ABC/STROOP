@@ -146,7 +146,7 @@
             this._valueCheckBox.Location = new System.Drawing.Point(0, 0);
             this._valueCheckBox.Margin = new System.Windows.Forms.Padding(0);
             this._valueCheckBox.Name = "_valueCheckBox";
-            this._valueCheckBox.Padding = new System.Windows.Forms.Padding(2, 0, 5, 0);
+            this._valueCheckBox.Padding = new System.Windows.Forms.Padding(3, 0, 5, 0);
             this._valueCheckBox.Size = new System.Drawing.Size(85, 20);
             this._valueCheckBox.TabIndex = 1;
             this._valueCheckBox.UseVisualStyleBackColor = true;
