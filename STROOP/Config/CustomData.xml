@@ -3,6 +3,9 @@
   
   <Data type="ushort" offset="0x80400000" base="Relative">Ghost</Data>
 
+  <Data type="byte" offsetUS="0x8032DD94" offsetJP="0x8032CE34" base="Relative" subclass="Boolean">Special Triple Jump</Data>
+  <Data type="byte" offsetUS="0x80332618" offsetJP="0x80331508" base="Relative" subclass="Boolean">Talked to Yoshi</Data>
+  <Data type="byte" offsetUS="0x8033B26E" offsetJP="0x80339EFE" base="Relative" subclass="Boolean">Never Entered Castle</Data>
 
   <Data type="float" offset="0x3C" base="Mario" coord="X">Mario X</Data>
   <Data type="float" offset="0x40" base="Mario" coord="Y">Mario Y</Data>
