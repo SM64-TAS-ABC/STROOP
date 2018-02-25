@@ -279,8 +279,8 @@ namespace STROOP
             this.tabPageWater = new System.Windows.Forms.TabPage();
             this.watchVariablePanelWater = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageActions = new System.Windows.Forms.TabPage();
-            this.labelAnimationDescription = new System.Windows.Forms.Label();
-            this.labelActionDescription = new System.Windows.Forms.Label();
+            this.textBoxAnimationDescription = new STROOP.BetterTextbox();
+            this.textBoxActionDescription = new STROOP.BetterTextbox();
             this.watchVariablePanelActions = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageInput = new System.Windows.Forms.TabPage();
             this.splitContainerInput = new System.Windows.Forms.SplitContainer();
@@ -1089,8 +1089,6 @@ namespace STROOP
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.textBoxActionDescription = new STROOP.BetterTextbox();
-            this.textBoxAnimationDescription = new STROOP.BetterTextbox();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1463,7 +1461,7 @@ namespace STROOP
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 382);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 383);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -1528,7 +1526,7 @@ namespace STROOP
             this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
             this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 160);
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 161);
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
@@ -4266,8 +4264,6 @@ namespace STROOP
             // 
             this.tabPageActions.Controls.Add(this.textBoxAnimationDescription);
             this.tabPageActions.Controls.Add(this.textBoxActionDescription);
-            this.tabPageActions.Controls.Add(this.labelAnimationDescription);
-            this.tabPageActions.Controls.Add(this.labelActionDescription);
             this.tabPageActions.Controls.Add(this.watchVariablePanelActions);
             this.tabPageActions.Location = new System.Drawing.Point(4, 22);
             this.tabPageActions.Name = "tabPageActions";
@@ -4276,26 +4272,30 @@ namespace STROOP
             this.tabPageActions.TabIndex = 13;
             this.tabPageActions.Text = "Actions";
             // 
-            // labelAnimationDescription
+            // textBoxAnimationDescription
             // 
-            this.labelAnimationDescription.AutoSize = true;
-            this.labelAnimationDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAnimationDescription.ForeColor = System.Drawing.Color.MediumBlue;
-            this.labelAnimationDescription.Location = new System.Drawing.Point(6, 41);
-            this.labelAnimationDescription.Name = "labelAnimationDescription";
-            this.labelAnimationDescription.Size = new System.Drawing.Size(299, 31);
-            this.labelAnimationDescription.TabIndex = 7;
-            this.labelAnimationDescription.Text = "Animation Description";
+            this.textBoxAnimationDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxAnimationDescription.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxAnimationDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxAnimationDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
+            this.textBoxAnimationDescription.ForeColor = System.Drawing.Color.MediumBlue;
+            this.textBoxAnimationDescription.Location = new System.Drawing.Point(12, 41);
+            this.textBoxAnimationDescription.Name = "textBoxAnimationDescription";
+            this.textBoxAnimationDescription.Size = new System.Drawing.Size(692, 31);
+            this.textBoxAnimationDescription.TabIndex = 34;
+            this.textBoxAnimationDescription.Text = "Animation Description";
             // 
-            // labelActionDescription
+            // textBoxActionDescription
             // 
-            this.labelActionDescription.AutoSize = true;
-            this.labelActionDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelActionDescription.Location = new System.Drawing.Point(6, 8);
-            this.labelActionDescription.Name = "labelActionDescription";
-            this.labelActionDescription.Size = new System.Drawing.Size(252, 31);
-            this.labelActionDescription.TabIndex = 7;
-            this.labelActionDescription.Text = "Action Description";
+            this.textBoxActionDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxActionDescription.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxActionDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxActionDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
+            this.textBoxActionDescription.Location = new System.Drawing.Point(12, 8);
+            this.textBoxActionDescription.Name = "textBoxActionDescription";
+            this.textBoxActionDescription.Size = new System.Drawing.Size(692, 31);
+            this.textBoxActionDescription.TabIndex = 34;
+            this.textBoxActionDescription.Text = "Action Description";
             // 
             // watchVariablePanelActions
             // 
@@ -4723,7 +4723,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 228F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 229F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9928,7 +9928,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(272, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(255, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -9960,7 +9960,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(261, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(244, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -10016,7 +10016,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(261, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(244, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -14182,31 +14182,6 @@ namespace STROOP
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
             // 
-            // textBoxActionDescription
-            // 
-            this.textBoxActionDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxActionDescription.BackColor = System.Drawing.SystemColors.Control;
-            this.textBoxActionDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxActionDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
-            this.textBoxActionDescription.Location = new System.Drawing.Point(362, 8);
-            this.textBoxActionDescription.Name = "textBoxActionDescription";
-            this.textBoxActionDescription.Size = new System.Drawing.Size(507, 31);
-            this.textBoxActionDescription.TabIndex = 34;
-            this.textBoxActionDescription.Text = "Action Description";
-            // 
-            // textBoxAnimationDescription
-            // 
-            this.textBoxAnimationDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxAnimationDescription.BackColor = System.Drawing.SystemColors.Control;
-            this.textBoxAnimationDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxAnimationDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
-            this.textBoxAnimationDescription.ForeColor = System.Drawing.Color.MediumBlue;
-            this.textBoxAnimationDescription.Location = new System.Drawing.Point(362, 41);
-            this.textBoxAnimationDescription.Name = "textBoxAnimationDescription";
-            this.textBoxAnimationDescription.Size = new System.Drawing.Size(507, 31);
-            this.textBoxAnimationDescription.TabIndex = 34;
-            this.textBoxAnimationDescription.Text = "Animation Description";
-            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -15307,8 +15282,6 @@ namespace STROOP
         private Button buttonCameraHackBothPosXnZp;
         private Button buttonCameraHackBothPosXn;
         private Button buttonCameraHackBothPosXnZn;
-        private Label labelAnimationDescription;
-        private Label labelActionDescription;
         private GroupBox groupBoxRomVersion;
         private RadioButton radioButtonRomVersionJP;
         private RadioButton radioButtonRomVersionUS;
