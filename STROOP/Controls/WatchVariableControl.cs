@@ -444,8 +444,8 @@ namespace STROOP.Controls
             }
         }
 
-        private static int VALUE_TEXTBOX_RIGHT_MARGIN = 6;
-        private static int VALUE_TEXTBOX_LEFT_MARGIN = 3;
+        private static int VALUE_TEXTBOX_SIZE_DIFF = 6;
+        private static int VALUE_TEXTBOX_MARGIN = 3;
 
         private void UpdateFlush()
         {
@@ -454,9 +454,8 @@ namespace STROOP.Controls
             _leftFlush = LeftFlush;
 
             _valueTextBox.TextAlign = _leftFlush ? HorizontalAlignment.Left : HorizontalAlignment.Right;
-            _valueTextBox.Anchor = _leftFlush ? AnchorStyles.Left : AnchorStyles.Right;
-            _valueTextBox.Left = _leftFlush ? VALUE_TEXTBOX_LEFT_MARGIN : 0;
-            _valueTextBox.Width = _leftFlush ? _valuePanel.Width - VALUE_TEXTBOX_LEFT_MARGIN - 3 : _valuePanel.Width - VALUE_TEXTBOX_RIGHT_MARGIN;
+            //_valueTextBox.Anchor = _leftFlush ? AnchorStyles.Left : AnchorStyles.Right;
+            _valueTextBox.Left = _leftFlush ? VALUE_TEXTBOX_MARGIN : 0;
             _valueCheckBox.CheckAlign = _leftFlush ? ContentAlignment.MiddleLeft : ContentAlignment.MiddleRight;
         }
 
@@ -475,6 +474,7 @@ namespace STROOP.Controls
             _tableLayoutPanel.RowStyles[0].Height = _variableHeight;
             _tableLayoutPanel.ColumnStyles[0].Width = _variableNameWidth;
             _tableLayoutPanel.ColumnStyles[1].Width = _variableValueWidth;
+            _valueTextBox.Width = _variableValueWidth - VALUE_TEXTBOX_SIZE_DIFF;
         }
 
         private void UpdateColor()

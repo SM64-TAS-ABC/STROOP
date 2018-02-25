@@ -128,7 +128,7 @@
             // 
             // _valueTextBox
             // 
-            this._valueTextBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this._valueTextBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this._valueTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this._valueTextBox.Location = new System.Drawing.Point(0, 3);
             this._valueTextBox.Margin = new System.Windows.Forms.Padding(0, 0, 6, 0);
