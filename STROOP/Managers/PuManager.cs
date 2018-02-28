@@ -12,14 +12,16 @@ namespace STROOP.Managers
 {
     public class PuManager : DataManager
     {
-        Control _puController;
+        GroupBox _puController;
 
         enum PuControl { Home, PuUp, PuDown, PuLeft, PuRight, QpuUp, QpuDown, QpuLeft, QpuRight };
 
         public PuManager(List<WatchVariableControlPrecursor> variables, TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel, Control puController)
             : base(variables, watchVariablePanel)
         {
-            _puController = puController;
+            SplitContainer splitContainerFile = tabControl.Controls["splitContainerPu"] as SplitContainer;
+
+            _puController = splitContainerFile.Panel1.Controls["groupBoxPuController"] as GroupBox;
 
             // Pu Controller initialize and register click events
             _puController.Controls["buttonPuConHome"].Click += (sender, e) => PuControl_Click(sender, e, PuControl.Home);
