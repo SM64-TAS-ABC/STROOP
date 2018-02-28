@@ -27,7 +27,7 @@ namespace STROOP
         InputImageGui _inputImageGui = new InputImageGui();
         FileImageGui _fileImageGui = new FileImageGui();
         List<WatchVariableControlPrecursor> _watchVarControlList, _waterData, _miscData, _areaData, _inputData, _fileData,
-            _debugData, _camHackData, _hudData, _cameraData, _quarterFrameData, _actionsData,
+            _debugData, _camHackData, _hudData, _cameraData, _quarterFrameData, _actionsData, _puData,
             _triangleData, _marioData, _objectData, _gfxData;
         MapAssociations _mapAssoc;
         ScriptParser _scriptParser;
@@ -131,7 +131,7 @@ namespace STROOP
             Config.CameraManager = new CameraManager(_cameraData, tabPageCamera, watchVariablePanelCamera);
             Config.TriangleManager = new TriangleManager(tabPageTriangles, _triangleData, watchVariablePanelTriangles);
             Config.DebugManager = new DebugManager(_debugData, tabPageDebug, watchVariablePanelDebug);
-            Config.PuManager = new PuManager(_fileData, tabPagePu, watchVariablePanelPu);
+            Config.PuManager = new PuManager(_puData, tabPagePu, watchVariablePanelPu);
             Config.FileManager = new FileManager(_fileData, tabPageFile, watchVariablePanelFile, _fileImageGui);
             Config.AreaManager = new AreaManager(tabPageArea, _areaData, watchVariablePanelArea);
             Config.QuarterFrameManager = new DataManager(_quarterFrameData, watchVariablePanelQuarterFrame);
@@ -219,6 +219,7 @@ namespace STROOP
             XmlConfigParser.OpenInputImageAssoc(@"Config/InputImageAssociations.xml", _inputImageGui);
             loadingForm.UpdateStatus("Loading File Data", statusNum++);
             _fileData = XmlConfigParser.OpenWatchVariableControlPrecursors(@"Config/FileData.xml", "FileDataSchema.xsd");
+            _puData = XmlConfigParser.OpenWatchVariableControlPrecursors(@"Config/PuData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading File Image Associations", statusNum++);
             XmlConfigParser.OpenFileImageAssoc(@"Config/FileImageAssociations.xml", _fileImageGui);
             loadingForm.UpdateStatus("Loading Area Data", statusNum++);
