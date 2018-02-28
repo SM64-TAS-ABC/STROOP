@@ -1,4 +1,5 @@
-﻿using STROOP.Structs.Configurations;
+﻿using STROOP.Controls;
+using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace STROOP.Managers
 
         enum PuControl { Home, PuUp, PuDown, PuLeft, PuRight, QpuUp, QpuDown, QpuLeft, QpuRight };
 
-        public PuManager(Control puController)
+        public PuManager(List<WatchVariableControlPrecursor> variables, TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel, Control puController)
         {
             _puController = puController;
 

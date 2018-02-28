@@ -131,7 +131,7 @@ namespace STROOP
             Config.CameraManager = new CameraManager(_cameraData, tabPageCamera, watchVariablePanelCamera);
             Config.TriangleManager = new TriangleManager(tabPageTriangles, _triangleData, watchVariablePanelTriangles);
             Config.DebugManager = new DebugManager(_debugData, tabPageDebug, watchVariablePanelDebug);
-            Config.PuManager = new PuManager(groupBoxPuController);
+            Config.PuManager = new PuManager(_fileData, tabPagePu, watchVariablePanelPu, groupBoxPuController);
             Config.FileManager = new FileManager(_fileData, tabPageFile, watchVariablePanelFile, _fileImageGui);
             Config.AreaManager = new AreaManager(tabPageArea, _areaData, watchVariablePanelArea);
             Config.QuarterFrameManager = new DataManager(_quarterFrameData, watchVariablePanelQuarterFrame);
