@@ -16,7 +16,7 @@ namespace STROOP.Managers
 
         enum PuControl { Home, PuUp, PuDown, PuLeft, PuRight, QpuUp, QpuDown, QpuLeft, QpuRight };
 
-        public PuManager(List<WatchVariableControlPrecursor> variables, TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel, Control puController)
+        public PuManager(List<WatchVariableControlPrecursor> variables, TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel)
             : base(variables, watchVariablePanel)
         {
             SplitContainer splitContainerFile = tabControl.Controls["splitContainerPu"] as SplitContainer;
