@@ -10,13 +10,14 @@ using System.Windows.Forms;
 
 namespace STROOP.Managers
 {
-    public class PuManager
+    public class PuManager : DataManager
     {
         Control _puController;
 
         enum PuControl { Home, PuUp, PuDown, PuLeft, PuRight, QpuUp, QpuDown, QpuLeft, QpuRight };
 
         public PuManager(List<WatchVariableControlPrecursor> variables, TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel, Control puController)
+            : base(variables, watchVariablePanel)
         {
             _puController = puController;
 
@@ -66,15 +67,14 @@ namespace STROOP.Managers
             }
         }
 
-        public void Update(bool updateView)
+        public override void Update(bool updateView)
         {
-            if (!updateView)
-                return;
-
-            //base.Update();
+            if (!updateView) return;
 
             _puController.Controls["labelPuConPuValue"].Text = PuUtilities.GetPuPosString();
             _puController.Controls["labelPuConQpuValue"].Text = PuUtilities.GetQpuPosString();
+
+            base.Update(updateView);
         }
     }
 }
