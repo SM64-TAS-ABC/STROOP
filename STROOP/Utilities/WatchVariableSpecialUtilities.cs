@@ -982,20 +982,11 @@ namespace STROOP.Structs
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
-                        double? defactoSpeedNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!defactoSpeedNullable.HasValue) return false;
-                        double defactoSpeed = defactoSpeedNullable.Value;
-
-                        uint floorTri = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
-                        float yNorm = floorTri == 0 ? 1 : Config.Stream.GetSingle(floorTri + TriangleOffsetsConfig.NormY);
-                        float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-
-                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                        float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
-                        float distAboveFloor = marioY - floorY;
-
-                        float newHSpeed = distAboveFloor == 0 ? (float)defactoSpeed / yNorm : hSpeed;
-                        return Config.Stream.SetValue(newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                        double? newDefactoSpeedNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!newDefactoSpeedNullable.HasValue) return false;
+                        double newDefactoSpeed = newDefactoSpeedNullable.Value;
+                        double newHSpeed = newDefactoSpeed / GetDeFactoMultiplier();
+                        return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
                     };
                     break;
 
@@ -2778,17 +2769,23 @@ namespace STROOP.Structs
 
         // public methods
 
-        public static double GetMarioDeFactoSpeed()
+        private static double GetDeFactoMultiplier()
         {
             uint floorTri = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
             float yNorm = floorTri == 0 ? 1 : Config.Stream.GetSingle(floorTri + TriangleOffsetsConfig.NormY);
-            float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
 
             float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
             float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
             float distAboveFloor = marioY - floorY;
 
-            float defactoSpeed = distAboveFloor == 0 ? hSpeed * yNorm : hSpeed;
+            float defactoMultiplier = distAboveFloor == 0 ? yNorm : 1;
+            return defactoMultiplier;
+        }
+
+        public static double GetMarioDeFactoSpeed()
+        {
+            float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+            double defactoSpeed = hSpeed * GetDeFactoMultiplier();
             return defactoSpeed;
         }
 
