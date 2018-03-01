@@ -98,18 +98,19 @@ namespace STROOP.Utilities
             return success;
         }
 
-        public static string GetPuPosString()
+        public static string GetPuPosString(bool useQpu, bool includeY)
         {
             (int puXIndex, int puYIndex, int puZIndex) = GetMarioPuIndexes();
-            return string.Format("[{0}:{1}]", puXIndex, puZIndex);
-        }
 
-        public static string GetQpuPosString()
-        {
-            (int puXIndex, int puYIndex, int puZIndex) = GetMarioPuIndexes();
-            double qpuX = puXIndex / 4d;
-            double qpuZ = puZIndex / 4d;
-            return string.Format("[{0}:{1}]", qpuX, qpuZ);
+            double xValue = useQpu ? puXIndex / 4d : puXIndex;
+            double yValue = useQpu ? puYIndex / 4d : puYIndex;
+            double zValue = useQpu ? puZIndex / 4d : puZIndex;
+
+            List<double> values = new List<double>();
+            values.Add(xValue);
+            if (includeY) values.Add(yValue);
+            values.Add(zValue);
+            return "[" + String.Join(",", values) + "]";
         }
     }
 }

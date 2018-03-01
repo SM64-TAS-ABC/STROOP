@@ -37,8 +37,8 @@ namespace STROOP.Managers
         {
             if (!updateView) return;
 
-            _puController.Controls["labelPuConPuValue"].Text = PuUtilities.GetPuPosString();
-            _puController.Controls["labelPuConQpuValue"].Text = PuUtilities.GetQpuPosString();
+            _puController.Controls["labelPuConPuValue"].Text = PuUtilities.GetPuPosString(false, false);
+            _puController.Controls["labelPuConQpuValue"].Text = PuUtilities.GetPuPosString(true, false);
 
             base.Update(updateView);
         }
