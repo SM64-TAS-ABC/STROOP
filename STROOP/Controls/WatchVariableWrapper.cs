@@ -43,6 +43,7 @@ namespace STROOP.Controls
             WatchVariable watchVar,
             WatchVariableControl watchVarControl,
             WatchVariableSubclass subclass,
+            int? roundingLimit,
             bool? useHex,
             bool? invertBool,
             WatchVariableCoordinate? coordinate)
@@ -56,7 +57,7 @@ namespace STROOP.Controls
                     return new WatchVariableNumberWrapper(
                         watchVar,
                         watchVarControl,
-                        DEFAULT_ROUNDING_LIMIT,
+                        roundingLimit,
                         useHex,
                         DEFAULT_USE_CHECKBOX,
                         coordinate);

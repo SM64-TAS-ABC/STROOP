@@ -33,6 +33,8 @@ namespace STROOP.Controls
             WatchVariableCoordinate? coordinate = null)
             : base(watchVar, watchVarControl, useCheckbox)
         {
+            // Null input translates to default rounding, not null as in no rounding
+            roundingLimit = roundingLimit ?? DEFAULT_ROUNDING_LIMIT;
             if (roundingLimit.HasValue)
             {
                 roundingLimit = MoreMath.Clamp(roundingLimit.Value, 0, MAX_ROUNDING_LIMIT);

@@ -19,6 +19,7 @@ namespace STROOP.Controls
         private readonly WatchVariable _watchVar;
         private readonly WatchVariableSubclass _subclass;
         private readonly Color? _backgroundColor;
+        private readonly int? _roundingLimit;
         private readonly bool? _useHex;
         private readonly bool? _invertBool;
         private readonly WatchVariableCoordinate? _coordinate;
@@ -30,6 +31,7 @@ namespace STROOP.Controls
             WatchVariable watchVar,
             WatchVariableSubclass subclass,
             Color? backgroundColor,
+            int? roundingLimit,
             bool? useHex,
             bool? invertBool,
             WatchVariableCoordinate? coordinate,
@@ -40,6 +42,7 @@ namespace STROOP.Controls
             _watchVar = watchVar;
             _subclass = subclass;
             _backgroundColor = backgroundColor;
+            _roundingLimit = roundingLimit;
             _useHex = useHex;
             _invertBool = invertBool;
             _coordinate = coordinate;
@@ -76,6 +79,8 @@ namespace STROOP.Controls
             _groupList = WatchVariableUtilities.ParseVariableGroupList(element.Attribute(XName.Get("groupList"))?.Value);
             _backgroundColor = (element.Attribute(XName.Get("color")) != null) ?
                 ColorTranslator.FromHtml(element.Attribute(XName.Get("color")).Value) : (Color?)null;
+            _roundingLimit = (element.Attribute(XName.Get("round")) != null) ?
+                ParsingUtilities.ParseInt(element.Attribute(XName.Get("round")).Value) : (int?)null;
             _useHex = (element.Attribute(XName.Get("useHex")) != null) ?
                 bool.Parse(element.Attribute(XName.Get("useHex")).Value) : (bool?)null;
             _invertBool = element.Attribute(XName.Get("invertBool")) != null ?
@@ -123,6 +128,7 @@ namespace STROOP.Controls
                 _watchVar,
                 _subclass,
                 newColor ?? _backgroundColor,
+                _roundingLimit,
                 _useHex,
                 _invertBool,
                 _coordinate,
@@ -173,6 +179,9 @@ namespace STROOP.Controls
 
             if (_subclass != WatchVariableSubclass.Number)
                 root.Add(new XAttribute("subclass", _subclass.ToString()));
+
+            if (_roundingLimit.HasValue)
+                root.Add(new XAttribute("round", _roundingLimit.Value.ToString()));
 
             if (_invertBool.HasValue)
                 root.Add(new XAttribute("invertBool", _invertBool.Value.ToString().ToLower()));

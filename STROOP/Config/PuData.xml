@@ -8,7 +8,7 @@
   <Data groupList="Basic" type="float" offset="0x50" base="Mario" coord="Z">Z Speed</Data>
   <Data groupList="Basic" type="float" offset="0x54" base="Mario">H Speed</Data>
   <Data groupList="Basic" base="None" specialType="DeFactoSpeed">De Facto Speed</Data>
-  <Data groupList="Basic" base="None" specialType="SyncingSpeed">Syncing Speed</Data>
+  <Data groupList="Basic" base="None" specialType="SyncingSpeed" round="0">Syncing Speed</Data>
 
   <Data groupList="Intermediate" base="None" specialType="DistanceAboveFloor">Dist Above Floor</Data>
   <Data groupList="Basic" type="float" offset="0x20" base="Triangle" coord="Y">Normal Y</Data>
