@@ -18,7 +18,7 @@ namespace STROOP.Utilities
             return (float)MoreMath.MaybeNegativeModulus(coord, PuSize);
         }
 
-        public static int GetPuIndex(double coord)
+        public static int GetPuIndex(float coord)
         {
             return (int)Math.Floor((coord + PuOffset) / PuSize);
         }
@@ -27,6 +27,19 @@ namespace STROOP.Utilities
         {
             float relativeCoord = GetRelativeCoordinate(coord);
             return relativeCoord + puIndex * PuSize;
+        }
+
+        public static (int puXIndex, int puYIndex, int puZIndex) GetMarioPuIndexes()
+        {
+            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+
+            int puXIndex = GetPuIndex(marioX);
+            int puYIndex = GetPuIndex(marioY);
+            int puZIndex = GetPuIndex(marioZ);
+
+            return (puXIndex, puYIndex, puZIndex);
         }
 
         public static bool MoveToInCurrentPu(float x, float y, float z)
