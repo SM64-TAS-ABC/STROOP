@@ -10,8 +10,8 @@ namespace STROOP.Utilities
 {
     public static class PuUtilities
     {
-        private static int PuOffset = 32768;
-        public static int PuSize = 65536;
+        private static readonly int PuOffset = 32768;
+        public static readonly int PuSize = 65536;
 
         public static float GetRelativeCoordinate(float coord)
         {
@@ -98,7 +98,7 @@ namespace STROOP.Utilities
             return success;
         }
 
-        public static string GetPuPosString(bool useQpu, bool includeY)
+        public static string GetPuIndexString(bool useQpu, bool includeY)
         {
             (int puXIndex, int puYIndex, int puZIndex) = GetMarioPuIndexes();
 
