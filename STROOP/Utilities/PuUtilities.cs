@@ -13,21 +13,27 @@ namespace STROOP.Utilities
         private static int PuOffset = 32768;
         public static int PuSize = 65536;
 
-        public static float GetRelativePuPosition(double coord)
+        public static float GetRelativeCoordinate(float coord)
         {
             return (float)MoreMath.MaybeNegativeModulus(coord, PuSize);
         }
 
-        public static int GetPUFromCoord(double coord)
+        public static int GetPuIndex(double coord)
         {
             return (int)Math.Floor((coord + PuOffset) / PuSize);
         }
 
+        public static float GetCoordinateInPu(float coord, int puIndex)
+        {
+            float relativeCoord = GetRelativeCoordinate(coord);
+            return relativeCoord + puIndex * PuSize;
+        }
+
         public static bool MoveToInCurrentPu(float x, float y, float z)
         {
-            x = (float)GetRelativePuPosition(x);
-            y = (float)GetRelativePuPosition(y);
-            z = (float)GetRelativePuPosition(z);
+            x = (float)GetRelativeCoordinate(x);
+            y = (float)GetRelativeCoordinate(y);
+            z = (float)GetRelativeCoordinate(z);
 
             float marioX, marioY, marioZ;
             marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
@@ -35,9 +41,9 @@ namespace STROOP.Utilities
             marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
 
             int curPuX, curPuY, curPuZ;
-            curPuX = GetPUFromCoord(marioX);
-            curPuY = GetPUFromCoord(marioY);
-            curPuZ = GetPUFromCoord(marioZ);
+            curPuX = GetPuIndex(marioX);
+            curPuY = GetPuIndex(marioY);
+            curPuZ = GetPuIndex(marioZ);
 
             float newMarioX, newMarioY, newMarioZ;
             newMarioX = x + curPuX * PuSize;
@@ -101,14 +107,14 @@ namespace STROOP.Utilities
 
             // Calculate new coordinates
             float newMarioX, newMarioY, newMarioZ;
-            newMarioX = (float)GetRelativePuPosition(marioX) + newPuX * PuSize;
-            newMarioY = (float)GetRelativePuPosition(marioY) + newPuY * PuSize;
-            newMarioZ = (float)GetRelativePuPosition(marioZ) + newPuZ * PuSize;
+            newMarioX = (float)GetRelativeCoordinate(marioX) + newPuX * PuSize;
+            newMarioY = (float)GetRelativeCoordinate(marioY) + newPuY * PuSize;
+            newMarioZ = (float)GetRelativeCoordinate(marioZ) + newPuZ * PuSize;
 
             float newCamX, newCamY, newCamZ;
-            newCamX = (float)GetRelativePuPosition(cameraX) + newPuX * PuSize;
-            newCamY = (float)GetRelativePuPosition(cameraY) + newPuY * PuSize;
-            newCamZ = (float)GetRelativePuPosition(cameraZ) + newPuZ * PuSize;
+            newCamX = (float)GetRelativeCoordinate(cameraX) + newPuX * PuSize;
+            newCamY = (float)GetRelativeCoordinate(cameraY) + newPuY * PuSize;
+            newCamZ = (float)GetRelativeCoordinate(cameraZ) + newPuZ * PuSize;
 
             // Set new mario + camera position
             bool success = true;
@@ -131,8 +137,8 @@ namespace STROOP.Utilities
             float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
 
             // Update PU
-            int puX = PuUtilities.GetPUFromCoord(marioX);
-            int puZ = PuUtilities.GetPUFromCoord(marioZ);
+            int puX = PuUtilities.GetPuIndex(marioX);
+            int puZ = PuUtilities.GetPuIndex(marioZ);
 
             return string.Format("[{0}:{1}]", puX, puZ);
         }
@@ -144,8 +150,8 @@ namespace STROOP.Utilities
             float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
 
             // Update PU
-            int puX = PuUtilities.GetPUFromCoord(marioX);
-            int puZ = PuUtilities.GetPUFromCoord(marioZ);
+            int puX = PuUtilities.GetPuIndex(marioX);
+            int puZ = PuUtilities.GetPuIndex(marioZ);
 
             // Update Qpu
             double qpuX = puX / 4d;

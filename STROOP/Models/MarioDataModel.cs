@@ -193,20 +193,20 @@ namespace STROOP.Models
         #region PU
         public int PU_X
         {
-            get => PuUtilities.GetPUFromCoord(X);
-            set => X = PuUtilities.GetRelativePuPosition(X) + value * PuUtilities.PuSize;
+            get => PuUtilities.GetPuIndex(X);
+            set => X = PuUtilities.GetRelativeCoordinate(X) + value * PuUtilities.PuSize;
         }
 
         public int PU_Y
         {
-            get => PuUtilities.GetPUFromCoord(Y);
-            set => Y = PuUtilities.GetRelativePuPosition(Y) + value * PuUtilities.PuSize;
+            get => PuUtilities.GetPuIndex(Y);
+            set => Y = PuUtilities.GetRelativeCoordinate(Y) + value * PuUtilities.PuSize;
         }
 
         public int PU_Z
         {
-            get => PuUtilities.GetPUFromCoord(Z);
-            set => Z = PuUtilities.GetRelativePuPosition(Z) + value * PuUtilities.PuSize;
+            get => PuUtilities.GetPuIndex(Z);
+            set => Z = PuUtilities.GetRelativeCoordinate(Z) + value * PuUtilities.PuSize;
         }
 
         public int QPU_X
