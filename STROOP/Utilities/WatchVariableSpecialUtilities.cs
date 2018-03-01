@@ -2445,7 +2445,7 @@ namespace STROOP.Structs
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
-                        float? newRelXNullable = ParsingUtilities.ParseIntNullable(stringValue);
+                        float? newRelXNullable = ParsingUtilities.ParseFloatNullable(stringValue);
                         if (!newRelXNullable.HasValue) return false;
                         float newRelX = newRelXNullable.Value;
 
@@ -2465,7 +2465,7 @@ namespace STROOP.Structs
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
-                        float? newRelYNullable = ParsingUtilities.ParseIntNullable(stringValue);
+                        float? newRelYNullable = ParsingUtilities.ParseFloatNullable(stringValue);
                         if (!newRelYNullable.HasValue) return false;
                         float newRelY = newRelYNullable.Value;
 
@@ -2485,7 +2485,7 @@ namespace STROOP.Structs
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
-                        float? newRelZNullable = ParsingUtilities.ParseIntNullable(stringValue);
+                        float? newRelZNullable = ParsingUtilities.ParseFloatNullable(stringValue);
                         if (!newRelZNullable.HasValue) return false;
                         float newRelZ = newRelZNullable.Value;
 
@@ -2493,6 +2493,53 @@ namespace STROOP.Structs
                         int puZIndex = PuUtilities.GetPuIndex(marioZ);
                         float newMarioZ = PuUtilities.GetCoordinateInPu(newRelZ, puZIndex);
                         return Config.Stream.SetValue(newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
+                    };
+                    break;
+
+                case "DeFactoMultiplier":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return GetDeFactoMultiplier().ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                        float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
+                        float distAboveFloor = marioY - floorY;
+                        if (distAboveFloor != 0) return false;
+
+                        float? newDeFactoMultiplierNullable = ParsingUtilities.ParseFloatNullable(stringValue);
+                        if (!newDeFactoMultiplierNullable.HasValue) return false;
+                        float newDeFactoMultiplier = newDeFactoMultiplierNullable.Value;
+
+                        uint floorTri = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+                        if (floorTri == 0) return false;
+                        return Config.Stream.SetValue(newDeFactoMultiplier, floorTri + TriangleOffsetsConfig.NormY);
+                    };
+                    break;
+
+                case "SyncingSpeed":
+                    getterFunction = (uint dummy) =>
+                    {
+                        double syncingSpeed = PuUtilities.QpuSpeed / GetDeFactoMultiplier();
+                        return syncingSpeed.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                        float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
+                        float distAboveFloor = marioY - floorY;
+                        if (distAboveFloor != 0) return false;
+
+                        float? newSyncingSpeedNullable = ParsingUtilities.ParseFloatNullable(stringValue);
+                        if (!newSyncingSpeedNullable.HasValue) return false;
+                        float newSyncingSpeed = newSyncingSpeedNullable.Value;
+
+                        uint floorTri = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+                        if (floorTri == 0) return false;
+                        float yNorm = Config.Stream.GetSingle(floorTri + TriangleOffsetsConfig.NormY);
+                        float newYnorm = PuUtilities.QpuSpeed / newSyncingSpeed;
+                        return Config.Stream.SetValue(newYnorm, floorTri + TriangleOffsetsConfig.NormY);
                     };
                     break;
 

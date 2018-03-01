@@ -10,8 +10,10 @@ namespace STROOP.Utilities
 {
     public static class PuUtilities
     {
-        private static readonly int PuOffset = 32768;
+        public static readonly int HalfPuSize = 32768;
         public static readonly int PuSize = 65536;
+        public static readonly int PuSpeed = 65536;
+        public static readonly int QpuSpeed = 262144;
 
         public static float GetRelativeCoordinate(float coord)
         {
@@ -20,7 +22,7 @@ namespace STROOP.Utilities
 
         public static int GetPuIndex(float coord)
         {
-            return (int)Math.Floor((coord + PuOffset) / PuSize);
+            return (int)Math.Floor((coord + HalfPuSize) / PuSize);
         }
 
         public static float GetCoordinateInPu(float coord, int puIndex)
