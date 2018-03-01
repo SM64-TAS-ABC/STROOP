@@ -2543,6 +2543,45 @@ namespace STROOP.Structs
                     };
                     break;
 
+                case "PuSpeed":
+                    getterFunction = (uint dummy) =>
+                    {
+                        double syncingSpeed = PuUtilities.QpuSpeed / GetDeFactoMultiplier();
+                        float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                        double qpuSpeed = hSpeed / syncingSpeed;
+                        double puSpeed = qpuSpeed * 4;
+                        return puSpeed.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        float? newPuSpeedNullable = ParsingUtilities.ParseFloatNullable(stringValue);
+                        if (!newPuSpeedNullable.HasValue) return false;
+                        float newPuSpeed = newPuSpeedNullable.Value;
+                        double syncingSpeed = PuUtilities.QpuSpeed / GetDeFactoMultiplier();
+                        double newHSpeed = (newPuSpeed / 4) * syncingSpeed;
+                        return Config.Stream.SetValue((float) newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                    };
+                    break;
+
+                case "QpuSpeed":
+                    getterFunction = (uint dummy) =>
+                    {
+                        double syncingSpeed = PuUtilities.QpuSpeed / GetDeFactoMultiplier();
+                        float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                        double qpuSpeed = hSpeed / syncingSpeed;
+                        return qpuSpeed.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        float? newQpuSpeedNullable = ParsingUtilities.ParseFloatNullable(stringValue);
+                        if (!newQpuSpeedNullable.HasValue) return false;
+                        float newQpuSpeed = newQpuSpeedNullable.Value;
+                        double syncingSpeed = PuUtilities.QpuSpeed / GetDeFactoMultiplier();
+                        double newHSpeed = newQpuSpeed * syncingSpeed;
+                        return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                    };
+                    break;
+
                 // Misc vars
 
                 case "RngIndex":
