@@ -100,31 +100,15 @@ namespace STROOP.Utilities
 
         public static string GetPuPosString()
         {
-            // Get Mario position
-            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-
-            // Update PU
-            int puX = PuUtilities.GetPuIndex(marioX);
-            int puZ = PuUtilities.GetPuIndex(marioZ);
-
-            return string.Format("[{0}:{1}]", puX, puZ);
+            (int puXIndex, int puYIndex, int puZIndex) = GetMarioPuIndexes();
+            return string.Format("[{0}:{1}]", puXIndex, puZIndex);
         }
 
         public static string GetQpuPosString()
         {
-            // Get Mario position
-            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-
-            // Update PU
-            int puX = PuUtilities.GetPuIndex(marioX);
-            int puZ = PuUtilities.GetPuIndex(marioZ);
-
-            // Update Qpu
-            double qpuX = puX / 4d;
-            double qpuZ = puZ / 4d;
-
+            (int puXIndex, int puYIndex, int puZIndex) = GetMarioPuIndexes();
+            double qpuX = puXIndex / 4d;
+            double qpuZ = puZIndex / 4d;
             return string.Format("[{0}:{1}]", qpuX, qpuZ);
         }
     }
