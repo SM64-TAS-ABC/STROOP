@@ -57,39 +57,13 @@ namespace STROOP.Utilities
             return success;
         }
 
-        public static bool MoveToRelativePu(int newPuX, int newPuY, int newPuZ)
+        public static bool TranslateMarioPu(int puXOffset, int puYOffset, int puZOffset)
         {
-            // Get Mario position
-            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-
-            // Get Camera Position
-            float cameraX = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.XOffset);
-            float cameraY = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.YOffset);
-            float cameraZ = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
-
-            // Calculate new coordinates
-            float newMarioX = marioX + newPuX * PuSize;
-            float newMarioY = marioY + newPuY * PuSize;
-            float newMarioZ = marioZ + newPuZ * PuSize;
-
-            float newCamX = cameraX + newPuX * PuSize;
-            float newCamY = cameraY + newPuY * PuSize;
-            float newCamZ = cameraZ + newPuZ * PuSize;
-
-            // Set new mario + camera position
-            bool success = true;
-            success &= Config.Stream.SetValue(newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
-            success &= Config.Stream.SetValue(newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
-            success &= Config.Stream.SetValue(newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
-            if (OptionsConfig.MoveCameraWithPu)
-            {
-                success &= Config.Stream.SetValue(newCamX, CameraConfig.CameraStructAddress + CameraConfig.XOffset);
-                success &= Config.Stream.SetValue(newCamY, CameraConfig.CameraStructAddress + CameraConfig.YOffset);
-                success &= Config.Stream.SetValue(newCamZ, CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
-            }
-            return success;
+            (int puXIndex, int puYIndex, int puZIndex) = GetMarioPuIndexes();
+            int newPuXIndex = puXIndex + puXOffset;
+            int newPuYIndex = puYIndex + puYOffset;
+            int newPuZIndex = puZIndex + puZOffset;
+            return SetMarioPu(newPuXIndex, newPuYIndex, newPuZIndex);
         }
 
         public static bool SetMarioPu(int newPuX, int newPuY, int newPuZ)
