@@ -2377,6 +2377,86 @@ namespace STROOP.Structs
                     };
                     break;
 
+                // PU vars
+
+                case "MarioXPuIndex":
+                    getterFunction = (uint dummy) =>
+                    {
+                        float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                        int puXIndex = PuUtilities.GetPuIndex(marioX);
+                        return puXIndex.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return false;
+                    };
+                    break;
+
+                case "MarioYPuIndex":
+                    getterFunction = (uint dummy) =>
+                    {
+                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                        int puYIndex = PuUtilities.GetPuIndex(marioY);
+                        return puYIndex.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return false;
+                    };
+                    break;
+
+                case "MarioZPuIndex":
+                    getterFunction = (uint dummy) =>
+                    {
+                        float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                        int puZIndex = PuUtilities.GetPuIndex(marioZ);
+                        return puZIndex.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return false;
+                    };
+                    break;
+
+                case "MarioXPuRelative":
+                    getterFunction = (uint dummy) =>
+                    {
+                        float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                        float relX = PuUtilities.GetRelativeCoordinate(marioX);
+                        return relX.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return false;
+                    };
+                    break;
+
+                case "MarioYPuRelative":
+                    getterFunction = (uint dummy) =>
+                    {
+                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                        float relY = PuUtilities.GetRelativeCoordinate(marioY);
+                        return relY.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return false;
+                    };
+                    break;
+
+                case "MarioZPuRelative":
+                    getterFunction = (uint dummy) =>
+                    {
+                        float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                        float relZ = PuUtilities.GetRelativeCoordinate(marioZ);
+                        return relZ.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return false;
+                    };
+                    break;
+
                 // Misc vars
 
                 case "RngIndex":

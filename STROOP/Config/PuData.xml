@@ -11,4 +11,11 @@
   <Data groupList="Basic" type="ushort" offset="0x2E" base="Mario" subclass="Angle">Yaw Facing</Data>
   <Data groupList="Basic" type="ushort" offset="0x24" base="Mario" subclass="Angle">Yaw Intended</Data>
   <Data groupList="Basic" base="None" specialType="DeltaYawIntendedFacing" subclass="Angle" type="short">DYaw Intend-Face</Data>
+
+  <Data groupList="Basic" base="None" specialType="MarioXPuIndex" coord="X">PU X</Data>
+  <Data groupList="Basic" base="None" specialType="MarioYPuIndex" coord="Y">PU Y</Data>
+  <Data groupList="Basic" base="None" specialType="MarioZPuIndex" coord="Z">PU Z</Data>
+  <Data groupList="Basic" base="None" specialType="MarioXPuRelative" coord="X">Rel X</Data>
+  <Data groupList="Basic" base="None" specialType="MarioYPuRelative" coord="Y">Rel Y</Data>
+  <Data groupList="Basic" base="None" specialType="MarioZPuRelative" coord="Z">Rel Z</Data>
 </MarioData>
