@@ -92,29 +92,23 @@ namespace STROOP.Utilities
             return success;
         }
 
-        public static bool MoveToPu(int newPuX, int newPuY, int newPuZ)
+        public static bool SetMarioPu(int newPuX, int newPuY, int newPuZ)
         {
-            // Get Mario position
             float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
             float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
             float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
 
+            float newMarioX = GetCoordinateInPu(marioX, newPuX);
+            float newMarioY = GetCoordinateInPu(marioY, newPuY);
+            float newMarioZ = GetCoordinateInPu(marioZ, newPuZ);
 
-            // Get Camera Position
             float cameraX = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.XOffset);
             float cameraY = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.YOffset);
             float cameraZ = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
 
-            // Calculate new coordinates
-            float newMarioX, newMarioY, newMarioZ;
-            newMarioX = (float)GetRelativeCoordinate(marioX) + newPuX * PuSize;
-            newMarioY = (float)GetRelativeCoordinate(marioY) + newPuY * PuSize;
-            newMarioZ = (float)GetRelativeCoordinate(marioZ) + newPuZ * PuSize;
-
-            float newCamX, newCamY, newCamZ;
-            newCamX = (float)GetRelativeCoordinate(cameraX) + newPuX * PuSize;
-            newCamY = (float)GetRelativeCoordinate(cameraY) + newPuY * PuSize;
-            newCamZ = (float)GetRelativeCoordinate(cameraZ) + newPuZ * PuSize;
+            float newCamX = GetCoordinateInPu(cameraX, newPuX);
+            float newCamY = GetCoordinateInPu(cameraY, newPuY);
+            float newCamZ = GetCoordinateInPu(cameraZ, newPuZ);
 
             // Set new mario + camera position
             bool success = true;

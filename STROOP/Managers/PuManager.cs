@@ -22,7 +22,7 @@ namespace STROOP.Managers
             _puController = splitContainerFile.Panel1.Controls["groupBoxPuController"] as GroupBox;
 
             // Pu Controller initialize and register click events
-            _puController.Controls["buttonPuConHome"].Click += (sender, e) => PuUtilities.MoveToPu(0, 0, 0);
+            _puController.Controls["buttonPuConHome"].Click += (sender, e) => PuUtilities.SetMarioPu(0, 0, 0);
             _puController.Controls["buttonPuConZnQpu"].Click += (sender, e) => PuUtilities.MoveToRelativePu(0, 0, -4);
             _puController.Controls["buttonPuConZpQpu"].Click += (sender, e) => PuUtilities.MoveToRelativePu(0, 0, 4);
             _puController.Controls["buttonPuConXnQpu"].Click += (sender, e) => PuUtilities.MoveToRelativePu(-4, 0, 0);
