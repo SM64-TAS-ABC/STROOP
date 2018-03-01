@@ -852,7 +852,7 @@ namespace STROOP.Utilities
             }
 
             // Move mario to triangle (while in same Pu)
-            return PuUtilities.MoveToInCurrentPu(newX, newY, newZ);
+            return PuUtilities.SetMarioPositionInCurrentPu(newX, newY, newZ);
         }
 
         public static bool RetrieveTriangle(uint triangleAddress)

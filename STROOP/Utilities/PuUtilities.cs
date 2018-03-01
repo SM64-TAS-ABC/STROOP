@@ -42,26 +42,13 @@ namespace STROOP.Utilities
             return (puXIndex, puYIndex, puZIndex);
         }
 
-        public static bool MoveToInCurrentPu(float x, float y, float z)
+        public static bool SetMarioPositionInCurrentPu(float x, float y, float z)
         {
-            x = (float)GetRelativeCoordinate(x);
-            y = (float)GetRelativeCoordinate(y);
-            z = (float)GetRelativeCoordinate(z);
+            (int puXIndex, int puYIndex, int puZIndex) = GetMarioPuIndexes();
 
-            float marioX, marioY, marioZ;
-            marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-
-            int curPuX, curPuY, curPuZ;
-            curPuX = GetPuIndex(marioX);
-            curPuY = GetPuIndex(marioY);
-            curPuZ = GetPuIndex(marioZ);
-
-            float newMarioX, newMarioY, newMarioZ;
-            newMarioX = x + curPuX * PuSize;
-            newMarioY = y + curPuY * PuSize;
-            newMarioZ = z + curPuZ * PuSize;
+            float newMarioX = GetCoordinateInPu(x, puXIndex);
+            float newMarioY = GetCoordinateInPu(y, puYIndex);
+            float newMarioZ = GetCoordinateInPu(z, puZIndex);
 
             bool success = true;
             success &= Config.Stream.SetValue(newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
