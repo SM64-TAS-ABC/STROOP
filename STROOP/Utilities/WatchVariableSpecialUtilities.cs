@@ -2582,6 +2582,34 @@ namespace STROOP.Structs
                     };
                     break;
 
+                case "RelativeSpeed":
+                    getterFunction = (uint dummy) =>
+                    {
+                        double syncingSpeed = PuUtilities.QpuSpeed / GetDeFactoMultiplier();
+                        float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                        double qpuSpeed = hSpeed / syncingSpeed;
+                        double puSpeed = qpuSpeed * 4;
+                        double puSpeedRounded = Math.Round(puSpeed);
+                        double relativeSpeed = (puSpeed - puSpeedRounded) * PuUtilities.PuSize;
+                        return relativeSpeed.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        float? newRelativeSpeedNullable = ParsingUtilities.ParseFloatNullable(stringValue);
+                        if (!newRelativeSpeedNullable.HasValue) return false;
+                        float newRelativeSpeed = newRelativeSpeedNullable.Value;
+
+                        double syncingSpeed = PuUtilities.QpuSpeed / GetDeFactoMultiplier();
+                        float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                        double qpuSpeed = hSpeed / syncingSpeed;
+                        double puSpeed = qpuSpeed * 4;
+                        double puSpeedRounded = Math.Round(puSpeed);
+                        double newDeFactoSpeed = puSpeedRounded * PuUtilities.PuSize + newRelativeSpeed;
+                        double newHSpeed = newDeFactoSpeed / GetDeFactoMultiplier();
+                        return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                    };
+                    break;
+
                 // Misc vars
 
                 case "RngIndex":
