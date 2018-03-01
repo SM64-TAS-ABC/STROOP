@@ -13,35 +13,21 @@ namespace STROOP.Utilities
         private static int PuOffset = 32768;
         public static int PuSize = 65536;
 
-        public static float GetRelativePuPosition(float coord, int puCoord)
+        public static float GetRelativePuPosition(double coord)
         {
-            // We find the relative object position by subtracting the PU starting coordinates from the object
-            return coord - puCoord * PuSize;
+            return (float)MoreMath.MaybeNegativeModulus(coord, PuSize);
         }
 
-        public static float GetRelativePuPosition(float coord)
+        public static int GetPUFromCoord(double coord)
         {
-            // We find the relative object positon by subtracting the PU starting coordinates from the object
-            return coord - GetPUFromCoord(coord) * PuSize;
-        }
-
-        public static int GetPUFromCoord(float coord)
-        {
-            int pu = (int)((coord + PuOffset) / PuSize);
-
-            // If the object is located in the center of the (-1,-1) pu its coordinates will be (-0.5, -0.5). 
-            // Because we used division this rounds down to (0,0), which is incorrect, we therefore add -1 to all negative PUs
-            if (coord < -PuOffset)
-                pu--;
-
-            return pu;
+            return (int)Math.Floor((coord + PuOffset) / PuSize);
         }
 
         public static bool MoveToInCurrentPu(float x, float y, float z)
         {
-            x = GetRelativePuPosition(x);
-            y = GetRelativePuPosition(y);
-            z = GetRelativePuPosition(z);
+            x = (float)GetRelativePuPosition(x);
+            y = (float)GetRelativePuPosition(y);
+            z = (float)GetRelativePuPosition(z);
 
             float marioX, marioY, marioZ;
             marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
@@ -115,14 +101,14 @@ namespace STROOP.Utilities
 
             // Calculate new coordinates
             float newMarioX, newMarioY, newMarioZ;
-            newMarioX = PuUtilities.GetRelativePuPosition(marioX) + newPuX * PuSize;
-            newMarioY = PuUtilities.GetRelativePuPosition(marioY) + newPuY * PuSize;
-            newMarioZ = PuUtilities.GetRelativePuPosition(marioZ) + newPuZ * PuSize;
+            newMarioX = (float)GetRelativePuPosition(marioX) + newPuX * PuSize;
+            newMarioY = (float)GetRelativePuPosition(marioY) + newPuY * PuSize;
+            newMarioZ = (float)GetRelativePuPosition(marioZ) + newPuZ * PuSize;
 
             float newCamX, newCamY, newCamZ;
-            newCamX = PuUtilities.GetRelativePuPosition(cameraX) + newPuX * PuSize;
-            newCamY = PuUtilities.GetRelativePuPosition(cameraY) + newPuY * PuSize;
-            newCamZ = PuUtilities.GetRelativePuPosition(cameraZ) + newPuZ * PuSize;
+            newCamX = (float)GetRelativePuPosition(cameraX) + newPuX * PuSize;
+            newCamY = (float)GetRelativePuPosition(cameraY) + newPuY * PuSize;
+            newCamZ = (float)GetRelativePuPosition(cameraZ) + newPuZ * PuSize;
 
             // Set new mario + camera position
             bool success = true;
