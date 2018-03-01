@@ -23,14 +23,14 @@ namespace STROOP.Managers
 
             // Pu Controller initialize and register click events
             _puController.Controls["buttonPuConHome"].Click += (sender, e) => PuUtilities.MoveToPu(0, 0, 0);
-            _puController.Controls["buttonPuConZnQpu"].Click += (sender, e) => PuUtilities.MoveToRelativePu(0, 0, -1);
-            _puController.Controls["buttonPuConZpQpu"].Click += (sender, e) => PuUtilities.MoveToRelativePu(0, 0, 1);
-            _puController.Controls["buttonPuConXnQpu"].Click += (sender, e) => PuUtilities.MoveToRelativePu(-1, 0, 0);
-            _puController.Controls["buttonPuConXpQpu"].Click += (sender, e) => PuUtilities.MoveToRelativePu(1, 0, 0);
-            _puController.Controls["buttonPuConZnPu"].Click += (sender, e) => PuUtilities.MoveToRelativePu(0, 0, -4);
-            _puController.Controls["buttonPuConZpPu"].Click += (sender, e) => PuUtilities.MoveToRelativePu(0, 0, 4);
-            _puController.Controls["buttonPuConXnPu"].Click += (sender, e) => PuUtilities.MoveToRelativePu(-4, 0, 0);
-            _puController.Controls["buttonPuConXpPu"].Click += (sender, e) => PuUtilities.MoveToRelativePu(4, 0, 0);
+            _puController.Controls["buttonPuConZnQpu"].Click += (sender, e) => PuUtilities.MoveToRelativePu(0, 0, -4);
+            _puController.Controls["buttonPuConZpQpu"].Click += (sender, e) => PuUtilities.MoveToRelativePu(0, 0, 4);
+            _puController.Controls["buttonPuConXnQpu"].Click += (sender, e) => PuUtilities.MoveToRelativePu(-4, 0, 0);
+            _puController.Controls["buttonPuConXpQpu"].Click += (sender, e) => PuUtilities.MoveToRelativePu(4, 0, 0);
+            _puController.Controls["buttonPuConZnPu"].Click += (sender, e) => PuUtilities.MoveToRelativePu(0, 0, -1);
+            _puController.Controls["buttonPuConZpPu"].Click += (sender, e) => PuUtilities.MoveToRelativePu(0, 0, 1);
+            _puController.Controls["buttonPuConXnPu"].Click += (sender, e) => PuUtilities.MoveToRelativePu(-1, 0, 0);
+            _puController.Controls["buttonPuConXpPu"].Click += (sender, e) => PuUtilities.MoveToRelativePu(1, 0, 0);
         }
 
         public override void Update(bool updateView)
