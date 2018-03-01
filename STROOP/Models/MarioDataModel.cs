@@ -194,19 +194,19 @@ namespace STROOP.Models
         public int PU_X
         {
             get => PuUtilities.GetPuIndex(X);
-            set => X = PuUtilities.GetRelativeCoordinate(X) + value * PuUtilities.PuSize;
+            set => X = PuUtilities.GetCoordinateInPu(X, value);
         }
 
         public int PU_Y
         {
             get => PuUtilities.GetPuIndex(Y);
-            set => Y = PuUtilities.GetRelativeCoordinate(Y) + value * PuUtilities.PuSize;
+            set => Y = PuUtilities.GetCoordinateInPu(Y, value);
         }
 
         public int PU_Z
         {
             get => PuUtilities.GetPuIndex(Z);
-            set => Z = PuUtilities.GetRelativeCoordinate(Z) + value * PuUtilities.PuSize;
+            set => Z = PuUtilities.GetCoordinateInPu(Z, value);
         }
 
         public int QPU_X
