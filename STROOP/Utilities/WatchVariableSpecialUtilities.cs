@@ -2578,14 +2578,16 @@ namespace STROOP.Structs
                 case "QpuSpeedComponent":
                     getterFunction = (uint dummy) =>
                     {
-                        return GetQpuSpeed().ToString();
+                        return Math.Round(GetQpuSpeed()).ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
-                        float? newQpuSpeedNullable = ParsingUtilities.ParseFloatNullable(stringValue);
-                        if (!newQpuSpeedNullable.HasValue) return false;
-                        float newQpuSpeed = newQpuSpeedNullable.Value;
-                        double newDeFactoSpeed = newQpuSpeed * GetSyncingSpeed();
+                        int? newQpuSpeedCompNullable = ParsingUtilities.ParseIntNullable(stringValue);
+                        if (!newQpuSpeedCompNullable.HasValue) return false;
+                        int newQpuSpeedComp = newQpuSpeedCompNullable.Value;
+
+                        double relativeSpeed = GetRelativePuSpeed();
+                        double newDeFactoSpeed = newQpuSpeedComp * GetSyncingSpeed() + relativeSpeed;
                         double newHSpeed = newDeFactoSpeed / GetDeFactoMultiplier();
                         return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
                     };
@@ -2594,16 +2596,17 @@ namespace STROOP.Structs
                 case "PuSpeedComponent":
                     getterFunction = (uint dummy) =>
                     {
-                        double puSpeed = GetQpuSpeed() * 4;
-                        return puSpeed.ToString();
+                        return Math.Round(GetQpuSpeed() * 4).ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
-                        float? newPuSpeedNullable = ParsingUtilities.ParseFloatNullable(stringValue);
-                        if (!newPuSpeedNullable.HasValue) return false;
-                        float newPuSpeed = newPuSpeedNullable.Value;
-                        float newQpuSpeed = newPuSpeed / 4;
-                        double newDeFactoSpeed = newQpuSpeed * GetSyncingSpeed();
+                        int? newPuSpeedCompNullable = ParsingUtilities.ParseIntNullable(stringValue);
+                        if (!newPuSpeedCompNullable.HasValue) return false;
+                        int newPuSpeedComp = newPuSpeedCompNullable.Value;
+                        
+                        double newQpuSpeedComp = newPuSpeedComp / 4d;
+                        double relativeSpeed = GetRelativePuSpeed();
+                        double newDeFactoSpeed = newQpuSpeedComp * GetSyncingSpeed() + relativeSpeed;
                         double newHSpeed = newDeFactoSpeed / GetDeFactoMultiplier();
                         return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
                     };
@@ -2612,10 +2615,7 @@ namespace STROOP.Structs
                 case "RelativeSpeed":
                     getterFunction = (uint dummy) =>
                     {
-                        double qpuSpeed = GetQpuSpeed();
-                        double qpuSpeedRounded = Math.Round(qpuSpeed);
-                        double relativeSpeed = (qpuSpeed - qpuSpeedRounded) * GetSyncingSpeed();
-                        return relativeSpeed.ToString();
+                        return GetRelativePuSpeed().ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
@@ -3068,6 +3068,14 @@ namespace STROOP.Structs
         public static double GetQpuSpeed()
         {
             return GetMarioDeFactoSpeed() / GetSyncingSpeed();
+        }
+
+        public static double GetRelativePuSpeed()
+        {
+            double qpuSpeed = GetQpuSpeed();
+            double qpuSpeedRounded = Math.Round(qpuSpeed);
+            double relativeSpeed = (qpuSpeed - qpuSpeedRounded) * GetSyncingSpeed();
+            return relativeSpeed;
         }
 
         // Angle methods
