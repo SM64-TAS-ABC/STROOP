@@ -2575,6 +2575,40 @@ namespace STROOP.Structs
                     };
                     break;
 
+                case "QpuSpeedComponent":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return GetQpuSpeed().ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        float? newQpuSpeedNullable = ParsingUtilities.ParseFloatNullable(stringValue);
+                        if (!newQpuSpeedNullable.HasValue) return false;
+                        float newQpuSpeed = newQpuSpeedNullable.Value;
+                        double newDeFactoSpeed = newQpuSpeed * GetSyncingSpeed();
+                        double newHSpeed = newDeFactoSpeed / GetDeFactoMultiplier();
+                        return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                    };
+                    break;
+
+                case "PuSpeedComponent":
+                    getterFunction = (uint dummy) =>
+                    {
+                        double puSpeed = GetQpuSpeed() * 4;
+                        return puSpeed.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        float? newPuSpeedNullable = ParsingUtilities.ParseFloatNullable(stringValue);
+                        if (!newPuSpeedNullable.HasValue) return false;
+                        float newPuSpeed = newPuSpeedNullable.Value;
+                        float newQpuSpeed = newPuSpeed / 4;
+                        double newDeFactoSpeed = newQpuSpeed * GetSyncingSpeed();
+                        double newHSpeed = newDeFactoSpeed / GetDeFactoMultiplier();
+                        return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                    };
+                    break;
+
                 case "RelativeSpeed":
                     getterFunction = (uint dummy) =>
                     {

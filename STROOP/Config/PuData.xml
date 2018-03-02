@@ -10,8 +10,10 @@
   <Data groupList="Basic" base="None" specialType="DeFactoSpeed">De Facto Speed</Data>
   <Data groupList="Basic" base="None" specialType="SyncingSpeed" round="0">Syncing Speed</Data>
 
-  <Data groupList="Basic" base="None" specialType="QpuSpeed" round="0">QPU Speed</Data>
-  <Data groupList="Basic" base="None" specialType="PuSpeed" round="0">PU Speed</Data>
+  <Data groupList="Basic" base="None" specialType="QpuSpeed">QPU Speed</Data>
+  <Data groupList="Basic" base="None" specialType="PuSpeed">PU Speed</Data>
+  <Data groupList="Basic" base="None" specialType="QpuSpeedComponent">QPU Speed Comp</Data>
+  <Data groupList="Basic" base="None" specialType="PuSpeedComponent">PU Speed Comp</Data>
   <Data groupList="Basic" base="None" specialType="RelativeSpeed">Relative Speed</Data>
 
   <Data groupList="Basic" base="None" specialType="DistanceAboveFloor">Dist Above Floor</Data>
