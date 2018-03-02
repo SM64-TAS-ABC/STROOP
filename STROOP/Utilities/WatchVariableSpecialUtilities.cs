@@ -2623,9 +2623,9 @@ namespace STROOP.Structs
                         if (!newRelativeSpeedNullable.HasValue) return false;
                         float newRelativeSpeed = newRelativeSpeedNullable.Value;
 
-                        double qpuSpeed = GetQpuSpeed();
-                        double qpuSpeedRounded = Math.Round(qpuSpeed);
-                        double newDeFactoSpeed = qpuSpeedRounded * GetSyncingSpeed() + newRelativeSpeed;
+                        double puSpeed = GetQpuSpeed() * 4;
+                        double puSpeedRounded = Math.Round(puSpeed);
+                        double newDeFactoSpeed = (puSpeedRounded / 4) * GetSyncingSpeed() + newRelativeSpeed;
                         double newHSpeed = newDeFactoSpeed / GetDeFactoMultiplier();
                         return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
                     };
@@ -3072,9 +3072,9 @@ namespace STROOP.Structs
 
         public static double GetRelativePuSpeed()
         {
-            double qpuSpeed = GetQpuSpeed();
-            double qpuSpeedRounded = Math.Round(qpuSpeed);
-            double relativeSpeed = (qpuSpeed - qpuSpeedRounded) * GetSyncingSpeed();
+            double puSpeed = GetQpuSpeed() * 4;
+            double puSpeedRounded = Math.Round(puSpeed);
+            double relativeSpeed = (puSpeed - puSpeedRounded) / 4 * GetSyncingSpeed();
             return relativeSpeed;
         }
 
