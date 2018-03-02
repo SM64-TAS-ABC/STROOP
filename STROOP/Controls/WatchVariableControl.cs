@@ -268,6 +268,7 @@ namespace STROOP.Controls
             bool isHKeyHeld = Keyboard.IsKeyDown(Key.H);
             bool isLKeyHeld = Keyboard.IsKeyDown(Key.L);
             bool isRKeyHeld = Keyboard.IsKeyDown(Key.R);
+            bool isCKeyHeld = Keyboard.IsKeyDown(Key.C);
             bool isDeleteKeyHeld =
                  Keyboard.IsKeyDown(Key.Delete) ||
                  Keyboard.IsKeyDown(Key.Back) ||
@@ -304,6 +305,12 @@ namespace STROOP.Controls
             if (isRKeyHeld)
             {
                 RenameMode = true;
+                return;
+            }
+
+            if (isCKeyHeld)
+            {
+                _watchVarWrapper.ShowVarController();
                 return;
             }
 
