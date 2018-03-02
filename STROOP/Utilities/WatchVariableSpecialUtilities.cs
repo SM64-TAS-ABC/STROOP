@@ -2544,9 +2544,8 @@ namespace STROOP.Structs
                 case "PuSpeed":
                     getterFunction = (uint dummy) =>
                     {
-                        double syncingSpeed = PuUtilities.QpuSpeed / GetDeFactoMultiplier();
                         float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-                        double qpuSpeed = hSpeed / syncingSpeed;
+                        double qpuSpeed = hSpeed / GetSyncingSpeed();
                         double puSpeed = qpuSpeed * 4;
                         return puSpeed.ToString();
                     };
@@ -2555,8 +2554,7 @@ namespace STROOP.Structs
                         float? newPuSpeedNullable = ParsingUtilities.ParseFloatNullable(stringValue);
                         if (!newPuSpeedNullable.HasValue) return false;
                         float newPuSpeed = newPuSpeedNullable.Value;
-                        double syncingSpeed = PuUtilities.QpuSpeed / GetDeFactoMultiplier();
-                        double newHSpeed = (newPuSpeed / 4) * syncingSpeed;
+                        double newHSpeed = (newPuSpeed / 4) * GetSyncingSpeed();
                         return Config.Stream.SetValue((float) newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
                     };
                     break;
@@ -2564,9 +2562,8 @@ namespace STROOP.Structs
                 case "QpuSpeed":
                     getterFunction = (uint dummy) =>
                     {
-                        double syncingSpeed = PuUtilities.QpuSpeed / GetDeFactoMultiplier();
                         float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-                        double qpuSpeed = hSpeed / syncingSpeed;
+                        double qpuSpeed = hSpeed / GetSyncingSpeed();
                         return qpuSpeed.ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
@@ -2574,8 +2571,7 @@ namespace STROOP.Structs
                         float? newQpuSpeedNullable = ParsingUtilities.ParseFloatNullable(stringValue);
                         if (!newQpuSpeedNullable.HasValue) return false;
                         float newQpuSpeed = newQpuSpeedNullable.Value;
-                        double syncingSpeed = PuUtilities.QpuSpeed / GetDeFactoMultiplier();
-                        double newHSpeed = newQpuSpeed * syncingSpeed;
+                        double newHSpeed = newQpuSpeed * GetSyncingSpeed();
                         return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
                     };
                     break;
@@ -2583,9 +2579,8 @@ namespace STROOP.Structs
                 case "RelativeSpeed":
                     getterFunction = (uint dummy) =>
                     {
-                        double syncingSpeed = PuUtilities.QpuSpeed / GetDeFactoMultiplier();
                         float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-                        double qpuSpeed = hSpeed / syncingSpeed;
+                        double qpuSpeed = hSpeed / GetSyncingSpeed();
                         double puSpeed = qpuSpeed * 4;
                         double puSpeedRounded = Math.Round(puSpeed);
                         double relativeSpeed = (puSpeed - puSpeedRounded) * PuUtilities.PuSize;
@@ -2597,9 +2592,8 @@ namespace STROOP.Structs
                         if (!newRelativeSpeedNullable.HasValue) return false;
                         float newRelativeSpeed = newRelativeSpeedNullable.Value;
 
-                        double syncingSpeed = PuUtilities.QpuSpeed / GetDeFactoMultiplier();
                         float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-                        double qpuSpeed = hSpeed / syncingSpeed;
+                        double qpuSpeed = hSpeed / GetSyncingSpeed();
                         double puSpeed = qpuSpeed * 4;
                         double puSpeedRounded = Math.Round(puSpeed);
                         double newDeFactoSpeed = puSpeedRounded * PuUtilities.PuSize + newRelativeSpeed;
