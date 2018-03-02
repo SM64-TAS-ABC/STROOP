@@ -2634,7 +2634,11 @@ namespace STROOP.Structs
                 case "RelativeSpeedX":
                     getterFunction = (uint dummy) =>
                     {
-                        return "X";
+                        double relativeSpeed = GetRelativePuSpeed();
+                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+                        ushort marioAngleTruncated = MoreMath.NormalizeAngleTruncated(marioAngle);
+                        (double xComp, double zComp) = MoreMath.GetComponentsFromVector(relativeSpeed, marioAngleTruncated);
+                        return xComp.ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
@@ -2645,7 +2649,11 @@ namespace STROOP.Structs
                 case "RelativeSpeedZ":
                     getterFunction = (uint dummy) =>
                     {
-                        return "Z";
+                        double relativeSpeed = GetRelativePuSpeed();
+                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+                        ushort marioAngleTruncated = MoreMath.NormalizeAngleTruncated(marioAngle);
+                        (double xComp, double zComp) = MoreMath.GetComponentsFromVector(relativeSpeed, marioAngleTruncated);
+                        return zComp.ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
