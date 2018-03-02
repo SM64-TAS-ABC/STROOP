@@ -2585,8 +2585,7 @@ namespace STROOP.Structs
                         int newQpuSpeedComp = newQpuSpeedCompNullable.Value;
 
                         double relativeSpeed = GetRelativePuSpeed();
-                        double newDeFactoSpeed = newQpuSpeedComp * GetSyncingSpeed() + relativeSpeed;
-                        double newHSpeed = newDeFactoSpeed / GetDeFactoMultiplier();
+                        double newHSpeed = newQpuSpeedComp * GetSyncingSpeed() + relativeSpeed / GetDeFactoMultiplier();
                         return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
                     };
                     break;
@@ -2604,8 +2603,7 @@ namespace STROOP.Structs
                         
                         double newQpuSpeedComp = newPuSpeedComp / 4d;
                         double relativeSpeed = GetRelativePuSpeed();
-                        double newDeFactoSpeed = newQpuSpeedComp * GetSyncingSpeed() + relativeSpeed;
-                        double newHSpeed = newDeFactoSpeed / GetDeFactoMultiplier();
+                        double newHSpeed = newQpuSpeedComp * GetSyncingSpeed() + relativeSpeed / GetDeFactoMultiplier();
                         return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
                     };
                     break;
