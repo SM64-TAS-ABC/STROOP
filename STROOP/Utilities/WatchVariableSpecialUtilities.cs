@@ -2634,11 +2634,11 @@ namespace STROOP.Structs
                 case "RelativeSpeedX":
                     getterFunction = (uint dummy) =>
                     {
-                        double relativeSpeed = GetRelativePuSpeed();
-                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
-                        ushort marioAngleTruncated = MoreMath.NormalizeAngleTruncated(marioAngle);
-                        (double xComp, double zComp) = MoreMath.GetComponentsFromVector(relativeSpeed, marioAngleTruncated);
-                        return xComp.ToString();
+                        (double intendedX, double intendedZ) = GetIntendedNextPosition(1);
+                        float relX = PuUtilities.GetRelativeCoordinate((float)intendedX);
+                        float currentX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                        double xDiff = relX - currentX;
+                        return xDiff.ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
@@ -2649,11 +2649,11 @@ namespace STROOP.Structs
                 case "RelativeSpeedZ":
                     getterFunction = (uint dummy) =>
                     {
-                        double relativeSpeed = GetRelativePuSpeed();
-                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
-                        ushort marioAngleTruncated = MoreMath.NormalizeAngleTruncated(marioAngle);
-                        (double xComp, double zComp) = MoreMath.GetComponentsFromVector(relativeSpeed, marioAngleTruncated);
-                        return zComp.ToString();
+                        (double intendedX, double intendedZ) = GetIntendedNextPosition(1);
+                        float relZ = PuUtilities.GetRelativeCoordinate((float)intendedZ);
+                        float currentZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                        double zDiff = relZ - currentZ;
+                        return zDiff.ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
@@ -3106,6 +3106,18 @@ namespace STROOP.Structs
             double puSpeedRounded = Math.Round(puSpeed);
             double relativeSpeed = (puSpeed - puSpeedRounded) / 4 * GetSyncingSpeed();
             return relativeSpeed;
+        }
+
+        public static (double x, double z) GetIntendedNextPosition(double numFrames)
+        {
+            double deFactoSpeed = GetMarioDeFactoSpeed();
+            ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+            ushort marioAngleTruncated = MoreMath.NormalizeAngleTruncated(marioAngle);
+            (double xDiff, double zDiff) = MoreMath.GetComponentsFromVector(deFactoSpeed * numFrames, marioAngleTruncated);
+
+            float currentX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float currentZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            return (currentX + xDiff, currentZ + zDiff);
         }
 
         // Angle methods
