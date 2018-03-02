@@ -636,6 +636,7 @@ namespace STROOP
             this.trackBarMapZoom = new System.Windows.Forms.TrackBar();
             this.glControlMap = new OpenTK.GLControl();
             this.tabPagePu = new System.Windows.Forms.TabPage();
+            this.splitContainerPu = new System.Windows.Forms.SplitContainer();
             this.groupBoxPuController = new System.Windows.Forms.GroupBox();
             this.labelPuConPu = new System.Windows.Forms.Label();
             this.labelPuConQpuValue = new System.Windows.Forms.Label();
@@ -654,6 +655,7 @@ namespace STROOP
             this.buttonPuConZpPu = new System.Windows.Forms.Button();
             this.buttonPuConZpQpu = new System.Windows.Forms.Button();
             this.buttonPuConHome = new System.Windows.Forms.Button();
+            this.watchVariablePanelPu = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageArea = new System.Windows.Forms.TabPage();
             this.splitContainerArea = new System.Windows.Forms.SplitContainer();
             this.labelSelectedArea = new System.Windows.Forms.Label();
@@ -1089,8 +1091,6 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.splitContainerPu = new System.Windows.Forms.SplitContainer();
-            this.watchVariablePanelPu = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1351,6 +1351,10 @@ namespace STROOP
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapIconSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapZoom)).BeginInit();
             this.tabPagePu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerPu)).BeginInit();
+            this.splitContainerPu.Panel1.SuspendLayout();
+            this.splitContainerPu.Panel2.SuspendLayout();
+            this.splitContainerPu.SuspendLayout();
             this.groupBoxPuController.SuspendLayout();
             this.tabPageArea.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerArea)).BeginInit();
@@ -1434,10 +1438,6 @@ namespace STROOP
             this.groupBoxRecording.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerPu)).BeginInit();
-            this.splitContainerPu.Panel1.SuspendLayout();
-            this.splitContainerPu.Panel2.SuspendLayout();
-            this.splitContainerPu.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -4359,7 +4359,6 @@ namespace STROOP
             // 
             // textBoxAnimationDescription
             // 
-            this.textBoxAnimationDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxAnimationDescription.BackColor = System.Drawing.SystemColors.Control;
             this.textBoxAnimationDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxAnimationDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
@@ -4373,7 +4372,6 @@ namespace STROOP
             // 
             // textBoxActionDescription
             // 
-            this.textBoxActionDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxActionDescription.BackColor = System.Drawing.SystemColors.Control;
             this.textBoxActionDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxActionDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
@@ -4810,7 +4808,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 231F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 232F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9063,6 +9061,30 @@ namespace STROOP
             this.tabPagePu.TabIndex = 15;
             this.tabPagePu.Text = "PU";
             // 
+            // splitContainerPu
+            // 
+            this.splitContainerPu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerPu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerPu.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerPu.Location = new System.Drawing.Point(3, 3);
+            this.splitContainerPu.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerPu.Name = "splitContainerPu";
+            // 
+            // splitContainerPu.Panel1
+            // 
+            this.splitContainerPu.Panel1.AutoScroll = true;
+            this.splitContainerPu.Panel1.Controls.Add(this.groupBoxPuController);
+            this.splitContainerPu.Panel1MinSize = 0;
+            // 
+            // splitContainerPu.Panel2
+            // 
+            this.splitContainerPu.Panel2.Controls.Add(this.watchVariablePanelPu);
+            this.splitContainerPu.Panel2MinSize = 0;
+            this.splitContainerPu.Size = new System.Drawing.Size(909, 457);
+            this.splitContainerPu.SplitterDistance = 293;
+            this.splitContainerPu.SplitterWidth = 1;
+            this.splitContainerPu.TabIndex = 19;
+            // 
             // groupBoxPuController
             // 
             this.groupBoxPuController.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -9281,6 +9303,18 @@ namespace STROOP
             this.buttonPuConHome.Size = new System.Drawing.Size(30, 30);
             this.buttonPuConHome.TabIndex = 1;
             this.buttonPuConHome.UseVisualStyleBackColor = true;
+            // 
+            // watchVariablePanelPu
+            // 
+            this.watchVariablePanelPu.AutoScroll = true;
+            this.watchVariablePanelPu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.watchVariablePanelPu.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.watchVariablePanelPu.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelPu.Margin = new System.Windows.Forms.Padding(0);
+            this.watchVariablePanelPu.Name = "watchVariablePanelPu";
+            this.watchVariablePanelPu.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelPu.Size = new System.Drawing.Size(613, 455);
+            this.watchVariablePanelPu.TabIndex = 5;
             // 
             // tabPageArea
             // 
@@ -10015,7 +10049,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(221, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(204, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -10047,7 +10081,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(210, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(193, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -10103,7 +10137,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(210, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(193, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -14099,7 +14133,7 @@ namespace STROOP
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 385);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 386);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -14164,7 +14198,7 @@ namespace STROOP
             this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
             this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 163);
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 164);
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
@@ -14189,42 +14223,6 @@ namespace STROOP
             this.trackBarObjSlotSize.TickFrequency = 10;
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
-            // 
-            // splitContainerPu
-            // 
-            this.splitContainerPu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainerPu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerPu.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerPu.Location = new System.Drawing.Point(3, 3);
-            this.splitContainerPu.Margin = new System.Windows.Forms.Padding(0);
-            this.splitContainerPu.Name = "splitContainerPu";
-            // 
-            // splitContainerPu.Panel1
-            // 
-            this.splitContainerPu.Panel1.AutoScroll = true;
-            this.splitContainerPu.Panel1.Controls.Add(this.groupBoxPuController);
-            this.splitContainerPu.Panel1MinSize = 0;
-            // 
-            // splitContainerPu.Panel2
-            // 
-            this.splitContainerPu.Panel2.Controls.Add(this.watchVariablePanelPu);
-            this.splitContainerPu.Panel2MinSize = 0;
-            this.splitContainerPu.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerPu.SplitterDistance = 293;
-            this.splitContainerPu.SplitterWidth = 1;
-            this.splitContainerPu.TabIndex = 19;
-            // 
-            // watchVariablePanelPu
-            // 
-            this.watchVariablePanelPu.AutoScroll = true;
-            this.watchVariablePanelPu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.watchVariablePanelPu.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.watchVariablePanelPu.Location = new System.Drawing.Point(0, 0);
-            this.watchVariablePanelPu.Margin = new System.Windows.Forms.Padding(0);
-            this.watchVariablePanelPu.Name = "watchVariablePanelPu";
-            this.watchVariablePanelPu.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelPu.Size = new System.Drawing.Size(613, 455);
-            this.watchVariablePanelPu.TabIndex = 5;
             // 
             // StroopMainForm
             // 
@@ -14546,6 +14544,10 @@ namespace STROOP
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapIconSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarMapZoom)).EndInit();
             this.tabPagePu.ResumeLayout(false);
+            this.splitContainerPu.Panel1.ResumeLayout(false);
+            this.splitContainerPu.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerPu)).EndInit();
+            this.splitContainerPu.ResumeLayout(false);
             this.groupBoxPuController.ResumeLayout(false);
             this.groupBoxPuController.PerformLayout();
             this.tabPageArea.ResumeLayout(false);
@@ -14667,10 +14669,6 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
-            this.splitContainerPu.Panel1.ResumeLayout(false);
-            this.splitContainerPu.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerPu)).EndInit();
-            this.splitContainerPu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
