@@ -2666,6 +2666,7 @@ namespace STROOP.Structs
                         List<string> stringList = ParsingUtilities.ParseStringList(puParams);
                         List<int?> intList = stringList.ConvertAll(
                             stringValue => ParsingUtilities.ParseIntNullable(stringValue));
+                        if (intList.Count == 1) intList.Insert(0, 0);
                         if (intList.Count != 2 || intList.Exists(intValue => !intValue.HasValue)) return false;
                         PuParamsConfig.Param1 = intList[0].Value;
                         PuParamsConfig.Param2 = intList[1].Value;
