@@ -2521,8 +2521,7 @@ namespace STROOP.Structs
                 case "SyncingSpeed":
                     getterFunction = (uint dummy) =>
                     {
-                        double syncingSpeed = PuUtilities.QpuSpeed / GetDeFactoMultiplier();
-                        return syncingSpeed.ToString();
+                        return GetSyncingSpeed().ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
@@ -2537,9 +2536,8 @@ namespace STROOP.Structs
 
                         uint floorTri = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
                         if (floorTri == 0) return false;
-                        float yNorm = Config.Stream.GetSingle(floorTri + TriangleOffsetsConfig.NormY);
-                        float newYnorm = PuUtilities.QpuSpeed / newSyncingSpeed;
-                        return Config.Stream.SetValue(newYnorm, floorTri + TriangleOffsetsConfig.NormY);
+                        double newYnorm = PuUtilities.QpuSpeed / newSyncingSpeed * PuParamsConfig.Hypotenuse;
+                        return Config.Stream.SetValue((float)newYnorm, floorTri + TriangleOffsetsConfig.NormY);
                     };
                     break;
 
@@ -3017,7 +3015,7 @@ namespace STROOP.Structs
             return amplitude;
         }
 
-        // public methods
+        // PU methods
 
         private static double GetDeFactoMultiplier()
         {
@@ -3038,6 +3036,13 @@ namespace STROOP.Structs
             double defactoSpeed = hSpeed * GetDeFactoMultiplier();
             return defactoSpeed;
         }
+
+        public static double GetSyncingSpeed()
+        {
+            return PuUtilities.QpuSpeed / GetDeFactoMultiplier() * PuParamsConfig.Hypotenuse;
+        }
+
+        // Angle methods
 
         public static short GetDeltaYawIntendedFacing()
         {
