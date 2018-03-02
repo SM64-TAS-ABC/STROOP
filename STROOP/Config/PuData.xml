@@ -28,4 +28,6 @@
   <Data groupList="Basic" base="None" specialType="MarioXPuRelative" coord="X">Rel X</Data>
   <Data groupList="Basic" base="None" specialType="MarioYPuRelative" coord="Y">Rel Y</Data>
   <Data groupList="Basic" base="None" specialType="MarioZPuRelative" coord="Z">Rel Z</Data>
+
+  <Data groupList="Basic" base="None" specialType="PuParams" coord="Z">PU Params</Data>
 </MarioData>

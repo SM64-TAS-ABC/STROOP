@@ -154,10 +154,11 @@ namespace STROOP.Controls
 
         protected override string HandleNegating(string stringValue)
         {
+            if (!_displayAsNegated) return stringValue;
             double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
             if (!doubleValueNullable.HasValue) return stringValue;
             double doubleValue = doubleValueNullable.Value;
-            if (_displayAsNegated) doubleValue = -1 * doubleValue;
+            doubleValue = -1 * doubleValue;
             return doubleValue.ToString();
         }
 

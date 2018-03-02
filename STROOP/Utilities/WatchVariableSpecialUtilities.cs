@@ -2610,6 +2610,23 @@ namespace STROOP.Structs
                     };
                     break;
 
+                case "PuParams":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return "(" + PuParamsConfig.Param1 + "," + PuParamsConfig.Param2 + ")";
+                    };
+                    setterFunction = (string puParams, uint dummy) =>
+                    {
+                        List<string> stringList = ParsingUtilities.ParseStringList(puParams);
+                        List<int?> intList = stringList.ConvertAll(
+                            stringValue => ParsingUtilities.ParseIntNullable(stringValue));
+                        if (intList.Count != 2 || intList.Exists(intValue => !intValue.HasValue)) return false;
+                        PuParamsConfig.Param1 = intList[0].Value;
+                        PuParamsConfig.Param2 = intList[1].Value;
+                        return true;
+                    };
+                    break;
+
                 // Misc vars
 
                 case "RngIndex":
