@@ -44,19 +44,6 @@ namespace STROOP.Utilities
             return (puXIndex, puYIndex, puZIndex);
         }
 
-        public static (float relX, float relY, float relZ) GetMarioRelativePosition()
-        {
-            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-
-            float relX = GetRelativeCoordinate(marioX);
-            float relY = GetRelativeCoordinate(marioY);
-            float relZ = GetRelativeCoordinate(marioZ);
-
-            return (relX, relY, relZ);
-        }
-
         public static bool SetMarioPositionInCurrentPu(float x, float y, float z)
         {
             (int puXIndex, int puYIndex, int puZIndex) = GetMarioPuIndexes();

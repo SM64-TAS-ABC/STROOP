@@ -9,14 +9,30 @@ using OpenTK;
 
 namespace STROOP.Controls.Map.Graphics.Items
 {
-    class MapGraphicsIconItem : IMapGraphicsItem
+    class MapGraphicsIconItem : MapGraphicsItem
     {
-        int _imageID;
-        private Bitmap _image;
+        Bitmap _image;
+        bool _imageUpdated;
+        SizeF _imageNormalizedSize;
+
+        int _imageTexID = -1;
+        int _vertexBuffer = -1;
+
+        static readonly Vertex[] _vertices = new Vertex[]
+        {
+            new Vertex(new Vector3(-1, -1, 0), new Vector2(0, 1)),
+            new Vertex(new Vector3(1, -1, 0),  new Vector2(1, 1)),
+            new Vertex(new Vector3(-1, 1, 0),  new Vector2(0, 0)),
+            new Vertex(new Vector3(1, 1, 0),   new Vector2(1, 0)),
+            new Vertex(new Vector3(-1, 1, 0),  new Vector2(0, 0)),
+            new Vertex(new Vector3(1, -1, 0),  new Vector2(1, 1)),
+        };
 
         public Vector3 Position { get; set; }
 
-        public bool Visible { get; set; }
+        public float Rotation { get; set; } = 0.0f;
+
+        public float Size { get; set; } = 0.1f;
 
         public bool DrawOnTopDown { get; set; }
 
@@ -24,24 +40,89 @@ namespace STROOP.Controls.Map.Graphics.Items
 
         public float TopDownPriority { get; set; }
 
+        public override IEnumerable<Type> DrawOnCameraTypes => CameraTypeAny;
+
+        public override float? Depth => Position.Y + 0x10000 * TopDownPriority;
+
+        public override DrawType Type => DrawType.Overlay;
+
         public MapGraphicsIconItem(Bitmap image)
         {
-            _image = (Bitmap) image.Clone();
+            ChangeImage(image);
         }
 
-        public void Load(MapGraphics graphics)
+        public void ChangeImage(Bitmap image)
         {
-            _imageID = graphics.LoadTexture(_image);
+            _image?.Dispose();
+            _image = image == null ? null : (Bitmap)image.Clone();
+            _imageUpdated = false;
         }
 
-        public void Draw(MapGraphics graphics)
+        public override void Load(MapGraphics graphics)
         {
-            
+            CheckUpdateImage(graphics);
+
+            _vertexBuffer = GL.GenBuffer();
+            GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexBuffer);
+            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(_vertices.Length * Vertex.Size),
+                _vertices, BufferUsageHint.StaticDraw);
         }
 
-        public void Unload()
+        public override Matrix4 GetModelMatrix(MapGraphics graphics)
         {
-            GL.DeleteTexture(_imageID);
+            return Matrix4.CreateScale(
+                Size * _imageNormalizedSize.Width,
+                Size * _imageNormalizedSize.Height,
+                1)
+                * Matrix4.CreateRotationZ(Rotation)
+                * Matrix4.CreateScale(1.0f / graphics.NormalizedWidth, 1.0f, 1.0f / graphics.NormalizedHeight)
+                * Matrix4.CreateTranslation(graphics.Utilities.GetPositionOnViewFromCoordinate(Position));
+        }
+
+        public override void Draw(MapGraphics graphics)
+        {
+            CheckUpdateImage(graphics);
+
+            if (_imageTexID == -1)
+                return;
+
+            GL.BindTexture(TextureTarget.Texture2D, _imageTexID);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexBuffer);
+            graphics.BindVertices();
+            GL.DrawArrays(PrimitiveType.Triangles, 0, _vertices.Length);
+        }
+
+        public override void Unload(MapGraphics graphics)
+        {
+            ChangeImage(null);
+            CheckUpdateImage(graphics);
+        }
+
+        private void CheckUpdateImage(MapGraphics graphics)
+        {
+            // Image already updated
+            if (_imageUpdated)
+                return;
+
+            // Remove previous image
+            GL.DeleteTexture(_imageTexID);
+            _imageTexID = -1;
+            _imageUpdated = true;
+            _imageNormalizedSize = new SizeF(1.0f, 1.0f);
+
+            // Don't add image if its null (we want it cleared)
+            if (_image == null)
+                return;
+
+            // Update image
+            _imageTexID = graphics.Utilities.LoadTexture(_image);
+            _imageNormalizedSize = new SizeF(
+                _image.Width >= _image.Height ? 1.0f : (float) _image.Width / _image.Height,
+                _image.Width <= _image.Height ? 1.0f : (float) _image.Height / _image.Width);
+
+            // Dispose of temp copy (its in graphics memory now)
+            _image.Dispose();
+            _image = null;
         }
     }
 }

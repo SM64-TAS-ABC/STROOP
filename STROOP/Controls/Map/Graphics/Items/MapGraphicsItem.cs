@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenTK;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,6 +37,14 @@ namespace STROOP.Controls.Map.Graphics.Items
         /// </summary>
         public abstract float? Depth { get; }
 
+        /// <summary>
+        /// Model transformtation matrix
+        /// </summary>
+        public virtual Matrix4 GetModelMatrix(MapGraphics graphics)
+        {
+            return Matrix4.Identity;
+        }
+   
         /// <summary>
         /// Called when the item is loaded and added to the map graphics.
         /// Load texture here.

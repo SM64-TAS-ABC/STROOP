@@ -1,6 +1,7 @@
 ﻿using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
+using STROOP.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -21,10 +22,9 @@ namespace STROOP.Controls.Map.Graphics
             _graphics = graphics;
         }
 
-        public Vector2 Convert(Vector3 v)
+        public Vector3 GetPositionOnViewFromCoordinate(Vector3 pos)
         {
-            return new Vector2(0, 0);
-            //return Vector4.Transform(new Vector4(v, 1), Camera.CameraMatrix).Xy;
+            return Vector4.Transform(new Vector4(pos, 1), _graphics.Camera.Matrix).Xyz;
         }
 
         public int LoadTexture(Bitmap bmp)

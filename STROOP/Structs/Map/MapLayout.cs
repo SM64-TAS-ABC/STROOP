@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace STROOP.Structs
 {
-    public struct Map
+    public struct MapLayout
     {
         public string ImagePath;
         public string BackgroundPath;
@@ -20,23 +20,23 @@ namespace STROOP.Structs
         public string Name;
         public string SubName;
 
-        public static bool operator ==(Map a, Map b)
+        public static bool operator ==(MapLayout a, MapLayout b)
         {
             return (a.ImagePath == b.ImagePath && a.Area == b.Area && a.Level == b.Level && a.Y == b.Y
                 && a.LoadingPoint == b.LoadingPoint && a.MissionLayout == b.MissionLayout);
         }
 
-        public static bool operator !=(Map a, Map b)
+        public static bool operator !=(MapLayout a, MapLayout b)
         {
             return !(a == b);
         }
         
         public override bool Equals(object other)
         {
-            if (!(other is Map))
+            if (!(other is MapLayout))
                 return false;
 
-            return (this == (Map) other);
+            return (this == (MapLayout) other);
         }
 
         public override int GetHashCode()

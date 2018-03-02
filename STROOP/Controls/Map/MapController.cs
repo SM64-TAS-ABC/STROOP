@@ -18,50 +18,34 @@ namespace STROOP.Controls.Map
 {
     public class MapController
     {
-        MapGui _mapGui;
         List<MapObject> _mapObjects = new List<MapObject>();
-        MapGraphics _mapGraphics;
+        MapGraphics _graphics;
 
-        public bool IsLoaded { get; private set; } = false;
-
-        public bool Visible { get => _mapGraphics.Control.Visible; set => _mapGraphics.Control.Visible = value; }
-
-        public MapController(MapGui mapGui)
+        public MapController(MapGraphics graphics)
         {
-            _mapGui = mapGui;
-        }
-
-        public void Load()
-        {
-            // Create new graphics control
-            _mapGraphics = new MapGraphics(_mapGui.GLControl);
-            _mapGraphics.Load();
-
-            IsLoaded = true;
-        }
-
-        public void Update()
-        {
-            // Make sure the control has successfully loaded
-            if (!IsLoaded)
-                return;
-
-            // Update gui by drawing images (invokes _mapGraphics.OnPaint())
-            _mapGraphics.Control.Invalidate();
+            _graphics = graphics;
         }
         
         public void AddMapObject(MapObject mapObj)
         {
             _mapObjects.Add(mapObj);
             foreach (MapGraphicsItem graphicsItem in mapObj.GraphicsItems)
-                _mapGraphics.AddMapItem(graphicsItem);
+                _graphics.AddMapItem(graphicsItem);
+        }
+
+        public void Update()
+        {
+            foreach (MapObject obj in _mapObjects)
+                obj.Update();
+
+            _graphics.Invalidate();
         }
 
         public void RemoveMapObject(MapObject mapObj)
         {
             _mapObjects.Remove(mapObj);
             foreach (MapGraphicsItem graphicsItem in mapObj.GraphicsItems)
-                _mapGraphics.RemoveMapObject(graphicsItem);
+                _graphics.RemoveMapObject(graphicsItem);
         }
     }
 }

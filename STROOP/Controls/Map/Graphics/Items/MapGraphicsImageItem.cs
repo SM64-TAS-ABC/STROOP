@@ -4,38 +4,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenTK.Graphics.OpenGL;
-using OpenTK.Graphics;
 using System.Drawing;
-using System.Runtime.InteropServices;
 using OpenTK;
 
 namespace STROOP.Controls.Map.Graphics.Items
 {
-    class MapGraphicsBackgroundItem : MapGraphicsItem
+    class MapGraphicsImageItem : MapGraphicsItem
     {
         Bitmap _image;
         bool _imageUpdated;
-        
+
         int _imageTexID = -1;
         int _vertexBuffer = -1;
 
         static readonly Vertex[] _vertices = new Vertex[]
         {
-            new Vertex(new Vector3(-1, -1, 0), new Vector2(0, 1)),
-            new Vertex(new Vector3(1, -1, 0),  new Vector2(1, 1)),
-            new Vertex(new Vector3(-1, 1, 0),  new Vector2(0, 0)),
-            new Vertex(new Vector3(1, 1, 0),   new Vector2(1, 0)),
-            new Vertex(new Vector3(-1, 1, 0),  new Vector2(0, 0)),
-            new Vertex(new Vector3(1, -1, 0),  new Vector2(1, 1)),
+            new Vertex(new Vector3(0, 0, 0), new Vector2(0, 0)),
+            new Vertex(new Vector3(0, 0, 1), new Vector2(0, 1)),
+            new Vertex(new Vector3(1, 0, 0), new Vector2(1, 0)),
+            new Vertex(new Vector3(1, 0, 1), new Vector2(1, 1)),
+            new Vertex(new Vector3(1, 0, 0), new Vector2(1, 0)),
+            new Vertex(new Vector3(0, 0, 1), new Vector2(0, 1)),
         };
+
+        public RectangleF Region { get; set; }
+
+        public float Y { get; set; } = 0.0f;
+
+        public bool DrawOnTopDown { get; set; }
+
+        public bool DrawOnPerspective { get; set; }
 
         public override IEnumerable<Type> DrawOnCameraTypes => CameraTypeAny;
 
         public override float? Depth => float.MaxValue;
 
-        public override DrawType Type => DrawType.Background;
+        public override DrawType Type => DrawType.Perspective;
 
-        public MapGraphicsBackgroundItem(Bitmap image)
+        public MapGraphicsImageItem(Bitmap image)
         {
             ChangeImage(image);
         }
@@ -43,7 +49,7 @@ namespace STROOP.Controls.Map.Graphics.Items
         public void ChangeImage(Bitmap image)
         {
             _image?.Dispose();
-            _image = image == null ? null : (Bitmap) image.Clone();
+            _image = image == null ? null : (Bitmap)image.Clone();
             _imageUpdated = false;
         }
 
@@ -53,13 +59,18 @@ namespace STROOP.Controls.Map.Graphics.Items
 
             _vertexBuffer = GL.GenBuffer();
             GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexBuffer);
-            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr) (_vertices.Length * Vertex.Size), 
+            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(_vertices.Length * Vertex.Size),
                 _vertices, BufferUsageHint.StaticDraw);
+        }
+
+        public override Matrix4 GetModelMatrix(MapGraphics graphics)
+        {
+            return Matrix4.CreateScale(Region.Width, 1.0f, Region.Height) 
+                * Matrix4.CreateTranslation(Region.Location.X, Y, Region.Location.Y);
         }
 
         public override void Draw(MapGraphics graphics)
         {
-
             CheckUpdateImage(graphics);
 
             if (_imageTexID == -1)
@@ -92,10 +103,11 @@ namespace STROOP.Controls.Map.Graphics.Items
             if (_image == null)
                 return;
 
+            // Update image
             _imageTexID = graphics.Utilities.LoadTexture(_image);
 
             // Dispose of temp copy (its in graphics memory now)
-            _image?.Dispose();
+            _image.Dispose();
             _image = null;
         }
     }

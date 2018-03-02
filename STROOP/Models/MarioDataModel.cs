@@ -209,6 +209,24 @@ namespace STROOP.Models
             set => Z = PuUtilities.GetCoordinateInPu(Z, value);
         }
 
+        public float PURelative_X
+        {
+            get => PuUtilities.GetRelativeCoordinate(X);
+            set => X = PuUtilities.GetCoordinateInPu(value, PU_X);
+        }
+
+        public float PURelative_Y
+        {
+            get => PuUtilities.GetRelativeCoordinate(Y);
+            set => Y = PuUtilities.GetCoordinateInPu(value, PU_Y);
+        }
+
+        public float PURelative_Z
+        {
+            get => PuUtilities.GetRelativeCoordinate(Z);
+            set => Z = PuUtilities.GetCoordinateInPu(value, PU_Z);
+        }
+
         public int QPU_X
         {
             get => PU_X / 4;
@@ -263,7 +281,7 @@ namespace STROOP.Models
                     NextIntendedQStepZ = MoreMath.MaybeNegativeModulus(_z + zDist, 65536);
                     IsStationary = _x == NextIntendedQStepX && _z == NextIntendedQStepZ;
                     break;
-            }        
+            }
         }
     }
 }

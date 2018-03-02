@@ -22,13 +22,22 @@ namespace STROOP.Controls.Map.Graphics
         const string FragmentShaderPath = @"Resources\Shaders\FragmentShader.glsl";
         const string ShaderLogPath = @"Resources\Shaders\ShaderLog.txt";
 
-        Matrix4 _identityView = Matrix4.Identity;
 
         public IMapCamera Camera { get; set; }
-        public GLControl Control { get; }
+        public float AspectRatio => _control.AspectRatio;
+        public float NormalizedWidth => AspectRatio <= 1.0f ? 1.0f : (float) _control.Width / _control.Height;
+        public float NormalizedHeight => AspectRatio >= 1.0f ? 1.0f : (float) _control.Height / _control.Width;
+        public Size Size => _control.Size;
+        public float Width => _control.Width;
+        public float Height => _control.Height;
+        public bool Visible { get => _control.Visible; set => _control.Visible = value; }
 
-        List<MapGraphicsItem> _mapItems = new List<MapGraphicsItem>();
+        public event EventHandler OnSizeChanged;
+
+        Matrix4 _identityView = Matrix4.Identity;
+        List <MapGraphicsItem> _mapItems = new List<MapGraphicsItem>();
         Object _mapItemsLock = new object();
+        GLControl _control { get; }
 
         bool _error = false;
 
@@ -44,14 +53,14 @@ namespace STROOP.Controls.Map.Graphics
 
         public MapGraphics(GLControl control)
         {
-            Control = control;
+            _control = control;
         }
 
         public void Load()
         {
 
-            Control.MakeCurrent();
-            Control.Context.LoadAll();
+            _control.MakeCurrent();
+            _control.Context.LoadAll();
 
             CheckVersion();
             if (_error)
@@ -68,22 +77,21 @@ namespace STROOP.Controls.Map.Graphics
             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
 
             // Set viewport
-            GL.Viewport(Control.DisplayRectangle);
+            GL.Viewport(_control.DisplayRectangle);
 
             // Create utilties for GraphicsItems to use
             Utilities = new GraphicsUtilities(this);
 
-            Control.Paint += OnPaint;
-            Control.Resize += OnResize;
+            _control.Paint += OnPaint;
+            _control.Resize += OnResize;
 
             // Test
-            Camera = new MapCameraTopView();
-            AddMapItem(new MapGraphicsBackgroundItem(Image.FromFile(@"Resources\Maps\Map Images\BBH Floor 1.png") as Bitmap));
+            Camera = new MapCameraTopView(this);
         }
 
         public void OnPaint(object sender, EventArgs e)
         {
-            Control.MakeCurrent();
+            _control.MakeCurrent();
 
             // Set default background color (clear drawing area)
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
@@ -91,7 +99,7 @@ namespace STROOP.Controls.Map.Graphics
             // Make sure we have a camera
             if (_error || Camera == null)
             {
-                Control.SwapBuffers();
+                _control.SwapBuffers();
                 return;
             }
 
@@ -104,64 +112,85 @@ namespace STROOP.Controls.Map.Graphics
             
             IEnumerable<MapGraphicsItem> drawItemsPerspective, drawItemsOverlay, drawItemsBackground;
             drawItemsPerspective = drawItems.Where(i => i.Type == MapGraphicsItem.DrawType.Perspective);
-            drawItemsOverlay = drawItems.Where(i => i.Type == MapGraphicsItem.DrawType.Perspective).OrderByDescending(i => i.Depth);
+            drawItemsOverlay = drawItems.Where(i => i.Type == MapGraphicsItem.DrawType.Overlay).OrderByDescending(i => i.Depth);
             drawItemsBackground = drawItems.Where(i => i.Type == MapGraphicsItem.DrawType.Background);
-
-            // Setup attributes
-            GL.EnableVertexAttribArray(_glAttributePosition);
-            GL.VertexAttribPointer(_glAttributePosition, 3, VertexAttribPointerType.Float, false, Vertex.Size, Vertex.IndexPosition);
-            GL.EnableVertexAttribArray(_glAttributeColor);
-            GL.VertexAttribPointer(_glAttributeColor, 4, VertexAttribPointerType.Float, false, Vertex.Size, Vertex.IndexColor);
-            GL.EnableVertexAttribArray(_glAttributeTexCoords);
-            GL.VertexAttribPointer(_glAttributeTexCoords, 2, VertexAttribPointerType.Float, false, Vertex.Size, Vertex.IndexTexCoord);
 
             // Setup Background
             GL.Disable(EnableCap.CullFace);
             GL.Disable(EnableCap.DepthTest);
-            _identityView = Matrix4.CreateOrthographicOffCenter(-1, 1, 1, -1, -1, 1);
-            GL.UniformMatrix4(_glUniformView, false, ref _identityView);
 
             // Draw background
             foreach (var mapItem in drawItemsBackground)
+            {
+                Matrix4 viewMatrix = mapItem.GetModelMatrix(this);
+                GL.UniformMatrix4(_glUniformView, false, ref viewMatrix);
                 mapItem.Draw(this);
-
-
-            var error = GL.GetError();
-            if (error != ErrorCode.NoError)
-                Debugger.Break();
+            }
 
             // Setup 3D
             GL.Enable(EnableCap.CullFace);
             GL.Enable(EnableCap.DepthTest);
             GL.DepthMask(true);
-            Matrix4 viewMatrix = Camera.CameraMatrix;
-            GL.UniformMatrix4(_glUniformView, false, ref viewMatrix);
 
             // Draw 3D
             foreach (var mapItem in drawItemsPerspective)
+            {
+                Matrix4 viewMatrix = mapItem.GetModelMatrix(this) * Camera.Matrix;
+                GL.UniformMatrix4(_glUniformView, false, ref viewMatrix);
                 mapItem.Draw(this);
+            } 
 
             // Setup 2D
             GL.Disable(EnableCap.DepthTest);
             GL.Disable(EnableCap.CullFace);
-            GL.UniformMatrix4(_glUniformView, false, ref _identityView);
+
+            var error = GL.GetError();
+            if (error != ErrorCode.NoError)
+                Debugger.Break();
 
             // Draw 2D
-            foreach (var mapItem in drawItemsOverlay)
-                mapItem.Draw(this);
+            foreach (var mapItem in drawItemsOverlay) {
+                Matrix4 viewMatrix = mapItem.GetModelMatrix(this);
+                GL.UniformMatrix4(_glUniformView, false, ref viewMatrix);
+                 mapItem.Draw(this);
+            }
+
+            error = GL.GetError();
+            if (error != ErrorCode.NoError)
+                Debugger.Break();
 
             // Disable Attributes
             GL.DisableVertexAttribArray(_glAttributePosition);
             GL.DisableVertexAttribArray(_glAttributeColor);
             GL.DisableVertexAttribArray(_glAttributeTexCoords);
 
-            Control.SwapBuffers();
+            error = GL.GetError();
+            if (error != ErrorCode.NoError)
+                Debugger.Break();
+
+            _control.SwapBuffers();
         }
 
-        public void OnResize(object sender, EventArgs e)
+        public void BindVertices()
         {
-            GL.Viewport(Control.DisplayRectangle);
-            Control.Invalidate();
+            GL.EnableVertexAttribArray(_glAttributePosition);
+            GL.VertexAttribPointer(_glAttributePosition, 3, VertexAttribPointerType.Float, false, Vertex.Size, Vertex.IndexPosition);
+            GL.EnableVertexAttribArray(_glAttributeColor);
+            GL.VertexAttribPointer(_glAttributeColor, 4, VertexAttribPointerType.Float, false, Vertex.Size, Vertex.IndexColor);
+            GL.EnableVertexAttribArray(_glAttributeTexCoords);
+            GL.VertexAttribPointer(_glAttributeTexCoords, 2, VertexAttribPointerType.Float, false, Vertex.Size, Vertex.IndexTexCoord);
+        }
+
+        void OnResize(object sender, EventArgs e)
+        {
+            GL.Viewport(_control.DisplayRectangle);
+            OnSizeChanged?.Invoke(sender, e);
+            Invalidate();
+        }
+
+        public void Invalidate()
+        {
+            _control.Invalidate();
         }
 
         public void AddMapItem(MapGraphicsItem mapItem)

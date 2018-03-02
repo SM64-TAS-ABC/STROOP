@@ -145,19 +145,25 @@
       <DependentUpon>VarHackContainer.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\Map\Graphics\IMapCamera.cs" />
+    <Compile Include="Controls\Map\Graphics\Items\MapGraphicsImageItem.cs" />
     <Compile Include="Controls\Map\Graphics\Items\MapGraphicsItem.cs" />
+    <Compile Include="Controls\Map\Graphics\Items\MapGraphicsTrianglesItem.cs" />
     <Compile Include="Controls\Map\Graphics\MapCameraTopView.cs" />
     <Compile Include="Controls\Map\Graphics\MapGraphics.cs" />
     <Compile Include="Controls\Map\Graphics\Items\MapGraphicsBackgroundItem.cs" />
-    <None Include="Controls\Map\Graphics\Items\MapGraphicsIconItem.cs" />
+    <Compile Include="Controls\Map\Graphics\Items\MapGraphicsIconItem.cs" />
     <Compile Include="Controls\Map\Graphics\GraphicsUtilities.cs" />
     <Compile Include="Controls\Map\Graphics\Vertex.cs" />
+    <Compile Include="Controls\Map\MapController.cs" />
     <Compile Include="Controls\Map\MapObjectControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\Map\MapObjectControl.Designer.cs">
       <DependentUpon>MapObjectControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Map\Objects\MapLevelObject.cs" />
+    <Compile Include="Controls\Map\Objects\MapMarioObject.cs" />
+    <Compile Include="Controls\Map\Objects\MapObject.cs" />
     <Compile Include="Controls\NoTearFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -324,7 +330,7 @@
     <Compile Include="Structs\GameScript.cs" />
     <Compile Include="Structs\Gui\MapGui.cs" />
     <Compile Include="Structs\Gui\ObjectSlotManagerGui.cs" />
-    <Compile Include="Structs\Map\Map.cs" />
+    <Compile Include="Structs\Map\MapLayout.cs" />
     <Compile Include="Structs\Map\MapAssociations.cs" />
     <Compile Include="Structs\Configurations\MarioConfig.cs" />
     <Compile Include="Structs\ObjectBehaviorAssociation.cs" />
@@ -1147,9 +1153,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controls\Map\Objects\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>del "$(TargetDir)OpenTK.dll.config"
