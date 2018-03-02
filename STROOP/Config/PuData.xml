@@ -14,7 +14,10 @@
   <Data groupList="Basic" base="None" specialType="PuSpeed">PU Speed</Data>
   <Data groupList="Basic" base="None" specialType="QpuSpeedComponent">QPU Speed Comp</Data>
   <Data groupList="Basic" base="None" specialType="PuSpeedComponent">PU Speed Comp</Data>
+
   <Data groupList="Basic" base="None" specialType="RelativeSpeed">Relative Speed</Data>
+  <Data groupList="Basic" base="None" specialType="RelativeSpeedX">Relative Speed X</Data>
+  <Data groupList="Basic" base="None" specialType="RelativeSpeedZ">Relative Speed Z</Data>
 
   <Data groupList="Basic" base="None" specialType="DistanceAboveFloor">Dist Above Floor</Data>
   <Data groupList="Basic" type="float" offset="0x20" base="Triangle" coord="Y">Normal Y</Data>

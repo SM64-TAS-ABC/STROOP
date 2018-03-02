@@ -2631,6 +2631,28 @@ namespace STROOP.Structs
                     };
                     break;
 
+                case "RelativeSpeedX":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return "X";
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return false;
+                    };
+                    break;
+
+                case "RelativeSpeedZ":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return "Z";
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return false;
+                    };
+                    break;
+
                 case "PuParams":
                     getterFunction = (uint dummy) =>
                     {
