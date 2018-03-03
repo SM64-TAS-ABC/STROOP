@@ -2629,10 +2629,11 @@ namespace STROOP.Structs
                 case "RelativeSpeedX":
                     getterFunction = (uint dummy) =>
                     {
-                        (double intendedX, double intendedZ) = GetIntendedNextPosition(1);
-                        float relX = PuUtilities.GetRelativeCoordinate((float)intendedX);
                         float currentX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-                        double xDiff = relX - currentX;
+                        float relCurrentX = PuUtilities.GetRelativeCoordinate(currentX);
+                        (double intendedX, double intendedZ) = GetIntendedNextPosition(1);
+                        float relIntendedX = PuUtilities.GetRelativeCoordinate((float)intendedX);
+                        double xDiff = relIntendedX - relCurrentX;
                         return xDiff.ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
@@ -2644,10 +2645,11 @@ namespace STROOP.Structs
                 case "RelativeSpeedZ":
                     getterFunction = (uint dummy) =>
                     {
-                        (double intendedX, double intendedZ) = GetIntendedNextPosition(1);
-                        float relZ = PuUtilities.GetRelativeCoordinate((float)intendedZ);
                         float currentZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-                        double zDiff = relZ - currentZ;
+                        float relCurrentZ = PuUtilities.GetRelativeCoordinate(currentZ);
+                        (double intendedX, double intendedZ) = GetIntendedNextPosition(1);
+                        float relIntendedZ = PuUtilities.GetRelativeCoordinate((float)intendedZ);
+                        double zDiff = relIntendedZ - relCurrentZ;
                         return zDiff.ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
