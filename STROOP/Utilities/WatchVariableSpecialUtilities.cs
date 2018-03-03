@@ -2854,22 +2854,22 @@ namespace STROOP.Structs
                 case "Qs1RelativeIntendedNextX":
                     getterFunction = (uint dummy) =>
                     {
-                        return "";
+                        return GetQsRelativeIntendedNextComponent(1 / 4d, true).ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
-                        return false;
+                        return SetQsRelativeIntendedNextComponent(stringValue, 1 / 4d, true);
                     };
                     break;
 
                 case "Qs1RelativeIntendedNextZ":
                     getterFunction = (uint dummy) =>
                     {
-                        return "";
+                        return GetQsRelativeIntendedNextComponent(1 / 4d, false).ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
-                        return false;
+                        return SetQsRelativeIntendedNextComponent(stringValue, 1 / 4d, false);
                     };
                     break;
 
@@ -3360,6 +3360,43 @@ namespace STROOP.Structs
             int intendedPuCompIndex = PuUtilities.GetPuIndex(intendedComp);
             double newRelativeComp = currentComp + newRelativeCompSpeed;
             double newIntendedComp = PuUtilities.GetCoordinateInPu(newRelativeComp, intendedPuCompIndex);
+
+            float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+            double intendedXComp = xComp ? newIntendedComp : intendedX;
+            double intendedZComp = xComp ? intendedZ : newIntendedComp;
+            (double newDeFactoSpeed, double newAngle) =
+                MoreMath.GetVectorFromCoordinates(
+                    currentX, currentZ, intendedXComp, intendedZComp, hSpeed >= 0);
+            double newHSpeed = newDeFactoSpeed / GetDeFactoMultiplier() / numFrames;
+            ushort newAngleRounded = MoreMath.NormalizeAngleUshort(newAngle);
+
+            bool success = true;
+            success &= Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+            success &= Config.Stream.SetValue(newAngleRounded, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+            return success;
+        }
+
+        private static double GetQsRelativeIntendedNextComponent(double numFrames, bool xComp)
+        {
+            (double intendedX, double intendedZ) = GetIntendedNextPosition(numFrames);
+            double intendedComp = xComp ? intendedX : intendedZ;
+            double relIntendedComp = PuUtilities.GetRelativeCoordinate(intendedComp);
+            return relIntendedComp;
+        }
+
+        private static bool SetQsRelativeIntendedNextComponent(string stringValue, double numFrames, bool xComp)
+        {
+            double? newRelativeIntendedCompNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+            if (!newRelativeIntendedCompNullable.HasValue) return false;
+            double newRelativeIntendedComp = newRelativeIntendedCompNullable.Value;
+
+            float currentX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float currentZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            double currentComp = xComp ? currentX : currentZ;
+            (double intendedX, double intendedZ) = GetIntendedNextPosition(numFrames);
+            double intendedComp = xComp ? intendedX : intendedZ;
+            int intendedPuCompIndex = PuUtilities.GetPuIndex(intendedComp);
+            double newIntendedComp = PuUtilities.GetCoordinateInPu(newRelativeIntendedComp, intendedPuCompIndex);
 
             float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
             double intendedXComp = xComp ? newIntendedComp : intendedX;
