@@ -1480,7 +1480,7 @@ namespace STROOP
             this.panelConnect.Controls.Add(this.labelNotConnected);
             this.panelConnect.Controls.Add(this.buttonConnect);
             this.panelConnect.Controls.Add(this.listBoxProcessesList);
-            this.panelConnect.Location = new System.Drawing.Point(246, 38);
+            this.panelConnect.Location = new System.Drawing.Point(246, 11);
             this.panelConnect.Name = "panelConnect";
             this.panelConnect.Size = new System.Drawing.Size(441, 20);
             this.panelConnect.TabIndex = 17;
@@ -4178,7 +4178,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 239F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 240F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -14240,8 +14240,8 @@ namespace STROOP
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(947, 741);
-            this.Controls.Add(this.comboBoxRomVersion);
             this.Controls.Add(this.panelConnect);
+            this.Controls.Add(this.comboBoxRomVersion);
             this.Controls.Add(this.buttonShowTopPane);
             this.Controls.Add(this.buttonShowTopBottomPane);
             this.Controls.Add(this.buttonShowBottomPane);
