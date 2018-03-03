@@ -2599,7 +2599,7 @@ namespace STROOP.Structs
 
                         uint floorTri = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
                         if (floorTri == 0) return false;
-                        double newYnorm = PuUtilities.QpuSpeed / newSyncingSpeed * PuParamsConfig.Hypotenuse;
+                        double newYnorm = PuUtilities.QpuSpeed / newSyncingSpeed * SpecialConfig.PuHypotenuse;
                         return Config.Stream.SetValue((float)newYnorm, floorTri + TriangleOffsetsConfig.NormY);
                     };
                     break;
@@ -2868,7 +2868,7 @@ namespace STROOP.Structs
                 case "PuParams":
                     getterFunction = (uint dummy) =>
                     {
-                        return "(" + PuParamsConfig.Param1 + "," + PuParamsConfig.Param2 + ")";
+                        return "(" + SpecialConfig.PuParam1 + "," + SpecialConfig.PuParam2 + ")";
                     };
                     setterFunction = (string puParams, uint dummy) =>
                     {
@@ -2877,8 +2877,8 @@ namespace STROOP.Structs
                             stringValue => ParsingUtilities.ParseIntNullable(stringValue));
                         if (intList.Count == 1) intList.Insert(0, 0);
                         if (intList.Count != 2 || intList.Exists(intValue => !intValue.HasValue)) return false;
-                        PuParamsConfig.Param1 = intList[0].Value;
-                        PuParamsConfig.Param2 = intList[1].Value;
+                        SpecialConfig.PuParam1 = intList[0].Value;
+                        SpecialConfig.PuParam2 = intList[1].Value;
                         return true;
                     };
                     break;
@@ -2972,6 +2972,54 @@ namespace STROOP.Structs
                         return Config.Stream.SetValue(terrainType, Config.AreaManager.SelectedAreaAddress + AreaConfig.TerrainTypeOffset);
                     };
                     break;
+
+                // Custom point
+
+                case "CustomPointX":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return SpecialConfig.CustomPointX.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        double? newValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!newValueNullable.HasValue) return false;
+                        double newValue = newValueNullable.Value;
+                        SpecialConfig.CustomPointX = newValue;
+                        return true;
+                    };
+                    break;
+
+                case "CustomPointY":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return SpecialConfig.CustomPointY.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        double? newValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!newValueNullable.HasValue) return false;
+                        double newValue = newValueNullable.Value;
+                        SpecialConfig.CustomPointY = newValue;
+                        return true;
+                    };
+                    break;
+
+                case "CustomPointZ":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return SpecialConfig.CustomPointZ.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        double? newValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!newValueNullable.HasValue) return false;
+                        double newValue = newValueNullable.Value;
+                        SpecialConfig.CustomPointZ = newValue;
+                        return true;
+                    };
+                    break;
+
 
                 default:
                     break;
@@ -3297,7 +3345,7 @@ namespace STROOP.Structs
 
         public static double GetSyncingSpeed()
         {
-            return PuUtilities.QpuSpeed / GetDeFactoMultiplier() * PuParamsConfig.Hypotenuse;
+            return PuUtilities.QpuSpeed / GetDeFactoMultiplier() * SpecialConfig.PuHypotenuse;
         }
 
         public static double GetQpuSpeed()

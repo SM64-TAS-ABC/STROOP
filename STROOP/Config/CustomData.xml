@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Data>
-  
-  <Data type="ushort" offset="0x80400000" base="Relative">Ghost</Data>
+
+  <Data base="None" specialType="CustomPointX" coord="X">Point X</Data>
+  <Data base="None" specialType="CustomPointY" coord="Y">Point Y</Data>
+  <Data base="None" specialType="CustomPointZ" coord="Z">Point Z</Data>
 
   <Data type="byte" offsetUS="0x8032DD94" offsetJP="0x8032CE34" base="Relative" subclass="Boolean">Special Triple Jump</Data>
   <Data type="byte" offsetUS="0x80332618" offsetJP="0x80331508" base="Relative" subclass="Boolean">Talked to Yoshi</Data>
