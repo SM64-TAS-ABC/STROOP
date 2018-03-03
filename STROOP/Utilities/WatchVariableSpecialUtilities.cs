@@ -2701,7 +2701,28 @@ namespace STROOP.Structs
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
-                        return false;
+                        double? newRelativeXSpeedNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!newRelativeXSpeedNullable.HasValue) return false;
+                        double newRelativeXSpeed = newRelativeXSpeedNullable.Value;
+
+                        float currentX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                        float currentZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                        (double intendedX, double intendedZ) = GetIntendedNextPosition(1);
+                        int intendedPuXIndex = PuUtilities.GetPuIndex(intendedX);
+                        double newRelativeX = currentX + newRelativeXSpeed;
+                        double newIntendedX = PuUtilities.GetCoordinateInPu(newRelativeX, intendedPuXIndex);
+
+                        float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                        (double newDeFactoSpeed, double newAngle) =
+                            MoreMath.GetVectorFromCoordinates(
+                                currentX, currentZ, newIntendedX, intendedZ, hSpeed >= 0);
+                        double newHSpeed = newDeFactoSpeed / GetDeFactoMultiplier();
+                        ushort newAngleRounded = MoreMath.NormalizeAngleUshort(newAngle);
+
+                        bool success = true;
+                        success &= Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                        success &= Config.Stream.SetValue(newAngleRounded, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+                        return success;
                     };
                     break;
 
@@ -2717,7 +2738,28 @@ namespace STROOP.Structs
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
-                        return false;
+                        double? newRelativeZSpeedNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!newRelativeZSpeedNullable.HasValue) return false;
+                        double newRelativeZSpeed = newRelativeZSpeedNullable.Value;
+
+                        float currentX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                        float currentZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                        (double intendedX, double intendedZ) = GetIntendedNextPosition(1);
+                        int intendedPuZIndex = PuUtilities.GetPuIndex(intendedZ);
+                        double newRelativeZ = currentZ + newRelativeZSpeed;
+                        double newIntendedZ = PuUtilities.GetCoordinateInPu(newRelativeZ, intendedPuZIndex);
+
+                        float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                        (double newDeFactoSpeed, double newAngle) =
+                            MoreMath.GetVectorFromCoordinates(
+                                currentX, currentZ, intendedX, newIntendedZ, hSpeed >= 0);
+                        double newHSpeed = newDeFactoSpeed / GetDeFactoMultiplier();
+                        ushort newAngleRounded = MoreMath.NormalizeAngleUshort(newAngle);
+
+                        bool success = true;
+                        success &= Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                        success &= Config.Stream.SetValue(newAngleRounded, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+                        return success;
                     };
                     break;
 

@@ -59,6 +59,17 @@ namespace STROOP.Utilities
             return (magnitude, angle);
         }
 
+        public static (double magnitude, double angle) GetVectorFromCoordinates(
+            double xFrom, double zFrom, double xTo, double zTo, bool usePositiveMagnitude)
+        {
+            double xDist = xTo - xFrom;
+            double zDist = zTo - zFrom;
+            (double magnitude, double angle) = GetVectorFromComponents(xDist, zDist);
+            double adjustedMagnitude = usePositiveMagnitude ? magnitude : -1 * magnitude;
+            double adjustedAngle = usePositiveMagnitude ? angle : ReverseAngle(angle);
+            return (adjustedMagnitude, adjustedAngle);
+        }
+
         public static (double x, double y, double z) ScaleVector3D(
             double xComp, double yComp, double zComp, double finalDist)
         {
