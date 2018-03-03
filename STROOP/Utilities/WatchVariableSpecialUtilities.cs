@@ -2689,7 +2689,7 @@ namespace STROOP.Structs
                     };
                     break;
 
-                case "RelativeSpeedX":
+                case "RelativeXSpeed":
                     getterFunction = (uint dummy) =>
                     {
                         float currentX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
@@ -2705,7 +2705,7 @@ namespace STROOP.Structs
                     };
                     break;
 
-                case "RelativeSpeedZ":
+                case "RelativeZSpeed":
                     getterFunction = (uint dummy) =>
                     {
                         float currentZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
