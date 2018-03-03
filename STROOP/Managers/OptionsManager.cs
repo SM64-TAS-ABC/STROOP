@@ -13,18 +13,6 @@ namespace STROOP.Managers
     {
         public OptionsManager(TabPage tabControl)
         {
-            // rom version
-            GroupBox groupBoxRomVersion = tabControl.Controls["groupBoxRomVersion"] as GroupBox;
-            RadioButton radioButtonRomVersionUS = groupBoxRomVersion.Controls["radioButtonRomVersionUS"] as RadioButton;
-            radioButtonRomVersionUS.Checked = Config.Version == RomVersion.US;
-            radioButtonRomVersionUS.Click += (sender, e) => { Config.Version = RomVersion.US; };
-            RadioButton radioButtonRomVersionJP = groupBoxRomVersion.Controls["radioButtonRomVersionJP"] as RadioButton;
-            radioButtonRomVersionJP.Checked = Config.Version == RomVersion.JP;
-            radioButtonRomVersionJP.Click += (sender, e) => { Config.Version = RomVersion.JP; };
-            RadioButton radioButtonRomVersionPAL = groupBoxRomVersion.Controls["radioButtonRomVersionPAL"] as RadioButton;
-            radioButtonRomVersionPAL.Checked = Config.Version == RomVersion.PAL;
-            radioButtonRomVersionPAL.Click += (sender, e) => { Config.Version = RomVersion.PAL; };
-
             // goto/retrieve offsets
             GroupBox groupBoxGotoRetrieveOffsets = tabControl.Controls["groupBoxGotoRetrieveOffsets"] as GroupBox;
             BetterTextbox textBoxGotoAbove = groupBoxGotoRetrieveOffsets.Controls["textBoxGotoAbove"] as BetterTextbox;
