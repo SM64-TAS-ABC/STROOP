@@ -2393,8 +2393,8 @@ namespace STROOP.Structs
                         int newPuXIndex = newPuXIndexNullable.Value;
 
                         float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-                        float newMarioX = PuUtilities.GetCoordinateInPu(marioX, newPuXIndex);
-                        return Config.Stream.SetValue(newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
+                        double newMarioX = PuUtilities.GetCoordinateInPu(marioX, newPuXIndex);
+                        return Config.Stream.SetValue((float)newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
                     };
                     break;
 
@@ -2412,8 +2412,8 @@ namespace STROOP.Structs
                         int newPuYIndex = newPuYIndexNullable.Value;
 
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                        float newMarioY = PuUtilities.GetCoordinateInPu(marioY, newPuYIndex);
-                        return Config.Stream.SetValue(newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
+                        double newMarioY = PuUtilities.GetCoordinateInPu(marioY, newPuYIndex);
+                        return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
                     };
                     break;
 
@@ -2431,8 +2431,8 @@ namespace STROOP.Structs
                         int newPuZIndex = newPuZIndexNullable.Value;
 
                         float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-                        float newMarioZ = PuUtilities.GetCoordinateInPu(marioZ, newPuZIndex);
-                        return Config.Stream.SetValue(newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
+                        double newMarioZ = PuUtilities.GetCoordinateInPu(marioZ, newPuZIndex);
+                        return Config.Stream.SetValue((float)newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
                     };
                     break;
 
@@ -2440,7 +2440,7 @@ namespace STROOP.Structs
                     getterFunction = (uint dummy) =>
                     {
                         float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-                        float relX = PuUtilities.GetRelativeCoordinate(marioX);
+                        double relX = PuUtilities.GetRelativeCoordinate(marioX);
                         return relX.ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
@@ -2451,8 +2451,8 @@ namespace STROOP.Structs
 
                         float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
                         int puXIndex = PuUtilities.GetPuIndex(marioX);
-                        float newMarioX = PuUtilities.GetCoordinateInPu(newRelX, puXIndex);
-                        return Config.Stream.SetValue(newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
+                        double newMarioX = PuUtilities.GetCoordinateInPu(newRelX, puXIndex);
+                        return Config.Stream.SetValue((float)newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
                     };
                     break;
 
@@ -2460,7 +2460,7 @@ namespace STROOP.Structs
                     getterFunction = (uint dummy) =>
                     {
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                        float relY = PuUtilities.GetRelativeCoordinate(marioY);
+                        double relY = PuUtilities.GetRelativeCoordinate(marioY);
                         return relY.ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
@@ -2471,8 +2471,8 @@ namespace STROOP.Structs
 
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
                         int puYIndex = PuUtilities.GetPuIndex(marioY);
-                        float newMarioY = PuUtilities.GetCoordinateInPu(newRelY, puYIndex);
-                        return Config.Stream.SetValue(newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
+                        double newMarioY = PuUtilities.GetCoordinateInPu(newRelY, puYIndex);
+                        return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
                     };
                     break;
 
@@ -2480,7 +2480,7 @@ namespace STROOP.Structs
                     getterFunction = (uint dummy) =>
                     {
                         float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-                        float relZ = PuUtilities.GetRelativeCoordinate(marioZ);
+                        double relZ = PuUtilities.GetRelativeCoordinate(marioZ);
                         return relZ.ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
@@ -2491,8 +2491,8 @@ namespace STROOP.Structs
 
                         float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
                         int puZIndex = PuUtilities.GetPuIndex(marioZ);
-                        float newMarioZ = PuUtilities.GetCoordinateInPu(newRelZ, puZIndex);
-                        return Config.Stream.SetValue(newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
+                        double newMarioZ = PuUtilities.GetCoordinateInPu(newRelZ, puZIndex);
+                        return Config.Stream.SetValue((float)newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
                     };
                     break;
 
@@ -2630,9 +2630,9 @@ namespace STROOP.Structs
                     getterFunction = (uint dummy) =>
                     {
                         float currentX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-                        float relCurrentX = PuUtilities.GetRelativeCoordinate(currentX);
+                        double relCurrentX = PuUtilities.GetRelativeCoordinate(currentX);
                         (double intendedX, double intendedZ) = GetIntendedNextPosition(1);
-                        float relIntendedX = PuUtilities.GetRelativeCoordinate((float)intendedX);
+                        double relIntendedX = PuUtilities.GetRelativeCoordinate(intendedX);
                         double xDiff = relIntendedX - relCurrentX;
                         return xDiff.ToString();
                     };
@@ -2646,9 +2646,9 @@ namespace STROOP.Structs
                     getterFunction = (uint dummy) =>
                     {
                         float currentZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-                        float relCurrentZ = PuUtilities.GetRelativeCoordinate(currentZ);
+                        double relCurrentZ = PuUtilities.GetRelativeCoordinate(currentZ);
                         (double intendedX, double intendedZ) = GetIntendedNextPosition(1);
-                        float relIntendedZ = PuUtilities.GetRelativeCoordinate((float)intendedZ);
+                        double relIntendedZ = PuUtilities.GetRelativeCoordinate(intendedZ);
                         double zDiff = relIntendedZ - relCurrentZ;
                         return zDiff.ToString();
                     };

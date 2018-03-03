@@ -15,19 +15,19 @@ namespace STROOP.Utilities
         public static readonly int PuSpeed = 65536;
         public static readonly int QpuSpeed = 262144;
 
-        public static float GetRelativeCoordinate(float coord)
+        public static double GetRelativeCoordinate(double coord)
         {
-            return (float)MoreMath.MaybeNegativeModulus(coord, PuSize);
+            return MoreMath.MaybeNegativeModulus(coord, PuSize);
         }
 
-        public static int GetPuIndex(float coord)
+        public static int GetPuIndex(double coord)
         {
             return (int)Math.Floor((coord + HalfPuSize) / PuSize);
         }
 
-        public static float GetCoordinateInPu(float coord, int puIndex)
+        public static double GetCoordinateInPu(double coord, int puIndex)
         {
-            float relativeCoord = GetRelativeCoordinate(coord);
+            double relativeCoord = GetRelativeCoordinate(coord);
             return relativeCoord + puIndex * PuSize;
         }
 
@@ -44,18 +44,18 @@ namespace STROOP.Utilities
             return (puXIndex, puYIndex, puZIndex);
         }
 
-        public static bool SetMarioPositionInCurrentPu(float x, float y, float z)
+        public static bool SetMarioPositionInCurrentPu(double x, double y, double z)
         {
             (int puXIndex, int puYIndex, int puZIndex) = GetMarioPuIndexes();
 
-            float newMarioX = GetCoordinateInPu(x, puXIndex);
-            float newMarioY = GetCoordinateInPu(y, puYIndex);
-            float newMarioZ = GetCoordinateInPu(z, puZIndex);
+            double newMarioX = GetCoordinateInPu(x, puXIndex);
+            double newMarioY = GetCoordinateInPu(y, puYIndex);
+            double newMarioZ = GetCoordinateInPu(z, puZIndex);
 
             bool success = true;
-            success &= Config.Stream.SetValue(newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
-            success &= Config.Stream.SetValue(newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
-            success &= Config.Stream.SetValue(newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
+            success &= Config.Stream.SetValue((float)newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
+            success &= Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
+            success &= Config.Stream.SetValue((float)newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
             return success;
         }
 
@@ -74,28 +74,28 @@ namespace STROOP.Utilities
             float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
             float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
 
-            float newMarioX = GetCoordinateInPu(marioX, newPuX);
-            float newMarioY = GetCoordinateInPu(marioY, newPuY);
-            float newMarioZ = GetCoordinateInPu(marioZ, newPuZ);
+            double newMarioX = GetCoordinateInPu(marioX, newPuX);
+            double newMarioY = GetCoordinateInPu(marioY, newPuY);
+            double newMarioZ = GetCoordinateInPu(marioZ, newPuZ);
 
             float cameraX = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.XOffset);
             float cameraY = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.YOffset);
             float cameraZ = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
 
-            float newCamX = GetCoordinateInPu(cameraX, newPuX);
-            float newCamY = GetCoordinateInPu(cameraY, newPuY);
-            float newCamZ = GetCoordinateInPu(cameraZ, newPuZ);
+            double newCamX = GetCoordinateInPu(cameraX, newPuX);
+            double newCamY = GetCoordinateInPu(cameraY, newPuY);
+            double newCamZ = GetCoordinateInPu(cameraZ, newPuZ);
 
             // Set new mario + camera position
             bool success = true;
-            success &= Config.Stream.SetValue(newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
-            success &= Config.Stream.SetValue(newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
-            success &= Config.Stream.SetValue(newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
+            success &= Config.Stream.SetValue((float)newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
+            success &= Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
+            success &= Config.Stream.SetValue((float)newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
             if (OptionsConfig.MoveCameraWithPu)
             {
-                success &= Config.Stream.SetValue(newCamX, CameraConfig.CameraStructAddress + CameraConfig.XOffset);
-                success &= Config.Stream.SetValue(newCamY, CameraConfig.CameraStructAddress + CameraConfig.YOffset);
-                success &= Config.Stream.SetValue(newCamZ, CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
+                success &= Config.Stream.SetValue((float)newCamX, CameraConfig.CameraStructAddress + CameraConfig.XOffset);
+                success &= Config.Stream.SetValue((float)newCamY, CameraConfig.CameraStructAddress + CameraConfig.YOffset);
+                success &= Config.Stream.SetValue((float)newCamZ, CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
             }
             return success;
         }

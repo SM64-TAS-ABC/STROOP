@@ -194,37 +194,37 @@ namespace STROOP.Models
         public int PU_X
         {
             get => PuUtilities.GetPuIndex(X);
-            set => X = PuUtilities.GetCoordinateInPu(X, value);
+            set => X = (float)PuUtilities.GetCoordinateInPu(X, value);
         }
 
         public int PU_Y
         {
             get => PuUtilities.GetPuIndex(Y);
-            set => Y = PuUtilities.GetCoordinateInPu(Y, value);
+            set => Y = (float)PuUtilities.GetCoordinateInPu(Y, value);
         }
 
         public int PU_Z
         {
             get => PuUtilities.GetPuIndex(Z);
-            set => Z = PuUtilities.GetCoordinateInPu(Z, value);
+            set => Z = (float)PuUtilities.GetCoordinateInPu(Z, value);
         }
 
         public float PURelative_X
         {
-            get => PuUtilities.GetRelativeCoordinate(X);
-            set => X = PuUtilities.GetCoordinateInPu(value, PU_X);
+            get => (float)PuUtilities.GetRelativeCoordinate(X);
+            set => X = (float)PuUtilities.GetCoordinateInPu(value, PU_X);
         }
 
         public float PURelative_Y
         {
-            get => PuUtilities.GetRelativeCoordinate(Y);
-            set => Y = PuUtilities.GetCoordinateInPu(value, PU_Y);
+            get => (float)PuUtilities.GetRelativeCoordinate(Y);
+            set => Y = (float)PuUtilities.GetCoordinateInPu(value, PU_Y);
         }
 
         public float PURelative_Z
         {
-            get => PuUtilities.GetRelativeCoordinate(Z);
-            set => Z = PuUtilities.GetCoordinateInPu(value, PU_Z);
+            get => (float)PuUtilities.GetRelativeCoordinate(Z);
+            set => Z = (float)PuUtilities.GetCoordinateInPu(value, PU_Z);
         }
 
         public int QPU_X
