@@ -2508,9 +2508,9 @@ namespace STROOP.Structs
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
-                        float? newRelXNullable = ParsingUtilities.ParseFloatNullable(stringValue);
+                        double? newRelXNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!newRelXNullable.HasValue) return false;
-                        float newRelX = newRelXNullable.Value;
+                        double newRelX = newRelXNullable.Value;
 
                         float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
                         int puXIndex = PuUtilities.GetPuIndex(marioX);
@@ -2528,9 +2528,9 @@ namespace STROOP.Structs
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
-                        float? newRelYNullable = ParsingUtilities.ParseFloatNullable(stringValue);
+                        double? newRelYNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!newRelYNullable.HasValue) return false;
-                        float newRelY = newRelYNullable.Value;
+                        double newRelY = newRelYNullable.Value;
 
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
                         int puYIndex = PuUtilities.GetPuIndex(marioY);
@@ -2548,9 +2548,9 @@ namespace STROOP.Structs
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
-                        float? newRelZNullable = ParsingUtilities.ParseFloatNullable(stringValue);
+                        double? newRelZNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!newRelZNullable.HasValue) return false;
-                        float newRelZ = newRelZNullable.Value;
+                        double newRelZ = newRelZNullable.Value;
 
                         float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
                         int puZIndex = PuUtilities.GetPuIndex(marioZ);
@@ -2571,13 +2571,13 @@ namespace STROOP.Structs
                         float distAboveFloor = marioY - floorY;
                         if (distAboveFloor != 0) return false;
 
-                        float? newDeFactoMultiplierNullable = ParsingUtilities.ParseFloatNullable(stringValue);
+                        double? newDeFactoMultiplierNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!newDeFactoMultiplierNullable.HasValue) return false;
-                        float newDeFactoMultiplier = newDeFactoMultiplierNullable.Value;
+                        double newDeFactoMultiplier = newDeFactoMultiplierNullable.Value;
 
                         uint floorTri = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
                         if (floorTri == 0) return false;
-                        return Config.Stream.SetValue(newDeFactoMultiplier, floorTri + TriangleOffsetsConfig.NormY);
+                        return Config.Stream.SetValue((float)newDeFactoMultiplier, floorTri + TriangleOffsetsConfig.NormY);
                     };
                     break;
 
@@ -2593,9 +2593,9 @@ namespace STROOP.Structs
                         float distAboveFloor = marioY - floorY;
                         if (distAboveFloor != 0) return false;
 
-                        float? newSyncingSpeedNullable = ParsingUtilities.ParseFloatNullable(stringValue);
+                        double? newSyncingSpeedNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!newSyncingSpeedNullable.HasValue) return false;
-                        float newSyncingSpeed = newSyncingSpeedNullable.Value;
+                        double newSyncingSpeed = newSyncingSpeedNullable.Value;
 
                         uint floorTri = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
                         if (floorTri == 0) return false;
@@ -2611,9 +2611,9 @@ namespace STROOP.Structs
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
-                        float? newQpuSpeedNullable = ParsingUtilities.ParseFloatNullable(stringValue);
+                        double? newQpuSpeedNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!newQpuSpeedNullable.HasValue) return false;
-                        float newQpuSpeed = newQpuSpeedNullable.Value;
+                        double newQpuSpeed = newQpuSpeedNullable.Value;
                         double newHSpeed = newQpuSpeed * GetSyncingSpeed();
                         return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
                     };
@@ -2627,10 +2627,10 @@ namespace STROOP.Structs
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
-                        float? newPuSpeedNullable = ParsingUtilities.ParseFloatNullable(stringValue);
+                        double? newPuSpeedNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!newPuSpeedNullable.HasValue) return false;
-                        float newPuSpeed = newPuSpeedNullable.Value;
-                        float newQpuSpeed = newPuSpeed / 4;
+                        double newPuSpeed = newPuSpeedNullable.Value;
+                        double newQpuSpeed = newPuSpeed / 4;
                         double newHSpeed = newQpuSpeed * GetSyncingSpeed();
                         return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
                     };
@@ -2678,9 +2678,9 @@ namespace STROOP.Structs
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
-                        float? newRelativeSpeedNullable = ParsingUtilities.ParseFloatNullable(stringValue);
+                        double? newRelativeSpeedNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!newRelativeSpeedNullable.HasValue) return false;
-                        float newRelativeSpeed = newRelativeSpeedNullable.Value;
+                        double newRelativeSpeed = newRelativeSpeedNullable.Value;
 
                         double puSpeed = GetQpuSpeed() * 4;
                         double puSpeedRounded = Math.Round(puSpeed);
