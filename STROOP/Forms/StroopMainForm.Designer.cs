@@ -14179,7 +14179,7 @@ namespace STROOP
             this.comboBoxReadWriteMode.Location = new System.Drawing.Point(422, 11);
             this.comboBoxReadWriteMode.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxReadWriteMode.Name = "comboBoxReadWriteMode";
-            this.comboBoxReadWriteMode.Size = new System.Drawing.Size(139, 21);
+            this.comboBoxReadWriteMode.Size = new System.Drawing.Size(75, 21);
             this.comboBoxReadWriteMode.TabIndex = 22;
             // 
             // StroopMainForm
