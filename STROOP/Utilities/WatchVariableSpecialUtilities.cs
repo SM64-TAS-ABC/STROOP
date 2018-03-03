@@ -2726,6 +2726,72 @@ namespace STROOP.Structs
                     };
                     break;
 
+                case "RelativeIntendedNextX":
+                    getterFunction = (uint dummy) =>
+                    {
+                        (double intendedX, double intendedZ) = GetIntendedNextPosition(1);
+                        double relIntendedX = PuUtilities.GetRelativeCoordinate(intendedX);
+                        return relIntendedX.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        double? newRelativeIntendedXNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!newRelativeIntendedXNullable.HasValue) return false;
+                        double newRelativeIntendedX = newRelativeIntendedXNullable.Value;
+
+                        float currentX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                        float currentZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                        (double intendedX, double intendedZ) = GetIntendedNextPosition(1);
+                        int intendedPuXIndex = PuUtilities.GetPuIndex(intendedX);
+                        double newIntendedX = PuUtilities.GetCoordinateInPu(newRelativeIntendedX, intendedPuXIndex);
+
+                        float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                        (double newDeFactoSpeed, double newAngle) =
+                            MoreMath.GetVectorFromCoordinates(
+                                currentX, currentZ, newIntendedX, intendedZ, hSpeed >= 0);
+                        double newHSpeed = newDeFactoSpeed / GetDeFactoMultiplier();
+                        ushort newAngleRounded = MoreMath.NormalizeAngleUshort(newAngle);
+
+                        bool success = true;
+                        success &= Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                        success &= Config.Stream.SetValue(newAngleRounded, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+                        return success;
+                    };
+                    break;
+
+                case "RelativeIntendedNextZ":
+                    getterFunction = (uint dummy) =>
+                    {
+                        (double intendedX, double intendedZ) = GetIntendedNextPosition(1);
+                        double relIntendedZ = PuUtilities.GetRelativeCoordinate(intendedZ);
+                        return relIntendedZ.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        double? newRelativeIntendedZNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!newRelativeIntendedZNullable.HasValue) return false;
+                        double newRelativeIntendedZ = newRelativeIntendedZNullable.Value;
+
+                        float currentX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                        float currentZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                        (double intendedX, double intendedZ) = GetIntendedNextPosition(1);
+                        int intendedPuZIndex = PuUtilities.GetPuIndex(intendedZ);
+                        double newIntendedZ = PuUtilities.GetCoordinateInPu(newRelativeIntendedZ, intendedPuZIndex);
+
+                        float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                        (double newDeFactoSpeed, double newAngle) =
+                            MoreMath.GetVectorFromCoordinates(
+                                currentX, currentZ, intendedX, newIntendedZ, hSpeed >= 0);
+                        double newHSpeed = newDeFactoSpeed / GetDeFactoMultiplier();
+                        ushort newAngleRounded = MoreMath.NormalizeAngleUshort(newAngle);
+
+                        bool success = true;
+                        success &= Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                        success &= Config.Stream.SetValue(newAngleRounded, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+                        return success;
+                    };
+                    break;
+
                 case "RelativeZSpeed":
                     getterFunction = (uint dummy) =>
                     {
