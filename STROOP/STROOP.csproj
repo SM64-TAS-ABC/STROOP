@@ -241,6 +241,7 @@
     <Compile Include="Enums\FileType.cs" />
     <Compile Include="Enums\CoordinateSystem.cs" />
     <Compile Include="Enums\CamHackMode.cs" />
+    <Compile Include="Enums\ReadWriteMode.cs" />
     <Compile Include="Enums\RomVersion.cs" />
     <Compile Include="Enums\PositionControllerRelativity.cs" />
     <Compile Include="Enums\HatLocation.cs" />

@@ -67,7 +67,7 @@ namespace STROOP
             Config.Stream.OnClose += _sm64Stream_OnClose;
 
             comboBoxRomVersion.DataSource = Enum.GetValues(typeof(RomVersion));
-            comboBoxRomVersion.ValueMemberChanged += (senderParam, eventArgsParam) => comboBoxRomVersion.Parent.Focus();
+            comboBoxReadWriteMode.DataSource = Enum.GetValues(typeof(ReadWriteMode));
 
             Config.StroopMainForm = this;
 
@@ -291,6 +291,8 @@ namespace STROOP
             Invoke(new Action(() =>
             {
                 Config.Version = (RomVersion)comboBoxRomVersion.SelectedItem;
+                Config.Stream.Readonly = (ReadWriteMode)comboBoxReadWriteMode.SelectedItem == ReadWriteMode.ReadOnly;
+
                 DataModels.Update();
                 Config.ObjectSlotsManager.Update();
                 Config.ObjectManager.Update(tabControlMain.SelectedTab == tabPageObjects);
