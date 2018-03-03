@@ -2689,146 +2689,6 @@ namespace STROOP.Structs
                     };
                     break;
 
-                case "RelativeXSpeed":
-                    getterFunction = (uint dummy) =>
-                    {
-                        float currentX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-                        double relCurrentX = PuUtilities.GetRelativeCoordinate(currentX);
-                        (double intendedX, double intendedZ) = GetIntendedNextPosition(1);
-                        double relIntendedX = PuUtilities.GetRelativeCoordinate(intendedX);
-                        double xDiff = relIntendedX - relCurrentX;
-                        return xDiff.ToString();
-                    };
-                    setterFunction = (string stringValue, uint dummy) =>
-                    {
-                        double? newRelativeXSpeedNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!newRelativeXSpeedNullable.HasValue) return false;
-                        double newRelativeXSpeed = newRelativeXSpeedNullable.Value;
-
-                        float currentX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-                        float currentZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-                        (double intendedX, double intendedZ) = GetIntendedNextPosition(1);
-                        int intendedPuXIndex = PuUtilities.GetPuIndex(intendedX);
-                        double newRelativeX = currentX + newRelativeXSpeed;
-                        double newIntendedX = PuUtilities.GetCoordinateInPu(newRelativeX, intendedPuXIndex);
-
-                        float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-                        (double newDeFactoSpeed, double newAngle) =
-                            MoreMath.GetVectorFromCoordinates(
-                                currentX, currentZ, newIntendedX, intendedZ, hSpeed >= 0);
-                        double newHSpeed = newDeFactoSpeed / GetDeFactoMultiplier();
-                        ushort newAngleRounded = MoreMath.NormalizeAngleUshort(newAngle);
-
-                        bool success = true;
-                        success &= Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-                        success &= Config.Stream.SetValue(newAngleRounded, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
-                        return success;
-                    };
-                    break;
-
-                case "RelativeIntendedNextX":
-                    getterFunction = (uint dummy) =>
-                    {
-                        (double intendedX, double intendedZ) = GetIntendedNextPosition(1);
-                        double relIntendedX = PuUtilities.GetRelativeCoordinate(intendedX);
-                        return relIntendedX.ToString();
-                    };
-                    setterFunction = (string stringValue, uint dummy) =>
-                    {
-                        double? newRelativeIntendedXNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!newRelativeIntendedXNullable.HasValue) return false;
-                        double newRelativeIntendedX = newRelativeIntendedXNullable.Value;
-
-                        float currentX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-                        float currentZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-                        (double intendedX, double intendedZ) = GetIntendedNextPosition(1);
-                        int intendedPuXIndex = PuUtilities.GetPuIndex(intendedX);
-                        double newIntendedX = PuUtilities.GetCoordinateInPu(newRelativeIntendedX, intendedPuXIndex);
-
-                        float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-                        (double newDeFactoSpeed, double newAngle) =
-                            MoreMath.GetVectorFromCoordinates(
-                                currentX, currentZ, newIntendedX, intendedZ, hSpeed >= 0);
-                        double newHSpeed = newDeFactoSpeed / GetDeFactoMultiplier();
-                        ushort newAngleRounded = MoreMath.NormalizeAngleUshort(newAngle);
-
-                        bool success = true;
-                        success &= Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-                        success &= Config.Stream.SetValue(newAngleRounded, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
-                        return success;
-                    };
-                    break;
-
-                case "RelativeIntendedNextZ":
-                    getterFunction = (uint dummy) =>
-                    {
-                        (double intendedX, double intendedZ) = GetIntendedNextPosition(1);
-                        double relIntendedZ = PuUtilities.GetRelativeCoordinate(intendedZ);
-                        return relIntendedZ.ToString();
-                    };
-                    setterFunction = (string stringValue, uint dummy) =>
-                    {
-                        double? newRelativeIntendedZNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!newRelativeIntendedZNullable.HasValue) return false;
-                        double newRelativeIntendedZ = newRelativeIntendedZNullable.Value;
-
-                        float currentX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-                        float currentZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-                        (double intendedX, double intendedZ) = GetIntendedNextPosition(1);
-                        int intendedPuZIndex = PuUtilities.GetPuIndex(intendedZ);
-                        double newIntendedZ = PuUtilities.GetCoordinateInPu(newRelativeIntendedZ, intendedPuZIndex);
-
-                        float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-                        (double newDeFactoSpeed, double newAngle) =
-                            MoreMath.GetVectorFromCoordinates(
-                                currentX, currentZ, intendedX, newIntendedZ, hSpeed >= 0);
-                        double newHSpeed = newDeFactoSpeed / GetDeFactoMultiplier();
-                        ushort newAngleRounded = MoreMath.NormalizeAngleUshort(newAngle);
-
-                        bool success = true;
-                        success &= Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-                        success &= Config.Stream.SetValue(newAngleRounded, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
-                        return success;
-                    };
-                    break;
-
-                case "RelativeZSpeed":
-                    getterFunction = (uint dummy) =>
-                    {
-                        float currentZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-                        double relCurrentZ = PuUtilities.GetRelativeCoordinate(currentZ);
-                        (double intendedX, double intendedZ) = GetIntendedNextPosition(1);
-                        double relIntendedZ = PuUtilities.GetRelativeCoordinate(intendedZ);
-                        double zDiff = relIntendedZ - relCurrentZ;
-                        return zDiff.ToString();
-                    };
-                    setterFunction = (string stringValue, uint dummy) =>
-                    {
-                        double? newRelativeZSpeedNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!newRelativeZSpeedNullable.HasValue) return false;
-                        double newRelativeZSpeed = newRelativeZSpeedNullable.Value;
-
-                        float currentX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-                        float currentZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-                        (double intendedX, double intendedZ) = GetIntendedNextPosition(1);
-                        int intendedPuZIndex = PuUtilities.GetPuIndex(intendedZ);
-                        double newRelativeZ = currentZ + newRelativeZSpeed;
-                        double newIntendedZ = PuUtilities.GetCoordinateInPu(newRelativeZ, intendedPuZIndex);
-
-                        float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-                        (double newDeFactoSpeed, double newAngle) =
-                            MoreMath.GetVectorFromCoordinates(
-                                currentX, currentZ, intendedX, newIntendedZ, hSpeed >= 0);
-                        double newHSpeed = newDeFactoSpeed / GetDeFactoMultiplier();
-                        ushort newAngleRounded = MoreMath.NormalizeAngleUshort(newAngle);
-
-                        bool success = true;
-                        success &= Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-                        success &= Config.Stream.SetValue(newAngleRounded, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
-                        return success;
-                    };
-                    break;
-
                 case "Qs1RelativeXSpeed":
                     getterFunction = (uint dummy) =>
                     {
@@ -2870,6 +2730,138 @@ namespace STROOP.Structs
                     setterFunction = (string stringValue, uint dummy) =>
                     {
                         return GetQsRelativeIntendedNextComponent(stringValue, 1 / 4d, false, false);
+                    };
+                    break;
+
+                case "Qs2RelativeXSpeed":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return GetQsRelativeSpeed(2 / 4d, true).ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return GetQsRelativeIntendedNextComponent(stringValue, 2 / 4d, true, true);
+                    };
+                    break;
+
+                case "Qs2RelativeZSpeed":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return GetQsRelativeSpeed(2 / 4d, false).ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return GetQsRelativeIntendedNextComponent(stringValue, 2 / 4d, false, true);
+                    };
+                    break;
+
+                case "Qs2RelativeIntendedNextX":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return GetQsRelativeIntendedNextComponent(2 / 4d, true).ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return GetQsRelativeIntendedNextComponent(stringValue, 2 / 4d, true, false);
+                    };
+                    break;
+
+                case "Qs2RelativeIntendedNextZ":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return GetQsRelativeIntendedNextComponent(2 / 4d, false).ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return GetQsRelativeIntendedNextComponent(stringValue, 2 / 4d, false, false);
+                    };
+                    break;
+
+                case "Qs3RelativeXSpeed":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return GetQsRelativeSpeed(3 / 4d, true).ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return GetQsRelativeIntendedNextComponent(stringValue, 3 / 4d, true, true);
+                    };
+                    break;
+
+                case "Qs3RelativeZSpeed":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return GetQsRelativeSpeed(3 / 4d, false).ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return GetQsRelativeIntendedNextComponent(stringValue, 3 / 4d, false, true);
+                    };
+                    break;
+
+                case "Qs3RelativeIntendedNextX":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return GetQsRelativeIntendedNextComponent(3 / 4d, true).ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return GetQsRelativeIntendedNextComponent(stringValue, 3 / 4d, true, false);
+                    };
+                    break;
+
+                case "Qs3RelativeIntendedNextZ":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return GetQsRelativeIntendedNextComponent(3 / 4d, false).ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return GetQsRelativeIntendedNextComponent(stringValue, 3 / 4d, false, false);
+                    };
+                    break;
+
+                case "Qs4RelativeXSpeed":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return GetQsRelativeSpeed(4 / 4d, true).ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return GetQsRelativeIntendedNextComponent(stringValue, 4 / 4d, true, true);
+                    };
+                    break;
+
+                case "Qs4RelativeZSpeed":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return GetQsRelativeSpeed(4 / 4d, false).ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return GetQsRelativeIntendedNextComponent(stringValue, 4 / 4d, false, true);
+                    };
+                    break;
+
+                case "Qs4RelativeIntendedNextX":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return GetQsRelativeIntendedNextComponent(4 / 4d, true).ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return GetQsRelativeIntendedNextComponent(stringValue, 4 / 4d, true, false);
+                    };
+                    break;
+
+                case "Qs4RelativeIntendedNextZ":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return GetQsRelativeIntendedNextComponent(4 / 4d, false).ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return GetQsRelativeIntendedNextComponent(stringValue, 4 / 4d, false, false);
                     };
                     break;
 
