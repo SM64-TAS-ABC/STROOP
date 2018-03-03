@@ -38,6 +38,8 @@
   <Data groupList="Intermediate" type="short" offset="0x32" base="Mario" subclass="Angle">Flying Pull Back</Data>
   <Data groupList="Advanced" type="short" offset="0x1602" base="Mario" subclass="Angle">First Person Yaw</Data>
   <Data groupList="Advanced" type="short" offset="0x1600" base="Mario" subclass="Angle">First Person Pitch</Data>
+  <Data groupList="Advanced" type="short" offset="0x8033C538" base="Relative" subclass="Angle">First Person Yaw 2</Data>
+  <Data groupList="Advanced" type="short" offset="0x8033C536" base="Relative" subclass="Angle">First Person Pitch 2</Data>
   <Data groupList="Intermediate" type="uint" offset="0x78" base="Mario" subclass="Object">Interaction Object</Data>
   <Data groupList="Intermediate" type="uint" offset="0x80" base="Mario" subclass="Object">Used Object</Data>
   <Data groupList="Basic" type="uint" offsetUS="0x80330E34" offsetJP="0x8032FED4" base="Relative" subclass="Object">Stood On Object</Data>
