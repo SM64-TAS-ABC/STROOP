@@ -101,7 +101,9 @@ namespace STROOP.Controls
 
         public void EnableCoordinateContextMenuStripItemFunctionality(List<WatchVariableNumberWrapper> coordinateVarList)
         {
-            if (coordinateVarList.Count != 3) throw new ArgumentOutOfRangeException();
+            int coordinateCount = coordinateVarList.Count;
+            if (coordinateCount != 2 && coordinateCount != 3)
+                throw new ArgumentOutOfRangeException();
 
             Action<string> copyCoordinatesWithSeparator = (string separator) =>
             {
@@ -126,13 +128,14 @@ namespace STROOP.Controls
             _itemPasteCoordinates.Click += (sender, e) =>
             {
                 List<string> stringList = ParsingUtilities.ParseStringList(Clipboard.GetText());
-                if (stringList.Count < 3) return;
+                int stringCount = stringList.Count;
+                if (stringCount != 2 && stringCount != 3) return;
 
                 Config.Stream.Suspend();
-                for (int i = 0; i < 3; i++)
-                {
-                    coordinateVarList[i]._watchVarControl.SetValue(stringList[i]);
-                }
+                coordinateVarList[0]._watchVarControl.SetValue(stringList[0]);
+                if (coordinateCount == 3 && stringCount == 3)
+                    coordinateVarList[1]._watchVarControl.SetValue(stringList[1]);
+                coordinateVarList[coordinateCount - 1]._watchVarControl.SetValue(stringList[stringCount - 1]);
                 Config.Stream.Resume();
             };
 

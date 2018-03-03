@@ -16,8 +16,8 @@
   <Data groupList="Basic" base="None" specialType="PuSpeedComponent" color="#ccfffa">PU Speed Comp</Data>
   <Data groupList="Basic" base="None" specialType="RelativeSpeed" color="#ccfffa">Relative Speed</Data>
   
-  <Data groupList="Basic" base="None" specialType="RelativeXSpeed" color="#ccd0ff">Relative X Speed</Data>
-  <Data groupList="Basic" base="None" specialType="RelativeZSpeed" color="#ccd0ff">Relative Z Speed</Data>
+  <Data groupList="Basic" base="None" specialType="RelativeXSpeed" color="#ccd0ff" coord="X">Relative X Speed</Data>
+  <Data groupList="Basic" base="None" specialType="RelativeZSpeed" color="#ccd0ff" coord="Z">Relative Z Speed</Data>
 
   <Data groupList="Basic" type="ushort" offset="0x2E" base="Mario" subclass="Angle" color="#ffcccc">Yaw Facing</Data>
   <Data groupList="Basic" type="ushort" offset="0x24" base="Mario" subclass="Angle" color="#ffcccc">Yaw Intended</Data>
