@@ -2836,7 +2836,7 @@ namespace STROOP.Structs
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
-                        return SetQsRelativePosition(stringValue, 1 / 4d, true, true);
+                        return GetQsRelativeIntendedNextComponent(stringValue, 1 / 4d, true, true);
                     };
                     break;
 
@@ -2847,7 +2847,7 @@ namespace STROOP.Structs
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
-                        return SetQsRelativePosition(stringValue, 1 / 4d, false, true);
+                        return GetQsRelativeIntendedNextComponent(stringValue, 1 / 4d, false, true);
                     };
                     break;
 
@@ -2858,7 +2858,7 @@ namespace STROOP.Structs
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
-                        return SetQsRelativePosition(stringValue, 1 / 4d, true, false);
+                        return GetQsRelativeIntendedNextComponent(stringValue, 1 / 4d, true, false);
                     };
                     break;
 
@@ -2869,7 +2869,7 @@ namespace STROOP.Structs
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
-                        return SetQsRelativePosition(stringValue, 1 / 4d, false, false);
+                        return GetQsRelativeIntendedNextComponent(stringValue, 1 / 4d, false, false);
                     };
                     break;
 
@@ -3345,37 +3345,7 @@ namespace STROOP.Structs
             double compDiff = relIntendedComp - relCurrentComp;
             return compDiff;
         }
-
-        private static bool SetQsRelativeSpeed(string stringValue, double numFrames, bool xComp)
-        {
-            double? newRelativeCompSpeedNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-            if (!newRelativeCompSpeedNullable.HasValue) return false;
-            double newRelativeCompSpeed = newRelativeCompSpeedNullable.Value;
-
-            float currentX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float currentZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-            float currentComp = xComp ? currentX : currentZ;
-            (double intendedX, double intendedZ) = GetIntendedNextPosition(numFrames);
-            double intendedComp = xComp ? intendedX : intendedZ;
-            int intendedPuCompIndex = PuUtilities.GetPuIndex(intendedComp);
-            double newRelativeComp = currentComp + newRelativeCompSpeed;
-            double newIntendedComp = PuUtilities.GetCoordinateInPu(newRelativeComp, intendedPuCompIndex);
-
-            float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-            double intendedXComp = xComp ? newIntendedComp : intendedX;
-            double intendedZComp = xComp ? intendedZ : newIntendedComp;
-            (double newDeFactoSpeed, double newAngle) =
-                MoreMath.GetVectorFromCoordinates(
-                    currentX, currentZ, intendedXComp, intendedZComp, hSpeed >= 0);
-            double newHSpeed = newDeFactoSpeed / GetDeFactoMultiplier() / numFrames;
-            ushort newAngleRounded = MoreMath.NormalizeAngleUshort(newAngle);
-
-            bool success = true;
-            success &= Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-            success &= Config.Stream.SetValue(newAngleRounded, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
-            return success;
-        }
-
+        
         private static double GetQsRelativeIntendedNextComponent(double numFrames, bool xComp)
         {
             (double intendedX, double intendedZ) = GetIntendedNextPosition(numFrames);
@@ -3383,37 +3353,8 @@ namespace STROOP.Structs
             double relIntendedComp = PuUtilities.GetRelativeCoordinate(intendedComp);
             return relIntendedComp;
         }
-
-        private static bool SetQsRelativeIntendedNextComponent(string stringValue, double numFrames, bool xComp)
-        {
-            double? newRelativeIntendedCompNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-            if (!newRelativeIntendedCompNullable.HasValue) return false;
-            double newRelativeIntendedComp = newRelativeIntendedCompNullable.Value;
-
-            float currentX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float currentZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-            double currentComp = xComp ? currentX : currentZ;
-            (double intendedX, double intendedZ) = GetIntendedNextPosition(numFrames);
-            double intendedComp = xComp ? intendedX : intendedZ;
-            int intendedPuCompIndex = PuUtilities.GetPuIndex(intendedComp);
-            double newIntendedComp = PuUtilities.GetCoordinateInPu(newRelativeIntendedComp, intendedPuCompIndex);
-
-            float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-            double intendedXComp = xComp ? newIntendedComp : intendedX;
-            double intendedZComp = xComp ? intendedZ : newIntendedComp;
-            (double newDeFactoSpeed, double newAngle) =
-                MoreMath.GetVectorFromCoordinates(
-                    currentX, currentZ, intendedXComp, intendedZComp, hSpeed >= 0);
-            double newHSpeed = newDeFactoSpeed / GetDeFactoMultiplier() / numFrames;
-            ushort newAngleRounded = MoreMath.NormalizeAngleUshort(newAngle);
-
-            bool success = true;
-            success &= Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-            success &= Config.Stream.SetValue(newAngleRounded, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
-            return success;
-        }
-
-        private static bool SetQsRelativePosition(string stringValue, double numFrames, bool xComp, bool relativePosition)
+        
+        private static bool GetQsRelativeIntendedNextComponent(string stringValue, double numFrames, bool xComp, bool relativePosition)
         {
             double? newInputNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
             if (!newInputNullable.HasValue) return false;
