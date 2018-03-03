@@ -172,7 +172,6 @@ namespace STROOP
                     case DialogResult.Yes:
                         Config.Stream.Readonly = false;
                         Config.Stream.ShowWarning = false;
-                        buttonReadOnly.Text = "Switch to Read-Only";
                         break;
 
                     case DialogResult.No:
@@ -519,13 +518,6 @@ namespace STROOP
                 selectedTabSplitContainer.Panel1Collapsed = false;
                 selectedTabSplitContainer.Panel2Collapsed = false;
             }
-        }
-
-        private void buttonReadOnly_Click(object sender, EventArgs e)
-        {
-            Config.Stream.Readonly = !Config.Stream.Readonly;
-            buttonReadOnly.Text = Config.Stream.Readonly ? "Switch to Read-Write" : "Switch to Read-Only";
-            Config.Stream.ShowWarning = false;
         }
 
         private void StroopMainForm_Resize(object sender, EventArgs e)

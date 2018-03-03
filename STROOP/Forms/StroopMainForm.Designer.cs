@@ -45,7 +45,6 @@ namespace STROOP
             this.labelFpsCounter = new System.Windows.Forms.Label();
             this.buttonShowTopPane = new System.Windows.Forms.Button();
             this.buttonShowTopBottomPane = new System.Windows.Forms.Button();
-            this.buttonReadOnly = new System.Windows.Forms.Button();
             this.buttonShowBottomPane = new System.Windows.Forms.Button();
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
@@ -1568,19 +1567,6 @@ namespace STROOP
             this.buttonShowTopBottomPane.TabIndex = 20;
             this.buttonShowTopBottomPane.UseVisualStyleBackColor = true;
             this.buttonShowTopBottomPane.Click += new System.EventHandler(this.buttonShowTopBottomPanel_Click);
-            // 
-            // buttonReadOnly
-            // 
-            this.buttonReadOnly.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonReadOnly.Location = new System.Drawing.Point(611, 11);
-            this.buttonReadOnly.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonReadOnly.Name = "buttonReadOnly";
-            this.buttonReadOnly.Size = new System.Drawing.Size(126, 21);
-            this.buttonReadOnly.TabIndex = 21;
-            this.buttonReadOnly.Tag = "";
-            this.buttonReadOnly.Text = "Switch to Read-Only";
-            this.buttonReadOnly.UseVisualStyleBackColor = true;
-            this.buttonReadOnly.Click += new System.EventHandler(this.buttonReadOnly_Click);
             // 
             // buttonShowBottomPane
             // 
@@ -14210,7 +14196,6 @@ namespace STROOP
             this.Controls.Add(this.buttonShowRightPane);
             this.Controls.Add(this.buttonShowLeftRightPane);
             this.Controls.Add(this.buttonShowLeftPane);
-            this.Controls.Add(this.buttonReadOnly);
             this.Controls.Add(this.buttonDisconnect);
             this.Controls.Add(this.labelVersionNumber);
             this.Controls.Add(this.splitContainerMain);
@@ -14774,7 +14759,6 @@ namespace STROOP
         private BetterTextbox textBoxSpawnGfxId;
         private Label labelSpawnHint;
         private Button buttonSpawnReset;
-        private Button buttonReadOnly;
         private Button buttonDisMore;
         private Button buttonMarioToggleHandsfree;
         private Button buttonMarioVisibility;
