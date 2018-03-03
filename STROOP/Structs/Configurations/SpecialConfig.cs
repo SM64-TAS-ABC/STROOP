@@ -9,9 +9,9 @@ namespace STROOP.Structs.Configurations
 {
     public static class SpecialConfig
     {
-        public static double CustomPointX = 0;
-        public static double CustomPointY = 0;
-        public static double CustomPointZ = 0;
+        public static double PointX = 0;
+        public static double PointY = 0;
+        public static double PointZ = 0;
 
         public static int PuParam1 = 0;
         public static int PuParam2 = 1;

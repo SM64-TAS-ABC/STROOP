@@ -2975,51 +2975,211 @@ namespace STROOP.Structs
 
                 // Custom point
 
-                case "CustomPointX":
+                case "PointX":
                     getterFunction = (uint dummy) =>
                     {
-                        return SpecialConfig.CustomPointX.ToString();
+                        return SpecialConfig.PointX.ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
                         double? newValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!newValueNullable.HasValue) return false;
                         double newValue = newValueNullable.Value;
-                        SpecialConfig.CustomPointX = newValue;
+                        SpecialConfig.PointX = newValue;
                         return true;
                     };
                     break;
 
-                case "CustomPointY":
+                case "PointY":
                     getterFunction = (uint dummy) =>
                     {
-                        return SpecialConfig.CustomPointY.ToString();
+                        return SpecialConfig.PointY.ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
                         double? newValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!newValueNullable.HasValue) return false;
                         double newValue = newValueNullable.Value;
-                        SpecialConfig.CustomPointY = newValue;
+                        SpecialConfig.PointY = newValue;
                         return true;
                     };
                     break;
 
-                case "CustomPointZ":
+                case "PointZ":
                     getterFunction = (uint dummy) =>
                     {
-                        return SpecialConfig.CustomPointZ.ToString();
+                        return SpecialConfig.PointZ.ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
                         double? newValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
                         if (!newValueNullable.HasValue) return false;
                         double newValue = newValueNullable.Value;
-                        SpecialConfig.CustomPointZ = newValue;
+                        SpecialConfig.PointZ = newValue;
                         return true;
                     };
                     break;
 
+                case "XDistanceToPoint":
+                    getterFunction = (uint dummy) =>
+                    {
+                        float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                        double xDistToV1 = marioX - SpecialConfig.PointX;
+                        return xDistToV1.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        double? xDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!xDistNullable.HasValue) return false;
+                        double xDist = xDistNullable.Value;
+                        double newMarioX = SpecialConfig.PointX + xDist;
+                        return Config.Stream.SetValue((float)newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
+                    };
+                    break;
+
+                case "YDistanceToPoint":
+                    getterFunction = (uint dummy) =>
+                    {
+                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                        double yDistToV1 = marioY - SpecialConfig.PointY;
+                        return yDistToV1.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        double? yDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!yDistNullable.HasValue) return false;
+                        double yDist = yDistNullable.Value;
+                        double newMarioY = SpecialConfig.PointY + yDist;
+                        return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
+                    };
+                    break;
+
+                case "ZDistanceToPoint":
+                    getterFunction = (uint dummy) =>
+                    {
+                        float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                        double zDistToV1 = marioZ - SpecialConfig.PointZ;
+                        return zDistToV1.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        double? zDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!zDistNullable.HasValue) return false;
+                        double zDist = zDistNullable.Value;
+                        double newMarioZ = SpecialConfig.PointZ + zDist;
+                        return Config.Stream.SetValue((float)newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
+                    };
+                    break;
+
+                case "HDistanceToPoint":
+                    getterFunction = (uint dummy) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        double hDistToV1 = MoreMath.GetDistanceBetween(
+                            marioPos.X, marioPos.Z, SpecialConfig.PointX, SpecialConfig.PointZ);
+                        return hDistToV1.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        double? hDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!hDistNullable.HasValue) return false;
+                        double hDist = hDistNullable.Value;
+                        (double newMarioX, double newMarioZ) =
+                            MoreMath.ExtrapolateLineHorizontally(
+                                SpecialConfig.PointX, SpecialConfig.PointZ, marioPos.X, marioPos.Z, hDist);
+                        return SetMarioPosition(newMarioX, null, newMarioZ);
+                    };
+                    break;
+
+                case "DistanceToPoint":
+                    getterFunction = (uint dummy) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        double distToV1 = MoreMath.GetDistanceBetween(
+                            marioPos.X, marioPos.Y, marioPos.Z,
+                            SpecialConfig.PointX, SpecialConfig.PointY, SpecialConfig.PointZ);
+                        return distToV1.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!distAwayNullable.HasValue) return false;
+                        double distAway = distAwayNullable.Value;
+                        (double newMarioX, double newMarioY, double newMarioZ) =
+                            MoreMath.ExtrapolateLine3D(
+                                SpecialConfig.PointX, SpecialConfig.PointY, SpecialConfig.PointZ,
+                                marioPos.X, marioPos.Y, marioPos.Z, distAway);
+                        return SetMarioPosition(newMarioX, newMarioY, newMarioZ);
+                    };
+                    break;
+
+                case "AngleMarioToPoint":
+                    getterFunction = (uint dummy) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        double angleToV1 = MoreMath.AngleTo_AngleUnits(
+                            marioPos.X, marioPos.Z, SpecialConfig.PointX, SpecialConfig.PointZ);
+                        return angleToV1.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleNullable.HasValue) return false;
+                        double angle = angleNullable.Value;
+                        (double newMarioX, double newMarioZ) =
+                            MoreMath.RotatePointAboutPointToAngle(
+                                marioPos.X, marioPos.Z, SpecialConfig.PointX, SpecialConfig.PointZ, angle);
+                        return SetMarioPosition(newMarioX, null, newMarioZ);
+                    };
+                    break;
+
+                case "DeltaAngleMarioToPoint":
+                    getterFunction = (uint dummy) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        double angleToV1 = MoreMath.AngleTo_AngleUnits(
+                            marioPos.X, marioPos.Z, SpecialConfig.PointX, SpecialConfig.PointZ);
+                        double angleDiff = marioPos.Angle.Value - angleToV1;
+                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleDiffNullable.HasValue) return false;
+                        double angleDiff = angleDiffNullable.Value;
+                        double angleToVertex = MoreMath.AngleTo_AngleUnits(
+                            marioPos.X, marioPos.Z, SpecialConfig.PointX, SpecialConfig.PointZ);
+                        double newMarioAngleDouble = angleToVertex + angleDiff;
+                        ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                        return Config.Stream.SetValue(
+                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+                    };
+                    break;
+
+                case "AnglePointToMario":
+                    getterFunction = (uint dummy) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        double angleV1ToMario = MoreMath.AngleTo_AngleUnits(
+                            SpecialConfig.PointX, SpecialConfig.PointZ, marioPos.X, marioPos.Z);
+                        return angleV1ToMario.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleNullable.HasValue) return false;
+                        double angle = MoreMath.ReverseAngle(angleNullable.Value);
+                        (double newMarioX, double newMarioZ) =
+                            MoreMath.RotatePointAboutPointToAngle(
+                                marioPos.X, marioPos.Z, SpecialConfig.PointX, SpecialConfig.PointZ, angle);
+                        return SetMarioPosition(newMarioX, null, newMarioZ);
+                    };
+                    break;
 
                 default:
                     break;
