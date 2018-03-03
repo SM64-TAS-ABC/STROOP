@@ -1475,7 +1475,7 @@ namespace STROOP
             this.panelConnect.Controls.Add(this.labelNotConnected);
             this.panelConnect.Controls.Add(this.buttonConnect);
             this.panelConnect.Controls.Add(this.listBoxProcessesList);
-            this.panelConnect.Location = new System.Drawing.Point(246, 67);
+            this.panelConnect.Location = new System.Drawing.Point(246, 11);
             this.panelConnect.Name = "panelConnect";
             this.panelConnect.Size = new System.Drawing.Size(441, 20);
             this.panelConnect.TabIndex = 17;
@@ -9962,7 +9962,7 @@ namespace STROOP
             // 
             this.comboBoxRomVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxRomVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxRomVersion.Location = new System.Drawing.Point(565, 11);
+            this.comboBoxRomVersion.Location = new System.Drawing.Point(616, 11);
             this.comboBoxRomVersion.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxRomVersion.Name = "comboBoxRomVersion";
             this.comboBoxRomVersion.Size = new System.Drawing.Size(42, 21);
@@ -14176,7 +14176,7 @@ namespace STROOP
             // 
             this.comboBoxReadWriteMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxReadWriteMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxReadWriteMode.Location = new System.Drawing.Point(422, 11);
+            this.comboBoxReadWriteMode.Location = new System.Drawing.Point(662, 11);
             this.comboBoxReadWriteMode.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxReadWriteMode.Name = "comboBoxReadWriteMode";
             this.comboBoxReadWriteMode.Size = new System.Drawing.Size(75, 21);
