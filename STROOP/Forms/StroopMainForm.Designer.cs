@@ -1088,6 +1088,7 @@ namespace STROOP
             this.betterTextboxGotoY = new STROOP.BetterTextbox();
             this.betterTextboxGotoX = new STROOP.BetterTextbox();
             this.WatchVariablePanelObjects = new STROOP.Controls.WatchVariableFlowLayoutPanel();
+            this.comboBoxReadWriteMode = new System.Windows.Forms.ComboBox();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1475,7 +1476,7 @@ namespace STROOP
             this.panelConnect.Controls.Add(this.labelNotConnected);
             this.panelConnect.Controls.Add(this.buttonConnect);
             this.panelConnect.Controls.Add(this.listBoxProcessesList);
-            this.panelConnect.Location = new System.Drawing.Point(246, 11);
+            this.panelConnect.Location = new System.Drawing.Point(246, 67);
             this.panelConnect.Name = "panelConnect";
             this.panelConnect.Size = new System.Drawing.Size(441, 20);
             this.panelConnect.TabIndex = 17;
@@ -14185,12 +14186,23 @@ namespace STROOP
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
+            // comboBoxReadWriteMode
+            // 
+            this.comboBoxReadWriteMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxReadWriteMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxReadWriteMode.Location = new System.Drawing.Point(422, 11);
+            this.comboBoxReadWriteMode.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxReadWriteMode.Name = "comboBoxReadWriteMode";
+            this.comboBoxReadWriteMode.Size = new System.Drawing.Size(139, 21);
+            this.comboBoxReadWriteMode.TabIndex = 22;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(947, 741);
             this.Controls.Add(this.panelConnect);
+            this.Controls.Add(this.comboBoxReadWriteMode);
             this.Controls.Add(this.comboBoxRomVersion);
             this.Controls.Add(this.buttonShowTopPane);
             this.Controls.Add(this.buttonShowTopBottomPane);
@@ -15690,6 +15702,7 @@ namespace STROOP
         private SplitContainer splitContainerPu;
         private WatchVariableFlowLayoutPanel watchVariablePanelPu;
         private ComboBox comboBoxRomVersion;
+        private ComboBox comboBoxReadWriteMode;
     }
 }
 
