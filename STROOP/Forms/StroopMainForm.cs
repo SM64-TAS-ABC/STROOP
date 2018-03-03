@@ -65,7 +65,9 @@ namespace STROOP
             Config.Stream.OnDisconnect += _sm64Stream_OnDisconnect;
             Config.Stream.WarnReadonlyOff += _sm64Stream_WarnReadonlyOff;
             Config.Stream.OnClose += _sm64Stream_OnClose;
+
             comboBoxRomVersion.DataSource = Enum.GetValues(typeof(RomVersion));
+            comboBoxRomVersion.ValueMemberChanged += (senderParam, eventArgsParam) => comboBoxRomVersion.Parent.Focus();
 
             Config.StroopMainForm = this;
 
