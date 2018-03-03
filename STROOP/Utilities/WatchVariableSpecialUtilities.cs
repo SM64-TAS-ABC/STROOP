@@ -2829,6 +2829,50 @@ namespace STROOP.Structs
                     };
                     break;
 
+                case "Qs1RelativeXSpeed":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return GetQsRelativeSpeed(1 / 4d, true).ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return SetQsRelativeSpeed(stringValue, 1 / 4d, true);
+                    };
+                    break;
+
+                case "Qs1RelativeZSpeed":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return GetQsRelativeSpeed(1 / 4d, false).ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return SetQsRelativeSpeed(stringValue, 1 / 4d, false);
+                    };
+                    break;
+
+                case "Qs1RelativeIntendedNextX":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return "";
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return false;
+                    };
+                    break;
+
+                case "Qs1RelativeIntendedNextZ":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return "";
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return false;
+                    };
+                    break;
+
                 case "PuParams":
                     getterFunction = (uint dummy) =>
                     {
@@ -3288,6 +3332,48 @@ namespace STROOP.Structs
             float currentX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
             float currentZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
             return (currentX + xDiff, currentZ + zDiff);
+        }
+
+        private static double GetQsRelativeSpeed(double numFrames, bool xComp)
+        {
+            uint compOffset = xComp ? MarioConfig.XOffset : MarioConfig.ZOffset;
+            float currentComp = Config.Stream.GetSingle(MarioConfig.StructAddress + compOffset);
+            double relCurrentComp = PuUtilities.GetRelativeCoordinate(currentComp);
+            (double intendedX, double intendedZ) = GetIntendedNextPosition(numFrames);
+            double intendedComp = xComp ? intendedX : intendedZ;
+            double relIntendedComp = PuUtilities.GetRelativeCoordinate(intendedComp);
+            double compDiff = relIntendedComp - relCurrentComp;
+            return compDiff;
+        }
+
+        private static bool SetQsRelativeSpeed(string stringValue, double numFrames, bool xComp)
+        {
+            double? newRelativeCompSpeedNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+            if (!newRelativeCompSpeedNullable.HasValue) return false;
+            double newRelativeCompSpeed = newRelativeCompSpeedNullable.Value;
+
+            float currentX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float currentZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float currentComp = xComp ? currentX : currentZ;
+            (double intendedX, double intendedZ) = GetIntendedNextPosition(numFrames);
+            double intendedComp = xComp ? intendedX : intendedZ;
+            int intendedPuCompIndex = PuUtilities.GetPuIndex(intendedComp);
+            double newRelativeComp = currentComp + newRelativeCompSpeed;
+            double newIntendedComp = PuUtilities.GetCoordinateInPu(newRelativeComp, intendedPuCompIndex);
+
+            float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+            double intendedXComp = xComp ? newIntendedComp : intendedX;
+            double intendedZComp = xComp ? intendedZ : newIntendedComp;
+            (double newDeFactoSpeed, double newAngle) =
+                MoreMath.GetVectorFromCoordinates(
+                    currentX, currentZ, intendedXComp, intendedZComp, hSpeed >= 0);
+            double newHSpeed = newDeFactoSpeed / GetDeFactoMultiplier() / numFrames;
+            ushort newAngleRounded = MoreMath.NormalizeAngleUshort(newAngle);
+
+            bool success = true;
+            success &= Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+            success &= Config.Stream.SetValue(newAngleRounded, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+            return success;
         }
 
         // Angle methods
