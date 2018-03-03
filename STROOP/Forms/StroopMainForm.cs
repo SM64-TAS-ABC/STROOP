@@ -65,6 +65,7 @@ namespace STROOP
             Config.Stream.OnDisconnect += _sm64Stream_OnDisconnect;
             Config.Stream.WarnReadonlyOff += _sm64Stream_WarnReadonlyOff;
             Config.Stream.OnClose += _sm64Stream_OnClose;
+            comboBoxRomVersion.DataSource = Enum.GetValues(typeof(RomVersion));
 
             Config.StroopMainForm = this;
 
@@ -287,8 +288,8 @@ namespace STROOP
         {
             Invoke(new Action(() =>
             {
+                Config.Version = (RomVersion)comboBoxRomVersion.SelectedItem;
                 DataModels.Update();
-
                 Config.ObjectSlotsManager.Update();
                 Config.ObjectManager.Update(tabControlMain.SelectedTab == tabPageObjects);
                 Config.MarioManager.Update(tabControlMain.SelectedTab == tabPageMario);
