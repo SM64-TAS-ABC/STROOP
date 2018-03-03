@@ -2379,6 +2379,69 @@ namespace STROOP.Structs
 
                 // PU vars
 
+                case "MarioXQpuIndex":
+                    getterFunction = (uint dummy) =>
+                    {
+                        float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                        int puXIndex = PuUtilities.GetPuIndex(marioX);
+                        double qpuXIndex = puXIndex / 4d;
+                        return qpuXIndex.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        double? newQpuXIndexNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!newQpuXIndexNullable.HasValue) return false;
+                        double newQpuXIndex = newQpuXIndexNullable.Value;
+                        int newPuXIndex = (int)Math.Round(newQpuXIndex * 4);
+                        
+                        float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                        double newMarioX = PuUtilities.GetCoordinateInPu(marioX, newPuXIndex);
+                        return Config.Stream.SetValue((float)newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
+                    };
+                    break;
+
+                case "MarioYQpuIndex":
+                    getterFunction = (uint dummy) =>
+                    {
+                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                        int puYIndex = PuUtilities.GetPuIndex(marioY);
+                        double qpuYIndex = puYIndex / 4d;
+                        return qpuYIndex.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        double? newQpuYIndexNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!newQpuYIndexNullable.HasValue) return false;
+                        double newQpuYIndex = newQpuYIndexNullable.Value;
+                        int newPuYIndex = (int)Math.Round(newQpuYIndex * 4);
+
+                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                        double newMarioY = PuUtilities.GetCoordinateInPu(marioY, newPuYIndex);
+                        return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
+                    };
+                    break;
+
+                case "MarioZQpuIndex":
+                    getterFunction = (uint dummy) =>
+                    {
+                        float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                        int puZIndex = PuUtilities.GetPuIndex(marioZ);
+                        double qpuZIndex = puZIndex / 4d;
+                        return qpuZIndex.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        double? newQpuZIndexNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!newQpuZIndexNullable.HasValue) return false;
+                        double newQpuZIndex = newQpuZIndexNullable.Value;
+                        int newPuZIndex = (int)Math.Round(newQpuZIndex * 4);
+
+                        float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                        double newMarioZ = PuUtilities.GetCoordinateInPu(marioZ, newPuZIndex);
+                        return Config.Stream.SetValue((float)newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
+                    };
+                    break;
+
                 case "MarioXPuIndex":
                     getterFunction = (uint dummy) =>
                     {
