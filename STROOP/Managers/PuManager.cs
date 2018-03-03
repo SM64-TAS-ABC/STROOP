@@ -1,4 +1,5 @@
 ﻿using STROOP.Controls;
+using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System;
@@ -14,8 +15,24 @@ namespace STROOP.Managers
     {
         GroupBox _puController;
 
+        private static readonly List<VariableGroup> ALL_VAR_GROUPS =
+            new List<VariableGroup>()
+            {
+                VariableGroup.Basic,
+                VariableGroup.Intermediate,
+                VariableGroup.Advanced,
+            };
+
+        private static readonly List<VariableGroup> VISIBLE_VAR_GROUPS =
+            new List<VariableGroup>()
+            {
+                VariableGroup.Basic,
+                VariableGroup.Intermediate,
+                VariableGroup.Advanced,
+            };
+
         public PuManager(List<WatchVariableControlPrecursor> variables, TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel)
-            : base(variables, watchVariablePanel)
+            : base(variables, watchVariablePanel, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
         {
             SplitContainer splitContainerFile = tabControl.Controls["splitContainerPu"] as SplitContainer;
 
