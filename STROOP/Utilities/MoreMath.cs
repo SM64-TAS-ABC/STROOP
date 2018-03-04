@@ -605,7 +605,7 @@ namespace STROOP.Utilities
 
         private static ushort InGameATan45Degrees(float f12, float f14)
         {
-            return (ushort)(0x4000 * (float)Math.Atan((int)(f14 / f12 * 1024) / 1024f) / (float)Math.PI);
+            return (ushort)(0x4000 * (float)Math.Atan((int)(f12 / f14 * 1024) / 1024f) / (float)Math.PI);
         }
 
 
