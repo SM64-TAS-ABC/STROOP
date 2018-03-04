@@ -472,6 +472,8 @@ namespace STROOP
                 selectedTabSplitContainer = selectedTabPage.Controls["splitContainerCustom"] as SplitContainer;
             else if (selectedTabPage == tabPageVarHack)
                 selectedTabSplitContainer = selectedTabPage.Controls["splitContainerVarHack"] as SplitContainer;
+            else if (selectedTabPage == tabPagePu)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerPu"] as SplitContainer;
             else if (selectedTabPage == tabPageMisc)
                 selectedTabSplitContainer = selectedTabPage.Controls["splitContainerMisc"] as SplitContainer;
             else if (selectedTabPage == tabPageDebug)
