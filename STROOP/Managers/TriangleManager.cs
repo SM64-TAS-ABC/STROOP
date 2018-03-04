@@ -125,6 +125,7 @@ namespace STROOP.Managers
             var trianglePosGroupBox = splitContainerTriangles.Panel1.Controls["groupBoxTrianglePos"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
+                true,
                 trianglePosGroupBox,
                 trianglePosGroupBox.Controls["buttonTrianglePosXn"] as Button,
                 trianglePosGroupBox.Controls["buttonTrianglePosXp"] as Button,

@@ -22,6 +22,7 @@ namespace STROOP.Utilities
 
         public static void InitializeThreeDimensionController(
             CoordinateSystem coordinateSystem,
+            bool allowRelativeOptions,
             GroupBox groupbox,
             Button buttonSquareLeft,
             Button buttonSquareRight,
@@ -96,7 +97,7 @@ namespace STROOP.Utilities
             buttonSquareDownRight.Click += (sender, e) => actionSquare(1, -1);
             buttonLineUp.Click += (sender, e) => actionLine(1);
             buttonLineDown.Click += (sender, e) => actionLine(-1);
-            if (coordinateSystem == CoordinateSystem.Euler)
+            if (coordinateSystem == CoordinateSystem.Euler && allowRelativeOptions)
             {
                 checkbox.CheckedChanged += (sender, e) => actionCheckedChanged();
             }

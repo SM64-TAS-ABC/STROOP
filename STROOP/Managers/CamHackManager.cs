@@ -47,6 +47,7 @@ namespace STROOP.Managers
             var cameraHackPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraHackPos"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
+                true,
                 cameraHackPosGroupBox,
                 cameraHackPosGroupBox.Controls["buttonCameraHackPosXn"] as Button,
                 cameraHackPosGroupBox.Controls["buttonCameraHackPosXp"] as Button,
@@ -74,6 +75,7 @@ namespace STROOP.Managers
             var cameraHackSphericalPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraHackSphericalPos"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Spherical,
+                false,
                 cameraHackSphericalPosGroupBox,
                 cameraHackSphericalPosGroupBox.Controls["buttonCameraHackSphericalPosTn"] as Button,
                 cameraHackSphericalPosGroupBox.Controls["buttonCameraHackSphericalPosTp"] as Button,
@@ -100,6 +102,7 @@ namespace STROOP.Managers
             var cameraHackFocusPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraHackFocusPos"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
+                true,
                 cameraHackFocusPosGroupBox,
                 cameraHackFocusPosGroupBox.Controls["buttonCameraHackFocusPosXn"] as Button,
                 cameraHackFocusPosGroupBox.Controls["buttonCameraHackFocusPosXp"] as Button,
@@ -127,6 +130,7 @@ namespace STROOP.Managers
             var cameraHackSphericalFocusPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraHackSphericalFocusPos"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Spherical,
+                false,
                 cameraHackSphericalFocusPosGroupBox,
                 cameraHackSphericalFocusPosGroupBox.Controls["buttonCameraHackSphericalFocusPosTn"] as Button,
                 cameraHackSphericalFocusPosGroupBox.Controls["buttonCameraHackSphericalFocusPosTp"] as Button,
@@ -153,6 +157,7 @@ namespace STROOP.Managers
             var cameraHackBothPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraHackBothPos"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
+                true,
                 cameraHackBothPosGroupBox,
                 cameraHackBothPosGroupBox.Controls["buttonCameraHackBothPosXn"] as Button,
                 cameraHackBothPosGroupBox.Controls["buttonCameraHackBothPosXp"] as Button,

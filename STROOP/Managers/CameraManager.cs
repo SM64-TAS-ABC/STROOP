@@ -24,6 +24,7 @@ namespace STROOP.Managers
             var cameraPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraPos"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
+                true,
                 cameraPosGroupBox,
                 cameraPosGroupBox.Controls["buttonCameraPosXn"] as Button,
                 cameraPosGroupBox.Controls["buttonCameraPosXp"] as Button,
@@ -50,6 +51,7 @@ namespace STROOP.Managers
             var cameraSphericalPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraSphericalPos"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Spherical,
+                false,
                 cameraSphericalPosGroupBox,
                 cameraSphericalPosGroupBox.Controls["buttonCameraSphericalPosTn"] as Button,
                 cameraSphericalPosGroupBox.Controls["buttonCameraSphericalPosTp"] as Button,

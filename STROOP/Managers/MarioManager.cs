@@ -46,6 +46,7 @@ namespace STROOP.Managers
             var marioPosGroupBox = splitContainerMario.Panel1.Controls["groupBoxMarioPos"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
+                true,
                 marioPosGroupBox,
                 marioPosGroupBox.Controls["buttonMarioPosXn"] as Button,
                 marioPosGroupBox.Controls["buttonMarioPosXp"] as Button,
@@ -158,6 +159,7 @@ namespace STROOP.Managers
             var marioHOLPGroupBox = splitContainerMario.Panel1.Controls["groupBoxMarioHOLP"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
+                true,
                 marioHOLPGroupBox,
                 marioHOLPGroupBox.Controls["buttonMarioHOLPXn"] as Button,
                 marioHOLPGroupBox.Controls["buttonMarioHOLPXp"] as Button,

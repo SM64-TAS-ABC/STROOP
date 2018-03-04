@@ -329,6 +329,7 @@ namespace STROOP.Managers
             var objPosGroupBox = objPanel.Controls["groupBoxObjPos"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
+                true,
                 objPosGroupBox,
                 objPosGroupBox.Controls["buttonObjPosXn"] as Button,
                 objPosGroupBox.Controls["buttonObjPosXp"] as Button,
@@ -403,6 +404,7 @@ namespace STROOP.Managers
             var objHomeGroupBox = objPanel.Controls["groupBoxObjHome"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
+                true,
                 objHomeGroupBox,
                 objHomeGroupBox.Controls["buttonObjHomeXn"] as Button,
                 objHomeGroupBox.Controls["buttonObjHomeXp"] as Button,
