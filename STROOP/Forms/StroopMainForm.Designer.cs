@@ -371,6 +371,18 @@ namespace STROOP
             this.glControlMap = new OpenTK.GLControl();
             this.tabPagePu = new System.Windows.Forms.TabPage();
             this.splitContainerPu = new System.Windows.Forms.SplitContainer();
+            this.groupBoxMarioPu = new System.Windows.Forms.GroupBox();
+            this.checkBoxMarioPuQpu = new System.Windows.Forms.CheckBox();
+            this.buttonMarioPuYp = new System.Windows.Forms.Button();
+            this.buttonMarioPuYn = new System.Windows.Forms.Button();
+            this.buttonMarioPuXpZp = new System.Windows.Forms.Button();
+            this.buttonMarioPuXp = new System.Windows.Forms.Button();
+            this.buttonMarioPuXpZn = new System.Windows.Forms.Button();
+            this.buttonMarioPuZn = new System.Windows.Forms.Button();
+            this.buttonMarioPuZp = new System.Windows.Forms.Button();
+            this.buttonMarioPuXnZp = new System.Windows.Forms.Button();
+            this.buttonMarioPuXn = new System.Windows.Forms.Button();
+            this.buttonMarioPuXnZn = new System.Windows.Forms.Button();
             this.groupBoxPuController = new System.Windows.Forms.GroupBox();
             this.labelPuConPu = new System.Windows.Forms.Label();
             this.labelPuConQpuValue = new System.Windows.Forms.Label();
@@ -736,18 +748,10 @@ namespace STROOP
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.comboBoxRomVersion = new System.Windows.Forms.ComboBox();
             this.comboBoxReadWriteMode = new System.Windows.Forms.ComboBox();
-            this.groupBoxMarioPu = new System.Windows.Forms.GroupBox();
-            this.checkBoxMarioPuQpu = new System.Windows.Forms.CheckBox();
-            this.buttonMarioPuYp = new System.Windows.Forms.Button();
-            this.buttonMarioPuYn = new System.Windows.Forms.Button();
-            this.buttonMarioPuXpZp = new System.Windows.Forms.Button();
-            this.buttonMarioPuXp = new System.Windows.Forms.Button();
-            this.buttonMarioPuXpZn = new System.Windows.Forms.Button();
-            this.buttonMarioPuZn = new System.Windows.Forms.Button();
-            this.buttonMarioPuZp = new System.Windows.Forms.Button();
-            this.buttonMarioPuXnZp = new System.Windows.Forms.Button();
-            this.buttonMarioPuXn = new System.Windows.Forms.Button();
-            this.buttonMarioPuXnZn = new System.Windows.Forms.Button();
+            this.tabControlMap = new System.Windows.Forms.TabControl();
+            this.tabPageMapOld = new System.Windows.Forms.TabPage();
+            this.tabPage2D = new System.Windows.Forms.TabPage();
+            this.tabPage3D = new System.Windows.Forms.TabPage();
             this.buttonObjRelease = new STROOP.BinaryButton();
             this.buttonObjInteract = new STROOP.BinaryButton();
             this.textBoxObjHomeY = new STROOP.BetterTextbox();
@@ -1207,6 +1211,7 @@ namespace STROOP
             this.splitContainerPu.Panel1.SuspendLayout();
             this.splitContainerPu.Panel2.SuspendLayout();
             this.splitContainerPu.SuspendLayout();
+            this.groupBoxMarioPu.SuspendLayout();
             this.groupBoxPuController.SuspendLayout();
             this.tabPageArea.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerArea)).BeginInit();
@@ -1289,7 +1294,7 @@ namespace STROOP
             this.groupBoxRecording.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
-            this.groupBoxMarioPu.SuspendLayout();
+            this.tabControlMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHud)).BeginInit();
@@ -4175,7 +4180,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 252F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 255F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -5279,6 +5284,7 @@ namespace STROOP
             // 
             // splitContainerMap.Panel1
             // 
+            this.splitContainerMap.Panel1.Controls.Add(this.tabControlMap);
             this.splitContainerMap.Panel1.Controls.Add(this.labelMapArtificialMarioYLabel);
             this.splitContainerMap.Panel1.Controls.Add(this.groupBoxMapBounds);
             this.splitContainerMap.Panel1.Controls.Add(this.labelMapQpu);
@@ -5307,7 +5313,7 @@ namespace STROOP
             this.splitContainerMap.Panel2.Controls.Add(this.glControlMap);
             this.splitContainerMap.Panel2MinSize = 0;
             this.splitContainerMap.Size = new System.Drawing.Size(915, 463);
-            this.splitContainerMap.SplitterDistance = 208;
+            this.splitContainerMap.SplitterDistance = 389;
             this.splitContainerMap.SplitterWidth = 1;
             this.splitContainerMap.TabIndex = 16;
             // 
@@ -5606,7 +5612,7 @@ namespace STROOP
             // labelMapId
             // 
             this.labelMapId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelMapId.Location = new System.Drawing.Point(94, 444);
+            this.labelMapId.Location = new System.Drawing.Point(275, 444);
             this.labelMapId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMapId.Name = "labelMapId";
             this.labelMapId.Size = new System.Drawing.Size(110, 13);
@@ -5643,7 +5649,7 @@ namespace STROOP
             this.glControlMap.Location = new System.Drawing.Point(0, 0);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(704, 461);
+            this.glControlMap.Size = new System.Drawing.Size(523, 461);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
@@ -5682,6 +5688,140 @@ namespace STROOP
             this.splitContainerPu.SplitterDistance = 293;
             this.splitContainerPu.SplitterWidth = 1;
             this.splitContainerPu.TabIndex = 19;
+            // 
+            // groupBoxMarioPu
+            // 
+            this.groupBoxMarioPu.Controls.Add(this.checkBoxMarioPuQpu);
+            this.groupBoxMarioPu.Controls.Add(this.textBoxMarioPuY);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuYp);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuYn);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuXpZp);
+            this.groupBoxMarioPu.Controls.Add(this.textBoxMarioPuXZ);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuXp);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuXpZn);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuZn);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuZp);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuXnZp);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuXn);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuXnZn);
+            this.groupBoxMarioPu.Location = new System.Drawing.Point(32, 237);
+            this.groupBoxMarioPu.Name = "groupBoxMarioPu";
+            this.groupBoxMarioPu.Size = new System.Drawing.Size(185, 146);
+            this.groupBoxMarioPu.TabIndex = 30;
+            this.groupBoxMarioPu.TabStop = false;
+            this.groupBoxMarioPu.Text = "PU";
+            // 
+            // checkBoxMarioPuQpu
+            // 
+            this.checkBoxMarioPuQpu.AutoSize = true;
+            this.checkBoxMarioPuQpu.Location = new System.Drawing.Point(137, 0);
+            this.checkBoxMarioPuQpu.Name = "checkBoxMarioPuQpu";
+            this.checkBoxMarioPuQpu.Size = new System.Drawing.Size(49, 17);
+            this.checkBoxMarioPuQpu.TabIndex = 36;
+            this.checkBoxMarioPuQpu.Text = "QPU";
+            this.checkBoxMarioPuQpu.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuYp
+            // 
+            this.buttonMarioPuYp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMarioPuYp.Location = new System.Drawing.Point(140, 16);
+            this.buttonMarioPuYp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuYp.Name = "buttonMarioPuYp";
+            this.buttonMarioPuYp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuYp.TabIndex = 35;
+            this.buttonMarioPuYp.Text = "Y+";
+            this.buttonMarioPuYp.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuYn
+            // 
+            this.buttonMarioPuYn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMarioPuYn.Location = new System.Drawing.Point(140, 100);
+            this.buttonMarioPuYn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuYn.Name = "buttonMarioPuYn";
+            this.buttonMarioPuYn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuYn.TabIndex = 34;
+            this.buttonMarioPuYn.Text = "Y-";
+            this.buttonMarioPuYn.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuXpZp
+            // 
+            this.buttonMarioPuXpZp.Location = new System.Drawing.Point(87, 100);
+            this.buttonMarioPuXpZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuXpZp.Name = "buttonMarioPuXpZp";
+            this.buttonMarioPuXpZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuXpZp.TabIndex = 32;
+            this.buttonMarioPuXpZp.Text = "X+Z+";
+            this.buttonMarioPuXpZp.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuXp
+            // 
+            this.buttonMarioPuXp.Location = new System.Drawing.Point(87, 58);
+            this.buttonMarioPuXp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuXp.Name = "buttonMarioPuXp";
+            this.buttonMarioPuXp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuXp.TabIndex = 31;
+            this.buttonMarioPuXp.Text = "X+";
+            this.buttonMarioPuXp.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuXpZn
+            // 
+            this.buttonMarioPuXpZn.Location = new System.Drawing.Point(87, 16);
+            this.buttonMarioPuXpZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuXpZn.Name = "buttonMarioPuXpZn";
+            this.buttonMarioPuXpZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuXpZn.TabIndex = 30;
+            this.buttonMarioPuXpZn.Text = "X+Z-";
+            this.buttonMarioPuXpZn.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuZn
+            // 
+            this.buttonMarioPuZn.Location = new System.Drawing.Point(45, 16);
+            this.buttonMarioPuZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuZn.Name = "buttonMarioPuZn";
+            this.buttonMarioPuZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuZn.TabIndex = 29;
+            this.buttonMarioPuZn.Text = "Z-";
+            this.buttonMarioPuZn.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuZp
+            // 
+            this.buttonMarioPuZp.Location = new System.Drawing.Point(45, 100);
+            this.buttonMarioPuZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuZp.Name = "buttonMarioPuZp";
+            this.buttonMarioPuZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuZp.TabIndex = 28;
+            this.buttonMarioPuZp.Text = "Z+";
+            this.buttonMarioPuZp.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuXnZp
+            // 
+            this.buttonMarioPuXnZp.Location = new System.Drawing.Point(3, 100);
+            this.buttonMarioPuXnZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuXnZp.Name = "buttonMarioPuXnZp";
+            this.buttonMarioPuXnZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuXnZp.TabIndex = 27;
+            this.buttonMarioPuXnZp.Text = "X-Z+";
+            this.buttonMarioPuXnZp.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuXn
+            // 
+            this.buttonMarioPuXn.Location = new System.Drawing.Point(3, 58);
+            this.buttonMarioPuXn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuXn.Name = "buttonMarioPuXn";
+            this.buttonMarioPuXn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuXn.TabIndex = 26;
+            this.buttonMarioPuXn.Text = "X-";
+            this.buttonMarioPuXn.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuXnZn
+            // 
+            this.buttonMarioPuXnZn.Location = new System.Drawing.Point(3, 16);
+            this.buttonMarioPuXnZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuXnZn.Name = "buttonMarioPuXnZn";
+            this.buttonMarioPuXnZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuXnZn.TabIndex = 25;
+            this.buttonMarioPuXnZn.Text = "X-Z-";
+            this.buttonMarioPuXnZn.UseVisualStyleBackColor = true;
             // 
             // groupBoxPuController
             // 
@@ -6532,7 +6672,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(136, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(119, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -6564,7 +6704,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(125, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(108, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -6620,7 +6760,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(125, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(108, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -9895,7 +10035,7 @@ namespace STROOP
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 390);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 391);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -9993,139 +10133,50 @@ namespace STROOP
             this.comboBoxReadWriteMode.Size = new System.Drawing.Size(75, 21);
             this.comboBoxReadWriteMode.TabIndex = 22;
             // 
-            // groupBoxMarioPu
+            // tabControlMap
             // 
-            this.groupBoxMarioPu.Controls.Add(this.checkBoxMarioPuQpu);
-            this.groupBoxMarioPu.Controls.Add(this.textBoxMarioPuY);
-            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuYp);
-            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuYn);
-            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuXpZp);
-            this.groupBoxMarioPu.Controls.Add(this.textBoxMarioPuXZ);
-            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuXp);
-            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuXpZn);
-            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuZn);
-            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuZp);
-            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuXnZp);
-            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuXn);
-            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuXnZn);
-            this.groupBoxMarioPu.Location = new System.Drawing.Point(32, 237);
-            this.groupBoxMarioPu.Name = "groupBoxMarioPu";
-            this.groupBoxMarioPu.Size = new System.Drawing.Size(185, 146);
-            this.groupBoxMarioPu.TabIndex = 30;
-            this.groupBoxMarioPu.TabStop = false;
-            this.groupBoxMarioPu.Text = "PU";
+            this.tabControlMap.Controls.Add(this.tabPageMapOld);
+            this.tabControlMap.Controls.Add(this.tabPage2D);
+            this.tabControlMap.Controls.Add(this.tabPage3D);
+            this.tabControlMap.Location = new System.Drawing.Point(132, 349);
+            this.tabControlMap.Margin = new System.Windows.Forms.Padding(0);
+            this.tabControlMap.Name = "tabControlMap";
+            this.tabControlMap.SelectedIndex = 0;
+            this.tabControlMap.Size = new System.Drawing.Size(216, 73);
+            this.tabControlMap.TabIndex = 39;
             // 
-            // checkBoxMarioPuQpu
+            // tabPageMapOld
             // 
-            this.checkBoxMarioPuQpu.AutoSize = true;
-            this.checkBoxMarioPuQpu.Location = new System.Drawing.Point(137, 0);
-            this.checkBoxMarioPuQpu.Name = "checkBoxMarioPuQpu";
-            this.checkBoxMarioPuQpu.Size = new System.Drawing.Size(49, 17);
-            this.checkBoxMarioPuQpu.TabIndex = 36;
-            this.checkBoxMarioPuQpu.Text = "QPU";
-            this.checkBoxMarioPuQpu.UseVisualStyleBackColor = true;
+            this.tabPageMapOld.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageMapOld.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageMapOld.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMapOld.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageMapOld.Name = "tabPageMapOld";
+            this.tabPageMapOld.Size = new System.Drawing.Size(208, 47);
+            this.tabPageMapOld.TabIndex = 0;
+            this.tabPageMapOld.Text = "Old";
             // 
-            // buttonMarioPuYp
+            // tabPage2D
             // 
-            this.buttonMarioPuYp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMarioPuYp.Location = new System.Drawing.Point(140, 16);
-            this.buttonMarioPuYp.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMarioPuYp.Name = "buttonMarioPuYp";
-            this.buttonMarioPuYp.Size = new System.Drawing.Size(42, 42);
-            this.buttonMarioPuYp.TabIndex = 35;
-            this.buttonMarioPuYp.Text = "Y+";
-            this.buttonMarioPuYp.UseVisualStyleBackColor = true;
+            this.tabPage2D.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage2D.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPage2D.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2D.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPage2D.Name = "tabPage2D";
+            this.tabPage2D.Size = new System.Drawing.Size(208, 47);
+            this.tabPage2D.TabIndex = 1;
+            this.tabPage2D.Text = "2D";
             // 
-            // buttonMarioPuYn
+            // tabPage3D
             // 
-            this.buttonMarioPuYn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMarioPuYn.Location = new System.Drawing.Point(140, 100);
-            this.buttonMarioPuYn.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMarioPuYn.Name = "buttonMarioPuYn";
-            this.buttonMarioPuYn.Size = new System.Drawing.Size(42, 42);
-            this.buttonMarioPuYn.TabIndex = 34;
-            this.buttonMarioPuYn.Text = "Y-";
-            this.buttonMarioPuYn.UseVisualStyleBackColor = true;
-            // 
-            // buttonMarioPuXpZp
-            // 
-            this.buttonMarioPuXpZp.Location = new System.Drawing.Point(87, 100);
-            this.buttonMarioPuXpZp.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMarioPuXpZp.Name = "buttonMarioPuXpZp";
-            this.buttonMarioPuXpZp.Size = new System.Drawing.Size(42, 42);
-            this.buttonMarioPuXpZp.TabIndex = 32;
-            this.buttonMarioPuXpZp.Text = "X+Z+";
-            this.buttonMarioPuXpZp.UseVisualStyleBackColor = true;
-            // 
-            // buttonMarioPuXp
-            // 
-            this.buttonMarioPuXp.Location = new System.Drawing.Point(87, 58);
-            this.buttonMarioPuXp.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMarioPuXp.Name = "buttonMarioPuXp";
-            this.buttonMarioPuXp.Size = new System.Drawing.Size(42, 42);
-            this.buttonMarioPuXp.TabIndex = 31;
-            this.buttonMarioPuXp.Text = "X+";
-            this.buttonMarioPuXp.UseVisualStyleBackColor = true;
-            // 
-            // buttonMarioPuXpZn
-            // 
-            this.buttonMarioPuXpZn.Location = new System.Drawing.Point(87, 16);
-            this.buttonMarioPuXpZn.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMarioPuXpZn.Name = "buttonMarioPuXpZn";
-            this.buttonMarioPuXpZn.Size = new System.Drawing.Size(42, 42);
-            this.buttonMarioPuXpZn.TabIndex = 30;
-            this.buttonMarioPuXpZn.Text = "X+Z-";
-            this.buttonMarioPuXpZn.UseVisualStyleBackColor = true;
-            // 
-            // buttonMarioPuZn
-            // 
-            this.buttonMarioPuZn.Location = new System.Drawing.Point(45, 16);
-            this.buttonMarioPuZn.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMarioPuZn.Name = "buttonMarioPuZn";
-            this.buttonMarioPuZn.Size = new System.Drawing.Size(42, 42);
-            this.buttonMarioPuZn.TabIndex = 29;
-            this.buttonMarioPuZn.Text = "Z-";
-            this.buttonMarioPuZn.UseVisualStyleBackColor = true;
-            // 
-            // buttonMarioPuZp
-            // 
-            this.buttonMarioPuZp.Location = new System.Drawing.Point(45, 100);
-            this.buttonMarioPuZp.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMarioPuZp.Name = "buttonMarioPuZp";
-            this.buttonMarioPuZp.Size = new System.Drawing.Size(42, 42);
-            this.buttonMarioPuZp.TabIndex = 28;
-            this.buttonMarioPuZp.Text = "Z+";
-            this.buttonMarioPuZp.UseVisualStyleBackColor = true;
-            // 
-            // buttonMarioPuXnZp
-            // 
-            this.buttonMarioPuXnZp.Location = new System.Drawing.Point(3, 100);
-            this.buttonMarioPuXnZp.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMarioPuXnZp.Name = "buttonMarioPuXnZp";
-            this.buttonMarioPuXnZp.Size = new System.Drawing.Size(42, 42);
-            this.buttonMarioPuXnZp.TabIndex = 27;
-            this.buttonMarioPuXnZp.Text = "X-Z+";
-            this.buttonMarioPuXnZp.UseVisualStyleBackColor = true;
-            // 
-            // buttonMarioPuXn
-            // 
-            this.buttonMarioPuXn.Location = new System.Drawing.Point(3, 58);
-            this.buttonMarioPuXn.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMarioPuXn.Name = "buttonMarioPuXn";
-            this.buttonMarioPuXn.Size = new System.Drawing.Size(42, 42);
-            this.buttonMarioPuXn.TabIndex = 26;
-            this.buttonMarioPuXn.Text = "X-";
-            this.buttonMarioPuXn.UseVisualStyleBackColor = true;
-            // 
-            // buttonMarioPuXnZn
-            // 
-            this.buttonMarioPuXnZn.Location = new System.Drawing.Point(3, 16);
-            this.buttonMarioPuXnZn.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMarioPuXnZn.Name = "buttonMarioPuXnZn";
-            this.buttonMarioPuXnZn.Size = new System.Drawing.Size(42, 42);
-            this.buttonMarioPuXnZn.TabIndex = 25;
-            this.buttonMarioPuXnZn.Text = "X-Z-";
-            this.buttonMarioPuXnZn.UseVisualStyleBackColor = true;
+            this.tabPage3D.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage3D.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPage3D.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3D.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPage3D.Name = "tabPage3D";
+            this.tabPage3D.Size = new System.Drawing.Size(208, 47);
+            this.tabPage3D.TabIndex = 2;
+            this.tabPage3D.Text = "3D";
             // 
             // buttonObjRelease
             // 
@@ -14346,7 +14397,7 @@ namespace STROOP
             this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
             this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 168);
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 169);
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
@@ -14516,6 +14567,8 @@ namespace STROOP
             this.splitContainerPu.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerPu)).EndInit();
             this.splitContainerPu.ResumeLayout(false);
+            this.groupBoxMarioPu.ResumeLayout(false);
+            this.groupBoxMarioPu.PerformLayout();
             this.groupBoxPuController.ResumeLayout(false);
             this.groupBoxPuController.PerformLayout();
             this.tabPageArea.ResumeLayout(false);
@@ -14635,8 +14688,7 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
-            this.groupBoxMarioPu.ResumeLayout(false);
-            this.groupBoxMarioPu.PerformLayout();
+            this.tabControlMap.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHud)).EndInit();
@@ -15871,6 +15923,10 @@ namespace STROOP
         private Button buttonMarioPuXnZp;
         private Button buttonMarioPuXn;
         private Button buttonMarioPuXnZn;
+        private TabControl tabControlMap;
+        private TabPage tabPageMapOld;
+        private TabPage tabPage2D;
+        private TabPage tabPage3D;
     }
 }
 
