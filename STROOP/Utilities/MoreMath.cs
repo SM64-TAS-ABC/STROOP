@@ -599,8 +599,7 @@ namespace STROOP.Utilities
                     else
                         returnValue = 0x10000 - InGameATan45Degrees(-yComp, xComp);
 
-            if ((0 <= yComp) && (0 <= xComp) && (yComp <= xComp)) return (ushort)returnValue;
-            return 0;
+            return (ushort)returnValue;
         }
 
         private static ushort InGameATan45Degrees(float f12, float f14)
