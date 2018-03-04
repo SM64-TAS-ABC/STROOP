@@ -774,17 +774,18 @@ namespace STROOP.Managers
                 sbyte currentX = Config.Stream.GetSByte(InputConfig.CurrentInputAddress + InputConfig.ControlStickXOffset);
                 sbyte currentY = Config.Stream.GetSByte(InputConfig.CurrentInputAddress + InputConfig.ControlStickYOffset);
                 _betterTextboxControlStick1.Text = currentX.ToString();
-                _betterTextboxControlStick2.Text = currentY.ToString();
+                _betterTextboxControlStick2.Text = (-1 * currentY).ToString();
             }
 
             int rawX = ParsingUtilities.ParseInt(_betterTextboxControlStick1.Text);
             int rawY = ParsingUtilities.ParseInt(_betterTextboxControlStick2.Text);
-            (double effectiveX, double effectiveY) = MoreMath.GetEffectiveInput(-1 * rawX, -1 * rawY);
-            _labelControlStick1.Text = Math.Round(effectiveX, 3).ToString();
-            _labelControlStick2.Text = Math.Round(effectiveY, 3).ToString();
+            (float effectiveX, float effectiveY) = MoreMath.GetEffectiveInput(-1 * rawX, -1 * rawY);
+            _labelControlStick1.Text = effectiveX.ToString();
+            _labelControlStick2.Text = effectiveY.ToString();
             double angle = MoreMath.AngleTo_AngleUnits(effectiveX, effectiveY);
             angle = MoreMath.NormalizeAngleUshort(angle);
-            ushort cameraAngle = Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.YawFacingOffset);
+            ushort cameraAngle = Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + 0xFC);
+            cameraAngle = MoreMath.NormalizeAngleUshort(MoreMath.ReverseAngle(cameraAngle));
             //cameraAngle = MoreMath.NormalizeAngleTruncated(cameraAngle);
             angle = MoreMath.NormalizeAngleUshort(angle + cameraAngle);
             _labelControlStick3.Text = Math.Round(angle, 0).ToString();

@@ -521,11 +521,11 @@ namespace STROOP.Utilities
             return RadiansToAngleUnitsRounded(uphillRadians);
         }
 
-        public static (double effectiveX, double effectiveY) GetEffectiveInput(double rawX, double rawY)
+        public static (float effectiveX, float effectiveY) GetEffectiveInput(int rawX, int rawY)
         {
-            double effectiveX = rawX >= 8 ? rawX - 6 : rawX <= -8 ? rawX + 6 : 0;
-            double effectiveY = rawY >= 8 ? rawY - 6 : rawY <= -8 ? rawY + 6 : 0;
-            double hypotenuse = GetHypotenuse(effectiveX, effectiveY);
+            float effectiveX = rawX >= 8 ? rawX - 6 : rawX <= -8 ? rawX + 6 : 0;
+            float effectiveY = rawY >= 8 ? rawY - 6 : rawY <= -8 ? rawY + 6 : 0;
+            float hypotenuse = (float)Math.Sqrt(effectiveX * effectiveX + effectiveY * effectiveY);
             if (hypotenuse > 64)
             {
                 effectiveX *= 64 / hypotenuse;
