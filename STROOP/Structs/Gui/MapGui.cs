@@ -42,5 +42,22 @@ namespace STROOP.Structs
         public BetterTextbox MapBoundsZoomTextBox;
 
         public BetterTextbox MapArtificialMarioYLabelTextBox;
+
+        public RadioButton RadioButtonScaleCourseDefault;
+        public RadioButton RadioButtonScaleMaxCourseSize;
+        public RadioButton RadioButtonScaleCustom;
+        public BetterTextbox TextBoxScaleCustom;
+
+        public RadioButton RadioButtonCenterBestFit;
+        public RadioButton RadioButtonCenterOrigin;
+        public RadioButton RadioButtonCenterCustom;
+        public BetterTextbox TextBoxCenterCustom;
+
+        public RadioButton RadioButtonAngle0;
+        public RadioButton RadioButtonAngle16384;
+        public RadioButton RadioButtonAngle32768;
+        public RadioButton RadioButtonAngle49152;
+        public RadioButton RadioButtonAngleCustom;
+        public BetterTextbox TextBoxAngleCustom;
     }
 }

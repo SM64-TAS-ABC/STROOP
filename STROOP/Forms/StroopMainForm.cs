@@ -122,6 +122,23 @@ namespace STROOP
 
             mapGui.MapArtificialMarioYLabelTextBox = textBoxMapArtificialMarioYLabel;
 
+            mapGui.RadioButtonScaleCourseDefault = radioButtonMapControlsScaleCourseDefault;
+            mapGui.RadioButtonScaleMaxCourseSize = radioButtonMapControlsScaleMaxCourseSize;
+            mapGui.RadioButtonScaleCustom = radioButtonMapControlsScaleCustom;
+            mapGui.TextBoxScaleCustom = betterTextboxMapControlsScaleCustom;
+
+            mapGui.RadioButtonCenterBestFit = radioButtonMapControlsCenterBestFit;
+            mapGui.RadioButtonCenterOrigin = radioButtonMapControlsCenterOrigin;
+            mapGui.RadioButtonCenterCustom = radioButtonMapControlsCenterCustom;
+            mapGui.TextBoxCenterCustom = betterTextboxMapControlsCenterCustom;
+
+            mapGui.RadioButtonAngle0 = radioButtonMapControlsAngle0;
+            mapGui.RadioButtonAngle16384 = radioButtonMapControlsAngle16384;
+            mapGui.RadioButtonAngle32768 = radioButtonMapControlsAngle32768;
+            mapGui.RadioButtonAngle49152 = radioButtonMapControlsAngle49152;
+            mapGui.RadioButtonAngleCustom = radioButtonMapControlsAngleCustom;
+            mapGui.TextBoxAngleCustom = betterTextboxMapControlsAngleCustom;
+
             Config.MapManager = new MapManager(_mapAssoc, mapGui);
 
             Config.ModelManager = new ModelManager(tabPageModel);
