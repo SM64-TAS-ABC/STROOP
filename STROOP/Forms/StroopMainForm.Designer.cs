@@ -735,6 +735,19 @@ namespace STROOP
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.comboBoxRomVersion = new System.Windows.Forms.ComboBox();
+            this.comboBoxReadWriteMode = new System.Windows.Forms.ComboBox();
+            this.groupBoxMarioPu = new System.Windows.Forms.GroupBox();
+            this.checkBoxMarioPuQpu = new System.Windows.Forms.CheckBox();
+            this.buttonMarioPuYp = new System.Windows.Forms.Button();
+            this.buttonMarioPuYn = new System.Windows.Forms.Button();
+            this.buttonMarioPuXpZp = new System.Windows.Forms.Button();
+            this.buttonMarioPuXp = new System.Windows.Forms.Button();
+            this.buttonMarioPuXpZn = new System.Windows.Forms.Button();
+            this.buttonMarioPuZn = new System.Windows.Forms.Button();
+            this.buttonMarioPuZp = new System.Windows.Forms.Button();
+            this.buttonMarioPuXnZp = new System.Windows.Forms.Button();
+            this.buttonMarioPuXn = new System.Windows.Forms.Button();
+            this.buttonMarioPuXnZn = new System.Windows.Forms.Button();
             this.buttonObjRelease = new STROOP.BinaryButton();
             this.buttonObjInteract = new STROOP.BinaryButton();
             this.textBoxObjHomeY = new STROOP.BetterTextbox();
@@ -1000,6 +1013,8 @@ namespace STROOP
             this.textBoxMapBoundsZoom = new STROOP.BetterTextbox();
             this.textBoxMapBoundsPosition = new STROOP.BetterTextbox();
             this.textBoxMapArtificialMarioYLabel = new STROOP.BetterTextbox();
+            this.textBoxMarioPuY = new STROOP.BetterTextbox();
+            this.textBoxMarioPuXZ = new STROOP.BetterTextbox();
             this.watchVariablePanelPu = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.watchVariablePanelArea = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.textbpxTransScaleDValue = new STROOP.BetterTextbox();
@@ -1087,7 +1102,6 @@ namespace STROOP
             this.betterTextboxGotoY = new STROOP.BetterTextbox();
             this.betterTextboxGotoX = new STROOP.BetterTextbox();
             this.WatchVariablePanelObjects = new STROOP.Controls.WatchVariableFlowLayoutPanel();
-            this.comboBoxReadWriteMode = new System.Windows.Forms.ComboBox();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1275,6 +1289,7 @@ namespace STROOP
             this.groupBoxRecording.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
+            this.groupBoxMarioPu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHud)).BeginInit();
@@ -4160,7 +4175,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 244F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 247F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -5655,6 +5670,7 @@ namespace STROOP
             // splitContainerPu.Panel1
             // 
             this.splitContainerPu.Panel1.AutoScroll = true;
+            this.splitContainerPu.Panel1.Controls.Add(this.groupBoxMarioPu);
             this.splitContainerPu.Panel1.Controls.Add(this.groupBoxPuController);
             this.splitContainerPu.Panel1MinSize = 0;
             // 
@@ -6517,7 +6533,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(153, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(136, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -6549,7 +6565,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(142, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(125, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -6605,7 +6621,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(142, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(125, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -9880,7 +9896,7 @@ namespace STROOP
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 389);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 390);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -9967,6 +9983,150 @@ namespace STROOP
             this.comboBoxRomVersion.Name = "comboBoxRomVersion";
             this.comboBoxRomVersion.Size = new System.Drawing.Size(42, 21);
             this.comboBoxRomVersion.TabIndex = 22;
+            // 
+            // comboBoxReadWriteMode
+            // 
+            this.comboBoxReadWriteMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxReadWriteMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxReadWriteMode.Location = new System.Drawing.Point(662, 11);
+            this.comboBoxReadWriteMode.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxReadWriteMode.Name = "comboBoxReadWriteMode";
+            this.comboBoxReadWriteMode.Size = new System.Drawing.Size(75, 21);
+            this.comboBoxReadWriteMode.TabIndex = 22;
+            // 
+            // groupBoxMarioPu
+            // 
+            this.groupBoxMarioPu.Controls.Add(this.checkBoxMarioPuQpu);
+            this.groupBoxMarioPu.Controls.Add(this.textBoxMarioPuY);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuYp);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuYn);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuXpZp);
+            this.groupBoxMarioPu.Controls.Add(this.textBoxMarioPuXZ);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuXp);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuXpZn);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuZn);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuZp);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuXnZp);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuXn);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuXnZn);
+            this.groupBoxMarioPu.Location = new System.Drawing.Point(32, 237);
+            this.groupBoxMarioPu.Name = "groupBoxMarioPu";
+            this.groupBoxMarioPu.Size = new System.Drawing.Size(185, 146);
+            this.groupBoxMarioPu.TabIndex = 30;
+            this.groupBoxMarioPu.TabStop = false;
+            this.groupBoxMarioPu.Text = "PU";
+            // 
+            // checkBoxMarioPuQpu
+            // 
+            this.checkBoxMarioPuQpu.AutoSize = true;
+            this.checkBoxMarioPuQpu.Location = new System.Drawing.Point(137, 0);
+            this.checkBoxMarioPuQpu.Name = "checkBoxMarioPuQpu";
+            this.checkBoxMarioPuQpu.Size = new System.Drawing.Size(49, 17);
+            this.checkBoxMarioPuQpu.TabIndex = 36;
+            this.checkBoxMarioPuQpu.Text = "QPU";
+            this.checkBoxMarioPuQpu.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuYp
+            // 
+            this.buttonMarioPuYp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMarioPuYp.Location = new System.Drawing.Point(140, 16);
+            this.buttonMarioPuYp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuYp.Name = "buttonMarioPuYp";
+            this.buttonMarioPuYp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuYp.TabIndex = 35;
+            this.buttonMarioPuYp.Text = "Y+";
+            this.buttonMarioPuYp.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuYn
+            // 
+            this.buttonMarioPuYn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMarioPuYn.Location = new System.Drawing.Point(140, 100);
+            this.buttonMarioPuYn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuYn.Name = "buttonMarioPuYn";
+            this.buttonMarioPuYn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuYn.TabIndex = 34;
+            this.buttonMarioPuYn.Text = "Y-";
+            this.buttonMarioPuYn.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuXpZp
+            // 
+            this.buttonMarioPuXpZp.Location = new System.Drawing.Point(87, 100);
+            this.buttonMarioPuXpZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuXpZp.Name = "buttonMarioPuXpZp";
+            this.buttonMarioPuXpZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuXpZp.TabIndex = 32;
+            this.buttonMarioPuXpZp.Text = "X+Z+";
+            this.buttonMarioPuXpZp.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuXp
+            // 
+            this.buttonMarioPuXp.Location = new System.Drawing.Point(87, 58);
+            this.buttonMarioPuXp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuXp.Name = "buttonMarioPuXp";
+            this.buttonMarioPuXp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuXp.TabIndex = 31;
+            this.buttonMarioPuXp.Text = "X+";
+            this.buttonMarioPuXp.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuXpZn
+            // 
+            this.buttonMarioPuXpZn.Location = new System.Drawing.Point(87, 16);
+            this.buttonMarioPuXpZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuXpZn.Name = "buttonMarioPuXpZn";
+            this.buttonMarioPuXpZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuXpZn.TabIndex = 30;
+            this.buttonMarioPuXpZn.Text = "X+Z-";
+            this.buttonMarioPuXpZn.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuZn
+            // 
+            this.buttonMarioPuZn.Location = new System.Drawing.Point(45, 16);
+            this.buttonMarioPuZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuZn.Name = "buttonMarioPuZn";
+            this.buttonMarioPuZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuZn.TabIndex = 29;
+            this.buttonMarioPuZn.Text = "Z-";
+            this.buttonMarioPuZn.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuZp
+            // 
+            this.buttonMarioPuZp.Location = new System.Drawing.Point(45, 100);
+            this.buttonMarioPuZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuZp.Name = "buttonMarioPuZp";
+            this.buttonMarioPuZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuZp.TabIndex = 28;
+            this.buttonMarioPuZp.Text = "Z+";
+            this.buttonMarioPuZp.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuXnZp
+            // 
+            this.buttonMarioPuXnZp.Location = new System.Drawing.Point(3, 100);
+            this.buttonMarioPuXnZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuXnZp.Name = "buttonMarioPuXnZp";
+            this.buttonMarioPuXnZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuXnZp.TabIndex = 27;
+            this.buttonMarioPuXnZp.Text = "X-Z+";
+            this.buttonMarioPuXnZp.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuXn
+            // 
+            this.buttonMarioPuXn.Location = new System.Drawing.Point(3, 58);
+            this.buttonMarioPuXn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuXn.Name = "buttonMarioPuXn";
+            this.buttonMarioPuXn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuXn.TabIndex = 26;
+            this.buttonMarioPuXn.Text = "X-";
+            this.buttonMarioPuXn.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuXnZn
+            // 
+            this.buttonMarioPuXnZn.Location = new System.Drawing.Point(3, 16);
+            this.buttonMarioPuXnZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuXnZn.Name = "buttonMarioPuXnZn";
+            this.buttonMarioPuXnZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuXnZn.TabIndex = 25;
+            this.buttonMarioPuXnZn.Text = "X-Z-";
+            this.buttonMarioPuXnZn.UseVisualStyleBackColor = true;
             // 
             // buttonObjRelease
             // 
@@ -13369,6 +13529,25 @@ namespace STROOP
             this.textBoxMapArtificialMarioYLabel.TabIndex = 27;
             this.textBoxMapArtificialMarioYLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // textBoxMarioPuY
+            // 
+            this.textBoxMarioPuY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxMarioPuY.Location = new System.Drawing.Point(140, 70);
+            this.textBoxMarioPuY.Name = "textBoxMarioPuY";
+            this.textBoxMarioPuY.Size = new System.Drawing.Size(42, 20);
+            this.textBoxMarioPuY.TabIndex = 33;
+            this.textBoxMarioPuY.Text = "1";
+            this.textBoxMarioPuY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxMarioPuXZ
+            // 
+            this.textBoxMarioPuXZ.Location = new System.Drawing.Point(45, 70);
+            this.textBoxMarioPuXZ.Name = "textBoxMarioPuXZ";
+            this.textBoxMarioPuXZ.Size = new System.Drawing.Size(42, 20);
+            this.textBoxMarioPuXZ.TabIndex = 27;
+            this.textBoxMarioPuXZ.Text = "1";
+            this.textBoxMarioPuXZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // watchVariablePanelPu
             // 
             this.watchVariablePanelPu.AutoScroll = true;
@@ -14168,19 +14347,9 @@ namespace STROOP
             this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
             this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 167);
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 168);
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
-            // 
-            // comboBoxReadWriteMode
-            // 
-            this.comboBoxReadWriteMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxReadWriteMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxReadWriteMode.Location = new System.Drawing.Point(662, 11);
-            this.comboBoxReadWriteMode.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxReadWriteMode.Name = "comboBoxReadWriteMode";
-            this.comboBoxReadWriteMode.Size = new System.Drawing.Size(75, 21);
-            this.comboBoxReadWriteMode.TabIndex = 22;
             // 
             // StroopMainForm
             // 
@@ -14467,6 +14636,8 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
+            this.groupBoxMarioPu.ResumeLayout(false);
+            this.groupBoxMarioPu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHud)).EndInit();
@@ -15687,6 +15858,20 @@ namespace STROOP
         private WatchVariableFlowLayoutPanel watchVariablePanelPu;
         private ComboBox comboBoxRomVersion;
         private ComboBox comboBoxReadWriteMode;
+        private GroupBox groupBoxMarioPu;
+        private CheckBox checkBoxMarioPuQpu;
+        private BetterTextbox textBoxMarioPuY;
+        private Button buttonMarioPuYp;
+        private Button buttonMarioPuYn;
+        private Button buttonMarioPuXpZp;
+        private BetterTextbox textBoxMarioPuXZ;
+        private Button buttonMarioPuXp;
+        private Button buttonMarioPuXpZn;
+        private Button buttonMarioPuZn;
+        private Button buttonMarioPuZp;
+        private Button buttonMarioPuXnZp;
+        private Button buttonMarioPuXn;
+        private Button buttonMarioPuXnZn;
     }
 }
 
