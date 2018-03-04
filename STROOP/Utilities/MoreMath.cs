@@ -572,6 +572,42 @@ namespace STROOP.Utilities
         {
             return v1X * v2X + v1Y * v2Y + v1Z * v2Z;
         }
-        
+
+        public static ushort InGameATan(float xComp, float yComp)
+        {
+            int returnValue;
+            if (0 <= yComp)
+                if (0 <= xComp)
+                    if (yComp <= xComp)
+                        returnValue = InGameATan45Degrees(yComp, xComp);
+                    else
+                        returnValue = 0x4000 - InGameATan45Degrees(xComp, yComp);
+                else
+                    if (-xComp < yComp)
+                        returnValue = 0x4000 + InGameATan45Degrees(-xComp, yComp);
+                    else
+                        returnValue = 0x8000 - InGameATan45Degrees(yComp, -xComp);
+            else
+                if (xComp < 0)
+                    if (-yComp < -xComp)
+                        returnValue = 0x8000 + InGameATan45Degrees(-yComp, -xComp);
+                    else
+                        returnValue = 0xc000 - InGameATan45Degrees(-xComp, -yComp);
+                else
+                    if (xComp < -yComp)
+                        returnValue = 0xc000 + InGameATan45Degrees(xComp, -yComp);
+                    else
+                        returnValue = 0x10000 - InGameATan45Degrees(-yComp, xComp);
+
+            if ((0 <= yComp) && (0 <= xComp) && (yComp <= xComp)) return (ushort)returnValue;
+            return 0;
+        }
+
+        private static ushort InGameATan45Degrees(float f12, float f14)
+        {
+            return (ushort)(0x4000 * (float)Math.Atan((int)(f14 / f12 * 1024) / 1024f) / (float)Math.PI);
+        }
+
+
     }
 }

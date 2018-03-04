@@ -782,13 +782,12 @@ namespace STROOP.Managers
             (float effectiveX, float effectiveY) = MoreMath.GetEffectiveInput(-1 * rawX, -1 * rawY);
             _labelControlStick1.Text = effectiveX.ToString();
             _labelControlStick2.Text = effectiveY.ToString();
-            double angle = MoreMath.AngleTo_AngleUnits(effectiveX, effectiveY);
-            angle = MoreMath.NormalizeAngleUshort(angle);
+            ushort angle = MoreMath.InGameATan(effectiveX, effectiveY);
             ushort cameraAngle = Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + 0xFC);
             cameraAngle = MoreMath.NormalizeAngleUshort(MoreMath.ReverseAngle(cameraAngle));
             //cameraAngle = MoreMath.NormalizeAngleTruncated(cameraAngle);
-            angle = MoreMath.NormalizeAngleUshort(angle + cameraAngle);
-            _labelControlStick3.Text = Math.Round(angle, 0).ToString();
+            ushort summedAngle = MoreMath.NormalizeAngleUshort(angle + cameraAngle);
+            _labelControlStick3.Text = summedAngle.ToString();
 
             /*
             int angleGuess = MoreMath.NormalizeAngleUshort(angle);
