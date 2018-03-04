@@ -4208,7 +4208,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 266F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 269F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -10371,12 +10371,10 @@ namespace STROOP
             // radioButtonMapControlsAngle0
             // 
             this.radioButtonMapControlsAngle0.AutoSize = true;
-            this.radioButtonMapControlsAngle0.Checked = true;
             this.radioButtonMapControlsAngle0.Location = new System.Drawing.Point(9, 15);
             this.radioButtonMapControlsAngle0.Name = "radioButtonMapControlsAngle0";
             this.radioButtonMapControlsAngle0.Size = new System.Drawing.Size(31, 17);
             this.radioButtonMapControlsAngle0.TabIndex = 11;
-            this.radioButtonMapControlsAngle0.TabStop = true;
             this.radioButtonMapControlsAngle0.Text = "0";
             this.radioButtonMapControlsAngle0.UseVisualStyleBackColor = true;
             // 
@@ -10393,10 +10391,12 @@ namespace STROOP
             // radioButtonMapControlsAngle32768
             // 
             this.radioButtonMapControlsAngle32768.AutoSize = true;
+            this.radioButtonMapControlsAngle32768.Checked = true;
             this.radioButtonMapControlsAngle32768.Location = new System.Drawing.Point(9, 51);
             this.radioButtonMapControlsAngle32768.Name = "radioButtonMapControlsAngle32768";
             this.radioButtonMapControlsAngle32768.Size = new System.Drawing.Size(55, 17);
             this.radioButtonMapControlsAngle32768.TabIndex = 13;
+            this.radioButtonMapControlsAngle32768.TabStop = true;
             this.radioButtonMapControlsAngle32768.Text = "32768";
             this.radioButtonMapControlsAngle32768.UseVisualStyleBackColor = true;
             // 
