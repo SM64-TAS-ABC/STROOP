@@ -779,19 +779,24 @@ namespace STROOP.Managers
 
             int rawX = ParsingUtilities.ParseInt(_betterTextboxControlStick1.Text);
             int rawY = ParsingUtilities.ParseInt(_betterTextboxControlStick2.Text);
-            (double effectiveX, double effectiveY) = MoreMath.GetEffectiveInput(rawX, -1 * rawY);
+            (double effectiveX, double effectiveY) = MoreMath.GetEffectiveInput(-1 * rawX, -1 * rawY);
             _labelControlStick1.Text = Math.Round(effectiveX, 3).ToString();
             _labelControlStick2.Text = Math.Round(effectiveY, 3).ToString();
             double angle = MoreMath.AngleTo_AngleUnits(effectiveX, effectiveY);
-            ushort cameraAngle = Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + 0xFC);
-            angle = MoreMath.NormalizeAngleDouble(angle + cameraAngle);
+            angle = MoreMath.NormalizeAngleUshort(angle);
+            ushort cameraAngle = Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.YawFacingOffset);
+            //cameraAngle = MoreMath.NormalizeAngleTruncated(cameraAngle);
+            angle = MoreMath.NormalizeAngleUshort(angle + cameraAngle);
             _labelControlStick3.Text = Math.Round(angle, 0).ToString();
+
+            /*
             int angleGuess = MoreMath.NormalizeAngleUshort(angle);
             _labelControlStick4.Text = angleGuess.ToString();
             int angleInteded = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawIntendedOffset);
             _labelControlStick5.Text = angleInteded.ToString();
             int diff = angleGuess - angleInteded;
             _labelControlStick6.Text = diff.ToString();
+            */
 
             // State Transfer
             StateTransferUpdate();
