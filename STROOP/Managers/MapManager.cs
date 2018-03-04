@@ -22,10 +22,18 @@ namespace STROOP.Managers
         public bool IsLoaded { get; private set; }
         public bool Visible { get => _graphics.Visible; set => _graphics.Visible = value; }
 
-        MapGui _mapGui;
-        MapController _controller;
-        MapGraphics _graphics;
-        MapAssociations _mapAssoc;
+        private MapGui _mapGui;
+        private MapController _controller;
+        private MapGraphics _graphics;
+        private MapAssociations _mapAssoc;
+
+        private enum MapScale { CourseDefault, MaxCourseSize, Custom };
+        private enum MapCenter { BestFit, Origin, Custom };
+        private enum MapAngle { _0, _16384, _32768, _49152, Custom };
+
+        private MapScale _mapScale = MapScale.CourseDefault;
+        private MapCenter _mapCenter = MapCenter.BestFit;
+        private MapAngle _mapAngle = MapAngle._32768;
 
         public MapManager(MapAssociations mapAssoc, MapGui mapGui)
         {
@@ -41,6 +49,20 @@ namespace STROOP.Managers
             _controller = new MapController(_graphics);
 
             IsLoaded = true;
+
+            _mapGui.RadioButtonScaleCourseDefault.Click += (sender, e) => _mapScale = MapScale.CourseDefault;
+            _mapGui.RadioButtonScaleMaxCourseSize.Click += (sender, e) => _mapScale = MapScale.MaxCourseSize;
+            _mapGui.RadioButtonScaleCustom.Click += (sender, e) => _mapScale = MapScale.Custom;
+
+            _mapGui.RadioButtonCenterBestFit.Click += (sender, e) => _mapCenter = MapCenter.BestFit;
+            _mapGui.RadioButtonCenterOrigin.Click += (sender, e) => _mapCenter = MapCenter.Origin;
+            _mapGui.RadioButtonCenterCustom.Click += (sender, e) => _mapCenter = MapCenter.Custom;
+
+            _mapGui.RadioButtonAngle0.Click += (sender, e) => _mapAngle = MapAngle._0;
+            _mapGui.RadioButtonAngle16384.Click += (sender, e) => _mapAngle = MapAngle._16384;
+            _mapGui.RadioButtonAngle32768.Click += (sender, e) => _mapAngle = MapAngle._32768;
+            _mapGui.RadioButtonAngle49152.Click += (sender, e) => _mapAngle = MapAngle._49152;
+            _mapGui.RadioButtonAngleCustom.Click += (sender, e) => _mapAngle = MapAngle.Custom;
 
             // Test
             _controller.AddMapObject(new MapLevelObject(_mapAssoc));
