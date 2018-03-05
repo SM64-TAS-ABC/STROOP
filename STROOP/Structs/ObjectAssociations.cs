@@ -115,7 +115,7 @@ namespace STROOP.Structs
             return behaviorAssoc;
         }
 
-        public Image GetObjectImage(BehaviorCriteria behaviorCriteria, bool transparent)
+        public Image GetObjectImage(BehaviorCriteria behaviorCriteria, bool transparent = false)
         {
             if (behaviorCriteria.BehaviorAddress == 0)
                 return EmptyImage;

@@ -215,7 +215,7 @@ namespace STROOP
             Config.ObjectAssociations.CreateCachedBufferedObjectImage(_objectImage, _bufferedObjectImage);
         }
 
-        public void UpdateColors()
+        public bool UpdateColors()
         {
             var oldBorderColor = _borderColor;
             var oldBackColor = _backColor;
@@ -260,36 +260,12 @@ namespace STROOP
                 }
             }
 
-            SelectionType newSelectionType;
-            switch (_manager.ActiveTab)
-            {
-                case ObjectSlotsManager.TabType.Map:
-                    newSelectionType = Show ? SelectionType.MAP_SELECTION 
-                        : SelectionType.NOT_SELECTED;
-                    break;
 
-                case ObjectSlotsManager.TabType.Model:
-                    newSelectionType = CurrentObject?.Address == Config.ModelManager.ModelObjectAddress
-                        ? SelectionType.MODEL_SELECTION : SelectionType.NOT_SELECTED;
-                    break;
-
-                case ObjectSlotsManager.TabType.CamHack:
-                    newSelectionType = SelectionType.NOT_SELECTED;
-                    break;
-
-                default:
-                    newSelectionType = CurrentObject != null && _manager.SelectedSlotsAddresses.Contains(CurrentObject.Address) 
-                        ? SelectionType.NORMAL_SELECTION : SelectionType.NOT_SELECTED;
-                    break;
-            }
-
-            bool selectionTypeUpdated = newSelectionType != _selectionType;
-            _selectionType = newSelectionType;
-
-            if (!imageUpdated && !colorUpdated && !selectionTypeUpdated)
-                return;
+            if (!imageUpdated && !colorUpdated)
+                return false;
 
             Invalidate();
+            return true;
         }
 
         private void OnDrag(object sender, MouseEventArgs e)
@@ -297,7 +273,6 @@ namespace STROOP
             if (e.Button != MouseButtons.Left) return;
             MouseState = MouseStateType.Down;
             UpdateColors();
-            Refresh();
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -461,6 +436,30 @@ namespace STROOP
                 _drawMarkedOverlay,
             };
 
+
+            SelectionType selectionType;
+            switch (_manager.ActiveTab)
+            {
+                case ObjectSlotsManager.TabType.Map:
+                    selectionType = Show ? SelectionType.MAP_SELECTION
+                        : SelectionType.NOT_SELECTED;
+                    break;
+
+                case ObjectSlotsManager.TabType.Model:
+                    selectionType = CurrentObject?.Address == Config.ModelManager.ModelObjectAddress
+                        ? SelectionType.MODEL_SELECTION : SelectionType.NOT_SELECTED;
+                    break;
+
+                case ObjectSlotsManager.TabType.CamHack:
+                    selectionType = SelectionType.NOT_SELECTED;
+                    break;
+
+                default:
+                    selectionType = CurrentObject != null && _manager.SelectedSlotsAddresses.Contains(CurrentObject.Address)
+                        ? SelectionType.NORMAL_SELECTION : SelectionType.NOT_SELECTED;
+                    break;
+            }
+
             Color mainColor = ObjectSlotsConfig.GetProcessingGroupColor(CurrentObject.CurrentProcessGroup);
             Color textColor = _manager.LabelsLocked ? Color.Blue : Color.Black;
             string text = _manager.SlotLabelsForObjects[address];
@@ -468,22 +467,28 @@ namespace STROOP
             // Update UI element
 
             bool updateColors = false;
-            bool invalidate = false;
+            bool redraw = false;
 
             if (text != _text)
             {
                 _text = text;
-                invalidate = true;
+                redraw = true;
             }
             if (textColor != _textColor)
             {
                 _textColor = textColor;
-                invalidate = true;
+                redraw = true;
             }
             if (mainColor != _mainColor)
             {
                 _mainColor = mainColor;
                 updateColors = true;
+            }
+
+            if (_selectionType != selectionType)
+            {
+                _selectionType = selectionType;
+                redraw = true;
             }
 
             if (_behavior != CurrentObject.BehaviorCriteria)
@@ -497,11 +502,15 @@ namespace STROOP
                 updateColors = true;
             }         
             if (!overlays.SequenceEqual(prevOverlays))
-                updateColors = true;
+                redraw = true;
 
             if (updateColors)
-                UpdateColors();
-            if (invalidate)
+            {
+                if (UpdateColors())
+                    redraw = false; // UpdateColors already calls refresh
+            }
+
+            if (redraw)
                 Invalidate();
         }
     }

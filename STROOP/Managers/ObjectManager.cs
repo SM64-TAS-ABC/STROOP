@@ -472,26 +472,25 @@ namespace STROOP.Managers
             }
             else if (_objects.Count() == 1)
             {
-                ObjectDataModel obj = _objects.FirstOrDefault();
+                ObjectDataModel obj = _objects.First();
                 var newBehavior = obj.BehaviorAssociation != null ? obj.BehaviorAssociation.Criteria : obj.BehaviorCriteria;
                 if (_lastGeneralizedBehavior != newBehavior)
                 {
-                    Behavior = String.Format("0x{0}", (obj.AbsoluteBehavior & 0x00ffffff).ToString("X4"));
+                    Behavior = $"0x{obj.SegmentedBehavior & 0x00FFFFFF:X4}";
                     Name = Config.ObjectAssociations.GetObjectName(newBehavior);
                     SetBehaviorWatchVariables(
                         Config.ObjectAssociations.GetWatchVarControls(newBehavior),
                         ObjectSlotsConfig.GetProcessingGroupColor(obj.CurrentProcessGroup)
                         .Lighten(0.8));
+                    Image = Config.ObjectAssociations.GetObjectImage(newBehavior);
                     _lastGeneralizedBehavior = newBehavior;
                 }
-                Image = obj.BehaviorAssociation?.Image;
                 BackColor = ObjectSlotsConfig.GetProcessingGroupColor(obj.CurrentProcessGroup);
-                int slotPos = obj.VacantSlotIndex.HasValue ? obj.VacantSlotIndex.Value : obj.ProcessIndex;
+                int slotPos = obj.VacantSlotIndex ?? obj.ProcessIndex;
                 SlotIndex = (Config.ObjectSlotsManager.GetSlotIndexFromAddres(obj.Address)
                     + (OptionsConfig.SlotIndexsFromOne ? 1 : 0)).ToString();
-                SlotPos = (obj.VacantSlotIndex.HasValue ? "VS " : "")
-                    + (slotPos + (OptionsConfig.SlotIndexsFromOne ? 1 : 0)).ToString();
-                _objAddressLabelValue.Text = "0x" + _objects.First().Address.ToString("X8");
+                SlotPos = $"{(obj.VacantSlotIndex.HasValue ? "VS " : "")}{slotPos + (OptionsConfig.SlotIndexsFromOne ? 1 : 0)}";
+                _objAddressLabelValue.Text = $"0x{_objects.First().Address:X8}";
                 _cloneButton.Enabled = true;
             }
             else
@@ -512,7 +511,7 @@ namespace STROOP.Managers
                 {
                     if (multiBehavior.HasValue)
                     {
-                        Behavior = String.Format("0x{0}", multiBehavior.Value.BehaviorAddress.ToString("X4"));
+                        Behavior = $"0x{multiBehavior.Value.BehaviorAddress:X4}";
                         SetBehaviorWatchVariables(
                             Config.ObjectAssociations.GetWatchVarControls(multiBehavior.Value),
                             ObjectSlotsConfig.GetProcessingGroupColor(processGroup).Lighten(0.8));

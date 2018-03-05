@@ -36,9 +36,10 @@ namespace STROOP.Managers
         Dictionary<uint, Tuple<int?, int?>> _lockedSlotIndices = new Dictionary<uint, Tuple<int?, int?>>();
         public bool LabelsLocked = false;
 
-        public List<uint> SelectedSlotsAddresses = new List<uint>();
-        public List<uint> SelectedOnMapSlotsAddresses = new List<uint>();
-        public List<uint> MarkedSlotsAddresses = new List<uint>();
+        uint? _lastSelectedAddress = null;
+        public HashSet<uint> SelectedSlotsAddresses = new HashSet<uint>();
+        public HashSet<uint> SelectedOnMapSlotsAddresses = new HashSet<uint>();
+        public HashSet<uint> MarkedSlotsAddresses = new HashSet<uint>();
 
         private Dictionary<uint, string> _slotLabels = new Dictionary<uint, string>();
         public IReadOnlyDictionary<uint, string> SlotLabelsForObjects { get; private set; }
@@ -195,7 +196,7 @@ namespace STROOP.Managers
             }
             else
             {
-                List<uint> selection;
+                HashSet<uint> selection;
                 switch (click)
                 {
                     case ClickType.ObjectClick:
@@ -215,32 +216,41 @@ namespace STROOP.Managers
                 if (switchToObjTab)
                     _gui.TabControl.SelectedTab = _gui.TabControl.TabPages["tabPageObjects"];
 
-                if (shouldExtendRange && selection.Count > 0)
+                if (shouldExtendRange && _lastSelectedAddress.HasValue)
                 {
-                    uint startRangeAddress = selection[selection.Count - 1];
-                    int startRange = ObjectSlots.First(o => o.CurrentObject.Address == startRangeAddress).Index;
+                    int? startRange = ObjectSlots.FirstOrDefault(s => s.CurrentObject.Address == _lastSelectedAddress)?.Index;
                     int endRange = selectedSlot.Index;
 
-                    int rangeSize = Math.Abs(endRange - startRange);
+                    if (!startRange.HasValue)
+                        return;
+
+                    int rangeSize = Math.Abs(endRange - startRange.Value);
                     int iteratorDirection = endRange > startRange ? 1 : -1;
 
                     for (int i = 0; i <= rangeSize; i++)
                     {
-                        int index = startRange + i * iteratorDirection;
+                        int index = startRange.Value + i * iteratorDirection;
                         uint address = ObjectSlots[index].CurrentObject.Address;
                         if (!selection.Contains(address))
                             selection.Add(address);
                     }
+                    _lastSelectedAddress = selectedSlot.CurrentObject.Address;
                 }
                 else
                 {
                     if (!shouldToggle)
                         selection.Clear();
 
-                        if (selection.Contains(selectedSlot.CurrentObject.Address))
-                            selection.Remove(selectedSlot.CurrentObject.Address);
-                        else
-                            selection.Add(selectedSlot.CurrentObject.Address);
+                    if (selection.Contains(selectedSlot.CurrentObject.Address))
+                    {
+                        selection.Remove(selectedSlot.CurrentObject.Address);
+                        _lastSelectedAddress = null;
+                    }
+                    else
+                    {
+                        selection.Add(selectedSlot.CurrentObject.Address);
+                        _lastSelectedAddress = selectedSlot.CurrentObject.Address;
+                    }
                 }
 
                 if (click == ClickType.ObjectClick)
@@ -291,8 +301,8 @@ namespace STROOP.Managers
                 case SortMethodType.DistanceToMario:
 
                     // Order by address
-                    var activeObjects = DataModels.Objects.Where(s => s.IsActive).OrderBy(s => s.DistanceToMarioCalculated);
-                    var inActiveObjects = DataModels.Objects.Where(s => !s.IsActive).OrderBy(s => s.DistanceToMarioCalculated);
+                    var activeObjects = DataModels.Objects.Where(o => o.IsActive).OrderBy(o => o.DistanceToMarioCalculated);
+                    var inActiveObjects = DataModels.Objects.Where(o => !o.IsActive).OrderBy(o => o.DistanceToMarioCalculated);
 
                     sortedObjects = activeObjects.Concat(inActiveObjects);
                     break;
