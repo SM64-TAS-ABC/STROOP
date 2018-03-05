@@ -301,14 +301,13 @@ namespace STROOP.Utilities
                     case "Object":
                         string name = element.Attribute(XName.Get("name")).Value;
                         uint behaviorSegmented = ParsingUtilities.ParseHex(element.Attribute(XName.Get("behaviorScriptAddress")).Value);
-                        uint? gfxId = null;
-                        int? subType = null, appearance = null;
+                        uint? gfxId = null, subType = null, appearance = null;
                         if (element.Attribute(XName.Get("gfxId")) != null)
                             gfxId = ParsingUtilities.ParseHex(element.Attribute(XName.Get("gfxId")).Value) | 0x80000000U;
                         if (element.Attribute(XName.Get("subType")) != null)
-                            subType = ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("subType")).Value);
+                            subType = ParsingUtilities.ParseUIntNullable(element.Attribute(XName.Get("subType")).Value);
                         if (element.Attribute(XName.Get("appearance")) != null)
-                            appearance = ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("appearance")).Value);
+                            appearance = ParsingUtilities.ParseUIntNullable(element.Attribute(XName.Get("appearance")).Value);
 
                         var spawnElement = element.Element(XName.Get("SpawnCode"));
                         if (spawnElement != null)
@@ -344,7 +343,7 @@ namespace STROOP.Utilities
 
                         var newBehavior = new ObjectBehaviorAssociation()
                         {
-                            BehaviorCriteria = new BehaviorCriteria()
+                            Criteria = new BehaviorCriteria()
                             {
                                 BehaviorAddress = behaviorSegmented,
                                 GfxId = gfxId,

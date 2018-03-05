@@ -49,7 +49,7 @@ namespace STROOP.Structs
         private static readonly List<uint> BaseAddressListZero = new List<uint> { 0 };
         private static readonly List<uint> BaseAddressListEmpy = new List<uint> { };
         
-        public static List<uint> GetBaseAddressListFromBaseAddressType(BaseAddressTypeEnum baseAddressType)
+        public static IEnumerable<uint> GetBaseAddressListFromBaseAddressType(BaseAddressTypeEnum baseAddressType)
         {
             switch (baseAddressType)
             {
@@ -75,7 +75,7 @@ namespace STROOP.Structs
                     return new List<uint> { Config.FileManager.CurrentFileAddress };
 
                 case BaseAddressTypeEnum.Object:
-                    return Config.ObjectManager.CurrentAddresses;
+                    return Config.ObjectManager.DisplayedObjects;
 
                 case BaseAddressTypeEnum.Triangle:
                     {
@@ -85,7 +85,7 @@ namespace STROOP.Structs
 
                 case BaseAddressTypeEnum.TriangleExertionForceTable:
                     return GetBaseAddressListFromBaseAddressType(BaseAddressTypeEnum.Triangle)
-                        .ConvertAll(triangleAddress =>
+                        .Select(triangleAddress =>
                         {
                             uint exertionForceIndex = Config.Stream.GetByte(triangleAddress + TriangleOffsetsConfig.ExertionForceIndex);
                             return TriangleConfig.ExertionForceTableAddress + 2 * exertionForceIndex;
@@ -102,15 +102,15 @@ namespace STROOP.Structs
 
                 case BaseAddressTypeEnum.Graphics:
                     return GetBaseAddressListFromBaseAddressType(BaseAddressTypeEnum.Object)
-                        .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + ObjectConfig.BehaviorGfxOffset));
+                        .Select(objAddress => Config.Stream.GetUInt32(objAddress + ObjectConfig.BehaviorGfxOffset));
 
                 case BaseAddressTypeEnum.Animation:
                     return GetBaseAddressListFromBaseAddressType(BaseAddressTypeEnum.Object)
-                        .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + ObjectConfig.AnimationOffset));
+                        .Select(objAddress => Config.Stream.GetUInt32(objAddress + ObjectConfig.AnimationOffset));
 
                 case BaseAddressTypeEnum.Waypoint:
                     return GetBaseAddressListFromBaseAddressType(BaseAddressTypeEnum.Object)
-                        .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + ObjectConfig.WaypointOffset));
+                        .Select(objAddress => Config.Stream.GetUInt32(objAddress + ObjectConfig.WaypointOffset));
 
                 case BaseAddressTypeEnum.Water:
                     return new List<uint> { Config.Stream.GetUInt32(MiscConfig.WaterPointerAddress) };

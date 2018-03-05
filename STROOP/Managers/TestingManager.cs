@@ -8,6 +8,7 @@ using STROOP.Structs.Configurations;
 using System.Windows.Forms;
 using STROOP.Utilities;
 using STROOP.Forms;
+using STROOP.Models;
 
 namespace STROOP.Managers
 {
@@ -506,7 +507,7 @@ namespace STROOP.Managers
                     X = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset),
                     Y = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset),
                     Z = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset),
-                    Angle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset),
+                    Angle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset),
                     Vspd = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.VSpeedOffset),
                     Hspd = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset),
                 };
@@ -792,7 +793,7 @@ namespace STROOP.Managers
             /*
             int angleGuess = MoreMath.NormalizeAngleUshort(angle);
             _labelControlStick4.Text = angleGuess.ToString();
-            int angleInteded = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawIntendedOffset);
+            int angleInteded = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.IntendedYawOffset);
             _labelControlStick5.Text = angleInteded.ToString();
             int diff = angleGuess - angleInteded;
             _labelControlStick6.Text = diff.ToString();
@@ -842,12 +843,12 @@ namespace STROOP.Managers
 
                 if (frame == 10060)
                 {
-                    ButtonUtilities.UnloadObject(new List<uint> { 0x8034DC28 });
+                    ButtonUtilities.UnloadObject(new List<ObjectDataModel> { new ObjectDataModel(0x8034DC28) });
                 }
 
                 if (frame == 10475)
                 {
-                    Config.Stream.SetValue((ushort)32832, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+                    Config.Stream.SetValue((ushort)32832, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                 }
 
                 _rollingRocksScheduleIndex++;

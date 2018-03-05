@@ -42,7 +42,7 @@ namespace STROOP.Structs
                     break;
                 case 1:
                     VarName = "Angle ";
-                    Address = MarioConfig.StructAddress + MarioConfig.YawFacingOffset;
+                    Address = MarioConfig.StructAddress + MarioConfig.FacingYawOffset;
                     MemoryType = typeof(ushort);
                     break;
                 case 2:

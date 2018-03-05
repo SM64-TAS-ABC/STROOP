@@ -5,18 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using STROOP.Structs.Configurations;
+using STROOP.Models;
 
 namespace STROOP.Structs
 {
     public static class ObjectSlotsConfig
     {
-        public static ObjectSlot HoverObjectSlot;
-
         public static readonly uint ProcessGroupStructSize = 0x68;
 
         public static readonly int MaxSlots = 240;
 
-        public static readonly Dictionary<byte, Color> ProcessingGroupsColor =
+        private static readonly Dictionary<byte, Color> ProcessingGroupsColor =
             new Dictionary<byte, Color>()
             {
                 [0x0B] = ColorTranslator.FromHtml("#FF00A5"),
@@ -30,8 +29,15 @@ namespace STROOP.Structs
                 [0x08] = ColorTranslator.FromHtml("#8000FF"),
                 [0x0C] = ColorTranslator.FromHtml("#FF00FF"),
             };
-        public static readonly List<byte> ProcessingGroups = ProcessingGroupsColor.Keys.ToList();
         public static readonly Color VacantSlotColor = ColorTranslator.FromHtml("#AAAAAA");
+        public static Color GetProcessingGroupColor(byte? group)
+        {
+            if (group.HasValue)
+                return ProcessingGroupsColor[group.Value];
+            else
+                return VacantSlotColor;
+        }
+        public static readonly List<byte> ProcessingGroups = ProcessingGroupsColor.Keys.ToList();
 
         public static uint FirstGroupingAddress { get { return Config.SwitchRomVersion(FirstGroupingAddressUS, FirstGroupingAddressJP); } }
         public static readonly uint FirstGroupingAddressUS = 0x8033CBE0;

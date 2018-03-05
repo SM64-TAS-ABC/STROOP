@@ -10,50 +10,66 @@ using System.Drawing;
 using STROOP.Extensions;
 using STROOP.Structs.Configurations;
 using STROOP.Controls;
+using STROOP.Models;
+using System.Collections.ObjectModel;
 
 namespace STROOP.Managers
 {
     public class ObjectSlotsManager
     {
-        public class ObjectSlotData
-        {
-            public uint Address;
-            public byte ObjectProcessGroup;
-            public int ProcessIndex;
-            public int? VacantSlotIndex;
-            public float DistanceToMario;
-            public bool IsActive;
-            public uint Behavior;
-        }
-
+        /// <summary>
+        /// The default size of the object slot UI element
+        /// </summary>
         const int DefaultSlotSize = 36;
 
-        public ObjectSlot[] ObjectSlots;
-        public ObjectSlotManagerGui ManagerGui;
+        public enum TabType { Object, Map, Model, Custom, CamHack, Other };
+        public enum SortMethodType { ProcessingOrder, MemoryOrder, DistanceToMario };
+        public enum SlotLabelType { Recommended, SlotPosVs, SlotPos, SlotIndex }
+        public enum ClickType { ObjectClick, MapClick, ModelClick, CamHackClick, MarkClick };
 
-        public const byte VacantGroup = 0xFF;
+        public ObjectSlot HoveredOverSlot { get; private set; }
 
-        Dictionary<uint, int> _memoryAddressSlotIndex;
-        public Dictionary<uint, ObjectSlot> MemoryAddressSortedSlot = new Dictionary<uint, ObjectSlot>();
-        Dictionary<uint, Tuple<int?, int?>> _lastSlotLabel = new Dictionary<uint, Tuple<int?, int?>>();
-        bool _labelsLocked = false;
+        public List<ObjectSlot> ObjectSlots;
+
+        ObjectSlotManagerGui _gui;
+
+        Dictionary<uint, Tuple<int?, int?>> _lockedSlotIndices = new Dictionary<uint, Tuple<int?, int?>>();
+        public bool LabelsLocked = false;
+
         public List<uint> SelectedSlotsAddresses = new List<uint>();
         public List<uint> SelectedOnMapSlotsAddresses = new List<uint>();
         public List<uint> MarkedSlotsAddresses = new List<uint>();
 
-        BehaviorCriteria? _lastSelectedBehavior;
-        uint _stoodOnObject, _interactionObject, _heldObject, _usedObject, _closestObject, _cameraObject, _cameraHackObject,
-            _modelObject, _floorObject, _wallObject, _ceilingObject, _parentObject, _parentUnusedObject, _parentNoneObject;
-        bool _selectedUpdatePending = false;
-        Image _multiImage = null;
+        private Dictionary<uint, string> _slotLabels = new Dictionary<uint, string>();
+        public IReadOnlyDictionary<uint, string> SlotLabelsForObjects { get; private set; }
 
-        private int _activeObjectCount;
-        public int ActiveObjectCount { get { return _activeObjectCount; } }
-
-        public enum SortMethodType { ProcessingOrder, MemoryOrder, DistanceToMario };
-        public enum SlotLabelType { Recommended, SlotPosVs, SlotPos, SlotIndex }
+        public TabType ActiveTab;
         public SortMethodType SortMethod = SortMethodType.ProcessingOrder;
         public SlotLabelType LabelMethod = SlotLabelType.Recommended;
+
+        public ObjectSlotsManager(ObjectSlotManagerGui gui, TabControl tabControlMain)
+        {
+            _gui = gui;
+
+            // Add SortMethods adn LabelMethods
+            _gui.SortMethodComboBox.DataSource = Enum.GetValues(typeof(SortMethodType));
+            _gui.LabelMethodComboBox.DataSource = Enum.GetValues(typeof(SlotLabelType));
+
+            _gui.TabControl.Selected += TabControl_Selected;
+            TabControl_Selected(this, new TabControlEventArgs(_gui.TabControl.SelectedTab, -1, TabControlAction.Selected));
+
+            // Create and setup object slots
+            ObjectSlots = new List<ObjectSlot>();
+            foreach (int i in Enumerable.Range(0, ObjectSlotsConfig.MaxSlots))
+            {
+                var objectSlot = new ObjectSlot(this, i, _gui, new Size(DefaultSlotSize, DefaultSlotSize));
+                objectSlot.Click += (sender, e) => OnSlotClick(sender, e);
+                ObjectSlots.Add(objectSlot);
+                _gui.FlowLayoutContainer.Controls.Add(objectSlot);
+            };
+
+            SlotLabelsForObjects = new ReadOnlyDictionary<uint, string>(_slotLabels);
+        }
 
         public void ChangeSlotSize(int newSize)
         {
@@ -61,77 +77,28 @@ namespace STROOP.Managers
                 objSlot.Size = new Size(newSize, newSize);
         }
 
-        public ObjectSlotsManager(ObjectSlotManagerGui managerGui, TabControl tabControlMain)
+        private static readonly Dictionary<string, TabType> TabNameToTabType = new Dictionary<string, TabType>()
         {
-            ManagerGui = managerGui;
-
-            // Add SortMethods
-            ManagerGui.SortMethodComboBox.DataSource = Enum.GetValues(typeof(ObjectSlotsManager.SortMethodType));
-
-            // Add LabelMethods
-            ManagerGui.LabelMethodComboBox.DataSource = Enum.GetValues(typeof(ObjectSlotsManager.SlotLabelType));
-
-            ManagerGui.TabControl.Selected += TabControl_Selected;
-            TabControl_Selected(this, new TabControlEventArgs(ManagerGui.TabControl.SelectedTab, -1, TabControlAction.Selected));
-
-            // Create and setup object slots
-            ObjectSlot.tabControlMain = tabControlMain;
-            ObjectSlots = new ObjectSlot[ObjectSlotsConfig.MaxSlots];
-            for (int i = 0; i < ObjectSlotsConfig.MaxSlots; i++)
-            {
-                var objectSlot = new ObjectSlot(i, this, ManagerGui, new Size(DefaultSlotSize, DefaultSlotSize));
-                ObjectSlots[i] = objectSlot;
-                objectSlot.Click += (sender, e) => OnSlotClick(sender, e);
-                ManagerGui.FlowLayoutContainer.Controls.Add(objectSlot);
-            }
-
-            // Change default
-            ChangeSlotSize(DefaultSlotSize);
-        }
-
+            ["Object"] = TabType.Object,
+            ["Map"] = TabType.Map,
+            ["Model"] = TabType.Model,
+            ["Custom"] = TabType.Custom,
+            ["Cam Hack"] = TabType.CamHack,
+        };
         private void TabControl_Selected(object sender, TabControlEventArgs e)
         {
-            switch (e.TabPage.Text)
-            {
-                case "Object":
-                    ActiveTab = TabType.Object;
-                    break;
-
-                case "Map":
-                    ActiveTab = TabType.Map;
-                    break;
-
-                case "Model":
-                    ActiveTab = TabType.Model;
-                    break;
-
-                case "Custom":
-                    ActiveTab = TabType.Custom;
-                    break;
-
-                case "Cam Hack":
-                    ActiveTab = TabType.CamHack;
-                    break;
-
-                default:
-                    ActiveTab = TabType.Other;
-                    break;
-            }
+            TabType tabType;
+            if (!TabNameToTabType.TryGetValue(e.TabPage.Text, out tabType))
+                tabType = TabType.Other;
+            ActiveTab = tabType;
         }
-
-        public enum TabType { Object, Map, Model, Custom, CamHack, Other };
-
-        public TabType ActiveTab;
-
-        public enum ClickType { ObjectClick, MapClick, ModelClick, CamHackClick, MarkClick };
 
         private void OnSlotClick(object sender, EventArgs e)
         {
             // Make sure the tab has loaded
-            if (ManagerGui.TabControl.SelectedTab == null)
+            if (_gui.TabControl.SelectedTab == null)
                 return;
 
-            _selectedUpdatePending = true;
             ObjectSlot selectedSlot = sender as ObjectSlot;
             selectedSlot.Focus();
 
@@ -142,12 +109,6 @@ namespace STROOP.Managers
             DoSlotClickUsingInput(selectedSlot, isCtrlKeyHeld, isShiftKeyHeld, isAltKeyHeld);
         }
 
-        public void SelectSlotByAddress(uint address)
-        {
-            ObjectSlot slot = ObjectSlots.FirstOrDefault(s => s.Address == address);
-            if (slot != null) DoSlotClickUsingInput(slot, false, false, false);
-        }
-
         private void DoSlotClickUsingInput(
             ObjectSlot selectedSlot, bool isCtrlKeyHeld, bool isShiftKeyHeld, bool isAltKeyHeld)
         {
@@ -155,6 +116,12 @@ namespace STROOP.Managers
             bool shouldToggle = ShouldToggle(isCtrlKeyHeld, isAltKeyHeld);
             bool shouldExtendRange = isShiftKeyHeld;
             DoSlotClickUsingSpecifications(selectedSlot, click, shouldToggle, shouldExtendRange);
+        }
+
+        public void SelectSlotByAddress(uint address)
+        {
+            ObjectSlot slot = ObjectSlots.FirstOrDefault(s => s.CurrentObject.Address == address);
+            if (slot != null) DoSlotClickUsingInput(slot, false, false, false);
         }
 
         private ClickType GetClickType(bool isAltKeyHeld)
@@ -208,17 +175,22 @@ namespace STROOP.Managers
         public void DoSlotClickUsingSpecifications(
             ObjectSlot selectedSlot, ClickType click, bool shouldToggle, bool shouldExtendRange, bool? switchToObjTabNullable = null)
         {
+            if (selectedSlot.CurrentObject == null)
+                return;
+
             if (click == ClickType.ModelClick)
             {
                 uint currentModelObjectAddress = Config.ModelManager.ModelObjectAddress;
-                uint newModelObjectAddress = currentModelObjectAddress == selectedSlot.Address ? 0 : selectedSlot.Address;
+                uint newModelObjectAddress = currentModelObjectAddress == selectedSlot.CurrentObject.Address ? 0 
+                    : selectedSlot.CurrentObject.Address;
                 Config.ModelManager.ModelObjectAddress = newModelObjectAddress;
                 Config.ModelManager.ManualMode = false;
             }
             else if (click == ClickType.CamHackClick)
             {
                 uint currentCamHackSlot = Config.Stream.GetUInt32(CameraHackConfig.CameraHackStruct + CameraHackConfig.ObjectOffset);
-                uint newCamHackSlot = currentCamHackSlot == selectedSlot.Address ? 0 : selectedSlot.Address;
+                uint newCamHackSlot = currentCamHackSlot == selectedSlot.CurrentObject.Address ? 0 
+                    : selectedSlot.CurrentObject.Address;
                 Config.Stream.SetValue(newCamHackSlot, CameraHackConfig.CameraHackStruct + CameraHackConfig.ObjectOffset);
             }
             else
@@ -241,14 +213,12 @@ namespace STROOP.Managers
 
                 bool switchToObjTab = switchToObjTabNullable ?? ShouldSwitchToObjTabByDefault();
                 if (switchToObjTab)
-                {
-                    ManagerGui.TabControl.SelectedTab = ManagerGui.TabControl.TabPages["tabPageObjects"];
-                }
+                    _gui.TabControl.SelectedTab = _gui.TabControl.TabPages["tabPageObjects"];
 
                 if (shouldExtendRange && selection.Count > 0)
                 {
                     uint startRangeAddress = selection[selection.Count - 1];
-                    int startRange = ObjectSlots.First(o => o.Address == startRangeAddress).Index;
+                    int startRange = ObjectSlots.First(o => o.CurrentObject.Address == startRangeAddress).Index;
                     int endRange = selectedSlot.Index;
 
                     int rangeSize = Math.Abs(endRange - startRange);
@@ -257,7 +227,7 @@ namespace STROOP.Managers
                     for (int i = 0; i <= rangeSize; i++)
                     {
                         int index = startRange + i * iteratorDirection;
-                        uint address = ObjectSlots[index].Address;
+                        uint address = ObjectSlots[index].CurrentObject.Address;
                         if (!selection.Contains(address))
                             selection.Add(address);
                     }
@@ -265,438 +235,125 @@ namespace STROOP.Managers
                 else
                 {
                     if (!shouldToggle)
-                    {
                         selection.Clear();
-                    }
 
-                    if (selection.Contains(selectedSlot.Address))
-                    {
-                        selection.Remove(selectedSlot.Address);
-                        if (click == ClickType.ObjectClick)
-                        {
-                            _lastSelectedBehavior = null;
-                        }
-                    }
-                    else
-                    {
-                        selection.Add(selectedSlot.Address);
-                    }
+                        if (selection.Contains(selectedSlot.CurrentObject.Address))
+                            selection.Remove(selectedSlot.CurrentObject.Address);
+                        else
+                            selection.Add(selectedSlot.CurrentObject.Address);
                 }
 
                 if (click == ClickType.ObjectClick)
-                {
-                    Config.ObjectManager.CurrentAddresses = selection;
-                }
+                    Config.ObjectManager.DisplayedObjects = ObjectSlots
+                        .Where(s => selection.Contains(s.CurrentObject.Address))
+                        .Select(s => s.CurrentObject.Address);
             }
         }
  
         public string GetSlotNameFromAddress(uint address)
         {
-            ObjectSlot slot = ObjectSlots.FirstOrDefault(s => s.Address == address);
+            ObjectSlot slot = ObjectSlots.FirstOrDefault(s => s.CurrentObject.Address == address);
             return slot?.Text;
         }
 
-        public uint? GetSlotAddressFromName(string name)
+        public ObjectDataModel GetObjectFromName(string name)
         {
             if (name == null) return null;
             name = name.ToLower().Trim();
             ObjectSlot slot = ObjectSlots.FirstOrDefault(s => s.Text.ToLower() == name);
-            return slot?.Address;
-        }
-
-        private List<ObjectSlotData> GetProcessedObjects()
-        {
-            var newObjectSlotData = new ObjectSlotData[ObjectSlotsConfig.MaxSlots];
-
-            // Loop through each processing group
-            int currentSlot = 0;
-            foreach (var objectProcessGroup in ObjectSlotsConfig.ProcessingGroups)
-            {
-                uint processGroupStructAddress = ObjectSlotsConfig.FirstGroupingAddress + objectProcessGroup * ObjectSlotsConfig.ProcessGroupStructSize;
-
-                // Calculate start and ending objects
-                uint currentGroupObject = Config.Stream.GetUInt32(processGroupStructAddress + ObjectConfig.ProcessedNextLinkOffset);
-
-                // Loop through every object within the group
-                 while ((currentGroupObject != processGroupStructAddress && currentSlot < ObjectSlotsConfig.MaxSlots))
-                {
-                    // Validate current object
-                    if (Config.Stream.GetUInt16(currentGroupObject + ObjectConfig.HeaderOffset) != 0x18)
-                        return null;
-
-                    // Get data
-                    newObjectSlotData[currentSlot] = new ObjectSlotData()
-                    {
-                        Address = currentGroupObject,
-                        ObjectProcessGroup = objectProcessGroup,
-                        ProcessIndex = currentSlot,
-                        VacantSlotIndex = null
-                    };
-
-                    // Move to next object
-                    currentGroupObject = Config.Stream.GetUInt32(currentGroupObject + ObjectConfig.ProcessedNextLinkOffset);
-
-                    // Mark next slot
-                    currentSlot++;
-                }
-            }
-
-            var vacantSlotStart = currentSlot;
-
-            // Now calculate vacant addresses
-            uint currentObject = Config.Stream.GetUInt32(ObjectSlotsConfig.VactantPointerAddress);
-            for (; currentSlot < ObjectSlotsConfig.MaxSlots; currentSlot++)
-            {
-                // Validate current object
-                if (Config.Stream.GetUInt16(currentObject + ObjectConfig.HeaderOffset) != 0x18)
-                    return null;
-
-                newObjectSlotData[currentSlot] = new ObjectSlotData()
-                {
-                    Address = currentObject,
-                    ObjectProcessGroup = VacantGroup,
-                    ProcessIndex = currentSlot,
-                    VacantSlotIndex = currentSlot - vacantSlotStart
-                };
-
-                currentObject = Config.Stream.GetUInt32(currentObject + ObjectConfig.ProcessedNextLinkOffset);
-            }
-
-            return newObjectSlotData.ToList();
+            return slot?.CurrentObject;
         }
 
         public void Update()
         {
-            LabelMethod = (SlotLabelType) ManagerGui.LabelMethodComboBox.SelectedItem;
-            SortMethod = (SortMethodType) ManagerGui.SortMethodComboBox.SelectedItem;
+            LabelMethod = (SlotLabelType)_gui.LabelMethodComboBox.SelectedItem;
+            SortMethod = (SortMethodType) _gui.SortMethodComboBox.SelectedItem;
 
-            var newObjectSlotData = GetProcessedObjects();
-            if (newObjectSlotData == null)
-                return;
+            // Lock label update
+            LabelsLocked = _gui.LockLabelsCheckbox.Checked;
 
-            // Create Memory-SlotIndex lookup table
-            if (_memoryAddressSlotIndex == null)
-            {
-                _memoryAddressSlotIndex = new Dictionary<uint, int>();
-                var sortedList = newObjectSlotData.OrderBy((objData) => objData.Address).ToList();
-                foreach (var objectData in newObjectSlotData)
-                {
-                    _memoryAddressSlotIndex.Add(objectData.Address,
-                        sortedList.FindIndex((objData) => objectData.Address == objData.Address));
-                }
-            }
-
-            // Check behavior bank
-            Config.ObjectAssociations.BehaviorBankStart = Config.Stream.GetUInt32(Config.ObjectAssociations.SegmentTable + 0x13 * 4);
-
-            // Get mario position
-            float marioX, marioY, marioZ;
-            marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-
-            // Calculate distance to Mario
-            foreach (var objSlot in newObjectSlotData)
-            {
-                // Get object relative-to-maario position
-                float dX, dY, dZ;
-                dX = marioX - Config.Stream.GetSingle(objSlot.Address + ObjectConfig.XOffset);
-                dY = marioY - Config.Stream.GetSingle(objSlot.Address + ObjectConfig.YOffset);
-                dZ = marioZ - Config.Stream.GetSingle(objSlot.Address + ObjectConfig.ZOffset);
-
-                objSlot.DistanceToMario = (float)Math.Sqrt(dX * dX + dY * dY + dZ * dZ);
-
-                // Check if active/loaded
-                objSlot.IsActive = Config.Stream.GetUInt16(objSlot.Address + ObjectConfig.ActiveOffset) != 0x0000;
-
-                objSlot.Behavior = Config.Stream.GetUInt32(objSlot.Address + ObjectConfig.BehaviorScriptOffset) & 0x7FFFFFFF;
-            }
+            ObjectSlot hoverObjectSlot = ObjectSlots.FirstOrDefault(s => s.IsHovering);
 
             // Processing sort order
+            IEnumerable<ObjectDataModel> sortedObjects;
             switch (SortMethod)
             {
                 case SortMethodType.ProcessingOrder:
                     // Data is already sorted by processing order
+                    sortedObjects = DataModels.Objects.OrderBy(o => o.ProcessIndex);
                     break;
 
                 case SortMethodType.MemoryOrder:
                     // Order by address
-                    newObjectSlotData = newObjectSlotData.OrderBy(s => s.Address).ToList();
+                    sortedObjects = DataModels.Objects.OrderBy(o => o.Address);
                     break;
 
                 case SortMethodType.DistanceToMario:
 
                     // Order by address
-                    var activeObjects = newObjectSlotData.Where(s => s.IsActive).OrderBy(s => s.DistanceToMario);
-                    var inActiveObjects = newObjectSlotData.Where(s => !s.IsActive).OrderBy(s => s.DistanceToMario);
+                    var activeObjects = DataModels.Objects.Where(s => s.IsActive).OrderBy(s => s.DistanceToMarioCalculated);
+                    var inActiveObjects = DataModels.Objects.Where(s => !s.IsActive).OrderBy(s => s.DistanceToMarioCalculated);
 
-                    newObjectSlotData = activeObjects.Concat(inActiveObjects).ToList();
+                    sortedObjects = activeObjects.Concat(inActiveObjects);
                     break;
-            }
-
-            _activeObjectCount = 0;
-
-            _stoodOnObject = Config.Stream.GetUInt32(MarioConfig.StoodOnObjectPointerAddress);
-            _interactionObject = Config.Stream.GetUInt32(MarioConfig.InteractionObjectPointerOffset + MarioConfig.StructAddress);
-            _heldObject = Config.Stream.GetUInt32(MarioConfig.HeldObjectPointerOffset + MarioConfig.StructAddress);
-            _usedObject = Config.Stream.GetUInt32(MarioConfig.UsedObjectPointerOffset + MarioConfig.StructAddress);
-            _cameraObject = Config.Stream.GetUInt32(CameraConfig.SecondaryObjectAddress);
-            _cameraHackObject = Config.Stream.GetUInt32(CameraHackConfig.CameraHackStruct + CameraHackConfig.ObjectOffset);
-            _modelObject = Config.ModelManager.ModelObjectAddress;
-
-            List<ObjectSlotData> closestObjectCandidates =
-                newObjectSlotData.FindAll(s =>
-                    s.IsActive &&
-                    s.Behavior != (MarioObjectConfig.BehaviorValue & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart);
-            if (OptionsConfig.ExcludeDustForClosestObject)
-            {
-                closestObjectCandidates =
-                    closestObjectCandidates.FindAll(s =>
-                        s.Behavior != (ObjectConfig.DustSpawnerBehaviorValue & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart &&
-                        s.Behavior != (ObjectConfig.DustBallBehaviorValue & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart &&
-                        s.Behavior != (ObjectConfig.DustBehaviorValue & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart);
-            }
-            _closestObject = closestObjectCandidates.OrderBy(s => s.DistanceToMario).FirstOrDefault()?.Address ?? 0;
-
-            uint floorTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
-            _floorObject = floorTriangleAddress == 0 ? 0 : Config.Stream.GetUInt32(floorTriangleAddress + TriangleOffsetsConfig.AssociatedObject);
-
-            uint wallTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
-            _wallObject = wallTriangleAddress == 0 ? 0 : Config.Stream.GetUInt32(wallTriangleAddress + TriangleOffsetsConfig.AssociatedObject);
-
-            uint ceilingTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
-            _ceilingObject = ceilingTriangleAddress == 0 ? 0 : Config.Stream.GetUInt32(ceilingTriangleAddress + TriangleOffsetsConfig.AssociatedObject);
-
-            ObjectSlot hoverObjectSlot = ObjectSlotsConfig.HoverObjectSlot;
-            if (hoverObjectSlot != null)
-            {
-                _parentObject = Config.Stream.GetUInt32(hoverObjectSlot.Address + ObjectConfig.ParentOffset);
-                _parentUnusedObject = _parentObject == ObjectSlotsConfig.UnusedSlotAddress ? hoverObjectSlot.Address : 0;
-                _parentNoneObject = _parentObject == 0 ? hoverObjectSlot.Address : 0;
-            }
-            else
-            {
-                _parentObject = 0;
-                _parentUnusedObject = 0;
-                _parentNoneObject = 0;
+                default:
+                    throw new ArgumentOutOfRangeException("Uknown sort method type");
             }
 
             // Update slots
-            UpdateSlots(newObjectSlotData);
+            UpdateSlots(sortedObjects);
         }
 
-        private void UpdateSlots(List<ObjectSlotData> newObjectSlotData)
+        private void UpdateSlots(IEnumerable<ObjectDataModel> sortedObjects)
         {
-            // Lock label update
-            _labelsLocked = ManagerGui.LockLabelsCheckbox.Checked;
-
-            for (int i = 0; i < ObjectSlotsConfig.MaxSlots; i++)
+            // Update labels
+            if (!LabelsLocked)
             {
-                UpdateSlot(newObjectSlotData[i], ObjectSlots[i]);
-                MemoryAddressSortedSlot[newObjectSlotData[i].Address] = ObjectSlots[i];
+                foreach(ObjectDataModel obj in DataModels.Objects)
+                    _lockedSlotIndices[obj.Address] = new Tuple<int?, int?>(obj.ProcessIndex, obj.VacantSlotIndex);
             }
+            foreach (uint address in sortedObjects.Select(o => o.Address))
+                _slotLabels[address] = GetSlotLabelForAddress(address);
 
-            BehaviorCriteria? multiBehavior = null;
-            List<BehaviorCriteria> selectedBehaviorCriterias = new List<BehaviorCriteria>();
-            bool firstObject = true;
-            foreach (uint slotAddress in SelectedSlotsAddresses)
-            {
-                var behaviorCritera = MemoryAddressSortedSlot[slotAddress].Behavior;
-
-                selectedBehaviorCriterias.Add(behaviorCritera);
-
-                if (multiBehavior.HasValue)
-                {
-                    multiBehavior = multiBehavior.Value.Generalize(behaviorCritera);
-                }
-                else if (firstObject)
-                {
-                    multiBehavior = behaviorCritera;
-                    firstObject = false;
-                }
-            }
-
-            if (SelectedSlotsAddresses.Count > 1)
-            {
-                if (_selectedUpdatePending)
-                {
-                    if (_lastSelectedBehavior != multiBehavior)
-                    {
-                        if (multiBehavior.HasValue)
-                        {
-                            Config.ObjectManager.Behavior = String.Format("0x{0}", multiBehavior.Value.BehaviorAddress.ToString("X4"));
-                            Config.ObjectManager.SetBehaviorWatchVariables(
-                                Config.ObjectAssociations.GetWatchVarControls(multiBehavior.Value),
-                                ObjectSlotsConfig.VacantSlotColor.Lighten(0.8));
-                        }
-                        else
-                        {
-                            Config.ObjectManager.Behavior = "";
-                            Config.ObjectManager.SetBehaviorWatchVariables(new List<WatchVariableControl>(), Color.White);
-                        }
-                        _lastSelectedBehavior = multiBehavior;
-                    }
-
-                    _multiImage?.Dispose();
-                    var multiBitmap = new Bitmap(256, 256);
-                    using (Graphics gfx = Graphics.FromImage(multiBitmap))
-                    {
-                        int numCols = (int)Math.Ceiling(Math.Sqrt(selectedBehaviorCriterias.Count));
-                        int numRows = (int)Math.Ceiling(selectedBehaviorCriterias.Count / (double)numCols);
-                        int imageSize = 256 / numCols;
-                        for (int row = 0; row < numRows; row++)
-                        {
-                            for (int col = 0; col < numCols; col++)
-                            {
-                                int index = row * numCols + col;
-                                if (index >= selectedBehaviorCriterias.Count) break;
-                                Image image = Config.ObjectAssociations.GetObjectImage(selectedBehaviorCriterias[index], false);
-                                Rectangle rect = new Rectangle(col * imageSize, row * imageSize, imageSize, imageSize);
-                                Rectangle zoomedRect = rect.Zoom(image.Size);
-                                gfx.DrawImage(image, zoomedRect);
-                            }
-                        }
-                    }
-                    _multiImage = multiBitmap;
-                    Config.ObjectManager.Image = _multiImage;
-
-                    Config.ObjectManager.Name = SelectedSlotsAddresses.Count + " Objects Selected";
-                    Config.ObjectManager.BackColor = ObjectSlotsConfig.VacantSlotColor;
-                    Config.ObjectManager.SlotIndex = "";
-                    Config.ObjectManager.SlotPos = "";
-
-                    _selectedUpdatePending = false;
-                }
-            }
-            else if (SelectedSlotsAddresses.Count == 0)
-            {
-                Config.ObjectManager.Name = "No Object Selected";
-                Config.ObjectManager.BackColor = ObjectSlotsConfig.VacantSlotColor;
-                Config.ObjectManager.Behavior = "";
-                Config.ObjectManager.SlotIndex = "";
-                Config.ObjectManager.SlotPos = "";
-                Config.ObjectManager.Image = null;
-            }
+            // Update object slots
+            foreach (var item in sortedObjects.Zip(ObjectSlots, (o, s) => new { Slot = s, Obj = o }))
+                item.Slot.Update(item.Obj);
         }
 
-        private void UpdateSlot(ObjectSlotData objData, ObjectSlot objSlot)
+        public int GetSlotIndexFromAddres(uint objAddress)
         {
-            uint objAddress = objData.Address;
-            BehaviorCriteria behaviorCriteria;
+            return ObjectSlots.FirstOrDefault(o => o.CurrentObject.Address == objAddress)?.Index ?? -1;
+        }
 
-            objSlot.IsActive = objData.IsActive;
-            objSlot.Address = objAddress;
-
-            // Update Overlays
-            objSlot.DrawSelectedOverlay = SelectedSlotsAddresses.Contains(objAddress);
-            objSlot.DrawStoodOnOverlay = OverlayConfig.ShowOverlayStoodOnObject && objAddress == _stoodOnObject;
-            objSlot.DrawInteractionOverlay = OverlayConfig.ShowOverlayInteractionObject && objAddress == _interactionObject;
-            objSlot.DrawHeldOverlay = OverlayConfig.ShowOverlayHeldObject && objAddress == _heldObject;
-            objSlot.DrawUsedOverlay = OverlayConfig.ShowOverlayUsedObject && objAddress == _usedObject;
-            objSlot.DrawClosestOverlay = OverlayConfig.ShowOverlayClosestObject && objAddress == _closestObject;
-            objSlot.DrawCameraOverlay = OverlayConfig.ShowOverlayCameraObject && objAddress == _cameraObject;
-            objSlot.DrawCameraHackOverlay = OverlayConfig.ShowOverlayCameraHackObject && objAddress == _cameraHackObject;
-            objSlot.DrawModelOverlay = objAddress == _modelObject;
-            objSlot.DrawFloorOverlay = OverlayConfig.ShowOverlayFloorObject && objAddress == _floorObject;
-            objSlot.DrawWallOverlay = OverlayConfig.ShowOverlayWallObject && objAddress == _wallObject;
-            objSlot.DrawCeilingOverlay = OverlayConfig.ShowOverlayCeilingObject && objAddress == _ceilingObject;
-            objSlot.DrawParentOverlay = OverlayConfig.ShowOverlayParentObject && objAddress == _parentObject;
-            objSlot.DrawParentUnusedOverlay = OverlayConfig.ShowOverlayParentObject && objAddress == _parentUnusedObject;
-            objSlot.DrawParentNoneOverlay = OverlayConfig.ShowOverlayParentObject && objAddress == _parentNoneObject;
-            objSlot.DrawMarkedOverlay = MarkedSlotsAddresses.Contains(objAddress);
-
-            if (objData.IsActive)
-                _activeObjectCount++;
-
-            var gfxId = Config.Stream.GetUInt32(objAddress + ObjectConfig.BehaviorGfxOffset);
-            var subType = Config.Stream.GetInt32(objAddress + ObjectConfig.BehaviorSubtypeOffset);
-            var appearance = Config.Stream.GetInt32(objAddress + ObjectConfig.BehaviorAppearanceOffset);
-
-            uint segmentedBehavior = 0x13000000 + objData.Behavior - Config.ObjectAssociations.BehaviorBankStart;
-            if (objData.Behavior == 0) // uninitialized object
-                segmentedBehavior = 0;
-            behaviorCriteria = new BehaviorCriteria()
-            {
-                BehaviorAddress = Config.SwitchRomVersion(segmentedBehavior, Config.ObjectAssociations.AlignJPBehavior(segmentedBehavior)),
-                GfxId = gfxId,
-                SubType = subType,
-                Appearance = appearance
-            };
-
-            if (Config.ObjectAssociations.RecognizedBehavior(behaviorCriteria))
-            {
-                objSlot.Behavior = behaviorCriteria;
-            }
-            else
-            {
-                behaviorCriteria = objSlot.Behavior; // skip update, bad behavior
-            }
-            var processGroup = objData.ObjectProcessGroup;
-            objSlot.ProcessGroup = processGroup;
-
-            var newColor = objData.ObjectProcessGroup == VacantGroup ? ObjectSlotsConfig.VacantSlotColor :
-                ObjectSlotsConfig.ProcessingGroupsColor[objData.ObjectProcessGroup];
-            objSlot.BackColor = newColor;
-
-            if (!_labelsLocked)
-                _lastSlotLabel[objAddress] = new Tuple<int?, int?>(objData.ProcessIndex, objData.VacantSlotIndex);
-
-            string labelText = "";
+        public string GetSlotLabelForAddress(uint objAddress)
+        {
             switch (LabelMethod)
             {
                 case SlotLabelType.Recommended:
                     if (SortMethod == SortMethodType.MemoryOrder)
                         goto case SlotLabelType.SlotIndex;
-                    goto case SlotLabelType.SlotPosVs;
+                    else
+                        goto case SlotLabelType.SlotPosVs;
 
                 case SlotLabelType.SlotIndex:
-                    labelText = String.Format("{0}", (objData.Address - ObjectSlotsConfig.LinkStartAddress)
+                    return String.Format("{0}", (objAddress - ObjectSlotsConfig.LinkStartAddress)
                         / ObjectConfig.StructSize + (OptionsConfig.SlotIndexsFromOne ? 1 : 0));
-                    break;
 
                 case SlotLabelType.SlotPos:
-                    labelText = String.Format("{0}", _lastSlotLabel[objAddress].Item1
+                    return String.Format("{0}", _lockedSlotIndices[objAddress].Item1
                         + (OptionsConfig.SlotIndexsFromOne ? 1 : 0));
-                    break;
 
                 case SlotLabelType.SlotPosVs:
-                    var vacantSlotIndex = _lastSlotLabel[objAddress].Item2;
+                    var vacantSlotIndex = _lockedSlotIndices[objAddress].Item2;
                     if (!vacantSlotIndex.HasValue)
                         goto case SlotLabelType.SlotPos;
 
-                    labelText = String.Format("VS{0}", vacantSlotIndex.Value
+                    return String.Format("VS{0}", vacantSlotIndex.Value
                         + (OptionsConfig.SlotIndexsFromOne ? 1 : 0));
-                    break;
+
+                default:
+                    return "";
             }
-
-            objSlot.TextColor = _labelsLocked ? Color.Blue : Color.Black;
-            objSlot.Text = labelText;
-
-            // Update object manager image
-            if (SelectedSlotsAddresses.Count <= 1 && SelectedSlotsAddresses.Contains(objAddress))
-            {
-                UpdateObjectManager(objSlot, behaviorCriteria, objData);
-            }
-        }
-
-        void UpdateObjectManager(ObjectSlot objSlot, BehaviorCriteria behaviorCriteria, ObjectSlotData objData)
-        {
-            var objAssoc = Config.ObjectAssociations.FindObjectAssociation(behaviorCriteria);
-            var newBehavior = objAssoc != null ? objAssoc.BehaviorCriteria : behaviorCriteria;
-            if (_lastSelectedBehavior != newBehavior || SelectedSlotsAddresses.Count == 0)
-            {
-                Config.ObjectManager.Behavior = String.Format("0x{0}", (behaviorCriteria.BehaviorAddress & 0xffffff).ToString("X4"));
-                Config.ObjectManager.Name = Config.ObjectAssociations.GetObjectName(behaviorCriteria);
-
-                Config.ObjectManager.SetBehaviorWatchVariables(Config.ObjectAssociations.GetWatchVarControls(behaviorCriteria), objSlot.BackColor.Lighten(0.8));
-                _lastSelectedBehavior = newBehavior;
-            }
-            Config.ObjectManager.Image = objSlot.ObjectImage;
-            Config.ObjectManager.BackColor = objSlot.BackColor;
-            int slotPos = objData.ObjectProcessGroup == VacantGroup ? objData.VacantSlotIndex.Value : objData.ProcessIndex;
-            Config.ObjectManager.SlotIndex = (_memoryAddressSlotIndex[objData.Address] + (OptionsConfig.SlotIndexsFromOne ? 1 : 0)).ToString();
-            Config.ObjectManager.SlotPos = (objData.ObjectProcessGroup == VacantGroup ? "VS " : "")
-                + (slotPos + (OptionsConfig.SlotIndexsFromOne ? 1 : 0)).ToString();
         }
     }
 }

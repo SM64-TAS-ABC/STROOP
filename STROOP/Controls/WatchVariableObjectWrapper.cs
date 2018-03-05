@@ -1,5 +1,6 @@
 ﻿using STROOP.Extensions;
 using STROOP.Managers;
+using STROOP.Models;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
@@ -83,8 +84,8 @@ namespace STROOP.Controls
             if (!slotName.StartsWith("slot")) return stringValue;
             slotName = slotName.Remove(0, "slot".Length);
             slotName = slotName.Trim();
-            uint? address = Config.ObjectSlotsManager.GetSlotAddressFromName(slotName);
-            return address != null ? address.Value.ToString() : stringValue;
+            ObjectDataModel obj = Config.ObjectSlotsManager.GetObjectFromName(slotName);
+            return obj != null ? obj.Address.ToString() : stringValue;
         }
     }
 }

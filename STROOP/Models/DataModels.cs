@@ -1,4 +1,5 @@
-﻿using STROOP.Structs.Configurations;
+﻿using STROOP.Structs;
+using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
@@ -10,34 +11,28 @@ namespace STROOP.Models
 {
     public static class DataModels
     {
-        private const int MaxDependencyLevel = 0;
+        private static List<IUpdatableDataModel> _models = new List<IUpdatableDataModel>();
 
-        static List<UpdatableDataModel> _models;
-
-        static public MarioDataModel Mario;
-        static public CameraDataModel Camera;
-        static public LevelDataModel Level;
+        public static MarioDataModel Mario { get; private set; }
+        public static CameraDataModel Camera { get; private set; }
+        public static LevelDataModel Level { get; private set; }
+        public static ObjectProcessorDataModel ObjectProcessor { get; private set; }
+        public static IReadOnlyList<ObjectDataModel> Objects { get => ObjectProcessor.Objects; }
 
         static DataModels()
         {
-            Mario = new MarioDataModel();
-            Level = new LevelDataModel();
-            Camera = new CameraDataModel();
-
-            // Add to models list (for updating)
-            _models = new List<UpdatableDataModel>()
-            {
-                Mario,
-                Camera,
-                Level,
-            };
+            _models.Add(ObjectProcessor = new ObjectProcessorDataModel());
+            _models.Add(Mario = new MarioDataModel());
+            _models.Add(Level = new LevelDataModel());
+            _models.Add(Camera = new CameraDataModel());
+            // Object models are dynamically created
         }
 
-        static public void Update()
+        public static void Update()
         {
             // Update all models
-            foreach (int level in Enumerable.Range(0, MaxDependencyLevel + 1))
-                _models.ForEach(m => m.Update(level));
+            _models.ForEach(m => m.Update());
+            _models.ForEach(m => m.Update2());
         }
     }
 }

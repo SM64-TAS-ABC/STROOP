@@ -9,7 +9,7 @@ using STROOP.Utilities;
 
 namespace STROOP.Models
 {
-    public class MarioDataModel : UpdatableDataModel
+    public class MarioDataModel : IUpdatableDataModel
     {
         #region Position
         private float _x;
@@ -52,12 +52,32 @@ namespace STROOP.Models
             get => _facingYaw;
             set
             {
-                if (Config.Stream.SetValue(value, MarioConfig.StructAddress + MarioConfig.YawFacingOffset))
+                if (Config.Stream.SetValue(value, MarioConfig.StructAddress + MarioConfig.FacingYawOffset))
                     _facingYaw = value;
             }
         }
+        private ushort _facingPitch;
+        public ushort FacingPitch
+        {
+            get => _facingPitch;
+            set
+            {
+                if (Config.Stream.SetValue(value, MarioConfig.StructAddress + MarioConfig.FacingPitchOffset))
+                    _facingPitch = value;
+            }
+        }
+        private ushort _facingRoll;
+        public ushort FacingRoll
+        {
+            get => _facingRoll;
+            set
+            {
+                if (Config.Stream.SetValue(value, MarioConfig.StructAddress + MarioConfig.FacingRollOffset))
+                    _facingRoll = value;
+            }
+        }
         #endregion
-        #region HOLP
+        #region HOLP/Held
         private float _holpX;
         public float HolpX
         {
@@ -245,43 +265,122 @@ namespace STROOP.Models
             set => PU_Z = value * 4;
         }
         #endregion
-
-        public override void Update(int dependencyLevel)
+        #region Statuses
+        private uint _action;
+        public uint Action
         {
-            switch (dependencyLevel)
+            get => _action;
+            set
             {
-                case 0:
-                    // Get Mario position and rotation
-                    _x = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-                    _y = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                    _z = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-                    _facingYaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
-
-                    // Get holp position
-                    _holpX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPXOffset);
-                    _holpY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPYOffset);
-                    _holpZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPZOffset);
-
-                    _hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-
-                    // Update triangles
-                    UInt32 floorTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
-                    _floorTriangle = floorTriangleAddress != 0x00 ? new TriangleDataModel(floorTriangleAddress) : null;
-                    UInt32 wallTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
-                    _wallTriangle = wallTriangleAddress != 0x00 ? new TriangleDataModel(wallTriangleAddress) : null;
-                    UInt32 ceilingTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
-                    _ceilingTriangle = ceilingTriangleAddress != 0x00 ? new TriangleDataModel(ceilingTriangleAddress) : null;
-
-                    _floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
-                    _normalY = _floorTriangle == null ? 1 : _floorTriangle.NormY;
-
-                    ushort marioAngleTruncated = MoreMath.NormalizeAngleTruncated(_facingYaw);
-                    (double xDist, double zDist) = MoreMath.GetComponentsFromVector(DeFactoSpeedQStep, marioAngleTruncated);
-                    NextIntendedQStepX = MoreMath.MaybeNegativeModulus(_x + xDist, 65536);
-                    NextIntendedQStepZ = MoreMath.MaybeNegativeModulus(_z + zDist, 65536);
-                    IsStationary = _x == NextIntendedQStepX && _z == NextIntendedQStepZ;
-                    break;
+                if (Config.Stream.SetValue(value, MarioConfig.StructAddress + MarioConfig.ActionOffset))
+                    _action = value;
             }
         }
+        #endregion
+        #region Objects
+        private uint _heldObject;
+        public uint HeldObject
+        {
+            get => _heldObject;
+            set
+            {
+                if (Config.Stream.SetValue(value, MarioConfig.StructAddress + MarioConfig.HeldObjectPointerOffset))
+                    _heldObject = value;
+            }
+        }
+
+        private uint _usedObject;
+        public uint UsedObject
+        {
+            get => _usedObject;
+            set
+            {
+                if (Config.Stream.SetValue(value, MarioConfig.StructAddress + MarioConfig.UsedObjectPointerOffset))
+                    _usedObject = value;
+            }
+        }
+
+        private uint _stoodOnObject;
+        public uint StoodOnObject
+        {
+            get => _stoodOnObject;
+            set
+            {
+                if (Config.Stream.SetValue(value, MarioConfig.StructAddress + MarioConfig.StoodOnObjectPointerAddress))
+                    _stoodOnObject = value;
+            }
+        }
+
+        private uint _interactionObject;
+        public uint InteractionObject
+        {
+            get => _interactionObject;
+            set
+            {
+                if (Config.Stream.SetValue(value, MarioConfig.StructAddress + MarioConfig.InteractionObjectPointerOffset))
+                    _interactionObject = value;
+            }
+        }
+        public uint ClosestObject { get; private set; }
+        #endregion
+
+        public void Update()
+        {
+            // Get Mario position
+            _x = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            _y = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            _z = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+
+            // Get rotation
+            _facingYaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            _facingPitch = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingPitchOffset);
+            _facingRoll = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingRollOffset);
+
+            // Get holp position
+            _holpX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPXOffset);
+            _holpY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPYOffset);
+            _holpZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPZOffset);
+
+            // Update triangles
+            UInt32 floorTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+            _floorTriangle = floorTriangleAddress != 0x00 ? new TriangleDataModel(floorTriangleAddress) : null;
+            UInt32 wallTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset);
+            _wallTriangle = wallTriangleAddress != 0x00 ? new TriangleDataModel(wallTriangleAddress) : null;
+            UInt32 ceilingTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
+            _ceilingTriangle = ceilingTriangleAddress != 0x00 ? new TriangleDataModel(ceilingTriangleAddress) : null;
+
+            _heldObject = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.HeldObjectPointerOffset);
+            _stoodOnObject = Config.Stream.GetUInt32(MarioConfig.StoodOnObjectPointerAddress);
+            _interactionObject = Config.Stream.GetUInt32(MarioConfig.InteractionObjectPointerOffset + MarioConfig.StructAddress);
+            _usedObject = Config.Stream.GetUInt32(MarioConfig.UsedObjectPointerOffset + MarioConfig.StructAddress);
+
+            // Find closest object
+            IEnumerable<ObjectDataModel> closestObjectCandidates =
+               DataModels.Objects.Where(o => o.IsActive && o.AbsoluteBehavior != MarioObjectConfig.BehaviorValue);
+            if (OptionsConfig.ExcludeDustForClosestObject)
+            {
+                closestObjectCandidates =
+                    closestObjectCandidates.Where(o =>
+                        o.AbsoluteBehavior != ObjectConfig.DustSpawnerBehaviorValue
+                        && o.AbsoluteBehavior != ObjectConfig.DustBallBehaviorValue
+                        && o.AbsoluteBehavior != ObjectConfig.DustBehaviorValue);
+            }
+            ClosestObject = closestObjectCandidates.OrderBy(o => o.DistanceToMarioCalculated).FirstOrDefault()?.Address ?? 0;
+
+            _hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+
+            _action = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.ActionOffset);
+           
+            _floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
+            _normalY = _floorTriangle == null ? 1 : _floorTriangle.NormY;
+
+            ushort marioAngleTruncated = MoreMath.NormalizeAngleTruncated(_facingYaw);
+            (double xDist, double zDist) = MoreMath.GetComponentsFromVector(DeFactoSpeedQStep, marioAngleTruncated);
+            NextIntendedQStepX = MoreMath.MaybeNegativeModulus(_x + xDist, 65536);
+            NextIntendedQStepZ = MoreMath.MaybeNegativeModulus(_z + zDist, 65536);
+            IsStationary = _x == NextIntendedQStepX && _z == NextIntendedQStepZ;
+        }
+
+        public void Update2() { }
     }
 }

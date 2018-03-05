@@ -7,6 +7,7 @@ using STROOP.Structs;
 using STROOP.Extensions;
 using STROOP.Structs.Configurations;
 using STROOP.Managers;
+using STROOP.Models;
 
 namespace STROOP.Utilities
 {
@@ -35,11 +36,11 @@ namespace STROOP.Utilities
         
         private enum Change { SET, ADD, MULTIPLY };
 
-        private static bool ChangeValues(List<TripleAddressAngle> posAddressAngles,
+        private static bool ChangeValues(IEnumerable<TripleAddressAngle> posAddressAngles,
             float xValue, float yValue, float zValue, Change change, bool useRelative = false,
             (bool affectX, bool affectY, bool affectZ)? affects = null)
         {
-            if (posAddressAngles.Count == 0)
+            if (posAddressAngles.Count() == 0)
                 return false;
 
             bool success = true;
@@ -109,7 +110,7 @@ namespace STROOP.Utilities
                         // relativeAngle is already correct
                         break;
                     case PositionControllerRelativity.Mario:
-                        relativeAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+                        relativeAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                         break;
                     case PositionControllerRelativity.Custom:
                         relativeAngle = MoreMath.NormalizeAngleUshort(PositionControllerRelativityConfig.CustomAngle);
@@ -120,9 +121,9 @@ namespace STROOP.Utilities
             }
         }
 
-        public static bool GotoObjects(List<uint> objAddresses, (bool affectX, bool affectY, bool affectZ)? affects = null)
+        public static bool GotoObjects(IEnumerable<ObjectDataModel> objects, (bool affectX, bool affectY, bool affectZ)? affects = null)
         {
-            if (objAddresses.Count == 0)
+            if (!objects.Any())
                 return false;
 
             List<TripleAddressAngle> posAddressAngles =
@@ -133,27 +134,27 @@ namespace STROOP.Utilities
                         MarioConfig.StructAddress + MarioConfig.ZOffset)
                 };
 
-            float xDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + ObjectConfig.XOffset));
-            float yDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + ObjectConfig.YOffset));
-            float zDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + ObjectConfig.ZOffset));
+            float xDestination = objects.Average(o => o.X);
+            float yDestination = objects.Average(o => o.Y);
+            float zDestination = objects.Average(o => o.Z);
 
             HandleGotoOffset(ref xDestination, ref yDestination, ref zDestination);
 
             return ChangeValues(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
         }
 
-        public static bool RetrieveObjects(List<uint> objAddresses, (bool affectX, bool affectY, bool affectZ)? affects = null)
+        public static bool RetrieveObjects(IEnumerable<ObjectDataModel> objects, (bool affectX, bool affectY, bool affectZ)? affects = null)
         {
-            List<TripleAddressAngle> posAddressAngles =
-                objAddresses.ConvertAll<TripleAddressAngle>(
-                    objAddress => new TripleAddressAngle(
-                        objAddress + ObjectConfig.XOffset,
-                        objAddress + ObjectConfig.YOffset,
-                        objAddress + ObjectConfig.ZOffset));
+            IEnumerable<TripleAddressAngle> posAddressAngles =
+                objects.Select(
+                    o => new TripleAddressAngle(
+                        o.Address + ObjectConfig.XOffset,
+                        o.Address + ObjectConfig.YOffset,
+                        o.Address + ObjectConfig.ZOffset));
 
-            float xDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float yDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float zDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float xDestination = DataModels.Mario.X;
+            float yDestination = DataModels.Mario.Y;
+            float zDestination = DataModels.Mario.Z;
 
             HandleRetrieveOffset(ref xDestination, ref yDestination, ref zDestination);
 
@@ -164,7 +165,7 @@ namespace STROOP.Utilities
         {
             float gotoAbove = GotoRetrieveConfig.GotoAboveOffset;
             float gotoInfront = GotoRetrieveConfig.GotoInfrontOffset;
-            ushort marioYaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+            ushort marioYaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
 
             double xOffset, zOffset;
             (xOffset, zOffset) = MoreMath.GetComponentsFromVector(-1 * gotoInfront, marioYaw);
@@ -178,7 +179,7 @@ namespace STROOP.Utilities
         {
             float retrieveAbove = GotoRetrieveConfig.RetrieveAboveOffset;
             float retrieveInfront = GotoRetrieveConfig.RetrieveInfrontOffset;
-            ushort marioYaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+            ushort marioYaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
 
             double xOffset, zOffset;
             (xOffset, zOffset) = MoreMath.GetComponentsFromVector(retrieveInfront, marioYaw);
@@ -188,53 +189,51 @@ namespace STROOP.Utilities
             zPos += (float)zOffset;
         }
 
-        public static bool TranslateObjects(List<uint> objAddresses,
+        public static bool TranslateObjects(IEnumerable<ObjectDataModel> objects,
             float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            List<TripleAddressAngle> posAddressAngles =
-                objAddresses.ConvertAll<TripleAddressAngle>(
-                    objAddress => new TripleAddressAngle(
-                        objAddress + ObjectConfig.XOffset,
-                        objAddress + ObjectConfig.YOffset,
-                        objAddress + ObjectConfig.ZOffset,
-                        Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset)));
+            IEnumerable<TripleAddressAngle> posAddressAngles = objects.Select(
+                    o => new TripleAddressAngle(
+                        o.Address + ObjectConfig.XOffset,
+                        o.Address + ObjectConfig.YOffset,
+                        o.Address + ObjectConfig.ZOffset,
+                        o.FacingYaw));
 
             return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
-        public static bool TranslateObjectHomes(List<uint> objAddresses,
+        public static bool TranslateObjectHomes(IEnumerable<ObjectDataModel> objects,
             float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            List<TripleAddressAngle> posAddressAngles =
-                objAddresses.ConvertAll<TripleAddressAngle>(
-                    objAddress => new TripleAddressAngle(
-                        objAddress + ObjectConfig.HomeXOffset,
-                        objAddress + ObjectConfig.HomeYOffset,
-                        objAddress + ObjectConfig.HomeZOffset,
-                        Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset)));
+            IEnumerable<TripleAddressAngle> posAddressAngles =
+                objects.Select( o => new TripleAddressAngle(
+                        o.Address + ObjectConfig.HomeXOffset,
+                        o.Address + ObjectConfig.HomeYOffset,
+                        o.Address + ObjectConfig.HomeZOffset,
+                        o.FacingYaw));
 
             return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
-        public static bool RotateObjects(List<uint> objAddresses,
+        public static bool RotateObjects(IEnumerable<ObjectDataModel> objects,
             int yawOffset, int pitchOffset, int rollOffset)
         {
-            if (objAddresses.Count == 0)
+            if (!objects.Any())
                 return false;
 
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            foreach (var objAddress in objAddresses)
+            foreach (var obj in objects)
             {
                 ushort yawFacing, pitchFacing, rollFacing, yawMoving, pitchMoving, rollMoving;
-                yawFacing = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset);
-                pitchFacing = Config.Stream.GetUInt16(objAddress + ObjectConfig.PitchFacingOffset);
-                rollFacing = Config.Stream.GetUInt16(objAddress + ObjectConfig.RollFacingOffset);
-                yawMoving = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawMovingOffset);
-                pitchMoving = Config.Stream.GetUInt16(objAddress + ObjectConfig.PitchMovingOffset);
-                rollMoving = Config.Stream.GetUInt16(objAddress + ObjectConfig.RollMovingOffset);
+                yawFacing = Config.Stream.GetUInt16(obj.Address + ObjectConfig.YawFacingOffset);
+                pitchFacing = Config.Stream.GetUInt16(obj.Address + ObjectConfig.PitchFacingOffset);
+                rollFacing = Config.Stream.GetUInt16(obj.Address + ObjectConfig.RollFacingOffset);
+                yawMoving = Config.Stream.GetUInt16(obj.Address + ObjectConfig.YawMovingOffset);
+                pitchMoving = Config.Stream.GetUInt16(obj.Address + ObjectConfig.PitchMovingOffset);
+                rollMoving = Config.Stream.GetUInt16(obj.Address + ObjectConfig.RollMovingOffset);
 
                 yawFacing += (ushort)yawOffset;
                 pitchFacing += (ushort)pitchOffset;
@@ -243,34 +242,33 @@ namespace STROOP.Utilities
                 pitchMoving += (ushort)pitchOffset;
                 rollMoving += (ushort)rollOffset;
 
-                success &= Config.Stream.SetValue(yawFacing, objAddress + ObjectConfig.YawFacingOffset);
-                success &= Config.Stream.SetValue(pitchFacing, objAddress + ObjectConfig.PitchFacingOffset);
-                success &= Config.Stream.SetValue(rollFacing, objAddress + ObjectConfig.RollFacingOffset);
-                success &= Config.Stream.SetValue(yawMoving, objAddress + ObjectConfig.YawMovingOffset);
-                success &= Config.Stream.SetValue(pitchMoving, objAddress + ObjectConfig.PitchMovingOffset);
-                success &= Config.Stream.SetValue(rollMoving, objAddress + ObjectConfig.RollMovingOffset);
+                success &= Config.Stream.SetValue(yawFacing, obj.Address + ObjectConfig.YawFacingOffset);
+                success &= Config.Stream.SetValue(pitchFacing, obj.Address + ObjectConfig.PitchFacingOffset);
+                success &= Config.Stream.SetValue(rollFacing, obj.Address + ObjectConfig.RollFacingOffset);
+                success &= Config.Stream.SetValue(yawMoving, obj.Address + ObjectConfig.YawMovingOffset);
+                success &= Config.Stream.SetValue(pitchMoving, obj.Address + ObjectConfig.PitchMovingOffset);
+                success &= Config.Stream.SetValue(rollMoving, obj.Address + ObjectConfig.RollMovingOffset);
             }
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool ScaleObjects(List<uint> objAddresses,
+        public static bool ScaleObjects(IEnumerable<ObjectDataModel> objects,
             float widthChange, float heightChange, float depthChange, bool multiply)
         {
-            List<TripleAddressAngle> posAddressAngles =
-                objAddresses.ConvertAll<TripleAddressAngle>(
-                    objAddress => new TripleAddressAngle(
-                        objAddress + ObjectConfig.ScaleWidthOffset,
-                        objAddress + ObjectConfig.ScaleHeightOffset,
-                        objAddress + ObjectConfig.ScaleDepthOffset));
+            IEnumerable<TripleAddressAngle> posAddressAngles =
+                objects.Select(o => new TripleAddressAngle(
+                        o.Address + ObjectConfig.ScaleWidthOffset,
+                        o.Address + ObjectConfig.ScaleHeightOffset,
+                        o.Address + ObjectConfig.ScaleDepthOffset));
 
             return ChangeValues(posAddressAngles, widthChange, heightChange, depthChange, multiply ? Change.MULTIPLY : Change.ADD);
         }
 
-        public static bool GotoObjectsHome(List<uint> objAddresses, (bool affectX, bool affectY, bool affectZ)? affects = null)
+        public static bool GotoObjectsHome(IEnumerable<ObjectDataModel> objects, (bool affectX, bool affectY, bool affectZ)? affects = null)
         {
-            if (objAddresses.Count == 0)
+            if (!objects.Any())
                 return false;
 
             List<TripleAddressAngle> posAddressAngles =
@@ -281,52 +279,51 @@ namespace STROOP.Utilities
                         MarioConfig.StructAddress + MarioConfig.ZOffset)
                 };
 
-            float xDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + ObjectConfig.HomeXOffset));
-            float yDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + ObjectConfig.HomeYOffset));
-            float zDestination = objAddresses.Average(obj => Config.Stream.GetSingle(obj + ObjectConfig.HomeZOffset));
+            float xDestination = objects.Average(o => o.HomeX);
+            float yDestination = objects.Average(o => o.HomeY);
+            float zDestination = objects.Average(o => o.HomeZ);
 
             HandleGotoOffset(ref xDestination, ref yDestination, ref zDestination);
 
             return ChangeValues(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
         }
 
-        public static bool RetrieveObjectsHome(List<uint> objAddresses, (bool affectX, bool affectY, bool affectZ)? affects = null)
+        public static bool RetrieveObjectsHome(IEnumerable<ObjectDataModel> objects, (bool affectX, bool affectY, bool affectZ)? affects = null)
         {
-            List<TripleAddressAngle> posAddressAngles =
-                objAddresses.ConvertAll<TripleAddressAngle>(
-                    objAddress => new TripleAddressAngle(
-                        objAddress + ObjectConfig.HomeXOffset,
-                        objAddress + ObjectConfig.HomeYOffset,
-                        objAddress + ObjectConfig.HomeZOffset));
+            IEnumerable<TripleAddressAngle> posAddressAngles =
+                objects.Select(o => new TripleAddressAngle(
+                    o.Address + ObjectConfig.HomeXOffset,
+                    o.Address + ObjectConfig.HomeYOffset,
+                    o.Address + ObjectConfig.HomeZOffset));
 
-            float xDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float yDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float zDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float xDestination = DataModels.Mario.X;
+            float yDestination = DataModels.Mario.Y;
+            float zDestination = DataModels.Mario.Z;
 
             HandleRetrieveOffset(ref xDestination, ref yDestination, ref zDestination);
 
             return ChangeValues(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
         }
 
-        public static bool CloneObject(uint objAddress, bool updateAction = true)
+        public static bool CloneObject(ObjectDataModel obj, bool updateAction = true)
         {
+            if (obj == null)
+                return false;
+
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
-
-            uint lastObject = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.HeldObjectPointerOffset);
             
             // Set clone action flags
-            if (lastObject == 0x00000000U && updateAction)
+            if (DataModels.Mario.HeldObject == 0x00000000U && updateAction)
             {
                 // Set Next action
-                uint currentAction = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.ActionOffset);
-                uint nextAction = TableConfig.MarioActions.GetAfterCloneValue(currentAction);
-                success &= Config.Stream.SetValue(nextAction, MarioConfig.StructAddress + MarioConfig.ActionOffset);
+                uint nextAction = TableConfig.MarioActions.GetAfterCloneValue(DataModels.Mario.Action);
+                DataModels.Mario.Action = nextAction;
             }
 
             // Set new held value
-            success &= Config.Stream.SetValue(objAddress, MarioConfig.StructAddress + MarioConfig.HeldObjectPointerOffset);
+            success &= Config.Stream.SetValue(obj.Address, MarioConfig.StructAddress + MarioConfig.HeldObjectPointerOffset);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
@@ -341,9 +338,8 @@ namespace STROOP.Utilities
             // Set mario's next action
             if (updateAction)
             {
-                uint currentAction = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.ActionOffset);
-                uint nextAction = TableConfig.MarioActions.GetAfterUncloneValue(currentAction);
-                success &= Config.Stream.SetValue(nextAction, MarioConfig.StructAddress + MarioConfig.ActionOffset);
+                uint nextAction = TableConfig.MarioActions.GetAfterUncloneValue(DataModels.Mario.Action);
+                DataModels.Mario.Action = nextAction;
             }
 
             // Clear mario's held object
@@ -353,47 +349,43 @@ namespace STROOP.Utilities
             return success;
         }
 
-        public static bool UnloadObject(List<uint> addresses)
+        public static bool UnloadObject(IEnumerable<ObjectDataModel> objects)
         {
-            if (addresses.Count == 0)
+            if (!objects.Any())
                 return false;
 
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            foreach (var address in addresses)
-            {
-                var test = Config.Stream.GetUInt16(address + ObjectConfig.ActiveOffset);
-                success &= Config.Stream.SetValue((short) 0x0000, address + ObjectConfig.ActiveOffset);
-            }
+            foreach (var obj in objects)
+                obj.IsActive = false;
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool ReviveObject(List<uint> addresses)
+        public static bool ReviveObject(IEnumerable<ObjectDataModel> objects)
         {
-            if (addresses.Count == 0)
+            if (!objects.Any())
                 return false;
 
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            foreach (var address in addresses)
+            foreach (var obj in objects)
             {
+                byte? processGroup = obj.BehaviorProcessGroup;
                 // Find process group
-                uint scriptAddress = Config.Stream.GetUInt32(address + ObjectConfig.BehaviorScriptOffset);
-                if (scriptAddress == 0x00000000)
-                    continue;
-                uint firstScriptAction = Config.Stream.GetUInt32(scriptAddress);
-                if ((firstScriptAction & 0xFF000000U) != 0x00000000U)
-                    continue;
-                byte processGroup = (byte)((firstScriptAction & 0x00FF0000U) >> 16);
+                if (!processGroup.HasValue)
+                {
+                    success = false;
+                    break;
+                }
 
                 // Read first object in group
-                uint groupAddress = ObjectSlotsConfig.FirstGroupingAddress + processGroup * ObjectSlotsConfig.ProcessGroupStructSize;
+                uint groupAddress = ObjectSlotsConfig.FirstGroupingAddress + processGroup.Value * ObjectSlotsConfig.ProcessGroupStructSize;
 
                 // Loop through and find last object in group
                 uint lastGroupObj = groupAddress;
@@ -401,9 +393,9 @@ namespace STROOP.Utilities
                     lastGroupObj = Config.Stream.GetUInt32(lastGroupObj + ObjectConfig.ProcessedNextLinkOffset);
 
                 // Remove object from current group
-                uint nextObj = Config.Stream.GetUInt32(address + ObjectConfig.ProcessedNextLinkOffset);
+                uint nextObj = Config.Stream.GetUInt32(obj.Address + ObjectConfig.ProcessedNextLinkOffset);
                 uint prevObj = Config.Stream.GetUInt32(ObjectSlotsConfig.VactantPointerAddress);
-                if (prevObj == address)
+                if (prevObj == obj.Address)
                 {
                     // Set new vacant pointer
                     success &= Config.Stream.SetValue(nextObj, ObjectSlotsConfig.VactantPointerAddress);
@@ -412,35 +404,34 @@ namespace STROOP.Utilities
                 {
                     for (int i = 0; i < ObjectSlotsConfig.MaxSlots; i++)
                     {
-                        uint obj = Config.Stream.GetUInt32(prevObj + ObjectConfig.ProcessedNextLinkOffset);
-                        if (obj == address)
+                        uint curObj = Config.Stream.GetUInt32(prevObj + ObjectConfig.ProcessedNextLinkOffset);
+                        if (curObj == obj.Address)
                             break;
-                        prevObj = obj;
+                        prevObj = curObj;
                     }
                     success &= Config.Stream.SetValue(nextObj, prevObj + ObjectConfig.ProcessedNextLinkOffset);
                 }
 
                 // Insert object in new group
                 nextObj = Config.Stream.GetUInt32(lastGroupObj + ObjectConfig.ProcessedNextLinkOffset);
-                success &= Config.Stream.SetValue(address, nextObj + ObjectConfig.ProcessedPreviousLinkOffset);
-                success &= Config.Stream.SetValue(address, lastGroupObj + ObjectConfig.ProcessedNextLinkOffset);
-                success &= Config.Stream.SetValue(lastGroupObj, address + ObjectConfig.ProcessedPreviousLinkOffset);
-                success &= Config.Stream.SetValue(nextObj, address + ObjectConfig.ProcessedNextLinkOffset);
+                success &= Config.Stream.SetValue(obj.Address, nextObj + ObjectConfig.ProcessedPreviousLinkOffset);
+                success &= Config.Stream.SetValue(obj.Address, lastGroupObj + ObjectConfig.ProcessedNextLinkOffset);
+                success &= Config.Stream.SetValue(lastGroupObj, obj.Address + ObjectConfig.ProcessedPreviousLinkOffset);
+                success &= Config.Stream.SetValue(nextObj, obj.Address + ObjectConfig.ProcessedNextLinkOffset);
 
-                success &= Config.Stream.SetValue((short)0x0101, address + ObjectConfig.ActiveOffset);
+                obj.IsActive = true;
 
-                if (addresses.Count > 1)
-                    if (!Config.Stream.RefreshRam() || !success)
-                        break;
+                if (!Config.Stream.RefreshRam() || !success)
+                    break;
             }
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool ReleaseObject(List<uint> addresses, bool useThrownValue = true)
+        public static bool ReleaseObject(IEnumerable<ObjectDataModel> objects, bool useThrownValue = true)
         {
-            if (addresses.Count == 0)
+            if (!objects.Any())
                 return false;
 
             uint releasedValue = useThrownValue ? ObjectConfig.ReleaseStatusThrownValue : ObjectConfig.ReleaseStatusDroppedValue;
@@ -449,67 +440,63 @@ namespace STROOP.Utilities
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            foreach (var address in addresses)
+            foreach (var obj in objects)
             {
-                success &= Config.Stream.SetValue(releasedValue, address + ObjectConfig.ReleaseStatusOffset);
-                success &= Config.Stream.SetValue(ObjectConfig.StackIndexReleasedValue, address + ObjectConfig.StackIndexOffset);
+                obj.ReleaseStatus = releasedValue;
+                success &= Config.Stream.SetValue(ObjectConfig.StackIndexReleasedValue, obj.Address + ObjectConfig.StackIndexOffset);
             }
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool UnReleaseObject(List<uint> addresses)
+        public static bool UnReleaseObject(IEnumerable<ObjectDataModel> objects)
         {
-            if (addresses.Count == 0)
+            if (!objects.Any())
                 return false;
 
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            foreach (var address in addresses)
+            foreach (var obj in objects)
             {
-                uint initialReleaseStatus = Config.Stream.GetUInt32(address + ObjectConfig.InitialReleaseStatusOffset);
-                success &= Config.Stream.SetValue(initialReleaseStatus, address + ObjectConfig.ReleaseStatusOffset);
-                success &= Config.Stream.SetValue(ObjectConfig.StackIndexUnReleasedValue, address + ObjectConfig.StackIndexOffset);
+                uint initialReleaseStatus = Config.Stream.GetUInt32(obj.Address + ObjectConfig.InitialReleaseStatusOffset);
+                success &= Config.Stream.SetValue(initialReleaseStatus, obj.Address + ObjectConfig.ReleaseStatusOffset);
+                success &= Config.Stream.SetValue(ObjectConfig.StackIndexUnReleasedValue, obj.Address + ObjectConfig.StackIndexOffset);
             }
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool InteractObject(List<uint> addresses)
+        public static bool InteractObject(IEnumerable<ObjectDataModel> objects)
         {
-            if (addresses.Count == 0)
+            if (!objects.Any())
                 return false;
 
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            foreach (var address in addresses)
-            {
-                success &= Config.Stream.SetValue(0xFFFFFFFF, address + ObjectConfig.InteractionStatusOffset);
-            }
+            foreach (var obj in objects)
+                obj.InteractionStatus = 0xFFFFFFFF;
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
         }
 
-        public static bool UnInteractObject(List<uint> addresses)
+        public static bool UnInteractObject(IEnumerable<ObjectDataModel> objects)
         {
-            if (addresses.Count == 0)
+            if (!objects.Any())
                 return false;
 
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            foreach (var address in addresses)
-            {
-                success &= Config.Stream.SetValue(0x00000000, address + ObjectConfig.InteractionStatusOffset);
-            }
+            foreach (var obj in objects)
+                obj.InteractionStatus = 0x00000000;
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
@@ -566,7 +553,7 @@ namespace STROOP.Utilities
                         MarioConfig.StructAddress + MarioConfig.XOffset,
                         MarioConfig.StructAddress + MarioConfig.YOffset,
                         MarioConfig.StructAddress + MarioConfig.ZOffset,
-                        Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset))
+                        Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset))
                 };
 
             return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
@@ -627,7 +614,7 @@ namespace STROOP.Utilities
                         MarioConfig.StructAddress + MarioConfig.HOLPXOffset,
                         MarioConfig.StructAddress + MarioConfig.HOLPYOffset,
                         MarioConfig.StructAddress + MarioConfig.HOLPZOffset,
-                        Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset))
+                        Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset))
                 };
 
             return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
@@ -635,14 +622,14 @@ namespace STROOP.Utilities
 
         public static bool MarioChangeYaw(int yawOffset)
         {
-            ushort yaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+            ushort yaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
             yaw += (ushort)yawOffset;
 
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            success &= Config.Stream.SetValue(yaw, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+            success &= Config.Stream.SetValue(yaw, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
@@ -1092,7 +1079,7 @@ namespace STROOP.Utilities
                         CameraConfig.CameraStructAddress + CameraConfig.XOffset,
                         CameraConfig.CameraStructAddress + CameraConfig.YOffset,
                         CameraConfig.CameraStructAddress + CameraConfig.ZOffset,
-                        Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.YawFacingOffset))
+                        Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.FacingYawOffset))
                 };
 
             return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
@@ -1130,7 +1117,7 @@ namespace STROOP.Utilities
             switch (camHackMode)
             {
                 case CamHackMode.REGULAR:
-                    return Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.YawFacingOffset);
+                    return Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.FacingYawOffset);
 
                 case CamHackMode.RELATIVE_ANGLE:
                 case CamHackMode.ABSOLUTE_ANGLE:
@@ -1240,7 +1227,7 @@ namespace STROOP.Utilities
                     {
                         uint camHackObject = Config.Stream.GetUInt32(CameraHackConfig.CameraHackStruct + CameraHackConfig.ObjectOffset);
                         relativeYawOffset = camHackObject == 0
-                            ? Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset)
+                            ? Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset)
                             : Config.Stream.GetUInt16(camHackObject + ObjectConfig.YawFacingOffset);
                     }
 
@@ -1332,7 +1319,7 @@ namespace STROOP.Utilities
                     {
                         uint camHackObject = Config.Stream.GetUInt32(CameraHackConfig.CameraHackStruct + CameraHackConfig.ObjectOffset);
                         relativeYawOffset = camHackObject == 0
-                            ? Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset)
+                            ? Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset)
                             : Config.Stream.GetUInt16(camHackObject + ObjectConfig.YawFacingOffset);
                     }
 

@@ -290,8 +290,10 @@
     <Compile Include="Models\CameraDataModel.cs" />
     <Compile Include="Models\MarioDataModel.cs" />
     <Compile Include="Models\DataModels.cs" />
-    <Compile Include="Models\UpdatableDataModel.cs" />
+    <Compile Include="Models\ObjectDataModel.cs" />
+    <Compile Include="Models\IUpdatableDataModel.cs" />
     <Compile Include="Models\LevelDataModel.cs" />
+    <Compile Include="Models\ObjectProcessorDataModel.cs" />
     <Compile Include="Structs\Configurations\AreaConfig.cs" />
     <Compile Include="Structs\Configurations\SpecialConfig.cs" />
     <Compile Include="Structs\Configurations\RefreshRateConfig.cs" />

@@ -11,15 +11,13 @@ using STROOP.Controls;
 using STROOP.Extensions;
 using STROOP.Structs.Configurations;
 using STROOP.Forms;
+using STROOP.Models;
+using System.Collections.ObjectModel;
 
 namespace STROOP.Managers
 {
     public class ObjectManager : DataManager
     {
-        string _slotIndex;
-        string _slotPos;
-        string _behavior;
-
         BinaryButton _releaseButton;
         BinaryButton _interactButton;
         BinaryButton _cloneButton;
@@ -33,40 +31,13 @@ namespace STROOP.Managers
         TextBox _objectNameTextBox;
         Panel _objectBorderPanel;
         IntPictureBox _objectImagePictureBox;
-        
-        #region Fields
-        public void SetBehaviorWatchVariables(List<WatchVariableControl> watchVarControls, Color color)
-        {
-            RemoveObjSpecificVariables();
-            watchVarControls.ForEach(watchVarControl => watchVarControl.BaseColor = color);
-            AddVariables(watchVarControls);
-        }
 
-        List<uint> _currentAddresses = new List<uint>();
-        public List<uint> CurrentAddresses
-        {
-            get
-            {
-                return _currentAddresses;
-            }
-            set
-            {
-                if (_currentAddresses.SequenceEqual(value))
-                    return;
+        Image _multiImage = null;
+        List<BehaviorCriteria> _lastBehaviors = new List<BehaviorCriteria>();
+        BehaviorCriteria? _lastGeneralizedBehavior;
 
-                _currentAddresses = value.ToList();
-
-                if (_currentAddresses.Count > 1)
-                    _objAddressLabelValue.Text = "";
-                else if (_currentAddresses.Count > 0)
-                    _objAddressLabelValue.Text = "0x" + _currentAddresses[0].ToString("X8");
-                else
-                    _objAddressLabelValue.Text = "";
-
-                AddressChanged();
-            }
-        }
-
+        #region UI Properties
+        string _slotIndex;
         public string SlotIndex
         {
             get
@@ -83,6 +54,7 @@ namespace STROOP.Managers
             }
         }
 
+        string _slotPos;
         public string SlotPos
         {
             get
@@ -99,6 +71,7 @@ namespace STROOP.Managers
             }
         }
 
+        string _behavior;
         public string Behavior
         {
             get
@@ -156,8 +129,21 @@ namespace STROOP.Managers
                     _objectImagePictureBox.Image = value;
             }
         }
-
         #endregion
+
+        List<ObjectDataModel> _objects = new List<ObjectDataModel>();
+        HashSet<uint> _addresses = new HashSet<uint>();
+        public IEnumerable<uint> DisplayedObjects
+        {
+            get => _addresses;
+            set
+            {
+                if (_addresses.SetEquals(value))
+                    return;
+
+                _addresses = new HashSet<uint>(value);
+            }
+        }
 
         private static readonly List<VariableGroup> ALL_VAR_GROUPS =
             new List<VariableGroup>()
@@ -199,102 +185,97 @@ namespace STROOP.Managers
             Panel objPanel = splitContainerObject.Panel1.Controls["panelObj"] as Panel;
 
             var goToButton = objPanel.Controls["buttonObjGoto"] as Button;
-            goToButton.Click += (sender, e) => ButtonUtilities.GotoObjects(_currentAddresses);
+            goToButton.Click += (sender, e) => ButtonUtilities.GotoObjects(_objects);
             ControlUtilities.AddContextMenuStripFunctions(
                 goToButton,
                 new List<string>() { "Goto", "Goto Laterally", "Goto X", "Goto Y", "Goto Z" },
                 new List<Action>() {
-                    () => ButtonUtilities.GotoObjects(_currentAddresses, (true, true, true)),
-                    () => ButtonUtilities.GotoObjects(_currentAddresses, (true, false, true)),
-                    () => ButtonUtilities.GotoObjects(_currentAddresses, (true, false, false)),
-                    () => ButtonUtilities.GotoObjects(_currentAddresses, (false, true, false)),
-                    () => ButtonUtilities.GotoObjects(_currentAddresses, (false, false, true)),
+                    () => ButtonUtilities.GotoObjects(_objects, (true, true, true)),
+                    () => ButtonUtilities.GotoObjects(_objects, (true, false, true)),
+                    () => ButtonUtilities.GotoObjects(_objects, (true, false, false)),
+                    () => ButtonUtilities.GotoObjects(_objects, (false, true, false)),
+                    () => ButtonUtilities.GotoObjects(_objects, (false, false, true)),
                 });
 
             var retrieveButton = objPanel.Controls["buttonObjRetrieve"] as Button;
-            retrieveButton.Click += (sender, e) => ButtonUtilities.RetrieveObjects(_currentAddresses);
+            retrieveButton.Click += (sender, e) => ButtonUtilities.RetrieveObjects(_objects);
             ControlUtilities.AddContextMenuStripFunctions(
                 retrieveButton,
                 new List<string>() { "Retrieve", "Retrieve Laterally", "Retrieve X", "Retrieve Y", "Retrieve Z" },
                 new List<Action>() {
-                    () => ButtonUtilities.RetrieveObjects(_currentAddresses, (true, true, true)),
-                    () => ButtonUtilities.RetrieveObjects(_currentAddresses, (true, false, true)),
-                    () => ButtonUtilities.RetrieveObjects(_currentAddresses, (true, false, false)),
-                    () => ButtonUtilities.RetrieveObjects(_currentAddresses, (false, true, false)),
-                    () => ButtonUtilities.RetrieveObjects(_currentAddresses, (false, false, true)),
+                    () => ButtonUtilities.RetrieveObjects(_objects, (true, true, true)),
+                    () => ButtonUtilities.RetrieveObjects(_objects, (true, false, true)),
+                    () => ButtonUtilities.RetrieveObjects(_objects, (true, false, false)),
+                    () => ButtonUtilities.RetrieveObjects(_objects, (false, true, false)),
+                    () => ButtonUtilities.RetrieveObjects(_objects, (false, false, true)),
                 });
 
             var goToHomeButton = objPanel.Controls["buttonObjGotoHome"] as Button;
-            goToHomeButton.Click += (sender, e) => ButtonUtilities.GotoObjectsHome(_currentAddresses);
+            goToHomeButton.Click += (sender, e) => ButtonUtilities.GotoObjectsHome(_objects);
             ControlUtilities.AddContextMenuStripFunctions(
                 goToHomeButton,
                 new List<string>() { "Goto Home", "Goto Home Laterally", "Goto Home X", "Goto Home Y", "Goto Home Z" },
                 new List<Action>() {
-                    () => ButtonUtilities.GotoObjectsHome(_currentAddresses, (true, true, true)),
-                    () => ButtonUtilities.GotoObjectsHome(_currentAddresses, (true, false, true)),
-                    () => ButtonUtilities.GotoObjectsHome(_currentAddresses, (true, false, false)),
-                    () => ButtonUtilities.GotoObjectsHome(_currentAddresses, (false, true, false)),
-                    () => ButtonUtilities.GotoObjectsHome(_currentAddresses, (false, false, true)),
+                    () => ButtonUtilities.GotoObjectsHome(_objects, (true, true, true)),
+                    () => ButtonUtilities.GotoObjectsHome(_objects, (true, false, true)),
+                    () => ButtonUtilities.GotoObjectsHome(_objects, (true, false, false)),
+                    () => ButtonUtilities.GotoObjectsHome(_objects, (false, true, false)),
+                    () => ButtonUtilities.GotoObjectsHome(_objects, (false, false, true)),
                 });
 
             var retrieveHomeButton = objPanel.Controls["buttonObjRetrieveHome"] as Button;
-            retrieveHomeButton.Click += (sender, e) => ButtonUtilities.RetrieveObjectsHome(_currentAddresses);
+            retrieveHomeButton.Click += (sender, e) => ButtonUtilities.RetrieveObjectsHome(_objects);
             ControlUtilities.AddContextMenuStripFunctions(
                 retrieveHomeButton,
                 new List<string>() { "Retrieve Home", "Retrieve Home Laterally", "Retrieve Home X", "Retrieve Home Y", "Retrieve Home Z" },
                 new List<Action>() {
-                    () => ButtonUtilities.RetrieveObjectsHome(_currentAddresses, (true, true, true)),
-                    () => ButtonUtilities.RetrieveObjectsHome(_currentAddresses, (true, false, true)),
-                    () => ButtonUtilities.RetrieveObjectsHome(_currentAddresses, (true, false, false)),
-                    () => ButtonUtilities.RetrieveObjectsHome(_currentAddresses, (false, true, false)),
-                    () => ButtonUtilities.RetrieveObjectsHome(_currentAddresses, (false, false, true)),
+                    () => ButtonUtilities.RetrieveObjectsHome(_objects, (true, true, true)),
+                    () => ButtonUtilities.RetrieveObjectsHome(_objects, (true, false, true)),
+                    () => ButtonUtilities.RetrieveObjectsHome(_objects, (true, false, false)),
+                    () => ButtonUtilities.RetrieveObjectsHome(_objects, (false, true, false)),
+                    () => ButtonUtilities.RetrieveObjectsHome(_objects, (false, false, true)),
                 });
 
             _releaseButton = objPanel.Controls["buttonObjRelease"] as BinaryButton;
             _releaseButton.Initialize(
                 "Release",
                 "UnRelease",
-                () => ButtonUtilities.ReleaseObject(_currentAddresses),
-                () => ButtonUtilities.UnReleaseObject(_currentAddresses),
-                () => _currentAddresses.Count > 0 && _currentAddresses.All(
-                    address =>
-                    {
-                        uint releasedValue = Config.Stream.GetUInt32(address + ObjectConfig.ReleaseStatusOffset);
-                        return releasedValue == ObjectConfig.ReleaseStatusThrownValue || releasedValue == ObjectConfig.ReleaseStatusDroppedValue;
-                    }));
+                () => ButtonUtilities.ReleaseObject(_objects),
+                () => ButtonUtilities.UnReleaseObject(_objects),
+                () => _objects.Count > 0 && _objects.All(o => 
+                    o.ReleaseStatus == ObjectConfig.ReleaseStatusThrownValue 
+                    || o.ReleaseStatus == ObjectConfig.ReleaseStatusDroppedValue));
             ControlUtilities.AddContextMenuStripFunctions(
                 _releaseButton,
                 new List<string>() { "Release by Throwing", "Release by Dropping", "UnRelease" },
                 new List<Action>() {
-                    () => ButtonUtilities.ReleaseObject(_currentAddresses, true),
-                    () => ButtonUtilities.ReleaseObject(_currentAddresses, false),
-                    () => ButtonUtilities.UnReleaseObject(_currentAddresses),
+                    () => ButtonUtilities.ReleaseObject(_objects, true),
+                    () => ButtonUtilities.ReleaseObject(_objects, false),
+                    () => ButtonUtilities.UnReleaseObject(_objects),
                 });
 
             _interactButton = objPanel.Controls["buttonObjInteract"] as BinaryButton;
             _interactButton.Initialize(
                 "Interact",
                 "UnInteract",
-                () => ButtonUtilities.InteractObject(_currentAddresses),
-                () => ButtonUtilities.UnInteractObject(_currentAddresses),
-                () => _currentAddresses.Count > 0 && _currentAddresses.All(
-                    address => Config.Stream.GetUInt32(address + ObjectConfig.InteractionStatusOffset) != 0));
+                () => ButtonUtilities.InteractObject(_objects),
+                () => ButtonUtilities.UnInteractObject(_objects),
+                () => _objects.Count > 0 && _objects.All(o => o.InteractionStatus != 0));
             ControlUtilities.AddContextMenuStripFunctions(
                 _interactButton,
                 new List<string>() { "Interact", "UnInteract" },
                 new List<Action>() {
-                    () => ButtonUtilities.InteractObject(_currentAddresses),
-                    () => ButtonUtilities.UnInteractObject(_currentAddresses),
+                    () => ButtonUtilities.InteractObject(_objects),
+                    () => ButtonUtilities.UnInteractObject(_objects),
                 });
 
             _cloneButton = objPanel.Controls["buttonObjClone"] as BinaryButton;
             _cloneButton.Initialize(
                 "Clone",
                 "UnClone",
-                () => ButtonUtilities.CloneObject(_currentAddresses[0]),
+                () => ButtonUtilities.CloneObject(_objects.First()),
                 () => ButtonUtilities.UnCloneObject(),
-                () => _currentAddresses.Count == 1 && _currentAddresses.Contains(
-                    Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.HeldObjectPointerOffset)));
+                () => _objects.Count == 1 && _objects.Any(o => o.Address == DataModels.Mario.HeldObject));
             ControlUtilities.AddContextMenuStripFunctions(
                 _cloneButton,
                 new List<string>() {
@@ -304,8 +285,8 @@ namespace STROOP.Managers
                     "UnClone without Action Update",
                 },
                 new List<Action>() {
-                    () => ButtonUtilities.CloneObject(_currentAddresses[0], true),
-                    () => ButtonUtilities.CloneObject(_currentAddresses[0], false),
+                    () => ButtonUtilities.CloneObject(_objects.First(), true),
+                    () => ButtonUtilities.CloneObject(_objects.First(), false),
                     () => ButtonUtilities.UnCloneObject(true),
                     () => ButtonUtilities.UnCloneObject(false),
                 });
@@ -314,16 +295,15 @@ namespace STROOP.Managers
             _unloadButton.Initialize(
                 "Unload",
                 "Revive",
-                () => ButtonUtilities.UnloadObject(_currentAddresses),
-                () => ButtonUtilities.ReviveObject(_currentAddresses),
-                () => _currentAddresses.Count > 0 && _currentAddresses.All(
-                    address => Config.Stream.GetUInt16(address + ObjectConfig.ActiveOffset) == 0x0000));
+                () => ButtonUtilities.UnloadObject(_objects),
+                () => ButtonUtilities.ReviveObject(_objects),
+                () => _objects.Count > 0 && _objects.All(o => !o.IsActive));
             ControlUtilities.AddContextMenuStripFunctions(
                 _unloadButton,
                 new List<string>() { "Unload", "Revive" },
                 new List<Action>() {
-                    () => ButtonUtilities.UnloadObject(_currentAddresses),
-                    () => ButtonUtilities.ReviveObject(_currentAddresses),
+                    () => ButtonUtilities.UnloadObject(_objects),
+                    () => ButtonUtilities.ReviveObject(_objects),
                 });
 
             var objPosGroupBox = objPanel.Controls["groupBoxObjPos"] as GroupBox;
@@ -347,7 +327,7 @@ namespace STROOP.Managers
                 (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
                     ButtonUtilities.TranslateObjects(
-                        _currentAddresses,
+                        _objects,
                         hOffset,
                         nOffset,
                         -1 * vOffset,
@@ -361,7 +341,7 @@ namespace STROOP.Managers
                 objAngleGroupBox.Controls["textBoxObjAngleYaw"] as TextBox,
                 (float yawValue) =>
                 {
-                    ButtonUtilities.RotateObjects(_currentAddresses, (int)Math.Round(yawValue), 0, 0);
+                    ButtonUtilities.RotateObjects(_objects, (int)Math.Round(yawValue), 0, 0);
                 });
             ControlUtilities.InitializeScalarController(
                 objAngleGroupBox.Controls["buttonObjAnglePitchN"] as Button,
@@ -369,7 +349,7 @@ namespace STROOP.Managers
                 objAngleGroupBox.Controls["textBoxObjAnglePitch"] as TextBox,
                 (float pitchValue) =>
                 {
-                    ButtonUtilities.RotateObjects(_currentAddresses, 0, (int)Math.Round(pitchValue), 0);
+                    ButtonUtilities.RotateObjects(_objects, 0, (int)Math.Round(pitchValue), 0);
                 });
             ControlUtilities.InitializeScalarController(
                 objAngleGroupBox.Controls["buttonObjAngleRollN"] as Button,
@@ -377,7 +357,7 @@ namespace STROOP.Managers
                 objAngleGroupBox.Controls["textBoxObjAngleRoll"] as TextBox,
                 (float rollValue) =>
                 {
-                    ButtonUtilities.RotateObjects(_currentAddresses, 0, 0, (int)Math.Round(rollValue));
+                    ButtonUtilities.RotateObjects(_objects, 0, 0, (int)Math.Round(rollValue));
                 });
 
             var objScaleGroupBox = objPanel.Controls["groupBoxObjScale"] as GroupBox;
@@ -398,7 +378,7 @@ namespace STROOP.Managers
                 objScaleGroupBox.Controls["checkBoxObjScaleMultiply"] as CheckBox,
                 (float widthChange, float heightChange, float depthChange, bool multiply) =>
                 {
-                    ButtonUtilities.ScaleObjects(_currentAddresses, widthChange, heightChange, depthChange, multiply);
+                    ButtonUtilities.ScaleObjects(_objects, widthChange, heightChange, depthChange, multiply);
                 });
 
             var objHomeGroupBox = objPanel.Controls["groupBoxObjHome"] as GroupBox;
@@ -422,7 +402,7 @@ namespace STROOP.Managers
                 (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
                     ButtonUtilities.TranslateObjectHomes(
-                        _currentAddresses,
+                        _objects,
                         hOffset,
                         nOffset,
                         -1 * vOffset,
@@ -432,34 +412,29 @@ namespace STROOP.Managers
 
         private void _objBehaviorLabel_Click(object sender, EventArgs e)
         {
-            if (CurrentAddresses.Count == 0)
+            if (_objects.Count == 0)
                 return;
 
-            var scriptAddress = Config.Stream.GetUInt32(CurrentAddresses[0] + ObjectConfig.BehaviorScriptOffset);
+            var scriptAddress = Config.Stream.GetUInt32(_objects.First().Address + ObjectConfig.BehaviorScriptOffset);
             Config.ScriptManager.Go(scriptAddress);
             Config.StroopMainForm.SwitchTab("tabPageScripts");
         }
 
-        private void AddressChanged()
+        public void SetBehaviorWatchVariables(List<WatchVariableControl> watchVarControls, Color color)
         {
-            if (CurrentAddresses.Count <= 1)
-            {
-                _cloneButton.Enabled = true;
-            }
-            else
-            {
-                _cloneButton.Enabled = false;
-            }
+            RemoveObjSpecificVariables();
+            watchVarControls.ForEach(watchVarControl => watchVarControl.BaseColor = color);
+            AddVariables(watchVarControls);
         }
 
         private void ObjAddressLabel_Click(object sender, EventArgs e)
         {
-            if (_currentAddresses.Count == 0)
+            if (_objects.Count == 0)
                 return;
 
-            var variableTitle = "Object Address" + (_currentAddresses.Count > 1 ? " (First of Multiple)" : ""); 
-            var variableInfo = new VariableViewerForm(variableTitle, "Object", "Relative + " + String.Format("0x{0:X8}", _currentAddresses[0]),
-                String.Format("0x{0:X8}", _currentAddresses[0]), String.Format("0x{0:X8}", (_currentAddresses[0] & ~0x80000000) + Config.Stream.ProcessMemoryOffset.ToInt64()));
+            var variableTitle = "Object Address" + (_objects.Count > 1 ? " (First of Multiple)" : ""); 
+            var variableInfo = new VariableViewerForm(variableTitle, "Object", "Relative + " + String.Format("0x{0:X8}", _objects.First().Address),
+                String.Format("0x{0:X8}", _objects.First().Address), String.Format("0x{0:X8}", (_objects.First().Address & ~0x80000000) + Config.Stream.ProcessMemoryOffset.ToInt64()));
             variableInfo.Show();
         }
       
@@ -468,13 +443,130 @@ namespace STROOP.Managers
             if (!updateView)
                 return;
 
+            _objects = DataModels.Objects.Where(o => _addresses.Contains(o.Address)).ToList();
+
             _releaseButton.UpdateButton();
             _interactButton.UpdateButton();
             _cloneButton.UpdateButton();
             _unloadButton.UpdateButton();
 
+            UpdateUI();
+
             base.Update(updateView);
         }
 
+        void UpdateUI()
+        {
+            if (!_objects.Any())
+            {
+                Name = "No Object Selected";
+                Image = null;
+                BackColor = ObjectSlotsConfig.VacantSlotColor;
+                Behavior = "";
+                SlotIndex = "";
+                SlotPos = "";
+                _objAddressLabelValue.Text = "";
+                _cloneButton.Enabled = false;
+                _lastGeneralizedBehavior = null;
+                SetBehaviorWatchVariables(new List<WatchVariableControl>(), Color.White);
+            }
+            else if (_objects.Count() == 1)
+            {
+                ObjectDataModel obj = _objects.FirstOrDefault();
+                var newBehavior = obj.BehaviorAssociation != null ? obj.BehaviorAssociation.Criteria : obj.BehaviorCriteria;
+                if (_lastGeneralizedBehavior != newBehavior)
+                {
+                    Behavior = String.Format("0x{0}", (obj.AbsoluteBehavior & 0x00ffffff).ToString("X4"));
+                    Name = Config.ObjectAssociations.GetObjectName(newBehavior);
+                    SetBehaviorWatchVariables(
+                        Config.ObjectAssociations.GetWatchVarControls(newBehavior),
+                        ObjectSlotsConfig.GetProcessingGroupColor(obj.CurrentProcessGroup)
+                        .Lighten(0.8));
+                    _lastGeneralizedBehavior = newBehavior;
+                }
+                Image = obj.BehaviorAssociation?.Image;
+                BackColor = ObjectSlotsConfig.GetProcessingGroupColor(obj.CurrentProcessGroup);
+                int slotPos = obj.VacantSlotIndex.HasValue ? obj.VacantSlotIndex.Value : obj.ProcessIndex;
+                SlotIndex = (Config.ObjectSlotsManager.GetSlotIndexFromAddres(obj.Address)
+                    + (OptionsConfig.SlotIndexsFromOne ? 1 : 0)).ToString();
+                SlotPos = (obj.VacantSlotIndex.HasValue ? "VS " : "")
+                    + (slotPos + (OptionsConfig.SlotIndexsFromOne ? 1 : 0)).ToString();
+                _objAddressLabelValue.Text = "0x" + _objects.First().Address.ToString("X8");
+                _cloneButton.Enabled = true;
+            }
+            else
+            {
+                IEnumerable<BehaviorCriteria> newBehaviors = _objects.Select(o => o.BehaviorCriteria);
+
+                // Find new generalized criteria
+                BehaviorCriteria? multiBehavior = _objects.First().BehaviorCriteria;
+                foreach (ObjectDataModel obj in _objects)
+                    multiBehavior = multiBehavior?.Generalize(obj.BehaviorCriteria);
+
+                // Find general process group
+                byte? processGroup = _objects.First().CurrentProcessGroup;
+                if (_objects.Any(o => o.CurrentProcessGroup != processGroup)) processGroup = null;
+
+                // Update behavior and watach variables
+                if (_lastGeneralizedBehavior != multiBehavior)
+                {
+                    if (multiBehavior.HasValue)
+                    {
+                        Behavior = String.Format("0x{0}", multiBehavior.Value.BehaviorAddress.ToString("X4"));
+                        SetBehaviorWatchVariables(
+                            Config.ObjectAssociations.GetWatchVarControls(multiBehavior.Value),
+                            ObjectSlotsConfig.GetProcessingGroupColor(processGroup).Lighten(0.8));
+                    }
+                    else
+                    {
+                        Behavior = "";
+                        SetBehaviorWatchVariables(new List<WatchVariableControl>(), Color.White);
+                    }
+                    _lastGeneralizedBehavior = multiBehavior;
+                }
+                if (!newBehaviors.SequenceEqual(_lastBehaviors))
+                {
+                    // Generate new image
+                    _multiImage?.Dispose();
+                    _multiImage = CreateMultiObjectImage(newBehaviors);
+
+                    _lastBehaviors = newBehaviors.ToList();
+                }
+
+                Image = _multiImage;
+                Name = _objects.Count + " Objects Selected";
+                BackColor = ObjectSlotsConfig.GetProcessingGroupColor(processGroup);
+                SlotIndex = "";
+                SlotPos = "";
+                _objAddressLabelValue.Text = "";
+                _cloneButton.Enabled = false;
+            }
+        }
+
+        private Image CreateMultiObjectImage(IEnumerable<BehaviorCriteria> criterias)
+        {
+            Image multiBitmap = new Bitmap(256, 256);
+            using (Graphics gfx = Graphics.FromImage(multiBitmap))
+            {
+                int count = criterias.Count();
+                int numCols = (int)Math.Ceiling(Math.Sqrt(count));
+                int numRows = (int)Math.Ceiling(count / (double)numCols);
+                int imageSize = 256 / numCols;
+                foreach (int row in Enumerable.Range(0, numRows))
+                {
+                    foreach (int col in Enumerable.Range(0, numCols))
+                    {
+                        int index = row * numCols + col;
+                        if (index >= count) break;
+                        Image image = Config.ObjectAssociations.GetObjectImage(criterias.ElementAt(index), false);
+                        Rectangle rect = new Rectangle(col * imageSize, row * imageSize, imageSize, imageSize);
+                        Rectangle zoomedRect = rect.Zoom(image.Size);
+                        gfx.DrawImage(image, zoomedRect);
+                    }
+                }
+            }
+
+            return multiBitmap;
+        }
     }
 }

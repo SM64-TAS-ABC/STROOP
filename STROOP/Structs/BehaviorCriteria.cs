@@ -10,8 +10,8 @@ namespace STROOP.Structs
     {
         public uint BehaviorAddress;
         public uint? GfxId;
-        public int? SubType;
-        public int? Appearance;
+        public uint? SubType;
+        public uint? Appearance;
 
         public override bool Equals(object obj)
         {

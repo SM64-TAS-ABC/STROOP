@@ -1,4 +1,5 @@
 ﻿using STROOP.Managers;
+using STROOP.Models;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System;
@@ -299,7 +300,7 @@ namespace STROOP.Structs
                         double newMarioAngleDouble = angleToObj + angleDiff;
                         ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
                         return Config.Stream.SetValue(
-                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                     };
                     break;
 
@@ -1185,7 +1186,7 @@ namespace STROOP.Structs
                         float movementZ = endZ - startZ;
                         double movementHorizontal = MoreMath.GetHypotenuse(movementX, movementZ);
                         double movementAngle = MoreMath.AngleTo_AngleUnits(movementX, movementZ);
-                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                         (double movementSideways, double movementForwards) =
                             MoreMath.GetComponentsFromVectorRelatively(movementHorizontal, movementAngle, marioAngle);
                         return movementForwards.ToString();
@@ -1203,7 +1204,7 @@ namespace STROOP.Structs
                         float movementZ = endZ - startZ;
                         double movementHorizontal = MoreMath.GetHypotenuse(movementX, movementZ);
                         double movementAngle = MoreMath.AngleTo_AngleUnits(movementX, movementZ);
-                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                         (double movementSideways, double movementForwards) =
                             MoreMath.GetComponentsFromVectorRelatively(movementHorizontal, movementAngle, marioAngle);
                         return movementSideways.ToString();
@@ -1372,7 +1373,8 @@ namespace STROOP.Structs
                         (double newCameraX, double newCameraY, double newCameraZ) =
                             MoreMath.ExtrapolateLine3D(
                                 marioPos.X, marioPos.Y, marioPos.Z, cameraPos.X, cameraPos.Y, cameraPos.Z, distAway);
-                        return SetCameraPosition(newCameraX, newCameraY, newCameraZ);
+                        SetCameraPosition(newCameraX, newCameraY, newCameraZ);
+                        return true;
                     };
                     break;
 
@@ -1458,7 +1460,7 @@ namespace STROOP.Structs
                 case "UpHillDeltaAngle":
                     getterFunction = (uint triAddress) =>
                     {
-                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                         double uphillAngle = GetTriangleUphillAngle(triAddress);
                         double angleDiff = marioAngle - uphillAngle;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
@@ -1468,7 +1470,7 @@ namespace STROOP.Structs
                 case "DownHillDeltaAngle":
                     getterFunction = (uint triAddress) =>
                     {
-                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                         double uphillAngle = GetTriangleUphillAngle(triAddress);
                         double downhillAngle = MoreMath.ReverseAngle(uphillAngle);
                         double angleDiff = marioAngle - downhillAngle;
@@ -1479,7 +1481,7 @@ namespace STROOP.Structs
                 case "LeftHillDeltaAngle":
                     getterFunction = (uint triAddress) =>
                     {
-                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                         double uphillAngle = GetTriangleUphillAngle(triAddress);
                         double lefthillAngle = MoreMath.RotateAngleCCW(uphillAngle, 16384);
                         double angleDiff = marioAngle - lefthillAngle;
@@ -1490,7 +1492,7 @@ namespace STROOP.Structs
                 case "RightHillDeltaAngle":
                     getterFunction = (uint triAddress) =>
                     {
-                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                         double uphillAngle = GetTriangleUphillAngle(triAddress);
                         double righthillAngle = MoreMath.RotateAngleCW(uphillAngle, 16384);
                         double angleDiff = marioAngle - righthillAngle;
@@ -2091,7 +2093,7 @@ namespace STROOP.Structs
                         double newMarioAngleDouble = angleToVertex + angleDiff;
                         ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
                         return Config.Stream.SetValue(
-                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                     };
                     break;
 
@@ -2163,7 +2165,7 @@ namespace STROOP.Structs
                         double newMarioAngleDouble = angleToVertex + angleDiff;
                         ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
                         return Config.Stream.SetValue(
-                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                     };
                     break;
 
@@ -2235,7 +2237,7 @@ namespace STROOP.Structs
                         double newMarioAngleDouble = angleToVertex + angleDiff;
                         ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
                         return Config.Stream.SetValue(
-                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                     };
                     break;
 
@@ -2914,8 +2916,7 @@ namespace STROOP.Structs
                 case "NumberOfLoadedObjects":
                     getterFunction = (uint dummy) =>
                     {
-                        int numberOfLoadedObjects = Config.ObjectSlotsManager.ActiveObjectCount;
-                        return numberOfLoadedObjects.ToString();
+                        return $"{DataModels.ObjectProcessor.ActiveObjectCount}";
                     };
                     break;
 
@@ -3211,7 +3212,7 @@ namespace STROOP.Structs
             float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
             float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
             float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-            ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+            ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
             return new Position(marioX, marioY, marioZ, marioAngle);
         }
 
@@ -3221,7 +3222,7 @@ namespace STROOP.Structs
             if (x.HasValue) success &= Config.Stream.SetValue((float)x.Value, MarioConfig.StructAddress + MarioConfig.XOffset);
             if (y.HasValue) success &= Config.Stream.SetValue((float)y.Value, MarioConfig.StructAddress + MarioConfig.YOffset);
             if (z.HasValue) success &= Config.Stream.SetValue((float)z.Value, MarioConfig.StructAddress + MarioConfig.ZOffset);
-            if (angle.HasValue) success &= Config.Stream.SetValue(angle.Value, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+            if (angle.HasValue) success &= Config.Stream.SetValue(angle.Value, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
             return success;
         }
 
@@ -3282,21 +3283,15 @@ namespace STROOP.Structs
 
         private static Position GetCameraPosition()
         {
-            float cameraX = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.XOffset);
-            float cameraY = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.YOffset);
-            float cameraZ = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
-            ushort cameraAngle = Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.YawFacingOffset);
-            return new Position(cameraX, cameraY, cameraZ, cameraAngle);
+            return new Position(DataModels.Camera.X, DataModels.Camera.Y, DataModels.Camera.Z, DataModels.Camera.FacingYaw);
         }
 
-        private static bool SetCameraPosition(double? x, double? y, double? z, ushort? angle = null)
+        private static void SetCameraPosition(double? x, double? y, double? z, ushort? angle = null)
         {
-            bool success = true;
-            if (x.HasValue) success &= Config.Stream.SetValue((float)x.Value, CameraConfig.CameraStructAddress + CameraConfig.XOffset);
-            if (y.HasValue) success &= Config.Stream.SetValue((float)y.Value, CameraConfig.CameraStructAddress + CameraConfig.YOffset);
-            if (z.HasValue) success &= Config.Stream.SetValue((float)z.Value, CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
-            if (angle.HasValue) success &= Config.Stream.SetValue(angle.Value, CameraConfig.CameraStructAddress + CameraConfig.YawFacingOffset);
-            return success;
+            if (x.HasValue) DataModels.Camera.X = (float) x.Value;
+            if (y.HasValue) DataModels.Camera.Y = (float) y.Value;
+            if (z.HasValue) DataModels.Camera.Z = (float) z.Value;
+            if (angle.HasValue) DataModels.Camera.FacingYaw = angle.Value;
         }
 
         // Triangle utilitiy methods
@@ -3525,7 +3520,7 @@ namespace STROOP.Structs
         public static (double x, double z) GetIntendedNextPosition(double numFrames)
         {
             double deFactoSpeed = GetMarioDeFactoSpeed();
-            ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+            ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
             ushort marioAngleTruncated = MoreMath.NormalizeAngleTruncated(marioAngle);
             (double xDiff, double zDiff) = MoreMath.GetComponentsFromVector(deFactoSpeed * numFrames, marioAngleTruncated);
 
@@ -3588,9 +3583,9 @@ namespace STROOP.Structs
 
         public static short GetDeltaYawIntendedFacing()
         {
-            ushort marioYawFacing = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+            ushort marioYawFacing = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
             ushort marioYawFacingTruncated = MoreMath.NormalizeAngleTruncated(marioYawFacing);
-            ushort marioYawIntended = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawIntendedOffset);
+            ushort marioYawIntended = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.IntendedYawOffset);
             ushort marioYawIntendedTruncated = MoreMath.NormalizeAngleTruncated(marioYawIntended);
             int deltaYaw = marioYawIntendedTruncated - marioYawFacingTruncated;
             return MoreMath.NormalizeAngleShort(deltaYaw);

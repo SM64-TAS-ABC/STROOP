@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace STROOP.Models
 {
-    public class LevelDataModel : UpdatableDataModel
+    public class LevelDataModel : IUpdatableDataModel
     {
         #region Properties
         private byte _index;
@@ -56,17 +56,15 @@ namespace STROOP.Models
         }
         #endregion
 
-        public override void Update(int dependencyLevel)
+        public void Update()
         {
-            switch (dependencyLevel) {
-                case 0:
-                    // Get level and area
-                    _index = Config.Stream.GetByte(MiscConfig.LevelAddress);
-                    _area = Config.Stream.GetByte(MiscConfig.AreaAddress);
-                    _loadingPoint = Config.Stream.GetUInt16(MiscConfig.LoadingPointAddress);
-                    _missionLayout = Config.Stream.GetUInt16(MiscConfig.MissionAddress);
-                    break;
-            }
+            // Get level and area
+            _index = Config.Stream.GetByte(MiscConfig.LevelAddress);
+            _area = Config.Stream.GetByte(MiscConfig.AreaAddress);
+            _loadingPoint = Config.Stream.GetUInt16(MiscConfig.LoadingPointAddress);
+            _missionLayout = Config.Stream.GetUInt16(MiscConfig.MissionAddress);
         }
+
+        public void Update2() { }
     }
 }
