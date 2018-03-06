@@ -127,12 +127,23 @@ namespace STROOP
             mapGui.RadioButtonScaleCustom = radioButtonMapControlsScaleCustom;
             mapGui.TextBoxScaleCustom = betterTextboxMapControlsScaleCustom;
 
-
+            mapGui.ButtonCenterScaleChangeMinus = buttonMapControlsScaleChangeMinus;
+            mapGui.ButtonCenterScaleChangePlus = buttonMapControlsScaleChangePlus;
+            mapGui.TextBoxScaleChange = betterTextboxMapControlsScaleChange;
 
             mapGui.RadioButtonCenterBestFit = radioButtonMapControlsCenterBestFit;
             mapGui.RadioButtonCenterOrigin = radioButtonMapControlsCenterOrigin;
             mapGui.RadioButtonCenterCustom = radioButtonMapControlsCenterCustom;
             mapGui.TextBoxCenterCustom = betterTextboxMapControlsCenterCustom;
+
+            mapGui.ButtonCenterChangeUp = buttonMapControlsCenterChangeUp;
+            mapGui.ButtonCenterChangeDown = buttonMapControlsCenterChangeDown;
+            mapGui.ButtonCenterChangeLeft = buttonMapControlsCenterChangeLeft;
+            mapGui.ButtonCenterChangeRight = buttonMapControlsCenterChangeRight;
+            mapGui.ButtonCenterChangeUpLeft = buttonMapControlsCenterChangeUpLeft;
+            mapGui.ButtonCenterChangeUpRight = buttonMapControlsCenterChangeUpRight;
+            mapGui.ButtonCenterChangeDownLeft = buttonMapControlsCenterChangeDownLeft;
+            mapGui.ButtonCenterChangeDownRight = buttonMapControlsCenterChangeDownRight;
 
             mapGui.RadioButtonAngle0 = radioButtonMapControlsAngle0;
             mapGui.RadioButtonAngle16384 = radioButtonMapControlsAngle16384;
@@ -140,6 +151,10 @@ namespace STROOP
             mapGui.RadioButtonAngle49152 = radioButtonMapControlsAngle49152;
             mapGui.RadioButtonAngleCustom = radioButtonMapControlsAngleCustom;
             mapGui.TextBoxAngleCustom = betterTextboxMapControlsAngleCustom;
+
+            mapGui.ButtonAngleChangeCounterclockwise = buttonMapControlsAngleChangeCounterclockwise;
+            mapGui.ButtonAngleChangeClockwise = buttonMapControlsAngleChangeClockwise;
+            mapGui.TextBoxAngleChange = betterTextboxMapControlsAngleChange;
 
             Config.MapManager = new MapManager(_mapAssoc, mapGui);
 
