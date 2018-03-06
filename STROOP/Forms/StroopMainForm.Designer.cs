@@ -768,18 +768,18 @@ namespace STROOP
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.comboBoxRomVersion = new System.Windows.Forms.ComboBox();
             this.comboBoxReadWriteMode = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
+            this.buttonMapControlsCenterChangeUpLeft = new System.Windows.Forms.Button();
+            this.buttonMapControlsCenterChangeUp = new System.Windows.Forms.Button();
+            this.buttonMapControlsCenterChangeUpRight = new System.Windows.Forms.Button();
+            this.buttonMapControlsCenterChangeRight = new System.Windows.Forms.Button();
+            this.buttonMapControlsCenterChangeDownRight = new System.Windows.Forms.Button();
+            this.buttonMapControlsCenterChangeLeft = new System.Windows.Forms.Button();
+            this.buttonMapControlsCenterChangeDownLeft = new System.Windows.Forms.Button();
+            this.buttonMapControlsCenterChangeDown = new System.Windows.Forms.Button();
+            this.buttonMapControlsScaleChangePlus = new System.Windows.Forms.Button();
+            this.buttonMapControlsScaleChangeMinus = new System.Windows.Forms.Button();
+            this.buttonMapControlsAngleChangeClockwise = new System.Windows.Forms.Button();
+            this.buttonMapControlsAngleChangeCounterclockwise = new System.Windows.Forms.Button();
             this.buttonObjRelease = new STROOP.BinaryButton();
             this.buttonObjInteract = new STROOP.BinaryButton();
             this.textBoxObjHomeY = new STROOP.BetterTextbox();
@@ -1045,12 +1045,12 @@ namespace STROOP
             this.textBoxMapArtificialMarioYLabel = new STROOP.BetterTextbox();
             this.textBoxMapBoundsZoom = new STROOP.BetterTextbox();
             this.textBoxMapBoundsPosition = new STROOP.BetterTextbox();
-            this.betterTextbox3 = new STROOP.BetterTextbox();
-            this.betterTextbox1 = new STROOP.BetterTextbox();
-            this.betterTextbox2 = new STROOP.BetterTextbox();
+            this.betterTextboxMapControlsAngleChange = new STROOP.BetterTextbox();
             this.betterTextboxMapControlsAngleCustom = new STROOP.BetterTextbox();
             this.betterTextboxMapControlsCenterCustom = new STROOP.BetterTextbox();
+            this.betterTextboxMapControlsCenterChange = new STROOP.BetterTextbox();
             this.betterTextboxMapControlsScaleCustom = new STROOP.BetterTextbox();
+            this.betterTextboxMapControlsScaleChange = new STROOP.BetterTextbox();
             this.textBoxMarioPuY = new STROOP.BetterTextbox();
             this.textBoxMarioPuXZ = new STROOP.BetterTextbox();
             this.watchVariablePanelPu = new STROOP.Controls.WatchVariableFlowLayoutPanel();
@@ -4223,7 +4223,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 271F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 272F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -5746,11 +5746,11 @@ namespace STROOP
             // 
             // groupBoxMapControlsAngle
             // 
-            this.groupBoxMapControlsAngle.Controls.Add(this.betterTextbox3);
+            this.groupBoxMapControlsAngle.Controls.Add(this.betterTextboxMapControlsAngleChange);
             this.groupBoxMapControlsAngle.Controls.Add(this.betterTextboxMapControlsAngleCustom);
-            this.groupBoxMapControlsAngle.Controls.Add(this.button14);
+            this.groupBoxMapControlsAngle.Controls.Add(this.buttonMapControlsAngleChangeCounterclockwise);
             this.groupBoxMapControlsAngle.Controls.Add(this.radioButtonMapControlsAngle49152);
-            this.groupBoxMapControlsAngle.Controls.Add(this.button13);
+            this.groupBoxMapControlsAngle.Controls.Add(this.buttonMapControlsAngleChangeClockwise);
             this.groupBoxMapControlsAngle.Controls.Add(this.radioButtonMapControlsAngle16384);
             this.groupBoxMapControlsAngle.Controls.Add(this.radioButtonMapControlsAngle0);
             this.groupBoxMapControlsAngle.Controls.Add(this.radioButtonMapControlsAngleCustom);
@@ -5817,18 +5817,18 @@ namespace STROOP
             // groupBoxMapControlsCenter
             // 
             this.groupBoxMapControlsCenter.Controls.Add(this.betterTextboxMapControlsCenterCustom);
-            this.groupBoxMapControlsCenter.Controls.Add(this.betterTextbox1);
+            this.groupBoxMapControlsCenter.Controls.Add(this.betterTextboxMapControlsCenterChange);
             this.groupBoxMapControlsCenter.Controls.Add(this.radioButtonMapControlsCenterOrigin);
-            this.groupBoxMapControlsCenter.Controls.Add(this.button5);
+            this.groupBoxMapControlsCenter.Controls.Add(this.buttonMapControlsCenterChangeDownRight);
             this.groupBoxMapControlsCenter.Controls.Add(this.radioButtonMapControlsCenterBestFit);
-            this.groupBoxMapControlsCenter.Controls.Add(this.button4);
+            this.groupBoxMapControlsCenter.Controls.Add(this.buttonMapControlsCenterChangeRight);
             this.groupBoxMapControlsCenter.Controls.Add(this.radioButtonMapControlsCenterCustom);
-            this.groupBoxMapControlsCenter.Controls.Add(this.button1);
-            this.groupBoxMapControlsCenter.Controls.Add(this.button6);
-            this.groupBoxMapControlsCenter.Controls.Add(this.button7);
-            this.groupBoxMapControlsCenter.Controls.Add(this.button10);
-            this.groupBoxMapControlsCenter.Controls.Add(this.button3);
-            this.groupBoxMapControlsCenter.Controls.Add(this.button2);
+            this.groupBoxMapControlsCenter.Controls.Add(this.buttonMapControlsCenterChangeUpLeft);
+            this.groupBoxMapControlsCenter.Controls.Add(this.buttonMapControlsCenterChangeLeft);
+            this.groupBoxMapControlsCenter.Controls.Add(this.buttonMapControlsCenterChangeDownLeft);
+            this.groupBoxMapControlsCenter.Controls.Add(this.buttonMapControlsCenterChangeDown);
+            this.groupBoxMapControlsCenter.Controls.Add(this.buttonMapControlsCenterChangeUpRight);
+            this.groupBoxMapControlsCenter.Controls.Add(this.buttonMapControlsCenterChangeUp);
             this.groupBoxMapControlsCenter.Location = new System.Drawing.Point(3, 84);
             this.groupBoxMapControlsCenter.Name = "groupBoxMapControlsCenter";
             this.groupBoxMapControlsCenter.Size = new System.Drawing.Size(258, 80);
@@ -5871,12 +5871,12 @@ namespace STROOP
             // groupBoxMapControlsScale
             // 
             this.groupBoxMapControlsScale.Controls.Add(this.betterTextboxMapControlsScaleCustom);
-            this.groupBoxMapControlsScale.Controls.Add(this.betterTextbox2);
+            this.groupBoxMapControlsScale.Controls.Add(this.betterTextboxMapControlsScaleChange);
             this.groupBoxMapControlsScale.Controls.Add(this.radioButtonMapControlsScaleMaxCourseSize);
             this.groupBoxMapControlsScale.Controls.Add(this.radioButtonMapControlsScaleCourseDefault);
-            this.groupBoxMapControlsScale.Controls.Add(this.button12);
+            this.groupBoxMapControlsScale.Controls.Add(this.buttonMapControlsScaleChangeMinus);
             this.groupBoxMapControlsScale.Controls.Add(this.radioButtonMapControlsScaleCustom);
-            this.groupBoxMapControlsScale.Controls.Add(this.button11);
+            this.groupBoxMapControlsScale.Controls.Add(this.buttonMapControlsScaleChangePlus);
             this.groupBoxMapControlsScale.Location = new System.Drawing.Point(3, 3);
             this.groupBoxMapControlsScale.Name = "groupBoxMapControlsScale";
             this.groupBoxMapControlsScale.Size = new System.Drawing.Size(258, 80);
@@ -10430,125 +10430,125 @@ namespace STROOP
             this.comboBoxReadWriteMode.Size = new System.Drawing.Size(75, 21);
             this.comboBoxReadWriteMode.TabIndex = 22;
             // 
-            // button1
+            // buttonMapControlsCenterChangeUpLeft
             // 
-            this.button1.BackgroundImage = global::STROOP.Properties.Resources.image_upleft;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.Location = new System.Drawing.Point(137, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(25, 25);
-            this.button1.TabIndex = 39;
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonMapControlsCenterChangeUpLeft.BackgroundImage = global::STROOP.Properties.Resources.image_upleft;
+            this.buttonMapControlsCenterChangeUpLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControlsCenterChangeUpLeft.Location = new System.Drawing.Point(137, 5);
+            this.buttonMapControlsCenterChangeUpLeft.Name = "buttonMapControlsCenterChangeUpLeft";
+            this.buttonMapControlsCenterChangeUpLeft.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControlsCenterChangeUpLeft.TabIndex = 39;
+            this.buttonMapControlsCenterChangeUpLeft.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // buttonMapControlsCenterChangeUp
             // 
-            this.button2.BackgroundImage = global::STROOP.Properties.Resources.image_up;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.Location = new System.Drawing.Point(176, 5);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(25, 25);
-            this.button2.TabIndex = 39;
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonMapControlsCenterChangeUp.BackgroundImage = global::STROOP.Properties.Resources.image_up;
+            this.buttonMapControlsCenterChangeUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControlsCenterChangeUp.Location = new System.Drawing.Point(176, 5);
+            this.buttonMapControlsCenterChangeUp.Name = "buttonMapControlsCenterChangeUp";
+            this.buttonMapControlsCenterChangeUp.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControlsCenterChangeUp.TabIndex = 39;
+            this.buttonMapControlsCenterChangeUp.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // buttonMapControlsCenterChangeUpRight
             // 
-            this.button3.BackgroundImage = global::STROOP.Properties.Resources.image_upright;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button3.Location = new System.Drawing.Point(214, 5);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(25, 25);
-            this.button3.TabIndex = 39;
-            this.button3.UseVisualStyleBackColor = true;
+            this.buttonMapControlsCenterChangeUpRight.BackgroundImage = global::STROOP.Properties.Resources.image_upright;
+            this.buttonMapControlsCenterChangeUpRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControlsCenterChangeUpRight.Location = new System.Drawing.Point(214, 5);
+            this.buttonMapControlsCenterChangeUpRight.Name = "buttonMapControlsCenterChangeUpRight";
+            this.buttonMapControlsCenterChangeUpRight.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControlsCenterChangeUpRight.TabIndex = 39;
+            this.buttonMapControlsCenterChangeUpRight.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // buttonMapControlsCenterChangeRight
             // 
-            this.button4.BackgroundImage = global::STROOP.Properties.Resources.image_right;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button4.Location = new System.Drawing.Point(214, 30);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(25, 25);
-            this.button4.TabIndex = 39;
-            this.button4.UseVisualStyleBackColor = true;
+            this.buttonMapControlsCenterChangeRight.BackgroundImage = global::STROOP.Properties.Resources.image_right;
+            this.buttonMapControlsCenterChangeRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControlsCenterChangeRight.Location = new System.Drawing.Point(214, 30);
+            this.buttonMapControlsCenterChangeRight.Name = "buttonMapControlsCenterChangeRight";
+            this.buttonMapControlsCenterChangeRight.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControlsCenterChangeRight.TabIndex = 39;
+            this.buttonMapControlsCenterChangeRight.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // buttonMapControlsCenterChangeDownRight
             // 
-            this.button5.BackgroundImage = global::STROOP.Properties.Resources.image_downright;
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button5.Location = new System.Drawing.Point(214, 55);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(25, 25);
-            this.button5.TabIndex = 39;
-            this.button5.UseVisualStyleBackColor = true;
+            this.buttonMapControlsCenterChangeDownRight.BackgroundImage = global::STROOP.Properties.Resources.image_downright;
+            this.buttonMapControlsCenterChangeDownRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControlsCenterChangeDownRight.Location = new System.Drawing.Point(214, 55);
+            this.buttonMapControlsCenterChangeDownRight.Name = "buttonMapControlsCenterChangeDownRight";
+            this.buttonMapControlsCenterChangeDownRight.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControlsCenterChangeDownRight.TabIndex = 39;
+            this.buttonMapControlsCenterChangeDownRight.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // buttonMapControlsCenterChangeLeft
             // 
-            this.button6.BackgroundImage = global::STROOP.Properties.Resources.image_left;
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button6.Location = new System.Drawing.Point(137, 30);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(25, 25);
-            this.button6.TabIndex = 39;
-            this.button6.UseVisualStyleBackColor = true;
+            this.buttonMapControlsCenterChangeLeft.BackgroundImage = global::STROOP.Properties.Resources.image_left;
+            this.buttonMapControlsCenterChangeLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControlsCenterChangeLeft.Location = new System.Drawing.Point(137, 30);
+            this.buttonMapControlsCenterChangeLeft.Name = "buttonMapControlsCenterChangeLeft";
+            this.buttonMapControlsCenterChangeLeft.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControlsCenterChangeLeft.TabIndex = 39;
+            this.buttonMapControlsCenterChangeLeft.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // buttonMapControlsCenterChangeDownLeft
             // 
-            this.button7.BackgroundImage = global::STROOP.Properties.Resources.image_downleft;
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button7.Location = new System.Drawing.Point(137, 55);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(25, 25);
-            this.button7.TabIndex = 39;
-            this.button7.UseVisualStyleBackColor = true;
+            this.buttonMapControlsCenterChangeDownLeft.BackgroundImage = global::STROOP.Properties.Resources.image_downleft;
+            this.buttonMapControlsCenterChangeDownLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControlsCenterChangeDownLeft.Location = new System.Drawing.Point(137, 55);
+            this.buttonMapControlsCenterChangeDownLeft.Name = "buttonMapControlsCenterChangeDownLeft";
+            this.buttonMapControlsCenterChangeDownLeft.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControlsCenterChangeDownLeft.TabIndex = 39;
+            this.buttonMapControlsCenterChangeDownLeft.UseVisualStyleBackColor = true;
             // 
-            // button10
+            // buttonMapControlsCenterChangeDown
             // 
-            this.button10.BackgroundImage = global::STROOP.Properties.Resources.image_down;
-            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button10.Location = new System.Drawing.Point(176, 55);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(25, 25);
-            this.button10.TabIndex = 39;
-            this.button10.UseVisualStyleBackColor = true;
+            this.buttonMapControlsCenterChangeDown.BackgroundImage = global::STROOP.Properties.Resources.image_down;
+            this.buttonMapControlsCenterChangeDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControlsCenterChangeDown.Location = new System.Drawing.Point(176, 55);
+            this.buttonMapControlsCenterChangeDown.Name = "buttonMapControlsCenterChangeDown";
+            this.buttonMapControlsCenterChangeDown.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControlsCenterChangeDown.TabIndex = 39;
+            this.buttonMapControlsCenterChangeDown.UseVisualStyleBackColor = true;
             // 
-            // button11
+            // buttonMapControlsScaleChangePlus
             // 
-            this.button11.BackgroundImage = global::STROOP.Properties.Resources.image_plus;
-            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button11.Location = new System.Drawing.Point(218, 24);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(35, 35);
-            this.button11.TabIndex = 39;
-            this.button11.UseVisualStyleBackColor = true;
+            this.buttonMapControlsScaleChangePlus.BackgroundImage = global::STROOP.Properties.Resources.image_plus;
+            this.buttonMapControlsScaleChangePlus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControlsScaleChangePlus.Location = new System.Drawing.Point(218, 24);
+            this.buttonMapControlsScaleChangePlus.Name = "buttonMapControlsScaleChangePlus";
+            this.buttonMapControlsScaleChangePlus.Size = new System.Drawing.Size(35, 35);
+            this.buttonMapControlsScaleChangePlus.TabIndex = 39;
+            this.buttonMapControlsScaleChangePlus.UseVisualStyleBackColor = true;
             // 
-            // button12
+            // buttonMapControlsScaleChangeMinus
             // 
-            this.button12.BackgroundImage = global::STROOP.Properties.Resources.image_minus;
-            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button12.Location = new System.Drawing.Point(127, 24);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(35, 35);
-            this.button12.TabIndex = 39;
-            this.button12.UseVisualStyleBackColor = true;
+            this.buttonMapControlsScaleChangeMinus.BackgroundImage = global::STROOP.Properties.Resources.image_minus;
+            this.buttonMapControlsScaleChangeMinus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControlsScaleChangeMinus.Location = new System.Drawing.Point(127, 24);
+            this.buttonMapControlsScaleChangeMinus.Name = "buttonMapControlsScaleChangeMinus";
+            this.buttonMapControlsScaleChangeMinus.Size = new System.Drawing.Size(35, 35);
+            this.buttonMapControlsScaleChangeMinus.TabIndex = 39;
+            this.buttonMapControlsScaleChangeMinus.UseVisualStyleBackColor = true;
             // 
-            // button13
+            // buttonMapControlsAngleChangeClockwise
             // 
-            this.button13.BackgroundImage = global::STROOP.Properties.Resources.image_clockwise;
-            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button13.Location = new System.Drawing.Point(218, 42);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(35, 35);
-            this.button13.TabIndex = 39;
-            this.button13.UseVisualStyleBackColor = true;
+            this.buttonMapControlsAngleChangeClockwise.BackgroundImage = global::STROOP.Properties.Resources.image_clockwise;
+            this.buttonMapControlsAngleChangeClockwise.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControlsAngleChangeClockwise.Location = new System.Drawing.Point(218, 42);
+            this.buttonMapControlsAngleChangeClockwise.Name = "buttonMapControlsAngleChangeClockwise";
+            this.buttonMapControlsAngleChangeClockwise.Size = new System.Drawing.Size(35, 35);
+            this.buttonMapControlsAngleChangeClockwise.TabIndex = 39;
+            this.buttonMapControlsAngleChangeClockwise.UseVisualStyleBackColor = true;
             // 
-            // button14
+            // buttonMapControlsAngleChangeCounterclockwise
             // 
-            this.button14.BackgroundImage = global::STROOP.Properties.Resources.image_counterclockwise;
-            this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button14.Location = new System.Drawing.Point(127, 42);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(35, 35);
-            this.button14.TabIndex = 39;
-            this.button14.UseVisualStyleBackColor = true;
+            this.buttonMapControlsAngleChangeCounterclockwise.BackgroundImage = global::STROOP.Properties.Resources.image_counterclockwise;
+            this.buttonMapControlsAngleChangeCounterclockwise.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControlsAngleChangeCounterclockwise.Location = new System.Drawing.Point(127, 42);
+            this.buttonMapControlsAngleChangeCounterclockwise.Name = "buttonMapControlsAngleChangeCounterclockwise";
+            this.buttonMapControlsAngleChangeCounterclockwise.Size = new System.Drawing.Size(35, 35);
+            this.buttonMapControlsAngleChangeCounterclockwise.TabIndex = 39;
+            this.buttonMapControlsAngleChangeCounterclockwise.UseVisualStyleBackColor = true;
             // 
             // buttonObjRelease
             // 
@@ -13951,32 +13951,14 @@ namespace STROOP
             this.textBoxMapBoundsPosition.Text = "100";
             this.textBoxMapBoundsPosition.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // betterTextbox3
+            // betterTextboxMapControlsAngleChange
             // 
-            this.betterTextbox3.Location = new System.Drawing.Point(165, 51);
-            this.betterTextbox3.Name = "betterTextbox3";
-            this.betterTextbox3.Size = new System.Drawing.Size(50, 20);
-            this.betterTextbox3.TabIndex = 34;
-            this.betterTextbox3.Text = "8192";
-            this.betterTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // betterTextbox1
-            // 
-            this.betterTextbox1.Location = new System.Drawing.Point(163, 33);
-            this.betterTextbox1.Name = "betterTextbox1";
-            this.betterTextbox1.Size = new System.Drawing.Size(50, 20);
-            this.betterTextbox1.TabIndex = 34;
-            this.betterTextbox1.Text = "100";
-            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // betterTextbox2
-            // 
-            this.betterTextbox2.Location = new System.Drawing.Point(165, 33);
-            this.betterTextbox2.Name = "betterTextbox2";
-            this.betterTextbox2.Size = new System.Drawing.Size(50, 20);
-            this.betterTextbox2.TabIndex = 34;
-            this.betterTextbox2.Text = "1.10";
-            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.betterTextboxMapControlsAngleChange.Location = new System.Drawing.Point(165, 51);
+            this.betterTextboxMapControlsAngleChange.Name = "betterTextboxMapControlsAngleChange";
+            this.betterTextboxMapControlsAngleChange.Size = new System.Drawing.Size(50, 20);
+            this.betterTextboxMapControlsAngleChange.TabIndex = 34;
+            this.betterTextboxMapControlsAngleChange.Text = "8192";
+            this.betterTextboxMapControlsAngleChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // betterTextboxMapControlsAngleCustom
             // 
@@ -13996,6 +13978,15 @@ namespace STROOP
             this.betterTextboxMapControlsCenterCustom.Text = "0,0";
             this.betterTextboxMapControlsCenterCustom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // betterTextboxMapControlsCenterChange
+            // 
+            this.betterTextboxMapControlsCenterChange.Location = new System.Drawing.Point(163, 33);
+            this.betterTextboxMapControlsCenterChange.Name = "betterTextboxMapControlsCenterChange";
+            this.betterTextboxMapControlsCenterChange.Size = new System.Drawing.Size(50, 20);
+            this.betterTextboxMapControlsCenterChange.TabIndex = 34;
+            this.betterTextboxMapControlsCenterChange.Text = "100";
+            this.betterTextboxMapControlsCenterChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // betterTextboxMapControlsScaleCustom
             // 
             this.betterTextboxMapControlsScaleCustom.Location = new System.Drawing.Point(67, 50);
@@ -14004,6 +13995,15 @@ namespace STROOP
             this.betterTextboxMapControlsScaleCustom.TabIndex = 34;
             this.betterTextboxMapControlsScaleCustom.Text = "0";
             this.betterTextboxMapControlsScaleCustom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextboxMapControlsScaleChange
+            // 
+            this.betterTextboxMapControlsScaleChange.Location = new System.Drawing.Point(165, 33);
+            this.betterTextboxMapControlsScaleChange.Name = "betterTextboxMapControlsScaleChange";
+            this.betterTextboxMapControlsScaleChange.Size = new System.Drawing.Size(50, 20);
+            this.betterTextboxMapControlsScaleChange.TabIndex = 34;
+            this.betterTextboxMapControlsScaleChange.Text = "1.10";
+            this.betterTextboxMapControlsScaleChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxMarioPuY
             // 
@@ -16384,21 +16384,21 @@ namespace STROOP
         private RadioButton radioButtonMapControlsCenterOrigin;
         private RadioButton radioButtonMapControlsCenterBestFit;
         private RadioButton radioButtonMapControlsCenterCustom;
-        private BetterTextbox betterTextbox3;
-        private BetterTextbox betterTextbox1;
-        private BetterTextbox betterTextbox2;
-        private Button button5;
-        private Button button4;
-        private Button button14;
-        private Button button12;
-        private Button button13;
-        private Button button11;
-        private Button button3;
-        private Button button2;
-        private Button button10;
-        private Button button7;
-        private Button button6;
-        private Button button1;
+        private BetterTextbox betterTextboxMapControlsAngleChange;
+        private BetterTextbox betterTextboxMapControlsCenterChange;
+        private BetterTextbox betterTextboxMapControlsScaleChange;
+        private Button buttonMapControlsCenterChangeDownRight;
+        private Button buttonMapControlsCenterChangeRight;
+        private Button buttonMapControlsAngleChangeCounterclockwise;
+        private Button buttonMapControlsScaleChangeMinus;
+        private Button buttonMapControlsAngleChangeClockwise;
+        private Button buttonMapControlsScaleChangePlus;
+        private Button buttonMapControlsCenterChangeUpRight;
+        private Button buttonMapControlsCenterChangeUp;
+        private Button buttonMapControlsCenterChangeDown;
+        private Button buttonMapControlsCenterChangeDownLeft;
+        private Button buttonMapControlsCenterChangeLeft;
+        private Button buttonMapControlsCenterChangeUpLeft;
     }
 }
 
