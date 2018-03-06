@@ -48,10 +48,24 @@ namespace STROOP.Structs
         public RadioButton RadioButtonScaleCustom;
         public BetterTextbox TextBoxScaleCustom;
 
+        public BetterTextbox TextBoxScaleChange;
+        public Button ButtonCenterScaleChangeMinus;
+        public Button ButtonCenterScaleChangePlus;
+
         public RadioButton RadioButtonCenterBestFit;
         public RadioButton RadioButtonCenterOrigin;
         public RadioButton RadioButtonCenterCustom;
         public BetterTextbox TextBoxCenterCustom;
+
+        public BetterTextbox TextBoxCenterChange;
+        public Button ButtonCenterChangeUp;
+        public Button ButtonCenterChangeDown;
+        public Button ButtonCenterChangeLeft;
+        public Button ButtonCenterChangeRight;
+        public Button ButtonCenterChangeUpLeft;
+        public Button ButtonCenterChangeUpRight;
+        public Button ButtonCenterChangeDownLeft;
+        public Button ButtonCenterChangeDownRight;
 
         public RadioButton RadioButtonAngle0;
         public RadioButton RadioButtonAngle16384;
@@ -59,5 +73,9 @@ namespace STROOP.Structs
         public RadioButton RadioButtonAngle49152;
         public RadioButton RadioButtonAngleCustom;
         public BetterTextbox TextBoxAngleCustom;
+
+        public BetterTextbox TextBoxAngleChange;
+        public Button ButtonAngleChangeCounterclockwise;
+        public Button ButtonAngleChangeClockwise;
     }
 }

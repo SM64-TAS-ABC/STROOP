@@ -127,6 +127,8 @@ namespace STROOP
             mapGui.RadioButtonScaleCustom = radioButtonMapControlsScaleCustom;
             mapGui.TextBoxScaleCustom = betterTextboxMapControlsScaleCustom;
 
+
+
             mapGui.RadioButtonCenterBestFit = radioButtonMapControlsCenterBestFit;
             mapGui.RadioButtonCenterOrigin = radioButtonMapControlsCenterOrigin;
             mapGui.RadioButtonCenterCustom = radioButtonMapControlsCenterCustom;
