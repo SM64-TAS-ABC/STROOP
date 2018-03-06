@@ -3157,7 +3157,7 @@ namespace STROOP.Structs
                         double newMarioAngleDouble = angleToVertex + angleDiff;
                         ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
                         return Config.Stream.SetValue(
-                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                     };
                     break;
 
@@ -3575,7 +3575,7 @@ namespace STROOP.Structs
 
             bool success = true;
             success &= Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-            success &= Config.Stream.SetValue(newAngleRounded, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+            success &= Config.Stream.SetValue(newAngleRounded, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
             return success;
         }
 
