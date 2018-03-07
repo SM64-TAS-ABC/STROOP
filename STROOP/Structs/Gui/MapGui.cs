@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using OpenTK.Graphics.OpenGL;
 using OpenTK;
+using STROOP.Controls;
 
 namespace STROOP.Structs
 {
@@ -77,5 +78,9 @@ namespace STROOP.Structs
         public BetterTextbox TextBoxAngleChange;
         public Button ButtonAngleChangeCounterclockwise;
         public Button ButtonAngleChangeClockwise;
+
+        public MapTrackerFlowLayoutPanel MapTrackerFlowLayoutPanel;
+        public Button ButtonAdd;
+        public Button ButtonClear;
     }
 }

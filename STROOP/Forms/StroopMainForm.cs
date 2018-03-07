@@ -156,6 +156,10 @@ namespace STROOP
             mapGui.ButtonAngleChangeClockwise = buttonMapControlsAngleChangeClockwise;
             mapGui.TextBoxAngleChange = betterTextboxMapControlsAngleChange;
 
+            mapGui.MapTrackerFlowLayoutPanel = flowLayoutPanelMapTrackers;
+            mapGui.ButtonAdd = buttonMapControlsAdd;
+            mapGui.ButtonClear = buttonMapControlsClear;
+
             Config.MapManager = new MapManager(_mapAssoc, mapGui);
 
             Config.ModelManager = new ModelManager(tabPageModel);
