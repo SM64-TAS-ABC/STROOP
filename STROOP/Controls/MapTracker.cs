@@ -23,6 +23,11 @@ namespace STROOP.Controls
         private bool _isSpecial;
         private Func<string> _getterFunction;
 
+        public MapTracker()
+        {
+
+        }
+
         private MapTracker(
             VarHackFlowLayoutPanel varHackPanel,
             int creationIndex,

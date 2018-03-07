@@ -70,7 +70,7 @@
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 73F));
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52F));
             this.tableLayoutPanelVarHack.Controls.Add(this.checkBoxUsePointer, 1, 2);
             this.tableLayoutPanelVarHack.Controls.Add(this.textBoxNameValue, 1, 0);
             this.tableLayoutPanelVarHack.Controls.Add(this.textBoxNameLabel, 0, 0);
@@ -324,7 +324,7 @@
             this.pictureBoxRedX.Location = new System.Drawing.Point(359, 4);
             this.pictureBoxRedX.Name = "pictureBoxRedX";
             this.tableLayoutPanelVarHack.SetRowSpan(this.pictureBoxRedX, 2);
-            this.pictureBoxRedX.Size = new System.Drawing.Size(45, 41);
+            this.pictureBoxRedX.Size = new System.Drawing.Size(46, 41);
             this.pictureBoxRedX.TabIndex = 12;
             this.pictureBoxRedX.TabStop = false;
             // 
@@ -378,14 +378,14 @@
             this.textBoxXPosLabel.Text = "X Pos:";
             this.textBoxXPosLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // VarHackContainer
+            // MapTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.tableLayoutPanelVarHack);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "VarHackContainer";
+            this.Name = "MapTracker";
             this.Size = new System.Drawing.Size(408, 99);
             this.tableLayoutPanelVarHack.ResumeLayout(false);
             this.tableLayoutPanelVarHack.PerformLayout();
