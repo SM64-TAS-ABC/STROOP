@@ -54,7 +54,7 @@ namespace STROOP.Controls
 
         public void AddNewControl()
         {
-            MapTracker mapTracker = new MapTracker();
+            MapTracker mapTracker = new MapTracker(this);
             lock (_objectLock)
             {
                 Controls.Add(mapTracker);
