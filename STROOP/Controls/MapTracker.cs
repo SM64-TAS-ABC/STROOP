@@ -21,6 +21,7 @@ namespace STROOP.Controls
         
         public MapTracker(MapTrackerFlowLayoutPanel flowLayoutPanel)
         {
+            InitializeComponent();
             _flowLayoutPanel = flowLayoutPanel;
         }
 

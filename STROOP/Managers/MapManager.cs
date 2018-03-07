@@ -74,10 +74,12 @@ namespace STROOP.Managers
 
         public void Update()
         {
+            _mapGui.MapTrackerFlowLayoutPanel.UpdateControls();
+
             // Make sure the control has successfully loaded
             if (!IsLoaded)
                 return;
-            
+
             // Update gui by drawing images (invokes _mapGraphics.OnPaint())
             _controller.Update();
 
