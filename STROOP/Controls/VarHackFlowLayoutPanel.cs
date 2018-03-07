@@ -66,7 +66,6 @@ namespace STROOP.Controls
                 Controls.Add(duplicate);
                 Controls.SetChildIndex(duplicate, index + 1);
             }
-
         }
 
         // Methods from a watch var control
