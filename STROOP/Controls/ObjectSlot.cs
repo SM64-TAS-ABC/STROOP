@@ -375,10 +375,7 @@ namespace STROOP
         {
             CurrentObject = obj;
 
-            if (CurrentObject == null)
-                return;
-
-            uint address = CurrentObject.Address;
+            uint? address = CurrentObject?.Address;
 
             // Update Overlays
             var prevOverlays = new List<bool>()
@@ -400,22 +397,44 @@ namespace STROOP
                 _drawParentNoneOverlay,
                 _drawMarkedOverlay,
             };
-            _drawSelectedOverlay = _manager.SelectedSlotsAddresses.Contains(address);
-            _drawStoodOnOverlay = OverlayConfig.ShowOverlayStoodOnObject && address == DataModels.Mario.StoodOnObject;
-            _drawInteractionOverlay = OverlayConfig.ShowOverlayInteractionObject && address == DataModels.Mario.InteractionObject;
-            _drawHeldOverlay = OverlayConfig.ShowOverlayHeldObject && address == DataModels.Mario.HeldObject;
-            _drawUsedOverlay = OverlayConfig.ShowOverlayUsedObject && address == DataModels.Mario.UsedObject;
-            _drawClosestOverlay = OverlayConfig.ShowOverlayClosestObject && address == DataModels.Mario.ClosestObject;
-            _drawCameraOverlay = OverlayConfig.ShowOverlayCameraObject && address == DataModels.Camera.SecondaryObject;
-            _drawCameraHackOverlay = OverlayConfig.ShowOverlayCameraHackObject && address == DataModels.Camera.HackObject;
-            _drawModelOverlay = address == Config.ModelManager.ModelObjectAddress;
-            _drawWallOverlay = OverlayConfig.ShowOverlayWallObject && address == DataModels.Mario.WallTriangle?.AssociatedObject;
-            _drawFloorOverlay = OverlayConfig.ShowOverlayFloorObject && address == DataModels.Mario.FloorTriangle?.AssociatedObject;
-            _drawCeilingOverlay = OverlayConfig.ShowOverlayCeilingObject && address == DataModels.Mario.CeilingTriangle?.AssociatedObject;
-            _drawParentOverlay = OverlayConfig.ShowOverlayParentObject && address == _manager.HoveredOverSlot.CurrentObject.Parent;
-            _drawParentUnusedOverlay = _drawParentOverlay && _manager.HoveredOverSlot.CurrentObject.Parent == 0;
-            _drawParentNoneOverlay = _drawParentOverlay && _manager.HoveredOverSlot.CurrentObject.Parent == ObjectSlotsConfig.UnusedSlotAddress;
-            _drawMarkedOverlay = _manager.MarkedSlotsAddresses.Contains(address);
+            if (address.HasValue)
+            {
+                _drawSelectedOverlay = _manager.SelectedSlotsAddresses.Contains(address.Value);
+                _drawStoodOnOverlay = OverlayConfig.ShowOverlayStoodOnObject && address == DataModels.Mario.StoodOnObject;
+                _drawInteractionOverlay = OverlayConfig.ShowOverlayInteractionObject && address == DataModels.Mario.InteractionObject;
+                _drawHeldOverlay = OverlayConfig.ShowOverlayHeldObject && address == DataModels.Mario.HeldObject;
+                _drawUsedOverlay = OverlayConfig.ShowOverlayUsedObject && address == DataModels.Mario.UsedObject;
+                _drawClosestOverlay = OverlayConfig.ShowOverlayClosestObject && address == DataModels.Mario.ClosestObject;
+                _drawCameraOverlay = OverlayConfig.ShowOverlayCameraObject && address == DataModels.Camera.SecondaryObject;
+                _drawCameraHackOverlay = OverlayConfig.ShowOverlayCameraHackObject && address == DataModels.Camera.HackObject;
+                _drawModelOverlay = address == Config.ModelManager.ModelObjectAddress;
+                _drawWallOverlay = OverlayConfig.ShowOverlayWallObject && address == DataModels.Mario.WallTriangle?.AssociatedObject;
+                _drawFloorOverlay = OverlayConfig.ShowOverlayFloorObject && address == DataModels.Mario.FloorTriangle?.AssociatedObject;
+                _drawCeilingOverlay = OverlayConfig.ShowOverlayCeilingObject && address == DataModels.Mario.CeilingTriangle?.AssociatedObject;
+                _drawParentOverlay = OverlayConfig.ShowOverlayParentObject && address == _manager.HoveredOverSlot.CurrentObject.Parent;
+                _drawParentUnusedOverlay = _drawParentOverlay && _manager.HoveredOverSlot.CurrentObject?.Parent == 0;
+                _drawParentNoneOverlay = _drawParentOverlay && _manager.HoveredOverSlot.CurrentObject?.Parent == ObjectSlotsConfig.UnusedSlotAddress;
+                _drawMarkedOverlay = _manager.MarkedSlotsAddresses.Contains(address.Value);
+            }
+            else
+            {
+                _drawSelectedOverlay = false;
+                _drawStoodOnOverlay = false;
+                _drawInteractionOverlay = false;
+                _drawHeldOverlay = false;
+                _drawUsedOverlay = false;
+                _drawClosestOverlay = false;
+                _drawCameraOverlay = false;
+                _drawCameraHackOverlay = false;
+                _drawModelOverlay = false;
+                _drawWallOverlay = false;
+                _drawFloorOverlay = false;
+                _drawCeilingOverlay = false;
+                _drawParentOverlay = false;
+                _drawParentUnusedOverlay = false;
+                _drawParentNoneOverlay = false;
+                _drawMarkedOverlay = false;
+            }
             var overlays = new List<bool>()
             {
                 _drawSelectedOverlay,
@@ -435,7 +454,6 @@ namespace STROOP
                 _drawParentNoneOverlay,
                 _drawMarkedOverlay,
             };
-
 
             SelectionType selectionType;
             switch (_manager.ActiveTab)
@@ -460,9 +478,9 @@ namespace STROOP
                     break;
             }
 
-            Color mainColor = ObjectSlotsConfig.GetProcessingGroupColor(CurrentObject.CurrentProcessGroup);
+            Color mainColor = ObjectSlotsConfig.GetProcessingGroupColor(CurrentObject?.CurrentProcessGroup);
             Color textColor = _manager.LabelsLocked ? Color.Blue : Color.Black;
-            string text = _manager.SlotLabelsForObjects[address];
+            string text = address.HasValue ? _manager.SlotLabelsForObjects[address.Value] : "";
 
             // Update UI element
 
@@ -491,14 +509,14 @@ namespace STROOP
                 redraw = true;
             }
 
-            if (_behavior != CurrentObject.BehaviorCriteria)
+            if (_behavior != (CurrentObject?.BehaviorCriteria ?? default(BehaviorCriteria)))
             {
-                _behavior = CurrentObject.BehaviorCriteria;
+                _behavior = CurrentObject?.BehaviorCriteria ?? default(BehaviorCriteria);
                 updateColors = true;
             }
-            if (_isActive != CurrentObject.IsActive)
+            if (_isActive != (CurrentObject?.IsActive ?? false))
             {
-                _isActive = CurrentObject.IsActive;
+                _isActive = CurrentObject?.IsActive ?? false;
                 updateColors = true;
             }         
             if (!overlays.SequenceEqual(prevOverlays))

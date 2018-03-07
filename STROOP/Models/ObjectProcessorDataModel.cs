@@ -25,10 +25,11 @@ namespace STROOP.Models
             // Check behavior bank
             Config.ObjectAssociations.BehaviorBankStart = Config.Stream.GetUInt32(Config.ObjectAssociations.SegmentTable + 0x13 * 4);
 
-            int vacantIndexStart = UpdateGetProcessedObjects();
-            UpdateGetVacantObjects(vacantIndexStart);
+            int? vacantIndexStart = UpdateGetProcessedObjects();
+            if (vacantIndexStart.HasValue)
+                UpdateGetVacantObjects(vacantIndexStart.Value);
 
-            ActiveObjectCount = DataModels.Objects.Count(o => o.IsActive);
+            ActiveObjectCount = DataModels.Objects.Count(o => o?.IsActive ?? false);
         }
 
         public void Update2()
@@ -36,7 +37,7 @@ namespace STROOP.Models
             _objects.ForEach(o => o?.Update2());
         }
 
-        private int UpdateGetProcessedObjects()
+        private int? UpdateGetProcessedObjects()
         {
             int slotIndex = 0;
             foreach (var processGroup in ObjectSlotsConfig.ProcessingGroups)
@@ -52,7 +53,10 @@ namespace STROOP.Models
                     // Validate current object
                     if (objAddress == 0 ||
                         Config.Stream.GetUInt16(objAddress + ObjectConfig.HeaderOffset) != 0x18)
+                    {
                         ClearRemainingObjectSlots(slotIndex);
+                        return null;
+                    }
 
                     ObjectDataModel obj = GetOrCreateObjectSlot(slotIndex);
 
@@ -81,9 +85,12 @@ namespace STROOP.Models
             for (int vacantSlotIndex = 0; slotIndex < ObjectSlotsConfig.MaxSlots; slotIndex++, vacantSlotIndex++)
             {
                 // Validate current object
-                if (objAddress == 0 || 
+                if (objAddress == 0 ||
                     Config.Stream.GetUInt16(objAddress + ObjectConfig.HeaderOffset) != 0x18)
+                {
                     ClearRemainingObjectSlots(slotIndex);
+                    return;
+                }
 
                 ObjectDataModel obj = GetOrCreateObjectSlot(slotIndex);
 

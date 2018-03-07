@@ -262,7 +262,7 @@ namespace STROOP.Managers
  
         public string GetSlotNameFromAddress(uint address)
         {
-            ObjectSlot slot = ObjectSlots.FirstOrDefault(s => s.CurrentObject.Address == address);
+            ObjectSlot slot = ObjectSlots.FirstOrDefault(s => s.CurrentObject?.Address == address);
             return slot?.Text;
         }
 
@@ -290,19 +290,19 @@ namespace STROOP.Managers
             {
                 case SortMethodType.ProcessingOrder:
                     // Data is already sorted by processing order
-                    sortedObjects = DataModels.Objects.OrderBy(o => o.ProcessIndex);
+                    sortedObjects = DataModels.Objects.OrderBy(o => o?.ProcessIndex);
                     break;
 
                 case SortMethodType.MemoryOrder:
                     // Order by address
-                    sortedObjects = DataModels.Objects.OrderBy(o => o.Address);
+                    sortedObjects = DataModels.Objects.OrderBy(o => o?.Address);
                     break;
 
                 case SortMethodType.DistanceToMario:
 
                     // Order by address
-                    var activeObjects = DataModels.Objects.Where(o => o.IsActive).OrderBy(o => o.DistanceToMarioCalculated);
-                    var inActiveObjects = DataModels.Objects.Where(o => !o.IsActive).OrderBy(o => o.DistanceToMarioCalculated);
+                    var activeObjects = DataModels.Objects.Where(o => o?.IsActive ?? false).OrderBy(o => o?.DistanceToMarioCalculated);
+                    var inActiveObjects = DataModels.Objects.Where(o => !o?.IsActive ?? true).OrderBy(o => o?.DistanceToMarioCalculated);
 
                     sortedObjects = activeObjects.Concat(inActiveObjects);
                     break;
@@ -319,10 +319,10 @@ namespace STROOP.Managers
             // Update labels
             if (!LabelsLocked)
             {
-                foreach(ObjectDataModel obj in DataModels.Objects)
+                foreach(ObjectDataModel obj in DataModels.Objects.Where(o => o != null))
                     _lockedSlotIndices[obj.Address] = new Tuple<int?, int?>(obj.ProcessIndex, obj.VacantSlotIndex);
             }
-            foreach (uint address in sortedObjects.Select(o => o.Address))
+            foreach (uint address in sortedObjects.Where(o => o != null).Select(o => o.Address))
                 _slotLabels[address] = GetSlotLabelForAddress(address);
 
             // Update object slots

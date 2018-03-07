@@ -443,7 +443,7 @@ namespace STROOP.Managers
             if (!updateView)
                 return;
 
-            _objects = DataModels.Objects.Where(o => _addresses.Contains(o.Address)).ToList();
+            _objects = DataModels.Objects.Where(o => o != null && _addresses.Contains(o.Address)).ToList();
 
             _releaseButton.UpdateButton();
             _interactButton.UpdateButton();
