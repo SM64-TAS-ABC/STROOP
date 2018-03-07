@@ -1,6 +1,6 @@
 ﻿namespace STROOP.Controls
 {
-    partial class VarHackContainer
+    partial class MapTracker
     {
         /// <summary> 
         /// Required designer variable.
@@ -70,7 +70,7 @@
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 73F));
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52F));
+            this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tableLayoutPanelVarHack.Controls.Add(this.checkBoxUsePointer, 1, 2);
             this.tableLayoutPanelVarHack.Controls.Add(this.textBoxNameValue, 1, 0);
             this.tableLayoutPanelVarHack.Controls.Add(this.textBoxNameLabel, 0, 0);
@@ -324,7 +324,7 @@
             this.pictureBoxRedX.Location = new System.Drawing.Point(359, 4);
             this.pictureBoxRedX.Name = "pictureBoxRedX";
             this.tableLayoutPanelVarHack.SetRowSpan(this.pictureBoxRedX, 2);
-            this.pictureBoxRedX.Size = new System.Drawing.Size(46, 41);
+            this.pictureBoxRedX.Size = new System.Drawing.Size(45, 41);
             this.pictureBoxRedX.TabIndex = 12;
             this.pictureBoxRedX.TabStop = false;
             // 

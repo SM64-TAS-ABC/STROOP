@@ -132,6 +132,12 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\MapTracker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MapTracker.Designer.cs">
+      <DependentUpon>MapTracker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\WatchVariableControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -418,6 +424,9 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <EmbeddedResource Include="Controls\MapTracker.resx">
+      <DependentUpon>MapTracker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\WatchVariableControl.resx">
       <DependentUpon>WatchVariableControl.cs</DependentUpon>
     </EmbeddedResource>
