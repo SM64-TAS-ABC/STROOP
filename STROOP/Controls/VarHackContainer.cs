@@ -82,6 +82,11 @@ namespace STROOP.Controls
             pictureBoxDownArrow.Click += (sender, e) => _varHackPanel.MoveDownControl(this);
             pictureBoxRedX.Click += (sender, e) => _varHackPanel.RemoveControl(this);
             checkBoxUsePointer.Click += (sender, e) => textBoxPointerOffsetValue.Enabled = checkBoxUsePointer.Checked;
+
+            ContextMenuStrip = new ContextMenuStrip();
+            ToolStripMenuItem itemDuplicate = new ToolStripMenuItem("Duplicate");
+            itemDuplicate.Click += (sender, e) => _varHackPanel.DuplicateControl(this);
+            ContextMenuStrip.Items.Add(itemDuplicate);
         }
 
         public static VarHackContainer CreateDefault(
@@ -216,6 +221,11 @@ namespace STROOP.Controls
                 root.Add(new XAttribute("noNum", checkBoxNoNumber.Checked));
             }
             return root;
+        }
+
+        public VarHackContainer Clone()
+        {
+            return CreateFromXml(_varHackPanel, ToXml());
         }
 
         public byte[] GetBigEndianByteArray()

@@ -56,6 +56,19 @@ namespace STROOP.Controls
             }
         }
 
+        public void DuplicateControl(VarHackContainer varHackContainer)
+        {
+            if (Controls.Count >= VarHackConfig.MaxPossibleVars) return;
+            int index = Controls.IndexOf(varHackContainer);
+            VarHackContainer duplicate = varHackContainer.Clone();
+            lock (_objectLock)
+            {
+                Controls.Add(duplicate);
+                Controls.SetChildIndex(duplicate, index + 1);
+            }
+
+        }
+
         // Methods from a watch var control
 
         public void AddNewControl(string varName, uint address, Type memoryType, bool useHex, uint? pointerOffset)
