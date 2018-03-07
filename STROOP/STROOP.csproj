@@ -138,6 +138,9 @@
     <Compile Include="Controls\MapTracker.Designer.cs">
       <DependentUpon>MapTracker.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MapTrackerFlowLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\WatchVariableControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
