@@ -84,15 +84,14 @@ namespace STROOP.Controls
             checkBoxUsePointer.Click += (sender, e) => textBoxPointerOffsetValue.Enabled = checkBoxUsePointer.Checked;
         }
 
-        public static VarHackContainer Create(
+        public static VarHackContainer CreateDefault(
             VarHackFlowLayoutPanel varHackPanel,
-            int creationIndex,
-            bool useDefaults)
+            int creationIndex)
         {
             return new VarHackContainer(
                 varHackPanel,
                 creationIndex,
-                useDefaults,
+                true /* useDefaults */,
                 null /* specialTypeIn */,
                 null /* noNumIn */,
                 null /* varNameIn */,
@@ -104,7 +103,7 @@ namespace STROOP.Controls
                 null /* yPosIn */);
         }
 
-        public static VarHackContainer Create(
+        public static VarHackContainer CreateWithParameters(
             VarHackFlowLayoutPanel varHackPanel,
             int creationIndex,
             string varName,
@@ -128,7 +127,7 @@ namespace STROOP.Controls
                 null /* yPosIn */);
         }
 
-        public static VarHackContainer Create(
+        public static VarHackContainer CreateSpecial(
             VarHackFlowLayoutPanel varHackPanel,
             int creationIndex,
             string specialType)
@@ -148,7 +147,7 @@ namespace STROOP.Controls
                 null /* yPosIn */);
         }
 
-        public static VarHackContainer Create(
+        public static VarHackContainer CreateFromXml(
             VarHackFlowLayoutPanel varHackPanel,
             XElement element)
         {

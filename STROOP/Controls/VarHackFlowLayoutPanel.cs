@@ -62,7 +62,7 @@ namespace STROOP.Controls
         {
             if (Controls.Count >= VarHackConfig.MaxPossibleVars) return;
             VarHackContainer varHackContainer =
-                VarHackContainer.Create(
+                VarHackContainer.CreateWithParameters(
                     this, Controls.Count, varName, address, memoryType, useHex, pointerOffset);
             lock (_objectLock)
             {
@@ -74,7 +74,7 @@ namespace STROOP.Controls
         {
             if (Controls.Count >= VarHackConfig.MaxPossibleVars) return;
             VarHackContainer varHackContainer =
-                VarHackContainer.Create(this, Controls.Count, specialType);
+                VarHackContainer.CreateSpecial(this, Controls.Count, specialType);
             lock (_objectLock)
             {
                 Controls.Add(varHackContainer);
@@ -86,7 +86,7 @@ namespace STROOP.Controls
         public void AddNewControl()
         {
             if (Controls.Count >= VarHackConfig.MaxPossibleVars) return;
-            VarHackContainer varHackContainer = VarHackContainer.Create(this, Controls.Count, true);
+            VarHackContainer varHackContainer = VarHackContainer.CreateDefault(this, Controls.Count);
             lock (_objectLock)
             {
                 Controls.Add(varHackContainer);
@@ -111,7 +111,7 @@ namespace STROOP.Controls
         {
             List<XElement> elements = FileUtilities.OpenXmlElements(FileType.StroopVarHackVariables);
             List<VarHackContainer> varHackContainers =
-                elements.ConvertAll(element => VarHackContainer.Create(this, element));
+                elements.ConvertAll(element => VarHackContainer.CreateFromXml(this, element));
             lock (_objectLock)
             {
                 varHackContainers.ForEach(varHackContainer => Controls.Add(varHackContainer));
