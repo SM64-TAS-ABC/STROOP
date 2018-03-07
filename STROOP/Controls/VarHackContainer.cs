@@ -27,14 +27,15 @@ namespace STROOP.Controls
             VarHackFlowLayoutPanel varHackPanel,
             int creationIndex,
             bool useDefaults,
-            string specialTypeIn = null,
-            string varNameIn = null,
-            uint? addressIn = null,
-            Type memoryTypeIn = null,
-            bool? useHexIn = null,
-            uint? pointerOffsetIn = null,
-            int? xPosIn = null,
-            int? yPosIn = null)
+            string specialTypeIn,
+            bool? noNumIn,
+            string varNameIn,
+            uint? addressIn,
+            Type memoryTypeIn,
+            bool? useHexIn,
+            uint? pointerOffsetIn,
+            int? xPosIn,
+            int? yPosIn)
         {
             InitializeComponent();
             tableLayoutPanelVarHack.BorderWidth = 2;
@@ -44,6 +45,7 @@ namespace STROOP.Controls
             VarHackContainerDefaults defaults = new VarHackContainerDefaults(creationIndex);
 
             string specialType = useDefaults ? defaults.SpecialType : specialTypeIn;
+            bool noNum = useDefaults ? defaults.NoNum : (noNumIn ?? VarHackContainerDefaults.StaticNoNum);
             string varName = useDefaults ? defaults.VarName : (varNameIn ?? VarHackContainerDefaults.StaticVarName);
             uint address = useDefaults ? defaults.Address : (addressIn ?? VarHackContainerDefaults.StaticAddres);
             Type memoryType = useDefaults ? defaults.MemoryType : (memoryTypeIn ?? VarHackContainerDefaults.StaticMemoryType);
@@ -58,13 +60,13 @@ namespace STROOP.Controls
             _specialType = specialType;
             _isSpecial = specialType != null;
             if (_isSpecial) _getterFunction = VarHackSpecialUtilities.CreateGetterFunction(specialType);
-            checkBoxNoNumber.Checked = _isSpecial;
 
             // Misc
             textBoxNameValue.Text = varName;
             textBoxAddressValue.Text = "0x" + String.Format("{0:X}", address);
             GetRadioButtonForType(memoryType).Checked = true;
             checkBoxUseHex.Checked = useHex;
+            checkBoxNoNumber.Checked = noNum;
 
             // Pointer
             checkBoxUsePointer.Checked = usePointer;
@@ -90,7 +92,16 @@ namespace STROOP.Controls
             return new VarHackContainer(
                 varHackPanel,
                 creationIndex,
-                useDefaults);
+                useDefaults,
+                null /* specialTypeIn */,
+                null /* noNumIn */,
+                null /* varNameIn */,
+                null /* addressIn */,
+                null /* memoryTypeIn */,
+                null /* useHexIn */,
+                null /* pointerOffsetIn */,
+                null /* xPosIn */,
+                null /* yPosIn */);
         }
 
         public static VarHackContainer Create(
@@ -105,13 +116,16 @@ namespace STROOP.Controls
             return new VarHackContainer(
                 varHackPanel,
                 creationIndex,
-                false,
-                null,
+                false /* useDefaults */,
+                null /* specialTypeIn */,
+                false /* noNumIn */,
                 varName,
                 address,
                 memoryType,
                 useHex,
-                pointerOffset);
+                pointerOffset,
+                null /* xPosIn */,
+                null /* yPosIn */);
         }
 
         public static VarHackContainer Create(
@@ -122,8 +136,16 @@ namespace STROOP.Controls
             return new VarHackContainer(
                 varHackPanel,
                 creationIndex,
-                false,
-                specialType);
+                false /* useDefaults */,
+                specialType,
+                true /* noNumIn */,
+                null /* varNameIn */,
+                null /* addressIn */,
+                null /* memoryTypeIn */,
+                null /* useHexIn */,
+                null /* pointerOffsetIn */,
+                null /* xPosIn */,
+                null /* yPosIn */);
         }
 
         public static VarHackContainer Create(
@@ -137,7 +159,18 @@ namespace STROOP.Controls
             if (specialType != null)
             {
                 return new VarHackContainer(
-                    varHackPanel, 0, false, specialType, null, null, null, null, null, xPos, yPos);
+                    varHackPanel,
+                    0 /* creationIndex */,
+                    false /* useDefaults */,
+                    specialType,
+                    true /* noNumIn */,
+                    null /* varNameIn */,
+                    null /* addressIn */,
+                    null /* memoryTypeIn */,
+                    null /* useHexIn */,
+                    null /* pointerOffsetIn */,
+                    xPos,
+                    yPos);
             }
             else
             {
@@ -146,9 +179,21 @@ namespace STROOP.Controls
                 Type type = TypeUtilities.StringToType[element.Attribute(XName.Get("type")).Value];
                 bool useHex = ParsingUtilities.ParseBool(element.Attribute(XName.Get("useHex")).Value);
                 uint? pointerOffset = ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("pointerOffset"))?.Value);
+                bool noNum = ParsingUtilities.ParseBool(element.Attribute(XName.Get("noNum")).Value);
 
                 return new VarHackContainer(
-                    varHackPanel, 0, false, null, varName, address, type, useHex, pointerOffset, xPos, yPos);
+                    varHackPanel,
+                    0 /* creationIndex */,
+                    false /* useDefaults */,
+                    null /* sepcialTypeIn */,
+                    noNum,
+                    varName,
+                    address,
+                    type,
+                    useHex,
+                    pointerOffset,
+                    xPos,
+                    yPos);
             }
         }
 
@@ -169,6 +214,7 @@ namespace STROOP.Controls
                 root.Add(new XAttribute("useHex", checkBoxUseHex.Checked));
                 if (checkBoxUsePointer.Checked)
                     root.Add(new XAttribute("pointerOffset", textBoxPointerOffsetValue.Text));
+                root.Add(new XAttribute("noNum", checkBoxNoNumber.Checked));
             }
             return root;
         }

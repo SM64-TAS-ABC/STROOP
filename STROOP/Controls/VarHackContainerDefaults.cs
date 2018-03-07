@@ -15,6 +15,7 @@ namespace STROOP.Structs
         public static readonly Type StaticMemoryType = typeof(float);
         public static readonly bool StaticUseHex = false;
         public static readonly uint StaticPointerOffset = 0x10;
+        public static readonly bool StaticNoNum = false;
 
         public readonly string SpecialType;
         public readonly string VarName;
@@ -22,6 +23,7 @@ namespace STROOP.Structs
         public readonly Type MemoryType;
         public readonly bool UseHex;
         public readonly uint? PointerOffset;
+        public readonly bool NoNum;
         public readonly int XPos;
         public readonly int YPos;
 
@@ -32,6 +34,7 @@ namespace STROOP.Structs
             UseHex = false;
             PointerOffset = null;
             SpecialType = null;
+            NoNum = false;
 
             switch (creationIndex)
             {
