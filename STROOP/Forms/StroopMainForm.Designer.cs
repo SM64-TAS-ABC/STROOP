@@ -387,7 +387,7 @@ namespace STROOP
             this.radioButtonMapControlsScaleCourseDefault = new System.Windows.Forms.RadioButton();
             this.radioButtonMapControlsScaleCustom = new System.Windows.Forms.RadioButton();
             this.tabPage3D = new System.Windows.Forms.TabPage();
-            this.flowLayoutPanelMapTrackers = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanelMapTrackers = new MapTrackerFlowLayoutPanel();
             this.glControlMap = new OpenTK.GLControl();
             this.tabPagePu = new System.Windows.Forms.TabPage();
             this.splitContainerPu = new System.Windows.Forms.SplitContainer();
@@ -16366,7 +16366,7 @@ namespace STROOP
         private TabPage tabPage2D;
         private TabPage tabPage3D;
         private SplitContainer splitContainerMapControls;
-        private FlowLayoutPanel flowLayoutPanelMapTrackers;
+        private MapTrackerFlowLayoutPanel flowLayoutPanelMapTrackers;
         private GroupBox groupBoxMapControlsScale;
         private RadioButton radioButtonMapControlsScaleMaxCourseSize;
         private RadioButton radioButtonMapControlsScaleCourseDefault;
