@@ -637,6 +637,8 @@ namespace STROOP
             this.trackBarMapZoom = new System.Windows.Forms.TrackBar();
             this.trackBarMapIconSize = new System.Windows.Forms.TrackBar();
             this.tabPage2D = new System.Windows.Forms.TabPage();
+            this.buttonMapControlsClear = new System.Windows.Forms.Button();
+            this.buttonMapControlsAdd = new System.Windows.Forms.Button();
             this.groupBoxMapControlsAngle = new System.Windows.Forms.GroupBox();
             this.betterTextboxMapControlsAngleChange = new STROOP.BetterTextbox();
             this.betterTextboxMapControlsAngleCustom = new STROOP.BetterTextbox();
@@ -1140,8 +1142,6 @@ namespace STROOP
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.comboBoxRomVersion = new System.Windows.Forms.ComboBox();
             this.comboBoxReadWriteMode = new System.Windows.Forms.ComboBox();
-            this.buttonMapControlsAdd = new System.Windows.Forms.Button();
-            this.buttonMapControlsClear = new System.Windows.Forms.Button();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -4856,7 +4856,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 273F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 274F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9149,6 +9149,28 @@ namespace STROOP
             this.tabPage2D.TabIndex = 1;
             this.tabPage2D.Text = "2D";
             // 
+            // buttonMapControlsClear
+            // 
+            this.buttonMapControlsClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMapControlsClear.Location = new System.Drawing.Point(279, 54);
+            this.buttonMapControlsClear.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapControlsClear.Name = "buttonMapControlsClear";
+            this.buttonMapControlsClear.Size = new System.Drawing.Size(61, 25);
+            this.buttonMapControlsClear.TabIndex = 39;
+            this.buttonMapControlsClear.Text = "Clear";
+            this.buttonMapControlsClear.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapControlsAdd
+            // 
+            this.buttonMapControlsAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMapControlsAdd.Location = new System.Drawing.Point(279, 25);
+            this.buttonMapControlsAdd.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapControlsAdd.Name = "buttonMapControlsAdd";
+            this.buttonMapControlsAdd.Size = new System.Drawing.Size(61, 25);
+            this.buttonMapControlsAdd.TabIndex = 39;
+            this.buttonMapControlsAdd.Text = "Add";
+            this.buttonMapControlsAdd.UseVisualStyleBackColor = true;
+            // 
             // groupBoxMapControlsAngle
             // 
             this.groupBoxMapControlsAngle.Controls.Add(this.betterTextboxMapControlsAngleChange);
@@ -9509,6 +9531,7 @@ namespace STROOP
             // 
             // flowLayoutPanelMapTrackers
             // 
+            this.flowLayoutPanelMapTrackers.AutoScroll = true;
             this.flowLayoutPanelMapTrackers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanelMapTrackers.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanelMapTrackers.Location = new System.Drawing.Point(0, 0);
@@ -14720,7 +14743,7 @@ namespace STROOP
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 398);
+            this.groupBoxObjects.Size = new System.Drawing.Size(923, 399);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -14785,7 +14808,7 @@ namespace STROOP
             this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
             this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 176);
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 177);
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
@@ -14830,28 +14853,6 @@ namespace STROOP
             this.comboBoxReadWriteMode.Name = "comboBoxReadWriteMode";
             this.comboBoxReadWriteMode.Size = new System.Drawing.Size(75, 21);
             this.comboBoxReadWriteMode.TabIndex = 22;
-            // 
-            // buttonMapControlsAdd
-            // 
-            this.buttonMapControlsAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMapControlsAdd.Location = new System.Drawing.Point(279, 25);
-            this.buttonMapControlsAdd.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapControlsAdd.Name = "buttonMapControlsAdd";
-            this.buttonMapControlsAdd.Size = new System.Drawing.Size(61, 25);
-            this.buttonMapControlsAdd.TabIndex = 39;
-            this.buttonMapControlsAdd.Text = "Add";
-            this.buttonMapControlsAdd.UseVisualStyleBackColor = true;
-            // 
-            // buttonMapControlsClear
-            // 
-            this.buttonMapControlsClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMapControlsClear.Location = new System.Drawing.Point(279, 54);
-            this.buttonMapControlsClear.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapControlsClear.Name = "buttonMapControlsClear";
-            this.buttonMapControlsClear.Size = new System.Drawing.Size(61, 25);
-            this.buttonMapControlsClear.TabIndex = 39;
-            this.buttonMapControlsClear.Text = "Clear";
-            this.buttonMapControlsClear.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
