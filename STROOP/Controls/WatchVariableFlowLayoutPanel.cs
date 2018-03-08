@@ -65,6 +65,16 @@ namespace STROOP.Controls
             ToolStripMenuItem resetVariablesItem = new ToolStripMenuItem("Reset Variables");
             resetVariablesItem.Click += (sender, e) => ResetVariables();
 
+            ToolStripMenuItem setAllAngleSignedItem = new ToolStripMenuItem("Set all angle signed...");
+            ToolStripMenuItem setAllAngleSignedDefaultItem = new ToolStripMenuItem("Default");
+            ToolStripMenuItem setAllAngleSignedUnsignedItem = new ToolStripMenuItem("Unsigned");
+            ToolStripMenuItem setAllAngleSignedSignedItem = new ToolStripMenuItem("Signed");
+            setAllAngleSignedItem.DropDownItems.Add(setAllAngleSignedDefaultItem);
+            setAllAngleSignedItem.DropDownItems.Add(setAllAngleSignedUnsignedItem);
+            setAllAngleSignedItem.DropDownItems.Add(setAllAngleSignedSignedItem);
+
+            resetVariablesItem.Click += (sender, e) => ResetVariables();
+
             ToolStripMenuItem filterVariablesItem = new ToolStripMenuItem("Filter Variables...");
             _filteringDropDownItems = _allGroups.ConvertAll(varGroup => CreateFilterItem(varGroup));
             UpdateFilterItemCheckedStatuses();
@@ -75,6 +85,7 @@ namespace STROOP.Controls
             ContextMenuStrip.Items.Add(enableCustomization);
             ContextMenuStrip.Items.Add(showVariableXmlItem);
             ContextMenuStrip.Items.Add(showVariableInfoItem);
+            ContextMenuStrip.Items.Add(setAllAngleSignedItem);
             ContextMenuStrip.Items.Add(resetVariablesItem);
             ContextMenuStrip.Items.Add(filterVariablesItem);
         }
