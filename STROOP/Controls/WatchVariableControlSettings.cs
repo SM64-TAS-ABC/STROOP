@@ -16,10 +16,18 @@ namespace STROOP.Controls
 {
     public class WatchVariableControlSettings
     {
+        public readonly bool ChangeAngleSigned;
+        public readonly bool ChangeAngleSignedToDefault;
+        public readonly bool NewAngleSigned;
 
-        public WatchVariableControlSettings()
+        public WatchVariableControlSettings(
+            bool changeAngleSigned = false,
+            bool changeAngleSignedToDefault = false,
+            bool newAngleSigned = false)
         {
-
+            ChangeAngleSigned = changeAngleSigned;
+            ChangeAngleSignedToDefault = changeAngleSignedToDefault;
+            NewAngleSigned = newAngleSigned;
         }
 
     }

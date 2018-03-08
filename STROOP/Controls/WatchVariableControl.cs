@@ -529,6 +529,10 @@ namespace STROOP.Controls
 
 
 
+        public void ApplySettings(WatchVariableControlSettings settings)
+        {
+            _watchVarWrapper.ApplySettings(settings);
+        }
 
         public void SetPanel(WatchVariableFlowLayoutPanel panel)
         {

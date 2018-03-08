@@ -67,8 +67,17 @@ namespace STROOP.Controls
 
             ToolStripMenuItem setAllAngleSignedItem = new ToolStripMenuItem("Set all angle signed...");
             ToolStripMenuItem setAllAngleSignedDefaultItem = new ToolStripMenuItem("Default");
+            setAllAngleSignedDefaultItem.Click += (sender, e) =>
+                ApplySettings(new WatchVariableControlSettings(
+                    changeAngleSigned: true, changeAngleSignedToDefault: true));
             ToolStripMenuItem setAllAngleSignedUnsignedItem = new ToolStripMenuItem("Unsigned");
+            setAllAngleSignedDefaultItem.Click += (sender, e) =>
+                ApplySettings(new WatchVariableControlSettings(
+                    changeAngleSigned: true, newAngleSigned: false));
             ToolStripMenuItem setAllAngleSignedSignedItem = new ToolStripMenuItem("Signed");
+            setAllAngleSignedDefaultItem.Click += (sender, e) =>
+                ApplySettings(new WatchVariableControlSettings(
+                    changeAngleSigned: true, newAngleSigned: true));
             setAllAngleSignedItem.DropDownItems.Add(setAllAngleSignedDefaultItem);
             setAllAngleSignedItem.DropDownItems.Add(setAllAngleSignedUnsignedItem);
             setAllAngleSignedItem.DropDownItems.Add(setAllAngleSignedSignedItem);
@@ -131,6 +140,11 @@ namespace STROOP.Controls
                         Controls.Add(watchVarControl);
                 });
             }
+        }
+
+        private void ApplySettings(WatchVariableControlSettings settings)
+        {
+            _watchVarControls.ForEach(control => control.ApplySettings(settings));
         }
 
         public void AddVariable(WatchVariableControl watchVarControl)

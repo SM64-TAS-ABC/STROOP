@@ -251,6 +251,11 @@ namespace STROOP.Controls
             }
         }
 
+        public virtual void ApplySettings(WatchVariableControlSettings settings)
+        {
+
+        }
+
 
 
 
