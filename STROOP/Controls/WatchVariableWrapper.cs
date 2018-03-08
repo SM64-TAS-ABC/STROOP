@@ -251,11 +251,6 @@ namespace STROOP.Controls
             }
         }
 
-        public virtual void ApplySettings(WatchVariableControlSettings settings)
-        {
-
-        }
-
 
 
 
@@ -487,11 +482,16 @@ namespace STROOP.Controls
 
 
 
-        // Getter methods
+        // Virtual methods
 
         protected virtual bool GetUseHex()
         {
             return false;
+        }
+
+        public virtual void ApplySettings(WatchVariableControlSettings settings)
+        {
+
         }
     }
 }

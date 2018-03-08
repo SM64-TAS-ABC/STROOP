@@ -14,7 +14,9 @@ namespace STROOP.Controls
 {
     public class WatchVariableAngleWrapper : WatchVariableNumberWrapper
     {
+        private readonly bool _defaultSigned;
         private bool _signed;
+
         private AngleUnitType _angleUnitType;
         private bool _truncateToMultipleOf16;
         private bool _constrainToOneRevolution;
@@ -34,7 +36,9 @@ namespace STROOP.Controls
             WatchVariableControl watchVarControl)
             : base(watchVar, watchVarControl, 0)
         {
-            _signed = _watchVar.SignedType.Value;
+            _defaultSigned = _watchVar.SignedType.Value;
+            _signed = _defaultSigned;
+
             _angleUnitType = AngleUnitType.InGameUnits;
             _truncateToMultipleOf16 = false;
             _constrainToOneRevolution = false;
@@ -167,6 +171,18 @@ namespace STROOP.Controls
         protected override int? GetHexDigitCount()
         {
             return _constrainToOneRevolution ? 4 : base.GetHexDigitCount();
+        }
+
+        public override void ApplySettings(WatchVariableControlSettings settings)
+        {
+            base.ApplySettings(settings);
+            if (settings.ChangeAngleSigned)
+            {
+                if (settings.ChangeAngleSignedToDefault)
+                    _signed = _defaultSigned;
+                else
+                    _signed = settings.NewAngleSigned;
+            }
         }
     }
 }
