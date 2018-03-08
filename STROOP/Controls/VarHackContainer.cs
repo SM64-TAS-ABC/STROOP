@@ -83,6 +83,14 @@ namespace STROOP.Controls
             pictureBoxRedX.Click += (sender, e) => _varHackPanel.RemoveControl(this);
             checkBoxUsePointer.Click += (sender, e) => textBoxPointerOffsetValue.Enabled = checkBoxUsePointer.Checked;
 
+            // Pressing enter functionality
+            textBoxNameValue.AddEnterAction(() => _varHackPanel.ApplyVariableToMemory(this));
+            textBoxAddressValue.AddEnterAction(() => _varHackPanel.ApplyVariableToMemory(this));
+            textBoxPointerOffsetValue.AddEnterAction(() => _varHackPanel.ApplyVariableToMemory(this));
+            textBoxXPosValue.AddEnterAction(() => _varHackPanel.ApplyVariableToMemory(this));
+            textBoxYPosValue.AddEnterAction(() => _varHackPanel.ApplyVariableToMemory(this));
+
+            // Context menu strip
             ContextMenuStrip = new ContextMenuStrip();
             ToolStripMenuItem itemDuplicate = new ToolStripMenuItem("Duplicate");
             itemDuplicate.Click += (sender, e) => _varHackPanel.DuplicateControl(this);

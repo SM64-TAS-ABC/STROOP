@@ -68,6 +68,12 @@ namespace STROOP.Controls
             }
         }
 
+        public void ApplyVariableToMemory(VarHackContainer varHackContainer)
+        {
+            int index = Controls.IndexOf(varHackContainer);
+            ApplyVariableToMemory(index);
+        }
+
         // Methods from a watch var control
 
         public void AddNewControl(string varName, uint address, Type memoryType, bool useHex, uint? pointerOffset)
