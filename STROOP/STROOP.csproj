@@ -178,6 +178,7 @@
     </Compile>
     <Compile Include="Controls\VisualLinkLineText.cs" />
     <Compile Include="Controls\VisualRegexLinkGenerator.cs" />
+    <Compile Include="Controls\WatchVariableControlSettings.cs" />
     <Compile Include="Controls\WatchVariableLock.cs" />
     <Compile Include="Controls\BetterContextMenuStrip.cs">
       <SubType>Component</SubType>
