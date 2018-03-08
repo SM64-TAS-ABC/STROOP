@@ -361,9 +361,9 @@ namespace STROOP.Models
             {
                 closestObjectCandidates =
                     closestObjectCandidates.Where(o =>
-                        o.AbsoluteBehavior != ObjectConfig.DustSpawnerBehaviorValue
-                        && o.AbsoluteBehavior != ObjectConfig.DustBallBehaviorValue
-                        && o.AbsoluteBehavior != ObjectConfig.DustBehaviorValue);
+                        o.BehaviorCriteria.BehaviorAddress != ObjectConfig.DustSpawnerBehaviorValue
+                        && o.BehaviorCriteria.BehaviorAddress != ObjectConfig.DustBallBehaviorValue
+                        && o.BehaviorCriteria.BehaviorAddress != ObjectConfig.DustBehaviorValue);
             }
             ClosestObject = closestObjectCandidates.OrderBy(o => o.DistanceToMarioCalculated).FirstOrDefault()?.Address ?? 0;
 
