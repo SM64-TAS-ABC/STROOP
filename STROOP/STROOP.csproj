@@ -132,6 +132,9 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\BetterSplitContainer.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\MapTracker.cs">
       <SubType>UserControl</SubType>
     </Compile>
