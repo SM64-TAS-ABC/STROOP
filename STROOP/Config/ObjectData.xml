@@ -90,39 +90,39 @@
   <Data groupList="Advanced" type="byte" offset="0x77" base="Object" subclass="Boolean">Mario Close</Data>
   <Data groupList="Advanced" type="int" offset="0x9C" base="Object">Tangible</Data>
   
-  <Data groupList="Advanced,Collision" type="int" offset="0x130" base="Object" useHex="true">Collision Type</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000001">Hoot</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000002">Grabbable</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000004">Door</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000008">Hurtbox</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000010">Coin</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000020">Cap</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000040">Pole</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000080">Koopa</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000100">Collision Flag 08</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000200">Breakable Block</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000400">Wind</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000800">Warp Door</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00001000">Power Star</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00002000">Warp</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00004000">Cannon Base</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00008000">Bounce Top</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00010000">Water Ring</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00020000">Bully</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00040000">Burns</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00080000">Koopa Shell</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00100000">Collision Flag 20</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00200000">Mr. Blizzard</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00400000">Bounce Top/Bottom</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00800000">Text</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x01000000">Tornado</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x02000000">Whirlpool</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x04000000">Clam / Bubba</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x08000000">BBH Entrance</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x10000000">Collision Flag 28</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x20000000">Shocks</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x40000000">Igloo Barrier</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x80000000">Collision Flag 31</Data>
+  <Data groupList="Advanced,Collision" type="uint" offset="0x130" base="Object" useHex="true">Collision Type</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00000001">00 Hoot</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00000002">01 Grabbable</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00000004">02 Door</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00000008">03 Hurtbox</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00000010">04 Coin</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00000020">05 Cap</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00000040">06 Pole</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00000080">07 Koopa</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00000100">08 (unused)</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00000200">09 Breakable Block</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00000400">10 Wind</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00000800">11 Warp Door</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00001000">12 Power Star</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00002000">13 Warp</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00004000">14 Cannon Base</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00008000">15 Bounce Top</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00010000">16 Water Ring</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00020000">17 Bully</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00040000">18 Burns</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00080000">19 Koopa Shell</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00100000">20 (unused)</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00200000">21 Mr. Blizzard</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00400000">22 Bounce Top/Bottom</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00800000">23 Text</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x01000000">24 Tornado</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x02000000">25 Whirlpool</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x04000000">26 Clam / Bubba</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x08000000">27 BBH Entrance</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x10000000">28 (unused)</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x20000000">29 Shocks</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x40000000">30 Igloo Barrier</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x80000000">31 (unused)</Data>
 
   <Data groupList="Advanced" type="ushort" offset="0x76" base="Object">Num Collided Objs</Data>
   <Data groupList="Advanced" type="uint" offset="0x78" base="Object" subclass="Object">Collided Obj 1</Data>
@@ -131,38 +131,38 @@
   <Data groupList="Advanced" type="uint" offset="0x84" base="Object" subclass="Object">Collided Obj 4</Data>
 
   <Data groupList="Advanced,Movement" type="uint" offset="0xEC" base="Object" useHex="true">Movement Flags</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000001">MF 00 Landing</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000002">MF 01 On Ground</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000004">MF 02 Leaving Ground</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000008">MF 03 Entering Water</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000010">MF 04 Surface of Water</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000020">MF 05 In Water</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000040">MF 06 On Ground Under Water</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000080">MF 07 In Air</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000100">MF 08</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000200">MF 09 Wall</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000400">MF 10 Ledge</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000800">MF 11 Above Lava</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00001000">MF 12</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00002000">MF 13 Hard Landing</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00004000">MF 14 Above Death Barrier</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00008000">MF 15</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00010000">MF 16</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00020000">MF 17</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00040000">MF 18</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00080000">MF 19</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00100000">MF 20</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00200000">MF 21</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00400000">MF 22</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00800000">MF 23</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x01000000">MF 24</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x02000000">MF 25</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x04000000">MF 26</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x08000000">MF 27</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x10000000">MF 28</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x20000000">MF 29</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x40000000">MF 30</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x80000000">MF 31</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000001">00 Landing</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000002">01 On Ground</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000004">02 Leaving Ground</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000008">03 Entering Water</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000010">04 Surface of Water</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000020">05 In Water</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000040">06 On Ground Under Water</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000080">07 In Air</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000100">08</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000200">09 Wall</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000400">10 Ledge</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000800">11 Above Lava</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00001000">12</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00002000">13 Hard Landing</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00004000">14 Above Death Barrier</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00008000">15</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00010000">16</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00020000">17</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00040000">18</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00080000">19</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00100000">20</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00200000">21</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00400000">22</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00800000">23</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x01000000">24</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x02000000">25</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x04000000">26</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x08000000">27</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x10000000">28</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x20000000">29</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x40000000">30</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x80000000">31</Data>
 
   <Data groupList="Intermediate" type="uint" offset="0x3C" base="Object" useHex="true">Animation</Data>
   <Data groupList="Advanced" type="short" offset="0x00" base="Animation" mask="0x0001" subclass="Boolean">Don't Loop Animation</Data>
