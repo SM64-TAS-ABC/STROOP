@@ -91,38 +91,38 @@
   <Data groupList="Advanced" type="int" offset="0x9C" base="Object">Tangible</Data>
   
   <Data groupList="Advanced,Collision" type="int" offset="0x130" base="Object" useHex="true">Collision Type</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x80000000">Collision Flag 1</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x40000000">Igloo Barrier</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x20000000">Shocks</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x10000000">Collision Flag 4</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x08000000">BBH Entrance</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x04000000">Clam / Bubba</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x02000000">Whirlpool</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x01000000">Tornado</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00800000">Text</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00400000">Bounce Top/Bottom</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00200000">Mr. Blizzard</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00100000">Collision Flag 12</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00080000">Koopa Shell</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00040000">Burns</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00020000">Bully</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00010000">Water Ring</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00008000">Bounce Top</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00004000">Cannon Base</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00002000">Warp</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00001000">Power Star</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000800">Warp Door</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000400">Wind</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000200">Breakable Block</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000100">Collision Flag 24</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000080">Koopa</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000040">Pole</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000020">Cap</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000010">Coin</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000008">Hurtbox</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000004">Door</Data>
-  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000002">Grabbable</Data>
   <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000001">Hoot</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000002">Grabbable</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000004">Door</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000008">Hurtbox</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000010">Coin</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000020">Cap</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000040">Pole</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000080">Koopa</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000100">Collision Flag 08</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000200">Breakable Block</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000400">Wind</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00000800">Warp Door</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00001000">Power Star</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00002000">Warp</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00004000">Cannon Base</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00008000">Bounce Top</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00010000">Water Ring</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00020000">Bully</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00040000">Burns</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00080000">Koopa Shell</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00100000">Collision Flag 20</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00200000">Mr. Blizzard</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00400000">Bounce Top/Bottom</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x00800000">Text</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x01000000">Tornado</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x02000000">Whirlpool</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x04000000">Clam / Bubba</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x08000000">BBH Entrance</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x10000000">Collision Flag 28</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x20000000">Shocks</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x40000000">Igloo Barrier</Data>
+  <Data groupList="Collision" type="int" offset="0x130" base="Object" subclass="Boolean" mask="0x80000000">Collision Flag 31</Data>
 
   <Data groupList="Advanced" type="ushort" offset="0x76" base="Object">Num Collided Objs</Data>
   <Data groupList="Advanced" type="uint" offset="0x78" base="Object" subclass="Object">Collided Obj 1</Data>
