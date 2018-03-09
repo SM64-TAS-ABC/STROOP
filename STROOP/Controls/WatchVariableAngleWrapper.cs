@@ -17,7 +17,9 @@ namespace STROOP.Controls
         private readonly bool _defaultSigned;
         private bool _signed;
 
+        private readonly AngleUnitType _defaultAngleUnitType;
         private AngleUnitType _angleUnitType;
+
         private bool _truncateToMultipleOf16;
         private bool _constrainToOneRevolution;
 
@@ -39,7 +41,9 @@ namespace STROOP.Controls
             _defaultSigned = _watchVar.SignedType.Value;
             _signed = _defaultSigned;
 
-            _angleUnitType = AngleUnitType.InGameUnits;
+            _defaultAngleUnitType = AngleUnitType.InGameUnits;
+            _angleUnitType = _defaultAngleUnitType;
+
             _truncateToMultipleOf16 = false;
             _constrainToOneRevolution = false;
 
@@ -182,6 +186,13 @@ namespace STROOP.Controls
                     _signed = _defaultSigned;
                 else
                     _signed = settings.NewAngleSigned;
+            }
+            if (settings.ChangeAngleUnits)
+            {
+                if (settings.ChangeAngleUnitsToDefault)
+                    _angleUnitType = _defaultAngleUnitType;
+                else
+                    _angleUnitType = settings.NewAngleUnits;
             }
         }
     }
