@@ -4856,7 +4856,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 274F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 275F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -14728,9 +14728,6 @@ namespace STROOP
             // 
             // groupBoxObjects
             // 
-            this.groupBoxObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxObjects.Controls.Add(this.comboBoxLabelMethod);
             this.groupBoxObjects.Controls.Add(this.labelLabelMethod);
             this.groupBoxObjects.Controls.Add(this.labelSlotSize);
@@ -14739,11 +14736,12 @@ namespace STROOP
             this.groupBoxObjects.Controls.Add(this.WatchVariablePanelObjects);
             this.groupBoxObjects.Controls.Add(this.comboBoxSortMethod);
             this.groupBoxObjects.Controls.Add(this.trackBarObjSlotSize);
-            this.groupBoxObjects.Location = new System.Drawing.Point(2, 2);
+            this.groupBoxObjects.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxObjects.Location = new System.Drawing.Point(0, 0);
             this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 399);
+            this.groupBoxObjects.Size = new System.Drawing.Size(927, 204);
             this.groupBoxObjects.TabIndex = 2;
             this.groupBoxObjects.TabStop = false;
             this.groupBoxObjects.Text = "Objects";
@@ -14752,7 +14750,7 @@ namespace STROOP
             // 
             this.comboBoxLabelMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxLabelMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxLabelMethod.Location = new System.Drawing.Point(641, 15);
+            this.comboBoxLabelMethod.Location = new System.Drawing.Point(645, 15);
             this.comboBoxLabelMethod.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxLabelMethod.Name = "comboBoxLabelMethod";
             this.comboBoxLabelMethod.Size = new System.Drawing.Size(102, 21);
@@ -14762,7 +14760,7 @@ namespace STROOP
             // 
             this.labelLabelMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelLabelMethod.AutoSize = true;
-            this.labelLabelMethod.Location = new System.Drawing.Point(561, 18);
+            this.labelLabelMethod.Location = new System.Drawing.Point(565, 18);
             this.labelLabelMethod.Name = "labelLabelMethod";
             this.labelLabelMethod.Size = new System.Drawing.Size(75, 13);
             this.labelLabelMethod.TabIndex = 12;
@@ -14792,7 +14790,7 @@ namespace STROOP
             // 
             this.labelSortMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelSortMethod.AutoSize = true;
-            this.labelSortMethod.Location = new System.Drawing.Point(747, 18);
+            this.labelSortMethod.Location = new System.Drawing.Point(751, 18);
             this.labelSortMethod.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSortMethod.Name = "labelSortMethod";
             this.labelSortMethod.Size = new System.Drawing.Size(68, 13);
@@ -14808,7 +14806,7 @@ namespace STROOP
             this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
             this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
             this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 177);
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(919, 155);
             this.WatchVariablePanelObjects.TabIndex = 0;
             this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
@@ -14816,7 +14814,7 @@ namespace STROOP
             // 
             this.comboBoxSortMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxSortMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSortMethod.Location = new System.Drawing.Point(817, 15);
+            this.comboBoxSortMethod.Location = new System.Drawing.Point(821, 15);
             this.comboBoxSortMethod.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxSortMethod.Name = "comboBoxSortMethod";
             this.comboBoxSortMethod.Size = new System.Drawing.Size(102, 21);
