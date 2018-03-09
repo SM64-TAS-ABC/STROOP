@@ -56,14 +56,14 @@ namespace STROOP.Controls
             ToolStripMenuItem enableCustomization = new ToolStripMenuItem("Enable Customization");
             enableCustomization.Click += (sender, e) => EnableCustomVariableFunctionality();
 
+            ToolStripMenuItem resetVariablesItem = new ToolStripMenuItem("Reset Variables");
+            resetVariablesItem.Click += (sender, e) => ResetVariables();
+
             ToolStripMenuItem showVariableXmlItem = new ToolStripMenuItem("Show Variable XML");
             showVariableXmlItem.Click += (sender, e) => ShowVariableXml();
 
             ToolStripMenuItem showVariableInfoItem = new ToolStripMenuItem("Show Variable Info");
             showVariableInfoItem.Click += (sender, e) => ShowVariableInfo();
-
-            ToolStripMenuItem resetVariablesItem = new ToolStripMenuItem("Reset Variables");
-            resetVariablesItem.Click += (sender, e) => ResetVariables();
 
             ToolStripMenuItem setAllRoundingLimitsItem = new ToolStripMenuItem("Set all rounding limits...");
             ToolStripMenuItem setAllRoundingLimitsDefaultItem = new ToolStripMenuItem("Default");
@@ -128,8 +128,6 @@ namespace STROOP.Controls
                 setAllAngleUnitsItem.DropDownItems.Add(setAllAngleUnitsValuesItem);
             });
 
-            resetVariablesItem.Click += (sender, e) => ResetVariables();
-
             ToolStripMenuItem filterVariablesItem = new ToolStripMenuItem("Filter Variables...");
             _filteringDropDownItems = _allGroups.ConvertAll(varGroup => CreateFilterItem(varGroup));
             UpdateFilterItemCheckedStatuses();
@@ -138,12 +136,12 @@ namespace STROOP.Controls
             filterVariablesItem.DropDown.MouseLeave += (sender, e) => { filterVariablesItem.DropDown.Close(); };
 
             ContextMenuStrip.Items.Add(enableCustomization);
+            ContextMenuStrip.Items.Add(resetVariablesItem);
             ContextMenuStrip.Items.Add(showVariableXmlItem);
             ContextMenuStrip.Items.Add(showVariableInfoItem);
             ContextMenuStrip.Items.Add(setAllRoundingLimitsItem);
             ContextMenuStrip.Items.Add(setAllAngleSignedItem);
             ContextMenuStrip.Items.Add(setAllAngleUnitsItem);
-            ContextMenuStrip.Items.Add(resetVariablesItem);
             ContextMenuStrip.Items.Add(filterVariablesItem);
         }
 
