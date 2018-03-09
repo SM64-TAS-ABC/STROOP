@@ -19,7 +19,7 @@ namespace STROOP.Structs
 
         Trajectory,
         Collision,
-        Environment,
+        Movement,
         Hacks,
     };
 }
