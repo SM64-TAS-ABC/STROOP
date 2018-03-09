@@ -144,7 +144,7 @@
   <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000400">MF 10 Ledge</Data>
   <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00000800">MF 11 Above Lava</Data>
   <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00001000">MF 12</Data>
-  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00002000">MF 13 Landing on Death Barrier</Data>
+  <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00002000">MF 13 Hard Landing</Data>
   <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00004000">MF 14 Above Death Barrier</Data>
   <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00008000">MF 15</Data>
   <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x00010000">MF 16</Data>
