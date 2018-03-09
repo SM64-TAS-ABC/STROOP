@@ -819,7 +819,7 @@ namespace STROOP
             this.labelScriptAddress = new System.Windows.Forms.Label();
             this.richTextBoxExScript = new STROOP.Controls.RichTextBoxEx();
             this.tabPageHacks = new System.Windows.Forms.TabPage();
-            this.splitContainerHacks = new System.Windows.Forms.SplitContainer();
+            this.splitContainerHacks = new BetterSplitContainer();
             this.groupBoxHackRam = new System.Windows.Forms.GroupBox();
             this.labelPureInterpretterRequire = new System.Windows.Forms.Label();
             this.checkedListBoxHacks = new System.Windows.Forms.CheckedListBox();
@@ -15433,7 +15433,7 @@ namespace STROOP
         private Label labelFpsCounter;
         private Button buttonShowTopPane;
         private Button buttonShowTopBottomPane;
-        private SplitContainer splitContainerHacks;
+        private BetterSplitContainer splitContainerHacks;
         private GroupBox groupBoxHackRam;
         private GroupBox groupBoxHackSpawn;
         private ListBox listBoxSpawn;

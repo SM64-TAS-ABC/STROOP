@@ -35,7 +35,7 @@ namespace STROOP
             ToolStripMenuItem itemBothPanels = new ToolStripMenuItem("Both Panels");
             itemBothPanels.Click += (sender, e) =>
             {
-                Panel1Collapsed = true;
+                Panel1Collapsed = false;
                 Panel2Collapsed = false;
             };
 
