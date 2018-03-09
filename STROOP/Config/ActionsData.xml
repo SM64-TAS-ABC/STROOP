@@ -9,36 +9,37 @@
   <Data type="short" offset="0x38" base="MarioObj">Animation</Data>
   <Data base="None" specialType="MarioAnimationDescription" subclass="String">Animation Description</Data>
   <Data type="short" offset="0x40" base="MarioObj">Animation Timer</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x80000000">b00 throwing?</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x40000000">b01 (never)</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x20000000">b02 water stuff?</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x10000000">b03 water/twirl?</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x08000000">b04 pause exit</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x04000000">b05 ground stuff?</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x02000000">b06 jumps?</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x01000000">b07 air?</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00800000">b08 attacking</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00400000">b09 standing still</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00200000">b10 hanging on ceiling</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00100000">b11 holding pole</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00080000">b12 horizontal</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00040000">b13 sitting/sliding</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00020000">b14 hurt</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00010000">b15 riding shell</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00008000">b16 small hitbox?</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00004000">b17 metal</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00002000">b18 water</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00001000">b19 no control</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000800">b20 invincible2?</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000400">b21 transitioning?</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000200">b22 invincible?</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000100">b23 using hands?</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000080">b24</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000040">b25</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000020">b26</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000010">b27</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000008">b28</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000004">b29</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000002">b30</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000001">b31</Data>
+
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000001">b00</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000002">b01</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000004">b02</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000008">b03</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000010">b04</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000020">b05</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000040">b06</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000080">b07</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000100">b08 using hands?</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000200">b09 invincible?</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000400">b10 transitioning?</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000800">b11 airborne</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00001000">b12 no control</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00002000">b13 water</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00004000">b14 metal</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00008000">b15 small hitbox?</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00010000">b16 riding shell</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00020000">b17 hurt</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00040000">b18 sitting/sliding</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00080000">b19 horizontal</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00100000">b20 holding pole</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00200000">b21 hanging on ceiling</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00400000">b22 standing still</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00800000">b23 attacking</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x01000000">b24 air?</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x02000000">b25 jumps?</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x04000000">b26 ground stuff?</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x08000000">b27 pause exit</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x10000000">b28 water/twirl?</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x20000000">b29 water stuff?</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x40000000">b30 (never)</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x80000000">b31 throwing?</Data>
 </ActionsData>
