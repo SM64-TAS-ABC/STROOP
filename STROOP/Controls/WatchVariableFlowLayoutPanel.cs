@@ -65,6 +65,30 @@ namespace STROOP.Controls
             ToolStripMenuItem resetVariablesItem = new ToolStripMenuItem("Reset Variables");
             resetVariablesItem.Click += (sender, e) => ResetVariables();
 
+            ToolStripMenuItem setAllRoundingLimitsItem = new ToolStripMenuItem("Set all rounding limits...");
+            ToolStripMenuItem setAllRoundingLimitsDefaultItem = new ToolStripMenuItem("Default");
+            setAllRoundingLimitsDefaultItem.Click += (sender, e) =>
+                ApplySettings(new WatchVariableControlSettings(
+                    changeRoundingLimit: true, changeRoundingLimitToDefault: true));
+            ToolStripMenuItem setAllRoundingLimitsNoRoundingItem = new ToolStripMenuItem("No Rounding");
+            setAllRoundingLimitsNoRoundingItem.Click += (sender, e) =>
+                ApplySettings(new WatchVariableControlSettings(
+                    changeRoundingLimit: true, newRoundingLimit: null));
+            List<ToolStripMenuItem> setAllRoundingLimitsNumberItems = new List<ToolStripMenuItem>();
+            for (int i = 0; i <= 10; i++)
+            {
+                setAllRoundingLimitsNumberItems.Add(new ToolStripMenuItem(i + " decimal place(s)"));
+                setAllRoundingLimitsNumberItems[i].Click += (sender, e) =>
+                    ApplySettings(new WatchVariableControlSettings(
+                        changeRoundingLimit: true, newRoundingLimit: i));
+            }
+            setAllRoundingLimitsItem.DropDownItems.Add(setAllRoundingLimitsDefaultItem);
+            setAllRoundingLimitsItem.DropDownItems.Add(setAllRoundingLimitsNoRoundingItem);
+            setAllRoundingLimitsNumberItems.ForEach(setAllRoundingLimitsNumberItem =>
+            {
+                setAllRoundingLimitsItem.DropDownItems.Add(setAllRoundingLimitsNumberItem);
+            });
+
             ToolStripMenuItem setAllAngleSignedItem = new ToolStripMenuItem("Set all angle signed...");
             ToolStripMenuItem setAllAngleSignedDefaultItem = new ToolStripMenuItem("Default");
             setAllAngleSignedDefaultItem.Click += (sender, e) =>
@@ -94,6 +118,7 @@ namespace STROOP.Controls
             ContextMenuStrip.Items.Add(enableCustomization);
             ContextMenuStrip.Items.Add(showVariableXmlItem);
             ContextMenuStrip.Items.Add(showVariableInfoItem);
+            ContextMenuStrip.Items.Add(setAllRoundingLimitsItem);
             ContextMenuStrip.Items.Add(setAllAngleSignedItem);
             ContextMenuStrip.Items.Add(resetVariablesItem);
             ContextMenuStrip.Items.Add(filterVariablesItem);

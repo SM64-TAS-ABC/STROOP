@@ -27,15 +27,26 @@ namespace STROOP.Controls
      */
     public class WatchVariableControlSettings
     {
+        public readonly bool ChangeRoundingLimit;
+        public readonly bool ChangeRoundingLimitToDefault;
+        public readonly int? NewRoundingLimit;
+
         public readonly bool ChangeAngleSigned;
         public readonly bool ChangeAngleSignedToDefault;
         public readonly bool NewAngleSigned;
 
         public WatchVariableControlSettings(
+            bool changeRoundingLimit = false,
+            bool changeRoundingLimitToDefault = false,
+            int? newRoundingLimit = null,
             bool changeAngleSigned = false,
             bool changeAngleSignedToDefault = false,
             bool newAngleSigned = false)
         {
+            ChangeRoundingLimit = changeRoundingLimit;
+            ChangeRoundingLimitToDefault = changeRoundingLimitToDefault;
+            NewRoundingLimit = newRoundingLimit;
+
             ChangeAngleSigned = changeAngleSigned;
             ChangeAngleSignedToDefault = changeAngleSignedToDefault;
             NewAngleSigned = newAngleSigned;
