@@ -107,6 +107,27 @@ namespace STROOP.Controls
             setAllAngleSignedItem.DropDownItems.Add(setAllAngleSignedUnsignedItem);
             setAllAngleSignedItem.DropDownItems.Add(setAllAngleSignedSignedItem);
 
+            ToolStripMenuItem setAllAngleUnitsItem = new ToolStripMenuItem("Set all angle units...");
+            ToolStripMenuItem setAllAngleUnitsDefaultItem = new ToolStripMenuItem("Default");
+            setAllAngleUnitsDefaultItem.Click += (sender, e) =>
+                ApplySettings(new WatchVariableControlSettings(
+                    changeAngleUnits: true, changeAngleUnitsToDefault: true));
+            List<ToolStripMenuItem> setAllAngleUnitsValuesItems = new List<ToolStripMenuItem>();
+            foreach (AngleUnitType angleUnitType in Enum.GetValues(typeof(AngleUnitType)))
+            {
+                AngleUnitType angleUnitTypeFixed = angleUnitType;
+                ToolStripMenuItem setAllAngleUnitsValuesItem = new ToolStripMenuItem(angleUnitTypeFixed.ToString());
+                setAllAngleUnitsValuesItem.Click += (sender, e) =>
+                    ApplySettings(new WatchVariableControlSettings(
+                        changeAngleUnits: true, newAngleUnits: angleUnitTypeFixed));
+                setAllAngleUnitsValuesItems.Add(setAllAngleUnitsValuesItem);
+            }
+            setAllAngleUnitsItem.DropDownItems.Add(setAllAngleUnitsDefaultItem);
+            setAllAngleUnitsValuesItems.ForEach(setAllAngleUnitsValuesItem =>
+            {
+                setAllAngleUnitsItem.DropDownItems.Add(setAllAngleUnitsValuesItem);
+            });
+
             resetVariablesItem.Click += (sender, e) => ResetVariables();
 
             ToolStripMenuItem filterVariablesItem = new ToolStripMenuItem("Filter Variables...");
@@ -121,6 +142,7 @@ namespace STROOP.Controls
             ContextMenuStrip.Items.Add(showVariableInfoItem);
             ContextMenuStrip.Items.Add(setAllRoundingLimitsItem);
             ContextMenuStrip.Items.Add(setAllAngleSignedItem);
+            ContextMenuStrip.Items.Add(setAllAngleUnitsItem);
             ContextMenuStrip.Items.Add(resetVariablesItem);
             ContextMenuStrip.Items.Add(filterVariablesItem);
         }

@@ -35,13 +35,20 @@ namespace STROOP.Controls
         public readonly bool ChangeAngleSignedToDefault;
         public readonly bool NewAngleSigned;
 
+        public readonly bool ChangeAngleUnits;
+        public readonly bool ChangeAngleUnitsToDefault;
+        public readonly AngleUnitType NewAngleUnits;
+
         public WatchVariableControlSettings(
             bool changeRoundingLimit = false,
             bool changeRoundingLimitToDefault = false,
             int? newRoundingLimit = null,
             bool changeAngleSigned = false,
             bool changeAngleSignedToDefault = false,
-            bool newAngleSigned = false)
+            bool newAngleSigned = false,
+            bool changeAngleUnits = false,
+            bool changeAngleUnitsToDefault = false,
+            AngleUnitType newAngleUnits = AngleUnitType.InGameUnits)
         {
             ChangeRoundingLimit = changeRoundingLimit;
             ChangeRoundingLimitToDefault = changeRoundingLimitToDefault;
@@ -50,7 +57,11 @@ namespace STROOP.Controls
             ChangeAngleSigned = changeAngleSigned;
             ChangeAngleSignedToDefault = changeAngleSignedToDefault;
             NewAngleSigned = newAngleSigned;
-        }
+
+            ChangeAngleUnits = changeAngleUnits;
+            ChangeAngleUnitsToDefault = changeAngleUnitsToDefault;
+            NewAngleUnits = newAngleUnits;
+    }
 
     }
 }
