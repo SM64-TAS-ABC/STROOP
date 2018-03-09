@@ -23,7 +23,9 @@ namespace STROOP.Controls
         private readonly int? _defaultRoundingLimit;
         private int? _roundingLimit;
 
-        private bool _displayAsHex;
+        protected readonly bool _defaultDisplayAsHex;
+        protected bool _displayAsHex;
+
         private bool _displayAsNegated;
 
         public WatchVariableNumberWrapper(
@@ -45,7 +47,9 @@ namespace STROOP.Controls
             _defaultRoundingLimit = roundingLimit;
             _roundingLimit = _defaultRoundingLimit;
 
-            _displayAsHex = displayAsHex ?? DEFAULT_DISPLAY_AS_HEX;
+            _defaultDisplayAsHex = displayAsHex ?? DEFAULT_DISPLAY_AS_HEX;
+            _displayAsHex = _defaultDisplayAsHex;
+
             _displayAsNegated = false;
 
             AddCoordinateContextMenuStripItems();

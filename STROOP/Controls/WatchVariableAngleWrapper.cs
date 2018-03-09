@@ -194,6 +194,13 @@ namespace STROOP.Controls
                 else
                     _angleUnitType = settings.NewAngleUnits;
             }
+            if (settings.ChangeAngleHex)
+            {
+                if (settings.ChangeAngleHexToDefault)
+                    _displayAsHex = _defaultDisplayAsHex;
+                else
+                    _displayAsHex = settings.NewAngleHex;
+            }
         }
     }
 }

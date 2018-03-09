@@ -73,6 +73,5 @@ namespace STROOP.Controls
             ChangeAngleHexToDefault = changeAngleHexToDefault;
             NewAngleHex = newAngleHex;
         }
-
     }
 }
