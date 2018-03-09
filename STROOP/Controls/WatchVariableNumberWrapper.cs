@@ -20,7 +20,9 @@ namespace STROOP.Controls
 
         private static readonly int MAX_ROUNDING_LIMIT = 10;
 
+        private readonly int? _defaultRoundingLimit;
         private int? _roundingLimit;
+
         private bool _displayAsHex;
         private bool _displayAsNegated;
 
@@ -40,7 +42,9 @@ namespace STROOP.Controls
                 roundingLimit = MoreMath.Clamp(roundingLimit.Value, 0, MAX_ROUNDING_LIMIT);
             }
 
-            _roundingLimit = roundingLimit;
+            _defaultRoundingLimit = roundingLimit;
+            _roundingLimit = _defaultRoundingLimit;
+
             _displayAsHex = displayAsHex ?? DEFAULT_DISPLAY_AS_HEX;
             _displayAsNegated = false;
 
@@ -220,6 +224,18 @@ namespace STROOP.Controls
         protected override bool GetUseHex()
         {
             return _displayAsHex;
+        }
+
+        public override void ApplySettings(WatchVariableControlSettings settings)
+        {
+            base.ApplySettings(settings);
+            if (settings.ChangeRoundingLimit && _defaultRoundingLimit != 0)
+            {
+                if (settings.ChangeRoundingLimitToDefault)
+                    _roundingLimit = _defaultRoundingLimit;
+                else
+                    _roundingLimit = settings.NewRoundingLimit;
+            }
         }
     }
 }

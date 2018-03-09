@@ -77,10 +77,11 @@ namespace STROOP.Controls
             List<ToolStripMenuItem> setAllRoundingLimitsNumberItems = new List<ToolStripMenuItem>();
             for (int i = 0; i <= 10; i++)
             {
-                setAllRoundingLimitsNumberItems.Add(new ToolStripMenuItem(i + " decimal place(s)"));
-                setAllRoundingLimitsNumberItems[i].Click += (sender, e) =>
+                int index = i;
+                setAllRoundingLimitsNumberItems.Add(new ToolStripMenuItem(index + " decimal place(s)"));
+                setAllRoundingLimitsNumberItems[index].Click += (sender, e) =>
                     ApplySettings(new WatchVariableControlSettings(
-                        changeRoundingLimit: true, newRoundingLimit: i));
+                        changeRoundingLimit: true, newRoundingLimit: index));
             }
             setAllRoundingLimitsItem.DropDownItems.Add(setAllRoundingLimitsDefaultItem);
             setAllRoundingLimitsItem.DropDownItems.Add(setAllRoundingLimitsNoRoundingItem);
