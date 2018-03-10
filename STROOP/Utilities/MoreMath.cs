@@ -573,6 +573,16 @@ namespace STROOP.Utilities
             return v1X * v2X + v1Y * v2Y + v1Z * v2Z;
         }
 
+        public static ushort CalculateAngleFromInputs(int xInput, int yInput)
+        {
+            (float effectiveX, float effectiveY) = GetEffectiveInput(xInput, yInput);
+            ushort marioAngle = InGameATan(effectiveY, -effectiveX);
+            ushort cameraAngle = Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + 0xFC);
+            cameraAngle = NormalizeAngleUshort(ReverseAngle(cameraAngle));
+            ushort summedAngle = NormalizeAngleUshort(marioAngle + cameraAngle);
+            return summedAngle;
+        }
+
         public static ushort InGameATan(float xComp, float yComp)
         {
             int returnValue;

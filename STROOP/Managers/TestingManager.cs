@@ -806,10 +806,11 @@ namespace STROOP.Managers
             _labelMetric5Value.Text = _currentTimer.ToString();
 
             // Control stick
+            sbyte currentX = Config.Stream.GetSByte(InputConfig.CurrentInputAddress + InputConfig.ControlStickXOffset);
+            sbyte currentY = Config.Stream.GetSByte(InputConfig.CurrentInputAddress + InputConfig.ControlStickYOffset);
+
             if (_checkBoxUseInput.Checked)
             {
-                sbyte currentX = Config.Stream.GetSByte(InputConfig.CurrentInputAddress + InputConfig.ControlStickXOffset);
-                sbyte currentY = Config.Stream.GetSByte(InputConfig.CurrentInputAddress + InputConfig.ControlStickYOffset);
                 _betterTextboxControlStick1.Text = currentX.ToString();
                 _betterTextboxControlStick2.Text = (-1 * currentY).ToString();
             }
@@ -828,6 +829,8 @@ namespace STROOP.Managers
             //cameraAngle = MoreMath.NormalizeAngleTruncated(cameraAngle);
             ushort summedAngle = MoreMath.NormalizeAngleUshort(angle + cameraAngle);
             _labelControlStick4.Text = summedAngle.ToString();
+
+            _labelControlStick6.Text = MoreMath.CalculateAngleFromInputs(currentX, currentY).ToString();
 
             /*
             int angleGuess = MoreMath.NormalizeAngleUshort(angle);
