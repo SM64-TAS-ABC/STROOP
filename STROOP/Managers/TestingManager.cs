@@ -408,10 +408,16 @@ namespace STROOP.Managers
                 int count = ParsingUtilities.ParseInt(_textBoxMemoryReaderCountValue.Text);
                 string typeString = _comboBoxMemoryReaderTypeValue.SelectedValue as string;
                 Type type = TypeUtilities.StringToType[typeString];
+                int typeSize = TypeUtilities.TypeSize[type];
+                List<object> values = new List<object>();
+                for (int i = 0; i < count; i++)
+                {
+                    values.Add(Config.Stream.GetValue(type, (uint)(address + i * typeSize)));
+                }
                 InfoForm.ShowText(
                     "Memory Reader",
                     count + " " + typeString + " value(s) at 0x" + String.Format("{0:X}", address),
-                    "");
+                    String.Join("\r\n", values));
             };
         }
 
