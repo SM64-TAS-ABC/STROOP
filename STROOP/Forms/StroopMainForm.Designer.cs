@@ -14636,6 +14636,7 @@ namespace STROOP
             this.dataGridViewTas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewTas.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewTas.Margin = new System.Windows.Forms.Padding(0);
+            this.dataGridViewTas.MultiSelect = false;
             this.dataGridViewTas.Name = "dataGridViewTas";
             this.dataGridViewTas.ReadOnly = true;
             this.dataGridViewTas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;

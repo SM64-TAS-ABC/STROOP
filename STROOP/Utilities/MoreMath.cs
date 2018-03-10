@@ -577,7 +577,7 @@ namespace STROOP.Utilities
         {
             (float effectiveX, float effectiveY) = GetEffectiveInput(xInput, yInput);
             ushort marioAngle = InGameATan(effectiveY, -effectiveX);
-            ushort cameraAngle = Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + 0xFC);
+            ushort cameraAngle = Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.CentripetalAngleOffset);
             cameraAngle = NormalizeAngleUshort(ReverseAngle(cameraAngle));
             ushort summedAngle = NormalizeAngleUshort(marioAngle + cameraAngle);
             return summedAngle;

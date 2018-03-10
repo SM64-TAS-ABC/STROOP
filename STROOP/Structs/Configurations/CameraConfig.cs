@@ -21,6 +21,7 @@ namespace STROOP.Structs.Configurations
         public static readonly uint FacingYawOffset = 0xCE;
         public static readonly uint FacingPitchOffset = 0xCC;
         public static readonly uint FacingRollOffset = 0xD0;
+        public static readonly uint CentripetalAngleOffset = 0xFC;
 
         public static readonly uint MarioCamPossibleOffset = 0x6D;
         public static readonly byte MarioCamPossibleMask = 0x04;
