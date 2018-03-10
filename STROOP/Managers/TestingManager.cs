@@ -819,12 +819,15 @@ namespace STROOP.Managers
             (float effectiveX, float effectiveY) = MoreMath.GetEffectiveInput(-1 * rawX, -1 * rawY);
             _labelControlStick1.Text = effectiveX.ToString();
             _labelControlStick2.Text = effectiveY.ToString();
+            ushort marioFacingYawOffset = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            _labelControlStick3.Text = marioFacingYawOffset.ToString();
+
             ushort angle = MoreMath.InGameATan(effectiveX, effectiveY);
             ushort cameraAngle = Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + 0xFC);
             cameraAngle = MoreMath.NormalizeAngleUshort(MoreMath.ReverseAngle(cameraAngle));
             //cameraAngle = MoreMath.NormalizeAngleTruncated(cameraAngle);
             ushort summedAngle = MoreMath.NormalizeAngleUshort(angle + cameraAngle);
-            _labelControlStick3.Text = summedAngle.ToString();
+            _labelControlStick4.Text = summedAngle.ToString();
 
             /*
             int angleGuess = MoreMath.NormalizeAngleUshort(angle);

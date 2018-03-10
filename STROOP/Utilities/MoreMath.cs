@@ -592,10 +592,10 @@ namespace STROOP.Utilities
                     if (-yComp < -xComp)
                         returnValue = 0x8000 + InGameATan45Degrees(-yComp, -xComp);
                     else
-                        returnValue = 0xc000 - InGameATan45Degrees(-xComp, -yComp);
+                        returnValue = 0xC000 - InGameATan45Degrees(-xComp, -yComp);
                 else
                     if (xComp < -yComp)
-                        returnValue = 0xc000 + InGameATan45Degrees(xComp, -yComp);
+                        returnValue = 0xC000 + InGameATan45Degrees(xComp, -yComp);
                     else
                         returnValue = 0x10000 - InGameATan45Degrees(-yComp, xComp);
 
@@ -604,7 +604,17 @@ namespace STROOP.Utilities
 
         private static ushort InGameATan45Degrees(float f12, float f14)
         {
-            return (ushort)(0x4000 * (float)Math.Atan((int)(f12 / f14 * 1024) / 1024f) / (float)Math.PI);
+            //  if f14 == 0:
+            //     return short(0x8038b000)
+            //  else:
+            //      return short(0x8038b000+2*int( (f12/f14)*1024.0 + 0.5)) # with +0.5 this is normal rounding, not towards zero
+
+            uint offset;
+            if (f14 == 0)
+                offset = 0;
+            else
+                offset = 2 * (uint)((f12 / f14) * 1024f + 0.5f);
+            return Config.Stream.GetUInt16(0x8038B000 + offset);
         }
 
 
