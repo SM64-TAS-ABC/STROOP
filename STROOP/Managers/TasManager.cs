@@ -27,11 +27,13 @@ namespace STROOP.Managers
         private Dictionary<uint, DataGridViewRow> _rowDictionary;
 
         private static readonly int TABLE_INDEX_GLOBAL_TIMER = 0;
-        private static readonly int TABLE_INDEX_GOAL_ANGLE = 1;
-        private static readonly int TABLE_INDEX_CURRENT_CAM_ANGLE = 2;
-        private static readonly int TABLE_INDEX_NEXT_CAM_ANGLE = 3;
-        private static readonly int TABLE_INDEX_X_INPUT = 4;
-        private static readonly int TABLE_INDEX_Y_INPUT = 5;
+        private static readonly int TABLE_INDEX_CURRENT_CAM_ANGLE = 1;
+        private static readonly int TABLE_INDEX_NEXT_CAM_ANGLE = 2;
+        private static readonly int TABLE_INDEX_MARIO_FACING_ANGLE = 3;
+        private static readonly int TABLE_INDEX_MARIO_INTEND_ANGLE = 4;
+        private static readonly int TABLE_INDEX_DANGLE = 5;
+        private static readonly int TABLE_INDEX_X_INPUT = 6;
+        private static readonly int TABLE_INDEX_Y_INPUT = 7;
 
         public TasManager(List<WatchVariableControlPrecursor> variables, TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel)
             : base(variables, watchVariablePanel)
@@ -54,7 +56,9 @@ namespace STROOP.Managers
         private class TasDataStruct
         {
             public readonly uint GlobalTimer;
-            public readonly ushort MarioAngle;
+            public readonly ushort MarioFacingAngle;
+            public readonly ushort MarioIntendAngle;
+            public readonly short DAngle;
             public readonly ushort CameraAngle;
             public readonly sbyte BufferedXInput;
             public readonly sbyte BufferedYInput;
@@ -64,7 +68,9 @@ namespace STROOP.Managers
             public TasDataStruct(uint? globalTimer = null)
             {
                 GlobalTimer = globalTimer ?? Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
-                MarioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                MarioFacingAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                MarioIntendAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.IntendedYawOffset);
+                DAngle = WatchVariableSpecialUtilities.GetDeltaYawIntendedFacing();
                 CameraAngle = Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.CentripetalAngleOffset);
                 BufferedXInput = Config.Stream.GetSByte(InputConfig.BufferedInputAddress + InputConfig.ControlStickXOffset);
                 BufferedYInput = Config.Stream.GetSByte(InputConfig.BufferedInputAddress + InputConfig.ControlStickYOffset);
@@ -77,7 +83,9 @@ namespace STROOP.Managers
                 if (!(obj is TasDataStruct)) return false;
                 TasDataStruct other = obj as TasDataStruct;
                 return this.GlobalTimer == other.GlobalTimer
-                    && this.MarioAngle == other.MarioAngle
+                    && this.MarioFacingAngle == other.MarioFacingAngle
+                    && this.MarioIntendAngle == other.MarioIntendAngle
+                    && this.DAngle == other.DAngle
                     && this.CameraAngle == other.CameraAngle
                     && this.BufferedXInput == other.BufferedXInput
                     && this.BufferedYInput == other.BufferedYInput
@@ -90,7 +98,9 @@ namespace STROOP.Managers
                 return new object[]
                 {
                     GlobalTimer,
-                    MarioAngle,
+                    MarioFacingAngle,
+                    MarioIntendAngle,
+                    DAngle,
                     CameraAngle,
                     BufferedXInput,
                     BufferedYInput,
@@ -169,7 +179,14 @@ namespace STROOP.Managers
             {
                 _dataDictionary.Add(currentGlobalTimer, currentData);
                 _dataGridViewTas.Rows.Add(
-                    currentData.GlobalTimer, currentData.MarioAngle, currentData.CameraAngle, "", "", "");
+                    currentData.GlobalTimer,
+                    currentData.CameraAngle,
+                    "" /* NextCameraAngle */,
+                    currentData.MarioFacingAngle,
+                    currentData.MarioIntendAngle,
+                    currentData.DAngle,
+                    "" /* X Input */,
+                    "" /* Z Input */);
                 DataGridViewRow lastRow = _dataGridViewTas.Rows[_dataGridViewTas.RowCount - 1];
                 _rowDictionary.Add(currentGlobalTimer, lastRow);
             }
@@ -184,7 +201,7 @@ namespace STROOP.Managers
             {
                 TasDataStruct nextData = _dataDictionary[nextGlobalTimer];
                 ushort nextCameraAngle = nextData.CameraAngle;
-                ushort goalAngle = currentData.MarioAngle;
+                ushort goalAngle = currentData.MarioFacingAngle;
                 (int xInput, int yInput) = MoreMath.CalculateInputsFromAngle(goalAngle, nextCameraAngle);
                 currentRow.Cells[TABLE_INDEX_NEXT_CAM_ANGLE].Value = nextCameraAngle;
                 currentRow.Cells[TABLE_INDEX_X_INPUT].Value = xInput;
