@@ -188,11 +188,11 @@
             // 
             // textBoxAddressValue
             // 
-            this.textBoxAddressValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.textBoxAddressValue.BackColor = System.Drawing.SystemColors.Control;
             this.textBoxAddressValue.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxAddressValue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxAddressValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxAddressValue.Location = new System.Drawing.Point(4, 79);
+            this.textBoxAddressValue.Location = new System.Drawing.Point(4, 76);
             this.textBoxAddressValue.Name = "textBoxAddressValue";
             this.textBoxAddressValue.Size = new System.Drawing.Size(72, 13);
             this.textBoxAddressValue.TabIndex = 10;
@@ -203,11 +203,12 @@
             // 
             this.panelObjectBorder.BackColor = System.Drawing.Color.Red;
             this.panelObjectBorder.Controls.Add(this.pictureBoxObject);
+            this.panelObjectBorder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelObjectBorder.Location = new System.Drawing.Point(3, 3);
             this.panelObjectBorder.Margin = new System.Windows.Forms.Padding(2);
             this.panelObjectBorder.Name = "panelObjectBorder";
             this.tableLayoutPanelVarHack.SetRowSpan(this.panelObjectBorder, 3);
-            this.panelObjectBorder.Size = new System.Drawing.Size(55, 55);
+            this.panelObjectBorder.Size = new System.Drawing.Size(74, 67);
             this.panelObjectBorder.TabIndex = 18;
             // 
             // pictureBoxObject
@@ -221,7 +222,7 @@
             this.pictureBoxObject.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxObject.MaximumSize = new System.Drawing.Size(133, 130);
             this.pictureBoxObject.Name = "pictureBoxObject";
-            this.pictureBoxObject.Size = new System.Drawing.Size(49, 49);
+            this.pictureBoxObject.Size = new System.Drawing.Size(68, 61);
             this.pictureBoxObject.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxObject.TabIndex = 0;
             this.pictureBoxObject.TabStop = false;
@@ -254,20 +255,20 @@
             // 
             // textBoxObjAngleYaw
             // 
-            this.textBoxObjAngleYaw.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxObjAngleYaw.Location = new System.Drawing.Point(172, 4);
+            this.textBoxObjAngleYaw.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxObjAngleYaw.Location = new System.Drawing.Point(161, 4);
             this.textBoxObjAngleYaw.Name = "textBoxObjAngleYaw";
-            this.textBoxObjAngleYaw.Size = new System.Drawing.Size(51, 20);
+            this.textBoxObjAngleYaw.Size = new System.Drawing.Size(62, 20);
             this.textBoxObjAngleYaw.TabIndex = 35;
             this.textBoxObjAngleYaw.Text = "1024";
             this.textBoxObjAngleYaw.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // betterTextbox1
             // 
-            this.betterTextbox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox1.Location = new System.Drawing.Point(172, 52);
+            this.betterTextbox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.betterTextbox1.Location = new System.Drawing.Point(161, 52);
             this.betterTextbox1.Name = "betterTextbox1";
-            this.betterTextbox1.Size = new System.Drawing.Size(51, 20);
+            this.betterTextbox1.Size = new System.Drawing.Size(62, 20);
             this.betterTextbox1.TabIndex = 35;
             this.betterTextbox1.Text = "1024";
             this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
