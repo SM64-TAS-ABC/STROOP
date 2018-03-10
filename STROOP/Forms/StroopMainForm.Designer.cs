@@ -1119,6 +1119,7 @@ namespace STROOP
             this.comboBoxReadWriteMode = new System.Windows.Forms.ComboBox();
             this.betterSplitContainer1 = new STROOP.BetterSplitContainer();
             this.watchVariablePanelTas = new STROOP.Controls.WatchVariableFlowLayoutPanel();
+            this.betterSplitContainerTasTable = new STROOP.BetterSplitContainer();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1475,8 +1476,11 @@ namespace STROOP
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.betterSplitContainer1)).BeginInit();
+            this.betterSplitContainer1.Panel1.SuspendLayout();
             this.betterSplitContainer1.Panel2.SuspendLayout();
             this.betterSplitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.betterSplitContainerTasTable)).BeginInit();
+            this.betterSplitContainerTasTable.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -14559,6 +14563,7 @@ namespace STROOP
             // betterSplitContainer1.Panel1
             // 
             this.betterSplitContainer1.Panel1.AutoScroll = true;
+            this.betterSplitContainer1.Panel1.Controls.Add(this.betterSplitContainerTasTable);
             this.betterSplitContainer1.Panel1MinSize = 0;
             // 
             // betterSplitContainer1.Panel2
@@ -14581,6 +14586,28 @@ namespace STROOP
             this.watchVariablePanelTas.Padding = new System.Windows.Forms.Padding(2);
             this.watchVariablePanelTas.Size = new System.Drawing.Size(591, 455);
             this.watchVariablePanelTas.TabIndex = 5;
+            // 
+            // betterSplitContainerTasTable
+            // 
+            this.betterSplitContainerTasTable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.betterSplitContainerTasTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.betterSplitContainerTasTable.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.betterSplitContainerTasTable.Location = new System.Drawing.Point(0, 0);
+            this.betterSplitContainerTasTable.Margin = new System.Windows.Forms.Padding(0);
+            this.betterSplitContainerTasTable.Name = "betterSplitContainerTasTable";
+            this.betterSplitContainerTasTable.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // betterSplitContainerTasTable.Panel1
+            // 
+            this.betterSplitContainerTasTable.Panel1.AutoScroll = true;
+            // 
+            // betterSplitContainerTasTable.Panel2
+            // 
+            this.betterSplitContainerTasTable.Panel2.AutoScroll = true;
+            this.betterSplitContainerTasTable.Size = new System.Drawing.Size(313, 455);
+            this.betterSplitContainerTasTable.SplitterDistance = 126;
+            this.betterSplitContainerTasTable.SplitterWidth = 1;
+            this.betterSplitContainerTasTable.TabIndex = 32;
             // 
             // StroopMainForm
             // 
@@ -15038,9 +15065,12 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
+            this.betterSplitContainer1.Panel1.ResumeLayout(false);
             this.betterSplitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.betterSplitContainer1)).EndInit();
             this.betterSplitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.betterSplitContainerTasTable)).EndInit();
+            this.betterSplitContainerTasTable.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -16133,6 +16163,7 @@ namespace STROOP
         private TabPage tabPageTas;
         private BetterSplitContainer betterSplitContainer1;
         private WatchVariableFlowLayoutPanel watchVariablePanelTas;
+        private BetterSplitContainer betterSplitContainerTasTable;
     }
 }
 
