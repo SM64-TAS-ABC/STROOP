@@ -12,40 +12,40 @@
   <Data groupList="Basic" type="ushort" offset="0x24" base="Mario" subclass="Angle" color="#ffcccc">Yaw Intended</Data>
   <Data groupList="Basic" base="None" specialType="DeltaYawIntendedFacing" subclass="Angle" type="short" color="#ffcccc">DYaw Intend-Face</Data>
 
-  <Data groupList="Advanced" type="int" offsetUS="0x8032D5D4" offsetJP="0x8032C694" base="Relative">Global Timer</Data>
-  <Data groupList="Advanced" type="ushort" offset="0xFC" base="Camera" subclass="Angle">Cent Angle</Data>
-  <Data groupList="Advanced" type="sbyte" offset="0x02" base="InputBuffered">Buffered X</Data>
-  <Data groupList="Advanced" type="sbyte" offset="0x03" base="InputBuffered">Buffered Y</Data>
-  <Data groupList="Advanced" type="sbyte" offset="0x02" base="InputCurrent">Current X</Data>
-  <Data groupList="Advanced" type="sbyte" offset="0x03" base="InputCurrent">Current Y</Data>
+  <Data groupList="Advanced" type="int" offsetUS="0x8032D5D4" offsetJP="0x8032C694" base="Relative" color="#ccd0ff">Global Timer</Data>
+  <Data groupList="Advanced" type="ushort" offset="0xFC" base="Camera" subclass="Angle" color="#ccd0ff">Cent Angle</Data>
+  <Data groupList="Advanced" type="sbyte" offset="0x02" base="InputBuffered" color="#ccd0ff">Buffered X</Data>
+  <Data groupList="Advanced" type="sbyte" offset="0x03" base="InputBuffered" color="#ccd0ff">Buffered Y</Data>
+  <Data groupList="Advanced" type="sbyte" offset="0x02" base="InputCurrent" color="#ccd0ff">Current X</Data>
+  <Data groupList="Advanced" type="sbyte" offset="0x03" base="InputCurrent" color="#ccd0ff">Current Y</Data>
 
-  <Data groupList="TAS" base="Mario" offset="0x54" type="float">H Speed</Data>
-  <Data groupList="TAS" base="Mario" offset="0x4C" type="float">V Speed</Data>
-  <Data groupList="TAS" base="None" specialType="MovementHorizontal">Delta Horizontal</Data>
-  <Data groupList="TAS" base="None" specialType="QFrameCountEstimate">QFrames Est.</Data>
-  <Data groupList="TAS" base="Mario" offset="0x2E" type="ushort" subclass="Angle">Yaw Facing</Data>
-  <Data groupList="TAS" base="Mario" offset="0x24" type="ushort" subclass="Angle">Yaw Intended</Data>
-  <Data groupList="TAS" base="None" type="short" specialType="DeltaYawIntendedFacing" subclass="Angle">DYaw Intend-Face</Data>
-  <Data groupList="TAS" base="Mario" offset="0x3C" type="float" coord="X">Mario X</Data>
-  <Data groupList="TAS" base="Mario" offset="0x40" type="float" coord="Y">Mario Y</Data>
-  <Data groupList="TAS" base="Mario" offset="0x44" type="float" coord="Z">Mario Z</Data>
-  <Data groupList="TAS" base="Object" offset="0x1C" type="ushort" subclass="Angle">Ghost Angle</Data>
-  <Data groupList="TAS" base="Object" specialType="MarioGhostHorizontalDistance">Ghost DeltaH</Data>
-  <Data groupList="TAS" base="Object" specialType="MarioGhostVerticalDistance">Ghost DeltaV</Data>
-  <Data groupList="TAS" base="Object" offset="0x20" type="float">Ghost X</Data>
-  <Data groupList="TAS" base="Object" offset="0x24" type="float">Ghost Y</Data>
-  <Data groupList="TAS" base="Object" offset="0x28" type="float">Ghost Z</Data>
-  <Data groupList="TAS" base="Relative" offset="0x804003FC" type="int">Ghost Frame</Data>
-  <Data groupList="TAS" type="int" offsetUS="0x8032D5D4" offsetJP="0x8032C694" base="Relative">Global Timer</Data>
-  <Data groupList="TAS" type="ushort" offsetUS="0x8038EEE0" offsetJP="0x8038EEE0" base="Relative">RNG Value</Data>
-  <Data groupList="TAS" base="None" specialType="RngIndex">RNG Index</Data>
-  <Data groupList="TAS" type="short" offset="0x34" base="Mario" subclass="Angle">Yaw Velocity</Data>
-  <Data groupList="TAS" type="short" offset="0x2C" base="Mario" subclass="Angle">Pitch</Data>
-  <Data groupList="TAS" type="short" offset="0x32" base="Mario" subclass="Angle">Flying Pull Back</Data>
+  <Data groupList="TAS" base="Mario" offset="0x54" type="float" color="#ffcccc">H Speed</Data>
+  <Data groupList="TAS" base="Mario" offset="0x4C" type="float" color="#ffcccc">V Speed</Data>
+  <Data groupList="TAS" base="None" specialType="MovementHorizontal" color="#ffeccc">Delta Horizontal</Data>
+  <Data groupList="TAS" base="None" specialType="QFrameCountEstimate" color="#ffeccc">QFrames Est.</Data>
+  <Data groupList="TAS" base="Mario" offset="0x2E" type="ushort" subclass="Angle" color="#ffcccc">Yaw Facing</Data>
+  <Data groupList="TAS" base="Mario" offset="0x24" type="ushort" subclass="Angle" color="#ffcccc">Yaw Intended</Data>
+  <Data groupList="TAS" base="None" type="short" specialType="DeltaYawIntendedFacing" subclass="Angle" color="#ffcccc">DYaw Intend-Face</Data>
+  <Data groupList="TAS" base="Mario" offset="0x3C" type="float" color="#ffcccc" coord="X">Mario X</Data>
+  <Data groupList="TAS" base="Mario" offset="0x40" type="float" color="#ffcccc" coord="Y">Mario Y</Data>
+  <Data groupList="TAS" base="Mario" offset="0x44" type="float" color="#ffcccc" coord="Z">Mario Z</Data>
+  <Data groupList="TAS" base="Object" offset="0x1C" type="ushort" subclass="Angle" color="#d0d0d0">Ghost Angle</Data>
+  <Data groupList="TAS" base="Object" specialType="MarioGhostHorizontalDistance" color="#d0d0d0">Ghost DeltaH</Data>
+  <Data groupList="TAS" base="Object" specialType="MarioGhostVerticalDistance" color="#d0d0d0">Ghost DeltaV</Data>
+  <Data groupList="TAS" base="Object" offset="0x20" type="float" color="#d0d0d0">Ghost X</Data>
+  <Data groupList="TAS" base="Object" offset="0x24" type="float" color="#d0d0d0">Ghost Y</Data>
+  <Data groupList="TAS" base="Object" offset="0x28" type="float" color="#d0d0d0">Ghost Z</Data>
+  <Data groupList="TAS" base="Relative" offset="0x804003FC" type="int" color="#d0d0d0">Ghost Frame</Data>
+  <Data groupList="TAS" type="int" offsetUS="0x8032D5D4" offsetJP="0x8032C694" base="Relative" color="#cfffcc">Global Timer</Data>
+  <Data groupList="TAS" type="ushort" offsetUS="0x8038EEE0" offsetJP="0x8038EEE0" base="Relative" color="#cfffcc">RNG Value</Data>
+  <Data groupList="TAS" base="None" specialType="RngIndex" color="#cfffcc">RNG Index</Data>
+  <Data groupList="TAS" type="short" offset="0x34" base="Mario" subclass="Angle" color="#ffccff">Yaw Velocity</Data>
+  <Data groupList="TAS" type="short" offset="0x2C" base="Mario" subclass="Angle" color="#ffccff">Pitch</Data>
+  <Data groupList="TAS" type="short" offset="0x32" base="Mario" subclass="Angle" color="#ffccff">Flying Pull Back</Data>
 
-  <Data groupList="Point" base="None" specialType="PointX" color="#ffeccc" coord="X">Point X</Data>
-  <Data groupList="Point" base="None" specialType="PointY" color="#ffeccc" coord="Y">Point Y</Data>
-  <Data groupList="Point" base="None" specialType="PointZ" color="#ffeccc" coord="Z">Point Z</Data>
+  <Data groupList="Point" base="None" specialType="PointX" color="#ccd0ff" coord="X">Point X</Data>
+  <Data groupList="Point" base="None" specialType="PointY" color="#ccd0ff" coord="Y">Point Y</Data>
+  <Data groupList="Point" base="None" specialType="PointZ" color="#ccd0ff" coord="Z">Point Z</Data>
 
   <Data groupList="Point" base="None" specialType="XDistanceToPoint" color="#ccfffa" coord="X">XDist to Point</Data>
   <Data groupList="Point" base="None" specialType="YDistanceToPoint" color="#ccfffa" coord="Y">YDist to Point</Data>
