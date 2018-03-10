@@ -534,6 +534,13 @@ namespace STROOP.Utilities
             return (effectiveX, effectiveY);
         }
 
+        public static double GetEffectiveInputMagnitude(int rawX, int rawY)
+        {
+            float effectiveX = rawX >= 8 ? rawX - 6 : rawX <= -8 ? rawX + 6 : 0;
+            float effectiveY = rawY >= 8 ? rawY - 6 : rawY <= -8 ? rawY + 6 : 0;
+            return Math.Sqrt(effectiveX * effectiveX + effectiveY * effectiveY);
+        }
+
         public static byte ApplyValueToMaskedByte(byte currentValue, byte mask, byte valueToSet)
         {
             byte maskedValueToSet = (byte)(valueToSet & mask);
@@ -573,12 +580,47 @@ namespace STROOP.Utilities
             return v1X * v2X + v1Y * v2Y + v1Z * v2Z;
         }
 
-        public static ushort CalculateAngleFromInputs(int xInput, int yInput)
+        private static bool InputIsInDeadZone(int input)
+        {
+            return input > -8 && input < 8 && input != 0;
+        }
+
+        public static (int xInput, int yInput) CalculateInputsFromAngle(ushort goalAngle, ushort cameraAngle)
+        {
+            double bestMagnitude = 0;
+            int bestX = 0;
+            int bestY = 0;
+
+            ushort truncatedGoalAngle = NormalizeAngleTruncated(goalAngle);
+            for (int x = -128; x <= 127; x++)
+            {
+                for (int y = -128; y <= 127; y++)
+                {
+                    if (InputIsInDeadZone(x) || InputIsInDeadZone(y)) continue;
+
+                    ushort inputAngle = CalculateAngleFromInputs(x, y, cameraAngle);
+                    ushort truncatedInputAngle = NormalizeAngleTruncated(inputAngle);
+                    if (truncatedInputAngle == truncatedGoalAngle)
+                    {
+                        double magnitude = GetEffectiveInputMagnitude(x, y);
+                        if (magnitude > bestMagnitude)
+                        {
+                            bestMagnitude = magnitude;
+                            bestX = x;
+                            bestY = y;
+                        }
+                    }
+                }
+            }
+            return (bestX, bestY);
+        }
+
+        public static ushort CalculateAngleFromInputs(int xInput, int yInput, ushort? cameraAngleNullable = null)
         {
             (float effectiveX, float effectiveY) = GetEffectiveInput(xInput, yInput);
             ushort marioAngle = InGameATan(effectiveY, -effectiveX);
-            ushort cameraAngle = Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.CentripetalAngleOffset);
-            cameraAngle = NormalizeAngleUshort(ReverseAngle(cameraAngle));
+            ushort cameraAngleRaw = Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.CentripetalAngleOffset);
+            ushort cameraAngle = cameraAngleNullable ?? NormalizeAngleUshort(ReverseAngle(cameraAngleRaw));
             ushort summedAngle = NormalizeAngleUshort(marioAngle + cameraAngle);
             return summedAngle;
         }

@@ -46,11 +46,25 @@ namespace STROOP.Managers
                 ushort cameraAngle = Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.CentripetalAngleOffset);
                 _dataGridViewTas.Rows.Add(currentGlobalTimer, marioFacingYaw, cameraAngle, "", "", "");
                 DataGridViewRow lastRow = _dataGridViewTas.Rows[_dataGridViewTas.RowCount - 1];
+                lastRow.Selected = true;
                 _rowDictionary.Add(currentGlobalTimer, lastRow);
             }
-
-            DataGridViewRow currentRow = _rowDictionary[currentGlobalTimer];
-            currentRow.Selected = true;
+            else
+            {
+                DataGridViewRow currentRow = _rowDictionary[currentGlobalTimer];
+                currentRow.Selected = true;
+                uint nextGlobalTimer = currentGlobalTimer + 1;
+                if (_rowDictionary.ContainsKey(nextGlobalTimer))
+                {
+                    DataGridViewRow nextRow = _rowDictionary[nextGlobalTimer];
+                    ushort nextCameraAngle = ParsingUtilities.ParseUShort(nextRow.Cells[TABLE_INDEX_CURRENT_CAM_ANGLE].Value);
+                    ushort goalAngle = ParsingUtilities.ParseUShort(currentRow.Cells[TABLE_INDEX_GOAL_ANGLE].Value);
+                    (int xInput, int yInput) = MoreMath.CalculateInputsFromAngle(goalAngle, nextCameraAngle);
+                    currentRow.Cells[TABLE_INDEX_NEXT_CAM_ANGLE].Value = nextCameraAngle;
+                    currentRow.Cells[TABLE_INDEX_X_INPUT].Value = xInput;
+                    currentRow.Cells[TABLE_INDEX_Y_INPUT].Value = yInput;
+                }
+            }
         }
     }
 }
