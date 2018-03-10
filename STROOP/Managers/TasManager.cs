@@ -17,6 +17,7 @@ namespace STROOP.Managers
         private CheckBox _checkBoxTasRecordData;
         private Button _buttonTasClearData;
 
+        private uint _lastGlobalTimer;
         private Dictionary<uint, TasDataStruct> _dataDictionary;
         private Dictionary<uint, DataGridViewRow> _rowDictionary;
 
@@ -37,6 +38,7 @@ namespace STROOP.Managers
             _buttonTasClearData = splitContainerTasTable.Panel1.Controls["buttonTasClearData"] as Button;
             _buttonTasClearData.Click += (sender, e) => ClearData();
 
+            _lastGlobalTimer = 0;
             _dataDictionary = new Dictionary<uint, TasDataStruct>();
             _rowDictionary = new Dictionary<uint, DataGridViewRow>();
         }
@@ -97,6 +99,7 @@ namespace STROOP.Managers
 
         private void ClearData()
         {
+            _lastGlobalTimer = 0;
             _dataGridViewTas.Rows.Clear();
             _dataDictionary.Clear();
             _rowDictionary.Clear();
@@ -127,12 +130,14 @@ namespace STROOP.Managers
             uint currentGlobalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
             TasDataStruct currentData = new TasDataStruct(currentGlobalTimer);
 
+            // If the global timer didn't update, do nothing
+            if (currentGlobalTimer == _lastGlobalTimer) return;
+            _lastGlobalTimer = currentGlobalTimer;
+
             // Clear any bad data
             if (_dataDictionary.ContainsKey(currentGlobalTimer) &&
                 !currentData.Equals(_dataDictionary[currentGlobalTimer]))
             {
-                uint camAdd = CameraConfig.CameraStructAddress + CameraConfig.CentripetalAngleOffset;
-                System.Diagnostics.Trace.WriteLine("DELETE " + currentGlobalTimer);
                 ClearDataAtAndAfter(currentGlobalTimer);
             }
 
@@ -152,11 +157,11 @@ namespace STROOP.Managers
 
             // If we have the next row, then calculate the inputs of the current row
             uint nextGlobalTimer = currentGlobalTimer + 1;
-            if (_rowDictionary.ContainsKey(nextGlobalTimer))
+            if (_dataDictionary.ContainsKey(nextGlobalTimer))
             {
-                DataGridViewRow nextRow = _rowDictionary[nextGlobalTimer];
-                ushort nextCameraAngle = ParsingUtilities.ParseUShort(nextRow.Cells[TABLE_INDEX_CURRENT_CAM_ANGLE].Value);
-                ushort goalAngle = ParsingUtilities.ParseUShort(currentRow.Cells[TABLE_INDEX_GOAL_ANGLE].Value);
+                TasDataStruct nextData = _dataDictionary[nextGlobalTimer];
+                ushort nextCameraAngle = nextData.CameraAngle;
+                ushort goalAngle = currentData.MarioAngle;
                 (int xInput, int yInput) = MoreMath.CalculateInputsFromAngle(goalAngle, nextCameraAngle);
                 currentRow.Cells[TABLE_INDEX_NEXT_CAM_ANGLE].Value = nextCameraAngle;
                 currentRow.Cells[TABLE_INDEX_X_INPUT].Value = xInput;

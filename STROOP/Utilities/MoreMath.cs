@@ -594,10 +594,10 @@ namespace STROOP.Utilities
             ushort truncatedGoalAngle = NormalizeAngleTruncated(goalAngle);
             for (int x = -128; x <= 127; x++)
             {
+                if (InputIsInDeadZone(x)) continue;
                 for (int y = -128; y <= 127; y++)
                 {
-                    if (InputIsInDeadZone(x) || InputIsInDeadZone(y)) continue;
-
+                    if (InputIsInDeadZone(y)) continue;
                     ushort inputAngle = CalculateAngleFromInputs(x, y, cameraAngle);
                     ushort truncatedInputAngle = NormalizeAngleTruncated(inputAngle);
                     if (truncatedInputAngle == truncatedGoalAngle)
