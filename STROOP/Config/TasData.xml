@@ -1,28 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Data>
 
-  <Data type="float" offset="0x3C" base="Mario" coord="X">Mario X</Data>
-  <Data type="float" offset="0x40" base="Mario" coord="Y">Mario Y</Data>
-  <Data type="float" offset="0x44" base="Mario" coord="Z">Mario Z</Data>
-  <Data type="float" offset="0x4C" base="Mario">Mario V Speed</Data>
-  <Data type="float" offset="0x54" base="Mario">Mario H Speed</Data>
+  <Data type="float" offset="0x3C" base="Mario" color="#ffcccc" coord="X">Mario X</Data>
+  <Data type="float" offset="0x40" base="Mario" color="#ffcccc" coord="Y">Mario Y</Data>
+  <Data type="float" offset="0x44" base="Mario" color="#ffcccc" coord="Z">Mario Z</Data>
+  <Data type="float" offset="0x4C" base="Mario" color="#ffcccc">Mario V Speed</Data>
+  <Data type="float" offset="0x54" base="Mario" color="#ffcccc">Mario H Speed</Data>
 
-  <Data type="ushort" offset="0x2E" base="Mario" subclass="Angle">Yaw Facing</Data>
-  <Data type="ushort" offset="0x24" base="Mario" subclass="Angle">Yaw Intended</Data>
-  <Data type="ushort" offset="0x2E" base="Mario" subclass="Angle">Mario Yaw Facing</Data>
+  <Data type="ushort" offset="0x2E" base="Mario" subclass="Angle" color="#ffcccc">Yaw Facing</Data>
+  <Data type="ushort" offset="0x24" base="Mario" subclass="Angle" color="#ffcccc">Yaw Intended</Data>
+  <Data type="ushort" offset="0x2E" base="Mario" subclass="Angle" color="#ffcccc">Mario Yaw Facing</Data>
 
-  <Data base="None" specialType="PointX" coord="X">Point X</Data>
-  <Data base="None" specialType="PointY" coord="Y">Point Y</Data>
-  <Data base="None" specialType="PointZ" coord="Z">Point Z</Data>
+  <Data base="None" specialType="PointX" color="#ffeccc" coord="X">Point X</Data>
+  <Data base="None" specialType="PointY" color="#ffeccc" coord="Y">Point Y</Data>
+  <Data base="None" specialType="PointZ" color="#ffeccc" coord="Z">Point Z</Data>
 
-  <Data base="None" specialType="XDistanceToPoint" coord="X">XDist to Point</Data>
-  <Data base="None" specialType="YDistanceToPoint" coord="Y">YDist to Point</Data>
-  <Data base="None" specialType="ZDistanceToPoint" coord="Z">ZDist to Point</Data>
-  <Data base="None" specialType="HDistanceToPoint">HDist to Point</Data>
-  <Data base="None" specialType="DistanceToPoint">Dist to Point</Data>
+  <Data base="None" specialType="XDistanceToPoint" color="#ccfffa" coord="X">XDist to Point</Data>
+  <Data base="None" specialType="YDistanceToPoint" color="#ccfffa" coord="Y">YDist to Point</Data>
+  <Data base="None" specialType="ZDistanceToPoint" color="#ccfffa" coord="Z">ZDist to Point</Data>
+  <Data base="None" specialType="HDistanceToPoint" color="#ccfffa">HDist to Point</Data>
+  <Data base="None" specialType="DistanceToPoint" color="#ccfffa">Dist to Point</Data>
   
-  <Data base="None" specialType="AngleMarioToPoint" subclass="Angle" type="ushort">Angle Mario to Point</Data>
-  <Data base="None" specialType="DeltaAngleMarioToPoint" subclass="Angle" type="short">DAngle Mario to Point</Data>
-  <Data base="None" specialType="AnglePointToMario" subclass="Angle" type="ushort">Angle Point to Mario</Data>
+  <Data base="None" specialType="AngleMarioToPoint" subclass="Angle" type="ushort" color="#ccfffa">Angle Mario to Point</Data>
+  <Data base="None" specialType="DeltaAngleMarioToPoint" subclass="Angle" type="short" color="#ccfffa">DAngle Mario to Point</Data>
+  <Data base="None" specialType="AnglePointToMario" subclass="Angle" type="ushort" color="#ccfffa">Angle Point to Mario</Data>
 
 </Data>
