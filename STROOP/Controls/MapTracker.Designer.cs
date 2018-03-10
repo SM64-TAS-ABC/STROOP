@@ -45,17 +45,15 @@
             this.radioButtonFloat = new System.Windows.Forms.RadioButton();
             this.checkBoxUseHex = new System.Windows.Forms.CheckBox();
             this.checkBoxNoNumber = new System.Windows.Forms.CheckBox();
-            this.textBoxYPosValue = new STROOP.BetterTextbox();
-            this.textBoxXPosValue = new STROOP.BetterTextbox();
-            this.pictureBoxRedX = new System.Windows.Forms.PictureBox();
             this.pictureBoxDownArrow = new System.Windows.Forms.PictureBox();
-            this.textBoxYPosLabel = new STROOP.BetterTextbox();
             this.pictureBoxUpArrow = new System.Windows.Forms.PictureBox();
-            this.textBoxXPosLabel = new STROOP.BetterTextbox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanelVarHack.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRedX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpArrow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanelVarHack
@@ -70,7 +68,7 @@
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 73F));
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 54F));
+            this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanelVarHack.Controls.Add(this.checkBoxUsePointer, 1, 2);
             this.tableLayoutPanelVarHack.Controls.Add(this.textBoxNameValue, 1, 0);
             this.tableLayoutPanelVarHack.Controls.Add(this.textBoxNameLabel, 0, 0);
@@ -87,13 +85,10 @@
             this.tableLayoutPanelVarHack.Controls.Add(this.radioButtonFloat, 2, 3);
             this.tableLayoutPanelVarHack.Controls.Add(this.checkBoxUseHex, 3, 3);
             this.tableLayoutPanelVarHack.Controls.Add(this.checkBoxNoNumber, 0, 2);
-            this.tableLayoutPanelVarHack.Controls.Add(this.textBoxYPosValue, 5, 3);
-            this.tableLayoutPanelVarHack.Controls.Add(this.textBoxXPosValue, 5, 2);
-            this.tableLayoutPanelVarHack.Controls.Add(this.pictureBoxRedX, 5, 0);
-            this.tableLayoutPanelVarHack.Controls.Add(this.pictureBoxDownArrow, 4, 1);
-            this.tableLayoutPanelVarHack.Controls.Add(this.textBoxYPosLabel, 4, 3);
-            this.tableLayoutPanelVarHack.Controls.Add(this.pictureBoxUpArrow, 4, 0);
-            this.tableLayoutPanelVarHack.Controls.Add(this.textBoxXPosLabel, 4, 2);
+            this.tableLayoutPanelVarHack.Controls.Add(this.pictureBoxDownArrow, 5, 3);
+            this.tableLayoutPanelVarHack.Controls.Add(this.pictureBoxUpArrow, 5, 2);
+            this.tableLayoutPanelVarHack.Controls.Add(this.pictureBox2, 5, 0);
+            this.tableLayoutPanelVarHack.Controls.Add(this.pictureBox1, 5, 1);
             this.tableLayoutPanelVarHack.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelVarHack.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelVarHack.Name = "tableLayoutPanelVarHack";
@@ -292,91 +287,49 @@
             this.checkBoxNoNumber.Text = "No Num";
             this.checkBoxNoNumber.UseVisualStyleBackColor = true;
             // 
-            // textBoxYPosValue
-            // 
-            this.textBoxYPosValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxYPosValue.BackColor = System.Drawing.Color.White;
-            this.textBoxYPosValue.Location = new System.Drawing.Point(359, 76);
-            this.textBoxYPosValue.Name = "textBoxYPosValue";
-            this.textBoxYPosValue.Size = new System.Drawing.Size(45, 20);
-            this.textBoxYPosValue.TabIndex = 10;
-            this.textBoxYPosValue.Text = "200";
-            this.textBoxYPosValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxXPosValue
-            // 
-            this.textBoxXPosValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxXPosValue.BackColor = System.Drawing.Color.White;
-            this.textBoxXPosValue.Location = new System.Drawing.Point(359, 52);
-            this.textBoxXPosValue.Name = "textBoxXPosValue";
-            this.textBoxXPosValue.Size = new System.Drawing.Size(45, 20);
-            this.textBoxXPosValue.TabIndex = 10;
-            this.textBoxXPosValue.Text = "100";
-            this.textBoxXPosValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // pictureBoxRedX
-            // 
-            this.pictureBoxRedX.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBoxRedX.BackgroundImage = global::STROOP.Properties.Resources.Red_X;
-            this.pictureBoxRedX.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxRedX.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxRedX.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxRedX.Location = new System.Drawing.Point(359, 4);
-            this.pictureBoxRedX.Name = "pictureBoxRedX";
-            this.tableLayoutPanelVarHack.SetRowSpan(this.pictureBoxRedX, 2);
-            this.pictureBoxRedX.Size = new System.Drawing.Size(48, 41);
-            this.pictureBoxRedX.TabIndex = 12;
-            this.pictureBoxRedX.TabStop = false;
-            // 
             // pictureBoxDownArrow
             // 
             this.pictureBoxDownArrow.BackgroundImage = global::STROOP.Properties.Resources.Down_Arrow;
             this.pictureBoxDownArrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxDownArrow.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxDownArrow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxDownArrow.Location = new System.Drawing.Point(322, 28);
+            this.pictureBoxDownArrow.Location = new System.Drawing.Point(359, 76);
             this.pictureBoxDownArrow.Name = "pictureBoxDownArrow";
             this.pictureBoxDownArrow.Size = new System.Drawing.Size(30, 17);
             this.pictureBoxDownArrow.TabIndex = 12;
             this.pictureBoxDownArrow.TabStop = false;
-            // 
-            // textBoxYPosLabel
-            // 
-            this.textBoxYPosLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.textBoxYPosLabel.BackColor = System.Drawing.SystemColors.Control;
-            this.textBoxYPosLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxYPosLabel.Location = new System.Drawing.Point(322, 79);
-            this.textBoxYPosLabel.Name = "textBoxYPosLabel";
-            this.textBoxYPosLabel.ReadOnly = true;
-            this.textBoxYPosLabel.Size = new System.Drawing.Size(30, 13);
-            this.textBoxYPosLabel.TabIndex = 10;
-            this.textBoxYPosLabel.Text = "Y Pos:";
-            this.textBoxYPosLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // pictureBoxUpArrow
             // 
             this.pictureBoxUpArrow.BackgroundImage = global::STROOP.Properties.Resources.Up_Arrow;
             this.pictureBoxUpArrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxUpArrow.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxUpArrow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxUpArrow.Location = new System.Drawing.Point(322, 4);
+            this.pictureBoxUpArrow.Location = new System.Drawing.Point(359, 52);
             this.pictureBoxUpArrow.Name = "pictureBoxUpArrow";
             this.pictureBoxUpArrow.Size = new System.Drawing.Size(30, 17);
             this.pictureBoxUpArrow.TabIndex = 12;
             this.pictureBoxUpArrow.TabStop = false;
             // 
-            // textBoxXPosLabel
+            // pictureBox2
             // 
-            this.textBoxXPosLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.textBoxXPosLabel.BackColor = System.Drawing.SystemColors.Control;
-            this.textBoxXPosLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxXPosLabel.Location = new System.Drawing.Point(322, 54);
-            this.textBoxXPosLabel.Name = "textBoxXPosLabel";
-            this.textBoxXPosLabel.ReadOnly = true;
-            this.textBoxXPosLabel.Size = new System.Drawing.Size(30, 13);
-            this.textBoxXPosLabel.TabIndex = 10;
-            this.textBoxXPosLabel.Text = "X Pos:";
-            this.textBoxXPosLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.pictureBox2.BackgroundImage = global::STROOP.Properties.Resources.Red_X;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox2.Location = new System.Drawing.Point(359, 4);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(30, 17);
+            this.pictureBox2.TabIndex = 12;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::STROOP.Properties.Resources.image_eye_open2;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Location = new System.Drawing.Point(359, 28);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(30, 17);
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
             // 
             // MapTracker
             // 
@@ -389,9 +342,10 @@
             this.Size = new System.Drawing.Size(408, 99);
             this.tableLayoutPanelVarHack.ResumeLayout(false);
             this.tableLayoutPanelVarHack.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRedX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpArrow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -414,13 +368,10 @@
         private System.Windows.Forms.RadioButton radioButtonUInt;
         private System.Windows.Forms.RadioButton radioButtonFloat;
         private System.Windows.Forms.CheckBox checkBoxUseHex;
-        private BetterTextbox textBoxXPosLabel;
-        private BetterTextbox textBoxXPosValue;
-        private BetterTextbox textBoxYPosLabel;
-        private BetterTextbox textBoxYPosValue;
         private System.Windows.Forms.PictureBox pictureBoxUpArrow;
         private System.Windows.Forms.PictureBox pictureBoxDownArrow;
-        private System.Windows.Forms.PictureBox pictureBoxRedX;
         private System.Windows.Forms.CheckBox checkBoxNoNumber;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

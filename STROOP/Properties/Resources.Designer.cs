@@ -143,9 +143,29 @@ namespace STROOP.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap image_eye_closed2 {
+            get {
+                object obj = ResourceManager.GetObject("image_eye_closed2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap image_eye_open {
             get {
                 object obj = ResourceManager.GetObject("image_eye_open", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap image_eye_open2 {
+            get {
+                object obj = ResourceManager.GetObject("image_eye_open2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
