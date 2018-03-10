@@ -12,6 +12,7 @@
   <Data type="ushort" offset="0x24" base="Mario" subclass="Angle" color="#ffcccc">Yaw Intended</Data>
   <Data base="None" specialType="DeltaYawIntendedFacing" subclass="Angle" type="short" color="#ffcccc">DYaw Intend-Face</Data>
 
+  <Data type="int" offsetUS="0x8032D5D4" offsetJP="0x8032C694" base="Relative">Global Timer</Data>
   <Data type="ushort" offset="0xFC" base="Camera" subclass="Angle">Cent Angle</Data>
   <Data type="sbyte" offset="0x02" base="InputBuffered">Buffered X</Data>
   <Data type="sbyte" offset="0x03" base="InputBuffered">Buffered Y</Data>
