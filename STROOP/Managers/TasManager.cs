@@ -17,6 +17,7 @@ namespace STROOP.Managers
         private CheckBox _checkBoxTasRecordData;
         private Button _buttonTasClearData;
 
+        private Dictionary<uint, DataGridViewRow> _dataDictionary;
         private Dictionary<uint, DataGridViewRow> _rowDictionary;
 
         private static readonly int TABLE_INDEX_GLOBAL_TIMER = 0;
@@ -36,12 +37,64 @@ namespace STROOP.Managers
             _buttonTasClearData = splitContainerTasTable.Panel1.Controls["buttonTasClearData"] as Button;
             _buttonTasClearData.Click += (sender, e) => ClearData();
 
+            _dataDictionary = new Dictionary<uint, DataGridViewRow>();
             _rowDictionary = new Dictionary<uint, DataGridViewRow>();
+        }
+
+        private class TasDataStruct
+        {
+            public readonly uint GlobalTimer;
+            public readonly ushort CameraAngle;
+            public readonly sbyte BufferedXInput;
+            public readonly sbyte BufferedYInput;
+            public readonly sbyte CurrentXInput;
+            public readonly sbyte CurrentYInput;
+
+            public TasDataStruct(uint? globalTimer = null)
+            {
+                GlobalTimer = globalTimer ?? Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                CameraAngle = Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.CentripetalAngleOffset);
+                BufferedXInput = Config.Stream.GetSByte(InputConfig.BufferedInputAddress + InputConfig.ControlStickXOffset);
+                BufferedYInput = Config.Stream.GetSByte(InputConfig.BufferedInputAddress + InputConfig.ControlStickYOffset);
+                CurrentXInput = Config.Stream.GetSByte(InputConfig.CurrentInputAddress + InputConfig.ControlStickXOffset);
+                CurrentYInput = Config.Stream.GetSByte(InputConfig.CurrentInputAddress + InputConfig.ControlStickYOffset);
+            }
+
+            public override bool Equals(object obj)
+            {
+                if (!(obj is TasDataStruct)) return false;
+                TasDataStruct other = obj as TasDataStruct;
+                return this.GlobalTimer == other.GlobalTimer
+                    && this.CameraAngle == other.CameraAngle
+                    && this.BufferedXInput == other.BufferedXInput
+                    && this.BufferedYInput == other.BufferedYInput
+                    && this.CurrentXInput == other.CurrentXInput
+                    && this.CurrentYInput == other.CurrentYInput;
+            }
+
+            public object[] GetValues()
+            {
+                return new object[]
+                {
+                    GlobalTimer,
+                    CameraAngle,
+                    BufferedXInput,
+                    BufferedYInput,
+                    CurrentXInput,
+                    CurrentYInput
+                };
+            }
+
+            public override int GetHashCode()
+            {
+                return GetValues().GetHashCode();
+            }
         }
 
         private void ClearData()
         {
             _dataGridViewTas.Rows.Clear();
+            _dataDictionary.Clear();
             _rowDictionary.Clear();
         }
 
