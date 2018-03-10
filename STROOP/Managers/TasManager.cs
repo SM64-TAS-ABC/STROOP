@@ -17,7 +17,7 @@ namespace STROOP.Managers
         private CheckBox _checkBoxTasRecordData;
         private Button _buttonTasClearData;
 
-        private Dictionary<uint, DataGridViewRow> _dataDictionary;
+        private Dictionary<uint, TasDataStruct> _dataDictionary;
         private Dictionary<uint, DataGridViewRow> _rowDictionary;
 
         private static readonly int TABLE_INDEX_GLOBAL_TIMER = 0;
@@ -37,7 +37,7 @@ namespace STROOP.Managers
             _buttonTasClearData = splitContainerTasTable.Panel1.Controls["buttonTasClearData"] as Button;
             _buttonTasClearData.Click += (sender, e) => ClearData();
 
-            _dataDictionary = new Dictionary<uint, DataGridViewRow>();
+            _dataDictionary = new Dictionary<uint, TasDataStruct>();
             _rowDictionary = new Dictionary<uint, DataGridViewRow>();
         }
 
@@ -98,24 +98,52 @@ namespace STROOP.Managers
             _rowDictionary.Clear();
         }
 
+        private void ClearDataAtAndAfter(uint globalTimerThreshold)
+        {
+            List<uint> allGlobalTimers = _dataDictionary.Keys.ToList();
+            List<uint> toBeRemovedGlobalTimers =
+                allGlobalTimers.FindAll(globalTimer => globalTimer >= globalTimerThreshold);
+            foreach (uint globalTimer in toBeRemovedGlobalTimers)
+            {
+                DataGridViewRow row = _rowDictionary[globalTimer];
+                _dataDictionary.Remove(globalTimer);
+                _rowDictionary.Remove(globalTimer);
+                _dataGridViewTas.Rows.Remove(row);
+            }
+        }
+
         public override void Update(bool updateView)
         {
             if (!updateView) return;
             base.Update(updateView);
 
             if (!_checkBoxTasRecordData.Checked) return;
+
+            // Get current data
             uint currentGlobalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
-            if (!_rowDictionary.ContainsKey(currentGlobalTimer))
+            TasDataStruct currentData = new TasDataStruct(currentGlobalTimer);
+
+            // Clear any bad data
+            if (_dataDictionary.ContainsKey(currentGlobalTimer) &&
+                !currentData.Equals(_dataDictionary[currentGlobalTimer]))
             {
-                ushort marioFacingYaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
-                ushort cameraAngle = Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.CentripetalAngleOffset);
-                _dataGridViewTas.Rows.Add(currentGlobalTimer, marioFacingYaw, cameraAngle, "", "", "");
+                ClearDataAtAndAfter(currentGlobalTimer);
+            }
+
+            // Add current data if we don't have it
+            if (!_dataDictionary.ContainsKey(currentGlobalTimer))
+            {
+                _dataDictionary.Add(currentGlobalTimer, currentData);
+                _dataGridViewTas.Rows.Add(currentData.GlobalTimer, currentData.CameraAngle, "", "", "");
                 DataGridViewRow lastRow = _dataGridViewTas.Rows[_dataGridViewTas.RowCount - 1];
                 _rowDictionary.Add(currentGlobalTimer, lastRow);
             }
 
+            // Select the current row
             DataGridViewRow currentRow = _rowDictionary[currentGlobalTimer];
             currentRow.Selected = true;
+
+            // If we have the next row, then calculate the inputs of the current row
             uint nextGlobalTimer = currentGlobalTimer + 1;
             if (_rowDictionary.ContainsKey(nextGlobalTimer))
             {
