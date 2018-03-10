@@ -17,7 +17,12 @@ namespace STROOP.Managers
         private CheckBox _checkBoxTasRecordData;
         private Button _buttonTasClearData;
 
-        private uint _lastGlobalTimer;
+        private static readonly int WAITING_TIME_MS = 0;
+
+        private uint _waitingGlobalTimer;
+        private DateTime _waitingDateTime;
+        private uint _lastUpdatedGlobalTimer;
+
         private Dictionary<uint, TasDataStruct> _dataDictionary;
         private Dictionary<uint, DataGridViewRow> _rowDictionary;
 
@@ -38,7 +43,10 @@ namespace STROOP.Managers
             _buttonTasClearData = splitContainerTasTable.Panel1.Controls["buttonTasClearData"] as Button;
             _buttonTasClearData.Click += (sender, e) => ClearData();
 
-            _lastGlobalTimer = 0;
+            _waitingGlobalTimer = 0;
+            _waitingDateTime = DateTime.Now;
+            _lastUpdatedGlobalTimer = 0;
+
             _dataDictionary = new Dictionary<uint, TasDataStruct>();
             _rowDictionary = new Dictionary<uint, DataGridViewRow>();
         }
@@ -99,7 +107,10 @@ namespace STROOP.Managers
 
         private void ClearData()
         {
-            _lastGlobalTimer = 0;
+            _waitingGlobalTimer = 0;
+            _waitingDateTime = DateTime.Now;
+            _lastUpdatedGlobalTimer = 0;
+
             _dataGridViewTas.Rows.Clear();
             _dataDictionary.Clear();
             _rowDictionary.Clear();
@@ -130,9 +141,21 @@ namespace STROOP.Managers
             uint currentGlobalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
             TasDataStruct currentData = new TasDataStruct(currentGlobalTimer);
 
-            // If the global timer didn't update, do nothing
-            if (currentGlobalTimer == _lastGlobalTimer) return;
-            _lastGlobalTimer = currentGlobalTimer;
+            // Only proceed if it's a new global timer value that's been waited for
+            if (currentGlobalTimer == _lastUpdatedGlobalTimer) return;
+            if (currentGlobalTimer != _waitingGlobalTimer)
+            {
+                _waitingGlobalTimer = currentGlobalTimer;
+                _waitingDateTime = DateTime.Now;
+                return;
+            }
+            else
+            {
+                DateTime currentTime = DateTime.Now;
+                double waitingTime = currentTime.Subtract(_waitingDateTime).TotalMilliseconds;
+                if (waitingTime < WAITING_TIME_MS) return;
+                _lastUpdatedGlobalTimer = currentGlobalTimer;
+            }
 
             // Clear any bad data
             if (_dataDictionary.ContainsKey(currentGlobalTimer) &&
