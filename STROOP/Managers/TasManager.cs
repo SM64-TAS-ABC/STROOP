@@ -14,6 +14,9 @@ namespace STROOP.Managers
     public class TasManager : DataManager
     {
         private DataGridView _dataGridViewTas;
+        private CheckBox _checkBoxTasRecordData;
+        private Button _buttonTasClearData;
+
         private Dictionary<uint, DataGridViewRow> _rowDictionary;
 
         private static readonly int TABLE_INDEX_GLOBAL_TIMER = 0;
@@ -29,8 +32,17 @@ namespace STROOP.Managers
             SplitContainer splitContainerTas = tabControl.Controls["splitContainerTas"] as SplitContainer;
             SplitContainer splitContainerTasTable = splitContainerTas.Panel1.Controls["splitContainerTasTable"] as SplitContainer;
             _dataGridViewTas = splitContainerTasTable.Panel2.Controls["dataGridViewTas"] as DataGridView;
+            _checkBoxTasRecordData = splitContainerTasTable.Panel1.Controls["checkBoxTasRecordData"] as CheckBox;
+            _buttonTasClearData = splitContainerTasTable.Panel1.Controls["buttonTasClearData"] as Button;
+            _buttonTasClearData.Click += (sender, e) => ClearData();
 
             _rowDictionary = new Dictionary<uint, DataGridViewRow>();
+        }
+
+        private void ClearData()
+        {
+            _dataGridViewTas.Rows.Clear();
+            _rowDictionary.Clear();
         }
 
         public override void Update(bool updateView)
@@ -38,8 +50,8 @@ namespace STROOP.Managers
             if (!updateView) return;
             base.Update(updateView);
 
+            if (!_checkBoxTasRecordData.Checked) return;
             uint currentGlobalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
-
             if (!_rowDictionary.ContainsKey(currentGlobalTimer))
             {
                 ushort marioFacingYaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);

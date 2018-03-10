@@ -1127,6 +1127,8 @@ namespace STROOP
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.checkBoxTasRecordData = new System.Windows.Forms.CheckBox();
+            this.buttonTasClearData = new System.Windows.Forms.Button();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1487,6 +1489,7 @@ namespace STROOP
             this.splitContainerTas.Panel2.SuspendLayout();
             this.splitContainerTas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTasTable)).BeginInit();
+            this.splitContainerTasTable.Panel1.SuspendLayout();
             this.splitContainerTasTable.Panel2.SuspendLayout();
             this.splitContainerTasTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTas)).BeginInit();
@@ -14609,13 +14612,15 @@ namespace STROOP
             // splitContainerTasTable.Panel1
             // 
             this.splitContainerTasTable.Panel1.AutoScroll = true;
+            this.splitContainerTasTable.Panel1.Controls.Add(this.buttonTasClearData);
+            this.splitContainerTasTable.Panel1.Controls.Add(this.checkBoxTasRecordData);
             // 
             // splitContainerTasTable.Panel2
             // 
             this.splitContainerTasTable.Panel2.AutoScroll = true;
             this.splitContainerTasTable.Panel2.Controls.Add(this.dataGridViewTas);
             this.splitContainerTasTable.Size = new System.Drawing.Size(346, 457);
-            this.splitContainerTasTable.SplitterDistance = 126;
+            this.splitContainerTasTable.SplitterDistance = 60;
             this.splitContainerTasTable.SplitterWidth = 1;
             this.splitContainerTasTable.TabIndex = 32;
             // 
@@ -14640,7 +14645,7 @@ namespace STROOP
             this.dataGridViewTas.Name = "dataGridViewTas";
             this.dataGridViewTas.ReadOnly = true;
             this.dataGridViewTas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTas.Size = new System.Drawing.Size(344, 328);
+            this.dataGridViewTas.Size = new System.Drawing.Size(344, 394);
             this.dataGridViewTas.TabIndex = 2;
             // 
             // dataGridViewTextBoxColumn1
@@ -14684,6 +14689,28 @@ namespace STROOP
             this.Column1.MinimumWidth = 2;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+            // 
+            // checkBoxTasRecordData
+            // 
+            this.checkBoxTasRecordData.AutoSize = true;
+            this.checkBoxTasRecordData.Checked = true;
+            this.checkBoxTasRecordData.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxTasRecordData.Location = new System.Drawing.Point(3, 3);
+            this.checkBoxTasRecordData.Name = "checkBoxTasRecordData";
+            this.checkBoxTasRecordData.Size = new System.Drawing.Size(87, 17);
+            this.checkBoxTasRecordData.TabIndex = 33;
+            this.checkBoxTasRecordData.Text = "Record Data";
+            this.checkBoxTasRecordData.UseVisualStyleBackColor = true;
+            // 
+            // buttonTasClearData
+            // 
+            this.buttonTasClearData.Location = new System.Drawing.Point(238, 3);
+            this.buttonTasClearData.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasClearData.Name = "buttonTasClearData";
+            this.buttonTasClearData.Size = new System.Drawing.Size(97, 38);
+            this.buttonTasClearData.TabIndex = 37;
+            this.buttonTasClearData.Text = "Clear Data";
+            this.buttonTasClearData.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -15145,6 +15172,8 @@ namespace STROOP
             this.splitContainerTas.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTas)).EndInit();
             this.splitContainerTas.ResumeLayout(false);
+            this.splitContainerTasTable.Panel1.ResumeLayout(false);
+            this.splitContainerTasTable.Panel1.PerformLayout();
             this.splitContainerTasTable.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTasTable)).EndInit();
             this.splitContainerTasTable.ResumeLayout(false);
@@ -16249,6 +16278,8 @@ namespace STROOP
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private DataGridViewTextBoxColumn Column1;
+        private Button buttonTasClearData;
+        private CheckBox checkBoxTasRecordData;
     }
 }
 
