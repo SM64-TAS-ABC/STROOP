@@ -97,7 +97,7 @@
             this.tableLayoutPanelVarHack.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanelVarHack.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelVarHack.ShowBorder = false;
-            this.tableLayoutPanelVarHack.Size = new System.Drawing.Size(408, 99);
+            this.tableLayoutPanelVarHack.Size = new System.Drawing.Size(373, 99);
             this.tableLayoutPanelVarHack.TabIndex = 40;
             // 
             // pictureBoxDownArrow
@@ -303,7 +303,7 @@
             this.Controls.Add(this.tableLayoutPanelVarHack);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MapTracker";
-            this.Size = new System.Drawing.Size(408, 99);
+            this.Size = new System.Drawing.Size(373, 99);
             this.tableLayoutPanelVarHack.ResumeLayout(false);
             this.tableLayoutPanelVarHack.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).EndInit();

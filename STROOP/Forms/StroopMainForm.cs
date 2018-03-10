@@ -91,36 +91,6 @@ namespace STROOP
             // Create map manager
             MapGui mapGui = new MapGui();
             mapGui.GLControl = glControlMap;
-            mapGui.MapIdLabel = labelMapId;
-            mapGui.MapNameLabel = labelMapName;
-            mapGui.MapSubNameLabel = labelMapSubName;
-            mapGui.PuValueLabel = labelMapPuValue;
-            mapGui.QpuValueLabel = labelMapQpuValue;
-            mapGui.MapIconSizeTrackbar = trackBarMapIconSize;
-            mapGui.MapZoomTrackbar = trackBarMapZoom;
-            mapGui.MapShowInactiveObjects = checkBoxMapShowInactive;
-            mapGui.MapShowMario = checkBoxMapShowMario;
-            mapGui.MapShowHolp = checkBoxMapShowHolp;
-            mapGui.MapShowIntendedNextPosition = checkBoxMapShowIntendedNextPosition;
-            mapGui.MapShowCamera = checkBoxMapShowCamera;
-            mapGui.MapShowFloorTriangle = checkBoxMapShowFloor;
-            mapGui.MapShowCeilingTriangle = checkBoxMapShowCeiling;
-
-            mapGui.MapBoundsUpButton = buttonMapBoundsUp;
-            mapGui.MapBoundsDownButton = buttonMapBoundsDown;
-            mapGui.MapBoundsLeftButton = buttonMapBoundsLeft;
-            mapGui.MapBoundsRightButton = buttonMapBoundsRight;
-            mapGui.MapBoundsUpLeftButton = buttonMapBoundsUpLeft;
-            mapGui.MapBoundsUpRightButton = buttonMapBoundsUpRight;
-            mapGui.MapBoundsDownLeftButton = buttonMapBoundsDownLeft;
-            mapGui.MapBoundsDownRightButton = buttonMapBoundsDownRight;
-            mapGui.MapBoundsPositionTextBox = textBoxMapBoundsPosition;
-
-            mapGui.MapBoundsZoomInButton = buttonMapBoundsZoomIn;
-            mapGui.MapBoundsZoomOutButton = buttonMapBoundsZoomOut;
-            mapGui.MapBoundsZoomTextBox = textBoxMapBoundsZoom;
-
-            mapGui.MapArtificialMarioYLabelTextBox = textBoxMapArtificialMarioYLabel;
 
             mapGui.RadioButtonScaleCourseDefault = radioButtonMapControlsScaleCourseDefault;
             mapGui.RadioButtonScaleMaxCourseSize = radioButtonMapControlsScaleMaxCourseSize;
