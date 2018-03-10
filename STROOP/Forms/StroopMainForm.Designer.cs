@@ -1120,7 +1120,7 @@ namespace STROOP
             this.betterSplitContainer1 = new STROOP.BetterSplitContainer();
             this.watchVariablePanelTas = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.betterSplitContainerTasTable = new STROOP.BetterSplitContainer();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTas = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -1489,7 +1489,7 @@ namespace STROOP
             ((System.ComponentModel.ISupportInitialize)(this.betterSplitContainerTasTable)).BeginInit();
             this.betterSplitContainerTasTable.Panel2.SuspendLayout();
             this.betterSplitContainerTasTable.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTas)).BeginInit();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -14613,68 +14613,74 @@ namespace STROOP
             // betterSplitContainerTasTable.Panel2
             // 
             this.betterSplitContainerTasTable.Panel2.AutoScroll = true;
-            this.betterSplitContainerTasTable.Panel2.Controls.Add(this.dataGridView1);
+            this.betterSplitContainerTasTable.Panel2.Controls.Add(this.dataGridViewTas);
             this.betterSplitContainerTasTable.Size = new System.Drawing.Size(346, 457);
             this.betterSplitContainerTasTable.SplitterDistance = 126;
             this.betterSplitContainerTasTable.SplitterWidth = 1;
             this.betterSplitContainerTasTable.TabIndex = 32;
             // 
-            // dataGridView1
+            // dataGridViewTas
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTas.AllowUserToAddRows = false;
+            this.dataGridViewTas.AllowUserToDeleteRows = false;
+            this.dataGridViewTas.AllowUserToResizeRows = false;
+            this.dataGridViewTas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewTas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewTas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6,
             this.Column2,
             this.dataGridViewTextBoxColumn7,
             this.Column1});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(344, 328);
-            this.dataGridView1.TabIndex = 2;
+            this.dataGridViewTas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewTas.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewTas.Margin = new System.Windows.Forms.Padding(0);
+            this.dataGridViewTas.Name = "dataGridViewTas";
+            this.dataGridViewTas.ReadOnly = true;
+            this.dataGridViewTas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewTas.Size = new System.Drawing.Size(344, 328);
+            this.dataGridViewTas.TabIndex = 2;
             // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "Global Timer";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 2;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.HeaderText = "Goal Angle";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 2;
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.HeaderText = "Current Cam Angle";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 2;
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Next Cam Angle";
+            this.Column2.MinimumWidth = 2;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn7
             // 
             this.dataGridViewTextBoxColumn7.HeaderText = "X Input";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 2;
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
             // Column1
             // 
             this.Column1.HeaderText = "Y Input";
+            this.Column1.MinimumWidth = 2;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             // 
@@ -15141,7 +15147,7 @@ namespace STROOP
             this.betterSplitContainerTasTable.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.betterSplitContainerTasTable)).EndInit();
             this.betterSplitContainerTasTable.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -16235,7 +16241,7 @@ namespace STROOP
         private BetterSplitContainer betterSplitContainer1;
         private WatchVariableFlowLayoutPanel watchVariablePanelTas;
         private BetterSplitContainer betterSplitContainerTasTable;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridViewTas;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
