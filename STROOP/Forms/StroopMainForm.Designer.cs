@@ -14630,6 +14630,7 @@ namespace STROOP
             // 
             this.dataGridViewTas.AllowUserToAddRows = false;
             this.dataGridViewTas.AllowUserToDeleteRows = false;
+            this.dataGridViewTas.AllowUserToOrderColumns = true;
             this.dataGridViewTas.AllowUserToResizeRows = false;
             this.dataGridViewTas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewTas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -14681,6 +14682,7 @@ namespace STROOP
             this.dataGridViewTextBoxColumn1.MinimumWidth = 2;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // dataGridViewTextBoxColumn6
             // 
@@ -14688,6 +14690,7 @@ namespace STROOP
             this.dataGridViewTextBoxColumn6.MinimumWidth = 2;
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column2
             // 
@@ -14695,6 +14698,7 @@ namespace STROOP
             this.Column2.MinimumWidth = 2;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -14702,18 +14706,21 @@ namespace STROOP
             this.dataGridViewTextBoxColumn5.MinimumWidth = 2;
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Mario Intend Angle";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "DAngle";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
+            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -14721,6 +14728,7 @@ namespace STROOP
             this.dataGridViewTextBoxColumn7.MinimumWidth = 2;
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column1
             // 
@@ -14728,6 +14736,7 @@ namespace STROOP
             this.Column1.MinimumWidth = 2;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // StroopMainForm
             // 
