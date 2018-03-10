@@ -1053,6 +1053,14 @@ namespace STROOP
             this.labelControlStick3 = new System.Windows.Forms.Label();
             this.labelControlStick5 = new System.Windows.Forms.Label();
             this.labelControlStick4 = new System.Windows.Forms.Label();
+            this.groupBoxMemoryReader = new System.Windows.Forms.GroupBox();
+            this.comboBoxMemoryReaderTypeValue = new System.Windows.Forms.ComboBox();
+            this.textBoxMemoryReaderCountValue = new STROOP.BetterTextbox();
+            this.buttonMemoryReaderRead = new System.Windows.Forms.Button();
+            this.labelMemoryReaderCountLabel = new System.Windows.Forms.Label();
+            this.textBoxMemoryReaderAddressValue = new STROOP.BetterTextbox();
+            this.labelMemoryReaderAddressLabel = new System.Windows.Forms.Label();
+            this.labelMemoryReaderTypeLabel = new System.Windows.Forms.Label();
             this.groupBoxObjAtObj = new System.Windows.Forms.GroupBox();
             this.checkBoxObjAtObjOn = new System.Windows.Forms.CheckBox();
             this.betterTextboxObjAtObj2 = new STROOP.BetterTextbox();
@@ -1108,14 +1116,7 @@ namespace STROOP
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.comboBoxRomVersion = new System.Windows.Forms.ComboBox();
             this.comboBoxReadWriteMode = new System.Windows.Forms.ComboBox();
-            this.groupBoxMemoryReader = new System.Windows.Forms.GroupBox();
-            this.textBoxMemoryReaderAddressValue = new STROOP.BetterTextbox();
-            this.labelMemoryReaderAddressLabel = new System.Windows.Forms.Label();
-            this.labelMemoryReaderTypeLabel = new System.Windows.Forms.Label();
-            this.comboBoxMemoryReaderTypeValue = new System.Windows.Forms.ComboBox();
-            this.labelMemoryReaderCountLabel = new System.Windows.Forms.Label();
-            this.textBoxMemoryReaderCountValue = new STROOP.BetterTextbox();
-            this.buttonMemoryReaderRead = new System.Windows.Forms.Button();
+            this.tabPageTas = new System.Windows.Forms.TabPage();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1462,6 +1463,7 @@ namespace STROOP
             this.groupBoxSchedule.SuspendLayout();
             this.groupBoxStateTransfer.SuspendLayout();
             this.groupBoxControlStick.SuspendLayout();
+            this.groupBoxMemoryReader.SuspendLayout();
             this.groupBoxObjAtObj.SuspendLayout();
             this.groupBoxObjAtHome.SuspendLayout();
             this.groupBoxObjAtHOLP.SuspendLayout();
@@ -1469,7 +1471,6 @@ namespace STROOP
             this.groupBoxRecording.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
-            this.groupBoxMemoryReader.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -1698,6 +1699,7 @@ namespace STROOP
             this.tabControlMain.Controls.Add(this.tabPageFile);
             this.tabControlMain.Controls.Add(this.tabPageMisc);
             this.tabControlMain.Controls.Add(this.tabPageCustom);
+            this.tabControlMain.Controls.Add(this.tabPageTas);
             this.tabControlMain.Controls.Add(this.tabPageDebug);
             this.tabControlMain.Controls.Add(this.tabPageMap);
             this.tabControlMain.Controls.Add(this.tabPagePu);
@@ -4827,7 +4829,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 276F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 277F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9113,7 +9115,7 @@ namespace STROOP
             this.tabPage3D.Location = new System.Drawing.Point(4, 22);
             this.tabPage3D.Margin = new System.Windows.Forms.Padding(0);
             this.tabPage3D.Name = "tabPage3D";
-            this.tabPage3D.Size = new System.Drawing.Size(379, 292);
+            this.tabPage3D.Size = new System.Drawing.Size(392, 292);
             this.tabPage3D.TabIndex = 2;
             this.tabPage3D.Text = "3D";
             // 
@@ -10292,7 +10294,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(391, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(374, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -10324,7 +10326,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(385, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(368, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -10380,7 +10382,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(385, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(368, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -13821,6 +13823,93 @@ namespace STROOP
             this.labelControlStick4.Text = "Value";
             this.labelControlStick4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // groupBoxMemoryReader
+            // 
+            this.groupBoxMemoryReader.Controls.Add(this.comboBoxMemoryReaderTypeValue);
+            this.groupBoxMemoryReader.Controls.Add(this.textBoxMemoryReaderCountValue);
+            this.groupBoxMemoryReader.Controls.Add(this.buttonMemoryReaderRead);
+            this.groupBoxMemoryReader.Controls.Add(this.labelMemoryReaderCountLabel);
+            this.groupBoxMemoryReader.Controls.Add(this.textBoxMemoryReaderAddressValue);
+            this.groupBoxMemoryReader.Controls.Add(this.labelMemoryReaderAddressLabel);
+            this.groupBoxMemoryReader.Controls.Add(this.labelMemoryReaderTypeLabel);
+            this.groupBoxMemoryReader.Location = new System.Drawing.Point(610, 278);
+            this.groupBoxMemoryReader.Name = "groupBoxMemoryReader";
+            this.groupBoxMemoryReader.Size = new System.Drawing.Size(144, 125);
+            this.groupBoxMemoryReader.TabIndex = 40;
+            this.groupBoxMemoryReader.TabStop = false;
+            this.groupBoxMemoryReader.Text = "Memory Reader";
+            // 
+            // comboBoxMemoryReaderTypeValue
+            // 
+            this.comboBoxMemoryReaderTypeValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxMemoryReaderTypeValue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMemoryReaderTypeValue.Location = new System.Drawing.Point(50, 22);
+            this.comboBoxMemoryReaderTypeValue.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxMemoryReaderTypeValue.Name = "comboBoxMemoryReaderTypeValue";
+            this.comboBoxMemoryReaderTypeValue.Size = new System.Drawing.Size(78, 21);
+            this.comboBoxMemoryReaderTypeValue.TabIndex = 29;
+            // 
+            // textBoxMemoryReaderCountValue
+            // 
+            this.textBoxMemoryReaderCountValue.Location = new System.Drawing.Point(50, 67);
+            this.textBoxMemoryReaderCountValue.Name = "textBoxMemoryReaderCountValue";
+            this.textBoxMemoryReaderCountValue.Size = new System.Drawing.Size(78, 20);
+            this.textBoxMemoryReaderCountValue.TabIndex = 28;
+            this.textBoxMemoryReaderCountValue.Text = "100";
+            this.textBoxMemoryReaderCountValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonMemoryReaderRead
+            // 
+            this.buttonMemoryReaderRead.Location = new System.Drawing.Point(14, 92);
+            this.buttonMemoryReaderRead.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonMemoryReaderRead.Name = "buttonMemoryReaderRead";
+            this.buttonMemoryReaderRead.Size = new System.Drawing.Size(117, 23);
+            this.buttonMemoryReaderRead.TabIndex = 16;
+            this.buttonMemoryReaderRead.Text = "Read";
+            this.buttonMemoryReaderRead.UseVisualStyleBackColor = true;
+            // 
+            // labelMemoryReaderCountLabel
+            // 
+            this.labelMemoryReaderCountLabel.AutoSize = true;
+            this.labelMemoryReaderCountLabel.Location = new System.Drawing.Point(14, 70);
+            this.labelMemoryReaderCountLabel.MinimumSize = new System.Drawing.Size(20, 2);
+            this.labelMemoryReaderCountLabel.Name = "labelMemoryReaderCountLabel";
+            this.labelMemoryReaderCountLabel.Size = new System.Drawing.Size(38, 13);
+            this.labelMemoryReaderCountLabel.TabIndex = 18;
+            this.labelMemoryReaderCountLabel.Text = "Count:";
+            this.labelMemoryReaderCountLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // textBoxMemoryReaderAddressValue
+            // 
+            this.textBoxMemoryReaderAddressValue.Location = new System.Drawing.Point(50, 45);
+            this.textBoxMemoryReaderAddressValue.Name = "textBoxMemoryReaderAddressValue";
+            this.textBoxMemoryReaderAddressValue.Size = new System.Drawing.Size(78, 20);
+            this.textBoxMemoryReaderAddressValue.TabIndex = 28;
+            this.textBoxMemoryReaderAddressValue.Text = "0x8018E650";
+            this.textBoxMemoryReaderAddressValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelMemoryReaderAddressLabel
+            // 
+            this.labelMemoryReaderAddressLabel.AutoSize = true;
+            this.labelMemoryReaderAddressLabel.Location = new System.Drawing.Point(14, 48);
+            this.labelMemoryReaderAddressLabel.MinimumSize = new System.Drawing.Size(20, 2);
+            this.labelMemoryReaderAddressLabel.Name = "labelMemoryReaderAddressLabel";
+            this.labelMemoryReaderAddressLabel.Size = new System.Drawing.Size(32, 13);
+            this.labelMemoryReaderAddressLabel.TabIndex = 18;
+            this.labelMemoryReaderAddressLabel.Text = "Addr:";
+            this.labelMemoryReaderAddressLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelMemoryReaderTypeLabel
+            // 
+            this.labelMemoryReaderTypeLabel.AutoSize = true;
+            this.labelMemoryReaderTypeLabel.Location = new System.Drawing.Point(14, 24);
+            this.labelMemoryReaderTypeLabel.MinimumSize = new System.Drawing.Size(20, 2);
+            this.labelMemoryReaderTypeLabel.Name = "labelMemoryReaderTypeLabel";
+            this.labelMemoryReaderTypeLabel.Size = new System.Drawing.Size(34, 13);
+            this.labelMemoryReaderTypeLabel.TabIndex = 18;
+            this.labelMemoryReaderTypeLabel.Text = "Type:";
+            this.labelMemoryReaderTypeLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // groupBoxObjAtObj
             // 
             this.groupBoxObjAtObj.Controls.Add(this.checkBoxObjAtObjOn);
@@ -14441,92 +14530,15 @@ namespace STROOP
             this.comboBoxReadWriteMode.Size = new System.Drawing.Size(75, 21);
             this.comboBoxReadWriteMode.TabIndex = 22;
             // 
-            // groupBoxMemoryReader
+            // tabPageTas
             // 
-            this.groupBoxMemoryReader.Controls.Add(this.comboBoxMemoryReaderTypeValue);
-            this.groupBoxMemoryReader.Controls.Add(this.textBoxMemoryReaderCountValue);
-            this.groupBoxMemoryReader.Controls.Add(this.buttonMemoryReaderRead);
-            this.groupBoxMemoryReader.Controls.Add(this.labelMemoryReaderCountLabel);
-            this.groupBoxMemoryReader.Controls.Add(this.textBoxMemoryReaderAddressValue);
-            this.groupBoxMemoryReader.Controls.Add(this.labelMemoryReaderAddressLabel);
-            this.groupBoxMemoryReader.Controls.Add(this.labelMemoryReaderTypeLabel);
-            this.groupBoxMemoryReader.Location = new System.Drawing.Point(610, 278);
-            this.groupBoxMemoryReader.Name = "groupBoxMemoryReader";
-            this.groupBoxMemoryReader.Size = new System.Drawing.Size(144, 125);
-            this.groupBoxMemoryReader.TabIndex = 40;
-            this.groupBoxMemoryReader.TabStop = false;
-            this.groupBoxMemoryReader.Text = "Memory Reader";
-            // 
-            // textBoxMemoryReaderAddressValue
-            // 
-            this.textBoxMemoryReaderAddressValue.Location = new System.Drawing.Point(50, 45);
-            this.textBoxMemoryReaderAddressValue.Name = "textBoxMemoryReaderAddressValue";
-            this.textBoxMemoryReaderAddressValue.Size = new System.Drawing.Size(78, 20);
-            this.textBoxMemoryReaderAddressValue.TabIndex = 28;
-            this.textBoxMemoryReaderAddressValue.Text = "0x8018E650";
-            this.textBoxMemoryReaderAddressValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelMemoryReaderAddressLabel
-            // 
-            this.labelMemoryReaderAddressLabel.AutoSize = true;
-            this.labelMemoryReaderAddressLabel.Location = new System.Drawing.Point(14, 48);
-            this.labelMemoryReaderAddressLabel.MinimumSize = new System.Drawing.Size(20, 2);
-            this.labelMemoryReaderAddressLabel.Name = "labelMemoryReaderAddressLabel";
-            this.labelMemoryReaderAddressLabel.Size = new System.Drawing.Size(32, 13);
-            this.labelMemoryReaderAddressLabel.TabIndex = 18;
-            this.labelMemoryReaderAddressLabel.Text = "Addr:";
-            this.labelMemoryReaderAddressLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // labelMemoryReaderTypeLabel
-            // 
-            this.labelMemoryReaderTypeLabel.AutoSize = true;
-            this.labelMemoryReaderTypeLabel.Location = new System.Drawing.Point(14, 24);
-            this.labelMemoryReaderTypeLabel.MinimumSize = new System.Drawing.Size(20, 2);
-            this.labelMemoryReaderTypeLabel.Name = "labelMemoryReaderTypeLabel";
-            this.labelMemoryReaderTypeLabel.Size = new System.Drawing.Size(34, 13);
-            this.labelMemoryReaderTypeLabel.TabIndex = 18;
-            this.labelMemoryReaderTypeLabel.Text = "Type:";
-            this.labelMemoryReaderTypeLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // comboBoxMemoryReaderTypeValue
-            // 
-            this.comboBoxMemoryReaderTypeValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxMemoryReaderTypeValue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxMemoryReaderTypeValue.Location = new System.Drawing.Point(50, 22);
-            this.comboBoxMemoryReaderTypeValue.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxMemoryReaderTypeValue.Name = "comboBoxMemoryReaderTypeValue";
-            this.comboBoxMemoryReaderTypeValue.Size = new System.Drawing.Size(78, 21);
-            this.comboBoxMemoryReaderTypeValue.TabIndex = 29;
-            // 
-            // labelMemoryReaderCountLabel
-            // 
-            this.labelMemoryReaderCountLabel.AutoSize = true;
-            this.labelMemoryReaderCountLabel.Location = new System.Drawing.Point(14, 70);
-            this.labelMemoryReaderCountLabel.MinimumSize = new System.Drawing.Size(20, 2);
-            this.labelMemoryReaderCountLabel.Name = "labelMemoryReaderCountLabel";
-            this.labelMemoryReaderCountLabel.Size = new System.Drawing.Size(38, 13);
-            this.labelMemoryReaderCountLabel.TabIndex = 18;
-            this.labelMemoryReaderCountLabel.Text = "Count:";
-            this.labelMemoryReaderCountLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // textBoxMemoryReaderCountValue
-            // 
-            this.textBoxMemoryReaderCountValue.Location = new System.Drawing.Point(50, 67);
-            this.textBoxMemoryReaderCountValue.Name = "textBoxMemoryReaderCountValue";
-            this.textBoxMemoryReaderCountValue.Size = new System.Drawing.Size(78, 20);
-            this.textBoxMemoryReaderCountValue.TabIndex = 28;
-            this.textBoxMemoryReaderCountValue.Text = "100";
-            this.textBoxMemoryReaderCountValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // buttonMemoryReaderRead
-            // 
-            this.buttonMemoryReaderRead.Location = new System.Drawing.Point(14, 92);
-            this.buttonMemoryReaderRead.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonMemoryReaderRead.Name = "buttonMemoryReaderRead";
-            this.buttonMemoryReaderRead.Size = new System.Drawing.Size(117, 23);
-            this.buttonMemoryReaderRead.TabIndex = 16;
-            this.buttonMemoryReaderRead.Text = "Read";
-            this.buttonMemoryReaderRead.UseVisualStyleBackColor = true;
+            this.tabPageTas.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageTas.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTas.Name = "tabPageTas";
+            this.tabPageTas.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageTas.Size = new System.Drawing.Size(915, 463);
+            this.tabPageTas.TabIndex = 26;
+            this.tabPageTas.Text = "TAS";
             // 
             // StroopMainForm
             // 
@@ -14968,6 +14980,8 @@ namespace STROOP
             this.groupBoxStateTransfer.PerformLayout();
             this.groupBoxControlStick.ResumeLayout(false);
             this.groupBoxControlStick.PerformLayout();
+            this.groupBoxMemoryReader.ResumeLayout(false);
+            this.groupBoxMemoryReader.PerformLayout();
             this.groupBoxObjAtObj.ResumeLayout(false);
             this.groupBoxObjAtObj.PerformLayout();
             this.groupBoxObjAtHome.ResumeLayout(false);
@@ -14981,8 +14995,6 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
-            this.groupBoxMemoryReader.ResumeLayout(false);
-            this.groupBoxMemoryReader.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -16072,6 +16084,7 @@ namespace STROOP
         private BetterTextbox textBoxMemoryReaderAddressValue;
         private Label labelMemoryReaderAddressLabel;
         private Label labelMemoryReaderTypeLabel;
+        private TabPage tabPageTas;
     }
 }
 
