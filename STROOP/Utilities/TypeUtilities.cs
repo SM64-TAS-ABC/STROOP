@@ -50,7 +50,7 @@ namespace STROOP.Structs
             {typeof(long), 8},
             {typeof(ulong), 8},
             {typeof(float), 4},
-            {typeof(double), 4},
+            {typeof(double), 8},
         };
 
         public readonly static Dictionary<Type, bool> TypeSign = new Dictionary<Type, bool>()

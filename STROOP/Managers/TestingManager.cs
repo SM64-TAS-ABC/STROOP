@@ -399,6 +399,8 @@ namespace STROOP.Managers
             _textBoxMemoryReaderAddressValue = _groupBoxMemoryReader.Controls["textBoxMemoryReaderAddressValue"] as BetterTextbox;
             _textBoxMemoryReaderCountValue = _groupBoxMemoryReader.Controls["textBoxMemoryReaderCountValue"] as BetterTextbox;
             _buttonMemoryReaderRead = _groupBoxMemoryReader.Controls["buttonMemoryReaderRead"] as Button;
+
+            _comboBoxMemoryReaderTypeValue.DataSource = TypeUtilities.StringToType.Keys.ToList();
         }
 
         private List<uint> GetScuttlebugAddresses()
