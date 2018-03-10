@@ -29,14 +29,7 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanelVarHack = new STROOP.Controls.BorderedTableLayoutPanel();
-            this.checkBoxUsePointer = new System.Windows.Forms.CheckBox();
-            this.textBoxNameValue = new STROOP.BetterTextbox();
-            this.textBoxNameLabel = new STROOP.BetterTextbox();
-            this.textBoxAddressLabel = new STROOP.BetterTextbox();
             this.textBoxAddressValue = new STROOP.BetterTextbox();
-            this.textBoxPointerOffsetLabel = new STROOP.BetterTextbox();
-            this.textBoxPointerOffsetValue = new STROOP.BetterTextbox();
-            this.checkBoxNoNumber = new System.Windows.Forms.CheckBox();
             this.pictureBoxDownArrow = new System.Windows.Forms.PictureBox();
             this.pictureBoxUpArrow = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -45,12 +38,16 @@
             this.comboBoxOrderType = new System.Windows.Forms.ComboBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.panelObjectBorder = new System.Windows.Forms.Panel();
+            this.pictureBoxObject = new STROOP.Controls.IntPictureBox();
             this.tableLayoutPanelVarHack.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpArrow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.panelObjectBorder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanelVarHack
@@ -65,15 +62,7 @@
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
-            this.tableLayoutPanelVarHack.Controls.Add(this.checkBoxUsePointer, 1, 2);
-            this.tableLayoutPanelVarHack.Controls.Add(this.textBoxNameValue, 1, 0);
-            this.tableLayoutPanelVarHack.Controls.Add(this.textBoxNameLabel, 0, 0);
-            this.tableLayoutPanelVarHack.Controls.Add(this.textBoxAddressLabel, 0, 1);
-            this.tableLayoutPanelVarHack.Controls.Add(this.textBoxAddressValue, 1, 1);
-            this.tableLayoutPanelVarHack.Controls.Add(this.textBoxPointerOffsetLabel, 0, 3);
-            this.tableLayoutPanelVarHack.Controls.Add(this.textBoxPointerOffsetValue, 1, 3);
-            this.tableLayoutPanelVarHack.Controls.Add(this.checkBoxNoNumber, 0, 2);
+            this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
             this.tableLayoutPanelVarHack.Controls.Add(this.pictureBoxDownArrow, 5, 3);
             this.tableLayoutPanelVarHack.Controls.Add(this.pictureBoxUpArrow, 5, 2);
             this.tableLayoutPanelVarHack.Controls.Add(this.pictureBox2, 5, 0);
@@ -82,6 +71,8 @@
             this.tableLayoutPanelVarHack.Controls.Add(this.comboBoxOrderType, 3, 2);
             this.tableLayoutPanelVarHack.Controls.Add(this.checkBox1, 3, 0);
             this.tableLayoutPanelVarHack.Controls.Add(this.pictureBox3, 3, 3);
+            this.tableLayoutPanelVarHack.Controls.Add(this.textBoxAddressValue, 0, 3);
+            this.tableLayoutPanelVarHack.Controls.Add(this.panelObjectBorder, 0, 0);
             this.tableLayoutPanelVarHack.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelVarHack.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelVarHack.Name = "tableLayoutPanelVarHack";
@@ -94,101 +85,18 @@
             this.tableLayoutPanelVarHack.Size = new System.Drawing.Size(408, 99);
             this.tableLayoutPanelVarHack.TabIndex = 40;
             // 
-            // checkBoxUsePointer
-            // 
-            this.checkBoxUsePointer.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBoxUsePointer.AutoSize = true;
-            this.checkBoxUsePointer.Location = new System.Drawing.Point(83, 52);
-            this.checkBoxUsePointer.Name = "checkBoxUsePointer";
-            this.checkBoxUsePointer.Size = new System.Drawing.Size(81, 17);
-            this.checkBoxUsePointer.TabIndex = 4;
-            this.checkBoxUsePointer.Text = "Use Pointer";
-            this.checkBoxUsePointer.UseVisualStyleBackColor = true;
-            // 
-            // textBoxNameValue
-            // 
-            this.textBoxNameValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxNameValue.BackColor = System.Drawing.Color.White;
-            this.textBoxNameValue.Location = new System.Drawing.Point(83, 4);
-            this.textBoxNameValue.Name = "textBoxNameValue";
-            this.textBoxNameValue.Size = new System.Drawing.Size(100, 20);
-            this.textBoxNameValue.TabIndex = 10;
-            this.textBoxNameValue.Text = "Mario X";
-            this.textBoxNameValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxNameLabel
-            // 
-            this.textBoxNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.textBoxNameLabel.BackColor = System.Drawing.SystemColors.Control;
-            this.textBoxNameLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxNameLabel.Location = new System.Drawing.Point(4, 6);
-            this.textBoxNameLabel.Name = "textBoxNameLabel";
-            this.textBoxNameLabel.ReadOnly = true;
-            this.textBoxNameLabel.Size = new System.Drawing.Size(72, 13);
-            this.textBoxNameLabel.TabIndex = 10;
-            this.textBoxNameLabel.Text = "Name:";
-            this.textBoxNameLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBoxAddressLabel
-            // 
-            this.textBoxAddressLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.textBoxAddressLabel.BackColor = System.Drawing.SystemColors.Control;
-            this.textBoxAddressLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxAddressLabel.Location = new System.Drawing.Point(4, 30);
-            this.textBoxAddressLabel.Name = "textBoxAddressLabel";
-            this.textBoxAddressLabel.ReadOnly = true;
-            this.textBoxAddressLabel.Size = new System.Drawing.Size(72, 13);
-            this.textBoxAddressLabel.TabIndex = 10;
-            this.textBoxAddressLabel.Text = "Address:";
-            this.textBoxAddressLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // textBoxAddressValue
             // 
             this.textBoxAddressValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxAddressValue.BackColor = System.Drawing.Color.White;
-            this.textBoxAddressValue.Location = new System.Drawing.Point(83, 28);
+            this.textBoxAddressValue.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxAddressValue.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxAddressValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxAddressValue.Location = new System.Drawing.Point(4, 76);
             this.textBoxAddressValue.Name = "textBoxAddressValue";
-            this.textBoxAddressValue.Size = new System.Drawing.Size(100, 20);
+            this.textBoxAddressValue.Size = new System.Drawing.Size(72, 13);
             this.textBoxAddressValue.TabIndex = 10;
-            this.textBoxAddressValue.Text = "0x8033B1AC";
+            this.textBoxAddressValue.Text = "Mario";
             this.textBoxAddressValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxPointerOffsetLabel
-            // 
-            this.textBoxPointerOffsetLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.textBoxPointerOffsetLabel.BackColor = System.Drawing.SystemColors.Control;
-            this.textBoxPointerOffsetLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxPointerOffsetLabel.Location = new System.Drawing.Point(4, 79);
-            this.textBoxPointerOffsetLabel.Name = "textBoxPointerOffsetLabel";
-            this.textBoxPointerOffsetLabel.ReadOnly = true;
-            this.textBoxPointerOffsetLabel.Size = new System.Drawing.Size(72, 13);
-            this.textBoxPointerOffsetLabel.TabIndex = 10;
-            this.textBoxPointerOffsetLabel.Text = "Pointer Offset:";
-            this.textBoxPointerOffsetLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBoxPointerOffsetValue
-            // 
-            this.textBoxPointerOffsetValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxPointerOffsetValue.BackColor = System.Drawing.Color.White;
-            this.textBoxPointerOffsetValue.Enabled = false;
-            this.textBoxPointerOffsetValue.Location = new System.Drawing.Point(83, 76);
-            this.textBoxPointerOffsetValue.Name = "textBoxPointerOffsetValue";
-            this.textBoxPointerOffsetValue.Size = new System.Drawing.Size(100, 20);
-            this.textBoxPointerOffsetValue.TabIndex = 10;
-            this.textBoxPointerOffsetValue.Text = "0x10";
-            this.textBoxPointerOffsetValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // checkBoxNoNumber
-            // 
-            this.checkBoxNoNumber.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBoxNoNumber.AutoSize = true;
-            this.checkBoxNoNumber.ForeColor = System.Drawing.Color.DarkRed;
-            this.checkBoxNoNumber.Location = new System.Drawing.Point(4, 52);
-            this.checkBoxNoNumber.Name = "checkBoxNoNumber";
-            this.checkBoxNoNumber.Size = new System.Drawing.Size(65, 17);
-            this.checkBoxNoNumber.TabIndex = 4;
-            this.checkBoxNoNumber.Text = "No Num";
-            this.checkBoxNoNumber.UseVisualStyleBackColor = true;
             // 
             // pictureBoxDownArrow
             // 
@@ -276,6 +184,33 @@
             this.pictureBox3.TabIndex = 17;
             this.pictureBox3.TabStop = false;
             // 
+            // panelObjectBorder
+            // 
+            this.panelObjectBorder.BackColor = System.Drawing.Color.Red;
+            this.panelObjectBorder.Controls.Add(this.pictureBoxObject);
+            this.panelObjectBorder.Location = new System.Drawing.Point(3, 3);
+            this.panelObjectBorder.Margin = new System.Windows.Forms.Padding(2);
+            this.panelObjectBorder.Name = "panelObjectBorder";
+            this.tableLayoutPanelVarHack.SetRowSpan(this.panelObjectBorder, 3);
+            this.panelObjectBorder.Size = new System.Drawing.Size(55, 55);
+            this.panelObjectBorder.TabIndex = 18;
+            // 
+            // pictureBoxObject
+            // 
+            this.pictureBoxObject.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxObject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.pictureBoxObject.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+            this.pictureBoxObject.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxObject.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxObject.MaximumSize = new System.Drawing.Size(133, 130);
+            this.pictureBoxObject.Name = "pictureBoxObject";
+            this.pictureBoxObject.Size = new System.Drawing.Size(49, 49);
+            this.pictureBoxObject.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxObject.TabIndex = 0;
+            this.pictureBoxObject.TabStop = false;
+            // 
             // MapTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -292,6 +227,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.panelObjectBorder.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -299,21 +236,16 @@
         #endregion
 
         private BorderedTableLayoutPanel tableLayoutPanelVarHack;
-        private System.Windows.Forms.CheckBox checkBoxUsePointer;
-        private BetterTextbox textBoxNameValue;
-        private BetterTextbox textBoxNameLabel;
-        private BetterTextbox textBoxAddressLabel;
         private BetterTextbox textBoxAddressValue;
-        private BetterTextbox textBoxPointerOffsetLabel;
-        private BetterTextbox textBoxPointerOffsetValue;
         private System.Windows.Forms.PictureBox pictureBoxUpArrow;
         private System.Windows.Forms.PictureBox pictureBoxDownArrow;
-        private System.Windows.Forms.CheckBox checkBoxNoNumber;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox comboBoxVisibilityType;
         private System.Windows.Forms.ComboBox comboBoxOrderType;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Panel panelObjectBorder;
+        private IntPictureBox pictureBoxObject;
     }
 }
