@@ -170,6 +170,14 @@ namespace STROOP.Managers
 
         List<TriangleDataModel> _scuttlebugTriangleList = new List<TriangleDataModel>();
 
+        // Memory Reader
+
+        GroupBox _groupBoxMemoryReader;
+        ComboBox _comboBoxMemoryReaderTypeValue;
+        BetterTextbox _textBoxMemoryReaderAddressValue;
+        BetterTextbox _textBoxMemoryReaderCountValue;
+        Button _buttonMemoryReaderRead;
+
         public TestingManager(TabPage tabControl)
         {
             // Recording
@@ -383,6 +391,14 @@ namespace STROOP.Managers
                     }
                 });
             };
+
+            // Memory Reader
+
+            _groupBoxMemoryReader = tabControl.Controls["groupBoxMemoryReader"] as GroupBox;
+            _comboBoxMemoryReaderTypeValue = _groupBoxMemoryReader.Controls["comboBoxMemoryReaderTypeValue"] as ComboBox;
+            _textBoxMemoryReaderAddressValue = _groupBoxMemoryReader.Controls["textBoxMemoryReaderAddressValue"] as BetterTextbox;
+            _textBoxMemoryReaderCountValue = _groupBoxMemoryReader.Controls["textBoxMemoryReaderCountValue"] as BetterTextbox;
+            _buttonMemoryReaderRead = _groupBoxMemoryReader.Controls["buttonMemoryReaderRead"] as Button;
         }
 
         private List<uint> GetScuttlebugAddresses()
