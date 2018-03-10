@@ -41,8 +41,8 @@
             this.pictureBoxUpArrow = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxVisibilityType = new System.Windows.Forms.ComboBox();
+            this.comboBoxOrderType = new System.Windows.Forms.ComboBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanelVarHack.SuspendLayout();
@@ -65,7 +65,7 @@
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62F));
+            this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
             this.tableLayoutPanelVarHack.Controls.Add(this.checkBoxUsePointer, 1, 2);
             this.tableLayoutPanelVarHack.Controls.Add(this.textBoxNameValue, 1, 0);
             this.tableLayoutPanelVarHack.Controls.Add(this.textBoxNameLabel, 0, 0);
@@ -78,8 +78,8 @@
             this.tableLayoutPanelVarHack.Controls.Add(this.pictureBoxUpArrow, 5, 2);
             this.tableLayoutPanelVarHack.Controls.Add(this.pictureBox2, 5, 0);
             this.tableLayoutPanelVarHack.Controls.Add(this.pictureBox1, 5, 1);
-            this.tableLayoutPanelVarHack.Controls.Add(this.comboBoxLabelMethod, 3, 1);
-            this.tableLayoutPanelVarHack.Controls.Add(this.comboBox1, 3, 2);
+            this.tableLayoutPanelVarHack.Controls.Add(this.comboBoxVisibilityType, 3, 1);
+            this.tableLayoutPanelVarHack.Controls.Add(this.comboBoxOrderType, 3, 2);
             this.tableLayoutPanelVarHack.Controls.Add(this.checkBox1, 3, 0);
             this.tableLayoutPanelVarHack.Controls.Add(this.pictureBox3, 3, 3);
             this.tableLayoutPanelVarHack.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -234,25 +234,25 @@
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
             // 
-            // comboBoxLabelMethod
+            // comboBoxVisibilityType
             // 
-            this.comboBoxLabelMethod.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBoxLabelMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxLabelMethod.Location = new System.Drawing.Point(229, 27);
-            this.comboBoxLabelMethod.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxLabelMethod.Name = "comboBoxLabelMethod";
-            this.comboBoxLabelMethod.Size = new System.Drawing.Size(87, 21);
-            this.comboBoxLabelMethod.TabIndex = 14;
+            this.comboBoxVisibilityType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxVisibilityType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxVisibilityType.Location = new System.Drawing.Point(229, 27);
+            this.comboBoxVisibilityType.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxVisibilityType.Name = "comboBoxVisibilityType";
+            this.comboBoxVisibilityType.Size = new System.Drawing.Size(87, 21);
+            this.comboBoxVisibilityType.TabIndex = 14;
             // 
-            // comboBox1
+            // comboBoxOrderType
             // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Location = new System.Drawing.Point(229, 51);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(87, 21);
-            this.comboBox1.TabIndex = 15;
+            this.comboBoxOrderType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxOrderType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxOrderType.Location = new System.Drawing.Point(229, 51);
+            this.comboBoxOrderType.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxOrderType.Name = "comboBoxOrderType";
+            this.comboBoxOrderType.Size = new System.Drawing.Size(87, 21);
+            this.comboBoxOrderType.TabIndex = 15;
             // 
             // checkBox1
             // 
@@ -311,8 +311,8 @@
         private System.Windows.Forms.CheckBox checkBoxNoNumber;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ComboBox comboBoxLabelMethod;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxVisibilityType;
+        private System.Windows.Forms.ComboBox comboBoxOrderType;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.PictureBox pictureBox3;
     }

@@ -23,6 +23,9 @@ namespace STROOP.Controls
         {
             InitializeComponent();
             _flowLayoutPanel = flowLayoutPanel;
+
+            comboBoxVisibilityType.DataSource = Enum.GetValues(typeof(MapTrackerVisibilityType));
+            comboBoxOrderType.DataSource = Enum.GetValues(typeof(MapTrackerOrderType));
         }
 
         public void UpdateControl()
