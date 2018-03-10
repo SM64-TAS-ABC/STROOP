@@ -20,6 +20,8 @@ namespace STROOP.Structs
         Trajectory,
         Collision,
         Movement,
+        TAS,
+        Point,
         Hacks,
     };
 }

@@ -35,8 +35,25 @@ namespace STROOP.Managers
         private static readonly int TABLE_INDEX_X_INPUT = 6;
         private static readonly int TABLE_INDEX_Y_INPUT = 7;
 
+        private static readonly List<VariableGroup> ALL_VAR_GROUPS =
+            new List<VariableGroup>()
+            {
+                VariableGroup.Basic,
+                VariableGroup.Advanced,
+                VariableGroup.TAS,
+                VariableGroup.Point,
+            };
+
+        private static readonly List<VariableGroup> VISIBLE_VAR_GROUPS =
+            new List<VariableGroup>()
+            {
+                VariableGroup.Basic,
+                VariableGroup.Advanced,
+                VariableGroup.Point,
+            };
+
         public TasManager(List<WatchVariableControlPrecursor> variables, TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel)
-            : base(variables, watchVariablePanel)
+            : base(variables, watchVariablePanel, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
         {
             SplitContainer splitContainerTas = tabControl.Controls["splitContainerTas"] as SplitContainer;
             SplitContainer splitContainerTasTable = splitContainerTas.Panel1.Controls["splitContainerTasTable"] as SplitContainer;
