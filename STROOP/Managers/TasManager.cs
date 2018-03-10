@@ -188,7 +188,7 @@ namespace STROOP.Managers
                 (int xInput, int yInput) = MoreMath.CalculateInputsFromAngle(goalAngle, nextCameraAngle);
                 currentRow.Cells[TABLE_INDEX_NEXT_CAM_ANGLE].Value = nextCameraAngle;
                 currentRow.Cells[TABLE_INDEX_X_INPUT].Value = xInput;
-                currentRow.Cells[TABLE_INDEX_Y_INPUT].Value = yInput;
+                currentRow.Cells[TABLE_INDEX_Y_INPUT].Value = -1 * yInput;
             }
         }
     }
