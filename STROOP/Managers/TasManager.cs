@@ -19,6 +19,11 @@ namespace STROOP.Managers
             SplitContainer splitContainerTas = tabControl.Controls["splitContainerTas"] as SplitContainer;
             SplitContainer splitContainerTasTable = splitContainerTas.Panel1.Controls["splitContainerTasTable"] as SplitContainer;
             DataGridView dataGridViewTas = splitContainerTasTable.Panel2.Controls["dataGridViewTas"] as DataGridView;
+
+            dataGridViewTas.Rows.Add(1, 2, 3, 4, 5, 6);
+            dataGridViewTas.Rows.Add(1, 2, 3, 4, 5, 6);
+            dataGridViewTas.Rows.Add(1, 2, 3, 4, 5, 6);
+            dataGridViewTas.ClearSelection();
         }
 
         public override void Update(bool updateView)
