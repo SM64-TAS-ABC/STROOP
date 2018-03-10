@@ -416,6 +416,7 @@
     <Compile Include="Forms\VariableViewerForm.Designer.cs">
       <DependentUpon>VariableViewerForm.cs</DependentUpon>
     </Compile>
+    <None Include="Resources\cog.png" />
     <None Include="Resources\image_eye_closed2.png" />
     <None Include="Resources\image_eye_open2.png" />
     <None Include="Resources\image_eye_closed.png" />

@@ -44,11 +44,13 @@
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanelVarHack.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpArrow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanelVarHack
@@ -63,7 +65,7 @@
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 91F));
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 61F));
+            this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62F));
             this.tableLayoutPanelVarHack.Controls.Add(this.checkBoxUsePointer, 1, 2);
             this.tableLayoutPanelVarHack.Controls.Add(this.textBoxNameValue, 1, 0);
             this.tableLayoutPanelVarHack.Controls.Add(this.textBoxNameLabel, 0, 0);
@@ -79,6 +81,7 @@
             this.tableLayoutPanelVarHack.Controls.Add(this.comboBoxLabelMethod, 3, 1);
             this.tableLayoutPanelVarHack.Controls.Add(this.comboBox1, 3, 2);
             this.tableLayoutPanelVarHack.Controls.Add(this.checkBox1, 3, 0);
+            this.tableLayoutPanelVarHack.Controls.Add(this.pictureBox3, 3, 3);
             this.tableLayoutPanelVarHack.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelVarHack.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelVarHack.Name = "tableLayoutPanelVarHack";
@@ -262,6 +265,17 @@
             this.checkBox1.Text = "Rotate";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackgroundImage = global::STROOP.Properties.Resources.cog;
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox3.Location = new System.Drawing.Point(230, 76);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(30, 17);
+            this.pictureBox3.TabIndex = 17;
+            this.pictureBox3.TabStop = false;
+            // 
             // MapTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,6 +291,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpArrow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -299,5 +314,6 @@
         private System.Windows.Forms.ComboBox comboBoxLabelMethod;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }
