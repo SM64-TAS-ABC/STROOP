@@ -401,6 +401,18 @@ namespace STROOP.Managers
             _buttonMemoryReaderRead = _groupBoxMemoryReader.Controls["buttonMemoryReaderRead"] as Button;
 
             _comboBoxMemoryReaderTypeValue.DataSource = TypeUtilities.StringToType.Keys.ToList();
+
+            _buttonMemoryReaderRead.Click += (sender, e) =>
+            {
+                uint address = ParsingUtilities.ParseHex(_textBoxMemoryReaderAddressValue.Text);
+                int count = ParsingUtilities.ParseInt(_textBoxMemoryReaderCountValue.Text);
+                string typeString = _comboBoxMemoryReaderTypeValue.SelectedValue as string;
+                Type type = TypeUtilities.StringToType[typeString];
+                InfoForm.ShowText(
+                    "Memory Reader",
+                    count + " " + typeString + " value(s) at 0x" + String.Format("{0:X}", address),
+                    "");
+            };
         }
 
         private List<uint> GetScuttlebugAddresses()
