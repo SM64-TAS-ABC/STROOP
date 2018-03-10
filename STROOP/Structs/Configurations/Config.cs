@@ -70,6 +70,7 @@ namespace STROOP.Structs.Configurations
         public static InputManager InputManager;
         public static ActionsManager ActionsManager;
         public static PuManager PuManager;
+        public static TasManager TasManager;
         public static FileManager FileManager;
         public static AreaManager AreaManager;
         public static DataManager QuarterFrameManager;

@@ -27,7 +27,7 @@ namespace STROOP
         InputImageGui _inputImageGui = new InputImageGui();
         FileImageGui _fileImageGui = new FileImageGui();
         List<WatchVariableControlPrecursor> _watchVarControlList, _waterData, _miscData, _areaData, _inputData, _fileData,
-            _debugData, _camHackData, _hudData, _cameraData, _quarterFrameData, _actionsData, _puData,
+            _debugData, _camHackData, _hudData, _cameraData, _quarterFrameData, _actionsData, _puData, _tasData,
             _triangleData, _marioData, _objectData, _gfxData;
         MapAssociations _mapAssoc;
         ScriptParser _scriptParser;
@@ -143,6 +143,7 @@ namespace STROOP
             Config.TriangleManager = new TriangleManager(tabPageTriangles, _triangleData, watchVariablePanelTriangles);
             Config.DebugManager = new DebugManager(_debugData, tabPageDebug, watchVariablePanelDebug);
             Config.PuManager = new PuManager(_puData, tabPagePu, watchVariablePanelPu);
+            Config.TasManager = new TasManager(_tasData, tabPageTas, watchVariablePanelTas);
             Config.FileManager = new FileManager(_fileData, tabPageFile, watchVariablePanelFile, _fileImageGui);
             Config.AreaManager = new AreaManager(tabPageArea, _areaData, watchVariablePanelArea);
             Config.QuarterFrameManager = new DataManager(_quarterFrameData, watchVariablePanelQuarterFrame);
@@ -230,6 +231,7 @@ namespace STROOP
             loadingForm.UpdateStatus("Loading File Data", statusNum++);
             _fileData = XmlConfigParser.OpenWatchVariableControlPrecursors(@"Config/FileData.xml", "FileDataSchema.xsd");
             _puData = XmlConfigParser.OpenWatchVariableControlPrecursors(@"Config/PuData.xml", "MiscDataSchema.xsd");
+            _tasData = XmlConfigParser.OpenWatchVariableControlPrecursors(@"Config/TasData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading File Image Associations", statusNum++);
             XmlConfigParser.OpenFileImageAssoc(@"Config/FileImageAssociations.xml", _fileImageGui);
             loadingForm.UpdateStatus("Loading Area Data", statusNum++);
@@ -319,6 +321,7 @@ namespace STROOP
                 Config.AreaManager.Update(tabControlMain.SelectedTab == tabPageArea);
                 Config.DebugManager.Update(tabControlMain.SelectedTab == tabPageDebug);
                 Config.PuManager.Update(tabControlMain.SelectedTab == tabPagePu);
+                Config.TasManager.Update(tabControlMain.SelectedTab == tabPageTas);
                 Config.TestingManager.Update(tabControlMain.SelectedTab == tabPageTesting);
                 Config.GfxManager.Update(tabControlMain.SelectedTab == tabPageGfx);
                 Config.MapManager?.Update();
@@ -482,6 +485,8 @@ namespace STROOP
                 selectedTabSplitContainer = selectedTabPage.Controls["splitContainerVarHack"] as SplitContainer;
             else if (selectedTabPage == tabPagePu)
                 selectedTabSplitContainer = selectedTabPage.Controls["splitContainerPu"] as SplitContainer;
+            else if (selectedTabPage == tabPageTas)
+                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerTas"] as SplitContainer;
             else if (selectedTabPage == tabPageMisc)
                 selectedTabSplitContainer = selectedTabPage.Controls["splitContainerMisc"] as SplitContainer;
             else if (selectedTabPage == tabPageDebug)

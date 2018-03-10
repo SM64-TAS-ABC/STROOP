@@ -1,20 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Data>
 
-  <Data base="None" specialType="PointX" coord="X">Point X</Data>
-  <Data base="None" specialType="PointY" coord="Y">Point Y</Data>
-  <Data base="None" specialType="PointZ" coord="Z">Point Z</Data>
-
-  <Data base="None" specialType="XDistanceToPoint" coord="X">XDist to Point</Data>
-  <Data base="None" specialType="YDistanceToPoint" coord="Y">YDist to Point</Data>
-  <Data base="None" specialType="ZDistanceToPoint" coord="Z">ZDist to Point</Data>
-  <Data base="None" specialType="HDistanceToPoint">HDist to Point</Data>
-  <Data base="None" specialType="DistanceToPoint">Dist to Point</Data>
-  
-  <Data base="None" specialType="AngleMarioToPoint" subclass="Angle" type="ushort">Angle Mario to Point</Data>
-  <Data base="None" specialType="DeltaAngleMarioToPoint" subclass="Angle" type="short">DAngle Mario to Point</Data>
-  <Data base="None" specialType="AnglePointToMario" subclass="Angle" type="ushort">Angle Point to Mario</Data>
-
   <Data type="byte" offsetUS="0x8032DD94" offsetJP="0x8032CE34" base="Relative" subclass="Boolean">Special Triple Jump</Data>
   <Data type="byte" offsetUS="0x80332618" offsetJP="0x80331508" base="Relative" subclass="Boolean">Talked to Yoshi</Data>
   <Data type="byte" offsetUS="0x8033B26E" offsetJP="0x80339EFE" base="Relative" subclass="Boolean">Never Entered Castle</Data>

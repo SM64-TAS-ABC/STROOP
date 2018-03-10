@@ -274,6 +274,7 @@
     <Compile Include="Managers\AreaManager.cs" />
     <Compile Include="Managers\CamHackManager.cs" />
     <Compile Include="Managers\GfxManager.cs" />
+    <Compile Include="Managers\TasManager.cs" />
     <Compile Include="Managers\VarHackManager.cs" />
     <Compile Include="Managers\DecompilerManager.cs" />
     <Compile Include="Managers\CustomManager.cs" />
@@ -455,6 +456,10 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Content Include="Config\CourseData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\TasData.xml">
+      <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\FileImageAssociations.xml">
