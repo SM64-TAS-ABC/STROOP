@@ -1117,9 +1117,9 @@ namespace STROOP
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.comboBoxRomVersion = new System.Windows.Forms.ComboBox();
             this.comboBoxReadWriteMode = new System.Windows.Forms.ComboBox();
-            this.betterSplitContainer1 = new STROOP.BetterSplitContainer();
+            this.splitContainerTas = new STROOP.BetterSplitContainer();
             this.watchVariablePanelTas = new STROOP.Controls.WatchVariableFlowLayoutPanel();
-            this.betterSplitContainerTasTable = new STROOP.BetterSplitContainer();
+            this.splitContainerTasTable = new STROOP.BetterSplitContainer();
             this.dataGridViewTas = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -1482,13 +1482,13 @@ namespace STROOP
             this.groupBoxRecording.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.betterSplitContainer1)).BeginInit();
-            this.betterSplitContainer1.Panel1.SuspendLayout();
-            this.betterSplitContainer1.Panel2.SuspendLayout();
-            this.betterSplitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.betterSplitContainerTasTable)).BeginInit();
-            this.betterSplitContainerTasTable.Panel2.SuspendLayout();
-            this.betterSplitContainerTasTable.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTas)).BeginInit();
+            this.splitContainerTas.Panel1.SuspendLayout();
+            this.splitContainerTas.Panel2.SuspendLayout();
+            this.splitContainerTas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTasTable)).BeginInit();
+            this.splitContainerTasTable.Panel2.SuspendLayout();
+            this.splitContainerTasTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -8419,7 +8419,7 @@ namespace STROOP
             // tabPageTas
             // 
             this.tabPageTas.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageTas.Controls.Add(this.betterSplitContainer1);
+            this.tabPageTas.Controls.Add(this.splitContainerTas);
             this.tabPageTas.Location = new System.Drawing.Point(4, 22);
             this.tabPageTas.Name = "tabPageTas";
             this.tabPageTas.Padding = new System.Windows.Forms.Padding(3);
@@ -14560,29 +14560,29 @@ namespace STROOP
             this.comboBoxReadWriteMode.Size = new System.Drawing.Size(75, 21);
             this.comboBoxReadWriteMode.TabIndex = 22;
             // 
-            // betterSplitContainer1
+            // splitContainerTas
             // 
-            this.betterSplitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.betterSplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.betterSplitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.betterSplitContainer1.Location = new System.Drawing.Point(3, 3);
-            this.betterSplitContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.betterSplitContainer1.Name = "betterSplitContainer1";
+            this.splitContainerTas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerTas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerTas.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerTas.Location = new System.Drawing.Point(3, 3);
+            this.splitContainerTas.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerTas.Name = "splitContainerTas";
             // 
-            // betterSplitContainer1.Panel1
+            // splitContainerTas.Panel1
             // 
-            this.betterSplitContainer1.Panel1.AutoScroll = true;
-            this.betterSplitContainer1.Panel1.Controls.Add(this.betterSplitContainerTasTable);
-            this.betterSplitContainer1.Panel1MinSize = 0;
+            this.splitContainerTas.Panel1.AutoScroll = true;
+            this.splitContainerTas.Panel1.Controls.Add(this.splitContainerTasTable);
+            this.splitContainerTas.Panel1MinSize = 0;
             // 
-            // betterSplitContainer1.Panel2
+            // splitContainerTas.Panel2
             // 
-            this.betterSplitContainer1.Panel2.Controls.Add(this.watchVariablePanelTas);
-            this.betterSplitContainer1.Panel2MinSize = 0;
-            this.betterSplitContainer1.Size = new System.Drawing.Size(909, 457);
-            this.betterSplitContainer1.SplitterDistance = 346;
-            this.betterSplitContainer1.SplitterWidth = 1;
-            this.betterSplitContainer1.TabIndex = 19;
+            this.splitContainerTas.Panel2.Controls.Add(this.watchVariablePanelTas);
+            this.splitContainerTas.Panel2MinSize = 0;
+            this.splitContainerTas.Size = new System.Drawing.Size(909, 457);
+            this.splitContainerTas.SplitterDistance = 346;
+            this.splitContainerTas.SplitterWidth = 1;
+            this.splitContainerTas.TabIndex = 19;
             // 
             // watchVariablePanelTas
             // 
@@ -14596,28 +14596,28 @@ namespace STROOP
             this.watchVariablePanelTas.Size = new System.Drawing.Size(560, 455);
             this.watchVariablePanelTas.TabIndex = 5;
             // 
-            // betterSplitContainerTasTable
+            // splitContainerTasTable
             // 
-            this.betterSplitContainerTasTable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.betterSplitContainerTasTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.betterSplitContainerTasTable.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.betterSplitContainerTasTable.Location = new System.Drawing.Point(0, 0);
-            this.betterSplitContainerTasTable.Margin = new System.Windows.Forms.Padding(0);
-            this.betterSplitContainerTasTable.Name = "betterSplitContainerTasTable";
-            this.betterSplitContainerTasTable.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.splitContainerTasTable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerTasTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerTasTable.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerTasTable.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerTasTable.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerTasTable.Name = "splitContainerTasTable";
+            this.splitContainerTasTable.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // betterSplitContainerTasTable.Panel1
+            // splitContainerTasTable.Panel1
             // 
-            this.betterSplitContainerTasTable.Panel1.AutoScroll = true;
+            this.splitContainerTasTable.Panel1.AutoScroll = true;
             // 
-            // betterSplitContainerTasTable.Panel2
+            // splitContainerTasTable.Panel2
             // 
-            this.betterSplitContainerTasTable.Panel2.AutoScroll = true;
-            this.betterSplitContainerTasTable.Panel2.Controls.Add(this.dataGridViewTas);
-            this.betterSplitContainerTasTable.Size = new System.Drawing.Size(346, 457);
-            this.betterSplitContainerTasTable.SplitterDistance = 126;
-            this.betterSplitContainerTasTable.SplitterWidth = 1;
-            this.betterSplitContainerTasTable.TabIndex = 32;
+            this.splitContainerTasTable.Panel2.AutoScroll = true;
+            this.splitContainerTasTable.Panel2.Controls.Add(this.dataGridViewTas);
+            this.splitContainerTasTable.Size = new System.Drawing.Size(346, 457);
+            this.splitContainerTasTable.SplitterDistance = 126;
+            this.splitContainerTasTable.SplitterWidth = 1;
+            this.splitContainerTasTable.TabIndex = 32;
             // 
             // dataGridViewTas
             // 
@@ -15140,13 +15140,13 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
-            this.betterSplitContainer1.Panel1.ResumeLayout(false);
-            this.betterSplitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.betterSplitContainer1)).EndInit();
-            this.betterSplitContainer1.ResumeLayout(false);
-            this.betterSplitContainerTasTable.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.betterSplitContainerTasTable)).EndInit();
-            this.betterSplitContainerTasTable.ResumeLayout(false);
+            this.splitContainerTas.Panel1.ResumeLayout(false);
+            this.splitContainerTas.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTas)).EndInit();
+            this.splitContainerTas.ResumeLayout(false);
+            this.splitContainerTasTable.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTasTable)).EndInit();
+            this.splitContainerTasTable.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -16238,9 +16238,9 @@ namespace STROOP
         private Label labelMemoryReaderAddressLabel;
         private Label labelMemoryReaderTypeLabel;
         private TabPage tabPageTas;
-        private BetterSplitContainer betterSplitContainer1;
+        private BetterSplitContainer splitContainerTas;
         private WatchVariableFlowLayoutPanel watchVariablePanelTas;
-        private BetterSplitContainer betterSplitContainerTasTable;
+        private BetterSplitContainer splitContainerTasTable;
         private DataGridView dataGridViewTas;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;

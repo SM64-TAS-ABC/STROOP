@@ -17,7 +17,8 @@ namespace STROOP.Managers
             : base(variables, watchVariablePanel)
         {
             SplitContainer splitContainerTas = tabControl.Controls["splitContainerTas"] as SplitContainer;
-
+            SplitContainer splitContainerTasTable = splitContainerTas.Panel1.Controls["splitContainerTasTable"] as SplitContainer;
+            DataGridView dataGridViewTas = splitContainerTasTable.Panel2.Controls["dataGridViewTas"] as DataGridView;
         }
 
         public override void Update(bool updateView)
