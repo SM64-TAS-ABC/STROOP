@@ -6,6 +6,7 @@
   <Data type="float" offset="0x44" base="Mario" color="#ffcccc" coord="Z">Mario Z</Data>
   <Data type="float" offset="0x4C" base="Mario" color="#ffcccc">Mario V Speed</Data>
   <Data type="float" offset="0x54" base="Mario" color="#ffcccc">Mario H Speed</Data>
+  <Data base="None" specialType="DeFactoSpeed" color="#ffcccc">De Facto Speed</Data>
 
   <Data type="ushort" offset="0x2E" base="Mario" subclass="Angle" color="#ffcccc">Yaw Facing</Data>
   <Data type="ushort" offset="0x24" base="Mario" subclass="Angle" color="#ffcccc">Yaw Intended</Data>
