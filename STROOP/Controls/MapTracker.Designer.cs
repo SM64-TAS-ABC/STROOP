@@ -274,8 +274,9 @@
             // 
             // labelObjBhv
             // 
+            this.labelObjBhv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelObjBhv.AutoSize = true;
-            this.labelObjBhv.Location = new System.Drawing.Point(82, 1);
+            this.labelObjBhv.Location = new System.Drawing.Point(82, 11);
             this.labelObjBhv.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelObjBhv.Name = "labelObjBhv";
             this.labelObjBhv.Size = new System.Drawing.Size(30, 13);
@@ -284,8 +285,9 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(82, 49);
+            this.label1.Location = new System.Drawing.Point(82, 59);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 13);

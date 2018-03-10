@@ -22,6 +22,9 @@ namespace STROOP.Controls
         public MapTracker(MapTrackerFlowLayoutPanel flowLayoutPanel)
         {
             InitializeComponent();
+            tableLayoutPanelVarHack.BorderWidth = 2;
+            tableLayoutPanelVarHack.ShowBorder = true;
+
             _flowLayoutPanel = flowLayoutPanel;
 
             comboBoxVisibilityType.DataSource = Enum.GetValues(typeof(MapTrackerVisibilityType));
