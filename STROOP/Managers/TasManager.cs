@@ -44,6 +44,7 @@ namespace STROOP.Managers
         private class TasDataStruct
         {
             public readonly uint GlobalTimer;
+            public readonly ushort MarioAngle;
             public readonly ushort CameraAngle;
             public readonly sbyte BufferedXInput;
             public readonly sbyte BufferedYInput;
@@ -53,6 +54,7 @@ namespace STROOP.Managers
             public TasDataStruct(uint? globalTimer = null)
             {
                 GlobalTimer = globalTimer ?? Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                MarioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                 CameraAngle = Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.CentripetalAngleOffset);
                 BufferedXInput = Config.Stream.GetSByte(InputConfig.BufferedInputAddress + InputConfig.ControlStickXOffset);
                 BufferedYInput = Config.Stream.GetSByte(InputConfig.BufferedInputAddress + InputConfig.ControlStickYOffset);
@@ -65,6 +67,7 @@ namespace STROOP.Managers
                 if (!(obj is TasDataStruct)) return false;
                 TasDataStruct other = obj as TasDataStruct;
                 return this.GlobalTimer == other.GlobalTimer
+                    && this.MarioAngle == other.MarioAngle
                     && this.CameraAngle == other.CameraAngle
                     && this.BufferedXInput == other.BufferedXInput
                     && this.BufferedYInput == other.BufferedYInput
@@ -77,6 +80,7 @@ namespace STROOP.Managers
                 return new object[]
                 {
                     GlobalTimer,
+                    MarioAngle,
                     CameraAngle,
                     BufferedXInput,
                     BufferedYInput,
@@ -127,6 +131,8 @@ namespace STROOP.Managers
             if (_dataDictionary.ContainsKey(currentGlobalTimer) &&
                 !currentData.Equals(_dataDictionary[currentGlobalTimer]))
             {
+                uint camAdd = CameraConfig.CameraStructAddress + CameraConfig.CentripetalAngleOffset;
+                System.Diagnostics.Trace.WriteLine("DELETE " + currentGlobalTimer);
                 ClearDataAtAndAfter(currentGlobalTimer);
             }
 
@@ -134,7 +140,8 @@ namespace STROOP.Managers
             if (!_dataDictionary.ContainsKey(currentGlobalTimer))
             {
                 _dataDictionary.Add(currentGlobalTimer, currentData);
-                _dataGridViewTas.Rows.Add(currentData.GlobalTimer, currentData.CameraAngle, "", "", "");
+                _dataGridViewTas.Rows.Add(
+                    currentData.GlobalTimer, currentData.MarioAngle, currentData.CameraAngle, "", "", "");
                 DataGridViewRow lastRow = _dataGridViewTas.Rows[_dataGridViewTas.RowCount - 1];
                 _rowDictionary.Add(currentGlobalTimer, lastRow);
             }
