@@ -27,5 +27,10 @@ namespace STROOP.Utilities
             if (Keyboard.IsKeyDown(Key.D0)) return 0;
             return null;
         }
+
+        public static bool IsCurrentlyInputtedNumber()
+        {
+            return GetCurrentlyInputtedNumber() != null;
+        }
     }
 }

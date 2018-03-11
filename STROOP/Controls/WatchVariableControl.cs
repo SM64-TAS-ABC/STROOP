@@ -278,6 +278,7 @@ namespace STROOP.Controls
             bool isZHeld = Keyboard.IsKeyDown(Key.Z);
             bool isMinusHeld = Keyboard.IsKeyDown(Key.OemMinus);
             bool isPlusHeld = Keyboard.IsKeyDown(Key.OemPlus);
+            bool isNumberHeld = KeyboardUtilities.IsCurrentlyInputtedNumber();
 
             if (isCtrlKeyHeld && isFKeyHeld)
             {
@@ -291,7 +292,7 @@ namespace STROOP.Controls
                 return;
             }
 
-            if (isHKeyHeld)
+            if (isHKeyHeld || isNumberHeld)
             {
                 _watchVarWrapper.ToggleHighlighted();
                 return;
