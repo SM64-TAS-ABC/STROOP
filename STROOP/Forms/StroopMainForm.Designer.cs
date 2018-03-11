@@ -577,6 +577,21 @@ namespace STROOP
             this.buttonVarNameWidthAdd = new System.Windows.Forms.Button();
             this.watchVariablePanelCustom = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageTas = new System.Windows.Forms.TabPage();
+            this.splitContainerTas = new STROOP.BetterSplitContainer();
+            this.splitContainerTasTable = new STROOP.BetterSplitContainer();
+            this.richTextBoxTasInstructions = new System.Windows.Forms.RichTextBox();
+            this.buttonTasClearData = new System.Windows.Forms.Button();
+            this.checkBoxTasRecordData = new System.Windows.Forms.CheckBox();
+            this.dataGridViewTas = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.watchVariablePanelTas = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageDebug = new System.Windows.Forms.TabPage();
             this.splitContainerDebug = new STROOP.BetterSplitContainer();
             this.panelDebugBorder = new System.Windows.Forms.Panel();
@@ -1117,21 +1132,6 @@ namespace STROOP
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.comboBoxRomVersion = new System.Windows.Forms.ComboBox();
             this.comboBoxReadWriteMode = new System.Windows.Forms.ComboBox();
-            this.splitContainerTas = new STROOP.BetterSplitContainer();
-            this.watchVariablePanelTas = new STROOP.Controls.WatchVariableFlowLayoutPanel();
-            this.splitContainerTasTable = new STROOP.BetterSplitContainer();
-            this.dataGridViewTas = new System.Windows.Forms.DataGridView();
-            this.checkBoxTasRecordData = new System.Windows.Forms.CheckBox();
-            this.buttonTasClearData = new System.Windows.Forms.Button();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.richTextBoxTasInstructions = new System.Windows.Forms.RichTextBox();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1374,6 +1374,15 @@ namespace STROOP
             this.groupBoxVarValueWidth.SuspendLayout();
             this.groupBoxVarNameWidth.SuspendLayout();
             this.tabPageTas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTas)).BeginInit();
+            this.splitContainerTas.Panel1.SuspendLayout();
+            this.splitContainerTas.Panel2.SuspendLayout();
+            this.splitContainerTas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTasTable)).BeginInit();
+            this.splitContainerTasTable.Panel1.SuspendLayout();
+            this.splitContainerTasTable.Panel2.SuspendLayout();
+            this.splitContainerTasTable.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTas)).BeginInit();
             this.tabPageDebug.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerDebug)).BeginInit();
             this.splitContainerDebug.Panel1.SuspendLayout();
@@ -1487,15 +1496,6 @@ namespace STROOP
             this.groupBoxRecording.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTas)).BeginInit();
-            this.splitContainerTas.Panel1.SuspendLayout();
-            this.splitContainerTas.Panel2.SuspendLayout();
-            this.splitContainerTas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTasTable)).BeginInit();
-            this.splitContainerTasTable.Panel1.SuspendLayout();
-            this.splitContainerTasTable.Panel2.SuspendLayout();
-            this.splitContainerTasTable.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTas)).BeginInit();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -4854,7 +4854,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 278F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 279F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8433,6 +8433,191 @@ namespace STROOP
             this.tabPageTas.TabIndex = 26;
             this.tabPageTas.Text = "TAS";
             // 
+            // splitContainerTas
+            // 
+            this.splitContainerTas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerTas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerTas.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerTas.Location = new System.Drawing.Point(3, 3);
+            this.splitContainerTas.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerTas.Name = "splitContainerTas";
+            // 
+            // splitContainerTas.Panel1
+            // 
+            this.splitContainerTas.Panel1.AutoScroll = true;
+            this.splitContainerTas.Panel1.Controls.Add(this.splitContainerTasTable);
+            this.splitContainerTas.Panel1MinSize = 0;
+            // 
+            // splitContainerTas.Panel2
+            // 
+            this.splitContainerTas.Panel2.Controls.Add(this.watchVariablePanelTas);
+            this.splitContainerTas.Panel2MinSize = 0;
+            this.splitContainerTas.Size = new System.Drawing.Size(909, 457);
+            this.splitContainerTas.SplitterDistance = 432;
+            this.splitContainerTas.SplitterWidth = 1;
+            this.splitContainerTas.TabIndex = 19;
+            // 
+            // splitContainerTasTable
+            // 
+            this.splitContainerTasTable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerTasTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerTasTable.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerTasTable.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerTasTable.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerTasTable.Name = "splitContainerTasTable";
+            this.splitContainerTasTable.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerTasTable.Panel1
+            // 
+            this.splitContainerTasTable.Panel1.AutoScroll = true;
+            this.splitContainerTasTable.Panel1.Controls.Add(this.richTextBoxTasInstructions);
+            this.splitContainerTasTable.Panel1.Controls.Add(this.buttonTasClearData);
+            this.splitContainerTasTable.Panel1.Controls.Add(this.checkBoxTasRecordData);
+            // 
+            // splitContainerTasTable.Panel2
+            // 
+            this.splitContainerTasTable.Panel2.AutoScroll = true;
+            this.splitContainerTasTable.Panel2.Controls.Add(this.dataGridViewTas);
+            this.splitContainerTasTable.Size = new System.Drawing.Size(432, 457);
+            this.splitContainerTasTable.SplitterDistance = 83;
+            this.splitContainerTasTable.SplitterWidth = 1;
+            this.splitContainerTasTable.TabIndex = 32;
+            // 
+            // richTextBoxTasInstructions
+            // 
+            this.richTextBoxTasInstructions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBoxTasInstructions.Location = new System.Drawing.Point(99, 3);
+            this.richTextBoxTasInstructions.Name = "richTextBoxTasInstructions";
+            this.richTextBoxTasInstructions.Size = new System.Drawing.Size(222, 73);
+            this.richTextBoxTasInstructions.TabIndex = 38;
+            this.richTextBoxTasInstructions.Text = "(1)\n(2)\n(3)\n(4)\n(5)";
+            // 
+            // buttonTasClearData
+            // 
+            this.buttonTasClearData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTasClearData.Location = new System.Drawing.Point(329, 3);
+            this.buttonTasClearData.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasClearData.Name = "buttonTasClearData";
+            this.buttonTasClearData.Size = new System.Drawing.Size(97, 38);
+            this.buttonTasClearData.TabIndex = 37;
+            this.buttonTasClearData.Text = "Clear Data";
+            this.buttonTasClearData.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxTasRecordData
+            // 
+            this.checkBoxTasRecordData.AutoSize = true;
+            this.checkBoxTasRecordData.Checked = true;
+            this.checkBoxTasRecordData.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxTasRecordData.Location = new System.Drawing.Point(3, 3);
+            this.checkBoxTasRecordData.Name = "checkBoxTasRecordData";
+            this.checkBoxTasRecordData.Size = new System.Drawing.Size(87, 17);
+            this.checkBoxTasRecordData.TabIndex = 33;
+            this.checkBoxTasRecordData.Text = "Record Data";
+            this.checkBoxTasRecordData.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewTas
+            // 
+            this.dataGridViewTas.AllowUserToAddRows = false;
+            this.dataGridViewTas.AllowUserToDeleteRows = false;
+            this.dataGridViewTas.AllowUserToOrderColumns = true;
+            this.dataGridViewTas.AllowUserToResizeRows = false;
+            this.dataGridViewTas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewTas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewTas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn6,
+            this.Column2,
+            this.dataGridViewTextBoxColumn5,
+            this.Column3,
+            this.Column4,
+            this.dataGridViewTextBoxColumn7,
+            this.Column1});
+            this.dataGridViewTas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewTas.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewTas.Margin = new System.Windows.Forms.Padding(0);
+            this.dataGridViewTas.MultiSelect = false;
+            this.dataGridViewTas.Name = "dataGridViewTas";
+            this.dataGridViewTas.ReadOnly = true;
+            this.dataGridViewTas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewTas.Size = new System.Drawing.Size(430, 371);
+            this.dataGridViewTas.TabIndex = 2;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Global Timer";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 2;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "Current Cam Angle";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 2;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Next Cam Angle";
+            this.Column2.MinimumWidth = 2;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Mario Facing Angle";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 2;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Mario Intend Angle";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "DAngle";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "X Input";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 2;
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Y Input";
+            this.Column1.MinimumWidth = 2;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // watchVariablePanelTas
+            // 
+            this.watchVariablePanelTas.AutoScroll = true;
+            this.watchVariablePanelTas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.watchVariablePanelTas.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.watchVariablePanelTas.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelTas.Margin = new System.Windows.Forms.Padding(0);
+            this.watchVariablePanelTas.Name = "watchVariablePanelTas";
+            this.watchVariablePanelTas.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelTas.Size = new System.Drawing.Size(474, 455);
+            this.watchVariablePanelTas.TabIndex = 5;
+            // 
             // tabPageDebug
             // 
             this.tabPageDebug.Controls.Add(this.splitContainerDebug);
@@ -10330,7 +10515,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(391, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(374, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -10362,7 +10547,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(385, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(368, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -10418,7 +10603,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(385, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(368, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -14566,188 +14751,6 @@ namespace STROOP
             this.comboBoxReadWriteMode.Size = new System.Drawing.Size(75, 21);
             this.comboBoxReadWriteMode.TabIndex = 22;
             // 
-            // splitContainerTas
-            // 
-            this.splitContainerTas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainerTas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerTas.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerTas.Location = new System.Drawing.Point(3, 3);
-            this.splitContainerTas.Margin = new System.Windows.Forms.Padding(0);
-            this.splitContainerTas.Name = "splitContainerTas";
-            // 
-            // splitContainerTas.Panel1
-            // 
-            this.splitContainerTas.Panel1.AutoScroll = true;
-            this.splitContainerTas.Panel1.Controls.Add(this.splitContainerTasTable);
-            this.splitContainerTas.Panel1MinSize = 0;
-            // 
-            // splitContainerTas.Panel2
-            // 
-            this.splitContainerTas.Panel2.Controls.Add(this.watchVariablePanelTas);
-            this.splitContainerTas.Panel2MinSize = 0;
-            this.splitContainerTas.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerTas.SplitterDistance = 432;
-            this.splitContainerTas.SplitterWidth = 1;
-            this.splitContainerTas.TabIndex = 19;
-            // 
-            // watchVariablePanelTas
-            // 
-            this.watchVariablePanelTas.AutoScroll = true;
-            this.watchVariablePanelTas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.watchVariablePanelTas.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.watchVariablePanelTas.Location = new System.Drawing.Point(0, 0);
-            this.watchVariablePanelTas.Margin = new System.Windows.Forms.Padding(0);
-            this.watchVariablePanelTas.Name = "watchVariablePanelTas";
-            this.watchVariablePanelTas.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelTas.Size = new System.Drawing.Size(474, 455);
-            this.watchVariablePanelTas.TabIndex = 5;
-            // 
-            // splitContainerTasTable
-            // 
-            this.splitContainerTasTable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainerTasTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerTasTable.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerTasTable.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerTasTable.Margin = new System.Windows.Forms.Padding(0);
-            this.splitContainerTasTable.Name = "splitContainerTasTable";
-            this.splitContainerTasTable.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainerTasTable.Panel1
-            // 
-            this.splitContainerTasTable.Panel1.AutoScroll = true;
-            this.splitContainerTasTable.Panel1.Controls.Add(this.richTextBoxTasInstructions);
-            this.splitContainerTasTable.Panel1.Controls.Add(this.buttonTasClearData);
-            this.splitContainerTasTable.Panel1.Controls.Add(this.checkBoxTasRecordData);
-            // 
-            // splitContainerTasTable.Panel2
-            // 
-            this.splitContainerTasTable.Panel2.AutoScroll = true;
-            this.splitContainerTasTable.Panel2.Controls.Add(this.dataGridViewTas);
-            this.splitContainerTasTable.Size = new System.Drawing.Size(432, 457);
-            this.splitContainerTasTable.SplitterDistance = 83;
-            this.splitContainerTasTable.SplitterWidth = 1;
-            this.splitContainerTasTable.TabIndex = 32;
-            // 
-            // dataGridViewTas
-            // 
-            this.dataGridViewTas.AllowUserToAddRows = false;
-            this.dataGridViewTas.AllowUserToDeleteRows = false;
-            this.dataGridViewTas.AllowUserToOrderColumns = true;
-            this.dataGridViewTas.AllowUserToResizeRows = false;
-            this.dataGridViewTas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewTas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn6,
-            this.Column2,
-            this.dataGridViewTextBoxColumn5,
-            this.Column3,
-            this.Column4,
-            this.dataGridViewTextBoxColumn7,
-            this.Column1});
-            this.dataGridViewTas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewTas.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewTas.Margin = new System.Windows.Forms.Padding(0);
-            this.dataGridViewTas.MultiSelect = false;
-            this.dataGridViewTas.Name = "dataGridViewTas";
-            this.dataGridViewTas.ReadOnly = true;
-            this.dataGridViewTas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTas.Size = new System.Drawing.Size(430, 371);
-            this.dataGridViewTas.TabIndex = 2;
-            // 
-            // checkBoxTasRecordData
-            // 
-            this.checkBoxTasRecordData.AutoSize = true;
-            this.checkBoxTasRecordData.Checked = true;
-            this.checkBoxTasRecordData.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxTasRecordData.Location = new System.Drawing.Point(3, 3);
-            this.checkBoxTasRecordData.Name = "checkBoxTasRecordData";
-            this.checkBoxTasRecordData.Size = new System.Drawing.Size(87, 17);
-            this.checkBoxTasRecordData.TabIndex = 33;
-            this.checkBoxTasRecordData.Text = "Record Data";
-            this.checkBoxTasRecordData.UseVisualStyleBackColor = true;
-            // 
-            // buttonTasClearData
-            // 
-            this.buttonTasClearData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonTasClearData.Location = new System.Drawing.Point(329, 3);
-            this.buttonTasClearData.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonTasClearData.Name = "buttonTasClearData";
-            this.buttonTasClearData.Size = new System.Drawing.Size(97, 38);
-            this.buttonTasClearData.TabIndex = 37;
-            this.buttonTasClearData.Text = "Clear Data";
-            this.buttonTasClearData.UseVisualStyleBackColor = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Global Timer";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 2;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Current Cam Angle";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 2;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Next Cam Angle";
-            this.Column2.MinimumWidth = 2;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "Mario Facing Angle";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 2;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Mario Intend Angle";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "DAngle";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "X Input";
-            this.dataGridViewTextBoxColumn7.MinimumWidth = 2;
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Y Input";
-            this.Column1.MinimumWidth = 2;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // richTextBoxTasInstructions
-            // 
-            this.richTextBoxTasInstructions.Location = new System.Drawing.Point(99, 3);
-            this.richTextBoxTasInstructions.Name = "richTextBoxTasInstructions";
-            this.richTextBoxTasInstructions.Size = new System.Drawing.Size(222, 73);
-            this.richTextBoxTasInstructions.TabIndex = 38;
-            this.richTextBoxTasInstructions.Text = "(1)\n(2)\n(3)\n(4)\n(5)";
-            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -15046,6 +15049,16 @@ namespace STROOP
             this.groupBoxVarNameWidth.ResumeLayout(false);
             this.groupBoxVarNameWidth.PerformLayout();
             this.tabPageTas.ResumeLayout(false);
+            this.splitContainerTas.Panel1.ResumeLayout(false);
+            this.splitContainerTas.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTas)).EndInit();
+            this.splitContainerTas.ResumeLayout(false);
+            this.splitContainerTasTable.Panel1.ResumeLayout(false);
+            this.splitContainerTasTable.Panel1.PerformLayout();
+            this.splitContainerTasTable.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTasTable)).EndInit();
+            this.splitContainerTasTable.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTas)).EndInit();
             this.tabPageDebug.ResumeLayout(false);
             this.splitContainerDebug.Panel1.ResumeLayout(false);
             this.splitContainerDebug.Panel2.ResumeLayout(false);
@@ -15204,16 +15217,6 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
-            this.splitContainerTas.Panel1.ResumeLayout(false);
-            this.splitContainerTas.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTas)).EndInit();
-            this.splitContainerTas.ResumeLayout(false);
-            this.splitContainerTasTable.Panel1.ResumeLayout(false);
-            this.splitContainerTasTable.Panel1.PerformLayout();
-            this.splitContainerTasTable.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTasTable)).EndInit();
-            this.splitContainerTasTable.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
