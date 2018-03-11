@@ -1611,28 +1611,28 @@ namespace STROOP.Structs
                 case "MaxHorizontalSpeedUphill":
                     getterFunction = (uint triAddress) =>
                     {
-                        return GetMaxHorizontalSpeedOnTriangle(true, false).ToString();
+                        return GetMaxHorizontalSpeedOnTriangle(triAddress, true, false).ToString();
                     };
                     break;
 
                 case "MaxHorizontalSpeedUphillAtAngle":
                     getterFunction = (uint triAddress) =>
                     {
-                        return GetMaxHorizontalSpeedOnTriangle(true, true).ToString();
+                        return GetMaxHorizontalSpeedOnTriangle(triAddress, true, true).ToString();
                     };
                     break;
 
                 case "MaxHorizontalSpeedDownhill":
                     getterFunction = (uint triAddress) =>
                     {
-                        return GetMaxHorizontalSpeedOnTriangle(false, false).ToString();
+                        return GetMaxHorizontalSpeedOnTriangle(triAddress, false, false).ToString();
                     };
                     break;
 
                 case "MaxHorizontalSpeedDownhillAtAngle":
                     getterFunction = (uint triAddress) =>
                     {
-                        return GetMaxHorizontalSpeedOnTriangle(false, true).ToString();
+                        return GetMaxHorizontalSpeedOnTriangle(triAddress, false, true).ToString();
                     };
                     break;
                     
@@ -3349,18 +3349,38 @@ namespace STROOP.Structs
             throw new ArgumentOutOfRangeException();
         }
 
-        private static double GetTriangleUphillAngle(uint triAddress)
+        private static double GetTriangleUphillAngleRadians(uint triAddress)
         {
             TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
             double uphillAngleRadians = Math.PI + Math.Atan2(triStruct.NormX, triStruct.NormZ);
             if (triStruct.NormX == 0 && triStruct.NormZ == 0) uphillAngleRadians = double.NaN;
             if (triStruct.IsCeiling()) uphillAngleRadians += Math.PI;
+            return uphillAngleRadians;
+        }
+
+        private static double GetTriangleUphillAngle(uint triAddress)
+        {
+            double uphillAngleRadians = GetTriangleUphillAngleRadians(triAddress);
             return MoreMath.RadiansToAngleUnits(uphillAngleRadians);
         }
 
-        private static double GetMaxHorizontalSpeedOnTriangle(bool uphill, bool atAngle)
+        private static double GetMaxHorizontalSpeedOnTriangle(uint triAddress, bool uphill, bool atAngle)
         {
-            return 1;
+            TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+            double vDist = uphill ? 78 : 100;
+            if (atAngle)
+            {
+                ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                double marioAngleRadians = MoreMath.AngleUnitsToRadians(marioAngle);
+                double uphillAngleRadians = GetTriangleUphillAngleRadians(triAddress);
+                double deltaAngle = marioAngleRadians - uphillAngleRadians;
+                double multiplier = Math.Abs(Math.Cos(deltaAngle));
+                vDist /= multiplier;
+            }
+            double steepnessRadians = Math.Acos(triStruct.NormY);
+            double hDist = vDist / Math.Tan(steepnessRadians);
+            double hSpeed = hDist * 4 / triStruct.NormY;
+            return hSpeed;
         }
 
         // Object specific utilitiy methods
