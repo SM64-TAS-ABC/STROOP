@@ -1608,6 +1608,34 @@ namespace STROOP.Structs
                     };
                     break;
 
+                case "MaxHorizontalSpeedUphill":
+                    getterFunction = (uint triAddress) =>
+                    {
+                        return GetMaxHorizontalSpeedOnTriangle(true, false).ToString();
+                    };
+                    break;
+
+                case "MaxHorizontalSpeedUphillAtAngle":
+                    getterFunction = (uint triAddress) =>
+                    {
+                        return GetMaxHorizontalSpeedOnTriangle(true, true).ToString();
+                    };
+                    break;
+
+                case "MaxHorizontalSpeedDownhill":
+                    getterFunction = (uint triAddress) =>
+                    {
+                        return GetMaxHorizontalSpeedOnTriangle(false, false).ToString();
+                    };
+                    break;
+
+                case "MaxHorizontalSpeedDownhillAtAngle":
+                    getterFunction = (uint triAddress) =>
+                    {
+                        return GetMaxHorizontalSpeedOnTriangle(false, true).ToString();
+                    };
+                    break;
+                    
                 case "ObjectTriCount":
                     getterFunction = (uint dummy) =>
                     {
@@ -3328,6 +3356,11 @@ namespace STROOP.Structs
             if (triStruct.NormX == 0 && triStruct.NormZ == 0) uphillAngleRadians = double.NaN;
             if (triStruct.IsCeiling()) uphillAngleRadians += Math.PI;
             return MoreMath.RadiansToAngleUnits(uphillAngleRadians);
+        }
+
+        private static double GetMaxHorizontalSpeedOnTriangle(bool uphill, bool atAngle)
+        {
+            return 1;
         }
 
         // Object specific utilitiy methods
