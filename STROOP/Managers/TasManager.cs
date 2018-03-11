@@ -16,6 +16,7 @@ namespace STROOP.Managers
         private DataGridView _dataGridViewTas;
         private CheckBox _checkBoxTasRecordData;
         private Button _buttonTasClearData;
+        private RichTextBox _richTextBoxTasInstructions;
 
         private static readonly int WAITING_TIME_MS = 0;
 
@@ -61,7 +62,8 @@ namespace STROOP.Managers
             _checkBoxTasRecordData = splitContainerTasTable.Panel1.Controls["checkBoxTasRecordData"] as CheckBox;
             _buttonTasClearData = splitContainerTasTable.Panel1.Controls["buttonTasClearData"] as Button;
             _buttonTasClearData.Click += (sender, e) => ClearData();
-
+            _richTextBoxTasInstructions = splitContainerTasTable.Panel1.Controls["richTextBoxTasInstructions"] as RichTextBox;
+            
             _waitingGlobalTimer = 0;
             _waitingDateTime = DateTime.Now;
             _lastUpdatedGlobalTimer = 0;
