@@ -69,7 +69,7 @@ namespace STROOP.Controls
             if (uintValue == 0) return "(no object)";
             if (uintValue == ObjectSlotsConfig.UnusedSlotAddress) return "(unused object)";
 
-            string slotName = Config.ObjectSlotsManager.GetSlotNameFromAddress(uintValue);
+            string slotName = Config.ObjectSlotsManager.GetSlotLabelFromAddress(uintValue);
             if (slotName == null) return "(unknown object)";
             return "Slot " + slotName;
         }
@@ -84,7 +84,7 @@ namespace STROOP.Controls
             if (!slotName.StartsWith("slot")) return stringValue;
             slotName = slotName.Remove(0, "slot".Length);
             slotName = slotName.Trim();
-            ObjectDataModel obj = Config.ObjectSlotsManager.GetObjectFromName(slotName);
+            ObjectDataModel obj = Config.ObjectSlotsManager.GetObjectFromLabel(slotName);
             return obj != null ? obj.Address.ToString() : stringValue;
         }
     }

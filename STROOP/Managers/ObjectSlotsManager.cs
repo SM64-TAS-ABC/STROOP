@@ -259,20 +259,6 @@ namespace STROOP.Managers
                         .Select(s => s.CurrentObject.Address);
             }
         }
- 
-        public string GetSlotNameFromAddress(uint address)
-        {
-            ObjectSlot slot = ObjectSlots.FirstOrDefault(s => s.CurrentObject?.Address == address);
-            return slot?.Text;
-        }
-
-        public ObjectDataModel GetObjectFromName(string name)
-        {
-            if (name == null) return null;
-            name = name.ToLower().Trim();
-            ObjectSlot slot = ObjectSlots.FirstOrDefault(s => s.Text.ToLower() == name);
-            return slot?.CurrentObject;
-        }
 
         public void Update()
         {
@@ -323,19 +309,27 @@ namespace STROOP.Managers
                     _lockedSlotIndices[obj.Address] = new Tuple<int?, int?>(obj.ProcessIndex, obj.VacantSlotIndex);
             }
             foreach (uint address in sortedObjects.Where(o => o != null).Select(o => o.Address))
-                _slotLabels[address] = GetSlotLabelForAddress(address);
+                _slotLabels[address] = GetSlotLabelFromAddress(address);
 
             // Update object slots
             foreach (var item in sortedObjects.Zip(ObjectSlots, (o, s) => new { Slot = s, Obj = o }))
                 item.Slot.Update(item.Obj);
         }
 
-        public int GetSlotIndexFromAddres(uint objAddress)
+        public ObjectDataModel GetObjectFromLabel(string name)
+        {
+            if (name == null) return null;
+            name = name.ToLower().Trim();
+            ObjectSlot slot = ObjectSlots.FirstOrDefault(s => s.Text.ToLower() == name);
+            return slot?.CurrentObject;
+        }
+
+        public int GetSlotIndexFromAddress(uint objAddress)
         {
             return ObjectSlots.FirstOrDefault(o => o.CurrentObject.Address == objAddress)?.Index ?? -1;
         }
 
-        public string GetSlotLabelForAddress(uint objAddress)
+        public string GetSlotLabelFromAddress(uint objAddress)
         {
             switch (LabelMethod)
             {
