@@ -316,6 +316,24 @@ namespace STROOP.Managers
                 item.Slot.Update(item.Obj);
         }
 
+        public List<ObjectDataModel> GetLoadedObjectsWithName(string name)
+        {
+            if (name == null) return new List<ObjectDataModel>();
+
+            Dictionary<ObjectDataModel, string> dictionary =
+                new Dictionary<ObjectDataModel, string>();
+            ObjectSlots.ForEach(slot =>
+            {
+                ObjectDataModel objectDataModel = slot.CurrentObject;
+                string slotName = Config.ObjectAssociations.GetObjectName(slot.Behavior);
+                dictionary.Add(objectDataModel, slotName);
+            });
+            return dictionary.Keys.ToList().FindAll(objectDataModel =>
+            {
+                return objectDataModel.IsActive && dictionary[objectDataModel] == name;
+            });
+        }
+
         public ObjectDataModel GetObjectFromLabel(string name)
         {
             if (name == null) return null;

@@ -119,7 +119,8 @@ namespace STROOP.Structs
                     return new List<uint> { Config.AreaManager.SelectedAreaAddress };
 
                 case BaseAddressTypeEnum.Ghost:
-                    return Config.ObjectManager.DisplayedObjects.ToList();
+                    return Config.ObjectSlotsManager.GetLoadedObjectsWithName("Mario Ghost")
+                        .ConvertAll(objectDataModel => objectDataModel.Address);
 
                 case BaseAddressTypeEnum.HackedArea:
                     return new List<uint> { MiscConfig.HackedAreaAddress };

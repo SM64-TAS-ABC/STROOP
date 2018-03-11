@@ -50,7 +50,14 @@ namespace STROOP
         public enum MouseStateType {None, Over, Down};
         public MouseStateType MouseState;
 
-        BehaviorCriteria _behavior;
+        private BehaviorCriteria _behavior;
+        public BehaviorCriteria Behavior
+        {
+            get
+            {
+                return _behavior;
+            }
+        }
 
         bool _isActive = false;
 
