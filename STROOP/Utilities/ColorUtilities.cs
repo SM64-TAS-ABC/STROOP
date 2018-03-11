@@ -32,8 +32,8 @@ namespace STROOP.Utilities
 
         public static Color GetColorByInput(Color defaultColor)
         {
-            int? inputtedNumber = GetCurrentlyInputtedNumber();
-            switch(inputtedNumber)
+            int? inputtedNumber = KeyboardUtilities.GetCurrentlyInputtedNumber();
+            switch (inputtedNumber)
             {
                 default:
                     return defaultColor;
@@ -58,21 +58,6 @@ namespace STROOP.Utilities
                 case 0:
                     return Color.Red;
             }
-        }
-
-        private static int? GetCurrentlyInputtedNumber()
-        {
-            if (Keyboard.IsKeyDown(Key.D1)) return 1;
-            if (Keyboard.IsKeyDown(Key.D2)) return 2;
-            if (Keyboard.IsKeyDown(Key.D3)) return 3;
-            if (Keyboard.IsKeyDown(Key.D4)) return 4;
-            if (Keyboard.IsKeyDown(Key.D5)) return 5;
-            if (Keyboard.IsKeyDown(Key.D6)) return 6;
-            if (Keyboard.IsKeyDown(Key.D7)) return 7;
-            if (Keyboard.IsKeyDown(Key.D8)) return 8;
-            if (Keyboard.IsKeyDown(Key.D9)) return 9;
-            if (Keyboard.IsKeyDown(Key.D0)) return 0;
-            return null;
         }
     }
 }

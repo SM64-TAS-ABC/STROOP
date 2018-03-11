@@ -81,6 +81,7 @@ namespace STROOP.Controls
             }
             set
             {
+                if (value) _tableLayoutPanel.BorderColor = ColorUtilities.GetColorByInput(Color.Red);
                 _tableLayoutPanel.ShowBorder = value;
             }
         }
