@@ -211,6 +211,7 @@ namespace STROOP.Managers
             // Select the current row
             DataGridViewRow currentRow = _rowDictionary[currentGlobalTimer];
             currentRow.Selected = true;
+            _dataGridViewTas.FirstDisplayedScrollingRowIndex = _dataGridViewTas.Rows.IndexOf(currentRow);
 
             // If we have the next row, then calculate the inputs of the current row
             uint nextGlobalTimer = currentGlobalTimer + 1;
