@@ -143,6 +143,12 @@ namespace STROOP.Managers
             _dataGridViewTas.Rows.Clear();
             _dataDictionary.Clear();
             _rowDictionary.Clear();
+
+            List<string> newInstructions = new List<string>()
+            {
+                "(1)", "(2)", "(3)", "(4)", "(5)",
+            };
+            _richTextBoxTasInstructions.Text = String.Join("\r\n", newInstructions);
         }
 
         private void ClearDataAtAndAfter(uint globalTimerThreshold)
@@ -226,6 +232,16 @@ namespace STROOP.Managers
                 currentRow.Cells[TABLE_INDEX_NEXT_CAM_ANGLE].Value = nextCameraAngle;
                 currentRow.Cells[TABLE_INDEX_X_INPUT].Value = xInput;
                 currentRow.Cells[TABLE_INDEX_Y_INPUT].Value = -1 * yInput;
+
+                List<string> newInstructions = new List<string>()
+                {
+                    "(1) Set input to (" + xInput + "," + (-1 * yInput) + ")",
+                    "(2) Frame advance",
+                    "(3) Savestate",
+                    "(4) Frame advance",
+                    "(5) Revert",
+                };
+                _richTextBoxTasInstructions.Text = String.Join("\r\n", newInstructions);
             }
         }
     }
