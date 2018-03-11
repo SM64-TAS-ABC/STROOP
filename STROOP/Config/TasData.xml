@@ -29,12 +29,12 @@
   <Data groupList="TAS" base="Mario" offset="0x3C" type="float" color="#ffcccc" coord="X">Mario X</Data>
   <Data groupList="TAS" base="Mario" offset="0x40" type="float" color="#ffcccc" coord="Y">Mario Y</Data>
   <Data groupList="TAS" base="Mario" offset="0x44" type="float" color="#ffcccc" coord="Z">Mario Z</Data>
-  <Data groupList="TAS" base="Object" offset="0x1C" type="ushort" subclass="Angle" color="#d0d0d0">Ghost Angle</Data>
-  <Data groupList="TAS" base="Object" specialType="MarioGhostHorizontalDistance" color="#d0d0d0">Ghost DeltaH</Data>
-  <Data groupList="TAS" base="Object" specialType="MarioGhostVerticalDistance" color="#d0d0d0">Ghost DeltaV</Data>
-  <Data groupList="TAS" base="Object" offset="0x20" type="float" color="#d0d0d0">Ghost X</Data>
-  <Data groupList="TAS" base="Object" offset="0x24" type="float" color="#d0d0d0">Ghost Y</Data>
-  <Data groupList="TAS" base="Object" offset="0x28" type="float" color="#d0d0d0">Ghost Z</Data>
+  <Data groupList="TAS" base="Ghost" offset="0x1C" type="ushort" subclass="Angle" color="#d0d0d0">Ghost Angle</Data>
+  <Data groupList="TAS" base="Ghost" specialType="MarioGhostHorizontalDistance" color="#d0d0d0">Ghost DeltaH</Data>
+  <Data groupList="TAS" base="Ghost" specialType="MarioGhostVerticalDistance" color="#d0d0d0">Ghost DeltaV</Data>
+  <Data groupList="TAS" base="Ghost" offset="0x20" type="float" color="#d0d0d0">Ghost X</Data>
+  <Data groupList="TAS" base="Ghost" offset="0x24" type="float" color="#d0d0d0">Ghost Y</Data>
+  <Data groupList="TAS" base="Ghost" offset="0x28" type="float" color="#d0d0d0">Ghost Z</Data>
   <Data groupList="TAS" base="Relative" offset="0x804003FC" type="int" color="#d0d0d0">Ghost Frame</Data>
   <Data groupList="TAS" type="int" offsetUS="0x8032D5D4" offsetJP="0x8032C694" base="Relative" color="#cfffcc">Global Timer</Data>
   <Data groupList="TAS" type="ushort" offsetUS="0x8038EEE0" offsetJP="0x8038EEE0" base="Relative" color="#cfffcc">RNG Value</Data>

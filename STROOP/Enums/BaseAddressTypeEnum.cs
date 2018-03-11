@@ -33,6 +33,7 @@ namespace STROOP.Structs
         Water,
         Area,
 
+        Ghost,
         HackedArea,
         CamHack,
         GfxNode,

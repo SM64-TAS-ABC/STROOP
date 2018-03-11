@@ -118,6 +118,9 @@ namespace STROOP.Structs
                 case BaseAddressTypeEnum.Area:
                     return new List<uint> { Config.AreaManager.SelectedAreaAddress };
 
+                case BaseAddressTypeEnum.Ghost:
+                    return Config.ObjectManager.DisplayedObjects;
+
                 case BaseAddressTypeEnum.HackedArea:
                     return new List<uint> { MiscConfig.HackedAreaAddress };
 
