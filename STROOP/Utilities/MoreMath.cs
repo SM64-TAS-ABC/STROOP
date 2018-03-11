@@ -585,7 +585,7 @@ namespace STROOP.Utilities
             return input > -8 && input < 8 && input != 0;
         }
 
-        public static (int xInput, int yInput) CalculateInputsFromAngle(ushort goalAngle, ushort cameraAngle)
+        public static (int xInput, int yInput) CalculateInputsForAngle(ushort goalAngle, ushort cameraAngle)
         {
             double bestMagnitude = 0;
             int bestX = 0;
@@ -654,7 +654,7 @@ namespace STROOP.Utilities
             return (ushort)returnValue;
         }
 
-        private static ushort InGameATan45Degrees(float f12, float f14)
+        private static ushort InGameATan45Degrees(float yComp, float xComp)
         {
             //  if f14 == 0:
             //     return short(0x8038b000)
@@ -662,10 +662,10 @@ namespace STROOP.Utilities
             //      return short(0x8038b000+2*int( (f12/f14)*1024.0 + 0.5)) # with +0.5 this is normal rounding, not towards zero
 
             uint offset;
-            if (f14 == 0)
+            if (xComp == 0)
                 offset = 0;
             else
-                offset = 2 * (uint)((f12 / f14) * 1024f + 0.5f);
+                offset = 2 * (uint)((yComp / xComp) * 1024f + 0.5f);
             return Config.Stream.GetUInt16(0x8038B000 + offset);
         }
 

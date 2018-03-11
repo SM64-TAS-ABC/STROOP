@@ -829,7 +829,7 @@ namespace STROOP.Managers
             //cameraAngle = MoreMath.NormalizeAngleTruncated(cameraAngle);
             ushort summedAngle = MoreMath.NormalizeAngleUshort(angle + cameraAngle);
             _labelControlStick4.Text = summedAngle.ToString();
-
+            _labelControlStick5.Text = MoreMath.InGameATan(rawX, rawY).ToString();
             _labelControlStick6.Text = MoreMath.CalculateAngleFromInputs(currentX, currentY).ToString();
 
             /*
