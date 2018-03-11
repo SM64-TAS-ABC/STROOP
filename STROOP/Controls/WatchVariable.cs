@@ -65,7 +65,7 @@ namespace STROOP.Controls
         {
             get
             {
-                return WatchVariableUtilities.GetBaseAddressListFromBaseAddressType(BaseAddressType).ToList();
+                return WatchVariableUtilities.GetBaseAddressListFromBaseAddressType(BaseAddressType);
             }
         }
 
