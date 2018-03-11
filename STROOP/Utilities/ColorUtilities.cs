@@ -38,25 +38,25 @@ namespace STROOP.Utilities
                 default:
                     return defaultColor;
                 case 1:
-                    return Color.Blue;
+                    return Color.Red;
                 case 2:
-                    return Color.Red;
+                    return Color.Orange;
                 case 3:
-                    return Color.Red;
+                    return Color.Yellow;
                 case 4:
-                    return Color.Red;
+                    return Color.Green;
                 case 5:
-                    return Color.Red;
+                    return Color.Blue;
                 case 6:
-                    return Color.Red;
+                    return Color.Purple;
                 case 7:
-                    return Color.Red;
+                    return Color.Pink;
                 case 8:
-                    return Color.Red;
+                    return Color.Brown;
                 case 9:
-                    return Color.Red;
+                    return Color.Black;
                 case 0:
-                    return Color.Red;
+                    return Color.White;
             }
         }
     }
