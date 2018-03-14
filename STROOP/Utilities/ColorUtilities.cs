@@ -38,7 +38,7 @@ namespace STROOP.Utilities
             string r = String.Format("{0:X2}", color.R);
             string g = String.Format("{0:X2}", color.G);
             string b = String.Format("{0:X2}", color.B);
-            return r + g + b;
+            return "#" + r + g + b;
         }
 
         public static Color GetColorByInput(Color defaultColor)

@@ -196,7 +196,7 @@ namespace STROOP.Controls
             if (color.HasValue)
                 root.Add(new XAttribute(
                     "color",
-                    "#" + ColorUtilities.ToString(color.Value)));
+                    ColorUtilities.ToString(color.Value)));
 
             List<uint> fixedAddresses = newFixedAddresses ?? _fixedAddresses;
             if (fixedAddresses != null)
