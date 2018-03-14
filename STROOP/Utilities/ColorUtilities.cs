@@ -1,42 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Globalization;
-using System.Xml;
-using System.Windows.Forms;
 using System.Drawing;
-using System.Windows.Input;
 
 namespace STROOP.Utilities
 {
     public static class ColorUtilities
     {
-        private static readonly Dictionary<string, string> ParamsToColorDictionary =
+        private static readonly Dictionary<string, string> ColorToParamsDictionary =
             new Dictionary<string, string>()
             {
-                ["Red"] = "#ffcccc",
-                ["Yellow"] = "#ffeccc",
-                ["Green"] = "#cfffcc",
-                ["LightBlue"] = "#ccfffa",
-                ["Blue"] = "#ccd0ff",
-                ["Purple"] = "#e5ccff",
-                ["Pink"] = "#ffccff",
-                ["Grey"] = "#d0d0d0",
+                ["Red"] = "#FFCCCC",
+                ["Yellow"] = "#FFECCC",
+                ["Green"] = "#CFFFCC",
+                ["LightBlue"] = "#CCFFFA",
+                ["Blue"] = "#CCD0FF",
+                ["Purple"] = "#E5CCFF",
+                ["Pink"] = "#FFCCFF",
+                ["Grey"] = "#D0D0D0",
             };
 
-        private static readonly Dictionary<string, string> ColorToParamsDictionary =
-            DictionaryUtilities.ReverseDictionary(ParamsToColorDictionary);
+        private static readonly Dictionary<string, string> ParamsToColorDictionary =
+            DictionaryUtilities.ReverseDictionary(ColorToParamsDictionary);
 
         public static Color GetColorFromString(string colorString)
         {
             if (colorString.Substring(0, 1) != "#")
-                colorString = ParamsToColorDictionary[colorString];
+                colorString = ColorToParamsDictionary[colorString];
             return ColorTranslator.FromHtml(colorString);
         }
 
-        public static string ToString(Color color)
+        public static string ConvertColorToString(Color color)
+        {
+            string colorParams = ConvertColorToParams(color);
+            if (ParamsToColorDictionary.ContainsKey(colorParams))
+                return ParamsToColorDictionary[colorParams];
+            return colorParams;
+        }
+
+        public static string ConvertColorToParams(Color color)
         {
             string r = String.Format("{0:X2}", color.R);
             string g = String.Format("{0:X2}", color.G);
