@@ -13,7 +13,7 @@ namespace STROOP.Utilities
 {
     public static class ColorUtilities
     {
-        private static readonly Dictionary<string, string> ColorDictionary =
+        private static readonly Dictionary<string, string> ParamsToColorDictionary =
             new Dictionary<string, string>()
             {
                 ["Red"] = "#ffcccc",
@@ -26,10 +26,13 @@ namespace STROOP.Utilities
                 ["Grey"] = "#d0d0d0",
             };
 
+        private static readonly Dictionary<string, string> ColorToParamsDictionary =
+            DictionaryUtilities.ReverseDictionary(ParamsToColorDictionary);
+
         public static Color GetColorFromString(string colorString)
         {
             if (colorString.Substring(0, 1) != "#")
-                colorString = ColorDictionary[colorString];
+                colorString = ParamsToColorDictionary[colorString];
             return ColorTranslator.FromHtml(colorString);
         }
 
