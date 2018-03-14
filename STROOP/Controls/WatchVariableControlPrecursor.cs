@@ -78,7 +78,7 @@ namespace STROOP.Controls
             _subclass = WatchVariableUtilities.GetSubclass(element.Attribute(XName.Get("subclass"))?.Value);
             _groupList = WatchVariableUtilities.ParseVariableGroupList(element.Attribute(XName.Get("groupList"))?.Value);
             _backgroundColor = (element.Attribute(XName.Get("color")) != null) ?
-                ColorTranslator.FromHtml(element.Attribute(XName.Get("color")).Value) : (Color?)null;
+                ColorUtilities.GetColorFromString(element.Attribute(XName.Get("color")).Value) : (Color?)null;
             _roundingLimit = (element.Attribute(XName.Get("round")) != null) ?
                 ParsingUtilities.ParseInt(element.Attribute(XName.Get("round")).Value) : (int?)null;
             _useHex = (element.Attribute(XName.Get("useHex")) != null) ?

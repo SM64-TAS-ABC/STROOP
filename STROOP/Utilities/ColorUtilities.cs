@@ -13,13 +13,24 @@ namespace STROOP.Utilities
 {
     public static class ColorUtilities
     {
-        public static Color InterpolateColor(Color c1, Color c2, double amount)
+        private static readonly Dictionary<string, string> ColorDictionary =
+            new Dictionary<string, string>()
+            {
+                ["Red"] = "#ffcccc",
+                ["Yellow"] = "#ffeccc",
+                ["Green"] = "#cfffcc",
+                ["LightBlue"] = "#ccfffa",
+                ["Blue"] = "#ccd0ff",
+                ["Purple"] = "#e5ccff",
+                ["Pink"] = "#ffccff",
+                ["Grey"] = "#d0d0d0",
+            };
+
+        public static Color GetColorFromString(string colorString)
         {
-            amount = MoreMath.Clamp(amount, 0, 1);
-            byte r = (byte)((c1.R * (1 - amount)) + c2.R * amount);
-            byte g = (byte)((c1.G * (1 - amount)) + c2.G * amount);
-            byte b = (byte)((c1.B * (1 - amount)) + c2.B * amount);
-            return Color.FromArgb(r, g, b);
+            if (colorString.Substring(0, 1) != "#")
+                colorString = ColorDictionary[colorString];
+            return ColorTranslator.FromHtml(colorString);
         }
 
         public static string ToString(Color color)
@@ -58,6 +69,15 @@ namespace STROOP.Utilities
                 case 0:
                     return Color.White;
             }
+        }
+
+        public static Color InterpolateColor(Color c1, Color c2, double amount)
+        {
+            amount = MoreMath.Clamp(amount, 0, 1);
+            byte r = (byte)((c1.R * (1 - amount)) + c2.R * amount);
+            byte g = (byte)((c1.G * (1 - amount)) + c2.G * amount);
+            byte b = (byte)((c1.B * (1 - amount)) + c2.B * amount);
+            return Color.FromArgb(r, g, b);
         }
     }
 }
