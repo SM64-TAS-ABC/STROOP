@@ -7,50 +7,50 @@
 
   <Data type="sbyte" offset="0x02" base="InputCurrent">Current X</Data>
   <Data type="sbyte" offset="0x03" base="InputCurrent">Current Y</Data>
-  <Data type="byte" offset="0x00" base="InputCurrent" subclass="Boolean" mask="0x80" color="#c4cfff">Current A</Data>
-  <Data type="byte" offset="0x00" base="InputCurrent" subclass="Boolean" mask="0x40" color="#ccffd3">Current B</Data>
-  <Data type="byte" offset="0x00" base="InputCurrent" subclass="Boolean" mask="0x20" color="#d1d1d1">Current Z</Data>
+  <Data type="byte" offset="0x00" base="InputCurrent" subclass="Boolean" mask="0x80" color="Blue">Current A</Data>
+  <Data type="byte" offset="0x00" base="InputCurrent" subclass="Boolean" mask="0x40" color="Green">Current B</Data>
+  <Data type="byte" offset="0x00" base="InputCurrent" subclass="Boolean" mask="0x20" color="Grey">Current Z</Data>
   <Data type="byte" offset="0x00" base="InputCurrent" subclass="Boolean" mask="0x10" color="Red">Current S</Data>
-  <Data type="byte" offset="0x01" base="InputCurrent" subclass="Boolean" mask="0x10" color="#d1d1d1">Current R</Data>
-  <Data type="byte" offset="0x01" base="InputCurrent" subclass="Boolean" mask="0x20" color="#d1d1d1">Current L</Data>
-  <Data type="byte" offset="0x01" base="InputCurrent" subclass="Boolean" mask="0x08" color="#ffffdd">Current C^</Data>
-  <Data type="byte" offset="0x01" base="InputCurrent" subclass="Boolean" mask="0x04" color="#ffffdd">Current Cv</Data>
-  <Data type="byte" offset="0x01" base="InputCurrent" subclass="Boolean" mask="0x02" color="#ffffdd">Current C&lt;</Data>
-  <Data type="byte" offset="0x01" base="InputCurrent" subclass="Boolean" mask="0x01" color="#ffffdd">Current C></Data>
-  <Data type="byte" offset="0x00" base="InputCurrent" subclass="Boolean" mask="0x08" color="#d1d1d1">Current D^</Data>
-  <Data type="byte" offset="0x00" base="InputCurrent" subclass="Boolean" mask="0x04" color="#d1d1d1">Current Dv</Data>
-  <Data type="byte" offset="0x00" base="InputCurrent" subclass="Boolean" mask="0x02" color="#d1d1d1">Current D&lt;</Data>
-  <Data type="byte" offset="0x00" base="InputCurrent" subclass="Boolean" mask="0x01" color="#d1d1d1">Current D></Data>
+  <Data type="byte" offset="0x01" base="InputCurrent" subclass="Boolean" mask="0x10" color="Grey">Current R</Data>
+  <Data type="byte" offset="0x01" base="InputCurrent" subclass="Boolean" mask="0x20" color="Grey">Current L</Data>
+  <Data type="byte" offset="0x01" base="InputCurrent" subclass="Boolean" mask="0x08" color="Yellow">Current C^</Data>
+  <Data type="byte" offset="0x01" base="InputCurrent" subclass="Boolean" mask="0x04" color="Yellow">Current Cv</Data>
+  <Data type="byte" offset="0x01" base="InputCurrent" subclass="Boolean" mask="0x02" color="Yellow">Current C&lt;</Data>
+  <Data type="byte" offset="0x01" base="InputCurrent" subclass="Boolean" mask="0x01" color="Yellow">Current C></Data>
+  <Data type="byte" offset="0x00" base="InputCurrent" subclass="Boolean" mask="0x08" color="Grey">Current D^</Data>
+  <Data type="byte" offset="0x00" base="InputCurrent" subclass="Boolean" mask="0x04" color="Grey">Current Dv</Data>
+  <Data type="byte" offset="0x00" base="InputCurrent" subclass="Boolean" mask="0x02" color="Grey">Current D&lt;</Data>
+  <Data type="byte" offset="0x00" base="InputCurrent" subclass="Boolean" mask="0x01" color="Grey">Current D></Data>
   
-  <Data type="byte" offset="0x00" base="InputJustPressed" subclass="Boolean" mask="0x80" color="#c4cfff">Just Pressed A</Data>
-  <Data type="byte" offset="0x00" base="InputJustPressed" subclass="Boolean" mask="0x40" color="#ccffd3">Just Pressed B</Data>
-  <Data type="byte" offset="0x00" base="InputJustPressed" subclass="Boolean" mask="0x20" color="#d1d1d1">Just Pressed Z</Data>
+  <Data type="byte" offset="0x00" base="InputJustPressed" subclass="Boolean" mask="0x80" color="Blue">Just Pressed A</Data>
+  <Data type="byte" offset="0x00" base="InputJustPressed" subclass="Boolean" mask="0x40" color="Green">Just Pressed B</Data>
+  <Data type="byte" offset="0x00" base="InputJustPressed" subclass="Boolean" mask="0x20" color="Grey">Just Pressed Z</Data>
   <Data type="byte" offset="0x00" base="InputJustPressed" subclass="Boolean" mask="0x10" color="Red">Just Pressed S</Data>
-  <Data type="byte" offset="0x01" base="InputJustPressed" subclass="Boolean" mask="0x10" color="#d1d1d1">Just Pressed R</Data>
-  <Data type="byte" offset="0x01" base="InputJustPressed" subclass="Boolean" mask="0x20" color="#d1d1d1">Just Pressed L</Data>
-  <Data type="byte" offset="0x01" base="InputJustPressed" subclass="Boolean" mask="0x08" color="#ffffdd">Just Pressed C^</Data>
-  <Data type="byte" offset="0x01" base="InputJustPressed" subclass="Boolean" mask="0x04" color="#ffffdd">Just Pressed Cv</Data>
-  <Data type="byte" offset="0x01" base="InputJustPressed" subclass="Boolean" mask="0x02" color="#ffffdd">Just Pressed C&lt;</Data>
-  <Data type="byte" offset="0x01" base="InputJustPressed" subclass="Boolean" mask="0x01" color="#ffffdd">Just Pressed C></Data>
-  <Data type="byte" offset="0x00" base="InputJustPressed" subclass="Boolean" mask="0x08" color="#d1d1d1">Just Pressed D^</Data>
-  <Data type="byte" offset="0x00" base="InputJustPressed" subclass="Boolean" mask="0x04" color="#d1d1d1">Just Pressed Dv</Data>
-  <Data type="byte" offset="0x00" base="InputJustPressed" subclass="Boolean" mask="0x02" color="#d1d1d1">Just Pressed D&lt;</Data>
-  <Data type="byte" offset="0x00" base="InputJustPressed" subclass="Boolean" mask="0x01" color="#d1d1d1">Just Pressed D></Data>
+  <Data type="byte" offset="0x01" base="InputJustPressed" subclass="Boolean" mask="0x10" color="Grey">Just Pressed R</Data>
+  <Data type="byte" offset="0x01" base="InputJustPressed" subclass="Boolean" mask="0x20" color="Grey">Just Pressed L</Data>
+  <Data type="byte" offset="0x01" base="InputJustPressed" subclass="Boolean" mask="0x08" color="Yellow">Just Pressed C^</Data>
+  <Data type="byte" offset="0x01" base="InputJustPressed" subclass="Boolean" mask="0x04" color="Yellow">Just Pressed Cv</Data>
+  <Data type="byte" offset="0x01" base="InputJustPressed" subclass="Boolean" mask="0x02" color="Yellow">Just Pressed C&lt;</Data>
+  <Data type="byte" offset="0x01" base="InputJustPressed" subclass="Boolean" mask="0x01" color="Yellow">Just Pressed C></Data>
+  <Data type="byte" offset="0x00" base="InputJustPressed" subclass="Boolean" mask="0x08" color="Grey">Just Pressed D^</Data>
+  <Data type="byte" offset="0x00" base="InputJustPressed" subclass="Boolean" mask="0x04" color="Grey">Just Pressed Dv</Data>
+  <Data type="byte" offset="0x00" base="InputJustPressed" subclass="Boolean" mask="0x02" color="Grey">Just Pressed D&lt;</Data>
+  <Data type="byte" offset="0x00" base="InputJustPressed" subclass="Boolean" mask="0x01" color="Grey">Just Pressed D></Data>
   
   <Data type="sbyte" offset="0x02" base="InputBuffered">Buffered X</Data>
   <Data type="sbyte" offset="0x03" base="InputBuffered">Buffered Y</Data>
-  <Data type="byte" offset="0x00" base="InputBuffered" subclass="Boolean" mask="0x80" color="#c4cfff">Buffered A</Data>
-  <Data type="byte" offset="0x00" base="InputBuffered" subclass="Boolean" mask="0x40" color="#ccffd3">Buffered B</Data>
-  <Data type="byte" offset="0x00" base="InputBuffered" subclass="Boolean" mask="0x20" color="#d1d1d1">Buffered Z</Data>
+  <Data type="byte" offset="0x00" base="InputBuffered" subclass="Boolean" mask="0x80" color="Blue">Buffered A</Data>
+  <Data type="byte" offset="0x00" base="InputBuffered" subclass="Boolean" mask="0x40" color="Green">Buffered B</Data>
+  <Data type="byte" offset="0x00" base="InputBuffered" subclass="Boolean" mask="0x20" color="Grey">Buffered Z</Data>
   <Data type="byte" offset="0x00" base="InputBuffered" subclass="Boolean" mask="0x10" color="Red">Buffered S</Data>
-  <Data type="byte" offset="0x01" base="InputBuffered" subclass="Boolean" mask="0x10" color="#d1d1d1">Buffered R</Data>
-  <Data type="byte" offset="0x01" base="InputBuffered" subclass="Boolean" mask="0x20" color="#d1d1d1">Buffered L</Data>
-  <Data type="byte" offset="0x01" base="InputBuffered" subclass="Boolean" mask="0x08" color="#ffffdd">Buffered C^</Data>
-  <Data type="byte" offset="0x01" base="InputBuffered" subclass="Boolean" mask="0x04" color="#ffffdd">Buffered Cv</Data>
-  <Data type="byte" offset="0x01" base="InputBuffered" subclass="Boolean" mask="0x02" color="#ffffdd">Buffered C&lt;</Data>
-  <Data type="byte" offset="0x01" base="InputBuffered" subclass="Boolean" mask="0x01" color="#ffffdd">Buffered C></Data>
-  <Data type="byte" offset="0x00" base="InputBuffered" subclass="Boolean" mask="0x08" color="#d1d1d1">Buffered D^</Data>
-  <Data type="byte" offset="0x00" base="InputBuffered" subclass="Boolean" mask="0x04" color="#d1d1d1">Buffered Dv</Data>
-  <Data type="byte" offset="0x00" base="InputBuffered" subclass="Boolean" mask="0x02" color="#d1d1d1">Buffered D&lt;</Data>
-  <Data type="byte" offset="0x00" base="InputBuffered" subclass="Boolean" mask="0x01" color="#d1d1d1">Buffered D></Data>
+  <Data type="byte" offset="0x01" base="InputBuffered" subclass="Boolean" mask="0x10" color="Grey">Buffered R</Data>
+  <Data type="byte" offset="0x01" base="InputBuffered" subclass="Boolean" mask="0x20" color="Grey">Buffered L</Data>
+  <Data type="byte" offset="0x01" base="InputBuffered" subclass="Boolean" mask="0x08" color="Yellow">Buffered C^</Data>
+  <Data type="byte" offset="0x01" base="InputBuffered" subclass="Boolean" mask="0x04" color="Yellow">Buffered Cv</Data>
+  <Data type="byte" offset="0x01" base="InputBuffered" subclass="Boolean" mask="0x02" color="Yellow">Buffered C&lt;</Data>
+  <Data type="byte" offset="0x01" base="InputBuffered" subclass="Boolean" mask="0x01" color="Yellow">Buffered C></Data>
+  <Data type="byte" offset="0x00" base="InputBuffered" subclass="Boolean" mask="0x08" color="Grey">Buffered D^</Data>
+  <Data type="byte" offset="0x00" base="InputBuffered" subclass="Boolean" mask="0x04" color="Grey">Buffered Dv</Data>
+  <Data type="byte" offset="0x00" base="InputBuffered" subclass="Boolean" mask="0x02" color="Grey">Buffered D&lt;</Data>
+  <Data type="byte" offset="0x00" base="InputBuffered" subclass="Boolean" mask="0x01" color="Grey">Buffered D></Data>
 </InputData>
