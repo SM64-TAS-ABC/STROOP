@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <QuarterFrameData>
-  <Data type="int" offset="0x104" base="HackedArea" useHex="true" color ="#ffe070">Movement Action</Data>
-  <Data type="int" offset="0x108" base="HackedArea" color ="#8888ff">#0 result</Data>
+  <Data type="int" offset="0x104" base="HackedArea" useHex="true" color ="Yellow">Movement Action</Data>
+  <Data type="int" offset="0x108" base="HackedArea" color ="Purple">#0 result</Data>
   <Data type="float" offset="0x10C" base="HackedArea">#0 water Y</Data>
   <Data type="float" offset="0x110" base="HackedArea">#0 floor Y</Data>
   <Data type="float" offset="0x114" base="HackedArea">#0 ceiling Y</Data>
@@ -12,7 +12,7 @@
   <Data type="float" offset="0x128" base="HackedArea" coord="X">#0 pos X</Data>
   <Data type="float" offset="0x12C" base="HackedArea" coord="Y">#0 pos Y</Data>
   <Data type="float" offset="0x130" base="HackedArea" coord="Z">#0 pos Z</Data>
-  <Data type="int" offset="0x138" base="HackedArea" color ="#8888ff">#1 result</Data>
+  <Data type="int" offset="0x138" base="HackedArea" color ="Purple">#1 result</Data>
   <Data type="float" offset="0x13C" base="HackedArea">#1 water Y</Data>
   <Data type="float" offset="0x140" base="HackedArea">#1 floor Y</Data>
   <Data type="float" offset="0x144" base="HackedArea">#1 ceiling Y</Data>
@@ -23,7 +23,7 @@
   <Data type="float" offset="0x158" base="HackedArea" coord="X">#1 pos X</Data>
   <Data type="float" offset="0x15C" base="HackedArea" coord="Y">#1 pos Y</Data>
   <Data type="float" offset="0x160" base="HackedArea" coord="Z">#1 pos Z</Data>
-  <Data type="int" offset="0x168" base="HackedArea" color ="#8888ff">#2 result</Data>
+  <Data type="int" offset="0x168" base="HackedArea" color ="Purple">#2 result</Data>
   <Data type="float" offset="0x16C" base="HackedArea">#2 water Y</Data>
   <Data type="float" offset="0x170" base="HackedArea">#2 floor Y</Data>
   <Data type="float" offset="0x174" base="HackedArea">#2 ceiling Y</Data>
@@ -34,7 +34,7 @@
   <Data type="float" offset="0x188" base="HackedArea" coord="X">#2 pos X</Data>
   <Data type="float" offset="0x18C" base="HackedArea" coord="Y">#2 pos Y</Data>
   <Data type="float" offset="0x190" base="HackedArea" coord="Z">#2 pos Z</Data>
-  <Data type="int" offset="0x198" base="HackedArea" color ="#8888ff">#3 result</Data>
+  <Data type="int" offset="0x198" base="HackedArea" color ="Purple">#3 result</Data>
   <Data type="float" offset="0x19C" base="HackedArea">#3 water Y</Data>
   <Data type="float" offset="0x1A0" base="HackedArea">#3 floor Y</Data>
   <Data type="float" offset="0x1A4" base="HackedArea">#3 ceiling Y</Data>
