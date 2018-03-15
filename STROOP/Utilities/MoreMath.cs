@@ -627,33 +627,63 @@ namespace STROOP.Utilities
 
 
             ushort reversedCameraAngle = NormalizeAngleUshort(ReverseAngle(cameraAngle));
-            ushort goalMarioAngle = NormalizeAngleUshort(goalAngle - cameraAngle);
+            ushort goalMarioAngle = NormalizeAngleUshort(goalAngle - reversedCameraAngle);
+            double goalMarioAngleRadians = AngleUnitsToRadians(goalMarioAngle);
 
             bool useX;
-            bool positiveSign;
-            if (goalMarioAngle < 8192 || goalMarioAngle >= 57344)
+            bool positiveA;
+            bool positiveB;
+            if (goalMarioAngle < 8192)
+            {
+                useX = false;
+                positiveA = true;
+                positiveB = false;
+            }
+            else if (goalMarioAngle < 16384)
             {
                 useX = true;
-                positiveSign = true;
+                positiveA = false;
+                positiveB = true;
             }
             else if (goalMarioAngle < 24576)
             {
+                useX = true;
+                positiveA = false;
+                positiveB = false;
+            }
+            else if (goalMarioAngle < 32768)
+            {
                 useX = false;
-                positiveSign = true;
+                positiveA = false;
+                positiveB = false;
             }
             else if (goalMarioAngle < 40960)
             {
+                useX = false;
+                positiveA = false;
+                positiveB = true;
+            }
+            else if (goalMarioAngle < 49152)
+            {
                 useX = true;
-                positiveSign = false;
+                positiveA = true;
+                positiveB = false;
+            }
+            else if (goalMarioAngle < 57344)
+            {
+                useX = true;
+                positiveA = true;
+                positiveB = true;
             }
             else
             {
                 useX = false;
-                positiveSign = false;
+                positiveA = true;
+                positiveB = true;
             }
 
-
-            for (int a = 8; a <= 128; a++)
+            int max = positiveA ? 127 : 128;
+            for (int a = 8; a <= max; a++)
             {
 
             }
