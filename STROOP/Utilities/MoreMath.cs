@@ -615,6 +615,70 @@ namespace STROOP.Utilities
             return (bestX, bestY);
         }
 
+        public static (int xInput, int yInput) CalculateInputsForAngleOptimized(ushort goalAngle, ushort cameraAngle)
+        {
+            double bestMagnitude = 0;
+            int bestX = 0;
+            int bestY = 0;
+
+            ushort truncatedGoalAngle = NormalizeAngleTruncated(goalAngle);
+
+
+
+
+            ushort reversedCameraAngle = NormalizeAngleUshort(ReverseAngle(cameraAngle));
+            ushort goalMarioAngle = NormalizeAngleUshort(goalAngle - cameraAngle);
+
+            bool useX;
+            bool positiveSign;
+            if (goalMarioAngle < 8192 || goalMarioAngle >= 57344)
+            {
+                useX = true;
+                positiveSign = true;
+            }
+            else if (goalMarioAngle < 24576)
+            {
+                useX = false;
+                positiveSign = true;
+            }
+            else if (goalMarioAngle < 40960)
+            {
+                useX = true;
+                positiveSign = false;
+            }
+            else
+            {
+                useX = false;
+                positiveSign = false;
+            }
+
+
+            for (int a = 8; a <= 128; a++)
+            {
+
+            }
+
+            /*
+                (float effectiveX, float effectiveY) = GetEffectiveInput(xInput, yInput);
+            ushort marioAngle = InGameATan(effectiveY, -effectiveX);
+
+            ushort inputAngle = CalculateAngleFromInputs(x, y, cameraAngle);
+            ushort truncatedInputAngle = NormalizeAngleTruncated(inputAngle);
+            if (truncatedInputAngle == truncatedGoalAngle)
+            {
+                double magnitude = GetEffectiveInputMagnitude(x, y);
+                if (magnitude > bestMagnitude)
+                {
+                    bestMagnitude = magnitude;
+                    bestX = x;
+                    bestY = y;
+                }
+            }
+            */
+
+            return (bestX, bestY);
+        }
+
         public static ushort CalculateAngleFromInputs(int xInput, int yInput, ushort? cameraAngleNullable = null)
         {
             (float effectiveX, float effectiveY) = GetEffectiveInput(xInput, yInput);
