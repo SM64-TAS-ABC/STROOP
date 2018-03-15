@@ -320,18 +320,8 @@ namespace STROOP.Managers
         {
             if (name == null) return new List<ObjectDataModel>();
 
-            Dictionary<ObjectDataModel, string> dictionary =
-                new Dictionary<ObjectDataModel, string>();
-            ObjectSlots.ForEach(slot =>
-            {
-                ObjectDataModel objectDataModel = slot.CurrentObject;
-                string slotName = Config.ObjectAssociations.GetObjectName(slot.Behavior);
-                dictionary.Add(objectDataModel, slotName);
-            });
-            return dictionary.Keys.ToList().FindAll(objectDataModel =>
-            {
-                return objectDataModel.IsActive && dictionary[objectDataModel] == name;
-            });
+            return DataModels.Objects.Where(o => o != null && o.IsActive
+                && o.BehaviorAssociation.Name == name).ToList();
         }
 
         public ObjectDataModel GetObjectFromLabel(string name)
