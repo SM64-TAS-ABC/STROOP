@@ -12,7 +12,7 @@ namespace STROOP.Models
     public class ObjectDataModel : IUpdatableDataModel
     {
         const ushort ActiveStatus = 0x0101;
-        public uint Address { get; private set; }
+        public uint Address { get; set; }
 
         #region Behavior
         private bool _isActive;

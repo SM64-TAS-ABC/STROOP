@@ -119,6 +119,7 @@ namespace STROOP.Models
                 obj = new ObjectDataModel(address, false);
                 _objects[slotIndex] = obj;
             }
+            obj.Address = address;
 
             return obj;
         }
