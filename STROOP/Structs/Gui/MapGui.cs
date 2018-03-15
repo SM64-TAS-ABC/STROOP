@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using OpenTK.Graphics.OpenGL;
 using OpenTK;
 using STROOP.Controls;
+using STROOP.Controls.Map.Trackers;
 
 namespace STROOP.Structs
 {

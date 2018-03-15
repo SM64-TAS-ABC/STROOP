@@ -12,20 +12,17 @@ using STROOP.Utilities;
 using System.Xml.Linq;
 using STROOP.Structs.Configurations;
 using System.Drawing.Drawing2D;
+using STROOP.Interfaces;
 
-namespace STROOP.Controls
+namespace STROOP.Controls.Map.Trackers
 {
     public partial class MapTracker : UserControl
-    {
-        private readonly MapTrackerFlowLayoutPanel _flowLayoutPanel;
-        
-        public MapTracker(MapTrackerFlowLayoutPanel flowLayoutPanel)
+    {     
+        public MapTracker()
         {
             InitializeComponent();
             tableLayoutPanelVarHack.BorderWidth = 2;
             tableLayoutPanelVarHack.ShowBorder = true;
-
-            _flowLayoutPanel = flowLayoutPanel;
 
             comboBoxVisibilityType.DataSource = Enum.GetValues(typeof(MapTrackerVisibilityType));
             comboBoxOrderType.DataSource = Enum.GetValues(typeof(MapTrackerOrderType));

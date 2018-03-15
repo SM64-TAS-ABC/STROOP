@@ -1,4 +1,5 @@
 ﻿using STROOP.Forms;
+using STROOP.Interfaces;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
@@ -11,18 +12,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
-namespace STROOP.Controls
+namespace STROOP.Controls.Map.Trackers
 {
     public class MapTrackerFlowLayoutPanel : NoTearFlowLayoutPanel
     {
-        private readonly Object _objectLock;
+        private readonly Object _objectLock = new Object();
 
-        public MapTrackerFlowLayoutPanel()
-        {
-            _objectLock = new Object();
-        }
-
-        public void MoveUpControl(MapTracker mapTracker)
+        public void MoveUpControl(Control mapTracker)
         {
             lock (_objectLock)
             {
@@ -33,7 +29,7 @@ namespace STROOP.Controls
             }
         }
 
-        public void MoveDownControl(MapTracker mapTracker)
+        public void MoveDownControl(Control mapTracker)
         {
             lock (_objectLock)
             {
@@ -44,7 +40,7 @@ namespace STROOP.Controls
             }
         }
 
-        public void RemoveControl(MapTracker mapTracker)
+        public void RemoveControl(Control mapTracker)
         {
             lock (_objectLock)
             {
@@ -52,9 +48,8 @@ namespace STROOP.Controls
             }
         }
 
-        public void AddNewControl()
+        public void AddNewControl(Control mapTracker)
         {
-            MapTracker mapTracker = new MapTracker(this);
             lock (_objectLock)
             {
                 Controls.Add(mapTracker);
@@ -73,11 +68,8 @@ namespace STROOP.Controls
         {
             lock (_objectLock)
             {
-                for (int i = 0; i < Controls.Count; i++)
-                {
-                    MapTracker mapTracker = Controls[i] as MapTracker;
-                    mapTracker.UpdateControl();
-                }
+                foreach(IUpdatable updatable in Controls.OfType<IUpdatable>())
+                    updatable?.Update();
             }
         }
 

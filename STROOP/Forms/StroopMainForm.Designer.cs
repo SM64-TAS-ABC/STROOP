@@ -1,4 +1,5 @@
 ﻿using STROOP.Controls;
+using STROOP.Controls.Map.Trackers;
 using System.Windows.Forms;
 
 namespace STROOP
@@ -654,7 +655,7 @@ namespace STROOP
             this.radioButtonMapControlsScaleCustom = new System.Windows.Forms.RadioButton();
             this.buttonMapControlsScaleChangePlus = new System.Windows.Forms.Button();
             this.tabPage3D = new System.Windows.Forms.TabPage();
-            this.flowLayoutPanelMapTrackers = new STROOP.Controls.MapTrackerFlowLayoutPanel();
+            this.flowLayoutPanelMapTrackers = new STROOP.Controls.Map.Trackers.MapTrackerFlowLayoutPanel();
             this.glControlMap = new OpenTK.GLControl();
             this.tabPagePu = new System.Windows.Forms.TabPage();
             this.splitContainerPu = new STROOP.BetterSplitContainer();

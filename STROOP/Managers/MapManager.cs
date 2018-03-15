@@ -14,6 +14,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Controls.Map.Graphics;
 using STROOP.Controls.Map;
 using STROOP.Controls.Map.Objects;
+using STROOP.Controls.Map.Trackers;
 
 namespace STROOP.Managers
 {
@@ -64,7 +65,7 @@ namespace STROOP.Managers
             _mapGui.RadioButtonAngle49152.Click += (sender, e) => _mapAngle = MapAngle._49152;
             _mapGui.RadioButtonAngleCustom.Click += (sender, e) => _mapAngle = MapAngle.Custom;
 
-            _mapGui.ButtonAdd.Click += (sender, e) => _mapGui.MapTrackerFlowLayoutPanel.AddNewControl();
+            _mapGui.ButtonAdd.Click += (sender, e) => _mapGui.MapTrackerFlowLayoutPanel.AddNewControl(new MapTracker());
             _mapGui.ButtonClear.Click += (sender, e) => _mapGui.MapTrackerFlowLayoutPanel.ClearControls();
 
             // Test

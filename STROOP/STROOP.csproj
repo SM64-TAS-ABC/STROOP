@@ -135,13 +135,14 @@
     <Compile Include="Controls\BetterSplitContainer.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\MapTracker.cs">
+    <Compile Include="Interfaces\IUpdatable.cs" />
+    <Compile Include="Controls\Map\Trackers\MapTracker.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\MapTracker.Designer.cs">
+    <Compile Include="Controls\Map\Trackers\MapTracker.Designer.cs">
       <DependentUpon>MapTracker.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\MapTrackerFlowLayoutPanel.cs">
+    <Compile Include="Controls\Map\Trackers\MapTrackerFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\WatchVariableControl.cs">
@@ -441,7 +442,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <EmbeddedResource Include="Controls\MapTracker.resx">
+    <EmbeddedResource Include="Controls\Map\Trackers\MapTracker.resx">
       <DependentUpon>MapTracker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\WatchVariableControl.resx">

@@ -1,4 +1,4 @@
-﻿namespace STROOP.Controls
+﻿namespace STROOP.Controls.Map.Trackers
 {
     partial class MapTracker
     {
@@ -40,8 +40,8 @@
             this.textBoxAddressValue = new STROOP.BetterTextbox();
             this.panelObjectBorder = new System.Windows.Forms.Panel();
             this.pictureBoxObject = new STROOP.Controls.IntPictureBox();
-            this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.textBoxObjAngleYaw = new STROOP.BetterTextbox();
             this.betterTextbox1 = new STROOP.BetterTextbox();
             this.labelObjBhv = new System.Windows.Forms.Label();
@@ -54,8 +54,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panelObjectBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanelVarHack
@@ -69,7 +69,7 @@
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
-            this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 53F));
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelVarHack.Controls.Add(this.pictureBoxDownArrow, 4, 3);
             this.tableLayoutPanelVarHack.Controls.Add(this.pictureBoxUpArrow, 4, 2);
@@ -227,19 +227,6 @@
             this.pictureBoxObject.TabIndex = 0;
             this.pictureBoxObject.TabStop = false;
             // 
-            // trackBarObjSlotSize
-            // 
-            this.tableLayoutPanelVarHack.SetColumnSpan(this.trackBarObjSlotSize, 2);
-            this.trackBarObjSlotSize.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackBarObjSlotSize.Location = new System.Drawing.Point(83, 28);
-            this.trackBarObjSlotSize.Maximum = 100;
-            this.trackBarObjSlotSize.Minimum = 15;
-            this.trackBarObjSlotSize.Name = "trackBarObjSlotSize";
-            this.trackBarObjSlotSize.Size = new System.Drawing.Size(140, 17);
-            this.trackBarObjSlotSize.TabIndex = 19;
-            this.trackBarObjSlotSize.TickFrequency = 10;
-            this.trackBarObjSlotSize.Value = 40;
-            // 
             // trackBar1
             // 
             this.tableLayoutPanelVarHack.SetColumnSpan(this.trackBar1, 2);
@@ -252,6 +239,19 @@
             this.trackBar1.TabIndex = 19;
             this.trackBar1.TickFrequency = 10;
             this.trackBar1.Value = 40;
+            // 
+            // trackBarObjSlotSize
+            // 
+            this.tableLayoutPanelVarHack.SetColumnSpan(this.trackBarObjSlotSize, 2);
+            this.trackBarObjSlotSize.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trackBarObjSlotSize.Location = new System.Drawing.Point(83, 28);
+            this.trackBarObjSlotSize.Maximum = 100;
+            this.trackBarObjSlotSize.Minimum = 15;
+            this.trackBarObjSlotSize.Name = "trackBarObjSlotSize";
+            this.trackBarObjSlotSize.Size = new System.Drawing.Size(140, 17);
+            this.trackBarObjSlotSize.TabIndex = 19;
+            this.trackBarObjSlotSize.TickFrequency = 10;
+            this.trackBarObjSlotSize.Value = 40;
             // 
             // textBoxObjAngleYaw
             // 
@@ -313,8 +313,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panelObjectBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
             this.ResumeLayout(false);
 
         }
