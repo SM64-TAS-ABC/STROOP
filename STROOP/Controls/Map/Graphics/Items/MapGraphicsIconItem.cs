@@ -9,8 +9,14 @@ using OpenTK;
 
 namespace STROOP.Controls.Map.Graphics.Items
 {
-    class MapGraphicsIconItem : MapGraphicsItem
+    public class MapGraphicsIconItem : MapGraphicsItem
     {
+        public enum DepthPriority
+        {
+            Bottom,
+            Top
+        }
+
         Bitmap _image;
         bool _imageUpdated;
         SizeF _imageNormalizedSize;
@@ -34,15 +40,25 @@ namespace STROOP.Controls.Map.Graphics.Items
 
         public float Size { get; set; } = 0.1f;
 
-        public bool DrawOnTopDown { get; set; }
+        public int DisplayLayer { get; set; }
 
-        public bool DrawOnPerspective { get; set; }
+        private float _opacity = 1.0f;
+        public float Opacity
+        {
+            get => _opacity;
+            set
+            {
+                if (value == _opacity)
+                    return;
 
-        public float TopDownPriority { get; set; }
+                _opacity = value;
+                UpdateOpacity();
+            }
+        }
 
         public override IEnumerable<Type> DrawOnCameraTypes => CameraTypeAny;
 
-        public override float? Depth => Position.Y + 0x10000 * TopDownPriority;
+        public override float? Depth => Position.Y + 0x10000 * DisplayLayer;
 
         public override DrawType Type => DrawType.Overlay;
 
@@ -66,6 +82,19 @@ namespace STROOP.Controls.Map.Graphics.Items
             GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexBuffer);
             GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(_vertices.Length * Vertex.Size),
                 _vertices, BufferUsageHint.StaticDraw);
+        }
+
+        private void UpdateOpacity()
+        {
+            // Get updated vertices
+            Vertex[] updatedVertices = _vertices.ToArray();
+            for (int i = 0; i < updatedVertices.Length; i++)
+                updatedVertices[i].Color.A = _opacity;
+
+            // Update buffer
+            GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexBuffer);
+            GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(updatedVertices.Length * Vertex.Size),
+                updatedVertices, BufferUsageHint.StaticDraw);
         }
 
         public override Matrix4 GetModelMatrix(MapGraphics graphics)

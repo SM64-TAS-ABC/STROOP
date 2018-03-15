@@ -12,21 +12,19 @@ using STROOP.Utilities;
 
 namespace STROOP.Controls.Map.Objects
 {
-    class MapMarioObject : MapObject
+    class MapMarioObject : MapIconObject
     {
-        MapGraphicsIconItem _icon;
-
-        public override IEnumerable<MapGraphicsItem> GraphicsItems => new List<MapGraphicsItem>() { _icon };
+        protected override MapGraphicsIconItem _iconGraphics { get; set; }
 
         public MapMarioObject()
         {
-            _icon = new MapGraphicsIconItem(Config.ObjectAssociations.MarioMapImage as Bitmap);
+            _iconGraphics = new MapGraphicsIconItem(Config.ObjectAssociations.MarioMapImage as Bitmap);
         }
 
         public override void Update()
         {
-            _icon.Rotation = (float)MoreMath.AngleUnitsToRadians(DataModels.Mario.FacingYaw);
-            _icon.Position = new OpenTK.Vector3(DataModels.Mario.X, DataModels.Mario.Y, DataModels.Mario.Z);
+            _iconGraphics.Rotation = Rotates ? (float)MoreMath.AngleUnitsToRadians(DataModels.Mario.FacingYaw) : 0;
+            _iconGraphics.Position = new OpenTK.Vector3(DataModels.Mario.X, DataModels.Mario.Y, DataModels.Mario.Z);
         }
     }
 }

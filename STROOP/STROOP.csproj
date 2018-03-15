@@ -135,6 +135,7 @@
     <Compile Include="Controls\BetterSplitContainer.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\Map\Objects\MapIconObject.cs" />
     <Compile Include="Interfaces\IUpdatable.cs" />
     <Compile Include="Controls\Map\Trackers\MapTracker.cs">
       <SubType>UserControl</SubType>

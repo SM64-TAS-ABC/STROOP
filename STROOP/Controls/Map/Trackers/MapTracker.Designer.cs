@@ -35,12 +35,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.comboBoxVisibilityType = new System.Windows.Forms.ComboBox();
             this.comboBoxOrderType = new System.Windows.Forms.ComboBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBoxRotates = new System.Windows.Forms.CheckBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.textBoxAddressValue = new STROOP.BetterTextbox();
             this.panelObjectBorder = new System.Windows.Forms.Panel();
             this.pictureBoxObject = new STROOP.Controls.IntPictureBox();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.trackBarOpacity = new System.Windows.Forms.TrackBar();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.textBoxObjAngleYaw = new STROOP.BetterTextbox();
             this.betterTextbox1 = new STROOP.BetterTextbox();
@@ -54,7 +54,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panelObjectBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarOpacity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,7 +69,7 @@
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
-            this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 53F));
+            this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelVarHack.Controls.Add(this.pictureBoxDownArrow, 4, 3);
             this.tableLayoutPanelVarHack.Controls.Add(this.pictureBoxUpArrow, 4, 2);
@@ -77,11 +77,11 @@
             this.tableLayoutPanelVarHack.Controls.Add(this.pictureBox1, 4, 1);
             this.tableLayoutPanelVarHack.Controls.Add(this.comboBoxVisibilityType, 3, 1);
             this.tableLayoutPanelVarHack.Controls.Add(this.comboBoxOrderType, 3, 2);
-            this.tableLayoutPanelVarHack.Controls.Add(this.checkBox1, 3, 0);
+            this.tableLayoutPanelVarHack.Controls.Add(this.checkBoxRotates, 3, 0);
             this.tableLayoutPanelVarHack.Controls.Add(this.pictureBox3, 3, 3);
             this.tableLayoutPanelVarHack.Controls.Add(this.textBoxAddressValue, 0, 3);
             this.tableLayoutPanelVarHack.Controls.Add(this.panelObjectBorder, 0, 0);
-            this.tableLayoutPanelVarHack.Controls.Add(this.trackBar1, 1, 3);
+            this.tableLayoutPanelVarHack.Controls.Add(this.trackBarOpacity, 1, 3);
             this.tableLayoutPanelVarHack.Controls.Add(this.trackBarObjSlotSize, 1, 1);
             this.tableLayoutPanelVarHack.Controls.Add(this.textBoxObjAngleYaw, 2, 0);
             this.tableLayoutPanelVarHack.Controls.Add(this.betterTextbox1, 2, 2);
@@ -99,6 +99,7 @@
             this.tableLayoutPanelVarHack.ShowBorder = false;
             this.tableLayoutPanelVarHack.Size = new System.Drawing.Size(373, 99);
             this.tableLayoutPanelVarHack.TabIndex = 40;
+            this.tableLayoutPanelVarHack.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanelVarHack_Paint);
             // 
             // pictureBoxDownArrow
             // 
@@ -164,16 +165,17 @@
             this.comboBoxOrderType.Size = new System.Drawing.Size(102, 21);
             this.comboBoxOrderType.TabIndex = 15;
             // 
-            // checkBox1
+            // checkBoxRotates
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkBox1.Location = new System.Drawing.Point(230, 4);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(100, 17);
-            this.checkBox1.TabIndex = 16;
-            this.checkBox1.Text = "Rotate";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBoxRotates.AutoSize = true;
+            this.checkBoxRotates.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxRotates.Location = new System.Drawing.Point(230, 4);
+            this.checkBoxRotates.Name = "checkBoxRotates";
+            this.checkBoxRotates.Size = new System.Drawing.Size(100, 17);
+            this.checkBoxRotates.TabIndex = 16;
+            this.checkBoxRotates.Text = "Rotate";
+            this.checkBoxRotates.UseVisualStyleBackColor = true;
+            this.checkBoxRotates.CheckedChanged += new System.EventHandler(this.checkBoxRotates_CheckedChanged);
             // 
             // pictureBox3
             // 
@@ -227,18 +229,19 @@
             this.pictureBoxObject.TabIndex = 0;
             this.pictureBoxObject.TabStop = false;
             // 
-            // trackBar1
+            // trackBarOpacity
             // 
-            this.tableLayoutPanelVarHack.SetColumnSpan(this.trackBar1, 2);
-            this.trackBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackBar1.Location = new System.Drawing.Point(83, 76);
-            this.trackBar1.Maximum = 100;
-            this.trackBar1.Minimum = 15;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(140, 19);
-            this.trackBar1.TabIndex = 19;
-            this.trackBar1.TickFrequency = 10;
-            this.trackBar1.Value = 40;
+            this.tableLayoutPanelVarHack.SetColumnSpan(this.trackBarOpacity, 2);
+            this.trackBarOpacity.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trackBarOpacity.Location = new System.Drawing.Point(83, 76);
+            this.trackBarOpacity.Maximum = 100;
+            this.trackBarOpacity.Minimum = 15;
+            this.trackBarOpacity.Name = "trackBarOpacity";
+            this.trackBarOpacity.Size = new System.Drawing.Size(140, 19);
+            this.trackBarOpacity.TabIndex = 19;
+            this.trackBarOpacity.TickFrequency = 10;
+            this.trackBarOpacity.Value = 40;
+            this.trackBarOpacity.ValueChanged += new System.EventHandler(this.trackBarOpacity_ValueChanged);
             // 
             // trackBarObjSlotSize
             // 
@@ -252,6 +255,7 @@
             this.trackBarObjSlotSize.TabIndex = 19;
             this.trackBarObjSlotSize.TickFrequency = 10;
             this.trackBarObjSlotSize.Value = 40;
+            this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
             // textBoxObjAngleYaw
             // 
@@ -304,6 +308,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MapTracker";
             this.Size = new System.Drawing.Size(373, 99);
+            this.Load += new System.EventHandler(this.MapTracker_Load);
             this.tableLayoutPanelVarHack.ResumeLayout(false);
             this.tableLayoutPanelVarHack.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).EndInit();
@@ -313,7 +318,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panelObjectBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarOpacity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
             this.ResumeLayout(false);
 
@@ -329,11 +334,11 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox comboBoxVisibilityType;
         private System.Windows.Forms.ComboBox comboBoxOrderType;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBoxRotates;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Panel panelObjectBorder;
         private IntPictureBox pictureBoxObject;
-        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.TrackBar trackBarOpacity;
         private System.Windows.Forms.TrackBar trackBarObjSlotSize;
         private BetterTextbox textBoxObjAngleYaw;
         private BetterTextbox betterTextbox1;

@@ -36,6 +36,10 @@ namespace STROOP.Managers
         private MapCenter _mapCenter = MapCenter.BestFit;
         private MapAngle _mapAngle = MapAngle._32768;
 
+        #region Objects
+        private MapMarioObject _mapObjMario;
+        #endregion
+
         public MapManager(MapAssociations mapAssoc, MapGui mapGui)
         {
             _mapAssoc = mapAssoc;
@@ -65,12 +69,14 @@ namespace STROOP.Managers
             _mapGui.RadioButtonAngle49152.Click += (sender, e) => _mapAngle = MapAngle._49152;
             _mapGui.RadioButtonAngleCustom.Click += (sender, e) => _mapAngle = MapAngle.Custom;
 
-            _mapGui.ButtonAdd.Click += (sender, e) => _mapGui.MapTrackerFlowLayoutPanel.AddNewControl(new MapTracker());
+            _mapGui.ButtonAdd.Click += (sender, e) => _mapGui.MapTrackerFlowLayoutPanel.AddNewControl(new MapTracker(_mapObjMario));
             _mapGui.ButtonClear.Click += (sender, e) => _mapGui.MapTrackerFlowLayoutPanel.ClearControls();
 
             // Test
+            _mapObjMario = new MapMarioObject();
+
             _controller.AddMapObject(new MapLevelObject(_mapAssoc));
-            _controller.AddMapObject(new MapMarioObject());
+            _controller.AddMapObject(_mapObjMario);
         }
 
         public void Update()
