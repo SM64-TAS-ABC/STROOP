@@ -487,7 +487,7 @@ namespace STROOP
 
             Color mainColor = ObjectSlotsConfig.GetProcessingGroupColor(CurrentObject?.CurrentProcessGroup);
             Color textColor = _manager.LabelsLocked ? Color.Blue : Color.Black;
-            string text = address.HasValue ? _manager.SlotLabelsForObjects[address.Value] : "";
+            string text = CurrentObject != null ? _manager.SlotLabelsForObjects[CurrentObject] : "";
 
             // Update UI element
 

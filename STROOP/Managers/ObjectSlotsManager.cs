@@ -33,7 +33,7 @@ namespace STROOP.Managers
 
         ObjectSlotManagerGui _gui;
 
-        Dictionary<uint, Tuple<int?, int?>> _lockedSlotIndices = new Dictionary<uint, Tuple<int?, int?>>();
+        Dictionary<ObjectDataModel, Tuple<int?, int?>> _lockedSlotIndices = new Dictionary<ObjectDataModel, Tuple<int?, int?>>();
         public bool LabelsLocked = false;
 
         uint? _lastSelectedAddress = null;
@@ -41,8 +41,8 @@ namespace STROOP.Managers
         public HashSet<uint> SelectedOnMapSlotsAddresses = new HashSet<uint>();
         public HashSet<uint> MarkedSlotsAddresses = new HashSet<uint>();
 
-        private Dictionary<uint, string> _slotLabels = new Dictionary<uint, string>();
-        public IReadOnlyDictionary<uint, string> SlotLabelsForObjects { get; private set; }
+        private Dictionary<ObjectDataModel, string> _slotLabels = new Dictionary<ObjectDataModel, string>();
+        public IReadOnlyDictionary<ObjectDataModel, string> SlotLabelsForObjects { get; private set; }
 
         public TabType ActiveTab;
         public SortMethodType SortMethod = SortMethodType.ProcessingOrder;
@@ -69,7 +69,7 @@ namespace STROOP.Managers
                 _gui.FlowLayoutContainer.Controls.Add(objectSlot);
             };
 
-            SlotLabelsForObjects = new ReadOnlyDictionary<uint, string>(_slotLabels);
+            SlotLabelsForObjects = new ReadOnlyDictionary<ObjectDataModel, string>(_slotLabels);
         }
 
         public void ChangeSlotSize(int newSize)
@@ -306,10 +306,10 @@ namespace STROOP.Managers
             if (!LabelsLocked)
             {
                 foreach(ObjectDataModel obj in DataModels.Objects.Where(o => o != null))
-                    _lockedSlotIndices[obj.Address] = new Tuple<int?, int?>(obj.ProcessIndex, obj.VacantSlotIndex);
+                    _lockedSlotIndices[obj] = new Tuple<int?, int?>(obj.ProcessIndex, obj.VacantSlotIndex);
             }
-            foreach (uint address in sortedObjects.Where(o => o != null).Select(o => o.Address))
-                _slotLabels[address] = GetSlotLabelFromAddress(address);
+            foreach (ObjectDataModel obj in sortedObjects.Where(o => o != null))
+                _slotLabels[obj] = GetSlotLabelFromObject(obj);
 
             // Update object slots
             foreach (var item in sortedObjects.Zip(ObjectSlots, (o, s) => new { Slot = s, Obj = o }))
@@ -342,12 +342,12 @@ namespace STROOP.Managers
             return slot?.CurrentObject;
         }
 
-        public int GetSlotIndexFromAddress(uint objAddress)
+        public int? GetSlotIndexFromObj(ObjectDataModel obj)
         {
-            return ObjectSlots.FirstOrDefault(o => o.CurrentObject.Address == objAddress)?.Index ?? -1;
+            return ObjectSlots.FirstOrDefault(o => o.CurrentObject?.Equals(obj) ?? false)?.Index;
         }
 
-        public string GetSlotLabelFromAddress(uint objAddress)
+        public string GetSlotLabelFromObject(ObjectDataModel obj)
         {
             switch (LabelMethod)
             {
@@ -358,15 +358,15 @@ namespace STROOP.Managers
                         goto case SlotLabelType.SlotPosVs;
 
                 case SlotLabelType.SlotIndex:
-                    return String.Format("{0}", (objAddress - ObjectSlotsConfig.LinkStartAddress)
+                    return String.Format("{0}", (obj.Address - ObjectSlotsConfig.LinkStartAddress)
                         / ObjectConfig.StructSize + (OptionsConfig.SlotIndexsFromOne ? 1 : 0));
 
                 case SlotLabelType.SlotPos:
-                    return String.Format("{0}", _lockedSlotIndices[objAddress].Item1
+                    return String.Format("{0}", _lockedSlotIndices[obj].Item1
                         + (OptionsConfig.SlotIndexsFromOne ? 1 : 0));
 
                 case SlotLabelType.SlotPosVs:
-                    var vacantSlotIndex = _lockedSlotIndices[objAddress].Item2;
+                    var vacantSlotIndex = _lockedSlotIndices[obj].Item2;
                     if (!vacantSlotIndex.HasValue)
                         goto case SlotLabelType.SlotPos;
 

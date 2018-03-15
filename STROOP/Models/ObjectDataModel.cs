@@ -12,7 +12,7 @@ namespace STROOP.Models
     public class ObjectDataModel : IUpdatableDataModel
     {
         const ushort ActiveStatus = 0x0101;
-        public uint Address;
+        public uint Address { get; private set; }
 
         #region Behavior
         private bool _isActive;
@@ -21,7 +21,7 @@ namespace STROOP.Models
             get => _isActive;
             set
             {
-                if (Config.Stream.SetValue(value ? ActiveStatus : (ushort)0, Address + ObjectConfig.ActiveOffset))
+                if (Config.Stream.SetValue(value ? ActiveStatus : (ushort) 0, Address + ObjectConfig.ActiveOffset))
                     _isActive = value;
             }
         }
@@ -219,13 +219,14 @@ namespace STROOP.Models
         }
         #endregion
 
-        public ObjectDataModel() { }
-
-        public ObjectDataModel(uint address)
+        public ObjectDataModel(uint address, bool update = true)
         {
             Address = address;
-            Update();
-            Update2();
+            if (update)
+            {
+                Update();
+                Update2();
+            }
         }
 
         public void Update()
@@ -260,10 +261,24 @@ namespace STROOP.Models
             _facingPitch = Config.Stream.GetUInt16(Address + ObjectConfig.PitchFacingOffset);
             _facingRoll = Config.Stream.GetUInt16(Address + ObjectConfig.RollFacingOffset);
         }
+
         public void Update2()
         {
             DistanceToMarioCalculated = MoreMath.GetDistanceBetween(_x, _y, _z,
                 DataModels.Mario.X, DataModels.Mario.Y, DataModels.Mario.Z);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (Object.ReferenceEquals(obj, null) || !(obj is ObjectDataModel))
+                return false;
+
+            return Address == (obj as ObjectDataModel).Address;
+        }
+
+        public override int GetHashCode()
+        {
+            return Address.GetHashCode();
         }
     }
 }

@@ -58,10 +58,9 @@ namespace STROOP.Models
                         return null;
                     }
 
-                    ObjectDataModel obj = GetOrCreateObjectSlot(slotIndex);
+                    ObjectDataModel obj = GetOrCreateObjectSlot(slotIndex, objAddress);
 
                     // Get data
-                    obj.Address = objAddress;
                     obj.CurrentProcessGroup = processGroup;
                     obj.ProcessIndex = slotIndex;
                     obj.VacantSlotIndex = null;
@@ -92,9 +91,8 @@ namespace STROOP.Models
                     return;
                 }
 
-                ObjectDataModel obj = GetOrCreateObjectSlot(slotIndex);
+                ObjectDataModel obj = GetOrCreateObjectSlot(slotIndex, objAddress);
 
-                obj.Address = objAddress;
                 obj.CurrentProcessGroup = null;
                 obj.ProcessIndex = slotIndex;
                 obj.VacantSlotIndex = vacantSlotIndex;
@@ -113,12 +111,12 @@ namespace STROOP.Models
             }
         }
 
-        private ObjectDataModel GetOrCreateObjectSlot(int slotIndex)
+        private ObjectDataModel GetOrCreateObjectSlot(int slotIndex, uint address)
         {
             ObjectDataModel obj = _objects[slotIndex];
             if (obj == null)
             {
-                obj = new ObjectDataModel();
+                obj = new ObjectDataModel(address, false);
                 _objects[slotIndex] = obj;
             }
 

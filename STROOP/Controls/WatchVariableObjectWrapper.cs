@@ -64,12 +64,11 @@ namespace STROOP.Controls
 
             uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(stringValue);
             if (!uintValueNullable.HasValue) return stringValue;
-            uint uintValue = uintValueNullable.Value;
+            if (uintValueNullable == ObjectSlotsConfig.UnusedSlotAddress) return "(unused object)";
+            ObjectDataModel obj = DataModels.Objects.FirstOrDefault(o => o?.Address == uintValueNullable);
+            if (obj == null) return "(no object)";
 
-            if (uintValue == 0) return "(no object)";
-            if (uintValue == ObjectSlotsConfig.UnusedSlotAddress) return "(unused object)";
-
-            string slotName = Config.ObjectSlotsManager.GetSlotLabelFromAddress(uintValue);
+            string slotName = Config.ObjectSlotsManager.GetSlotLabelFromObject(obj);
             if (slotName == null) return "(unknown object)";
             return "Slot " + slotName;
         }
