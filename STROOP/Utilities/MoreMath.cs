@@ -622,10 +622,6 @@ namespace STROOP.Utilities
             int bestY = 0;
 
             ushort truncatedGoalAngle = NormalizeAngleTruncated(goalAngle);
-
-
-
-
             ushort reversedCameraAngle = NormalizeAngleUshort(ReverseAngle(cameraAngle));
             ushort goalMarioAngle = NormalizeAngleUshort(goalAngle - reversedCameraAngle);
             double goalMarioAngleRadians = AngleUnitsToRadians(goalMarioAngle);
@@ -683,28 +679,36 @@ namespace STROOP.Utilities
             }
 
             int max = positiveA ? 127 : 128;
-            for (int a = 8; a <= max; a++)
+            for (int aMag = 8; aMag <= max; aMag++)
             {
+                double ratio = useX ?
+                    Math.Cos(goalMarioAngleRadians) / Math.Sin(goalMarioAngleRadians) :
+                    Math.Sin(goalMarioAngleRadians) / Math.Cos(goalMarioAngleRadians);
+                double ratioAbs = Math.Abs(ratio);
+                int bMedianMag = (int)(aMag * ratioAbs);
 
-            }
-
-            /*
-                (float effectiveX, float effectiveY) = GetEffectiveInput(xInput, yInput);
-            ushort marioAngle = InGameATan(effectiveY, -effectiveX);
-
-            ushort inputAngle = CalculateAngleFromInputs(x, y, cameraAngle);
-            ushort truncatedInputAngle = NormalizeAngleTruncated(inputAngle);
-            if (truncatedInputAngle == truncatedGoalAngle)
-            {
-                double magnitude = GetEffectiveInputMagnitude(x, y);
-                if (magnitude > bestMagnitude)
+                int a = aMag * (positiveA ? 1 : -1);
+                int bMedian = bMedianMag * (positiveB ? 1 : -1);
+                int width = 2;
+                for (int b = bMedian - width; b <= bMedian + width; b++)
                 {
-                    bestMagnitude = magnitude;
-                    bestX = x;
-                    bestY = y;
+                    int x = useX ? a : b;
+                    int y = useX ? b : a;
+
+                    ushort inputAngle = CalculateAngleFromInputs(x, y, cameraAngle);
+                    ushort truncatedInputAngle = NormalizeAngleTruncated(inputAngle);
+                    if (truncatedInputAngle == truncatedGoalAngle)
+                    {
+                        double magnitude = GetEffectiveInputMagnitude(x, y);
+                        if (magnitude > bestMagnitude)
+                        {
+                            bestMagnitude = magnitude;
+                            bestX = x;
+                            bestY = y;
+                        }
+                    }
                 }
             }
-            */
 
             return (bestX, bestY);
         }
