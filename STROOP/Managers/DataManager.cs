@@ -49,6 +49,11 @@ namespace STROOP.Managers
             _variablePanel.ClearVariables();
         }
 
+        public virtual void ClearAllButHighlightedVariables()
+        {
+            _variablePanel.ClearAllButHighlightedVariables();
+        }
+
         public void OpenVariables()
         {
             _variablePanel.OpenVariables();

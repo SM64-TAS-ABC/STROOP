@@ -59,6 +59,9 @@ namespace STROOP.Controls
             ToolStripMenuItem resetVariablesItem = new ToolStripMenuItem("Reset Variables");
             resetVariablesItem.Click += (sender, e) => ResetVariables();
 
+            ToolStripMenuItem clearAllButHighlightedItem = new ToolStripMenuItem("Clear All But Highlighted");
+            clearAllButHighlightedItem.Click += (sender, e) => ClearAllButHighlightedVariables();
+
             ToolStripMenuItem showVariableXmlItem = new ToolStripMenuItem("Show Variable XML");
             showVariableXmlItem.Click += (sender, e) => ShowVariableXml();
 
@@ -154,6 +157,7 @@ namespace STROOP.Controls
 
             ContextMenuStrip.Items.Add(enableCustomization);
             ContextMenuStrip.Items.Add(resetVariablesItem);
+            ContextMenuStrip.Items.Add(clearAllButHighlightedItem);
             ContextMenuStrip.Items.Add(showVariableXmlItem);
             ContextMenuStrip.Items.Add(showVariableInfoItem);
             ContextMenuStrip.Items.Add(setAllRoundingLimitsItem);
@@ -264,6 +268,14 @@ namespace STROOP.Controls
             List<WatchVariableControl> watchVarControlListCopy =
                 new List<WatchVariableControl>(_watchVarControls);
             RemoveVariables(watchVarControlListCopy);
+        }
+
+        public void ClearAllButHighlightedVariables()
+        {
+            List<WatchVariableControl> nonHighlighted =
+                _watchVarControls.FindAll(control => !control.ShowBorder);
+            RemoveVariables(nonHighlighted);
+            _watchVarControls.ForEach(control => control.ShowBorder = false);
         }
 
         public void ResetVariables()
