@@ -422,7 +422,7 @@ namespace STROOP.Managers
 
         public void SetBehaviorWatchVariables(List<WatchVariableControl> watchVarControls, Color color)
         {
-            RemoveObjSpecificVariables();
+            RemoveVariableGroup(VariableGroup.ObjectSpecific);
             watchVarControls.ForEach(watchVarControl => watchVarControl.BaseColor = color);
             AddVariables(watchVarControls);
         }

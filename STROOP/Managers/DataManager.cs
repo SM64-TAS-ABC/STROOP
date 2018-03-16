@@ -29,9 +29,9 @@ namespace STROOP.Managers
                 visibleVariableGroups);
         }
 
-        public virtual void RemoveObjSpecificVariables()
+        public virtual void RemoveVariableGroup(VariableGroup varGroup)
         {
-            _variablePanel.RemoveVariables(VariableGroup.ObjectSpecific);
+            _variablePanel.RemoveVariables(varGroup);
         }
 
         public virtual void AddVariable(WatchVariableControl watchVarControl)
