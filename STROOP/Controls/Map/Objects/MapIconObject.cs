@@ -15,6 +15,6 @@ namespace STROOP.Controls.Map.Objects
         public float Size { get => _iconGraphics.Size; set => _iconGraphics.Size = value; }
         public int DisplayLayer { get => _iconGraphics.DisplayLayer; set => DisplayLayer = value; }
         public float Opacity { get => _iconGraphics.Opacity; set => _iconGraphics.Opacity = value; }
-        public bool Rotates { get; set; }
+        public bool Rotates { get; set; } = true;
     }
 }

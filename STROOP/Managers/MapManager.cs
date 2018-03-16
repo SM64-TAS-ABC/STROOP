@@ -38,6 +38,8 @@ namespace STROOP.Managers
 
         #region Objects
         private MapMarioObject _mapObjMario;
+        private MapHolpObject _mapObjHolp;
+        private MapCameraObject _mapObjCamera;
         #endregion
 
         public MapManager(MapAssociations mapAssoc, MapGui mapGui)
@@ -74,9 +76,13 @@ namespace STROOP.Managers
 
             // Test
             _mapObjMario = new MapMarioObject();
+            _mapObjHolp = new MapHolpObject();
+            _mapObjCamera = new MapCameraObject();
 
             _controller.AddMapObject(new MapLevelObject(_mapAssoc));
             _controller.AddMapObject(_mapObjMario);
+            _controller.AddMapObject(_mapObjHolp);
+            _controller.AddMapObject(_mapObjCamera);
         }
 
         public void Update()
