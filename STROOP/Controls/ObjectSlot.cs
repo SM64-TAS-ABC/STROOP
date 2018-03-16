@@ -48,7 +48,8 @@ namespace STROOP
         object _gfxLock = new object();
 
         public enum MouseStateType {None, Over, Down};
-        public MouseStateType MouseState;
+        private MouseStateType _mouseState;
+        private MouseStateType _mouseEnteredState;
 
         private BehaviorCriteria _behavior;
         public BehaviorCriteria Behavior
@@ -84,17 +85,19 @@ namespace STROOP
             Font = new Font(FontFamily.GenericSansSerif, 6);
 
             this.MouseDown += OnDrag;
-            this.MouseUp += (s, e) => { MouseState = MouseStateType.None; UpdateColors(); };
+            this.MouseUp += (s, e) => { _mouseState = _mouseEnteredState; UpdateColors(); };
             this.MouseEnter += (s, e) =>
             {
                 IsHovering = true;
-                MouseState = MouseStateType.Over;
+                _mouseEnteredState = MouseStateType.Over;
+                _mouseState = MouseStateType.Over;
                 UpdateColors();
             };
             this.MouseLeave += (s, e) =>
             {
                 IsHovering = false;
-                MouseState = MouseStateType.None;
+                _mouseEnteredState = MouseStateType.None;
+                _mouseState = MouseStateType.None;
                 UpdateColors();
             };
             this.Cursor = Cursors.Hand;
@@ -228,7 +231,7 @@ namespace STROOP
             var oldBackColor = _backColor;
             bool imageUpdated = false;
             var newColor = _mainColor;
-            switch (MouseState)
+            switch (_mouseState)
             {
                 case MouseStateType.Down:
                     _borderColor = newColor.Darken(0.5);
@@ -278,7 +281,7 @@ namespace STROOP
         private void OnDrag(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left) return;
-            MouseState = MouseStateType.Down;
+            _mouseState = MouseStateType.Down;
             UpdateColors();
         }
 
