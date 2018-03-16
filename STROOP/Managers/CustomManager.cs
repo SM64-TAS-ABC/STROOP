@@ -48,7 +48,14 @@ namespace STROOP.Managers
 
             Button buttonClearVars = splitContainerCustomControls.Panel1.Controls["buttonClearVars"] as Button;
             buttonClearVars.Click += (sender, e) => ClearVariables();
-
+            ControlUtilities.AddContextMenuStripFunctions(
+                buttonClearVars,
+                new List<string>() { "Clear All Vars", "Clear Default Vars" },
+                new List<Action>()
+                {
+                    () => ClearVariables(),
+                    () => RemoveVariableGroup(VariableGroup.Custom),
+                });
 
             _checkBoxCustomRecordValues = splitContainerCustomControls.Panel1.Controls["checkBoxCustomRecordValues"] as CheckBox;
             _checkBoxCustomRecordValues.Click += (sender, e) => ToggleRecording();
