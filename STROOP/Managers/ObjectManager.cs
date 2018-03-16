@@ -480,7 +480,7 @@ namespace STROOP.Managers
                     Name = Config.ObjectAssociations.GetObjectName(newBehavior);
                     SetBehaviorWatchVariables(
                         Config.ObjectAssociations.GetWatchVarControls(newBehavior),
-                        ObjectSlotsConfig.GetProcessingGroupColor(obj.CurrentProcessGroup)
+                        ObjectSlotsConfig.GetProcessingGroupColor(obj.BehaviorProcessGroup)
                         .Lighten(0.8));
                     Image = Config.ObjectAssociations.GetObjectImage(newBehavior);
                     _lastGeneralizedBehavior = newBehavior;
