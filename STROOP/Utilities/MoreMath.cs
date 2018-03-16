@@ -695,6 +695,9 @@ namespace STROOP.Utilities
                     int x = useX ? a : b;
                     int y = useX ? b : a;
 
+                    if (InputIsInDeadZone(x)) x = 0;
+                    if (InputIsInDeadZone(y)) y = 0;
+
                     ushort inputAngle = CalculateAngleFromInputs(x, y, cameraAngle);
                     ushort truncatedInputAngle = NormalizeAngleTruncated(inputAngle);
                     if (truncatedInputAngle == truncatedGoalAngle)
