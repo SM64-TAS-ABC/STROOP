@@ -268,7 +268,7 @@ namespace STROOP.Managers
             // Lock label update
             LabelsLocked = _gui.LockLabelsCheckbox.Checked;
 
-            ObjectSlot hoverObjectSlot = ObjectSlots.FirstOrDefault(s => s.IsHovering);
+            HoveredOverSlot = ObjectSlots.FirstOrDefault(s => s.IsHovering);
 
             // Processing sort order
             IEnumerable<ObjectDataModel> sortedObjects;
