@@ -421,9 +421,14 @@ namespace STROOP
                 _drawWallOverlay = OverlayConfig.ShowOverlayWallObject && address == DataModels.Mario.WallTriangle?.AssociatedObject;
                 _drawFloorOverlay = OverlayConfig.ShowOverlayFloorObject && address == DataModels.Mario.FloorTriangle?.AssociatedObject;
                 _drawCeilingOverlay = OverlayConfig.ShowOverlayCeilingObject && address == DataModels.Mario.CeilingTriangle?.AssociatedObject;
-                _drawParentOverlay = OverlayConfig.ShowOverlayParentObject && address == _manager.HoveredOverSlot?.CurrentObject?.Parent;
-                _drawParentUnusedOverlay = _drawParentOverlay && _manager.HoveredOverSlot?.CurrentObject?.Parent == 0;
-                _drawParentNoneOverlay = _drawParentOverlay && _manager.HoveredOverSlot?.CurrentObject?.Parent == ObjectSlotsConfig.UnusedSlotAddress;
+                _drawParentOverlay = OverlayConfig.ShowOverlayParentObject &&
+                    address == _manager.HoveredOverSlot?.CurrentObject?.Parent;
+                _drawParentNoneOverlay = OverlayConfig.ShowOverlayParentObject &&
+                    address == _manager.HoveredOverSlot?.CurrentObject?.Address &&
+                    _manager.HoveredOverSlot?.CurrentObject?.Parent == 0;
+                _drawParentUnusedOverlay = OverlayConfig.ShowOverlayParentObject &&
+                    address == _manager.HoveredOverSlot?.CurrentObject?.Address &&
+                    _manager.HoveredOverSlot?.CurrentObject?.Parent == ObjectSlotsConfig.UnusedSlotAddress;
                 _drawMarkedOverlay = _manager.MarkedSlotsAddresses.Contains(address.Value);
             }
             else
