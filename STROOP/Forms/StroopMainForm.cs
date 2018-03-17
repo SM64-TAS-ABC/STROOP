@@ -279,10 +279,10 @@ namespace STROOP
             {
                 try
                 {
-                    if (p.HasExited)
+                    if (!Config.Emulators.Select(e => e.ProcessName.ToLower()).Any(s => s.Contains(p.ProcessName.ToLower())))
                         continue;
 
-                    if (!Config.Emulators.Select(e => e.ProcessName.ToLower()).Any(s => s.Contains(p.ProcessName.ToLower())))
+                    if (p.HasExited)
                         continue;
                 }
                 catch (Win32Exception) // Access is denied
