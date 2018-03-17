@@ -1143,6 +1143,8 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
+            this.buttonTrackAllObjects = new STROOP.BinaryButton();
+            this.buttonUntrackAllObjects = new STROOP.BinaryButton();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -4896,7 +4898,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 286F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 287F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8992,6 +8994,8 @@ namespace STROOP
             // 
             this.tabPageMapOptions.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageMapOptions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageMapOptions.Controls.Add(this.buttonUntrackAllObjects);
+            this.tabPageMapOptions.Controls.Add(this.buttonTrackAllObjects);
             this.tabPageMapOptions.Controls.Add(this.checkBoxMapControlsTrackWallTriangle);
             this.tabPageMapOptions.Controls.Add(this.checkBoxMapControlsTrackGridlines);
             this.tabPageMapOptions.Controls.Add(this.checkBoxMapControlsTrackCeilingTriangle);
@@ -10648,7 +10652,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(306, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(289, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -10680,7 +10684,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(300, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(283, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -10736,7 +10740,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(300, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(283, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -14876,6 +14880,24 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
+            // buttonTrackAllObjects
+            // 
+            this.buttonTrackAllObjects.Location = new System.Drawing.Point(125, 14);
+            this.buttonTrackAllObjects.Name = "buttonTrackAllObjects";
+            this.buttonTrackAllObjects.Size = new System.Drawing.Size(135, 28);
+            this.buttonTrackAllObjects.TabIndex = 32;
+            this.buttonTrackAllObjects.Text = "Track All Objects";
+            this.buttonTrackAllObjects.UseVisualStyleBackColor = true;
+            // 
+            // buttonUntrackAllObjects
+            // 
+            this.buttonUntrackAllObjects.Location = new System.Drawing.Point(125, 46);
+            this.buttonUntrackAllObjects.Name = "buttonUntrackAllObjects";
+            this.buttonUntrackAllObjects.Size = new System.Drawing.Size(135, 28);
+            this.buttonUntrackAllObjects.TabIndex = 32;
+            this.buttonUntrackAllObjects.Text = "Untrack All Objects";
+            this.buttonUntrackAllObjects.UseVisualStyleBackColor = true;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -16459,6 +16481,8 @@ namespace STROOP
         private CheckBox checkBoxMapControlsTrackCamera;
         private CheckBox checkBoxMapControlsTrackHolp;
         private CheckBox checkBoxMapControlsTrackMario;
+        private BinaryButton buttonUntrackAllObjects;
+        private BinaryButton buttonTrackAllObjects;
     }
 }
 
