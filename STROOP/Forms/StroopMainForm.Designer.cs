@@ -622,7 +622,7 @@ namespace STROOP
             this.splitContainerMap = new STROOP.BetterSplitContainer();
             this.splitContainerMapControls = new STROOP.BetterSplitContainer();
             this.tabControlMap = new System.Windows.Forms.TabControl();
-            this.tabPage2D = new System.Windows.Forms.TabPage();
+            this.tabPageMap2D = new System.Windows.Forms.TabPage();
             this.buttonMapControlsClear = new System.Windows.Forms.Button();
             this.buttonMapControlsAdd = new System.Windows.Forms.Button();
             this.groupBoxMapControlsAngle = new System.Windows.Forms.GroupBox();
@@ -657,7 +657,7 @@ namespace STROOP
             this.buttonMapControlsScaleChangeMinus = new System.Windows.Forms.Button();
             this.radioButtonMapControlsScaleCustom = new System.Windows.Forms.RadioButton();
             this.buttonMapControlsScaleChangePlus = new System.Windows.Forms.Button();
-            this.tabPage3D = new System.Windows.Forms.TabPage();
+            this.tabPageMap3D = new System.Windows.Forms.TabPage();
             this.flowLayoutPanelMapTrackers = new STROOP.Controls.Map.Trackers.MapTrackerFlowLayoutPanel();
             this.glControlMap = new OpenTK.GLControl();
             this.tabPagePu = new System.Windows.Forms.TabPage();
@@ -1407,7 +1407,7 @@ namespace STROOP
             this.splitContainerMapControls.Panel2.SuspendLayout();
             this.splitContainerMapControls.SuspendLayout();
             this.tabControlMap.SuspendLayout();
-            this.tabPage2D.SuspendLayout();
+            this.tabPageMap2D.SuspendLayout();
             this.groupBoxMapControlsAngle.SuspendLayout();
             this.groupBoxMapControlsCenter.SuspendLayout();
             this.groupBoxMapControlsScale.SuspendLayout();
@@ -8969,8 +8969,8 @@ namespace STROOP
             // 
             // tabControlMap
             // 
-            this.tabControlMap.Controls.Add(this.tabPage2D);
-            this.tabControlMap.Controls.Add(this.tabPage3D);
+            this.tabControlMap.Controls.Add(this.tabPageMap2D);
+            this.tabControlMap.Controls.Add(this.tabPageMap3D);
             this.tabControlMap.Controls.Add(this.tabPageMapOptions);
             this.tabControlMap.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlMap.Location = new System.Drawing.Point(0, 0);
@@ -8980,22 +8980,22 @@ namespace STROOP
             this.tabControlMap.Size = new System.Drawing.Size(400, 318);
             this.tabControlMap.TabIndex = 39;
             // 
-            // tabPage2D
+            // tabPageMap2D
             // 
-            this.tabPage2D.AutoScroll = true;
-            this.tabPage2D.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage2D.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPage2D.Controls.Add(this.buttonMapControlsClear);
-            this.tabPage2D.Controls.Add(this.buttonMapControlsAdd);
-            this.tabPage2D.Controls.Add(this.groupBoxMapControlsAngle);
-            this.tabPage2D.Controls.Add(this.groupBoxMapControlsCenter);
-            this.tabPage2D.Controls.Add(this.groupBoxMapControlsScale);
-            this.tabPage2D.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2D.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPage2D.Name = "tabPage2D";
-            this.tabPage2D.Size = new System.Drawing.Size(392, 292);
-            this.tabPage2D.TabIndex = 1;
-            this.tabPage2D.Text = "2D";
+            this.tabPageMap2D.AutoScroll = true;
+            this.tabPageMap2D.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageMap2D.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageMap2D.Controls.Add(this.buttonMapControlsClear);
+            this.tabPageMap2D.Controls.Add(this.buttonMapControlsAdd);
+            this.tabPageMap2D.Controls.Add(this.groupBoxMapControlsAngle);
+            this.tabPageMap2D.Controls.Add(this.groupBoxMapControlsCenter);
+            this.tabPageMap2D.Controls.Add(this.groupBoxMapControlsScale);
+            this.tabPageMap2D.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMap2D.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageMap2D.Name = "tabPageMap2D";
+            this.tabPageMap2D.Size = new System.Drawing.Size(392, 292);
+            this.tabPageMap2D.TabIndex = 1;
+            this.tabPageMap2D.Text = "2D";
             // 
             // buttonMapControlsClear
             // 
@@ -9363,17 +9363,17 @@ namespace STROOP
             this.buttonMapControlsScaleChangePlus.TabIndex = 39;
             this.buttonMapControlsScaleChangePlus.UseVisualStyleBackColor = true;
             // 
-            // tabPage3D
+            // tabPageMap3D
             // 
-            this.tabPage3D.AutoScroll = true;
-            this.tabPage3D.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage3D.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPage3D.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3D.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPage3D.Name = "tabPage3D";
-            this.tabPage3D.Size = new System.Drawing.Size(392, 292);
-            this.tabPage3D.TabIndex = 2;
-            this.tabPage3D.Text = "3D";
+            this.tabPageMap3D.AutoScroll = true;
+            this.tabPageMap3D.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageMap3D.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageMap3D.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMap3D.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageMap3D.Name = "tabPageMap3D";
+            this.tabPageMap3D.Size = new System.Drawing.Size(392, 292);
+            this.tabPageMap3D.TabIndex = 2;
+            this.tabPageMap3D.Text = "3D";
             // 
             // flowLayoutPanelMapTrackers
             // 
@@ -15120,7 +15120,7 @@ namespace STROOP
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMapControls)).EndInit();
             this.splitContainerMapControls.ResumeLayout(false);
             this.tabControlMap.ResumeLayout(false);
-            this.tabPage2D.ResumeLayout(false);
+            this.tabPageMap2D.ResumeLayout(false);
             this.groupBoxMapControlsAngle.ResumeLayout(false);
             this.groupBoxMapControlsAngle.PerformLayout();
             this.groupBoxMapControlsCenter.ResumeLayout(false);
@@ -16298,8 +16298,8 @@ namespace STROOP
         private Button buttonMarioPuXn;
         private Button buttonMarioPuXnZn;
         private TabControl tabControlMap;
-        private TabPage tabPage2D;
-        private TabPage tabPage3D;
+        private TabPage tabPageMap2D;
+        private TabPage tabPageMap3D;
         private BetterSplitContainer splitContainerMapControls;
         private MapTrackerFlowLayoutPanel flowLayoutPanelMapTrackers;
         private GroupBox groupBoxMapControlsScale;
