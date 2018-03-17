@@ -107,6 +107,7 @@ namespace STROOP
 
             mapGui.ButtonAddNewTracker = buttonMapControlsAddNewTracker;
             mapGui.ButtonClearAllTrackers = buttonMapControlsClearAllTrackers;
+            mapGui.ButtonTrackSelectedObjects = buttonMapControlsTrackSelectedObjects;
 
             // Controls in 2D tab
             mapGui.RadioButtonScaleCourseDefault = radioButtonMapControlsScaleCourseDefault;

@@ -29,6 +29,7 @@ namespace STROOP.Structs
 
         public Button ButtonAddNewTracker;
         public Button ButtonClearAllTrackers;
+        public Button ButtonTrackSelectedObjects;
 
         // Controls in 2D tab
         public RadioButton RadioButtonScaleCourseDefault;

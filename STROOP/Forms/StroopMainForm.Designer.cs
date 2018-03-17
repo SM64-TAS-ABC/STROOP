@@ -1144,6 +1144,7 @@ namespace STROOP
             this.buttonMapControlsClearAllTrackers = new System.Windows.Forms.Button();
             this.buttonMapControlsAddNewTracker = new System.Windows.Forms.Button();
             this.checkBoxMapControlsTrackAllObjects = new System.Windows.Forms.CheckBox();
+            this.buttonMapControlsTrackSelectedObjects = new System.Windows.Forms.Button();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -8993,6 +8994,7 @@ namespace STROOP
             // 
             this.tabPageMapOptions.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageMapOptions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageMapOptions.Controls.Add(this.buttonMapControlsTrackSelectedObjects);
             this.tabPageMapOptions.Controls.Add(this.buttonMapControlsClearAllTrackers);
             this.tabPageMapOptions.Controls.Add(this.buttonMapControlsAddNewTracker);
             this.tabPageMapOptions.Controls.Add(this.checkBoxMapControlsTrackWallTriangle);
@@ -14888,6 +14890,16 @@ namespace STROOP
             this.checkBoxMapControlsTrackAllObjects.Text = "Track All Objects";
             this.checkBoxMapControlsTrackAllObjects.UseVisualStyleBackColor = true;
             // 
+            // buttonMapControlsTrackSelectedObjects
+            // 
+            this.buttonMapControlsTrackSelectedObjects.Location = new System.Drawing.Point(124, 75);
+            this.buttonMapControlsTrackSelectedObjects.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapControlsTrackSelectedObjects.Name = "buttonMapControlsTrackSelectedObjects";
+            this.buttonMapControlsTrackSelectedObjects.Size = new System.Drawing.Size(135, 25);
+            this.buttonMapControlsTrackSelectedObjects.TabIndex = 40;
+            this.buttonMapControlsTrackSelectedObjects.Text = "Track Selected Objects";
+            this.buttonMapControlsTrackSelectedObjects.UseVisualStyleBackColor = true;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -16472,6 +16484,7 @@ namespace STROOP
         private Button buttonMapControlsClearAllTrackers;
         private Button buttonMapControlsAddNewTracker;
         private CheckBox checkBoxMapControlsTrackAllObjects;
+        private Button buttonMapControlsTrackSelectedObjects;
     }
 }
 
