@@ -13,12 +13,25 @@ namespace STROOP.Structs
 {
     public class MapGui
     {
+        // Main controls
         public GLControl GLControl;
         public MapTrackerFlowLayoutPanel MapTrackerFlowLayoutPanel;
 
+        // Controls in options tab
+        public CheckBox CheckBoxTrackMario;
+        public CheckBox CheckBoxTrackHolp;
+        public CheckBox CheckBoxTrackCamera;
+        public CheckBox CheckBoxTrackFloorTriangle;
+        public CheckBox CheckBoxTrackWallTriangle;
+        public CheckBox CheckBoxTrackCeilingTriangle;
+        public CheckBox CheckBoxTrackGridlines;
+
         public Button ButtonAddNewTracker;
         public Button ButtonClearAllTrackers;
+        public Button ButtonTrackAllObjects;
+        public Button ButtonUntrackAllObjects;
 
+        // Controls in 2D tab
         public RadioButton RadioButtonScaleCourseDefault;
         public RadioButton RadioButtonScaleMaxCourseSize;
         public RadioButton RadioButtonScaleCustom;

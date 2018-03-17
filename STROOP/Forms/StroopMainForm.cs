@@ -90,12 +90,26 @@ namespace STROOP
         {
             // Create map manager
             MapGui mapGui = new MapGui();
+
+            // Main controls
             mapGui.GLControl = glControlMap;
             mapGui.MapTrackerFlowLayoutPanel = flowLayoutPanelMapTrackers;
 
+            // Controls in options tab
+            mapGui.CheckBoxTrackMario = checkBoxMapControlsTrackMario;
+            mapGui.CheckBoxTrackHolp = checkBoxMapControlsTrackHolp;
+            mapGui.CheckBoxTrackCamera = checkBoxMapControlsTrackCamera;
+            mapGui.CheckBoxTrackFloorTriangle = checkBoxMapControlsTrackFloorTriangle;
+            mapGui.CheckBoxTrackWallTriangle = checkBoxMapControlsTrackWallTriangle;
+            mapGui.CheckBoxTrackCeilingTriangle = checkBoxMapControlsTrackCeilingTriangle;
+            mapGui.CheckBoxTrackGridlines = checkBoxMapControlsTrackGridlines;
+
             mapGui.ButtonAddNewTracker = buttonMapControlsAddNewTracker;
             mapGui.ButtonClearAllTrackers = buttonMapControlsClearAllTrackers;
+            mapGui.ButtonTrackAllObjects = buttonMapControlsTrackAllObjects;
+            mapGui.ButtonUntrackAllObjects = buttonMapControlsUntrackAllObjects;
 
+            // Controls in 2D tab
             mapGui.RadioButtonScaleCourseDefault = radioButtonMapControlsScaleCourseDefault;
             mapGui.RadioButtonScaleMaxCourseSize = radioButtonMapControlsScaleMaxCourseSize;
             mapGui.RadioButtonScaleCustom = radioButtonMapControlsScaleCustom;
@@ -130,6 +144,7 @@ namespace STROOP
             mapGui.ButtonAngleChangeClockwise = buttonMapControlsAngleChangeClockwise;
             mapGui.TextBoxAngleChange = betterTextboxMapControlsAngleChange;
 
+            // Create managers
             Config.MapManager = new MapManager(_mapAssoc, mapGui);
 
             Config.ModelManager = new ModelManager(tabPageModel);

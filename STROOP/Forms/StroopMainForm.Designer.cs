@@ -1141,8 +1141,8 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.buttonTrackAllObjects = new STROOP.BinaryButton();
-            this.buttonUntrackAllObjects = new STROOP.BinaryButton();
+            this.buttonMapControlsTrackAllObjects = new STROOP.BinaryButton();
+            this.buttonMapControlsUntrackAllObjects = new STROOP.BinaryButton();
             this.buttonMapControlsClearAllTrackers = new System.Windows.Forms.Button();
             this.buttonMapControlsAddNewTracker = new System.Windows.Forms.Button();
             this.panelConnect.SuspendLayout();
@@ -8996,8 +8996,8 @@ namespace STROOP
             this.tabPageMapOptions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabPageMapOptions.Controls.Add(this.buttonMapControlsClearAllTrackers);
             this.tabPageMapOptions.Controls.Add(this.buttonMapControlsAddNewTracker);
-            this.tabPageMapOptions.Controls.Add(this.buttonUntrackAllObjects);
-            this.tabPageMapOptions.Controls.Add(this.buttonTrackAllObjects);
+            this.tabPageMapOptions.Controls.Add(this.buttonMapControlsUntrackAllObjects);
+            this.tabPageMapOptions.Controls.Add(this.buttonMapControlsTrackAllObjects);
             this.tabPageMapOptions.Controls.Add(this.checkBoxMapControlsTrackWallTriangle);
             this.tabPageMapOptions.Controls.Add(this.checkBoxMapControlsTrackGridlines);
             this.tabPageMapOptions.Controls.Add(this.checkBoxMapControlsTrackCeilingTriangle);
@@ -14860,23 +14860,23 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // buttonTrackAllObjects
+            // buttonMapControlsTrackAllObjects
             // 
-            this.buttonTrackAllObjects.Location = new System.Drawing.Point(124, 75);
-            this.buttonTrackAllObjects.Name = "buttonTrackAllObjects";
-            this.buttonTrackAllObjects.Size = new System.Drawing.Size(135, 25);
-            this.buttonTrackAllObjects.TabIndex = 32;
-            this.buttonTrackAllObjects.Text = "Track All Objects";
-            this.buttonTrackAllObjects.UseVisualStyleBackColor = true;
+            this.buttonMapControlsTrackAllObjects.Location = new System.Drawing.Point(124, 75);
+            this.buttonMapControlsTrackAllObjects.Name = "buttonMapControlsTrackAllObjects";
+            this.buttonMapControlsTrackAllObjects.Size = new System.Drawing.Size(135, 25);
+            this.buttonMapControlsTrackAllObjects.TabIndex = 32;
+            this.buttonMapControlsTrackAllObjects.Text = "Track All Objects";
+            this.buttonMapControlsTrackAllObjects.UseVisualStyleBackColor = true;
             // 
-            // buttonUntrackAllObjects
+            // buttonMapControlsUntrackAllObjects
             // 
-            this.buttonUntrackAllObjects.Location = new System.Drawing.Point(124, 105);
-            this.buttonUntrackAllObjects.Name = "buttonUntrackAllObjects";
-            this.buttonUntrackAllObjects.Size = new System.Drawing.Size(135, 25);
-            this.buttonUntrackAllObjects.TabIndex = 32;
-            this.buttonUntrackAllObjects.Text = "Untrack All Objects";
-            this.buttonUntrackAllObjects.UseVisualStyleBackColor = true;
+            this.buttonMapControlsUntrackAllObjects.Location = new System.Drawing.Point(124, 105);
+            this.buttonMapControlsUntrackAllObjects.Name = "buttonMapControlsUntrackAllObjects";
+            this.buttonMapControlsUntrackAllObjects.Size = new System.Drawing.Size(135, 25);
+            this.buttonMapControlsUntrackAllObjects.TabIndex = 32;
+            this.buttonMapControlsUntrackAllObjects.Text = "Untrack All Objects";
+            this.buttonMapControlsUntrackAllObjects.UseVisualStyleBackColor = true;
             // 
             // buttonMapControlsClearAllTrackers
             // 
@@ -16479,8 +16479,8 @@ namespace STROOP
         private CheckBox checkBoxMapControlsTrackCamera;
         private CheckBox checkBoxMapControlsTrackHolp;
         private CheckBox checkBoxMapControlsTrackMario;
-        private BinaryButton buttonUntrackAllObjects;
-        private BinaryButton buttonTrackAllObjects;
+        private BinaryButton buttonMapControlsUntrackAllObjects;
+        private BinaryButton buttonMapControlsTrackAllObjects;
         private Button buttonMapControlsClearAllTrackers;
         private Button buttonMapControlsAddNewTracker;
     }
