@@ -102,12 +102,11 @@ namespace STROOP
             mapGui.CheckBoxTrackFloorTriangle = checkBoxMapControlsTrackFloorTriangle;
             mapGui.CheckBoxTrackWallTriangle = checkBoxMapControlsTrackWallTriangle;
             mapGui.CheckBoxTrackCeilingTriangle = checkBoxMapControlsTrackCeilingTriangle;
+            mapGui.CheckBoxTrackAllObjects = checkBoxMapControlsTrackAllObjects;
             mapGui.CheckBoxTrackGridlines = checkBoxMapControlsTrackGridlines;
 
             mapGui.ButtonAddNewTracker = buttonMapControlsAddNewTracker;
             mapGui.ButtonClearAllTrackers = buttonMapControlsClearAllTrackers;
-            mapGui.ButtonTrackAllObjects = buttonMapControlsTrackAllObjects;
-            mapGui.ButtonUntrackAllObjects = buttonMapControlsUntrackAllObjects;
 
             // Controls in 2D tab
             mapGui.RadioButtonScaleCourseDefault = radioButtonMapControlsScaleCourseDefault;

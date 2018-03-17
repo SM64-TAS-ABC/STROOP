@@ -24,12 +24,11 @@ namespace STROOP.Structs
         public CheckBox CheckBoxTrackFloorTriangle;
         public CheckBox CheckBoxTrackWallTriangle;
         public CheckBox CheckBoxTrackCeilingTriangle;
+        public CheckBox CheckBoxTrackAllObjects;
         public CheckBox CheckBoxTrackGridlines;
 
         public Button ButtonAddNewTracker;
         public Button ButtonClearAllTrackers;
-        public Button ButtonTrackAllObjects;
-        public Button ButtonUntrackAllObjects;
 
         // Controls in 2D tab
         public RadioButton RadioButtonScaleCourseDefault;
