@@ -8969,9 +8969,9 @@ namespace STROOP
             // 
             // tabControlMap
             // 
+            this.tabControlMap.Controls.Add(this.tabPageMapOptions);
             this.tabControlMap.Controls.Add(this.tabPageMap2D);
             this.tabControlMap.Controls.Add(this.tabPageMap3D);
-            this.tabControlMap.Controls.Add(this.tabPageMapOptions);
             this.tabControlMap.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlMap.Location = new System.Drawing.Point(0, 0);
             this.tabControlMap.Margin = new System.Windows.Forms.Padding(0);
