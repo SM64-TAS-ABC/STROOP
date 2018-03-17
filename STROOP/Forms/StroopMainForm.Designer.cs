@@ -631,8 +631,6 @@ namespace STROOP
             this.checkBoxMapControlsTrackHolp = new System.Windows.Forms.CheckBox();
             this.checkBoxMapControlsTrackMario = new System.Windows.Forms.CheckBox();
             this.tabPageMap2D = new System.Windows.Forms.TabPage();
-            this.buttonMapControlsClear = new System.Windows.Forms.Button();
-            this.buttonMapControlsAdd = new System.Windows.Forms.Button();
             this.groupBoxMapControlsAngle = new System.Windows.Forms.GroupBox();
             this.betterTextboxMapControlsAngleChange = new STROOP.BetterTextbox();
             this.betterTextboxMapControlsAngleCustom = new STROOP.BetterTextbox();
@@ -1145,6 +1143,8 @@ namespace STROOP
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.buttonTrackAllObjects = new STROOP.BinaryButton();
             this.buttonUntrackAllObjects = new STROOP.BinaryButton();
+            this.buttonMapControlsClear = new System.Windows.Forms.Button();
+            this.buttonMapControlsAdd = new System.Windows.Forms.Button();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -8994,6 +8994,8 @@ namespace STROOP
             // 
             this.tabPageMapOptions.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageMapOptions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageMapOptions.Controls.Add(this.buttonMapControlsClear);
+            this.tabPageMapOptions.Controls.Add(this.buttonMapControlsAdd);
             this.tabPageMapOptions.Controls.Add(this.buttonUntrackAllObjects);
             this.tabPageMapOptions.Controls.Add(this.buttonTrackAllObjects);
             this.tabPageMapOptions.Controls.Add(this.checkBoxMapControlsTrackWallTriangle);
@@ -9087,8 +9089,6 @@ namespace STROOP
             this.tabPageMap2D.AutoScroll = true;
             this.tabPageMap2D.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageMap2D.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPageMap2D.Controls.Add(this.buttonMapControlsClear);
-            this.tabPageMap2D.Controls.Add(this.buttonMapControlsAdd);
             this.tabPageMap2D.Controls.Add(this.groupBoxMapControlsAngle);
             this.tabPageMap2D.Controls.Add(this.groupBoxMapControlsCenter);
             this.tabPageMap2D.Controls.Add(this.groupBoxMapControlsScale);
@@ -9098,26 +9098,6 @@ namespace STROOP
             this.tabPageMap2D.Size = new System.Drawing.Size(392, 292);
             this.tabPageMap2D.TabIndex = 1;
             this.tabPageMap2D.Text = "2D";
-            // 
-            // buttonMapControlsClear
-            // 
-            this.buttonMapControlsClear.Location = new System.Drawing.Point(267, 54);
-            this.buttonMapControlsClear.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapControlsClear.Name = "buttonMapControlsClear";
-            this.buttonMapControlsClear.Size = new System.Drawing.Size(61, 25);
-            this.buttonMapControlsClear.TabIndex = 39;
-            this.buttonMapControlsClear.Text = "Clear";
-            this.buttonMapControlsClear.UseVisualStyleBackColor = true;
-            // 
-            // buttonMapControlsAdd
-            // 
-            this.buttonMapControlsAdd.Location = new System.Drawing.Point(267, 25);
-            this.buttonMapControlsAdd.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapControlsAdd.Name = "buttonMapControlsAdd";
-            this.buttonMapControlsAdd.Size = new System.Drawing.Size(61, 25);
-            this.buttonMapControlsAdd.TabIndex = 39;
-            this.buttonMapControlsAdd.Text = "Add";
-            this.buttonMapControlsAdd.UseVisualStyleBackColor = true;
             // 
             // groupBoxMapControlsAngle
             // 
@@ -14882,21 +14862,41 @@ namespace STROOP
             // 
             // buttonTrackAllObjects
             // 
-            this.buttonTrackAllObjects.Location = new System.Drawing.Point(125, 14);
+            this.buttonTrackAllObjects.Location = new System.Drawing.Point(124, 75);
             this.buttonTrackAllObjects.Name = "buttonTrackAllObjects";
-            this.buttonTrackAllObjects.Size = new System.Drawing.Size(135, 28);
+            this.buttonTrackAllObjects.Size = new System.Drawing.Size(135, 25);
             this.buttonTrackAllObjects.TabIndex = 32;
             this.buttonTrackAllObjects.Text = "Track All Objects";
             this.buttonTrackAllObjects.UseVisualStyleBackColor = true;
             // 
             // buttonUntrackAllObjects
             // 
-            this.buttonUntrackAllObjects.Location = new System.Drawing.Point(125, 46);
+            this.buttonUntrackAllObjects.Location = new System.Drawing.Point(124, 105);
             this.buttonUntrackAllObjects.Name = "buttonUntrackAllObjects";
-            this.buttonUntrackAllObjects.Size = new System.Drawing.Size(135, 28);
+            this.buttonUntrackAllObjects.Size = new System.Drawing.Size(135, 25);
             this.buttonUntrackAllObjects.TabIndex = 32;
             this.buttonUntrackAllObjects.Text = "Untrack All Objects";
             this.buttonUntrackAllObjects.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapControlsClear
+            // 
+            this.buttonMapControlsClear.Location = new System.Drawing.Point(124, 45);
+            this.buttonMapControlsClear.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapControlsClear.Name = "buttonMapControlsClear";
+            this.buttonMapControlsClear.Size = new System.Drawing.Size(135, 25);
+            this.buttonMapControlsClear.TabIndex = 40;
+            this.buttonMapControlsClear.Text = "Clear All Trackers";
+            this.buttonMapControlsClear.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapControlsAdd
+            // 
+            this.buttonMapControlsAdd.Location = new System.Drawing.Point(124, 15);
+            this.buttonMapControlsAdd.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapControlsAdd.Name = "buttonMapControlsAdd";
+            this.buttonMapControlsAdd.Size = new System.Drawing.Size(135, 25);
+            this.buttonMapControlsAdd.TabIndex = 41;
+            this.buttonMapControlsAdd.Text = "Add New Tracker";
+            this.buttonMapControlsAdd.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -16445,8 +16445,6 @@ namespace STROOP
         private Button buttonMapControlsCenterChangeDownLeft;
         private Button buttonMapControlsCenterChangeLeft;
         private Button buttonMapControlsCenterChangeUpLeft;
-        private Button buttonMapControlsClear;
-        private Button buttonMapControlsAdd;
         private GroupBox groupBoxMemoryReader;
         private ComboBox comboBoxMemoryReaderTypeValue;
         private BetterTextbox textBoxMemoryReaderCountValue;
@@ -16483,6 +16481,8 @@ namespace STROOP
         private CheckBox checkBoxMapControlsTrackMario;
         private BinaryButton buttonUntrackAllObjects;
         private BinaryButton buttonTrackAllObjects;
+        private Button buttonMapControlsClear;
+        private Button buttonMapControlsAdd;
     }
 }
 
