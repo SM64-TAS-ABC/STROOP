@@ -756,6 +756,19 @@ namespace STROOP.Utilities
             return Config.Stream.SetValue(HudConfig.DeathHp, MarioConfig.StructAddress + HudConfig.HpCountOffset);
         }
 
+        public static bool GameOver()
+        {
+            bool success = true;
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
+
+            success &= Config.Stream.SetValue((sbyte)0, MarioConfig.StructAddress + HudConfig.LifeCountOffset);
+            success &= Config.Stream.SetValue(HudConfig.DeathHp, MarioConfig.StructAddress + HudConfig.HpCountOffset);
+            
+            if (!streamAlreadySuspended) Config.Stream.Resume();
+            return success;
+        }
+
         public static bool StandardHud()
         {
             bool success = true;
