@@ -312,7 +312,7 @@ namespace STROOP.Utilities
                     decoded = "nop()";
                     break;
                 default:
-                    decoded = $"Unknown {cmdByte:X2}({String.Join(" ", stream.ReadRam(address, BehaviorCommandLength[cmd.Value] - 1).Select(b => $"{b:X2}"))})";
+                    decoded = $"Unknown {cmdByte:X2}";
                     break;
             }
 
