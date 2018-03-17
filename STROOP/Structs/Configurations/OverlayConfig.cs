@@ -21,6 +21,6 @@ namespace STROOP.Structs
         public static bool ShowOverlayCeilingObject = true;
 
         public static bool ShowOverlayParentObject = false;
-        public static bool ShowOverlayChildObject = true;
+        public static bool ShowOverlayChildObject = false;
     }
 }

@@ -1133,6 +1133,7 @@ namespace STROOP
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.comboBoxRomVersion = new System.Windows.Forms.ComboBox();
             this.comboBoxReadWriteMode = new System.Windows.Forms.ComboBox();
+            this.checkBoxShowOverlayChildObject = new System.Windows.Forms.CheckBox();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -4855,7 +4856,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 279F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 280F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -10516,7 +10517,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(374, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(357, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -10548,7 +10549,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(368, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(351, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -10604,7 +10605,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(368, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(351, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -12645,6 +12646,7 @@ namespace STROOP
             // groupBoxShowOverlay
             // 
             this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayCameraHackObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayChildObject);
             this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayParentObject);
             this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayCeilingObject);
             this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayWallObject);
@@ -12657,7 +12659,7 @@ namespace STROOP
             this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayHeldObject);
             this.groupBoxShowOverlay.Location = new System.Drawing.Point(256, 4);
             this.groupBoxShowOverlay.Name = "groupBoxShowOverlay";
-            this.groupBoxShowOverlay.Size = new System.Drawing.Size(170, 255);
+            this.groupBoxShowOverlay.Size = new System.Drawing.Size(170, 275);
             this.groupBoxShowOverlay.TabIndex = 29;
             this.groupBoxShowOverlay.TabStop = false;
             this.groupBoxShowOverlay.Text = "Object Slot Overlays to Show";
@@ -14752,6 +14754,17 @@ namespace STROOP
             this.comboBoxReadWriteMode.Size = new System.Drawing.Size(75, 21);
             this.comboBoxReadWriteMode.TabIndex = 22;
             // 
+            // checkBoxShowOverlayChildObject
+            // 
+            this.checkBoxShowOverlayChildObject.AutoSize = true;
+            this.checkBoxShowOverlayChildObject.Location = new System.Drawing.Point(5, 251);
+            this.checkBoxShowOverlayChildObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayChildObject.Name = "checkBoxShowOverlayChildObject";
+            this.checkBoxShowOverlayChildObject.Size = new System.Drawing.Size(83, 17);
+            this.checkBoxShowOverlayChildObject.TabIndex = 9;
+            this.checkBoxShowOverlayChildObject.Text = "Child Object";
+            this.checkBoxShowOverlayChildObject.UseVisualStyleBackColor = true;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -16323,6 +16336,7 @@ namespace STROOP
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private DataGridViewTextBoxColumn Column1;
         private RichTextBox richTextBoxTasInstructions;
+        private CheckBox checkBoxShowOverlayChildObject;
     }
 }
 
