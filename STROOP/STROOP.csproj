@@ -160,11 +160,11 @@
     <Compile Include="Controls\VarHackContainer.Designer.cs">
       <DependentUpon>VarHackContainer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Map\Graphics\IMapCamera.cs" />
+    <Compile Include="Controls\Map\Graphics\Cameras\IMapCamera.cs" />
     <Compile Include="Controls\Map\Graphics\Items\MapGraphicsImageItem.cs" />
     <Compile Include="Controls\Map\Graphics\Items\MapGraphicsItem.cs" />
     <Compile Include="Controls\Map\Graphics\Items\MapGraphicsTrianglesItem.cs" />
-    <Compile Include="Controls\Map\Graphics\MapCameraTopView.cs" />
+    <Compile Include="Controls\Map\Graphics\Cameras\MapCameraTopView.cs" />
     <Compile Include="Controls\Map\Graphics\MapGraphics.cs" />
     <Compile Include="Controls\Map\Graphics\Items\MapGraphicsBackgroundItem.cs" />
     <Compile Include="Controls\Map\Graphics\Items\MapGraphicsIconItem.cs" />
