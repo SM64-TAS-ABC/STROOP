@@ -285,6 +285,30 @@ namespace STROOP
             UpdateColors();
         }
 
+        private List<bool> GetCurrentOverlayValues()
+        {
+            return new List<bool>()
+            {
+                _drawSelectedOverlay,
+                _drawStoodOnOverlay,
+                _drawInteractionOverlay,
+                _drawHeldOverlay,
+                _drawUsedOverlay,
+                _drawClosestOverlay,
+                _drawCameraOverlay,
+                _drawCameraHackOverlay,
+                _drawModelOverlay,
+                _drawWallOverlay,
+                _drawFloorOverlay,
+                _drawCeilingOverlay,
+                _drawParentOverlay,
+                _drawParentUnusedOverlay,
+                _drawParentNoneOverlay,
+                _drawChildOverlay,
+                _drawMarkedOverlay,
+            };
+        }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
@@ -390,26 +414,7 @@ namespace STROOP
             uint? address = CurrentObject?.Address;
 
             // Update Overlays
-            var prevOverlays = new List<bool>()
-            {
-                _drawSelectedOverlay,
-                _drawStoodOnOverlay,
-                _drawInteractionOverlay,
-                _drawHeldOverlay,
-                _drawUsedOverlay,
-                _drawClosestOverlay,
-                _drawCameraOverlay,
-                _drawCameraHackOverlay,
-                _drawModelOverlay,
-                _drawWallOverlay,
-                _drawFloorOverlay,
-                _drawCeilingOverlay,
-                _drawParentOverlay,
-                _drawParentUnusedOverlay,
-                _drawParentNoneOverlay,
-                _drawChildOverlay,
-                _drawMarkedOverlay,
-            };
+            List<bool> prevOverlays = GetCurrentOverlayValues();
             if (address.HasValue)
             {
                 _drawSelectedOverlay = _manager.SelectedSlotsAddresses.Contains(address.Value);
@@ -456,26 +461,7 @@ namespace STROOP
                 _drawChildOverlay = false;
                 _drawMarkedOverlay = false;
             }
-            var overlays = new List<bool>()
-            {
-                _drawSelectedOverlay,
-                _drawStoodOnOverlay,
-                _drawInteractionOverlay,
-                _drawHeldOverlay,
-                _drawUsedOverlay,
-                _drawClosestOverlay,
-                _drawCameraOverlay,
-                _drawCameraHackOverlay,
-                _drawModelOverlay,
-                _drawWallOverlay,
-                _drawFloorOverlay,
-                _drawCeilingOverlay,
-                _drawParentOverlay,
-                _drawParentUnusedOverlay,
-                _drawParentNoneOverlay,
-                _drawChildOverlay,
-                _drawMarkedOverlay,
-            };
+            List<bool> overlays = GetCurrentOverlayValues();
 
             SelectionType selectionType;
             switch (_manager.ActiveTab)
