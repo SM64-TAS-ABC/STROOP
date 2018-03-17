@@ -45,9 +45,10 @@
   <Data type="uint" offsetUS="0x8033B4A0" offsetJP="0x8033A130" base="Relative" useHex="true">Last Area</Data>
   <Data type="byte" offsetUS="0x8033B4A4" offsetJP="0x8033A134" base="Relative">Last Area Entrance</Data>
   <Data type="short" offsetUS="0x8033BACC" offsetJP="0x8033A75C" base="Relative">Last Death Course</Data>
-  <Data type="short" offsetUS="0x8033B256" offsetJP="0x80339EE6" base="Relative">Destination</Data>
-  <Data type="short" offsetUS="0x8033B25A" offsetJP="0x80339EEA" base="Relative">Door Direction</Data>
-  
+  <Data type="short" offset="0xE6" base="Mario">Destination</Data>
+  <Data type="short" offset="0xE2" base="Mario">Destination 2</Data>
+  <Data type="short" offset="0xEA" base="Mario">Door Direction</Data>
+
   <Data type="short" offsetUS="0x8033B238" offsetJP="0x80339EC8" base="Relative">Transition State</Data>
   <Data type="short" offsetUS="0x8033BAB0" offsetJP="0x8033A740" base="Relative">Transition Type</Data>
   <Data type="byte" offsetUS="0x80330EC0" offsetJP="0x8032FF60" base="Relative">Transition Progress</Data>
