@@ -238,7 +238,12 @@ namespace STROOP.Models
             _subType = Config.Stream.GetUInt32(Address + ObjectConfig.BehaviorSubtypeOffset);
             _appearance = Config.Stream.GetUInt32(Address + ObjectConfig.BehaviorAppearanceOffset);
 
-            SegmentedBehavior = AbsoluteBehavior != 0 ? 0x13000000 + AbsoluteBehavior - Config.ObjectAssociations.BehaviorBankStart : 0;
+            long behaviorOffset = (long)AbsoluteBehavior - Config.ObjectAssociations.BehaviorBankStart;
+            if (AbsoluteBehavior == 0 || behaviorOffset < 0) // Behavior is 0 or is appears to be stored below the start
+                SegmentedBehavior = 0;
+            else 
+                SegmentedBehavior = 0x13000000 + (uint) behaviorOffset;
+
             BehaviorCriteria = new BehaviorCriteria()
             {
                 BehaviorAddress = Config.SwitchRomVersion(SegmentedBehavior, Config.ObjectAssociations.AlignJPBehavior(SegmentedBehavior)),
