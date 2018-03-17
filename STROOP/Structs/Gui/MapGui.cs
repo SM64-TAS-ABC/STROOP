@@ -14,7 +14,11 @@ namespace STROOP.Structs
     public class MapGui
     {
         public GLControl GLControl;
-        
+        public MapTrackerFlowLayoutPanel MapTrackerFlowLayoutPanel;
+
+        public Button ButtonAddNewTracker;
+        public Button ButtonClearAllTrackers;
+
         public RadioButton RadioButtonScaleCourseDefault;
         public RadioButton RadioButtonScaleMaxCourseSize;
         public RadioButton RadioButtonScaleCustom;
@@ -49,9 +53,5 @@ namespace STROOP.Structs
         public BetterTextbox TextBoxAngleChange;
         public Button ButtonAngleChangeCounterclockwise;
         public Button ButtonAngleChangeClockwise;
-
-        public MapTrackerFlowLayoutPanel MapTrackerFlowLayoutPanel;
-        public Button ButtonAdd;
-        public Button ButtonClear;
     }
 }

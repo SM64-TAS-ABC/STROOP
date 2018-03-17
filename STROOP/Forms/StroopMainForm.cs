@@ -91,6 +91,10 @@ namespace STROOP
             // Create map manager
             MapGui mapGui = new MapGui();
             mapGui.GLControl = glControlMap;
+            mapGui.MapTrackerFlowLayoutPanel = flowLayoutPanelMapTrackers;
+
+            mapGui.ButtonAddNewTracker = buttonMapControlsAddNewTracker;
+            mapGui.ButtonClearAllTrackers = buttonMapControlsClearAllTrackers;
 
             mapGui.RadioButtonScaleCourseDefault = radioButtonMapControlsScaleCourseDefault;
             mapGui.RadioButtonScaleMaxCourseSize = radioButtonMapControlsScaleMaxCourseSize;
@@ -125,10 +129,6 @@ namespace STROOP
             mapGui.ButtonAngleChangeCounterclockwise = buttonMapControlsAngleChangeCounterclockwise;
             mapGui.ButtonAngleChangeClockwise = buttonMapControlsAngleChangeClockwise;
             mapGui.TextBoxAngleChange = betterTextboxMapControlsAngleChange;
-
-            mapGui.MapTrackerFlowLayoutPanel = flowLayoutPanelMapTrackers;
-            mapGui.ButtonAdd = buttonMapControlsAdd;
-            mapGui.ButtonClear = buttonMapControlsClear;
 
             Config.MapManager = new MapManager(_mapAssoc, mapGui);
 

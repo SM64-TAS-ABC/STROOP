@@ -1143,8 +1143,8 @@ namespace STROOP
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.buttonTrackAllObjects = new STROOP.BinaryButton();
             this.buttonUntrackAllObjects = new STROOP.BinaryButton();
-            this.buttonMapControlsClear = new System.Windows.Forms.Button();
-            this.buttonMapControlsAdd = new System.Windows.Forms.Button();
+            this.buttonMapControlsClearAllTrackers = new System.Windows.Forms.Button();
+            this.buttonMapControlsAddNewTracker = new System.Windows.Forms.Button();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -8994,8 +8994,8 @@ namespace STROOP
             // 
             this.tabPageMapOptions.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageMapOptions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPageMapOptions.Controls.Add(this.buttonMapControlsClear);
-            this.tabPageMapOptions.Controls.Add(this.buttonMapControlsAdd);
+            this.tabPageMapOptions.Controls.Add(this.buttonMapControlsClearAllTrackers);
+            this.tabPageMapOptions.Controls.Add(this.buttonMapControlsAddNewTracker);
             this.tabPageMapOptions.Controls.Add(this.buttonUntrackAllObjects);
             this.tabPageMapOptions.Controls.Add(this.buttonTrackAllObjects);
             this.tabPageMapOptions.Controls.Add(this.checkBoxMapControlsTrackWallTriangle);
@@ -14878,25 +14878,25 @@ namespace STROOP
             this.buttonUntrackAllObjects.Text = "Untrack All Objects";
             this.buttonUntrackAllObjects.UseVisualStyleBackColor = true;
             // 
-            // buttonMapControlsClear
+            // buttonMapControlsClearAllTrackers
             // 
-            this.buttonMapControlsClear.Location = new System.Drawing.Point(124, 45);
-            this.buttonMapControlsClear.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapControlsClear.Name = "buttonMapControlsClear";
-            this.buttonMapControlsClear.Size = new System.Drawing.Size(135, 25);
-            this.buttonMapControlsClear.TabIndex = 40;
-            this.buttonMapControlsClear.Text = "Clear All Trackers";
-            this.buttonMapControlsClear.UseVisualStyleBackColor = true;
+            this.buttonMapControlsClearAllTrackers.Location = new System.Drawing.Point(124, 45);
+            this.buttonMapControlsClearAllTrackers.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapControlsClearAllTrackers.Name = "buttonMapControlsClearAllTrackers";
+            this.buttonMapControlsClearAllTrackers.Size = new System.Drawing.Size(135, 25);
+            this.buttonMapControlsClearAllTrackers.TabIndex = 40;
+            this.buttonMapControlsClearAllTrackers.Text = "Clear All Trackers";
+            this.buttonMapControlsClearAllTrackers.UseVisualStyleBackColor = true;
             // 
-            // buttonMapControlsAdd
+            // buttonMapControlsAddNewTracker
             // 
-            this.buttonMapControlsAdd.Location = new System.Drawing.Point(124, 15);
-            this.buttonMapControlsAdd.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapControlsAdd.Name = "buttonMapControlsAdd";
-            this.buttonMapControlsAdd.Size = new System.Drawing.Size(135, 25);
-            this.buttonMapControlsAdd.TabIndex = 41;
-            this.buttonMapControlsAdd.Text = "Add New Tracker";
-            this.buttonMapControlsAdd.UseVisualStyleBackColor = true;
+            this.buttonMapControlsAddNewTracker.Location = new System.Drawing.Point(124, 15);
+            this.buttonMapControlsAddNewTracker.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapControlsAddNewTracker.Name = "buttonMapControlsAddNewTracker";
+            this.buttonMapControlsAddNewTracker.Size = new System.Drawing.Size(135, 25);
+            this.buttonMapControlsAddNewTracker.TabIndex = 41;
+            this.buttonMapControlsAddNewTracker.Text = "Add New Tracker";
+            this.buttonMapControlsAddNewTracker.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -16481,8 +16481,8 @@ namespace STROOP
         private CheckBox checkBoxMapControlsTrackMario;
         private BinaryButton buttonUntrackAllObjects;
         private BinaryButton buttonTrackAllObjects;
-        private Button buttonMapControlsClear;
-        private Button buttonMapControlsAdd;
+        private Button buttonMapControlsClearAllTrackers;
+        private Button buttonMapControlsAddNewTracker;
     }
 }
 
