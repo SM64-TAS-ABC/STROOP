@@ -622,6 +622,7 @@ namespace STROOP
             this.splitContainerMap = new STROOP.BetterSplitContainer();
             this.splitContainerMapControls = new STROOP.BetterSplitContainer();
             this.tabControlMap = new System.Windows.Forms.TabControl();
+            this.tabPageMapOptions = new System.Windows.Forms.TabPage();
             this.tabPageMap2D = new System.Windows.Forms.TabPage();
             this.buttonMapControlsClear = new System.Windows.Forms.Button();
             this.buttonMapControlsAdd = new System.Windows.Forms.Button();
@@ -1135,7 +1136,13 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.tabPageMapOptions = new System.Windows.Forms.TabPage();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1407,6 +1414,7 @@ namespace STROOP
             this.splitContainerMapControls.Panel2.SuspendLayout();
             this.splitContainerMapControls.SuspendLayout();
             this.tabControlMap.SuspendLayout();
+            this.tabPageMapOptions.SuspendLayout();
             this.tabPageMap2D.SuspendLayout();
             this.groupBoxMapControlsAngle.SuspendLayout();
             this.groupBoxMapControlsCenter.SuspendLayout();
@@ -4888,7 +4896,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 284F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 285F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8980,6 +8988,24 @@ namespace STROOP
             this.tabControlMap.Size = new System.Drawing.Size(400, 318);
             this.tabControlMap.TabIndex = 39;
             // 
+            // tabPageMapOptions
+            // 
+            this.tabPageMapOptions.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageMapOptions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageMapOptions.Controls.Add(this.checkBox6);
+            this.tabPageMapOptions.Controls.Add(this.checkBox7);
+            this.tabPageMapOptions.Controls.Add(this.checkBox5);
+            this.tabPageMapOptions.Controls.Add(this.checkBox4);
+            this.tabPageMapOptions.Controls.Add(this.checkBox3);
+            this.tabPageMapOptions.Controls.Add(this.checkBox2);
+            this.tabPageMapOptions.Controls.Add(this.checkBox1);
+            this.tabPageMapOptions.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMapOptions.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageMapOptions.Name = "tabPageMapOptions";
+            this.tabPageMapOptions.Size = new System.Drawing.Size(392, 292);
+            this.tabPageMapOptions.TabIndex = 3;
+            this.tabPageMapOptions.Text = "Options";
+            // 
             // tabPageMap2D
             // 
             this.tabPageMap2D.AutoScroll = true;
@@ -10550,7 +10576,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(340, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(323, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -10582,7 +10608,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(334, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(317, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -10638,7 +10664,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(334, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(317, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -14778,16 +14804,75 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // tabPageMapOptions
+            // checkBox1
             // 
-            this.tabPageMapOptions.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageMapOptions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPageMapOptions.Location = new System.Drawing.Point(4, 22);
-            this.tabPageMapOptions.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPageMapOptions.Name = "tabPageMapOptions";
-            this.tabPageMapOptions.Size = new System.Drawing.Size(392, 292);
-            this.tabPageMapOptions.TabIndex = 3;
-            this.tabPageMapOptions.Text = "Options";
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(14, 14);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(83, 17);
+            this.checkBox1.TabIndex = 19;
+            this.checkBox1.Text = "Track Mario";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(14, 34);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(86, 17);
+            this.checkBox2.TabIndex = 19;
+            this.checkBox2.Text = "Track HOLP";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(14, 54);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(93, 17);
+            this.checkBox3.TabIndex = 19;
+            this.checkBox3.Text = "Track Camera";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(14, 74);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(95, 17);
+            this.checkBox4.TabIndex = 19;
+            this.checkBox4.Text = "Track Floor Tri";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Location = new System.Drawing.Point(14, 114);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(103, 17);
+            this.checkBox5.TabIndex = 19;
+            this.checkBox5.Text = "Track Ceiling Tri";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Location = new System.Drawing.Point(14, 94);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(93, 17);
+            this.checkBox6.TabIndex = 19;
+            this.checkBox6.Text = "Track Wall Tri";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Location = new System.Drawing.Point(14, 134);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(97, 17);
+            this.checkBox7.TabIndex = 19;
+            this.checkBox7.Text = "Track Gridlines";
+            this.checkBox7.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -15120,6 +15205,8 @@ namespace STROOP
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMapControls)).EndInit();
             this.splitContainerMapControls.ResumeLayout(false);
             this.tabControlMap.ResumeLayout(false);
+            this.tabPageMapOptions.ResumeLayout(false);
+            this.tabPageMapOptions.PerformLayout();
             this.tabPageMap2D.ResumeLayout(false);
             this.groupBoxMapControlsAngle.ResumeLayout(false);
             this.groupBoxMapControlsAngle.PerformLayout();
@@ -16363,6 +16450,13 @@ namespace STROOP
         private CheckBox checkBoxShowOverlayChildObject;
         private Button buttonGameOver;
         private TabPage tabPageMapOptions;
+        private CheckBox checkBox6;
+        private CheckBox checkBox7;
+        private CheckBox checkBox5;
+        private CheckBox checkBox4;
+        private CheckBox checkBox3;
+        private CheckBox checkBox2;
+        private CheckBox checkBox1;
     }
 }
 
