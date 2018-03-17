@@ -31,7 +31,7 @@ namespace STROOP.Controls.Map.Graphics.Items
 
         public override IEnumerable<Type> DrawOnCameraTypes => CameraTypeAny;
 
-        public override float? Depth => float.MaxValue;
+        public override float? Depth => null;
 
         public override DrawType Type => DrawType.Background;
 
@@ -75,6 +75,7 @@ namespace STROOP.Controls.Map.Graphics.Items
         {
             ChangeImage(null);
             CheckUpdateImage(graphics);
+            GL.DeleteBuffer(_vertexBuffer);
         }
 
         private void CheckUpdateImage(MapGraphics graphics)

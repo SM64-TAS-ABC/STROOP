@@ -17,9 +17,16 @@ namespace STROOP.Controls.Map.Graphics
     {
         MapGraphics _graphics;
 
+        public int WhiteTexture { get; }
+        private readonly byte[] _whiteTexData = new byte[] { 0xFF };
+
         public GraphicsUtilities(MapGraphics graphics)
         {
             _graphics = graphics;
+
+            WhiteTexture = GL.GenTexture();
+            GL.BindTexture(TextureTarget.Texture2D, WhiteTexture);
+            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba8, 1, 1, 0, OpenTK.Graphics.OpenGL.PixelFormat.Luminance, PixelType.UnsignedByte, _whiteTexData);
         }
 
         public Vector3 GetPositionOnViewFromCoordinate(Vector3 pos)

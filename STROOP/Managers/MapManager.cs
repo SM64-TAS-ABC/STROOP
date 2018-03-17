@@ -37,9 +37,12 @@ namespace STROOP.Managers
         private MapAngle _mapAngle = MapAngle._32768;
 
         #region Objects
-        private MapMarioObject _mapObjMario;
-        private MapHolpObject _mapObjHolp;
-        private MapCameraObject _mapObjCamera;
+        private MapMarioObject _mapObjMario = new MapMarioObject();
+        private MapHolpObject _mapObjHolp = new MapHolpObject();
+        private MapCameraObject _mapObjCamera = new MapCameraObject();
+        private MapWallTriObject _mapObjWallTri = new MapWallTriObject();
+        private MapFloorTriObject _mapObjFloorTri = new MapFloorTriObject();
+        private MapCeilingTriObject _mapObjCeilTri = new MapCeilingTriObject();
         #endregion
 
         public MapManager(MapAssociations mapAssoc, MapGui mapGui)
@@ -75,14 +78,13 @@ namespace STROOP.Managers
             _mapGui.ButtonClear.Click += (sender, e) => _mapGui.MapTrackerFlowLayoutPanel.ClearControls();
 
             // Test
-            _mapObjMario = new MapMarioObject();
-            _mapObjHolp = new MapHolpObject();
-            _mapObjCamera = new MapCameraObject();
-
             _controller.AddMapObject(new MapLevelObject(_mapAssoc));
             _controller.AddMapObject(_mapObjMario);
             _controller.AddMapObject(_mapObjHolp);
             _controller.AddMapObject(_mapObjCamera);
+            _controller.AddMapObject(_mapObjWallTri);
+            _controller.AddMapObject(_mapObjFloorTri);
+            _controller.AddMapObject(_mapObjCeilTri);
         }
 
         public void Update()

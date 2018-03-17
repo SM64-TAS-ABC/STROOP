@@ -65,8 +65,9 @@ namespace STROOP.Controls.Map.Graphics.Items
 
         public override Matrix4 GetModelMatrix(MapGraphics graphics)
         {
+            float _yDepth = graphics.Camera is MapCameraTopView ? -0x2000 : Y;
             return Matrix4.CreateScale(Region.Width, 1.0f, Region.Height) 
-                * Matrix4.CreateTranslation(Region.Location.X, Y, Region.Location.Y);
+                * Matrix4.CreateTranslation(Region.Location.X, _yDepth, Region.Location.Y);
         }
 
         public override void Draw(MapGraphics graphics)
@@ -86,6 +87,7 @@ namespace STROOP.Controls.Map.Graphics.Items
         {
             ChangeImage(null);
             CheckUpdateImage(graphics);
+            GL.DeleteBuffer(_vertexBuffer);
         }
 
         private void CheckUpdateImage(MapGraphics graphics)

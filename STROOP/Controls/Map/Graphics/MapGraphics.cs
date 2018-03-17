@@ -95,6 +95,7 @@ namespace STROOP.Controls.Map.Graphics
 
             // Set default background color (clear drawing area)
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+            GL.Disable(EnableCap.CullFace);
 
             // Make sure we have a camera
             if (_error || Camera == null)
@@ -116,7 +117,6 @@ namespace STROOP.Controls.Map.Graphics
             drawItemsBackground = drawItems.Where(i => i.Type == MapGraphicsItem.DrawType.Background);
 
             // Setup Background
-            GL.Disable(EnableCap.CullFace);
             GL.Disable(EnableCap.DepthTest);
 
             // Draw background
@@ -128,7 +128,6 @@ namespace STROOP.Controls.Map.Graphics
             }
 
             // Setup 3D
-            GL.Enable(EnableCap.CullFace);
             GL.Enable(EnableCap.DepthTest);
             GL.DepthMask(true);
 
@@ -142,7 +141,6 @@ namespace STROOP.Controls.Map.Graphics
 
             // Setup 2D
             GL.Disable(EnableCap.DepthTest);
-            GL.Disable(EnableCap.CullFace);
 
             var error = GL.GetError();
             if (error != ErrorCode.NoError)

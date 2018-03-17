@@ -11,12 +11,6 @@ namespace STROOP.Controls.Map.Graphics.Items
 {
     public class MapGraphicsIconItem : MapGraphicsItem
     {
-        public enum DepthPriority
-        {
-            Bottom,
-            Top
-        }
-
         Bitmap _image;
         bool _imageUpdated;
         SizeF _imageNormalizedSize;
@@ -42,19 +36,8 @@ namespace STROOP.Controls.Map.Graphics.Items
 
         public int DisplayLayer { get; set; }
 
-        private float _opacity = 1.0f;
-        public float Opacity
-        {
-            get => _opacity;
-            set
-            {
-                if (value == _opacity)
-                    return;
-
-                _opacity = value;
-                UpdateOpacity();
-            }
-        }
+        private float _loadedOpacity = 1.0f;
+        public float Opacity { get; set; } = 1.0f;
 
         public override IEnumerable<Type> DrawOnCameraTypes => CameraTypeAny;
 
@@ -84,12 +67,17 @@ namespace STROOP.Controls.Map.Graphics.Items
                 _vertices, BufferUsageHint.StaticDraw);
         }
 
-        private void UpdateOpacity()
+        private void CheckUpdateOpacity()
         {
+            if (_loadedOpacity == Opacity)
+                return;
+
+            _loadedOpacity = Opacity;
+
             // Get updated vertices
             Vertex[] updatedVertices = _vertices.ToArray();
             for (int i = 0; i < updatedVertices.Length; i++)
-                updatedVertices[i].Color.A = _opacity;
+                updatedVertices[i].Color.A = _loadedOpacity;
 
             // Update buffer
             GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexBuffer);
@@ -111,6 +99,7 @@ namespace STROOP.Controls.Map.Graphics.Items
         public override void Draw(MapGraphics graphics)
         {
             CheckUpdateImage(graphics);
+            CheckUpdateOpacity();
 
             if (_imageTexID == -1)
                 return;
@@ -125,6 +114,7 @@ namespace STROOP.Controls.Map.Graphics.Items
         {
             ChangeImage(null);
             CheckUpdateImage(graphics);
+            GL.DeleteBuffer(_vertexBuffer);
         }
 
         private void CheckUpdateImage(MapGraphics graphics)
