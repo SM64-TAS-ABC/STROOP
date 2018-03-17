@@ -50,6 +50,8 @@ namespace STROOP
             this.buttonShowRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
+            this.comboBoxRomVersion = new System.Windows.Forms.ComboBox();
+            this.comboBoxReadWriteMode = new System.Windows.Forms.ComboBox();
             this.splitContainerMain = new STROOP.BetterSplitContainer();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageObjects = new System.Windows.Forms.TabPage();
@@ -1132,8 +1134,7 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.comboBoxRomVersion = new System.Windows.Forms.ComboBox();
-            this.comboBoxReadWriteMode = new System.Windows.Forms.ComboBox();
+            this.buttonGameOver = new System.Windows.Forms.Button();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1683,6 +1684,26 @@ namespace STROOP
             this.buttonShowLeftPane.TabIndex = 20;
             this.buttonShowLeftPane.UseVisualStyleBackColor = true;
             this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
+            // 
+            // comboBoxRomVersion
+            // 
+            this.comboBoxRomVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxRomVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxRomVersion.Location = new System.Drawing.Point(616, 11);
+            this.comboBoxRomVersion.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxRomVersion.Name = "comboBoxRomVersion";
+            this.comboBoxRomVersion.Size = new System.Drawing.Size(42, 21);
+            this.comboBoxRomVersion.TabIndex = 22;
+            // 
+            // comboBoxReadWriteMode
+            // 
+            this.comboBoxReadWriteMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxReadWriteMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxReadWriteMode.Location = new System.Drawing.Point(662, 11);
+            this.comboBoxReadWriteMode.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxReadWriteMode.Name = "comboBoxReadWriteMode";
+            this.comboBoxReadWriteMode.Size = new System.Drawing.Size(75, 21);
+            this.comboBoxReadWriteMode.TabIndex = 22;
             // 
             // splitContainerMain
             // 
@@ -3325,6 +3346,7 @@ namespace STROOP
             // 
             this.splitContainerHud.Panel1.AutoScroll = true;
             this.splitContainerHud.Panel1.Controls.Add(this.checkBoxFullHP);
+            this.splitContainerHud.Panel1.Controls.Add(this.buttonGameOver);
             this.splitContainerHud.Panel1.Controls.Add(this.button99Coins);
             this.splitContainerHud.Panel1.Controls.Add(this.buttonStandardHud);
             this.splitContainerHud.Panel1.Controls.Add(this.panelHudBorder);
@@ -3346,7 +3368,7 @@ namespace STROOP
             // checkBoxFullHP
             // 
             this.checkBoxFullHP.AutoSize = true;
-            this.checkBoxFullHP.Location = new System.Drawing.Point(4, 251);
+            this.checkBoxFullHP.Location = new System.Drawing.Point(4, 252);
             this.checkBoxFullHP.Name = "checkBoxFullHP";
             this.checkBoxFullHP.Size = new System.Drawing.Size(60, 17);
             this.checkBoxFullHP.TabIndex = 18;
@@ -3355,7 +3377,7 @@ namespace STROOP
             // 
             // button99Coins
             // 
-            this.button99Coins.Location = new System.Drawing.Point(3, 133);
+            this.button99Coins.Location = new System.Drawing.Point(3, 150);
             this.button99Coins.Name = "button99Coins";
             this.button99Coins.Size = new System.Drawing.Size(93, 24);
             this.button99Coins.TabIndex = 6;
@@ -3364,7 +3386,7 @@ namespace STROOP
             // 
             // buttonStandardHud
             // 
-            this.buttonStandardHud.Location = new System.Drawing.Point(3, 192);
+            this.buttonStandardHud.Location = new System.Drawing.Point(3, 200);
             this.buttonStandardHud.Name = "buttonStandardHud";
             this.buttonStandardHud.Size = new System.Drawing.Size(93, 24);
             this.buttonStandardHud.TabIndex = 6;
@@ -3397,7 +3419,7 @@ namespace STROOP
             // 
             // buttonDie
             // 
-            this.buttonDie.Location = new System.Drawing.Point(3, 104);
+            this.buttonDie.Location = new System.Drawing.Point(3, 100);
             this.buttonDie.Name = "buttonDie";
             this.buttonDie.Size = new System.Drawing.Size(93, 23);
             this.buttonDie.TabIndex = 5;
@@ -3406,7 +3428,7 @@ namespace STROOP
             // 
             // button100Lives
             // 
-            this.button100Lives.Location = new System.Drawing.Point(3, 163);
+            this.button100Lives.Location = new System.Drawing.Point(3, 175);
             this.button100Lives.Name = "button100Lives";
             this.button100Lives.Size = new System.Drawing.Size(93, 23);
             this.button100Lives.TabIndex = 4;
@@ -3415,7 +3437,7 @@ namespace STROOP
             // 
             // buttonTurnOnOffHud
             // 
-            this.buttonTurnOnOffHud.Location = new System.Drawing.Point(3, 222);
+            this.buttonTurnOnOffHud.Location = new System.Drawing.Point(3, 225);
             this.buttonTurnOnOffHud.Name = "buttonTurnOnOffHud";
             this.buttonTurnOnOffHud.Size = new System.Drawing.Size(93, 23);
             this.buttonTurnOnOffHud.TabIndex = 4;
@@ -4856,7 +4878,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 281F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 283F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -10517,7 +10539,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(391, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(357, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -10549,7 +10571,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(385, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(351, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -10605,7 +10627,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(385, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(351, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -14745,25 +14767,14 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // comboBoxRomVersion
+            // buttonGameOver
             // 
-            this.comboBoxRomVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxRomVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxRomVersion.Location = new System.Drawing.Point(616, 11);
-            this.comboBoxRomVersion.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxRomVersion.Name = "comboBoxRomVersion";
-            this.comboBoxRomVersion.Size = new System.Drawing.Size(42, 21);
-            this.comboBoxRomVersion.TabIndex = 22;
-            // 
-            // comboBoxReadWriteMode
-            // 
-            this.comboBoxReadWriteMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxReadWriteMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxReadWriteMode.Location = new System.Drawing.Point(662, 11);
-            this.comboBoxReadWriteMode.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxReadWriteMode.Name = "comboBoxReadWriteMode";
-            this.comboBoxReadWriteMode.Size = new System.Drawing.Size(75, 21);
-            this.comboBoxReadWriteMode.TabIndex = 22;
+            this.buttonGameOver.Location = new System.Drawing.Point(3, 125);
+            this.buttonGameOver.Name = "buttonGameOver";
+            this.buttonGameOver.Size = new System.Drawing.Size(93, 24);
+            this.buttonGameOver.TabIndex = 6;
+            this.buttonGameOver.Text = "Game Over";
+            this.buttonGameOver.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -16337,6 +16348,7 @@ namespace STROOP
         private DataGridViewTextBoxColumn Column1;
         private RichTextBox richTextBoxTasInstructions;
         private CheckBox checkBoxShowOverlayChildObject;
+        private Button buttonGameOver;
     }
 }
 
