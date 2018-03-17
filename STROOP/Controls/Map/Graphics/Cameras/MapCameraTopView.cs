@@ -35,7 +35,6 @@ namespace STROOP.Controls.Map.Graphics
             _view = Matrix4.LookAt(new Vector3(Origin.X, 0x4000, Origin.Y),
                 new Vector3(Origin.X, 0, Origin.Y),
                 new Vector3((float)Math.Cos(RotationAngle - Math.PI / 2), 0, (float)Math.Sin(RotationAngle - Math.PI / 2)));
-            var test = Vector4.Transform(new Vector4(300, 0x2000, 500, 1), _view * _projection);
 
             return _view * _projection;
         }

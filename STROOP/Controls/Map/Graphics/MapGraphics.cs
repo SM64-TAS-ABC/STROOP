@@ -84,9 +84,6 @@ namespace STROOP.Controls.Map.Graphics
 
             _control.Paint += OnPaint;
             _control.Resize += OnResize;
-
-            // Test
-            Camera = new MapCameraTopView(this);
         }
 
         public void OnPaint(object sender, EventArgs e)
@@ -108,7 +105,7 @@ namespace STROOP.Controls.Map.Graphics
             IEnumerable<MapGraphicsItem> drawItems;
             lock (_mapItemsLock)
             {
-                drawItems = _mapItems.Where(o => o.Visible && o.DrawOnCameraTypes.Contains(Camera.GetType()));
+                drawItems = _mapItems.Where(o => o.Visible); // && o.DrawOnCameraTypes.Contains(Camera.GetType()));
             }
             
             IEnumerable<MapGraphicsItem> drawItemsPerspective, drawItemsOverlay, drawItemsBackground;

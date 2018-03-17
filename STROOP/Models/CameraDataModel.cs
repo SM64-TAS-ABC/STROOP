@@ -76,6 +76,18 @@ namespace STROOP.Models
             }
         }
         #endregion
+        #region FOV
+        private float _fov;
+        public float FOV
+        {
+            get => _fov;
+            set
+            {
+                if (Config.Stream.SetValue(value, CameraConfig.CameraStructAddress + CameraConfig.FOV))
+                    _fov = value;
+            }
+        }
+        #endregion
         #region Objects
         private uint _secondaryObject;
         public uint SecondaryObject
@@ -110,6 +122,8 @@ namespace STROOP.Models
             _facingYaw =    Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.FacingYawOffset);
             _facingPitch =  Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.FacingPitchOffset);
             _facingRoll =   Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.FacingRollOffset);
+
+            _fov = Config.Stream.GetSingle(CameraConfig.FOV);
 
             _secondaryObject = Config.Stream.GetUInt32(CameraConfig.SecondaryObjectAddress);
             _hackObject = Config.Stream.GetUInt32(CameraHackConfig.CameraHackStruct + CameraHackConfig.ObjectOffset);

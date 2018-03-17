@@ -9,6 +9,9 @@ using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using STROOP.Models;
 using System.Drawing;
+using STROOP.Controls.Map.Graphics;
+using OpenTK;
+using OpenTK.Graphics;
 
 namespace STROOP.Controls.Map.Objects
 {
@@ -16,6 +19,7 @@ namespace STROOP.Controls.Map.Objects
     {
         MapGraphicsBackgroundItem _background;
         MapGraphicsImageItem _layout;
+        MapGraphicsTrianglesItem _triangles;
 
         byte _currentLevel, _currentArea;
         ushort _currentLoadingPoint, _currentMissionLayout;
@@ -23,16 +27,23 @@ namespace STROOP.Controls.Map.Objects
         List<MapLayout> _currentMapList = null;
         MapAssociations _mapAssoc;
 
-        public override IEnumerable<MapGraphicsItem> GraphicsItems => new List<MapGraphicsItem>() { _background, _layout };
+        public override IEnumerable<MapGraphicsItem> GraphicsItems => new List<MapGraphicsItem>() { _background, _layout, _triangles };
 
         public MapLevelObject(MapAssociations mapAssoc)
         {
             _mapAssoc = mapAssoc;
             _background = new MapGraphicsBackgroundItem(null);
             _layout = new MapGraphicsImageItem(null);
+            _triangles = new MapGraphicsTrianglesItem();
         }
 
         public override void Update()
+        {
+            UpdateMap();
+            //UpdateTriangles();
+        }
+
+        private void UpdateMap()
         {
             LevelDataModel level = DataModels.Level;
 
@@ -82,6 +93,20 @@ namespace STROOP.Controls.Map.Objects
 
                 ChangeCurrentMap(bestMap);
             }
+        }
+
+        void UpdateTriangles()
+        {
+            List<Vertex> vertices = new List<Vertex>();
+            foreach(TriangleDataModel tri in TriangleUtilities.GetLevelTriangles())
+            {
+                Color4 color = Color4.Yellow;
+                vertices.Add(new Vertex(new Vector3(tri.X1, tri.Y1, tri.Z1), color));
+                vertices.Add(new Vertex(new Vector3(tri.X2, tri.Y2, tri.Z2), color));
+                vertices.Add(new Vertex(new Vector3(tri.X3, tri.Y3, tri.Z3), color));
+            }
+
+            _triangles.SetTriangles(vertices);
         }
 
         private void ChangeCurrentMap(MapLayout map)

@@ -15,6 +15,7 @@ namespace STROOP.Structs.Configurations
         public static readonly uint XOffset = 0x8C;
         public static readonly uint YOffset = 0x90;
         public static readonly uint ZOffset = 0x94;
+        public static readonly uint FOV = 0x8033C5A4;
         public static readonly uint FocusXOffset = 0x80;
         public static readonly uint FocusYOffset = 0x84;
         public static readonly uint FocusZOffset = 0x88;

@@ -28,13 +28,7 @@ namespace STROOP.Managers
         private MapGraphics _graphics;
         private MapAssociations _mapAssoc;
 
-        private enum MapScale { CourseDefault, MaxCourseSize, Custom };
-        private enum MapCenter { BestFit, Origin, Custom };
-        private enum MapAngle { _0, _16384, _32768, _49152, Custom };
 
-        private MapScale _mapScale = MapScale.CourseDefault;
-        private MapCenter _mapCenter = MapCenter.BestFit;
-        private MapAngle _mapAngle = MapAngle._32768;
 
         #region Objects
         private MapMarioObject _mapObjMario = new MapMarioObject();
@@ -60,6 +54,7 @@ namespace STROOP.Managers
 
             IsLoaded = true;
 
+            /*
             _mapGui.RadioButtonScaleCourseDefault.Click += (sender, e) => _mapScale = MapScale.CourseDefault;
             _mapGui.RadioButtonScaleMaxCourseSize.Click += (sender, e) => _mapScale = MapScale.MaxCourseSize;
             _mapGui.RadioButtonScaleCustom.Click += (sender, e) => _mapScale = MapScale.Custom;
@@ -73,6 +68,7 @@ namespace STROOP.Managers
             _mapGui.RadioButtonAngle32768.Click += (sender, e) => _mapAngle = MapAngle._32768;
             _mapGui.RadioButtonAngle49152.Click += (sender, e) => _mapAngle = MapAngle._49152;
             _mapGui.RadioButtonAngleCustom.Click += (sender, e) => _mapAngle = MapAngle.Custom;
+            */
 
             _mapGui.ButtonAdd.Click += (sender, e) => _mapGui.MapTrackerFlowLayoutPanel.AddNewControl(new MapTracker(_mapObjMario));
             _mapGui.ButtonClear.Click += (sender, e) => _mapGui.MapTrackerFlowLayoutPanel.ClearControls();
