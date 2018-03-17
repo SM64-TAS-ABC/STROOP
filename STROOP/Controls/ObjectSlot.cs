@@ -74,7 +74,7 @@ namespace STROOP
         bool _drawSelectedOverlay, _drawStoodOnOverlay, _drawHeldOverlay, _drawInteractionOverlay, _drawUsedOverlay,
             _drawClosestOverlay, _drawCameraOverlay, _drawCameraHackOverlay, _drawModelOverlay,
             _drawFloorOverlay, _drawWallOverlay, _drawCeilingOverlay,
-            _drawParentOverlay, _drawParentUnusedOverlay, _drawParentNoneOverlay, _drawMarkedOverlay;
+            _drawParentOverlay, _drawParentUnusedOverlay, _drawParentNoneOverlay, _drawChildOverlay, _drawMarkedOverlay;
 
         public ObjectSlot(ObjectSlotsManager manager, int index, ObjectSlotManagerGui gui, Size size)
         {
@@ -379,6 +379,8 @@ namespace STROOP
                 e.Graphics.DrawImage(_gui.ParentUnusedObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawParentNoneOverlay)
                 e.Graphics.DrawImage(_gui.ParentNoneObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawChildOverlay)
+                e.Graphics.DrawImage(_gui.ChildObjectOverlayImage, new Rectangle(new Point(), Size));
         }
 
         public void Update(ObjectDataModel obj)
@@ -405,6 +407,7 @@ namespace STROOP
                 _drawParentOverlay,
                 _drawParentUnusedOverlay,
                 _drawParentNoneOverlay,
+                _drawChildOverlay,
                 _drawMarkedOverlay,
             };
             if (address.HasValue)
@@ -429,6 +432,8 @@ namespace STROOP
                 _drawParentUnusedOverlay = OverlayConfig.ShowOverlayParentObject &&
                     address == _manager.HoveredOverSlot?.CurrentObject?.Address &&
                     _manager.HoveredOverSlot?.CurrentObject?.Parent == ObjectSlotsConfig.UnusedSlotAddress;
+                _drawChildOverlay = OverlayConfig.ShowOverlayChildObject &&
+                    CurrentObject?.Parent == _manager.HoveredOverSlot?.CurrentObject?.Address;
                 _drawMarkedOverlay = _manager.MarkedSlotsAddresses.Contains(address.Value);
             }
             else
@@ -448,6 +453,7 @@ namespace STROOP
                 _drawParentOverlay = false;
                 _drawParentUnusedOverlay = false;
                 _drawParentNoneOverlay = false;
+                _drawChildOverlay = false;
                 _drawMarkedOverlay = false;
             }
             var overlays = new List<bool>()
@@ -467,6 +473,7 @@ namespace STROOP
                 _drawParentOverlay,
                 _drawParentUnusedOverlay,
                 _drawParentNoneOverlay,
+                _drawChildOverlay,
                 _drawMarkedOverlay,
             };
 

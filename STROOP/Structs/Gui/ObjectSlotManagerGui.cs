@@ -28,6 +28,7 @@ namespace STROOP.Structs
         public Image ParentObjectOverlayImage;
         public Image ParentUnusedObjectOverlayImage;
         public Image ParentNoneObjectOverlayImage;
+        public Image ChildObjectOverlayImage;
         public Image MarkedObjectOverlayImage;
 
         public CheckBox LockLabelsCheckbox;
@@ -55,6 +56,7 @@ namespace STROOP.Structs
             ParentObjectOverlayImage?.Dispose();
             ParentUnusedObjectOverlayImage?.Dispose();
             ParentNoneObjectOverlayImage?.Dispose();
+            ChildObjectOverlayImage?.Dispose();
             MarkedObjectOverlayImage?.Dispose();
         }
     }

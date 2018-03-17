@@ -89,6 +89,9 @@
     <ParentNone>
       <OverlayImage path="ParentNone.png"/>
     </ParentNone>
+    <Child>
+      <OverlayImage path="Child.png"/>
+    </Child>
     <Marked>
       <OverlayImage path="Marked.png"/>
     </Marked>

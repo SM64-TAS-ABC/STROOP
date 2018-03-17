@@ -144,7 +144,8 @@ namespace STROOP.Utilities
                 stoodOnOverlayImagePath = "", heldOverlayImagePath = "", interactionOverlayImagePath = "",
                 usedOverlayImagePath = "", closestOverlayImagePath = "", cameraOverlayImagePath = "", cameraHackOverlayImagePath = "",
                 modelOverlayImagePath = "", floorOverlayImagePath = "", wallOverlayImagePath = "", ceilingOverlayImagePath = "",
-                parentOverlayImagePath = "", parentUnusedOverlayImagePath = "", parentNoneOverlayImagePath = "", markedOverlayImagePath = "";
+                parentOverlayImagePath = "", parentUnusedOverlayImagePath = "", parentNoneOverlayImagePath = "", childOverlayImagePath = "",
+                markedOverlayImagePath = "";
             uint marioBehavior = 0;
 
             foreach (XElement element in doc.Root.Elements())
@@ -291,6 +292,10 @@ namespace STROOP.Utilities
                                     parentNoneOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
+                                case "Child":
+                                    childOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
                                 case "Marked":
                                     markedOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
@@ -395,6 +400,7 @@ namespace STROOP.Utilities
             objectSlotManagerGui.ParentObjectOverlayImage = Image.FromFile(overlayImageDir + parentOverlayImagePath);
             objectSlotManagerGui.ParentUnusedObjectOverlayImage = Image.FromFile(overlayImageDir + parentUnusedOverlayImagePath);
             objectSlotManagerGui.ParentNoneObjectOverlayImage = Image.FromFile(overlayImageDir + parentNoneOverlayImagePath);
+            objectSlotManagerGui.ChildObjectOverlayImage = Image.FromFile(overlayImageDir + childOverlayImagePath);
             objectSlotManagerGui.MarkedObjectOverlayImage = Image.FromFile(overlayImageDir + markedOverlayImagePath);
 
             foreach (var obj in assoc.BehaviorAssociations)
