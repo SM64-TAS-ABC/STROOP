@@ -193,6 +193,7 @@ namespace STROOP
             this.tabPageHud = new System.Windows.Forms.TabPage();
             this.splitContainerHud = new STROOP.BetterSplitContainer();
             this.checkBoxFullHP = new System.Windows.Forms.CheckBox();
+            this.buttonGameOver = new System.Windows.Forms.Button();
             this.button99Coins = new System.Windows.Forms.Button();
             this.buttonStandardHud = new System.Windows.Forms.Button();
             this.panelHudBorder = new System.Windows.Forms.Panel();
@@ -1134,7 +1135,7 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.buttonGameOver = new System.Windows.Forms.Button();
+            this.tabPageMapOptions = new System.Windows.Forms.TabPage();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -3375,6 +3376,15 @@ namespace STROOP
             this.checkBoxFullHP.Text = "Full HP";
             this.checkBoxFullHP.UseVisualStyleBackColor = true;
             // 
+            // buttonGameOver
+            // 
+            this.buttonGameOver.Location = new System.Drawing.Point(3, 125);
+            this.buttonGameOver.Name = "buttonGameOver";
+            this.buttonGameOver.Size = new System.Drawing.Size(93, 24);
+            this.buttonGameOver.TabIndex = 6;
+            this.buttonGameOver.Text = "Game Over";
+            this.buttonGameOver.UseVisualStyleBackColor = true;
+            // 
             // button99Coins
             // 
             this.button99Coins.Location = new System.Drawing.Point(3, 150);
@@ -4878,7 +4888,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 283F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 284F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8961,6 +8971,7 @@ namespace STROOP
             // 
             this.tabControlMap.Controls.Add(this.tabPage2D);
             this.tabControlMap.Controls.Add(this.tabPage3D);
+            this.tabControlMap.Controls.Add(this.tabPageMapOptions);
             this.tabControlMap.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlMap.Location = new System.Drawing.Point(0, 0);
             this.tabControlMap.Margin = new System.Windows.Forms.Padding(0);
@@ -10539,7 +10550,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(357, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(340, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -10571,7 +10582,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(351, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(334, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -10627,7 +10638,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(351, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(334, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -14767,14 +14778,16 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // buttonGameOver
+            // tabPageMapOptions
             // 
-            this.buttonGameOver.Location = new System.Drawing.Point(3, 125);
-            this.buttonGameOver.Name = "buttonGameOver";
-            this.buttonGameOver.Size = new System.Drawing.Size(93, 24);
-            this.buttonGameOver.TabIndex = 6;
-            this.buttonGameOver.Text = "Game Over";
-            this.buttonGameOver.UseVisualStyleBackColor = true;
+            this.tabPageMapOptions.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageMapOptions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageMapOptions.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMapOptions.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageMapOptions.Name = "tabPageMapOptions";
+            this.tabPageMapOptions.Size = new System.Drawing.Size(392, 292);
+            this.tabPageMapOptions.TabIndex = 3;
+            this.tabPageMapOptions.Text = "Options";
             // 
             // StroopMainForm
             // 
@@ -16349,6 +16362,7 @@ namespace STROOP
         private RichTextBox richTextBoxTasInstructions;
         private CheckBox checkBoxShowOverlayChildObject;
         private Button buttonGameOver;
+        private TabPage tabPageMapOptions;
     }
 }
 
