@@ -678,25 +678,28 @@ namespace STROOP.Utilities
                 positiveB = true;
             }
 
-            int max = positiveA ? 127 : 128;
-            for (int aMag = 8; aMag <= max; aMag++)
-            {
-                double ratio = useX ?
+            double ratio = useX ?
                     Math.Cos(goalMarioAngleRadians) / Math.Sin(goalMarioAngleRadians) :
                     Math.Sin(goalMarioAngleRadians) / Math.Cos(goalMarioAngleRadians);
-                double ratioAbs = Math.Abs(ratio);
-                int bMedianMag = (int)(aMag * ratioAbs);
+            double ratioAbs = Math.Abs(ratio);
+            int max = positiveA ? 121 : 122;
 
+            for (int aMag = 8; aMag <= max; aMag++)
+            {
                 int a = aMag * (positiveA ? 1 : -1);
+                int bMedianMag = (int)(aMag * ratioAbs);
                 int bMedian = bMedianMag * (positiveB ? 1 : -1);
-                int width = 2;
+
+                int width = 1;
                 for (int b = bMedian - width; b <= bMedian + width; b++)
                 {
-                    int x = useX ? a : b;
-                    int y = useX ? b : a;
+                    int xEffective = useX ? a : b;
+                    int yEffective = useX ? b : a;
 
-                    if (InputIsInDeadZone(x)) x = 0;
-                    if (InputIsInDeadZone(y)) y = 0;
+                    if (Math.Abs(xEffective) == 1 || Math.Abs(yEffective) == 1) continue;
+
+                    int x = xEffective < 0 ? xEffective - 6 : xEffective > 0 ? xEffective + 6 : 0;
+                    int y = yEffective < 0 ? yEffective - 6 : yEffective > 0 ? yEffective + 6 : 0;
 
                     ushort inputAngle = CalculateAngleFromInputs(x, y, cameraAngle);
                     ushort truncatedInputAngle = NormalizeAngleTruncated(inputAngle);
