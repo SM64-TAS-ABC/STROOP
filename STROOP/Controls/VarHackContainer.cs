@@ -269,6 +269,10 @@ namespace STROOP.Controls
             byte[] yPosBytes = BitConverter.GetBytes(yPos);
             WriteBytes(yPosBytes, bytes, VarHackConfig.YPosOffset, true);
 
+            name = name.Replace("\\c", VarHackConfig.CoinChar);
+            name = name.Replace("\\m", VarHackConfig.MarioHeadChar);
+            name = name.Replace("\\s", VarHackConfig.StarChar);
+            
             string cappedName = CapString(name, !noNumber);
             string numberAddon = noNumber ? "" : (useHex ? "%x" : "%d");
             string cappedNameAndNumberAddon = cappedName + numberAddon;
