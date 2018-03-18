@@ -70,7 +70,9 @@ namespace STROOP.Managers
             _mapGui.RadioButtonAngleCustom.Click += (sender, e) => _mapAngle = MapAngle.Custom;
             */
 
-            _mapGui.ButtonAddNewTracker.Click += (sender, e) => _mapGui.MapTrackerFlowLayoutPanel.AddNewControl(new MapTracker(_mapObjMario));
+            _mapGui.ButtonAddNewTracker.Click += (sender, e) =>
+                _mapGui.MapTrackerFlowLayoutPanel.AddNewControl(
+                    new MapTracker(_mapGui.MapTrackerFlowLayoutPanel, _mapObjMario));
             _mapGui.ButtonClearAllTrackers.Click += (sender, e) => _mapGui.MapTrackerFlowLayoutPanel.ClearControls();
 
             // Test

@@ -19,11 +19,15 @@ namespace STROOP.Controls.Map.Trackers
 {
     public partial class MapTracker : UserControl
     {
-        MapIconObject _obj;
+        private readonly MapTrackerFlowLayoutPanel _flowLayoutPanel;
+        private readonly MapIconObject _iconObj;
 
-        public MapTracker(MapIconObject obj)
+        public MapTracker(
+            MapTrackerFlowLayoutPanel flowLayoutPanel,
+            MapIconObject iconObj)
         {
-            _obj = obj;
+            _flowLayoutPanel = flowLayoutPanel;
+            _iconObj = iconObj;
 
             InitializeComponent();
         }
@@ -37,24 +41,44 @@ namespace STROOP.Controls.Map.Trackers
             comboBoxOrderType.DataSource = Enum.GetValues(typeof(MapTrackerOrderType));
         }
 
-        private void TrackBarSize_ValueChanged(object sender, EventArgs e)
+        private void trackBarSize_ValueChanged(object sender, EventArgs e)
         {
             const float minSize = 0.01f;
             const float maxSize = 0.20f;
-            _obj.Size = minSize + (maxSize - minSize) *
+            _iconObj.Size = minSize + (maxSize - minSize) *
                 (trackBarSize.Value - trackBarSize.Minimum)
                 / (trackBarSize.Maximum - trackBarSize.Minimum); 
         }
 
-        private void TrackBarOpacity_ValueChanged(object sender, EventArgs e)
+        private void trackBarOpacity_ValueChanged(object sender, EventArgs e)
         {
-            _obj.Opacity = (float) (trackBarOpacity.Value - trackBarOpacity.Minimum)
+            _iconObj.Opacity = (float) (trackBarOpacity.Value - trackBarOpacity.Minimum)
                 / (trackBarOpacity.Maximum - trackBarOpacity.Minimum);
         }
 
-        private void CheckBoxRotates_CheckedChanged(object sender, EventArgs e)
+        private void checkBoxRotates_CheckedChanged(object sender, EventArgs e)
         {
-            _obj.Rotates = checkBoxRotates.Checked;
+            _iconObj.Rotates = checkBoxRotates.Checked;
+        }
+
+        private void pictureBoxRedX_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBoxEye_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBoxUpArrow_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBoxDownArrow_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

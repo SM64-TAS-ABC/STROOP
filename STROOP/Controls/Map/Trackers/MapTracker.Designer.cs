@@ -69,7 +69,7 @@
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 61F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 62F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel.Controls.Add(this.pictureBoxDownArrow, 4, 3);
             this.tableLayoutPanel.Controls.Add(this.pictureBoxUpArrow, 4, 2);
@@ -110,6 +110,7 @@
             this.pictureBoxDownArrow.Size = new System.Drawing.Size(30, 17);
             this.pictureBoxDownArrow.TabIndex = 12;
             this.pictureBoxDownArrow.TabStop = false;
+            this.pictureBoxDownArrow.Click += new System.EventHandler(this.pictureBoxDownArrow_Click);
             // 
             // pictureBoxUpArrow
             // 
@@ -121,6 +122,7 @@
             this.pictureBoxUpArrow.Size = new System.Drawing.Size(30, 17);
             this.pictureBoxUpArrow.TabIndex = 12;
             this.pictureBoxUpArrow.TabStop = false;
+            this.pictureBoxUpArrow.Click += new System.EventHandler(this.pictureBoxUpArrow_Click);
             // 
             // pictureBoxRedX
             // 
@@ -132,6 +134,7 @@
             this.pictureBoxRedX.Size = new System.Drawing.Size(30, 17);
             this.pictureBoxRedX.TabIndex = 12;
             this.pictureBoxRedX.TabStop = false;
+            this.pictureBoxRedX.Click += new System.EventHandler(this.pictureBoxRedX_Click);
             // 
             // pictureBoxEye
             // 
@@ -143,6 +146,7 @@
             this.pictureBoxEye.Size = new System.Drawing.Size(30, 17);
             this.pictureBoxEye.TabIndex = 12;
             this.pictureBoxEye.TabStop = false;
+            this.pictureBoxEye.Click += new System.EventHandler(this.pictureBoxEye_Click);
             // 
             // comboBoxVisibilityType
             // 
@@ -174,7 +178,7 @@
             this.checkBoxRotates.TabIndex = 16;
             this.checkBoxRotates.Text = "Rotate";
             this.checkBoxRotates.UseVisualStyleBackColor = true;
-            this.checkBoxRotates.CheckedChanged += new System.EventHandler(this.CheckBoxRotates_CheckedChanged);
+            this.checkBoxRotates.CheckedChanged += new System.EventHandler(this.checkBoxRotates_CheckedChanged);
             // 
             // pictureBoxCog
             // 
@@ -240,7 +244,7 @@
             this.trackBarOpacity.TabIndex = 19;
             this.trackBarOpacity.TickFrequency = 10;
             this.trackBarOpacity.Value = 40;
-            this.trackBarOpacity.ValueChanged += new System.EventHandler(this.TrackBarOpacity_ValueChanged);
+            this.trackBarOpacity.ValueChanged += new System.EventHandler(this.trackBarOpacity_ValueChanged);
             // 
             // trackBarSize
             // 
@@ -254,7 +258,7 @@
             this.trackBarSize.TabIndex = 19;
             this.trackBarSize.TickFrequency = 10;
             this.trackBarSize.Value = 40;
-            this.trackBarSize.ValueChanged += new System.EventHandler(this.TrackBarSize_ValueChanged);
+            this.trackBarSize.ValueChanged += new System.EventHandler(this.trackBarSize_ValueChanged);
             // 
             // textBoxSize
             // 
