@@ -28,78 +28,77 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanelVarHack = new STROOP.Controls.BorderedTableLayoutPanel();
+            this.tableLayoutPanel = new STROOP.Controls.BorderedTableLayoutPanel();
             this.pictureBoxDownArrow = new System.Windows.Forms.PictureBox();
             this.pictureBoxUpArrow = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxRedX = new System.Windows.Forms.PictureBox();
+            this.pictureBoxEye = new System.Windows.Forms.PictureBox();
             this.comboBoxVisibilityType = new System.Windows.Forms.ComboBox();
             this.comboBoxOrderType = new System.Windows.Forms.ComboBox();
             this.checkBoxRotates = new System.Windows.Forms.CheckBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.textBoxAddressValue = new STROOP.BetterTextbox();
-            this.panelObjectBorder = new System.Windows.Forms.Panel();
-            this.pictureBoxObject = new STROOP.Controls.IntPictureBox();
+            this.pictureBoxCog = new System.Windows.Forms.PictureBox();
+            this.textBoxName = new STROOP.BetterTextbox();
+            this.panelPicture = new System.Windows.Forms.Panel();
+            this.pictureBoxPicture = new STROOP.Controls.IntPictureBox();
             this.trackBarOpacity = new System.Windows.Forms.TrackBar();
-            this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.textBoxObjAngleYaw = new STROOP.BetterTextbox();
-            this.betterTextbox1 = new STROOP.BetterTextbox();
-            this.labelObjBhv = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tableLayoutPanelVarHack.SuspendLayout();
+            this.trackBarSize = new System.Windows.Forms.TrackBar();
+            this.textBoxSize = new STROOP.BetterTextbox();
+            this.textBoxOpacity = new STROOP.BetterTextbox();
+            this.labelSize = new System.Windows.Forms.Label();
+            this.labelOpacity = new System.Windows.Forms.Label();
+            this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpArrow)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.panelObjectBorder.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRedX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEye)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
+            this.panelPicture.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarOpacity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarSize)).BeginInit();
             this.SuspendLayout();
             // 
-            // tableLayoutPanelVarHack
+            // tableLayoutPanel
             // 
-            this.tableLayoutPanelVarHack.BackColor = System.Drawing.SystemColors.Control;
-            this.tableLayoutPanelVarHack.BorderColor = System.Drawing.Color.Black;
-            this.tableLayoutPanelVarHack.BorderWidth = 1F;
-            this.tableLayoutPanelVarHack.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanelVarHack.ColumnCount = 5;
-            this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
-            this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
-            this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
-            this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
-            this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanelVarHack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelVarHack.Controls.Add(this.pictureBoxDownArrow, 4, 3);
-            this.tableLayoutPanelVarHack.Controls.Add(this.pictureBoxUpArrow, 4, 2);
-            this.tableLayoutPanelVarHack.Controls.Add(this.pictureBox2, 4, 0);
-            this.tableLayoutPanelVarHack.Controls.Add(this.pictureBox1, 4, 1);
-            this.tableLayoutPanelVarHack.Controls.Add(this.comboBoxVisibilityType, 3, 1);
-            this.tableLayoutPanelVarHack.Controls.Add(this.comboBoxOrderType, 3, 2);
-            this.tableLayoutPanelVarHack.Controls.Add(this.checkBoxRotates, 3, 0);
-            this.tableLayoutPanelVarHack.Controls.Add(this.pictureBox3, 3, 3);
-            this.tableLayoutPanelVarHack.Controls.Add(this.textBoxAddressValue, 0, 3);
-            this.tableLayoutPanelVarHack.Controls.Add(this.panelObjectBorder, 0, 0);
-            this.tableLayoutPanelVarHack.Controls.Add(this.trackBarOpacity, 1, 3);
-            this.tableLayoutPanelVarHack.Controls.Add(this.trackBarObjSlotSize, 1, 1);
-            this.tableLayoutPanelVarHack.Controls.Add(this.textBoxObjAngleYaw, 2, 0);
-            this.tableLayoutPanelVarHack.Controls.Add(this.betterTextbox1, 2, 2);
-            this.tableLayoutPanelVarHack.Controls.Add(this.labelObjBhv, 1, 0);
-            this.tableLayoutPanelVarHack.Controls.Add(this.label1, 1, 2);
-            this.tableLayoutPanelVarHack.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelVarHack.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanelVarHack.Name = "tableLayoutPanelVarHack";
-            this.tableLayoutPanelVarHack.RowCount = 4;
-            this.tableLayoutPanelVarHack.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanelVarHack.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanelVarHack.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanelVarHack.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanelVarHack.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelVarHack.ShowBorder = false;
-            this.tableLayoutPanelVarHack.Size = new System.Drawing.Size(373, 99);
-            this.tableLayoutPanelVarHack.TabIndex = 40;
-            this.tableLayoutPanelVarHack.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanelVarHack_Paint);
+            this.tableLayoutPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.tableLayoutPanel.BorderColor = System.Drawing.Color.Black;
+            this.tableLayoutPanel.BorderWidth = 1F;
+            this.tableLayoutPanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel.ColumnCount = 5;
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 61F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel.Controls.Add(this.pictureBoxDownArrow, 4, 3);
+            this.tableLayoutPanel.Controls.Add(this.pictureBoxUpArrow, 4, 2);
+            this.tableLayoutPanel.Controls.Add(this.pictureBoxRedX, 4, 0);
+            this.tableLayoutPanel.Controls.Add(this.pictureBoxEye, 4, 1);
+            this.tableLayoutPanel.Controls.Add(this.comboBoxVisibilityType, 3, 1);
+            this.tableLayoutPanel.Controls.Add(this.comboBoxOrderType, 3, 2);
+            this.tableLayoutPanel.Controls.Add(this.checkBoxRotates, 3, 0);
+            this.tableLayoutPanel.Controls.Add(this.pictureBoxCog, 3, 3);
+            this.tableLayoutPanel.Controls.Add(this.textBoxName, 0, 3);
+            this.tableLayoutPanel.Controls.Add(this.panelPicture, 0, 0);
+            this.tableLayoutPanel.Controls.Add(this.trackBarOpacity, 1, 3);
+            this.tableLayoutPanel.Controls.Add(this.trackBarSize, 1, 1);
+            this.tableLayoutPanel.Controls.Add(this.textBoxSize, 2, 0);
+            this.tableLayoutPanel.Controls.Add(this.textBoxOpacity, 2, 2);
+            this.tableLayoutPanel.Controls.Add(this.labelSize, 1, 0);
+            this.tableLayoutPanel.Controls.Add(this.labelOpacity, 1, 2);
+            this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel.Name = "tableLayoutPanel";
+            this.tableLayoutPanel.RowCount = 4;
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel.ShowBorder = false;
+            this.tableLayoutPanel.Size = new System.Drawing.Size(373, 99);
+            this.tableLayoutPanel.TabIndex = 40;
             // 
             // pictureBoxDownArrow
             // 
@@ -123,27 +122,27 @@
             this.pictureBoxUpArrow.TabIndex = 12;
             this.pictureBoxUpArrow.TabStop = false;
             // 
-            // pictureBox2
+            // pictureBoxRedX
             // 
-            this.pictureBox2.BackgroundImage = global::STROOP.Properties.Resources.Red_X;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Location = new System.Drawing.Point(337, 4);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(30, 17);
-            this.pictureBox2.TabIndex = 12;
-            this.pictureBox2.TabStop = false;
+            this.pictureBoxRedX.BackgroundImage = global::STROOP.Properties.Resources.Red_X;
+            this.pictureBoxRedX.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxRedX.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxRedX.Location = new System.Drawing.Point(337, 4);
+            this.pictureBoxRedX.Name = "pictureBoxRedX";
+            this.pictureBoxRedX.Size = new System.Drawing.Size(30, 17);
+            this.pictureBoxRedX.TabIndex = 12;
+            this.pictureBoxRedX.TabStop = false;
             // 
-            // pictureBox1
+            // pictureBoxEye
             // 
-            this.pictureBox1.BackgroundImage = global::STROOP.Properties.Resources.image_eye_open2;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Location = new System.Drawing.Point(337, 28);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(30, 17);
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxEye.BackgroundImage = global::STROOP.Properties.Resources.image_eye_open2;
+            this.pictureBoxEye.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxEye.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxEye.Location = new System.Drawing.Point(337, 28);
+            this.pictureBoxEye.Name = "pictureBoxEye";
+            this.pictureBoxEye.Size = new System.Drawing.Size(30, 17);
+            this.pictureBoxEye.TabIndex = 12;
+            this.pictureBoxEye.TabStop = false;
             // 
             // comboBoxVisibilityType
             // 
@@ -175,63 +174,63 @@
             this.checkBoxRotates.TabIndex = 16;
             this.checkBoxRotates.Text = "Rotate";
             this.checkBoxRotates.UseVisualStyleBackColor = true;
-            this.checkBoxRotates.CheckedChanged += new System.EventHandler(this.checkBoxRotates_CheckedChanged);
+            this.checkBoxRotates.CheckedChanged += new System.EventHandler(this.CheckBoxRotates_CheckedChanged);
             // 
-            // pictureBox3
+            // pictureBoxCog
             // 
-            this.pictureBox3.BackgroundImage = global::STROOP.Properties.Resources.cog;
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox3.Location = new System.Drawing.Point(230, 76);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(30, 17);
-            this.pictureBox3.TabIndex = 17;
-            this.pictureBox3.TabStop = false;
+            this.pictureBoxCog.BackgroundImage = global::STROOP.Properties.Resources.cog;
+            this.pictureBoxCog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxCog.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxCog.Location = new System.Drawing.Point(230, 76);
+            this.pictureBoxCog.Name = "pictureBoxCog";
+            this.pictureBoxCog.Size = new System.Drawing.Size(30, 17);
+            this.pictureBoxCog.TabIndex = 17;
+            this.pictureBoxCog.TabStop = false;
             // 
-            // textBoxAddressValue
+            // textBoxName
             // 
-            this.textBoxAddressValue.BackColor = System.Drawing.SystemColors.Control;
-            this.textBoxAddressValue.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxAddressValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxAddressValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxAddressValue.Location = new System.Drawing.Point(4, 76);
-            this.textBoxAddressValue.Name = "textBoxAddressValue";
-            this.textBoxAddressValue.Size = new System.Drawing.Size(72, 13);
-            this.textBoxAddressValue.TabIndex = 10;
-            this.textBoxAddressValue.Text = "Mario";
-            this.textBoxAddressValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxName.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxName.Location = new System.Drawing.Point(4, 76);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(72, 13);
+            this.textBoxName.TabIndex = 10;
+            this.textBoxName.Text = "Mario";
+            this.textBoxName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // panelObjectBorder
+            // panelPicture
             // 
-            this.panelObjectBorder.BackColor = System.Drawing.Color.Red;
-            this.panelObjectBorder.Controls.Add(this.pictureBoxObject);
-            this.panelObjectBorder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelObjectBorder.Location = new System.Drawing.Point(3, 3);
-            this.panelObjectBorder.Margin = new System.Windows.Forms.Padding(2);
-            this.panelObjectBorder.Name = "panelObjectBorder";
-            this.tableLayoutPanelVarHack.SetRowSpan(this.panelObjectBorder, 3);
-            this.panelObjectBorder.Size = new System.Drawing.Size(74, 67);
-            this.panelObjectBorder.TabIndex = 18;
+            this.panelPicture.BackColor = System.Drawing.Color.Red;
+            this.panelPicture.Controls.Add(this.pictureBoxPicture);
+            this.panelPicture.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelPicture.Location = new System.Drawing.Point(3, 3);
+            this.panelPicture.Margin = new System.Windows.Forms.Padding(2);
+            this.panelPicture.Name = "panelPicture";
+            this.tableLayoutPanel.SetRowSpan(this.panelPicture, 3);
+            this.panelPicture.Size = new System.Drawing.Size(74, 67);
+            this.panelPicture.TabIndex = 18;
             // 
-            // pictureBoxObject
+            // pictureBoxPicture
             // 
-            this.pictureBoxObject.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.pictureBoxPicture.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxObject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.pictureBoxObject.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBoxObject.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxObject.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBoxObject.MaximumSize = new System.Drawing.Size(133, 130);
-            this.pictureBoxObject.Name = "pictureBoxObject";
-            this.pictureBoxObject.Size = new System.Drawing.Size(68, 61);
-            this.pictureBoxObject.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxObject.TabIndex = 0;
-            this.pictureBoxObject.TabStop = false;
+            this.pictureBoxPicture.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.pictureBoxPicture.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+            this.pictureBoxPicture.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxPicture.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxPicture.MaximumSize = new System.Drawing.Size(133, 130);
+            this.pictureBoxPicture.Name = "pictureBoxPicture";
+            this.pictureBoxPicture.Size = new System.Drawing.Size(68, 61);
+            this.pictureBoxPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxPicture.TabIndex = 0;
+            this.pictureBoxPicture.TabStop = false;
             // 
             // trackBarOpacity
             // 
-            this.tableLayoutPanelVarHack.SetColumnSpan(this.trackBarOpacity, 2);
+            this.tableLayoutPanel.SetColumnSpan(this.trackBarOpacity, 2);
             this.trackBarOpacity.Dock = System.Windows.Forms.DockStyle.Fill;
             this.trackBarOpacity.Location = new System.Drawing.Point(83, 76);
             this.trackBarOpacity.Maximum = 100;
@@ -241,108 +240,108 @@
             this.trackBarOpacity.TabIndex = 19;
             this.trackBarOpacity.TickFrequency = 10;
             this.trackBarOpacity.Value = 40;
-            this.trackBarOpacity.ValueChanged += new System.EventHandler(this.trackBarOpacity_ValueChanged);
+            this.trackBarOpacity.ValueChanged += new System.EventHandler(this.TrackBarOpacity_ValueChanged);
             // 
-            // trackBarObjSlotSize
+            // trackBarSize
             // 
-            this.tableLayoutPanelVarHack.SetColumnSpan(this.trackBarObjSlotSize, 2);
-            this.trackBarObjSlotSize.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackBarObjSlotSize.Location = new System.Drawing.Point(83, 28);
-            this.trackBarObjSlotSize.Maximum = 100;
-            this.trackBarObjSlotSize.Minimum = 15;
-            this.trackBarObjSlotSize.Name = "trackBarObjSlotSize";
-            this.trackBarObjSlotSize.Size = new System.Drawing.Size(140, 17);
-            this.trackBarObjSlotSize.TabIndex = 19;
-            this.trackBarObjSlotSize.TickFrequency = 10;
-            this.trackBarObjSlotSize.Value = 40;
-            this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
+            this.tableLayoutPanel.SetColumnSpan(this.trackBarSize, 2);
+            this.trackBarSize.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trackBarSize.Location = new System.Drawing.Point(83, 28);
+            this.trackBarSize.Maximum = 100;
+            this.trackBarSize.Minimum = 15;
+            this.trackBarSize.Name = "trackBarSize";
+            this.trackBarSize.Size = new System.Drawing.Size(140, 17);
+            this.trackBarSize.TabIndex = 19;
+            this.trackBarSize.TickFrequency = 10;
+            this.trackBarSize.Value = 40;
+            this.trackBarSize.ValueChanged += new System.EventHandler(this.TrackBarSize_ValueChanged);
             // 
-            // textBoxObjAngleYaw
+            // textBoxSize
             // 
-            this.textBoxObjAngleYaw.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxObjAngleYaw.Location = new System.Drawing.Point(161, 4);
-            this.textBoxObjAngleYaw.Name = "textBoxObjAngleYaw";
-            this.textBoxObjAngleYaw.Size = new System.Drawing.Size(62, 20);
-            this.textBoxObjAngleYaw.TabIndex = 35;
-            this.textBoxObjAngleYaw.Text = "1024";
-            this.textBoxObjAngleYaw.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxSize.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxSize.Location = new System.Drawing.Point(161, 4);
+            this.textBoxSize.Name = "textBoxSize";
+            this.textBoxSize.Size = new System.Drawing.Size(62, 20);
+            this.textBoxSize.TabIndex = 35;
+            this.textBoxSize.Text = "1024";
+            this.textBoxSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // betterTextbox1
+            // textBoxOpacity
             // 
-            this.betterTextbox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.betterTextbox1.Location = new System.Drawing.Point(161, 52);
-            this.betterTextbox1.Name = "betterTextbox1";
-            this.betterTextbox1.Size = new System.Drawing.Size(62, 20);
-            this.betterTextbox1.TabIndex = 35;
-            this.betterTextbox1.Text = "1024";
-            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxOpacity.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxOpacity.Location = new System.Drawing.Point(161, 52);
+            this.textBoxOpacity.Name = "textBoxOpacity";
+            this.textBoxOpacity.Size = new System.Drawing.Size(62, 20);
+            this.textBoxOpacity.TabIndex = 35;
+            this.textBoxOpacity.Text = "1024";
+            this.textBoxOpacity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // labelObjBhv
+            // labelSize
             // 
-            this.labelObjBhv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelObjBhv.AutoSize = true;
-            this.labelObjBhv.Location = new System.Drawing.Point(82, 11);
-            this.labelObjBhv.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelObjBhv.Name = "labelObjBhv";
-            this.labelObjBhv.Size = new System.Drawing.Size(30, 13);
-            this.labelObjBhv.TabIndex = 36;
-            this.labelObjBhv.Text = "Size:";
+            this.labelSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelSize.AutoSize = true;
+            this.labelSize.Location = new System.Drawing.Point(82, 11);
+            this.labelSize.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelSize.Name = "labelSize";
+            this.labelSize.Size = new System.Drawing.Size(30, 13);
+            this.labelSize.TabIndex = 36;
+            this.labelSize.Text = "Size:";
             // 
-            // label1
+            // labelOpacity
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(82, 59);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 13);
-            this.label1.TabIndex = 37;
-            this.label1.Text = "Opaqueness:";
+            this.labelOpacity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.labelOpacity.AutoSize = true;
+            this.labelOpacity.Location = new System.Drawing.Point(82, 59);
+            this.labelOpacity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelOpacity.Name = "labelOpacity";
+            this.labelOpacity.Size = new System.Drawing.Size(46, 13);
+            this.labelOpacity.TabIndex = 37;
+            this.labelOpacity.Text = "Opacity:";
             // 
             // MapTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.tableLayoutPanelVarHack);
+            this.Controls.Add(this.tableLayoutPanel);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MapTracker";
             this.Size = new System.Drawing.Size(373, 99);
             this.Load += new System.EventHandler(this.MapTracker_Load);
-            this.tableLayoutPanelVarHack.ResumeLayout(false);
-            this.tableLayoutPanelVarHack.PerformLayout();
+            this.tableLayoutPanel.ResumeLayout(false);
+            this.tableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpArrow)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.panelObjectBorder.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxObject)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRedX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEye)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).EndInit();
+            this.panelPicture.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarOpacity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarSize)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private BorderedTableLayoutPanel tableLayoutPanelVarHack;
-        private BetterTextbox textBoxAddressValue;
+        private BorderedTableLayoutPanel tableLayoutPanel;
+        private BetterTextbox textBoxName;
         private System.Windows.Forms.PictureBox pictureBoxUpArrow;
         private System.Windows.Forms.PictureBox pictureBoxDownArrow;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxRedX;
+        private System.Windows.Forms.PictureBox pictureBoxEye;
         private System.Windows.Forms.ComboBox comboBoxVisibilityType;
         private System.Windows.Forms.ComboBox comboBoxOrderType;
         private System.Windows.Forms.CheckBox checkBoxRotates;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Panel panelObjectBorder;
-        private IntPictureBox pictureBoxObject;
+        private System.Windows.Forms.PictureBox pictureBoxCog;
+        private System.Windows.Forms.Panel panelPicture;
+        private IntPictureBox pictureBoxPicture;
         private System.Windows.Forms.TrackBar trackBarOpacity;
-        private System.Windows.Forms.TrackBar trackBarObjSlotSize;
-        private BetterTextbox textBoxObjAngleYaw;
-        private BetterTextbox betterTextbox1;
-        private System.Windows.Forms.Label labelObjBhv;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TrackBar trackBarSize;
+        private BetterTextbox textBoxSize;
+        private BetterTextbox textBoxOpacity;
+        private System.Windows.Forms.Label labelSize;
+        private System.Windows.Forms.Label labelOpacity;
     }
 }

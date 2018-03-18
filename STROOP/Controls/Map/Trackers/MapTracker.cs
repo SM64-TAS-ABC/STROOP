@@ -30,34 +30,29 @@ namespace STROOP.Controls.Map.Trackers
 
         private void MapTracker_Load(object sender, EventArgs e)
         {
-            tableLayoutPanelVarHack.BorderWidth = 2;
-            tableLayoutPanelVarHack.ShowBorder = true;
+            tableLayoutPanel.BorderWidth = 2;
+            tableLayoutPanel.ShowBorder = true;
 
             comboBoxVisibilityType.DataSource = Enum.GetValues(typeof(MapTrackerVisibilityType));
             comboBoxOrderType.DataSource = Enum.GetValues(typeof(MapTrackerOrderType));
         }
 
-        private void tableLayoutPanelVarHack_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void trackBarObjSlotSize_ValueChanged(object sender, EventArgs e)
+        private void TrackBarSize_ValueChanged(object sender, EventArgs e)
         {
             const float minSize = 0.01f;
             const float maxSize = 0.20f;
             _obj.Size = minSize + (maxSize - minSize) *
-                (trackBarObjSlotSize.Value - trackBarObjSlotSize.Minimum)
-                / (trackBarObjSlotSize.Maximum - trackBarObjSlotSize.Minimum); 
+                (trackBarSize.Value - trackBarSize.Minimum)
+                / (trackBarSize.Maximum - trackBarSize.Minimum); 
         }
 
-        private void trackBarOpacity_ValueChanged(object sender, EventArgs e)
+        private void TrackBarOpacity_ValueChanged(object sender, EventArgs e)
         {
             _obj.Opacity = (float) (trackBarOpacity.Value - trackBarOpacity.Minimum)
                 / (trackBarOpacity.Maximum - trackBarOpacity.Minimum);
         }
 
-        private void checkBoxRotates_CheckedChanged(object sender, EventArgs e)
+        private void CheckBoxRotates_CheckedChanged(object sender, EventArgs e)
         {
             _obj.Rotates = checkBoxRotates.Checked;
         }
