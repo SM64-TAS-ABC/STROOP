@@ -3049,6 +3049,21 @@ namespace STROOP.Structs
                     };
                     break;
 
+                case "PointAngle":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return SpecialConfig.PointAngle.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        double? newValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!newValueNullable.HasValue) return false;
+                        double newValue = newValueNullable.Value;
+                        SpecialConfig.PointAngle = newValue;
+                        return true;
+                    };
+                    break;
+
                 case "XDistanceToPoint":
                     getterFunction = (uint dummy) =>
                     {

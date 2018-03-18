@@ -46,6 +46,7 @@
   <Data groupList="Point" base="None" specialType="PointX" color="Blue" coord="X">Point X</Data>
   <Data groupList="Point" base="None" specialType="PointY" color="Blue" coord="Y">Point Y</Data>
   <Data groupList="Point" base="None" specialType="PointZ" color="Blue" coord="Z">Point Z</Data>
+  <Data groupList="Point" base="None" specialType="PointAngle" subclass="Angle" type="ushort" color="Blue">Point Angle</Data>
 
   <Data groupList="Point" base="None" specialType="XDistanceToPoint" color="LightBlue" coord="X">XDist to Point</Data>
   <Data groupList="Point" base="None" specialType="YDistanceToPoint" color="LightBlue" coord="Y">YDist to Point</Data>

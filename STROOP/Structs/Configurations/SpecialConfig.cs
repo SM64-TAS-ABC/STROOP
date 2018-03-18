@@ -12,6 +12,7 @@ namespace STROOP.Structs.Configurations
         public static double PointX = 0;
         public static double PointY = 0;
         public static double PointZ = 0;
+        public static double PointAngle = 0;
 
         public static int PuParam1 = 0;
         public static int PuParam2 = 1;
