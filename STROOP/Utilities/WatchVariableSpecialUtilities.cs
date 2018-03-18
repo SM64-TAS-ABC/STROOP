@@ -3225,6 +3225,59 @@ namespace STROOP.Structs
                     };
                     break;
 
+                case "DeltaAngleMarioToAngle":
+                    getterFunction = (uint dummy) =>
+                    {
+                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                        double angleDiff = marioAngle - SpecialConfig.PointAngle;
+                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleDiffNullable.HasValue) return false;
+                        double angleDiff = angleDiffNullable.Value;
+                        double newMarioAngleDouble = SpecialConfig.PointAngle + angleDiff;
+                        ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                        return Config.Stream.SetValue(
+                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    };
+                    break;
+
+                case "FDistanceToPoint":
+                    getterFunction = (uint dummy) =>
+                    {
+                        float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                        double xDistToV1 = marioX - SpecialConfig.PointX;
+                        return xDistToV1.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        double? xDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!xDistNullable.HasValue) return false;
+                        double xDist = xDistNullable.Value;
+                        double newMarioX = SpecialConfig.PointX + xDist;
+                        return Config.Stream.SetValue((float)newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
+                    };
+                    break;
+
+                case "SDistanceToPoint":
+                    getterFunction = (uint dummy) =>
+                    {
+                        float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                        double zDistToV1 = marioZ - SpecialConfig.PointZ;
+                        return zDistToV1.ToString();
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        double? zDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!zDistNullable.HasValue) return false;
+                        double zDist = zDistNullable.Value;
+                        double newMarioZ = SpecialConfig.PointZ + zDist;
+                        return Config.Stream.SetValue((float)newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
+                    };
+                    break;
+
                 default:
                     break;
             }

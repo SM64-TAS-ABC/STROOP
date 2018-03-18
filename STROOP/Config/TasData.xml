@@ -58,4 +58,8 @@
   <Data groupList="Point" base="None" specialType="DeltaAngleMarioToPoint" subclass="Angle" type="short" color="LightBlue">DAngle Mario to Point</Data>
   <Data groupList="Point" base="None" specialType="AnglePointToMario" subclass="Angle" type="ushort" color="LightBlue">Angle Point to Mario</Data>
 
+  <Data groupList="Point" base="None" specialType="DeltaAngleMarioToAngle" subclass="Angle" type="short" color="LightBlue">DAngle Mario to Angle</Data>
+  <Data groupList="Point" base="None" specialType="FDistanceToPoint" color="LightBlue">FDist to Point</Data>
+  <Data groupList="Point" base="None" specialType="SDistanceToPoint" color="LightBlue">SDist to Point</Data>
+
 </Data>
