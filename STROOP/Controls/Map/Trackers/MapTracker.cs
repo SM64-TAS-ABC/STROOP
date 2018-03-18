@@ -22,12 +22,18 @@ namespace STROOP.Controls.Map.Trackers
         private readonly MapTrackerFlowLayoutPanel _flowLayoutPanel;
         private readonly MapIconObject _iconObj;
 
+        private bool _visible;
+        private static readonly Image ImageEyeOpen = Properties.Resources.image_eye_open2;
+        private static readonly Image ImageEyeClosed = Properties.Resources.image_eye_closed2;
+
         public MapTracker(
             MapTrackerFlowLayoutPanel flowLayoutPanel,
             MapIconObject iconObj)
         {
             _flowLayoutPanel = flowLayoutPanel;
             _iconObj = iconObj;
+
+            _visible = true;
 
             InitializeComponent();
         }
@@ -63,22 +69,23 @@ namespace STROOP.Controls.Map.Trackers
 
         private void pictureBoxRedX_Click(object sender, EventArgs e)
         {
-
+            _flowLayoutPanel.RemoveControl(this);
         }
 
         private void pictureBoxEye_Click(object sender, EventArgs e)
         {
-
+            _visible = !_visible;
+            pictureBoxEye.BackgroundImage = _visible ? ImageEyeOpen : ImageEyeClosed;
         }
 
         private void pictureBoxUpArrow_Click(object sender, EventArgs e)
         {
-
+            _flowLayoutPanel.MoveUpControl(this);
         }
 
         private void pictureBoxDownArrow_Click(object sender, EventArgs e)
         {
-
+            _flowLayoutPanel.MoveDownControl(this);
         }
     }
 }
