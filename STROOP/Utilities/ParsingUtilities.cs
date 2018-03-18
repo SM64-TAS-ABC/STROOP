@@ -261,7 +261,8 @@ namespace STROOP.Utilities
                 .Replace('\t', ' ')
                 .Replace(',', ' ')
                 .Replace('(', ' ')
-                .Replace(')', ' ');
+                .Replace(')', ' ')
+                .Trim();
             text = Regex.Replace(text, @"\s+", " ");
             string[] stringArray = text.Split(' ');
 
