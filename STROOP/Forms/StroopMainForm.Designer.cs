@@ -623,11 +623,15 @@ namespace STROOP
             this.splitContainerMapControls = new STROOP.BetterSplitContainer();
             this.tabControlMap = new System.Windows.Forms.TabControl();
             this.tabPageMapOptions = new System.Windows.Forms.TabPage();
+            this.buttonMapControlsTrackSelectedObjects = new System.Windows.Forms.Button();
+            this.buttonMapControlsClearAllTrackers = new System.Windows.Forms.Button();
+            this.buttonMapControlsAddNewTracker = new System.Windows.Forms.Button();
             this.checkBoxMapControlsTrackWallTriangle = new System.Windows.Forms.CheckBox();
             this.checkBoxMapControlsTrackGridlines = new System.Windows.Forms.CheckBox();
             this.checkBoxMapControlsTrackCeilingTriangle = new System.Windows.Forms.CheckBox();
             this.checkBoxMapControlsTrackFloorTriangle = new System.Windows.Forms.CheckBox();
             this.checkBoxMapControlsTrackCamera = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapControlsTrackAllObjects = new System.Windows.Forms.CheckBox();
             this.checkBoxMapControlsTrackHolp = new System.Windows.Forms.CheckBox();
             this.checkBoxMapControlsTrackMario = new System.Windows.Forms.CheckBox();
             this.tabPageMap2D = new System.Windows.Forms.TabPage();
@@ -1141,10 +1145,8 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.buttonMapControlsClearAllTrackers = new System.Windows.Forms.Button();
-            this.buttonMapControlsAddNewTracker = new System.Windows.Forms.Button();
-            this.checkBoxMapControlsTrackAllObjects = new System.Windows.Forms.CheckBox();
-            this.buttonMapControlsTrackSelectedObjects = new System.Windows.Forms.Button();
+            this.buttonTasStoreMarioPosition = new System.Windows.Forms.Button();
+            this.buttonTasStoreMarioAngle = new System.Windows.Forms.Button();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -4898,7 +4900,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 287F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 288F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8515,6 +8517,8 @@ namespace STROOP
             // 
             this.splitContainerTasTable.Panel1.AutoScroll = true;
             this.splitContainerTasTable.Panel1.Controls.Add(this.richTextBoxTasInstructions);
+            this.splitContainerTasTable.Panel1.Controls.Add(this.buttonTasStoreMarioAngle);
+            this.splitContainerTasTable.Panel1.Controls.Add(this.buttonTasStoreMarioPosition);
             this.splitContainerTasTable.Panel1.Controls.Add(this.buttonTasClearData);
             this.splitContainerTasTable.Panel1.Controls.Add(this.checkBoxTasRecordData);
             // 
@@ -8523,7 +8527,7 @@ namespace STROOP
             this.splitContainerTasTable.Panel2.AutoScroll = true;
             this.splitContainerTasTable.Panel2.Controls.Add(this.dataGridViewTas);
             this.splitContainerTasTable.Size = new System.Drawing.Size(432, 457);
-            this.splitContainerTasTable.SplitterDistance = 83;
+            this.splitContainerTasTable.SplitterDistance = 85;
             this.splitContainerTasTable.SplitterWidth = 1;
             this.splitContainerTasTable.TabIndex = 32;
             // 
@@ -8534,17 +8538,16 @@ namespace STROOP
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBoxTasInstructions.Location = new System.Drawing.Point(99, 3);
             this.richTextBoxTasInstructions.Name = "richTextBoxTasInstructions";
-            this.richTextBoxTasInstructions.Size = new System.Drawing.Size(222, 73);
+            this.richTextBoxTasInstructions.Size = new System.Drawing.Size(222, 75);
             this.richTextBoxTasInstructions.TabIndex = 38;
             this.richTextBoxTasInstructions.Text = "(1)\n(2)\n(3)\n(4)\n(5)";
             // 
             // buttonTasClearData
             // 
-            this.buttonTasClearData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonTasClearData.Location = new System.Drawing.Point(329, 3);
+            this.buttonTasClearData.Location = new System.Drawing.Point(3, 23);
             this.buttonTasClearData.Margin = new System.Windows.Forms.Padding(0);
             this.buttonTasClearData.Name = "buttonTasClearData";
-            this.buttonTasClearData.Size = new System.Drawing.Size(97, 38);
+            this.buttonTasClearData.Size = new System.Drawing.Size(87, 31);
             this.buttonTasClearData.TabIndex = 37;
             this.buttonTasClearData.Text = "Clear Data";
             this.buttonTasClearData.UseVisualStyleBackColor = true;
@@ -8585,7 +8588,7 @@ namespace STROOP
             this.dataGridViewTas.Name = "dataGridViewTas";
             this.dataGridViewTas.ReadOnly = true;
             this.dataGridViewTas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTas.Size = new System.Drawing.Size(430, 371);
+            this.dataGridViewTas.Size = new System.Drawing.Size(430, 369);
             this.dataGridViewTas.TabIndex = 2;
             // 
             // dataGridViewTextBoxColumn1
@@ -9012,6 +9015,36 @@ namespace STROOP
             this.tabPageMapOptions.TabIndex = 3;
             this.tabPageMapOptions.Text = "Options";
             // 
+            // buttonMapControlsTrackSelectedObjects
+            // 
+            this.buttonMapControlsTrackSelectedObjects.Location = new System.Drawing.Point(124, 75);
+            this.buttonMapControlsTrackSelectedObjects.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapControlsTrackSelectedObjects.Name = "buttonMapControlsTrackSelectedObjects";
+            this.buttonMapControlsTrackSelectedObjects.Size = new System.Drawing.Size(135, 25);
+            this.buttonMapControlsTrackSelectedObjects.TabIndex = 40;
+            this.buttonMapControlsTrackSelectedObjects.Text = "Track Selected Objects";
+            this.buttonMapControlsTrackSelectedObjects.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapControlsClearAllTrackers
+            // 
+            this.buttonMapControlsClearAllTrackers.Location = new System.Drawing.Point(124, 45);
+            this.buttonMapControlsClearAllTrackers.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapControlsClearAllTrackers.Name = "buttonMapControlsClearAllTrackers";
+            this.buttonMapControlsClearAllTrackers.Size = new System.Drawing.Size(135, 25);
+            this.buttonMapControlsClearAllTrackers.TabIndex = 40;
+            this.buttonMapControlsClearAllTrackers.Text = "Clear All Trackers";
+            this.buttonMapControlsClearAllTrackers.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapControlsAddNewTracker
+            // 
+            this.buttonMapControlsAddNewTracker.Location = new System.Drawing.Point(124, 15);
+            this.buttonMapControlsAddNewTracker.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapControlsAddNewTracker.Name = "buttonMapControlsAddNewTracker";
+            this.buttonMapControlsAddNewTracker.Size = new System.Drawing.Size(135, 25);
+            this.buttonMapControlsAddNewTracker.TabIndex = 41;
+            this.buttonMapControlsAddNewTracker.Text = "Add New Tracker";
+            this.buttonMapControlsAddNewTracker.UseVisualStyleBackColor = true;
+            // 
             // checkBoxMapControlsTrackWallTriangle
             // 
             this.checkBoxMapControlsTrackWallTriangle.AutoSize = true;
@@ -9061,6 +9094,16 @@ namespace STROOP
             this.checkBoxMapControlsTrackCamera.TabIndex = 19;
             this.checkBoxMapControlsTrackCamera.Text = "Track Camera";
             this.checkBoxMapControlsTrackCamera.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMapControlsTrackAllObjects
+            // 
+            this.checkBoxMapControlsTrackAllObjects.AutoSize = true;
+            this.checkBoxMapControlsTrackAllObjects.Location = new System.Drawing.Point(14, 134);
+            this.checkBoxMapControlsTrackAllObjects.Name = "checkBoxMapControlsTrackAllObjects";
+            this.checkBoxMapControlsTrackAllObjects.Size = new System.Drawing.Size(107, 17);
+            this.checkBoxMapControlsTrackAllObjects.TabIndex = 19;
+            this.checkBoxMapControlsTrackAllObjects.Text = "Track All Objects";
+            this.checkBoxMapControlsTrackAllObjects.UseVisualStyleBackColor = true;
             // 
             // checkBoxMapControlsTrackHolp
             // 
@@ -10632,7 +10675,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(391, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(374, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -10664,7 +10707,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(385, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(368, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -10720,7 +10763,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(385, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(368, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -14860,45 +14903,27 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // buttonMapControlsClearAllTrackers
+            // buttonTasStoreMarioPosition
             // 
-            this.buttonMapControlsClearAllTrackers.Location = new System.Drawing.Point(124, 45);
-            this.buttonMapControlsClearAllTrackers.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapControlsClearAllTrackers.Name = "buttonMapControlsClearAllTrackers";
-            this.buttonMapControlsClearAllTrackers.Size = new System.Drawing.Size(135, 25);
-            this.buttonMapControlsClearAllTrackers.TabIndex = 40;
-            this.buttonMapControlsClearAllTrackers.Text = "Clear All Trackers";
-            this.buttonMapControlsClearAllTrackers.UseVisualStyleBackColor = true;
+            this.buttonTasStoreMarioPosition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTasStoreMarioPosition.Location = new System.Drawing.Point(334, 5);
+            this.buttonTasStoreMarioPosition.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasStoreMarioPosition.Name = "buttonTasStoreMarioPosition";
+            this.buttonTasStoreMarioPosition.Size = new System.Drawing.Size(87, 35);
+            this.buttonTasStoreMarioPosition.TabIndex = 37;
+            this.buttonTasStoreMarioPosition.Text = "Store Mario Position";
+            this.buttonTasStoreMarioPosition.UseVisualStyleBackColor = true;
             // 
-            // buttonMapControlsAddNewTracker
+            // buttonTasStoreMarioAngle
             // 
-            this.buttonMapControlsAddNewTracker.Location = new System.Drawing.Point(124, 15);
-            this.buttonMapControlsAddNewTracker.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapControlsAddNewTracker.Name = "buttonMapControlsAddNewTracker";
-            this.buttonMapControlsAddNewTracker.Size = new System.Drawing.Size(135, 25);
-            this.buttonMapControlsAddNewTracker.TabIndex = 41;
-            this.buttonMapControlsAddNewTracker.Text = "Add New Tracker";
-            this.buttonMapControlsAddNewTracker.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMapControlsTrackAllObjects
-            // 
-            this.checkBoxMapControlsTrackAllObjects.AutoSize = true;
-            this.checkBoxMapControlsTrackAllObjects.Location = new System.Drawing.Point(14, 134);
-            this.checkBoxMapControlsTrackAllObjects.Name = "checkBoxMapControlsTrackAllObjects";
-            this.checkBoxMapControlsTrackAllObjects.Size = new System.Drawing.Size(107, 17);
-            this.checkBoxMapControlsTrackAllObjects.TabIndex = 19;
-            this.checkBoxMapControlsTrackAllObjects.Text = "Track All Objects";
-            this.checkBoxMapControlsTrackAllObjects.UseVisualStyleBackColor = true;
-            // 
-            // buttonMapControlsTrackSelectedObjects
-            // 
-            this.buttonMapControlsTrackSelectedObjects.Location = new System.Drawing.Point(124, 75);
-            this.buttonMapControlsTrackSelectedObjects.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapControlsTrackSelectedObjects.Name = "buttonMapControlsTrackSelectedObjects";
-            this.buttonMapControlsTrackSelectedObjects.Size = new System.Drawing.Size(135, 25);
-            this.buttonMapControlsTrackSelectedObjects.TabIndex = 40;
-            this.buttonMapControlsTrackSelectedObjects.Text = "Track Selected Objects";
-            this.buttonMapControlsTrackSelectedObjects.UseVisualStyleBackColor = true;
+            this.buttonTasStoreMarioAngle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTasStoreMarioAngle.Location = new System.Drawing.Point(334, 42);
+            this.buttonTasStoreMarioAngle.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasStoreMarioAngle.Name = "buttonTasStoreMarioAngle";
+            this.buttonTasStoreMarioAngle.Size = new System.Drawing.Size(87, 35);
+            this.buttonTasStoreMarioAngle.TabIndex = 37;
+            this.buttonTasStoreMarioAngle.Text = "Store Mario Angle";
+            this.buttonTasStoreMarioAngle.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -16485,6 +16510,8 @@ namespace STROOP
         private Button buttonMapControlsAddNewTracker;
         private CheckBox checkBoxMapControlsTrackAllObjects;
         private Button buttonMapControlsTrackSelectedObjects;
+        private Button buttonTasStoreMarioAngle;
+        private Button buttonTasStoreMarioPosition;
     }
 }
 
