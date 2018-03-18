@@ -39,6 +39,13 @@ namespace STROOP.Structs
                     };
                     break;
 
+                case "SlidingSpeed":
+                    getterFunction = () =>
+                    {
+                        return "Spd " + FormatInteger(WatchVariableSpecialUtilities.GetMarioSlidingSpeed());
+                    };
+                    break;
+
                 case "MarioAction":
                     getterFunction = () =>
                     {

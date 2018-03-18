@@ -994,10 +994,7 @@ namespace STROOP.Structs
                 case "SlidingSpeed":
                     getterFunction = (uint dummy) =>
                     {
-                        float xSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
-                        float zSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
-                        double hSlidingSpeed = MoreMath.GetHypotenuse(xSlidingSpeed, zSlidingSpeed);
-                        return hSlidingSpeed.ToString();
+                        return GetMarioSlidingSpeed().ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
@@ -3469,6 +3466,16 @@ namespace STROOP.Structs
             double hDist = vDist / Math.Tan(steepnessRadians);
             double hSpeed = hDist * 4 / triStruct.NormY;
             return hSpeed;
+        }
+
+        // Mario special methods
+
+        public static double GetMarioSlidingSpeed()
+        {
+            float xSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
+            float zSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
+            double hSlidingSpeed = MoreMath.GetHypotenuse(xSlidingSpeed, zSlidingSpeed);
+            return hSlidingSpeed;
         }
 
         // Object specific utilitiy methods
