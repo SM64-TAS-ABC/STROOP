@@ -45,11 +45,39 @@ namespace STROOP.Utilities
             return (magnitude * xComponent, magnitude * zComponent);
         }
 
-        public static (double sidewaysDist, double forwardsDist) GetComponentsFromVectorRelatively(double magnitude, double vectorAngle, double baseAngle)
+        public static (double sidewaysDist, double forwardsDist) GetComponentsFromVectorRelatively(
+            double magnitude, double vectorAngle, double baseAngle)
         {
             double rotatedAngle = NormalizeAngleDouble(vectorAngle - baseAngle);
             (double xComponent, double zComponent) = GetComponentsFromVector(magnitude, rotatedAngle);
             return (-1 * xComponent, zComponent);
+        }
+
+        public static (double xDist, double zDist) GetAbsoluteComponents(
+            double sidewaysDist, double forwardsDist, double relativeAngle)
+        {
+            double relX = sidewaysDist;
+            double relZ = -1 * forwardsDist;
+            double relDist = GetHypotenuse(relX, relZ);
+            double relAngle = AngleTo_AngleUnits(relX, relZ);
+            double absAngle = relativeAngle + ReverseAngle(relAngle);
+            return GetComponentsFromVector(relDist, absAngle);
+        }
+
+        public static (double newXPos, double newZPos) GetRelativelyOffsettedPosition(
+            double baseX, double baseZ, double baseAngle, double pointX, double pointZ,
+            double? goalSidewaysDistNullable, double? goalForwardsDistNullable)
+        {
+            double hdist = GetDistanceBetween(baseX, baseZ, pointX, pointZ);
+            double angle = AngleTo_AngleUnits(baseX, baseZ, pointX, pointZ);
+            (double currentSidewaysDist, double currentForwardsDist) =
+                GetComponentsFromVectorRelatively(hdist, angle, baseAngle);
+
+            double goalSidewaysDist = goalSidewaysDistNullable ?? currentSidewaysDist;
+            double goalForwardsDist = goalForwardsDistNullable ?? currentForwardsDist;
+
+            (double xDist, double zDist) = GetAbsoluteComponents(goalSidewaysDist, goalForwardsDist, baseAngle);
+            return (baseX + xDist, baseZ + zDist);
         }
 
         public static (double magnitude, double angle) GetVectorFromComponents(double xDist, double zDist)
