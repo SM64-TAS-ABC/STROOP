@@ -63,13 +63,38 @@ namespace STROOP.Managers
             _buttonTasClearData = splitContainerTasTable.Panel1.Controls["buttonTasClearData"] as Button;
             _buttonTasClearData.Click += (sender, e) => ClearData();
             _richTextBoxTasInstructions = splitContainerTasTable.Panel1.Controls["richTextBoxTasInstructions"] as RichTextBox;
-            
+
+            Button buttonTasStoreMarioPosition = splitContainerTasTable.Panel1.Controls["buttonTasStoreMarioPosition"] as Button;
+            buttonTasStoreMarioPosition.Click += (sender, e) => StoreMarioInfo(x: true, y: true, z: true);
+            ControlUtilities.AddContextMenuStripFunctions(
+                buttonTasStoreMarioPosition,
+                new List<string>() { "Store Position", "Store Lateral Position", "Store X", "Store Y", "Store Z" },
+                new List<Action>() {
+                    () => StoreMarioInfo(x: true, y: true, z: true),
+                    () => StoreMarioInfo(x: true, z: true),
+                    () => StoreMarioInfo(x: true),
+                    () => StoreMarioInfo(y: true),
+                    () => StoreMarioInfo(z: true),
+                });
+
+            Button buttonTasStoreMarioAngle = splitContainerTasTable.Panel1.Controls["buttonTasStoreMarioAngle"] as Button;
+            buttonTasStoreMarioAngle.Click += (sender, e) => StoreMarioInfo(angle: true);
+
             _waitingGlobalTimer = 0;
             _waitingDateTime = DateTime.Now;
             _lastUpdatedGlobalTimer = 0;
 
             _dataDictionary = new Dictionary<uint, TasDataStruct>();
             _rowDictionary = new Dictionary<uint, DataGridViewRow>();
+        }
+
+        private void StoreMarioInfo(
+            bool x = false, bool y = false, bool z = false, bool angle = false)
+        {
+            if (x) SpecialConfig.PointX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            if (y) SpecialConfig.PointY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            if (z) SpecialConfig.PointZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            if (angle) SpecialConfig.PointAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
         }
 
         private class TasDataStruct
