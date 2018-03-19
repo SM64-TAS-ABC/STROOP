@@ -255,6 +255,54 @@ namespace STROOP.Structs
                     };
                     break;
 
+                case "InGameAngleObjectToMario":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        Position objPos = GetObjectPosition(objAddress);
+                        double angleToMario = MoreMath.InGameAngleTo(
+                            objPos.X, objPos.Z, marioPos.X, marioPos.Z);
+                        return MoreMath.NormalizeAngleDouble(angleToMario).ToString();
+                    };
+                    setterFunction = (string stringValue, uint objAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        Position objPos = GetObjectPosition(objAddress);
+                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleNullable.HasValue) return false;
+                        double angle = angleNullable.Value;
+                        (double newObjX, double newObjZ) =
+                            MoreMath.RotatePointAboutPointToAngle(
+                                objPos.X, objPos.Z, marioPos.X, marioPos.Z, angle);
+                        return SetObjectPosition(objAddress, newObjX, null, newObjZ);
+                    };
+                    break;
+
+                case "InGameDeltaAngleObjectToMario":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        Position objPos = GetObjectPosition(objAddress);
+                        double angleToMario = MoreMath.InGameAngleTo(
+                            objPos.X, objPos.Z, marioPos.X, marioPos.Z);
+                        double angleDiff = objPos.Angle.Value - angleToMario;
+                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
+                    };
+                    setterFunction = (string stringValue, uint objAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        Position objPos = GetObjectPosition(objAddress);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleDiffNullable.HasValue) return false;
+                        double angleDiff = angleDiffNullable.Value;
+                        double angleToMario = MoreMath.AngleTo_AngleUnits(
+                            objPos.X, objPos.Z, marioPos.X, marioPos.Z);
+                        double newObjAngleDouble = angleToMario + angleDiff;
+                        ushort newObjAngleUShort = MoreMath.NormalizeAngleUshort(newObjAngleDouble);
+                        return SetObjectPosition(objAddress, null, null, null, newObjAngleUShort);
+                    };
+                    break;
+
                 case "AngleMarioToObject":
                     getterFunction = (uint objAddress) =>
                     {

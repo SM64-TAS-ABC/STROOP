@@ -39,6 +39,8 @@
   <Data groupList="Advanced" type="ushort" offset="0x0162" base="Object" subclass="Angle">"Angle to Mario"</Data>
   <Data groupList="Intermediate" base="Object" specialType="AngleObjectToMario" subclass="Angle" type="ushort">Angle Obj to Mario</Data>
   <Data groupList="Intermediate" base="Object" specialType="DeltaAngleObjectToMario" subclass="Angle" type="short">DAngle Obj to Mario</Data>
+  <Data groupList="Advanced" base="Object" specialType="InGameAngleObjectToMario" subclass="Angle" type="ushort">IG Angle Obj to Mario</Data>
+  <Data groupList="Advanced" base="Object" specialType="InGameDeltaAngleObjectToMario" subclass="Angle" type="short">IG DAngle Obj to Mario</Data>
   <Data groupList="Intermediate" base="Object" specialType="AngleMarioToObject" subclass="Angle" type="ushort">Angle Mario to Obj</Data>
   <Data groupList="Intermediate" base="Object" specialType="DeltaAngleMarioToObject" subclass="Angle" type="short">DAngle Mario to Obj</Data>
   <Data groupList="Advanced" base="Object" specialType="AngleObjectToHome" subclass="Angle" type="ushort">Angle Obj to Home</Data>
