@@ -14932,27 +14932,32 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // buttonTasStoreMarioPosition
+            // comboBoxMapColorMethod
             // 
-            this.buttonTasStoreMarioPosition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonTasStoreMarioPosition.Location = new System.Drawing.Point(334, 5);
-            this.buttonTasStoreMarioPosition.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonTasStoreMarioPosition.Name = "buttonTasStoreMarioPosition";
-            this.buttonTasStoreMarioPosition.Size = new System.Drawing.Size(87, 35);
-            this.buttonTasStoreMarioPosition.TabIndex = 37;
-            this.buttonTasStoreMarioPosition.Text = "Store Mario Position";
-            this.buttonTasStoreMarioPosition.UseVisualStyleBackColor = true;
+            this.comboBoxMapColorMethod.FormattingEnabled = true;
+            this.comboBoxMapColorMethod.Location = new System.Drawing.Point(3, 39);
+            this.comboBoxMapColorMethod.Name = "comboBoxMapColorMethod";
+            this.comboBoxMapColorMethod.Size = new System.Drawing.Size(175, 21);
+            this.comboBoxMapColorMethod.TabIndex = 0;
             // 
-            // buttonTasStoreMarioAngle
+            // checkBoxMapGameCamOrientation
             // 
-            this.buttonTasStoreMarioAngle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonTasStoreMarioAngle.Location = new System.Drawing.Point(334, 42);
-            this.buttonTasStoreMarioAngle.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonTasStoreMarioAngle.Name = "buttonTasStoreMarioAngle";
-            this.buttonTasStoreMarioAngle.Size = new System.Drawing.Size(87, 35);
-            this.buttonTasStoreMarioAngle.TabIndex = 37;
-            this.buttonTasStoreMarioAngle.Text = "Store Mario Angle";
-            this.buttonTasStoreMarioAngle.UseVisualStyleBackColor = true;
+            this.checkBoxMapGameCamOrientation.AutoSize = true;
+            this.checkBoxMapGameCamOrientation.Location = new System.Drawing.Point(3, 3);
+            this.checkBoxMapGameCamOrientation.Name = "checkBoxMapGameCamOrientation";
+            this.checkBoxMapGameCamOrientation.Size = new System.Drawing.Size(175, 17);
+            this.checkBoxMapGameCamOrientation.TabIndex = 1;
+            this.checkBoxMapGameCamOrientation.Text = "Use in-game camera orientation";
+            this.checkBoxMapGameCamOrientation.UseVisualStyleBackColor = true;
+            // 
+            // labelMapColorMethod
+            // 
+            this.labelMapColorMethod.AutoSize = true;
+            this.labelMapColorMethod.Location = new System.Drawing.Point(3, 23);
+            this.labelMapColorMethod.Name = "labelMapColorMethod";
+            this.labelMapColorMethod.Size = new System.Drawing.Size(112, 13);
+            this.labelMapColorMethod.TabIndex = 2;
+            this.labelMapColorMethod.Text = "Collision color method:";
             // 
             // StroopMainForm
             // 
@@ -15294,6 +15299,8 @@ namespace STROOP
             this.groupBoxMapControlsCenter.PerformLayout();
             this.groupBoxMapControlsScale.ResumeLayout(false);
             this.groupBoxMapControlsScale.PerformLayout();
+            this.tabPageMap3D.ResumeLayout(false);
+            this.tabPageMap3D.PerformLayout();
             this.tabPagePu.ResumeLayout(false);
             this.splitContainerPu.Panel1.ResumeLayout(false);
             this.splitContainerPu.Panel2.ResumeLayout(false);
@@ -16541,6 +16548,9 @@ namespace STROOP
         private Button buttonMapControlsTrackSelectedObjects;
         private Button buttonTasStoreMarioAngle;
         private Button buttonTasStoreMarioPosition;
+        private Label labelMapColorMethod;
+        private CheckBox checkBoxMapGameCamOrientation;
+        private ComboBox comboBoxMapColorMethod;
     }
 }
 
