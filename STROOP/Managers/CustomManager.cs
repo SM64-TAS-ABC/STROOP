@@ -129,7 +129,7 @@ namespace STROOP.Managers
                 () => WatchVariableControl.VariableHeight);
         }
 
-        public static void InitializeAddSubtractGetSetFuncionality(
+        private static void InitializeAddSubtractGetSetFuncionality(
             Button buttonSubtract,
             Button buttonAdd,
             Button buttonGet,

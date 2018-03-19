@@ -190,6 +190,11 @@ namespace STROOP.Managers
             }
         }
 
+        public void SetTaserSettings()
+        {
+            _variablePanel.ShowOnlyVariableGroup(VariableGroup.TAS);
+        }
+
         public override void Update(bool updateView)
         {
             if (!updateView) return;
