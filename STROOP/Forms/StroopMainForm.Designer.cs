@@ -670,6 +670,9 @@ namespace STROOP
             this.radioButtonMapControlsScaleCustom = new System.Windows.Forms.RadioButton();
             this.buttonMapControlsScaleChangePlus = new System.Windows.Forms.Button();
             this.tabPageMap3D = new System.Windows.Forms.TabPage();
+            this.labelMapColorMethod = new System.Windows.Forms.Label();
+            this.checkBoxMapGameCamOrientation = new System.Windows.Forms.CheckBox();
+            this.comboBoxMapColorMethod = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanelMapTrackers = new STROOP.Controls.Map.Trackers.MapTrackerFlowLayoutPanel();
             this.glControlMap = new OpenTK.GLControl();
             this.tabPagePu = new System.Windows.Forms.TabPage();
@@ -1147,9 +1150,6 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.comboBoxMapColorMethod = new System.Windows.Forms.ComboBox();
-            this.checkBoxMapGameCamOrientation = new System.Windows.Forms.CheckBox();
-            this.labelMapColorMethod = new System.Windows.Forms.Label();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -9529,6 +9529,35 @@ namespace STROOP
             this.tabPageMap3D.TabIndex = 2;
             this.tabPageMap3D.Text = "3D";
             // 
+            // labelMapColorMethod
+            // 
+            this.labelMapColorMethod.AutoSize = true;
+            this.labelMapColorMethod.Location = new System.Drawing.Point(3, 23);
+            this.labelMapColorMethod.Name = "labelMapColorMethod";
+            this.labelMapColorMethod.Size = new System.Drawing.Size(112, 13);
+            this.labelMapColorMethod.TabIndex = 2;
+            this.labelMapColorMethod.Text = "Collision color method:";
+            // 
+            // checkBoxMapGameCamOrientation
+            // 
+            this.checkBoxMapGameCamOrientation.AutoSize = true;
+            this.checkBoxMapGameCamOrientation.Checked = true;
+            this.checkBoxMapGameCamOrientation.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMapGameCamOrientation.Location = new System.Drawing.Point(3, 3);
+            this.checkBoxMapGameCamOrientation.Name = "checkBoxMapGameCamOrientation";
+            this.checkBoxMapGameCamOrientation.Size = new System.Drawing.Size(175, 17);
+            this.checkBoxMapGameCamOrientation.TabIndex = 1;
+            this.checkBoxMapGameCamOrientation.Text = "Use in-game camera orientation";
+            this.checkBoxMapGameCamOrientation.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxMapColorMethod
+            // 
+            this.comboBoxMapColorMethod.FormattingEnabled = true;
+            this.comboBoxMapColorMethod.Location = new System.Drawing.Point(3, 39);
+            this.comboBoxMapColorMethod.Name = "comboBoxMapColorMethod";
+            this.comboBoxMapColorMethod.Size = new System.Drawing.Size(175, 21);
+            this.comboBoxMapColorMethod.TabIndex = 0;
+            // 
             // flowLayoutPanelMapTrackers
             // 
             this.flowLayoutPanelMapTrackers.AutoScroll = true;
@@ -14931,33 +14960,6 @@ namespace STROOP
             this.trackBarObjSlotSize.TickFrequency = 10;
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
-            // 
-            // comboBoxMapColorMethod
-            // 
-            this.comboBoxMapColorMethod.FormattingEnabled = true;
-            this.comboBoxMapColorMethod.Location = new System.Drawing.Point(3, 39);
-            this.comboBoxMapColorMethod.Name = "comboBoxMapColorMethod";
-            this.comboBoxMapColorMethod.Size = new System.Drawing.Size(175, 21);
-            this.comboBoxMapColorMethod.TabIndex = 0;
-            // 
-            // checkBoxMapGameCamOrientation
-            // 
-            this.checkBoxMapGameCamOrientation.AutoSize = true;
-            this.checkBoxMapGameCamOrientation.Location = new System.Drawing.Point(3, 3);
-            this.checkBoxMapGameCamOrientation.Name = "checkBoxMapGameCamOrientation";
-            this.checkBoxMapGameCamOrientation.Size = new System.Drawing.Size(175, 17);
-            this.checkBoxMapGameCamOrientation.TabIndex = 1;
-            this.checkBoxMapGameCamOrientation.Text = "Use in-game camera orientation";
-            this.checkBoxMapGameCamOrientation.UseVisualStyleBackColor = true;
-            // 
-            // labelMapColorMethod
-            // 
-            this.labelMapColorMethod.AutoSize = true;
-            this.labelMapColorMethod.Location = new System.Drawing.Point(3, 23);
-            this.labelMapColorMethod.Name = "labelMapColorMethod";
-            this.labelMapColorMethod.Size = new System.Drawing.Size(112, 13);
-            this.labelMapColorMethod.TabIndex = 2;
-            this.labelMapColorMethod.Text = "Collision color method:";
             // 
             // StroopMainForm
             // 

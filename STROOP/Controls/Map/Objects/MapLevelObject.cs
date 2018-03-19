@@ -17,6 +17,9 @@ namespace STROOP.Controls.Map.Objects
 {
     class MapLevelObject : MapObject
     {
+
+        public enum ColorMethodType { WallsFloorsCeilings, RGBXYZNormalComponents, NormalY }
+
         MapGraphicsBackgroundItem _background;
         MapGraphicsImageItem _layout;
         MapGraphicsTrianglesItem _triangles;
@@ -29,6 +32,8 @@ namespace STROOP.Controls.Map.Objects
 
         public override IEnumerable<MapGraphicsItem> GraphicsItems => new List<MapGraphicsItem>() { _background, _layout, _triangles };
 
+        public ColorMethodType ColorMethod;
+
         public MapLevelObject(MapAssociations mapAssoc)
         {
             _mapAssoc = mapAssoc;
@@ -40,7 +45,7 @@ namespace STROOP.Controls.Map.Objects
         public override void Update()
         {
             UpdateMap();
-            //UpdateTriangles();
+            UpdateTriangles();
         }
 
         private void UpdateMap()
@@ -98,9 +103,43 @@ namespace STROOP.Controls.Map.Objects
         void UpdateTriangles()
         {
             List<Vertex> vertices = new List<Vertex>();
-            foreach(TriangleDataModel tri in TriangleUtilities.GetLevelTriangles())
+            foreach(TriangleDataModel tri in TriangleUtilities.GetAllTriangles())
             {
-                Color4 color = Color4.Yellow;
+                Color4 color = Color4.Black;
+
+                switch (ColorMethod)
+                {
+                    case ColorMethodType.WallsFloorsCeilings:
+                        switch (tri.Classification)
+                        {
+                            case TriangleClassification.Wall:
+                                color = Color4.LightGreen;
+                                break;
+                            case TriangleClassification.Floor:
+                                color = Color4.LightBlue;
+                                break;
+                            case TriangleClassification.Ceiling:
+                                color = Color4.Pink;
+                                break;
+                        }                         
+
+                        var i = (float)(Math.Atan2(tri.NormY, tri.NormX) / Math.PI / 2) * 0.1f - 0.2f;
+                        i += tri.NormY * 0.1f - 0.2f;
+                        color.R += i;
+                        color.B += i;
+                        color.G += i;
+                        break;
+
+                    case ColorMethodType.RGBXYZNormalComponents:
+                        color = new Color4(Math.Abs(tri.NormX), Math.Abs(tri.NormY), Math.Abs(tri.NormZ), 1.0f);
+                        break;
+
+                    case ColorMethodType.NormalY:
+                        color = new Color4(Math.Abs(tri.NormY), Math.Abs(tri.NormY), Math.Abs(tri.NormY), 1.0f);
+                        break;
+                }
+
+
                 vertices.Add(new Vertex(new Vector3(tri.X1, tri.Y1, tri.Z1), color));
                 vertices.Add(new Vertex(new Vector3(tri.X2, tri.Y2, tri.Z2), color));
                 vertices.Add(new Vertex(new Vector3(tri.X3, tri.Y3, tri.Z3), color));
@@ -116,9 +155,6 @@ namespace STROOP.Controls.Map.Objects
                 return;
 
             // Change and set a new map
-            //using (var mapImage = _mapAssoc.GetMapImage(map))
-            //    _mapGraphics.SetMap(mapImage);
-
             using (var mapBackground = _mapAssoc.GetMapBackgroundImage(map))
                 _background.ChangeImage(mapBackground);
 

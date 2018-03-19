@@ -31,6 +31,7 @@ namespace STROOP.Managers
 
 
         #region Objects
+        private MapLevelObject _mapObjLevel;
         private MapMarioObject _mapObjMario = new MapMarioObject();
         private MapHolpObject _mapObjHolp = new MapHolpObject();
         private MapCameraObject _mapObjCamera = new MapCameraObject();
@@ -54,6 +55,17 @@ namespace STROOP.Managers
 
             IsLoaded = true;
 
+            _mapGui.ComboBoxMapColorMethod.DataSource = Enum.GetValues(typeof(MapLevelObject.ColorMethodType));
+
+            _mapGui.TabControlView.SelectedIndexChanged += TabControlView_SelectedIndexChanged;
+            _mapGui.CheckBoxMapGameCamOrientation.CheckedChanged += (sender, e) =>
+            {
+                if (_mapGui.CheckBoxMapGameCamOrientation.Checked)
+                    _controller.CameraMode = MapController.MapCameraMode.Game;
+                else
+                    _controller.CameraMode = MapController.MapCameraMode.Fly;
+            };
+
             /*
             _mapGui.RadioButtonScaleCourseDefault.Click += (sender, e) => _mapScale = MapScale.CourseDefault;
             _mapGui.RadioButtonScaleMaxCourseSize.Click += (sender, e) => _mapScale = MapScale.MaxCourseSize;
@@ -76,13 +88,28 @@ namespace STROOP.Managers
             _mapGui.ButtonClearAllTrackers.Click += (sender, e) => _mapGui.MapTrackerFlowLayoutPanel.ClearControls();
 
             // Test
-            _controller.AddMapObject(new MapLevelObject(_mapAssoc));
+            _mapObjLevel = new MapLevelObject(_mapAssoc);
+            _controller.AddMapObject(_mapObjLevel);
             _controller.AddMapObject(_mapObjMario);
             _controller.AddMapObject(_mapObjHolp);
             _controller.AddMapObject(_mapObjCamera);
             _controller.AddMapObject(_mapObjWallTri);
             _controller.AddMapObject(_mapObjFloorTri);
             _controller.AddMapObject(_mapObjCeilTri);
+        }
+
+        private void TabControlView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_mapGui.TabControlView.SelectedTab == _mapGui.TabPage2D)
+            {
+                _controller.CameraMode = MapController.MapCameraMode.TopDown;
+            }
+            else if (_mapGui.TabControlView.SelectedTab == _mapGui.TabPage3D) {
+                if (_mapGui.CheckBoxMapGameCamOrientation.Checked)
+                    _controller.CameraMode = MapController.MapCameraMode.Game;
+                else
+                    _controller.CameraMode = MapController.MapCameraMode.Fly;
+            }
         }
 
         public void Update()
@@ -92,6 +119,9 @@ namespace STROOP.Managers
             // Make sure the control has successfully loaded
             if (!IsLoaded)
                 return;
+
+            if (_mapGui.ComboBoxMapColorMethod.SelectedItem != null)
+                _mapObjLevel.ColorMethod = (MapLevelObject.ColorMethodType)_mapGui.ComboBoxMapColorMethod.SelectedItem;
 
             // Update gui by drawing images (invokes _mapGraphics.OnPaint())
             _controller.Update();
