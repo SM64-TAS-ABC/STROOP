@@ -144,6 +144,9 @@
     <Compile Include="Controls\Map\Objects\MapIconObject.cs" />
     <Compile Include="Controls\Map\Objects\MapCameraObject.cs" />
     <Compile Include="Controls\Map\Objects\MapTriangleObject.cs" />
+    <Compile Include="Controls\ObjectSlotFlowLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Interfaces\IUpdatable.cs" />
     <Compile Include="Controls\Map\Trackers\MapTracker.cs">
       <SubType>UserControl</SubType>
