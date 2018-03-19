@@ -174,10 +174,10 @@ namespace STROOP.Controls
             return item;
         }
 
-        private void ToggleVarGroupVisibility(VariableGroup varGroup, bool? visible = null)
+        private void ToggleVarGroupVisibility(VariableGroup varGroup, bool? newVisibilityNullable = null)
         {
             // Toggle visibility if no visibility is provided
-            bool newVisibility = visible ?? !_visibleGroups.Contains(varGroup);
+            bool newVisibility = newVisibilityNullable ?? !_visibleGroups.Contains(varGroup);
             if (newVisibility) // change to visible
             {
                 _visibleGroups.Add(varGroup);
