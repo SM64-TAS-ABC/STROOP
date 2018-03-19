@@ -165,6 +165,9 @@ namespace STROOP
             ToolStripMenuItem itemRevive = new ToolStripMenuItem("Revive");
             itemRevive.Click += (sender, e) => ButtonUtilities.ReviveObject(new List<ObjectDataModel>() { CurrentObject });
 
+            ToolStripMenuItem itemCopyAddress = new ToolStripMenuItem("Copy Address");
+            itemCopyAddress.Click += (sender, e) => Clipboard.SetText(HexUtilities.Format(CurrentObject.Address));
+
             ContextMenuStrip = new ContextMenuStrip();
             ContextMenuStrip.Items.Add(itemSelect);
             ContextMenuStrip.Items.Add(itemSelectAndSwitch);
@@ -184,6 +187,8 @@ namespace STROOP
             ContextMenuStrip.Items.Add(itemUnClone);
             ContextMenuStrip.Items.Add(itemUnload);
             ContextMenuStrip.Items.Add(itemRevive);
+            ContextMenuStrip.Items.Add(new ToolStripSeparator());
+            ContextMenuStrip.Items.Add(itemCopyAddress);
         }
 
         private void RebufferObjectImage()
