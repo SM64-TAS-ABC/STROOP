@@ -31,7 +31,7 @@ namespace STROOP.Managers
 
         public virtual void RemoveVariableGroup(VariableGroup varGroup)
         {
-            _variablePanel.RemoveVariables(varGroup);
+            _variablePanel.RemoveVariableGroup(varGroup);
         }
 
         public virtual void AddVariable(WatchVariableControl watchVarControl)

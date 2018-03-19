@@ -170,21 +170,24 @@ namespace STROOP.Controls
         private ToolStripMenuItem CreateFilterItem(VariableGroup varGroup)
         {
             ToolStripMenuItem item = new ToolStripMenuItem(varGroup.ToString());
-            item.Click += (sender, e) =>
-            {
-                bool newVisibility = !_visibleGroups.Contains(varGroup);
-                if (newVisibility) // visible
-                {
-                    _visibleGroups.Add(varGroup);
-                }
-                else // hidden
-                {
-                    _visibleGroups.Remove(varGroup);
-                }
-                item.Checked = newVisibility;
-                UpdateControlsBasedOnFilters();
-            };
+            item.Click += (sender, e) => ToggleVarGroupVisibility(varGroup);
             return item;
+        }
+
+        private void ToggleVarGroupVisibility(VariableGroup varGroup, bool? visible = null)
+        {
+            // Toggle visibility if no visibility is provided
+            bool newVisibility = visible ?? !_visibleGroups.Contains(varGroup);
+            if (newVisibility) // change to visible
+            {
+                _visibleGroups.Add(varGroup);
+            }
+            else // change to hidden
+            {
+                _visibleGroups.Remove(varGroup);
+            }
+            UpdateControlsBasedOnFilters();
+            UpdateFilterItemCheckedStatuses();
         }
 
         private void UpdateFilterItemCheckedStatuses()
@@ -255,12 +258,21 @@ namespace STROOP.Controls
             }
         }
 
-        public void RemoveVariables(VariableGroup varGroup)
+        public void RemoveVariableGroup(VariableGroup varGroup)
         {
             List<WatchVariableControl> watchVarControls =
                 _watchVarControls.FindAll(
                     watchVarControl => watchVarControl.BelongsToGroup(varGroup));
             RemoveVariables(watchVarControls);
+        }
+
+        public void ShowOnlyVariableGroup(VariableGroup visibleVarGroup)
+        {
+            foreach (VariableGroup varGroup in _allGroups)
+            {
+                bool newVisibility = varGroup == visibleVarGroup;
+                ToggleVarGroupVisibility(varGroup, newVisibility);
+            }
         }
 
         public void ClearVariables()
