@@ -17,7 +17,10 @@ namespace STROOP.Structs
         public GLControl GLControl;
         public MapTrackerFlowLayoutPanel MapTrackerFlowLayoutPanel;
 
+        public TabControl TabControlView;
+
         // Controls in options tab
+        public TabPage TabPageOptions;
         public CheckBox CheckBoxTrackMario;
         public CheckBox CheckBoxTrackHolp;
         public CheckBox CheckBoxTrackCamera;
@@ -32,6 +35,7 @@ namespace STROOP.Structs
         public Button ButtonTrackSelectedObjects;
 
         // Controls in 2D tab
+        public TabPage TabPage2D;
         public RadioButton RadioButtonScaleCourseDefault;
         public RadioButton RadioButtonScaleMaxCourseSize;
         public RadioButton RadioButtonScaleCustom;
@@ -66,5 +70,10 @@ namespace STROOP.Structs
         public BetterTextbox TextBoxAngleChange;
         public Button ButtonAngleChangeCounterclockwise;
         public Button ButtonAngleChangeClockwise;
+
+        // Controls in the 3D tab
+        public TabPage TabPage3D;
+        public CheckBox CheckBoxMapGameCamOrientation;
+        public ComboBox ComboBoxMapColorMethod;
     }
 }

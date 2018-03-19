@@ -107,8 +107,10 @@ namespace STROOP
             // Main controls
             mapGui.GLControl = glControlMap;
             mapGui.MapTrackerFlowLayoutPanel = flowLayoutPanelMapTrackers;
+            mapGui.TabControlView = tabControlMap;
 
             // Controls in options tab
+            mapGui.TabPageOptions = tabPageMapOptions;
             mapGui.CheckBoxTrackMario = checkBoxMapControlsTrackMario;
             mapGui.CheckBoxTrackHolp = checkBoxMapControlsTrackHolp;
             mapGui.CheckBoxTrackCamera = checkBoxMapControlsTrackCamera;
@@ -123,6 +125,7 @@ namespace STROOP
             mapGui.ButtonTrackSelectedObjects = buttonMapControlsTrackSelectedObjects;
 
             // Controls in 2D tab
+            mapGui.TabPage2D = tabPageMap2D;
             mapGui.RadioButtonScaleCourseDefault = radioButtonMapControlsScaleCourseDefault;
             mapGui.RadioButtonScaleMaxCourseSize = radioButtonMapControlsScaleMaxCourseSize;
             mapGui.RadioButtonScaleCustom = radioButtonMapControlsScaleCustom;
@@ -156,6 +159,11 @@ namespace STROOP
             mapGui.ButtonAngleChangeCounterclockwise = buttonMapControlsAngleChangeCounterclockwise;
             mapGui.ButtonAngleChangeClockwise = buttonMapControlsAngleChangeClockwise;
             mapGui.TextBoxAngleChange = betterTextboxMapControlsAngleChange;
+
+            // Controls in the 3D map tab
+            mapGui.TabPage3D = tabPageMap3D;
+            mapGui.CheckBoxMapGameCamOrientation = checkBoxMapGameCamOrientation;
+            mapGui.ComboBoxMapColorMethod = comboBoxMapColorMethod;
 
             // Create managers
             Config.MapManager = new MapManager(_mapAssoc, mapGui);
