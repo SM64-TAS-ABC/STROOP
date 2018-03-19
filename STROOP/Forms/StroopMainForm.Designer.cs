@@ -1147,7 +1147,7 @@ namespace STROOP
             this.labelSlotSize = new System.Windows.Forms.Label();
             this.checkBoxObjLockLabels = new System.Windows.Forms.CheckBox();
             this.labelSortMethod = new System.Windows.Forms.Label();
-            this.WatchVariablePanelObjects = new STROOP.Controls.WatchVariableFlowLayoutPanel();
+            this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.panelConnect.SuspendLayout();
@@ -15441,7 +15441,7 @@ namespace STROOP
         private System.Windows.Forms.GroupBox groupBoxObjects;
         private System.Windows.Forms.ComboBox comboBoxSortMethod;
         private System.Windows.Forms.Label labelSortMethod;
-        private WatchVariableFlowLayoutPanel WatchVariablePanelObjects;
+        private ObjectSlotFlowLayoutPanel WatchVariablePanelObjects;
         private BetterSplitContainer splitContainerMain;
         private System.Windows.Forms.CheckBox checkBoxObjLockLabels;
         private System.Windows.Forms.TabControl tabControlMain;
