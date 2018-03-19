@@ -69,6 +69,19 @@ namespace STROOP
             comboBoxRomVersion.DataSource = Enum.GetValues(typeof(RomVersion));
             comboBoxReadWriteMode.DataSource = Enum.GetValues(typeof(ReadWriteMode));
 
+            ControlUtilities.AddContextMenuStripFunctions(
+                labelVersionNumber,
+                new List<string>() { "Enable TASer Settings" },
+                new List<Action>()
+                {
+                    () =>
+                    {
+                        checkBoxUseRomHack.Checked = true;
+                        Config.TasManager.SetTaserSettings();
+                        tabControlMain.SelectedTab = tabPageTas;
+                    }
+                });
+
             Config.StroopMainForm = this;
 
             SetupViews();
