@@ -584,6 +584,8 @@ namespace STROOP
             this.splitContainerTas = new STROOP.BetterSplitContainer();
             this.splitContainerTasTable = new STROOP.BetterSplitContainer();
             this.richTextBoxTasInstructions = new System.Windows.Forms.RichTextBox();
+            this.buttonTasStoreMarioAngle = new System.Windows.Forms.Button();
+            this.buttonTasStoreMarioPosition = new System.Windows.Forms.Button();
             this.buttonTasClearData = new System.Windows.Forms.Button();
             this.checkBoxTasRecordData = new System.Windows.Forms.CheckBox();
             this.dataGridViewTas = new System.Windows.Forms.DataGridView();
@@ -1145,8 +1147,9 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.buttonTasStoreMarioPosition = new System.Windows.Forms.Button();
-            this.buttonTasStoreMarioAngle = new System.Windows.Forms.Button();
+            this.comboBoxMapColorMethod = new System.Windows.Forms.ComboBox();
+            this.checkBoxMapGameCamOrientation = new System.Windows.Forms.CheckBox();
+            this.labelMapColorMethod = new System.Windows.Forms.Label();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1423,6 +1426,7 @@ namespace STROOP
             this.groupBoxMapControlsAngle.SuspendLayout();
             this.groupBoxMapControlsCenter.SuspendLayout();
             this.groupBoxMapControlsScale.SuspendLayout();
+            this.tabPageMap3D.SuspendLayout();
             this.tabPagePu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerPu)).BeginInit();
             this.splitContainerPu.Panel1.SuspendLayout();
@@ -8542,6 +8546,28 @@ namespace STROOP
             this.richTextBoxTasInstructions.TabIndex = 38;
             this.richTextBoxTasInstructions.Text = "(1)\n(2)\n(3)\n(4)\n(5)";
             // 
+            // buttonTasStoreMarioAngle
+            // 
+            this.buttonTasStoreMarioAngle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTasStoreMarioAngle.Location = new System.Drawing.Point(334, 42);
+            this.buttonTasStoreMarioAngle.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasStoreMarioAngle.Name = "buttonTasStoreMarioAngle";
+            this.buttonTasStoreMarioAngle.Size = new System.Drawing.Size(87, 35);
+            this.buttonTasStoreMarioAngle.TabIndex = 37;
+            this.buttonTasStoreMarioAngle.Text = "Store Mario Angle";
+            this.buttonTasStoreMarioAngle.UseVisualStyleBackColor = true;
+            // 
+            // buttonTasStoreMarioPosition
+            // 
+            this.buttonTasStoreMarioPosition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTasStoreMarioPosition.Location = new System.Drawing.Point(334, 5);
+            this.buttonTasStoreMarioPosition.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasStoreMarioPosition.Name = "buttonTasStoreMarioPosition";
+            this.buttonTasStoreMarioPosition.Size = new System.Drawing.Size(87, 35);
+            this.buttonTasStoreMarioPosition.TabIndex = 37;
+            this.buttonTasStoreMarioPosition.Text = "Store Mario Position";
+            this.buttonTasStoreMarioPosition.UseVisualStyleBackColor = true;
+            // 
             // buttonTasClearData
             // 
             this.buttonTasClearData.Location = new System.Drawing.Point(3, 23);
@@ -9493,6 +9519,9 @@ namespace STROOP
             this.tabPageMap3D.AutoScroll = true;
             this.tabPageMap3D.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageMap3D.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageMap3D.Controls.Add(this.labelMapColorMethod);
+            this.tabPageMap3D.Controls.Add(this.checkBoxMapGameCamOrientation);
+            this.tabPageMap3D.Controls.Add(this.comboBoxMapColorMethod);
             this.tabPageMap3D.Location = new System.Drawing.Point(4, 22);
             this.tabPageMap3D.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageMap3D.Name = "tabPageMap3D";
