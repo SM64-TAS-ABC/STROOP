@@ -36,18 +36,8 @@ namespace STROOP.Controls.Map.Trackers
         {
             InitializeComponent();
 
-            textBoxColorSelector.AddEnterAction(() =>
-            {
-                Color? newColor = ColorUtilities.ConvertDecimalToColor(textBoxColorSelector.Text);
-                if (newColor.HasValue)
-                {
-                    SelectedColor = newColor.Value;
-                }
-                else
-                {
-                    textBoxColorSelector.Text = ColorUtilities.ConvertColorToDecimal(panelColorSelector.BackColor);
-                }
-            });
+            textBoxColorSelector.AddEnterAction(() => SubmitColorText());
+            textBoxColorSelector.AddLostFocusAction(() => SubmitColorText());
 
             panelColorSelector.Click += (sender, e) =>
             {
@@ -59,6 +49,19 @@ namespace STROOP.Controls.Map.Trackers
                 if (colorDialog.ShowDialog() == DialogResult.OK)
                     SelectedColor = colorDialog.Color;
             };
+        }
+
+        private void SubmitColorText()
+        {
+            Color? newColor = ColorUtilities.ConvertDecimalToColor(textBoxColorSelector.Text);
+            if (newColor.HasValue)
+            {
+                SelectedColor = newColor.Value;
+            }
+            else
+            {
+                textBoxColorSelector.Text = ColorUtilities.ConvertColorToDecimal(panelColorSelector.BackColor);
+            }
         }
     }
 }
