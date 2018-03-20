@@ -1,5 +1,7 @@
 ﻿using STROOP.Forms;
 using STROOP.Structs;
+using STROOP.Structs.Configurations;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -15,6 +17,16 @@ namespace STROOP.Controls
     {
         public ObjectSlotFlowLayoutPanel()
         {
+            ToolStripMenuItem itemSelectCopiedAddress = new ToolStripMenuItem("Select Copied Address");
+            itemSelectCopiedAddress.Click += (sender, e) =>
+            {
+                uint? address = ParsingUtilities.ParseHexNullable(Clipboard.GetText());
+                if (address.HasValue) Config.ObjectSlotsManager.SelectSlotByAddress(address.Value);
+            };
+
+            ContextMenuStrip = new ContextMenuStrip();
+            ContextMenuStrip.Items.Add(itemSelectCopiedAddress);
+
 
         }
     }
