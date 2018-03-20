@@ -36,7 +36,6 @@
             this.comboBoxVisibilityType = new System.Windows.Forms.ComboBox();
             this.comboBoxOrderType = new System.Windows.Forms.ComboBox();
             this.checkBoxRotates = new System.Windows.Forms.CheckBox();
-            this.pictureBoxCog = new System.Windows.Forms.PictureBox();
             this.textBoxName = new STROOP.BetterTextbox();
             this.panelPicture = new System.Windows.Forms.Panel();
             this.pictureBoxPicture = new STROOP.Controls.IntPictureBox();
@@ -46,6 +45,7 @@
             this.textBoxOpacity = new STROOP.BetterTextbox();
             this.labelSize = new System.Windows.Forms.Label();
             this.labelOpacity = new System.Windows.Forms.Label();
+            this.pictureBoxCog = new System.Windows.Forms.PictureBox();
             this.colorSelector = new STROOP.Controls.Map.Trackers.ColorSelector();
             this.checkBoxPoint = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel.SuspendLayout();
@@ -53,11 +53,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpArrow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRedX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEye)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             this.panelPicture.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarOpacity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel
@@ -71,7 +71,7 @@
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
             this.tableLayoutPanel.Controls.Add(this.pictureBoxDownArrow, 4, 3);
             this.tableLayoutPanel.Controls.Add(this.pictureBoxUpArrow, 4, 2);
             this.tableLayoutPanel.Controls.Add(this.pictureBoxRedX, 4, 0);
@@ -182,17 +182,6 @@
             this.checkBoxRotates.Text = "Rotate";
             this.checkBoxRotates.UseVisualStyleBackColor = true;
             this.checkBoxRotates.CheckedChanged += new System.EventHandler(this.checkBoxRotates_CheckedChanged);
-            // 
-            // pictureBoxCog
-            // 
-            this.pictureBoxCog.BackgroundImage = global::STROOP.Properties.Resources.cog;
-            this.pictureBoxCog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxCog.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxCog.Location = new System.Drawing.Point(337, 96);
-            this.pictureBoxCog.Name = "pictureBoxCog";
-            this.pictureBoxCog.Size = new System.Drawing.Size(30, 16);
-            this.pictureBoxCog.TabIndex = 17;
-            this.pictureBoxCog.TabStop = false;
             // 
             // textBoxName
             // 
@@ -305,6 +294,17 @@
             this.labelOpacity.TabIndex = 37;
             this.labelOpacity.Text = "Opacity:";
             // 
+            // pictureBoxCog
+            // 
+            this.pictureBoxCog.BackgroundImage = global::STROOP.Properties.Resources.cog;
+            this.pictureBoxCog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxCog.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxCog.Location = new System.Drawing.Point(337, 96);
+            this.pictureBoxCog.Name = "pictureBoxCog";
+            this.pictureBoxCog.Size = new System.Drawing.Size(30, 16);
+            this.pictureBoxCog.TabIndex = 17;
+            this.pictureBoxCog.TabStop = false;
+            // 
             // colorSelector
             // 
             this.colorSelector.BackColor = System.Drawing.Color.Transparent;
@@ -342,11 +342,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpArrow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRedX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEye)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).EndInit();
             this.panelPicture.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarOpacity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).EndInit();
             this.ResumeLayout(false);
 
         }
