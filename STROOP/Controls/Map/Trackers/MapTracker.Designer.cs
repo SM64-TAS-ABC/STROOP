@@ -47,6 +47,7 @@
             this.labelSize = new System.Windows.Forms.Label();
             this.labelOpacity = new System.Windows.Forms.Label();
             this.colorSelector = new STROOP.Controls.Map.Trackers.ColorSelector();
+            this.checkBoxPoint = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpArrow)).BeginInit();
@@ -88,6 +89,7 @@
             this.tableLayoutPanel.Controls.Add(this.labelOpacity, 1, 2);
             this.tableLayoutPanel.Controls.Add(this.pictureBoxCog, 4, 4);
             this.tableLayoutPanel.Controls.Add(this.colorSelector, 3, 3);
+            this.tableLayoutPanel.Controls.Add(this.checkBoxPoint, 3, 4);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
@@ -313,6 +315,17 @@
             this.colorSelector.Size = new System.Drawing.Size(106, 22);
             this.colorSelector.TabIndex = 38;
             // 
+            // checkBoxPoint
+            // 
+            this.checkBoxPoint.AutoSize = true;
+            this.checkBoxPoint.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkBoxPoint.Location = new System.Drawing.Point(230, 96);
+            this.checkBoxPoint.Name = "checkBoxPoint";
+            this.checkBoxPoint.Size = new System.Drawing.Size(100, 16);
+            this.checkBoxPoint.TabIndex = 39;
+            this.checkBoxPoint.Text = "Point";
+            this.checkBoxPoint.UseVisualStyleBackColor = true;
+            // 
             // MapTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -359,5 +372,6 @@
         private System.Windows.Forms.Label labelSize;
         private System.Windows.Forms.Label labelOpacity;
         private ColorSelector colorSelector;
+        private System.Windows.Forms.CheckBox checkBoxPoint;
     }
 }
