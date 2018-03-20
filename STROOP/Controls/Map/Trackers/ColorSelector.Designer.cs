@@ -37,6 +37,7 @@
             // 
             this.panelColorSelector.BackColor = System.Drawing.SystemColors.Control;
             this.panelColorSelector.Controls.Add(this.textBoxColorSelector);
+            this.panelColorSelector.Cursor = System.Windows.Forms.Cursors.Hand;
             this.panelColorSelector.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelColorSelector.Location = new System.Drawing.Point(0, 0);
             this.panelColorSelector.Margin = new System.Windows.Forms.Padding(0);
