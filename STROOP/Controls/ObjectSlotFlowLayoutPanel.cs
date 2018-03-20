@@ -26,8 +26,6 @@ namespace STROOP.Controls
 
             ContextMenuStrip = new ContextMenuStrip();
             ContextMenuStrip.Items.Add(itemSelectCopiedAddress);
-
-
         }
     }
 }
