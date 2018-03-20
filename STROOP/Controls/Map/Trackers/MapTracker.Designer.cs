@@ -46,6 +46,7 @@
             this.textBoxOpacity = new STROOP.BetterTextbox();
             this.labelSize = new System.Windows.Forms.Label();
             this.labelOpacity = new System.Windows.Forms.Label();
+            this.colorSelector = new STROOP.Controls.Map.Trackers.ColorSelector();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpArrow)).BeginInit();
@@ -69,7 +70,7 @@
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.tableLayoutPanel.Controls.Add(this.pictureBoxDownArrow, 4, 3);
             this.tableLayoutPanel.Controls.Add(this.pictureBoxUpArrow, 4, 2);
             this.tableLayoutPanel.Controls.Add(this.pictureBoxRedX, 4, 0);
@@ -77,7 +78,6 @@
             this.tableLayoutPanel.Controls.Add(this.comboBoxVisibilityType, 3, 1);
             this.tableLayoutPanel.Controls.Add(this.comboBoxOrderType, 3, 2);
             this.tableLayoutPanel.Controls.Add(this.checkBoxRotates, 3, 0);
-            this.tableLayoutPanel.Controls.Add(this.pictureBoxCog, 3, 3);
             this.tableLayoutPanel.Controls.Add(this.textBoxName, 0, 3);
             this.tableLayoutPanel.Controls.Add(this.panelPicture, 0, 0);
             this.tableLayoutPanel.Controls.Add(this.trackBarOpacity, 1, 3);
@@ -86,6 +86,8 @@
             this.tableLayoutPanel.Controls.Add(this.textBoxOpacity, 2, 2);
             this.tableLayoutPanel.Controls.Add(this.labelSize, 1, 0);
             this.tableLayoutPanel.Controls.Add(this.labelOpacity, 1, 2);
+            this.tableLayoutPanel.Controls.Add(this.pictureBoxCog, 4, 4);
+            this.tableLayoutPanel.Controls.Add(this.colorSelector, 3, 3);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
@@ -184,7 +186,7 @@
             this.pictureBoxCog.BackgroundImage = global::STROOP.Properties.Resources.cog;
             this.pictureBoxCog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxCog.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxCog.Location = new System.Drawing.Point(230, 73);
+            this.pictureBoxCog.Location = new System.Drawing.Point(337, 96);
             this.pictureBoxCog.Name = "pictureBoxCog";
             this.pictureBoxCog.Size = new System.Drawing.Size(30, 16);
             this.pictureBoxCog.TabIndex = 17;
@@ -301,6 +303,16 @@
             this.labelOpacity.TabIndex = 37;
             this.labelOpacity.Text = "Opacity:";
             // 
+            // colorSelector
+            // 
+            this.colorSelector.BackColor = System.Drawing.Color.Transparent;
+            this.colorSelector.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.colorSelector.Location = new System.Drawing.Point(227, 70);
+            this.colorSelector.Margin = new System.Windows.Forms.Padding(0);
+            this.colorSelector.Name = "colorSelector";
+            this.colorSelector.Size = new System.Drawing.Size(106, 22);
+            this.colorSelector.TabIndex = 38;
+            // 
             // MapTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -346,5 +358,6 @@
         private BetterTextbox textBoxOpacity;
         private System.Windows.Forms.Label labelSize;
         private System.Windows.Forms.Label labelOpacity;
+        private ColorSelector colorSelector;
     }
 }

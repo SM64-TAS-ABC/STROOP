@@ -47,12 +47,12 @@
             // textBoxColorSelector
             // 
             this.textBoxColorSelector.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBoxColorSelector.Location = new System.Drawing.Point(26, 8);
+            this.textBoxColorSelector.Location = new System.Drawing.Point(19, 8);
             this.textBoxColorSelector.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxColorSelector.Name = "textBoxColorSelector";
-            this.textBoxColorSelector.Size = new System.Drawing.Size(63, 20);
+            this.textBoxColorSelector.Size = new System.Drawing.Size(77, 20);
             this.textBoxColorSelector.TabIndex = 34;
-            this.textBoxColorSelector.Text = "#000000";
+            this.textBoxColorSelector.Text = "240,240,240";
             this.textBoxColorSelector.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ColorSelector
