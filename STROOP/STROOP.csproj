@@ -144,6 +144,12 @@
     <Compile Include="Controls\Map\Objects\MapIconObject.cs" />
     <Compile Include="Controls\Map\Objects\MapCameraObject.cs" />
     <Compile Include="Controls\Map\Objects\MapTriangleObject.cs" />
+    <Compile Include="Controls\Map\Trackers\ColorSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Map\Trackers\ColorSelector.Designer.cs">
+      <DependentUpon>ColorSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ObjectSlotFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -455,6 +461,9 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <EmbeddedResource Include="Controls\Map\Trackers\ColorSelector.resx">
+      <DependentUpon>ColorSelector.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\Map\Trackers\MapTracker.resx">
       <DependentUpon>MapTracker.cs</DependentUpon>
     </EmbeddedResource>
