@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 
 namespace STROOP.Utilities
 {
@@ -73,6 +74,21 @@ namespace STROOP.Utilities
                 case 0:
                     return Color.White;
             }
+        }
+
+        public static Color? ConvertDecimalToColor(string text)
+        {
+            List<int?> numbersNullable = ParsingUtilities.ParseIntList(text);
+            if (numbersNullable.Count != 3) return null;
+            if (numbersNullable.Any(number => !number.HasValue)) return null;
+            if (numbersNullable.Any(number => number.Value < 0 || number.Value > 255)) return null;
+            List<int> numbers = numbersNullable.ConvertAll(number => number.Value);
+            return Color.FromArgb(numbers[0], numbers[1], numbers[2]);
+        }
+
+        public static string ConvertColorToDecimal(Color color)
+        {
+            return color.R + "," + color.G + "," + color.B;
         }
 
         public static Color InterpolateColor(Color c1, Color c2, double amount)

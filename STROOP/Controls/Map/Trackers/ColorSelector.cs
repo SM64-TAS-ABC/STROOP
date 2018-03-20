@@ -19,9 +19,35 @@ namespace STROOP.Controls.Map.Trackers
 {
     public partial class ColorSelector : UserControl
     {
+        public Color SelectedColor
+        {
+            get
+            {
+                return panelColorSelector.BackColor;
+            }
+            private set
+            {
+                panelColorSelector.BackColor = value;
+                textBoxColorSelector.Text = ColorUtilities.ConvertColorToDecimal(value);
+            }
+        }
+
         public ColorSelector()
         {
             InitializeComponent();
+
+            textBoxColorSelector.AddEnterAction(() =>
+            {
+                Color? newColor = ColorUtilities.ConvertDecimalToColor(textBoxColorSelector.Text);
+                if (newColor.HasValue)
+                {
+                    SelectedColor = newColor.Value;
+                }
+                else
+                {
+                    textBoxColorSelector.Text = ColorUtilities.ConvertColorToDecimal(panelColorSelector.BackColor);
+                }
+            });
         }
     }
 }

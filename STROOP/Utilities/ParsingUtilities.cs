@@ -276,6 +276,11 @@ namespace STROOP.Utilities
             return ParseStringList(text).ConvertAll(stringValue => ParseHex(stringValue));
         }
 
+        public static List<int?> ParseIntList(string text)
+        {
+            return ParseStringList(text).ConvertAll(stringValue => ParseIntNullable(stringValue));
+        }
+
         public static byte? ParseByteRoundingWrapping(object value)
         {
             double? doubleValue = ParseDoubleNullable(value.ToString());
