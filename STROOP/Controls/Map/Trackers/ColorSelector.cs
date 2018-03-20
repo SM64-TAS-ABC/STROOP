@@ -48,6 +48,13 @@ namespace STROOP.Controls.Map.Trackers
                     textBoxColorSelector.Text = ColorUtilities.ConvertColorToDecimal(panelColorSelector.BackColor);
                 }
             });
+
+            panelColorSelector.Click += (sender, e) =>
+            {
+                ColorDialog colorDialog = new ColorDialog();
+                if (colorDialog.ShowDialog() == DialogResult.OK)
+                    SelectedColor = colorDialog.Color;
+            };
         }
     }
 }
