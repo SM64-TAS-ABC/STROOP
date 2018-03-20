@@ -51,9 +51,11 @@ namespace STROOP.Controls.Map.Trackers
 
             panelColorSelector.Click += (sender, e) =>
             {
-                ColorDialog colorDialog = new ColorDialog();
-                colorDialog.FullOpen = true;
-                colorDialog.Color = SelectedColor;
+                ColorDialog colorDialog = new ColorDialog()
+                {
+                    FullOpen = true,
+                    Color = SelectedColor,
+                };
                 if (colorDialog.ShowDialog() == DialogResult.OK)
                     SelectedColor = colorDialog.Color;
             };
