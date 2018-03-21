@@ -13,6 +13,6 @@ namespace STROOP.Structs
     {
         OrderOnTop,
         OrderOnBottom,
-        OrderByY,
+        OrderByDepth,
     };
 }

@@ -20,7 +20,7 @@ namespace STROOP.Controls.Map.Trackers
     public partial class MapTracker : UserControl
     {
         private readonly MapTrackerFlowLayoutPanel _flowLayoutPanel;
-        public readonly List<MapIconObject> IconList;
+        public readonly List<MapIconObject> MapObjectList;
 
         private bool _visible;
         private static readonly Image ImageEyeOpen = Properties.Resources.image_eye_open2;
@@ -28,10 +28,10 @@ namespace STROOP.Controls.Map.Trackers
 
         public MapTracker(
             MapTrackerFlowLayoutPanel flowLayoutPanel,
-            List<MapIconObject> iconsList)
+            List<MapIconObject> mapObjectList)
         {
             _flowLayoutPanel = flowLayoutPanel;
-            IconList = new List<MapIconObject>(iconsList);
+            MapObjectList = new List<MapIconObject>(mapObjectList);
 
             _visible = true;
 
@@ -47,11 +47,16 @@ namespace STROOP.Controls.Map.Trackers
             comboBoxOrderType.DataSource = Enum.GetValues(typeof(MapTrackerOrderType));
         }
 
+        public MapTrackerOrderType GetOrderType()
+        {
+            return (MapTrackerOrderType) comboBoxOrderType.SelectedItem;
+        }
+
         private void trackBarSize_ValueChanged(object sender, EventArgs e)
         {
             const float minSize = 0.01f;
             const float maxSize = 0.20f;
-            IconList.ForEach(icon =>
+            MapObjectList.ForEach(icon =>
             {
                 icon.Size = minSize + (maxSize - minSize) *
                     (trackBarSize.Value - trackBarSize.Minimum)
@@ -61,7 +66,7 @@ namespace STROOP.Controls.Map.Trackers
 
         private void trackBarOpacity_ValueChanged(object sender, EventArgs e)
         {
-            IconList.ForEach(icon =>
+            MapObjectList.ForEach(icon =>
             {
                 icon.Opacity = (float)(trackBarOpacity.Value - trackBarOpacity.Minimum)
                     / (trackBarOpacity.Maximum - trackBarOpacity.Minimum);
@@ -70,7 +75,7 @@ namespace STROOP.Controls.Map.Trackers
 
         private void checkBoxRotates_CheckedChanged(object sender, EventArgs e)
         {
-            IconList.ForEach(icon =>
+            MapObjectList.ForEach(icon =>
             {
                 icon.Rotates = checkBoxRotates.Checked;
             });

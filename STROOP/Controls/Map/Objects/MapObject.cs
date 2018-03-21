@@ -33,6 +33,11 @@ namespace STROOP.Controls.Map
             }
         }
 
+        public virtual double GetDepth()
+        {
+            return 0;
+        }
+
         /// <summary>
         /// Called when the map state is updated
         /// </summary>

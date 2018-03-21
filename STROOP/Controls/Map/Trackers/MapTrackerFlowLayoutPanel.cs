@@ -66,11 +66,41 @@ namespace STROOP.Controls.Map.Trackers
         
         public void UpdateControls()
         {
+            List<MapObject> listOrderOnTop = new List<MapObject>();
+            List<MapObject> listOrderOnBottom = new List<MapObject>();
+            List<MapObject> listOrderByDepth = new List<MapObject>();
+
             lock (_objectLock)
             {
-                foreach(IUpdatable updatable in Controls.OfType<IUpdatable>())
-                    updatable?.Update();
+                foreach (MapTracker mapTracker in Controls.OfType<MapTracker>())
+                {
+                    if (!mapTracker.Visible) continue;
+                    switch (mapTracker.GetOrderType())
+                    {
+                        case MapTrackerOrderType.OrderOnTop:
+                            listOrderOnTop.AddRange(mapTracker.MapObjectList);
+                            break;
+                        case MapTrackerOrderType.OrderOnBottom:
+                            listOrderOnBottom.AddRange(mapTracker.MapObjectList);
+                            break;
+                        case MapTrackerOrderType.OrderByDepth:
+                            listOrderByDepth.AddRange(mapTracker.MapObjectList);
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
             }
+
+            listOrderOnTop.Reverse();
+            listOrderOnBottom.Reverse();
+            listOrderByDepth.OrderBy(mapObj => mapObj.GetDepth());
+
+            List<MapObject> listMapObjects = new List<MapObject>();
+            listMapObjects.AddRange(listOrderOnBottom);
+            listMapObjects.AddRange(listOrderByDepth);
+            listMapObjects.AddRange(listOrderOnTop);
+            listMapObjects.ForEach(mapObject => mapObject.Update());
         }
 
     }
