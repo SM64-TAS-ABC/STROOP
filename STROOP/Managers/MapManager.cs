@@ -84,7 +84,7 @@ namespace STROOP.Managers
 
             _mapGui.ButtonAddNewTracker.Click += (sender, e) =>
                 _mapGui.MapTrackerFlowLayoutPanel.AddNewControl(
-                    new MapTracker(_mapGui.MapTrackerFlowLayoutPanel, _mapObjMario));
+                    new MapTracker(_mapGui.MapTrackerFlowLayoutPanel, new List<MapIconObject>() { _mapObjMario }));
             _mapGui.ButtonClearAllTrackers.Click += (sender, e) => _mapGui.MapTrackerFlowLayoutPanel.ClearControls();
 
             // Test

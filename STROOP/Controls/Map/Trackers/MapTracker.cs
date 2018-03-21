@@ -20,7 +20,7 @@ namespace STROOP.Controls.Map.Trackers
     public partial class MapTracker : UserControl
     {
         private readonly MapTrackerFlowLayoutPanel _flowLayoutPanel;
-        private readonly MapIconObject _iconObj;
+        public readonly List<MapIconObject> IconList;
 
         private bool _visible;
         private static readonly Image ImageEyeOpen = Properties.Resources.image_eye_open2;
@@ -28,10 +28,10 @@ namespace STROOP.Controls.Map.Trackers
 
         public MapTracker(
             MapTrackerFlowLayoutPanel flowLayoutPanel,
-            MapIconObject iconObj)
+            List<MapIconObject> iconsList)
         {
             _flowLayoutPanel = flowLayoutPanel;
-            _iconObj = iconObj;
+            IconList = new List<MapIconObject>(iconsList);
 
             _visible = true;
 
@@ -51,20 +51,29 @@ namespace STROOP.Controls.Map.Trackers
         {
             const float minSize = 0.01f;
             const float maxSize = 0.20f;
-            _iconObj.Size = minSize + (maxSize - minSize) *
-                (trackBarSize.Value - trackBarSize.Minimum)
-                / (trackBarSize.Maximum - trackBarSize.Minimum); 
+            IconList.ForEach(icon =>
+            {
+                icon.Size = minSize + (maxSize - minSize) *
+                    (trackBarSize.Value - trackBarSize.Minimum)
+                    / (trackBarSize.Maximum - trackBarSize.Minimum);
+            });
         }
 
         private void trackBarOpacity_ValueChanged(object sender, EventArgs e)
         {
-            _iconObj.Opacity = (float) (trackBarOpacity.Value - trackBarOpacity.Minimum)
-                / (trackBarOpacity.Maximum - trackBarOpacity.Minimum);
+            IconList.ForEach(icon =>
+            {
+                icon.Opacity = (float)(trackBarOpacity.Value - trackBarOpacity.Minimum)
+                    / (trackBarOpacity.Maximum - trackBarOpacity.Minimum);
+            });
         }
 
         private void checkBoxRotates_CheckedChanged(object sender, EventArgs e)
         {
-            _iconObj.Rotates = checkBoxRotates.Checked;
+            IconList.ForEach(icon =>
+            {
+                icon.Rotates = checkBoxRotates.Checked;
+            });
         }
 
         private void pictureBoxRedX_Click(object sender, EventArgs e)
