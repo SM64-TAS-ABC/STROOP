@@ -18,6 +18,10 @@
   <Data groupList="Basic" type="short" offset="0x116" base="Object" subclass="Angle">Pitch Velocity</Data>
   <Data groupList="Basic" type="short" offset="0x11E" base="Object" subclass="Angle">Roll Velocity</Data>
 
+  <Data groupList="Advanced" type="float" offset="0xF4" base="Object" coord="X">Normal X</Data>
+  <Data groupList="Advanced" type="float" offset="0xF8" base="Object" coord="Y">Normal Y</Data>
+  <Data groupList="Advanced" type="float" offset="0xFC" base="Object" coord="Z">Normal Z</Data>
+
   <Data groupList="Advanced" type="float" offset="0x20" base="Object" coord="X">Graphics X</Data>
   <Data groupList="Advanced" type="float" offset="0x24" base="Object" coord="Y">Graphics Y</Data>
   <Data groupList="Advanced" type="float" offset="0x28" base="Object" coord="Z">Graphics Z</Data>
@@ -185,7 +189,7 @@
   
   <Data groupList="Basic" type="uint" offset="0x1CC" base="Object" useHex="true">Release Status</Data>
   <Data groupList="Basic" type="uint" offset="0x134" base="Object" useHex="true">Interaction Status</Data>
-  
+
   <Data groupList="Basic" type="int" offset="0x144" base="Object">Subtype</Data>
   <Data groupList="Basic" type="int" offset="0x14C" base="Object">State</Data>
   <Data groupList="Basic" type="int" offset="0x154" base="Object">Timer</Data>
