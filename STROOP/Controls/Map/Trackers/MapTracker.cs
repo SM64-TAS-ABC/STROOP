@@ -35,6 +35,18 @@ namespace STROOP.Controls.Map.Trackers
             _flowLayoutPanel = flowLayoutPanel;
             MapObjectList = new List<MapIconObject>(mapObjectList);
 
+            _visible = true;
+        }
+
+        private void MapTracker_Load(object sender, EventArgs e)
+        {
+            tableLayoutPanel.BorderWidth = 2;
+            tableLayoutPanel.ShowBorder = true;
+
+            comboBoxVisibilityType.DataSource = Enum.GetValues(typeof(MapTrackerVisibilityType));
+            comboBoxOrderType.DataSource = Enum.GetValues(typeof(MapTrackerOrderType));
+            comboBoxDisplayType.DataSource = Enum.GetValues(typeof(MapTrackerDisplayType));
+
             ControlUtilities.AddContextMenuStripFunctions(
                 pictureBoxCog,
                 new List<string>()
@@ -49,18 +61,7 @@ namespace STROOP.Controls.Map.Trackers
                     () => { },
                     () => { },
                 });
-            pictureBoxCog.Click += (sender, e) => pictureBoxCog.ContextMenuStrip.Show(Cursor.Position);
-
-            _visible = true;
-        }
-
-        private void MapTracker_Load(object sender, EventArgs e)
-        {
-            tableLayoutPanel.BorderWidth = 2;
-            tableLayoutPanel.ShowBorder = true;
-
-            comboBoxVisibilityType.DataSource = Enum.GetValues(typeof(MapTrackerVisibilityType));
-            comboBoxOrderType.DataSource = Enum.GetValues(typeof(MapTrackerOrderType));
+            pictureBoxCog.Click += (se, ev) => pictureBoxCog.ContextMenuStrip.Show(Cursor.Position);
         }
 
         public MapTrackerOrderType GetOrderType()

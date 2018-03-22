@@ -153,6 +153,7 @@
     <Compile Include="Controls\ObjectSlotFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Enums\MapTrackerDisplayType.cs" />
     <Compile Include="Interfaces\IUpdatable.cs" />
     <Compile Include="Controls\Map\Trackers\MapTracker.cs">
       <SubType>UserControl</SubType>
