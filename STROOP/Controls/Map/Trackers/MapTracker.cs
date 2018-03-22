@@ -30,12 +30,28 @@ namespace STROOP.Controls.Map.Trackers
             MapTrackerFlowLayoutPanel flowLayoutPanel,
             List<MapIconObject> mapObjectList)
         {
+            InitializeComponent();
+
             _flowLayoutPanel = flowLayoutPanel;
             MapObjectList = new List<MapIconObject>(mapObjectList);
 
-            _visible = true;
+            ControlUtilities.AddContextMenuStripFunctions(
+                pictureBoxCog,
+                new List<string>()
+                {
+                    "Hitbox Cylinder",
+                    "Tangibility Radius",
+                    "Draw Distance Radius",
+                },
+                new List<Action>()
+                {
+                    () => { },
+                    () => { },
+                    () => { },
+                });
+            pictureBoxCog.Click += (sender, e) => pictureBoxCog.ContextMenuStrip.Show(Cursor.Position);
 
-            InitializeComponent();
+            _visible = true;
         }
 
         private void MapTracker_Load(object sender, EventArgs e)
