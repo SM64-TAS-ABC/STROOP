@@ -192,7 +192,7 @@ namespace STROOP.Controls
             _flashStartTime = DateTime.Now;
 
             // Initialize flush/size fields
-            _leftFlush = LeftFlush;
+            _leftFlush = DEFAULT_LEFT_FLUSH;
             _variableNameWidth = VariableNameWidth;
             _variableValueWidth = VariableValueWidth;
             _variableHeight = VariableHeight;
