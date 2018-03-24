@@ -81,7 +81,7 @@ namespace STROOP.Controls
             }
             set
             {
-                if (value) _tableLayoutPanel.BorderColor = ColorUtilities.GetHighlightColor(Color.Red);
+                if (value) _tableLayoutPanel.BorderColor = ColorUtilities.GetColorForHighlight(Color.Red);
                 _tableLayoutPanel.ShowBorder = value;
             }
         }
@@ -282,6 +282,12 @@ namespace STROOP.Controls
             bool isPlusHeld = Keyboard.IsKeyDown(Key.OemPlus);
             bool isNumberHeld = KeyboardUtilities.IsCurrentlyInputtedNumber();
 
+            if (isShiftKeyHeld && isNumberHeld)
+            {
+                BaseColor = ColorUtilities.GetColorForVariable();
+                return;
+            }
+
             if (isCtrlKeyHeld && isFKeyHeld)
             {
                 AddToCustomTab(true, false);
@@ -375,7 +381,11 @@ namespace STROOP.Controls
             if (isQKeyHeld)
             {
                 Color? newColor = ColorUtilities.GetColorFromDialog(BaseColor);
-                if (newColor.HasValue) BaseColor = newColor.Value;
+                if (newColor.HasValue)
+                {
+                    BaseColor = newColor.Value;
+                    ColorUtilities.LastSelectedColor = newColor.Value;
+                }
                 return;
             }
 

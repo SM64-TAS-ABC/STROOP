@@ -48,7 +48,25 @@ namespace STROOP.Utilities
             return "#" + r + g + b;
         }
 
-        public static Color GetHighlightColor(Color defaultColor)
+        public static Color LastSelectedColor = SystemColors.Control;
+        public static Color GetColorForVariable()
+        {
+            int? inputtedNumber = KeyboardUtilities.GetCurrentlyInputtedNumber();
+
+            if (inputtedNumber == 0) return LastSelectedColor;
+
+            if (inputtedNumber.HasValue &&
+                inputtedNumber.Value > 0 &&
+                inputtedNumber.Value <= ColorToParamsDictionary.Count)
+            {
+                int index = inputtedNumber.Value - 1;
+                string colorString = ColorToParamsDictionary.ToList()[index].Value;
+                return ColorTranslator.FromHtml(colorString);
+            }
+            return SystemColors.Control;
+        }
+
+        public static Color GetColorForHighlight(Color defaultColor)
         {
             int? inputtedNumber = KeyboardUtilities.GetCurrentlyInputtedNumber();
             switch (inputtedNumber)
