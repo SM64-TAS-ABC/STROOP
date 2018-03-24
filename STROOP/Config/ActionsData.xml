@@ -14,8 +14,6 @@
   <Data type="byte" offset="0x28" base="Mario">A Press Timer</Data>
   <Data type="byte" offset="0x29" base="Mario">B Press Timer</Data>
 
-  <Data type="short" offset="0x14" base="Mario">Floor Something</Data>
-
   <Data type="short" offset="0x38" base="MarioObj">Animation</Data>
   <Data base="None" specialType="MarioAnimationDescription" subclass="String">Animation Description</Data>
   <Data type="short" offset="0x40" base="MarioObj">Animation Timer</Data>
