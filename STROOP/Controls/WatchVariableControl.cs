@@ -193,9 +193,9 @@ namespace STROOP.Controls
 
             // Initialize flush/size fields
             _leftFlush = DEFAULT_LEFT_FLUSH;
-            _variableNameWidth = DEFAULT_VARIABLE_NAME_WIDTH;
-            _variableValueWidth = DEFAULT_VARIABLE_VALUE_WIDTH;
-            _variableHeight = DEFAULT_VARIABLE_HEIGHT;
+            _variableNameWidth = 0;
+            _variableValueWidth = 0;
+            _variableHeight = 0;
 
             // Create var x
             _watchVarWrapper = WatchVariableWrapper.CreateWatchVariableWrapper(
