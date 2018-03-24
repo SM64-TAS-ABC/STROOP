@@ -99,5 +99,10 @@ namespace STROOP.Utilities
             byte b = (byte)((c1.B * (1 - amount)) + c2.B * amount);
             return Color.FromArgb(r, g, b);
         }
+
+        public static Color? GetColorFromDialog()
+        {
+            return Color.Red;
+        }
     }
 }

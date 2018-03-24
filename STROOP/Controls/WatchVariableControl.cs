@@ -270,6 +270,8 @@ namespace STROOP.Controls
             bool isLKeyHeld = Keyboard.IsKeyDown(Key.L);
             bool isRKeyHeld = Keyboard.IsKeyDown(Key.R);
             bool isCKeyHeld = Keyboard.IsKeyDown(Key.C);
+            bool isQKeyHeld = Keyboard.IsKeyDown(Key.Q);
+            bool isXKeyHeld = Keyboard.IsKeyDown(Key.X);
             bool isDeleteKeyHeld =
                  Keyboard.IsKeyDown(Key.Delete) ||
                  Keyboard.IsKeyDown(Key.Back) ||
@@ -367,6 +369,19 @@ namespace STROOP.Controls
             if (isPlusHeld)
             {
                 AddValue("1", true);
+                return;
+            }
+
+            if (isQKeyHeld)
+            {
+                Color? newColor = ColorUtilities.GetColorFromDialog();
+                if (newColor.HasValue) BaseColor = newColor.Value;
+                return;
+            }
+
+            if (isXKeyHeld)
+            {
+                BaseColor = DEFAULT_COLOR;
                 return;
             }
 
