@@ -2397,6 +2397,162 @@ namespace STROOP.Structs
                     };
                     break;
 
+                case "DeltaAngleLine12":
+                    getterFunction = (uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        double angleV1ToV2 = MoreMath.AngleTo_AngleUnits(
+                            triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
+                        double angleDiff = marioPos.Angle.Value - angleV1ToV2;
+                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
+                    };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleDiffNullable.HasValue) return false;
+                        double angleDiff = angleDiffNullable.Value;
+                        double angleV1ToV2 = MoreMath.AngleTo_AngleUnits(
+                            triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
+                        double newMarioAngleDouble = angleV1ToV2 + angleDiff;
+                        ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                        return Config.Stream.SetValue(
+                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    };
+                    break;
+
+                case "DeltaAngleLine21":
+                    getterFunction = (uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        double angleV2ToV1 = MoreMath.AngleTo_AngleUnits(
+                            triStruct.X2, triStruct.Z2, triStruct.X1, triStruct.Z1);
+                        double angleDiff = marioPos.Angle.Value - angleV2ToV1;
+                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
+                    };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleDiffNullable.HasValue) return false;
+                        double angleDiff = angleDiffNullable.Value;
+                        double angleV2ToV1 = MoreMath.AngleTo_AngleUnits(
+                            triStruct.X2, triStruct.Z2, triStruct.X1, triStruct.Z1);
+                        double newMarioAngleDouble = angleV2ToV1 + angleDiff;
+                        ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                        return Config.Stream.SetValue(
+                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    };
+                    break;
+
+                case "DeltaAngleLine23":
+                    getterFunction = (uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        double angleV2ToV3 = MoreMath.AngleTo_AngleUnits(
+                            triStruct.X2, triStruct.Z2, triStruct.X3, triStruct.Z3);
+                        double angleDiff = marioPos.Angle.Value - angleV2ToV3;
+                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
+                    };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleDiffNullable.HasValue) return false;
+                        double angleDiff = angleDiffNullable.Value;
+                        double angleV2ToV3 = MoreMath.AngleTo_AngleUnits(
+                            triStruct.X2, triStruct.Z2, triStruct.X3, triStruct.Z3);
+                        double newMarioAngleDouble = angleV2ToV3 + angleDiff;
+                        ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                        return Config.Stream.SetValue(
+                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    };
+                    break;
+
+                case "DeltaAngleLine32":
+                    getterFunction = (uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        double angleV3ToV2 = MoreMath.AngleTo_AngleUnits(
+                            triStruct.X3, triStruct.Z3, triStruct.X2, triStruct.Z2);
+                        double angleDiff = marioPos.Angle.Value - angleV3ToV2;
+                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
+                    };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleDiffNullable.HasValue) return false;
+                        double angleDiff = angleDiffNullable.Value;
+                        double angleV3ToV2 = MoreMath.AngleTo_AngleUnits(
+                            triStruct.X3, triStruct.Z3, triStruct.X2, triStruct.Z2);
+                        double newMarioAngleDouble = angleV3ToV2 + angleDiff;
+                        ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                        return Config.Stream.SetValue(
+                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    };
+                    break;
+
+                case "DeltaAngleLine31":
+                    getterFunction = (uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        double angleV3ToV1 = MoreMath.AngleTo_AngleUnits(
+                            triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1);
+                        double angleDiff = marioPos.Angle.Value - angleV3ToV1;
+                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
+                    };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleDiffNullable.HasValue) return false;
+                        double angleDiff = angleDiffNullable.Value;
+                        double angleV3ToV1 = MoreMath.AngleTo_AngleUnits(
+                            triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1);
+                        double newMarioAngleDouble = angleV3ToV1 + angleDiff;
+                        ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                        return Config.Stream.SetValue(
+                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    };
+                    break;
+
+                case "DeltaAngleLine13":
+                    getterFunction = (uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        double angleV1ToV3 = MoreMath.AngleTo_AngleUnits(
+                            triStruct.X1, triStruct.Z1, triStruct.X3, triStruct.Z3);
+                        double angleDiff = marioPos.Angle.Value - angleV1ToV3;
+                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
+                    };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleDiffNullable.HasValue) return false;
+                        double angleDiff = angleDiffNullable.Value;
+                        double angleV1ToV3 = MoreMath.AngleTo_AngleUnits(
+                            triStruct.X1, triStruct.Z1, triStruct.X3, triStruct.Z3);
+                        double newMarioAngleDouble = angleV1ToV3 + angleDiff;
+                        ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                        return Config.Stream.SetValue(
+                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    };
+                    break;
+
                 // Action vars
 
                 case "ActionDescription":

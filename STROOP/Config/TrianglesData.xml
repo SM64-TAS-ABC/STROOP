@@ -116,4 +116,12 @@
   <Data groupList="Advanced" base="Triangle" specialType="AngleV3ToV2" subclass="Angle" type="ushort" color="Blue">Angle V3 to V2</Data>
   <Data groupList="Advanced" base="Triangle" specialType="AngleV1ToV3" subclass="Angle" type="ushort" color="Blue">Angle V1 to V3</Data>
   <Data groupList="Advanced" base="Triangle" specialType="AngleV3ToV1" subclass="Angle" type="ushort" color="Blue">Angle V3 to V1</Data>
+
+  <Data groupList="Advanced" base="Triangle" specialType="DeltaAngleLine12" subclass="Angle" type="short" color="LightBlue">DAngle Line12</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="DeltaAngleLine21" subclass="Angle" type="short" color="LightBlue">DAngle Line21</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="DeltaAngleLine23" subclass="Angle" type="short" color="LightBlue">DAngle Line23</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="DeltaAngleLine32" subclass="Angle" type="short" color="LightBlue">DAngle Line32</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="DeltaAngleLine31" subclass="Angle" type="short" color="LightBlue">DAngle Line31</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="DeltaAngleLine13" subclass="Angle" type="short" color="LightBlue">DAngle Line13</Data>
+
 </TrianglesData>
