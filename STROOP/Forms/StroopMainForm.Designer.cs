@@ -4512,6 +4512,7 @@ namespace STROOP
             // splitContainerInput.Panel1
             // 
             this.splitContainerInput.Panel1.Controls.Add(this.inputDisplayPanel);
+            this.splitContainerInput.Panel1.Padding = new System.Windows.Forms.Padding(2);
             this.splitContainerInput.Panel1MinSize = 0;
             // 
             // splitContainerInput.Panel2
@@ -4527,11 +4528,10 @@ namespace STROOP
             // 
             this.inputDisplayPanel.AutoSize = true;
             this.inputDisplayPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inputDisplayPanel.Location = new System.Drawing.Point(0, 0);
+            this.inputDisplayPanel.Location = new System.Drawing.Point(2, 2);
             this.inputDisplayPanel.Margin = new System.Windows.Forms.Padding(0);
             this.inputDisplayPanel.Name = "inputDisplayPanel";
-            this.inputDisplayPanel.Padding = new System.Windows.Forms.Padding(2);
-            this.inputDisplayPanel.Size = new System.Drawing.Size(426, 461);
+            this.inputDisplayPanel.Size = new System.Drawing.Size(422, 457);
             this.inputDisplayPanel.TabIndex = 4;
             // 
             // watchVariablePanelInput
@@ -4904,7 +4904,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 289F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 290F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -10733,7 +10733,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(391, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(374, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -10765,7 +10765,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(385, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(368, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -10821,7 +10821,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(385, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(368, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
