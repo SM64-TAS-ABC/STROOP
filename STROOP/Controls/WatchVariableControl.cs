@@ -374,7 +374,7 @@ namespace STROOP.Controls
 
             if (isQKeyHeld)
             {
-                Color? newColor = ColorUtilities.GetColorFromDialog();
+                Color? newColor = ColorUtilities.GetColorFromDialog(BaseColor);
                 if (newColor.HasValue) BaseColor = newColor.Value;
                 return;
             }

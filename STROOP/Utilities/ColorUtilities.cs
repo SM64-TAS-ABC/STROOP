@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace STROOP.Utilities
 {
@@ -100,9 +101,13 @@ namespace STROOP.Utilities
             return Color.FromArgb(r, g, b);
         }
 
-        public static Color? GetColorFromDialog()
+        public static Color? GetColorFromDialog(Color? defaultColor = null)
         {
-            return Color.Red;
+            ColorDialog colorDialog = new ColorDialog();
+            colorDialog.FullOpen = true;
+            if (defaultColor.HasValue) colorDialog.Color = defaultColor.Value;
+            if (colorDialog.ShowDialog() == DialogResult.OK) return colorDialog.Color;
+            return null;
         }
     }
 }
