@@ -140,7 +140,7 @@ namespace STROOP.Controls
             if (!doubleValueNullable.HasValue) return stringValue;
             double doubleValue = doubleValueNullable.Value;
 
-            if (_truncateToMultipleOf16 != (_angleUnitType == AngleUnitType.HAU))
+            if (_truncateToMultipleOf16)
             {
                 doubleValue = MoreMath.TruncateToMultipleOf16(doubleValue);
             }
