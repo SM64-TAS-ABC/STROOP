@@ -48,7 +48,7 @@ namespace STROOP.Utilities
             return "#" + r + g + b;
         }
 
-        public static Color GetColorByInput(Color defaultColor)
+        public static Color GetHighlightColor(Color defaultColor)
         {
             int? inputtedNumber = KeyboardUtilities.GetCurrentlyInputtedNumber();
             switch (inputtedNumber)
