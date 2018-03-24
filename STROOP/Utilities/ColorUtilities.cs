@@ -12,10 +12,11 @@ namespace STROOP.Utilities
             new Dictionary<string, string>()
             {
                 ["Red"] = "#FFCCCC",
-                ["Yellow"] = "#FFECCC",
+                ["Orange"] = "#FFE2B7",
+                ["Yellow"] = "#FFFFD0",
                 ["Green"] = "#CFFFCC",
                 ["LightBlue"] = "#CCFFFA",
-                ["Blue"] = "#CCD0FF",
+                ["Blue"] = "#CADDFF",
                 ["Purple"] = "#E5CCFF",
                 ["Pink"] = "#FFCCFF",
                 ["Grey"] = "#D0D0D0",
