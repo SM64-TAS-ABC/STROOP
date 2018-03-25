@@ -19,6 +19,8 @@
   <Data type="byte" offsetUS="0x80226B7F" offsetJP="0x80226D7F" base="Relative">Sound Selection</Data>
   <Data type="short" offsetUS="0x801A7D1C" offsetJP="0x801A7BDC" base="Relative">Hand X</Data>
   <Data type="short" offsetUS="0x801A7D20" offsetJP="0x801A7BE0" base="Relative">Hand Y</Data>
+  <Data type="byte" offset="0x8033161C" base="Relative" subclass="Boolean" mask="0x01">Mario Cam Selected</Data>
+  <Data type="byte" offset="0x8033161C" base="Relative" subclass="Boolean" mask="0x02">Fixed Cam Selected</Data>
   <Data type="short" offsetUS="0x80361258" offsetJP="0x8035FEE8" base="Relative">TTC Speed Setting</Data>
 
   <Data type="short" offsetUS="0x80361414" offsetJP="0x803600A4" base="Relative">Snow Counter</Data>

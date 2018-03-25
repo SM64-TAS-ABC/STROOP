@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <CameraData>
+  
   <Data type="byte" offset="0x6D" base="Camera" subclass="Boolean" mask="0x04">Mario Cam Possible</Data>
   <Data type="byte" offset="0x6D" base="Camera" subclass="Boolean" mask="0x01">Mario Cam</Data>
   <Data type="byte" offset="0x75" base="Camera" subclass="Boolean" mask="0x20">Fixed Cam</Data>
