@@ -193,6 +193,7 @@
     <Data groupList="ObjectSpecific" type="int" offset="0x184" base="Object">HP</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Escape Counter</Data>
     <Data groupList="ObjectSpecific" type="int" offsetUS="0x80361270" offsetJP="0x8035FF00" base="Relative" subclass="Boolean">Control Stick Held</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0x6C" base="Object" subclass="Object">Anchor Object</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000254" name="King Bob-omb Anchor">
     <Image path="King Bob-omb Anchor.png"/>
@@ -255,6 +256,7 @@
     <Data groupList="ObjectSpecific" type="int" offset="0x178" base="Object">Throwing Phase</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x100" base="Object">Escape Counter</Data>
     <Data groupList="ObjectSpecific" type="int" offsetUS="0x80361270" offsetJP="0x8035FF00" base="Relative" subclass="Boolean">Control Stick Held</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0x6C" base="Object" subclass="Object">Anchor Object</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000584" name="Chuckya Anchor">
     <SpawnCode gfxId="0x00"/>
@@ -1063,6 +1065,7 @@
     <SpawnCode gfxId="0x59"/>
     <Image path="Heave-Ho.png"/>
     <MapImage path="Heave-Ho Top.png" rotates="true"/>
+    <Data groupList="ObjectSpecific" type="uint" offset="0x6C" base="Object" subclass="Object">Anchor Object</Data>
   </Object>
   <Object behaviorScriptAddress="0x130015A4" name="Heave-Ho Anchor">
     <SpawnCode gfxId="0x00"/>
