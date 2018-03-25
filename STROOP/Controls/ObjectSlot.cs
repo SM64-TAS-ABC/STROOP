@@ -168,6 +168,16 @@ namespace STROOP
             ToolStripMenuItem itemCopyAddress = new ToolStripMenuItem("Copy Address");
             itemCopyAddress.Click += (sender, e) => Clipboard.SetText(HexUtilities.Format(CurrentObject.Address));
 
+            ToolStripMenuItem itemCopyGraphics = new ToolStripMenuItem("Copy Graphics");
+            itemCopyGraphics.Click += (sender, e) => Clipboard.SetText(HexUtilities.Format(CurrentObject.GraphicsID));
+
+            ToolStripMenuItem itemPasteGraphics = new ToolStripMenuItem("Paste Graphics");
+            itemPasteGraphics.Click += (sender, e) =>
+            {
+                uint? address = ParsingUtilities.ParseHexNullable(Clipboard.GetText());
+                if (address.HasValue) CurrentObject.GraphicsID = address.Value;
+            };
+
             ContextMenuStrip = new ContextMenuStrip();
             ContextMenuStrip.Items.Add(itemSelect);
             ContextMenuStrip.Items.Add(itemSelectAndSwitch);
@@ -189,6 +199,8 @@ namespace STROOP
             ContextMenuStrip.Items.Add(itemRevive);
             ContextMenuStrip.Items.Add(new ToolStripSeparator());
             ContextMenuStrip.Items.Add(itemCopyAddress);
+            ContextMenuStrip.Items.Add(itemCopyGraphics);
+            ContextMenuStrip.Items.Add(itemPasteGraphics);
         }
 
         private void RebufferObjectImage()
