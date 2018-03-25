@@ -757,6 +757,11 @@ namespace STROOP.Utilities
             return summedAngle;
         }
 
+        public static ushort InGameAngleTo(float xTo, float zTo)
+        {
+            return InGameAngleTo(0, 0, xTo, zTo);
+        }
+
         public static ushort InGameAngleTo(float xFrom, float zFrom, float xTo, float zTo)
         {
             float xDiff = xTo - xFrom;
