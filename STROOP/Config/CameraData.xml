@@ -24,6 +24,13 @@
   <Data type="float" offset="0xC8" base="Camera">Cam Dist from Focus</Data>
   <Data base="None" specialType="CameraDistanceToMario">Cam Dist from Mario</Data>
 
+  <Data type="byte" offset="0x8033161C" base="Relative" subclass="Boolean" mask="0x01">Mario Cam Selected</Data>
+  <Data type="byte" offset="0x8033161C" base="Relative" subclass="Boolean" mask="0x02">Fixed Cam Selected</Data>
+  <Data type="byte" offset="0x80332609" base="Relative" subclass="Boolean" mask="0x01">Mario Cam Displayed</Data>
+  <Data type="byte" offset="0x80332609" base="Relative" subclass="Boolean" mask="0x02">Lakitu Cam Displayed</Data>
+  <Data type="byte" offset="0x80332609" base="Relative" subclass="Boolean" mask="0x08">Down Arrow Displayed</Data>
+  <Data type="byte" offset="0x80332609" base="Relative" subclass="Boolean" mask="0x10">Up Arrow Displayed</Data>
+
   <Data type="float" offsetUS="0x8033C5A4" offsetJP="0x8033B234" base="Relative">FOV</Data>
   <Data type="uint" offsetUS="0x8029A7C8" offsetJP="0x8029A0AC" base="Relative" useHex="true">FOV Awake</Data>
   <Data type="uint" offsetUS="0x8029A774" offsetJP="0x8029A058" base="Relative" useHex="true">FOV Sleeping</Data>
