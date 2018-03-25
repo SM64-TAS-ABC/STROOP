@@ -1510,6 +1510,17 @@ namespace STROOP.Structs
                         double angleDiff = marioAngle - uphillAngle;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
                     };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleDiffNullable.HasValue) return false;
+                        double angleDiff = angleDiffNullable.Value;
+                        double uphillAngle = GetTriangleUphillAngle(triAddress);
+                        double newMarioAngleDouble = uphillAngle + angleDiff;
+                        ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                        return Config.Stream.SetValue(
+                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    };
                     break;
 
                 case "DownHillDeltaAngle":
@@ -1520,6 +1531,18 @@ namespace STROOP.Structs
                         double downhillAngle = MoreMath.ReverseAngle(uphillAngle);
                         double angleDiff = marioAngle - downhillAngle;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
+                    };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleDiffNullable.HasValue) return false;
+                        double angleDiff = angleDiffNullable.Value;
+                        double uphillAngle = GetTriangleUphillAngle(triAddress);
+                        double downhillAngle = MoreMath.ReverseAngle(uphillAngle);
+                        double newMarioAngleDouble = downhillAngle + angleDiff;
+                        ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                        return Config.Stream.SetValue(
+                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                     };
                     break;
 
@@ -1532,6 +1555,18 @@ namespace STROOP.Structs
                         double angleDiff = marioAngle - lefthillAngle;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
                     };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleDiffNullable.HasValue) return false;
+                        double angleDiff = angleDiffNullable.Value;
+                        double uphillAngle = GetTriangleUphillAngle(triAddress);
+                        double lefthillAngle = MoreMath.RotateAngleCCW(uphillAngle, 16384);
+                        double newMarioAngleDouble = lefthillAngle + angleDiff;
+                        ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                        return Config.Stream.SetValue(
+                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    };
                     break;
 
                 case "RightHillDeltaAngle":
@@ -1542,6 +1577,18 @@ namespace STROOP.Structs
                         double righthillAngle = MoreMath.RotateAngleCW(uphillAngle, 16384);
                         double angleDiff = marioAngle - righthillAngle;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
+                    };
+                    setterFunction = (string stringValue, uint triAddress) =>
+                    {
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        if (!angleDiffNullable.HasValue) return false;
+                        double angleDiff = angleDiffNullable.Value;
+                        double uphillAngle = GetTriangleUphillAngle(triAddress);
+                        double righthillAngle = MoreMath.RotateAngleCW(uphillAngle, 16384);
+                        double newMarioAngleDouble = righthillAngle + angleDiff;
+                        ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                        return Config.Stream.SetValue(
+                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                     };
                     break;
 
