@@ -43,7 +43,8 @@
   <Data groupList="Intermediate" base="Triangle" specialType="DownHillDeltaAngle" subclass="Angle" type="short" color="Purple">Downhill DAngle</Data>
   <Data groupList="Intermediate" base="Triangle" specialType="LeftHillDeltaAngle" subclass="Angle" type="short" color="Purple">Left Hill DAngle</Data>
   <Data groupList="Intermediate" base="Triangle" specialType="RightHillDeltaAngle" subclass="Angle" type="short" color="Purple">Right Hill DAngle</Data>
-  
+  <Data groupList="Intermediate" base="Triangle" specialType="HillStatus" color="Purple">Hill Status</Data>
+
   <Data groupList="Basic" type="float" offset="0x1C" base="Triangle" coord="X">Normal X</Data>
   <Data groupList="Basic" type="float" offset="0x20" base="Triangle" coord="Y">Normal Y</Data>
   <Data groupList="Basic" type="float" offset="0x24" base="Triangle" coord="Z">Normal Z</Data>

@@ -1592,6 +1592,18 @@ namespace STROOP.Structs
                     };
                     break;
 
+                case "HillStatus":
+                    getterFunction = (uint triAddress) =>
+                    {
+                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                        double uphillAngle = GetTriangleUphillAngle(triAddress);
+                        double angleDiff = marioAngle - uphillAngle;
+                        angleDiff = MoreMath.NormalizeAngleDoubleSigned(angleDiff);
+                        bool uphill = angleDiff >= -16384 && angleDiff <= 16384;
+                        return uphill ? "Uphill" : "Downhill";
+                    };
+                    break;
+
                 case "DistanceAboveFloor":
                     getterFunction = (uint dummy) =>
                     {
