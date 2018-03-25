@@ -28,6 +28,7 @@
   <Data type="byte" offsetUS="0x8033161C" offsetJP="0x80330530" base="Relative" subclass="Boolean" mask="0x02">Fixed Cam Selected</Data>
   <Data type="byte" offsetUS="0x80332609" offsetJP="0x803314F9" base="Relative" subclass="Boolean" mask="0x01">Mario Cam Displayed</Data>
   <Data type="byte" offsetUS="0x80332609" offsetJP="0x803314F9" base="Relative" subclass="Boolean" mask="0x02">Lakitu Cam Displayed</Data>
+  <Data type="byte" offsetUS="0x80332609" offsetJP="0x803314F9" base="Relative" subclass="Boolean" mask="0x04">Fixed Cam Displayed</Data>
   <Data type="byte" offsetUS="0x80332609" offsetJP="0x803314F9" base="Relative" subclass="Boolean" mask="0x08">Down Arrow Displayed</Data>
   <Data type="byte" offsetUS="0x80332609" offsetJP="0x803314F9" base="Relative" subclass="Boolean" mask="0x10">Up Arrow Displayed</Data>
 
