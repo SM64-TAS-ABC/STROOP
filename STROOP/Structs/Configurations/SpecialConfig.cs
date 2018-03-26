@@ -24,5 +24,7 @@ namespace STROOP.Structs.Configurations
                 return MoreMath.GetHypotenuse(PuParam1, PuParam2);
             }
         }
+
+        public static int MupenLagOffset = 0;
     }
 }

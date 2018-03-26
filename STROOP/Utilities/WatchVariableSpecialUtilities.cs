@@ -3564,11 +3564,17 @@ namespace STROOP.Structs
                 case "MupenLag":
                     getterFunction = (uint objAddress) =>
                     {
-                        return MupenUtilities.GetLagCount().ToString();
+                        int lag = MupenUtilities.GetLagCount() + SpecialConfig.MupenLagOffset;
+                        return lag.ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
-                        return false;
+                        int? newLagNullable = ParsingUtilities.ParseIntNullable(stringValue);
+                        if (!newLagNullable.HasValue) return false;
+                        int newLag = newLagNullable.Value;
+                        int newLagOffset = newLag - MupenUtilities.GetLagCount();
+                        SpecialConfig.MupenLagOffset = newLagOffset;
+                        return true;
                     };
                     break;
 
