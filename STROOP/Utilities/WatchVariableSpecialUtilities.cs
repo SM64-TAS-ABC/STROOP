@@ -3571,6 +3571,13 @@ namespace STROOP.Structs
                     setterFunction = (string stringValue, uint dummy) =>
                     {
                         if (!MupenUtilities.IsUsingMupen()) return false;
+
+                        if (stringValue.ToLower() == "x")
+                        {
+                            SpecialConfig.MupenLagOffset = 0;
+                            return true;
+                        }
+
                         int? newLagNullable = ParsingUtilities.ParseIntNullable(stringValue);
                         if (!newLagNullable.HasValue) return false;
                         int newLag = newLagNullable.Value;
