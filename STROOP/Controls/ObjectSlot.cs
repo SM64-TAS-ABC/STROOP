@@ -41,7 +41,7 @@ namespace STROOP
 
         public new bool Show = false;
 
-        enum SelectionType { NOT_SELECTED, NORMAL_SELECTION, MAP_SELECTION, MODEL_SELECTION };
+        enum SelectionType { NOT_SELECTED, NORMAL_SELECTION, MAP_SELECTION, MODEL_SELECTION, MEMORY_SELECTION };
         SelectionType _selectionType = SelectionType.NOT_SELECTED;
 
         int prevHeight;
@@ -390,6 +390,10 @@ namespace STROOP
                     e.Graphics.DrawImage(_gui.ModelObjectOverlayImage, new Rectangle(new Point(), Size));
                     break;
 
+                case SelectionType.MEMORY_SELECTION:
+                    e.Graphics.DrawImage(_gui.MemoryObjectOverlayImage, new Rectangle(new Point(), Size));
+                    break;
+
                 case SelectionType.MAP_SELECTION:
                     e.Graphics.DrawImage(_gui.TrackedAndShownObjectOverlayImage, new Rectangle(new Point(), Size));
                     break;
@@ -491,6 +495,11 @@ namespace STROOP
                 case ObjectSlotsManager.TabType.Model:
                     selectionType = CurrentObject?.Address == Config.ModelManager.ModelObjectAddress
                         ? SelectionType.MODEL_SELECTION : SelectionType.NOT_SELECTED;
+                    break;
+
+                case ObjectSlotsManager.TabType.Memory:
+                    selectionType = CurrentObject?.Address == Config.MemoryManager.Address
+                        ? SelectionType.MEMORY_SELECTION : SelectionType.NOT_SELECTED;
                     break;
 
                 case ObjectSlotsManager.TabType.CamHack:
