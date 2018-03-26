@@ -22,10 +22,10 @@ namespace STROOP.Managers
         /// </summary>
         const int DefaultSlotSize = 36;
 
-        public enum TabType { Object, Map, Model, Custom, CamHack, Other };
+        public enum TabType { Object, Map, Model, Memory, Custom, CamHack, Other };
         public enum SortMethodType { ProcessingOrder, MemoryOrder, DistanceToMario };
         public enum SlotLabelType { Recommended, SlotPosVs, SlotPos, SlotIndex }
-        public enum ClickType { ObjectClick, MapClick, ModelClick, CamHackClick, MarkClick };
+        public enum ClickType { ObjectClick, MapClick, ModelClick, MemoryClick, CamHackClick, MarkClick };
 
         public ObjectSlot HoveredOverSlot { get; private set; }
 
@@ -83,6 +83,7 @@ namespace STROOP.Managers
             ["Object"] = TabType.Object,
             ["Map"] = TabType.Map,
             ["Model"] = TabType.Model,
+            ["Memory"] = TabType.Memory,
             ["Custom"] = TabType.Custom,
             ["Cam Hack"] = TabType.CamHack,
         };
@@ -148,6 +149,10 @@ namespace STROOP.Managers
                         click = ClickType.ModelClick;
                         break;
 
+                    case TabType.Memory:
+                        click = ClickType.MemoryClick;
+                        break;
+
                     case TabType.Object:
                     case TabType.Custom:
                     case TabType.Other:
@@ -186,6 +191,10 @@ namespace STROOP.Managers
                     : selectedSlot.CurrentObject.Address;
                 Config.ModelManager.ModelObjectAddress = newModelObjectAddress;
                 Config.ModelManager.ManualMode = false;
+            }
+            else if (click == ClickType.MemoryClick)
+            {
+                Config.MemoryManager.SetAddressAndUpdateMemory(selectedSlot.CurrentObject.Address);
             }
             else if (click == ClickType.CamHackClick)
             {
