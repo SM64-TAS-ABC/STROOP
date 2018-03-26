@@ -37,5 +37,10 @@ namespace STROOP.Utilities
             return GetVICount() - 2 * GetFrameCount();
         }
 
+        public static bool IsUsingMupen()
+        {
+            return Config.Stream.ProcessName == "mupen64-rerecording";
+        }
+
     }
 }
