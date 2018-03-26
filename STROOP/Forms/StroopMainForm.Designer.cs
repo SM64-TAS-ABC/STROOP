@@ -819,6 +819,11 @@ namespace STROOP
             this.textBoxScriptAddress = new System.Windows.Forms.TextBox();
             this.labelScriptAddress = new System.Windows.Forms.Label();
             this.richTextBoxExScript = new STROOP.Controls.RichTextBoxEx();
+            this.tabPageMemory = new System.Windows.Forms.TabPage();
+            this.textBoxMemoryStartAddress = new STROOP.BetterTextbox();
+            this.buttonMemoryButtonGo = new System.Windows.Forms.Button();
+            this.labelMemoryStartAddress = new System.Windows.Forms.Label();
+            this.richTextBoxMemory = new STROOP.Controls.RichTextBoxEx();
             this.tabPageHacks = new System.Windows.Forms.TabPage();
             this.splitContainerHacks = new STROOP.BetterSplitContainer();
             this.groupBoxHackRam = new System.Windows.Forms.GroupBox();
@@ -1150,7 +1155,7 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.tabPageMemory = new System.Windows.Forms.TabPage();
+            this.checkBoxMemoryUpdateContinuously = new System.Windows.Forms.CheckBox();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1475,6 +1480,7 @@ namespace STROOP
             this.splitContainerDecompiler.Panel2.SuspendLayout();
             this.splitContainerDecompiler.SuspendLayout();
             this.tabPageScripts.SuspendLayout();
+            this.tabPageMemory.SuspendLayout();
             this.tabPageHacks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerHacks)).BeginInit();
             this.splitContainerHacks.Panel1.SuspendLayout();
@@ -4906,7 +4912,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 291F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 293F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -10735,7 +10741,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(357, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(323, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -10767,7 +10773,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(351, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(317, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -10823,7 +10829,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(351, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(317, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -11228,6 +11234,65 @@ namespace STROOP
             this.richTextBoxExScript.Size = new System.Drawing.Size(908, 430);
             this.richTextBoxExScript.TabIndex = 1;
             this.richTextBoxExScript.Text = "";
+            // 
+            // tabPageMemory
+            // 
+            this.tabPageMemory.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageMemory.Controls.Add(this.checkBoxMemoryUpdateContinuously);
+            this.tabPageMemory.Controls.Add(this.textBoxMemoryStartAddress);
+            this.tabPageMemory.Controls.Add(this.buttonMemoryButtonGo);
+            this.tabPageMemory.Controls.Add(this.labelMemoryStartAddress);
+            this.tabPageMemory.Controls.Add(this.richTextBoxMemory);
+            this.tabPageMemory.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMemory.Name = "tabPageMemory";
+            this.tabPageMemory.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageMemory.Size = new System.Drawing.Size(915, 463);
+            this.tabPageMemory.TabIndex = 27;
+            this.tabPageMemory.Text = "Memory";
+            // 
+            // textBoxMemoryStartAddress
+            // 
+            this.textBoxMemoryStartAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxMemoryStartAddress.Location = new System.Drawing.Point(79, 4);
+            this.textBoxMemoryStartAddress.Name = "textBoxMemoryStartAddress";
+            this.textBoxMemoryStartAddress.Size = new System.Drawing.Size(80, 20);
+            this.textBoxMemoryStartAddress.TabIndex = 34;
+            this.textBoxMemoryStartAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonMemoryButtonGo
+            // 
+            this.buttonMemoryButtonGo.Location = new System.Drawing.Point(168, 4);
+            this.buttonMemoryButtonGo.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonMemoryButtonGo.Name = "buttonMemoryButtonGo";
+            this.buttonMemoryButtonGo.Size = new System.Drawing.Size(62, 20);
+            this.buttonMemoryButtonGo.TabIndex = 11;
+            this.buttonMemoryButtonGo.Text = "Go";
+            this.buttonMemoryButtonGo.UseVisualStyleBackColor = true;
+            // 
+            // labelMemoryStartAddress
+            // 
+            this.labelMemoryStartAddress.AutoSize = true;
+            this.labelMemoryStartAddress.Location = new System.Drawing.Point(3, 7);
+            this.labelMemoryStartAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelMemoryStartAddress.Name = "labelMemoryStartAddress";
+            this.labelMemoryStartAddress.Size = new System.Drawing.Size(73, 13);
+            this.labelMemoryStartAddress.TabIndex = 9;
+            this.labelMemoryStartAddress.Text = "Start Address:";
+            // 
+            // richTextBoxMemory
+            // 
+            this.richTextBoxMemory.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBoxMemory.BackColor = System.Drawing.SystemColors.Control;
+            this.richTextBoxMemory.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxMemory.Location = new System.Drawing.Point(6, 29);
+            this.richTextBoxMemory.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBoxMemory.Name = "richTextBoxMemory";
+            this.richTextBoxMemory.ReadOnly = true;
+            this.richTextBoxMemory.Size = new System.Drawing.Size(904, 429);
+            this.richTextBoxMemory.TabIndex = 8;
+            this.richTextBoxMemory.Text = "";
             // 
             // tabPageHacks
             // 
@@ -14963,15 +15028,17 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // tabPageMemory
+            // checkBoxMemoryUpdateContinuously
             // 
-            this.tabPageMemory.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageMemory.Location = new System.Drawing.Point(4, 22);
-            this.tabPageMemory.Name = "tabPageMemory";
-            this.tabPageMemory.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMemory.Size = new System.Drawing.Size(915, 463);
-            this.tabPageMemory.TabIndex = 27;
-            this.tabPageMemory.Text = "Memory";
+            this.checkBoxMemoryUpdateContinuously.AutoSize = true;
+            this.checkBoxMemoryUpdateContinuously.Checked = true;
+            this.checkBoxMemoryUpdateContinuously.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMemoryUpdateContinuously.Location = new System.Drawing.Point(238, 7);
+            this.checkBoxMemoryUpdateContinuously.Name = "checkBoxMemoryUpdateContinuously";
+            this.checkBoxMemoryUpdateContinuously.Size = new System.Drawing.Size(124, 17);
+            this.checkBoxMemoryUpdateContinuously.TabIndex = 35;
+            this.checkBoxMemoryUpdateContinuously.Text = "Update Continuously";
+            this.checkBoxMemoryUpdateContinuously.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -15375,6 +15442,8 @@ namespace STROOP
             this.splitContainerDecompiler.ResumeLayout(false);
             this.tabPageScripts.ResumeLayout(false);
             this.tabPageScripts.PerformLayout();
+            this.tabPageMemory.ResumeLayout(false);
+            this.tabPageMemory.PerformLayout();
             this.tabPageHacks.ResumeLayout(false);
             this.splitContainerHacks.Panel1.ResumeLayout(false);
             this.splitContainerHacks.Panel2.ResumeLayout(false);
@@ -16566,6 +16635,11 @@ namespace STROOP
         private CheckBox checkBoxMapGameCamOrientation;
         private ComboBox comboBoxMapColorMethod;
         private TabPage tabPageMemory;
+        private BetterTextbox textBoxMemoryStartAddress;
+        private Button buttonMemoryButtonGo;
+        private Label labelMemoryStartAddress;
+        private RichTextBoxEx richTextBoxMemory;
+        private CheckBox checkBoxMemoryUpdateContinuously;
     }
 }
 
