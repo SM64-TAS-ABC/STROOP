@@ -71,6 +71,9 @@
     <Model>
       <OverlayImage path="Model.png"/>
     </Model>
+    <Memory>
+      <OverlayImage path="Memory.png"/>
+    </Memory>
     <Floor>
       <OverlayImage path="Floor.png"/>
     </Floor>
