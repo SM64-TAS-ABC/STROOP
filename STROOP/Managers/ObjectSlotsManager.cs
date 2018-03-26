@@ -305,9 +305,11 @@ namespace STROOP.Managers
             // Update labels
             if (!LabelsLocked)
             {
-                foreach(ObjectDataModel obj in DataModels.Objects.Where(o => o != null))
+                _lockedSlotIndices.Clear();
+                foreach (ObjectDataModel obj in DataModels.Objects.Where(o => o != null))
                     _lockedSlotIndices[obj] = new Tuple<int?, int?>(obj.ProcessIndex, obj.VacantSlotIndex);
             }
+            _slotLabels.Clear();
             foreach (ObjectDataModel obj in sortedObjects.Where(o => o != null))
                 _slotLabels[obj] = GetSlotLabelFromObject(obj);
 
