@@ -361,6 +361,7 @@ namespace STROOP
                 Config.TasManager.Update(tabControlMain.SelectedTab == tabPageTas);
                 Config.TestingManager.Update(tabControlMain.SelectedTab == tabPageTesting);
                 Config.GfxManager.Update(tabControlMain.SelectedTab == tabPageGfx);
+                Config.MemoryManager.Update(tabControlMain.SelectedTab == tabPageMemory);
                 Config.MapManager?.Update();
                 Config.ModelManager?.Update();
                 Config.InjectionManager.Update();
