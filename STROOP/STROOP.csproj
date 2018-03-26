@@ -294,6 +294,7 @@
     <Compile Include="Managers\AreaManager.cs" />
     <Compile Include="Managers\CamHackManager.cs" />
     <Compile Include="Managers\GfxManager.cs" />
+    <Compile Include="Managers\MemoryManager.cs" />
     <Compile Include="Managers\TasManager.cs" />
     <Compile Include="Managers\VarHackManager.cs" />
     <Compile Include="Managers\DecompilerManager.cs" />
