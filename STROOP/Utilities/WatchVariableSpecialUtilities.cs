@@ -3559,6 +3559,19 @@ namespace STROOP.Structs
                     };
                     break;
 
+                // Mupen vars
+
+                case "MupenLag":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return "test";
+                    };
+                    setterFunction = (string stringValue, uint dummy) =>
+                    {
+                        return false;
+                    };
+                    break;
+
                 default:
                     break;
             }
