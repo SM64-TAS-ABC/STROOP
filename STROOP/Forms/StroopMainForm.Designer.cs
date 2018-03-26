@@ -1150,6 +1150,7 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
+            this.tabPageMemory = new System.Windows.Forms.TabPage();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1774,6 +1775,7 @@ namespace STROOP
             this.tabControlMain.Controls.Add(this.tabPageDisassembly);
             this.tabControlMain.Controls.Add(this.tabPageDecompiler);
             this.tabControlMain.Controls.Add(this.tabPageScripts);
+            this.tabControlMain.Controls.Add(this.tabPageMemory);
             this.tabControlMain.Controls.Add(this.tabPageHacks);
             this.tabControlMain.Controls.Add(this.tabPageCamHack);
             this.tabControlMain.Controls.Add(this.tabPageQuarterFrame);
@@ -4904,7 +4906,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 290F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 291F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -10733,7 +10735,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(374, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(357, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -10765,7 +10767,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(368, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(351, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -10821,7 +10823,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(368, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(351, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -14961,6 +14963,16 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
+            // tabPageMemory
+            // 
+            this.tabPageMemory.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageMemory.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMemory.Name = "tabPageMemory";
+            this.tabPageMemory.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageMemory.Size = new System.Drawing.Size(915, 463);
+            this.tabPageMemory.TabIndex = 27;
+            this.tabPageMemory.Text = "Memory";
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -16553,6 +16565,7 @@ namespace STROOP
         private Label labelMapColorMethod;
         private CheckBox checkBoxMapGameCamOrientation;
         private ComboBox comboBoxMapColorMethod;
+        private TabPage tabPageMemory;
     }
 }
 
