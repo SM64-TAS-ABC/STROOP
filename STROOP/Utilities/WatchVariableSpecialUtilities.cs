@@ -3564,7 +3564,7 @@ namespace STROOP.Structs
                 case "MupenLag":
                     getterFunction = (uint objAddress) =>
                     {
-                        return "test";
+                        return MupenUtilities.GetLagCount().ToString();
                     };
                     setterFunction = (string stringValue, uint dummy) =>
                     {
