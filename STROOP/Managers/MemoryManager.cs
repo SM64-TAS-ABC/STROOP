@@ -18,7 +18,7 @@ namespace STROOP.Managers
         private CheckBox _checkBoxMemoryUpdateContinuously;
         private RichTextBox _richTextBoxMemory;
 
-        private uint? _startAddress;
+        public uint? Address { get; private set; }
 
         public MemoryManager(TabPage tabControl)
         {
@@ -30,7 +30,7 @@ namespace STROOP.Managers
             _textBoxMemoryStartAddress.AddEnterAction(() => TryToSetAddressAndUpdateMemory());
             _buttonMemoryButtonGo.Click += (sender, e) => TryToSetAddressAndUpdateMemory();
 
-            _startAddress = null;
+            Address = null;
         }
 
         private void TryToSetAddressAndUpdateMemory()
@@ -42,15 +42,15 @@ namespace STROOP.Managers
         public void SetAddressAndUpdateMemory(uint address)
         {
             _textBoxMemoryStartAddress.Text = HexUtilities.Format(address, 8);
-            _startAddress = address;
+            Address = address;
             UpdateMemory();
         }
 
         private void UpdateMemory()
         {
-            if (!_startAddress.HasValue) return;
+            if (!Address.HasValue) return;
 
-            uint address = _startAddress.Value;
+            uint address = Address.Value;
             _richTextBoxMemory.Text = address + " " + Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
         }
 
