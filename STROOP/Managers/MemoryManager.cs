@@ -49,9 +49,19 @@ namespace STROOP.Managers
         private void UpdateMemory()
         {
             if (!Address.HasValue) return;
+            byte[] bytes = Config.Stream.ReadRam(Address.Value, (int)ObjectConfig.StructSize);
+            _richTextBoxMemory.Text = FormatBytesForHexEditorDisplay(bytes);
+        }
 
-            uint address = Address.Value;
-            _richTextBoxMemory.Text = address + " " + Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+        private string FormatBytesForHexEditorDisplay(byte[] bytes)
+        {
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                builder.Append(HexUtilities.Format(bytes[i], 2, false));
+                builder.Append(i % 16 == 15 ? "\r\n" : " ");
+            }
+            return builder.ToString();
         }
 
         public void Update(bool updateView)
