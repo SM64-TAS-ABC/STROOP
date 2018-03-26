@@ -16,6 +16,7 @@ namespace STROOP.Managers
         private BetterTextbox _textBoxMemoryStartAddress;
         private Button _buttonMemoryButtonGo;
         private CheckBox _checkBoxMemoryUpdateContinuously;
+        private CheckBox _checkBoxMemoryLittleEndian;
         private RichTextBox _richTextBoxMemory;
 
         public uint? Address { get; private set; }
@@ -25,6 +26,7 @@ namespace STROOP.Managers
             _textBoxMemoryStartAddress = tabControl.Controls["textBoxMemoryStartAddress"] as BetterTextbox;
             _buttonMemoryButtonGo = tabControl.Controls["buttonMemoryButtonGo"] as Button;
             _checkBoxMemoryUpdateContinuously = tabControl.Controls["checkBoxMemoryUpdateContinuously"] as CheckBox;
+            _checkBoxMemoryLittleEndian = tabControl.Controls["checkBoxMemoryLittleEndian"] as CheckBox;
             _richTextBoxMemory = tabControl.Controls["richTextBoxMemory"] as RichTextBox;
 
             _textBoxMemoryStartAddress.AddEnterAction(() => TryToSetAddressAndUpdateMemory());
@@ -50,15 +52,23 @@ namespace STROOP.Managers
         {
             if (!Address.HasValue) return;
             byte[] bytes = Config.Stream.ReadRam(Address.Value, (int)ObjectConfig.StructSize);
-            _richTextBoxMemory.Text = FormatBytesForHexEditorDisplay(bytes);
+            bool littleEndian = _checkBoxMemoryLittleEndian.Checked;
+            _richTextBoxMemory.Text = FormatBytesForHexEditorDisplay(bytes, littleEndian);
         }
 
-        private string FormatBytesForHexEditorDisplay(byte[] bytes)
+        private string FormatBytesForHexEditorDisplay(byte[] bytes, bool littleEndian)
         {
             StringBuilder builder = new StringBuilder();
             for (int i = 0; i < bytes.Length; i++)
             {
-                builder.Append(HexUtilities.Format(bytes[i], 2, false));
+                int byteIndex = i;
+                if (littleEndian)
+                {
+                    int mod = i % 4;
+                    int antiMod = 3 - mod;
+                    byteIndex = byteIndex - mod + antiMod;
+                }
+                builder.Append(HexUtilities.Format(bytes[byteIndex], 2, false));
                 builder.Append(i % 16 == 15 ? "\r\n" : " ");
             }
             return builder.ToString();
