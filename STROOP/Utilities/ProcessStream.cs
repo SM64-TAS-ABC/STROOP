@@ -220,8 +220,17 @@ namespace STROOP.Utilities
             int numOfBytes = 0;
             if (!absoluteAddressing)
                 address = new UIntPtr(address.ToUInt32() & ~0x80000000U);
-            return Kernal32NativeMethods.ProcessWriteMemory(_processHandle, absoluteAddressing ? new IntPtr((long) address.ToUInt64()) :
-                new IntPtr((long) ConvertAddressEndianess(new UIntPtr(address.ToUInt32() + (ulong) ProcessMemoryOffset.ToInt64()), buffer.Length)),
+
+            IntPtr processAddress = absoluteAddressing ? new IntPtr((long)address.ToUInt64()) :
+                new IntPtr((long)ConvertAddressEndianess(new UIntPtr(address.ToUInt32() + (ulong)ProcessMemoryOffset.ToInt64()), buffer.Length));
+
+            // Safety bounds check
+            if (processAddress.ToInt64() < ProcessMemoryOffset.ToInt64())
+                return false;
+            if (processAddress.ToInt64() + buffer.Length >= ProcessMemoryOffset.ToInt64() + Config.RamSize)
+                return false;
+
+            return Kernal32NativeMethods.ProcessWriteMemory(_processHandle, processAddress,
                 buffer, (IntPtr)buffer.Length, ref numOfBytes);
         }
 
