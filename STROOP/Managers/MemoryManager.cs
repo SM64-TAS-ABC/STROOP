@@ -4,6 +4,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,11 +20,12 @@ namespace STROOP.Managers
         private CheckBox _checkBoxMemoryLittleEndian;
         private ComboBox _comboBoxMemoryTypes;
 
-        private RichTextBox _richTextBoxMemoryAddresses;
-        private RichTextBox _richTextBoxMemoryBytes;
-        private RichTextBox _richTextBoxMemoryValues;
+        private RichTextBoxEx _richTextBoxMemoryAddresses;
+        private RichTextBoxEx _richTextBoxMemoryBytes;
+        private RichTextBoxEx _richTextBoxMemoryValues;
 
         public uint? Address { get; private set; }
+        private static readonly int _memorySize = 32;// (int)ObjectConfig.StructSize;
 
         public MemoryManager(TabPage tabControl)
         {
@@ -33,9 +35,9 @@ namespace STROOP.Managers
             _checkBoxMemoryLittleEndian = tabControl.Controls["checkBoxMemoryLittleEndian"] as CheckBox;
             _comboBoxMemoryTypes = tabControl.Controls["comboBoxMemoryTypes"] as ComboBox;
 
-            _richTextBoxMemoryAddresses = tabControl.Controls["richTextBoxMemoryAddresses"] as RichTextBox;
-            _richTextBoxMemoryBytes = tabControl.Controls["richTextBoxMemoryBytes"] as RichTextBox;
-            _richTextBoxMemoryValues = tabControl.Controls["richTextBoxMemoryValues"] as RichTextBox;
+            _richTextBoxMemoryAddresses = tabControl.Controls["richTextBoxMemoryAddresses"] as RichTextBoxEx;
+            _richTextBoxMemoryBytes = tabControl.Controls["richTextBoxMemoryBytes"] as RichTextBoxEx;
+            _richTextBoxMemoryValues = tabControl.Controls["richTextBoxMemoryValues"] as RichTextBoxEx;
 
             _textBoxMemoryStartAddress.AddEnterAction(() => TryToSetAddressAndUpdateMemory());
             _buttonMemoryButtonGo.Click += (sender, e) => TryToSetAddressAndUpdateMemory();
@@ -61,14 +63,20 @@ namespace STROOP.Managers
         private void UpdateMemory()
         {
             if (!Address.HasValue) return;
-            byte[] bytes = Config.Stream.ReadRam(Address.Value, (int)ObjectConfig.StructSize);
+            byte[] bytes = Config.Stream.ReadRam(Address.Value, _memorySize);
             bool littleEndian = _checkBoxMemoryLittleEndian.Checked;
             Type type = TypeUtilities.StringToType[(string)_comboBoxMemoryTypes.SelectedItem];
-            _richTextBoxMemoryAddresses.Text = FormatAddresses(Address.Value, (int)ObjectConfig.StructSize);
+            _richTextBoxMemoryAddresses.Text = FormatAddresses(Address.Value, _memorySize);
             _richTextBoxMemoryBytes.Text = FormatBytes(bytes, littleEndian);
 
             List<(int, int)> valuePositions;
             _richTextBoxMemoryValues.Text = FormatValues(bytes, type, littleEndian, out valuePositions);
+            valuePositions.ForEach(entry =>
+            {
+                int pos = entry.Item1;
+                int length = entry.Item2;
+                //_richTextBoxMemoryValues.SetColor(pos, length, Color.Blue);
+            });
         }
 
         private string FormatAddresses(uint startAddress, int totalMemorySize)
@@ -76,7 +84,7 @@ namespace STROOP.Managers
             StringBuilder builder = new StringBuilder();
             for (int i = 0; i < totalMemorySize; i += 16)
             {
-                string whiteSpace = "\r\n";
+                string whiteSpace = "\n";
                 if (i == 0) whiteSpace = "";
                 builder.Append(whiteSpace);
 
@@ -93,7 +101,7 @@ namespace STROOP.Managers
             {
                 string whiteSpace = " ";
                 if (i % 4 == 0) whiteSpace = "  ";
-                if (i % 16 == 0) whiteSpace = "\r\n";
+                if (i % 16 == 0) whiteSpace = "\n";
                 if (i == 0) whiteSpace = "";
                 builder.Append(whiteSpace);
 
@@ -117,7 +125,7 @@ namespace STROOP.Managers
             {
                 string whiteSpace = " ";
                 if (i % 4 == 0) whiteSpace = "  ";
-                if (i % 16 == 0) whiteSpace = "\r\n";
+                if (i % 16 == 0) whiteSpace = "\n";
                 if (i == 0) whiteSpace = "";
                 stringList.Add(whiteSpace);
 
