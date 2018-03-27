@@ -22,12 +22,27 @@ namespace STROOP.Models
 
         public void Update()
         {
-            // Check behavior bank
+            // Update behavior bank
             Config.ObjectAssociations.BehaviorBankStart = Config.Stream.GetUInt32(Config.ObjectAssociations.SegmentTable + 0x13 * 4);
 
             int? vacantIndexStart = UpdateGetProcessedObjects();
             if (vacantIndexStart.HasValue)
                 UpdateGetVacantObjects(vacantIndexStart.Value);
+
+            // Sort objects by address
+            _objects.Sort((a, b) =>
+            {
+                if (a == null || b == null)
+                    return 0;
+
+                if (a.Address > b.Address)
+                    return 1;
+
+                if (a.Address < b.Address)
+                    return -1;
+
+                return 0;
+            });
 
             ActiveObjectCount = DataModels.Objects.Count(o => o?.IsActive ?? false);
         }
@@ -54,7 +69,7 @@ namespace STROOP.Models
                     if (objAddress == 0 ||
                         Config.Stream.GetUInt16(objAddress + ObjectConfig.HeaderOffset) != 0x18)
                     {
-                        ClearRemainingObjectSlots(slotIndex);
+                        ClearAllObjectSlots();
                         return null;
                     }
 
@@ -87,7 +102,7 @@ namespace STROOP.Models
                 if (objAddress == 0 ||
                     Config.Stream.GetUInt16(objAddress + ObjectConfig.HeaderOffset) != 0x18)
                 {
-                    ClearRemainingObjectSlots(slotIndex);
+                    ClearAllObjectSlots();
                     return;
                 }
 
@@ -102,12 +117,12 @@ namespace STROOP.Models
             }
         }
 
-        private void ClearRemainingObjectSlots(int startIndex = 0)
+        private void ClearAllObjectSlots()
         {
-            // Clear remaining slots
-            for (; startIndex < ObjectSlotsConfig.MaxSlots; startIndex++)
+            // Clear a slots
+            for (int i = 0; i < ObjectSlotsConfig.MaxSlots; i++)
             {
-                _objects[startIndex] = null;
+                _objects[i] = null;
             }
         }
 
