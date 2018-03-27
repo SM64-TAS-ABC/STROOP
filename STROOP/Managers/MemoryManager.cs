@@ -79,6 +79,22 @@ namespace STROOP.Managers
             UpdateMemory();
         }
 
+        private class ValueText
+        {
+            public readonly int ByteIndex;
+            public readonly int ByteSize;
+            public readonly int StringIndex;
+            public readonly int StringSize;
+            
+            public ValueText(int byteIndex, int byteSize, int stringIndex, int stringSize)
+            {
+                ByteIndex = byteIndex;
+                ByteSize = byteSize;
+                StringIndex = stringIndex;
+                StringSize = stringSize;
+            }
+        }
+
         private void UpdateMemory()
         {
             if (!Address.HasValue) return;
@@ -88,12 +104,12 @@ namespace STROOP.Managers
             _richTextBoxMemoryAddresses.Text = FormatAddresses(Address.Value, _memorySize);
             _richTextBoxMemoryBytes.Text = FormatBytes(bytes, littleEndian);
 
-            List<(int, int)> valuePositions;
+            List<ValueText> valuePositions;
             _richTextBoxMemoryValues.Text = FormatValues(bytes, type, littleEndian, out valuePositions);
-            valuePositions.ForEach(entry =>
+            valuePositions.ForEach(valueText =>
             {
-                int pos = entry.Item1;
-                int length = entry.Item2;
+                int pos = valueText.StringIndex;
+                int length = valueText.StringSize;
                 _richTextBoxMemoryValues.SetBackColor(pos, length, Color.LightPink);
             });
         }
@@ -136,7 +152,7 @@ namespace STROOP.Managers
             return builder.ToString();
         }
 
-        private string FormatValues(byte[] bytes, Type type, bool littleEndian, out List<(int, int)> valuePositions)
+        private string FormatValues(byte[] bytes, Type type, bool littleEndian, out List<ValueText> valuePositions)
         {
             int typeSize = TypeUtilities.TypeSize[type];
             List<string> stringList = new List<string>();
@@ -162,7 +178,7 @@ namespace STROOP.Managers
                 stringList[index] = newString;
             });
 
-            valuePositions = new List<(int, int)>();
+            valuePositions = new List<ValueText>();
             int totalLength = 0;
             for (int i = 0; i < stringList.Count; i++)
             {
@@ -171,9 +187,9 @@ namespace STROOP.Managers
                 totalLength += stringLength;
                 if (i % 2 == 1)
                 {
-                    int trimmedLenfth = stringValue.Trim().Length;
-                    (int position, int length) entry = (totalLength - trimmedLenfth, trimmedLenfth);
-                    valuePositions.Add(entry);
+                    int trimmedLength = stringValue.Trim().Length;
+                    ValueText valueText = new ValueText(0, 0, totalLength - trimmedLength, trimmedLength);
+                    valuePositions.Add(valueText);
                 }
             }
 
