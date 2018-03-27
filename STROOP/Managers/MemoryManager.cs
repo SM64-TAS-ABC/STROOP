@@ -40,6 +40,12 @@ namespace STROOP.Managers
             _textBoxMemoryStartAddress.AddEnterAction(() => TryToSetAddressAndUpdateMemory());
             _buttonMemoryButtonGo.Click += (sender, e) => TryToSetAddressAndUpdateMemory();
 
+            _comboBoxMemoryTypes.DataSource = TypeUtilities.StringToType.Keys.ToList();
+
+            //comboBoxRomVersion.DataSource = Enum.GetValues(typeof(RomVersion));
+            //Config.Version = (RomVersion)comboBoxRomVersion.SelectedItem;
+
+
             Address = null;
         }
 
@@ -63,6 +69,7 @@ namespace STROOP.Managers
             bool littleEndian = _checkBoxMemoryLittleEndian.Checked;
             _richTextBoxMemoryAddresses.Text = FormatAddresses(Address.Value, (int)ObjectConfig.StructSize);
             _richTextBoxMemoryBytes.Text = FormatBytes(bytes, littleEndian);
+            _richTextBoxMemoryValues.Text = FormatValues(bytes, typeof(float));
         }
 
         private string FormatAddresses(uint startAddress, int totalMemorySize)
@@ -84,6 +91,27 @@ namespace STROOP.Managers
             {
                 int byteIndex = i;
                 if (littleEndian)
+                {
+                    int mod = i % 4;
+                    int antiMod = 3 - mod;
+                    byteIndex = byteIndex - mod + antiMod;
+                }
+                builder.Append(HexUtilities.Format(bytes[byteIndex], 2, false));
+                string whiteSpace = " ";
+                if (i % 4 == 3) whiteSpace = "  ";
+                if (i % 16 == 15) whiteSpace = "\r\n";
+                builder.Append(whiteSpace);
+            }
+            return builder.ToString();
+        }
+
+        private string FormatValues(byte[] bytes, Type type)
+        {
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                int byteIndex = i;
+                if (true)
                 {
                     int mod = i % 4;
                     int antiMod = 3 - mod;

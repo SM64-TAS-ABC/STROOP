@@ -15089,12 +15089,11 @@ namespace STROOP
             // 
             // comboBoxMemoryTypes
             // 
-            this.comboBoxMemoryTypes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxMemoryTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMemoryTypes.Location = new System.Drawing.Point(489, 4);
             this.comboBoxMemoryTypes.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxMemoryTypes.Name = "comboBoxMemoryTypes";
-            this.comboBoxMemoryTypes.Size = new System.Drawing.Size(102, 21);
+            this.comboBoxMemoryTypes.Size = new System.Drawing.Size(55, 21);
             this.comboBoxMemoryTypes.TabIndex = 36;
             // 
             // StroopMainForm
