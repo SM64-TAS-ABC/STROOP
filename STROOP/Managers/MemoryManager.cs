@@ -110,18 +110,21 @@ namespace STROOP.Managers
         private string FormatValues(byte[] bytes, Type type, bool littleEndian)
         {
             int typeSize = TypeUtilities.TypeSize[type];
-            StringBuilder builder = new StringBuilder();
+            List<string> stringList = new List<string>();
             for (int i = 0; i < bytes.Length; i += typeSize)
             {
                 string whiteSpace = " ";
                 if (i % 4 == 0) whiteSpace = "  ";
                 if (i % 16 == 0) whiteSpace = "\r\n";
                 if (i == 0) whiteSpace = "";
-                builder.Append(whiteSpace);
+                stringList.Add(whiteSpace);
 
                 object value = TypeUtilities.ConvertBytes(type, bytes, i, littleEndian);
-                builder.Append(value);
+                stringList.Add(value.ToString());
             }
+
+            StringBuilder builder = new StringBuilder();
+            stringList.ForEach(stringValue => builder.Append(stringValue));
             return builder.ToString();
         }
 
