@@ -67,7 +67,19 @@ namespace STROOP.Structs
             {typeof(double), true},
         };
 
-        public static object ConvertBytes(Type type, byte[] bytes, int startIndex)
+        public readonly static List<string> SimpleTypeList =
+            new List<string>()
+            {
+                "byte",
+                "sbyte",
+                "short",
+                "ushort",
+                "int",
+                "uint",
+                "float",
+            };
+
+        public static object ConvertBytes(Type type, byte[] bytes, int startIndex, bool littleEndian)
         {
             if (type == typeof(byte)) return bytes[startIndex];
             if (type == typeof(sbyte)) return (sbyte)bytes[startIndex];

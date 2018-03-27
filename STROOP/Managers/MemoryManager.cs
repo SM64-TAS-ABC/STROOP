@@ -40,7 +40,7 @@ namespace STROOP.Managers
             _textBoxMemoryStartAddress.AddEnterAction(() => TryToSetAddressAndUpdateMemory());
             _buttonMemoryButtonGo.Click += (sender, e) => TryToSetAddressAndUpdateMemory();
 
-            _comboBoxMemoryTypes.DataSource = TypeUtilities.StringToType.Keys.ToList();
+            _comboBoxMemoryTypes.DataSource = TypeUtilities.SimpleTypeList;
 
             Address = null;
         }
@@ -108,18 +108,14 @@ namespace STROOP.Managers
             StringBuilder builder = new StringBuilder();
             for (int i = 0; i < bytes.Length; i += typeSize)
             {
-                int byteIndex = i;
-                if (true)
-                {
-                    int mod = i % 4;
-                    int antiMod = 3 - mod;
-                    byteIndex = byteIndex - mod + antiMod;
-                }
-                builder.Append(HexUtilities.Format(bytes[byteIndex], 2, false));
                 string whiteSpace = " ";
-                if (i % 4 == 3) whiteSpace = "  ";
-                if (i % 16 == 15) whiteSpace = "\r\n";
+                if (i % 4 == 0) whiteSpace = "  ";
+                if (i % 16 == 0) whiteSpace = "\r\n";
+                if (i == 0) whiteSpace = "";
                 builder.Append(whiteSpace);
+
+                object value = TypeUtilities.ConvertBytes(type, bytes, i, littleEndian);
+                builder.Append(value);
             }
             return builder.ToString();
         }
