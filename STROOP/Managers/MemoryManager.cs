@@ -123,6 +123,16 @@ namespace STROOP.Managers
                 stringList.Add(value.ToString());
             }
 
+            List<int> indexList = Enumerable.Range(0, stringList.Count / 2).ToList()
+                .ConvertAll(index => index * 2 + 1);
+            int maxLength = indexList.Max(index => stringList[index].Length);
+            indexList.ForEach(index =>
+            {
+                string oldString = stringList[index];
+                string newString = oldString.PadLeft(maxLength, ' ');
+                stringList[index] = newString;
+            });
+
             StringBuilder builder = new StringBuilder();
             stringList.ForEach(stringValue => builder.Append(stringValue));
             return builder.ToString();
