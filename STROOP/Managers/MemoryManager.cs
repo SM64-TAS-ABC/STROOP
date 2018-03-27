@@ -66,7 +66,7 @@ namespace STROOP.Managers
             Type type = TypeUtilities.StringToType[(string)_comboBoxMemoryTypes.SelectedItem];
             _richTextBoxMemoryAddresses.Text = FormatAddresses(Address.Value, (int)ObjectConfig.StructSize);
             _richTextBoxMemoryBytes.Text = FormatBytes(bytes, littleEndian);
-            _richTextBoxMemoryValues.Text = FormatValues(bytes, type);
+            _richTextBoxMemoryValues.Text = FormatValues(bytes, type, littleEndian);
         }
 
         private string FormatAddresses(uint startAddress, int totalMemorySize)
@@ -102,11 +102,11 @@ namespace STROOP.Managers
             return builder.ToString();
         }
 
-        private string FormatValues(byte[] bytes, Type type)
+        private string FormatValues(byte[] bytes, Type type, bool littleEndian)
         {
-            return type.ToString();
+            int typeSize = TypeUtilities.TypeSize[type];
             StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < bytes.Length; i++)
+            for (int i = 0; i < bytes.Length; i += typeSize)
             {
                 int byteIndex = i;
                 if (true)
