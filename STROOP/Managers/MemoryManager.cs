@@ -69,7 +69,10 @@ namespace STROOP.Managers
                     byteIndex = byteIndex - mod + antiMod;
                 }
                 builder.Append(HexUtilities.Format(bytes[byteIndex], 2, false));
-                builder.Append(i % 16 == 15 ? "\r\n" : " ");
+                string whiteSpace = " ";
+                if (i % 4 == 3) whiteSpace = "  ";
+                if (i % 16 == 15) whiteSpace = "\r\n";
+                builder.Append(whiteSpace);
             }
             return builder.ToString();
         }
