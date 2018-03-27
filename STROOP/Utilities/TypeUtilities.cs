@@ -79,16 +79,35 @@ namespace STROOP.Structs
                 "float",
             };
 
-        public static object ConvertBytes(Type type, byte[] bytes, int startIndex, bool littleEndian)
+        public static object ConvertBytes(Type type, byte[] allBytes, int startIndex, bool littleEndian)
         {
-            if (type == typeof(byte)) return bytes[startIndex];
-            if (type == typeof(sbyte)) return (sbyte)bytes[startIndex];
-            if (type == typeof(short)) return BitConverter.ToInt16(bytes, startIndex);
-            if (type == typeof(ushort)) return BitConverter.ToUInt16(bytes, startIndex);
-            if (type == typeof(int)) return BitConverter.ToInt32(bytes, startIndex);
-            if (type == typeof(uint)) return BitConverter.ToUInt32(bytes, startIndex);
-            if (type == typeof(float)) return BitConverter.ToSingle(bytes, startIndex);
-            if (type == typeof(double)) return BitConverter.ToDouble(bytes, startIndex);
+            int typeSize = TypeSize[type];
+            int modValue = startIndex % 4;
+            int baseValue = startIndex - modValue;
+            int newModValue = modValue;
+            if (littleEndian)
+            {
+                if (typeSize == 2) newModValue = 2 - modValue;
+                if (typeSize == 1) newModValue = 3 - modValue;
+            }
+            int newStartAddress = baseValue + newModValue;
+
+            byte[] bytes = new byte[typeSize];
+            for (int i = 0; i < typeSize; i++)
+            {
+                byte byteValue = allBytes[newStartAddress + i];
+                int index = typeSize - 1 - i;
+                bytes[index] = byteValue;
+            }
+
+            if (type == typeof(byte)) return bytes[0];
+            if (type == typeof(sbyte)) return (sbyte)bytes[0];
+            if (type == typeof(short)) return BitConverter.ToInt16(bytes, 0);
+            if (type == typeof(ushort)) return BitConverter.ToUInt16(bytes, 0);
+            if (type == typeof(int)) return BitConverter.ToInt32(bytes, 0);
+            if (type == typeof(uint)) return BitConverter.ToUInt32(bytes, 0);
+            if (type == typeof(float)) return BitConverter.ToSingle(bytes, 0);
+            if (type == typeof(double)) return BitConverter.ToDouble(bytes, 0);
             throw new ArgumentOutOfRangeException();
         }
     }
