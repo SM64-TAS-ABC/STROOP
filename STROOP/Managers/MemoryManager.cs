@@ -74,9 +74,12 @@ namespace STROOP.Managers
             StringBuilder builder = new StringBuilder();
             for (int i = 0; i < totalMemorySize; i += 16)
             {
+                string whiteSpace = "\r\n";
+                if (i == 0) whiteSpace = "";
+                builder.Append(whiteSpace);
+
                 uint address = startAddress + (uint)i;
                 builder.Append(HexUtilities.Format(address, 8));
-                builder.Append("\r\n");
             }
             return builder.ToString();
         }
@@ -86,6 +89,12 @@ namespace STROOP.Managers
             StringBuilder builder = new StringBuilder();
             for (int i = 0; i < bytes.Length; i++)
             {
+                string whiteSpace = " ";
+                if (i % 4 == 0) whiteSpace = "  ";
+                if (i % 16 == 0) whiteSpace = "\r\n";
+                if (i == 0) whiteSpace = "";
+                builder.Append(whiteSpace);
+
                 int byteIndex = i;
                 if (littleEndian)
                 {
@@ -94,10 +103,6 @@ namespace STROOP.Managers
                     byteIndex = byteIndex - mod + antiMod;
                 }
                 builder.Append(HexUtilities.Format(bytes[byteIndex], 2, false));
-                string whiteSpace = " ";
-                if (i % 4 == 3) whiteSpace = "  ";
-                if (i % 16 == 15) whiteSpace = "\r\n";
-                builder.Append(whiteSpace);
             }
             return builder.ToString();
         }
