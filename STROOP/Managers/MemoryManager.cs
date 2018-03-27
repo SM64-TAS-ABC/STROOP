@@ -17,7 +17,8 @@ namespace STROOP.Managers
         private Button _buttonMemoryButtonGo;
         private CheckBox _checkBoxMemoryUpdateContinuously;
         private CheckBox _checkBoxMemoryLittleEndian;
-        private RichTextBox _richTextBoxMemory;
+        private RichTextBox _richTextBoxMemoryAddresses;
+        private RichTextBox _richTextBoxMemoryBytes;
 
         public uint? Address { get; private set; }
 
@@ -27,7 +28,8 @@ namespace STROOP.Managers
             _buttonMemoryButtonGo = tabControl.Controls["buttonMemoryButtonGo"] as Button;
             _checkBoxMemoryUpdateContinuously = tabControl.Controls["checkBoxMemoryUpdateContinuously"] as CheckBox;
             _checkBoxMemoryLittleEndian = tabControl.Controls["checkBoxMemoryLittleEndian"] as CheckBox;
-            _richTextBoxMemory = tabControl.Controls["richTextBoxMemory"] as RichTextBox;
+            _richTextBoxMemoryAddresses = tabControl.Controls["richTextBoxMemoryAddresses"] as RichTextBox;
+            _richTextBoxMemoryBytes = tabControl.Controls["richTextBoxMemoryBytes"] as RichTextBox;
 
             _textBoxMemoryStartAddress.AddEnterAction(() => TryToSetAddressAndUpdateMemory());
             _buttonMemoryButtonGo.Click += (sender, e) => TryToSetAddressAndUpdateMemory();
@@ -53,10 +55,10 @@ namespace STROOP.Managers
             if (!Address.HasValue) return;
             byte[] bytes = Config.Stream.ReadRam(Address.Value, (int)ObjectConfig.StructSize);
             bool littleEndian = _checkBoxMemoryLittleEndian.Checked;
-            _richTextBoxMemory.Text = FormatBytesForHexEditorDisplay(bytes, littleEndian);
+            _richTextBoxMemoryBytes.Text = FormatBytes(bytes, littleEndian);
         }
 
-        private string FormatBytesForHexEditorDisplay(byte[] bytes, bool littleEndian)
+        private string FormatBytes(byte[] bytes, bool littleEndian)
         {
             StringBuilder builder = new StringBuilder();
             for (int i = 0; i < bytes.Length; i++)
