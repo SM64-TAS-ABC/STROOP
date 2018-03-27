@@ -104,13 +104,12 @@ namespace STROOP.Managers
             _richTextBoxMemoryAddresses.Text = FormatAddresses(Address.Value, _memorySize);
             _richTextBoxMemoryBytes.Text = FormatBytes(bytes, littleEndian);
 
-            List<ValueText> valuePositions;
-            _richTextBoxMemoryValues.Text = FormatValues(bytes, type, littleEndian, out valuePositions);
-            valuePositions.ForEach(valueText =>
+            List<ValueText> valueTexts;
+            _richTextBoxMemoryValues.Text = FormatValues(bytes, type, littleEndian, out valueTexts);
+            valueTexts.ForEach(valueText =>
             {
-                int pos = valueText.StringIndex;
-                int length = valueText.StringSize;
-                _richTextBoxMemoryValues.SetBackColor(pos, length, Color.LightPink);
+                _richTextBoxMemoryValues.SetBackColor(
+                    valueText.StringIndex, valueText.StringSize, Color.LightPink);
             });
         }
 
@@ -152,7 +151,7 @@ namespace STROOP.Managers
             return builder.ToString();
         }
 
-        private string FormatValues(byte[] bytes, Type type, bool littleEndian, out List<ValueText> valuePositions)
+        private string FormatValues(byte[] bytes, Type type, bool littleEndian, out List<ValueText> valueTexts)
         {
             int typeSize = TypeUtilities.TypeSize[type];
             List<string> stringList = new List<string>();
@@ -178,7 +177,7 @@ namespace STROOP.Managers
                 stringList[index] = newString;
             });
 
-            valuePositions = new List<ValueText>();
+            valueTexts = new List<ValueText>();
             int totalLength = 0;
             for (int i = 0; i < stringList.Count; i++)
             {
@@ -188,8 +187,8 @@ namespace STROOP.Managers
                 if (i % 2 == 1)
                 {
                     int trimmedLength = stringValue.Trim().Length;
-                    ValueText valueText = new ValueText(0, 0, totalLength - trimmedLength, trimmedLength);
-                    valuePositions.Add(valueText);
+                    ValueText valueText = new ValueText(i / 2, typeSize, totalLength - trimmedLength, trimmedLength);
+                    valueTexts.Add(valueText);
                 }
             }
 
