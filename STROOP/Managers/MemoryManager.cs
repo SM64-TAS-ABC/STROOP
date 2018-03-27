@@ -93,6 +93,11 @@ namespace STROOP.Managers
                 StringIndex = stringIndex;
                 StringSize = stringSize;
             }
+
+            public bool OverlapsData(bool[] dataBools, bool littleEndian)
+            {
+                return true;
+            }
         }
 
         private void UpdateMemory()
@@ -108,8 +113,9 @@ namespace STROOP.Managers
             _richTextBoxMemoryValues.Text = FormatValues(bytes, type, littleEndian, out valueTexts);
             valueTexts.ForEach(valueText =>
             {
-                _richTextBoxMemoryValues.SetBackColor(
-                    valueText.StringIndex, valueText.StringSize, Color.LightPink);
+                if (valueText.OverlapsData(_objectDataBools, littleEndian))
+                    _richTextBoxMemoryValues.SetBackColor(
+                        valueText.StringIndex, valueText.StringSize, Color.LightPink);
             });
         }
 
