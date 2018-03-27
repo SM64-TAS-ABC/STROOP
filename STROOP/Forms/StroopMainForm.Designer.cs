@@ -1158,6 +1158,7 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
+            this.richTextBoxMemoryValues = new STROOP.Controls.RichTextBoxEx();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -4914,7 +4915,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 296F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 297F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -10743,7 +10744,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(272, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(255, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -10775,7 +10776,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(266, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(249, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -10831,7 +10832,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(266, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(249, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -11246,6 +11247,7 @@ namespace STROOP
             this.tabPageMemory.Controls.Add(this.buttonMemoryButtonGo);
             this.tabPageMemory.Controls.Add(this.labelMemoryStartAddress);
             this.tabPageMemory.Controls.Add(this.richTextBoxMemoryAddresses);
+            this.tabPageMemory.Controls.Add(this.richTextBoxMemoryValues);
             this.tabPageMemory.Controls.Add(this.richTextBoxMemoryBytes);
             this.tabPageMemory.Location = new System.Drawing.Point(4, 22);
             this.tabPageMemory.Name = "tabPageMemory";
@@ -11322,16 +11324,15 @@ namespace STROOP
             // 
             // richTextBoxMemoryBytes
             // 
-            this.richTextBoxMemoryBytes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBoxMemoryBytes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.richTextBoxMemoryBytes.BackColor = System.Drawing.SystemColors.Control;
             this.richTextBoxMemoryBytes.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBoxMemoryBytes.Location = new System.Drawing.Point(107, 29);
             this.richTextBoxMemoryBytes.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryBytes.Name = "richTextBoxMemoryBytes";
             this.richTextBoxMemoryBytes.ReadOnly = true;
-            this.richTextBoxMemoryBytes.Size = new System.Drawing.Size(803, 429);
+            this.richTextBoxMemoryBytes.Size = new System.Drawing.Size(378, 429);
             this.richTextBoxMemoryBytes.TabIndex = 8;
             this.richTextBoxMemoryBytes.Text = "";
             // 
@@ -15069,6 +15070,21 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
+            // richTextBoxMemoryValues
+            // 
+            this.richTextBoxMemoryValues.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBoxMemoryValues.BackColor = System.Drawing.SystemColors.Control;
+            this.richTextBoxMemoryValues.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxMemoryValues.Location = new System.Drawing.Point(489, 29);
+            this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
+            this.richTextBoxMemoryValues.ReadOnly = true;
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(421, 429);
+            this.richTextBoxMemoryValues.TabIndex = 8;
+            this.richTextBoxMemoryValues.Text = "";
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -16671,6 +16687,7 @@ namespace STROOP
         private CheckBox checkBoxMemoryUpdateContinuously;
         private CheckBox checkBoxMemoryLittleEndian;
         private RichTextBoxEx richTextBoxMemoryAddresses;
+        private RichTextBoxEx richTextBoxMemoryValues;
     }
 }
 
