@@ -55,7 +55,20 @@ namespace STROOP.Managers
             if (!Address.HasValue) return;
             byte[] bytes = Config.Stream.ReadRam(Address.Value, (int)ObjectConfig.StructSize);
             bool littleEndian = _checkBoxMemoryLittleEndian.Checked;
+            _richTextBoxMemoryAddresses.Text = FormatAddresses(Address.Value, (int)ObjectConfig.StructSize);
             _richTextBoxMemoryBytes.Text = FormatBytes(bytes, littleEndian);
+        }
+
+        private string FormatAddresses(uint startAddress, int totalMemorySize)
+        {
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < totalMemorySize; i += 16)
+            {
+                uint address = startAddress + (uint)i;
+                builder.Append(HexUtilities.Format(address, 8));
+                builder.Append("\r\n");
+            }
+            return builder.ToString();
         }
 
         private string FormatBytes(byte[] bytes, bool littleEndian)
