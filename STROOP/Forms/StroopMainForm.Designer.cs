@@ -1159,6 +1159,7 @@ namespace STROOP
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.richTextBoxMemoryValues = new STROOP.Controls.RichTextBoxEx();
+            this.comboBoxMemoryTypes = new System.Windows.Forms.ComboBox();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -11241,6 +11242,7 @@ namespace STROOP
             // tabPageMemory
             // 
             this.tabPageMemory.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageMemory.Controls.Add(this.comboBoxMemoryTypes);
             this.tabPageMemory.Controls.Add(this.checkBoxMemoryLittleEndian);
             this.tabPageMemory.Controls.Add(this.checkBoxMemoryUpdateContinuously);
             this.tabPageMemory.Controls.Add(this.textBoxMemoryStartAddress);
@@ -15085,6 +15087,16 @@ namespace STROOP
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
+            // comboBoxMemoryTypes
+            // 
+            this.comboBoxMemoryTypes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxMemoryTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMemoryTypes.Location = new System.Drawing.Point(489, 4);
+            this.comboBoxMemoryTypes.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxMemoryTypes.Name = "comboBoxMemoryTypes";
+            this.comboBoxMemoryTypes.Size = new System.Drawing.Size(102, 21);
+            this.comboBoxMemoryTypes.TabIndex = 36;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -16688,6 +16700,7 @@ namespace STROOP
         private CheckBox checkBoxMemoryLittleEndian;
         private RichTextBoxEx richTextBoxMemoryAddresses;
         private RichTextBoxEx richTextBoxMemoryValues;
+        private ComboBox comboBoxMemoryTypes;
     }
 }
 
