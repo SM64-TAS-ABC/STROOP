@@ -14,20 +14,20 @@ namespace STROOP.Managers
 {
     public class MemoryManager
     {
-        private BetterTextbox _textBoxMemoryStartAddress;
-        private Button _buttonMemoryButtonGo;
-        private CheckBox _checkBoxMemoryUpdateContinuously;
-        private CheckBox _checkBoxMemoryLittleEndian;
-        private ComboBox _comboBoxMemoryTypes;
+        private readonly BetterTextbox _textBoxMemoryStartAddress;
+        private readonly Button _buttonMemoryButtonGo;
+        private readonly CheckBox _checkBoxMemoryUpdateContinuously;
+        private readonly CheckBox _checkBoxMemoryLittleEndian;
+        private readonly ComboBox _comboBoxMemoryTypes;
 
-        private RichTextBoxEx _richTextBoxMemoryAddresses;
-        private RichTextBoxEx _richTextBoxMemoryBytes;
-        private RichTextBoxEx _richTextBoxMemoryValues;
+        private readonly RichTextBoxEx _richTextBoxMemoryAddresses;
+        private readonly RichTextBoxEx _richTextBoxMemoryBytes;
+        private readonly RichTextBoxEx _richTextBoxMemoryValues;
+
+        private readonly bool[] _objectDataBools;
 
         public uint? Address { get; private set; }
         private static readonly int _memorySize = (int)ObjectConfig.StructSize;
-
-        private bool[] _objectDataBools;
 
         public MemoryManager(TabPage tabControl, List<WatchVariableControlPrecursor> objectData)
         {
