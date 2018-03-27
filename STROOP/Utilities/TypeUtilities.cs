@@ -65,6 +65,19 @@ namespace STROOP.Structs
             {typeof(ulong), false},
             {typeof(float), true},
             {typeof(double), true},
-        };       
+        };
+
+        public static object ConvertBytes(Type type, byte[] bytes, int startIndex)
+        {
+            if (type == typeof(byte)) return bytes[startIndex];
+            if (type == typeof(sbyte)) return (sbyte)bytes[startIndex];
+            if (type == typeof(short)) return BitConverter.ToInt16(bytes, startIndex);
+            if (type == typeof(ushort)) return BitConverter.ToUInt16(bytes, startIndex);
+            if (type == typeof(int)) return BitConverter.ToInt32(bytes, startIndex);
+            if (type == typeof(uint)) return BitConverter.ToUInt32(bytes, startIndex);
+            if (type == typeof(float)) return BitConverter.ToSingle(bytes, startIndex);
+            if (type == typeof(double)) return BitConverter.ToDouble(bytes, startIndex);
+            throw new ArgumentOutOfRangeException();
+        }
     }
 }
