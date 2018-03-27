@@ -42,10 +42,6 @@ namespace STROOP.Managers
 
             _comboBoxMemoryTypes.DataSource = TypeUtilities.StringToType.Keys.ToList();
 
-            //comboBoxRomVersion.DataSource = Enum.GetValues(typeof(RomVersion));
-            //Config.Version = (RomVersion)comboBoxRomVersion.SelectedItem;
-
-
             Address = null;
         }
 
@@ -67,9 +63,10 @@ namespace STROOP.Managers
             if (!Address.HasValue) return;
             byte[] bytes = Config.Stream.ReadRam(Address.Value, (int)ObjectConfig.StructSize);
             bool littleEndian = _checkBoxMemoryLittleEndian.Checked;
+            Type type = TypeUtilities.StringToType[(string)_comboBoxMemoryTypes.SelectedItem];
             _richTextBoxMemoryAddresses.Text = FormatAddresses(Address.Value, (int)ObjectConfig.StructSize);
             _richTextBoxMemoryBytes.Text = FormatBytes(bytes, littleEndian);
-            _richTextBoxMemoryValues.Text = FormatValues(bytes, typeof(float));
+            _richTextBoxMemoryValues.Text = FormatValues(bytes, type);
         }
 
         private string FormatAddresses(uint startAddress, int totalMemorySize)
@@ -107,6 +104,7 @@ namespace STROOP.Managers
 
         private string FormatValues(byte[] bytes, Type type)
         {
+            return type.ToString();
             StringBuilder builder = new StringBuilder();
             for (int i = 0; i < bytes.Length; i++)
             {
