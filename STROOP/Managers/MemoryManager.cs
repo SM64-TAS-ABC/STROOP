@@ -66,7 +66,9 @@ namespace STROOP.Managers
             Type type = TypeUtilities.StringToType[(string)_comboBoxMemoryTypes.SelectedItem];
             _richTextBoxMemoryAddresses.Text = FormatAddresses(Address.Value, (int)ObjectConfig.StructSize);
             _richTextBoxMemoryBytes.Text = FormatBytes(bytes, littleEndian);
-            _richTextBoxMemoryValues.Text = FormatValues(bytes, type, littleEndian);
+
+            List<(int, int)> valuePositions;
+            _richTextBoxMemoryValues.Text = FormatValues(bytes, type, littleEndian, out valuePositions);
         }
 
         private string FormatAddresses(uint startAddress, int totalMemorySize)
@@ -107,7 +109,7 @@ namespace STROOP.Managers
             return builder.ToString();
         }
 
-        private string FormatValues(byte[] bytes, Type type, bool littleEndian)
+        private string FormatValues(byte[] bytes, Type type, bool littleEndian, out List<(int, int)> valuePositions)
         {
             int typeSize = TypeUtilities.TypeSize[type];
             List<string> stringList = new List<string>();
@@ -132,6 +134,21 @@ namespace STROOP.Managers
                 string newString = oldString.PadLeft(maxLength, ' ');
                 stringList[index] = newString;
             });
+
+            valuePositions = new List<(int, int)>();
+            int totalLength = 0;
+            for (int i = 0; i < stringList.Count; i++)
+            {
+                string stringValue = stringList[i];
+                int stringLength = stringValue.Length;
+                totalLength += stringLength;
+                if (i % 2 == 1)
+                {
+                    int trimmedLenfth = stringValue.Trim().Length;
+                    (int position, int length) entry = (totalLength - trimmedLenfth, trimmedLenfth);
+                    valuePositions.Add(entry);
+                }
+            }
 
             StringBuilder builder = new StringBuilder();
             stringList.ForEach(stringValue => builder.Append(stringValue));

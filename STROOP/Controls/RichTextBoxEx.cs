@@ -248,5 +248,11 @@ namespace STROOP.Controls
 			Marshal.FreeCoTaskMem(lpar);
 			return state;
 		}
+
+        public void ColorText(int index, int length, Color color)
+        {
+            this.Select(index, length);
+            this.SelectionColor = color;
+        }
 	}
 }
