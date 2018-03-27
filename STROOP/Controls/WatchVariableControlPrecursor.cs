@@ -15,16 +15,16 @@ namespace STROOP.Controls
 {
     public class WatchVariableControlPrecursor
     {
-        private readonly string _name;
-        private readonly WatchVariable _watchVar;
-        private readonly WatchVariableSubclass _subclass;
-        private readonly Color? _backgroundColor;
-        private readonly int? _roundingLimit;
-        private readonly bool? _useHex;
-        private readonly bool? _invertBool;
-        private readonly WatchVariableCoordinate? _coordinate;
-        private readonly List<VariableGroup> _groupList;
-        private readonly List<uint> _fixedAddresses;
+        public readonly string Name;
+        public readonly WatchVariable WatchVar;
+        public readonly WatchVariableSubclass Subclass;
+        public readonly Color? BackgroundColor;
+        public readonly int? RoundingLimit;
+        public readonly bool? UseHex;
+        public readonly bool? InvertBool;
+        public readonly WatchVariableCoordinate? Coordinate;
+        public readonly List<VariableGroup> GroupList;
+        public readonly List<uint> FixedAddresses;
 
         public WatchVariableControlPrecursor(
             string name,
@@ -38,16 +38,16 @@ namespace STROOP.Controls
             List<VariableGroup> groupList,
             List<uint> fixedAddresses = null)
         {
-            _name = name;
-            _watchVar = watchVar;
-            _subclass = subclass;
-            _backgroundColor = backgroundColor;
-            _roundingLimit = roundingLimit;
-            _useHex = useHex;
-            _invertBool = invertBool;
-            _coordinate = coordinate;
-            _groupList = groupList;
-            _fixedAddresses = fixedAddresses;
+            Name = name;
+            WatchVar = watchVar;
+            Subclass = subclass;
+            BackgroundColor = backgroundColor;
+            RoundingLimit = roundingLimit;
+            UseHex = useHex;
+            InvertBool = invertBool;
+            Coordinate = coordinate;
+            GroupList = groupList;
+            FixedAddresses = fixedAddresses;
         }
 
         public WatchVariableControlPrecursor(XElement element)
@@ -63,7 +63,7 @@ namespace STROOP.Controls
             uint? mask = element.Attribute(XName.Get("mask")) != null ?
                 (uint?)ParsingUtilities.ParseHex(element.Attribute(XName.Get("mask")).Value) : null;
 
-            _watchVar = 
+            WatchVar = 
                 new WatchVariable(
                     typeName,
                     specialType,
@@ -74,23 +74,23 @@ namespace STROOP.Controls
                     offsetDefault,
                     mask);
 
-            _name = element.Value;
-            _subclass = WatchVariableUtilities.GetSubclass(element.Attribute(XName.Get("subclass"))?.Value);
-            _groupList = WatchVariableUtilities.ParseVariableGroupList(element.Attribute(XName.Get("groupList"))?.Value);
-            _backgroundColor = (element.Attribute(XName.Get("color")) != null) ?
+            Name = element.Value;
+            Subclass = WatchVariableUtilities.GetSubclass(element.Attribute(XName.Get("subclass"))?.Value);
+            GroupList = WatchVariableUtilities.ParseVariableGroupList(element.Attribute(XName.Get("groupList"))?.Value);
+            BackgroundColor = (element.Attribute(XName.Get("color")) != null) ?
                 ColorUtilities.GetColorFromString(element.Attribute(XName.Get("color")).Value) : (Color?)null;
-            _roundingLimit = (element.Attribute(XName.Get("round")) != null) ?
+            RoundingLimit = (element.Attribute(XName.Get("round")) != null) ?
                 ParsingUtilities.ParseInt(element.Attribute(XName.Get("round")).Value) : (int?)null;
-            _useHex = (element.Attribute(XName.Get("useHex")) != null) ?
+            UseHex = (element.Attribute(XName.Get("useHex")) != null) ?
                 bool.Parse(element.Attribute(XName.Get("useHex")).Value) : (bool?)null;
-            _invertBool = element.Attribute(XName.Get("invertBool")) != null ?
+            InvertBool = element.Attribute(XName.Get("invertBool")) != null ?
                 bool.Parse(element.Attribute(XName.Get("invertBool")).Value) : (bool?)null;
-            _coordinate = element.Attribute(XName.Get("coord")) != null ?
+            Coordinate = element.Attribute(XName.Get("coord")) != null ?
                 WatchVariableUtilities.GetCoordinate(element.Attribute(XName.Get("coord")).Value) : (WatchVariableCoordinate?)null;
-            _fixedAddresses = element.Attribute(XName.Get("fixed")) != null ?
+            FixedAddresses = element.Attribute(XName.Get("fixed")) != null ?
                 ParsingUtilities.ParseHexList(element.Attribute(XName.Get("fixed")).Value) : null;
 
-            if (_subclass == WatchVariableSubclass.Angle && specialType != null)
+            if (Subclass == WatchVariableSubclass.Angle && specialType != null)
             {
                 if (typeName != "ushort" && typeName != "short" && typeName != "uint" && typeName != "int")
                 {
@@ -98,22 +98,22 @@ namespace STROOP.Controls
                 }
             }
 
-            if (_useHex.HasValue && (_subclass == WatchVariableSubclass.String))
+            if (UseHex.HasValue && (Subclass == WatchVariableSubclass.String))
             {
                 throw new ArgumentOutOfRangeException("useHex cannot be used with var subclass String");
             }
 
-            if ((_useHex == true) && (_subclass == WatchVariableSubclass.Object))
+            if ((UseHex == true) && (Subclass == WatchVariableSubclass.Object))
             {
                 throw new ArgumentOutOfRangeException("useHex as true is redundant with var subclass Object");
             }
 
-            if (_invertBool.HasValue && (_subclass != WatchVariableSubclass.Boolean))
+            if (InvertBool.HasValue && (Subclass != WatchVariableSubclass.Boolean))
             {
                 throw new ArgumentOutOfRangeException("invertBool must be used with var subclass Boolean");
             }
 
-            if (_coordinate.HasValue && (_subclass == WatchVariableSubclass.String))
+            if (Coordinate.HasValue && (Subclass == WatchVariableSubclass.String))
             {
                 throw new ArgumentOutOfRangeException("coordinate cannot be used with var subclass String");
             }
@@ -124,81 +124,81 @@ namespace STROOP.Controls
         {
             return new WatchVariableControl(
                 this,
-                newName ?? _name,
-                _watchVar,
-                _subclass,
-                newColor ?? _backgroundColor,
-                _roundingLimit,
-                _useHex,
-                _invertBool,
-                _coordinate,
-                _groupList,
-                newFixedAddresses ?? _fixedAddresses);
+                newName ?? Name,
+                WatchVar,
+                Subclass,
+                newColor ?? BackgroundColor,
+                RoundingLimit,
+                UseHex,
+                InvertBool,
+                Coordinate,
+                GroupList,
+                newFixedAddresses ?? FixedAddresses);
         }
 
         public XElement ToXML(Color? newColor = null, string newName = null, List<uint> newFixedAddresses = null)
         {
-            string name = newName ?? _name;
+            string name = newName ?? Name;
             XElement root = new XElement("Data", name);
 
-            if (_groupList.Count > 0)
-                root.Add(new XAttribute("groupList", String.Join(",", _groupList)));
+            if (GroupList.Count > 0)
+                root.Add(new XAttribute("groupList", String.Join(",", GroupList)));
 
-            root.Add(new XAttribute("base", _watchVar.BaseAddressType.ToString()));
+            root.Add(new XAttribute("base", WatchVar.BaseAddressType.ToString()));
 
-            if (_watchVar.OffsetDefault != null)
+            if (WatchVar.OffsetDefault != null)
                 root.Add(new XAttribute(
                     "offset",
-                    String.Format("0x{0:X}", _watchVar.OffsetDefault.Value)));
+                    String.Format("0x{0:X}", WatchVar.OffsetDefault.Value)));
 
-            if (_watchVar.OffsetUS != null)
+            if (WatchVar.OffsetUS != null)
                 root.Add(new XAttribute(
                     "offsetUS",
-                    String.Format("0x{0:X}", _watchVar.OffsetUS.Value)));
+                    String.Format("0x{0:X}", WatchVar.OffsetUS.Value)));
 
-            if (_watchVar.OffsetJP != null)
+            if (WatchVar.OffsetJP != null)
                 root.Add(new XAttribute(
                     "offsetJP",
-                    String.Format("0x{0:X}", _watchVar.OffsetJP.Value)));
+                    String.Format("0x{0:X}", WatchVar.OffsetJP.Value)));
 
-            if (_watchVar.OffsetPAL != null)
+            if (WatchVar.OffsetPAL != null)
                 root.Add(new XAttribute(
                     "offsetPAL",
-                    String.Format("0x{0:X}", _watchVar.OffsetPAL.Value)));
+                    String.Format("0x{0:X}", WatchVar.OffsetPAL.Value)));
 
-            if (_watchVar.MemoryTypeName != null)
-                root.Add(new XAttribute("type", _watchVar.MemoryTypeName));
+            if (WatchVar.MemoryTypeName != null)
+                root.Add(new XAttribute("type", WatchVar.MemoryTypeName));
 
-            if (_watchVar.SpecialType != null)
-                root.Add(new XAttribute("specialType", _watchVar.SpecialType));
+            if (WatchVar.SpecialType != null)
+                root.Add(new XAttribute("specialType", WatchVar.SpecialType));
 
-            if (_watchVar.Mask != null)
+            if (WatchVar.Mask != null)
                 root.Add(new XAttribute(
                     "mask",
-                    String.Format("0x{0:X" + _watchVar.NibbleCount + "}", _watchVar.Mask.Value)));
+                    String.Format("0x{0:X" + WatchVar.NibbleCount + "}", WatchVar.Mask.Value)));
 
-            if (_subclass != WatchVariableSubclass.Number)
-                root.Add(new XAttribute("subclass", _subclass.ToString()));
+            if (Subclass != WatchVariableSubclass.Number)
+                root.Add(new XAttribute("subclass", Subclass.ToString()));
 
-            if (_roundingLimit.HasValue)
-                root.Add(new XAttribute("round", _roundingLimit.Value.ToString()));
+            if (RoundingLimit.HasValue)
+                root.Add(new XAttribute("round", RoundingLimit.Value.ToString()));
 
-            if (_invertBool.HasValue)
-                root.Add(new XAttribute("invertBool", _invertBool.Value.ToString().ToLower()));
+            if (InvertBool.HasValue)
+                root.Add(new XAttribute("invertBool", InvertBool.Value.ToString().ToLower()));
 
-            if (_useHex.HasValue)
-                root.Add(new XAttribute("useHex", _useHex.Value.ToString().ToLower()));
+            if (UseHex.HasValue)
+                root.Add(new XAttribute("useHex", UseHex.Value.ToString().ToLower()));
 
-            if (_coordinate.HasValue)
-                root.Add(new XAttribute("coord", _coordinate.Value.ToString()));
+            if (Coordinate.HasValue)
+                root.Add(new XAttribute("coord", Coordinate.Value.ToString()));
 
-            Color? color = newColor ?? _backgroundColor;
+            Color? color = newColor ?? BackgroundColor;
             if (color.HasValue)
                 root.Add(new XAttribute(
                     "color",
                     ColorUtilities.ConvertColorToString(color.Value)));
 
-            List<uint> fixedAddresses = newFixedAddresses ?? _fixedAddresses;
+            List<uint> fixedAddresses = newFixedAddresses ?? FixedAddresses;
             if (fixedAddresses != null)
                 root.Add(new XAttribute("fixed", String.Join(
                     ",", fixedAddresses.ConvertAll(

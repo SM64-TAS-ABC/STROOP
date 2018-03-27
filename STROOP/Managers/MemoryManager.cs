@@ -27,7 +27,9 @@ namespace STROOP.Managers
         public uint? Address { get; private set; }
         private static readonly int _memorySize = (int)ObjectConfig.StructSize;
 
-        public MemoryManager(TabPage tabControl)
+        private bool[] _objectDataBools;
+
+        public MemoryManager(TabPage tabControl, List<WatchVariableControlPrecursor> objectData)
         {
             _textBoxMemoryStartAddress = tabControl.Controls["textBoxMemoryStartAddress"] as BetterTextbox;
             _buttonMemoryButtonGo = tabControl.Controls["buttonMemoryButtonGo"] as Button;
@@ -43,6 +45,23 @@ namespace STROOP.Managers
             _buttonMemoryButtonGo.Click += (sender, e) => TryToSetAddressAndUpdateMemory();
 
             _comboBoxMemoryTypes.DataSource = TypeUtilities.SimpleTypeList;
+
+            _objectDataBools = new bool[ObjectConfig.StructSize];
+            foreach (WatchVariableControlPrecursor precursor in objectData)
+            {
+                WatchVariable watchVar = precursor.WatchVar;
+                if (watchVar.BaseAddressType != BaseAddressTypeEnum.Object) continue;
+                if (watchVar.IsSpecial) continue;
+                if (watchVar.Mask != null) continue;
+
+                uint offset = watchVar.Offset;
+                int size = watchVar.ByteCount.Value;
+
+                for (int i = 0; i < size; i++)
+                {
+                    _objectDataBools[offset + i] = true;
+                }
+            }
 
             Address = null;
         }
