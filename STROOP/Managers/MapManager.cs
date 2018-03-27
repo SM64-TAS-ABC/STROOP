@@ -28,8 +28,6 @@ namespace STROOP.Managers
         private MapGraphics _graphics;
         private MapAssociations _mapAssoc;
 
-
-
         #region Objects
         private MapLevelObject _mapObjLevel;
         private MapMarioObject _mapObjMario = new MapMarioObject();
@@ -38,6 +36,7 @@ namespace STROOP.Managers
         private MapWallTriObject _mapObjWallTri = new MapWallTriObject();
         private MapFloorTriObject _mapObjFloorTri = new MapFloorTriObject();
         private MapCeilingTriObject _mapObjCeilTri = new MapCeilingTriObject();
+        private List<MapSm64Object> _mapSm64Objs = new List<MapSm64Object>();
         #endregion
 
         public MapManager(MapAssociations mapAssoc, MapGui mapGui)
@@ -89,6 +88,7 @@ namespace STROOP.Managers
 
             // Test
             _mapObjLevel = new MapLevelObject(_mapAssoc);
+            _mapSm64Objs = Enumerable.Range(0, ObjectSlotsConfig.MaxSlots).Select(i => new MapSm64Object(i)).ToList();
             _controller.AddMapObject(_mapObjLevel);
             _controller.AddMapObject(_mapObjMario);
             _controller.AddMapObject(_mapObjHolp);
@@ -96,6 +96,7 @@ namespace STROOP.Managers
             _controller.AddMapObject(_mapObjWallTri);
             _controller.AddMapObject(_mapObjFloorTri);
             _controller.AddMapObject(_mapObjCeilTri);
+            _mapSm64Objs.ForEach(o => _controller.AddMapObject(o));
         }
 
         private void TabControlView_SelectedIndexChanged(object sender, EventArgs e)

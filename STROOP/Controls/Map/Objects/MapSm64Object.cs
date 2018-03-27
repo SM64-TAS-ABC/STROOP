@@ -14,18 +14,31 @@ namespace STROOP.Controls.Map.Objects
 {
     class MapSm64Object : MapIconObject
     {
+        int _slotIndex;
         protected override MapGraphicsIconItem _iconGraphics { get; set; }
+        Bitmap _lastGraphic = null;
 
-        public MapSm64Object()
+        public MapSm64Object(int slotIndex)
         {
-            _iconGraphics = new MapGraphicsIconItem(Config.ObjectAssociations.MarioMapImage as Bitmap);
+            _iconGraphics = new MapGraphicsIconItem(null);
+            _slotIndex = slotIndex;
         }
-
 
         public override void Update()
         {
-            _iconGraphics.Rotation = (float) MoreMath.AngleUnitsToRadians(DataModels.Mario.FacingYaw);
-            _iconGraphics.Position = new OpenTK.Vector3(DataModels.Mario.X, DataModels.Mario.Y, DataModels.Mario.Z);
+            ObjectDataModel obj = DataModels.Objects[_slotIndex];
+            if (obj == null)
+                return;
+
+            Bitmap currentGraphics = Config.ObjectAssociations.GetObjectMapImage(obj.BehaviorCriteria) as Bitmap;
+            if (currentGraphics != _lastGraphic)
+            {
+                _lastGraphic = currentGraphics;
+                _iconGraphics.ChangeImage(currentGraphics);
+            }
+
+            _iconGraphics.Rotation = (float) MoreMath.AngleUnitsToRadians(obj.FacingYaw);
+            _iconGraphics.Position = new OpenTK.Vector3(obj.X, obj.Y, obj.Z);
         }
     }
 }
