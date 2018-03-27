@@ -31,7 +31,11 @@ namespace STROOP.Controls.Map.Graphics
 
         public Vector3 GetPositionOnViewFromCoordinate(Vector3 pos)
         {
-            return Vector4.Transform(new Vector4(pos, 1), _graphics.Camera.Matrix).Xyz;
+            Vector4 vec = Vector4.Transform(new Vector4(pos, 1), _graphics.Camera.Matrix);
+            vec.X /= vec.W;
+            vec.Y /= vec.W;
+            vec.Z = 0;
+            return vec.Xyz;
         }
 
         public int LoadTexture(Bitmap bmp)
