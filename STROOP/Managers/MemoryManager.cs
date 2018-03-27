@@ -25,7 +25,7 @@ namespace STROOP.Managers
         private RichTextBoxEx _richTextBoxMemoryValues;
 
         public uint? Address { get; private set; }
-        private static readonly int _memorySize = 32;// (int)ObjectConfig.StructSize;
+        private static readonly int _memorySize = (int)ObjectConfig.StructSize;
 
         public MemoryManager(TabPage tabControl)
         {
@@ -75,7 +75,7 @@ namespace STROOP.Managers
             {
                 int pos = entry.Item1;
                 int length = entry.Item2;
-                //_richTextBoxMemoryValues.SetColor(pos, length, Color.Blue);
+                _richTextBoxMemoryValues.SetBackColor(pos, length, Color.LightPink);
             });
         }
 

@@ -249,10 +249,16 @@ namespace STROOP.Controls
 			return state;
 		}
 
-        public void SetColor(int index, int length, Color color)
+        public void SetTextColor(int index, int length, Color color)
         {
             this.Select(index, length);
             this.SelectionColor = color;
+        }
+
+        public void SetBackColor(int index, int length, Color color)
+        {
+            this.Select(index, length);
+            this.SelectionBackColor = color;
         }
 	}
 }
