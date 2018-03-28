@@ -1,4 +1,5 @@
 ﻿using STROOP.Controls;
+using STROOP.Models;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
@@ -25,8 +26,35 @@ namespace STROOP.Managers
         private readonly RichTextBoxEx _richTextBoxMemoryValues;
 
         private readonly bool[] _objectDataBools;
+        private bool[] _objectSpecificDataBools;
 
         public uint? Address { get; private set; }
+
+        private BehaviorCriteria? _behavior;
+        private BehaviorCriteria? Behavior
+        {
+            get
+            {
+                return _behavior;
+            }
+            set
+            {
+                if (value == _behavior) return;
+                _behavior = value;
+                if (_behavior.HasValue)
+                {
+                    List<WatchVariableControlPrecursor> precursors =
+                        Config.ObjectAssociations.GetWatchVarControls(_behavior.Value)
+                            .ConvertAll(control => control.WatchVarPrecursor);
+                    _objectSpecificDataBools = ConvertPrecursorsToBoolArray(precursors);
+                }
+                else
+                {
+                    _objectSpecificDataBools = ConvertPrecursorsToBoolArray(null);
+                }
+            }
+        }
+
         private static readonly int _memorySize = (int)ObjectConfig.StructSize;
 
         public MemoryManager(TabPage tabControl, List<WatchVariableControlPrecursor> objectData)
@@ -46,8 +74,17 @@ namespace STROOP.Managers
 
             _comboBoxMemoryTypes.DataSource = TypeUtilities.SimpleTypeList;
 
-            _objectDataBools = new bool[ObjectConfig.StructSize];
-            foreach (WatchVariableControlPrecursor precursor in objectData)
+            _objectDataBools = ConvertPrecursorsToBoolArray(objectData);
+
+            Address = null;
+            _behavior = null;
+        }
+
+        private bool[] ConvertPrecursorsToBoolArray(List<WatchVariableControlPrecursor> precursors)
+        {
+            bool[] boolArray = new bool[ObjectConfig.StructSize];
+            if (precursors == null) return boolArray;
+            foreach (WatchVariableControlPrecursor precursor in precursors)
             {
                 WatchVariable watchVar = precursor.WatchVar;
                 if (watchVar.BaseAddressType != BaseAddressTypeEnum.Object) continue;
@@ -59,11 +96,10 @@ namespace STROOP.Managers
 
                 for (int i = 0; i < size; i++)
                 {
-                    _objectDataBools[offset + i] = true;
+                    boolArray[offset + i] = true;
                 }
             }
-
-            Address = null;
+            return boolArray;
         }
 
         private void TryToSetAddressAndUpdateMemory()
@@ -109,6 +145,9 @@ namespace STROOP.Managers
         private void UpdateMemory()
         {
             if (!Address.HasValue) return;
+
+            Behavior = new ObjectDataModel(Address.Value).BehaviorCriteria;
+
             byte[] bytes = Config.Stream.ReadRam(Address.Value, _memorySize);
             bool littleEndian = _checkBoxMemoryLittleEndian.Checked;
             Type type = TypeUtilities.StringToType[(string)_comboBoxMemoryTypes.SelectedItem];
@@ -120,8 +159,15 @@ namespace STROOP.Managers
             valueTexts.ForEach(valueText =>
             {
                 if (valueText.OverlapsData(_objectDataBools, littleEndian))
+                {
                     _richTextBoxMemoryValues.SetBackColor(
                         valueText.StringIndex, valueText.StringSize, Color.LightPink);
+                }
+                else if (valueText.OverlapsData(_objectSpecificDataBools, littleEndian))
+                {
+                    _richTextBoxMemoryValues.SetBackColor(
+                        valueText.StringIndex, valueText.StringSize, Color.LightGreen);
+                }
             });
         }
 

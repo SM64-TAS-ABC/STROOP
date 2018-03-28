@@ -19,7 +19,7 @@ namespace STROOP.Controls
     public partial class WatchVariableControl : UserControl
     {
         // Main objects
-        private readonly WatchVariableControlPrecursor _watchVarPrecursor;
+        public readonly WatchVariableControlPrecursor WatchVarPrecursor;
         private readonly WatchVariableWrapper _watchVarWrapper;
         public readonly List<VariableGroup> GroupList;
 
@@ -176,7 +176,7 @@ namespace STROOP.Controls
             _nameTextBox.Text = name;
 
             // Store the precursor
-            _watchVarPrecursor = watchVarPrecursor;
+            WatchVarPrecursor = watchVarPrecursor;
 
             // Initialize main fields
             _varName = name;
@@ -591,7 +591,7 @@ namespace STROOP.Controls
                 if (useIndividualAddresses && addressesLists.Count > 1) name += " " + (i + 1);
                 List<uint> constructorAddressList = useFixedAddress ? addressesLists[i] : null;
                 WatchVariableControl newControl =
-                    _watchVarPrecursor.CreateWatchVariableControl(
+                    WatchVarPrecursor.CreateWatchVariableControl(
                         null, name, constructorAddressList);
                 Config.CustomManager.AddVariable(newControl);
             }
@@ -648,9 +648,9 @@ namespace STROOP.Controls
         {
             Color? color = _baseColor == DEFAULT_COLOR ? (Color?)null : _baseColor;
             if (useCurrentState)
-                return _watchVarPrecursor.ToXML(color, VarName, FixedAddressList);
+                return WatchVarPrecursor.ToXML(color, VarName, FixedAddressList);
             else
-                return _watchVarPrecursor.ToXML();
+                return WatchVarPrecursor.ToXML();
         }
 
         public List<string> GetVarInfo()
@@ -660,7 +660,7 @@ namespace STROOP.Controls
 
         public override string ToString()
         {
-            return _watchVarPrecursor.ToString();
+            return WatchVarPrecursor.ToString();
         }
     }
 }
