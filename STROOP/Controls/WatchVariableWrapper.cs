@@ -272,7 +272,6 @@ namespace STROOP.Controls
             bool handleRounding = true,
             bool handleFormatting = true)
         {
-            // TODO: fix this object to string conversion
             value = HandleAngleConverting(value);
             if (handleRounding) value = HandleRounding(value);
             value = HandleAngleRoundingOut(value);
@@ -287,8 +286,7 @@ namespace STROOP.Controls
             value = UnconvertValue(value);
             bool success = _watchVar.SetValue(value, addresses);
             if (success && GetLockedBool(addresses))
-                // TODO fix object to string conversion
-                WatchVariableLockManager.UpdateLockValues(_watchVar, value.ToString(), addresses);
+                WatchVariableLockManager.UpdateLockValues(_watchVar, value, addresses);
             return success;
         }
 

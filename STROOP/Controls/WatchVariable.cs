@@ -158,8 +158,7 @@ namespace STROOP.Controls
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
             bool success = addressList.ConvertAll(
-                // TODO: fix object to string conversion
-                address => _setterFunction(value.ToString(), address))
+                address => _setterFunction(value, address))
                     .Aggregate(true, (b1, b2) => b1 && b2);
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
