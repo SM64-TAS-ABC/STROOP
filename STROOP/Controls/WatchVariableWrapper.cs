@@ -274,13 +274,13 @@ namespace STROOP.Controls
         {
             // TODO: fix this object to string conversion
             string stringValue = value.ToString();
-            value = HandleAngleConverting(stringValue);
-            if (handleRounding) value = HandleRounding(stringValue);
-            value = HandleAngleRoundingOut(stringValue);
-            value = HandleNegating(stringValue);
-            if (handleFormatting) value = HandleHexDisplaying(stringValue);
-            if (handleFormatting) value = HandleObjectDisplaying(stringValue);
-            return value;
+            stringValue = HandleAngleConverting(stringValue);
+            if (handleRounding) stringValue = HandleRounding(stringValue);
+            stringValue = HandleAngleRoundingOut(stringValue);
+            stringValue = HandleNegating(stringValue);
+            if (handleFormatting) stringValue = HandleHexDisplaying(stringValue);
+            if (handleFormatting) stringValue = HandleObjectDisplaying(stringValue);
+            return stringValue;
         }
 
         public bool SetValue(string value, List<uint> addresses = null)
