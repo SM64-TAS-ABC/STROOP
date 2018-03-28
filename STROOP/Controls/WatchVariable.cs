@@ -164,7 +164,7 @@ namespace STROOP.Controls
             return success;
         }
 
-        public bool SetValues(List<string> values, List<uint> addresses = null)
+        public bool SetValues(List<object> values, List<uint> addresses = null)
         {
             List<uint> addressList = addresses ?? AddressList;
             if (addressList.Count == 0) return false;

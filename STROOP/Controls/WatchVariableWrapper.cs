@@ -322,28 +322,25 @@ namespace STROOP.Controls
             if (!changeValueNullable.HasValue) return false;
             double changeValue = changeValueNullable.Value;
 
-            List<object> currentValuesString = _watchVar.GetValues(addresses);
+            List<object> currentValues = _watchVar.GetValues(addresses);
             List<double?> currentValuesDoubleNullable =
-                currentValuesString.ConvertAll(
-                    currentStringValue => ParsingUtilities.ParseDoubleNullable(currentStringValue));
-            List<string> newValuesString = currentValuesDoubleNullable.ConvertAll(currentValueDoubleNullable =>
+                currentValues.ConvertAll(
+                    currentValue => ParsingUtilities.ParseDoubleNullable(currentValue));
+            List<object> newValues = currentValuesDoubleNullable.ConvertAll(currentValueDoubleNullable =>
             {
                 if (!currentValueDoubleNullable.HasValue) return null;
                 double currentValueDouble = currentValueDoubleNullable.Value;
-                string currentValueString = currentValueDouble.ToString();
-                // TODO: fix this object to string conversion
-                string convertedValueString = ConvertValue(currentValueDouble.ToString(), false, false).ToString();
-                double convertedValueDouble = ParsingUtilities.ParseDouble(convertedValueString);
-                double modifiedValueDouble = convertedValueDouble + changeValue * (add ? +1 : -1);
-                string modifiedValueString = modifiedValueDouble.ToString();
-                // TODO: fix object to string conversion
-                string unconvertedValueString = UnconvertValue(modifiedValueString).ToString();
-                return unconvertedValueString;
+                object convertedValue = ConvertValue(currentValueDouble, false, false);
+                // TODO tyler fix this for float logic
+                double convertedValueDouble = ParsingUtilities.ParseDouble(convertedValue);
+                double modifiedValue = convertedValueDouble + changeValue * (add ? +1 : -1);
+                object unconvertedValue = UnconvertValue(modifiedValue);
+                return unconvertedValue;
             });
 
-            bool success = _watchVar.SetValues(newValuesString, addresses);
+            bool success = _watchVar.SetValues(newValues, addresses);
             if (success && GetLockedBool(addresses))
-                WatchVariableLockManager.UpdateLockValues(_watchVar, newValuesString, addresses);
+                WatchVariableLockManager.UpdateLockValues(_watchVar, newValues, addresses);
             return success;
         }
 
