@@ -34,7 +34,7 @@ namespace STROOP.Controls
         public readonly uint? Mask;
 
         private readonly Func<uint, object> _getterFunction;
-        private readonly Func<string, uint, bool> _setterFunction;
+        private readonly Func<object, uint, bool> _setterFunction;
 
         public bool IsSpecial { get { return SpecialType != null; } }
 
@@ -134,7 +134,7 @@ namespace STROOP.Controls
                 {
                     return Config.Stream.GetValue(MemoryType, address, UseAbsoluteAddressing, Mask);
                 };
-                _setterFunction = (string value, uint address) =>
+                _setterFunction = (object value, uint address) =>
                 {
                     return Config.Stream.SetValueRoundingWrapping(
                         MemoryType, value, address, UseAbsoluteAddressing, Mask);
