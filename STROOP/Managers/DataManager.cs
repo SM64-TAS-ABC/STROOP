@@ -69,7 +69,7 @@ namespace STROOP.Managers
             _variablePanel.EnableCustomVariableFunctionality();
         }
 
-        public virtual List<string> GetCurrentVariableValues(bool useRounding = false)
+        public virtual List<object> GetCurrentVariableValues(bool useRounding = false)
         {
             return _variablePanel.GetCurrentVariableValues(useRounding);
         }

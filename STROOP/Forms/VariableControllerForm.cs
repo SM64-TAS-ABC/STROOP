@@ -36,7 +36,7 @@ namespace STROOP.Forms
             _textBoxVarName.Text = _varName;
             _buttonAdd.Click += (s, e) => _watchVarWrapper.AddValue(_textBoxAddSubtract.Text, true, _fixedAddressList);
             _buttonSubtract.Click += (s, e) => _watchVarWrapper.AddValue(_textBoxAddSubtract.Text, false, _fixedAddressList);
-            _buttonGet.Click += (s, e) => { _textBoxGetSet.Text = _watchVarWrapper.GetValue(true, true, _fixedAddressList); };
+            _buttonGet.Click += (s, e) => { _textBoxGetSet.Text = _watchVarWrapper.GetValue(true, true, _fixedAddressList).ToString(); };
             _buttonSet.Click += (s, e) => _watchVarWrapper.SetValue(_textBoxGetSet.Text, _fixedAddressList);
             _textBoxGetSet.AddEnterAction(() => _watchVarWrapper.SetValue(_textBoxGetSet.Text, _fixedAddressList));
             _checkBoxFixAddress.Click += (s, e) => ToggleFixedAddress();
@@ -51,7 +51,7 @@ namespace STROOP.Forms
 
         private void UpdateForm()
         {
-            _textBoxCurrentValue.Text = _watchVarWrapper.GetValue(true, true, _fixedAddressList);
+            _textBoxCurrentValue.Text = _watchVarWrapper.GetValue(true, true, _fixedAddressList).ToString();
             _checkBoxLock.CheckState = _watchVarWrapper.GetLockedCheckState(_fixedAddressList);
         }
         

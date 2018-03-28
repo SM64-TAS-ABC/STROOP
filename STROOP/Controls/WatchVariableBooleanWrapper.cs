@@ -44,7 +44,7 @@ namespace STROOP.Controls
             _contextMenuStrip.AddToBeginningList(itemDisplayAsInverted);
         }
 
-        protected override CheckState ConvertValueToCheckState(string value)
+        protected override CheckState ConvertValueToCheckState(object value)
         {
             double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(value);
             if (!doubleValueNullable.HasValue) return CheckState.Unchecked;

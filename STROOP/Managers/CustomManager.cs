@@ -25,7 +25,7 @@ namespace STROOP.Managers
         private Label _labelCustomRecordingFrequencyValue;
         private Label _labelCustomRecordingGapsValue;
 
-        private Dictionary<int, List<string>> _recordedValues;
+        private Dictionary<int, List<object>> _recordedValues;
         private int? _lastTimer;
         private int _numGaps;
         private int _recordFreq;
@@ -74,7 +74,7 @@ namespace STROOP.Managers
 
             _labelCustomRecordingGapsValue = splitContainerCustomControls.Panel1.Controls["labelCustomRecordingGapsValue"] as Label;
 
-            _recordedValues = new Dictionary<int, List<string>>();
+            _recordedValues = new Dictionary<int, List<object>>();
             _lastTimer = null;
             _numGaps = 0;
             _recordFreq = 1;
@@ -245,7 +245,7 @@ namespace STROOP.Managers
 
                 if (!alreadyContainsKey || recordEvenIfAlreadyHave)
                 {
-                    List<string> currentValues = GetCurrentVariableValues();
+                    List<object> currentValues = GetCurrentVariableValues();
                     _recordedValues[currentTimer] = currentValues;
                 }
             }

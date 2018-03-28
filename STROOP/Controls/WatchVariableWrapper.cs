@@ -111,7 +111,7 @@ namespace STROOP.Controls
             _itemRemoveAllLocks.Click += (sender, e) => WatchVariableLockManager.RemoveAllLocks();
 
             ToolStripMenuItem itemCopyUnrounded = new ToolStripMenuItem("Copy");
-            itemCopyUnrounded.Click += (sender, e) => Clipboard.SetText(GetValue(false));
+            itemCopyUnrounded.Click += (sender, e) => Clipboard.SetText(GetValue(false).ToString());
 
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
             itemPaste.Click += (sender, e) => _watchVarControl.SetValue(Clipboard.GetText());
@@ -254,30 +254,32 @@ namespace STROOP.Controls
 
 
 
-        public string GetValue(
+        public object GetValue(
             bool handleRounding = true,
             bool handleFormatting = true,
             List<uint> addresses = null)
         {
-            List<string> values = _watchVar.GetValues(addresses);
-            (bool meaningfulValue, string value) = CombineValues(values);
+            List<object> values = _watchVar.GetValues(addresses);
+            (bool meaningfulValue, object value) = CombineValues(values);
             if (!meaningfulValue) return value;
 
             value = ConvertValue(value, handleRounding, handleFormatting);
             return value;
         }
 
-        private string ConvertValue(
-            string value,
+        private object ConvertValue(
+            object value,
             bool handleRounding = true,
             bool handleFormatting = true)
         {
-            value = HandleAngleConverting(value);
-            if (handleRounding) value = HandleRounding(value);
-            value = HandleAngleRoundingOut(value);
-            value = HandleNegating(value);
-            if (handleFormatting) value = HandleHexDisplaying(value);
-            if (handleFormatting) value = HandleObjectDisplaying(value);
+            // TODO: fix this object to string conversion
+            string stringValue = value.ToString();
+            value = HandleAngleConverting(stringValue);
+            if (handleRounding) value = HandleRounding(stringValue);
+            value = HandleAngleRoundingOut(stringValue);
+            value = HandleNegating(stringValue);
+            if (handleFormatting) value = HandleHexDisplaying(stringValue);
+            if (handleFormatting) value = HandleObjectDisplaying(stringValue);
             return value;
         }
 
@@ -300,7 +302,7 @@ namespace STROOP.Controls
 
         public CheckState GetCheckStateValue(List<uint> addresses = null)
         {
-            List<string> values = _watchVar.GetValues(addresses);
+            List<object> values = _watchVar.GetValues(addresses);
             List<CheckState> checkStates = values.ConvertAll(value => ConvertValueToCheckState(value));
             CheckState checkState = CombineCheckStates(checkStates);
             return checkState;
@@ -321,7 +323,7 @@ namespace STROOP.Controls
             if (!changeValueNullable.HasValue) return false;
             double changeValue = changeValueNullable.Value;
 
-            List<string> currentValuesString = _watchVar.GetValues(addresses);
+            List<object> currentValuesString = _watchVar.GetValues(addresses);
             List<double?> currentValuesDoubleNullable =
                 currentValuesString.ConvertAll(
                     currentStringValue => ParsingUtilities.ParseDoubleNullable(currentStringValue));
@@ -330,7 +332,8 @@ namespace STROOP.Controls
                 if (!currentValueDoubleNullable.HasValue) return null;
                 double currentValueDouble = currentValueDoubleNullable.Value;
                 string currentValueString = currentValueDouble.ToString();
-                string convertedValueString = ConvertValue(currentValueDouble.ToString(), false, false);
+                // TODO: fix this object to string conversion
+                string convertedValueString = ConvertValue(currentValueDouble.ToString(), false, false).ToString();
                 double convertedValueDouble = ParsingUtilities.ParseDouble(convertedValueString);
                 double modifiedValueDouble = convertedValueDouble + changeValue * (add ? +1 : -1);
                 string modifiedValueString = modifiedValueDouble.ToString();
@@ -388,10 +391,10 @@ namespace STROOP.Controls
 
 
 
-        protected (bool meaningfulValue, string stringValue) CombineValues(List<string> values)
+        protected (bool meaningfulValue, object value) CombineValues(List<object> values)
         {
             if (values.Count == 0) return (false, "(none)");
-            string firstValue = values[0];
+            object firstValue = values[0];
             for (int i = 1; i < values.Count; i++)
             {
                 if (values[i] != firstValue) return (false, "(multiple values)");
@@ -470,7 +473,7 @@ namespace STROOP.Controls
 
         // Boolean methods
 
-        protected virtual CheckState ConvertValueToCheckState(string value)
+        protected virtual CheckState ConvertValueToCheckState(object value)
         {
             return CheckState.Unchecked;
         }

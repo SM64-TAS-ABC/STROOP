@@ -9,12 +9,12 @@ namespace STROOP.Structs
 {
     public static class WatchVariableSpecialUtilities
     {
-        private readonly static Func<uint, string> DEFAULT_GETTER = (uint address) => "NOT IMPL";
+        private readonly static Func<uint, object> DEFAULT_GETTER = (uint address) => "NOT IMPL";
         private readonly static Func<string, uint, bool> DEFAULT_SETTER = (string value, uint address) => false;
 
-        public static (Func<uint, string> getter, Func<string, uint, bool> setter) CreateGetterSetterFunctions(string specialType)
+        public static (Func<uint, object> getter, Func<string, uint, bool> setter) CreateGetterSetterFunctions(string specialType)
         {
-            Func<uint, string> getterFunction = DEFAULT_GETTER;
+            Func<uint, object> getterFunction = DEFAULT_GETTER;
             Func<string, uint, bool> setterFunction = DEFAULT_SETTER;
 
             switch (specialType)

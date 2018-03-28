@@ -394,7 +394,7 @@ namespace STROOP.Controls
             }
         }
 
-        public List<string> GetCurrentVariableValues(bool useRounding)
+        public List<object> GetCurrentVariableValues(bool useRounding)
         {
             lock (_objectLock)
             {

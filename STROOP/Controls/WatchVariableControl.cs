@@ -434,7 +434,7 @@ namespace STROOP.Controls
         {
             if (!EditMode)
             {
-                if (_valueTextBox.Visible) _valueTextBox.Text = _watchVarWrapper.GetValue(true, true, FixedAddressList);
+                if (_valueTextBox.Visible) _valueTextBox.Text = _watchVarWrapper.GetValue(true, true, FixedAddressList).ToString();
                 if (_valueCheckBox.Visible) _valueCheckBox.CheckState = _watchVarWrapper.GetCheckStateValue(FixedAddressList);
             }
 
@@ -627,7 +627,7 @@ namespace STROOP.Controls
             }
         }
 
-        public string GetValue(bool useRounding)
+        public object GetValue(bool useRounding)
         {
             return _watchVarWrapper.GetValue(useRounding);
         }

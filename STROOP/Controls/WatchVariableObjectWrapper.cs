@@ -40,8 +40,8 @@ namespace STROOP.Controls
             ToolStripMenuItem itemSelectObject = new ToolStripMenuItem("Select Object");
             itemSelectObject.Click += (sender, e) =>
             {
-                string stringValue = GetValue(true, false);
-                uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(stringValue);
+                object value = GetValue(true, false);
+                uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(value);
                 if (!uintValueNullable.HasValue) return;
                 uint uintValue = uintValueNullable.Value;
                 Config.ObjectSlotsManager.SelectSlotByAddress(uintValue);

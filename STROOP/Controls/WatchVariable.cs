@@ -33,7 +33,7 @@ namespace STROOP.Controls
 
         public readonly uint? Mask;
 
-        private readonly Func<uint, string> _getterFunction;
+        private readonly Func<uint, object> _getterFunction;
         private readonly Func<string, uint, bool> _setterFunction;
 
         public bool IsSpecial { get { return SpecialType != null; } }
@@ -132,7 +132,7 @@ namespace STROOP.Controls
             {
                 _getterFunction = (uint address) =>
                 {
-                    return Config.Stream.GetValue(MemoryType, address, UseAbsoluteAddressing, Mask).ToString();
+                    return Config.Stream.GetValue(MemoryType, address, UseAbsoluteAddressing, Mask);
                 };
                 _setterFunction = (string value, uint address) =>
                 {
@@ -143,7 +143,7 @@ namespace STROOP.Controls
             }
         }
 
-        public List<string> GetValues(List<uint> addresses = null)
+        public List<object> GetValues(List<uint> addresses = null)
         {
             List<uint> addressList = addresses ?? AddressList;
             return addressList.ConvertAll(
@@ -185,7 +185,7 @@ namespace STROOP.Controls
         public List<WatchVariableLock> GetLocks(List<uint> addresses = null)
         {
             List<uint> addressList = addresses ?? AddressList;
-            List<string> values = GetValues(addressList);
+            List<object> values = GetValues(addressList);
             if (values.Count != addressList.Count) return new List<WatchVariableLock>();
 
             List<WatchVariableLock> locks = new List<WatchVariableLock>();
