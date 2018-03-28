@@ -473,7 +473,7 @@ namespace STROOP.Managers
             else if (_objects.Count() == 1)
             {
                 ObjectDataModel obj = _objects.First();
-                var newBehavior = obj.BehaviorAssociation != null ? obj.BehaviorAssociation.Criteria : obj.BehaviorCriteria;
+                var newBehavior = obj.BehaviorCriteria;
                 if (_lastGeneralizedBehavior != newBehavior)
                 {
                     Behavior = $"0x{obj.SegmentedBehavior & 0x00FFFFFF:X4}";
