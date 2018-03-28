@@ -85,6 +85,8 @@ namespace STROOP.Managers
             public readonly int ByteSize;
             public readonly int StringIndex;
             public readonly int StringSize;
+            private List<int> _byteIndexes;
+            private List<int> _byteIndexesLittleEndian;
             
             public ValueText(int byteIndex, int byteSize, int stringIndex, int stringSize)
             {
@@ -92,11 +94,15 @@ namespace STROOP.Managers
                 ByteSize = byteSize;
                 StringIndex = stringIndex;
                 StringSize = stringSize;
+                _byteIndexes = Enumerable.Range(byteIndex, byteSize).ToList();
+                _byteIndexesLittleEndian = _byteIndexes.ConvertAll(
+                    index => EndianUtilities.SwapEndianness(index));
             }
 
             public bool OverlapsData(bool[] dataBools, bool littleEndian)
             {
-                return true;
+                List<int> byteIndexes = littleEndian ? _byteIndexesLittleEndian : _byteIndexes;
+                return byteIndexes.Any(byteIndex => dataBools[byteIndex]);
             }
         }
 

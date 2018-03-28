@@ -381,6 +381,7 @@
     <Compile Include="Structs\RomHack.cs" />
     <Compile Include="Structs\SpawnHack.cs" />
     <Compile Include="Enums\AngleUnitType.cs" />
+    <Compile Include="Utilities\EndianUtilities.cs" />
     <Compile Include="Utilities\HexUtilities.cs" />
     <Compile Include="Utilities\DictionaryUtilities.cs" />
     <Compile Include="Utilities\KeyboardUtilities.cs" />
