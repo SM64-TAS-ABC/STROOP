@@ -311,16 +311,16 @@ namespace STROOP.Controls
 
         public bool SetCheckStateValue(CheckState checkState, List<uint> addresses = null)
         {
-            string value = ConvertCheckStateToValue(checkState);
+            object value = ConvertCheckStateToValue(checkState);
             bool success = _watchVar.SetValue(value, addresses);
             if (success && GetLockedBool(addresses))
                 WatchVariableLockManager.UpdateLockValues(_watchVar, value, addresses);
             return success;
         }
 
-        public bool AddValue(string stringValue, bool add, List<uint> addresses = null)
+        public bool AddValue(object objectValue, bool add, List<uint> addresses = null)
         {
-            double? changeValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+            double? changeValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
             if (!changeValueNullable.HasValue) return false;
             double changeValue = changeValueNullable.Value;
 
@@ -480,7 +480,7 @@ namespace STROOP.Controls
             return CheckState.Unchecked;
         }
 
-        protected virtual string ConvertCheckStateToValue(CheckState checkState)
+        protected virtual object ConvertCheckStateToValue(CheckState checkState)
         {
             return "";
         }

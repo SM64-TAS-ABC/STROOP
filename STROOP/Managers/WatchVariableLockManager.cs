@@ -38,7 +38,8 @@ namespace STROOP.Structs
             return ContainsLocksCheckState(variable, addresses) != CheckState.Unchecked;
         }
 
-        public static CheckState ContainsLocksCheckState(WatchVariable variable, List<uint> addresses = null)
+        public static CheckState ContainsLocksCheckState(
+            WatchVariable variable, List<uint> addresses = null)
         {
             if (!ContainsAnyLocks()) return CheckState.Unchecked;
             List<WatchVariableLock> newLocks = variable.GetLocks(addresses);
@@ -55,7 +56,8 @@ namespace STROOP.Structs
             return firstCheckState;
         }
 
-        public static void UpdateLockValues(WatchVariable variable, string newValue, List<uint> addresses = null)
+        public static void UpdateLockValues(
+            WatchVariable variable, object newValue, List<uint> addresses = null)
         {
             if (!ContainsAnyLocks()) return;
             List<WatchVariableLock> newLocks = variable.GetLocks(addresses);
@@ -71,7 +73,8 @@ namespace STROOP.Structs
             }
         }
 
-        public static void UpdateLockValues(WatchVariable variable, List<string> newValues, List<uint> addresses = null)
+        public static void UpdateLockValues(
+            WatchVariable variable, List<object> newValues, List<uint> addresses = null)
         {
             if (!ContainsAnyLocks()) return;
             List<WatchVariableLock> newLocks = variable.GetLocks(addresses);
@@ -88,7 +91,8 @@ namespace STROOP.Structs
             }
         }
 
-        public static void UpdateMemoryLockValue(string newValue, uint address, Type type, uint? mask)
+        public static void UpdateMemoryLockValue(
+            object newValue, uint address, Type type, uint? mask)
         {
             if (!ContainsAnyLocks()) return;
             foreach (WatchVariableLock currentLock in _lockList)

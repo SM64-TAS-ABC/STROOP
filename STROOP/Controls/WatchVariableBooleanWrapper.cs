@@ -52,12 +52,12 @@ namespace STROOP.Controls
             return HandleInverting(doubleValue == 0) ? CheckState.Unchecked : CheckState.Checked;
         }
 
-        protected override string ConvertCheckStateToValue(CheckState checkState)
+        protected override object ConvertCheckStateToValue(CheckState checkState)
         {
             if (checkState == CheckState.Indeterminate) return "";
 
-            string offValue = "0";
-            string onValue = _watchVar.Mask?.ToString() ?? "1";
+            object offValue = 0;
+            object onValue = _watchVar.Mask ?? 1;
 
             return HandleInverting(checkState == CheckState.Unchecked) ? offValue : onValue;
         }

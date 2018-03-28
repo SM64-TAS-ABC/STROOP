@@ -53,7 +53,7 @@ namespace STROOP.Controls
             SetterFunction(_value.ToString(), Address);
         }
 
-        public void UpdateLockValue(string value)
+        public void UpdateLockValue(object value)
         {
             _value = value;
         }
