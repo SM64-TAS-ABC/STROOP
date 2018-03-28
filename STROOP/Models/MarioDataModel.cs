@@ -354,19 +354,6 @@ namespace STROOP.Models
             _interactionObject = Config.Stream.GetUInt32(MarioConfig.InteractionObjectPointerOffset + MarioConfig.StructAddress);
             _usedObject = Config.Stream.GetUInt32(MarioConfig.UsedObjectPointerOffset + MarioConfig.StructAddress);
 
-            // Find closest object
-            IEnumerable<ObjectDataModel> closestObjectCandidates =
-               DataModels.Objects.Where(o => o != null && o.IsActive && o.BehaviorCriteria.BehaviorAddress != MarioObjectConfig.BehaviorValue);
-            if (OptionsConfig.ExcludeDustForClosestObject)
-            {
-                closestObjectCandidates =
-                    closestObjectCandidates.Where(o =>
-                        o.BehaviorCriteria.BehaviorAddress != ObjectConfig.DustSpawnerBehaviorValue
-                        && o.BehaviorCriteria.BehaviorAddress != ObjectConfig.DustBallBehaviorValue
-                        && o.BehaviorCriteria.BehaviorAddress != ObjectConfig.DustBehaviorValue);
-            }
-            ClosestObject = closestObjectCandidates.OrderBy(o => o.DistanceToMarioCalculated).FirstOrDefault()?.Address ?? 0;
-
             _hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
 
             _action = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.ActionOffset);
@@ -381,6 +368,20 @@ namespace STROOP.Models
             IsStationary = _x == NextIntendedQStepX && _z == NextIntendedQStepZ;
         }
 
-        public void Update2() { }
+        public void Update2()
+        {
+            // Find closest object
+            IEnumerable<ObjectDataModel> closestObjectCandidates =
+               DataModels.Objects.Where(o => o != null && o.IsActive && o.BehaviorCriteria.BehaviorAddress != MarioObjectConfig.BehaviorValue);
+            if (OptionsConfig.ExcludeDustForClosestObject)
+            {
+                closestObjectCandidates =
+                    closestObjectCandidates.Where(o =>
+                        o.BehaviorCriteria.BehaviorAddress != ObjectConfig.DustSpawnerBehaviorValue
+                        && o.BehaviorCriteria.BehaviorAddress != ObjectConfig.DustBallBehaviorValue
+                        && o.BehaviorCriteria.BehaviorAddress != ObjectConfig.DustBehaviorValue);
+            }
+            ClosestObject = closestObjectCandidates.OrderBy(o => o.DistanceToMarioCalculated).FirstOrDefault()?.Address ?? 0;
+        }
     }
 }
