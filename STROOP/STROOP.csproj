@@ -395,6 +395,7 @@
     <Compile Include="Utilities\DecompilerFunctionUtilities.cs" />
     <Compile Include="Utilities\Fast3DDecoder.cs" />
     <Compile Include="Utilities\MupenUtilities.cs" />
+    <Compile Include="Utilities\GenericMath.cs" />
     <Compile Include="Utilities\VarHackSpecialUtilities.cs" />
     <Compile Include="Utilities\WatchVariableSpecialUtilities.cs" />
     <Compile Include="Utilities\WatchVariableCoordinateManager.cs" />

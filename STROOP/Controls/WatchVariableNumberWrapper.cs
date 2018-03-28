@@ -156,11 +156,8 @@ namespace STROOP.Controls
 
         protected override object HandleRounding(object value)
         {
-            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(value);
-            if (!doubleValueNullable.HasValue) return value;
-            double doubleValue = doubleValueNullable.Value;
-            if (_roundingLimit.HasValue) doubleValue = Math.Round(doubleValue, _roundingLimit.Value);
-            return doubleValue;
+            if (!_roundingLimit.HasValue) return value;
+            return GenericMath.Round(value, _roundingLimit.Value);
         }
 
         protected override object HandleNegating(object value)
