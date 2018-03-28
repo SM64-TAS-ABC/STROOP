@@ -372,19 +372,20 @@ namespace STROOP.Utilities
             return Readonly;
         }
 
-        public bool SetValueRoundingWrapping(Type type, object value, uint address, bool absoluteAddress = false, uint? mask = null)
+        public bool SetValueRoundingWrapping(
+            Type type, object value, uint address, bool absoluteAddress = false, uint? mask = null)
         {
             if (value is string)
             {
-                value = ParsingUtilities.ParseDoubleNullable((string)value);
+                value = ParsingUtilities.ParseDoubleNullable(value);
                 if (value == null) return false;
 
-                if (type == typeof(byte)) value = ParsingUtilities.ParseByteRoundingWrapping((double)value);
-                if (type == typeof(sbyte)) value = ParsingUtilities.ParseSByteRoundingWrapping((double)value);
-                if (type == typeof(short)) value = ParsingUtilities.ParseShortRoundingWrapping((double)value);
-                if (type == typeof(ushort)) value = ParsingUtilities.ParseUShortRoundingWrapping((double)value);
-                if (type == typeof(int)) value = ParsingUtilities.ParseIntRoundingWrapping((double)value);
-                if (type == typeof(uint)) value = ParsingUtilities.ParseUIntRoundingWrapping((double)value);
+                if (type == typeof(byte)) value = ParsingUtilities.ParseByteRoundingWrapping(value);
+                if (type == typeof(sbyte)) value = ParsingUtilities.ParseSByteRoundingWrapping(value);
+                if (type == typeof(short)) value = ParsingUtilities.ParseShortRoundingWrapping(value);
+                if (type == typeof(ushort)) value = ParsingUtilities.ParseUShortRoundingWrapping(value);
+                if (type == typeof(int)) value = ParsingUtilities.ParseIntRoundingWrapping(value);
+                if (type == typeof(uint)) value = ParsingUtilities.ParseUIntRoundingWrapping(value);
             }
 
             return SetValue(type, value.ToString(), address, absoluteAddress, mask);
@@ -394,13 +395,13 @@ namespace STROOP.Utilities
         {
             if (value is string)
             {
-                if (type == typeof(byte)) value = ParsingUtilities.ParseByteNullable((string)value);
-                if (type == typeof(sbyte)) value = ParsingUtilities.ParseSByteNullable((string)value);
-                if (type == typeof(short)) value = ParsingUtilities.ParseShortNullable((string)value);
-                if (type == typeof(ushort)) value = ParsingUtilities.ParseUShortNullable((string)value);
-                if (type == typeof(int)) value = ParsingUtilities.ParseIntNullable((string)value);
-                if (type == typeof(uint)) value = ParsingUtilities.ParseUIntNullable((string)value);
-                if (type == typeof(float)) value = ParsingUtilities.ParseFloatNullable((string)value);
+                if (type == typeof(byte)) value = ParsingUtilities.ParseByteNullable(value);
+                if (type == typeof(sbyte)) value = ParsingUtilities.ParseSByteNullable(value);
+                if (type == typeof(short)) value = ParsingUtilities.ParseShortNullable(value);
+                if (type == typeof(ushort)) value = ParsingUtilities.ParseUShortNullable(value);
+                if (type == typeof(int)) value = ParsingUtilities.ParseIntNullable(value);
+                if (type == typeof(uint)) value = ParsingUtilities.ParseUIntNullable(value);
+                if (type == typeof(float)) value = ParsingUtilities.ParseFloatNullable(value);
             }
 
             if (value == null) return false;
@@ -424,7 +425,7 @@ namespace STROOP.Utilities
                 value = (byte)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             bool returnValue = WriteRamLittleEndian(new byte[] { value }, address, absoluteAddress);
-            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value.ToString(), address, typeof(byte), mask);
+            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(byte), mask);
             return returnValue;
         }
 
@@ -436,7 +437,7 @@ namespace STROOP.Utilities
                 value = (sbyte)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             bool returnValue = WriteRamLittleEndian(new byte[] { (byte)value }, address, absoluteAddress);
-            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value.ToString(), address, typeof(sbyte), mask);
+            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(sbyte), mask);
             return returnValue;
         }
 
@@ -448,7 +449,7 @@ namespace STROOP.Utilities
                 value = (short)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             bool returnValue = WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
-            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value.ToString(), address, typeof(short), mask);
+            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(short), mask);
             return returnValue;
         }
 
@@ -460,7 +461,7 @@ namespace STROOP.Utilities
                 value = (ushort)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             bool returnValue = WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
-            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value.ToString(), address, typeof(ushort), mask);
+            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(ushort), mask);
             return returnValue;
         }
 
@@ -472,7 +473,7 @@ namespace STROOP.Utilities
                 value = (int)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             bool returnValue = WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
-            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value.ToString(), address, typeof(int), mask);
+            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(int), mask);
             return returnValue;
         }
 
@@ -484,18 +485,19 @@ namespace STROOP.Utilities
                 value = (uint)((oldValue & ~mask.Value) | (value & mask.Value));
             }
             bool returnValue = WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
-            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value.ToString(), address, typeof(uint), mask);
+            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(uint), mask);
             return returnValue;
         }
 
         public bool SetValue(float value, uint address, bool absoluteAddress = false, uint? mask = null)
         {
             bool returnValue = WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
-            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value.ToString(), address, typeof(float), mask);
+            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(float), mask);
             return returnValue;
         }
 
-        public bool WriteRamLittleEndian(byte[] buffer, uint address, bool absoluteAddress = false, int bufferStart = 0, int? length = null, bool safeWrite = true)
+        public bool WriteRamLittleEndian(
+            byte[] buffer, uint address, bool absoluteAddress = false, int bufferStart = 0, int? length = null, bool safeWrite = true)
         {
             if (length == null)
                 length = buffer.Length - bufferStart;
