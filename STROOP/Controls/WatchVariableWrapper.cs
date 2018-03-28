@@ -273,25 +273,26 @@ namespace STROOP.Controls
             bool handleFormatting = true)
         {
             // TODO: fix this object to string conversion
-            string stringValue = value.ToString();
-            stringValue = HandleAngleConverting(stringValue);
-            if (handleRounding) stringValue = HandleRounding(stringValue);
-            stringValue = HandleAngleRoundingOut(stringValue);
-            stringValue = HandleNegating(stringValue);
-            if (handleFormatting) stringValue = HandleHexDisplaying(stringValue);
-            if (handleFormatting) stringValue = HandleObjectDisplaying(stringValue);
-            return stringValue;
+            value = HandleAngleConverting(value);
+            if (handleRounding) value = HandleRounding(value);
+            value = HandleAngleRoundingOut(value);
+            value = HandleNegating(value);
+            if (handleFormatting) value = HandleHexDisplaying(value);
+            if (handleFormatting) value = HandleObjectDisplaying(value);
+            return value;
         }
 
-        public bool SetValue(string value, List<uint> addresses = null)
+        public bool SetValue(object value, List<uint> addresses = null)
         {
             value = UnconvertValue(value);
             bool success = _watchVar.SetValue(value, addresses);
-            if (success && GetLockedBool(addresses)) WatchVariableLockManager.UpdateLockValues(_watchVar, value, addresses);
+            if (success && GetLockedBool(addresses))
+                // TODO fix object to string conversion
+                WatchVariableLockManager.UpdateLockValues(_watchVar, value.ToString(), addresses);
             return success;
         }
 
-        public string UnconvertValue(string value)
+        public object UnconvertValue(object value)
         {
             value = HandleObjectUndisplaying(value);
             value = HandleHexUndisplaying(value);
@@ -337,7 +338,8 @@ namespace STROOP.Controls
                 double convertedValueDouble = ParsingUtilities.ParseDouble(convertedValueString);
                 double modifiedValueDouble = convertedValueDouble + changeValue * (add ? +1 : -1);
                 string modifiedValueString = modifiedValueDouble.ToString();
-                string unconvertedValueString = UnconvertValue(modifiedValueString);
+                // TODO: fix object to string conversion
+                string unconvertedValueString = UnconvertValue(modifiedValueString).ToString();
                 return unconvertedValueString;
             });
 
@@ -417,56 +419,56 @@ namespace STROOP.Controls
 
         // Number methods
 
-        protected virtual string HandleRounding(string value)
+        protected virtual object HandleRounding(object value)
         {
             return value;
         }
 
-        protected virtual string HandleNegating(string value)
+        protected virtual object HandleNegating(object value)
         {
             return value;
         }
 
-        protected virtual string HandleUnnegating(string value)
+        protected virtual object HandleUnnegating(object value)
         {
             return value;
         }
 
-        protected virtual string HandleHexDisplaying(string value)
+        protected virtual object HandleHexDisplaying(object value)
         {
             return value;
         }
 
-        protected virtual string HandleHexUndisplaying(string value)
+        protected virtual object HandleHexUndisplaying(object value)
         {
             return value;
         }
 
         // Angle methods
 
-        protected virtual string HandleAngleConverting(string value)
+        protected virtual object HandleAngleConverting(object value)
         {
             return value;
         }
 
-        protected virtual string HandleAngleUnconverting(string value)
+        protected virtual object HandleAngleUnconverting(object value)
         {
             return value;
         }
 
-        protected virtual string HandleAngleRoundingOut(string value)
+        protected virtual object HandleAngleRoundingOut(object value)
         {
             return value;
         }
 
         // Object methods
 
-        protected virtual string HandleObjectDisplaying(string value)
+        protected virtual object HandleObjectDisplaying(object value)
         {
             return value;
         }
 
-        protected virtual string HandleObjectUndisplaying(string value)
+        protected virtual object HandleObjectUndisplaying(object value)
         {
             return value;
         }

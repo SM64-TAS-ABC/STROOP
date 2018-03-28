@@ -150,7 +150,7 @@ namespace STROOP.Controls
                 address => _getterFunction(address));
         }
 
-        public bool SetValue(string value, List<uint> addresses = null)
+        public bool SetValue(object value, List<uint> addresses = null)
         {
             List<uint> addressList = addresses ?? AddressList;
             if (addressList.Count == 0) return false;
@@ -158,7 +158,8 @@ namespace STROOP.Controls
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
             bool success = addressList.ConvertAll(
-                address => _setterFunction(value, address))
+                // TODO: fix object to string conversion
+                address => _setterFunction(value.ToString(), address))
                     .Aggregate(true, (b1, b2) => b1 && b2);
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;

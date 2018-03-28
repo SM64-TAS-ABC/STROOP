@@ -52,18 +52,18 @@ namespace STROOP.Controls
             _contextMenuStrip.AddToBeginningList(itemSelectObject);
         }
 
-        protected override string HandleHexDisplaying(string value)
+        protected override object HandleHexDisplaying(object value)
         {
             // prevent hex display if we're displaying as object
             return _displayAsObject ? value : base.HandleHexDisplaying(value);
         }
 
-        protected override string HandleObjectDisplaying(string stringValue)
+        protected override object HandleObjectDisplaying(object value)
         {
-            if (!_displayAsObject) return stringValue;
+            if (!_displayAsObject) return value;
 
-            uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(stringValue);
-            if (!uintValueNullable.HasValue) return stringValue;
+            uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(value);
+            if (!uintValueNullable.HasValue) return value;
             if (uintValueNullable == ObjectSlotsConfig.UnusedSlotAddress) return "(unused object)";
             ObjectDataModel obj = DataModels.Objects.FirstOrDefault(o => o?.Address == uintValueNullable);
             if (obj == null) return "(no object)";
@@ -73,18 +73,18 @@ namespace STROOP.Controls
             return "Slot " + slotName;
         }
 
-        protected override string HandleObjectUndisplaying(string stringValue)
+        protected override object HandleObjectUndisplaying(object value)
         {
-            string slotName = stringValue.ToLower();
+            string slotName = value.ToString().ToLower();
 
-            if (slotName == "(no object)" || slotName == "no object") return "0";
-            if (slotName == "(unused object)" || slotName == "unused object") return ObjectSlotsConfig.UnusedSlotAddress.ToString();
+            if (slotName == "(no object)" || slotName == "no object") return 0;
+            if (slotName == "(unused object)" || slotName == "unused object") return ObjectSlotsConfig.UnusedSlotAddress;
 
-            if (!slotName.StartsWith("slot")) return stringValue;
+            if (!slotName.StartsWith("slot")) return value;
             slotName = slotName.Remove(0, "slot".Length);
             slotName = slotName.Trim();
             ObjectDataModel obj = Config.ObjectSlotsManager.GetObjectFromLabel(slotName);
-            return obj != null ? obj.Address.ToString() : stringValue;
+            return obj != null ? obj.Address : value;
         }
     }
 }

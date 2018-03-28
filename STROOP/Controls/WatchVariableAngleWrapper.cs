@@ -134,10 +134,10 @@ namespace STROOP.Controls
             return signed ? -1 * maxValue / 2 : 0;
         }
 
-        protected override string HandleAngleConverting(string stringValue)
+        protected override object HandleAngleConverting(object value)
         {
-            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-            if (!doubleValueNullable.HasValue) return stringValue;
+            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(value);
+            if (!doubleValueNullable.HasValue) return value;
             double doubleValue = doubleValueNullable.Value;
 
             if (_truncateToMultipleOf16)
@@ -147,29 +147,30 @@ namespace STROOP.Controls
             doubleValue = MoreMath.NormalizeAngleUsingType(doubleValue, _effectiveType);
             doubleValue = (doubleValue / 65536) * GetAngleUnitTypeMaxValue();
 
-            return doubleValue.ToString();
+            return doubleValue;
         }
 
-        protected override string HandleAngleUnconverting(string stringValue)
+        protected override object HandleAngleUnconverting(object value)
         {
-            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-            if (!doubleValueNullable.HasValue) return stringValue;
+            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(value);
+            if (!doubleValueNullable.HasValue) return value;
             double doubleValue = doubleValueNullable.Value;
 
             doubleValue = (doubleValue / GetAngleUnitTypeMaxValue()) * 65536;
 
-            return doubleValue.ToString();
+            return doubleValue;
         }
 
-        protected override string HandleAngleRoundingOut(string stringValue)
+        protected override object HandleAngleRoundingOut(object value)
         {
-            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-            if (!doubleValueNullable.HasValue) return stringValue;
+            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(value);
+            if (!doubleValueNullable.HasValue) return value;
             double doubleValue = doubleValueNullable.Value;
 
-            if (doubleValue == GetAngleUnitTypeAndMaybeSignedMaxValue()) doubleValue = GetAngleUnitTypeAndMaybeSignedMinValue();
+            if (doubleValue == GetAngleUnitTypeAndMaybeSignedMaxValue())
+                doubleValue = GetAngleUnitTypeAndMaybeSignedMinValue();
 
-            return doubleValue.ToString();
+            return doubleValue;
         }
 
         protected override int? GetHexDigitCount()

@@ -154,38 +154,38 @@ namespace STROOP.Controls
 
 
 
-        protected override string HandleRounding(string stringValue)
+        protected override object HandleRounding(object value)
         {
-            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-            if (!doubleValueNullable.HasValue) return stringValue;
+            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(value);
+            if (!doubleValueNullable.HasValue) return value;
             double doubleValue = doubleValueNullable.Value;
             if (_roundingLimit.HasValue) doubleValue = Math.Round(doubleValue, _roundingLimit.Value);
-            return doubleValue.ToString();
+            return doubleValue;
         }
 
-        protected override string HandleNegating(string stringValue)
+        protected override object HandleNegating(object value)
         {
-            if (!_displayAsNegated) return stringValue;
-            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-            if (!doubleValueNullable.HasValue) return stringValue;
+            if (!_displayAsNegated) return value;
+            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(value);
+            if (!doubleValueNullable.HasValue) return value;
             double doubleValue = doubleValueNullable.Value;
             doubleValue = -1 * doubleValue;
-            return doubleValue.ToString();
+            return doubleValue;
         }
 
-        protected override string HandleUnnegating(string stringValue)
+        protected override object HandleUnnegating(object value)
         {
-            return HandleNegating(stringValue);
+            return HandleNegating(value);
         }
 
-        protected override string HandleHexDisplaying(string stringValue)
+        protected override object HandleHexDisplaying(object value)
         {
-            if (!_displayAsHex) return stringValue;
+            if (!_displayAsHex) return value;
 
             int? numHexDigits = GetHexDigitCount();
             string stringHexDigits = numHexDigits?.ToString() ?? "";
 
-            int? intValueNullable = ParsingUtilities.ParseIntNullable(stringValue);
+            int? intValueNullable = ParsingUtilities.ParseIntNullable(value);
             if (intValueNullable.HasValue)
             {
                 string hexFormat = String.Format("{0:X" + stringHexDigits + "}", intValueNullable.Value);
@@ -196,7 +196,7 @@ namespace STROOP.Controls
                 return "0x" + hexFormat;
             }
 
-            uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(stringValue);
+            uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(value);
             if (uintValueNullable.HasValue)
             {
                 string hexFormat = String.Format("{0:X" + stringHexDigits + "}", uintValueNullable.Value);
@@ -207,15 +207,16 @@ namespace STROOP.Controls
                 return "0x" + hexFormat;
             }
 
-            return stringValue;
+            return value;
         }
 
-        protected override string HandleHexUndisplaying(string value)
+        protected override object HandleHexUndisplaying(object value)
         {
-            if (value != null && value.Length >= 2 && value.Substring(0,2) == "0x")
+            string stringValue = value.ToString();
+            if (stringValue.Length >= 2 && stringValue.Substring(0,2) == "0x")
             {
-                uint? parsed = ParsingUtilities.ParseHexNullable(value);
-                if (parsed != null) return parsed.ToString();
+                uint? parsed = ParsingUtilities.ParseHexNullable(stringValue);
+                if (parsed != null) return parsed.Value;
             }
             return value;
         }
