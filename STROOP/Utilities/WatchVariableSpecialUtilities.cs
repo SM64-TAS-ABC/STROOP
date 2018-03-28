@@ -30,11 +30,11 @@ namespace STROOP.Structs
                             marioPos.X, marioPos.Y, marioPos.Z, objPos.X, objPos.Y, objPos.Z);
                         return dist;
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         Position objPos = GetObjectPosition(objAddress);
-                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!distAwayNullable.HasValue) return false;
                         double distAway = distAwayNullable.Value;
                         (double newMarioX, double newMarioY, double newMarioZ) =
@@ -53,11 +53,11 @@ namespace STROOP.Structs
                             marioPos.X, marioPos.Z, objPos.X, objPos.Z);
                         return hDist;
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         Position objPos = GetObjectPosition(objAddress);
-                        double? distAway = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? distAway = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!distAway.HasValue) return false;
                         (double newMarioX, double newMarioZ) =
                             MoreMath.ExtrapolateLineHorizontally(objPos.X, objPos.Z, marioPos.X, marioPos.Z, distAway.Value);
@@ -73,10 +73,10 @@ namespace STROOP.Structs
                         float yDist = marioY - objY;
                         return yDist;
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
                         float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                        double? distAbove = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? distAbove = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!distAbove.HasValue) return false;
                         double newMarioY = objY + distAbove.Value;
                         return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
@@ -92,11 +92,11 @@ namespace STROOP.Structs
                             marioPos.X, marioPos.Y, marioPos.Z, homePos.X, homePos.Y, homePos.Z);
                         return dist;
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         Position homePos = GetObjectHomePosition(objAddress);
-                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!distAwayNullable.HasValue) return false;
                         double distAway = distAwayNullable.Value;
                         (double newMarioX, double newMarioY, double newMarioZ) =
@@ -115,11 +115,11 @@ namespace STROOP.Structs
                             marioPos.X, marioPos.Z, homePos.X, homePos.Z);
                         return hDist;
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         Position homePos = GetObjectHomePosition(objAddress);
-                        double? distAway = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? distAway = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!distAway.HasValue) return false;
                         (double newMarioX, double newMarioZ) =
                             MoreMath.ExtrapolateLineHorizontally(homePos.X, homePos.Z, marioPos.X, marioPos.Z, distAway.Value);
@@ -135,10 +135,10 @@ namespace STROOP.Structs
                         float yDist = marioY - homeY;
                         return yDist;
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
                         float homeY = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeYOffset);
-                        double? distAbove = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? distAbove = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!distAbove.HasValue) return false;
                         double newMarioY = homeY + distAbove.Value;
                         return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
@@ -154,11 +154,11 @@ namespace STROOP.Structs
                             objPos.X, objPos.Y, objPos.Z, homePos.X, homePos.Y, homePos.Z);
                         return dist;
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
                         Position objPos = GetObjectPosition(objAddress);
                         Position homePos = GetObjectHomePosition(objAddress);
-                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!distAwayNullable.HasValue) return false;
                         double distAway = distAwayNullable.Value;
                         (double newObjX, double newObjY, double newObjZ) =
@@ -177,11 +177,11 @@ namespace STROOP.Structs
                             objPos.X, objPos.Z, homePos.X, homePos.Z);
                         return hDist;
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
                         Position objPos = GetObjectPosition(objAddress);
                         Position homePos = GetObjectHomePosition(objAddress);
-                        double? distAway = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? distAway = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!distAway.HasValue) return false;
                         (double newObjX, double newObjZ) =
                             MoreMath.ExtrapolateLineHorizontally(homePos.X, homePos.Z, objPos.X, objPos.Z, distAway.Value);
@@ -197,10 +197,10 @@ namespace STROOP.Structs
                         float yDist = objY - homeY;
                         return yDist;
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
                         float homeY = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeYOffset);
-                        double? distAbove = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? distAbove = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!distAbove.HasValue) return false;
                         double newObjY = homeY + distAbove.Value;
                         return Config.Stream.SetValue((float)newObjY, objAddress + ObjectConfig.YOffset);
@@ -216,11 +216,11 @@ namespace STROOP.Structs
                             objPos.X, objPos.Z, marioPos.X, marioPos.Z);
                         return MoreMath.NormalizeAngleDouble(angleToMario);
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         Position objPos = GetObjectPosition(objAddress);
-                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleNullable.HasValue) return false;
                         double angle = angleNullable.Value;
                         (double newObjX, double newObjZ) =
@@ -240,11 +240,11 @@ namespace STROOP.Structs
                         double angleDiff = objPos.Angle.Value - angleToMario;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         Position objPos = GetObjectPosition(objAddress);
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleDiffNullable.HasValue) return false;
                         double angleDiff = angleDiffNullable.Value;
                         double angleToMario = MoreMath.AngleTo_AngleUnits(
@@ -264,11 +264,11 @@ namespace STROOP.Structs
                             objPos.X, objPos.Z, marioPos.X, marioPos.Z);
                         return MoreMath.NormalizeAngleDouble(angleToMario);
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         Position objPos = GetObjectPosition(objAddress);
-                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleNullable.HasValue) return false;
                         double angle = angleNullable.Value;
                         (double newObjX, double newObjZ) =
@@ -288,11 +288,11 @@ namespace STROOP.Structs
                         double angleDiff = objPos.Angle.Value - angleToMario;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         Position objPos = GetObjectPosition(objAddress);
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleDiffNullable.HasValue) return false;
                         double angleDiff = angleDiffNullable.Value;
                         double angleToMario = MoreMath.AngleTo_AngleUnits(
@@ -312,11 +312,11 @@ namespace STROOP.Structs
                             marioPos.X, marioPos.Z, objPos.X, objPos.Z);
                         return MoreMath.NormalizeAngleDouble(angleToObject);
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         Position objPos = GetObjectPosition(objAddress);
-                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleNullable.HasValue) return false;
                         double angle = angleNullable.Value;
                         (double newMarioX, double newMarioZ) =
@@ -336,11 +336,11 @@ namespace STROOP.Structs
                         double angleDiff = marioPos.Angle.Value - angleToObject;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         Position objPos = GetObjectPosition(objAddress);
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleDiffNullable.HasValue) return false;
                         double angleDiff = angleDiffNullable.Value;
                         double angleToObj = MoreMath.AngleTo_AngleUnits(
@@ -361,11 +361,11 @@ namespace STROOP.Structs
                             objPos.X, objPos.Z, homePos.X, homePos.Z);
                         return MoreMath.NormalizeAngleDouble(angleToHome);
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
                         Position objPos = GetObjectPosition(objAddress);
                         Position homePos = GetObjectHomePosition(objAddress);
-                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleNullable.HasValue) return false;
                         double angle = angleNullable.Value;
                         (double newObjX, double newObjZ) =
@@ -385,11 +385,11 @@ namespace STROOP.Structs
                         double angleDiff = objPos.Angle.Value - angleToHome;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
                         Position objPos = GetObjectPosition(objAddress);
                         Position homePos = GetObjectHomePosition(objAddress);
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleDiffNullable.HasValue) return false;
                         double angleDiff = angleDiffNullable.Value;
                         double angleToHome = MoreMath.AngleTo_AngleUnits(
@@ -409,11 +409,11 @@ namespace STROOP.Structs
                             homePos.X, homePos.Z, objPos.X, objPos.Z);
                         return MoreMath.NormalizeAngleDouble(angleHomeToObject);
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
                         Position objPos = GetObjectPosition(objAddress);
                         Position homePos = GetObjectHomePosition(objAddress);
-                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleNullable.HasValue) return false;
                         double angle = angleNullable.Value;
                         (double newHomeX, double newHomeZ) =
@@ -438,7 +438,7 @@ namespace STROOP.Structs
                         double marioHitboxAwayFromObject = MoreMath.GetDistanceBetween(mObjX, mObjZ, objX, objZ) - mObjHitboxRadius - objHitboxRadius;
                         return marioHitboxAwayFromObject;
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
                         uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
                         float mObjX = Config.Stream.GetSingle(marioObjRef + ObjectConfig.XOffset);
@@ -451,7 +451,7 @@ namespace STROOP.Structs
 
                         Position marioPos = GetMarioPosition();
                         Position objPos = GetObjectPosition(objAddress);
-                        double? hitboxDistAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? hitboxDistAwayNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!hitboxDistAwayNullable.HasValue) return false;
                         double hitboxDistAway = hitboxDistAwayNullable.Value;
                         double distAway = hitboxDistAway + mObjHitboxRadius + objHitboxRadius;
@@ -479,7 +479,7 @@ namespace STROOP.Structs
                         double marioHitboxAboveObject = mObjHitboxBottom - objHitboxTop;
                         return marioHitboxAboveObject;
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
                         uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
                         float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
@@ -490,7 +490,7 @@ namespace STROOP.Structs
                         float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffset);
                         float objHitboxTop = objY + objHitboxHeight - objHitboxDownOffset;
 
-                        double? hitboxDistAboveNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? hitboxDistAboveNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!hitboxDistAboveNullable.HasValue) return false;
                         double hitboxDistAbove = hitboxDistAboveNullable.Value;
                         double newMarioY = objHitboxTop + mObjHitboxDownOffset + hitboxDistAbove;
@@ -515,7 +515,7 @@ namespace STROOP.Structs
                         double marioHitboxBelowObject = objHitboxBottom - mObjHitboxTop;
                         return marioHitboxBelowObject;
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
                         uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
                         float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
@@ -528,7 +528,7 @@ namespace STROOP.Structs
                         float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffset);
                         float objHitboxBottom = objY - objHitboxDownOffset;
 
-                        double? hitboxDistBelowNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? hitboxDistBelowNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!hitboxDistBelowNullable.HasValue) return false;
                         double hitboxDistBelow = hitboxDistBelowNullable.Value;
                         double newMarioY = objHitboxBottom - (mObjHitboxTop - mObjY) - hitboxDistBelow;
@@ -594,9 +594,9 @@ namespace STROOP.Structs
                         float pendulumAmplitude = GetPendulumAmplitude(objAddress);
                         return pendulumAmplitude;
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
-                        double? amplitudeNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? amplitudeNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!amplitudeNullable.HasValue) return false;
                         double amplitude = amplitudeNullable.Value;
                         float accelerationDirection = amplitude > 0 ? -1 : 1;
@@ -622,9 +622,9 @@ namespace STROOP.Structs
                         int pendulumSwingIndex = pendulumSwingIndexNullable.Value;
                         return pendulumSwingIndex;
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
-                        int? indexNullable = ParsingUtilities.ParseIntNullable(stringValue);
+                        int? indexNullable = ParsingUtilities.ParseIntNullable(objectValue);
                         if (!indexNullable.HasValue) return false;
                         int index = indexNullable.Value;
                         float amplitude = TableConfig.PendulumSwings.GetPendulumAmplitude(index);
@@ -879,9 +879,9 @@ namespace STROOP.Structs
                         float bloatSize = (scale - 1) * 5;
                         return bloatSize;
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
-                        double? bloatSizeNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? bloatSizeNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!bloatSizeNullable.HasValue) return false;
                         double bloatSize = bloatSizeNullable.Value;
                         float scale = (float)(bloatSize / 5 + 1);
@@ -901,9 +901,9 @@ namespace STROOP.Structs
                         float radius = 32 + scale * 65;
                         return radius;
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
-                        double? radiusNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? radiusNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!radiusNullable.HasValue) return false;
                         double radius = radiusNullable.Value;
                         float scale = (float)((radius -32) / 65);
@@ -928,9 +928,9 @@ namespace STROOP.Structs
                         double spaceBetween = hDist - radius;
                         return spaceBetween;
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
-                        double? spaceBetweenNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? spaceBetweenNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!spaceBetweenNullable.HasValue) return false;
                         double spaceBetween = spaceBetweenNullable.Value;
                         float scale = Config.Stream.GetSingle(objAddress + ObjectConfig.ScaleWidthOffset);
@@ -955,9 +955,9 @@ namespace STROOP.Structs
                         int angleDiff = facingAngle - targetAngle;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                     };
-                    setterFunction = (object stringValue, uint objAddress) =>
+                    setterFunction = (object objectValue, uint objAddress) =>
                     {
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleDiffNullable.HasValue) return false;
                         double angleDiff = angleDiffNullable.Value;
                         ushort targetAngle = Config.Stream.GetUInt16(objAddress + ObjectConfig.ScuttlebugTargetAngleOffset);
@@ -1029,9 +1029,9 @@ namespace STROOP.Structs
                     {
                         return GetMarioDeFactoSpeed();
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? newDefactoSpeedNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? newDefactoSpeedNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newDefactoSpeedNullable.HasValue) return false;
                         double newDefactoSpeed = newDefactoSpeedNullable.Value;
                         double newHSpeed = newDefactoSpeed / GetDeFactoMultiplier();
@@ -1044,14 +1044,14 @@ namespace STROOP.Structs
                     {
                         return GetMarioSlidingSpeed();
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
                         float xSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
                         float zSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
                         if (xSlidingSpeed == 0 && zSlidingSpeed == 0) xSlidingSpeed = 1;
                         double hSlidingSpeed = MoreMath.GetHypotenuse(xSlidingSpeed, zSlidingSpeed);
 
-                        double? newHSlidingSpeedNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? newHSlidingSpeedNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newHSlidingSpeedNullable.HasValue) return false;
                         double newHSlidingSpeed = newHSlidingSpeedNullable.Value;
 
@@ -1074,13 +1074,13 @@ namespace STROOP.Structs
                         double slidingAngle = MoreMath.AngleTo_AngleUnits(xSlidingSpeed, zSlidingSpeed);
                         return slidingAngle;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
                         float xSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
                         float zSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
                         double hSlidingSpeed = MoreMath.GetHypotenuse(xSlidingSpeed, zSlidingSpeed);
 
-                        double? newHSlidingAngleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? newHSlidingAngleNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newHSlidingAngleNullable.HasValue) return false;
                         double newHSlidingAngle = newHSlidingAngleNullable.Value;
                         (double newXSlidingSpeed, double newZSlidingSpeed) =
@@ -1100,9 +1100,9 @@ namespace STROOP.Structs
                         double remainingHeight = ComputeHeightChangeFromInitialVerticalSpeed(vSpeed);
                         return remainingHeight;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? newRemainingHeightNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? newRemainingHeightNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newRemainingHeightNullable.HasValue) return false;
                         double newRemainingHeight = newRemainingHeightNullable.Value;
                         double initialVSpeed = ComputeInitialVerticalSpeedFromHeightChange(newRemainingHeight);
@@ -1119,9 +1119,9 @@ namespace STROOP.Structs
                         double peakHeight = marioY + remainingHeight;
                         return peakHeight;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? newPeakHeightNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? newPeakHeightNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newPeakHeightNullable.HasValue) return false;
                         double newPeakHeight = newPeakHeightNullable.Value;
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
@@ -1138,9 +1138,9 @@ namespace STROOP.Structs
                         double vSpeed = ConvertDoubleJumpHSpeedToVSpeed(hSpeed);
                         return vSpeed;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? newVSpeedNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? newVSpeedNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newVSpeedNullable.HasValue) return false;
                         double newVSpeed = newVSpeedNullable.Value;
                         double newHSpeed = ConvertDoubleJumpVSpeedToHSpeed(newVSpeed);
@@ -1156,9 +1156,9 @@ namespace STROOP.Structs
                         double doubleJumpHeight = ComputeHeightChangeFromInitialVerticalSpeed(vSpeed);
                         return doubleJumpHeight;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? newHeightNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? newHeightNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newHeightNullable.HasValue) return false;
                         double newHeight = newHeightNullable.Value;
                         double initialVSpeed = ComputeInitialVerticalSpeedFromHeightChange(newHeight);
@@ -1177,9 +1177,9 @@ namespace STROOP.Structs
                         double doubleJumpPeakHeight = marioY + doubleJumpHeight;
                         return doubleJumpPeakHeight;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? newPeakHeightNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? newPeakHeightNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newPeakHeightNullable.HasValue) return false;
                         double newPeakHeight = newPeakHeightNullable.Value;
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
@@ -1335,9 +1335,9 @@ namespace STROOP.Structs
                         float fallHeight = peakHeight - floorY;
                         return fallHeight;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? fallHeightNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? fallHeightNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!fallHeightNullable.HasValue) return false;
                         double fallHeight = fallHeightNullable.Value;
 
@@ -1361,20 +1361,20 @@ namespace STROOP.Structs
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        string stringValue = objectValue.ToString();
-                        if (stringValue == null) return false;
-                        if (stringValue.Length == 0) stringValue = "0" + stringValue;
-                        if (stringValue.Length == 1) stringValue = "\"" + stringValue;
-                        if (stringValue.Length == 2) stringValue = "0" + stringValue;
-                        if (stringValue.Length == 3) stringValue = "0" + stringValue;
-                        if (stringValue.Length == 4) stringValue = "'" + stringValue;
-                        if (stringValue.Length == 5) stringValue = "0" + stringValue;
+                        string timerString = objectValue.ToString();
+                        if (timerString == null) return false;
+                        if (timerString.Length == 0) timerString = "0" + timerString;
+                        if (timerString.Length == 1) timerString = "\"" + timerString;
+                        if (timerString.Length == 2) timerString = "0" + timerString;
+                        if (timerString.Length == 3) timerString = "0" + timerString;
+                        if (timerString.Length == 4) timerString = "'" + timerString;
+                        if (timerString.Length == 5) timerString = "0" + timerString;
 
-                        string minuteComponentString = stringValue.Substring(0, stringValue.Length - 5);
-                        string leftMarker = stringValue.Substring(stringValue.Length - 5, 1);
-                        string secondComponentString = stringValue.Substring(stringValue.Length - 4, 2);
-                        string rightMarker = stringValue.Substring(stringValue.Length - 2, 1);
-                        string deciSecondComponentString = stringValue.Substring(stringValue.Length - 1, 1);
+                        string minuteComponentString = timerString.Substring(0, timerString.Length - 5);
+                        string leftMarker = timerString.Substring(timerString.Length - 5, 1);
+                        string secondComponentString = timerString.Substring(timerString.Length - 4, 2);
+                        string rightMarker = timerString.Substring(timerString.Length - 2, 1);
+                        string deciSecondComponentString = timerString.Substring(timerString.Length - 1, 1);
 
                         if (leftMarker != "\"" && leftMarker != "'" && leftMarker != ".") return false;
                         if (rightMarker != "\"" && rightMarker != "'" && rightMarker != ".") return false;
@@ -1409,11 +1409,11 @@ namespace STROOP.Structs
                             marioPos.X, marioPos.Y, marioPos.Z, cameraPos.X, cameraPos.Y, cameraPos.Z);
                         return dist;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
                         Position marioPos = GetMarioPosition();
                         Position cameraPos = GetCameraPosition();
-                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!distAwayNullable.HasValue) return false;
                         double distAway = distAwayNullable.Value;
                         (double newCameraX, double newCameraY, double newCameraZ) =
@@ -1511,9 +1511,9 @@ namespace STROOP.Structs
                         double angleDiff = marioAngle - uphillAngle;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleDiffNullable.HasValue) return false;
                         double angleDiff = angleDiffNullable.Value;
                         double uphillAngle = GetTriangleUphillAngle(triAddress);
@@ -1533,9 +1533,9 @@ namespace STROOP.Structs
                         double angleDiff = marioAngle - downhillAngle;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleDiffNullable.HasValue) return false;
                         double angleDiff = angleDiffNullable.Value;
                         double uphillAngle = GetTriangleUphillAngle(triAddress);
@@ -1556,9 +1556,9 @@ namespace STROOP.Structs
                         double angleDiff = marioAngle - lefthillAngle;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleDiffNullable.HasValue) return false;
                         double angleDiff = angleDiffNullable.Value;
                         double uphillAngle = GetTriangleUphillAngle(triAddress);
@@ -1579,9 +1579,9 @@ namespace STROOP.Structs
                         double angleDiff = marioAngle - righthillAngle;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleDiffNullable.HasValue) return false;
                         double angleDiff = angleDiffNullable.Value;
                         double uphillAngle = GetTriangleUphillAngle(triAddress);
@@ -1614,10 +1614,10 @@ namespace STROOP.Structs
                         float distAboveFloor = marioY - floorY;
                         return distAboveFloor;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
                         float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
-                        double? distAboveNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? distAboveNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!distAboveNullable.HasValue) return false;
                         double distAbove = distAboveNullable.Value;
                         double newMarioY = floorY + distAbove;
@@ -1633,10 +1633,10 @@ namespace STROOP.Structs
                         float distBelowCeiling = ceilingY - marioY;
                         return distBelowCeiling;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
                         float ceilingY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.CeilingYOffset);
-                        double? distBelowNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? distBelowNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!distBelowNullable.HasValue) return false;
                         double distBelow = distBelowNullable.Value;
                         double newMarioY = ceilingY - distBelow;
@@ -1656,11 +1656,11 @@ namespace STROOP.Structs
                             triStruct.NormOffset;
                         return normalDistAway;
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!distAwayNullable.HasValue) return false;
                         double distAway = distAwayNullable.Value;
 
@@ -1691,11 +1691,11 @@ namespace STROOP.Structs
                             marioPos.Y + (marioPos.X * triStruct.NormX + marioPos.Z * triStruct.NormZ + triStruct.NormOffset) / triStruct.NormY;
                         return verticalDistAway;
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? distAboveNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? distAboveNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!distAboveNullable.HasValue) return false;
                         double distAbove = distAboveNullable.Value;
                         double newMarioY = distAbove - (marioPos.X * triStruct.NormX + marioPos.Z * triStruct.NormZ + triStruct.NormOffset) / triStruct.NormY;
@@ -1770,10 +1770,10 @@ namespace STROOP.Structs
                         double xDistToV1 = marioX - triStruct.X1;
                         return xDistToV1;
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? xDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? xDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!xDistNullable.HasValue) return false;
                         double xDist = xDistNullable.Value;
                         double newMarioX = triStruct.X1 + xDist;
@@ -1789,10 +1789,10 @@ namespace STROOP.Structs
                         double yDistToV1 = marioY - triStruct.Y1;
                         return yDistToV1;
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? yDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? yDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!yDistNullable.HasValue) return false;
                         double yDist = yDistNullable.Value;
                         double newMarioY = triStruct.Y1 + yDist;
@@ -1808,10 +1808,10 @@ namespace STROOP.Structs
                         double zDistToV1 = marioZ - triStruct.Z1;
                         return zDistToV1;
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? zDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? zDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!zDistNullable.HasValue) return false;
                         double zDist = zDistNullable.Value;
                         double newMarioZ = triStruct.Z1 + zDist;
@@ -1828,11 +1828,11 @@ namespace STROOP.Structs
                             marioPos.X, marioPos.Z, triStruct.X1, triStruct.Z1);
                         return hDistToV1;
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? hDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? hDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!hDistNullable.HasValue) return false;
                         double hDist = hDistNullable.Value;
                         (double newMarioX, double newMarioZ) =
@@ -1850,11 +1850,11 @@ namespace STROOP.Structs
                             marioPos.X, marioPos.Y, marioPos.Z, triStruct.X1, triStruct.Y1, triStruct.Z1);
                         return distToV1;
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!distAwayNullable.HasValue) return false;
                         double distAway = distAwayNullable.Value;
                         (double newMarioX, double newMarioY, double newMarioZ) =
@@ -1872,10 +1872,10 @@ namespace STROOP.Structs
                         double xDistToV2 = marioX - triStruct.X2;
                         return xDistToV2;
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? xDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? xDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!xDistNullable.HasValue) return false;
                         double xDist = xDistNullable.Value;
                         double newMarioX = triStruct.X2 + xDist;
@@ -1891,10 +1891,10 @@ namespace STROOP.Structs
                         double yDistToV2 = marioY - triStruct.Y2;
                         return yDistToV2;
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? yDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? yDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!yDistNullable.HasValue) return false;
                         double yDist = yDistNullable.Value;
                         double newMarioY = triStruct.Y2 + yDist;
@@ -1910,10 +1910,10 @@ namespace STROOP.Structs
                         double zDistToV2 = marioZ - triStruct.Z2;
                         return zDistToV2;
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? zDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? zDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!zDistNullable.HasValue) return false;
                         double zDist = zDistNullable.Value;
                         double newMarioZ = triStruct.Z2 + zDist;
@@ -1930,11 +1930,11 @@ namespace STROOP.Structs
                             marioPos.X, marioPos.Z, triStruct.X2, triStruct.Z2);
                         return hDistToV2;
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? hDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? hDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!hDistNullable.HasValue) return false;
                         double hDist = hDistNullable.Value;
                         (double newMarioX, double newMarioZ) =
@@ -1952,11 +1952,11 @@ namespace STROOP.Structs
                             marioPos.X, marioPos.Y, marioPos.Z, triStruct.X2, triStruct.Y2, triStruct.Z2);
                         return distToV2;
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!distAwayNullable.HasValue) return false;
                         double distAway = distAwayNullable.Value;
                         (double newMarioX, double newMarioY, double newMarioZ) =
@@ -1974,10 +1974,10 @@ namespace STROOP.Structs
                         double xDistToV3 = marioX - triStruct.X3;
                         return xDistToV3;
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? xDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? xDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!xDistNullable.HasValue) return false;
                         double xDist = xDistNullable.Value;
                         double newMarioX = triStruct.X3 + xDist;
@@ -1993,10 +1993,10 @@ namespace STROOP.Structs
                         double yDistToV3 = marioY - triStruct.Y3;
                         return yDistToV3;
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? yDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? yDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!yDistNullable.HasValue) return false;
                         double yDist = yDistNullable.Value;
                         double newMarioY = triStruct.Y3 + yDist;
@@ -2012,10 +2012,10 @@ namespace STROOP.Structs
                         double zDistToV3 = marioZ - triStruct.Z3;
                         return zDistToV3;
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? zDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? zDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!zDistNullable.HasValue) return false;
                         double zDist = zDistNullable.Value;
                         double newMarioZ = triStruct.Z3 + zDist;
@@ -2032,11 +2032,11 @@ namespace STROOP.Structs
                             marioPos.X, marioPos.Z, triStruct.X3, triStruct.Z3);
                         return hDistToV3;
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? hDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? hDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!hDistNullable.HasValue) return false;
                         double hDist = hDistNullable.Value;
                         (double newMarioX, double newMarioZ) =
@@ -2054,11 +2054,11 @@ namespace STROOP.Structs
                             marioPos.X, marioPos.Y, marioPos.Z, triStruct.X3, triStruct.Y3, triStruct.Z3);
                         return distToV3;
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!distAwayNullable.HasValue) return false;
                         double distAway = distAwayNullable.Value;
                         (double newMarioX, double newMarioY, double newMarioZ) =
@@ -2080,7 +2080,7 @@ namespace STROOP.Structs
                             triStruct.X3, triStruct.Z3, 1, 2);
                         return signedDistToLine12;
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -2090,7 +2090,7 @@ namespace STROOP.Structs
                             triStruct.X2, triStruct.Z2,
                             triStruct.X3, triStruct.Z3, 1, 2);
 
-                        double? distNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? distNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!distNullable.HasValue) return false;
                         double dist = distNullable.Value;
                         double missingDist = dist - signedDistToLine12;
@@ -2118,7 +2118,7 @@ namespace STROOP.Structs
                             triStruct.X3, triStruct.Z3, 2, 3);
                         return signedDistToLine23;
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -2128,7 +2128,7 @@ namespace STROOP.Structs
                             triStruct.X2, triStruct.Z2,
                             triStruct.X3, triStruct.Z3, 2, 3);
 
-                        double? distNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? distNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!distNullable.HasValue) return false;
                         double dist = distNullable.Value;
                         double missingDist = dist - signedDistToLine23;
@@ -2156,7 +2156,7 @@ namespace STROOP.Structs
                             triStruct.X3, triStruct.Z3, 3, 1);
                         return signedDistToLine31;
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -2166,7 +2166,7 @@ namespace STROOP.Structs
                             triStruct.X2, triStruct.Z2,
                             triStruct.X3, triStruct.Z3, 3, 1);
 
-                        double? distNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? distNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!distNullable.HasValue) return false;
                         double dist = distNullable.Value;
                         double missingDist = dist - signedDistToLine31;
@@ -2191,11 +2191,11 @@ namespace STROOP.Structs
                             marioPos.X, marioPos.Z, triStruct.X1, triStruct.Z1);
                         return angleToV1;
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleNullable.HasValue) return false;
                         double angle = angleNullable.Value;
                         (double newMarioX, double newMarioZ) =
@@ -2215,11 +2215,11 @@ namespace STROOP.Structs
                         double angleDiff = marioPos.Angle.Value - angleToV1;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleDiffNullable.HasValue) return false;
                         double angleDiff = angleDiffNullable.Value;
                         double angleToVertex = MoreMath.AngleTo_AngleUnits(
@@ -2240,11 +2240,11 @@ namespace STROOP.Structs
                             triStruct.X1, triStruct.Z1, marioPos.X, marioPos.Z);
                         return angleV1ToMario;
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleNullable.HasValue) return false;
                         double angle = MoreMath.ReverseAngle(angleNullable.Value);
                         (double newMarioX, double newMarioZ) =
@@ -2263,11 +2263,11 @@ namespace STROOP.Structs
                             marioPos.X, marioPos.Z, triStruct.X2, triStruct.Z2);
                         return angleToV2;
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleNullable.HasValue) return false;
                         double angle = angleNullable.Value;
                         (double newMarioX, double newMarioZ) =
@@ -2287,11 +2287,11 @@ namespace STROOP.Structs
                         double angleDiff = marioPos.Angle.Value - angleToV2;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleDiffNullable.HasValue) return false;
                         double angleDiff = angleDiffNullable.Value;
                         double angleToVertex = MoreMath.AngleTo_AngleUnits(
@@ -2312,11 +2312,11 @@ namespace STROOP.Structs
                             triStruct.X2, triStruct.Z2, marioPos.X, marioPos.Z);
                         return angleV2ToMario;
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleNullable.HasValue) return false;
                         double angle = MoreMath.ReverseAngle(angleNullable.Value);
                         (double newMarioX, double newMarioZ) =
@@ -2335,11 +2335,11 @@ namespace STROOP.Structs
                             marioPos.X, marioPos.Z, triStruct.X3, triStruct.Z3);
                         return angleToV3;
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleNullable.HasValue) return false;
                         double angle = angleNullable.Value;
                         (double newMarioX, double newMarioZ) =
@@ -2359,11 +2359,11 @@ namespace STROOP.Structs
                         double angleDiff = marioPos.Angle.Value - angleToV3;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleDiffNullable.HasValue) return false;
                         double angleDiff = angleDiffNullable.Value;
                         double angleToVertex = MoreMath.AngleTo_AngleUnits(
@@ -2384,11 +2384,11 @@ namespace STROOP.Structs
                             triStruct.X3, triStruct.Z3, marioPos.X, marioPos.Z);
                         return angleV3ToMario;
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleNullable.HasValue) return false;
                         double angle = MoreMath.ReverseAngle(angleNullable.Value);
                         (double newMarioX, double newMarioZ) =
@@ -2468,11 +2468,11 @@ namespace STROOP.Structs
                         double angleDiff = marioPos.Angle.Value - angleV1ToV2;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleDiffNullable.HasValue) return false;
                         double angleDiff = angleDiffNullable.Value;
                         double angleV1ToV2 = MoreMath.AngleTo_AngleUnits(
@@ -2494,11 +2494,11 @@ namespace STROOP.Structs
                         double angleDiff = marioPos.Angle.Value - angleV2ToV1;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleDiffNullable.HasValue) return false;
                         double angleDiff = angleDiffNullable.Value;
                         double angleV2ToV1 = MoreMath.AngleTo_AngleUnits(
@@ -2520,11 +2520,11 @@ namespace STROOP.Structs
                         double angleDiff = marioPos.Angle.Value - angleV2ToV3;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleDiffNullable.HasValue) return false;
                         double angleDiff = angleDiffNullable.Value;
                         double angleV2ToV3 = MoreMath.AngleTo_AngleUnits(
@@ -2546,11 +2546,11 @@ namespace STROOP.Structs
                         double angleDiff = marioPos.Angle.Value - angleV3ToV2;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleDiffNullable.HasValue) return false;
                         double angleDiff = angleDiffNullable.Value;
                         double angleV3ToV2 = MoreMath.AngleTo_AngleUnits(
@@ -2572,11 +2572,11 @@ namespace STROOP.Structs
                         double angleDiff = marioPos.Angle.Value - angleV3ToV1;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleDiffNullable.HasValue) return false;
                         double angleDiff = angleDiffNullable.Value;
                         double angleV3ToV1 = MoreMath.AngleTo_AngleUnits(
@@ -2598,11 +2598,11 @@ namespace STROOP.Structs
                         double angleDiff = marioPos.Angle.Value - angleV1ToV3;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                     };
-                    setterFunction = (object stringValue, uint triAddress) =>
+                    setterFunction = (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleDiffNullable.HasValue) return false;
                         double angleDiff = angleDiffNullable.Value;
                         double angleV1ToV3 = MoreMath.AngleTo_AngleUnits(
@@ -2657,9 +2657,9 @@ namespace STROOP.Structs
                         float marioAboveWater = marioY - waterLevel;
                         return marioAboveWater;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!doubleValueNullable.HasValue) return false;
                         double goalMarioAboveWater = doubleValueNullable.Value;
                         short waterLevel = Config.Stream.GetInt16(MarioConfig.StructAddress + MarioConfig.WaterLevelOffset);
@@ -2679,9 +2679,9 @@ namespace STROOP.Structs
                         double qpuXIndex = puXIndex / 4d;
                         return qpuXIndex;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? newQpuXIndexNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? newQpuXIndexNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newQpuXIndexNullable.HasValue) return false;
                         double newQpuXIndex = newQpuXIndexNullable.Value;
                         int newPuXIndex = (int)Math.Round(newQpuXIndex * 4);
@@ -2700,9 +2700,9 @@ namespace STROOP.Structs
                         double qpuYIndex = puYIndex / 4d;
                         return qpuYIndex;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? newQpuYIndexNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? newQpuYIndexNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newQpuYIndexNullable.HasValue) return false;
                         double newQpuYIndex = newQpuYIndexNullable.Value;
                         int newPuYIndex = (int)Math.Round(newQpuYIndex * 4);
@@ -2721,9 +2721,9 @@ namespace STROOP.Structs
                         double qpuZIndex = puZIndex / 4d;
                         return qpuZIndex;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? newQpuZIndexNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? newQpuZIndexNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newQpuZIndexNullable.HasValue) return false;
                         double newQpuZIndex = newQpuZIndexNullable.Value;
                         int newPuZIndex = (int)Math.Round(newQpuZIndex * 4);
@@ -2741,9 +2741,9 @@ namespace STROOP.Structs
                         int puXIndex = PuUtilities.GetPuIndex(marioX);
                         return puXIndex;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        int? newPuXIndexNullable = ParsingUtilities.ParseIntNullable(stringValue);
+                        int? newPuXIndexNullable = ParsingUtilities.ParseIntNullable(objectValue);
                         if (!newPuXIndexNullable.HasValue) return false;
                         int newPuXIndex = newPuXIndexNullable.Value;
 
@@ -2760,9 +2760,9 @@ namespace STROOP.Structs
                         int puYIndex = PuUtilities.GetPuIndex(marioY);
                         return puYIndex;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        int? newPuYIndexNullable = ParsingUtilities.ParseIntNullable(stringValue);
+                        int? newPuYIndexNullable = ParsingUtilities.ParseIntNullable(objectValue);
                         if (!newPuYIndexNullable.HasValue) return false;
                         int newPuYIndex = newPuYIndexNullable.Value;
 
@@ -2779,9 +2779,9 @@ namespace STROOP.Structs
                         int puZIndex = PuUtilities.GetPuIndex(marioZ);
                         return puZIndex;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        int? newPuZIndexNullable = ParsingUtilities.ParseIntNullable(stringValue);
+                        int? newPuZIndexNullable = ParsingUtilities.ParseIntNullable(objectValue);
                         if (!newPuZIndexNullable.HasValue) return false;
                         int newPuZIndex = newPuZIndexNullable.Value;
 
@@ -2798,9 +2798,9 @@ namespace STROOP.Structs
                         double relX = PuUtilities.GetRelativeCoordinate(marioX);
                         return relX;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? newRelXNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? newRelXNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newRelXNullable.HasValue) return false;
                         double newRelX = newRelXNullable.Value;
 
@@ -2818,9 +2818,9 @@ namespace STROOP.Structs
                         double relY = PuUtilities.GetRelativeCoordinate(marioY);
                         return relY;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? newRelYNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? newRelYNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newRelYNullable.HasValue) return false;
                         double newRelY = newRelYNullable.Value;
 
@@ -2838,9 +2838,9 @@ namespace STROOP.Structs
                         double relZ = PuUtilities.GetRelativeCoordinate(marioZ);
                         return relZ;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? newRelZNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? newRelZNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newRelZNullable.HasValue) return false;
                         double newRelZ = newRelZNullable.Value;
 
@@ -2856,14 +2856,14 @@ namespace STROOP.Structs
                     {
                         return GetDeFactoMultiplier();
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
                         float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
                         float distAboveFloor = marioY - floorY;
                         if (distAboveFloor != 0) return false;
 
-                        double? newDeFactoMultiplierNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? newDeFactoMultiplierNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newDeFactoMultiplierNullable.HasValue) return false;
                         double newDeFactoMultiplier = newDeFactoMultiplierNullable.Value;
 
@@ -2878,14 +2878,14 @@ namespace STROOP.Structs
                     {
                         return GetSyncingSpeed();
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
                         float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
                         float distAboveFloor = marioY - floorY;
                         if (distAboveFloor != 0) return false;
 
-                        double? newSyncingSpeedNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? newSyncingSpeedNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newSyncingSpeedNullable.HasValue) return false;
                         double newSyncingSpeed = newSyncingSpeedNullable.Value;
 
@@ -2901,9 +2901,9 @@ namespace STROOP.Structs
                     {
                         return GetQpuSpeed();
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? newQpuSpeedNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? newQpuSpeedNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newQpuSpeedNullable.HasValue) return false;
                         double newQpuSpeed = newQpuSpeedNullable.Value;
                         double newHSpeed = newQpuSpeed * GetSyncingSpeed();
@@ -2917,9 +2917,9 @@ namespace STROOP.Structs
                         double puSpeed = GetQpuSpeed() * 4;
                         return puSpeed;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? newPuSpeedNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? newPuSpeedNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newPuSpeedNullable.HasValue) return false;
                         double newPuSpeed = newPuSpeedNullable.Value;
                         double newQpuSpeed = newPuSpeed / 4;
@@ -2933,9 +2933,9 @@ namespace STROOP.Structs
                     {
                         return Math.Round(GetQpuSpeed());
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        int? newQpuSpeedCompNullable = ParsingUtilities.ParseIntNullable(stringValue);
+                        int? newQpuSpeedCompNullable = ParsingUtilities.ParseIntNullable(objectValue);
                         if (!newQpuSpeedCompNullable.HasValue) return false;
                         int newQpuSpeedComp = newQpuSpeedCompNullable.Value;
 
@@ -2950,9 +2950,9 @@ namespace STROOP.Structs
                     {
                         return Math.Round(GetQpuSpeed() * 4);
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        int? newPuSpeedCompNullable = ParsingUtilities.ParseIntNullable(stringValue);
+                        int? newPuSpeedCompNullable = ParsingUtilities.ParseIntNullable(objectValue);
                         if (!newPuSpeedCompNullable.HasValue) return false;
                         int newPuSpeedComp = newPuSpeedCompNullable.Value;
                         
@@ -2968,9 +2968,9 @@ namespace STROOP.Structs
                     {
                         return GetRelativePuSpeed();
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? newRelativeSpeedNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? newRelativeSpeedNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newRelativeSpeedNullable.HasValue) return false;
                         double newRelativeSpeed = newRelativeSpeedNullable.Value;
 
@@ -2986,9 +2986,9 @@ namespace STROOP.Structs
                     {
                         return GetQsRelativeSpeed(1 / 4d, true);
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        return GetQsRelativeIntendedNextComponent(stringValue, 1 / 4d, true, true);
+                        return GetQsRelativeIntendedNextComponent(objectValue, 1 / 4d, true, true);
                     };
                     break;
 
@@ -2997,9 +2997,9 @@ namespace STROOP.Structs
                     {
                         return GetQsRelativeSpeed(1 / 4d, false);
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        return GetQsRelativeIntendedNextComponent(stringValue, 1 / 4d, false, true);
+                        return GetQsRelativeIntendedNextComponent(objectValue, 1 / 4d, false, true);
                     };
                     break;
 
@@ -3008,9 +3008,9 @@ namespace STROOP.Structs
                     {
                         return GetQsRelativeIntendedNextComponent(1 / 4d, true);
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        return GetQsRelativeIntendedNextComponent(stringValue, 1 / 4d, true, false);
+                        return GetQsRelativeIntendedNextComponent(objectValue, 1 / 4d, true, false);
                     };
                     break;
 
@@ -3019,9 +3019,9 @@ namespace STROOP.Structs
                     {
                         return GetQsRelativeIntendedNextComponent(1 / 4d, false);
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        return GetQsRelativeIntendedNextComponent(stringValue, 1 / 4d, false, false);
+                        return GetQsRelativeIntendedNextComponent(objectValue, 1 / 4d, false, false);
                     };
                     break;
 
@@ -3030,9 +3030,9 @@ namespace STROOP.Structs
                     {
                         return GetQsRelativeSpeed(2 / 4d, true);
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        return GetQsRelativeIntendedNextComponent(stringValue, 2 / 4d, true, true);
+                        return GetQsRelativeIntendedNextComponent(objectValue, 2 / 4d, true, true);
                     };
                     break;
 
@@ -3041,9 +3041,9 @@ namespace STROOP.Structs
                     {
                         return GetQsRelativeSpeed(2 / 4d, false);
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        return GetQsRelativeIntendedNextComponent(stringValue, 2 / 4d, false, true);
+                        return GetQsRelativeIntendedNextComponent(objectValue, 2 / 4d, false, true);
                     };
                     break;
 
@@ -3052,9 +3052,9 @@ namespace STROOP.Structs
                     {
                         return GetQsRelativeIntendedNextComponent(2 / 4d, true);
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        return GetQsRelativeIntendedNextComponent(stringValue, 2 / 4d, true, false);
+                        return GetQsRelativeIntendedNextComponent(objectValue, 2 / 4d, true, false);
                     };
                     break;
 
@@ -3063,9 +3063,9 @@ namespace STROOP.Structs
                     {
                         return GetQsRelativeIntendedNextComponent(2 / 4d, false);
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        return GetQsRelativeIntendedNextComponent(stringValue, 2 / 4d, false, false);
+                        return GetQsRelativeIntendedNextComponent(objectValue, 2 / 4d, false, false);
                     };
                     break;
 
@@ -3074,9 +3074,9 @@ namespace STROOP.Structs
                     {
                         return GetQsRelativeSpeed(3 / 4d, true);
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        return GetQsRelativeIntendedNextComponent(stringValue, 3 / 4d, true, true);
+                        return GetQsRelativeIntendedNextComponent(objectValue, 3 / 4d, true, true);
                     };
                     break;
 
@@ -3085,9 +3085,9 @@ namespace STROOP.Structs
                     {
                         return GetQsRelativeSpeed(3 / 4d, false);
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        return GetQsRelativeIntendedNextComponent(stringValue, 3 / 4d, false, true);
+                        return GetQsRelativeIntendedNextComponent(objectValue, 3 / 4d, false, true);
                     };
                     break;
 
@@ -3096,9 +3096,9 @@ namespace STROOP.Structs
                     {
                         return GetQsRelativeIntendedNextComponent(3 / 4d, true);
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        return GetQsRelativeIntendedNextComponent(stringValue, 3 / 4d, true, false);
+                        return GetQsRelativeIntendedNextComponent(objectValue, 3 / 4d, true, false);
                     };
                     break;
 
@@ -3107,9 +3107,9 @@ namespace STROOP.Structs
                     {
                         return GetQsRelativeIntendedNextComponent(3 / 4d, false);
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        return GetQsRelativeIntendedNextComponent(stringValue, 3 / 4d, false, false);
+                        return GetQsRelativeIntendedNextComponent(objectValue, 3 / 4d, false, false);
                     };
                     break;
 
@@ -3118,9 +3118,9 @@ namespace STROOP.Structs
                     {
                         return GetQsRelativeSpeed(4 / 4d, true);
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        return GetQsRelativeIntendedNextComponent(stringValue, 4 / 4d, true, true);
+                        return GetQsRelativeIntendedNextComponent(objectValue, 4 / 4d, true, true);
                     };
                     break;
 
@@ -3129,9 +3129,9 @@ namespace STROOP.Structs
                     {
                         return GetQsRelativeSpeed(4 / 4d, false);
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        return GetQsRelativeIntendedNextComponent(stringValue, 4 / 4d, false, true);
+                        return GetQsRelativeIntendedNextComponent(objectValue, 4 / 4d, false, true);
                     };
                     break;
 
@@ -3140,9 +3140,9 @@ namespace STROOP.Structs
                     {
                         return GetQsRelativeIntendedNextComponent(4 / 4d, true);
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        return GetQsRelativeIntendedNextComponent(stringValue, 4 / 4d, true, false);
+                        return GetQsRelativeIntendedNextComponent(objectValue, 4 / 4d, true, false);
                     };
                     break;
 
@@ -3151,9 +3151,9 @@ namespace STROOP.Structs
                     {
                         return GetQsRelativeIntendedNextComponent(4 / 4d, false);
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        return GetQsRelativeIntendedNextComponent(stringValue, 4 / 4d, false, false);
+                        return GetQsRelativeIntendedNextComponent(objectValue, 4 / 4d, false, false);
                     };
                     break;
 
@@ -3166,7 +3166,7 @@ namespace STROOP.Structs
                     {
                         List<string> stringList = ParsingUtilities.ParseStringList(objectValue.ToString());
                         List<int?> intList = stringList.ConvertAll(
-                            stringValue => ParsingUtilities.ParseIntNullable(stringValue));
+                            stringVal => ParsingUtilities.ParseIntNullable(stringVal));
                         if (intList.Count == 1) intList.Insert(0, 0);
                         if (intList.Count != 2 || intList.Exists(intValue => !intValue.HasValue)) return false;
                         SpecialConfig.PuParam1 = intList[0].Value;
@@ -3184,9 +3184,9 @@ namespace STROOP.Structs
                         string rngIndexString = RngIndexer.GetRngIndexString(rngValue);
                         return rngIndexString;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        int? index = ParsingUtilities.ParseIntNullable(stringValue);
+                        int? index = ParsingUtilities.ParseIntNullable(objectValue);
                         if (!index.HasValue) return false;
                         ushort rngValue = RngIndexer.GetRngValue(index.Value);
                         return Config.Stream.SetValue(rngValue, MiscConfig.RngAddress);
@@ -3220,9 +3220,9 @@ namespace STROOP.Structs
                         string currentAreaIndexMario = AreaUtilities.GetAreaIndexString(currentAreaMario);
                         return currentAreaIndexMario;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        int? intValueNullable = ParsingUtilities.ParseIntNullable(stringValue);
+                        int? intValueNullable = ParsingUtilities.ParseIntNullable(objectValue);
                         if (!intValueNullable.HasValue) return false;
                         int currentAreaIndexMario = intValueNullable.Value;
                         if (currentAreaIndexMario < 0 || currentAreaIndexMario >= 8) return false;
@@ -3239,9 +3239,9 @@ namespace STROOP.Structs
                         string currentAreaIndex = AreaUtilities.GetAreaIndexString(currentArea);
                         return currentAreaIndex;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        int? intValueNullable = ParsingUtilities.ParseIntNullable(stringValue);
+                        int? intValueNullable = ParsingUtilities.ParseIntNullable(objectValue);
                         if (!intValueNullable.HasValue) return false;
                         int currentAreaIndex = intValueNullable.Value;
                         if (currentAreaIndex < 0 || currentAreaIndex >= 8) return false;
@@ -3258,9 +3258,9 @@ namespace STROOP.Structs
                         string terrainDescription = AreaUtilities.GetTerrainDescription(terrainType);
                         return terrainDescription;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        short? terrainTypeNullable = AreaUtilities.GetTerrainType(stringValue.ToString());
+                        short? terrainTypeNullable = AreaUtilities.GetTerrainType(objectValue.ToString());
                         if (!terrainTypeNullable.HasValue) return false;
                         short terrainType = terrainTypeNullable.Value;
                         return Config.Stream.SetValue(
@@ -3275,9 +3275,9 @@ namespace STROOP.Structs
                     {
                         return SpecialConfig.PointX;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? newValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? newValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newValueNullable.HasValue) return false;
                         double newValue = newValueNullable.Value;
                         SpecialConfig.PointX = newValue;
@@ -3290,9 +3290,9 @@ namespace STROOP.Structs
                     {
                         return SpecialConfig.PointY;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? newValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? newValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newValueNullable.HasValue) return false;
                         double newValue = newValueNullable.Value;
                         SpecialConfig.PointY = newValue;
@@ -3305,9 +3305,9 @@ namespace STROOP.Structs
                     {
                         return SpecialConfig.PointZ;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? newValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? newValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newValueNullable.HasValue) return false;
                         double newValue = newValueNullable.Value;
                         SpecialConfig.PointZ = newValue;
@@ -3320,9 +3320,9 @@ namespace STROOP.Structs
                     {
                         return SpecialConfig.PointAngle;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? newValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? newValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newValueNullable.HasValue) return false;
                         double newValue = newValueNullable.Value;
                         SpecialConfig.PointAngle = newValue;
@@ -3337,9 +3337,9 @@ namespace STROOP.Structs
                         double xDistToV1 = marioX - SpecialConfig.PointX;
                         return xDistToV1;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? xDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? xDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!xDistNullable.HasValue) return false;
                         double xDist = xDistNullable.Value;
                         double newMarioX = SpecialConfig.PointX + xDist;
@@ -3354,9 +3354,9 @@ namespace STROOP.Structs
                         double yDistToV1 = marioY - SpecialConfig.PointY;
                         return yDistToV1;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? yDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? yDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!yDistNullable.HasValue) return false;
                         double yDist = yDistNullable.Value;
                         double newMarioY = SpecialConfig.PointY + yDist;
@@ -3371,9 +3371,9 @@ namespace STROOP.Structs
                         double zDistToV1 = marioZ - SpecialConfig.PointZ;
                         return zDistToV1;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? zDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? zDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!zDistNullable.HasValue) return false;
                         double zDist = zDistNullable.Value;
                         double newMarioZ = SpecialConfig.PointZ + zDist;
@@ -3389,10 +3389,10 @@ namespace STROOP.Structs
                             marioPos.X, marioPos.Z, SpecialConfig.PointX, SpecialConfig.PointZ);
                         return hDistToV1;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        double? hDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? hDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!hDistNullable.HasValue) return false;
                         double hDist = hDistNullable.Value;
                         (double newMarioX, double newMarioZ) =
@@ -3411,10 +3411,10 @@ namespace STROOP.Structs
                             SpecialConfig.PointX, SpecialConfig.PointY, SpecialConfig.PointZ);
                         return distToV1;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!distAwayNullable.HasValue) return false;
                         double distAway = distAwayNullable.Value;
                         (double newMarioX, double newMarioY, double newMarioZ) =
@@ -3433,10 +3433,10 @@ namespace STROOP.Structs
                             marioPos.X, marioPos.Z, SpecialConfig.PointX, SpecialConfig.PointZ);
                         return angleToV1;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleNullable.HasValue) return false;
                         double angle = angleNullable.Value;
                         (double newMarioX, double newMarioZ) =
@@ -3455,10 +3455,10 @@ namespace STROOP.Structs
                         double angleDiff = marioPos.Angle.Value - angleToV1;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleDiffNullable.HasValue) return false;
                         double angleDiff = angleDiffNullable.Value;
                         double angleToVertex = MoreMath.AngleTo_AngleUnits(
@@ -3478,10 +3478,10 @@ namespace STROOP.Structs
                             SpecialConfig.PointX, SpecialConfig.PointZ, marioPos.X, marioPos.Z);
                         return angleV1ToMario;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
                         Position marioPos = GetMarioPosition();
-                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleNullable.HasValue) return false;
                         double angle = MoreMath.ReverseAngle(angleNullable.Value);
                         (double newMarioX, double newMarioZ) =
@@ -3498,9 +3498,9 @@ namespace STROOP.Structs
                         double angleDiff = marioAngle - SpecialConfig.PointAngle;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleDiffNullable.HasValue) return false;
                         double angleDiff = angleDiffNullable.Value;
                         double newMarioAngleDouble = SpecialConfig.PointAngle + angleDiff;
@@ -3523,9 +3523,9 @@ namespace STROOP.Structs
                                 hdist, angleFromPoint, SpecialConfig.PointAngle);
                         return forwardsDist;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? forwardsDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? forwardsDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!forwardsDistNullable.HasValue) return false;
                         double forwardsDist = forwardsDistNullable.Value;
                         Position marioPos = GetMarioPosition();
@@ -3550,9 +3550,9 @@ namespace STROOP.Structs
                                 hdist, angleFromPoint, SpecialConfig.PointAngle);
                         return sidewaysDist;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? sidewaysDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+                        double? sidewaysDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!sidewaysDistNullable.HasValue) return false;
                         double sidewaysDist = sidewaysDistNullable.Value;
                         Position marioPos = GetMarioPosition();
@@ -3573,17 +3573,17 @@ namespace STROOP.Structs
                         int lag = MupenUtilities.GetLagCount() + SpecialConfig.MupenLagOffset;
                         return lag;
                     };
-                    setterFunction = (object stringValue, uint dummy) =>
+                    setterFunction = (object objectValue, uint dummy) =>
                     {
                         if (!MupenUtilities.IsUsingMupen()) return false;
 
-                        if (stringValue.ToString().ToLower() == "x")
+                        if (objectValue.ToString().ToLower() == "x")
                         {
                             SpecialConfig.MupenLagOffset = 0;
                             return true;
                         }
 
-                        int? newLagNullable = ParsingUtilities.ParseIntNullable(stringValue);
+                        int? newLagNullable = ParsingUtilities.ParseIntNullable(objectValue);
                         if (!newLagNullable.HasValue) return false;
                         int newLag = newLagNullable.Value;
                         int newLagOffset = newLag - MupenUtilities.GetLagCount();
@@ -4009,9 +4009,9 @@ namespace STROOP.Structs
             return relIntendedComp;
         }
         
-        private static bool GetQsRelativeIntendedNextComponent(object stringValue, double numFrames, bool xComp, bool relativePosition)
+        private static bool GetQsRelativeIntendedNextComponent(object objectValue, double numFrames, bool xComp, bool relativePosition)
         {
-            double? newInputNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
+            double? newInputNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
             if (!newInputNullable.HasValue) return false;
             double newInput = newInputNullable.Value;
 
