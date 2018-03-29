@@ -1430,7 +1430,7 @@ namespace STROOP.Structs
                     getterFunction = (uint triAddress) =>
                     {
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        return triStruct.Classification;
+                        return triStruct.Classification.ToString();
                     };
                     break;
 

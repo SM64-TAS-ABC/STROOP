@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace STROOP.Controls
 {
-    public class WatchVariableWrapper
+    public abstract class WatchVariableWrapper
     {
         // Defaults
         protected const int DEFAULT_ROUNDING_LIMIT = 3;
@@ -51,7 +51,7 @@ namespace STROOP.Controls
             switch (subclass)
             {
                 case WatchVariableSubclass.String:
-                    return new WatchVariableWrapper(watchVar, watchVarControl);
+                    return new WatchVariableStringWrapper(watchVar, watchVarControl);
 
                 case WatchVariableSubclass.Number:
                     return new WatchVariableNumberWrapper(
