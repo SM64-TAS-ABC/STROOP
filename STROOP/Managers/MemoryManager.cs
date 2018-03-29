@@ -59,15 +59,17 @@ namespace STROOP.Managers
 
         public MemoryManager(TabPage tabControl, List<WatchVariableControlPrecursor> objectData)
         {
-            _textBoxMemoryStartAddress = tabControl.Controls["textBoxMemoryStartAddress"] as BetterTextbox;
-            _buttonMemoryButtonGo = tabControl.Controls["buttonMemoryButtonGo"] as Button;
-            _checkBoxMemoryUpdateContinuously = tabControl.Controls["checkBoxMemoryUpdateContinuously"] as CheckBox;
-            _checkBoxMemoryLittleEndian = tabControl.Controls["checkBoxMemoryLittleEndian"] as CheckBox;
-            _comboBoxMemoryTypes = tabControl.Controls["comboBoxMemoryTypes"] as ComboBox;
+            SplitContainer splitContainer = tabControl.Controls["splitContainerMemory"] as SplitContainer;
 
-            _richTextBoxMemoryAddresses = tabControl.Controls["richTextBoxMemoryAddresses"] as RichTextBoxEx;
-            _richTextBoxMemoryBytes = tabControl.Controls["richTextBoxMemoryBytes"] as RichTextBoxEx;
-            _richTextBoxMemoryValues = tabControl.Controls["richTextBoxMemoryValues"] as RichTextBoxEx;
+            _textBoxMemoryStartAddress = splitContainer.Panel1.Controls["textBoxMemoryStartAddress"] as BetterTextbox;
+            _buttonMemoryButtonGo = splitContainer.Panel1.Controls["buttonMemoryButtonGo"] as Button;
+            _checkBoxMemoryUpdateContinuously = splitContainer.Panel1.Controls["checkBoxMemoryUpdateContinuously"] as CheckBox;
+            _checkBoxMemoryLittleEndian = splitContainer.Panel1.Controls["checkBoxMemoryLittleEndian"] as CheckBox;
+            _comboBoxMemoryTypes = splitContainer.Panel1.Controls["comboBoxMemoryTypes"] as ComboBox;
+
+            _richTextBoxMemoryAddresses = splitContainer.Panel1.Controls["richTextBoxMemoryAddresses"] as RichTextBoxEx;
+            _richTextBoxMemoryBytes = splitContainer.Panel1.Controls["richTextBoxMemoryBytes"] as RichTextBoxEx;
+            _richTextBoxMemoryValues = splitContainer.Panel1.Controls["richTextBoxMemoryValues"] as RichTextBoxEx;
 
             _textBoxMemoryStartAddress.AddEnterAction(() => TryToSetAddressAndUpdateMemory());
             _buttonMemoryButtonGo.Click += (sender, e) => TryToSetAddressAndUpdateMemory();
