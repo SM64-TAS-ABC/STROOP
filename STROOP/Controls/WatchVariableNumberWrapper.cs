@@ -157,7 +157,8 @@ namespace STROOP.Controls
         protected override object HandleRounding(object value)
         {
             if (!_roundingLimit.HasValue) return value;
-            return GenericMath.Round(value, _roundingLimit.Value);
+            double doubleValue = Convert.ToDouble(value);
+            return Math.Round(doubleValue, _roundingLimit.Value);
         }
 
         protected override object HandleNegating(object value)
