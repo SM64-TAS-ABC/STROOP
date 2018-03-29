@@ -156,6 +156,7 @@ namespace STROOP.Controls
 
         protected override void HandleVerification(object value)
         {
+            base.HandleVerification(value);
             if (!TypeUtilities.IsNumber(value))
                 throw new ArgumentOutOfRangeException(value + " is not a number");
         }

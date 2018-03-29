@@ -417,7 +417,8 @@ namespace STROOP.Controls
 
         protected virtual void HandleVerification(object value)
         {
-            // do nothing
+            if (value == null)
+                throw new ArgumentOutOfRangeException("value cannot be null");
         }
 
         // Number methods
