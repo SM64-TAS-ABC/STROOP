@@ -43,11 +43,11 @@
   <Data groupList="Intermediate" base="Triangle" specialType="DownHillDeltaAngle" subclass="Angle" type="short" color="Purple">Downhill DAngle</Data>
   <Data groupList="Intermediate" base="Triangle" specialType="LeftHillDeltaAngle" subclass="Angle" type="short" color="Purple">Left Hill DAngle</Data>
   <Data groupList="Intermediate" base="Triangle" specialType="RightHillDeltaAngle" subclass="Angle" type="short" color="Purple">Right Hill DAngle</Data>
-  <Data groupList="Intermediate" base="Triangle" specialType="HillStatus" color="Purple">Hill Status</Data>
+  <Data groupList="Intermediate" base="Triangle" specialType="HillStatus" subclass="String" color="Purple">Hill Status</Data>
 
-  <Data groupList="Basic" type="float" offset="0x1C" base="Triangle" coord="X">Normal X</Data>
-  <Data groupList="Basic" type="float" offset="0x20" base="Triangle" coord="Y">Normal Y</Data>
-  <Data groupList="Basic" type="float" offset="0x24" base="Triangle" coord="Z">Normal Z</Data>
+  <Data groupList="Basic" type="float" offset="0x1C" base="Triangle" round="10" coord="X">Normal X</Data>
+  <Data groupList="Basic" type="float" offset="0x20" base="Triangle" round="10" coord="Y">Normal Y</Data>
+  <Data groupList="Basic" type="float" offset="0x24" base="Triangle" round="10" coord="Z">Normal Z</Data>
   <Data groupList="Basic" type="float" offset="0x28" base="Triangle">Normal Offset</Data>
   <Data groupList="Basic" type="uint" offset="0x2C" base="Triangle" subclass="Object">Associated Object</Data>
 
