@@ -13,7 +13,7 @@ namespace STROOP.Structs
     public static class GenericMath
     {
 
-        public static object Round(object value, int numDigits)
+        public static object Round2(object value, int numDigits)
         {
             if (value is float floatValue)
             {
@@ -26,15 +26,15 @@ namespace STROOP.Structs
             return Math.Round(doubleValue, numDigits);
         }
 
-        public static object Round2(object value, int numDigits)
+        public static object Round(object value, int numDigits)
         {
             if (value is float floatValue)
             {
-                return floatValue.ToString("F" + numDigits);
+                return Math.Round((decimal)(double)floatValue, numDigits).ToString();
             }
             if (value is double doubleValue)
             {
-                return doubleValue.ToString("F" + numDigits);
+                return Math.Round(doubleValue, numDigits).ToString();
             }
             return value;
         }
