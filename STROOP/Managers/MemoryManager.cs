@@ -55,7 +55,7 @@ namespace STROOP.Managers
             }
         }
 
-        private static readonly int _memorySize = 16;// (int)ObjectConfig.StructSize;
+        private static readonly int _memorySize = (int)ObjectConfig.StructSize;
 
         public MemoryManager(TabPage tabControl, List<WatchVariableControlPrecursor> objectData)
         {
