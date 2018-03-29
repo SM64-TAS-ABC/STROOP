@@ -3413,6 +3413,10 @@
     <SpawnCode gfxId="0x57"/>
     <Image path="Wiggler Head.png"/>
     <MapImage path="Wiggler Head Top.png" rotates="true"/>
+    <Data groupList="ObjectSpecific" type="int" offset="0x108" base="Object">Countdown</Data>
+    <Data groupList="ObjectSpecific" type="ushort" offset="0x10E" base="Object" subclass="Angle">Target Yaw</Data>
+    <Data groupList="ObjectSpecific" type="ushort" offset="0xCA" base="Object" subclass="Angle">Yaw Moving</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x11A" base="Object" subclass="Angle">Yaw Velocity</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x184" base="Object">HP</Data>
   </Object>
   <Object behaviorScriptAddress="0x130048E0" name="Wiggler Body Part">
