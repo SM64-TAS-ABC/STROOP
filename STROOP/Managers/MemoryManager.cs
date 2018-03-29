@@ -55,7 +55,7 @@ namespace STROOP.Managers
             }
         }
 
-        private static readonly int _memorySize = (int)ObjectConfig.StructSize;
+        private static readonly int _memorySize = 16;// (int)ObjectConfig.StructSize;
 
         public MemoryManager(TabPage tabControl, List<WatchVariableControlPrecursor> objectData)
         {
@@ -245,7 +245,8 @@ namespace STROOP.Managers
                 if (i % 2 == 1)
                 {
                     int trimmedLength = stringValue.Trim().Length;
-                    ValueText valueText = new ValueText(i / 2, typeSize, totalLength - trimmedLength, trimmedLength);
+                    int valueIndex = (i - 1) / 2;
+                    ValueText valueText = new ValueText(valueIndex * typeSize, typeSize, totalLength - trimmedLength, trimmedLength);
                     valueTexts.Add(valueText);
                 }
             }
