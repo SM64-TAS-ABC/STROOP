@@ -272,6 +272,7 @@ namespace STROOP.Controls
             bool handleRounding = true,
             bool handleFormatting = true)
         {
+            HandleVerification(value);
             value = HandleAngleConverting(value);
             if (handleRounding) value = HandleRounding(value);
             value = HandleAngleRoundingOut(value);
@@ -411,6 +412,13 @@ namespace STROOP.Controls
         }
 
 
+
+        // Generic methods
+
+        protected virtual void HandleVerification(object value)
+        {
+            // do nothing
+        }
 
         // Number methods
 

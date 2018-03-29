@@ -154,6 +154,12 @@ namespace STROOP.Controls
 
 
 
+        protected override void HandleVerification(object value)
+        {
+            if (!TypeUtilities.IsNumber(value))
+                throw new ArgumentOutOfRangeException(value + " is not a number");
+        }
+
         protected override object HandleRounding(object value)
         {
             if (!_roundingLimit.HasValue) return value;

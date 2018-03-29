@@ -21,11 +21,6 @@ namespace STROOP.Structs
             return null;
         }
 
-        public static string GetAreaIndexString(uint areaAddress)
-        {
-            return GetAreaIndex(areaAddress)?.ToString() ?? "Unrecognized";
-        }
-
         public static uint GetAreaAddress(int index)
         {
             return (uint)(AreaConfig.AreaStartAddress + index * AreaConfig.AreaStructSize);

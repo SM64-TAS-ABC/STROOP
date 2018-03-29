@@ -3206,7 +3206,7 @@ namespace STROOP.Structs
                 case "NumberOfLoadedObjects":
                     getterFunction = (uint dummy) =>
                     {
-                        return $"{DataModels.ObjectProcessor.ActiveObjectCount}";
+                        return DataModels.ObjectProcessor.ActiveObjectCount;
                     };
                     break;
 
@@ -3217,7 +3217,7 @@ namespace STROOP.Structs
                     {
                         uint currentAreaMario = Config.Stream.GetUInt32(
                             MarioConfig.StructAddress + MarioConfig.AreaPointerOffset);
-                        string currentAreaIndexMario = AreaUtilities.GetAreaIndexString(currentAreaMario);
+                        double currentAreaIndexMario = AreaUtilities.GetAreaIndex(currentAreaMario) ?? Double.NaN;
                         return currentAreaIndexMario;
                     };
                     setterFunction = (object objectValue, uint dummy) =>
@@ -3236,7 +3236,7 @@ namespace STROOP.Structs
                     getterFunction = (uint dummy) =>
                     {
                         uint currentArea = Config.Stream.GetUInt32(AreaConfig.CurrentAreaPointerAddress);
-                        string currentAreaIndex = AreaUtilities.GetAreaIndexString(currentArea);
+                        double currentAreaIndex = AreaUtilities.GetAreaIndex(currentArea) ?? Double.NaN;
                         return currentAreaIndex;
                     };
                     setterFunction = (object objectValue, uint dummy) =>

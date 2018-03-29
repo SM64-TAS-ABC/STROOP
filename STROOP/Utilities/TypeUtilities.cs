@@ -110,5 +110,17 @@ namespace STROOP.Structs
             if (type == typeof(double)) return BitConverter.ToDouble(bytes, 0);
             throw new ArgumentOutOfRangeException();
         }
+
+        public static bool IsNumber(object obj)
+        {
+            return obj is byte ||
+                   obj is sbyte ||
+                   obj is short ||
+                   obj is ushort ||
+                   obj is int ||
+                   obj is uint ||
+                   obj is float ||
+                   obj is double;
+        }
     }
 }
