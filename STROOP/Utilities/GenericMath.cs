@@ -26,5 +26,18 @@ namespace STROOP.Structs
             return Math.Round(doubleValue, numDigits);
         }
 
+        public static object Round2(object value, int numDigits)
+        {
+            if (value is float floatValue)
+            {
+                return floatValue.ToString("F" + numDigits);
+            }
+            if (value is double doubleValue)
+            {
+                return doubleValue.ToString("F" + numDigits);
+            }
+            return value;
+        }
+
     }
 }
