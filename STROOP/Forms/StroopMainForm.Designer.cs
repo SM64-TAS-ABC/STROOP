@@ -820,12 +820,14 @@ namespace STROOP
             this.labelScriptAddress = new System.Windows.Forms.Label();
             this.richTextBoxExScript = new STROOP.Controls.RichTextBoxEx();
             this.tabPageMemory = new System.Windows.Forms.TabPage();
+            this.comboBoxMemoryTypes = new System.Windows.Forms.ComboBox();
             this.checkBoxMemoryLittleEndian = new System.Windows.Forms.CheckBox();
             this.checkBoxMemoryUpdateContinuously = new System.Windows.Forms.CheckBox();
             this.textBoxMemoryStartAddress = new STROOP.BetterTextbox();
             this.buttonMemoryButtonGo = new System.Windows.Forms.Button();
             this.labelMemoryStartAddress = new System.Windows.Forms.Label();
             this.richTextBoxMemoryAddresses = new STROOP.Controls.RichTextBoxEx();
+            this.richTextBoxMemoryValues = new STROOP.Controls.RichTextBoxEx();
             this.richTextBoxMemoryBytes = new STROOP.Controls.RichTextBoxEx();
             this.tabPageHacks = new System.Windows.Forms.TabPage();
             this.splitContainerHacks = new STROOP.BetterSplitContainer();
@@ -1158,8 +1160,8 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.richTextBoxMemoryValues = new STROOP.Controls.RichTextBoxEx();
-            this.comboBoxMemoryTypes = new System.Windows.Forms.ComboBox();
+            this.splitContainerMemory = new STROOP.BetterSplitContainer();
+            this.watchVariablePanelMemory = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1527,6 +1529,9 @@ namespace STROOP
             this.groupBoxRecording.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMemory)).BeginInit();
+            this.splitContainerMemory.Panel2.SuspendLayout();
+            this.splitContainerMemory.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -4916,7 +4921,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 297F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 298F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -10745,7 +10750,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(255, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(238, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -10777,7 +10782,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(249, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(232, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -10833,7 +10838,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(249, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(232, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -11251,12 +11256,22 @@ namespace STROOP
             this.tabPageMemory.Controls.Add(this.richTextBoxMemoryAddresses);
             this.tabPageMemory.Controls.Add(this.richTextBoxMemoryValues);
             this.tabPageMemory.Controls.Add(this.richTextBoxMemoryBytes);
+            this.tabPageMemory.Controls.Add(this.splitContainerMemory);
             this.tabPageMemory.Location = new System.Drawing.Point(4, 22);
             this.tabPageMemory.Name = "tabPageMemory";
             this.tabPageMemory.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageMemory.Size = new System.Drawing.Size(915, 463);
             this.tabPageMemory.TabIndex = 27;
             this.tabPageMemory.Text = "Memory";
+            // 
+            // comboBoxMemoryTypes
+            // 
+            this.comboBoxMemoryTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMemoryTypes.Location = new System.Drawing.Point(489, 4);
+            this.comboBoxMemoryTypes.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxMemoryTypes.Name = "comboBoxMemoryTypes";
+            this.comboBoxMemoryTypes.Size = new System.Drawing.Size(55, 21);
+            this.comboBoxMemoryTypes.TabIndex = 36;
             // 
             // checkBoxMemoryLittleEndian
             // 
@@ -11323,6 +11338,21 @@ namespace STROOP
             this.richTextBoxMemoryAddresses.Size = new System.Drawing.Size(103, 429);
             this.richTextBoxMemoryAddresses.TabIndex = 8;
             this.richTextBoxMemoryAddresses.Text = "";
+            // 
+            // richTextBoxMemoryValues
+            // 
+            this.richTextBoxMemoryValues.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBoxMemoryValues.BackColor = System.Drawing.SystemColors.Control;
+            this.richTextBoxMemoryValues.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxMemoryValues.Location = new System.Drawing.Point(489, 29);
+            this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
+            this.richTextBoxMemoryValues.ReadOnly = true;
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(421, 429);
+            this.richTextBoxMemoryValues.TabIndex = 8;
+            this.richTextBoxMemoryValues.Text = "";
             // 
             // richTextBoxMemoryBytes
             // 
@@ -15072,29 +15102,40 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // richTextBoxMemoryValues
+            // splitContainerMemory
             // 
-            this.richTextBoxMemoryValues.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBoxMemoryValues.BackColor = System.Drawing.SystemColors.Control;
-            this.richTextBoxMemoryValues.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxMemoryValues.Location = new System.Drawing.Point(489, 29);
-            this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
-            this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
-            this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(421, 429);
-            this.richTextBoxMemoryValues.TabIndex = 8;
-            this.richTextBoxMemoryValues.Text = "";
+            this.splitContainerMemory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerMemory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerMemory.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerMemory.Location = new System.Drawing.Point(3, 3);
+            this.splitContainerMemory.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerMemory.Name = "splitContainerMemory";
             // 
-            // comboBoxMemoryTypes
+            // splitContainerMemory.Panel1
             // 
-            this.comboBoxMemoryTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxMemoryTypes.Location = new System.Drawing.Point(489, 4);
-            this.comboBoxMemoryTypes.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxMemoryTypes.Name = "comboBoxMemoryTypes";
-            this.comboBoxMemoryTypes.Size = new System.Drawing.Size(55, 21);
-            this.comboBoxMemoryTypes.TabIndex = 36;
+            this.splitContainerMemory.Panel1.AutoScroll = true;
+            this.splitContainerMemory.Panel1MinSize = 0;
+            // 
+            // splitContainerMemory.Panel2
+            // 
+            this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
+            this.splitContainerMemory.Panel2MinSize = 0;
+            this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
+            this.splitContainerMemory.SplitterDistance = 764;
+            this.splitContainerMemory.SplitterWidth = 1;
+            this.splitContainerMemory.TabIndex = 37;
+            // 
+            // watchVariablePanelMemory
+            // 
+            this.watchVariablePanelMemory.AutoScroll = true;
+            this.watchVariablePanelMemory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.watchVariablePanelMemory.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.watchVariablePanelMemory.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
+            this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
+            this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(142, 455);
+            this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // StroopMainForm
             // 
@@ -15568,6 +15609,9 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
+            this.splitContainerMemory.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMemory)).EndInit();
+            this.splitContainerMemory.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -16700,6 +16744,8 @@ namespace STROOP
         private RichTextBoxEx richTextBoxMemoryAddresses;
         private RichTextBoxEx richTextBoxMemoryValues;
         private ComboBox comboBoxMemoryTypes;
+        private BetterSplitContainer splitContainerMemory;
+        private WatchVariableFlowLayoutPanel watchVariablePanelMemory;
     }
 }
 
