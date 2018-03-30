@@ -134,6 +134,43 @@ namespace STROOP.Managers
                 List<int> byteIndexes = littleEndian ? _byteIndexesLittleEndian : _byteIndexes;
                 return byteIndexes.Any(byteIndex => dataBools[byteIndex]);
             }
+
+            public void AddToVariablePanelIfSelected(int selectedIndex)
+            {
+                if (false)
+                {
+                    AddToVariablePanel();
+                }
+            }
+
+            private void AddToVariablePanel()
+            {
+                WatchVariableControlPrecursor precursor = CreatePrecursor();
+                Config.MemoryManager.AddVariable(precursor.CreateWatchVariableControl());
+            }
+
+            private WatchVariableControlPrecursor CreatePrecursor()
+            {
+                WatchVariable watchVar = new WatchVariable(
+                    TypeUtilities.TypeToString[MemoryType],
+                    null /* specialType */,
+                    BaseAddressTypeEnum.Object,
+                    null /* offsetUS */,
+                    null /* offsetJP */,
+                    null /* offsetPAL */,
+                    (uint) ByteIndex,
+                    null /* mask */);
+                return new WatchVariableControlPrecursor(
+                    "test var",
+                    watchVar,
+                    WatchVariableSubclass.Number,
+                    null /* backgroundColor */,
+                    null /* roundingLimit */,
+                    null /* useHex */,
+                    null /* invertBool */,
+                    null /* coordinate */,
+                    new List<VariableGroup>());
+            }
         }
 
         private void UpdateMemory()
