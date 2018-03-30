@@ -108,6 +108,11 @@ namespace STROOP.Controls
                 }
             }
 
+            if (Subclass == WatchVariableSubclass.Object && WatchVar.MemoryType != typeof(uint))
+            {
+                throw new ArgumentOutOfRangeException("Object vars must have type uint");
+            }
+
             if (UseHex.HasValue && (Subclass == WatchVariableSubclass.String))
             {
                 throw new ArgumentOutOfRangeException("useHex cannot be used with var subclass String");

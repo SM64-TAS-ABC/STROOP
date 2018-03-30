@@ -175,17 +175,20 @@ namespace STROOP.Managers
 
             private WatchVariableControlPrecursor CreatePrecursor(bool isLittleEndian, bool useHex, bool useObj)
             {
-                string typeString = TypeUtilities.TypeToString[MemoryType];
-                uint address = isLittleEndian
-                        ? (uint)EndianUtilities.SwapEndianness(ByteIndex, ByteSize)
-                        : (uint)ByteIndex;
-
                 WatchVariableSubclass subclass = useObj
                     ? WatchVariableSubclass.Object
                     : WatchVariableSubclass.Number;
                 if (Keyboard.IsKeyDown(Key.A)) subclass = WatchVariableSubclass.Angle;
                 if (Keyboard.IsKeyDown(Key.B)) subclass = WatchVariableSubclass.Boolean;
                 if (Keyboard.IsKeyDown(Key.Q)) subclass = WatchVariableSubclass.Object;
+
+                Type effectiveType = subclass == WatchVariableSubclass.Object
+                    ? typeof(uint)
+                    : MemoryType;
+                string typeString = TypeUtilities.TypeToString[effectiveType];
+                uint address = isLittleEndian
+                        ? (uint)EndianUtilities.SwapEndianness(ByteIndex, ByteSize)
+                        : (uint)ByteIndex;
 
                 WatchVariable watchVar = new WatchVariable(
                     typeString,
