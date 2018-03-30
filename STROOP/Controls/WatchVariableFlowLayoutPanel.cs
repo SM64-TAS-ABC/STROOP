@@ -53,14 +53,14 @@ namespace STROOP.Controls
 
         private void AddItemsToContextMenuStrip()
         {
-            ToolStripMenuItem enableCustomization = new ToolStripMenuItem("Enable Customization");
-            enableCustomization.Click += (sender, e) => EnableCustomVariableFunctionality();
-
             ToolStripMenuItem resetVariablesItem = new ToolStripMenuItem("Reset Variables");
             resetVariablesItem.Click += (sender, e) => ResetVariables();
 
             ToolStripMenuItem clearAllButHighlightedItem = new ToolStripMenuItem("Clear All But Highlighted");
             clearAllButHighlightedItem.Click += (sender, e) => ClearAllButHighlightedVariables();
+
+            ToolStripMenuItem enableCustomization = new ToolStripMenuItem("Enable Customization");
+            enableCustomization.Click += (sender, e) => EnableCustomVariableFunctionality();
 
             ToolStripMenuItem showVariableXmlItem = new ToolStripMenuItem("Show Variable XML");
             showVariableXmlItem.Click += (sender, e) => ShowVariableXml();
@@ -155,9 +155,9 @@ namespace STROOP.Controls
             filterVariablesItem.DropDown.AutoClose = false;
             filterVariablesItem.DropDown.MouseLeave += (sender, e) => { filterVariablesItem.DropDown.Close(); };
 
-            ContextMenuStrip.Items.Add(enableCustomization);
             ContextMenuStrip.Items.Add(resetVariablesItem);
             ContextMenuStrip.Items.Add(clearAllButHighlightedItem);
+            ContextMenuStrip.Items.Add(enableCustomization);
             ContextMenuStrip.Items.Add(showVariableXmlItem);
             ContextMenuStrip.Items.Add(showVariableInfoItem);
             ContextMenuStrip.Items.Add(setAllRoundingLimitsItem);
