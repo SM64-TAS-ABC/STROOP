@@ -366,9 +366,9 @@ namespace STROOP.Managers
 
         public string GetDescriptiveSlotLabelFromAddress(uint objAddress, bool concise)
         {
-            string noObjectString = concise ? "NONE" : "(no object)";
-            string unusedObjectString = concise ? "UNUSED" : "(unused object)";
-            string unknownObjectString = concise ? "UNKNOWN" : "(unknown object)";
+            string noObjectString = concise ? ".." : "(no object)";
+            string unusedObjectString = concise ? "UU" : "(unused object)";
+            string unknownObjectString = concise ? ".." : "(unknown object)";
             string slotLabelPrefix = concise ? "" : "Slot ";
 
             if (objAddress == 0) return noObjectString;

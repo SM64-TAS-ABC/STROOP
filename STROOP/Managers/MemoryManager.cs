@@ -285,7 +285,12 @@ namespace STROOP.Managers
                 stringList.Add(whiteSpace);
 
                 object value = TypeUtilities.ConvertBytes(type, bytes, i, littleEndian);
-                if (useHex && type != typeof(float))
+                if (useObj)
+                {
+                    uint uintValue = ParsingUtilities.ParseUInt(value);
+                    value = Config.ObjectSlotsManager.GetDescriptiveSlotLabelFromAddress(uintValue, true);
+                }
+                else if (useHex && type != typeof(float))
                 {
                     value = HexUtilities.Format(value, typeSize * 2, false);
                 }
