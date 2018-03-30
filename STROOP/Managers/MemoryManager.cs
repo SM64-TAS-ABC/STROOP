@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace STROOP.Managers
 {
@@ -56,9 +57,15 @@ namespace STROOP.Managers
 
         private static readonly int _memorySize = (int)ObjectConfig.StructSize;
 
+        private List<ValueText> _currentValueTexts;
+
         public MemoryManager(TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel, List<WatchVariableControlPrecursor> objectData)
             : base(new List<WatchVariableControlPrecursor>(), watchVariablePanel)
         {
+            Address = null;
+            _behavior = null;
+            _currentValueTexts = new List<ValueText>();
+
             SplitContainer splitContainer = tabControl.Controls["splitContainerMemory"] as SplitContainer;
 
             _textBoxMemoryObjAddress = splitContainer.Panel1.Controls["textBoxMemoryObjAddress"] as BetterTextbox;
@@ -74,8 +81,13 @@ namespace STROOP.Managers
 
             _objectDataBools = ConvertPrecursorsToBoolArray(objectData);
 
-            Address = null;
-            _behavior = null;
+            _richTextBoxMemoryValues.Click += (sender, e) =>
+            {
+                bool isCtrlKeyHeld = Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
+                if (!isCtrlKeyHeld) return;
+                int index = _richTextBoxMemoryValues.SelectionStart;
+                _currentValueTexts.ForEach(valueText => valueText.AddToVariablePanelIfSelected(index));
+            };
         }
 
         private bool[] ConvertPrecursorsToBoolArray(List<WatchVariableControlPrecursor> precursors)
@@ -137,7 +149,7 @@ namespace STROOP.Managers
 
             public void AddToVariablePanelIfSelected(int selectedIndex)
             {
-                if (false)
+                if (selectedIndex >= StringIndex && selectedIndex <= StringIndex + StringSize)
                 {
                     AddToVariablePanel();
                 }
@@ -185,9 +197,8 @@ namespace STROOP.Managers
             _richTextBoxMemoryAddresses.Text = FormatAddresses(Address.Value, _memorySize);
             _richTextBoxMemoryBytes.Text = FormatBytes(bytes, littleEndian);
 
-            List<ValueText> valueTexts;
-            _richTextBoxMemoryValues.Text = FormatValues(bytes, type, littleEndian, out valueTexts);
-            valueTexts.ForEach(valueText =>
+            _richTextBoxMemoryValues.Text = FormatValues(bytes, type, littleEndian);
+            _currentValueTexts.ForEach(valueText =>
             {
                 if (valueText.OverlapsData(_objectDataBools, littleEndian))
                 {
@@ -240,7 +251,7 @@ namespace STROOP.Managers
             return builder.ToString();
         }
 
-        private static string FormatValues(byte[] bytes, Type type, bool littleEndian, out List<ValueText> valueTexts)
+        private string FormatValues(byte[] bytes, Type type, bool littleEndian)
         {
             int typeSize = TypeUtilities.TypeSize[type];
             List<string> stringList = new List<string>();
@@ -266,7 +277,7 @@ namespace STROOP.Managers
                 stringList[index] = newString;
             });
 
-            valueTexts = new List<ValueText>();
+            _currentValueTexts.Clear();
             int totalLength = 0;
             for (int i = 0; i < stringList.Count; i++)
             {
@@ -284,7 +295,7 @@ namespace STROOP.Managers
                             totalLength - trimmedLength,
                             trimmedLength,
                             type);
-                    valueTexts.Add(valueText);
+                    _currentValueTexts.Add(valueText);
                 }
             }
 
@@ -297,6 +308,7 @@ namespace STROOP.Managers
         {
             if (!updateView) return;
 
+            base.Update(updateView);
             if (_checkBoxMemoryUpdateContinuously.Checked) UpdateMemory();
         }
     }
