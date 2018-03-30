@@ -348,8 +348,39 @@ namespace STROOP.Managers
             return ObjectSlots.FirstOrDefault(o => o.CurrentObject?.Equals(obj) ?? false)?.Index;
         }
 
+        public ObjectDataModel GetObjectFromAddress(uint objAddress)
+        {
+            return DataModels.Objects.FirstOrDefault(o => o?.Address == objAddress);
+        }
+
+        /*
+         * Returns a string that's either:
+         * - the slot label if a slot has the address
+         * - null if no slot has the address
+         */
+        public string GetSlotLabelFromAddress(uint objAddress)
+        {
+            ObjectDataModel obj = GetObjectFromAddress(objAddress);
+            return Config.ObjectSlotsManager.GetSlotLabelFromObject(obj);
+        }
+
+        public string GetDescriptiveSlotLabelFromAddress(uint objAddress, bool concise)
+        {
+            string noObjectString = concise ? "NONE" : "(no object)";
+            string unusedObjectString = concise ? "UNUSED" : "(unused object)";
+            string unknownObjectString = concise ? "UNKNOWN" : "(unknown object)";
+            string slotLabelPrefix = concise ? "" : "Slot ";
+
+            if (objAddress == 0) return noObjectString;
+            if (objAddress == ObjectSlotsConfig.UnusedSlotAddress) return unusedObjectString;
+            string slotLabel = GetSlotLabelFromAddress(objAddress);
+            if (slotLabel == null) return unknownObjectString;
+            return slotLabelPrefix + slotLabel;
+        }
+
         public string GetSlotLabelFromObject(ObjectDataModel obj)
         {
+            if (obj == null) return null;
             switch (LabelMethod)
             {
                 case SlotLabelType.Recommended:
