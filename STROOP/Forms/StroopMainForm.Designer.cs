@@ -4921,7 +4921,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 301F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 302F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -10750,7 +10750,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(187, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(170, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -10782,7 +10782,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(181, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(164, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -10838,7 +10838,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(181, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(164, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -11259,7 +11259,7 @@ namespace STROOP
             // 
             this.splitContainerMemory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainerMemory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerMemory.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerMemory.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitContainerMemory.Location = new System.Drawing.Point(3, 3);
             this.splitContainerMemory.Margin = new System.Windows.Forms.Padding(0);
             this.splitContainerMemory.Name = "splitContainerMemory";
