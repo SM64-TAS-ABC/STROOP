@@ -89,7 +89,8 @@ namespace STROOP.Managers
                 bool isCtrlKeyHeld = Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
                 if (!isCtrlKeyHeld) return;
                 int index = _richTextBoxMemoryValues.SelectionStart;
-                _currentValueTexts.ForEach(valueText => valueText.AddToVariablePanelIfSelected(index));
+                bool isLittleEndian = _checkBoxMemoryLittleEndian.Checked;
+                _currentValueTexts.ForEach(valueText => valueText.AddToVariablePanelIfSelected(index, isLittleEndian));
             };
         }
 
@@ -150,21 +151,21 @@ namespace STROOP.Managers
                 return byteIndexes.Any(byteIndex => dataBools[byteIndex]);
             }
 
-            public void AddToVariablePanelIfSelected(int selectedIndex)
+            public void AddToVariablePanelIfSelected(int selectedIndex, bool isLittleEndian)
             {
                 if (selectedIndex >= StringIndex && selectedIndex <= StringIndex + StringSize)
                 {
-                    AddToVariablePanel();
+                    AddToVariablePanel(isLittleEndian);
                 }
             }
 
-            private void AddToVariablePanel()
+            private void AddToVariablePanel(bool isLittleEndian)
             {
-                WatchVariableControlPrecursor precursor = CreatePrecursor();
+                WatchVariableControlPrecursor precursor = CreatePrecursor(isLittleEndian);
                 Config.MemoryManager.AddVariable(precursor.CreateWatchVariableControl());
             }
 
-            private WatchVariableControlPrecursor CreatePrecursor()
+            private WatchVariableControlPrecursor CreatePrecursor(bool isLittleEndian)
             {
                 WatchVariable watchVar = new WatchVariable(
                     TypeUtilities.TypeToString[MemoryType],
@@ -173,7 +174,9 @@ namespace STROOP.Managers
                     null /* offsetUS */,
                     null /* offsetJP */,
                     null /* offsetPAL */,
-                    (uint) EndianUtilities.SwapEndianness(ByteIndex, ByteSize),
+                    isLittleEndian
+                        ? (uint) EndianUtilities.SwapEndianness(ByteIndex, ByteSize)
+                        : (uint) ByteIndex,
                     null /* mask */);
                 return new WatchVariableControlPrecursor(
                     "test var",
