@@ -82,6 +82,7 @@ namespace STROOP.Managers
             _objectDataBools = ConvertPrecursorsToBoolArray(objectData);
 
             _checkBoxMemoryLittleEndian.Click += (sender, e) => UpdateMemory();
+            _comboBoxMemoryTypes.SelectedValueChanged += (sender, e) => UpdateMemory();
 
             _richTextBoxMemoryValues.Click += (sender, e) =>
             {
