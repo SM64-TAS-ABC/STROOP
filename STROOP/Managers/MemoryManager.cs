@@ -167,19 +167,22 @@ namespace STROOP.Managers
 
             private WatchVariableControlPrecursor CreatePrecursor(bool isLittleEndian)
             {
+                string typeString = TypeUtilities.TypeToString[MemoryType];
+                uint address = isLittleEndian
+                        ? (uint)EndianUtilities.SwapEndianness(ByteIndex, ByteSize)
+                        : (uint)ByteIndex;
+
                 WatchVariable watchVar = new WatchVariable(
-                    TypeUtilities.TypeToString[MemoryType],
+                    typeString,
                     null /* specialType */,
                     BaseAddressTypeEnum.Memory,
                     null /* offsetUS */,
                     null /* offsetJP */,
                     null /* offsetPAL */,
-                    isLittleEndian
-                        ? (uint) EndianUtilities.SwapEndianness(ByteIndex, ByteSize)
-                        : (uint) ByteIndex,
+                    address,
                     null /* mask */);
                 return new WatchVariableControlPrecursor(
-                    "test var",
+                    typeString + " " + HexUtilities.Format(address),
                     watchVar,
                     WatchVariableSubclass.Number,
                     null /* backgroundColor */,
