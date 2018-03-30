@@ -612,13 +612,12 @@ namespace STROOP.Structs
                 case "PendulumSwingIndex":
                     getterFunction = (uint objAddress) =>
                     {
-                        string badValue = "Unknown Index";
                         float pendulumAmplitudeFloat = GetPendulumAmplitude(objAddress);
                         int? pendulumAmplitudeIntNullable = ParsingUtilities.ParseIntNullable(pendulumAmplitudeFloat);
-                        if (!pendulumAmplitudeIntNullable.HasValue) return badValue;
+                        if (!pendulumAmplitudeIntNullable.HasValue) return Double.NaN;
                         int pendulumAmplitudeInt = pendulumAmplitudeIntNullable.Value;
                         int? pendulumSwingIndexNullable = TableConfig.PendulumSwings.GetPendulumSwingIndex(pendulumAmplitudeInt);
-                        if (!pendulumSwingIndexNullable.HasValue) return badValue;
+                        if (!pendulumSwingIndexNullable.HasValue) return Double.NaN;
                         int pendulumSwingIndex = pendulumSwingIndexNullable.Value;
                         return pendulumSwingIndex;
                     };
