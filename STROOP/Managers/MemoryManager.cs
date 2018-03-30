@@ -91,6 +91,7 @@ namespace STROOP.Managers
                 int index = _richTextBoxMemoryValues.SelectionStart;
                 bool isLittleEndian = _checkBoxMemoryLittleEndian.Checked;
                 _currentValueTexts.ForEach(valueText => valueText.AddToVariablePanelIfSelected(index, isLittleEndian));
+                _richTextBoxMemoryValues.Parent.Focus();
             };
         }
 
@@ -318,7 +319,12 @@ namespace STROOP.Managers
             if (!updateView) return;
 
             base.Update(updateView);
-            if (_checkBoxMemoryUpdateContinuously.Checked) UpdateMemory();
+
+            bool isCtrlKeyHeld = Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
+            if (_checkBoxMemoryUpdateContinuously.Checked && !isCtrlKeyHeld)
+            {
+                UpdateMemory();
+            }
         }
     }
 }
