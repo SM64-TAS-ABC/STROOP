@@ -66,13 +66,7 @@ namespace STROOP.Controls
             if (!uintValueNullable.HasValue) return value;
             uint uintValue = uintValueNullable.Value;
 
-            if (uintValue == ObjectSlotsConfig.UnusedSlotAddress) return "(unused object)";
-            ObjectDataModel obj = DataModels.Objects.FirstOrDefault(o => o?.Address == uintValue);
-            if (obj == null) return "(no object)";
-
-            string slotName = Config.ObjectSlotsManager.GetSlotLabelFromObject(obj);
-            if (slotName == null) return "(unknown object)";
-            return "Slot " + slotName;
+            return Config.ObjectSlotsManager.GetDescriptiveSlotLabelFromAddress(uintValue, false);
         }
 
         protected override object HandleObjectUndisplaying(object value)
