@@ -173,6 +173,11 @@ namespace STROOP.Managers
                         ? (uint)EndianUtilities.SwapEndianness(ByteIndex, ByteSize)
                         : (uint)ByteIndex;
 
+                WatchVariableSubclass subclass = WatchVariableSubclass.Number;
+                if (Keyboard.IsKeyDown(Key.A)) subclass = WatchVariableSubclass.Angle;
+                if (Keyboard.IsKeyDown(Key.B)) subclass = WatchVariableSubclass.Boolean;
+                if (Keyboard.IsKeyDown(Key.Q)) subclass = WatchVariableSubclass.Object;
+
                 WatchVariable watchVar = new WatchVariable(
                     typeString,
                     null /* specialType */,
@@ -185,7 +190,7 @@ namespace STROOP.Managers
                 return new WatchVariableControlPrecursor(
                     typeString + " " + HexUtilities.Format(address),
                     watchVar,
-                    WatchVariableSubclass.Number,
+                    subclass,
                     null /* backgroundColor */,
                     null /* roundingLimit */,
                     null /* useHex */,
