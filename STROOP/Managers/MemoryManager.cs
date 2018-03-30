@@ -172,7 +172,7 @@ namespace STROOP.Managers
                     null /* offsetUS */,
                     null /* offsetJP */,
                     null /* offsetPAL */,
-                    (uint) ByteIndex,
+                    (uint) EndianUtilities.SwapEndianness(ByteIndex, ByteSize),
                     null /* mask */);
                 return new WatchVariableControlPrecursor(
                     "test var",
