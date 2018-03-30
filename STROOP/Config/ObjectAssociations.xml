@@ -1125,6 +1125,7 @@
     <Data groupList="ObjectSpecific" type="byte" offset="0x373" base="Graphics">Blinking State Graphic</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x1AE" base="Object">Blinking Timer</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0x6C" base="Object" subclass="Object">Tail Anchor Obj</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001850" name="Bowser #2" subType="1">
     <SpawnCode gfxId="0x64"/>
@@ -1136,6 +1137,7 @@
     <Data groupList="ObjectSpecific" type="byte" offset="0x373" base="Graphics">Blinking State Graphic</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x1AE" base="Object">Blinking Timer</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0x6C" base="Object" subclass="Object">Tail Anchor Obj</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001850" name="Bowser #3" subType="2">
     <SpawnCode gfxId="0x64"/>
@@ -1147,6 +1149,7 @@
     <Data groupList="ObjectSpecific" type="byte" offset="0x373" base="Graphics">Blinking State Graphic</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x1AE" base="Object">Blinking Timer</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0x6C" base="Object" subclass="Object">Tail Anchor Obj</Data>
   </Object>
   <Object behaviorScriptAddress="0x130018CC" name="Bowser Body Anchor">
     <SpawnCode gfxId="0x00"/>
