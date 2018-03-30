@@ -285,6 +285,10 @@ namespace STROOP.Managers
                 stringList.Add(whiteSpace);
 
                 object value = TypeUtilities.ConvertBytes(type, bytes, i, littleEndian);
+                if (useHex && type != typeof(float))
+                {
+                    value = HexUtilities.Format(value, typeSize * 2, false);
+                }
                 stringList.Add(value.ToString());
             }
 
