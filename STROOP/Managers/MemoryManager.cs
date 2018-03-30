@@ -81,6 +81,8 @@ namespace STROOP.Managers
 
             _objectDataBools = ConvertPrecursorsToBoolArray(objectData);
 
+            _checkBoxMemoryLittleEndian.Click += (sender, e) => UpdateMemory();
+
             _richTextBoxMemoryValues.Click += (sender, e) =>
             {
                 bool isCtrlKeyHeld = Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
