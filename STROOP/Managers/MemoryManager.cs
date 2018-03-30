@@ -94,7 +94,10 @@ namespace STROOP.Managers
                 if (!isCtrlKeyHeld) return;
                 int index = _richTextBoxMemoryValues.SelectionStart;
                 bool isLittleEndian = _checkBoxMemoryLittleEndian.Checked;
-                _currentValueTexts.ForEach(valueText => valueText.AddToVariablePanelIfSelected(index, isLittleEndian));
+                bool useHex = _checkBoxMemoryHex.Checked;
+                bool useObj = _checkBoxMemoryObj.Checked;
+                _currentValueTexts.ForEach(valueText =>
+                    valueText.AddToVariablePanelIfSelected(index, isLittleEndian, useHex, useObj));
                 _richTextBoxMemoryValues.Parent.Focus();
             };
         }
@@ -156,28 +159,30 @@ namespace STROOP.Managers
                 return byteIndexes.Any(byteIndex => dataBools[byteIndex]);
             }
 
-            public void AddToVariablePanelIfSelected(int selectedIndex, bool isLittleEndian)
+            public void AddToVariablePanelIfSelected(int selectedIndex, bool isLittleEndian, bool useHex, bool useObj)
             {
                 if (selectedIndex >= StringIndex && selectedIndex <= StringIndex + StringSize)
                 {
-                    AddToVariablePanel(isLittleEndian);
+                    AddToVariablePanel(isLittleEndian, useHex, useObj);
                 }
             }
 
-            private void AddToVariablePanel(bool isLittleEndian)
+            private void AddToVariablePanel(bool isLittleEndian, bool useHex, bool useObj)
             {
-                WatchVariableControlPrecursor precursor = CreatePrecursor(isLittleEndian);
+                WatchVariableControlPrecursor precursor = CreatePrecursor(isLittleEndian, useHex, useObj);
                 Config.MemoryManager.AddVariable(precursor.CreateWatchVariableControl());
             }
 
-            private WatchVariableControlPrecursor CreatePrecursor(bool isLittleEndian)
+            private WatchVariableControlPrecursor CreatePrecursor(bool isLittleEndian, bool useHex, bool useObj)
             {
                 string typeString = TypeUtilities.TypeToString[MemoryType];
                 uint address = isLittleEndian
                         ? (uint)EndianUtilities.SwapEndianness(ByteIndex, ByteSize)
                         : (uint)ByteIndex;
 
-                WatchVariableSubclass subclass = WatchVariableSubclass.Number;
+                WatchVariableSubclass subclass = useObj
+                    ? WatchVariableSubclass.Object
+                    : WatchVariableSubclass.Number;
                 if (Keyboard.IsKeyDown(Key.A)) subclass = WatchVariableSubclass.Angle;
                 if (Keyboard.IsKeyDown(Key.B)) subclass = WatchVariableSubclass.Boolean;
                 if (Keyboard.IsKeyDown(Key.Q)) subclass = WatchVariableSubclass.Object;
@@ -197,7 +202,9 @@ namespace STROOP.Managers
                     subclass,
                     null /* backgroundColor */,
                     null /* roundingLimit */,
-                    null /* useHex */,
+                    subclass == WatchVariableSubclass.Object
+                        ? (bool?)null
+                        : useHex && MemoryType != typeof(float),
                     null /* invertBool */,
                     null /* coordinate */,
                     new List<VariableGroup>());

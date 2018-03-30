@@ -266,9 +266,25 @@ namespace STROOP.Managers
             Structs.WatchVariableSubclass subclass = Structs.WatchVariableSubclass.Number, uint? mask = null)
         {
             var col = (offset <= 0x13) ? Color.Beige : Color.PowderBlue;
-            var wv = new WatchVariable(type, null, Structs.BaseAddressTypeEnum.GfxNode, null, null, null, offset, mask);
-            var wvp = new WatchVariableControlPrecursor(name, wv, subclass, col, null,
-                type == "uint" || type == "ushort", false, null, new List<Structs.VariableGroup>());
+            var wv = new WatchVariable(
+                type,
+                null /* specialType */,
+                Structs.BaseAddressTypeEnum.GfxNode,
+                null /* offsetUS */,
+                null /* offsetJP */,
+                null /* offsetPAL */,
+                offset,
+                mask);
+            var wvp = new WatchVariableControlPrecursor(
+                name,
+                wv,
+                subclass,
+                col,
+                null /* roundingLimit */,
+                type == "uint" || type == "ushort",
+                null /* invertBool */,
+                null /* coordinate */,
+                new List<Structs.VariableGroup>());
             return wvp;
         }
 

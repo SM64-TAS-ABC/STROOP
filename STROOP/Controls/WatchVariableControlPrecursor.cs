@@ -48,6 +48,8 @@ namespace STROOP.Controls
             Coordinate = coordinate;
             GroupList = groupList;
             FixedAddresses = fixedAddresses;
+
+            VerifyState();
         }
 
         public WatchVariableControlPrecursor(XElement element)
@@ -90,9 +92,17 @@ namespace STROOP.Controls
             FixedAddresses = element.Attribute(XName.Get("fixed")) != null ?
                 ParsingUtilities.ParseHexList(element.Attribute(XName.Get("fixed")).Value) : null;
 
-            if (Subclass == WatchVariableSubclass.Angle && specialType != null)
+            VerifyState();
+        }
+
+        private void VerifyState()
+        {
+            if (Subclass == WatchVariableSubclass.Angle && WatchVar.SpecialType != null)
             {
-                if (typeName != "ushort" && typeName != "short" && typeName != "uint" && typeName != "int")
+                if (WatchVar.MemoryType != typeof(ushort) &&
+                    WatchVar.MemoryType != typeof(short) &&
+                    WatchVar.MemoryType != typeof(uint) &&
+                    WatchVar.MemoryType != typeof(int))
                 {
                     throw new ArgumentOutOfRangeException("Special angle vars must have a good type");
                 }
@@ -103,9 +113,9 @@ namespace STROOP.Controls
                 throw new ArgumentOutOfRangeException("useHex cannot be used with var subclass String");
             }
 
-            if ((UseHex == true) && (Subclass == WatchVariableSubclass.Object))
+            if (UseHex.HasValue && (Subclass == WatchVariableSubclass.Object))
             {
-                throw new ArgumentOutOfRangeException("useHex as true is redundant with var subclass Object");
+                throw new ArgumentOutOfRangeException("useHex is redundant with var subclass Object");
             }
 
             if (InvertBool.HasValue && (Subclass != WatchVariableSubclass.Boolean))
