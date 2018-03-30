@@ -1161,6 +1161,8 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
+            this.checkBoxMemoryHex = new System.Windows.Forms.CheckBox();
+            this.checkBoxMemoryObj = new System.Windows.Forms.CheckBox();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -4921,7 +4923,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 311F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 315F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -10750,7 +10752,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(17, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(0, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -10782,7 +10784,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(11, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(0, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -10838,7 +10840,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(11, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(0, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -11269,6 +11271,8 @@ namespace STROOP
             this.splitContainerMemory.Panel1.AutoScroll = true;
             this.splitContainerMemory.Panel1.Controls.Add(this.comboBoxMemoryTypes);
             this.splitContainerMemory.Panel1.Controls.Add(this.richTextBoxMemoryValues);
+            this.splitContainerMemory.Panel1.Controls.Add(this.checkBoxMemoryObj);
+            this.splitContainerMemory.Panel1.Controls.Add(this.checkBoxMemoryHex);
             this.splitContainerMemory.Panel1.Controls.Add(this.checkBoxMemoryLittleEndian);
             this.splitContainerMemory.Panel1.Controls.Add(this.richTextBoxMemoryBytes);
             this.splitContainerMemory.Panel1.Controls.Add(this.checkBoxMemoryUpdateContinuously);
@@ -11282,7 +11286,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 692;
+            this.splitContainerMemory.SplitterDistance = 704;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11306,7 +11310,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(194, 429);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(206, 429);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -11315,7 +11319,7 @@ namespace STROOP
             this.checkBoxMemoryLittleEndian.AutoSize = true;
             this.checkBoxMemoryLittleEndian.Checked = true;
             this.checkBoxMemoryLittleEndian.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMemoryLittleEndian.Location = new System.Drawing.Point(299, 6);
+            this.checkBoxMemoryLittleEndian.Location = new System.Drawing.Point(287, 7);
             this.checkBoxMemoryLittleEndian.Name = "checkBoxMemoryLittleEndian";
             this.checkBoxMemoryLittleEndian.Size = new System.Drawing.Size(84, 17);
             this.checkBoxMemoryLittleEndian.TabIndex = 35;
@@ -11341,7 +11345,7 @@ namespace STROOP
             this.checkBoxMemoryUpdateContinuously.AutoSize = true;
             this.checkBoxMemoryUpdateContinuously.Checked = true;
             this.checkBoxMemoryUpdateContinuously.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMemoryUpdateContinuously.Location = new System.Drawing.Point(169, 6);
+            this.checkBoxMemoryUpdateContinuously.Location = new System.Drawing.Point(159, 7);
             this.checkBoxMemoryUpdateContinuously.Name = "checkBoxMemoryUpdateContinuously";
             this.checkBoxMemoryUpdateContinuously.Size = new System.Drawing.Size(124, 17);
             this.checkBoxMemoryUpdateContinuously.TabIndex = 35;
@@ -11364,10 +11368,10 @@ namespace STROOP
             // 
             // textBoxMemoryObjAddress
             // 
-            this.textBoxMemoryObjAddress.Location = new System.Drawing.Point(77, 3);
+            this.textBoxMemoryObjAddress.Location = new System.Drawing.Point(76, 3);
             this.textBoxMemoryObjAddress.Name = "textBoxMemoryObjAddress";
             this.textBoxMemoryObjAddress.ReadOnly = true;
-            this.textBoxMemoryObjAddress.Size = new System.Drawing.Size(80, 20);
+            this.textBoxMemoryObjAddress.Size = new System.Drawing.Size(74, 20);
             this.textBoxMemoryObjAddress.TabIndex = 34;
             this.textBoxMemoryObjAddress.Text = "0x00000000";
             this.textBoxMemoryObjAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -11391,7 +11395,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(214, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(202, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPageHacks
@@ -15128,6 +15132,26 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
+            // checkBoxMemoryHex
+            // 
+            this.checkBoxMemoryHex.AutoSize = true;
+            this.checkBoxMemoryHex.Location = new System.Drawing.Point(556, 7);
+            this.checkBoxMemoryHex.Name = "checkBoxMemoryHex";
+            this.checkBoxMemoryHex.Size = new System.Drawing.Size(45, 17);
+            this.checkBoxMemoryHex.TabIndex = 35;
+            this.checkBoxMemoryHex.Text = "Hex";
+            this.checkBoxMemoryHex.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMemoryObj
+            // 
+            this.checkBoxMemoryObj.AutoSize = true;
+            this.checkBoxMemoryObj.Location = new System.Drawing.Point(605, 7);
+            this.checkBoxMemoryObj.Name = "checkBoxMemoryObj";
+            this.checkBoxMemoryObj.Size = new System.Drawing.Size(42, 17);
+            this.checkBoxMemoryObj.TabIndex = 35;
+            this.checkBoxMemoryObj.Text = "Obj";
+            this.checkBoxMemoryObj.UseVisualStyleBackColor = true;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -16737,6 +16761,8 @@ namespace STROOP
         private ComboBox comboBoxMemoryTypes;
         private BetterSplitContainer splitContainerMemory;
         private WatchVariableFlowLayoutPanel watchVariablePanelMemory;
+        private CheckBox checkBoxMemoryObj;
+        private CheckBox checkBoxMemoryHex;
     }
 }
 
