@@ -166,7 +166,7 @@ namespace STROOP.Managers
                 WatchVariable watchVar = new WatchVariable(
                     TypeUtilities.TypeToString[MemoryType],
                     null /* specialType */,
-                    BaseAddressTypeEnum.Object,
+                    BaseAddressTypeEnum.Memory,
                     null /* offsetUS */,
                     null /* offsetJP */,
                     null /* offsetPAL */,
