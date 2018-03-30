@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace STROOP.Managers
 {
-    public class MemoryManager
+    public class MemoryManager : DataManager
     {
         private readonly BetterTextbox _textBoxMemoryObjAddress;
         private readonly CheckBox _checkBoxMemoryUpdateContinuously;
@@ -56,7 +56,8 @@ namespace STROOP.Managers
 
         private static readonly int _memorySize = (int)ObjectConfig.StructSize;
 
-        public MemoryManager(TabPage tabControl, List<WatchVariableControlPrecursor> objectData)
+        public MemoryManager(TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel, List<WatchVariableControlPrecursor> objectData)
+            : base(new List<WatchVariableControlPrecursor>(), watchVariablePanel)
         {
             SplitContainer splitContainer = tabControl.Controls["splitContainerMemory"] as SplitContainer;
 
@@ -162,7 +163,7 @@ namespace STROOP.Managers
             });
         }
 
-        private string FormatAddresses(uint startAddress, int totalMemorySize)
+        private static string FormatAddresses(uint startAddress, int totalMemorySize)
         {
             StringBuilder builder = new StringBuilder();
             for (int i = 0; i < totalMemorySize; i += 16)
@@ -177,7 +178,7 @@ namespace STROOP.Managers
             return builder.ToString();
         }
 
-        private string FormatBytes(byte[] bytes, bool littleEndian)
+        private static string FormatBytes(byte[] bytes, bool littleEndian)
         {
             StringBuilder builder = new StringBuilder();
             for (int i = 0; i < bytes.Length; i++)
@@ -200,7 +201,7 @@ namespace STROOP.Managers
             return builder.ToString();
         }
 
-        private string FormatValues(byte[] bytes, Type type, bool littleEndian, out List<ValueText> valueTexts)
+        private static string FormatValues(byte[] bytes, Type type, bool littleEndian, out List<ValueText> valueTexts)
         {
             int typeSize = TypeUtilities.TypeSize[type];
             List<string> stringList = new List<string>();
@@ -247,7 +248,7 @@ namespace STROOP.Managers
             return builder.ToString();
         }
 
-        public void Update(bool updateView)
+        public override void Update(bool updateView)
         {
             if (!updateView) return;
 

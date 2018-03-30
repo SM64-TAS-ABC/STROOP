@@ -189,7 +189,7 @@ namespace STROOP
             Config.ObjectManager = new ObjectManager(_objectData, tabPageObjects, WatchVariablePanelObject);
             Config.OptionsManager = new OptionsManager(tabPageOptions);
             Config.TestingManager = new TestingManager(tabPageTesting);
-            Config.MemoryManager = new MemoryManager(tabPageMemory, _objectData);
+            Config.MemoryManager = new MemoryManager(tabPageMemory, watchVariablePanelMemory, _objectData);
             Config.ScriptManager = new ScriptManager(tabPageScripts);
             Config.GfxManager = new GfxManager(tabPageGfx, _gfxData, watchVariablePanelGfx);
 
