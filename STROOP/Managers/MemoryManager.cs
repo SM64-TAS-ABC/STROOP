@@ -113,15 +113,17 @@ namespace STROOP.Managers
             public readonly int ByteSize;
             public readonly int StringIndex;
             public readonly int StringSize;
-            private List<int> _byteIndexes;
-            private List<int> _byteIndexesLittleEndian;
+            private readonly Type MemoryType;
+            private readonly List<int> _byteIndexes;
+            private readonly List<int> _byteIndexesLittleEndian;
             
-            public ValueText(int byteIndex, int byteSize, int stringIndex, int stringSize)
+            public ValueText(int byteIndex, int byteSize, int stringIndex, int stringSize, Type memoryType)
             {
                 ByteIndex = byteIndex;
                 ByteSize = byteSize;
                 StringIndex = stringIndex;
                 StringSize = stringSize;
+                MemoryType = memoryType;
                 _byteIndexes = Enumerable.Range(byteIndex, byteSize).ToList();
                 _byteIndexesLittleEndian = _byteIndexes.ConvertAll(
                     index => EndianUtilities.SwapEndianness(index));
@@ -238,7 +240,13 @@ namespace STROOP.Managers
                 {
                     int trimmedLength = stringValue.Trim().Length;
                     int valueIndex = (i - 1) / 2;
-                    ValueText valueText = new ValueText(valueIndex * typeSize, typeSize, totalLength - trimmedLength, trimmedLength);
+                    ValueText valueText =
+                        new ValueText(
+                            valueIndex * typeSize,
+                            typeSize,
+                            totalLength - trimmedLength,
+                            trimmedLength,
+                            type);
                     valueTexts.Add(valueText);
                 }
             }
