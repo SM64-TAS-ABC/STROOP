@@ -20,6 +20,8 @@ namespace STROOP.Managers
         private readonly CheckBox _checkBoxMemoryUpdateContinuously;
         private readonly CheckBox _checkBoxMemoryLittleEndian;
         private readonly ComboBox _comboBoxMemoryTypes;
+        private readonly CheckBox _checkBoxMemoryHex;
+        private readonly CheckBox _checkBoxMemoryObj;
 
         private readonly RichTextBoxEx _richTextBoxMemoryAddresses;
         private readonly RichTextBoxEx _richTextBoxMemoryBytes;
@@ -72,6 +74,8 @@ namespace STROOP.Managers
             _checkBoxMemoryUpdateContinuously = splitContainer.Panel1.Controls["checkBoxMemoryUpdateContinuously"] as CheckBox;
             _checkBoxMemoryLittleEndian = splitContainer.Panel1.Controls["checkBoxMemoryLittleEndian"] as CheckBox;
             _comboBoxMemoryTypes = splitContainer.Panel1.Controls["comboBoxMemoryTypes"] as ComboBox;
+            _checkBoxMemoryHex = splitContainer.Panel1.Controls["checkBoxMemoryHex"] as CheckBox;
+            _checkBoxMemoryObj = splitContainer.Panel1.Controls["checkBoxMemoryObj"] as CheckBox;
 
             _richTextBoxMemoryAddresses = splitContainer.Panel1.Controls["richTextBoxMemoryAddresses"] as RichTextBoxEx;
             _richTextBoxMemoryBytes = splitContainer.Panel1.Controls["richTextBoxMemoryBytes"] as RichTextBoxEx;
