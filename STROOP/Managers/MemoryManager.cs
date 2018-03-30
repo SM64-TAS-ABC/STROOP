@@ -213,10 +213,12 @@ namespace STROOP.Managers
             byte[] bytes = Config.Stream.ReadRam(Address.Value, _memorySize);
             bool littleEndian = _checkBoxMemoryLittleEndian.Checked;
             Type type = TypeUtilities.StringToType[(string)_comboBoxMemoryTypes.SelectedItem];
+            bool useHex = _checkBoxMemoryHex.Checked;
+            bool useObj = _checkBoxMemoryObj.Checked;
             _richTextBoxMemoryAddresses.Text = FormatAddresses(Address.Value, _memorySize);
             _richTextBoxMemoryBytes.Text = FormatBytes(bytes, littleEndian);
 
-            _richTextBoxMemoryValues.Text = FormatValues(bytes, type, littleEndian);
+            _richTextBoxMemoryValues.Text = FormatValues(bytes, type, littleEndian, useHex, useObj);
             _currentValueTexts.ForEach(valueText =>
             {
                 if (valueText.OverlapsData(_objectDataBools, littleEndian))
@@ -270,7 +272,7 @@ namespace STROOP.Managers
             return builder.ToString();
         }
 
-        private string FormatValues(byte[] bytes, Type type, bool littleEndian)
+        private string FormatValues(byte[] bytes, Type type, bool littleEndian, bool useHex, bool useObj)
         {
             int typeSize = TypeUtilities.TypeSize[type];
             List<string> stringList = new List<string>();
