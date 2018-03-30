@@ -15,8 +15,7 @@ namespace STROOP.Managers
 {
     public class MemoryManager
     {
-        private readonly BetterTextbox _textBoxMemoryStartAddress;
-        private readonly Button _buttonMemoryButtonGo;
+        private readonly BetterTextbox _textBoxMemoryObjAddress;
         private readonly CheckBox _checkBoxMemoryUpdateContinuously;
         private readonly CheckBox _checkBoxMemoryLittleEndian;
         private readonly ComboBox _comboBoxMemoryTypes;
@@ -61,8 +60,7 @@ namespace STROOP.Managers
         {
             SplitContainer splitContainer = tabControl.Controls["splitContainerMemory"] as SplitContainer;
 
-            _textBoxMemoryStartAddress = splitContainer.Panel1.Controls["textBoxMemoryStartAddress"] as BetterTextbox;
-            _buttonMemoryButtonGo = splitContainer.Panel1.Controls["buttonMemoryButtonGo"] as Button;
+            _textBoxMemoryObjAddress = splitContainer.Panel1.Controls["textBoxMemoryObjAddress"] as BetterTextbox;
             _checkBoxMemoryUpdateContinuously = splitContainer.Panel1.Controls["checkBoxMemoryUpdateContinuously"] as CheckBox;
             _checkBoxMemoryLittleEndian = splitContainer.Panel1.Controls["checkBoxMemoryLittleEndian"] as CheckBox;
             _comboBoxMemoryTypes = splitContainer.Panel1.Controls["comboBoxMemoryTypes"] as ComboBox;
@@ -70,9 +68,6 @@ namespace STROOP.Managers
             _richTextBoxMemoryAddresses = splitContainer.Panel1.Controls["richTextBoxMemoryAddresses"] as RichTextBoxEx;
             _richTextBoxMemoryBytes = splitContainer.Panel1.Controls["richTextBoxMemoryBytes"] as RichTextBoxEx;
             _richTextBoxMemoryValues = splitContainer.Panel1.Controls["richTextBoxMemoryValues"] as RichTextBoxEx;
-
-            _textBoxMemoryStartAddress.AddEnterAction(() => TryToSetAddressAndUpdateMemory());
-            _buttonMemoryButtonGo.Click += (sender, e) => TryToSetAddressAndUpdateMemory();
 
             _comboBoxMemoryTypes.DataSource = TypeUtilities.SimpleTypeList;
 
@@ -104,15 +99,9 @@ namespace STROOP.Managers
             return boolArray;
         }
 
-        private void TryToSetAddressAndUpdateMemory()
-        {
-            uint? addressNullable = ParsingUtilities.ParseHexNullable(_textBoxMemoryStartAddress.Text);
-            if (addressNullable.HasValue) SetAddressAndUpdateMemory(addressNullable.Value);
-        }
-
         public void SetAddressAndUpdateMemory(uint address)
         {
-            _textBoxMemoryStartAddress.Text = HexUtilities.Format(address, 8);
+            _textBoxMemoryObjAddress.Text = HexUtilities.Format(address, 8);
             Address = address;
             UpdateMemory();
         }
