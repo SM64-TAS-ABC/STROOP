@@ -198,10 +198,10 @@ namespace STROOP.Managers
             }
             else if (click == ClickType.CamHackClick)
             {
-                uint currentCamHackSlot = Config.Stream.GetUInt32(CameraHackConfig.CameraHackStruct + CameraHackConfig.ObjectOffset);
+                uint currentCamHackSlot = Config.Stream.GetUInt32(CameraHackConfig.CameraHackStructAddress + CameraHackConfig.ObjectOffset);
                 uint newCamHackSlot = currentCamHackSlot == selectedSlot.CurrentObject.Address ? 0 
                     : selectedSlot.CurrentObject.Address;
-                Config.Stream.SetValue(newCamHackSlot, CameraHackConfig.CameraHackStruct + CameraHackConfig.ObjectOffset);
+                Config.Stream.SetValue(newCamHackSlot, CameraHackConfig.CameraHackStructAddress + CameraHackConfig.ObjectOffset);
             }
             else
             {

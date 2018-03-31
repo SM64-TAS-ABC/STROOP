@@ -29,12 +29,12 @@ namespace STROOP.Managers
         public GfxManager(Control tabControl, List<WatchVariableControlPrecursor> variables, WatchVariableFlowLayoutPanel watchVariablePanel)
             : base(variables, watchVariablePanel)
         {
-            var left = tabControl.Controls["splitContainerGfxLeft"] as SplitContainer;
-            var right = left.Panel2.Controls["splitContainerGfxright"] as SplitContainer;
-            var middle = right.Panel1.Controls["splitContainerGfxmiddle"] as SplitContainer;
-            var refreshButtonRoot = middle.Panel1.Controls["buttonGfxRefresh"] as Button;
-            var refreshButtonObject = middle.Panel1.Controls["buttonGfxRefreshObject"] as Button;
-            var dumpButton = middle.Panel1.Controls["buttonGfxDumpDisplayList"] as Button;
+            SplitContainer left = tabControl.Controls["splitContainerGfxLeft"] as SplitContainer;
+            SplitContainer right = left.Panel2.Controls["splitContainerGfxright"] as SplitContainer;
+            SplitContainer middle = right.Panel1.Controls["splitContainerGfxmiddle"] as SplitContainer;
+            Button refreshButtonRoot = middle.Panel1.Controls["buttonGfxRefresh"] as Button;
+            Button refreshButtonObject = middle.Panel1.Controls["buttonGfxRefreshObject"] as Button;
+            Button dumpButton = middle.Panel1.Controls["buttonGfxDumpDisplayList"] as Button;
 
             _outputTextBox = right.Panel2.Controls["richTextBoxGfx"] as RichTextBox;
             _outputTextBox.Font = new System.Drawing.Font("Courier New", 8);
@@ -48,9 +48,9 @@ namespace STROOP.Managers
             dumpButton.Click += DumpButton_Click;
             _tabControl = tabControl;
 
-            foreach (var factory in GfxNode.GetCommonVariables())
+            foreach (WatchVariableControlPrecursor precursor in GfxNode.GetCommonVariables())
             {
-                watchVariablePanel.AddVariable(factory.CreateWatchVariableControl());
+                watchVariablePanel.AddVariable(precursor.CreateWatchVariableControl());
             }
 
             SpecificVariables = new List<WatchVariableControl>();
@@ -63,7 +63,7 @@ namespace STROOP.Managers
         {
             if (SelectedNode != null && SelectedNode is GfxDisplayList)
             {
-                var address = Config.Stream.GetUInt32(SelectedNode.address + 0x14);
+                uint address = Config.Stream.GetUInt32(SelectedNode.Address + 0x14);
                 _outputTextBox.Text = Fast3DDecoder.DecodeList(Fast3DDecoder.DecodeSegmentedAddress(address));
 
             } else
@@ -77,10 +77,13 @@ namespace STROOP.Managers
         {
             _watchVariablePanel.RemoveVariables(SpecificVariables);
             SpecificVariables.Clear();
-            if (node != null) foreach (var factory in node.GetTypeSpecificVariables())
+            if (node != null)
+            {
+                foreach (WatchVariableControlPrecursor precursor in node.GetTypeSpecificVariables())
                 {
-                    SpecificVariables.Add(factory.CreateWatchVariableControl());
+                    SpecificVariables.Add(precursor.CreateWatchVariableControl());
                 }
+            }
             _watchVariablePanel.AddVariables(SpecificVariables);
         }
 
@@ -88,11 +91,11 @@ namespace STROOP.Managers
         private void RefreshButtonObject_Click(object sender, EventArgs e)
         {
             
-            var list = Config.ObjectSlotsManager.SelectedSlotsAddresses;
+            HashSet<uint> list = Config.ObjectSlotsManager.SelectedSlotsAddresses;
             if (list != null && list.Count>0)
             {
                 _treeView.Nodes.Clear();
-                foreach (var address in list)
+                foreach (uint address in list)
                 {
                     AddToTreeView(address);
                 }
@@ -140,7 +143,7 @@ namespace STROOP.Managers
 
         public void AddToTreeView(uint rootAddress)
         {
-            var root = GfxNode.ReadGfxNode(rootAddress);
+            GfxNode root = GfxNode.ReadGfxNode(rootAddress);
             _treeView.Nodes.Add(GfxToTreeNode(root));
         }
 
@@ -158,7 +161,7 @@ namespace STROOP.Managers
             // Should only happen when memory is invalid (for example when the US setting is used on a JP ROM)
             if (node == null) return new TreeNode("Invalid Gfx Node"); 
 
-            TreeNode res = new TreeNode(node.Name, node.children.Select(x => GfxToTreeNode(x)).ToArray());
+            TreeNode res = new TreeNode(node.Name, node.Children.Select(x => GfxToTreeNode(x)).ToArray());
             res.Tag = node;
             return res;
         }
@@ -166,10 +169,10 @@ namespace STROOP.Managers
 
     public class GfxNode
     {
-        private const int maxSiblings = 1000; //Siblings are stored as a circular list. This limit prevent infinite loops on malformed memory.
+        private const int _maxSiblings = 1000; //Siblings are stored as a circular list. This limit prevent infinite loops on malformed memory.
         public virtual string Name { get { return "GFX node"; } } //This name is overridden by all the sub classes corresponding 
-        public uint address;
-        public List<GfxNode> children;
+        public uint Address;
+        public List<GfxNode> Children;
 
         public static GfxNode ReadGfxNode(uint address)
         {
@@ -178,7 +181,7 @@ namespace STROOP.Managers
                 return null;
             }
 
-            var type = Config.Stream.GetUInt16(address + 0x00);
+            ushort type = Config.Stream.GetUInt16(address + 0x00);
             GfxNode res;
 
             switch (type)
@@ -206,8 +209,8 @@ namespace STROOP.Managers
                 case 0x12E: res = new GfxHeldObject(); break;
                 default: res = new GfxNode(); break;
             }
-            res.address = address;
-            res.children = new List<GfxNode>();
+            res.Address = address;
+            res.Children = new List<GfxNode>();
 
             uint childAddress;
             
@@ -226,10 +229,10 @@ namespace STROOP.Managers
             if (childAddress != 0)
             {
                 //Traverse the circularly linked list of siblings until the first child is seen again
-                var currentAddress = childAddress;
-                for (int i = 0; i < maxSiblings; i++)
+                uint currentAddress = childAddress;
+                for (int i = 0; i < _maxSiblings; i++)
                 {
-                    res.children.Add(ReadGfxNode(currentAddress));
+                    res.Children.Add(ReadGfxNode(currentAddress));
                     currentAddress = Config.Stream.GetUInt32(currentAddress + 0x08); //offset 0x08 = next pointer 
                     if (currentAddress == childAddress) break;
                 }
@@ -240,24 +243,24 @@ namespace STROOP.Managers
 
         public static List<WatchVariableControlPrecursor> GetCommonVariables()
         {
-            var res = new List<WatchVariableControlPrecursor>();
-            res.Add(gfxProperty("Type", "ushort", 0x00));
-            res.Add(gfxProperty("Active", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x01));
-            res.Add(gfxProperty("Bit 1", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x02));
-            res.Add(gfxProperty("Billboard object", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x04));
-            res.Add(gfxProperty("Bit 3", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x08));
-            res.Add(gfxProperty("Invisible object", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x10));
-            res.Add(gfxProperty("Bit 5", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x20));
-            res.Add(gfxProperty("Is object", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x20));
-            res.Add(gfxProperty("Previous", "uint", 0x04));
-            res.Add(gfxProperty("Next", "uint", 0x08));
-            res.Add(gfxProperty("Parent", "uint", 0x0C));
-            res.Add(gfxProperty("Child", "uint", 0x10));
-            res.Add(gfxProperty("14", "uint", 0x14)); //Placeholders, used for investigating type-specific variables
-            res.Add(gfxProperty("18", "uint", 0x18));
-            res.Add(gfxProperty("1C", "uint", 0x1C));
-            res.Add(gfxProperty("20", "uint", 0x20));
-            return res;
+            List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
+            precursors.Add(gfxProperty("Type", "ushort", 0x00));
+            precursors.Add(gfxProperty("Active", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x01));
+            precursors.Add(gfxProperty("Bit 1", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x02));
+            precursors.Add(gfxProperty("Billboard object", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x04));
+            precursors.Add(gfxProperty("Bit 3", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x08));
+            precursors.Add(gfxProperty("Invisible object", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x10));
+            precursors.Add(gfxProperty("Bit 5", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x20));
+            precursors.Add(gfxProperty("Is object", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x20));
+            precursors.Add(gfxProperty("Previous", "uint", 0x04));
+            precursors.Add(gfxProperty("Next", "uint", 0x08));
+            precursors.Add(gfxProperty("Parent", "uint", 0x0C));
+            precursors.Add(gfxProperty("Child", "uint", 0x10));
+            precursors.Add(gfxProperty("14", "uint", 0x14)); //Placeholders, used for investigating type-specific variables
+            precursors.Add(gfxProperty("18", "uint", 0x18));
+            precursors.Add(gfxProperty("1C", "uint", 0x1C));
+            precursors.Add(gfxProperty("20", "uint", 0x20));
+            return precursors;
 
         }
 
@@ -265,8 +268,8 @@ namespace STROOP.Managers
         protected static WatchVariableControlPrecursor gfxProperty(string name, string type, uint offset, 
             Structs.WatchVariableSubclass subclass = Structs.WatchVariableSubclass.Number, uint? mask = null)
         {
-            var col = (offset <= 0x13) ? Color.Beige : Color.PowderBlue;
-            var wv = new WatchVariable(
+            Color col = (offset <= 0x13) ? Color.Beige : Color.PowderBlue;
+            WatchVariable watchVar = new WatchVariable(
                 type,
                 null /* specialType */,
                 Structs.BaseAddressTypeEnum.GfxNode,
@@ -275,9 +278,9 @@ namespace STROOP.Managers
                 null /* offsetPAL */,
                 offset,
                 mask);
-            var wvp = new WatchVariableControlPrecursor(
+            WatchVariableControlPrecursor precursor = new WatchVariableControlPrecursor(
                 name,
-                wv,
+                watchVar,
                 subclass,
                 col,
                 null /* roundingLimit */,
@@ -285,7 +288,7 @@ namespace STROOP.Managers
                 null /* invertBool */,
                 null /* coordinate */,
                 new List<Structs.VariableGroup>());
-            return wvp;
+            return precursor;
         }
 
         // If there are type specific variables, this should be overridden 
@@ -301,10 +304,10 @@ namespace STROOP.Managers
 
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
-            var res = new List<WatchVariableControlPrecursor>();
-            res.Add(gfxProperty("Selection function", "uint", 0x14));
-            res.Add(gfxProperty("Selected child", "ushort", 0x1E));
-            return res;
+            List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
+            precursors.Add(gfxProperty("Selection function", "uint", 0x14));
+            precursors.Add(gfxProperty("Selected child", "ushort", 0x1E));
+            return precursors;
         }
     }
 
@@ -322,14 +325,14 @@ namespace STROOP.Managers
         //short[3] position     0x20,2,4
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
-            var res = new List<WatchVariableControlPrecursor>();
-            res.Add(gfxProperty("Function", "uint", 0x14));
-            res.Add(gfxProperty("Mario offset", "int", 0x18));
-            res.Add(gfxProperty("Held object", "uint", 0x1C));
-            res.Add(gfxProperty("Position x", "short", 0x20));
-            res.Add(gfxProperty("Position y", "short", 0x22));
-            res.Add(gfxProperty("Position z", "short", 0x24));
-            return res;
+            List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
+            precursors.Add(gfxProperty("Function", "uint", 0x14));
+            precursors.Add(gfxProperty("Mario offset", "int", 0x18));
+            precursors.Add(gfxProperty("Held object", "uint", 0x1C));
+            precursors.Add(gfxProperty("Position x", "short", 0x20));
+            precursors.Add(gfxProperty("Position y", "short", 0x22));
+            precursors.Add(gfxProperty("Position z", "short", 0x24));
+            return precursors;
         }
     }
 
@@ -339,9 +342,9 @@ namespace STROOP.Managers
 
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
-            var res = new List<WatchVariableControlPrecursor>();
-            res.Add(gfxProperty("Function", "uint", 0x14));
-            return res;
+            List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
+            precursors.Add(gfxProperty("Function", "uint", 0x14));
+            return precursors;
         }
     }
 
@@ -350,15 +353,15 @@ namespace STROOP.Managers
         public override string Name { get { return "Camera"; } }
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
-            var res = new List<WatchVariableControlPrecursor>();
-            res.Add(gfxProperty("Update function", "uint", 0x14));
-            res.Add(gfxProperty("X from", "float", 0x1C));
-            res.Add(gfxProperty("X from", "float", 0x20));
-            res.Add(gfxProperty("Z from", "float", 0x24));
-            res.Add(gfxProperty("X to", "float", 0x28));
-            res.Add(gfxProperty("Y to", "float", 0x2C));
-            res.Add(gfxProperty("Z to", "float", 0x30));
-            return res;
+            List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
+            precursors.Add(gfxProperty("Update function", "uint", 0x14));
+            precursors.Add(gfxProperty("X from", "float", 0x1C));
+            precursors.Add(gfxProperty("X from", "float", 0x20));
+            precursors.Add(gfxProperty("Z from", "float", 0x24));
+            precursors.Add(gfxProperty("X to", "float", 0x28));
+            precursors.Add(gfxProperty("Y to", "float", 0x2C));
+            precursors.Add(gfxProperty("Z to", "float", 0x30));
+            return precursors;
         }
     }
 
@@ -367,12 +370,12 @@ namespace STROOP.Managers
         public override string Name { get { return "Projection 3D"; } }
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
-            var res = new List<WatchVariableControlPrecursor>();
-            res.Add(gfxProperty("Update function", "uint", 0x14));
-            res.Add(gfxProperty("Fov", "float", 0x1C));
-            res.Add(gfxProperty("Z clip near", "short", 0x20));
-            res.Add(gfxProperty("Z clip far", "short", 0x22));
-            return res;
+            List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
+            precursors.Add(gfxProperty("Update function", "uint", 0x14));
+            precursors.Add(gfxProperty("Fov", "float", 0x1C));
+            precursors.Add(gfxProperty("Z clip near", "short", 0x20));
+            precursors.Add(gfxProperty("Z clip far", "short", 0x22));
+            return precursors;
         }
     }
 
@@ -381,9 +384,9 @@ namespace STROOP.Managers
         public override string Name { get { return "Object parent"; } }
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
-            var res = new List<WatchVariableControlPrecursor>();
-            res.Add(gfxProperty("Gfx tree root", "uint", 0x14));
-            return res;
+            List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
+            precursors.Add(gfxProperty("Gfx tree root", "uint", 0x14));
+            return precursors;
         }
     }
 
@@ -392,11 +395,11 @@ namespace STROOP.Managers
         public override string Name { get { return "Shadow"; } }
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
-            var res = new List<WatchVariableControlPrecursor>();
-            res.Add(gfxProperty("radius", "short", 0x14));
-            res.Add(gfxProperty("opacity", "byte", 0x16));
-            res.Add(gfxProperty("type", "byte", 0x17));
-            return res;
+            List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
+            precursors.Add(gfxProperty("radius", "short", 0x14));
+            precursors.Add(gfxProperty("opacity", "byte", 0x16));
+            precursors.Add(gfxProperty("type", "byte", 0x17));
+            return precursors;
         }
     }
 
@@ -405,9 +408,9 @@ namespace STROOP.Managers
         public override string Name { get { return "Scaling node"; } }
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
-            var res = new List<WatchVariableControlPrecursor>();
-            res.Add(gfxProperty("Scale", "float", 0x18));
-            return res;
+            List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
+            precursors.Add(gfxProperty("Scale", "float", 0x18));
+            return precursors;
         }
     }
 
@@ -417,11 +420,11 @@ namespace STROOP.Managers
         public override string Name { get { return "Menu model"; } }
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
-            var res = new List<WatchVariableControlPrecursor>();
-            res.Add(gfxProperty("Segmented address", "uint", 0x14));
-            res.Add(gfxProperty("X offset", "short", 0x18)); //todo: check these
-            res.Add(gfxProperty("Y offset", "short", 0x1A));
-            return res;
+            List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
+            precursors.Add(gfxProperty("Segmented address", "uint", 0x14));
+            precursors.Add(gfxProperty("X offset", "short", 0x18)); //todo: check these
+            precursors.Add(gfxProperty("Y offset", "short", 0x1A));
+            return precursors;
         }
     }
 
@@ -430,12 +433,12 @@ namespace STROOP.Managers
         public override string Name { get { return "Translation"; } }
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
-            var res = new List<WatchVariableControlPrecursor>();
-            res.Add(gfxProperty("Segmented address", "uint", 0x14));
-            res.Add(gfxProperty("X", "short", 0x18));
-            res.Add(gfxProperty("Y", "short", 0x1A));
-            res.Add(gfxProperty("Z", "short", 0x1C));
-            return res;
+            List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
+            precursors.Add(gfxProperty("Segmented address", "uint", 0x14));
+            precursors.Add(gfxProperty("X", "short", 0x18));
+            precursors.Add(gfxProperty("Y", "short", 0x1A));
+            precursors.Add(gfxProperty("Z", "short", 0x1C));
+            return precursors;
         }
     }
 
@@ -444,9 +447,9 @@ namespace STROOP.Managers
         public override string Name { get { return "Game object"; } }
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
-            var res = new List<WatchVariableControlPrecursor>();
-            res.Add(gfxProperty("Actual child", "uint", 0x14));
-            return res;
+            List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
+            precursors.Add(gfxProperty("Actual child", "uint", 0x14));
+            return precursors;
         }
     }
 
@@ -456,12 +459,12 @@ namespace STROOP.Managers
 
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
-            var res = new List<WatchVariableControlPrecursor>();
-            res.Add(gfxProperty("Segmented address", "uint", 0x14));
-            res.Add(gfxProperty("Angle x", "short", 0x18)); //Todo: make these angle types
-            res.Add(gfxProperty("Angle y", "short", 0x1A));
-            res.Add(gfxProperty("Angle z", "short", 0x1C));
-            return res;
+            List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
+            precursors.Add(gfxProperty("Segmented address", "uint", 0x14));
+            precursors.Add(gfxProperty("Angle x", "short", 0x18)); //Todo: make these angle types
+            precursors.Add(gfxProperty("Angle y", "short", 0x1A));
+            precursors.Add(gfxProperty("Angle z", "short", 0x1C));
+            return precursors;
         }
     }
 
@@ -501,13 +504,13 @@ namespace STROOP.Managers
         public override string Name { get { return "Root"; } }
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
-            var res = new List<WatchVariableControlPrecursor>();
-            res.Add(gfxProperty("Some short", "short", 0x14));
-            res.Add(gfxProperty("Screen xoffset", "short", 0x16));
-            res.Add(gfxProperty("Screen yoffset", "short", 0x18));
-            res.Add(gfxProperty("Screen half width", "short", 0x1A));
-            res.Add(gfxProperty("Screen half height", "short", 0x1C));
-            return res;
+            List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
+            precursors.Add(gfxProperty("Some short", "short", 0x14));
+            precursors.Add(gfxProperty("Screen xoffset", "short", 0x16));
+            precursors.Add(gfxProperty("Screen yoffset", "short", 0x18));
+            precursors.Add(gfxProperty("Screen half width", "short", 0x1A));
+            precursors.Add(gfxProperty("Screen half height", "short", 0x1C));
+            return precursors;
         }
     }
 
@@ -516,9 +519,9 @@ namespace STROOP.Managers
         public override string Name { get { return "Display List"; } }
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
-            var res = new List<WatchVariableControlPrecursor>();
-            res.Add(gfxProperty("Segmented address", "uint", 0x14));
-            return res;
+            List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
+            precursors.Add(gfxProperty("Segmented address", "uint", 0x14));
+            return precursors;
         }
     }
 }

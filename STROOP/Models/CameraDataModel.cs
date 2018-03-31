@@ -106,7 +106,7 @@ namespace STROOP.Models
             get => _hackObject;
             set
             {
-                if (Config.Stream.SetValue(value, CameraHackConfig.CameraHackStruct + CameraHackConfig.ObjectOffset))
+                if (Config.Stream.SetValue(value, CameraHackConfig.CameraHackStructAddress + CameraHackConfig.ObjectOffset))
                     _hackObject = value;
             }
         }
@@ -126,7 +126,7 @@ namespace STROOP.Models
             _fov = Config.Stream.GetSingle(CameraConfig.FOV);
 
             _secondaryObject = Config.Stream.GetUInt32(CameraConfig.SecondaryObjectAddress);
-            _hackObject = Config.Stream.GetUInt32(CameraHackConfig.CameraHackStruct + CameraHackConfig.ObjectOffset);
+            _hackObject = Config.Stream.GetUInt32(CameraHackConfig.CameraHackStructAddress + CameraHackConfig.ObjectOffset);
         }
 
         public void Update2() { }

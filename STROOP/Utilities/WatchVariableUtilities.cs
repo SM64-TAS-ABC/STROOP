@@ -47,7 +47,7 @@ namespace STROOP.Structs
         }
 
         private static readonly List<uint> BaseAddressListZero = new List<uint> { 0 };
-        private static readonly List<uint> BaseAddressListEmpy = new List<uint> { };
+        private static readonly List<uint> BaseAddressListEmpty = new List<uint> { };
         
         public static List<uint> GetBaseAddressListFromBaseAddressType(BaseAddressTypeEnum baseAddressType)
         {
@@ -80,7 +80,7 @@ namespace STROOP.Structs
                 case BaseAddressTypeEnum.Triangle:
                     {
                         uint triangleAddress = Config.TriangleManager.TriangleAddress;
-                        return triangleAddress != 0 ? new List<uint>() { triangleAddress } : BaseAddressListEmpy;
+                        return triangleAddress != 0 ? new List<uint>() { triangleAddress } : BaseAddressListEmpty;
                     }
 
                 case BaseAddressTypeEnum.TriangleExertionForceTable:
@@ -121,7 +121,7 @@ namespace STROOP.Structs
                 case BaseAddressTypeEnum.Memory:
                     {
                         uint? memoryAddress = Config.MemoryManager.Address;
-                        return memoryAddress.HasValue ? new List<uint>() { memoryAddress.Value } : BaseAddressListEmpy;
+                        return memoryAddress.HasValue ? new List<uint>() { memoryAddress.Value } : BaseAddressListEmpty;
                     }
 
                 case BaseAddressTypeEnum.Ghost:
@@ -132,12 +132,12 @@ namespace STROOP.Structs
                     return new List<uint> { MiscConfig.HackedAreaAddress };
 
                 case BaseAddressTypeEnum.CamHack:
-                    return new List<uint> { CameraHackConfig.CameraHackStruct };
+                    return new List<uint> { CameraHackConfig.CameraHackStructAddress };
 
                 case BaseAddressTypeEnum.GfxNode:
                     {
-                        var node  = Config.GfxManager.SelectedNode;
-                        return node != null ? new List<uint>() { node.address } : BaseAddressListEmpy;
+                        GfxNode node  = Config.GfxManager.SelectedNode;
+                        return node != null ? new List<uint>() { node.Address } : BaseAddressListEmpty;
                     }
                 case BaseAddressTypeEnum.GhostHack:
                     return new List<uint>
