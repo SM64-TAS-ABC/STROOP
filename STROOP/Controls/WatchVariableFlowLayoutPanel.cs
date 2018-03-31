@@ -251,6 +251,9 @@ namespace STROOP.Controls
             {
                 foreach (WatchVariableControl watchVarControl in watchVarControls)
                 {
+                    if (_reorderingWatchVarControl == watchVarControl)
+                        _reorderingWatchVarControl = null;
+
                     _watchVarControls.Remove(watchVarControl);
                     if (ShouldShow(watchVarControl)) Controls.Remove(watchVarControl);
                     watchVarControl.SetPanel(null);
