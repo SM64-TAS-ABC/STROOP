@@ -131,10 +131,13 @@ namespace STROOP.Managers
         }
         #endregion
 
-        List<ObjectDataModel> _objects = new List<ObjectDataModel>();
         private HashSet<uint> _addresses
         {
             get => Config.ObjectSlotsManager.SelectedSlotsAddresses;
+        }
+        private List<ObjectDataModel> _objects
+        {
+            get => Config.ObjectSlotsManager.SelectedObjects;
         }
 
         private static readonly List<VariableGroup> ALL_VAR_GROUPS =
@@ -434,8 +437,6 @@ namespace STROOP.Managers
         {
             if (!updateView)
                 return;
-
-            _objects = DataModels.Objects.Where(o => o != null && _addresses.Contains(o.Address)).ToList();
 
             _releaseButton.UpdateButton();
             _interactButton.UpdateButton();

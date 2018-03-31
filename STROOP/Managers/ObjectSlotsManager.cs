@@ -41,6 +41,8 @@ namespace STROOP.Managers
         public HashSet<uint> SelectedOnMapSlotsAddresses = new HashSet<uint>();
         public HashSet<uint> MarkedSlotsAddresses = new HashSet<uint>();
 
+        public List<ObjectDataModel> SelectedObjects = new List<ObjectDataModel>();
+
         private Dictionary<ObjectDataModel, string> _slotLabels = new Dictionary<ObjectDataModel, string>();
         public IReadOnlyDictionary<ObjectDataModel, string> SlotLabelsForObjects { get; private set; }
 
@@ -291,6 +293,8 @@ namespace STROOP.Managers
 
             // Update slots
             UpdateSlots(sortedObjects);
+
+            SelectedObjects = DataModels.Objects.Where(o => o != null && SelectedSlotsAddresses.Contains(o.Address)).ToList();
         }
 
         private void UpdateSlots(IEnumerable<ObjectDataModel> sortedObjects)
