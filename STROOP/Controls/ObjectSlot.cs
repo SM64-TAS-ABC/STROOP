@@ -108,18 +108,18 @@ namespace STROOP
 
         private void SetUpContextMenuStrip()
         {
-            ToolStripMenuItem itemSelectAndSwitch = new ToolStripMenuItem("Select && Switch to Obj Tab");
-            itemSelectAndSwitch.Click += (sender, e) =>
+            ToolStripMenuItem itemSelectInObjectTab = new ToolStripMenuItem("Select in Object Tab");
+            itemSelectInObjectTab.Click += (sender, e) =>
             {
                 Config.ObjectSlotsManager.DoSlotClickUsingSpecifications(
                     this, ClickType.ObjectClick, false, false, true);
             };
 
-            ToolStripMenuItem itemSelectAndDontSwitch = new ToolStripMenuItem("Select && Don't Switch to Obj Tab");
-            itemSelectAndDontSwitch.Click += (sender, e) =>
+            ToolStripMenuItem itemSelectInMemoryTab = new ToolStripMenuItem("Select in Memory Tab");
+            itemSelectInMemoryTab.Click += (sender, e) =>
             {
-                Config.ObjectSlotsManager.DoSlotClickUsingSpecifications(
-                    this, ClickType.ObjectClick, false, false, false);
+                Config.MemoryManager.SetAddressAndUpdateMemory(CurrentObject.Address);
+                _gui.TabControl.SelectedTab = _gui.TabControl.TabPages["tabPageMemory"];
             };
 
             ToolStripMenuItem itemGoto = new ToolStripMenuItem("Go to");
@@ -172,8 +172,8 @@ namespace STROOP
             };
 
             ContextMenuStrip = new ContextMenuStrip();
-            ContextMenuStrip.Items.Add(itemSelectAndSwitch);
-            ContextMenuStrip.Items.Add(itemSelectAndDontSwitch);
+            ContextMenuStrip.Items.Add(itemSelectInObjectTab);
+            ContextMenuStrip.Items.Add(itemSelectInMemoryTab);
             ContextMenuStrip.Items.Add(new ToolStripSeparator());
             ContextMenuStrip.Items.Add(itemGoto);
             ContextMenuStrip.Items.Add(itemRetrieve);
