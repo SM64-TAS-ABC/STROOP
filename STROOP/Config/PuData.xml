@@ -28,8 +28,8 @@
   <Data groupList="Basic" base="None" specialType="PuParams" subclass="String" color="Yellow">PU Params</Data>
 
   <Data groupList="Intermediate" base="None" specialType="DistanceAboveFloor" color="Green">Dist Above Floor</Data>
-  <Data groupList="Intermediate" type="float" offset="0x20" base="Triangle" color="Green">Normal Y</Data>
-  <Data groupList="Intermediate" base="None" specialType="DeFactoMultiplier" color="Green">De Facto Multiplier</Data>
+  <Data groupList="Intermediate" type="float" offset="0x20" base="Triangle" round="10" color="Green">Normal Y</Data>
+  <Data groupList="Intermediate" base="None" specialType="DeFactoMultiplier" round="10" color="Green">De Facto Multiplier</Data>
 
   <Data groupList="Basic" base="None" specialType="MarioXQpuIndex" color="Pink" coord="X">QPU X</Data>
   <Data groupList="Basic" base="None" specialType="MarioYQpuIndex" color="Pink" coord="Y">QPU Y</Data>

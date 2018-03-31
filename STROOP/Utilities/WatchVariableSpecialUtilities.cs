@@ -3951,7 +3951,7 @@ namespace STROOP.Structs
 
         // PU methods
 
-        private static double GetDeFactoMultiplier()
+        private static float GetDeFactoMultiplier()
         {
             uint floorTri = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
             float yNorm = floorTri == 0 ? 1 : Config.Stream.GetSingle(floorTri + TriangleOffsetsConfig.NormY);
@@ -3964,10 +3964,10 @@ namespace STROOP.Structs
             return defactoMultiplier;
         }
 
-        public static double GetMarioDeFactoSpeed()
+        public static float GetMarioDeFactoSpeed()
         {
             float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-            double defactoSpeed = hSpeed * GetDeFactoMultiplier();
+            float defactoSpeed = hSpeed * GetDeFactoMultiplier();
             return defactoSpeed;
         }
 
