@@ -28,8 +28,9 @@ namespace STROOP.Managers
         private readonly RichTextBoxEx _richTextBoxMemoryBytes;
         private readonly RichTextBoxEx _richTextBoxMemoryValues;
 
-        private readonly bool[] _objectDataBools;
-        private bool[] _objectSpecificDataBools;
+        private readonly List<ValueText> _currentValueTexts;
+        private readonly List<WatchVariableControlPrecursor> _objectPrecursors;
+        private readonly List<WatchVariableControlPrecursor> _objectSpecificPrecursors;
 
         public uint? Address { get; private set; }
 
@@ -44,23 +45,18 @@ namespace STROOP.Managers
             {
                 if (value == _behavior) return;
                 _behavior = value;
+                _objectSpecificPrecursors.Clear();
                 if (_behavior.HasValue)
                 {
                     List<WatchVariableControlPrecursor> precursors =
                         Config.ObjectAssociations.GetWatchVarControls(_behavior.Value)
                             .ConvertAll(control => control.WatchVarPrecursor);
-                    _objectSpecificDataBools = ConvertPrecursorsToBoolArray(precursors);
-                }
-                else
-                {
-                    _objectSpecificDataBools = ConvertPrecursorsToBoolArray(null);
+                    _objectSpecificPrecursors.AddRange(precursors);
                 }
             }
         }
 
         private static readonly int _memorySize = (int)ObjectConfig.StructSize;
-
-        private List<ValueText> _currentValueTexts;
 
         public MemoryManager(TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel, List<WatchVariableControlPrecursor> objectData)
             : base(new List<WatchVariableControlPrecursor>(), watchVariablePanel)
@@ -68,6 +64,8 @@ namespace STROOP.Managers
             Address = null;
             _behavior = null;
             _currentValueTexts = new List<ValueText>();
+            _objectPrecursors = new List<WatchVariableControlPrecursor>(objectData);
+            _objectSpecificPrecursors = new List<WatchVariableControlPrecursor>();
 
             SplitContainer splitContainer = tabControl.Controls["splitContainerMemory"] as SplitContainer;
 
@@ -84,8 +82,6 @@ namespace STROOP.Managers
             _richTextBoxMemoryValues = splitContainer.Panel1.Controls["richTextBoxMemoryValues"] as RichTextBoxEx;
 
             _comboBoxMemoryTypes.DataSource = TypeUtilities.SimpleTypeList;
-
-            _objectDataBools = ConvertPrecursorsToBoolArray(objectData);
 
             _checkBoxMemoryLittleEndian.Click += (sender, e) => UpdateMemory();
             _comboBoxMemoryTypes.SelectedValueChanged += (sender, e) => UpdateMemory();
@@ -104,28 +100,6 @@ namespace STROOP.Managers
             };
         }
 
-        private bool[] ConvertPrecursorsToBoolArray(List<WatchVariableControlPrecursor> precursors)
-        {
-            bool[] boolArray = new bool[ObjectConfig.StructSize];
-            if (precursors == null) return boolArray;
-            foreach (WatchVariableControlPrecursor precursor in precursors)
-            {
-                WatchVariable watchVar = precursor.WatchVar;
-                if (watchVar.BaseAddressType != BaseAddressTypeEnum.Object) continue;
-                if (watchVar.IsSpecial) continue;
-                if (watchVar.Mask != null) continue;
-
-                uint offset = watchVar.Offset;
-                int size = watchVar.ByteCount.Value;
-
-                for (int i = 0; i < size; i++)
-                {
-                    boolArray[offset + i] = true;
-                }
-            }
-            return boolArray;
-        }
-
         public void SetAddressAndUpdateMemory(uint address)
         {
             _textBoxMemoryObjAddress.Text = HexUtilities.Format(address, 8);
@@ -140,7 +114,6 @@ namespace STROOP.Managers
             public readonly int StringIndex;
             public readonly int StringSize;
             private readonly Type MemoryType;
-            private readonly List<int> _byteIndexes;
             
             public ValueText(int byteIndex, int byteSize, int stringIndex, int stringSize, Type memoryType)
             {
@@ -149,12 +122,25 @@ namespace STROOP.Managers
                 StringIndex = stringIndex;
                 StringSize = stringSize;
                 MemoryType = memoryType;
-                _byteIndexes = Enumerable.Range(byteIndex, byteSize).ToList();
             }
 
-            public bool OverlapsData(bool[] dataBools)
+            public bool OverlapsData(List<WatchVariableControlPrecursor> precursors)
             {
-                return _byteIndexes.Any(byteIndex => dataBools[byteIndex]);
+                int minIndex = ByteIndex;
+                int maxIndex = ByteIndex + ByteSize - 1;
+
+                return precursors.Any(precursor =>
+                {
+                    WatchVariable watchVar = precursor.WatchVar;
+                    if (watchVar.BaseAddressType != BaseAddressTypeEnum.Object) return false;
+                    if (watchVar.IsSpecial) return false;
+                    if (watchVar.Mask != null) return false;
+
+                    int minPrecursorIndex = (int)watchVar.Offset;
+                    int maxPrecursorIndex = (int)watchVar.Offset + watchVar.ByteCount.Value - 1;
+
+                    return minIndex <= maxPrecursorIndex && maxIndex >= minPrecursorIndex;
+                });
             }
 
             public void AddToVariablePanelIfSelected(int selectedIndex, bool useHex, bool useObj)
@@ -228,12 +214,12 @@ namespace STROOP.Managers
             _richTextBoxMemoryValues.Text = FormatValues(bytes, type, littleEndian, useHex, useObj);
             _currentValueTexts.ForEach(valueText =>
             {
-                if (valueText.OverlapsData(_objectDataBools))
+                if (valueText.OverlapsData(_objectPrecursors))
                 {
                     _richTextBoxMemoryValues.SetBackColor(
                         valueText.StringIndex, valueText.StringSize, Color.LightPink);
                 }
-                else if (valueText.OverlapsData(_objectSpecificDataBools))
+                else if (valueText.OverlapsData(_objectSpecificPrecursors))
                 {
                     _richTextBoxMemoryValues.SetBackColor(
                         valueText.StringIndex, valueText.StringSize, Color.LightGreen);
