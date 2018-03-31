@@ -253,12 +253,14 @@ namespace STROOP.Controls
         {
             this.Select(index, length);
             this.SelectionColor = color;
+            if (ContainsFocus) Parent.Focus();
         }
 
         public void SetBackColor(int index, int length, Color color)
         {
             this.Select(index, length);
             this.SelectionBackColor = color;
+            if (ContainsFocus) Parent.Focus();
         }
-	}
+    }
 }
