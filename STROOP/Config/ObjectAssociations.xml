@@ -2299,24 +2299,24 @@
   <Object behaviorScriptAddress="0x13003008" name="File Manager">
     <Image path="File Manager.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x1300302C" name="Selectable Star (Yellow)" gfxId="0x800F8B9C">
+  <Object behaviorScriptAddress="0x1300302C" name="Mission Star (Yellow)" gfxId="0x800F8B9C">
     <SpawnCode gfxId="0x7A"/>
     <Image path="Power Star Yellow.png"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF7" base="Object" subclass="Boolean">Spinning</Data>
   </Object>
-  <Object behaviorScriptAddress="0x1300302C" name="Selectable Star (Blue)" gfxId="0x800F8C00">
+  <Object behaviorScriptAddress="0x1300302C" name="Mission Star (Blue)" gfxId="0x800F8C00">
     <SpawnCode gfxId="0x79"/>
     <Image path="Power Star Blue.png"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF7" base="Object" subclass="Boolean">Spinning</Data>
   </Object>
-  <Object behaviorScriptAddress="0x1300302C" name="Selectable Star">
+  <Object behaviorScriptAddress="0x1300302C" name="Mission Star">
     <SpawnCode gfxId="0x7A"/>
     <Image path="Power Star Yellow.png"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF7" base="Object" subclass="Boolean">Spinning</Data>
   </Object>
-  <Object behaviorScriptAddress="0x13003048" name="Course Select">
+  <Object behaviorScriptAddress="0x13003048" name="Mission Star Manager">
     <SpawnCode gfxId="0x00"/>
-    <Image path="Course Select.png"/>
+    <Image path="Mission Star Manager.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13003068" name="Yellow Coin">
     <SpawnCode gfxId="0x74"/>
