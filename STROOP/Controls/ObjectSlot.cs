@@ -112,16 +112,14 @@ namespace STROOP
             itemSelectInObjectTab.Click += (sender, e) =>
             {
                 Config.ObjectSlotsManager.DoSlotClickUsingSpecifications(
-                    this, ClickType.ObjectClick, false, false, true);
+                    this, ClickType.ObjectClick, false, false, TabDestinationType.Object);
             };
 
             ToolStripMenuItem itemSelectInMemoryTab = new ToolStripMenuItem("Select in Memory Tab");
             itemSelectInMemoryTab.Click += (sender, e) =>
             {
                 Config.ObjectSlotsManager.DoSlotClickUsingSpecifications(
-                    this, ClickType.ObjectClick, false, false, false);
-                Config.MemoryManager.UpdateDisplay();
-                _gui.TabControl.SelectedTab = _gui.TabControl.TabPages["tabPageMemory"];
+                    this, ClickType.MemoryClick, false, false, TabDestinationType.Memory);
             };
 
             ToolStripMenuItem itemGoto = new ToolStripMenuItem("Go to");
