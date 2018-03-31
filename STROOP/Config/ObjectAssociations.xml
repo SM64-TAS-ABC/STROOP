@@ -2303,16 +2303,18 @@
     <SpawnCode gfxId="0x7A"/>
     <Image path="Power Star Yellow.png"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF7" base="Object" subclass="Boolean">Spinning</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0x108" base="Object">Scale</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300302C" name="Mission Star (Blue)" gfxId="0x800F8C00">
     <SpawnCode gfxId="0x79"/>
     <Image path="Power Star Blue.png"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF7" base="Object" subclass="Boolean">Spinning</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0x108" base="Object">Scale</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300302C" name="Mission Star">
-    <SpawnCode gfxId="0x7A"/>
     <Image path="Power Star Yellow.png"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF7" base="Object" subclass="Boolean">Spinning</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0x108" base="Object">Scale</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003048" name="Mission Star Manager">
     <SpawnCode gfxId="0x00"/>
