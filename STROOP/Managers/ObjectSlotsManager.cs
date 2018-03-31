@@ -250,11 +250,6 @@ namespace STROOP.Managers
                         _lastSelectedAddress = selectedSlot.CurrentObject.Address;
                     }
                 }
-
-                if (click == ClickType.ObjectClick)
-                    Config.ObjectManager.DisplayedObjects = ObjectSlots
-                        .Where(s => selection.Contains(s.CurrentObject.Address))
-                        .Select(s => s.CurrentObject.Address);
             }
         }
 

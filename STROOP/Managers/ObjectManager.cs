@@ -132,17 +132,9 @@ namespace STROOP.Managers
         #endregion
 
         List<ObjectDataModel> _objects = new List<ObjectDataModel>();
-        HashSet<uint> _addresses = new HashSet<uint>();
-        public IEnumerable<uint> DisplayedObjects
+        private HashSet<uint> _addresses
         {
-            get => _addresses;
-            set
-            {
-                if (_addresses.SetEquals(value))
-                    return;
-
-                _addresses = new HashSet<uint>(value);
-            }
+            get => Config.ObjectSlotsManager.SelectedSlotsAddresses;
         }
 
         private static readonly List<VariableGroup> ALL_VAR_GROUPS =
