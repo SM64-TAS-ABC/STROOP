@@ -89,13 +89,25 @@ namespace STROOP.Managers
             _richTextBoxMemoryValues.Click += (sender, e) =>
             {
                 bool isCtrlKeyHeld = Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
+                bool isAltKeyHeld = Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt);
                 if (!isCtrlKeyHeld) return;
                 int index = _richTextBoxMemoryValues.SelectionStart;
                 bool isLittleEndian = _checkBoxMemoryLittleEndian.Checked;
                 bool useHex = _checkBoxMemoryHex.Checked;
                 bool useObj = _checkBoxMemoryObj.Checked;
-                _currentValueTexts.ForEach(valueText =>
-                    valueText.AddToVariablePanelIfSelected(index, useHex, useObj));
+                if (isAltKeyHeld)
+                {
+                    List<List<WatchVariableControlPrecursor>> precursorLists =
+                        new List<List<WatchVariableControlPrecursor>>()
+                            { _objectPrecursors, _objectSpecificPrecursors };
+                    _currentValueTexts.ForEach(valueText =>
+                        valueText.AddOverlappedIfSelected(index, precursorLists));
+                }
+                else
+                {
+                    _currentValueTexts.ForEach(valueText =>
+                        valueText.AddVariableIfSelected(index, useHex, useObj));
+                }
                 _richTextBoxMemoryValues.Parent.Focus();
             };
         }
@@ -126,10 +138,16 @@ namespace STROOP.Managers
 
             public bool OverlapsData(List<WatchVariableControlPrecursor> precursors)
             {
+                return GetOverlapped(precursors).Count > 0;
+            }
+
+            private List<WatchVariableControlPrecursor> GetOverlapped(
+                List<WatchVariableControlPrecursor> precursors)
+            {
                 int minIndex = ByteIndex;
                 int maxIndex = ByteIndex + ByteSize - 1;
 
-                return precursors.Any(precursor =>
+                return precursors.FindAll(precursor =>
                 {
                     WatchVariable watchVar = precursor.WatchVar;
                     if (watchVar.BaseAddressType != BaseAddressTypeEnum.Object) return false;
@@ -143,15 +161,32 @@ namespace STROOP.Managers
                 });
             }
 
-            public void AddToVariablePanelIfSelected(int selectedIndex, bool useHex, bool useObj)
+            public void AddOverlappedIfSelected(int selectedIndex, List<List<WatchVariableControlPrecursor>> precursorLists)
             {
                 if (selectedIndex >= StringIndex && selectedIndex <= StringIndex + StringSize)
                 {
-                    AddToVariablePanel(useHex, useObj);
+                    AddOverlapped(precursorLists);
                 }
             }
 
-            private void AddToVariablePanel(bool useHex, bool useObj)
+            private void AddOverlapped(List<List<WatchVariableControlPrecursor>> precursorLists)
+            {
+                precursorLists.ForEach(precursors =>
+                {
+                    List<WatchVariableControlPrecursor> overlapped = GetOverlapped(precursors);
+                    overlapped.ForEach(precursor => Config.MemoryManager.AddVariable(precursor.CreateWatchVariableControl()));
+                });
+            }
+
+            public void AddVariableIfSelected(int selectedIndex, bool useHex, bool useObj)
+            {
+                if (selectedIndex >= StringIndex && selectedIndex <= StringIndex + StringSize)
+                {
+                    AddVariable(useHex, useObj);
+                }
+            }
+
+            private void AddVariable(bool useHex, bool useObj)
             {
                 WatchVariableControlPrecursor precursor = CreatePrecursor(useHex, useObj);
                 Config.MemoryManager.AddVariable(precursor.CreateWatchVariableControl());
