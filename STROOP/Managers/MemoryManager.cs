@@ -233,23 +233,35 @@ namespace STROOP.Managers
         public void UpdateDisplay()
         {
             uint? address = Address;
-            if (!address.HasValue) return;
+            if (!address.HasValue)
+            {
+                _textBoxMemoryObjAddress.Text = HexUtilities.Format(0, 8);
+                _richTextBoxMemoryAddresses.Text = "";
+                _richTextBoxMemoryBytes.Text = "";
+                _richTextBoxMemoryBytes.Text = "";
+                _richTextBoxMemoryValues.Text = "";
+                return;
+            }
 
-            _textBoxMemoryObjAddress.Text = HexUtilities.Format(address.Value, 8);
-
+            // read from memory
             Behavior = new ObjectDataModel(address.Value).BehaviorCriteria;
-
             byte[] bytes = Config.Stream.ReadRam(address.Value, _memorySize);
+
+            // read settings from controls
             bool littleEndian = _checkBoxMemoryLittleEndian.Checked;
             bool relativeAddresses = _checkBoxMemoryRelativeAddresses.Checked;
             uint startAddress = relativeAddresses ? 0 : address.Value;
             Type type = TypeUtilities.StringToType[(string)_comboBoxMemoryTypes.SelectedItem];
             bool useHex = _checkBoxMemoryHex.Checked;
             bool useObj = _checkBoxMemoryObj.Checked;
+
+            // update control text
+            _textBoxMemoryObjAddress.Text = HexUtilities.Format(address.Value, 8);
             _richTextBoxMemoryAddresses.Text = FormatAddresses(startAddress, _memorySize);
             _richTextBoxMemoryBytes.Text = FormatBytes(bytes, littleEndian);
-
             _richTextBoxMemoryValues.Text = FormatValues(bytes, type, littleEndian, useHex, useObj);
+
+            // highlight value texts
             _currentValueTexts.ForEach(valueText =>
             {
                 if (valueText.OverlapsData(_objectPrecursors))
