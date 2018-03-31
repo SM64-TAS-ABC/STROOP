@@ -173,7 +173,7 @@ namespace STROOP.Managers
         }
 
         public void DoSlotClickUsingSpecifications(
-            ObjectSlot selectedSlot, ClickType click, bool shouldToggle, bool shouldExtendRange, TabDestinationType? tabDestinationNullable = null)
+            ObjectSlot selectedSlot, ClickType click, bool shouldToggle, bool shouldExtendRange, TabDestinationType? tabDestinationNullable)
         {
             if (selectedSlot.CurrentObject == null)
                 return;
