@@ -99,7 +99,7 @@ namespace STROOP.Managers
                 bool useHex = _checkBoxMemoryHex.Checked;
                 bool useObj = _checkBoxMemoryObj.Checked;
                 _currentValueTexts.ForEach(valueText =>
-                    valueText.AddToVariablePanelIfSelected(index, isLittleEndian, useHex, useObj));
+                    valueText.AddToVariablePanelIfSelected(index, useHex, useObj));
                 _richTextBoxMemoryValues.Parent.Focus();
             };
         }
@@ -141,7 +141,6 @@ namespace STROOP.Managers
             public readonly int StringSize;
             private readonly Type MemoryType;
             private readonly List<int> _byteIndexes;
-            private readonly List<int> _byteIndexesLittleEndian;
             
             public ValueText(int byteIndex, int byteSize, int stringIndex, int stringSize, Type memoryType)
             {
@@ -151,31 +150,28 @@ namespace STROOP.Managers
                 StringSize = stringSize;
                 MemoryType = memoryType;
                 _byteIndexes = Enumerable.Range(byteIndex, byteSize).ToList();
-                _byteIndexesLittleEndian = _byteIndexes.ConvertAll(
-                    index => EndianUtilities.SwapEndianness(index));
             }
 
-            public bool OverlapsData(bool[] dataBools, bool littleEndian)
+            public bool OverlapsData(bool[] dataBools)
             {
-                List<int> byteIndexes = littleEndian ? _byteIndexesLittleEndian : _byteIndexes;
-                return byteIndexes.Any(byteIndex => dataBools[byteIndex]);
+                return _byteIndexes.Any(byteIndex => dataBools[byteIndex]);
             }
 
-            public void AddToVariablePanelIfSelected(int selectedIndex, bool isLittleEndian, bool useHex, bool useObj)
+            public void AddToVariablePanelIfSelected(int selectedIndex, bool useHex, bool useObj)
             {
                 if (selectedIndex >= StringIndex && selectedIndex <= StringIndex + StringSize)
                 {
-                    AddToVariablePanel(isLittleEndian, useHex, useObj);
+                    AddToVariablePanel(useHex, useObj);
                 }
             }
 
-            private void AddToVariablePanel(bool isLittleEndian, bool useHex, bool useObj)
+            private void AddToVariablePanel(bool useHex, bool useObj)
             {
-                WatchVariableControlPrecursor precursor = CreatePrecursor(isLittleEndian, useHex, useObj);
+                WatchVariableControlPrecursor precursor = CreatePrecursor(useHex, useObj);
                 Config.MemoryManager.AddVariable(precursor.CreateWatchVariableControl());
             }
 
-            private WatchVariableControlPrecursor CreatePrecursor(bool isLittleEndian, bool useHex, bool useObj)
+            private WatchVariableControlPrecursor CreatePrecursor(bool useHex, bool useObj)
             {
                 WatchVariableSubclass subclass = useObj
                     ? WatchVariableSubclass.Object
@@ -188,9 +184,6 @@ namespace STROOP.Managers
                     ? typeof(uint)
                     : MemoryType;
                 string typeString = TypeUtilities.TypeToString[effectiveType];
-                uint address = isLittleEndian
-                        ? (uint)EndianUtilities.SwapEndianness(ByteIndex, ByteSize)
-                        : (uint)ByteIndex;
 
                 WatchVariable watchVar = new WatchVariable(
                     typeString,
@@ -199,10 +192,10 @@ namespace STROOP.Managers
                     null /* offsetUS */,
                     null /* offsetJP */,
                     null /* offsetPAL */,
-                    address,
+                    (uint) ByteIndex,
                     null /* mask */);
                 return new WatchVariableControlPrecursor(
-                    typeString + " " + HexUtilities.Format(address),
+                    typeString + " " + HexUtilities.Format(ByteIndex),
                     watchVar,
                     subclass,
                     null /* backgroundColor */,
@@ -235,12 +228,12 @@ namespace STROOP.Managers
             _richTextBoxMemoryValues.Text = FormatValues(bytes, type, littleEndian, useHex, useObj);
             _currentValueTexts.ForEach(valueText =>
             {
-                if (valueText.OverlapsData(_objectDataBools, littleEndian))
+                if (valueText.OverlapsData(_objectDataBools))
                 {
                     _richTextBoxMemoryValues.SetBackColor(
                         valueText.StringIndex, valueText.StringSize, Color.LightPink);
                 }
-                else if (valueText.OverlapsData(_objectSpecificDataBools, littleEndian))
+                else if (valueText.OverlapsData(_objectSpecificDataBools))
                 {
                     _richTextBoxMemoryValues.SetBackColor(
                         valueText.StringIndex, valueText.StringSize, Color.LightGreen);
@@ -286,7 +279,7 @@ namespace STROOP.Managers
             return builder.ToString();
         }
 
-        private string FormatValues(byte[] bytes, Type type, bool littleEndian, bool useHex, bool useObj)
+        private string FormatValues(byte[] bytes, Type type, bool isLittleEndian, bool useHex, bool useObj)
         {
             int typeSize = TypeUtilities.TypeSize[type];
             List<string> stringList = new List<string>();
@@ -298,7 +291,7 @@ namespace STROOP.Managers
                 if (i == 0) whiteSpace = "";
                 stringList.Add(whiteSpace);
 
-                object value = TypeUtilities.ConvertBytes(type, bytes, i, littleEndian);
+                object value = TypeUtilities.ConvertBytes(type, bytes, i, isLittleEndian);
                 if (useObj)
                 {
                     uint uintValue = ParsingUtilities.ParseUInt(value);
@@ -332,9 +325,13 @@ namespace STROOP.Managers
                 {
                     int trimmedLength = stringValue.Trim().Length;
                     int valueIndex = (i - 1) / 2;
+                    int byteIndex = valueIndex * typeSize;
+                    int byteIndexEndian = isLittleEndian
+                        ? EndianUtilities.SwapEndianness(byteIndex, typeSize)
+                        : byteIndex;
                     ValueText valueText =
                         new ValueText(
-                            valueIndex * typeSize,
+                            byteIndexEndian,
                             typeSize,
                             totalLength - trimmedLength,
                             trimmedLength,
