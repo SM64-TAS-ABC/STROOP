@@ -108,25 +108,18 @@ namespace STROOP
 
         private void SetUpContextMenuStrip()
         {
-            ToolStripMenuItem itemSelect = new ToolStripMenuItem("Select");
-            itemSelect.Click += (sender, e) =>
-            {
-                Config.ObjectSlotsManager.DoSlotClickUsingSpecifications(
-                    this, ObjectSlotsManager.ClickType.ObjectClick, false, false);
-            };
-
             ToolStripMenuItem itemSelectAndSwitch = new ToolStripMenuItem("Select && Switch to Obj Tab");
             itemSelectAndSwitch.Click += (sender, e) =>
             {
                 Config.ObjectSlotsManager.DoSlotClickUsingSpecifications(
-                    this, ObjectSlotsManager.ClickType.ObjectClick, false, false, true);
+                    this, ClickType.ObjectClick, false, false, true);
             };
 
             ToolStripMenuItem itemSelectAndDontSwitch = new ToolStripMenuItem("Select && Don't Switch to Obj Tab");
             itemSelectAndDontSwitch.Click += (sender, e) =>
             {
                 Config.ObjectSlotsManager.DoSlotClickUsingSpecifications(
-                    this, ObjectSlotsManager.ClickType.ObjectClick, false, false, false);
+                    this, ClickType.ObjectClick, false, false, false);
             };
 
             ToolStripMenuItem itemGoto = new ToolStripMenuItem("Go to");
@@ -179,7 +172,6 @@ namespace STROOP
             };
 
             ContextMenuStrip = new ContextMenuStrip();
-            ContextMenuStrip.Items.Add(itemSelect);
             ContextMenuStrip.Items.Add(itemSelectAndSwitch);
             ContextMenuStrip.Items.Add(itemSelectAndDontSwitch);
             ContextMenuStrip.Items.Add(new ToolStripSeparator());

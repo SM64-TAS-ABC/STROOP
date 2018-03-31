@@ -117,7 +117,8 @@ namespace STROOP.Managers
             ClickType click = GetClickType(isAltKeyHeld);
             bool shouldToggle = ShouldToggle(isCtrlKeyHeld, isAltKeyHeld);
             bool shouldExtendRange = isShiftKeyHeld;
-            DoSlotClickUsingSpecifications(selectedSlot, click, shouldToggle, shouldExtendRange);
+            bool shouldSwitchToObjTab = ShouldSwitchToObjTab(isAltKeyHeld);
+            DoSlotClickUsingSpecifications(selectedSlot, click, shouldToggle, shouldExtendRange, shouldSwitchToObjTab);
         }
 
         public void SelectSlotByAddress(uint address)
@@ -128,42 +129,30 @@ namespace STROOP.Managers
 
         private ClickType GetClickType(bool isAltKeyHeld)
         {
-            ClickType click;
             if (isAltKeyHeld)
             {
-                click = ClickType.MarkClick;
+                return ClickType.MarkClick;
             }
             else
             {
                 switch (ActiveTab)
                 {
                     case TabType.CamHack:
-                        click = ClickType.CamHackClick;
-                        break;
-
+                        return ClickType.CamHackClick;
                     case TabType.Map:
-                        click = ClickType.MapClick;
-                        break;
-
+                        return ClickType.MapClick;
                     case TabType.Model:
-                        click = ClickType.ModelClick;
-                        break;
-
+                        return ClickType.ModelClick;
                     case TabType.Memory:
-                        click = ClickType.MemoryClick;
-                        break;
-
+                        return ClickType.MemoryClick;
                     case TabType.Object:
                     case TabType.Custom:
                     case TabType.Other:
-                        click = ClickType.ObjectClick;
-                        break;
-
+                        return ClickType.ObjectClick;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
             }
-            return click;
         }
 
         private bool ShouldToggle(bool isCtrlKeyHeld, bool isAltKeyHeld)
@@ -173,13 +162,14 @@ namespace STROOP.Managers
             return isToggleState != isCtrlKeyHeld;
         }
 
-        private bool ShouldSwitchToObjTabByDefault()
+        private bool ShouldSwitchToObjTab(bool isAltKeyHeld)
         {
-            return ActiveTab == TabType.Object || ActiveTab == TabType.Other;
+            if (isAltKeyHeld) return false;
+            return ActiveTab == TabType.Other;
         }
 
         public void DoSlotClickUsingSpecifications(
-            ObjectSlot selectedSlot, ClickType click, bool shouldToggle, bool shouldExtendRange, bool? switchToObjTabNullable = null)
+            ObjectSlot selectedSlot, ClickType click, bool shouldToggle, bool shouldExtendRange, bool shouldSwitchToObjTab)
         {
             if (selectedSlot.CurrentObject == null)
                 return;
@@ -221,8 +211,7 @@ namespace STROOP.Managers
                         throw new ArgumentOutOfRangeException();
                 }
 
-                bool switchToObjTab = switchToObjTabNullable ?? ShouldSwitchToObjTabByDefault();
-                if (switchToObjTab)
+                if (shouldSwitchToObjTab)
                     _gui.TabControl.SelectedTab = _gui.TabControl.TabPages["tabPageObjects"];
 
                 if (shouldExtendRange && _lastSelectedAddress.HasValue)
