@@ -259,9 +259,11 @@ namespace STROOP.Managers
             _textBoxMemoryObjAddress.Text = HexUtilities.Format(address.Value, 8);
             _richTextBoxMemoryAddresses.Text = FormatAddresses(startAddress, _memorySize);
             _richTextBoxMemoryBytes.Text = FormatBytes(bytes, littleEndian);
-            _richTextBoxMemoryValues.Text = FormatValues(bytes, type, littleEndian, useHex, useObj);
 
             // highlight value texts
+            int initialSelectionStart = _richTextBoxMemoryValues.SelectionStart;
+            int initialSelectionLength = _richTextBoxMemoryValues.SelectionLength;
+            _richTextBoxMemoryValues.Text = FormatValues(bytes, type, littleEndian, useHex, useObj);
             _currentValueTexts.ForEach(valueText =>
             {
                 if (valueText.OverlapsData(_objectPrecursors))
@@ -275,6 +277,8 @@ namespace STROOP.Managers
                         valueText.StringIndex, valueText.StringSize, Color.LightGreen);
                 }
             });
+            _richTextBoxMemoryValues.SelectionStart = initialSelectionStart;
+            _richTextBoxMemoryValues.SelectionLength = initialSelectionLength;
         }
 
         private static string FormatAddresses(uint startAddress, int totalMemorySize)
@@ -387,8 +391,7 @@ namespace STROOP.Managers
 
             base.Update(updateView);
 
-            bool isCtrlKeyHeld = Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
-            if (_checkBoxMemoryUpdateContinuously.Checked && !isCtrlKeyHeld)
+            if (_checkBoxMemoryUpdateContinuously.Checked)
             {
                 UpdateDisplay();
             }
