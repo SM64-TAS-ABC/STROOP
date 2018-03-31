@@ -120,8 +120,8 @@ namespace STROOP.Managers
             ClickType click = GetClickType(isAltKeyHeld);
             bool shouldToggle = ShouldToggle(isCtrlKeyHeld, isAltKeyHeld);
             bool shouldExtendRange = isShiftKeyHeld;
-            TabDestinationType? destination = GetTabDestinationType(isAltKeyHeld);
-            DoSlotClickUsingSpecifications(selectedSlot, click, shouldToggle, shouldExtendRange, destination);
+            TabDestinationType? tabDestination = GetTabDestination(isAltKeyHeld);
+            DoSlotClickUsingSpecifications(selectedSlot, click, shouldToggle, shouldExtendRange, tabDestination);
         }
 
         public void SelectSlotByAddress(uint address)
@@ -165,7 +165,7 @@ namespace STROOP.Managers
             return isToggleState != isCtrlKeyHeld;
         }
 
-        private TabDestinationType? GetTabDestinationType(bool isAltKeyHeld)
+        private TabDestinationType? GetTabDestination(bool isAltKeyHeld)
         {
             if (isAltKeyHeld) return null;
             if (ActiveTab == TabType.Other) return TabDestinationType.Object;
@@ -173,7 +173,7 @@ namespace STROOP.Managers
         }
 
         public void DoSlotClickUsingSpecifications(
-            ObjectSlot selectedSlot, ClickType click, bool shouldToggle, bool shouldExtendRange, TabDestinationType? tabDestinationNullable)
+            ObjectSlot selectedSlot, ClickType click, bool shouldToggle, bool shouldExtendRange, TabDestinationType? tabDestination)
         {
             if (selectedSlot.CurrentObject == null)
                 return;
@@ -212,10 +212,9 @@ namespace STROOP.Managers
                         throw new ArgumentOutOfRangeException();
                 }
 
-                if (tabDestinationNullable.HasValue)
+                if (tabDestination.HasValue)
                 {
-                    TabDestinationType tabDestination = tabDestinationNullable.Value;
-                    switch (tabDestination)
+                    switch (tabDestination.Value)
                     {
                         case TabDestinationType.Object:
                             _gui.TabControl.SelectedTab = _gui.TabControl.TabPages["tabPageObjects"];
