@@ -1760,6 +1760,18 @@ namespace STROOP.Structs
                         if (triangleListStartAddress + indexGuess * structSize == triAddress) return indexGuess;
                         return Double.NaN;
                     };
+                    setterFunction = (object objectValue, uint triAddress) =>
+                    {
+                        int? indexNullable = ParsingUtilities.ParseIntNullable(objectValue);
+                        if (!indexNullable.HasValue) return false;
+                        int index = indexNullable.Value;
+
+                        uint triangleListStartAddress = Config.Stream.GetUInt32(TriangleConfig.TriangleListPointerAddress);
+                        uint structSize = TriangleConfig.TriangleStructSize;
+                        uint newTriAddress = (uint)(triangleListStartAddress + index * structSize);
+                        Config.TriangleManager.SetCustomTriangleAddress(newTriAddress);
+                        return true;
+                    };
                     break;
 
                 case "ObjectNodeCount":
