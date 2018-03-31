@@ -19,6 +19,7 @@ namespace STROOP.Managers
         private readonly BetterTextbox _textBoxMemoryObjAddress;
         private readonly CheckBox _checkBoxMemoryUpdateContinuously;
         private readonly CheckBox _checkBoxMemoryLittleEndian;
+        private readonly CheckBox _checkBoxMemoryRelativeAddresses;
         private readonly ComboBox _comboBoxMemoryTypes;
         private readonly CheckBox _checkBoxMemoryHex;
         private readonly CheckBox _checkBoxMemoryObj;
@@ -73,6 +74,7 @@ namespace STROOP.Managers
             _textBoxMemoryObjAddress = splitContainer.Panel1.Controls["textBoxMemoryObjAddress"] as BetterTextbox;
             _checkBoxMemoryUpdateContinuously = splitContainer.Panel1.Controls["checkBoxMemoryUpdateContinuously"] as CheckBox;
             _checkBoxMemoryLittleEndian = splitContainer.Panel1.Controls["checkBoxMemoryLittleEndian"] as CheckBox;
+            _checkBoxMemoryRelativeAddresses = splitContainer.Panel1.Controls["checkBoxMemoryRelativeAddresses"] as CheckBox;
             _comboBoxMemoryTypes = splitContainer.Panel1.Controls["comboBoxMemoryTypes"] as ComboBox;
             _checkBoxMemoryHex = splitContainer.Panel1.Controls["checkBoxMemoryHex"] as CheckBox;
             _checkBoxMemoryObj = splitContainer.Panel1.Controls["checkBoxMemoryObj"] as CheckBox;
@@ -222,10 +224,12 @@ namespace STROOP.Managers
 
             byte[] bytes = Config.Stream.ReadRam(Address.Value, _memorySize);
             bool littleEndian = _checkBoxMemoryLittleEndian.Checked;
+            bool relativeAddresses = _checkBoxMemoryRelativeAddresses.Checked;
+            uint startAddress = relativeAddresses ? 0 : Address.Value;
             Type type = TypeUtilities.StringToType[(string)_comboBoxMemoryTypes.SelectedItem];
             bool useHex = _checkBoxMemoryHex.Checked;
             bool useObj = _checkBoxMemoryObj.Checked;
-            _richTextBoxMemoryAddresses.Text = FormatAddresses(Address.Value, _memorySize);
+            _richTextBoxMemoryAddresses.Text = FormatAddresses(startAddress, _memorySize);
             _richTextBoxMemoryBytes.Text = FormatBytes(bytes, littleEndian);
 
             _richTextBoxMemoryValues.Text = FormatValues(bytes, type, littleEndian, useHex, useObj);
