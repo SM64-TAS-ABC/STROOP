@@ -75,7 +75,7 @@ namespace STROOP.Structs
                     return new List<uint> { Config.FileManager.CurrentFileAddress };
 
                 case BaseAddressTypeEnum.Object:
-                    return Config.ObjectManager.DisplayedObjects.ToList();
+                    return Config.ObjectSlotsManager.SelectedSlotsAddresses.ToList();
 
                 case BaseAddressTypeEnum.Triangle:
                     {
