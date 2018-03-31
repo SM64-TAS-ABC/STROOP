@@ -1756,7 +1756,10 @@ namespace STROOP.Structs
                     {
                         uint triangleListStartAddress = Config.Stream.GetUInt32(TriangleConfig.TriangleListPointerAddress);
                         uint structSize = TriangleConfig.TriangleStructSize;
-                        uint indexGuess = (triAddress - triangleListStartAddress) / structSize;
+                        int addressDiff = triAddress >= triangleListStartAddress
+                            ? (int)(triAddress - triangleListStartAddress)
+                            : (int)(-1 * (triangleListStartAddress - triAddress));
+                        int indexGuess = (int)(addressDiff / structSize);
                         if (triangleListStartAddress + indexGuess * structSize == triAddress) return indexGuess;
                         return Double.NaN;
                     };
