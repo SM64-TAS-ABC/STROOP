@@ -3209,6 +3209,20 @@ namespace STROOP.Structs
                     };
                     break;
 
+                case "TtcSpeedSettingDescription":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return TtcSpeedSettingUtilities.GetTtcSpeedSettingDescription();
+                    };
+                    setterFunction = (object objectValue, uint dummy) =>
+                    {
+                        short? ttcSpeedSettingNullable = TtcSpeedSettingUtilities.GetTtcSpeedSetting(objectValue.ToString());
+                        if (!ttcSpeedSettingNullable.HasValue) return false;
+                        short ttcSpeedSetting = ttcSpeedSettingNullable.Value;
+                        return Config.Stream.SetValue(ttcSpeedSetting, MiscConfig.TtcSpeedSettingAddress);
+                    };
+                    break;
+
                 // Area vars
 
                 case "CurrentAreaIndexMario":

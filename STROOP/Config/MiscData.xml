@@ -22,6 +22,7 @@
   <Data type="byte" offset="0x8033161C" base="Relative" subclass="Boolean" mask="0x01">Mario Cam Selected</Data>
   <Data type="byte" offset="0x8033161C" base="Relative" subclass="Boolean" mask="0x02">Fixed Cam Selected</Data>
   <Data type="short" offsetUS="0x80361258" offsetJP="0x8035FEE8" base="Relative">TTC Speed Setting</Data>
+  <Data base="None" specialType="TtcSpeedSettingDescription" subclass="String">TTC Speed Desc</Data>
 
   <Data type="short" offsetUS="0x80361414" offsetJP="0x803600A4" base="Relative">Snow Counter</Data>
   <Data type="short" offsetUS="0x80361416" offsetJP="0x803600A6" base="Relative">Snow Max</Data>

@@ -70,5 +70,10 @@ namespace STROOP.Structs
         public static uint MusicVolumeAddress { get { return Config.SwitchRomVersion(MusicVolumeAddressUS, MusicVolumeAddressJP); } }
         public static readonly uint MusicVolumeAddressUS = 0x80222630;
         public static readonly uint MusicVolumeAddressJP = 0x80222A30;
+
+
+        public static uint TtcSpeedSettingAddress { get { return Config.SwitchRomVersion(TtcSpeedSettingAddressUS, TtcSpeedSettingAddressJP); } }
+        public static readonly uint TtcSpeedSettingAddressUS = 0x80361258;
+        public static readonly uint TtcSpeedSettingAddressJP = 0x8035FEE8;
     }
 }
