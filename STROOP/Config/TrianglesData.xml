@@ -75,6 +75,7 @@
   <Data groupList="Advanced" type="int" offsetUS="0x80361178" offsetJP="0x8035FE08" base="Relative" color="Grey">Level Tri Count</Data>
   <Data groupList="Advanced" base="None" specialType="ObjectTriCount" color="Grey">Object Tri Count</Data>
   <Data groupList="Advanced" type="int" offsetUS="0x80361170" offsetJP="0x8035FE00" base="Relative" color="Grey">Total Tri Count</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="CurrentTriangleIndex" color="Grey">Current Tri Index</Data>
 
   <Data groupList="Advanced" type="uint" offsetUS="0x8038EE98" offsetJP="0x8038EE98" base="Relative" useHex="true" color="Grey">Node List Pointer</Data>
   <Data groupList="Advanced" type="int" offsetUS="0x80361174" offsetJP="0x8035FE04" base="Relative" color="Grey">Level Node Count</Data>

@@ -1751,6 +1751,17 @@ namespace STROOP.Structs
                     };
                     break;
 
+                case "CurrentTriangleIndex":
+                    getterFunction = (uint triAddress) =>
+                    {
+                        uint triangleListStartAddress = Config.Stream.GetUInt32(TriangleConfig.TriangleListPointerAddress);
+                        uint structSize = TriangleConfig.TriangleStructSize;
+                        uint indexGuess = (triAddress - triangleListStartAddress) / structSize;
+                        if (triangleListStartAddress + indexGuess * structSize == triAddress) return indexGuess;
+                        return Double.NaN;
+                    };
+                    break;
+
                 case "ObjectNodeCount":
                     getterFunction = (uint dummy) =>
                     {
