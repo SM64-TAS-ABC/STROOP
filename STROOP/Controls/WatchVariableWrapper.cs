@@ -395,7 +395,7 @@ namespace STROOP.Controls
             object firstValue = values[0];
             for (int i = 1; i < values.Count; i++)
             {
-                if (values[i] != firstValue) return (false, "(multiple values)");
+                if (!Object.Equals(values[i], firstValue)) return (false, "(multiple values)");
             }
             return (true, firstValue);
         }
