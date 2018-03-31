@@ -1597,7 +1597,7 @@ namespace STROOP.Structs
                     {
                         ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                         double uphillAngle = GetTriangleUphillAngle(triAddress);
-                        if (Double.IsNaN(uphillAngle)) return "NaN";
+                        if (Double.IsNaN(uphillAngle)) return Double.NaN.ToString();
                         double angleDiff = marioAngle - uphillAngle;
                         angleDiff = MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                         bool uphill = angleDiff >= -16384 && angleDiff <= 16384;
