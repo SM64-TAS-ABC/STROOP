@@ -32,7 +32,15 @@ namespace STROOP.Managers
         private readonly List<WatchVariableControlPrecursor> _objectPrecursors;
         private readonly List<WatchVariableControlPrecursor> _objectSpecificPrecursors;
 
-        public uint? Address { get; private set; }
+        public uint? Address
+        {
+            get
+            {
+                HashSet<uint> addresses = Config.ObjectSlotsManager.SelectedSlotsAddresses;
+                if (addresses.Count != 1) return null;
+                return addresses.First();
+            }
+        }
 
         private BehaviorCriteria? _behavior;
         private BehaviorCriteria? Behavior
@@ -61,7 +69,6 @@ namespace STROOP.Managers
         public MemoryManager(TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel, List<WatchVariableControlPrecursor> objectData)
             : base(new List<WatchVariableControlPrecursor>(), watchVariablePanel)
         {
-            Address = null;
             _behavior = null;
             _currentValueTexts = new List<ValueText>();
             _objectPrecursors = new List<WatchVariableControlPrecursor>(objectData);
@@ -83,8 +90,8 @@ namespace STROOP.Managers
 
             _comboBoxMemoryTypes.DataSource = TypeUtilities.SimpleTypeList;
 
-            _checkBoxMemoryLittleEndian.Click += (sender, e) => UpdateMemory();
-            _comboBoxMemoryTypes.SelectedValueChanged += (sender, e) => UpdateMemory();
+            _checkBoxMemoryLittleEndian.Click += (sender, e) => UpdateDisplay();
+            _comboBoxMemoryTypes.SelectedValueChanged += (sender, e) => UpdateDisplay();
 
             _richTextBoxMemoryValues.Click += (sender, e) =>
             {
@@ -110,13 +117,6 @@ namespace STROOP.Managers
                 }
                 _richTextBoxMemoryValues.Parent.Focus();
             };
-        }
-
-        public void SetAddressAndUpdateMemory(uint address)
-        {
-            _textBoxMemoryObjAddress.Text = HexUtilities.Format(address, 8);
-            Address = address;
-            UpdateMemory();
         }
 
         private class ValueText
@@ -209,7 +209,7 @@ namespace STROOP.Managers
                 WatchVariable watchVar = new WatchVariable(
                     typeString,
                     null /* specialType */,
-                    BaseAddressTypeEnum.Memory,
+                    BaseAddressTypeEnum.Object,
                     null /* offsetUS */,
                     null /* offsetJP */,
                     null /* offsetPAL */,
@@ -230,16 +230,19 @@ namespace STROOP.Managers
             }
         }
 
-        private void UpdateMemory()
+        public void UpdateDisplay()
         {
-            if (!Address.HasValue) return;
+            uint? address = Address;
+            if (!address.HasValue) return;
 
-            Behavior = new ObjectDataModel(Address.Value).BehaviorCriteria;
+            _textBoxMemoryObjAddress.Text = HexUtilities.Format(address.Value, 8);
 
-            byte[] bytes = Config.Stream.ReadRam(Address.Value, _memorySize);
+            Behavior = new ObjectDataModel(address.Value).BehaviorCriteria;
+
+            byte[] bytes = Config.Stream.ReadRam(address.Value, _memorySize);
             bool littleEndian = _checkBoxMemoryLittleEndian.Checked;
             bool relativeAddresses = _checkBoxMemoryRelativeAddresses.Checked;
-            uint startAddress = relativeAddresses ? 0 : Address.Value;
+            uint startAddress = relativeAddresses ? 0 : address.Value;
             Type type = TypeUtilities.StringToType[(string)_comboBoxMemoryTypes.SelectedItem];
             bool useHex = _checkBoxMemoryHex.Checked;
             bool useObj = _checkBoxMemoryObj.Checked;
@@ -375,7 +378,7 @@ namespace STROOP.Managers
             bool isCtrlKeyHeld = Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
             if (_checkBoxMemoryUpdateContinuously.Checked && !isCtrlKeyHeld)
             {
-                UpdateMemory();
+                UpdateDisplay();
             }
         }
     }

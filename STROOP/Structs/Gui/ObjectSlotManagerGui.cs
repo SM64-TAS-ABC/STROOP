@@ -22,7 +22,6 @@ namespace STROOP.Structs
         public Image CameraObjectOverlayImage;
         public Image CameraHackObjectOverlayImage;
         public Image ModelObjectOverlayImage;
-        public Image MemoryObjectOverlayImage;
         public Image FloorObjectOverlayImage;
         public Image WallObjectOverlayImage;
         public Image CeilingObjectOverlayImage;
@@ -51,7 +50,6 @@ namespace STROOP.Structs
             CameraObjectOverlayImage?.Dispose();
             CameraHackObjectOverlayImage?.Dispose();
             ModelObjectOverlayImage?.Dispose();
-            MemoryObjectOverlayImage?.Dispose();
             FloorObjectOverlayImage?.Dispose();
             WallObjectOverlayImage?.Dispose();
             CeilingObjectOverlayImage?.Dispose();

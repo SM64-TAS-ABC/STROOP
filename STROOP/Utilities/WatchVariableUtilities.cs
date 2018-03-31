@@ -118,12 +118,6 @@ namespace STROOP.Structs
                 case BaseAddressTypeEnum.Area:
                     return new List<uint> { Config.AreaManager.SelectedAreaAddress };
 
-                case BaseAddressTypeEnum.Memory:
-                    {
-                        uint? memoryAddress = Config.MemoryManager.Address;
-                        return memoryAddress.HasValue ? new List<uint>() { memoryAddress.Value } : BaseAddressListEmpty;
-                    }
-
                 case BaseAddressTypeEnum.Ghost:
                     return Config.ObjectSlotsManager.GetLoadedObjectsWithName("Mario Ghost")
                         .ConvertAll(objectDataModel => objectDataModel.Address);

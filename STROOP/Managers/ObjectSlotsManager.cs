@@ -25,7 +25,7 @@ namespace STROOP.Managers
         public enum TabType { Object, Map, Model, Memory, Custom, CamHack, Other };
         public enum SortMethodType { ProcessingOrder, MemoryOrder, DistanceToMario };
         public enum SlotLabelType { Recommended, SlotPosVs, SlotPos, SlotIndex }
-        public enum ClickType { ObjectClick, MapClick, ModelClick, MemoryClick, CamHackClick, MarkClick };
+        public enum ClickType { ObjectClick, MapClick, ModelClick, CamHackClick, MarkClick };
 
         public ObjectSlot HoveredOverSlot { get; private set; }
 
@@ -145,10 +145,9 @@ namespace STROOP.Managers
                         return ClickType.MapClick;
                     case TabType.Model:
                         return ClickType.ModelClick;
-                    case TabType.Memory:
-                        return ClickType.MemoryClick;
                     case TabType.Object:
                     case TabType.Custom:
+                    case TabType.Memory:
                     case TabType.Other:
                         return ClickType.ObjectClick;
                     default:
@@ -183,10 +182,6 @@ namespace STROOP.Managers
                     : selectedSlot.CurrentObject.Address;
                 Config.ModelManager.ModelObjectAddress = newModelObjectAddress;
                 Config.ModelManager.ManualMode = false;
-            }
-            else if (click == ClickType.MemoryClick)
-            {
-                Config.MemoryManager.SetAddressAndUpdateMemory(selectedSlot.CurrentObject.Address);
             }
             else if (click == ClickType.CamHackClick)
             {
