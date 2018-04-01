@@ -2479,16 +2479,19 @@
     <SpawnCode gfxId="0x56"/>
     <Image path="Bully.png"/>
     <MapImage path="Bully Top.png" rotates="true"/>
+    <Data groupList="ObjectSpecific" base="Object" offset="0x104" type="int">Knockback Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003660" name="Big Bully (Loner)">
     <SpawnCode gfxId="0x57"/>
     <Image path="Big Bully.png"/>
     <MapImage path="Big Bully Top.png" rotates="true"/>
+    <Data groupList="ObjectSpecific" base="Object" offset="0x104" type="int">Knockback Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003694" name="Big Bully (After Triplets)">
     <SpawnCode gfxId="0x57"/>
     <Image path="Big Bully.png"/>
     <MapImage path="Big Bully Top.png" rotates="true"/>
+    <Data groupList="ObjectSpecific" base="Object" offset="0x104" type="int">Knockback Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x130036C8" name="Small Chill Bully">
     <SpawnCode gfxId="0x64"/>
