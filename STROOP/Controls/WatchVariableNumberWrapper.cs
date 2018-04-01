@@ -165,7 +165,9 @@ namespace STROOP.Controls
         {
             if (!_roundingLimit.HasValue) return value;
             double doubleValue = Convert.ToDouble(value);
-            return Math.Round(doubleValue, _roundingLimit.Value);
+            double roundedValue = Math.Round(doubleValue, _roundingLimit.Value);
+            bool isNearZero = roundedValue == 0 && doubleValue != 0;
+            return isNearZero ? value : roundedValue;
         }
 
         protected override object HandleNegating(object value)
