@@ -148,16 +148,17 @@ namespace STROOP.Controls
                 throw new ArgumentOutOfRangeException(value + " is not a number");
         }
 
-        protected override object HandleRounding(object value)
+        protected override object HandleRounding(object value, bool handleRounding)
         {
+            int? roundingLimit = handleRounding ? _roundingLimit : null;
             double doubleValue = Convert.ToDouble(value);
-            double roundedValue = _roundingLimit.HasValue
-                ? Math.Round(doubleValue, _roundingLimit.Value)
+            double roundedValue = roundingLimit.HasValue
+                ? Math.Round(doubleValue, roundingLimit.Value)
                 : doubleValue;
             if (roundedValue == 0 && doubleValue != 0)
             {
                 // Specially print values near zero
-                string digitsString = _roundingLimit?.ToString() ?? "";
+                string digitsString = roundingLimit?.ToString() ?? "";
                 return doubleValue.ToString("E" + digitsString);
             }
             return roundedValue;
