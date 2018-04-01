@@ -163,11 +163,17 @@ namespace STROOP.Controls
 
         protected override object HandleRounding(object value)
         {
-            if (!_roundingLimit.HasValue) return value;
             double doubleValue = Convert.ToDouble(value);
-            double roundedValue = Math.Round(doubleValue, _roundingLimit.Value);
-            bool isNearZero = roundedValue == 0 && doubleValue != 0;
-            return isNearZero ? value : roundedValue;
+            double roundedValue = _roundingLimit.HasValue
+                ? Math.Round(doubleValue, _roundingLimit.Value)
+                : doubleValue;
+            if (roundedValue == 0 && doubleValue != 0)
+            {
+                // Specially print values near zero
+                string digitsString = _roundingLimit?.ToString() ?? "";
+                return doubleValue.ToString("E" + digitsString);
+            }
+            return roundedValue;
         }
 
         protected override object HandleNegating(object value)
