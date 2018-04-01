@@ -276,7 +276,6 @@ namespace STROOP.Controls
             value = HandleAngleConverting(value);
             if (handleRounding) value = HandleRounding(value);
             value = HandleAngleRoundingOut(value);
-            value = HandleNegating(value);
             if (handleFormatting) value = HandleHexDisplaying(value);
             if (handleFormatting) value = HandleObjectDisplaying(value);
             return value;
@@ -295,7 +294,6 @@ namespace STROOP.Controls
         {
             value = HandleObjectUndisplaying(value);
             value = HandleHexUndisplaying(value);
-            value = HandleUnnegating(value);
             value = HandleAngleUnconverting(value);
             return value;
         }
@@ -424,16 +422,6 @@ namespace STROOP.Controls
         // Number methods
 
         protected virtual object HandleRounding(object value)
-        {
-            return value;
-        }
-
-        protected virtual object HandleNegating(object value)
-        {
-            return value;
-        }
-
-        protected virtual object HandleUnnegating(object value)
         {
             return value;
         }

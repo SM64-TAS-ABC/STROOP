@@ -26,8 +26,6 @@ namespace STROOP.Controls
         protected readonly bool _defaultDisplayAsHex;
         protected bool _displayAsHex;
 
-        private bool _displayAsNegated;
-
         public WatchVariableNumberWrapper(
             WatchVariable watchVar,
             WatchVariableControl watchVarControl,
@@ -49,8 +47,6 @@ namespace STROOP.Controls
 
             _defaultDisplayAsHex = displayAsHex ?? DEFAULT_DISPLAY_AS_HEX;
             _displayAsHex = _defaultDisplayAsHex;
-
-            _displayAsNegated = false;
 
             AddCoordinateContextMenuStripItems();
             AddNumberContextMenuStripItems();
@@ -77,18 +73,9 @@ namespace STROOP.Controls
             };
             itemDisplayAsHex.Checked = _displayAsHex;
 
-            ToolStripMenuItem itemDisplayAsNegated = new ToolStripMenuItem("Display as Negated");
-            itemDisplayAsNegated.Click += (sender, e) =>
-            {
-                _displayAsNegated = !_displayAsNegated;
-                itemDisplayAsNegated.Checked = _displayAsNegated;
-            };
-            itemDisplayAsNegated.Checked = _displayAsNegated;
-
             _contextMenuStrip.AddToBeginningList(new ToolStripSeparator());
             _contextMenuStrip.AddToBeginningList(itemRoundTo);
             _contextMenuStrip.AddToBeginningList(itemDisplayAsHex);
-            _contextMenuStrip.AddToBeginningList(itemDisplayAsNegated);
         }
 
         private void AddCoordinateContextMenuStripItems()
@@ -174,21 +161,6 @@ namespace STROOP.Controls
                 return doubleValue.ToString("E" + digitsString);
             }
             return roundedValue;
-        }
-
-        protected override object HandleNegating(object value)
-        {
-            if (!_displayAsNegated) return value;
-            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(value);
-            if (!doubleValueNullable.HasValue) return value;
-            double doubleValue = doubleValueNullable.Value;
-            doubleValue = -1 * doubleValue;
-            return doubleValue;
-        }
-
-        protected override object HandleUnnegating(object value)
-        {
-            return HandleNegating(value);
         }
 
         protected override object HandleHexDisplaying(object value)
