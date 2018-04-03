@@ -67,69 +67,185 @@ namespace STROOP.Structs
                 return max(maxSpeed, speed-a3)
         */
 
-        public static int AirMove()
+        private class Input
         {
-            float startX = 0;
-            float startY = 0;
-            float startZ = 0;
-            float xSpeed = 0;
-            float ySpeed = 0;
-            float zSpeed = 0;
+            public readonly int X;
+            public readonly int Y;
 
+            public Input(int x, int y)
+            {
+                X = x;
+                Y = y;
+            }
 
-            int finalValue = 0;
+            public float GetScaledMagnitude()
+            {
+                return MoreMath.GetScaledEffectiveInputMagnitude(X, Y, false);
+            }
 
-            float newX = startX;
-            float newY = startY;
-            float newZ = startZ;
+            public override string ToString()
+            {
+                return String.Format("({0},{1})", X, Y);
+            }
+        }
+
+        private class MarioState
+        {
+            public readonly float X;
+            public readonly float Y;
+            public readonly float Z;
+            public readonly float XSpeed;
+            public readonly float YSpeed;
+            public readonly float ZSpeed;
+            public readonly float HSpeed;
+            public readonly ushort MarioAngle;
+            public readonly ushort CameraAngle;
+
+            public MarioState(
+                float x, float y, float z,
+                float xSpeed, float ySpeed, float zSpeed, float hSpeed,
+                ushort marioAngle, ushort cameraAngle)
+            {
+                X = x;
+                Y = y;
+                Z = z;
+                XSpeed = xSpeed;
+                YSpeed = ySpeed;
+                ZSpeed = zSpeed;
+                HSpeed = hSpeed;
+                MarioAngle = marioAngle;
+                CameraAngle = cameraAngle;
+            }
+
+            public MarioState ApplyInput(Input input)
+            {
+                MarioState withHSpeed = ComputeAirHSpeed(this, input);
+                MarioState moved = AirMove(withHSpeed);
+                MarioState withYSpeed = ComputeAirYSpeed(moved);
+                return withYSpeed;
+            }
+
+            public override string ToString()
+            {
+                return String.Format(
+                    "pos=({0},{1},{2}) spd=({3},{4},{5}) hspd={6}",
+                    X, Y, Z, XSpeed, YSpeed, ZSpeed, HSpeed);
+            }
+        }
+
+        private static MarioState AirMove(MarioState initialState)
+        {
+            float newX = initialState.X;
+            float newY = initialState.Y;
+            float newZ = initialState.Z;
 
             for (int i = 0; i < 4; i++)
             {
-                newX += xSpeed / 4;
-                newY += ySpeed / 4;
-                newZ += zSpeed / 4;
+                newX += initialState.XSpeed / 4;
+                newY += initialState.YSpeed / 4;
+                newZ += initialState.ZSpeed / 4;
             }
 
-            return finalValue;
+            return new MarioState(
+                newX,
+                newY,
+                newZ,
+                initialState.XSpeed,
+                initialState.YSpeed,
+                initialState.ZSpeed,
+                initialState.HSpeed,
+                initialState.MarioAngle,
+                initialState.CameraAngle);
         }
 
-        public static void ComputeAirSpeed(float hSpeed, int xInput, int yInput)
+        private static MarioState ComputeAirHSpeed(MarioState initialState, Input input)
         {
-            float perpSpeed = 0;
             bool longJump = false;
-            int facingAngle = 49152;
-            int cameraAngle = 32768;
-
-
             int maxSpeed = longJump ? 48 : 32;
-            int deltaFacingCamera = facingAngle - cameraAngle;
-            float analogTilt = MoreMath.GetScaledEffectiveInputMagnitude(xInput, yInput, false);
 
-            hSpeed = ApproachHSpeed(hSpeed, 0, 0.35f, 0.35f);
-            if (xInput != 0 || yInput != 0)
+            int marioAngle = initialState.MarioAngle;
+            int cameraAngle = initialState.CameraAngle;
+            int deltaFacingCamera = marioAngle - cameraAngle;
+            float inputScaledMagnitude = input.GetScaledMagnitude();
+
+            float perpSpeed = 0;
+            float newHSpeed = ApproachHSpeed(initialState.HSpeed, 0, 0.35f, 0.35f);
+            if (inputScaledMagnitude > 0)
             {
-                hSpeed += (analogTilt / 32) * 1.5f * MoreMath.InGameCosine(deltaFacingCamera);
-                perpSpeed = MoreMath.InGameSine(deltaFacingCamera) * (analogTilt / 32) * 10;
+                newHSpeed += (inputScaledMagnitude / 32) * 1.5f * MoreMath.InGameCosine(deltaFacingCamera);
+                perpSpeed = MoreMath.InGameSine(deltaFacingCamera) * (inputScaledMagnitude / 32) * 10;
             }
 
-            if (hSpeed > maxSpeed) hSpeed -= 1;
-            if (hSpeed < -16) hSpeed += 2;
+            if (newHSpeed > maxSpeed) newHSpeed -= 1;
+            if (newHSpeed < -16) newHSpeed += 2;
 
-            float specialXSpeed = MoreMath.InGameSine(facingAngle) * hSpeed;
-            float specialZSpeed = MoreMath.InGameCosine(facingAngle) * hSpeed;
-            specialXSpeed += perpSpeed * MoreMath.InGameSine(facingAngle + 0x4000);
-            specialZSpeed += perpSpeed * MoreMath.InGameCosine(facingAngle + 0x4000);
-            float xSpeed = specialXSpeed;
-            float zSpeed = specialZSpeed;
+            float newSlidingXSpeed = MoreMath.InGameSine(marioAngle) * newHSpeed;
+            float newSlidingZSpeed = MoreMath.InGameCosine(marioAngle) * newHSpeed;
+            newSlidingXSpeed += perpSpeed * MoreMath.InGameSine(marioAngle + 0x4000);
+            newSlidingZSpeed += perpSpeed * MoreMath.InGameCosine(marioAngle + 0x4000);
+            float newXSpeed = newSlidingXSpeed;
+            float newZSpeed = newSlidingZSpeed;
+
+            return new MarioState(
+                initialState.X,
+                initialState.Y,
+                initialState.Z,
+                newXSpeed,
+                initialState.YSpeed,
+                newZSpeed,
+                newHSpeed,
+                initialState.MarioAngle,
+                initialState.CameraAngle);
         }
 
+        private static MarioState ComputeAirYSpeed(MarioState initialState)
+        {
+            float newYSpeed = Math.Max(initialState.YSpeed - 4, -75);
+            return new MarioState(
+                initialState.X,
+                initialState.Y,
+                initialState.Z,
+                initialState.XSpeed,
+                newYSpeed,
+                initialState.ZSpeed,
+                initialState.HSpeed,
+                initialState.MarioAngle,
+                initialState.CameraAngle);
+        }
 
-        public static float ApproachHSpeed(float speed, float maxSpeed, float increase, float decrease)
+        private static float ApproachHSpeed(float speed, float maxSpeed, float increase, float decrease)
         {
             if (speed < maxSpeed)
                 return Math.Min(maxSpeed, speed + increase);
             else
                 return Math.Max(maxSpeed, speed - decrease);
+        }
+
+        public static void MainMethod()
+        {
+            float startX = -6842.04736328125f;
+            float startY = 2358;
+            float startZ = -506.698120117188f;
+            float startXSpeed = -34.6734008789063f;
+            float startYSpeed = -74;
+            float startZSpeed = 0;
+            float startHSpeed = 34.6734008789063f;
+
+            ushort marioAngle = 49152;
+            ushort cameraAngle = 32768;
+
+            MarioState startState = new MarioState(
+                startX,
+                startY,
+                startZ,
+                startXSpeed,
+                startYSpeed,
+                startZSpeed,
+                startHSpeed,
+                marioAngle,
+                cameraAngle);
+
+
         }
     }
 }
