@@ -549,26 +549,6 @@ namespace STROOP.Utilities
             return RadiansToAngleUnitsRounded(uphillRadians);
         }
 
-        public static (float effectiveX, float effectiveY) GetEffectiveInput(int rawX, int rawY)
-        {
-            float effectiveX = rawX >= 8 ? rawX - 6 : rawX <= -8 ? rawX + 6 : 0;
-            float effectiveY = rawY >= 8 ? rawY - 6 : rawY <= -8 ? rawY + 6 : 0;
-            float hypotenuse = (float)Math.Sqrt(effectiveX * effectiveX + effectiveY * effectiveY);
-            if (hypotenuse > 64)
-            {
-                effectiveX *= 64 / hypotenuse;
-                effectiveY *= 64 / hypotenuse;
-            }
-            return (effectiveX, effectiveY);
-        }
-
-        public static double GetEffectiveInputMagnitude(int rawX, int rawY)
-        {
-            float effectiveX = rawX >= 8 ? rawX - 6 : rawX <= -8 ? rawX + 6 : 0;
-            float effectiveY = rawY >= 8 ? rawY - 6 : rawY <= -8 ? rawY + 6 : 0;
-            return Math.Sqrt(effectiveX * effectiveX + effectiveY * effectiveY);
-        }
-
         public static byte ApplyValueToMaskedByte(byte currentValue, byte mask, byte valueToSet)
         {
             byte maskedValueToSet = (byte)(valueToSet & mask);
@@ -606,6 +586,48 @@ namespace STROOP.Utilities
         public static double GetDotProduct(double v1X, double v1Y, double v1Z, double v2X, double v2Y, double v2Z)
         {
             return v1X * v2X + v1Y * v2Y + v1Z * v2Z;
+        }
+
+        // Input angle stuff
+
+        public static float InGameCosine(int angle)
+        {
+            ushort truncated = NormalizeAngleTruncated(angle);
+            double radians = AngleUnitsToRadians(truncated);
+            return (float)Math.Cos(radians);
+        }
+
+        public static float InGameSine(int angle)
+        {
+            ushort truncated = NormalizeAngleTruncated(angle);
+            double radians = AngleUnitsToRadians(truncated);
+            return (float)Math.Sin(radians);
+        }
+
+        public static (float effectiveX, float effectiveY) GetEffectiveInput(int rawX, int rawY)
+        {
+            float effectiveX = rawX >= 8 ? rawX - 6 : rawX <= -8 ? rawX + 6 : 0;
+            float effectiveY = rawY >= 8 ? rawY - 6 : rawY <= -8 ? rawY + 6 : 0;
+            float hypotenuse = (float)Math.Sqrt(effectiveX * effectiveX + effectiveY * effectiveY);
+            if (hypotenuse > 64)
+            {
+                effectiveX *= 64 / hypotenuse;
+                effectiveY *= 64 / hypotenuse;
+            }
+            return (effectiveX, effectiveY);
+        }
+
+        public static float GetEffectiveInputMagnitude(int rawX, int rawY)
+        {
+            int effectiveX = rawX >= 8 ? rawX - 6 : rawX <= -8 ? rawX + 6 : 0;
+            int effectiveY = rawY >= 8 ? rawY - 6 : rawY <= -8 ? rawY + 6 : 0;
+            return (float)Math.Sqrt(effectiveX * effectiveX + effectiveY * effectiveY);
+        }
+
+        public static float GetScaledEffectiveInputMagnitude(int rawX, int rawY, bool squished)
+        {
+            int divider = squished ? 8 : 2;
+            return GetEffectiveInputMagnitude(rawX, rawY) / divider;
         }
 
         private static bool InputIsInDeadZone(int input)
