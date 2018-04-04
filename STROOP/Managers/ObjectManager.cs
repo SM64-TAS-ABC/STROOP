@@ -191,6 +191,10 @@ namespace STROOP.Managers
                     () => ButtonUtilities.GotoObjects(_objects, (false, true, false)),
                     () => ButtonUtilities.GotoObjects(_objects, (false, false, true)),
                 });
+            //////////////////////////////////////////////////////////////////////
+            // TODO remove this
+            //goToButton.Click += (sender, e) => MovementCalculator.MainMethod();
+            //////////////////////////////////////////////////////////////////////
 
             var retrieveButton = objPanel.Controls["buttonObjRetrieve"] as Button;
             retrieveButton.Click += (sender, e) => ButtonUtilities.RetrieveObjects(_objects);

@@ -617,14 +617,22 @@ namespace STROOP.Utilities
             return (effectiveX, effectiveY);
         }
 
-        public static float GetEffectiveInputMagnitude(int rawX, int rawY)
+        public static float GetEffectiveInputMagnitudeUncapped(int rawX, int rawY)
         {
             int effectiveX = rawX >= 8 ? rawX - 6 : rawX <= -8 ? rawX + 6 : 0;
             int effectiveY = rawY >= 8 ? rawY - 6 : rawY <= -8 ? rawY + 6 : 0;
             return (float)Math.Sqrt(effectiveX * effectiveX + effectiveY * effectiveY);
         }
 
-        public static float GetScaledEffectiveInputMagnitude(int rawX, int rawY, bool squished)
+        public static float GetEffectiveInputMagnitude(int rawX, int rawY)
+        {
+            int effectiveX = rawX >= 8 ? rawX - 6 : rawX <= -8 ? rawX + 6 : 0;
+            int effectiveY = rawY >= 8 ? rawY - 6 : rawY <= -8 ? rawY + 6 : 0;
+            float hypotenuse = (float)Math.Sqrt(effectiveX * effectiveX + effectiveY * effectiveY);
+            return Math.Min(hypotenuse, 64f);
+        }
+
+        public static float GetScaledInputMagnitude(int rawX, int rawY, bool squished)
         {
             int divider = squished ? 8 : 2;
             return GetEffectiveInputMagnitude(rawX, rawY) / divider;
@@ -652,7 +660,7 @@ namespace STROOP.Utilities
                     ushort truncatedInputAngle = NormalizeAngleTruncated(inputAngle);
                     if (truncatedInputAngle == truncatedGoalAngle)
                     {
-                        double magnitude = GetEffectiveInputMagnitude(x, y);
+                        double magnitude = GetEffectiveInputMagnitudeUncapped(x, y);
                         if (magnitude > bestMagnitude)
                         {
                             bestMagnitude = magnitude;
@@ -755,7 +763,7 @@ namespace STROOP.Utilities
                     ushort truncatedInputAngle = NormalizeAngleTruncated(inputAngle);
                     if (truncatedInputAngle == truncatedGoalAngle)
                     {
-                        double magnitude = GetEffectiveInputMagnitude(x, y);
+                        double magnitude = GetEffectiveInputMagnitudeUncapped(x, y);
                         if (magnitude > bestMagnitude)
                         {
                             bestMagnitude = magnitude;

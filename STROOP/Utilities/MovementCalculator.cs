@@ -80,7 +80,7 @@ namespace STROOP.Structs
 
             public float GetScaledMagnitude()
             {
-                return MoreMath.GetScaledEffectiveInputMagnitude(X, Y, false);
+                return MoreMath.GetScaledInputMagnitude(X, Y, false);
             }
 
             public override string ToString()
@@ -163,17 +163,17 @@ namespace STROOP.Structs
             bool longJump = false;
             int maxSpeed = longJump ? 48 : 32;
 
-            int marioAngle = initialState.MarioAngle;
-            int cameraAngle = initialState.CameraAngle;
-            int deltaFacingCamera = marioAngle - cameraAngle;
+            ushort marioAngle = initialState.MarioAngle;
+            ushort yawIntended = MoreMath.CalculateAngleFromInputs(input.X, input.Y, initialState.CameraAngle);
+            int deltaAngleIntendedFacing = yawIntended - marioAngle;
             float inputScaledMagnitude = input.GetScaledMagnitude();
 
             float perpSpeed = 0;
             float newHSpeed = ApproachHSpeed(initialState.HSpeed, 0, 0.35f, 0.35f);
             if (inputScaledMagnitude > 0)
             {
-                newHSpeed += (inputScaledMagnitude / 32) * 1.5f * MoreMath.InGameCosine(deltaFacingCamera);
-                perpSpeed = MoreMath.InGameSine(deltaFacingCamera) * (inputScaledMagnitude / 32) * 10;
+                newHSpeed += (inputScaledMagnitude / 32) * 1.5f * MoreMath.InGameCosine(deltaAngleIntendedFacing);
+                perpSpeed = MoreMath.InGameSine(deltaAngleIntendedFacing) * (inputScaledMagnitude / 32) * 10;
             }
 
             if (newHSpeed > maxSpeed) newHSpeed -= 1;
@@ -245,7 +245,10 @@ namespace STROOP.Structs
                 marioAngle,
                 cameraAngle);
 
+            Input input = new Input(100, 0);
 
+            MarioState endState = startState.ApplyInput(input);
+            System.Diagnostics.Trace.WriteLine(endState);
         }
     }
 }

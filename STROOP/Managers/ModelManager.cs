@@ -205,7 +205,7 @@ namespace STROOP.Managers
             return vertices;
         }
 
-        public List<int[]> GetTrianglesFromContinuedModelPonter(uint contModelPtr)
+        public List<int[]> GetTrianglesFromContinuedModelPointer(uint contModelPtr)
         {
             var triangles = new List<int[]>();
 
@@ -250,7 +250,7 @@ namespace STROOP.Managers
 
             uint modelPtr = ModelPointer;
             List<short[]> vertices = GetVerticesFromModelPointer(ref modelPtr);
-            List<int[]> triangles = GetTrianglesFromContinuedModelPonter(modelPtr);
+            List<int[]> triangles = GetTrianglesFromContinuedModelPointer(modelPtr);
             _modelView?.ChangeModel(vertices, triangles);
 
             // TODO: transformation
