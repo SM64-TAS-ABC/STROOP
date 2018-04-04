@@ -640,7 +640,7 @@ namespace STROOP.Utilities
             return scaled / divider;
         }
 
-        private static bool InputIsInDeadZone(int input)
+        public static bool InputIsInDeadZone(int input)
         {
             return input > -8 && input < 8 && input != 0;
         }

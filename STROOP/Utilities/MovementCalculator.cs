@@ -86,7 +86,7 @@ namespace STROOP.Structs
 
             public override string ToString()
             {
-                return String.Format("({0},{1})", X, Y);
+                return String.Format("({0},{1})", X, -1 * Y);
             }
         }
 
@@ -102,10 +102,15 @@ namespace STROOP.Structs
             public readonly ushort MarioAngle;
             public readonly ushort CameraAngle;
 
+            public readonly MarioState PreviousState;
+            public readonly Input LastInput;
+            public readonly int Index;
+
             public MarioState(
                 float x, float y, float z,
                 float xSpeed, float ySpeed, float zSpeed, float hSpeed,
-                ushort marioAngle, ushort cameraAngle)
+                ushort marioAngle, ushort cameraAngle,
+                MarioState previousState, Input lastInput, int index)
             {
                 X = x;
                 Y = y;
@@ -116,6 +121,10 @@ namespace STROOP.Structs
                 HSpeed = hSpeed;
                 MarioAngle = marioAngle;
                 CameraAngle = cameraAngle;
+
+                PreviousState = previousState;
+                LastInput = lastInput;
+                Index = index;
             }
 
             public MarioState ApplyInput(Input input)
@@ -132,6 +141,47 @@ namespace STROOP.Structs
                     "pos=({0},{1},{2}) spd=({3},{4},{5}) hspd={6}",
                     (double)X, (double)Y, (double)Z,
                     (double)XSpeed, (double)YSpeed, (double)ZSpeed, (double)HSpeed);
+            }
+
+            public string ToStringWithInput()
+            {
+                string inputString = LastInput != null ? LastInput + " to " : "";
+                return inputString + ToString();
+            }
+
+            private List<object> GetFields()
+            {
+                return new List<object>()
+                {
+                    X, Y, Z,
+                    XSpeed, YSpeed, ZSpeed, HSpeed,
+                    MarioAngle, CameraAngle,
+                };
+            }
+
+            public override bool Equals(object obj)
+            {
+                if (!(obj is MarioState)) return false;
+                MarioState other = obj as MarioState;
+                return Enumerable.SequenceEqual(
+                    GetFields(), other.GetFields());
+            }
+
+            public override int GetHashCode()
+            {
+                return GetFields().GetHashCode();
+            }
+
+            internal string GetLineage()
+            {
+                if (PreviousState == null)
+                {
+                    return ToStringWithInput();
+                }
+                else
+                {
+                    return PreviousState.GetLineage() + "\n" + ToStringWithInput();
+                }
             }
         }
 
@@ -157,7 +207,10 @@ namespace STROOP.Structs
                 initialState.ZSpeed,
                 initialState.HSpeed,
                 initialState.MarioAngle,
-                initialState.CameraAngle);
+                initialState.CameraAngle,
+                initialState.PreviousState,
+                initialState.LastInput,
+                initialState.Index);
         }
 
         private static MarioState ComputeAirHSpeed(MarioState initialState, Input input)
@@ -197,7 +250,10 @@ namespace STROOP.Structs
                 newZSpeed,
                 newHSpeed,
                 initialState.MarioAngle,
-                initialState.CameraAngle);
+                initialState.CameraAngle,
+                initialState,
+                input,
+                initialState.Index + 1);
         }
 
         private static MarioState ComputeAirYSpeed(MarioState initialState)
@@ -212,7 +268,10 @@ namespace STROOP.Structs
                 initialState.ZSpeed,
                 initialState.HSpeed,
                 initialState.MarioAngle,
-                initialState.CameraAngle);
+                initialState.CameraAngle,
+                initialState.PreviousState,
+                initialState.LastInput,
+                initialState.Index);
         }
 
         private static float ApproachHSpeed(float speed, float maxSpeed, float increase, float decrease)
@@ -223,8 +282,9 @@ namespace STROOP.Structs
                 return Math.Max(maxSpeed, speed - decrease);
         }
 
-        public static void MainMethod(int xInput, int yInput)
+        public static void MainMethod()
         {
+            /*
             float startX = -6842.04736328125f;
             float startY = 2358;
             float startZ = -506.698120117188f;
@@ -232,6 +292,18 @@ namespace STROOP.Structs
             float startYSpeed = -74;
             float startZSpeed = 0;
             float startHSpeed = 34.6734008789063f;
+            */
+
+            float startX = -8172.14892578125f;
+            float startY = -47.4696655273438f;
+            float startZ = -507.290283203125f;
+            float startXSpeed = -3.33430767059326f;
+            float startYSpeed = -75;
+            float startZSpeed = 0;
+            float startHSpeed = 3.33430767059326f;
+
+            float goalX = -8171.970703125f;
+            float goalZ = -507.2902832031f;
 
             ushort marioAngle = 49152;
             ushort cameraAngle = 32768;
@@ -245,11 +317,75 @@ namespace STROOP.Structs
                 startZSpeed,
                 startHSpeed,
                 marioAngle,
-                cameraAngle);
+                cameraAngle,
+                null,
+                null,
+                0);
 
-            Input input = new Input(xInput, yInput);
-            MarioState endState = startState.ApplyInput(input);
-            InfoForm.ShowValue(endState);
+            int lastIndex = -1;
+            List<Input> inputs = GetInputRange(-70, 70, 0, 0);
+            float bestDiff = float.MaxValue;
+            Queue<MarioState> queue = new Queue<MarioState>();
+            HashSet<MarioState> alreadySeen = new HashSet<MarioState>();
+            queue.Enqueue(startState);
+
+            while (queue.Count != 0)
+            {
+                MarioState dequeue = queue.Dequeue();
+                List<MarioState> nextStates = inputs.ConvertAll(input => dequeue.ApplyInput(input));
+                foreach (MarioState state in nextStates)
+                {
+                    if (alreadySeen.Contains(state)) continue;
+
+                    float threshold = 10f / (state.Index * state.Index);
+                    if (state.Index != lastIndex)
+                    {
+                        lastIndex = state.Index;
+                        System.Diagnostics.Trace.WriteLine("Now at index " + lastIndex + " with threshold " + threshold);
+                    }
+
+                    float diff = (float)MoreMath.GetDistanceBetween(state.X, state.Z, goalX, goalZ);
+                    if (diff > threshold) continue;
+
+                    if (diff < bestDiff)
+                    {
+                        bestDiff = diff;
+                        System.Diagnostics.Trace.WriteLine("New best diff of " + diff);
+                    }
+                    //System.Diagnostics.Trace.WriteLine(diff + " < " + threshold + " at index " + state.Index);
+
+                    if (diff == 0 && Math.Abs(state.HSpeed) < 0.2)
+                    {
+                        System.Diagnostics.Trace.WriteLine("");
+                        System.Diagnostics.Trace.WriteLine(state.GetLineage());
+                        return;
+                    }
+
+                    alreadySeen.Add(state);
+                    queue.Enqueue(state);
+                }
+            }
+            System.Diagnostics.Trace.WriteLine("FAILED");
+        }
+
+        private static List<Input> GetAllInputs()
+        {
+            return GetInputRange(-128, 127, -128, 127);
+        }
+
+        private static List<Input> GetInputRange(int minX, int maxX, int minZ, int maxZ)
+        {
+            List<Input> output = new List<Input>();
+            for (int x = minX; x <= maxX; x++)
+            {
+                if (MoreMath.InputIsInDeadZone(x)) continue;
+                for (int z = minZ; z <= maxZ; z++)
+                {
+                    if (MoreMath.InputIsInDeadZone(z)) continue;
+                    output.Add(new Input(x, z));
+                }
+            }
+            return output;
         }
     }
 }

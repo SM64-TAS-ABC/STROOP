@@ -333,9 +333,9 @@ namespace STROOP.Managers
             /*
             goToButton.Click += (sender, e) =>
             {
-                int xInput = ParsingUtilities.ParseInt((objPosGroupBox.Controls["textBoxObjPosXZ"] as TextBox).Text);
-                int yInput = ParsingUtilities.ParseInt((objPosGroupBox.Controls["textBoxObjPosY"] as TextBox).Text);
-                MovementCalculator.MainMethod(xInput, yInput);
+                //int xInput = ParsingUtilities.ParseInt((objPosGroupBox.Controls["textBoxObjPosXZ"] as TextBox).Text);
+                //int yInput = ParsingUtilities.ParseInt((objPosGroupBox.Controls["textBoxObjPosY"] as TextBox).Text);
+                MovementCalculator.MainMethod();
             };
             */
             //////////////////////////////////////////////////////////////////////
