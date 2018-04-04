@@ -1,4 +1,5 @@
-﻿using STROOP.Managers;
+﻿using STROOP.Forms;
+using STROOP.Managers;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System;
@@ -129,7 +130,8 @@ namespace STROOP.Structs
             {
                 return String.Format(
                     "pos=({0},{1},{2}) spd=({3},{4},{5}) hspd={6}",
-                    X, Y, Z, XSpeed, YSpeed, ZSpeed, HSpeed);
+                    (double)X, (double)Y, (double)Z,
+                    (double)XSpeed, (double)YSpeed, (double)ZSpeed, (double)HSpeed);
             }
         }
 
@@ -221,7 +223,7 @@ namespace STROOP.Structs
                 return Math.Max(maxSpeed, speed - decrease);
         }
 
-        public static void MainMethod()
+        public static void MainMethod(int xInput, int yInput)
         {
             float startX = -6842.04736328125f;
             float startY = 2358;
@@ -245,10 +247,9 @@ namespace STROOP.Structs
                 marioAngle,
                 cameraAngle);
 
-            Input input = new Input(100, 0);
-
+            Input input = new Input(xInput, yInput);
             MarioState endState = startState.ApplyInput(input);
-            System.Diagnostics.Trace.WriteLine(endState);
+            InfoForm.ShowValue(endState);
         }
     }
 }

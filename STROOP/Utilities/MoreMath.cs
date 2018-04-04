@@ -634,8 +634,10 @@ namespace STROOP.Utilities
 
         public static float GetScaledInputMagnitude(int rawX, int rawY, bool squished)
         {
+            float effectiveMagnitude = GetEffectiveInputMagnitude(rawX, rawY);
+            float scaled = (effectiveMagnitude / 64f) * (effectiveMagnitude / 64f) * 64f;
             int divider = squished ? 8 : 2;
-            return GetEffectiveInputMagnitude(rawX, rawY) / divider;
+            return scaled / divider;
         }
 
         private static bool InputIsInDeadZone(int input)

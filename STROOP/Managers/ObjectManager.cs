@@ -191,10 +191,6 @@ namespace STROOP.Managers
                     () => ButtonUtilities.GotoObjects(_objects, (false, true, false)),
                     () => ButtonUtilities.GotoObjects(_objects, (false, false, true)),
                 });
-            //////////////////////////////////////////////////////////////////////
-            // TODO remove this
-            //goToButton.Click += (sender, e) => MovementCalculator.MainMethod();
-            //////////////////////////////////////////////////////////////////////
 
             var retrieveButton = objPanel.Controls["buttonObjRetrieve"] as Button;
             retrieveButton.Click += (sender, e) => ButtonUtilities.RetrieveObjects(_objects);
@@ -332,6 +328,17 @@ namespace STROOP.Managers
                         -1 * vOffset,
                         useRelative);
                 });
+            //////////////////////////////////////////////////////////////////////
+            // TODO remove this
+            /*
+            goToButton.Click += (sender, e) =>
+            {
+                int xInput = ParsingUtilities.ParseInt((objPosGroupBox.Controls["textBoxObjPosXZ"] as TextBox).Text);
+                int yInput = ParsingUtilities.ParseInt((objPosGroupBox.Controls["textBoxObjPosY"] as TextBox).Text);
+                MovementCalculator.MainMethod(xInput, yInput);
+            };
+            */
+            //////////////////////////////////////////////////////////////////////
 
             var objAngleGroupBox = objPanel.Controls["groupBoxObjAngle"] as GroupBox;
             ControlUtilities.InitializeScalarController(
