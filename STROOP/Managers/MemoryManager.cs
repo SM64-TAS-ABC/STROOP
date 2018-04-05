@@ -104,7 +104,6 @@ namespace STROOP.Managers
                 bool isAltKeyHeld = Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt);
                 if (!isCtrlKeyHeld) return;
                 int index = _richTextBoxMemoryValues.SelectionStart;
-                bool isLittleEndian = _checkBoxMemoryLittleEndian.Checked;
                 bool useHex = _checkBoxMemoryHex.Checked;
                 bool useObj = _checkBoxMemoryObj.Checked;
                 if (isAltKeyHeld)

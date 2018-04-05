@@ -52,6 +52,13 @@ namespace STROOP.Controls
             _contextMenuStrip.AddToBeginningList(itemSelectObject);
         }
 
+        protected override void HandleVerification(object value)
+        {
+            base.HandleVerification(value);
+            if (!(value is uint))
+                throw new ArgumentOutOfRangeException(value + " is not a uint, but represents an object");
+        }
+
         protected override object HandleHexDisplaying(object value)
         {
             // prevent hex display if we're displaying as object
