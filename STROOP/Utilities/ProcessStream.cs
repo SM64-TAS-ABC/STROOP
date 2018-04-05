@@ -227,7 +227,7 @@ namespace STROOP.Utilities
             // Safety bounds check
             if (processAddress.ToInt64() < ProcessMemoryOffset.ToInt64())
                 return false;
-            if (processAddress.ToInt64() + buffer.Length >= ProcessMemoryOffset.ToInt64() + Config.RamSize)
+            if (processAddress.ToInt64() + buffer.Length >= ProcessMemoryOffset.ToInt64() + _ram.Length)
                 return false;
 
             return Kernal32NativeMethods.ProcessWriteMemory(_processHandle, processAddress,
@@ -594,6 +594,10 @@ namespace STROOP.Utilities
             try
             {
                 // Read whole ram value to buffer
+                if (_ram.Length != Config.RamSize)
+                {
+                    _ram = new byte[Config.RamSize];
+                }
                 return ReadProcessMemory(0, _ram);
             }
             catch (Exception)
