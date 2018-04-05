@@ -65,21 +65,18 @@ namespace STROOP.Managers
                     _controller.CameraMode = MapController.MapCameraMode.Fly;
             };
 
-            /*
-            _mapGui.RadioButtonScaleCourseDefault.Click += (sender, e) => _mapScale = MapScale.CourseDefault;
-            _mapGui.RadioButtonScaleMaxCourseSize.Click += (sender, e) => _mapScale = MapScale.MaxCourseSize;
-            _mapGui.RadioButtonScaleCustom.Click += (sender, e) => _mapScale = MapScale.Custom;
+            _mapGui.RadioButtonScaleCourseDefault.Click += (sender, e) => _controller.ScaleMode = MapController.MapScaleMode.CourseDefault;
+            _mapGui.RadioButtonScaleMaxCourseSize.Click += (sender, e) => _controller.ScaleMode = MapController.MapScaleMode.MaxCourseSize;
+            _mapGui.RadioButtonScaleCustom.Click += (sender, e) => _controller.ScaleMode = MapController.MapScaleMode.Custom;
 
-            _mapGui.RadioButtonCenterBestFit.Click += (sender, e) => _mapCenter = MapCenter.BestFit;
-            _mapGui.RadioButtonCenterOrigin.Click += (sender, e) => _mapCenter = MapCenter.Origin;
-            _mapGui.RadioButtonCenterCustom.Click += (sender, e) => _mapCenter = MapCenter.Custom;
+            _mapGui.RadioButtonCenterBestFit.Click += (sender, e) => _controller.CenterMode = MapController.MapCenterMode.BestFit;
+            _mapGui.RadioButtonCenterOrigin.Click += (sender, e) => _controller.CenterMode = MapController.MapCenterMode.Origin;
+            _mapGui.RadioButtonCenterCustom.Click += (sender, e) => _controller.CenterMode = MapController.MapCenterMode.Custom;
 
-            _mapGui.RadioButtonAngle0.Click += (sender, e) => _mapAngle = MapAngle._0;
-            _mapGui.RadioButtonAngle16384.Click += (sender, e) => _mapAngle = MapAngle._16384;
-            _mapGui.RadioButtonAngle32768.Click += (sender, e) => _mapAngle = MapAngle._32768;
-            _mapGui.RadioButtonAngle49152.Click += (sender, e) => _mapAngle = MapAngle._49152;
-            _mapGui.RadioButtonAngleCustom.Click += (sender, e) => _mapAngle = MapAngle.Custom;
-            */
+            _mapGui.RadioButtonAngle0.Click += (sender, e) => _controller.MapAngle = 0;
+            _mapGui.RadioButtonAngle16384.Click += (sender, e) => _controller.MapAngle = (float) Math.PI / 2;
+            _mapGui.RadioButtonAngle32768.Click += (sender, e) => _controller.MapAngle = (float) Math.PI;
+            _mapGui.RadioButtonAngle49152.Click += (sender, e) => _controller.MapAngle = (float) (3 * Math.PI / 2);
 
             _mapGui.ButtonAddNewTracker.Click += (sender, e) =>
                 _mapGui.MapTrackerFlowLayoutPanel.AddNewControl(

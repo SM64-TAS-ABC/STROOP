@@ -24,20 +24,20 @@ namespace STROOP.Controls.Map.Graphics
 
 
         public IMapCamera Camera { get; set; }
-        public float AspectRatio => _control.AspectRatio;
-        public float NormalizedWidth => AspectRatio <= 1.0f ? 1.0f : (float) _control.Width / _control.Height;
-        public float NormalizedHeight => AspectRatio >= 1.0f ? 1.0f : (float) _control.Height / _control.Width;
-        public Size Size => _control.Size;
-        public float Width => _control.Width;
-        public float Height => _control.Height;
-        public bool Visible { get => _control.Visible; set => _control.Visible = value; }
+        public float AspectRatio => Control.AspectRatio;
+        public float NormalizedWidth => AspectRatio <= 1.0f ? 1.0f : (float) Control.Width / Control.Height;
+        public float NormalizedHeight => AspectRatio >= 1.0f ? 1.0f : (float) Control.Height / Control.Width;
+        public Size Size => Control.Size;
+        public float Width => Control.Width;
+        public float Height => Control.Height;
+        public bool Visible { get => Control.Visible; set => Control.Visible = value; }
 
         public event EventHandler OnSizeChanged;
 
         Matrix4 _identityView = Matrix4.Identity;
         List <MapGraphicsItem> _mapItems = new List<MapGraphicsItem>();
         Object _mapItemsLock = new object();
-        GLControl _control { get; }
+        public GLControl Control { get; }
 
         bool _error = false;
 
@@ -53,14 +53,14 @@ namespace STROOP.Controls.Map.Graphics
 
         public MapGraphics(GLControl control)
         {
-            _control = control;
+            Control = control;
         }
 
         public void Load()
         {
 
-            _control.MakeCurrent();
-            _control.Context.LoadAll();
+            Control.MakeCurrent();
+            Control.Context.LoadAll();
 
             CheckVersion();
             if (_error)
@@ -77,18 +77,18 @@ namespace STROOP.Controls.Map.Graphics
             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
 
             // Set viewport
-            GL.Viewport(_control.DisplayRectangle);
+            GL.Viewport(Control.DisplayRectangle);
 
             // Create utilties for GraphicsItems to use
             Utilities = new GraphicsUtilities(this);
 
-            _control.Paint += OnPaint;
-            _control.Resize += OnResize;
+            Control.Paint += OnPaint;
+            Control.Resize += OnResize;
         }
 
         public void OnPaint(object sender, EventArgs e)
         {
-            _control.MakeCurrent();
+            Control.MakeCurrent();
 
             // Set default background color (clear drawing area)
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
@@ -97,7 +97,7 @@ namespace STROOP.Controls.Map.Graphics
             // Make sure we have a camera
             if (_error || Camera == null)
             {
-                _control.SwapBuffers();
+                Control.SwapBuffers();
                 return;
             }
 
@@ -163,7 +163,7 @@ namespace STROOP.Controls.Map.Graphics
             if (error != ErrorCode.NoError)
                 Debugger.Break();
 
-            _control.SwapBuffers();
+            Control.SwapBuffers();
         }
 
         public void BindVertices()
@@ -178,14 +178,14 @@ namespace STROOP.Controls.Map.Graphics
 
         void OnResize(object sender, EventArgs e)
         {
-            GL.Viewport(_control.DisplayRectangle);
+            GL.Viewport(Control.DisplayRectangle);
             OnSizeChanged?.Invoke(sender, e);
             Invalidate();
         }
 
         public void Invalidate()
         {
-            _control.Invalidate();
+            Control.Invalidate();
         }
 
         public void AddMapItem(MapGraphicsItem mapItem)
