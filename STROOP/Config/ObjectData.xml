@@ -36,7 +36,9 @@
   <Data groupList="Advanced" type="float" offset="0x015C" base="Object">"Dist to Mario"</Data>
   <Data groupList="Intermediate" base="Object" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
   <Data groupList="Intermediate" base="Object" specialType="MarioHorizontalDistanceToObject">HDist Mario to Obj</Data>
-  <Data groupList="Intermediate" base="Object" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
+  <Data groupList="Advanced" base="Object" specialType="MarioXDistanceToObject" coord="X">XDist Mario to Obj</Data>
+  <Data groupList="Intermediate" base="Object" specialType="MarioVerticalDistanceToObject" coord="Y">VDist Mario to Obj</Data>
+  <Data groupList="Advanced" base="Object" specialType="MarioZDistanceToObject" coord="Z">ZDist Mario to Obj</Data>
   <Data groupList="Intermediate" base="Object" specialType="MarioDistanceToObjectHome">Dist Mario to Home</Data>
   <Data groupList="Intermediate" base="Object" specialType="MarioHorizontalDistanceToObjectHome">HDist Mario to Home</Data>
   <Data groupList="Intermediate" base="Object" specialType="MarioVerticalDistanceToObjectHome">VDist Mario to Home</Data>
