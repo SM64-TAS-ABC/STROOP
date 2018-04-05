@@ -113,6 +113,11 @@ namespace STROOP.Controls
                 throw new ArgumentOutOfRangeException("Object vars must have type uint");
             }
 
+            if (Subclass == WatchVariableSubclass.Triangle && WatchVar.MemoryType != typeof(uint))
+            {
+                throw new ArgumentOutOfRangeException("Triangle vars must have type uint");
+            }
+
             if (UseHex.HasValue && (Subclass == WatchVariableSubclass.String))
             {
                 throw new ArgumentOutOfRangeException("useHex cannot be used with var subclass String");
@@ -121,6 +126,11 @@ namespace STROOP.Controls
             if (UseHex.HasValue && (Subclass == WatchVariableSubclass.Object))
             {
                 throw new ArgumentOutOfRangeException("useHex is redundant with var subclass Object");
+            }
+
+            if (UseHex.HasValue && (Subclass == WatchVariableSubclass.Triangle))
+            {
+                throw new ArgumentOutOfRangeException("useHex is redundant with var subclass Triangle");
             }
 
             if (InvertBool.HasValue && (Subclass != WatchVariableSubclass.Boolean))

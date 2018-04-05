@@ -51,9 +51,9 @@
   <Data groupList="Basic" type="float" offset="0x28" base="Triangle">Normal Offset</Data>
   <Data groupList="Basic" type="uint" offset="0x2C" base="Triangle" subclass="Object">Associated Object</Data>
 
-  <Data groupList="Intermediate" type="uint" offset="0x68" base="Mario" useHex="true" color="Yellow">Floor Triangle</Data>
-  <Data groupList="Intermediate" type="uint" offset="0x60" base="Mario" useHex="true" color="Yellow">Wall Triangle</Data>
-  <Data groupList="Intermediate" type="uint" offset="0x64" base="Mario" useHex="true" color="Yellow">Ceiling Triangle</Data>
+  <Data groupList="Intermediate" type="uint" offset="0x68" base="Mario" subclass="Triangle" color="Yellow">Floor Triangle</Data>
+  <Data groupList="Intermediate" type="uint" offset="0x60" base="Mario" subclass="Triangle" color="Yellow">Wall Triangle</Data>
+  <Data groupList="Intermediate" type="uint" offset="0x64" base="Mario" subclass="Triangle" color="Yellow">Ceiling Triangle</Data>
   
   <Data groupList="Intermediate" type="float" offset="0x70" base="Mario" color="Yellow">Floor Height</Data>
   <Data groupList="Intermediate" type="float" offset="0x6C" base="Mario" color="Yellow">Ceiling Height</Data>
