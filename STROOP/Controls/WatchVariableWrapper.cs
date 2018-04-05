@@ -68,6 +68,9 @@ namespace STROOP.Controls
                 case WatchVariableSubclass.Object:
                     return new WatchVariableObjectWrapper(watchVar, watchVarControl);
 
+                case WatchVariableSubclass.Triangle:
+                    return new WatchVariableTriangleWrapper(watchVar, watchVarControl);
+
                 case WatchVariableSubclass.Boolean:
                     return new WatchVariableBooleanWrapper(watchVar, watchVarControl, invertBool);
 
