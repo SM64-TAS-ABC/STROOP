@@ -25,7 +25,6 @@ namespace STROOP.Managers
         private readonly CheckBox _checkBoxMemoryObj;
 
         private readonly RichTextBoxEx _richTextBoxMemoryAddresses;
-        private readonly RichTextBoxEx _richTextBoxMemoryBytes;
         private readonly RichTextBoxEx _richTextBoxMemoryValues;
 
         private readonly List<ValueText> _currentValueTexts;
@@ -85,7 +84,6 @@ namespace STROOP.Managers
             _checkBoxMemoryObj = splitContainer.Panel1.Controls["checkBoxMemoryObj"] as CheckBox;
 
             _richTextBoxMemoryAddresses = splitContainer.Panel1.Controls["richTextBoxMemoryAddresses"] as RichTextBoxEx;
-            _richTextBoxMemoryBytes = splitContainer.Panel1.Controls["richTextBoxMemoryBytes"] as RichTextBoxEx;
             _richTextBoxMemoryValues = splitContainer.Panel1.Controls["richTextBoxMemoryValues"] as RichTextBoxEx;
 
             _comboBoxMemoryTypes.DataSource = TypeUtilities.SimpleTypeList;
@@ -237,8 +235,6 @@ namespace STROOP.Managers
             {
                 _textBoxMemoryObjAddress.Text = HexUtilities.Format(0, 8);
                 _richTextBoxMemoryAddresses.Text = "";
-                _richTextBoxMemoryBytes.Text = "";
-                _richTextBoxMemoryBytes.Text = "";
                 _richTextBoxMemoryValues.Text = "";
                 return;
             }
@@ -258,7 +254,6 @@ namespace STROOP.Managers
             // update control text
             _textBoxMemoryObjAddress.Text = HexUtilities.Format(address.Value, 8);
             _richTextBoxMemoryAddresses.Text = FormatAddresses(startAddress, _memorySize);
-            _richTextBoxMemoryBytes.Text = FormatBytes(bytes, littleEndian);
 
             // highlight value texts
             int initialSelectionStart = _richTextBoxMemoryValues.SelectionStart;
