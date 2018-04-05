@@ -30,6 +30,13 @@ namespace STROOP.Managers
         private readonly List<ValueText> _currentValueTexts;
         private readonly List<WatchVariableControlPrecursor> _objectPrecursors;
         private readonly List<WatchVariableControlPrecursor> _objectSpecificPrecursors;
+        private List<WatchVariableControlPrecursor> _memTabPrecursors
+        {
+            get
+            {
+                return _variablePanel.GetCurrentVariablePrecursors();
+            }
+        }
 
         public uint? Address
         {
@@ -270,6 +277,11 @@ namespace STROOP.Managers
                 {
                     _richTextBoxMemoryValues.SetBackColor(
                         valueText.StringIndex, valueText.StringSize, Color.LightGreen);
+                }
+                else if (valueText.OverlapsData(_memTabPrecursors))
+                {
+                    _richTextBoxMemoryValues.SetBackColor(
+                        valueText.StringIndex, valueText.StringSize, Color.LightBlue);
                 }
             });
             _richTextBoxMemoryValues.SelectionStart = initialSelectionStart;

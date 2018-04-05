@@ -302,28 +302,14 @@ namespace STROOP.Controls
             AddVariables(_watchVarPrecursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
         }
 
-        private List<WatchVariableControl> GetCurrentControls()
-        {
-            List<WatchVariableControl> watchVarControls = new List<WatchVariableControl>();
-            lock (_objectLock)
-            {
-                foreach (Control control in Controls)
-                {
-                    WatchVariableControl watchVarControl = control as WatchVariableControl;
-                    watchVarControls.Add(watchVarControl);
-                }
-            }
-            return watchVarControls;
-        }
-
         private List<XElement> GetCurrentVarXmlElements(bool useCurrentState = true)
         {
-            return GetCurrentControls().ConvertAll(control => control.ToXml(useCurrentState));
+            return GetCurrentVariableControls().ConvertAll(control => control.ToXml(useCurrentState));
         }
 
         private List<List<string>> GetCurrentVarInfo()
         {
-            return GetCurrentControls().ConvertAll(control => control.GetVarInfo());
+            return GetCurrentVariableControls().ConvertAll(control => control.GetVarInfo());
         }
 
         public void ShowVariableXml()
@@ -397,20 +383,33 @@ namespace STROOP.Controls
             }
         }
 
-        public List<object> GetCurrentVariableValues(bool useRounding)
+        public List<WatchVariableControl> GetCurrentVariableControls()
         {
+            List<WatchVariableControl> watchVarControls = new List<WatchVariableControl>();
             lock (_objectLock)
             {
-                return _watchVarControls.ConvertAll(control => control.GetValue(useRounding));
+                foreach (Control control in Controls)
+                {
+                    WatchVariableControl watchVarControl = control as WatchVariableControl;
+                    watchVarControls.Add(watchVarControl);
+                }
             }
+            return watchVarControls;
+        }
+
+        public List<WatchVariableControlPrecursor> GetCurrentVariablePrecursors()
+        {
+            return GetCurrentVariableControls().ConvertAll(control => control.WatchVarPrecursor);
+        }
+
+        public List<object> GetCurrentVariableValues(bool useRounding)
+        {
+            return GetCurrentVariableControls().ConvertAll(control => control.GetValue(useRounding));
         }
 
         public List<string> GetCurrentVariableNames()
         {
-            lock (_objectLock)
-            {
-                return _watchVarControls.ConvertAll(control => control.VarName);
-            }
+            return GetCurrentVariableControls().ConvertAll(control => control.VarName);
         }
 
         public void UpdateControls()
