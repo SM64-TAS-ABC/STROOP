@@ -37,14 +37,14 @@
   <Data groupList="Intermediate" base="Object" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
   <Data groupList="Intermediate" base="Object" specialType="MarioHorizontalDistanceToObject">HDist Mario to Obj</Data>
   <Data groupList="Advanced" base="Object" specialType="MarioXDistanceToObject" coord="X">XDist Mario to Obj</Data>
-  <Data groupList="Intermediate" base="Object" specialType="MarioVerticalDistanceToObject" coord="Y">VDist Mario to Obj</Data>
+  <Data groupList="Intermediate" base="Object" specialType="MarioYDistanceToObject" coord="Y">YDist Mario to Obj</Data>
   <Data groupList="Advanced" base="Object" specialType="MarioZDistanceToObject" coord="Z">ZDist Mario to Obj</Data>
   <Data groupList="Intermediate" base="Object" specialType="MarioDistanceToObjectHome">Dist Mario to Home</Data>
   <Data groupList="Intermediate" base="Object" specialType="MarioHorizontalDistanceToObjectHome">HDist Mario to Home</Data>
-  <Data groupList="Intermediate" base="Object" specialType="MarioVerticalDistanceToObjectHome">VDist Mario to Home</Data>
+  <Data groupList="Intermediate" base="Object" specialType="MarioYDistanceToObjectHome">YDist Mario to Home</Data>
   <Data groupList="Advanced" base="Object" specialType="ObjectDistanceToHome">Dist Obj to Home</Data>
-  <Data groupList="Advanced" base="Object" specialType="HorizontalObjectDistanceToHome">HDist Obj to Home</Data>
-  <Data groupList="Advanced" base="Object" specialType="VerticalObjectDistanceToHome">VDist Obj to Home</Data>
+  <Data groupList="Advanced" base="Object" specialType="ObjectHorizontalDistanceToHome">HDist Obj to Home</Data>
+  <Data groupList="Advanced" base="Object" specialType="ObjectYDistanceToHome">YDist Obj to Home</Data>
   
   <Data groupList="Advanced" type="ushort" offset="0x0162" base="Object" subclass="Angle">"Angle to Mario"</Data>
   <Data groupList="Intermediate" base="Object" specialType="AngleObjectToMario" subclass="Angle" type="ushort">Angle Obj to Mario</Data>

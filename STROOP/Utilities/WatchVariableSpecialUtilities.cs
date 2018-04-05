@@ -83,7 +83,7 @@ namespace STROOP.Structs
                     };
                     break;
 
-                case "MarioVerticalDistanceToObject":
+                case "MarioYDistanceToObject":
                     getterFunction = (uint objAddress) =>
                     {
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
@@ -163,7 +163,7 @@ namespace STROOP.Structs
                     };
                     break;
 
-                case "MarioVerticalDistanceToObjectHome":
+                case "MarioYDistanceToObjectHome":
                     getterFunction = (uint objAddress) =>
                     {
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
@@ -204,7 +204,7 @@ namespace STROOP.Structs
                     };
                     break;
 
-                case "HorizontalObjectDistanceToHome":
+                case "ObjectHorizontalDistanceToHome":
                     getterFunction = (uint objAddress) =>
                     {
                         Position objPos = GetObjectPosition(objAddress);
@@ -225,7 +225,7 @@ namespace STROOP.Structs
                     };
                     break;
 
-                case "VerticalObjectDistanceToHome":
+                case "ObjectYDistanceToHome":
                     getterFunction = (uint objAddress) =>
                     {
                         float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
