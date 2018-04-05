@@ -190,7 +190,7 @@ namespace STROOP.Managers
             }
         }
 
-        public void SetTaserSettings()
+        public void ShowTaserVariables()
         {
             _variablePanel.ShowOnlyVariableGroup(VariableGroup.TAS);
         }
