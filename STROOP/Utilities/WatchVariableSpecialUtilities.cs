@@ -1777,6 +1777,22 @@ namespace STROOP.Structs
                     };
                     break;
 
+                case "CurrentTriangleAddress":
+                    getterFunction = (uint triAddress) =>
+                    {
+                        return triAddress;
+                    };
+                    setterFunction = (object objectValue, uint triAddress) =>
+                    {
+                        uint? addressNullable = ParsingUtilities.ParseUIntNullable(objectValue);
+                        if (!addressNullable.HasValue) return false;
+                        uint address = addressNullable.Value;
+
+                        Config.TriangleManager.SetCustomTriangleAddress(address);
+                        return true;
+                    };
+                    break;
+
                 case "ObjectNodeCount":
                     getterFunction = (uint dummy) =>
                     {

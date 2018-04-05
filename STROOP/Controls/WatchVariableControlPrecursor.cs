@@ -113,7 +113,7 @@ namespace STROOP.Controls
                 throw new ArgumentOutOfRangeException("Object vars must have type uint");
             }
 
-            if (Subclass == WatchVariableSubclass.Triangle && WatchVar.MemoryType != typeof(uint))
+            if (Subclass == WatchVariableSubclass.Triangle && WatchVar.MemoryType != typeof(uint) && !WatchVar.IsSpecial)
             {
                 throw new ArgumentOutOfRangeException("Triangle vars must have type uint");
             }
