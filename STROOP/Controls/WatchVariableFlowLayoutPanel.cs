@@ -288,9 +288,9 @@ namespace STROOP.Controls
         public void ClearAllButHighlightedVariables()
         {
             List<WatchVariableControl> nonHighlighted =
-                _watchVarControls.FindAll(control => !control.ShowBorder);
+                _watchVarControls.FindAll(control => !control.Highlighted);
             RemoveVariables(nonHighlighted);
-            _watchVarControls.ForEach(control => control.ShowBorder = false);
+            _watchVarControls.ForEach(control => control.Highlighted = false);
         }
 
         public void ResetVariables()

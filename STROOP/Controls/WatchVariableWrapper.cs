@@ -104,8 +104,8 @@ namespace STROOP.Controls
         private void AddContextMenuStripItems()
         {
             _itemHighlight = new ToolStripMenuItem("Highlight");
-            _itemHighlight.Click += (sender, e) => ToggleHighlighted();
-            _itemHighlight.Checked = _watchVarControl.ShowBorder;
+            _itemHighlight.Click += (sender, e) => _watchVarControl.ToggleHighlighted();
+            _itemHighlight.Checked = _watchVarControl.Highlighted;
 
             _itemLock = new ToolStripMenuItem("Lock");
             _itemLock.Click += (sender, e) => ToggleLocked(_watchVarControl.FixedAddressList);
@@ -231,15 +231,10 @@ namespace STROOP.Controls
 
         public void UpdateItemCheckStates(List<uint> addresses = null)
         {
+            _itemHighlight.Checked = _watchVarControl.Highlighted;
             _itemLock.Checked = GetLockedBool(addresses);
             _itemRemoveAllLocks.Visible = WatchVariableLockManager.ContainsAnyLocks();
             _itemFixAddress.Checked = _watchVarControl.FixedAddressList != null;
-        }
-
-        public void ToggleHighlighted()
-        {
-            _watchVarControl.ShowBorder = !_watchVarControl.ShowBorder;
-            _itemHighlight.Checked = _watchVarControl.ShowBorder;
         }
 
         public void ToggleLocked(List<uint> addresses = null)

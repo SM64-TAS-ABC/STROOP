@@ -66,13 +66,11 @@ namespace STROOP.Utilities
             return SystemColors.Control;
         }
 
-        public static Color GetColorForHighlight(Color defaultColor)
+        public static Color? GetColorForHighlight()
         {
             int? inputtedNumber = KeyboardUtilities.GetCurrentlyInputtedNumber();
             switch (inputtedNumber)
             {
-                default:
-                    return defaultColor;
                 case 1:
                     return Color.Red;
                 case 2:
@@ -93,6 +91,8 @@ namespace STROOP.Utilities
                     return Color.Black;
                 case 0:
                     return Color.White;
+                default:
+                    return null;
             }
         }
 

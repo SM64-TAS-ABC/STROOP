@@ -73,7 +73,7 @@ namespace STROOP.Controls
             }
         }
 
-        public bool ShowBorder
+        public bool Highlighted
         {
             get
             {
@@ -81,7 +81,10 @@ namespace STROOP.Controls
             }
             set
             {
-                if (value) _tableLayoutPanel.BorderColor = ColorUtilities.GetColorForHighlight(Color.Red);
+                if (!_tableLayoutPanel.ShowBorder && value)
+                {
+                    _tableLayoutPanel.BorderColor = Color.Red;
+                }
                 _tableLayoutPanel.ShowBorder = value;
             }
         }
@@ -300,9 +303,16 @@ namespace STROOP.Controls
                 return;
             }
 
-            if (isHKeyHeld || isNumberHeld)
+            if (isHKeyHeld)
             {
-                _watchVarWrapper.ToggleHighlighted();
+                ToggleHighlighted();
+                return;
+            }
+
+            if (isNumberHeld)
+            {
+                Color? color = ColorUtilities.GetColorForHighlight();
+                ToggleHighlighted(color);
                 return;
             }
 
@@ -624,6 +634,41 @@ namespace STROOP.Controls
             else
             {
                 FixedAddressList = null;
+            }
+        }
+
+        public void ToggleHighlighted(Color? color = null)
+        {
+            if (color.HasValue)
+            {
+                if (_tableLayoutPanel.ShowBorder)
+                {
+                    if (_tableLayoutPanel.BorderColor == color.Value)
+                    {
+                        _tableLayoutPanel.ShowBorder = false;
+                    }
+                    else
+                    {
+                        _tableLayoutPanel.BorderColor = color.Value;
+                    }
+                }
+                else
+                {
+                    _tableLayoutPanel.BorderColor = color.Value;
+                    _tableLayoutPanel.ShowBorder = true;
+                }
+            }
+            else
+            {
+                if (_tableLayoutPanel.ShowBorder)
+                {
+                    _tableLayoutPanel.ShowBorder = false;
+                }
+                else
+                {
+                    _tableLayoutPanel.BorderColor = Color.Red;
+                    _tableLayoutPanel.ShowBorder = true;
+                }
             }
         }
 
