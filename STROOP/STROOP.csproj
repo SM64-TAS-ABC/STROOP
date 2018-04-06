@@ -293,9 +293,12 @@
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoadingHandler.cs" />
+    <Compile Include="M64Editor\M64File.cs" />
+    <Compile Include="M64Editor\M64InputFrame.cs" />
     <Compile Include="Managers\AreaManager.cs" />
     <Compile Include="Managers\CamHackManager.cs" />
     <Compile Include="Managers\GfxManager.cs" />
+    <Compile Include="Managers\M64EditManager.cs" />
     <Compile Include="Managers\MemoryManager.cs" />
     <Compile Include="Managers\TasManager.cs" />
     <Compile Include="Managers\VarHackManager.cs" />
@@ -354,6 +357,7 @@
     <Compile Include="Structs\Configurations\InputConfig.cs" />
     <Compile Include="Structs\Gui\FileImageGui.cs" />
     <Compile Include="Structs\Gui\InputImageGui.cs" />
+    <Compile Include="Structs\Gui\M64EditGui.cs" />
     <Compile Include="Structs\MissionTable.cs" />
     <Compile Include="Enums\TriangleClassification.cs" />
     <Compile Include="Models\TriangleDataModel.cs" />
