@@ -32,5 +32,20 @@ namespace STROOP.Utilities
         {
             return GetCurrentlyInputtedNumber() != null;
         }
+
+        public static bool IsCtrlHeld()
+        {
+            return Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
+        }
+
+        public static bool IsShiftHeld()
+        {
+            return Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift);
+        }
+
+        public static bool IsAltHeld()
+        {
+            return Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt);
+        }
     }
 }

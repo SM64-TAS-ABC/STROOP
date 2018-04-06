@@ -326,7 +326,8 @@ namespace STROOP.Managers
                         hOffset,
                         nOffset,
                         -1 * vOffset,
-                        useRelative);
+                        useRelative,
+                        KeyboardUtilities.IsCtrlHeld());
                 });
             //////////////////////////////////////////////////////////////////////
             // TODO remove this

@@ -190,14 +190,25 @@ namespace STROOP.Utilities
         }
 
         public static bool TranslateObjects(IEnumerable<ObjectDataModel> objects,
-            float xOffset, float yOffset, float zOffset, bool useRelative)
+            float xOffset, float yOffset, float zOffset, bool useRelative, bool includeMario)
         {
-            IEnumerable<TripleAddressAngle> posAddressAngles = objects.Select(
+            List<TripleAddressAngle> posAddressAngles =
+                objects.Select(
                     o => new TripleAddressAngle(
                         o.Address + ObjectConfig.XOffset,
                         o.Address + ObjectConfig.YOffset,
                         o.Address + ObjectConfig.ZOffset,
-                        o.FacingYaw));
+                        o.FacingYaw)).ToList();
+
+            if (includeMario)
+            {
+                posAddressAngles.Add(
+                    new TripleAddressAngle(
+                        MarioConfig.StructAddress + MarioConfig.XOffset,
+                        MarioConfig.StructAddress + MarioConfig.YOffset,
+                        MarioConfig.StructAddress + MarioConfig.ZOffset,
+                        Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset)));
+            }
 
             return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }

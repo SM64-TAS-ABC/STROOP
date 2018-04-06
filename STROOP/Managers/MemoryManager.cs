@@ -100,8 +100,8 @@ namespace STROOP.Managers
 
             _richTextBoxMemoryValues.Click += (sender, e) =>
             {
-                bool isCtrlKeyHeld = Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl);
-                bool isAltKeyHeld = Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt);
+                bool isCtrlKeyHeld = KeyboardUtilities.IsCtrlHeld();
+                bool isAltKeyHeld = KeyboardUtilities.IsAltHeld();
                 if (!isCtrlKeyHeld) return;
                 int index = _richTextBoxMemoryValues.SelectionStart;
                 bool useHex = _checkBoxMemoryHex.Checked;
