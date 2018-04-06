@@ -590,7 +590,7 @@ namespace STROOP.Controls
 
         public void AddToCustomTab(bool useFixedAddress, bool useIndividualAddresses)
         {
-            List<uint> addressList = _watchVarWrapper.GetCurrentAddresses();
+            List<uint> addressList = FixedAddressList ?? _watchVarWrapper.GetCurrentAddresses();
             List<List<uint>> addressesLists =
                 useIndividualAddresses ?
                     addressList.ConvertAll(address => new List<uint>() { address }) :
@@ -598,7 +598,7 @@ namespace STROOP.Controls
             for (int i = 0; i < addressesLists.Count; i++)
             {
                 string name = VarName;
-                if (useIndividualAddresses && addressesLists.Count > 1) name += " " + (i + 1);
+                if (addressesLists.Count > 1) name += " " + (i + 1);
                 List<uint> constructorAddressList = useFixedAddress ? addressesLists[i] : null;
                 WatchVariableControl newControl =
                     WatchVarPrecursor.CreateWatchVariableControl(
