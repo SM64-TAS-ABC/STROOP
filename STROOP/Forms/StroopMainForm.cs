@@ -458,6 +458,11 @@ namespace STROOP
         {
             if (Config.Stream.IsRunning)
             {
+                Config.Stream.OnUpdate -= OnUpdate;
+                Config.Stream.FpsUpdated -= _sm64Stream_FpsUpdated;
+                Config.Stream.OnDisconnect -= _sm64Stream_OnDisconnect;
+                Config.Stream.WarnReadonlyOff -= _sm64Stream_WarnReadonlyOff;
+                Config.Stream.OnClose -= _sm64Stream_OnClose;
                 Config.Stream.Stop();
                 e.Cancel = true;
                 Hide();
