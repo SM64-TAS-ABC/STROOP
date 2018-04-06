@@ -107,9 +107,9 @@ namespace STROOP.Managers
             ObjectSlot selectedSlot = sender as ObjectSlot;
             selectedSlot.Focus();
 
-            bool isCtrlKeyHeld = Control.ModifierKeys == Keys.Control; 
-            bool isShiftKeyHeld = Control.ModifierKeys == Keys.Shift;
-            bool isAltKeyHeld = Control.ModifierKeys == Keys.Alt;
+            bool isCtrlKeyHeld = KeyboardUtilities.IsCtrlHeld();
+            bool isShiftKeyHeld = KeyboardUtilities.IsShiftHeld();
+            bool isAltKeyHeld = KeyboardUtilities.IsAltHeld();
 
             DoSlotClickUsingInput(selectedSlot, isCtrlKeyHeld, isShiftKeyHeld, isAltKeyHeld);
         }
