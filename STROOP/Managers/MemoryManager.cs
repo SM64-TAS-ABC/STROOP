@@ -204,11 +204,20 @@ namespace STROOP.Managers
                 if (Keyboard.IsKeyDown(Key.A)) subclass = WatchVariableSubclass.Angle;
                 if (Keyboard.IsKeyDown(Key.B)) subclass = WatchVariableSubclass.Boolean;
                 if (Keyboard.IsKeyDown(Key.Q)) subclass = WatchVariableSubclass.Object;
+                if (Keyboard.IsKeyDown(Key.T)) subclass = WatchVariableSubclass.Triangle;
 
-                Type effectiveType = subclass == WatchVariableSubclass.Object
+                bool isObjectOrTriangle =
+                    subclass == WatchVariableSubclass.Object ||
+                    subclass == WatchVariableSubclass.Triangle;
+
+                Type effectiveType = isObjectOrTriangle
                     ? typeof(uint)
                     : MemoryType;
                 string typeString = TypeUtilities.TypeToString[effectiveType];
+
+                bool? hexValue = null;
+                if (useHex && MemoryType != typeof(float)) hexValue = true;
+                if (isObjectOrTriangle) hexValue = null;
 
                 WatchVariable watchVar = new WatchVariable(
                     typeString,
@@ -225,9 +234,7 @@ namespace STROOP.Managers
                     subclass,
                     null /* backgroundColor */,
                     null /* roundingLimit */,
-                    subclass == WatchVariableSubclass.Object
-                        ? (bool?)null
-                        : useHex && MemoryType != typeof(float),
+                    hexValue,
                     null /* invertBool */,
                     null /* coordinate */,
                     new List<VariableGroup>());
