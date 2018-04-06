@@ -163,6 +163,24 @@ namespace STROOP.Structs
                     };
                     break;
 
+                case "MarioXDistanceToObjectHome":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                        float homeX = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeXOffset);
+                        float xDist = marioX - homeX;
+                        return xDist;
+                    };
+                    setterFunction = (object objectValue, uint objAddress) =>
+                    {
+                        float homeX = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeXOffset);
+                        float? xDist = ParsingUtilities.ParseFloatNullable(objectValue);
+                        if (!xDist.HasValue) return false;
+                        float newMarioX = homeX + xDist.Value;
+                        return Config.Stream.SetValue(newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
+                    };
+                    break;
+
                 case "MarioYDistanceToObjectHome":
                     getterFunction = (uint objAddress) =>
                     {
@@ -174,10 +192,28 @@ namespace STROOP.Structs
                     setterFunction = (object objectValue, uint objAddress) =>
                     {
                         float homeY = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeYOffset);
-                        double? distAbove = ParsingUtilities.ParseDoubleNullable(objectValue);
-                        if (!distAbove.HasValue) return false;
-                        double newMarioY = homeY + distAbove.Value;
-                        return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
+                        float? yDist = ParsingUtilities.ParseFloatNullable(objectValue);
+                        if (!yDist.HasValue) return false;
+                        float newMarioY = homeY + yDist.Value;
+                        return Config.Stream.SetValue(newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
+                    };
+                    break;
+
+                case "MarioZDistanceToObjectHome":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                        float homeZ = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeZOffset);
+                        float zDist = marioZ - homeZ;
+                        return zDist;
+                    };
+                    setterFunction = (object objectValue, uint objAddress) =>
+                    {
+                        float homeZ = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeZOffset);
+                        float? zDist = ParsingUtilities.ParseFloatNullable(objectValue);
+                        if (!zDist.HasValue) return false;
+                        float newMarioZ = homeZ + zDist.Value;
+                        return Config.Stream.SetValue(newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
                     };
                     break;
 
@@ -225,6 +261,24 @@ namespace STROOP.Structs
                     };
                     break;
 
+                case "ObjectXDistanceToHome":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
+                        float homeX = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeXOffset);
+                        float xDist = objX - homeX;
+                        return xDist;
+                    };
+                    setterFunction = (object objectValue, uint objAddress) =>
+                    {
+                        float homeX = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeXOffset);
+                        float? xDist = ParsingUtilities.ParseFloatNullable(objectValue);
+                        if (!xDist.HasValue) return false;
+                        float newObjX = homeX + xDist.Value;
+                        return Config.Stream.SetValue(newObjX, objAddress + ObjectConfig.XOffset);
+                    };
+                    break;
+
                 case "ObjectYDistanceToHome":
                     getterFunction = (uint objAddress) =>
                     {
@@ -236,10 +290,28 @@ namespace STROOP.Structs
                     setterFunction = (object objectValue, uint objAddress) =>
                     {
                         float homeY = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeYOffset);
-                        double? distAbove = ParsingUtilities.ParseDoubleNullable(objectValue);
-                        if (!distAbove.HasValue) return false;
-                        double newObjY = homeY + distAbove.Value;
-                        return Config.Stream.SetValue((float)newObjY, objAddress + ObjectConfig.YOffset);
+                        float? yDist = ParsingUtilities.ParseFloatNullable(objectValue);
+                        if (!yDist.HasValue) return false;
+                        float newObjY = homeY + yDist.Value;
+                        return Config.Stream.SetValue(newObjY, objAddress + ObjectConfig.YOffset);
+                    };
+                    break;
+
+                case "ObjectZDistanceToHome":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
+                        float homeZ = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeZOffset);
+                        float zDist = objZ - homeZ;
+                        return zDist;
+                    };
+                    setterFunction = (object objectValue, uint objAddress) =>
+                    {
+                        float homeZ = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeZOffset);
+                        float? zDist = ParsingUtilities.ParseFloatNullable(objectValue);
+                        if (!zDist.HasValue) return false;
+                        float newObjZ = homeZ + zDist.Value;
+                        return Config.Stream.SetValue(newObjZ, objAddress + ObjectConfig.ZOffset);
                     };
                     break;
 
