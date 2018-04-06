@@ -16,6 +16,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Controls;
 using STROOP.Forms;
 using STROOP.Models;
+using STROOP.Structs.Gui;
 
 namespace STROOP
 {
@@ -168,6 +169,26 @@ namespace STROOP
             mapGui.CheckBoxMapGameCamOrientation = checkBoxMapGameCamOrientation;
             mapGui.ComboBoxMapColorMethod = comboBoxMapColorMethod;
 
+            // 
+            M64EditGui m64EditGui = new M64EditGui()
+            {
+                ButtonSave = buttonM64Save,
+                ButtonSaveAs = buttonM64SaveAs,
+                ButtonLoad = buttonM64Load,
+                ButtonGoto = buttonM64Goto,
+                ContextMenuStripEditor = contextMenuStripM64Editor,
+                ToolStripMenuItemInsertNewAfter = stripMenuItemM64InsertNewAfter,
+                ToolStripMenuItemInsertNewBefore = stripMenuItemM64InsertNewBefore,
+                ToolStripMenuItemCopy = stripMenuItemM64Copy,
+                ToolStripMenuItemPasteOnto = stripMenuItemM64PasteOnto,
+                ToolStripMenuItemPasteBefore = stripMenuItemM64PasteBefore,
+                ToolStripMenuItemPasteAfter = stripMenuItemM64PasteAfter,
+                TextBoxGoto = textBoxM64Goto,
+                OpenFileDialogM64 = openFileDialogM64,
+                SaveFileDialogM64 = saveFileDialogM64,
+                DataGridViewEditor = dataGridViewM64Editor,
+            };
+
             // Create managers
             Config.MapManager = new MapManager(_mapAssoc, mapGui);
 
@@ -200,6 +221,7 @@ namespace STROOP
             Config.DecompilerManager = new DecompilerManager(tabPageDecompiler);
             Config.InjectionManager = new InjectionManager(_scriptParser, checkBoxUseRomHack);
             Config.HackManager = new HackManager(_romHacks, Config.ObjectAssociations.SpawnHacks, tabPageHacks);
+            Config.M64EditManager = new M64EditManager(m64EditGui);
 
             // Create Object Slots
             _slotManagerGui.TabControl = tabControlMain;
