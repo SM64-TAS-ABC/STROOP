@@ -11,15 +11,10 @@ namespace STROOP.Utilities
 {
     public static class InGameTrigUtilities
     {
-        private static readonly List<float> sineData;
-        private static readonly List<ushort> arcSineData;
+        //private static readonly List<float> sineData = XmlConfigParser.OpenSineData();
+        //private static readonly List<ushort> arcSineData = XmlConfigParser.OpenArcSineData();
 
-        static InGameTrigUtilities()
-        {
-            sineData = XmlConfigParser.OpenSineData();
-            arcSineData = XmlConfigParser.OpenArcSineData();
-        }
-
+        /*
         public static float InGameSine(int value)
         {
             int truncatedValue = MoreMath.NormalizeAngleTruncated(value);
@@ -32,6 +27,23 @@ namespace STROOP.Utilities
             int truncatedValue = MoreMath.NormalizeAngleTruncated(value);
             int index = truncatedValue / 16;
             return sineData[index + 1024];
+        }
+        */
+
+        public static float InGameSine(int angle)
+        {
+            ushort truncated = MoreMath.NormalizeAngleTruncated(angle);
+            if (truncated == 32768) return 0;
+            double radians = MoreMath.AngleUnitsToRadians(truncated);
+            return (float)Math.Sin(radians);
+        }
+
+        public static float InGameCosine(int angle)
+        {
+            ushort truncated = MoreMath.NormalizeAngleTruncated(angle);
+            if (truncated == 16384 || truncated == 49152) return 0;
+            double radians = MoreMath.AngleUnitsToRadians(truncated);
+            return (float)Math.Cos(radians);
         }
 
         public static ushort InGameAngleTo(float xTo, float zTo)
@@ -88,9 +100,9 @@ namespace STROOP.Utilities
             else
                 offset = 2 * (uint)((yComp / xComp) * 1024f + 0.5f);
 
-            //return Config.Stream.GetUInt16(0x8038B000 + offset);
-            int index = (int)(offset / 2);
-            return arcSineData[index];
+            return Config.Stream.GetUInt16(0x8038B000 + offset);
+            //int index = (int)(offset / 2);
+            //return arcSineData[index];
         }
 
 
