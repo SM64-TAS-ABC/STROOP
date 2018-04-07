@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ValueListSchema"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/ValueListSchema.xsd"
+    xmlns:mstns="http://tempuri.org/ValueListSchema.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:types="http://tempuri.org/ReusableTypes.xsd"
+>
+  <xs:import namespace="http://tempuri.org/ReusableTypes.xsd" schemaLocation="ReusableTypes.xsd"/>
+  <xs:element name ="Values">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Value" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="value" use="required" type="xs:string"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1240,7 +1240,58 @@ namespace STROOP.Utilities
 
             return missionTable;
         }
-        
+
+        public static List<float> OpenSineData()
+        {
+            string path = @"Config/SineData.xml";
+            List<float> output = new List<float>();
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // Create schema set
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/ValueListSchema.xsd", "ValueListSchema.xsd");
+            schemaSet.Compile();
+
+            // Load and validate document
+            var doc = XDocument.Load(path);
+            doc.Validate(schemaSet, Validation);
+
+            foreach (XElement element in doc.Root.Elements())
+            {
+                string stringValue = element.Attribute(XName.Get("value")).Value;
+                byte[] bytes = TypeUtilities.ConvertHexStringToByteArray(stringValue);
+                float floatValue = BitConverter.ToSingle(bytes, 0);
+                output.Add(floatValue);
+            }
+
+            return output;
+        }
+
+        public static List<ushort> OpenArcSineData()
+        {
+            string path = @"Config/ArcSineData.xml";
+            List<ushort> output = new List<ushort>();
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // Create schema set
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/ValueListSchema.xsd", "ValueListSchema.xsd");
+            schemaSet.Compile();
+
+            // Load and validate document
+            var doc = XDocument.Load(path);
+            doc.Validate(schemaSet, Validation);
+
+            foreach (XElement element in doc.Root.Elements())
+            {
+                string stringValue = element.Attribute(XName.Get("value")).Value;
+                ushort ushortValue = ushort.Parse(stringValue);
+                output.Add(ushortValue);
+            }
+
+            return output;
+        }
+
         private static void Validation(object sender, ValidationEventArgs e)
         {
             throw new Exception(e.Message);

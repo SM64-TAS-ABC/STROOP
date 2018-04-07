@@ -3,6 +3,7 @@ using STROOP.Structs.Configurations;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -129,6 +130,18 @@ namespace STROOP.Structs
                    obj is uint ||
                    obj is float ||
                    obj is double;
+        }
+
+        public static byte[] ConvertHexStringToByteArray(string stringValue)
+        {
+            byte[] bytes = new byte[stringValue.Length / 2];
+            for (int i = 0; i < stringValue.Length / 2; i++)
+            {
+                string byteString = stringValue.Substring(i * 2, 2);
+                byte byteValue = byte.Parse(byteString, NumberStyles.HexNumber);
+                bytes[i] = byteValue;
+            }
+            return bytes;
         }
     }
 }
