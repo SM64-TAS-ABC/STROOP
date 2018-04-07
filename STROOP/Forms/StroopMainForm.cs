@@ -72,7 +72,7 @@ namespace STROOP
 
             ControlUtilities.AddContextMenuStripFunctions(
                 labelVersionNumber,
-                new List<string>() { "Enable TASer Settings" },
+                new List<string>() { "Enable TASer Settings", "Test Something" },
                 new List<Action>()
                 {
                     () =>
@@ -83,7 +83,8 @@ namespace STROOP
                         splitContainerTas.Panel2Collapsed = false;
                         Config.TasManager.ShowTaserVariables();
                         tabControlMain.SelectedTab = tabPageTas;
-                    }
+                    },
+                    () => TestUtilities.TestSomething(),
                 });
 
             Config.StroopMainForm = this;

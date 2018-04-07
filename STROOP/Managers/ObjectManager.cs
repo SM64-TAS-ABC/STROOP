@@ -329,17 +329,6 @@ namespace STROOP.Managers
                         useRelative,
                         KeyboardUtilities.IsCtrlHeld());
                 });
-            //////////////////////////////////////////////////////////////////////
-            // TODO remove this
-            /*
-            goToButton.Click += (sender, e) =>
-            {
-                //int xInput = ParsingUtilities.ParseInt((objPosGroupBox.Controls["textBoxObjPosXZ"] as TextBox).Text);
-                //int yInput = ParsingUtilities.ParseInt((objPosGroupBox.Controls["textBoxObjPosY"] as TextBox).Text);
-                MovementCalculator.MainMethod();
-            };
-            */
-            //////////////////////////////////////////////////////////////////////
 
             var objAngleGroupBox = objPanel.Controls["groupBoxObjAngle"] as GroupBox;
             ControlUtilities.InitializeScalarController(
