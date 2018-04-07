@@ -21,8 +21,8 @@ namespace STROOP.Utilities
             if (!IsUsingMupen()) throw new ArgumentOutOfRangeException("Not using mupen");
             byte[] buffer = new byte[4];
             Config.Stream.ReadProcessMemory(FrameCountAddress, buffer, true);
-            int framecount = BitConverter.ToInt32(buffer, 0);
-            return framecount - 1;
+            int frameCount = BitConverter.ToInt32(buffer, 0);
+            return frameCount - 1;
         }
 
         public static int GetVICount()
@@ -30,8 +30,8 @@ namespace STROOP.Utilities
             if (!IsUsingMupen()) throw new ArgumentOutOfRangeException("Not using mupen");
             byte[] buffer = new byte[4];
             Config.Stream.ReadProcessMemory(VICountAddress, buffer, true);
-            int vicount = BitConverter.ToInt32(buffer, 0);
-            return vicount;
+            int viCount = BitConverter.ToInt32(buffer, 0);
+            return viCount;
         }
 
         public static int GetLagCount()
