@@ -587,6 +587,7 @@ namespace STROOP.Utilities
         public static float InGameCosine(int angle)
         {
             ushort truncated = NormalizeAngleTruncated(angle);
+            if (truncated == 16384 || truncated == 49152) return 0;
             double radians = AngleUnitsToRadians(truncated);
             return (float)Math.Cos(radians);
         }
@@ -594,6 +595,7 @@ namespace STROOP.Utilities
         public static float InGameSine(int angle)
         {
             ushort truncated = NormalizeAngleTruncated(angle);
+            if (truncated == 32768) return 0;
             double radians = AngleUnitsToRadians(truncated);
             return (float)Math.Sin(radians);
         }

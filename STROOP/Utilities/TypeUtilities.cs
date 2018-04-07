@@ -132,14 +132,20 @@ namespace STROOP.Structs
                    obj is double;
         }
 
-        public static byte[] ConvertHexStringToByteArray(string stringValue)
+        public static byte[] ConvertHexStringToByteArray(string stringValue, bool swapEndianness)
         {
+            if (stringValue == null || stringValue.Length % 2 == 1)
+            {
+                throw new ArgumentOutOfRangeException("stringValue must have even length");
+            }
+
             byte[] bytes = new byte[stringValue.Length / 2];
-            for (int i = 0; i < stringValue.Length / 2; i++)
+            for (int i = 0; i < bytes.Length; i++)
             {
                 string byteString = stringValue.Substring(i * 2, 2);
                 byte byteValue = byte.Parse(byteString, NumberStyles.HexNumber);
-                bytes[i] = byteValue;
+                int index = swapEndianness ? bytes.Length - 1 - i : i;
+                bytes[index] = byteValue;
             }
             return bytes;
         }

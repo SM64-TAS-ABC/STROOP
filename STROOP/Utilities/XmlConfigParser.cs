@@ -1259,7 +1259,7 @@ namespace STROOP.Utilities
             foreach (XElement element in doc.Root.Elements())
             {
                 string stringValue = element.Attribute(XName.Get("value")).Value;
-                byte[] bytes = TypeUtilities.ConvertHexStringToByteArray(stringValue);
+                byte[] bytes = TypeUtilities.ConvertHexStringToByteArray(stringValue, true);
                 float floatValue = BitConverter.ToSingle(bytes, 0);
                 output.Add(floatValue);
             }

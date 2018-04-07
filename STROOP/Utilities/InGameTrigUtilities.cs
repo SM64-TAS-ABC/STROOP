@@ -24,14 +24,14 @@ namespace STROOP.Utilities
         {
             int truncatedValue = MoreMath.NormalizeAngleTruncated(value);
             int index = truncatedValue / 16;
-            return sineData[truncatedValue];
+            return sineData[index];
         }
 
         public static float InGameCosine(int value)
         {
             int truncatedValue = MoreMath.NormalizeAngleTruncated(value);
             int index = truncatedValue / 16;
-            return sineData[truncatedValue + 1024];
+            return sineData[index + 1024];
         }
 
         public static ushort InGameAngleTo(float xTo, float zTo)

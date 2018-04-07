@@ -2048,7 +2048,7 @@
   <Value value="3B96CBC1"/>
   <Value value="3B490FC6"/>
   <Value value="3AC90FD5"/>
-  <Value value="0"/>
+  <Value value="00000000"/>
   <Value value="BAC90FD5"/>
   <Value value="BB490FC6"/>
   <Value value="BB96CBC1"/>
@@ -4096,7 +4096,7 @@
   <Value value="BB96CBC1"/>
   <Value value="BB490FC6"/>
   <Value value="BAC90FD5"/>
-  <Value value="0"/>
+  <Value value="00000000"/>
   <Value value="3AC90FD5"/>
   <Value value="3B490FC6"/>
   <Value value="3B96CBC1"/>
