@@ -294,6 +294,7 @@
     </Compile>
     <Compile Include="LoadingHandler.cs" />
     <Compile Include="M64Editor\M64File.cs" />
+    <Compile Include="M64Editor\M64Header.cs" />
     <Compile Include="M64Editor\M64InputFrame.cs" />
     <Compile Include="Managers\AreaManager.cs" />
     <Compile Include="Managers\CamHackManager.cs" />
