@@ -15421,7 +15421,7 @@ namespace STROOP
             // ColumnM64Index
             // 
             this.ColumnM64Index.DataPropertyName = "FrameIndex";
-            this.ColumnM64Index.FillWeight = 200F;
+            this.ColumnM64Index.FillWeight = 300F;
             this.ColumnM64Index.HeaderText = "Frame";
             this.ColumnM64Index.Name = "ColumnM64Index";
             this.ColumnM64Index.ReadOnly = true;
@@ -15429,14 +15429,14 @@ namespace STROOP
             // ColumnM64AnalogX
             // 
             this.ColumnM64AnalogX.DataPropertyName = "AnalogX";
-            this.ColumnM64AnalogX.FillWeight = 300F;
+            this.ColumnM64AnalogX.FillWeight = 200F;
             this.ColumnM64AnalogX.HeaderText = "X";
             this.ColumnM64AnalogX.Name = "ColumnM64AnalogX";
             // 
             // ColumnM64AnalogY
             // 
             this.ColumnM64AnalogY.DataPropertyName = "AnalogY";
-            this.ColumnM64AnalogY.FillWeight = 300F;
+            this.ColumnM64AnalogY.FillWeight = 200F;
             this.ColumnM64AnalogY.HeaderText = "Y";
             this.ColumnM64AnalogY.Name = "ColumnM64AnalogY";
             // 
@@ -15487,7 +15487,6 @@ namespace STROOP
             // ColumnM64Start
             // 
             this.ColumnM64Start.DataPropertyName = "Start";
-            this.ColumnM64Start.FillWeight = 200F;
             this.ColumnM64Start.HeaderText = "S";
             this.ColumnM64Start.Name = "ColumnM64Start";
             this.ColumnM64Start.ReadOnly = true;
@@ -15497,7 +15496,6 @@ namespace STROOP
             // ColumnM64Cup
             // 
             this.ColumnM64Cup.DataPropertyName = "C_Up";
-            this.ColumnM64Cup.FillWeight = 200F;
             this.ColumnM64Cup.HeaderText = "C^";
             this.ColumnM64Cup.Name = "ColumnM64Cup";
             this.ColumnM64Cup.ReadOnly = true;
@@ -15507,7 +15505,6 @@ namespace STROOP
             // ColumnM64Cright
             // 
             this.ColumnM64Cright.DataPropertyName = "C_right";
-            this.ColumnM64Cright.FillWeight = 200F;
             this.ColumnM64Cright.HeaderText = "C>";
             this.ColumnM64Cright.Name = "ColumnM64Cright";
             this.ColumnM64Cright.ReadOnly = true;
@@ -15517,7 +15514,6 @@ namespace STROOP
             // ColumnM64Cleft
             // 
             this.ColumnM64Cleft.DataPropertyName = "C_Left";
-            this.ColumnM64Cleft.FillWeight = 200F;
             this.ColumnM64Cleft.HeaderText = "C<";
             this.ColumnM64Cleft.Name = "ColumnM64Cleft";
             this.ColumnM64Cleft.ReadOnly = true;
@@ -15527,7 +15523,6 @@ namespace STROOP
             // ColumnM64Cdown
             // 
             this.ColumnM64Cdown.DataPropertyName = "C_Down";
-            this.ColumnM64Cdown.FillWeight = 200F;
             this.ColumnM64Cdown.HeaderText = "Cv";
             this.ColumnM64Cdown.Name = "ColumnM64Cdown";
             this.ColumnM64Cdown.ReadOnly = true;
@@ -15537,7 +15532,6 @@ namespace STROOP
             // ColumnM64Dup
             // 
             this.ColumnM64Dup.DataPropertyName = "D_Up";
-            this.ColumnM64Dup.FillWeight = 200F;
             this.ColumnM64Dup.HeaderText = "D^";
             this.ColumnM64Dup.Name = "ColumnM64Dup";
             this.ColumnM64Dup.ReadOnly = true;
@@ -15547,7 +15541,6 @@ namespace STROOP
             // ColumnM64Ddown
             // 
             this.ColumnM64Ddown.DataPropertyName = "D_Down";
-            this.ColumnM64Ddown.FillWeight = 200F;
             this.ColumnM64Ddown.HeaderText = "Dv";
             this.ColumnM64Ddown.Name = "ColumnM64Ddown";
             this.ColumnM64Ddown.ReadOnly = true;
@@ -15557,7 +15550,6 @@ namespace STROOP
             // ColumnM64Dleft
             // 
             this.ColumnM64Dleft.DataPropertyName = "D_Left";
-            this.ColumnM64Dleft.FillWeight = 200F;
             this.ColumnM64Dleft.HeaderText = "D<";
             this.ColumnM64Dleft.Name = "ColumnM64Dleft";
             this.ColumnM64Dleft.ReadOnly = true;
@@ -15567,7 +15559,6 @@ namespace STROOP
             // ColumnM64Dright
             // 
             this.ColumnM64Dright.DataPropertyName = "D_Right";
-            this.ColumnM64Dright.FillWeight = 200F;
             this.ColumnM64Dright.HeaderText = "D>";
             this.ColumnM64Dright.Name = "ColumnM64Dright";
             this.ColumnM64Dright.ReadOnly = true;
