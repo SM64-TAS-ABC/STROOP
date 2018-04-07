@@ -368,7 +368,7 @@ namespace STROOP.Structs
                     {
                         Position marioPos = GetMarioPosition();
                         Position objPos = GetObjectPosition(objAddress);
-                        double angleToMario = MoreMath.InGameAngleTo(
+                        double angleToMario = InGameTrigUtilities.InGameAngleTo(
                             objPos.X, objPos.Z, marioPos.X, marioPos.Z);
                         return MoreMath.NormalizeAngleDouble(angleToMario);
                     };
@@ -391,7 +391,7 @@ namespace STROOP.Structs
                     {
                         Position marioPos = GetMarioPosition();
                         Position objPos = GetObjectPosition(objAddress);
-                        double angleToMario = MoreMath.InGameAngleTo(
+                        double angleToMario = InGameTrigUtilities.InGameAngleTo(
                             objPos.X, objPos.Z, marioPos.X, marioPos.Z);
                         double angleDiff = objPos.Angle.Value - angleToMario;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
@@ -3903,7 +3903,7 @@ namespace STROOP.Structs
         private static double GetTriangleUphillAngle(uint triAddress)
         {
             TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-            double uphillAngle = 32768 + MoreMath.InGameAngleTo(triStruct.NormX, triStruct.NormZ);
+            double uphillAngle = 32768 + InGameTrigUtilities.InGameAngleTo(triStruct.NormX, triStruct.NormZ);
             if (triStruct.NormX == 0 && triStruct.NormZ == 0) uphillAngle = double.NaN;
             if (triStruct.IsCeiling()) uphillAngle += 32768;
             return MoreMath.NormalizeAngleDouble(uphillAngle);

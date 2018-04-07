@@ -833,13 +833,13 @@ namespace STROOP.Managers
             ushort marioFacingYaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
             _labelControlStick3.Text = marioFacingYaw.ToString();
 
-            ushort angle = MoreMath.InGameATan(effectiveY, -effectiveX);
+            ushort angle = InGameTrigUtilities.InGameATan(effectiveY, -effectiveX);
             ushort cameraAngle = Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + 0xFC);
             cameraAngle = MoreMath.NormalizeAngleUshort(MoreMath.ReverseAngle(cameraAngle));
             //cameraAngle = MoreMath.NormalizeAngleTruncated(cameraAngle);
             ushort summedAngle = MoreMath.NormalizeAngleUshort(angle + cameraAngle);
             _labelControlStick4.Text = summedAngle.ToString();
-            _labelControlStick5.Text = MoreMath.InGameATan(rawX, rawY).ToString();
+            _labelControlStick5.Text = InGameTrigUtilities.InGameATan(rawX, rawY).ToString();
             _labelControlStick6.Text = MoreMath.CalculateAngleFromInputs(currentX, currentY).ToString();
 
             /*

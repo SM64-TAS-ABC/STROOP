@@ -227,17 +227,17 @@ namespace STROOP.Structs
             float newHSpeed = ApproachHSpeed(initialState.HSpeed, 0, 0.35f, 0.35f);
             if (inputScaledMagnitude > 0)
             {
-                newHSpeed += (inputScaledMagnitude / 32) * 1.5f * MoreMath.InGameCosine(deltaAngleIntendedFacing);
-                perpSpeed = MoreMath.InGameSine(deltaAngleIntendedFacing) * (inputScaledMagnitude / 32) * 10;
+                newHSpeed += (inputScaledMagnitude / 32) * 1.5f * InGameTrigUtilities.InGameCosine(deltaAngleIntendedFacing);
+                perpSpeed = InGameTrigUtilities.InGameSine(deltaAngleIntendedFacing) * (inputScaledMagnitude / 32) * 10;
             }
 
             if (newHSpeed > maxSpeed) newHSpeed -= 1;
             if (newHSpeed < -16) newHSpeed += 2;
 
-            float newSlidingXSpeed = MoreMath.InGameSine(marioAngle) * newHSpeed;
-            float newSlidingZSpeed = MoreMath.InGameCosine(marioAngle) * newHSpeed;
-            newSlidingXSpeed += perpSpeed * MoreMath.InGameSine(marioAngle + 0x4000);
-            newSlidingZSpeed += perpSpeed * MoreMath.InGameCosine(marioAngle + 0x4000);
+            float newSlidingXSpeed = InGameTrigUtilities.InGameSine(marioAngle) * newHSpeed;
+            float newSlidingZSpeed = InGameTrigUtilities.InGameCosine(marioAngle) * newHSpeed;
+            newSlidingXSpeed += perpSpeed * InGameTrigUtilities.InGameSine(marioAngle + 0x4000);
+            newSlidingZSpeed += perpSpeed * InGameTrigUtilities.InGameCosine(marioAngle + 0x4000);
             float newXSpeed = newSlidingXSpeed;
             float newZSpeed = newSlidingZSpeed;
 
