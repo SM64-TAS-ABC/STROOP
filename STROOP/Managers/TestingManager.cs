@@ -404,15 +404,25 @@ namespace STROOP.Managers
 
             _buttonMemoryReaderRead.Click += (sender, e) =>
             {
+                bool showHex = KeyboardUtilities.IsCtrlHeld();
                 uint address = ParsingUtilities.ParseHex(_textBoxMemoryReaderAddressValue.Text);
                 int count = ParsingUtilities.ParseInt(_textBoxMemoryReaderCountValue.Text);
                 string typeString = _comboBoxMemoryReaderTypeValue.SelectedValue as string;
                 Type type = TypeUtilities.StringToType[typeString];
                 int typeSize = TypeUtilities.TypeSize[type];
-                List<object> values = new List<object>();
+                Type unsignedByteType = TypeUtilities.UnsignedByteType[typeSize];
+                List <object> values = new List<object>();
                 for (int i = 0; i < count; i++)
                 {
-                    values.Add(Config.Stream.GetValue(type, (uint)(address + i * typeSize)));
+                    uint addr = (uint)(address + i * typeSize);
+                    object value = Config.Stream.GetValue(type, addr);
+                    if (showHex)
+                    {
+                        object hexNumber = Config.Stream.GetValue(unsignedByteType, addr);
+                        string hexString = HexUtilities.Format(hexNumber, 2 * typeSize);
+                        value = hexString + "\t" + value;
+                    }
+                    values.Add(value);
                 }
                 InfoForm.ShowText(
                     "Memory Reader",

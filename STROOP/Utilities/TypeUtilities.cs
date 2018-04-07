@@ -67,6 +67,14 @@ namespace STROOP.Structs
             {typeof(double), true},
         };
 
+        public readonly static Dictionary<int, Type> UnsignedByteType = new Dictionary<int, Type>()
+        {
+            {1, typeof(byte)},
+            {2, typeof(ushort)},
+            {4, typeof(uint)},
+            {8, typeof(ulong)},
+        };
+
         public readonly static List<string> SimpleTypeList =
             new List<string>()
             {
