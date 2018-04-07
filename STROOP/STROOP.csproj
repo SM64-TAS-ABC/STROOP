@@ -401,7 +401,7 @@
     <Compile Include="Utilities\DecompilerFunctionUtilities.cs" />
     <Compile Include="Utilities\Fast3DDecoder.cs" />
     <Compile Include="Utilities\MupenUtilities.cs" />
-    <Compile Include="Structs\InGameTrig.cs" />
+    <Compile Include="Utilities\InGameTrigUtilities.cs" />
     <Compile Include="Utilities\TtcSpeedSettingUtilities.cs" />
     <Compile Include="Utilities\MovementCalculator.cs" />
     <Compile Include="Utilities\VarHackSpecialUtilities.cs" />

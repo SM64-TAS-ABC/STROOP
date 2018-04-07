@@ -9,10 +9,30 @@ using System.Threading.Tasks;
 
 namespace STROOP.Utilities
 {
-    public static class InGameTrig
+    public static class InGameTrigUtilities
     {
+        private static readonly List<float> sineData;
+        private static readonly List<ushort> arcSineData;
 
+        static InGameTrigUtilities()
+        {
+            sineData = XmlConfigParser.OpenSineData();
+            arcSineData = XmlConfigParser.OpenArcSineData();
+        }
 
+        public static float InGameSine(int value)
+        {
+            int truncatedValue = MoreMath.NormalizeAngleTruncated(value);
+            int index = truncatedValue / 16;
+            return sineData[truncatedValue];
+        }
+
+        public static float InGameCosine(int value)
+        {
+            int truncatedValue = MoreMath.NormalizeAngleTruncated(value);
+            int index = truncatedValue / 16;
+            return sineData[truncatedValue + 1024];
+        }
 
         public static ushort InGameAngleTo(float xTo, float zTo)
         {
@@ -67,7 +87,10 @@ namespace STROOP.Utilities
                 offset = 0;
             else
                 offset = 2 * (uint)((yComp / xComp) * 1024f + 0.5f);
-            return Config.Stream.GetUInt16(0x8038B000 + offset);
+
+            //return Config.Stream.GetUInt16(0x8038B000 + offset);
+            int index = (int)(offset / 2);
+            return arcSineData[index];
         }
 
 

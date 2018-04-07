@@ -241,12 +241,6 @@ namespace STROOP.Utilities
             return (ushort)(Math.Round(nonNegative) % 65536);
         }
 
-        public static ushort NormalizeAngleUshortTrunc(double angle)
-        {
-            double nonNegative = NormalizeAngleDouble(angle);
-            return (ushort)(Math.Truncate(nonNegative) % 65536);
-        }
-
         public static short NormalizeAngleShort(double angle)
         {
             ushort angleUshort = NormalizeAngleUshort(angle);
