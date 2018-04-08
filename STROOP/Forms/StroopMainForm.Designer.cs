@@ -15255,7 +15255,7 @@ namespace STROOP
             this.dataGridViewM64Editor.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridViewM64Editor.Name = "dataGridViewM64Editor";
             this.dataGridViewM64Editor.RowHeadersVisible = false;
-            this.dataGridViewM64Editor.RowTemplate.Height = 28;
+            this.dataGridViewM64Editor.RowTemplate.Height = 20;
             this.dataGridViewM64Editor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewM64Editor.Size = new System.Drawing.Size(643, 427);
             this.dataGridViewM64Editor.TabIndex = 2;
