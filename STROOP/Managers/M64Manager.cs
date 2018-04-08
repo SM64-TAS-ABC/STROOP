@@ -158,6 +158,7 @@ namespace STROOP.Managers
             _gui.PropertyGridHeader.SelectedObject = _m64.Header;
             _gui.DataGridViewInputs.Refresh();
             _gui.PropertyGridHeader.Refresh();
+            _gui.PropertyGridStats.Refresh();
         }
 
         private void ButtonClose_Click(object sender, EventArgs e)

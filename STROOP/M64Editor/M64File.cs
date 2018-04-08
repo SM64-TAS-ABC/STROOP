@@ -24,7 +24,7 @@ namespace STROOP.M64Editor
         {
             Header = new M64Header();
             Inputs = new BindingList<M64InputFrame>();
-            Stats= new M64Stats(Header, Inputs);
+            Stats = new M64Stats(Header, Inputs);
         }
 
         public bool OpenFile(string filePath, string fileName)
