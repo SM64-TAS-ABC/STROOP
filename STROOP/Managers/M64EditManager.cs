@@ -39,6 +39,7 @@ namespace STROOP.Managers
            _m64 = new M64File();
             _gui.DataGridViewEditor.DataSource = _m64.Inputs;
             _gui.PropertyGridHeader.SelectedObject = _m64.Header;
+            _gui.PropertyGridHeader.Refresh();
         }
 
         private void DataGridViewEditor_MouseClick(object sender, MouseEventArgs e)
@@ -132,9 +133,12 @@ namespace STROOP.Managers
                 return;
 
             _gui.DataGridViewEditor.DataSource = null;
+            _gui.PropertyGridHeader.SelectedObject = null;
             _m64.LoadFile(_gui.OpenFileDialogM64.FileName);
             _gui.DataGridViewEditor.DataSource = _m64.Inputs;
+            _gui.PropertyGridHeader.SelectedObject = _m64.Header;
             _gui.DataGridViewEditor.Refresh();
+            _gui.PropertyGridHeader.Refresh();
         }
 
         private DialogResult CheckSaveChanges()
