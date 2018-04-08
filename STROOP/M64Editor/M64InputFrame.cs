@@ -26,19 +26,18 @@ namespace STROOP.M64Editor
         }
 
         public int FrameIndex { get => Index; }
-
+        public sbyte X { get => (sbyte)GetByte(2); set => SetByte(2, (byte)value); }
+        public sbyte Y { get => (sbyte)GetByte(3); set => SetByte(3, (byte)value); }
         public bool A { get => GetBit(7); set => SetBit(7, value); }
         public bool B { get => GetBit(6); set => SetBit(6, value); }
         public bool Z { get => GetBit(5); set => SetBit(5, value); }
         public bool Start { get => GetBit(4); set => SetBit(4, value); }
-        public bool L { get => GetBit(13); set => SetBit(13, value); }
         public bool R { get => GetBit(12); set => SetBit(12, value); }
-        public sbyte AnalogX { get => (sbyte)GetByte(2); set => SetByte(2, (byte)value); }
-        public sbyte AnalogY { get => (sbyte)GetByte(3); set => SetByte(3, (byte)value); }
         public bool C_Up { get => GetBit(11); set => SetBit(11, value); }
         public bool C_Down { get => GetBit(10); set => SetBit(10, value); }
         public bool C_Left { get => GetBit(9); set => SetBit(9, value); }
         public bool C_Right { get => GetBit(8); set => SetBit(8, value); }
+        public bool L { get => GetBit(13); set => SetBit(13, value); }
         public bool D_Up { get => GetBit(3); set => SetBit(3, value); }
         public bool D_Down { get => GetBit(2); set => SetBit(2, value); }
         public bool D_Left { get => GetBit(1); set => SetBit(1, value); }
