@@ -19,7 +19,7 @@ namespace STROOP.M64Editor
         public M64Header Header { get; } = new M64Header();
         public BindingList<M64InputFrame> Inputs { get; } = new BindingList<M64InputFrame>();
 
-        public bool LoadFile(string filePath, string fileName)
+        public bool OpenFile(string filePath, string fileName)
         {
             if (!File.Exists(filePath))
                 return false;
@@ -34,8 +34,8 @@ namespace STROOP.M64Editor
                 return false;
             }
 
-            bool loaded = LoadMupenFileBytes(movieBytes);
-            if (loaded)
+            bool loadedSuccessfully = LoadBytes(movieBytes);
+            if (loadedSuccessfully)
             {
                 CurrentFilePath = filePath;
                 CurrentFileName = fileName;
@@ -44,7 +44,7 @@ namespace STROOP.M64Editor
             return true;
         }
 
-        private bool LoadMupenFileBytes(byte[] fileBytes)
+        private bool LoadBytes(byte[] fileBytes)
         {
             // Check Header
             if (!fileBytes.Take(4).SequenceEqual(new byte[] { 0x4D, 0x36, 0x34, 0x1A }))

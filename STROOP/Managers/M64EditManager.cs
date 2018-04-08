@@ -24,7 +24,7 @@ namespace STROOP.Managers
 
             _gui.ButtonSave.Click += (sender, e) => _m64.Save();
             _gui.ButtonSaveAs.Click += ButtonSaveAs_Click;
-            _gui.ButtonLoad.Click += ButtonLoad_Click;
+            _gui.ButtonOpen.Click += ButtonOpen_Click;
             _gui.ButtonClose.Click += ButtonClose_Click;
             _gui.ButtonGoto.Click += ButtonGoto_Click;
 
@@ -126,7 +126,7 @@ namespace STROOP.Managers
             _m64.Save(_gui.SaveFileDialogM64.FileName);
         }
 
-        private void ButtonLoad_Click(object sender, EventArgs e)
+        private void ButtonOpen_Click(object sender, EventArgs e)
         {
             if (CheckSaveChanges() == DialogResult.Cancel)
                 return;
@@ -140,7 +140,7 @@ namespace STROOP.Managers
 
             _gui.DataGridViewInputs.DataSource = null;
             _gui.PropertyGridHeader.SelectedObject = null;
-            bool success = _m64.LoadFile(filePath, fileName);
+            bool success = _m64.OpenFile(filePath, fileName);
             if (!success)
             {
                 MessageBox.Show(

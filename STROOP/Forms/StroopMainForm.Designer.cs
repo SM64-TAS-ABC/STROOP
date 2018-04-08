@@ -34,8 +34,8 @@ namespace STROOP
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
@@ -192,6 +192,46 @@ namespace STROOP
             this.buttonMarioToggleHandsfree = new System.Windows.Forms.Button();
             this.buttonMarioVisibility = new System.Windows.Forms.Button();
             this.WatchVariablePanelMario = new STROOP.Controls.WatchVariableFlowLayoutPanel();
+            this.tabPageM64 = new System.Windows.Forms.TabPage();
+            this.splitContainerM64 = new STROOP.BetterSplitContainer();
+            this.labelM64FileName = new System.Windows.Forms.Label();
+            this.labelM64FileLabel = new System.Windows.Forms.Label();
+            this.buttonM64Goto = new System.Windows.Forms.Button();
+            this.textBoxM64Goto = new System.Windows.Forms.TextBox();
+            this.buttonM64Close = new System.Windows.Forms.Button();
+            this.buttonM64Open = new System.Windows.Forms.Button();
+            this.buttonM64SaveAs = new System.Windows.Forms.Button();
+            this.buttonM64Save = new System.Windows.Forms.Button();
+            this.tabControlM64Details = new System.Windows.Forms.TabControl();
+            this.tabPageM64Inputs = new System.Windows.Forms.TabPage();
+            this.dataGridViewM64Inputs = new System.Windows.Forms.DataGridView();
+            this.ColumnM64Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnM64AnalogX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnM64AnalogY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnM64A = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64B = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Z = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64L = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64R = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Start = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Cup = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Cright = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Cleft = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Cdown = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Dup = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Ddown = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Dleft = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Dright = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.contextMenuStripM64Editor = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.stripMenuItemM64InsertNewBefore = new System.Windows.Forms.ToolStripMenuItem();
+            this.stripMenuItemM64InsertNewAfter = new System.Windows.Forms.ToolStripMenuItem();
+            this.stripMenuItemM64Copy = new System.Windows.Forms.ToolStripMenuItem();
+            this.stripMenuItemM64PasteOnto = new System.Windows.Forms.ToolStripMenuItem();
+            this.stripMenuItemM64PasteBefore = new System.Windows.Forms.ToolStripMenuItem();
+            this.stripMenuItemM64PasteAfter = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabPageM64Header = new System.Windows.Forms.TabPage();
+            this.propertyGridM64Header = new System.Windows.Forms.PropertyGrid();
+            this.tabPageM64Stats = new System.Windows.Forms.TabPage();
             this.tabPageHud = new System.Windows.Forms.TabPage();
             this.splitContainerHud = new STROOP.BetterSplitContainer();
             this.checkBoxFullHP = new System.Windows.Forms.CheckBox();
@@ -1156,46 +1196,6 @@ namespace STROOP
             this.labelMetric3Value = new System.Windows.Forms.Label();
             this.labelMetric5Value = new System.Windows.Forms.Label();
             this.labelMetric4Value = new System.Windows.Forms.Label();
-            this.tabPageM64 = new System.Windows.Forms.TabPage();
-            this.splitContainerM64 = new STROOP.BetterSplitContainer();
-            this.labelM64FileName = new System.Windows.Forms.Label();
-            this.labelM64FileLabel = new System.Windows.Forms.Label();
-            this.buttonM64Goto = new System.Windows.Forms.Button();
-            this.textBoxM64Goto = new System.Windows.Forms.TextBox();
-            this.buttonM64Close = new System.Windows.Forms.Button();
-            this.buttonM64Load = new System.Windows.Forms.Button();
-            this.buttonM64SaveAs = new System.Windows.Forms.Button();
-            this.buttonM64Save = new System.Windows.Forms.Button();
-            this.tabControlM64Details = new System.Windows.Forms.TabControl();
-            this.tabPageM64Inputs = new System.Windows.Forms.TabPage();
-            this.dataGridViewM64Inputs = new System.Windows.Forms.DataGridView();
-            this.ColumnM64Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnM64AnalogX = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnM64AnalogY = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnM64A = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64B = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Z = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64L = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64R = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Start = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Cup = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Cright = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Cleft = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Cdown = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Dup = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Ddown = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Dleft = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Dright = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.contextMenuStripM64Editor = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.stripMenuItemM64InsertNewBefore = new System.Windows.Forms.ToolStripMenuItem();
-            this.stripMenuItemM64InsertNewAfter = new System.Windows.Forms.ToolStripMenuItem();
-            this.stripMenuItemM64Copy = new System.Windows.Forms.ToolStripMenuItem();
-            this.stripMenuItemM64PasteOnto = new System.Windows.Forms.ToolStripMenuItem();
-            this.stripMenuItemM64PasteBefore = new System.Windows.Forms.ToolStripMenuItem();
-            this.stripMenuItemM64PasteAfter = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPageM64Header = new System.Windows.Forms.TabPage();
-            this.propertyGridM64Header = new System.Windows.Forms.PropertyGrid();
-            this.tabPageM64Stats = new System.Windows.Forms.TabPage();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
             this.labelLabelMethod = new System.Windows.Forms.Label();
@@ -1236,6 +1236,16 @@ namespace STROOP
             this.panelMarioBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMario)).BeginInit();
             this.groupBoxMarioPos.SuspendLayout();
+            this.tabPageM64.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerM64)).BeginInit();
+            this.splitContainerM64.Panel1.SuspendLayout();
+            this.splitContainerM64.Panel2.SuspendLayout();
+            this.splitContainerM64.SuspendLayout();
+            this.tabControlM64Details.SuspendLayout();
+            this.tabPageM64Inputs.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewM64Inputs)).BeginInit();
+            this.contextMenuStripM64Editor.SuspendLayout();
+            this.tabPageM64Header.SuspendLayout();
             this.tabPageHud.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerHud)).BeginInit();
             this.splitContainerHud.Panel1.SuspendLayout();
@@ -1576,16 +1586,6 @@ namespace STROOP
             this.groupBoxObjAtHOLP.SuspendLayout();
             this.groupBoxGoto.SuspendLayout();
             this.groupBoxRecording.SuspendLayout();
-            this.tabPageM64.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerM64)).BeginInit();
-            this.splitContainerM64.Panel1.SuspendLayout();
-            this.splitContainerM64.Panel2.SuspendLayout();
-            this.splitContainerM64.SuspendLayout();
-            this.tabControlM64Details.SuspendLayout();
-            this.tabPageM64Inputs.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewM64Inputs)).BeginInit();
-            this.contextMenuStripM64Editor.SuspendLayout();
-            this.tabPageM64Header.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             this.SuspendLayout();
@@ -3414,6 +3414,419 @@ namespace STROOP
             this.WatchVariablePanelMario.Size = new System.Drawing.Size(704, 461);
             this.WatchVariablePanelMario.TabIndex = 1;
             // 
+            // tabPageM64
+            // 
+            this.tabPageM64.Controls.Add(this.splitContainerM64);
+            this.tabPageM64.Location = new System.Drawing.Point(4, 22);
+            this.tabPageM64.Name = "tabPageM64";
+            this.tabPageM64.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageM64.Size = new System.Drawing.Size(915, 463);
+            this.tabPageM64.TabIndex = 28;
+            this.tabPageM64.Text = "M64";
+            // 
+            // splitContainerM64
+            // 
+            this.splitContainerM64.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerM64.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerM64.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerM64.Location = new System.Drawing.Point(3, 3);
+            this.splitContainerM64.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerM64.Name = "splitContainerM64";
+            // 
+            // splitContainerM64.Panel1
+            // 
+            this.splitContainerM64.Panel1.AutoScroll = true;
+            this.splitContainerM64.Panel1.Controls.Add(this.labelM64FileName);
+            this.splitContainerM64.Panel1.Controls.Add(this.labelM64FileLabel);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Goto);
+            this.splitContainerM64.Panel1.Controls.Add(this.textBoxM64Goto);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Close);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Open);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64SaveAs);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Save);
+            this.splitContainerM64.Panel1MinSize = 0;
+            // 
+            // splitContainerM64.Panel2
+            // 
+            this.splitContainerM64.Panel2.Controls.Add(this.tabControlM64Details);
+            this.splitContainerM64.Panel2MinSize = 0;
+            this.splitContainerM64.Size = new System.Drawing.Size(909, 457);
+            this.splitContainerM64.SplitterDistance = 253;
+            this.splitContainerM64.SplitterWidth = 1;
+            this.splitContainerM64.TabIndex = 34;
+            // 
+            // labelM64FileName
+            // 
+            this.labelM64FileName.AutoSize = true;
+            this.labelM64FileName.Location = new System.Drawing.Point(33, 7);
+            this.labelM64FileName.Name = "labelM64FileName";
+            this.labelM64FileName.Size = new System.Drawing.Size(87, 13);
+            this.labelM64FileName.TabIndex = 14;
+            this.labelM64FileName.Text = "(No File Opened)";
+            // 
+            // labelM64FileLabel
+            // 
+            this.labelM64FileLabel.AutoSize = true;
+            this.labelM64FileLabel.Location = new System.Drawing.Point(9, 7);
+            this.labelM64FileLabel.Name = "labelM64FileLabel";
+            this.labelM64FileLabel.Size = new System.Drawing.Size(26, 13);
+            this.labelM64FileLabel.TabIndex = 14;
+            this.labelM64FileLabel.Text = "File:";
+            // 
+            // buttonM64Goto
+            // 
+            this.buttonM64Goto.Location = new System.Drawing.Point(138, 211);
+            this.buttonM64Goto.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64Goto.Name = "buttonM64Goto";
+            this.buttonM64Goto.Size = new System.Drawing.Size(63, 22);
+            this.buttonM64Goto.TabIndex = 12;
+            this.buttonM64Goto.Text = "Goto";
+            this.buttonM64Goto.UseVisualStyleBackColor = true;
+            // 
+            // textBoxM64Goto
+            // 
+            this.textBoxM64Goto.Location = new System.Drawing.Point(37, 213);
+            this.textBoxM64Goto.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxM64Goto.Name = "textBoxM64Goto";
+            this.textBoxM64Goto.Size = new System.Drawing.Size(68, 20);
+            this.textBoxM64Goto.TabIndex = 11;
+            // 
+            // buttonM64Close
+            // 
+            this.buttonM64Close.Location = new System.Drawing.Point(14, 168);
+            this.buttonM64Close.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64Close.Name = "buttonM64Close";
+            this.buttonM64Close.Size = new System.Drawing.Size(63, 22);
+            this.buttonM64Close.TabIndex = 8;
+            this.buttonM64Close.Text = "Close";
+            this.buttonM64Close.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64Open
+            // 
+            this.buttonM64Open.Location = new System.Drawing.Point(14, 142);
+            this.buttonM64Open.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64Open.Name = "buttonM64Open";
+            this.buttonM64Open.Size = new System.Drawing.Size(63, 22);
+            this.buttonM64Open.TabIndex = 8;
+            this.buttonM64Open.Text = "Open";
+            this.buttonM64Open.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64SaveAs
+            // 
+            this.buttonM64SaveAs.Location = new System.Drawing.Point(138, 151);
+            this.buttonM64SaveAs.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64SaveAs.Name = "buttonM64SaveAs";
+            this.buttonM64SaveAs.Size = new System.Drawing.Size(63, 22);
+            this.buttonM64SaveAs.TabIndex = 10;
+            this.buttonM64SaveAs.Text = "Save As";
+            this.buttonM64SaveAs.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64Save
+            // 
+            this.buttonM64Save.Location = new System.Drawing.Point(117, 104);
+            this.buttonM64Save.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64Save.Name = "buttonM64Save";
+            this.buttonM64Save.Size = new System.Drawing.Size(63, 22);
+            this.buttonM64Save.TabIndex = 9;
+            this.buttonM64Save.Text = "Save";
+            this.buttonM64Save.UseVisualStyleBackColor = true;
+            // 
+            // tabControlM64Details
+            // 
+            this.tabControlM64Details.Controls.Add(this.tabPageM64Inputs);
+            this.tabControlM64Details.Controls.Add(this.tabPageM64Header);
+            this.tabControlM64Details.Controls.Add(this.tabPageM64Stats);
+            this.tabControlM64Details.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlM64Details.Location = new System.Drawing.Point(0, 0);
+            this.tabControlM64Details.Margin = new System.Windows.Forms.Padding(0);
+            this.tabControlM64Details.Name = "tabControlM64Details";
+            this.tabControlM64Details.SelectedIndex = 0;
+            this.tabControlM64Details.Size = new System.Drawing.Size(653, 455);
+            this.tabControlM64Details.TabIndex = 40;
+            // 
+            // tabPageM64Inputs
+            // 
+            this.tabPageM64Inputs.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageM64Inputs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageM64Inputs.Controls.Add(this.dataGridViewM64Inputs);
+            this.tabPageM64Inputs.Location = new System.Drawing.Point(4, 22);
+            this.tabPageM64Inputs.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageM64Inputs.Name = "tabPageM64Inputs";
+            this.tabPageM64Inputs.Size = new System.Drawing.Size(645, 429);
+            this.tabPageM64Inputs.TabIndex = 3;
+            this.tabPageM64Inputs.Text = "Inputs";
+            // 
+            // dataGridViewM64Inputs
+            // 
+            this.dataGridViewM64Inputs.AllowUserToDeleteRows = false;
+            this.dataGridViewM64Inputs.AllowUserToResizeColumns = false;
+            this.dataGridViewM64Inputs.AllowUserToResizeRows = false;
+            this.dataGridViewM64Inputs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewM64Inputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewM64Inputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnM64Index,
+            this.ColumnM64AnalogX,
+            this.ColumnM64AnalogY,
+            this.ColumnM64A,
+            this.ColumnM64B,
+            this.ColumnM64Z,
+            this.ColumnM64L,
+            this.ColumnM64R,
+            this.ColumnM64Start,
+            this.ColumnM64Cup,
+            this.ColumnM64Cright,
+            this.ColumnM64Cleft,
+            this.ColumnM64Cdown,
+            this.ColumnM64Dup,
+            this.ColumnM64Ddown,
+            this.ColumnM64Dleft,
+            this.ColumnM64Dright});
+            this.dataGridViewM64Inputs.ContextMenuStrip = this.contextMenuStripM64Editor;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewM64Inputs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewM64Inputs.EnableHeadersVisualStyles = false;
+            this.dataGridViewM64Inputs.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewM64Inputs.Margin = new System.Windows.Forms.Padding(0);
+            this.dataGridViewM64Inputs.Name = "dataGridViewM64Inputs";
+            this.dataGridViewM64Inputs.RowHeadersVisible = false;
+            this.dataGridViewM64Inputs.RowTemplate.Height = 20;
+            this.dataGridViewM64Inputs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridViewM64Inputs.Size = new System.Drawing.Size(643, 427);
+            this.dataGridViewM64Inputs.TabIndex = 2;
+            // 
+            // ColumnM64Index
+            // 
+            this.ColumnM64Index.DataPropertyName = "FrameIndex";
+            this.ColumnM64Index.FillWeight = 300F;
+            this.ColumnM64Index.HeaderText = "Frame";
+            this.ColumnM64Index.Name = "ColumnM64Index";
+            this.ColumnM64Index.ReadOnly = true;
+            this.ColumnM64Index.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ColumnM64AnalogX
+            // 
+            this.ColumnM64AnalogX.DataPropertyName = "X";
+            this.ColumnM64AnalogX.FillWeight = 200F;
+            this.ColumnM64AnalogX.HeaderText = "X";
+            this.ColumnM64AnalogX.Name = "ColumnM64AnalogX";
+            this.ColumnM64AnalogX.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ColumnM64AnalogY
+            // 
+            this.ColumnM64AnalogY.DataPropertyName = "Y";
+            this.ColumnM64AnalogY.FillWeight = 200F;
+            this.ColumnM64AnalogY.HeaderText = "Y";
+            this.ColumnM64AnalogY.Name = "ColumnM64AnalogY";
+            this.ColumnM64AnalogY.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ColumnM64A
+            // 
+            this.ColumnM64A.DataPropertyName = "A";
+            this.ColumnM64A.HeaderText = "A";
+            this.ColumnM64A.Name = "ColumnM64A";
+            this.ColumnM64A.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64B
+            // 
+            this.ColumnM64B.DataPropertyName = "B";
+            this.ColumnM64B.HeaderText = "B";
+            this.ColumnM64B.Name = "ColumnM64B";
+            this.ColumnM64B.ReadOnly = true;
+            this.ColumnM64B.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64Z
+            // 
+            this.ColumnM64Z.DataPropertyName = "Z";
+            this.ColumnM64Z.HeaderText = "Z";
+            this.ColumnM64Z.Name = "ColumnM64Z";
+            this.ColumnM64Z.ReadOnly = true;
+            this.ColumnM64Z.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64L
+            // 
+            this.ColumnM64L.DataPropertyName = "L";
+            this.ColumnM64L.HeaderText = "L";
+            this.ColumnM64L.Name = "ColumnM64L";
+            this.ColumnM64L.ReadOnly = true;
+            this.ColumnM64L.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64R
+            // 
+            this.ColumnM64R.DataPropertyName = "R";
+            this.ColumnM64R.HeaderText = "R";
+            this.ColumnM64R.Name = "ColumnM64R";
+            this.ColumnM64R.ReadOnly = true;
+            this.ColumnM64R.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64Start
+            // 
+            this.ColumnM64Start.DataPropertyName = "Start";
+            this.ColumnM64Start.HeaderText = "S";
+            this.ColumnM64Start.Name = "ColumnM64Start";
+            this.ColumnM64Start.ReadOnly = true;
+            this.ColumnM64Start.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64Cup
+            // 
+            this.ColumnM64Cup.DataPropertyName = "C_Up";
+            this.ColumnM64Cup.HeaderText = "C^";
+            this.ColumnM64Cup.Name = "ColumnM64Cup";
+            this.ColumnM64Cup.ReadOnly = true;
+            this.ColumnM64Cup.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64Cright
+            // 
+            this.ColumnM64Cright.DataPropertyName = "C_right";
+            this.ColumnM64Cright.HeaderText = "C>";
+            this.ColumnM64Cright.Name = "ColumnM64Cright";
+            this.ColumnM64Cright.ReadOnly = true;
+            this.ColumnM64Cright.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64Cleft
+            // 
+            this.ColumnM64Cleft.DataPropertyName = "C_Left";
+            this.ColumnM64Cleft.HeaderText = "C<";
+            this.ColumnM64Cleft.Name = "ColumnM64Cleft";
+            this.ColumnM64Cleft.ReadOnly = true;
+            this.ColumnM64Cleft.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64Cdown
+            // 
+            this.ColumnM64Cdown.DataPropertyName = "C_Down";
+            this.ColumnM64Cdown.HeaderText = "Cv";
+            this.ColumnM64Cdown.Name = "ColumnM64Cdown";
+            this.ColumnM64Cdown.ReadOnly = true;
+            this.ColumnM64Cdown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64Dup
+            // 
+            this.ColumnM64Dup.DataPropertyName = "D_Up";
+            this.ColumnM64Dup.HeaderText = "D^";
+            this.ColumnM64Dup.Name = "ColumnM64Dup";
+            this.ColumnM64Dup.ReadOnly = true;
+            this.ColumnM64Dup.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64Ddown
+            // 
+            this.ColumnM64Ddown.DataPropertyName = "D_Down";
+            this.ColumnM64Ddown.HeaderText = "Dv";
+            this.ColumnM64Ddown.Name = "ColumnM64Ddown";
+            this.ColumnM64Ddown.ReadOnly = true;
+            this.ColumnM64Ddown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64Dleft
+            // 
+            this.ColumnM64Dleft.DataPropertyName = "D_Left";
+            this.ColumnM64Dleft.HeaderText = "D<";
+            this.ColumnM64Dleft.Name = "ColumnM64Dleft";
+            this.ColumnM64Dleft.ReadOnly = true;
+            this.ColumnM64Dleft.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64Dright
+            // 
+            this.ColumnM64Dright.DataPropertyName = "D_Right";
+            this.ColumnM64Dright.HeaderText = "D>";
+            this.ColumnM64Dright.Name = "ColumnM64Dright";
+            this.ColumnM64Dright.ReadOnly = true;
+            this.ColumnM64Dright.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // contextMenuStripM64Editor
+            // 
+            this.contextMenuStripM64Editor.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.contextMenuStripM64Editor.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stripMenuItemM64InsertNewBefore,
+            this.stripMenuItemM64InsertNewAfter,
+            this.stripMenuItemM64Copy,
+            this.stripMenuItemM64PasteOnto,
+            this.stripMenuItemM64PasteBefore,
+            this.stripMenuItemM64PasteAfter});
+            this.contextMenuStripM64Editor.Name = "contextMenuStripEditor";
+            this.contextMenuStripM64Editor.Size = new System.Drawing.Size(168, 136);
+            // 
+            // stripMenuItemM64InsertNewBefore
+            // 
+            this.stripMenuItemM64InsertNewBefore.Name = "stripMenuItemM64InsertNewBefore";
+            this.stripMenuItemM64InsertNewBefore.Size = new System.Drawing.Size(167, 22);
+            this.stripMenuItemM64InsertNewBefore.Text = "Insert New Before";
+            // 
+            // stripMenuItemM64InsertNewAfter
+            // 
+            this.stripMenuItemM64InsertNewAfter.Name = "stripMenuItemM64InsertNewAfter";
+            this.stripMenuItemM64InsertNewAfter.Size = new System.Drawing.Size(167, 22);
+            this.stripMenuItemM64InsertNewAfter.Text = "Insert New After";
+            // 
+            // stripMenuItemM64Copy
+            // 
+            this.stripMenuItemM64Copy.Name = "stripMenuItemM64Copy";
+            this.stripMenuItemM64Copy.Size = new System.Drawing.Size(167, 22);
+            this.stripMenuItemM64Copy.Text = "Copy";
+            // 
+            // stripMenuItemM64PasteOnto
+            // 
+            this.stripMenuItemM64PasteOnto.Name = "stripMenuItemM64PasteOnto";
+            this.stripMenuItemM64PasteOnto.Size = new System.Drawing.Size(167, 22);
+            this.stripMenuItemM64PasteOnto.Text = "Paste Onto";
+            // 
+            // stripMenuItemM64PasteBefore
+            // 
+            this.stripMenuItemM64PasteBefore.Name = "stripMenuItemM64PasteBefore";
+            this.stripMenuItemM64PasteBefore.Size = new System.Drawing.Size(167, 22);
+            this.stripMenuItemM64PasteBefore.Text = "Paste Before";
+            // 
+            // stripMenuItemM64PasteAfter
+            // 
+            this.stripMenuItemM64PasteAfter.Name = "stripMenuItemM64PasteAfter";
+            this.stripMenuItemM64PasteAfter.Size = new System.Drawing.Size(167, 22);
+            this.stripMenuItemM64PasteAfter.Text = "Paste After";
+            // 
+            // tabPageM64Header
+            // 
+            this.tabPageM64Header.AutoScroll = true;
+            this.tabPageM64Header.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageM64Header.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageM64Header.Controls.Add(this.propertyGridM64Header);
+            this.tabPageM64Header.Location = new System.Drawing.Point(4, 22);
+            this.tabPageM64Header.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageM64Header.Name = "tabPageM64Header";
+            this.tabPageM64Header.Size = new System.Drawing.Size(645, 429);
+            this.tabPageM64Header.TabIndex = 2;
+            this.tabPageM64Header.Text = "Header";
+            // 
+            // propertyGridM64Header
+            // 
+            this.propertyGridM64Header.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.propertyGridM64Header.HelpVisible = false;
+            this.propertyGridM64Header.Location = new System.Drawing.Point(0, 0);
+            this.propertyGridM64Header.Name = "propertyGridM64Header";
+            this.propertyGridM64Header.Size = new System.Drawing.Size(643, 427);
+            this.propertyGridM64Header.TabIndex = 0;
+            this.propertyGridM64Header.ToolbarVisible = false;
+            // 
+            // tabPageM64Stats
+            // 
+            this.tabPageM64Stats.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageM64Stats.Location = new System.Drawing.Point(4, 22);
+            this.tabPageM64Stats.Name = "tabPageM64Stats";
+            this.tabPageM64Stats.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageM64Stats.Size = new System.Drawing.Size(645, 429);
+            this.tabPageM64Stats.TabIndex = 4;
+            this.tabPageM64Stats.Text = "Stats";
+            // 
             // tabPageHud
             // 
             this.tabPageHud.Controls.Add(this.splitContainerHud);
@@ -4978,7 +5391,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 328F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 329F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -10807,7 +11220,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(170, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(153, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -10839,7 +11252,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(164, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(147, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -10895,7 +11308,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(164, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(147, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -11341,7 +11754,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 706;
+            this.splitContainerMemory.SplitterDistance = 709;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11365,7 +11778,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(590, 429);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(593, 429);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -11468,7 +11881,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(200, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(197, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPageHacks
@@ -15099,419 +15512,6 @@ namespace STROOP
             this.labelMetric4Value.Text = "Value";
             this.labelMetric4Value.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // tabPageM64
-            // 
-            this.tabPageM64.Controls.Add(this.splitContainerM64);
-            this.tabPageM64.Location = new System.Drawing.Point(4, 22);
-            this.tabPageM64.Name = "tabPageM64";
-            this.tabPageM64.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageM64.Size = new System.Drawing.Size(915, 463);
-            this.tabPageM64.TabIndex = 28;
-            this.tabPageM64.Text = "M64";
-            // 
-            // splitContainerM64
-            // 
-            this.splitContainerM64.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainerM64.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerM64.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerM64.Location = new System.Drawing.Point(3, 3);
-            this.splitContainerM64.Margin = new System.Windows.Forms.Padding(0);
-            this.splitContainerM64.Name = "splitContainerM64";
-            // 
-            // splitContainerM64.Panel1
-            // 
-            this.splitContainerM64.Panel1.AutoScroll = true;
-            this.splitContainerM64.Panel1.Controls.Add(this.labelM64FileName);
-            this.splitContainerM64.Panel1.Controls.Add(this.labelM64FileLabel);
-            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Goto);
-            this.splitContainerM64.Panel1.Controls.Add(this.textBoxM64Goto);
-            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Close);
-            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Load);
-            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64SaveAs);
-            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Save);
-            this.splitContainerM64.Panel1MinSize = 0;
-            // 
-            // splitContainerM64.Panel2
-            // 
-            this.splitContainerM64.Panel2.Controls.Add(this.tabControlM64Details);
-            this.splitContainerM64.Panel2MinSize = 0;
-            this.splitContainerM64.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerM64.SplitterDistance = 253;
-            this.splitContainerM64.SplitterWidth = 1;
-            this.splitContainerM64.TabIndex = 34;
-            // 
-            // labelM64FileName
-            // 
-            this.labelM64FileName.AutoSize = true;
-            this.labelM64FileName.Location = new System.Drawing.Point(33, 7);
-            this.labelM64FileName.Name = "labelM64FileName";
-            this.labelM64FileName.Size = new System.Drawing.Size(87, 13);
-            this.labelM64FileName.TabIndex = 14;
-            this.labelM64FileName.Text = "(No File Opened)";
-            // 
-            // labelM64FileLabel
-            // 
-            this.labelM64FileLabel.AutoSize = true;
-            this.labelM64FileLabel.Location = new System.Drawing.Point(9, 7);
-            this.labelM64FileLabel.Name = "labelM64FileLabel";
-            this.labelM64FileLabel.Size = new System.Drawing.Size(26, 13);
-            this.labelM64FileLabel.TabIndex = 14;
-            this.labelM64FileLabel.Text = "File:";
-            // 
-            // buttonM64Goto
-            // 
-            this.buttonM64Goto.Location = new System.Drawing.Point(138, 211);
-            this.buttonM64Goto.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64Goto.Name = "buttonM64Goto";
-            this.buttonM64Goto.Size = new System.Drawing.Size(63, 22);
-            this.buttonM64Goto.TabIndex = 12;
-            this.buttonM64Goto.Text = "Goto";
-            this.buttonM64Goto.UseVisualStyleBackColor = true;
-            // 
-            // textBoxM64Goto
-            // 
-            this.textBoxM64Goto.Location = new System.Drawing.Point(37, 213);
-            this.textBoxM64Goto.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxM64Goto.Name = "textBoxM64Goto";
-            this.textBoxM64Goto.Size = new System.Drawing.Size(68, 20);
-            this.textBoxM64Goto.TabIndex = 11;
-            // 
-            // buttonM64Close
-            // 
-            this.buttonM64Close.Location = new System.Drawing.Point(14, 168);
-            this.buttonM64Close.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64Close.Name = "buttonM64Close";
-            this.buttonM64Close.Size = new System.Drawing.Size(63, 22);
-            this.buttonM64Close.TabIndex = 8;
-            this.buttonM64Close.Text = "Close";
-            this.buttonM64Close.UseVisualStyleBackColor = true;
-            // 
-            // buttonM64Load
-            // 
-            this.buttonM64Load.Location = new System.Drawing.Point(14, 142);
-            this.buttonM64Load.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64Load.Name = "buttonM64Load";
-            this.buttonM64Load.Size = new System.Drawing.Size(63, 22);
-            this.buttonM64Load.TabIndex = 8;
-            this.buttonM64Load.Text = "Load";
-            this.buttonM64Load.UseVisualStyleBackColor = true;
-            // 
-            // buttonM64SaveAs
-            // 
-            this.buttonM64SaveAs.Location = new System.Drawing.Point(138, 151);
-            this.buttonM64SaveAs.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64SaveAs.Name = "buttonM64SaveAs";
-            this.buttonM64SaveAs.Size = new System.Drawing.Size(63, 22);
-            this.buttonM64SaveAs.TabIndex = 10;
-            this.buttonM64SaveAs.Text = "Save As";
-            this.buttonM64SaveAs.UseVisualStyleBackColor = true;
-            // 
-            // buttonM64Save
-            // 
-            this.buttonM64Save.Location = new System.Drawing.Point(117, 104);
-            this.buttonM64Save.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64Save.Name = "buttonM64Save";
-            this.buttonM64Save.Size = new System.Drawing.Size(63, 22);
-            this.buttonM64Save.TabIndex = 9;
-            this.buttonM64Save.Text = "Save";
-            this.buttonM64Save.UseVisualStyleBackColor = true;
-            // 
-            // tabControlM64Details
-            // 
-            this.tabControlM64Details.Controls.Add(this.tabPageM64Inputs);
-            this.tabControlM64Details.Controls.Add(this.tabPageM64Header);
-            this.tabControlM64Details.Controls.Add(this.tabPageM64Stats);
-            this.tabControlM64Details.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlM64Details.Location = new System.Drawing.Point(0, 0);
-            this.tabControlM64Details.Margin = new System.Windows.Forms.Padding(0);
-            this.tabControlM64Details.Name = "tabControlM64Details";
-            this.tabControlM64Details.SelectedIndex = 0;
-            this.tabControlM64Details.Size = new System.Drawing.Size(653, 455);
-            this.tabControlM64Details.TabIndex = 40;
-            // 
-            // tabPageM64Inputs
-            // 
-            this.tabPageM64Inputs.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageM64Inputs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPageM64Inputs.Controls.Add(this.dataGridViewM64Inputs);
-            this.tabPageM64Inputs.Location = new System.Drawing.Point(4, 22);
-            this.tabPageM64Inputs.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPageM64Inputs.Name = "tabPageM64Inputs";
-            this.tabPageM64Inputs.Size = new System.Drawing.Size(645, 429);
-            this.tabPageM64Inputs.TabIndex = 3;
-            this.tabPageM64Inputs.Text = "Inputs";
-            // 
-            // dataGridViewM64Inputs
-            // 
-            this.dataGridViewM64Inputs.AllowUserToDeleteRows = false;
-            this.dataGridViewM64Inputs.AllowUserToResizeColumns = false;
-            this.dataGridViewM64Inputs.AllowUserToResizeRows = false;
-            this.dataGridViewM64Inputs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewM64Inputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewM64Inputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnM64Index,
-            this.ColumnM64AnalogX,
-            this.ColumnM64AnalogY,
-            this.ColumnM64A,
-            this.ColumnM64B,
-            this.ColumnM64Z,
-            this.ColumnM64L,
-            this.ColumnM64R,
-            this.ColumnM64Start,
-            this.ColumnM64Cup,
-            this.ColumnM64Cright,
-            this.ColumnM64Cleft,
-            this.ColumnM64Cdown,
-            this.ColumnM64Dup,
-            this.ColumnM64Ddown,
-            this.ColumnM64Dleft,
-            this.ColumnM64Dright});
-            this.dataGridViewM64Inputs.ContextMenuStrip = this.contextMenuStripM64Editor;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewM64Inputs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewM64Inputs.EnableHeadersVisualStyles = false;
-            this.dataGridViewM64Inputs.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewM64Inputs.Margin = new System.Windows.Forms.Padding(0);
-            this.dataGridViewM64Inputs.Name = "dataGridViewM64Inputs";
-            this.dataGridViewM64Inputs.RowHeadersVisible = false;
-            this.dataGridViewM64Inputs.RowTemplate.Height = 20;
-            this.dataGridViewM64Inputs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridViewM64Inputs.Size = new System.Drawing.Size(643, 427);
-            this.dataGridViewM64Inputs.TabIndex = 2;
-            // 
-            // ColumnM64Index
-            // 
-            this.ColumnM64Index.DataPropertyName = "FrameIndex";
-            this.ColumnM64Index.FillWeight = 300F;
-            this.ColumnM64Index.HeaderText = "Frame";
-            this.ColumnM64Index.Name = "ColumnM64Index";
-            this.ColumnM64Index.ReadOnly = true;
-            this.ColumnM64Index.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ColumnM64AnalogX
-            // 
-            this.ColumnM64AnalogX.DataPropertyName = "X";
-            this.ColumnM64AnalogX.FillWeight = 200F;
-            this.ColumnM64AnalogX.HeaderText = "X";
-            this.ColumnM64AnalogX.Name = "ColumnM64AnalogX";
-            this.ColumnM64AnalogX.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ColumnM64AnalogY
-            // 
-            this.ColumnM64AnalogY.DataPropertyName = "Y";
-            this.ColumnM64AnalogY.FillWeight = 200F;
-            this.ColumnM64AnalogY.HeaderText = "Y";
-            this.ColumnM64AnalogY.Name = "ColumnM64AnalogY";
-            this.ColumnM64AnalogY.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ColumnM64A
-            // 
-            this.ColumnM64A.DataPropertyName = "A";
-            this.ColumnM64A.HeaderText = "A";
-            this.ColumnM64A.Name = "ColumnM64A";
-            this.ColumnM64A.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64B
-            // 
-            this.ColumnM64B.DataPropertyName = "B";
-            this.ColumnM64B.HeaderText = "B";
-            this.ColumnM64B.Name = "ColumnM64B";
-            this.ColumnM64B.ReadOnly = true;
-            this.ColumnM64B.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64Z
-            // 
-            this.ColumnM64Z.DataPropertyName = "Z";
-            this.ColumnM64Z.HeaderText = "Z";
-            this.ColumnM64Z.Name = "ColumnM64Z";
-            this.ColumnM64Z.ReadOnly = true;
-            this.ColumnM64Z.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64L
-            // 
-            this.ColumnM64L.DataPropertyName = "L";
-            this.ColumnM64L.HeaderText = "L";
-            this.ColumnM64L.Name = "ColumnM64L";
-            this.ColumnM64L.ReadOnly = true;
-            this.ColumnM64L.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64R
-            // 
-            this.ColumnM64R.DataPropertyName = "R";
-            this.ColumnM64R.HeaderText = "R";
-            this.ColumnM64R.Name = "ColumnM64R";
-            this.ColumnM64R.ReadOnly = true;
-            this.ColumnM64R.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64Start
-            // 
-            this.ColumnM64Start.DataPropertyName = "Start";
-            this.ColumnM64Start.HeaderText = "S";
-            this.ColumnM64Start.Name = "ColumnM64Start";
-            this.ColumnM64Start.ReadOnly = true;
-            this.ColumnM64Start.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64Cup
-            // 
-            this.ColumnM64Cup.DataPropertyName = "C_Up";
-            this.ColumnM64Cup.HeaderText = "C^";
-            this.ColumnM64Cup.Name = "ColumnM64Cup";
-            this.ColumnM64Cup.ReadOnly = true;
-            this.ColumnM64Cup.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64Cright
-            // 
-            this.ColumnM64Cright.DataPropertyName = "C_right";
-            this.ColumnM64Cright.HeaderText = "C>";
-            this.ColumnM64Cright.Name = "ColumnM64Cright";
-            this.ColumnM64Cright.ReadOnly = true;
-            this.ColumnM64Cright.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64Cleft
-            // 
-            this.ColumnM64Cleft.DataPropertyName = "C_Left";
-            this.ColumnM64Cleft.HeaderText = "C<";
-            this.ColumnM64Cleft.Name = "ColumnM64Cleft";
-            this.ColumnM64Cleft.ReadOnly = true;
-            this.ColumnM64Cleft.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64Cdown
-            // 
-            this.ColumnM64Cdown.DataPropertyName = "C_Down";
-            this.ColumnM64Cdown.HeaderText = "Cv";
-            this.ColumnM64Cdown.Name = "ColumnM64Cdown";
-            this.ColumnM64Cdown.ReadOnly = true;
-            this.ColumnM64Cdown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64Dup
-            // 
-            this.ColumnM64Dup.DataPropertyName = "D_Up";
-            this.ColumnM64Dup.HeaderText = "D^";
-            this.ColumnM64Dup.Name = "ColumnM64Dup";
-            this.ColumnM64Dup.ReadOnly = true;
-            this.ColumnM64Dup.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64Ddown
-            // 
-            this.ColumnM64Ddown.DataPropertyName = "D_Down";
-            this.ColumnM64Ddown.HeaderText = "Dv";
-            this.ColumnM64Ddown.Name = "ColumnM64Ddown";
-            this.ColumnM64Ddown.ReadOnly = true;
-            this.ColumnM64Ddown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64Dleft
-            // 
-            this.ColumnM64Dleft.DataPropertyName = "D_Left";
-            this.ColumnM64Dleft.HeaderText = "D<";
-            this.ColumnM64Dleft.Name = "ColumnM64Dleft";
-            this.ColumnM64Dleft.ReadOnly = true;
-            this.ColumnM64Dleft.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64Dright
-            // 
-            this.ColumnM64Dright.DataPropertyName = "D_Right";
-            this.ColumnM64Dright.HeaderText = "D>";
-            this.ColumnM64Dright.Name = "ColumnM64Dright";
-            this.ColumnM64Dright.ReadOnly = true;
-            this.ColumnM64Dright.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // contextMenuStripM64Editor
-            // 
-            this.contextMenuStripM64Editor.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.contextMenuStripM64Editor.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stripMenuItemM64InsertNewBefore,
-            this.stripMenuItemM64InsertNewAfter,
-            this.stripMenuItemM64Copy,
-            this.stripMenuItemM64PasteOnto,
-            this.stripMenuItemM64PasteBefore,
-            this.stripMenuItemM64PasteAfter});
-            this.contextMenuStripM64Editor.Name = "contextMenuStripEditor";
-            this.contextMenuStripM64Editor.Size = new System.Drawing.Size(168, 136);
-            // 
-            // stripMenuItemM64InsertNewBefore
-            // 
-            this.stripMenuItemM64InsertNewBefore.Name = "stripMenuItemM64InsertNewBefore";
-            this.stripMenuItemM64InsertNewBefore.Size = new System.Drawing.Size(167, 22);
-            this.stripMenuItemM64InsertNewBefore.Text = "Insert New Before";
-            // 
-            // stripMenuItemM64InsertNewAfter
-            // 
-            this.stripMenuItemM64InsertNewAfter.Name = "stripMenuItemM64InsertNewAfter";
-            this.stripMenuItemM64InsertNewAfter.Size = new System.Drawing.Size(167, 22);
-            this.stripMenuItemM64InsertNewAfter.Text = "Insert New After";
-            // 
-            // stripMenuItemM64Copy
-            // 
-            this.stripMenuItemM64Copy.Name = "stripMenuItemM64Copy";
-            this.stripMenuItemM64Copy.Size = new System.Drawing.Size(167, 22);
-            this.stripMenuItemM64Copy.Text = "Copy";
-            // 
-            // stripMenuItemM64PasteOnto
-            // 
-            this.stripMenuItemM64PasteOnto.Name = "stripMenuItemM64PasteOnto";
-            this.stripMenuItemM64PasteOnto.Size = new System.Drawing.Size(167, 22);
-            this.stripMenuItemM64PasteOnto.Text = "Paste Onto";
-            // 
-            // stripMenuItemM64PasteBefore
-            // 
-            this.stripMenuItemM64PasteBefore.Name = "stripMenuItemM64PasteBefore";
-            this.stripMenuItemM64PasteBefore.Size = new System.Drawing.Size(167, 22);
-            this.stripMenuItemM64PasteBefore.Text = "Paste Before";
-            // 
-            // stripMenuItemM64PasteAfter
-            // 
-            this.stripMenuItemM64PasteAfter.Name = "stripMenuItemM64PasteAfter";
-            this.stripMenuItemM64PasteAfter.Size = new System.Drawing.Size(167, 22);
-            this.stripMenuItemM64PasteAfter.Text = "Paste After";
-            // 
-            // tabPageM64Header
-            // 
-            this.tabPageM64Header.AutoScroll = true;
-            this.tabPageM64Header.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageM64Header.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPageM64Header.Controls.Add(this.propertyGridM64Header);
-            this.tabPageM64Header.Location = new System.Drawing.Point(4, 22);
-            this.tabPageM64Header.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPageM64Header.Name = "tabPageM64Header";
-            this.tabPageM64Header.Size = new System.Drawing.Size(645, 429);
-            this.tabPageM64Header.TabIndex = 2;
-            this.tabPageM64Header.Text = "Header";
-            // 
-            // propertyGridM64Header
-            // 
-            this.propertyGridM64Header.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.propertyGridM64Header.HelpVisible = false;
-            this.propertyGridM64Header.Location = new System.Drawing.Point(0, 0);
-            this.propertyGridM64Header.Name = "propertyGridM64Header";
-            this.propertyGridM64Header.Size = new System.Drawing.Size(643, 427);
-            this.propertyGridM64Header.TabIndex = 0;
-            this.propertyGridM64Header.ToolbarVisible = false;
-            // 
-            // tabPageM64Stats
-            // 
-            this.tabPageM64Stats.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageM64Stats.Location = new System.Drawing.Point(4, 22);
-            this.tabPageM64Stats.Name = "tabPageM64Stats";
-            this.tabPageM64Stats.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageM64Stats.Size = new System.Drawing.Size(645, 429);
-            this.tabPageM64Stats.TabIndex = 4;
-            this.tabPageM64Stats.Text = "Stats";
-            // 
             // groupBoxObjects
             // 
             this.groupBoxObjects.Controls.Add(this.comboBoxLabelMethod);
@@ -15692,6 +15692,17 @@ namespace STROOP
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMario)).EndInit();
             this.groupBoxMarioPos.ResumeLayout(false);
             this.groupBoxMarioPos.PerformLayout();
+            this.tabPageM64.ResumeLayout(false);
+            this.splitContainerM64.Panel1.ResumeLayout(false);
+            this.splitContainerM64.Panel1.PerformLayout();
+            this.splitContainerM64.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerM64)).EndInit();
+            this.splitContainerM64.ResumeLayout(false);
+            this.tabControlM64Details.ResumeLayout(false);
+            this.tabPageM64Inputs.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewM64Inputs)).EndInit();
+            this.contextMenuStripM64Editor.ResumeLayout(false);
+            this.tabPageM64Header.ResumeLayout(false);
             this.tabPageHud.ResumeLayout(false);
             this.splitContainerHud.Panel1.ResumeLayout(false);
             this.splitContainerHud.Panel1.PerformLayout();
@@ -16100,17 +16111,6 @@ namespace STROOP
             this.groupBoxGoto.PerformLayout();
             this.groupBoxRecording.ResumeLayout(false);
             this.groupBoxRecording.PerformLayout();
-            this.tabPageM64.ResumeLayout(false);
-            this.splitContainerM64.Panel1.ResumeLayout(false);
-            this.splitContainerM64.Panel1.PerformLayout();
-            this.splitContainerM64.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerM64)).EndInit();
-            this.splitContainerM64.ResumeLayout(false);
-            this.tabControlM64Details.ResumeLayout(false);
-            this.tabPageM64Inputs.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewM64Inputs)).EndInit();
-            this.contextMenuStripM64Editor.ResumeLayout(false);
-            this.tabPageM64Header.ResumeLayout(false);
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
@@ -17254,7 +17254,7 @@ namespace STROOP
         private TextBox textBoxM64Goto;
         private Button buttonM64SaveAs;
         private Button buttonM64Save;
-        private Button buttonM64Load;
+        private Button buttonM64Open;
         private DataGridView dataGridViewM64Inputs;
         private OpenFileDialog openFileDialogM64;
         private SaveFileDialog saveFileDialogM64;

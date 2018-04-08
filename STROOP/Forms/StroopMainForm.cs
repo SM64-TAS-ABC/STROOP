@@ -177,7 +177,7 @@ namespace STROOP
 
                 ButtonSave = buttonM64Save,
                 ButtonSaveAs = buttonM64SaveAs,
-                ButtonLoad = buttonM64Load,
+                ButtonOpen = buttonM64Open,
                 ButtonClose = buttonM64Close,
                 ButtonGoto = buttonM64Goto,
 
