@@ -216,7 +216,7 @@ namespace STROOP
             Config.CustomManager = new CustomManager(_watchVarControlList, tabPageCustom, watchVariablePanelCustom);
             Config.VarHackManager = new VarHackManager(tabPageVarHack, varHackPanel);
             Config.CameraHackManager = new CamHackManager(_camHackData, tabPageCamHack, watchVariablePanelCamHack);
-            Config.ObjectManager = new ObjectManager(_objectData, tabPageObjects, WatchVariablePanelObject);
+            Config.ObjectManager = new ObjectManager(_objectData, tabPageObject, WatchVariablePanelObject);
             Config.OptionsManager = new OptionsManager(tabPageOptions);
             Config.TestingManager = new TestingManager(tabPageTesting);
             Config.MemoryManager = new MemoryManager(tabPageMemory, watchVariablePanelMemory, _objectData);
@@ -372,7 +372,7 @@ namespace STROOP
 
                 DataModels.Update();
                 Config.ObjectSlotsManager.Update();
-                Config.ObjectManager.Update(tabControlMain.SelectedTab == tabPageObjects);
+                Config.ObjectManager.Update(tabControlMain.SelectedTab == tabPageObject);
                 Config.MarioManager.Update(tabControlMain.SelectedTab == tabPageMario);
                 Config.CameraManager.Update(tabControlMain.SelectedTab == tabPageCamera);
                 Config.HudManager.Update(tabControlMain.SelectedTab == tabPageHud);
@@ -540,45 +540,47 @@ namespace STROOP
             SplitContainer selectedTabSplitContainer = null;
             TabPage selectedTabPage = tabControlMain.SelectedTab;
 
-            if (selectedTabPage == tabPageObjects)
-                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerObject"] as SplitContainer;
+            if (selectedTabPage == tabPageObject)
+                selectedTabSplitContainer = splitContainerObject;
             else if (selectedTabPage == tabPageMario)
-                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerMario"] as SplitContainer;
+                selectedTabSplitContainer = splitContainerMario;
             else if (selectedTabPage == tabPageHud)
-                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerHud"] as SplitContainer;
+                selectedTabSplitContainer = splitContainerHud;
             else if (selectedTabPage == tabPageCamera)
-                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerCamera"] as SplitContainer;
+                selectedTabSplitContainer = splitContainerCamera;
             else if (selectedTabPage == tabPageTriangles)
-                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerTriangles"] as SplitContainer;
+                selectedTabSplitContainer = splitContainerTriangles;
             else if (selectedTabPage == tabPageInput)
-                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerInput"] as SplitContainer;
+                selectedTabSplitContainer = splitContainerInput;
             else if (selectedTabPage == tabPageFile)
-                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerFile"] as SplitContainer;
+                selectedTabSplitContainer = splitContainerFile;
             else if (selectedTabPage == tabPageCustom)
-                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerCustom"] as SplitContainer;
+                selectedTabSplitContainer = splitContainerCustom;
             else if (selectedTabPage == tabPageVarHack)
-                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerVarHack"] as SplitContainer;
+                selectedTabSplitContainer = splitContainerVarHack;
             else if (selectedTabPage == tabPagePu)
-                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerPu"] as SplitContainer;
+                selectedTabSplitContainer = splitContainerPu;
             else if (selectedTabPage == tabPageTas)
-                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerTas"] as SplitContainer;
+                selectedTabSplitContainer = splitContainerTas;
             else if (selectedTabPage == tabPageMisc)
-                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerMisc"] as SplitContainer;
+                selectedTabSplitContainer = splitContainerMisc;
             else if (selectedTabPage == tabPageDebug)
-                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerDebug"] as SplitContainer;
+                selectedTabSplitContainer = splitContainerDebug;
             else if (selectedTabPage == tabPageMap)
-                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerMap"] as SplitContainer;
+                selectedTabSplitContainer = splitContainerMap;
             else if (selectedTabPage == tabPageArea)
-                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerArea"] as SplitContainer;
+                selectedTabSplitContainer = splitContainerArea;
             else if (selectedTabPage == tabPageModel)
-                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerModel"] as SplitContainer;
+                selectedTabSplitContainer = splitContainerModel;
             else if (selectedTabPage == tabPageMemory)
-                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerMemory"] as SplitContainer;
+                selectedTabSplitContainer = splitContainerMemory;
             else if (selectedTabPage == tabPageHacks)
-                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerHacks"] as SplitContainer;
+                selectedTabSplitContainer = splitContainerHacks;
             else if (selectedTabPage == tabPageCamHack)
-                selectedTabSplitContainer = selectedTabPage.Controls["splitContainerCamHack"] as SplitContainer;
-        
+                selectedTabSplitContainer = splitContainerCamHack;
+            else if (selectedTabPage == tabPageM64)
+                selectedTabSplitContainer = splitContainerM64;
+
             return selectedTabSplitContainer;
         }
 

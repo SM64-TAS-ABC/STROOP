@@ -56,7 +56,7 @@ namespace STROOP
             this.comboBoxReadWriteMode = new System.Windows.Forms.ComboBox();
             this.splitContainerMain = new STROOP.BetterSplitContainer();
             this.tabControlMain = new System.Windows.Forms.TabControl();
-            this.tabPageObjects = new System.Windows.Forms.TabPage();
+            this.tabPageObject = new System.Windows.Forms.TabPage();
             this.splitContainerObject = new STROOP.BetterSplitContainer();
             this.panelObj = new System.Windows.Forms.Panel();
             this.buttonObjRelease = new STROOP.BinaryButton();
@@ -246,7 +246,7 @@ namespace STROOP
             this.buttonFullHp = new System.Windows.Forms.Button();
             this.watchVariablePanelHud = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageCamera = new System.Windows.Forms.TabPage();
-            this.SplitContainerCamera = new STROOP.BetterSplitContainer();
+            this.splitContainerCamera = new STROOP.BetterSplitContainer();
             this.buttonDisableFOVFunctions = new STROOP.BinaryButton();
             this.groupBoxCameraSphericalPos = new System.Windows.Forms.GroupBox();
             this.checkBoxCameraSphericalPosPivotOnFocus = new System.Windows.Forms.CheckBox();
@@ -1213,7 +1213,7 @@ namespace STROOP
             this.splitContainerMain.Panel2.SuspendLayout();
             this.splitContainerMain.SuspendLayout();
             this.tabControlMain.SuspendLayout();
-            this.tabPageObjects.SuspendLayout();
+            this.tabPageObject.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerObject)).BeginInit();
             this.splitContainerObject.Panel1.SuspendLayout();
             this.splitContainerObject.Panel2.SuspendLayout();
@@ -1254,10 +1254,10 @@ namespace STROOP
             this.panelHudBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHud)).BeginInit();
             this.tabPageCamera.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SplitContainerCamera)).BeginInit();
-            this.SplitContainerCamera.Panel1.SuspendLayout();
-            this.SplitContainerCamera.Panel2.SuspendLayout();
-            this.SplitContainerCamera.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCamera)).BeginInit();
+            this.splitContainerCamera.Panel1.SuspendLayout();
+            this.splitContainerCamera.Panel2.SuspendLayout();
+            this.splitContainerCamera.SuspendLayout();
             this.groupBoxCameraSphericalPos.SuspendLayout();
             this.panelCameraBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).BeginInit();
@@ -1825,7 +1825,7 @@ namespace STROOP
             this.tabControlMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControlMain.Controls.Add(this.tabPageObjects);
+            this.tabControlMain.Controls.Add(this.tabPageObject);
             this.tabControlMain.Controls.Add(this.tabPageMario);
             this.tabControlMain.Controls.Add(this.tabPageM64);
             this.tabControlMain.Controls.Add(this.tabPageHud);
@@ -1863,16 +1863,16 @@ namespace STROOP
             this.tabControlMain.Size = new System.Drawing.Size(923, 489);
             this.tabControlMain.TabIndex = 3;
             // 
-            // tabPageObjects
+            // tabPageObject
             // 
-            this.tabPageObjects.BackColor = System.Drawing.Color.Transparent;
-            this.tabPageObjects.Controls.Add(this.splitContainerObject);
-            this.tabPageObjects.Location = new System.Drawing.Point(4, 22);
-            this.tabPageObjects.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPageObjects.Name = "tabPageObjects";
-            this.tabPageObjects.Size = new System.Drawing.Size(915, 463);
-            this.tabPageObjects.TabIndex = 0;
-            this.tabPageObjects.Text = "Object";
+            this.tabPageObject.BackColor = System.Drawing.Color.Transparent;
+            this.tabPageObject.Controls.Add(this.splitContainerObject);
+            this.tabPageObject.Location = new System.Drawing.Point(4, 22);
+            this.tabPageObject.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageObject.Name = "tabPageObject";
+            this.tabPageObject.Size = new System.Drawing.Size(915, 463);
+            this.tabPageObject.TabIndex = 0;
+            this.tabPageObject.Text = "Object";
             // 
             // splitContainerObject
             // 
@@ -3980,7 +3980,7 @@ namespace STROOP
             // 
             // tabPageCamera
             // 
-            this.tabPageCamera.Controls.Add(this.SplitContainerCamera);
+            this.tabPageCamera.Controls.Add(this.splitContainerCamera);
             this.tabPageCamera.Location = new System.Drawing.Point(4, 22);
             this.tabPageCamera.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageCamera.Name = "tabPageCamera";
@@ -3988,32 +3988,32 @@ namespace STROOP
             this.tabPageCamera.TabIndex = 7;
             this.tabPageCamera.Text = "Camera";
             // 
-            // SplitContainerCamera
+            // splitContainerCamera
             // 
-            this.SplitContainerCamera.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SplitContainerCamera.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SplitContainerCamera.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.SplitContainerCamera.Location = new System.Drawing.Point(0, 0);
-            this.SplitContainerCamera.Margin = new System.Windows.Forms.Padding(0);
-            this.SplitContainerCamera.Name = "SplitContainerCamera";
+            this.splitContainerCamera.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerCamera.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerCamera.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerCamera.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerCamera.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerCamera.Name = "splitContainerCamera";
             // 
-            // SplitContainerCamera.Panel1
+            // splitContainerCamera.Panel1
             // 
-            this.SplitContainerCamera.Panel1.AutoScroll = true;
-            this.SplitContainerCamera.Panel1.Controls.Add(this.buttonDisableFOVFunctions);
-            this.SplitContainerCamera.Panel1.Controls.Add(this.groupBoxCameraSphericalPos);
-            this.SplitContainerCamera.Panel1.Controls.Add(this.panelCameraBorder);
-            this.SplitContainerCamera.Panel1.Controls.Add(this.groupBoxCameraPos);
-            this.SplitContainerCamera.Panel1MinSize = 0;
+            this.splitContainerCamera.Panel1.AutoScroll = true;
+            this.splitContainerCamera.Panel1.Controls.Add(this.buttonDisableFOVFunctions);
+            this.splitContainerCamera.Panel1.Controls.Add(this.groupBoxCameraSphericalPos);
+            this.splitContainerCamera.Panel1.Controls.Add(this.panelCameraBorder);
+            this.splitContainerCamera.Panel1.Controls.Add(this.groupBoxCameraPos);
+            this.splitContainerCamera.Panel1MinSize = 0;
             // 
-            // SplitContainerCamera.Panel2
+            // splitContainerCamera.Panel2
             // 
-            this.SplitContainerCamera.Panel2.Controls.Add(this.watchVariablePanelCamera);
-            this.SplitContainerCamera.Panel2MinSize = 0;
-            this.SplitContainerCamera.Size = new System.Drawing.Size(915, 463);
-            this.SplitContainerCamera.SplitterDistance = 207;
-            this.SplitContainerCamera.SplitterWidth = 1;
-            this.SplitContainerCamera.TabIndex = 31;
+            this.splitContainerCamera.Panel2.Controls.Add(this.watchVariablePanelCamera);
+            this.splitContainerCamera.Panel2MinSize = 0;
+            this.splitContainerCamera.Size = new System.Drawing.Size(915, 463);
+            this.splitContainerCamera.SplitterDistance = 207;
+            this.splitContainerCamera.SplitterWidth = 1;
+            this.splitContainerCamera.TabIndex = 31;
             // 
             // buttonDisableFOVFunctions
             // 
@@ -5391,7 +5391,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 329F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 330F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -11220,7 +11220,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(153, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(136, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -11252,7 +11252,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(147, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(130, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -11308,7 +11308,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(147, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(130, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -11754,7 +11754,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 709;
+            this.splitContainerMemory.SplitterDistance = 712;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11778,7 +11778,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(593, 429);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(596, 429);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -11881,7 +11881,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(197, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(194, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPageHacks
@@ -15660,7 +15660,7 @@ namespace STROOP
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
             this.splitContainerMain.ResumeLayout(false);
             this.tabControlMain.ResumeLayout(false);
-            this.tabPageObjects.ResumeLayout(false);
+            this.tabPageObject.ResumeLayout(false);
             this.splitContainerObject.Panel1.ResumeLayout(false);
             this.splitContainerObject.Panel1.PerformLayout();
             this.splitContainerObject.Panel2.ResumeLayout(false);
@@ -15712,10 +15712,10 @@ namespace STROOP
             this.panelHudBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHud)).EndInit();
             this.tabPageCamera.ResumeLayout(false);
-            this.SplitContainerCamera.Panel1.ResumeLayout(false);
-            this.SplitContainerCamera.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SplitContainerCamera)).EndInit();
-            this.SplitContainerCamera.ResumeLayout(false);
+            this.splitContainerCamera.Panel1.ResumeLayout(false);
+            this.splitContainerCamera.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCamera)).EndInit();
+            this.splitContainerCamera.ResumeLayout(false);
             this.groupBoxCameraSphericalPos.ResumeLayout(false);
             this.groupBoxCameraSphericalPos.PerformLayout();
             this.panelCameraBorder.ResumeLayout(false);
@@ -16128,7 +16128,7 @@ namespace STROOP
         private BetterSplitContainer splitContainerMain;
         private System.Windows.Forms.CheckBox checkBoxObjLockLabels;
         private System.Windows.Forms.TabControl tabControlMain;
-        private System.Windows.Forms.TabPage tabPageObjects;
+        private System.Windows.Forms.TabPage tabPageObject;
         private System.Windows.Forms.Label labelObjSlotIndValue;
         private System.Windows.Forms.Label labelObjSlotPosValue;
         private System.Windows.Forms.Label labelObjBhvValue;
@@ -16502,7 +16502,7 @@ namespace STROOP
         private Label labelGotoAbovePrefix;
         private BetterTextbox textBoxGotoAbove;
         private BetterSplitContainer splitContainerFile;
-        private BetterSplitContainer SplitContainerCamera;
+        private BetterSplitContainer splitContainerCamera;
         private BetterSplitContainer splitContainerTriangles;
         private BetterSplitContainer splitContainerHud;
         private BetterSplitContainer splitContainerMario;
