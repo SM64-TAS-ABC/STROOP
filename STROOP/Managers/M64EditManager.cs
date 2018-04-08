@@ -25,6 +25,7 @@ namespace STROOP.Managers
             _gui.ButtonSave.Click += (sender, e) => _m64.Save();
             _gui.ButtonSaveAs.Click += ButtonSaveAs_Click;
             _gui.ButtonLoad.Click += ButtonLoad_Click;
+            _gui.ButtonClose.Click += ButtonClose_Click;
             _gui.ButtonGoto.Click += ButtonGoto_Click;
 
             _gui.ToolStripMenuItemInsertNewAfter.Click += ToolStripMenuItemInsertNewAfter_Click;
@@ -153,6 +154,13 @@ namespace STROOP.Managers
             _gui.DataGridViewEditor.DataSource = _m64.Inputs;
             UpdateTableSettings();
             _gui.PropertyGridHeader.SelectedObject = _m64.Header;
+            _gui.DataGridViewEditor.Refresh();
+            _gui.PropertyGridHeader.Refresh();
+        }
+
+        private void ButtonClose_Click(object sender, EventArgs e)
+        {
+            _m64.Close();
             _gui.DataGridViewEditor.Refresh();
             _gui.PropertyGridHeader.Refresh();
         }

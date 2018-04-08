@@ -176,7 +176,9 @@ namespace STROOP
                 ButtonSave = buttonM64Save,
                 ButtonSaveAs = buttonM64SaveAs,
                 ButtonLoad = buttonM64Load,
+                ButtonClose = buttonM64Close,
                 ButtonGoto = buttonM64Goto,
+
                 ContextMenuStripEditor = contextMenuStripM64Editor,
                 ToolStripMenuItemInsertNewAfter = stripMenuItemM64InsertNewAfter,
                 ToolStripMenuItemInsertNewBefore = stripMenuItemM64InsertNewBefore,

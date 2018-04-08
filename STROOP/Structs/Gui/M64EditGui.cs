@@ -12,6 +12,7 @@ namespace STROOP.Structs.Gui
         public Button ButtonSave;
         public Button ButtonSaveAs;
         public Button ButtonLoad;
+        public Button ButtonClose;
         public DataGridView DataGridViewEditor;
         public PropertyGrid PropertyGridHeader;
 
