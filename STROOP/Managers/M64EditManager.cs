@@ -10,15 +10,15 @@ using System.Windows.Forms;
 
 namespace STROOP.Managers
 {
-    public class M64EditManager
+    public class M64Manager
     {
         bool _displaySaveChangesOnOpen = false;
         M64File _m64;
         int _lastRow = -1;
 
-        M64EditGui _gui;
+        M64Gui _gui;
 
-        public M64EditManager(M64EditGui gui)
+        public M64Manager(M64Gui gui)
         {
             _gui = gui;
 
@@ -35,11 +35,11 @@ namespace STROOP.Managers
             _gui.ToolStripMenuItemPasteBefore.Click += ToolStripMenuItemPasteBefore_Click;
             _gui.ToolStripMenuItemPasteAfter.Click += ToolStripMenuItemPasteAfter_Click;
 
-            _gui.DataGridViewEditor.MouseClick += DataGridViewEditor_MouseClick;
-            _gui.DataGridViewEditor.DataError += (sender, e) => _gui.DataGridViewEditor.CancelEdit();
+            _gui.DataGridViewInputs.MouseClick += DataGridViewEditor_MouseClick;
+            _gui.DataGridViewInputs.DataError += (sender, e) => _gui.DataGridViewInputs.CancelEdit();
 
             _m64 = new M64File();
-            _gui.DataGridViewEditor.DataSource = _m64.Inputs;
+            _gui.DataGridViewInputs.DataSource = _m64.Inputs;
             UpdateTableSettings();
             _gui.PropertyGridHeader.SelectedObject = _m64.Header;
             _gui.PropertyGridHeader.Refresh();
@@ -49,12 +49,12 @@ namespace STROOP.Managers
         {
             if (e.Button == MouseButtons.Right)
             {
-                _lastRow = _gui.DataGridViewEditor.HitTest(e.X, e.Y).RowIndex;
+                _lastRow = _gui.DataGridViewInputs.HitTest(e.X, e.Y).RowIndex;
 
                 if (_lastRow < 0)
                     return;
 
-                _gui.ContextMenuStripEditor.Show(_gui.DataGridViewEditor, new Point(e.X, e.Y));
+                _gui.ContextMenuStripEditor.Show(_gui.DataGridViewInputs, new Point(e.X, e.Y));
 
             }
         }
@@ -63,10 +63,10 @@ namespace STROOP.Managers
         {
             int value;
             if (!int.TryParse(_gui.TextBoxGoto.Text, out value) || value < 0
-                || value >= _gui.DataGridViewEditor.Rows.Count)
+                || value >= _gui.DataGridViewInputs.Rows.Count)
                 return;
 
-            _gui.DataGridViewEditor.FirstDisplayedScrollingRowIndex = value;
+            _gui.DataGridViewInputs.FirstDisplayedScrollingRowIndex = value;
         }
 
         private void ToolStripMenuItemPasteAfter_Click(object sender, EventArgs e)
@@ -82,7 +82,7 @@ namespace STROOP.Managers
         private void ToolStripMenuItemPasteOnto_Click(object sender, EventArgs e)
         {
             var rowIndices = new List<int>();
-            foreach (DataGridViewRow row in _gui.DataGridViewEditor.SelectedRows)
+            foreach (DataGridViewRow row in _gui.DataGridViewInputs.SelectedRows)
                 rowIndices.Add(row.Index);
 
             _m64.PasteOnto(rowIndices);
@@ -91,7 +91,7 @@ namespace STROOP.Managers
         private void ToolStripMenuItemCopy_Click(object sender, EventArgs e)
         {
             var rowIndices = new List<int>();
-            foreach (DataGridViewRow row in _gui.DataGridViewEditor.SelectedRows)
+            foreach (DataGridViewRow row in _gui.DataGridViewInputs.SelectedRows)
                 rowIndices.Add(row.Index);
 
             _m64.CopyRows(rowIndices);
@@ -103,8 +103,8 @@ namespace STROOP.Managers
                 return;
 
             _m64.InsertNew(_lastRow);
-            _gui.DataGridViewEditor.ClearSelection();
-            _gui.DataGridViewEditor.Rows[_lastRow].Selected = true;
+            _gui.DataGridViewInputs.ClearSelection();
+            _gui.DataGridViewInputs.Rows[_lastRow].Selected = true;
         }
 
         private void ToolStripMenuItemInsertNewAfter_Click(object sender, EventArgs e)
@@ -113,8 +113,8 @@ namespace STROOP.Managers
                 return;
 
             _m64.InsertNew(_lastRow + 1);
-            _gui.DataGridViewEditor.ClearSelection();
-            _gui.DataGridViewEditor.Rows[_lastRow].Selected = true;
+            _gui.DataGridViewInputs.ClearSelection();
+            _gui.DataGridViewInputs.Rows[_lastRow].Selected = true;
         }
 
         private void ButtonSaveAs_Click(object sender, EventArgs e)
@@ -138,7 +138,7 @@ namespace STROOP.Managers
             string filePath = _gui.OpenFileDialogM64.FileName;
             string fileName = _gui.OpenFileDialogM64.SafeFileName;
 
-            _gui.DataGridViewEditor.DataSource = null;
+            _gui.DataGridViewInputs.DataSource = null;
             _gui.PropertyGridHeader.SelectedObject = null;
             bool success = _m64.LoadFile(filePath, fileName);
             if (!success)
@@ -151,17 +151,17 @@ namespace STROOP.Managers
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
-            _gui.DataGridViewEditor.DataSource = _m64.Inputs;
+            _gui.DataGridViewInputs.DataSource = _m64.Inputs;
             UpdateTableSettings();
             _gui.PropertyGridHeader.SelectedObject = _m64.Header;
-            _gui.DataGridViewEditor.Refresh();
+            _gui.DataGridViewInputs.Refresh();
             _gui.PropertyGridHeader.Refresh();
         }
 
         private void ButtonClose_Click(object sender, EventArgs e)
         {
             _m64.Close();
-            _gui.DataGridViewEditor.Refresh();
+            _gui.DataGridViewInputs.Refresh();
             _gui.PropertyGridHeader.Refresh();
         }
 
@@ -176,7 +176,7 @@ namespace STROOP.Managers
 
         private void UpdateTableSettings()
         {
-            DataGridView table = _gui.DataGridViewEditor;
+            DataGridView table = _gui.DataGridViewInputs;
             if (table.Columns.Count != M64InputFrame.ColumnParameters.Count)
                 throw new ArgumentOutOfRangeException();
 

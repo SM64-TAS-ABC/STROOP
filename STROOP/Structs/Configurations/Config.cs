@@ -80,6 +80,6 @@ namespace STROOP.Structs.Configurations
         public static MemoryManager MemoryManager;
         public static ScriptManager ScriptManager;
         public static GfxManager GfxManager;
-        public static M64EditManager M64EditManager;
+        public static M64Manager M64Manager;
     }
 }

@@ -171,7 +171,7 @@ namespace STROOP
             mapGui.ComboBoxMapColorMethod = comboBoxMapColorMethod;
 
             // 
-            M64EditGui m64EditGui = new M64EditGui()
+            M64Gui m64Gui = new M64Gui()
             {
                 LabelFileName = labelM64FileName,
 
@@ -191,7 +191,7 @@ namespace STROOP
                 TextBoxGoto = textBoxM64Goto,
                 OpenFileDialogM64 = openFileDialogM64,
                 SaveFileDialogM64 = saveFileDialogM64,
-                DataGridViewEditor = dataGridViewM64Editor,
+                DataGridViewInputs = dataGridViewM64Inputs,
                 PropertyGridHeader = propertyGridM64Header,
             };
 
@@ -227,7 +227,7 @@ namespace STROOP
             Config.DecompilerManager = new DecompilerManager(tabPageDecompiler);
             Config.InjectionManager = new InjectionManager(_scriptParser, checkBoxUseRomHack);
             Config.HackManager = new HackManager(_romHacks, Config.ObjectAssociations.SpawnHacks, tabPageHacks);
-            Config.M64EditManager = new M64EditManager(m64EditGui);
+            Config.M64Manager = new M64Manager(m64Gui);
 
             // Create Object Slots
             _slotManagerGui.TabControl = tabControlMain;
@@ -393,7 +393,7 @@ namespace STROOP
                 Config.TestingManager.Update(tabControlMain.SelectedTab == tabPageTesting);
                 Config.GfxManager.Update(tabControlMain.SelectedTab == tabPageGfx);
                 Config.MemoryManager.Update(tabControlMain.SelectedTab == tabPageMemory);
-                Config.M64EditManager.Update(tabControlMain.SelectedTab == tabPageM64Edit);
+                Config.M64Manager.Update(tabControlMain.SelectedTab == tabPageM64);
                 Config.MapManager?.Update();
                 Config.ModelManager?.Update();
                 Config.InjectionManager.Update();

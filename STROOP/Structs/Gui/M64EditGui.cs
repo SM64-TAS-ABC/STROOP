@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace STROOP.Structs.Gui
 {
-    public class M64EditGui
+    public class M64Gui
     {
         public Label LabelFileName;
 
@@ -15,7 +15,7 @@ namespace STROOP.Structs.Gui
         public Button ButtonSaveAs;
         public Button ButtonLoad;
         public Button ButtonClose;
-        public DataGridView DataGridViewEditor;
+        public DataGridView DataGridViewInputs;
         public PropertyGrid PropertyGridHeader;
 
         public ContextMenuStrip ContextMenuStripEditor;
