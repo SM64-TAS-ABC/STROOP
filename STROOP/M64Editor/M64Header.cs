@@ -293,5 +293,39 @@ namespace STROOP.M64Editor
                     throw new ArgumentOutOfRangeException();
             }
         }
+
+        public void Clear()
+        {
+            Inputs = 0;
+            Vis = 0;
+            Rerecords = 0;
+            MovieStartType = MovieStartTypeEnum.FromStart;
+            Fps = 0;
+            RomName = null;
+            CountryCode = 0;
+            Cr32 = 0;
+            Author = null;
+            Description = null;
+            NumControllers = 0;
+            Controller1Present = false;
+            Controller2Present = false;
+            Controller3Present = false;
+            Controller4Present = false;
+            Controller1MemPak = false;
+            Controller2MemPak = false;
+            Controller3MemPak = false;
+            Controller4MemPak = false;
+            Controller1RumblePak = false;
+            Controller2RumblePak = false;
+            Controller3RumblePak = false;
+            Controller4RumblePak = false;
+            VideoPlugin = null;
+            SoundPlugin = null;
+            InputPlugin = null;
+            RspPlugin = null;
+            Signature = 0;
+            VersionNumber = 0;
+            Uid = 0;
+        }
     }
 }

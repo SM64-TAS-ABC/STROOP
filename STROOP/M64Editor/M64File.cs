@@ -95,6 +95,14 @@ namespace STROOP.M64Editor
             return true;
         }
 
+        public void Close()
+        {
+            CurrentFilePath = null;
+            CurrentFileName = null;
+            Header.Clear();
+            Inputs.Clear();
+        }
+
         public void InsertNew(int index)
         {
             for (int i = index; i < Inputs.Count; i++)
