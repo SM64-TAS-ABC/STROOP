@@ -3822,10 +3822,11 @@ namespace STROOP
             // tabPageM64Stats
             // 
             this.tabPageM64Stats.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageM64Stats.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabPageM64Stats.Controls.Add(this.propertyGridM64Stats);
             this.tabPageM64Stats.Location = new System.Drawing.Point(4, 22);
+            this.tabPageM64Stats.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageM64Stats.Name = "tabPageM64Stats";
-            this.tabPageM64Stats.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageM64Stats.Size = new System.Drawing.Size(645, 429);
             this.tabPageM64Stats.TabIndex = 4;
             this.tabPageM64Stats.Text = "Stats";
@@ -15634,9 +15635,10 @@ namespace STROOP
             // 
             this.propertyGridM64Stats.Dock = System.Windows.Forms.DockStyle.Fill;
             this.propertyGridM64Stats.HelpVisible = false;
-            this.propertyGridM64Stats.Location = new System.Drawing.Point(3, 3);
+            this.propertyGridM64Stats.Location = new System.Drawing.Point(0, 0);
+            this.propertyGridM64Stats.Margin = new System.Windows.Forms.Padding(0);
             this.propertyGridM64Stats.Name = "propertyGridM64Stats";
-            this.propertyGridM64Stats.Size = new System.Drawing.Size(639, 423);
+            this.propertyGridM64Stats.Size = new System.Drawing.Size(643, 427);
             this.propertyGridM64Stats.TabIndex = 1;
             this.propertyGridM64Stats.ToolbarVisible = false;
             // 
