@@ -34,8 +34,8 @@ namespace STROOP
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
@@ -3475,7 +3475,7 @@ namespace STROOP
             // 
             // buttonM64Goto
             // 
-            this.buttonM64Goto.Location = new System.Drawing.Point(138, 211);
+            this.buttonM64Goto.Location = new System.Drawing.Point(75, 95);
             this.buttonM64Goto.Margin = new System.Windows.Forms.Padding(2);
             this.buttonM64Goto.Name = "buttonM64Goto";
             this.buttonM64Goto.Size = new System.Drawing.Size(63, 22);
@@ -3485,15 +3485,15 @@ namespace STROOP
             // 
             // textBoxM64Goto
             // 
-            this.textBoxM64Goto.Location = new System.Drawing.Point(37, 213);
+            this.textBoxM64Goto.Location = new System.Drawing.Point(8, 97);
             this.textBoxM64Goto.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxM64Goto.Name = "textBoxM64Goto";
-            this.textBoxM64Goto.Size = new System.Drawing.Size(68, 20);
+            this.textBoxM64Goto.Size = new System.Drawing.Size(63, 20);
             this.textBoxM64Goto.TabIndex = 11;
             // 
             // buttonM64Close
             // 
-            this.buttonM64Close.Location = new System.Drawing.Point(14, 168);
+            this.buttonM64Close.Location = new System.Drawing.Point(8, 54);
             this.buttonM64Close.Margin = new System.Windows.Forms.Padding(2);
             this.buttonM64Close.Name = "buttonM64Close";
             this.buttonM64Close.Size = new System.Drawing.Size(63, 22);
@@ -3503,7 +3503,7 @@ namespace STROOP
             // 
             // buttonM64Open
             // 
-            this.buttonM64Open.Location = new System.Drawing.Point(14, 142);
+            this.buttonM64Open.Location = new System.Drawing.Point(8, 28);
             this.buttonM64Open.Margin = new System.Windows.Forms.Padding(2);
             this.buttonM64Open.Name = "buttonM64Open";
             this.buttonM64Open.Size = new System.Drawing.Size(63, 22);
@@ -3513,7 +3513,7 @@ namespace STROOP
             // 
             // buttonM64SaveAs
             // 
-            this.buttonM64SaveAs.Location = new System.Drawing.Point(138, 151);
+            this.buttonM64SaveAs.Location = new System.Drawing.Point(75, 54);
             this.buttonM64SaveAs.Margin = new System.Windows.Forms.Padding(2);
             this.buttonM64SaveAs.Name = "buttonM64SaveAs";
             this.buttonM64SaveAs.Size = new System.Drawing.Size(63, 22);
@@ -3523,7 +3523,7 @@ namespace STROOP
             // 
             // buttonM64Save
             // 
-            this.buttonM64Save.Location = new System.Drawing.Point(117, 104);
+            this.buttonM64Save.Location = new System.Drawing.Point(75, 28);
             this.buttonM64Save.Margin = new System.Windows.Forms.Padding(2);
             this.buttonM64Save.Name = "buttonM64Save";
             this.buttonM64Save.Size = new System.Drawing.Size(63, 22);
@@ -3562,14 +3562,14 @@ namespace STROOP
             this.dataGridViewM64Inputs.AllowUserToResizeColumns = false;
             this.dataGridViewM64Inputs.AllowUserToResizeRows = false;
             this.dataGridViewM64Inputs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewM64Inputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewM64Inputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnM64Index,
@@ -3590,14 +3590,14 @@ namespace STROOP
             this.ColumnM64Dleft,
             this.ColumnM64Dright});
             this.dataGridViewM64Inputs.ContextMenuStrip = this.contextMenuStripM64Editor;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewM64Inputs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewM64Inputs.EnableHeadersVisualStyles = false;
             this.dataGridViewM64Inputs.Location = new System.Drawing.Point(0, 0);
@@ -5391,7 +5391,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 330F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 331F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -11220,7 +11220,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(136, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(119, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -11252,7 +11252,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(130, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(113, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -11308,7 +11308,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(130, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(113, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -11754,7 +11754,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 712;
+            this.splitContainerMemory.SplitterDistance = 715;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11778,7 +11778,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(596, 429);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(599, 429);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -11881,7 +11881,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(194, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(191, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPageHacks
