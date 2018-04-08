@@ -118,21 +118,21 @@ namespace STROOP.M64Editor
             set { SetNumPreses(value, input => input.D_Right = false); }
         }
 
-        [Category("Misc"), DisplayName("\u200BLag Frames")]
-        public int LagFrames
+        [Category("Misc"), DisplayName("\u200BLag VIs")]
+        public int LagVis
         {
-            get { return _header.Vis - 2 * _header.Inputs; }
+            get { return _header.NumVis - 2 * _header.NumInputs; }
             set { }
         }
 
-        [Category("Misc"), DisplayName("Garbage Frames")]
-        public int GarbageFrames
+        [Category("Misc"), DisplayName("Num Unused Inputs")]
+        public int NumUnusedInputs
         {
             get
             {
                 if (_rawBytes == null) return 0;
                 int rawInputCount = (_rawBytes.Length - M64Config.HeaderSize) / 4;
-                int headerInputCount = _header.Inputs;
+                int headerInputCount = _header.NumInputs;
                 return rawInputCount - headerInputCount;
             }
             set { }

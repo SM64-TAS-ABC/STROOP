@@ -70,7 +70,7 @@ namespace STROOP.M64Editor
             Header.LoadBytes(headerBytes);
             var frameBytes = fileBytes.Skip(M64Config.HeaderSize).ToArray();
 
-            int numOfInputs = Header.Inputs;
+            int numOfInputs = Header.NumInputs;
 
             for (int i = 0; i < frameBytes.Length && i < 4 * numOfInputs; i += 4)
             {

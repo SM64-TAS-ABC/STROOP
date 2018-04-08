@@ -16,16 +16,16 @@ namespace STROOP.M64Editor
         public enum MovieStartTypeEnum { FromStart, FromSnapshot }
 
         // 018 4-byte little-endian unsigned int: number of input samples for any controllers
-        [Category("\u200B\u200B\u200B\u200B\u200BMain"), DisplayName("\u200B\u200B\u200B\u200BInputs")]
-        public int Inputs { get; set; }
+        [Category("\u200B\u200B\u200B\u200B\u200BMain"), DisplayName("\u200B\u200B\u200B\u200BNum Inputs")]
+        public int NumInputs { get; set; }
 
         // 00C 4-byte little-endian unsigned int: number of frames(vertical interrupts)
-        [Category("\u200B\u200B\u200B\u200B\u200BMain"), DisplayName("\u200B\u200B\u200BVIs")]
-        public int Vis { get; set; }
+        [Category("\u200B\u200B\u200B\u200B\u200BMain"), DisplayName("\u200B\u200B\u200BNum VIs")]
+        public int NumVis { get; set; }
 
         // 010 4-byte little-endian unsigned int: rerecord count
-        [CategoryAttribute("\u200B\u200B\u200B\u200B\u200BMain"), DisplayName("\u200B\u200BRerecords")]
-        public int Rerecords { get; set; }
+        [CategoryAttribute("\u200B\u200B\u200B\u200B\u200BMain"), DisplayName("\u200B\u200BNum Rerecords")]
+        public int NumRerecords { get; set; }
 
         // 01C 2-byte unsigned int: movie start type
         // value 1: movie begins from snapshot(the snapshot will be loaded from an externalfile
@@ -168,11 +168,11 @@ namespace STROOP.M64Editor
             Signature = BitConverter.ToUInt32(bytes, 0x000);
             VersionNumber = BitConverter.ToUInt32(bytes, 0x004);
             Uid = BitConverter.ToInt32(bytes, 0x008);
-            Vis = BitConverter.ToInt32(bytes, 0x00C);
-            Rerecords = BitConverter.ToInt32(bytes, 0x010);
+            NumVis = BitConverter.ToInt32(bytes, 0x00C);
+            NumRerecords = BitConverter.ToInt32(bytes, 0x010);
             Fps = bytes[0x014];
             NumControllers = bytes[0x015];
-            Inputs = BitConverter.ToInt32(bytes, 0x018);
+            NumInputs = BitConverter.ToInt32(bytes, 0x018);
 
             short movieStartTypeShort = BitConverter.ToInt16(bytes, 0x01C);
             MovieStartType = ConvertShortToMovieStartTypeEnum(movieStartTypeShort);
@@ -211,12 +211,12 @@ namespace STROOP.M64Editor
             bytes.AddRange(TypeUtilities.GetBytes(Signature));
             bytes.AddRange(TypeUtilities.GetBytes(VersionNumber));
             bytes.AddRange(TypeUtilities.GetBytes(Uid));
-            bytes.AddRange(TypeUtilities.GetBytes(Vis));
-            bytes.AddRange(TypeUtilities.GetBytes(Rerecords));
+            bytes.AddRange(TypeUtilities.GetBytes(NumVis));
+            bytes.AddRange(TypeUtilities.GetBytes(NumRerecords));
             bytes.AddRange(TypeUtilities.GetBytes(Fps));
             bytes.AddRange(TypeUtilities.GetBytes(NumControllers));
             bytes.AddRange(new byte[2]);
-            bytes.AddRange(TypeUtilities.GetBytes(Inputs));
+            bytes.AddRange(TypeUtilities.GetBytes(NumInputs));
             bytes.AddRange(TypeUtilities.GetBytes(ConvertMovieStartTypeEnumToShort(MovieStartType)));
             bytes.AddRange(new byte[2]);
             bytes.AddRange(TypeUtilities.GetBytes(GetControllerFlagsValue()));
@@ -294,9 +294,9 @@ namespace STROOP.M64Editor
 
         public void Clear()
         {
-            Inputs = 0;
-            Vis = 0;
-            Rerecords = 0;
+            NumInputs = 0;
+            NumVis = 0;
+            NumRerecords = 0;
             MovieStartType = MovieStartTypeEnum.FromStart;
             Fps = 0;
             RomName = null;
