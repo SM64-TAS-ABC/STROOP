@@ -56,16 +56,16 @@ namespace STROOP.M64Editor
         // bit 8: controller 1 has rumblepak
         // +1..3 for controllers 2..4.
         public bool Controller1Present;
-        public bool Controller1MemPak;
-        public bool Controller1RumblePak;
         public bool Controller2Present;
-        public bool Controller2MemPak;
-        public bool Controller2RumblePak;
         public bool Controller3Present;
-        public bool Controller3MemPak;
-        public bool Controller3RumblePak;
         public bool Controller4Present;
+        public bool Controller1MemPak;
+        public bool Controller2MemPak;
+        public bool Controller3MemPak;
         public bool Controller4MemPak;
+        public bool Controller1RumblePak;
+        public bool Controller2RumblePak;
+        public bool Controller3RumblePak;
         public bool Controller4RumblePak;
 
         // 024 160 bytes: reserved, should be 0
@@ -103,7 +103,39 @@ namespace STROOP.M64Editor
         {
             if (bytes.Length != HeaderSize) throw new ArgumentOutOfRangeException();
 
+            Signature = BitConverter.ToUInt32(bytes, 0x000);
+            VersionNumber = BitConverter.ToUInt32(bytes, 0x004);
+            Uid = BitConverter.ToInt32(bytes, 0x008);
+            Vis = BitConverter.ToInt32(bytes, 0x00C);
+            Rerecords = BitConverter.ToInt32(bytes, 0x010);
+            Fps = bytes[0x014];
+            NumControllers = bytes[0x015];
+            Inputs = BitConverter.ToInt32(bytes, 0x018);
+            MovieStartType = BitConverter.ToInt16(bytes, 0x01C);
 
+            uint controllerFlagsValue = BitConverter.ToUInt16(bytes, 0x020);
+            Controller1Present = (controllerFlagsValue & (1 << 0)) != 0;
+            Controller2Present = (controllerFlagsValue & (1 << 1)) != 0;
+            Controller3Present = (controllerFlagsValue & (1 << 2)) != 0;
+            Controller4Present = (controllerFlagsValue & (1 << 3)) != 0;
+            Controller1MemPak = (controllerFlagsValue & (1 << 4)) != 0;
+            Controller2MemPak = (controllerFlagsValue & (1 << 5)) != 0;
+            Controller3MemPak = (controllerFlagsValue & (1 << 6)) != 0;
+            Controller4MemPak = (controllerFlagsValue & (1 << 7)) != 0;
+            Controller1RumblePak = (controllerFlagsValue & (1 << 8)) != 0;
+            Controller2RumblePak = (controllerFlagsValue & (1 << 9)) != 0;
+            Controller3RumblePak = (controllerFlagsValue & (1 << 10)) != 0;
+            Controller4RumblePak = (controllerFlagsValue & (1 << 11)) != 0;
+
+            RomName = Encoding.ASCII.GetString(bytes, 0x0C4, 32).Replace("\0", "");
+            Cr32 = BitConverter.ToUInt32(bytes, 0x0E4);
+            CountryCode = BitConverter.ToUInt16(bytes, 0x0E8);
+            VideoPlugin = Encoding.ASCII.GetString(bytes, 0x122, 64).Replace("\0", "");
+            SoundPlugin = Encoding.ASCII.GetString(bytes, 0x162, 64).Replace("\0", "");
+            InputPlugin = Encoding.ASCII.GetString(bytes, 0x1A2, 64).Replace("\0", "");
+            RspPlugin = Encoding.ASCII.GetString(bytes, 0x1E2, 64).Replace("\0", "");
+            Author = Encoding.UTF8.GetString(bytes, 0x222, 222).Replace("\0", "");
+            Description = Encoding.UTF8.GetString(bytes, 0x300, 256).Replace("\0", "");
         }
 
         public byte[] ToBytes()
@@ -166,55 +198,5 @@ namespace STROOP.M64Editor
                 Controller4RumblePak,
             };
         }
-
-        /*
-        public int FrameIndex { get => Index; }
-
-        public bool A { get => GetBit(7); set => SetBit(7, value); }
-        public bool B { get => GetBit(6); set => SetBit(6, value); }
-        public bool Z { get => GetBit(5); set => SetBit(5, value); }
-        public bool Start { get => GetBit(4); set => SetBit(4, value); }
-        public bool L { get => GetBit(13); set => SetBit(13, value); }
-        public bool R { get => GetBit(12); set => SetBit(12, value); }
-        public sbyte AnalogX { get => (sbyte)GetByte(2); set => SetByte(2, (byte)value); }
-        public sbyte AnalogY { get => (sbyte)GetByte(3); set => SetByte(3, (byte)value); }
-        public bool C_Up { get => GetBit(11); set => SetBit(11, value); }
-        public bool C_Down { get => GetBit(10); set => SetBit(10, value); }
-        public bool C_Left { get => GetBit(9); set => SetBit(9, value); }
-        public bool C_Right { get => GetBit(8); set => SetBit(8, value); }
-        public bool D_Up { get => GetBit(3); set => SetBit(3, value); }
-        public bool D_Down { get => GetBit(2); set => SetBit(2, value); }
-        public bool D_Left { get => GetBit(1); set => SetBit(1, value); }
-        public bool D_Right { get => GetBit(0); set => SetBit(0, value); }
-
-        private void SetByte(int num, byte value)
-        {
-            uint mask = ~(uint)(0xFF << (num * 8));
-            RawValue = ((uint)(value << (num * 8)) | (RawValue & mask));
-        }
-
-        private byte GetByte(int num)
-        {
-            return (byte)(RawValue >> (num * 8));
-        }
-
-        private void SetBit(int bit, bool value)
-        {
-            uint mask = (uint)(1 << bit);
-            if (value)
-            {
-                RawValue |= mask;
-            }
-            else
-            {
-                RawValue &= ~mask;
-            }
-        }
-
-        private bool GetBit(int bit)
-        {
-            return ((RawValue >> bit) & 0x01) == 0x01;
-        }
-        */
     }
 }

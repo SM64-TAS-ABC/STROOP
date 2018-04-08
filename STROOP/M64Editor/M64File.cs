@@ -53,6 +53,7 @@ namespace STROOP.M64Editor
             Inputs.Clear();
 
             _headerBytes = fileBytes.Take(0x400).ToArray();
+            M64Header header = new M64Header(_headerBytes);
             var frameBytes = fileBytes.Skip(0x400).ToArray();
 
             var numOfInputs = BitConverter.ToUInt32(_headerBytes, 0x18);
