@@ -164,6 +164,7 @@ namespace STROOP.Managers
                 table.Columns[i].HeaderText = headerText;
                 table.Columns[i].FillWeight = fillWeight;
                 if (backColor.HasValue) table.Columns[i].DefaultCellStyle.BackColor = backColor.Value;
+                table.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
             }
         }
     }
