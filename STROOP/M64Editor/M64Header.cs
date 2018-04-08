@@ -99,7 +99,12 @@ namespace STROOP.M64Editor
         // 300 256-byte UTF-8 string: author movie description info
         public string Description;
 
-        public M64Header(byte[] bytes)
+        public M64Header()
+        {
+
+        }
+
+        public void LoadBytes(byte[] bytes)
         {
             if (bytes.Length != HeaderSize) throw new ArgumentOutOfRangeException();
 

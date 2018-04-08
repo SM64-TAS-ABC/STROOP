@@ -17,6 +17,7 @@ namespace STROOP.M64Editor
         byte[] _headerBytes;
         string _currentFile;
         public BindingList<InputFrame> Inputs { get; } = new BindingList<InputFrame>();
+        public M64Header Header { get; } = new M64Header();
 
         public bool LoadFile(string filePath)
         {
@@ -53,7 +54,7 @@ namespace STROOP.M64Editor
             Inputs.Clear();
 
             _headerBytes = fileBytes.Take(0x400).ToArray();
-            M64Header header = new M64Header(_headerBytes);
+            Header.LoadBytes(_headerBytes);
             var frameBytes = fileBytes.Skip(0x400).ToArray();
 
             var numOfInputs = BitConverter.ToUInt32(_headerBytes, 0x18);

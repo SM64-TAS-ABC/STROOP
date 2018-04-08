@@ -38,6 +38,7 @@ namespace STROOP.Managers
 
            _m64 = new M64File();
             _gui.DataGridViewEditor.DataSource = _m64.Inputs;
+            _gui.PropertyGridHeader.SelectedObject = _m64.Header;
         }
 
         private void DataGridViewEditor_MouseClick(object sender, MouseEventArgs e)
