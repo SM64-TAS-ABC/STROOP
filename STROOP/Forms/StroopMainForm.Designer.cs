@@ -1190,6 +1190,7 @@ namespace STROOP
             this.stripMenuItemM64PasteBefore = new System.Windows.Forms.ToolStripMenuItem();
             this.stripMenuItemM64PasteAfter = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageM64Header = new System.Windows.Forms.TabPage();
+            this.propertyGridM64Header = new System.Windows.Forms.PropertyGrid();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
             this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
             this.labelLabelMethod = new System.Windows.Forms.Label();
@@ -1201,7 +1202,6 @@ namespace STROOP
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.openFileDialogM64 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialogM64 = new System.Windows.Forms.SaveFileDialog();
-            this.propertyGridM64Header = new System.Windows.Forms.PropertyGrid();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -4973,7 +4973,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 322F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 323F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -10802,7 +10802,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(272, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(255, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -10834,7 +10834,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(266, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(249, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -10890,7 +10890,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(266, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(249, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -11336,7 +11336,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 688;
+            this.splitContainerMemory.SplitterDistance = 691;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11360,7 +11360,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(572, 429);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(575, 429);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -11463,7 +11463,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(218, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(215, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPageHacks
@@ -15453,6 +15453,16 @@ namespace STROOP
             this.tabPageM64Header.TabIndex = 2;
             this.tabPageM64Header.Text = "Header";
             // 
+            // propertyGridM64Header
+            // 
+            this.propertyGridM64Header.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.propertyGridM64Header.HelpVisible = false;
+            this.propertyGridM64Header.Location = new System.Drawing.Point(0, 0);
+            this.propertyGridM64Header.Name = "propertyGridM64Header";
+            this.propertyGridM64Header.Size = new System.Drawing.Size(643, 427);
+            this.propertyGridM64Header.TabIndex = 0;
+            this.propertyGridM64Header.ToolbarVisible = false;
+            // 
             // groupBoxObjects
             // 
             this.groupBoxObjects.Controls.Add(this.comboBoxLabelMethod);
@@ -15567,14 +15577,6 @@ namespace STROOP
             // saveFileDialogM64
             // 
             this.saveFileDialogM64.Filter = "Mupen Movies|*.m64|All Files|*.*";
-            // 
-            // propertyGridM64Header
-            // 
-            this.propertyGridM64Header.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.propertyGridM64Header.Location = new System.Drawing.Point(0, 0);
-            this.propertyGridM64Header.Name = "propertyGridM64Header";
-            this.propertyGridM64Header.Size = new System.Drawing.Size(643, 427);
-            this.propertyGridM64Header.TabIndex = 0;
             // 
             // StroopMainForm
             // 
