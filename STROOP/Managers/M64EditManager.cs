@@ -189,5 +189,12 @@ namespace STROOP.Managers
                 table.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
             }
         }
+
+        public void Update(bool updateView)
+        {
+            if (!updateView) return;
+
+            _gui.LabelFileName.Text = _m64.CurrentFileName ?? "(No File Opened)";
+        }
     }
 }

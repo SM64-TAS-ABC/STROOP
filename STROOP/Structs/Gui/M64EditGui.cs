@@ -9,6 +9,8 @@ namespace STROOP.Structs.Gui
 {
     public class M64EditGui
     {
+        public Label LabelFileName;
+
         public Button ButtonSave;
         public Button ButtonSaveAs;
         public Button ButtonLoad;

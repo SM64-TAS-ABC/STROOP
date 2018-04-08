@@ -1160,6 +1160,7 @@ namespace STROOP
             this.splitContainerM64 = new STROOP.BetterSplitContainer();
             this.buttonM64Goto = new System.Windows.Forms.Button();
             this.textBoxM64Goto = new System.Windows.Forms.TextBox();
+            this.buttonM64Close = new System.Windows.Forms.Button();
             this.buttonM64Load = new System.Windows.Forms.Button();
             this.buttonM64SaveAs = new System.Windows.Forms.Button();
             this.buttonM64Save = new System.Windows.Forms.Button();
@@ -1204,7 +1205,8 @@ namespace STROOP
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.openFileDialogM64 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialogM64 = new System.Windows.Forms.SaveFileDialog();
-            this.buttonM64Close = new System.Windows.Forms.Button();
+            this.labelM64FileLabel = new System.Windows.Forms.Label();
+            this.labelM64FileName = new System.Windows.Forms.Label();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -4976,7 +4978,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 326F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 327F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -10805,7 +10807,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(204, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(187, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -10837,7 +10839,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(198, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(181, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -10893,7 +10895,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(198, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(181, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -11339,7 +11341,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 700;
+            this.splitContainerMemory.SplitterDistance = 703;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11363,7 +11365,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(584, 429);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(587, 429);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -11466,7 +11468,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(206, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(203, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPageHacks
@@ -15119,6 +15121,8 @@ namespace STROOP
             // splitContainerM64.Panel1
             // 
             this.splitContainerM64.Panel1.AutoScroll = true;
+            this.splitContainerM64.Panel1.Controls.Add(this.labelM64FileName);
+            this.splitContainerM64.Panel1.Controls.Add(this.labelM64FileLabel);
             this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Goto);
             this.splitContainerM64.Panel1.Controls.Add(this.textBoxM64Goto);
             this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Close);
@@ -15154,9 +15158,19 @@ namespace STROOP
             this.textBoxM64Goto.Size = new System.Drawing.Size(68, 20);
             this.textBoxM64Goto.TabIndex = 11;
             // 
+            // buttonM64Close
+            // 
+            this.buttonM64Close.Location = new System.Drawing.Point(14, 168);
+            this.buttonM64Close.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64Close.Name = "buttonM64Close";
+            this.buttonM64Close.Size = new System.Drawing.Size(63, 22);
+            this.buttonM64Close.TabIndex = 8;
+            this.buttonM64Close.Text = "Close";
+            this.buttonM64Close.UseVisualStyleBackColor = true;
+            // 
             // buttonM64Load
             // 
-            this.buttonM64Load.Location = new System.Drawing.Point(14, 22);
+            this.buttonM64Load.Location = new System.Drawing.Point(14, 142);
             this.buttonM64Load.Margin = new System.Windows.Forms.Padding(2);
             this.buttonM64Load.Name = "buttonM64Load";
             this.buttonM64Load.Size = new System.Drawing.Size(63, 22);
@@ -15166,7 +15180,7 @@ namespace STROOP
             // 
             // buttonM64SaveAs
             // 
-            this.buttonM64SaveAs.Location = new System.Drawing.Point(178, 22);
+            this.buttonM64SaveAs.Location = new System.Drawing.Point(138, 151);
             this.buttonM64SaveAs.Margin = new System.Windows.Forms.Padding(2);
             this.buttonM64SaveAs.Name = "buttonM64SaveAs";
             this.buttonM64SaveAs.Size = new System.Drawing.Size(63, 22);
@@ -15176,7 +15190,7 @@ namespace STROOP
             // 
             // buttonM64Save
             // 
-            this.buttonM64Save.Location = new System.Drawing.Point(102, 22);
+            this.buttonM64Save.Location = new System.Drawing.Point(117, 104);
             this.buttonM64Save.Margin = new System.Windows.Forms.Padding(2);
             this.buttonM64Save.Name = "buttonM64Save";
             this.buttonM64Save.Size = new System.Drawing.Size(63, 22);
@@ -15595,15 +15609,23 @@ namespace STROOP
             // 
             this.saveFileDialogM64.Filter = "Mupen Movies|*.m64|All Files|*.*";
             // 
-            // buttonM64Close
+            // labelM64FileLabel
             // 
-            this.buttonM64Close.Location = new System.Drawing.Point(14, 54);
-            this.buttonM64Close.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64Close.Name = "buttonM64Close";
-            this.buttonM64Close.Size = new System.Drawing.Size(63, 22);
-            this.buttonM64Close.TabIndex = 8;
-            this.buttonM64Close.Text = "Close";
-            this.buttonM64Close.UseVisualStyleBackColor = true;
+            this.labelM64FileLabel.AutoSize = true;
+            this.labelM64FileLabel.Location = new System.Drawing.Point(9, 7);
+            this.labelM64FileLabel.Name = "labelM64FileLabel";
+            this.labelM64FileLabel.Size = new System.Drawing.Size(26, 13);
+            this.labelM64FileLabel.TabIndex = 14;
+            this.labelM64FileLabel.Text = "File:";
+            // 
+            // labelM64FileName
+            // 
+            this.labelM64FileName.AutoSize = true;
+            this.labelM64FileName.Location = new System.Drawing.Point(33, 7);
+            this.labelM64FileName.Name = "labelM64FileName";
+            this.labelM64FileName.Size = new System.Drawing.Size(87, 13);
+            this.labelM64FileName.TabIndex = 14;
+            this.labelM64FileName.Text = "(No File Opened)";
             // 
             // StroopMainForm
             // 
@@ -17267,6 +17289,8 @@ namespace STROOP
         private DataGridViewCheckBoxColumn ColumnM64Dleft;
         private DataGridViewCheckBoxColumn ColumnM64Dright;
         private Button buttonM64Close;
+        private Label labelM64FileName;
+        private Label labelM64FileLabel;
     }
 }
 

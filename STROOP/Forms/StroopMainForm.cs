@@ -173,6 +173,8 @@ namespace STROOP
             // 
             M64EditGui m64EditGui = new M64EditGui()
             {
+                LabelFileName = labelM64FileName,
+
                 ButtonSave = buttonM64Save,
                 ButtonSaveAs = buttonM64SaveAs,
                 ButtonLoad = buttonM64Load,
@@ -391,6 +393,7 @@ namespace STROOP
                 Config.TestingManager.Update(tabControlMain.SelectedTab == tabPageTesting);
                 Config.GfxManager.Update(tabControlMain.SelectedTab == tabPageGfx);
                 Config.MemoryManager.Update(tabControlMain.SelectedTab == tabPageMemory);
+                Config.M64EditManager.Update(tabControlMain.SelectedTab == tabPageM64Edit);
                 Config.MapManager?.Update();
                 Config.ModelManager?.Update();
                 Config.InjectionManager.Update();
