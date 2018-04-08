@@ -17,6 +17,8 @@ namespace STROOP.M64Editor
     {
         public string CurrentFilePath { get; private set; }
         public string CurrentFileName { get; private set; }
+        public byte[] RawBytes { get; private set; }
+
         public M64Header Header { get; }
         public BindingList<M64InputFrame> Inputs { get; }
         public M64Stats Stats { get; }
@@ -25,7 +27,7 @@ namespace STROOP.M64Editor
         {
             Header = new M64Header();
             Inputs = new BindingList<M64InputFrame>();
-            Stats = new M64Stats(Header, Inputs);
+            Stats = new M64Stats(this);
         }
 
         public bool OpenFile(string filePath, string fileName)
@@ -62,6 +64,7 @@ namespace STROOP.M64Editor
             if (fileBytes.Length < M64Config.HeaderSize)
                 return false;
 
+            RawBytes = fileBytes;
             Inputs.Clear();
             byte[] headerBytes = fileBytes.Take(M64Config.HeaderSize).ToArray();
             Header.LoadBytes(headerBytes);
@@ -110,6 +113,7 @@ namespace STROOP.M64Editor
         {
             CurrentFilePath = null;
             CurrentFileName = null;
+            RawBytes = null;
             Header.Clear();
             Inputs.Clear();
         }
