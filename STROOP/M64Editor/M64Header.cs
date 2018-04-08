@@ -6,38 +6,47 @@ using System.Threading.Tasks;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using STROOP.Structs;
+using System.ComponentModel;
 
 namespace STROOP.M64Editor
 {
     public class M64Header
     {
-        private static readonly int HeaderSize = 0x400;
+        public static readonly int HeaderSize = 0x400;
 
         // 000 4-byte signature: 4D 36 34 1A "M64\x1A"
+        [CategoryAttribute("Mupen")]
         public uint Signature { get; set; }
 
         // 004 4-byte little-endian unsigned int: version number, should be 3
+        [CategoryAttribute("Mupen")]
         public uint VersionNumber { get; set; }
 
         // 008 4-byte little-endian integer: movie "uid" - identifies the movie-savestate relationship,
         // also used as the recording time in Unix epoch format
+        [CategoryAttribute("Main")]
         public int Uid { get; set; }
 
         // 00C 4-byte little-endian unsigned int: number of frames(vertical interrupts)
+        [CategoryAttribute("Main")]
         public int Vis { get; set; }
 
         // 010 4-byte little-endian unsigned int: rerecord count
+        [CategoryAttribute("Main")]
         public int Rerecords { get; set; }
 
         // 014 1-byte unsigned int: frames(vertical interrupts) per second
+        [CategoryAttribute("Main")]
         public byte Fps { get; set; }
 
         // 015 1-byte unsigned int: number of controllers
+        [CategoryAttribute("Controller")]
         public byte NumControllers { get; set; }
 
         // 016 2-byte unsigned int: reserved, should be 0
 
         // 018 4-byte little-endian unsigned int: number of input samples for any controllers
+        [CategoryAttribute("Main")]
         public int Inputs { get; set; }
 
         // 01C 2-byte unsigned int: movie start type
@@ -45,6 +54,7 @@ namespace STROOP.M64Editor
         //     with the movie filename and a .st extension)
         // value 2: movie begins from power-on
         // other values: invalid movie
+        [CategoryAttribute("Main")]
         public short MovieStartType { get; set; }
 
         // 01E 2-byte unsigned int: reserved, should be 0
@@ -54,48 +64,69 @@ namespace STROOP.M64Editor
         // bit 4: controller 1 has mempak
         // bit 8: controller 1 has rumblepak
         // +1..3 for controllers 2..4.
+        [CategoryAttribute("Controller")]
         public bool Controller1Present { get; set; }
+        [CategoryAttribute("Controller")]
         public bool Controller2Present { get; set; }
+        [CategoryAttribute("Controller")]
         public bool Controller3Present { get; set; }
+        [CategoryAttribute("Controller")]
         public bool Controller4Present { get; set; }
+        [CategoryAttribute("Controller")]
         public bool Controller1MemPak { get; set; }
+        [CategoryAttribute("Controller")]
         public bool Controller2MemPak { get; set; }
+        [CategoryAttribute("Controller")]
         public bool Controller3MemPak { get; set; }
+        [CategoryAttribute("Controller")]
         public bool Controller4MemPak { get; set; }
+        [CategoryAttribute("Controller")]
         public bool Controller1RumblePak { get; set; }
+        [CategoryAttribute("Controller")]
         public bool Controller2RumblePak { get; set; }
+        [CategoryAttribute("Controller")]
         public bool Controller3RumblePak { get; set; }
+        [CategoryAttribute("Controller")]
         public bool Controller4RumblePak { get; set; }
 
         // 024 160 bytes: reserved, should be 0
 
         // 0C4 32-byte ASCII string: internal name of ROM used when recording, directly from ROM
+        [CategoryAttribute("Rom")]
         public string RomName { get; set; }
 
         // 0E4 4-byte unsigned int: CRC32 of ROM used when recording, directly from ROM
+        [CategoryAttribute("Rom")]
         public uint Cr32 { get; set; }
 
         // 0E8 2-byte unsigned int: country code of ROM used when recording, directly from ROM
+        [CategoryAttribute("Rom")]
         public ushort CountryCode { get; set; }
 
         // 0EA 56 bytes: reserved, should be 0
 
         // 122 64-byte ASCII string: name of video plugin used when recording, directly from plugin
+        [CategoryAttribute("Plugin")]
         public string VideoPlugin { get; set; }
 
         // 162 64-byte ASCII string: name of sound plugin used when recording, directly from plugin
+        [CategoryAttribute("Plugin")]
         public string SoundPlugin { get; set; }
 
         // 1A2 64-byte ASCII string: name of input plugin used when recording, directly from plugin
+        [CategoryAttribute("Plugin")]
         public string InputPlugin { get; set; }
 
         // 1E2 64-byte ASCII string: name of rsp plugin used when recording, directly from plugin
+        [CategoryAttribute("Plugin")]
         public string RspPlugin { get; set; }
 
         // 222 222-byte UTF-8 string: author name info
+        [CategoryAttribute("Description")]
         public string Author { get; set; }
 
         // 300 256-byte UTF-8 string: author movie description info
+        [CategoryAttribute("Description")]
         public string Description { get; set; }
 
         public M64Header()
