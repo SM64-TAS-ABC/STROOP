@@ -9,6 +9,7 @@ using System.IO;
 using System.Data;
 using System.ComponentModel;
 using System.Xml.Serialization;
+using STROOP.Structs;
 
 namespace STROOP.M64Editor
 {
@@ -55,16 +56,16 @@ namespace STROOP.M64Editor
         private bool LoadBytes(byte[] fileBytes)
         {
             // Check Header
-            if (!fileBytes.Take(4).SequenceEqual(new byte[] { 0x4D, 0x36, 0x34, 0x1A }))
+            if (!fileBytes.Take(4).SequenceEqual(M64Config.SignatureBytes))
                 return false;
 
-            if (fileBytes.Length < 0x400)
+            if (fileBytes.Length < M64Config.HeaderSize)
                 return false;
 
             Inputs.Clear();
-            byte[] headerBytes = fileBytes.Take(0x400).ToArray();
+            byte[] headerBytes = fileBytes.Take(M64Config.HeaderSize).ToArray();
             Header.LoadBytes(headerBytes);
-            var frameBytes = fileBytes.Skip(0x400).ToArray();
+            var frameBytes = fileBytes.Skip(M64Config.HeaderSize).ToArray();
 
             int numOfInputs = Header.Inputs;
 
@@ -79,9 +80,11 @@ namespace STROOP.M64Editor
             return true;
         } 
 
-        private byte[] GetFileBytes()
+        private byte[] ToBytes()
         {
-            return Header.ToBytes().Concat(Inputs.SelectMany(i => BitConverter.GetBytes(i.RawValue))).ToArray();
+            byte[] headerBytes = Header.ToBytes();
+            byte[] inputBytes = Inputs.SelectMany(input => input.ToBytes()).ToArray();
+            return headerBytes.Concat(inputBytes).ToArray();
         }
 
         public bool Save()
@@ -94,7 +97,7 @@ namespace STROOP.M64Editor
         {
             try
             {
-                File.WriteAllBytes(filePath, GetFileBytes());
+                File.WriteAllBytes(filePath, ToBytes());
             }
             catch (IOException)
             {

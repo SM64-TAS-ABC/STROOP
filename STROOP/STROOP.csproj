@@ -339,6 +339,7 @@
     <Compile Include="Models\LevelDataModel.cs" />
     <Compile Include="Models\ObjectProcessorDataModel.cs" />
     <Compile Include="Structs\Configurations\AreaConfig.cs" />
+    <Compile Include="Structs\Configurations\M64Config.cs" />
     <Compile Include="Structs\Configurations\SpecialConfig.cs" />
     <Compile Include="Structs\Configurations\RefreshRateConfig.cs" />
     <Compile Include="Structs\Configurations\MarioObjectConfig.cs" />

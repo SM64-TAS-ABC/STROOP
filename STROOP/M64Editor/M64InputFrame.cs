@@ -78,6 +78,11 @@ namespace STROOP.M64Editor
             return new M64InputFrame(RawValue, Index);
         }
 
+        public byte[] ToBytes()
+        {
+            return BitConverter.GetBytes(RawValue).ToArray();
+        }
+
         public static readonly List<(string, int, Color?)> ColumnParameters =
             new List<(string, int, Color?)>()
             {

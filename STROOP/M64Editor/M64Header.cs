@@ -13,8 +13,6 @@ namespace STROOP.M64Editor
 {
     public class M64Header
     {
-        public static readonly int HeaderSize = 0x400;
-
         public enum MovieStartTypeEnum { FromStart, FromSnapshot }
 
         // 018 4-byte little-endian unsigned int: number of input samples for any controllers
@@ -165,7 +163,7 @@ namespace STROOP.M64Editor
 
         public void LoadBytes(byte[] bytes)
         {
-            if (bytes.Length != HeaderSize) throw new ArgumentOutOfRangeException();
+            if (bytes.Length != M64Config.HeaderSize) throw new ArgumentOutOfRangeException();
 
             Signature = BitConverter.ToUInt32(bytes, 0x000);
             VersionNumber = BitConverter.ToUInt32(bytes, 0x004);
@@ -233,7 +231,7 @@ namespace STROOP.M64Editor
             bytes.AddRange(TypeUtilities.GetBytes(RspPlugin, 64, Encoding.ASCII));
             bytes.AddRange(TypeUtilities.GetBytes(Author, 222, Encoding.UTF8));
             bytes.AddRange(TypeUtilities.GetBytes(Description, 256, Encoding.UTF8));
-            if (bytes.Count != HeaderSize) throw new ArgumentOutOfRangeException();
+            if (bytes.Count != M64Config.HeaderSize) throw new ArgumentOutOfRangeException();
             return bytes.ToArray();
         }
 
