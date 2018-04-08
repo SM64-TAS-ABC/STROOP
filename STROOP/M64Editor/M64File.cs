@@ -14,10 +14,9 @@ namespace STROOP.M64Editor
 {
     public class M64File
     {
-        byte[] _headerBytes;
-        string _currentFile;
-        public BindingList<InputFrame> Inputs { get; } = new BindingList<InputFrame>();
+        public string CurrentFile { get; private set; }
         public M64Header Header { get; } = new M64Header();
+        public BindingList<InputFrame> Inputs { get; } = new BindingList<InputFrame>();
 
         public bool LoadFile(string filePath)
         {
@@ -37,7 +36,7 @@ namespace STROOP.M64Editor
             var loaded = LoadMupenFileBytes(movieBytes);
 
             if (loaded)
-                _currentFile = filePath;
+                CurrentFile = filePath;
 
             return true;
         }
@@ -53,11 +52,11 @@ namespace STROOP.M64Editor
 
             Inputs.Clear();
 
-            _headerBytes = fileBytes.Take(0x400).ToArray();
-            Header.LoadBytes(_headerBytes);
+            byte[] headerBytes = fileBytes.Take(0x400).ToArray();
+            Header.LoadBytes(headerBytes);
             var frameBytes = fileBytes.Skip(0x400).ToArray();
 
-            var numOfInputs = BitConverter.ToUInt32(_headerBytes, 0x18);
+            int numOfInputs = Header.Inputs;
 
             for (int i = 0; i < frameBytes.Length && i < 4 * numOfInputs; i += 4)
             {
@@ -72,12 +71,12 @@ namespace STROOP.M64Editor
 
         private byte[] GetFileBytes()
         {
-            return _headerBytes.Concat(Inputs.SelectMany(i => BitConverter.GetBytes(i.RawValue))).ToArray();
+            return Header.ToBytes().Concat(Inputs.SelectMany(i => BitConverter.GetBytes(i.RawValue))).ToArray();
         }
 
         public bool Save()
         {
-            return Save(_currentFile);
+            return Save(CurrentFile);
         }
 
         public bool Save(string filePath)
