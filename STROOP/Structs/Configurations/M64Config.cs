@@ -12,5 +12,5 @@ namespace STROOP.Structs
         public static readonly int HeaderSize = 0x400;
         public static readonly byte[] SignatureBytes = new byte[] { 0x4D, 0x36, 0x34, 0x1A };
 
-}
+    }
 }
