@@ -200,11 +200,9 @@ namespace STROOP.M64Editor
 
         public ContextMenuStrip CreateContextMenuStrip()
         {
-            ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
-            List<string> itemNames = buttonNameList.ConvertAll(
-                buttonName => "Show all " + buttonName + " presses");
-            List<ToolStripMenuItem> items = itemNames.ConvertAll(
-                itemName => new ToolStripMenuItem(itemName));
+            List<ToolStripMenuItem> items = buttonNameList.ConvertAll(
+                buttonName => new ToolStripMenuItem(
+                    String.Format("Show all {0} presses", buttonName)));
 
             if (items.Count != isPressedFunctionList.Count)
                 throw new ArgumentOutOfRangeException();
@@ -214,23 +212,26 @@ namespace STROOP.M64Editor
                 int index = i;
                 items[index].Click += (sender, e) =>
                 {
-                    List<(int, int)> buttonPresses = FindPresses(isPressedFunctionList[index]);
-                    string buttonPressesString =
-                        FormatButtonPressesString(buttonPresses, buttonNameList[index]);
+                    string buttonName = buttonNameList[index];
+                    Func<M64InputFrame, bool> isPressedFunction = isPressedFunctionList[index];
+                    List<(int, int)> buttonPresses = FindPresses(isPressedFunction);
+                    string buttonPressesString = FormatButtonPressesString(buttonPresses, buttonName);
                     InfoForm.ShowText(
                         "Num Button Presses",
-                        String.Format("Num {0} Presses", buttonNameList[index]),
+                        String.Format("Num {0} Presses", buttonName),
                         buttonPressesString);
                 };
             }
 
+            ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
+            items.ForEach(item => contextMenuStrip.Items.Add(item));
             return contextMenuStrip;
         }
 
         private string FormatButtonPressesString(List<(int, int)> buttonPresses, string buttonName)
         {
-            StringBuilder builder = new StringBuilder();
-            builder.Append(String.Format(
+            List<string> lines = new List<string>();
+            lines.Add(String.Format(
                 "{0} {1} presses total:", buttonPresses.Count, buttonName));
             for (int i = 0; i < buttonPresses.Count; i++)
             {
@@ -238,11 +239,11 @@ namespace STROOP.M64Editor
                 (int startFrame, int endFrame) = buttonPresses[i];
                 int frameSpan = endFrame - startFrame + 1;
                 string pluralitySuffix = frameSpan == 1 ? "" : "s";
-                builder.Append(String.Format(
+                lines.Add(String.Format(
                     "{0} press #{1}: frame {2} to frame {3} ({4} frame{5})",
                     buttonName, countIndex, startFrame, endFrame, frameSpan, pluralitySuffix));
             }
-            return builder.ToString();
+            return String.Join("\r\n", lines);
         }
     }
 }

@@ -45,6 +45,7 @@ namespace STROOP.Managers
             _gui.PropertyGridHeader.Refresh();
             _gui.PropertyGridStats.SelectedObject = _m64.Stats;
             _gui.PropertyGridStats.Refresh();
+            _gui.PropertyGridStats.ContextMenuStrip = _m64.Stats.CreateContextMenuStrip();
         }
 
         private void DataGridViewEditor_MouseClick(object sender, MouseEventArgs e)
