@@ -20,98 +20,98 @@ namespace STROOP.M64Editor
         public int NumAPresses
         {
             get { return FindPresses(input => input.A).Count; }
-            set { if (value == 0) RemoveAllPresses(input => input.A = false); }
+            set { SetNumPreses(value, input => input.A = false); }
         }
 
         [Category("\u200B\u200BMain Button Presses"), DisplayName("\u200B\u200B\u200BNum B Presses")]
         public int NumBPresses
         {
             get { return FindPresses(input => input.B).Count; }
-            set { if (value == 0) RemoveAllPresses(input => input.B = false); }
+            set { SetNumPreses(value, input => input.B = false); }
         }
 
         [Category("\u200B\u200BMain Button Presses"), DisplayName("\u200B\u200BNum Z Presses")]
         public int NumZPresses
         {
             get { return FindPresses(input => input.Z).Count; }
-            set { if (value == 0) RemoveAllPresses(input => input.Z = false); }
+            set { SetNumPreses(value, input => input.Z = false); }
         }
 
         [Category("\u200B\u200BMain Button Presses"), DisplayName("\u200BNum Start Presses")]
         public int NumStartPresses
         {
             get { return FindPresses(input => input.Start).Count; }
-            set { if (value == 0) RemoveAllPresses(input => input.Start = false); }
+            set { SetNumPreses(value, input => input.Start = false); }
         }
 
         [Category("\u200B\u200BMain Button Presses"), DisplayName("Num R Presses")]
         public int NumRPresses
         {
             get { return FindPresses(input => input.R).Count; }
-            set { if (value == 0) RemoveAllPresses(input => input.R = false); }
+            set { SetNumPreses(value, input => input.R = false); }
         }
 
         [Category("\u200BC Button Presses"), DisplayName("\u200B\u200B\u200BNum C^ Presses")]
         public int NumCUpPresses
         {
             get { return FindPresses(input => input.C_Up).Count; }
-            set { if (value == 0) RemoveAllPresses(input => input.C_Up = false); }
+            set { SetNumPreses(value, input => input.C_Up = false); }
         }
 
         [Category("\u200BC Button Presses"), DisplayName("\u200B\u200BNum Cv Presses")]
         public int NumCDownPresses
         {
             get { return FindPresses(input => input.C_Down).Count; }
-            set { if (value == 0) RemoveAllPresses(input => input.C_Down = false); }
+            set { SetNumPreses(value, input => input.C_Down = false); }
         }
 
         [Category("\u200BC Button Presses"), DisplayName("\u200BNum C< Presses")]
         public int NumCLeftPresses
         {
             get { return FindPresses(input => input.C_Left).Count; }
-            set { if (value == 0) RemoveAllPresses(input => input.C_Left = false); }
+            set { SetNumPreses(value, input => input.C_Left = false); }
         }
 
         [Category("\u200BC Button Presses"), DisplayName("Num C> Presses")]
         public int NumCRightPresses
         {
             get { return FindPresses(input => input.C_Right).Count; }
-            set { if (value == 0) RemoveAllPresses(input => input.C_Right = false); }
+            set { SetNumPreses(value, input => input.C_Right = false); }
         }
 
         [Category("Noop Button Presses"), DisplayName("\u200B\u200B\u200B\u200BNum L Presses")]
         public int NumLPresses
         {
             get { return FindPresses(input => input.L).Count; }
-            set { if (value == 0) RemoveAllPresses(input => input.L = false); }
+            set { SetNumPreses(value, input => input.L = false); }
         }
 
         [Category("Noop Button Presses"), DisplayName("\u200B\u200B\u200BNum D^ Presses")]
         public int NumDUpPresses
         {
             get { return FindPresses(input => input.D_Up).Count; }
-            set { if (value == 0) RemoveAllPresses(input => input.D_Up = false); }
+            set { SetNumPreses(value, input => input.D_Up = false); }
         }
 
         [Category("Noop Button Presses"), DisplayName("\u200B\u200BNum Dv Presses")]
         public int NumDDownPresses
         {
             get { return FindPresses(input => input.D_Down).Count; }
-            set { if (value == 0) RemoveAllPresses(input => input.D_Down = false); }
+            set { SetNumPreses(value, input => input.D_Down = false); }
         }
 
         [Category("Noop Button Presses"), DisplayName("\u200BNum D< Presses")]
         public int NumDLeftPresses
         {
             get { return FindPresses(input => input.D_Left).Count; }
-            set { if (value == 0) RemoveAllPresses(input => input.D_Left = false); }
+            set { SetNumPreses(value, input => input.D_Left = false); }
         }
 
         [Category("Noop Button Presses"), DisplayName("Num D> Presses")]
         public int NumDRightPresses
         {
             get { return FindPresses(input => input.D_Right).Count; }
-            set { if (value == 0) RemoveAllPresses(input => input.D_Right = false); }
+            set { SetNumPreses(value, input => input.D_Right = false); }
         }
 
         public M64Stats(M64Header header, BindingList<M64InputFrame> inputs)
@@ -160,8 +160,9 @@ namespace STROOP.M64Editor
             return pressList;
         }
 
-        private void RemoveAllPresses(Action<M64InputFrame> unpressFunction)
+        private void SetNumPreses(int numPresses, Action<M64InputFrame> unpressFunction)
         {
+            if (numPresses != 0) return;
             for (int i = 0; i < _inputs.Count; i++)
             {
                 unpressFunction(_inputs[i]);
