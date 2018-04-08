@@ -36,8 +36,9 @@ namespace STROOP.Managers
 
             _gui.DataGridViewEditor.MouseClick += DataGridViewEditor_MouseClick;
 
-           _m64 = new M64File();
+            _m64 = new M64File();
             _gui.DataGridViewEditor.DataSource = _m64.Inputs;
+            UpdateTableSettings();
             _gui.PropertyGridHeader.SelectedObject = _m64.Header;
             _gui.PropertyGridHeader.Refresh();
         }
@@ -136,6 +137,7 @@ namespace STROOP.Managers
             _gui.PropertyGridHeader.SelectedObject = null;
             _m64.LoadFile(_gui.OpenFileDialogM64.FileName);
             _gui.DataGridViewEditor.DataSource = _m64.Inputs;
+            UpdateTableSettings();
             _gui.PropertyGridHeader.SelectedObject = _m64.Header;
             _gui.DataGridViewEditor.Refresh();
             _gui.PropertyGridHeader.Refresh();
@@ -148,6 +150,18 @@ namespace STROOP.Managers
 
             return MessageBox.Show("Do you want to save changes?", "Save Changes",
                 MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+        }
+
+        private void UpdateTableSettings()
+        {
+            DataGridView table = _gui.DataGridViewEditor;
+            if (table.Columns.Count != M64InputFrame.FieldNameStrings.Count)
+                throw new ArgumentOutOfRangeException();
+
+            for (int i = 0; i < table.Columns.Count; i++)
+            {
+                table.Columns[i].HeaderText = M64InputFrame.FieldNameStrings[i];
+            }
         }
     }
 }

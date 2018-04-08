@@ -16,7 +16,7 @@ namespace STROOP.M64Editor
     {
         public string CurrentFile { get; private set; }
         public M64Header Header { get; } = new M64Header();
-        public BindingList<InputFrame> Inputs { get; } = new BindingList<InputFrame>();
+        public BindingList<M64InputFrame> Inputs { get; } = new BindingList<M64InputFrame>();
 
         public bool LoadFile(string filePath)
         {
@@ -60,7 +60,7 @@ namespace STROOP.M64Editor
 
             for (int i = 0; i < frameBytes.Length && i < 4 * numOfInputs; i += 4)
             {
-                Inputs.Add(new InputFrame(BitConverter.ToUInt32(frameBytes, i), i / 4));
+                Inputs.Add(new M64InputFrame(BitConverter.ToUInt32(frameBytes, i), i / 4));
             }
 
             if (Inputs.Count == 0)
@@ -97,7 +97,7 @@ namespace STROOP.M64Editor
             for (int i = index; i < Inputs.Count; i++)
                 Inputs[i].Index++;
 
-            var frame = new InputFrame(index);
+            var frame = new M64InputFrame(index);
             Inputs.Insert(index, frame);  
         }
 
@@ -108,7 +108,7 @@ namespace STROOP.M64Editor
 
             int smallestIndex = rows.Min();
 
-            var inputList = rows.Select(i => (InputFrame)Inputs[i].Clone()).ToList();
+            var inputList = rows.Select(i => (M64InputFrame)Inputs[i].Clone()).ToList();
             foreach (var input in inputList)
                 input.Index -= smallestIndex;
 
@@ -123,12 +123,12 @@ namespace STROOP.M64Editor
                 return;
 
             if (!Clipboard.ContainsData("FrameInputData")
-                || !(Clipboard.GetData("FrameInputData") is List<InputFrame>))
+                || !(Clipboard.GetData("FrameInputData") is List<M64InputFrame>))
                 return;
 
             int smallestIndex = rows.Min();
 
-            var inputData = Clipboard.GetData("FrameInputData") as List<InputFrame>;
+            var inputData = Clipboard.GetData("FrameInputData") as List<M64InputFrame>;
 
             foreach (var input in inputData)
             {
@@ -144,10 +144,10 @@ namespace STROOP.M64Editor
         public void PasteInsert(int row)
         {
             if (!Clipboard.ContainsData("FrameInputData")
-                || !(Clipboard.GetData("FrameInputData") is List<InputFrame>))
+                || !(Clipboard.GetData("FrameInputData") is List<M64InputFrame>))
                 return;
 
-            var inputData = Clipboard.GetData("FrameInputData") as List<InputFrame>;
+            var inputData = Clipboard.GetData("FrameInputData") as List<M64InputFrame>;
             inputData = inputData.OrderByDescending(i => i.Index).ToList();
 
             for (int i = row; i < Inputs.Count; i++)

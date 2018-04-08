@@ -9,17 +9,17 @@ using System.Xml.Serialization;
 namespace STROOP.M64Editor
 {
     [Serializable]
-    public class InputFrame : ICloneable
+    public class M64InputFrame : ICloneable
     {
         public uint RawValue = 0;
         public int Index;
 
-        public InputFrame(int index)
+        public M64InputFrame(int index)
         {
             Index = index;
         }
 
-        public InputFrame(uint rawValue, int index)
+        public M64InputFrame(uint rawValue, int index)
         {
             RawValue = rawValue;
             Index = index;
@@ -74,7 +74,29 @@ namespace STROOP.M64Editor
 
         public object Clone()
         {
-            return new InputFrame(RawValue, Index);
+            return new M64InputFrame(RawValue, Index);
         }
+
+        public static readonly List<string> FieldNameStrings =
+            new List<string>()
+            {
+                "Frame",
+                "X",
+                "Y",
+                "A",
+                "B",
+                "Z",
+                "S",
+                "R",
+                "C^",
+                "Cv",
+                "C<",
+                "C>",
+                "L",
+                "D^",
+                "Dv",
+                "D<",
+                "D>",
+            };
     }
 }
