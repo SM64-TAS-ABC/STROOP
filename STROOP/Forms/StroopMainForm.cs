@@ -193,6 +193,7 @@ namespace STROOP
                 SaveFileDialogM64 = saveFileDialogM64,
                 DataGridViewInputs = dataGridViewM64Inputs,
                 PropertyGridHeader = propertyGridM64Header,
+                PropertyGridStats = propertyGridM64Stats,
             };
 
             // Create managers

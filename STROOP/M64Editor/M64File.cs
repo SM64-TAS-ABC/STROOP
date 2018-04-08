@@ -16,8 +16,16 @@ namespace STROOP.M64Editor
     {
         public string CurrentFilePath { get; private set; }
         public string CurrentFileName { get; private set; }
-        public M64Header Header { get; } = new M64Header();
-        public BindingList<M64InputFrame> Inputs { get; } = new BindingList<M64InputFrame>();
+        public M64Header Header { get; }
+        public BindingList<M64InputFrame> Inputs { get; }
+        public M64Stats Stats { get; }
+
+        public M64File()
+        {
+            Header = new M64Header();
+            Inputs = new BindingList<M64InputFrame>();
+            Stats= new M64Stats(Header, Inputs);
+        }
 
         public bool OpenFile(string filePath, string fileName)
         {

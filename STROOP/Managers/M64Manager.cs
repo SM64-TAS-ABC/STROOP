@@ -43,6 +43,8 @@ namespace STROOP.Managers
             UpdateTableSettings();
             _gui.PropertyGridHeader.SelectedObject = _m64.Header;
             _gui.PropertyGridHeader.Refresh();
+            _gui.PropertyGridStats.SelectedObject = _m64.Stats;
+            _gui.PropertyGridStats.Refresh();
         }
 
         private void DataGridViewEditor_MouseClick(object sender, MouseEventArgs e)
@@ -163,6 +165,7 @@ namespace STROOP.Managers
             _m64.Close();
             _gui.DataGridViewInputs.Refresh();
             _gui.PropertyGridHeader.Refresh();
+            _gui.PropertyGridStats.Refresh();
         }
 
         private DialogResult CheckSaveChanges()
