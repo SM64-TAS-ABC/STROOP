@@ -35,6 +35,7 @@ namespace STROOP.Managers
             _gui.ToolStripMenuItemPasteAfter.Click += ToolStripMenuItemPasteAfter_Click;
 
             _gui.DataGridViewEditor.MouseClick += DataGridViewEditor_MouseClick;
+            _gui.DataGridViewEditor.DataError += (sender, e) => _gui.DataGridViewEditor.CancelEdit();
 
             _m64 = new M64File();
             _gui.DataGridViewEditor.DataSource = _m64.Inputs;
