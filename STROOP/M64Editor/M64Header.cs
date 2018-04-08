@@ -15,6 +15,8 @@ namespace STROOP.M64Editor
     {
         public static readonly int HeaderSize = 0x400;
 
+        public enum MovieStartTypeEnum { FromStart, FromSnapshot }
+
         // 018 4-byte little-endian unsigned int: number of input samples for any controllers
         [Category("\u200B\u200B\u200B\u200B\u200BMain"), DisplayName("\u200B\u200B\u200B\u200BInputs")]
         public int Inputs { get; set; }
@@ -33,7 +35,7 @@ namespace STROOP.M64Editor
         // value 2: movie begins from power-on
         // other values: invalid movie
         [CategoryAttribute("\u200B\u200B\u200B\u200B\u200BMain"), DisplayName("\u200BMovie Start Type")]
-        public short MovieStartType { get; set; }
+        public MovieStartTypeEnum MovieStartType { get; set; }
 
         // 014 1-byte unsigned int: frames(vertical interrupts) per second
         [CategoryAttribute("\u200B\u200B\u200B\u200B\u200BMain"), DisplayName("FPS")]
@@ -139,7 +141,9 @@ namespace STROOP.M64Editor
             Fps = bytes[0x014];
             NumControllers = bytes[0x015];
             Inputs = BitConverter.ToInt32(bytes, 0x018);
-            MovieStartType = BitConverter.ToInt16(bytes, 0x01C);
+
+            short movieStartTypeShort = BitConverter.ToInt16(bytes, 0x01C);
+            MovieStartType = ConvertShortToMovieStartTypeEnum(movieStartTypeShort);
 
             uint controllerFlagsValue = BitConverter.ToUInt16(bytes, 0x020);
             Controller1Present = (controllerFlagsValue & (1 << 0)) != 0;
@@ -165,6 +169,7 @@ namespace STROOP.M64Editor
             Author = Encoding.UTF8.GetString(bytes, 0x222, 222).Replace("\0", "");
             Description = Encoding.UTF8.GetString(bytes, 0x300, 256).Replace("\0", "");
 
+            // Verify that serialization works correctly
             if (!Enumerable.SequenceEqual(bytes, ToBytes())) throw new ArgumentOutOfRangeException();
         }
 
@@ -180,7 +185,7 @@ namespace STROOP.M64Editor
             bytes.AddRange(TypeUtilities.GetBytes(NumControllers));
             bytes.AddRange(new byte[2]);
             bytes.AddRange(TypeUtilities.GetBytes(Inputs));
-            bytes.AddRange(TypeUtilities.GetBytes(MovieStartType));
+            bytes.AddRange(TypeUtilities.GetBytes(ConvertMovieStartTypeEnumToShort(MovieStartType)));
             bytes.AddRange(new byte[2]);
             bytes.AddRange(TypeUtilities.GetBytes(GetControllerFlagsValue()));
             bytes.AddRange(new byte[160]);
@@ -227,6 +232,32 @@ namespace STROOP.M64Editor
                 Controller3RumblePak,
                 Controller4RumblePak,
             };
+        }
+
+        private short ConvertMovieStartTypeEnumToShort(MovieStartTypeEnum movieStartType)
+        {
+            switch (movieStartType)
+            {
+                case MovieStartTypeEnum.FromStart:
+                    return 2;
+                case MovieStartTypeEnum.FromSnapshot:
+                    return 1;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private MovieStartTypeEnum ConvertShortToMovieStartTypeEnum(short shortValue)
+        {
+            switch (shortValue)
+            {
+                case 1:
+                    return MovieStartTypeEnum.FromSnapshot;
+                case 2:
+                    return MovieStartTypeEnum.FromStart;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }
