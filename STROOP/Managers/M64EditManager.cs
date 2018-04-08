@@ -160,7 +160,11 @@ namespace STROOP.Managers
 
             for (int i = 0; i < table.Columns.Count; i++)
             {
+                int fillWeight = 100;
+                if (i <= 2) fillWeight = 200;
+                if (i == 0) fillWeight = 300;
                 table.Columns[i].HeaderText = M64InputFrame.FieldNameStrings[i];
+                table.Columns[i].FillWeight = fillWeight;
             }
         }
     }
