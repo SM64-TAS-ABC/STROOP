@@ -14,11 +14,12 @@ namespace STROOP.M64Editor
 {
     public class M64File
     {
-        public string CurrentFile { get; private set; }
+        public string CurrentFilePath { get; private set; }
+        public string CurrentFileName { get; private set; }
         public M64Header Header { get; } = new M64Header();
         public BindingList<M64InputFrame> Inputs { get; } = new BindingList<M64InputFrame>();
 
-        public bool LoadFile(string filePath)
+        public bool LoadFile(string filePath, string fileName)
         {
             if (!File.Exists(filePath))
                 return false;
@@ -33,10 +34,12 @@ namespace STROOP.M64Editor
                 return false;
             }
 
-            var loaded = LoadMupenFileBytes(movieBytes);
-
+            bool loaded = LoadMupenFileBytes(movieBytes);
             if (loaded)
-                CurrentFile = filePath;
+            {
+                CurrentFilePath = filePath;
+                CurrentFileName = fileName;
+            }
 
             return true;
         }
@@ -51,7 +54,6 @@ namespace STROOP.M64Editor
                 return false;
 
             Inputs.Clear();
-
             byte[] headerBytes = fileBytes.Take(0x400).ToArray();
             Header.LoadBytes(headerBytes);
             var frameBytes = fileBytes.Skip(0x400).ToArray();
@@ -76,7 +78,8 @@ namespace STROOP.M64Editor
 
         public bool Save()
         {
-            return Save(CurrentFile);
+            if (CurrentFilePath == null) return false;
+            return Save(CurrentFilePath);
         }
 
         public bool Save(string filePath)

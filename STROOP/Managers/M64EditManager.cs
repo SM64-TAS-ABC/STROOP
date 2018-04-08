@@ -134,14 +134,16 @@ namespace STROOP.Managers
             if (dialogResult != DialogResult.OK)
                 return;
 
-            string fileName = _gui.OpenFileDialogM64.FileName;
+            string filePath = _gui.OpenFileDialogM64.FileName;
+            string fileName = _gui.OpenFileDialogM64.SafeFileName;
+
             _gui.DataGridViewEditor.DataSource = null;
             _gui.PropertyGridHeader.SelectedObject = null;
-            bool success = _m64.LoadFile(fileName);
+            bool success = _m64.LoadFile(filePath, fileName);
             if (!success)
             {
                 MessageBox.Show(
-                    "Could not open file " + fileName + ".\n" +
+                    "Could not open file " + filePath + ".\n" +
                         "Perhaps Mupen is currently editing it.\n" +
                         "Try closing Mupen and trying again.",
                     "Error",
