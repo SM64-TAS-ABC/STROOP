@@ -155,16 +155,15 @@ namespace STROOP.Managers
         private void UpdateTableSettings()
         {
             DataGridView table = _gui.DataGridViewEditor;
-            if (table.Columns.Count != M64InputFrame.FieldNameStrings.Count)
+            if (table.Columns.Count != M64InputFrame.ColumnParameters.Count)
                 throw new ArgumentOutOfRangeException();
 
             for (int i = 0; i < table.Columns.Count; i++)
             {
-                int fillWeight = 100;
-                if (i <= 2) fillWeight = 200;
-                if (i == 0) fillWeight = 300;
-                table.Columns[i].HeaderText = M64InputFrame.FieldNameStrings[i];
+                (string headerText, int fillWeight, Color? backColor) = M64InputFrame.ColumnParameters[i];
+                table.Columns[i].HeaderText = headerText;
                 table.Columns[i].FillWeight = fillWeight;
+                if (backColor.HasValue) table.Columns[i].DefaultCellStyle.BackColor = backColor.Value;
             }
         }
     }

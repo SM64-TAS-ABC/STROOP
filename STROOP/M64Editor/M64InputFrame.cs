@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
+using System.Drawing;
 
 namespace STROOP.M64Editor
 {
@@ -77,26 +78,26 @@ namespace STROOP.M64Editor
             return new M64InputFrame(RawValue, Index);
         }
 
-        public static readonly List<string> FieldNameStrings =
-            new List<string>()
+        public static readonly List<(string, int, Color?)> ColumnParameters =
+            new List<(string, int, Color?)>()
             {
-                "Frame",
-                "X",
-                "Y",
-                "A",
-                "B",
-                "Z",
-                "S",
-                "R",
-                "C^",
-                "Cv",
-                "C<",
-                "C>",
-                "L",
-                "D^",
-                "Dv",
-                "D<",
-                "D>",
+                ("Frame", 300, null),
+                ("X", 200, null),
+                ("Y", 200, null),
+                ("A", 100, null),
+                ("B", 100, null),
+                ("Z", 100, null),
+                ("S", 100, null),
+                ("R", 100, null),
+                ("C^", 100, Color.Yellow),
+                ("Cv", 100, Color.Yellow),
+                ("C<", 100, Color.Yellow),
+                ("C>", 100, Color.Yellow),
+                ("L", 100, Color.LightGray),
+                ("D^", 100, Color.LightGray),
+                ("Dv", 100, Color.LightGray),
+                ("D<", 100, Color.LightGray),
+                ("D>", 100, Color.LightGray),
             };
     }
 }
