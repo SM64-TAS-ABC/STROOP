@@ -120,6 +120,38 @@ namespace STROOP.Structs
             throw new ArgumentOutOfRangeException();
         }
 
+        public static byte[] GetBytes(object obj, int? fixedLength = null, Encoding encoding = null)
+        {
+            byte[] bytes;
+
+            if (obj is byte byteValue) bytes = new byte[] { byteValue };
+            else if (obj is sbyte sbyteValue) bytes = new byte[] { (byte)sbyteValue };
+            else if (obj is short shortValue) bytes = BitConverter.GetBytes(shortValue);
+            else if (obj is ushort ushortValue) bytes = BitConverter.GetBytes(ushortValue);
+            else if (obj is int intValue) bytes = BitConverter.GetBytes(intValue);
+            else if (obj is uint uintValue) bytes = BitConverter.GetBytes(uintValue);
+            else if (obj is string stringValue)
+            {
+                if (encoding == null) throw new ArgumentOutOfRangeException();
+                bytes = encoding.GetBytes(stringValue);
+            }
+            else throw new ArgumentOutOfRangeException();
+
+            if (fixedLength.HasValue)
+            {
+                if (bytes.Length > fixedLength.Value)
+                {
+                    bytes = bytes.Take(fixedLength.Value).ToArray();
+                }
+                else if (bytes.Length < fixedLength.Value)
+                {
+                    bytes = bytes.Concat(new byte[fixedLength.Value - bytes.Length]).ToArray();
+                }
+            }
+
+            return bytes;
+        }
+
         public static bool IsNumber(object obj)
         {
             return obj is byte ||

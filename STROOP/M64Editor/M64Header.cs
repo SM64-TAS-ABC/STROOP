@@ -5,12 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
+using STROOP.Structs;
 
 namespace STROOP.M64Editor
 {
     [Serializable]
     public class M64Header
     {
+        public static readonly int HeaderSize = 0x400;
+
         // 000 4-byte signature: 4D 36 34 1A "M64\x1A"
         public uint Signature;
 
@@ -91,16 +94,77 @@ namespace STROOP.M64Editor
         public string RspPlugin;
 
         // 222 222-byte UTF-8 string: author name info
-        public string Aurthor;
+        public string Author;
 
         // 300 256-byte UTF-8 string: author movie description info
         public string Description;
 
         public M64Header(byte[] bytes)
         {
-            if (bytes.Length != 0x400) throw new ArgumentOutOfRangeException();
+            if (bytes.Length != HeaderSize) throw new ArgumentOutOfRangeException();
 
 
+        }
+
+        public byte[] ToBytes()
+        {
+            List<byte> bytes = new List<byte>();
+            bytes.AddRange(TypeUtilities.GetBytes(Signature));
+            bytes.AddRange(TypeUtilities.GetBytes(VersionNumber));
+            bytes.AddRange(TypeUtilities.GetBytes(Uid));
+            bytes.AddRange(TypeUtilities.GetBytes(Vis));
+            bytes.AddRange(TypeUtilities.GetBytes(Rerecords));
+            bytes.AddRange(TypeUtilities.GetBytes(Fps));
+            bytes.AddRange(TypeUtilities.GetBytes(NumControllers));
+            bytes.AddRange(TypeUtilities.GetBytes(new byte[2]));
+            bytes.AddRange(TypeUtilities.GetBytes(Inputs));
+            bytes.AddRange(TypeUtilities.GetBytes(MovieStartType));
+            bytes.AddRange(TypeUtilities.GetBytes(new byte[2]));
+            bytes.AddRange(TypeUtilities.GetBytes(GetControllerFlagsValue()));
+            bytes.AddRange(TypeUtilities.GetBytes(new byte[160]));
+            bytes.AddRange(TypeUtilities.GetBytes(RomName, 32, Encoding.ASCII));
+            bytes.AddRange(TypeUtilities.GetBytes(Cr32));
+            bytes.AddRange(TypeUtilities.GetBytes(CountryCode));
+            bytes.AddRange(TypeUtilities.GetBytes(new byte[160]));
+            bytes.AddRange(TypeUtilities.GetBytes(VideoPlugin, 64, Encoding.ASCII));
+            bytes.AddRange(TypeUtilities.GetBytes(SoundPlugin, 64, Encoding.ASCII));
+            bytes.AddRange(TypeUtilities.GetBytes(InputPlugin, 64, Encoding.ASCII));
+            bytes.AddRange(TypeUtilities.GetBytes(RspPlugin, 64, Encoding.ASCII));
+            bytes.AddRange(TypeUtilities.GetBytes(Author, 222, Encoding.UTF8));
+            bytes.AddRange(TypeUtilities.GetBytes(Description, 256, Encoding.UTF8));
+            if (bytes.Count != HeaderSize) throw new ArgumentOutOfRangeException();
+            return bytes.ToArray();
+        }
+
+        private uint GetControllerFlagsValue()
+        {
+            uint flags = 0;
+            uint currentBit = 1;
+            foreach (bool boolValue in GetControllerBoolList())
+            {
+                if (boolValue) flags |= currentBit;
+                currentBit <<= 1;
+            }
+            return flags;
+        }
+
+        private List<bool> GetControllerBoolList()
+        {
+            return new List<bool>()
+            {
+                Controller1Present,
+                Controller2Present,
+                Controller3Present,
+                Controller4Present,
+                Controller1MemPak,
+                Controller2MemPak,
+                Controller3MemPak,
+                Controller4MemPak,
+                Controller1RumblePak,
+                Controller2RumblePak,
+                Controller3RumblePak,
+                Controller4RumblePak,
+            };
         }
 
         /*
