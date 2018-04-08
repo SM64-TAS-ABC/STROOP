@@ -171,6 +171,8 @@ namespace STROOP.M64Editor
             RspPlugin = Encoding.ASCII.GetString(bytes, 0x1E2, 64).Replace("\0", "");
             Author = Encoding.UTF8.GetString(bytes, 0x222, 222).Replace("\0", "");
             Description = Encoding.UTF8.GetString(bytes, 0x300, 256).Replace("\0", "");
+
+            if (!Enumerable.SequenceEqual(bytes, ToBytes())) throw new ArgumentOutOfRangeException();
         }
 
         public byte[] ToBytes()
@@ -183,16 +185,16 @@ namespace STROOP.M64Editor
             bytes.AddRange(TypeUtilities.GetBytes(Rerecords));
             bytes.AddRange(TypeUtilities.GetBytes(Fps));
             bytes.AddRange(TypeUtilities.GetBytes(NumControllers));
-            bytes.AddRange(TypeUtilities.GetBytes(new byte[2]));
+            bytes.AddRange(new byte[2]);
             bytes.AddRange(TypeUtilities.GetBytes(Inputs));
             bytes.AddRange(TypeUtilities.GetBytes(MovieStartType));
-            bytes.AddRange(TypeUtilities.GetBytes(new byte[2]));
+            bytes.AddRange(new byte[2]);
             bytes.AddRange(TypeUtilities.GetBytes(GetControllerFlagsValue()));
-            bytes.AddRange(TypeUtilities.GetBytes(new byte[160]));
+            bytes.AddRange(new byte[160]);
             bytes.AddRange(TypeUtilities.GetBytes(RomName, 32, Encoding.ASCII));
             bytes.AddRange(TypeUtilities.GetBytes(Cr32));
             bytes.AddRange(TypeUtilities.GetBytes(CountryCode));
-            bytes.AddRange(TypeUtilities.GetBytes(new byte[160]));
+            bytes.AddRange(new byte[56]);
             bytes.AddRange(TypeUtilities.GetBytes(VideoPlugin, 64, Encoding.ASCII));
             bytes.AddRange(TypeUtilities.GetBytes(SoundPlugin, 64, Encoding.ASCII));
             bytes.AddRange(TypeUtilities.GetBytes(InputPlugin, 64, Encoding.ASCII));
