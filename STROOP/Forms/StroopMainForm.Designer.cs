@@ -35,6 +35,7 @@ namespace STROOP
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
@@ -4974,7 +4975,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 324F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 325F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -10803,7 +10804,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(238, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(221, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -10835,7 +10836,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(232, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(215, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -10891,7 +10892,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(232, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(215, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -11337,7 +11338,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 694;
+            this.splitContainerMemory.SplitterDistance = 697;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11361,7 +11362,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(578, 429);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(581, 429);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -11464,7 +11465,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(212, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(209, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPageHacks
@@ -15208,6 +15209,9 @@ namespace STROOP
             // 
             // dataGridViewM64Editor
             // 
+            this.dataGridViewM64Editor.AllowUserToDeleteRows = false;
+            this.dataGridViewM64Editor.AllowUserToResizeColumns = false;
+            this.dataGridViewM64Editor.AllowUserToResizeRows = false;
             this.dataGridViewM64Editor.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -15237,10 +15241,20 @@ namespace STROOP
             this.ColumnM64Dleft,
             this.ColumnM64Dright});
             this.dataGridViewM64Editor.ContextMenuStrip = this.contextMenuStripM64Editor;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewM64Editor.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewM64Editor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewM64Editor.EnableHeadersVisualStyles = false;
             this.dataGridViewM64Editor.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewM64Editor.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridViewM64Editor.Margin = new System.Windows.Forms.Padding(0);
             this.dataGridViewM64Editor.Name = "dataGridViewM64Editor";
+            this.dataGridViewM64Editor.RowHeadersVisible = false;
             this.dataGridViewM64Editor.RowTemplate.Height = 28;
             this.dataGridViewM64Editor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewM64Editor.Size = new System.Drawing.Size(643, 427);
@@ -15450,6 +15464,7 @@ namespace STROOP
             this.ColumnM64Index.HeaderText = "Frame";
             this.ColumnM64Index.Name = "ColumnM64Index";
             this.ColumnM64Index.ReadOnly = true;
+            this.ColumnM64Index.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // ColumnM64AnalogX
             // 
@@ -15457,6 +15472,7 @@ namespace STROOP
             this.ColumnM64AnalogX.FillWeight = 200F;
             this.ColumnM64AnalogX.HeaderText = "X";
             this.ColumnM64AnalogX.Name = "ColumnM64AnalogX";
+            this.ColumnM64AnalogX.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // ColumnM64AnalogY
             // 
@@ -15464,6 +15480,7 @@ namespace STROOP
             this.ColumnM64AnalogY.FillWeight = 200F;
             this.ColumnM64AnalogY.HeaderText = "Y";
             this.ColumnM64AnalogY.Name = "ColumnM64AnalogY";
+            this.ColumnM64AnalogY.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // ColumnM64A
             // 
@@ -15471,7 +15488,6 @@ namespace STROOP
             this.ColumnM64A.HeaderText = "A";
             this.ColumnM64A.Name = "ColumnM64A";
             this.ColumnM64A.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnM64A.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // ColumnM64B
             // 
@@ -15480,7 +15496,6 @@ namespace STROOP
             this.ColumnM64B.Name = "ColumnM64B";
             this.ColumnM64B.ReadOnly = true;
             this.ColumnM64B.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnM64B.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // ColumnM64Z
             // 
@@ -15489,7 +15504,6 @@ namespace STROOP
             this.ColumnM64Z.Name = "ColumnM64Z";
             this.ColumnM64Z.ReadOnly = true;
             this.ColumnM64Z.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnM64Z.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // ColumnM64L
             // 
@@ -15498,7 +15512,6 @@ namespace STROOP
             this.ColumnM64L.Name = "ColumnM64L";
             this.ColumnM64L.ReadOnly = true;
             this.ColumnM64L.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnM64L.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // ColumnM64R
             // 
@@ -15507,7 +15520,6 @@ namespace STROOP
             this.ColumnM64R.Name = "ColumnM64R";
             this.ColumnM64R.ReadOnly = true;
             this.ColumnM64R.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnM64R.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // ColumnM64Start
             // 
@@ -15516,7 +15528,6 @@ namespace STROOP
             this.ColumnM64Start.Name = "ColumnM64Start";
             this.ColumnM64Start.ReadOnly = true;
             this.ColumnM64Start.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnM64Start.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // ColumnM64Cup
             // 
@@ -15525,7 +15536,6 @@ namespace STROOP
             this.ColumnM64Cup.Name = "ColumnM64Cup";
             this.ColumnM64Cup.ReadOnly = true;
             this.ColumnM64Cup.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnM64Cup.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // ColumnM64Cright
             // 
@@ -15534,7 +15544,6 @@ namespace STROOP
             this.ColumnM64Cright.Name = "ColumnM64Cright";
             this.ColumnM64Cright.ReadOnly = true;
             this.ColumnM64Cright.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnM64Cright.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // ColumnM64Cleft
             // 
@@ -15543,7 +15552,6 @@ namespace STROOP
             this.ColumnM64Cleft.Name = "ColumnM64Cleft";
             this.ColumnM64Cleft.ReadOnly = true;
             this.ColumnM64Cleft.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnM64Cleft.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // ColumnM64Cdown
             // 
@@ -15552,7 +15560,6 @@ namespace STROOP
             this.ColumnM64Cdown.Name = "ColumnM64Cdown";
             this.ColumnM64Cdown.ReadOnly = true;
             this.ColumnM64Cdown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnM64Cdown.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // ColumnM64Dup
             // 
@@ -15561,7 +15568,6 @@ namespace STROOP
             this.ColumnM64Dup.Name = "ColumnM64Dup";
             this.ColumnM64Dup.ReadOnly = true;
             this.ColumnM64Dup.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnM64Dup.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // ColumnM64Ddown
             // 
@@ -15570,7 +15576,6 @@ namespace STROOP
             this.ColumnM64Ddown.Name = "ColumnM64Ddown";
             this.ColumnM64Ddown.ReadOnly = true;
             this.ColumnM64Ddown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnM64Ddown.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // ColumnM64Dleft
             // 
@@ -15579,7 +15584,6 @@ namespace STROOP
             this.ColumnM64Dleft.Name = "ColumnM64Dleft";
             this.ColumnM64Dleft.ReadOnly = true;
             this.ColumnM64Dleft.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnM64Dleft.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // ColumnM64Dright
             // 
@@ -15588,7 +15592,6 @@ namespace STROOP
             this.ColumnM64Dright.Name = "ColumnM64Dright";
             this.ColumnM64Dright.ReadOnly = true;
             this.ColumnM64Dright.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnM64Dright.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // StroopMainForm
             // 
