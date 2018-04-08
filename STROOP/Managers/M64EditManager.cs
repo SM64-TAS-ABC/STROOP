@@ -134,9 +134,20 @@ namespace STROOP.Managers
             if (dialogResult != DialogResult.OK)
                 return;
 
+            string fileName = _gui.OpenFileDialogM64.FileName;
             _gui.DataGridViewEditor.DataSource = null;
             _gui.PropertyGridHeader.SelectedObject = null;
-            _m64.LoadFile(_gui.OpenFileDialogM64.FileName);
+            bool success = _m64.LoadFile(fileName);
+            if (!success)
+            {
+                MessageBox.Show(
+                    "Could not open file " + fileName + ".\n" +
+                        "Perhaps Mupen is currently editing it.\n" +
+                        "Try closing Mupen and trying again.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
             _gui.DataGridViewEditor.DataSource = _m64.Inputs;
             UpdateTableSettings();
             _gui.PropertyGridHeader.SelectedObject = _m64.Header;
