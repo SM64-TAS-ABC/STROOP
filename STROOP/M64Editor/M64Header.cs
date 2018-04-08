@@ -42,8 +42,12 @@ namespace STROOP.M64Editor
         public byte Fps { get; set; }
 
         // 0C4 32-byte ASCII string: internal name of ROM used when recording, directly from ROM
+        private string _romName;
         [CategoryAttribute("\u200B\u200B\u200B\u200BRom"), DisplayName("\u200B\u200BRom Name")]
-        public string RomName { get; set; }
+        public string RomName {
+            get => _romName;
+            set => _romName = StringUtilities.Cap(value, 32);
+        }
 
         // 0E8 2-byte unsigned int: country code of ROM used when recording, directly from ROM
         [CategoryAttribute("\u200B\u200B\u200B\u200BRom"), DisplayName("\u200BCountry Code")]
@@ -54,12 +58,22 @@ namespace STROOP.M64Editor
         public uint Cr32 { get; set; }
 
         // 222 222-byte UTF-8 string: author name info
+        private string _author;
         [CategoryAttribute("\u200B\u200B\u200BDescription"), DisplayName("\u200BAuthor")]
-        public string Author { get; set; }
+        public string Author
+        {
+            get => _author;
+            set => _author = StringUtilities.Cap(value, 222);
+        }
 
         // 300 256-byte UTF-8 string: author movie description info
+        private string _description;
         [CategoryAttribute("\u200B\u200B\u200BDescription"), DisplayName("Description")]
-        public string Description { get; set; }
+        public string Description
+        {
+            get => _description;
+            set => _description = StringUtilities.Cap(value, 256);
+        }
 
         // 015 1-byte unsigned int: number of controllers
         [CategoryAttribute("\u200B\u200BController"), DisplayName("\u200B\u200B\u200BNum Controllers")]
@@ -96,20 +110,40 @@ namespace STROOP.M64Editor
         public bool Controller4RumblePak { get; set; }
 
         // 122 64-byte ASCII string: name of video plugin used when recording, directly from plugin
+        private string _videoPlugin;
         [CategoryAttribute("\u200BPlugin"), DisplayName("\u200B\u200B\u200BVideo Plugin")]
-        public string VideoPlugin { get; set; }
+        public string VideoPlugin
+        {
+            get => _videoPlugin;
+            set => _videoPlugin = StringUtilities.Cap(value, 64);
+        }
 
         // 162 64-byte ASCII string: name of sound plugin used when recording, directly from plugin
+        private string _soundPlugin;
         [CategoryAttribute("\u200BPlugin"), DisplayName("\u200B\u200BSound Plugin")]
-        public string SoundPlugin { get; set; }
+        public string SoundPlugin
+        {
+            get => _soundPlugin;
+            set => _soundPlugin = StringUtilities.Cap(value, 64);
+        }
 
         // 1A2 64-byte ASCII string: name of input plugin used when recording, directly from plugin
+        private string _inputPlugin;
         [CategoryAttribute("\u200BPlugin"), DisplayName("\u200BInput Plugin")]
-        public string InputPlugin { get; set; }
+        public string InputPlugin
+        {
+            get => _inputPlugin;
+            set => _inputPlugin = StringUtilities.Cap(value, 64);
+        }
 
         // 1E2 64-byte ASCII string: name of rsp plugin used when recording, directly from plugin
+        private string _rspPlugin;
         [CategoryAttribute("\u200BPlugin"), DisplayName("RSP Plugin")]
-        public string RspPlugin { get; set; }
+        public string RspPlugin
+        {
+            get => _rspPlugin;
+            set => _rspPlugin = StringUtilities.Cap(value, 64);
+        }
 
         // 000 4-byte signature: 4D 36 34 1A "M64\x1A"
         [CategoryAttribute("Mupen"), DisplayName("\u200B\u200BSignature")]
