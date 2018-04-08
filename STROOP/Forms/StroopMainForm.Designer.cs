@@ -1165,6 +1165,23 @@ namespace STROOP
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageM64Inputs = new System.Windows.Forms.TabPage();
             this.dataGridViewM64Editor = new System.Windows.Forms.DataGridView();
+            this.ColumnM64Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnM64AnalogX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnM64AnalogY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnM64A = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64B = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Z = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64L = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64R = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Start = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Cup = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Cright = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Cleft = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Cdown = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Dup = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Ddown = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Dleft = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Dright = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.contextMenuStripM64Editor = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.stripMenuItemM64InsertNewBefore = new System.Windows.Forms.ToolStripMenuItem();
             this.stripMenuItemM64InsertNewAfter = new System.Windows.Forms.ToolStripMenuItem();
@@ -1184,23 +1201,7 @@ namespace STROOP
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.openFileDialogM64 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialogM64 = new System.Windows.Forms.SaveFileDialog();
-            this.ColumnM64Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnM64AnalogX = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnM64AnalogY = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnM64A = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64B = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Z = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64L = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64R = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Start = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Cup = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Cright = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Cleft = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Cdown = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Dup = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Ddown = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Dleft = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Dright = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.propertyGridM64Header = new System.Windows.Forms.PropertyGrid();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1579,6 +1580,7 @@ namespace STROOP
             this.tabPageM64Inputs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewM64Editor)).BeginInit();
             this.contextMenuStripM64Editor.SuspendLayout();
+            this.tabPageM64Header.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
             this.SuspendLayout();
@@ -4971,7 +4973,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 321F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 322F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -10800,7 +10802,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(289, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(272, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -10832,7 +10834,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(283, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(266, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -10888,7 +10890,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(283, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(266, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -11334,7 +11336,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 685;
+            this.splitContainerMemory.SplitterDistance = 688;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11358,7 +11360,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(569, 429);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(572, 429);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -11461,7 +11463,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(221, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(218, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPageHacks
@@ -15242,182 +15244,6 @@ namespace STROOP
             this.dataGridViewM64Editor.Size = new System.Drawing.Size(643, 427);
             this.dataGridViewM64Editor.TabIndex = 2;
             // 
-            // contextMenuStripM64Editor
-            // 
-            this.contextMenuStripM64Editor.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.contextMenuStripM64Editor.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stripMenuItemM64InsertNewBefore,
-            this.stripMenuItemM64InsertNewAfter,
-            this.stripMenuItemM64Copy,
-            this.stripMenuItemM64PasteOnto,
-            this.stripMenuItemM64PasteBefore,
-            this.stripMenuItemM64PasteAfter});
-            this.contextMenuStripM64Editor.Name = "contextMenuStripEditor";
-            this.contextMenuStripM64Editor.Size = new System.Drawing.Size(168, 136);
-            // 
-            // stripMenuItemM64InsertNewBefore
-            // 
-            this.stripMenuItemM64InsertNewBefore.Name = "stripMenuItemM64InsertNewBefore";
-            this.stripMenuItemM64InsertNewBefore.Size = new System.Drawing.Size(167, 22);
-            this.stripMenuItemM64InsertNewBefore.Text = "Insert New Before";
-            // 
-            // stripMenuItemM64InsertNewAfter
-            // 
-            this.stripMenuItemM64InsertNewAfter.Name = "stripMenuItemM64InsertNewAfter";
-            this.stripMenuItemM64InsertNewAfter.Size = new System.Drawing.Size(167, 22);
-            this.stripMenuItemM64InsertNewAfter.Text = "Insert New After";
-            // 
-            // stripMenuItemM64Copy
-            // 
-            this.stripMenuItemM64Copy.Name = "stripMenuItemM64Copy";
-            this.stripMenuItemM64Copy.Size = new System.Drawing.Size(167, 22);
-            this.stripMenuItemM64Copy.Text = "Copy";
-            // 
-            // stripMenuItemM64PasteOnto
-            // 
-            this.stripMenuItemM64PasteOnto.Name = "stripMenuItemM64PasteOnto";
-            this.stripMenuItemM64PasteOnto.Size = new System.Drawing.Size(167, 22);
-            this.stripMenuItemM64PasteOnto.Text = "Paste Onto";
-            // 
-            // stripMenuItemM64PasteBefore
-            // 
-            this.stripMenuItemM64PasteBefore.Name = "stripMenuItemM64PasteBefore";
-            this.stripMenuItemM64PasteBefore.Size = new System.Drawing.Size(167, 22);
-            this.stripMenuItemM64PasteBefore.Text = "Paste Before";
-            // 
-            // stripMenuItemM64PasteAfter
-            // 
-            this.stripMenuItemM64PasteAfter.Name = "stripMenuItemM64PasteAfter";
-            this.stripMenuItemM64PasteAfter.Size = new System.Drawing.Size(167, 22);
-            this.stripMenuItemM64PasteAfter.Text = "Paste After";
-            // 
-            // tabPageM64Header
-            // 
-            this.tabPageM64Header.AutoScroll = true;
-            this.tabPageM64Header.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageM64Header.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPageM64Header.Location = new System.Drawing.Point(4, 22);
-            this.tabPageM64Header.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPageM64Header.Name = "tabPageM64Header";
-            this.tabPageM64Header.Size = new System.Drawing.Size(645, 429);
-            this.tabPageM64Header.TabIndex = 2;
-            this.tabPageM64Header.Text = "Header";
-            // 
-            // groupBoxObjects
-            // 
-            this.groupBoxObjects.Controls.Add(this.comboBoxLabelMethod);
-            this.groupBoxObjects.Controls.Add(this.labelLabelMethod);
-            this.groupBoxObjects.Controls.Add(this.labelSlotSize);
-            this.groupBoxObjects.Controls.Add(this.checkBoxObjLockLabels);
-            this.groupBoxObjects.Controls.Add(this.labelSortMethod);
-            this.groupBoxObjects.Controls.Add(this.WatchVariablePanelObjects);
-            this.groupBoxObjects.Controls.Add(this.comboBoxSortMethod);
-            this.groupBoxObjects.Controls.Add(this.trackBarObjSlotSize);
-            this.groupBoxObjects.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxObjects.Location = new System.Drawing.Point(0, 0);
-            this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Name = "groupBoxObjects";
-            this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(927, 204);
-            this.groupBoxObjects.TabIndex = 2;
-            this.groupBoxObjects.TabStop = false;
-            this.groupBoxObjects.Text = "Objects";
-            // 
-            // comboBoxLabelMethod
-            // 
-            this.comboBoxLabelMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxLabelMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxLabelMethod.Location = new System.Drawing.Point(645, 15);
-            this.comboBoxLabelMethod.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxLabelMethod.Name = "comboBoxLabelMethod";
-            this.comboBoxLabelMethod.Size = new System.Drawing.Size(102, 21);
-            this.comboBoxLabelMethod.TabIndex = 13;
-            // 
-            // labelLabelMethod
-            // 
-            this.labelLabelMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelLabelMethod.AutoSize = true;
-            this.labelLabelMethod.Location = new System.Drawing.Point(565, 18);
-            this.labelLabelMethod.Name = "labelLabelMethod";
-            this.labelLabelMethod.Size = new System.Drawing.Size(75, 13);
-            this.labelLabelMethod.TabIndex = 12;
-            this.labelLabelMethod.Text = "Label Method:";
-            // 
-            // labelSlotSize
-            // 
-            this.labelSlotSize.AutoSize = true;
-            this.labelSlotSize.Location = new System.Drawing.Point(110, 19);
-            this.labelSlotSize.Name = "labelSlotSize";
-            this.labelSlotSize.Size = new System.Drawing.Size(51, 13);
-            this.labelSlotSize.TabIndex = 11;
-            this.labelSlotSize.Text = "Slot Size:";
-            // 
-            // checkBoxObjLockLabels
-            // 
-            this.checkBoxObjLockLabels.AutoSize = true;
-            this.checkBoxObjLockLabels.Location = new System.Drawing.Point(4, 18);
-            this.checkBoxObjLockLabels.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxObjLockLabels.Name = "checkBoxObjLockLabels";
-            this.checkBoxObjLockLabels.Size = new System.Drawing.Size(84, 17);
-            this.checkBoxObjLockLabels.TabIndex = 7;
-            this.checkBoxObjLockLabels.Text = "Lock Labels";
-            this.checkBoxObjLockLabels.UseVisualStyleBackColor = true;
-            // 
-            // labelSortMethod
-            // 
-            this.labelSortMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelSortMethod.AutoSize = true;
-            this.labelSortMethod.Location = new System.Drawing.Point(751, 18);
-            this.labelSortMethod.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelSortMethod.Name = "labelSortMethod";
-            this.labelSortMethod.Size = new System.Drawing.Size(68, 13);
-            this.labelSortMethod.TabIndex = 5;
-            this.labelSortMethod.Text = "Sort Method:";
-            // 
-            // WatchVariablePanelObjects
-            // 
-            this.WatchVariablePanelObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.WatchVariablePanelObjects.AutoScroll = true;
-            this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
-            this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
-            this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(919, 155);
-            this.WatchVariablePanelObjects.TabIndex = 0;
-            this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
-            // 
-            // comboBoxSortMethod
-            // 
-            this.comboBoxSortMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxSortMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSortMethod.Location = new System.Drawing.Point(821, 15);
-            this.comboBoxSortMethod.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxSortMethod.Name = "comboBoxSortMethod";
-            this.comboBoxSortMethod.Size = new System.Drawing.Size(102, 21);
-            this.comboBoxSortMethod.TabIndex = 4;
-            // 
-            // trackBarObjSlotSize
-            // 
-            this.trackBarObjSlotSize.Location = new System.Drawing.Point(167, 15);
-            this.trackBarObjSlotSize.Maximum = 100;
-            this.trackBarObjSlotSize.Minimum = 15;
-            this.trackBarObjSlotSize.Name = "trackBarObjSlotSize";
-            this.trackBarObjSlotSize.Size = new System.Drawing.Size(104, 45);
-            this.trackBarObjSlotSize.TabIndex = 3;
-            this.trackBarObjSlotSize.TickFrequency = 10;
-            this.trackBarObjSlotSize.Value = 40;
-            this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
-            // 
-            // openFileDialogM64
-            // 
-            this.openFileDialogM64.FileName = "openFileDialog";
-            this.openFileDialogM64.Filter = "Mupen Movies|*.m64|All Files|*.*";
-            // 
-            // saveFileDialogM64
-            // 
-            this.saveFileDialogM64.Filter = "Mupen Movies|*.m64|All Files|*.*";
-            // 
             // ColumnM64Index
             // 
             this.ColumnM64Index.DataPropertyName = "FrameIndex";
@@ -15564,6 +15390,191 @@ namespace STROOP
             this.ColumnM64Dright.ReadOnly = true;
             this.ColumnM64Dright.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ColumnM64Dright.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // contextMenuStripM64Editor
+            // 
+            this.contextMenuStripM64Editor.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.contextMenuStripM64Editor.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stripMenuItemM64InsertNewBefore,
+            this.stripMenuItemM64InsertNewAfter,
+            this.stripMenuItemM64Copy,
+            this.stripMenuItemM64PasteOnto,
+            this.stripMenuItemM64PasteBefore,
+            this.stripMenuItemM64PasteAfter});
+            this.contextMenuStripM64Editor.Name = "contextMenuStripEditor";
+            this.contextMenuStripM64Editor.Size = new System.Drawing.Size(168, 136);
+            // 
+            // stripMenuItemM64InsertNewBefore
+            // 
+            this.stripMenuItemM64InsertNewBefore.Name = "stripMenuItemM64InsertNewBefore";
+            this.stripMenuItemM64InsertNewBefore.Size = new System.Drawing.Size(167, 22);
+            this.stripMenuItemM64InsertNewBefore.Text = "Insert New Before";
+            // 
+            // stripMenuItemM64InsertNewAfter
+            // 
+            this.stripMenuItemM64InsertNewAfter.Name = "stripMenuItemM64InsertNewAfter";
+            this.stripMenuItemM64InsertNewAfter.Size = new System.Drawing.Size(167, 22);
+            this.stripMenuItemM64InsertNewAfter.Text = "Insert New After";
+            // 
+            // stripMenuItemM64Copy
+            // 
+            this.stripMenuItemM64Copy.Name = "stripMenuItemM64Copy";
+            this.stripMenuItemM64Copy.Size = new System.Drawing.Size(167, 22);
+            this.stripMenuItemM64Copy.Text = "Copy";
+            // 
+            // stripMenuItemM64PasteOnto
+            // 
+            this.stripMenuItemM64PasteOnto.Name = "stripMenuItemM64PasteOnto";
+            this.stripMenuItemM64PasteOnto.Size = new System.Drawing.Size(167, 22);
+            this.stripMenuItemM64PasteOnto.Text = "Paste Onto";
+            // 
+            // stripMenuItemM64PasteBefore
+            // 
+            this.stripMenuItemM64PasteBefore.Name = "stripMenuItemM64PasteBefore";
+            this.stripMenuItemM64PasteBefore.Size = new System.Drawing.Size(167, 22);
+            this.stripMenuItemM64PasteBefore.Text = "Paste Before";
+            // 
+            // stripMenuItemM64PasteAfter
+            // 
+            this.stripMenuItemM64PasteAfter.Name = "stripMenuItemM64PasteAfter";
+            this.stripMenuItemM64PasteAfter.Size = new System.Drawing.Size(167, 22);
+            this.stripMenuItemM64PasteAfter.Text = "Paste After";
+            // 
+            // tabPageM64Header
+            // 
+            this.tabPageM64Header.AutoScroll = true;
+            this.tabPageM64Header.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageM64Header.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageM64Header.Controls.Add(this.propertyGridM64Header);
+            this.tabPageM64Header.Location = new System.Drawing.Point(4, 22);
+            this.tabPageM64Header.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageM64Header.Name = "tabPageM64Header";
+            this.tabPageM64Header.Size = new System.Drawing.Size(645, 429);
+            this.tabPageM64Header.TabIndex = 2;
+            this.tabPageM64Header.Text = "Header";
+            // 
+            // groupBoxObjects
+            // 
+            this.groupBoxObjects.Controls.Add(this.comboBoxLabelMethod);
+            this.groupBoxObjects.Controls.Add(this.labelLabelMethod);
+            this.groupBoxObjects.Controls.Add(this.labelSlotSize);
+            this.groupBoxObjects.Controls.Add(this.checkBoxObjLockLabels);
+            this.groupBoxObjects.Controls.Add(this.labelSortMethod);
+            this.groupBoxObjects.Controls.Add(this.WatchVariablePanelObjects);
+            this.groupBoxObjects.Controls.Add(this.comboBoxSortMethod);
+            this.groupBoxObjects.Controls.Add(this.trackBarObjSlotSize);
+            this.groupBoxObjects.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxObjects.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBoxObjects.Name = "groupBoxObjects";
+            this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBoxObjects.Size = new System.Drawing.Size(927, 204);
+            this.groupBoxObjects.TabIndex = 2;
+            this.groupBoxObjects.TabStop = false;
+            this.groupBoxObjects.Text = "Objects";
+            // 
+            // comboBoxLabelMethod
+            // 
+            this.comboBoxLabelMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxLabelMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxLabelMethod.Location = new System.Drawing.Point(645, 15);
+            this.comboBoxLabelMethod.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxLabelMethod.Name = "comboBoxLabelMethod";
+            this.comboBoxLabelMethod.Size = new System.Drawing.Size(102, 21);
+            this.comboBoxLabelMethod.TabIndex = 13;
+            // 
+            // labelLabelMethod
+            // 
+            this.labelLabelMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelLabelMethod.AutoSize = true;
+            this.labelLabelMethod.Location = new System.Drawing.Point(565, 18);
+            this.labelLabelMethod.Name = "labelLabelMethod";
+            this.labelLabelMethod.Size = new System.Drawing.Size(75, 13);
+            this.labelLabelMethod.TabIndex = 12;
+            this.labelLabelMethod.Text = "Label Method:";
+            // 
+            // labelSlotSize
+            // 
+            this.labelSlotSize.AutoSize = true;
+            this.labelSlotSize.Location = new System.Drawing.Point(110, 19);
+            this.labelSlotSize.Name = "labelSlotSize";
+            this.labelSlotSize.Size = new System.Drawing.Size(51, 13);
+            this.labelSlotSize.TabIndex = 11;
+            this.labelSlotSize.Text = "Slot Size:";
+            // 
+            // checkBoxObjLockLabels
+            // 
+            this.checkBoxObjLockLabels.AutoSize = true;
+            this.checkBoxObjLockLabels.Location = new System.Drawing.Point(4, 18);
+            this.checkBoxObjLockLabels.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxObjLockLabels.Name = "checkBoxObjLockLabels";
+            this.checkBoxObjLockLabels.Size = new System.Drawing.Size(84, 17);
+            this.checkBoxObjLockLabels.TabIndex = 7;
+            this.checkBoxObjLockLabels.Text = "Lock Labels";
+            this.checkBoxObjLockLabels.UseVisualStyleBackColor = true;
+            // 
+            // labelSortMethod
+            // 
+            this.labelSortMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelSortMethod.AutoSize = true;
+            this.labelSortMethod.Location = new System.Drawing.Point(751, 18);
+            this.labelSortMethod.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelSortMethod.Name = "labelSortMethod";
+            this.labelSortMethod.Size = new System.Drawing.Size(68, 13);
+            this.labelSortMethod.TabIndex = 5;
+            this.labelSortMethod.Text = "Sort Method:";
+            // 
+            // WatchVariablePanelObjects
+            // 
+            this.WatchVariablePanelObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.WatchVariablePanelObjects.AutoScroll = true;
+            this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
+            this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
+            this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(919, 155);
+            this.WatchVariablePanelObjects.TabIndex = 0;
+            this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
+            // 
+            // comboBoxSortMethod
+            // 
+            this.comboBoxSortMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxSortMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSortMethod.Location = new System.Drawing.Point(821, 15);
+            this.comboBoxSortMethod.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxSortMethod.Name = "comboBoxSortMethod";
+            this.comboBoxSortMethod.Size = new System.Drawing.Size(102, 21);
+            this.comboBoxSortMethod.TabIndex = 4;
+            // 
+            // trackBarObjSlotSize
+            // 
+            this.trackBarObjSlotSize.Location = new System.Drawing.Point(167, 15);
+            this.trackBarObjSlotSize.Maximum = 100;
+            this.trackBarObjSlotSize.Minimum = 15;
+            this.trackBarObjSlotSize.Name = "trackBarObjSlotSize";
+            this.trackBarObjSlotSize.Size = new System.Drawing.Size(104, 45);
+            this.trackBarObjSlotSize.TabIndex = 3;
+            this.trackBarObjSlotSize.TickFrequency = 10;
+            this.trackBarObjSlotSize.Value = 40;
+            this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
+            // 
+            // openFileDialogM64
+            // 
+            this.openFileDialogM64.FileName = "openFileDialog";
+            this.openFileDialogM64.Filter = "Mupen Movies|*.m64|All Files|*.*";
+            // 
+            // saveFileDialogM64
+            // 
+            this.saveFileDialogM64.Filter = "Mupen Movies|*.m64|All Files|*.*";
+            // 
+            // propertyGridM64Header
+            // 
+            this.propertyGridM64Header.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.propertyGridM64Header.Location = new System.Drawing.Point(0, 0);
+            this.propertyGridM64Header.Name = "propertyGridM64Header";
+            this.propertyGridM64Header.Size = new System.Drawing.Size(643, 427);
+            this.propertyGridM64Header.TabIndex = 0;
             // 
             // StroopMainForm
             // 
@@ -16048,6 +16059,7 @@ namespace STROOP
             this.tabPageM64Inputs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewM64Editor)).EndInit();
             this.contextMenuStripM64Editor.ResumeLayout(false);
+            this.tabPageM64Header.ResumeLayout(false);
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
@@ -17223,6 +17235,7 @@ namespace STROOP
         private DataGridViewCheckBoxColumn ColumnM64Ddown;
         private DataGridViewCheckBoxColumn ColumnM64Dleft;
         private DataGridViewCheckBoxColumn ColumnM64Dright;
+        private PropertyGrid propertyGridM64Header;
     }
 }
 
