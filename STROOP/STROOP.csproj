@@ -403,6 +403,7 @@
     <Compile Include="Utilities\Fast3DDecoder.cs" />
     <Compile Include="Utilities\MupenUtilities.cs" />
     <Compile Include="Utilities\InGameTrigUtilities.cs" />
+    <Compile Include="Utilities\StringUtilities.cs" />
     <Compile Include="Utilities\TestUtilities.cs" />
     <Compile Include="Utilities\TtcSpeedSettingUtilities.cs" />
     <Compile Include="Utilities\MovementCalculator.cs" />

@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using STROOP.Structs;
 using System.ComponentModel;
+using STROOP.Utilities;
 
 namespace STROOP.M64Editor
 {
@@ -15,15 +16,15 @@ namespace STROOP.M64Editor
         public static readonly int HeaderSize = 0x400;
 
         // 018 4-byte little-endian unsigned int: number of input samples for any controllers
-        [Category("(1) Main"), DisplayName("Inputs")]
+        [Category("\u200B\u200B\u200B\u200B\u200BMain"), DisplayName("\u200B\u200B\u200B\u200BInputs")]
         public int Inputs { get; set; }
 
         // 00C 4-byte little-endian unsigned int: number of frames(vertical interrupts)
-        [Category("(1) Main"), DisplayName("VIs")]
+        [Category("\u200B\u200B\u200B\u200B\u200BMain"), DisplayName("\u200B\u200B\u200BVIs")]
         public int Vis { get; set; }
 
         // 010 4-byte little-endian unsigned int: rerecord count
-        [CategoryAttribute("(1) Main"), DisplayName("Rerecords")]
+        [CategoryAttribute("\u200B\u200B\u200B\u200B\u200BMain"), DisplayName("\u200B\u200BRerecords")]
         public int Rerecords { get; set; }
 
         // 01C 2-byte unsigned int: movie start type
@@ -31,35 +32,35 @@ namespace STROOP.M64Editor
         //     with the movie filename and a .st extension)
         // value 2: movie begins from power-on
         // other values: invalid movie
-        [CategoryAttribute("(1) Main"), DisplayName("Movie Start Type")]
+        [CategoryAttribute("\u200B\u200B\u200B\u200B\u200BMain"), DisplayName("\u200BMovie Start Type")]
         public short MovieStartType { get; set; }
 
         // 014 1-byte unsigned int: frames(vertical interrupts) per second
-        [CategoryAttribute("(1) Main"), DisplayName("FPS")]
+        [CategoryAttribute("\u200B\u200B\u200B\u200B\u200BMain"), DisplayName("FPS")]
         public byte Fps { get; set; }
 
         // 0C4 32-byte ASCII string: internal name of ROM used when recording, directly from ROM
-        [CategoryAttribute("(2) Rom"), DisplayName("Rom Name")]
+        [CategoryAttribute("\u200B\u200B\u200B\u200BRom"), DisplayName("\u200B\u200BRom Name")]
         public string RomName { get; set; }
 
         // 0E8 2-byte unsigned int: country code of ROM used when recording, directly from ROM
-        [CategoryAttribute("(2) Rom"), DisplayName("Country Code")]
+        [CategoryAttribute("\u200B\u200B\u200B\u200BRom"), DisplayName("\u200BCountry Code")]
         public ushort CountryCode { get; set; }
 
         // 0E4 4-byte unsigned int: CRC32 of ROM used when recording, directly from ROM
-        [CategoryAttribute("(2) Rom"), DisplayName("CR32")]
+        [CategoryAttribute("\u200B\u200B\u200B\u200BRom"), DisplayName("CR32")]
         public uint Cr32 { get; set; }
 
         // 222 222-byte UTF-8 string: author name info
-        [CategoryAttribute("(3) Description"), DisplayName("Author")]
+        [CategoryAttribute("\u200B\u200B\u200BDescription"), DisplayName("\u200BAuthor")]
         public string Author { get; set; }
 
         // 300 256-byte UTF-8 string: author movie description info
-        [CategoryAttribute("(3) Description"), DisplayName("Description")]
+        [CategoryAttribute("\u200B\u200B\u200BDescription"), DisplayName("Description")]
         public string Description { get; set; }
 
         // 015 1-byte unsigned int: number of controllers
-        [CategoryAttribute("(4) Controller"), DisplayName("Num Controllers")]
+        [CategoryAttribute("\u200B\u200BController"), DisplayName("\u200B\u200B\u200BNum Controllers")]
         public byte NumControllers { get; set; }
 
         // 020 4-byte unsigned int: controller flags
@@ -67,58 +68,58 @@ namespace STROOP.M64Editor
         // bit 4: controller 1 has mempak
         // bit 8: controller 1 has rumblepak
         // +1..3 for controllers 2..4.
-        [CategoryAttribute("(4) Controller"), DisplayName("Controller 1 Present")]
+        [CategoryAttribute("\u200B\u200BController"), DisplayName("\u200B\u200BController 1 Present")]
         public bool Controller1Present { get; set; }
-        [CategoryAttribute("(4) Controller"), DisplayName("Controller 2 Present")]
+        [CategoryAttribute("\u200B\u200BController"), DisplayName("\u200B\u200BController 2 Present")]
         public bool Controller2Present { get; set; }
-        [CategoryAttribute("(4) Controller"), DisplayName("Controller 3 Present")]
+        [CategoryAttribute("\u200B\u200BController"), DisplayName("\u200B\u200BController 3 Present")]
         public bool Controller3Present { get; set; }
-        [CategoryAttribute("(4) Controller"), DisplayName("Controller 4 Present")]
+        [CategoryAttribute("\u200B\u200BController"), DisplayName("\u200B\u200BController 4 Present")]
         public bool Controller4Present { get; set; }
-        [CategoryAttribute("(4) Controller"), DisplayName("Controller 1 MemPak")]
+        [CategoryAttribute("\u200B\u200BController"), DisplayName("\u200BController 1 MemPak")]
         public bool Controller1MemPak { get; set; }
-        [CategoryAttribute("(4) Controller"), DisplayName("Controller 2 MemPak")]
+        [CategoryAttribute("\u200B\u200BController"), DisplayName("\u200BController 2 MemPak")]
         public bool Controller2MemPak { get; set; }
-        [CategoryAttribute("(4) Controller"), DisplayName("Controller 3 MemPak")]
+        [CategoryAttribute("\u200B\u200BController"), DisplayName("\u200BController 3 MemPak")]
         public bool Controller3MemPak { get; set; }
-        [CategoryAttribute("(4) Controller"), DisplayName("Controller 4 MemPak")]
+        [CategoryAttribute("\u200B\u200BController"), DisplayName("\u200BController 4 MemPak")]
         public bool Controller4MemPak { get; set; }
-        [CategoryAttribute("(4) Controller"), DisplayName("Controller 1 RumblePak")]
+        [CategoryAttribute("\u200B\u200BController"), DisplayName("Controller 1 RumblePak")]
         public bool Controller1RumblePak { get; set; }
-        [CategoryAttribute("(4) Controller"), DisplayName("Controller 2 RumblePak")]
+        [CategoryAttribute("\u200B\u200BController"), DisplayName("Controller 2 RumblePak")]
         public bool Controller2RumblePak { get; set; }
-        [CategoryAttribute("(4) Controller"), DisplayName("Controller 3 RumblePak")]
+        [CategoryAttribute("\u200B\u200BController"), DisplayName("Controller 3 RumblePak")]
         public bool Controller3RumblePak { get; set; }
-        [CategoryAttribute("(4) Controller"), DisplayName("Controller 4 RumblePak")]
+        [CategoryAttribute("\u200B\u200BController"), DisplayName("Controller 4 RumblePak")]
         public bool Controller4RumblePak { get; set; }
 
         // 122 64-byte ASCII string: name of video plugin used when recording, directly from plugin
-        [CategoryAttribute("(5) Plugin"), DisplayName("Video Plugin")]
+        [CategoryAttribute("\u200BPlugin"), DisplayName("\u200B\u200B\u200BVideo Plugin")]
         public string VideoPlugin { get; set; }
 
         // 162 64-byte ASCII string: name of sound plugin used when recording, directly from plugin
-        [CategoryAttribute("(5) Plugin"), DisplayName("Sound Plugin")]
+        [CategoryAttribute("\u200BPlugin"), DisplayName("\u200B\u200BSound Plugin")]
         public string SoundPlugin { get; set; }
 
         // 1A2 64-byte ASCII string: name of input plugin used when recording, directly from plugin
-        [CategoryAttribute("(5) Plugin"), DisplayName("Input Plugin")]
+        [CategoryAttribute("\u200BPlugin"), DisplayName("\u200BInput Plugin")]
         public string InputPlugin { get; set; }
 
         // 1E2 64-byte ASCII string: name of rsp plugin used when recording, directly from plugin
-        [CategoryAttribute("(5) Plugin"), DisplayName("RSP Plugin")]
+        [CategoryAttribute("\u200BPlugin"), DisplayName("RSP Plugin")]
         public string RspPlugin { get; set; }
 
         // 000 4-byte signature: 4D 36 34 1A "M64\x1A"
-        [CategoryAttribute("(6) Mupen"), DisplayName("Signature")]
+        [CategoryAttribute("Mupen"), DisplayName("\u200B\u200BSignature")]
         public uint Signature { get; set; }
 
         // 004 4-byte little-endian unsigned int: version number, should be 3
-        [CategoryAttribute("(6) Mupen"), DisplayName("Version Number")]
+        [CategoryAttribute("Mupen"), DisplayName("\u200BVersion Number")]
         public uint VersionNumber { get; set; }
 
         // 008 4-byte little-endian integer: movie "uid" - identifies the movie-savestate relationship,
         // also used as the recording time in Unix epoch format
-        [CategoryAttribute("(6) Mupen"), DisplayName("UID")]
+        [CategoryAttribute("Mupen"), DisplayName("UID")]
         public int Uid { get; set; }
 
         public M64Header()
