@@ -41,6 +41,7 @@ namespace STROOP.Managers
 
             _gui.DataGridViewInputs.MouseClick += DataGridViewEditor_MouseClick;
             _gui.DataGridViewInputs.DataError += (sender, e) => _gui.DataGridViewInputs.CancelEdit();
+            _gui.DataGridViewInputs.SelectionChanged += DataGridViewEditor_SelectionChanged;
 
             _m64 = new M64File();
             _gui.DataGridViewInputs.DataSource = _m64.Inputs;
@@ -99,6 +100,23 @@ namespace STROOP.Managers
                 _gui.ContextMenuStripEditor.Show(_gui.DataGridViewInputs, new Point(e.X, e.Y));
 
             }
+        }
+
+        private void DataGridViewEditor_SelectionChanged(object sender, EventArgs e)
+        {
+            List<M64InputCell> cells = new List<M64InputCell>();
+            foreach (DataGridViewCell cell in _gui.DataGridViewInputs.SelectedCells)
+            {
+                cells.Add(new M64InputCell(_gui.DataGridViewInputs, cell));
+            }
+
+            int minRowIndex = cells.Min(cell => cell.RowIndex);
+            int maxRowIndex = cells.Max(cell => cell.RowIndex);
+            List<string> headerTexts = cells.ConvertAll(cell => cell.InputHeaderText).Distinct().ToList();
+
+            _gui.TextBoxSelectionStartFrame.Text = minRowIndex.ToString();
+            _gui.TextBoxSelectionEndFrame.Text = maxRowIndex.ToString();
+            _gui.TextBoxSelectionInputs.Text = String.Join("", headerTexts);
         }
 
         private void ButtonGoto_Click(object sender, EventArgs e)
