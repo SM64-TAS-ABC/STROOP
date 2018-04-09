@@ -19,7 +19,7 @@ namespace STROOP.Forms
         {
             InitializeComponent();
             buttonOk.Click += (sender, e) => Close();
-            textBoxTriangleInfo.Click += (sender, e) => textBoxTriangleInfo.SelectAll();
+            textBoxTriangleInfo.DoubleClick += (sender, e) => textBoxTriangleInfo.SelectAll();
         }
 
         public void SetTriangleCoordinates(short[] coordinates)
