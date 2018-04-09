@@ -112,7 +112,10 @@ namespace STROOP.Managers
 
             int minRowIndex = cells.Min(cell => cell.RowIndex);
             int maxRowIndex = cells.Max(cell => cell.RowIndex);
-            List<string> headerTexts = cells.ConvertAll(cell => cell.InputHeaderText).Distinct().ToList();
+            List<string> headerTexts = cells
+                .FindAll(cell => cell.IsInput)
+                .ConvertAll(cell => cell.HeaderText).Distinct().ToList();
+            headerTexts.Sort(M64Utilities.InputStringComparison);
 
             _gui.TextBoxSelectionStartFrame.Text = minRowIndex.ToString();
             _gui.TextBoxSelectionEndFrame.Text = maxRowIndex.ToString();

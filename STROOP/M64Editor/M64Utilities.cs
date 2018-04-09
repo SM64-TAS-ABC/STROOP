@@ -16,8 +16,8 @@ namespace STROOP.M64Editor
     public static class M64Utilities
     {
 
-        public static Dictionary<string, int> InputStringToIndex
-            = new Dictionary<string, int>()
+        public static readonly Dictionary<string, int> InputStringToIndex =
+            new Dictionary<string, int>()
             {
                 ["X"] = 0,
                 ["Y"] = 1,
@@ -36,6 +36,10 @@ namespace STROOP.M64Editor
                 ["D<"] = 14,
                 ["D>"] = 15,
             };
+
+        public static readonly Comparison<string> InputStringComparison =
+            new Comparison<string>((inputString1, inputString2) =>
+                InputStringToIndex[inputString1] - InputStringToIndex[inputString2]);
 
         public static void ClearSpecificInput(M64InputFrame inputFrame, string headerText)
         {

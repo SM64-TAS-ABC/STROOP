@@ -14,13 +14,9 @@ namespace STROOP.M64Editor
     public class M64InputCell
     {
         public readonly string HeaderText;
-        public string InputHeaderText
+        public bool IsInput
         {
-            get
-            {
-                if (HeaderText == "Frame") return "";
-                return HeaderText;
-            }
+            get => HeaderText != "Frame";
         }
         private readonly M64InputFrame InputFrame;
         public int RowIndex { get => InputFrame.Index; }
