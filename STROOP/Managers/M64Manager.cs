@@ -24,7 +24,7 @@ namespace STROOP.Managers
         {
             _gui = gui;
 
-            _gui.ButtonSave.Click += (sender, e) => _m64.Save();
+            _gui.ButtonSave.Click += ButtonSave_Click;
             _gui.ButtonSaveAs.Click += ButtonSaveAs_Click;
             _gui.ButtonOpen.Click += ButtonOpen_Click;
             _gui.ButtonClose.Click += ButtonClose_Click;
@@ -165,7 +165,32 @@ namespace STROOP.Managers
             if (dialogResult != DialogResult.OK)
                 return;
 
-            _m64.Save(_gui.SaveFileDialogM64.FileName);
+            bool success = _m64.Save(_gui.SaveFileDialogM64.FileName);
+            if (!success)
+            {
+                MessageBox.Show(
+                    "Could not save file.\n" +
+                        "Perhaps Mupen is currently editing it.\n" +
+                        "Try closing Mupen and trying again.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private void ButtonSave_Click(object sender, EventArgs e)
+        {
+            bool success = _m64.Save();
+            if (!success)
+            {
+                MessageBox.Show(
+                    "Could not save file.\n" +
+                        "Perhaps Mupen is currently editing it.\n" +
+                        "Try closing Mupen and trying again.",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
 
         private void ButtonOpen_Click(object sender, EventArgs e)
