@@ -1,5 +1,6 @@
 ﻿using STROOP.M64Editor;
 using STROOP.Structs.Gui;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -54,10 +55,12 @@ namespace STROOP.Managers
         {
             if (_gui.TabControlDetails.SelectedTab == _gui.TabPageHeader)
             {
+                ControlUtilities.SetPropertyGridLabelColumnWidth(_gui.PropertyGridHeader, 160);
                 _gui.PropertyGridHeader.Refresh();
             }
             else if (_gui.TabControlDetails.SelectedTab == _gui.TabPageStats)
             {
+                ControlUtilities.SetPropertyGridLabelColumnWidth(_gui.PropertyGridStats, 160);
                 _gui.PropertyGridStats.Refresh();
             }
         }

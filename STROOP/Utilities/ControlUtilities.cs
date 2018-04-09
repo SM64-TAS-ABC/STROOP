@@ -8,6 +8,7 @@ using System.Xml;
 using System.Windows.Forms;
 using System.Drawing;
 using STROOP.Structs;
+using System.Reflection;
 
 namespace STROOP.Utilities
 {
@@ -410,6 +411,25 @@ namespace STROOP.Utilities
             }
 
             itemList.ForEach(item => topLevelItem.DropDownItems.Add(item));
+        }
+
+        public static void SetPropertyGridLabelColumnWidth(PropertyGrid grid, int width)
+        {
+            if (grid == null)
+                return;
+
+            FieldInfo fi = grid.GetType().GetField("gridView", BindingFlags.Instance | BindingFlags.NonPublic);
+            if (fi == null)
+                return;
+
+            Control view = fi.GetValue(grid) as Control;
+            if (view == null)
+                return;
+
+            MethodInfo mi = view.GetType().GetMethod("MoveSplitterTo", BindingFlags.Instance | BindingFlags.NonPublic);
+            if (mi == null)
+                return;
+            mi.Invoke(view, new object[] { width });
         }
     }
 }
