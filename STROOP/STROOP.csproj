@@ -295,6 +295,7 @@
     <Compile Include="LoadingHandler.cs" />
     <Compile Include="M64Editor\M64File.cs" />
     <Compile Include="M64Editor\M64InputCell.cs" />
+    <Compile Include="M64Editor\M64Utilities.cs" />
     <Compile Include="M64Editor\M64Stats.cs" />
     <Compile Include="M64Editor\M64Header.cs" />
     <Compile Include="M64Editor\M64InputFrame.cs" />

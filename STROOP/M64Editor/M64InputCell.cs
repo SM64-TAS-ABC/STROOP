@@ -34,62 +34,7 @@ namespace STROOP.M64Editor
 
         public void Clear()
         {
-            Clear(InputFrame, HeaderText);
-        }
-
-        private void Clear(M64InputFrame inputFrame, string headerText)
-        {
-            switch (headerText)
-            {
-                case "X":
-                    inputFrame.X = 0;
-                    break;
-                case "Y":
-                    inputFrame.Y = 0;
-                    break;
-                case "A":
-                    inputFrame.A = false;
-                    break;
-                case "B":
-                    inputFrame.B = false;
-                    break;
-                case "Z":
-                    inputFrame.Z = false;
-                    break;
-                case "S":
-                    inputFrame.Start = false;
-                    break;
-                case "R":
-                    inputFrame.R = false;
-                    break;
-                case "C^":
-                    inputFrame.C_Up = false;
-                    break;
-                case "Cv":
-                    inputFrame.C_Down = false;
-                    break;
-                case "C<":
-                    inputFrame.C_Left = false;
-                    break;
-                case "C>":
-                    inputFrame.C_Right = false;
-                    break;
-                case "L":
-                    inputFrame.L = false;
-                    break;
-                case "D^":
-                    inputFrame.D_Up = false;
-                    break;
-                case "Dv":
-                    inputFrame.D_Down = false;
-                    break;
-                case "D<":
-                    inputFrame.D_Left = false;
-                    break;
-                case "D>":
-                    inputFrame.D_Right = false;
-                    break;
-            }
+            M64Utilities.ClearSpecificInput(InputFrame, HeaderText);
         }
     }
 }
