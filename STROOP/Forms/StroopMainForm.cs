@@ -174,6 +174,8 @@ namespace STROOP
             M64Gui m64Gui = new M64Gui()
             {
                 LabelFileName = labelM64FileName,
+                LabelNumInputsValue = labelM64NumInputsValue,
+
                 ButtonSave = buttonM64Save,
                 ButtonSaveAs = buttonM64SaveAs,
                 ButtonOpen = buttonM64Open,
@@ -195,6 +197,22 @@ namespace STROOP
 
                 ButtonSetUsHeader = buttonM64SetUsHeader,
                 ButtonSetJpHeader = buttonM64SetJpHeader,
+
+                TextBoxSelectionStartFrame = textBoxM64SelectionStartFrame,
+                TextBoxSelectionEndFrame = textBoxM64SelectionEndFrame,
+                TextBoxSelectionInputs = textBoxM64SelectionInputs,
+
+                ButtonDeleteRows = buttonM64DeleteRows,
+                ButtonClearRows = buttonM64ClearRows,
+                ButtonClearInputs = buttonM64ClearInputs,
+                ButtonClearCells = buttonM64ClearCells,
+
+                ButtonCopyRows = buttonM64CopyRows,
+                ButtonCopyInputs = buttonM64CopyInputs,
+                ListBoxCopied = listBoxM64Copied,
+                ButtonPasteInsert = buttonM64PasteInsert,
+                ButtonPasteOverwrite = buttonM64PasteOverwrite,
+                TextBoxPasteMultiplicity = textBoxM64PasteMultiplicity,
 
                 ContextMenuStripEditor = contextMenuStripM64Editor,
                 ToolStripMenuItemInsertNewAfter = stripMenuItemM64InsertNewAfter,

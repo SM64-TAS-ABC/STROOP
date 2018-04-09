@@ -10,6 +10,8 @@ namespace STROOP.Structs.Gui
     public class M64Gui
     {
         public Label LabelFileName;
+        public Label LabelNumInputsValue;
+
         public Button ButtonSave;
         public Button ButtonSaveAs;
         public Button ButtonOpen;
@@ -31,6 +33,22 @@ namespace STROOP.Structs.Gui
 
         public Button ButtonSetUsHeader;
         public Button ButtonSetJpHeader;
+
+        public BetterTextbox TextBoxSelectionStartFrame;
+        public BetterTextbox TextBoxSelectionEndFrame;
+        public BetterTextbox TextBoxSelectionInputs;
+
+        public Button ButtonDeleteRows;
+        public Button ButtonClearRows;
+        public Button ButtonClearInputs;
+        public Button ButtonClearCells;
+
+        public Button ButtonCopyRows;
+        public Button ButtonCopyInputs;
+        public ListBox ListBoxCopied;
+        public Button ButtonPasteInsert;
+        public Button ButtonPasteOverwrite;
+        public BetterTextbox TextBoxPasteMultiplicity;
 
         public ContextMenuStrip ContextMenuStripEditor;
         public ToolStripMenuItem ToolStripMenuItemInsertNewBefore;
