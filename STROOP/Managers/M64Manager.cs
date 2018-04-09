@@ -46,6 +46,20 @@ namespace STROOP.Managers
             _gui.PropertyGridStats.SelectedObject = _m64.Stats;
             _gui.PropertyGridStats.Refresh();
             _gui.PropertyGridStats.ContextMenuStrip = _m64.Stats.CreateContextMenuStrip();
+
+            _gui.TabControlDetails.SelectedIndexChanged += TabControlDetails_SelectedIndexChanged;
+        }
+
+        private void TabControlDetails_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_gui.TabControlDetails.SelectedTab == _gui.TabPageHeader)
+            {
+                _gui.PropertyGridHeader.Refresh();
+            }
+            else if (_gui.TabControlDetails.SelectedTab == _gui.TabPageStats)
+            {
+                _gui.PropertyGridStats.Refresh();
+            }
         }
 
         private void DataGridViewEditor_MouseClick(object sender, MouseEventArgs e)

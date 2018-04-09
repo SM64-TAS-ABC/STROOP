@@ -174,12 +174,24 @@ namespace STROOP
             M64Gui m64Gui = new M64Gui()
             {
                 LabelFileName = labelM64FileName,
-
                 ButtonSave = buttonM64Save,
                 ButtonSaveAs = buttonM64SaveAs,
                 ButtonOpen = buttonM64Open,
                 ButtonClose = buttonM64Close,
                 ButtonGoto = buttonM64Goto,
+                TextBoxGoto = textBoxM64Goto,
+
+                OpenFileDialogM64 = openFileDialogM64,
+                SaveFileDialogM64 = saveFileDialogM64,
+
+                DataGridViewInputs = dataGridViewM64Inputs,
+                PropertyGridHeader = propertyGridM64Header,
+                PropertyGridStats = propertyGridM64Stats,
+
+                TabControlDetails = tabControlM64Details,
+                TabPageInputs = tabPageM64Inputs,
+                TabPageHeader = tabPageM64Header,
+                TabPageStats = tabPageM64Stats,
 
                 ContextMenuStripEditor = contextMenuStripM64Editor,
                 ToolStripMenuItemInsertNewAfter = stripMenuItemM64InsertNewAfter,
@@ -188,12 +200,6 @@ namespace STROOP
                 ToolStripMenuItemPasteOnto = stripMenuItemM64PasteOnto,
                 ToolStripMenuItemPasteBefore = stripMenuItemM64PasteBefore,
                 ToolStripMenuItemPasteAfter = stripMenuItemM64PasteAfter,
-                TextBoxGoto = textBoxM64Goto,
-                OpenFileDialogM64 = openFileDialogM64,
-                SaveFileDialogM64 = saveFileDialogM64,
-                DataGridViewInputs = dataGridViewM64Inputs,
-                PropertyGridHeader = propertyGridM64Header,
-                PropertyGridStats = propertyGridM64Stats,
             };
 
             // Create managers
