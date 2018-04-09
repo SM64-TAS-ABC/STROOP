@@ -28,7 +28,10 @@ namespace STROOP.Structs.Gui
         public TabPage TabPageInputs;
         public TabPage TabPageHeader;
         public TabPage TabPageStats;
-        
+
+        public Button ButtonSetUsHeader;
+        public Button ButtonSetJpHeader;
+
         public ContextMenuStrip ContextMenuStripEditor;
         public ToolStripMenuItem ToolStripMenuItemInsertNewBefore;
         public ToolStripMenuItem ToolStripMenuItemInsertNewAfter;

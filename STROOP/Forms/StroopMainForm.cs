@@ -193,6 +193,9 @@ namespace STROOP
                 TabPageHeader = tabPageM64Header,
                 TabPageStats = tabPageM64Stats,
 
+                ButtonSetUsHeader = buttonM64SetUsHeader,
+                ButtonSetJpHeader = buttonM64SetJpHeader,
+
                 ContextMenuStripEditor = contextMenuStripM64Editor,
                 ToolStripMenuItemInsertNewAfter = stripMenuItemM64InsertNewAfter,
                 ToolStripMenuItemInsertNewBefore = stripMenuItemM64InsertNewBefore,

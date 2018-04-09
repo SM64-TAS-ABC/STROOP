@@ -1,4 +1,5 @@
 ﻿using STROOP.M64Editor;
+using STROOP.Structs;
 using STROOP.Structs.Gui;
 using STROOP.Utilities;
 using System;
@@ -28,6 +29,8 @@ namespace STROOP.Managers
             _gui.ButtonOpen.Click += ButtonOpen_Click;
             _gui.ButtonClose.Click += ButtonClose_Click;
             _gui.ButtonGoto.Click += ButtonGoto_Click;
+            _gui.ButtonSetUsHeader.Click += (sender, e) => SetHeaderRomVersion(RomVersion.US);
+            _gui.ButtonSetJpHeader.Click += (sender, e) => SetHeaderRomVersion(RomVersion.JP);
 
             _gui.ToolStripMenuItemInsertNewAfter.Click += ToolStripMenuItemInsertNewAfter_Click;
             _gui.ToolStripMenuItemInsertNewAfter.Click += ToolStripMenuItemInsertNewAfter_Click;
@@ -49,6 +52,25 @@ namespace STROOP.Managers
             _gui.PropertyGridStats.ContextMenuStrip = _m64.Stats.CreateContextMenuStrip();
 
             _gui.TabControlDetails.SelectedIndexChanged += TabControlDetails_SelectedIndexChanged;
+        }
+
+        private void SetHeaderRomVersion(RomVersion romVersion)
+        {
+            switch (romVersion)
+            {
+                case RomVersion.US:
+                    _m64.Header.CountryCode = M64Config.CountryCodeUS;
+                    _m64.Header.Crc = M64Config.CrcUS;
+                    break;
+                case RomVersion.JP:
+                    _m64.Header.CountryCode = M64Config.CountryCodeJP;
+                    _m64.Header.Crc = M64Config.CrcJP;
+                    break;
+                case RomVersion.PAL:
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            _gui.PropertyGridHeader.Refresh();
         }
 
         private void TabControlDetails_SelectedIndexChanged(object sender, EventArgs e)
