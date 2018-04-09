@@ -34,8 +34,8 @@ namespace STROOP
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
@@ -194,10 +194,29 @@ namespace STROOP
             this.WatchVariablePanelMario = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageM64 = new System.Windows.Forms.TabPage();
             this.splitContainerM64 = new STROOP.BetterSplitContainer();
+            this.betterTextbox5 = new STROOP.BetterTextbox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.groupBoxM64Selection = new System.Windows.Forms.GroupBox();
+            this.textBoxM64SelectionInputs = new STROOP.BetterTextbox();
+            this.textBoxM64SelectionEndFrame = new STROOP.BetterTextbox();
+            this.textBoxM64SelectionStartFrame = new STROOP.BetterTextbox();
+            this.labelM64SelectionInputs = new System.Windows.Forms.Label();
+            this.labelM64SelectionEndFrame = new System.Windows.Forms.Label();
+            this.labelM64SelectionStartFrame = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.labelM64NumInputsValue = new System.Windows.Forms.Label();
+            this.labelM64NumInputsLabel = new System.Windows.Forms.Label();
             this.labelM64FileName = new System.Windows.Forms.Label();
             this.labelM64FileLabel = new System.Windows.Forms.Label();
             this.buttonM64Goto = new System.Windows.Forms.Button();
             this.textBoxM64Goto = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.buttonM64ClearInputs = new System.Windows.Forms.Button();
+            this.buttonM64ClearRows = new System.Windows.Forms.Button();
+            this.buttonM64DeleteRows = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.buttonM64SetJpHeader = new System.Windows.Forms.Button();
             this.buttonM64SetUsHeader = new System.Windows.Forms.Button();
             this.buttonM64Close = new System.Windows.Forms.Button();
@@ -207,6 +226,23 @@ namespace STROOP
             this.tabControlM64Details = new System.Windows.Forms.TabControl();
             this.tabPageM64Inputs = new System.Windows.Forms.TabPage();
             this.dataGridViewM64Inputs = new System.Windows.Forms.DataGridView();
+            this.ColumnM64Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnM64AnalogX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnM64AnalogY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnM64A = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64B = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Z = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Start = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64R = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Cup = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Cdown = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Cleft = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Cright = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64L = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Dup = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Ddown = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Dleft = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Dright = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.contextMenuStripM64Editor = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.stripMenuItemM64InsertNewBefore = new System.Windows.Forms.ToolStripMenuItem();
             this.stripMenuItemM64InsertNewAfter = new System.Windows.Forms.ToolStripMenuItem();
@@ -1193,42 +1229,7 @@ namespace STROOP
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.openFileDialogM64 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialogM64 = new System.Windows.Forms.SaveFileDialog();
-            this.ColumnM64Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnM64AnalogX = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnM64AnalogY = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnM64A = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64B = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Z = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Start = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64R = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Cup = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Cdown = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Cleft = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Cright = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64L = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Dup = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Ddown = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Dleft = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Dright = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.groupBoxM64Selection = new System.Windows.Forms.GroupBox();
-            this.betterTextbox1 = new STROOP.BetterTextbox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.betterTextbox2 = new STROOP.BetterTextbox();
-            this.betterTextbox3 = new STROOP.BetterTextbox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
-            this.betterTextbox5 = new STROOP.BetterTextbox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.buttonM64ClearCells = new System.Windows.Forms.Button();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1263,6 +1264,7 @@ namespace STROOP
             this.splitContainerM64.Panel1.SuspendLayout();
             this.splitContainerM64.Panel2.SuspendLayout();
             this.splitContainerM64.SuspendLayout();
+            this.groupBoxM64Selection.SuspendLayout();
             this.tabControlM64Details.SuspendLayout();
             this.tabPageM64Inputs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewM64Inputs)).BeginInit();
@@ -1611,7 +1613,6 @@ namespace STROOP
             this.groupBoxRecording.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
-            this.groupBoxM64Selection.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -3464,8 +3465,8 @@ namespace STROOP
             this.splitContainerM64.Panel1.Controls.Add(this.listBox1);
             this.splitContainerM64.Panel1.Controls.Add(this.groupBoxM64Selection);
             this.splitContainerM64.Panel1.Controls.Add(this.label12);
-            this.splitContainerM64.Panel1.Controls.Add(this.label14);
-            this.splitContainerM64.Panel1.Controls.Add(this.label13);
+            this.splitContainerM64.Panel1.Controls.Add(this.labelM64NumInputsValue);
+            this.splitContainerM64.Panel1.Controls.Add(this.labelM64NumInputsLabel);
             this.splitContainerM64.Panel1.Controls.Add(this.labelM64FileName);
             this.splitContainerM64.Panel1.Controls.Add(this.labelM64FileLabel);
             this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Goto);
@@ -3473,9 +3474,10 @@ namespace STROOP
             this.splitContainerM64.Panel1.Controls.Add(this.button4);
             this.splitContainerM64.Panel1.Controls.Add(this.button3);
             this.splitContainerM64.Panel1.Controls.Add(this.button2);
-            this.splitContainerM64.Panel1.Controls.Add(this.button7);
-            this.splitContainerM64.Panel1.Controls.Add(this.button6);
-            this.splitContainerM64.Panel1.Controls.Add(this.button5);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64ClearCells);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64ClearInputs);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64ClearRows);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64DeleteRows);
             this.splitContainerM64.Panel1.Controls.Add(this.button1);
             this.splitContainerM64.Panel1.Controls.Add(this.buttonM64SetJpHeader);
             this.splitContainerM64.Panel1.Controls.Add(this.buttonM64SetUsHeader);
@@ -3493,6 +3495,119 @@ namespace STROOP
             this.splitContainerM64.SplitterDistance = 253;
             this.splitContainerM64.SplitterWidth = 1;
             this.splitContainerM64.TabIndex = 34;
+            // 
+            // betterTextbox5
+            // 
+            this.betterTextbox5.Location = new System.Drawing.Point(77, 426);
+            this.betterTextbox5.Name = "betterTextbox5";
+            this.betterTextbox5.Size = new System.Drawing.Size(63, 20);
+            this.betterTextbox5.TabIndex = 34;
+            this.betterTextbox5.Text = "1";
+            this.betterTextbox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(11, 322);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(124, 56);
+            this.listBox1.TabIndex = 16;
+            // 
+            // groupBoxM64Selection
+            // 
+            this.groupBoxM64Selection.Controls.Add(this.textBoxM64SelectionInputs);
+            this.groupBoxM64Selection.Controls.Add(this.textBoxM64SelectionEndFrame);
+            this.groupBoxM64Selection.Controls.Add(this.textBoxM64SelectionStartFrame);
+            this.groupBoxM64Selection.Controls.Add(this.labelM64SelectionInputs);
+            this.groupBoxM64Selection.Controls.Add(this.labelM64SelectionEndFrame);
+            this.groupBoxM64Selection.Controls.Add(this.labelM64SelectionStartFrame);
+            this.groupBoxM64Selection.Location = new System.Drawing.Point(5, 175);
+            this.groupBoxM64Selection.Name = "groupBoxM64Selection";
+            this.groupBoxM64Selection.Size = new System.Drawing.Size(148, 99);
+            this.groupBoxM64Selection.TabIndex = 15;
+            this.groupBoxM64Selection.TabStop = false;
+            this.groupBoxM64Selection.Text = "Selection";
+            // 
+            // textBoxM64SelectionInputs
+            // 
+            this.textBoxM64SelectionInputs.Location = new System.Drawing.Point(72, 68);
+            this.textBoxM64SelectionInputs.Name = "textBoxM64SelectionInputs";
+            this.textBoxM64SelectionInputs.Size = new System.Drawing.Size(63, 20);
+            this.textBoxM64SelectionInputs.TabIndex = 34;
+            this.textBoxM64SelectionInputs.Text = "100";
+            this.textBoxM64SelectionInputs.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxM64SelectionEndFrame
+            // 
+            this.textBoxM64SelectionEndFrame.Location = new System.Drawing.Point(72, 44);
+            this.textBoxM64SelectionEndFrame.Name = "textBoxM64SelectionEndFrame";
+            this.textBoxM64SelectionEndFrame.Size = new System.Drawing.Size(63, 20);
+            this.textBoxM64SelectionEndFrame.TabIndex = 34;
+            this.textBoxM64SelectionEndFrame.Text = "100";
+            this.textBoxM64SelectionEndFrame.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxM64SelectionStartFrame
+            // 
+            this.textBoxM64SelectionStartFrame.Location = new System.Drawing.Point(72, 19);
+            this.textBoxM64SelectionStartFrame.Name = "textBoxM64SelectionStartFrame";
+            this.textBoxM64SelectionStartFrame.Size = new System.Drawing.Size(63, 20);
+            this.textBoxM64SelectionStartFrame.TabIndex = 34;
+            this.textBoxM64SelectionStartFrame.Text = "100";
+            this.textBoxM64SelectionStartFrame.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelM64SelectionInputs
+            // 
+            this.labelM64SelectionInputs.AutoSize = true;
+            this.labelM64SelectionInputs.Location = new System.Drawing.Point(6, 71);
+            this.labelM64SelectionInputs.Name = "labelM64SelectionInputs";
+            this.labelM64SelectionInputs.Size = new System.Drawing.Size(39, 13);
+            this.labelM64SelectionInputs.TabIndex = 14;
+            this.labelM64SelectionInputs.Text = "Inputs:";
+            // 
+            // labelM64SelectionEndFrame
+            // 
+            this.labelM64SelectionEndFrame.AutoSize = true;
+            this.labelM64SelectionEndFrame.Location = new System.Drawing.Point(6, 46);
+            this.labelM64SelectionEndFrame.Name = "labelM64SelectionEndFrame";
+            this.labelM64SelectionEndFrame.Size = new System.Drawing.Size(61, 13);
+            this.labelM64SelectionEndFrame.TabIndex = 14;
+            this.labelM64SelectionEndFrame.Text = "End Frame:";
+            // 
+            // labelM64SelectionStartFrame
+            // 
+            this.labelM64SelectionStartFrame.AutoSize = true;
+            this.labelM64SelectionStartFrame.Location = new System.Drawing.Point(6, 22);
+            this.labelM64SelectionStartFrame.Name = "labelM64SelectionStartFrame";
+            this.labelM64SelectionStartFrame.Size = new System.Drawing.Size(64, 13);
+            this.labelM64SelectionStartFrame.TabIndex = 14;
+            this.labelM64SelectionStartFrame.Text = "Start Frame:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(11, 429);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(58, 13);
+            this.label12.TabIndex = 14;
+            this.label12.Text = "Multiplicity:";
+            // 
+            // labelM64NumInputsValue
+            // 
+            this.labelM64NumInputsValue.AutoSize = true;
+            this.labelM64NumInputsValue.Location = new System.Drawing.Point(74, 24);
+            this.labelM64NumInputsValue.Name = "labelM64NumInputsValue";
+            this.labelM64NumInputsValue.Size = new System.Drawing.Size(13, 13);
+            this.labelM64NumInputsValue.TabIndex = 14;
+            this.labelM64NumInputsValue.Text = "0";
+            // 
+            // labelM64NumInputsLabel
+            // 
+            this.labelM64NumInputsLabel.AutoSize = true;
+            this.labelM64NumInputsLabel.Location = new System.Drawing.Point(9, 24);
+            this.labelM64NumInputsLabel.Name = "labelM64NumInputsLabel";
+            this.labelM64NumInputsLabel.Size = new System.Drawing.Size(64, 13);
+            this.labelM64NumInputsLabel.TabIndex = 14;
+            this.labelM64NumInputsLabel.Text = "Num Inputs:";
             // 
             // labelM64FileName
             // 
@@ -3529,6 +3644,76 @@ namespace STROOP
             this.textBoxM64Goto.Name = "textBoxM64Goto";
             this.textBoxM64Goto.Size = new System.Drawing.Size(63, 20);
             this.textBoxM64Goto.TabIndex = 11;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(75, 383);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(63, 38);
+            this.button4.TabIndex = 8;
+            this.button4.Text = "Paste Overwrite";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(8, 383);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(63, 38);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "Paste Insert";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(75, 279);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(63, 38);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Copy Inputs";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64ClearInputs
+            // 
+            this.buttonM64ClearInputs.Location = new System.Drawing.Point(157, 256);
+            this.buttonM64ClearInputs.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64ClearInputs.Name = "buttonM64ClearInputs";
+            this.buttonM64ClearInputs.Size = new System.Drawing.Size(63, 38);
+            this.buttonM64ClearInputs.TabIndex = 8;
+            this.buttonM64ClearInputs.Text = "Clear Inputs";
+            this.buttonM64ClearInputs.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64ClearRows
+            // 
+            this.buttonM64ClearRows.Location = new System.Drawing.Point(158, 214);
+            this.buttonM64ClearRows.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64ClearRows.Name = "buttonM64ClearRows";
+            this.buttonM64ClearRows.Size = new System.Drawing.Size(63, 38);
+            this.buttonM64ClearRows.TabIndex = 8;
+            this.buttonM64ClearRows.Text = "Clear Rows";
+            this.buttonM64ClearRows.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64DeleteRows
+            // 
+            this.buttonM64DeleteRows.Location = new System.Drawing.Point(158, 172);
+            this.buttonM64DeleteRows.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64DeleteRows.Name = "buttonM64DeleteRows";
+            this.buttonM64DeleteRows.Size = new System.Drawing.Size(63, 38);
+            this.buttonM64DeleteRows.TabIndex = 8;
+            this.buttonM64DeleteRows.Text = "Delete Rows";
+            this.buttonM64DeleteRows.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(8, 279);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(63, 38);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Copy Rows";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // buttonM64SetJpHeader
             // 
@@ -3621,14 +3806,14 @@ namespace STROOP
             this.dataGridViewM64Inputs.AllowUserToResizeColumns = false;
             this.dataGridViewM64Inputs.AllowUserToResizeRows = false;
             this.dataGridViewM64Inputs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewM64Inputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewM64Inputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnM64Index,
@@ -3649,14 +3834,14 @@ namespace STROOP
             this.ColumnM64Dleft,
             this.ColumnM64Dright});
             this.dataGridViewM64Inputs.ContextMenuStrip = this.contextMenuStripM64Editor;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewM64Inputs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewM64Inputs.EnableHeadersVisualStyles = false;
             this.dataGridViewM64Inputs.Location = new System.Drawing.Point(0, 0);
@@ -3667,6 +3852,142 @@ namespace STROOP
             this.dataGridViewM64Inputs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewM64Inputs.Size = new System.Drawing.Size(643, 427);
             this.dataGridViewM64Inputs.TabIndex = 2;
+            // 
+            // ColumnM64Index
+            // 
+            this.ColumnM64Index.DataPropertyName = "FrameIndex";
+            this.ColumnM64Index.FillWeight = 300F;
+            this.ColumnM64Index.HeaderText = "Frame";
+            this.ColumnM64Index.Name = "ColumnM64Index";
+            this.ColumnM64Index.ReadOnly = true;
+            this.ColumnM64Index.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ColumnM64AnalogX
+            // 
+            this.ColumnM64AnalogX.DataPropertyName = "X";
+            this.ColumnM64AnalogX.FillWeight = 200F;
+            this.ColumnM64AnalogX.HeaderText = "X";
+            this.ColumnM64AnalogX.Name = "ColumnM64AnalogX";
+            this.ColumnM64AnalogX.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ColumnM64AnalogY
+            // 
+            this.ColumnM64AnalogY.DataPropertyName = "Y";
+            this.ColumnM64AnalogY.FillWeight = 200F;
+            this.ColumnM64AnalogY.HeaderText = "Y";
+            this.ColumnM64AnalogY.Name = "ColumnM64AnalogY";
+            this.ColumnM64AnalogY.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ColumnM64A
+            // 
+            this.ColumnM64A.DataPropertyName = "A";
+            this.ColumnM64A.HeaderText = "A";
+            this.ColumnM64A.Name = "ColumnM64A";
+            this.ColumnM64A.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64B
+            // 
+            this.ColumnM64B.DataPropertyName = "B";
+            this.ColumnM64B.HeaderText = "B";
+            this.ColumnM64B.Name = "ColumnM64B";
+            this.ColumnM64B.ReadOnly = true;
+            this.ColumnM64B.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64Z
+            // 
+            this.ColumnM64Z.DataPropertyName = "Z";
+            this.ColumnM64Z.HeaderText = "Z";
+            this.ColumnM64Z.Name = "ColumnM64Z";
+            this.ColumnM64Z.ReadOnly = true;
+            this.ColumnM64Z.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64Start
+            // 
+            this.ColumnM64Start.DataPropertyName = "Start";
+            this.ColumnM64Start.HeaderText = "S";
+            this.ColumnM64Start.Name = "ColumnM64Start";
+            this.ColumnM64Start.ReadOnly = true;
+            this.ColumnM64Start.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64R
+            // 
+            this.ColumnM64R.DataPropertyName = "R";
+            this.ColumnM64R.HeaderText = "R";
+            this.ColumnM64R.Name = "ColumnM64R";
+            this.ColumnM64R.ReadOnly = true;
+            this.ColumnM64R.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64Cup
+            // 
+            this.ColumnM64Cup.DataPropertyName = "C_Up";
+            this.ColumnM64Cup.HeaderText = "C^";
+            this.ColumnM64Cup.Name = "ColumnM64Cup";
+            this.ColumnM64Cup.ReadOnly = true;
+            this.ColumnM64Cup.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64Cdown
+            // 
+            this.ColumnM64Cdown.DataPropertyName = "C_Down";
+            this.ColumnM64Cdown.HeaderText = "Cv";
+            this.ColumnM64Cdown.Name = "ColumnM64Cdown";
+            this.ColumnM64Cdown.ReadOnly = true;
+            this.ColumnM64Cdown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64Cleft
+            // 
+            this.ColumnM64Cleft.DataPropertyName = "C_Left";
+            this.ColumnM64Cleft.HeaderText = "C<";
+            this.ColumnM64Cleft.Name = "ColumnM64Cleft";
+            this.ColumnM64Cleft.ReadOnly = true;
+            this.ColumnM64Cleft.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64Cright
+            // 
+            this.ColumnM64Cright.DataPropertyName = "C_right";
+            this.ColumnM64Cright.HeaderText = "C>";
+            this.ColumnM64Cright.Name = "ColumnM64Cright";
+            this.ColumnM64Cright.ReadOnly = true;
+            this.ColumnM64Cright.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64L
+            // 
+            this.ColumnM64L.DataPropertyName = "L";
+            this.ColumnM64L.HeaderText = "L";
+            this.ColumnM64L.Name = "ColumnM64L";
+            this.ColumnM64L.ReadOnly = true;
+            this.ColumnM64L.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64Dup
+            // 
+            this.ColumnM64Dup.DataPropertyName = "D_Up";
+            this.ColumnM64Dup.HeaderText = "D^";
+            this.ColumnM64Dup.Name = "ColumnM64Dup";
+            this.ColumnM64Dup.ReadOnly = true;
+            this.ColumnM64Dup.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64Ddown
+            // 
+            this.ColumnM64Ddown.DataPropertyName = "D_Down";
+            this.ColumnM64Ddown.HeaderText = "Dv";
+            this.ColumnM64Ddown.Name = "ColumnM64Ddown";
+            this.ColumnM64Ddown.ReadOnly = true;
+            this.ColumnM64Ddown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64Dleft
+            // 
+            this.ColumnM64Dleft.DataPropertyName = "D_Left";
+            this.ColumnM64Dleft.HeaderText = "D<";
+            this.ColumnM64Dleft.Name = "ColumnM64Dleft";
+            this.ColumnM64Dleft.ReadOnly = true;
+            this.ColumnM64Dleft.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64Dright
+            // 
+            this.ColumnM64Dright.DataPropertyName = "D_Right";
+            this.ColumnM64Dright.HeaderText = "D>";
+            this.ColumnM64Dright.Name = "ColumnM64Dright";
+            this.ColumnM64Dright.ReadOnly = true;
+            this.ColumnM64Dright.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // contextMenuStripM64Editor
             // 
@@ -5327,7 +5648,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 333F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 334F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -11156,7 +11477,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(85, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(68, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -11188,7 +11509,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(79, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(62, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -11244,7 +11565,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(79, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(62, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -11690,7 +12011,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 721;
+            this.splitContainerMemory.SplitterDistance = 724;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11714,7 +12035,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(605, 429);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(608, 429);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -11817,7 +12138,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(185, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(182, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPageHacks
@@ -15563,324 +15884,15 @@ namespace STROOP
             // 
             this.saveFileDialogM64.Filter = "Mupen Movies|*.m64|All Files|*.*";
             // 
-            // ColumnM64Index
-            // 
-            this.ColumnM64Index.DataPropertyName = "FrameIndex";
-            this.ColumnM64Index.FillWeight = 300F;
-            this.ColumnM64Index.HeaderText = "Frame";
-            this.ColumnM64Index.Name = "ColumnM64Index";
-            this.ColumnM64Index.ReadOnly = true;
-            this.ColumnM64Index.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ColumnM64AnalogX
-            // 
-            this.ColumnM64AnalogX.DataPropertyName = "X";
-            this.ColumnM64AnalogX.FillWeight = 200F;
-            this.ColumnM64AnalogX.HeaderText = "X";
-            this.ColumnM64AnalogX.Name = "ColumnM64AnalogX";
-            this.ColumnM64AnalogX.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ColumnM64AnalogY
-            // 
-            this.ColumnM64AnalogY.DataPropertyName = "Y";
-            this.ColumnM64AnalogY.FillWeight = 200F;
-            this.ColumnM64AnalogY.HeaderText = "Y";
-            this.ColumnM64AnalogY.Name = "ColumnM64AnalogY";
-            this.ColumnM64AnalogY.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ColumnM64A
-            // 
-            this.ColumnM64A.DataPropertyName = "A";
-            this.ColumnM64A.HeaderText = "A";
-            this.ColumnM64A.Name = "ColumnM64A";
-            this.ColumnM64A.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64B
-            // 
-            this.ColumnM64B.DataPropertyName = "B";
-            this.ColumnM64B.HeaderText = "B";
-            this.ColumnM64B.Name = "ColumnM64B";
-            this.ColumnM64B.ReadOnly = true;
-            this.ColumnM64B.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64Z
-            // 
-            this.ColumnM64Z.DataPropertyName = "Z";
-            this.ColumnM64Z.HeaderText = "Z";
-            this.ColumnM64Z.Name = "ColumnM64Z";
-            this.ColumnM64Z.ReadOnly = true;
-            this.ColumnM64Z.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64Start
-            // 
-            this.ColumnM64Start.DataPropertyName = "Start";
-            this.ColumnM64Start.HeaderText = "S";
-            this.ColumnM64Start.Name = "ColumnM64Start";
-            this.ColumnM64Start.ReadOnly = true;
-            this.ColumnM64Start.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64R
-            // 
-            this.ColumnM64R.DataPropertyName = "R";
-            this.ColumnM64R.HeaderText = "R";
-            this.ColumnM64R.Name = "ColumnM64R";
-            this.ColumnM64R.ReadOnly = true;
-            this.ColumnM64R.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64Cup
-            // 
-            this.ColumnM64Cup.DataPropertyName = "C_Up";
-            this.ColumnM64Cup.HeaderText = "C^";
-            this.ColumnM64Cup.Name = "ColumnM64Cup";
-            this.ColumnM64Cup.ReadOnly = true;
-            this.ColumnM64Cup.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64Cdown
-            // 
-            this.ColumnM64Cdown.DataPropertyName = "C_Down";
-            this.ColumnM64Cdown.HeaderText = "Cv";
-            this.ColumnM64Cdown.Name = "ColumnM64Cdown";
-            this.ColumnM64Cdown.ReadOnly = true;
-            this.ColumnM64Cdown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64Cleft
-            // 
-            this.ColumnM64Cleft.DataPropertyName = "C_Left";
-            this.ColumnM64Cleft.HeaderText = "C<";
-            this.ColumnM64Cleft.Name = "ColumnM64Cleft";
-            this.ColumnM64Cleft.ReadOnly = true;
-            this.ColumnM64Cleft.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64Cright
-            // 
-            this.ColumnM64Cright.DataPropertyName = "C_right";
-            this.ColumnM64Cright.HeaderText = "C>";
-            this.ColumnM64Cright.Name = "ColumnM64Cright";
-            this.ColumnM64Cright.ReadOnly = true;
-            this.ColumnM64Cright.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64L
-            // 
-            this.ColumnM64L.DataPropertyName = "L";
-            this.ColumnM64L.HeaderText = "L";
-            this.ColumnM64L.Name = "ColumnM64L";
-            this.ColumnM64L.ReadOnly = true;
-            this.ColumnM64L.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64Dup
-            // 
-            this.ColumnM64Dup.DataPropertyName = "D_Up";
-            this.ColumnM64Dup.HeaderText = "D^";
-            this.ColumnM64Dup.Name = "ColumnM64Dup";
-            this.ColumnM64Dup.ReadOnly = true;
-            this.ColumnM64Dup.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64Ddown
-            // 
-            this.ColumnM64Ddown.DataPropertyName = "D_Down";
-            this.ColumnM64Ddown.HeaderText = "Dv";
-            this.ColumnM64Ddown.Name = "ColumnM64Ddown";
-            this.ColumnM64Ddown.ReadOnly = true;
-            this.ColumnM64Ddown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64Dleft
-            // 
-            this.ColumnM64Dleft.DataPropertyName = "D_Left";
-            this.ColumnM64Dleft.HeaderText = "D<";
-            this.ColumnM64Dleft.Name = "ColumnM64Dleft";
-            this.ColumnM64Dleft.ReadOnly = true;
-            this.ColumnM64Dleft.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64Dright
-            // 
-            this.ColumnM64Dright.DataPropertyName = "D_Right";
-            this.ColumnM64Dright.HeaderText = "D>";
-            this.ColumnM64Dright.Name = "ColumnM64Dright";
-            this.ColumnM64Dright.ReadOnly = true;
-            this.ColumnM64Dright.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // groupBoxM64Selection
-            // 
-            this.groupBoxM64Selection.Controls.Add(this.betterTextbox3);
-            this.groupBoxM64Selection.Controls.Add(this.betterTextbox2);
-            this.groupBoxM64Selection.Controls.Add(this.betterTextbox1);
-            this.groupBoxM64Selection.Controls.Add(this.label11);
-            this.groupBoxM64Selection.Controls.Add(this.label10);
-            this.groupBoxM64Selection.Controls.Add(this.label8);
-            this.groupBoxM64Selection.Location = new System.Drawing.Point(5, 175);
-            this.groupBoxM64Selection.Name = "groupBoxM64Selection";
-            this.groupBoxM64Selection.Size = new System.Drawing.Size(148, 99);
-            this.groupBoxM64Selection.TabIndex = 15;
-            this.groupBoxM64Selection.TabStop = false;
-            this.groupBoxM64Selection.Text = "Selection";
-            // 
-            // betterTextbox1
-            // 
-            this.betterTextbox1.Location = new System.Drawing.Point(72, 19);
-            this.betterTextbox1.Name = "betterTextbox1";
-            this.betterTextbox1.Size = new System.Drawing.Size(63, 20);
-            this.betterTextbox1.TabIndex = 34;
-            this.betterTextbox1.Text = "100";
-            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 22);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(64, 13);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "Start Frame:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 46);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(61, 13);
-            this.label10.TabIndex = 14;
-            this.label10.Text = "End Frame:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 71);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(39, 13);
-            this.label11.TabIndex = 14;
-            this.label11.Text = "Inputs:";
-            // 
-            // betterTextbox2
-            // 
-            this.betterTextbox2.Location = new System.Drawing.Point(72, 44);
-            this.betterTextbox2.Name = "betterTextbox2";
-            this.betterTextbox2.Size = new System.Drawing.Size(63, 20);
-            this.betterTextbox2.TabIndex = 34;
-            this.betterTextbox2.Text = "100";
-            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // betterTextbox3
-            // 
-            this.betterTextbox3.Location = new System.Drawing.Point(72, 68);
-            this.betterTextbox3.Name = "betterTextbox3";
-            this.betterTextbox3.Size = new System.Drawing.Size(63, 20);
-            this.betterTextbox3.TabIndex = 34;
-            this.betterTextbox3.Text = "100";
-            this.betterTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(8, 279);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(63, 38);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Copy Rows";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(75, 279);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(63, 38);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Copy Inputs";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(11, 322);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(124, 56);
-            this.listBox1.TabIndex = 16;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(8, 383);
-            this.button3.Margin = new System.Windows.Forms.Padding(2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(63, 38);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Paste Insert";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(75, 383);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(63, 38);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Paste Overwrite";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(11, 429);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(58, 13);
-            this.label12.TabIndex = 14;
-            this.label12.Text = "Multiplicity:";
-            // 
-            // betterTextbox5
-            // 
-            this.betterTextbox5.Location = new System.Drawing.Point(77, 426);
-            this.betterTextbox5.Name = "betterTextbox5";
-            this.betterTextbox5.Size = new System.Drawing.Size(63, 20);
-            this.betterTextbox5.TabIndex = 34;
-            this.betterTextbox5.Text = "1";
-            this.betterTextbox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(158, 172);
-            this.button5.Margin = new System.Windows.Forms.Padding(2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(63, 38);
-            this.button5.TabIndex = 8;
-            this.button5.Text = "Delete Rows";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(158, 214);
-            this.button6.Margin = new System.Windows.Forms.Padding(2);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(63, 38);
-            this.button6.TabIndex = 8;
-            this.button6.Text = "Clear Rows";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(157, 256);
-            this.button7.Margin = new System.Windows.Forms.Padding(2);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(63, 38);
-            this.button7.TabIndex = 8;
-            this.button7.Text = "Clear Inputs";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(9, 24);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(64, 13);
-            this.label13.TabIndex = 14;
-            this.label13.Text = "Num Inputs:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(74, 24);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(13, 13);
-            this.label14.TabIndex = 14;
-            this.label14.Text = "0";
+            // buttonM64ClearCells
+            // 
+            this.buttonM64ClearCells.Location = new System.Drawing.Point(158, 298);
+            this.buttonM64ClearCells.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64ClearCells.Name = "buttonM64ClearCells";
+            this.buttonM64ClearCells.Size = new System.Drawing.Size(63, 38);
+            this.buttonM64ClearCells.TabIndex = 8;
+            this.buttonM64ClearCells.Text = "Clear Cells";
+            this.buttonM64ClearCells.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -15953,6 +15965,8 @@ namespace STROOP
             this.splitContainerM64.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerM64)).EndInit();
             this.splitContainerM64.ResumeLayout(false);
+            this.groupBoxM64Selection.ResumeLayout(false);
+            this.groupBoxM64Selection.PerformLayout();
             this.tabControlM64Details.ResumeLayout(false);
             this.tabPageM64Inputs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewM64Inputs)).EndInit();
@@ -16370,8 +16384,6 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
-            this.groupBoxM64Selection.ResumeLayout(false);
-            this.groupBoxM64Selection.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -17555,22 +17567,23 @@ namespace STROOP
         private BetterTextbox betterTextbox5;
         private ListBox listBox1;
         private GroupBox groupBoxM64Selection;
-        private BetterTextbox betterTextbox3;
-        private BetterTextbox betterTextbox2;
-        private BetterTextbox betterTextbox1;
-        private Label label11;
-        private Label label10;
-        private Label label8;
+        private BetterTextbox textBoxM64SelectionInputs;
+        private BetterTextbox textBoxM64SelectionEndFrame;
+        private BetterTextbox textBoxM64SelectionStartFrame;
+        private Label labelM64SelectionInputs;
+        private Label labelM64SelectionEndFrame;
+        private Label labelM64SelectionStartFrame;
         private Label label12;
         private Button button4;
         private Button button3;
         private Button button2;
-        private Button button7;
-        private Button button6;
-        private Button button5;
+        private Button buttonM64ClearInputs;
+        private Button buttonM64ClearRows;
+        private Button buttonM64DeleteRows;
         private Button button1;
-        private Label label14;
-        private Label label13;
+        private Label labelM64NumInputsValue;
+        private Label labelM64NumInputsLabel;
+        private Button buttonM64ClearCells;
     }
 }
 
