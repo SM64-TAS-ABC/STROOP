@@ -52,8 +52,8 @@ namespace STROOP.M64Editor
         public ushort CountryCode { get; set; }
 
         // 0E4 4-byte unsigned int: CRC32 of ROM used when recording, directly from ROM
-        [CategoryAttribute("\u200B\u200B\u200B\u200BRom"), DisplayName("CR32")]
-        public uint Cr32 { get; set; }
+        [CategoryAttribute("\u200B\u200B\u200B\u200BRom"), DisplayName("CRC")]
+        public uint Crc { get; set; }
 
         // 222 222-byte UTF-8 string: author name info
         private string _author;
@@ -192,7 +192,7 @@ namespace STROOP.M64Editor
             Controller4RumblePak = (controllerFlagsValue & (1 << 11)) != 0;
 
             RomName = Encoding.ASCII.GetString(bytes, 0x0C4, 32).Replace("\0", "");
-            Cr32 = BitConverter.ToUInt32(bytes, 0x0E4);
+            Crc = BitConverter.ToUInt32(bytes, 0x0E4);
             CountryCode = BitConverter.ToUInt16(bytes, 0x0E8);
             VideoPlugin = Encoding.ASCII.GetString(bytes, 0x122, 64).Replace("\0", "");
             SoundPlugin = Encoding.ASCII.GetString(bytes, 0x162, 64).Replace("\0", "");
@@ -222,7 +222,7 @@ namespace STROOP.M64Editor
             bytes.AddRange(TypeUtilities.GetBytes(GetControllerFlagsValue()));
             bytes.AddRange(new byte[160]);
             bytes.AddRange(TypeUtilities.GetBytes(RomName, 32, Encoding.ASCII));
-            bytes.AddRange(TypeUtilities.GetBytes(Cr32));
+            bytes.AddRange(TypeUtilities.GetBytes(Crc));
             bytes.AddRange(TypeUtilities.GetBytes(CountryCode));
             bytes.AddRange(new byte[56]);
             bytes.AddRange(TypeUtilities.GetBytes(VideoPlugin, 64, Encoding.ASCII));
@@ -301,7 +301,7 @@ namespace STROOP.M64Editor
             Fps = 0;
             RomName = null;
             CountryCode = 0;
-            Cr32 = 0;
+            Crc = 0;
             Author = null;
             Description = null;
             NumControllers = 0;
