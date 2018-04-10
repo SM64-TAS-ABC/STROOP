@@ -293,6 +293,7 @@
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoadingHandler.cs" />
+    <Compile Include="M64Editor\M64CopiedFrame.cs" />
     <Compile Include="M64Editor\M64File.cs" />
     <Compile Include="M64Editor\M64InputCell.cs" />
     <Compile Include="M64Editor\M64CopiedData.cs" />
