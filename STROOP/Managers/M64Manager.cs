@@ -105,22 +105,16 @@ namespace STROOP.Managers
 
         private void DataGridViewEditor_SelectionChanged(object sender, EventArgs e)
         {
-            List<M64InputCell> cells = M64Utilities.GetSelectedCells(_gui.DataGridViewInputs);
-            int minRowIndex = cells.Min(cell => cell.RowIndex);
-            int maxRowIndex = cells.Max(cell => cell.RowIndex);
-            List<string> headerTexts = cells
-                .FindAll(cell => cell.IsInput)
-                .ConvertAll(cell => cell.HeaderText).Distinct().ToList();
-            headerTexts.Sort(M64Utilities.InputStringComparison);
-
-            _gui.TextBoxSelectionStartFrame.Text = minRowIndex.ToString();
-            _gui.TextBoxSelectionEndFrame.Text = maxRowIndex.ToString();
-            _gui.TextBoxSelectionInputs.Text = String.Join("", headerTexts);
+            List<M64InputCell> cells = M64Utilities.GetSelectedInputCells(_gui.DataGridViewInputs);
+            (int minFrame, int maxFrame, string inputsString) = M64Utilities.GetCellStats(cells);
+            _gui.TextBoxSelectionStartFrame.Text = minFrame.ToString();
+            _gui.TextBoxSelectionEndFrame.Text = maxFrame.ToString();
+            _gui.TextBoxSelectionInputs.Text = inputsString;
         }
 
         private void ButtonClearCells_Click(object sender, EventArgs e)
         {
-            List<M64InputCell> cells = M64Utilities.GetSelectedCells(_gui.DataGridViewInputs);
+            List<M64InputCell> cells = M64Utilities.GetSelectedInputCells(_gui.DataGridViewInputs);
             cells.ForEach(cell => cell.Clear());
             _gui.DataGridViewInputs.Refresh();
         }

@@ -96,7 +96,7 @@ namespace STROOP.M64Editor
             }
         }
 
-        public static List<M64InputCell> GetSelectedCells(DataGridView table)
+        public static List<M64InputCell> GetSelectedInputCells(DataGridView table)
         {
             List<M64InputCell> cells = new List<M64InputCell>();
             foreach (DataGridViewCell cell in table.SelectedCells)
@@ -104,6 +104,29 @@ namespace STROOP.M64Editor
                 cells.Add(new M64InputCell(cell));
             }
             return cells;
+        }
+
+        public static (int minFrame, int maxFrame, string inputsString) GetCellStats(List<M64InputCell> cells)
+        {
+            int minFrame = cells.Min(cell => cell.RowIndex);
+            int maxFrame = cells.Max(cell => cell.RowIndex);
+            List<string> headerTexts = cells
+                .FindAll(cell => cell.IsInput)
+                .ConvertAll(cell => cell.HeaderText).Distinct().ToList();
+            headerTexts.Sort(InputStringComparison);
+            string inputsString = String.Join("", headerTexts);
+            return (minFrame, maxFrame, inputsString);
+        }
+
+        public static List<M64InputFrame> GetSelectedInputFrames(DataGridView table)
+        {
+            BindingList<M64InputFrame> allInputs = table.DataSource as BindingList<M64InputFrame>;
+            List<M64InputFrame> inputs = new List<M64InputFrame>();
+            foreach (DataGridViewRow row in table.SelectedRows)
+            {
+                inputs.Add(allInputs[row.Index]);
+            }
+            return inputs;
         }
     }
 }
