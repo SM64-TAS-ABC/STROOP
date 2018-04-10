@@ -24,7 +24,7 @@ namespace STROOP.M64Editor
 
         public static M64CopiedData CreateCopiedDataFromCells(DataGridView table, string fileName)
         {
-            if (table.SelectedCells.Count == 0) return null;
+            if (table.SelectedCells.Count == 0 || fileName == null) return null;
             List<M64InputCell> cells = M64Utilities.GetSelectedInputCells(table);
             (int minFrame, int maxFrame, string inputsString) = M64Utilities.GetCellStats(cells);
             return new M64CopiedData(minFrame, maxFrame, inputsString, fileName);
@@ -32,7 +32,7 @@ namespace STROOP.M64Editor
 
         public static M64CopiedData CreateCopiedDataFromRows(DataGridView table, string fileName)
         {
-            if (table.SelectedRows.Count == 0) return null;
+            if (table.SelectedRows.Count == 0 || fileName == null) return null;
             List<M64InputFrame> inputs = M64Utilities.GetSelectedInputFrames(table);
             int minFrame = inputs.Min(input => input.Frame);
             int maxFrame = inputs.Max(input => input.Frame);

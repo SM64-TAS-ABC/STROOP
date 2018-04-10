@@ -54,6 +54,26 @@ namespace STROOP.Managers
             _gui.TabControlDetails.SelectedIndexChanged += TabControlDetails_SelectedIndexChanged;
 
             _gui.ButtonClearCells.Click += ButtonClearCells_Click;
+            _gui.ButtonCopyInputs.Click += ButtonCopyInputs_Click;
+            _gui.ButtonCopyRows.Click += ButtonCopyRows_Click;
+        }
+
+        private void ButtonCopyInputs_Click(object sender, EventArgs e)
+        {
+            M64CopiedData copiedData =
+                M64CopiedData.CreateCopiedDataFromCells(
+                    _gui.DataGridViewInputs, _m64.CurrentFileName);
+            if (copiedData == null) return;
+            _gui.ListBoxCopied.Items.Add(copiedData);
+        }
+
+        private void ButtonCopyRows_Click(object sender, EventArgs e)
+        {
+            M64CopiedData copiedData =
+                M64CopiedData.CreateCopiedDataFromRows(
+                    _gui.DataGridViewInputs, _m64.CurrentFileName);
+            if (copiedData == null) return;
+            _gui.ListBoxCopied.Items.Add(copiedData);
         }
 
         private void SetHeaderRomVersion(RomVersion romVersion)
