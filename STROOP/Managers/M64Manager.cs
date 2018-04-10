@@ -56,6 +56,17 @@ namespace STROOP.Managers
             _gui.ButtonClearCells.Click += ButtonClearCells_Click;
             _gui.ButtonCopyInputs.Click += (sender, e) => CopyData(false);
             _gui.ButtonCopyRows.Click += (sender, e) => CopyData(true);
+            _gui.ButtonPasteInsert.Click += (sender, e) => PasteData(true);
+            _gui.ButtonPasteOverwrite.Click += (sender, e) => PasteData(false);
+        }
+
+        private void PasteData(bool insert)
+        {
+            M64CopiedData copiedData = _gui.ListBoxCopied.SelectedValue as M64CopiedData;
+            if (copiedData == null) return;
+            int? minRowIndex = ControlUtilities.GetMinSelectedRowIndex(_gui.DataGridViewInputs);
+            if (!minRowIndex.HasValue) return;
+            _m64.Paste(copiedData, minRowIndex.Value, insert);
         }
 
         private void CopyData(bool useRow)

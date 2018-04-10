@@ -187,5 +187,10 @@ namespace STROOP.M64Editor
                 Inputs.Insert(row, input);
             }
         }
+
+        public void Paste(M64CopiedData copiedData, int index, bool insert)
+        {
+            
+        }
     }
 }

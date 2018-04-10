@@ -431,5 +431,27 @@ namespace STROOP.Utilities
                 return;
             mi.Invoke(view, new object[] { width });
         }
+
+        public static int? GetMinSelectedRowIndex(DataGridView table)
+        {
+            if (table.Rows.Count == 0) return null;
+            List<DataGridViewRow> rows = new List<DataGridViewRow>();
+            foreach (DataGridViewRow row in table.Rows)
+            {
+                rows.Add(row);
+            }
+            return rows.Min(row => row.Index);
+        }
+
+        public static int? GetMaxSelectedRowIndex(DataGridView table)
+        {
+            if (table.Rows.Count == 0) return null;
+            List<DataGridViewRow> rows = new List<DataGridViewRow>();
+            foreach (DataGridViewRow row in table.Rows)
+            {
+                rows.Add(row);
+            }
+            return rows.Max(row => row.Index);
+        }
     }
 }
