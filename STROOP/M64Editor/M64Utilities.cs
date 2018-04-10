@@ -10,6 +10,7 @@ using System.ComponentModel;
 using STROOP.Utilities;
 using System.Windows.Forms;
 using STROOP.Forms;
+using System.Drawing;
 
 namespace STROOP.M64Editor
 {
@@ -95,6 +96,29 @@ namespace STROOP.M64Editor
                     break;
             }
         }
+
+        public static readonly List<(string, int, Color?)> ColumnParameters =
+            new List<(string, int, Color?)>()
+            {
+                ("Frame", 200, null),
+                ("Id", 200, null),
+                ("X", 200, null),
+                ("Y", 200, null),
+                ("A", 100, null),
+                ("B", 100, null),
+                ("Z", 100, null),
+                ("S", 100, null),
+                ("R", 100, null),
+                ("C^", 100, Color.Yellow),
+                ("Cv", 100, Color.Yellow),
+                ("C<", 100, Color.Yellow),
+                ("C>", 100, Color.Yellow),
+                ("L", 100, Color.LightGray),
+                ("D^", 100, Color.LightGray),
+                ("Dv", 100, Color.LightGray),
+                ("D<", 100, Color.LightGray),
+                ("D>", 100, Color.LightGray),
+            };
 
         public static List<M64InputCell> GetSelectedInputCells(DataGridView table)
         {

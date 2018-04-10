@@ -77,7 +77,7 @@ namespace STROOP.M64Editor
 
             for (int i = 0; i < frameBytes.Length && i < 4 * numOfInputs; i += 4)
             {
-                Inputs.Add(new M64InputFrame(BitConverter.ToUInt32(frameBytes, i), i / 4));
+                Inputs.Add(new M64InputFrame(i / 4, BitConverter.ToUInt32(frameBytes, i)));
             }
 
             if (Inputs.Count == 0)
@@ -126,7 +126,7 @@ namespace STROOP.M64Editor
             for (int i = index; i < Inputs.Count; i++)
                 Inputs[i].FrameIndex++;
 
-            var frame = new M64InputFrame(index);
+            var frame = new M64InputFrame(index, 0);
             Inputs.Insert(index, frame);  
         }
 
@@ -198,7 +198,7 @@ namespace STROOP.M64Editor
             {
                 for (int i = 0; i < pasteCount; i++)
                 {
-                    Inputs.Insert(index + i, new M64InputFrame(0));
+                    Inputs.Insert(index + i, new M64InputFrame(0, 0));
                 }
             }
             List<M64InputFrame> inputsToOverwrite = Inputs.Skip(index).Take(pasteCount).ToList();

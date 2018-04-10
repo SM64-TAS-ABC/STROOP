@@ -14,10 +14,7 @@ namespace STROOP.M64Editor
     public class M64InputCell
     {
         public readonly string HeaderText;
-        public bool IsInput
-        {
-            get => HeaderText != "Frame";
-        }
+        public readonly bool IsInput;
         private readonly M64InputFrame InputFrame;
         public int RowIndex { get => InputFrame.FrameIndex; }
 
@@ -25,6 +22,7 @@ namespace STROOP.M64Editor
         {
             DataGridView table = cell.DataGridView;
             HeaderText = table.Columns[cell.ColumnIndex].HeaderText;
+            IsInput = HeaderText != "Frame" && HeaderText != "Id";
             BindingList<M64InputFrame> inputs = table.DataSource as BindingList<M64InputFrame>;
             InputFrame = inputs[cell.RowIndex];
         }

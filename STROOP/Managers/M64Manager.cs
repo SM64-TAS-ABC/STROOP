@@ -297,12 +297,12 @@ namespace STROOP.Managers
         private void UpdateTableSettings()
         {
             DataGridView table = _gui.DataGridViewInputs;
-            if (table.Columns.Count != M64InputFrame.ColumnParameters.Count)
+            if (table.Columns.Count != M64Utilities.ColumnParameters.Count)
                 throw new ArgumentOutOfRangeException();
 
             for (int i = 0; i < table.Columns.Count; i++)
             {
-                (string headerText, int fillWeight, Color? backColor) = M64InputFrame.ColumnParameters[i];
+                (string headerText, int fillWeight, Color? backColor) = M64Utilities.ColumnParameters[i];
                 table.Columns[i].HeaderText = headerText;
                 table.Columns[i].FillWeight = fillWeight;
                 if (backColor.HasValue) table.Columns[i].DefaultCellStyle.BackColor = backColor.Value;

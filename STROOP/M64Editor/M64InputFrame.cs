@@ -12,21 +12,22 @@ namespace STROOP.M64Editor
     [Serializable]
     public class M64InputFrame : ICloneable
     {
-        public uint RawValue = 0;
+        public static int ClassIdIndex = 0;
+
         public int FrameIndex;
+        public uint RawValue;
+        public readonly int IdIndex;
 
-        public M64InputFrame(int frameIndex)
+        public M64InputFrame(int frameIndex, uint rawValue)
         {
             FrameIndex = frameIndex;
-        }
-
-        public M64InputFrame(uint rawValue, int frameIndex)
-        {
             RawValue = rawValue;
-            FrameIndex = frameIndex;
+            IdIndex = ClassIdIndex;
+            ClassIdIndex++;
         }
 
         public int Frame { get => FrameIndex; }
+        public int Id { get => IdIndex; }
         public sbyte X { get => (sbyte)GetByte(2); set => SetByte(2, (byte)value); }
         public sbyte Y { get => (sbyte)GetByte(3); set => SetByte(3, (byte)value); }
         public bool A { get => GetBit(7); set => SetBit(7, value); }
@@ -75,34 +76,12 @@ namespace STROOP.M64Editor
 
         public object Clone()
         {
-            return new M64InputFrame(RawValue, FrameIndex);
+            return new M64InputFrame(FrameIndex, RawValue);
         }
 
         public byte[] ToBytes()
         {
             return BitConverter.GetBytes(RawValue).ToArray();
         }
-
-        public static readonly List<(string, int, Color?)> ColumnParameters =
-            new List<(string, int, Color?)>()
-            {
-                ("Frame", 300, null),
-                ("X", 200, null),
-                ("Y", 200, null),
-                ("A", 100, null),
-                ("B", 100, null),
-                ("Z", 100, null),
-                ("S", 100, null),
-                ("R", 100, null),
-                ("C^", 100, Color.Yellow),
-                ("Cv", 100, Color.Yellow),
-                ("C<", 100, Color.Yellow),
-                ("C>", 100, Color.Yellow),
-                ("L", 100, Color.LightGray),
-                ("D^", 100, Color.LightGray),
-                ("Dv", 100, Color.LightGray),
-                ("D<", 100, Color.LightGray),
-                ("D>", 100, Color.LightGray),
-            };
     }
 }
