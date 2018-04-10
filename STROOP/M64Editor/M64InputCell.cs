@@ -19,7 +19,7 @@ namespace STROOP.M64Editor
             get => HeaderText != "Frame";
         }
         private readonly M64InputFrame InputFrame;
-        public int RowIndex { get => InputFrame._frame; }
+        public int RowIndex { get => InputFrame.FrameIndex; }
 
         public M64InputCell(DataGridViewCell cell)
         {

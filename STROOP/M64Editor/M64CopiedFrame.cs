@@ -60,25 +60,25 @@ namespace STROOP.M64Editor
             this.D_Right = D_Right;
         }
 
-        public static M64CopiedFrame CreateCopiedFrame(M64InputFrame input, string inputsList)
+        public static M64CopiedFrame CreateCopiedFrame(M64InputFrame input, bool useRows, string inputsList)
         {
             return new M64CopiedFrame(
-                inputsList.Contains("X") ? input.X : (sbyte?)null,
-                inputsList.Contains("Y") ? input.Y : (sbyte?)null,
-                inputsList.Contains("A") ? input.A : (bool?)null,
-                inputsList.Contains("B") ? input.B : (bool?)null,
-                inputsList.Contains("Z") ? input.Z : (bool?)null,
-                inputsList.Contains("S") ? input.S : (bool?)null,
-                inputsList.Contains("R") ? input.R : (bool?)null,
-                inputsList.Contains("C^") ? input.C_Up : (bool?)null,
-                inputsList.Contains("Cv") ? input.C_Down : (bool?)null,
-                inputsList.Contains("C<") ? input.C_Left : (bool?)null,
-                inputsList.Contains("C>") ? input.C_Right : (bool?)null,
-                inputsList.Contains("L") ? input.L : (bool?)null,
-                inputsList.Contains("D^") ? input.D_Up : (bool?)null,
-                inputsList.Contains("Dv") ? input.D_Down : (bool?)null,
-                inputsList.Contains("D<") ? input.D_Left : (bool?)null,
-                inputsList.Contains("D>") ? input.D_Right : (bool?)null);
+                useRows || inputsList.Contains("X") ? input.X : (sbyte?)null,
+                useRows || inputsList.Contains("Y") ? input.Y : (sbyte?)null,
+                useRows || inputsList.Contains("A") ? input.A : (bool?)null,
+                useRows || inputsList.Contains("B") ? input.B : (bool?)null,
+                useRows || inputsList.Contains("Z") ? input.Z : (bool?)null,
+                useRows || inputsList.Contains("S") ? input.S : (bool?)null,
+                useRows || inputsList.Contains("R") ? input.R : (bool?)null,
+                useRows || inputsList.Contains("C^") ? input.C_Up : (bool?)null,
+                useRows || inputsList.Contains("Cv") ? input.C_Down : (bool?)null,
+                useRows || inputsList.Contains("C<") ? input.C_Left : (bool?)null,
+                useRows || inputsList.Contains("C>") ? input.C_Right : (bool?)null,
+                useRows || inputsList.Contains("L") ? input.L : (bool?)null,
+                useRows || inputsList.Contains("D^") ? input.D_Up : (bool?)null,
+                useRows || inputsList.Contains("Dv") ? input.D_Down : (bool?)null,
+                useRows || inputsList.Contains("D<") ? input.D_Left : (bool?)null,
+                useRows || inputsList.Contains("D>") ? input.D_Right : (bool?)null);
         }
 
         public void Apply(M64InputFrame input)

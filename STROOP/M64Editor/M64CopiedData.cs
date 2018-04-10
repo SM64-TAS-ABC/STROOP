@@ -7,6 +7,8 @@ namespace STROOP.M64Editor
 {
     public class M64CopiedData
     {
+        public int TotalFrames { get => _totalFrames; }
+
         private readonly int _startFrame;
         private readonly int _endFrame;
         private readonly int _totalFrames;
@@ -43,17 +45,17 @@ namespace STROOP.M64Editor
 
             List<M64InputFrame> inputs = M64Utilities.GetInputFramesInRange(table, startFrame, endFrame);
             List<M64CopiedFrame> copiedFrames = inputs.ConvertAll(
-                input => M64CopiedFrame.CreateCopiedFrame(input, inputsString));
+                input => M64CopiedFrame.CreateCopiedFrame(input, useRows, inputsString));
 
             return new M64CopiedData(startFrame, endFrame, type, fileName, copiedFrames);
         }
 
         public void Apply(List<M64InputFrame> inputs)
         {
-            if (inputs.Count != _copiedFrames.Count) throw new ArgumentOutOfRangeException();
             for (int i = 0; i < inputs.Count; i++)
             {
-                _copiedFrames[i].Apply(inputs[i]);
+                int copiedFrameIndex = i % _copiedFrames.Count;
+                _copiedFrames[copiedFrameIndex].Apply(inputs[i]);
             }
         }
 

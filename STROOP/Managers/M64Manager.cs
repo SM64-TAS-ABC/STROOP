@@ -43,7 +43,7 @@ namespace STROOP.Managers
             _gui.DataGridViewInputs.DataError += (sender, e) => _gui.DataGridViewInputs.CancelEdit();
             _gui.DataGridViewInputs.SelectionChanged += DataGridViewEditor_SelectionChanged;
 
-            _m64 = new M64File();
+            _m64 = new M64File(() => _gui.DataGridViewInputs.Refresh());
             _gui.DataGridViewInputs.DataSource = _m64.Inputs;
             UpdateTableSettings();
             _gui.PropertyGridHeader.SelectedObject = _m64.Header;
@@ -62,11 +62,13 @@ namespace STROOP.Managers
 
         private void PasteData(bool insert)
         {
-            M64CopiedData copiedData = _gui.ListBoxCopied.SelectedValue as M64CopiedData;
+            M64CopiedData copiedData = _gui.ListBoxCopied.SelectedItem as M64CopiedData;
             if (copiedData == null) return;
             int? minRowIndex = ControlUtilities.GetMinSelectedRowIndex(_gui.DataGridViewInputs);
             if (!minRowIndex.HasValue) return;
-            _m64.Paste(copiedData, minRowIndex.Value, insert);
+            int? multiplicity = ParsingUtilities.ParseIntNullable(_gui.TextBoxPasteMultiplicity.Text);
+            if (!multiplicity.HasValue) return;
+            _m64.Paste(copiedData, minRowIndex.Value, insert, multiplicity.Value);
         }
 
         private void CopyData(bool useRow)
@@ -80,6 +82,7 @@ namespace STROOP.Managers
                 _gui.DataGridViewInputs, _m64.CurrentFileName, startFrame.Value, endFrame.Value, useRow, inputsString);
             if (copiedData == null) return;
             _gui.ListBoxCopied.Items.Add(copiedData);
+            _gui.ListBoxCopied.SelectedItem = copiedData;
         }
 
         private void SetHeaderRomVersion(RomVersion romVersion)

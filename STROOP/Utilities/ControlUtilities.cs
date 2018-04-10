@@ -434,24 +434,26 @@ namespace STROOP.Utilities
 
         public static int? GetMinSelectedRowIndex(DataGridView table)
         {
-            if (table.Rows.Count == 0) return null;
-            List<DataGridViewRow> rows = new List<DataGridViewRow>();
-            foreach (DataGridViewRow row in table.Rows)
+            if (table.SelectedCells.Count == 0) return null;
+            List<DataGridViewCell> cells = new List<DataGridViewCell>();
+            foreach (DataGridViewCell cell in table.SelectedCells)
             {
-                rows.Add(row);
+                cells.Add(cell);
             }
-            return rows.Min(row => row.Index);
+            return cells.Min(cell => cell.RowIndex);
         }
 
         public static int? GetMaxSelectedRowIndex(DataGridView table)
         {
-            if (table.Rows.Count == 0) return null;
-            List<DataGridViewRow> rows = new List<DataGridViewRow>();
-            foreach (DataGridViewRow row in table.Rows)
+            if (table.SelectedCells.Count == 0) return null;
+            List<DataGridViewCell> cells = new List<DataGridViewCell>();
+            foreach (DataGridViewCell cell in table.SelectedCells)
             {
-                rows.Add(row);
+                cells.Add(cell);
             }
-            return rows.Max(row => row.Index);
+            return cells.Max(cell => cell.RowIndex);
         }
+
+
     }
 }

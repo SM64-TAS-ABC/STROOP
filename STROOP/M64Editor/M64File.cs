@@ -15,6 +15,8 @@ namespace STROOP.M64Editor
 {
     public class M64File
     {
+        private readonly Action _refreshFunction;
+
         public string CurrentFilePath { get; private set; }
         public string CurrentFileName { get; private set; }
         public byte[] RawBytes { get; private set; }
@@ -23,8 +25,9 @@ namespace STROOP.M64Editor
         public BindingList<M64InputFrame> Inputs { get; }
         public M64Stats Stats { get; }
 
-        public M64File()
+        public M64File(Action refreshFunction)
         {
+            _refreshFunction = refreshFunction;
             Header = new M64Header();
             Inputs = new BindingList<M64InputFrame>();
             Stats = new M64Stats(this);
@@ -121,7 +124,7 @@ namespace STROOP.M64Editor
         public void InsertNew(int index)
         {
             for (int i = index; i < Inputs.Count; i++)
-                Inputs[i]._frame++;
+                Inputs[i].FrameIndex++;
 
             var frame = new M64InputFrame(index);
             Inputs.Insert(index, frame);  
@@ -136,9 +139,9 @@ namespace STROOP.M64Editor
 
             var inputList = rows.Select(i => (M64InputFrame)Inputs[i].Clone()).ToList();
             foreach (var input in inputList)
-                input._frame -= smallestIndex;
+                input.FrameIndex -= smallestIndex;
 
-            inputList = inputList.OrderBy(i => i._frame).ToList();
+            inputList = inputList.OrderBy(i => i.FrameIndex).ToList();
 
             Clipboard.SetData("FrameInputData", inputList);
         }
@@ -158,11 +161,11 @@ namespace STROOP.M64Editor
 
             foreach (var input in inputData)
             {
-                if (!rows.Any(i => smallestIndex + input._frame == i))
+                if (!rows.Any(i => smallestIndex + input.FrameIndex == i))
                     continue;
 
-                int index = rows.Find(i => smallestIndex + input._frame == i);
-                input._frame = index;
+                int index = rows.Find(i => smallestIndex + input.FrameIndex == i);
+                input.FrameIndex = index;
                 Inputs[index] = input;
             }
         }
@@ -174,23 +177,42 @@ namespace STROOP.M64Editor
                 return;
 
             var inputData = Clipboard.GetData("FrameInputData") as List<M64InputFrame>;
-            inputData = inputData.OrderByDescending(i => i._frame).ToList();
+            inputData = inputData.OrderByDescending(i => i.FrameIndex).ToList();
 
             for (int i = row; i < Inputs.Count; i++)
-                Inputs[i]._frame += inputData.Count;
+                Inputs[i].FrameIndex += inputData.Count;
 
             int index = row + inputData.Count - 1;
 
             foreach (var input in inputData)
             {
-                input._frame = index--;
+                input.FrameIndex = index--;
                 Inputs.Insert(row, input);
             }
         }
 
-        public void Paste(M64CopiedData copiedData, int index, bool insert)
+        public void Paste(M64CopiedData copiedData, int index, bool insert, int multiplicity)
         {
-            
+            int pasteCount = copiedData.TotalFrames * multiplicity;
+            if (insert)
+            {
+                for (int i = 0; i < pasteCount; i++)
+                {
+                    Inputs.Insert(index + i, new M64InputFrame(0));
+                }
+            }
+            List<M64InputFrame> inputsToOverwrite = Inputs.Skip(index).Take(pasteCount).ToList();
+            copiedData.Apply(inputsToOverwrite);
+            RefreshInputFrames(index);
+            _refreshFunction();
+        }
+
+        private void RefreshInputFrames(int startIndex = 0)
+        {
+            for (int i = startIndex; i < Inputs.Count; i++)
+            {
+                Inputs[i].FrameIndex = i;
+            }
         }
     }
 }

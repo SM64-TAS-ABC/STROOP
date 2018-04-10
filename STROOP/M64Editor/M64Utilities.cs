@@ -108,6 +108,7 @@ namespace STROOP.M64Editor
 
         public static (int minFrame, int maxFrame, string inputsString) GetCellStats(List<M64InputCell> cells)
         {
+            if (cells.Count == 0) return (0, 0, "");
             int minFrame = cells.Min(cell => cell.RowIndex);
             int maxFrame = cells.Max(cell => cell.RowIndex);
             List<string> headerTexts = cells
