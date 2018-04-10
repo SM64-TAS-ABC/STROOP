@@ -183,9 +183,6 @@ namespace STROOP
                 ButtonGoto = buttonM64Goto,
                 TextBoxGoto = textBoxM64Goto,
 
-                OpenFileDialogM64 = openFileDialogM64,
-                SaveFileDialogM64 = saveFileDialogM64,
-
                 DataGridViewInputs = dataGridViewM64Inputs,
                 PropertyGridHeader = propertyGridM64Header,
                 PropertyGridStats = propertyGridM64Stats,

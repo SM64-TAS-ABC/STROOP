@@ -34,8 +34,8 @@ namespace STROOP
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
@@ -1204,8 +1204,6 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.openFileDialogM64 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialogM64 = new System.Windows.Forms.SaveFileDialog();
             this.ColumnM64Frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnM64Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnM64X = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -3806,14 +3804,14 @@ namespace STROOP
             this.dataGridViewM64Inputs.AllowUserToResizeColumns = false;
             this.dataGridViewM64Inputs.AllowUserToResizeRows = false;
             this.dataGridViewM64Inputs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewM64Inputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewM64Inputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnM64Frame,
@@ -3834,14 +3832,14 @@ namespace STROOP
             this.ColumnM64DDown,
             this.ColumnM64DLeft,
             this.ColumnM64DRight});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewM64Inputs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewM64Inputs.EnableHeadersVisualStyles = false;
             this.dataGridViewM64Inputs.Location = new System.Drawing.Point(0, 0);
@@ -15690,15 +15688,6 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // openFileDialogM64
-            // 
-            this.openFileDialogM64.FileName = "openFileDialog";
-            this.openFileDialogM64.Filter = "Mupen Movies|*.m64|All Files|*.*";
-            // 
-            // saveFileDialogM64
-            // 
-            this.saveFileDialogM64.Filter = "Mupen Movies|*.m64|All Files|*.*";
-            // 
             // ColumnM64Frame
             // 
             this.ColumnM64Frame.DataPropertyName = "Frame";
@@ -17475,8 +17464,6 @@ namespace STROOP
         private Button buttonM64Save;
         private Button buttonM64Open;
         private DataGridView dataGridViewM64Inputs;
-        private OpenFileDialog openFileDialogM64;
-        private SaveFileDialog saveFileDialogM64;
         private BetterSplitContainer splitContainerM64;
         private TabControl tabControlM64Details;
         private TabPage tabPageM64Inputs;

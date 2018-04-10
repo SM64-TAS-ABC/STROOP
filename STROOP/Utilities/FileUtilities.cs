@@ -22,19 +22,32 @@ namespace STROOP.Structs
                     return "STROOP Variables|*.stv";
                 case FileType.StroopVarHackVariables:
                     return "STROOP Var Hack Variables|*.stvhv";
+                case FileType.MupenMovie:
+                    return "Mupen Movies|*.m64|All Files|*.*";
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
 
+        public static OpenFileDialog CreateOpenFileDialog(FileType fileType)
+        {
+            return new OpenFileDialog()
+            {
+                Filter = GetFilterString(fileType),
+            };
+        }
+
+        public static SaveFileDialog CreateSaveFileDialog(FileType fileType)
+        {
+            return new SaveFileDialog()
+            {
+                Filter = GetFilterString(fileType),
+            };
+        }
+
         public static List<XElement> OpenXmlElements(FileType fileType)
         {
-            OpenFileDialog openFileDialog =
-                new OpenFileDialog()
-                {
-                    CheckFileExists = true,
-                    Filter = GetFilterString(fileType),
-                };
+            OpenFileDialog openFileDialog = CreateOpenFileDialog(fileType);
             DialogResult result = openFileDialog.ShowDialog();
             if (result != DialogResult.OK) return new List<XElement>();
 
@@ -45,12 +58,7 @@ namespace STROOP.Structs
         public static void SaveXmlElements(
             FileType fileType, string xmlName, List<XElement> elements)
         {
-            SaveFileDialog saveFileDialog =
-                new SaveFileDialog()
-                {
-                    CheckPathExists = true,
-                    Filter = GetFilterString(fileType),
-                };
+            SaveFileDialog saveFileDialog = CreateSaveFileDialog(fileType);
             DialogResult result = saveFileDialog.ShowDialog();
             if (result != DialogResult.OK) return;
 

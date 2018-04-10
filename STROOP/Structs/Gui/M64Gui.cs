@@ -18,10 +18,7 @@ namespace STROOP.Structs.Gui
         public Button ButtonClose;
         public Button ButtonGoto;
         public TextBox TextBoxGoto;
-
-        public OpenFileDialog OpenFileDialogM64;
-        public SaveFileDialog SaveFileDialogM64;
-
+        
         public DataGridView DataGridViewInputs;
         public PropertyGrid PropertyGridHeader;
         public PropertyGrid PropertyGridStats;

@@ -142,11 +142,12 @@ namespace STROOP.Managers
 
         private void ButtonSaveAs_Click(object sender, EventArgs e)
         {
-            var dialogResult = _gui.SaveFileDialogM64.ShowDialog();
+            SaveFileDialog saveFileDialog = FileUtilities.CreateSaveFileDialog(FileType.MupenMovie);
+            DialogResult dialogResult = saveFileDialog.ShowDialog();
             if (dialogResult != DialogResult.OK)
                 return;
 
-            bool success = _m64.Save(_gui.SaveFileDialogM64.FileName);
+            bool success = _m64.Save(saveFileDialog.FileName);
             if (!success)
             {
                 MessageBox.Show(
@@ -179,12 +180,13 @@ namespace STROOP.Managers
             if (CheckSaveChanges() == DialogResult.Cancel)
                 return;
 
-            var dialogResult = _gui.OpenFileDialogM64.ShowDialog();
+            OpenFileDialog openFileDialog = FileUtilities.CreateOpenFileDialog(FileType.MupenMovie);
+            DialogResult dialogResult = openFileDialog.ShowDialog();
             if (dialogResult != DialogResult.OK)
                 return;
 
-            string filePath = _gui.OpenFileDialogM64.FileName;
-            string fileName = _gui.OpenFileDialogM64.SafeFileName;
+            string filePath = openFileDialog.FileName;
+            string fileName = openFileDialog.SafeFileName;
 
             _gui.DataGridViewInputs.DataSource = null;
             _gui.PropertyGridHeader.SelectedObject = null;
