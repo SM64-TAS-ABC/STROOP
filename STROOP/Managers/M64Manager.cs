@@ -16,8 +16,6 @@ namespace STROOP.Managers
     {
         bool _displaySaveChangesOnOpen = false;
         M64File _m64;
-        int _lastRow = -1;
-
         M64Gui _gui;
 
         public M64Manager(M64Gui gui)
@@ -45,7 +43,11 @@ namespace STROOP.Managers
             _gui.PropertyGridStats.ContextMenuStrip = _m64.Stats.CreateContextMenuStrip();
             _gui.TabControlDetails.SelectedIndexChanged += TabControlDetails_SelectedIndexChanged;
 
-            _gui.ButtonTurnOffCells.Click += (sender, e) => TurnOffCells();
+            _gui.ButtonTurnOffRowRange.Click += (sender, e) => SetValuesOfSelection(CellSelectionType.RowRange, false);
+            _gui.ButtonTurnOffInputRange.Click += (sender, e) => SetValuesOfSelection(CellSelectionType.PartialRowRange, false);
+            _gui.ButtonTurnOffCells.Click += (sender, e) => SetValuesOfSelection(CellSelectionType.Cells, false);
+            _gui.ButtonTurnOnInputRange.Click += (sender, e) => SetValuesOfSelection(CellSelectionType.PartialRowRange, true);
+            _gui.ButtonTurnOnCells.Click += (sender, e) => SetValuesOfSelection(CellSelectionType.Cells, true);
 
             _gui.ButtonDeleteRowRange.Click += (sender, e) => DeleteRows();
 
@@ -137,11 +139,11 @@ namespace STROOP.Managers
             _gui.TextBoxSelectionInputs.Text = inputsString;
         }
 
-        private void TurnOffCells()
+        private void SetValuesOfSelection(CellSelectionType cellSelectionType, bool value)
         {
             List<M64InputCell> cells = M64Utilities.GetSelectedInputCells(
-                _gui.DataGridViewInputs, CellSelectionType.Cells);
-            cells.ForEach(cell => cell.Clear());
+                _gui.DataGridViewInputs, cellSelectionType);
+            cells.ForEach(cell => cell.SetValue(value));
             _gui.DataGridViewInputs.Refresh();
         }
 

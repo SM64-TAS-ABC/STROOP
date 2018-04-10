@@ -42,57 +42,58 @@ namespace STROOP.M64Editor
             new Comparison<string>((inputString1, inputString2) =>
                 InputStringToIndex[inputString1] - InputStringToIndex[inputString2]);
 
-        public static void ClearSpecificInput(M64InputFrame inputFrame, string headerText)
+        public static void SetSpecificInputValue(
+            M64InputFrame inputFrame, string headerText, bool value)
         {
             switch (headerText)
             {
                 case "X":
-                    inputFrame.X = 0;
+                    if (!value) inputFrame.X = 0;
                     break;
                 case "Y":
-                    inputFrame.Y = 0;
+                    if (!value) inputFrame.Y = 0;
                     break;
                 case "A":
-                    inputFrame.A = false;
+                    inputFrame.A = value;
                     break;
                 case "B":
-                    inputFrame.B = false;
+                    inputFrame.B = value;
                     break;
                 case "Z":
-                    inputFrame.Z = false;
+                    inputFrame.Z = value;
                     break;
                 case "S":
-                    inputFrame.S = false;
+                    inputFrame.S = value;
                     break;
                 case "R":
-                    inputFrame.R = false;
+                    inputFrame.R = value;
                     break;
                 case "C^":
-                    inputFrame.C_Up = false;
+                    inputFrame.C_Up = value;
                     break;
                 case "Cv":
-                    inputFrame.C_Down = false;
+                    inputFrame.C_Down = value;
                     break;
                 case "C<":
-                    inputFrame.C_Left = false;
+                    inputFrame.C_Left = value;
                     break;
                 case "C>":
-                    inputFrame.C_Right = false;
+                    inputFrame.C_Right = value;
                     break;
                 case "L":
-                    inputFrame.L = false;
+                    inputFrame.L = value;
                     break;
                 case "D^":
-                    inputFrame.D_Up = false;
+                    inputFrame.D_Up = value;
                     break;
                 case "Dv":
-                    inputFrame.D_Down = false;
+                    inputFrame.D_Down = value;
                     break;
                 case "D<":
-                    inputFrame.D_Left = false;
+                    inputFrame.D_Left = value;
                     break;
                 case "D>":
-                    inputFrame.D_Right = false;
+                    inputFrame.D_Right = value;
                     break;
             }
         }
