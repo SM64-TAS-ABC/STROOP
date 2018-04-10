@@ -68,6 +68,7 @@ namespace STROOP.M64Editor
             if (fileBytes.Length < M64Config.HeaderSize)
                 return false;
 
+            M64InputFrame.ClassIdIndex = 0;
             RawBytes = fileBytes;
             Inputs.Clear();
             byte[] headerBytes = fileBytes.Take(M64Config.HeaderSize).ToArray();
