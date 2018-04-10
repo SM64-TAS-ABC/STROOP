@@ -13,26 +13,26 @@ namespace STROOP.M64Editor
     public class M64InputFrame : ICloneable
     {
         public uint RawValue = 0;
-        public int Index;
+        public int _frame;
 
-        public M64InputFrame(int index)
+        public M64InputFrame(int frame)
         {
-            Index = index;
+            _frame = frame;
         }
 
-        public M64InputFrame(uint rawValue, int index)
+        public M64InputFrame(uint rawValue, int frame)
         {
             RawValue = rawValue;
-            Index = index;
+            _frame = frame;
         }
 
-        public int FrameIndex { get => Index; }
+        public int Frame { get => _frame; }
         public sbyte X { get => (sbyte)GetByte(2); set => SetByte(2, (byte)value); }
         public sbyte Y { get => (sbyte)GetByte(3); set => SetByte(3, (byte)value); }
         public bool A { get => GetBit(7); set => SetBit(7, value); }
         public bool B { get => GetBit(6); set => SetBit(6, value); }
         public bool Z { get => GetBit(5); set => SetBit(5, value); }
-        public bool Start { get => GetBit(4); set => SetBit(4, value); }
+        public bool S { get => GetBit(4); set => SetBit(4, value); }
         public bool R { get => GetBit(12); set => SetBit(12, value); }
         public bool C_Up { get => GetBit(11); set => SetBit(11, value); }
         public bool C_Down { get => GetBit(10); set => SetBit(10, value); }
@@ -75,7 +75,7 @@ namespace STROOP.M64Editor
 
         public object Clone()
         {
-            return new M64InputFrame(RawValue, Index);
+            return new M64InputFrame(RawValue, _frame);
         }
 
         public byte[] ToBytes()

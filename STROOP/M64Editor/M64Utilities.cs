@@ -61,7 +61,7 @@ namespace STROOP.M64Editor
                     inputFrame.Z = false;
                     break;
                 case "S":
-                    inputFrame.Start = false;
+                    inputFrame.S = false;
                     break;
                 case "R":
                     inputFrame.R = false;

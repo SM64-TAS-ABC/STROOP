@@ -44,8 +44,8 @@ namespace STROOP.M64Editor
         [Category("\u200B\u200B\u200BMain Button Presses"), DisplayName("\u200BNum Start Presses")]
         public int NumStartPresses
         {
-            get { return FindPresses(input => input.Start).Count; }
-            set { SetNumPreses(value, input => input.Start = false); }
+            get { return FindPresses(input => input.S).Count; }
+            set { SetNumPreses(value, input => input.S = false); }
         }
 
         [Category("\u200B\u200B\u200BMain Button Presses"), DisplayName("Num R Presses")]
@@ -198,7 +198,7 @@ namespace STROOP.M64Editor
                 input => input.A,
                 input => input.B,
                 input => input.Z,
-                input => input.Start,
+                input => input.S,
                 input => input.R,
                 input => input.C_Up,
                 input => input.C_Down,

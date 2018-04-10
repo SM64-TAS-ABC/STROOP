@@ -121,7 +121,7 @@ namespace STROOP.M64Editor
         public void InsertNew(int index)
         {
             for (int i = index; i < Inputs.Count; i++)
-                Inputs[i].Index++;
+                Inputs[i]._frame++;
 
             var frame = new M64InputFrame(index);
             Inputs.Insert(index, frame);  
@@ -136,9 +136,9 @@ namespace STROOP.M64Editor
 
             var inputList = rows.Select(i => (M64InputFrame)Inputs[i].Clone()).ToList();
             foreach (var input in inputList)
-                input.Index -= smallestIndex;
+                input._frame -= smallestIndex;
 
-            inputList = inputList.OrderBy(i => i.Index).ToList();
+            inputList = inputList.OrderBy(i => i._frame).ToList();
 
             Clipboard.SetData("FrameInputData", inputList);
         }
@@ -158,11 +158,11 @@ namespace STROOP.M64Editor
 
             foreach (var input in inputData)
             {
-                if (!rows.Any(i => smallestIndex + input.Index == i))
+                if (!rows.Any(i => smallestIndex + input._frame == i))
                     continue;
 
-                int index = rows.Find(i => smallestIndex + input.Index == i);
-                input.Index = index;
+                int index = rows.Find(i => smallestIndex + input._frame == i);
+                input._frame = index;
                 Inputs[index] = input;
             }
         }
@@ -174,16 +174,16 @@ namespace STROOP.M64Editor
                 return;
 
             var inputData = Clipboard.GetData("FrameInputData") as List<M64InputFrame>;
-            inputData = inputData.OrderByDescending(i => i.Index).ToList();
+            inputData = inputData.OrderByDescending(i => i._frame).ToList();
 
             for (int i = row; i < Inputs.Count; i++)
-                Inputs[i].Index += inputData.Count;
+                Inputs[i]._frame += inputData.Count;
 
             int index = row + inputData.Count - 1;
 
             foreach (var input in inputData)
             {
-                input.Index = index--;
+                input._frame = index--;
                 Inputs.Insert(row, input);
             }
         }
