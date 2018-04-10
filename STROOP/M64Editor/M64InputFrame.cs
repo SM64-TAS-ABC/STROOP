@@ -10,7 +10,7 @@ using System.Drawing;
 namespace STROOP.M64Editor
 {
     [Serializable]
-    public class M64InputFrame : ICloneable
+    public class M64InputFrame
     {
         public static int ClassIdIndex = 0;
 
@@ -72,11 +72,6 @@ namespace STROOP.M64Editor
         private bool GetBit(int bit)
         {
             return ((RawValue >> bit) & 0x01) == 0x01;
-        }
-
-        public object Clone()
-        {
-            return new M64InputFrame(FrameIndex, RawValue);
         }
 
         public byte[] ToBytes()
