@@ -217,7 +217,7 @@ namespace STROOP.Managers
                     switch (tabDestination.Value)
                     {
                         case TabDestinationType.Object:
-                            _gui.TabControl.SelectedTab = _gui.TabControl.TabPages["tabPageObjects"];
+                            _gui.TabControl.SelectedTab = _gui.TabControl.TabPages["tabPageObject"];
                             break;
                         case TabDestinationType.Memory:
                             _gui.TabControl.SelectedTab = _gui.TabControl.TabPages["tabPageMemory"];
