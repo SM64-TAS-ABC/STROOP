@@ -80,9 +80,6 @@ namespace STROOP.M64Editor
                 Inputs.Add(new M64InputFrame(i / 4, BitConverter.ToUInt32(frameBytes, i)));
             }
 
-            if (Inputs.Count == 0)
-                InsertNew(0);
-
             return true;
         } 
 
@@ -119,76 +116,6 @@ namespace STROOP.M64Editor
             RawBytes = null;
             Header.Clear();
             Inputs.Clear();
-        }
-
-        public void InsertNew(int index)
-        {
-            for (int i = index; i < Inputs.Count; i++)
-                Inputs[i].FrameIndex++;
-
-            var frame = new M64InputFrame(index, 0);
-            Inputs.Insert(index, frame);  
-        }
-
-        public void CopyRows(List<int> rows)
-        {
-            if (rows.Count == 0)
-                return;
-
-            int smallestIndex = rows.Min();
-
-            var inputList = rows.Select(i => (M64InputFrame)Inputs[i].Clone()).ToList();
-            foreach (var input in inputList)
-                input.FrameIndex -= smallestIndex;
-
-            inputList = inputList.OrderBy(i => i.FrameIndex).ToList();
-
-            Clipboard.SetData("FrameInputData", inputList);
-        }
-
-        public void PasteOnto(List<int> rows)
-        {
-            if (rows.Count == 0)
-                return;
-
-            if (!Clipboard.ContainsData("FrameInputData")
-                || !(Clipboard.GetData("FrameInputData") is List<M64InputFrame>))
-                return;
-
-            int smallestIndex = rows.Min();
-
-            var inputData = Clipboard.GetData("FrameInputData") as List<M64InputFrame>;
-
-            foreach (var input in inputData)
-            {
-                if (!rows.Any(i => smallestIndex + input.FrameIndex == i))
-                    continue;
-
-                int index = rows.Find(i => smallestIndex + input.FrameIndex == i);
-                input.FrameIndex = index;
-                Inputs[index] = input;
-            }
-        }
-
-        public void PasteInsert(int row)
-        {
-            if (!Clipboard.ContainsData("FrameInputData")
-                || !(Clipboard.GetData("FrameInputData") is List<M64InputFrame>))
-                return;
-
-            var inputData = Clipboard.GetData("FrameInputData") as List<M64InputFrame>;
-            inputData = inputData.OrderByDescending(i => i.FrameIndex).ToList();
-
-            for (int i = row; i < Inputs.Count; i++)
-                Inputs[i].FrameIndex += inputData.Count;
-
-            int index = row + inputData.Count - 1;
-
-            foreach (var input in inputData)
-            {
-                input.FrameIndex = index--;
-                Inputs.Insert(row, input);
-            }
         }
 
         public void Paste(M64CopiedData copiedData, int index, bool insert, int multiplicity)

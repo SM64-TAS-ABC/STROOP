@@ -32,14 +32,6 @@ namespace STROOP.Managers
             _gui.ButtonSetUsHeader.Click += (sender, e) => SetHeaderRomVersion(RomVersion.US);
             _gui.ButtonSetJpHeader.Click += (sender, e) => SetHeaderRomVersion(RomVersion.JP);
 
-            _gui.ToolStripMenuItemInsertNewAfter.Click += ToolStripMenuItemInsertNewAfter_Click;
-            _gui.ToolStripMenuItemInsertNewAfter.Click += ToolStripMenuItemInsertNewAfter_Click;
-            _gui.ToolStripMenuItemCopy.Click += ToolStripMenuItemCopy_Click;
-            _gui.ToolStripMenuItemPasteOnto.Click += ToolStripMenuItemPasteOnto_Click;
-            _gui.ToolStripMenuItemPasteBefore.Click += ToolStripMenuItemPasteBefore_Click;
-            _gui.ToolStripMenuItemPasteAfter.Click += ToolStripMenuItemPasteAfter_Click;
-
-            _gui.DataGridViewInputs.MouseClick += DataGridViewEditor_MouseClick;
             _gui.DataGridViewInputs.DataError += (sender, e) => _gui.DataGridViewInputs.CancelEdit();
             _gui.DataGridViewInputs.SelectionChanged += DataGridViewEditor_SelectionChanged;
 
@@ -122,20 +114,6 @@ namespace STROOP.Managers
             }
         }
 
-        private void DataGridViewEditor_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                _lastRow = _gui.DataGridViewInputs.HitTest(e.X, e.Y).RowIndex;
-
-                if (_lastRow < 0)
-                    return;
-
-                _gui.ContextMenuStripEditor.Show(_gui.DataGridViewInputs, new Point(e.X, e.Y));
-
-            }
-        }
-
         private void DataGridViewEditor_SelectionChanged(object sender, EventArgs e)
         {
             List<M64InputCell> cells = M64Utilities.GetSelectedInputCells(_gui.DataGridViewInputs);
@@ -160,54 +138,6 @@ namespace STROOP.Managers
                 return;
 
             _gui.DataGridViewInputs.FirstDisplayedScrollingRowIndex = value;
-        }
-
-        private void ToolStripMenuItemPasteAfter_Click(object sender, EventArgs e)
-        {
-            _m64.PasteInsert(_lastRow + 1);
-        }
-
-        private void ToolStripMenuItemPasteBefore_Click(object sender, EventArgs e)
-        {
-            _m64.PasteInsert(_lastRow);
-        }
-
-        private void ToolStripMenuItemPasteOnto_Click(object sender, EventArgs e)
-        {
-            var rowIndices = new List<int>();
-            foreach (DataGridViewRow row in _gui.DataGridViewInputs.SelectedRows)
-                rowIndices.Add(row.Index);
-
-            _m64.PasteOnto(rowIndices);
-        }
-
-        private void ToolStripMenuItemCopy_Click(object sender, EventArgs e)
-        {
-            var rowIndices = new List<int>();
-            foreach (DataGridViewRow row in _gui.DataGridViewInputs.SelectedRows)
-                rowIndices.Add(row.Index);
-
-            _m64.CopyRows(rowIndices);
-        }
-
-        private void ToolStripMenuItemInsertNewBefore_Click(object sender, EventArgs e)
-        {
-            if (_lastRow < 0)
-                return;
-
-            _m64.InsertNew(_lastRow);
-            _gui.DataGridViewInputs.ClearSelection();
-            _gui.DataGridViewInputs.Rows[_lastRow].Selected = true;
-        }
-
-        private void ToolStripMenuItemInsertNewAfter_Click(object sender, EventArgs e)
-        {
-            if (_lastRow < 0)
-                return;
-
-            _m64.InsertNew(_lastRow + 1);
-            _gui.DataGridViewInputs.ClearSelection();
-            _gui.DataGridViewInputs.Rows[_lastRow].Selected = true;
         }
 
         private void ButtonSaveAs_Click(object sender, EventArgs e)

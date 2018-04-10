@@ -227,13 +227,6 @@ namespace STROOP
             this.tabControlM64Details = new System.Windows.Forms.TabControl();
             this.tabPageM64Inputs = new System.Windows.Forms.TabPage();
             this.dataGridViewM64Inputs = new System.Windows.Forms.DataGridView();
-            this.contextMenuStripM64Editor = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.stripMenuItemM64InsertNewBefore = new System.Windows.Forms.ToolStripMenuItem();
-            this.stripMenuItemM64InsertNewAfter = new System.Windows.Forms.ToolStripMenuItem();
-            this.stripMenuItemM64Copy = new System.Windows.Forms.ToolStripMenuItem();
-            this.stripMenuItemM64PasteOnto = new System.Windows.Forms.ToolStripMenuItem();
-            this.stripMenuItemM64PasteBefore = new System.Windows.Forms.ToolStripMenuItem();
-            this.stripMenuItemM64PasteAfter = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPageM64Header = new System.Windows.Forms.TabPage();
             this.propertyGridM64Header = new System.Windows.Forms.PropertyGrid();
             this.tabPageM64Stats = new System.Windows.Forms.TabPage();
@@ -1269,7 +1262,6 @@ namespace STROOP
             this.tabControlM64Details.SuspendLayout();
             this.tabPageM64Inputs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewM64Inputs)).BeginInit();
-            this.contextMenuStripM64Editor.SuspendLayout();
             this.tabPageM64Header.SuspendLayout();
             this.tabPageM64Stats.SuspendLayout();
             this.tabPageHud.SuspendLayout();
@@ -3842,7 +3834,6 @@ namespace STROOP
             this.ColumnM64DDown,
             this.ColumnM64DLeft,
             this.ColumnM64DRight});
-            this.dataGridViewM64Inputs.ContextMenuStrip = this.contextMenuStripM64Editor;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -3861,55 +3852,6 @@ namespace STROOP
             this.dataGridViewM64Inputs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewM64Inputs.Size = new System.Drawing.Size(643, 427);
             this.dataGridViewM64Inputs.TabIndex = 2;
-            // 
-            // contextMenuStripM64Editor
-            // 
-            this.contextMenuStripM64Editor.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.contextMenuStripM64Editor.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stripMenuItemM64InsertNewBefore,
-            this.stripMenuItemM64InsertNewAfter,
-            this.stripMenuItemM64Copy,
-            this.stripMenuItemM64PasteOnto,
-            this.stripMenuItemM64PasteBefore,
-            this.stripMenuItemM64PasteAfter});
-            this.contextMenuStripM64Editor.Name = "contextMenuStripEditor";
-            this.contextMenuStripM64Editor.Size = new System.Drawing.Size(168, 136);
-            // 
-            // stripMenuItemM64InsertNewBefore
-            // 
-            this.stripMenuItemM64InsertNewBefore.Name = "stripMenuItemM64InsertNewBefore";
-            this.stripMenuItemM64InsertNewBefore.Size = new System.Drawing.Size(167, 22);
-            this.stripMenuItemM64InsertNewBefore.Text = "Insert New Before";
-            // 
-            // stripMenuItemM64InsertNewAfter
-            // 
-            this.stripMenuItemM64InsertNewAfter.Name = "stripMenuItemM64InsertNewAfter";
-            this.stripMenuItemM64InsertNewAfter.Size = new System.Drawing.Size(167, 22);
-            this.stripMenuItemM64InsertNewAfter.Text = "Insert New After";
-            // 
-            // stripMenuItemM64Copy
-            // 
-            this.stripMenuItemM64Copy.Name = "stripMenuItemM64Copy";
-            this.stripMenuItemM64Copy.Size = new System.Drawing.Size(167, 22);
-            this.stripMenuItemM64Copy.Text = "Copy";
-            // 
-            // stripMenuItemM64PasteOnto
-            // 
-            this.stripMenuItemM64PasteOnto.Name = "stripMenuItemM64PasteOnto";
-            this.stripMenuItemM64PasteOnto.Size = new System.Drawing.Size(167, 22);
-            this.stripMenuItemM64PasteOnto.Text = "Paste Onto";
-            // 
-            // stripMenuItemM64PasteBefore
-            // 
-            this.stripMenuItemM64PasteBefore.Name = "stripMenuItemM64PasteBefore";
-            this.stripMenuItemM64PasteBefore.Size = new System.Drawing.Size(167, 22);
-            this.stripMenuItemM64PasteBefore.Text = "Paste Before";
-            // 
-            // stripMenuItemM64PasteAfter
-            // 
-            this.stripMenuItemM64PasteAfter.Name = "stripMenuItemM64PasteAfter";
-            this.stripMenuItemM64PasteAfter.Size = new System.Drawing.Size(167, 22);
-            this.stripMenuItemM64PasteAfter.Text = "Paste After";
             // 
             // tabPageM64Header
             // 
@@ -15978,7 +15920,6 @@ namespace STROOP
             this.tabControlM64Details.ResumeLayout(false);
             this.tabPageM64Inputs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewM64Inputs)).EndInit();
-            this.contextMenuStripM64Editor.ResumeLayout(false);
             this.tabPageM64Header.ResumeLayout(false);
             this.tabPageM64Stats.ResumeLayout(false);
             this.tabPageHud.ResumeLayout(false);
@@ -17536,13 +17477,6 @@ namespace STROOP
         private DataGridView dataGridViewM64Inputs;
         private OpenFileDialog openFileDialogM64;
         private SaveFileDialog saveFileDialogM64;
-        private ContextMenuStrip contextMenuStripM64Editor;
-        private ToolStripMenuItem stripMenuItemM64InsertNewBefore;
-        private ToolStripMenuItem stripMenuItemM64InsertNewAfter;
-        private ToolStripMenuItem stripMenuItemM64Copy;
-        private ToolStripMenuItem stripMenuItemM64PasteOnto;
-        private ToolStripMenuItem stripMenuItemM64PasteBefore;
-        private ToolStripMenuItem stripMenuItemM64PasteAfter;
         private BetterSplitContainer splitContainerM64;
         private TabControl tabControlM64Details;
         private TabPage tabPageM64Inputs;

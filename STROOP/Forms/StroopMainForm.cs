@@ -213,14 +213,6 @@ namespace STROOP
                 ButtonPasteInsert = buttonM64PasteInsert,
                 ButtonPasteOverwrite = buttonM64PasteOverwrite,
                 TextBoxPasteMultiplicity = textBoxM64PasteMultiplicity,
-
-                ContextMenuStripEditor = contextMenuStripM64Editor,
-                ToolStripMenuItemInsertNewAfter = stripMenuItemM64InsertNewAfter,
-                ToolStripMenuItemInsertNewBefore = stripMenuItemM64InsertNewBefore,
-                ToolStripMenuItemCopy = stripMenuItemM64Copy,
-                ToolStripMenuItemPasteOnto = stripMenuItemM64PasteOnto,
-                ToolStripMenuItemPasteBefore = stripMenuItemM64PasteBefore,
-                ToolStripMenuItemPasteAfter = stripMenuItemM64PasteAfter,
             };
 
             // Create managers

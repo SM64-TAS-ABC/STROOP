@@ -49,14 +49,5 @@ namespace STROOP.Structs.Gui
         public Button ButtonPasteInsert;
         public Button ButtonPasteOverwrite;
         public BetterTextbox TextBoxPasteMultiplicity;
-
-        public ContextMenuStrip ContextMenuStripEditor;
-        public ToolStripMenuItem ToolStripMenuItemInsertNewBefore;
-        public ToolStripMenuItem ToolStripMenuItemInsertNewAfter;
-        public ToolStripMenuItem ToolStripMenuItemCopy;
-        public ToolStripMenuItem ToolStripMenuItemPasteOnto;
-        public ToolStripMenuItem ToolStripMenuItemPasteBefore;
-        public ToolStripMenuItem ToolStripMenuItemPasteAfter;
-
     }
 }
