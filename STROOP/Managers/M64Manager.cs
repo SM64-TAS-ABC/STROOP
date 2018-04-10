@@ -45,12 +45,14 @@ namespace STROOP.Managers
             _gui.PropertyGridStats.ContextMenuStrip = _m64.Stats.CreateContextMenuStrip();
             _gui.TabControlDetails.SelectedIndexChanged += TabControlDetails_SelectedIndexChanged;
 
-            _gui.ButtonClearCells.Click += ButtonClearCells_Click;
-            _gui.ButtonCopyInputs.Click += (sender, e) => CopyData(false);
-            _gui.ButtonCopyRows.Click += (sender, e) => CopyData(true);
+            _gui.ButtonTurnOffCells.Click += (sender, e) => TurnOffCells();
+
+            _gui.ButtonDeleteRowRange.Click += (sender, e) => DeleteRows();
+
+            _gui.ButtonCopyInputRange.Click += (sender, e) => CopyData(false);
+            _gui.ButtonCopyRowRange.Click += (sender, e) => CopyData(true);
             _gui.ButtonPasteInsert.Click += (sender, e) => PasteData(true);
             _gui.ButtonPasteOverwrite.Click += (sender, e) => PasteData(false);
-            _gui.ButtonDeleteRows.Click += (sender, e) => DeleteRows();
 
             _gui.ListBoxCopied.Items.Add(M64CopiedData.OneEmptyFrame);
         }
@@ -134,7 +136,7 @@ namespace STROOP.Managers
             _gui.TextBoxSelectionInputs.Text = inputsString;
         }
 
-        private void ButtonClearCells_Click(object sender, EventArgs e)
+        private void TurnOffCells()
         {
             List<M64InputCell> cells = M64Utilities.GetSelectedInputCells(_gui.DataGridViewInputs);
             cells.ForEach(cell => cell.Clear());

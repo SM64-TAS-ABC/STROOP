@@ -35,13 +35,15 @@ namespace STROOP.Structs.Gui
         public BetterTextbox TextBoxSelectionEndFrame;
         public BetterTextbox TextBoxSelectionInputs;
 
-        public Button ButtonDeleteRows;
-        public Button ButtonClearRows;
-        public Button ButtonClearInputs;
-        public Button ButtonClearCells;
+        public Button ButtonTurnOffRowRange;
+        public Button ButtonTurnOffInputRange;
+        public Button ButtonTurnOffCells;
+        public Button ButtonDeleteRowRange;
+        public Button ButtonTurnOnInputRange;
+        public Button ButtonTurnOnCells;
+        public Button ButtonCopyRowRange;
+        public Button ButtonCopyInputRange;
 
-        public Button ButtonCopyRows;
-        public Button ButtonCopyInputs;
         public ListBox ListBoxCopied;
         public Button ButtonPasteInsert;
         public Button ButtonPasteOverwrite;
