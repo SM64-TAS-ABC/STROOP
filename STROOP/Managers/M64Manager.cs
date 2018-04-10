@@ -103,19 +103,9 @@ namespace STROOP.Managers
             }
         }
 
-        private List<M64InputCell> GetSelectedCells()
-        {
-            List<M64InputCell> cells = new List<M64InputCell>();
-            foreach (DataGridViewCell cell in _gui.DataGridViewInputs.SelectedCells)
-            {
-                cells.Add(new M64InputCell(_gui.DataGridViewInputs, cell));
-            }
-            return cells;
-        }
-
         private void DataGridViewEditor_SelectionChanged(object sender, EventArgs e)
         {
-            List<M64InputCell> cells = GetSelectedCells();
+            List<M64InputCell> cells = M64Utilities.GetSelectedCells(_gui.DataGridViewInputs);
             int minRowIndex = cells.Min(cell => cell.RowIndex);
             int maxRowIndex = cells.Max(cell => cell.RowIndex);
             List<string> headerTexts = cells
@@ -130,7 +120,7 @@ namespace STROOP.Managers
 
         private void ButtonClearCells_Click(object sender, EventArgs e)
         {
-            List<M64InputCell> cells = GetSelectedCells();
+            List<M64InputCell> cells = M64Utilities.GetSelectedCells(_gui.DataGridViewInputs);
             cells.ForEach(cell => cell.Clear());
             _gui.DataGridViewInputs.Refresh();
         }

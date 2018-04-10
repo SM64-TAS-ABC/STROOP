@@ -21,8 +21,9 @@ namespace STROOP.M64Editor
         private readonly M64InputFrame InputFrame;
         public int RowIndex { get => InputFrame._frame; }
 
-        public M64InputCell(DataGridView table, DataGridViewCell cell)
+        public M64InputCell(DataGridViewCell cell)
         {
+            DataGridView table = cell.DataGridView;
             HeaderText = table.Columns[cell.ColumnIndex].HeaderText;
             BindingList<M64InputFrame> inputs = table.DataSource as BindingList<M64InputFrame>;
             InputFrame = inputs[cell.RowIndex];

@@ -95,5 +95,15 @@ namespace STROOP.M64Editor
                     break;
             }
         }
+
+        public static List<M64InputCell> GetSelectedCells(DataGridView table)
+        {
+            List<M64InputCell> cells = new List<M64InputCell>();
+            foreach (DataGridViewCell cell in table.SelectedCells)
+            {
+                cells.Add(new M64InputCell(cell));
+            }
+            return cells;
+        }
     }
 }
