@@ -60,6 +60,11 @@ namespace STROOP.M64Editor
             this.D_Right = D_Right;
         }
 
+        public static M64CopiedFrame CreateCopiedFrame(M64InputFrame input, string inputsList)
+        {
+            return new M64CopiedFrame();
+        }
+
         public void Apply(M64InputFrame input)
         {
             if (X.HasValue) input.X = X.Value;

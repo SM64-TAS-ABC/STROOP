@@ -40,7 +40,12 @@ namespace STROOP.M64Editor
             if (!useRows && inputsString == null) return null;
 
             string type = useRows ? "Row" : inputsString;
-            return new M64CopiedData(startFrame, endFrame, type, fileName, new List<M64CopiedFrame>());
+
+            List<M64InputFrame> inputs = M64Utilities.GetInputFramesInRange(table, startFrame, endFrame);
+            List<M64CopiedFrame> copiedFrames = inputs.ConvertAll(
+                input => M64CopiedFrame.CreateCopiedFrame(input, inputsString));
+
+            return new M64CopiedData(startFrame, endFrame, type, fileName, copiedFrames);
         }
 
         public void Apply(List<M64InputFrame> inputs)

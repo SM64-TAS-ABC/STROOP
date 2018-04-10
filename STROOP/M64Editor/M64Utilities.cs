@@ -128,5 +128,11 @@ namespace STROOP.M64Editor
             }
             return inputs;
         }
+
+        public static List<M64InputFrame> GetInputFramesInRange(DataGridView table, int startRow, int endRow)
+        {
+            BindingList<M64InputFrame> allInputs = table.DataSource as BindingList<M64InputFrame>;
+            return allInputs.Skip(startRow).Take(endRow - startRow + 1).ToList();
+        }
     }
 }
