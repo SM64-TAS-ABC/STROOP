@@ -10,18 +10,32 @@ namespace STROOP.M64Editor
         private readonly int _startFrame;
         private readonly int _endFrame;
         private readonly int _totalFrames;
-        private readonly string _inputsString;
+        private readonly string _type;
         private readonly string _fileName;
 
-        private M64CopiedData(int startFrame, int endFrame, string inputsString, string fileName)
+        private M64CopiedData(int startFrame, int endFrame, string type, string fileName)
         {
             _startFrame = startFrame;
             _endFrame = endFrame;
             _totalFrames = endFrame - startFrame + 1;
-            _inputsString = inputsString;
+            _type = type;
             _fileName = fileName;
         }
 
+        public static M64CopiedData CreateCopiedData(
+            DataGridView table, string fileName, int startFrame, int endFrame, bool useRows, string inputsString = null)
+        {
+            if (startFrame < 0) return null;
+            if (endFrame >= table.Rows.Count) return null;
+            if (startFrame > endFrame) return null;
+            if (fileName == null) return null;
+            if (!useRows && inputsString == null) return null;
+
+            string type = useRows ? "Row" : inputsString;
+            return new M64CopiedData(startFrame, endFrame, type, fileName);
+        }
+
+        /*
         public static M64CopiedData CreateCopiedDataFromCells(DataGridView table, string fileName)
         {
             if (table.SelectedCells.Count == 0 || fileName == null) return null;
@@ -38,13 +52,13 @@ namespace STROOP.M64Editor
             int maxFrame = inputs.Max(input => input.Frame);
             return new M64CopiedData(minFrame, maxFrame, "Row", fileName);
         }
+        */
 
         public override string ToString()
         {
             return String.Format(
-                "[{0}f [{1}] {2}-{3} @{4}]",
-                _totalFrames, _inputsString, _startFrame, _endFrame, _fileName);
-
+                "{0}f [{1}] {2}-{3} @{4}",
+                _totalFrames, _type, _startFrame, _endFrame, _fileName);
         }
     }
 }

@@ -54,24 +54,19 @@ namespace STROOP.Managers
             _gui.TabControlDetails.SelectedIndexChanged += TabControlDetails_SelectedIndexChanged;
 
             _gui.ButtonClearCells.Click += ButtonClearCells_Click;
-            _gui.ButtonCopyInputs.Click += ButtonCopyInputs_Click;
-            _gui.ButtonCopyRows.Click += ButtonCopyRows_Click;
+            _gui.ButtonCopyInputs.Click += (sender, e) => CopyData(false);
+            _gui.ButtonCopyRows.Click += (sender, e) => CopyData(true);
         }
 
-        private void ButtonCopyInputs_Click(object sender, EventArgs e)
+        private void CopyData(bool useRow)
         {
-            M64CopiedData copiedData =
-                M64CopiedData.CreateCopiedDataFromCells(
-                    _gui.DataGridViewInputs, _m64.CurrentFileName);
-            if (copiedData == null) return;
-            _gui.ListBoxCopied.Items.Add(copiedData);
-        }
+            int? startFrame = ParsingUtilities.ParseIntNullable(_gui.TextBoxSelectionStartFrame.Text);
+            int? endFrame = ParsingUtilities.ParseIntNullable(_gui.TextBoxSelectionEndFrame.Text);
+            string inputsString = _gui.TextBoxSelectionInputs.Text;
 
-        private void ButtonCopyRows_Click(object sender, EventArgs e)
-        {
-            M64CopiedData copiedData =
-                M64CopiedData.CreateCopiedDataFromRows(
-                    _gui.DataGridViewInputs, _m64.CurrentFileName);
+            if (!startFrame.HasValue || !endFrame.HasValue) return;
+            M64CopiedData copiedData = M64CopiedData.CreateCopiedData(
+                _gui.DataGridViewInputs, _m64.CurrentFileName, startFrame.Value, endFrame.Value, useRow, inputsString);
             if (copiedData == null) return;
             _gui.ListBoxCopied.Items.Add(copiedData);
         }
