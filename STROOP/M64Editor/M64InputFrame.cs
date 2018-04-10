@@ -9,7 +9,6 @@ using System.Drawing;
 
 namespace STROOP.M64Editor
 {
-    [Serializable]
     public class M64InputFrame
     {
         public static int ClassIdIndex = 0;
