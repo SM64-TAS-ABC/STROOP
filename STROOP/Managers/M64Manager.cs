@@ -51,8 +51,9 @@ namespace STROOP.Managers
             _gui.PropertyGridStats.SelectedObject = _m64.Stats;
             _gui.PropertyGridStats.Refresh();
             _gui.PropertyGridStats.ContextMenuStrip = _m64.Stats.CreateContextMenuStrip();
-
             _gui.TabControlDetails.SelectedIndexChanged += TabControlDetails_SelectedIndexChanged;
+
+            _gui.ButtonClearCells.Click += ButtonClearCells_Click;
         }
 
         private void SetHeaderRomVersion(RomVersion romVersion)
@@ -102,14 +103,19 @@ namespace STROOP.Managers
             }
         }
 
-        private void DataGridViewEditor_SelectionChanged(object sender, EventArgs e)
+        private List<M64InputCell> GetSelectedCells()
         {
             List<M64InputCell> cells = new List<M64InputCell>();
             foreach (DataGridViewCell cell in _gui.DataGridViewInputs.SelectedCells)
             {
                 cells.Add(new M64InputCell(_gui.DataGridViewInputs, cell));
             }
+            return cells;
+        }
 
+        private void DataGridViewEditor_SelectionChanged(object sender, EventArgs e)
+        {
+            List<M64InputCell> cells = GetSelectedCells();
             int minRowIndex = cells.Min(cell => cell.RowIndex);
             int maxRowIndex = cells.Max(cell => cell.RowIndex);
             List<string> headerTexts = cells
@@ -120,6 +126,13 @@ namespace STROOP.Managers
             _gui.TextBoxSelectionStartFrame.Text = minRowIndex.ToString();
             _gui.TextBoxSelectionEndFrame.Text = maxRowIndex.ToString();
             _gui.TextBoxSelectionInputs.Text = String.Join("", headerTexts);
+        }
+
+        private void ButtonClearCells_Click(object sender, EventArgs e)
+        {
+            List<M64InputCell> cells = GetSelectedCells();
+            cells.ForEach(cell => cell.Clear());
+            _gui.DataGridViewInputs.Refresh();
         }
 
         private void ButtonGoto_Click(object sender, EventArgs e)
