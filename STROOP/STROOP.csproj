@@ -155,6 +155,7 @@
     </Compile>
     <Compile Include="Controls\WatchVariableTriangleWrapper.cs" />
     <Compile Include="Controls\WatchVariableStringWrapper.cs" />
+    <Compile Include="Enums\CellSelectionType.cs" />
     <Compile Include="Enums\MapTrackerDisplayType.cs" />
     <Compile Include="Interfaces\IUpdatable.cs" />
     <Compile Include="Controls\Map\Trackers\MapTracker.cs">

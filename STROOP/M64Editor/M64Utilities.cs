@@ -120,7 +120,7 @@ namespace STROOP.M64Editor
                 ("D>", 100, Color.LightGray),
             };
 
-        public static List<M64InputCell> GetSelectedInputCells(DataGridView table)
+        public static List<M64InputCell> GetSelectedInputCells(DataGridView table, CellSelectionType cellSelectionType)
         {
             List<M64InputCell> cells = new List<M64InputCell>();
             foreach (DataGridViewCell cell in table.SelectedCells)

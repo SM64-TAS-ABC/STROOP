@@ -129,7 +129,8 @@ namespace STROOP.Managers
 
         public void UpdateSelectionTextboxes()
         {
-            List<M64InputCell> cells = M64Utilities.GetSelectedInputCells(_gui.DataGridViewInputs);
+            List<M64InputCell> cells = M64Utilities.GetSelectedInputCells(
+                _gui.DataGridViewInputs, CellSelectionType.Cells);
             (int minFrame, int maxFrame, string inputsString) = M64Utilities.GetCellStats(cells);
             _gui.TextBoxSelectionStartFrame.Text = minFrame.ToString();
             _gui.TextBoxSelectionEndFrame.Text = maxFrame.ToString();
@@ -138,7 +139,8 @@ namespace STROOP.Managers
 
         private void TurnOffCells()
         {
-            List<M64InputCell> cells = M64Utilities.GetSelectedInputCells(_gui.DataGridViewInputs);
+            List<M64InputCell> cells = M64Utilities.GetSelectedInputCells(
+                _gui.DataGridViewInputs, CellSelectionType.Cells);
             cells.ForEach(cell => cell.Clear());
             _gui.DataGridViewInputs.Refresh();
         }
