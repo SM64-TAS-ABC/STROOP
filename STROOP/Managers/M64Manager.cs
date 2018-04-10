@@ -110,7 +110,7 @@ namespace STROOP.Managers
             {
                 _gui.DataGridViewInputs.Refresh();
              }
-            if (_gui.TabControlDetails.SelectedTab == _gui.TabPageHeader)
+            else if (_gui.TabControlDetails.SelectedTab == _gui.TabPageHeader)
             {
                 ControlUtilities.SetPropertyGridLabelColumnWidth(_gui.PropertyGridHeader, 160);
                 _gui.PropertyGridHeader.Refresh();
