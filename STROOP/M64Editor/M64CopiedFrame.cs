@@ -81,6 +81,11 @@ namespace STROOP.M64Editor
                 useRows || inputsList.Contains("D>") ? input.D_Right : (bool?)null);
         }
 
+        public static readonly M64CopiedFrame OneEmptyFrame =
+            new M64CopiedFrame(
+                0, 0, false, false, false, false, false, false,
+                false, false, false, false, false, false, false, false);
+
         public void Apply(M64InputFrame input)
         {
             if (X.HasValue) input.X = X.Value;

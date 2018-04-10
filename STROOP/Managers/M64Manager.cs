@@ -50,6 +50,8 @@ namespace STROOP.Managers
             _gui.ButtonCopyRows.Click += (sender, e) => CopyData(true);
             _gui.ButtonPasteInsert.Click += (sender, e) => PasteData(true);
             _gui.ButtonPasteOverwrite.Click += (sender, e) => PasteData(false);
+
+            _gui.ListBoxCopied.Items.Add(M64CopiedData.OneEmptyFrame);
         }
 
         private void PasteData(bool insert)
