@@ -10,6 +10,7 @@ using System.Data;
 using System.ComponentModel;
 using System.Xml.Serialization;
 using STROOP.Structs;
+using STROOP.Structs.Configurations;
 
 namespace STROOP.M64Editor
 {
@@ -120,6 +121,23 @@ namespace STROOP.M64Editor
             Inputs.Clear();
         }
 
+        public void DeleteRows(int startIndex, int endIndex)
+        {
+            startIndex = Math.Max(startIndex, 0);
+            endIndex = Math.Min(endIndex, Inputs.Count - 1);
+            int numDeletes = endIndex - startIndex + 1;
+            if (numDeletes <= 0) return;
+
+            for (int i = 0; i < numDeletes; i++)
+            {
+                Inputs.RemoveAt(startIndex);
+            }
+
+            RefreshInputFrames(startIndex);
+            _refreshFunction();
+            Config.M64Manager.UpdateSelectionTextboxes();
+        }
+
         public void Paste(M64CopiedData copiedData, int index, bool insert, int multiplicity)
         {
             int pasteCount = copiedData.TotalFrames * multiplicity;
@@ -134,6 +152,7 @@ namespace STROOP.M64Editor
             copiedData.Apply(inputsToOverwrite);
             RefreshInputFrames(index);
             _refreshFunction();
+            Config.M64Manager.UpdateSelectionTextboxes();
         }
 
         private void RefreshInputFrames(int startIndex = 0)

@@ -33,7 +33,7 @@ namespace STROOP.Managers
             _gui.ButtonSetJpHeader.Click += (sender, e) => SetHeaderRomVersion(RomVersion.JP);
 
             _gui.DataGridViewInputs.DataError += (sender, e) => _gui.DataGridViewInputs.CancelEdit();
-            _gui.DataGridViewInputs.SelectionChanged += DataGridViewEditor_SelectionChanged;
+            _gui.DataGridViewInputs.SelectionChanged += (sender, e) => UpdateSelectionTextboxes();
 
             _m64 = new M64File(() => _gui.DataGridViewInputs.Refresh());
             _gui.DataGridViewInputs.DataSource = _m64.Inputs;
@@ -50,8 +50,17 @@ namespace STROOP.Managers
             _gui.ButtonCopyRows.Click += (sender, e) => CopyData(true);
             _gui.ButtonPasteInsert.Click += (sender, e) => PasteData(true);
             _gui.ButtonPasteOverwrite.Click += (sender, e) => PasteData(false);
+            _gui.ButtonDeleteRows.Click += (sender, e) => DeleteRows();
 
             _gui.ListBoxCopied.Items.Add(M64CopiedData.OneEmptyFrame);
+        }
+
+        private void DeleteRows()
+        {
+            int? startFrame = ParsingUtilities.ParseIntNullable(_gui.TextBoxSelectionStartFrame.Text);
+            int? endFrame = ParsingUtilities.ParseIntNullable(_gui.TextBoxSelectionEndFrame.Text);
+            if (!startFrame.HasValue || !endFrame.HasValue) return;
+            _m64.DeleteRows(startFrame.Value, endFrame.Value);
         }
 
         private void PasteData(bool insert)
@@ -116,7 +125,7 @@ namespace STROOP.Managers
             }
         }
 
-        private void DataGridViewEditor_SelectionChanged(object sender, EventArgs e)
+        public void UpdateSelectionTextboxes()
         {
             List<M64InputCell> cells = M64Utilities.GetSelectedInputCells(_gui.DataGridViewInputs);
             (int minFrame, int maxFrame, string inputsString) = M64Utilities.GetCellStats(cells);
