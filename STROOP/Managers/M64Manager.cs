@@ -83,11 +83,11 @@ namespace STROOP.Managers
             {
                 case RomVersion.US:
                     _m64.Header.CountryCode = M64Config.CountryCodeUS;
-                    _m64.Header.Crc = M64Config.CrcUS;
+                    _m64.Header.Crc32 = M64Config.CrcUS;
                     break;
                 case RomVersion.JP:
                     _m64.Header.CountryCode = M64Config.CountryCodeJP;
-                    _m64.Header.Crc = M64Config.CrcJP;
+                    _m64.Header.Crc32 = M64Config.CrcJP;
                     break;
                 case RomVersion.PAL:
                 default:
