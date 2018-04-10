@@ -30,5 +30,10 @@ namespace STROOP.Utilities
             return builder.ToString();
         }
 
+        public static string FormatIntegerWithSign(int num)
+        {
+            return (num > 0 ? "+" : "") + num;
+        }
+
     }
 } 

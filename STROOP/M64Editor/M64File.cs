@@ -20,6 +20,7 @@ namespace STROOP.M64Editor
         public string CurrentFilePath { get; private set; }
         public string CurrentFileName { get; private set; }
         public byte[] RawBytes { get; private set; }
+        public int OriginalFrameCount { get; private set; }
 
         public M64Header Header { get; }
         public BindingList<M64InputFrame> Inputs { get; }
@@ -71,11 +72,10 @@ namespace STROOP.M64Editor
             Inputs.Clear();
             byte[] headerBytes = fileBytes.Take(M64Config.HeaderSize).ToArray();
             Header.LoadBytes(headerBytes);
-            var frameBytes = fileBytes.Skip(M64Config.HeaderSize).ToArray();
+            byte[] frameBytes = fileBytes.Skip(M64Config.HeaderSize).ToArray();
 
-            int numOfInputs = Header.NumInputs;
-
-            for (int i = 0; i < frameBytes.Length && i < 4 * numOfInputs; i += 4)
+            OriginalFrameCount = Header.NumInputs;
+            for (int i = 0; i < frameBytes.Length && i < 4 * OriginalFrameCount; i += 4)
             {
                 Inputs.Add(new M64InputFrame(i / 4, BitConverter.ToUInt32(frameBytes, i)));
             }
@@ -114,6 +114,7 @@ namespace STROOP.M64Editor
             CurrentFilePath = null;
             CurrentFileName = null;
             RawBytes = null;
+            OriginalFrameCount = 0;
             Header.Clear();
             Inputs.Clear();
         }

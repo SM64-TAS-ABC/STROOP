@@ -247,7 +247,15 @@ namespace STROOP.Managers
             if (!updateView) return;
 
             _gui.LabelFileName.Text = _m64.CurrentFileName ?? "(No File Opened)";
-            _gui.LabelNumInputsValue.Text = _m64.Inputs.Count.ToString();
+
+            int currentFrameCount = _m64.Inputs.Count;
+            int originalFrameCount = _m64.OriginalFrameCount;
+            int diff = currentFrameCount - originalFrameCount;
+            _gui.LabelNumInputsValue.Text = String.Format(
+                "{0} / {1} [{2}]",
+                currentFrameCount,
+                originalFrameCount,
+                StringUtilities.FormatIntegerWithSign(diff));
         }
     }
 }
