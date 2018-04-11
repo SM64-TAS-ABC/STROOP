@@ -33,14 +33,13 @@ namespace STROOP.Managers
             _gui.DataGridViewInputs.DataError += (sender, e) => _gui.DataGridViewInputs.CancelEdit();
             _gui.DataGridViewInputs.SelectionChanged += (sender, e) => UpdateSelectionTextboxes();
 
-            _m64 = new M64File(() => _gui.DataGridViewInputs.Refresh());
+            _m64 = new M64File(_gui);
             _gui.DataGridViewInputs.DataSource = _m64.Inputs;
             UpdateTableSettings();
             _gui.PropertyGridHeader.SelectedObject = _m64.Header;
             _gui.PropertyGridHeader.Refresh();
             _gui.PropertyGridStats.SelectedObject = _m64.Stats;
             _gui.PropertyGridStats.Refresh();
-            _gui.PropertyGridStats.ContextMenuStrip = _m64.Stats.CreateContextMenuStrip();
             _gui.TabControlDetails.SelectedIndexChanged += TabControlDetails_SelectedIndexChanged;
 
             _gui.ButtonTurnOffRowRange.Click += (sender, e) => SetValuesOfSelection(CellSelectionType.RowRange, false);

@@ -11,12 +11,13 @@ using System.ComponentModel;
 using System.Xml.Serialization;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
+using STROOP.Structs.Gui;
 
 namespace STROOP.M64Editor
 {
     public class M64File
     {
-        private readonly Action _refreshFunction;
+        private readonly M64Gui _gui;
 
         public string CurrentFilePath { get; private set; }
         public string CurrentFileName { get; private set; }
@@ -27,9 +28,9 @@ namespace STROOP.M64Editor
         public BindingList<M64InputFrame> Inputs { get; }
         public M64Stats Stats { get; }
 
-        public M64File(Action refreshFunction)
+        public M64File(M64Gui gui)
         {
-            _refreshFunction = refreshFunction;
+            _gui = gui;
             Header = new M64Header();
             Inputs = new BindingList<M64InputFrame>();
             Stats = new M64Stats(this);
@@ -134,7 +135,7 @@ namespace STROOP.M64Editor
             }
 
             RefreshInputFrames(startIndex);
-            _refreshFunction();
+            _gui.DataGridViewInputs.Refresh();
             Config.M64Manager.UpdateSelectionTextboxes();
         }
 
@@ -151,7 +152,7 @@ namespace STROOP.M64Editor
             List<M64InputFrame> inputsToOverwrite = Inputs.Skip(index).Take(pasteCount).ToList();
             copiedData.Apply(inputsToOverwrite);
             RefreshInputFrames(index);
-            _refreshFunction();
+            _gui.DataGridViewInputs.Refresh();
             Config.M64Manager.UpdateSelectionTextboxes();
         }
 
