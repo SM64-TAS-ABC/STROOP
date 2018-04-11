@@ -25,6 +25,7 @@ namespace STROOP.Managers
 
             _gui.ButtonSave.Click += ButtonSave_Click;
             _gui.ButtonSaveAs.Click += ButtonSaveAs_Click;
+            _gui.ButtonResetChanges.Click += (sender, e) => _m64File.ResetChanges();
             _gui.ButtonOpen.Click += ButtonOpen_Click;
             _gui.ButtonClose.Click += ButtonClose_Click;
             _gui.ButtonGoto.Click += ButtonGoto_Click;

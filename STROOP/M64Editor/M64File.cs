@@ -24,6 +24,7 @@ namespace STROOP.M64Editor
         public string CurrentFileName { get; private set; }
         public byte[] RawBytes { get; private set; }
         public int OriginalFrameCount { get; private set; }
+
         public bool IsModified = false;
 
         public M64Header Header { get; }
@@ -85,6 +86,9 @@ namespace STROOP.M64Editor
             {
                 Inputs.Add(new M64InputFrame(i / 4, BitConverter.ToUInt32(frameBytes, i), this, _gui.DataGridViewInputs));
             }
+            _gui.DataGridViewInputs.Refresh();
+            _gui.PropertyGridHeader.Refresh();
+            _gui.PropertyGridStats.Refresh();
 
             return true;
         } 
@@ -127,6 +131,11 @@ namespace STROOP.M64Editor
             RawBytes = null;
             OriginalFrameCount = 0;
             IsModified = false;
+        }
+
+        public void ResetChanges()
+        {
+            OpenFile(CurrentFilePath, CurrentFileName);
         }
 
         public void DeleteRows(int startIndex, int endIndex)
