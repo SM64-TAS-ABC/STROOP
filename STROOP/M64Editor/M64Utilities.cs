@@ -17,7 +17,7 @@ namespace STROOP.M64Editor
     public static class M64Utilities
     {
 
-        public static readonly Dictionary<string, int> InputStringToIndex =
+        public static readonly Dictionary<string, int> InputHeaderTextToIndex =
             new Dictionary<string, int>()
             {
                 ["X"] = 0,
@@ -38,9 +38,12 @@ namespace STROOP.M64Editor
                 ["D>"] = 15,
             };
 
+        public static readonly List<string> InputHeaderTexts =
+            InputHeaderTextToIndex.Keys.ToList();
+
         public static readonly Comparison<string> InputStringComparison =
             new Comparison<string>((inputString1, inputString2) =>
-                InputStringToIndex[inputString1] - InputStringToIndex[inputString2]);
+                InputHeaderTextToIndex[inputString1] - InputHeaderTextToIndex[inputString2]);
 
         public static void SetSpecificInputValue(
             M64InputFrame inputFrame, string headerText, bool value)
@@ -121,14 +124,45 @@ namespace STROOP.M64Editor
                 ("D>", 100, Color.LightGray),
             };
 
-        public static List<M64InputCell> GetSelectedInputCells(DataGridView table, CellSelectionType cellSelectionType)
+        public static List<M64InputCell> GetSelectedInputCells(
+            DataGridView table, CellSelectionType cellSelectionType,
+            string startFrameString = null, string endFrameString = null, string inputsString = null)
         {
-            List<M64InputCell> cells = new List<M64InputCell>();
-            foreach (DataGridViewCell cell in table.SelectedCells)
+            if (cellSelectionType == CellSelectionType.PartialRowRange && inputsString == null)
+                throw new ArgumentOutOfRangeException();
+
+            if (cellSelectionType == CellSelectionType.Cells)
             {
-                cells.Add(new M64InputCell(cell));
+                List<M64InputCell> cells = new List<M64InputCell>();
+                foreach (DataGridViewCell cell in table.SelectedCells)
+                {
+                    cells.Add(new M64InputCell(cell));
+                }
+                return cells;
             }
-            return cells;
+            else
+            {
+                int? startFrameNullable = ParsingUtilities.ParseIntNullable(startFrameString);
+                int? endFrameNullable = ParsingUtilities.ParseIntNullable(endFrameString);
+                if (!startFrameNullable.HasValue || !endFrameNullable.HasValue) return new List<M64InputCell>();
+                int startFrame = Math.Max(startFrameNullable.Value, 0);
+                int endFrame = Math.Min(endFrameNullable.Value, table.Rows.Count - 1);
+
+                List<M64InputCell> cells = new List<M64InputCell>();
+                for (int rowIndex = startFrame; rowIndex <= endFrame; rowIndex++)
+                {
+                    DataGridViewRow row = table.Rows[rowIndex];
+                    for (int colIndex = 0; colIndex < table.Columns.Count; colIndex++)
+                    {
+                        string headerText = table.Columns[colIndex].HeaderText;
+                        if (cellSelectionType == CellSelectionType.PartialRowRange &&
+                            !inputsString.Contains(headerText)) continue;
+                        DataGridViewCell tableCell = row.Cells[colIndex];
+                        cells.Add(new M64InputCell(tableCell));
+                    }
+                }
+                return cells;
+            }
         }
 
         public static (int minFrame, int maxFrame, string inputsString) GetCellStats(List<M64InputCell> cells)

@@ -22,7 +22,7 @@ namespace STROOP.M64Editor
         {
             DataGridView table = cell.DataGridView;
             HeaderText = table.Columns[cell.ColumnIndex].HeaderText;
-            IsInput = HeaderText != "Frame" && HeaderText != "Id";
+            IsInput = M64Utilities.InputHeaderTexts.Contains(HeaderText);
             BindingList<M64InputFrame> inputs = table.DataSource as BindingList<M64InputFrame>;
             InputFrame = inputs[cell.RowIndex];
         }
