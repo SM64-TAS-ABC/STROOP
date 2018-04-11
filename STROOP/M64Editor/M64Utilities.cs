@@ -217,5 +217,26 @@ namespace STROOP.M64Editor
             BindingList<M64InputFrame> allInputs = table.DataSource as BindingList<M64InputFrame>;
             return allInputs.Skip(startRow).Take(endRow - startRow + 1).ToList();
         }
+
+        public static uint GetRawValueFromInputs(
+            sbyte X,
+            sbyte Y,
+            bool A,
+            bool B,
+            bool Z,
+            bool S,
+            bool R,
+            bool C_Up,
+            bool C_Down,
+            bool C_Left,
+            bool C_Right,
+            bool L,
+            bool D_Up,
+            bool D_Down,
+            bool D_Left,
+            bool D_Right)
+        {
+            return 0;
+        }
     }
 }

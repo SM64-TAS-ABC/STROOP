@@ -73,5 +73,11 @@ namespace STROOP.M64Editor
                 "{0}f [{1}] {2}-{3} @{4}",
                 _totalFrames, _typeString, _startFrame, _endFrame, _fileName);
         }
+
+        internal uint GetRawValue(int index)
+        {
+            index %= _copiedFrames.Count;
+            return _copiedFrames[index].RawValue;
+        }
     }
 }

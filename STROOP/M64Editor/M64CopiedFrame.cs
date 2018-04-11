@@ -24,6 +24,8 @@ namespace STROOP.M64Editor
         public readonly bool? D_Left;
         public readonly bool? D_Right;
 
+        public readonly uint RawValue;
+
         public M64CopiedFrame(
             sbyte? X = null,
             sbyte? Y = null,
@@ -58,6 +60,24 @@ namespace STROOP.M64Editor
             this.D_Down = D_Down;
             this.D_Left = D_Left;
             this.D_Right = D_Right;
+
+            RawValue = M64Utilities.GetRawValueFromInputs(
+                X.HasValue ? X.Value : (sbyte)0,
+                Y.HasValue ? Y.Value : (sbyte)0,
+                A.HasValue ? A.Value : false,
+                B.HasValue ? B.Value : false,
+                Z.HasValue ? Z.Value : false,
+                S.HasValue ? S.Value : false,
+                R.HasValue ? R.Value : false,
+                C_Up.HasValue ? C_Up.Value : false,
+                C_Down.HasValue ? C_Down.Value : false,
+                C_Left.HasValue ? C_Left.Value : false,
+                C_Right.HasValue ? C_Right.Value : false,
+                L.HasValue ? L.Value : false,
+                D_Up.HasValue ? D_Up.Value : false,
+                D_Down.HasValue ? D_Down.Value : false,
+                D_Left.HasValue ? D_Left.Value : false,
+                D_Right.HasValue ? D_Right.Value : false);
         }
 
         public static M64CopiedFrame CreateCopiedFrame(M64InputFrame input, bool useRows, string inputsList)

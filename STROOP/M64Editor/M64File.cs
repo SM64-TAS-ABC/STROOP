@@ -148,12 +148,17 @@ namespace STROOP.M64Editor
                 for (int i = 0; i < pasteCount; i++)
                 {
                     int insertionIndex = index + i;
-                    Inputs.Insert(insertionIndex, new M64InputFrame(insertionIndex, 0, _gui.DataGridViewInputs));
+                    Inputs.Insert(
+                        insertionIndex,
+                        new M64InputFrame(insertionIndex, copiedData.GetRawValue(i), _gui.DataGridViewInputs));
                     _gui.DataGridViewInputs.Rows[insertionIndex].DefaultCellStyle.BackColor = M64Utilities.NewRowColor;
                 }
             }
-            List<M64InputFrame> inputsToOverwrite = Inputs.Skip(index).Take(pasteCount).ToList();
-            copiedData.Apply(inputsToOverwrite);
+            else
+            {
+                List<M64InputFrame> inputsToOverwrite = Inputs.Skip(index).Take(pasteCount).ToList();
+                copiedData.Apply(inputsToOverwrite);
+            }
             RefreshInputFrames(index);
             _gui.DataGridViewInputs.Refresh();
             Config.M64Manager.UpdateSelectionTextboxes();
