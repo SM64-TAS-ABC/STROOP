@@ -33,7 +33,7 @@ namespace STROOP.M64Editor
         public M64File(M64Gui gui)
         {
             _gui = gui;
-            Header = new M64Header(this);
+            Header = new M64Header(this, gui);
             Inputs = new BindingList<M64InputFrame>();
             Stats = new M64Stats(this);
         }
@@ -106,6 +106,8 @@ namespace STROOP.M64Editor
         {
             try
             {
+                if (_gui.CheckBoxMaxOutViCount.Checked)
+                    Header.NumVis = int.MaxValue;
                 File.WriteAllBytes(filePath, ToBytes());
                 OpenFile(filePath, fileName);
             }

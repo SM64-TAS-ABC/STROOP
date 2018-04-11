@@ -8,6 +8,7 @@ using System.Xml.Serialization;
 using STROOP.Structs;
 using System.ComponentModel;
 using STROOP.Utilities;
+using STROOP.Structs.Gui;
 
 namespace STROOP.M64Editor
 {
@@ -16,6 +17,7 @@ namespace STROOP.M64Editor
         public enum MovieStartTypeEnum { FromStart, FromSnapshot }
 
         private readonly M64File _m64File;
+        private readonly M64Gui _gui;
 
         // 018 4-byte little-endian unsigned int: number of input samples for any controllers
         private int _numInputs;
@@ -165,14 +167,16 @@ namespace STROOP.M64Editor
         [CategoryAttribute("Mupen"), DisplayName("UID")]
         public int Uid { get => _uid; set { _uid = value; NotifyChange(); } }
 
-        public M64Header(M64File m64File)
+        public M64Header(M64File m64File, M64Gui gui)
         {
             _m64File = m64File;
+            _gui = gui;
         }
 
         private void NotifyChange()
         {
             _m64File.IsModified = true;
+            _gui.PropertyGridHeader.Refresh();
         }
 
         public void LoadBytes(byte[] bytes)
