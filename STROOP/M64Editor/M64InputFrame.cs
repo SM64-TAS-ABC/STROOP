@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using System.Drawing;
+using STROOP.Structs;
 
 namespace STROOP.M64Editor
 {
     public class M64InputFrame
     {
+        public static FrameInputRelation frameInputRelation = FrameInputRelation.FrameAfterInput;
         public static int ClassIdIndex = 0;
 
         public int FrameIndex;
@@ -25,8 +27,8 @@ namespace STROOP.M64Editor
             ClassIdIndex++;
         }
 
-        public int Frame { get => FrameIndex; }
-        public int Id { get => IdIndex; }
+        public int Frame { get => FrameIndex + GetFrameInputRelationOffset(); }
+        public int Id { get => IdIndex + GetFrameInputRelationOffset(); }
         public sbyte X { get => (sbyte)GetByte(2); set => SetByte(2, (byte)value); }
         public sbyte Y { get => (sbyte)GetByte(3); set => SetByte(3, (byte)value); }
         public bool A { get => GetBit(7); set => SetBit(7, value); }
@@ -71,6 +73,22 @@ namespace STROOP.M64Editor
         private bool GetBit(int bit)
         {
             return ((RawValue >> bit) & 0x01) == 0x01;
+        }
+
+        private int GetFrameInputRelationOffset()
+        {
+            switch (frameInputRelation)
+            {
+                case FrameInputRelation.FrameOfInput:
+                    return -1;
+                case FrameInputRelation.FrameAfterInput:
+                    return 0;
+                case FrameInputRelation.FrameWhenObserved:
+                    return 1;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
         }
 
         public byte[] ToBytes()
