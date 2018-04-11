@@ -38,8 +38,8 @@ namespace STROOP.M64Editor
         public static M64CopiedData CreateCopiedData(
             DataGridView table, string fileName, int startFrame, int endFrame, bool useRows, string inputsString = null)
         {
-            if (startFrame < 0) return null;
-            if (endFrame >= table.Rows.Count) return null;
+            startFrame = Math.Max(startFrame, 0);
+            endFrame = Math.Min(endFrame, table.Rows.Count - 1);
             if (startFrame > endFrame) return null;
             if (fileName == null) return null;
             if (!useRows && inputsString == null) return null;
