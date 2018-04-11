@@ -13,11 +13,14 @@ namespace STROOP.Structs.Gui
         public Label LabelNumInputsValue;
 
         public ComboBox ComboBoxFrameInputRelation;
+        public CheckBox CheckBoxMaxOutViCount;
 
         public Button ButtonSave;
         public Button ButtonSaveAs;
+        public Button ButtonResetChanges;
         public Button ButtonOpen;
         public Button ButtonClose;
+
         public Button ButtonGoto;
         public TextBox TextBoxGoto;
         
@@ -50,5 +53,10 @@ namespace STROOP.Structs.Gui
         public Button ButtonPasteInsert;
         public Button ButtonPasteOverwrite;
         public BetterTextbox TextBoxPasteMultiplicity;
+
+        public BetterTextbox TextBoxQuickDuplication1stIterationStart;
+        public BetterTextbox TextBoxQuickDuplication2ndIterationStart;
+        public BetterTextbox TextBoxQuickDuplicationTotalIterations;
+        public Button ButtonQuickDuplicationDuplicate;
     }
 }

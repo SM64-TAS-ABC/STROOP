@@ -170,16 +170,17 @@ namespace STROOP
             mapGui.CheckBoxMapGameCamOrientation = checkBoxMapGameCamOrientation;
             mapGui.ComboBoxMapColorMethod = comboBoxMapColorMethod;
 
-            // 
             M64Gui m64Gui = new M64Gui()
             {
                 LabelFileName = labelM64FileName,
                 LabelNumInputsValue = labelM64NumInputsValue,
 
                 ComboBoxFrameInputRelation = comboBoxM64FrameInputRelation,
+                CheckBoxMaxOutViCount = checkBoxMaxOutViCount,
 
                 ButtonSave = buttonM64Save,
                 ButtonSaveAs = buttonM64SaveAs,
+                ButtonResetChanges = buttonM64ResetChanges,
                 ButtonOpen = buttonM64Open,
                 ButtonClose = buttonM64Close,
                 ButtonGoto = buttonM64Goto,
@@ -214,6 +215,11 @@ namespace STROOP
                 ButtonPasteInsert = buttonM64PasteInsert,
                 ButtonPasteOverwrite = buttonM64PasteOverwrite,
                 TextBoxPasteMultiplicity = textBoxM64PasteMultiplicity,
+
+                TextBoxQuickDuplication1stIterationStart = textBoxM64QuickDuplication1stIterationStart,
+                TextBoxQuickDuplication2ndIterationStart = textBoxM64QuickDuplication2ndIterationStart,
+                TextBoxQuickDuplicationTotalIterations = textBoxM64QuickDuplicationTotalIterations,
+                ButtonQuickDuplicationDuplicate = buttonM64QuickDuplicationDuplicate,
             };
 
             // Create managers
