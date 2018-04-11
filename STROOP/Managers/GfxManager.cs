@@ -124,8 +124,14 @@ namespace STROOP.Managers
         {
             _treeView.Nodes.Clear();
 
-            // A pointer to the root node of the GFX tree is stored at a fixed address
-            AddToTreeView(Config.Stream.GetUInt32(Config.SwitchRomVersion(0x33B910, 0x33A5A0)));
+            // A pointer to the root node of the GFX tree is stored at offset 0x04 in a certain struct
+            var StructWithGfxRoot = Config.Stream.GetUInt32(Config.SwitchRomVersion(0x32DDCC, 0x32CE6C));
+
+            if (StructWithGfxRoot > 0x80000000u)
+            {
+                AddToTreeView(Config.Stream.GetUInt32(StructWithGfxRoot + 0x04));
+            }
+
             ExpandNodesUpTo(_treeView.Nodes, 4);
         }
 
