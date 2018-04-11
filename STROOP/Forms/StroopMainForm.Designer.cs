@@ -194,6 +194,7 @@ namespace STROOP
             this.WatchVariablePanelMario = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageM64 = new System.Windows.Forms.TabPage();
             this.splitContainerM64 = new STROOP.BetterSplitContainer();
+            this.comboBoxM64FrameInputRelation = new System.Windows.Forms.ComboBox();
             this.textBoxM64PasteMultiplicity = new STROOP.BetterTextbox();
             this.listBoxM64Copied = new System.Windows.Forms.ListBox();
             this.groupBoxM64Selection = new System.Windows.Forms.GroupBox();
@@ -1224,7 +1225,16 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.comboBoxM64FrameInputRelation = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.betterTextbox1 = new STROOP.BetterTextbox();
+            this.betterTextbox2 = new STROOP.BetterTextbox();
+            this.betterTextbox3 = new STROOP.BetterTextbox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1607,6 +1617,7 @@ namespace STROOP
             this.groupBoxRecording.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -3455,9 +3466,11 @@ namespace STROOP
             // splitContainerM64.Panel1
             // 
             this.splitContainerM64.Panel1.AutoScroll = true;
+            this.splitContainerM64.Panel1.Controls.Add(this.checkBox1);
             this.splitContainerM64.Panel1.Controls.Add(this.comboBoxM64FrameInputRelation);
             this.splitContainerM64.Panel1.Controls.Add(this.textBoxM64PasteMultiplicity);
             this.splitContainerM64.Panel1.Controls.Add(this.listBoxM64Copied);
+            this.splitContainerM64.Panel1.Controls.Add(this.groupBox1);
             this.splitContainerM64.Panel1.Controls.Add(this.groupBoxM64Selection);
             this.splitContainerM64.Panel1.Controls.Add(this.labelM64PasteMultiplicity);
             this.splitContainerM64.Panel1.Controls.Add(this.labelM64NumInputsValue);
@@ -3481,6 +3494,7 @@ namespace STROOP
             this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Close);
             this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Open);
             this.splitContainerM64.Panel1.Controls.Add(this.buttonM64SaveAs);
+            this.splitContainerM64.Panel1.Controls.Add(this.button1);
             this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Save);
             this.splitContainerM64.Panel1MinSize = 0;
             // 
@@ -3489,9 +3503,18 @@ namespace STROOP
             this.splitContainerM64.Panel2.Controls.Add(this.tabControlM64Details);
             this.splitContainerM64.Panel2MinSize = 0;
             this.splitContainerM64.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerM64.SplitterDistance = 316;
+            this.splitContainerM64.SplitterDistance = 363;
             this.splitContainerM64.SplitterWidth = 1;
             this.splitContainerM64.TabIndex = 34;
+            // 
+            // comboBoxM64FrameInputRelation
+            // 
+            this.comboBoxM64FrameInputRelation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxM64FrameInputRelation.Location = new System.Drawing.Point(208, 44);
+            this.comboBoxM64FrameInputRelation.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxM64FrameInputRelation.Name = "comboBoxM64FrameInputRelation";
+            this.comboBoxM64FrameInputRelation.Size = new System.Drawing.Size(134, 21);
+            this.comboBoxM64FrameInputRelation.TabIndex = 35;
             // 
             // textBoxM64PasteMultiplicity
             // 
@@ -3623,7 +3646,7 @@ namespace STROOP
             // 
             // buttonM64Goto
             // 
-            this.buttonM64Goto.Location = new System.Drawing.Point(249, 80);
+            this.buttonM64Goto.Location = new System.Drawing.Point(279, 93);
             this.buttonM64Goto.Margin = new System.Windows.Forms.Padding(2);
             this.buttonM64Goto.Name = "buttonM64Goto";
             this.buttonM64Goto.Size = new System.Drawing.Size(63, 22);
@@ -3633,7 +3656,7 @@ namespace STROOP
             // 
             // textBoxM64Goto
             // 
-            this.textBoxM64Goto.Location = new System.Drawing.Point(182, 82);
+            this.textBoxM64Goto.Location = new System.Drawing.Point(212, 95);
             this.textBoxM64Goto.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxM64Goto.Name = "textBoxM64Goto";
             this.textBoxM64Goto.Size = new System.Drawing.Size(63, 20);
@@ -3741,7 +3764,7 @@ namespace STROOP
             // 
             // buttonM64SetJpHeader
             // 
-            this.buttonM64SetJpHeader.Location = new System.Drawing.Point(249, 106);
+            this.buttonM64SetJpHeader.Location = new System.Drawing.Point(279, 119);
             this.buttonM64SetJpHeader.Margin = new System.Windows.Forms.Padding(2);
             this.buttonM64SetJpHeader.Name = "buttonM64SetJpHeader";
             this.buttonM64SetJpHeader.Size = new System.Drawing.Size(63, 38);
@@ -3751,7 +3774,7 @@ namespace STROOP
             // 
             // buttonM64SetUsHeader
             // 
-            this.buttonM64SetUsHeader.Location = new System.Drawing.Point(182, 106);
+            this.buttonM64SetUsHeader.Location = new System.Drawing.Point(212, 119);
             this.buttonM64SetUsHeader.Margin = new System.Windows.Forms.Padding(2);
             this.buttonM64SetUsHeader.Name = "buttonM64SetUsHeader";
             this.buttonM64SetUsHeader.Size = new System.Drawing.Size(63, 38);
@@ -3761,7 +3784,7 @@ namespace STROOP
             // 
             // buttonM64Close
             // 
-            this.buttonM64Close.Location = new System.Drawing.Point(57, 46);
+            this.buttonM64Close.Location = new System.Drawing.Point(8, 68);
             this.buttonM64Close.Margin = new System.Windows.Forms.Padding(2);
             this.buttonM64Close.Name = "buttonM64Close";
             this.buttonM64Close.Size = new System.Drawing.Size(53, 22);
@@ -3771,17 +3794,17 @@ namespace STROOP
             // 
             // buttonM64Open
             // 
-            this.buttonM64Open.Location = new System.Drawing.Point(8, 46);
+            this.buttonM64Open.Location = new System.Drawing.Point(8, 44);
             this.buttonM64Open.Margin = new System.Windows.Forms.Padding(2);
             this.buttonM64Open.Name = "buttonM64Open";
-            this.buttonM64Open.Size = new System.Drawing.Size(45, 22);
+            this.buttonM64Open.Size = new System.Drawing.Size(53, 22);
             this.buttonM64Open.TabIndex = 8;
             this.buttonM64Open.Text = "Open";
             this.buttonM64Open.UseVisualStyleBackColor = true;
             // 
             // buttonM64SaveAs
             // 
-            this.buttonM64SaveAs.Location = new System.Drawing.Point(167, 46);
+            this.buttonM64SaveAs.Location = new System.Drawing.Point(133, 68);
             this.buttonM64SaveAs.Margin = new System.Windows.Forms.Padding(2);
             this.buttonM64SaveAs.Name = "buttonM64SaveAs";
             this.buttonM64SaveAs.Size = new System.Drawing.Size(63, 22);
@@ -3791,10 +3814,10 @@ namespace STROOP
             // 
             // buttonM64Save
             // 
-            this.buttonM64Save.Location = new System.Drawing.Point(112, 46);
+            this.buttonM64Save.Location = new System.Drawing.Point(133, 44);
             this.buttonM64Save.Margin = new System.Windows.Forms.Padding(2);
             this.buttonM64Save.Name = "buttonM64Save";
-            this.buttonM64Save.Size = new System.Drawing.Size(51, 22);
+            this.buttonM64Save.Size = new System.Drawing.Size(63, 22);
             this.buttonM64Save.TabIndex = 9;
             this.buttonM64Save.Text = "Save";
             this.buttonM64Save.UseVisualStyleBackColor = true;
@@ -3809,7 +3832,7 @@ namespace STROOP
             this.tabControlM64Details.Margin = new System.Windows.Forms.Padding(0);
             this.tabControlM64Details.Name = "tabControlM64Details";
             this.tabControlM64Details.SelectedIndex = 0;
-            this.tabControlM64Details.Size = new System.Drawing.Size(590, 455);
+            this.tabControlM64Details.Size = new System.Drawing.Size(543, 455);
             this.tabControlM64Details.TabIndex = 40;
             // 
             // tabPageM64Inputs
@@ -3820,7 +3843,7 @@ namespace STROOP
             this.tabPageM64Inputs.Location = new System.Drawing.Point(4, 22);
             this.tabPageM64Inputs.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageM64Inputs.Name = "tabPageM64Inputs";
-            this.tabPageM64Inputs.Size = new System.Drawing.Size(582, 429);
+            this.tabPageM64Inputs.Size = new System.Drawing.Size(535, 429);
             this.tabPageM64Inputs.TabIndex = 3;
             this.tabPageM64Inputs.Text = "Inputs";
             // 
@@ -3874,7 +3897,7 @@ namespace STROOP
             this.dataGridViewM64Inputs.RowHeadersVisible = false;
             this.dataGridViewM64Inputs.RowTemplate.Height = 20;
             this.dataGridViewM64Inputs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridViewM64Inputs.Size = new System.Drawing.Size(580, 427);
+            this.dataGridViewM64Inputs.Size = new System.Drawing.Size(533, 427);
             this.dataGridViewM64Inputs.TabIndex = 2;
             // 
             // ColumnM64Frame
@@ -5632,7 +5655,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 340F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 341F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -11995,7 +12018,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 742;
+            this.splitContainerMemory.SplitterDistance = 745;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -12019,7 +12042,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(626, 429);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(629, 429);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -12122,7 +12145,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(164, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(161, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPageHacks
@@ -15859,15 +15882,104 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // comboBoxM64FrameInputRelation
+            // button1
             // 
-            this.comboBoxM64FrameInputRelation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxM64FrameInputRelation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxM64FrameInputRelation.Location = new System.Drawing.Point(178, 156);
-            this.comboBoxM64FrameInputRelation.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxM64FrameInputRelation.Name = "comboBoxM64FrameInputRelation";
-            this.comboBoxM64FrameInputRelation.Size = new System.Drawing.Size(134, 21);
-            this.comboBoxM64FrameInputRelation.TabIndex = 35;
+            this.button1.Location = new System.Drawing.Point(65, 44);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(64, 46);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Reset\r\nChanges";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(212, 71);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(110, 17);
+            this.checkBox1.TabIndex = 36;
+            this.checkBox1.Text = "Max Out VI Count";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.betterTextbox1);
+            this.groupBox1.Controls.Add(this.betterTextbox2);
+            this.groupBox1.Controls.Add(this.betterTextbox3);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Location = new System.Drawing.Point(176, 283);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(167, 128);
+            this.groupBox1.TabIndex = 15;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Quick Duplication";
+            // 
+            // betterTextbox1
+            // 
+            this.betterTextbox1.Location = new System.Drawing.Point(79, 66);
+            this.betterTextbox1.Name = "betterTextbox1";
+            this.betterTextbox1.Size = new System.Drawing.Size(81, 20);
+            this.betterTextbox1.TabIndex = 34;
+            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox2
+            // 
+            this.betterTextbox2.Location = new System.Drawing.Point(79, 42);
+            this.betterTextbox2.Name = "betterTextbox2";
+            this.betterTextbox2.Size = new System.Drawing.Size(81, 20);
+            this.betterTextbox2.TabIndex = 34;
+            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox3
+            // 
+            this.betterTextbox3.Location = new System.Drawing.Point(79, 18);
+            this.betterTextbox3.Name = "betterTextbox3";
+            this.betterTextbox3.Size = new System.Drawing.Size(81, 20);
+            this.betterTextbox3.TabIndex = 34;
+            this.betterTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 69);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(57, 13);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Total Iters:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 45);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(71, 13);
+            this.label10.TabIndex = 14;
+            this.label10.Text = "2nd Iter Start:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 21);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(67, 13);
+            this.label11.TabIndex = 14;
+            this.label11.Text = "1st Iter Start:";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(15, 93);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(132, 22);
+            this.button2.TabIndex = 35;
+            this.button2.Text = "Duplicate";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -16358,6 +16470,8 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -17553,6 +17667,16 @@ namespace STROOP
         private Button buttonM64TurnOnInputRange;
         private Button buttonM64DeleteRowRange;
         private ComboBox comboBoxM64FrameInputRelation;
+        private CheckBox checkBox1;
+        private GroupBox groupBox1;
+        private Button button2;
+        private BetterTextbox betterTextbox1;
+        private BetterTextbox betterTextbox2;
+        private BetterTextbox betterTextbox3;
+        private Label label8;
+        private Label label10;
+        private Label label11;
+        private Button button1;
     }
 }
 
