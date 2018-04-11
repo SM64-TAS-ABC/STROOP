@@ -40,6 +40,7 @@ namespace STROOP.Managers
             _gui.PropertyGridHeader.Refresh();
             _gui.PropertyGridStats.SelectedObject = _m64.Stats;
             _gui.PropertyGridStats.Refresh();
+            _gui.PropertyGridStats.ContextMenuStrip = _m64.Stats.CreateContextMenuStrip();
             _gui.TabControlDetails.SelectedIndexChanged += TabControlDetails_SelectedIndexChanged;
 
             _gui.ButtonTurnOffRowRange.Click += (sender, e) => SetValuesOfSelection(CellSelectionType.RowRange, false);

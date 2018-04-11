@@ -41,6 +41,27 @@ namespace STROOP.M64Editor
         public static readonly List<string> InputHeaderTexts =
             InputHeaderTextToIndex.Keys.ToList();
 
+        public static readonly List<string> ButtonNameList = InputHeaderTexts.Skip(2).ToList();
+
+        public static readonly List<Func<M64InputFrame, bool>> IsButtonPressedFunctionList =
+            new List<Func<M64InputFrame, bool>>()
+            {
+                input => input.A,
+                input => input.B,
+                input => input.Z,
+                input => input.S,
+                input => input.R,
+                input => input.C_Up,
+                input => input.C_Down,
+                input => input.C_Left,
+                input => input.C_Right,
+                input => input.L,
+                input => input.D_Up,
+                input => input.D_Down,
+                input => input.D_Left,
+                input => input.D_Right,
+            };
+
         public static readonly Comparison<string> InputStringComparison =
             new Comparison<string>((inputString1, inputString2) =>
                 InputHeaderTextToIndex[inputString1] - InputHeaderTextToIndex[inputString2]);

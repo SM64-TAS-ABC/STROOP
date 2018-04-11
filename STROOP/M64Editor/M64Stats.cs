@@ -41,8 +41,8 @@ namespace STROOP.M64Editor
             set { SetNumPreses(value, input => input.Z = false); }
         }
 
-        [Category("\u200B\u200B\u200BMain Button Presses"), DisplayName("\u200BNum Start Presses")]
-        public int NumStartPresses
+        [Category("\u200B\u200B\u200BMain Button Presses"), DisplayName("\u200BNum S Presses")]
+        public int NumSPresses
         {
             get { return FindPresses(input => input.S).Count; }
             set { SetNumPreses(value, input => input.S = false); }
@@ -192,40 +192,13 @@ namespace STROOP.M64Editor
             }
         }
 
-        private static readonly List<Func<M64InputFrame, bool>> isPressedFunctionList =
-            new List<Func<M64InputFrame, bool>>()
-            {
-                input => input.A,
-                input => input.B,
-                input => input.Z,
-                input => input.S,
-                input => input.R,
-                input => input.C_Up,
-                input => input.C_Down,
-                input => input.C_Left,
-                input => input.C_Right,
-                input => input.L,
-                input => input.D_Up,
-                input => input.D_Down,
-                input => input.D_Left,
-                input => input.D_Right,
-            };
-
-        private static readonly List<string> buttonNameList =
-            new List<string>()
-            {
-                "A", "B", "Z", "Start", "R",
-                "C^", "Cv", "C<", "C>",
-                "L", "D^", "Dv", "D<", "D>",
-            };
-
         public ContextMenuStrip CreateContextMenuStrip()
         {
-            List<ToolStripMenuItem> items = buttonNameList.ConvertAll(
+            List<ToolStripMenuItem> items = M64Utilities.ButtonNameList.ConvertAll(
                 buttonName => new ToolStripMenuItem(
                     String.Format("Show all {0} presses", buttonName)));
 
-            if (items.Count != isPressedFunctionList.Count)
+            if (items.Count != M64Utilities.IsButtonPressedFunctionList.Count)
                 throw new ArgumentOutOfRangeException();
 
             for (int i = 0; i < items.Count; i++)
@@ -233,8 +206,8 @@ namespace STROOP.M64Editor
                 int index = i;
                 items[index].Click += (sender, e) =>
                 {
-                    string buttonName = buttonNameList[index];
-                    Func<M64InputFrame, bool> isPressedFunction = isPressedFunctionList[index];
+                    string buttonName = M64Utilities.ButtonNameList[index];
+                    Func<M64InputFrame, bool> isPressedFunction = M64Utilities.IsButtonPressedFunctionList[index];
                     List<(int, int)> buttonPresses = FindPresses(isPressedFunction);
                     string buttonPressesString = FormatButtonPressesString(buttonPresses, buttonName);
                     InfoForm.ShowText(
