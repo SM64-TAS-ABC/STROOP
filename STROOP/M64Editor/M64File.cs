@@ -12,6 +12,7 @@ using System.Xml.Serialization;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using STROOP.Structs.Gui;
+using System.Drawing;
 
 namespace STROOP.M64Editor
 {
@@ -147,6 +148,7 @@ namespace STROOP.M64Editor
                 for (int i = 0; i < pasteCount; i++)
                 {
                     Inputs.Insert(index + i, new M64InputFrame(0, 0));
+                    _gui.DataGridViewInputs.Rows[index + i].DefaultCellStyle.BackColor = Color.FromArgb(186, 255, 166);
                 }
             }
             List<M64InputFrame> inputsToOverwrite = Inputs.Skip(index).Take(pasteCount).ToList();
