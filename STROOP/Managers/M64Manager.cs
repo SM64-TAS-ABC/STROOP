@@ -60,6 +60,7 @@ namespace STROOP.Managers
             _gui.ButtonPasteOverwrite.Click += (sender, e) => PasteData(false);
 
             _gui.ListBoxCopied.Items.Add(M64CopiedData.OneEmptyFrame);
+            _gui.ListBoxCopied.SelectedItem = M64CopiedData.OneEmptyFrame;
 
             _gui.ComboBoxFrameInputRelation.DataSource = Enum.GetValues(typeof(FrameInputRelationType));
             _gui.ComboBoxFrameInputRelation.SelectedItem = M64InputFrame.FrameInputRelation;
@@ -91,7 +92,8 @@ namespace STROOP.Managers
 
             if (!startFrame.HasValue || !endFrame.HasValue) return;
             M64CopiedData copiedData = M64CopiedData.CreateCopiedData(
-                _gui.DataGridViewInputs, _m64File.CurrentFileName, startFrame.Value, endFrame.Value, useRow, inputsString);
+                _gui.DataGridViewInputs, _m64File.CurrentFileName,
+                startFrame.Value, endFrame.Value, useRow, inputsString);
             if (copiedData == null) return;
             _gui.ListBoxCopied.Items.Add(copiedData);
             _gui.ListBoxCopied.SelectedItem = copiedData;
