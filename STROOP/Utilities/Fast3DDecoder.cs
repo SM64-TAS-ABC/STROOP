@@ -8,7 +8,8 @@ namespace STROOP.Utilities
      * Decodes Fast 3D Display lists.
      * A display list is an array of 8 byte instructions that ends in a 'G_ENDDL' instruction
      * The instruction is contained in the first byte, the other 7 bytes are parameters depending on the type.
-     * A notable instructions is the G_VTX instruction which buffers up to 16 vertices. Subsequently, 
+     * A notable instructions is the G_VTX instruction which buffers up to 16 vertices. Subsequently, G_TRI1
+     * commands draw triangles using these vertices.
      */
     public class Fast3DDecoder
     {
@@ -74,10 +75,13 @@ namespace STROOP.Utilities
             G_SETCIMG = 0xFF,
         }
 
+        // There are multiple color / alpha formats for textures 
+        static readonly string[] ColorModes = { "RGBA", "YUV", "CI", "IA", "I" };
+
         // For indentation of the decoded list
         public static string Indent(int level)
         {
-            return "".PadLeft(level*4);
+            return "".PadLeft(level * 4);
         }
 
         // Gives a string decoding the display list starting at a given address
@@ -87,26 +91,58 @@ namespace STROOP.Utilities
 
             var res = new StringBuilder();
             res.AppendLine(Indent(recursionDepth) + $"Decoding list at 0x{address:X8}");
-            for(int i = 0; i < MaxDisplayListLength; i++)
+            for (int i = 0; i < MaxDisplayListLength; i++)
             {
-                
                 var firstWord = Config.Stream.GetUInt32(address);
                 var secondWord = Config.Stream.GetUInt32(address + 4);
                 var opcode = (F3DOpcode)((firstWord >> 24) & 0xFF);
                 var name = Enum.GetName(typeof(F3DOpcode), opcode);
-                res.Append(Indent(recursionDepth) + $"{firstWord:X8} {secondWord:X8} "+name+" ");
+                res.Append(Indent(recursionDepth) + $"{firstWord:X8} {secondWord:X8} " + name + " ");
 
                 // todo: interpret the other commands
                 switch (opcode)
                 {
+                    case F3DOpcode.G_LOADBLOCK:
+
+                        res.AppendLine();
+                        break;
+                    case F3DOpcode.G_MOVEMEM:
+                    case F3DOpcode.G_SETTIMG:
+
+                        res.AppendLine($"0x{DecodeSegmentedAddress(secondWord):X8}");
+                        break;
+
+                    case F3DOpcode.G_MTX:
+                        res.Append($"0x{DecodeSegmentedAddress(secondWord):X8} ");
+                        var p = (firstWord >> 16) & 0xFF;
+                        res.Append(((p & 0x01) != 0) ? "projection: " : "model view: ");
+                        res.Append(((p & 0x02) != 0) ? "load" : "multiply");
+                        res.AppendLine(((p & 0x04) != 0) ? "and push" : "and don't push");
+                        break;
+                    case F3DOpcode.G_SETTILESIZE:
+                        var h = ((secondWord & 0xFFF) + 4) / 4;
+                        var w = (((secondWord >> 12) & 0xFFF) + 4) / 4;
+                        res.AppendLine($"{w} * {h}");
+                        break;
+                    case F3DOpcode.G_SETTILE:
+                        var colorFormat = (firstWord >> 21) & 0x7;
+                        res.Append(colorFormat < ColorModes.Length ? ColorModes[colorFormat] : "Invalid color mode");
+                        int pixelBits = ((int)firstWord >> 19) & 0x3;
+                        res.AppendLine(" " + (4 << pixelBits) + "-bit");
+                        break;
+                    case F3DOpcode.G_CLEARGEOMETRYMODE:
+                    case F3DOpcode.G_SETGEOMETRYMODE:
+                        res.AppendLine(GetGeometryFlags(secondWord));
+                        break;
                     case F3DOpcode.G_VTX:
                         var vertexAmount = ((firstWord >> 20) & 0xF) + 1;
-                        var startIndex = ((firstWord >> 16) & 0xF) + 1;
+                        var startIndex = ((firstWord >> 16) & 0xF);
                         var vertexAddress = DecodeSegmentedAddress(secondWord);
-                        res.AppendLine($"{vertexAmount} vertices at 0x{address:X8}, start index {startIndex}");
+                        res.AppendLine($"{vertexAmount} vertices at 0x{vertexAddress:X8}, start index {startIndex}");
+                        res.AppendLine(Indent(recursionDepth) + "(pos) flags (tex) (normal/color)");
                         for (byte j = 0; j < vertexAmount; j++)
                         {
-                            uint add = (uint) (vertexAddress + (j * 0x10));
+                            uint add = (uint)(vertexAddress + (j * 0x10));
                             var x = Config.Stream.GetInt16(add + 0x00);
                             var y = Config.Stream.GetInt16(add + 0x02);
                             var z = Config.Stream.GetInt16(add + 0x04);
@@ -117,7 +153,7 @@ namespace STROOP.Utilities
                             var g = Config.Stream.GetByte(add + 0x0D);
                             var b = Config.Stream.GetByte(add + 0x0E);
                             var a = Config.Stream.GetByte(add + 0x0F);
-                            res.AppendLine(Indent(recursionDepth) + $"pos ({x}, {y}, {z}) flags 0x{flags:X4} tex ({texX}, {texY}) normal/color ({r}, {g}, {b}, {a})");
+                            res.AppendLine(Indent(recursionDepth) + $"({x}, {y}, {z}) 0x{flags:X4} ({texX}, {texY}) ({r}, {g}, {b}, {a})");
                         }
                         break;
                     case F3DOpcode.G_TRI1:
@@ -128,7 +164,7 @@ namespace STROOP.Utilities
                         break;
                     case F3DOpcode.G_DL:
                         res.AppendLine();
-                        res.AppendLine(DecodeList(DecodeSegmentedAddress(secondWord), recursionDepth+1));
+                        res.AppendLine(DecodeList(DecodeSegmentedAddress(secondWord), recursionDepth + 1));
                         break;
                     default:
                         res.AppendLine();
@@ -140,6 +176,30 @@ namespace STROOP.Utilities
             }
 
             return res.ToString();
+        }
+
+        enum GeometryFlags
+        {
+            G_ZBUFFER = 0x0000000,
+            G_SHADE = 0x00000004,
+            G_TEXTURE_ENABLE = 0x00000002,
+            G_SMOOTH = 0x00000200,
+            G_CULL_FRONT = 0x00001000,
+            G_CULL_BACK = 0x00002000,
+            G_FOG = 0x00010000,
+            G_LIGHTING = 0x00020000,
+            G_TEXTURE_GEN = 0x00040000,
+            G_TEXTURE_GEN_LINEAR = 0x00080000,
+        }
+
+        public static string GetGeometryFlags(uint word)
+        {
+            string res = "";
+            foreach (var flag in (int[])Enum.GetValues(typeof(GeometryFlags)))
+            {
+                if ((word & flag) != 0) res += Enum.GetName(typeof(GeometryFlags), word) + " ";
+            }
+            return res;
         }
 
         // A segmented address is 4 bytes. The first byte contains the index of the segment in the segment table, the 

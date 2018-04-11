@@ -124,8 +124,14 @@ namespace STROOP.Managers
         {
             _treeView.Nodes.Clear();
 
-            // A pointer to the root node of the GFX tree is stored at a fixed address
-            AddToTreeView(Config.Stream.GetUInt32(Config.SwitchRomVersion(0x33B910, 0x33A5A0)));
+            // A pointer to the root node of the GFX tree is stored at offset 0x04 in a certain struct
+            var StructWithGfxRoot = Config.Stream.GetUInt32(Config.SwitchRomVersion(0x32DDCC, 0x32CE6C));
+
+            if (StructWithGfxRoot > 0x80000000u)
+            {
+                AddToTreeView(Config.Stream.GetUInt32(StructWithGfxRoot + 0x04));
+            }
+
             ExpandNodesUpTo(_treeView.Nodes, 4);
         }
 
@@ -192,11 +198,11 @@ namespace STROOP.Managers
                 case 0x00A: res = new GfxGroupParent(); break;
                 case 0x00B: res = new GfxHeightGate(); break;
                 case 0x015: res = new GfxUnknown15(); break;
-                case 0x016: res = new GfxUnknown16(); break;
+                case 0x016: res = new GfxTranslatedModel(); break;
                 case 0x017: res = new GfxRotationNode(); break;
                 case 0x018: res = new GfxGameObject(); break;
                 case 0x019: res = new GfxTranslationNode(); break;
-                case 0x01A: res = new GfxMenuModel(); break;
+                case 0x01A: res = new GfxBillboard(); break;
                 case 0x01B: res = new GfxDisplayList(); break;
                 case 0x01C: res = new GfxScalingNode(); break;
                 case 0x028: res = new GfxShadowNode(); break;
@@ -256,10 +262,6 @@ namespace STROOP.Managers
             precursors.Add(gfxProperty("Next", "uint", 0x08));
             precursors.Add(gfxProperty("Parent", "uint", 0x0C));
             precursors.Add(gfxProperty("Child", "uint", 0x10));
-            precursors.Add(gfxProperty("14", "uint", 0x14)); //Placeholders, used for investigating type-specific variables
-            precursors.Add(gfxProperty("18", "uint", 0x18));
-            precursors.Add(gfxProperty("1C", "uint", 0x1C));
-            precursors.Add(gfxProperty("20", "uint", 0x20));
             return precursors;
 
         }
@@ -314,6 +316,12 @@ namespace STROOP.Managers
     internal class GfxBackgroundImage : GfxNode
     {
         public override string Name { get { return "Background image"; } }
+        public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
+        {
+            var precursors = new List<WatchVariableControlPrecursor>();
+            precursors.Add(gfxProperty("Draw function", "uint", 0x14));
+            return precursors;
+        }
     }
 
     internal class GfxHeldObject : GfxNode
@@ -338,12 +346,50 @@ namespace STROOP.Managers
 
     internal class GfxGeoLayoutScript : GfxNode
     {
-        public override string Name { get { return "Geo Layout script"; } }
+        // Todo: put these in external files and expand them
+        public static readonly Dictionary<uint, string> DictionaryUS = new Dictionary<uint, string>
+        {
+            { 0x802D01E0, "Water flow pause controller" },
+            { 0x802D1B70, "Waterfall drawer" },
+            { 0x8029D924, "Transparency controller" },  //makes peach / toad / dust particles transparent
+            { 0x802D104C, "Water rectangle drawer" },
+            { 0x802D1CDC, "SSL Pyramid sand flow" },
+            { 0x802761D0, "Snow controller" },
+            { 0x802CD1E8, "Overlay?" },
+            { 0x802D5D0C, "Painting wobble controller" },
+            { 0x802D5B98, "Painting drawer" },
+            { 0x80277B14, "Mirror Mario controller"}
+        };
+
+        public static readonly Dictionary<uint, string> DictionaryJP = new Dictionary<uint, string>
+        {
+            { 0x802CF700, "Waterflow pause controller" },
+            { 0x802D1090, "Waterfall drawer" },
+            { 0x8029D194, "Transparency controller" },
+            { 0x802D11FC, "SSL Pyramid sand flow" },
+            { 0x802D056C, "Water rectangle drawer" },
+            { 0x80275C20, "Snow controller" },
+            { 0x802CC708, "Overlay?" },
+            { 0x802D522C, "Painting wobble controller" },
+            { 0x802D50B8, "Painting drawer" },
+            { 0x80277564, "Mirror Mario controller" }
+        };
+
+        public override string Name {
+            get {
+                var currentDict = Config.Version == Structs.RomVersion.US ? DictionaryUS : DictionaryJP;
+                var function = Config.Stream.GetUInt32(Address + 0x14);
+                if (currentDict.ContainsKey(function)) return currentDict[function];
+                return "Geo Layout script";
+            }
+        }
 
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
-            List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
-            precursors.Add(gfxProperty("Function", "uint", 0x14));
+            var precursors = new List<WatchVariableControlPrecursor>();
+            precursors.Add(gfxProperty("Draw function", "uint", 0x14));
+            precursors.Add(gfxProperty("Parameter 1", "ushort", 0x18));
+            precursors.Add(gfxProperty("Parameter 2", "ushort", 0x1A));
             return precursors;
         }
     }
@@ -385,7 +431,7 @@ namespace STROOP.Managers
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
             List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
-            precursors.Add(gfxProperty("Gfx tree root", "uint", 0x14));
+            precursors.Add(gfxProperty("Temp child", "uint", 0x14));
             return precursors;
         }
     }
@@ -396,9 +442,9 @@ namespace STROOP.Managers
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
             List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
-            precursors.Add(gfxProperty("radius", "short", 0x14));
-            precursors.Add(gfxProperty("opacity", "byte", 0x16));
-            precursors.Add(gfxProperty("type", "byte", 0x17));
+            precursors.Add(gfxProperty("Radius", "short", 0x14));
+            precursors.Add(gfxProperty("Opacity", "byte", 0x16));
+            precursors.Add(gfxProperty("Type", "byte", 0x17));
             return precursors;
         }
     }
@@ -414,18 +460,10 @@ namespace STROOP.Managers
         }
     }
 
-    // Temporary name. This is used to draw the "S U P E R M A R I O" in debug level select
-    internal class GfxMenuModel : GfxNode
+    //For example Goomba body
+    internal class GfxBillboard : GfxNode
     {
-        public override string Name { get { return "Menu model"; } }
-        public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
-        {
-            List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
-            precursors.Add(gfxProperty("Segmented address", "uint", 0x14));
-            precursors.Add(gfxProperty("X offset", "short", 0x18)); //todo: check these
-            precursors.Add(gfxProperty("Y offset", "short", 0x1A));
-            return precursors;
-        }
+        public override string Name { get { return "Billboard"; } }
     }
 
     internal class GfxTranslationNode : GfxNode
@@ -434,7 +472,7 @@ namespace STROOP.Managers
         public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
         {
             List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
-            precursors.Add(gfxProperty("Segmented address", "uint", 0x14));
+            precursors.Add(gfxProperty("Display list", "uint", 0x14));
             precursors.Add(gfxProperty("X", "short", 0x18));
             precursors.Add(gfxProperty("Y", "short", 0x1A));
             precursors.Add(gfxProperty("Z", "short", 0x1C));
@@ -468,9 +506,19 @@ namespace STROOP.Managers
         }
     }
 
-    internal class GfxUnknown16 : GfxNode
+    // This is used to draw the "S U P E R M A R I O" in debug level select
+    internal class GfxTranslatedModel : GfxNode
     {
-        public override string Name { get { return "Unknown 0x16"; } }
+        public override string Name { get { return "Menu model"; } }
+        public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
+        {
+            List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
+            precursors.Add(gfxProperty("Segmented address", "uint", 0x14));
+            precursors.Add(gfxProperty("X offset", "short", 0x18));
+            precursors.Add(gfxProperty("Y offset", "short", 0x1A));
+            precursors.Add(gfxProperty("Z offset", "short", 0x1C));
+            return precursors;
+        }
     }
 
     internal class GfxUnknown15 : GfxNode
@@ -481,11 +529,41 @@ namespace STROOP.Managers
     internal class GfxHeightGate : GfxNode
     {
         public override string Name { get { return "Height gate"; } }
+        public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
+        {
+            var precursors = new List<WatchVariableControlPrecursor>();
+            precursors.Add(gfxProperty("Y min", "short", 0x14));
+            precursors.Add(gfxProperty("Y max", "short", 0x16));
+            precursors.Add(gfxProperty("Pointer 1", "uint", 0x18));
+
+            return precursors;
+        }
     }
 
     internal class GfxMasterList : GfxNode
     {
         public override string Name { get { return "Master list"; } }
+        public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
+        {
+            var precursors = new List<WatchVariableControlPrecursor>();
+            precursors.Add(gfxProperty("Pointer 0", "uint", 0x14));
+            precursors.Add(gfxProperty("Pointer 1", "uint", 0x18));
+            precursors.Add(gfxProperty("Pointer 2", "uint", 0x1C));
+            precursors.Add(gfxProperty("Pointer 3", "uint", 0x20));
+            precursors.Add(gfxProperty("Pointer 4", "uint", 0x24));
+            precursors.Add(gfxProperty("Pointer 5", "uint", 0x28));
+            precursors.Add(gfxProperty("Pointer 6", "uint", 0x2C));
+            precursors.Add(gfxProperty("Pointer 7", "uint", 0x30));
+            precursors.Add(gfxProperty("Pointer 8", "uint", 0x34));
+            precursors.Add(gfxProperty("Pointer 9", "uint", 0x3C));
+            precursors.Add(gfxProperty("Pointer 10", "uint", 0x40));
+            precursors.Add(gfxProperty("Pointer 11", "uint", 0x44));
+            precursors.Add(gfxProperty("Pointer 12", "uint", 0x48));
+            precursors.Add(gfxProperty("Pointer 13", "uint", 0x4C));
+            precursors.Add(gfxProperty("Pointer 14", "uint", 0x50));
+            precursors.Add(gfxProperty("Pointer 15", "uint", 0x54));
+            return precursors;
+        }
     }
 
     // Possibly some extra things?
@@ -497,6 +575,13 @@ namespace STROOP.Managers
     internal class GfxScreenSpace : GfxNode
     {
         public override string Name { get { return "Screenspace"; } }
+        public override List<WatchVariableControlPrecursor> GetTypeSpecificVariables()
+        {
+            var precursors = new List<WatchVariableControlPrecursor>();
+            precursors.Add(gfxProperty("??? 0x14", "float", 0x14));
+            precursors.Add(gfxProperty("??? 0x18", "uint", 0x18));
+            return precursors;
+        }
     }
 
     internal class GfxRootnode : GfxNode
