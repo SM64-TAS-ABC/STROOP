@@ -226,13 +226,14 @@ namespace STROOP.M64Editor
         {
             List<string> lines = new List<string>();
             lines.Add(String.Format(
-                "{0} {1} presses total:", buttonPresses.Count, buttonName));
+                "{0} {1} press{2} total:",
+                buttonPresses.Count, buttonName, buttonPresses.Count != 1 ? "es" : ""));
             for (int i = 0; i < buttonPresses.Count; i++)
             {
                 int countIndex = i + 1;
                 (int startFrame, int endFrame) = buttonPresses[i];
                 int frameSpan = endFrame - startFrame + 1;
-                string pluralitySuffix = frameSpan == 1 ? "" : "s";
+                string pluralitySuffix = frameSpan != 1 ? "s" : "";
                 lines.Add(String.Format(
                     "{0} press #{1}: frame {2} to frame {3} ({4} frame{5})",
                     buttonName, countIndex, startFrame, endFrame, frameSpan, pluralitySuffix));
