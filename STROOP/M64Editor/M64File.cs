@@ -140,6 +140,7 @@ namespace STROOP.M64Editor
             }
 
             IsModified = true;
+            Header.NumInputs = Inputs.Count;
             RefreshInputFrames(startIndex);
             _gui.DataGridViewInputs.Refresh();
             Config.M64Manager.UpdateSelectionTextboxes();
@@ -166,6 +167,7 @@ namespace STROOP.M64Editor
             }
 
             IsModified = true;
+            Header.NumInputs = Inputs.Count;
             RefreshInputFrames(index);
             _gui.DataGridViewInputs.Refresh();
             Config.M64Manager.UpdateSelectionTextboxes();
