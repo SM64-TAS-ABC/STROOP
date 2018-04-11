@@ -516,6 +516,7 @@ namespace STROOP.Managers
             precursors.Add(gfxProperty("Segmented address", "uint", 0x14));
             precursors.Add(gfxProperty("X offset", "short", 0x18));
             precursors.Add(gfxProperty("Y offset", "short", 0x1A));
+            precursors.Add(gfxProperty("Z offset", "short", 0x1C));
             return precursors;
         }
     }
