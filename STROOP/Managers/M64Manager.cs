@@ -32,6 +32,8 @@ namespace STROOP.Managers
 
             _gui.DataGridViewInputs.DataError += (sender, e) => _gui.DataGridViewInputs.CancelEdit();
             _gui.DataGridViewInputs.SelectionChanged += (sender, e) => UpdateSelectionTextboxes();
+            _gui.DataGridViewInputs.CellContentClick += (sender, e) =>
+                _gui.DataGridViewInputs.CommitEdit(new DataGridViewDataErrorContexts());
 
             _m64File = new M64File(_gui);
             _gui.DataGridViewInputs.DataSource = _m64File.Inputs;
@@ -270,7 +272,7 @@ namespace STROOP.Managers
             if (!updateView) return;
 
             string fileName = _m64File.CurrentFileName ?? "(No File Opened)";
-            string isModifiedSuffix = _m64File.IsModified ? "*" : "";
+            string isModifiedSuffix = _m64File.IsModified ? " [MODIFIED]" : "";
             _gui.LabelFileName.Text = fileName + isModifiedSuffix;
 
             int currentFrameCount = _m64File.Inputs.Count;
