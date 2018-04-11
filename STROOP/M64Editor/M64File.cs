@@ -98,15 +98,16 @@ namespace STROOP.M64Editor
 
         public bool Save()
         {
-            if (CurrentFilePath == null) return false;
-            return Save(CurrentFilePath);
+            if (CurrentFilePath == null || CurrentFileName == null) return false;
+            return Save(CurrentFilePath, CurrentFileName);
         }
 
-        public bool Save(string filePath)
+        public bool Save(string filePath, string fileName)
         {
             try
             {
                 File.WriteAllBytes(filePath, ToBytes());
+                OpenFile(filePath, fileName);
             }
             catch (IOException)
             {

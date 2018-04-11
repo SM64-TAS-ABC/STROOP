@@ -5,6 +5,7 @@ using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -172,7 +173,9 @@ namespace STROOP.Managers
             if (dialogResult != DialogResult.OK)
                 return;
 
-            bool success = _m64File.Save(saveFileDialog.FileName);
+            string filePath = saveFileDialog.FileName;
+            string fileName = new FileInfo(filePath).Name;
+            bool success = _m64File.Save(filePath, fileName);
             if (!success)
             {
                 MessageBox.Show(
