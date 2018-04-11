@@ -16,6 +16,8 @@ namespace STROOP.M64Editor
 {
     public static class M64Utilities
     {
+        public static readonly Color NewRowColor = Color.FromArgb(186, 255, 166);
+        public static readonly Color EditedCellColor = Color.Pink;
 
         public static readonly Dictionary<string, int> InputHeaderTextToIndex =
             new Dictionary<string, int>()
