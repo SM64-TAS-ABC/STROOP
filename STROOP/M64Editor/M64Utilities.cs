@@ -236,7 +236,30 @@ namespace STROOP.M64Editor
             bool D_Left,
             bool D_Right)
         {
-            return 0;
+            uint rawValue = 0;
+
+            rawValue = SetByte(rawValue, 2, (byte)X);
+            rawValue = SetByte(rawValue, 3, (byte)Y);
+
+            rawValue = SetBit(rawValue, 7, A);
+            rawValue = SetBit(rawValue, 6, B);
+            rawValue = SetBit(rawValue, 5, Z);
+            rawValue = SetBit(rawValue, 4, S);
+            rawValue = SetBit(rawValue, 12, R);
+
+            rawValue = SetBit(rawValue, 11, C_Up);
+            rawValue = SetBit(rawValue, 10, C_Down);
+            rawValue = SetBit(rawValue, 9, C_Left);
+            rawValue = SetBit(rawValue, 8, C_Right);
+
+            rawValue = SetBit(rawValue, 13, L);
+
+            rawValue = SetBit(rawValue, 3, D_Up);
+            rawValue = SetBit(rawValue, 2, D_Down);
+            rawValue = SetBit(rawValue, 1, D_Left);
+            rawValue = SetBit(rawValue, 0, D_Right);
+
+            return rawValue;
         }
 
         public static uint SetByte(uint rawValue, int num, byte value)
