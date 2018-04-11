@@ -97,31 +97,22 @@ namespace STROOP.M64Editor
 
         private void SetByte(int num, byte value)
         {
-            uint mask = ~(uint)(0xFF << (num * 8));
-            RawValue = ((uint)(value << (num * 8)) | (RawValue & mask));
+            RawValue = M64Utilities.SetByte(RawValue, num, value);
         }
 
         private byte GetByte(int num)
         {
-            return (byte)(RawValue >> (num * 8));
+            return M64Utilities.GetByte(RawValue, num);
         }
 
         private void SetBit(int bit, bool value)
         {
-            uint mask = (uint)(1 << bit);
-            if (value)
-            {
-                RawValue |= mask;
-            }
-            else
-            {
-                RawValue &= ~mask;
-            }
+            RawValue = M64Utilities.SetBit(RawValue, bit, value);
         }
 
         private bool GetBit(int bit)
         {
-            return ((RawValue >> bit) & 0x01) == 0x01;
+            return M64Utilities.GetBit(RawValue, bit);
         }
 
         private int GetFrameInputRelationOffset()

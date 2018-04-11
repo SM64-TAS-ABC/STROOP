@@ -238,5 +238,34 @@ namespace STROOP.M64Editor
         {
             return 0;
         }
+
+        public static uint SetByte(uint rawValue, int num, byte value)
+        {
+            uint mask = ~(uint)(0xFF << (num * 8));
+            return ((uint)(value << (num * 8)) | (rawValue & mask));
+        }
+
+        public static byte GetByte(uint rawValue, int num)
+        {
+            return (byte)(rawValue >> (num * 8));
+        }
+
+        public static uint SetBit(uint rawValue, int bit, bool value)
+        {
+            uint mask = (uint)(1 << bit);
+            if (value)
+            {
+                return rawValue | mask;
+            }
+            else
+            {
+                return rawValue & ~mask;
+            }
+        }
+
+        public static bool GetBit(uint rawValue, int bit)
+        {
+            return ((rawValue >> bit) & 0x01) == 0x01;
+        }
     }
 }
