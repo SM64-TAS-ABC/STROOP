@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using System.Drawing;
 using STROOP.Structs;
+using System.Windows.Forms;
 
 namespace STROOP.M64Editor
 {
@@ -19,12 +20,16 @@ namespace STROOP.M64Editor
         public uint RawValue;
         public readonly int IdIndex;
 
-        public M64InputFrame(int frameIndex, uint rawValue)
+        private DataGridView _table;
+
+        public M64InputFrame(int frameIndex, uint rawValue, DataGridView table)
         {
             FrameIndex = frameIndex;
             RawValue = rawValue;
             IdIndex = ClassIdIndex;
             ClassIdIndex++;
+
+            _table = table;
 
             _X = X;
             _Y = Y;
@@ -80,9 +85,14 @@ namespace STROOP.M64Editor
         private readonly bool _D_Left;
         private readonly bool _D_Right;
 
-        private void UpdateEditedCellColor(int index, bool changed)
+        private void UpdateEditedCellColor(int columnIndex, bool valueChanged)
         {
-
+            DataGridViewRow row = _table.Rows[FrameIndex];
+            DataGridViewColumn col = _table.Columns[columnIndex];
+            DataGridViewCell cell = row.Cells[columnIndex];
+            Color defaultColor = row.DefaultCellStyle.BackColor == M64Utilities.NewRowColor ?
+                M64Utilities.NewRowColor : col.DefaultCellStyle.BackColor;
+            cell.Style.BackColor = valueChanged ? M64Utilities.EditedCellColor : defaultColor;
         }
 
         private void SetByte(int num, byte value)

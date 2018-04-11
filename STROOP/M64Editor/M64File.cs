@@ -81,7 +81,7 @@ namespace STROOP.M64Editor
             OriginalFrameCount = Header.NumInputs;
             for (int i = 0; i < frameBytes.Length && i < 4 * OriginalFrameCount; i += 4)
             {
-                Inputs.Add(new M64InputFrame(i / 4, BitConverter.ToUInt32(frameBytes, i)));
+                Inputs.Add(new M64InputFrame(i / 4, BitConverter.ToUInt32(frameBytes, i), _gui.DataGridViewInputs));
             }
 
             return true;
@@ -147,7 +147,7 @@ namespace STROOP.M64Editor
             {
                 for (int i = 0; i < pasteCount; i++)
                 {
-                    Inputs.Insert(index + i, new M64InputFrame(0, 0));
+                    Inputs.Insert(index + i, new M64InputFrame(0, 0, _gui.DataGridViewInputs));
                     _gui.DataGridViewInputs.Rows[index + i].DefaultCellStyle.BackColor = M64Utilities.NewRowColor;
                 }
             }
