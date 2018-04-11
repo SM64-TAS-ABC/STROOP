@@ -175,7 +175,9 @@ namespace STROOP
             {
                 LabelFileName = labelM64FileName,
                 LabelNumInputsValue = labelM64NumInputsValue,
-                
+
+                ComboBoxFrameInputRelation = comboBoxM64FrameInputRelation,
+
                 ButtonSave = buttonM64Save,
                 ButtonSaveAs = buttonM64SaveAs,
                 ButtonOpen = buttonM64Open,

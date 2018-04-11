@@ -213,6 +213,12 @@ namespace STROOP
             this.buttonM64PasteOverwrite = new System.Windows.Forms.Button();
             this.buttonM64PasteInsert = new System.Windows.Forms.Button();
             this.buttonM64CopyInputRange = new System.Windows.Forms.Button();
+            this.buttonM64TurnOffCells = new System.Windows.Forms.Button();
+            this.buttonM64TurnOffInputRange = new System.Windows.Forms.Button();
+            this.buttonM64TurnOffRowRange = new System.Windows.Forms.Button();
+            this.buttonM64TurnOnCells = new System.Windows.Forms.Button();
+            this.buttonM64TurnOnInputRange = new System.Windows.Forms.Button();
+            this.buttonM64DeleteRowRange = new System.Windows.Forms.Button();
             this.buttonM64CopyRowRange = new System.Windows.Forms.Button();
             this.buttonM64SetJpHeader = new System.Windows.Forms.Button();
             this.buttonM64SetUsHeader = new System.Windows.Forms.Button();
@@ -1218,12 +1224,7 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.buttonM64DeleteRowRange = new System.Windows.Forms.Button();
-            this.buttonM64TurnOnInputRange = new System.Windows.Forms.Button();
-            this.buttonM64TurnOffRowRange = new System.Windows.Forms.Button();
-            this.buttonM64TurnOffInputRange = new System.Windows.Forms.Button();
-            this.buttonM64TurnOnCells = new System.Windows.Forms.Button();
-            this.buttonM64TurnOffCells = new System.Windows.Forms.Button();
+            this.comboBoxM64FrameInputRelation = new System.Windows.Forms.ComboBox();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -3454,6 +3455,7 @@ namespace STROOP
             // splitContainerM64.Panel1
             // 
             this.splitContainerM64.Panel1.AutoScroll = true;
+            this.splitContainerM64.Panel1.Controls.Add(this.comboBoxM64FrameInputRelation);
             this.splitContainerM64.Panel1.Controls.Add(this.textBoxM64PasteMultiplicity);
             this.splitContainerM64.Panel1.Controls.Add(this.listBoxM64Copied);
             this.splitContainerM64.Panel1.Controls.Add(this.groupBoxM64Selection);
@@ -3666,6 +3668,66 @@ namespace STROOP
             this.buttonM64CopyInputRange.TabIndex = 8;
             this.buttonM64CopyInputRange.Text = "Copy\r\nInput Range";
             this.buttonM64CopyInputRange.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64TurnOffCells
+            // 
+            this.buttonM64TurnOffCells.Location = new System.Drawing.Point(174, 195);
+            this.buttonM64TurnOffCells.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64TurnOffCells.Name = "buttonM64TurnOffCells";
+            this.buttonM64TurnOffCells.Size = new System.Drawing.Size(79, 38);
+            this.buttonM64TurnOffCells.TabIndex = 8;
+            this.buttonM64TurnOffCells.Text = "Turn Off\r\nCells";
+            this.buttonM64TurnOffCells.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64TurnOffInputRange
+            // 
+            this.buttonM64TurnOffInputRange.Location = new System.Drawing.Point(91, 195);
+            this.buttonM64TurnOffInputRange.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64TurnOffInputRange.Name = "buttonM64TurnOffInputRange";
+            this.buttonM64TurnOffInputRange.Size = new System.Drawing.Size(79, 38);
+            this.buttonM64TurnOffInputRange.TabIndex = 8;
+            this.buttonM64TurnOffInputRange.Text = "Turn Off\r\nInput Range";
+            this.buttonM64TurnOffInputRange.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64TurnOffRowRange
+            // 
+            this.buttonM64TurnOffRowRange.Location = new System.Drawing.Point(8, 195);
+            this.buttonM64TurnOffRowRange.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64TurnOffRowRange.Name = "buttonM64TurnOffRowRange";
+            this.buttonM64TurnOffRowRange.Size = new System.Drawing.Size(79, 38);
+            this.buttonM64TurnOffRowRange.TabIndex = 8;
+            this.buttonM64TurnOffRowRange.Text = "Turn Off\r\nRow Range";
+            this.buttonM64TurnOffRowRange.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64TurnOnCells
+            // 
+            this.buttonM64TurnOnCells.Location = new System.Drawing.Point(174, 237);
+            this.buttonM64TurnOnCells.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64TurnOnCells.Name = "buttonM64TurnOnCells";
+            this.buttonM64TurnOnCells.Size = new System.Drawing.Size(79, 38);
+            this.buttonM64TurnOnCells.TabIndex = 8;
+            this.buttonM64TurnOnCells.Text = "Turn On\r\nCells";
+            this.buttonM64TurnOnCells.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64TurnOnInputRange
+            // 
+            this.buttonM64TurnOnInputRange.Location = new System.Drawing.Point(91, 237);
+            this.buttonM64TurnOnInputRange.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64TurnOnInputRange.Name = "buttonM64TurnOnInputRange";
+            this.buttonM64TurnOnInputRange.Size = new System.Drawing.Size(79, 38);
+            this.buttonM64TurnOnInputRange.TabIndex = 8;
+            this.buttonM64TurnOnInputRange.Text = "Turn On\r\nInput Range";
+            this.buttonM64TurnOnInputRange.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64DeleteRowRange
+            // 
+            this.buttonM64DeleteRowRange.Location = new System.Drawing.Point(8, 237);
+            this.buttonM64DeleteRowRange.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64DeleteRowRange.Name = "buttonM64DeleteRowRange";
+            this.buttonM64DeleteRowRange.Size = new System.Drawing.Size(79, 38);
+            this.buttonM64DeleteRowRange.TabIndex = 8;
+            this.buttonM64DeleteRowRange.Text = "Delete\r\nRow Range";
+            this.buttonM64DeleteRowRange.UseVisualStyleBackColor = true;
             // 
             // buttonM64CopyRowRange
             // 
@@ -3969,7 +4031,7 @@ namespace STROOP
             this.tabPageM64Header.Location = new System.Drawing.Point(4, 22);
             this.tabPageM64Header.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageM64Header.Name = "tabPageM64Header";
-            this.tabPageM64Header.Size = new System.Drawing.Size(645, 429);
+            this.tabPageM64Header.Size = new System.Drawing.Size(582, 429);
             this.tabPageM64Header.TabIndex = 2;
             this.tabPageM64Header.Text = "Header";
             // 
@@ -3979,7 +4041,7 @@ namespace STROOP
             this.propertyGridM64Header.HelpVisible = false;
             this.propertyGridM64Header.Location = new System.Drawing.Point(0, 0);
             this.propertyGridM64Header.Name = "propertyGridM64Header";
-            this.propertyGridM64Header.Size = new System.Drawing.Size(643, 427);
+            this.propertyGridM64Header.Size = new System.Drawing.Size(580, 427);
             this.propertyGridM64Header.TabIndex = 0;
             this.propertyGridM64Header.ToolbarVisible = false;
             // 
@@ -3991,7 +4053,7 @@ namespace STROOP
             this.tabPageM64Stats.Location = new System.Drawing.Point(4, 22);
             this.tabPageM64Stats.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageM64Stats.Name = "tabPageM64Stats";
-            this.tabPageM64Stats.Size = new System.Drawing.Size(645, 429);
+            this.tabPageM64Stats.Size = new System.Drawing.Size(582, 429);
             this.tabPageM64Stats.TabIndex = 4;
             this.tabPageM64Stats.Text = "Stats";
             // 
@@ -4002,7 +4064,7 @@ namespace STROOP
             this.propertyGridM64Stats.Location = new System.Drawing.Point(0, 0);
             this.propertyGridM64Stats.Margin = new System.Windows.Forms.Padding(0);
             this.propertyGridM64Stats.Name = "propertyGridM64Stats";
-            this.propertyGridM64Stats.Size = new System.Drawing.Size(643, 427);
+            this.propertyGridM64Stats.Size = new System.Drawing.Size(580, 427);
             this.propertyGridM64Stats.TabIndex = 1;
             this.propertyGridM64Stats.ToolbarVisible = false;
             // 
@@ -5570,7 +5632,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 339F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 340F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -11933,7 +11995,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 739;
+            this.splitContainerMemory.SplitterDistance = 742;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11957,7 +12019,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(623, 429);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(626, 429);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -12060,7 +12122,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(167, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(164, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPageHacks
@@ -15797,65 +15859,15 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // buttonM64DeleteRowRange
+            // comboBoxM64FrameInputRelation
             // 
-            this.buttonM64DeleteRowRange.Location = new System.Drawing.Point(8, 237);
-            this.buttonM64DeleteRowRange.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64DeleteRowRange.Name = "buttonM64DeleteRowRange";
-            this.buttonM64DeleteRowRange.Size = new System.Drawing.Size(79, 38);
-            this.buttonM64DeleteRowRange.TabIndex = 8;
-            this.buttonM64DeleteRowRange.Text = "Delete\r\nRow Range";
-            this.buttonM64DeleteRowRange.UseVisualStyleBackColor = true;
-            // 
-            // buttonM64TurnOnInputRange
-            // 
-            this.buttonM64TurnOnInputRange.Location = new System.Drawing.Point(91, 237);
-            this.buttonM64TurnOnInputRange.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64TurnOnInputRange.Name = "buttonM64TurnOnInputRange";
-            this.buttonM64TurnOnInputRange.Size = new System.Drawing.Size(79, 38);
-            this.buttonM64TurnOnInputRange.TabIndex = 8;
-            this.buttonM64TurnOnInputRange.Text = "Turn On\r\nInput Range";
-            this.buttonM64TurnOnInputRange.UseVisualStyleBackColor = true;
-            // 
-            // buttonM64TurnOffRowRange
-            // 
-            this.buttonM64TurnOffRowRange.Location = new System.Drawing.Point(8, 195);
-            this.buttonM64TurnOffRowRange.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64TurnOffRowRange.Name = "buttonM64TurnOffRowRange";
-            this.buttonM64TurnOffRowRange.Size = new System.Drawing.Size(79, 38);
-            this.buttonM64TurnOffRowRange.TabIndex = 8;
-            this.buttonM64TurnOffRowRange.Text = "Turn Off\r\nRow Range";
-            this.buttonM64TurnOffRowRange.UseVisualStyleBackColor = true;
-            // 
-            // buttonM64TurnOffInputRange
-            // 
-            this.buttonM64TurnOffInputRange.Location = new System.Drawing.Point(91, 195);
-            this.buttonM64TurnOffInputRange.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64TurnOffInputRange.Name = "buttonM64TurnOffInputRange";
-            this.buttonM64TurnOffInputRange.Size = new System.Drawing.Size(79, 38);
-            this.buttonM64TurnOffInputRange.TabIndex = 8;
-            this.buttonM64TurnOffInputRange.Text = "Turn Off\r\nInput Range";
-            this.buttonM64TurnOffInputRange.UseVisualStyleBackColor = true;
-            // 
-            // buttonM64TurnOnCells
-            // 
-            this.buttonM64TurnOnCells.Location = new System.Drawing.Point(174, 237);
-            this.buttonM64TurnOnCells.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64TurnOnCells.Name = "buttonM64TurnOnCells";
-            this.buttonM64TurnOnCells.Size = new System.Drawing.Size(79, 38);
-            this.buttonM64TurnOnCells.TabIndex = 8;
-            this.buttonM64TurnOnCells.Text = "Turn On\r\nCells";
-            this.buttonM64TurnOnCells.UseVisualStyleBackColor = true;
-            // 
-            // buttonM64TurnOffCells
-            // 
-            this.buttonM64TurnOffCells.Location = new System.Drawing.Point(174, 195);
-            this.buttonM64TurnOffCells.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64TurnOffCells.Name = "buttonM64TurnOffCells";
-            this.buttonM64TurnOffCells.Size = new System.Drawing.Size(79, 38);
-            this.buttonM64TurnOffCells.TabIndex = 8;
-            this.buttonM64TurnOffCells.Text = "Turn Off\r\nCells";
-            this.buttonM64TurnOffCells.UseVisualStyleBackColor = true;
+            this.comboBoxM64FrameInputRelation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxM64FrameInputRelation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxM64FrameInputRelation.Location = new System.Drawing.Point(178, 156);
+            this.comboBoxM64FrameInputRelation.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxM64FrameInputRelation.Name = "comboBoxM64FrameInputRelation";
+            this.comboBoxM64FrameInputRelation.Size = new System.Drawing.Size(134, 21);
+            this.comboBoxM64FrameInputRelation.TabIndex = 35;
             // 
             // StroopMainForm
             // 
@@ -17540,6 +17552,7 @@ namespace STROOP
         private Button buttonM64TurnOnCells;
         private Button buttonM64TurnOnInputRange;
         private Button buttonM64DeleteRowRange;
+        private ComboBox comboBoxM64FrameInputRelation;
     }
 }
 

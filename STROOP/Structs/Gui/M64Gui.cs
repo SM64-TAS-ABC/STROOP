@@ -12,6 +12,8 @@ namespace STROOP.Structs.Gui
         public Label LabelFileName;
         public Label LabelNumInputsValue;
 
+        public ComboBox ComboBoxFrameInputRelation;
+
         public Button ButtonSave;
         public Button ButtonSaveAs;
         public Button ButtonOpen;

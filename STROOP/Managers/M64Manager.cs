@@ -57,6 +57,8 @@ namespace STROOP.Managers
             _gui.ButtonPasteOverwrite.Click += (sender, e) => PasteData(false);
 
             _gui.ListBoxCopied.Items.Add(M64CopiedData.OneEmptyFrame);
+
+            _gui.ComboBoxFrameInputRelation.DataSource = Enum.GetValues(typeof(FrameInputRelation));
         }
 
         private void DeleteRows()
