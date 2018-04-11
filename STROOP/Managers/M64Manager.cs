@@ -58,8 +58,8 @@ namespace STROOP.Managers
 
             _gui.ListBoxCopied.Items.Add(M64CopiedData.OneEmptyFrame);
 
-            _gui.ComboBoxFrameInputRelation.DataSource = Enum.GetValues(typeof(FrameInputRelation));
-            _gui.ComboBoxFrameInputRelation.SelectedItem = FrameInputRelation.FrameAfterInput;
+            _gui.ComboBoxFrameInputRelation.DataSource = Enum.GetValues(typeof(FrameInputRelationType));
+            _gui.ComboBoxFrameInputRelation.SelectedItem = M64InputFrame.FrameInputRelation;
         }
 
         private void DeleteRows()
@@ -280,11 +280,11 @@ namespace STROOP.Managers
                 originalFrameCount,
                 StringUtilities.FormatIntegerWithSign(diff));
 
-            FrameInputRelation selectedFrameInputRelation =
-                (FrameInputRelation)_gui.ComboBoxFrameInputRelation.SelectedItem;
-            if (selectedFrameInputRelation != M64InputFrame.frameInputRelation)
+            FrameInputRelationType selectedFrameInputRelation =
+                (FrameInputRelationType)_gui.ComboBoxFrameInputRelation.SelectedItem;
+            if (selectedFrameInputRelation != M64InputFrame.FrameInputRelation)
             {
-                M64InputFrame.frameInputRelation = selectedFrameInputRelation;
+                M64InputFrame.FrameInputRelation = selectedFrameInputRelation;
                 _gui.DataGridViewInputs.Refresh();
             }
         }

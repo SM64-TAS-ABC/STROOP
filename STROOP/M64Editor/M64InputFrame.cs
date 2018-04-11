@@ -12,7 +12,7 @@ namespace STROOP.M64Editor
 {
     public class M64InputFrame
     {
-        public static FrameInputRelation frameInputRelation = FrameInputRelation.FrameAfterInput;
+        public static FrameInputRelationType FrameInputRelation = FrameInputRelationType.FrameAfterInput;
         public static int ClassIdIndex = 0;
 
         public int FrameIndex;
@@ -77,18 +77,17 @@ namespace STROOP.M64Editor
 
         private int GetFrameInputRelationOffset()
         {
-            switch (frameInputRelation)
+            switch (FrameInputRelation)
             {
-                case FrameInputRelation.FrameOfInput:
+                case FrameInputRelationType.FrameOfInput:
                     return -1;
-                case FrameInputRelation.FrameAfterInput:
+                case FrameInputRelationType.FrameAfterInput:
                     return 0;
-                case FrameInputRelation.FrameWhenObserved:
+                case FrameInputRelationType.FrameWhenObserved:
                     return 1;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-
         }
 
         public byte[] ToBytes()

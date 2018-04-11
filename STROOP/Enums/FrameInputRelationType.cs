@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace STROOP.Structs
 {
-    public enum FrameInputRelation
+    public enum FrameInputRelationType
     {
         FrameOfInput,
         FrameAfterInput,
