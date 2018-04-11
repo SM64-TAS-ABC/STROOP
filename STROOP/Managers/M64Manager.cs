@@ -15,7 +15,7 @@ namespace STROOP.Managers
     public class M64Manager
     {
         bool _displaySaveChangesOnOpen = false;
-        M64File _m64;
+        M64File _m64File;
         M64Gui _gui;
 
         public M64Manager(M64Gui gui)
@@ -33,14 +33,14 @@ namespace STROOP.Managers
             _gui.DataGridViewInputs.DataError += (sender, e) => _gui.DataGridViewInputs.CancelEdit();
             _gui.DataGridViewInputs.SelectionChanged += (sender, e) => UpdateSelectionTextboxes();
 
-            _m64 = new M64File(_gui);
-            _gui.DataGridViewInputs.DataSource = _m64.Inputs;
+            _m64File = new M64File(_gui);
+            _gui.DataGridViewInputs.DataSource = _m64File.Inputs;
             UpdateTableSettings();
-            _gui.PropertyGridHeader.SelectedObject = _m64.Header;
+            _gui.PropertyGridHeader.SelectedObject = _m64File.Header;
             _gui.PropertyGridHeader.Refresh();
-            _gui.PropertyGridStats.SelectedObject = _m64.Stats;
+            _gui.PropertyGridStats.SelectedObject = _m64File.Stats;
             _gui.PropertyGridStats.Refresh();
-            _gui.PropertyGridStats.ContextMenuStrip = _m64.Stats.CreateContextMenuStrip();
+            _gui.PropertyGridStats.ContextMenuStrip = _m64File.Stats.CreateContextMenuStrip();
             _gui.TabControlDetails.SelectedIndexChanged += TabControlDetails_SelectedIndexChanged;
 
             _gui.ButtonTurnOffRowRange.Click += (sender, e) => SetValuesOfSelection(CellSelectionType.RowRange, false);
@@ -67,7 +67,7 @@ namespace STROOP.Managers
             int? startFrame = ParsingUtilities.ParseIntNullable(_gui.TextBoxSelectionStartFrame.Text);
             int? endFrame = ParsingUtilities.ParseIntNullable(_gui.TextBoxSelectionEndFrame.Text);
             if (!startFrame.HasValue || !endFrame.HasValue) return;
-            _m64.DeleteRows(startFrame.Value, endFrame.Value);
+            _m64File.DeleteRows(startFrame.Value, endFrame.Value);
         }
 
         private void PasteData(bool insert)
@@ -77,7 +77,7 @@ namespace STROOP.Managers
             int pasteIndex = ControlUtilities.GetMinSelectedRowIndex(_gui.DataGridViewInputs) ?? 0;
             int? multiplicity = ParsingUtilities.ParseIntNullable(_gui.TextBoxPasteMultiplicity.Text);
             if (!multiplicity.HasValue) return;
-            _m64.Paste(copiedData, pasteIndex, insert, multiplicity.Value);
+            _m64File.Paste(copiedData, pasteIndex, insert, multiplicity.Value);
         }
 
         private void CopyData(bool useRow)
@@ -88,7 +88,7 @@ namespace STROOP.Managers
 
             if (!startFrame.HasValue || !endFrame.HasValue) return;
             M64CopiedData copiedData = M64CopiedData.CreateCopiedData(
-                _gui.DataGridViewInputs, _m64.CurrentFileName, startFrame.Value, endFrame.Value, useRow, inputsString);
+                _gui.DataGridViewInputs, _m64File.CurrentFileName, startFrame.Value, endFrame.Value, useRow, inputsString);
             if (copiedData == null) return;
             _gui.ListBoxCopied.Items.Add(copiedData);
             _gui.ListBoxCopied.SelectedItem = copiedData;
@@ -99,12 +99,12 @@ namespace STROOP.Managers
             switch (romVersion)
             {
                 case RomVersion.US:
-                    _m64.Header.CountryCode = M64Config.CountryCodeUS;
-                    _m64.Header.Crc32 = M64Config.CrcUS;
+                    _m64File.Header.CountryCode = M64Config.CountryCodeUS;
+                    _m64File.Header.Crc32 = M64Config.CrcUS;
                     break;
                 case RomVersion.JP:
-                    _m64.Header.CountryCode = M64Config.CountryCodeJP;
-                    _m64.Header.Crc32 = M64Config.CrcJP;
+                    _m64File.Header.CountryCode = M64Config.CountryCodeJP;
+                    _m64File.Header.Crc32 = M64Config.CrcJP;
                     break;
                 case RomVersion.PAL:
                 default:
@@ -170,7 +170,7 @@ namespace STROOP.Managers
             if (dialogResult != DialogResult.OK)
                 return;
 
-            bool success = _m64.Save(saveFileDialog.FileName);
+            bool success = _m64File.Save(saveFileDialog.FileName);
             if (!success)
             {
                 MessageBox.Show(
@@ -185,7 +185,7 @@ namespace STROOP.Managers
 
         private void ButtonSave_Click(object sender, EventArgs e)
         {
-            bool success = _m64.Save();
+            bool success = _m64File.Save();
             if (!success)
             {
                 MessageBox.Show(
@@ -213,7 +213,7 @@ namespace STROOP.Managers
 
             _gui.DataGridViewInputs.DataSource = null;
             _gui.PropertyGridHeader.SelectedObject = null;
-            bool success = _m64.OpenFile(filePath, fileName);
+            bool success = _m64File.OpenFile(filePath, fileName);
             if (!success)
             {
                 MessageBox.Show(
@@ -224,9 +224,9 @@ namespace STROOP.Managers
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
-            _gui.DataGridViewInputs.DataSource = _m64.Inputs;
+            _gui.DataGridViewInputs.DataSource = _m64File.Inputs;
             UpdateTableSettings();
-            _gui.PropertyGridHeader.SelectedObject = _m64.Header;
+            _gui.PropertyGridHeader.SelectedObject = _m64File.Header;
             _gui.DataGridViewInputs.Refresh();
             _gui.PropertyGridHeader.Refresh();
             _gui.PropertyGridStats.Refresh();
@@ -234,7 +234,7 @@ namespace STROOP.Managers
 
         private void ButtonClose_Click(object sender, EventArgs e)
         {
-            _m64.Close();
+            _m64File.Close();
             _gui.DataGridViewInputs.Refresh();
             _gui.PropertyGridHeader.Refresh();
             _gui.PropertyGridStats.Refresh();
@@ -269,16 +269,18 @@ namespace STROOP.Managers
         {
             if (!updateView) return;
 
-            _gui.LabelFileName.Text = _m64.CurrentFileName ?? "(No File Opened)";
+            string fileName = _m64File.CurrentFileName ?? "(No File Opened)";
+            string isModifiedSuffix = _m64File.IsModified ? "*" : "";
+            _gui.LabelFileName.Text = fileName + isModifiedSuffix;
 
-            int currentFrameCount = _m64.Inputs.Count;
-            int originalFrameCount = _m64.OriginalFrameCount;
-            int diff = currentFrameCount - originalFrameCount;
+            int currentFrameCount = _m64File.Inputs.Count;
+            int originalFrameCount = _m64File.OriginalFrameCount;
+            int frameCountDiff = currentFrameCount - originalFrameCount;
             _gui.LabelNumInputsValue.Text = String.Format(
                 "{0} / {1} [{2}]",
                 currentFrameCount,
                 originalFrameCount,
-                StringUtilities.FormatIntegerWithSign(diff));
+                StringUtilities.FormatIntegerWithSign(frameCountDiff));
 
             FrameInputRelationType selectedFrameInputRelation =
                 (FrameInputRelationType)_gui.ComboBoxFrameInputRelation.SelectedItem;

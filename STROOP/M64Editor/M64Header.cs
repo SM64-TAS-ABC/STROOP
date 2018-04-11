@@ -15,150 +15,164 @@ namespace STROOP.M64Editor
     {
         public enum MovieStartTypeEnum { FromStart, FromSnapshot }
 
+        private readonly M64File _m64File;
+
         // 018 4-byte little-endian unsigned int: number of input samples for any controllers
+        private int _numInputs;
         [Category("\u200B\u200B\u200B\u200B\u200BMain"), DisplayName("\u200B\u200B\u200B\u200BNum Inputs")]
-        public int NumInputs { get; set; }
+        public int NumInputs { get => _numInputs; set { _numInputs = value; NotifyChange(); } }
 
         // 00C 4-byte little-endian unsigned int: number of frames(vertical interrupts)
+        private int _numVis;
         [Category("\u200B\u200B\u200B\u200B\u200BMain"), DisplayName("\u200B\u200B\u200BNum VIs")]
-        public int NumVis { get; set; }
+        public int NumVis { get => _numVis; set { _numVis = value; NotifyChange(); } }
 
         // 010 4-byte little-endian unsigned int: rerecord count
+        private int _numRerecords;
         [CategoryAttribute("\u200B\u200B\u200B\u200B\u200BMain"), DisplayName("\u200B\u200BNum Rerecords")]
-        public int NumRerecords { get; set; }
+        public int NumRerecords { get => _numRerecords; set { _numRerecords = value; NotifyChange(); } }
 
         // 01C 2-byte unsigned int: movie start type
         // value 1: movie begins from snapshot(the snapshot will be loaded from an externalfile
         //     with the movie filename and a .st extension)
         // value 2: movie begins from power-on
         // other values: invalid movie
+        private MovieStartTypeEnum _movieStartType;
         [CategoryAttribute("\u200B\u200B\u200B\u200B\u200BMain"), DisplayName("\u200BMovie Start Type")]
-        public MovieStartTypeEnum MovieStartType { get; set; }
+        public MovieStartTypeEnum MovieStartType { get => _movieStartType; set { _movieStartType = value; NotifyChange(); } }
 
         // 014 1-byte unsigned int: frames(vertical interrupts) per second
+        private byte _fps;
         [CategoryAttribute("\u200B\u200B\u200B\u200B\u200BMain"), DisplayName("FPS")]
-        public byte Fps { get; set; }
+        public byte Fps { get => _fps; set { _fps = value; NotifyChange(); } }
 
         // 0C4 32-byte ASCII string: internal name of ROM used when recording, directly from ROM
         private string _romName;
         [CategoryAttribute("\u200B\u200B\u200B\u200BRom"), DisplayName("\u200B\u200BRom Name")]
-        public string RomName {
-            get => _romName;
-            set => _romName = StringUtilities.Cap(value, 32);
-        }
+        public string RomName { get => _romName; set { _romName = StringUtilities.Cap(value, 32); NotifyChange(); } }
 
         // 0E8 2-byte unsigned int: country code of ROM used when recording, directly from ROM
+        private ushort _countryCode;
         [CategoryAttribute("\u200B\u200B\u200B\u200BRom"), DisplayName("\u200BCountry Code")]
-        public ushort CountryCode { get; set; }
+        public ushort CountryCode { get => _countryCode; set { _countryCode = value; NotifyChange(); } }
 
         // 0E4 4-byte unsigned int: CRC32 of ROM used when recording, directly from ROM
+        private uint _crc32;
         [CategoryAttribute("\u200B\u200B\u200B\u200BRom"), DisplayName("CRC32")]
-        public uint Crc32 { get; set; }
+        public uint Crc32 { get => _crc32; set { _crc32 = value; NotifyChange(); } }
 
         // 222 222-byte UTF-8 string: author name info
         private string _author;
         [CategoryAttribute("\u200B\u200B\u200BDescription"), DisplayName("\u200BAuthor")]
-        public string Author
-        {
-            get => _author;
-            set => _author = StringUtilities.Cap(value, 222);
-        }
+        public string Author { get => _author; set { _author = StringUtilities.Cap(value, 222); NotifyChange(); } }
 
         // 300 256-byte UTF-8 string: author movie description info
         private string _description;
         [CategoryAttribute("\u200B\u200B\u200BDescription"), DisplayName("Description")]
-        public string Description
-        {
-            get => _description;
-            set => _description = StringUtilities.Cap(value, 256);
-        }
+        public string Description { get => _description; set { _description = StringUtilities.Cap(value, 256); NotifyChange(); } }
 
         // 015 1-byte unsigned int: number of controllers
+        private byte _numControllers;
         [CategoryAttribute("\u200B\u200BController"), DisplayName("\u200B\u200B\u200BNum Controllers")]
-        public byte NumControllers { get; set; }
+        public byte NumControllers { get => _numControllers; set { _numControllers = value; NotifyChange(); } }
 
         // 020 4-byte unsigned int: controller flags
         // bit 0: controller 1 present
         // bit 4: controller 1 has mempak
         // bit 8: controller 1 has rumblepak
         // +1..3 for controllers 2..4.
+        private bool _controller1Present;
         [CategoryAttribute("\u200B\u200BController"), DisplayName("\u200B\u200BController 1 Present")]
-        public bool Controller1Present { get; set; }
+        public bool Controller1Present { get => _controller1Present; set { _controller1Present = value; NotifyChange(); } }
+
+        private bool _controller2Present;
         [CategoryAttribute("\u200B\u200BController"), DisplayName("\u200B\u200BController 2 Present")]
-        public bool Controller2Present { get; set; }
+        public bool Controller2Present { get => _controller2Present; set { _controller2Present = value; NotifyChange(); } }
+
+        private bool _controller3Present;
         [CategoryAttribute("\u200B\u200BController"), DisplayName("\u200B\u200BController 3 Present")]
-        public bool Controller3Present { get; set; }
+        public bool Controller3Present { get => _controller3Present; set { _controller3Present = value; NotifyChange(); } }
+
+        private bool _controller4Present;
         [CategoryAttribute("\u200B\u200BController"), DisplayName("\u200B\u200BController 4 Present")]
-        public bool Controller4Present { get; set; }
+        public bool Controller4Present { get => _controller4Present; set { _controller4Present = value; NotifyChange(); } }
+
+        private bool _controller1MemPak;
         [CategoryAttribute("\u200B\u200BController"), DisplayName("\u200BController 1 MemPak")]
-        public bool Controller1MemPak { get; set; }
+        public bool Controller1MemPak { get => _controller1MemPak; set { _controller1MemPak = value; NotifyChange(); } }
+
+        private bool _controller2MemPak;
         [CategoryAttribute("\u200B\u200BController"), DisplayName("\u200BController 2 MemPak")]
-        public bool Controller2MemPak { get; set; }
+        public bool Controller2MemPak { get => _controller2MemPak; set { _controller2MemPak = value; NotifyChange(); } }
+
+        private bool _controller3MemPak;
         [CategoryAttribute("\u200B\u200BController"), DisplayName("\u200BController 3 MemPak")]
-        public bool Controller3MemPak { get; set; }
+        public bool Controller3MemPak { get => _controller3MemPak; set { _controller3MemPak = value; NotifyChange(); } }
+
+        private bool _controller4MemPak;
         [CategoryAttribute("\u200B\u200BController"), DisplayName("\u200BController 4 MemPak")]
-        public bool Controller4MemPak { get; set; }
+        public bool Controller4MemPak { get => _controller4MemPak; set { _controller4MemPak = value; NotifyChange(); } }
+
+        private bool _controller1RumblePak;
         [CategoryAttribute("\u200B\u200BController"), DisplayName("Controller 1 RumblePak")]
-        public bool Controller1RumblePak { get; set; }
+        public bool Controller1RumblePak { get => _controller1RumblePak; set { _controller1RumblePak = value; NotifyChange(); } }
+
+        private bool _controller2RumblePak;
         [CategoryAttribute("\u200B\u200BController"), DisplayName("Controller 2 RumblePak")]
-        public bool Controller2RumblePak { get; set; }
+        public bool Controller2RumblePak { get => _controller2RumblePak; set { _controller2RumblePak = value; NotifyChange(); } }
+
+        private bool _controller3RumblePak;
         [CategoryAttribute("\u200B\u200BController"), DisplayName("Controller 3 RumblePak")]
-        public bool Controller3RumblePak { get; set; }
+        public bool Controller3RumblePak { get => _controller3RumblePak; set { _controller3RumblePak = value; NotifyChange(); } }
+
+        private bool _controller4RumblePak;
         [CategoryAttribute("\u200B\u200BController"), DisplayName("Controller 4 RumblePak")]
-        public bool Controller4RumblePak { get; set; }
+        public bool Controller4RumblePak { get => _controller4RumblePak; set { _controller4RumblePak = value; NotifyChange(); } }
 
         // 122 64-byte ASCII string: name of video plugin used when recording, directly from plugin
         private string _videoPlugin;
         [CategoryAttribute("\u200BPlugin"), DisplayName("\u200B\u200B\u200BVideo Plugin")]
-        public string VideoPlugin
-        {
-            get => _videoPlugin;
-            set => _videoPlugin = StringUtilities.Cap(value, 64);
-        }
+        public string VideoPlugin { get => _videoPlugin; set { _videoPlugin = StringUtilities.Cap(value, 64); NotifyChange(); } }
 
         // 162 64-byte ASCII string: name of sound plugin used when recording, directly from plugin
         private string _soundPlugin;
         [CategoryAttribute("\u200BPlugin"), DisplayName("\u200B\u200BSound Plugin")]
-        public string SoundPlugin
-        {
-            get => _soundPlugin;
-            set => _soundPlugin = StringUtilities.Cap(value, 64);
-        }
+        public string SoundPlugin { get => _soundPlugin; set { _soundPlugin = StringUtilities.Cap(value, 64); NotifyChange(); } }
 
         // 1A2 64-byte ASCII string: name of input plugin used when recording, directly from plugin
         private string _inputPlugin;
         [CategoryAttribute("\u200BPlugin"), DisplayName("\u200BInput Plugin")]
-        public string InputPlugin
-        {
-            get => _inputPlugin;
-            set => _inputPlugin = StringUtilities.Cap(value, 64);
-        }
+        public string InputPlugin { get => _inputPlugin; set { _inputPlugin = StringUtilities.Cap(value, 64); NotifyChange(); } }
 
         // 1E2 64-byte ASCII string: name of rsp plugin used when recording, directly from plugin
         private string _rspPlugin;
         [CategoryAttribute("\u200BPlugin"), DisplayName("RSP Plugin")]
-        public string RspPlugin
-        {
-            get => _rspPlugin;
-            set => _rspPlugin = StringUtilities.Cap(value, 64);
-        }
+        public string RspPlugin { get => _rspPlugin; set { _rspPlugin = StringUtilities.Cap(value, 64); NotifyChange(); } }
 
         // 000 4-byte signature: 4D 36 34 1A "M64\x1A"
+        private uint _signature;
         [CategoryAttribute("Mupen"), DisplayName("\u200B\u200BSignature")]
-        public uint Signature { get; set; }
+        public uint Signature { get => _signature; set { _signature = value; NotifyChange(); } }
 
         // 004 4-byte little-endian unsigned int: version number, should be 3
+        private uint _versionNumber;
         [CategoryAttribute("Mupen"), DisplayName("\u200BVersion Number")]
-        public uint VersionNumber { get; set; }
+        public uint VersionNumber { get => _versionNumber; set { _versionNumber = value; NotifyChange(); } }
 
         // 008 4-byte little-endian integer: movie "uid" - identifies the movie-savestate relationship,
         // also used as the recording time in Unix epoch format
+        private int _uid;
         [CategoryAttribute("Mupen"), DisplayName("UID")]
-        public int Uid { get; set; }
+        public int Uid { get => _uid; set { _uid = value; NotifyChange(); } }
 
-        public M64Header()
+        public M64Header(M64File m64File)
         {
+            _m64File = m64File;
+        }
 
+        private void NotifyChange()
+        {
+            _m64File.IsModified = true;
         }
 
         public void LoadBytes(byte[] bytes)

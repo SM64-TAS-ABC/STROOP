@@ -20,15 +20,17 @@ namespace STROOP.M64Editor
         public uint RawValue;
         public readonly int IdIndex;
 
-        private DataGridView _table;
+        private readonly DataGridView _table;
+        private readonly M64File _m64File;
 
-        public M64InputFrame(int frameIndex, uint rawValue, DataGridView table)
+        public M64InputFrame(int frameIndex, uint rawValue, M64File m64File, DataGridView table)
         {
             FrameIndex = frameIndex;
             RawValue = rawValue;
             IdIndex = ClassIdIndex;
             ClassIdIndex++;
 
+            _m64File = m64File;
             _table = table;
 
             _X = X;
@@ -51,22 +53,22 @@ namespace STROOP.M64Editor
 
         public int Frame { get => FrameIndex + GetFrameInputRelationOffset(); }
         public int Id { get => IdIndex + GetFrameInputRelationOffset(); }
-        public sbyte X { get => (sbyte)GetByte(2); set { SetByte(2, (byte)value); UpdateEditedCellColor(2, X != _X); } }
-        public sbyte Y { get => (sbyte)GetByte(3); set { SetByte(3, (byte)value); UpdateEditedCellColor(3, Y != _Y); } }
-        public bool A { get => GetBit(7); set { SetBit(7, value); UpdateEditedCellColor(4, A != _A); } }
-        public bool B { get => GetBit(6); set { SetBit(6, value); UpdateEditedCellColor(5, B != _B); } }
-        public bool Z { get => GetBit(5); set { SetBit(5, value); UpdateEditedCellColor(6, Z != _Z); } }
-        public bool S { get => GetBit(4); set { SetBit(4, value); UpdateEditedCellColor(7, S != _S); } }
-        public bool R { get => GetBit(12); set { SetBit(12, value); UpdateEditedCellColor(8, R != _R); } }
-        public bool C_Up { get => GetBit(11); set { SetBit(11, value); UpdateEditedCellColor(9, C_Up != _C_Up); } }
-        public bool C_Down { get => GetBit(10); set { SetBit(10, value); UpdateEditedCellColor(10, C_Down != _C_Down); } }
-        public bool C_Left { get => GetBit(9); set { SetBit(9, value); UpdateEditedCellColor(11, C_Left != _C_Left); } }
-        public bool C_Right { get => GetBit(8); set { SetBit(8, value); UpdateEditedCellColor(12, C_Right != _C_Right); } }
-        public bool L { get => GetBit(13); set { SetBit(13, value); UpdateEditedCellColor(13, L != _L); } }
-        public bool D_Up { get => GetBit(3); set { SetBit(3, value); UpdateEditedCellColor(14, D_Up != _D_Up); } }
-        public bool D_Down { get => GetBit(2); set { SetBit(2, value); UpdateEditedCellColor(15, D_Down != _D_Down); } }
-        public bool D_Left { get => GetBit(1); set { SetBit(1, value); UpdateEditedCellColor(16, D_Left != _D_Left); } }
-        public bool D_Right { get => GetBit(0); set { SetBit(0, value); UpdateEditedCellColor(17, D_Right != _D_Right); } }
+        public sbyte X { get => (sbyte)GetByte(2); set { SetByte(2, (byte)value); NotifyChange(2, X != _X); } }
+        public sbyte Y { get => (sbyte)GetByte(3); set { SetByte(3, (byte)value); NotifyChange(3, Y != _Y); } }
+        public bool A { get => GetBit(7); set { SetBit(7, value); NotifyChange(4, A != _A); } }
+        public bool B { get => GetBit(6); set { SetBit(6, value); NotifyChange(5, B != _B); } }
+        public bool Z { get => GetBit(5); set { SetBit(5, value); NotifyChange(6, Z != _Z); } }
+        public bool S { get => GetBit(4); set { SetBit(4, value); NotifyChange(7, S != _S); } }
+        public bool R { get => GetBit(12); set { SetBit(12, value); NotifyChange(8, R != _R); } }
+        public bool C_Up { get => GetBit(11); set { SetBit(11, value); NotifyChange(9, C_Up != _C_Up); } }
+        public bool C_Down { get => GetBit(10); set { SetBit(10, value); NotifyChange(10, C_Down != _C_Down); } }
+        public bool C_Left { get => GetBit(9); set { SetBit(9, value); NotifyChange(11, C_Left != _C_Left); } }
+        public bool C_Right { get => GetBit(8); set { SetBit(8, value); NotifyChange(12, C_Right != _C_Right); } }
+        public bool L { get => GetBit(13); set { SetBit(13, value); NotifyChange(13, L != _L); } }
+        public bool D_Up { get => GetBit(3); set { SetBit(3, value); NotifyChange(14, D_Up != _D_Up); } }
+        public bool D_Down { get => GetBit(2); set { SetBit(2, value); NotifyChange(15, D_Down != _D_Down); } }
+        public bool D_Left { get => GetBit(1); set { SetBit(1, value); NotifyChange(16, D_Left != _D_Left); } }
+        public bool D_Right { get => GetBit(0); set { SetBit(0, value); NotifyChange(17, D_Right != _D_Right); } }
 
         private readonly sbyte _X;
         private readonly sbyte _Y;
@@ -85,8 +87,9 @@ namespace STROOP.M64Editor
         private readonly bool _D_Left;
         private readonly bool _D_Right;
 
-        private void UpdateEditedCellColor(int columnIndex, bool valueChanged)
+        private void NotifyChange(int columnIndex, bool valueChanged)
         {
+            _m64File.IsModified = true;
             DataGridViewRow row = _table.Rows[FrameIndex];
             DataGridViewColumn col = _table.Columns[columnIndex];
             DataGridViewCell cell = row.Cells[columnIndex];

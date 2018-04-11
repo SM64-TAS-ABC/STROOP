@@ -24,6 +24,7 @@ namespace STROOP.M64Editor
         public string CurrentFileName { get; private set; }
         public byte[] RawBytes { get; private set; }
         public int OriginalFrameCount { get; private set; }
+        public bool IsModified = false;
 
         public M64Header Header { get; }
         public BindingList<M64InputFrame> Inputs { get; }
@@ -32,7 +33,7 @@ namespace STROOP.M64Editor
         public M64File(M64Gui gui)
         {
             _gui = gui;
-            Header = new M64Header();
+            Header = new M64Header(this);
             Inputs = new BindingList<M64InputFrame>();
             Stats = new M64Stats(this);
         }
@@ -78,10 +79,11 @@ namespace STROOP.M64Editor
             Header.LoadBytes(headerBytes);
             byte[] frameBytes = fileBytes.Skip(M64Config.HeaderSize).ToArray();
 
+            IsModified = false;
             OriginalFrameCount = Header.NumInputs;
             for (int i = 0; i < frameBytes.Length && i < 4 * OriginalFrameCount; i += 4)
             {
-                Inputs.Add(new M64InputFrame(i / 4, BitConverter.ToUInt32(frameBytes, i), _gui.DataGridViewInputs));
+                Inputs.Add(new M64InputFrame(i / 4, BitConverter.ToUInt32(frameBytes, i), this, _gui.DataGridViewInputs));
             }
 
             return true;
@@ -115,12 +117,13 @@ namespace STROOP.M64Editor
 
         public void Close()
         {
+            Header.Clear();
+            Inputs.Clear();
             CurrentFilePath = null;
             CurrentFileName = null;
             RawBytes = null;
             OriginalFrameCount = 0;
-            Header.Clear();
-            Inputs.Clear();
+            IsModified = false;
         }
 
         public void DeleteRows(int startIndex, int endIndex)
@@ -135,6 +138,7 @@ namespace STROOP.M64Editor
                 Inputs.RemoveAt(startIndex);
             }
 
+            IsModified = true;
             RefreshInputFrames(startIndex);
             _gui.DataGridViewInputs.Refresh();
             Config.M64Manager.UpdateSelectionTextboxes();
@@ -150,7 +154,7 @@ namespace STROOP.M64Editor
                     int insertionIndex = index + i;
                     Inputs.Insert(
                         insertionIndex,
-                        new M64InputFrame(insertionIndex, copiedData.GetRawValue(i), _gui.DataGridViewInputs));
+                        new M64InputFrame(insertionIndex, copiedData.GetRawValue(i), this, _gui.DataGridViewInputs));
                     _gui.DataGridViewInputs.Rows[insertionIndex].DefaultCellStyle.BackColor = M64Utilities.NewRowColor;
                 }
             }
@@ -159,6 +163,8 @@ namespace STROOP.M64Editor
                 List<M64InputFrame> inputsToOverwrite = Inputs.Skip(index).Take(pasteCount).ToList();
                 copiedData.Apply(inputsToOverwrite);
             }
+
+            IsModified = true;
             RefreshInputFrames(index);
             _gui.DataGridViewInputs.Refresh();
             Config.M64Manager.UpdateSelectionTextboxes();
