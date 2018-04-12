@@ -275,10 +275,7 @@ namespace STROOP.Controls
             bool isCKeyHeld = Keyboard.IsKeyDown(Key.C);
             bool isQKeyHeld = Keyboard.IsKeyDown(Key.Q);
             bool isXKeyHeld = Keyboard.IsKeyDown(Key.X);
-            bool isDeleteKeyHeld =
-                 Keyboard.IsKeyDown(Key.Delete) ||
-                 Keyboard.IsKeyDown(Key.Back) ||
-                 Keyboard.IsKeyDown(Key.Escape);
+            bool isDeletishKeyHeld = KeyboardUtilities.IsDeletishKeyHeld();
             bool isBacktickHeld = Keyboard.IsKeyDown(Key.OemTilde);
             bool isZHeld = Keyboard.IsKeyDown(Key.Z);
             bool isMinusHeld = Keyboard.IsKeyDown(Key.OemMinus);
@@ -334,7 +331,7 @@ namespace STROOP.Controls
                 return;
             }
 
-            if (isDeleteKeyHeld)
+            if (isDeletishKeyHeld)
             {
                 DeleteFromPanel();
                 return;

@@ -47,5 +47,12 @@ namespace STROOP.Utilities
         {
             return Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt);
         }
+
+        public static bool IsDeletishKeyHeld()
+        {
+            return Keyboard.IsKeyDown(Key.Delete) ||
+                Keyboard.IsKeyDown(Key.Back) ||
+                Keyboard.IsKeyDown(Key.Escape);
+        }
     }
 }
