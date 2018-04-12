@@ -41,7 +41,7 @@
   <Data groupList="TAS" base="None" specialType="RngIndex" subclass="String" color="Green">RNG Index</Data>
   <Data groupList="TAS" type="short" offset="0x34" base="Mario" subclass="Angle" color="Pink">Yaw Velocity</Data>
   <Data groupList="TAS" type="short" offset="0x2C" base="Mario" subclass="Angle" color="Pink">Pitch</Data>
-  <Data groupList="TAS" type="short" offset="0x32" base="Mario" subclass="Angle" color="Pink">Flying Pull Back</Data>
+  <Data groupList="TAS" type="short" offset="0x32" base="Mario" subclass="Angle" color="Pink">Pitch Velocity</Data>
   <Data groupList="TAS" base="None" specialType="MupenLag" color="Grey">Lag</Data>
 
   <Data groupList="Point" base="None" specialType="PointX" color="Blue" coord="X">Point X</Data>
