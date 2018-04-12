@@ -3217,7 +3217,7 @@
     <Data groupList="ObjectSpecific" type="ushort" offset="0xCA" base="Object" subclass="Angle">Yaw Moving</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="AngleObjectToHome" subclass="Angle" type="ushort">Angle Obj to Home</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="DeltaAngleObjectToHome" subclass="Angle" type="short">DAngle Obj to Home</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="MarioYDistanceToObject">VDist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="FlyGuyZone" subclass="String">Zone</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xB0" base="Object">Y Speed</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x100" base="Object">Y Speed Change</Data>
@@ -3242,7 +3242,7 @@
     <Data groupList="ObjectSpecific" type="ushort" offset="0xCA" base="Object" subclass="Angle">Yaw Moving</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="AngleObjectToHome" subclass="Angle" type="ushort">Angle Obj to Home</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="DeltaAngleObjectToHome" subclass="Angle" type="short">DAngle Obj to Home</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="MarioYDistanceToObject">VDist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="FlyGuyZone" subclass="String">Zone</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xB0" base="Object">Y Speed</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x100" base="Object">Y Speed Change</Data>
@@ -4027,7 +4027,7 @@
     <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" base="Object" subclass="Angle">Yaw Facing</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0x10E" base="Object" subclass="Angle">Yaw to Next WP</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x10A" base="Object" subclass="Angle">Pitch to Next WP</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="MarioVerticalDistanceToObject">VDist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="MarioYDistanceToObject">VDist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="RacingPenguinEffortTarget">Effort Target</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x110" base="Object">Effort</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="RacingPenguinEffortChange">Effort Change</Data>

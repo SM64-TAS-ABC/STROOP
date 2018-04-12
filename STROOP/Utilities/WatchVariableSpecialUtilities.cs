@@ -9,7 +9,7 @@ namespace STROOP.Structs
 {
     public static class WatchVariableSpecialUtilities
     {
-        private readonly static Func<uint, object> DEFAULT_GETTER = (uint address) => "NOT IMPL";
+        private readonly static Func<uint, object> DEFAULT_GETTER = (uint address) => Double.NaN;
         private readonly static Func<object, uint, bool> DEFAULT_SETTER = (object value, uint address) => false;
 
         public static (Func<uint, object> getter, Func<object, uint, bool> setter) CreateGetterSetterFunctions(string specialType)
