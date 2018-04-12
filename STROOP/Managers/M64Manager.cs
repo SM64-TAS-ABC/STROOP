@@ -65,6 +65,8 @@ namespace STROOP.Managers
 
             _gui.ComboBoxFrameInputRelation.DataSource = Enum.GetValues(typeof(FrameInputRelationType));
             _gui.ComboBoxFrameInputRelation.SelectedItem = M64InputFrame.FrameInputRelation;
+
+            _gui.ButtonQuickDuplicationDuplicate.Click += (sender, e) => PerformQuickDuplication();
         }
 
         private void DeleteRows()
@@ -256,6 +258,29 @@ namespace STROOP.Managers
 
             return MessageBox.Show("Do you want to save changes?", "Save Changes",
                 MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+        }
+
+        private void PerformQuickDuplication()
+        {
+            int? iter1StartObserved = ParsingUtilities.ParseIntNullable(
+                _gui.TextBoxQuickDuplication1stIterationStart.Text);
+            int? iter2StartObserved = ParsingUtilities.ParseIntNullable(
+                _gui.TextBoxQuickDuplication2ndIterationStart.Text);
+            int? totalIters = ParsingUtilities.ParseIntNullable(
+                _gui.TextBoxQuickDuplicationTotalIterations.Text);
+            if (!iter1StartObserved.HasValue ||
+                !iter2StartObserved.HasValue ||
+                !totalIters.HasValue) return;
+
+            int iter1Start = iter1StartObserved.Value - 1;
+            int iter2Start = iter2StartObserved.Value - 1;
+            int multiplicity = totalIters.Value - 1;
+            int iter1End = iter2Start - 1;
+
+            M64CopiedData copiedData = M64CopiedData.CreateCopiedData(
+                _gui.DataGridViewInputs, _m64File.CurrentFileName,
+                iter1Start, iter1End, true /* useRow */);
+            _m64File.Paste(copiedData, iter2Start, true /* insert */, multiplicity);
         }
 
         private void UpdateTableSettings()
