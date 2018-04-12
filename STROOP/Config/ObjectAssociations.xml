@@ -3212,7 +3212,7 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToHome">Dist Obj to Home</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x14C" base="Object">State</Data>
-    <Data groupList="ObjectSpecific" type="uint" offset="0x108" base="Object" useHex="true">Spiraling</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x10A" base="Object">Target Yaw Velocity</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0xDA" base="Object" subclass="Angle">Yaw Velocity</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0xCA" base="Object" subclass="Angle">Yaw Moving</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="AngleObjectToHome" subclass="Angle" type="ushort">Angle Obj to Home</Data>
@@ -3237,7 +3237,7 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToHome">Dist Obj to Home</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x14C" base="Object">State</Data>
-    <Data groupList="ObjectSpecific" type="uint" offset="0x108" base="Object" useHex="true">Spiraling</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x10A" base="Object">Target Yaw Velocity</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0xDA" base="Object" subclass="Angle">Yaw Velocity</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0xCA" base="Object" subclass="Angle">Yaw Moving</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="AngleObjectToHome" subclass="Angle" type="ushort">Angle Obj to Home</Data>
