@@ -34,8 +34,8 @@ namespace STROOP.Managers
 
             _gui.DataGridViewInputs.DataError += (sender, e) => _gui.DataGridViewInputs.CancelEdit();
             _gui.DataGridViewInputs.SelectionChanged += (sender, e) => UpdateSelectionTextboxes();
-            _gui.DataGridViewInputs.CellContentClick += (sender, e) =>
-                _gui.DataGridViewInputs.CommitEdit(new DataGridViewDataErrorContexts());
+            //_gui.DataGridViewInputs.CellContentClick += (sender, e) =>
+            //    _gui.DataGridViewInputs.CommitEdit(new DataGridViewDataErrorContexts());
 
             _m64File = new M64File(_gui);
             _gui.DataGridViewInputs.DataSource = _m64File.Inputs;
