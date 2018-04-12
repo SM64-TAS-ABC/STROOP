@@ -62,6 +62,7 @@ namespace STROOP.Managers
 
             _gui.ListBoxCopied.Items.Add(M64CopiedData.OneEmptyFrame);
             _gui.ListBoxCopied.SelectedItem = M64CopiedData.OneEmptyFrame;
+            _gui.ListBoxCopied.KeyDown += (sender, e) => ListBoxCopied_KeyDown();
 
             _gui.ComboBoxFrameInputRelation.DataSource = Enum.GetValues(typeof(FrameInputRelationType));
             _gui.ComboBoxFrameInputRelation.SelectedItem = M64InputFrame.FrameInputRelation;
@@ -258,6 +259,19 @@ namespace STROOP.Managers
 
             return MessageBox.Show("Do you want to save changes?", "Save Changes",
                 MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+        }
+
+        private void ListBoxCopied_KeyDown()
+        {
+            if (KeyboardUtilities.IsDeletishKeyHeld())
+            {
+                M64CopiedData copiedData = _gui.ListBoxCopied.SelectedItem as M64CopiedData;
+                if (copiedData == null || copiedData == M64CopiedData.OneEmptyFrame) return;
+                int index = _gui.ListBoxCopied.SelectedIndex;
+                _gui.ListBoxCopied.Items.Remove(copiedData);
+                if (index == _gui.ListBoxCopied.Items.Count) index--;
+                _gui.ListBoxCopied.SelectedIndex = index;
+            }
         }
 
         private void PerformQuickDuplication()
