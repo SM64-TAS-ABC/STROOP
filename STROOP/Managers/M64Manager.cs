@@ -79,10 +79,11 @@ namespace STROOP.Managers
         {
             M64CopiedData copiedData = _gui.ListBoxCopied.SelectedItem as M64CopiedData;
             if (copiedData == null) return;
-            int pasteIndex = ControlUtilities.GetMinSelectedRowIndex(_gui.DataGridViewInputs) ?? 0;
+            int? pasteIndex = ParsingUtilities.ParseIntNullable(_gui.TextBoxSelectionStartFrame.Text);
+            if (!pasteIndex.HasValue) return;
             int? multiplicity = ParsingUtilities.ParseIntNullable(_gui.TextBoxPasteMultiplicity.Text);
             if (!multiplicity.HasValue) return;
-            _m64File.Paste(copiedData, pasteIndex, insert, multiplicity.Value);
+            _m64File.Paste(copiedData, pasteIndex.Value, insert, multiplicity.Value);
         }
 
         private void CopyData(bool useRow)
