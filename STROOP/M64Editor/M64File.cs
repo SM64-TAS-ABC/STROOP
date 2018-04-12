@@ -13,6 +13,7 @@ using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using STROOP.Structs.Gui;
 using System.Drawing;
+using STROOP.Utilities;
 
 namespace STROOP.M64Editor
 {
@@ -154,11 +155,11 @@ namespace STROOP.M64Editor
             Header.NumInputs = Inputs.Count;
             RefreshInputFrames(startIndex);
             _gui.DataGridViewInputs.Refresh();
-            Config.M64Manager.UpdateSelectionTextboxes();
         }
 
         public void Paste(M64CopiedData copiedData, int index, bool insert, int multiplicity)
         {
+            index = MoreMath.Clamp(index, 0, Inputs.Count);
             int pasteCount = copiedData.TotalFrames * multiplicity;
             if (insert)
             {
@@ -181,7 +182,6 @@ namespace STROOP.M64Editor
             Header.NumInputs = Inputs.Count;
             RefreshInputFrames(index);
             _gui.DataGridViewInputs.Refresh();
-            Config.M64Manager.UpdateSelectionTextboxes();
         }
 
         private void RefreshInputFrames(int startIndex = 0)
