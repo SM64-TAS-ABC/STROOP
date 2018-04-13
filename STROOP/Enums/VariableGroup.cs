@@ -18,9 +18,11 @@ namespace STROOP.Structs
         ObjectSpecific,
         Custom,
 
-        Trajectory,
         Collision,
         Movement,
+        Transformation,
+
+        Trajectory,
         TAS,
         Point,
         Hacks,
