@@ -2856,7 +2856,7 @@
     <Data groupList="ObjectSpecific" type="byte" offset="0x77" base="Object" subclass="Boolean">Mario Touching</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF7" base="Object" subclass="Boolean">Has Moved</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xF0" base="Object">Appearance</Data>
-    <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Box Timer</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Inactivity Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004244" name="Sliding Snow Mound">
     <SpawnCode gfxId="0x36"/>
