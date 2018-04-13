@@ -202,6 +202,8 @@
   <Data groupList="Basic" type="uint" offset="0x1CC" base="Object" useHex="true">Release Status</Data>
   <Data groupList="Basic" type="uint" offset="0x134" base="Object" useHex="true">Interaction Status</Data>
 
+  <Data groupList="Advanced" type="ushort" offset="0x74" base="Object" useHex="true">Loaded</Data>
+
   <Data groupList="Basic" type="int" offset="0x144" base="Object">Subtype</Data>
   <Data groupList="Basic" type="int" offset="0x14C" base="Object">State</Data>
   <Data groupList="Basic" type="int" offset="0x154" base="Object">Timer</Data>
