@@ -198,8 +198,10 @@
   <Data groupList="Basic" type="float" offset="0x164" base="Object" coord="X">Home X</Data>
   <Data groupList="Basic" type="float" offset="0x168" base="Object" coord="Y">Home Y</Data>
   <Data groupList="Basic" type="float" offset="0x16C" base="Object" coord="Z">Home Z</Data>
-  
+
+  <Data groupList="Advanced" type="uint" offset="0x1D4" base="Object" useHex="true">Initial Release Status</Data>
   <Data groupList="Basic" type="uint" offset="0x1CC" base="Object" useHex="true">Release Status</Data>
+  <Data groupList="Advanced" type="int" offset="0x1D0" base="Object">Stack Index</Data>
   <Data groupList="Basic" type="uint" offset="0x134" base="Object" useHex="true">Interaction Status</Data>
 
   <Data groupList="Advanced" type="ushort" offset="0x74" base="Object" useHex="true">Loaded</Data>
