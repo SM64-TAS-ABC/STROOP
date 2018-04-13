@@ -394,7 +394,7 @@ namespace STROOP
         {
             Invoke(new Action(() =>
             {
-                Config.Version = (RomVersion)comboBoxRomVersion.SelectedItem;
+                RomVersionConfig.Version = (RomVersion)comboBoxRomVersion.SelectedItem;
                 Config.Stream.Readonly = (ReadWriteMode)comboBoxReadWriteMode.SelectedItem == ReadWriteMode.ReadOnly;
 
                 DataModels.Update();

@@ -30,11 +30,11 @@ namespace STROOP.Structs.Configurations
         public static readonly short StandardCoins = 0;
         public static readonly short StandardStars = 120;
 
-        public static uint FunctionEnableCoinDisplayAddress { get { return Config.SwitchRomVersion(FunctionEnableCoinDisplayAddressUS, FunctionEnableCoinDisplayAddressJP); } }
+        public static uint FunctionEnableCoinDisplayAddress { get { return RomVersionConfig.Switch(FunctionEnableCoinDisplayAddressUS, FunctionEnableCoinDisplayAddressJP); } }
         public static readonly uint FunctionEnableCoinDisplayAddressUS = 0x8024B19C;
         public static readonly uint FunctionEnableCoinDisplayAddressJP = 0x8024B01C;
 
-        public static uint FunctionDisableCoinDisplayAddress { get { return Config.SwitchRomVersion(FunctionDisableCoinDisplayAddressUS, FunctionDisableCoinDisplayAddressJP); } }
+        public static uint FunctionDisableCoinDisplayAddress { get { return RomVersionConfig.Switch(FunctionDisableCoinDisplayAddressUS, FunctionDisableCoinDisplayAddressJP); } }
         public static readonly uint FunctionDisableCoinDisplayAddressUS = 0x8024B1B4;
         public static readonly uint FunctionDisableCoinDisplayAddressJP = 0x8024B034;
     }

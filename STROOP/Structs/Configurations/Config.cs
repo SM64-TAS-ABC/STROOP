@@ -10,39 +10,6 @@ namespace STROOP.Structs.Configurations
 {
     public static class Config
     {
-        public static RomVersion Version = RomVersion.US;
-        public static uint SwitchRomVersion(uint? valUS = null, uint? valJP = null, uint? valPAL = null)
-        {
-            switch (Version)
-            {
-                case RomVersion.US:
-                    if (valUS.HasValue) return valUS.Value;
-                    break;
-                case RomVersion.JP:
-                    if (valJP.HasValue) return valJP.Value;
-                    break;
-                case RomVersion.PAL:
-                    if (valPAL.HasValue) return valPAL.Value;
-                    break;
-            }
-            return 0;
-        }
-        public static ushort SwitchRomVersion(ushort? valUS = null, ushort? valJP = null, ushort? valPAL = null)
-        {
-            switch (Version)
-            {
-                case RomVersion.US:
-                    if (valUS.HasValue) return valUS.Value;
-                    break;
-                case RomVersion.JP:
-                    if (valJP.HasValue) return valJP.Value;
-                    break;
-                case RomVersion.PAL:
-                    if (valPAL.HasValue) return valPAL.Value;
-                    break;
-            }
-            return 0;
-        }
         public static uint RamSize;
 
         public static List<Emulator> Emulators = new List<Emulator>();

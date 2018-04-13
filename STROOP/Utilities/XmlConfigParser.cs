@@ -76,7 +76,7 @@ namespace STROOP.Utilities
                         }
                         break;
                     case "RomVersion":
-                        Config.Version = (RomVersion)Enum.Parse(typeof(RomVersion), element.Value);
+                        RomVersionConfig.Version = (RomVersion)Enum.Parse(typeof(RomVersion), element.Value);
                         break;
                     case "RefreshRateFreq":
                         RefreshRateConfig.RefreshRateFreq = uint.Parse(element.Value);

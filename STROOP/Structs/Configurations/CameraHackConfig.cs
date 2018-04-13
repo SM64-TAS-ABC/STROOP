@@ -8,7 +8,7 @@ namespace STROOP.Structs.Configurations
 {
     public static class CameraHackConfig
     {
-        public static uint CameraHackStructAddress { get { return Config.SwitchRomVersion(CameraHackStructAddressUS, CameraHackStructAddressJP); } }
+        public static uint CameraHackStructAddress { get { return RomVersionConfig.Switch(CameraHackStructAddressUS, CameraHackStructAddressJP); } }
         public static readonly uint CameraHackStructAddressUS = 0x803E0000;
         public static readonly uint CameraHackStructAddressJP = 0x803E0000;
 

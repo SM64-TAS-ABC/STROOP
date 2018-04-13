@@ -246,7 +246,7 @@ namespace STROOP.Models
 
             BehaviorCriteria = new BehaviorCriteria()
             {
-                BehaviorAddress = Config.SwitchRomVersion(SegmentedBehavior, Config.ObjectAssociations.AlignJPBehavior(SegmentedBehavior)),
+                BehaviorAddress = RomVersionConfig.Switch(SegmentedBehavior, Config.ObjectAssociations.AlignJPBehavior(SegmentedBehavior)),
                 GfxId = _gfxId,
                 SubType = _subType,
                 Appearance = _appearance

@@ -210,7 +210,7 @@ namespace STROOP.Utilities
         {
             var offset = segmentedAddress & 0xFFFFFF;
             var segment = (segmentedAddress >> 24);
-            return offset + Config.Stream.GetUInt32(4 * segment + Config.SwitchRomVersion(0x33B400, 0x33A090));
+            return offset + Config.Stream.GetUInt32(4 * segment + RomVersionConfig.Switch(0x33B400, 0x33A090));
         }
     }
 }

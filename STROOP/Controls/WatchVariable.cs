@@ -44,7 +44,7 @@ namespace STROOP.Controls
         {
             get
             {
-                switch (Config.Version)
+                switch (RomVersionConfig.Version)
                 {
                     case RomVersion.US:
                         if (OffsetUS.HasValue) return OffsetUS.Value;

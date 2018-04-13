@@ -125,7 +125,7 @@ namespace STROOP.Managers
             _treeView.Nodes.Clear();
 
             // A pointer to the root node of the GFX tree is stored at offset 0x04 in a certain struct
-            var StructWithGfxRoot = Config.Stream.GetUInt32(Config.SwitchRomVersion(0x32DDCC, 0x32CE6C));
+            var StructWithGfxRoot = Config.Stream.GetUInt32(RomVersionConfig.Switch(0x32DDCC, 0x32CE6C));
 
             if (StructWithGfxRoot > 0x80000000u)
             {
@@ -379,7 +379,7 @@ namespace STROOP.Managers
 
         public override string Name {
             get {
-                var currentDict = Config.Version == Structs.RomVersion.US ? DictionaryUS : DictionaryJP;
+                var currentDict = RomVersionConfig.Version == Structs.RomVersion.US ? DictionaryUS : DictionaryJP;
                 var function = Config.Stream.GetUInt32(Address + 0x14);
                 if (currentDict.ContainsKey(function)) return currentDict[function];
                 return "Geo Layout script";

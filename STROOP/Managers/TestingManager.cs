@@ -606,7 +606,7 @@ namespace STROOP.Managers
             {
                 return new VarStatePenguin()
                 {
-                    Progress = TableConfig.RacingPenguinWaypoints.GetProgress(Config.SwitchRomVersion(0x80348448, 0x803451F8)),
+                    Progress = TableConfig.RacingPenguinWaypoints.GetProgress(RomVersionConfig.Switch(0x80348448, 0x803451F8)),
                 };
             }
 
@@ -761,7 +761,7 @@ namespace STROOP.Managers
                     _currentTimer = Config.Stream.GetInt32(marioObjAddress + ObjectConfig.TimerOffset);
                     break;
                 case VarToRecord.Penguin:
-                    _currentTimer = Config.Stream.GetInt32(Config.SwitchRomVersion(0x803493DC, 0x803463EC));
+                    _currentTimer = Config.Stream.GetInt32(RomVersionConfig.Switch(0x803493DC, 0x803463EC));
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
