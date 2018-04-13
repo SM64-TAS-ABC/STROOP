@@ -707,9 +707,9 @@ namespace STROOP.Managers
                 uint? objAddress = ParsingUtilities.ParseHexNullable(_betterTextboxObjAtHOLP.Text);
                 if (objAddress.HasValue)
                 {
-                    float holpX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPXOffset);
-                    float holpY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPYOffset);
-                    float holpZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPZOffset);
+                    float holpX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpXOffset);
+                    float holpY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpYOffset);
+                    float holpZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpZOffset);
 
                     Config.Stream.SetValue(holpX, objAddress.Value + ObjectConfig.XOffset);
                     Config.Stream.SetValue(holpY, objAddress.Value + ObjectConfig.YOffset);
@@ -950,9 +950,9 @@ namespace STROOP.Managers
         {
             _betterTextboxStateTransferVar1Current.Text = Config.Stream.GetInt32(MiscConfig.GlobalTimerAddress).ToString();
             _betterTextboxStateTransferVar2Current.Text = Config.Stream.GetUInt16(MiscConfig.RngAddress).ToString();
-            _betterTextboxStateTransferVar3Current.Text = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPXOffset).ToString();
-            _betterTextboxStateTransferVar4Current.Text = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPYOffset).ToString();
-            _betterTextboxStateTransferVar5Current.Text = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPZOffset).ToString();
+            _betterTextboxStateTransferVar3Current.Text = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpXOffset).ToString();
+            _betterTextboxStateTransferVar4Current.Text = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpYOffset).ToString();
+            _betterTextboxStateTransferVar5Current.Text = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpZOffset).ToString();
             _betterTextboxStateTransferVar6Current.Text = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.SlidingYawOffset).ToString();
             _betterTextboxStateTransferVar7Current.Text = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.TwirlYawOffset).ToString();
             _betterTextboxStateTransferVar8Current.Text =
@@ -995,13 +995,13 @@ namespace STROOP.Managers
             if (value2.HasValue) Config.Stream.SetValue(value2.Value, MiscConfig.RngAddress);
 
             float? value3 = ParsingUtilities.ParseFloatNullable(_betterTextboxStateTransferVar3Saved.Text);
-            if (value3.HasValue) Config.Stream.SetValue(value3.Value, MarioConfig.StructAddress + MarioConfig.HOLPXOffset);
+            if (value3.HasValue) Config.Stream.SetValue(value3.Value, MarioConfig.StructAddress + MarioConfig.HolpXOffset);
 
             float? value4 = ParsingUtilities.ParseFloatNullable(_betterTextboxStateTransferVar4Saved.Text);
-            if (value4.HasValue) Config.Stream.SetValue(value4.Value, MarioConfig.StructAddress + MarioConfig.HOLPYOffset);
+            if (value4.HasValue) Config.Stream.SetValue(value4.Value, MarioConfig.StructAddress + MarioConfig.HolpYOffset);
 
             float? value5 = ParsingUtilities.ParseFloatNullable(_betterTextboxStateTransferVar5Saved.Text);
-            if (value5.HasValue) Config.Stream.SetValue(value5.Value, MarioConfig.StructAddress + MarioConfig.HOLPZOffset);
+            if (value5.HasValue) Config.Stream.SetValue(value5.Value, MarioConfig.StructAddress + MarioConfig.HolpZOffset);
 
             ushort? value6 = ParsingUtilities.ParseUShortNullable(_betterTextboxStateTransferVar6Saved.Text);
             if (value6.HasValue) Config.Stream.SetValue(value6.Value, MarioConfig.StructAddress + MarioConfig.SlidingYawOffset);

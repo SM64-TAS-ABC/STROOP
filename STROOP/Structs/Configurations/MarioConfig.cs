@@ -32,9 +32,9 @@ namespace STROOP.Structs
         public static readonly uint SlidingSpeedZOffset = 0x5C;
         public static readonly uint SlidingYawOffset = 0x38;
 
-        public static readonly uint HOLPXOffset = 0x258;
-        public static readonly uint HOLPYOffset = 0x25C;
-        public static readonly uint HOLPZOffset = 0x260;
+        public static readonly uint HolpXOffset = 0x258;
+        public static readonly uint HolpYOffset = 0x25C;
+        public static readonly uint HolpZOffset = 0x260;
 
         public static uint StoodOnObjectPointerAddress { get { return Config.SwitchRomVersion(StoodOnObjectPointerAddressUS, StoodOnObjectPointerAddressJP); } }
         public static readonly uint StoodOnObjectPointerAddressUS = 0x80330E34;

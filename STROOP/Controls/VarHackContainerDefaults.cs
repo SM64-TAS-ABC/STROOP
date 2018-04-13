@@ -77,18 +77,18 @@ namespace STROOP.Structs
                     break;
                 case 7:
                     VarName = "HOLP X ";
-                    Address = MarioConfig.StructAddress + MarioConfig.HOLPXOffset;
+                    Address = MarioConfig.StructAddress + MarioConfig.HolpXOffset;
                     MemoryType = typeof(float);
                     break;
                 case 8:
                     VarName = "HOLP Y ";
-                    Address = MarioConfig.StructAddress + MarioConfig.HOLPYOffset;
+                    Address = MarioConfig.StructAddress + MarioConfig.HolpYOffset;
                     MemoryType = typeof(float);
                     break;
                 case 9:
                 default:
                     VarName = "HOLP Z ";
-                    Address = MarioConfig.StructAddress + MarioConfig.HOLPZOffset;
+                    Address = MarioConfig.StructAddress + MarioConfig.HolpZOffset;
                     MemoryType = typeof(float);
                     break;
             }

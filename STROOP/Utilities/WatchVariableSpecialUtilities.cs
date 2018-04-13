@@ -1453,7 +1453,52 @@ namespace STROOP.Structs
                         return Config.Stream.SetValue((float)newPeakHeight, MarioConfig.StructAddress + MarioConfig.PeakHeightOffset);
                     };
                     break;
-                    
+
+                case "MarioDistanceToHolp":
+                    getterFunction = (uint dummy) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        Position holpPos = GetHolpPosition();
+                        double dist = MoreMath.GetDistanceBetween(
+                            marioPos.X, marioPos.Y, marioPos.Z, holpPos.X, holpPos.Y, holpPos.Z);
+                        return dist;
+                    };
+                    setterFunction = (object objectValue, uint dummy) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        Position holpPos = GetHolpPosition();
+                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
+                        if (!distAwayNullable.HasValue) return false;
+                        double distAway = distAwayNullable.Value;
+                        (double newHolpX, double newHolpY, double newHolpZ) =
+                            MoreMath.ExtrapolateLine3D(
+                                marioPos.X, marioPos.Y, marioPos.Z, holpPos.X, holpPos.Y, holpPos.Z, distAway);
+                        return SetHolpPosition(newHolpX, newHolpY, newHolpZ);
+                    };
+                    break;
+
+                case "MarioHDistanceToHolp":
+                    getterFunction = (uint dummy) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        Position holpPos = GetHolpPosition();
+                        double hDist = MoreMath.GetDistanceBetween(
+                            marioPos.X, marioPos.Z, holpPos.X, holpPos.Z);
+                        return hDist;
+                    };
+                    setterFunction = (object objectValue, uint dummy) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        Position holpPos = GetHolpPosition();
+                        double? distAway = ParsingUtilities.ParseDoubleNullable(objectValue);
+                        if (!distAway.HasValue) return false;
+                        (double newHolpX, double newHolpZ) =
+                            MoreMath.ExtrapolateLineHorizontally(
+                                marioPos.X, marioPos.Z, holpPos.X, holpPos.Z, distAway.Value);
+                        return SetHolpPosition(newHolpX, null, newHolpZ);
+                    };
+                    break;
+
                 // HUD vars
 
                 case "HudTimeText":
@@ -3796,6 +3841,23 @@ namespace STROOP.Structs
             if (y.HasValue) success &= Config.Stream.SetValue((float)y.Value, MarioConfig.StructAddress + MarioConfig.YOffset);
             if (z.HasValue) success &= Config.Stream.SetValue((float)z.Value, MarioConfig.StructAddress + MarioConfig.ZOffset);
             if (angle.HasValue) success &= Config.Stream.SetValue(angle.Value, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            return success;
+        }
+
+        private static Position GetHolpPosition()
+        {
+            float holpX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpXOffset);
+            float holpY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpYOffset);
+            float holpZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpZOffset);
+            return new Position(holpX, holpY, holpZ);
+        }
+
+        private static bool SetHolpPosition(double? x, double? y, double? z)
+        {
+            bool success = true;
+            if (x.HasValue) success &= Config.Stream.SetValue((float)x.Value, MarioConfig.StructAddress + MarioConfig.HolpXOffset);
+            if (y.HasValue) success &= Config.Stream.SetValue((float)y.Value, MarioConfig.StructAddress + MarioConfig.HolpYOffset);
+            if (z.HasValue) success &= Config.Stream.SetValue((float)z.Value, MarioConfig.StructAddress + MarioConfig.HolpZOffset);
             return success;
         }
 

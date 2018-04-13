@@ -50,6 +50,8 @@
   <Data groupList="Basic" type="float" offset="0x258" base="Mario" coord="X">HOLP X</Data>
   <Data groupList="Basic" type="float" offset="0x25C" base="Mario" coord="Y">HOLP Y</Data>
   <Data groupList="Basic" type="float" offset="0x260" base="Mario" coord="Z">HOLP Z</Data>
+  <Data groupList="Advanced" base="None" specialType="MarioHDistanceToHolp">HDist Mario to HOLP</Data>
+  <Data groupList="Advanced" base="None" specialType="MarioDistanceToHolp">Dist Mario to HOLP</Data>
   <Data groupList="Basic" type="byte" offset="0x24A" base="Mario">HOLP Type</Data>
   <Data groupList="Basic" type="uint" offset="0x04" base="Mario" subclass="Boolean" mask="0x10">Hat on Head</Data>
   <Data groupList="Basic" type="uint" offset="0x04" base="Mario" subclass="Boolean" mask="0x20">Hat in Hand</Data>

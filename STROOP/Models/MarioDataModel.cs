@@ -84,7 +84,7 @@ namespace STROOP.Models
             get => _holpX;
             set
             {
-                if (Config.Stream.SetValue(value, MarioConfig.StructAddress + MarioConfig.HOLPXOffset))
+                if (Config.Stream.SetValue(value, MarioConfig.StructAddress + MarioConfig.HolpXOffset))
                     _holpX = value;
             }
         }
@@ -95,7 +95,7 @@ namespace STROOP.Models
             get => _holpY;
             set
             {
-                if (Config.Stream.SetValue(value, MarioConfig.StructAddress + MarioConfig.HOLPYOffset))
+                if (Config.Stream.SetValue(value, MarioConfig.StructAddress + MarioConfig.HolpYOffset))
                     _holpY = value;
             }
         }
@@ -106,7 +106,7 @@ namespace STROOP.Models
             get => _holpZ;
             set
             {
-                if (Config.Stream.SetValue(value, MarioConfig.StructAddress + MarioConfig.HOLPZOffset))
+                if (Config.Stream.SetValue(value, MarioConfig.StructAddress + MarioConfig.HolpZOffset))
                     _holpZ = value;
             }
         }
@@ -337,9 +337,9 @@ namespace STROOP.Models
             _facingRoll = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingRollOffset);
 
             // Get holp position
-            _holpX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPXOffset);
-            _holpY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPYOffset);
-            _holpZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPZOffset);
+            _holpX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpXOffset);
+            _holpY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpYOffset);
+            _holpZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpZOffset);
 
             // Update triangles
             UInt32 floorTriangleAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);

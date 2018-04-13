@@ -593,9 +593,9 @@ namespace STROOP.Utilities
                         MarioConfig.StructAddress + MarioConfig.ZOffset)
                 };
 
-            float xDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPXOffset);
-            float yDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPYOffset);
-            float zDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPZOffset);
+            float xDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpXOffset);
+            float yDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpYOffset);
+            float zDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpZOffset);
 
             return ChangeValues(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
         }
@@ -605,9 +605,9 @@ namespace STROOP.Utilities
             List<TripleAddressAngle> posAddressAngles =
                 new List<TripleAddressAngle> {
                     new TripleAddressAngle(
-                        MarioConfig.StructAddress + MarioConfig.HOLPXOffset,
-                        MarioConfig.StructAddress + MarioConfig.HOLPYOffset,
-                        MarioConfig.StructAddress + MarioConfig.HOLPZOffset)
+                        MarioConfig.StructAddress + MarioConfig.HolpXOffset,
+                        MarioConfig.StructAddress + MarioConfig.HolpYOffset,
+                        MarioConfig.StructAddress + MarioConfig.HolpZOffset)
                 };
 
             float xDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
@@ -622,9 +622,9 @@ namespace STROOP.Utilities
             List<TripleAddressAngle> posAddressAngles =
                 new List<TripleAddressAngle> {
                     new TripleAddressAngle(
-                        MarioConfig.StructAddress + MarioConfig.HOLPXOffset,
-                        MarioConfig.StructAddress + MarioConfig.HOLPYOffset,
-                        MarioConfig.StructAddress + MarioConfig.HOLPZOffset,
+                        MarioConfig.StructAddress + MarioConfig.HolpXOffset,
+                        MarioConfig.StructAddress + MarioConfig.HolpYOffset,
+                        MarioConfig.StructAddress + MarioConfig.HolpZOffset,
                         Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset))
                 };
 
