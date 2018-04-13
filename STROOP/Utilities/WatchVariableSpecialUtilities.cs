@@ -982,18 +982,22 @@ namespace STROOP.Structs
                 case "BobombBloatSize":
                     getterFunction = (uint objAddress) =>
                     {
-                        float scale = Config.Stream.GetSingle(objAddress + ObjectConfig.ScaleWidthOffset);
-                        float bloatSize = (scale - 1) * 5;
+                        float hitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadius);
+                        float bloatSize = (hitboxRadius - 65) / 13;
                         return bloatSize;
                     };
                     setterFunction = (object objectValue, uint objAddress) =>
                     {
-                        double? bloatSizeNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
+                        float? bloatSizeNullable = ParsingUtilities.ParseFloatNullable(objectValue);
                         if (!bloatSizeNullable.HasValue) return false;
-                        double bloatSize = bloatSizeNullable.Value;
-                        float scale = (float)(bloatSize / 5 + 1);
+                        float bloatSize = bloatSizeNullable.Value;
+                        float hitboxRadius = bloatSize * 13 + 65;
+                        float hitboxHeight = bloatSize * 22.6f + 113;
+                        float scale = bloatSize / 5 + 1;
 
                         bool success = true;
+                        success &= Config.Stream.SetValue(hitboxRadius, objAddress + ObjectConfig.HitboxRadius);
+                        success &= Config.Stream.SetValue(hitboxHeight, objAddress + ObjectConfig.HitboxHeight);
                         success &= Config.Stream.SetValue(scale, objAddress + ObjectConfig.ScaleWidthOffset);
                         success &= Config.Stream.SetValue(scale, objAddress + ObjectConfig.ScaleHeightOffset);
                         success &= Config.Stream.SetValue(scale, objAddress + ObjectConfig.ScaleDepthOffset);
@@ -1004,18 +1008,23 @@ namespace STROOP.Structs
                 case "BobombRadius":
                     getterFunction = (uint objAddress) =>
                     {
-                        float scale = Config.Stream.GetSingle(objAddress + ObjectConfig.ScaleWidthOffset);
-                        float radius = 32 + scale * 65;
+                        float hitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadius);
+                        float radius = hitboxRadius + 32;
                         return radius;
                     };
                     setterFunction = (object objectValue, uint objAddress) =>
                     {
-                        double? radiusNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
+                        float? radiusNullable = ParsingUtilities.ParseFloatNullable(objectValue);
                         if (!radiusNullable.HasValue) return false;
-                        double radius = radiusNullable.Value;
-                        float scale = (float)((radius -32) / 65);
+                        float radius = radiusNullable.Value;
+                        float bloatSize = (radius - 97) / 13;
+                        float hitboxRadius = bloatSize * 13 + 65;
+                        float hitboxHeight = bloatSize * 22.6f + 113;
+                        float scale = bloatSize / 5 + 1;
 
                         bool success = true;
+                        success &= Config.Stream.SetValue(hitboxRadius, objAddress + ObjectConfig.HitboxRadius);
+                        success &= Config.Stream.SetValue(hitboxHeight, objAddress + ObjectConfig.HitboxHeight);
                         success &= Config.Stream.SetValue(scale, objAddress + ObjectConfig.ScaleWidthOffset);
                         success &= Config.Stream.SetValue(scale, objAddress + ObjectConfig.ScaleHeightOffset);
                         success &= Config.Stream.SetValue(scale, objAddress + ObjectConfig.ScaleDepthOffset);
@@ -1030,8 +1039,8 @@ namespace STROOP.Structs
                         Position objPos = GetObjectPosition(objAddress);
                         double hDist = MoreMath.GetDistanceBetween(
                             marioPos.X, marioPos.Z, objPos.X, objPos.Z);
-                        float scale = Config.Stream.GetSingle(objAddress + ObjectConfig.ScaleWidthOffset);
-                        float radius = 32 + scale * 65;
+                        float hitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadius);
+                        float radius = hitboxRadius + 32;
                         double spaceBetween = hDist - radius;
                         return spaceBetween;
                     };
@@ -1040,14 +1049,15 @@ namespace STROOP.Structs
                         double? spaceBetweenNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!spaceBetweenNullable.HasValue) return false;
                         double spaceBetween = spaceBetweenNullable.Value;
-                        float scale = Config.Stream.GetSingle(objAddress + ObjectConfig.ScaleWidthOffset);
-                        float radius = 32 + scale * 65;
+                        float hitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadius);
+                        float radius = hitboxRadius + 32;
                         double distAway = spaceBetween + radius;
 
                         Position marioPos = GetMarioPosition();
                         Position objPos = GetObjectPosition(objAddress);
                         (double newMarioX, double newMarioZ) =
-                            MoreMath.ExtrapolateLineHorizontally(objPos.X, objPos.Z, marioPos.X, marioPos.Z, distAway);
+                            MoreMath.ExtrapolateLineHorizontally(
+                                objPos.X, objPos.Z, marioPos.X, marioPos.Z, distAway);
                         return SetMarioPosition(newMarioX, null, newMarioZ);
                     };
                     break;
