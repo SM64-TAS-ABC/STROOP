@@ -288,7 +288,7 @@ namespace STROOP.Managers
                 subclass,
                 color,
                 null /* roundingLimit */,
-                type == "uint" || type == "ushort",
+                (type == "uint" || type == "ushort") ? true : (bool?)null,
                 null /* invertBool */,
                 null /* coordinate */,
                 new List<Structs.VariableGroup>());
