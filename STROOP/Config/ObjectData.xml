@@ -100,14 +100,18 @@
   
   <Data groupList="Intermediate" type="byte" offset="0x3" mask="0x10" base="Object" subclass="Boolean" invertBool="true">Visible</Data>
   <Data groupList="Intermediate" type="byte" offset="0x3" mask="0x01" base="Object" subclass="Boolean">Rendered</Data>
-  <Data groupList="Advanced" type="int" offset="0x8c" base="Object" subclass="Boolean" mask="0x00000200">Locked to Origin</Data>
   <Data groupList="Advanced" type="int" offset="0x8c" base="Object" subclass="Boolean" mask="0x00000001">Visual Pos Updates</Data>
   <Data groupList="Advanced" type="int" offset="0x8c" base="Object" subclass="Boolean" mask="0x00000008">Visual Angle Updates</Data>
   <Data groupList="Intermediate" type="byte" offset="0x3" mask="0x04" base="Object" subclass="Boolean">Face Camera</Data>
   <Data groupList="Advanced" type="int" offset="0x8c" base="Object" subclass="Boolean" mask="0x00000002">Forward Movement</Data>
   <Data groupList="Advanced" type="byte" offset="0x77" base="Object" subclass="Boolean">Mario Close</Data>
   <Data groupList="Advanced" type="int" offset="0x9C" base="Object">Tangible</Data>
-  
+
+  <Data groupList="Advanced" type="int" offset="0x8c" base="Object" subclass="Boolean" mask="0x00000200">Use Relative Pos</Data>
+  <Data groupList="Advanced" type="float" offset="0x138" base="Object" coord="X">Relative X</Data>
+  <Data groupList="Advanced" type="float" offset="0x13C" base="Object" coord="Y">Relative Y</Data>
+  <Data groupList="Advanced" type="float" offset="0x140" base="Object" coord="Z">Relative Z</Data>
+
   <Data groupList="Advanced,Collision" type="uint" offset="0x130" base="Object" useHex="true">Collision Type</Data>
   <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00000001">00 Hoot</Data>
   <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00000002">01 Grabbable</Data>
