@@ -270,7 +270,9 @@ namespace STROOP.Managers
         protected static WatchVariableControlPrecursor gfxProperty(string name, string type, uint offset, 
             Structs.WatchVariableSubclass subclass = Structs.WatchVariableSubclass.Number, uint? mask = null)
         {
-            Color col = (offset <= 0x13) ? Color.Beige : Color.PowderBlue;
+            Color color = (offset <= 0x13)
+                ? ColorUtilities.GetColorFromString("Yellow")
+                : ColorUtilities.GetColorFromString("LightBlue");
             WatchVariable watchVar = new WatchVariable(
                 type,
                 null /* specialType */,
@@ -284,7 +286,7 @@ namespace STROOP.Managers
                 name,
                 watchVar,
                 subclass,
-                col,
+                color,
                 null /* roundingLimit */,
                 type == "uint" || type == "ushort",
                 null /* invertBool */,
