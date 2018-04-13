@@ -2217,45 +2217,59 @@
   </Object>
   <Object behaviorScriptAddress="0x13002F60" name="Mario Spawner">
     <Image path="Mario Spawner.png"/>
+    <Data groupList="ObjectSpecific" base="Object" offset="0x188" type="short">ID</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002F64" name="Mario Spawner">
     <Image path="Mario Spawner.png"/>
+    <Data groupList="ObjectSpecific" base="Object" offset="0x188" type="short">ID</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002F68" name="Mario Spawner">
     <Image path="Mario Spawner.png"/>
+    <Data groupList="ObjectSpecific" base="Object" offset="0x188" type="short">ID</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002F6C" name="Mario Spawner">
     <Image path="Mario Spawner.png"/>
+    <Data groupList="ObjectSpecific" base="Object" offset="0x188" type="short">ID</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002F70" name="Mario Spawner">
     <Image path="Mario Spawner.png"/>
+    <Data groupList="ObjectSpecific" base="Object" offset="0x188" type="short">ID</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002F74" name="Mario Spawner">
     <Image path="Mario Spawner.png"/>
+    <Data groupList="ObjectSpecific" base="Object" offset="0x188" type="short">ID</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002F78" name="Mario Spawner">
     <Image path="Mario Spawner.png"/>
+    <Data groupList="ObjectSpecific" base="Object" offset="0x188" type="short">ID</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002F7C" name="Mario Spawner">
     <Image path="Mario Spawner.png"/>
+    <Data groupList="ObjectSpecific" base="Object" offset="0x188" type="short">ID</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002F80" name="Mario Spawner">
     <Image path="Mario Spawner.png"/>
+    <Data groupList="ObjectSpecific" base="Object" offset="0x188" type="short">ID</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002F84" name="Mario Spawner">
     <Image path="Mario Spawner.png"/>
+    <Data groupList="ObjectSpecific" base="Object" offset="0x188" type="short">ID</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002F8C" name="Mario Spawner">
     <Image path="Mario Spawner.png"/>
+    <Data groupList="ObjectSpecific" base="Object" offset="0x188" type="short">ID</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002F88" name="Mario Spawner">
     <Image path="Mario Spawner.png"/>
+    <Data groupList="ObjectSpecific" base="Object" offset="0x188" type="short">ID</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002F90" name="Mario Spawner">
     <Image path="Mario Spawner.png"/>
+    <Data groupList="ObjectSpecific" base="Object" offset="0x188" type="short">ID</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002F94" name="Mario Spawner">
     <Image path="Mario Spawner.png"/>
+    <Data groupList="ObjectSpecific" base="Object" offset="0x188" type="short">ID</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002FC0" name="Yellow Background">
     <Image path="File Yellow Background.png"/>
