@@ -11,6 +11,11 @@ namespace STROOP.Structs.Configurations
     public static class RomVersionConfig
     {
         public static RomVersion Version = RomVersion.US;
+
+        public static uint RomVersionTellAddress = 0x80322B24;
+        public static uint RomVersionTellValueUS = 0x8FA6001C;
+        public static uint RomVersionTellValueJP = 0x46006004;
+
         public static uint Switch(uint? valUS = null, uint? valJP = null, uint? valPAL = null)
         {
             switch (Version)
