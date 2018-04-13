@@ -16,6 +16,20 @@ namespace STROOP.Structs.Configurations
         public static uint RomVersionTellValueUS = 0x8FA6001C;
         public static uint RomVersionTellValueJP = 0x46006004;
 
+        public static void UpdateRomVersionUsingTell()
+        {
+            RomVersion? romVersion = GetRomVersionUsingTell();
+            if (romVersion.HasValue) Version = romVersion.Value;
+        }
+
+        private static RomVersion? GetRomVersionUsingTell()
+        {
+            uint tell = Config.Stream.GetUInt32(RomVersionTellAddress);
+            if (tell == RomVersionTellValueUS) return RomVersion.US;
+            if (tell == RomVersionTellValueJP) return RomVersion.JP;
+            return null;
+        }
+
         public static uint Switch(uint? valUS = null, uint? valJP = null, uint? valPAL = null)
         {
             switch (Version)
