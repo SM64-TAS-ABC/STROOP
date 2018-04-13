@@ -142,6 +142,16 @@ namespace STROOP.Controls
             {
                 throw new ArgumentOutOfRangeException("coordinate cannot be used with var subclass String");
             }
+
+            if (UseHex.HasValue && UseHex.Value == false)
+            {
+                throw new ArgumentOutOfRangeException("setting useHex to false is redundant");
+            }
+
+            if (InvertBool.HasValue && InvertBool.Value == false)
+            {
+                throw new ArgumentOutOfRangeException("setting invertBool to false is redundant");
+            }
         }
 
         public WatchVariableControl CreateWatchVariableControl(
