@@ -17,45 +17,47 @@
   <Data type="byte" offsetUS="0x8032D5F5" offsetJP="0x8032C6B5" base="Relative">Demo Counter</Data>
   <Data type="short" offsetUS="0x801A7C30" offsetJP="0x801A7AF0" base="Relative">Demo Timer</Data>
   <Data type="byte" offsetUS="0x80226B7F" offsetJP="0x80226D7F" base="Relative">Sound Selection</Data>
-  <Data type="short" offsetUS="0x801A7D1C" offsetJP="0x801A7BDC" base="Relative">Hand X</Data>
-  <Data type="short" offsetUS="0x801A7D20" offsetJP="0x801A7BE0" base="Relative">Hand Y</Data>
-  <Data type="byte" offset="0x8033161C" base="Relative" subclass="Boolean" mask="0x01">Mario Cam Selected</Data>
-  <Data type="byte" offset="0x8033161C" base="Relative" subclass="Boolean" mask="0x02">Fixed Cam Selected</Data>
-  <Data type="short" offsetUS="0x80361258" offsetJP="0x8035FEE8" base="Relative">TTC Speed Setting</Data>
-  <Data base="None" specialType="TtcSpeedSettingDescription" subclass="String">TTC Speed Desc</Data>
+  
+  <Data type="short" offsetUS="0x801A7D1C" offsetJP="0x801A7BDC" base="Relative" color="Yellow">Hand X</Data>
+  <Data type="short" offsetUS="0x801A7D20" offsetJP="0x801A7BE0" base="Relative" color="Yellow">Hand Y</Data>
+  <Data type="byte" offset="0x8033161C" base="Relative" subclass="Boolean" mask="0x01" color="Yellow">Mario Cam Selected</Data>
+  <Data type="byte" offset="0x8033161C" base="Relative" subclass="Boolean" mask="0x02" color="Yellow">Fixed Cam Selected</Data>
+  <Data type="short" offsetUS="0x80361258" offsetJP="0x8035FEE8" base="Relative" color="Yellow">TTC Speed Setting</Data>
+  <Data base="None" specialType="TtcSpeedSettingDescription" subclass="String" color="Yellow">TTC Speed Desc</Data>
 
-  <Data type="short" offsetUS="0x80361414" offsetJP="0x803600A4" base="Relative">Snow Counter</Data>
-  <Data type="short" offsetUS="0x80361416" offsetJP="0x803600A6" base="Relative">Snow Max</Data>
-  <Data type="int" offsetUS="0x80361408" offsetJP="0x80360098" base="Relative" coord="X">Snow Center X</Data>
-  <Data type="int" offsetUS="0x8036140C" offsetJP="0x8036009C" base="Relative" coord="Y">Snow Center Y</Data>
-  <Data type="int" offsetUS="0x80361410" offsetJP="0x803600A0" base="Relative" coord="Z">Snow Center Z</Data>
-  <Data type="short" offsetUS="0x80180B06" offsetJP="0x8017DC86" base="Relative">JRB Ship Snow Type</Data>
-  <Data type="short" offsetUS="0x80184E8A" offsetJP="0x80181FFA" base="Relative">CCM Snow Type</Data>
-  <Data type="short" offsetUS="0x80170CF6" offsetJP="0x8016DE76" base="Relative">SL Snow Type</Data>
+  <Data type="short" offsetUS="0x80361414" offsetJP="0x803600A4" base="Relative" color="Green">Snow Counter</Data>
+  <Data type="short" offsetUS="0x80361416" offsetJP="0x803600A6" base="Relative" color="Green">Snow Max</Data>
+  <Data type="int" offsetUS="0x80361408" offsetJP="0x80360098" base="Relative" coord="X" color="Green">Snow Center X</Data>
+  <Data type="int" offsetUS="0x8036140C" offsetJP="0x8036009C" base="Relative" coord="Y" color="Green">Snow Center Y</Data>
+  <Data type="int" offsetUS="0x80361410" offsetJP="0x803600A0" base="Relative" coord="Z" color="Green">Snow Center Z</Data>
+  <Data type="short" offsetUS="0x80180B06" offsetJP="0x8017DC86" base="Relative" color="Green">JRB Ship Snow Type</Data>
+  <Data type="short" offsetUS="0x80184E8A" offsetJP="0x80181FFA" base="Relative" color="Green">CCM Snow Type</Data>
+  <Data type="short" offsetUS="0x80170CF6" offsetJP="0x8016DE76" base="Relative" color="Green">SL Snow Type</Data>
 
-  <Data type="byte" offsetUS="0x801A81A4" offsetJP="0x801A8014" base="Relative">Mission Selected</Data>
-  <Data type="short" offsetUS="0x8033BAC8" offsetJP="0x8033A758" base="Relative">Mission Layout</Data>
-  <Data type="byte" offsetUS="0x80331620" offsetJP="0x80330534" base="Relative">Mission Name</Data>
-  <Data type="byte" offsetUS="0x8032DD84" offsetJP="0x8032CE24" base="Relative">Last Star</Data>
-  <Data type="byte" offsetUS="0x8032DD80" offsetJP="0x8032CE20" base="Relative">Last Star Course</Data>
-  <Data type="byte" offsetUS="0x80331490" offsetJP="0x80330430" base="Relative">Selection Index</Data>
-  <Data type="short" offsetUS="0x8032DDF8" offsetJP="0x8032CE98" base="Relative">Stage Select Index</Data>
+  <Data type="byte" offsetUS="0x801A81A4" offsetJP="0x801A8014" base="Relative" color="LightBlue">Mission Selected</Data>
+  <Data type="short" offsetUS="0x8033BAC8" offsetJP="0x8033A758" base="Relative" color="LightBlue">Mission Layout</Data>
+  <Data type="byte" offsetUS="0x80331620" offsetJP="0x80330534" base="Relative" color="LightBlue">Mission Name</Data>
+  <Data type="byte" offsetUS="0x8032DD84" offsetJP="0x8032CE24" base="Relative" color="LightBlue">Last Star</Data>
+  <Data type="byte" offsetUS="0x8032DD80" offsetJP="0x8032CE20" base="Relative" color="LightBlue">Last Star Course</Data>
+  <Data type="byte" offsetUS="0x80331490" offsetJP="0x80330430" base="Relative" color="LightBlue">Selection Index</Data>
+  <Data type="short" offsetUS="0x8032DDF8" offsetJP="0x8032CE98" base="Relative" color="LightBlue">Stage Select Index</Data>
 
-  <Data type="short" offsetUS="0x8033BAC6" offsetJP="0x8033A756" base="Relative">Level Index</Data>
-  <Data type="byte" offsetUS="0x8033B249" offsetJP="0x80339ED9" base="Relative">Level</Data>
-  <Data type="byte" offsetUS="0x8033B24A" offsetJP="0x80339EDA" base="Relative">Area</Data>
-  <Data type="short" offsetUS="0x8033BACA" offsetJP="0x8033A75A" base="Relative">Loading Point</Data>
-  <Data type="uint" offsetUS="0x8033B4A0" offsetJP="0x8033A130" base="Relative" useHex="true">Last Area</Data>
-  <Data type="byte" offsetUS="0x8033B4A4" offsetJP="0x8033A134" base="Relative">Last Area Entrance</Data>
-  <Data type="short" offsetUS="0x8033BACC" offsetJP="0x8033A75C" base="Relative">Last Death Course</Data>
-  <Data type="short" offset="0xE6" base="Mario">Destination</Data>
-  <Data type="short" offset="0xE2" base="Mario">Destination 2</Data>
-  <Data type="short" offset="0xEA" base="Mario">Door Direction</Data>
+  <Data type="short" offsetUS="0x8033BAC6" offsetJP="0x8033A756" base="Relative" color="Blue">Level Index</Data>
+  <Data type="byte" offsetUS="0x8033B249" offsetJP="0x80339ED9" base="Relative" color="Blue">Level</Data>
+  <Data type="byte" offsetUS="0x8033B24A" offsetJP="0x80339EDA" base="Relative" color="Blue">Area</Data>
+  <Data type="short" offsetUS="0x8033BACA" offsetJP="0x8033A75A" base="Relative" color="Blue">Loading Point</Data>
+  <Data type="uint" offsetUS="0x8033B4A0" offsetJP="0x8033A130" base="Relative" useHex="true" color="Blue">Last Area</Data>
+  <Data type="byte" offsetUS="0x8033B4A4" offsetJP="0x8033A134" base="Relative" color="Blue">Last Area Entrance</Data>
+  <Data type="short" offsetUS="0x8033BACC" offsetJP="0x8033A75C" base="Relative" color="Blue">Last Death Course</Data>
+  
+  <Data type="short" offset="0xE6" base="Mario" color="Purple">Destination</Data>
+  <Data type="short" offset="0xE2" base="Mario" color="Purple">Destination 2</Data>
+  <Data type="short" offset="0xEA" base="Mario" color="Purple">Door Direction</Data>
 
-  <Data type="short" offsetUS="0x8033B238" offsetJP="0x80339EC8" base="Relative">Transition State</Data>
-  <Data type="short" offsetUS="0x8033BAB0" offsetJP="0x8033A740" base="Relative">Transition Type</Data>
-  <Data type="byte" offsetUS="0x80330EC0" offsetJP="0x8032FF60" base="Relative">Transition Progress</Data>
-  <Data type="short" offsetUS="0x8033B23C" offsetJP="0x80339ECC" base="Relative">Transition Black Fade</Data>
-  <Data type="short" offsetUS="0x8038B8A4" offsetJP="0x8038B8A4" base="Relative">Transition White Fade</Data>
-  <Data type="short" offsetUS="0x8033B254" offsetJP="0x80339EE4" base="Relative">Transition Shrinking</Data>
+  <Data type="short" offsetUS="0x8033B238" offsetJP="0x80339EC8" base="Relative" color="Grey">Transition State</Data>
+  <Data type="short" offsetUS="0x8033BAB0" offsetJP="0x8033A740" base="Relative" color="Grey">Transition Type</Data>
+  <Data type="byte" offsetUS="0x80330EC0" offsetJP="0x8032FF60" base="Relative" color="Grey">Transition Progress</Data>
+  <Data type="short" offsetUS="0x8033B23C" offsetJP="0x80339ECC" base="Relative" color="Grey">Transition Black Fade</Data>
+  <Data type="short" offsetUS="0x8038B8A4" offsetJP="0x8038B8A4" base="Relative" color="Grey">Transition White Fade</Data>
+  <Data type="short" offsetUS="0x8033B254" offsetJP="0x80339EE4" base="Relative" color="Grey">Transition Shrinking</Data>
 </MiscData>
