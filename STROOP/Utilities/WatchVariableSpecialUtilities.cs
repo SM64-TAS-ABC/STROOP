@@ -1084,6 +1084,56 @@ namespace STROOP.Structs
                     };
                     break;
 
+                case "GoombaTripletLoadingDistanceDiff":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        Position objPos = GetObjectPosition(objAddress);
+                        double dist = MoreMath.GetDistanceBetween(
+                            marioPos.X, marioPos.Y, marioPos.Z, objPos.X, objPos.Y, objPos.Z);
+                        double distDiff = dist - 3000;
+                        return distDiff;
+                    };
+                    setterFunction = (object objectValue, uint objAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        Position objPos = GetObjectPosition(objAddress);
+                        double? distDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
+                        if (!distDiffNullable.HasValue) return false;
+                        double distDiff = distDiffNullable.Value;
+                        double distAway = distDiff + 3000;
+                        (double newMarioX, double newMarioY, double newMarioZ) =
+                            MoreMath.ExtrapolateLine3D(
+                                objPos.X, objPos.Y, objPos.Z, marioPos.X, marioPos.Y, marioPos.Z, distAway);
+                        return SetMarioPosition(newMarioX, newMarioY, newMarioZ);
+                    };
+                    break;
+
+                case "GoombaTripletUnloadingDistanceDiff":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        Position objPos = GetObjectPosition(objAddress);
+                        double dist = MoreMath.GetDistanceBetween(
+                            marioPos.X, marioPos.Y, marioPos.Z, objPos.X, objPos.Y, objPos.Z);
+                        double distDiff = dist - 4000;
+                        return distDiff;
+                    };
+                    setterFunction = (object objectValue, uint objAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        Position objPos = GetObjectPosition(objAddress);
+                        double? distDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
+                        if (!distDiffNullable.HasValue) return false;
+                        double distDiff = distDiffNullable.Value;
+                        double distAway = distDiff + 4000;
+                        (double newMarioX, double newMarioY, double newMarioZ) =
+                            MoreMath.ExtrapolateLine3D(
+                                objPos.X, objPos.Y, objPos.Z, marioPos.X, marioPos.Y, marioPos.Z, distAway);
+                        return SetMarioPosition(newMarioX, newMarioY, newMarioZ);
+                    };
+                    break;
+
                 // Object specific vars - Ghost
 
                 case "MarioGhostVerticalDistance":
