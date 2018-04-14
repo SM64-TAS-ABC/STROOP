@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <WaterData>
-  <Data type="short" offset="0x76" base="Mario">Water Level</Data>
-  <Data type="short" offsetUS="0x8036118A" offsetJP="0x8035FE1A" base="Relative">Water Level Median</Data>
+  <Data type="short" offset="0x76" base="Mario" color="LightBlue">Water Level</Data>
+  <Data type="short" offsetUS="0x8036118A" offsetJP="0x8035FE1A" base="Relative" color="LightBlue">Water Level Median</Data>
 
-  <Data base="None" specialType="WaterAboveMedian">Water Above Median</Data>
-  <Data base="None" specialType="MarioAboveWater">Mario Above Water</Data>
-  <Data type="float" offset="0x40" base="Mario">Mario Y</Data>
+  <Data base="None" specialType="WaterAboveMedian" color="LightBlue">Water Above Median</Data>
+  <Data base="None" specialType="MarioAboveWater" color="Red">Mario Above Water</Data>
+  <Data type="float" offset="0x40" base="Mario" color="Red">Mario Y</Data>
 
-  <Data type="short" offsetUS="0x801112E2" offsetJP="0x8010E462" base="Relative">WDW Main WL</Data>
-  <Data type="short" offsetUS="0x8011342E" offsetJP="0x801105AE" base="Relative">WDW Town WL</Data>
+  <Data type="short" offsetUS="0x801112E2" offsetJP="0x8010E462" base="Relative" color="Blue">WDW Main WL</Data>
+  <Data type="short" offsetUS="0x8011342E" offsetJP="0x801105AE" base="Relative" color="Blue">WDW Town WL</Data>
   <Data type="float" offsetUS="0x80330F3C" offsetJP="0x8032FFDC" base="Relative">WDW Painting Level</Data>
   
   <Data type="short" offsetUS="0x8010C81C" offsetJP="0x801090E4" base="Relative">Castle Lake WL</Data>
@@ -52,12 +52,12 @@
   <Data type="short" offsetUS="0x801069C4" offsetJP="0x80103B44" base="Relative">CotMC WL</Data>
   <Data type="short" offsetUS="0x800FDEBE" offsetJP="0x800FB03E" base="Relative">SA WL</Data>
   
-  <Data type="uint" offsetUS="0x80361184" offsetJP="0x8035FE14" base="Relative" useHex="true">Water Pointer</Data>
-  <Data type="short" offset="0x00" base="Water">Num Water Levels</Data>
-  <Data type="short" offset="0x0C" base="Water">Water Level 1</Data>
-  <Data type="short" offset="0x18" base="Water">Water Level 2</Data>
-  <Data type="short" offset="0x24" base="Water">Water Level 3</Data>
-  <Data type="short" offset="0x30" base="Water">Water Level 4</Data>
+  <Data type="uint" offsetUS="0x80361184" offsetJP="0x8035FE14" base="Relative" useHex="true" color="Purple">Water Pointer</Data>
+  <Data type="short" offset="0x00" base="Water" color="Purple">Num Water Levels</Data>
+  <Data type="short" offset="0x0C" base="Water" color="Purple">Water Level 1</Data>
+  <Data type="short" offset="0x18" base="Water" color="Purple">Water Level 2</Data>
+  <Data type="short" offset="0x24" base="Water" color="Purple">Water Level 3</Data>
+  <Data type="short" offset="0x30" base="Water" color="Purple">Water Level 4</Data>
 
-  <Data type="float" offsetUS="0x8038BBA8" offsetJP="0x8038BBA8" base="Relative">Default WL</Data>
+  <Data type="float" offsetUS="0x8038BBA8" offsetJP="0x8038BBA8" base="Relative" color="Green">Default WL</Data>
 </WaterData>
