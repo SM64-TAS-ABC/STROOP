@@ -44,7 +44,7 @@ namespace STROOP.Structs
                     };
                     break;
 
-                case "MarioHorizontalDistanceToObject":
+                case "MarioHDistanceToObject":
                     getterFunction = (uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
@@ -142,7 +142,7 @@ namespace STROOP.Structs
                     };
                     break;
 
-                case "MarioHorizontalDistanceToObjectHome":
+                case "MarioHDistanceToObjectHome":
                     getterFunction = (uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
@@ -240,7 +240,7 @@ namespace STROOP.Structs
                     };
                     break;
 
-                case "ObjectHorizontalDistanceToHome":
+                case "ObjectHDistanceToHome":
                     getterFunction = (uint objAddress) =>
                     {
                         Position objPos = GetObjectPosition(objAddress);
@@ -1876,28 +1876,28 @@ namespace STROOP.Structs
                     };
                     break;
 
-                case "MaxHorizontalSpeedUphill":
+                case "MaxHSpeedUphill":
                     getterFunction = (uint triAddress) =>
                     {
                         return GetMaxHorizontalSpeedOnTriangle(triAddress, true, false);
                     };
                     break;
 
-                case "MaxHorizontalSpeedUphillAtAngle":
+                case "MaxHSpeedUphillAtAngle":
                     getterFunction = (uint triAddress) =>
                     {
                         return GetMaxHorizontalSpeedOnTriangle(triAddress, true, true);
                     };
                     break;
 
-                case "MaxHorizontalSpeedDownhill":
+                case "MaxHSpeedDownhill":
                     getterFunction = (uint triAddress) =>
                     {
                         return GetMaxHorizontalSpeedOnTriangle(triAddress, false, false);
                     };
                     break;
 
-                case "MaxHorizontalSpeedDownhillAtAngle":
+                case "MaxHSpeedDownhillAtAngle":
                     getterFunction = (uint triAddress) =>
                     {
                         return GetMaxHorizontalSpeedOnTriangle(triAddress, false, true);

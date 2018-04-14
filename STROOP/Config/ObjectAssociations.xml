@@ -2083,7 +2083,7 @@
     <Data groupList="ObjectSpecific" type="int" offset="0x150" base="Object">Phase</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xFB" base="Object" subclass="Boolean">Lunging</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Lunging Timer</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="MarioHorizontalDistanceToObjectHome">HDist Mario to Home</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="MarioHDistanceToObjectHome">HDist Mario to Home</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0xCA" base="Object" subclass="Angle">Yaw Moving</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0x162" base="Object" subclass="Angle">Target Angle</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ScuttlebugDeltaAngleToTarget" subclass="Angle" type="short">DAngle to Target</Data>
@@ -2366,7 +2366,7 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="BobombBloatSize">Bloat Size</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="BobombRadius">Radius</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="BobombSpaceBetween">Space Between</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="MarioHorizontalDistanceToObject">HDist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="MarioHDistanceToObject">HDist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Blinking</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Blinking Timer</Data>
@@ -2383,7 +2383,7 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="BobombBloatSize">Bloat Size</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="BobombRadius">Radius</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="BobombSpaceBetween">Space Between</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="MarioHorizontalDistanceToObject">HDist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="MarioHDistanceToObject">HDist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Blinking</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Blinking Timer</Data>
