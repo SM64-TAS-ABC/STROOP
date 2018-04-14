@@ -271,9 +271,14 @@ namespace STROOP.Controls
 
         public void ShowOnlyVariableGroup(VariableGroup visibleVarGroup)
         {
+            ShowOnlyVariableGroups(new List<VariableGroup>() { visibleVarGroup });
+        }
+
+        public void ShowOnlyVariableGroups(List<VariableGroup> visibleVarGroups)
+        {
             foreach (VariableGroup varGroup in _allGroups)
             {
-                bool newVisibility = varGroup == visibleVarGroup;
+                bool newVisibility = visibleVarGroups.Contains(varGroup);
                 ToggleVarGroupVisibility(varGroup, newVisibility);
             }
         }

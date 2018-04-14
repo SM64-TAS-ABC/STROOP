@@ -43,6 +43,7 @@ namespace STROOP.Managers
                 VariableGroup.Advanced,
                 VariableGroup.TAS,
                 VariableGroup.Point,
+                VariableGroup.Manual,
             };
 
         private static readonly List<VariableGroup> VISIBLE_VAR_GROUPS =
@@ -51,6 +52,7 @@ namespace STROOP.Managers
                 VariableGroup.Basic,
                 VariableGroup.Advanced,
                 VariableGroup.Point,
+                VariableGroup.Manual,
             };
 
         public TasManager(List<WatchVariableControlPrecursor> variables, TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel)
@@ -192,7 +194,8 @@ namespace STROOP.Managers
 
         public void ShowTaserVariables()
         {
-            _variablePanel.ShowOnlyVariableGroup(VariableGroup.TAS);
+            _variablePanel.ShowOnlyVariableGroups(
+                new List<VariableGroup>() { VariableGroup.TAS, VariableGroup.Manual });
         }
 
         public override void Update(bool updateView)

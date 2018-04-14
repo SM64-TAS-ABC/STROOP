@@ -155,7 +155,10 @@ namespace STROOP.Controls
         }
 
         public WatchVariableControl CreateWatchVariableControl(
-            Color? newColor = null, string newName = null, List<uint> newFixedAddresses = null)
+            Color? newColor = null,
+            string newName = null,
+            List<uint> newFixedAddresses = null,
+            List<VariableGroup> newVariableGroupList = null)
         {
             return new WatchVariableControl(
                 this,
@@ -167,7 +170,7 @@ namespace STROOP.Controls
                 UseHex,
                 InvertBool,
                 Coordinate,
-                GroupList,
+                newVariableGroupList ?? GroupList,
                 newFixedAddresses ?? FixedAddresses);
         }
 

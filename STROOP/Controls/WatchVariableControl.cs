@@ -608,7 +608,7 @@ namespace STROOP.Controls
                 List<uint> constructorAddressList = useFixedAddress ? addressesLists[i] : null;
                 WatchVariableControl newControl =
                     WatchVarPrecursor.CreateWatchVariableControl(
-                        null, name, constructorAddressList);
+                        null, name, constructorAddressList, new List<VariableGroup>() { VariableGroup.Manual });
                 dataManager.AddVariable(newControl);
             }
             FlashColor(ADD_TO_CUSTOM_TAB_COLOR);
