@@ -1,5 +1,6 @@
 ﻿using STROOP.Forms;
 using STROOP.Structs;
+using STROOP.Structs.Configurations;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -58,6 +59,9 @@ namespace STROOP.Controls
 
             ToolStripMenuItem clearAllButHighlightedItem = new ToolStripMenuItem("Clear All But Highlighted");
             clearAllButHighlightedItem.Click += (sender, e) => ClearAllButHighlightedVariables();
+
+            ToolStripMenuItem addAllToCustomTabItem = new ToolStripMenuItem("Add All to Custom Tab");
+            addAllToCustomTabItem.Click += (sender, e) => AddAllVariablesToCustomTab();
 
             ToolStripMenuItem enableCustomization = new ToolStripMenuItem("Enable Customization");
             enableCustomization.Click += (sender, e) => EnableCustomVariableFunctionality();
@@ -157,6 +161,7 @@ namespace STROOP.Controls
 
             ContextMenuStrip.Items.Add(resetVariablesItem);
             ContextMenuStrip.Items.Add(clearAllButHighlightedItem);
+            ContextMenuStrip.Items.Add(addAllToCustomTabItem);
             ContextMenuStrip.Items.Add(enableCustomization);
             ContextMenuStrip.Items.Add(showVariableXmlItem);
             ContextMenuStrip.Items.Add(showVariableInfoItem);
@@ -298,13 +303,19 @@ namespace STROOP.Controls
             _watchVarControls.ForEach(control => control.Highlighted = false);
         }
 
-        public void ResetVariables()
+        private void ResetVariables()
         {
             ClearVariables();
             _visibleGroups.Clear();
             _visibleGroups.AddRange(_initialVisibleGroups);
             UpdateFilterItemCheckedStatuses();
             AddVariables(_watchVarPrecursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
+        }
+
+        private void AddAllVariablesToCustomTab()
+        {
+            GetCurrentVariableControls().ForEach(varControl =>
+                varControl.AddToTab(Config.CustomManager, false, false));
         }
 
         private List<XElement> GetCurrentVarXmlElements(bool useCurrentState = true)

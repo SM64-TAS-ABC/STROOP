@@ -292,7 +292,7 @@ namespace STROOP.Controls
 
             if (isCtrlKeyHeld && isFKeyHeld)
             {
-                AddToCustomTab(Config.CustomManager, true, false);
+                AddToTab(Config.CustomManager, true, false);
                 return;
             }
 
@@ -341,13 +341,13 @@ namespace STROOP.Controls
 
             if (isCtrlKeyHeld && isAKeyHeld)
             {
-                AddToCustomTab(Config.CustomManager, true, true);
+                AddToTab(Config.CustomManager, true, true);
                 return;
             }
 
             if (isCtrlKeyHeld)
             {
-                AddToCustomTab(Config.CustomManager, false, false);
+                AddToTab(Config.CustomManager, false, false);
                 return;
             }
 
@@ -371,7 +371,7 @@ namespace STROOP.Controls
 
             if (isTKeyHeld)
             {
-                AddToCustomTab(Config.TasManager, false, false);
+                AddToTab(Config.TasManager, false, false);
                 return;
             }
 
@@ -593,7 +593,7 @@ namespace STROOP.Controls
             _watchVariablePanel.ContextMenuStrip.Show(point);
         }
 
-        public void AddToCustomTab(
+        public void AddToTab(
             DataManager dataManager, bool useFixedAddress, bool useIndividualAddresses)
         {
             List<uint> addressList = FixedAddressList ?? _watchVarWrapper.GetCurrentAddresses();
