@@ -13,6 +13,7 @@ using System.Xml.Linq;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System.Drawing.Drawing2D;
+using STROOP.Managers;
 
 namespace STROOP.Controls
 {
@@ -275,6 +276,7 @@ namespace STROOP.Controls
             bool isCKeyHeld = Keyboard.IsKeyDown(Key.C);
             bool isQKeyHeld = Keyboard.IsKeyDown(Key.Q);
             bool isXKeyHeld = Keyboard.IsKeyDown(Key.X);
+            bool isTKeyHeld = Keyboard.IsKeyDown(Key.T);
             bool isDeletishKeyHeld = KeyboardUtilities.IsDeletishKeyHeld();
             bool isBacktickHeld = Keyboard.IsKeyDown(Key.OemTilde);
             bool isZHeld = Keyboard.IsKeyDown(Key.Z);
@@ -290,7 +292,7 @@ namespace STROOP.Controls
 
             if (isCtrlKeyHeld && isFKeyHeld)
             {
-                AddToCustomTab(true, false);
+                AddToCustomTab(Config.CustomManager, true, false);
                 return;
             }
 
@@ -339,13 +341,13 @@ namespace STROOP.Controls
 
             if (isCtrlKeyHeld && isAKeyHeld)
             {
-                AddToCustomTab(true, true);
+                AddToCustomTab(Config.CustomManager, true, true);
                 return;
             }
 
             if (isCtrlKeyHeld)
             {
-                AddToCustomTab(false, false);
+                AddToCustomTab(Config.CustomManager, false, false);
                 return;
             }
 
@@ -364,6 +366,12 @@ namespace STROOP.Controls
             if (isBacktickHeld)
             {
                 AddToVarHackTab();
+                return;
+            }
+
+            if (isTKeyHeld)
+            {
+                AddToCustomTab(Config.TasManager, false, false);
                 return;
             }
 
@@ -585,7 +593,8 @@ namespace STROOP.Controls
             _watchVariablePanel.ContextMenuStrip.Show(point);
         }
 
-        public void AddToCustomTab(bool useFixedAddress, bool useIndividualAddresses)
+        public void AddToCustomTab(
+            DataManager dataManager, bool useFixedAddress, bool useIndividualAddresses)
         {
             List<uint> addressList = FixedAddressList ?? _watchVarWrapper.GetCurrentAddresses();
             List<List<uint>> addressesLists =
@@ -600,7 +609,7 @@ namespace STROOP.Controls
                 WatchVariableControl newControl =
                     WatchVarPrecursor.CreateWatchVariableControl(
                         null, name, constructorAddressList);
-                Config.CustomManager.AddVariable(newControl);
+                dataManager.AddVariable(newControl);
             }
             FlashColor(ADD_TO_CUSTOM_TAB_COLOR);
         }
