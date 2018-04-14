@@ -3787,7 +3787,7 @@ namespace STROOP.Structs
                 case "MupenLag":
                     getterFunction = (uint objAddress) =>
                     {
-                        if (!MupenUtilities.IsUsingMupen()) return "(none)";
+                        if (!MupenUtilities.IsUsingMupen()) return Double.NaN;
                         int lag = MupenUtilities.GetLagCount() + SpecialConfig.MupenLagOffset;
                         return lag;
                     };
