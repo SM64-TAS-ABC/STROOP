@@ -467,6 +467,7 @@
     <Compile Include="Forms\VariableViewerForm.Designer.cs">
       <DependentUpon>VariableViewerForm.cs</DependentUpon>
     </Compile>
+    <None Include="Resources\lock_blue.png" />
     <None Include="Controls\Map\MapTab.cd" />
     <None Include="Resources\cog.png" />
     <None Include="Resources\image_eye_closed2.png" />
