@@ -41,6 +41,7 @@ namespace STROOP
             this.buttonDisconnect = new System.Windows.Forms.Button();
             this.panelConnect = new System.Windows.Forms.Panel();
             this.buttonRefreshAndConnect = new System.Windows.Forms.Button();
+            this.buttonBypass = new System.Windows.Forms.Button();
             this.buttonRefresh = new System.Windows.Forms.Button();
             this.labelNotConnected = new System.Windows.Forms.Label();
             this.buttonConnect = new System.Windows.Forms.Button();
@@ -1235,7 +1236,6 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.buttonBypass = new System.Windows.Forms.Button();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1663,13 +1663,13 @@ namespace STROOP
             this.panelConnect.Controls.Add(this.listBoxProcessesList);
             this.panelConnect.Location = new System.Drawing.Point(246, 11);
             this.panelConnect.Name = "panelConnect";
-            this.panelConnect.Size = new System.Drawing.Size(441, 10);
+            this.panelConnect.Size = new System.Drawing.Size(441, 258);
             this.panelConnect.TabIndex = 17;
             // 
             // buttonRefreshAndConnect
             // 
             this.buttonRefreshAndConnect.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonRefreshAndConnect.Location = new System.Drawing.Point(222, 71);
+            this.buttonRefreshAndConnect.Location = new System.Drawing.Point(222, 195);
             this.buttonRefreshAndConnect.Name = "buttonRefreshAndConnect";
             this.buttonRefreshAndConnect.Size = new System.Drawing.Size(84, 37);
             this.buttonRefreshAndConnect.TabIndex = 3;
@@ -1677,10 +1677,21 @@ namespace STROOP
             this.buttonRefreshAndConnect.UseVisualStyleBackColor = true;
             this.buttonRefreshAndConnect.Click += new System.EventHandler(this.buttonRefreshAndConnect_Click);
             // 
+            // buttonBypass
+            // 
+            this.buttonBypass.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonBypass.Location = new System.Drawing.Point(134, 195);
+            this.buttonBypass.Name = "buttonBypass";
+            this.buttonBypass.Size = new System.Drawing.Size(84, 37);
+            this.buttonBypass.TabIndex = 3;
+            this.buttonBypass.Text = "Bypass";
+            this.buttonBypass.UseVisualStyleBackColor = true;
+            this.buttonBypass.Click += new System.EventHandler(this.buttonBypass_Click);
+            // 
             // buttonRefresh
             // 
             this.buttonRefresh.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonRefresh.Location = new System.Drawing.Point(134, 30);
+            this.buttonRefresh.Location = new System.Drawing.Point(134, 154);
             this.buttonRefresh.Name = "buttonRefresh";
             this.buttonRefresh.Size = new System.Drawing.Size(84, 37);
             this.buttonRefresh.TabIndex = 3;
@@ -1693,7 +1704,7 @@ namespace STROOP
             this.labelNotConnected.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelNotConnected.AutoSize = true;
             this.labelNotConnected.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNotConnected.Location = new System.Drawing.Point(141, -100);
+            this.labelNotConnected.Location = new System.Drawing.Point(141, 24);
             this.labelNotConnected.Name = "labelNotConnected";
             this.labelNotConnected.Size = new System.Drawing.Size(157, 26);
             this.labelNotConnected.TabIndex = 2;
@@ -1702,7 +1713,7 @@ namespace STROOP
             // buttonConnect
             // 
             this.buttonConnect.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonConnect.Location = new System.Drawing.Point(222, 30);
+            this.buttonConnect.Location = new System.Drawing.Point(222, 154);
             this.buttonConnect.Name = "buttonConnect";
             this.buttonConnect.Size = new System.Drawing.Size(84, 37);
             this.buttonConnect.TabIndex = 1;
@@ -1714,7 +1725,7 @@ namespace STROOP
             // 
             this.listBoxProcessesList.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.listBoxProcessesList.FormattingEnabled = true;
-            this.listBoxProcessesList.Location = new System.Drawing.Point(134, -69);
+            this.listBoxProcessesList.Location = new System.Drawing.Point(134, 55);
             this.listBoxProcessesList.Name = "listBoxProcessesList";
             this.listBoxProcessesList.Size = new System.Drawing.Size(172, 95);
             this.listBoxProcessesList.TabIndex = 0;
@@ -5758,7 +5769,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 342F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 343F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -12121,7 +12132,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 748;
+            this.splitContainerMemory.SplitterDistance = 751;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -12145,7 +12156,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(632, 429);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(635, 429);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -12248,7 +12259,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(158, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(155, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPageHacks
@@ -15984,17 +15995,6 @@ namespace STROOP
             this.trackBarObjSlotSize.TickFrequency = 10;
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
-            // 
-            // buttonBypass
-            // 
-            this.buttonBypass.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonBypass.Location = new System.Drawing.Point(134, 71);
-            this.buttonBypass.Name = "buttonBypass";
-            this.buttonBypass.Size = new System.Drawing.Size(84, 37);
-            this.buttonBypass.TabIndex = 3;
-            this.buttonBypass.Text = "Bypass";
-            this.buttonBypass.UseVisualStyleBackColor = true;
-            this.buttonBypass.Click += new System.EventHandler(this.buttonRefresh_Click);
             // 
             // StroopMainForm
             // 

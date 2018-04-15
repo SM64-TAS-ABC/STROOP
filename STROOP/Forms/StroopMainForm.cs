@@ -679,6 +679,11 @@ namespace STROOP
                 listBoxProcessesList.SelectedIndex = 0;
         }
 
+        private void buttonBypass_Click(object sender, EventArgs e)
+        {
+            panelConnect.Visible = false;
+        }
+
         private void buttonDisconnect_Click(object sender, EventArgs e)
         {
             Config.Stream.SwitchProcess(null, null);
