@@ -136,6 +136,7 @@ namespace STROOP.Controls
 
         private static readonly Image _lockedImage = Properties.Resources.img_lock;
         private static readonly Image _someLockedImage = Properties.Resources.img_lock_grey;
+        private static readonly Image _disabledLockImage = Properties.Resources.lock_blue;
         private static readonly Image _pinnedImage = Properties.Resources.img_pin;
 
         private static readonly bool DEFAULT_LEFT_FLUSH = false;
@@ -484,17 +485,24 @@ namespace STROOP.Controls
 
         private static Image GetImageForCheckState(CheckState checkState)
         {
+            Image image;
             switch (checkState)
             {
                 case CheckState.Unchecked:
-                    return null;
+                    image = null;
+                    break;
                 case CheckState.Checked:
-                    return _lockedImage;
+                    image = _lockedImage;
+                    break;
                 case CheckState.Indeterminate:
-                    return _someLockedImage;
+                    image = _someLockedImage;
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+            if (image != null && LockConfig.LockingDisabled)
+                image = _disabledLockImage;
+            return image;
         }
 
         private void UpdateFlush()
