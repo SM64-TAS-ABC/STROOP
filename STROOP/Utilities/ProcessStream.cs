@@ -375,18 +375,15 @@ namespace STROOP.Utilities
         public bool SetValueRoundingWrapping(
             Type type, object value, uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            if (value is string)
-            {
-                value = ParsingUtilities.ParseDoubleNullable(value);
-                if (value == null) return false;
+            value = ParsingUtilities.ParseDoubleNullable(value);
+            if (value == null) return false;
 
-                if (type == typeof(byte)) value = ParsingUtilities.ParseByteRoundingWrapping(value);
-                if (type == typeof(sbyte)) value = ParsingUtilities.ParseSByteRoundingWrapping(value);
-                if (type == typeof(short)) value = ParsingUtilities.ParseShortRoundingWrapping(value);
-                if (type == typeof(ushort)) value = ParsingUtilities.ParseUShortRoundingWrapping(value);
-                if (type == typeof(int)) value = ParsingUtilities.ParseIntRoundingWrapping(value);
-                if (type == typeof(uint)) value = ParsingUtilities.ParseUIntRoundingWrapping(value);
-            }
+            if (type == typeof(byte)) value = ParsingUtilities.ParseByteRoundingWrapping(value);
+            if (type == typeof(sbyte)) value = ParsingUtilities.ParseSByteRoundingWrapping(value);
+            if (type == typeof(short)) value = ParsingUtilities.ParseShortRoundingWrapping(value);
+            if (type == typeof(ushort)) value = ParsingUtilities.ParseUShortRoundingWrapping(value);
+            if (type == typeof(int)) value = ParsingUtilities.ParseIntRoundingWrapping(value);
+            if (type == typeof(uint)) value = ParsingUtilities.ParseUIntRoundingWrapping(value);
 
             return SetValue(type, value.ToString(), address, absoluteAddress, mask);
         }
