@@ -34,8 +34,8 @@ namespace STROOP
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
@@ -194,9 +194,18 @@ namespace STROOP
             this.WatchVariablePanelMario = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageM64 = new System.Windows.Forms.TabPage();
             this.splitContainerM64 = new STROOP.BetterSplitContainer();
+            this.checkBoxMaxOutViCount = new System.Windows.Forms.CheckBox();
             this.comboBoxM64FrameInputRelation = new System.Windows.Forms.ComboBox();
             this.textBoxM64PasteMultiplicity = new STROOP.BetterTextbox();
             this.listBoxM64Copied = new System.Windows.Forms.ListBox();
+            this.groupBoxM64QuickDuplication = new System.Windows.Forms.GroupBox();
+            this.buttonM64QuickDuplicationDuplicate = new System.Windows.Forms.Button();
+            this.textBoxM64QuickDuplicationTotalIterations = new STROOP.BetterTextbox();
+            this.textBoxM64QuickDuplication2ndIterationStart = new STROOP.BetterTextbox();
+            this.textBoxM64QuickDuplication1stIterationStart = new STROOP.BetterTextbox();
+            this.labelM64QuickDuplicationTotalIterations = new System.Windows.Forms.Label();
+            this.labelM64QuickDuplication2ndIterationStart = new System.Windows.Forms.Label();
+            this.labelM64QuickDuplication1stIterationStart = new System.Windows.Forms.Label();
             this.groupBoxM64Selection = new System.Windows.Forms.GroupBox();
             this.textBoxM64SelectionInputs = new STROOP.BetterTextbox();
             this.textBoxM64SelectionEndFrame = new STROOP.BetterTextbox();
@@ -226,6 +235,7 @@ namespace STROOP
             this.buttonM64Close = new System.Windows.Forms.Button();
             this.buttonM64Open = new System.Windows.Forms.Button();
             this.buttonM64SaveAs = new System.Windows.Forms.Button();
+            this.buttonM64ResetChanges = new System.Windows.Forms.Button();
             this.buttonM64Save = new System.Windows.Forms.Button();
             this.tabControlM64Details = new System.Windows.Forms.TabControl();
             this.tabPageM64Inputs = new System.Windows.Forms.TabPage();
@@ -1225,16 +1235,7 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.buttonM64ResetChanges = new System.Windows.Forms.Button();
-            this.checkBoxMaxOutViCount = new System.Windows.Forms.CheckBox();
-            this.groupBoxM64QuickDuplication = new System.Windows.Forms.GroupBox();
-            this.textBoxM64QuickDuplicationTotalIterations = new STROOP.BetterTextbox();
-            this.textBoxM64QuickDuplication2ndIterationStart = new STROOP.BetterTextbox();
-            this.textBoxM64QuickDuplication1stIterationStart = new STROOP.BetterTextbox();
-            this.labelM64QuickDuplicationTotalIterations = new System.Windows.Forms.Label();
-            this.labelM64QuickDuplication2ndIterationStart = new System.Windows.Forms.Label();
-            this.labelM64QuickDuplication1stIterationStart = new System.Windows.Forms.Label();
-            this.buttonM64QuickDuplicationDuplicate = new System.Windows.Forms.Button();
+            this.buttonBypass = new System.Windows.Forms.Button();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1269,6 +1270,7 @@ namespace STROOP
             this.splitContainerM64.Panel1.SuspendLayout();
             this.splitContainerM64.Panel2.SuspendLayout();
             this.splitContainerM64.SuspendLayout();
+            this.groupBoxM64QuickDuplication.SuspendLayout();
             this.groupBoxM64Selection.SuspendLayout();
             this.tabControlM64Details.SuspendLayout();
             this.tabPageM64Inputs.SuspendLayout();
@@ -1617,7 +1619,6 @@ namespace STROOP
             this.groupBoxRecording.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
-            this.groupBoxM64QuickDuplication.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -1655,21 +1656,22 @@ namespace STROOP
             // panelConnect
             // 
             this.panelConnect.Controls.Add(this.buttonRefreshAndConnect);
+            this.panelConnect.Controls.Add(this.buttonBypass);
             this.panelConnect.Controls.Add(this.buttonRefresh);
             this.panelConnect.Controls.Add(this.labelNotConnected);
             this.panelConnect.Controls.Add(this.buttonConnect);
             this.panelConnect.Controls.Add(this.listBoxProcessesList);
             this.panelConnect.Location = new System.Drawing.Point(246, 11);
             this.panelConnect.Name = "panelConnect";
-            this.panelConnect.Size = new System.Drawing.Size(441, 20);
+            this.panelConnect.Size = new System.Drawing.Size(441, 10);
             this.panelConnect.TabIndex = 17;
             // 
             // buttonRefreshAndConnect
             // 
             this.buttonRefreshAndConnect.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonRefreshAndConnect.Location = new System.Drawing.Point(134, 133);
+            this.buttonRefreshAndConnect.Location = new System.Drawing.Point(222, 71);
             this.buttonRefreshAndConnect.Name = "buttonRefreshAndConnect";
-            this.buttonRefreshAndConnect.Size = new System.Drawing.Size(172, 37);
+            this.buttonRefreshAndConnect.Size = new System.Drawing.Size(84, 37);
             this.buttonRefreshAndConnect.TabIndex = 3;
             this.buttonRefreshAndConnect.Text = "Refresh && Connect";
             this.buttonRefreshAndConnect.UseVisualStyleBackColor = true;
@@ -1678,7 +1680,7 @@ namespace STROOP
             // buttonRefresh
             // 
             this.buttonRefresh.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonRefresh.Location = new System.Drawing.Point(134, 92);
+            this.buttonRefresh.Location = new System.Drawing.Point(134, 30);
             this.buttonRefresh.Name = "buttonRefresh";
             this.buttonRefresh.Size = new System.Drawing.Size(84, 37);
             this.buttonRefresh.TabIndex = 3;
@@ -1691,7 +1693,7 @@ namespace STROOP
             this.labelNotConnected.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelNotConnected.AutoSize = true;
             this.labelNotConnected.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNotConnected.Location = new System.Drawing.Point(141, -111);
+            this.labelNotConnected.Location = new System.Drawing.Point(141, -100);
             this.labelNotConnected.Name = "labelNotConnected";
             this.labelNotConnected.Size = new System.Drawing.Size(157, 26);
             this.labelNotConnected.TabIndex = 2;
@@ -1700,7 +1702,7 @@ namespace STROOP
             // buttonConnect
             // 
             this.buttonConnect.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonConnect.Location = new System.Drawing.Point(222, 92);
+            this.buttonConnect.Location = new System.Drawing.Point(222, 30);
             this.buttonConnect.Name = "buttonConnect";
             this.buttonConnect.Size = new System.Drawing.Size(84, 37);
             this.buttonConnect.TabIndex = 1;
@@ -1712,9 +1714,9 @@ namespace STROOP
             // 
             this.listBoxProcessesList.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.listBoxProcessesList.FormattingEnabled = true;
-            this.listBoxProcessesList.Location = new System.Drawing.Point(134, -61);
+            this.listBoxProcessesList.Location = new System.Drawing.Point(134, -69);
             this.listBoxProcessesList.Name = "listBoxProcessesList";
-            this.listBoxProcessesList.Size = new System.Drawing.Size(172, 147);
+            this.listBoxProcessesList.Size = new System.Drawing.Size(172, 95);
             this.listBoxProcessesList.TabIndex = 0;
             // 
             // labelFpsCounter
@@ -3507,6 +3509,18 @@ namespace STROOP
             this.splitContainerM64.SplitterWidth = 1;
             this.splitContainerM64.TabIndex = 34;
             // 
+            // checkBoxMaxOutViCount
+            // 
+            this.checkBoxMaxOutViCount.AutoSize = true;
+            this.checkBoxMaxOutViCount.Checked = true;
+            this.checkBoxMaxOutViCount.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMaxOutViCount.Location = new System.Drawing.Point(212, 71);
+            this.checkBoxMaxOutViCount.Name = "checkBoxMaxOutViCount";
+            this.checkBoxMaxOutViCount.Size = new System.Drawing.Size(110, 17);
+            this.checkBoxMaxOutViCount.TabIndex = 36;
+            this.checkBoxMaxOutViCount.Text = "Max Out VI Count";
+            this.checkBoxMaxOutViCount.UseVisualStyleBackColor = true;
+            // 
             // comboBoxM64FrameInputRelation
             // 
             this.comboBoxM64FrameInputRelation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -3532,6 +3546,83 @@ namespace STROOP
             this.listBoxM64Copied.Name = "listBoxM64Copied";
             this.listBoxM64Copied.Size = new System.Drawing.Size(162, 56);
             this.listBoxM64Copied.TabIndex = 16;
+            // 
+            // groupBoxM64QuickDuplication
+            // 
+            this.groupBoxM64QuickDuplication.Controls.Add(this.buttonM64QuickDuplicationDuplicate);
+            this.groupBoxM64QuickDuplication.Controls.Add(this.textBoxM64QuickDuplicationTotalIterations);
+            this.groupBoxM64QuickDuplication.Controls.Add(this.textBoxM64QuickDuplication2ndIterationStart);
+            this.groupBoxM64QuickDuplication.Controls.Add(this.textBoxM64QuickDuplication1stIterationStart);
+            this.groupBoxM64QuickDuplication.Controls.Add(this.labelM64QuickDuplicationTotalIterations);
+            this.groupBoxM64QuickDuplication.Controls.Add(this.labelM64QuickDuplication2ndIterationStart);
+            this.groupBoxM64QuickDuplication.Controls.Add(this.labelM64QuickDuplication1stIterationStart);
+            this.groupBoxM64QuickDuplication.Location = new System.Drawing.Point(176, 283);
+            this.groupBoxM64QuickDuplication.Name = "groupBoxM64QuickDuplication";
+            this.groupBoxM64QuickDuplication.Size = new System.Drawing.Size(167, 128);
+            this.groupBoxM64QuickDuplication.TabIndex = 15;
+            this.groupBoxM64QuickDuplication.TabStop = false;
+            this.groupBoxM64QuickDuplication.Text = "Quick Duplication";
+            // 
+            // buttonM64QuickDuplicationDuplicate
+            // 
+            this.buttonM64QuickDuplicationDuplicate.Location = new System.Drawing.Point(15, 93);
+            this.buttonM64QuickDuplicationDuplicate.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64QuickDuplicationDuplicate.Name = "buttonM64QuickDuplicationDuplicate";
+            this.buttonM64QuickDuplicationDuplicate.Size = new System.Drawing.Size(132, 22);
+            this.buttonM64QuickDuplicationDuplicate.TabIndex = 35;
+            this.buttonM64QuickDuplicationDuplicate.Text = "Duplicate";
+            this.buttonM64QuickDuplicationDuplicate.UseVisualStyleBackColor = true;
+            // 
+            // textBoxM64QuickDuplicationTotalIterations
+            // 
+            this.textBoxM64QuickDuplicationTotalIterations.Location = new System.Drawing.Point(79, 66);
+            this.textBoxM64QuickDuplicationTotalIterations.Name = "textBoxM64QuickDuplicationTotalIterations";
+            this.textBoxM64QuickDuplicationTotalIterations.Size = new System.Drawing.Size(81, 20);
+            this.textBoxM64QuickDuplicationTotalIterations.TabIndex = 34;
+            this.textBoxM64QuickDuplicationTotalIterations.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxM64QuickDuplication2ndIterationStart
+            // 
+            this.textBoxM64QuickDuplication2ndIterationStart.Location = new System.Drawing.Point(79, 42);
+            this.textBoxM64QuickDuplication2ndIterationStart.Name = "textBoxM64QuickDuplication2ndIterationStart";
+            this.textBoxM64QuickDuplication2ndIterationStart.Size = new System.Drawing.Size(81, 20);
+            this.textBoxM64QuickDuplication2ndIterationStart.TabIndex = 34;
+            this.textBoxM64QuickDuplication2ndIterationStart.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxM64QuickDuplication1stIterationStart
+            // 
+            this.textBoxM64QuickDuplication1stIterationStart.Location = new System.Drawing.Point(79, 18);
+            this.textBoxM64QuickDuplication1stIterationStart.Name = "textBoxM64QuickDuplication1stIterationStart";
+            this.textBoxM64QuickDuplication1stIterationStart.Size = new System.Drawing.Size(81, 20);
+            this.textBoxM64QuickDuplication1stIterationStart.TabIndex = 34;
+            this.textBoxM64QuickDuplication1stIterationStart.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelM64QuickDuplicationTotalIterations
+            // 
+            this.labelM64QuickDuplicationTotalIterations.AutoSize = true;
+            this.labelM64QuickDuplicationTotalIterations.Location = new System.Drawing.Point(6, 69);
+            this.labelM64QuickDuplicationTotalIterations.Name = "labelM64QuickDuplicationTotalIterations";
+            this.labelM64QuickDuplicationTotalIterations.Size = new System.Drawing.Size(57, 13);
+            this.labelM64QuickDuplicationTotalIterations.TabIndex = 14;
+            this.labelM64QuickDuplicationTotalIterations.Text = "Total Iters:";
+            // 
+            // labelM64QuickDuplication2ndIterationStart
+            // 
+            this.labelM64QuickDuplication2ndIterationStart.AutoSize = true;
+            this.labelM64QuickDuplication2ndIterationStart.Location = new System.Drawing.Point(6, 45);
+            this.labelM64QuickDuplication2ndIterationStart.Name = "labelM64QuickDuplication2ndIterationStart";
+            this.labelM64QuickDuplication2ndIterationStart.Size = new System.Drawing.Size(71, 13);
+            this.labelM64QuickDuplication2ndIterationStart.TabIndex = 14;
+            this.labelM64QuickDuplication2ndIterationStart.Text = "2nd Iter Start:";
+            // 
+            // labelM64QuickDuplication1stIterationStart
+            // 
+            this.labelM64QuickDuplication1stIterationStart.AutoSize = true;
+            this.labelM64QuickDuplication1stIterationStart.Location = new System.Drawing.Point(6, 21);
+            this.labelM64QuickDuplication1stIterationStart.Name = "labelM64QuickDuplication1stIterationStart";
+            this.labelM64QuickDuplication1stIterationStart.Size = new System.Drawing.Size(67, 13);
+            this.labelM64QuickDuplication1stIterationStart.TabIndex = 14;
+            this.labelM64QuickDuplication1stIterationStart.Text = "1st Iter Start:";
             // 
             // groupBoxM64Selection
             // 
@@ -3814,6 +3905,16 @@ namespace STROOP
             this.buttonM64SaveAs.Text = "Save As";
             this.buttonM64SaveAs.UseVisualStyleBackColor = true;
             // 
+            // buttonM64ResetChanges
+            // 
+            this.buttonM64ResetChanges.Location = new System.Drawing.Point(65, 44);
+            this.buttonM64ResetChanges.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64ResetChanges.Name = "buttonM64ResetChanges";
+            this.buttonM64ResetChanges.Size = new System.Drawing.Size(64, 46);
+            this.buttonM64ResetChanges.TabIndex = 9;
+            this.buttonM64ResetChanges.Text = "Reset\r\nChanges";
+            this.buttonM64ResetChanges.UseVisualStyleBackColor = true;
+            // 
             // buttonM64Save
             // 
             this.buttonM64Save.Location = new System.Drawing.Point(133, 44);
@@ -3855,14 +3956,14 @@ namespace STROOP
             this.dataGridViewM64Inputs.AllowUserToResizeColumns = false;
             this.dataGridViewM64Inputs.AllowUserToResizeRows = false;
             this.dataGridViewM64Inputs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewM64Inputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewM64Inputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnM64Frame,
@@ -3883,14 +3984,14 @@ namespace STROOP
             this.ColumnM64DDown,
             this.ColumnM64DLeft,
             this.ColumnM64DRight});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewM64Inputs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewM64Inputs.EnableHeadersVisualStyles = false;
             this.dataGridViewM64Inputs.Location = new System.Drawing.Point(0, 0);
@@ -4056,7 +4157,7 @@ namespace STROOP
             this.tabPageM64Header.Location = new System.Drawing.Point(4, 22);
             this.tabPageM64Header.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageM64Header.Name = "tabPageM64Header";
-            this.tabPageM64Header.Size = new System.Drawing.Size(582, 429);
+            this.tabPageM64Header.Size = new System.Drawing.Size(535, 429);
             this.tabPageM64Header.TabIndex = 2;
             this.tabPageM64Header.Text = "Header";
             // 
@@ -4066,7 +4167,7 @@ namespace STROOP
             this.propertyGridM64Header.HelpVisible = false;
             this.propertyGridM64Header.Location = new System.Drawing.Point(0, 0);
             this.propertyGridM64Header.Name = "propertyGridM64Header";
-            this.propertyGridM64Header.Size = new System.Drawing.Size(580, 427);
+            this.propertyGridM64Header.Size = new System.Drawing.Size(533, 427);
             this.propertyGridM64Header.TabIndex = 0;
             this.propertyGridM64Header.ToolbarVisible = false;
             // 
@@ -4078,7 +4179,7 @@ namespace STROOP
             this.tabPageM64Stats.Location = new System.Drawing.Point(4, 22);
             this.tabPageM64Stats.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageM64Stats.Name = "tabPageM64Stats";
-            this.tabPageM64Stats.Size = new System.Drawing.Size(582, 429);
+            this.tabPageM64Stats.Size = new System.Drawing.Size(535, 429);
             this.tabPageM64Stats.TabIndex = 4;
             this.tabPageM64Stats.Text = "Stats";
             // 
@@ -4089,7 +4190,7 @@ namespace STROOP
             this.propertyGridM64Stats.Location = new System.Drawing.Point(0, 0);
             this.propertyGridM64Stats.Margin = new System.Windows.Forms.Padding(0);
             this.propertyGridM64Stats.Name = "propertyGridM64Stats";
-            this.propertyGridM64Stats.Size = new System.Drawing.Size(580, 427);
+            this.propertyGridM64Stats.Size = new System.Drawing.Size(533, 427);
             this.propertyGridM64Stats.TabIndex = 1;
             this.propertyGridM64Stats.ToolbarVisible = false;
             // 
@@ -5657,7 +5758,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 341F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 342F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -12020,7 +12121,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 745;
+            this.splitContainerMemory.SplitterDistance = 748;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -12044,7 +12145,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(629, 429);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(632, 429);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -12147,7 +12248,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(161, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(158, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPageHacks
@@ -15884,104 +15985,16 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // buttonM64ResetChanges
+            // buttonBypass
             // 
-            this.buttonM64ResetChanges.Location = new System.Drawing.Point(65, 44);
-            this.buttonM64ResetChanges.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64ResetChanges.Name = "buttonM64ResetChanges";
-            this.buttonM64ResetChanges.Size = new System.Drawing.Size(64, 46);
-            this.buttonM64ResetChanges.TabIndex = 9;
-            this.buttonM64ResetChanges.Text = "Reset\r\nChanges";
-            this.buttonM64ResetChanges.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMaxOutViCount
-            // 
-            this.checkBoxMaxOutViCount.AutoSize = true;
-            this.checkBoxMaxOutViCount.Checked = true;
-            this.checkBoxMaxOutViCount.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMaxOutViCount.Location = new System.Drawing.Point(212, 71);
-            this.checkBoxMaxOutViCount.Name = "checkBoxMaxOutViCount";
-            this.checkBoxMaxOutViCount.Size = new System.Drawing.Size(110, 17);
-            this.checkBoxMaxOutViCount.TabIndex = 36;
-            this.checkBoxMaxOutViCount.Text = "Max Out VI Count";
-            this.checkBoxMaxOutViCount.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxM64QuickDuplication
-            // 
-            this.groupBoxM64QuickDuplication.Controls.Add(this.buttonM64QuickDuplicationDuplicate);
-            this.groupBoxM64QuickDuplication.Controls.Add(this.textBoxM64QuickDuplicationTotalIterations);
-            this.groupBoxM64QuickDuplication.Controls.Add(this.textBoxM64QuickDuplication2ndIterationStart);
-            this.groupBoxM64QuickDuplication.Controls.Add(this.textBoxM64QuickDuplication1stIterationStart);
-            this.groupBoxM64QuickDuplication.Controls.Add(this.labelM64QuickDuplicationTotalIterations);
-            this.groupBoxM64QuickDuplication.Controls.Add(this.labelM64QuickDuplication2ndIterationStart);
-            this.groupBoxM64QuickDuplication.Controls.Add(this.labelM64QuickDuplication1stIterationStart);
-            this.groupBoxM64QuickDuplication.Location = new System.Drawing.Point(176, 283);
-            this.groupBoxM64QuickDuplication.Name = "groupBoxM64QuickDuplication";
-            this.groupBoxM64QuickDuplication.Size = new System.Drawing.Size(167, 128);
-            this.groupBoxM64QuickDuplication.TabIndex = 15;
-            this.groupBoxM64QuickDuplication.TabStop = false;
-            this.groupBoxM64QuickDuplication.Text = "Quick Duplication";
-            // 
-            // textBoxM64QuickDuplicationTotalIterations
-            // 
-            this.textBoxM64QuickDuplicationTotalIterations.Location = new System.Drawing.Point(79, 66);
-            this.textBoxM64QuickDuplicationTotalIterations.Name = "textBoxM64QuickDuplicationTotalIterations";
-            this.textBoxM64QuickDuplicationTotalIterations.Size = new System.Drawing.Size(81, 20);
-            this.textBoxM64QuickDuplicationTotalIterations.TabIndex = 34;
-            this.textBoxM64QuickDuplicationTotalIterations.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxM64QuickDuplication2ndIterationStart
-            // 
-            this.textBoxM64QuickDuplication2ndIterationStart.Location = new System.Drawing.Point(79, 42);
-            this.textBoxM64QuickDuplication2ndIterationStart.Name = "textBoxM64QuickDuplication2ndIterationStart";
-            this.textBoxM64QuickDuplication2ndIterationStart.Size = new System.Drawing.Size(81, 20);
-            this.textBoxM64QuickDuplication2ndIterationStart.TabIndex = 34;
-            this.textBoxM64QuickDuplication2ndIterationStart.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxM64QuickDuplication1stIterationStart
-            // 
-            this.textBoxM64QuickDuplication1stIterationStart.Location = new System.Drawing.Point(79, 18);
-            this.textBoxM64QuickDuplication1stIterationStart.Name = "textBoxM64QuickDuplication1stIterationStart";
-            this.textBoxM64QuickDuplication1stIterationStart.Size = new System.Drawing.Size(81, 20);
-            this.textBoxM64QuickDuplication1stIterationStart.TabIndex = 34;
-            this.textBoxM64QuickDuplication1stIterationStart.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelM64QuickDuplicationTotalIterations
-            // 
-            this.labelM64QuickDuplicationTotalIterations.AutoSize = true;
-            this.labelM64QuickDuplicationTotalIterations.Location = new System.Drawing.Point(6, 69);
-            this.labelM64QuickDuplicationTotalIterations.Name = "labelM64QuickDuplicationTotalIterations";
-            this.labelM64QuickDuplicationTotalIterations.Size = new System.Drawing.Size(57, 13);
-            this.labelM64QuickDuplicationTotalIterations.TabIndex = 14;
-            this.labelM64QuickDuplicationTotalIterations.Text = "Total Iters:";
-            // 
-            // labelM64QuickDuplication2ndIterationStart
-            // 
-            this.labelM64QuickDuplication2ndIterationStart.AutoSize = true;
-            this.labelM64QuickDuplication2ndIterationStart.Location = new System.Drawing.Point(6, 45);
-            this.labelM64QuickDuplication2ndIterationStart.Name = "labelM64QuickDuplication2ndIterationStart";
-            this.labelM64QuickDuplication2ndIterationStart.Size = new System.Drawing.Size(71, 13);
-            this.labelM64QuickDuplication2ndIterationStart.TabIndex = 14;
-            this.labelM64QuickDuplication2ndIterationStart.Text = "2nd Iter Start:";
-            // 
-            // labelM64QuickDuplication1stIterationStart
-            // 
-            this.labelM64QuickDuplication1stIterationStart.AutoSize = true;
-            this.labelM64QuickDuplication1stIterationStart.Location = new System.Drawing.Point(6, 21);
-            this.labelM64QuickDuplication1stIterationStart.Name = "labelM64QuickDuplication1stIterationStart";
-            this.labelM64QuickDuplication1stIterationStart.Size = new System.Drawing.Size(67, 13);
-            this.labelM64QuickDuplication1stIterationStart.TabIndex = 14;
-            this.labelM64QuickDuplication1stIterationStart.Text = "1st Iter Start:";
-            // 
-            // buttonM64QuickDuplicationDuplicate
-            // 
-            this.buttonM64QuickDuplicationDuplicate.Location = new System.Drawing.Point(15, 93);
-            this.buttonM64QuickDuplicationDuplicate.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64QuickDuplicationDuplicate.Name = "buttonM64QuickDuplicationDuplicate";
-            this.buttonM64QuickDuplicationDuplicate.Size = new System.Drawing.Size(132, 22);
-            this.buttonM64QuickDuplicationDuplicate.TabIndex = 35;
-            this.buttonM64QuickDuplicationDuplicate.Text = "Duplicate";
-            this.buttonM64QuickDuplicationDuplicate.UseVisualStyleBackColor = true;
+            this.buttonBypass.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonBypass.Location = new System.Drawing.Point(134, 71);
+            this.buttonBypass.Name = "buttonBypass";
+            this.buttonBypass.Size = new System.Drawing.Size(84, 37);
+            this.buttonBypass.TabIndex = 3;
+            this.buttonBypass.Text = "Bypass";
+            this.buttonBypass.UseVisualStyleBackColor = true;
+            this.buttonBypass.Click += new System.EventHandler(this.buttonRefresh_Click);
             // 
             // StroopMainForm
             // 
@@ -16054,6 +16067,8 @@ namespace STROOP
             this.splitContainerM64.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerM64)).EndInit();
             this.splitContainerM64.ResumeLayout(false);
+            this.groupBoxM64QuickDuplication.ResumeLayout(false);
+            this.groupBoxM64QuickDuplication.PerformLayout();
             this.groupBoxM64Selection.ResumeLayout(false);
             this.groupBoxM64Selection.PerformLayout();
             this.tabControlM64Details.ResumeLayout(false);
@@ -16472,8 +16487,6 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
-            this.groupBoxM64QuickDuplication.ResumeLayout(false);
-            this.groupBoxM64QuickDuplication.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -17679,6 +17692,7 @@ namespace STROOP
         private Label labelM64QuickDuplication2ndIterationStart;
         private Label labelM64QuickDuplication1stIterationStart;
         private Button buttonM64ResetChanges;
+        private Button buttonBypass;
     }
 }
 
