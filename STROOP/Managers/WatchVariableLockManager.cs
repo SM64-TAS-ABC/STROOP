@@ -59,6 +59,7 @@ namespace STROOP.Structs
         public static void UpdateLockValues(
             WatchVariable variable, object newValue, List<uint> addresses = null)
         {
+            if (LockConfig.LockingDisabled) return;
             if (!ContainsAnyLocks()) return;
             List<WatchVariableLock> newLocks = variable.GetLocks(addresses);
             foreach (WatchVariableLock newLock in newLocks)
@@ -76,6 +77,7 @@ namespace STROOP.Structs
         public static void UpdateLockValues(
             WatchVariable variable, List<object> newValues, List<uint> addresses = null)
         {
+            if (LockConfig.LockingDisabled) return;
             if (!ContainsAnyLocks()) return;
             List<WatchVariableLock> newLocks = variable.GetLocks(addresses);
             for (int i = 0; i < newLocks.Count; i++)
@@ -94,6 +96,7 @@ namespace STROOP.Structs
         public static void UpdateMemoryLockValue(
             object newValue, uint address, Type type, uint? mask)
         {
+            if (LockConfig.LockingDisabled) return;
             if (!ContainsAnyLocks()) return;
             foreach (WatchVariableLock currentLock in _lockList)
             {
@@ -116,6 +119,7 @@ namespace STROOP.Structs
 
         public static void Update()
         {
+            if (LockConfig.LockingDisabled) return;
             _lockList.ForEach(varLock => varLock.Invoke());
         }
 
