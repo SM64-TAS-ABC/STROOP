@@ -309,6 +309,14 @@ namespace STROOP.Utilities
             return AngleTo_AngleUnitsRounded(0, 0, xTo, zTo);
         }
 
+        public static short GetDeltaAngleTruncated(double angle1, double angle2)
+        {
+            ushort angle1Truncated = NormalizeAngleTruncated(angle1);
+            ushort angle2Truncated = NormalizeAngleTruncated(angle2);
+            int delta = angle2Truncated - angle1Truncated;
+            return MoreMath.NormalizeAngleShort(delta);
+        }
+
         public static (double radius, double theta, double phi) EulerToSpherical_Radians(double x, double y, double z)
         {
             double radius = Math.Sqrt(x * x + y * y + z * z);

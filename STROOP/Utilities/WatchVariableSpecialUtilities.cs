@@ -3778,6 +3778,25 @@ namespace STROOP.Structs
                     };
                     break;
 
+                case "DeltaAngleMarioToAngleTruncated":
+                    getterFunction = (uint dummy) =>
+                    {
+                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                        return MoreMath.GetDeltaAngleTruncated(SpecialConfig.PointAngle, marioAngle);
+                    };
+                    setterFunction = (object objectValue, uint dummy) =>
+                    {
+                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
+                        if (!angleDiffNullable.HasValue) return false;
+                        double angleDiff = angleDiffNullable.Value;
+                        ushort pointAngleTruncated = MoreMath.NormalizeAngleTruncated(SpecialConfig.PointAngle);
+                        double newMarioAngleDouble = pointAngleTruncated + angleDiff;
+                        ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                        return Config.Stream.SetValue(
+                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    };
+                    break;
+
                 case "FDistanceToPoint":
                     getterFunction = (uint objAddress) =>
                     {
@@ -4329,11 +4348,8 @@ namespace STROOP.Structs
         public static short GetDeltaYawIntendedFacing()
         {
             ushort marioYawFacing = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
-            ushort marioYawFacingTruncated = MoreMath.NormalizeAngleTruncated(marioYawFacing);
             ushort marioYawIntended = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.IntendedYawOffset);
-            ushort marioYawIntendedTruncated = MoreMath.NormalizeAngleTruncated(marioYawIntended);
-            int deltaYaw = marioYawIntendedTruncated - marioYawFacingTruncated;
-            return MoreMath.NormalizeAngleShort(deltaYaw);
+            return MoreMath.GetDeltaAngleTruncated(marioYawFacing, marioYawIntended);
         }
 
         // Mario trajectory methods
