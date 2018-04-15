@@ -72,7 +72,11 @@ namespace STROOP
 
             ControlUtilities.AddContextMenuStripFunctions(
                 labelVersionNumber,
-                new List<string>() { "Enable TASer Settings", "Test Something" },
+                new List<string>()
+                {
+                    "Enable TASer Settings",
+                    "Test Something",
+                },
                 new List<Action>()
                 {
                     () =>
@@ -86,6 +90,13 @@ namespace STROOP
                     },
                     () => TestUtilities.TestSomething(),
                 });
+            ToolStripMenuItem disableLockingItem = new ToolStripMenuItem("Disable Locking");
+            disableLockingItem.Click += (se, ev) =>
+            {
+                LockConfig.LockingDisabled = !LockConfig.LockingDisabled;
+                disableLockingItem.Checked = LockConfig.LockingDisabled;
+            };
+            labelVersionNumber.ContextMenuStrip.Items.Add(disableLockingItem);
 
             Config.StroopMainForm = this;
 
