@@ -142,7 +142,7 @@ namespace STROOP.Managers
         {
             List<M64InputCell> cells = M64Utilities.GetSelectedInputCells(
                 _gui.DataGridViewInputs, CellSelectionType.Cells);
-            (int minFrame, int maxFrame, string inputsString) = M64Utilities.GetCellStats(cells);
+            (int minFrame, int maxFrame, string inputsString) = M64Utilities.GetCellStats(cells, true);
             _gui.TextBoxSelectionStartFrame.Text = minFrame.ToString();
             _gui.TextBoxSelectionEndFrame.Text = maxFrame.ToString();
             _gui.TextBoxSelectionInputs.Text = inputsString;
@@ -299,6 +299,8 @@ namespace STROOP.Managers
         {
             int? startFrame = ParsingUtilities.ParseIntNullable(_gui.TextBoxSelectionStartFrame.Text);
             int? endFrame = ParsingUtilities.ParseIntNullable(_gui.TextBoxSelectionEndFrame.Text);
+            if (startFrame.HasValue) startFrame = M64Utilities.ConvertDisplayedValueToFrame(startFrame.Value);
+            if (endFrame.HasValue) endFrame = M64Utilities.ConvertDisplayedValueToFrame(endFrame.Value);
             return (startFrame, endFrame);
         }
 
@@ -341,6 +343,7 @@ namespace STROOP.Managers
             {
                 M64Config.FrameInputRelation = selectedFrameInputRelation;
                 _gui.DataGridViewInputs.Refresh();
+                UpdateSelectionTextboxes();
             }
         }
     }
