@@ -50,6 +50,13 @@
       <InputImage path="ButtonDRight.png"/>
     </ButtonDRight>
 
+    <ButtonU1>
+      <InputImage path="ButtonU1.png"/>
+    </ButtonU1>
+    <ButtonU2>
+      <InputImage path="ButtonU2.png"/>
+    </ButtonU2>
+
     <ControlStick>
       <InputImage path="ControlStick.png"/>
     </ControlStick>

@@ -461,6 +461,8 @@ namespace STROOP.Utilities
                    buttonDDownPath = "",
                    buttonDLeftPath = "",
                    buttonDRightPath = "",
+                   buttonU1Path = "",
+                   buttonU2Path = "",
                    controlStickPath = "",
                    controllerPath = "";
 
@@ -541,6 +543,14 @@ namespace STROOP.Utilities
                                     buttonDRightPath = subElement.Element(XName.Get("InputImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
+                                case "ButtonU1":
+                                    buttonU1Path = subElement.Element(XName.Get("InputImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "ButtonU2":
+                                    buttonU2Path = subElement.Element(XName.Get("InputImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
                                 case "ControlStick":
                                     controlStickPath = subElement.Element(XName.Get("InputImage")).Attribute(XName.Get("path")).Value;
                                     break;
@@ -573,6 +583,9 @@ namespace STROOP.Utilities
             inputImageGui.ButtonDDownImage = Image.FromFile(inputImageDir + buttonDDownPath);
             inputImageGui.ButtonDLeftImage = Image.FromFile(inputImageDir + buttonDLeftPath);
             inputImageGui.ButtonDRightImage = Image.FromFile(inputImageDir + buttonDRightPath);
+
+            inputImageGui.ButtonU1Image = Image.FromFile(inputImageDir + buttonU1Path);
+            inputImageGui.ButtonU2Image = Image.FromFile(inputImageDir + buttonU2Path);
 
             inputImageGui.ControlStickImage = Image.FromFile(inputImageDir + controlStickPath);
             inputImageGui.ControllerImage = Image.FromFile(inputImageDir + controllerPath);
