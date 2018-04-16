@@ -314,7 +314,7 @@ namespace STROOP.Utilities
             ushort angle1Truncated = NormalizeAngleTruncated(angle1);
             ushort angle2Truncated = NormalizeAngleTruncated(angle2);
             int delta = angle2Truncated - angle1Truncated;
-            return MoreMath.NormalizeAngleShort(delta);
+            return NormalizeAngleShort(delta);
         }
 
         public static (double radius, double theta, double phi) EulerToSpherical_Radians(double x, double y, double z)

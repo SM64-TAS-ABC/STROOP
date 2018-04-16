@@ -675,6 +675,42 @@ namespace STROOP.Structs
                     };
                     break;
 
+                case "MarioPunchAngleAway":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        Position marioPos = GetMarioPosition();
+                        Position objPos = GetObjectPosition(objAddress);
+                        ushort angleToObj = InGameTrigUtilities.InGameAngleTo(
+                            marioPos.X, marioPos.Z, objPos.X, objPos.Z);
+                        int angleDiff = marioPos.Angle.Value - angleToObj;
+                        int angleDiffShort = MoreMath.NormalizeAngleShort(angleDiff);
+                        int angleDiffAbs = Math.Abs(angleDiffShort);
+                        int angleAway = angleDiffAbs - 0x2AAA;
+                        return angleAway;
+                    };
+                    setterFunction = (object objectValue, uint objAddress) =>
+                    {
+                        double? angleAwayNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
+                        if (!angleAwayNullable.HasValue) return false;
+                        double angleAway = angleAwayNullable.Value;
+
+                        Position marioPos = GetMarioPosition();
+                        Position objPos = GetObjectPosition(objAddress);
+                        ushort angleToObj = InGameTrigUtilities.InGameAngleTo(
+                            marioPos.X, marioPos.Z, objPos.X, objPos.Z);
+                        int oldAngleDiff = marioPos.Angle.Value - angleToObj;
+                        int oldAngleDiffShort = MoreMath.NormalizeAngleShort(oldAngleDiff);
+                        int signMultiplier = oldAngleDiffShort >= 0 ? 1 : -1;
+
+                        double angleDiffAbs = angleAway + 0x2AAA;
+                        double angleDiff = angleDiffAbs * signMultiplier;
+                        double marioAngleDouble = angleToObj + angleDiff;
+                        ushort marioAngleUShort = MoreMath.NormalizeAngleUshort(marioAngleDouble);
+
+                        return Config.Stream.SetValue(marioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    };
+                    break;
+
                 case "ObjectRngCallsPerFrame":
                     getterFunction = (uint objAddress) =>
                     {

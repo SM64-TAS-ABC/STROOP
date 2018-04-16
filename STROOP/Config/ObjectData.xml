@@ -71,7 +71,8 @@
   <Data groupList="Intermediate" base="Object" specialType="MarioHitboxAboveObject">Mario Hitbox Above</Data>
   <Data groupList="Intermediate" base="Object" specialType="MarioHitboxBelowObject">Mario Hitbox Below</Data>
   <Data groupList="Intermediate" base="Object" specialType="MarioHitboxOverlapsObject" subclass="Boolean">Mario Hitbox Overlap</Data>
-  
+  <Data groupList="Advanced" base="Object" specialType="MarioPunchAngleAway" subclass="Angle" type="short">Punch Angle Away</Data>
+
   <Data groupList="Advanced" type="float" offset="0x128" base="Object">Min Wall Dist</Data>
   <Data groupList="Advanced" type="float" offset="0x0194" base="Object">Tangible Dist</Data>
   <Data groupList="Advanced" type="float" offset="0x019C" base="Object">Drawing Dist</Data>
