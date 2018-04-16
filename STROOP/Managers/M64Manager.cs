@@ -72,8 +72,7 @@ namespace STROOP.Managers
 
         private void DeleteRows()
         {
-            int? startFrame = ParsingUtilities.ParseIntNullable(_gui.TextBoxSelectionStartFrame.Text);
-            int? endFrame = ParsingUtilities.ParseIntNullable(_gui.TextBoxSelectionEndFrame.Text);
+            (int? startFrame, int? endFrame) = GetFrameBounds();
             if (!startFrame.HasValue || !endFrame.HasValue) return;
             _m64File.DeleteRows(startFrame.Value, endFrame.Value);
         }
@@ -82,19 +81,17 @@ namespace STROOP.Managers
         {
             M64CopiedData copiedData = _gui.ListBoxCopied.SelectedItem as M64CopiedData;
             if (copiedData == null) return;
-            int? pasteIndex = ParsingUtilities.ParseIntNullable(_gui.TextBoxSelectionStartFrame.Text);
-            if (!pasteIndex.HasValue) return;
+            (int? startFrame, int? endFrame) = GetFrameBounds();
+            if (!startFrame.HasValue) return;
             int? multiplicity = ParsingUtilities.ParseIntNullable(_gui.TextBoxPasteMultiplicity.Text);
             if (!multiplicity.HasValue) return;
-            _m64File.Paste(copiedData, pasteIndex.Value, insert, multiplicity.Value);
+            _m64File.Paste(copiedData, startFrame.Value, insert, multiplicity.Value);
         }
 
         private void CopyData(bool useRow)
         {
-            int? startFrame = ParsingUtilities.ParseIntNullable(_gui.TextBoxSelectionStartFrame.Text);
-            int? endFrame = ParsingUtilities.ParseIntNullable(_gui.TextBoxSelectionEndFrame.Text);
+            (int? startFrame, int? endFrame) = GetFrameBounds();
             string inputsString = _gui.TextBoxSelectionInputs.Text;
-
             if (!startFrame.HasValue || !endFrame.HasValue) return;
             M64CopiedData copiedData = M64CopiedData.CreateCopiedData(
                 _gui.DataGridViewInputs, _m64File.CurrentFileName,
@@ -153,8 +150,7 @@ namespace STROOP.Managers
 
         private void SetValuesOfSelection(CellSelectionType cellSelectionType, bool value)
         {
-            int? startFrame = ParsingUtilities.ParseIntNullable(_gui.TextBoxSelectionStartFrame.Text);
-            int? endFrame = ParsingUtilities.ParseIntNullable(_gui.TextBoxSelectionEndFrame.Text);
+            (int? startFrame, int? endFrame) = GetFrameBounds();
             List<M64InputCell> cells = M64Utilities.GetSelectedInputCells(
                 _gui.DataGridViewInputs,
                 cellSelectionType,
@@ -297,6 +293,13 @@ namespace STROOP.Managers
                 _gui.DataGridViewInputs, _m64File.CurrentFileName,
                 iter1Start, iter1End, true /* useRow */);
             _m64File.Paste(copiedData, iter2Start, true /* insert */, multiplicity);
+        }
+
+        private (int? startFrame, int? endFrame) GetFrameBounds()
+        {
+            int? startFrame = ParsingUtilities.ParseIntNullable(_gui.TextBoxSelectionStartFrame.Text);
+            int? endFrame = ParsingUtilities.ParseIntNullable(_gui.TextBoxSelectionEndFrame.Text);
+            return (startFrame, endFrame);
         }
 
         private void UpdateTableSettings()
