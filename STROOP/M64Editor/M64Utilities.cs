@@ -149,7 +149,7 @@ namespace STROOP.M64Editor
 
         public static List<M64InputCell> GetSelectedInputCells(
             DataGridView table, CellSelectionType cellSelectionType,
-            string startFrameString = null, string endFrameString = null, string inputsString = null)
+            int? startFrameNullable = null, int? endFrameNullable = null, string inputsString = null)
         {
             if (cellSelectionType == CellSelectionType.PartialRowRange && inputsString == null)
                 throw new ArgumentOutOfRangeException();
@@ -165,8 +165,6 @@ namespace STROOP.M64Editor
             }
             else
             {
-                int? startFrameNullable = ParsingUtilities.ParseIntNullable(startFrameString);
-                int? endFrameNullable = ParsingUtilities.ParseIntNullable(endFrameString);
                 if (!startFrameNullable.HasValue || !endFrameNullable.HasValue) return new List<M64InputCell>();
                 int startFrame = Math.Max(startFrameNullable.Value, 0);
                 int endFrame = Math.Min(endFrameNullable.Value, table.Rows.Count - 1);

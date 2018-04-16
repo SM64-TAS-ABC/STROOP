@@ -153,11 +153,13 @@ namespace STROOP.Managers
 
         private void SetValuesOfSelection(CellSelectionType cellSelectionType, bool value)
         {
+            int? startFrame = ParsingUtilities.ParseIntNullable(_gui.TextBoxSelectionStartFrame.Text);
+            int? endFrame = ParsingUtilities.ParseIntNullable(_gui.TextBoxSelectionEndFrame.Text);
             List<M64InputCell> cells = M64Utilities.GetSelectedInputCells(
                 _gui.DataGridViewInputs,
                 cellSelectionType,
-                _gui.TextBoxSelectionStartFrame.Text,
-                _gui.TextBoxSelectionEndFrame.Text,
+                startFrame,
+                endFrame,
                 _gui.TextBoxSelectionInputs.Text);
             cells.ForEach(cell => cell.SetValue(value));
             _gui.DataGridViewInputs.Refresh();
