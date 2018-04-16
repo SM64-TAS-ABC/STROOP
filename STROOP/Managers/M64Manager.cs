@@ -65,7 +65,7 @@ namespace STROOP.Managers
             _gui.ListBoxCopied.KeyDown += (sender, e) => ListBoxCopied_KeyDown();
 
             _gui.ComboBoxFrameInputRelation.DataSource = Enum.GetValues(typeof(FrameInputRelationType));
-            _gui.ComboBoxFrameInputRelation.SelectedItem = M64InputFrame.FrameInputRelation;
+            _gui.ComboBoxFrameInputRelation.SelectedItem = M64Config.FrameInputRelation;
 
             _gui.ButtonQuickDuplicationDuplicate.Click += (sender, e) => PerformQuickDuplication();
         }
@@ -337,9 +337,9 @@ namespace STROOP.Managers
 
             FrameInputRelationType selectedFrameInputRelation =
                 (FrameInputRelationType)_gui.ComboBoxFrameInputRelation.SelectedItem;
-            if (selectedFrameInputRelation != M64InputFrame.FrameInputRelation)
+            if (selectedFrameInputRelation != M64Config.FrameInputRelation)
             {
-                M64InputFrame.FrameInputRelation = selectedFrameInputRelation;
+                M64Config.FrameInputRelation = selectedFrameInputRelation;
                 _gui.DataGridViewInputs.Refresh();
             }
         }

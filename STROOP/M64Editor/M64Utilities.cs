@@ -288,5 +288,30 @@ namespace STROOP.M64Editor
         {
             return ((rawValue >> bit) & 0x01) == 0x01;
         }
+
+        public static int ConvertFrameToDisplayedValue(int frame)
+        {
+            return frame + GetFrameInputRelationOffset();
+        }
+
+        public static int ConvertDisplayedValueToFrame(int displayedValue)
+        {
+            return displayedValue - GetFrameInputRelationOffset();
+        }
+
+        private static int GetFrameInputRelationOffset()
+        {
+            switch (M64Config.FrameInputRelation)
+            {
+                case FrameInputRelationType.FrameOfInput:
+                    return -1;
+                case FrameInputRelationType.FrameAfterInput:
+                    return 0;
+                case FrameInputRelationType.FrameWhenObserved:
+                    return 1;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
     }
 }

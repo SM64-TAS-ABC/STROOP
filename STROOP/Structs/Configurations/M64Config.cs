@@ -17,5 +17,7 @@ namespace STROOP.Structs
 
         public static readonly uint CrcUS = 4281031267;
         public static readonly uint CrcJP = 238922318;
+
+        public static FrameInputRelationType FrameInputRelation = FrameInputRelationType.FrameAfterInput;
     }
 }

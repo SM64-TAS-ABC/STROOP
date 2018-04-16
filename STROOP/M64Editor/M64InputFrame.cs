@@ -13,7 +13,6 @@ namespace STROOP.M64Editor
 {
     public class M64InputFrame
     {
-        public static FrameInputRelationType FrameInputRelation = FrameInputRelationType.FrameAfterInput;
         public static int ClassIdIndex = 0;
 
         public int FrameIndex;
@@ -51,8 +50,8 @@ namespace STROOP.M64Editor
             _D_Right = D_Right;
         }
 
-        public int Frame { get => FrameIndex + GetFrameInputRelationOffset(); }
-        public int Id { get => IdIndex + GetFrameInputRelationOffset(); }
+        public int Frame { get => M64Utilities.ConvertFrameToDisplayedValue(FrameIndex); }
+        public int Id { get => M64Utilities.ConvertFrameToDisplayedValue(IdIndex); }
         public sbyte X { get => (sbyte)GetByte(2); set { SetByte(2, (byte)value); NotifyChange(2, X != _X); } }
         public sbyte Y { get => (sbyte)GetByte(3); set { SetByte(3, (byte)value); NotifyChange(3, Y != _Y); } }
         public bool A { get => GetBit(7); set { SetBit(7, value); NotifyChange(4, A != _A); } }
@@ -116,21 +115,6 @@ namespace STROOP.M64Editor
         private bool GetBit(int bit)
         {
             return M64Utilities.GetBit(RawValue, bit);
-        }
-
-        private int GetFrameInputRelationOffset()
-        {
-            switch (FrameInputRelation)
-            {
-                case FrameInputRelationType.FrameOfInput:
-                    return -1;
-                case FrameInputRelationType.FrameAfterInput:
-                    return 0;
-                case FrameInputRelationType.FrameWhenObserved:
-                    return 1;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
         }
 
         public byte[] ToBytes()
