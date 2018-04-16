@@ -20,6 +20,8 @@ namespace STROOP.Structs.Configurations
         public static readonly uint BufferedInputAddressUS = 0x80367054;
         public static readonly uint BufferedInputAddressJP = 0x80365CE4;
 
+        public static readonly uint ControlStickXOffset = 0x02;
+        public static readonly uint ControlStickYOffset = 0x03;
         public static readonly uint ButtonAOffset = 0x00;
         public static readonly uint ButtonBOffset = 0x00;
         public static readonly uint ButtonZOffset = 0x00;
@@ -34,8 +36,8 @@ namespace STROOP.Structs.Configurations
         public static readonly uint ButtonDDownOffset = 0x00;
         public static readonly uint ButtonDLeftOffset = 0x00;
         public static readonly uint ButtonDRightOffset = 0x00;
-        public static readonly uint ControlStickXOffset = 0x02;
-        public static readonly uint ControlStickYOffset = 0x03;
+        public static readonly uint ButtonU1Offset = 0x01;
+        public static readonly uint ButtonU2Offset = 0x01;
 
         public static readonly uint ButtonAMask = 0x80;
         public static readonly uint ButtonBMask = 0x40;
@@ -51,5 +53,7 @@ namespace STROOP.Structs.Configurations
         public static readonly uint ButtonDDownMask = 0x04;
         public static readonly uint ButtonDLeftMask = 0x02;
         public static readonly uint ButtonDRightMask = 0x01;
+        public static readonly uint ButtonU1Mask = 0x40;
+        public static readonly uint ButtonU2Mask = 0x80;
     }
 }
