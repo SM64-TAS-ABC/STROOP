@@ -55,6 +55,11 @@ namespace STROOP.Structs
             return Criteria.GetHashCode();
         }
 
+        public override string ToString()
+        {
+            return Name;
+        }
+
         public static bool operator ==(ObjectBehaviorAssociation a, ObjectBehaviorAssociation b)
         {
             if (object.ReferenceEquals(a, null))

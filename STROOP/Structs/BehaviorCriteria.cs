@@ -1,4 +1,5 @@
-﻿using System;
+﻿using STROOP.Structs.Configurations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -81,6 +82,11 @@ namespace STROOP.Structs
             hash = hash * 23 + SubType.GetHashCode();
             hash = hash * 23 + Appearance.GetHashCode();
             return hash;
+        }
+
+        public override string ToString()
+        {
+            return Config.ObjectAssociations.GetObjectName(this);
         }
     }
 }

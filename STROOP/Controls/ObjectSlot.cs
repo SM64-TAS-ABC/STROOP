@@ -549,5 +549,11 @@ namespace STROOP
             if (redraw)
                 Invalidate();
         }
+
+        public override string ToString()
+        {
+            string objectString = CurrentObject?.ToString() ?? "(no object)";
+            return objectString + " " + _text;
+        }
     }
 }

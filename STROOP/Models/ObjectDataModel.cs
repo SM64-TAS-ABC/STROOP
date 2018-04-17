@@ -285,5 +285,10 @@ namespace STROOP.Models
         {
             return Address.GetHashCode();
         }
+
+        public override string ToString()
+        {
+            return BehaviorAssociation.Name + " " + HexUtilities.Format(Address);
+        }
     }
 }
