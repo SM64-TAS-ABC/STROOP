@@ -135,7 +135,7 @@ namespace STROOP.Controls
             };
 
             ToolStripMenuItem itemOpenController = new ToolStripMenuItem("Open Controller");
-            itemOpenController.Click += (sender, e) => ShowVarController();
+            itemOpenController.Click += (sender, e) => ShowControllerForm();
 
             ToolStripMenuItem itemAddToCustomTab = new ToolStripMenuItem("Add to Custom Tab");
             itemAddToCustomTab.Click += (sender, e) =>
@@ -210,10 +210,20 @@ namespace STROOP.Controls
             };
         }
 
-        public void ShowVarController()
+        public void ShowControllerForm()
         {
             VariableControllerForm varController =
                 new VariableControllerForm(
+                    _watchVarControl.VarName,
+                    this,
+                    _watchVarControl.FixedAddressList);
+            varController.Show();
+        }
+
+        public void ShowBitForm()
+        {
+            VariableBitForm varController =
+                new VariableBitForm(
                     _watchVarControl.VarName,
                     this,
                     _watchVarControl.FixedAddressList);

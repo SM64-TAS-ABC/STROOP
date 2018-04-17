@@ -275,6 +275,7 @@ namespace STROOP.Controls
             bool isLKeyHeld = Keyboard.IsKeyDown(Key.L);
             bool isRKeyHeld = Keyboard.IsKeyDown(Key.R);
             bool isCKeyHeld = Keyboard.IsKeyDown(Key.C);
+            bool isBKeyHeld = Keyboard.IsKeyDown(Key.B);
             bool isQKeyHeld = Keyboard.IsKeyDown(Key.Q);
             bool isXKeyHeld = Keyboard.IsKeyDown(Key.X);
             bool isTKeyHeld = Keyboard.IsKeyDown(Key.T);
@@ -330,7 +331,13 @@ namespace STROOP.Controls
 
             if (isCKeyHeld)
             {
-                _watchVarWrapper.ShowVarController();
+                _watchVarWrapper.ShowControllerForm();
+                return;
+            }
+
+            if (isBKeyHeld)
+            {
+                _watchVarWrapper.ShowBitForm();
                 return;
             }
 
