@@ -1236,6 +1236,7 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
+            this.checkBoxDontRoundValuesToZero = new System.Windows.Forms.CheckBox();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1663,13 +1664,13 @@ namespace STROOP
             this.panelConnect.Controls.Add(this.listBoxProcessesList);
             this.panelConnect.Location = new System.Drawing.Point(246, 11);
             this.panelConnect.Name = "panelConnect";
-            this.panelConnect.Size = new System.Drawing.Size(441, 258);
+            this.panelConnect.Size = new System.Drawing.Size(441, 10);
             this.panelConnect.TabIndex = 17;
             // 
             // buttonRefreshAndConnect
             // 
             this.buttonRefreshAndConnect.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonRefreshAndConnect.Location = new System.Drawing.Point(222, 195);
+            this.buttonRefreshAndConnect.Location = new System.Drawing.Point(222, 71);
             this.buttonRefreshAndConnect.Name = "buttonRefreshAndConnect";
             this.buttonRefreshAndConnect.Size = new System.Drawing.Size(84, 37);
             this.buttonRefreshAndConnect.TabIndex = 3;
@@ -1680,7 +1681,7 @@ namespace STROOP
             // buttonBypass
             // 
             this.buttonBypass.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonBypass.Location = new System.Drawing.Point(134, 195);
+            this.buttonBypass.Location = new System.Drawing.Point(134, 71);
             this.buttonBypass.Name = "buttonBypass";
             this.buttonBypass.Size = new System.Drawing.Size(84, 37);
             this.buttonBypass.TabIndex = 3;
@@ -1691,7 +1692,7 @@ namespace STROOP
             // buttonRefresh
             // 
             this.buttonRefresh.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonRefresh.Location = new System.Drawing.Point(134, 154);
+            this.buttonRefresh.Location = new System.Drawing.Point(134, 30);
             this.buttonRefresh.Name = "buttonRefresh";
             this.buttonRefresh.Size = new System.Drawing.Size(84, 37);
             this.buttonRefresh.TabIndex = 3;
@@ -1704,7 +1705,7 @@ namespace STROOP
             this.labelNotConnected.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelNotConnected.AutoSize = true;
             this.labelNotConnected.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNotConnected.Location = new System.Drawing.Point(141, 24);
+            this.labelNotConnected.Location = new System.Drawing.Point(141, -100);
             this.labelNotConnected.Name = "labelNotConnected";
             this.labelNotConnected.Size = new System.Drawing.Size(157, 26);
             this.labelNotConnected.TabIndex = 2;
@@ -1713,7 +1714,7 @@ namespace STROOP
             // buttonConnect
             // 
             this.buttonConnect.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonConnect.Location = new System.Drawing.Point(222, 154);
+            this.buttonConnect.Location = new System.Drawing.Point(222, 30);
             this.buttonConnect.Name = "buttonConnect";
             this.buttonConnect.Size = new System.Drawing.Size(84, 37);
             this.buttonConnect.TabIndex = 1;
@@ -1725,7 +1726,7 @@ namespace STROOP
             // 
             this.listBoxProcessesList.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.listBoxProcessesList.FormattingEnabled = true;
-            this.listBoxProcessesList.Location = new System.Drawing.Point(134, 55);
+            this.listBoxProcessesList.Location = new System.Drawing.Point(134, -69);
             this.listBoxProcessesList.Name = "listBoxProcessesList";
             this.listBoxProcessesList.Size = new System.Drawing.Size(172, 95);
             this.listBoxProcessesList.TabIndex = 0;
@@ -5769,7 +5770,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 343F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 344F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -12132,7 +12133,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 751;
+            this.splitContainerMemory.SplitterDistance = 754;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -12156,7 +12157,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(635, 429);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(638, 429);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -12259,7 +12260,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(155, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(152, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPageHacks
@@ -13644,6 +13645,7 @@ namespace STROOP
             this.tabPageOptions.Controls.Add(this.groupBoxPositionControllerRelativeAngle);
             this.tabPageOptions.Controls.Add(this.groupBoxFPS);
             this.tabPageOptions.Controls.Add(this.groupBoxGotoRetrieveOffsets);
+            this.tabPageOptions.Controls.Add(this.checkBoxDontRoundValuesToZero);
             this.tabPageOptions.Controls.Add(this.checkBoxUseMisalignmentOffsetForDistanceToLine);
             this.tabPageOptions.Controls.Add(this.checkBoxExcludeDustForClosestObject);
             this.tabPageOptions.Controls.Add(this.groupBoxShowOverlay);
@@ -13666,7 +13668,7 @@ namespace STROOP
             this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleMario);
             this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleRecommended);
             this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleCustom);
-            this.groupBoxPositionControllerRelativeAngle.Location = new System.Drawing.Point(16, 192);
+            this.groupBoxPositionControllerRelativeAngle.Location = new System.Drawing.Point(16, 198);
             this.groupBoxPositionControllerRelativeAngle.Name = "groupBoxPositionControllerRelativeAngle";
             this.groupBoxPositionControllerRelativeAngle.Size = new System.Drawing.Size(141, 99);
             this.groupBoxPositionControllerRelativeAngle.TabIndex = 39;
@@ -14093,7 +14095,7 @@ namespace STROOP
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 154);
+            this.label3.Location = new System.Drawing.Point(3, 173);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(129, 13);
             this.label3.TabIndex = 5;
@@ -15996,6 +15998,18 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
+            // checkBoxDontRoundValuesToZero
+            // 
+            this.checkBoxDontRoundValuesToZero.AutoSize = true;
+            this.checkBoxDontRoundValuesToZero.Checked = true;
+            this.checkBoxDontRoundValuesToZero.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxDontRoundValuesToZero.Location = new System.Drawing.Point(3, 145);
+            this.checkBoxDontRoundValuesToZero.Name = "checkBoxDontRoundValuesToZero";
+            this.checkBoxDontRoundValuesToZero.Size = new System.Drawing.Size(142, 17);
+            this.checkBoxDontRoundValuesToZero.TabIndex = 31;
+            this.checkBoxDontRoundValuesToZero.Text = "Don\'t Round Values to 0";
+            this.checkBoxDontRoundValuesToZero.UseVisualStyleBackColor = true;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -17693,6 +17707,7 @@ namespace STROOP
         private Label labelM64QuickDuplication1stIterationStart;
         private Button buttonM64ResetChanges;
         private Button buttonBypass;
+        private CheckBox checkBoxDontRoundValuesToZero;
     }
 }
 

@@ -132,6 +132,8 @@ namespace STROOP.Managers
             checkBoxNeutralizeTrianglesWith21.Click += (sender, e) => OptionsConfig.NeutralizeTrianglesWith21 = checkBoxNeutralizeTrianglesWith21.Checked;
             CheckBox checkBoxUseMisalignmentOffsetForDistanceToLine = tabControl.Controls["checkBoxUseMisalignmentOffsetForDistanceToLine"] as CheckBox;
             checkBoxUseMisalignmentOffsetForDistanceToLine.Click += (sender, e) => OptionsConfig.UseMisalignmentOffsetForDistanceToLine = checkBoxUseMisalignmentOffsetForDistanceToLine.Checked;
+            CheckBox checkBoxDontRoundValuesToZero = tabControl.Controls["checkBoxDontRoundValuesToZero"] as CheckBox;
+            checkBoxDontRoundValuesToZero.Click += (sender, e) => OptionsConfig.DontRoundValuesToZero = checkBoxDontRoundValuesToZero.Checked;
         }
 
         private void textBoxGotoRetrieve_LostFocus(object sender, ref float offset, float defaultOffset)

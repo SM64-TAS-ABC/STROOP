@@ -155,7 +155,8 @@ namespace STROOP.Controls
             double roundedValue = roundingLimit.HasValue
                 ? Math.Round(doubleValue, roundingLimit.Value)
                 : doubleValue;
-            if (roundedValue == 0 && doubleValue != 0)
+            if (OptionsConfig.DontRoundValuesToZero &&
+                roundedValue == 0 && doubleValue != 0)
             {
                 // Specially print values near zero
                 string digitsString = roundingLimit?.ToString() ?? "";

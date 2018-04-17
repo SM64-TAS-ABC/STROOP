@@ -14,6 +14,7 @@ namespace STROOP.Structs
         public static bool ScaleDiagonalPositionControllerButtons = false;
         public static bool ExcludeDustForClosestObject = true;
         public static bool UseMisalignmentOffsetForDistanceToLine = true;
+        public static bool DontRoundValuesToZero = true;
 
         public static bool NeutralizeTrianglesWith21 = true;
         public static short NeutralizeTriangleValue(bool? use21Nullable = null)
