@@ -63,7 +63,7 @@ namespace STROOP
 
         bool _isActive = false;
 
-        public bool IsHovering { get; private set; }
+        private bool IsHovering;
 
         public override string Text => _text;
         Color _textColor
@@ -90,6 +90,7 @@ namespace STROOP
             this.MouseEnter += (s, e) =>
             {
                 IsHovering = true;
+                _manager.HoveredObjectAdress = CurrentObject?.Address;
                 _mouseEnteredState = MouseStateType.Over;
                 _mouseState = MouseStateType.Over;
                 UpdateColors();
@@ -97,6 +98,7 @@ namespace STROOP
             this.MouseLeave += (s, e) =>
             {
                 IsHovering = false;
+                _manager.HoveredObjectAdress = null;
                 _mouseEnteredState = MouseStateType.None;
                 _mouseState = MouseStateType.None;
                 UpdateColors();
@@ -439,16 +441,23 @@ namespace STROOP
                 _drawWallOverlay = OverlayConfig.ShowOverlayWallObject && address == DataModels.Mario.WallTriangle?.AssociatedObject;
                 _drawFloorOverlay = OverlayConfig.ShowOverlayFloorObject && address == DataModels.Mario.FloorTriangle?.AssociatedObject;
                 _drawCeilingOverlay = OverlayConfig.ShowOverlayCeilingObject && address == DataModels.Mario.CeilingTriangle?.AssociatedObject;
-                _drawParentOverlay = (OverlayConfig.ShowOverlayParentObject || Keyboard.IsKeyDown(Key.P)) &&
-                    address == _manager.HoveredOverSlot?.CurrentObject?.Parent;
-                _drawParentNoneOverlay = (OverlayConfig.ShowOverlayParentObject || Keyboard.IsKeyDown(Key.P)) &&
-                    address == _manager.HoveredOverSlot?.CurrentObject?.Address &&
-                    _manager.HoveredOverSlot?.CurrentObject?.Parent == 0;
-                _drawParentUnusedOverlay = (OverlayConfig.ShowOverlayParentObject || Keyboard.IsKeyDown(Key.P)) &&
-                    address == _manager.HoveredOverSlot?.CurrentObject?.Address &&
-                    _manager.HoveredOverSlot?.CurrentObject?.Parent == ObjectSlotsConfig.UnusedSlotAddress;
-                _drawChildOverlay = (OverlayConfig.ShowOverlayParentObject || Keyboard.IsKeyDown(Key.P)) &&
-                    CurrentObject?.Parent == _manager.HoveredOverSlot?.CurrentObject?.Address;
+
+                uint? hoveredAddress = Config.ObjectSlotsManager.HoveredObjectAdress;
+                if (hoveredAddress.HasValue)
+                {
+                    ObjectDataModel hoveredObject = new ObjectDataModel(hoveredAddress.Value);
+                    _drawParentOverlay = (OverlayConfig.ShowOverlayParentObject || Keyboard.IsKeyDown(Key.P)) &&
+                        address == hoveredObject.Parent;
+                    _drawParentNoneOverlay = (OverlayConfig.ShowOverlayParentObject || Keyboard.IsKeyDown(Key.P)) &&
+                        address == hoveredObject.Address &&
+                        hoveredObject.Parent == 0;
+                    _drawParentUnusedOverlay = (OverlayConfig.ShowOverlayParentObject || Keyboard.IsKeyDown(Key.P)) &&
+                        address == hoveredObject.Address &&
+                        hoveredObject.Parent == ObjectSlotsConfig.UnusedSlotAddress;
+                    _drawChildOverlay = (OverlayConfig.ShowOverlayParentObject || Keyboard.IsKeyDown(Key.P)) &&
+                        CurrentObject?.Parent == hoveredObject.Address;
+                }
+
                 _drawMarkedOverlay = _manager.MarkedSlotsAddresses.Contains(address.Value);
             }
             else

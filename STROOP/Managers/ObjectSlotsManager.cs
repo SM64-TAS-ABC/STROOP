@@ -28,7 +28,7 @@ namespace STROOP.Managers
         public enum SlotLabelType { Recommended, SlotPosVs, SlotPos, SlotIndex }
         public enum ClickType { ObjectClick, MapClick, ModelClick, MemoryClick, CamHackClick, MarkClick };
 
-        public ObjectSlot HoveredOverSlot { get; private set; }
+        public uint? HoveredObjectAdress;
 
         public List<ObjectSlot> ObjectSlots;
 
@@ -278,8 +278,6 @@ namespace STROOP.Managers
 
             // Lock label update
             LabelsLocked = _gui.LockLabelsCheckbox.Checked;
-
-            HoveredOverSlot = ObjectSlots.FirstOrDefault(s => s.IsHovering);
 
             // Processing sort order
             IEnumerable<ObjectDataModel> sortedObjects;
