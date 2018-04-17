@@ -34,6 +34,7 @@ namespace STROOP.Forms
             InitializeComponent();
 
             _textBoxVarName.Text = _varName;
+            /*
             _buttonAdd.Click += (s, e) => _watchVarWrapper.AddValue(_textBoxAddSubtract.Text, true, _fixedAddressList);
             _buttonSubtract.Click += (s, e) => _watchVarWrapper.AddValue(_textBoxAddSubtract.Text, false, _fixedAddressList);
             _buttonGet.Click += (s, e) => { _textBoxGetSet.Text = _watchVarWrapper.GetValue(true, true, _fixedAddressList).ToString(); };
@@ -44,7 +45,7 @@ namespace STROOP.Forms
 
             _checkBoxFixAddress.Checked = fixedAddressList != null;
             _textBoxCurrentValue.BackColor = fixedAddressList == null ? COLOR_BLUE : COLOR_RED;
-
+            */
             _timer.Tick += (s, e) => UpdateForm();
             _timer.Start();
         }
@@ -52,22 +53,6 @@ namespace STROOP.Forms
         private void UpdateForm()
         {
             _textBoxCurrentValue.Text = _watchVarWrapper.GetValue(true, true, _fixedAddressList).ToString();
-            _checkBoxLock.CheckState = _watchVarWrapper.GetLockedCheckState(_fixedAddressList);
-        }
-        
-        public void ToggleFixedAddress()
-        {
-            bool fixedAddress = _checkBoxFixAddress.Checked;
-            if (fixedAddress)
-            {
-                _textBoxCurrentValue.BackColor = COLOR_RED;
-                _fixedAddressList = _watchVarWrapper.GetCurrentAddresses();
-            }
-            else
-            {
-                _textBoxCurrentValue.BackColor = COLOR_BLUE;
-                _fixedAddressList = null;
-            }
         }
     }
 }
