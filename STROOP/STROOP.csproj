@@ -350,6 +350,7 @@
     <Compile Include="Models\IUpdatableDataModel.cs" />
     <Compile Include="Models\LevelDataModel.cs" />
     <Compile Include="Models\ObjectProcessorDataModel.cs" />
+    <Compile Include="Models\ByteModel.cs" />
     <Compile Include="Structs\Configurations\AreaConfig.cs" />
     <Compile Include="Structs\Configurations\LockConfig.cs" />
     <Compile Include="Structs\Configurations\RomVersionConfig.cs" />
