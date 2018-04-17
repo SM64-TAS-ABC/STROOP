@@ -20,14 +20,14 @@ namespace STROOP.Forms
         private static readonly Color COLOR_RED = Color.FromArgb(255, 220, 220);
 
         private readonly string _varName;
-        private readonly WatchVariableWrapper _watchVarWrapper;
+        private readonly WatchVariable _watchVar;
         private readonly Timer _timer;
         private List<uint> _fixedAddressList;
 
-        public VariableBitForm(string varName, WatchVariableWrapper watchVarWrapper, List<uint> fixedAddressList)
+        public VariableBitForm(string varName, WatchVariable watchVar, List<uint> fixedAddressList)
         {
             _varName = varName;
-            _watchVarWrapper = watchVarWrapper;
+            _watchVar = watchVar;
             _timer = new System.Windows.Forms.Timer { Interval = 30 };
             _fixedAddressList = fixedAddressList;
 
@@ -52,7 +52,7 @@ namespace STROOP.Forms
 
         private void UpdateForm()
         {
-            _textBoxCurrentValue.Text = _watchVarWrapper.GetValue(true, true, _fixedAddressList).ToString();
+            //_textBoxCurrentValue.Text = _watchVarWrapper.GetValue(true, true, _fixedAddressList).ToString();
         }
     }
 }

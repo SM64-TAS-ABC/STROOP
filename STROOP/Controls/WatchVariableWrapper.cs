@@ -222,10 +222,11 @@ namespace STROOP.Controls
 
         public void ShowBitForm()
         {
+            if (_watchVar.IsSpecial) return;
             VariableBitForm varController =
                 new VariableBitForm(
                     _watchVarControl.VarName,
-                    this,
+                    _watchVar,
                     _watchVarControl.FixedAddressList);
             varController.Show();
         }
