@@ -16,20 +16,17 @@ namespace STROOP.Forms
 {
     public partial class VariableBitForm : Form
     {
-        private static readonly Color COLOR_BLUE = Color.FromArgb(220, 255, 255);
-        private static readonly Color COLOR_RED = Color.FromArgb(255, 220, 220);
-
         private readonly string _varName;
         private readonly WatchVariable _watchVar;
+        private readonly List<uint> _fixedAddressList;
         private readonly Timer _timer;
-        private List<uint> _fixedAddressList;
 
         public VariableBitForm(string varName, WatchVariable watchVar, List<uint> fixedAddressList)
         {
             _varName = varName;
             _watchVar = watchVar;
-            _timer = new System.Windows.Forms.Timer { Interval = 30 };
             _fixedAddressList = fixedAddressList;
+            _timer = new System.Windows.Forms.Timer { Interval = 30 };
 
             InitializeComponent();
 
