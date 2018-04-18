@@ -63,6 +63,17 @@ namespace STROOP.Forms
             {
                 _bytes[i].SetByteValue(bytes[i], false);
             }
+
+            _textBoxDecValue.Text = value.ToString();
+            _textBoxHexValue.Text = HexUtilities.Format(value, _watchVar.NibbleCount.Value);
+            _textBoxBinaryValue.Text = GetBinary();
+        }
+
+        private string GetBinary()
+        {
+            List<string> binaryStrings = _bytes.ToList().ConvertAll(b => b.GetBinary());
+            binaryStrings.Reverse();
+            return String.Join(" ", binaryStrings);
         }
 
         public void SetValueInMemory()

@@ -69,7 +69,7 @@ namespace STROOP.Models
             _byteValue = MoreMath.ApplyValueToMaskedByte(_byteValue, (byte)(1 << bit), value);
         }
 
-        private string GetBinary()
+        public string GetBinary()
         {
             StringBuilder builder = new StringBuilder();
             for (int i = 7; i >= 0; i--)
