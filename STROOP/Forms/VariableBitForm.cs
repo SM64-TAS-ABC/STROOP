@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using STROOP.Extensions;
 using STROOP.Utilities;
 using STROOP.Controls;
+using STROOP.Models;
 
 namespace STROOP.Forms
 {
@@ -20,17 +21,27 @@ namespace STROOP.Forms
         private readonly WatchVariable _watchVar;
         private readonly List<uint> _fixedAddressList;
         private readonly Timer _timer;
+        private readonly BindingList<ByteModel> _bytes;
 
         public VariableBitForm(string varName, WatchVariable watchVar, List<uint> fixedAddressList)
         {
             _varName = varName;
             _watchVar = watchVar;
             _fixedAddressList = fixedAddressList;
-            _timer = new System.Windows.Forms.Timer { Interval = 30 };
+            _timer = new Timer { Interval = 30 };
 
             InitializeComponent();
 
             _textBoxVarName.Text = _varName;
+            _bytes = new BindingList<ByteModel>();
+            for (int i = 0; i < watchVar.ByteCount; i++)
+            {
+                _bytes.Add(new ByteModel(i, 0));
+            }
+
+
+
+
             /*
             _buttonAdd.Click += (s, e) => _watchVarWrapper.AddValue(_textBoxAddSubtract.Text, true, _fixedAddressList);
             _buttonSubtract.Click += (s, e) => _watchVarWrapper.AddValue(_textBoxAddSubtract.Text, false, _fixedAddressList);
