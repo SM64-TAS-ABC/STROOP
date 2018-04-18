@@ -793,5 +793,23 @@ namespace STROOP.Utilities
         {
             return 0;
         }
+
+        public static string GetBitString(object value)
+        {
+            List<string> bitStrings = TypeUtilities.GetBytes(value).ToList().ConvertAll(b => GetBitString(b));
+            bitStrings.Reverse();
+            return String.Join("", bitStrings);
+        }
+
+        public static string GetBitString(byte b)
+        {
+            StringBuilder builder = new StringBuilder();
+            for (int i = 7; i >= 0; i--)
+            {
+                bool bit = (b & (1 << i)) != 0;
+                builder.Append(bit ? "1" : "0");
+            }
+            return builder.ToString();
+        }
     }
 }
