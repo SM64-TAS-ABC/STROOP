@@ -25,6 +25,7 @@ namespace STROOP.Forms
         private readonly List<ByteModel> _reversedBytes;
 
         private bool _hasDoneColoring = false;
+        private bool _showFloatComponents = false;
 
         public VariableBitForm(string varName, WatchVariable watchVar, List<uint> fixedAddressList)
         {
@@ -53,6 +54,13 @@ namespace STROOP.Forms
             int totalTableHeight = _dataGridViewBits.Height;
             int emptyHeight = totalTableHeight - effectiveTableHeight + 3;
             Height -= emptyHeight;
+
+            ControlUtilities.AddCheckableContextMenuStripItems(
+                this,
+                new List<string>() { "Show Value", "Show Float Components" },
+                new List<object>() { false, true },
+                boolValue => _showFloatComponents = (bool)boolValue,
+                false);
 
             _timer.Tick += (s, e) => UpdateForm();
             _timer.Start();

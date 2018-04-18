@@ -383,8 +383,34 @@ namespace STROOP.Utilities
             control.ContextMenuStrip = contextMenuStrip;
         }
 
-        public static void AddDropDownItems(
+        public static void AddCheckableDropDownItems(
             ToolStripMenuItem topLevelItem,
+            List<string> itemNames,
+            List<object> itemValues,
+            Action<object> setterAction,
+            object startingValue)
+        {
+            List<ToolStripMenuItem> itemList =
+                CreateCheckableItems(
+                    itemNames, itemValues, setterAction, startingValue);
+            itemList.ForEach(item => topLevelItem.DropDownItems.Add(item));
+        }
+
+        public static void AddCheckableContextMenuStripItems(
+            Control topLevelControl,
+            List<string> itemNames,
+            List<object> itemValues,
+            Action<object> setterAction,
+            object startingValue)
+        {
+            List<ToolStripMenuItem> itemList =
+                CreateCheckableItems(
+                    itemNames, itemValues, setterAction, startingValue);
+            topLevelControl.ContextMenuStrip = new ContextMenuStrip();
+            itemList.ForEach(item => topLevelControl.ContextMenuStrip.Items.Add(item));
+        }
+
+        private static List<ToolStripMenuItem> CreateCheckableItems(
             List<string> itemNames,
             List<object> itemValues,
             Action<object> setterAction,
@@ -407,10 +433,10 @@ namespace STROOP.Utilities
                     setterAction(itemValues[index]);
                     itemList.ForEach(item2 => item2.Checked = item2 == item);
                 };
-                if (Object.Equals(itemValues[index],startingValue)) item.Checked = true;
+                if (Equals(itemValues[index], startingValue)) item.Checked = true;
             }
 
-            itemList.ForEach(item => topLevelItem.DropDownItems.Add(item));
+            return itemList;
         }
 
         public static void SetPropertyGridLabelColumnWidth(PropertyGrid grid, int width)

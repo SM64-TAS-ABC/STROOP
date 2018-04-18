@@ -58,7 +58,7 @@ namespace STROOP.Controls
         {
             ToolStripMenuItem itemRoundTo = new ToolStripMenuItem("Round to ...");
             List<int> roundingLimitNumbers = Enumerable.Range(0, MAX_ROUNDING_LIMIT + 1).ToList();
-            ControlUtilities.AddDropDownItems(
+            ControlUtilities.AddCheckableDropDownItems(
                 itemRoundTo,
                 new List<string>() { "No rounding" }.Concat(roundingLimitNumbers.ConvertAll(i => i + " decimal place(s)")).ToList(),
                 new List<object>() { null }.Concat(roundingLimitNumbers.ConvertAll(i => (object)i)).ToList(),
