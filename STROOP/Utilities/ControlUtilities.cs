@@ -454,6 +454,15 @@ namespace STROOP.Utilities
             return cells.Max(cell => cell.RowIndex);
         }
 
+        public static int GetTableEffectiveHeight(DataGridView table)
+        {
+            int summedHeight = table.ColumnHeadersHeight;
+            foreach (DataGridViewRow row in table.Rows)
+            {
+                summedHeight += row.Height;
+            }
+            return summedHeight;
+        }
 
     }
 }

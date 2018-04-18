@@ -46,6 +46,11 @@ namespace STROOP.Forms
             _reversedBytes = _bytes.ToList();
             _reversedBytes.Reverse();
 
+            int effectiveTableHeight = ControlUtilities.GetTableEffectiveHeight(_dataGridViewBits);
+            int totalTableHeight = _dataGridViewBits.Height;
+            int emptyHeight = totalTableHeight - effectiveTableHeight;
+            Height -= emptyHeight;
+
             _timer.Tick += (s, e) => UpdateForm();
             _timer.Start();
         }
