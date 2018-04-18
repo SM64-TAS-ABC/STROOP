@@ -38,22 +38,8 @@ namespace STROOP.Forms
             {
                 _bytes.Add(new ByteModel(i, 0));
             }
-            dataGridViewBits.DataSource = _bytes;
+            _dataGridViewBits.DataSource = _bytes;
 
-
-
-            /*
-            _buttonAdd.Click += (s, e) => _watchVarWrapper.AddValue(_textBoxAddSubtract.Text, true, _fixedAddressList);
-            _buttonSubtract.Click += (s, e) => _watchVarWrapper.AddValue(_textBoxAddSubtract.Text, false, _fixedAddressList);
-            _buttonGet.Click += (s, e) => { _textBoxGetSet.Text = _watchVarWrapper.GetValue(true, true, _fixedAddressList).ToString(); };
-            _buttonSet.Click += (s, e) => _watchVarWrapper.SetValue(_textBoxGetSet.Text, _fixedAddressList);
-            _textBoxGetSet.AddEnterAction(() => _watchVarWrapper.SetValue(_textBoxGetSet.Text, _fixedAddressList));
-            _checkBoxFixAddress.Click += (s, e) => ToggleFixedAddress();
-            _checkBoxLock.Click += (s, e) => _watchVarWrapper.ToggleLocked(_fixedAddressList);
-
-            _checkBoxFixAddress.Checked = fixedAddressList != null;
-            _textBoxCurrentValue.BackColor = fixedAddressList == null ? COLOR_BLUE : COLOR_RED;
-            */
             _timer.Tick += (s, e) => UpdateForm();
             _timer.Start();
         }
