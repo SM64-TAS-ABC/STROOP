@@ -2462,6 +2462,8 @@
     <MapImage path="Hoot Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">State 2</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x137" base="Object" subclass="Boolean">Flying</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0x110" base="Object">Last Release Time</Data>
+    <Data groupList="ObjectSpecific" type="uint" offsetUS="0x8032D5D4" offsetJP="0x8032C694" base="Relative">Global Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13003484" name="Object Bubble">
     <SpawnCode gfxId="0x90"/>
