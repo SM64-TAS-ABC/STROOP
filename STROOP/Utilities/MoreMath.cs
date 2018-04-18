@@ -776,5 +776,22 @@ namespace STROOP.Utilities
             ushort summedAngle = NormalizeAngleUshort(marioAngle + cameraAngle);
             return summedAngle;
         }
+
+        // Float stuff
+
+        public static int GetFloatSign(float floatValue)
+        {
+            return 0;
+        }
+
+        public static int GetFloatExponent(float floatValue)
+        {
+            return 0;
+        }
+
+        public static double GetFloatMantissa(float floatValue)
+        {
+            return 0;
+        }
     }
 }
