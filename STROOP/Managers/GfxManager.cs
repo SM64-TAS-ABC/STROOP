@@ -207,6 +207,7 @@ namespace STROOP.Managers
                 case 0x01C: res = new GfxScalingNode(); break;
                 case 0x028: res = new GfxShadowNode(); break;
                 case 0x029: res = new GfxObjectParent(); break;
+                    //Todo: add 0x2F
                 case 0x103: res = new GfxProjection3D(); break;
                 case 0x10C: res = new GfxChildSelector(); break;
                 case 0x114: res = new GfxCamera(); break;
@@ -256,8 +257,8 @@ namespace STROOP.Managers
             precursors.Add(gfxProperty("Billboard object", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x04));
             precursors.Add(gfxProperty("Bit 3", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x08));
             precursors.Add(gfxProperty("Invisible object", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x10));
-            precursors.Add(gfxProperty("Bit 5", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x20));
             precursors.Add(gfxProperty("Is object", "ushort", 0x02, Structs.WatchVariableSubclass.Boolean, 0x20));
+            precursors.Add(gfxProperty("List index", "byte", 0x02));   //note: not actually a byte, but the result of (short>>8)
             precursors.Add(gfxProperty("Previous", "uint", 0x04));
             precursors.Add(gfxProperty("Next", "uint", 0x08));
             precursors.Add(gfxProperty("Parent", "uint", 0x0C));
