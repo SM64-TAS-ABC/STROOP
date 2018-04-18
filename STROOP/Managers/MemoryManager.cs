@@ -350,7 +350,7 @@ namespace STROOP.Managers
                     uint uintValue = ParsingUtilities.ParseUInt(value);
                     value = Config.ObjectSlotsManager.GetDescriptiveSlotLabelFromAddress(uintValue, true);
                 }
-                else if (useHex && type != typeof(float))
+                else if (useHex)
                 {
                     value = HexUtilities.Format(value, typeSize * 2, false);
                 }
