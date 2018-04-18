@@ -42,10 +42,10 @@ namespace STROOP.Models
         public bool Bit1 { get => GetBit(1); set { SetBit(1, value); NotifyChange(true); } }
         public bool Bit0 { get => GetBit(0); set { SetBit(0, value); NotifyChange(true); } }
 
-        public void SetByteValue(byte byteValue, bool setMemory)
+        public void SetByteValue(byte byteValue, bool userChange)
         {
             _byteValue = byteValue;
-            NotifyChange(setMemory);
+            NotifyChange(userChange);
         }
 
         public byte GetByteValue()
@@ -53,9 +53,13 @@ namespace STROOP.Models
             return _byteValue;
         }
 
-        private void NotifyChange(bool setMemory)
+        private void NotifyChange(bool userChange)
         {
-            if (setMemory) _form.SetValueInMemory();
+            if (userChange)
+            {
+                _form.SetValueInMemory();
+                _table.ClearSelection();
+            }
             _table.Refresh();
         }
 
