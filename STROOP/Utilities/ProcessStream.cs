@@ -375,6 +375,15 @@ namespace STROOP.Utilities
         public bool SetValueRoundingWrapping(
             Type type, object value, uint address, bool absoluteAddress = false, uint? mask = null)
         {
+            // Allow short circuiting if object is already of type
+            if (type == typeof(byte) && value is byte byteValue) return SetValue(byteValue, address, absoluteAddress, mask);
+            if (type == typeof(sbyte) && value is sbyte sbyteValue) return SetValue(sbyteValue, address, absoluteAddress, mask);
+            if (type == typeof(short) && value is short shortValue) return SetValue(shortValue, address, absoluteAddress, mask);
+            if (type == typeof(ushort) && value is ushort ushortValue) return SetValue(ushortValue, address, absoluteAddress, mask);
+            if (type == typeof(int) && value is int intValue) return SetValue(intValue, address, absoluteAddress, mask);
+            if (type == typeof(uint) && value is uint uintValue) return SetValue(uintValue, address, absoluteAddress, mask);
+            if (type == typeof(float) && value is float floatValue) return SetValue(floatValue, address, absoluteAddress, mask);
+
             value = ParsingUtilities.ParseDoubleNullable(value);
             if (value == null) return false;
 

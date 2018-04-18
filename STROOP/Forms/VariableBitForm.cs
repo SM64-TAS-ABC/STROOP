@@ -22,6 +22,7 @@ namespace STROOP.Forms
         private readonly List<uint> _fixedAddressList;
         private readonly Timer _timer;
         private readonly BindingList<ByteModel> _bytes;
+        private readonly List<ByteModel> _reversedBytes;
 
         public VariableBitForm(string varName, WatchVariable watchVar, List<uint> fixedAddressList)
         {
@@ -34,14 +35,16 @@ namespace STROOP.Forms
 
             _textBoxVarName.Text = _varName;
             _bytes = new BindingList<ByteModel>();
-            for (int i = 0; i < watchVar.ByteCount; i++)
+            for (int i = 0; i < watchVar.ByteCount.Value; i++)
             {
-                _bytes.Add(new ByteModel(i, 0, _dataGridViewBits, this));
+                _bytes.Add(new ByteModel(watchVar.ByteCount.Value - 1 - i, 0, _dataGridViewBits, this));
             }
             _dataGridViewBits.DataSource = _bytes;
-
             _dataGridViewBits.CellContentClick += (sender, e) =>
                 _dataGridViewBits.CommitEdit(new DataGridViewDataErrorContexts());
+
+            _reversedBytes = _bytes.ToList();
+            _reversedBytes.Reverse();
 
             _timer.Tick += (s, e) => UpdateForm();
             _timer.Start();
@@ -61,24 +64,17 @@ namespace STROOP.Forms
 
             for (int i = 0; i < _bytes.Count; i++)
             {
-                _bytes[i].SetByteValue(bytes[i], false);
+                _bytes[i].SetByteValue(bytes[bytes.Length - 1 - i], false);
             }
 
             _textBoxDecValue.Text = value.ToString();
             _textBoxHexValue.Text = HexUtilities.Format(value, _watchVar.NibbleCount.Value);
-            _textBoxBinaryValue.Text = GetBinary();
-        }
-
-        private string GetBinary()
-        {
-            List<string> binaryStrings = _bytes.ToList().ConvertAll(b => b.GetBinary());
-            binaryStrings.Reverse();
-            return String.Join(" ", binaryStrings);
+            _textBoxBinaryValue.Text = String.Join(" ", _bytes.ToList().ConvertAll(b => b.GetBinary()));
         }
 
         public void SetValueInMemory()
         {
-            byte[] bytes = _bytes.ToList().ConvertAll(b => b.GetByteValue()).ToArray();
+            byte[] bytes = _reversedBytes.ConvertAll(b => b.GetByteValue()).ToArray();
             object value = TypeUtilities.ConvertBytes(_watchVar.MemoryType, bytes);
             _watchVar.SetValue(value);
         }
