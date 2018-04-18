@@ -72,7 +72,7 @@
             this._tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this._tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this._tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this._tableLayoutPanel.Size = new System.Drawing.Size(436, 211);
+            this._tableLayoutPanel.Size = new System.Drawing.Size(335, 211);
             this._tableLayoutPanel.TabIndex = 39;
             // 
             // _dataGridViewBits
@@ -119,7 +119,7 @@
             this._dataGridViewBits.RowHeadersVisible = false;
             this._dataGridViewBits.RowTemplate.Height = 20;
             this._dataGridViewBits.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this._dataGridViewBits.Size = new System.Drawing.Size(436, 111);
+            this._dataGridViewBits.Size = new System.Drawing.Size(335, 111);
             this._dataGridViewBits.TabIndex = 10;
             // 
             // Index
@@ -224,7 +224,7 @@
             this._textBoxHexValue.Location = new System.Drawing.Point(3, 53);
             this._textBoxHexValue.MaximumSize = new System.Drawing.Size(10000, 10000);
             this._textBoxHexValue.Name = "_textBoxHexValue";
-            this._textBoxHexValue.Size = new System.Drawing.Size(430, 20);
+            this._textBoxHexValue.Size = new System.Drawing.Size(329, 20);
             this._textBoxHexValue.TabIndex = 9;
             this._textBoxHexValue.Text = "100";
             this._textBoxHexValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -236,7 +236,7 @@
             this._textBoxDecValue.Location = new System.Drawing.Point(3, 28);
             this._textBoxDecValue.MaximumSize = new System.Drawing.Size(10000, 10000);
             this._textBoxDecValue.Name = "_textBoxDecValue";
-            this._textBoxDecValue.Size = new System.Drawing.Size(430, 20);
+            this._textBoxDecValue.Size = new System.Drawing.Size(329, 20);
             this._textBoxDecValue.TabIndex = 9;
             this._textBoxDecValue.Text = "0x12345678";
             this._textBoxDecValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -249,7 +249,7 @@
             this._textBoxVarName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold);
             this._textBoxVarName.Location = new System.Drawing.Point(3, 3);
             this._textBoxVarName.Name = "_textBoxVarName";
-            this._textBoxVarName.Size = new System.Drawing.Size(430, 24);
+            this._textBoxVarName.Size = new System.Drawing.Size(329, 24);
             this._textBoxVarName.TabIndex = 9;
             this._textBoxVarName.Text = "Variable Name";
             this._textBoxVarName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -260,7 +260,7 @@
             this._textBoxBinaryValue.BackColor = System.Drawing.Color.White;
             this._textBoxBinaryValue.Location = new System.Drawing.Point(3, 78);
             this._textBoxBinaryValue.Name = "_textBoxBinaryValue";
-            this._textBoxBinaryValue.Size = new System.Drawing.Size(430, 20);
+            this._textBoxBinaryValue.Size = new System.Drawing.Size(329, 20);
             this._textBoxBinaryValue.TabIndex = 9;
             this._textBoxBinaryValue.Text = "200";
             this._textBoxBinaryValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -269,7 +269,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(436, 211);
+            this.ClientSize = new System.Drawing.Size(335, 211);
             this.Controls.Add(this._tableLayoutPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

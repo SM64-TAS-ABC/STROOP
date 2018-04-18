@@ -48,7 +48,7 @@ namespace STROOP.Forms
 
             int effectiveTableHeight = ControlUtilities.GetTableEffectiveHeight(_dataGridViewBits);
             int totalTableHeight = _dataGridViewBits.Height;
-            int emptyHeight = totalTableHeight - effectiveTableHeight;
+            int emptyHeight = totalTableHeight - effectiveTableHeight + 3;
             Height -= emptyHeight;
 
             _timer.Tick += (s, e) => UpdateForm();
