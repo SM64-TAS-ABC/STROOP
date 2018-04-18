@@ -15,26 +15,40 @@ namespace STROOP.Models
     public class ByteModel
     {
         private readonly int _byteIndex;
+        private readonly DataGridView _table;
+
         private byte _byteValue;
 
-        public ByteModel(int byteIndex, byte byteValue)
+        public ByteModel(int byteIndex, byte byteValue, DataGridView table)
         {
             _byteIndex = byteIndex;
             _byteValue = byteValue;
+            _table = table;
         }
 
         public int Index { get => _byteIndex; }
-        public byte Dec { get => _byteValue; set => _byteValue = ParsingUtilities.ParseByteRoundingWrapping(value); }
-        public string Hex { get => HexUtilities.Format(_byteValue, 2, false); set => SetHex(value); }
-        public string Binary { get => GetBinary(); set => SetBinary(value); }
-        public bool Bit7 { get => GetBit(7); set => SetBit(7, value); }
-        public bool Bit6 { get => GetBit(6); set => SetBit(6, value); }
-        public bool Bit5 { get => GetBit(5); set => SetBit(5, value); }
-        public bool Bit4 { get => GetBit(4); set => SetBit(4, value); }
-        public bool Bit3 { get => GetBit(3); set => SetBit(3, value); }
-        public bool Bit2 { get => GetBit(2); set => SetBit(2, value); }
-        public bool Bit1 { get => GetBit(1); set => SetBit(1, value); }
-        public bool Bit0 { get => GetBit(0); set => SetBit(0, value); }
+        public string Dec { get => _byteValue.ToString(); set { SetDec(value); NotifyChange(); } }
+        public string Hex { get => HexUtilities.Format(_byteValue, 2, false); set { SetHex(value); NotifyChange(); } }
+        public string Binary { get => GetBinary(); set { SetBinary(value); NotifyChange(); } }
+        public bool Bit7 { get => GetBit(7); set { SetBit(7, value); NotifyChange(); } }
+        public bool Bit6 { get => GetBit(6); set { SetBit(6, value); NotifyChange(); } }
+        public bool Bit5 { get => GetBit(5); set { SetBit(5, value); NotifyChange(); } }
+        public bool Bit4 { get => GetBit(4); set { SetBit(4, value); NotifyChange(); } }
+        public bool Bit3 { get => GetBit(3); set { SetBit(3, value); NotifyChange(); } }
+        public bool Bit2 { get => GetBit(2); set { SetBit(2, value); NotifyChange(); } }
+        public bool Bit1 { get => GetBit(1); set { SetBit(1, value); NotifyChange(); } }
+        public bool Bit0 { get => GetBit(0); set { SetBit(0, value); NotifyChange(); } }
+
+        public void SetByteValue(byte byteValue)
+        {
+            _byteValue = byteValue;
+            NotifyChange();
+        }
+
+        private void NotifyChange()
+        {
+            _table.Refresh();
+        }
 
         private bool GetBit(int bit)
         {
@@ -79,6 +93,12 @@ namespace STROOP.Models
             if (uintValueNullable == null) return;
             uint uintValue = uintValueNullable.Value;
             _byteValue = ParsingUtilities.ParseByteRoundingWrapping(uintValue);
+        }
+
+        private void SetDec(string decValue)
+        {
+            byte? byteValueNullable = ParsingUtilities.ParseByteRoundingWrapping(decValue);
+            if (byteValueNullable.HasValue) _byteValue = byteValueNullable.Value;
         }
     }
 }

@@ -130,6 +130,7 @@ namespace STROOP.Structs
             else if (obj is ushort ushortValue) bytes = BitConverter.GetBytes(ushortValue);
             else if (obj is int intValue) bytes = BitConverter.GetBytes(intValue);
             else if (obj is uint uintValue) bytes = BitConverter.GetBytes(uintValue);
+            else if (obj is float floatValue) bytes = BitConverter.GetBytes(floatValue);
             else if (obj is string stringValue)
             {
                 if (encoding == null) throw new ArgumentOutOfRangeException();

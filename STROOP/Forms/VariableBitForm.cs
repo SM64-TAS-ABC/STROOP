@@ -36,9 +36,12 @@ namespace STROOP.Forms
             _bytes = new BindingList<ByteModel>();
             for (int i = 0; i < watchVar.ByteCount; i++)
             {
-                _bytes.Add(new ByteModel(i, 0));
+                _bytes.Add(new ByteModel(i, 0, _dataGridViewBits));
             }
             _dataGridViewBits.DataSource = _bytes;
+
+            _dataGridViewBits.CellContentClick += (sender, e) =>
+                _dataGridViewBits.CommitEdit(new DataGridViewDataErrorContexts());
 
             _timer.Tick += (s, e) => UpdateForm();
             _timer.Start();
@@ -46,7 +49,20 @@ namespace STROOP.Forms
 
         private void UpdateForm()
         {
-            //_textBoxCurrentValue.Text = _watchVarWrapper.GetValue(true, true, _fixedAddressList).ToString();
+            List<object> values = _watchVar.GetValues();
+            if (values.Count == 0) return;
+            object value = values[0];
+            if (!TypeUtilities.IsNumber(value))
+                throw new ArgumentOutOfRangeException();
+
+            byte[] bytes = TypeUtilities.GetBytes(value);
+            if (bytes.Length != _bytes.Count)
+                throw new ArgumentOutOfRangeException();
+
+            for (int i = 0; i < _bytes.Count; i++)
+            {
+                _bytes[i].SetByteValue(bytes[i]);
+            }
         }
     }
 }
