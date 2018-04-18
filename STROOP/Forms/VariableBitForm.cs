@@ -36,7 +36,7 @@ namespace STROOP.Forms
             _bytes = new BindingList<ByteModel>();
             for (int i = 0; i < watchVar.ByteCount; i++)
             {
-                _bytes.Add(new ByteModel(i, 0, _dataGridViewBits));
+                _bytes.Add(new ByteModel(i, 0, _dataGridViewBits, this));
             }
             _dataGridViewBits.DataSource = _bytes;
 
@@ -61,8 +61,15 @@ namespace STROOP.Forms
 
             for (int i = 0; i < _bytes.Count; i++)
             {
-                _bytes[i].SetByteValue(bytes[i]);
+                _bytes[i].SetByteValue(bytes[i], false);
             }
+        }
+
+        public void SetValueInMemory()
+        {
+            byte[] bytes = _bytes.ToList().ConvertAll(b => b.GetByteValue()).ToArray();
+            object value = TypeUtilities.ConvertBytes(_watchVar.MemoryType, bytes);
+            _watchVar.SetValue(value);
         }
     }
 }

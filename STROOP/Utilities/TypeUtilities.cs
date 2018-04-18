@@ -109,6 +109,11 @@ namespace STROOP.Structs
                 bytes[index] = byteValue;
             }
 
+            return ConvertBytes(type, bytes);
+        }
+
+        public static object ConvertBytes(Type type, byte[] bytes)
+        {
             if (type == typeof(byte)) return bytes[0];
             if (type == typeof(sbyte)) return (sbyte)bytes[0];
             if (type == typeof(short)) return BitConverter.ToInt16(bytes, 0);
