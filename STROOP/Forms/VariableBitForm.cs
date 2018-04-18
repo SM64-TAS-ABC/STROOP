@@ -32,7 +32,7 @@ namespace STROOP.Forms
 
             InitializeComponent();
 
-            _textBoxVarName.Text = _varName;
+            textBoxVarName.Text = _varName;
             _bytes = new BindingList<ByteModel>();
             for (int i = 0; i < watchVar.ByteCount; i++)
             {
