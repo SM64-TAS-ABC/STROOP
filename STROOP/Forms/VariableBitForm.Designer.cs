@@ -31,7 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VariableBitForm));
-            this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this._tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewBits = new System.Windows.Forms.DataGridView();
             this.Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dec = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,34 +45,34 @@
             this.Bit2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Bit1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Bit0 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.textBoxHexValue = new STROOP.BetterTextbox();
-            this.textBoxDecValue = new STROOP.BetterTextbox();
-            this.textBoxVarName = new STROOP.BetterTextbox();
-            this.textBoxBinaryValue = new STROOP.BetterTextbox();
-            this.tableLayoutPanel.SuspendLayout();
+            this._textBoxHexValue = new STROOP.BetterTextbox();
+            this._textBoxDecValue = new STROOP.BetterTextbox();
+            this._textBoxVarName = new STROOP.BetterTextbox();
+            this._textBoxBinaryValue = new STROOP.BetterTextbox();
+            this._tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBits)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel
             // 
-            this.tableLayoutPanel.ColumnCount = 1;
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel.Controls.Add(this.dataGridViewBits, 0, 4);
-            this.tableLayoutPanel.Controls.Add(this.textBoxHexValue, 0, 2);
-            this.tableLayoutPanel.Controls.Add(this.textBoxDecValue, 0, 1);
-            this.tableLayoutPanel.Controls.Add(this.textBoxVarName, 0, 0);
-            this.tableLayoutPanel.Controls.Add(this.textBoxBinaryValue, 0, 3);
-            this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel.Name = "tableLayoutPanel";
-            this.tableLayoutPanel.RowCount = 5;
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.55556F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(436, 254);
-            this.tableLayoutPanel.TabIndex = 39;
+            this._tableLayoutPanel.ColumnCount = 1;
+            this._tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this._tableLayoutPanel.Controls.Add(this.dataGridViewBits, 0, 4);
+            this._tableLayoutPanel.Controls.Add(this._textBoxHexValue, 0, 2);
+            this._tableLayoutPanel.Controls.Add(this._textBoxDecValue, 0, 1);
+            this._tableLayoutPanel.Controls.Add(this._textBoxVarName, 0, 0);
+            this._tableLayoutPanel.Controls.Add(this._textBoxBinaryValue, 0, 3);
+            this._tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this._tableLayoutPanel.Name = "tableLayoutPanel";
+            this._tableLayoutPanel.RowCount = 5;
+            this._tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this._tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this._tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this._tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this._tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.55556F));
+            this._tableLayoutPanel.Size = new System.Drawing.Size(436, 254);
+            this._tableLayoutPanel.TabIndex = 39;
             // 
             // dataGridViewBits
             // 
@@ -218,58 +218,58 @@
             // 
             // textBoxHexValue
             // 
-            this.textBoxHexValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxHexValue.BackColor = System.Drawing.Color.White;
-            this.textBoxHexValue.Location = new System.Drawing.Point(3, 60);
-            this.textBoxHexValue.MaximumSize = new System.Drawing.Size(10000, 10000);
-            this.textBoxHexValue.Name = "textBoxHexValue";
-            this.textBoxHexValue.Size = new System.Drawing.Size(430, 20);
-            this.textBoxHexValue.TabIndex = 9;
-            this.textBoxHexValue.Text = "100";
-            this.textBoxHexValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._textBoxHexValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this._textBoxHexValue.BackColor = System.Drawing.Color.White;
+            this._textBoxHexValue.Location = new System.Drawing.Point(3, 60);
+            this._textBoxHexValue.MaximumSize = new System.Drawing.Size(10000, 10000);
+            this._textBoxHexValue.Name = "textBoxHexValue";
+            this._textBoxHexValue.Size = new System.Drawing.Size(430, 20);
+            this._textBoxHexValue.TabIndex = 9;
+            this._textBoxHexValue.Text = "100";
+            this._textBoxHexValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxDecValue
             // 
-            this.textBoxDecValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxDecValue.BackColor = System.Drawing.Color.White;
-            this.textBoxDecValue.Location = new System.Drawing.Point(3, 32);
-            this.textBoxDecValue.MaximumSize = new System.Drawing.Size(10000, 10000);
-            this.textBoxDecValue.Name = "textBoxDecValue";
-            this.textBoxDecValue.Size = new System.Drawing.Size(430, 20);
-            this.textBoxDecValue.TabIndex = 9;
-            this.textBoxDecValue.Text = "0x12345678";
-            this.textBoxDecValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._textBoxDecValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this._textBoxDecValue.BackColor = System.Drawing.Color.White;
+            this._textBoxDecValue.Location = new System.Drawing.Point(3, 32);
+            this._textBoxDecValue.MaximumSize = new System.Drawing.Size(10000, 10000);
+            this._textBoxDecValue.Name = "textBoxDecValue";
+            this._textBoxDecValue.Size = new System.Drawing.Size(430, 20);
+            this._textBoxDecValue.TabIndex = 9;
+            this._textBoxDecValue.Text = "0x12345678";
+            this._textBoxDecValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxVarName
             // 
-            this.textBoxVarName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxVarName.BackColor = System.Drawing.SystemColors.Control;
-            this.textBoxVarName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxVarName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold);
-            this.textBoxVarName.Location = new System.Drawing.Point(3, 3);
-            this.textBoxVarName.Name = "textBoxVarName";
-            this.textBoxVarName.Size = new System.Drawing.Size(430, 24);
-            this.textBoxVarName.TabIndex = 9;
-            this.textBoxVarName.Text = "Variable Name";
-            this.textBoxVarName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._textBoxVarName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this._textBoxVarName.BackColor = System.Drawing.SystemColors.Control;
+            this._textBoxVarName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this._textBoxVarName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold);
+            this._textBoxVarName.Location = new System.Drawing.Point(3, 3);
+            this._textBoxVarName.Name = "textBoxVarName";
+            this._textBoxVarName.Size = new System.Drawing.Size(430, 24);
+            this._textBoxVarName.TabIndex = 9;
+            this._textBoxVarName.Text = "Variable Name";
+            this._textBoxVarName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxBinaryValue
             // 
-            this.textBoxBinaryValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxBinaryValue.BackColor = System.Drawing.Color.White;
-            this.textBoxBinaryValue.Location = new System.Drawing.Point(3, 88);
-            this.textBoxBinaryValue.Name = "textBoxBinaryValue";
-            this.textBoxBinaryValue.Size = new System.Drawing.Size(430, 20);
-            this.textBoxBinaryValue.TabIndex = 9;
-            this.textBoxBinaryValue.Text = "200";
-            this.textBoxBinaryValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this._textBoxBinaryValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this._textBoxBinaryValue.BackColor = System.Drawing.Color.White;
+            this._textBoxBinaryValue.Location = new System.Drawing.Point(3, 88);
+            this._textBoxBinaryValue.Name = "textBoxBinaryValue";
+            this._textBoxBinaryValue.Size = new System.Drawing.Size(430, 20);
+            this._textBoxBinaryValue.TabIndex = 9;
+            this._textBoxBinaryValue.Text = "200";
+            this._textBoxBinaryValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // VariableBitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(436, 254);
-            this.Controls.Add(this.tableLayoutPanel);
+            this.Controls.Add(this._tableLayoutPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(10000, 10000);
@@ -277,8 +277,8 @@
             this.Name = "VariableBitForm";
             this.ShowIcon = false;
             this.Text = "Variable Bits";
-            this.tableLayoutPanel.ResumeLayout(false);
-            this.tableLayoutPanel.PerformLayout();
+            this._tableLayoutPanel.ResumeLayout(false);
+            this._tableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBits)).EndInit();
             this.ResumeLayout(false);
 
@@ -286,11 +286,11 @@
 
         #endregion
 
-        private BetterTextbox textBoxDecValue;
-        private BetterTextbox textBoxHexValue;
-        private BetterTextbox textBoxBinaryValue;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
-        private BetterTextbox textBoxVarName;
+        private BetterTextbox _textBoxDecValue;
+        private BetterTextbox _textBoxHexValue;
+        private BetterTextbox _textBoxBinaryValue;
+        private System.Windows.Forms.TableLayoutPanel _tableLayoutPanel;
+        private BetterTextbox _textBoxVarName;
         private System.Windows.Forms.DataGridView dataGridViewBits;
         private System.Windows.Forms.DataGridViewTextBoxColumn Index;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dec;

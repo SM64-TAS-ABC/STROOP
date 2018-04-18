@@ -32,13 +32,13 @@ namespace STROOP.Forms
 
             InitializeComponent();
 
-            textBoxVarName.Text = _varName;
+            _textBoxVarName.Text = _varName;
             _bytes = new BindingList<ByteModel>();
             for (int i = 0; i < watchVar.ByteCount; i++)
             {
                 _bytes.Add(new ByteModel(i, 0));
             }
-
+            dataGridViewBits.DataSource = _bytes;
 
 
 
