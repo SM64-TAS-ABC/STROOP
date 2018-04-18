@@ -92,7 +92,6 @@ namespace STROOP.Forms
             if (_showFloatComponents && value is float floatValue)
             {
                 _textBoxDecValue.Text = MoreMath.GetFloatSign(floatValue).ToString();
-                _textBoxDecValue.Text = MoreMath.GetBitString(floatValue).ToString();
                 _textBoxHexValue.Text = MoreMath.GetFloatExponent(floatValue).ToString();
                 _textBoxBinaryValue.Text = MoreMath.GetFloatMantissa(floatValue).ToString();
             }
