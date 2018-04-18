@@ -42,6 +42,7 @@ namespace STROOP.Forms
             _dataGridViewBits.DataSource = _bytes;
             _dataGridViewBits.CellContentClick += (sender, e) =>
                 _dataGridViewBits.CommitEdit(new DataGridViewDataErrorContexts());
+            ControlUtilities.SetTableDoubleBuffered(_dataGridViewBits, true);
 
             _reversedBytes = _bytes.ToList();
             _reversedBytes.Reverse();

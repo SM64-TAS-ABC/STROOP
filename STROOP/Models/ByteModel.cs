@@ -59,6 +59,7 @@ namespace STROOP.Models
             {
                 _form.SetValueInMemory();
                 _table.ClearSelection();
+                _table.Parent.Focus();
             }
             _table.Refresh();
         }

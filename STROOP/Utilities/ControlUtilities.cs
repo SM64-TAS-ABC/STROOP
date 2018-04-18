@@ -464,5 +464,13 @@ namespace STROOP.Utilities
             return summedHeight;
         }
 
+        public static void SetTableDoubleBuffered(DataGridView table, bool doubleBuffered)
+        {
+            Type tableType = table.GetType();
+            PropertyInfo propertyInfo = tableType.GetProperty("DoubleBuffered",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+            propertyInfo.SetValue(table, doubleBuffered, null);
+        }
+
     }
 }
