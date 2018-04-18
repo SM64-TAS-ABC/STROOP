@@ -44,6 +44,28 @@ namespace STROOP.Forms
                 _dataGridViewBits.CommitEdit(new DataGridViewDataErrorContexts());
             ControlUtilities.SetTableDoubleBuffered(_dataGridViewBits, true);
 
+            // Color specially the differents parts of a float
+            _dataGridViewBits.Rows[1].DefaultCellStyle.BackColor = Color.Red;
+            if (watchVar.MemoryType == typeof(float))
+            {
+                Color signColor = Color.Yellow;
+                Color exponentColor = Color.Red;
+                Color mantissaColor = Color.Green;
+
+                for (int i = 0; i < 32; i++)
+                {
+                    Color color;
+                    if (i < 1) color = signColor;
+                    else if (i < 9) color = exponentColor;
+                    else color = mantissaColor;
+
+                    int rowIndex = i / 8;
+                    int colIndex = i % 8 + 4;
+                    DataGridViewCell cell = _dataGridViewBits.Rows[rowIndex].Cells[colIndex];
+                    cell.Style.BackColor = color;
+                }
+            }
+
             _reversedBytes = _bytes.ToList();
             _reversedBytes.Reverse();
 
