@@ -24,6 +24,8 @@ namespace STROOP.Forms
         private readonly BindingList<ByteModel> _bytes;
         private readonly List<ByteModel> _reversedBytes;
 
+        private bool _hasDoneColoring = false;
+
         public VariableBitForm(string varName, WatchVariable watchVar, List<uint> fixedAddressList)
         {
             _varName = varName;
@@ -42,9 +44,15 @@ namespace STROOP.Forms
             _dataGridViewBits.DataSource = _bytes;
             _dataGridViewBits.CellContentClick += (sender, e) =>
                 _dataGridViewBits.CommitEdit(new DataGridViewDataErrorContexts());
+            ControlUtilities.SetTableDoubleBuffered(_dataGridViewBits, true);
 
             _reversedBytes = _bytes.ToList();
             _reversedBytes.Reverse();
+
+            int effectiveTableHeight = ControlUtilities.GetTableEffectiveHeight(_dataGridViewBits);
+            int totalTableHeight = _dataGridViewBits.Height;
+            int emptyHeight = totalTableHeight - effectiveTableHeight + 3;
+            Height -= emptyHeight;
 
             _timer.Tick += (s, e) => UpdateForm();
             _timer.Start();
@@ -52,6 +60,12 @@ namespace STROOP.Forms
 
         private void UpdateForm()
         {
+            if (!_hasDoneColoring)
+            {
+                DoColoring();
+                _hasDoneColoring = true;
+            }
+
             List<object> values = _watchVar.GetValues();
             if (values.Count == 0) return;
             object value = values[0];
@@ -77,6 +91,30 @@ namespace STROOP.Forms
             byte[] bytes = _reversedBytes.ConvertAll(b => b.GetByteValue()).ToArray();
             object value = TypeUtilities.ConvertBytes(_watchVar.MemoryType, bytes);
             _watchVar.SetValue(value);
+        }
+
+        private void DoColoring()
+        {
+            // Color specially the differents parts of a float
+            if (_watchVar.MemoryType == typeof(float))
+            {
+                Color signColor = Color.LightBlue;
+                Color exponentColor = Color.Pink;
+                Color mantissaColor = Color.LightGreen.Lighten(0.5);
+
+                for (int i = 0; i < 32; i++)
+                {
+                    Color color;
+                    if (i < 1) color = signColor;
+                    else if (i < 9) color = exponentColor;
+                    else color = mantissaColor;
+
+                    int rowIndex = i / 8;
+                    int colIndex = i % 8 + 4;
+                    DataGridViewCell cell = _dataGridViewBits.Rows[rowIndex].Cells[colIndex];
+                    cell.Style.BackColor = color;
+                }
+            }
         }
     }
 }

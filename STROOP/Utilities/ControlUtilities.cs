@@ -454,6 +454,23 @@ namespace STROOP.Utilities
             return cells.Max(cell => cell.RowIndex);
         }
 
+        public static int GetTableEffectiveHeight(DataGridView table)
+        {
+            int summedHeight = table.ColumnHeadersHeight;
+            foreach (DataGridViewRow row in table.Rows)
+            {
+                summedHeight += row.Height;
+            }
+            return summedHeight;
+        }
+
+        public static void SetTableDoubleBuffered(DataGridView table, bool doubleBuffered)
+        {
+            Type tableType = table.GetType();
+            PropertyInfo propertyInfo = tableType.GetProperty("DoubleBuffered",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+            propertyInfo.SetValue(table, doubleBuffered, null);
+        }
 
     }
 }
