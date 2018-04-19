@@ -156,6 +156,7 @@ namespace STROOP.M64Editor
             Header.NumInputs = Inputs.Count;
             RefreshInputFrames(startIndex);
             _gui.DataGridViewInputs.Refresh();
+            Config.M64Manager.UpdateSelectionTextboxes();
         }
 
         public void Paste(M64CopiedData copiedData, int index, bool insert, int multiplicity)
@@ -183,6 +184,7 @@ namespace STROOP.M64Editor
             Header.NumInputs = Inputs.Count;
             RefreshInputFrames(index);
             _gui.DataGridViewInputs.Refresh();
+            Config.M64Manager.UpdateSelectionTextboxes();
         }
 
         private void RefreshInputFrames(int startIndex = 0)
