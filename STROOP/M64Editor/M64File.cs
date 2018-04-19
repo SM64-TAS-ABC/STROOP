@@ -114,7 +114,7 @@ namespace STROOP.M64Editor
                 if (_gui.CheckBoxMaxOutViCount.Checked)
                     Header.NumVis = int.MaxValue;
                 File.WriteAllBytes(filePath, ToBytes());
-                OpenFile(filePath, fileName);
+                Config.M64Manager.Open(filePath, fileName);
             }
             catch (IOException)
             {
@@ -136,7 +136,7 @@ namespace STROOP.M64Editor
 
         public void ResetChanges()
         {
-            OpenFile(CurrentFilePath, CurrentFileName);
+            Config.M64Manager.Open(CurrentFilePath, CurrentFileName);
         }
 
         public void DeleteRows(int startIndex, int endIndex)

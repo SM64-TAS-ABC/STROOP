@@ -25,6 +25,7 @@ namespace STROOP.Forms
         private readonly List<ByteModel> _reversedBytes;
 
         private bool _hasDoneColoring = false;
+        private bool _showFloatComponents = false;
 
         public VariableBitForm(string varName, WatchVariable watchVar, List<uint> fixedAddressList)
         {
@@ -54,6 +55,13 @@ namespace STROOP.Forms
             int emptyHeight = totalTableHeight - effectiveTableHeight + 3;
             Height -= emptyHeight;
 
+            ControlUtilities.AddCheckableContextMenuStripItems(
+                this,
+                new List<string>() { "Show Value", "Show Float Components" },
+                new List<object>() { false, true },
+                boolValue => _showFloatComponents = (bool)boolValue,
+                false);
+
             _timer.Tick += (s, e) => UpdateForm();
             _timer.Start();
         }
@@ -81,9 +89,18 @@ namespace STROOP.Forms
                 _bytes[i].SetByteValue(bytes[bytes.Length - 1 - i], false);
             }
 
-            _textBoxDecValue.Text = value.ToString();
-            _textBoxHexValue.Text = HexUtilities.Format(value, _watchVar.NibbleCount.Value);
-            _textBoxBinaryValue.Text = String.Join(" ", _bytes.ToList().ConvertAll(b => b.GetBinary()));
+            if (_showFloatComponents && value is float floatValue)
+            {
+                _textBoxDecValue.Text = MoreMath.GetFloatSign(floatValue).ToString();
+                _textBoxHexValue.Text = MoreMath.GetFloatExponent(floatValue).ToString();
+                _textBoxBinaryValue.Text = MoreMath.GetFloatMantissa(floatValue).ToString();
+            }
+            else
+            {
+                _textBoxDecValue.Text = value.ToString();
+                _textBoxHexValue.Text = HexUtilities.Format(value, _watchVar.NibbleCount.Value);
+                _textBoxBinaryValue.Text = String.Join(" ", _bytes.ToList().ConvertAll(b => b.GetBinary()));
+            }
         }
 
         public void SetValueInMemory()

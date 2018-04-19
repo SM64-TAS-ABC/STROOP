@@ -61,7 +61,7 @@ namespace STROOP.Controls
             itemSigned.Checked = _signed;
 
             ToolStripMenuItem itemUnits = new ToolStripMenuItem("Units...");
-            ControlUtilities.AddDropDownItems(
+            ControlUtilities.AddCheckableDropDownItems(
                 itemUnits,
                 new List<string> { "In-Game Units", "HAU", "Degrees", "Radians", "Revolutions" },
                 new List<object>

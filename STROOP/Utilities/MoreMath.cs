@@ -776,5 +776,63 @@ namespace STROOP.Utilities
             ushort summedAngle = NormalizeAngleUshort(marioAngle + cameraAngle);
             return summedAngle;
         }
+
+        // Float stuff
+
+        public static int GetFloatSign(float floatValue)
+        {
+            string bitString = GetBitString(floatValue);
+            string signChar = bitString.Substring(0, 1);
+            return signChar == "0" ? 1 : -1;
+        }
+
+        public static int GetFloatExponent(float floatValue)
+        {
+            string bitString = GetBitString(floatValue);
+            string exponentString = bitString.Substring(1, 8);
+            int byteValue = 0;
+            for (int i = 0; i < 8; i++)
+            {
+                string bitChar = exponentString.Substring(8 - 1 - i, 1);
+                bool bitBool = bitChar == "1";
+                if (bitBool) byteValue = (byte)(byteValue | (1 << i));
+            }
+            int exponent = byteValue - 127;
+            return exponent;
+        }
+
+        public static double GetFloatMantissa(float floatValue)
+        {
+            string bitString = GetBitString(floatValue);
+            string exponentString = bitString.Substring(9, 23);
+            double sum = 1;
+            double multiplier = 1;
+            for (int i = 0; i < 23; i++)
+            {
+                multiplier *= 0.5;
+                string bitChar = exponentString.Substring(i, 1);
+                bool bitBool = bitChar == "1";
+                if (bitBool) sum += multiplier;
+            }
+            return sum;
+        }
+
+        public static string GetBitString(object value)
+        {
+            List<string> bitStrings = TypeUtilities.GetBytes(value).ToList().ConvertAll(b => GetBitString(b));
+            bitStrings.Reverse();
+            return String.Join("", bitStrings);
+        }
+
+        public static string GetBitString(byte b)
+        {
+            StringBuilder builder = new StringBuilder();
+            for (int i = 7; i >= 0; i--)
+            {
+                bool bit = (b & (1 << i)) != 0;
+                builder.Append(bit ? "1" : "0");
+            }
+            return builder.ToString();
+        }
     }
 }

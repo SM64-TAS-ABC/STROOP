@@ -15,27 +15,33 @@ namespace STROOP.Managers
 {
     public class M64Manager
     {
-        bool _displaySaveChangesOnOpen = false;
-        M64File _m64File;
-        M64Gui _gui;
+        private bool _displaySaveChangesOnOpen = false;
+        private readonly M64File _m64File;
+        private readonly M64Gui _gui;
 
         public M64Manager(M64Gui gui)
         {
             _gui = gui;
 
-            _gui.ButtonSave.Click += ButtonSave_Click;
-            _gui.ButtonSaveAs.Click += ButtonSaveAs_Click;
+            _gui.ButtonSave.Click += (sender, e) => Save();
+            _gui.ButtonSaveAs.Click += (sender, e) => SaveAs();
             _gui.ButtonResetChanges.Click += (sender, e) => _m64File.ResetChanges();
-            _gui.ButtonOpen.Click += ButtonOpen_Click;
-            _gui.ButtonClose.Click += ButtonClose_Click;
+            _gui.ButtonOpen.Click += (sender, e) => Open();
+            _gui.ButtonClose.Click += (sender, e) => Close();
             _gui.ButtonGoto.Click += ButtonGoto_Click;
             _gui.ButtonSetUsHeader.Click += (sender, e) => SetHeaderRomVersion(RomVersion.US);
             _gui.ButtonSetJpHeader.Click += (sender, e) => SetHeaderRomVersion(RomVersion.JP);
 
             _gui.DataGridViewInputs.DataError += (sender, e) => _gui.DataGridViewInputs.CancelEdit();
             _gui.DataGridViewInputs.SelectionChanged += (sender, e) => UpdateSelectionTextboxes();
-            //_gui.DataGridViewInputs.CellContentClick += (sender, e) =>
-            //    _gui.DataGridViewInputs.CommitEdit(new DataGridViewDataErrorContexts());
+            _gui.DataGridViewInputs.CellContentClick += (sender, e) =>
+            {
+                if (e.ColumnIndex >= 4)
+                {
+                    _gui.DataGridViewInputs.ClearSelection();
+                    _gui.DataGridViewInputs.Parent.Focus();
+                }
+            };
 
             _m64File = new M64File(_gui);
             _gui.DataGridViewInputs.DataSource = _m64File.Inputs;
@@ -171,7 +177,7 @@ namespace STROOP.Managers
             _gui.DataGridViewInputs.FirstDisplayedScrollingRowIndex = value;
         }
 
-        private void ButtonSaveAs_Click(object sender, EventArgs e)
+        private void SaveAs()
         {
             SaveFileDialog saveFileDialog = FileUtilities.CreateSaveFileDialog(FileType.MupenMovie);
             DialogResult dialogResult = saveFileDialog.ShowDialog();
@@ -193,7 +199,7 @@ namespace STROOP.Managers
             }
         }
 
-        private void ButtonSave_Click(object sender, EventArgs e)
+        private void Save()
         {
             bool success = _m64File.Save();
             if (!success)
@@ -208,7 +214,7 @@ namespace STROOP.Managers
             }
         }
 
-        private void ButtonOpen_Click(object sender, EventArgs e)
+        private void Open()
         {
             if (CheckSaveChanges() == DialogResult.Cancel)
                 return;
@@ -220,7 +226,11 @@ namespace STROOP.Managers
 
             string filePath = openFileDialog.FileName;
             string fileName = openFileDialog.SafeFileName;
+            Open(filePath, fileName);
+        }
 
+        public void Open(string filePath, string fileName)
+        {
             _gui.DataGridViewInputs.DataSource = null;
             _gui.PropertyGridHeader.SelectedObject = null;
             bool success = _m64File.OpenFile(filePath, fileName);
@@ -242,7 +252,7 @@ namespace STROOP.Managers
             _gui.PropertyGridStats.Refresh();
         }
 
-        private void ButtonClose_Click(object sender, EventArgs e)
+        private void Close()
         {
             _m64File.Close();
             _gui.DataGridViewInputs.Refresh();
