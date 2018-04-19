@@ -17,15 +17,18 @@ namespace STROOP.M64Editor
 
         public int FrameIndex;
         public uint RawValue;
+
         public readonly int IdIndex;
 
         private readonly DataGridView _table;
         private readonly M64File _m64File;
+        private readonly bool IsOriginalFrame;
 
-        public M64InputFrame(int frameIndex, uint rawValue, M64File m64File, DataGridView table)
+        public M64InputFrame(int frameIndex, uint rawValue, bool isOriginalFrame, M64File m64File, DataGridView table)
         {
             FrameIndex = frameIndex;
             RawValue = rawValue;
+            IsOriginalFrame = isOriginalFrame;
             IdIndex = ClassIdIndex;
             ClassIdIndex++;
 
