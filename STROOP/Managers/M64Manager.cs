@@ -15,9 +15,9 @@ namespace STROOP.Managers
 {
     public class M64Manager
     {
-        bool _displaySaveChangesOnOpen = false;
-        M64File _m64File;
-        M64Gui _gui;
+        private bool _displaySaveChangesOnOpen = false;
+        private readonly M64File _m64File;
+        private readonly M64Gui _gui;
 
         public M64Manager(M64Gui gui)
         {
