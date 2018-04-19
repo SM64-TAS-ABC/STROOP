@@ -95,9 +95,9 @@ namespace STROOP.M64Editor
             DataGridViewRow row = _table.Rows[FrameIndex];
             DataGridViewColumn col = _table.Columns[columnIndex];
             DataGridViewCell cell = row.Cells[columnIndex];
-            Color defaultColor = row.DefaultCellStyle.BackColor == M64Utilities.NewRowColor ?
-                M64Utilities.NewRowColor : col.DefaultCellStyle.BackColor;
-            cell.Style.BackColor = valueChanged ? M64Utilities.EditedCellColor : defaultColor;
+            Color defaultColor = row.DefaultCellStyle.BackColor == M64Config.NewRowColor ?
+                M64Config.NewRowColor : col.DefaultCellStyle.BackColor;
+            cell.Style.BackColor = valueChanged ? M64Config.EditedCellColor : defaultColor;
         }
 
         private void SetByte(int num, byte value)

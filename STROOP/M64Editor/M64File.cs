@@ -170,7 +170,7 @@ namespace STROOP.M64Editor
                     Inputs.Insert(
                         insertionIndex,
                         new M64InputFrame(insertionIndex, copiedData.GetRawValue(i), false, this, _gui.DataGridViewInputs));
-                    _gui.DataGridViewInputs.Rows[insertionIndex].DefaultCellStyle.BackColor = M64Utilities.NewRowColor;
+                    _gui.DataGridViewInputs.Rows[insertionIndex].DefaultCellStyle.BackColor = M64Config.NewRowColor;
                 }
             }
             else
