@@ -134,6 +134,15 @@ namespace STROOP.M64Editor
             }
         }
 
+        public void UpdateRowColor()
+        {
+            if (!IsOriginalFrame)
+            {
+                DataGridViewRow row = _table.Rows[FrameIndex];
+                row.DefaultCellStyle.BackColor = M64Config.NewRowColor;
+            }
+        }
+
         private void SetByte(int num, byte value)
         {
             RawValue = M64Utilities.SetByte(RawValue, num, value);
