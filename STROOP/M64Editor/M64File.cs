@@ -173,6 +173,7 @@ namespace STROOP.M64Editor
                         insertionIndex,
                         new M64InputFrame(insertionIndex, copiedData.GetRawValue(i), false, this, _gui.DataGridViewInputs));
                 }
+                RefreshInputFrames(index);
                 _gui.DataGridViewInputs.DataSource = Inputs;
                 Config.M64Manager.UpdateTableSettings();
             }

@@ -322,8 +322,8 @@ namespace STROOP.Managers
 
             foreach (M64InputFrame input in _m64File.Inputs)
             {
-                input.UpdateCellColors();
                 input.UpdateRowColor();
+                input.UpdateCellColors();
             }
 
             for (int i = 0; i < table.Columns.Count; i++)
