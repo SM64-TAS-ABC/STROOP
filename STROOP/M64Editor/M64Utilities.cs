@@ -121,8 +121,8 @@ namespace STROOP.M64Editor
             }
         }
 
-        public static readonly List<(string, int, Color?)> ColumnParameters =
-            new List<(string, int, Color?)>()
+        public static readonly List<(string, int, Color)> ColumnParameters =
+            new List<(string, int, Color)>()
             {
                 ("Frame", M64Config.TextColumnFillWeight, M64Config.FrameColumnColor),
                 ("Id", M64Config.TextColumnFillWeight, M64Config.FrameColumnColor),

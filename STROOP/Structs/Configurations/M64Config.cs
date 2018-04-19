@@ -13,10 +13,10 @@ namespace STROOP.Structs
         public static readonly Color NewRowColor = Color.FromArgb(186, 255, 166);
         public static readonly Color EditedCellColor = Color.Pink;
 
-        public static readonly Color? FrameColumnColor = Color.FromArgb(235, 255, 255);
-        public static readonly Color? MainButtonColor = Color.White;
-        public static readonly Color? CButtonColumnColor = Color.FromArgb(255, 255, 150);
-        public static readonly Color? NoopButtonColumnColor = Color.LightGray;
+        public static readonly Color FrameColumnColor = Color.FromArgb(235, 255, 255);
+        public static readonly Color MainButtonColor = Color.White;
+        public static readonly Color CButtonColumnColor = Color.FromArgb(255, 255, 150);
+        public static readonly Color NoopButtonColumnColor = Color.LightGray;
 
         public static readonly int TextColumnFillWeight = 200;
         public static readonly int CheckBoxColumnFillWeight = 100;

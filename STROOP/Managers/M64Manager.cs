@@ -328,10 +328,10 @@ namespace STROOP.Managers
 
             for (int i = 0; i < table.Columns.Count; i++)
             {
-                (string headerText, int fillWeight, Color? backColor) = M64Utilities.ColumnParameters[i];
+                (string headerText, int fillWeight, Color backColor) = M64Utilities.ColumnParameters[i];
                 table.Columns[i].HeaderText = headerText;
                 table.Columns[i].FillWeight = fillWeight;
-                if (backColor.HasValue) table.Columns[i].DefaultCellStyle.BackColor = backColor.Value;
+                table.Columns[i].DefaultCellStyle.BackColor = backColor;
                 table.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
             }
         }
