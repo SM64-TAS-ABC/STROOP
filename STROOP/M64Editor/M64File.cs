@@ -165,14 +165,16 @@ namespace STROOP.M64Editor
             int pasteCount = copiedData.TotalFrames * multiplicity;
             if (insert)
             {
+                _gui.DataGridViewInputs.DataSource = null;
                 for (int i = 0; i < pasteCount; i++)
                 {
                     int insertionIndex = index + i;
                     Inputs.Insert(
                         insertionIndex,
                         new M64InputFrame(insertionIndex, copiedData.GetRawValue(i), false, this, _gui.DataGridViewInputs));
-                    _gui.DataGridViewInputs.Rows[insertionIndex].DefaultCellStyle.BackColor = M64Config.NewRowColor;
                 }
+                _gui.DataGridViewInputs.DataSource = Inputs;
+                Config.M64Manager.UpdateTableSettings();
             }
             else
             {

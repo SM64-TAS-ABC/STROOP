@@ -314,11 +314,17 @@ namespace STROOP.Managers
             return (startFrame, endFrame);
         }
 
-        private void UpdateTableSettings()
+        public void UpdateTableSettings()
         {
             DataGridView table = _gui.DataGridViewInputs;
             if (table.Columns.Count != M64Utilities.ColumnParameters.Count)
                 throw new ArgumentOutOfRangeException();
+
+            foreach (M64InputFrame input in _m64File.Inputs)
+            {
+                input.UpdateCellColors();
+                input.UpdateRowColor();
+            }
 
             for (int i = 0; i < table.Columns.Count; i++)
             {
