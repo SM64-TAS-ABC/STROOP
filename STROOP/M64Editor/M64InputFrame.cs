@@ -186,7 +186,35 @@ namespace STROOP.M64Editor
 
         public override string ToString()
         {
-            return String.Format("Frame {0}, Id {1}", FrameIndex, IdIndex);
+            return String.Format("Frame={0}, Id={1}, Inputs={2}", FrameIndex, IdIndex, GetInputString());
+        }
+
+        public string GetInputString()
+        {
+            StringBuilder builder = new StringBuilder();
+
+            if (X != 0) builder.Append("X" + X);
+            if (Y != 0) builder.Append("Y" + Y);
+
+            if (A) builder.Append("A");
+            if (B) builder.Append("B");
+            if (Z) builder.Append("Z");
+            if (S) builder.Append("S");
+            if (R) builder.Append("R");
+
+            if (C_Up) builder.Append("C^");
+            if (C_Down) builder.Append("Cv");
+            if (C_Left) builder.Append("C<");
+            if (C_Right) builder.Append("C>");
+
+            if (L) builder.Append("L");
+
+            if (D_Up) builder.Append("D^");
+            if (D_Down) builder.Append("Dv");
+            if (D_Left) builder.Append("D<");
+            if (D_Right) builder.Append("D>");
+
+            return builder.ToString();
         }
     }
 }
