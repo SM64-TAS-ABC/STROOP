@@ -117,7 +117,9 @@ namespace STROOP.M64Editor
                 if (_gui.CheckBoxMaxOutViCount.Checked)
                     Header.NumVis = int.MaxValue;
                 File.WriteAllBytes(filePath, ToBytes());
+                int currentPosition = _gui.DataGridViewInputs.FirstDisplayedScrollingRowIndex;
                 Config.M64Manager.Open(filePath, fileName);
+                Config.M64Manager.Goto(currentPosition);
             }
             catch (IOException)
             {
