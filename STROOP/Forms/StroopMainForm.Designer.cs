@@ -220,7 +220,7 @@ namespace STROOP
             this.labelM64FileName = new System.Windows.Forms.Label();
             this.labelM64FileLabel = new System.Windows.Forms.Label();
             this.buttonM64Goto = new System.Windows.Forms.Button();
-            this.textBoxM64Goto = new System.Windows.Forms.TextBox();
+            this.textBoxM64Goto = new BetterTextbox();
             this.buttonM64PasteOverwrite = new System.Windows.Forms.Button();
             this.buttonM64PasteInsert = new System.Windows.Forms.Button();
             this.buttonM64CopyInputRange = new System.Windows.Forms.Button();
@@ -17639,7 +17639,7 @@ namespace STROOP
         private CheckBox checkBoxMemoryRelativeAddresses;
         private TabPage tabPageM64;
         private Button buttonM64Goto;
-        private TextBox textBoxM64Goto;
+        private BetterTextbox textBoxM64Goto;
         private Button buttonM64SaveAs;
         private Button buttonM64Save;
         private Button buttonM64Open;
