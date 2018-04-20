@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Linq;
 using STROOP.Structs.Configurations;
+using STROOP.Structs;
 using STROOP.Utilities;
 
 namespace STROOP.Managers
@@ -35,6 +36,7 @@ namespace STROOP.Managers
             Button refreshButtonRoot = middle.Panel1.Controls["buttonGfxRefresh"] as Button;
             Button refreshButtonObject = middle.Panel1.Controls["buttonGfxRefreshObject"] as Button;
             Button dumpButton = middle.Panel1.Controls["buttonGfxDumpDisplayList"] as Button;
+            Button hitboxViewButton = middle.Panel1.Controls["buttonGfxHitboxHack"] as Button;
 
             _outputTextBox = right.Panel2.Controls["richTextBoxGfx"] as RichTextBox;
             _outputTextBox.Font = new System.Drawing.Font("Courier New", 8);
@@ -46,6 +48,7 @@ namespace STROOP.Managers
             refreshButtonRoot.Click += RefreshButton_Click;
             refreshButtonObject.Click += RefreshButtonObject_Click;
             dumpButton.Click += DumpButton_Click;
+            hitboxViewButton.Click += HitboxView_Click;
             _tabControl = tabControl;
 
             foreach (WatchVariableControlPrecursor precursor in GfxNode.GetCommonVariables())
@@ -55,6 +58,36 @@ namespace STROOP.Managers
 
             SpecificVariables = new List<WatchVariableControl>();
 
+        }
+
+        // Inject code that shows hitboxes in-game
+        // Note: a bit ugly at the moment. Hack folder is hardcoded instead of taken from Config file,
+        // and it's put here in the GFX tab by a lack of a better place. The hacks in the hack tab are
+        // constantly reapplied when memory is changed, which doesn't work with this hack which initializes 
+        // variables that are later changed.
+        private void HitboxView_Click(object sender, EventArgs args)
+        {
+            RomHack hck = null;
+            try
+            {
+                if (RomVersionConfig.Version == Structs.RomVersion.US)
+                {
+                    hck = new RomHack("Resources\\Hacks\\HitboxViewU.hck", "HitboxView");
+                }
+                else if (RomVersionConfig.Version == Structs.RomVersion.JP)
+                {
+                    hck = new RomHack("Resources\\Hacks\\HitboxViewJ.hck", "HitboxView");
+                }
+                else
+                {
+                    MessageBox.Show("Hitbox view hack only available on US and JP versions");
+                }
+            }
+            catch (System.IO.FileNotFoundException e)
+            {
+                MessageBox.Show("Hack files are missing in Resources\\Hacks folder");
+            }
+            hck?.LoadPayload();
         }
 
         // Dump the display list of the currently selected gfx node (if applicable)
