@@ -28,7 +28,10 @@ namespace STROOP.Managers
             _gui.ButtonResetChanges.Click += (sender, e) => _m64File.ResetChanges();
             _gui.ButtonOpen.Click += (sender, e) => Open();
             _gui.ButtonClose.Click += (sender, e) => Close();
-            _gui.ButtonGoto.Click += ButtonGoto_Click;
+
+            _gui.ButtonGoto.Click += (sender, e) => Goto();
+            _gui.TextBoxGoto.AddEnterAction(() => Goto());
+
             _gui.ButtonSetUsHeader.Click += (sender, e) => SetHeaderRomVersion(RomVersion.US);
             _gui.ButtonSetJpHeader.Click += (sender, e) => SetHeaderRomVersion(RomVersion.JP);
 
@@ -167,14 +170,15 @@ namespace STROOP.Managers
             _gui.DataGridViewInputs.Refresh();
         }
 
-        private void ButtonGoto_Click(object sender, EventArgs e)
+        public void Goto(int? gotoValueNullable = null)
         {
-            int value;
-            if (!int.TryParse(_gui.TextBoxGoto.Text, out value) || value < 0
-                || value >= _gui.DataGridViewInputs.Rows.Count)
-                return;
-
-            _gui.DataGridViewInputs.FirstDisplayedScrollingRowIndex = value;
+            gotoValueNullable = gotoValueNullable ?? ParsingUtilities.ParseIntNullable(_gui.TextBoxGoto.Text);
+            if (gotoValueNullable.HasValue)
+            {
+                int gotoValue = M64Utilities.ConvertDisplayedValueToFrame(gotoValueNullable.Value);
+                gotoValue = MoreMath.Clamp(gotoValue, 0, _gui.DataGridViewInputs.RowCount - 1);
+                _gui.DataGridViewInputs.FirstDisplayedScrollingRowIndex = gotoValue;
+            }
         }
 
         private void SaveAs()
