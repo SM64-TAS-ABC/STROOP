@@ -191,32 +191,31 @@ namespace STROOP.M64Editor
 
         public string GetInputsString()
         {
-            StringBuilder builder = new StringBuilder();
-            builder.Append("[");
+            List<string> inputList = new List<string>();
 
-            if (X != 0) builder.Append("X" + X);
-            if (Y != 0) builder.Append("Y" + Y);
+            if (X != 0) inputList.Add("X" + X);
+            if (Y != 0) inputList.Add("Y" + Y);
 
-            if (A) builder.Append("A");
-            if (B) builder.Append("B");
-            if (Z) builder.Append("Z");
-            if (S) builder.Append("S");
-            if (R) builder.Append("R");
+            if (A) inputList.Add("A");
+            if (B) inputList.Add("B");
+            if (Z) inputList.Add("Z");
+            if (S) inputList.Add("S");
+            if (R) inputList.Add("R");
 
-            if (C_Up) builder.Append("C^");
-            if (C_Down) builder.Append("Cv");
-            if (C_Left) builder.Append("C<");
-            if (C_Right) builder.Append("C>");
+            if (C_Up) inputList.Add("C^");
+            if (C_Down) inputList.Add("Cv");
+            if (C_Left) inputList.Add("C<");
+            if (C_Right) inputList.Add("C>");
 
-            if (L) builder.Append("L");
+            if (L) inputList.Add("L");
 
-            if (D_Up) builder.Append("D^");
-            if (D_Down) builder.Append("Dv");
-            if (D_Left) builder.Append("D<");
-            if (D_Right) builder.Append("D>");
+            if (D_Up) inputList.Add("D^");
+            if (D_Down) inputList.Add("Dv");
+            if (D_Left) inputList.Add("D<");
+            if (D_Right) inputList.Add("D>");
 
-            builder.Append("]");
-            return builder.ToString();
+            return "[" + String.Join(",", inputList) + "]";
+
         }
 
         public bool MatchesInputs(M64InputFrame other)
