@@ -151,9 +151,9 @@ namespace STROOP.Managers
         {
             List<M64InputCell> cells = M64Utilities.GetSelectedInputCells(
                 _gui.DataGridViewInputs, CellSelectionType.Cells);
-            (int minFrame, int maxFrame, string inputsString) = M64Utilities.GetCellStats(cells, true);
-            _gui.TextBoxSelectionStartFrame.Text = minFrame.ToString();
-            _gui.TextBoxSelectionEndFrame.Text = maxFrame.ToString();
+            (int? minFrame, int? maxFrame, string inputsString) = M64Utilities.GetCellStats(cells, true);
+            if (minFrame.HasValue) _gui.TextBoxSelectionStartFrame.Text = minFrame.Value.ToString();
+            if (maxFrame.HasValue) _gui.TextBoxSelectionEndFrame.Text = maxFrame.Value.ToString();
             _gui.TextBoxSelectionInputs.Text = inputsString;
         }
 
