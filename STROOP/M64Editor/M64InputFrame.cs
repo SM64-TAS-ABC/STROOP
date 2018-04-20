@@ -114,6 +114,7 @@ namespace STROOP.M64Editor
         private void NotifyChange()
         {
             _m64File.IsModified = true;
+            _m64File.ModifiedFrames.Add(this);
             UpdateCellColors();
         }
 
@@ -166,6 +167,26 @@ namespace STROOP.M64Editor
         public byte[] ToBytes()
         {
             return BitConverter.GetBytes(RawValue).ToArray();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (this == obj) return true;
+            if (obj is M64InputFrame input)
+            {
+                return IdIndex == input.IdIndex;
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return IdIndex;
+        }
+
+        public override string ToString()
+        {
+            return String.Format("Frame {0}, Id {1}", FrameIndex, IdIndex);
         }
     }
 }

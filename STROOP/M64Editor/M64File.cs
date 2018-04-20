@@ -27,7 +27,7 @@ namespace STROOP.M64Editor
         public int OriginalFrameCount { get; private set; }
 
         public bool IsModified = false;
-        private readonly List<M64InputFrame> _modifiedFrames = new List<M64InputFrame>();
+        public readonly HashSet<M64InputFrame> ModifiedFrames = new HashSet<M64InputFrame>();
 
         public M64Header Header { get; }
         public BindingList<M64InputFrame> Inputs { get; }
@@ -83,6 +83,7 @@ namespace STROOP.M64Editor
             byte[] frameBytes = fileBytes.Skip(M64Config.HeaderSize).ToArray();
 
             IsModified = false;
+            ModifiedFrames.Clear();
             OriginalFrameCount = Header.NumInputs;
             for (int i = 0; i < frameBytes.Length && i < 4 * OriginalFrameCount; i += 4)
             {
@@ -151,11 +152,12 @@ namespace STROOP.M64Editor
             _gui.DataGridViewInputs.DataSource = null;
             for (int i = 0; i < numDeletes; i++)
             {
+                ModifiedFrames.Remove(Inputs[startIndex]);
                 Inputs.RemoveAt(startIndex);
             }
             RefreshInputFrames(startIndex);
             _gui.DataGridViewInputs.DataSource = Inputs;
-            Config.M64Manager.UpdateTableSettings(_modifiedFrames);
+            Config.M64Manager.UpdateTableSettings(ModifiedFrames);
 
             IsModified = true;
             Header.NumInputs = Inputs.Count;
@@ -173,13 +175,14 @@ namespace STROOP.M64Editor
                 for (int i = 0; i < pasteCount; i++)
                 {
                     int insertionIndex = index + i;
-                    Inputs.Insert(
-                        insertionIndex,
-                        new M64InputFrame(insertionIndex, copiedData.GetRawValue(i), false, this, _gui.DataGridViewInputs));
+                    M64InputFrame newInput = new M64InputFrame(
+                        insertionIndex, copiedData.GetRawValue(i), false, this, _gui.DataGridViewInputs);
+                    Inputs.Insert(insertionIndex, newInput);
+                    ModifiedFrames.Add(newInput);
                 }
                 RefreshInputFrames(index);
                 _gui.DataGridViewInputs.DataSource = Inputs;
-                Config.M64Manager.UpdateTableSettings(_modifiedFrames);
+                Config.M64Manager.UpdateTableSettings(ModifiedFrames);
             }
             else
             {

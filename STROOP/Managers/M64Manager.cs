@@ -314,7 +314,7 @@ namespace STROOP.Managers
             return (startFrame, endFrame);
         }
 
-        public void UpdateTableSettings(List<M64InputFrame> modifiedFrames = null)
+        public void UpdateTableSettings(IEnumerable<M64InputFrame> modifiedFrames = null)
         {
             DataGridView table = _gui.DataGridViewInputs;
             if (table.Columns.Count != M64Utilities.ColumnParameters.Count)
