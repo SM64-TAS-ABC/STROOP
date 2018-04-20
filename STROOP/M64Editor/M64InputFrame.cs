@@ -216,5 +216,10 @@ namespace STROOP.M64Editor
 
             return builder.ToString();
         }
+
+        public bool MatchesInputs(M64InputFrame other)
+        {
+            return Enumerable.SequenceEqual(GetCurrentValues(), other.GetCurrentValues());
+        }
     }
 }
