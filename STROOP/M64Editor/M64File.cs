@@ -141,7 +141,9 @@ namespace STROOP.M64Editor
 
         public void ResetChanges()
         {
+            int currentPosition = _gui.DataGridViewInputs.FirstDisplayedScrollingRowIndex;
             Config.M64Manager.Open(CurrentFilePath, CurrentFileName);
+            Config.M64Manager.Goto(currentPosition);
         }
 
         public void DeleteRows(int startIndex, int endIndex)
