@@ -28,7 +28,10 @@ namespace STROOP.Managers
             _gui.ButtonResetChanges.Click += (sender, e) => _m64File.ResetChanges();
             _gui.ButtonOpen.Click += (sender, e) => Open();
             _gui.ButtonClose.Click += (sender, e) => Close();
-            _gui.ButtonGoto.Click += ButtonGoto_Click;
+
+            _gui.ButtonGoto.Click += (sender, e) => Goto();
+            _gui.TextBoxGoto.AddEnterAction(() => Goto());
+
             _gui.ButtonSetUsHeader.Click += (sender, e) => SetHeaderRomVersion(RomVersion.US);
             _gui.ButtonSetJpHeader.Click += (sender, e) => SetHeaderRomVersion(RomVersion.JP);
 
@@ -148,9 +151,9 @@ namespace STROOP.Managers
         {
             List<M64InputCell> cells = M64Utilities.GetSelectedInputCells(
                 _gui.DataGridViewInputs, CellSelectionType.Cells);
-            (int minFrame, int maxFrame, string inputsString) = M64Utilities.GetCellStats(cells, true);
-            _gui.TextBoxSelectionStartFrame.Text = minFrame.ToString();
-            _gui.TextBoxSelectionEndFrame.Text = maxFrame.ToString();
+            (int? minFrame, int? maxFrame, string inputsString) = M64Utilities.GetCellStats(cells, true);
+            if (minFrame.HasValue) _gui.TextBoxSelectionStartFrame.Text = minFrame.Value.ToString();
+            if (maxFrame.HasValue) _gui.TextBoxSelectionEndFrame.Text = maxFrame.Value.ToString();
             _gui.TextBoxSelectionInputs.Text = inputsString;
         }
 
@@ -167,14 +170,15 @@ namespace STROOP.Managers
             _gui.DataGridViewInputs.Refresh();
         }
 
-        private void ButtonGoto_Click(object sender, EventArgs e)
+        public void Goto(int? gotoValueNullable = null)
         {
-            int value;
-            if (!int.TryParse(_gui.TextBoxGoto.Text, out value) || value < 0
-                || value >= _gui.DataGridViewInputs.Rows.Count)
-                return;
-
-            _gui.DataGridViewInputs.FirstDisplayedScrollingRowIndex = value;
+            gotoValueNullable = gotoValueNullable ?? ParsingUtilities.ParseIntNullable(_gui.TextBoxGoto.Text);
+            if (gotoValueNullable.HasValue)
+            {
+                int gotoValue = M64Utilities.ConvertDisplayedValueToFrame(gotoValueNullable.Value);
+                gotoValue = MoreMath.Clamp(gotoValue, 0, _gui.DataGridViewInputs.RowCount - 1);
+                _gui.DataGridViewInputs.FirstDisplayedScrollingRowIndex = gotoValue;
+            }
         }
 
         private void SaveAs()
@@ -314,18 +318,27 @@ namespace STROOP.Managers
             return (startFrame, endFrame);
         }
 
-        private void UpdateTableSettings()
+        public void UpdateTableSettings(IEnumerable<M64InputFrame> modifiedFrames = null)
         {
             DataGridView table = _gui.DataGridViewInputs;
             if (table.Columns.Count != M64Utilities.ColumnParameters.Count)
                 throw new ArgumentOutOfRangeException();
 
+            if (modifiedFrames != null)
+            {
+                foreach (M64InputFrame input in modifiedFrames)
+                {
+                    input.UpdateRowColor();
+                    input.UpdateCellColors();
+                }
+            }
+
             for (int i = 0; i < table.Columns.Count; i++)
             {
-                (string headerText, int fillWeight, Color? backColor) = M64Utilities.ColumnParameters[i];
+                (string headerText, int fillWeight, Color backColor) = M64Utilities.ColumnParameters[i];
                 table.Columns[i].HeaderText = headerText;
                 table.Columns[i].FillWeight = fillWeight;
-                if (backColor.HasValue) table.Columns[i].DefaultCellStyle.BackColor = backColor.Value;
+                table.Columns[i].DefaultCellStyle.BackColor = backColor;
                 table.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
             }
         }

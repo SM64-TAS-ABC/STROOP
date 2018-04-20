@@ -22,7 +22,7 @@ namespace STROOP.Structs.Gui
         public Button ButtonClose;
 
         public Button ButtonGoto;
-        public TextBox TextBoxGoto;
+        public BetterTextbox TextBoxGoto;
         
         public DataGridView DataGridViewInputs;
         public PropertyGrid PropertyGridHeader;

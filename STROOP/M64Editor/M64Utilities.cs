@@ -16,9 +16,6 @@ namespace STROOP.M64Editor
 {
     public static class M64Utilities
     {
-        public static readonly Color NewRowColor = Color.FromArgb(186, 255, 166);
-        public static readonly Color EditedCellColor = Color.Pink;
-
         public static readonly Dictionary<string, int> InputHeaderTextToIndex =
             new Dictionary<string, int>()
             {
@@ -124,27 +121,27 @@ namespace STROOP.M64Editor
             }
         }
 
-        public static readonly List<(string, int, Color?)> ColumnParameters =
-            new List<(string, int, Color?)>()
+        public static readonly List<(string, int, Color)> ColumnParameters =
+            new List<(string, int, Color)>()
             {
-                ("Frame", 200, null),
-                ("Id", 200, null),
-                ("X", 200, null),
-                ("Y", 200, null),
-                ("A", 100, null),
-                ("B", 100, null),
-                ("Z", 100, null),
-                ("S", 100, null),
-                ("R", 100, null),
-                ("C^", 100, Color.Yellow),
-                ("Cv", 100, Color.Yellow),
-                ("C<", 100, Color.Yellow),
-                ("C>", 100, Color.Yellow),
-                ("L", 100, Color.LightGray),
-                ("D^", 100, Color.LightGray),
-                ("Dv", 100, Color.LightGray),
-                ("D<", 100, Color.LightGray),
-                ("D>", 100, Color.LightGray),
+                ("Frame", M64Config.TextColumnFillWeight, M64Config.FrameColumnColor),
+                ("Id", M64Config.TextColumnFillWeight, M64Config.FrameColumnColor),
+                ("X", M64Config.TextColumnFillWeight, M64Config.MainButtonColor),
+                ("Y", M64Config.TextColumnFillWeight, M64Config.MainButtonColor),
+                ("A", M64Config.CheckBoxColumnFillWeight, M64Config.MainButtonColor),
+                ("B", M64Config.CheckBoxColumnFillWeight, M64Config.MainButtonColor),
+                ("Z", M64Config.CheckBoxColumnFillWeight, M64Config.MainButtonColor),
+                ("S", M64Config.CheckBoxColumnFillWeight, M64Config.MainButtonColor),
+                ("R", M64Config.CheckBoxColumnFillWeight, M64Config.MainButtonColor),
+                ("C^", M64Config.CheckBoxColumnFillWeight, M64Config.CButtonColumnColor),
+                ("Cv", M64Config.CheckBoxColumnFillWeight, M64Config.CButtonColumnColor),
+                ("C<", M64Config.CheckBoxColumnFillWeight, M64Config.CButtonColumnColor),
+                ("C>", M64Config.CheckBoxColumnFillWeight, M64Config.CButtonColumnColor),
+                ("L", M64Config.CheckBoxColumnFillWeight, M64Config.NoopButtonColumnColor),
+                ("D^", M64Config.CheckBoxColumnFillWeight, M64Config.NoopButtonColumnColor),
+                ("Dv", M64Config.CheckBoxColumnFillWeight, M64Config.NoopButtonColumnColor),
+                ("D<", M64Config.CheckBoxColumnFillWeight, M64Config.NoopButtonColumnColor),
+                ("D>", M64Config.CheckBoxColumnFillWeight, M64Config.NoopButtonColumnColor),
             };
 
         public static List<M64InputCell> GetSelectedInputCells(
@@ -186,10 +183,10 @@ namespace STROOP.M64Editor
             }
         }
 
-        public static (int minFrame, int maxFrame, string inputsString) GetCellStats(
+        public static (int? minFrame, int? maxFrame, string inputsString) GetCellStats(
             List<M64InputCell> cells, bool useDisplayed)
         {
-            if (cells.Count == 0) return (0, 0, "");
+            if (cells.Count == 0) return (null, null, "");
             int minFrame = cells.Min(cell => cell.RowIndex);
             int maxFrame = cells.Max(cell => cell.RowIndex);
             if (useDisplayed)

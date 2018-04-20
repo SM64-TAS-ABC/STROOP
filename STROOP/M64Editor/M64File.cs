@@ -27,6 +27,7 @@ namespace STROOP.M64Editor
         public int OriginalFrameCount { get; private set; }
 
         public bool IsModified = false;
+        public readonly HashSet<M64InputFrame> ModifiedFrames = new HashSet<M64InputFrame>();
 
         public M64Header Header { get; }
         public BindingList<M64InputFrame> Inputs { get; }
@@ -82,10 +83,12 @@ namespace STROOP.M64Editor
             byte[] frameBytes = fileBytes.Skip(M64Config.HeaderSize).ToArray();
 
             IsModified = false;
+            ModifiedFrames.Clear();
             OriginalFrameCount = Header.NumInputs;
             for (int i = 0; i < frameBytes.Length && i < 4 * OriginalFrameCount; i += 4)
             {
-                Inputs.Add(new M64InputFrame(i / 4, BitConverter.ToUInt32(frameBytes, i), this, _gui.DataGridViewInputs));
+                Inputs.Add(new M64InputFrame(
+                    i / 4, BitConverter.ToUInt32(frameBytes, i), true, this, _gui.DataGridViewInputs));
             }
             _gui.DataGridViewInputs.Refresh();
             _gui.PropertyGridHeader.Refresh();
@@ -114,7 +117,9 @@ namespace STROOP.M64Editor
                 if (_gui.CheckBoxMaxOutViCount.Checked)
                     Header.NumVis = int.MaxValue;
                 File.WriteAllBytes(filePath, ToBytes());
+                int currentPosition = _gui.DataGridViewInputs.FirstDisplayedScrollingRowIndex;
                 Config.M64Manager.Open(filePath, fileName);
+                Config.M64Manager.Goto(currentPosition);
             }
             catch (IOException)
             {
@@ -136,7 +141,9 @@ namespace STROOP.M64Editor
 
         public void ResetChanges()
         {
+            int currentPosition = _gui.DataGridViewInputs.FirstDisplayedScrollingRowIndex;
             Config.M64Manager.Open(CurrentFilePath, CurrentFileName);
+            Config.M64Manager.Goto(currentPosition);
         }
 
         public void DeleteRows(int startIndex, int endIndex)
@@ -146,15 +153,20 @@ namespace STROOP.M64Editor
             int numDeletes = endIndex - startIndex + 1;
             if (numDeletes <= 0) return;
 
+            _gui.DataGridViewInputs.DataSource = null;
             for (int i = 0; i < numDeletes; i++)
             {
+                ModifiedFrames.Remove(Inputs[startIndex]);
                 Inputs.RemoveAt(startIndex);
             }
+            RefreshInputFrames(startIndex);
+            _gui.DataGridViewInputs.DataSource = Inputs;
+            Config.M64Manager.UpdateTableSettings(ModifiedFrames);
 
             IsModified = true;
             Header.NumInputs = Inputs.Count;
-            RefreshInputFrames(startIndex);
             _gui.DataGridViewInputs.Refresh();
+            Config.M64Manager.UpdateSelectionTextboxes();
         }
 
         public void Paste(M64CopiedData copiedData, int index, bool insert, int multiplicity)
@@ -163,14 +175,18 @@ namespace STROOP.M64Editor
             int pasteCount = copiedData.TotalFrames * multiplicity;
             if (insert)
             {
+                _gui.DataGridViewInputs.DataSource = null;
                 for (int i = 0; i < pasteCount; i++)
                 {
                     int insertionIndex = index + i;
-                    Inputs.Insert(
-                        insertionIndex,
-                        new M64InputFrame(insertionIndex, copiedData.GetRawValue(i), this, _gui.DataGridViewInputs));
-                    _gui.DataGridViewInputs.Rows[insertionIndex].DefaultCellStyle.BackColor = M64Utilities.NewRowColor;
+                    M64InputFrame newInput = new M64InputFrame(
+                        insertionIndex, copiedData.GetRawValue(i), false, this, _gui.DataGridViewInputs);
+                    Inputs.Insert(insertionIndex, newInput);
+                    ModifiedFrames.Add(newInput);
                 }
+                RefreshInputFrames(index);
+                _gui.DataGridViewInputs.DataSource = Inputs;
+                Config.M64Manager.UpdateTableSettings(ModifiedFrames);
             }
             else
             {
@@ -182,6 +198,7 @@ namespace STROOP.M64Editor
             Header.NumInputs = Inputs.Count;
             RefreshInputFrames(index);
             _gui.DataGridViewInputs.Refresh();
+            Config.M64Manager.UpdateSelectionTextboxes();
         }
 
         private void RefreshInputFrames(int startIndex = 0)
