@@ -192,6 +192,7 @@ namespace STROOP.M64Editor
         public string GetInputsString()
         {
             StringBuilder builder = new StringBuilder();
+            builder.Append("[");
 
             if (X != 0) builder.Append("X" + X);
             if (Y != 0) builder.Append("Y" + Y);
@@ -214,6 +215,7 @@ namespace STROOP.M64Editor
             if (D_Left) builder.Append("D<");
             if (D_Right) builder.Append("D>");
 
+            builder.Append("]");
             return builder.ToString();
         }
 

@@ -222,7 +222,7 @@ namespace STROOP.M64Editor
         {
             List<ToolStripMenuItem> items = M64Utilities.ButtonNameList.ConvertAll(
                 buttonName => new ToolStripMenuItem(
-                    String.Format("Show all {0} presses", buttonName)));
+                    String.Format("Show All {0} Presses", buttonName)));
 
             if (items.Count != M64Utilities.IsButtonPressedFunctionList.Count)
                 throw new ArgumentOutOfRangeException();
@@ -243,6 +243,16 @@ namespace STROOP.M64Editor
                 };
             }
 
+            ToolStripMenuItem itemShowAllInputChanges = new ToolStripMenuItem("Show All Input Changes");
+            itemShowAllInputChanges.Click += (sender, e) =>
+            {
+                InfoForm.ShowText(
+                    "Input Changes",
+                    "Input Changes",
+                    FormatInputChangesString(FindInputChanges()));
+            };
+            items.Add(itemShowAllInputChanges);
+
             ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
             items.ForEach(item => contextMenuStrip.Items.Add(item));
             return contextMenuStrip;
@@ -256,13 +266,29 @@ namespace STROOP.M64Editor
                 buttonPresses.Count, buttonName, buttonPresses.Count != 1 ? "es" : ""));
             for (int i = 0; i < buttonPresses.Count; i++)
             {
-                int countIndex = i + 1;
                 (int startFrame, int endFrame) = buttonPresses[i];
                 int frameSpan = endFrame - startFrame + 1;
                 string pluralitySuffix = frameSpan != 1 ? "s" : "";
                 lines.Add(String.Format(
                     "{0} press #{1}: frame {2} to frame {3} ({4} frame{5})",
-                    buttonName, countIndex, startFrame, endFrame, frameSpan, pluralitySuffix));
+                    buttonName, i + 1, startFrame, endFrame, frameSpan, pluralitySuffix));
+            }
+            return String.Join("\r\n", lines);
+        }
+
+        private string FormatInputChangesString(List<(int, string)> inputChanges)
+        {
+            List<string> lines = new List<string>();
+            lines.Add(String.Format(
+                "{0} input change{1} total:",
+                inputChanges.Count - 1, inputChanges.Count - 1 != 1 ? "s" : ""));
+            for (int i = 0; i < inputChanges.Count - 1; i++)
+            {
+                (int frame1, string inputsString1) = inputChanges[i];
+                (int frame2, string inputsString2) = inputChanges[i+1];
+                lines.Add(String.Format(
+                    "Input change #{0} on frame {1}: from {2} to {3}",
+                    i + 1, frame2, inputsString1, inputsString2));
             }
             return String.Join("\r\n", lines);
         }
