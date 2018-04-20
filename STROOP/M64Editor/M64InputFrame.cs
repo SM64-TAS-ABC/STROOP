@@ -186,10 +186,10 @@ namespace STROOP.M64Editor
 
         public override string ToString()
         {
-            return String.Format("Frame={0}, Id={1}, Inputs={2}", FrameIndex, IdIndex, GetInputString());
+            return String.Format("Frame={0}, Id={1}, Inputs={2}", FrameIndex, IdIndex, GetInputsString());
         }
 
-        public string GetInputString()
+        public string GetInputsString()
         {
             StringBuilder builder = new StringBuilder();
 

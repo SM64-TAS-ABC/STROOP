@@ -118,14 +118,14 @@ namespace STROOP.M64Editor
             set { SetNumPreses(value, input => input.D_Right = false); }
         }
 
-        [Category("Misc"), DisplayName("\u200BLag VIs")]
+        [Category("Misc"), DisplayName("\u200B\u200BLag VIs")]
         public int LagVis
         {
             get { return _header.NumVis - 2 * _header.NumInputs; }
             set { }
         }
 
-        [Category("Misc"), DisplayName("Num Unused Inputs")]
+        [Category("Misc"), DisplayName("\u200BNum Unused Inputs")]
         public int NumUnusedInputs
         {
             get
@@ -134,6 +134,16 @@ namespace STROOP.M64Editor
                 int rawInputCount = (_rawBytes.Length - M64Config.HeaderSize) / 4;
                 int headerInputCount = _header.NumInputs;
                 return rawInputCount - headerInputCount;
+            }
+            set { }
+        }
+
+        [Category("Misc"), DisplayName("Num Input Changes")]
+        public int NumInputChanges
+        {
+            get
+            {
+                return FindInputChanges().Count - 1;
             }
             set { }
         }
@@ -190,6 +200,22 @@ namespace STROOP.M64Editor
             {
                 unpressFunction(_inputs[i]);
             }
+        }
+
+        private List<(int, string)> FindInputChanges()
+        {
+            List<(int, string)> inputChanges = new List<(int, string)>();
+            string lastInputsString = null;
+            for (int i = 0; i < _inputs.Count; i++)
+            {
+                string inputsString = _inputs[i].GetInputsString();
+                if (!Equals(inputsString, lastInputsString))
+                {
+                    inputChanges.Add((i, inputsString));
+                    lastInputsString = inputsString;
+                }
+            }
+            return inputChanges;
         }
 
         public ContextMenuStrip CreateContextMenuStrip()
