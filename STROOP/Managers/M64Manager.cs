@@ -314,16 +314,19 @@ namespace STROOP.Managers
             return (startFrame, endFrame);
         }
 
-        public void UpdateTableSettings()
+        public void UpdateTableSettings(List<M64InputFrame> modifiedFrames = null)
         {
             DataGridView table = _gui.DataGridViewInputs;
             if (table.Columns.Count != M64Utilities.ColumnParameters.Count)
                 throw new ArgumentOutOfRangeException();
 
-            foreach (M64InputFrame input in _m64File.Inputs)
+            if (modifiedFrames != null)
             {
-                input.UpdateRowColor();
-                input.UpdateCellColors();
+                foreach (M64InputFrame input in modifiedFrames)
+                {
+                    input.UpdateRowColor();
+                    input.UpdateCellColors();
+                }
             }
 
             for (int i = 0; i < table.Columns.Count; i++)

@@ -27,6 +27,7 @@ namespace STROOP.M64Editor
         public int OriginalFrameCount { get; private set; }
 
         public bool IsModified = false;
+        private readonly List<M64InputFrame> _modifiedFrames = new List<M64InputFrame>();
 
         public M64Header Header { get; }
         public BindingList<M64InputFrame> Inputs { get; }
@@ -147,14 +148,17 @@ namespace STROOP.M64Editor
             int numDeletes = endIndex - startIndex + 1;
             if (numDeletes <= 0) return;
 
+            _gui.DataGridViewInputs.DataSource = null;
             for (int i = 0; i < numDeletes; i++)
             {
                 Inputs.RemoveAt(startIndex);
             }
+            RefreshInputFrames(startIndex);
+            _gui.DataGridViewInputs.DataSource = Inputs;
+            Config.M64Manager.UpdateTableSettings(_modifiedFrames);
 
             IsModified = true;
             Header.NumInputs = Inputs.Count;
-            RefreshInputFrames(startIndex);
             _gui.DataGridViewInputs.Refresh();
             Config.M64Manager.UpdateSelectionTextboxes();
         }
@@ -175,7 +179,7 @@ namespace STROOP.M64Editor
                 }
                 RefreshInputFrames(index);
                 _gui.DataGridViewInputs.DataSource = Inputs;
-                Config.M64Manager.UpdateTableSettings();
+                Config.M64Manager.UpdateTableSettings(_modifiedFrames);
             }
             else
             {
