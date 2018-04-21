@@ -27,9 +27,9 @@ namespace STROOP.M64Editor
             InputFrame = inputs[cell.RowIndex];
         }
 
-        public void SetValue(bool value)
+        public void SetValue(bool value, int? intOnValue = null)
         {
-            M64Utilities.SetSpecificInputValue(InputFrame, HeaderText, value);
+            M64Utilities.SetSpecificInputValue(InputFrame, HeaderText, value, intOnValue);
         }
     }
 }
