@@ -220,7 +220,7 @@ namespace STROOP
             this.labelM64FileName = new System.Windows.Forms.Label();
             this.labelM64FileLabel = new System.Windows.Forms.Label();
             this.buttonM64Goto = new System.Windows.Forms.Button();
-            this.textBoxM64Goto = new BetterTextbox();
+            this.textBoxM64Goto = new STROOP.BetterTextbox();
             this.buttonM64PasteOverwrite = new System.Windows.Forms.Button();
             this.buttonM64PasteInsert = new System.Windows.Forms.Button();
             this.buttonM64CopyInputRange = new System.Windows.Forms.Button();
@@ -1237,6 +1237,8 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
+            this.textBoxM64OnValue = new STROOP.BetterTextbox();
+            this.labelM64OnValue = new System.Windows.Forms.Label();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -3488,10 +3490,12 @@ namespace STROOP
             this.splitContainerM64.Panel1.Controls.Add(this.groupBoxM64Selection);
             this.splitContainerM64.Panel1.Controls.Add(this.labelM64PasteMultiplicity);
             this.splitContainerM64.Panel1.Controls.Add(this.labelM64NumInputsValue);
+            this.splitContainerM64.Panel1.Controls.Add(this.labelM64OnValue);
             this.splitContainerM64.Panel1.Controls.Add(this.labelM64NumInputsLabel);
             this.splitContainerM64.Panel1.Controls.Add(this.labelM64FileName);
             this.splitContainerM64.Panel1.Controls.Add(this.labelM64FileLabel);
             this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Goto);
+            this.splitContainerM64.Panel1.Controls.Add(this.textBoxM64OnValue);
             this.splitContainerM64.Panel1.Controls.Add(this.textBoxM64Goto);
             this.splitContainerM64.Panel1.Controls.Add(this.buttonM64PasteOverwrite);
             this.splitContainerM64.Panel1.Controls.Add(this.buttonM64PasteInsert);
@@ -5771,7 +5775,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 346F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 347F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -11600,7 +11604,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(373, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(356, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -11632,7 +11636,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(367, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(350, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -11688,7 +11692,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(367, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(350, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -12134,7 +12138,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 683;
+            this.splitContainerMemory.SplitterDistance = 686;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -12158,7 +12162,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(567, 429);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(570, 429);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -12261,7 +12265,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(223, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(220, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPageHacks
@@ -16011,6 +16015,24 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
+            // textBoxM64OnValue
+            // 
+            this.textBoxM64OnValue.Location = new System.Drawing.Point(273, 255);
+            this.textBoxM64OnValue.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxM64OnValue.Name = "textBoxM64OnValue";
+            this.textBoxM64OnValue.Size = new System.Drawing.Size(63, 20);
+            this.textBoxM64OnValue.TabIndex = 11;
+            this.textBoxM64OnValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelM64OnValue
+            // 
+            this.labelM64OnValue.AutoSize = true;
+            this.labelM64OnValue.Location = new System.Drawing.Point(277, 240);
+            this.labelM64OnValue.Name = "labelM64OnValue";
+            this.labelM64OnValue.Size = new System.Drawing.Size(54, 13);
+            this.labelM64OnValue.TabIndex = 14;
+            this.labelM64OnValue.Text = "On Value:";
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -17709,6 +17731,8 @@ namespace STROOP
         private Button buttonM64ResetChanges;
         private Button buttonBypass;
         private CheckBox checkBoxDontRoundValuesToZero;
+        private Label labelM64OnValue;
+        private BetterTextbox textBoxM64OnValue;
     }
 }
 
