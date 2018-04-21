@@ -209,6 +209,8 @@ namespace STROOP
                 ButtonSetUsHeader = buttonM64SetUsHeader,
                 ButtonSetJpHeader = buttonM64SetJpHeader,
 
+                TextBoxOnValue = textBoxM64OnValue,
+
                 TextBoxSelectionStartFrame = textBoxM64SelectionStartFrame,
                 TextBoxSelectionEndFrame = textBoxM64SelectionEndFrame,
                 TextBoxSelectionInputs = textBoxM64SelectionInputs,

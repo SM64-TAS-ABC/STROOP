@@ -1238,6 +1238,8 @@ namespace STROOP
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.buttonGfxHitboxHack = new System.Windows.Forms.Button();
+            this.textBoxM64OnValue = new STROOP.BetterTextbox();
+            this.labelM64OnValue = new System.Windows.Forms.Label();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -3489,10 +3491,12 @@ namespace STROOP
             this.splitContainerM64.Panel1.Controls.Add(this.groupBoxM64Selection);
             this.splitContainerM64.Panel1.Controls.Add(this.labelM64PasteMultiplicity);
             this.splitContainerM64.Panel1.Controls.Add(this.labelM64NumInputsValue);
+            this.splitContainerM64.Panel1.Controls.Add(this.labelM64OnValue);
             this.splitContainerM64.Panel1.Controls.Add(this.labelM64NumInputsLabel);
             this.splitContainerM64.Panel1.Controls.Add(this.labelM64FileName);
             this.splitContainerM64.Panel1.Controls.Add(this.labelM64FileLabel);
             this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Goto);
+            this.splitContainerM64.Panel1.Controls.Add(this.textBoxM64OnValue);
             this.splitContainerM64.Panel1.Controls.Add(this.textBoxM64Goto);
             this.splitContainerM64.Panel1.Controls.Add(this.buttonM64PasteOverwrite);
             this.splitContainerM64.Panel1.Controls.Add(this.buttonM64PasteInsert);
@@ -16022,6 +16026,24 @@ namespace STROOP
             this.buttonGfxHitboxHack.Text = "Inject hitbox view code";
             this.buttonGfxHitboxHack.UseVisualStyleBackColor = true;
             // 
+            // textBoxM64OnValue
+            // 
+            this.textBoxM64OnValue.Location = new System.Drawing.Point(273, 255);
+            this.textBoxM64OnValue.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxM64OnValue.Name = "textBoxM64OnValue";
+            this.textBoxM64OnValue.Size = new System.Drawing.Size(63, 20);
+            this.textBoxM64OnValue.TabIndex = 11;
+            this.textBoxM64OnValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelM64OnValue
+            // 
+            this.labelM64OnValue.AutoSize = true;
+            this.labelM64OnValue.Location = new System.Drawing.Point(277, 240);
+            this.labelM64OnValue.Name = "labelM64OnValue";
+            this.labelM64OnValue.Size = new System.Drawing.Size(54, 13);
+            this.labelM64OnValue.TabIndex = 14;
+            this.labelM64OnValue.Text = "On Value:";
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -17721,6 +17743,8 @@ namespace STROOP
         private Button buttonBypass;
         private CheckBox checkBoxDontRoundValuesToZero;
         private Button buttonGfxHitboxHack;
+        private Label labelM64OnValue;
+        private BetterTextbox textBoxM64OnValue;
     }
 }
 

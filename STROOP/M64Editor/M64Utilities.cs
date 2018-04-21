@@ -66,15 +66,37 @@ namespace STROOP.M64Editor
                 InputHeaderTextToIndex[inputString1] - InputHeaderTextToIndex[inputString2]);
 
         public static void SetSpecificInputValue(
-            M64InputFrame inputFrame, string headerText, bool value)
+            M64InputFrame inputFrame, string headerText, bool value, int? intOnValue = null)
         {
             switch (headerText)
             {
                 case "X":
-                    if (!value) inputFrame.X = 0;
+                    if (value)
+                    {
+                        if (intOnValue.HasValue)
+                        {
+                            sbyte sbyteValue = ParsingUtilities.ParseSByteRoundingCapping(intOnValue.Value);
+                            inputFrame.X = sbyteValue;
+                        }
+                    }
+                    else
+                    {
+                        inputFrame.X = 0;
+                    }
                     break;
                 case "Y":
-                    if (!value) inputFrame.Y = 0;
+                    if (value)
+                    {
+                        if (intOnValue.HasValue)
+                        {
+                            sbyte sbyteValue = ParsingUtilities.ParseSByteRoundingCapping(intOnValue.Value);
+                            inputFrame.Y = sbyteValue;
+                        }
+                    }
+                    else
+                    {
+                        inputFrame.Y = 0;
+                    }
                     break;
                 case "A":
                     inputFrame.A = value;

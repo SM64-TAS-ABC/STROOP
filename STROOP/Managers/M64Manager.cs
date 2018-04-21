@@ -166,7 +166,8 @@ namespace STROOP.Managers
                 startFrame,
                 endFrame,
                 _gui.TextBoxSelectionInputs.Text);
-            cells.ForEach(cell => cell.SetValue(value));
+            int? intOnValue = ParsingUtilities.ParseIntNullable(_gui.TextBoxOnValue.Text);
+            cells.ForEach(cell => cell.SetValue(value, intOnValue));
             _gui.DataGridViewInputs.Refresh();
         }
 

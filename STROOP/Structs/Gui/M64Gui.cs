@@ -36,6 +36,8 @@ namespace STROOP.Structs.Gui
         public Button ButtonSetUsHeader;
         public Button ButtonSetJpHeader;
 
+        public BetterTextbox TextBoxOnValue;
+
         public BetterTextbox TextBoxSelectionStartFrame;
         public BetterTextbox TextBoxSelectionEndFrame;
         public BetterTextbox TextBoxSelectionInputs;
