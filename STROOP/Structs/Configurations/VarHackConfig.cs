@@ -32,7 +32,7 @@ namespace STROOP.Structs.Configurations
         public static readonly string MarioHeadChar = Char.ConvertFromUtf32(44);
         public static readonly string StarChar = Char.ConvertFromUtf32(45);
 
-        public static readonly int MaxStringLength = 17;
+        public static readonly int MaxStringLength = 19;
 
         public static RomHack ShowVarRomHack;
     }

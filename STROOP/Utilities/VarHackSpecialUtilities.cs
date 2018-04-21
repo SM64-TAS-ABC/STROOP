@@ -8,69 +8,79 @@ namespace STROOP.Structs
 {
     public static class VarHackSpecialUtilities
     {
-        private readonly static Func<string> DEFAULT_GETTER = () => "NOT IMPL";
+        private readonly static string DEFAULT_NAME = "NOT IMPL";
+        private readonly static Func<string> DEFAULT_GETTER = () => "";
 
-        public static Func<string> CreateGetterFunction(string specialType)
+        public static (string, Func<string>) CreateGetterFunction(string specialType)
         {
+            string name = DEFAULT_NAME;
             Func<string> getterFunction = DEFAULT_GETTER;
 
             switch (specialType)
             {
                 case "RngIndex":
+                    name = "Index %";
                     getterFunction = () =>
                     {
-                        return "Index " + RngIndexer.GetRngIndex();
+                        return RngIndexer.GetRngIndex().ToString();
                     };
                     break;
 
                 case "FloorYNorm":
+                    name = "YNorm %";
                     getterFunction = () =>
                     {
                         uint triFloorAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
                         float yNorm = Config.Stream.GetSingle(triFloorAddress + TriangleOffsetsConfig.NormY);
-                        return "YNorm " + FormatDouble(yNorm, 4, true);
+                        return FormatDouble(yNorm, 4, true);
                     };
                     break;
 
                 case "DefactoSpeed":
+                    name = "Defacto %";
                     getterFunction = () =>
                     {
-                        return "Defacto " + FormatInteger(WatchVariableSpecialUtilities.GetMarioDeFactoSpeed());
+                        return FormatInteger(WatchVariableSpecialUtilities.GetMarioDeFactoSpeed());
                     };
                     break;
 
                 case "SlidingSpeed":
+                    name = "Spd %";
                     getterFunction = () =>
                     {
-                        return "Spd " + FormatInteger(WatchVariableSpecialUtilities.GetMarioSlidingSpeed());
+                        return FormatInteger(WatchVariableSpecialUtilities.GetMarioSlidingSpeed());
                     };
                     break;
 
                 case "MarioAction":
+                    name = "Action %";
                     getterFunction = () =>
                     {
-                        return "Action " + TableConfig.MarioActions.GetActionName();
+                        return TableConfig.MarioActions.GetActionName();
                     };
                     break;
 
                 case "MarioAnimation":
+                    name = "Animation %";
                     getterFunction = () =>
                     {
-                        return "Animation " + TableConfig.MarioAnimations.GetAnimationName();
+                        return TableConfig.MarioAnimations.GetAnimationName();
                     };
                     break;
 
                 case "DYawIntendFacing":
+                    name = "DYaw %";
                     getterFunction = () =>
                     {
-                        return "DYaw " + FormatInteger(WatchVariableSpecialUtilities.GetDeltaYawIntendedFacing());
+                        return FormatInteger(WatchVariableSpecialUtilities.GetDeltaYawIntendedFacing());
                     };
                     break;
 
                 case "DYawIntendFacingHau":
+                    name = "DYaw %";
                     getterFunction = () =>
                     {
-                        return "DYaw " + FormatInteger(WatchVariableSpecialUtilities.GetDeltaYawIntendedFacing() / 16);
+                        return FormatInteger(WatchVariableSpecialUtilities.GetDeltaYawIntendedFacing() / 16);
                     };
                     break;
 
@@ -78,7 +88,7 @@ namespace STROOP.Structs
                     break;
             }
 
-            return getterFunction;
+            return (name, getterFunction);
         }
 
         private static string FormatDouble(double value, int numDigits, bool usePadding)

@@ -249,7 +249,6 @@ namespace STROOP.Controls
                 for (int i = 0; i < Controls.Count; i++)
                 {
                     VarHackContainer varHackContainer = Controls[i] as VarHackContainer;
-                    varHackContainer.UpdateControl();
                     if (varHackContainer.UpdatesContinuously())
                     {
                         ApplyVariableToMemory(i);

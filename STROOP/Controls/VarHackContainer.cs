@@ -59,7 +59,8 @@ namespace STROOP.Controls
             // Special
             _specialType = specialType;
             _isSpecial = specialType != null;
-            if (_isSpecial) _getterFunction = VarHackSpecialUtilities.CreateGetterFunction(specialType);
+            if (_isSpecial) (varName, _getterFunction) =
+                    VarHackSpecialUtilities.CreateGetterFunction(specialType);
 
             // Misc
             textBoxNameValue.Text = varName;
@@ -273,11 +274,18 @@ namespace STROOP.Controls
             name = name.Replace("\\m", VarHackConfig.MarioHeadChar);
             name = name.Replace("\\s", VarHackConfig.StarChar);
             
-            string cappedName = CapString(name, !noNumber);
-            string numberAddon = noNumber ? "" : (useHex ? "%x" : "%d");
-            string cappedNameAndNumberAddon = cappedName + numberAddon;
-            byte[] nameAndNumberAddonBytes = Encoding.ASCII.GetBytes(cappedNameAndNumberAddon);
-            WriteBytes(nameAndNumberAddonBytes, bytes, VarHackConfig.StringOffset, false);
+            if (!noNumber)
+            {
+                string formatterString = useHex ? "%x" : "%d";
+                name = name.Replace("%", formatterString);
+            }
+            if (_isSpecial)
+            {
+                name = name.Replace("%", _getterFunction());
+            }
+            name = StringUtilities.Cap(name, VarHackConfig.MaxStringLength);
+            byte[] nameBytes = Encoding.ASCII.GetBytes(name);
+            WriteBytes(nameBytes, bytes, VarHackConfig.StringOffset, false);
 
             byte[] usePointerBytes = BitConverter.GetBytes(usePointer);
             WriteBytes(usePointerBytes, bytes, VarHackConfig.UsePointerOffset, true);
@@ -334,12 +342,6 @@ namespace STROOP.Controls
                 if (i % 16 == 15) stringBuilder.Append("\r\n");
             }
             return stringBuilder.ToString();
-        }
-
-        private string CapString(string text, bool factorInNumberAddon = true)
-        {
-            int maxLength = VarHackConfig.MaxStringLength + (factorInNumberAddon ? 0 : 2);
-            return text.Length > maxLength ? text.Substring(0, maxLength) : text;
         }
 
         public void SetPosition(int xPos, int yPos)
@@ -442,14 +444,6 @@ namespace STROOP.Controls
         public bool UpdatesContinuously()
         {
             return _isSpecial;
-        }
-
-        public void UpdateControl()
-        {
-            if (_isSpecial)
-            {
-                textBoxNameValue.Text = _getterFunction();
-            }
         }
     }
 }
