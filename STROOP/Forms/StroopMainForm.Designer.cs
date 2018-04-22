@@ -1237,6 +1237,7 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
+            this.buttonGfxHitboxHack = new System.Windows.Forms.Button();
             this.textBoxM64OnValue = new STROOP.BetterTextbox();
             this.labelM64OnValue = new System.Windows.Forms.Label();
             this.panelConnect.SuspendLayout();
@@ -11820,6 +11821,7 @@ namespace STROOP
             // 
             // splitContainerGfxMiddle.Panel1
             // 
+            this.splitContainerGfxMiddle.Panel1.Controls.Add(this.buttonGfxHitboxHack);
             this.splitContainerGfxMiddle.Panel1.Controls.Add(this.buttonGfxDumpDisplayList);
             this.splitContainerGfxMiddle.Panel1.Controls.Add(this.buttonGfxRefreshObject);
             this.splitContainerGfxMiddle.Panel1.Controls.Add(this.buttonGfxRefresh);
@@ -16015,6 +16017,15 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
+            // buttonGfxHitboxHack
+            // 
+            this.buttonGfxHitboxHack.Location = new System.Drawing.Point(113, 31);
+            this.buttonGfxHitboxHack.Name = "buttonGfxHitboxHack";
+            this.buttonGfxHitboxHack.Size = new System.Drawing.Size(128, 23);
+            this.buttonGfxHitboxHack.TabIndex = 3;
+            this.buttonGfxHitboxHack.Text = "Inject hitbox view code";
+            this.buttonGfxHitboxHack.UseVisualStyleBackColor = true;
+            // 
             // textBoxM64OnValue
             // 
             this.textBoxM64OnValue.Location = new System.Drawing.Point(273, 255);
@@ -17731,6 +17742,7 @@ namespace STROOP
         private Button buttonM64ResetChanges;
         private Button buttonBypass;
         private CheckBox checkBoxDontRoundValuesToZero;
+        private Button buttonGfxHitboxHack;
         private Label labelM64OnValue;
         private BetterTextbox textBoxM64OnValue;
     }

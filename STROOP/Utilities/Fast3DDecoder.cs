@@ -13,7 +13,7 @@ namespace STROOP.Utilities
      */
     public class Fast3DDecoder
     {
-        private const int MaxDisplayListLength = 1000; // Prevents long / endless loops when a malformed display list is decoded
+        private const int MaxDisplayListLength = 10000; // Prevents long / endless loops when a malformed display list is decoded
         private const int MaxRecursionDepth = 5;
 
         public enum F3DOpcode
