@@ -17,7 +17,8 @@
   <Data type="byte" offsetUS="0x8032D5F5" offsetJP="0x8032C6B5" base="Relative">Demo Counter</Data>
   <Data type="short" offsetUS="0x801A7C30" offsetJP="0x801A7AF0" base="Relative">Demo Timer</Data>
   <Data type="byte" offsetUS="0x80226B7F" offsetJP="0x80226D7F" base="Relative">Sound Selection</Data>
-  
+  <Data type="uint" offsetUS="0x8033D480" offsetJP="0x8033C110" base="Relative" subclass="Boolean" mask="0x02">Timestop Enabled</Data>
+
   <Data type="short" offsetUS="0x801A7D1C" offsetJP="0x801A7BDC" base="Relative" color="Yellow">Hand X</Data>
   <Data type="short" offsetUS="0x801A7D20" offsetJP="0x801A7BE0" base="Relative" color="Yellow">Hand Y</Data>
   <Data type="byte" offset="0x8033161C" base="Relative" subclass="Boolean" mask="0x01" color="Yellow">Mario Cam Selected</Data>
