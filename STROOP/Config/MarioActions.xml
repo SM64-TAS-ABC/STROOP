@@ -139,6 +139,7 @@
   <Action name="water backward KB" value="0x300222C5" afterCloneValue="0x380022C1" afterUncloneValue="0x300222C5" handsfreeValue="0x380022C1"/>
   <Action name="water forward KB" value="0x300222C6" afterCloneValue="0x380022C1" afterUncloneValue="0x300222C6" handsfreeValue="0x380022C1"/>
   <Action name="water death" value="0x300032C7" afterCloneValue="0x380022C1" afterUncloneValue="0x300032C7" handsfreeValue="0x380022C1"/>
+  <Action name="water shocked" value="0x300222C8" afterCloneValue="0x380022C1" afterUncloneValue="0x300222C8" handsfreeValue="0x380022C1"/>
   <Action name="swim (1/2)" value="0x300024D0" afterCloneValue="0x380022C1" afterUncloneValue="0x300024D0" handsfreeValue="0x380022C1"/>
   <Action name="swim (2/2)" value="0x300024D1" afterCloneValue="0x380022C1" afterUncloneValue="0x300024D1" handsfreeValue="0x380022C1"/>
   <Action name="flutterkick" value="0x300024D2" afterCloneValue="0x380022C1" afterUncloneValue="0x300024D2" handsfreeValue="0x380022C1"/>
