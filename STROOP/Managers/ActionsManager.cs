@@ -9,6 +9,7 @@ using STROOP.Utilities;
 using STROOP.Controls;
 using STROOP.Extensions;
 using STROOP.Structs.Configurations;
+using STROOP.Forms;
 
 namespace STROOP.Managers
 {
@@ -22,6 +23,8 @@ namespace STROOP.Managers
         {
             textBoxActionDescription = actionsControl.Controls["textBoxActionDescription"] as BetterTextbox;
             textBoxAnimationDescription = actionsControl.Controls["textBoxAnimationDescription"] as BetterTextbox;
+
+            textBoxActionDescription.DoubleClick += (sender, e) => SelectionForm.ShowActionSelectionForm();
         }
 
         public override void Update(bool updateView)

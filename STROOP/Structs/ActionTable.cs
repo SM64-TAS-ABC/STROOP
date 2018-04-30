@@ -58,7 +58,9 @@ namespace STROOP.Structs
 
         public List<string> GetActionNameList()
         {
-            return _actionTable.Keys.ToList().ConvertAll(action => _actionTable[action].ActionName);
+            List<string> actionNameList = _actionTable.Keys.ToList().ConvertAll(action => _actionTable[action].ActionName);
+            actionNameList.Sort();
+            return actionNameList;
         }
 
         public uint? GetActionFromName(string actionName)

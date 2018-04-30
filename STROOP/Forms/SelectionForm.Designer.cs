@@ -1,6 +1,6 @@
 ﻿namespace STROOP.Forms
 {
-    partial class SelectionForm<E>
+    partial class SelectionForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectionForm<E>));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectionForm));
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.buttonSet = new System.Windows.Forms.Button();
             this.textBoxSelect = new System.Windows.Forms.TextBox();

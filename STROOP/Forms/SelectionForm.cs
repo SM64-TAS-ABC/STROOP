@@ -6,16 +6,16 @@ using System.Windows.Forms;
 
 namespace STROOP.Forms
 {
-    public partial class SelectionForm<E> : Form
+    public partial class SelectionForm : Form
     {
-        public SelectionForm(string selectionText, List<E> items, Action<E> action)
+        public SelectionForm(string selectionText, List<string> items, Action<string> action)
         {
             InitializeComponent();
             textBoxSelect.Text = selectionText;
             listBoxSelections.DataSource = items;
             buttonSet.Click += (sender, e) =>
             {
-                E selection = (E) listBoxSelections.SelectedItem;
+                string selection = listBoxSelections.SelectedItem.ToString();
                 action(selection);
                 Close();
             };
@@ -23,7 +23,7 @@ namespace STROOP.Forms
         
         public static void ShowActionSelectionForm()
         {
-            SelectionForm<string> selectionForm = new SelectionForm<string>(
+            SelectionForm selectionForm = new SelectionForm(
                 "Select an Action",
                 TableConfig.MarioActions.GetActionNameList(),
                 actionName =>
