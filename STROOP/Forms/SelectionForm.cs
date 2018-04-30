@@ -28,10 +28,13 @@ namespace STROOP.Forms
             };
         }
         
-        public static void ShowText(string formTitle, string textTitle, string text)
+        public static void ShowActionSelectionForm()
         {
-            InfoForm infoForm = new InfoForm();
-            infoForm.Show();
+            SelectionForm<string> selectionForm = new SelectionForm<string>(
+                "Select an Action",
+                new List<string>() { },
+                actionName => { });
+            selectionForm.Show();
         }
     }
 }
