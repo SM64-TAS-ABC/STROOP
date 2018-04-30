@@ -1,15 +1,8 @@
 ﻿using STROOP.Structs;
+using STROOP.Structs.Configurations;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using STROOP.Extensions;
-using STROOP.Utilities;
 
 namespace STROOP.Forms
 {
@@ -32,8 +25,13 @@ namespace STROOP.Forms
         {
             SelectionForm<string> selectionForm = new SelectionForm<string>(
                 "Select an Action",
-                new List<string>() { },
-                actionName => { });
+                TableConfig.MarioActions.GetActionNameList(),
+                actionName =>
+                {
+                    uint? action = TableConfig.MarioActions.GetActionFromName(actionName);
+                    if (action.HasValue)
+                        Config.Stream.SetValue(action.Value, MarioConfig.StructAddress + MarioConfig.ActionOffset);
+                });
             selectionForm.Show();
         }
     }

@@ -23,7 +23,8 @@ namespace STROOP.Structs
             }
         }
 
-        Dictionary<uint, ActionReference> _table = new Dictionary<uint, ActionReference>();
+        Dictionary<uint, ActionReference> _actionTable = new Dictionary<uint, ActionReference>();
+        Dictionary<string, ActionReference> _actionNameTable = new Dictionary<string, ActionReference>();
 
         uint _defaultAfterClone;
         uint _defaultAfterUnclone;
@@ -51,7 +52,21 @@ namespace STROOP.Structs
                 actionRef.Handsfree = _defaultHandsfree;
 
             // Add action to table
-            _table.Add(actionRef.Action, actionRef);
+            _actionTable.Add(actionRef.Action, actionRef);
+            _actionNameTable.Add(actionRef.ActionName, actionRef);
+        }
+
+        public List<string> GetActionNameList()
+        {
+            return _actionTable.Keys.ToList().ConvertAll(action => _actionTable[action].ActionName);
+        }
+
+        public uint? GetActionFromName(string actionName)
+        {
+            if (!_actionNameTable.ContainsKey(actionName))
+                return null;
+
+            return _actionNameTable[actionName].Action;
         }
 
         public string GetActionName()
@@ -68,34 +83,34 @@ namespace STROOP.Structs
 
         public string GetActionName(uint action)
         {
-            if (!_table.ContainsKey(action))
+            if (!_actionTable.ContainsKey(action))
                 return "Unknown Action";
 
-            return _table[action].ActionName;
+            return _actionTable[action].ActionName;
         }
 
         public uint GetAfterCloneValue(uint action)
         {
-            if (!_table.ContainsKey(action))
+            if (!_actionTable.ContainsKey(action))
                 return _defaultAfterClone;
 
-            return _table[action].AfterClone.Value;
+            return _actionTable[action].AfterClone.Value;
         }
 
         public uint GetAfterUncloneValue(uint action)
         {
-            if (!_table.ContainsKey(action))
+            if (!_actionTable.ContainsKey(action))
                 return _defaultAfterUnclone;
 
-            return _table[action].AfterUnclone.Value;
+            return _actionTable[action].AfterUnclone.Value;
         }
 
         public uint GetHandsfreeValue(uint action)
         {
-            if (!_table.ContainsKey(action))
+            if (!_actionTable.ContainsKey(action))
                 return _defaultHandsfree;
 
-            return _table[action].Handsfree.Value;
+            return _actionTable[action].Handsfree.Value;
         }
     }
 }
