@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InfoForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectionForm));
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
-            this.textBoxTriangleInfo = new System.Windows.Forms.TextBox();
-            this.buttonOk = new System.Windows.Forms.Button();
-            this.textBoxTitle = new System.Windows.Forms.TextBox();
+            this.buttonSet = new System.Windows.Forms.Button();
+            this.textBoxSelect = new System.Windows.Forms.TextBox();
+            this.listBoxSelections = new System.Windows.Forms.ListBox();
             this.tableLayoutPanelMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,9 +43,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanelMain.ColumnCount = 1;
             this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelMain.Controls.Add(this.textBoxTriangleInfo, 0, 1);
-            this.tableLayoutPanelMain.Controls.Add(this.buttonOk, 0, 2);
-            this.tableLayoutPanelMain.Controls.Add(this.textBoxTitle, 0, 0);
+            this.tableLayoutPanelMain.Controls.Add(this.buttonSet, 0, 2);
+            this.tableLayoutPanelMain.Controls.Add(this.textBoxSelect, 0, 0);
+            this.tableLayoutPanelMain.Controls.Add(this.listBoxSelections, 0, 1);
             this.tableLayoutPanelMain.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanelMain.Name = "tableLayoutPanelMain";
             this.tableLayoutPanelMain.RowCount = 3;
@@ -53,57 +53,52 @@
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelMain.Size = new System.Drawing.Size(317, 182);
+            this.tableLayoutPanelMain.Size = new System.Drawing.Size(260, 150);
             this.tableLayoutPanelMain.TabIndex = 0;
             // 
-            // textBoxTriangleInfo
+            // buttonSet
             // 
-            this.textBoxTriangleInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxTriangleInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTriangleInfo.Location = new System.Drawing.Point(3, 33);
-            this.textBoxTriangleInfo.Multiline = true;
-            this.textBoxTriangleInfo.Name = "textBoxTriangleInfo";
-            this.textBoxTriangleInfo.ReadOnly = true;
-            this.textBoxTriangleInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxTriangleInfo.Size = new System.Drawing.Size(311, 116);
-            this.textBoxTriangleInfo.TabIndex = 3;
-            this.textBoxTriangleInfo.Text = "\r\n";
+            this.buttonSet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSet.Location = new System.Drawing.Point(3, 123);
+            this.buttonSet.Name = "buttonSet";
+            this.buttonSet.Size = new System.Drawing.Size(254, 24);
+            this.buttonSet.TabIndex = 0;
+            this.buttonSet.Text = "Set";
+            this.buttonSet.UseVisualStyleBackColor = true;
             // 
-            // buttonOk
+            // textBoxSelect
             // 
-            this.buttonOk.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonOk.Location = new System.Drawing.Point(121, 155);
-            this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(75, 23);
-            this.buttonOk.TabIndex = 0;
-            this.buttonOk.Text = "OK";
-            this.buttonOk.UseVisualStyleBackColor = true;
+            this.textBoxSelect.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxSelect.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxSelect.Location = new System.Drawing.Point(3, 3);
+            this.textBoxSelect.Name = "textBoxSelect";
+            this.textBoxSelect.ReadOnly = true;
+            this.textBoxSelect.Size = new System.Drawing.Size(254, 13);
+            this.textBoxSelect.TabIndex = 17;
+            this.textBoxSelect.Text = "Select";
+            this.textBoxSelect.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBoxTitle
+            // listBoxSelections
             // 
-            this.textBoxTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTitle.Location = new System.Drawing.Point(3, 3);
-            this.textBoxTitle.Name = "textBoxTitle";
-            this.textBoxTitle.ReadOnly = true;
-            this.textBoxTitle.Size = new System.Drawing.Size(311, 13);
-            this.textBoxTitle.TabIndex = 17;
-            this.textBoxTitle.Text = "Triangle Info";
-            this.textBoxTitle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.listBoxSelections.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBoxSelections.FormattingEnabled = true;
+            this.listBoxSelections.Location = new System.Drawing.Point(3, 33);
+            this.listBoxSelections.Name = "listBoxSelections";
+            this.listBoxSelections.Size = new System.Drawing.Size(254, 84);
+            this.listBoxSelections.TabIndex = 18;
             // 
-            // InfoForm
+            // SelectionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(341, 206);
+            this.ClientSize = new System.Drawing.Size(284, 174);
             this.Controls.Add(this.tableLayoutPanelMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(10000, 10000);
             this.MinimizeBox = false;
-            this.Name = "InfoForm";
+            this.Name = "SelectionForm";
             this.ShowIcon = false;
             this.Text = "Info";
             this.tableLayoutPanelMain.ResumeLayout(false);
@@ -115,8 +110,8 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelMain;
-        private System.Windows.Forms.Button buttonOk;
-        private System.Windows.Forms.TextBox textBoxTriangleInfo;
-        private System.Windows.Forms.TextBox textBoxTitle;
+        private System.Windows.Forms.Button buttonSet;
+        private System.Windows.Forms.TextBox textBoxSelect;
+        private System.Windows.Forms.ListBox listBoxSelections;
     }
 }
