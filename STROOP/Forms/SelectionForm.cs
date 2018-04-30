@@ -13,9 +13,9 @@ using STROOP.Utilities;
 
 namespace STROOP.Forms
 {
-    public partial class SelectionForm : Form
+    public partial class SelectionForm<E> : Form
     {
-        public SelectionForm()
+        public SelectionForm(string selectionText, List<E> items, Action<E> action)
         {
             InitializeComponent();
             buttonSet.Click += (sender, e) => Close();
