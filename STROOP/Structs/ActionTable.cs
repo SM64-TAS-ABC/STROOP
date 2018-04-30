@@ -58,7 +58,8 @@ namespace STROOP.Structs
 
         public List<string> GetActionNameList()
         {
-            List<string> actionNameList = _actionTable.Keys.ToList().ConvertAll(action => _actionTable[action].ActionName);
+            List<string> actionNameList = _actionTable.Keys.ToList().ConvertAll(
+                action => _actionTable[action].ActionName);
             actionNameList.Sort();
             return actionNameList;
         }
@@ -67,7 +68,6 @@ namespace STROOP.Structs
         {
             if (!_actionNameTable.ContainsKey(actionName))
                 return null;
-
             return _actionNameTable[actionName].Action;
         }
 
@@ -87,7 +87,6 @@ namespace STROOP.Structs
         {
             if (!_actionTable.ContainsKey(action))
                 return "Unknown Action";
-
             return _actionTable[action].ActionName;
         }
 
@@ -95,7 +94,6 @@ namespace STROOP.Structs
         {
             if (!_actionTable.ContainsKey(action))
                 return _defaultAfterClone;
-
             return _actionTable[action].AfterClone.Value;
         }
 
@@ -103,7 +101,6 @@ namespace STROOP.Structs
         {
             if (!_actionTable.ContainsKey(action))
                 return _defaultAfterUnclone;
-
             return _actionTable[action].AfterUnclone.Value;
         }
 
@@ -111,7 +108,6 @@ namespace STROOP.Structs
         {
             if (!_actionTable.ContainsKey(action))
                 return _defaultHandsfree;
-
             return _actionTable[action].Handsfree.Value;
         }
     }

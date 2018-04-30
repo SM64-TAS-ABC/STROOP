@@ -25,6 +25,7 @@ namespace STROOP.Managers
             textBoxAnimationDescription = actionsControl.Controls["textBoxAnimationDescription"] as BetterTextbox;
 
             textBoxActionDescription.DoubleClick += (sender, e) => SelectionForm.ShowActionSelectionForm();
+            textBoxAnimationDescription.DoubleClick += (sender, e) => SelectionForm.ShowAnimationSelectionForm();
         }
 
         public override void Update(bool updateView)
