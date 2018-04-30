@@ -18,7 +18,14 @@ namespace STROOP.Forms
         public SelectionForm(string selectionText, List<E> items, Action<E> action)
         {
             InitializeComponent();
-            buttonSet.Click += (sender, e) => Close();
+            textBoxSelect.Text = selectionText;
+            listBoxSelections.DataSource = items;
+            buttonSet.Click += (sender, e) =>
+            {
+                E selection = (E) listBoxSelections.SelectedItem;
+                action(selection);
+                Close();
+            };
         }
         
         public static void ShowText(string formTitle, string textTitle, string text)
