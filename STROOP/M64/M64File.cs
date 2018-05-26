@@ -173,10 +173,15 @@ namespace STROOP.M64
         {
             index = MoreMath.Clamp(index, 0, Inputs.Count);
             int pasteCount = copiedData.TotalFrames * multiplicity;
-            if (pasteCount > M64Config.PasteWarningLimit)
+            bool bigPaste = pasteCount > M64Config.PasteWarningLimit;
+            if (bigPaste)
             {
                 if (!DialogUtilities.AskQuestionAboutM64Pasting(pasteCount)) return;
+                _gui.ProgressBar.Visible = true;
+                _gui.LabelProgressBar.Visible = true;
+                _gui.ProgressBar.Update();
             }
+
             if (insert)
             {
                 _gui.DataGridViewInputs.DataSource = null;
@@ -196,6 +201,13 @@ namespace STROOP.M64
             {
                 List<M64InputFrame> inputsToOverwrite = Inputs.Skip(index).Take(pasteCount).ToList();
                 copiedData.Apply(inputsToOverwrite);
+            }
+
+            if (bigPaste)
+            {
+                _gui.ProgressBar.Visible = false;
+                _gui.LabelProgressBar.Visible = false;
+                _gui.ProgressBar.Update();
             }
 
             IsModified = true;
