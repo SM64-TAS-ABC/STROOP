@@ -77,6 +77,9 @@ namespace STROOP.Managers
             _gui.ComboBoxFrameInputRelation.SelectedItem = M64Config.FrameInputRelation;
 
             _gui.ButtonQuickDuplicationDuplicate.Click += (sender, e) => PerformQuickDuplication();
+
+            _gui.ProgressBar.Visible = false;
+            _gui.LabelProgressBar.Visible = false;
         }
 
         private void DeleteRows()
