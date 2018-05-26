@@ -33,6 +33,9 @@ namespace STROOP.Structs.Gui
         public TabPage TabPageHeader;
         public TabPage TabPageStats;
 
+        public ProgressBar ProgressBar;
+        public Label LabelProgressBar;
+
         public Button ButtonSetUsHeader;
         public Button ButtonSetJpHeader;
 

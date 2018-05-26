@@ -206,6 +206,9 @@ namespace STROOP
                 TabPageHeader = tabPageM64Header,
                 TabPageStats = tabPageM64Stats,
 
+                ProgressBar = progressBarM64,
+                LabelProgressBar = labelM64ProgressBar,
+
                 ButtonSetUsHeader = buttonM64SetUsHeader,
                 ButtonSetJpHeader = buttonM64SetJpHeader,
 
