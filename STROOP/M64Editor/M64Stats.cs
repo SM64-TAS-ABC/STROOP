@@ -143,7 +143,7 @@ namespace STROOP.M64Editor
         {
             get
             {
-                return FindInputChanges().Count - 1;
+                return Math.Max(FindInputChanges().Count - 1, 0);
             }
             set { }
         }
