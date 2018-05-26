@@ -177,13 +177,8 @@ namespace STROOP.M64
             if (bigPaste)
             {
                 if (!DialogUtilities.AskQuestionAboutM64Pasting(pasteCount)) return;
-                _gui.LabelProgressBar.Text = "0 / " + pasteCount;
-                _gui.LabelProgressBar.Visible = true;
-                _gui.LabelProgressBar.Update();
-                _gui.ProgressBar.Maximum = pasteCount;
-                _gui.ProgressBar.Value = 0;
-                _gui.ProgressBar.Visible = true;
-                _gui.ProgressBar.Update();
+                SetPasteProgressCount(0, pasteCount);
+                SetPasteProgressVisibility(true);
             }
 
             if (insert)
@@ -199,10 +194,7 @@ namespace STROOP.M64
 
                     if (bigPaste)
                     {
-                        _gui.LabelProgressBar.Text = (i + 1) + " / " + pasteCount;
-                        _gui.LabelProgressBar.Update();
-                        _gui.ProgressBar.Value = (i+1);
-                        _gui.ProgressBar.Update();
+                        SetPasteProgressCount(i + 1, pasteCount);
                     }
                 }
                 RefreshInputFrames(index);
@@ -217,10 +209,7 @@ namespace STROOP.M64
 
             if (bigPaste)
             {
-                _gui.LabelProgressBar.Visible = false;
-                _gui.LabelProgressBar.Update();
-                _gui.ProgressBar.Visible = false;
-                _gui.ProgressBar.Update();
+                SetPasteProgressVisibility(false);
             }
 
             IsModified = true;
@@ -228,6 +217,28 @@ namespace STROOP.M64
             RefreshInputFrames(index);
             _gui.DataGridViewInputs.Refresh();
             Config.M64Manager.UpdateSelectionTextboxes();
+        }
+
+        private void SetPasteProgressVisibility(bool visibility)
+        {
+            _gui.LabelProgressBar.Visible = visibility;
+            _gui.LabelProgressBar.Update();
+            _gui.ProgressBar.Visible = visibility;
+            _gui.ProgressBar.Update();
+        }
+
+        private void SetPasteProgressCount(int value, int maximum)
+        {
+            string maximumString = maximum.ToString();
+            string valueString = String.Format("{0:D" + maximumString.Length + "}", value);
+            double percent = Math.Round(100d * value / maximum, 1);
+            string percentString = percent.ToString("N1");
+            _gui.LabelProgressBar.Text = String.Format(
+                "{0}% ({1} / {2})", percentString, valueString, maximumString);
+            _gui.LabelProgressBar.Update();
+            _gui.ProgressBar.Maximum = maximum;
+            _gui.ProgressBar.Value = value;
+            _gui.ProgressBar.Update();
         }
 
         private void RefreshInputFrames(int startIndex = 0)
