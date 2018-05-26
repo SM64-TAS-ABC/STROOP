@@ -173,6 +173,10 @@ namespace STROOP.M64
         {
             index = MoreMath.Clamp(index, 0, Inputs.Count);
             int pasteCount = copiedData.TotalFrames * multiplicity;
+            if (pasteCount > M64Config.PasteWarningLimit)
+            {
+                if (!DialogUtilities.AskQuestionAboutM64Pasting(pasteCount)) return;
+            }
             if (insert)
             {
                 _gui.DataGridViewInputs.DataSource = null;

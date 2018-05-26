@@ -127,7 +127,7 @@ namespace STROOP.Controls
 
         public void OpenVariables()
         {
-            List<XElement> elements = FileUtilities.OpenXmlElements(FileType.StroopVarHackVariables);
+            List<XElement> elements = DialogUtilities.OpenXmlElements(FileType.StroopVarHackVariables);
             List<VarHackContainer> varHackContainers =
                 elements.ConvertAll(element => VarHackContainer.CreateFromXml(this, element));
             lock (_objectLock)
@@ -138,7 +138,7 @@ namespace STROOP.Controls
 
         public void SaveVariables()
         {
-            FileUtilities.SaveXmlElements(
+            DialogUtilities.SaveXmlElements(
                 FileType.StroopVarHackVariables, "CustomVarHackData", GetCurrentXmlElements());
         }
 

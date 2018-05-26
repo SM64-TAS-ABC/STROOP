@@ -12,7 +12,7 @@ using System.Xml.Linq;
 
 namespace STROOP.Structs
 {
-    public static class FileUtilities
+    public static class DialogUtilities
     {
         private static string GetFilterString(FileType fileType)
         {
@@ -27,6 +27,24 @@ namespace STROOP.Structs
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+
+        public static bool AskQuestionAboutM64Pasting(int numInputs)
+        {
+            return AskQuestion(
+                String.Format("You are about to paste {0} inputs. " +
+                    "Pasting more than {1} inputs at a time can be slow. " +
+                    "Are you sure you wish to proceed?", numInputs, M64Config.PasteWarningLimit),
+                "High Paste Count Warning");
+        }
+
+        public static bool AskQuestion(string message, string title)
+        {
+            DialogResult result = MessageBox.Show(
+                message,
+                title,
+                MessageBoxButtons.YesNoCancel);
+            return result == DialogResult.Yes;
         }
 
         public static OpenFileDialog CreateOpenFileDialog(FileType fileType)

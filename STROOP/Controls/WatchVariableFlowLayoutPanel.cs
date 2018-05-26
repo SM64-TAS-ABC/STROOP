@@ -361,7 +361,7 @@ namespace STROOP.Controls
 
         public void OpenVariables()
         {
-            List<XElement> elements = FileUtilities.OpenXmlElements(FileType.StroopVariables);
+            List<XElement> elements = DialogUtilities.OpenXmlElements(FileType.StroopVariables);
             List<WatchVariableControlPrecursor> precursors =
                 elements.ConvertAll(element => new WatchVariableControlPrecursor(element));
             AddVariables(precursors.ConvertAll(w => w.CreateWatchVariableControl()));
@@ -369,7 +369,7 @@ namespace STROOP.Controls
 
         public void SaveVariables()
         {
-            FileUtilities.SaveXmlElements(
+            DialogUtilities.SaveXmlElements(
                 FileType.StroopVariables, "CustomData", GetCurrentVarXmlElements());
         }
 

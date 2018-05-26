@@ -184,7 +184,7 @@ namespace STROOP.Managers
 
         private void SaveAs()
         {
-            SaveFileDialog saveFileDialog = FileUtilities.CreateSaveFileDialog(FileType.MupenMovie);
+            SaveFileDialog saveFileDialog = DialogUtilities.CreateSaveFileDialog(FileType.MupenMovie);
             DialogResult dialogResult = saveFileDialog.ShowDialog();
             if (dialogResult != DialogResult.OK)
                 return;
@@ -224,7 +224,7 @@ namespace STROOP.Managers
             if (CheckSaveChanges() == DialogResult.Cancel)
                 return;
 
-            OpenFileDialog openFileDialog = FileUtilities.CreateOpenFileDialog(FileType.MupenMovie);
+            OpenFileDialog openFileDialog = DialogUtilities.CreateOpenFileDialog(FileType.MupenMovie);
             DialogResult dialogResult = openFileDialog.ShowDialog();
             if (dialogResult != DialogResult.OK)
                 return;
