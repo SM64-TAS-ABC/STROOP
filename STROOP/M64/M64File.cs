@@ -177,8 +177,12 @@ namespace STROOP.M64
             if (bigPaste)
             {
                 if (!DialogUtilities.AskQuestionAboutM64Pasting(pasteCount)) return;
-                _gui.ProgressBar.Visible = true;
+                _gui.LabelProgressBar.Text = "0 / " + pasteCount;
                 _gui.LabelProgressBar.Visible = true;
+                _gui.LabelProgressBar.Update();
+                _gui.ProgressBar.Maximum = pasteCount;
+                _gui.ProgressBar.Value = 0;
+                _gui.ProgressBar.Visible = true;
                 _gui.ProgressBar.Update();
             }
 
@@ -192,6 +196,14 @@ namespace STROOP.M64
                         insertionIndex, copiedData.GetRawValue(i), false, this, _gui.DataGridViewInputs);
                     Inputs.Insert(insertionIndex, newInput);
                     ModifiedFrames.Add(newInput);
+
+                    if (bigPaste)
+                    {
+                        _gui.LabelProgressBar.Text = (i + 1) + " / " + pasteCount;
+                        _gui.LabelProgressBar.Update();
+                        _gui.ProgressBar.Value = (i+1);
+                        _gui.ProgressBar.Update();
+                    }
                 }
                 RefreshInputFrames(index);
                 _gui.DataGridViewInputs.DataSource = Inputs;
@@ -205,8 +217,9 @@ namespace STROOP.M64
 
             if (bigPaste)
             {
-                _gui.ProgressBar.Visible = false;
                 _gui.LabelProgressBar.Visible = false;
+                _gui.LabelProgressBar.Update();
+                _gui.ProgressBar.Visible = false;
                 _gui.ProgressBar.Update();
             }
 
