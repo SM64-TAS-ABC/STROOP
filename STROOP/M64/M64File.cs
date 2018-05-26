@@ -15,7 +15,7 @@ using STROOP.Structs.Gui;
 using System.Drawing;
 using STROOP.Utilities;
 
-namespace STROOP.M64Editor
+namespace STROOP.M64
 {
     public class M64File
     {

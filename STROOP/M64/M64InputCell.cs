@@ -9,7 +9,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.ComponentModel;
 
-namespace STROOP.M64Editor
+namespace STROOP.M64
 {
     public class M64InputCell
     {

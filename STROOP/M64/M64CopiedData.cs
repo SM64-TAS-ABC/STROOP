@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace STROOP.M64Editor
+namespace STROOP.M64
 {
     public class M64CopiedData
     {

@@ -1,4 +1,4 @@
-﻿using STROOP.M64Editor;
+﻿using STROOP.M64;
 using STROOP.Structs;
 using STROOP.Structs.Gui;
 using STROOP.Utilities;

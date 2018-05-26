@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using STROOP.Forms;
 using System.Drawing;
 
-namespace STROOP.M64Editor
+namespace STROOP.M64
 {
     public static class M64Utilities
     {

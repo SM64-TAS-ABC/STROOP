@@ -11,7 +11,7 @@ using STROOP.Utilities;
 using System.Windows.Forms;
 using STROOP.Forms;
 
-namespace STROOP.M64Editor
+namespace STROOP.M64
 {
     public class M64Stats
     {

@@ -10,7 +10,7 @@ using System.ComponentModel;
 using STROOP.Utilities;
 using STROOP.Structs.Gui;
 
-namespace STROOP.M64Editor
+namespace STROOP.M64
 {
     public class M64Header
     {

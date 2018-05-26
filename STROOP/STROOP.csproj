@@ -307,14 +307,14 @@
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoadingHandler.cs" />
-    <Compile Include="M64Editor\M64CopiedFrame.cs" />
-    <Compile Include="M64Editor\M64File.cs" />
-    <Compile Include="M64Editor\M64InputCell.cs" />
-    <Compile Include="M64Editor\M64CopiedData.cs" />
-    <Compile Include="M64Editor\M64Utilities.cs" />
-    <Compile Include="M64Editor\M64Stats.cs" />
-    <Compile Include="M64Editor\M64Header.cs" />
-    <Compile Include="M64Editor\M64InputFrame.cs" />
+    <Compile Include="M64\M64CopiedFrame.cs" />
+    <Compile Include="M64\M64File.cs" />
+    <Compile Include="M64\M64InputCell.cs" />
+    <Compile Include="M64\M64CopiedData.cs" />
+    <Compile Include="M64\M64Utilities.cs" />
+    <Compile Include="M64\M64Stats.cs" />
+    <Compile Include="M64\M64Header.cs" />
+    <Compile Include="M64\M64InputFrame.cs" />
     <Compile Include="Managers\AreaManager.cs" />
     <Compile Include="Managers\CamHackManager.cs" />
     <Compile Include="Managers\GfxManager.cs" />
