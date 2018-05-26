@@ -156,6 +156,7 @@ namespace STROOP.M64
             int numDeletes = endIndex - startIndex + 1;
             if (numDeletes <= 0) return;
 
+            int currentPosition = _gui.DataGridViewInputs.FirstDisplayedScrollingRowIndex;
             _gui.DataGridViewInputs.DataSource = null;
             for (int i = 0; i < numDeletes; i++)
             {
@@ -165,6 +166,7 @@ namespace STROOP.M64
             RefreshInputFrames(startIndex);
             _gui.DataGridViewInputs.DataSource = Inputs;
             Config.M64Manager.UpdateTableSettings(ModifiedFrames);
+            ControlUtilities.TableGoTo(_gui.DataGridViewInputs, currentPosition);
 
             IsModified = true;
             Header.NumInputs = Inputs.Count;
@@ -187,6 +189,7 @@ namespace STROOP.M64
 
             if (insert)
             {
+                int currentPosition = _gui.DataGridViewInputs.FirstDisplayedScrollingRowIndex;
                 _gui.DataGridViewInputs.DataSource = null;
                 for (int i = 0; i < pasteCount; i++)
                 {
@@ -204,6 +207,7 @@ namespace STROOP.M64
                 RefreshInputFrames(index);
                 _gui.DataGridViewInputs.DataSource = Inputs;
                 Config.M64Manager.UpdateTableSettings(ModifiedFrames);
+                ControlUtilities.TableGoTo(_gui.DataGridViewInputs, currentPosition);
             }
             else
             {

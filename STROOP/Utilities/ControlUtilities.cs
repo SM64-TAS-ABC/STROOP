@@ -498,5 +498,12 @@ namespace STROOP.Utilities
             propertyInfo.SetValue(table, doubleBuffered, null);
         }
 
+        public static void TableGoTo(DataGridView table, int row)
+        {
+            row = MoreMath.Clamp(row, 0, table.RowCount - 1);
+            if (row >= 0 && row < table.RowCount)
+                table.FirstDisplayedScrollingRowIndex = row;
+        }
+
     }
 }

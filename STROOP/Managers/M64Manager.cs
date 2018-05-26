@@ -180,8 +180,7 @@ namespace STROOP.Managers
             if (gotoValueNullable.HasValue)
             {
                 int gotoValue = M64Utilities.ConvertDisplayedValueToFrame(gotoValueNullable.Value);
-                gotoValue = MoreMath.Clamp(gotoValue, 0, _gui.DataGridViewInputs.RowCount - 1);
-                _gui.DataGridViewInputs.FirstDisplayedScrollingRowIndex = gotoValue;
+                ControlUtilities.TableGoTo(_gui.DataGridViewInputs, gotoValue);
             }
         }
 
