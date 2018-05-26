@@ -106,12 +106,14 @@ namespace STROOP.M64
 
         public bool Save()
         {
+            if (RawBytes == null) return false;
             if (CurrentFilePath == null || CurrentFileName == null) return false;
             return Save(CurrentFilePath, CurrentFileName);
         }
 
         public bool Save(string filePath, string fileName)
         {
+            if (RawBytes == null) return false;
             try
             {
                 if (_gui.CheckBoxMaxOutViCount.Checked)
@@ -141,6 +143,7 @@ namespace STROOP.M64
 
         public void ResetChanges()
         {
+            if (RawBytes == null) return;
             int currentPosition = _gui.DataGridViewInputs.FirstDisplayedScrollingRowIndex;
             Config.M64Manager.Open(CurrentFilePath, CurrentFileName);
             Config.M64Manager.Goto(currentPosition);
@@ -171,6 +174,7 @@ namespace STROOP.M64
 
         public void Paste(M64CopiedData copiedData, int index, bool insert, int multiplicity)
         {
+            if (RawBytes == null) return;
             index = MoreMath.Clamp(index, 0, Inputs.Count);
             int pasteCount = copiedData.TotalFrames * multiplicity;
             bool bigPaste = pasteCount > M64Config.PasteWarningLimit;
