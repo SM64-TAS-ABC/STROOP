@@ -1120,6 +1120,8 @@ namespace STROOP.Structs
                     };
                     break;
 
+                // Object specific vars - Goomba Triplet Spawner
+
                 case "GoombaTripletLoadingDistanceDiff":
                     getterFunction = (uint objAddress) =>
                     {
@@ -1167,6 +1169,50 @@ namespace STROOP.Structs
                             MoreMath.ExtrapolateLine3D(
                                 objPos.X, objPos.Y, objPos.Z, marioPos.X, marioPos.Y, marioPos.Z, distAway);
                         return SetMarioPosition(newMarioX, newMarioY, newMarioZ);
+                    };
+                    break;
+
+                case "BitfsPlatformGroupMinHeight":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return 1;
+                    };
+                    setterFunction = (object objectValue, uint objAddress) =>
+                    {
+                        return false;
+                    };
+                    break;
+
+                case "BitfsPlatformGroupMaxHeight":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return 2;
+                    };
+                    setterFunction = (object objectValue, uint objAddress) =>
+                    {
+                        return false;
+                    };
+                    break;
+
+                case "BitfsPlatformGroupRelativeHeight":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return 3;
+                    };
+                    setterFunction = (object objectValue, uint objAddress) =>
+                    {
+                        return false;
+                    };
+                    break;
+
+                case "BitfsPlatformGroupDisplacedHeight":
+                    getterFunction = (uint objAddress) =>
+                    {
+                        return 4;
+                    };
+                    setterFunction = (object objectValue, uint objAddress) =>
+                    {
+                        return false;
                     };
                     break;
 

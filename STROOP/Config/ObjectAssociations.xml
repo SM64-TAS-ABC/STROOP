@@ -866,6 +866,10 @@
     <MapImage path="Rising and Lowering 3-Platform Group Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF6" base="Object">Oscillation Timer (Byte)</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Oscillation Timer (Int)</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="BitfsPlatformGroupMinHeight">Min Height</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="BitfsPlatformGroupMaxHeight">Max Height</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="BitfsPlatformGroupRelativeHeight">Relative Height</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="BitfsPlatformGroupDisplacedHeight">Displaced Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000FC8" name="Rising and Lowering Mesh Platform">
     <SpawnCode gfxId="0x3A"/>
