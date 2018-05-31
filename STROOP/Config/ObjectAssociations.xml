@@ -864,7 +864,8 @@
     <SpawnCode gfxId="0x38"/>
     <Image path="Rising and Lowering 3-Platform Group.png"/>
     <MapImage path="Rising and Lowering 3-Platform Group Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="byte" offset="0xF6" base="Object">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" type="byte" offset="0xF6" base="Object">Oscillation Timer (Byte)</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Oscillation Timer (Int)</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000FC8" name="Rising and Lowering Mesh Platform">
     <SpawnCode gfxId="0x3A"/>
