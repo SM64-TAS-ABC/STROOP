@@ -2203,9 +2203,9 @@
     <Data groupList="ObjectSpecific" type="ushort" offset="0x112" base="Object" subclass="Angle">Cannon Yaw</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x110" base="Object">Pole Height</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x3A" base="Object">Relative Height</Data>
-    <Data groupList="ObjectSpecific" type="float" offset="0x20" base="Object">Graphics X</Data>
-    <Data groupList="ObjectSpecific" type="float" offset="0x24" base="Object">Graphics Y</Data>
-    <Data groupList="ObjectSpecific" type="float" offset="0x28" base="Object">Graphics Z</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0x20" base="Object" coord="X">Graphics X</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0x24" base="Object" coord="Y">Graphics Y</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0x28" base="Object" coord="Z">Graphics Z</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002EF8" name="Toad">
     <SpawnCode gfxId="0xDD"/>
