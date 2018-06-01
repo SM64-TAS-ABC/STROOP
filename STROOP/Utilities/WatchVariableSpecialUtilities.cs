@@ -1175,7 +1175,9 @@ namespace STROOP.Structs
                 case "BitfsPlatformGroupMinHeight":
                     getterFunction = (uint objAddress) =>
                     {
-                        return 1;
+                        int timer = Config.Stream.GetInt32(objAddress + 0xF4);
+                        float height = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                        return BitfsPlatformGroupTable.GetMinHeight(timer, height);
                     };
                     setterFunction = (object objectValue, uint objAddress) =>
                     {
@@ -1186,7 +1188,9 @@ namespace STROOP.Structs
                 case "BitfsPlatformGroupMaxHeight":
                     getterFunction = (uint objAddress) =>
                     {
-                        return 2;
+                        int timer = Config.Stream.GetInt32(objAddress + 0xF4);
+                        float height = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                        return BitfsPlatformGroupTable.GetMaxHeight(timer, height);
                     };
                     setterFunction = (object objectValue, uint objAddress) =>
                     {
@@ -1197,7 +1201,8 @@ namespace STROOP.Structs
                 case "BitfsPlatformGroupRelativeHeight":
                     getterFunction = (uint objAddress) =>
                     {
-                        return 3;
+                        int timer = Config.Stream.GetInt32(objAddress + 0xF4);
+                        return BitfsPlatformGroupTable.GetRelativeHeightFromMin(timer);
                     };
                     setterFunction = (object objectValue, uint objAddress) =>
                     {
@@ -1208,7 +1213,10 @@ namespace STROOP.Structs
                 case "BitfsPlatformGroupDisplacedHeight":
                     getterFunction = (uint objAddress) =>
                     {
-                        return 4;
+                        int timer = Config.Stream.GetInt32(objAddress + 0xF4);
+                        float height = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                        float homeHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeYOffset);
+                        return BitfsPlatformGroupTable.GetDisplacedHeight(timer, height, homeHeight);
                     };
                     setterFunction = (object objectValue, uint objAddress) =>
                     {
