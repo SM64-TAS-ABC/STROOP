@@ -4,6 +4,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace STROOP.Structs
 {
@@ -3551,6 +3552,41 @@ namespace STROOP.Structs
                     getterFunction = (uint dummy) =>
                     {
                         return DataModels.ObjectProcessor.ActiveObjectCount;
+                    };
+                    break;
+
+                case "PlayTime":
+                    getterFunction = (uint dummy) =>
+                    {
+                        uint frameConst = 30;
+                        uint secondConst = 60;
+                        uint minuteConst = 60;
+                        uint hourConst = 24;
+
+                        uint totalFrames = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                        uint totalSeconds = totalFrames / frameConst;
+                        uint totalMinutes = totalSeconds / secondConst;
+                        uint totalHours = totalMinutes / minuteConst;
+                        uint totalDays = totalHours / hourConst;
+
+                        uint frames = totalFrames % frameConst;
+                        uint seconds = totalSeconds % secondConst;
+                        uint minutes = totalMinutes % minuteConst;
+                        uint hours = totalHours % hourConst;
+                        uint days = totalDays;
+
+                        List<uint> values = new List<uint> { days, hours, minutes, seconds, frames };
+                        int firstNonZeroIndex = values.FindIndex(value => value != 0);
+                        if (firstNonZeroIndex == -1) firstNonZeroIndex = values.Count - 1;
+                        int numValuesToShow = values.Count - firstNonZeroIndex;
+
+                        StringBuilder builder = new StringBuilder();
+                        if (numValuesToShow >= 5) builder.Append(days + "d ");
+                        if (numValuesToShow >= 4) builder.Append(hours + "h ");
+                        if (numValuesToShow >= 3) builder.Append(minutes + "m ");
+                        if (numValuesToShow >= 2) builder.Append(seconds + "s ");
+                        if (numValuesToShow >= 1) builder.Append(frames + "f");
+                        return builder.ToString();
                     };
                     break;
 

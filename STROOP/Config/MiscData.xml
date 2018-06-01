@@ -5,6 +5,7 @@
   <Data base="None" specialType="RngIndex" subclass="String">RNG Index</Data>
   <Data base="None" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
   <Data base="None" specialType="NumberOfLoadedObjects">Num Loaded Objs</Data>
+  <Data base="None" specialType="PlayTime" subclass="String">Play Time</Data>
   <Data type="short" offsetUS="0x8032DF08" offsetJP="0x8032CFA8" base="Relative">Animation Timer</Data>
   <Data type="float" offsetUS="0x80336f98" offsetJP="0x80335DF8" base="Relative">Max Obj Render Dist</Data>
 
