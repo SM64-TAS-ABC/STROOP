@@ -12,15 +12,16 @@ namespace STROOP.Utilities
     {
         private static readonly float[] _relativeHeights;
         private static readonly float _heightRange;
+        private static readonly int _testStartingHeight = 3500;
 
         static BitfsPlatformGroupTable()
         {
             _relativeHeights = new float[256];
-            float height = 0;
+            float height = _testStartingHeight;
             int timer = 0;
             for (int i = 0; i < 256; i++)
             {
-                _relativeHeights[i] = height;
+                _relativeHeights[i] = height - _testStartingHeight;
                 height += InGameTrigUtilities.InGameSine(timer) * -0.58f;
                 timer += 0x100;
             }
