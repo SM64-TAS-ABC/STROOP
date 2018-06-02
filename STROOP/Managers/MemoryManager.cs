@@ -327,7 +327,7 @@ namespace STROOP.Managers
                     int antiMod = 3 - mod;
                     byteIndex = byteIndex - mod + antiMod;
                 }
-                builder.Append(HexUtilities.Format(bytes[byteIndex], 2, false));
+                builder.Append(HexUtilities.FormatByMemory(bytes[byteIndex], 2, false));
             }
             return builder.ToString();
         }
@@ -352,7 +352,7 @@ namespace STROOP.Managers
                 }
                 else if (useHex)
                 {
-                    value = HexUtilities.Format(value, typeSize * 2, false);
+                    value = HexUtilities.FormatByMemory(value, typeSize * 2, false);
                 }
                 stringList.Add(value.ToString());
             }
