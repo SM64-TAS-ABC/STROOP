@@ -151,6 +151,7 @@
   <Action name="metal water fall landing" value="0x000042F6" afterCloneValue="0x080042F1" afterUncloneValue="0x000042F6" handsfreeValue="0x080042F1"/>
   <Action name="metal water jump" value="0x000044F8" afterCloneValue="0x000044F9" afterUncloneValue="0x000044F8" handsfreeValue="0x000044F9"/>
   <Action name="metal water jump landing" value="0x000044FA" afterCloneValue="0x080042F1" afterUncloneValue="0x000044FA" handsfreeValue="0x080042F1"/>
+  <Action name="'panting" value="0x08000206" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
   <Action name="'standing" value="0x08000207" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
   <Action name="'heavy standing" value="0x08000208" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
   <Action name="'picking up" value="0x00000383" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
@@ -221,6 +222,7 @@
   <Action name="spinning enter" value="0x00001924" afterCloneValue="0x010008A1" afterUncloneValue="0x00001924" handsfreeValue="0x010008A1"/>
   <Action name="star exit sideways" value="0x00001926" afterCloneValue="0x010008A1" afterUncloneValue="0x00001926" handsfreeValue="0x010008A1"/>
   <Action name="death exit sideways" value="0x00001928" afterCloneValue="0x010008A1" afterUncloneValue="0x00001928" handsfreeValue="0x010008A1"/>
+  <Action name="death exit freefall" value="0x00001929" afterCloneValue="0x010008A1" afterUncloneValue="0x00001929" handsfreeValue="0x010008A1"/>
   <Action name="death exit downwards" value="0x0000192A" afterCloneValue="0x010008A1" afterUncloneValue="0x0000192A" handsfreeValue="0x010008A1"/>
   <Action name="star exit upwards" value="0x0000192B" afterCloneValue="0x010008A1" afterUncloneValue="0x0000192B" handsfreeValue="0x010008A1"/>
   <Action name="death exit upwards" value="0x0000192C" afterCloneValue="0x010008A1" afterUncloneValue="0x0000192C" handsfreeValue="0x010008A1"/>
