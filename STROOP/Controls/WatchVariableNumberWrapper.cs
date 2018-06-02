@@ -168,33 +168,7 @@ namespace STROOP.Controls
         protected override object HandleHexDisplaying(object value)
         {
             if (!_displayAsHex) return value;
-
-            int? numHexDigits = GetHexDigitCount();
-            string stringHexDigits = numHexDigits?.ToString() ?? "";
-
-            int? intValueNullable = ParsingUtilities.ParseIntNullable(value);
-            if (intValueNullable.HasValue)
-            {
-                string hexFormat = String.Format("{0:X" + stringHexDigits + "}", intValueNullable.Value);
-                if (numHexDigits.HasValue && hexFormat.Length > numHexDigits.Value)
-                {
-                    hexFormat = hexFormat.Substring(hexFormat.Length - numHexDigits.Value);
-                }
-                return "0x" + hexFormat;
-            }
-
-            uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(value);
-            if (uintValueNullable.HasValue)
-            {
-                string hexFormat = String.Format("{0:X" + stringHexDigits + "}", uintValueNullable.Value);
-                if (numHexDigits.HasValue && hexFormat.Length > numHexDigits.Value)
-                {
-                    hexFormat = hexFormat.Substring(hexFormat.Length - numHexDigits.Value);
-                }
-                return "0x" + hexFormat;
-            }
-
-            return value;
+            return HexUtilities.FormatByValueIfInteger(value, GetHexDigitCount(), true);
         }
 
         protected override object HandleHexUndisplaying(object value)

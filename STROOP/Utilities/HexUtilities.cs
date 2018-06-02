@@ -22,6 +22,15 @@ namespace STROOP.Utilities
             return prefix + String.Format("{0:X" + numDigitsString + "}", number);
         }
 
+        public static object FormatByValueIfInteger(object value, int? numDigits = null, bool usePrefix = true)
+        {
+            int? intValueNullable = ParsingUtilities.ParseIntNullable(value);
+            if (intValueNullable.HasValue) return FormatByValue(intValueNullable.Value, numDigits, usePrefix);
+            uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(value);
+            if (uintValueNullable.HasValue) return FormatByValue(uintValueNullable.Value, numDigits, usePrefix);
+            return value;
+        }
+
         public static string FormatByMemory(object number, int? numDigits = null, bool usePrefix = true)
         {
             byte[] bytes = TypeUtilities.GetBytes(number);
