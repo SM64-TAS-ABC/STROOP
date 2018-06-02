@@ -3578,25 +3578,29 @@ namespace STROOP.Structs
                         uint secondConst = 60;
                         uint minuteConst = 60;
                         uint hourConst = 24;
+                        uint dayConst = 365;
 
                         uint totalFrames = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
                         uint totalSeconds = totalFrames / frameConst;
                         uint totalMinutes = totalSeconds / secondConst;
                         uint totalHours = totalMinutes / minuteConst;
                         uint totalDays = totalHours / hourConst;
+                        uint totalYears = totalDays / dayConst;
 
                         uint frames = totalFrames % frameConst;
                         uint seconds = totalSeconds % secondConst;
                         uint minutes = totalMinutes % minuteConst;
                         uint hours = totalHours % hourConst;
-                        uint days = totalDays;
+                        uint days = totalDays % dayConst;
+                        uint years = totalYears;
 
-                        List<uint> values = new List<uint> { days, hours, minutes, seconds, frames };
+                        List<uint> values = new List<uint> { years, days, hours, minutes, seconds, frames };
                         int firstNonZeroIndex = values.FindIndex(value => value != 0);
                         if (firstNonZeroIndex == -1) firstNonZeroIndex = values.Count - 1;
                         int numValuesToShow = values.Count - firstNonZeroIndex;
 
                         StringBuilder builder = new StringBuilder();
+                        if (numValuesToShow >= 6) builder.Append(years + "y ");
                         if (numValuesToShow >= 5) builder.Append(days + "d ");
                         if (numValuesToShow >= 4) builder.Append(hours + "h ");
                         if (numValuesToShow >= 3) builder.Append(minutes + "m ");
