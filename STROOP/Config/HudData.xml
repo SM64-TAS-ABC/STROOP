@@ -16,7 +16,8 @@
   <Data type="short" offset="0xAA" base="Mario">Star Count</Data>
   <Data type="short" offset="0xF4" base="Mario">Star Display</Data>
   <Data type="short" offset="0xB8" base="Mario">Checked Star Count</Data>
-  
+  <Data base="File" specialType="StarsInFile">Stars in File</Data>
+
   <Data type="byte" offset="0xEE" mask="0x01" base="Mario" subclass="Boolean" color="Purple">Time Counting</Data>
   <Data type="ushort" offset="0xFC" base="Mario" color="Purple">Time (Number)</Data>
   <Data base="None" specialType="HudTimeText" subclass="String" color="Purple">Time (Text)</Data>

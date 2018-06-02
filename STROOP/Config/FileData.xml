@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <FileData>
   <Data type="short" offsetUS="0x8032DDF4" offsetJP="0x8032CE94" base="Relative">Current File</Data>
+  <Data base="File" specialType="StarsInFile">Stars in File</Data>
+  <Data type="short" offset="0xAA" base="Mario">Star Count</Data>
 
   <Data type="byte" offset="0x0C" base="File" mask="0x7F" color="LightBlue">BoB Stars</Data>
   <Data type="byte" offset="0x0D" base="File" mask="0x7F" color="LightBlue">WF Stars</Data>

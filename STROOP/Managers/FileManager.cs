@@ -321,15 +321,16 @@ namespace STROOP.Managers
                 += (sender, e) => { currentAllCoinsMeaning = AllCoinsMeaning.MaxWithGlitches; };
         }
 
-        private short CalculateNumStars()
+        public short CalculateNumStars(uint? nullableFileAddress = null)
         {
+            uint fileAddress = nullableFileAddress ?? CurrentFileAddress;
             short starCount = 0;
             byte starByte;
             
             // go through the 25 contiguous star bytes
             for (int i = 0; i < 25; i++)
             {
-                starByte = Config.Stream.GetByte(CurrentFileAddress + FileConfig.CourseStarsOffsetStart + (uint)i);
+                starByte = Config.Stream.GetByte(fileAddress + FileConfig.CourseStarsOffsetStart + (uint)i);
                 for (int b = 0; b < 7; b++)
                 {
                     starCount += (byte)((starByte >> b) & 1);
@@ -337,7 +338,7 @@ namespace STROOP.Managers
             }
 
             // go through the 1 non-contiguous star byte (for toads and MIPS)
-            starByte = Config.Stream.GetByte(CurrentFileAddress + FileConfig.ToadMIPSStarsOffset);
+            starByte = Config.Stream.GetByte(fileAddress + FileConfig.ToadMIPSStarsOffset);
             for (int b = 0; b < 7; b++)
             {
                 starCount += (byte)((starByte >> b) & 1);

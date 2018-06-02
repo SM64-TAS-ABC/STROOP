@@ -2961,6 +2961,13 @@ namespace STROOP.Structs
 
                 // File vars
 
+                case "StarsInFile":
+                    getterFunction = (uint fileAddress) =>
+                    {
+                        return Config.FileManager.CalculateNumStars(fileAddress);
+                    };
+                    break;
+
                 case "ChecksumCalculated":
                     getterFunction = (uint fileAddress) =>
                     {
