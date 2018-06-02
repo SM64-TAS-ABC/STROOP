@@ -2959,6 +2959,15 @@ namespace STROOP.Structs
                     };
                     break;
 
+                // File vars
+
+                case "ChecksumCalculated":
+                    getterFunction = (uint fileAddress) =>
+                    {
+                        return Config.FileManager.GetChecksum(fileAddress);
+                    };
+                    break;
+
                 // Action vars
 
                 case "ActionDescription":
