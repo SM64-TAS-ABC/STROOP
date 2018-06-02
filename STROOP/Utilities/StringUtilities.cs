@@ -11,7 +11,6 @@ namespace STROOP.Utilities
 {
     public static class StringUtilities
     {
-        
         public static string Cap(string stringValue, int length)
         {
             if (stringValue == null) return stringValue;
@@ -19,15 +18,22 @@ namespace STROOP.Utilities
             return stringValue.Substring(0, length);
         }
 
-        public static string GetEmptyChars(int count)
+        public static string ExactLength(string stringValue, int length, bool leftAppend, char appendChar)
         {
-            string emptyChar = "​";
-            StringBuilder builder = new StringBuilder();
-            for (int i = 0; i < count; i++)
+            if (stringValue == null) return stringValue;
+            if (stringValue.Length < length)
             {
-                builder.Append(emptyChar);
+                return leftAppend
+                    ? stringValue.PadLeft(length, appendChar)
+                    : stringValue.PadRight(length, appendChar);
             }
-            return builder.ToString();
+            if (stringValue.Length > length)
+            {
+                return leftAppend
+                  ? stringValue.Substring(stringValue.Length - length)
+                  : stringValue.Substring(0, length);
+            }
+            return stringValue;
         }
 
         public static string FormatIntegerWithSign(int num)
