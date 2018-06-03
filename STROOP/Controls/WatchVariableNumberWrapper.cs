@@ -22,6 +22,7 @@ namespace STROOP.Controls
 
         private readonly int _defaultRoundingLimit;
         private int _roundingLimit;
+        private Action<int> _setRoundingLimit;
 
         protected readonly bool _defaultDisplayAsHex;
         protected bool _displayAsHex;
@@ -53,7 +54,7 @@ namespace STROOP.Controls
         {
             ToolStripMenuItem itemRoundTo = new ToolStripMenuItem("Round to ...");
             List<int> roundingLimitNumbers = Enumerable.Range(-1, MAX_ROUNDING_LIMIT + 2).ToList();
-            ControlUtilities.AddCheckableDropDownItems(
+            _setRoundingLimit = ControlUtilities.AddCheckableDropDownItems(
                 itemRoundTo,
                 roundingLimitNumbers.ConvertAll(i => i == -1 ? "No Rounding" : i + " decimal place(s)"),
                 roundingLimitNumbers,
@@ -193,9 +194,9 @@ namespace STROOP.Controls
             if (settings.ChangeRoundingLimit && _defaultRoundingLimit != 0)
             {
                 if (settings.ChangeRoundingLimitToDefault)
-                    _roundingLimit = _defaultRoundingLimit;
+                    _setRoundingLimit(_defaultRoundingLimit);
                 else
-                    _roundingLimit = settings.NewRoundingLimit;
+                    _setRoundingLimit(settings.NewRoundingLimit);
             }
         }
     }
