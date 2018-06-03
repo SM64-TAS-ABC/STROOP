@@ -24,7 +24,7 @@ namespace STROOP.Structs.Configurations
             new PositionAngleId(PositionAngleTypeEnum.Mario);
         private static PositionAngle SelfPosAngle
         {
-            get => PositionAngle.FromId(PointPosAngleId);
+            get => PositionAngle.FromId(SelfPosAngleId);
         }
 
         public static double SelfX
@@ -42,7 +42,7 @@ namespace STROOP.Structs.Configurations
             get { return SelfPosAngle.Z; }
         }
 
-        // - point pos angle
+        // - Point
 
         public static PositionAngleId PointPosAngleId =
             new PositionAngleId(PositionAngleTypeEnum.Custom);
@@ -66,18 +66,9 @@ namespace STROOP.Structs.Configurations
             get { return PointPosAngle.Z; }
         }
 
-        // - angle pos angle
-
-        public static PositionAngleId AnglePosAngleId =
-            new PositionAngleId(PositionAngleTypeEnum.Custom);
-        private static PositionAngle AnglePosAngle
-        {
-            get => PositionAngle.FromId(AnglePosAngleId);
-        }
-
         public static double PointAngle
         {
-            get { return AnglePosAngle.Angle ?? 0; }
+            get { return PointPosAngle.Angle ?? CustomAngle; }
         }
         
         // PU vars
