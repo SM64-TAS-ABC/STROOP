@@ -3705,7 +3705,10 @@ namespace STROOP.Structs
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        return false;
+                        double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
+                        if (!doubleValueNullable.HasValue) return false;
+                        double doubleValue = doubleValueNullable.Value;
+                        return PositionAngle.SetX(doubleValue, SpecialConfig.SelfPosAngleId);
                     };
                     break;
 
@@ -3716,7 +3719,10 @@ namespace STROOP.Structs
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        return false;
+                        double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
+                        if (!doubleValueNullable.HasValue) return false;
+                        double doubleValue = doubleValueNullable.Value;
+                        return PositionAngle.SetY(doubleValue, SpecialConfig.SelfPosAngleId);
                     };
                     break;
 
@@ -3727,7 +3733,10 @@ namespace STROOP.Structs
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        return false;
+                        double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
+                        if (!doubleValueNullable.HasValue) return false;
+                        double doubleValue = doubleValueNullable.Value;
+                        return PositionAngle.SetZ(doubleValue, SpecialConfig.SelfPosAngleId);
                     };
                     break;
 
@@ -3752,11 +3761,10 @@ namespace STROOP.Structs
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? newValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
-                        if (!newValueNullable.HasValue) return false;
-                        double newValue = newValueNullable.Value;
-                        SpecialConfig.CustomX = newValue;
-                        return true;
+                        double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
+                        if (!doubleValueNullable.HasValue) return false;
+                        double doubleValue = doubleValueNullable.Value;
+                        return PositionAngle.SetX(doubleValue, SpecialConfig.PointPosAngleId);
                     };
                     break;
 
@@ -3767,11 +3775,10 @@ namespace STROOP.Structs
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? newValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
-                        if (!newValueNullable.HasValue) return false;
-                        double newValue = newValueNullable.Value;
-                        SpecialConfig.CustomY = newValue;
-                        return true;
+                        double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
+                        if (!doubleValueNullable.HasValue) return false;
+                        double doubleValue = doubleValueNullable.Value;
+                        return PositionAngle.SetY(doubleValue, SpecialConfig.PointPosAngleId);
                     };
                     break;
 
@@ -3782,11 +3789,10 @@ namespace STROOP.Structs
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? newValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
-                        if (!newValueNullable.HasValue) return false;
-                        double newValue = newValueNullable.Value;
-                        SpecialConfig.CustomZ = newValue;
-                        return true;
+                        double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
+                        if (!doubleValueNullable.HasValue) return false;
+                        double doubleValue = doubleValueNullable.Value;
+                        return PositionAngle.SetZ(doubleValue, SpecialConfig.PointPosAngleId);
                     };
                     break;
 
@@ -3797,11 +3803,10 @@ namespace STROOP.Structs
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? newValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
-                        if (!newValueNullable.HasValue) return false;
-                        double newValue = newValueNullable.Value;
-                        SpecialConfig.CustomAngle = newValue;
-                        return true;
+                        double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
+                        if (!doubleValueNullable.HasValue) return false;
+                        double doubleValue = doubleValueNullable.Value;
+                        return PositionAngle.SetAngle(doubleValue, SpecialConfig.PointPosAngleId);
                     };
                     break;
 

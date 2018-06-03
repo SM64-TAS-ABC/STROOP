@@ -81,5 +81,25 @@ namespace STROOP.Utilities
                     throw new ArgumentOutOfRangeException();
             }
         }
+
+        public static bool SetX(double value, PositionAngleId posAngleId)
+        {
+            return false;
+        }
+
+        public static bool SetY(double value, PositionAngleId posAngleId)
+        {
+            return false;
+        }
+
+        public static bool SetZ(double value, PositionAngleId posAngleId)
+        {
+            return false;
+        }
+
+        public static bool SetAngle(double value, PositionAngleId posAngleId)
+        {
+            return false;
+        }
     }
 }
