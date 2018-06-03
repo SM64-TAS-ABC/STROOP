@@ -49,10 +49,12 @@
   <Data groupList="Point" base="None" specialType="SelfY" color="Blue" coord="Y">Self Y</Data>
   <Data groupList="Point" base="None" specialType="SelfZ" color="Blue" coord="Z">Self Z</Data>
   
-  <Data groupList="Point" base="None" specialType="PointType" subclass="String" color="Blue">Point Type</Data>
+  <Data groupList="Point" base="None" specialType="PointPosType" subclass="String" color="Blue">Point Pos Type</Data>
   <Data groupList="Point" base="None" specialType="PointX" color="Blue" coord="X">Point X</Data>
   <Data groupList="Point" base="None" specialType="PointY" color="Blue" coord="Y">Point Y</Data>
   <Data groupList="Point" base="None" specialType="PointZ" color="Blue" coord="Z">Point Z</Data>
+
+  <Data groupList="Point" base="None" specialType="PointAngleType" subclass="String" color="Blue">Point Angle Type</Data>
   <Data groupList="Point" base="None" specialType="PointAngle" subclass="Angle" type="ushort" color="Blue">Point Angle</Data>
 
   <Data groupList="Point" base="None" specialType="XDistanceToPoint" color="LightBlue" coord="X">XDist to Point</Data>

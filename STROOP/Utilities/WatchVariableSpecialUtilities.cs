@@ -3740,16 +3740,16 @@ namespace STROOP.Structs
                     };
                     break;
 
-                case "PointType":
+                case "PointPosType":
                     getterFunction = (uint dummy) =>
                     {
-                        return SpecialConfig.PointPosAngleId.ToString();
+                        return SpecialConfig.PointPosPosAngleId.ToString();
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
                         PositionAngleId posAngleId = PositionAngleId.FromString(objectValue.ToString());
                         if (posAngleId == null) return false;
-                        SpecialConfig.PointPosAngleId = posAngleId;
+                        SpecialConfig.PointPosPosAngleId = posAngleId;
                         return true;
                     };
                     break;
@@ -3764,7 +3764,7 @@ namespace STROOP.Structs
                         double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!doubleValueNullable.HasValue) return false;
                         double doubleValue = doubleValueNullable.Value;
-                        return PositionAngle.SetX(doubleValue, SpecialConfig.PointPosAngleId);
+                        return PositionAngle.SetX(doubleValue, SpecialConfig.PointPosPosAngleId);
                     };
                     break;
 
@@ -3778,7 +3778,7 @@ namespace STROOP.Structs
                         double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!doubleValueNullable.HasValue) return false;
                         double doubleValue = doubleValueNullable.Value;
-                        return PositionAngle.SetY(doubleValue, SpecialConfig.PointPosAngleId);
+                        return PositionAngle.SetY(doubleValue, SpecialConfig.PointPosPosAngleId);
                     };
                     break;
 
@@ -3792,7 +3792,21 @@ namespace STROOP.Structs
                         double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!doubleValueNullable.HasValue) return false;
                         double doubleValue = doubleValueNullable.Value;
-                        return PositionAngle.SetZ(doubleValue, SpecialConfig.PointPosAngleId);
+                        return PositionAngle.SetZ(doubleValue, SpecialConfig.PointPosPosAngleId);
+                    };
+                    break;
+
+                case "PointAngleType":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return SpecialConfig.PointAnglePosAngleId.ToString();
+                    };
+                    setterFunction = (object objectValue, uint dummy) =>
+                    {
+                        PositionAngleId posAngleId = PositionAngleId.FromString(objectValue.ToString());
+                        if (posAngleId == null) return false;
+                        SpecialConfig.PointAnglePosAngleId = posAngleId;
+                        return true;
                     };
                     break;
 
@@ -3806,7 +3820,7 @@ namespace STROOP.Structs
                         double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!doubleValueNullable.HasValue) return false;
                         double doubleValue = doubleValueNullable.Value;
-                        return PositionAngle.SetAngle(doubleValue, SpecialConfig.PointPosAngleId);
+                        return PositionAngle.SetAngle(doubleValue, SpecialConfig.PointPosPosAngleId);
                     };
                     break;
 

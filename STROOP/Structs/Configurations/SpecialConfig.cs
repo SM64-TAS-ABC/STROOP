@@ -42,33 +42,42 @@ namespace STROOP.Structs.Configurations
             get { return SelfPosAngle.Z; }
         }
 
-        // - Point
+        // - Point pos
 
-        public static PositionAngleId PointPosAngleId =
+        public static PositionAngleId PointPosPosAngleId =
             new PositionAngleId(PositionAngleTypeEnum.Custom);
-        private static PositionAngle PointPosAngle
+        private static PositionAngle PointPosPosAngle
         {
-            get => PositionAngle.FromId(PointPosAngleId);
+            get => PositionAngle.FromId(PointPosPosAngleId);
         }
 
         public static double PointX
         {
-            get { return PointPosAngle.X; }
+            get { return PointPosPosAngle.X; }
         }
 
         public static double PointY
         {
-            get { return PointPosAngle.Y; }
+            get { return PointPosPosAngle.Y; }
         }
 
         public static double PointZ
         {
-            get { return PointPosAngle.Z; }
+            get { return PointPosPosAngle.Z; }
+        }
+
+        // Point angle
+
+        public static PositionAngleId PointAnglePosAngleId =
+            new PositionAngleId(PositionAngleTypeEnum.Custom);
+        private static PositionAngle PointAnglePosAngle
+        {
+            get => PositionAngle.FromId(PointAnglePosAngleId);
         }
 
         public static double PointAngle
         {
-            get { return PointPosAngle.Angle ?? CustomAngle; }
+            get { return PointAnglePosAngle.Angle ?? 0; }
         }
         
         // PU vars
