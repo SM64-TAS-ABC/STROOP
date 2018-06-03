@@ -193,7 +193,7 @@ namespace STROOP.Controls
         public override void ApplySettings(WatchVariableControlSettings settings)
         {
             base.ApplySettings(settings);
-            if (settings.ChangeRoundingLimit && _defaultRoundingLimit != 0)
+            if (settings.ChangeRoundingLimit && _roundingLimit != 0)
             {
                 if (settings.ChangeRoundingLimitToDefault)
                     _setRoundingLimit(_defaultRoundingLimit);

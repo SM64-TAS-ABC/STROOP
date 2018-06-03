@@ -20,6 +20,7 @@ namespace STROOP.Controls
 
         private readonly AngleUnitType _defaultAngleUnitType;
         private AngleUnitType _angleUnitType;
+        private Action<AngleUnitType> _setAngleUnitType;
 
         private bool _truncateToMultipleOf16;
         private bool _constrainToOneRevolution;
@@ -63,7 +64,7 @@ namespace STROOP.Controls
             itemSigned.Checked = _signed;
 
             ToolStripMenuItem itemUnits = new ToolStripMenuItem("Units...");
-            ControlUtilities.AddCheckableDropDownItems(
+            _setAngleUnitType = ControlUtilities.AddCheckableDropDownItems(
                 itemUnits,
                 new List<string> { "In-Game Units", "HAU", "Degrees", "Radians", "Revolutions" },
                 new List<AngleUnitType>
@@ -74,7 +75,7 @@ namespace STROOP.Controls
                     AngleUnitType.Radians,
                     AngleUnitType.Revolutions,
                 },
-                (AngleUnitType type) => { _angleUnitType = type; },
+                (AngleUnitType angleUnitType) => { _angleUnitType = angleUnitType; },
                 _angleUnitType);
 
             ToolStripMenuItem itemTruncateToMultipleOf16 = new ToolStripMenuItem("Truncate to Multiple of 16");
@@ -193,9 +194,9 @@ namespace STROOP.Controls
             if (settings.ChangeAngleUnits)
             {
                 if (settings.ChangeAngleUnitsToDefault)
-                    _angleUnitType = _defaultAngleUnitType;
+                    _setAngleUnitType(_defaultAngleUnitType);
                 else
-                    _angleUnitType = settings.NewAngleUnits;
+                    _setAngleUnitType(settings.NewAngleUnits);
             }
             if (settings.ChangeAngleHex)
             {
