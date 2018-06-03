@@ -383,37 +383,41 @@ namespace STROOP.Utilities
             control.ContextMenuStrip = contextMenuStrip;
         }
 
-        public static void AddCheckableDropDownItems<E>(
+        public static Action<T> AddCheckableDropDownItems<T>(
             ToolStripMenuItem topLevelItem,
             List<string> itemNames,
-            List<E> itemValues,
-            Action<E> setterAction,
+            List<T> itemValues,
+            Action<T> setterAction,
             object startingValue)
         {
-            List<ToolStripMenuItem> itemList =
+            if (itemNames.Count != itemValues.Count) throw new ArgumentOutOfRangeException();
+            (List<ToolStripMenuItem> itemList, Action<T> valueAction) =
                 CreateCheckableItems(
                     itemNames, itemValues, setterAction, startingValue);
             itemList.ForEach(item => topLevelItem.DropDownItems.Add(item));
+            return valueAction;
         }
 
-        public static void AddCheckableContextMenuStripItems<E>(
+        public static Action<T> AddCheckableContextMenuStripItems<T>(
             Control topLevelControl,
             List<string> itemNames,
-            List<E> itemValues,
-            Action<E> setterAction,
+            List<T> itemValues,
+            Action<T> setterAction,
             object startingValue)
         {
-            List<ToolStripMenuItem> itemList =
+            if (itemNames.Count != itemValues.Count) throw new ArgumentOutOfRangeException();
+            (List<ToolStripMenuItem> itemList, Action<T> valueAction) =
                 CreateCheckableItems(
                     itemNames, itemValues, setterAction, startingValue);
             topLevelControl.ContextMenuStrip = new ContextMenuStrip();
             itemList.ForEach(item => topLevelControl.ContextMenuStrip.Items.Add(item));
+            return valueAction;
         }
 
-        private static List<ToolStripMenuItem> CreateCheckableItems<E>(
+        private static (List<ToolStripMenuItem>, Action<T>) CreateCheckableItems<T>(
             List<string> itemNames,
-            List<E> itemValues,
-            Action<E> setterAction,
+            List<T> itemValues,
+            Action<T> setterAction,
             object startingValue)
         {
             if (itemNames.Count != itemValues.Count) throw new ArgumentOutOfRangeException();
@@ -424,19 +428,27 @@ namespace STROOP.Utilities
                 itemList.Add(new ToolStripMenuItem(itemNames[i]));
             }
 
+            Dictionary<T, ToolStripMenuItem> dictionary = new Dictionary<T, ToolStripMenuItem>();
+            for (int i = 0; i < itemList.Count; i++)
+            {
+                dictionary.Add(itemValues[i], itemList[i]);
+            }
+            Action<T> valueAction = (T value) =>
+            {
+                setterAction(value);
+                ToolStripMenuItem item = dictionary[value];
+                itemList.ForEach(item2 => item2.Checked = item2 == item);
+            };
+
             for (int i = 0; i < itemList.Count; i++)
             {
                 int index = i;
                 ToolStripMenuItem item = itemList[index];
-                item.Click += (sender, e) =>
-                {
-                    setterAction(itemValues[index]);
-                    itemList.ForEach(item2 => item2.Checked = item2 == item);
-                };
+                item.Click += (sender, e) => valueAction(itemValues[index]);
                 if (Equals(itemValues[index], startingValue)) item.Checked = true;
             }
 
-            return itemList;
+            return (itemList, valueAction);
         }
 
         public static void SetPropertyGridLabelColumnWidth(PropertyGrid grid, int width)
