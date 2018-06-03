@@ -93,10 +93,10 @@ namespace STROOP.Managers
         private void StoreMarioInfo(
             bool x = false, bool y = false, bool z = false, bool angle = false)
         {
-            if (x) SpecialConfig.PointX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            if (y) SpecialConfig.PointY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            if (z) SpecialConfig.PointZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-            if (angle) SpecialConfig.PointAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            if (x) SpecialConfig.CustomX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            if (y) SpecialConfig.CustomY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            if (z) SpecialConfig.CustomZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            if (angle) SpecialConfig.CustomAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
         }
 
         private class TasDataStruct

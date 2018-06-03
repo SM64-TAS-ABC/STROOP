@@ -26,7 +26,7 @@ namespace STROOP.Utilities
 
         public static PositionAngle Custom()
         {
-            return new PositionAngle(SpecialConfig.PointX, SpecialConfig.PointY, SpecialConfig.PointZ, SpecialConfig.PointAngle);
+            return new PositionAngle(SpecialConfig.CustomX, SpecialConfig.CustomY, SpecialConfig.CustomZ, SpecialConfig.CustomAngle);
         }
 
         public static PositionAngle Mario()

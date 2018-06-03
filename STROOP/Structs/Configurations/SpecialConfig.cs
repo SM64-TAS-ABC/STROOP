@@ -11,32 +11,43 @@ namespace STROOP.Structs.Configurations
     {
         // Point vars
 
-        private static double _pointX = 0;
+        public static PositionAngleId PointPosAngleId =
+            new PositionAngleId(PositionAngleTypeEnum.Custom);
+        private static PositionAngle PointPosAngle
+        {
+            get => PositionAngle.FromId(PointPosAngleId);
+        }
+
+        public static PositionAngleId AnglePosAngleId =
+            new PositionAngleId(PositionAngleTypeEnum.Custom);
+        private static PositionAngle AnglePosAngle
+        {
+            get => PositionAngle.FromId(AnglePosAngleId);
+        }
+
+        public static double CustomX = 0;
+        public static double CustomY = 0;
+        public static double CustomZ = 0;
+        public static double CustomAngle = 0;
+
         public static double PointX
         {
-            get { return _pointX; }
-            set { _pointX = value; }
+            get { return PointPosAngle.X; }
         }
 
-        private static double _pointY = 0;
         public static double PointY
         {
-            get { return _pointY; }
-            set { _pointY = value; }
+            get { return PointPosAngle.Y; }
         }
 
-        private static double _pointZ = 0;
         public static double PointZ
         {
-            get { return _pointZ; }
-            set { _pointZ = value; }
+            get { return PointPosAngle.Z; }
         }
 
-        private static double _pointAngle = 0;
         public static double PointAngle
         {
-            get { return _pointAngle; }
-            set { _pointAngle = value; }
+            get { return AnglePosAngle.Angle ?? 0; }
         }
 
         // PU vars

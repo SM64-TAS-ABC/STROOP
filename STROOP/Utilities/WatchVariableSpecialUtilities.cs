@@ -3694,7 +3694,7 @@ namespace STROOP.Structs
                         double? newValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newValueNullable.HasValue) return false;
                         double newValue = newValueNullable.Value;
-                        SpecialConfig.PointX = newValue;
+                        SpecialConfig.CustomX = newValue;
                         return true;
                     };
                     break;
@@ -3709,7 +3709,7 @@ namespace STROOP.Structs
                         double? newValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newValueNullable.HasValue) return false;
                         double newValue = newValueNullable.Value;
-                        SpecialConfig.PointY = newValue;
+                        SpecialConfig.CustomY = newValue;
                         return true;
                     };
                     break;
@@ -3724,7 +3724,7 @@ namespace STROOP.Structs
                         double? newValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newValueNullable.HasValue) return false;
                         double newValue = newValueNullable.Value;
-                        SpecialConfig.PointZ = newValue;
+                        SpecialConfig.CustomZ = newValue;
                         return true;
                     };
                     break;
@@ -3739,7 +3739,7 @@ namespace STROOP.Structs
                         double? newValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newValueNullable.HasValue) return false;
                         double newValue = newValueNullable.Value;
-                        SpecialConfig.PointAngle = newValue;
+                        SpecialConfig.CustomAngle = newValue;
                         return true;
                     };
                     break;
