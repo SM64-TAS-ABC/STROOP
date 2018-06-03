@@ -411,6 +411,8 @@
     <Compile Include="Structs\RomHack.cs" />
     <Compile Include="Structs\SpawnHack.cs" />
     <Compile Include="Enums\AngleUnitType.cs" />
+    <Compile Include="Utilities\PositionAngleTypeEnum.cs" />
+    <Compile Include="Utilities\PositionAngleId.cs" />
     <Compile Include="Utilities\PositionAngle.cs" />
     <Compile Include="Utilities\EndianessUtilitiies.cs" />
     <Compile Include="Utilities\EndianUtilities.cs" />

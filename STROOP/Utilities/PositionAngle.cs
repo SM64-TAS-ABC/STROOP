@@ -55,5 +55,24 @@ namespace STROOP.Utilities
                 Config.Stream.GetSingle(address + ObjectConfig.HomeYOffset),
                 Config.Stream.GetSingle(address + ObjectConfig.HomeZOffset));
         }
+
+        public static PositionAngle FromId(PositionAngleId positionAngleId)
+        {
+            switch (positionAngleId.PositionAngleType)
+            {
+                case PositionAngleTypeEnum.Mario:
+                    return Mario();
+                case PositionAngleTypeEnum.Holp:
+                    return Holp();
+                case PositionAngleTypeEnum.Camera:
+                    return Camera();
+                case PositionAngleTypeEnum.Object:
+                    return Object(positionAngleId.Address.Value);
+                case PositionAngleTypeEnum.ObjectHome:
+                    return ObjectHome(positionAngleId.Address.Value);
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
     }
 }
