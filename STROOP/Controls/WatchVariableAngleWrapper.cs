@@ -16,6 +16,7 @@ namespace STROOP.Controls
     {
         private readonly bool _defaultSigned;
         private bool _signed;
+        private Action<bool> _setSigned;
 
         private readonly AngleUnitType _defaultAngleUnitType;
         private AngleUnitType _angleUnitType;
@@ -53,11 +54,12 @@ namespace STROOP.Controls
         private void AddAngleContextMenuStripItems()
         {
             ToolStripMenuItem itemSigned = new ToolStripMenuItem("Signed");
-            itemSigned.Click += (sender, e) =>
+            _setSigned = (bool signed) =>
             {
-                _signed = !_signed;
-                itemSigned.Checked = _signed;
+                _signed = signed;
+                itemSigned.Checked = signed;
             };
+            itemSigned.Click += (sender, e) => _setSigned(!_signed);
             itemSigned.Checked = _signed;
 
             ToolStripMenuItem itemUnits = new ToolStripMenuItem("Units...");
@@ -184,9 +186,9 @@ namespace STROOP.Controls
             if (settings.ChangeAngleSigned)
             {
                 if (settings.ChangeAngleSignedToDefault)
-                    _signed = _defaultSigned;
+                    _setSigned(_defaultSigned);
                 else
-                    _signed = settings.NewAngleSigned;
+                    _setSigned(settings.NewAngleSigned);
             }
             if (settings.ChangeAngleUnits)
             {
