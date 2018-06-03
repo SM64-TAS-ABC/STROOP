@@ -20,8 +20,8 @@ namespace STROOP.Controls
 
         private static readonly int MAX_ROUNDING_LIMIT = 10;
 
-        private readonly int? _defaultRoundingLimit;
-        private int? _roundingLimit;
+        private readonly int _defaultRoundingLimit;
+        private int _roundingLimit;
 
         protected readonly bool _defaultDisplayAsHex;
         protected bool _displayAsHex;
@@ -35,15 +35,10 @@ namespace STROOP.Controls
             WatchVariableCoordinate? coordinate = null)
             : base(watchVar, watchVarControl, useCheckbox)
         {
-            // Null input translates to default rounding, not null as in no rounding
-            roundingLimit = roundingLimit ?? DEFAULT_ROUNDING_LIMIT;
-            if (roundingLimit.HasValue)
-            {
-                roundingLimit = MoreMath.Clamp(roundingLimit.Value, 0, MAX_ROUNDING_LIMIT);
-            }
-
-            _defaultRoundingLimit = roundingLimit;
+            _defaultRoundingLimit = roundingLimit ?? DEFAULT_ROUNDING_LIMIT;
             _roundingLimit = _defaultRoundingLimit;
+            if (_roundingLimit < -1 || _roundingLimit > MAX_ROUNDING_LIMIT)
+                throw new ArgumentOutOfRangeException();
 
             _defaultDisplayAsHex = displayAsHex ?? DEFAULT_DISPLAY_AS_HEX;
             _displayAsHex = _defaultDisplayAsHex;
@@ -57,12 +52,12 @@ namespace STROOP.Controls
         private void AddNumberContextMenuStripItems()
         {
             ToolStripMenuItem itemRoundTo = new ToolStripMenuItem("Round to ...");
-            List<int> roundingLimitNumbers = Enumerable.Range(0, MAX_ROUNDING_LIMIT + 1).ToList();
+            List<int> roundingLimitNumbers = Enumerable.Range(-1, MAX_ROUNDING_LIMIT + 2).ToList();
             ControlUtilities.AddCheckableDropDownItems(
                 itemRoundTo,
-                new List<string>() { "No rounding" }.Concat(roundingLimitNumbers.ConvertAll(i => i + " decimal place(s)")).ToList(),
-                new List<object>() { null }.Concat(roundingLimitNumbers.ConvertAll(i => (object)i)).ToList(),
-                (object obj) => { _roundingLimit = (int?)obj; },
+                roundingLimitNumbers.ConvertAll(i => i == -1 ? "No Rounding" : i + " decimal place(s)"),
+                roundingLimitNumbers,
+                (int roundingLimit) => { _roundingLimit = roundingLimit; },
                 _roundingLimit);
 
             ToolStripMenuItem itemDisplayAsHex = new ToolStripMenuItem("Display as Hex");
@@ -150,7 +145,7 @@ namespace STROOP.Controls
 
         protected override object HandleRounding(object value, bool handleRounding)
         {
-            int? roundingLimit = handleRounding ? _roundingLimit : null;
+            int? roundingLimit = handleRounding && _roundingLimit >= 0 ? _roundingLimit : (int?)null;
             double doubleValue = Convert.ToDouble(value);
             double roundedValue = roundingLimit.HasValue
                 ? Math.Round(doubleValue, roundingLimit.Value)

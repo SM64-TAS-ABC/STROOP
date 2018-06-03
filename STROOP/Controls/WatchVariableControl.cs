@@ -202,7 +202,7 @@ namespace STROOP.Controls
             _variableValueWidth = 0;
             _variableHeight = 0;
 
-            // Create var x
+            // Create watch var wrapper
             _watchVarWrapper = WatchVariableWrapper.CreateWatchVariableWrapper(
                 watchVar, this, subclass, roundingLimit, useHex, invertBool, coordinate);
 

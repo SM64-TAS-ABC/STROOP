@@ -80,7 +80,7 @@ namespace STROOP.Controls
             ToolStripMenuItem setAllRoundingLimitsNoRoundingItem = new ToolStripMenuItem("No Rounding");
             setAllRoundingLimitsNoRoundingItem.Click += (sender, e) =>
                 ApplySettings(new WatchVariableControlSettings(
-                    changeRoundingLimit: true, newRoundingLimit: null));
+                    changeRoundingLimit: true, newRoundingLimit: -1));
             List<ToolStripMenuItem> setAllRoundingLimitsNumberItems = new List<ToolStripMenuItem>();
             for (int i = 0; i <= 10; i++)
             {
