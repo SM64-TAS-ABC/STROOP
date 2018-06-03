@@ -413,10 +413,10 @@
     <Compile Include="Enums\AngleUnitType.cs" />
     <Compile Include="Utilities\EndianessUtilitiies.cs" />
     <Compile Include="Utilities\EndianUtilities.cs" />
-    <Compile Include="Utilities\WindowsProcessIO.cs" />
+    <Compile Include="Utilities\Stream\WindowsProcessIO.cs" />
     <Compile Include="Utilities\HexUtilities.cs" />
     <Compile Include="Utilities\DictionaryUtilities.cs" />
-    <Compile Include="Utilities\IEmuRamIO.cs" />
+    <Compile Include="Utilities\Stream\IEmuRamIO.cs" />
     <Compile Include="Utilities\KeyboardUtilities.cs" />
     <Compile Include="Utilities\HelpfulHintUtilities.cs" />
     <Compile Include="Utilities\ColorUtilities.cs" />
@@ -458,7 +458,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\ProcessStream.cs" />
+    <Compile Include="Utilities\Stream\ProcessStream.cs" />
     <Compile Include="Utilities\ParsingUtilities.cs" />
     <Compile Include="Structs\Configurations\Config.cs" />
     <Compile Include="Extensions\RichTextBoxExtensions.cs" />
