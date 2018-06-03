@@ -1,4 +1,7 @@
-﻿using System;
+﻿using STROOP.Models;
+using STROOP.Structs;
+using STROOP.Structs.Configurations;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -19,6 +22,38 @@ namespace STROOP.Utilities
             Y = y;
             Z = z;
             Angle = angle;
+        }
+
+        public static PositionAngle Mario()
+        {
+            return new PositionAngle(DataModels.Mario.X, DataModels.Mario.Y, DataModels.Mario.Z, DataModels.Mario.FacingYaw);
+        }
+
+        public static PositionAngle Holp()
+        {
+            return new PositionAngle(DataModels.Mario.HolpX, DataModels.Mario.HolpY, DataModels.Mario.HolpZ);
+        }
+
+        public static PositionAngle Camera()
+        {
+            return new PositionAngle(DataModels.Camera.X, DataModels.Camera.Y, DataModels.Camera.Z, DataModels.Camera.FacingYaw);
+        }
+
+        public static PositionAngle Object(uint address)
+        {
+            return new PositionAngle(
+                Config.Stream.GetSingle(address + ObjectConfig.XOffset),
+                Config.Stream.GetSingle(address + ObjectConfig.YOffset),
+                Config.Stream.GetSingle(address + ObjectConfig.ZOffset),
+                Config.Stream.GetSingle(address + ObjectConfig.YawFacingOffset));
+        }
+
+        public static PositionAngle ObjectHome(uint address)
+        {
+            return new PositionAngle(
+                Config.Stream.GetSingle(address + ObjectConfig.HomeXOffset),
+                Config.Stream.GetSingle(address + ObjectConfig.HomeYOffset),
+                Config.Stream.GetSingle(address + ObjectConfig.HomeZOffset));
         }
     }
 }
