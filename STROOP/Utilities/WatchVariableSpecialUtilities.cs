@@ -3691,7 +3691,10 @@ namespace STROOP.Structs
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        return false;
+                        PositionAngleId posAngleId = PositionAngleId.FromString(objectValue.ToString());
+                        if (posAngleId == null) return false;
+                        SpecialConfig.SelfPosAngleId = posAngleId;
+                        return true;
                     };
                     break;
 
@@ -3735,7 +3738,10 @@ namespace STROOP.Structs
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        return false;
+                        PositionAngleId posAngleId = PositionAngleId.FromString(objectValue.ToString());
+                        if (posAngleId == null) return false;
+                        SpecialConfig.PointPosAngleId = posAngleId;
+                        return true;
                     };
                     break;
 

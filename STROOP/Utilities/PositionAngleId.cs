@@ -31,5 +31,10 @@ namespace STROOP.Utilities
             string suffix = Address.HasValue ? " " + HexUtilities.FormatByValue(Address.Value) : "";
             return PosAngleType + suffix;
         }
+
+        public static PositionAngleId FromString(string stringValue)
+        {
+            return null;
+        }
     }
 }
