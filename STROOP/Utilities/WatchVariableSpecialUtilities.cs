@@ -3684,6 +3684,50 @@ namespace STROOP.Structs
 
                 // Custom point
 
+                case "SelfType":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return SpecialConfig.SelfPosAngleId.ToString();
+                    };
+                    setterFunction = (object objectValue, uint dummy) =>
+                    {
+                        return false;
+                    };
+                    break;
+
+                case "SelfX":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return SpecialConfig.SelfX;
+                    };
+                    setterFunction = (object objectValue, uint dummy) =>
+                    {
+                        return false;
+                    };
+                    break;
+
+                case "SelfY":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return SpecialConfig.SelfY;
+                    };
+                    setterFunction = (object objectValue, uint dummy) =>
+                    {
+                        return false;
+                    };
+                    break;
+
+                case "SelfZ":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return SpecialConfig.SelfZ;
+                    };
+                    setterFunction = (object objectValue, uint dummy) =>
+                    {
+                        return false;
+                    };
+                    break;
+
                 case "PointType":
                     getterFunction = (uint dummy) =>
                     {

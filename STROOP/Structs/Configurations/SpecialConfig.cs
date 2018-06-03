@@ -11,24 +11,45 @@ namespace STROOP.Structs.Configurations
     {
         // Point vars
 
+        // - Custom
+
+        public static double CustomX = 0;
+        public static double CustomY = 0;
+        public static double CustomZ = 0;
+        public static double CustomAngle = 0;
+
+        // - Self
+
+        public static PositionAngleId SelfPosAngleId =
+            new PositionAngleId(PositionAngleTypeEnum.Mario);
+        private static PositionAngle SelfPosAngle
+        {
+            get => PositionAngle.FromId(PointPosAngleId);
+        }
+
+        public static double SelfX
+        {
+            get { return SelfPosAngle.X; }
+        }
+
+        public static double SelfY
+        {
+            get { return SelfPosAngle.Y; }
+        }
+
+        public static double SelfZ
+        {
+            get { return SelfPosAngle.Z; }
+        }
+
+        // - point pos angle
+
         public static PositionAngleId PointPosAngleId =
             new PositionAngleId(PositionAngleTypeEnum.Custom);
         private static PositionAngle PointPosAngle
         {
             get => PositionAngle.FromId(PointPosAngleId);
         }
-
-        public static PositionAngleId AnglePosAngleId =
-            new PositionAngleId(PositionAngleTypeEnum.Custom);
-        private static PositionAngle AnglePosAngle
-        {
-            get => PositionAngle.FromId(AnglePosAngleId);
-        }
-
-        public static double CustomX = 0;
-        public static double CustomY = 0;
-        public static double CustomZ = 0;
-        public static double CustomAngle = 0;
 
         public static double PointX
         {
@@ -45,11 +66,20 @@ namespace STROOP.Structs.Configurations
             get { return PointPosAngle.Z; }
         }
 
+        // - angle pos angle
+
+        public static PositionAngleId AnglePosAngleId =
+            new PositionAngleId(PositionAngleTypeEnum.Custom);
+        private static PositionAngle AnglePosAngle
+        {
+            get => PositionAngle.FromId(AnglePosAngleId);
+        }
+
         public static double PointAngle
         {
             get { return AnglePosAngle.Angle ?? 0; }
         }
-
+        
         // PU vars
 
         public static int PuParam1 = 0;
