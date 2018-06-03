@@ -11,6 +11,7 @@ namespace STROOP.Utilities
 {
     public enum PositionAngleTypeEnum
     {
+        Custom,
         Mario,
         Holp,
         Camera,

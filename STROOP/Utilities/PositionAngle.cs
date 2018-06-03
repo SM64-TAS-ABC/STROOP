@@ -24,6 +24,11 @@ namespace STROOP.Utilities
             Angle = angle;
         }
 
+        public static PositionAngle Custom()
+        {
+            return new PositionAngle(SpecialConfig.PointX, SpecialConfig.PointY, SpecialConfig.PointZ, SpecialConfig.PointAngle);
+        }
+
         public static PositionAngle Mario()
         {
             return new PositionAngle(DataModels.Mario.X, DataModels.Mario.Y, DataModels.Mario.Z, DataModels.Mario.FacingYaw);
@@ -60,6 +65,8 @@ namespace STROOP.Utilities
         {
             switch (positionAngleId.PositionAngleType)
             {
+                case PositionAngleTypeEnum.Custom:
+                    return Custom();
                 case PositionAngleTypeEnum.Mario:
                     return Mario();
                 case PositionAngleTypeEnum.Holp:
