@@ -383,11 +383,11 @@ namespace STROOP.Utilities
             control.ContextMenuStrip = contextMenuStrip;
         }
 
-        public static void AddCheckableDropDownItems(
+        public static void AddCheckableDropDownItems<E>(
             ToolStripMenuItem topLevelItem,
             List<string> itemNames,
-            List<object> itemValues,
-            Action<object> setterAction,
+            List<E> itemValues,
+            Action<E> setterAction,
             object startingValue)
         {
             List<ToolStripMenuItem> itemList =
@@ -396,11 +396,11 @@ namespace STROOP.Utilities
             itemList.ForEach(item => topLevelItem.DropDownItems.Add(item));
         }
 
-        public static void AddCheckableContextMenuStripItems(
+        public static void AddCheckableContextMenuStripItems<E>(
             Control topLevelControl,
             List<string> itemNames,
-            List<object> itemValues,
-            Action<object> setterAction,
+            List<E> itemValues,
+            Action<E> setterAction,
             object startingValue)
         {
             List<ToolStripMenuItem> itemList =
@@ -410,10 +410,10 @@ namespace STROOP.Utilities
             itemList.ForEach(item => topLevelControl.ContextMenuStrip.Items.Add(item));
         }
 
-        private static List<ToolStripMenuItem> CreateCheckableItems(
+        private static List<ToolStripMenuItem> CreateCheckableItems<E>(
             List<string> itemNames,
-            List<object> itemValues,
-            Action<object> setterAction,
+            List<E> itemValues,
+            Action<E> setterAction,
             object startingValue)
         {
             if (itemNames.Count != itemValues.Count) throw new ArgumentOutOfRangeException();

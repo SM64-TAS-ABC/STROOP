@@ -58,8 +58,8 @@ namespace STROOP.Forms
             ControlUtilities.AddCheckableContextMenuStripItems(
                 this,
                 new List<string>() { "Show Value", "Show Float Components" },
-                new List<object>() { false, true },
-                boolValue => _showFloatComponents = (bool)boolValue,
+                new List<bool>() { false, true },
+                boolValue => _showFloatComponents = boolValue,
                 false);
 
             _timer.Tick += (s, e) => UpdateForm();

@@ -64,7 +64,7 @@ namespace STROOP.Controls
             ControlUtilities.AddCheckableDropDownItems(
                 itemUnits,
                 new List<string> { "In-Game Units", "HAU", "Degrees", "Radians", "Revolutions" },
-                new List<object>
+                new List<AngleUnitType>
                 {
                     AngleUnitType.InGameUnits,
                     AngleUnitType.HAU,
@@ -72,7 +72,7 @@ namespace STROOP.Controls
                     AngleUnitType.Radians,
                     AngleUnitType.Revolutions,
                 },
-                (object obj) => { _angleUnitType = (AngleUnitType)obj; },
+                (AngleUnitType type) => { _angleUnitType = type; },
                 _angleUnitType);
 
             ToolStripMenuItem itemTruncateToMultipleOf16 = new ToolStripMenuItem("Truncate to Multiple of 16");
