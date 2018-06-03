@@ -11,19 +11,25 @@ namespace STROOP.Utilities
 {
     public class PositionAngleId
     {
-        public readonly PositionAngleTypeEnum PositionAngleType;
+        public readonly PositionAngleTypeEnum PosAngleType;
         public readonly uint? Address;
 
-        public PositionAngleId(PositionAngleTypeEnum positionAngleType, uint? address = null)
+        public PositionAngleId(PositionAngleTypeEnum posAngleType, uint? address = null)
         {
-            PositionAngleType = positionAngleType;
+            PosAngleType = posAngleType;
             Address = address;
 
             bool shouldHaveAddress =
-                positionAngleType == PositionAngleTypeEnum.Object ||
-                positionAngleType == PositionAngleTypeEnum.ObjectHome;
+                posAngleType == PositionAngleTypeEnum.Object ||
+                posAngleType == PositionAngleTypeEnum.ObjectHome;
             if (address.HasValue != shouldHaveAddress)
                 throw new ArgumentOutOfRangeException();
+        }
+
+        public override string ToString()
+        {
+            string suffix = Address.HasValue ? " " + HexUtilities.FormatByValue(Address.Value) : "";
+            return PosAngleType + suffix;
         }
     }
 }

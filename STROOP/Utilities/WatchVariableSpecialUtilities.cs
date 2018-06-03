@@ -3684,6 +3684,17 @@ namespace STROOP.Structs
 
                 // Custom point
 
+                case "PointType":
+                    getterFunction = (uint dummy) =>
+                    {
+                        return SpecialConfig.AnglePosAngleId.ToString();
+                    };
+                    setterFunction = (object objectValue, uint dummy) =>
+                    {
+                        return false;
+                    };
+                    break;
+
                 case "PointX":
                     getterFunction = (uint dummy) =>
                     {

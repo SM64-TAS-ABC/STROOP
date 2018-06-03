@@ -44,6 +44,7 @@
   <Data groupList="TAS" type="short" offset="0x32" base="Mario" subclass="Angle" color="Pink">Pitch Velocity</Data>
   <Data groupList="TAS" base="None" specialType="MupenLag" color="Grey">Lag</Data>
 
+  <Data groupList="Point" base="None" specialType="PointType" subclass="String" color="Blue">Point Type</Data>
   <Data groupList="Point" base="None" specialType="PointX" color="Blue" coord="X">Point X</Data>
   <Data groupList="Point" base="None" specialType="PointY" color="Blue" coord="Y">Point Y</Data>
   <Data groupList="Point" base="None" specialType="PointZ" color="Blue" coord="Z">Point Z</Data>

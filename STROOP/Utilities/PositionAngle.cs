@@ -63,7 +63,7 @@ namespace STROOP.Utilities
 
         public static PositionAngle FromId(PositionAngleId positionAngleId)
         {
-            switch (positionAngleId.PositionAngleType)
+            switch (positionAngleId.PosAngleType)
             {
                 case PositionAngleTypeEnum.Custom:
                     return Custom();
