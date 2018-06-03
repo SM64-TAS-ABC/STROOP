@@ -10,31 +10,31 @@ namespace STROOP.Utilities
 {
     public static class MupenUtilities
     {
-        private static int FrameCountAddress
+        private static UIntPtr FrameCountAddress
         {
             get
             {
                 switch (Config.Stream.ProcessName)
                 {
                     case "mupen64-rerecording":
-                        return 0x0047A7A4;
+                        return (UIntPtr)0x0047A7A4;
                     case "mupen64_lua":
-                        return 0x004D614C;
+                        return (UIntPtr)0x004D614C;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
             }
         }
-        private static int VICountAddress
+        private static UIntPtr VICountAddress
         {
             get
             {
                 switch (Config.Stream.ProcessName)
                 {
                     case "mupen64-rerecording":
-                        return 0x0047A7A0;
+                        return (UIntPtr)0x0047A7A0;
                     case "mupen64_lua":
-                        return 0x004D6150;
+                        return (UIntPtr)0x004D6150;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -50,7 +50,7 @@ namespace STROOP.Utilities
         {
             if (!IsUsingMupen()) throw new ArgumentOutOfRangeException("Not using mupen");
             byte[] buffer = new byte[4];
-            Config.Stream.ReadProcessMemory(FrameCountAddress, buffer, true);
+            Config.Stream.ReadProcessMemory(FrameCountAddress, buffer);
             int frameCount = BitConverter.ToInt32(buffer, 0);
             return frameCount - 1;
         }
@@ -59,7 +59,7 @@ namespace STROOP.Utilities
         {
             if (!IsUsingMupen()) throw new ArgumentOutOfRangeException("Not using mupen");
             byte[] buffer = new byte[4];
-            Config.Stream.ReadProcessMemory(VICountAddress, buffer, true);
+            Config.Stream.ReadProcessMemory(VICountAddress, buffer);
             int viCount = BitConverter.ToInt32(buffer, 0);
             return viCount;
         }

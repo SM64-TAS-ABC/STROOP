@@ -431,14 +431,14 @@ namespace STROOP.Managers
 
             var variableTitle = "Object Address" + (_objects.Count > 1 ? " (First of Multiple)" : ""); 
             var variableInfo = new VariableViewerForm(variableTitle, "Object", "Relative + " + String.Format("0x{0:X8}", _objects.First().Address),
-                String.Format("0x{0:X8}", _objects.First().Address), String.Format("0x{0:X8}", (_objects.First().Address & ~0x80000000) + Config.Stream.ProcessMemoryOffset.ToInt64()));
+                String.Format("0x{0:X8}", _objects.First().Address), String.Format("0x{0:X8}", Config.Stream.GetAbsoluteAddress(_objects.First().Address).ToUInt64()));
             variableInfo.Show();
         }
       
         public override void Update(bool updateView)
         {
             if (!updateView)
-                return;
+                return;  
 
             _releaseButton.UpdateButton();
             _interactButton.UpdateButton();

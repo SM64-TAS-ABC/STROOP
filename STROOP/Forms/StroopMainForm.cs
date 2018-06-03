@@ -65,7 +65,6 @@ namespace STROOP
             Config.Stream.FpsUpdated += _sm64Stream_FpsUpdated;
             Config.Stream.OnDisconnect += _sm64Stream_OnDisconnect;
             Config.Stream.WarnReadonlyOff += _sm64Stream_WarnReadonlyOff;
-            Config.Stream.OnClose += _sm64Stream_OnClose;
 
             comboBoxRomVersion.DataSource = Enum.GetValues(typeof(RomVersion));
             comboBoxReadWriteMode.DataSource = Enum.GetValues(typeof(ReadWriteMode));
@@ -526,24 +525,6 @@ namespace STROOP
                 }
             });
             Config.MapManager.Load();
-        }
-
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            if (Config.Stream.IsRunning)
-            {
-                Config.Stream.OnUpdate -= OnUpdate;
-                Config.Stream.FpsUpdated -= _sm64Stream_FpsUpdated;
-                Config.Stream.OnDisconnect -= _sm64Stream_OnDisconnect;
-                Config.Stream.WarnReadonlyOff -= _sm64Stream_WarnReadonlyOff;
-                Config.Stream.OnClose -= _sm64Stream_OnClose;
-                Config.Stream.Stop();
-                e.Cancel = true;
-                Hide();
-                return;
-            }
-            
-            base.OnFormClosing(e);
         }
 
         private void _sm64Stream_OnClose(object sender, EventArgs e)

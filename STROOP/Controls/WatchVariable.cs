@@ -239,9 +239,8 @@ namespace STROOP.Controls
             uint address;
 
             if (UseAbsoluteAddressing)
-                address = (uint)Config.Stream.ConvertAddressEndianess(
-                    new UIntPtr(addressPtr.ToUInt64() - (ulong)Config.Stream.ProcessMemoryOffset.ToInt64()),
-                    ByteCount.Value);
+                address = EndianessUtilitiies.SwapAddressEndianess(
+                    Config.Stream.GetRelativeAddress(addressPtr), ByteCount.Value);
             else
                 address = addressPtr.ToUInt32();
 
@@ -259,8 +258,8 @@ namespace STROOP.Controls
         public UIntPtr GetProcessAddress(List<uint> addresses = null)
         {
             uint address = GetRamAddress(false, addresses);
-            return Config.Stream.ConvertAddressEndianess(
-                new UIntPtr(address + (ulong)Config.Stream.ProcessMemoryOffset.ToInt64()), ByteCount.Value);
+            return EndianessUtilitiies.SwapAddressEndianess(
+                    Config.Stream.GetAbsoluteAddress(address), ByteCount.Value);
         }
     }
 }

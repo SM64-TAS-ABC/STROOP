@@ -12,94 +12,35 @@ using System.Threading.Tasks;
 
 namespace STROOP.Utilities
 {
-    public class ProcessStream
+    public class ProcessStream : IDisposable
     {
         Emulator _emulator;
-        IntPtr _processHandle;
-        Process _process;
-        IntPtr _ramStart = new IntPtr();
-        Queue<double> _fpsTimes = new Queue<double>();
-        BackgroundWorker _streamUpdater;
+        IEmuRamIO _io;
+        ConcurrentQueue<double> _fpsTimes = new ConcurrentQueue<double>();
         byte[] _ram;
         bool _lastUpdateBeforePausing = false;
         object _enableLocker = new object();
-        object _fpsQueueLocker = new object();
+        object _mStreamProcess = new object();
 
         public event EventHandler OnUpdate;
-        public event EventHandler OnStatusChanged;
         public event EventHandler OnDisconnect;
         public event EventHandler FpsUpdated;
         public event EventHandler WarnReadonlyOff;
-        public event EventHandler OnClose;
 
-        public bool Readonly = false;
-        public bool ShowWarning = false;
+        public bool Readonly { get; set; } = false;
+        public bool ShowWarning { get; set; } = false;
+        public bool IsEnabled { get; set; } = true;
+        public bool IsRunning { get; private set; } = false;
 
-        public IntPtr ProcessMemoryOffset
+        public byte[] Ram => _ram;
+        public string ProcessName => _emulator == null ? "(No Emulator)" : _emulator.ProcessName;
+        public bool IsSuspended => _io?.IsSuspended ?? false;
+        public double FpsInPractice => _fpsTimes.Count == 0 ? 0 : 1000 / _fpsTimes.Average();
+
+        public ProcessStream()
         {
-            get
-            {
-                return _ramStart; 
-            }
-        }
-
-        public byte[] Ram
-        {
-            get
-            {
-                return _ram;
-            }
-        }
-
-        public string ProcessName
-        {
-            get
-            {
-                return _emulator == null ? "(No Emulator)" : _emulator.ProcessName;
-            }
-        }
-
-        public double FpsInPractice
-        {
-            get
-            {
-                double fps;
-                lock (_fpsQueueLocker)
-                {
-                    fps = _fpsTimes.Count == 0 ? 0 : 1000 / _fpsTimes.Average();
-                }
-                return fps;
-            }
-        }
-
-        public Boolean IsSuspended = false;
-        public Boolean IsClosed = true;
-        public Boolean IsEnabled = false;
-        public Boolean IsRunning
-        {
-            get
-            {
-                bool running;
-                lock(_enableLocker)
-                {
-                    running = !(IsSuspended || IsClosed || !IsEnabled || !_streamUpdater.IsBusy);
-                }
-                return running;
-            }
-        }
-
-        public ProcessStream(Process process = null, Emulator emulator = null)
-        {
-            _process = process;
-
             _ram = new byte[Config.RamSize];
-
-            _streamUpdater = new BackgroundWorker();
-            _streamUpdater.DoWork += ProcessUpdateTask;
-            _streamUpdater.WorkerSupportsCancellation = true;
-            _streamUpdater.RunWorkerAsync();
-
-            SwitchProcess(_process, _emulator);
+            Task.Run(() => ProcessUpdate());
         }
 
         private void LogException(Exception e)
@@ -118,156 +59,70 @@ namespace STROOP.Utilities
             throw obj.Exception;
         }
 
-        ~ProcessStream()
-        {
-            if (_process != null)
-                _process.Exited -= ProcessClosed;
-
-            _streamUpdater.CancelAsync();
-        }
-
         public bool SwitchProcess(Process newProcess, Emulator emulator)
         {
-            lock (_enableLocker)
+            Monitor.Enter(_mStreamProcess);
+            IsRunning = false;
+
+            // Dipose of old process
+            _io?.Dispose();
+            if (_io != null)
+                _io.OnClose -= ProcessClosed;
+
+            // Check for no process
+            if (newProcess == null)
             {
-                IsEnabled = false;
-            }
-
-            // Make sure old process is running
-            if (IsSuspended)
-                Resume();
-
-            // Close old process
-            Kernal32NativeMethods.CloseProcess(_processHandle);
-
-            // Disconnect events
-            if (_process != null)
-                _process.Exited -= ProcessClosed;
-
-            // Find DLL offset if needed
-            IntPtr dllOffset = new IntPtr();
-            bool dllSuccess = true;
-            if (emulator != null && emulator.Dll != null)
-            {
-                var dll = newProcess.Modules.Cast<ProcessModule>()
-                    .FirstOrDefault(d => d.ModuleName == emulator.Dll);
-                if (dll == null)
-                {
-                    dllSuccess = false;
-                }
-                else
-                {
-                    dllOffset = dll.BaseAddress;
-                }
-            }
-
-            // Make sure the new process has a value and that all DLLs where found
-            if (newProcess == null || emulator == null || !dllSuccess)
-            {
-                _processHandle = new IntPtr();
-                _process = null;
+                _io = null;
                 _emulator = null;
-                _ramStart = new IntPtr();
-                OnStatusChanged?.Invoke(this, new EventArgs());
-                return false;
-            }
-
-            // Open and set new process
-            _process = newProcess;
-            _emulator = emulator;
-            _ramStart = new IntPtr(_emulator.RamStart + dllOffset.ToInt64());
-            _processHandle = Kernal32NativeMethods.ProcessGetHandleFromId(0x0838, false, _process.Id);
-
-            if ((int)_processHandle == 0)
-            {
-                OnStatusChanged?.Invoke(this, new EventArgs());
                 return false;
             }
 
             try
             {
-                _process.EnableRaisingEvents = true;
+                // Open and set new process
+                _io = new WindowsProcessRamIO(newProcess, emulator, Config.RamSize);
+                _io.OnClose += ProcessClosed;
+                _emulator = emulator;
             }
-            catch (Exception)
+            catch (Exception) // Failed to create process
             {
+                _io = null;
+                _emulator = null;
                 return false;
             }
-            _process.Exited += ProcessClosed;
-
-            IsSuspended = false;
-            IsClosed = false;
-            lock (_enableLocker)
-            {
-                IsEnabled = true;
-            }
-            OnStatusChanged?.Invoke(this, new EventArgs());
+                
+            IsEnabled = true;
+            IsRunning = true;
+            Monitor.Exit(_mStreamProcess);
 
             return true;
         }
 
-        public bool ReadProcessMemory(int address, byte[] buffer, bool absoluteAddressing = false)
-        {
-            if (_process == null)
-                return false;
-
-            int numOfBytes = 0;
-            return Kernal32NativeMethods.ProcessReadMemory(_processHandle, absoluteAddressing ? new IntPtr(address) : new IntPtr(address + ProcessMemoryOffset.ToInt64()),
-                buffer, (IntPtr)buffer.Length, ref numOfBytes);
-        }
-
-        public bool WriteProcessMemory(UIntPtr address, byte[] buffer, bool absoluteAddressing = false)
-        {
-            int numOfBytes = 0;
-            if (!absoluteAddressing)
-                address = new UIntPtr(address.ToUInt32() & ~0x80000000U);
-
-            IntPtr processAddress = absoluteAddressing ? new IntPtr((long)address.ToUInt64()) :
-                new IntPtr((long)ConvertAddressEndianess(new UIntPtr(address.ToUInt32() + (ulong)ProcessMemoryOffset.ToInt64()), buffer.Length));
-
-            // Safety bounds check
-            if (processAddress.ToInt64() < ProcessMemoryOffset.ToInt64())
-                return false;
-            if (processAddress.ToInt64() + buffer.Length >= ProcessMemoryOffset.ToInt64() + _ram.Length)
-                return false;
-
-            return Kernal32NativeMethods.ProcessWriteMemory(_processHandle, processAddress,
-                buffer, (IntPtr)buffer.Length, ref numOfBytes);
-        }
-
         public void Suspend()
         {
-            if (IsSuspended || _process == null)
-                return;
-
             _lastUpdateBeforePausing = true;
-
-            Kernal32NativeMethods.SuspendProcess(_process);
-
-            IsSuspended = true;
-            OnStatusChanged?.Invoke(this, new EventArgs());
+            _io?.Suspend();
         }
-
+        
         public void Resume()
         {
-            if (!IsSuspended || _process == null)
-                return;
-
-            // Resume all threads
-            Kernal32NativeMethods.ResumeProcess(_process);
-
-            IsSuspended = false;
-            OnStatusChanged?.Invoke(this, new EventArgs());
+            _io?.Resume();
         }
 
         private void ProcessClosed(object sender, EventArgs e)
         {
-            IsClosed = true;
-            lock (_enableLocker)
-            {
-                IsEnabled = false;
-            }
-            OnStatusChanged?.Invoke(this, new EventArgs());
+            IsEnabled = false;
             OnDisconnect?.Invoke(this, new EventArgs());
+        }
+
+        public UIntPtr GetAbsoluteAddress(uint relativeAddress)
+        {
+            return _io?.GetAbsoluteAddress(relativeAddress) ?? new UIntPtr(0);
+        }
+
+        public uint GetRelativeAddress(UIntPtr relativeAddress)
+        {
+            return _io?.GetRelativeAddress(relativeAddress) ?? 0;
         }
 
         public object GetValue(Type type, uint address, bool absoluteAddress = false, uint? mask = null)
@@ -336,9 +191,11 @@ namespace STROOP.Utilities
             uint localAddress;
 
             if (absoluteAddress)
-                localAddress = (uint) (address.ToUInt64() - (ulong)ProcessMemoryOffset.ToInt64());
+                localAddress = _io?.GetRelativeAddress(address) ?? 0;
             else
-                localAddress = ConvertAddressEndianess(address.ToUInt32() & ~0x80000000, length);
+                localAddress = EndianessUtilitiies.SwapAddressEndianess(address.ToUInt32(), length);
+
+            localAddress &= ~0x80000000;
 
             if (localAddress + length > _ram.Length)
                 return new byte[length];
@@ -348,7 +205,7 @@ namespace STROOP.Utilities
         }
 
         readonly byte[] _fixAddress = { 0x03, 0x02, 0x01, 0x00 };
-        public byte[] ReadRam(uint address, int length)
+        public byte[] ReadRam(uint address, int length, bool littleEndian = false)
         {
             byte[] readBytes = new byte[length];
             address &= ~0x80000000U;
@@ -358,10 +215,15 @@ namespace STROOP.Utilities
 
             for (uint i = 0; i < length; i++, address++)
             {
-                readBytes[i] = _ram[address & ~0x00000003 | _fixAddress[address & 0x3]];
+                readBytes[i] = _ram[address & ~0x03 | _fixAddress[address & 0x03]];
             }
 
             return readBytes;
+        }
+
+        public bool ReadProcessMemory(UIntPtr address, byte[] buffer)
+        {
+            return _io?.ReadAbsolute(address, buffer) ?? false;
         }
 
         public bool CheckReadonlyOff()
@@ -372,7 +234,7 @@ namespace STROOP.Utilities
             return Readonly;
         }
 
-        public bool SetValueRoundingWrapping(
+        public bool SetValueRoundingWrapping (
             Type type, object value, uint address, bool absoluteAddress = false, uint? mask = null)
         {
             // Allow short circuiting if object is already of type
@@ -502,8 +364,8 @@ namespace STROOP.Utilities
             return returnValue;
         }
 
-        public bool WriteRamLittleEndian(
-            byte[] buffer, uint address, bool absoluteAddress = false, int bufferStart = 0, int? length = null, bool safeWrite = true)
+        public bool WriteRamLittleEndian(byte[] buffer, uint address, bool absoluteAddress = false, 
+            int bufferStart = 0, int? length = null, bool safeWrite = true)
         {
             if (length == null)
                 length = buffer.Length - bufferStart;
@@ -515,24 +377,26 @@ namespace STROOP.Utilities
             Array.Copy(buffer, bufferStart, writeBytes, 0, length.Value);
 
             // Attempt to pause the game before writing 
-            bool preSuspended = IsSuspended;
+            bool preSuspended = _io?.IsSuspended ?? false;
             if (safeWrite)
-                Suspend();
+                _io?.Suspend();
 
             // Write memory to game/process
-            bool result = WriteProcessMemory(new UIntPtr(address), writeBytes, absoluteAddress);
+            bool result;
+            if (absoluteAddress)
+                result = _io?.WriteAbsolute((UIntPtr)address, writeBytes) ?? false;
+            else
+                result = _io?.WriteRelative(address, writeBytes) ?? false;
 
             // Resume stream 
             if (safeWrite && !preSuspended)
-                Resume();
+                _io?.Resume();
 
             return result;
         }
 
         public bool WriteRam(byte[] buffer, uint address, int bufferStart = 0, int? length = null, bool safeWrite = true)
         {
-            address &= ~0x80000000U;
-
             if (length == null)
                 length = buffer.Length - bufferStart;
 
@@ -542,9 +406,9 @@ namespace STROOP.Utilities
             bool success = true;
 
             // Attempt to pause the game before writing 
-            bool preSuspended = IsSuspended;
+            bool preSuspended = _io?.IsSuspended ?? false;
             if (safeWrite)
-                Suspend();
+                _io?.Suspend();
 
             // Take care of first alignment
             int bufPos = bufferStart;
@@ -553,7 +417,7 @@ namespace STROOP.Utilities
             {
                 byte[] writeBytes = new byte[Math.Min(alignment, length.Value)];
                 Array.Copy(buffer, bufPos, writeBytes, 0, writeBytes.Length);
-                success &= WriteProcessMemory(new UIntPtr(address), writeBytes.Reverse().ToArray());
+                success &= _io?.WriteRelative(address, writeBytes.Reverse().ToArray()) ?? false;
                 length -= writeBytes.Length;
                 bufPos += writeBytes.Length;
                 address += alignment;
@@ -570,7 +434,7 @@ namespace STROOP.Utilities
                     writeBytes[i + 2] = buffer[bufPos + 1];
                     writeBytes[i + 3] = buffer[bufPos];
                 }
-                success &= WriteProcessMemory(new UIntPtr(address + (ulong) ProcessMemoryOffset.ToInt64()), writeBytes, true);
+                success &= _io?.WriteRelative(address, writeBytes) ?? false;
                 address += (uint)writeBytes.Length;
                 length -= writeBytes.Length;
             }
@@ -580,19 +444,14 @@ namespace STROOP.Utilities
             {
                 byte[] writeBytes = new byte[length.Value];
                 Array.Copy(buffer, bufPos, writeBytes, 0, writeBytes.Length);
-                success &= WriteProcessMemory(new UIntPtr(address), writeBytes.Reverse().ToArray());
+                success &= _io?.WriteRelative(address, writeBytes.Reverse().ToArray()) ?? false;
             }
 
             // Resume stream 
             if (safeWrite && !preSuspended)
-                Resume();
+                _io?.Resume();
 
             return success;
-        }
-
-        public void Stop()
-        {
-            _streamUpdater.CancelAsync();
         }
 
         public bool RefreshRam()
@@ -601,10 +460,9 @@ namespace STROOP.Utilities
             {
                 // Read whole ram value to buffer
                 if (_ram.Length != Config.RamSize)
-                {
                     _ram = new byte[Config.RamSize];
-                }
-                return ReadProcessMemory(0, _ram);
+
+                return _io?.ReadRelative(0, _ram) ?? false;
             }
             catch (Exception)
             {
@@ -612,80 +470,80 @@ namespace STROOP.Utilities
             }
         }
 
-        private void ProcessUpdateTask(object sender, DoWorkEventArgs e)
+        private void ProcessUpdate()
         {
-            var worker = sender as BackgroundWorker;
-            var prevTime = Stopwatch.StartNew();
-            while (!e.Cancel)
+            Stopwatch frameStopwatch = Stopwatch.StartNew();
+
+            for (; ; )
             {
-                if (worker.CancellationPending)
-                {
-                    e.Cancel = true;
-                    break;
-                }
+                try {
+                    Monitor.Enter(_mStreamProcess);
 
-                prevTime.Restart();
-                if (!IsRunning & !_lastUpdateBeforePausing)
-                    goto FrameLimitStreamUpdate;
+                    frameStopwatch.Restart();
+                    if ((!IsEnabled || !IsRunning) && !_lastUpdateBeforePausing)
+                        goto FrameLimitStreamUpdate;
 
-                _lastUpdateBeforePausing = false;
+                    _lastUpdateBeforePausing = false;
 
-                int timeToWait;
+                    if (!RefreshRam())
+                        goto FrameLimitStreamUpdate;
 
-                if (!RefreshRam())
-                    goto FrameLimitStreamUpdate;
+                    OnUpdate?.Invoke(this, new EventArgs());
 
-                OnUpdate?.Invoke(this, new EventArgs());
+                    FrameLimitStreamUpdate:
 
-                FrameLimitStreamUpdate:
+                    // Calculate delay to match correct FPS
+                    frameStopwatch.Stop();
+                    int timeToWait = (int)RefreshRateConfig.RefreshRateInterval - (int)frameStopwatch.ElapsedMilliseconds;
+                    timeToWait = Math.Max(timeToWait, 0);
 
-                // Calculate delay to match correct FPS
-                prevTime.Stop();
-                timeToWait = (int)RefreshRateConfig.RefreshRateInterval - (int)prevTime.ElapsedMilliseconds;
-                timeToWait = Math.Max(timeToWait, 0);
-
-                // Calculate Fps
-                lock (_fpsQueueLocker)
-                {
+                    // Calculate Fps
                     if (_fpsTimes.Count() >= 10)
-                        _fpsTimes.Dequeue();
-                    _fpsTimes.Enqueue(prevTime.ElapsedMilliseconds + timeToWait);
+                    {
+                        double garbage;
+                        _fpsTimes.TryDequeue(out garbage);
+                    }
+                    _fpsTimes.Enqueue(frameStopwatch.ElapsedMilliseconds + timeToWait);
+                    FpsUpdated?.Invoke(this, new EventArgs());
+
+                    Monitor.Exit(_mStreamProcess);
+
+                    if (timeToWait > 0)
+                        Thread.Sleep(timeToWait);
+                    else
+                        Thread.Yield();
                 }
-                FpsUpdated?.Invoke(this, new EventArgs());
-
-                if (timeToWait > 0)
-                    Thread.Sleep(timeToWait);
-                else
-                    Thread.Yield();
+                catch (Exception e)
+                {
+                    Debugger.Break();
+                }
             }
-
-            OnClose?.BeginInvoke(this, new EventArgs(), null, null);
         }
 
-        public UIntPtr ConvertAddressEndianess(UIntPtr address, int dataSize)
+        #region IDisposable Support
+        private bool disposedValue = false; // To detect redundant calls
+
+        protected virtual void Dispose(bool disposing)
         {
-            switch (dataSize)
+            if (!disposedValue)
             {
-                case 1:
-                case 2:
-                case 3:
-                    return new UIntPtr((address.ToUInt64() & ~0x03UL) | (_fixAddress[dataSize - 1] - address.ToUInt64() & 0x03UL));
-                default:
-                    return address;
+                if (disposing)
+                {
+                    if (_io != null)
+                    {
+                        _io.OnClose -= ProcessClosed;
+                        _io.Dispose();
+                    }
+                }
+
+                disposedValue = true;
             }
         }
 
-        public uint ConvertAddressEndianess(uint address, int dataSize)
+        public void Dispose()
         {
-            switch (dataSize)
-            {
-                case 1:
-                case 2:
-                case 3:
-                    return (uint)(address & ~0x03) | (_fixAddress[dataSize - 1] - address & 0x03);
-                default:
-                    return address;
-            }
+            Dispose(true);
         }
+        #endregion
     }
 }

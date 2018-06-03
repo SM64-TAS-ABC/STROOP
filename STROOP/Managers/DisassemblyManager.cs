@@ -18,7 +18,7 @@ namespace STROOP.Managers
 
         RichTextBoxEx _output;
         TextBox _textBoxStartAdd;
-        uint _lastProcessAddress;
+        uint _lastAddress;
         Button _goButton, _moreButton;
         int _currentLines = NumberOfLinesAdd;
 
@@ -85,29 +85,29 @@ namespace STROOP.Managers
             _moreButton.Visible = true;
 
             _output.Text = "";
-            _lastProcessAddress = newAddress & 0x0FFFFFFF;
+            _lastAddress = newAddress & 0x0FFFFFFF;
             DisassemblyLines(numberOfLines);
         }
 
         private void DisassemblyLines(int numberOfLines)
         {
             _output.Visible = false;
-            var instructionBytes = Config.Stream.ReadRamLittleEndian(new UIntPtr(_lastProcessAddress), 4 * numberOfLines);
-            for (int i = 0; i < numberOfLines; i++, _lastProcessAddress += 4)
+            var instructionBytes = Config.Stream.ReadRamLittleEndian((UIntPtr)_lastAddress, 4 * numberOfLines);
+            for (int i = 0; i < numberOfLines; i++, _lastAddress += 4)
             {
                 // Get next bytes
                 var nextBytes = new byte[4];
                 Array.Copy(instructionBytes, i * 4, nextBytes, 0, 4);
 
                 // Write Address
-                _output.AppendText(String.Format("0x{0:X8}: ", _lastProcessAddress | 0x80000000), Color.Blue);
+                _output.AppendText(String.Format("0x{0:X8}: ", _lastAddress | 0x80000000), Color.Blue);
 
                 // Write byte-code
                 _output.AppendText(BitConverter.ToString(nextBytes.Reverse().ToArray()).Replace('-', ' '), Color.DarkGray);
 
                 // Write Disassembly
                 uint instruction = BitConverter.ToUInt32(nextBytes, 0);
-                uint address = (uint)(((uint)_lastProcessAddress) & 0x0FFFFFFF);
+                uint address = (uint)(((uint)_lastAddress) & 0x0FFFFFFF);
                 string disassembly = "\t" + N64Disassembler.DisassembleInstruction(address, instruction);
                 _output.AppendText(disassembly, Color.Red);
 

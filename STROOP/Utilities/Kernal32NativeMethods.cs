@@ -42,10 +42,10 @@ namespace STROOP.Utilities
 
         [DllImport("kernel32.dll")]
         static extern bool ReadProcessMemory(IntPtr hProcess,
-            IntPtr lpBaseAddress, byte[] lpBuffer, IntPtr dwSize, ref int lpNumberOfBytesRead);
+            UIntPtr lpBaseAddress, byte[] lpBuffer, IntPtr dwSize, ref int lpNumberOfBytesRead);
 
         [DllImport("kernel32.dll", SetLastError = true)]
-        static extern bool WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress,
+        static extern bool WriteProcessMemory(IntPtr hProcess, UIntPtr lpBaseAddress,
             byte[] lpBuffer, IntPtr dwSize, ref int lpNumberOfBytesWritten);
         #endregion
 
@@ -60,12 +60,12 @@ namespace STROOP.Utilities
         }
 
         public static bool ProcessReadMemory(IntPtr hProcess,
-            IntPtr lpBaseAddress, byte[] lpBuffer, IntPtr dwSize, ref int lpNumberOfBytesRead)
+            UIntPtr lpBaseAddress, byte[] lpBuffer, IntPtr dwSize, ref int lpNumberOfBytesRead)
         {
             return Kernal32NativeMethods.ReadProcessMemory(hProcess, lpBaseAddress, lpBuffer, dwSize, ref lpNumberOfBytesRead);
         }
 
-        public static bool ProcessWriteMemory(IntPtr hProcess, IntPtr lpBaseAddress,
+        public static bool ProcessWriteMemory(IntPtr hProcess, UIntPtr lpBaseAddress,
             byte[] lpBuffer, IntPtr dwSize, ref int lpNumberOfBytesWritten)
         {
             return WriteProcessMemory(hProcess, lpBaseAddress, lpBuffer, dwSize, ref lpNumberOfBytesWritten);
