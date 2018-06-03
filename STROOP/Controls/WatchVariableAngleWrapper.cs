@@ -200,9 +200,9 @@ namespace STROOP.Controls
             if (settings.ChangeAngleHex)
             {
                 if (settings.ChangeAngleHexToDefault)
-                    _displayAsHex = _defaultDisplayAsHex;
+                    _setDisplayAsHex(_defaultDisplayAsHex);
                 else
-                    _displayAsHex = settings.NewAngleHex;
+                    _setDisplayAsHex(settings.NewAngleHex);
             }
         }
     }

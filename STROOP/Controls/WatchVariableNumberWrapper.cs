@@ -26,6 +26,7 @@ namespace STROOP.Controls
 
         protected readonly bool _defaultDisplayAsHex;
         protected bool _displayAsHex;
+        protected Action<bool> _setDisplayAsHex;
 
         public WatchVariableNumberWrapper(
             WatchVariable watchVar,
@@ -62,11 +63,12 @@ namespace STROOP.Controls
                 _roundingLimit);
 
             ToolStripMenuItem itemDisplayAsHex = new ToolStripMenuItem("Display as Hex");
-            itemDisplayAsHex.Click += (sender, e) =>
+            _setDisplayAsHex = (bool displayAsHex) =>
             {
-                _displayAsHex = !_displayAsHex;
-                itemDisplayAsHex.Checked = _displayAsHex;
+                _displayAsHex = displayAsHex;
+                itemDisplayAsHex.Checked = displayAsHex;
             };
+            itemDisplayAsHex.Click += (sender, e) => _setDisplayAsHex(!_displayAsHex);
             itemDisplayAsHex.Checked = _displayAsHex;
 
             _contextMenuStrip.AddToBeginningList(new ToolStripSeparator());
