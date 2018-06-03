@@ -71,11 +71,7 @@ namespace STROOP.Utilities
 
             // Check for no process
             if (newProcess == null)
-            {
-                _io = null;
-                _emulator = null;
-                return false;
-            }
+                goto Error;
 
             try
             {
@@ -86,9 +82,7 @@ namespace STROOP.Utilities
             }
             catch (Exception) // Failed to create process
             {
-                _io = null;
-                _emulator = null;
-                return false;
+                goto Error;
             }
                 
             IsEnabled = true;
@@ -96,6 +90,12 @@ namespace STROOP.Utilities
             Monitor.Exit(_mStreamProcess);
 
             return true;
+
+            Error:
+            _io = null;
+            _emulator = null;
+            Monitor.Exit(_mStreamProcess);
+            return false;
         }
 
         public void Suspend()
