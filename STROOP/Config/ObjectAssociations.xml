@@ -162,6 +162,7 @@
     <MapImage path="Wing Cap Switch Button Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xF0" base="Object">Color</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x144" base="Object">Identity</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
   </Object>
   <Object behaviorScriptAddress="0x130001CC" name="Metal Cap Switch Button" appearance="1">
     <SpawnCode gfxId="0x55"/>
@@ -169,6 +170,7 @@
     <MapImage path="Metal Cap Switch Button Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xF0" base="Object">Color</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x144" base="Object">Identity</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
   </Object>
   <Object behaviorScriptAddress="0x130001CC" name="Vanish Cap Switch Button" appearance="2">
     <SpawnCode gfxId="0x55"/>
@@ -176,6 +178,7 @@
     <MapImage path="Vanish Cap Switch Button Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xF0" base="Object">Color</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x144" base="Object">Identity</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
   </Object>
   <Object behaviorScriptAddress="0x130001CC" name="Yellow Switch Button" appearance="3">
     <SpawnCode gfxId="0x55"/>
@@ -183,6 +186,7 @@
     <MapImage path="Yellow Switch Button Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xF0" base="Object">Color</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x144" base="Object">Identity</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
   </Object>
   <Object behaviorScriptAddress="0x130001F4" name="King Bob-omb">
     <SpawnCode gfxId="0x56"/>
@@ -191,7 +195,8 @@
     <Data groupList="ObjectSpecific" type="byte" offset="0x127" base="Object" subclass="Boolean">Grabbed</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x178" base="Object">Phase</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x18C" base="Object">Phase 2</Data>
-    <Data groupList="ObjectSpecific" type="int" offset="0x150" base="Object">Talking</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x150" base="Object">Phase 3</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x184" base="Object">HP</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Escape Counter</Data>
     <Data groupList="ObjectSpecific" type="int" offsetUS="0x80361270" offsetJP="0x8035FF00" base="Relative" subclass="Boolean">Control Stick Held</Data>
@@ -836,6 +841,7 @@
     <Data groupList="ObjectSpecific" type="byte" offset="0x147" base="Object" subclass="Boolean">Steals Hat</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x127" base="Object" subclass="Boolean">Grabbed</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x1B3" base="Object" subclass="Boolean">Wearing Hat</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000F08" name="Ukiki (Steals Hat)" subType="1">
     <SpawnCode gfxId="0x56"/>
@@ -844,6 +850,7 @@
     <Data groupList="ObjectSpecific" type="byte" offset="0x147" base="Object" subclass="Boolean">Steals Hat</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x127" base="Object" subclass="Boolean">Grabbed</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x1B3" base="Object" subclass="Boolean">Wearing Hat</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000F14" name="Monkey Cage Manager">
     <SpawnCode gfxId="0x00"/>
@@ -1431,7 +1438,7 @@
     <Image path="Penguin.png"/>
     <MapImage path="Penguin Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x150" base="Object">Phase</Data>
-    <Data groupList="ObjectSpecific" type="byte" offset="0x93" base="Object">Talking Phase</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
   </Object>
   <Object behaviorScriptAddress="0x130020D8" name="Baby Penguin (Fake, Returned)">
     <SpawnCode gfxId="0x57"/>
@@ -1957,6 +1964,7 @@
     <SpawnCode gfxId="0x54"/>
     <Image path="Boo.png"/>
     <MapImage path="Boo Top.png" rotates="true"/>
+    <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Target Opaqueness</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0xFE" base="Object" subclass="Angle">Oscillation Timer</Data>
@@ -2112,6 +2120,7 @@
     <Image path="King Whomp.png"/>
     <MapImage path="King Whomp Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x150" base="Object">Phase</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x184" base="Object">HP</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x17B" base="Object" subclass="Boolean">Falling</Data>
   </Object>
@@ -2181,6 +2190,7 @@
     <SpawnCode gfxId="0x00"/>
     <Image path="Wind Particle Spawner.png"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x150" base="Object">Phase</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
     <Data groupList="ObjectSpecific" type="uint" offset="0xC8" base="Object" subclass="Angle">Blowing Angle</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002E58" name="Walking Penguin">
@@ -2213,7 +2223,7 @@
     <MapImage path="Toad Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x108" base="Object">Text</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x110" base="Object">State 2</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking Phase</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002F40" name="Star to Unlock Door">
@@ -3084,6 +3094,7 @@
     <MapImage path="Koopa Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xF8" base="Object">Movement Type</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x150" base="Object">Jump State</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xE4" base="Object">Gravity</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Blinking</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x110" base="Object">Blinking Countdown</Data>
@@ -3117,6 +3128,7 @@
     <MapImage path="Koopa Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xF8" base="Object">Movement Type</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x150" base="Object">Jump State</Data>
+    <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xE4" base="Object">Gravity</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Blinking</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x110" base="Object">Blinking Countdown</Data>
@@ -3448,6 +3460,7 @@
     <SpawnCode gfxId="0x57"/>
     <Image path="Wiggler Head.png"/>
     <MapImage path="Wiggler Head Top.png" rotates="true"/>
+    <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x108" base="Object">Countdown</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0x10E" base="Object" subclass="Angle">Target Yaw</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0xCA" base="Object" subclass="Angle">Yaw Moving</Data>
@@ -3995,6 +4008,7 @@
   <Object behaviorScriptAddress="0x130052B4" name="Eyerok Manager">
     <SpawnCode gfxId="0x00"/>
     <Image path="Eyerok Manager.png"/>
+    <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x100" base="Object">Active Hand</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Move Counter</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x104" base="Object">Pound Countdown</Data>
@@ -4031,6 +4045,7 @@
     <SpawnCode gfxId="0x57"/>
     <Image path="Penguin.png"/>
     <MapImage path="Penguin Top.png" rotates="true"/>
+    <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x1B2" base="Object" subclass="Boolean">Mario Cheated</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x1AE" base="Object" subclass="Boolean">Mario Finished First</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x1B0" base="Object" subclass="Boolean">Penguin Finished</Data>

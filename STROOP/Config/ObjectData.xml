@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ObjectData>
-  
+
   <Data groupList="Basic" type="float" offset="0xA0" base="Object" coord="X">X</Data>
   <Data groupList="Basic" type="float" offset="0xA4" base="Object" coord="Y">Y</Data>
   <Data groupList="Basic" type="float" offset="0xA8" base="Object" coord="Z">Z</Data>
@@ -82,6 +82,7 @@
   <Data groupList="Advanced" type="float" offset="0x158" base="Object">Bounce Coefficient</Data>
   <Data groupList="Advanced" type="int" offset="0x180" base="Object">Damage</Data>
   <Data groupList="Advanced" type="int" offset="0x1A0" base="Object">Native Room</Data>
+  <Data groupList="Advanced" type="short" offset="0x92" base="Object">Talking State</Data>
 
   <Data groupList="Advanced" base="Object" specialType="ObjectRngCallsPerFrame">RNG Calls/Frame</Data>
 
