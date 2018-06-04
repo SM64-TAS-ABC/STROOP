@@ -39,55 +39,55 @@ namespace STROOP.Structs
             switch (creationIndex)
             {
                 case 0:
-                    VarName = "HSPD %";
+                    VarName = "HSPD " + VarHackConfig.EscapeChar;
                     Address = MarioConfig.StructAddress + MarioConfig.HSpeedOffset;
                     MemoryType = typeof(float);
                     break;
                 case 1:
-                    VarName = "Angle %";
+                    VarName = "Angle " + VarHackConfig.EscapeChar;
                     Address = MarioConfig.StructAddress + MarioConfig.FacingYawOffset;
                     MemoryType = typeof(ushort);
                     break;
                 case 2:
-                    VarName = "HP %";
+                    VarName = "HP " + VarHackConfig.EscapeChar;
                     Address = MarioConfig.StructAddress + HudConfig.HpCountOffset;
                     MemoryType = typeof(short);
                     UseHex = true;
                     break;
                 case 3:
-                    VarName = "Floor Room %";
+                    VarName = "Floor Room " + VarHackConfig.EscapeChar;
                     Address = MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset;
                     MemoryType = typeof(byte);
                     PointerOffset = 0x05;
                     break;
                 case 4:
-                    VarName = "X %";
+                    VarName = "X " + VarHackConfig.EscapeChar;
                     Address = MarioConfig.StructAddress + MarioConfig.XOffset;
                     MemoryType = typeof(float);
                     break;
                 case 5:
-                    VarName = "Y %";
+                    VarName = "Y " + VarHackConfig.EscapeChar;
                     Address = MarioConfig.StructAddress + MarioConfig.YOffset;
                     MemoryType = typeof(float);
                     break;
                 case 6:
-                    VarName = "Z %";
+                    VarName = "Z " + VarHackConfig.EscapeChar;
                     Address = MarioConfig.StructAddress + MarioConfig.ZOffset;
                     MemoryType = typeof(float);
                     break;
                 case 7:
-                    VarName = "HOLP X %";
+                    VarName = "HOLP X " + VarHackConfig.EscapeChar;
                     Address = MarioConfig.StructAddress + MarioConfig.HolpXOffset;
                     MemoryType = typeof(float);
                     break;
                 case 8:
-                    VarName = "HOLP Y %";
+                    VarName = "HOLP Y " + VarHackConfig.EscapeChar;
                     Address = MarioConfig.StructAddress + MarioConfig.HolpYOffset;
                     MemoryType = typeof(float);
                     break;
                 case 9:
                 default:
-                    VarName = "HOLP Z %";
+                    VarName = "HOLP Z " + VarHackConfig.EscapeChar;
                     Address = MarioConfig.StructAddress + MarioConfig.HolpZOffset;
                     MemoryType = typeof(float);
                     break;

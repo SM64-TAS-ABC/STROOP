@@ -371,7 +371,7 @@ namespace STROOP.Controls
             if (_watchVar.BaseAddressType == BaseAddressTypeEnum.Triangle)
             {
                 Config.VarHackManager.AddVariable(
-                    _watchVarControl.VarName + " %",
+                    _watchVarControl.VarName + " " + VarHackConfig.EscapeChar,
                     Config.TriangleManager.TrianglePointerAddress,
                     _watchVar.MemoryType,
                     GetUseHex(),
@@ -384,7 +384,7 @@ namespace STROOP.Controls
                 {
                     string indexSuffix = addressList.Count > 1 ? (i + 1).ToString() : "";
                     Config.VarHackManager.AddVariable(
-                        _watchVarControl.VarName + indexSuffix + " %",
+                        _watchVarControl.VarName + indexSuffix + " " + VarHackConfig.EscapeChar,
                         addressList[i],
                         _watchVar.MemoryType,
                         GetUseHex(),

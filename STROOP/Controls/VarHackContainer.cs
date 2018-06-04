@@ -277,11 +277,11 @@ namespace STROOP.Controls
             if (!noNumber)
             {
                 string formatterString = useHex ? "%x" : "%d";
-                name = name.Replace("%", formatterString);
+                name = name.Replace(VarHackConfig.EscapeChar, formatterString);
             }
             if (_isSpecial)
             {
-                name = name.Replace("%", _getterFunction());
+                name = name.Replace(VarHackConfig.EscapeChar, _getterFunction());
             }
             name = StringUtilities.Cap(name, VarHackConfig.MaxStringLength);
             byte[] nameBytes = Encoding.ASCII.GetBytes(name);

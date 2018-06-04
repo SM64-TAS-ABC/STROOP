@@ -28,6 +28,8 @@ namespace STROOP.Structs.Configurations
         public static readonly int CharacterWidth = 8;
         public static readonly int CharacterHeight = 12;
 
+        public static readonly string EscapeChar = "$";
+
         public static readonly string CoinChar = Char.ConvertFromUtf32(43);
         public static readonly string MarioHeadChar = Char.ConvertFromUtf32(44);
         public static readonly string StarChar = Char.ConvertFromUtf32(45);
