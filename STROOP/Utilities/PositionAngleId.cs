@@ -13,16 +13,26 @@ namespace STROOP.Utilities
     {
         public readonly PositionAngleTypeEnum PosAngleType;
         public readonly uint? Address;
+        public readonly int? TriVertex;
 
-        public PositionAngleId(PositionAngleTypeEnum posAngleType, uint? address = null)
+        public PositionAngleId(
+            PositionAngleTypeEnum posAngleType,
+            uint? address = null,
+            int? triVertex = null)
         {
             PosAngleType = posAngleType;
             Address = address;
+            TriVertex = triVertex;
 
             bool shouldHaveAddress =
                 posAngleType == PositionAngleTypeEnum.Object ||
                 posAngleType == PositionAngleTypeEnum.ObjectHome;
             if (address.HasValue != shouldHaveAddress)
+                throw new ArgumentOutOfRangeException();
+
+            bool shouldHaveTriVertex =
+                posAngleType == PositionAngleTypeEnum.Tri;
+            if (triVertex.HasValue != shouldHaveTriVertex)
                 throw new ArgumentOutOfRangeException();
         }
 

@@ -17,5 +17,6 @@ namespace STROOP.Utilities
         Camera,
         Object,
         ObjectHome,
+        Tri,
     }
 }
