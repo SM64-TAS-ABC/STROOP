@@ -48,6 +48,9 @@
   <Data groupList="Point" base="None" specialType="SelfX" color="Blue" coord="X">Self X</Data>
   <Data groupList="Point" base="None" specialType="SelfY" color="Blue" coord="Y">Self Y</Data>
   <Data groupList="Point" base="None" specialType="SelfZ" color="Blue" coord="Z">Self Z</Data>
+
+  <Data groupList="Point" base="None" specialType="SelfAngleType" subclass="String" color="Blue">Self Angle Type</Data>
+  <Data groupList="Point" base="None" specialType="SelfAngle" subclass="Angle" type="ushort" color="Blue">Self Angle</Data>
   
   <Data groupList="Point" base="None" specialType="PointPosType" subclass="String" color="Blue">Point Pos Type</Data>
   <Data groupList="Point" base="None" specialType="PointX" color="Blue" coord="X">Point X</Data>
@@ -57,19 +60,20 @@
   <Data groupList="Point" base="None" specialType="PointAngleType" subclass="String" color="Blue">Point Angle Type</Data>
   <Data groupList="Point" base="None" specialType="PointAngle" subclass="Angle" type="ushort" color="Blue">Point Angle</Data>
 
-  <Data groupList="Point" base="None" specialType="XDistanceToPoint" color="LightBlue" coord="X">XDist to Point</Data>
-  <Data groupList="Point" base="None" specialType="YDistanceToPoint" color="LightBlue" coord="Y">YDist to Point</Data>
-  <Data groupList="Point" base="None" specialType="ZDistanceToPoint" color="LightBlue" coord="Z">ZDist to Point</Data>
-  <Data groupList="Point" base="None" specialType="HDistanceToPoint" color="LightBlue">HDist to Point</Data>
-  <Data groupList="Point" base="None" specialType="DistanceToPoint" color="LightBlue">Dist to Point</Data>
+  <Data groupList="Point" base="None" specialType="XDistanceSelfToPoint" color="LightBlue" coord="X">XDist Self to Point</Data>
+  <Data groupList="Point" base="None" specialType="YDistanceSelfToPoint" color="LightBlue" coord="Y">YDist Self to Point</Data>
+  <Data groupList="Point" base="None" specialType="ZDistanceSelfToPoint" color="LightBlue" coord="Z">ZDist Self to Point</Data>
+  <Data groupList="Point" base="None" specialType="HDistanceSelfToPoint" color="LightBlue">HDist Self to Point</Data>
+  <Data groupList="Point" base="None" specialType="DistanceSelfToPoint" color="LightBlue">Dist Self to Point</Data>
   
-  <Data groupList="Point" base="None" specialType="AngleMarioToPoint" subclass="Angle" type="ushort" color="LightBlue">Angle Mario to Point</Data>
-  <Data groupList="Point" base="None" specialType="DeltaAngleMarioToPoint" subclass="Angle" type="short" color="LightBlue">DAngle Mario to Point</Data>
-  <Data groupList="Point" base="None" specialType="AnglePointToMario" subclass="Angle" type="ushort" color="LightBlue">Angle Point to Mario</Data>
+  <Data groupList="Point" base="None" specialType="AngleSelfToPoint" subclass="Angle" type="ushort" color="LightBlue">Angle Self to Point</Data>
+  <Data groupList="Point" base="None" specialType="DeltaAngleSelfToPoint" subclass="Angle" type="short" color="LightBlue">DAngle Self to Point</Data>
+  <Data groupList="Point" base="None" specialType="AnglePointToSelf" subclass="Angle" type="ushort" color="LightBlue">Angle Point to Self</Data>
+  <Data groupList="Point" base="None" specialType="DeltaAnglePointToSelf" subclass="Angle" type="short" color="LightBlue">DAngle Point to Self</Data>
 
-  <Data groupList="Point" base="None" specialType="DeltaAngleMarioToAngle" subclass="Angle" type="short" color="LightBlue">DAngle Mario to Angle</Data>
-  <Data groupList="Point" base="None" specialType="DeltaAngleMarioToAngleTruncated" subclass="Angle" type="short" color="LightBlue">DAngle2 Mario to Angle</Data>
-  <Data groupList="Point" base="None" specialType="FDistanceToPoint" color="LightBlue">FDist to Point</Data>
-  <Data groupList="Point" base="None" specialType="SDistanceToPoint" color="LightBlue">SDist to Point</Data>
+  <Data groupList="Point" base="None" specialType="DeltaAngleSelfToAngle" subclass="Angle" type="short" color="LightBlue">DAngle Self to Angle</Data>
+  <Data groupList="Point" base="None" specialType="DeltaAngleSelfToAngleTruncated" subclass="Angle" type="short" color="LightBlue">DAngle2 Self to Angle</Data>
+  <Data groupList="Point" base="None" specialType="FDistanceSelfToPoint" color="LightBlue">FDist Self to Point</Data>
+  <Data groupList="Point" base="None" specialType="SDistanceSelfToPoint" color="LightBlue">SDist Self to Point</Data>
 
 </Data>
