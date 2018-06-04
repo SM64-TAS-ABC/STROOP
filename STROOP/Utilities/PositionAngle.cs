@@ -61,6 +61,22 @@ namespace STROOP.Utilities
                 Config.Stream.GetSingle(address + ObjectConfig.HomeZOffset));
         }
 
+        public static PositionAngle Tri(uint address, int vertex)
+        {
+            TriangleDataModel tri = new TriangleDataModel(address);
+            switch (vertex)
+            {
+                case 1:
+                    return new PositionAngle(tri.X1, tri.Y1, tri.Z1);
+                case 2:
+                    return new PositionAngle(tri.X2, tri.Y2, tri.Z2);
+                case 3:
+                    return new PositionAngle(tri.X3, tri.Y3, tri.Z3);
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
         public static PositionAngle FromId(PositionAngleId positionAngleId)
         {
             switch (positionAngleId.PosAngleType)
@@ -77,6 +93,8 @@ namespace STROOP.Utilities
                     return Object(positionAngleId.Address.Value);
                 case PositionAngleTypeEnum.ObjectHome:
                     return ObjectHome(positionAngleId.Address.Value);
+                case PositionAngleTypeEnum.Tri:
+                    return Tri(positionAngleId.Address.Value, positionAngleId.TriVertex.Value);
                 default:
                     throw new ArgumentOutOfRangeException();
             }

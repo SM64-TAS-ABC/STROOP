@@ -265,10 +265,7 @@ namespace STROOP.Utilities
                 .Trim();
             text = Regex.Replace(text, @"\s+", " ");
             string[] stringArray = text.Split(' ');
-
-            List<string> stringList = new List<string>();
-            stringList.AddRange(stringArray);
-            return stringList;
+            return new List<string>(stringArray);
         }
 
         public static List<uint> ParseHexList(string text)
