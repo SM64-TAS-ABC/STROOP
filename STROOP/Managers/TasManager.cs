@@ -27,12 +27,12 @@ namespace STROOP.Managers
         private Dictionary<uint, TasDataStruct> _dataDictionary;
         private Dictionary<uint, DataGridViewRow> _rowDictionary;
 
-        private static readonly int TABLE_INDEX_GLOBAL_TIMER = 0;
-        private static readonly int TABLE_INDEX_CURRENT_CAM_ANGLE = 1;
+        //private static readonly int TABLE_INDEX_GLOBAL_TIMER = 0;
+        //private static readonly int TABLE_INDEX_CURRENT_CAM_ANGLE = 1;
         private static readonly int TABLE_INDEX_NEXT_CAM_ANGLE = 2;
-        private static readonly int TABLE_INDEX_MARIO_FACING_ANGLE = 3;
-        private static readonly int TABLE_INDEX_MARIO_INTEND_ANGLE = 4;
-        private static readonly int TABLE_INDEX_DANGLE = 5;
+        //private static readonly int TABLE_INDEX_MARIO_FACING_ANGLE = 3;
+        //private static readonly int TABLE_INDEX_MARIO_INTEND_ANGLE = 4;
+        //private static readonly int TABLE_INDEX_DANGLE = 5;
         private static readonly int TABLE_INDEX_X_INPUT = 6;
         private static readonly int TABLE_INDEX_Y_INPUT = 7;
 

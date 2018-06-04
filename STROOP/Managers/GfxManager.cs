@@ -83,7 +83,7 @@ namespace STROOP.Managers
                     MessageBox.Show("Hitbox view hack only available on US and JP versions");
                 }
             }
-            catch (System.IO.FileNotFoundException e)
+            catch (System.IO.FileNotFoundException)
             {
                 MessageBox.Show("Hack files are missing in Resources\\Hacks folder");
             }
