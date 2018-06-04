@@ -44,7 +44,7 @@
   <Data groupList="TAS" type="short" offset="0x32" base="Mario" subclass="Angle" color="Pink">Pitch Velocity</Data>
   <Data groupList="TAS" base="None" specialType="MupenLag" color="Grey">Lag</Data>
 
-  <Data groupList="Point" base="None" specialType="SelfType" subclass="String" color="Blue">Self Type</Data>
+  <Data groupList="Point" base="None" specialType="SelfPosType" subclass="String" color="Blue">Self Pos Type</Data>
   <Data groupList="Point" base="None" specialType="SelfX" color="Blue" coord="X">Self X</Data>
   <Data groupList="Point" base="None" specialType="SelfY" color="Blue" coord="Y">Self Y</Data>
   <Data groupList="Point" base="None" specialType="SelfZ" color="Blue" coord="Z">Self Z</Data>

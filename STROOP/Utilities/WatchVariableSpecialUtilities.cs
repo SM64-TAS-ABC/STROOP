@@ -3684,7 +3684,7 @@ namespace STROOP.Structs
 
                 // Custom point
 
-                case "SelfType":
+                case "SelfPosType":
                     getterFunction = (uint dummy) =>
                     {
                         return SpecialConfig.SelfPosPosAngleId.ToString();

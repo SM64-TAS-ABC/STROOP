@@ -53,7 +53,7 @@ namespace STROOP.Structs.Configurations
 
         public static double SelfAngle
         {
-            get => SelfAnglePosAngle.Angle ?? 0;
+            get => SelfAnglePosAngle.Angle ?? Double.NaN;
         }
 
         // - Point pos
@@ -91,7 +91,7 @@ namespace STROOP.Structs.Configurations
 
         public static double PointAngle
         {
-            get => PointAnglePosAngle.Angle ?? 0;
+            get => PointAnglePosAngle.Angle ?? Double.NaN;
         }
         
         // PU vars
@@ -101,10 +101,7 @@ namespace STROOP.Structs.Configurations
 
         public static double PuHypotenuse
         {
-            get
-            {
-                return MoreMath.GetHypotenuse(PuParam1, PuParam2);
-            }
+            get => MoreMath.GetHypotenuse(PuParam1, PuParam2);
         }
 
         // Mupen vars
