@@ -1,4 +1,5 @@
-﻿using STROOP.Structs.Configurations;
+﻿using STROOP.Structs;
+using STROOP.Structs.Configurations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -208,7 +209,7 @@ namespace STROOP.Utilities
                 case BehaviorCommandType.LogicalOr:
                     {
                         short offset = (short)(0x88 + stream.GetByte(address++) * 4);
-                        ushort operand = BitConverter.ToUInt16(stream.ReadRam(address, sizeof(UInt16)), 0);
+                        ushort operand = BitConverter.ToUInt16(stream.ReadRam(address, sizeof(UInt16), EndianessType.Big), 0);
                         decoded = $"obj{GetOffsetName(offset)} |= 0x{operand:X4}";
                         break;
                     }
@@ -220,7 +221,7 @@ namespace STROOP.Utilities
                 case BehaviorCommandType.SetHitbox:
                     {
                         address += 3; // Ignored
-                        UInt32 hitboxPtr = BitConverter.ToUInt32(stream.ReadRam(address, sizeof(UInt32)), 0);
+                        UInt32 hitboxPtr = BitConverter.ToUInt32(stream.ReadRam(address, sizeof(UInt32), EndianessType.Big), 0);
                         decoded = $"obj.hitbox_ptr = 0x{hitboxPtr:X8}";
                         break;
                     }
@@ -228,7 +229,7 @@ namespace STROOP.Utilities
                 case BehaviorCommandType.SetParameter:
                     {
                         short offset = (short)(0x88 + stream.GetByte(address++) * 4);
-                        ushort operand = BitConverter.ToUInt16(stream.ReadRam(address, sizeof(UInt16)), 0);
+                        ushort operand = BitConverter.ToUInt16(stream.ReadRam(address, sizeof(UInt16), EndianessType.Big), 0);
                         decoded = $"obj{GetOffsetName(offset)} += 0x{operand:X4}";
                         break;
                     }
@@ -236,7 +237,7 @@ namespace STROOP.Utilities
                 case BehaviorCommandType.SetSightDistance:
                     {
                         short offset = (short)(0x88 + stream.GetByte(address++) * 4);
-                        ushort operand = BitConverter.ToUInt16(stream.ReadRam(address, sizeof(UInt16)), 0);
+                        ushort operand = BitConverter.ToUInt16(stream.ReadRam(address, sizeof(UInt16), EndianessType.Big), 0);
                         decoded = $"obj{GetOffsetName(offset)} = 0x{operand:X4}";
                         break;
                     }

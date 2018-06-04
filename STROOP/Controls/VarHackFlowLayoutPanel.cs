@@ -227,7 +227,7 @@ namespace STROOP.Controls
                 bytes = EMPTY_BYTES;
             }
             if (bytes == null) return;
-            Config.Stream.WriteRamLittleEndian(bytes, address);
+            Config.Stream.WriteRam(bytes, address, EndianessType.Little);
         }
 
         public void ClearVariablesInMemory()
@@ -236,7 +236,7 @@ namespace STROOP.Controls
             for (int i = 0; i < VarHackConfig.MaxPossibleVars; i++)
             {
                 uint address = VarHackConfig.VarHackMemoryAddress + (uint)i * VarHackConfig.StructSize;
-                Config.Stream.WriteRamLittleEndian(emptyBytes, address);
+                Config.Stream.WriteRam(emptyBytes, address, EndianessType.Little);
             }
         }
 

@@ -8,15 +8,11 @@ namespace STROOP.Structs
 {
     public class Emulator
     {
-        public enum EndianessType
-        {
-            Big,
-            Little
-        }
         public string Name;
         public string ProcessName;
         public uint RamStart;
         public string Dll;
-        public EndianessType Endianess;
+        public Type IOType; 
+        public EndianessType Endianess = EndianessType.Little;
     }
 }

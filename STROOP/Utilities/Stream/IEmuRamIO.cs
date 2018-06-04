@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using STROOP.Structs;
 
 namespace STROOP.Utilities
 {
@@ -13,13 +14,13 @@ namespace STROOP.Utilities
 
         bool IsSuspended { get; }
 
-        bool ReadRelative(uint address, byte[] buffer);
-        bool ReadAbsolute(UIntPtr address, byte[] buffer);
-        bool WriteRelative(uint address, byte[] buffer);
-        bool WriteAbsolute(UIntPtr address, byte[] buffer);
+        bool ReadRelative(uint address, byte[] buffer, EndianessType endianess);
+        bool ReadAbsolute(UIntPtr address, byte[] buffer, EndianessType endianess);
+        bool WriteRelative(uint address, byte[] buffer, EndianessType endianess);
+        bool WriteAbsolute(UIntPtr address, byte[] buffer, EndianessType endianess);
 
-        UIntPtr GetAbsoluteAddress(uint n64Address);
-        uint GetRelativeAddress(UIntPtr absoluteAddress);
+        UIntPtr GetAbsoluteAddress(uint n64Address, int size);
+        uint GetRelativeAddress(UIntPtr absoluteAddress, int size);
 
         event EventHandler OnClose;
     }

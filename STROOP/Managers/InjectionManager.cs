@@ -96,7 +96,7 @@ namespace STROOP.Managers
 
             // Write script
             Buffer.BlockCopy(script.Script, 0, scriptBytes, 0, scriptLength);
-            success &= Config.Stream.WriteRamLittleEndian(scriptBytes, scriptAddress);
+            success &= Config.Stream.WriteRam(scriptBytes, scriptAddress, EndianessType.Little);
 
             scriptAddress += (uint)(scriptLength);
             script.PostInstrSpace = scriptAddress;
@@ -104,15 +104,15 @@ namespace STROOP.Managers
             scriptAddress += (uint)(2*sizeof(uint));
 
             uint jumpBackToInsertPointInst = JumpToAddressInst(script.InsertAddress + 8);
-            success &= Config.Stream.WriteRamLittleEndian(BitConverter.GetBytes(jumpBackToInsertPointInst), scriptAddress);
+            success &= Config.Stream.WriteRam(BitConverter.GetBytes(jumpBackToInsertPointInst), scriptAddress, EndianessType.Little);
 
             script.Allocated = success;
             if (!script.Allocated)
                 return false;
 
             // Write jump
-            script.Allocated &= Config.Stream.WriteRamLittleEndian(prevInstBytes, script.PostInstrSpace);
-            script.Allocated &= Config.Stream.WriteRamLittleEndian(script.JumpInstBytes, script.InsertAddress);
+            script.Allocated &= Config.Stream.WriteRam(prevInstBytes, script.PostInstrSpace, EndianessType.Little);
+            script.Allocated &= Config.Stream.WriteRam(script.JumpInstBytes, script.InsertAddress, EndianessType.Little);
 
             return success;
         }

@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Config>
   <Emulators>
-    <Emulator name="Mupen 5.0 RR" processName="mupen64-rerecording" ramStart="0x008EBA80"/>
-    <Emulator name="Mupen 5.0 RR" processName="mupen64-pucrash" ramStart="0x00912300"/>
-    <Emulator name="Mupen 5.0 RR" processName="mupen64-lua" ramStart="0x00888F60"/>
-    <Emulator name="Mupen 5.0 RR" processName="mupen64-wiivc" ramStart="0x00901920"/>
-    <Emulator name="Nemu64 0.8" processName="Nemu64" ramStart="0x10020000"/>
-    <Emulator name="BizHawk" processName="EmuHawk" offsetDll="mupen64plus.dll" ramStart="0x6C370"/>
+    <Emulator name="Mupen 5.0 RR" processName="mupen64-rerecording" ramStart="0x008EBA80" endianess="little"/>
+    <Emulator name="Mupen 5.0 RR" processName="mupen64-pucrash" ramStart="0x00912300" endianess="little"/>
+    <Emulator name="Mupen 5.0 RR" processName="mupen64-lua" ramStart="0x00888F60" endianess="little"/>
+    <Emulator name="Mupen 5.0 RR" processName="mupen64-wiivc" ramStart="0x00901920" endianess="little"/>
+    <Emulator name="Nemu64 0.8" processName="Nemu64" ramStart="0x10020000" endianess="little"/>
+    <Emulator name="BizHawk" processName="EmuHawk" offsetDll="mupen64plus.dll" ramStart="0x6C370" endianess="little"/>
+    <Emulator name="Dolphin" processName="Dolphin" ramStart="0xe6a180" endianess="big" special="dolphin"/>
   </Emulators>
 
   <!-- US, JP, or PAL -->

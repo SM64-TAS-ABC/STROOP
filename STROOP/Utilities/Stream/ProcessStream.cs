@@ -59,43 +59,49 @@ namespace STROOP.Utilities
             throw obj.Exception;
         }
 
+        private readonly Dictionary<Type, Func<Process, Emulator, uint, IEmuRamIO>> _ioCreationTable = new Dictionary<Type, Func<Process, Emulator, uint, IEmuRamIO>>()
+        {
+            { typeof(WindowsProcessRamIO),  (p, e, s) => new WindowsProcessRamIO(p, e, s) },
+            { typeof(DolphinProcessIO),     (p, e, s) => new DolphinProcessIO(p, e, s) },
+        };
+
         public bool SwitchProcess(Process newProcess, Emulator emulator)
         {
-            Monitor.Enter(_mStreamProcess);
-            IsRunning = false;
-
-            // Dipose of old process
-            _io?.Dispose();
-            if (_io != null)
-                _io.OnClose -= ProcessClosed;
-
-            // Check for no process
-            if (newProcess == null)
-                goto Error;
-
-            try
+            lock (_mStreamProcess)
             {
-                // Open and set new process
-                _io = new WindowsProcessRamIO(newProcess, emulator, Config.RamSize);
-                _io.OnClose += ProcessClosed;
-                _emulator = emulator;
-            }
-            catch (Exception) // Failed to create process
-            {
-                goto Error;
-            }
-                
-            IsEnabled = true;
-            IsRunning = true;
-            Monitor.Exit(_mStreamProcess);
+                IsRunning = false;
 
-            return true;
+                // Dipose of old process
+                _io?.Dispose();
+                if (_io != null)
+                    _io.OnClose -= ProcessClosed;
 
-            Error:
-            _io = null;
-            _emulator = null;
-            Monitor.Exit(_mStreamProcess);
-            return false;
+                // Check for no process
+                if (newProcess == null)
+                    goto Error;
+
+                try
+                {
+                    // Open and set new process
+                    _io = _ioCreationTable[emulator.IOType](newProcess, emulator, Config.RamSize);
+                    _io.OnClose += ProcessClosed;
+                    _emulator = emulator;
+                }
+                catch (Exception) // Failed to create process
+                {
+                    goto Error;
+                }
+
+                IsEnabled = true;
+                IsRunning = true;
+
+                return true;
+
+                Error:
+                _io = null;
+                _emulator = null;
+                return false;
+            }
         }
 
         public void Suspend()
@@ -103,7 +109,7 @@ namespace STROOP.Utilities
             _lastUpdateBeforePausing = true;
             _io?.Suspend();
         }
-        
+
         public void Resume()
         {
             _io?.Resume();
@@ -115,14 +121,14 @@ namespace STROOP.Utilities
             OnDisconnect?.Invoke(this, new EventArgs());
         }
 
-        public UIntPtr GetAbsoluteAddress(uint relativeAddress)
+        public UIntPtr GetAbsoluteAddress(uint relativeAddress, int size = 0)
         {
-            return _io?.GetAbsoluteAddress(relativeAddress) ?? new UIntPtr(0);
+            return _io?.GetAbsoluteAddress(relativeAddress, size) ?? new UIntPtr(0);
         }
 
-        public uint GetRelativeAddress(UIntPtr relativeAddress)
+        public uint GetRelativeAddress(UIntPtr relativeAddress, int size)
         {
-            return _io?.GetRelativeAddress(relativeAddress) ?? 0;
+            return _io?.GetRelativeAddress(relativeAddress, size) ?? 0;
         }
 
         public object GetValue(Type type, uint address, bool absoluteAddress = false, uint? mask = null)
@@ -140,90 +146,109 @@ namespace STROOP.Utilities
 
         public byte GetByte(uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            byte value = ReadRamLittleEndian(new UIntPtr(address), 1, absoluteAddress)[0];
+            byte value = ReadRam((UIntPtr)address, 1, EndianessType.Little, absoluteAddress)[0];
             if (mask.HasValue) value = (byte)(value & mask.Value);
             return value;
         }
 
         public sbyte GetSByte(uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            sbyte value = (sbyte)ReadRamLittleEndian(new UIntPtr(address), 1, absoluteAddress)[0];
+            sbyte value = (sbyte)ReadRam((UIntPtr)address, 1, EndianessType.Little, absoluteAddress)[0];
             if (mask.HasValue) value = (sbyte)(value & mask.Value);
             return value;
         }
 
         public short GetInt16(uint address, bool absoluteAddress = false, uint? mask = null)
-        { 
-            short value = BitConverter.ToInt16(ReadRamLittleEndian(new UIntPtr(address), 2, absoluteAddress), 0);
+        {
+            short value = BitConverter.ToInt16(ReadRam((UIntPtr)address, 2, EndianessType.Little, absoluteAddress), 0);
             if (mask.HasValue) value = (short)(value & mask.Value);
             return value;
         }
 
         public ushort GetUInt16(uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            ushort value = BitConverter.ToUInt16(ReadRamLittleEndian(new UIntPtr(address), 2, absoluteAddress), 0);
+            ushort value = BitConverter.ToUInt16(ReadRam((UIntPtr)address, 2, EndianessType.Little, absoluteAddress), 0);
             if (mask.HasValue) value = (ushort)(value & mask.Value);
             return value;
         }
 
         public int GetInt32(uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            int value = BitConverter.ToInt32(ReadRamLittleEndian(new UIntPtr(address), 4, absoluteAddress), 0);
+            int value = BitConverter.ToInt32(ReadRam((UIntPtr)address, 4, EndianessType.Little, absoluteAddress), 0);
             if (mask.HasValue) value = (int)(value & mask.Value);
             return value;
         }
 
         public uint GetUInt32(uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            uint value = BitConverter.ToUInt32(ReadRamLittleEndian(new UIntPtr(address), 4, absoluteAddress), 0);
+            uint value = BitConverter.ToUInt32(ReadRam((UIntPtr)address, 4, EndianessType.Little, absoluteAddress), 0);
             if (mask.HasValue) value = (uint)(value & mask.Value);
             return value;
         }
 
         public float GetSingle(uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            return BitConverter.ToSingle(ReadRamLittleEndian(new UIntPtr(address), 4, absoluteAddress), 0);
+            return BitConverter.ToSingle(ReadRam((UIntPtr)address, 4, EndianessType.Little, absoluteAddress), 0);
         }
 
-        public byte[] ReadRamLittleEndian(UIntPtr address, int length, bool absoluteAddress = false)
+        public byte[] ReadRam(uint address, int length, EndianessType endianess)
+        {
+             return ReadRam((UIntPtr) address, length, endianess, false);
+        }
+
+        static readonly byte[] _swapByteOrder = new byte[] { 0x03, 0x02, 0x01, 0x00 };
+        public byte[] ReadRam(UIntPtr address, int length, EndianessType endianess, bool absoluteAddress = false)
         {
             byte[] readBytes = new byte[length];
+
+            // Get local address
             uint localAddress;
-
             if (absoluteAddress)
-                localAddress = _io?.GetRelativeAddress(address) ?? 0;
+                localAddress = _io?.GetRelativeAddress(address, length) ?? 0;
             else
-                localAddress = EndianessUtilitiies.SwapAddressEndianess(address.ToUInt32(), length);
-
+                localAddress = address.ToUInt32();
             localAddress &= ~0x80000000;
 
-            if (localAddress + length > _ram.Length)
-                return new byte[length];
-
-            Buffer.BlockCopy(_ram, (int)localAddress, readBytes, 0, length);
-            return readBytes;
-        }
-
-        readonly byte[] _fixAddress = { 0x03, 0x02, 0x01, 0x00 };
-        public byte[] ReadRam(uint address, int length, bool littleEndian = false)
-        {
-            byte[] readBytes = new byte[length];
-            address &= ~0x80000000U;
-
-            if (address + length > _ram.Length)
-                return new byte[length];
-
-            for (uint i = 0; i < length; i++, address++)
+            /// Fix endianess
+            switch (endianess)
             {
-                readBytes[i] = _ram[address & ~0x03 | _fixAddress[address & 0x03]];
+                case EndianessType.Little:
+                    // Address is not little endian, fix:
+                    localAddress = EndianessUtilitiies.SwapAddressEndianess(localAddress, length);
+
+                    if (localAddress + length > _ram.Length)
+                        break;
+
+                    Buffer.BlockCopy(_ram, (int)localAddress, readBytes, 0, length);
+                    break;
+
+                case EndianessType.Big:
+                    // Read padded if misaligned address
+                    byte[] swapBytes;
+                    uint alignedAddress = EndianessUtilitiies.AlignedAddressFloor(localAddress);
+                    if (EndianessUtilitiies.AddressIsMisaligned(localAddress))
+                        swapBytes = new byte[readBytes.Length + 4];
+                    else
+                        swapBytes = new byte[readBytes.Length];
+
+                    // Read memory
+                    Buffer.BlockCopy(_ram, (int)alignedAddress, swapBytes, 0, swapBytes.Length);
+
+                    // Copy and swap bytes
+                    int index = (int)(localAddress - alignedAddress);
+                    for (int i = 0; i < readBytes.Length; i++, index++)
+                        readBytes[i] = swapBytes[index & ~0x03 | _swapByteOrder[index & 0x03]]; // Swap bytes
+
+                    break;
             }
 
+
             return readBytes;
         }
 
-        public bool ReadProcessMemory(UIntPtr address, byte[] buffer)
+        public bool ReadProcessMemory(UIntPtr address, byte[] buffer, EndianessType endianess)
         {
-            return _io?.ReadAbsolute(address, buffer) ?? false;
+            return _io?.ReadAbsolute(address, buffer, endianess) ?? false;
         }
 
         public bool CheckReadonlyOff()
@@ -292,7 +317,7 @@ namespace STROOP.Utilities
                 byte oldValue = GetByte(address, absoluteAddress);
                 value = (byte)((oldValue & ~mask.Value) | (value & mask.Value));
             }
-            bool returnValue = WriteRamLittleEndian(new byte[] { value }, address, absoluteAddress);
+            bool returnValue = WriteRam(new byte[] { value }, (UIntPtr)address, EndianessType.Little, absoluteAddress);
             if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(byte), mask);
             return returnValue;
         }
@@ -304,7 +329,7 @@ namespace STROOP.Utilities
                 sbyte oldValue = GetSByte(address, absoluteAddress);
                 value = (sbyte)((oldValue & ~mask.Value) | (value & mask.Value));
             }
-            bool returnValue = WriteRamLittleEndian(new byte[] { (byte)value }, address, absoluteAddress);
+            bool returnValue = WriteRam(new byte[] { (byte)value }, (UIntPtr)address, EndianessType.Little, absoluteAddress);
             if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(sbyte), mask);
             return returnValue;
         }
@@ -316,7 +341,7 @@ namespace STROOP.Utilities
                 short oldValue = GetInt16(address, absoluteAddress);
                 value = (short)((oldValue & ~mask.Value) | (value & mask.Value));
             }
-            bool returnValue = WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
+            bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndianessType.Little, absoluteAddress);
             if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(short), mask);
             return returnValue;
         }
@@ -328,7 +353,7 @@ namespace STROOP.Utilities
                 ushort oldValue = GetUInt16(address, absoluteAddress);
                 value = (ushort)((oldValue & ~mask.Value) | (value & mask.Value));
             }
-            bool returnValue = WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
+            bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndianessType.Little, absoluteAddress);
             if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(ushort), mask);
             return returnValue;
         }
@@ -340,7 +365,7 @@ namespace STROOP.Utilities
                 int oldValue = GetInt32(address, absoluteAddress);
                 value = (int)((oldValue & ~mask.Value) | (value & mask.Value));
             }
-            bool returnValue = WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
+            bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndianessType.Little, absoluteAddress);
             if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(int), mask);
             return returnValue;
         }
@@ -352,19 +377,25 @@ namespace STROOP.Utilities
                 uint oldValue = GetUInt32(address, absoluteAddress);
                 value = (uint)((oldValue & ~mask.Value) | (value & mask.Value));
             }
-            bool returnValue = WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
+            bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndianessType.Little, absoluteAddress);
             if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(uint), mask);
             return returnValue;
         }
 
         public bool SetValue(float value, uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            bool returnValue = WriteRamLittleEndian(BitConverter.GetBytes(value), address, absoluteAddress);
+            bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndianessType.Little, absoluteAddress);
             if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(float), mask);
             return returnValue;
         }
 
-        public bool WriteRamLittleEndian(byte[] buffer, uint address, bool absoluteAddress = false, 
+        public bool WriteRam(byte[] buffer, uint address, EndianessType endianess,
+           int bufferStart = 0, int? length = null, bool safeWrite = true)
+        {
+            return WriteRam(buffer, (UIntPtr)address, endianess, false, bufferStart, length, safeWrite);
+        }
+
+        public bool WriteRam(byte[] buffer, UIntPtr address, EndianessType endianess, bool absoluteAddress = false, 
             int bufferStart = 0, int? length = null, bool safeWrite = true)
         {
             if (length == null)
@@ -384,74 +415,15 @@ namespace STROOP.Utilities
             // Write memory to game/process
             bool result;
             if (absoluteAddress)
-                result = _io?.WriteAbsolute((UIntPtr)address, writeBytes) ?? false;
+                result = _io?.WriteAbsolute(address, writeBytes, endianess) ?? false;
             else
-                result = _io?.WriteRelative(address, writeBytes) ?? false;
+                result = _io?.WriteRelative(address.ToUInt32(), writeBytes, endianess) ?? false;
 
             // Resume stream 
             if (safeWrite && !preSuspended)
                 _io?.Resume();
 
             return result;
-        }
-
-        public bool WriteRam(byte[] buffer, uint address, int bufferStart = 0, int? length = null, bool safeWrite = true)
-        {
-            if (length == null)
-                length = buffer.Length - bufferStart;
-
-            if (CheckReadonlyOff())
-                return false;
-
-            bool success = true;
-
-            // Attempt to pause the game before writing 
-            bool preSuspended = _io?.IsSuspended ?? false;
-            if (safeWrite)
-                _io?.Suspend();
-
-            // Take care of first alignment
-            int bufPos = bufferStart;
-            uint alignment = _fixAddress[address & 0x03] + 1U;
-            if (alignment < 4)
-            {
-                byte[] writeBytes = new byte[Math.Min(alignment, length.Value)];
-                Array.Copy(buffer, bufPos, writeBytes, 0, writeBytes.Length);
-                success &= _io?.WriteRelative(address, writeBytes.Reverse().ToArray()) ?? false;
-                length -= writeBytes.Length;
-                bufPos += writeBytes.Length;
-                address += alignment;
-            }
-
-            // Take care of middle
-            if (length >= 4)
-            {
-                byte[] writeBytes = new byte[length.Value & ~0x03];
-                for (int i = 0; i < writeBytes.Length; bufPos += 4, i += 4)
-                {
-                    writeBytes[i] = buffer[bufPos + 3];
-                    writeBytes[i + 1] = buffer[bufPos + 2];
-                    writeBytes[i + 2] = buffer[bufPos + 1];
-                    writeBytes[i + 3] = buffer[bufPos];
-                }
-                success &= _io?.WriteRelative(address, writeBytes) ?? false;
-                address += (uint)writeBytes.Length;
-                length -= writeBytes.Length;
-            }
-
-            // Take care of last
-            if (length > 0)
-            {
-                byte[] writeBytes = new byte[length.Value];
-                Array.Copy(buffer, bufPos, writeBytes, 0, writeBytes.Length);
-                success &= _io?.WriteRelative(address, writeBytes.Reverse().ToArray()) ?? false;
-            }
-
-            // Resume stream 
-            if (safeWrite && !preSuspended)
-                _io?.Resume();
-
-            return success;
         }
 
         public bool RefreshRam()
@@ -462,7 +434,7 @@ namespace STROOP.Utilities
                 if (_ram.Length != Config.RamSize)
                     _ram = new byte[Config.RamSize];
 
-                return _io?.ReadRelative(0, _ram) ?? false;
+                return _io?.ReadRelative(0, _ram, EndianessType.Little) ?? false;
             }
             catch (Exception)
             {
@@ -474,47 +446,49 @@ namespace STROOP.Utilities
         {
             Stopwatch frameStopwatch = Stopwatch.StartNew();
 
-            for (; ; )
+            for (;;)
             {
                 try {
-                    Monitor.Enter(_mStreamProcess);
-
-                    frameStopwatch.Restart();
-                    if ((!IsEnabled || !IsRunning) && !_lastUpdateBeforePausing)
-                        goto FrameLimitStreamUpdate;
-
-                    _lastUpdateBeforePausing = false;
-
-                    if (!RefreshRam())
-                        goto FrameLimitStreamUpdate;
-
-                    OnUpdate?.Invoke(this, new EventArgs());
-
-                    FrameLimitStreamUpdate:
-
-                    // Calculate delay to match correct FPS
-                    frameStopwatch.Stop();
-                    int timeToWait = (int)RefreshRateConfig.RefreshRateInterval - (int)frameStopwatch.ElapsedMilliseconds;
-                    timeToWait = Math.Max(timeToWait, 0);
-
-                    // Calculate Fps
-                    if (_fpsTimes.Count() >= 10)
+                    int timeToWait;
+                    lock (_mStreamProcess)
                     {
-                        double garbage;
-                        _fpsTimes.TryDequeue(out garbage);
-                    }
-                    _fpsTimes.Enqueue(frameStopwatch.ElapsedMilliseconds + timeToWait);
-                    FpsUpdated?.Invoke(this, new EventArgs());
 
-                    Monitor.Exit(_mStreamProcess);
+                        frameStopwatch.Restart();
+                        if ((!IsEnabled || !IsRunning) && !_lastUpdateBeforePausing)
+                            goto FrameLimitStreamUpdate;
+
+                        _lastUpdateBeforePausing = false;
+
+                        if (!RefreshRam())
+                            goto FrameLimitStreamUpdate;
+
+                        OnUpdate?.Invoke(this, new EventArgs());
+
+                        FrameLimitStreamUpdate:
+
+                        // Calculate delay to match correct FPS
+                        frameStopwatch.Stop();
+                        timeToWait = (int)RefreshRateConfig.RefreshRateInterval - (int)frameStopwatch.ElapsedMilliseconds;
+                        timeToWait = Math.Max(timeToWait, 0);
+
+                        // Calculate Fps
+                        if (_fpsTimes.Count() >= 10)
+                        {
+                            double garbage;
+                            _fpsTimes.TryDequeue(out garbage);
+                        }
+                        _fpsTimes.Enqueue(frameStopwatch.ElapsedMilliseconds + timeToWait);
+                        FpsUpdated?.Invoke(this, new EventArgs());
+                    }
 
                     if (timeToWait > 0)
                         Thread.Sleep(timeToWait);
                     else
                         Thread.Yield();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
+                    Monitor.Exit(_mStreamProcess);
                     Debugger.Break();
                 }
             }

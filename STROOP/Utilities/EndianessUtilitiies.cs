@@ -35,5 +35,57 @@ namespace STROOP.Utilities
                     return address;
             }
         }
+        
+        public static bool AddressIsMisaligned(UIntPtr address)
+        {
+            return (address.ToUInt64() & 0x03) != 0;
+        }
+
+        public static bool AddressIsMisaligned(uint address)
+        {
+            return (address & 0x03) != 0;
+        }
+
+        static readonly byte[] _bytesToAlignment = new byte[] { 0x00, 0x03, 0x02, 0x01 };
+        public static int NumberOfBytesToAlignment(UIntPtr address)
+        {
+            return _bytesToAlignment[address.ToUInt64() & 0x03];
+        }
+
+        public static uint AlignedAddressFloor(uint address)
+        {
+            return (address & ~0x03U);
+        }
+
+        public static UIntPtr AlignedAddressFloor(UIntPtr address)
+        {
+            return (UIntPtr)(address.ToUInt64() & ~0x03U);
+        }
+
+        public static uint AlignedAddressCeil(uint address)
+        {
+            return ((address & ~0x03U) + 4);
+        }
+
+        public static UIntPtr AlignedAddressCeil(UIntPtr address)
+        {
+            return (UIntPtr)((address.ToUInt64() & ~0x03U) + 4);
+        }
+
+        public static byte[] SwapByteEndianess(byte[] bytes)
+        {
+            if (bytes.Length % 4 != 0)
+                throw new ArgumentException("Bytes are not a multiple of 4");
+
+            byte[] result = new byte[bytes.Length];
+            for (int i = 0; i < bytes.Length; i += 4)
+            {
+                result[i]       = bytes[i + 3];
+                result[i + 1]   = bytes[i + 2];
+                result[i + 2]   = bytes[i + 1];
+                result[i + 3]   = bytes[i];
+            }
+            return result;
+        }
     }
 }

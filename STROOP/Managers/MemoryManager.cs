@@ -253,8 +253,8 @@ namespace STROOP.Managers
             }
 
             // read from memory
-            Behavior = new ObjectDataModel(address.Value).BehaviorCriteria;
-            byte[] bytes = Config.Stream.ReadRam(address.Value, _memorySize);
+            Behavior = new ObjectDataModel(address.Value).BehaviorCriteria; 
+            byte[] bytes = Config.Stream.ReadRam(address.Value, _memorySize, EndianessType.Big);
 
             // read settings from controls
             bool littleEndian = _checkBoxMemoryLittleEndian.Checked;

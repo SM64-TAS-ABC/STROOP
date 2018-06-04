@@ -65,13 +65,18 @@ namespace STROOP.Utilities
                     case "Emulators":
                         foreach (var subElement in element.Elements())
                         {
+                            string special = subElement.Attribute(XName.Get("special")) != null ?
+                                subElement.Attribute(XName.Get("special")).Value : null;
                             Config.Emulators.Add(new Emulator()
                             {
                                 Name = subElement.Attribute(XName.Get("name")).Value,
                                 ProcessName = subElement.Attribute(XName.Get("processName")).Value,
                                 RamStart = ParsingUtilities.ParseHex(subElement.Attribute(XName.Get("ramStart")).Value),
                                 Dll = subElement.Attribute(XName.Get("offsetDll")) != null
-                                    ? subElement.Attribute(XName.Get("offsetDll")).Value : null
+                                    ? subElement.Attribute(XName.Get("offsetDll")).Value : null,
+                                Endianess = subElement.Attribute(XName.Get("endianess")).Value == "big" 
+                                    ? EndianessType.Big : EndianessType.Little,
+                                IOType = special == "dolphin" ? typeof(DolphinProcessIO) : typeof(WindowsProcessRamIO),
                             });
                         }
                         break;

@@ -5,17 +5,18 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static STROOP.Utilities.Kernal32NativeMethods;
 
 namespace STROOP.Utilities
 {
     class WindowsProcessRamIO : IEmuRamIO
     {
-        IntPtr _processHandle;
-        Process _process;
-        bool _isSuspended = false;
-        UIntPtr _baseOffset;
-        uint _ramSize;
-        Emulator _emulator;
+        protected IntPtr _processHandle;
+        protected Process _process;
+        protected bool _isSuspended = false;
+        protected UIntPtr _baseOffset;
+        protected uint _ramSize;
+        protected Emulator _emulator;
 
         public bool IsSuspended => _isSuspended;
 
@@ -27,10 +28,21 @@ namespace STROOP.Utilities
             _emulator = emulator;
             _ramSize = ramSize;
 
-            CalculateOffset();
             _process.EnableRaisingEvents = true;
 
-            _processHandle = Kernal32NativeMethods.ProcessGetHandleFromId(0x0838, false, _process.Id);
+            ProcessAccess accessFlags = ProcessAccess.PROCESS_QUERY_LIMITED_INFORMATION | ProcessAccess.SUSPEND_RESUME 
+                | ProcessAccess.VM_OPERATION | ProcessAccess.VM_READ | ProcessAccess.VM_WRITE;
+            _processHandle = ProcessGetHandleFromId(accessFlags, false, _process.Id);
+            try
+            {
+                CalculateOffset();
+            }
+            catch (Exception e)
+            {
+                CloseProcess(_processHandle);
+                throw e;
+            }
+
             _process.Exited += _process_Exited;
         }
 
@@ -61,7 +73,7 @@ namespace STROOP.Utilities
 
         public bool Suspend()
         {
-            Kernal32NativeMethods.SuspendProcess(_process);
+            SuspendProcess(_process);
             _isSuspended = true;
             return true;
         }
@@ -69,31 +81,57 @@ namespace STROOP.Utilities
         public bool Resume()
         {
             // Resume all threads
-            Kernal32NativeMethods.ResumeProcess(_process);
+            ResumeProcess(_process);
             _isSuspended = false;
             return true;
         }
 
-        public bool ReadRelative(uint address, byte[] buffer)
+        public bool ReadRelative(uint address, byte[] buffer, EndianessType endianess)
         {
-            return ReadAbsolute(GetAbsoluteAddress(address), buffer);
+            return ReadAbsolute(GetAbsoluteAddress(address, buffer.Length), buffer, endianess);
         }
 
-        public bool ReadAbsolute(UIntPtr address, byte[] buffer)
+        static readonly byte[] _swapByteOrder = new byte[] { 0x03, 0x02, 0x01, 0x00 };
+        public bool ReadAbsolute(UIntPtr address, byte[] buffer, EndianessType endianess)
         {
             if (_process == null)
                 return false;
 
-            int numOfBytes = 0;
-            return Kernal32NativeMethods.ProcessReadMemory(_processHandle, address, buffer, (IntPtr)buffer.Length, ref numOfBytes);
+            if (_emulator.Endianess == endianess)
+            {
+                int numOfBytes = 0;
+                return ProcessReadMemory(_processHandle, address, buffer, (IntPtr)buffer.Length, ref numOfBytes);
+            }
+            else
+            {
+                // Read padded if misaligned address
+                byte[] swapBytes;
+                UIntPtr alignedAddress = EndianessUtilitiies.AlignedAddressFloor(address);
+                if (EndianessUtilitiies.AddressIsMisaligned(address))
+                    swapBytes = new byte[buffer.Length + 4];
+                else
+                    swapBytes = new byte[buffer.Length];
+
+                // Read memory
+                int numOfBytes = 0;
+                if (!ProcessReadMemory(_processHandle, alignedAddress, swapBytes, (IntPtr)swapBytes.Length, ref numOfBytes))
+                    return false;
+
+                // Copy and swap bytes
+                int index = (int)(address.ToUInt64() - alignedAddress.ToUInt64());
+                for (int i = 0; i < buffer.Length; i++, index++)
+                    buffer[i] = swapBytes[index & ~0x03 | _swapByteOrder[index & 0x03]]; // Swap bytes
+
+                return true;
+            }
         }
 
-        public bool WriteRelative(uint address, byte[] buffer)
+        public bool WriteRelative(uint address, byte[] buffer, EndianessType endianess)
         {
-            return WriteAbsolute(GetAbsoluteAddress(address), buffer);
+            return WriteAbsolute(GetAbsoluteAddress(address, buffer.Length), buffer, endianess);
         }
 
-        public bool WriteAbsolute(UIntPtr address, byte[] buffer)
+        public bool WriteAbsolute(UIntPtr address, byte[] buffer, EndianessType endianess)
         {
             int numOfBytes = 0;
 
@@ -102,19 +140,69 @@ namespace STROOP.Utilities
                 || address.ToUInt64() + (uint)buffer.Length >= _baseOffset.ToUInt64() + _ramSize)
                 return false;
 
-            return Kernal32NativeMethods.ProcessWriteMemory(_processHandle, address,
-                buffer, (IntPtr)buffer.Length, ref numOfBytes);
+            if (_emulator.Endianess == endianess)
+            {
+                return ProcessWriteMemory(_processHandle, address,
+                    buffer, (IntPtr)buffer.Length, ref numOfBytes);
+            }
+            else
+            {
+                bool success = true;
+                IEnumerable<byte> bytes = buffer;
+
+                int numberToWrite = Math.Min(EndianessUtilitiies.NumberOfBytesToAlignment(address), buffer.Length);
+                if (numberToWrite > 0)
+                {
+                    byte[] toWrite = bytes.Take(numberToWrite).Reverse().ToArray();
+                    success &= ProcessWriteMemory(_processHandle, address,
+                        toWrite, (IntPtr)toWrite.Length, ref numOfBytes);
+
+                    bytes = bytes.Skip(toWrite.Length);
+                    address = EndianessUtilitiies.AlignedAddressCeil(address);
+                }
+
+                numberToWrite = bytes.Count();
+                if (bytes.Count() >= 4)
+                {
+                    byte[] toWrite = EndianessUtilitiies.SwapByteEndianess(bytes.Take(bytes.Count() & ~0x03).ToArray());
+
+                    success &= ProcessWriteMemory(_processHandle, address,
+                        toWrite, (IntPtr)toWrite.Length, ref numOfBytes);
+
+                    bytes = bytes.Skip(toWrite.Length);
+                    address += toWrite.Length;
+                }
+
+                numberToWrite = bytes.Count();
+                if (numberToWrite > 0)
+                {
+                    byte[] toWrite = bytes.Reverse().ToArray();
+
+                    success &= ProcessWriteMemory(_processHandle, address,
+                        buffer, (IntPtr)buffer.Length, ref numOfBytes);
+                }
+
+                return success;
+            }
         }
 
-        public UIntPtr GetAbsoluteAddress(uint n64Address)
+        public UIntPtr GetAbsoluteAddress(uint n64Address, int size)
         {
             n64Address &= ~0x80000000U;
-            return (UIntPtr)(_baseOffset.ToUInt64() + n64Address);
+            UIntPtr absoluteAddress = (UIntPtr)(_baseOffset.ToUInt64() + n64Address);
+            if (_emulator.Endianess == EndianessType.Big)
+                return absoluteAddress;
+            else
+                return EndianessUtilitiies.SwapAddressEndianess(absoluteAddress, size);
         }
 
-        public uint GetRelativeAddress(UIntPtr absoluteAddress)
+        public uint GetRelativeAddress(UIntPtr absoluteAddress, int size)
         {
-            return 0x80000000 | (uint)(absoluteAddress.ToUInt64() - _baseOffset.ToUInt64());
+            uint n64address = 0x80000000 | (uint)(absoluteAddress.ToUInt64() - _baseOffset.ToUInt64());
+            if (_emulator.Endianess == EndianessType.Big)
+                return n64address;
+            else
+                return EndianessUtilitiies.SwapAddressEndianess(n64address, size);
         }
 
         #region IDisposable Support
@@ -126,11 +214,13 @@ namespace STROOP.Utilities
             {
                 if (disposing)
                 {
+                    if (IsSuspended)
+                        Resume();
                     _process.Exited -= _process_Exited;
                 }
 
                 // Close old process
-                Kernal32NativeMethods.CloseProcess(_processHandle);
+                CloseProcess(_processHandle);
 
                 disposedValue = true;
             }
