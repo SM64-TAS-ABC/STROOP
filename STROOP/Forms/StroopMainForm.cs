@@ -448,7 +448,7 @@ namespace STROOP
 
         private void _sm64Stream_FpsUpdated(object sender, EventArgs e)
         {
-            Invoke(new Action(() =>
+            BeginInvoke(new Action(() =>
             {
                 labelFpsCounter.Text = "FPS: " + (int)Config.Stream.FpsInPractice;
             }));
@@ -683,7 +683,7 @@ namespace STROOP
 
         private void buttonDisconnect_Click(object sender, EventArgs e)
         {
-            Config.Stream.SwitchProcess(null, null);
+            Task.Run(() => Config.Stream.SwitchProcess(null, null));
             panelConnect.Size = this.Size;
             panelConnect.Visible = true;
         }
@@ -720,6 +720,23 @@ namespace STROOP
         public void SwitchTab(string name)
         {
             tabControlMain.SelectTab(name);
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (Config.Stream != null)
+            {
+                Config.Stream.OnUpdate -= OnUpdate;
+                Config.Stream.FpsUpdated -= _sm64Stream_FpsUpdated;
+                Config.Stream.OnDisconnect -= _sm64Stream_OnDisconnect;
+                Config.Stream.WarnReadonlyOff -= _sm64Stream_WarnReadonlyOff;
+                Config.Stream.Dispose();
+                e.Cancel = true;
+                Hide();
+                return;
+            }
+            
+            base.OnFormClosing(e);
         }
     }
 }
