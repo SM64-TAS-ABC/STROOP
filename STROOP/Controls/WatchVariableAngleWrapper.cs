@@ -52,7 +52,9 @@ namespace STROOP.Controls
 
             _truncateToMultipleOf16 = false;
 
-            _constrainToOneRevolution = type == typeof(ushort) || type == typeof(short);
+            _constrainToOneRevolution =
+                displayType != null && TypeUtilities.TypeSize[displayType] == 2 &&
+                watchVar.MemoryType != null && TypeUtilities.TypeSize[watchVar.MemoryType] == 4;
 
             AddAngleContextMenuStripItems();
         }
