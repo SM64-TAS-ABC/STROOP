@@ -275,20 +275,23 @@ namespace STROOP.Managers
             _richTextBoxMemoryValues.Text = FormatValues(bytes, type, littleEndian, useHex, useObj);
             _currentValueTexts.ForEach(valueText =>
             {
-                if (valueText.OverlapsData(_objectPrecursors))
+                // Mem tab var
+                if (valueText.OverlapsData(_memTabPrecursors))
                 {
                     _richTextBoxMemoryValues.SetBackColor(
-                        valueText.StringIndex, valueText.StringSize, Color.LightPink);
+                        valueText.StringIndex, valueText.StringSize, Color.LightBlue);
                 }
+                // Specific object var
                 else if (valueText.OverlapsData(_objectSpecificPrecursors))
                 {
                     _richTextBoxMemoryValues.SetBackColor(
                         valueText.StringIndex, valueText.StringSize, Color.LightGreen);
                 }
-                else if (valueText.OverlapsData(_memTabPrecursors))
+                // Generic object var
+                else if (valueText.OverlapsData(_objectPrecursors))
                 {
                     _richTextBoxMemoryValues.SetBackColor(
-                        valueText.StringIndex, valueText.StringSize, Color.LightBlue);
+                        valueText.StringIndex, valueText.StringSize, Color.LightPink);
                 }
             });
             _richTextBoxMemoryValues.SelectionStart = initialSelectionStart;

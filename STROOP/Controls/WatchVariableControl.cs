@@ -280,6 +280,7 @@ namespace STROOP.Controls
             bool isQKeyHeld = Keyboard.IsKeyDown(Key.Q);
             bool isXKeyHeld = Keyboard.IsKeyDown(Key.X);
             bool isTKeyHeld = Keyboard.IsKeyDown(Key.T);
+            bool isMKeyHeld = Keyboard.IsKeyDown(Key.M);
             bool isDeletishKeyHeld = KeyboardUtilities.IsDeletishKeyHeld();
             bool isBacktickHeld = Keyboard.IsKeyDown(Key.OemTilde);
             bool isZHeld = Keyboard.IsKeyDown(Key.Z);
@@ -381,6 +382,12 @@ namespace STROOP.Controls
             if (isTKeyHeld)
             {
                 AddToTab(Config.TasManager, false, false);
+                return;
+            }
+
+            if (isMKeyHeld)
+            {
+                AddToTab(Config.MemoryManager, false, false);
                 return;
             }
 
