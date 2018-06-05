@@ -171,6 +171,7 @@ namespace STROOP.Controls
             int? roundingLimit,
             bool? useHex,
             bool? invertBool,
+            bool? isYaw,
             WatchVariableCoordinate? coordinate,
             List<VariableGroup> groupList,
             List<uint> fixedAddresses)
@@ -205,7 +206,7 @@ namespace STROOP.Controls
 
             // Create watch var wrapper
             _watchVarWrapper = WatchVariableWrapper.CreateWatchVariableWrapper(
-                watchVar, this, subclass, displayType, roundingLimit, useHex, invertBool, coordinate);
+                watchVar, this, subclass, displayType, roundingLimit, useHex, invertBool, isYaw, coordinate);
 
             // Initialize context menu strip
             _valueTextboxOriginalContextMenuStrip = _valueTextBox.ContextMenuStrip;

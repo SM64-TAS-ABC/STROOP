@@ -237,6 +237,7 @@ namespace STROOP.Managers
                     null /* roundingLimit */,
                     hexValue,
                     null /* invertBool */,
+                    null /* isYaw */,
                     null /* coordinate */,
                     new List<VariableGroup>());
             }

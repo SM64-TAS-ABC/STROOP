@@ -35,10 +35,13 @@ namespace STROOP.Controls
             }
         }
 
+        private readonly bool _isYaw;
+
         public WatchVariableAngleWrapper(
             WatchVariable watchVar,
             WatchVariableControl watchVarControl,
-            Type displayType)
+            Type displayType,
+            bool? isYaw)
             : base(watchVar, watchVarControl, 0)
         {
             Type type = displayType ?? _watchVar.MemoryType;
@@ -55,6 +58,8 @@ namespace STROOP.Controls
             _constrainToOneRevolution =
                 displayType != null && TypeUtilities.TypeSize[displayType] == 2 &&
                 watchVar.MemoryType != null && TypeUtilities.TypeSize[watchVar.MemoryType] == 4;
+
+            _isYaw = isYaw ?? DEFAULT_IS_YAW;
 
             AddAngleContextMenuStripItems();
         }

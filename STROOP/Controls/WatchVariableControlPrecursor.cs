@@ -23,6 +23,7 @@ namespace STROOP.Controls
         public readonly int? RoundingLimit;
         public readonly bool? UseHex;
         public readonly bool? InvertBool;
+        public readonly bool? IsYaw;
         public readonly WatchVariableCoordinate? Coordinate;
         public readonly List<VariableGroup> GroupList;
         public readonly List<uint> FixedAddresses;
@@ -36,6 +37,7 @@ namespace STROOP.Controls
             int? roundingLimit,
             bool? useHex,
             bool? invertBool,
+            bool? isYaw,
             WatchVariableCoordinate? coordinate,
             List<VariableGroup> groupList,
             List<uint> fixedAddresses = null)
@@ -48,6 +50,7 @@ namespace STROOP.Controls
             RoundingLimit = roundingLimit;
             UseHex = useHex;
             InvertBool = invertBool;
+            IsYaw = isYaw;
             Coordinate = coordinate;
             GroupList = groupList;
             FixedAddresses = fixedAddresses;
@@ -92,6 +95,8 @@ namespace STROOP.Controls
                 bool.Parse(element.Attribute(XName.Get("useHex")).Value) : (bool?)null;
             InvertBool = element.Attribute(XName.Get("invertBool")) != null ?
                 bool.Parse(element.Attribute(XName.Get("invertBool")).Value) : (bool?)null;
+            IsYaw = (element.Attribute(XName.Get("yaw")) != null) ?
+                bool.Parse(element.Attribute(XName.Get("yaw")).Value) : (bool?)null;
             Coordinate = element.Attribute(XName.Get("coord")) != null ?
                 WatchVariableUtilities.GetCoordinate(element.Attribute(XName.Get("coord")).Value) : (WatchVariableCoordinate?)null;
             FixedAddresses = element.Attribute(XName.Get("fixed")) != null ?
@@ -163,6 +168,19 @@ namespace STROOP.Controls
                 throw new ArgumentOutOfRangeException("invertBool must be used with var subclass Boolean");
             }
 
+            if (IsYaw.HasValue)
+            {
+                if (IsYaw.Value == false)
+                {
+                    throw new ArgumentOutOfRangeException("setting yaw to false is redundant");
+                }
+
+                if (Subclass != WatchVariableSubclass.Angle)
+                {
+                    throw new ArgumentOutOfRangeException("yaw must be used with var subclass Angle");
+                }
+            }
+
             if (Coordinate.HasValue && (Subclass == WatchVariableSubclass.String))
             {
                 throw new ArgumentOutOfRangeException("coordinate cannot be used with var subclass String");
@@ -195,6 +213,7 @@ namespace STROOP.Controls
                 RoundingLimit,
                 UseHex,
                 InvertBool,
+                IsYaw,
                 Coordinate,
                 newVariableGroupList ?? GroupList,
                 newFixedAddresses ?? FixedAddresses);

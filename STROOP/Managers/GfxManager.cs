@@ -326,6 +326,7 @@ namespace STROOP.Managers
                 (type == "uint" || type == "ushort") ? true : (bool?)null,
                 null /* invertBool */,
                 null /* coordinate */,
+                null /* isYaw */,
                 new List<Structs.VariableGroup>());
             return precursor;
         }

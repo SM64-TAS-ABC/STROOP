@@ -19,6 +19,7 @@ namespace STROOP.Controls
         protected const int DEFAULT_ROUNDING_LIMIT = 3;
         protected const bool DEFAULT_DISPLAY_AS_HEX = false;
         protected const bool DEFAULT_USE_CHECKBOX = false;
+        protected const bool DEFAULT_IS_YAW = false;
 
         // Main objects
         protected readonly WatchVariable _watchVar;
@@ -47,6 +48,7 @@ namespace STROOP.Controls
             int? roundingLimit,
             bool? useHex,
             bool? invertBool,
+            bool? isYaw,
             WatchVariableCoordinate? coordinate)
         {
             switch (subclass)
@@ -64,7 +66,7 @@ namespace STROOP.Controls
                         coordinate);
 
                 case WatchVariableSubclass.Angle:
-                    return new WatchVariableAngleWrapper(watchVar, watchVarControl, displayType);
+                    return new WatchVariableAngleWrapper(watchVar, watchVarControl, displayType, isYaw);
 
                 case WatchVariableSubclass.Object:
                     return new WatchVariableObjectWrapper(watchVar, watchVarControl);
