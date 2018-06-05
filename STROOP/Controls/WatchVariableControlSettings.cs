@@ -35,6 +35,10 @@ namespace STROOP.Controls
         public readonly bool ChangeAngleSignedToDefault;
         public readonly bool NewAngleSigned;
 
+        public readonly bool ChangeYawSigned;
+        public readonly bool ChangeYawSignedToDefault;
+        public readonly bool NewYawSigned;
+
         public readonly bool ChangeAngleUnits;
         public readonly bool ChangeAngleUnitsToDefault;
         public readonly AngleUnitType NewAngleUnits;
@@ -50,6 +54,9 @@ namespace STROOP.Controls
             bool changeAngleSigned = false,
             bool changeAngleSignedToDefault = false,
             bool newAngleSigned = false,
+            bool changeYawSigned = false,
+            bool changeYawSignedToDefault = false,
+            bool newYawSigned = false,
             bool changeAngleUnits = false,
             bool changeAngleUnitsToDefault = false,
             AngleUnitType newAngleUnits = AngleUnitType.InGameUnits,
@@ -64,6 +71,10 @@ namespace STROOP.Controls
             ChangeAngleSigned = changeAngleSigned;
             ChangeAngleSignedToDefault = changeAngleSignedToDefault;
             NewAngleSigned = newAngleSigned;
+
+            ChangeYawSigned = changeYawSigned;
+            ChangeYawSignedToDefault = changeYawSignedToDefault;
+            NewYawSigned = newYawSigned;
 
             ChangeAngleUnits = changeAngleUnits;
             ChangeAngleUnitsToDefault = changeAngleUnitsToDefault;

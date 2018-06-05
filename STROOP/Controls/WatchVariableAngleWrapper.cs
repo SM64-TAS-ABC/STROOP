@@ -203,6 +203,13 @@ namespace STROOP.Controls
                 else
                     _setSigned(settings.NewAngleSigned);
             }
+            if (settings.ChangeYawSigned && _isYaw)
+            {
+                if (settings.ChangeYawSignedToDefault)
+                    _setSigned(_defaultSigned);
+                else
+                    _setSigned(settings.NewYawSigned);
+            }
             if (settings.ChangeAngleUnits)
             {
                 if (settings.ChangeAngleUnitsToDefault)
