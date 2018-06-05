@@ -84,6 +84,8 @@ namespace STROOP.Controls
             GroupList = WatchVariableUtilities.ParseVariableGroupList(element.Attribute(XName.Get("groupList"))?.Value);
             BackgroundColor = (element.Attribute(XName.Get("color")) != null) ?
                 ColorUtilities.GetColorFromString(element.Attribute(XName.Get("color")).Value) : (Color?)null;
+            string displayTypeName = (element.Attribute(XName.Get("display"))?.Value);
+            DisplayType = displayTypeName != null ? TypeUtilities.StringToType[displayTypeName] : null;
             RoundingLimit = (element.Attribute(XName.Get("round")) != null) ?
                 ParsingUtilities.ParseInt(element.Attribute(XName.Get("round")).Value) : (int?)null;
             UseHex = (element.Attribute(XName.Get("useHex")) != null) ?
