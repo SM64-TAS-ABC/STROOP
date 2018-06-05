@@ -139,9 +139,9 @@
     <SpawnCode gfxId="0x0D"/>
     <Image path="WF Big Pole.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13000144" name="Pole Behavior">
+  <Object behaviorScriptAddress="0x13000144" name="Pole">
     <SpawnCode gfxId="0x00"/>
-    <Image path="Pole Behavior.png"/>
+    <Image path="Pole.png"/>
   </Object>
   <Object behaviorScriptAddress="0x13000174" name="THI Wiggler's Cave Cover (Large)">
     <SpawnCode gfxId="0x36"/>
