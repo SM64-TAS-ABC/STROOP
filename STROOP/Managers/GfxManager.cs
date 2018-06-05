@@ -321,6 +321,7 @@ namespace STROOP.Managers
                 watchVar,
                 subclass,
                 color,
+                null /* displayType */,
                 null /* roundingLimit */,
                 (type == "uint" || type == "ushort") ? true : (bool?)null,
                 null /* invertBool */,

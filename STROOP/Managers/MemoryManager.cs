@@ -233,6 +233,7 @@ namespace STROOP.Managers
                     watchVar,
                     subclass,
                     null /* backgroundColor */,
+                    null /* displayType */,
                     null /* roundingLimit */,
                     hexValue,
                     null /* invertBool */,

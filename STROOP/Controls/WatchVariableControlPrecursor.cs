@@ -19,6 +19,7 @@ namespace STROOP.Controls
         public readonly WatchVariable WatchVar;
         public readonly WatchVariableSubclass Subclass;
         public readonly Color? BackgroundColor;
+        public readonly Type DisplayType;
         public readonly int? RoundingLimit;
         public readonly bool? UseHex;
         public readonly bool? InvertBool;
@@ -31,6 +32,7 @@ namespace STROOP.Controls
             WatchVariable watchVar,
             WatchVariableSubclass subclass,
             Color? backgroundColor,
+            Type displayType,
             int? roundingLimit,
             bool? useHex,
             bool? invertBool,
@@ -42,6 +44,7 @@ namespace STROOP.Controls
             WatchVar = watchVar;
             Subclass = subclass;
             BackgroundColor = backgroundColor;
+            DisplayType = displayType;
             RoundingLimit = roundingLimit;
             UseHex = useHex;
             InvertBool = invertBool;
@@ -116,6 +119,18 @@ namespace STROOP.Controls
             if (Subclass == WatchVariableSubclass.Triangle && WatchVar.MemoryType != typeof(uint) && !WatchVar.IsSpecial)
             {
                 throw new ArgumentOutOfRangeException("Triangle vars must have type uint");
+            }
+
+            if (DisplayType != null)
+            {
+                if (Subclass != WatchVariableSubclass.Angle)
+                {
+                    throw new ArgumentOutOfRangeException("DisplayType is only valid for Angle");
+                }
+                if (DisplayType != typeof(ushort) && DisplayType != typeof(short) && DisplayType != typeof(uint) && DisplayType != typeof(int))
+                {
+                    throw new ArgumentOutOfRangeException("DisplayType for Angle must be either ushort/short/uint/int");
+                }
             }
 
             if (UseHex.HasValue && (Subclass == WatchVariableSubclass.String))
