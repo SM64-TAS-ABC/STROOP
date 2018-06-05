@@ -16,18 +16,6 @@ namespace STROOP.Utilities
             return value;
         }
 
-        public static string FormatByMemory(object number, int? numDigits = null, bool usePrefix = true)
-        {
-            byte[] bytes = TypeUtilities.GetBytes(number);
-            List<byte> byteList = new List<byte>(bytes);
-            byteList.Reverse();
-            List<string> stringList = byteList.ConvertAll(b => String.Format("{0:X2}", b));
-            string byteString = String.Join("", stringList);
-            if (numDigits.HasValue) byteString = StringUtilities.ExactLength(byteString, numDigits.Value, true, '0');
-            string prefix = usePrefix ? "0x" : "";
-            return prefix + byteString;
-        }
-
         public static string FormatValue(object number, int? numDigits = null, bool usePrefix = true)
         {
             if (!TypeUtilities.IsNumber(number)) throw new ArgumentOutOfRangeException();
