@@ -43,6 +43,7 @@ namespace STROOP.Controls
             WatchVariable watchVar,
             WatchVariableControl watchVarControl,
             WatchVariableSubclass subclass,
+            Type displayType,
             int? roundingLimit,
             bool? useHex,
             bool? invertBool,
@@ -63,7 +64,7 @@ namespace STROOP.Controls
                         coordinate);
 
                 case WatchVariableSubclass.Angle:
-                    return new WatchVariableAngleWrapper(watchVar, watchVarControl);
+                    return new WatchVariableAngleWrapper(watchVar, watchVarControl, displayType);
 
                 case WatchVariableSubclass.Object:
                     return new WatchVariableObjectWrapper(watchVar, watchVarControl);

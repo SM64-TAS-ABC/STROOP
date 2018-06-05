@@ -167,6 +167,7 @@ namespace STROOP.Controls
             WatchVariable watchVar,
             WatchVariableSubclass subclass,
             Color? backgroundColor,
+            Type displayType,
             int? roundingLimit,
             bool? useHex,
             bool? invertBool,
@@ -204,7 +205,7 @@ namespace STROOP.Controls
 
             // Create watch var wrapper
             _watchVarWrapper = WatchVariableWrapper.CreateWatchVariableWrapper(
-                watchVar, this, subclass, roundingLimit, useHex, invertBool, coordinate);
+                watchVar, this, subclass, displayType, roundingLimit, useHex, invertBool, coordinate);
 
             // Initialize context menu strip
             _valueTextboxOriginalContextMenuStrip = _valueTextBox.ContextMenuStrip;

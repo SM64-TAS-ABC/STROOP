@@ -129,7 +129,10 @@ namespace STROOP.Controls
                 {
                     throw new ArgumentOutOfRangeException("DisplayType is only valid for Angle");
                 }
-                if (DisplayType != typeof(ushort) && DisplayType != typeof(short) && DisplayType != typeof(uint) && DisplayType != typeof(int))
+                if (DisplayType != typeof(ushort) &&
+                    DisplayType != typeof(short) &&
+                    DisplayType != typeof(uint) &&
+                    DisplayType != typeof(int))
                 {
                     throw new ArgumentOutOfRangeException("DisplayType for Angle must be either ushort/short/uint/int");
                 }
@@ -183,6 +186,7 @@ namespace STROOP.Controls
                 WatchVar,
                 Subclass,
                 newColor ?? BackgroundColor,
+                DisplayType,
                 RoundingLimit,
                 UseHex,
                 InvertBool,

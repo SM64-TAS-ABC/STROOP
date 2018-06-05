@@ -37,17 +37,22 @@ namespace STROOP.Controls
 
         public WatchVariableAngleWrapper(
             WatchVariable watchVar,
-            WatchVariableControl watchVarControl)
+            WatchVariableControl watchVarControl,
+            Type displayType)
             : base(watchVar, watchVarControl, 0)
         {
-            _defaultSigned = _watchVar.SignedType.Value;
+            Type type = displayType ?? _watchVar.MemoryType;
+            if (type == null) throw new ArgumentOutOfRangeException();
+
+            _defaultSigned = type == typeof(short) || type == typeof(int);
             _signed = _defaultSigned;
 
             _defaultAngleUnitType = AngleUnitType.InGameUnits;
             _angleUnitType = _defaultAngleUnitType;
 
             _truncateToMultipleOf16 = false;
-            _constrainToOneRevolution = false;
+
+            _constrainToOneRevolution = type == typeof(ushort) || type == typeof(short);
 
             AddAngleContextMenuStripItems();
         }
