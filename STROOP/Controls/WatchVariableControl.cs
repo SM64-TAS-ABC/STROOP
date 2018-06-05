@@ -134,6 +134,8 @@ namespace STROOP.Controls
 
         public List<uint> FixedAddressList;
 
+        private int _settingsLevel = 0;
+
         private static readonly Image _lockedImage = Properties.Resources.img_lock;
         private static readonly Image _someLockedImage = Properties.Resources.img_lock_grey;
         private static readonly Image _disabledLockImage = Properties.Resources.lock_blue;
@@ -472,10 +474,21 @@ namespace STROOP.Controls
 
             _watchVarWrapper.UpdateItemCheckStates();
 
+            UpdateSettings();
             UpdateFlush();
             UpdateSize();
             UpdateColor();
             UpdatePictureBoxes();
+        }
+
+        private void UpdateSettings()
+        {
+            if (_settingsLevel < WatchVariableSettingsManager.GetSettingsLevel())
+            {
+                WatchVariableSettingsManager.GetSettingsToApply(_settingsLevel)
+                    .ForEach(settings => ApplySettings(settings));
+                _settingsLevel = WatchVariableSettingsManager.GetSettingsLevel();
+            }
         }
 
         private void UpdatePictureBoxes()
