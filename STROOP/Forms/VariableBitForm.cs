@@ -98,7 +98,7 @@ namespace STROOP.Forms
             else
             {
                 _textBoxDecValue.Text = value.ToString();
-                _textBoxHexValue.Text = HexUtilities.Format(value, _watchVar.NibbleCount.Value);
+                _textBoxHexValue.Text = HexUtilities.FormatMemory(value, _watchVar.NibbleCount.Value);
                 _textBoxBinaryValue.Text = String.Join(" ", _bytes.ToList().ConvertAll(b => b.GetBinary()));
             }
         }

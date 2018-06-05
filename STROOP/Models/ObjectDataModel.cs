@@ -288,7 +288,7 @@ namespace STROOP.Models
 
         public override string ToString()
         {
-            return BehaviorAssociation.Name + " " + HexUtilities.Format(Address);
+            return BehaviorAssociation.Name + " " + HexUtilities.FormatValue(Address);
         }
     }
 }

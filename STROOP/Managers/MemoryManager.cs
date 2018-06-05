@@ -229,7 +229,7 @@ namespace STROOP.Managers
                     (uint) ByteIndex,
                     null /* mask */);
                 return new WatchVariableControlPrecursor(
-                    typeString + " " + HexUtilities.Format(ByteIndex),
+                    typeString + " " + HexUtilities.FormatValue(ByteIndex),
                     watchVar,
                     subclass,
                     null /* backgroundColor */,
@@ -247,7 +247,7 @@ namespace STROOP.Managers
             uint? address = Address;
             if (!address.HasValue)
             {
-                _textBoxMemoryObjAddress.Text = HexUtilities.Format(0, 8);
+                _textBoxMemoryObjAddress.Text = HexUtilities.FormatValue(0, 8);
                 _richTextBoxMemoryAddresses.Text = "";
                 _richTextBoxMemoryValues.Text = "";
                 return;
@@ -266,7 +266,7 @@ namespace STROOP.Managers
             bool useObj = _checkBoxMemoryObj.Checked;
 
             // update control text
-            _textBoxMemoryObjAddress.Text = HexUtilities.Format(address.Value, 8);
+            _textBoxMemoryObjAddress.Text = HexUtilities.FormatValue(address.Value, 8);
             _richTextBoxMemoryAddresses.Text = FormatAddresses(startAddress, _memorySize);
 
             // highlight value texts
@@ -305,7 +305,7 @@ namespace STROOP.Managers
                 builder.Append(whiteSpace);
 
                 uint address = startAddress + (uint)i;
-                builder.Append(HexUtilities.Format(address, 8));
+                builder.Append(HexUtilities.FormatValue(address, 8));
             }
             return builder.ToString();
         }

@@ -162,10 +162,10 @@ namespace STROOP
             itemRevive.Click += (sender, e) => ButtonUtilities.ReviveObject(new List<ObjectDataModel>() { CurrentObject });
 
             ToolStripMenuItem itemCopyAddress = new ToolStripMenuItem("Copy Address");
-            itemCopyAddress.Click += (sender, e) => Clipboard.SetText(HexUtilities.Format(CurrentObject.Address));
+            itemCopyAddress.Click += (sender, e) => Clipboard.SetText(HexUtilities.FormatValue(CurrentObject.Address));
 
             ToolStripMenuItem itemCopyGraphics = new ToolStripMenuItem("Copy Graphics");
-            itemCopyGraphics.Click += (sender, e) => Clipboard.SetText(HexUtilities.Format(CurrentObject.GraphicsID));
+            itemCopyGraphics.Click += (sender, e) => Clipboard.SetText(HexUtilities.FormatValue(CurrentObject.GraphicsID));
 
             ToolStripMenuItem itemPasteGraphics = new ToolStripMenuItem("Paste Graphics");
             itemPasteGraphics.Click += (sender, e) =>

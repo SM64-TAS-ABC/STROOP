@@ -419,7 +419,7 @@ namespace STROOP.Managers
                     if (showHex)
                     {
                         object hexNumber = Config.Stream.GetValue(unsignedByteType, addr);
-                        string hexString = HexUtilities.Format(hexNumber, 2 * typeSize);
+                        string hexString = HexUtilities.FormatValue(hexNumber, 2 * typeSize);
                         value = hexString + "\t" + value;
                     }
                     values.Add(value);

@@ -31,7 +31,7 @@ namespace STROOP.Models
 
         public int Index { get => _byteIndex; }
         public string Dec { get => _byteValue.ToString(); set { SetDec(value); NotifyChange(true); } }
-        public string Hex { get => HexUtilities.Format(_byteValue, 2, false); set { SetHex(value); NotifyChange(true); } }
+        public string Hex { get => HexUtilities.FormatValue(_byteValue, 2, false); set { SetHex(value); NotifyChange(true); } }
         public string Binary { get => GetBinary(); set { SetBinary(value); NotifyChange(true); } }
         public bool Bit7 { get => GetBit(7); set { SetBit(7, value); NotifyChange(true); } }
         public bool Bit6 { get => GetBit(6); set { SetBit(6, value); NotifyChange(true); } }

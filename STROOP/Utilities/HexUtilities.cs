@@ -7,14 +7,6 @@ namespace STROOP.Utilities
 {
     public static class HexUtilities
     {
-        public static string Format(object number, int? numDigits = null, bool usePrefix = true)
-        {
-            if (number is float || number is double)
-                return FormatByMemory(number, numDigits, usePrefix);
-            else
-                return FormatByValue(number, numDigits, usePrefix);
-        }
-
         public static string FormatByValue(object number, int? numDigits = null, bool usePrefix = true)
         {
             string numDigitsString = numDigits.HasValue ? numDigits.Value.ToString() : "";
