@@ -77,7 +77,7 @@ namespace STROOP.Managers
                 VariableGroup.Advanced,
             };
 
-        public TriangleManager(Control tabControl, List<WatchVariableControlPrecursor> variables, WatchVariableFlowLayoutPanel watchVariablePanel) 
+        public TriangleManager(Control tabControl, List<WatchVariableControlPrecursor> variables, WatchVariableFlowLayoutPanel watchVariablePanel)
             : base(variables, watchVariablePanel, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
         {
             _triangleCache = new Dictionary<uint, TriangleDataModel>();
@@ -131,7 +131,7 @@ namespace STROOP.Managers
 
             (splitContainerTriangles.Panel1.Controls["buttonAnnihilateTriangle"] as Button).Click
                 += (sender, e) => ButtonUtilities.AnnihilateTriangle(_triangleAddress);
-            
+
             var trianglePosGroupBox = splitContainerTriangles.Panel1.Controls["groupBoxTrianglePos"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
@@ -272,37 +272,23 @@ namespace STROOP.Managers
             infoForm.Show();
         }
 
-        List<(int, int, float)> inputList = new List<(int, int, float)>();
+        private void ShowTriangleData()
+        {
+            InfoForm infoForm = new InfoForm();
+            infoForm.SetTriangleData(_triangleData, _repeatFirstVertexCheckbox.Checked);
+            infoForm.Show();
+        }
 
         private void ShowTriangleVertices()
         {
-            // NOTHING
-        }
-
-        private void ShowTriangleData()
-        {
-            string output = "";
-            foreach (var input in inputList)
-            {
-                output += input.Item1 + ", " + input.Item2 + ", " + Convert.ToDouble(input.Item3) + "f,\r\n";
-            }
-            InfoForm.ShowValue(output);
+            InfoForm infoForm = new InfoForm();
+            infoForm.SetTriangleVertices(_triangleData);
+            infoForm.Show();
         }
 
         private void ClearTriangleData()
         {
-            inputList.Clear();
-        }
-
-        private void RecordData()
-        {
-            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-            if (marioZ != -500 && !inputList.Any(input => input.Item3 == marioZ))
-            {
-                sbyte controlStickH = (sbyte)Config.Stream.GetByte(InputConfig.BufferedInputAddress + InputConfig.ControlStickXOffset);
-                sbyte controlStickV = (sbyte)Config.Stream.GetByte(InputConfig.BufferedInputAddress + InputConfig.ControlStickYOffset);
-                inputList.Add((controlStickH, controlStickV, marioZ));
-            }
+            _triangleData.Clear();
         }
 
         private void Mode_Click(object sender, EventArgs e, TriangleMode mode)
@@ -377,14 +363,16 @@ namespace STROOP.Managers
                 ButtonUtilities.NeutralizeTriangle(TriangleAddress);
             }
 
-            if (_recordTriangleDataCheckbox.Checked)
+            if (_recordTriangleDataCheckbox.Checked && TriangleAddress != 0)
             {
-                RecordData();
+                short[] coordinates = GetTriangleCoordinates();
+                bool hasAlready = _triangleData.Any(coords => Enumerable.SequenceEqual(coords, coordinates));
+                if (!hasAlready) _triangleData.Add(coordinates);
             }
 
             if (!updateView) return;
 
-            _recordTriangleCountLabel.Text = inputList.Count.ToString();
+            _recordTriangleCountLabel.Text = _triangleData.Count.ToString();
 
             base.Update(updateView);
         }
