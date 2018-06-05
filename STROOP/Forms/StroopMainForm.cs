@@ -75,6 +75,8 @@ namespace STROOP
                 {
                     "Enable TASer Settings",
                     "Test Something",
+                    "Signed Yaw",
+                    "Unsigned Yaw",
                 },
                 new List<Action>()
                 {
@@ -88,6 +90,10 @@ namespace STROOP
                         tabControlMain.SelectedTab = tabPageTas;
                     },
                     () => TestUtilities.TestSomething(),
+                    () => WatchVariableControlSettingsManager.AddSettings(
+                        new WatchVariableControlSettings(changeYawSigned: true, newYawSigned: true)),
+                    () => WatchVariableControlSettingsManager.AddSettings(
+                        new WatchVariableControlSettings(changeYawSigned: true, newYawSigned: false)),
                 });
             ToolStripMenuItem disableLockingItem = new ToolStripMenuItem("Disable Locking");
             disableLockingItem.Click += (se, ev) =>

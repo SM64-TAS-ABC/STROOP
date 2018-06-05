@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace STROOP.Structs
 {
-    public static class WatchVariableSettingsManager
+    public static class WatchVariableControlSettingsManager
     {
         private static List<WatchVariableControlSettings> settingsList =
             new List<WatchVariableControlSettings>();

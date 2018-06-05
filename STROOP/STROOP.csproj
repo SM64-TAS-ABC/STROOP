@@ -325,7 +325,7 @@
     <Compile Include="Managers\DecompilerManager.cs" />
     <Compile Include="Managers\CustomManager.cs" />
     <Compile Include="Managers\ScriptManager.cs" />
-    <Compile Include="Managers\WatchVariableSettingsManager.cs" />
+    <Compile Include="Managers\WatchVariableControlSettingsManager.cs" />
     <Compile Include="Managers\WaterManager.cs" />
     <Compile Include="Managers\ModelManager.cs" />
     <Compile Include="Managers\DebugManager.cs" />

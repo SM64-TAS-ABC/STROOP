@@ -483,11 +483,11 @@ namespace STROOP.Controls
 
         private void UpdateSettings()
         {
-            if (_settingsLevel < WatchVariableSettingsManager.GetSettingsLevel())
+            if (_settingsLevel < WatchVariableControlSettingsManager.GetSettingsLevel())
             {
-                WatchVariableSettingsManager.GetSettingsToApply(_settingsLevel)
+                WatchVariableControlSettingsManager.GetSettingsToApply(_settingsLevel)
                     .ForEach(settings => ApplySettings(settings));
-                _settingsLevel = WatchVariableSettingsManager.GetSettingsLevel();
+                _settingsLevel = WatchVariableControlSettingsManager.GetSettingsLevel();
             }
         }
 
