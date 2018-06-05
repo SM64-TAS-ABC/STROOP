@@ -7,19 +7,12 @@ namespace STROOP.Utilities
 {
     public static class HexUtilities
     {
-        public static string FormatByValue(object number, int? numDigits = null, bool usePrefix = true)
-        {
-            string numDigitsString = numDigits.HasValue ? numDigits.Value.ToString() : "";
-            string prefix = usePrefix ? "0x" : "";
-            return prefix + String.Format("{0:X" + numDigitsString + "}", number);
-        }
-
         public static object FormatByValueIfInteger(object value, int? numDigits = null, bool usePrefix = true)
         {
             int? intValueNullable = ParsingUtilities.ParseIntNullable(value);
-            if (intValueNullable.HasValue) return FormatByValue(intValueNullable.Value, numDigits, usePrefix);
+            if (intValueNullable.HasValue) return FormatValue(intValueNullable.Value, numDigits, usePrefix);
             uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(value);
-            if (uintValueNullable.HasValue) return FormatByValue(uintValueNullable.Value, numDigits, usePrefix);
+            if (uintValueNullable.HasValue) return FormatValue(uintValueNullable.Value, numDigits, usePrefix);
             return value;
         }
 

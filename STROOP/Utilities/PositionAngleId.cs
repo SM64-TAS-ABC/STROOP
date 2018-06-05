@@ -39,7 +39,7 @@ namespace STROOP.Utilities
 
         public override string ToString()
         {
-            string addressString = Address.HasValue ? " " + HexUtilities.FormatByValue(Address.Value, 8) : "";
+            string addressString = Address.HasValue ? " " + HexUtilities.FormatValue(Address.Value, 8) : "";
             string triVertexString = TriVertex.HasValue ? " V" + TriVertex.Value : "";
             return PosAngleType + addressString + triVertexString;
         }
