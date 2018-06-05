@@ -54,15 +54,15 @@
   <Data groupList="Advanced" base="Object" specialType="ObjectDistanceToHome">Dist Obj to Home</Data>
 
   <Data groupList="Advanced" type="ushort" offset="0x0162" base="Object" subclass="Angle">"Angle to Mario"</Data>
-  <Data groupList="Intermediate" base="Object" specialType="AngleObjectToMario" subclass="Angle" type="ushort">Angle Obj to Mario</Data>
-  <Data groupList="Intermediate" base="Object" specialType="DeltaAngleObjectToMario" subclass="Angle" type="short">DAngle Obj to Mario</Data>
-  <Data groupList="Advanced" base="Object" specialType="InGameAngleObjectToMario" subclass="Angle" type="ushort">IG Angle Obj to Mario</Data>
-  <Data groupList="Advanced" base="Object" specialType="InGameDeltaAngleObjectToMario" subclass="Angle" type="short">IG DAngle Obj to Mario</Data>
-  <Data groupList="Intermediate" base="Object" specialType="AngleMarioToObject" subclass="Angle" type="ushort">Angle Mario to Obj</Data>
-  <Data groupList="Intermediate" base="Object" specialType="DeltaAngleMarioToObject" subclass="Angle" type="short">DAngle Mario to Obj</Data>
-  <Data groupList="Advanced" base="Object" specialType="AngleObjectToHome" subclass="Angle" type="ushort">Angle Obj to Home</Data>
-  <Data groupList="Advanced" base="Object" specialType="DeltaAngleObjectToHome" subclass="Angle" type="short">DAngle Obj to Home</Data>
-  <Data groupList="Advanced" base="Object" specialType="AngleHomeToObject" subclass="Angle" type="ushort">Angle Home to Obj</Data>
+  <Data groupList="Intermediate" base="Object" specialType="AngleObjectToMario" subclass="Angle" display="ushort">Angle Obj to Mario</Data>
+  <Data groupList="Intermediate" base="Object" specialType="DeltaAngleObjectToMario" subclass="Angle" display="short">DAngle Obj to Mario</Data>
+  <Data groupList="Advanced" base="Object" specialType="InGameAngleObjectToMario" subclass="Angle" display="ushort">IG Angle Obj to Mario</Data>
+  <Data groupList="Advanced" base="Object" specialType="InGameDeltaAngleObjectToMario" subclass="Angle" display="short">IG DAngle Obj to Mario</Data>
+  <Data groupList="Intermediate" base="Object" specialType="AngleMarioToObject" subclass="Angle" display="ushort">Angle Mario to Obj</Data>
+  <Data groupList="Intermediate" base="Object" specialType="DeltaAngleMarioToObject" subclass="Angle" display="short">DAngle Mario to Obj</Data>
+  <Data groupList="Advanced" base="Object" specialType="AngleObjectToHome" subclass="Angle" display="ushort">Angle Obj to Home</Data>
+  <Data groupList="Advanced" base="Object" specialType="DeltaAngleObjectToHome" subclass="Angle" display="short">DAngle Obj to Home</Data>
+  <Data groupList="Advanced" base="Object" specialType="AngleHomeToObject" subclass="Angle" display="ushort">Angle Home to Obj</Data>
   
   <Data groupList="Advanced" type="uint" offset="0x218" base="Object" useHex="true">Hitbox Pointer</Data>
   <Data groupList="Advanced" type="float" offset="0x1f8" base="Object">Hitbox Radius</Data>
@@ -72,7 +72,7 @@
   <Data groupList="Intermediate" base="Object" specialType="MarioHitboxAboveObject">Mario Hitbox Above</Data>
   <Data groupList="Intermediate" base="Object" specialType="MarioHitboxBelowObject">Mario Hitbox Below</Data>
   <Data groupList="Intermediate" base="Object" specialType="MarioHitboxOverlapsObject" subclass="Boolean">Mario Hitbox Overlap</Data>
-  <Data groupList="Advanced" base="Object" specialType="MarioPunchAngleAway" subclass="Angle" type="short">Punch Angle Away</Data>
+  <Data groupList="Advanced" base="Object" specialType="MarioPunchAngleAway" subclass="Angle" display="short">Punch Angle Away</Data>
 
   <Data groupList="Advanced" type="float" offset="0x128" base="Object">Min Wall Dist</Data>
   <Data groupList="Advanced" type="float" offset="0x0194" base="Object">Tangible Dist</Data>

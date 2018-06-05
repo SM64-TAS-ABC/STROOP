@@ -10,7 +10,7 @@
 
   <Data groupList="Basic" type="ushort" offset="0x2E" base="Mario" subclass="Angle" color="Red">Yaw Facing</Data>
   <Data groupList="Basic" type="ushort" offset="0x24" base="Mario" subclass="Angle" color="Red">Yaw Intended</Data>
-  <Data groupList="Basic" base="None" specialType="DeltaYawIntendedFacing" subclass="Angle" type="short" color="Red">DYaw Intend-Face</Data>
+  <Data groupList="Basic" base="None" specialType="DeltaYawIntendedFacing" subclass="Angle" display="short" color="Red">DYaw Intend-Face</Data>
 
   <Data groupList="Advanced" type="int" offsetUS="0x8032D5D4" offsetJP="0x8032C694" base="Relative" color="Green">Global Timer</Data>
   <Data groupList="Advanced" type="ushort" offset="0xFC" base="Camera" subclass="Angle" color="Green">Cent Angle</Data>
@@ -25,7 +25,7 @@
   <Data groupList="TAS" base="None" specialType="QFrameCountEstimate" color="Yellow">QFrames Est.</Data>
   <Data groupList="TAS" base="Mario" offset="0x2E" type="ushort" subclass="Angle" color="Red">Yaw Facing</Data>
   <Data groupList="TAS" base="Mario" offset="0x24" type="ushort" subclass="Angle" color="Red">Yaw Intended</Data>
-  <Data groupList="TAS" base="None" type="short" specialType="DeltaYawIntendedFacing" subclass="Angle" color="Red">DYaw Intend-Face</Data>
+  <Data groupList="TAS" base="None" display="short" specialType="DeltaYawIntendedFacing" subclass="Angle" color="Red">DYaw Intend-Face</Data>
   <Data groupList="TAS" base="Mario" offset="0x3C" type="float" color="Red" coord="X">Mario X</Data>
   <Data groupList="TAS" base="Mario" offset="0x40" type="float" color="Red" coord="Y">Mario Y</Data>
   <Data groupList="TAS" base="Mario" offset="0x44" type="float" color="Red" coord="Z">Mario Z</Data>
@@ -50,7 +50,7 @@
   <Data groupList="Point" base="None" specialType="SelfZ" color="Blue" coord="Z">Self Z</Data>
 
   <Data groupList="Point" base="None" specialType="SelfAngleType" subclass="String" color="Blue">Self Angle Type</Data>
-  <Data groupList="Point" base="None" specialType="SelfAngle" subclass="Angle" type="ushort" color="Blue">Self Angle</Data>
+  <Data groupList="Point" base="None" specialType="SelfAngle" subclass="Angle" display="ushort" color="Blue">Self Angle</Data>
   
   <Data groupList="Point" base="None" specialType="PointPosType" subclass="String" color="Blue">Point Pos Type</Data>
   <Data groupList="Point" base="None" specialType="PointX" color="Blue" coord="X">Point X</Data>
@@ -58,7 +58,7 @@
   <Data groupList="Point" base="None" specialType="PointZ" color="Blue" coord="Z">Point Z</Data>
 
   <Data groupList="Point" base="None" specialType="PointAngleType" subclass="String" color="Blue">Point Angle Type</Data>
-  <Data groupList="Point" base="None" specialType="PointAngle" subclass="Angle" type="ushort" color="Blue">Point Angle</Data>
+  <Data groupList="Point" base="None" specialType="PointAngle" subclass="Angle" display="ushort" color="Blue">Point Angle</Data>
 
   <Data groupList="Point" base="None" specialType="XDistanceSelfToPoint" color="LightBlue" coord="X">XDist Self to Point</Data>
   <Data groupList="Point" base="None" specialType="YDistanceSelfToPoint" color="LightBlue" coord="Y">YDist Self to Point</Data>
@@ -66,13 +66,14 @@
   <Data groupList="Point" base="None" specialType="HDistanceSelfToPoint" color="LightBlue">HDist Self to Point</Data>
   <Data groupList="Point" base="None" specialType="DistanceSelfToPoint" color="LightBlue">Dist Self to Point</Data>
   
-  <Data groupList="Point" base="None" specialType="AngleSelfToPoint" subclass="Angle" type="ushort" color="LightBlue">Angle Self to Point</Data>
-  <Data groupList="Point" base="None" specialType="DeltaAngleSelfToPoint" subclass="Angle" type="short" color="LightBlue">DAngle Self to Point</Data>
-  <Data groupList="Point" base="None" specialType="AnglePointToSelf" subclass="Angle" type="ushort" color="LightBlue">Angle Point to Self</Data>
-  <Data groupList="Point" base="None" specialType="DeltaAnglePointToSelf" subclass="Angle" type="short" color="LightBlue">DAngle Point to Self</Data>
+  <Data groupList="Point" base="None" specialType="AngleSelfToPoint" subclass="Angle" display="ushort" color="LightBlue">Angle Self to Point</Data>
+  <Data groupList="Point" base="None" specialType="DeltaAngleSelfToPoint" subclass="Angle" display="short" color="LightBlue">DAngle Self to Point</Data>
+  <Data groupList="Point" base="None" specialType="AnglePointToSelf" subclass="Angle" display="ushort" color="LightBlue">Angle Point to Self</Data>
+  <Data groupList="Point" base="None" specialType="DeltaAnglePointToSelf" subclass="Angle" display="short" color="LightBlue">DAngle Point to Self</Data>
 
-  <Data groupList="Point" base="None" specialType="DeltaAngleSelfToAngle" subclass="Angle" type="short" color="LightBlue">DAngle Self to Angle</Data>
-  <Data groupList="Point" base="None" specialType="DeltaAngleSelfToAngleTruncated" subclass="Angle" type="short" color="LightBlue">DAngle2 Self to Angle</Data>
+  <Data groupList="Point" base="None" specialType="DeltaAngleSelfToAngle" subclass="Angle" display="short" color="LightBlue">DAngle Self to Angle</Data>
+  <Data groupList="Point" base="None" specialType="DeltaAngleSelfToAngleTruncated" subclass="Angle" display="short" color="LightBlue">DAngle2 Self to Angle</Data>
+  
   <Data groupList="Point" base="None" specialType="FDistanceSelfToPoint" color="LightBlue">FDist Self to Point</Data>
   <Data groupList="Point" base="None" specialType="SDistanceSelfToPoint" color="LightBlue">SDist Self to Point</Data>
 

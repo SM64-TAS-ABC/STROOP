@@ -102,14 +102,19 @@ namespace STROOP.Controls
 
         private void VerifyState()
         {
-            if (Subclass == WatchVariableSubclass.Angle && WatchVar.SpecialType != null)
+            if (WatchVar.IsSpecial != (WatchVar.MemoryType == null))
             {
-                if (WatchVar.MemoryType != typeof(ushort) &&
-                    WatchVar.MemoryType != typeof(short) &&
-                    WatchVar.MemoryType != typeof(uint) &&
-                    WatchVar.MemoryType != typeof(int))
+                throw new ArgumentOutOfRangeException("Watch vars have a memory type iff they're special");
+            }
+
+            if (Subclass == WatchVariableSubclass.Angle && WatchVar.IsSpecial)
+            {
+                if (DisplayType != typeof(ushort) &&
+                    DisplayType != typeof(short) &&
+                    DisplayType != typeof(uint) &&
+                    DisplayType != typeof(int))
                 {
-                    throw new ArgumentOutOfRangeException("Special angle vars must have a good type");
+                    throw new ArgumentOutOfRangeException("Special angle vars must have a display type");
                 }
             }
 
