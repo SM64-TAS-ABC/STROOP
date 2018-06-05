@@ -9,18 +9,14 @@ namespace STROOP.Utilities
     {
         public static string FormatValue(object number, int? numDigits = null, bool usePrefix = true)
         {
-            if (!TypeUtilities.IsNumber(number)) throw new ArgumentOutOfRangeException();
-
-            object numberInteger = number;
-            if (number is float floatValue) numberInteger = Math.Round(floatValue);
-            if (number is double doubleValue) numberInteger = Math.Round(doubleValue);
+            if (!TypeUtilities.IsIntegerNumber(number)) throw new ArgumentOutOfRangeException();
 
             string numDigitsString = numDigits.HasValue ? numDigits.Value.ToString() : "";
             string prefix = usePrefix ? "0x" : "";
-            return prefix + String.Format("{0:X" + numDigitsString + "}", numberInteger);
+            return prefix + String.Format("{0:X" + numDigitsString + "}", number);
         }
 
-        public static object FormatValueOfInteger(object number, int? numDigits = null, bool usePrefix = true)
+        public static object FormatValueAsInteger(object number, int? numDigits = null, bool usePrefix = true)
         {
             if (!TypeUtilities.IsNumber(number)) throw new ArgumentOutOfRangeException();
 

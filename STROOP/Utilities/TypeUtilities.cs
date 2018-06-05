@@ -170,6 +170,16 @@ namespace STROOP.Structs
                    obj is double;
         }
 
+        public static bool IsIntegerNumber(object obj)
+        {
+            return obj is byte ||
+                   obj is sbyte ||
+                   obj is short ||
+                   obj is ushort ||
+                   obj is int ||
+                   obj is uint;
+        }
+
         public static byte[] ConvertHexStringToByteArray(string stringValue, bool swapEndianness)
         {
             if (stringValue == null || stringValue.Length % 2 == 1)
