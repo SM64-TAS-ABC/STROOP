@@ -7,15 +7,6 @@ namespace STROOP.Utilities
 {
     public static class HexUtilities
     {
-        public static object FormatByValueIfInteger(object value, int? numDigits = null, bool usePrefix = true)
-        {
-            int? intValueNullable = ParsingUtilities.ParseIntNullable(value);
-            if (intValueNullable.HasValue) return FormatValue(intValueNullable.Value, numDigits, usePrefix);
-            uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(value);
-            if (uintValueNullable.HasValue) return FormatValue(uintValueNullable.Value, numDigits, usePrefix);
-            return value;
-        }
-
         public static string FormatValue(object number, int? numDigits = null, bool usePrefix = true)
         {
             if (!TypeUtilities.IsNumber(number)) throw new ArgumentOutOfRangeException();
@@ -27,6 +18,21 @@ namespace STROOP.Utilities
             string numDigitsString = numDigits.HasValue ? numDigits.Value.ToString() : "";
             string prefix = usePrefix ? "0x" : "";
             return prefix + String.Format("{0:X" + numDigitsString + "}", numberInteger);
+        }
+
+        public static object FormatValueOfInteger(object number, int? numDigits = null, bool usePrefix = true)
+        {
+            if (!TypeUtilities.IsNumber(number)) throw new ArgumentOutOfRangeException();
+
+            object numberInteger = number;
+            if (number is float floatValue) numberInteger = Math.Round(floatValue);
+            if (number is double doubleValue) numberInteger = Math.Round(doubleValue);
+
+            int? intValueNullable = ParsingUtilities.ParseIntNullable(numberInteger);
+            if (intValueNullable.HasValue) return FormatValue(intValueNullable.Value, numDigits, usePrefix);
+            uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(numberInteger);
+            if (uintValueNullable.HasValue) return FormatValue(uintValueNullable.Value, numDigits, usePrefix);
+            return number;
         }
 
         public static string FormatMemory(object number, int? numDigits = null, bool usePrefix = true)
