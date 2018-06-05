@@ -1,6 +1,7 @@
 ﻿using STROOP.Forms;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -220,7 +221,14 @@ namespace STROOP.Controls
 
         private void ApplySettings(WatchVariableControlSettings settings)
         {
-            _watchVarControls.ForEach(control => control.ApplySettings(settings));
+            if (KeyboardUtilities.IsCtrlHeld())
+            {
+                WatchVariableControlSettingsManager.AddSettings(settings);
+            }
+            else
+            {
+                _watchVarControls.ForEach(control => control.ApplySettings(settings));
+            }
         }
 
         public void AddVariable(WatchVariableControl watchVarControl)
