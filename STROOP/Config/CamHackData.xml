@@ -10,6 +10,6 @@
   <Data type="float" offset="0x14" base="CamHack" coord="Y">Focus Y</Data>
   <Data type="float" offset="0x18" base="CamHack" coord="Z">Focus Z</Data>
   <Data type="float" offset="0x20" base="CamHack">Radius</Data>
-  <Data type="short" offset="0x1E" base="CamHack" subclass="Angle">Theta</Data>
+  <Data type="short" offset="0x1E" base="CamHack" subclass="Angle" yaw="true">Theta</Data>
   <Data type="float" offset="0x24" base="CamHack">Relative Height</Data>
 </CamHackData>

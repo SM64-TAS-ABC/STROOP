@@ -10,13 +10,13 @@
   <Data groupList="Custom" type="float" offset="0x44" base="Mario" coord="Z">Mario Z</Data>
   <Data groupList="Custom" type="float" offset="0x4C" base="Mario">Mario V Speed</Data>
   <Data groupList="Custom" type="float" offset="0x54" base="Mario">Mario H Speed</Data>
-  <Data groupList="Custom" type="ushort" offset="0x2E" base="Mario" subclass="Angle">Mario Yaw Facing</Data>
+  <Data groupList="Custom" type="ushort" offset="0x2E" base="Mario" subclass="Angle" yaw="true">Mario Yaw Facing</Data>
 
   <Data groupList="Custom" type="float" offset="0xA0" base="Object" coord="X">Object X</Data>
   <Data groupList="Custom" type="float" offset="0xA4" base="Object" coord="Y">Object Y</Data>
   <Data groupList="Custom" type="float" offset="0xA8" base="Object" coord="Z">Object Z</Data>
   <Data groupList="Custom" type="float" offset="0xB0" base="Object">Object V Speed</Data>
   <Data groupList="Custom" type="float" offset="0xB8" base="Object">Object H Speed</Data>
-  <Data groupList="Custom" type="int" display="ushort" offset="0xD4" base="Object" subclass="Angle">Object Yaw Facing</Data>
+  <Data groupList="Custom" type="int" display="ushort" offset="0xD4" base="Object" subclass="Angle" yaw="true">Object Yaw Facing</Data>
 
 </Data>

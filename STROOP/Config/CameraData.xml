@@ -12,11 +12,11 @@
   <Data type="float" offset="0xA4" base="Camera" coord="X">Camera Target X</Data>
   <Data type="float" offset="0xA8" base="Camera" coord="Y">Camera Target Y</Data>
   <Data type="float" offset="0xAC" base="Camera" coord="Z">Camera Target Z</Data>
-  <Data type="ushort" offset="0xCE" base="Camera" subclass="Angle">Camera Yaw</Data>
+  <Data type="ushort" offset="0xCE" base="Camera" subclass="Angle" yaw="true">Camera Yaw</Data>
   <Data type="ushort" offset="0xCC" base="Camera" subclass="Angle">Camera Pitch</Data>
-  <Data type="ushort" offset="0x160" base="Camera" subclass="Angle">Fixed Cent Angle</Data>
-  <Data type="ushort" offset="0xFE" base="Camera" subclass="Angle">Target Cent Angle</Data>
-  <Data type="ushort" offset="0xFC" base="Camera" subclass="Angle">Cent Angle</Data>
+  <Data type="ushort" offset="0x160" base="Camera" subclass="Angle" yaw="true">Fixed Cent Angle</Data>
+  <Data type="ushort" offset="0xFE" base="Camera" subclass="Angle" yaw="true">Target Cent Angle</Data>
+  <Data type="ushort" offset="0xFC" base="Camera" subclass="Angle" yaw="true">Cent Angle</Data>
   <Data type="float" offset="0x80" base="Camera" coord="X">Camera Focus X</Data>
   <Data type="float" offset="0x84" base="Camera" coord="Y">Camera Focus Y</Data>
   <Data type="float" offset="0x88" base="Camera" coord="Z">Camera Focus Z</Data>
