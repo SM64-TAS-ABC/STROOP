@@ -3605,7 +3605,7 @@ namespace STROOP.Structs
                         if (numValuesToShow >= 4) builder.Append(hours + "h ");
                         if (numValuesToShow >= 3) builder.Append(minutes + "m ");
                         if (numValuesToShow >= 2) builder.Append(seconds + "s ");
-                        if (numValuesToShow >= 1) builder.Append(frames + "f");
+                        if (numValuesToShow >= 1) builder.Append(String.Format("{0:D2}", frames) + "f");
                         return builder.ToString();
                     };
                     break;
