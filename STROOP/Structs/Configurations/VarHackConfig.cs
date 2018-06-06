@@ -25,8 +25,8 @@ namespace STROOP.Structs.Configurations
         public static readonly int DefaultYPos = 192;
         public static readonly int DefaultYDelta = 17;
 
-        public static readonly int CharacterWidth = 8;
-        public static readonly int CharacterHeight = 12;
+        public static readonly int CharacterWidth = 12;
+        public static readonly int CharacterHeight = 16;
 
         public static readonly string EscapeChar = "$";
 

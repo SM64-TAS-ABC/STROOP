@@ -242,19 +242,37 @@ namespace STROOP.Controls
 
         public (VarHackContainer, VarHackContainer) GetHexIntVersions()
         {
+            string name = GetCurrentName();
+            string name1 = name.Replace(VarHackConfig.EscapeChar, "%04x");
+            string name2 = "%04x";
+
+            uint address = GetCurrentAddress() ?? 0;
+            uint address1 = address;
+            uint address2 = address + 2;
+
+            int index = name.IndexOf(VarHackConfig.EscapeChar);
+            if (index == -1) index = 0;
+            int xPos = GetCurrentXPosition() ?? 0;
+            int xPos1 = xPos;
+            int xPos2 = xPos + (index + 4) * VarHackConfig.CharacterWidth;
+
+            int yPos = GetCurrentYPosition() ?? 0;
+            int yPos1 = yPos;
+            int yPos2 = yPos;
+
             VarHackContainer v1 = new VarHackContainer(
                 _varHackPanel,
                 0,
                 false /* useDefaults */,
                 null /* specialTypeIn */,
                 true /* noNumIn */,
-                null /* varNameIn */,
-                null /* addressIn */,
-                null /* memoryTypeIn */,
-                null /* useHexIn */,
+                name1 /* varNameIn */,
+                address1 /* addressIn */,
+                typeof(ushort) /* memoryTypeIn */,
+                true /* useHexIn */,
                 null /* pointerOffsetIn */,
-                null /* xPosIn */,
-                null /* yPosIn */);
+                xPos1 /* xPosIn */,
+                yPos1 /* yPosIn */);
 
             VarHackContainer v2 = new VarHackContainer(
                 _varHackPanel,
@@ -262,13 +280,13 @@ namespace STROOP.Controls
                 false /* useDefaults */,
                 null /* specialTypeIn */,
                 true /* noNumIn */,
-                null /* varNameIn */,
-                null /* addressIn */,
-                null /* memoryTypeIn */,
-                null /* useHexIn */,
+                name2 /* varNameIn */,
+                address2 /* addressIn */,
+                typeof(ushort) /* memoryTypeIn */,
+                true /* useHexIn */,
                 null /* pointerOffsetIn */,
-                null /* xPosIn */,
-                null /* yPosIn */);
+                xPos2 /* xPosIn */,
+                yPos2 /* yPosIn */);
 
             return (v1, v2);
         }
