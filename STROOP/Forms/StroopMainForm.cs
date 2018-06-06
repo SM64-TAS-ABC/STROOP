@@ -325,6 +325,7 @@ namespace STROOP
             // Read configuration
             loadingForm.UpdateStatus("Loading main configuration", statusNum++);
             XmlConfigParser.OpenConfig(@"Config/Config.xml");
+            XmlConfigParser.OpenSavedSettings(@"Config/SavedSettings.xml");
             loadingForm.UpdateStatus("Loading Miscellaneous Data", statusNum++);
             _miscData = XmlConfigParser.OpenWatchVariableControlPrecursors(@"Config/MiscData.xml", "MiscDataSchema.xsd");
             loadingForm.UpdateStatus("Loading Object Data", statusNum++);

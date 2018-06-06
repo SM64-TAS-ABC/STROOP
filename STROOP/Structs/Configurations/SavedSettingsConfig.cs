@@ -9,5 +9,10 @@ namespace STROOP.Structs.Configurations
     public static class SavedSettingsConfig
     {
         public static bool YawSigned;
+
+        public static void SaveSettings()
+        {
+            
+        }
     }
 }

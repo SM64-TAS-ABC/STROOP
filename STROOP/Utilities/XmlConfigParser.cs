@@ -93,6 +93,31 @@ namespace STROOP.Utilities
             }
         }
 
+        public static void OpenSavedSettings(string path)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // Create schema set
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
+            schemaSet.Add("http://tempuri.org/ConfigSchema.xsd", "ConfigSchema.xsd");
+            schemaSet.Compile();
+
+            // Load and validate document
+            var doc = XDocument.Load(path);
+            doc.Validate(schemaSet, Validation);
+
+            foreach (var element in doc.Root.Elements())
+            {
+                switch (element.Name.ToString())
+                {
+                    case "YawSigned":
+                        SavedSettingsConfig.YawSigned = bool.Parse(element.Value);
+                        break;
+                }
+            }
+        }
+
         public static List<WatchVariableControl> OpenWatchVariableControls(string path, string schemaFile)
         {
             return OpenWatchVariableControlPrecursors(path, schemaFile)
