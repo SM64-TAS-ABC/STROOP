@@ -90,10 +90,8 @@ namespace STROOP
                         tabControlMain.SelectedTab = tabPageTas;
                     },
                     () => TestUtilities.TestSomething(),
-                    () => WatchVariableControlSettingsManager.AddSettings(
-                        new WatchVariableControlSettings(changeYawSigned: true, newYawSigned: true)),
-                    () => WatchVariableControlSettingsManager.AddSettings(
-                        new WatchVariableControlSettings(changeYawSigned: true, newYawSigned: false)),
+                    () => SavedSettingsConfig.YawSigned = true,
+                    () => SavedSettingsConfig.YawSigned = false,
                 });
             ToolStripMenuItem disableLockingItem = new ToolStripMenuItem("Disable Locking");
             disableLockingItem.Click += (se, ev) =>
