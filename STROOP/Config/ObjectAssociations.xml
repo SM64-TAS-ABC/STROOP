@@ -882,7 +882,8 @@
     <SpawnCode gfxId="0x3A"/>
     <Image path="Rising and Lowering Mesh Platform.png"/>
     <MapImage path="Rising and Lowering Mesh Platform Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="byte" offset="0xF6" base="Object">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" type="byte" offset="0xF6" base="Object">Oscillation Timer (Byte)</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Oscillation Timer (Int)</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001000" name="Rising and Lowering Pole">
     <SpawnCode gfxId="0x39"/>
@@ -896,7 +897,8 @@
   <Object behaviorScriptAddress="0x13001064" name="Springy Staircase">
     <SpawnCode gfxId="0x3C"/>
     <Image path="Springy Staircase.png"/>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xF6" base="Object">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" type="byte" offset="0xF6" base="Object">Oscillation Timer (Byte)</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Oscillation Timer (Int)</Data>
   </Object>
   <Object behaviorScriptAddress="0x130010D8" name="RR Rotating Flame Shooter Platform">
     <SpawnCode gfxId="0x39"/>
@@ -1291,7 +1293,8 @@
     <SpawnCode gfxId="0x35"/>
     <Image path="Rising and Lowering Wood.png"/>
     <MapImage path="Rising and Lowering Wood Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="byte" offset="0xF6" base="Object">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" type="byte" offset="0xF6" base="Object">Oscillation Timer (Byte)</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Oscillation Timer (Int)</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001E30" name="Rising and Lowering Wood Spawner">
     <SpawnCode gfxId="0x00"/>
@@ -1311,13 +1314,15 @@
     <SpawnCode gfxId="0x3F"/>
     <Image path="Rising and Lowering Long Platform.png"/>
     <MapImage path="Rising and Lowering Long Platform Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="byte" offset="0xF6" base="Object">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" type="byte" offset="0xF6" base="Object">Oscillation Timer (Byte)</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Oscillation Timer (Int)</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001EC4" name="Rising and Lowering 4-Platform Group">
     <SpawnCode gfxId="0x40"/>
     <Image path="Rising and Lowering 4-Platform Group.png"/>
     <MapImage path="Rising and Lowering 4-Platform Group Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="byte" offset="0xF6" base="Object">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" type="byte" offset="0xF6" base="Object">Oscillation Timer (Byte)</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Oscillation Timer (Int)</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001EF8" name="LLL Tilting Inverted Pyramid Platform">
     <SpawnCode gfxId="0x41"/>
