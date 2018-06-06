@@ -68,6 +68,21 @@ namespace STROOP.Controls
             }
         }
 
+        public void ConvertToHexIntVersions(VarHackContainer varHackContainer)
+        {
+            if (Controls.Count >= VarHackConfig.MaxPossibleVars) return;
+            int index = Controls.IndexOf(varHackContainer);
+            (VarHackContainer v1, VarHackContainer v2) = varHackContainer.GetHexIntVersions();
+            lock (_objectLock)
+            {
+                Controls.Add(v1);
+                Controls.Add(v2);
+                Controls.SetChildIndex(v1, index + 1);
+                Controls.SetChildIndex(v2, index + 2);
+                Controls.Remove(varHackContainer);
+            }
+        }
+
         public void ApplyVariableToMemory(VarHackContainer varHackContainer)
         {
             int index = Controls.IndexOf(varHackContainer);

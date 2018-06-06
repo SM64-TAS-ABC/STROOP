@@ -96,6 +96,9 @@ namespace STROOP.Controls
             ToolStripMenuItem itemDuplicate = new ToolStripMenuItem("Duplicate");
             itemDuplicate.Click += (sender, e) => _varHackPanel.DuplicateControl(this);
             ContextMenuStrip.Items.Add(itemDuplicate);
+            ToolStripMenuItem itemConvertToHexIntVersions = new ToolStripMenuItem("Convert to Hex Int Versions");
+            itemConvertToHexIntVersions.Click += (sender, e) => _varHackPanel.ConvertToHexIntVersions(this);
+            ContextMenuStrip.Items.Add(itemConvertToHexIntVersions);
         }
 
         public static VarHackContainer CreateDefault(
@@ -235,6 +238,39 @@ namespace STROOP.Controls
         public VarHackContainer Clone()
         {
             return CreateFromXml(_varHackPanel, ToXml());
+        }
+
+        public (VarHackContainer, VarHackContainer) GetHexIntVersions()
+        {
+            VarHackContainer v1 = new VarHackContainer(
+                _varHackPanel,
+                0,
+                false /* useDefaults */,
+                null /* specialTypeIn */,
+                true /* noNumIn */,
+                null /* varNameIn */,
+                null /* addressIn */,
+                null /* memoryTypeIn */,
+                null /* useHexIn */,
+                null /* pointerOffsetIn */,
+                null /* xPosIn */,
+                null /* yPosIn */);
+
+            VarHackContainer v2 = new VarHackContainer(
+                _varHackPanel,
+                0,
+                false /* useDefaults */,
+                null /* specialTypeIn */,
+                true /* noNumIn */,
+                null /* varNameIn */,
+                null /* addressIn */,
+                null /* memoryTypeIn */,
+                null /* useHexIn */,
+                null /* pointerOffsetIn */,
+                null /* xPosIn */,
+                null /* yPosIn */);
+
+            return (v1, v2);
         }
 
         public byte[] GetBigEndianByteArray()
