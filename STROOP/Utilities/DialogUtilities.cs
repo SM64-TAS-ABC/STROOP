@@ -18,6 +18,8 @@ namespace STROOP.Structs
         {
             switch (fileType)
             {
+                case FileType.Xml:
+                    return "*.xml";
                 case FileType.StroopVariables:
                     return "STROOP Variables|*.stv";
                 case FileType.StroopVarHackVariables:
@@ -63,25 +65,31 @@ namespace STROOP.Structs
             };
         }
 
-        public static List<XElement> OpenXmlElements(FileType fileType)
+        public static List<XElement> OpenXmlElements(FileType fileType, string fileName = null)
         {
-            OpenFileDialog openFileDialog = CreateOpenFileDialog(fileType);
-            DialogResult result = openFileDialog.ShowDialog();
-            if (result != DialogResult.OK) return new List<XElement>();
-
-            XDocument varXml = XDocument.Load(openFileDialog.FileName);
+            if (fileName == null)
+            {
+                OpenFileDialog openFileDialog = CreateOpenFileDialog(fileType);
+                DialogResult result = openFileDialog.ShowDialog();
+                if (result != DialogResult.OK) return new List<XElement>();
+                fileName = openFileDialog.FileName;
+            }
+            XDocument varXml = XDocument.Load(fileName);
             return ConvertDocumentIntoElements(varXml);
         }
 
         public static void SaveXmlElements(
-            FileType fileType, string xmlName, List<XElement> elements)
+            FileType fileType, string xmlName, List<XElement> elements, string fileName = null)
         {
-            SaveFileDialog saveFileDialog = CreateSaveFileDialog(fileType);
-            DialogResult result = saveFileDialog.ShowDialog();
-            if (result != DialogResult.OK) return;
-
+            if (fileName == null)
+            {
+                SaveFileDialog saveFileDialog = CreateSaveFileDialog(fileType);
+                DialogResult result = saveFileDialog.ShowDialog();
+                if (result != DialogResult.OK) return;
+                fileName = saveFileDialog.FileName;
+            }
             XDocument document = ConvertElementsIntoDocument(xmlName, elements);
-            document.Save(saveFileDialog.FileName);
+            document.Save(fileName);
         }
 
         private static XDocument ConvertElementsIntoDocument(

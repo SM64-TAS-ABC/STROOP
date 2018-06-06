@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace STROOP.Structs.Configurations
 {
@@ -20,12 +21,22 @@ namespace STROOP.Structs.Configurations
                 WatchVariableControlSettingsManager.AddSettings(
                     new WatchVariableControlSettings(
                         changeYawSigned: true, newYawSigned: value));
+                Save();
             }
         }
 
-        public static void SaveSettings()
+        public static List<XElement> ToXML()
         {
-            
+            return new List<XElement>
+            {
+                new XElement("YawSigned", _yawSigned)
+            };
+        }
+
+        public static void Save()
+        {
+            DialogUtilities.SaveXmlElements(
+                FileType.Xml, "SavedSettings", ToXML(), @"Config/SavedSettings.xml");
         }
     }
 }

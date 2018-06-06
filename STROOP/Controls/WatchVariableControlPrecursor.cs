@@ -222,72 +222,72 @@ namespace STROOP.Controls
         public XElement ToXML(Color? newColor = null, string newName = null, List<uint> newFixedAddresses = null)
         {
             string name = newName ?? Name;
-            XElement root = new XElement("Data", name);
+            XElement xElement = new XElement("Data", name);
 
             if (GroupList.Count > 0)
-                root.Add(new XAttribute("groupList", String.Join(",", GroupList)));
+                xElement.Add(new XAttribute("groupList", String.Join(",", GroupList)));
 
-            root.Add(new XAttribute("base", WatchVar.BaseAddressType.ToString()));
+            xElement.Add(new XAttribute("base", WatchVar.BaseAddressType.ToString()));
 
             if (WatchVar.OffsetDefault != null)
-                root.Add(new XAttribute(
+                xElement.Add(new XAttribute(
                     "offset",
                     String.Format("0x{0:X}", WatchVar.OffsetDefault.Value)));
 
             if (WatchVar.OffsetUS != null)
-                root.Add(new XAttribute(
+                xElement.Add(new XAttribute(
                     "offsetUS",
                     String.Format("0x{0:X}", WatchVar.OffsetUS.Value)));
 
             if (WatchVar.OffsetJP != null)
-                root.Add(new XAttribute(
+                xElement.Add(new XAttribute(
                     "offsetJP",
                     String.Format("0x{0:X}", WatchVar.OffsetJP.Value)));
 
             if (WatchVar.OffsetPAL != null)
-                root.Add(new XAttribute(
+                xElement.Add(new XAttribute(
                     "offsetPAL",
                     String.Format("0x{0:X}", WatchVar.OffsetPAL.Value)));
 
             if (WatchVar.MemoryTypeName != null)
-                root.Add(new XAttribute("type", WatchVar.MemoryTypeName));
+                xElement.Add(new XAttribute("type", WatchVar.MemoryTypeName));
 
             if (WatchVar.SpecialType != null)
-                root.Add(new XAttribute("specialType", WatchVar.SpecialType));
+                xElement.Add(new XAttribute("specialType", WatchVar.SpecialType));
 
             if (WatchVar.Mask != null)
-                root.Add(new XAttribute(
+                xElement.Add(new XAttribute(
                     "mask",
                     String.Format("0x{0:X" + WatchVar.NibbleCount + "}", WatchVar.Mask.Value)));
 
             if (Subclass != WatchVariableSubclass.Number)
-                root.Add(new XAttribute("subclass", Subclass.ToString()));
+                xElement.Add(new XAttribute("subclass", Subclass.ToString()));
 
             if (RoundingLimit.HasValue)
-                root.Add(new XAttribute("round", RoundingLimit.Value.ToString()));
+                xElement.Add(new XAttribute("round", RoundingLimit.Value.ToString()));
 
             if (InvertBool.HasValue)
-                root.Add(new XAttribute("invertBool", InvertBool.Value.ToString().ToLower()));
+                xElement.Add(new XAttribute("invertBool", InvertBool.Value.ToString().ToLower()));
 
             if (UseHex.HasValue)
-                root.Add(new XAttribute("useHex", UseHex.Value.ToString().ToLower()));
+                xElement.Add(new XAttribute("useHex", UseHex.Value.ToString().ToLower()));
 
             if (Coordinate.HasValue)
-                root.Add(new XAttribute("coord", Coordinate.Value.ToString()));
+                xElement.Add(new XAttribute("coord", Coordinate.Value.ToString()));
 
             Color? color = newColor ?? BackgroundColor;
             if (color.HasValue)
-                root.Add(new XAttribute(
+                xElement.Add(new XAttribute(
                     "color",
                     ColorUtilities.ConvertColorToString(color.Value)));
 
             List<uint> fixedAddresses = newFixedAddresses ?? FixedAddresses;
             if (fixedAddresses != null)
-                root.Add(new XAttribute("fixed", String.Join(
+                xElement.Add(new XAttribute("fixed", String.Join(
                     ",", fixedAddresses.ConvertAll(
                         address => String.Format("0x{0:X}", address)))));
 
-            return root;
+            return xElement;
         }
 
         public override string ToString()
