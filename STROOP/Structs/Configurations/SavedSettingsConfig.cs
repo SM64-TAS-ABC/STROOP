@@ -15,6 +15,7 @@ namespace STROOP.Structs.Configurations
             get => _yawSigned;
             set
             {
+                if (_yawSigned == value) return;
                 _yawSigned = value;
                 WatchVariableControlSettingsManager.AddSettings(
                     new WatchVariableControlSettings(

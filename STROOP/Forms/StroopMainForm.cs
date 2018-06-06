@@ -68,6 +68,8 @@ namespace STROOP
 
             comboBoxRomVersion.DataSource = Enum.GetValues(typeof(RomVersion));
             comboBoxReadWriteMode.DataSource = Enum.GetValues(typeof(ReadWriteMode));
+            comboBoxYawSigned.DataSource = Enum.GetValues(typeof(SignedEnum));
+            comboBoxYawSigned.SelectedItem = SavedSettingsConfig.YawSigned ? SignedEnum.Signed : SignedEnum.Unsigned;
 
             ControlUtilities.AddContextMenuStripFunctions(
                 labelVersionNumber,
@@ -414,11 +416,7 @@ namespace STROOP
         {
             Invoke(new Action(() =>
             {
-                RomVersionConfig.UpdateRomVersionUsingTell();
-                comboBoxRomVersion.SelectedItem = RomVersionConfig.Version;
-
-                Config.Stream.Readonly = (ReadWriteMode)comboBoxReadWriteMode.SelectedItem == ReadWriteMode.ReadOnly;
-
+                UpdateComboBoxes();
                 DataModels.Update();
                 Config.ObjectSlotsManager.Update();
                 Config.ObjectManager.Update(tabControlMain.SelectedTab == tabPageObject);
@@ -449,6 +447,21 @@ namespace STROOP
                 Config.HackManager.Update();
                 WatchVariableLockManager.Update();
             }));
+        }
+
+        private void UpdateComboBoxes()
+        {
+            // Rom Version
+            RomVersionConfig.UpdateRomVersionUsingTell();
+            comboBoxRomVersion.SelectedItem = RomVersionConfig.Version;
+
+            // Readonly / Read+Write
+            Config.Stream.Readonly = (ReadWriteMode)comboBoxReadWriteMode.SelectedItem == ReadWriteMode.ReadOnly;
+
+            // Yaw Signed
+            SignedEnum signedEnum = (SignedEnum)comboBoxYawSigned.SelectedItem;
+            bool signedBool = signedEnum == SignedEnum.Signed;
+            SavedSettingsConfig.YawSigned = signedBool;
         }
 
         private void _sm64Stream_FpsUpdated(object sender, EventArgs e)
