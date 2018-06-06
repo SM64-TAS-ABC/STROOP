@@ -1796,7 +1796,7 @@
     <SpawnCode gfxId="0x56"/>
     <Image path="Sushi.png"/>
     <MapImage path="Sushi Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xF6" base="Object" subclass="Angle">Rev Angle</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xF4" base="Object" subclass="Angle" yaw="true">Rev Angle</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002388" name="Sushi Hitbox">
     <SpawnCode gfxId="0x00"/>
@@ -1908,7 +1908,7 @@
     <Image path="Boo.png"/>
     <MapImage path="Boo Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xFE" base="Object" subclass="Angle">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xFC" base="Object" subclass="Angle" yaw="true">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002710" name="Cage Boo">
     <SpawnCode gfxId="0x54"/>
@@ -1916,7 +1916,7 @@
     <MapImage path="Big Boo Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Target Opaqueness</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xFE" base="Object" subclass="Angle">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xFC" base="Object" subclass="Angle" yaw="true">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002768" name="Big Boo (Balcony)">
     <SpawnCode gfxId="0x54"/>
@@ -1925,7 +1925,7 @@
     <Data groupList="ObjectSpecific" type="int" offset="0x184" base="Object">HP</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Target Opaqueness</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xFE" base="Object" subclass="Angle">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xFC" base="Object" subclass="Angle" yaw="true">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300277C" name="Big Boo (Merry-Go-Round)">
     <SpawnCode gfxId="0x54"/>
@@ -1934,7 +1934,7 @@
     <Data groupList="ObjectSpecific" type="int" offset="0x184" base="Object">HP</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Target Opaqueness</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xFE" base="Object" subclass="Angle">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xFC" base="Object" subclass="Angle" yaw="true">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002790" name="Big Boo (Lobby)">
     <SpawnCode gfxId="0x54"/>
@@ -1943,7 +1943,7 @@
     <Data groupList="ObjectSpecific" type="int" offset="0x184" base="Object">HP</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Target Opaqueness</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xFE" base="Object" subclass="Angle">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xFC" base="Object" subclass="Angle" yaw="true">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x130027D0" name="Boo Triplet Spawner">
     <SpawnCode gfxId="0x54"/>
@@ -1955,7 +1955,7 @@
     <MapImage path="Boo Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Target Opaqueness</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xFE" base="Object" subclass="Angle">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xFC" base="Object" subclass="Angle" yaw="true">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x130027F4" name="Boo (Merry-Go-Round)">
     <SpawnCode gfxId="0x54"/>
@@ -1963,7 +1963,7 @@
     <MapImage path="Boo Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Target Opaqueness</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xFE" base="Object" subclass="Angle">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xFC" base="Object" subclass="Angle" yaw="true">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002804" name="Boo (Activates Text)">
     <SpawnCode gfxId="0x54"/>
@@ -1972,7 +1972,7 @@
     <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Target Opaqueness</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x17C" base="Object">Opaqueness</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xFE" base="Object" subclass="Angle">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xFC" base="Object" subclass="Angle" yaw="true">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300286C" name="BBH Lobby Step (Already Risen)">
     <SpawnCode gfxId="0x35"/>
@@ -2024,13 +2024,13 @@
     <Data groupList="ObjectSpecific" type="float" offset="0x0" base="GhostHack" coord="X">X</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x4" base="GhostHack" coord="Y">Y</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x8" base="GhostHack" coord="Z">Z</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x6" base="GhostHack" subclass="Angle">Angle</Data>
+    <Data groupList="ObjectSpecific" type="ushort" offset="0x6" base="GhostHack" subclass="Angle" yaw="true">Angle</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xC" base="GhostHack">Is Last Frame</Data>
     -->
     <Data groupList="ObjectSpecific" type="byte" offset="0xD" base="GhostHack">Animation</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0xE" base="GhostHack">Animation Frame</Data>
     
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x1C" base="Object" subclass="Angle">Angle</Data>
+    <Data groupList="ObjectSpecific" type="ushort" offset="0x1C" base="Object" subclass="Angle" yaw="true">Angle</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x20" base="Object" coord="X">X</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x24" base="Object" coord="Y">Y</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x28" base="Object" coord="Z">Z</Data>
@@ -2102,12 +2102,12 @@
     <Data groupList="ObjectSpecific" type="byte" offset="0xFB" base="Object" subclass="Boolean">Lunging</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Lunging Timer</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="MarioHDistanceToObjectHome">HDist Mario to Home</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xCA" base="Object" subclass="Angle">Yaw Moving</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x162" base="Object" subclass="Angle">Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xC8" base="Object" subclass="Angle" yaw="true">Yaw Moving</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x160" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ScuttlebugDeltaAngleToTarget" subclass="Angle" display="short">DAngle to Target</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="AngleObjectToMario" subclass="Angle" display="ushort">Angle Obj to Mario</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="AngleObjectToMario" subclass="Angle" display="ushort" yaw="true">Angle Obj to Mario</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="DeltaAngleObjectToMario" subclass="Angle" display="short">DAngle Obj to Mario</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="AngleObjectToHome" subclass="Angle" display="ushort">Angle Obj to Home</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="AngleObjectToHome" subclass="Angle" display="ushort" yaw="true">Angle Obj to Home</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="DeltaAngleObjectToHome" subclass="Angle" display="short">DAngle Obj to Home</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xB0" base="Object">Y Speed</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xA4" base="Object">Y</Data>
@@ -2196,7 +2196,7 @@
     <Image path="Wind Particle Spawner.png"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x150" base="Object">Phase</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
-    <Data groupList="ObjectSpecific" type="uint" offset="0xC8" base="Object" subclass="Angle">Blowing Angle</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xC8" base="Object" subclass="Angle" yaw="true">Blowing Angle</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002E58" name="Walking Penguin">
     <SpawnCode gfxId="0x57"/>
@@ -2215,7 +2215,7 @@
     <Data groupList="ObjectSpecific" type="short" offset="0x40" base="Object">Animation Timer</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x44" base="Object">Walking Timer</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x110" base="Object">Burn Timer</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x112" base="Object" subclass="Angle">Cannon Yaw</Data>
+    <Data groupList="ObjectSpecific" type="ushort" offset="0x112" base="Object" subclass="Angle" yaw="true">Cannon Yaw</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x110" base="Object">Pole Height</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x3A" base="Object">Relative Height</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x20" base="Object" coord="X">Graphics X</Data>
@@ -2466,7 +2466,7 @@
     <SpawnCode gfxId="0xC2"/>
     <Image path="Amp.png"/>
     <MapImage path="Amp Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xCA" base="Object" subclass="Angle">Rev Angle</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xC8" base="Object" subclass="Angle" yaw="true">Rev Angle</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xF8" base="Object">Height Timer</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xF4" base="Object">Radius</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Electricity</Data>
@@ -3044,9 +3044,9 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" base="Object" subclass="Angle">Yaw Facing</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x10E" base="Object" subclass="Angle">Yaw to Next WP</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x10A" base="Object" subclass="Angle">Pitch to Next WP</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xD4" base="Object" subclass="Angle" yaw="true">Yaw Facing</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x10C" base="Object" subclass="Angle" yaw="true">Yaw to Next WP</Data>
+    <Data groupList="ObjectSpecific" type="int" display="short" offset="0x108" base="Object" subclass="Angle">Pitch to Next WP</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xB8" base="Object">H Speed</Data>
   </Object>
   <Object behaviorScriptAddress="0x130044FC" name="MIPS #2" subType="1">
@@ -3069,9 +3069,9 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" base="Object" subclass="Angle">Yaw Facing</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x10E" base="Object" subclass="Angle">Yaw to Next WP</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x10A" base="Object" subclass="Angle">Pitch to Next WP</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xD4" base="Object" subclass="Angle" yaw="true">Yaw Facing</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x10C" base="Object" subclass="Angle" yaw="true">Yaw to Next WP</Data>
+    <Data groupList="ObjectSpecific" type="int" display="short" offset="0x108" base="Object" subclass="Angle">Pitch to Next WP</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xB8" base="Object">H Speed</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004538" name="Yoshi">
@@ -3088,7 +3088,7 @@
     <MapImage path="Koopa Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xF8" base="Object">Movement Type</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xFB" base="Object" subclass="Boolean">Act Shelled</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xFE" base="Object" subclass="Angle">Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xFC" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x1AC" base="Object">Countdown</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Blinking</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x110" base="Object">Blinking Countdown</Data>
@@ -3117,9 +3117,9 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" base="Object" subclass="Angle">Yaw Facing</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x10E" base="Object" subclass="Angle">Yaw to Next WP</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x10A" base="Object" subclass="Angle">Pitch to Next WP</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xD4" base="Object" subclass="Angle" yaw="true">Yaw Facing</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x10C" base="Object" subclass="Angle" yaw="true">Yaw to Next WP</Data>
+    <Data groupList="ObjectSpecific" type="int" display="short" offset="0x108" base="Object" subclass="Angle">Pitch to Next WP</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xF4" base="Object">H Speed Multiplier</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xB8" base="Object">H Speed</Data>
@@ -3151,9 +3151,9 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" base="Object" subclass="Angle">Yaw Facing</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x10E" base="Object" subclass="Angle">Yaw to Next WP</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x10A" base="Object" subclass="Angle">Pitch to Next WP</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xD4" base="Object" subclass="Angle" yaw="true">Yaw Facing</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x10C" base="Object" subclass="Angle" yaw="true">Yaw to Next WP</Data>
+    <Data groupList="ObjectSpecific" type="int" display="short" offset="0x108" base="Object" subclass="Angle">Pitch to Next WP</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xF4" base="Object">H Speed Multiplier</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xB8" base="Object">H Speed</Data>
@@ -3167,7 +3167,7 @@
     <MapImage path="Koopa Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xF8" base="Object">Movement Type</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xFB" base="Object" subclass="Boolean">Act Shelled</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xFE" base="Object" subclass="Angle">Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xFC" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x1AC" base="Object">Countdown</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Blinking</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x110" base="Object">Blinking Countdown</Data>
@@ -3229,12 +3229,12 @@
     <Image path="Swooper.png"/>
     <MapImage path="Swooper Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x45" base="Object">Wing Flap</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0xDA" base="Object" subclass="Angle">Roll Facing</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xFE" base="Object" subclass="Angle">Target Angle</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xCA" base="Object" subclass="Angle">Yaw Moving</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="AngleObjectToMario" subclass="Angle" display="ushort">Angle Obj to Mario</Data>
+    <Data groupList="ObjectSpecific" type="int" display="short" offset="0xD8" base="Object" subclass="Angle">Roll Facing</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xFC" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xC8" base="Object" subclass="Angle" yaw="true">Yaw Moving</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="AngleObjectToMario" subclass="Angle" display="ushort" yaw="true">Angle Obj to Mario</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="DeltaAngleObjectToMario" subclass="Angle" display="short">DAngle Obj to Mario</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x11A" base="Object" subclass="Angle">Yaw Velocity</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x118" base="Object" subclass="Angle">Yaw Velocity</Data>
     <Data groupList="ObjectSpecific" type="int" offsetUS="0x8032D5D4" offsetJP="0x8032C694" base="Relative">Global Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x130046DC" name="Fly Guy (Doesn't Shoot Fire)" subType="0">
@@ -3253,9 +3253,9 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x14C" base="Object">State</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x10A" base="Object">Target Yaw Velocity</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0xDA" base="Object" subclass="Angle">Yaw Velocity</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xCA" base="Object" subclass="Angle">Yaw Moving</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="AngleObjectToHome" subclass="Angle" display="ushort">Angle Obj to Home</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x118" base="Object" subclass="Angle">Yaw Velocity</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xC8" base="Object" subclass="Angle" yaw="true">Yaw Moving</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="AngleObjectToHome" subclass="Angle" display="ushort" yaw="true">Angle Obj to Home</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="DeltaAngleObjectToHome" subclass="Angle" display="short">DAngle Obj to Home</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="MarioYDistanceToObject">VDist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="FlyGuyZone" subclass="String">Zone</Data>
@@ -3278,9 +3278,9 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x14C" base="Object">State</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x10A" base="Object">Target Yaw Velocity</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0xDA" base="Object" subclass="Angle">Yaw Velocity</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xCA" base="Object" subclass="Angle">Yaw Moving</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="AngleObjectToHome" subclass="Angle" display="ushort">Angle Obj to Home</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x118" base="Object" subclass="Angle">Yaw Velocity</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xC8" base="Object" subclass="Angle" yaw="true">Yaw Moving</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="AngleObjectToHome" subclass="Angle" display="ushort" yaw="true">Angle Obj to Home</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="DeltaAngleObjectToHome" subclass="Angle" display="short">DAngle Obj to Home</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="MarioYDistanceToObject">VDist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="FlyGuyZone" subclass="String">Zone</Data>
@@ -3291,7 +3291,7 @@
     <SpawnCode gfxId="0xc0"/>
     <Image path="Goomba.png"/>
     <MapImage path="Goomba Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x102" base="Object" subclass="Angle">Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x100" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Countdown</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Blinking</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x104" base="Object">Blinking Countdown</Data>
@@ -3300,7 +3300,7 @@
     <SpawnCode gfxId="0xc0"/>
     <Image path="Goomba.png"/>
     <MapImage path="Goomba Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x102" base="Object" subclass="Angle">Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x100" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Countdown</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x10B" base="Object" subclass="Boolean">Chase Extension</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Blinking</Data>
@@ -3310,7 +3310,7 @@
     <SpawnCode gfxId="0xc0"/>
     <Image path="Goomba.png"/>
     <MapImage path="Goomba Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x102" base="Object" subclass="Angle">Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x100" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Countdown</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x10B" base="Object" subclass="Boolean">Chase Extension</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Blinking</Data>
@@ -3319,7 +3319,7 @@
   <Object behaviorScriptAddress="0x1300472C" name="Goomba #1" subType="4">
     <Image path="Goomba.png"/>
     <MapImage path="Goomba Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x102" base="Object" subclass="Angle">Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x100" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Countdown</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x10B" base="Object" subclass="Boolean">Chase Extension</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Blinking</Data>
@@ -3328,7 +3328,7 @@
   <Object behaviorScriptAddress="0x1300472C" name="Goomba #2" subType="8">
     <Image path="Goomba.png"/>
     <MapImage path="Goomba Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x102" base="Object" subclass="Angle">Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x100" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Countdown</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x10B" base="Object" subclass="Boolean">Chase Extension</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Blinking</Data>
@@ -3337,7 +3337,7 @@
   <Object behaviorScriptAddress="0x1300472C" name="Goomba #3" subType="16">
     <Image path="Goomba.png"/>
     <MapImage path="Goomba Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x102" base="Object" subclass="Angle">Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x100" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Countdown</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x10B" base="Object" subclass="Boolean">Chase Extension</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Blinking</Data>
@@ -3346,7 +3346,7 @@
   <Object behaviorScriptAddress="0x1300472C" name="Huge Goomba #1" subType="5">
     <Image path="Goomba.png"/>
     <MapImage path="Goomba Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x102" base="Object" subclass="Angle">Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x100" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Countdown</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x10B" base="Object" subclass="Boolean">Chase Extension</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Blinking</Data>
@@ -3355,7 +3355,7 @@
   <Object behaviorScriptAddress="0x1300472C" name="Huge Goomba #2" subType="9">
     <Image path="Goomba.png"/>
     <MapImage path="Goomba Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x102" base="Object" subclass="Angle">Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x100" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Countdown</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x10B" base="Object" subclass="Boolean">Chase Extension</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Blinking</Data>
@@ -3364,7 +3364,7 @@
   <Object behaviorScriptAddress="0x1300472C" name="Huge Goomba #3" subType="17">
     <Image path="Goomba.png"/>
     <MapImage path="Goomba Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x102" base="Object" subclass="Angle">Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x100" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Countdown</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x10B" base="Object" subclass="Boolean">Chase Extension</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Blinking</Data>
@@ -3373,7 +3373,7 @@
   <Object behaviorScriptAddress="0x1300472C" name="Tiny Goomba #1" subType="6">
     <Image path="Goomba.png"/>
     <MapImage path="Goomba Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x102" base="Object" subclass="Angle">Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x100" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Countdown</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x10B" base="Object" subclass="Boolean">Chase Extension</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Blinking</Data>
@@ -3382,7 +3382,7 @@
   <Object behaviorScriptAddress="0x1300472C" name="Tiny Goomba #2" subType="10">
     <Image path="Goomba.png"/>
     <MapImage path="Goomba Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x102" base="Object" subclass="Angle">Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x100" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Countdown</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x10B" base="Object" subclass="Boolean">Chase Extension</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Blinking</Data>
@@ -3391,7 +3391,7 @@
   <Object behaviorScriptAddress="0x1300472C" name="Tiny Goomba #3" subType="18">
     <Image path="Goomba.png"/>
     <MapImage path="Goomba Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x102" base="Object" subclass="Angle">Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x100" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Countdown</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x10B" base="Object" subclass="Boolean">Chase Extension</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Blinking</Data>
@@ -3467,9 +3467,9 @@
     <MapImage path="Wiggler Head Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="short" offset="0x92" base="Object">Talking State</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x108" base="Object">Countdown</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x10E" base="Object" subclass="Angle">Target Yaw</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xCA" base="Object" subclass="Angle">Yaw Moving</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x11A" base="Object" subclass="Angle">Yaw Velocity</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x10C" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xC8" base="Object" subclass="Angle" yaw="true">Yaw Moving</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x118" base="Object" subclass="Angle">Yaw Velocity</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x184" base="Object">HP</Data>
   </Object>
   <Object behaviorScriptAddress="0x130048E0" name="Wiggler Body Part">
@@ -3522,7 +3522,7 @@
     <Image path="Spiny.png"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xEC" base="Object">Ground/Air State</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Countdown</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xFA" base="Object" subclass="Angle">Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xF8" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004A00" name="Monty Mole">
     <SpawnCode gfxId="0x55"/>
@@ -3721,17 +3721,17 @@
     <SpawnCode gfxId="0x3c"/>
     <Image path="TTC Rotating Cog.png"/>
     <MapImage path="TTC Rotating Cog Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="float" offset="0xFC" base="Object">Target Ang Vel</Data>
-    <Data groupList="ObjectSpecific" type="float" offset="0xF8" base="Object">Current Ang Vel</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" base="Object" subclass="Angle">Angle</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0xFC" base="Object">Target Yaw Vel</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0xF8" base="Object">Current Yaw Vel</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xD4" base="Object" subclass="Angle" yaw="true">Yaw Facing</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004CCC" name="TTC Rotating Triangle" subType="2">
     <SpawnCode gfxId="0x3d"/>
     <Image path="TTC Rotating Triangle.png"/>
     <MapImage path="TTC Rotating Triangle Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="float" offset="0xFC" base="Object">Target Ang Vel</Data>
-    <Data groupList="ObjectSpecific" type="float" offset="0xF8" base="Object">Current Ang Vel</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" base="Object" subclass="Angle">Angle</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0xFC" base="Object">Target Yaw Vel</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0xF8" base="Object">Current Yaw Vel</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xD4" base="Object" subclass="Angle" yaw="true">Yaw Facing</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004CF8" name="TTC Pit Block" subType="0">
     <SpawnCode gfxId="0x3e"/>
@@ -3762,8 +3762,8 @@
     <Image path="TTC Rotating Hand.png"/>
     <MapImage path="TTC Rotating Hand Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Timer Max</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xFA" base="Object" subclass="Angle">Target Angle</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" base="Object" subclass="Angle">Angle</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xF8" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xD4" base="Object" subclass="Angle" yaw="true">Yaw Facing</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Displacement</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x104" base="Object">Direction Countdown</Data>
   </Object>
@@ -3771,8 +3771,8 @@
     <Image path="TTC 2D Cog.png"/>
     <MapImage path="TTC 2D Cog Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Timer Max</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xFA" base="Object" subclass="Angle">Target Angle</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" base="Object" subclass="Angle">Angle</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xF8" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xD4" base="Object" subclass="Angle" yaw="true">Yaw Facing</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Displacement</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x104" base="Object">Direction Countdown</Data>
   </Object>
@@ -3781,8 +3781,8 @@
     <Image path="TTC 2D Cog.png"/>
     <MapImage path="TTC 2D Cog Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Timer Max</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xFA" base="Object" subclass="Angle">Target Angle</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" base="Object" subclass="Angle">Angle</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xF8" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xD4" base="Object" subclass="Angle" yaw="true">Yaw Facing</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Displacement</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x104" base="Object">Direction Countdown</Data>
   </Object>
@@ -3791,8 +3791,8 @@
     <Image path="TTC 2D Cog.png"/>
     <MapImage path="TTC 2D Cog Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Timer Max</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xFA" base="Object" subclass="Angle">Target Angle</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" base="Object" subclass="Angle">Angle</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xF8" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xD4" base="Object" subclass="Angle" yaw="true">Yaw Facing</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Displacement</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x104" base="Object">Direction Countdown</Data>
   </Object>
@@ -3801,7 +3801,7 @@
     <Image path="TTC Red Coin Spinner.png"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xF8" base="Object">Timer Max</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Direction</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xD2" base="Object" subclass="Angle">Angle</Data>
+    <Data groupList="Basic" type="int" display="short" offset="0xD0" base="Object" subclass="Angle">Pitch Facing</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004DBC" name="Mr. Blizzard (in Ground)" subType="0">
     <SpawnCode gfxId="0x55"/>
@@ -3997,7 +3997,7 @@
   <Object behaviorScriptAddress="0x130051E0" name="Snufit">
     <SpawnCode gfxId="0xce"/>
     <Image path="Snufit.png"/>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x102" base="Object" subclass="Angle">Rev Angle</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x100" base="Object" subclass="Angle" yaw="true">Rev Angle</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x108" base="Object">Size</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x104" base="Object">Size Countdown</Data>
   </Object>
@@ -4069,9 +4069,9 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDotProductToWaypoint">Dot Product</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToWaypointPlane">Dist to WP Plane</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ObjectDistanceToWaypoint">Dist to WP</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xD6" base="Object" subclass="Angle">Yaw Facing</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x10E" base="Object" subclass="Angle">Yaw to Next WP</Data>
-    <Data groupList="ObjectSpecific" type="short" offset="0x10A" base="Object" subclass="Angle">Pitch to Next WP</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xD4" base="Object" subclass="Angle" yaw="true">Yaw Facing</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x10C" base="Object" subclass="Angle" yaw="true">Yaw to Next WP</Data>
+    <Data groupList="ObjectSpecific" type="int" display="short" offset="0x108" base="Object" subclass="Angle">Pitch to Next WP</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="MarioYDistanceToObject">VDist Mario to Obj</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="RacingPenguinEffortTarget">Effort Target</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x110" base="Object">Effort</Data>
@@ -4109,7 +4109,7 @@
     <SpawnCode gfxId="0x69"/>
     <Image path="Skeeter 2.png"/>
     <MapImage path="Skeeter Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xF6" base="Object" subclass="Angle">Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xF4" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x14F" base="Object" subclass="Boolean">Lunging</Data>
   </Object>
   <Object behaviorScriptAddress="0x130054A0" name="Skeeter Water Waves">
@@ -4174,27 +4174,27 @@
     <Image path="Butterfly.png"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x108" base="Object">Activation Type</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xFC" base="Object">Final Target Angle</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x106" base="Object" subclass="Angle">Current Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x104" base="Object" subclass="Angle" yaw="true">Current Target Yaw</Data>
   </Object>
   <Object behaviorScriptAddress="0x13005598" name="Butterfly (Spawned)" subType="1">
     <SpawnCode gfxId="0xBB"/>
     <Image path="Butterfly.png"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x108" base="Object">Activation Type</Data>
-    <Data groupList="ObjectSpecific" type="float" offset="0xFC" base="Object">Final Target Angle</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x106" base="Object" subclass="Angle">Current Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="float" display="ushort" offset="0xFC" base="Object" subclass="Angle" yaw="true">Final Target Yaw</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x104" base="Object" subclass="Angle" yaw="true">Current Target Yaw</Data>
   </Object>
   <Object behaviorScriptAddress="0x13005598" name="Butterfly (Spawned)" subType="2">
     <Image path="Butterfly.png"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x108" base="Object">Activation Type</Data>
-    <Data groupList="ObjectSpecific" type="float" offset="0xFC" base="Object">Final Target Angle</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x106" base="Object" subclass="Angle">Current Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="float" display="ushort" offset="0xFC" base="Object" subclass="Angle" yaw="true">Final Target Yaw</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x104" base="Object" subclass="Angle" yaw="true">Current Target Yaw</Data>
   </Object>
   <Object behaviorScriptAddress="0x13005598" name="Butterfly (Spawns Others w/o Bombs)" subType="4">
     <SpawnCode gfxId="0xBB"/>
     <Image path="Butterfly.png"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x108" base="Object">Activation Type</Data>
-    <Data groupList="ObjectSpecific" type="float" offset="0xFC" base="Object">Final Target Angle</Data>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x106" base="Object" subclass="Angle">Current Target Angle</Data>
+    <Data groupList="ObjectSpecific" type="float" display="ushort" offset="0xFC" base="Object" subclass="Angle" yaw="true">Final Target Yaw</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x104" base="Object" subclass="Angle" yaw="true">Current Target Yaw</Data>
   </Object>
   <Object behaviorScriptAddress="0x130055DC" name="Bubba">
     <SpawnCode gfxId="0x59"/>
