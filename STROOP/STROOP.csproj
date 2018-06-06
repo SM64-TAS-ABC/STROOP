@@ -362,6 +362,7 @@
     <Compile Include="Structs\Configurations\LockConfig.cs" />
     <Compile Include="Structs\Configurations\RomVersionConfig.cs" />
     <Compile Include="Structs\Configurations\M64Config.cs" />
+    <Compile Include="Structs\Configurations\SavedSettingsConfig.cs" />
     <Compile Include="Structs\Configurations\SpecialConfig.cs" />
     <Compile Include="Structs\Configurations\RefreshRateConfig.cs" />
     <Compile Include="Structs\Configurations\MarioObjectConfig.cs" />
@@ -535,6 +536,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Content Include="Config\ArcSineData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\SavedSettings.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\SineData.xml">
