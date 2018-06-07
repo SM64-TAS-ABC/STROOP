@@ -277,6 +277,7 @@ namespace STROOP.Controls
             bool isAKeyHeld = Keyboard.IsKeyDown(Key.A);
             bool isHKeyHeld = Keyboard.IsKeyDown(Key.H);
             bool isLKeyHeld = Keyboard.IsKeyDown(Key.L);
+            bool isDKeyHeld = Keyboard.IsKeyDown(Key.D);
             bool isRKeyHeld = Keyboard.IsKeyDown(Key.R);
             bool isCKeyHeld = Keyboard.IsKeyDown(Key.C);
             bool isBKeyHeld = Keyboard.IsKeyDown(Key.B);
@@ -325,6 +326,12 @@ namespace STROOP.Controls
             if (isLKeyHeld)
             {
                 _watchVarWrapper.ToggleLocked(FixedAddressList);
+                return;
+            }
+
+            if (isDKeyHeld)
+            {
+                _watchVarWrapper.ToggleDisplayAsHex();
                 return;
             }
 

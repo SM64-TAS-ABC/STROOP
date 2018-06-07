@@ -503,5 +503,10 @@ namespace STROOP.Controls
         {
 
         }
+
+        public virtual void ToggleDisplayAsHex(bool? displayAsHexNullable = null)
+        {
+
+        }
     }
 }
