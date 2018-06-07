@@ -10,6 +10,8 @@ namespace STROOP.Structs.Configurations
 {
     public static class SavedSettingsConfig
     {
+        public static bool IsLoaded = false;
+
         private static bool _yawSigned;
         public static bool YawSigned
         {
@@ -21,7 +23,7 @@ namespace STROOP.Structs.Configurations
                 WatchVariableControlSettingsManager.AddSettings(
                     new WatchVariableControlSettings(
                         changeYawSigned: true, newYawSigned: value));
-                Save();
+                if (IsLoaded) Save();
             }
         }
 

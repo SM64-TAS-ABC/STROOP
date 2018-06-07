@@ -116,6 +116,7 @@ namespace STROOP.Utilities
                         break;
                 }
             }
+            SavedSettingsConfig.IsLoaded = true;
         }
 
         public static List<WatchVariableControl> OpenWatchVariableControls(string path, string schemaFile)
