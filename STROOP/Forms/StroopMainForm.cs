@@ -88,13 +88,26 @@ namespace STROOP
                     },
                     () => TestUtilities.TestSomething(),
                 });
-            ToolStripMenuItem disableLockingItem = new ToolStripMenuItem("Disable Locking");
-            disableLockingItem.Click += (se, ev) =>
-            {
-                LockConfig.LockingDisabled = !LockConfig.LockingDisabled;
-                disableLockingItem.Checked = LockConfig.LockingDisabled;
-            };
-            labelVersionNumber.ContextMenuStrip.Items.Add(disableLockingItem);
+            ControlUtilities.AddCheckableContextMenuStripFunctions(
+                labelVersionNumber,
+                new List<string>()
+                {
+                    "Disable Locking",
+                    "Show Invisible Objects as Signs"
+                },
+                new List<Func<bool>>()
+                {
+                    () =>
+                    {
+                        LockConfig.LockingDisabled = !LockConfig.LockingDisabled;
+                        return LockConfig.LockingDisabled;
+                    },
+                    () =>
+                    {
+                        TestingConfig.ShowInvisibleObjectsAsSigns = !TestingConfig.ShowInvisibleObjectsAsSigns;
+                        return TestingConfig.ShowInvisibleObjectsAsSigns;
+                    },
+                });
 
             Config.StroopMainForm = this;
 

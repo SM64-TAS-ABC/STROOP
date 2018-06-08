@@ -378,9 +378,29 @@ namespace STROOP.Utilities
                 items[i].Click += (sender, e) => action();
             }
 
-            ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
-            items.ForEach(item => contextMenuStrip.Items.Add(item));
-            control.ContextMenuStrip = contextMenuStrip;
+            if (control.ContextMenuStrip == null)
+                control.ContextMenuStrip = new ContextMenuStrip();
+            items.ForEach(item => control.ContextMenuStrip.Items.Add(item));
+        }
+
+        public static void AddCheckableContextMenuStripFunctions(
+            Control control,
+            List<string> functionNames,
+            List<Func<bool>> functions)
+        {
+            if (functionNames.Count != functions.Count) throw new ArgumentOutOfRangeException();
+
+            List<ToolStripMenuItem> items = functionNames.ConvertAll(name => new ToolStripMenuItem(name));
+            for (int i = 0; i < items.Count; i++)
+            {
+                Func<bool> function = functions[i];
+                ToolStripMenuItem item = items[i];
+                item.Click += (sender, e) => item.Checked = function();
+            }
+
+            if (control.ContextMenuStrip == null)
+                control.ContextMenuStrip = new ContextMenuStrip();
+            items.ForEach(item => control.ContextMenuStrip.Items.Add(item));
         }
 
         public static Action<T> AddCheckableDropDownItems<T>(

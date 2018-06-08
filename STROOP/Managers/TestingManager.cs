@@ -692,6 +692,7 @@ namespace STROOP.Managers
             {
                 DataModels.Objects.ToList().ForEach(obj =>
                 {
+                    if (obj == null) return;
                     if (obj.GraphicsID == 0) obj.GraphicsID = ObjectConfig.SignGraphicsId;
                 });
             }
