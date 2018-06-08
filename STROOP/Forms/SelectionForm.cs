@@ -23,14 +23,17 @@ namespace STROOP.Forms
             textBoxSelect.Text = selectionText;
             buttonSet.Text = buttonText;
             listBoxSelections.DataSource = items;
-            buttonSet.Click += (sender, e) =>
+                
+            Action enterAction = () =>
             {
                 T selection = (T)listBoxSelections.SelectedItem;
                 selectionAction(selection);
                 Close();
             };
+            buttonSet.Click += (sender, e) => enterAction();
+            listBoxSelections.DoubleClick += (sender, e) => enterAction();
         }
-        
+
         public static void ShowActionSelectionForm()
         {
             SelectionForm selectionForm = new SelectionForm();
