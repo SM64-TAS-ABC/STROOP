@@ -256,7 +256,7 @@ namespace STROOP.Controls
                 xElement.Add(new XAttribute("specialType", WatchVar.SpecialType));
 
             if (DisplayType != null)
-                xElement.Add(new XAttribute("display", DisplayType));
+                xElement.Add(new XAttribute("display", TypeUtilities.TypeToString[DisplayType]));
 
             if (WatchVar.Mask != null)
                 xElement.Add(new XAttribute(
