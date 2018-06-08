@@ -3,6 +3,7 @@ using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -48,5 +49,17 @@ namespace STROOP.Structs.Configurations
         public static ScriptManager ScriptManager;
         public static GfxManager GfxManager;
         public static M64Manager M64Manager;
+
+        public static List<DataManager> GetDataManagers()
+        {
+            Type configType = typeof(Config);
+            List<DataManager> dataManagerList = new List<DataManager>();
+            foreach (FieldInfo field in configType.GetFields())
+            {
+                if (field.FieldType.IsSubclassOf(typeof(DataManager)))
+                    dataManagerList.Add((DataManager)field.GetValue(null));
+            }
+            return dataManagerList;
+        }
     }
 }

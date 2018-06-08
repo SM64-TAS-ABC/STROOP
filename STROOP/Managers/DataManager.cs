@@ -84,5 +84,10 @@ namespace STROOP.Managers
             if (!updateView) return;
             _variablePanel.UpdateControls();
         }
+
+        public override string ToString()
+        {
+            return _variablePanel.ToString();
+        }
     }
 }

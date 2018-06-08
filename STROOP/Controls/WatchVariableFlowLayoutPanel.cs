@@ -445,5 +445,11 @@ namespace STROOP.Controls
         {
             return _allGroups.Count == 0 || watchVarControl.BelongsToAnyGroup(_visibleGroups);
         }
+
+        public override string ToString()
+        {
+            List<string> varNames = _watchVarControls.ConvertAll(control => control.VarName);
+            return String.Join(",", varNames);
+        }
     }
 }
