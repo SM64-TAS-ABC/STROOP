@@ -210,7 +210,7 @@ namespace STROOP.Controls
                 string maskString = "";
                 if (Mask != null)
                 {
-                    maskString = " with mask " + String.Format("0x{0:X" + NibbleCount.Value + "}", Mask.Value);
+                    maskString = " with mask " + HexUtilities.FormatValue(Mask.Value, NibbleCount.Value);
                 }
                 return MemoryTypeName + maskString;
             }
@@ -218,7 +218,7 @@ namespace STROOP.Controls
 
         public string GetBaseOffsetDescription()
         {
-            string offsetString = IsSpecial ? SpecialType : String.Format("0x{0:X}", Offset);
+            string offsetString = IsSpecial ? SpecialType : HexUtilities.FormatValue(Offset);
             return BaseAddressType + " + " + offsetString;
         }
 
@@ -227,7 +227,7 @@ namespace STROOP.Controls
             List<uint> addressList = addresses ?? AddressList;
             if (IsSpecial) return "(none)";
             if (addressList.Count == 0) return "(none)";
-            return String.Format("0x{0:X8}", GetRamAddress(addressArea, addresses));
+            return HexUtilities.FormatValue(GetRamAddress(addressArea, addresses), 8);
         }
 
         public uint GetRamAddress(bool addressArea = true, List<uint> addresses = null)
@@ -252,7 +252,7 @@ namespace STROOP.Controls
             List<uint> addressList = addresses ?? AddressList;
             if (IsSpecial) return "(none)";
             if (addressList.Count == 0) return "(none)";
-            return String.Format("0x{0:X8}", GetProcessAddress(addresses).ToUInt64());
+            return HexUtilities.FormatValue(GetProcessAddress(addresses).ToUInt32(), 8);
         }
 
         public UIntPtr GetProcessAddress(List<uint> addresses = null)

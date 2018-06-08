@@ -429,9 +429,13 @@ namespace STROOP.Managers
             if (_objects.Count == 0)
                 return;
 
-            var variableTitle = "Object Address" + (_objects.Count > 1 ? " (First of Multiple)" : ""); 
-            var variableInfo = new VariableViewerForm(variableTitle, "Object", "Relative + " + String.Format("0x{0:X8}", _objects.First().Address),
-                String.Format("0x{0:X8}", _objects.First().Address), String.Format("0x{0:X8}", Config.Stream.GetAbsoluteAddress(_objects.First().Address).ToUInt64()));
+            var variableTitle = "Object Address" + (_objects.Count > 1 ? " (First of Multiple)" : "");
+            var variableInfo = new VariableViewerForm(
+                variableTitle,
+                "Object",
+                "Relative + " + HexUtilities.FormatValue(_objects.First().Address, 8),
+                HexUtilities.FormatValue(_objects.First().Address, 8),
+                HexUtilities.FormatValue(Config.Stream.GetAbsoluteAddress(_objects.First().Address).ToUInt32(), 8));
             variableInfo.Show();
         }
       

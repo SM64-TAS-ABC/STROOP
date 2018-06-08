@@ -60,9 +60,9 @@ namespace STROOP.Managers
 
             var selectedHack = _spawnList.SelectedItem as SpawnHack;
 
-            _behaviorTextbox.Text = String.Format("0x{0:X8}", selectedHack.Behavior);
-            _gfxIdTextbox.Text = String.Format("0x{0:X2}", selectedHack.GfxId);
-            _extraTextbox.Text = String.Format("0x{0:X2}", selectedHack.Extra);
+            _behaviorTextbox.Text = HexUtilities.FormatValue(selectedHack.Behavior, 8);
+            _gfxIdTextbox.Text = HexUtilities.FormatValue(selectedHack.GfxId, 2);
+            _extraTextbox.Text = HexUtilities.FormatValue(selectedHack.Extra, 2);
         }
 
         private void SpawnButton_Click(object sender, EventArgs e)

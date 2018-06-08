@@ -100,7 +100,7 @@ namespace STROOP.Managers
                 Array.Copy(instructionBytes, i * 4, nextBytes, 0, 4);
 
                 // Write Address
-                _output.AppendText(String.Format("0x{0:X8}: ", _lastAddress | 0x80000000), Color.Blue);
+                _output.AppendText(HexUtilities.FormatValue(_lastAddress | 0x80000000, 8) + ": ", Color.Blue);
 
                 // Write byte-code
                 _output.AppendText(BitConverter.ToString(nextBytes.Reverse().ToArray()).Replace('-', ' '), Color.DarkGray);

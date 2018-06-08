@@ -57,7 +57,7 @@ namespace STROOP.Managers
                     return;
 
                 _triangleAddress = value;
-                _addressBox.Text = String.Format("0x{0:X8}", _triangleAddress);
+                _addressBox.Text = HexUtilities.FormatValue(_triangleAddress, 8);
             }
         }
 

@@ -246,7 +246,7 @@ namespace STROOP.Managers
                 return;
             }
 
-            _textBoxAddress.Text = String.Format("0x{0:X8}", ModelPointer);
+            _textBoxAddress.Text = HexUtilities.FormatValue(ModelPointer, 8);
 
             uint modelPtr = ModelPointer;
             List<short[]> vertices = GetVerticesFromModelPointer(ref modelPtr);
