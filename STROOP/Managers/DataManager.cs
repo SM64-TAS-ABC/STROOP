@@ -14,6 +14,7 @@ namespace STROOP.Managers
 {
     public class DataManager
     {
+        private readonly string _varFilePath;
         protected WatchVariableFlowLayoutPanel _variablePanel;
         public readonly string TabName;
         public readonly int TabIndex;
@@ -24,12 +25,14 @@ namespace STROOP.Managers
             List<VariableGroup> allVariableGroups = null,
             List<VariableGroup> visibleVariableGroups = null)
         {
+            _varFilePath = varFilePath;
             List<WatchVariableControlPrecursor> variables = varFilePath == null
                 ? new List<WatchVariableControlPrecursor>()
                 : XmlConfigParser.OpenWatchVariableControlPrecursors(varFilePath);
 
             _variablePanel = variablePanel;
             _variablePanel.Initialize(
+                this,
                 variables,
                 allVariableGroups,
                 visibleVariableGroups);
@@ -57,11 +60,6 @@ namespace STROOP.Managers
             _variablePanel.ClearVariables();
         }
 
-        public virtual void ClearAllButHighlightedVariables()
-        {
-            _variablePanel.ClearAllButHighlightedVariables();
-        }
-
         public void OpenVariables()
         {
             _variablePanel.OpenVariables();
@@ -70,6 +68,12 @@ namespace STROOP.Managers
         public void SaveVariables()
         {
             _variablePanel.SaveVariables();
+        }
+
+        public void SaveVariablesInPlace()
+        {
+            if (!DialogUtilities.AskQuestionAboutSavingVariableFileInPlace()) return;
+            _variablePanel.SaveVariables(_varFilePath);
         }
 
         public virtual void EnableCustomVariableFunctionality()

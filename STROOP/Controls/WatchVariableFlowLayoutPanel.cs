@@ -1,4 +1,5 @@
 ﻿using STROOP.Forms;
+using STROOP.Managers;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
@@ -15,6 +16,8 @@ namespace STROOP.Controls
 {
     public class WatchVariableFlowLayoutPanel : NoTearFlowLayoutPanel
     {
+        private DataManager _dataManager;
+
         private readonly Object _objectLock;
         private List<WatchVariableControlPrecursor> _watchVarPrecursors;
         private List<WatchVariableControl> _watchVarControls;
@@ -40,10 +43,12 @@ namespace STROOP.Controls
         }
 
         public void Initialize(
+            DataManager dataManager,
             List<WatchVariableControlPrecursor> precursors,
             List<VariableGroup> allGroups = null,
             List<VariableGroup> visibleGroups = null)
         {
+            _dataManager = dataManager;
             if (allGroups != null) _allGroups.AddRange(allGroups);
             if (visibleGroups != null) _initialVisibleGroups.AddRange(visibleGroups);
             if (visibleGroups != null) _visibleGroups.AddRange(visibleGroups);
@@ -64,8 +69,11 @@ namespace STROOP.Controls
             ToolStripMenuItem addAllToCustomTabItem = new ToolStripMenuItem("Add All to Custom Tab");
             addAllToCustomTabItem.Click += (sender, e) => AddAllVariablesToCustomTab();
 
-            ToolStripMenuItem enableCustomization = new ToolStripMenuItem("Enable Customization");
-            enableCustomization.Click += (sender, e) => EnableCustomVariableFunctionality();
+            ToolStripMenuItem enableCustomizationItem = new ToolStripMenuItem("Enable Customization");
+            enableCustomizationItem.Click += (sender, e) => EnableCustomVariableFunctionality();
+
+            ToolStripMenuItem saveVariablesInPlaceItem = new ToolStripMenuItem("Save Variables in Place");
+            saveVariablesInPlaceItem.Click += (sender, e) => _dataManager.SaveVariablesInPlace();
 
             ToolStripMenuItem showVariableXmlItem = new ToolStripMenuItem("Show Variable XML");
             showVariableXmlItem.Click += (sender, e) => ShowVariableXml();
@@ -163,7 +171,8 @@ namespace STROOP.Controls
             ContextMenuStrip.Items.Add(resetVariablesItem);
             ContextMenuStrip.Items.Add(clearAllButHighlightedItem);
             ContextMenuStrip.Items.Add(addAllToCustomTabItem);
-            ContextMenuStrip.Items.Add(enableCustomization);
+            ContextMenuStrip.Items.Add(enableCustomizationItem);
+            ContextMenuStrip.Items.Add(saveVariablesInPlaceItem);
             ContextMenuStrip.Items.Add(showVariableXmlItem);
             ContextMenuStrip.Items.Add(showVariableInfoItem);
             ContextMenuStrip.Items.Add(setAllRoundingLimitsItem);
@@ -375,10 +384,10 @@ namespace STROOP.Controls
             AddVariables(precursors.ConvertAll(w => w.CreateWatchVariableControl()));
         }
 
-        public void SaveVariables()
+        public void SaveVariables(string fileName = null)
         {
             DialogUtilities.SaveXmlElements(
-                FileType.StroopVariables, "CustomData", GetCurrentVarXmlElements());
+                FileType.StroopVariables, "CustomData", GetCurrentVarXmlElements(), fileName);
         }
 
         public void EnableCustomVariableFunctionality()
