@@ -48,7 +48,7 @@ namespace STROOP.Structs
                     "Then from now on, STROOP will open with this set of variables in this tab. " +
                     "This action cannot be undone, except by re-downloading STROOP. " +
                     "Are you sure you wish to proceed?",
-                "Saving Variables In Place Warning");
+                "Save Variables In Place Warning");
         }
 
         public static bool AskQuestion(string message, string title)
