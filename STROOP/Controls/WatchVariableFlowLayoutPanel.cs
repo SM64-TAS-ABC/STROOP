@@ -45,13 +45,13 @@ namespace STROOP.Controls
         public void Initialize(
             DataManager dataManager,
             List<WatchVariableControlPrecursor> precursors,
-            List<VariableGroup> allGroups = null,
-            List<VariableGroup> visibleGroups = null)
+            List<VariableGroup> allGroups,
+            List<VariableGroup> visibleGroups)
         {
             _dataManager = dataManager;
-            if (allGroups != null) _allGroups.AddRange(allGroups);
-            if (visibleGroups != null) _initialVisibleGroups.AddRange(visibleGroups);
-            if (visibleGroups != null) _visibleGroups.AddRange(visibleGroups);
+            _allGroups.AddRange(allGroups);
+            _initialVisibleGroups.AddRange(visibleGroups);
+            _visibleGroups.AddRange(visibleGroups);
             _watchVarPrecursors.AddRange(precursors);
             AddVariables(_watchVarPrecursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
 
@@ -222,7 +222,7 @@ namespace STROOP.Controls
                 Controls.Clear();
                 _watchVarControls.ForEach(watchVarControl =>
                 {
-                    if (watchVarControl.BelongsToAnyGroupOrHasNoGroup(_visibleGroups))
+                    if (ShouldShow(watchVarControl))
                         Controls.Add(watchVarControl);
                 });
             }
@@ -452,7 +452,7 @@ namespace STROOP.Controls
 
         private bool ShouldShow(WatchVariableControl watchVarControl)
         {
-            return _allGroups.Count == 0 || watchVarControl.BelongsToAnyGroup(_visibleGroups);
+            return watchVarControl.BelongsToAnyGroupOrHasNoGroup(_visibleGroups);
         }
 
         public override string ToString()

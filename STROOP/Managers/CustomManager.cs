@@ -54,8 +54,7 @@ namespace STROOP.Managers
                 new List<Action>()
                 {
                     () => ClearVariables(),
-                    () => ClearVariables(), // TODO fix this
-                    //() => RemoveVariableGroup(VariableGroup.Custom),
+                    () => _variablePanel.RemoveVariableGroup(VariableGroup.NoGroup),
                 });
 
             _checkBoxCustomRecordValues = splitContainerCustomControls.Panel1.Controls["checkBoxCustomRecordValues"] as CheckBox;

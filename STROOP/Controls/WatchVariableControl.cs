@@ -613,6 +613,8 @@ namespace STROOP.Controls
 
         public bool BelongsToGroup(VariableGroup variableGroup)
         {
+            if (variableGroup == VariableGroup.NoGroup)
+                return GroupList.Count == 0;
             return GroupList.Contains(variableGroup);
         }
 
@@ -625,6 +627,8 @@ namespace STROOP.Controls
         {
             return GroupList.Count == 0 || BelongsToAnyGroup(variableGroups);
         }
+
+
 
 
 

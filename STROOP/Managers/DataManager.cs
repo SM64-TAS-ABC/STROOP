@@ -22,8 +22,8 @@ namespace STROOP.Managers
         public DataManager(
             string varFilePath,
             WatchVariableFlowLayoutPanel variablePanel,
-            List<VariableGroup> allVariableGroups = null,
-            List<VariableGroup> visibleVariableGroups = null)
+            List<VariableGroup> allVariableGroupsNullable = null,
+            List<VariableGroup> visibleVariableGroupsNullable = null)
         {
             _varFilePath = varFilePath;
             List<WatchVariableControlPrecursor> variables = varFilePath == null
@@ -31,6 +31,15 @@ namespace STROOP.Managers
                 : XmlConfigParser.OpenWatchVariableControlPrecursors(varFilePath);
 
             _variablePanel = variablePanel;
+
+            List<VariableGroup> allVariableGroups = allVariableGroupsNullable ?? new List<VariableGroup>();
+            if (allVariableGroups.Contains(VariableGroup.Custom)) throw new ArgumentOutOfRangeException();
+            allVariableGroups.Add(VariableGroup.Custom);
+
+            List<VariableGroup> visibleVariableGroups = visibleVariableGroupsNullable ?? new List<VariableGroup>();
+            if (visibleVariableGroups.Contains(VariableGroup.Custom)) throw new ArgumentOutOfRangeException();
+            visibleVariableGroups.Add(VariableGroup.Custom);
+
             _variablePanel.Initialize(
                 this,
                 variables,
