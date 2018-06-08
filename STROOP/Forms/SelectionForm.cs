@@ -1,4 +1,5 @@
-﻿using STROOP.Structs;
+﻿using STROOP.Controls;
+using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using System;
 using System.Collections.Generic;
@@ -62,6 +63,17 @@ namespace STROOP.Forms
                         Config.Stream.SetValue((short)animation.Value, marioObjRef + MarioObjectConfig.AnimationOffset);
                     }
                 });
+            selectionForm.Show();
+        }
+
+        public static void ShowDataManagerSelectionForm(WatchVariableControl control)
+        {
+            SelectionForm selectionForm = new SelectionForm();
+            selectionForm.Initialize(
+                "Select a Tab",
+                "Add Variable to Tab",
+                Config.GetDataManagers(),
+                dataManager => control.AddToTab(dataManager, false, false));
             selectionForm.Show();
         }
     }

@@ -14,6 +14,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System.Drawing.Drawing2D;
 using STROOP.Managers;
+using STROOP.Forms;
 
 namespace STROOP.Controls
 {
@@ -285,6 +286,7 @@ namespace STROOP.Controls
             bool isXKeyHeld = Keyboard.IsKeyDown(Key.X);
             bool isTKeyHeld = Keyboard.IsKeyDown(Key.T);
             bool isMKeyHeld = Keyboard.IsKeyDown(Key.M);
+            bool isPKeyHeld = Keyboard.IsKeyDown(Key.P);
             bool isDeletishKeyHeld = KeyboardUtilities.IsDeletishKeyHeld();
             bool isBacktickHeld = Keyboard.IsKeyDown(Key.OemTilde);
             bool isZHeld = Keyboard.IsKeyDown(Key.Z);
@@ -398,6 +400,12 @@ namespace STROOP.Controls
             if (isMKeyHeld)
             {
                 AddToTab(Config.MemoryManager, false, false);
+                return;
+            }
+
+            if (isPKeyHeld)
+            {
+                SelectionForm.ShowDataManagerSelectionForm(this);
                 return;
             }
 
