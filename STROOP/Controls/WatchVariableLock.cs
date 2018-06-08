@@ -22,7 +22,7 @@ namespace STROOP.Controls
         public readonly uint? Mask;
         public readonly uint Address;
         public readonly string SpecialType;
-        public readonly Func<string, uint, bool> SetterFunction;
+        public readonly Func<object, uint, bool> SetterFunction;
 
         private object _value;
         public object Value { get { return _value; } }
@@ -34,7 +34,7 @@ namespace STROOP.Controls
             uint? mask,
             uint address,
             string specialType,
-            Func<string, uint, bool> setterFunction,
+            Func<object, uint, bool> setterFunction,
             object value)
         {
             IsSpecial = isSpecial;
@@ -50,7 +50,7 @@ namespace STROOP.Controls
 
         public void Invoke()
         {
-            SetterFunction(_value.ToString(), Address);
+            SetterFunction(_value, Address);
         }
 
         public void UpdateLockValue(object value)
