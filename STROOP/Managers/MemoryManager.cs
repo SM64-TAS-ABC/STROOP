@@ -72,12 +72,12 @@ namespace STROOP.Managers
 
         private static readonly int _memorySize = (int)ObjectConfig.StructSize;
 
-        public MemoryManager(TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel, List<WatchVariableControlPrecursor> objectData)
-            : base(new List<WatchVariableControlPrecursor>(), watchVariablePanel)
+        public MemoryManager(TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel, string varFilePath)
+            : base(null, watchVariablePanel)
         {
             _behavior = null;
             _currentValueTexts = new List<ValueText>();
-            _objectPrecursors = new List<WatchVariableControlPrecursor>(objectData);
+            _objectPrecursors = XmlConfigParser.OpenWatchVariableControlPrecursors(varFilePath);
             _objectSpecificPrecursors = new List<WatchVariableControlPrecursor>();
 
             SplitContainer splitContainer = tabControl.Controls["splitContainerMemory"] as SplitContainer;

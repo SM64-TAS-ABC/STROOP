@@ -50,8 +50,8 @@ namespace STROOP.Managers
 
         byte[] _copiedFile;
 
-        public FileManager(List<WatchVariableControlPrecursor> variables, TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanelFile, FileImageGui gui)
-            : base(variables, watchVariablePanelFile)
+        public FileManager(string varFilePath, TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanelFile, FileImageGui gui)
+            : base(varFilePath, watchVariablePanelFile)
         {
             _tabControl = tabControl;
             _gui = gui;

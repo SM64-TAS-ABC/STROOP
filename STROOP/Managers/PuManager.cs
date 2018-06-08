@@ -31,8 +31,8 @@ namespace STROOP.Managers
                 VariableGroup.Advanced,
             };
 
-        public PuManager(List<WatchVariableControlPrecursor> variables, TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel)
-            : base(variables, watchVariablePanel, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
+        public PuManager(string varFilePath, TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel)
+            : base(varFilePath, watchVariablePanel, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
         {
             SplitContainer splitContainerFile = tabControl.Controls["splitContainerPu"] as SplitContainer;
 

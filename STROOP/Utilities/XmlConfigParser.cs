@@ -119,14 +119,15 @@ namespace STROOP.Utilities
             SavedSettingsConfig.IsLoaded = true;
         }
 
-        public static List<WatchVariableControl> OpenWatchVariableControls(string path, string schemaFile)
+        public static List<WatchVariableControl> OpenWatchVariableControls(string path)
         {
-            return OpenWatchVariableControlPrecursors(path, schemaFile)
+            return OpenWatchVariableControlPrecursors(path)
                 .ConvertAll(precursor => precursor.CreateWatchVariableControl());
         }
 
-        public static List<WatchVariableControlPrecursor> OpenWatchVariableControlPrecursors(string path, string schemaFile)
+        public static List<WatchVariableControlPrecursor> OpenWatchVariableControlPrecursors(string path)
         {
+            string schemaFile = "MiscDataSchema.xsd";
             var objectData = new List<WatchVariableControlPrecursor>();
             var assembly = Assembly.GetExecutingAssembly();
 

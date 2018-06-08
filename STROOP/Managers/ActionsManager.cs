@@ -18,8 +18,8 @@ namespace STROOP.Managers
         BetterTextbox textBoxActionDescription;
         BetterTextbox textBoxAnimationDescription;
 
-        public ActionsManager(List<WatchVariableControlPrecursor> variables, WatchVariableFlowLayoutPanel variableTable, Control actionsControl)
-            : base(variables, variableTable)
+        public ActionsManager(string varFilePath, WatchVariableFlowLayoutPanel variableTable, Control actionsControl)
+            : base(varFilePath, variableTable)
         {
             textBoxActionDescription = actionsControl.Controls["textBoxActionDescription"] as BetterTextbox;
             textBoxAnimationDescription = actionsControl.Controls["textBoxAnimationDescription"] as BetterTextbox;

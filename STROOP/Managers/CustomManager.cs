@@ -30,8 +30,8 @@ namespace STROOP.Managers
         private int _numGaps;
         private int _recordFreq;
 
-        public CustomManager(List<WatchVariableControlPrecursor> variables, Control customControl, WatchVariableFlowLayoutPanel variableTable)
-            : base(variables, variableTable)
+        public CustomManager(string varFilePath, Control customControl, WatchVariableFlowLayoutPanel variableTable)
+            : base(varFilePath, variableTable)
         {
             EnableCustomVariableFunctionality();
 

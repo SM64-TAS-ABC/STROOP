@@ -19,11 +19,15 @@ namespace STROOP.Managers
         public readonly int TabIndex;
 
         public DataManager(
-            List<WatchVariableControlPrecursor> variables,
+            string varFilePath,
             WatchVariableFlowLayoutPanel variablePanel,
             List<VariableGroup> allVariableGroups = null,
             List<VariableGroup> visibleVariableGroups = null)
         {
+            List<WatchVariableControlPrecursor> variables = varFilePath == null
+                ? new List<WatchVariableControlPrecursor>()
+                : XmlConfigParser.OpenWatchVariableControlPrecursors(varFilePath);
+
             _variablePanel = variablePanel;
             _variablePanel.Initialize(
                 variables,

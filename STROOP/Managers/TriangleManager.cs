@@ -77,8 +77,8 @@ namespace STROOP.Managers
                 VariableGroup.Advanced,
             };
 
-        public TriangleManager(Control tabControl, List<WatchVariableControlPrecursor> variables, WatchVariableFlowLayoutPanel watchVariablePanel)
-            : base(variables, watchVariablePanel, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
+        public TriangleManager(Control tabControl, string varFilePath, WatchVariableFlowLayoutPanel watchVariablePanel)
+            : base(varFilePath, watchVariablePanel, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
         {
             _triangleCache = new Dictionary<uint, TriangleDataModel>();
 

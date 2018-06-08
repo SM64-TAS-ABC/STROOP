@@ -27,8 +27,8 @@ namespace STROOP.Managers
         WatchVariableFlowLayoutPanel _watchVariablePanel;
         RichTextBox _outputTextBox;
 
-        public GfxManager(Control tabControl, List<WatchVariableControlPrecursor> variables, WatchVariableFlowLayoutPanel watchVariablePanel)
-            : base(variables, watchVariablePanel)
+        public GfxManager(Control tabControl, WatchVariableFlowLayoutPanel watchVariablePanel)
+            : base(null, watchVariablePanel)
         {
             SplitContainer left = tabControl.Controls["splitContainerGfxLeft"] as SplitContainer;
             SplitContainer right = left.Panel2.Controls["splitContainerGfxright"] as SplitContainer;

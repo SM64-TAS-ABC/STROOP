@@ -17,8 +17,8 @@ namespace STROOP.Managers
         InputImageGui _gui;
         InputDisplayPanel _inputDisplayPanel;
 
-        public InputManager(List<WatchVariableControlPrecursor> variables, Control inputControl, WatchVariableFlowLayoutPanel variableTable, InputImageGui gui)
-            : base(variables, variableTable)
+        public InputManager(string varFilePath, Control inputControl, WatchVariableFlowLayoutPanel variableTable, InputImageGui gui)
+            : base(varFilePath, variableTable)
         {
             _gui = gui;
 

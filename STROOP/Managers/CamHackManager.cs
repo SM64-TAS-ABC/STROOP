@@ -18,8 +18,8 @@ namespace STROOP.Managers
         RadioButton _mode2RadioButton;
         RadioButton _mode3RadioButton;
 
-        public CamHackManager(List<WatchVariableControlPrecursor> variables, TabPage camHackControl, WatchVariableFlowLayoutPanel variableTable)
-            : base(variables, variableTable)
+        public CamHackManager(string varFilePath, TabPage camHackControl, WatchVariableFlowLayoutPanel variableTable)
+            : base(varFilePath, variableTable)
         {
             _currentCamHackMode = CamHackMode.REGULAR;
 

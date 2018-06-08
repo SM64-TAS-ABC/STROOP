@@ -32,8 +32,8 @@ namespace STROOP.Managers
                 VariableGroup.Advanced,
             };
 
-        public MarioManager(List<WatchVariableControlPrecursor> variables, Control marioControl, WatchVariableFlowLayoutPanel variableTable)
-            : base(variables, variableTable, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
+        public MarioManager(string varFilePath, Control marioControl, WatchVariableFlowLayoutPanel variableTable)
+            : base(varFilePath, variableTable, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
         {
             SplitContainer splitContainerMario = marioControl.Controls["splitContainerMario"] as SplitContainer;
 
