@@ -387,7 +387,7 @@ namespace STROOP.Controls
         public void SaveVariables(string fileName = null)
         {
             DialogUtilities.SaveXmlElements(
-                FileType.StroopVariables, "CustomData", GetCurrentVarXmlElements(), fileName);
+                FileType.StroopVariables, "VarData", GetCurrentVarXmlElements(), fileName);
         }
 
         public void EnableCustomVariableFunctionality()

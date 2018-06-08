@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Data>
+<VarData>
 
   <Data groupList="Basic" type="float" offset="0x3C" base="Mario" color="Red" coord="X">Mario X</Data>
   <Data groupList="Basic" type="float" offset="0x40" base="Mario" color="Red" coord="Y">Mario Y</Data>
@@ -77,4 +77,4 @@
   <Data groupList="Point" base="None" specialType="FDistanceSelfToPoint" color="LightBlue">FDist Self to Point</Data>
   <Data groupList="Point" base="None" specialType="SDistanceSelfToPoint" color="LightBlue">SDist Self to Point</Data>
 
-</Data>
+</VarData>

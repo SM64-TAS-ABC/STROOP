@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<MarioData>
+<VarData>
   <Data groupList="Intermediate" type="float" offset="0x3C" base="Mario" color="Red" coord="X">X</Data>
   <Data groupList="Intermediate" type="float" offset="0x40" base="Mario" color="Red" coord="Y">Y</Data>
   <Data groupList="Intermediate" type="float" offset="0x44" base="Mario" color="Red" coord="Z">Z</Data>
@@ -61,4 +61,4 @@
   <Data groupList="Advanced" base="None" specialType="Qs4RelativeIntendedNextX" color="Grey" coord="X">QS4 Rel Intended X</Data>
   <Data groupList="Advanced" base="None" specialType="Qs4RelativeIntendedNextZ" color="Grey" coord="Z">QS4 Rel Intended Z</Data>
 
-</MarioData>
+</VarData>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<InputData>
+<VarData>
   <Data type="float" offsetUS="0x8033AF94" offsetJP="0x80339C24" base="Relative" color="LightBlue">Effective X</Data>
   <Data type="float" offsetUS="0x8033AF98" offsetJP="0x80339C28" base="Relative" color="LightBlue">Effective Y</Data>
   <Data type="float" offsetUS="0x8033AF9C" offsetJP="0x80339C2C" base="Relative" color="LightBlue">Magnitude</Data>
@@ -60,4 +60,4 @@
   <Data type="byte" offset="0x01" base="InputBuffered" subclass="Boolean" mask="0x40" color="Purple">Buffered U1</Data>
   <Data type="byte" offset="0x01" base="InputBuffered" subclass="Boolean" mask="0x80" color="Purple">Buffered U2</Data>
   
-</InputData>
+</VarData>

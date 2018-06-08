@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ObjectData>
+<VarData>
 
   <Data groupList="Basic" type="float" offset="0xA0" base="Object" coord="X">X</Data>
   <Data groupList="Basic" type="float" offset="0xA4" base="Object" coord="Y">Y</Data>
@@ -234,4 +234,4 @@
   <Data groupList="Basic" type="int" offset="0x144" base="Object">Subtype</Data>
   <Data groupList="Basic" type="int" offset="0x14C" base="Object">State</Data>
   <Data groupList="Basic" type="int" offset="0x154" base="Object">Timer</Data>
-</ObjectData>
+</VarData>

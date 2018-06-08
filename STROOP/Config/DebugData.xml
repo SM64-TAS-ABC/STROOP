@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<DebugData>
+<VarData>
   <Data type="byte" offsetUS="0x8033D263" offsetJP="0x8033BEF3" base="Relative">Advanced Mode</Data>
   <Data type="byte" offsetUS="0x80330E94" offsetJP="0x8032FF34" base="Relative">Advanced Mode Sttg</Data>
   <Data type="byte" offsetUS="0x8032D594" offsetJP="0x8032C654" base="Relative">Resource Meter</Data>
@@ -33,4 +33,4 @@
   <Data type="ushort" offsetUS="0x802CB30E" offsetJP="0x802CABF2" base="Relative" useHex="true" color="Grey">D&lt; Spawn 2</Data>
   <Data type="ushort" offsetUS="0x802CB356" offsetJP="0x802CAC3A" base="Relative" useHex="true" color="Grey">Dv Spawn 1</Data>
   <Data type="ushort" offsetUS="0x802CB35A" offsetJP="0x802CAC3E" base="Relative" useHex="true" color="Grey">Dv Spawn 2</Data>
-</DebugData>
+</VarData>

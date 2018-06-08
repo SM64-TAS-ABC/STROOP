@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TrianglesData>
+<VarData>
   <Data groupList="Basic" base="Triangle" specialType="Classification" subclass="String">Classification</Data>
 
   <Data groupList="Basic" type="ushort" offset="0x00" base="Triangle">Surface Type</Data>
@@ -128,4 +128,4 @@
   <Data groupList="Advanced" base="Triangle" specialType="DeltaAngleLine31" subclass="Angle" display="short" color="LightBlue">DAngle Line31</Data>
   <Data groupList="Advanced" base="Triangle" specialType="DeltaAngleLine13" subclass="Angle" display="short" color="LightBlue">DAngle Line13</Data>
 
-</TrianglesData>
+</VarData>

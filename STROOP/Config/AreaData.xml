@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TrianglesData>
+<VarData>
   <Data type="uint" offset="0x90" base="Mario" useHex="true" color="Red">Current Area Ptr (M)</Data>
   <Data base="None" specialType="CurrentAreaIndexMario" color="Red">Current Area Index (M)</Data>
 
@@ -32,4 +32,4 @@
   <Data type="short" offset="0x36" base="Area">Music Param 1</Data>
   <Data type="short" offset="0x38" base="Area">Music Param 2</Data>
   <Data type="ushort" offset="0x3A" base="Area" useHex="true">Unused</Data>
-</TrianglesData>
+</VarData>

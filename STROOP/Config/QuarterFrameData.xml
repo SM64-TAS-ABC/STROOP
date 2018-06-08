@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<QuarterFrameData>
+<VarData>
   <Data type="int" offset="0x104" base="HackedArea" useHex="true" color ="Yellow">Movement Action</Data>
   <Data type="int" offset="0x108" base="HackedArea" color ="Purple">#0 result</Data>
   <Data type="float" offset="0x10C" base="HackedArea">#0 water Y</Data>
@@ -45,4 +45,4 @@
   <Data type="float" offset="0x1B8" base="HackedArea" coord="X">#3 pos X</Data>
   <Data type="float" offset="0x1BC" base="HackedArea" coord="Y">#3 pos Y</Data>
   <Data type="float" offset="0x1C0" base="HackedArea" coord="Z">#3 pos Z</Data>
-</QuarterFrameData>
+</VarData>

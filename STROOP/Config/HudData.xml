@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<HudData>
+<VarData>
   <Data type="sbyte" offset="0xAD" base="Mario">Life Count</Data>
   <Data type="short" offset="0xF0" base="Mario">Life Display</Data>
   <Data type="short" offset="0xAE" base="Mario" useHex="true">HP (Hex)</Data>
@@ -37,4 +37,4 @@
   <Data type="int" offsetUS="0x803325FC" offsetJP="0x803314EC" base="Relative" color="Blue">HP HUD Timer</Data>
   <Data type="short" offsetUS="0x803325F2" offsetJP="0x803314E2" base="Relative" color="Blue">HP HUD X</Data>
   <Data type="short" offsetUS="0x803325F4" offsetJP="0x803314E4" base="Relative" color="Blue">HP HUD Y</Data>
-</HudData>
+</VarData>

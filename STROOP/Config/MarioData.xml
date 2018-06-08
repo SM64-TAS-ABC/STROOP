@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<MarioData>
+<VarData>
   <Data groupList="Basic" type="float" offset="0x3C" base="Mario" coord="X">X</Data>
   <Data groupList="Basic" type="float" offset="0x40" base="Mario" coord="Y">Y</Data>
   <Data groupList="Basic" type="float" offset="0x44" base="Mario" coord="Z">Z</Data>
@@ -87,4 +87,4 @@
   
   <Data groupList="Advanced" type="uint" offsetUS="0x80361158" offsetJP="0x8035FDE8" base="Relative" subclass="Object">Effective Mario Object</Data>
   <Data groupList="Advanced" type="uint" offset="0x88" base="Mario" subclass="Object">Visual Mario Object</Data>
-</MarioData>
+</VarData>

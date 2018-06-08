@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<WaterData>
+<VarData>
   <Data type="short" offset="0x76" base="Mario" color="LightBlue">Water Level</Data>
   <Data type="short" offsetUS="0x8036118A" offsetJP="0x8035FE1A" base="Relative" color="LightBlue">Water Level Median</Data>
 
@@ -60,4 +60,4 @@
   <Data type="short" offset="0x30" base="Water" color="Purple">Water Level 4</Data>
 
   <Data type="float" offsetUS="0x8038BBA8" offsetJP="0x8038BBA8" base="Relative" color="Green">Default WL</Data>
-</WaterData>
+</VarData>

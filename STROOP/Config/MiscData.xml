@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<MiscData>
+<VarData>
   <Data type="uint" offsetUS="0x8032D5D4" offsetJP="0x8032C694" base="Relative">Global Timer</Data>
   <Data type="ushort" offsetUS="0x8038EEE0" offsetJP="0x8038EEE0" base="Relative">RNG Value</Data>
   <Data base="None" specialType="RngIndex" subclass="String">RNG Index</Data>
@@ -63,4 +63,4 @@
   <Data type="short" offsetUS="0x8033B23C" offsetJP="0x80339ECC" base="Relative" color="Grey">Transition Black Fade</Data>
   <Data type="short" offsetUS="0x8038B8A4" offsetJP="0x8038B8A4" base="Relative" color="Grey">Transition White Fade</Data>
   <Data type="short" offsetUS="0x8033B254" offsetJP="0x80339EE4" base="Relative" color="Grey">Transition Shrinking</Data>
-</MiscData>
+</VarData>
