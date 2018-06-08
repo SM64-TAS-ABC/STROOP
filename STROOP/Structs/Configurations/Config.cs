@@ -56,7 +56,7 @@ namespace STROOP.Structs.Configurations
             List<DataManager> dataManagerList = new List<DataManager>();
             foreach (FieldInfo field in configType.GetFields())
             {
-                if (field.FieldType.IsSubclassOf(typeof(DataManager)))
+                if (TypeUtilities.IsSubtype(field.FieldType, typeof(DataManager)))
                     dataManagerList.Add((DataManager)field.GetValue(null));
             }
             dataManagerList.Sort((d1, d2) => d1.TabIndex - d2.TabIndex);

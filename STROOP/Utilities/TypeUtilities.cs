@@ -197,5 +197,10 @@ namespace STROOP.Structs
             }
             return bytes;
         }
+
+        public static bool IsSubtype(Type type1, Type type2)
+        {
+            return type1 == type2 || type1.IsSubclassOf(type2);
+        }
     }
 }
