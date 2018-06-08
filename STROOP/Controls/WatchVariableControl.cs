@@ -621,6 +621,11 @@ namespace STROOP.Controls
             return variableGroups.Any(varGroup => BelongsToGroup(varGroup));
         }
 
+        public bool BelongsToAnyGroupOrHasNoGroup(List<VariableGroup> variableGroups)
+        {
+            return GroupList.Count == 0 || BelongsToAnyGroup(variableGroups);
+        }
+
 
 
         public void ApplySettings(WatchVariableControlSettings settings)

@@ -222,7 +222,7 @@ namespace STROOP.Controls
                 Controls.Clear();
                 _watchVarControls.ForEach(watchVarControl =>
                 {
-                    if (watchVarControl.BelongsToAnyGroup(_visibleGroups))
+                    if (watchVarControl.BelongsToAnyGroupOrHasNoGroup(_visibleGroups))
                         Controls.Add(watchVarControl);
                 });
             }
