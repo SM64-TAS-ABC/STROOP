@@ -1274,12 +1274,17 @@
     <SpawnCode gfxId="0x37"/>
     <Image path="LLL Sinking Stone Platform.png"/>
     <MapImage path="LLL Sinking Stone Platform Top.png" rotates="true"/>
+    <Data groupList="ObjectSpecific" base="Object" offset="0x104" type="int">Pressed Down Amount</Data>
+    <Data groupList="ObjectSpecific" base="Object" offset="0x108" type="float">Pressed Down Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001D78" name="LLL Transporting Cage Platform">
     <SpawnCode gfxId="0x36"/>
     <Image path="LLL Transporting Cage Platform.png"/>
     <MapImage path="LLL Transporting Cage Platform Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xF8" base="Object">Phase</Data>
+    <Data groupList="ObjectSpecific" base="Object" offset="0x100" type="float">Oscillation Height</Data>
+    <Data groupList="ObjectSpecific" base="Object" offset="0x104" type="int">Pressed Down Amount</Data>
+    <Data groupList="ObjectSpecific" base="Object" offset="0x108" type="float">Pressed Down Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001DA8" name="Fire Bar">
     <SpawnCode gfxId="0x3A"/>
