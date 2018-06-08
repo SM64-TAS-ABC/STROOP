@@ -16,7 +16,6 @@ namespace STROOP.Structs
         Advanced,
 
         ObjectSpecific,
-        Custom,
         Manual,
 
         Collision,
