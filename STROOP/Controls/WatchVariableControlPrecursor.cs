@@ -232,22 +232,22 @@ namespace STROOP.Controls
             if (WatchVar.OffsetDefault != null)
                 xElement.Add(new XAttribute(
                     "offset",
-                    String.Format("0x{0:X}", WatchVar.OffsetDefault.Value)));
+                    HexUtilities.FormatValue(WatchVar.OffsetDefault.Value)));
 
             if (WatchVar.OffsetUS != null)
                 xElement.Add(new XAttribute(
                     "offsetUS",
-                    String.Format("0x{0:X}", WatchVar.OffsetUS.Value)));
+                    HexUtilities.FormatValue(WatchVar.OffsetUS.Value)));
 
             if (WatchVar.OffsetJP != null)
                 xElement.Add(new XAttribute(
                     "offsetJP",
-                    String.Format("0x{0:X}", WatchVar.OffsetJP.Value)));
+                    HexUtilities.FormatValue(WatchVar.OffsetJP.Value)));
 
             if (WatchVar.OffsetPAL != null)
                 xElement.Add(new XAttribute(
                     "offsetPAL",
-                    String.Format("0x{0:X}", WatchVar.OffsetPAL.Value)));
+                    HexUtilities.FormatValue(WatchVar.OffsetPAL.Value)));
 
             if (WatchVar.MemoryTypeName != null)
                 xElement.Add(new XAttribute("type", WatchVar.MemoryTypeName));
@@ -255,10 +255,13 @@ namespace STROOP.Controls
             if (WatchVar.SpecialType != null)
                 xElement.Add(new XAttribute("specialType", WatchVar.SpecialType));
 
+            if (DisplayType != null)
+                xElement.Add(new XAttribute("display", DisplayType));
+
             if (WatchVar.Mask != null)
                 xElement.Add(new XAttribute(
                     "mask",
-                    String.Format("0x{0:X" + WatchVar.NibbleCount + "}", WatchVar.Mask.Value)));
+                    HexUtilities.FormatValue(WatchVar.Mask.Value, WatchVar.NibbleCount)));
 
             if (Subclass != WatchVariableSubclass.Number)
                 xElement.Add(new XAttribute("subclass", Subclass.ToString()));
@@ -275,6 +278,9 @@ namespace STROOP.Controls
             if (Coordinate.HasValue)
                 xElement.Add(new XAttribute("coord", Coordinate.Value.ToString()));
 
+            if (IsYaw.HasValue)
+                xElement.Add(new XAttribute("yaw", IsYaw.Value.ToString()));
+
             Color? color = newColor ?? BackgroundColor;
             if (color.HasValue)
                 xElement.Add(new XAttribute(
@@ -285,7 +291,7 @@ namespace STROOP.Controls
             if (fixedAddresses != null)
                 xElement.Add(new XAttribute("fixed", String.Join(
                     ",", fixedAddresses.ConvertAll(
-                        address => String.Format("0x{0:X}", address)))));
+                        address => HexUtilities.FormatValue(address)))));
 
             return xElement;
         }
