@@ -166,7 +166,7 @@ namespace STROOP.Controls
         protected override object HandleHexDisplaying(object value)
         {
             if (!_displayAsHex) return value;
-            return HexUtilities.FormatValueAsInteger(value, GetHexDigitCount(), true);
+            return HexUtilities.FormatValue(value, GetHexDigitCount(), true);
         }
 
         protected override object HandleHexUndisplaying(object value)
