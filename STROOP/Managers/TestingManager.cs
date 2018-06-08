@@ -687,18 +687,13 @@ namespace STROOP.Managers
 
         public void Update(bool updateView)
         {
-            // Schedule
+            // Show Invisible Objects as Signs
+            if (TestingConfig.ShowInvisibleObjectsAsSigns)
             {
-                (int frame, double? x, double? y, double? z, double? hspd, string description) = _rollingRocksScheduleList[_rollingRocksScheduleIndex];
-                _labelSchedule1.Text = Config.Stream.GetInt32(MiscConfig.GlobalTimerAddress).ToString();
-                _labelSchedule2.Text = (frame + _rollingRocksScheduleIndexOffset).ToString();
-                if (x.HasValue) _labelSchedule3.Text = x.Value.ToString();
-                if (y.HasValue) _labelSchedule4.Text = y.Value.ToString();
-                if (z.HasValue) _labelSchedule5.Text = z.Value.ToString();
-                _labelSchedule6.Text = (0).ToString();
-                if (hspd.HasValue) _labelSchedule7.Text = hspd.Value.ToString();
-                _labelScheduleIndex.Text = _rollingRocksScheduleIndex.ToString();
-                _labelScheduleDescription.Text = description.ToString();
+                DataModels.Objects.ToList().ForEach(obj =>
+                {
+                    if (obj.GraphicsID == 0) obj.GraphicsID = ObjectConfig.SignGraphicsId;
+                });
             }
 
             // Obj at HOLP
@@ -752,6 +747,20 @@ namespace STROOP.Managers
             }
 
             if (!updateView) return;
+
+            // Schedule
+            {
+                (int frame, double? x, double? y, double? z, double? hspd, string description) = _rollingRocksScheduleList[_rollingRocksScheduleIndex];
+                _labelSchedule1.Text = Config.Stream.GetInt32(MiscConfig.GlobalTimerAddress).ToString();
+                _labelSchedule2.Text = (frame + _rollingRocksScheduleIndexOffset).ToString();
+                if (x.HasValue) _labelSchedule3.Text = x.Value.ToString();
+                if (y.HasValue) _labelSchedule4.Text = y.Value.ToString();
+                if (z.HasValue) _labelSchedule5.Text = z.Value.ToString();
+                _labelSchedule6.Text = (0).ToString();
+                if (hspd.HasValue) _labelSchedule7.Text = hspd.Value.ToString();
+                _labelScheduleIndex.Text = _rollingRocksScheduleIndex.ToString();
+                _labelScheduleDescription.Text = description.ToString();
+            }
 
             // get current stream values
             switch (_varToRecord)

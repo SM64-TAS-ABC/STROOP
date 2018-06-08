@@ -360,6 +360,7 @@
     <Compile Include="Models\ObjectProcessorDataModel.cs" />
     <Compile Include="Models\ByteModel.cs" />
     <Compile Include="Structs\Configurations\AreaConfig.cs" />
+    <Compile Include="Structs\Configurations\TestingConfig.cs" />
     <Compile Include="Structs\Configurations\LockConfig.cs" />
     <Compile Include="Structs\Configurations\RomVersionConfig.cs" />
     <Compile Include="Structs\Configurations\M64Config.cs" />
