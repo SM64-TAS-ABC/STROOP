@@ -15,6 +15,8 @@ namespace STROOP.Managers
     public class DataManager
     {
         protected WatchVariableFlowLayoutPanel _variablePanel;
+        public readonly string TabName;
+        public readonly int TabIndex;
 
         public DataManager(
             List<WatchVariableControlPrecursor> variables,
@@ -27,6 +29,8 @@ namespace STROOP.Managers
                 variables,
                 allVariableGroups,
                 visibleVariableGroups);
+            TabName = ControlUtilities.GetTabName(_variablePanel);
+            TabIndex = ControlUtilities.GetTabIndex(_variablePanel);
         }
 
         public virtual void RemoveVariableGroup(VariableGroup varGroup)
@@ -87,7 +91,7 @@ namespace STROOP.Managers
 
         public override string ToString()
         {
-            return _variablePanel.ToString();
+            return TabName;
         }
     }
 }

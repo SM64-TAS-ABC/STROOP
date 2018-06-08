@@ -517,5 +517,26 @@ namespace STROOP.Utilities
                 table.FirstDisplayedScrollingRowIndex = row;
         }
 
+        public static TabPage GetTab(Control control)
+        {
+            while (control != null && !(control is TabPage))
+            {
+                control = control.Parent;
+            }
+            return (TabPage)control;
+        }
+
+        public static string GetTabName(Control control)
+        {
+            TabPage tab = GetTab(control);
+            return tab?.Text ?? "";
+        }
+
+        public static int GetTabIndex(Control control)
+        {
+            TabPage tab = GetTab(control);
+            return tab?.TabIndex ?? Int32.MaxValue;
+        }
+
     }
 }

@@ -59,6 +59,7 @@ namespace STROOP.Structs.Configurations
                 if (field.FieldType.IsSubclassOf(typeof(DataManager)))
                     dataManagerList.Add((DataManager)field.GetValue(null));
             }
+            dataManagerList.Sort((d1, d2) => d1.TabIndex - d2.TabIndex);
             return dataManagerList;
         }
     }
