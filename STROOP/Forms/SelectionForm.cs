@@ -8,19 +8,23 @@ namespace STROOP.Forms
 {
     public partial class SelectionForm : Form
     {
-        public SelectionForm(
-            string selectionText,
-            string buttonText,
-            List<string> items,
-            Action<string> selectionAction)
+        public SelectionForm()
         {
             InitializeComponent();
+        }
+
+        public void Initialize<T>(
+            string selectionText,
+            string buttonText,
+            List<T> items,
+            Action<T> selectionAction)
+        {
             textBoxSelect.Text = selectionText;
             buttonSet.Text = buttonText;
             listBoxSelections.DataSource = items;
             buttonSet.Click += (sender, e) =>
             {
-                string selection = listBoxSelections.SelectedItem.ToString();
+                T selection = (T)listBoxSelections.SelectedItem;
                 selectionAction(selection);
                 Close();
             };
@@ -28,7 +32,8 @@ namespace STROOP.Forms
         
         public static void ShowActionSelectionForm()
         {
-            SelectionForm selectionForm = new SelectionForm(
+            SelectionForm selectionForm = new SelectionForm();
+            selectionForm.Initialize(
                 "Select an Action",
                 "Set Action",
                 TableConfig.MarioActions.GetActionNameList(),
@@ -43,7 +48,8 @@ namespace STROOP.Forms
 
         public static void ShowAnimationSelectionForm()
         {
-            SelectionForm selectionForm = new SelectionForm(
+            SelectionForm selectionForm = new SelectionForm();
+            selectionForm.Initialize(
                 "Select an Animation",
                 "Set Animation",
                 TableConfig.MarioAnimations.GetAnimationNameList(),
