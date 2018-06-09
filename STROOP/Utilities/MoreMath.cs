@@ -116,6 +116,12 @@ namespace STROOP.Utilities
             return (xComp * multiplier, zComp * multiplier);
         }
 
+        public static double ScaleVector1D(
+            double xComp, double finalDist)
+        {
+            return xComp >= 0 ? finalDist : -1 * finalDist;
+        }
+
         public static (double x, double y, double z) ExtrapolateLine3D(
             double p1X, double p1Y, double p1Z, double p2X, double p2Y, double p2Z, double finalDist)
         {
@@ -126,13 +132,21 @@ namespace STROOP.Utilities
             return (p1X + scaledX, p1Y + scaledY, p1Z + scaledZ);
         }
 
-        public static (double x, double z) ExtrapolateLineHorizontally(
+        public static (double x, double z) ExtrapolateLine2D(
             double p1X, double p1Z, double p2X, double p2Z, double finalDist)
         {
             double diffX = p2X - p1X;
             double diffZ = p2Z - p1Z;
             (double scaledX, double scaledZ) = ScaleVector2D(diffX, diffZ, finalDist);
             return (p1X + scaledX, p1Z + scaledZ);
+        }
+
+        public static double ExtrapolateLine1D(
+            double p1X, double p2X, double finalDist)
+        {
+            double diffX = p2X - p1X;
+            double scaledX = ScaleVector1D(diffX, finalDist);
+            return p1X + scaledX;
         }
 
         public static (double x, double z) RotatePointAboutPointToAngle(

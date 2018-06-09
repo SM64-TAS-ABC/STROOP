@@ -468,11 +468,11 @@ namespace STROOP.Utilities
             return success;
         }
 
-        public static bool SetDistance(PositionAngleId id1, PositionAngleId id2, string distance, bool move1)
+        public static bool SetDistance(PositionAngleId p1, PositionAngleId p2, string distance, bool move1)
         {
             double? distanceDouble = ParsingUtilities.ParseDoubleNullable(distance);
             if (!distanceDouble.HasValue) return false;
-            return SetDistance(id1, id2, distanceDouble.Value, move1);
+            return SetDistance(p1, p2, distanceDouble.Value, move1);
         }
 
         public static bool SetDistance(PositionAngleId p1, PositionAngleId p2, double distance, bool move1)
@@ -482,5 +482,67 @@ namespace STROOP.Utilities
             (double x, double y, double z) = MoreMath.ExtrapolateLine3D(pF.X, pF.Y, pF.Z, pM.X, pM.Y, pM.Z, distance);
             return CombineBools(pM.SetX(x), pM.SetY(y), pM.SetZ(z));
         }
+
+        public static bool SetHDistance(PositionAngleId p1, PositionAngleId p2, string distance, bool move1)
+        {
+            double? distanceDouble = ParsingUtilities.ParseDoubleNullable(distance);
+            if (!distanceDouble.HasValue) return false;
+            return SetHDistance(p1, p2, distanceDouble.Value, move1);
+        }
+
+        public static bool SetHDistance(PositionAngleId p1, PositionAngleId p2, double distance, bool move1)
+        {
+            PositionAngleId pF = move1 ? p2 : p1;
+            PositionAngleId pM = move1 ? p1 : p2;
+            (double x, double z) = MoreMath.ExtrapolateLine2D(pF.X, pF.Z, pM.X, pM.Z, distance);
+            return CombineBools(pM.SetX(x), pM.SetZ(z));
+        }
+
+        public static bool SetXDistance(PositionAngleId p1, PositionAngleId p2, string distance, bool move1)
+        {
+            double? distanceDouble = ParsingUtilities.ParseDoubleNullable(distance);
+            if (!distanceDouble.HasValue) return false;
+            return SetXDistance(p1, p2, distanceDouble.Value, move1);
+        }
+
+        public static bool SetXDistance(PositionAngleId p1, PositionAngleId p2, double distance, bool move1)
+        {
+            PositionAngleId pF = move1 ? p2 : p1;
+            PositionAngleId pM = move1 ? p1 : p2;
+            double x = MoreMath.ExtrapolateLine1D(pF.X, pM.X, distance);
+            return CombineBools(pM.SetX(x));
+        }
+
+        public static bool SetYDistance(PositionAngleId p1, PositionAngleId p2, string distance, bool move1)
+        {
+            double? distanceDouble = ParsingUtilities.ParseDoubleNullable(distance);
+            if (!distanceDouble.HasValue) return false;
+            return SetYDistance(p1, p2, distanceDouble.Value, move1);
+        }
+
+        public static bool SetYDistance(PositionAngleId p1, PositionAngleId p2, double distance, bool move1)
+        {
+            PositionAngleId pF = move1 ? p2 : p1;
+            PositionAngleId pM = move1 ? p1 : p2;
+            double y = MoreMath.ExtrapolateLine1D(pF.Y, pM.Y, distance);
+            return CombineBools(pM.SetY(y));
+        }
+
+        public static bool SetZDistance(PositionAngleId p1, PositionAngleId p2, string distance, bool move1)
+        {
+            double? distanceDouble = ParsingUtilities.ParseDoubleNullable(distance);
+            if (!distanceDouble.HasValue) return false;
+            return SetZDistance(p1, p2, distanceDouble.Value, move1);
+        }
+
+        public static bool SetZDistance(PositionAngleId p1, PositionAngleId p2, double distance, bool move1)
+        {
+            PositionAngleId pF = move1 ? p2 : p1;
+            PositionAngleId pM = move1 ? p1 : p2;
+            double z = MoreMath.ExtrapolateLine1D(pF.Z, pM.Z, distance);
+            return CombineBools(pM.SetZ(z));
+        }
+
+
     }
 }

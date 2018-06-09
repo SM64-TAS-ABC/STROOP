@@ -61,7 +61,7 @@ namespace STROOP.Structs
                         double? distAway = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!distAway.HasValue) return false;
                         (double newMarioX, double newMarioZ) =
-                            MoreMath.ExtrapolateLineHorizontally(objPos.X, objPos.Z, marioPos.X, marioPos.Z, distAway.Value);
+                            MoreMath.ExtrapolateLine2D(objPos.X, objPos.Z, marioPos.X, marioPos.Z, distAway.Value);
                         return SetMarioPosition(newMarioX, null, newMarioZ);
                     };
                     break;
@@ -159,7 +159,7 @@ namespace STROOP.Structs
                         double? distAway = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!distAway.HasValue) return false;
                         (double newMarioX, double newMarioZ) =
-                            MoreMath.ExtrapolateLineHorizontally(homePos.X, homePos.Z, marioPos.X, marioPos.Z, distAway.Value);
+                            MoreMath.ExtrapolateLine2D(homePos.X, homePos.Z, marioPos.X, marioPos.Z, distAway.Value);
                         return SetMarioPosition(newMarioX, null, newMarioZ);
                     };
                     break;
@@ -257,7 +257,7 @@ namespace STROOP.Structs
                         double? distAway = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!distAway.HasValue) return false;
                         (double newObjX, double newObjZ) =
-                            MoreMath.ExtrapolateLineHorizontally(homePos.X, homePos.Z, objPos.X, objPos.Z, distAway.Value);
+                            MoreMath.ExtrapolateLine2D(homePos.X, homePos.Z, objPos.X, objPos.Z, distAway.Value);
                         return SetObjectPosition(objAddress, newObjX, null, newObjZ);
                     };
                     break;
@@ -566,7 +566,7 @@ namespace STROOP.Structs
                         double distAway = hitboxDistAway + mObjHitboxRadius + objHitboxRadius;
 
                         (double newMarioX, double newMarioZ) =
-                            MoreMath.ExtrapolateLineHorizontally(objPos.X, objPos.Z, marioPos.X, marioPos.Z, distAway);
+                            MoreMath.ExtrapolateLine2D(objPos.X, objPos.Z, marioPos.X, marioPos.Z, distAway);
                         return SetMarioPositionAndMarioObjectPosition(newMarioX, null, newMarioZ);
                     };
                     break;
@@ -1093,7 +1093,7 @@ namespace STROOP.Structs
                         Position marioPos = GetMarioPosition();
                         Position objPos = GetObjectPosition(objAddress);
                         (double newMarioX, double newMarioZ) =
-                            MoreMath.ExtrapolateLineHorizontally(
+                            MoreMath.ExtrapolateLine2D(
                                 objPos.X, objPos.Z, marioPos.X, marioPos.Z, distAway);
                         return SetMarioPosition(newMarioX, null, newMarioZ);
                     };
@@ -1644,7 +1644,7 @@ namespace STROOP.Structs
                         double? distAway = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!distAway.HasValue) return false;
                         (double newHolpX, double newHolpZ) =
-                            MoreMath.ExtrapolateLineHorizontally(
+                            MoreMath.ExtrapolateLine2D(
                                 marioPos.X, marioPos.Z, holpPos.X, holpPos.Z, distAway.Value);
                         return SetHolpPosition(newHolpX, null, newHolpZ);
                     };
@@ -2181,7 +2181,7 @@ namespace STROOP.Structs
                         if (!hDistNullable.HasValue) return false;
                         double hDist = hDistNullable.Value;
                         (double newMarioX, double newMarioZ) =
-                            MoreMath.ExtrapolateLineHorizontally(triStruct.X1, triStruct.Z1, marioPos.X, marioPos.Z, hDist);
+                            MoreMath.ExtrapolateLine2D(triStruct.X1, triStruct.Z1, marioPos.X, marioPos.Z, hDist);
                         return SetMarioPosition(newMarioX, null, newMarioZ);
                     };
                     break;
@@ -2283,7 +2283,7 @@ namespace STROOP.Structs
                         if (!hDistNullable.HasValue) return false;
                         double hDist = hDistNullable.Value;
                         (double newMarioX, double newMarioZ) =
-                            MoreMath.ExtrapolateLineHorizontally(triStruct.X2, triStruct.Z2, marioPos.X, marioPos.Z, hDist);
+                            MoreMath.ExtrapolateLine2D(triStruct.X2, triStruct.Z2, marioPos.X, marioPos.Z, hDist);
                         return SetMarioPosition(newMarioX, null, newMarioZ);
                     };
                     break;
@@ -2385,7 +2385,7 @@ namespace STROOP.Structs
                         if (!hDistNullable.HasValue) return false;
                         double hDist = hDistNullable.Value;
                         (double newMarioX, double newMarioZ) =
-                            MoreMath.ExtrapolateLineHorizontally(triStruct.X3, triStruct.Z3, marioPos.X, marioPos.Z, hDist);
+                            MoreMath.ExtrapolateLine2D(triStruct.X3, triStruct.Z3, marioPos.X, marioPos.Z, hDist);
                         return SetMarioPosition(newMarioX, null, newMarioZ);
                     };
                     break;
@@ -3918,7 +3918,7 @@ namespace STROOP.Structs
                         if (!hDistNullable.HasValue) return false;
                         double hDist = hDistNullable.Value;
                         (double newSelfX, double newSelfZ) =
-                            MoreMath.ExtrapolateLineHorizontally(
+                            MoreMath.ExtrapolateLine2D(
                                 SpecialConfig.PointX, SpecialConfig.PointZ, SpecialConfig.SelfX, SpecialConfig.SelfZ, hDist);
                         return SetSelfPosition(newSelfX, null, newSelfZ);
                     };
