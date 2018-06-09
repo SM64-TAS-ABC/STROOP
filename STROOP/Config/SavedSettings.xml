@@ -1,4 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SavedSettings>
-  <YawSigned>false</YawSigned>
+  <YawSigned>true</YawSigned>
+  <SlotIndexsFromOne>true</SlotIndexsFromOne>
+  <MoveCameraWithPu>true</MoveCameraWithPu>
+  <ScaleDiagonalPositionControllerButtons>true</ScaleDiagonalPositionControllerButtons>
+  <ExcludeDustForClosestObject>true</ExcludeDustForClosestObject>
+  <UseMisalignmentOffsetForDistanceToLine>true</UseMisalignmentOffsetForDistanceToLine>
+  <DontRoundValuesToZero>true</DontRoundValuesToZero>
+  <NeutralizeTrianglesWith21>true</NeutralizeTrianglesWith21>
 </SavedSettings>

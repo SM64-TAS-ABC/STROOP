@@ -126,7 +126,14 @@ namespace STROOP.Structs.Configurations
         {
             return new List<XElement>
             {
-                new XElement("YawSigned", _yawSigned)
+                new XElement("YawSigned", _yawSigned),
+                new XElement("SlotIndexsFromOne", _slotIndexsFromOne),
+                new XElement("MoveCameraWithPu", _moveCameraWithPu),
+                new XElement("ScaleDiagonalPositionControllerButtons", _scaleDiagonalPositionControllerButtons),
+                new XElement("ExcludeDustForClosestObject", _excludeDustForClosestObject),
+                new XElement("UseMisalignmentOffsetForDistanceToLine", _useMisalignmentOffsetForDistanceToLine),
+                new XElement("DontRoundValuesToZero", _dontRoundValuesToZero),
+                new XElement("NeutralizeTrianglesWith21", _neutralizeTrianglesWith21),
             };
         }
 

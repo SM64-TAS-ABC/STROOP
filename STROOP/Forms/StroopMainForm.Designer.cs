@@ -1039,6 +1039,14 @@ namespace STROOP
             this.radioButtonPositionControllerRelativeAngleMario = new System.Windows.Forms.RadioButton();
             this.radioButtonPositionControllerRelativeAngleRecommended = new System.Windows.Forms.RadioButton();
             this.radioButtonPositionControllerRelativeAngleCustom = new System.Windows.Forms.RadioButton();
+            this.groupBoxOptionsSavedSettings = new System.Windows.Forms.GroupBox();
+            this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
+            this.checkBoxMoveCamWithPu = new System.Windows.Forms.CheckBox();
+            this.checkBoxNeutralizeTrianglesWith21 = new System.Windows.Forms.CheckBox();
+            this.checkBoxScaleDiagonalPositionControllerButtons = new System.Windows.Forms.CheckBox();
+            this.checkBoxDontRoundValuesToZero = new System.Windows.Forms.CheckBox();
+            this.checkBoxExcludeDustForClosestObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine = new System.Windows.Forms.CheckBox();
             this.groupBoxFPS = new System.Windows.Forms.GroupBox();
             this.betterTextboxFPS = new STROOP.BetterTextbox();
             this.groupBoxGotoRetrieveOffsets = new System.Windows.Forms.GroupBox();
@@ -1054,9 +1062,6 @@ namespace STROOP
             this.labelGotoAboveSuffix = new System.Windows.Forms.Label();
             this.labelGotoAbovePrefix = new System.Windows.Forms.Label();
             this.textBoxGotoAbove = new STROOP.BetterTextbox();
-            this.checkBoxDontRoundValuesToZero = new System.Windows.Forms.CheckBox();
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine = new System.Windows.Forms.CheckBox();
-            this.checkBoxExcludeDustForClosestObject = new System.Windows.Forms.CheckBox();
             this.groupBoxShowOverlay = new System.Windows.Forms.GroupBox();
             this.checkBoxShowOverlayCameraHackObject = new System.Windows.Forms.CheckBox();
             this.checkBoxShowOverlayChildObject = new System.Windows.Forms.CheckBox();
@@ -1070,12 +1075,8 @@ namespace STROOP
             this.checkBoxShowOverlayClosestObject = new System.Windows.Forms.CheckBox();
             this.checkBoxShowOverlayStoodOnObject = new System.Windows.Forms.CheckBox();
             this.checkBoxShowOverlayHeldObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxScaleDiagonalPositionControllerButtons = new System.Windows.Forms.CheckBox();
-            this.checkBoxNeutralizeTrianglesWith21 = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.checkBoxMoveCamWithPu = new System.Windows.Forms.CheckBox();
             this.checkBoxUseRomHack = new System.Windows.Forms.CheckBox();
-            this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
             this.tabPageTesting = new System.Windows.Forms.TabPage();
             this.groupBoxTriRooms = new System.Windows.Forms.GroupBox();
             this.textBoxTriRoomsToValue = new STROOP.BetterTextbox();
@@ -1243,7 +1244,6 @@ namespace STROOP
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.comboBoxYawSigned = new System.Windows.Forms.ComboBox();
-            this.groupBoxOptionsSavedSettings = new System.Windows.Forms.GroupBox();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1610,6 +1610,7 @@ namespace STROOP
             this.splitContainerVarHack.SuspendLayout();
             this.tabPageOptions.SuspendLayout();
             this.groupBoxPositionControllerRelativeAngle.SuspendLayout();
+            this.groupBoxOptionsSavedSettings.SuspendLayout();
             this.groupBoxFPS.SuspendLayout();
             this.groupBoxGotoRetrieveOffsets.SuspendLayout();
             this.groupBoxShowOverlay.SuspendLayout();
@@ -1627,7 +1628,6 @@ namespace STROOP
             this.groupBoxRecording.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
-            this.groupBoxOptionsSavedSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -3985,7 +3985,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(415, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(418, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -5821,7 +5821,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 351F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 352F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -11650,7 +11650,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(288, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(271, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -11682,7 +11682,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(282, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(265, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -11738,7 +11738,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(282, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(265, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -12194,7 +12194,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 698;
+            this.splitContainerMemory.SplitterDistance = 701;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -12218,7 +12218,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(582, 429);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(585, 429);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -12321,7 +12321,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(208, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(205, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPageHacks
@@ -13771,6 +13771,107 @@ namespace STROOP
             this.radioButtonPositionControllerRelativeAngleCustom.Text = "Custom:";
             this.radioButtonPositionControllerRelativeAngleCustom.UseVisualStyleBackColor = true;
             // 
+            // groupBoxOptionsSavedSettings
+            // 
+            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxStartSlotIndexOne);
+            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxMoveCamWithPu);
+            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxNeutralizeTrianglesWith21);
+            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxScaleDiagonalPositionControllerButtons);
+            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxDontRoundValuesToZero);
+            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxExcludeDustForClosestObject);
+            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxUseMisalignmentOffsetForDistanceToLine);
+            this.groupBoxOptionsSavedSettings.Location = new System.Drawing.Point(6, 4);
+            this.groupBoxOptionsSavedSettings.Name = "groupBoxOptionsSavedSettings";
+            this.groupBoxOptionsSavedSettings.Size = new System.Drawing.Size(259, 169);
+            this.groupBoxOptionsSavedSettings.TabIndex = 38;
+            this.groupBoxOptionsSavedSettings.TabStop = false;
+            this.groupBoxOptionsSavedSettings.Text = "Saved Settings";
+            // 
+            // checkBoxStartSlotIndexOne
+            // 
+            this.checkBoxStartSlotIndexOne.AutoSize = true;
+            this.checkBoxStartSlotIndexOne.Checked = true;
+            this.checkBoxStartSlotIndexOne.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxStartSlotIndexOne.Location = new System.Drawing.Point(12, 21);
+            this.checkBoxStartSlotIndexOne.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxStartSlotIndexOne.Name = "checkBoxStartSlotIndexOne";
+            this.checkBoxStartSlotIndexOne.Size = new System.Drawing.Size(133, 17);
+            this.checkBoxStartSlotIndexOne.TabIndex = 0;
+            this.checkBoxStartSlotIndexOne.Text = "Start Slot Index From 1";
+            this.checkBoxStartSlotIndexOne.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMoveCamWithPu
+            // 
+            this.checkBoxMoveCamWithPu.AutoSize = true;
+            this.checkBoxMoveCamWithPu.Checked = true;
+            this.checkBoxMoveCamWithPu.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMoveCamWithPu.Location = new System.Drawing.Point(12, 61);
+            this.checkBoxMoveCamWithPu.Name = "checkBoxMoveCamWithPu";
+            this.checkBoxMoveCamWithPu.Size = new System.Drawing.Size(162, 17);
+            this.checkBoxMoveCamWithPu.TabIndex = 4;
+            this.checkBoxMoveCamWithPu.Text = "PU Controller Moves Camera";
+            this.checkBoxMoveCamWithPu.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxNeutralizeTrianglesWith21
+            // 
+            this.checkBoxNeutralizeTrianglesWith21.AutoSize = true;
+            this.checkBoxNeutralizeTrianglesWith21.Checked = true;
+            this.checkBoxNeutralizeTrianglesWith21.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxNeutralizeTrianglesWith21.Location = new System.Drawing.Point(12, 101);
+            this.checkBoxNeutralizeTrianglesWith21.Name = "checkBoxNeutralizeTrianglesWith21";
+            this.checkBoxNeutralizeTrianglesWith21.Size = new System.Drawing.Size(156, 17);
+            this.checkBoxNeutralizeTrianglesWith21.TabIndex = 4;
+            this.checkBoxNeutralizeTrianglesWith21.Text = "Neutralize Triangles with 21";
+            this.checkBoxNeutralizeTrianglesWith21.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxScaleDiagonalPositionControllerButtons
+            // 
+            this.checkBoxScaleDiagonalPositionControllerButtons.AutoSize = true;
+            this.checkBoxScaleDiagonalPositionControllerButtons.Checked = true;
+            this.checkBoxScaleDiagonalPositionControllerButtons.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxScaleDiagonalPositionControllerButtons.Location = new System.Drawing.Point(12, 41);
+            this.checkBoxScaleDiagonalPositionControllerButtons.Name = "checkBoxScaleDiagonalPositionControllerButtons";
+            this.checkBoxScaleDiagonalPositionControllerButtons.Size = new System.Drawing.Size(224, 17);
+            this.checkBoxScaleDiagonalPositionControllerButtons.TabIndex = 8;
+            this.checkBoxScaleDiagonalPositionControllerButtons.Text = "Scale Diagonal Position Controller Buttons";
+            this.checkBoxScaleDiagonalPositionControllerButtons.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxDontRoundValuesToZero
+            // 
+            this.checkBoxDontRoundValuesToZero.AutoSize = true;
+            this.checkBoxDontRoundValuesToZero.Checked = true;
+            this.checkBoxDontRoundValuesToZero.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxDontRoundValuesToZero.Location = new System.Drawing.Point(12, 141);
+            this.checkBoxDontRoundValuesToZero.Name = "checkBoxDontRoundValuesToZero";
+            this.checkBoxDontRoundValuesToZero.Size = new System.Drawing.Size(142, 17);
+            this.checkBoxDontRoundValuesToZero.TabIndex = 31;
+            this.checkBoxDontRoundValuesToZero.Text = "Don\'t Round Values to 0";
+            this.checkBoxDontRoundValuesToZero.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxExcludeDustForClosestObject
+            // 
+            this.checkBoxExcludeDustForClosestObject.AutoSize = true;
+            this.checkBoxExcludeDustForClosestObject.Checked = true;
+            this.checkBoxExcludeDustForClosestObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxExcludeDustForClosestObject.Location = new System.Drawing.Point(12, 81);
+            this.checkBoxExcludeDustForClosestObject.Name = "checkBoxExcludeDustForClosestObject";
+            this.checkBoxExcludeDustForClosestObject.Size = new System.Drawing.Size(175, 17);
+            this.checkBoxExcludeDustForClosestObject.TabIndex = 31;
+            this.checkBoxExcludeDustForClosestObject.Text = "Exclude Dust for Closest Object";
+            this.checkBoxExcludeDustForClosestObject.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxUseMisalignmentOffsetForDistanceToLine
+            // 
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.AutoSize = true;
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Checked = true;
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Location = new System.Drawing.Point(12, 121);
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Name = "checkBoxUseMisalignmentOffsetForDistanceToLine";
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Size = new System.Drawing.Size(242, 17);
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.TabIndex = 31;
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Text = "Use Misalignment Offset For Distance To Line";
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.UseVisualStyleBackColor = true;
+            // 
             // groupBoxFPS
             // 
             this.groupBoxFPS.Controls.Add(this.betterTextboxFPS);
@@ -13926,42 +14027,6 @@ namespace STROOP
             this.textBoxGotoAbove.TabIndex = 28;
             this.textBoxGotoAbove.Text = "300";
             this.textBoxGotoAbove.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // checkBoxDontRoundValuesToZero
-            // 
-            this.checkBoxDontRoundValuesToZero.AutoSize = true;
-            this.checkBoxDontRoundValuesToZero.Checked = true;
-            this.checkBoxDontRoundValuesToZero.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDontRoundValuesToZero.Location = new System.Drawing.Point(12, 141);
-            this.checkBoxDontRoundValuesToZero.Name = "checkBoxDontRoundValuesToZero";
-            this.checkBoxDontRoundValuesToZero.Size = new System.Drawing.Size(142, 17);
-            this.checkBoxDontRoundValuesToZero.TabIndex = 31;
-            this.checkBoxDontRoundValuesToZero.Text = "Don\'t Round Values to 0";
-            this.checkBoxDontRoundValuesToZero.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxUseMisalignmentOffsetForDistanceToLine
-            // 
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.AutoSize = true;
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Checked = true;
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Location = new System.Drawing.Point(12, 121);
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Name = "checkBoxUseMisalignmentOffsetForDistanceToLine";
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Size = new System.Drawing.Size(242, 17);
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.TabIndex = 31;
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Text = "Use Misalignment Offset For Distance To Line";
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxExcludeDustForClosestObject
-            // 
-            this.checkBoxExcludeDustForClosestObject.AutoSize = true;
-            this.checkBoxExcludeDustForClosestObject.Checked = true;
-            this.checkBoxExcludeDustForClosestObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxExcludeDustForClosestObject.Location = new System.Drawing.Point(12, 81);
-            this.checkBoxExcludeDustForClosestObject.Name = "checkBoxExcludeDustForClosestObject";
-            this.checkBoxExcludeDustForClosestObject.Size = new System.Drawing.Size(175, 17);
-            this.checkBoxExcludeDustForClosestObject.TabIndex = 31;
-            this.checkBoxExcludeDustForClosestObject.Text = "Exclude Dust for Closest Object";
-            this.checkBoxExcludeDustForClosestObject.UseVisualStyleBackColor = true;
             // 
             // groupBoxShowOverlay
             // 
@@ -14136,28 +14201,6 @@ namespace STROOP
             this.checkBoxShowOverlayHeldObject.Text = "Held Object";
             this.checkBoxShowOverlayHeldObject.UseVisualStyleBackColor = true;
             // 
-            // checkBoxScaleDiagonalPositionControllerButtons
-            // 
-            this.checkBoxScaleDiagonalPositionControllerButtons.AutoSize = true;
-            this.checkBoxScaleDiagonalPositionControllerButtons.Location = new System.Drawing.Point(12, 41);
-            this.checkBoxScaleDiagonalPositionControllerButtons.Name = "checkBoxScaleDiagonalPositionControllerButtons";
-            this.checkBoxScaleDiagonalPositionControllerButtons.Size = new System.Drawing.Size(224, 17);
-            this.checkBoxScaleDiagonalPositionControllerButtons.TabIndex = 8;
-            this.checkBoxScaleDiagonalPositionControllerButtons.Text = "Scale Diagonal Position Controller Buttons";
-            this.checkBoxScaleDiagonalPositionControllerButtons.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxNeutralizeTrianglesWith21
-            // 
-            this.checkBoxNeutralizeTrianglesWith21.AutoSize = true;
-            this.checkBoxNeutralizeTrianglesWith21.Checked = true;
-            this.checkBoxNeutralizeTrianglesWith21.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxNeutralizeTrianglesWith21.Location = new System.Drawing.Point(12, 101);
-            this.checkBoxNeutralizeTrianglesWith21.Name = "checkBoxNeutralizeTrianglesWith21";
-            this.checkBoxNeutralizeTrianglesWith21.Size = new System.Drawing.Size(156, 17);
-            this.checkBoxNeutralizeTrianglesWith21.TabIndex = 4;
-            this.checkBoxNeutralizeTrianglesWith21.Text = "Neutralize Triangles with 21";
-            this.checkBoxNeutralizeTrianglesWith21.UseVisualStyleBackColor = true;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -14167,18 +14210,6 @@ namespace STROOP
             this.label3.Size = new System.Drawing.Size(129, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "*Requires Pure Interpreter";
-            // 
-            // checkBoxMoveCamWithPu
-            // 
-            this.checkBoxMoveCamWithPu.AutoSize = true;
-            this.checkBoxMoveCamWithPu.Checked = true;
-            this.checkBoxMoveCamWithPu.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMoveCamWithPu.Location = new System.Drawing.Point(12, 61);
-            this.checkBoxMoveCamWithPu.Name = "checkBoxMoveCamWithPu";
-            this.checkBoxMoveCamWithPu.Size = new System.Drawing.Size(162, 17);
-            this.checkBoxMoveCamWithPu.TabIndex = 4;
-            this.checkBoxMoveCamWithPu.Text = "PU Controller Moves Camera";
-            this.checkBoxMoveCamWithPu.UseVisualStyleBackColor = true;
             // 
             // checkBoxUseRomHack
             // 
@@ -14190,19 +14221,6 @@ namespace STROOP
             this.checkBoxUseRomHack.TabIndex = 2;
             this.checkBoxUseRomHack.Text = "Enable STROOP ROM hack*";
             this.checkBoxUseRomHack.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxStartSlotIndexOne
-            // 
-            this.checkBoxStartSlotIndexOne.AutoSize = true;
-            this.checkBoxStartSlotIndexOne.Checked = true;
-            this.checkBoxStartSlotIndexOne.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxStartSlotIndexOne.Location = new System.Drawing.Point(12, 21);
-            this.checkBoxStartSlotIndexOne.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxStartSlotIndexOne.Name = "checkBoxStartSlotIndexOne";
-            this.checkBoxStartSlotIndexOne.Size = new System.Drawing.Size(133, 17);
-            this.checkBoxStartSlotIndexOne.TabIndex = 0;
-            this.checkBoxStartSlotIndexOne.Text = "Start Slot Index From 1";
-            this.checkBoxStartSlotIndexOne.UseVisualStyleBackColor = true;
             // 
             // tabPageTesting
             // 
@@ -16075,22 +16093,6 @@ namespace STROOP
             this.comboBoxYawSigned.Size = new System.Drawing.Size(69, 21);
             this.comboBoxYawSigned.TabIndex = 22;
             // 
-            // groupBoxOptionsSavedSettings
-            // 
-            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxStartSlotIndexOne);
-            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxMoveCamWithPu);
-            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxNeutralizeTrianglesWith21);
-            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxScaleDiagonalPositionControllerButtons);
-            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxDontRoundValuesToZero);
-            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxExcludeDustForClosestObject);
-            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxUseMisalignmentOffsetForDistanceToLine);
-            this.groupBoxOptionsSavedSettings.Location = new System.Drawing.Point(6, 4);
-            this.groupBoxOptionsSavedSettings.Name = "groupBoxOptionsSavedSettings";
-            this.groupBoxOptionsSavedSettings.Size = new System.Drawing.Size(259, 169);
-            this.groupBoxOptionsSavedSettings.TabIndex = 38;
-            this.groupBoxOptionsSavedSettings.TabStop = false;
-            this.groupBoxOptionsSavedSettings.Text = "Saved Settings";
-            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -16552,6 +16554,8 @@ namespace STROOP
             this.tabPageOptions.PerformLayout();
             this.groupBoxPositionControllerRelativeAngle.ResumeLayout(false);
             this.groupBoxPositionControllerRelativeAngle.PerformLayout();
+            this.groupBoxOptionsSavedSettings.ResumeLayout(false);
+            this.groupBoxOptionsSavedSettings.PerformLayout();
             this.groupBoxFPS.ResumeLayout(false);
             this.groupBoxFPS.PerformLayout();
             this.groupBoxGotoRetrieveOffsets.ResumeLayout(false);
@@ -16584,8 +16588,6 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
-            this.groupBoxOptionsSavedSettings.ResumeLayout(false);
-            this.groupBoxOptionsSavedSettings.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
