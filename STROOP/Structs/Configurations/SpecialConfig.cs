@@ -20,12 +20,8 @@ namespace STROOP.Structs.Configurations
 
         // - Self pos
 
-        public static PositionAngleId SelfPosPosAngleId =
+        public static PositionAngleId SelfPosPosAngle =
             new PositionAngleId(PositionAngleTypeEnum.Mario);
-        private static PositionAngle SelfPosPosAngle
-        {
-            get => PositionAngle.FromId(SelfPosPosAngleId);
-        }
 
         public static double SelfX
         {
@@ -44,26 +40,18 @@ namespace STROOP.Structs.Configurations
 
         // - Self angle
 
-        public static PositionAngleId SelfAnglePosAngleId =
+        public static PositionAngleId SelfAnglePosAngle =
             new PositionAngleId(PositionAngleTypeEnum.Mario);
-        private static PositionAngle SelfAnglePosAngle
-        {
-            get => PositionAngle.FromId(SelfAnglePosAngleId);
-        }
 
         public static double SelfAngle
         {
-            get => SelfAnglePosAngle.Angle ?? Double.NaN;
+            get => SelfAnglePosAngle.Angle;
         }
 
         // - Point pos
 
-        public static PositionAngleId PointPosPosAngleId =
+        public static PositionAngleId PointPosPosAngle =
             new PositionAngleId(PositionAngleTypeEnum.Custom);
-        private static PositionAngle PointPosPosAngle
-        {
-            get => PositionAngle.FromId(PointPosPosAngleId);
-        }
 
         public static double PointX
         {
@@ -80,18 +68,14 @@ namespace STROOP.Structs.Configurations
             get => PointPosPosAngle.Z;
         }
 
-        // Point angle
+        // - Point angle
 
-        public static PositionAngleId PointAnglePosAngleId =
+        public static PositionAngleId PointAnglePosAngle =
             new PositionAngleId(PositionAngleTypeEnum.Custom);
-        private static PositionAngle PointAnglePosAngle
-        {
-            get => PositionAngle.FromId(PointAnglePosAngleId);
-        }
 
         public static double PointAngle
         {
-            get => PointAnglePosAngle.Angle ?? Double.NaN;
+            get => PointAnglePosAngle.Angle;
         }
         
         // PU vars
