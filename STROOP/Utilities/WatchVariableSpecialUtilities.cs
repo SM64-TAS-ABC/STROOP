@@ -3700,9 +3700,9 @@ namespace STROOP.Structs
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        PositionAngle posAngleId = PositionAngle.FromString(objectValue.ToString());
-                        if (posAngleId == null) return false;
-                        SpecialConfig.SelfPosPA = posAngleId;
+                        PositionAngle posAngle = PositionAngle.FromString(objectValue.ToString());
+                        if (posAngle == null) return false;
+                        SpecialConfig.SelfPosPA = posAngle;
                         return true;
                     };
                     break;
@@ -3756,9 +3756,9 @@ namespace STROOP.Structs
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        PositionAngle posAngleId = PositionAngle.FromString(objectValue.ToString());
-                        if (posAngleId == null) return false;
-                        SpecialConfig.SelfAnglePA = posAngleId;
+                        PositionAngle posAngle = PositionAngle.FromString(objectValue.ToString());
+                        if (posAngle == null) return false;
+                        SpecialConfig.SelfAnglePA = posAngle;
                         return true;
                     };
                     break;
@@ -3784,9 +3784,9 @@ namespace STROOP.Structs
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        PositionAngle posAngleId = PositionAngle.FromString(objectValue.ToString());
-                        if (posAngleId == null) return false;
-                        SpecialConfig.PointPosPA = posAngleId;
+                        PositionAngle posAngle = PositionAngle.FromString(objectValue.ToString());
+                        if (posAngle == null) return false;
+                        SpecialConfig.PointPosPA = posAngle;
                         return true;
                     };
                     break;
@@ -3840,9 +3840,9 @@ namespace STROOP.Structs
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        PositionAngle posAngleId = PositionAngle.FromString(objectValue.ToString());
-                        if (posAngleId == null) return false;
-                        SpecialConfig.PointAnglePA = posAngleId;
+                        PositionAngle posAngle = PositionAngle.FromString(objectValue.ToString());
+                        if (posAngle == null) return false;
+                        SpecialConfig.PointAnglePA = posAngle;
                         return true;
                     };
                     break;
@@ -3864,83 +3864,55 @@ namespace STROOP.Structs
                 case "XDistanceSelfToPoint":
                     getterFunction = (uint dummy) =>
                     {
-                        return SpecialConfig.SelfX - SpecialConfig.PointX;
+                        return PositionAngle.GetXDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA);
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? xDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
-                        if (!xDistNullable.HasValue) return false;
-                        double xDist = xDistNullable.Value;
-                        double newSelfX = SpecialConfig.PointX + xDist;
-                        return SpecialConfig.SelfPosPA.SetX(newSelfX);
+                        return PositionAngle.SetXDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA, objectValue);
                     };
                     break;
 
                 case "YDistanceSelfToPoint":
                     getterFunction = (uint dummy) =>
                     {
-                        return SpecialConfig.SelfY - SpecialConfig.PointY;
+                        return PositionAngle.GetYDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA);
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? yDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
-                        if (!yDistNullable.HasValue) return false;
-                        double yDist = yDistNullable.Value;
-                        double newSelfY = SpecialConfig.PointY + yDist;
-                        return SpecialConfig.SelfPosPA.SetY(newSelfY);
+                        return PositionAngle.SetYDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA, objectValue);
                     };
                     break;
 
                 case "ZDistanceSelfToPoint":
                     getterFunction = (uint dummy) =>
                     {
-                        return SpecialConfig.SelfZ - SpecialConfig.PointZ;
+                        return PositionAngle.GetZDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA);
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? zDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
-                        if (!zDistNullable.HasValue) return false;
-                        double zDist = zDistNullable.Value;
-                        double newSelfZ = SpecialConfig.PointZ + zDist;
-                        return SpecialConfig.SelfPosPA.SetZ(newSelfZ);
+                        return PositionAngle.SetZDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA, objectValue);
                     };
                     break;
 
                 case "HDistanceSelfToPoint":
                     getterFunction = (uint dummy) =>
                     {
-                        return MoreMath.GetDistanceBetween(
-                            SpecialConfig.SelfX, SpecialConfig.SelfZ, SpecialConfig.PointX, SpecialConfig.PointZ);
+                        return PositionAngle.GetHDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA);
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? hDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
-                        if (!hDistNullable.HasValue) return false;
-                        double hDist = hDistNullable.Value;
-                        (double newSelfX, double newSelfZ) =
-                            MoreMath.ExtrapolateLine2D(
-                                SpecialConfig.PointX, SpecialConfig.PointZ, SpecialConfig.SelfX, SpecialConfig.SelfZ, hDist);
-                        return SetSelfPosition(newSelfX, null, newSelfZ);
+                        return PositionAngle.SetHDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA, objectValue);
                     };
                     break;
 
                 case "DistanceSelfToPoint":
                     getterFunction = (uint dummy) =>
                     {
-                        return MoreMath.GetDistanceBetween(
-                            SpecialConfig.SelfX, SpecialConfig.SelfY, SpecialConfig.SelfZ,
-                            SpecialConfig.PointX, SpecialConfig.PointY, SpecialConfig.PointZ);
+                        return PositionAngle.GetDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA);
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
-                        if (!distAwayNullable.HasValue) return false;
-                        double distAway = distAwayNullable.Value;
-                        (double newSelfX, double newSelfY, double newSelfZ) =
-                            MoreMath.ExtrapolateLine3D(
-                                SpecialConfig.PointX, SpecialConfig.PointY, SpecialConfig.PointZ,
-                                SpecialConfig.SelfX, SpecialConfig.SelfY, SpecialConfig.SelfZ, distAway);
-                        return SetSelfPosition(newSelfX, newSelfY, newSelfZ);
+                        return PositionAngle.SetDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA, objectValue);
                     };
                     break;
 

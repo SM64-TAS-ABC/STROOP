@@ -141,14 +141,6 @@ namespace STROOP.Utilities
             return (p1X + scaledX, p1Z + scaledZ);
         }
 
-        public static double ExtrapolateLine1D(
-            double p1X, double p2X, double finalDist)
-        {
-            double diffX = p2X - p1X;
-            double scaledX = ScaleVector1D(diffX, finalDist);
-            return p1X + scaledX;
-        }
-
         public static (double x, double z) RotatePointAboutPointToAngle(
             double p1X, double p1Z, double p2X, double p2Z, double finalAngle)
         {

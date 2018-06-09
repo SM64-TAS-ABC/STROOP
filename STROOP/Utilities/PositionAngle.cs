@@ -507,7 +507,7 @@ namespace STROOP.Utilities
             return success;
         }
 
-        public static bool SetDistance(PositionAngle p1, PositionAngle p2, string distance)
+        public static bool SetDistance(PositionAngle p1, PositionAngle p2, object distance)
         {
             double? distanceDouble = ParsingUtilities.ParseDoubleNullable(distance);
             if (!distanceDouble.HasValue) return false;
@@ -520,7 +520,7 @@ namespace STROOP.Utilities
             return CombineBools(p2.SetX(x), p2.SetY(y), p2.SetZ(z));
         }
 
-        public static bool SetHDistance(PositionAngle p1, PositionAngle p2, string distance)
+        public static bool SetHDistance(PositionAngle p1, PositionAngle p2, object distance)
         {
             double? distanceDouble = ParsingUtilities.ParseDoubleNullable(distance);
             if (!distanceDouble.HasValue) return false;
@@ -533,7 +533,7 @@ namespace STROOP.Utilities
             return CombineBools(p2.SetX(x), p2.SetZ(z));
         }
 
-        public static bool SetXDistance(PositionAngle p1, PositionAngle p2, string distance)
+        public static bool SetXDistance(PositionAngle p1, PositionAngle p2, object distance)
         {
             double? distanceDouble = ParsingUtilities.ParseDoubleNullable(distance);
             if (!distanceDouble.HasValue) return false;
@@ -542,11 +542,11 @@ namespace STROOP.Utilities
 
         public static bool SetXDistance(PositionAngle p1, PositionAngle p2, double distance)
         {
-            double x = MoreMath.ExtrapolateLine1D(p1.X, p2.X, distance);
+            double x = p1.X + distance;
             return CombineBools(p2.SetX(x));
         }
 
-        public static bool SetYDistance(PositionAngle p1, PositionAngle p2, string distance)
+        public static bool SetYDistance(PositionAngle p1, PositionAngle p2, object distance)
         {
             double? distanceDouble = ParsingUtilities.ParseDoubleNullable(distance);
             if (!distanceDouble.HasValue) return false;
@@ -555,11 +555,11 @@ namespace STROOP.Utilities
 
         public static bool SetYDistance(PositionAngle p1, PositionAngle p2, double distance)
         {
-            double y = MoreMath.ExtrapolateLine1D(p1.Y, p2.Y, distance);
+            double y = p1.Y + distance;
             return CombineBools(p2.SetY(y));
         }
 
-        public static bool SetZDistance(PositionAngle p1, PositionAngle p2, string distance)
+        public static bool SetZDistance(PositionAngle p1, PositionAngle p2, object distance)
         {
             double? distanceDouble = ParsingUtilities.ParseDoubleNullable(distance);
             if (!distanceDouble.HasValue) return false;
@@ -568,11 +568,11 @@ namespace STROOP.Utilities
 
         public static bool SetZDistance(PositionAngle p1, PositionAngle p2, double distance)
         {
-            double z = MoreMath.ExtrapolateLine1D(p1.Z, p2.Z, distance);
+            double z = p1.Z + distance;
             return CombineBools(p2.SetZ(z));
         }
 
-        public static bool SetAngleTo(PositionAngle p1, PositionAngle p2, string angle)
+        public static bool SetAngleTo(PositionAngle p1, PositionAngle p2, object angle)
         {
             double? angleNullable = ParsingUtilities.ParseDoubleNullable(angle);
             if (!angleNullable.HasValue) return false;
@@ -587,7 +587,7 @@ namespace STROOP.Utilities
             return CombineBools(p2.SetX(x), p2.SetZ(z));
         }
 
-        public static bool SetDAngleTo(PositionAngle p1, PositionAngle p2, string angleDiff)
+        public static bool SetDAngleTo(PositionAngle p1, PositionAngle p2, object angleDiff)
         {
             double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(angleDiff);
             if (!angleDiffNullable.HasValue) return false;
@@ -601,7 +601,7 @@ namespace STROOP.Utilities
             return CombineBools(p1.SetAngle(newAngle));
         }
 
-        public static bool SetAngleDifference(PositionAngle p1, PositionAngle p2, string angleDiff)
+        public static bool SetAngleDifference(PositionAngle p1, PositionAngle p2, object angleDiff)
         {
             double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(angleDiff);
             if (!angleDiffNullable.HasValue) return false;
