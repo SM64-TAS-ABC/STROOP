@@ -3554,6 +3554,15 @@ namespace STROOP.Structs
                     };
                     break;
 
+                case "RngIndexMod4":
+                    getterFunction = (uint dummy) =>
+                    {
+                        ushort rngValue = Config.Stream.GetUInt16(MiscConfig.RngAddress);
+                        int rngIndex = RngIndexer.GetRngIndex();
+                        return rngIndex % 4;
+                    };
+                    break;                    
+
                 case "RngCallsPerFrame":
                     getterFunction = (uint dummy) =>
                     {
