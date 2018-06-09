@@ -89,5 +89,258 @@ namespace STROOP.Utilities
 
             return null;
         }
+
+
+
+
+
+
+
+
+        public bool SetX(double value)
+        {
+            switch (PosAngleType)
+            {
+                case PositionAngleTypeEnum.Custom:
+                    SpecialConfig.CustomX = value;
+                    return true;
+                case PositionAngleTypeEnum.Mario:
+                    return Config.Stream.SetValue((float)value, MarioConfig.StructAddress + MarioConfig.XOffset);
+                case PositionAngleTypeEnum.Holp:
+                    return Config.Stream.SetValue((float)value, MarioConfig.StructAddress + MarioConfig.HolpXOffset);
+                case PositionAngleTypeEnum.Camera:
+                    return Config.Stream.SetValue((float)value, CameraConfig.CameraStructAddress + CameraConfig.XOffset);
+                case PositionAngleTypeEnum.Object:
+                    return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.XOffset);
+                case PositionAngleTypeEnum.ObjectHome:
+                    return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.HomeXOffset);
+                case PositionAngleTypeEnum.Tri:
+                    uint triVertexOffset;
+                    switch (TriVertex.Value)
+                    {
+                        case 1:
+                            triVertexOffset = TriangleOffsetsConfig.X1;
+                            break;
+                        case 2:
+                            triVertexOffset = TriangleOffsetsConfig.X2;
+                            break;
+                        case 3:
+                            triVertexOffset = TriangleOffsetsConfig.X3;
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                    return Config.Stream.SetValue((float)value, Address.Value + triVertexOffset);
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public bool SetY(double value)
+        {
+            switch (PosAngleType)
+            {
+                case PositionAngleTypeEnum.Custom:
+                    SpecialConfig.CustomY = value;
+                    return true;
+                case PositionAngleTypeEnum.Mario:
+                    return Config.Stream.SetValue((float)value, MarioConfig.StructAddress + MarioConfig.YOffset);
+                case PositionAngleTypeEnum.Holp:
+                    return Config.Stream.SetValue((float)value, MarioConfig.StructAddress + MarioConfig.HolpYOffset);
+                case PositionAngleTypeEnum.Camera:
+                    return Config.Stream.SetValue((float)value, CameraConfig.CameraStructAddress + CameraConfig.YOffset);
+                case PositionAngleTypeEnum.Object:
+                    return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.YOffset);
+                case PositionAngleTypeEnum.ObjectHome:
+                    return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.HomeYOffset);
+                case PositionAngleTypeEnum.Tri:
+                    uint triVertexOffset;
+                    switch (TriVertex.Value)
+                    {
+                        case 1:
+                            triVertexOffset = TriangleOffsetsConfig.Y1;
+                            break;
+                        case 2:
+                            triVertexOffset = TriangleOffsetsConfig.Y2;
+                            break;
+                        case 3:
+                            triVertexOffset = TriangleOffsetsConfig.Y3;
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                    return Config.Stream.SetValue((float)value, Address.Value + triVertexOffset);
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public bool SetZ(double value)
+        {
+            switch (PosAngleType)
+            {
+                case PositionAngleTypeEnum.Custom:
+                    SpecialConfig.CustomZ = value;
+                    return true;
+                case PositionAngleTypeEnum.Mario:
+                    return Config.Stream.SetValue((float)value, MarioConfig.StructAddress + MarioConfig.ZOffset);
+                case PositionAngleTypeEnum.Holp:
+                    return Config.Stream.SetValue((float)value, MarioConfig.StructAddress + MarioConfig.HolpZOffset);
+                case PositionAngleTypeEnum.Camera:
+                    return Config.Stream.SetValue((float)value, CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
+                case PositionAngleTypeEnum.Object:
+                    return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.ZOffset);
+                case PositionAngleTypeEnum.ObjectHome:
+                    return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.HomeZOffset);
+                case PositionAngleTypeEnum.Tri:
+                    uint triVertexOffset;
+                    switch (TriVertex.Value)
+                    {
+                        case 1:
+                            triVertexOffset = TriangleOffsetsConfig.Z1;
+                            break;
+                        case 2:
+                            triVertexOffset = TriangleOffsetsConfig.Z2;
+                            break;
+                        case 3:
+                            triVertexOffset = TriangleOffsetsConfig.Z3;
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                    return Config.Stream.SetValue((float)value, Address.Value + triVertexOffset);
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public bool SetAngle(double value)
+        {
+            ushort valueUShort = MoreMath.NormalizeAngleUshort(value);
+            switch (PosAngleType)
+            {
+                case PositionAngleTypeEnum.Custom:
+                    SpecialConfig.CustomAngle = value;
+                    return true;
+                case PositionAngleTypeEnum.Mario:
+                    return Config.Stream.SetValue(valueUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                case PositionAngleTypeEnum.Holp:
+                    return false;
+                case PositionAngleTypeEnum.Camera:
+                    return Config.Stream.SetValue(valueUShort, CameraConfig.CameraStructAddress + CameraConfig.FacingYawOffset);
+                case PositionAngleTypeEnum.Object:
+                    bool success = true;
+                    success &= Config.Stream.SetValue(valueUShort, Address.Value + ObjectConfig.YawFacingOffset);
+                    success &= Config.Stream.SetValue(valueUShort, Address.Value + ObjectConfig.YawMovingOffset);
+                    return success;
+                case PositionAngleTypeEnum.ObjectHome:
+                    return false;
+                case PositionAngleTypeEnum.Tri:
+                    return false;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+
+
+
+
+
+        public static double GetDistance(PositionAngleId id1, PositionAngleId id2)
+        {
+            PositionAngle p1 = PositionAngle.FromId(id1);
+            PositionAngle p2 = PositionAngle.FromId(id2);
+            return MoreMath.GetDistanceBetween(p1.X, p1.Y, p1.Z, p2.X, p2.Y, p2.Z);
+        }
+
+        public static double GetHDistance(PositionAngleId id1, PositionAngleId id2)
+        {
+            PositionAngle p1 = PositionAngle.FromId(id1);
+            PositionAngle p2 = PositionAngle.FromId(id2);
+            return MoreMath.GetDistanceBetween(p1.X, p1.Z, p2.X, p2.Z);
+        }
+
+        public static double GetXDistance(PositionAngleId id1, PositionAngleId id2)
+        {
+            PositionAngle p1 = PositionAngle.FromId(id1);
+            PositionAngle p2 = PositionAngle.FromId(id2);
+            return p2.X - p1.X;
+        }
+
+        public static double GetYDistance(PositionAngleId id1, PositionAngleId id2)
+        {
+            PositionAngle p1 = PositionAngle.FromId(id1);
+            PositionAngle p2 = PositionAngle.FromId(id2);
+            return p2.Y - p1.Y;
+        }
+
+        public static double GetZDistance(PositionAngleId id1, PositionAngleId id2)
+        {
+            PositionAngle p1 = PositionAngle.FromId(id1);
+            PositionAngle p2 = PositionAngle.FromId(id2);
+            return p2.Z - p1.Z;
+        }
+
+        public static double GetAngle(PositionAngleId id1, PositionAngleId id2)
+        {
+            PositionAngle p1 = PositionAngle.FromId(id1);
+            PositionAngle p2 = PositionAngle.FromId(id2);
+            return MoreMath.AngleTo_AngleUnits(p1.X, p1.Z, p2.X, p2.Z);
+        }
+
+        public static double GetDAngle(PositionAngleId id1, PositionAngleId id2)
+        {
+            PositionAngle p1 = PositionAngle.FromId(id1);
+            PositionAngle p2 = PositionAngle.FromId(id2);
+            double angle = MoreMath.AngleTo_AngleUnits(p1.X, p1.Z, p2.X, p2.Z);
+            double angleDiff = p1.Angle.Value - angle;
+            return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
+        }
+
+        public static double GetInGameAngle(PositionAngleId id1, PositionAngleId id2)
+        {
+            PositionAngle p1 = PositionAngle.FromId(id1);
+            PositionAngle p2 = PositionAngle.FromId(id2);
+            return InGameTrigUtilities.InGameAngleTo(
+                (float)p1.X, (float)p1.Z, (float)p2.X, (float)p2.Z);
+        }
+
+        public static double GetInGameDAngle(PositionAngleId id1, PositionAngleId id2)
+        {
+            PositionAngle p1 = PositionAngle.FromId(id1);
+            PositionAngle p2 = PositionAngle.FromId(id2);
+            double angle = InGameTrigUtilities.InGameAngleTo(
+                (float)p1.X, (float)p1.Z, (float)p2.X, (float)p2.Z);
+            double angleDiff = p1.Angle.Value - angle;
+            return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
+        }
+
+        private static bool CombineBools(params bool[] bools)
+        {
+            bool success = true;
+            foreach (bool b in bools)
+            {
+                success &= b;
+            }
+            return success;
+        }
+
+        public static bool SetDistance(PositionAngleId id1, PositionAngleId id2, string distance, bool move1)
+        {
+            double? distanceDouble = ParsingUtilities.ParseDoubleNullable(distance);
+            if (!distanceDouble.HasValue) return false;
+            return SetDistance(id1, id2, distanceDouble.Value, move1);
+        }
+
+        public static bool SetDistance(PositionAngleId id1, PositionAngleId id2, double distance, bool move1)
+        {
+            PositionAngleId idF = move1 ? id2 : id1;
+            PositionAngleId idM = move1 ? id1 : id2;
+            PositionAngle pF = PositionAngle.FromId(idF);
+            PositionAngle pM = PositionAngle.FromId(idM);
+            (double x, double y, double z) = MoreMath.ExtrapolateLine3D(pF.X, pF.Y, pF.Z, pM.X, pM.Y, pM.Z, distance);
+            return CombineBools(idM.SetX(x), idM.SetY(y), idM.SetZ(z));
+        }
     }
 }
