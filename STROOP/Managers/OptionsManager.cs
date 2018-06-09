@@ -120,19 +120,20 @@ namespace STROOP.Managers
                 });
 
             // miscellaneous
-            CheckBox checkBoxStartSlotIndexOne = tabControl.Controls["checkBoxStartSlotIndexOne"] as CheckBox;
+            GroupBox groupBoxOptionsSavedSettings = tabControl.Controls["groupBoxOptionsSavedSettings"] as GroupBox;
+            CheckBox checkBoxStartSlotIndexOne = groupBoxOptionsSavedSettings.Controls["checkBoxStartSlotIndexOne"] as CheckBox;
             checkBoxStartSlotIndexOne.Click += (sender, e) => OptionsConfig.SlotIndexsFromOne = checkBoxStartSlotIndexOne.Checked;
-            CheckBox checkBoxMoveCamWithPu = tabControl.Controls["checkBoxMoveCamWithPu"] as CheckBox;
+            CheckBox checkBoxMoveCamWithPu = groupBoxOptionsSavedSettings.Controls["checkBoxMoveCamWithPu"] as CheckBox;
             checkBoxMoveCamWithPu.Click += (sender, e) => OptionsConfig.MoveCameraWithPu = checkBoxMoveCamWithPu.Checked;
-            CheckBox checkBoxScaleDiagonalPositionControllerButtons = tabControl.Controls["checkBoxScaleDiagonalPositionControllerButtons"] as CheckBox;
+            CheckBox checkBoxScaleDiagonalPositionControllerButtons = groupBoxOptionsSavedSettings.Controls["checkBoxScaleDiagonalPositionControllerButtons"] as CheckBox;
             checkBoxScaleDiagonalPositionControllerButtons.Click += (sender, e) => OptionsConfig.ScaleDiagonalPositionControllerButtons = checkBoxScaleDiagonalPositionControllerButtons.Checked;
-            CheckBox checkBoxExcludeDustForClosestObject = tabControl.Controls["checkBoxExcludeDustForClosestObject"] as CheckBox;
+            CheckBox checkBoxExcludeDustForClosestObject = groupBoxOptionsSavedSettings.Controls["checkBoxExcludeDustForClosestObject"] as CheckBox;
             checkBoxExcludeDustForClosestObject.Click += (sender, e) => OptionsConfig.ExcludeDustForClosestObject = checkBoxExcludeDustForClosestObject.Checked;
-            CheckBox checkBoxNeutralizeTrianglesWith21 = tabControl.Controls["checkBoxNeutralizeTrianglesWith21"] as CheckBox;
+            CheckBox checkBoxNeutralizeTrianglesWith21 = groupBoxOptionsSavedSettings.Controls["checkBoxNeutralizeTrianglesWith21"] as CheckBox;
             checkBoxNeutralizeTrianglesWith21.Click += (sender, e) => OptionsConfig.NeutralizeTrianglesWith21 = checkBoxNeutralizeTrianglesWith21.Checked;
-            CheckBox checkBoxUseMisalignmentOffsetForDistanceToLine = tabControl.Controls["checkBoxUseMisalignmentOffsetForDistanceToLine"] as CheckBox;
+            CheckBox checkBoxUseMisalignmentOffsetForDistanceToLine = groupBoxOptionsSavedSettings.Controls["checkBoxUseMisalignmentOffsetForDistanceToLine"] as CheckBox;
             checkBoxUseMisalignmentOffsetForDistanceToLine.Click += (sender, e) => OptionsConfig.UseMisalignmentOffsetForDistanceToLine = checkBoxUseMisalignmentOffsetForDistanceToLine.Checked;
-            CheckBox checkBoxDontRoundValuesToZero = tabControl.Controls["checkBoxDontRoundValuesToZero"] as CheckBox;
+            CheckBox checkBoxDontRoundValuesToZero = groupBoxOptionsSavedSettings.Controls["checkBoxDontRoundValuesToZero"] as CheckBox;
             checkBoxDontRoundValuesToZero.Click += (sender, e) => OptionsConfig.DontRoundValuesToZero = checkBoxDontRoundValuesToZero.Checked;
         }
 

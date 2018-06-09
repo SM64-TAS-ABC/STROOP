@@ -1243,6 +1243,7 @@ namespace STROOP
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.comboBoxYawSigned = new System.Windows.Forms.ComboBox();
+            this.groupBoxOptionsSavedSettings = new System.Windows.Forms.GroupBox();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1626,6 +1627,7 @@ namespace STROOP
             this.groupBoxRecording.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
+            this.groupBoxOptionsSavedSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -3983,7 +3985,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(412, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(415, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -5819,7 +5821,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 350F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 351F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -11648,7 +11650,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(305, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(288, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -11680,7 +11682,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(299, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(282, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -11736,7 +11738,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(299, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(282, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -12192,7 +12194,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 695;
+            this.splitContainerMemory.SplitterDistance = 698;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -12216,7 +12218,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(579, 429);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(582, 429);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -12319,7 +12321,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(211, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(208, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPageHacks
@@ -13702,18 +13704,12 @@ namespace STROOP
             // 
             this.tabPageOptions.AutoScroll = true;
             this.tabPageOptions.Controls.Add(this.groupBoxPositionControllerRelativeAngle);
+            this.tabPageOptions.Controls.Add(this.groupBoxOptionsSavedSettings);
             this.tabPageOptions.Controls.Add(this.groupBoxFPS);
             this.tabPageOptions.Controls.Add(this.groupBoxGotoRetrieveOffsets);
-            this.tabPageOptions.Controls.Add(this.checkBoxDontRoundValuesToZero);
-            this.tabPageOptions.Controls.Add(this.checkBoxUseMisalignmentOffsetForDistanceToLine);
-            this.tabPageOptions.Controls.Add(this.checkBoxExcludeDustForClosestObject);
             this.tabPageOptions.Controls.Add(this.groupBoxShowOverlay);
-            this.tabPageOptions.Controls.Add(this.checkBoxScaleDiagonalPositionControllerButtons);
-            this.tabPageOptions.Controls.Add(this.checkBoxNeutralizeTrianglesWith21);
             this.tabPageOptions.Controls.Add(this.label3);
-            this.tabPageOptions.Controls.Add(this.checkBoxMoveCamWithPu);
             this.tabPageOptions.Controls.Add(this.checkBoxUseRomHack);
-            this.tabPageOptions.Controls.Add(this.checkBoxStartSlotIndexOne);
             this.tabPageOptions.Location = new System.Drawing.Point(4, 22);
             this.tabPageOptions.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageOptions.Name = "tabPageOptions";
@@ -13727,7 +13723,7 @@ namespace STROOP
             this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleMario);
             this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleRecommended);
             this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleCustom);
-            this.groupBoxPositionControllerRelativeAngle.Location = new System.Drawing.Point(16, 198);
+            this.groupBoxPositionControllerRelativeAngle.Location = new System.Drawing.Point(18, 240);
             this.groupBoxPositionControllerRelativeAngle.Name = "groupBoxPositionControllerRelativeAngle";
             this.groupBoxPositionControllerRelativeAngle.Size = new System.Drawing.Size(141, 99);
             this.groupBoxPositionControllerRelativeAngle.TabIndex = 39;
@@ -13778,7 +13774,7 @@ namespace STROOP
             // groupBoxFPS
             // 
             this.groupBoxFPS.Controls.Add(this.betterTextboxFPS);
-            this.groupBoxFPS.Location = new System.Drawing.Point(450, 131);
+            this.groupBoxFPS.Location = new System.Drawing.Point(447, 131);
             this.groupBoxFPS.Name = "groupBoxFPS";
             this.groupBoxFPS.Size = new System.Drawing.Size(62, 47);
             this.groupBoxFPS.TabIndex = 38;
@@ -13808,7 +13804,7 @@ namespace STROOP
             this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelGotoAboveSuffix);
             this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelGotoAbovePrefix);
             this.groupBoxGotoRetrieveOffsets.Controls.Add(this.textBoxGotoAbove);
-            this.groupBoxGotoRetrieveOffsets.Location = new System.Drawing.Point(450, 4);
+            this.groupBoxGotoRetrieveOffsets.Location = new System.Drawing.Point(447, 4);
             this.groupBoxGotoRetrieveOffsets.Name = "groupBoxGotoRetrieveOffsets";
             this.groupBoxGotoRetrieveOffsets.Size = new System.Drawing.Size(154, 121);
             this.groupBoxGotoRetrieveOffsets.TabIndex = 32;
@@ -13936,7 +13932,7 @@ namespace STROOP
             this.checkBoxDontRoundValuesToZero.AutoSize = true;
             this.checkBoxDontRoundValuesToZero.Checked = true;
             this.checkBoxDontRoundValuesToZero.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDontRoundValuesToZero.Location = new System.Drawing.Point(3, 145);
+            this.checkBoxDontRoundValuesToZero.Location = new System.Drawing.Point(12, 141);
             this.checkBoxDontRoundValuesToZero.Name = "checkBoxDontRoundValuesToZero";
             this.checkBoxDontRoundValuesToZero.Size = new System.Drawing.Size(142, 17);
             this.checkBoxDontRoundValuesToZero.TabIndex = 31;
@@ -13948,7 +13944,7 @@ namespace STROOP
             this.checkBoxUseMisalignmentOffsetForDistanceToLine.AutoSize = true;
             this.checkBoxUseMisalignmentOffsetForDistanceToLine.Checked = true;
             this.checkBoxUseMisalignmentOffsetForDistanceToLine.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Location = new System.Drawing.Point(3, 125);
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Location = new System.Drawing.Point(12, 121);
             this.checkBoxUseMisalignmentOffsetForDistanceToLine.Name = "checkBoxUseMisalignmentOffsetForDistanceToLine";
             this.checkBoxUseMisalignmentOffsetForDistanceToLine.Size = new System.Drawing.Size(242, 17);
             this.checkBoxUseMisalignmentOffsetForDistanceToLine.TabIndex = 31;
@@ -13960,7 +13956,7 @@ namespace STROOP
             this.checkBoxExcludeDustForClosestObject.AutoSize = true;
             this.checkBoxExcludeDustForClosestObject.Checked = true;
             this.checkBoxExcludeDustForClosestObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxExcludeDustForClosestObject.Location = new System.Drawing.Point(3, 85);
+            this.checkBoxExcludeDustForClosestObject.Location = new System.Drawing.Point(12, 81);
             this.checkBoxExcludeDustForClosestObject.Name = "checkBoxExcludeDustForClosestObject";
             this.checkBoxExcludeDustForClosestObject.Size = new System.Drawing.Size(175, 17);
             this.checkBoxExcludeDustForClosestObject.TabIndex = 31;
@@ -13981,7 +13977,7 @@ namespace STROOP
             this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayClosestObject);
             this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayStoodOnObject);
             this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayHeldObject);
-            this.groupBoxShowOverlay.Location = new System.Drawing.Point(256, 4);
+            this.groupBoxShowOverlay.Location = new System.Drawing.Point(271, 4);
             this.groupBoxShowOverlay.Name = "groupBoxShowOverlay";
             this.groupBoxShowOverlay.Size = new System.Drawing.Size(170, 275);
             this.groupBoxShowOverlay.TabIndex = 29;
@@ -14143,7 +14139,7 @@ namespace STROOP
             // checkBoxScaleDiagonalPositionControllerButtons
             // 
             this.checkBoxScaleDiagonalPositionControllerButtons.AutoSize = true;
-            this.checkBoxScaleDiagonalPositionControllerButtons.Location = new System.Drawing.Point(3, 45);
+            this.checkBoxScaleDiagonalPositionControllerButtons.Location = new System.Drawing.Point(12, 41);
             this.checkBoxScaleDiagonalPositionControllerButtons.Name = "checkBoxScaleDiagonalPositionControllerButtons";
             this.checkBoxScaleDiagonalPositionControllerButtons.Size = new System.Drawing.Size(224, 17);
             this.checkBoxScaleDiagonalPositionControllerButtons.TabIndex = 8;
@@ -14155,7 +14151,7 @@ namespace STROOP
             this.checkBoxNeutralizeTrianglesWith21.AutoSize = true;
             this.checkBoxNeutralizeTrianglesWith21.Checked = true;
             this.checkBoxNeutralizeTrianglesWith21.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxNeutralizeTrianglesWith21.Location = new System.Drawing.Point(3, 105);
+            this.checkBoxNeutralizeTrianglesWith21.Location = new System.Drawing.Point(12, 101);
             this.checkBoxNeutralizeTrianglesWith21.Name = "checkBoxNeutralizeTrianglesWith21";
             this.checkBoxNeutralizeTrianglesWith21.Size = new System.Drawing.Size(156, 17);
             this.checkBoxNeutralizeTrianglesWith21.TabIndex = 4;
@@ -14166,7 +14162,7 @@ namespace STROOP
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 173);
+            this.label3.Location = new System.Drawing.Point(17, 208);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(129, 13);
             this.label3.TabIndex = 5;
@@ -14177,7 +14173,7 @@ namespace STROOP
             this.checkBoxMoveCamWithPu.AutoSize = true;
             this.checkBoxMoveCamWithPu.Checked = true;
             this.checkBoxMoveCamWithPu.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMoveCamWithPu.Location = new System.Drawing.Point(3, 65);
+            this.checkBoxMoveCamWithPu.Location = new System.Drawing.Point(12, 61);
             this.checkBoxMoveCamWithPu.Name = "checkBoxMoveCamWithPu";
             this.checkBoxMoveCamWithPu.Size = new System.Drawing.Size(162, 17);
             this.checkBoxMoveCamWithPu.TabIndex = 4;
@@ -14187,7 +14183,7 @@ namespace STROOP
             // checkBoxUseRomHack
             // 
             this.checkBoxUseRomHack.AutoSize = true;
-            this.checkBoxUseRomHack.Location = new System.Drawing.Point(3, 5);
+            this.checkBoxUseRomHack.Location = new System.Drawing.Point(18, 188);
             this.checkBoxUseRomHack.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxUseRomHack.Name = "checkBoxUseRomHack";
             this.checkBoxUseRomHack.Size = new System.Drawing.Size(166, 17);
@@ -14200,7 +14196,7 @@ namespace STROOP
             this.checkBoxStartSlotIndexOne.AutoSize = true;
             this.checkBoxStartSlotIndexOne.Checked = true;
             this.checkBoxStartSlotIndexOne.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxStartSlotIndexOne.Location = new System.Drawing.Point(3, 25);
+            this.checkBoxStartSlotIndexOne.Location = new System.Drawing.Point(12, 21);
             this.checkBoxStartSlotIndexOne.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxStartSlotIndexOne.Name = "checkBoxStartSlotIndexOne";
             this.checkBoxStartSlotIndexOne.Size = new System.Drawing.Size(133, 17);
@@ -16079,6 +16075,22 @@ namespace STROOP
             this.comboBoxYawSigned.Size = new System.Drawing.Size(69, 21);
             this.comboBoxYawSigned.TabIndex = 22;
             // 
+            // groupBoxOptionsSavedSettings
+            // 
+            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxStartSlotIndexOne);
+            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxMoveCamWithPu);
+            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxNeutralizeTrianglesWith21);
+            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxScaleDiagonalPositionControllerButtons);
+            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxDontRoundValuesToZero);
+            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxExcludeDustForClosestObject);
+            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxUseMisalignmentOffsetForDistanceToLine);
+            this.groupBoxOptionsSavedSettings.Location = new System.Drawing.Point(6, 4);
+            this.groupBoxOptionsSavedSettings.Name = "groupBoxOptionsSavedSettings";
+            this.groupBoxOptionsSavedSettings.Size = new System.Drawing.Size(259, 169);
+            this.groupBoxOptionsSavedSettings.TabIndex = 38;
+            this.groupBoxOptionsSavedSettings.TabStop = false;
+            this.groupBoxOptionsSavedSettings.Text = "Saved Settings";
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -16572,6 +16584,8 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
+            this.groupBoxOptionsSavedSettings.ResumeLayout(false);
+            this.groupBoxOptionsSavedSettings.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -17785,6 +17799,7 @@ namespace STROOP
         private ProgressBar progressBarM64;
         private Label labelM64ProgressBar;
         private ComboBox comboBoxYawSigned;
+        private GroupBox groupBoxOptionsSavedSettings;
     }
 }
 
