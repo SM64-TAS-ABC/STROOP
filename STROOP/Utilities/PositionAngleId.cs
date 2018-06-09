@@ -15,6 +15,11 @@ namespace STROOP.Utilities
         public readonly uint? Address;
         public readonly int? TriVertex;
 
+        public double X { get => PositionAngle.FromId(this).X; }
+        public double Y { get => PositionAngle.FromId(this).Y; }
+        public double Z { get => PositionAngle.FromId(this).Z; }
+        public double? Angle { get => PositionAngle.FromId(this).Angle; }
+
         public PositionAngleId(
             PositionAngleTypeEnum posAngleType,
             uint? address = null,
@@ -247,69 +252,51 @@ namespace STROOP.Utilities
 
 
 
-        public static double GetDistance(PositionAngleId id1, PositionAngleId id2)
+        public static double GetDistance(PositionAngleId p1, PositionAngleId p2)
         {
-            PositionAngle p1 = PositionAngle.FromId(id1);
-            PositionAngle p2 = PositionAngle.FromId(id2);
             return MoreMath.GetDistanceBetween(p1.X, p1.Y, p1.Z, p2.X, p2.Y, p2.Z);
         }
 
-        public static double GetHDistance(PositionAngleId id1, PositionAngleId id2)
+        public static double GetHDistance(PositionAngleId p1, PositionAngleId p2)
         {
-            PositionAngle p1 = PositionAngle.FromId(id1);
-            PositionAngle p2 = PositionAngle.FromId(id2);
             return MoreMath.GetDistanceBetween(p1.X, p1.Z, p2.X, p2.Z);
         }
 
-        public static double GetXDistance(PositionAngleId id1, PositionAngleId id2)
+        public static double GetXDistance(PositionAngleId p1, PositionAngleId p2)
         {
-            PositionAngle p1 = PositionAngle.FromId(id1);
-            PositionAngle p2 = PositionAngle.FromId(id2);
             return p2.X - p1.X;
         }
 
-        public static double GetYDistance(PositionAngleId id1, PositionAngleId id2)
+        public static double GetYDistance(PositionAngleId p1, PositionAngleId p2)
         {
-            PositionAngle p1 = PositionAngle.FromId(id1);
-            PositionAngle p2 = PositionAngle.FromId(id2);
             return p2.Y - p1.Y;
         }
 
-        public static double GetZDistance(PositionAngleId id1, PositionAngleId id2)
+        public static double GetZDistance(PositionAngleId p1, PositionAngleId p2)
         {
-            PositionAngle p1 = PositionAngle.FromId(id1);
-            PositionAngle p2 = PositionAngle.FromId(id2);
             return p2.Z - p1.Z;
         }
 
-        public static double GetAngle(PositionAngleId id1, PositionAngleId id2)
+        public static double GetAngle(PositionAngleId p1, PositionAngleId p2)
         {
-            PositionAngle p1 = PositionAngle.FromId(id1);
-            PositionAngle p2 = PositionAngle.FromId(id2);
             return MoreMath.AngleTo_AngleUnits(p1.X, p1.Z, p2.X, p2.Z);
         }
 
-        public static double GetDAngle(PositionAngleId id1, PositionAngleId id2)
+        public static double GetDAngle(PositionAngleId p1, PositionAngleId p2)
         {
-            PositionAngle p1 = PositionAngle.FromId(id1);
-            PositionAngle p2 = PositionAngle.FromId(id2);
             double angle = MoreMath.AngleTo_AngleUnits(p1.X, p1.Z, p2.X, p2.Z);
             double angleDiff = p1.Angle.Value - angle;
             return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
         }
 
-        public static double GetInGameAngle(PositionAngleId id1, PositionAngleId id2)
+        public static double GetInGameAngle(PositionAngleId p1, PositionAngleId p2)
         {
-            PositionAngle p1 = PositionAngle.FromId(id1);
-            PositionAngle p2 = PositionAngle.FromId(id2);
             return InGameTrigUtilities.InGameAngleTo(
                 (float)p1.X, (float)p1.Z, (float)p2.X, (float)p2.Z);
         }
 
-        public static double GetInGameDAngle(PositionAngleId id1, PositionAngleId id2)
+        public static double GetInGameDAngle(PositionAngleId p1, PositionAngleId p2)
         {
-            PositionAngle p1 = PositionAngle.FromId(id1);
-            PositionAngle p2 = PositionAngle.FromId(id2);
             double angle = InGameTrigUtilities.InGameAngleTo(
                 (float)p1.X, (float)p1.Z, (float)p2.X, (float)p2.Z);
             double angleDiff = p1.Angle.Value - angle;
@@ -333,14 +320,12 @@ namespace STROOP.Utilities
             return SetDistance(id1, id2, distanceDouble.Value, move1);
         }
 
-        public static bool SetDistance(PositionAngleId id1, PositionAngleId id2, double distance, bool move1)
+        public static bool SetDistance(PositionAngleId p1, PositionAngleId p2, double distance, bool move1)
         {
-            PositionAngleId idF = move1 ? id2 : id1;
-            PositionAngleId idM = move1 ? id1 : id2;
-            PositionAngle pF = PositionAngle.FromId(idF);
-            PositionAngle pM = PositionAngle.FromId(idM);
+            PositionAngleId pF = move1 ? p2 : p1;
+            PositionAngleId pM = move1 ? p1 : p2;
             (double x, double y, double z) = MoreMath.ExtrapolateLine3D(pF.X, pF.Y, pF.Z, pM.X, pM.Y, pM.Z, distance);
-            return CombineBools(idM.SetX(x), idM.SetY(y), idM.SetZ(z));
+            return CombineBools(pM.SetX(x), pM.SetY(y), pM.SetZ(z));
         }
     }
 }
