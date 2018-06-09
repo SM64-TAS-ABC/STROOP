@@ -432,29 +432,33 @@ namespace STROOP.Utilities
             return p2.Z - p1.Z;
         }
 
-        public static double GetAngle(PositionAngleId p1, PositionAngleId p2)
+        private static double AngleTo(double x1, double z1, double x2, double z2, bool inGameAngle, bool truncate)
         {
-            return MoreMath.AngleTo_AngleUnits(p1.X, p1.Z, p2.X, p2.Z);
+            double angleTo = inGameAngle
+                ? InGameTrigUtilities.InGameAngleTo((float)x1, (float)z1, (float)x2, (float)z2)
+                : MoreMath.AngleTo_AngleUnits(x1, z1, x2, z2);
+            if (truncate) angleTo = MoreMath.NormalizeAngleTruncated(angleTo);
+            return angleTo;
         }
 
-        public static double GetDAngle(PositionAngleId p1, PositionAngleId p2)
+        public static double GetAngleTo(PositionAngleId p1, PositionAngleId p2, bool inGameAngle, bool truncate)
         {
-            double angle = MoreMath.AngleTo_AngleUnits(p1.X, p1.Z, p2.X, p2.Z);
-            double angleDiff = p1.Angle - angle;
+            return AngleTo(p1.X, p1.Z, p2.X, p2.Z, inGameAngle, truncate);
+        }
+
+        public static double GetDAngleTo(PositionAngleId p1, PositionAngleId p2, bool inGameAngleTruncated)
+        {
+            double angleTo = AngleTo(p1.X, p1.Z, p2.X, p2.Z, inGameAngleTruncated, inGameAngleTruncated);
+            double angle = inGameAngleTruncated ? MoreMath.NormalizeAngleTruncated(p1.Angle) : p1.Angle;
+            double angleDiff = angle - angleTo;
             return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
         }
 
-        public static double GetInGameAngle(PositionAngleId p1, PositionAngleId p2)
+        public static double GetAngleDifference(PositionAngleId p1, PositionAngleId p2, bool truncated)
         {
-            return InGameTrigUtilities.InGameAngleTo(
-                (float)p1.X, (float)p1.Z, (float)p2.X, (float)p2.Z);
-        }
-
-        public static double GetInGameDAngle(PositionAngleId p1, PositionAngleId p2)
-        {
-            double angle = InGameTrigUtilities.InGameAngleTo(
-                (float)p1.X, (float)p1.Z, (float)p2.X, (float)p2.Z);
-            double angleDiff = p1.Angle - angle;
+            double angle1 = truncated ? MoreMath.NormalizeAngleTruncated(p1.Angle) : p1.Angle;
+            double angle2 = truncated ? MoreMath.NormalizeAngleTruncated(p2.Angle) : p2.Angle;
+            double angleDiff = angle2 - angle1;
             return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
         }
 
@@ -468,79 +472,111 @@ namespace STROOP.Utilities
             return success;
         }
 
-        public static bool SetDistance(PositionAngleId p1, PositionAngleId p2, string distance, bool move1)
+        public static bool SetDistance(PositionAngleId p1, PositionAngleId p2, string distance)
         {
             double? distanceDouble = ParsingUtilities.ParseDoubleNullable(distance);
             if (!distanceDouble.HasValue) return false;
-            return SetDistance(p1, p2, distanceDouble.Value, move1);
+            return SetDistance(p1, p2, distanceDouble.Value);
         }
 
-        public static bool SetDistance(PositionAngleId p1, PositionAngleId p2, double distance, bool move1)
+        public static bool SetDistance(PositionAngleId p1, PositionAngleId p2, double distance)
         {
-            PositionAngleId pF = move1 ? p2 : p1;
-            PositionAngleId pM = move1 ? p1 : p2;
-            (double x, double y, double z) = MoreMath.ExtrapolateLine3D(pF.X, pF.Y, pF.Z, pM.X, pM.Y, pM.Z, distance);
-            return CombineBools(pM.SetX(x), pM.SetY(y), pM.SetZ(z));
+            (double x, double y, double z) = MoreMath.ExtrapolateLine3D(p1.X, p1.Y, p1.Z, p2.X, p2.Y, p2.Z, distance);
+            return CombineBools(p2.SetX(x), p2.SetY(y), p2.SetZ(z));
         }
 
-        public static bool SetHDistance(PositionAngleId p1, PositionAngleId p2, string distance, bool move1)
+        public static bool SetHDistance(PositionAngleId p1, PositionAngleId p2, string distance)
         {
             double? distanceDouble = ParsingUtilities.ParseDoubleNullable(distance);
             if (!distanceDouble.HasValue) return false;
-            return SetHDistance(p1, p2, distanceDouble.Value, move1);
+            return SetHDistance(p1, p2, distanceDouble.Value);
         }
 
-        public static bool SetHDistance(PositionAngleId p1, PositionAngleId p2, double distance, bool move1)
+        public static bool SetHDistance(PositionAngleId p1, PositionAngleId p2, double distance)
         {
-            PositionAngleId pF = move1 ? p2 : p1;
-            PositionAngleId pM = move1 ? p1 : p2;
-            (double x, double z) = MoreMath.ExtrapolateLine2D(pF.X, pF.Z, pM.X, pM.Z, distance);
-            return CombineBools(pM.SetX(x), pM.SetZ(z));
+            (double x, double z) = MoreMath.ExtrapolateLine2D(p1.X, p1.Z, p2.X, p2.Z, distance);
+            return CombineBools(p2.SetX(x), p2.SetZ(z));
         }
 
-        public static bool SetXDistance(PositionAngleId p1, PositionAngleId p2, string distance, bool move1)
+        public static bool SetXDistance(PositionAngleId p1, PositionAngleId p2, string distance)
         {
             double? distanceDouble = ParsingUtilities.ParseDoubleNullable(distance);
             if (!distanceDouble.HasValue) return false;
-            return SetXDistance(p1, p2, distanceDouble.Value, move1);
+            return SetXDistance(p1, p2, distanceDouble.Value);
         }
 
-        public static bool SetXDistance(PositionAngleId p1, PositionAngleId p2, double distance, bool move1)
+        public static bool SetXDistance(PositionAngleId p1, PositionAngleId p2, double distance)
         {
-            PositionAngleId pF = move1 ? p2 : p1;
-            PositionAngleId pM = move1 ? p1 : p2;
-            double x = MoreMath.ExtrapolateLine1D(pF.X, pM.X, distance);
-            return CombineBools(pM.SetX(x));
+            double x = MoreMath.ExtrapolateLine1D(p1.X, p2.X, distance);
+            return CombineBools(p2.SetX(x));
         }
 
-        public static bool SetYDistance(PositionAngleId p1, PositionAngleId p2, string distance, bool move1)
+        public static bool SetYDistance(PositionAngleId p1, PositionAngleId p2, string distance)
         {
             double? distanceDouble = ParsingUtilities.ParseDoubleNullable(distance);
             if (!distanceDouble.HasValue) return false;
-            return SetYDistance(p1, p2, distanceDouble.Value, move1);
+            return SetYDistance(p1, p2, distanceDouble.Value);
         }
 
-        public static bool SetYDistance(PositionAngleId p1, PositionAngleId p2, double distance, bool move1)
+        public static bool SetYDistance(PositionAngleId p1, PositionAngleId p2, double distance)
         {
-            PositionAngleId pF = move1 ? p2 : p1;
-            PositionAngleId pM = move1 ? p1 : p2;
-            double y = MoreMath.ExtrapolateLine1D(pF.Y, pM.Y, distance);
-            return CombineBools(pM.SetY(y));
+            double y = MoreMath.ExtrapolateLine1D(p1.Y, p2.Y, distance);
+            return CombineBools(p2.SetY(y));
         }
 
-        public static bool SetZDistance(PositionAngleId p1, PositionAngleId p2, string distance, bool move1)
+        public static bool SetZDistance(PositionAngleId p1, PositionAngleId p2, string distance)
         {
             double? distanceDouble = ParsingUtilities.ParseDoubleNullable(distance);
             if (!distanceDouble.HasValue) return false;
-            return SetZDistance(p1, p2, distanceDouble.Value, move1);
+            return SetZDistance(p1, p2, distanceDouble.Value);
         }
 
-        public static bool SetZDistance(PositionAngleId p1, PositionAngleId p2, double distance, bool move1)
+        public static bool SetZDistance(PositionAngleId p1, PositionAngleId p2, double distance)
         {
-            PositionAngleId pF = move1 ? p2 : p1;
-            PositionAngleId pM = move1 ? p1 : p2;
-            double z = MoreMath.ExtrapolateLine1D(pF.Z, pM.Z, distance);
-            return CombineBools(pM.SetZ(z));
+            double z = MoreMath.ExtrapolateLine1D(p1.Z, p2.Z, distance);
+            return CombineBools(p2.SetZ(z));
+        }
+
+        public static bool SetAngleTo(PositionAngleId p1, PositionAngleId p2, string angle)
+        {
+            double? angleNullable = ParsingUtilities.ParseDoubleNullable(angle);
+            if (!angleNullable.HasValue) return false;
+            return SetAngleTo(p1, p2, angleNullable.Value);
+        }
+
+        public static bool SetAngleTo(PositionAngleId p1, PositionAngleId p2, double angle)
+        {
+            (double x, double z) =
+                MoreMath.RotatePointAboutPointToAngle(
+                    p1.X, p1.Z, p2.X, p2.Z, angle);
+            return CombineBools(p2.SetX(x), p2.SetZ(z));
+        }
+
+        public static bool SetDAngleTo(PositionAngleId p1, PositionAngleId p2, string angleDiff)
+        {
+            double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(angleDiff);
+            if (!angleDiffNullable.HasValue) return false;
+            return SetDAngleTo(p1, p2, angleDiffNullable.Value);
+        }
+
+        public static bool SetDAngleTo(PositionAngleId p1, PositionAngleId p2, double angleDiff)
+        {
+            double currentAngle = MoreMath.AngleTo_AngleUnits(p1.X, p1.Z, p2.X, p2.Z);
+            double newAngle = currentAngle + angleDiff;
+            return CombineBools(p1.SetAngle(newAngle));
+        }
+
+        public static bool SetAngleDifference(PositionAngleId p1, PositionAngleId p2, string angleDiff)
+        {
+            double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(angleDiff);
+            if (!angleDiffNullable.HasValue) return false;
+            return SetAngleDifference(p1, p2, angleDiffNullable.Value);
+        }
+
+        public static bool SetAngleDifference(PositionAngleId p1, PositionAngleId p2, double angleDiff)
+        {
+            double newAngle = p2.Angle + angleDiff;
+            return CombineBools(p1.SetAngle(newAngle));
         }
 
 
