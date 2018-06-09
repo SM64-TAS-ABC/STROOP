@@ -15,10 +15,154 @@ namespace STROOP.Utilities
         public readonly uint? Address;
         public readonly int? TriVertex;
 
-        public double X { get => PositionAngle.FromId(this).X; }
-        public double Y { get => PositionAngle.FromId(this).Y; }
-        public double Z { get => PositionAngle.FromId(this).Z; }
-        public double? Angle { get => PositionAngle.FromId(this).Angle; }
+        public double X
+        {
+            get
+            {
+                switch (PosAngleType)
+                {
+                    case PositionAngleTypeEnum.Custom:
+                        return SpecialConfig.CustomX;
+                    case PositionAngleTypeEnum.Mario:
+                        return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                    case PositionAngleTypeEnum.Holp:
+                        return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpXOffset);
+                    case PositionAngleTypeEnum.Camera:
+                        return Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.XOffset);
+                    case PositionAngleTypeEnum.Object:
+                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.XOffset);
+                    case PositionAngleTypeEnum.ObjectHome:
+                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.HomeXOffset);
+                    case PositionAngleTypeEnum.Tri:
+                        uint triVertexOffset;
+                        switch (TriVertex.Value)
+                        {
+                            case 1:
+                                triVertexOffset = TriangleOffsetsConfig.X1;
+                                break;
+                            case 2:
+                                triVertexOffset = TriangleOffsetsConfig.X2;
+                                break;
+                            case 3:
+                                triVertexOffset = TriangleOffsetsConfig.X3;
+                                break;
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+                        return Config.Stream.GetInt16(Address.Value + triVertexOffset);
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
+
+        public double Y
+        {
+            get
+            {
+                switch (PosAngleType)
+                {
+                    case PositionAngleTypeEnum.Custom:
+                        return SpecialConfig.CustomY;
+                    case PositionAngleTypeEnum.Mario:
+                        return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    case PositionAngleTypeEnum.Holp:
+                        return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpYOffset);
+                    case PositionAngleTypeEnum.Camera:
+                        return Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.YOffset);
+                    case PositionAngleTypeEnum.Object:
+                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.YOffset);
+                    case PositionAngleTypeEnum.ObjectHome:
+                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.HomeYOffset);
+                    case PositionAngleTypeEnum.Tri:
+                        uint triVertexOffset;
+                        switch (TriVertex.Value)
+                        {
+                            case 1:
+                                triVertexOffset = TriangleOffsetsConfig.Y1;
+                                break;
+                            case 2:
+                                triVertexOffset = TriangleOffsetsConfig.Y2;
+                                break;
+                            case 3:
+                                triVertexOffset = TriangleOffsetsConfig.Y3;
+                                break;
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+                        return Config.Stream.GetInt16(Address.Value + triVertexOffset);
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
+
+        public double Z
+        {
+            get
+            {
+                switch (PosAngleType)
+                {
+                    case PositionAngleTypeEnum.Custom:
+                        return SpecialConfig.CustomZ;
+                    case PositionAngleTypeEnum.Mario:
+                        return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                    case PositionAngleTypeEnum.Holp:
+                        return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpZOffset);
+                    case PositionAngleTypeEnum.Camera:
+                        return Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
+                    case PositionAngleTypeEnum.Object:
+                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.ZOffset);
+                    case PositionAngleTypeEnum.ObjectHome:
+                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.HomeZOffset);
+                    case PositionAngleTypeEnum.Tri:
+                        uint triVertexOffset;
+                        switch (TriVertex.Value)
+                        {
+                            case 1:
+                                triVertexOffset = TriangleOffsetsConfig.Z1;
+                                break;
+                            case 2:
+                                triVertexOffset = TriangleOffsetsConfig.Z2;
+                                break;
+                            case 3:
+                                triVertexOffset = TriangleOffsetsConfig.Z3;
+                                break;
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+                        return Config.Stream.GetInt16(Address.Value + triVertexOffset);
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
+
+        public double Angle
+        {
+            get
+            {
+                switch (PosAngleType)
+                {
+                    case PositionAngleTypeEnum.Custom:
+                        return SpecialConfig.CustomAngle;
+                    case PositionAngleTypeEnum.Mario:
+                        return Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    case PositionAngleTypeEnum.Holp:
+                        return Double.NaN;
+                    case PositionAngleTypeEnum.Camera:
+                        return Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.FacingYawOffset);
+                    case PositionAngleTypeEnum.Object:
+                        return Config.Stream.GetUInt16(Address.Value + ObjectConfig.YawFacingOffset);
+                    case PositionAngleTypeEnum.ObjectHome:
+                        return Double.NaN;
+                    case PositionAngleTypeEnum.Tri:
+                        return Double.NaN;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
 
         public PositionAngleId(
             PositionAngleTypeEnum posAngleType,
@@ -94,6 +238,8 @@ namespace STROOP.Utilities
 
             return null;
         }
+
+
 
 
 
@@ -285,7 +431,7 @@ namespace STROOP.Utilities
         public static double GetDAngle(PositionAngleId p1, PositionAngleId p2)
         {
             double angle = MoreMath.AngleTo_AngleUnits(p1.X, p1.Z, p2.X, p2.Z);
-            double angleDiff = p1.Angle.Value - angle;
+            double angleDiff = p1.Angle - angle;
             return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
         }
 
@@ -299,7 +445,7 @@ namespace STROOP.Utilities
         {
             double angle = InGameTrigUtilities.InGameAngleTo(
                 (float)p1.X, (float)p1.Z, (float)p2.X, (float)p2.Z);
-            double angleDiff = p1.Angle.Value - angle;
+            double angleDiff = p1.Angle - angle;
             return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
         }
 
