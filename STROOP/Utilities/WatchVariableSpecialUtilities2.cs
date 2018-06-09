@@ -5,6 +5,7 @@ using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using static STROOP.Structs.WatchVariableSpecialUtilities;
 
 namespace STROOP.Structs
 {
@@ -4040,22 +4041,6 @@ namespace STROOP.Structs
         }
 
         // Position logic
-
-        private struct Position
-        {
-            public readonly float X;
-            public readonly float Y;
-            public readonly float Z;
-            public readonly ushort? Angle;
-
-            public Position(float x, float y, float z, ushort? angle = null)
-            {
-                X = x;
-                Y = y;
-                Z = z;
-                Angle = angle;
-            }
-        }
 
         private static Position GetMarioPosition()
         {
