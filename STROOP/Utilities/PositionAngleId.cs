@@ -186,12 +186,16 @@ namespace STROOP.Utilities
                 throw new ArgumentOutOfRangeException();
         }
 
-        public override string ToString()
-        {
-            string addressString = Address.HasValue ? " " + HexUtilities.FormatValue(Address.Value, 8) : "";
-            string triVertexString = TriVertex.HasValue ? " V" + TriVertex.Value : "";
-            return PosAngleType + addressString + triVertexString;
-        }
+        public static PositionAngleId Custom = new PositionAngleId(PositionAngleTypeEnum.Custom);
+        public static PositionAngleId Mario = new PositionAngleId(PositionAngleTypeEnum.Mario);
+        public static PositionAngleId Holp = new PositionAngleId(PositionAngleTypeEnum.Holp);
+        public static PositionAngleId Camera = new PositionAngleId(PositionAngleTypeEnum.Camera);
+        public static PositionAngleId Object(uint address) =>
+            new PositionAngleId(PositionAngleTypeEnum.Object, address);
+        public static PositionAngleId ObjectHome(uint address) =>
+            new PositionAngleId(PositionAngleTypeEnum.ObjectHome, address);
+        public static PositionAngleId Tri(uint address, int triVertex) =>
+            new PositionAngleId(PositionAngleTypeEnum.Tri, address, triVertex);
 
         public static PositionAngleId FromString(string stringValue)
         {
@@ -200,31 +204,31 @@ namespace STROOP.Utilities
 
             if (parts.Count == 1 && parts[0] == "custom")
             {
-                return new PositionAngleId(PositionAngleTypeEnum.Custom);
+                return Custom;
             }
             else if (parts.Count == 1 && parts[0] == "mario")
             {
-                return new PositionAngleId(PositionAngleTypeEnum.Mario);
+                return Mario;
             }
             else if (parts.Count == 1 && parts[0] == "holp")
             {
-                return new PositionAngleId(PositionAngleTypeEnum.Holp);
+                return Holp;
             }
             else if (parts.Count == 1 && (parts[0] == "cam" || parts[0] == "camera"))
             {
-                return new PositionAngleId(PositionAngleTypeEnum.Camera);
+                return Camera;
             }
             else if (parts.Count == 2 && (parts[0] == "obj" || parts[0] == "object"))
             {
                 uint? address = ParsingUtilities.ParseHexNullable(parts[1]);
                 if (!address.HasValue) return null;
-                return new PositionAngleId(PositionAngleTypeEnum.Object, address.Value);
+                return Object(address.Value);
             }
             else if (parts.Count == 2 && (parts[0] == "objhome" || parts[0] == "objecthome"))
             {
                 uint? address = ParsingUtilities.ParseHexNullable(parts[1]);
                 if (!address.HasValue) return null;
-                return new PositionAngleId(PositionAngleTypeEnum.ObjectHome, address.Value);
+                return ObjectHome(address.Value);
             }
             else if (parts.Count == 3 && (parts[0] == "tri" || parts[0] == "triangle"))
             {
@@ -233,13 +237,18 @@ namespace STROOP.Utilities
                 if (parts[2].Length >= 1 && parts[2].Substring(0, 1) == "v") parts[2] = parts[2].Substring(1);
                 int? triVertex = ParsingUtilities.ParseIntNullable(parts[2]);
                 if (!triVertex.HasValue || triVertex.Value < 1 || triVertex.Value > 3) return null;
-                return new PositionAngleId(PositionAngleTypeEnum.Tri, address.Value, triVertex.Value);
+                return Tri(address.Value, triVertex.Value);
             }
 
             return null;
         }
 
-
+        public override string ToString()
+        {
+            string addressString = Address.HasValue ? " " + HexUtilities.FormatValue(Address.Value, 8) : "";
+            string triVertexString = TriVertex.HasValue ? " V" + TriVertex.Value : "";
+            return PosAngleType + addressString + triVertexString;
+        }
 
 
 
