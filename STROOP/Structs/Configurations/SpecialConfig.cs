@@ -20,62 +20,62 @@ namespace STROOP.Structs.Configurations
 
         // - Self pos
 
-        public static PositionAngle SelfPosPosAngle =
+        public static PositionAngle SelfPosPA =
             new PositionAngle(PositionAngleTypeEnum.Mario);
 
         public static double SelfX
         {
-            get => SelfPosPosAngle.X;
+            get => SelfPosPA.X;
         }
 
         public static double SelfY
         {
-            get => SelfPosPosAngle.Y;
+            get => SelfPosPA.Y;
         }
 
         public static double SelfZ
         {
-            get => SelfPosPosAngle.Z;
+            get => SelfPosPA.Z;
         }
 
         // - Self angle
 
-        public static PositionAngle SelfAnglePosAngle =
+        public static PositionAngle SelfAnglePA =
             new PositionAngle(PositionAngleTypeEnum.Mario);
 
         public static double SelfAngle
         {
-            get => SelfAnglePosAngle.Angle;
+            get => SelfAnglePA.Angle;
         }
 
         // - Point pos
 
-        public static PositionAngle PointPosPosAngle =
+        public static PositionAngle PointPosPA =
             new PositionAngle(PositionAngleTypeEnum.Custom);
 
         public static double PointX
         {
-            get => PointPosPosAngle.X;
+            get => PointPosPA.X;
         }
 
         public static double PointY
         {
-            get => PointPosPosAngle.Y;
+            get => PointPosPA.Y;
         }
 
         public static double PointZ
         {
-            get => PointPosPosAngle.Z;
+            get => PointPosPA.Z;
         }
 
         // - Point angle
 
-        public static PositionAngle PointAnglePosAngle =
+        public static PositionAngle PointAnglePA =
             new PositionAngle(PositionAngleTypeEnum.Custom);
 
         public static double PointAngle
         {
-            get => PointAnglePosAngle.Angle;
+            get => PointAnglePA.Angle;
         }
         
         // PU vars
