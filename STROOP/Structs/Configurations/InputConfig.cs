@@ -8,15 +8,15 @@ namespace STROOP.Structs.Configurations
 {
     public static class InputConfig
     {
-        public static uint CurrentInputAddress { get { return RomVersionConfig.Switch(CurrentInputAddressUS, CurrentInputAddressJP); } }
+        public static uint CurrentInputAddress { get => RomVersionConfig.Switch(CurrentInputAddressUS, CurrentInputAddressJP); }
         public static readonly uint CurrentInputAddressUS = 0x8033AFF8;
         public static readonly uint CurrentInputAddressJP = 0x80339C88;
 
-        public static uint JustPressedInputAddress { get { return RomVersionConfig.Switch(JustPressedInputAddressUS, JustPressedInputAddressJP); } }
+        public static uint JustPressedInputAddress { get => RomVersionConfig.Switch(JustPressedInputAddressUS, JustPressedInputAddressJP); }
         public static readonly uint JustPressedInputAddressUS = 0x8033AFA2;
         public static readonly uint JustPressedInputAddressJP = 0x80339C32;
 
-        public static uint BufferedInputAddress { get { return RomVersionConfig.Switch(BufferedInputAddressUS, BufferedInputAddressJP); } }
+        public static uint BufferedInputAddress { get => RomVersionConfig.Switch(BufferedInputAddressUS, BufferedInputAddressJP); }
         public static readonly uint BufferedInputAddressUS = 0x80367054;
         public static readonly uint BufferedInputAddressJP = 0x80365CE4;
 

@@ -39,19 +39,19 @@ namespace STROOP.Structs
         }
         public static readonly List<byte> ProcessingGroups = ProcessingGroupsColor.Keys.ToList();
 
-        public static uint FirstGroupingAddress { get { return RomVersionConfig.Switch(FirstGroupingAddressUS, FirstGroupingAddressJP); } }
+        public static uint FirstGroupingAddress { get => RomVersionConfig.Switch(FirstGroupingAddressUS, FirstGroupingAddressJP); }
         public static readonly uint FirstGroupingAddressUS = 0x8033CBE0;
         public static readonly uint FirstGroupingAddressJP = 0x8033B870;
 
-        public static uint LinkStartAddress { get { return RomVersionConfig.Switch(LinkStartAddressUS, LinkStartAddressJP); } }
+        public static uint LinkStartAddress { get => RomVersionConfig.Switch(LinkStartAddressUS, LinkStartAddressJP); }
         public static readonly uint LinkStartAddressUS = 0x8033D488;
         public static readonly uint LinkStartAddressJP = 0x8033C118;
 
-        public static uint VactantPointerAddress { get { return RomVersionConfig.Switch(VactantPointerAddressUS, VactantPointerAddressJP); } }
+        public static uint VactantPointerAddress { get => RomVersionConfig.Switch(VactantPointerAddressUS, VactantPointerAddressJP); }
         public static readonly uint VactantPointerAddressUS = 0x80361150;
         public static readonly uint VactantPointerAddressJP = 0x8035FDE0;
 
-        public static uint UnusedSlotAddress { get { return RomVersionConfig.Switch(UnusedSlotAddressUS, UnusedSlotAddressJP); } }
+        public static uint UnusedSlotAddress { get => RomVersionConfig.Switch(UnusedSlotAddressUS, UnusedSlotAddressJP); }
         public static readonly uint UnusedSlotAddressUS = 0x80360E88;
         public static readonly uint UnusedSlotAddressJP = 0x8035FB18;
     }

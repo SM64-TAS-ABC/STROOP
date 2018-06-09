@@ -46,7 +46,7 @@ namespace STROOP.Structs
         public Color MiscColor;
         public Color CameraColor;
         public uint MarioBehavior;
-        public uint SegmentTable { get { return RomVersionConfig.Switch(SegmentTableUS, SegmentTableJP); } }
+        public uint SegmentTable { get => RomVersionConfig.Switch(SegmentTableUS, SegmentTableJP); }
         public uint SegmentTableUS;
         public uint SegmentTableJP;
         public uint BehaviorBankStart;
