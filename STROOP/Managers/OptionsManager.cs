@@ -15,20 +15,34 @@ namespace STROOP.Managers
         {
             // saved settings
             GroupBox groupBoxOptionsSavedSettings = tabControl.Controls["groupBoxOptionsSavedSettings"] as GroupBox;
+
             CheckBox checkBoxStartSlotIndexOne = groupBoxOptionsSavedSettings.Controls["checkBoxStartSlotIndexOne"] as CheckBox;
-            checkBoxStartSlotIndexOne.Click += (sender, e) => SavedSettingsConfig.SlotIndexsFromOne = checkBoxStartSlotIndexOne.Checked;
+            checkBoxStartSlotIndexOne.Click += (sender, e) => SavedSettingsConfig.StartSlotIndexsFromOne = checkBoxStartSlotIndexOne.Checked;
+            checkBoxStartSlotIndexOne.Checked = SavedSettingsConfig.StartSlotIndexsFromOne;
+
             CheckBox checkBoxMoveCamWithPu = groupBoxOptionsSavedSettings.Controls["checkBoxMoveCamWithPu"] as CheckBox;
             checkBoxMoveCamWithPu.Click += (sender, e) => SavedSettingsConfig.MoveCameraWithPu = checkBoxMoveCamWithPu.Checked;
+            checkBoxMoveCamWithPu.Checked = SavedSettingsConfig.MoveCameraWithPu;
+
             CheckBox checkBoxScaleDiagonalPositionControllerButtons = groupBoxOptionsSavedSettings.Controls["checkBoxScaleDiagonalPositionControllerButtons"] as CheckBox;
             checkBoxScaleDiagonalPositionControllerButtons.Click += (sender, e) => SavedSettingsConfig.ScaleDiagonalPositionControllerButtons = checkBoxScaleDiagonalPositionControllerButtons.Checked;
+            checkBoxScaleDiagonalPositionControllerButtons.Checked = SavedSettingsConfig.ScaleDiagonalPositionControllerButtons;
+
             CheckBox checkBoxExcludeDustForClosestObject = groupBoxOptionsSavedSettings.Controls["checkBoxExcludeDustForClosestObject"] as CheckBox;
             checkBoxExcludeDustForClosestObject.Click += (sender, e) => SavedSettingsConfig.ExcludeDustForClosestObject = checkBoxExcludeDustForClosestObject.Checked;
+            checkBoxExcludeDustForClosestObject.Checked = SavedSettingsConfig.ExcludeDustForClosestObject;
+
             CheckBox checkBoxNeutralizeTrianglesWith21 = groupBoxOptionsSavedSettings.Controls["checkBoxNeutralizeTrianglesWith21"] as CheckBox;
             checkBoxNeutralizeTrianglesWith21.Click += (sender, e) => SavedSettingsConfig.NeutralizeTrianglesWith21 = checkBoxNeutralizeTrianglesWith21.Checked;
+            checkBoxNeutralizeTrianglesWith21.Checked = SavedSettingsConfig.NeutralizeTrianglesWith21;
+
             CheckBox checkBoxUseMisalignmentOffsetForDistanceToLine = groupBoxOptionsSavedSettings.Controls["checkBoxUseMisalignmentOffsetForDistanceToLine"] as CheckBox;
             checkBoxUseMisalignmentOffsetForDistanceToLine.Click += (sender, e) => SavedSettingsConfig.UseMisalignmentOffsetForDistanceToLine = checkBoxUseMisalignmentOffsetForDistanceToLine.Checked;
+            checkBoxUseMisalignmentOffsetForDistanceToLine.Checked = SavedSettingsConfig.UseMisalignmentOffsetForDistanceToLine;
+
             CheckBox checkBoxDontRoundValuesToZero = groupBoxOptionsSavedSettings.Controls["checkBoxDontRoundValuesToZero"] as CheckBox;
             checkBoxDontRoundValuesToZero.Click += (sender, e) => SavedSettingsConfig.DontRoundValuesToZero = checkBoxDontRoundValuesToZero.Checked;
+            checkBoxDontRoundValuesToZero.Checked = SavedSettingsConfig.DontRoundValuesToZero;
 
 
             // goto/retrieve offsets

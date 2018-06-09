@@ -114,8 +114,8 @@ namespace STROOP.Utilities
                     case "YawSigned":
                         SavedSettingsConfig.YawSigned = bool.Parse(element.Value);
                         break;
-                    case "SlotIndexsFromOne":
-                        SavedSettingsConfig.SlotIndexsFromOne = bool.Parse(element.Value);
+                    case "StartSlotIndexsFromOne":
+                        SavedSettingsConfig.StartSlotIndexsFromOne = bool.Parse(element.Value);
                         break;
                     case "MoveCameraWithPu":
                         SavedSettingsConfig.MoveCameraWithPu = bool.Parse(element.Value);

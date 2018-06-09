@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SavedSettings>
-  <YawSigned>true</YawSigned>
-  <SlotIndexsFromOne>true</SlotIndexsFromOne>
+  <YawSigned>false</YawSigned>
+  <StartSlotIndexsFromOne>true</StartSlotIndexsFromOne>
   <MoveCameraWithPu>true</MoveCameraWithPu>
   <ScaleDiagonalPositionControllerButtons>true</ScaleDiagonalPositionControllerButtons>
   <ExcludeDustForClosestObject>true</ExcludeDustForClosestObject>
