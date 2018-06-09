@@ -31,9 +31,9 @@ namespace STROOP.Utilities
                         return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpXOffset);
                     case PositionAngleTypeEnum.Camera:
                         return Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.XOffset);
-                    case PositionAngleTypeEnum.Object:
+                    case PositionAngleTypeEnum.Obj:
                         return Config.Stream.GetSingle(Address.Value + ObjectConfig.XOffset);
-                    case PositionAngleTypeEnum.ObjectHome:
+                    case PositionAngleTypeEnum.ObjHome:
                         return Config.Stream.GetSingle(Address.Value + ObjectConfig.HomeXOffset);
                     case PositionAngleTypeEnum.Tri:
                         uint triVertexOffset;
@@ -74,9 +74,9 @@ namespace STROOP.Utilities
                         return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpYOffset);
                     case PositionAngleTypeEnum.Camera:
                         return Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.YOffset);
-                    case PositionAngleTypeEnum.Object:
+                    case PositionAngleTypeEnum.Obj:
                         return Config.Stream.GetSingle(Address.Value + ObjectConfig.YOffset);
-                    case PositionAngleTypeEnum.ObjectHome:
+                    case PositionAngleTypeEnum.ObjHome:
                         return Config.Stream.GetSingle(Address.Value + ObjectConfig.HomeYOffset);
                     case PositionAngleTypeEnum.Tri:
                         uint triVertexOffset;
@@ -117,9 +117,9 @@ namespace STROOP.Utilities
                         return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpZOffset);
                     case PositionAngleTypeEnum.Camera:
                         return Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
-                    case PositionAngleTypeEnum.Object:
+                    case PositionAngleTypeEnum.Obj:
                         return Config.Stream.GetSingle(Address.Value + ObjectConfig.ZOffset);
-                    case PositionAngleTypeEnum.ObjectHome:
+                    case PositionAngleTypeEnum.ObjHome:
                         return Config.Stream.GetSingle(Address.Value + ObjectConfig.HomeZOffset);
                     case PositionAngleTypeEnum.Tri:
                         uint triVertexOffset;
@@ -160,9 +160,9 @@ namespace STROOP.Utilities
                         return Double.NaN;
                     case PositionAngleTypeEnum.Camera:
                         return Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.FacingYawOffset);
-                    case PositionAngleTypeEnum.Object:
+                    case PositionAngleTypeEnum.Obj:
                         return Config.Stream.GetUInt16(Address.Value + ObjectConfig.YawFacingOffset);
-                    case PositionAngleTypeEnum.ObjectHome:
+                    case PositionAngleTypeEnum.ObjHome:
                         return Double.NaN;
                     case PositionAngleTypeEnum.Tri:
                         return Double.NaN;
@@ -188,8 +188,8 @@ namespace STROOP.Utilities
             AnglePA = anglePA;
 
             bool shouldHaveAddress =
-                posAngleType == PositionAngleTypeEnum.Object ||
-                posAngleType == PositionAngleTypeEnum.ObjectHome ||
+                posAngleType == PositionAngleTypeEnum.Obj ||
+                posAngleType == PositionAngleTypeEnum.ObjHome ||
                 posAngleType == PositionAngleTypeEnum.Tri;
             if (address.HasValue != shouldHaveAddress)
                 throw new ArgumentOutOfRangeException();
@@ -212,9 +212,9 @@ namespace STROOP.Utilities
         public static PositionAngle Holp = new PositionAngle(PositionAngleTypeEnum.Holp);
         public static PositionAngle Camera = new PositionAngle(PositionAngleTypeEnum.Camera);
         public static PositionAngle Object(uint address) =>
-            new PositionAngle(PositionAngleTypeEnum.Object, address);
+            new PositionAngle(PositionAngleTypeEnum.Obj, address);
         public static PositionAngle ObjectHome(uint address) =>
-            new PositionAngle(PositionAngleTypeEnum.ObjectHome, address);
+            new PositionAngle(PositionAngleTypeEnum.ObjHome, address);
         public static PositionAngle Tri(uint address, int triVertex) =>
             new PositionAngle(PositionAngleTypeEnum.Tri, address, triVertex);
         public static PositionAngle Hybrid(PositionAngle posPA, PositionAngle anglePA) =>
@@ -297,9 +297,9 @@ namespace STROOP.Utilities
                     return Config.Stream.SetValue((float)value, MarioConfig.StructAddress + MarioConfig.HolpXOffset);
                 case PositionAngleTypeEnum.Camera:
                     return Config.Stream.SetValue((float)value, CameraConfig.CameraStructAddress + CameraConfig.XOffset);
-                case PositionAngleTypeEnum.Object:
+                case PositionAngleTypeEnum.Obj:
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.XOffset);
-                case PositionAngleTypeEnum.ObjectHome:
+                case PositionAngleTypeEnum.ObjHome:
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.HomeXOffset);
                 case PositionAngleTypeEnum.Tri:
                     uint triVertexOffset;
@@ -338,9 +338,9 @@ namespace STROOP.Utilities
                     return Config.Stream.SetValue((float)value, MarioConfig.StructAddress + MarioConfig.HolpYOffset);
                 case PositionAngleTypeEnum.Camera:
                     return Config.Stream.SetValue((float)value, CameraConfig.CameraStructAddress + CameraConfig.YOffset);
-                case PositionAngleTypeEnum.Object:
+                case PositionAngleTypeEnum.Obj:
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.YOffset);
-                case PositionAngleTypeEnum.ObjectHome:
+                case PositionAngleTypeEnum.ObjHome:
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.HomeYOffset);
                 case PositionAngleTypeEnum.Tri:
                     uint triVertexOffset;
@@ -379,9 +379,9 @@ namespace STROOP.Utilities
                     return Config.Stream.SetValue((float)value, MarioConfig.StructAddress + MarioConfig.HolpZOffset);
                 case PositionAngleTypeEnum.Camera:
                     return Config.Stream.SetValue((float)value, CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
-                case PositionAngleTypeEnum.Object:
+                case PositionAngleTypeEnum.Obj:
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.ZOffset);
-                case PositionAngleTypeEnum.ObjectHome:
+                case PositionAngleTypeEnum.ObjHome:
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.HomeZOffset);
                 case PositionAngleTypeEnum.Tri:
                     uint triVertexOffset;
@@ -421,12 +421,12 @@ namespace STROOP.Utilities
                     return false;
                 case PositionAngleTypeEnum.Camera:
                     return Config.Stream.SetValue(valueUShort, CameraConfig.CameraStructAddress + CameraConfig.FacingYawOffset);
-                case PositionAngleTypeEnum.Object:
+                case PositionAngleTypeEnum.Obj:
                     bool success = true;
                     success &= Config.Stream.SetValue(valueUShort, Address.Value + ObjectConfig.YawFacingOffset);
                     success &= Config.Stream.SetValue(valueUShort, Address.Value + ObjectConfig.YawMovingOffset);
                     return success;
-                case PositionAngleTypeEnum.ObjectHome:
+                case PositionAngleTypeEnum.ObjHome:
                     return false;
                 case PositionAngleTypeEnum.Tri:
                     return false;

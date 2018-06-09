@@ -15,8 +15,8 @@ namespace STROOP.Utilities
         Mario,
         Holp,
         Camera,
-        Object,
-        ObjectHome,
+        Obj,
+        ObjHome,
         Tri,
         Hybrid,
     }
