@@ -3700,7 +3700,7 @@ namespace STROOP.Structs
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        PositionAngleId posAngleId = PositionAngleId.FromString(objectValue.ToString());
+                        PositionAngle posAngleId = PositionAngle.FromString(objectValue.ToString());
                         if (posAngleId == null) return false;
                         SpecialConfig.SelfPosPosAngle = posAngleId;
                         return true;
@@ -3756,7 +3756,7 @@ namespace STROOP.Structs
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        PositionAngleId posAngleId = PositionAngleId.FromString(objectValue.ToString());
+                        PositionAngle posAngleId = PositionAngle.FromString(objectValue.ToString());
                         if (posAngleId == null) return false;
                         SpecialConfig.SelfAnglePosAngle = posAngleId;
                         return true;
@@ -3784,7 +3784,7 @@ namespace STROOP.Structs
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        PositionAngleId posAngleId = PositionAngleId.FromString(objectValue.ToString());
+                        PositionAngle posAngleId = PositionAngle.FromString(objectValue.ToString());
                         if (posAngleId == null) return false;
                         SpecialConfig.PointPosPosAngle = posAngleId;
                         return true;
@@ -3840,7 +3840,7 @@ namespace STROOP.Structs
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        PositionAngleId posAngleId = PositionAngleId.FromString(objectValue.ToString());
+                        PositionAngle posAngleId = PositionAngle.FromString(objectValue.ToString());
                         if (posAngleId == null) return false;
                         SpecialConfig.PointAnglePosAngle = posAngleId;
                         return true;
