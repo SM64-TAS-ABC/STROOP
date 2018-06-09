@@ -20,8 +20,7 @@ namespace STROOP.Structs.Configurations
 
         // - Self pos
 
-        public static PositionAngle SelfPosPA =
-            new PositionAngle(PositionAngleTypeEnum.Mario);
+        public static PositionAngle SelfPosPA = PositionAngle.Mario;
 
         public static double SelfX
         {
@@ -40,8 +39,7 @@ namespace STROOP.Structs.Configurations
 
         // - Self angle
 
-        public static PositionAngle SelfAnglePA =
-            new PositionAngle(PositionAngleTypeEnum.Mario);
+        public static PositionAngle SelfAnglePA = PositionAngle.Mario;
 
         public static double SelfAngle
         {
@@ -50,8 +48,7 @@ namespace STROOP.Structs.Configurations
 
         // - Point pos
 
-        public static PositionAngle PointPosPA =
-            new PositionAngle(PositionAngleTypeEnum.Custom);
+        public static PositionAngle PointPosPA = PositionAngle.Custom;
 
         public static double PointX
         {
@@ -70,8 +67,7 @@ namespace STROOP.Structs.Configurations
 
         // - Point angle
 
-        public static PositionAngle PointAnglePA =
-            new PositionAngle(PositionAngleTypeEnum.Custom);
+        public static PositionAngle PointAnglePA = PositionAngle.Custom;
 
         public static double PointAngle
         {

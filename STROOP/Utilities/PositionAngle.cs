@@ -14,6 +14,8 @@ namespace STROOP.Utilities
         public readonly PositionAngleTypeEnum PosAngleType;
         public readonly uint? Address;
         public readonly int? TriVertex;
+        public readonly PositionAngle PosPA;
+        public readonly PositionAngle AnglePA;
 
         public double X
         {
@@ -50,6 +52,8 @@ namespace STROOP.Utilities
                                 throw new ArgumentOutOfRangeException();
                         }
                         return Config.Stream.GetInt16(Address.Value + triVertexOffset);
+                    case PositionAngleTypeEnum.Hybrid:
+                        return PosPA.X;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -91,6 +95,8 @@ namespace STROOP.Utilities
                                 throw new ArgumentOutOfRangeException();
                         }
                         return Config.Stream.GetInt16(Address.Value + triVertexOffset);
+                    case PositionAngleTypeEnum.Hybrid:
+                        return PosPA.Y;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -132,6 +138,8 @@ namespace STROOP.Utilities
                                 throw new ArgumentOutOfRangeException();
                         }
                         return Config.Stream.GetInt16(Address.Value + triVertexOffset);
+                    case PositionAngleTypeEnum.Hybrid:
+                        return PosPA.Z;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -158,6 +166,8 @@ namespace STROOP.Utilities
                         return Double.NaN;
                     case PositionAngleTypeEnum.Tri:
                         return Double.NaN;
+                    case PositionAngleTypeEnum.Hybrid:
+                        return AnglePA.Angle;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -167,11 +177,15 @@ namespace STROOP.Utilities
         public PositionAngle(
             PositionAngleTypeEnum posAngleType,
             uint? address = null,
-            int? triVertex = null)
+            int? triVertex = null,
+            PositionAngle posPA = null,
+            PositionAngle anglePA = null)
         {
             PosAngleType = posAngleType;
             Address = address;
             TriVertex = triVertex;
+            PosPA = posPA;
+            AnglePA = anglePA;
 
             bool shouldHaveAddress =
                 posAngleType == PositionAngleTypeEnum.Object ||
@@ -183,6 +197,13 @@ namespace STROOP.Utilities
             bool shouldHaveTriVertex =
                 posAngleType == PositionAngleTypeEnum.Tri;
             if (triVertex.HasValue != shouldHaveTriVertex)
+                throw new ArgumentOutOfRangeException();
+
+            bool shouldHavePAs =
+                PosAngleType == PositionAngleTypeEnum.Hybrid;
+            if ((posPA != null) != shouldHavePAs)
+                throw new ArgumentOutOfRangeException();
+            if ((anglePA != null) != shouldHavePAs)
                 throw new ArgumentOutOfRangeException();
         }
 
@@ -196,6 +217,8 @@ namespace STROOP.Utilities
             new PositionAngle(PositionAngleTypeEnum.ObjectHome, address);
         public static PositionAngle Tri(uint address, int triVertex) =>
             new PositionAngle(PositionAngleTypeEnum.Tri, address, triVertex);
+        public static PositionAngle Hybrid(PositionAngle posPA, PositionAngle anglePA) =>
+            new PositionAngle(PositionAngleTypeEnum.Hybrid, null, null, posPA, anglePA);
 
         public static PositionAngle FromString(string stringValue)
         {
@@ -245,9 +268,13 @@ namespace STROOP.Utilities
 
         public override string ToString()
         {
-            string addressString = Address.HasValue ? " " + HexUtilities.FormatValue(Address.Value, 8) : "";
-            string triVertexString = TriVertex.HasValue ? " V" + TriVertex.Value : "";
-            return PosAngleType + addressString + triVertexString;
+            List<string> strings = new List<string>();
+            strings.Add(PosAngleType.ToString());
+            if (Address.HasValue) strings.Add(HexUtilities.FormatValue(Address.Value, 8));
+            if (TriVertex.HasValue) strings.Add("V" + TriVertex.Value);
+            if (PosPA != null) strings.Add("[" + PosPA + "]");
+            if (AnglePA != null) strings.Add("[" + AnglePA + "]");
+            return String.Join(" ", strings);
         }
 
 
@@ -291,6 +318,8 @@ namespace STROOP.Utilities
                             throw new ArgumentOutOfRangeException();
                     }
                     return Config.Stream.SetValue((float)value, Address.Value + triVertexOffset);
+                case PositionAngleTypeEnum.Hybrid:
+                    return PosPA.SetX(value);
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -330,6 +359,8 @@ namespace STROOP.Utilities
                             throw new ArgumentOutOfRangeException();
                     }
                     return Config.Stream.SetValue((float)value, Address.Value + triVertexOffset);
+                case PositionAngleTypeEnum.Hybrid:
+                    return PosPA.SetY(value);
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -369,6 +400,8 @@ namespace STROOP.Utilities
                             throw new ArgumentOutOfRangeException();
                     }
                     return Config.Stream.SetValue((float)value, Address.Value + triVertexOffset);
+                case PositionAngleTypeEnum.Hybrid:
+                    return PosPA.SetZ(value);
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -397,6 +430,8 @@ namespace STROOP.Utilities
                     return false;
                 case PositionAngleTypeEnum.Tri:
                     return false;
+                case PositionAngleTypeEnum.Hybrid:
+                    return AnglePA.SetAngle(value);
                 default:
                     throw new ArgumentOutOfRangeException();
             }

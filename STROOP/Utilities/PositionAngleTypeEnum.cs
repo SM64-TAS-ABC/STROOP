@@ -18,5 +18,6 @@ namespace STROOP.Utilities
         Object,
         ObjectHome,
         Tri,
+        Hybrid,
     }
 }
