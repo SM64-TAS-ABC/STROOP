@@ -44,10 +44,12 @@ namespace STROOP.Structs
                     (uint address) => PositionAngle.Tri(address, 1),
                     (uint address) => PositionAngle.Tri(address, 2),
                     (uint address) => PositionAngle.Tri(address, 3),
+                    (uint address) => SpecialConfig.PointPA,
+                    (uint address) => SpecialConfig.SelfPA,
                 };
 
-            List<PositionAngleTypeEnum> posAngleEnums =
-                new List<PositionAngleTypeEnum>()
+            List<PositionAngleTypeEnum?> posAngleEnums =
+                new List<PositionAngleTypeEnum?>()
                 {
                     PositionAngleTypeEnum.Custom,
                     PositionAngleTypeEnum.Mario,
@@ -58,6 +60,8 @@ namespace STROOP.Structs
                     PositionAngleTypeEnum.Tri,
                     PositionAngleTypeEnum.Tri,
                     PositionAngleTypeEnum.Tri,
+                    null,
+                    null,
                 };
 
             List<string> posAngleStrings =
@@ -72,19 +76,21 @@ namespace STROOP.Structs
                     "TriV1",
                     "TriV2",
                     "TriV3",
+                    "Point",
+                    "Self",
                 };
 
             for (int i = 0; i < posAngleFuncs.Count; i++)
             {
                 Func<uint, PositionAngle> func1 = posAngleFuncs[i];
-                PositionAngleTypeEnum enum1 = posAngleEnums[i];
+                PositionAngleTypeEnum? enum1 = posAngleEnums[i];
                 string string1 = posAngleStrings[i];
 
                 for (int j = 0; j < posAngleFuncs.Count; j++)
                 {
                     if (j == i) continue;
                     Func<uint, PositionAngle> func2 = posAngleFuncs[j];
-                    PositionAngleTypeEnum enum2 = posAngleEnums[j];
+                    PositionAngleTypeEnum? enum2 = posAngleEnums[j];
                     string string2 = posAngleStrings[j];
 
 
