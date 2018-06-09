@@ -443,7 +443,6 @@
     <Compile Include="Utilities\TtcSpeedSettingUtilities.cs" />
     <Compile Include="Utilities\MovementCalculator.cs" />
     <Compile Include="Utilities\VarHackSpecialUtilities.cs" />
-    <Compile Include="Utilities\WatchVariableSpecialUtilities2.cs" />
     <Compile Include="Utilities\WatchVariableSpecialUtilities.cs" />
     <Compile Include="Utilities\WatchVariableCoordinateManager.cs" />
     <Compile Include="Utilities\AreaUtilities.cs" />

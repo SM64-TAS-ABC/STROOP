@@ -22,10 +22,7 @@ namespace STROOP.Structs
 
         public static (Func<uint, object> getter, Func<object, uint, bool> setter) CreateGetterSetterFunctions(string specialType)
         {
-            if (_dictionary.ContainsKey(specialType))
-                return _dictionary[specialType];
-            else
-                return WatchVariableSpecialUtilities2.CreateGetterSetterFunctionsUsingSwitchStatement(specialType);
+            return _dictionary[specialType];
         }
 
         public static void CreateDictionary()
@@ -658,7 +655,8 @@ namespace STROOP.Structs
 
                         bool overlap = marioHitboxAwayFromObject < 0 && marioHitboxAboveObject <= 0 && marioHitboxBelowObject <= 0;
                         return overlap ? "1" : "0";
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["MarioPunchAngleAway"] =
                     ((uint objAddress) =>
@@ -711,7 +709,8 @@ namespace STROOP.Structs
                             break;
                         }
                         return numOfCalls;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 // Object specific vars - Pendulum
 
@@ -770,7 +769,8 @@ namespace STROOP.Structs
                         (double dotProduct, double distToWaypointPlane, double distToWaypoint) =
                             GetWaypointSpecialVars(objAddress);
                         return dotProduct;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["ObjectDistanceToWaypointPlane"] =
                     ((uint objAddress) =>
@@ -778,7 +778,8 @@ namespace STROOP.Structs
                         (double dotProduct, double distToWaypointPlane, double distToWaypoint) =
                             GetWaypointSpecialVars(objAddress);
                         return distToWaypointPlane;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["ObjectDistanceToWaypoint"] =
                     ((uint objAddress) =>
@@ -786,7 +787,8 @@ namespace STROOP.Structs
                         (double dotProduct, double distToWaypointPlane, double distToWaypoint) =
                             GetWaypointSpecialVars(objAddress);
                         return distToWaypoint;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 // Object specific vars - Racing Penguin
 
@@ -796,7 +798,8 @@ namespace STROOP.Structs
                         (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget) =
                             GetRacingPenguinSpecialVars(objAddress);
                         return effortTarget;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["RacingPenguinEffortChange"] =
                     ((uint objAddress) =>
@@ -804,7 +807,8 @@ namespace STROOP.Structs
                         (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget) =
                             GetRacingPenguinSpecialVars(objAddress);
                         return effortChange;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["RacingPenguinMinHSpeed"] =
                     ((uint objAddress) =>
@@ -812,7 +816,8 @@ namespace STROOP.Structs
                         (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget) =
                             GetRacingPenguinSpecialVars(objAddress);
                         return minHSpeed;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["RacingPenguinHSpeedTarget"] =
                     ((uint objAddress) =>
@@ -820,7 +825,8 @@ namespace STROOP.Structs
                         (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget) =
                             GetRacingPenguinSpecialVars(objAddress);
                         return hSpeedTarget;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["RacingPenguinDiffHSpeedTarget"] =
                     ((uint objAddress) =>
@@ -830,35 +836,16 @@ namespace STROOP.Structs
                         float hSpeed = Config.Stream.GetSingle(objAddress + ObjectConfig.HSpeedOffset);
                         double hSpeedDiff = hSpeed - hSpeedTarget;
                         return hSpeedDiff;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["RacingPenguinProgress"] =
                     ((uint objAddress) =>
                     {
                         double progress = TableConfig.RacingPenguinWaypoints.GetProgress(objAddress);
                         return progress;
-                    }),
-
-                ["RacingPenguinProgressDiff"] =
-                    ((uint objAddress) =>
-                    {
-                        Dictionary<int, TestingManager.VarState> dictionary = Config.TestingManager.VarStateDictionary;
-                        var currentTimer = Config.Stream.GetInt32(Config.SwitchRomVersion(0x803493DC, 0x803463EC));
-                        if (!dictionary.ContainsKey(currentTimer))
-                        {
-                            return double.NaN;
-                        }
-                        TestingManager.VarState varState = dictionary[currentTimer];
-                        if (!(varState is TestingManager.VarStatePenguin))
-                        {
-                            return double.NaN;
-                        }
-                        TestingManager.VarStatePenguin varStatePenguin = varState as TestingManager.VarStatePenguin;
-                        double varStateProgress = varStatePenguin.Progress;
-                        double currentProgress = TableConfig.RacingPenguinWaypoints.GetProgress(objAddress);
-                        double progressDiff = currentProgress - varStateProgress;
-                        return progressDiff;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 // Object specific vars - Koopa the Quick
 
@@ -867,28 +854,32 @@ namespace STROOP.Structs
                     {
                         (double hSpeedTarget, double hSpeedChange) = GetKoopaTheQuickSpecialVars(objAddress);
                         return hSpeedTarget;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["KoopaTheQuickHSpeedChange"] =
                     ((uint objAddress) =>
                     {
                         (double hSpeedTarget, double hSpeedChange) = GetKoopaTheQuickSpecialVars(objAddress);
                         return hSpeedChange;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["KoopaTheQuick1Progress"] =
                     ((uint objAddress) =>
                     {
                         double progress = TableConfig.KoopaTheQuick1Waypoints.GetProgress(objAddress);
                         return progress;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["KoopaTheQuick2Progress"] =
                     ((uint objAddress) =>
                     {
                         double progress = TableConfig.KoopaTheQuick2Waypoints.GetProgress(objAddress);
                         return progress;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 // Object specific vars - Fly Guy
 
@@ -901,7 +892,8 @@ namespace STROOP.Structs
                         if (heightDiff < -400) return "Low";
                         if (heightDiff > -200) return "High";
                         return "Medium";
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["FlyGuyRelativeHeight"] =
                     ((uint objAddress) =>
@@ -909,7 +901,8 @@ namespace STROOP.Structs
                         int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
                         double relativeHeight = TableConfig.FlyGuyData.GetRelativeHeight(oscillationTimer);
                         return relativeHeight;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["FlyGuyNextHeightDiff"] =
                     ((uint objAddress) =>
@@ -917,7 +910,8 @@ namespace STROOP.Structs
                         int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
                         double nextRelativeHeight = TableConfig.FlyGuyData.GetNextHeightDiff(oscillationTimer);
                         return nextRelativeHeight;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["FlyGuyMinHeight"] =
                     ((uint objAddress) =>
@@ -926,7 +920,8 @@ namespace STROOP.Structs
                         int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
                         double minHeight = TableConfig.FlyGuyData.GetMinHeight(oscillationTimer, objY);
                         return minHeight;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["FlyGuyMaxHeight"] =
                     ((uint objAddress) =>
@@ -935,7 +930,8 @@ namespace STROOP.Structs
                         int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
                         double maxHeight = TableConfig.FlyGuyData.GetMaxHeight(oscillationTimer, objY);
                         return maxHeight;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 // Object specific vars - Bob-omb
 
@@ -1147,7 +1143,8 @@ namespace STROOP.Structs
                         float ghostY = Config.Stream.GetSingle(objAddress + ObjectConfig.GraphicsYOffset);
                         float yDiff = marioY - ghostY;
                         return yDiff;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["MarioGhostHorizontalDistance"] =
                     ((uint objAddress) =>
@@ -1157,7 +1154,8 @@ namespace STROOP.Structs
                         double hDistToGhost = MoreMath.GetDistanceBetween(
                             marioPos.X, marioPos.Z, ghostPos.X, ghostPos.Z);
                         return hDistToGhost;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["MarioGhostForwardsDistance"] =
                     ((uint objAddress) =>
@@ -1172,7 +1170,8 @@ namespace STROOP.Structs
                             MoreMath.GetComponentsFromVectorRelatively(
                                 hDistToGhost, angleFromGhost, marioPos.Angle.Value);
                         return movementForwards;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["MarioGhostSidewaysDistance"] =
                     ((uint objAddress) =>
@@ -1187,7 +1186,8 @@ namespace STROOP.Structs
                             MoreMath.GetComponentsFromVectorRelatively(
                                 hDistToGhost, angleFromGhost, marioPos.Angle.Value);
                         return movementSideways;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 // Mario vars
 
@@ -1356,7 +1356,8 @@ namespace STROOP.Structs
                         float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
                         float movementX = endX - startX;
                         return movementX;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["MovementY"] =
                     ((uint dummy) =>
@@ -1365,7 +1366,8 @@ namespace STROOP.Structs
                         float startY = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x20);
                         float movementY = endY - startY;
                         return movementY;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["MovementZ"] =
                     ((uint dummy) =>
@@ -1374,7 +1376,8 @@ namespace STROOP.Structs
                         float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
                         float movementZ = endZ - startZ;
                         return movementZ;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["MovementForwards"] =
                     ((uint dummy) =>
@@ -1391,7 +1394,8 @@ namespace STROOP.Structs
                         (double movementSideways, double movementForwards) =
                             MoreMath.GetComponentsFromVectorRelatively(movementHorizontal, movementAngle, marioAngle);
                         return movementForwards;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["MovementSideways"] =
                     ((uint dummy) =>
@@ -1408,7 +1412,8 @@ namespace STROOP.Structs
                         (double movementSideways, double movementForwards) =
                             MoreMath.GetComponentsFromVectorRelatively(movementHorizontal, movementAngle, marioAngle);
                         return movementSideways;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["MovementHorizontal"] =
                     ((uint dummy) =>
@@ -1421,7 +1426,8 @@ namespace STROOP.Structs
                         float movementZ = endZ - startZ;
                         double movementHorizontal = MoreMath.GetHypotenuse(movementX, movementZ);
                         return movementHorizontal;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["MovementTotal"] =
                     ((uint dummy) =>
@@ -1437,7 +1443,8 @@ namespace STROOP.Structs
                         float movementZ = endZ - startZ;
                         double movementTotal = MoreMath.GetHypotenuse(movementX, movementY, movementZ);
                         return movementTotal;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["MovementAngle"] =
                     ((uint dummy) =>
@@ -1450,7 +1457,8 @@ namespace STROOP.Structs
                         float movementZ = endZ - startZ;
                         double movementAngle = MoreMath.AngleTo_AngleUnits(movementX, movementZ);
                         return movementAngle;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["QFrameCountEstimate"] =
                     ((uint dummy) =>
@@ -1468,13 +1476,15 @@ namespace STROOP.Structs
                         double qframes = Math.Abs(Math.Round(Math.Sqrt(movementX * movementX + movementZ * movementZ) / (oldHSpeed / 4)));
                         if (qframes > 4) qframes = double.NaN;
                         return qframes;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["DeltaYawIntendedFacing"] =
                     ((uint dummy) =>
                     {
                         return GetDeltaYawIntendedFacing();
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["FallHeight"] =
                     ((uint dummy) =>
@@ -1620,31 +1630,36 @@ namespace STROOP.Structs
                     {
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         return triStruct.Classification.ToString();
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["ClosestVertex"] =
                     ((uint triAddress) =>
                     {
                         return "V" + GetClosestTriangleVertexIndex(triAddress);
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["ClosestVertexX"] =
                     ((uint triAddress) =>
                     {
                         return GetClosestTriangleVertexPosition(triAddress).X;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["ClosestVertexY"] =
                     ((uint triAddress) =>
                     {
                         return GetClosestTriangleVertexPosition(triAddress).Y;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["ClosestVertexZ"] =
                     ((uint triAddress) =>
                     {
                         return GetClosestTriangleVertexPosition(triAddress).Z;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["Steepness"] =
                     ((uint triAddress) =>
@@ -1652,35 +1667,40 @@ namespace STROOP.Structs
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double steepness = MoreMath.RadiansToAngleUnits(Math.Acos(triStruct.NormY));
                         return steepness;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["UpHillAngle"] =
                     ((uint triAddress) =>
                     {
 
                         return GetTriangleUphillAngle(triAddress);
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["DownHillAngle"] =
                     ((uint triAddress) =>
                     {
                         double uphillAngle = GetTriangleUphillAngle(triAddress);
                         return MoreMath.ReverseAngle(uphillAngle);
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["LeftHillAngle"] =
                     ((uint triAddress) =>
                     {
                         double uphillAngle = GetTriangleUphillAngle(triAddress);
                         return MoreMath.RotateAngleCCW(uphillAngle, 16384);
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["RightHillAngle"] =
                     ((uint triAddress) =>
                     {
                         double uphillAngle = GetTriangleUphillAngle(triAddress);
                         return MoreMath.RotateAngleCW(uphillAngle, 16384);
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["UpHillDeltaAngle"] =
                     ((uint triAddress) =>
@@ -1778,7 +1798,8 @@ namespace STROOP.Structs
                         angleDiff = MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                         bool uphill = angleDiff >= -16384 && angleDiff <= 16384;
                         return uphill ? "Uphill" : "Downhill";
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["DistanceAboveFloor"] =
                     ((uint dummy) =>
@@ -1881,31 +1902,36 @@ namespace STROOP.Structs
                         double heightOnTriangle =
                             (-marioPos.X * triStruct.NormX - marioPos.Z * triStruct.NormZ - triStruct.NormOffset) / triStruct.NormY;
                         return heightOnTriangle;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["MaxHSpeedUphill"] =
                     ((uint triAddress) =>
                     {
                         return GetMaxHorizontalSpeedOnTriangle(triAddress, true, false);
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["MaxHSpeedUphillAtAngle"] =
                     ((uint triAddress) =>
                     {
                         return GetMaxHorizontalSpeedOnTriangle(triAddress, true, true);
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["MaxHSpeedDownhill"] =
                     ((uint triAddress) =>
                     {
                         return GetMaxHorizontalSpeedOnTriangle(triAddress, false, false);
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["MaxHSpeedDownhillAtAngle"] =
                     ((uint triAddress) =>
                     {
                         return GetMaxHorizontalSpeedOnTriangle(triAddress, false, true);
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["ObjectTriCount"] =
                     ((uint dummy) =>
@@ -1914,7 +1940,8 @@ namespace STROOP.Structs
                         int levelTriangleCount = Config.Stream.GetInt32(TriangleConfig.LevelTriangleCountAddress);
                         int objectTriangleCount = totalTriangleCount - levelTriangleCount;
                         return objectTriangleCount;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["CurrentTriangleIndex"] =
                     ((uint triAddress) =>
@@ -1963,7 +1990,8 @@ namespace STROOP.Structs
                         int levelNodeCount = Config.Stream.GetInt32(TriangleConfig.LevelNodeCountAddress);
                         int objectNodeCount = totalNodeCount - levelNodeCount;
                         return objectNodeCount;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["XDistanceToV1"] =
                     ((uint triAddress) =>
@@ -2581,7 +2609,8 @@ namespace STROOP.Structs
                         double angleV1ToV2 = MoreMath.AngleTo_AngleUnits(
                             triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
                         return angleV1ToV2;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["AngleV2ToV1"] =
                     ((uint triAddress) =>
@@ -2590,7 +2619,8 @@ namespace STROOP.Structs
                         double angleV2ToV1 = MoreMath.AngleTo_AngleUnits(
                             triStruct.X2, triStruct.Z2, triStruct.X1, triStruct.Z1);
                         return angleV2ToV1;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["AngleV2ToV3"] =
                     ((uint triAddress) =>
@@ -2599,7 +2629,8 @@ namespace STROOP.Structs
                         double angleV2ToV3 = MoreMath.AngleTo_AngleUnits(
                             triStruct.X2, triStruct.Z2, triStruct.X3, triStruct.Z3);
                         return angleV2ToV3;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["AngleV3ToV2"] =
                     ((uint triAddress) =>
@@ -2608,7 +2639,8 @@ namespace STROOP.Structs
                         double angleV3ToV2 = MoreMath.AngleTo_AngleUnits(
                             triStruct.X3, triStruct.Z3, triStruct.X2, triStruct.Z2);
                         return angleV3ToV2;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["AngleV1ToV3"] =
                     ((uint triAddress) =>
@@ -2617,7 +2649,8 @@ namespace STROOP.Structs
                         double angleV1ToV3 = MoreMath.AngleTo_AngleUnits(
                             triStruct.X1, triStruct.Z1, triStruct.X3, triStruct.Z3);
                         return angleV1ToV3;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["AngleV3ToV1"] =
                     ((uint triAddress) =>
@@ -2626,7 +2659,8 @@ namespace STROOP.Structs
                         double angleV3ToV1 = MoreMath.AngleTo_AngleUnits(
                             triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1);
                         return angleV3ToV1;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["DeltaAngleLine12"] =
                     ((uint triAddress) =>
@@ -2784,13 +2818,15 @@ namespace STROOP.Structs
                     ((uint fileAddress) =>
                     {
                         return Config.FileManager.CalculateNumStars(fileAddress);
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["ChecksumCalculated"] =
                     ((uint fileAddress) =>
                     {
                         return Config.FileManager.GetChecksum(fileAddress);
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 // Action vars
 
@@ -2798,19 +2834,22 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return TableConfig.MarioActions.GetActionName();
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["PrevActionDescription"] =
                     ((uint dummy) =>
                     {
                         return TableConfig.MarioActions.GetPrevActionName();
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["MarioAnimationDescription"] =
                     ((uint dummy) =>
                     {
                         return TableConfig.MarioAnimations.GetAnimationName();
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 // Water vars
 
@@ -2821,7 +2860,8 @@ namespace STROOP.Structs
                         short waterLevelMedian = Config.Stream.GetInt16(MiscConfig.WaterLevelMedianAddress);
                         double waterAboveMedian = waterLevel - waterLevelMedian;
                         return waterAboveMedian;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["MarioAboveWater"] =
                     ((uint dummy) =>
@@ -3338,7 +3378,8 @@ namespace STROOP.Structs
                         ushort rngValue = Config.Stream.GetUInt16(MiscConfig.RngAddress);
                         int rngIndex = RngIndexer.GetRngIndex();
                         return rngIndex % 4;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["RngCallsPerFrame"] =
                     ((uint dummy) =>
@@ -3347,13 +3388,15 @@ namespace STROOP.Structs
                         ushort currentRng = Config.Stream.GetUInt16(MiscConfig.HackedAreaAddress + 0x0E);
                         int rngDiff = RngIndexer.GetRngIndexDiff(preRng, currentRng);
                         return rngDiff;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["NumberOfLoadedObjects"] =
                     ((uint dummy) =>
                     {
                         return DataModels.ObjectProcessor.ActiveObjectCount;
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["PlayTime"] =
                     ((uint dummy) =>
@@ -3391,7 +3434,8 @@ namespace STROOP.Structs
                         if (numValuesToShow >= 2) builder.Append(seconds + "s ");
                         if (numValuesToShow >= 1) builder.Append(String.Format("{0:D2}", frames) + "f");
                         return builder.ToString();
-                    }),
+                    },
+                    DEFAULT_SETTER),
 
                 ["TtcSpeedSettingDescription"] =
                     ((uint dummy) =>
