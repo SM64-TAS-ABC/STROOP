@@ -64,7 +64,8 @@ namespace STROOP.Structs
                         double hDist = MoreMath.GetDistanceBetween(
                             marioPos.X, marioPos.Z, objPos.X, objPos.Z);
                         return hDist;
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         Position objPos = GetObjectPosition(objAddress);
@@ -82,7 +83,8 @@ namespace STROOP.Structs
                         float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
                         float xDist = marioX - objX;
                         return xDist;
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
                         float? xDist = ParsingUtilities.ParseFloatNullable(objectValue);
@@ -98,7 +100,8 @@ namespace STROOP.Structs
                         float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
                         float yDist = marioY - objY;
                         return yDist;
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
                         float? distAbove = ParsingUtilities.ParseFloatNullable(objectValue);
@@ -114,7 +117,8 @@ namespace STROOP.Structs
                         float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
                         float zDist = marioZ - objZ;
                         return zDist;
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
                         float? zDist = ParsingUtilities.ParseFloatNullable(objectValue);
@@ -131,7 +135,8 @@ namespace STROOP.Structs
                         double dist = MoreMath.GetDistanceBetween(
                             marioPos.X, marioPos.Y, marioPos.Z, homePos.X, homePos.Y, homePos.Z);
                         return dist;
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         Position homePos = GetObjectHomePosition(objAddress);
@@ -152,7 +157,8 @@ namespace STROOP.Structs
                         double hDist = MoreMath.GetDistanceBetween(
                             marioPos.X, marioPos.Z, homePos.X, homePos.Z);
                         return hDist;
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         Position homePos = GetObjectHomePosition(objAddress);
@@ -170,7 +176,8 @@ namespace STROOP.Structs
                         float homeX = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeXOffset);
                         float xDist = marioX - homeX;
                         return xDist;
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         float homeX = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeXOffset);
                         float? xDist = ParsingUtilities.ParseFloatNullable(objectValue);
@@ -186,7 +193,8 @@ namespace STROOP.Structs
                         float homeY = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeYOffset);
                         float yDist = marioY - homeY;
                         return yDist;
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         float homeY = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeYOffset);
                         float? yDist = ParsingUtilities.ParseFloatNullable(objectValue);
@@ -202,7 +210,8 @@ namespace STROOP.Structs
                         float homeZ = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeZOffset);
                         float zDist = marioZ - homeZ;
                         return zDist;
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         float homeZ = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeZOffset);
                         float? zDist = ParsingUtilities.ParseFloatNullable(objectValue);
@@ -219,7 +228,8 @@ namespace STROOP.Structs
                         double dist = MoreMath.GetDistanceBetween(
                             objPos.X, objPos.Y, objPos.Z, homePos.X, homePos.Y, homePos.Z);
                         return dist;
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         Position objPos = GetObjectPosition(objAddress);
                         Position homePos = GetObjectHomePosition(objAddress);
@@ -240,7 +250,8 @@ namespace STROOP.Structs
                         double hDist = MoreMath.GetDistanceBetween(
                             objPos.X, objPos.Z, homePos.X, homePos.Z);
                         return hDist;
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         Position objPos = GetObjectPosition(objAddress);
                         Position homePos = GetObjectHomePosition(objAddress);
@@ -258,7 +269,8 @@ namespace STROOP.Structs
                         float homeX = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeXOffset);
                         float xDist = objX - homeX;
                         return xDist;
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         float homeX = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeXOffset);
                         float? xDist = ParsingUtilities.ParseFloatNullable(objectValue);
@@ -274,7 +286,8 @@ namespace STROOP.Structs
                         float homeY = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeYOffset);
                         float yDist = objY - homeY;
                         return yDist;
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         float homeY = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeYOffset);
                         float? yDist = ParsingUtilities.ParseFloatNullable(objectValue);
@@ -290,7 +303,8 @@ namespace STROOP.Structs
                         float homeZ = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeZOffset);
                         float zDist = objZ - homeZ;
                         return zDist;
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         float homeZ = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeZOffset);
                         float? zDist = ParsingUtilities.ParseFloatNullable(objectValue);
@@ -307,7 +321,8 @@ namespace STROOP.Structs
                         double angleToMario = MoreMath.AngleTo_AngleUnits(
                             objPos.X, objPos.Z, marioPos.X, marioPos.Z);
                         return MoreMath.NormalizeAngleDouble(angleToMario);
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         Position objPos = GetObjectPosition(objAddress);
@@ -329,7 +344,8 @@ namespace STROOP.Structs
                             objPos.X, objPos.Z, marioPos.X, marioPos.Z);
                         double angleDiff = objPos.Angle.Value - angleToMario;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         Position objPos = GetObjectPosition(objAddress);
@@ -351,7 +367,8 @@ namespace STROOP.Structs
                         double angleToMario = InGameTrigUtilities.InGameAngleTo(
                             objPos.X, objPos.Z, marioPos.X, marioPos.Z);
                         return MoreMath.NormalizeAngleDouble(angleToMario);
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         Position objPos = GetObjectPosition(objAddress);
@@ -373,7 +390,8 @@ namespace STROOP.Structs
                             objPos.X, objPos.Z, marioPos.X, marioPos.Z);
                         double angleDiff = objPos.Angle.Value - angleToMario;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         Position objPos = GetObjectPosition(objAddress);
@@ -395,7 +413,8 @@ namespace STROOP.Structs
                         double angleToObject = MoreMath.AngleTo_AngleUnits(
                             marioPos.X, marioPos.Z, objPos.X, objPos.Z);
                         return MoreMath.NormalizeAngleDouble(angleToObject);
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         Position objPos = GetObjectPosition(objAddress);
@@ -417,7 +436,8 @@ namespace STROOP.Structs
                             marioPos.X, marioPos.Z, objPos.X, objPos.Z);
                         double angleDiff = marioPos.Angle.Value - angleToObject;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         Position objPos = GetObjectPosition(objAddress);
@@ -440,7 +460,8 @@ namespace STROOP.Structs
                         double angleToHome = MoreMath.AngleTo_AngleUnits(
                             objPos.X, objPos.Z, homePos.X, homePos.Z);
                         return MoreMath.NormalizeAngleDouble(angleToHome);
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         Position objPos = GetObjectPosition(objAddress);
                         Position homePos = GetObjectHomePosition(objAddress);
@@ -462,7 +483,8 @@ namespace STROOP.Structs
                             objPos.X, objPos.Z, homePos.X, homePos.Z);
                         double angleDiff = objPos.Angle.Value - angleToHome;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         Position objPos = GetObjectPosition(objAddress);
                         Position homePos = GetObjectHomePosition(objAddress);
@@ -484,7 +506,8 @@ namespace STROOP.Structs
                         double angleHomeToObject = MoreMath.AngleTo_AngleUnits(
                             homePos.X, homePos.Z, objPos.X, objPos.Z);
                         return MoreMath.NormalizeAngleDouble(angleHomeToObject);
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         Position objPos = GetObjectPosition(objAddress);
                         Position homePos = GetObjectHomePosition(objAddress);
@@ -511,7 +534,8 @@ namespace STROOP.Structs
 
                         double marioHitboxAwayFromObject = MoreMath.GetDistanceBetween(mObjX, mObjZ, objX, objZ) - mObjHitboxRadius - objHitboxRadius;
                         return marioHitboxAwayFromObject;
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
                         float mObjX = Config.Stream.GetSingle(marioObjRef + ObjectConfig.XOffset);
@@ -550,7 +574,8 @@ namespace STROOP.Structs
 
                         double marioHitboxAboveObject = mObjHitboxBottom - objHitboxTop;
                         return marioHitboxAboveObject;
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
                         float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
@@ -584,7 +609,8 @@ namespace STROOP.Structs
 
                         double marioHitboxBelowObject = objHitboxBottom - mObjHitboxTop;
                         return marioHitboxBelowObject;
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
                         float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
@@ -646,7 +672,8 @@ namespace STROOP.Structs
                         int angleDiffAbs = Math.Abs(angleDiffShort);
                         int angleAway = angleDiffAbs - 0x2AAA;
                         return angleAway;
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         double? angleAwayNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleAwayNullable.HasValue) return false;
@@ -693,7 +720,8 @@ namespace STROOP.Structs
                     {
                         float pendulumAmplitude = GetPendulumAmplitude(objAddress);
                         return pendulumAmplitude;
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         double? amplitudeNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!amplitudeNullable.HasValue) return false;
@@ -718,7 +746,8 @@ namespace STROOP.Structs
                         if (!pendulumSwingIndexNullable.HasValue) return Double.NaN;
                         int pendulumSwingIndex = pendulumSwingIndexNullable.Value;
                         return pendulumSwingIndex;
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         int? indexNullable = ParsingUtilities.ParseIntNullable(objectValue);
                         if (!indexNullable.HasValue) return false;
@@ -916,7 +945,8 @@ namespace STROOP.Structs
                         float hitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadius);
                         float bloatSize = (hitboxRadius - 65) / 13;
                         return bloatSize;
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         float? bloatSizeNullable = ParsingUtilities.ParseFloatNullable(objectValue);
                         if (!bloatSizeNullable.HasValue) return false;
@@ -940,7 +970,8 @@ namespace STROOP.Structs
                         float hitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadius);
                         float radius = hitboxRadius + 32;
                         return radius;
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         float? radiusNullable = ParsingUtilities.ParseFloatNullable(objectValue);
                         if (!radiusNullable.HasValue) return false;
@@ -970,7 +1001,8 @@ namespace STROOP.Structs
                         float radius = hitboxRadius + 32;
                         double spaceBetween = hDist - radius;
                         return spaceBetween;
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         double? spaceBetweenNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!spaceBetweenNullable.HasValue) return false;
@@ -996,7 +1028,8 @@ namespace STROOP.Structs
                         ushort targetAngle = Config.Stream.GetUInt16(objAddress + ObjectConfig.ScuttlebugTargetAngleOffset);
                         int angleDiff = facingAngle - targetAngle;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleDiffNullable.HasValue) return false;
@@ -1018,7 +1051,8 @@ namespace STROOP.Structs
                             marioPos.X, marioPos.Y, marioPos.Z, objPos.X, objPos.Y, objPos.Z);
                         double distDiff = dist - 3000;
                         return distDiff;
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         Position objPos = GetObjectPosition(objAddress);
@@ -1041,7 +1075,8 @@ namespace STROOP.Structs
                             marioPos.X, marioPos.Y, marioPos.Z, objPos.X, objPos.Y, objPos.Z);
                         double distDiff = dist - 4000;
                         return distDiff;
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         Position objPos = GetObjectPosition(objAddress);
@@ -1061,7 +1096,8 @@ namespace STROOP.Structs
                         int timer = Config.Stream.GetInt32(objAddress + 0xF4);
                         float height = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
                         return BitfsPlatformGroupTable.GetMinHeight(timer, height);
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         return false;
                     }),
@@ -1072,7 +1108,8 @@ namespace STROOP.Structs
                         int timer = Config.Stream.GetInt32(objAddress + 0xF4);
                         float height = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
                         return BitfsPlatformGroupTable.GetMaxHeight(timer, height);
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         return false;
                     }),
@@ -1082,7 +1119,8 @@ namespace STROOP.Structs
                     {
                         int timer = Config.Stream.GetInt32(objAddress + 0xF4);
                         return BitfsPlatformGroupTable.GetRelativeHeightFromMin(timer);
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         return false;
                     }),
@@ -1094,7 +1132,8 @@ namespace STROOP.Structs
                         float height = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
                         float homeHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeYOffset);
                         return BitfsPlatformGroupTable.GetDisplacedHeight(timer, height, homeHeight);
-                    },(object objectValue, uint objAddress) =>
+                    },
+                    (object objectValue, uint objAddress) =>
                     {
                         return false;
                     }),
@@ -1156,7 +1195,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return GetMarioDeFactoSpeed();
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         double? newDefactoSpeedNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newDefactoSpeedNullable.HasValue) return false;
@@ -1169,7 +1209,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return GetMarioSlidingSpeed();
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         float xSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
                         float zSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
@@ -1197,7 +1238,8 @@ namespace STROOP.Structs
                         float zSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
                         double slidingAngle = MoreMath.AngleTo_AngleUnits(xSlidingSpeed, zSlidingSpeed);
                         return slidingAngle;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         float xSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
                         float zSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
@@ -1221,7 +1263,8 @@ namespace STROOP.Structs
                         float vSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.VSpeedOffset);
                         double remainingHeight = ComputeHeightChangeFromInitialVerticalSpeed(vSpeed);
                         return remainingHeight;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         double? newRemainingHeightNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newRemainingHeightNullable.HasValue) return false;
@@ -1238,7 +1281,8 @@ namespace STROOP.Structs
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
                         double peakHeight = marioY + remainingHeight;
                         return peakHeight;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         double? newPeakHeightNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newPeakHeightNullable.HasValue) return false;
@@ -1255,7 +1299,8 @@ namespace STROOP.Structs
                         float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
                         double vSpeed = ConvertDoubleJumpHSpeedToVSpeed(hSpeed);
                         return vSpeed;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         double? newVSpeedNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newVSpeedNullable.HasValue) return false;
@@ -1271,7 +1316,8 @@ namespace STROOP.Structs
                         double vSpeed = ConvertDoubleJumpHSpeedToVSpeed(hSpeed);
                         double doubleJumpHeight = ComputeHeightChangeFromInitialVerticalSpeed(vSpeed);
                         return doubleJumpHeight;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         double? newHeightNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newHeightNullable.HasValue) return false;
@@ -1290,7 +1336,8 @@ namespace STROOP.Structs
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
                         double doubleJumpPeakHeight = marioY + doubleJumpHeight;
                         return doubleJumpPeakHeight;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         double? newPeakHeightNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newPeakHeightNullable.HasValue) return false;
@@ -1436,7 +1483,8 @@ namespace STROOP.Structs
                         float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
                         float fallHeight = peakHeight - floorY;
                         return fallHeight;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         double? fallHeightNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!fallHeightNullable.HasValue) return false;
@@ -1455,7 +1503,8 @@ namespace STROOP.Structs
                         double dist = MoreMath.GetDistanceBetween(
                             marioPos.X, marioPos.Y, marioPos.Z, holpPos.X, holpPos.Y, holpPos.Z);
                         return dist;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         Position marioPos = GetMarioPosition();
                         Position holpPos = GetHolpPosition();
@@ -1476,7 +1525,8 @@ namespace STROOP.Structs
                         double hDist = MoreMath.GetDistanceBetween(
                             marioPos.X, marioPos.Z, holpPos.X, holpPos.Z);
                         return hDist;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         Position marioPos = GetMarioPosition();
                         Position holpPos = GetHolpPosition();
@@ -1499,7 +1549,8 @@ namespace STROOP.Structs
                         int secondComponent = (totalDeciSeconds / 10) % 60;
                         int minuteComponent = (totalDeciSeconds / 600);
                         return minuteComponent + "'" + secondComponent.ToString("D2") + "\"" + deciSecondComponent;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         string timerString = objectValue.ToString();
                         if (timerString == null) return false;
@@ -1547,7 +1598,8 @@ namespace STROOP.Structs
                         double dist = MoreMath.GetDistanceBetween(
                             marioPos.X, marioPos.Y, marioPos.Z, cameraPos.X, cameraPos.Y, cameraPos.Z);
                         return dist;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         Position marioPos = GetMarioPosition();
                         Position cameraPos = GetCameraPosition();
@@ -1637,7 +1689,8 @@ namespace STROOP.Structs
                         double uphillAngle = GetTriangleUphillAngle(triAddress);
                         double angleDiff = marioAngle - uphillAngle;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleDiffNullable.HasValue) return false;
@@ -1657,7 +1710,8 @@ namespace STROOP.Structs
                         double downhillAngle = MoreMath.ReverseAngle(uphillAngle);
                         double angleDiff = marioAngle - downhillAngle;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleDiffNullable.HasValue) return false;
@@ -1678,7 +1732,8 @@ namespace STROOP.Structs
                         double lefthillAngle = MoreMath.RotateAngleCCW(uphillAngle, 16384);
                         double angleDiff = marioAngle - lefthillAngle;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleDiffNullable.HasValue) return false;
@@ -1699,7 +1754,8 @@ namespace STROOP.Structs
                         double righthillAngle = MoreMath.RotateAngleCW(uphillAngle, 16384);
                         double angleDiff = marioAngle - righthillAngle;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!angleDiffNullable.HasValue) return false;
@@ -1731,7 +1787,8 @@ namespace STROOP.Structs
                         float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
                         float distAboveFloor = marioY - floorY;
                         return distAboveFloor;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
                         double? distAboveNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
@@ -1748,7 +1805,8 @@ namespace STROOP.Structs
                         float ceilingY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.CeilingYOffset);
                         float distBelowCeiling = ceilingY - marioY;
                         return distBelowCeiling;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         float ceilingY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.CeilingYOffset);
                         double? distBelowNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
@@ -1769,7 +1827,8 @@ namespace STROOP.Structs
                             marioPos.Z * triStruct.NormZ +
                             triStruct.NormOffset;
                         return normalDistAway;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -1802,7 +1861,8 @@ namespace STROOP.Structs
                         double verticalDistAway =
                             marioPos.Y + (marioPos.X * triStruct.NormX + marioPos.Z * triStruct.NormZ + triStruct.NormOffset) / triStruct.NormY;
                         return verticalDistAway;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -1867,7 +1927,8 @@ namespace STROOP.Structs
                         int indexGuess = (int)(addressDiff / structSize);
                         if (triangleListStartAddress + indexGuess * structSize == triAddress) return indexGuess;
                         return Double.NaN;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         int? indexNullable = ParsingUtilities.ParseIntNullable(objectValue);
                         if (!indexNullable.HasValue) return false;
@@ -1884,7 +1945,8 @@ namespace STROOP.Structs
                     ((uint triAddress) =>
                     {
                         return triAddress;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         uint? addressNullable = ParsingUtilities.ParseUIntNullable(objectValue);
                         if (!addressNullable.HasValue) return false;
@@ -1910,7 +1972,8 @@ namespace STROOP.Structs
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double xDistToV1 = marioX - triStruct.X1;
                         return xDistToV1;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? xDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
@@ -1927,7 +1990,8 @@ namespace STROOP.Structs
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double yDistToV1 = marioY - triStruct.Y1;
                         return yDistToV1;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? yDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
@@ -1944,7 +2008,8 @@ namespace STROOP.Structs
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double zDistToV1 = marioZ - triStruct.Z1;
                         return zDistToV1;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? zDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
@@ -1962,7 +2027,8 @@ namespace STROOP.Structs
                         double hDistToV1 = MoreMath.GetDistanceBetween(
                             marioPos.X, marioPos.Z, triStruct.X1, triStruct.Z1);
                         return hDistToV1;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -1982,7 +2048,8 @@ namespace STROOP.Structs
                         double distToV1 = MoreMath.GetDistanceBetween(
                             marioPos.X, marioPos.Y, marioPos.Z, triStruct.X1, triStruct.Y1, triStruct.Z1);
                         return distToV1;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -2002,7 +2069,8 @@ namespace STROOP.Structs
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double xDistToV2 = marioX - triStruct.X2;
                         return xDistToV2;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? xDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
@@ -2019,7 +2087,8 @@ namespace STROOP.Structs
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double yDistToV2 = marioY - triStruct.Y2;
                         return yDistToV2;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? yDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
@@ -2036,7 +2105,8 @@ namespace STROOP.Structs
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double zDistToV2 = marioZ - triStruct.Z2;
                         return zDistToV2;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? zDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
@@ -2054,7 +2124,8 @@ namespace STROOP.Structs
                         double hDistToV2 = MoreMath.GetDistanceBetween(
                             marioPos.X, marioPos.Z, triStruct.X2, triStruct.Z2);
                         return hDistToV2;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -2074,7 +2145,8 @@ namespace STROOP.Structs
                         double distToV2 = MoreMath.GetDistanceBetween(
                             marioPos.X, marioPos.Y, marioPos.Z, triStruct.X2, triStruct.Y2, triStruct.Z2);
                         return distToV2;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -2094,7 +2166,8 @@ namespace STROOP.Structs
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double xDistToV3 = marioX - triStruct.X3;
                         return xDistToV3;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? xDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
@@ -2111,7 +2184,8 @@ namespace STROOP.Structs
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double yDistToV3 = marioY - triStruct.Y3;
                         return yDistToV3;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? yDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
@@ -2128,7 +2202,8 @@ namespace STROOP.Structs
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double zDistToV3 = marioZ - triStruct.Z3;
                         return zDistToV3;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                         double? zDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
@@ -2146,7 +2221,8 @@ namespace STROOP.Structs
                         double hDistToV3 = MoreMath.GetDistanceBetween(
                             marioPos.X, marioPos.Z, triStruct.X3, triStruct.Z3);
                         return hDistToV3;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -2166,7 +2242,8 @@ namespace STROOP.Structs
                         double distToV3 = MoreMath.GetDistanceBetween(
                             marioPos.X, marioPos.Y, marioPos.Z, triStruct.X3, triStruct.Y3, triStruct.Z3);
                         return distToV3;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -2190,7 +2267,8 @@ namespace STROOP.Structs
                             triStruct.X2, triStruct.Z2,
                             triStruct.X3, triStruct.Z3, 1, 2);
                         return signedDistToLine12;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -2226,7 +2304,8 @@ namespace STROOP.Structs
                             triStruct.X2, triStruct.Z2,
                             triStruct.X3, triStruct.Z3, 2, 3);
                         return signedDistToLine23;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -2262,7 +2341,8 @@ namespace STROOP.Structs
                             triStruct.X2, triStruct.Z2,
                             triStruct.X3, triStruct.Z3, 3, 1);
                         return signedDistToLine31;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -2295,7 +2375,8 @@ namespace STROOP.Structs
                         double angleToV1 = MoreMath.AngleTo_AngleUnits(
                             marioPos.X, marioPos.Z, triStruct.X1, triStruct.Z1);
                         return angleToV1;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -2317,7 +2398,8 @@ namespace STROOP.Structs
                             marioPos.X, marioPos.Z, triStruct.X1, triStruct.Z1);
                         double angleDiff = marioPos.Angle.Value - angleToV1;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -2340,7 +2422,8 @@ namespace STROOP.Structs
                         double angleV1ToMario = MoreMath.AngleTo_AngleUnits(
                             triStruct.X1, triStruct.Z1, marioPos.X, marioPos.Z);
                         return angleV1ToMario;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -2361,7 +2444,8 @@ namespace STROOP.Structs
                         double angleToV2 = MoreMath.AngleTo_AngleUnits(
                             marioPos.X, marioPos.Z, triStruct.X2, triStruct.Z2);
                         return angleToV2;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -2383,7 +2467,8 @@ namespace STROOP.Structs
                             marioPos.X, marioPos.Z, triStruct.X2, triStruct.Z2);
                         double angleDiff = marioPos.Angle.Value - angleToV2;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -2406,7 +2491,8 @@ namespace STROOP.Structs
                         double angleV2ToMario = MoreMath.AngleTo_AngleUnits(
                             triStruct.X2, triStruct.Z2, marioPos.X, marioPos.Z);
                         return angleV2ToMario;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -2427,7 +2513,8 @@ namespace STROOP.Structs
                         double angleToV3 = MoreMath.AngleTo_AngleUnits(
                             marioPos.X, marioPos.Z, triStruct.X3, triStruct.Z3);
                         return angleToV3;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -2449,7 +2536,8 @@ namespace STROOP.Structs
                             marioPos.X, marioPos.Z, triStruct.X3, triStruct.Z3);
                         double angleDiff = marioPos.Angle.Value - angleToV3;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -2472,7 +2560,8 @@ namespace STROOP.Structs
                         double angleV3ToMario = MoreMath.AngleTo_AngleUnits(
                             triStruct.X3, triStruct.Z3, marioPos.X, marioPos.Z);
                         return angleV3ToMario;
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -2548,7 +2637,8 @@ namespace STROOP.Structs
                             triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
                         double angleDiff = marioPos.Angle.Value - angleV1ToV2;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -2572,7 +2662,8 @@ namespace STROOP.Structs
                             triStruct.X2, triStruct.Z2, triStruct.X1, triStruct.Z1);
                         double angleDiff = marioPos.Angle.Value - angleV2ToV1;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -2596,7 +2687,8 @@ namespace STROOP.Structs
                             triStruct.X2, triStruct.Z2, triStruct.X3, triStruct.Z3);
                         double angleDiff = marioPos.Angle.Value - angleV2ToV3;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -2620,7 +2712,8 @@ namespace STROOP.Structs
                             triStruct.X3, triStruct.Z3, triStruct.X2, triStruct.Z2);
                         double angleDiff = marioPos.Angle.Value - angleV3ToV2;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -2644,7 +2737,8 @@ namespace STROOP.Structs
                             triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1);
                         double angleDiff = marioPos.Angle.Value - angleV3ToV1;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -2668,7 +2762,8 @@ namespace STROOP.Structs
                             triStruct.X1, triStruct.Z1, triStruct.X3, triStruct.Z3);
                         double angleDiff = marioPos.Angle.Value - angleV1ToV3;
                         return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
-                    },(object objectValue, uint triAddress) =>
+                    },
+                    (object objectValue, uint triAddress) =>
                     {
                         Position marioPos = GetMarioPosition();
                         TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -2735,7 +2830,8 @@ namespace STROOP.Structs
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
                         float marioAboveWater = marioY - waterLevel;
                         return marioAboveWater;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!doubleValueNullable.HasValue) return false;
@@ -2755,7 +2851,8 @@ namespace STROOP.Structs
                         int puXIndex = PuUtilities.GetPuIndex(marioX);
                         double qpuXIndex = puXIndex / 4d;
                         return qpuXIndex;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         double? newQpuXIndexNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newQpuXIndexNullable.HasValue) return false;
@@ -2774,7 +2871,8 @@ namespace STROOP.Structs
                         int puYIndex = PuUtilities.GetPuIndex(marioY);
                         double qpuYIndex = puYIndex / 4d;
                         return qpuYIndex;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         double? newQpuYIndexNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newQpuYIndexNullable.HasValue) return false;
@@ -2793,7 +2891,8 @@ namespace STROOP.Structs
                         int puZIndex = PuUtilities.GetPuIndex(marioZ);
                         double qpuZIndex = puZIndex / 4d;
                         return qpuZIndex;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         double? newQpuZIndexNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newQpuZIndexNullable.HasValue) return false;
@@ -2811,7 +2910,8 @@ namespace STROOP.Structs
                         float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
                         int puXIndex = PuUtilities.GetPuIndex(marioX);
                         return puXIndex;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         int? newPuXIndexNullable = ParsingUtilities.ParseIntNullable(objectValue);
                         if (!newPuXIndexNullable.HasValue) return false;
@@ -2828,7 +2928,8 @@ namespace STROOP.Structs
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
                         int puYIndex = PuUtilities.GetPuIndex(marioY);
                         return puYIndex;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         int? newPuYIndexNullable = ParsingUtilities.ParseIntNullable(objectValue);
                         if (!newPuYIndexNullable.HasValue) return false;
@@ -2845,7 +2946,8 @@ namespace STROOP.Structs
                         float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
                         int puZIndex = PuUtilities.GetPuIndex(marioZ);
                         return puZIndex;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         int? newPuZIndexNullable = ParsingUtilities.ParseIntNullable(objectValue);
                         if (!newPuZIndexNullable.HasValue) return false;
@@ -2862,7 +2964,8 @@ namespace STROOP.Structs
                         float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
                         double relX = PuUtilities.GetRelativeCoordinate(marioX);
                         return relX;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         double? newRelXNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newRelXNullable.HasValue) return false;
@@ -2880,7 +2983,8 @@ namespace STROOP.Structs
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
                         double relY = PuUtilities.GetRelativeCoordinate(marioY);
                         return relY;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         double? newRelYNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newRelYNullable.HasValue) return false;
@@ -2898,7 +3002,8 @@ namespace STROOP.Structs
                         float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
                         double relZ = PuUtilities.GetRelativeCoordinate(marioZ);
                         return relZ;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         double? newRelZNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newRelZNullable.HasValue) return false;
@@ -2914,7 +3019,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return GetDeFactoMultiplier();
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
                         float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
@@ -2934,7 +3040,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return GetSyncingSpeed();
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
                         float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
@@ -2955,7 +3062,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return GetQpuSpeed();
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         double? newQpuSpeedNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newQpuSpeedNullable.HasValue) return false;
@@ -2969,7 +3077,8 @@ namespace STROOP.Structs
                     {
                         double puSpeed = GetQpuSpeed() * 4;
                         return puSpeed;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         double? newPuSpeedNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newPuSpeedNullable.HasValue) return false;
@@ -2983,7 +3092,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return Math.Round(GetQpuSpeed());
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         int? newQpuSpeedCompNullable = ParsingUtilities.ParseIntNullable(objectValue);
                         if (!newQpuSpeedCompNullable.HasValue) return false;
@@ -2998,7 +3108,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return Math.Round(GetQpuSpeed() * 4);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         int? newPuSpeedCompNullable = ParsingUtilities.ParseIntNullable(objectValue);
                         if (!newPuSpeedCompNullable.HasValue) return false;
@@ -3014,7 +3125,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return GetRelativePuSpeed();
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         double? newRelativeSpeedNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!newRelativeSpeedNullable.HasValue) return false;
@@ -3030,7 +3142,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return GetQsRelativeSpeed(1 / 4d, true);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return GetQsRelativeIntendedNextComponent(objectValue, 1 / 4d, true, true);
                     }),
@@ -3039,7 +3152,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return GetQsRelativeSpeed(1 / 4d, false);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return GetQsRelativeIntendedNextComponent(objectValue, 1 / 4d, false, true);
                     }),
@@ -3048,7 +3162,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return GetQsRelativeIntendedNextComponent(1 / 4d, true);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return GetQsRelativeIntendedNextComponent(objectValue, 1 / 4d, true, false);
                     }),
@@ -3057,7 +3172,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return GetQsRelativeIntendedNextComponent(1 / 4d, false);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return GetQsRelativeIntendedNextComponent(objectValue, 1 / 4d, false, false);
                     }),
@@ -3066,7 +3182,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return GetQsRelativeSpeed(2 / 4d, true);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return GetQsRelativeIntendedNextComponent(objectValue, 2 / 4d, true, true);
                     }),
@@ -3075,7 +3192,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return GetQsRelativeSpeed(2 / 4d, false);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return GetQsRelativeIntendedNextComponent(objectValue, 2 / 4d, false, true);
                     }),
@@ -3084,7 +3202,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return GetQsRelativeIntendedNextComponent(2 / 4d, true);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return GetQsRelativeIntendedNextComponent(objectValue, 2 / 4d, true, false);
                     }),
@@ -3093,7 +3212,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return GetQsRelativeIntendedNextComponent(2 / 4d, false);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return GetQsRelativeIntendedNextComponent(objectValue, 2 / 4d, false, false);
                     }),
@@ -3102,7 +3222,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return GetQsRelativeSpeed(3 / 4d, true);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return GetQsRelativeIntendedNextComponent(objectValue, 3 / 4d, true, true);
                     }),
@@ -3111,7 +3232,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return GetQsRelativeSpeed(3 / 4d, false);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return GetQsRelativeIntendedNextComponent(objectValue, 3 / 4d, false, true);
                     }),
@@ -3120,7 +3242,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return GetQsRelativeIntendedNextComponent(3 / 4d, true);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return GetQsRelativeIntendedNextComponent(objectValue, 3 / 4d, true, false);
                     }),
@@ -3129,7 +3252,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return GetQsRelativeIntendedNextComponent(3 / 4d, false);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return GetQsRelativeIntendedNextComponent(objectValue, 3 / 4d, false, false);
                     }),
@@ -3138,7 +3262,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return GetQsRelativeSpeed(4 / 4d, true);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return GetQsRelativeIntendedNextComponent(objectValue, 4 / 4d, true, true);
                     }),
@@ -3147,7 +3272,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return GetQsRelativeSpeed(4 / 4d, false);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return GetQsRelativeIntendedNextComponent(objectValue, 4 / 4d, false, true);
                     }),
@@ -3156,7 +3282,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return GetQsRelativeIntendedNextComponent(4 / 4d, true);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return GetQsRelativeIntendedNextComponent(objectValue, 4 / 4d, true, false);
                     }),
@@ -3165,7 +3292,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return GetQsRelativeIntendedNextComponent(4 / 4d, false);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return GetQsRelativeIntendedNextComponent(objectValue, 4 / 4d, false, false);
                     }),
@@ -3174,7 +3302,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return "(" + SpecialConfig.PuParam1 + "," + SpecialConfig.PuParam2 + ")";
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         List<string> stringList = ParsingUtilities.ParseStringList(objectValue.ToString());
                         List<int?> intList = stringList.ConvertAll(
@@ -3194,7 +3323,8 @@ namespace STROOP.Structs
                         ushort rngValue = Config.Stream.GetUInt16(MiscConfig.RngAddress);
                         string rngIndexString = RngIndexer.GetRngIndexString(rngValue);
                         return rngIndexString;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         int? index = ParsingUtilities.ParseIntNullable(objectValue);
                         if (!index.HasValue) return false;
@@ -3267,7 +3397,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return TtcSpeedSettingUtilities.GetTtcSpeedSettingDescription();
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         short? ttcSpeedSettingNullable = TtcSpeedSettingUtilities.GetTtcSpeedSetting(objectValue.ToString());
                         if (!ttcSpeedSettingNullable.HasValue) return false;
@@ -3284,7 +3415,8 @@ namespace STROOP.Structs
                             MarioConfig.StructAddress + MarioConfig.AreaPointerOffset);
                         double currentAreaIndexMario = AreaUtilities.GetAreaIndex(currentAreaMario) ?? Double.NaN;
                         return currentAreaIndexMario;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         int? intValueNullable = ParsingUtilities.ParseIntNullable(objectValue);
                         if (!intValueNullable.HasValue) return false;
@@ -3301,7 +3433,8 @@ namespace STROOP.Structs
                         uint currentArea = Config.Stream.GetUInt32(AreaConfig.CurrentAreaPointerAddress);
                         double currentAreaIndex = AreaUtilities.GetAreaIndex(currentArea) ?? Double.NaN;
                         return currentAreaIndex;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         int? intValueNullable = ParsingUtilities.ParseIntNullable(objectValue);
                         if (!intValueNullable.HasValue) return false;
@@ -3318,7 +3451,8 @@ namespace STROOP.Structs
                             Config.AreaManager.SelectedAreaAddress + AreaConfig.TerrainTypeOffset);
                         string terrainDescription = AreaUtilities.GetTerrainDescription(terrainType);
                         return terrainDescription;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         short? terrainTypeNullable = AreaUtilities.GetTerrainType(objectValue.ToString());
                         if (!terrainTypeNullable.HasValue) return false;
@@ -3333,7 +3467,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return SpecialConfig.SelfPosPA.ToString();
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         PositionAngle posAngle = PositionAngle.FromString(objectValue.ToString());
                         if (posAngle == null) return false;
@@ -3345,7 +3480,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return SpecialConfig.SelfX;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!doubleValueNullable.HasValue) return false;
@@ -3357,7 +3493,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return SpecialConfig.SelfY;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!doubleValueNullable.HasValue) return false;
@@ -3369,7 +3506,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return SpecialConfig.SelfZ;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!doubleValueNullable.HasValue) return false;
@@ -3381,7 +3519,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return SpecialConfig.SelfAnglePA.ToString();
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         PositionAngle posAngle = PositionAngle.FromString(objectValue.ToString());
                         if (posAngle == null) return false;
@@ -3393,7 +3532,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return SpecialConfig.SelfAngle;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!doubleValueNullable.HasValue) return false;
@@ -3405,7 +3545,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return SpecialConfig.PointPosPA.ToString();
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         PositionAngle posAngle = PositionAngle.FromString(objectValue.ToString());
                         if (posAngle == null) return false;
@@ -3417,7 +3558,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return SpecialConfig.PointX;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!doubleValueNullable.HasValue) return false;
@@ -3429,7 +3571,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return SpecialConfig.PointY;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!doubleValueNullable.HasValue) return false;
@@ -3441,7 +3584,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return SpecialConfig.PointZ;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!doubleValueNullable.HasValue) return false;
@@ -3453,7 +3597,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return SpecialConfig.PointAnglePA.ToString();
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         PositionAngle posAngle = PositionAngle.FromString(objectValue.ToString());
                         if (posAngle == null) return false;
@@ -3465,7 +3610,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return SpecialConfig.PointAngle;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                         if (!doubleValueNullable.HasValue) return false;
@@ -3477,7 +3623,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return PositionAngle.GetXDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return PositionAngle.SetXDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA, objectValue);
                     }),
@@ -3486,7 +3633,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return PositionAngle.GetYDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return PositionAngle.SetYDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA, objectValue);
                     }),
@@ -3495,7 +3643,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return PositionAngle.GetZDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return PositionAngle.SetZDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA, objectValue);
                     }),
@@ -3504,7 +3653,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return PositionAngle.GetHDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return PositionAngle.SetHDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA, objectValue);
                     }),
@@ -3513,7 +3663,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return PositionAngle.GetDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return PositionAngle.SetDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA, objectValue);
                     }),
@@ -3522,7 +3673,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return PositionAngle.GetAngleTo(SpecialConfig.SelfPA, SpecialConfig.PointPA, false, false);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return PositionAngle.SetAngleTo(SpecialConfig.SelfPA, SpecialConfig.PointPA, objectValue);
                     }),
@@ -3531,7 +3683,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return PositionAngle.GetDAngleTo(SpecialConfig.SelfPA, SpecialConfig.PointPA, false);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return PositionAngle.SetDAngleTo(SpecialConfig.SelfPA, SpecialConfig.PointPA, objectValue);
                     }),
@@ -3540,7 +3693,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return PositionAngle.GetAngleTo(SpecialConfig.PointPA, SpecialConfig.SelfPA, false, false);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return PositionAngle.SetAngleTo(SpecialConfig.PointPA, SpecialConfig.SelfPA, objectValue);
                     }),
@@ -3549,7 +3703,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return PositionAngle.GetDAngleTo(SpecialConfig.PointPA, SpecialConfig.SelfPA, false);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return PositionAngle.SetDAngleTo(SpecialConfig.PointPA, SpecialConfig.SelfPA, objectValue);
                     }),
@@ -3558,7 +3713,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return PositionAngle.GetAngleDifference(SpecialConfig.SelfPA, SpecialConfig.PointPA, false);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return PositionAngle.SetAngleDifference(SpecialConfig.SelfPA, SpecialConfig.PointPA, objectValue);
                     }),
@@ -3567,7 +3723,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return PositionAngle.GetAngleDifference(SpecialConfig.SelfPA, SpecialConfig.PointPA, true);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return PositionAngle.SetAngleDifference(SpecialConfig.SelfPA, SpecialConfig.PointPA, objectValue);
                     }),
@@ -3576,7 +3733,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return PositionAngle.GetFDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return PositionAngle.SetFDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA, objectValue);
                     }),
@@ -3585,7 +3743,8 @@ namespace STROOP.Structs
                     ((uint dummy) =>
                     {
                         return PositionAngle.GetSDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA);
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         return PositionAngle.SetSDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA, objectValue);
                     }),
@@ -3598,7 +3757,8 @@ namespace STROOP.Structs
                         if (!MupenUtilities.IsUsingMupen()) return Double.NaN;
                         int lag = MupenUtilities.GetLagCount() + SpecialConfig.MupenLagOffset;
                         return lag;
-                    },(object objectValue, uint dummy) =>
+                    },
+                    (object objectValue, uint dummy) =>
                     {
                         if (!MupenUtilities.IsUsingMupen()) return false;
 
