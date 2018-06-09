@@ -18,6 +18,7 @@ namespace STROOP.Structs
         static WatchVariableSpecialUtilities()
         {
             CreateDictionary();
+            AddGeneratedDictionaryEntries();
         }
 
         public static (Func<uint, object> getter, Func<object, uint, bool> setter) CreateGetterSetterFunctions(string specialType)
@@ -25,9 +26,13 @@ namespace STROOP.Structs
             return _dictionary[specialType];
         }
 
-        public static void CreateDictionary()
+        public static void AddGeneratedDictionaryEntries()
         {
 
+        }
+
+        public static void CreateDictionary()
+        {
             _dictionary = new Dictionary<string, (Func<uint, object>, Func<object, uint, bool>)>()
             {
                 // Object generic vars
