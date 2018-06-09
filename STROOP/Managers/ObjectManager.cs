@@ -487,8 +487,8 @@ namespace STROOP.Managers
                 BackColor = ObjectSlotsConfig.GetProcessingGroupColor(obj.CurrentProcessGroup);
                 int slotPos = obj.VacantSlotIndex ?? obj.ProcessIndex;
                 SlotIndex = (Config.ObjectSlotsManager.GetSlotIndexFromObj(obj) 
-                    + (OptionsConfig.SlotIndexsFromOne ? 1 : 0))?.ToString() ?? "";
-                SlotPos = $"{(obj.VacantSlotIndex.HasValue ? "VS " : "")}{slotPos + (OptionsConfig.SlotIndexsFromOne ? 1 : 0)}";
+                    + (SavedSettingsConfig.SlotIndexsFromOne ? 1 : 0))?.ToString() ?? "";
+                SlotPos = $"{(obj.VacantSlotIndex.HasValue ? "VS " : "")}{slotPos + (SavedSettingsConfig.SlotIndexsFromOne ? 1 : 0)}";
                 _objAddressLabelValue.Text = $"0x{_objects.First().Address:X8}";
                 _cloneButton.Enabled = true;
             }

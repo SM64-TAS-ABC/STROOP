@@ -91,7 +91,7 @@ namespace STROOP.Utilities
             success &= Config.Stream.SetValue((float)newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
             success &= Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
             success &= Config.Stream.SetValue((float)newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
-            if (OptionsConfig.MoveCameraWithPu)
+            if (SavedSettingsConfig.MoveCameraWithPu)
             {
                 success &= Config.Stream.SetValue((float)newCamX, CameraConfig.CameraStructAddress + CameraConfig.XOffset);
                 success &= Config.Stream.SetValue((float)newCamY, CameraConfig.CameraStructAddress + CameraConfig.YOffset);

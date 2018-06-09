@@ -169,7 +169,7 @@ namespace STROOP.Utilities
             bool onSideOfLineTowardsTri = floorTri == leftOfLine;
             double signedDist = dist * (onSideOfLineTowardsTri ? 1 : -1);
 
-            bool misalignmentOffset = misalignmentOffsetNullable ?? OptionsConfig.UseMisalignmentOffsetForDistanceToLine;
+            bool misalignmentOffset = misalignmentOffsetNullable ?? SavedSettingsConfig.UseMisalignmentOffsetForDistanceToLine;
             if (misalignmentOffset)
             {
                 if (p1X == p2X)

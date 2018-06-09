@@ -91,7 +91,7 @@ namespace STROOP.Utilities
 
         public static void HandleScaling(ref float xOffset, ref float zOffset)
         {
-            if (OptionsConfig.ScaleDiagonalPositionControllerButtons)
+            if (SavedSettingsConfig.ScaleDiagonalPositionControllerButtons)
             {
                 (xOffset, zOffset) = ((float, float))MoreMath.ScaleValues(xOffset, zOffset);
             }
@@ -917,7 +917,7 @@ namespace STROOP.Utilities
                 return false;
 
 
-            short neutralizeValue = OptionsConfig.NeutralizeTriangleValue(use21Nullable);
+            short neutralizeValue = SavedSettingsConfig.NeutralizeTriangleValue(use21Nullable);
 
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;

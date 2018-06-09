@@ -393,11 +393,11 @@ namespace STROOP.Managers
 
                 case SlotLabelType.SlotIndex:
                     return String.Format("{0}", (obj.Address - ObjectSlotsConfig.LinkStartAddress)
-                        / ObjectConfig.StructSize + (OptionsConfig.SlotIndexsFromOne ? 1 : 0));
+                        / ObjectConfig.StructSize + (SavedSettingsConfig.SlotIndexsFromOne ? 1 : 0));
 
                 case SlotLabelType.SlotPos:
                     return String.Format("{0}", _lockedSlotIndices[obj].Item1
-                        + (OptionsConfig.SlotIndexsFromOne ? 1 : 0));
+                        + (SavedSettingsConfig.SlotIndexsFromOne ? 1 : 0));
 
                 case SlotLabelType.SlotPosVs:
                     var vacantSlotIndex = _lockedSlotIndices[obj].Item2;
@@ -405,7 +405,7 @@ namespace STROOP.Managers
                         goto case SlotLabelType.SlotPos;
 
                     return String.Format("VS{0}", vacantSlotIndex.Value
-                        + (OptionsConfig.SlotIndexsFromOne ? 1 : 0));
+                        + (SavedSettingsConfig.SlotIndexsFromOne ? 1 : 0));
 
                 default:
                     return "";

@@ -153,7 +153,7 @@ namespace STROOP.Controls
             double roundedValue = roundingLimit.HasValue
                 ? Math.Round(doubleValue, roundingLimit.Value)
                 : doubleValue;
-            if (OptionsConfig.DontRoundValuesToZero &&
+            if (SavedSettingsConfig.DontRoundValuesToZero &&
                 roundedValue == 0 && doubleValue != 0)
             {
                 // Specially print values near zero

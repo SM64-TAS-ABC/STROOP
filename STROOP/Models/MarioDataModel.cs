@@ -373,7 +373,7 @@ namespace STROOP.Models
             // Find closest object
             IEnumerable<ObjectDataModel> closestObjectCandidates =
                DataModels.Objects.Where(o => o != null && o.IsActive && o.BehaviorCriteria.BehaviorAddress != MarioObjectConfig.BehaviorValue);
-            if (OptionsConfig.ExcludeDustForClosestObject)
+            if (SavedSettingsConfig.ExcludeDustForClosestObject)
             {
                 closestObjectCandidates =
                     closestObjectCandidates.Where(o =>
