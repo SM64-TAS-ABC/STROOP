@@ -567,58 +567,10 @@ namespace STROOP
             splitContainerMain.Panel2Collapsed = false;
         }
 
-        private SplitContainer getSelectedTabSplitContainer()
-        {
-            SplitContainer selectedTabSplitContainer = null;
-            TabPage selectedTabPage = tabControlMain.SelectedTab;
-
-            if (selectedTabPage == tabPageObject)
-                selectedTabSplitContainer = splitContainerObject;
-            else if (selectedTabPage == tabPageMario)
-                selectedTabSplitContainer = splitContainerMario;
-            else if (selectedTabPage == tabPageHud)
-                selectedTabSplitContainer = splitContainerHud;
-            else if (selectedTabPage == tabPageCamera)
-                selectedTabSplitContainer = splitContainerCamera;
-            else if (selectedTabPage == tabPageTriangles)
-                selectedTabSplitContainer = splitContainerTriangles;
-            else if (selectedTabPage == tabPageInput)
-                selectedTabSplitContainer = splitContainerInput;
-            else if (selectedTabPage == tabPageFile)
-                selectedTabSplitContainer = splitContainerFile;
-            else if (selectedTabPage == tabPageCustom)
-                selectedTabSplitContainer = splitContainerCustom;
-            else if (selectedTabPage == tabPageVarHack)
-                selectedTabSplitContainer = splitContainerVarHack;
-            else if (selectedTabPage == tabPagePu)
-                selectedTabSplitContainer = splitContainerPu;
-            else if (selectedTabPage == tabPageTas)
-                selectedTabSplitContainer = splitContainerTas;
-            else if (selectedTabPage == tabPageMisc)
-                selectedTabSplitContainer = splitContainerMisc;
-            else if (selectedTabPage == tabPageDebug)
-                selectedTabSplitContainer = splitContainerDebug;
-            else if (selectedTabPage == tabPageMap)
-                selectedTabSplitContainer = splitContainerMap;
-            else if (selectedTabPage == tabPageArea)
-                selectedTabSplitContainer = splitContainerArea;
-            else if (selectedTabPage == tabPageModel)
-                selectedTabSplitContainer = splitContainerModel;
-            else if (selectedTabPage == tabPageMemory)
-                selectedTabSplitContainer = splitContainerMemory;
-            else if (selectedTabPage == tabPageHacks)
-                selectedTabSplitContainer = splitContainerHacks;
-            else if (selectedTabPage == tabPageCamHack)
-                selectedTabSplitContainer = splitContainerCamHack;
-            else if (selectedTabPage == tabPageM64)
-                selectedTabSplitContainer = splitContainerM64;
-
-            return selectedTabSplitContainer;
-        }
-
         private void buttonShowLeftPanel_Click(object sender, EventArgs e)
         {
-            SplitContainer selectedTabSplitContainer = getSelectedTabSplitContainer();
+            SplitContainer selectedTabSplitContainer =
+                ControlUtilities.GetChildSplitContainer(tabControlMain.SelectedTab);
             if (selectedTabSplitContainer != null)
             {
                 selectedTabSplitContainer.Panel1Collapsed = false;
@@ -628,7 +580,8 @@ namespace STROOP
 
         private void buttonShowRightPanel_Click(object sender, EventArgs e)
         {
-            SplitContainer selectedTabSplitContainer = getSelectedTabSplitContainer();
+            SplitContainer selectedTabSplitContainer =
+                ControlUtilities.GetChildSplitContainer(tabControlMain.SelectedTab);
             if (selectedTabSplitContainer != null)
             {
                 selectedTabSplitContainer.Panel1Collapsed = true;
@@ -638,7 +591,8 @@ namespace STROOP
 
         private void buttonShowLeftRightPanel_Click(object sender, EventArgs e)
         {
-            SplitContainer selectedTabSplitContainer = getSelectedTabSplitContainer();
+            SplitContainer selectedTabSplitContainer =
+                ControlUtilities.GetChildSplitContainer(tabControlMain.SelectedTab);
             if (selectedTabSplitContainer != null)
             {
                 selectedTabSplitContainer.Panel1Collapsed = false;

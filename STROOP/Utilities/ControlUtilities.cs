@@ -558,5 +558,15 @@ namespace STROOP.Utilities
             return tab?.TabIndex ?? Int32.MaxValue;
         }
 
+        public static SplitContainer GetChildSplitContainer(Control control)
+        {
+            foreach (Control child in control.Controls)
+            {
+                if (child is SplitContainer)
+                    return (SplitContainer)child;
+            }
+            return null;
+        }
+
     }
 }
