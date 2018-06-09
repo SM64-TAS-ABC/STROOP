@@ -211,9 +211,9 @@ namespace STROOP.Utilities
         public static PositionAngle Mario = new PositionAngle(PositionAngleTypeEnum.Mario);
         public static PositionAngle Holp = new PositionAngle(PositionAngleTypeEnum.Holp);
         public static PositionAngle Camera = new PositionAngle(PositionAngleTypeEnum.Camera);
-        public static PositionAngle Object(uint address) =>
+        public static PositionAngle Obj(uint address) =>
             new PositionAngle(PositionAngleTypeEnum.Obj, address);
-        public static PositionAngle ObjectHome(uint address) =>
+        public static PositionAngle ObjHome(uint address) =>
             new PositionAngle(PositionAngleTypeEnum.ObjHome, address);
         public static PositionAngle Tri(uint address, int triVertex) =>
             new PositionAngle(PositionAngleTypeEnum.Tri, address, triVertex);
@@ -245,13 +245,13 @@ namespace STROOP.Utilities
             {
                 uint? address = ParsingUtilities.ParseHexNullable(parts[1]);
                 if (!address.HasValue) return null;
-                return Object(address.Value);
+                return Obj(address.Value);
             }
             else if (parts.Count == 2 && (parts[0] == "objhome" || parts[0] == "objecthome"))
             {
                 uint? address = ParsingUtilities.ParseHexNullable(parts[1]);
                 if (!address.HasValue) return null;
-                return ObjectHome(address.Value);
+                return ObjHome(address.Value);
             }
             else if (parts.Count == 3 && (parts[0] == "tri" || parts[0] == "triangle"))
             {

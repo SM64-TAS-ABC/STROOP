@@ -28,7 +28,63 @@ namespace STROOP.Structs
 
         public static void AddGeneratedDictionaryEntries()
         {
+            List<Func<uint, PositionAngle>> posAngleFuncs =
+                new List<Func<uint, PositionAngle>>()
+                {
+                    (uint address) => PositionAngle.Custom,
+                    (uint address) => PositionAngle.Mario,
+                    (uint address) => PositionAngle.Holp,
+                    (uint address) => PositionAngle.Camera,
+                    (uint address) => PositionAngle.Obj(address),
+                    (uint address) => PositionAngle.ObjHome(address),
+                    (uint address) => PositionAngle.Tri(address, 1),
+                    (uint address) => PositionAngle.Tri(address, 2),
+                    (uint address) => PositionAngle.Tri(address, 3),
+                };
 
+            List<PositionAngleTypeEnum> posAngleEnums =
+                new List<PositionAngleTypeEnum>()
+                {
+                    PositionAngleTypeEnum.Custom,
+                    PositionAngleTypeEnum.Mario,
+                    PositionAngleTypeEnum.Holp,
+                    PositionAngleTypeEnum.Camera,
+                    PositionAngleTypeEnum.Obj,
+                    PositionAngleTypeEnum.ObjHome,
+                    PositionAngleTypeEnum.Tri,
+                    PositionAngleTypeEnum.Tri,
+                    PositionAngleTypeEnum.Tri,
+                };
+
+            List<string> posAngleStrings =
+                new List<string>()
+                {
+                    "Custom",
+                    "Mario",
+                    "Holp",
+                    "Camera",
+                    "Obj",
+                    "ObjHome",
+                    "TriV1",
+                    "TriV2",
+                    "TriV3",
+                };
+
+            for (int i = 0; i < posAngleFuncs.Count; i++)
+            {
+                Func<uint, PositionAngle> func1 = posAngleFuncs[i];
+                PositionAngleTypeEnum enum1 = posAngleEnums[i];
+                string string1 = posAngleStrings[i];
+
+                for (int j = 0; j < posAngleFuncs.Count; j++)
+                {
+                    if (j == i) continue;
+                    Func<uint, PositionAngle> func2 = posAngleFuncs[j];
+                    PositionAngleTypeEnum enum2 = posAngleEnums[j];
+                    string string2 = posAngleStrings[j];
+
+                }
+            }
         }
 
         public static void CreateDictionary()
