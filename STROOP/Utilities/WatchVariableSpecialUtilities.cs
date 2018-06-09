@@ -3983,52 +3983,24 @@ namespace STROOP.Structs
                     break;
 
                 case "FDistanceSelfToPoint":
-                    getterFunction = (uint objAddress) =>
+                    getterFunction = (uint dummy) =>
                     {
-                        double hdist = MoreMath.GetDistanceBetween(
-                            SpecialConfig.SelfX, SpecialConfig.SelfZ, SpecialConfig.PointX, SpecialConfig.PointZ);
-                        double angleFromPoint = MoreMath.AngleTo_AngleUnits(
-                            SpecialConfig.PointX, SpecialConfig.PointZ, SpecialConfig.SelfX, SpecialConfig.SelfZ);
-                        (double sidewaysDist, double forwardsDist) =
-                            MoreMath.GetComponentsFromVectorRelatively(
-                                hdist, angleFromPoint, SpecialConfig.PointAngle);
-                        return forwardsDist;
+                        return PositionAngle.GetFDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA);
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? forwardsDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
-                        if (!forwardsDistNullable.HasValue) return false;
-                        double forwardsDist = forwardsDistNullable.Value;
-                        (double newSelfX, double newSelfZ) =
-                            MoreMath.GetRelativelyOffsettedPosition(
-                                SpecialConfig.PointX, SpecialConfig.PointZ, SpecialConfig.PointAngle,
-                                SpecialConfig.SelfX, SpecialConfig.SelfZ, null, forwardsDist);
-                        return SetSelfPosition(newSelfX, null, newSelfZ);
+                        return PositionAngle.SetFDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA, objectValue);
                     };
                     break;
 
                 case "SDistanceSelfToPoint":
-                    getterFunction = (uint objAddress) =>
+                    getterFunction = (uint dummy) =>
                     {
-                        double hdist = MoreMath.GetDistanceBetween(
-                            SpecialConfig.SelfX, SpecialConfig.SelfZ, SpecialConfig.PointX, SpecialConfig.PointZ);
-                        double angleFromPoint = MoreMath.AngleTo_AngleUnits(
-                            SpecialConfig.PointX, SpecialConfig.PointZ, SpecialConfig.SelfX, SpecialConfig.SelfZ);
-                        (double sidewaysDist, double forwardsDist) =
-                            MoreMath.GetComponentsFromVectorRelatively(
-                                hdist, angleFromPoint, SpecialConfig.PointAngle);
-                        return sidewaysDist;
+                        return PositionAngle.GetSDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA);
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? sidewaysDistNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
-                        if (!sidewaysDistNullable.HasValue) return false;
-                        double sidewaysDist = sidewaysDistNullable.Value;
-                        (double newSelfX, double newSelfZ) =
-                            MoreMath.GetRelativelyOffsettedPosition(
-                                SpecialConfig.PointX, SpecialConfig.PointZ, SpecialConfig.PointAngle,
-                                SpecialConfig.SelfX, SpecialConfig.SelfZ, sidewaysDist, null);
-                        return SetSelfPosition(newSelfX, null, newSelfZ);
+                        return PositionAngle.SetSDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA, objectValue);
                     };
                     break;
 

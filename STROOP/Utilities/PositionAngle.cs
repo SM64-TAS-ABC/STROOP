@@ -467,6 +467,24 @@ namespace STROOP.Utilities
             return p2.Z - p1.Z;
         }
 
+        public static double GetFDistance(PositionAngle p1, PositionAngle p2)
+        {
+            double hDist = MoreMath.GetDistanceBetween(p1.X, p1.Z, p2.X, p2.Z);
+            double angle = MoreMath.AngleTo_AngleUnits(p1.X, p1.Z, p2.X, p2.Z);
+            (double sidewaysDist, double forwardsDist) =
+                MoreMath.GetComponentsFromVectorRelatively(hDist, angle, p1.Angle);
+            return forwardsDist;
+        }
+
+        public static double GetSDistance(PositionAngle p1, PositionAngle p2)
+        {
+            double hDist = MoreMath.GetDistanceBetween(p1.X, p1.Z, p2.X, p2.Z);
+            double angle = MoreMath.AngleTo_AngleUnits(p1.X, p1.Z, p2.X, p2.Z);
+            (double sidewaysDist, double forwardsDist) =
+                MoreMath.GetComponentsFromVectorRelatively(hDist, angle, p1.Angle);
+            return sidewaysDist;
+        }
+
         private static double AngleTo(double x1, double z1, double x2, double z2, bool inGameAngle, bool truncate)
         {
             double angleTo = inGameAngle
@@ -570,6 +588,36 @@ namespace STROOP.Utilities
         {
             double z = p1.Z + distance;
             return CombineBools(p2.SetZ(z));
+        }
+
+        public static bool SetFDistance(PositionAngle p1, PositionAngle p2, object distance)
+        {
+            double? distanceDouble = ParsingUtilities.ParseDoubleNullable(distance);
+            if (!distanceDouble.HasValue) return false;
+            return SetFDistance(p1, p2, distanceDouble.Value);
+        }
+
+        public static bool SetFDistance(PositionAngle p1, PositionAngle p2, double distance)
+        {
+            (double x, double z) =
+                MoreMath.GetRelativelyOffsettedPosition(
+                    p1.X, p1.Z, p1.Angle, p2.X, p2.Z, null, distance);
+            return CombineBools(p2.SetX(x), p2.SetZ(z));
+        }
+
+        public static bool SetSDistance(PositionAngle p1, PositionAngle p2, object distance)
+        {
+            double? distanceDouble = ParsingUtilities.ParseDoubleNullable(distance);
+            if (!distanceDouble.HasValue) return false;
+            return SetSDistance(p1, p2, distanceDouble.Value);
+        }
+
+        public static bool SetSDistance(PositionAngle p1, PositionAngle p2, double distance)
+        {
+            (double x, double z) =
+                MoreMath.GetRelativelyOffsettedPosition(
+                    p1.X, p1.Z, p1.Angle, p2.X, p2.Z, distance, null);
+            return CombineBools(p2.SetX(x), p2.SetZ(z));
         }
 
         public static bool SetAngleTo(PositionAngle p1, PositionAngle p2, object angle)
