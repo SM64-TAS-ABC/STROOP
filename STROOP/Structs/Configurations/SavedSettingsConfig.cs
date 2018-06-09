@@ -27,8 +27,7 @@ namespace STROOP.Structs.Configurations
             }
         }
 
-        /*
-        private static bool _slotIndexsFromOne;
+        private static bool _slotIndexsFromOne = true;
         public static bool SlotIndexsFromOne
         {
             get => _slotIndexsFromOne;
@@ -39,16 +38,79 @@ namespace STROOP.Structs.Configurations
                 if (IsLoaded) Save();
             }
         }
-        */
 
-        public static bool SlotIndexsFromOne = true;
-        public static bool MoveCameraWithPu = true;
-        public static bool ScaleDiagonalPositionControllerButtons = false;
-        public static bool ExcludeDustForClosestObject = true;
-        public static bool UseMisalignmentOffsetForDistanceToLine = true;
-        public static bool DontRoundValuesToZero = true;
+        private static bool _moveCameraWithPu = true;
+        public static bool MoveCameraWithPu
+        {
+            get => _moveCameraWithPu;
+            set
+            {
+                if (_moveCameraWithPu == value) return;
+                _moveCameraWithPu = value;
+                if (IsLoaded) Save();
+            }
+        }
 
-        public static bool NeutralizeTrianglesWith21 = true;
+        public static bool _scaleDiagonalPositionControllerButtons = false;
+        public static bool ScaleDiagonalPositionControllerButtons
+        {
+            get => _scaleDiagonalPositionControllerButtons;
+            set
+            {
+                if (_scaleDiagonalPositionControllerButtons == value) return;
+                _scaleDiagonalPositionControllerButtons = value;
+                if (IsLoaded) Save();
+            }
+        }
+
+        public static bool _excludeDustForClosestObject = true;
+        public static bool ExcludeDustForClosestObject
+        {
+            get => _excludeDustForClosestObject;
+            set
+            {
+                if (_excludeDustForClosestObject == value) return;
+                _excludeDustForClosestObject = value;
+                if (IsLoaded) Save();
+            }
+        }
+
+        public static bool _useMisalignmentOffsetForDistanceToLine = true;
+        public static bool UseMisalignmentOffsetForDistanceToLine
+        {
+            get => _useMisalignmentOffsetForDistanceToLine;
+            set
+            {
+                if (_useMisalignmentOffsetForDistanceToLine == value) return;
+                _useMisalignmentOffsetForDistanceToLine = value;
+                if (IsLoaded) Save();
+            }
+        }
+
+        public static bool _dontRoundValuesToZero = true;
+        public static bool DontRoundValuesToZero
+        {
+            get => _dontRoundValuesToZero;
+            set
+            {
+                if (_dontRoundValuesToZero == value) return;
+                _dontRoundValuesToZero = value;
+                if (IsLoaded) Save();
+            }
+        }
+
+        public static bool _neutralizeTrianglesWith21 = true;
+        public static bool NeutralizeTrianglesWith21
+        {
+            get => _neutralizeTrianglesWith21;
+            set
+            {
+                if (_neutralizeTrianglesWith21 == value) return;
+                _neutralizeTrianglesWith21 = value;
+                if (IsLoaded) Save();
+            }
+        }
+
         public static short NeutralizeTriangleValue(bool? use21Nullable = null)
         {
             bool use21 = use21Nullable ?? NeutralizeTrianglesWith21;
