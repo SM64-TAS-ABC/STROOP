@@ -83,6 +83,137 @@ namespace STROOP.Structs
                     PositionAngleTypeEnum enum2 = posAngleEnums[j];
                     string string2 = posAngleStrings[j];
 
+                    _dictionary[String.Format("XDistance{0}To{1}", string1, string2)] =
+                        ((uint address) =>
+                        {
+                            return PositionAngle.GetXDistance(func1(address), func2(address));
+                        },
+                        (object objectValue, uint address) =>
+                        {
+                            return PositionAngle.SetXDistance(func1(address), func2(address), objectValue);
+                        });
+
+/*
+                ["YDistanceSelfToPoint"] =
+                    ((uint dummy) =>
+                    {
+                        return PositionAngle.GetYDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA);
+                    },
+                    (object objectValue, uint dummy) =>
+                    {
+                        return PositionAngle.SetYDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA, objectValue);
+                    }),
+
+                ["ZDistanceSelfToPoint"] =
+                    ((uint dummy) =>
+                    {
+                        return PositionAngle.GetZDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA);
+                    },
+                    (object objectValue, uint dummy) =>
+                    {
+                        return PositionAngle.SetZDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA, objectValue);
+                    }),
+
+                ["HDistanceSelfToPoint"] =
+                    ((uint dummy) =>
+                    {
+                        return PositionAngle.GetHDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA);
+                    },
+                    (object objectValue, uint dummy) =>
+                    {
+                        return PositionAngle.SetHDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA, objectValue);
+                    }),
+
+                ["DistanceSelfToPoint"] =
+                    ((uint dummy) =>
+                    {
+                        return PositionAngle.GetDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA);
+                    },
+                    (object objectValue, uint dummy) =>
+                    {
+                        return PositionAngle.SetDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA, objectValue);
+                    }),
+
+                ["AngleSelfToPoint"] =
+                    ((uint dummy) =>
+                    {
+                        return PositionAngle.GetAngleTo(SpecialConfig.SelfPA, SpecialConfig.PointPA, false, false);
+                    },
+                    (object objectValue, uint dummy) =>
+                    {
+                        return PositionAngle.SetAngleTo(SpecialConfig.SelfPA, SpecialConfig.PointPA, objectValue);
+                    }),
+
+                ["DeltaAngleSelfToPoint"] =
+                    ((uint dummy) =>
+                    {
+                        return PositionAngle.GetDAngleTo(SpecialConfig.SelfPA, SpecialConfig.PointPA, false);
+                    },
+                    (object objectValue, uint dummy) =>
+                    {
+                        return PositionAngle.SetDAngleTo(SpecialConfig.SelfPA, SpecialConfig.PointPA, objectValue);
+                    }),
+
+                ["AnglePointToSelf"] =
+                    ((uint dummy) =>
+                    {
+                        return PositionAngle.GetAngleTo(SpecialConfig.PointPA, SpecialConfig.SelfPA, false, false);
+                    },
+                    (object objectValue, uint dummy) =>
+                    {
+                        return PositionAngle.SetAngleTo(SpecialConfig.PointPA, SpecialConfig.SelfPA, objectValue);
+                    }),
+
+                ["DeltaAnglePointToSelf"] =
+                    ((uint dummy) =>
+                    {
+                        return PositionAngle.GetDAngleTo(SpecialConfig.PointPA, SpecialConfig.SelfPA, false);
+                    },
+                    (object objectValue, uint dummy) =>
+                    {
+                        return PositionAngle.SetDAngleTo(SpecialConfig.PointPA, SpecialConfig.SelfPA, objectValue);
+                    }),
+
+                ["DeltaAngleSelfToAngle"] =
+                    ((uint dummy) =>
+                    {
+                        return PositionAngle.GetAngleDifference(SpecialConfig.SelfPA, SpecialConfig.PointPA, false);
+                    },
+                    (object objectValue, uint dummy) =>
+                    {
+                        return PositionAngle.SetAngleDifference(SpecialConfig.SelfPA, SpecialConfig.PointPA, objectValue);
+                    }),
+
+                ["DeltaAngleSelfToAngleTruncated"] =
+                    ((uint dummy) =>
+                    {
+                        return PositionAngle.GetAngleDifference(SpecialConfig.SelfPA, SpecialConfig.PointPA, true);
+                    },
+                    (object objectValue, uint dummy) =>
+                    {
+                        return PositionAngle.SetAngleDifference(SpecialConfig.SelfPA, SpecialConfig.PointPA, objectValue);
+                    }),
+
+                ["FDistanceSelfToPoint"] =
+                    ((uint dummy) =>
+                    {
+                        return PositionAngle.GetFDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA);
+                    },
+                    (object objectValue, uint dummy) =>
+                    {
+                        return PositionAngle.SetFDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA, objectValue);
+                    }),
+
+                ["SDistanceSelfToPoint"] =
+                    ((uint dummy) =>
+                    {
+                        return PositionAngle.GetSDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA);
+                    },
+                    (object objectValue, uint dummy) =>
+                    {
+                        return PositionAngle.SetSDistance(SpecialConfig.PointPA, SpecialConfig.SelfPA, objectValue);
+                    }),
+                    */
                 }
             }
         }
