@@ -3919,108 +3919,66 @@ namespace STROOP.Structs
                 case "AngleSelfToPoint":
                     getterFunction = (uint dummy) =>
                     {
-                        return MoreMath.AngleTo_AngleUnits(
-                            SpecialConfig.SelfX, SpecialConfig.SelfZ, SpecialConfig.PointX, SpecialConfig.PointZ);
+                        return PositionAngle.GetAngleTo(SpecialConfig.SelfPA, SpecialConfig.PointPA, false, false);
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
-                        if (!angleNullable.HasValue) return false;
-                        double angle = angleNullable.Value;
-                        (double newSelfX, double newSelfZ) =
-                            MoreMath.RotatePointAboutPointToAngle(
-                                SpecialConfig.SelfX, SpecialConfig.SelfZ, SpecialConfig.PointX, SpecialConfig.PointZ, angle);
-                        return SetSelfPosition(newSelfX, null, newSelfZ);
+                        return PositionAngle.SetAngleTo(SpecialConfig.SelfPA, SpecialConfig.PointPA, objectValue);
                     };
                     break;
 
                 case "DeltaAngleSelfToPoint":
                     getterFunction = (uint dummy) =>
                     {
-                        double angleSelfToPoint = MoreMath.AngleTo_AngleUnits(
-                            SpecialConfig.SelfX, SpecialConfig.SelfZ, SpecialConfig.PointX, SpecialConfig.PointZ);
-                        double angleDiff = SpecialConfig.SelfAngle - angleSelfToPoint;
-                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
+                        return PositionAngle.GetDAngleTo(SpecialConfig.SelfPA, SpecialConfig.PointPA, false);
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
-                        if (!angleDiffNullable.HasValue) return false;
-                        double angleDiff = angleDiffNullable.Value;
-                        double angleSelfToPoint = MoreMath.AngleTo_AngleUnits(
-                            SpecialConfig.SelfX, SpecialConfig.SelfZ, SpecialConfig.PointX, SpecialConfig.PointZ);
-                        double newSelfAngle = angleSelfToPoint + angleDiff;
-                        return SpecialConfig.SelfAnglePA.SetAngle(newSelfAngle);
+                        return PositionAngle.SetDAngleTo(SpecialConfig.SelfPA, SpecialConfig.PointPA, objectValue);
                     };
                     break;
 
                 case "AnglePointToSelf":
                     getterFunction = (uint dummy) =>
                     {
-                        return MoreMath.AngleTo_AngleUnits(
-                            SpecialConfig.PointX, SpecialConfig.PointZ, SpecialConfig.SelfX, SpecialConfig.SelfZ);
+                        return PositionAngle.GetAngleTo(SpecialConfig.PointPA, SpecialConfig.SelfPA, false, false);
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
-                        if (!angleNullable.HasValue) return false;
-                        double angle = MoreMath.ReverseAngle(angleNullable.Value);
-                        (double newSelfX, double newSelfZ) =
-                            MoreMath.RotatePointAboutPointToAngle(
-                                SpecialConfig.SelfX, SpecialConfig.SelfZ, SpecialConfig.PointX, SpecialConfig.PointZ, angle);
-                        return SetSelfPosition(newSelfX, null, newSelfZ);
+                        return PositionAngle.SetAngleTo(SpecialConfig.PointPA, SpecialConfig.SelfPA, objectValue);
                     };
                     break;
 
                 case "DeltaAnglePointToSelf":
                     getterFunction = (uint dummy) =>
                     {
-                        double anglePointToSelf = MoreMath.AngleTo_AngleUnits(
-                            SpecialConfig.PointX, SpecialConfig.PointZ, SpecialConfig.SelfX, SpecialConfig.SelfZ);
-                        double angleDiff = SpecialConfig.PointAngle - anglePointToSelf;
-                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
+                        return PositionAngle.GetDAngleTo(SpecialConfig.PointPA, SpecialConfig.SelfPA, false);
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
-                        if (!angleDiffNullable.HasValue) return false;
-                        double angleDiff = angleDiffNullable.Value;
-                        double anglePointToSelf = MoreMath.AngleTo_AngleUnits(
-                            SpecialConfig.PointX, SpecialConfig.PointZ, SpecialConfig.SelfX, SpecialConfig.SelfZ);
-                        double newPointAngle = anglePointToSelf + angleDiff;
-                        return SpecialConfig.PointAnglePA.SetAngle(newPointAngle);
+                        return PositionAngle.SetDAngleTo(SpecialConfig.PointPA, SpecialConfig.SelfPA, objectValue);
                     };
                     break;
 
                 case "DeltaAngleSelfToAngle":
                     getterFunction = (uint dummy) =>
                     {
-                        double angleDiff = SpecialConfig.SelfAngle - SpecialConfig.PointAngle;
-                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
+                        return PositionAngle.GetAngleDifference(SpecialConfig.SelfPA, SpecialConfig.PointPA, false);
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
-                        if (!angleDiffNullable.HasValue) return false;
-                        double angleDiff = angleDiffNullable.Value;
-                        double newSelfAngle = SpecialConfig.PointAngle + angleDiff;
-                        return SpecialConfig.PointAnglePA.SetAngle(newSelfAngle);
+                        return PositionAngle.SetAngleDifference(SpecialConfig.SelfPA, SpecialConfig.PointPA, objectValue);
                     };
                     break;
 
                 case "DeltaAngleSelfToAngleTruncated":
                     getterFunction = (uint dummy) =>
                     {
-                        return MoreMath.GetDeltaAngleTruncated(SpecialConfig.PointAngle, SpecialConfig.SelfAngle);
+                        return PositionAngle.GetAngleDifference(SpecialConfig.SelfPA, SpecialConfig.PointPA, true);
                     };
                     setterFunction = (object objectValue, uint dummy) =>
                     {
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
-                        if (!angleDiffNullable.HasValue) return false;
-                        double angleDiff = angleDiffNullable.Value;
-                        ushort pointAngleTruncated = MoreMath.NormalizeAngleTruncated(SpecialConfig.PointAngle);
-                        double newSelfAngle = pointAngleTruncated + angleDiff;
-                        return SpecialConfig.SelfAnglePA.SetAngle(newSelfAngle);
+                        return PositionAngle.SetAngleDifference(SpecialConfig.SelfPA, SpecialConfig.PointPA, objectValue);
                     };
                     break;
 
