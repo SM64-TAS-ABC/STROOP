@@ -93,7 +93,6 @@ namespace STROOP.Structs
                     PositionAngleTypeEnum? enum2 = posAngleEnums[j];
                     string string2 = posAngleStrings[j];
 
-
                     List<string> distTypes = new List<string>() { "X", "Y", "Z", "H", "", "F", "S" };
                     List<Func<PositionAngle, PositionAngle, double>> distGetters =
                         new List<Func<PositionAngle, PositionAngle, double>>()
@@ -124,7 +123,7 @@ namespace STROOP.Structs
                         Func<PositionAngle, PositionAngle, double> getter = distGetters[k];
                         Func<PositionAngle, PositionAngle, object, bool> setter = distSetters[k];
 
-                        _dictionary[String.Format("{0}Distance{1}To{2}", distType, string1, string2)] =
+                        _dictionary[String.Format("{0}Dist{1}To{2}", distType, string1, string2)] =
                             ((uint address) =>
                             {
                                 return getter(func1(address), func2(address));

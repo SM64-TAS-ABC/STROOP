@@ -19,4 +19,15 @@
   <Data type="float" offset="0xB8" base="Object">Object H Speed</Data>
   <Data type="int" display="ushort" offset="0xD4" base="Object" subclass="Angle" yaw="true">Object Yaw Facing</Data>
 
+  <Data base="Object" specialType="XDistObjToMario" coord="X">XDistObjToMario</Data>
+  <Data base="Object" specialType="YDistObjToMario" coord="Y">YDistObjToMario</Data>
+  <Data base="Object" specialType="ZDistObjToMario" coord="Z">ZDistObjToMario</Data>
+  <Data base="Object" specialType="HDistObjToMario">HDistObjToMario</Data>
+  <Data base="Object" specialType="DistObjToMario">DistObjToMario</Data>
+  <Data base="Object" specialType="FDistObjToMario">FDistObjToMario</Data>
+  <Data base="Object" specialType="SDistObjToMario">SDistObjToMario</Data>
+  <Data base="Object" specialType="AngleObjToMario">AngleObjToMario</Data>
+  <Data base="Object" specialType="DAngleObjToMario">DAngleObjToMario</Data>
+  <Data base="Object" specialType="AngleDiffObjToMario">AngleDiffObjToMario</Data>
+  
 </VarData>
