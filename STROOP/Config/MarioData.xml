@@ -58,15 +58,28 @@
   <Data groupList="Basic" type="float" offset="0x258" base="Mario" coord="X">HOLP X</Data>
   <Data groupList="Basic" type="float" offset="0x25C" base="Mario" coord="Y">HOLP Y</Data>
   <Data groupList="Basic" type="float" offset="0x260" base="Mario" coord="Z">HOLP Z</Data>
-  <Data groupList="Holp" base="None" specialType="XDistMarioToHolp" coord="X">XDist Mario to HOLP</Data>
-  <Data groupList="Holp" base="None" specialType="YDistMarioToHolp" coord="Y">YDist Mario to HOLP</Data>
-  <Data groupList="Holp" base="None" specialType="ZDistMarioToHolp" coord="Z">ZDist Mario to HOLP</Data>
-  <Data groupList="Holp" base="None" specialType="HDistMarioToHolp">HDist Mario to HOLP</Data>
-  <Data groupList="Holp" base="None" specialType="AngleMarioToHolp" subclass="Angle" display="ushort" yaw="true">Angle Mario to HOLP</Data>
-  <Data groupList="Holp" base="None" specialType="DAngleMarioToHolp" subclass="Angle" display="short">DAngle Mario to HOLP</Data>
-  <Data groupList="Holp" base="None" specialType="AngleHolpToMario" subclass="Angle" display="ushort" yaw="true">Angle HOLP to Mario</Data>
-  <Data groupList="Basic" type="byte" offset="0x24A" base="Mario">HOLP Type</Data>
   
+  <Data groupList="HolpMario" base="None" specialType="XDistMarioToHolp" coord="X">XDist Mario to HOLP</Data>
+  <Data groupList="HolpMario" base="None" specialType="YDistMarioToHolp" coord="Y">YDist Mario to HOLP</Data>
+  <Data groupList="HolpMario" base="None" specialType="ZDistMarioToHolp" coord="Z">ZDist Mario to HOLP</Data>
+  <Data groupList="HolpMario" base="None" specialType="HDistMarioToHolp">HDist Mario to HOLP</Data>
+  <Data groupList="HolpMario" base="None" specialType="AngleMarioToHolp" subclass="Angle" display="ushort" yaw="true">Angle Mario to HOLP</Data>
+  <Data groupList="HolpMario" base="None" specialType="DAngleMarioToHolp" subclass="Angle" display="short">DAngle Mario to HOLP</Data>
+  <Data groupList="HolpMario" base="None" specialType="AngleHolpToMario" subclass="Angle" display="ushort" yaw="true">Angle HOLP to Mario</Data>
+  
+  <Data groupList="HolpPoint" base="None" specialType="PointX" coord="X">Point X</Data>
+  <Data groupList="HolpPoint" base="None" specialType="PointY" coord="Y">Point Y</Data>
+  <Data groupList="HolpPoint" base="None" specialType="PointZ" coord="Z">Point Z</Data>
+  <Data groupList="HolpPoint" base="None" specialType="PointAngle" subclass="Angle" display="ushort" yaw="true">Point Angle</Data>
+  <Data groupList="HolpPoint" base="None" specialType="XDistPointToHolp" coord="X">XDist Point to HOLP</Data>
+  <Data groupList="HolpPoint" base="None" specialType="YDistPointToHolp" coord="Y">YDist Point to HOLP</Data>
+  <Data groupList="HolpPoint" base="None" specialType="ZDistPointToHolp" coord="Z">ZDist Point to HOLP</Data>
+  <Data groupList="HolpPoint" base="None" specialType="HDistPointToHolp">HDist Mario to HOLP</Data>
+  <Data groupList="HolpPoint" base="None" specialType="AnglePointToHolp" subclass="Angle" display="ushort" yaw="true">Angle Point to HOLP</Data>
+  <Data groupList="HolpPoint" base="None" specialType="DAnglePointToHolp" subclass="Angle" display="short">DAngle Point to HOLP</Data>
+  <Data groupList="HolpPoint" base="None" specialType="AngleHolpToPoint" subclass="Angle" display="ushort" yaw="true">Angle HOLP to Point</Data>
+  
+  <Data groupList="Basic" type="byte" offset="0x24A" base="Mario">HOLP Type</Data>  
   <Data groupList="Basic" type="uint" offset="0x04" base="Mario" subclass="Boolean" mask="0x10">Hat on Head</Data>
   <Data groupList="Basic" type="uint" offset="0x04" base="Mario" subclass="Boolean" mask="0x20">Hat in Hand</Data>
   <Data groupList="Basic" type="uint" offset="0x04" base="Mario" subclass="Boolean" mask="0x08">Wing Cap</Data>

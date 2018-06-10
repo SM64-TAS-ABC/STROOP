@@ -20,7 +20,8 @@ namespace STROOP.Managers
                 VariableGroup.Basic,
                 VariableGroup.Intermediate,
                 VariableGroup.Advanced,
-                VariableGroup.Holp,
+                VariableGroup.HolpMario,
+                VariableGroup.HolpPoint,
                 VariableGroup.Trajectory,
                 VariableGroup.Hacks,
             };
