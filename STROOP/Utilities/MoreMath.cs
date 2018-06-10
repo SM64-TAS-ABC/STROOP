@@ -145,8 +145,7 @@ namespace STROOP.Utilities
             double p1X, double p1Z, double p2X, double p2Z, double finalAngle)
         {
             double dist = GetDistanceBetween(p1X, p1Z, p2X, p2Z);
-            double reverseAngle = ReverseAngle(finalAngle);
-            (double xDiff, double zDiff) = GetComponentsFromVector(dist, reverseAngle);
+            (double xDiff, double zDiff) = GetComponentsFromVector(dist, finalAngle);
             return (p2X + xDiff, p2Z + zDiff);
         }
 

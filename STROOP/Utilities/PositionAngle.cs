@@ -511,7 +511,7 @@ namespace STROOP.Utilities
         {
             double angle1 = truncated ? MoreMath.NormalizeAngleTruncated(p1.Angle) : p1.Angle;
             double angle2 = truncated ? MoreMath.NormalizeAngleTruncated(p2.Angle) : p2.Angle;
-            double angleDiff = angle2 - angle1;
+            double angleDiff = angle1 - angle2;
             return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
         }
 
@@ -631,7 +631,7 @@ namespace STROOP.Utilities
         {
             (double x, double z) =
                 MoreMath.RotatePointAboutPointToAngle(
-                    p1.X, p1.Z, p2.X, p2.Z, angle);
+                    p2.X, p2.Z, p1.X, p1.Z, angle);
             return CombineBools(p2.SetX(x), p2.SetZ(z));
         }
 
