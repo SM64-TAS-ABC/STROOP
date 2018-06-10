@@ -2039,10 +2039,10 @@
     <Data groupList="ObjectSpecific" type="float" offset="0x20" base="Object" coord="X">X</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x24" base="Object" coord="Y">Y</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x28" base="Object" coord="Z">Z</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="MarioGhostVerticalDistance">Vertical Dist</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="MarioGhostHorizontalDistance">Horizontal Dist</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="MarioGhostForwardsDistance">Forwards Dist</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="MarioGhostSidewaysDistance">Sideways Dist</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="YDistGhostToMario">Vertical Dist</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="HDistGhostToMario">Horizontal Dist</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="FDistGhostToMario">Forwards Dist</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="SDistGhostToMario">Sideways Dist</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002A5C" name="BitDW Trap Door Manager">
     <SpawnCode gfxId="0x00"/>

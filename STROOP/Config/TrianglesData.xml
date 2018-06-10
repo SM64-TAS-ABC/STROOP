@@ -63,7 +63,7 @@
   
   <Data groupList="Intermediate" base="Triangle" specialType="NormalDistAway" color="Purple">Normal Dist Away</Data>
   <Data groupList="Intermediate" base="Triangle" specialType="VerticalDistAway" color="Purple">Vertical Dist Away</Data>
-  <Data groupList="Intermediate" base="Triangle" specialType="HeightOnSlope" color="Purple">Height On Triangle</Data>
+  <Data groupList="Intermediate" base="Triangle" specialType="HeightOnTriangle" color="Purple">Height On Triangle</Data>
 
   <Data groupList="Intermediate" base="Triangle" specialType="MaxHSpeedUphill" color="Pink">Max Hspd Uphill</Data>
   <Data groupList="Intermediate" base="Triangle" specialType="MaxHSpeedUphillAtAngle" color="Pink">Max Hspd Uphill at Ang</Data>
