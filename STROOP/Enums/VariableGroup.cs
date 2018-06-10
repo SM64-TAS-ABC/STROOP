@@ -24,6 +24,7 @@ namespace STROOP.Structs
         Movement,
         Transformation,
 
+        Holp,
         Trajectory,
         TAS,
         Point,
