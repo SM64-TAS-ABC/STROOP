@@ -8,4 +8,5 @@
   <UseMisalignmentOffsetForDistanceToLine>true</UseMisalignmentOffsetForDistanceToLine>
   <DontRoundValuesToZero>true</DontRoundValuesToZero>
   <NeutralizeTrianglesWith21>true</NeutralizeTrianglesWith21>
+  <UseInGameTrigForAngleLogic>false</UseInGameTrigForAngleLogic>  
 </SavedSettings>

@@ -117,6 +117,18 @@ namespace STROOP.Structs.Configurations
             return (short)(use21 ? 21 : 0);
         }
 
+        private static bool _useInGameTrigForAngleLogic = true;
+        public static bool UseInGameTrigForAngleLogic
+        {
+            get => _useInGameTrigForAngleLogic;
+            set
+            {
+                if (_useInGameTrigForAngleLogic == value) return;
+                _useInGameTrigForAngleLogic = value;
+                if (IsLoaded) Save();
+            }
+        }
+
 
 
 
@@ -134,6 +146,7 @@ namespace STROOP.Structs.Configurations
                 new XElement("UseMisalignmentOffsetForDistanceToLine", _useMisalignmentOffsetForDistanceToLine),
                 new XElement("DontRoundValuesToZero", _dontRoundValuesToZero),
                 new XElement("NeutralizeTrianglesWith21", _neutralizeTrianglesWith21),
+                new XElement("UseInGameTrigForAngleLogic", _useInGameTrigForAngleLogic),
             };
         }
 

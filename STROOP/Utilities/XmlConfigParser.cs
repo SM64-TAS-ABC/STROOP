@@ -135,6 +135,9 @@ namespace STROOP.Utilities
                     case "NeutralizeTrianglesWith21":
                         SavedSettingsConfig.NeutralizeTrianglesWith21 = bool.Parse(element.Value);
                         break;
+                    case "UseInGameTrigForAngleLogic":
+                        SavedSettingsConfig.UseInGameTrigForAngleLogic = bool.Parse(element.Value);
+                        break;
                 }
             }
             SavedSettingsConfig.IsLoaded = true;

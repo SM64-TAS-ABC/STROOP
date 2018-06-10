@@ -530,15 +530,17 @@ namespace STROOP.Utilities
             return angleTo;
         }
 
-        public static double GetAngleTo(PositionAngle p1, PositionAngle p2, bool inGameAngle, bool truncate)
+        public static double GetAngleTo(PositionAngle p1, PositionAngle p2, bool? inGameAngleNullable, bool truncate)
         {
+            bool inGameAngle = inGameAngleNullable ?? SavedSettingsConfig.UseInGameTrigForAngleLogic;
             return AngleTo(p1.X, p1.Z, p2.X, p2.Z, inGameAngle, truncate);
         }
 
-        public static double GetDAngleTo(PositionAngle p1, PositionAngle p2, bool inGameAngleTruncated)
+        public static double GetDAngleTo(PositionAngle p1, PositionAngle p2, bool? inGameAngleNullable)
         {
-            double angleTo = AngleTo(p1.X, p1.Z, p2.X, p2.Z, inGameAngleTruncated, inGameAngleTruncated);
-            double angle = inGameAngleTruncated ? MoreMath.NormalizeAngleTruncated(p1.Angle) : p1.Angle;
+            bool inGameAngle = inGameAngleNullable ?? SavedSettingsConfig.UseInGameTrigForAngleLogic;
+            double angleTo = AngleTo(p1.X, p1.Z, p2.X, p2.Z, inGameAngle, inGameAngle);
+            double angle = inGameAngle ? MoreMath.NormalizeAngleTruncated(p1.Angle) : p1.Angle;
             double angleDiff = angle - angleTo;
             return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
         }

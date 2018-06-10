@@ -44,6 +44,10 @@ namespace STROOP.Managers
             checkBoxDontRoundValuesToZero.Click += (sender, e) => SavedSettingsConfig.DontRoundValuesToZero = checkBoxDontRoundValuesToZero.Checked;
             checkBoxDontRoundValuesToZero.Checked = SavedSettingsConfig.DontRoundValuesToZero;
 
+            CheckBox checkBoxOptionsUseInGameTrigForAngleLogic = groupBoxOptionsSavedSettings.Controls["checkBoxOptionsUseInGameTrigForAngleLogic"] as CheckBox;
+            checkBoxOptionsUseInGameTrigForAngleLogic.Click += (sender, e) => SavedSettingsConfig.UseInGameTrigForAngleLogic = checkBoxOptionsUseInGameTrigForAngleLogic.Checked;
+            checkBoxOptionsUseInGameTrigForAngleLogic.Checked = SavedSettingsConfig.UseInGameTrigForAngleLogic;
+
 
             // goto/retrieve offsets
             GroupBox groupBoxGotoRetrieveOffsets = tabControl.Controls["groupBoxGotoRetrieveOffsets"] as GroupBox;
