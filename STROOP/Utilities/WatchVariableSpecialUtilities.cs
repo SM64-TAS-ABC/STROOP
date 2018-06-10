@@ -839,6 +839,16 @@ namespace STROOP.Structs
                     return success;
                 });
 
+            _dictionary["BobombTrajectoryFramesToPoint"] =
+                ((uint dummy) =>
+                {
+                    return 26;
+                },
+                (object objectValue, uint dummy) =>
+                {
+                    return false;
+                });
+
             _dictionary["TrajectoryRemainingHeight"] =
                 ((uint dummy) =>
                 {

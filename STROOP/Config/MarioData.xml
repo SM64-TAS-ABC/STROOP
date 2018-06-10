@@ -78,7 +78,8 @@
   <Data groupList="HolpPoint" base="None" specialType="AnglePointToHolp" subclass="Angle" display="ushort" yaw="true">Angle Point to HOLP</Data>
   <Data groupList="HolpPoint" base="None" specialType="DAnglePointToHolp" subclass="Angle" display="short">DAngle Point to HOLP</Data>
   <Data groupList="HolpPoint" base="None" specialType="AngleHolpToPoint" subclass="Angle" display="ushort" yaw="true">Angle HOLP to Point</Data>
-  
+  <Data groupList="HolpPoint" base="None" specialType="BobombTrajectoryFramesToPoint">Bob-omb Traj Frames</Data>
+
   <Data groupList="Basic" type="byte" offset="0x24A" base="Mario">HOLP Type</Data>  
   <Data groupList="Basic" type="uint" offset="0x04" base="Mario" subclass="Boolean" mask="0x10">Hat on Head</Data>
   <Data groupList="Basic" type="uint" offset="0x04" base="Mario" subclass="Boolean" mask="0x20">Hat in Hand</Data>
