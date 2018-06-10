@@ -11,11 +11,24 @@ namespace STROOP.Utilities
 {
     public class PositionAngle
     {
-        public readonly PositionAngleTypeEnum PosAngleType;
+        private readonly PositionAngleTypeEnum PosAngleType;
         public readonly uint? Address;
         public readonly int? TriVertex;
         public readonly PositionAngle PosPA;
         public readonly PositionAngle AnglePA;
+
+        private enum PositionAngleTypeEnum
+        {
+            Custom,
+            Mario,
+            Holp,
+            Camera,
+            Ghost,
+            Obj,
+            ObjHome,
+            Tri,
+            Hybrid,
+        }
 
         private uint? GetGhostAddress()
         {
@@ -197,7 +210,7 @@ namespace STROOP.Utilities
             }
         }
 
-        public PositionAngle(
+        private PositionAngle(
             PositionAngleTypeEnum posAngleType,
             uint? address = null,
             int? triVertex = null,
