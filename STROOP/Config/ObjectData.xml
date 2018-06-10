@@ -1,8 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <VarData>
   
-  <Data groupList="Basic" base="None" specialType="BobombTrajectoryFramesToPoint">Bob-omb Traj Frames</Data>
-
   <Data groupList="Basic" type="float" offset="0xA0" base="Object" coord="X">X</Data>
   <Data groupList="Basic" type="float" offset="0xA4" base="Object" coord="Y">Y</Data>
   <Data groupList="Basic" type="float" offset="0xA8" base="Object" coord="Z">Z</Data>
