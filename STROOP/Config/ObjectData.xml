@@ -34,35 +34,33 @@
   <Data groupList="Advanced" type="float" offset="0x58" base="Object" coord="Y">Camera View Y</Data>
   <Data groupList="Advanced" type="float" offset="0x5C" base="Object" coord="Z">Camera View Z</Data>
 
-  <Data groupList="Advanced" base="Object" specialType="MarioXDistanceToObject" coord="X">XDist Mario to Obj</Data>
-  <Data groupList="Intermediate" base="Object" specialType="MarioYDistanceToObject" coord="Y">YDist Mario to Obj</Data>
-  <Data groupList="Advanced" base="Object" specialType="MarioZDistanceToObject" coord="Z">ZDist Mario to Obj</Data>
-  <Data groupList="Intermediate" base="Object" specialType="MarioHDistanceToObject">HDist Mario to Obj</Data>
-  <Data groupList="Intermediate" base="Object" specialType="MarioDistanceToObject">Dist Mario to Obj</Data>
+  <Data groupList="Advanced" base="Object" specialType="XDistObjToMario" coord="X">XDist Mario to Obj</Data>
+  <Data groupList="Intermediate" base="Object" specialType="YDistObjToMario" coord="Y">YDist Mario to Obj</Data>
+  <Data groupList="Advanced" base="Object" specialType="ZDistObjToMario" coord="Z">ZDist Mario to Obj</Data>
+  <Data groupList="Intermediate" base="Object" specialType="HDistObjToMario">HDist Mario to Obj</Data>
+  <Data groupList="Intermediate" base="Object" specialType="DistObjToMario">Dist Mario to Obj</Data>
   <Data groupList="Advanced" type="float" offset="0x015C" base="Object">"Dist to Mario"</Data>
 
-  <Data groupList="Advanced" base="Object" specialType="MarioXDistanceToObjectHome" coord="X">XDist Mario to Home</Data>
-  <Data groupList="Intermediate" base="Object" specialType="MarioYDistanceToObjectHome" coord="Y">YDist Mario to Home</Data>
-  <Data groupList="Advanced" base="Object" specialType="MarioZDistanceToObjectHome" coord="Z">ZDist Mario to Home</Data>
-  <Data groupList="Intermediate" base="Object" specialType="MarioHDistanceToObjectHome">HDist Mario to Home</Data>
-  <Data groupList="Intermediate" base="Object" specialType="MarioDistanceToObjectHome">Dist Mario to Home</Data>
+  <Data groupList="Advanced" base="Object" specialType="XDistObjHomeToMario" coord="X">XDist Mario to Home</Data>
+  <Data groupList="Intermediate" base="Object" specialType="YDistObjHomeToMario" coord="Y">YDist Mario to Home</Data>
+  <Data groupList="Advanced" base="Object" specialType="ZDistObjHomeToMario" coord="Z">ZDist Mario to Home</Data>
+  <Data groupList="Intermediate" base="Object" specialType="HDistObjHomeToMario">HDist Mario to Home</Data>
+  <Data groupList="Intermediate" base="Object" specialType="DistObjHomeToMario">Dist Mario to Home</Data>
 
-  <Data groupList="Advanced" base="Object" specialType="ObjectXDistanceToHome" coord="X">XDist Obj to Home</Data>
-  <Data groupList="Advanced" base="Object" specialType="ObjectYDistanceToHome" coord="Y">YDist Obj to Home</Data>
-  <Data groupList="Advanced" base="Object" specialType="ObjectZDistanceToHome" coord="Z">ZDist Obj to Home</Data>
-  <Data groupList="Advanced" base="Object" specialType="ObjectHDistanceToHome">HDist Obj to Home</Data>
-  <Data groupList="Advanced" base="Object" specialType="ObjectDistanceToHome">Dist Obj to Home</Data>
+  <Data groupList="Advanced" base="Object" specialType="XDistObjHomeToObj" coord="X">XDist Obj to Home</Data>
+  <Data groupList="Advanced" base="Object" specialType="YDistObjHomeToObj" coord="Y">YDist Obj to Home</Data>
+  <Data groupList="Advanced" base="Object" specialType="ZDistObjHomeToObj" coord="Z">ZDist Obj to Home</Data>
+  <Data groupList="Advanced" base="Object" specialType="HDistObjHomeToObj">HDist Obj to Home</Data>
+  <Data groupList="Advanced" base="Object" specialType="DistObjHomeToObj">Dist Obj to Home</Data>
 
   <Data groupList="Advanced" type="ushort" offset="0x0162" base="Object" subclass="Angle" yaw="true">"Angle to Mario"</Data>
-  <Data groupList="Intermediate" base="Object" specialType="AngleObjectToMario" subclass="Angle" display="ushort" yaw="true">Angle Obj to Mario</Data>
-  <Data groupList="Intermediate" base="Object" specialType="DeltaAngleObjectToMario" subclass="Angle" display="short">DAngle Obj to Mario</Data>
-  <Data groupList="Advanced" base="Object" specialType="InGameAngleObjectToMario" subclass="Angle" display="ushort" yaw="true">IG Angle Obj to Mario</Data>
-  <Data groupList="Advanced" base="Object" specialType="InGameDeltaAngleObjectToMario" subclass="Angle" display="short">IG DAngle Obj to Mario</Data>
-  <Data groupList="Intermediate" base="Object" specialType="AngleMarioToObject" subclass="Angle" display="ushort" yaw="true">Angle Mario to Obj</Data>
-  <Data groupList="Intermediate" base="Object" specialType="DeltaAngleMarioToObject" subclass="Angle" display="short">DAngle Mario to Obj</Data>
-  <Data groupList="Advanced" base="Object" specialType="AngleObjectToHome" subclass="Angle" display="ushort" yaw="true">Angle Obj to Home</Data>
-  <Data groupList="Advanced" base="Object" specialType="DeltaAngleObjectToHome" subclass="Angle" display="short">DAngle Obj to Home</Data>
-  <Data groupList="Advanced" base="Object" specialType="AngleHomeToObject" subclass="Angle" display="ushort" yaw="true">Angle Home to Obj</Data>
+  <Data groupList="Intermediate" base="Object" specialType="AngleObjToMario" subclass="Angle" display="ushort" yaw="true">Angle Obj to Mario</Data>
+  <Data groupList="Intermediate" base="Object" specialType="DAngleObjToMario" subclass="Angle" display="short">DAngle Obj to Mario</Data>
+  <Data groupList="Intermediate" base="Object" specialType="AngleMarioToObj" subclass="Angle" display="ushort" yaw="true">Angle Mario to Obj</Data>
+  <Data groupList="Intermediate" base="Object" specialType="DAngleMarioToObj" subclass="Angle" display="short">DAngle Mario to Obj</Data>
+  <Data groupList="Advanced" base="Object" specialType="AngleObjToObjHome" subclass="Angle" display="ushort" yaw="true">Angle Obj to Home</Data>
+  <Data groupList="Advanced" base="Object" specialType="DAngleObjToObjHome" subclass="Angle" display="short">DAngle Obj to Home</Data>
+  <Data groupList="Advanced" base="Object" specialType="AngleObjHomeToObj" subclass="Angle" display="ushort" yaw="true">Angle Home to Obj</Data>
   
   <Data groupList="Advanced" type="uint" offset="0x218" base="Object" useHex="true">Hitbox Pointer</Data>
   <Data groupList="Advanced" type="float" offset="0x1f8" base="Object">Hitbox Radius</Data>

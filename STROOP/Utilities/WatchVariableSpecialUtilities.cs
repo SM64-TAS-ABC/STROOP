@@ -27,6 +27,7 @@ namespace STROOP.Structs
             if (_dictionary.ContainsKey(specialType))
                 return _dictionary[specialType];
             else
+                throw new ArgumentOutOfRangeException();
                 return (DEFAULT_GETTER, DEFAULT_SETTER);
         }
 
