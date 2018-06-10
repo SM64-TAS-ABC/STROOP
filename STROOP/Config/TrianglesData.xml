@@ -84,42 +84,42 @@
   <Data groupList="Advanced" base="None" specialType="ObjectNodeCount" color="Grey">Object Node Count</Data>
   <Data groupList="Advanced" type="int" offsetUS="0x8036116C" offsetJP="0x8035FDFC" base="Relative" color="Grey">Total Node Count</Data>
 
-  <Data groupList="Advanced" base="Triangle" specialType="XDistanceToV1" color="Purple" coord="X">XDist to V1</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="YDistanceToV1" color="Purple" coord="Y">YDist to V1</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="ZDistanceToV1" color="Purple" coord="Z">ZDist to V1</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="HDistanceToV1" color="Purple">HDist to V1</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="DistanceToV1" color="Purple">Dist to V1</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="XDistanceToV2" color="Purple" coord="X">XDist to V2</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="YDistanceToV2" color="Purple" coord="Y">YDist to V2</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="ZDistanceToV2" color="Purple" coord="Z">ZDist to V2</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="HDistanceToV2" color="Purple">HDist to V2</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="DistanceToV2" color="Purple">Dist to V2</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="XDistanceToV3" color="Purple" coord="X">XDist to V3</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="YDistanceToV3" color="Purple" coord="Y">YDist to V3</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="ZDistanceToV3" color="Purple" coord="Z">ZDist to V3</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="HDistanceToV3" color="Purple">HDist to V3</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="DistanceToV3" color="Purple">Dist to V3</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="XDistTriV1ToMario" color="Purple" coord="X">XDist to V1</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="YDistTriV1ToMario" color="Purple" coord="Y">YDist to V1</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="ZDistTriV1ToMario" color="Purple" coord="Z">ZDist to V1</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="HDistTriV1ToMario" color="Purple">HDist to V1</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="DistTriV1ToMario" color="Purple">Dist to V1</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="XDistTriV2ToMario" color="Purple" coord="X">XDist to V2</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="YDistTriV2ToMario" color="Purple" coord="Y">YDist to V2</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="ZDistTriV2ToMario" color="Purple" coord="Z">ZDist to V2</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="HDistTriV2ToMario" color="Purple">HDist to V2</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="DistTriV2ToMario" color="Purple">Dist to V2</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="XDistTriV3ToMario" color="Purple" coord="X">XDist to V3</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="YDistTriV3ToMario" color="Purple" coord="Y">YDist to V3</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="ZDistTriV3ToMario" color="Purple" coord="Z">ZDist to V3</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="HDistTriV3ToMario" color="Purple">HDist to V3</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="DistTriV3ToMario" color="Purple">Dist to V3</Data>
 
   <Data groupList="Advanced" base="Triangle" specialType="DistanceToLine12" color="LightBlue">Dist to Line12</Data>
   <Data groupList="Advanced" base="Triangle" specialType="DistanceToLine23" color="LightBlue">Dist to Line23</Data>
   <Data groupList="Advanced" base="Triangle" specialType="DistanceToLine31" color="LightBlue">Dist to Line31</Data>
 
-  <Data groupList="Advanced" base="Triangle" specialType="AngleMarioToV1" subclass="Angle" display="ushort" yaw="true" color="Purple">Angle Mario to V1</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="DeltaAngleMarioToV1" subclass="Angle" display="short" color="Purple">DAngle Mario to V1</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="AngleV1ToMario" subclass="Angle" display="ushort" yaw="true" color="Purple">Angle V1 to Mario</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="AngleMarioToV2" subclass="Angle" display="ushort" yaw="true" color="Purple">Angle Mario to V2</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="DeltaAngleMarioToV2" subclass="Angle" display="short" color="Purple">DAngle Mario to V2</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="AngleV2ToMario" subclass="Angle" display="ushort" yaw="true" color="Purple">Angle V2 to Mario</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="AngleMarioToV3" subclass="Angle" display="ushort" yaw="true" color="Purple">Angle Mario to V3</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="DeltaAngleMarioToV3" subclass="Angle" display="short" color="Purple">DAngle Mario to V3</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="AngleV3ToMario" subclass="Angle" display="ushort" yaw="true" color="Purple">Angle V3 to Mario</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="AngleMarioToTriV1" subclass="Angle" display="ushort" yaw="true" color="Purple">Angle Mario to V1</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="DAngleMarioToTriV1" subclass="Angle" display="short" color="Purple">DAngle Mario to V1</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="AngleTriV1ToMario" subclass="Angle" display="ushort" yaw="true" color="Purple">Angle V1 to Mario</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="AngleMarioToTriV2" subclass="Angle" display="ushort" yaw="true" color="Purple">Angle Mario to V2</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="DAngleMarioToTriV2" subclass="Angle" display="short" color="Purple">DAngle Mario to V2</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="AngleTriV2ToMario" subclass="Angle" display="ushort" yaw="true" color="Purple">Angle V2 to Mario</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="AngleMarioToTriV3" subclass="Angle" display="ushort" yaw="true" color="Purple">Angle Mario to V3</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="DAngleMarioToTriV3" subclass="Angle" display="short" color="Purple">DAngle Mario to V3</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="AngleTriV3ToMario" subclass="Angle" display="ushort" yaw="true" color="Purple">Angle V3 to Mario</Data>
 
-  <Data groupList="Advanced" base="Triangle" specialType="AngleV1ToV2" subclass="Angle" display="ushort" yaw="true" color="Blue">Angle V1 to V2</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="AngleV2ToV1" subclass="Angle" display="ushort" yaw="true" color="Blue">Angle V2 to V1</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="AngleV2ToV3" subclass="Angle" display="ushort" yaw="true" color="Blue">Angle V2 to V3</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="AngleV3ToV2" subclass="Angle" display="ushort" yaw="true" color="Blue">Angle V3 to V2</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="AngleV1ToV3" subclass="Angle" display="ushort" yaw="true" color="Blue">Angle V1 to V3</Data>
-  <Data groupList="Advanced" base="Triangle" specialType="AngleV3ToV1" subclass="Angle" display="ushort" yaw="true" color="Blue">Angle V3 to V1</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="AngleTriV1ToTriV2" subclass="Angle" display="ushort" yaw="true" color="Blue">Angle V1 to V2</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="AngleTriV2ToTriV1" subclass="Angle" display="ushort" yaw="true" color="Blue">Angle V2 to V1</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="AngleTriV2ToTriV3" subclass="Angle" display="ushort" yaw="true" color="Blue">Angle V2 to V3</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="AngleTriV3ToTriV2" subclass="Angle" display="ushort" yaw="true" color="Blue">Angle V3 to V2</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="AngleTriV3ToTriV1" subclass="Angle" display="ushort" yaw="true" color="Blue">Angle V3 to V1</Data>
+  <Data groupList="Advanced" base="Triangle" specialType="AngleTriV1ToTriV3" subclass="Angle" display="ushort" yaw="true" color="Blue">Angle V1 to V3</Data>
 
   <Data groupList="Advanced" base="Triangle" specialType="DeltaAngleLine12" subclass="Angle" display="short" color="LightBlue">DAngle Line12</Data>
   <Data groupList="Advanced" base="Triangle" specialType="DeltaAngleLine21" subclass="Angle" display="short" color="LightBlue">DAngle Line21</Data>
