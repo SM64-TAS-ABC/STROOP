@@ -230,6 +230,12 @@ namespace STROOP.Utilities
             return planeDistance;
         }
 
+        public static double ReflectValueAboutValue(double value, double pivot)
+        {
+            double diff = pivot - value;
+            return pivot + diff;
+        }
+
         public static double NormalizeAngleDouble(double angle)
         {
             return NonNegativeModulus(angle, 65536);

@@ -842,12 +842,25 @@ namespace STROOP.Structs
             _dictionary["BobombTrajectoryFramesToPoint"] =
                 ((uint dummy) =>
                 {
-                    return 26;
+                    Position holpPos = GetHolpPosition();
+                    double yDist = SpecialConfig.PointY - holpPos.Y;
+                    double frames = GetBobombTrajectoryYDistToFrames(yDist);
+                    return frames;
                 },
                 (object objectValue, uint dummy) =>
                 {
-                    return false;
-                });
+                    double? framesNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
+                    if (!framesNullable.HasValue) return false;
+                    double frames = framesNullable.Value;
+                    Position holpPos = GetHolpPosition();
+                    double yDist = GetBobombTrajectoryFramesToYDist(frames);
+                    double hDist = GetBobombTrajectoryFramesToHDist(frames);
+                    double newY = SpecialConfig.PointY - yDist;
+                    (double newX, double newZ) = MoreMath.ExtrapolateLine2D(
+                        SpecialConfig.PointX, SpecialConfig.PointZ, holpPos.X, holpPos.Z, hDist);
+                    return SetHolpPosition(newX, newY, newZ);
+                }
+            );
 
             _dictionary["TrajectoryRemainingHeight"] =
                 ((uint dummy) =>
@@ -3018,6 +3031,47 @@ namespace STROOP.Structs
             float totalDistance = speedUpDistance + slowDownDistance;
             float amplitude = angle + totalDistance;
             return amplitude;
+        }
+
+        private static double GetBobombTrajectoryFramesToYDist(double frames)
+        {
+            double framesParabola = Math.Min(frames, 38);
+            double framesLine = Math.Max(frames - 38, 0);
+            double yDistParabola = -1.25 * framesParabola * framesParabola + 18.75 * framesParabola;
+            double yDistLine = framesLine * -75;
+            return yDistParabola + yDistLine;
+        }
+
+        private static double GetBobombTrajectoryYDistToFrames(double yDist)
+        {
+            bool reflected = false;
+            if (yDist > 70.3125)
+            {
+                yDist = MoreMath.ReflectValueAboutValue(yDist, 70.3125);
+                reflected = true;
+            }
+            double frames;
+            if (yDist >= -1092.5)
+            {
+                double radicand = 351.5625 - 5 * yDist;
+                frames = 7.5 + 0.4 * Math.Sqrt(radicand);
+            }
+            else
+            {
+                frames = (yDist + 1092.5) / -75 + 38;
+            }
+            if (reflected) frames = MoreMath.ReflectValueAboutValue(frames, 7.5);
+            return frames;
+        }
+
+        private static double GetBobombTrajectoryFramesToHDist(double frames)
+        {
+            return 32 + frames * 25;
+        }
+
+        private static double GetBobombTrajectoryHDistToFrames(double hDist)
+        {
+            return (hDist - 32) / 25;
         }
 
         // PU methods
