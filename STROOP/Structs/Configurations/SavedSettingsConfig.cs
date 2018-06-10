@@ -27,7 +27,7 @@ namespace STROOP.Structs.Configurations
             }
         }
 
-        private static bool _startSlotIndexsFromOne = true;
+        private static bool _startSlotIndexsFromOne;
         public static bool StartSlotIndexsFromOne
         {
             get => _startSlotIndexsFromOne;
@@ -39,7 +39,7 @@ namespace STROOP.Structs.Configurations
             }
         }
 
-        private static bool _moveCameraWithPu = true;
+        private static bool _moveCameraWithPu;
         public static bool MoveCameraWithPu
         {
             get => _moveCameraWithPu;
@@ -51,7 +51,7 @@ namespace STROOP.Structs.Configurations
             }
         }
 
-        private static bool _scaleDiagonalPositionControllerButtons = false;
+        private static bool _scaleDiagonalPositionControllerButtons;
         public static bool ScaleDiagonalPositionControllerButtons
         {
             get => _scaleDiagonalPositionControllerButtons;
@@ -63,7 +63,7 @@ namespace STROOP.Structs.Configurations
             }
         }
 
-        private static bool _excludeDustForClosestObject = true;
+        private static bool _excludeDustForClosestObject;
         public static bool ExcludeDustForClosestObject
         {
             get => _excludeDustForClosestObject;
@@ -75,7 +75,7 @@ namespace STROOP.Structs.Configurations
             }
         }
 
-        private static bool _useMisalignmentOffsetForDistanceToLine = true;
+        private static bool _useMisalignmentOffsetForDistanceToLine;
         public static bool UseMisalignmentOffsetForDistanceToLine
         {
             get => _useMisalignmentOffsetForDistanceToLine;
@@ -87,7 +87,7 @@ namespace STROOP.Structs.Configurations
             }
         }
 
-        private static bool _dontRoundValuesToZero = true;
+        private static bool _dontRoundValuesToZero;
         public static bool DontRoundValuesToZero
         {
             get => _dontRoundValuesToZero;
@@ -99,7 +99,7 @@ namespace STROOP.Structs.Configurations
             }
         }
 
-        private static bool _neutralizeTrianglesWith21 = true;
+        private static bool _neutralizeTrianglesWith21;
         public static bool NeutralizeTrianglesWith21
         {
             get => _neutralizeTrianglesWith21;
@@ -117,7 +117,7 @@ namespace STROOP.Structs.Configurations
             return (short)(use21 ? 21 : 0);
         }
 
-        private static bool _useInGameTrigForAngleLogic = true;
+        private static bool _useInGameTrigForAngleLogic;
         public static bool UseInGameTrigForAngleLogic
         {
             get => _useInGameTrigForAngleLogic;
@@ -128,11 +128,6 @@ namespace STROOP.Structs.Configurations
                 if (IsLoaded) Save();
             }
         }
-
-
-
-
-
 
         public static List<XElement> ToXML()
         {
@@ -154,6 +149,19 @@ namespace STROOP.Structs.Configurations
         {
             DialogUtilities.SaveXmlElements(
                 FileType.Xml, "SavedSettings", ToXML(), @"Config/SavedSettings.xml");
+        }
+
+        public static void ResetSavedSettings()
+        {
+            _startSlotIndexsFromOne = true;
+            _moveCameraWithPu = true;
+            _scaleDiagonalPositionControllerButtons = true;
+            _excludeDustForClosestObject = true;
+            _useMisalignmentOffsetForDistanceToLine = true;
+            _dontRoundValuesToZero = true;
+            _neutralizeTrianglesWith21 = true;
+            _useInGameTrigForAngleLogic = false;
+            Save();
         }
     }
 }
