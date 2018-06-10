@@ -21,8 +21,8 @@
   <Data type="float" offset="0x84" base="Camera" coord="Y">Camera Focus Y</Data>
   <Data type="float" offset="0x88" base="Camera" coord="Z">Camera Focus Z</Data>
   <Data type="float" offset="0x164" base="Camera">Focus Veer Dist</Data>
-  <Data type="float" offset="0xC8" base="Camera">Cam Dist from Focus</Data>
-  <Data base="None" specialType="CameraDistanceToMario">Cam Dist from Mario</Data>
+  <Data type="float" offset="0xC8" base="Camera">Dist Cam to Focus</Data>
+  <Data base="None" specialType="DistMarioToCamera">Dist Cam to Mario</Data>
 
   <Data type="short" offset="0xBC" base="Camera">Camera Mode</Data>
   <Data type="uint" offsetUS="0x8032DF30" offsetJP="0x8032CFD0" base="Relative" subclass="Object">Secondary Object</Data>

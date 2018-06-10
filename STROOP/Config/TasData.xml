@@ -30,8 +30,8 @@
   <Data groupList="TAS" base="Mario" offset="0x40" type="float" color="Red" coord="Y">Mario Y</Data>
   <Data groupList="TAS" base="Mario" offset="0x44" type="float" color="Red" coord="Z">Mario Z</Data>
   <Data groupList="TAS" base="Ghost" offset="0x1C" type="ushort" subclass="Angle" yaw="true" color="Purple">Ghost Angle</Data>
-  <Data groupList="TAS" base="Ghost" specialType="MarioGhostHorizontalDistance" color="Purple">Ghost DeltaH</Data>
-  <Data groupList="TAS" base="Ghost" specialType="MarioGhostVerticalDistance" color="Purple">Ghost DeltaV</Data>
+  <Data groupList="TAS" base="Ghost" specialType="HDistGhostToMario" color="Purple">Ghost DeltaH</Data>
+  <Data groupList="TAS" base="Ghost" specialType="YDistGhostToMario" color="Purple">Ghost DeltaY</Data>
   <Data groupList="TAS" base="Ghost" offset="0x20" type="float" color="Purple">Ghost X</Data>
   <Data groupList="TAS" base="Ghost" offset="0x24" type="float" color="Purple">Ghost Y</Data>
   <Data groupList="TAS" base="Ghost" offset="0x28" type="float" color="Purple">Ghost Z</Data>
