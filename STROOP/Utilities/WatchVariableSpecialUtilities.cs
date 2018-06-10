@@ -132,7 +132,7 @@ namespace STROOP.Structs
                     _dictionary[String.Format("DAngle{0}To{1}", string1, string2)] =
                         ((uint address) =>
                         {
-                            return PositionAngle.GetDAngleTo(func1(address), func2(address), null);
+                            return PositionAngle.GetDAngleTo(func1(address), func2(address), null, false);
                         },
                         (object objectValue, uint address) =>
                         {
