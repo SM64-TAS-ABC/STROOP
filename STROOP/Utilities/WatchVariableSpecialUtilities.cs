@@ -40,6 +40,7 @@ namespace STROOP.Structs
                     (uint address) => PositionAngle.Mario,
                     (uint address) => PositionAngle.Holp,
                     (uint address) => PositionAngle.Camera,
+                    (uint address) => PositionAngle.Ghost,
                     (uint address) => PositionAngle.Obj(address),
                     (uint address) => PositionAngle.ObjHome(address),
                     (uint address) => PositionAngle.Tri(address, 1),
@@ -49,22 +50,6 @@ namespace STROOP.Structs
                     (uint address) => SpecialConfig.SelfPA,
                 };
 
-            List<PositionAngleTypeEnum?> posAngleEnums =
-                new List<PositionAngleTypeEnum?>()
-                {
-                    PositionAngleTypeEnum.Custom,
-                    PositionAngleTypeEnum.Mario,
-                    PositionAngleTypeEnum.Holp,
-                    PositionAngleTypeEnum.Camera,
-                    PositionAngleTypeEnum.Obj,
-                    PositionAngleTypeEnum.ObjHome,
-                    PositionAngleTypeEnum.Tri,
-                    PositionAngleTypeEnum.Tri,
-                    PositionAngleTypeEnum.Tri,
-                    null,
-                    null,
-                };
-
             List<string> posAngleStrings =
                 new List<string>()
                 {
@@ -72,6 +57,7 @@ namespace STROOP.Structs
                     "Mario",
                     "Holp",
                     "Camera",
+                    "Ghost",
                     "Obj",
                     "ObjHome",
                     "TriV1",
@@ -84,14 +70,12 @@ namespace STROOP.Structs
             for (int i = 0; i < posAngleFuncs.Count; i++)
             {
                 Func<uint, PositionAngle> func1 = posAngleFuncs[i];
-                PositionAngleTypeEnum? enum1 = posAngleEnums[i];
                 string string1 = posAngleStrings[i];
 
                 for (int j = 0; j < posAngleFuncs.Count; j++)
                 {
                     if (j == i) continue;
                     Func<uint, PositionAngle> func2 = posAngleFuncs[j];
-                    PositionAngleTypeEnum? enum2 = posAngleEnums[j];
                     string string2 = posAngleStrings[j];
 
                     List<string> distTypes = new List<string>() { "X", "Y", "Z", "H", "", "F", "S" };

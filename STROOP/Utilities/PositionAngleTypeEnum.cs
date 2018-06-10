@@ -15,6 +15,7 @@ namespace STROOP.Utilities
         Mario,
         Holp,
         Camera,
+        Ghost,
         Obj,
         ObjHome,
         Tri,

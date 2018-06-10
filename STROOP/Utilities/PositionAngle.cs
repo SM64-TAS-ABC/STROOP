@@ -17,6 +17,13 @@ namespace STROOP.Utilities
         public readonly PositionAngle PosPA;
         public readonly PositionAngle AnglePA;
 
+        private uint? GetGhostAddress()
+        {
+            List<uint> addresses = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Mario Ghost")
+                .ConvertAll(objectDataModel => objectDataModel.Address);
+            return addresses.Count > 0 ? addresses[0] : (uint?)null;
+        }
+
         public double X
         {
             get
@@ -31,6 +38,10 @@ namespace STROOP.Utilities
                         return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpXOffset);
                     case PositionAngleTypeEnum.Camera:
                         return Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.XOffset);
+                    case PositionAngleTypeEnum.Ghost:
+                        uint? ghostAddress = GetGhostAddress();
+                        if (!ghostAddress.HasValue) return Double.NaN;
+                        return Config.Stream.GetSingle(ghostAddress.Value + ObjectConfig.GraphicsXOffset);
                     case PositionAngleTypeEnum.Obj:
                         return Config.Stream.GetSingle(Address.Value + ObjectConfig.XOffset);
                     case PositionAngleTypeEnum.ObjHome:
@@ -74,6 +85,10 @@ namespace STROOP.Utilities
                         return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpYOffset);
                     case PositionAngleTypeEnum.Camera:
                         return Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.YOffset);
+                    case PositionAngleTypeEnum.Ghost:
+                        uint? ghostAddress = GetGhostAddress();
+                        if (!ghostAddress.HasValue) return Double.NaN;
+                        return Config.Stream.GetSingle(ghostAddress.Value + ObjectConfig.GraphicsYOffset);
                     case PositionAngleTypeEnum.Obj:
                         return Config.Stream.GetSingle(Address.Value + ObjectConfig.YOffset);
                     case PositionAngleTypeEnum.ObjHome:
@@ -117,6 +132,10 @@ namespace STROOP.Utilities
                         return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpZOffset);
                     case PositionAngleTypeEnum.Camera:
                         return Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
+                    case PositionAngleTypeEnum.Ghost:
+                        uint? ghostAddress = GetGhostAddress();
+                        if (!ghostAddress.HasValue) return Double.NaN;
+                        return Config.Stream.GetSingle(ghostAddress.Value + ObjectConfig.GraphicsZOffset);
                     case PositionAngleTypeEnum.Obj:
                         return Config.Stream.GetSingle(Address.Value + ObjectConfig.ZOffset);
                     case PositionAngleTypeEnum.ObjHome:
@@ -160,6 +179,10 @@ namespace STROOP.Utilities
                         return Double.NaN;
                     case PositionAngleTypeEnum.Camera:
                         return Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.FacingYawOffset);
+                    case PositionAngleTypeEnum.Ghost:
+                        uint? ghostAddress = GetGhostAddress();
+                        if (!ghostAddress.HasValue) return Double.NaN;
+                        return Config.Stream.GetUInt16(ghostAddress.Value + ObjectConfig.GraphicsYawOffset);
                     case PositionAngleTypeEnum.Obj:
                         return Config.Stream.GetUInt16(Address.Value + ObjectConfig.YawFacingOffset);
                     case PositionAngleTypeEnum.ObjHome:
@@ -211,6 +234,7 @@ namespace STROOP.Utilities
         public static PositionAngle Mario = new PositionAngle(PositionAngleTypeEnum.Mario);
         public static PositionAngle Holp = new PositionAngle(PositionAngleTypeEnum.Holp);
         public static PositionAngle Camera = new PositionAngle(PositionAngleTypeEnum.Camera);
+        public static PositionAngle Ghost = new PositionAngle(PositionAngleTypeEnum.Ghost);
         public static PositionAngle Obj(uint address) =>
             new PositionAngle(PositionAngleTypeEnum.Obj, address);
         public static PositionAngle ObjHome(uint address) =>
@@ -240,6 +264,10 @@ namespace STROOP.Utilities
             else if (parts.Count == 1 && (parts[0] == "cam" || parts[0] == "camera"))
             {
                 return Camera;
+            }
+            else if (parts.Count == 1 && parts[0] == "ghost")
+            {
+                return Ghost;
             }
             else if (parts.Count == 2 && (parts[0] == "obj" || parts[0] == "object"))
             {
@@ -297,6 +325,8 @@ namespace STROOP.Utilities
                     return Config.Stream.SetValue((float)value, MarioConfig.StructAddress + MarioConfig.HolpXOffset);
                 case PositionAngleTypeEnum.Camera:
                     return Config.Stream.SetValue((float)value, CameraConfig.CameraStructAddress + CameraConfig.XOffset);
+                case PositionAngleTypeEnum.Ghost:
+                    return false;
                 case PositionAngleTypeEnum.Obj:
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.XOffset);
                 case PositionAngleTypeEnum.ObjHome:
@@ -338,6 +368,8 @@ namespace STROOP.Utilities
                     return Config.Stream.SetValue((float)value, MarioConfig.StructAddress + MarioConfig.HolpYOffset);
                 case PositionAngleTypeEnum.Camera:
                     return Config.Stream.SetValue((float)value, CameraConfig.CameraStructAddress + CameraConfig.YOffset);
+                case PositionAngleTypeEnum.Ghost:
+                    return false;
                 case PositionAngleTypeEnum.Obj:
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.YOffset);
                 case PositionAngleTypeEnum.ObjHome:
@@ -379,6 +411,8 @@ namespace STROOP.Utilities
                     return Config.Stream.SetValue((float)value, MarioConfig.StructAddress + MarioConfig.HolpZOffset);
                 case PositionAngleTypeEnum.Camera:
                     return Config.Stream.SetValue((float)value, CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
+                case PositionAngleTypeEnum.Ghost:
+                    return false;
                 case PositionAngleTypeEnum.Obj:
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.ZOffset);
                 case PositionAngleTypeEnum.ObjHome:
@@ -421,6 +455,8 @@ namespace STROOP.Utilities
                     return false;
                 case PositionAngleTypeEnum.Camera:
                     return Config.Stream.SetValue(valueUShort, CameraConfig.CameraStructAddress + CameraConfig.FacingYawOffset);
+                case PositionAngleTypeEnum.Ghost:
+                    return false;
                 case PositionAngleTypeEnum.Obj:
                     bool success = true;
                     success &= Config.Stream.SetValue(valueUShort, Address.Value + ObjectConfig.YawFacingOffset);
