@@ -179,13 +179,7 @@ namespace STROOP.Utilities
             if (!objects.Any())
                 return false;
 
-            List<TripleAddressAngle> posAddressAngles =
-                new List<TripleAddressAngle> {
-                    new TripleAddressAngle(
-                        MarioConfig.StructAddress + MarioConfig.XOffset,
-                        MarioConfig.StructAddress + MarioConfig.YOffset,
-                        MarioConfig.StructAddress + MarioConfig.ZOffset)
-                };
+            List<PositionAngle> posAddressAngles = new List<PositionAngle> { PositionAngle.Mario };
 
             float xDestination = objects.Average(o => o.X);
             float yDestination = objects.Average(o => o.Y);
@@ -198,12 +192,8 @@ namespace STROOP.Utilities
 
         public static bool RetrieveObjects(List<ObjectDataModel> objects, (bool affectX, bool affectY, bool affectZ)? affects = null)
         {
-            List<TripleAddressAngle> posAddressAngles =
-                objects.ConvertAll(
-                    o => new TripleAddressAngle(
-                        o.Address + ObjectConfig.XOffset,
-                        o.Address + ObjectConfig.YOffset,
-                        o.Address + ObjectConfig.ZOffset));
+            List<PositionAngle> posAddressAngles =
+                objects.ConvertAll(o => PositionAngle.Obj(o.Address));
 
             float xDestination = DataModels.Mario.X;
             float yDestination = DataModels.Mario.Y;
@@ -245,23 +235,10 @@ namespace STROOP.Utilities
         public static bool TranslateObjects(List<ObjectDataModel> objects,
             float xOffset, float yOffset, float zOffset, bool useRelative, bool includeMario)
         {
-            List<TripleAddressAngle> posAddressAngles =
-                objects.ConvertAll(
-                    o => new TripleAddressAngle(
-                        o.Address + ObjectConfig.XOffset,
-                        o.Address + ObjectConfig.YOffset,
-                        o.Address + ObjectConfig.ZOffset,
-                        o.FacingYaw)).ToList();
+            List<PositionAngle> posAddressAngles =
+                objects.ConvertAll(o => PositionAngle.Obj(o.Address));
 
-            if (includeMario)
-            {
-                posAddressAngles.Add(
-                    new TripleAddressAngle(
-                        MarioConfig.StructAddress + MarioConfig.XOffset,
-                        MarioConfig.StructAddress + MarioConfig.YOffset,
-                        MarioConfig.StructAddress + MarioConfig.ZOffset,
-                        Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset)));
-            }
+            if (includeMario) posAddressAngles.Add(PositionAngle.Mario);
 
             return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
@@ -269,12 +246,8 @@ namespace STROOP.Utilities
         public static bool TranslateObjectHomes(List<ObjectDataModel> objects,
             float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            List<TripleAddressAngle> posAddressAngles =
-                objects.ConvertAll(o => new TripleAddressAngle(
-                        o.Address + ObjectConfig.HomeXOffset,
-                        o.Address + ObjectConfig.HomeYOffset,
-                        o.Address + ObjectConfig.HomeZOffset,
-                        o.FacingYaw));
+            List<PositionAngle> posAddressAngles =
+                objects.ConvertAll(o => PositionAngle.ObjHome(o.Address));
 
             return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
@@ -335,13 +308,7 @@ namespace STROOP.Utilities
             if (!objects.Any())
                 return false;
 
-            List<TripleAddressAngle> posAddressAngles =
-                new List<TripleAddressAngle> {
-                    new TripleAddressAngle(
-                        MarioConfig.StructAddress + MarioConfig.XOffset,
-                        MarioConfig.StructAddress + MarioConfig.YOffset,
-                        MarioConfig.StructAddress + MarioConfig.ZOffset)
-                };
+            List<PositionAngle> posAddressAngles = new List<PositionAngle> { PositionAngle.Mario };
 
             float xDestination = objects.Average(o => o.HomeX);
             float yDestination = objects.Average(o => o.HomeY);
@@ -354,11 +321,8 @@ namespace STROOP.Utilities
 
         public static bool RetrieveObjectsHome(List<ObjectDataModel> objects, (bool affectX, bool affectY, bool affectZ)? affects = null)
         {
-            List<TripleAddressAngle> posAddressAngles =
-                objects.ConvertAll(o => new TripleAddressAngle(
-                    o.Address + ObjectConfig.HomeXOffset,
-                    o.Address + ObjectConfig.HomeYOffset,
-                    o.Address + ObjectConfig.HomeZOffset));
+            List<PositionAngle> posAddressAngles =
+                objects.ConvertAll(o => PositionAngle.ObjHome(o.Address));
 
             float xDestination = DataModels.Mario.X;
             float yDestination = DataModels.Mario.Y;
@@ -611,40 +575,19 @@ namespace STROOP.Utilities
 
         public static bool TranslateMario(float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            List<TripleAddressAngle> posAddressAngles =
-                new List<TripleAddressAngle> {
-                    new TripleAddressAngle(
-                        MarioConfig.StructAddress + MarioConfig.XOffset,
-                        MarioConfig.StructAddress + MarioConfig.YOffset,
-                        MarioConfig.StructAddress + MarioConfig.ZOffset,
-                        Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset))
-                };
-
+            List<PositionAngle> posAddressAngles = new List<PositionAngle> { PositionAngle.Mario };
             return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
         public static bool SetMarioPosition(float xValue, float yValue, float zValue)
         {
-            List<TripleAddressAngle> posAddressAngles =
-                new List<TripleAddressAngle> {
-                    new TripleAddressAngle(
-                        MarioConfig.StructAddress + MarioConfig.XOffset,
-                        MarioConfig.StructAddress + MarioConfig.YOffset,
-                        MarioConfig.StructAddress + MarioConfig.ZOffset)
-                };
-
+            List<PositionAngle> posAddressAngles = new List<PositionAngle> { PositionAngle.Mario };
             return ChangeValues(posAddressAngles, xValue, yValue, zValue, Change.SET);
         }
 
         public static bool GotoHOLP((bool affectX, bool affectY, bool affectZ)? affects = null)
         {
-            List<TripleAddressAngle> posAddressAngles =
-                new List<TripleAddressAngle> {
-                    new TripleAddressAngle(
-                        MarioConfig.StructAddress + MarioConfig.XOffset,
-                        MarioConfig.StructAddress + MarioConfig.YOffset,
-                        MarioConfig.StructAddress + MarioConfig.ZOffset)
-                };
+            List<PositionAngle> posAddressAngles = new List<PositionAngle> { PositionAngle.Mario };
 
             float xDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpXOffset);
             float yDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpYOffset);
@@ -655,13 +598,7 @@ namespace STROOP.Utilities
 
         public static bool RetrieveHOLP((bool affectX, bool affectY, bool affectZ)? affects = null)
         {
-            List<TripleAddressAngle> posAddressAngles =
-                new List<TripleAddressAngle> {
-                    new TripleAddressAngle(
-                        MarioConfig.StructAddress + MarioConfig.HolpXOffset,
-                        MarioConfig.StructAddress + MarioConfig.HolpYOffset,
-                        MarioConfig.StructAddress + MarioConfig.HolpZOffset)
-                };
+            List<PositionAngle> posAddressAngles = new List<PositionAngle> { PositionAngle.Holp };
 
             float xDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
             float yDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
@@ -672,15 +609,7 @@ namespace STROOP.Utilities
 
         public static bool TranslateHOLP(float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            List<TripleAddressAngle> posAddressAngles =
-                new List<TripleAddressAngle> {
-                    new TripleAddressAngle(
-                        MarioConfig.StructAddress + MarioConfig.HolpXOffset,
-                        MarioConfig.StructAddress + MarioConfig.HolpYOffset,
-                        MarioConfig.StructAddress + MarioConfig.HolpZOffset,
-                        Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset))
-                };
-
+            List<PositionAngle> posAddressAngles = new List<PositionAngle> { PositionAngle.Holp };
             return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
