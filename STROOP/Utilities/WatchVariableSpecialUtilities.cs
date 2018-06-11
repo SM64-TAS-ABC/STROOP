@@ -844,7 +844,7 @@ namespace STROOP.Structs
                 {
                     Position holpPos = GetHolpPosition();
                     double yDist = SpecialConfig.PointY - holpPos.Y;
-                    double frames = GetBobombTrajectoryYDistToFrames(yDist);
+                    double frames = GetObjectTrajectoryYDistToFrames(yDist);
                     return frames;
                 },
                 (object objectValue, uint dummy) =>
@@ -853,7 +853,7 @@ namespace STROOP.Structs
                     if (!framesNullable.HasValue) return false;
                     double frames = framesNullable.Value;
                     Position holpPos = GetHolpPosition();
-                    double yDist = GetBobombTrajectoryFramesToYDist(frames);
+                    double yDist = GetObjectTrajectoryFramesToYDist(frames);
                     double hDist = Math.Abs(GetBobombTrajectoryFramesToHDist(frames));
                     double newY = SpecialConfig.PointY - yDist;
                     (double newX, double newZ) = MoreMath.ExtrapolateLine2D(
@@ -861,6 +861,28 @@ namespace STROOP.Structs
                     return SetHolpPosition(newX, newY, newZ);
                 }
             );
+
+            _dictionary["CorkBoxTrajectoryFramesToPoint"] =
+                ((uint dummy) =>
+                {
+                    Position holpPos = GetHolpPosition();
+                    double yDist = SpecialConfig.PointY - holpPos.Y;
+                    double frames = GetObjectTrajectoryYDistToFrames(yDist);
+                    return frames;
+                },
+                (object objectValue, uint dummy) =>
+                {
+                    double? framesNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
+                    if (!framesNullable.HasValue) return false;
+                    double frames = framesNullable.Value;
+                    Position holpPos = GetHolpPosition();
+                    double yDist = GetObjectTrajectoryFramesToYDist(frames);
+                    double hDist = Math.Abs(GetCorkBoxTrajectoryFramesToHDist(frames));
+                    double newY = SpecialConfig.PointY - yDist;
+                    (double newX, double newZ) = MoreMath.ExtrapolateLine2D(
+                        SpecialConfig.PointX, SpecialConfig.PointZ, holpPos.X, holpPos.Z, hDist);
+                    return SetHolpPosition(newX, newY, newZ);
+                });
 
             _dictionary["TrajectoryRemainingHeight"] =
                 ((uint dummy) =>
@@ -3033,7 +3055,7 @@ namespace STROOP.Structs
             return amplitude;
         }
 
-        private static double GetBobombTrajectoryFramesToYDist(double frames)
+        private static double GetObjectTrajectoryFramesToYDist(double frames)
         {
             bool reflected = false;
             if (frames < 7.5)
@@ -3054,7 +3076,7 @@ namespace STROOP.Structs
             return yDist;
         }
 
-        private static double GetBobombTrajectoryYDistToFrames(double yDist)
+        private static double GetObjectTrajectoryYDistToFrames(double yDist)
         {
             bool reflected = false;
             if (yDist > 70.3125)
@@ -3084,6 +3106,16 @@ namespace STROOP.Structs
         private static double GetBobombTrajectoryHDistToFrames(double hDist)
         {
             return (hDist - 32) / 25;
+        }
+
+        private static double GetCorkBoxTrajectoryFramesToHDist(double frames)
+        {
+            return 32 + frames * 40;
+        }
+
+        private static double GetCorkBoxTrajectoryHDistToFrames(double hDist)
+        {
+            return (hDist - 32) / 40;
         }
 
         // PU methods
