@@ -198,10 +198,10 @@ namespace STROOP.Controls
         }
 
         public WatchVariableControl CreateWatchVariableControl(
-            Color? newColor = null,
             string newName = null,
-            List<uint> newFixedAddresses = null,
-            List<VariableGroup> newVariableGroupList = null)
+            Color? newColor = null,
+            List<VariableGroup> newVariableGroupList = null,
+            List<uint> newFixedAddresses = null)
         {
             return new WatchVariableControl(
                 this,
@@ -219,13 +219,18 @@ namespace STROOP.Controls
                 newFixedAddresses ?? FixedAddresses);
         }
 
-        public XElement ToXML(Color? newColor = null, string newName = null, List<uint> newFixedAddresses = null)
+        public XElement ToXML(
+            string newName = null,
+            Color? newColor = null,
+            List<VariableGroup> newVariableGroupList = null,
+            List<uint> newFixedAddresses = null)
         {
             string name = newName ?? Name;
             XElement xElement = new XElement("Data", name);
 
-            if (GroupList.Count > 0)
-                xElement.Add(new XAttribute("groupList", String.Join(",", GroupList)));
+            List<VariableGroup> groupList = newVariableGroupList ?? GroupList;
+            if (groupList.Count > 0)
+                xElement.Add(new XAttribute("groupList", String.Join(",", groupList)));
 
             xElement.Add(new XAttribute("base", WatchVar.BaseAddressType.ToString()));
 
