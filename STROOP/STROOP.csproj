@@ -417,6 +417,7 @@
     <Compile Include="Structs\SpawnHack.cs" />
     <Compile Include="Enums\AngleUnitType.cs" />
     <Compile Include="Utilities\BoolUtilities.cs" />
+    <Compile Include="Utilities\CameraHackUtilities.cs" />
     <Compile Include="Utilities\PositionAngle.cs" />
     <Compile Include="Utilities\EndianessUtilitiies.cs" />
     <Compile Include="Utilities\EndianUtilities.cs" />

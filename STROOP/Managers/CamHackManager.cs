@@ -10,7 +10,7 @@ namespace STROOP.Managers
 {
     public class CamHackManager : DataManager
     {
-        public CamHackMode _currentCamHackMode;
+        public CamHackMode CurrentCamHackMode { get; private set; }
 
         RadioButton _mode0RadioButton;
         RadioButton _mode1RadioButtonRelativeAngle;
@@ -21,7 +21,7 @@ namespace STROOP.Managers
         public CamHackManager(string varFilePath, TabPage camHackControl, WatchVariableFlowLayoutPanel variableTable)
             : base(varFilePath, variableTable)
         {
-            _currentCamHackMode = CamHackMode.REGULAR;
+            CurrentCamHackMode = CamHackMode.REGULAR;
 
             var splitContainer = camHackControl.Controls["splitContainerCamHack"] as SplitContainer;
             _mode0RadioButton = splitContainer.Panel1.Controls["radioButtonCamHackMode0"] as RadioButton;
@@ -65,7 +65,7 @@ namespace STROOP.Managers
                 (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
                     ButtonUtilities.TranslateCameraHack(
-                        _currentCamHackMode,
+                        CurrentCamHackMode,
                         hOffset,
                         nOffset,
                         -1 * vOffset,
@@ -93,7 +93,7 @@ namespace STROOP.Managers
                 (float hOffset, float vOffset, float nOffset, bool _) =>
                 {
                     ButtonUtilities.TranslateCameraHackSpherically(
-                        _currentCamHackMode,
+                        CurrentCamHackMode,
                         -1 * nOffset,
                         hOffset,
                         -1 * vOffset);
@@ -120,7 +120,7 @@ namespace STROOP.Managers
                 (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
                     ButtonUtilities.TranslateCameraHackFocus(
-                        _currentCamHackMode,
+                        CurrentCamHackMode,
                         hOffset,
                         nOffset,
                         -1 * vOffset,
@@ -148,7 +148,7 @@ namespace STROOP.Managers
                 (float hOffset, float vOffset, float nOffset, bool _) =>
                 {
                     ButtonUtilities.TranslateCameraHackFocusSpherically(
-                        _currentCamHackMode,
+                        CurrentCamHackMode,
                         nOffset,
                         hOffset,
                         -1 * vOffset);
@@ -175,7 +175,7 @@ namespace STROOP.Managers
                 (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
                     ButtonUtilities.TranslateCameraHackBoth(
-                        _currentCamHackMode,
+                        CurrentCamHackMode,
                         hOffset,
                         nOffset,
                         -1 * vOffset,
@@ -189,9 +189,9 @@ namespace STROOP.Managers
             base.Update(updateView);
 
             CamHackMode correctCamHackMode = getCorrectCamHackMode();
-            if (_currentCamHackMode != correctCamHackMode)
+            if (CurrentCamHackMode != correctCamHackMode)
             {
-                _currentCamHackMode = correctCamHackMode;
+                CurrentCamHackMode = correctCamHackMode;
                 getCorrespondingRadioButton(correctCamHackMode).Checked = true;
             }
 
