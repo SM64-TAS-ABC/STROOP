@@ -52,11 +52,11 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.Holp:
                         return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpXOffset);
                     case PositionAngleTypeEnum.Camera:
-                        return Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.XOffset);
+                        return Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.XOffset);
                     case PositionAngleTypeEnum.CamHackCamera:
-                        return Config.Stream.GetSingle(CameraHackConfig.CameraHackStructAddress + CameraHackConfig.CameraXOffset);
+                        return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
                     case PositionAngleTypeEnum.CamHackFocus:
-                        return Config.Stream.GetSingle(CameraHackConfig.CameraHackStructAddress + CameraHackConfig.FocusXOffset);
+                        return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
                     case PositionAngleTypeEnum.Ghost:
                         uint? ghostAddress = GetGhostAddress();
                         if (!ghostAddress.HasValue) return Double.NaN;
@@ -103,11 +103,11 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.Holp:
                         return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpYOffset);
                     case PositionAngleTypeEnum.Camera:
-                        return Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.YOffset);
+                        return Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.YOffset);
                     case PositionAngleTypeEnum.CamHackCamera:
-                        return Config.Stream.GetSingle(CameraHackConfig.CameraHackStructAddress + CameraHackConfig.CameraYOffset);
+                        return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
                     case PositionAngleTypeEnum.CamHackFocus:
-                        return Config.Stream.GetSingle(CameraHackConfig.CameraHackStructAddress + CameraHackConfig.FocusYOffset);
+                        return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
                     case PositionAngleTypeEnum.Ghost:
                         uint? ghostAddress = GetGhostAddress();
                         if (!ghostAddress.HasValue) return Double.NaN;
@@ -154,11 +154,11 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.Holp:
                         return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpZOffset);
                     case PositionAngleTypeEnum.Camera:
-                        return Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
+                        return Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.ZOffset);
                     case PositionAngleTypeEnum.CamHackCamera:
-                        return Config.Stream.GetSingle(CameraHackConfig.CameraHackStructAddress + CameraHackConfig.CameraZOffset);
+                        return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
                     case PositionAngleTypeEnum.CamHackFocus:
-                        return Config.Stream.GetSingle(CameraHackConfig.CameraHackStructAddress + CameraHackConfig.FocusZOffset);
+                        return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
                     case PositionAngleTypeEnum.Ghost:
                         uint? ghostAddress = GetGhostAddress();
                         if (!ghostAddress.HasValue) return Double.NaN;
@@ -205,11 +205,11 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.Holp:
                         return Double.NaN;
                     case PositionAngleTypeEnum.Camera:
-                        return Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.FacingYawOffset);
+                        return Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
                     case PositionAngleTypeEnum.CamHackCamera:
-                        return CameraHackUtilities.GetCamHackYawFacing();
+                        return CamHackUtilities.GetCamHackYawFacing();
                     case PositionAngleTypeEnum.CamHackFocus:
-                        return CameraHackUtilities.GetCamHackYawFacing();
+                        return CamHackUtilities.GetCamHackYawFacing();
                     case PositionAngleTypeEnum.Ghost:
                         uint? ghostAddress = GetGhostAddress();
                         if (!ghostAddress.HasValue) return Double.NaN;
@@ -366,11 +366,11 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Holp:
                     return Config.Stream.SetValue((float)value, MarioConfig.StructAddress + MarioConfig.HolpXOffset);
                 case PositionAngleTypeEnum.Camera:
-                    return Config.Stream.SetValue((float)value, CameraConfig.CameraStructAddress + CameraConfig.XOffset);
+                    return Config.Stream.SetValue((float)value, CameraConfig.StructAddress + CameraConfig.XOffset);
                 case PositionAngleTypeEnum.CamHackCamera:
-                    return Config.Stream.SetValue((float)value, CameraHackConfig.CameraHackStructAddress + CameraHackConfig.CameraXOffset);
+                    return Config.Stream.SetValue((float)value, CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
                 case PositionAngleTypeEnum.CamHackFocus:
-                    return Config.Stream.SetValue((float)value, CameraHackConfig.CameraHackStructAddress + CameraHackConfig.FocusXOffset);
+                    return Config.Stream.SetValue((float)value, CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
                 case PositionAngleTypeEnum.Ghost:
                     return false;
                 case PositionAngleTypeEnum.Obj:
@@ -413,11 +413,11 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Holp:
                     return Config.Stream.SetValue((float)value, MarioConfig.StructAddress + MarioConfig.HolpYOffset);
                 case PositionAngleTypeEnum.Camera:
-                    return Config.Stream.SetValue((float)value, CameraConfig.CameraStructAddress + CameraConfig.YOffset);
+                    return Config.Stream.SetValue((float)value, CameraConfig.StructAddress + CameraConfig.YOffset);
                 case PositionAngleTypeEnum.CamHackCamera:
-                    return Config.Stream.SetValue((float)value, CameraHackConfig.CameraHackStructAddress + CameraHackConfig.CameraYOffset);
+                    return Config.Stream.SetValue((float)value, CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
                 case PositionAngleTypeEnum.CamHackFocus:
-                    return Config.Stream.SetValue((float)value, CameraHackConfig.CameraHackStructAddress + CameraHackConfig.FocusYOffset);
+                    return Config.Stream.SetValue((float)value, CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
                 case PositionAngleTypeEnum.Ghost:
                     return false;
                 case PositionAngleTypeEnum.Obj:
@@ -460,11 +460,11 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Holp:
                     return Config.Stream.SetValue((float)value, MarioConfig.StructAddress + MarioConfig.HolpZOffset);
                 case PositionAngleTypeEnum.Camera:
-                    return Config.Stream.SetValue((float)value, CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
+                    return Config.Stream.SetValue((float)value, CameraConfig.StructAddress + CameraConfig.ZOffset);
                 case PositionAngleTypeEnum.CamHackCamera:
-                    return Config.Stream.SetValue((float)value, CameraHackConfig.CameraHackStructAddress + CameraHackConfig.CameraZOffset);
+                    return Config.Stream.SetValue((float)value, CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
                 case PositionAngleTypeEnum.CamHackFocus:
-                    return Config.Stream.SetValue((float)value, CameraHackConfig.CameraHackStructAddress + CameraHackConfig.FocusZOffset);
+                    return Config.Stream.SetValue((float)value, CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
                 case PositionAngleTypeEnum.Ghost:
                     return false;
                 case PositionAngleTypeEnum.Obj:
@@ -508,7 +508,7 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.Holp:
                     return false;
                 case PositionAngleTypeEnum.Camera:
-                    return Config.Stream.SetValue(valueUShort, CameraConfig.CameraStructAddress + CameraConfig.FacingYawOffset);
+                    return Config.Stream.SetValue(valueUShort, CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
                 case PositionAngleTypeEnum.CamHackCamera:
                     return false;
                 case PositionAngleTypeEnum.CamHackFocus:

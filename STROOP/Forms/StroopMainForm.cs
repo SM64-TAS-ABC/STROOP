@@ -269,7 +269,7 @@ namespace STROOP
             Config.QuarterFrameManager = new DataManager(@"Config/QuarterFrameData.xml", watchVariablePanelQuarterFrame);
             Config.CustomManager = new CustomManager(@"Config/CustomData.xml", tabPageCustom, watchVariablePanelCustom);
             Config.VarHackManager = new VarHackManager(tabPageVarHack, varHackPanel);
-            Config.CameraHackManager = new CamHackManager(@"Config/CamHackData.xml", tabPageCamHack, watchVariablePanelCamHack);
+            Config.CamHackManager = new CamHackManager(@"Config/CamHackData.xml", tabPageCamHack, watchVariablePanelCamHack);
             Config.ObjectManager = new ObjectManager(@"Config/ObjectData.xml", tabPageObject, WatchVariablePanelObject);
             Config.OptionsManager = new OptionsManager(tabPageOptions);
             Config.TestingManager = new TestingManager(tabPageTesting);
@@ -418,7 +418,7 @@ namespace STROOP
                 Config.QuarterFrameManager.Update(tabControlMain.SelectedTab == tabPageQuarterFrame);
                 Config.CustomManager.Update(tabControlMain.SelectedTab == tabPageCustom);
                 Config.VarHackManager.Update(tabControlMain.SelectedTab == tabPageVarHack);
-                Config.CameraHackManager.Update(tabControlMain.SelectedTab == tabPageCamHack);
+                Config.CamHackManager.Update(tabControlMain.SelectedTab == tabPageCamHack);
                 Config.MiscManager.Update(tabControlMain.SelectedTab == tabPageMisc);
                 Config.TriangleManager.Update(tabControlMain.SelectedTab == tabPageTriangles);
                 Config.AreaManager.Update(tabControlMain.SelectedTab == tabPageArea);

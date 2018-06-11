@@ -30,19 +30,19 @@ namespace STROOP.Managers
             _mode2RadioButton = splitContainer.Panel1.Controls["radioButtonCamHackMode2"] as RadioButton;
             _mode3RadioButton = splitContainer.Panel1.Controls["radioButtonCamHackMode3"] as RadioButton;
 
-            _mode0RadioButton.Click += (sender, e) => Config.Stream.SetValue(0, CameraHackConfig.CameraHackStructAddress + CameraHackConfig.CameraModeOffset);
+            _mode0RadioButton.Click += (sender, e) => Config.Stream.SetValue(0, CamHackConfig.StructAddress + CamHackConfig.CameraModeOffset);
             _mode1RadioButtonRelativeAngle.Click += (sender, e) =>
             {
-                Config.Stream.SetValue(1, CameraHackConfig.CameraHackStructAddress + CameraHackConfig.CameraModeOffset);
-                Config.Stream.SetValue((ushort)0, CameraHackConfig.CameraHackStructAddress + CameraHackConfig.AbsoluteAngleOffset);
+                Config.Stream.SetValue(1, CamHackConfig.StructAddress + CamHackConfig.CameraModeOffset);
+                Config.Stream.SetValue((ushort)0, CamHackConfig.StructAddress + CamHackConfig.AbsoluteAngleOffset);
             };
             _mode1RadioButtonAbsoluteAngle.Click += (sender, e) =>
             {
-                Config.Stream.SetValue(1, CameraHackConfig.CameraHackStructAddress + CameraHackConfig.CameraModeOffset);
-                Config.Stream.SetValue((ushort)1, CameraHackConfig.CameraHackStructAddress + CameraHackConfig.AbsoluteAngleOffset);
+                Config.Stream.SetValue(1, CamHackConfig.StructAddress + CamHackConfig.CameraModeOffset);
+                Config.Stream.SetValue((ushort)1, CamHackConfig.StructAddress + CamHackConfig.AbsoluteAngleOffset);
             };
-            _mode2RadioButton.Click += (sender, e) => Config.Stream.SetValue(2, CameraHackConfig.CameraHackStructAddress + CameraHackConfig.CameraModeOffset);
-            _mode3RadioButton.Click += (sender, e) => Config.Stream.SetValue(3, CameraHackConfig.CameraHackStructAddress + CameraHackConfig.CameraModeOffset);
+            _mode2RadioButton.Click += (sender, e) => Config.Stream.SetValue(2, CamHackConfig.StructAddress + CamHackConfig.CameraModeOffset);
+            _mode3RadioButton.Click += (sender, e) => Config.Stream.SetValue(3, CamHackConfig.StructAddress + CamHackConfig.CameraModeOffset);
 
             var cameraHackPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraHackPos"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
@@ -202,7 +202,7 @@ namespace STROOP.Managers
 
         private void DoTestingCalculations()
         {
-            uint objAddress = Config.Stream.GetUInt32(CameraHackConfig.CameraHackStructAddress + CameraHackConfig.ObjectOffset);
+            uint objAddress = Config.Stream.GetUInt32(CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);
             if (objAddress == 0) return;
 
             int currentGlobalTimer = Config.Stream.GetInt32(MiscConfig.GlobalTimerAddress);
@@ -211,19 +211,19 @@ namespace STROOP.Managers
 
             uint swooperTargetOffset = 0xFE;
             ushort swooperTargetAngle = Config.Stream.GetUInt16(objAddress + swooperTargetOffset);
-            ushort cameraAngle = Config.Stream.GetUInt16(CameraHackConfig.CameraHackStructAddress + CameraHackConfig.ThetaOffset);
+            ushort cameraAngle = Config.Stream.GetUInt16(CamHackConfig.StructAddress + CamHackConfig.ThetaOffset);
 
             double angleCap = 1024;
             ushort newCameraAngle = MoreMath.NormalizeAngleUshort(MoreMath.RotateAngleTowards(cameraAngle, swooperTargetAngle, angleCap));
-            Config.Stream.SetValue(newCameraAngle, CameraHackConfig.CameraHackStructAddress + CameraHackConfig.ThetaOffset);
+            Config.Stream.SetValue(newCameraAngle, CamHackConfig.StructAddress + CamHackConfig.ThetaOffset);
 
             //Console.WriteLine(currentGlobalTimer.ToString() + ": " + swooperTargetAngle.ToString());
         }
 
         private CamHackMode getCorrectCamHackMode()
         {
-            int cameraMode = Config.Stream.GetInt32(CameraHackConfig.CameraHackStructAddress + CameraHackConfig.CameraModeOffset);
-            ushort absoluteAngle = Config.Stream.GetUInt16(CameraHackConfig.CameraHackStructAddress + CameraHackConfig.AbsoluteAngleOffset);
+            int cameraMode = Config.Stream.GetInt32(CamHackConfig.StructAddress + CamHackConfig.CameraModeOffset);
+            ushort absoluteAngle = Config.Stream.GetUInt16(CamHackConfig.StructAddress + CamHackConfig.AbsoluteAngleOffset);
             return cameraMode == 1 && absoluteAngle == 0 ? CamHackMode.RELATIVE_ANGLE :
                    cameraMode == 1 ? CamHackMode.ABSOLUTE_ANGLE :
                    cameraMode == 2 ? CamHackMode.FIXED_POS :

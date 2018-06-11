@@ -17,7 +17,7 @@ namespace STROOP.Models
             get => _x;
             set
             {
-                if (Config.Stream.SetValue(value, CameraConfig.CameraStructAddress + CameraConfig.XOffset))
+                if (Config.Stream.SetValue(value, CameraConfig.StructAddress + CameraConfig.XOffset))
                     _x = value;
             }
         }
@@ -28,7 +28,7 @@ namespace STROOP.Models
             get => _y;
             set
             {
-                if (Config.Stream.SetValue(value, CameraConfig.CameraStructAddress + CameraConfig.YOffset))
+                if (Config.Stream.SetValue(value, CameraConfig.StructAddress + CameraConfig.YOffset))
                     _y = value;
             }
         }
@@ -39,7 +39,7 @@ namespace STROOP.Models
             get => _z;
             set
             {
-                if (Config.Stream.SetValue(value, CameraConfig.CameraStructAddress + CameraConfig.ZOffset))
+                if (Config.Stream.SetValue(value, CameraConfig.StructAddress + CameraConfig.ZOffset))
                     _z = value;
             }
         }
@@ -51,7 +51,7 @@ namespace STROOP.Models
             get => _facingYaw;
             set
             {
-                if (Config.Stream.SetValue(value, CameraConfig.CameraStructAddress + CameraConfig.FacingYawOffset))
+                if (Config.Stream.SetValue(value, CameraConfig.StructAddress + CameraConfig.FacingYawOffset))
                     _facingYaw = value;
             }
         }
@@ -61,7 +61,7 @@ namespace STROOP.Models
             get => _facingPitch;
             set
             {
-                if (Config.Stream.SetValue(value, CameraConfig.CameraStructAddress + CameraConfig.FacingPitchOffset))
+                if (Config.Stream.SetValue(value, CameraConfig.StructAddress + CameraConfig.FacingPitchOffset))
                     _facingPitch = value;
             }
         }
@@ -71,7 +71,7 @@ namespace STROOP.Models
             get => _facingRoll;
             set
             {
-                if (Config.Stream.SetValue(value, CameraConfig.CameraStructAddress + CameraConfig.FacingRollOffset))
+                if (Config.Stream.SetValue(value, CameraConfig.StructAddress + CameraConfig.FacingRollOffset))
                     _facingRoll = value;
             }
         }
@@ -83,7 +83,7 @@ namespace STROOP.Models
             get => _fov;
             set
             {
-                if (Config.Stream.SetValue(value, CameraConfig.CameraStructAddress + CameraConfig.FOV))
+                if (Config.Stream.SetValue(value, CameraConfig.StructAddress + CameraConfig.FOV))
                     _fov = value;
             }
         }
@@ -106,7 +106,7 @@ namespace STROOP.Models
             get => _hackObject;
             set
             {
-                if (Config.Stream.SetValue(value, CameraHackConfig.CameraHackStructAddress + CameraHackConfig.ObjectOffset))
+                if (Config.Stream.SetValue(value, CamHackConfig.StructAddress + CamHackConfig.ObjectOffset))
                     _hackObject = value;
             }
         }
@@ -115,18 +115,18 @@ namespace STROOP.Models
         public void Update()
         {
             // Update camera position and rotation
-            _x = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.XOffset);
-            _y = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.YOffset);
-            _z = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
+            _x = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.XOffset);
+            _y = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.YOffset);
+            _z = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.ZOffset);
 
-            _facingYaw =    Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.FacingYawOffset);
-            _facingPitch =  Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.FacingPitchOffset);
-            _facingRoll =   Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.FacingRollOffset);
+            _facingYaw =    Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
+            _facingPitch =  Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingPitchOffset);
+            _facingRoll =   Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingRollOffset);
 
             _fov = Config.Stream.GetSingle(CameraConfig.FOV);
 
             _secondaryObject = Config.Stream.GetUInt32(CameraConfig.SecondaryObjectAddress);
-            _hackObject = Config.Stream.GetUInt32(CameraHackConfig.CameraHackStructAddress + CameraHackConfig.ObjectOffset);
+            _hackObject = Config.Stream.GetUInt32(CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);
         }
 
         public void Update2() { }

@@ -44,7 +44,7 @@ namespace STROOP.Structs.Configurations
         public static DataManager QuarterFrameManager;
         public static DataManager CustomManager;
         public static VarHackManager VarHackManager;
-        public static CamHackManager CameraHackManager;
+        public static CamHackManager CamHackManager;
         public static MemoryManager MemoryManager;
         public static ScriptManager ScriptManager;
         public static GfxManager GfxManager;

@@ -69,7 +69,7 @@ namespace STROOP.Structs
                     return new List<uint> { Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress) };
 
                 case BaseAddressTypeEnum.Camera:
-                    return new List<uint> { CameraConfig.CameraStructAddress };
+                    return new List<uint> { CameraConfig.StructAddress };
 
                 case BaseAddressTypeEnum.File:
                     return new List<uint> { Config.FileManager.CurrentFileAddress };
@@ -126,7 +126,7 @@ namespace STROOP.Structs
                     return new List<uint> { MiscConfig.HackedAreaAddress };
 
                 case BaseAddressTypeEnum.CamHack:
-                    return new List<uint> { CameraHackConfig.CameraHackStructAddress };
+                    return new List<uint> { CamHackConfig.StructAddress };
 
                 case BaseAddressTypeEnum.GfxNode:
                     {

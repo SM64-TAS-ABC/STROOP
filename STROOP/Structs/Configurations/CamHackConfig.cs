@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace STROOP.Structs.Configurations
 {
-    public static class CameraHackConfig
+    public static class CamHackConfig
     {
-        public static uint CameraHackStructAddress { get => RomVersionConfig.Switch(CameraHackStructAddressUS, CameraHackStructAddressJP); }
-        public static readonly uint CameraHackStructAddressUS = 0x803E0000;
-        public static readonly uint CameraHackStructAddressJP = 0x803E0000;
+        public static uint StructAddress { get => RomVersionConfig.Switch(StructAddressUS, StructAddressJP); }
+        public static readonly uint StructAddressUS = 0x803E0000;
+        public static readonly uint StructAddressJP = 0x803E0000;
 
         public static readonly uint CameraModeOffset = 0x00;
         public static readonly uint CameraXOffset = 0x04;
