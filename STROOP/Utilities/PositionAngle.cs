@@ -252,6 +252,7 @@ namespace STROOP.Utilities
             new PositionAngle(PositionAngleTypeEnum.Obj, address);
         public static PositionAngle ObjHome(uint address) =>
             new PositionAngle(PositionAngleTypeEnum.ObjHome, address);
+        public static PositionAngle MarioObj() => Obj(Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress));
         public static PositionAngle Tri(uint address, int triVertex) =>
             new PositionAngle(PositionAngleTypeEnum.Tri, address, triVertex);
         public static PositionAngle Hybrid(PositionAngle posPA, PositionAngle anglePA) =>

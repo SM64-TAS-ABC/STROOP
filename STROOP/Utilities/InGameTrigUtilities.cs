@@ -46,6 +46,16 @@ namespace STROOP.Utilities
             return (float)Math.Cos(radians);
         }
 
+        public static ushort InGameAngleTo(double xTo, double zTo)
+        {
+            return InGameAngleTo((float)xTo, (float)zTo);
+        }
+
+        public static ushort InGameAngleTo(double xFrom, double zFrom, double xTo, double zTo)
+        {
+            return InGameAngleTo((float)xFrom, (float)zFrom, (float)xTo, (float)zTo);
+        }
+
         public static ushort InGameAngleTo(float xTo, float zTo)
         {
             return InGameAngleTo(0, 0, xTo, zTo);

@@ -180,8 +180,8 @@ namespace STROOP.Structs
                     float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
                     float objHitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadius);
 
-                    Position marioPos = GetMarioPosition();
-                    Position objPos = GetObjectPosition(objAddress);
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    PositionAngle objPos = PositionAngle.Obj(objAddress);
                     double? hitboxDistAwayNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                     if (!hitboxDistAwayNullable.HasValue) return false;
                     double hitboxDistAway = hitboxDistAwayNullable.Value;
@@ -189,7 +189,9 @@ namespace STROOP.Structs
 
                     (double newMarioX, double newMarioZ) =
                         MoreMath.ExtrapolateLine2D(objPos.X, objPos.Z, marioPos.X, marioPos.Z, distAway);
-                    return SetMarioPositionAndMarioObjectPosition(newMarioX, null, newMarioZ);
+                    return BoolUtilities.Combine(
+                        marioPos.SetValues(x: newMarioX, z: newMarioZ),
+                        PositionAngle.MarioObj().SetValues(x: newMarioX, z: newMarioZ));
                 });
 
             _dictionary["MarioHitboxAboveObject"] =
@@ -224,8 +226,11 @@ namespace STROOP.Structs
                     if (!hitboxDistAboveNullable.HasValue) return false;
                     double hitboxDistAbove = hitboxDistAboveNullable.Value;
                     double newMarioY = objHitboxTop + mObjHitboxDownOffset + hitboxDistAbove;
-                    return SetMarioPositionAndMarioObjectPosition(null, newMarioY, null);
-                });
+                    return BoolUtilities.Combine(
+                        PositionAngle.Mario.SetY(newMarioY),
+                        PositionAngle.MarioObj().SetY(newMarioY));
+                }
+            );
 
             _dictionary["MarioHitboxBelowObject"] =
                 ((uint objAddress) =>
@@ -261,8 +266,11 @@ namespace STROOP.Structs
                     if (!hitboxDistBelowNullable.HasValue) return false;
                     double hitboxDistBelow = hitboxDistBelowNullable.Value;
                     double newMarioY = objHitboxBottom - (mObjHitboxTop - mObjY) - hitboxDistBelow;
-                    return SetMarioPositionAndMarioObjectPosition(null, newMarioY, null);
-                });
+                    return BoolUtilities.Combine(
+                        PositionAngle.Mario.SetY(newMarioY),
+                        PositionAngle.MarioObj().SetY(newMarioY));
+                }
+            );
 
             _dictionary["MarioHitboxOverlapsObject"] =
                 ((uint objAddress) =>
@@ -298,11 +306,11 @@ namespace STROOP.Structs
             _dictionary["MarioPunchAngleAway"] =
                 ((uint objAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
-                    Position objPos = GetObjectPosition(objAddress);
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    PositionAngle objPos = PositionAngle.Obj(objAddress);
                     ushort angleToObj = InGameTrigUtilities.InGameAngleTo(
                         marioPos.X, marioPos.Z, objPos.X, objPos.Z);
-                    int angleDiff = marioPos.Angle.Value - angleToObj;
+                    double angleDiff = marioPos.Angle - angleToObj;
                     int angleDiffShort = MoreMath.NormalizeAngleShort(angleDiff);
                     int angleDiffAbs = Math.Abs(angleDiffShort);
                     int angleAway = angleDiffAbs - 0x2AAA;
@@ -314,11 +322,11 @@ namespace STROOP.Structs
                     if (!angleAwayNullable.HasValue) return false;
                     double angleAway = angleAwayNullable.Value;
 
-                    Position marioPos = GetMarioPosition();
-                    Position objPos = GetObjectPosition(objAddress);
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    PositionAngle objPos = PositionAngle.Obj(objAddress);
                     ushort angleToObj = InGameTrigUtilities.InGameAngleTo(
                         marioPos.X, marioPos.Z, objPos.X, objPos.Z);
-                    int oldAngleDiff = marioPos.Angle.Value - angleToObj;
+                    double oldAngleDiff = marioPos.Angle - angleToObj;
                     int oldAngleDiffShort = MoreMath.NormalizeAngleShort(oldAngleDiff);
                     int signMultiplier = oldAngleDiffShort >= 0 ? 1 : -1;
 
@@ -626,8 +634,8 @@ namespace STROOP.Structs
             _dictionary["BobombSpaceBetween"] =
                 ((uint objAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
-                    Position objPos = GetObjectPosition(objAddress);
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    PositionAngle objPos = PositionAngle.Obj(objAddress);
                     double hDist = MoreMath.GetDistanceBetween(
                         marioPos.X, marioPos.Z, objPos.X, objPos.Z);
                     float hitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadius);
@@ -644,12 +652,12 @@ namespace STROOP.Structs
                     float radius = hitboxRadius + 32;
                     double distAway = spaceBetween + radius;
 
-                    Position marioPos = GetMarioPosition();
-                    Position objPos = GetObjectPosition(objAddress);
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    PositionAngle objPos = PositionAngle.Obj(objAddress);
                     (double newMarioX, double newMarioZ) =
                         MoreMath.ExtrapolateLine2D(
                             objPos.X, objPos.Z, marioPos.X, marioPos.Z, distAway);
-                    return SetMarioPosition(newMarioX, null, newMarioZ);
+                    return marioPos.SetValues(x: newMarioX, z: newMarioZ);
                 });
 
             // Object specific vars - Scuttlebug
@@ -670,7 +678,7 @@ namespace STROOP.Structs
                     ushort targetAngle = Config.Stream.GetUInt16(objAddress + ObjectConfig.ScuttlebugTargetAngleOffset);
                     double newObjAngleDouble = targetAngle + angleDiff;
                     ushort newObjAngleUShort = MoreMath.NormalizeAngleUshort(newObjAngleDouble);
-                    return SetObjectPosition(objAddress, null, null, null, newObjAngleUShort);
+                    return PositionAngle.Obj(objAddress).SetAngle(newObjAngleUShort);
                 });
 
             // Object specific vars - Goomba Triplet Spawner
@@ -678,8 +686,8 @@ namespace STROOP.Structs
             _dictionary["GoombaTripletLoadingDistanceDiff"] =
                 ((uint objAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
-                    Position objPos = GetObjectPosition(objAddress);
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    PositionAngle objPos = PositionAngle.Obj(objAddress);
                     double dist = MoreMath.GetDistanceBetween(
                         marioPos.X, marioPos.Y, marioPos.Z, objPos.X, objPos.Y, objPos.Z);
                     double distDiff = dist - 3000;
@@ -687,8 +695,8 @@ namespace STROOP.Structs
                 },
                 (object objectValue, uint objAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
-                    Position objPos = GetObjectPosition(objAddress);
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    PositionAngle objPos = PositionAngle.Obj(objAddress);
                     double? distDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                     if (!distDiffNullable.HasValue) return false;
                     double distDiff = distDiffNullable.Value;
@@ -696,14 +704,14 @@ namespace STROOP.Structs
                     (double newMarioX, double newMarioY, double newMarioZ) =
                         MoreMath.ExtrapolateLine3D(
                             objPos.X, objPos.Y, objPos.Z, marioPos.X, marioPos.Y, marioPos.Z, distAway);
-                    return SetMarioPosition(newMarioX, newMarioY, newMarioZ);
+                    return marioPos.SetValues(x: newMarioX, y: newMarioY, z: newMarioZ);
                 });
 
             _dictionary["GoombaTripletUnloadingDistanceDiff"] =
                 ((uint objAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
-                    Position objPos = GetObjectPosition(objAddress);
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    PositionAngle objPos = PositionAngle.Obj(objAddress);
                     double dist = MoreMath.GetDistanceBetween(
                         marioPos.X, marioPos.Y, marioPos.Z, objPos.X, objPos.Y, objPos.Z);
                     double distDiff = dist - 4000;
@@ -711,8 +719,8 @@ namespace STROOP.Structs
                 },
                 (object objectValue, uint objAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
-                    Position objPos = GetObjectPosition(objAddress);
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    PositionAngle objPos = PositionAngle.Obj(objAddress);
                     double? distDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                     if (!distDiffNullable.HasValue) return false;
                     double distDiff = distDiffNullable.Value;
@@ -720,7 +728,7 @@ namespace STROOP.Structs
                     (double newMarioX, double newMarioY, double newMarioZ) =
                         MoreMath.ExtrapolateLine3D(
                             objPos.X, objPos.Y, objPos.Z, marioPos.X, marioPos.Y, marioPos.Z, distAway);
-                    return SetMarioPosition(newMarioX, newMarioY, newMarioZ);
+                    return marioPos.SetValues(x: newMarioX, y: newMarioY, z: newMarioZ);
                 });
 
             _dictionary["BitfsPlatformGroupMinHeight"] =
@@ -842,7 +850,7 @@ namespace STROOP.Structs
             _dictionary["BobombTrajectoryFramesToPoint"] =
                 ((uint dummy) =>
                 {
-                    Position holpPos = GetHolpPosition();
+                    PositionAngle holpPos = PositionAngle.Holp;
                     double yDist = SpecialConfig.PointY - holpPos.Y;
                     double frames = GetObjectTrajectoryYDistToFrames(yDist);
                     return frames;
@@ -852,20 +860,19 @@ namespace STROOP.Structs
                     double? framesNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                     if (!framesNullable.HasValue) return false;
                     double frames = framesNullable.Value;
-                    Position holpPos = GetHolpPosition();
+                    PositionAngle holpPos = PositionAngle.Holp;
                     double yDist = GetObjectTrajectoryFramesToYDist(frames);
                     double hDist = Math.Abs(GetBobombTrajectoryFramesToHDist(frames));
                     double newY = SpecialConfig.PointY - yDist;
                     (double newX, double newZ) = MoreMath.ExtrapolateLine2D(
                         SpecialConfig.PointX, SpecialConfig.PointZ, holpPos.X, holpPos.Z, hDist);
-                    return SetHolpPosition(newX, newY, newZ);
-                }
-            );
+                    return PositionAngle.Holp.SetValues(x: newX, y: newY, z: newZ);
+                });
 
             _dictionary["CorkBoxTrajectoryFramesToPoint"] =
                 ((uint dummy) =>
                 {
-                    Position holpPos = GetHolpPosition();
+                    PositionAngle holpPos = PositionAngle.Holp;
                     double yDist = SpecialConfig.PointY - holpPos.Y;
                     double frames = GetObjectTrajectoryYDistToFrames(yDist);
                     return frames;
@@ -875,13 +882,13 @@ namespace STROOP.Structs
                     double? framesNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                     if (!framesNullable.HasValue) return false;
                     double frames = framesNullable.Value;
-                    Position holpPos = GetHolpPosition();
+                    PositionAngle holpPos = PositionAngle.Holp;
                     double yDist = GetObjectTrajectoryFramesToYDist(frames);
                     double hDist = Math.Abs(GetCorkBoxTrajectoryFramesToHDist(frames));
                     double newY = SpecialConfig.PointY - yDist;
                     (double newX, double newZ) = MoreMath.ExtrapolateLine2D(
                         SpecialConfig.PointX, SpecialConfig.PointZ, holpPos.X, holpPos.Z, hDist);
-                    return SetHolpPosition(newX, newY, newZ);
+                    return PositionAngle.Holp.SetValues(x: newX, y: newY, z: newZ);
                 });
 
             _dictionary["TrajectoryRemainingHeight"] =
@@ -1399,7 +1406,7 @@ namespace STROOP.Structs
             _dictionary["NormalDistAway"] =
                 ((uint triAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
+                    PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                     double normalDistAway =
                         marioPos.X * triStruct.NormX +
@@ -1410,7 +1417,7 @@ namespace STROOP.Structs
                 },
                 (object objectValue, uint triAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
+                    PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                     double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                     if (!distAwayNullable.HasValue) return false;
@@ -1430,13 +1437,13 @@ namespace STROOP.Structs
                     double newMarioY = marioPos.Y + yDiff;
                     double newMarioZ = marioPos.Z + zDiff;
 
-                    return SetMarioPosition(newMarioX, newMarioY, newMarioZ);
+                    return marioPos.SetValues(x: newMarioX, y: newMarioY, z: newMarioZ);
                 });
 
             _dictionary["VerticalDistAway"] =
                 ((uint triAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
+                    PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                     double verticalDistAway =
                         marioPos.Y + (marioPos.X * triStruct.NormX + marioPos.Z * triStruct.NormZ + triStruct.NormOffset) / triStruct.NormY;
@@ -1444,7 +1451,7 @@ namespace STROOP.Structs
                 },
                 (object objectValue, uint triAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
+                    PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                     double? distAboveNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                     if (!distAboveNullable.HasValue) return false;
@@ -1456,7 +1463,7 @@ namespace STROOP.Structs
             _dictionary["HeightOnTriangle"] =
                 ((uint triAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
+                    PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                     double heightOnTriangle =
                         (-marioPos.X * triStruct.NormX - marioPos.Z * triStruct.NormZ - triStruct.NormOffset) / triStruct.NormY;
@@ -1555,7 +1562,7 @@ namespace STROOP.Structs
             _dictionary["DistanceToLine12"] =
                 ((uint triAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
+                    PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                     double signedDistToLine12 = MoreMath.GetSignedDistanceFromPointToLine(
                         marioPos.X, marioPos.Z,
@@ -1566,7 +1573,7 @@ namespace STROOP.Structs
                 },
                 (object objectValue, uint triAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
+                    PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                     double signedDistToLine12 = MoreMath.GetSignedDistanceFromPointToLine(
                         marioPos.X, marioPos.Z,
@@ -1586,13 +1593,13 @@ namespace STROOP.Structs
                     (double xDiff, double zDiff) = MoreMath.GetComponentsFromVector(missingDist, inwardAngle);
                     double newMarioX = marioPos.X + xDiff;
                     double newMarioZ = marioPos.Z + zDiff;
-                    return SetMarioPosition(newMarioX, null, newMarioZ);
+                    return marioPos.SetValues(x: newMarioX, z: newMarioZ);
                 });
 
             _dictionary["DistanceToLine23"] =
                 ((uint triAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
+                    PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                     double signedDistToLine23 = MoreMath.GetSignedDistanceFromPointToLine(
                         marioPos.X, marioPos.Z,
@@ -1603,7 +1610,7 @@ namespace STROOP.Structs
                 },
                 (object objectValue, uint triAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
+                    PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                     double signedDistToLine23 = MoreMath.GetSignedDistanceFromPointToLine(
                         marioPos.X, marioPos.Z,
@@ -1623,13 +1630,13 @@ namespace STROOP.Structs
                     (double xDiff, double zDiff) = MoreMath.GetComponentsFromVector(missingDist, inwardAngle);
                     double newMarioX = marioPos.X + xDiff;
                     double newMarioZ = marioPos.Z + zDiff;
-                    return SetMarioPosition(newMarioX, null, newMarioZ);
+                    return marioPos.SetValues(x: newMarioX, z: newMarioZ);
                 });
 
             _dictionary["DistanceToLine31"] =
                 ((uint triAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
+                    PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                     double signedDistToLine31 = MoreMath.GetSignedDistanceFromPointToLine(
                         marioPos.X, marioPos.Z,
@@ -1640,7 +1647,7 @@ namespace STROOP.Structs
                 },
                 (object objectValue, uint triAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
+                    PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                     double signedDistToLine31 = MoreMath.GetSignedDistanceFromPointToLine(
                         marioPos.X, marioPos.Z,
@@ -1660,22 +1667,22 @@ namespace STROOP.Structs
                     (double xDiff, double zDiff) = MoreMath.GetComponentsFromVector(missingDist, inwardAngle);
                     double newMarioX = marioPos.X + xDiff;
                     double newMarioZ = marioPos.Z + zDiff;
-                    return SetMarioPosition(newMarioX, null, newMarioZ);
+                    return marioPos.SetValues(x: newMarioX, z: newMarioZ);
                 });
 
             _dictionary["DeltaAngleLine12"] =
                 ((uint triAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
+                    PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                     double angleV1ToV2 = MoreMath.AngleTo_AngleUnits(
                         triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
-                    double angleDiff = marioPos.Angle.Value - angleV1ToV2;
+                    double angleDiff = marioPos.Angle - angleV1ToV2;
                     return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                 },
                 (object objectValue, uint triAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
+                    PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                     double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                     if (!angleDiffNullable.HasValue) return false;
@@ -1691,16 +1698,16 @@ namespace STROOP.Structs
             _dictionary["DeltaAngleLine21"] =
                 ((uint triAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
+                    PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                     double angleV2ToV1 = MoreMath.AngleTo_AngleUnits(
                         triStruct.X2, triStruct.Z2, triStruct.X1, triStruct.Z1);
-                    double angleDiff = marioPos.Angle.Value - angleV2ToV1;
+                    double angleDiff = marioPos.Angle - angleV2ToV1;
                     return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                 },
                 (object objectValue, uint triAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
+                    PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                     double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                     if (!angleDiffNullable.HasValue) return false;
@@ -1716,16 +1723,16 @@ namespace STROOP.Structs
             _dictionary["DeltaAngleLine23"] =
                 ((uint triAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
+                    PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                     double angleV2ToV3 = MoreMath.AngleTo_AngleUnits(
                         triStruct.X2, triStruct.Z2, triStruct.X3, triStruct.Z3);
-                    double angleDiff = marioPos.Angle.Value - angleV2ToV3;
+                    double angleDiff = marioPos.Angle - angleV2ToV3;
                     return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                 },
                 (object objectValue, uint triAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
+                    PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                     double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                     if (!angleDiffNullable.HasValue) return false;
@@ -1741,16 +1748,16 @@ namespace STROOP.Structs
             _dictionary["DeltaAngleLine32"] =
                 ((uint triAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
+                    PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                     double angleV3ToV2 = MoreMath.AngleTo_AngleUnits(
                         triStruct.X3, triStruct.Z3, triStruct.X2, triStruct.Z2);
-                    double angleDiff = marioPos.Angle.Value - angleV3ToV2;
+                    double angleDiff = marioPos.Angle - angleV3ToV2;
                     return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                 },
                 (object objectValue, uint triAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
+                    PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                     double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                     if (!angleDiffNullable.HasValue) return false;
@@ -1766,16 +1773,16 @@ namespace STROOP.Structs
             _dictionary["DeltaAngleLine31"] =
                 ((uint triAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
+                    PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                     double angleV3ToV1 = MoreMath.AngleTo_AngleUnits(
                         triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1);
-                    double angleDiff = marioPos.Angle.Value - angleV3ToV1;
+                    double angleDiff = marioPos.Angle - angleV3ToV1;
                     return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                 },
                 (object objectValue, uint triAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
+                    PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                     double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                     if (!angleDiffNullable.HasValue) return false;
@@ -1791,16 +1798,16 @@ namespace STROOP.Structs
             _dictionary["DeltaAngleLine13"] =
                 ((uint triAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
+                    PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                     double angleV1ToV3 = MoreMath.AngleTo_AngleUnits(
                         triStruct.X1, triStruct.Z1, triStruct.X3, triStruct.Z3);
-                    double angleDiff = marioPos.Angle.Value - angleV1ToV3;
+                    double angleDiff = marioPos.Angle - angleV1ToV3;
                     return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                 },
                 (object objectValue, uint triAddress) =>
                 {
-                    Position marioPos = GetMarioPosition();
+                    PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                     double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(objectValue);
                     if (!angleDiffNullable.HasValue) return false;
@@ -2692,142 +2699,11 @@ namespace STROOP.Structs
                 });
         }
 
-        // Position logic
-
-        public struct Position
-        {
-            public readonly float X;
-            public readonly float Y;
-            public readonly float Z;
-            public readonly ushort? Angle;
-
-            public Position(float x, float y, float z, ushort? angle = null)
-            {
-                X = x;
-                Y = y;
-                Z = z;
-                Angle = angle;
-            }
-        }
-
-        private static Position GetMarioPosition()
-        {
-            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-            ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
-            return new Position(marioX, marioY, marioZ, marioAngle);
-        }
-
-        private static bool SetMarioPosition(double? x, double? y, double? z, ushort? angle = null)
-        {
-            bool success = true;
-            if (x.HasValue) success &= Config.Stream.SetValue((float)x.Value, MarioConfig.StructAddress + MarioConfig.XOffset);
-            if (y.HasValue) success &= Config.Stream.SetValue((float)y.Value, MarioConfig.StructAddress + MarioConfig.YOffset);
-            if (z.HasValue) success &= Config.Stream.SetValue((float)z.Value, MarioConfig.StructAddress + MarioConfig.ZOffset);
-            if (angle.HasValue) success &= Config.Stream.SetValue(angle.Value, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
-            return success;
-        }
-
-        private static Position GetHolpPosition()
-        {
-            float holpX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpXOffset);
-            float holpY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpYOffset);
-            float holpZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpZOffset);
-            return new Position(holpX, holpY, holpZ);
-        }
-
-        private static bool SetHolpPosition(double? x, double? y, double? z)
-        {
-            bool success = true;
-            if (x.HasValue) success &= Config.Stream.SetValue((float)x.Value, MarioConfig.StructAddress + MarioConfig.HolpXOffset);
-            if (y.HasValue) success &= Config.Stream.SetValue((float)y.Value, MarioConfig.StructAddress + MarioConfig.HolpYOffset);
-            if (z.HasValue) success &= Config.Stream.SetValue((float)z.Value, MarioConfig.StructAddress + MarioConfig.HolpZOffset);
-            return success;
-        }
-
-        private static bool SetMarioPositionAndMarioObjectPosition(double? x, double? y, double? z, ushort? angle = null)
-        {
-            uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-            bool success = true;
-            success &= SetMarioPosition(x, y, z, angle);
-            success &= SetObjectPosition(marioObjRef, x, y, z, angle);
-            return success;
-        }
-
-        private static Position GetObjectPosition(uint objAddress)
-        {
-            float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
-            float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-            float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
-            ushort objAngle = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset);
-            return new Position(objX, objY, objZ, objAngle);
-        }
-
-        private static bool SetObjectPosition(uint objAddress, double? x, double? y, double? z, ushort? angle = null)
-        {
-            bool success = true;
-            if (x.HasValue) success &= Config.Stream.SetValue((float)x.Value, objAddress + ObjectConfig.XOffset);
-            if (y.HasValue) success &= Config.Stream.SetValue((float)y.Value, objAddress + ObjectConfig.YOffset);
-            if (z.HasValue) success &= Config.Stream.SetValue((float)z.Value, objAddress + ObjectConfig.ZOffset);
-            if (angle.HasValue) success &= Config.Stream.SetValue(angle.Value, objAddress + ObjectConfig.YawFacingOffset);
-            if (angle.HasValue) success &= Config.Stream.SetValue(angle.Value, objAddress + ObjectConfig.YawMovingOffset);
-            return success;
-        }
-
-        private static Position GetObjectHomePosition(uint objAddress)
-        {
-            float homeX = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeXOffset);
-            float homeY = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeYOffset);
-            float homeZ = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeZOffset);
-            return new Position(homeX, homeY, homeZ);
-        }
-
-        private static bool SetObjectHomePosition(uint objAddress, double? x, double? y, double? z)
-        {
-            bool success = true;
-            if (x.HasValue) success &= Config.Stream.SetValue((float)x.Value, objAddress + ObjectConfig.HomeXOffset);
-            if (y.HasValue) success &= Config.Stream.SetValue((float)y.Value, objAddress + ObjectConfig.HomeYOffset);
-            if (z.HasValue) success &= Config.Stream.SetValue((float)z.Value, objAddress + ObjectConfig.HomeZOffset);
-            return success;
-        }
-
-        private static Position GetObjectGraphicsPosition(uint objAddress)
-        {
-            float graphicsX = Config.Stream.GetSingle(objAddress + ObjectConfig.GraphicsXOffset);
-            float graphicsY = Config.Stream.GetSingle(objAddress + ObjectConfig.GraphicsYOffset);
-            float graphicsZ = Config.Stream.GetSingle(objAddress + ObjectConfig.GraphicsZOffset);
-            ushort graphicsAngle = Config.Stream.GetUInt16(objAddress + ObjectConfig.GraphicsYawOffset);
-            return new Position(graphicsX, graphicsY, graphicsZ, graphicsAngle);
-        }
-
-        private static Position GetCameraPosition()
-        {
-            return new Position(DataModels.Camera.X, DataModels.Camera.Y, DataModels.Camera.Z, DataModels.Camera.FacingYaw);
-        }
-
-        private static void SetCameraPosition(double? x, double? y, double? z, ushort? angle = null)
-        {
-            if (x.HasValue) DataModels.Camera.X = (float) x.Value;
-            if (y.HasValue) DataModels.Camera.Y = (float) y.Value;
-            if (z.HasValue) DataModels.Camera.Z = (float) z.Value;
-            if (angle.HasValue) DataModels.Camera.FacingYaw = angle.Value;
-        }
-
-        private static bool SetSelfPosition(double? x, double? y, double? z)
-        {
-            bool success = true;
-            if (x.HasValue) success &= SpecialConfig.SelfPosPA.SetX(x.Value);
-            if (y.HasValue) success &= SpecialConfig.SelfPosPA.SetY(y.Value);
-            if (z.HasValue) success &= SpecialConfig.SelfPosPA.SetZ(z.Value);
-            return success;
-        }
-
         // Triangle utilitiy methods
 
         public static int GetClosestTriangleVertexIndex(uint triAddress)
         {
-            Position marioPos = GetMarioPosition();
+            PositionAngle marioPos = PositionAngle.Mario;
             TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
             double distToV1 = MoreMath.GetDistanceBetween(
                 marioPos.X, marioPos.Y, marioPos.Z, triStruct.X1, triStruct.Y1, triStruct.Z1);
@@ -2840,13 +2716,13 @@ namespace STROOP.Structs
             else return distToV2 <= distToV3 ? 2 : 3;
         }
 
-        private static Position GetClosestTriangleVertexPosition(uint triAddress)
+        private static PositionAngle GetClosestTriangleVertexPosition(uint triAddress)
         {
             int closestTriangleVertexIndex = GetClosestTriangleVertexIndex(triAddress);
             TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-            if (closestTriangleVertexIndex == 1) return new Position(triStruct.X1, triStruct.Y1, triStruct.Z1);
-            if (closestTriangleVertexIndex == 2) return new Position(triStruct.X2, triStruct.Y2, triStruct.Z2);
-            if (closestTriangleVertexIndex == 3) return new Position(triStruct.X3, triStruct.Y3, triStruct.Z3);
+            if (closestTriangleVertexIndex == 1) return PositionAngle.Tri(triAddress, 1);
+            if (closestTriangleVertexIndex == 2) return PositionAngle.Tri(triAddress, 2);
+            if (closestTriangleVertexIndex == 3) return PositionAngle.Tri(triAddress, 3);
             throw new ArgumentOutOfRangeException();
         }
 
