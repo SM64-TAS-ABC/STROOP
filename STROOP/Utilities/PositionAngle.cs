@@ -490,8 +490,8 @@ namespace STROOP.Utilities
         {
             bool success = true;
             if (x.HasValue) success &= SetX(x.Value);
-            if (y.HasValue) success &= SetX(y.Value);
-            if (z.HasValue) success &= SetX(z.Value);
+            if (y.HasValue) success &= SetY(y.Value);
+            if (z.HasValue) success &= SetZ(z.Value);
             if (angle.HasValue) success &= SetAngle(angle.Value);
             return success;
         }
@@ -576,18 +576,6 @@ namespace STROOP.Utilities
             return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
         }
 
-
-
-        private static bool CombineBools(params bool[] bools)
-        {
-            bool success = true;
-            foreach (bool b in bools)
-            {
-                success &= b;
-            }
-            return success;
-        }
-
         public static bool SetDistance(PositionAngle p1, PositionAngle p2, object distance)
         {
             double? distanceDouble = ParsingUtilities.ParseDoubleNullable(distance);
@@ -598,7 +586,7 @@ namespace STROOP.Utilities
         public static bool SetDistance(PositionAngle p1, PositionAngle p2, double distance)
         {
             (double x, double y, double z) = MoreMath.ExtrapolateLine3D(p1.X, p1.Y, p1.Z, p2.X, p2.Y, p2.Z, distance);
-            return CombineBools(p2.SetX(x), p2.SetY(y), p2.SetZ(z));
+            return p2.SetValues(x: x, y: y, z: z);
         }
 
         public static bool SetHDistance(PositionAngle p1, PositionAngle p2, object distance)
@@ -611,7 +599,7 @@ namespace STROOP.Utilities
         public static bool SetHDistance(PositionAngle p1, PositionAngle p2, double distance)
         {
             (double x, double z) = MoreMath.ExtrapolateLine2D(p1.X, p1.Z, p2.X, p2.Z, distance);
-            return CombineBools(p2.SetX(x), p2.SetZ(z));
+            return p2.SetValues(x: x, z: z);
         }
 
         public static bool SetXDistance(PositionAngle p1, PositionAngle p2, object distance)
@@ -624,7 +612,7 @@ namespace STROOP.Utilities
         public static bool SetXDistance(PositionAngle p1, PositionAngle p2, double distance)
         {
             double x = p1.X + distance;
-            return CombineBools(p2.SetX(x));
+            return p2.SetValues(x: x);
         }
 
         public static bool SetYDistance(PositionAngle p1, PositionAngle p2, object distance)
@@ -637,7 +625,7 @@ namespace STROOP.Utilities
         public static bool SetYDistance(PositionAngle p1, PositionAngle p2, double distance)
         {
             double y = p1.Y + distance;
-            return CombineBools(p2.SetY(y));
+            return p2.SetValues(y: y);
         }
 
         public static bool SetZDistance(PositionAngle p1, PositionAngle p2, object distance)
@@ -650,7 +638,7 @@ namespace STROOP.Utilities
         public static bool SetZDistance(PositionAngle p1, PositionAngle p2, double distance)
         {
             double z = p1.Z + distance;
-            return CombineBools(p2.SetZ(z));
+            return p2.SetValues(z: z);
         }
 
         public static bool SetFDistance(PositionAngle p1, PositionAngle p2, object distance)
@@ -665,7 +653,7 @@ namespace STROOP.Utilities
             (double x, double z) =
                 MoreMath.GetRelativelyOffsettedPosition(
                     p1.X, p1.Z, p1.Angle, p2.X, p2.Z, null, distance);
-            return CombineBools(p2.SetX(x), p2.SetZ(z));
+            return p2.SetValues(x: x, z: z);
         }
 
         public static bool SetSDistance(PositionAngle p1, PositionAngle p2, object distance)
@@ -680,7 +668,7 @@ namespace STROOP.Utilities
             (double x, double z) =
                 MoreMath.GetRelativelyOffsettedPosition(
                     p1.X, p1.Z, p1.Angle, p2.X, p2.Z, distance, null);
-            return CombineBools(p2.SetX(x), p2.SetZ(z));
+            return p2.SetValues(x: x, z: z);
         }
 
         public static bool SetAngleTo(PositionAngle p1, PositionAngle p2, object angle)
@@ -695,7 +683,7 @@ namespace STROOP.Utilities
             (double x, double z) =
                 MoreMath.RotatePointAboutPointToAngle(
                     p2.X, p2.Z, p1.X, p1.Z, angle);
-            return CombineBools(p2.SetX(x), p2.SetZ(z));
+            return p2.SetValues(x: x, z: z);
         }
 
         public static bool SetDAngleTo(PositionAngle p1, PositionAngle p2, object angleDiff)
@@ -709,7 +697,7 @@ namespace STROOP.Utilities
         {
             double currentAngle = MoreMath.AngleTo_AngleUnits(p1.X, p1.Z, p2.X, p2.Z);
             double newAngle = currentAngle + angleDiff;
-            return CombineBools(p1.SetAngle(newAngle));
+            return p1.SetValues(angle: newAngle);
         }
 
         public static bool SetAngleDifference(PositionAngle p1, PositionAngle p2, object angleDiff)
@@ -722,7 +710,7 @@ namespace STROOP.Utilities
         public static bool SetAngleDifference(PositionAngle p1, PositionAngle p2, double angleDiff)
         {
             double newAngle = p2.Angle + angleDiff;
-            return CombineBools(p1.SetAngle(newAngle));
+            return p1.SetValues(angle: newAngle);
         }
 
     }
