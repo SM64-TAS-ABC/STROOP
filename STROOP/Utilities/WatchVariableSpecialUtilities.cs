@@ -229,8 +229,7 @@ namespace STROOP.Structs
                     return BoolUtilities.Combine(
                         PositionAngle.Mario.SetY(newMarioY),
                         PositionAngle.MarioObj().SetY(newMarioY));
-                }
-            );
+                });
 
             _dictionary["MarioHitboxBelowObject"] =
                 ((uint objAddress) =>
@@ -248,7 +247,7 @@ namespace STROOP.Structs
 
                     double marioHitboxBelowObject = objHitboxBottom - mObjHitboxTop;
                     return marioHitboxBelowObject;
-                },
+                }, 
                 (object objectValue, uint objAddress) =>
                 {
                     uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
@@ -269,8 +268,7 @@ namespace STROOP.Structs
                     return BoolUtilities.Combine(
                         PositionAngle.Mario.SetY(newMarioY),
                         PositionAngle.MarioObj().SetY(newMarioY));
-                }
-            );
+                });
 
             _dictionary["MarioHitboxOverlapsObject"] =
                 ((uint objAddress) =>
