@@ -36,7 +36,7 @@ namespace STROOP.Utilities
         
         private enum Change { SET, ADD, MULTIPLY };
 
-        private static bool ChangeValues(IEnumerable<TripleAddressAngle> posAddressAngles,
+        private static bool ChangeValues(List<TripleAddressAngle> posAddressAngles,
             float xValue, float yValue, float zValue, Change change, bool useRelative = false,
             (bool affectX, bool affectY, bool affectZ)? affects = null)
         {
@@ -121,7 +121,7 @@ namespace STROOP.Utilities
             }
         }
 
-        public static bool GotoObjects(IEnumerable<ObjectDataModel> objects, (bool affectX, bool affectY, bool affectZ)? affects = null)
+        public static bool GotoObjects(List<ObjectDataModel> objects, (bool affectX, bool affectY, bool affectZ)? affects = null)
         {
             if (!objects.Any())
                 return false;
@@ -143,10 +143,10 @@ namespace STROOP.Utilities
             return ChangeValues(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
         }
 
-        public static bool RetrieveObjects(IEnumerable<ObjectDataModel> objects, (bool affectX, bool affectY, bool affectZ)? affects = null)
+        public static bool RetrieveObjects(List<ObjectDataModel> objects, (bool affectX, bool affectY, bool affectZ)? affects = null)
         {
-            IEnumerable<TripleAddressAngle> posAddressAngles =
-                objects.Select(
+            List<TripleAddressAngle> posAddressAngles =
+                objects.ConvertAll(
                     o => new TripleAddressAngle(
                         o.Address + ObjectConfig.XOffset,
                         o.Address + ObjectConfig.YOffset,
@@ -189,11 +189,11 @@ namespace STROOP.Utilities
             zPos += (float)zOffset;
         }
 
-        public static bool TranslateObjects(IEnumerable<ObjectDataModel> objects,
+        public static bool TranslateObjects(List<ObjectDataModel> objects,
             float xOffset, float yOffset, float zOffset, bool useRelative, bool includeMario)
         {
             List<TripleAddressAngle> posAddressAngles =
-                objects.Select(
+                objects.ConvertAll(
                     o => new TripleAddressAngle(
                         o.Address + ObjectConfig.XOffset,
                         o.Address + ObjectConfig.YOffset,
@@ -213,11 +213,11 @@ namespace STROOP.Utilities
             return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
-        public static bool TranslateObjectHomes(IEnumerable<ObjectDataModel> objects,
+        public static bool TranslateObjectHomes(List<ObjectDataModel> objects,
             float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            IEnumerable<TripleAddressAngle> posAddressAngles =
-                objects.Select( o => new TripleAddressAngle(
+            List<TripleAddressAngle> posAddressAngles =
+                objects.ConvertAll(o => new TripleAddressAngle(
                         o.Address + ObjectConfig.HomeXOffset,
                         o.Address + ObjectConfig.HomeYOffset,
                         o.Address + ObjectConfig.HomeZOffset,
@@ -226,7 +226,7 @@ namespace STROOP.Utilities
             return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
-        public static bool RotateObjects(IEnumerable<ObjectDataModel> objects,
+        public static bool RotateObjects(List<ObjectDataModel> objects,
             int yawOffset, int pitchOffset, int rollOffset)
         {
             if (!objects.Any())
@@ -265,11 +265,11 @@ namespace STROOP.Utilities
             return success;
         }
 
-        public static bool ScaleObjects(IEnumerable<ObjectDataModel> objects,
+        public static bool ScaleObjects(List<ObjectDataModel> objects,
             float widthChange, float heightChange, float depthChange, bool multiply)
         {
-            IEnumerable<TripleAddressAngle> posAddressAngles =
-                objects.Select(o => new TripleAddressAngle(
+            List<TripleAddressAngle> posAddressAngles =
+                objects.ConvertAll(o => new TripleAddressAngle(
                         o.Address + ObjectConfig.ScaleWidthOffset,
                         o.Address + ObjectConfig.ScaleHeightOffset,
                         o.Address + ObjectConfig.ScaleDepthOffset));
@@ -277,7 +277,7 @@ namespace STROOP.Utilities
             return ChangeValues(posAddressAngles, widthChange, heightChange, depthChange, multiply ? Change.MULTIPLY : Change.ADD);
         }
 
-        public static bool GotoObjectsHome(IEnumerable<ObjectDataModel> objects, (bool affectX, bool affectY, bool affectZ)? affects = null)
+        public static bool GotoObjectsHome(List<ObjectDataModel> objects, (bool affectX, bool affectY, bool affectZ)? affects = null)
         {
             if (!objects.Any())
                 return false;
@@ -299,10 +299,10 @@ namespace STROOP.Utilities
             return ChangeValues(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
         }
 
-        public static bool RetrieveObjectsHome(IEnumerable<ObjectDataModel> objects, (bool affectX, bool affectY, bool affectZ)? affects = null)
+        public static bool RetrieveObjectsHome(List<ObjectDataModel> objects, (bool affectX, bool affectY, bool affectZ)? affects = null)
         {
-            IEnumerable<TripleAddressAngle> posAddressAngles =
-                objects.Select(o => new TripleAddressAngle(
+            List<TripleAddressAngle> posAddressAngles =
+                objects.ConvertAll(o => new TripleAddressAngle(
                     o.Address + ObjectConfig.HomeXOffset,
                     o.Address + ObjectConfig.HomeYOffset,
                     o.Address + ObjectConfig.HomeZOffset));
@@ -360,7 +360,7 @@ namespace STROOP.Utilities
             return success;
         }
 
-        public static bool UnloadObject(IEnumerable<ObjectDataModel> objects)
+        public static bool UnloadObject(List<ObjectDataModel> objects)
         {
             if (!objects.Any())
                 return false;
@@ -376,7 +376,7 @@ namespace STROOP.Utilities
             return success;
         }
 
-        public static bool ReviveObject(IEnumerable<ObjectDataModel> objects)
+        public static bool ReviveObject(List<ObjectDataModel> objects)
         {
             if (!objects.Any())
                 return false;
@@ -440,7 +440,7 @@ namespace STROOP.Utilities
             return success;
         }
 
-        public static bool ReleaseObject(IEnumerable<ObjectDataModel> objects, bool useThrownValue = true)
+        public static bool ReleaseObject(List<ObjectDataModel> objects, bool useThrownValue = true)
         {
             if (!objects.Any())
                 return false;
@@ -461,7 +461,7 @@ namespace STROOP.Utilities
             return success;
         }
 
-        public static bool UnReleaseObject(IEnumerable<ObjectDataModel> objects)
+        public static bool UnReleaseObject(List<ObjectDataModel> objects)
         {
             if (!objects.Any())
                 return false;
@@ -481,7 +481,7 @@ namespace STROOP.Utilities
             return success;
         }
 
-        public static bool InteractObject(IEnumerable<ObjectDataModel> objects)
+        public static bool InteractObject(List<ObjectDataModel> objects)
         {
             if (!objects.Any())
                 return false;
@@ -497,7 +497,7 @@ namespace STROOP.Utilities
             return success;
         }
 
-        public static bool UnInteractObject(IEnumerable<ObjectDataModel> objects)
+        public static bool UnInteractObject(List<ObjectDataModel> objects)
         {
             if (!objects.Any())
                 return false;
