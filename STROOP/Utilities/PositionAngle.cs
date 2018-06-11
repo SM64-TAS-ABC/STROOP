@@ -492,7 +492,7 @@ namespace STROOP.Utilities
             if (x.HasValue) success &= SetX(x.Value);
             if (y.HasValue) success &= SetX(y.Value);
             if (z.HasValue) success &= SetX(z.Value);
-            if (angle.HasValue) success &= SetX(angle.Value);
+            if (angle.HasValue) success &= SetAngle(angle.Value);
             return success;
         }
 
