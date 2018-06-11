@@ -89,6 +89,59 @@ namespace STROOP.Utilities
             return success;
         }
 
+        private static bool ChangeValues(List<PositionAngle> posAddressAngles,
+            float xValue, float yValue, float zValue, Change change, bool useRelative = false,
+            (bool affectX, bool affectY, bool affectZ)? affects = null)
+        {
+            if (posAddressAngles.Count() == 0)
+                return false;
+
+            bool success = true;
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
+
+            foreach (var posAddressAngle in posAddressAngles)
+            {
+                float currentXValue = xValue;
+                float currentYValue = yValue;
+                float currentZValue = zValue;
+
+                if (change == Change.ADD)
+                {
+                    HandleScaling(ref currentXValue, ref currentZValue);
+                    HandleRelativeAngle(ref currentXValue, ref currentZValue, useRelative, posAddressAngle.Angle);
+                    currentXValue += (float)posAddressAngle.X;
+                    currentYValue += (float)posAddressAngle.Y;
+                    currentZValue += (float)posAddressAngle.Z;
+                }
+
+                if (change == Change.MULTIPLY)
+                {
+                    currentXValue *= (float)posAddressAngle.X;
+                    currentYValue *= (float)posAddressAngle.Y;
+                    currentZValue *= (float)posAddressAngle.Z;
+                }
+
+                if (!affects.HasValue || affects.Value.affectX)
+                {
+                    success &= posAddressAngle.SetX(currentXValue);
+                }
+
+                if (!affects.HasValue || affects.Value.affectY)
+                {
+                    success &= posAddressAngle.SetY(currentYValue);
+                }
+
+                if (!affects.HasValue || affects.Value.affectZ)
+                {
+                    success &= posAddressAngle.SetZ(currentZValue);
+                }
+            }
+
+            if (!streamAlreadySuspended) Config.Stream.Resume();
+            return success;
+        }
+
         public static void HandleScaling(ref float xOffset, ref float zOffset)
         {
             if (SavedSettingsConfig.ScaleDiagonalPositionControllerButtons)
