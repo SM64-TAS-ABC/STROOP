@@ -854,7 +854,7 @@ namespace STROOP.Structs
                     double frames = framesNullable.Value;
                     Position holpPos = GetHolpPosition();
                     double yDist = GetBobombTrajectoryFramesToYDist(frames);
-                    double hDist = GetBobombTrajectoryFramesToHDist(frames);
+                    double hDist = Math.Abs(GetBobombTrajectoryFramesToHDist(frames));
                     double newY = SpecialConfig.PointY - yDist;
                     (double newX, double newZ) = MoreMath.ExtrapolateLine2D(
                         SpecialConfig.PointX, SpecialConfig.PointZ, holpPos.X, holpPos.Z, hDist);
@@ -3035,11 +3035,23 @@ namespace STROOP.Structs
 
         private static double GetBobombTrajectoryFramesToYDist(double frames)
         {
-            double framesParabola = Math.Min(frames, 38);
-            double framesLine = Math.Max(frames - 38, 0);
-            double yDistParabola = -1.25 * framesParabola * framesParabola + 18.75 * framesParabola;
-            double yDistLine = framesLine * -75;
-            return yDistParabola + yDistLine;
+            bool reflected = false;
+            if (frames < 7.5)
+            {
+                frames = MoreMath.ReflectValueAboutValue(frames, 7.5);
+                reflected = true;
+            }
+            double yDist;
+            if (frames <= 38)
+            {
+                yDist = -1.25 * frames * frames + 18.75 * frames;
+            }
+            else
+            {
+                yDist = -75 * (frames - 38) - 1092.5;
+            }
+            if (reflected) yDist = MoreMath.ReflectValueAboutValue(yDist, 70.3125);
+            return yDist;
         }
 
         private static double GetBobombTrajectoryYDistToFrames(double yDist)
