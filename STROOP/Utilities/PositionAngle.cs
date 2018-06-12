@@ -698,7 +698,8 @@ namespace STROOP.Utilities
             }
             else
             {
-                return false;
+                (double x, double y, double z) = MoreMath.ExtrapolateLine3D(p2.X, p2.Y, p2.Z, p1.X, p1.Y, p1.Z, distance);
+                return p1.SetValues(x: x, y: y, z: z);
             }
         }
 
@@ -712,7 +713,8 @@ namespace STROOP.Utilities
             }
             else
             {
-                return false;
+                (double x, double z) = MoreMath.ExtrapolateLine2D(p2.X, p2.Z, p1.X, p1.Z, distance);
+                return p1.SetValues(x: x, z: z);
             }
         }
 
@@ -726,7 +728,8 @@ namespace STROOP.Utilities
             }
             else
             {
-                return false;
+                double x = p2.X - distance;
+                return p1.SetValues(x: x);
             }
         }
 
@@ -740,7 +743,8 @@ namespace STROOP.Utilities
             }
             else
             {
-                return false;
+                double y = p2.Y - distance;
+                return p1.SetValues(y: y);
             }
         }
 
@@ -754,7 +758,8 @@ namespace STROOP.Utilities
             }
             else
             {
-                return false;
+                double z = p2.Z - distance;
+                return p1.SetValues(z: z);
             }
         }
 
