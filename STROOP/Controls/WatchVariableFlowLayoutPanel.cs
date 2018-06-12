@@ -16,7 +16,7 @@ namespace STROOP.Controls
 {
     public class WatchVariableFlowLayoutPanel : NoTearFlowLayoutPanel
     {
-        private DataManager _dataManager;
+        private string _varFilePath;
 
         private readonly Object _objectLock;
         private List<WatchVariableControlPrecursor> _watchVarPrecursors;
@@ -43,12 +43,12 @@ namespace STROOP.Controls
         }
 
         public void Initialize(
-            DataManager dataManager,
+            string varFilePath,
             List<WatchVariableControlPrecursor> precursors,
             List<VariableGroup> allGroups,
             List<VariableGroup> visibleGroups)
         {
-            _dataManager = dataManager;
+            _varFilePath = varFilePath;
             _allGroups.AddRange(allGroups);
             _initialVisibleGroups.AddRange(visibleGroups);
             _visibleGroups.AddRange(visibleGroups);
@@ -85,7 +85,7 @@ namespace STROOP.Controls
                 new List<Action>()
                 {
                     () => OpenVariables(),
-                    () => _dataManager.SaveVariablesInPlace(),
+                    () => SaveVariablesInPlace(),
                     () => SaveVariables(),
                     () => ClearVariables(),
                 });
@@ -391,6 +391,12 @@ namespace STROOP.Controls
             List<WatchVariableControlPrecursor> precursors =
                 elements.ConvertAll(element => new WatchVariableControlPrecursor(element));
             AddVariables(precursors.ConvertAll(w => w.CreateWatchVariableControl()));
+        }
+
+        public void SaveVariablesInPlace()
+        {
+            if (!DialogUtilities.AskQuestionAboutSavingVariableFileInPlace()) return;
+            SaveVariables(_varFilePath);
         }
 
         public void SaveVariables(string fileName = null)

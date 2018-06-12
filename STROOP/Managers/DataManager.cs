@@ -41,7 +41,7 @@ namespace STROOP.Managers
             visibleVariableGroups.Add(VariableGroup.Custom);
 
             _variablePanel.Initialize(
-                this,
+                _varFilePath,
                 variables,
                 allVariableGroups,
                 visibleVariableGroups);
@@ -62,12 +62,6 @@ namespace STROOP.Managers
         public virtual void AddVariables(List<WatchVariableControl> watchVarControls)
         {
             _variablePanel.AddVariables(watchVarControls);
-        }
-
-        public void SaveVariablesInPlace()
-        {
-            if (!DialogUtilities.AskQuestionAboutSavingVariableFileInPlace()) return;
-            _variablePanel.SaveVariables(_varFilePath);
         }
 
         public virtual void EnableCustomVariableFunctionality()
