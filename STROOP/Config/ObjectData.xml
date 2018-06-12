@@ -37,6 +37,8 @@
   <Data groupList="Advanced" base="Object" specialType="XDistObjToMario" coord="X">XDist Obj to Mario</Data>
   <Data groupList="Intermediate" base="Object" specialType="YDistObjToMario" coord="Y">YDist Obj to Mario</Data>
   <Data groupList="Advanced" base="Object" specialType="ZDistObjToMario" coord="Z">ZDist Obj to Mario</Data>
+  <Data groupList="Intermediate" base="Object" specialType="FDistObjToMario">FDist Obj to Mario</Data>
+  <Data groupList="Intermediate" base="Object" specialType="SDistObjToMario">SDist Obj to Mario</Data>
   <Data groupList="Intermediate" base="Object" specialType="HDistObjToMario">HDist Obj to Mario</Data>
   <Data groupList="Intermediate" base="Object" specialType="DistObjToMario">Dist Obj to Mario</Data>
   <Data groupList="Advanced" type="float" offset="0x015C" base="Object">"Dist to Mario"</Data>

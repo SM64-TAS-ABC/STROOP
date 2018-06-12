@@ -775,7 +775,10 @@ namespace STROOP.Utilities
             }
             else
             {
-                return false;
+                (double x, double z) =
+                    MoreMath.GetRelativelyOffsettedPosition(
+                        p2.X, p2.Z, p1.Angle, p1.X, p1.Z, null, -1 * distance);
+                return p1.SetValues(x: x, z: z);
             }
         }
 
@@ -784,13 +787,16 @@ namespace STROOP.Utilities
             bool toggle = toggleNullable ?? GetToggle();
             if (!toggle)
             {
-            (double x, double z) =
-                MoreMath.GetRelativelyOffsettedPosition(
-                    p1.X, p1.Z, p1.Angle, p2.X, p2.Z, distance, null);
-            return p2.SetValues(x: x, z: z);            }
+                (double x, double z) =
+                    MoreMath.GetRelativelyOffsettedPosition(
+                        p1.X, p1.Z, p1.Angle, p2.X, p2.Z, distance, null);
+                return p2.SetValues(x: x, z: z);            }
             else
             {
-                return false;
+                (double x, double z) =
+                    MoreMath.GetRelativelyOffsettedPosition(
+                        p2.X, p2.Z, p1.Angle, p1.X, p1.Z, -1 * distance, null);
+                return p1.SetValues(x: x, z: z);
             }
         }
 
