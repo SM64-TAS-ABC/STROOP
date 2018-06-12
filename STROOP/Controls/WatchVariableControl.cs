@@ -279,7 +279,6 @@ namespace STROOP.Controls
             bool isShiftKeyHeld = ModifierKeys == Keys.Shift;
             bool isAltKeyHeld = ModifierKeys == Keys.Alt;
             bool isFKeyHeld = Keyboard.IsKeyDown(Key.F);
-            bool isAKeyHeld = Keyboard.IsKeyDown(Key.A);
             bool isHKeyHeld = Keyboard.IsKeyDown(Key.H);
             bool isLKeyHeld = Keyboard.IsKeyDown(Key.L);
             bool isDKeyHeld = Keyboard.IsKeyDown(Key.D);
@@ -307,12 +306,6 @@ namespace STROOP.Controls
             if (isShiftKeyHeld && isNumberHeld)
             {
                 BaseColor = ColorUtilities.GetColorForVariable();
-                return;
-            }
-
-            if (isCtrlKeyHeld && isFKeyHeld)
-            {
-                AddToTab(Config.CustomManager, AddToTabTypeEnum.Fixed);
                 return;
             }
 
@@ -371,15 +364,9 @@ namespace STROOP.Controls
                 return;
             }
 
-            if (isCtrlKeyHeld && isAKeyHeld)
-            {
-                AddToTab(Config.CustomManager, AddToTabTypeEnum.IndividualFixed);
-                return;
-            }
-
             if (isCtrlKeyHeld)
             {
-                AddToTab(Config.CustomManager, AddToTabTypeEnum.Regular);
+                AddToTab(Config.CustomManager);
                 return;
             }
 
@@ -403,13 +390,13 @@ namespace STROOP.Controls
 
             if (isTKeyHeld)
             {
-                AddToTab(Config.TasManager, AddToTabTypeEnum.Regular);
+                AddToTab(Config.TasManager);
                 return;
             }
 
             if (isMKeyHeld)
             {
-                AddToTab(Config.MemoryManager, AddToTabTypeEnum.Regular);
+                AddToTab(Config.MemoryManager);
                 return;
             }
 
@@ -664,10 +651,16 @@ namespace STROOP.Controls
             _watchVariablePanel.ContextMenuStrip.Show(point);
         }
 
-
-
-        public void AddToTab(DataManager dataManager, AddToTabTypeEnum addToTabType)
+        private AddToTabTypeEnum GetAddToTabType()
         {
+            if (Keyboard.IsKeyDown(Key.A)) return AddToTabTypeEnum.IndividualFixed;
+            if (Keyboard.IsKeyDown(Key.F)) return AddToTabTypeEnum.Fixed;
+            return AddToTabTypeEnum.Regular;
+        }
+
+        public void AddToTab(DataManager dataManager, AddToTabTypeEnum? addToTabTypeNullable = null)
+        {
+            AddToTabTypeEnum addToTabType = addToTabTypeNullable ?? GetAddToTabType();
             List<uint> addressList = FixedAddressList ?? _watchVarWrapper.GetCurrentAddresses();
             List<List<uint>> addressesLists =
                 addToTabType == AddToTabTypeEnum.IndividualFixed ?

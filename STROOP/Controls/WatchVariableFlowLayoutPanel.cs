@@ -346,7 +346,7 @@ namespace STROOP.Controls
         private void AddAllVariablesToCustomTab()
         {
             GetCurrentVariableControls().ForEach(varControl =>
-                varControl.AddToTab(Config.CustomManager, AddToTabTypeEnum.Regular));
+                varControl.AddToTab(Config.CustomManager));
         }
 
         private List<XElement> GetCurrentVarXmlElements(bool useCurrentState = true)
