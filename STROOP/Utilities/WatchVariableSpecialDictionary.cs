@@ -23,6 +23,11 @@ namespace STROOP.Structs
             return _dictionary.ContainsKey(key);
         }
 
+        public (Func<uint, object>, Func<object, uint, bool>) this[string key]
+        {
+            set { _dictionary[key] = value; }
+        }
+
         public (Func<uint, object>, Func<object, uint, bool>) Get(string key)
         {
             return _dictionary[key];

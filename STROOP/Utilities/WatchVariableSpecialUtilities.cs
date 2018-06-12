@@ -12,11 +12,11 @@ namespace STROOP.Structs
     {
         private readonly static Func<uint, object> DEFAULT_GETTER = (uint address) => Double.NaN;
         private readonly static Func<object, uint, bool> DEFAULT_SETTER = (object value, uint address) => false;
-        private readonly static Dictionary<string, (Func<uint, object>, Func<object, uint, bool>)> _dictionary;
+        private readonly static WatchVariableSpecialDictionary _dictionary;
 
         static WatchVariableSpecialUtilities()
         {
-            _dictionary = new Dictionary<string, (Func<uint, object>, Func<object, uint, bool>)>();
+            _dictionary = new WatchVariableSpecialDictionary();
             AddLiteralEntriesToDictionary();
             AddGeneratedEntriesToDictionary();
         }
@@ -25,7 +25,7 @@ namespace STROOP.Structs
             CreateGetterSetterFunctions(string specialType)
         {
             if (_dictionary.ContainsKey(specialType))
-                return _dictionary[specialType];
+                return _dictionary.Get(specialType);
             else
                 throw new ArgumentOutOfRangeException();
                 return (DEFAULT_GETTER, DEFAULT_SETTER);
