@@ -35,8 +35,8 @@ namespace STROOP.Utilities
                 rngValue = GetNextRNG(rngValue, false);
             }
 
-            RNGToIndexDictionary.Add(58704, -1);
-            RNGToIndexDictionary.Add(22026, -0);
+            RNGToIndexDictionary.Add(58704, RNG_COUNT - NON_RESET_RNG_COUNT - 2);
+            RNGToIndexDictionary.Add(22026, RNG_COUNT - NON_RESET_RNG_COUNT - 1);
         }
 
         private static ushort GetNextRNG(ushort rng, bool earlyReset = true)
