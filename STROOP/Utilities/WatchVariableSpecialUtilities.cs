@@ -2409,7 +2409,44 @@ namespace STROOP.Structs
                     int coinRngIndex = SpecialConfig.GoalRngIndex + rngIndexDiff;
                     ushort coinRngValue = RngIndexer.GetRngValue(coinRngIndex);
                     return Config.Stream.SetValue(coinRngValue, coinAddress + ObjectConfig.YawMovingOffset);
-                }));            
+                }));
+            
+            _dictionary.Add("GoalRngValue",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.GoalRngValue;
+                },
+                (ushort goalRngValue, uint coinAddress) =>
+                {
+                    SpecialConfig.GoalRngValue = goalRngValue;
+                    return true;
+                }));
+
+            _dictionary.Add("GoalRngIndex",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.GoalRngIndex;
+                },
+                (ushort goalRngIndex, uint coinAddress) =>
+                {
+                    SpecialConfig.GoalRngIndex = goalRngIndex;
+                    return true;
+                }));
+
+            _dictionary.Add("GoalRngIndexDiff",
+                ((uint dummy) =>
+                {
+                    ushort rngValue = Config.Stream.GetUInt16(MiscConfig.RngAddress);
+                    int rngIndex = RngIndexer.GetRngIndex(rngValue);
+                    int rngIndexDiff = rngIndex - SpecialConfig.GoalRngIndex;
+                    return rngIndexDiff;
+                },
+                (int rngIndexDiff, uint dummy) =>
+                {
+                    int rngIndex = SpecialConfig.GoalRngIndex + rngIndexDiff;
+                    ushort rngValue = RngIndexer.GetRngValue(rngIndex);
+                    return Config.Stream.SetValue(rngValue, MiscConfig.RngAddress);
+                }));
 
             _dictionary.Add("RngCallsPerFrame",
                 ((uint dummy) =>
