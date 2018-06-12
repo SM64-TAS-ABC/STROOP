@@ -89,32 +89,32 @@ namespace STROOP.Structs
                             (PositionAngle p1, PositionAngle p2) => PositionAngle.GetFDistance(p1, p2),
                             (PositionAngle p1, PositionAngle p2) => PositionAngle.GetSDistance(p1, p2),
                         };
-                    List<Func<PositionAngle, PositionAngle, object, bool>> distSetters =
-                        new List<Func<PositionAngle, PositionAngle, object, bool>>()
+                    List<Func<PositionAngle, PositionAngle, double, bool>> distSetters =
+                        new List<Func<PositionAngle, PositionAngle, double, bool>>()
                         {
-                            (PositionAngle p1, PositionAngle p2, object v) => PositionAngle.SetXDistance(p1, p2, v),
-                            (PositionAngle p1, PositionAngle p2, object v) => PositionAngle.SetYDistance(p1, p2, v),
-                            (PositionAngle p1, PositionAngle p2, object v) => PositionAngle.SetZDistance(p1, p2, v),
-                            (PositionAngle p1, PositionAngle p2, object v) => PositionAngle.SetHDistance(p1, p2, v),
-                            (PositionAngle p1, PositionAngle p2, object v) => PositionAngle.SetDistance(p1, p2, v),
-                            (PositionAngle p1, PositionAngle p2, object v) => PositionAngle.SetFDistance(p1, p2, v),
-                            (PositionAngle p1, PositionAngle p2, object v) => PositionAngle.SetSDistance(p1, p2, v),
+                            (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetXDistance(p1, p2, dist),
+                            (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetYDistance(p1, p2, dist),
+                            (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetZDistance(p1, p2, dist),
+                            (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetHDistance(p1, p2, dist),
+                            (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetDistance(p1, p2, dist),
+                            (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetFDistance(p1, p2, dist),
+                            (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetSDistance(p1, p2, dist),
                         };
 
                     for (int k = 0; k < distTypes.Count; k++)
                     {
                         string distType = distTypes[k];
                         Func<PositionAngle, PositionAngle, double> getter = distGetters[k];
-                        Func<PositionAngle, PositionAngle, object, bool> setter = distSetters[k];
+                        Func<PositionAngle, PositionAngle, double, bool> setter = distSetters[k];
 
                         _dictionary.Add(String.Format("{0}Dist{1}To{2}", distType, string1, string2),
                             ((uint address) =>
                             {
                                 return getter(func1(address), func2(address));
                             },
-                            (object objectValue, uint address) =>
+                            (double dist, uint address) =>
                             {
-                                return setter(func1(address), func2(address), objectValue);
+                                return setter(func1(address), func2(address), dist);
                             }));
                     }
 
@@ -123,9 +123,9 @@ namespace STROOP.Structs
                         {
                             return PositionAngle.GetAngleTo(func1(address), func2(address), null, false);
                         },
-                        (object objectValue, uint address) =>
+                        (double angle, uint address) =>
                         {
-                            return PositionAngle.SetAngleTo(func1(address), func2(address), objectValue);
+                            return PositionAngle.SetAngleTo(func1(address), func2(address), angle);
                         }));
 
                     _dictionary.Add(String.Format("DAngle{0}To{1}", string1, string2),
@@ -133,9 +133,9 @@ namespace STROOP.Structs
                         {
                             return PositionAngle.GetDAngleTo(func1(address), func2(address), null, false);
                         },
-                        (object objectValue, uint address) =>
+                        (double angleDiff, uint address) =>
                         {
-                            return PositionAngle.SetDAngleTo(func1(address), func2(address), objectValue);
+                            return PositionAngle.SetDAngleTo(func1(address), func2(address), angleDiff);
                         }));
 
                     _dictionary.Add(String.Format("AngleDiff{0}To{1}", string1, string2),
@@ -143,9 +143,9 @@ namespace STROOP.Structs
                         {
                             return PositionAngle.GetAngleDifference(func1(address), func2(address), false);
                         },
-                        (object objectValue, uint address) =>
+                        (double angleDiff, uint address) =>
                         {
-                            return PositionAngle.SetAngleDifference(func1(address), func2(address), objectValue);
+                            return PositionAngle.SetAngleDifference(func1(address), func2(address), angleDiff);
                         }));
                 }
             }
