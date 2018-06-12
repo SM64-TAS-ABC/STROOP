@@ -25,18 +25,12 @@ namespace STROOP.Utilities
             Camera,
             CamHackCamera,
             CamHackFocus,
-            Ghost,
             Obj,
             ObjHome,
+            ObjGfx,
+            ObjScale,
             Tri,
             Hybrid,
-        }
-
-        private uint? GetGhostAddress()
-        {
-            List<uint> addresses = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Mario Ghost")
-                .ConvertAll(objectDataModel => objectDataModel.Address);
-            return addresses.Count > 0 ? addresses[0] : (uint?)null;
         }
 
         public double X
@@ -57,14 +51,14 @@ namespace STROOP.Utilities
                         return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
                     case PositionAngleTypeEnum.CamHackFocus:
                         return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
-                    case PositionAngleTypeEnum.Ghost:
-                        uint? ghostAddress = GetGhostAddress();
-                        if (!ghostAddress.HasValue) return Double.NaN;
-                        return Config.Stream.GetSingle(ghostAddress.Value + ObjectConfig.GraphicsXOffset);
                     case PositionAngleTypeEnum.Obj:
                         return Config.Stream.GetSingle(Address.Value + ObjectConfig.XOffset);
                     case PositionAngleTypeEnum.ObjHome:
                         return Config.Stream.GetSingle(Address.Value + ObjectConfig.HomeXOffset);
+                    case PositionAngleTypeEnum.ObjGfx:
+                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.GraphicsXOffset);
+                    case PositionAngleTypeEnum.ObjScale:
+                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.ScaleWidthOffset);
                     case PositionAngleTypeEnum.Tri:
                         uint triVertexOffset;
                         switch (TriVertex.Value)
@@ -108,14 +102,14 @@ namespace STROOP.Utilities
                         return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
                     case PositionAngleTypeEnum.CamHackFocus:
                         return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
-                    case PositionAngleTypeEnum.Ghost:
-                        uint? ghostAddress = GetGhostAddress();
-                        if (!ghostAddress.HasValue) return Double.NaN;
-                        return Config.Stream.GetSingle(ghostAddress.Value + ObjectConfig.GraphicsYOffset);
                     case PositionAngleTypeEnum.Obj:
                         return Config.Stream.GetSingle(Address.Value + ObjectConfig.YOffset);
                     case PositionAngleTypeEnum.ObjHome:
                         return Config.Stream.GetSingle(Address.Value + ObjectConfig.HomeYOffset);
+                    case PositionAngleTypeEnum.ObjGfx:
+                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.GraphicsYOffset);
+                    case PositionAngleTypeEnum.ObjScale:
+                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.ScaleHeightOffset);
                     case PositionAngleTypeEnum.Tri:
                         uint triVertexOffset;
                         switch (TriVertex.Value)
@@ -159,14 +153,14 @@ namespace STROOP.Utilities
                         return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
                     case PositionAngleTypeEnum.CamHackFocus:
                         return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
-                    case PositionAngleTypeEnum.Ghost:
-                        uint? ghostAddress = GetGhostAddress();
-                        if (!ghostAddress.HasValue) return Double.NaN;
-                        return Config.Stream.GetSingle(ghostAddress.Value + ObjectConfig.GraphicsZOffset);
                     case PositionAngleTypeEnum.Obj:
                         return Config.Stream.GetSingle(Address.Value + ObjectConfig.ZOffset);
                     case PositionAngleTypeEnum.ObjHome:
                         return Config.Stream.GetSingle(Address.Value + ObjectConfig.HomeZOffset);
+                    case PositionAngleTypeEnum.ObjGfx:
+                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.GraphicsZOffset);
+                    case PositionAngleTypeEnum.ObjScale:
+                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.ScaleDepthOffset);
                     case PositionAngleTypeEnum.Tri:
                         uint triVertexOffset;
                         switch (TriVertex.Value)
@@ -210,13 +204,13 @@ namespace STROOP.Utilities
                         return CamHackUtilities.GetCamHackYawFacing();
                     case PositionAngleTypeEnum.CamHackFocus:
                         return CamHackUtilities.GetCamHackYawFacing();
-                    case PositionAngleTypeEnum.Ghost:
-                        uint? ghostAddress = GetGhostAddress();
-                        if (!ghostAddress.HasValue) return Double.NaN;
-                        return Config.Stream.GetUInt16(ghostAddress.Value + ObjectConfig.GraphicsYawOffset);
                     case PositionAngleTypeEnum.Obj:
                         return Config.Stream.GetUInt16(Address.Value + ObjectConfig.YawFacingOffset);
                     case PositionAngleTypeEnum.ObjHome:
+                        return Double.NaN;
+                    case PositionAngleTypeEnum.ObjGfx:
+                        return Config.Stream.GetUInt16(Address.Value + ObjectConfig.GraphicsYawOffset);
+                    case PositionAngleTypeEnum.ObjScale:
                         return Double.NaN;
                     case PositionAngleTypeEnum.Tri:
                         return Double.NaN;
@@ -267,12 +261,18 @@ namespace STROOP.Utilities
         public static PositionAngle Camera = new PositionAngle(PositionAngleTypeEnum.Camera);
         public static PositionAngle CamHackCamera = new PositionAngle(PositionAngleTypeEnum.CamHackCamera);
         public static PositionAngle CamHackFocus = new PositionAngle(PositionAngleTypeEnum.CamHackFocus);
-        public static PositionAngle Ghost = new PositionAngle(PositionAngleTypeEnum.Ghost);
         public static PositionAngle Obj(uint address) =>
             new PositionAngle(PositionAngleTypeEnum.Obj, address);
         public static PositionAngle ObjHome(uint address) =>
             new PositionAngle(PositionAngleTypeEnum.ObjHome, address);
         public static PositionAngle MarioObj() => Obj(Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress));
+        public static PositionAngle ObjGfx(uint address) =>
+            new PositionAngle(PositionAngleTypeEnum.ObjGfx, address);
+        public static PositionAngle Ghost() =>
+            ObjGfx(Config.ObjectSlotsManager.GetLoadedObjectsWithName("Mario Ghost")
+                .ConvertAll(objectDataModel => objectDataModel.Address).FirstOrDefault());
+        public static PositionAngle ObjScale(uint address) =>
+            new PositionAngle(PositionAngleTypeEnum.ObjScale, address);
         public static PositionAngle Tri(uint address, int triVertex) =>
             new PositionAngle(PositionAngleTypeEnum.Tri, address, triVertex);
         public static PositionAngle Hybrid(PositionAngle posPA, PositionAngle anglePA) =>
@@ -309,7 +309,7 @@ namespace STROOP.Utilities
             }
             else if (parts.Count == 1 && parts[0] == "ghost")
             {
-                return Ghost;
+                return Ghost();
             }
             else if (parts.Count == 2 && (parts[0] == "obj" || parts[0] == "object"))
             {
@@ -322,6 +322,19 @@ namespace STROOP.Utilities
                 uint? address = ParsingUtilities.ParseHexNullable(parts[1]);
                 if (!address.HasValue) return null;
                 return ObjHome(address.Value);
+            }
+            else if (parts.Count == 2 && 
+                (parts[0] == "objgfx" || parts[0] == "objectgfx" || parts[0] == "objgraphics" || parts[0] == "objectgraphics"))
+            {
+                uint? address = ParsingUtilities.ParseHexNullable(parts[1]);
+                if (!address.HasValue) return null;
+                return ObjGfx(address.Value);
+            }
+            else if (parts.Count == 2 && (parts[0] == "objscale" || parts[0] == "objectscale"))
+            {
+                uint? address = ParsingUtilities.ParseHexNullable(parts[1]);
+                if (!address.HasValue) return null;
+                return ObjScale(address.Value);
             }
             else if (parts.Count == 3 && (parts[0] == "tri" || parts[0] == "triangle"))
             {
@@ -371,12 +384,14 @@ namespace STROOP.Utilities
                     return Config.Stream.SetValue((float)value, CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
                 case PositionAngleTypeEnum.CamHackFocus:
                     return Config.Stream.SetValue((float)value, CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
-                case PositionAngleTypeEnum.Ghost:
-                    return false;
                 case PositionAngleTypeEnum.Obj:
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.XOffset);
                 case PositionAngleTypeEnum.ObjHome:
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.HomeXOffset);
+                case PositionAngleTypeEnum.ObjGfx:
+                    return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.GraphicsXOffset);
+                case PositionAngleTypeEnum.ObjScale:
+                    return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.ScaleWidthOffset);
                 case PositionAngleTypeEnum.Tri:
                     uint triVertexOffset;
                     switch (TriVertex.Value)
@@ -418,12 +433,14 @@ namespace STROOP.Utilities
                     return Config.Stream.SetValue((float)value, CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
                 case PositionAngleTypeEnum.CamHackFocus:
                     return Config.Stream.SetValue((float)value, CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
-                case PositionAngleTypeEnum.Ghost:
-                    return false;
                 case PositionAngleTypeEnum.Obj:
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.YOffset);
                 case PositionAngleTypeEnum.ObjHome:
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.HomeYOffset);
+                case PositionAngleTypeEnum.ObjGfx:
+                    return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.GraphicsYOffset);
+                case PositionAngleTypeEnum.ObjScale:
+                    return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.ScaleHeightOffset);
                 case PositionAngleTypeEnum.Tri:
                     uint triVertexOffset;
                     switch (TriVertex.Value)
@@ -465,12 +482,14 @@ namespace STROOP.Utilities
                     return Config.Stream.SetValue((float)value, CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
                 case PositionAngleTypeEnum.CamHackFocus:
                     return Config.Stream.SetValue((float)value, CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
-                case PositionAngleTypeEnum.Ghost:
-                    return false;
                 case PositionAngleTypeEnum.Obj:
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.ZOffset);
                 case PositionAngleTypeEnum.ObjHome:
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.HomeZOffset);
+                case PositionAngleTypeEnum.ObjGfx:
+                    return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.GraphicsZOffset);
+                case PositionAngleTypeEnum.ObjScale:
+                    return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.ScaleDepthOffset);
                 case PositionAngleTypeEnum.Tri:
                     uint triVertexOffset;
                     switch (TriVertex.Value)
@@ -513,14 +532,16 @@ namespace STROOP.Utilities
                     return false;
                 case PositionAngleTypeEnum.CamHackFocus:
                     return false;
-                case PositionAngleTypeEnum.Ghost:
-                    return false;
                 case PositionAngleTypeEnum.Obj:
                     bool success = true;
                     success &= Config.Stream.SetValue(valueUShort, Address.Value + ObjectConfig.YawFacingOffset);
                     success &= Config.Stream.SetValue(valueUShort, Address.Value + ObjectConfig.YawMovingOffset);
                     return success;
                 case PositionAngleTypeEnum.ObjHome:
+                    return false;
+                case PositionAngleTypeEnum.ObjGfx:
+                    return Config.Stream.SetValue(valueUShort, Address.Value + ObjectConfig.GraphicsYawOffset);
+                case PositionAngleTypeEnum.ObjScale:
                     return false;
                 case PositionAngleTypeEnum.Tri:
                     return false;
