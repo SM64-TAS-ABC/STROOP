@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <VarData>
   <Data groupList="Basic" type="uint" offsetUS="0x8032D5D4" offsetJP="0x8032C694" base="Relative">Global Timer</Data>
-  <Data groupList="Basic" type="ushort" offsetUS="0x8038EEE0" offsetJP="0x8038EEE0" base="Relative">RNG Value</Data>
-  <Data groupList="Basic" base="None" specialType="RngIndex">RNG Index</Data>
-  <Data groupList="Basic" base="None" specialType="RngIndexMod4">RNG Index Mod 4</Data>
-  <Data groupList="Basic" base="LastCoin" offset="0xCA" type="ushort">Coin RNG Value</Data>
-  <Data groupList="Basic" base="LastCoin" specialType="LastCoinRngIndex">Coin RNG Index</Data>
-  <Data groupList="Basic" base="LastCoin" specialType="LastCoinRngIndexDiff">Coin RNG Index Diff</Data>
-  <Data groupList="Basic" base="None" specialType="GoalRngValue">Goal RNG Value</Data>
-  <Data groupList="Basic" base="None" specialType="GoalRngIndex">Goal RNG Index</Data>
-  <Data groupList="Basic" base="None" specialType="GoalRngIndexDiff">Goal RNG Index Diff</Data>
+  <Data groupList="Basic,Rng" type="ushort" offsetUS="0x8038EEE0" offsetJP="0x8038EEE0" base="Relative">RNG Value</Data>
+  <Data groupList="Basic,Rng" base="None" specialType="RngIndex">RNG Index</Data>
+  <Data groupList="Basic,Rng" base="None" specialType="RngIndexMod4">RNG Index Mod 4</Data>
+  <Data groupList="Rng" base="LastCoin" offset="0xCA" type="ushort" color="Yellow">Coin RNG Value</Data>
+  <Data groupList="Rng" base="LastCoin" specialType="LastCoinRngIndex" color="Yellow">Coin RNG Index</Data>
+  <Data groupList="Rng" base="LastCoin" specialType="LastCoinRngIndexDiff" color="Yellow">Coin RNG Index Diff</Data>
+  <Data groupList="Rng" base="None" specialType="GoalRngValue" color="Pink">Goal RNG Value</Data>
+  <Data groupList="Rng" base="None" specialType="GoalRngIndex" color="Pink">Goal RNG Index</Data>
+  <Data groupList="Rng" base="None" specialType="GoalRngIndexDiff" color="Pink">Goal RNG Index Diff</Data>
   <Data groupList="Basic" base="None" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
   <Data groupList="Basic" base="None" specialType="PlayTime" subclass="String">Play Time</Data>
   <Data groupList="Basic" base="None" specialType="NumberOfLoadedObjects">Num Loaded Objs</Data>
