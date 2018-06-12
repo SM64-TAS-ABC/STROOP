@@ -257,7 +257,8 @@ namespace STROOP.Controls
                     return;
                 }
 
-                if (e.KeyData == Keys.Enter)
+                if (e.KeyData == Keys.Enter ||
+                    e.KeyData == (Keys.Enter | Keys.Control))
                 {
                     EditMode = false;
                     SetValue(_valueTextBox.Text);
