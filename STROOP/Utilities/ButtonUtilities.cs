@@ -12,82 +12,8 @@ using STROOP.Models;
 namespace STROOP.Utilities
 {
     public static class ButtonUtilities
-    {
-        private struct TripleAddressAngle
-        {
-            public readonly uint XAddress;
-            public readonly uint YAddress;
-            public readonly uint ZAddress;
-            public readonly ushort? Angle;
-
-            public TripleAddressAngle(uint xAddress, uint yAddress, uint zAddress, ushort? angle = null)
-            {
-                XAddress = xAddress;
-                YAddress = yAddress;
-                ZAddress = zAddress;
-                Angle = angle;
-            }
-
-            public (uint XAddress, uint YAddress, uint ZAddress) GetTripleAddress()
-            {
-                return (XAddress, YAddress, ZAddress);
-            }
-        }
-        
+    {        
         private enum Change { SET, ADD, MULTIPLY };
-
-        private static bool ChangeValues(List<TripleAddressAngle> posAddressAngles,
-            float xValue, float yValue, float zValue, Change change, bool useRelative = false,
-            (bool affectX, bool affectY, bool affectZ)? affects = null)
-        {
-            if (posAddressAngles.Count() == 0)
-                return false;
-
-            bool success = true;
-            bool streamAlreadySuspended = Config.Stream.IsSuspended;
-            if (!streamAlreadySuspended) Config.Stream.Suspend();
-
-            foreach (var posAddressAngle in posAddressAngles)
-            {
-                float currentXValue = xValue;
-                float currentYValue = yValue;
-                float currentZValue = zValue;
-
-                if (change == Change.ADD)
-                {
-                    HandleScaling(ref currentXValue, ref currentZValue);
-                    HandleRelativeAngle(ref currentXValue, ref currentZValue, useRelative, posAddressAngle.Angle);
-                    currentXValue += Config.Stream.GetSingle(posAddressAngle.XAddress);
-                    currentYValue += Config.Stream.GetSingle(posAddressAngle.YAddress);
-                    currentZValue += Config.Stream.GetSingle(posAddressAngle.ZAddress);
-                }
-
-                if (change == Change.MULTIPLY)
-                {
-                    currentXValue *= Config.Stream.GetSingle(posAddressAngle.XAddress);
-                    currentYValue *= Config.Stream.GetSingle(posAddressAngle.YAddress);
-                    currentZValue *= Config.Stream.GetSingle(posAddressAngle.ZAddress);
-                }
-
-                if (!affects.HasValue || affects.Value.affectX)
-                {
-                    success &= Config.Stream.SetValue(currentXValue, posAddressAngle.XAddress);
-                }
-
-                if (!affects.HasValue || affects.Value.affectY)
-                {
-                    success &= Config.Stream.SetValue(currentYValue, posAddressAngle.YAddress);
-                }
-
-                if (!affects.HasValue || affects.Value.affectZ)
-                {
-                    success &= Config.Stream.SetValue(currentZValue, posAddressAngle.ZAddress);
-                }
-            }
-
-            if (!streamAlreadySuspended) Config.Stream.Resume();
-            return success;
-        }
 
         private static bool ChangeValues(List<PositionAngle> posAddressAngles,
             float xValue, float yValue, float zValue, Change change, bool useRelative = false,
@@ -294,12 +220,7 @@ namespace STROOP.Utilities
         public static bool ScaleObjects(List<ObjectDataModel> objects,
             float widthChange, float heightChange, float depthChange, bool multiply)
         {
-            List<TripleAddressAngle> posAddressAngles =
-                objects.ConvertAll(o => new TripleAddressAngle(
-                        o.Address + ObjectConfig.ScaleWidthOffset,
-                        o.Address + ObjectConfig.ScaleHeightOffset,
-                        o.Address + ObjectConfig.ScaleDepthOffset));
-
+            List<PositionAngle> posAddressAngles = objects.ConvertAll(o => PositionAngle.ObjScale(o.Address));
             return ChangeValues(posAddressAngles, widthChange, heightChange, depthChange, multiply ? Change.MULTIPLY : Change.ADD);
         }
 
@@ -1132,44 +1053,28 @@ namespace STROOP.Utilities
             }
         }
 
-        private static TripleAddressAngle getCamHackFocusTripleAddressController(CamHackMode camHackMode)
+        private static PositionAngle GetCamHackFocusTripleAddressController(CamHackMode camHackMode)
         {
             uint camHackObject = Config.Stream.GetUInt32(CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);
             switch (camHackMode)
             {
                 case CamHackMode.REGULAR:
-                    return new TripleAddressAngle(
-                        CameraConfig.StructAddress + CameraConfig.FocusXOffset,
-                        CameraConfig.StructAddress + CameraConfig.FocusYOffset,
-                        CameraConfig.StructAddress + CameraConfig.FocusZOffset,
-                        getCamHackYawFacing(camHackMode));
+                    return PositionAngle.Camera;
                 
                 case CamHackMode.RELATIVE_ANGLE:
                 case CamHackMode.ABSOLUTE_ANGLE:
                 case CamHackMode.FIXED_POS:
                     if (camHackObject == 0) // focused on Mario
                     {
-                        return new TripleAddressAngle(
-                            MarioConfig.StructAddress + MarioConfig.XOffset,
-                            MarioConfig.StructAddress + MarioConfig.YOffset,
-                            MarioConfig.StructAddress + MarioConfig.ZOffset,
-                            getCamHackYawFacing(camHackMode));
+                        return PositionAngle.Mario;
                     }
                     else // focused on object
                     {
-                        return new TripleAddressAngle(
-                            camHackObject + ObjectConfig.XOffset,
-                            camHackObject + ObjectConfig.YOffset,
-                            camHackObject + ObjectConfig.ZOffset,
-                            getCamHackYawFacing(camHackMode));
+                        return PositionAngle.Obj(camHackObject);
                     }
-                
+
                 case CamHackMode.FIXED_ORIENTATION:
-                    return new TripleAddressAngle(
-                        CamHackConfig.StructAddress + CamHackConfig.FocusXOffset,
-                        CamHackConfig.StructAddress + CamHackConfig.FocusYOffset,
-                        CamHackConfig.StructAddress + CamHackConfig.FocusZOffset,
-                        getCamHackYawFacing(camHackMode));
+                    return PositionAngle.CamHackFocus;
 
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -1189,13 +1094,7 @@ namespace STROOP.Utilities
                 case CamHackMode.FIXED_ORIENTATION:
                 {
                     return ChangeValues(
-                        new List<TripleAddressAngle> {
-                            new TripleAddressAngle(
-                                CamHackConfig.StructAddress + CamHackConfig.CameraXOffset,
-                                CamHackConfig.StructAddress + CamHackConfig.CameraYOffset,
-                                CamHackConfig.StructAddress + CamHackConfig.CameraZOffset,
-                                getCamHackYawFacing(camHackMode))
-                        },
+                        new List<PositionAngle> { PositionAngle.CamHackCamera },
                         xOffset,
                         yOffset,
                         zOffset,
@@ -1263,13 +1162,10 @@ namespace STROOP.Utilities
                 {
                     HandleScaling(ref thetaOffset, ref phiOffset);
 
-                    TripleAddressAngle focusTripleAddressAngle = getCamHackFocusTripleAddressController(camHackMode);
-                    uint focusXAddress, focusYAddress, focusZAddress;
-                    (focusXAddress, focusYAddress, focusZAddress) = focusTripleAddressAngle.GetTripleAddress();
-
-                    float xFocus = Config.Stream.GetSingle(focusTripleAddressAngle.XAddress);
-                    float yFocus = Config.Stream.GetSingle(focusTripleAddressAngle.YAddress);
-                    float zFocus = Config.Stream.GetSingle(focusTripleAddressAngle.ZAddress);
+                    PositionAngle focusTripleAddressAngle = GetCamHackFocusTripleAddressController(camHackMode);
+                    float xFocus = (float)focusTripleAddressAngle.X;
+                    float yFocus = (float)focusTripleAddressAngle.Y;
+                    float zFocus = (float)focusTripleAddressAngle.Z;
 
                     float xCamPos = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
                     float yCamPos = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
@@ -1280,12 +1176,7 @@ namespace STROOP.Utilities
                         MoreMath.OffsetSphericallyAboutPivot(xCamPos, yCamPos, zCamPos, radiusOffset, thetaOffset, phiOffset, xFocus, yFocus, zFocus);
 
                     return ChangeValues(
-                        new List<TripleAddressAngle> {
-                            new TripleAddressAngle(
-                                CamHackConfig.StructAddress + CamHackConfig.CameraXOffset,
-                                CamHackConfig.StructAddress + CamHackConfig.CameraYOffset,
-                                CamHackConfig.StructAddress + CamHackConfig.CameraZOffset)
-                        },
+                        new List<PositionAngle> { PositionAngle.CamHackCamera },
                         (float)xDestination,
                         (float)yDestination,
                         (float)zDestination,
@@ -1341,7 +1232,7 @@ namespace STROOP.Utilities
         public static bool TranslateCameraHackFocus(CamHackMode camHackMode, float xOffset, float yOffset, float zOffset, bool useRelative)
         {
             return ChangeValues(
-                new List<TripleAddressAngle> { getCamHackFocusTripleAddressController(camHackMode) },
+                new List<PositionAngle> { GetCamHackFocusTripleAddressController(camHackMode) },
                 xOffset,
                 yOffset,
                 zOffset,
@@ -1353,13 +1244,10 @@ namespace STROOP.Utilities
         {
             HandleScaling(ref thetaOffset, ref phiOffset);
 
-            TripleAddressAngle focusTripleAddressAngle = getCamHackFocusTripleAddressController(camHackMode);
-            uint focusXAddress, focusYAddress, focusZAddress;
-            (focusXAddress, focusYAddress, focusZAddress) = focusTripleAddressAngle.GetTripleAddress();
-
-            float xFocus = Config.Stream.GetSingle(focusTripleAddressAngle.XAddress);
-            float yFocus = Config.Stream.GetSingle(focusTripleAddressAngle.YAddress);
-            float zFocus = Config.Stream.GetSingle(focusTripleAddressAngle.ZAddress);
+            PositionAngle focusTripleAddressAngle = GetCamHackFocusTripleAddressController(camHackMode);
+            float xFocus = (float)focusTripleAddressAngle.X;
+            float yFocus = (float)focusTripleAddressAngle.Y;
+            float zFocus = (float)focusTripleAddressAngle.Z;
 
             float xCamPos = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
             float yCamPos = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
@@ -1370,7 +1258,7 @@ namespace STROOP.Utilities
                 MoreMath.OffsetSphericallyAboutPivot(xFocus, yFocus, zFocus, radiusOffset, thetaOffset, phiOffset, xCamPos, yCamPos, zCamPos);
 
             return ChangeValues(
-                new List<TripleAddressAngle> { focusTripleAddressAngle },
+                new List<PositionAngle> { focusTripleAddressAngle },
                 (float)xDestination,
                 (float)yDestination,
                 (float)zDestination,
