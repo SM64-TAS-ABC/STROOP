@@ -683,72 +683,155 @@ namespace STROOP.Utilities
 
 
 
-
-        public static bool SetDistance(PositionAngle p1, PositionAngle p2, double distance)
+        private static bool GetToggle()
         {
-            (double x, double y, double z) = MoreMath.ExtrapolateLine3D(p1.X, p1.Y, p1.Z, p2.X, p2.Y, p2.Z, distance);
-            return p2.SetValues(x: x, y: y, z: z);
+            return KeyboardUtilities.IsCtrlHeld();
         }
 
-        public static bool SetHDistance(PositionAngle p1, PositionAngle p2, double distance)
+        public static bool SetDistance(PositionAngle p1, PositionAngle p2, double distance, bool? toggleNullable = null)
         {
-            (double x, double z) = MoreMath.ExtrapolateLine2D(p1.X, p1.Z, p2.X, p2.Z, distance);
-            return p2.SetValues(x: x, z: z);
+            bool toggle = toggleNullable ?? GetToggle();
+            if (!toggle)
+            {
+                (double x, double y, double z) = MoreMath.ExtrapolateLine3D(p1.X, p1.Y, p1.Z, p2.X, p2.Y, p2.Z, distance);
+                return p2.SetValues(x: x, y: y, z: z);
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public static bool SetXDistance(PositionAngle p1, PositionAngle p2, double distance)
+        public static bool SetHDistance(PositionAngle p1, PositionAngle p2, double distance, bool? toggleNullable = null)
         {
-            double x = p1.X + distance;
-            return p2.SetValues(x: x);
+            bool toggle = toggleNullable ?? GetToggle();
+            if (!toggle)
+            {
+                (double x, double z) = MoreMath.ExtrapolateLine2D(p1.X, p1.Z, p2.X, p2.Z, distance);
+                return p2.SetValues(x: x, z: z);
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public static bool SetYDistance(PositionAngle p1, PositionAngle p2, double distance)
+        public static bool SetXDistance(PositionAngle p1, PositionAngle p2, double distance, bool? toggleNullable = null)
         {
-            double y = p1.Y + distance;
-            return p2.SetValues(y: y);
+            bool toggle = toggleNullable ?? GetToggle();
+            if (!toggle)
+            {
+                double x = p1.X + distance;
+                return p2.SetValues(x: x);
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public static bool SetZDistance(PositionAngle p1, PositionAngle p2, double distance)
+        public static bool SetYDistance(PositionAngle p1, PositionAngle p2, double distance, bool? toggleNullable = null)
         {
-            double z = p1.Z + distance;
-            return p2.SetValues(z: z);
+            bool toggle = toggleNullable ?? GetToggle();
+            if (!toggle)
+            {
+                double y = p1.Y + distance;
+                return p2.SetValues(y: y);
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public static bool SetFDistance(PositionAngle p1, PositionAngle p2, double distance)
+        public static bool SetZDistance(PositionAngle p1, PositionAngle p2, double distance, bool? toggleNullable = null)
         {
-            (double x, double z) =
-                MoreMath.GetRelativelyOffsettedPosition(
-                    p1.X, p1.Z, p1.Angle, p2.X, p2.Z, null, distance);
-            return p2.SetValues(x: x, z: z);
+            bool toggle = toggleNullable ?? GetToggle();
+            if (!toggle)
+            {
+                double z = p1.Z + distance;
+                return p2.SetValues(z: z);
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public static bool SetSDistance(PositionAngle p1, PositionAngle p2, double distance)
+        public static bool SetFDistance(PositionAngle p1, PositionAngle p2, double distance, bool? toggleNullable = null)
         {
+            bool toggle = toggleNullable ?? GetToggle();
+            if (!toggle)
+            {
+                (double x, double z) =
+                    MoreMath.GetRelativelyOffsettedPosition(
+                        p1.X, p1.Z, p1.Angle, p2.X, p2.Z, null, distance);
+                return p2.SetValues(x: x, z: z);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool SetSDistance(PositionAngle p1, PositionAngle p2, double distance, bool? toggleNullable = null)
+        {
+            bool toggle = toggleNullable ?? GetToggle();
+            if (!toggle)
+            {
             (double x, double z) =
                 MoreMath.GetRelativelyOffsettedPosition(
                     p1.X, p1.Z, p1.Angle, p2.X, p2.Z, distance, null);
-            return p2.SetValues(x: x, z: z);
+            return p2.SetValues(x: x, z: z);            }
+            else
+            {
+                return false;
+            }
         }
 
-        public static bool SetAngleTo(PositionAngle p1, PositionAngle p2, double angle)
+        public static bool SetAngleTo(PositionAngle p1, PositionAngle p2, double angle, bool? toggleNullable = null)
         {
-            (double x, double z) =
-                MoreMath.RotatePointAboutPointToAngle(
-                    p2.X, p2.Z, p1.X, p1.Z, angle);
-            return p2.SetValues(x: x, z: z);
+            bool toggle = toggleNullable ?? GetToggle();
+            if (!toggle)
+            {
+                (double x, double z) = 
+                    MoreMath.RotatePointAboutPointToAngle(
+                        p2.X, p2.Z, p1.X, p1.Z, angle);
+                return p2.SetValues(x: x, z: z);
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public static bool SetDAngleTo(PositionAngle p1, PositionAngle p2, double angleDiff)
+        public static bool SetDAngleTo(PositionAngle p1, PositionAngle p2, double angleDiff, bool? toggleNullable = null)
         {
-            double currentAngle = MoreMath.AngleTo_AngleUnits(p1.X, p1.Z, p2.X, p2.Z);
-            double newAngle = currentAngle + angleDiff;
-            return p1.SetValues(angle: newAngle);
+            bool toggle = toggleNullable ?? GetToggle();
+            if (!toggle)
+            {
+                double currentAngle = MoreMath.AngleTo_AngleUnits(p1.X, p1.Z, p2.X, p2.Z);
+                double newAngle = currentAngle + angleDiff;
+                return p1.SetValues(angle: newAngle);
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public static bool SetAngleDifference(PositionAngle p1, PositionAngle p2, double angleDiff)
+        public static bool SetAngleDifference(PositionAngle p1, PositionAngle p2, double angleDiff, bool? toggleNullable = null)
         {
-            double newAngle = p2.Angle + angleDiff;
-            return p1.SetValues(angle: newAngle);
+            bool toggle = toggleNullable ?? GetToggle();
+            if (!toggle)
+            {
+                double newAngle = p2.Angle + angleDiff;
+                return p1.SetValues(angle: newAngle);
+            }
+            else
+            {
+                return false;
+            }
         }
 
     }
