@@ -72,14 +72,23 @@ namespace STROOP.Controls
             ToolStripMenuItem enableCustomizationItem = new ToolStripMenuItem("Enable Customization");
             enableCustomizationItem.Click += (sender, e) => EnableCustomVariableFunctionality();
 
-            ToolStripMenuItem saveVariablesInPlaceItem = new ToolStripMenuItem("Save Variables in Place");
-            saveVariablesInPlaceItem.Click += (sender, e) => _dataManager.SaveVariablesInPlace();
-
             ToolStripMenuItem showVariableXmlItem = new ToolStripMenuItem("Show Variable XML");
             showVariableXmlItem.Click += (sender, e) => ShowVariableXml();
 
             ToolStripMenuItem showVariableInfoItem = new ToolStripMenuItem("Show Variable Info");
             showVariableInfoItem.Click += (sender, e) => ShowVariableInfo();
+
+            ToolStripMenuItem openSaveClearItem = new ToolStripMenuItem("Open / Save / Clear ...");
+            ControlUtilities.AddDropDownItems(
+                openSaveClearItem,
+                new List<string>() { "Open", "Save in Place", "Save As", "Clear" },
+                new List<Action>()
+                {
+                    () => OpenVariables(),
+                    () => _dataManager.SaveVariablesInPlace(),
+                    () => SaveVariables(),
+                    () => ClearVariables(),
+                });
 
             ToolStripMenuItem setAllRoundingLimitsItem = new ToolStripMenuItem("Set all rounding limits...");
             ToolStripMenuItem setAllRoundingLimitsDefaultItem = new ToolStripMenuItem("Default");
@@ -172,9 +181,9 @@ namespace STROOP.Controls
             ContextMenuStrip.Items.Add(clearAllButHighlightedItem);
             ContextMenuStrip.Items.Add(addAllToCustomTabItem);
             ContextMenuStrip.Items.Add(enableCustomizationItem);
-            ContextMenuStrip.Items.Add(saveVariablesInPlaceItem);
             ContextMenuStrip.Items.Add(showVariableXmlItem);
             ContextMenuStrip.Items.Add(showVariableInfoItem);
+            ContextMenuStrip.Items.Add(openSaveClearItem);
             ContextMenuStrip.Items.Add(setAllRoundingLimitsItem);
             ContextMenuStrip.Items.Add(setAllAngleSignedItem);
             ContextMenuStrip.Items.Add(setAllAngleUnitsItem);
