@@ -2366,14 +2366,11 @@ namespace STROOP.Structs
                 ((uint dummy) =>
                 {
                     ushort rngValue = Config.Stream.GetUInt16(MiscConfig.RngAddress);
-                    string rngIndexString = RngIndexer.GetRngIndexString(rngValue);
-                    return rngIndexString;
+                    return RngIndexer.GetRngIndex(rngValue);
                 },
-                (object objectValue, uint dummy) =>
+                (int rngIndex, uint dummy) =>
                 {
-                    int? index = ParsingUtilities.ParseIntNullable(objectValue);
-                    if (!index.HasValue) return false;
-                    ushort rngValue = RngIndexer.GetRngValue(index.Value);
+                    ushort rngValue = RngIndexer.GetRngValue(rngIndex);
                     return Config.Stream.SetValue(rngValue, MiscConfig.RngAddress);
                 }));
 
@@ -2390,8 +2387,7 @@ namespace STROOP.Structs
                 ((uint coinAddress) =>
                 {
                     ushort rngValue = Config.Stream.GetUInt16(coinAddress + ObjectConfig.YawMovingOffset);
-                    double rngIndex = RngIndexer.GetRngIndex(rngValue);
-                    return rngIndex;
+                    return RngIndexer.GetRngIndex(rngValue);
                 },
                 (int rngIndex, uint coinAddress) =>
                 {

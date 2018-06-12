@@ -2,7 +2,7 @@
 <VarData>
   <Data type="uint" offsetUS="0x8032D5D4" offsetJP="0x8032C694" base="Relative">Global Timer</Data>
   <Data type="ushort" offsetUS="0x8038EEE0" offsetJP="0x8038EEE0" base="Relative">RNG Value</Data>
-  <Data base="None" specialType="RngIndex" subclass="String">RNG Index</Data>
+  <Data base="None" specialType="RngIndex">RNG Index</Data>
   <Data base="None" specialType="RngIndexMod4">RNG Index Mod 4</Data>
   <Data base="LastCoin" offset="0xCA" type="ushort">Coin RNG Value</Data>
   <Data base="LastCoin" specialType="LastCoinRngIndex">Coin RNG Index</Data>
