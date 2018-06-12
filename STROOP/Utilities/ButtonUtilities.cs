@@ -1079,15 +1079,7 @@ namespace STROOP.Utilities
 
         public static bool TranslateCamera(float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            List<TripleAddressAngle> posAddressAngles =
-                new List<TripleAddressAngle> {
-                    new TripleAddressAngle(
-                        CameraConfig.StructAddress + CameraConfig.XOffset,
-                        CameraConfig.StructAddress + CameraConfig.YOffset,
-                        CameraConfig.StructAddress + CameraConfig.ZOffset,
-                        Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingYawOffset))
-                };
-
+            List<PositionAngle> posAddressAngles = new List<PositionAngle> { PositionAngle.Camera };
             return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
