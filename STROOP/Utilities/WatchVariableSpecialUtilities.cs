@@ -2386,14 +2386,30 @@ namespace STROOP.Structs
             _dictionary.Add("LastCoinRngIndex",
                 ((uint coinAddress) =>
                 {
-                    ushort rngValue = Config.Stream.GetUInt16(coinAddress + ObjectConfig.YawMovingOffset);
-                    return RngIndexer.GetRngIndex(rngValue);
+                    ushort coinRngValue = Config.Stream.GetUInt16(coinAddress + ObjectConfig.YawMovingOffset);
+                    int coinRngIndex = RngIndexer.GetRngIndex(coinRngValue);
+                    return coinRngIndex;
                 },
                 (int rngIndex, uint coinAddress) =>
                 {
-                    ushort rngValue = RngIndexer.GetRngValue(rngIndex);
-                    return Config.Stream.SetValue(rngValue, coinAddress + ObjectConfig.YawMovingOffset);
+                    ushort coinRngValue = RngIndexer.GetRngValue(rngIndex);
+                    return Config.Stream.SetValue(coinRngValue, coinAddress + ObjectConfig.YawMovingOffset);
                 }));
+
+            _dictionary.Add("LastCoinRngIndexDiff",
+                ((uint coinAddress) =>
+                {
+                    ushort coinRngValue = Config.Stream.GetUInt16(coinAddress + ObjectConfig.YawMovingOffset);
+                    int coinRngIndex = RngIndexer.GetRngIndex(coinRngValue);
+                    int rngIndexDiff = coinRngIndex - SpecialConfig.GoalRngIndex;
+                    return rngIndexDiff;
+                },
+                (int rngIndexDiff, uint coinAddress) =>
+                {
+                    int coinRngIndex = SpecialConfig.GoalRngIndex + rngIndexDiff;
+                    ushort coinRngValue = RngIndexer.GetRngValue(coinRngIndex);
+                    return Config.Stream.SetValue(coinRngValue, coinAddress + ObjectConfig.YawMovingOffset);
+                }));            
 
             _dictionary.Add("RngCallsPerFrame",
                 ((uint dummy) =>

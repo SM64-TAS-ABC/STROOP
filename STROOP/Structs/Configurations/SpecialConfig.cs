@@ -75,6 +75,15 @@ namespace STROOP.Structs.Configurations
         {
             get => PointPA.Angle;
         }
+
+        // Rng vars
+
+        public static int GoalRngIndex
+        {
+            get => RngIndexer.GetRngIndex(GoalRngValue);
+            set => GoalRngValue = RngIndexer.GetRngValue(value);
+        }
+        public static ushort GoalRngValue = 0;
         
         // PU vars
 
