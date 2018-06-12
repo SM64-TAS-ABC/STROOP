@@ -51,6 +51,8 @@ namespace STROOP.Controls
         public static readonly Color REORDER_START_COLOR = Color.DarkGreen;
         public static readonly Color REORDER_END_COLOR = Color.LightGreen;
         public static readonly Color REORDER_RESET_COLOR = Color.Black;
+        public static readonly Color MASS_ADD_TO_CUSTOM_TAB_START_COLOR = Color.Pink;
+        public static readonly Color MASS_ADD_TO_CUSTOM_TAB_RESET_COLOR = Color.Black;
         public static readonly Color ADD_TO_VAR_HACK_TAB_COLOR = Color.SandyBrown;
         private static readonly int FLASH_DURATION_MS = 1000;
 
@@ -272,6 +274,7 @@ namespace STROOP.Controls
         {
             this.Focus();
 
+            bool isCtrlShiftKeyHeld = ModifierKeys == (Keys.Control | Keys.Shift);
             bool isCtrlKeyHeld = ModifierKeys == Keys.Control;
             bool isShiftKeyHeld = ModifierKeys == Keys.Shift;
             bool isAltKeyHeld = ModifierKeys == Keys.Alt;
@@ -294,6 +297,12 @@ namespace STROOP.Controls
             bool isMinusHeld = Keyboard.IsKeyDown(Key.OemMinus);
             bool isPlusHeld = Keyboard.IsKeyDown(Key.OemPlus);
             bool isNumberHeld = KeyboardUtilities.IsCurrentlyInputtedNumber();
+
+            if (isCtrlShiftKeyHeld)
+            {
+                NotifyPanelOfMultiAddToCustomTab();
+                return;
+            }
 
             if (isShiftKeyHeld && isNumberHeld)
             {
@@ -691,6 +700,11 @@ namespace STROOP.Controls
         public void NotifyPanelOfReodering()
         {
             _watchVariablePanel.NotifyOfReordering(this);
+        }
+
+        public void NotifyPanelOfMultiAddToCustomTab()
+        {
+            _watchVariablePanel.NotifyOfMultiAddToCustomTab(this);
         }
 
         public void ToggleFixedAddress()

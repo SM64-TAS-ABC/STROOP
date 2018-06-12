@@ -27,6 +27,7 @@ namespace STROOP.Controls
         private List<ToolStripMenuItem> _filteringDropDownItems;
 
         private WatchVariableControl _reorderingWatchVarControl;
+        private WatchVariableControl _massAddToCustomTabWatchVarControl;
 
         public WatchVariableFlowLayoutPanel()
         {
@@ -40,6 +41,7 @@ namespace STROOP.Controls
             ContextMenuStrip = new ContextMenuStrip();
 
             _reorderingWatchVarControl = null;
+            _massAddToCustomTabWatchVarControl = null;
         }
 
         public void Initialize(
@@ -285,6 +287,9 @@ namespace STROOP.Controls
                     if (_reorderingWatchVarControl == watchVarControl)
                         _reorderingWatchVarControl = null;
 
+                    if (_massAddToCustomTabWatchVarControl == watchVarControl)
+                        _massAddToCustomTabWatchVarControl = null;
+
                     _watchVarControls.Remove(watchVarControl);
                     if (ShouldShow(watchVarControl)) Controls.Remove(watchVarControl);
                     watchVarControl.SetPanel(null);
@@ -428,6 +433,33 @@ namespace STROOP.Controls
                 Controls.SetChildIndex(_reorderingWatchVarControl, newIndex);
                 _reorderingWatchVarControl.FlashColor(WatchVariableControl.REORDER_END_COLOR);
                 _reorderingWatchVarControl = null;
+            }
+        }
+
+        public void NotifyOfMultiAddToCustomTab(WatchVariableControl watchVarControl)
+        {
+            if (_massAddToCustomTabWatchVarControl == null)
+            {
+                _massAddToCustomTabWatchVarControl = watchVarControl;
+                _massAddToCustomTabWatchVarControl.FlashColor(WatchVariableControl.MASS_ADD_TO_CUSTOM_TAB_START_COLOR);
+            }
+            else if (watchVarControl == _massAddToCustomTabWatchVarControl)
+            {
+                _massAddToCustomTabWatchVarControl.FlashColor(WatchVariableControl.MASS_ADD_TO_CUSTOM_TAB_RESET_COLOR);
+                _massAddToCustomTabWatchVarControl = null;
+            }
+            else
+            {
+                int index1 = Controls.IndexOf(_massAddToCustomTabWatchVarControl);
+                int index2 = Controls.IndexOf(watchVarControl);
+                int minIndex = Math.Min(index1, index2);
+                int maxIndex = Math.Max(index1, index2);
+                for (int i = minIndex; i <= maxIndex; i++)
+                {
+                    WatchVariableControl control = Controls[i] as WatchVariableControl;
+                    control.AddToTab(Config.CustomManager, false, false);
+                }
+                _massAddToCustomTabWatchVarControl = null;
             }
         }
 
