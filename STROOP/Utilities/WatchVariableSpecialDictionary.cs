@@ -15,17 +15,11 @@ namespace STROOP.Structs
         public WatchVariableSpecialDictionary()
         {
             _dictionary = new Dictionary<string, (Func<uint, object>, Func<object, uint, bool>)>();
-
         }
 
         public bool ContainsKey(string key)
         {
             return _dictionary.ContainsKey(key);
-        }
-
-        public (Func<uint, object>, Func<object, uint, bool>) this[string key]
-        {
-            set { _dictionary[key] = value; }
         }
 
         public (Func<uint, object>, Func<object, uint, bool>) Get(string key)
