@@ -1053,13 +1053,13 @@ namespace STROOP.Utilities
             }
         }
 
-        private static PositionAngle GetCamHackFocusTripleAddressController(CamHackMode camHackMode)
+        private static PositionAngle GetCamHackFocusPosAngle(CamHackMode camHackMode)
         {
             uint camHackObject = Config.Stream.GetUInt32(CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);
             switch (camHackMode)
             {
                 case CamHackMode.REGULAR:
-                    return PositionAngle.Hybrid(PositionAngle.Camera, PositionAngle.CamHackCamera);
+                    return PositionAngle.Hybrid(PositionAngle.CameraFocus, PositionAngle.CamHackCamera);
                 
                 case CamHackMode.RELATIVE_ANGLE:
                 case CamHackMode.ABSOLUTE_ANGLE:
@@ -1162,7 +1162,7 @@ namespace STROOP.Utilities
                 {
                     HandleScaling(ref thetaOffset, ref phiOffset);
 
-                    PositionAngle focusTripleAddressAngle = GetCamHackFocusTripleAddressController(camHackMode);
+                    PositionAngle focusTripleAddressAngle = GetCamHackFocusPosAngle(camHackMode);
                     float xFocus = (float)focusTripleAddressAngle.X;
                     float yFocus = (float)focusTripleAddressAngle.Y;
                     float zFocus = (float)focusTripleAddressAngle.Z;
@@ -1232,7 +1232,7 @@ namespace STROOP.Utilities
         public static bool TranslateCameraHackFocus(CamHackMode camHackMode, float xOffset, float yOffset, float zOffset, bool useRelative)
         {
             return ChangeValues(
-                new List<PositionAngle> { GetCamHackFocusTripleAddressController(camHackMode) },
+                new List<PositionAngle> { GetCamHackFocusPosAngle(camHackMode) },
                 xOffset,
                 yOffset,
                 zOffset,
@@ -1244,7 +1244,7 @@ namespace STROOP.Utilities
         {
             HandleScaling(ref thetaOffset, ref phiOffset);
 
-            PositionAngle focusTripleAddressAngle = GetCamHackFocusTripleAddressController(camHackMode);
+            PositionAngle focusTripleAddressAngle = GetCamHackFocusPosAngle(camHackMode);
             float xFocus = (float)focusTripleAddressAngle.X;
             float yFocus = (float)focusTripleAddressAngle.Y;
             float zFocus = (float)focusTripleAddressAngle.Z;
