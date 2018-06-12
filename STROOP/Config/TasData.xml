@@ -38,7 +38,7 @@
   <Data groupList="TAS" base="Relative" offset="0x804003FC" type="int" color="Purple">Ghost Frame</Data>
   <Data groupList="TAS" type="int" offsetUS="0x8032D5D4" offsetJP="0x8032C694" base="Relative" color="Green">Global Timer</Data>
   <Data groupList="TAS" type="ushort" offsetUS="0x8038EEE0" offsetJP="0x8038EEE0" base="Relative" color="Green">RNG Value</Data>
-  <Data groupList="TAS" base="None" specialType="RngIndex" subclass="String" color="Green">RNG Index</Data>
+  <Data groupList="TAS" base="None" specialType="RngIndex" color="Green">RNG Index</Data>
   <Data groupList="TAS" type="short" offset="0x34" base="Mario" subclass="Angle" color="Pink">Yaw Velocity</Data>
   <Data groupList="TAS" type="short" offset="0x2C" base="Mario" subclass="Angle" color="Pink">Pitch</Data>
   <Data groupList="TAS" type="short" offset="0x32" base="Mario" subclass="Angle" color="Pink">Pitch Velocity</Data>

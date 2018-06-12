@@ -812,7 +812,10 @@ namespace STROOP.Utilities
             }
             else
             {
-                return false;
+                (double x, double z) =
+                    MoreMath.RotatePointAboutPointToAngle(
+                        p1.X, p1.Z, p2.X, p2.Z, MoreMath.ReverseAngle(angle));
+                return p1.SetValues(x: x, z: z);
             }
         }
 
@@ -827,7 +830,11 @@ namespace STROOP.Utilities
             }
             else
             {
-                return false;
+                double newAngle = p1.Angle - angleDiff;
+                (double x, double z) =
+                    MoreMath.RotatePointAboutPointToAngle(
+                        p2.X, p2.Z, p1.X, p1.Z, newAngle);
+                return p2.SetValues(x: x, z: z);
             }
         }
 
@@ -841,7 +848,8 @@ namespace STROOP.Utilities
             }
             else
             {
-                return false;
+                double newAngle = p1.Angle - angleDiff;
+                return p2.SetValues(angle: newAngle);
             }
         }
 
