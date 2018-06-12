@@ -16,8 +16,24 @@ namespace STROOP.Managers
     {
         CheckBox _checkBoxTurnOffMusic;
 
+        private static readonly List<VariableGroup> ALL_VAR_GROUPS =
+            new List<VariableGroup>()
+            {
+                VariableGroup.Basic,
+                VariableGroup.Intermediate,
+                VariableGroup.Advanced,
+            };
+
+        private static readonly List<VariableGroup> VISIBLE_VAR_GROUPS =
+            new List<VariableGroup>()
+            {
+                VariableGroup.Basic,
+                VariableGroup.Intermediate,
+                VariableGroup.Advanced,
+            };
+
         public MiscManager(string varFilePath, WatchVariableFlowLayoutPanel variableTable, Control miscControl)
-            : base(varFilePath, variableTable)
+            : base(varFilePath, variableTable, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
         {
             SplitContainer splitContainerMisc = miscControl.Controls["splitContainerMisc"] as SplitContainer;
 
