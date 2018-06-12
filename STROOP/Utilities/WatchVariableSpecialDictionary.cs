@@ -145,7 +145,21 @@ namespace STROOP.Structs
             (Func<uint, object> getter, Func<string, uint, bool> setter) = value;
             Func<object, uint, bool> newSetter = (object objectValue, uint address) =>
             {
+                if (objectValue == null) return false;
                 return setter(objectValue.ToString(), address);
+            };
+            _dictionary[key] = (getter, newSetter);
+        }
+
+        public void Add(string key, (Func<uint, object>, Func<PositionAngle, uint, bool>) value)
+        {
+            (Func<uint, object> getter, Func<PositionAngle, uint, bool> setter) = value;
+            Func<object, uint, bool> newSetter = (object objectValue, uint address) =>
+            {
+                if (objectValue == null) return false;
+                PositionAngle posAngle = PositionAngle.FromString(objectValue.ToString());
+                if (posAngle == null) return false;
+                return setter(posAngle, address);
             };
             _dictionary[key] = (getter, newSetter);
         }
