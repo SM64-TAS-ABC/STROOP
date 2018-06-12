@@ -142,7 +142,7 @@ namespace STROOP.Controls
 
             ToolStripMenuItem itemAddToCustomTab = new ToolStripMenuItem("Add to Custom Tab");
             itemAddToCustomTab.Click += (sender, e) =>
-                _watchVarControl.AddToTab(Config.CustomManager, false, false);
+                _watchVarControl.AddToTab(Config.CustomManager, AddToTabTypeEnum.Regular);
 
             _contextMenuStrip.AddToEndingList(new ToolStripSeparator());
             _contextMenuStrip.AddToEndingList(itemPanelOptions);

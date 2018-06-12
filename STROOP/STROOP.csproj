@@ -159,6 +159,7 @@
     <Compile Include="Enums\CellSelectionType.cs" />
     <Compile Include="Enums\MapTrackerDisplayType.cs" />
     <Compile Include="Enums\SignedEnum.cs" />
+    <Compile Include="Enums\AddToTabTypeEnum.cs" />
     <Compile Include="Forms\SelectionForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -346,7 +346,7 @@ namespace STROOP.Controls
         private void AddAllVariablesToCustomTab()
         {
             GetCurrentVariableControls().ForEach(varControl =>
-                varControl.AddToTab(Config.CustomManager, false, false));
+                varControl.AddToTab(Config.CustomManager, AddToTabTypeEnum.Regular));
         }
 
         private List<XElement> GetCurrentVarXmlElements(bool useCurrentState = true)
@@ -457,7 +457,7 @@ namespace STROOP.Controls
                 for (int i = minIndex; i <= maxIndex; i++)
                 {
                     WatchVariableControl control = Controls[i] as WatchVariableControl;
-                    control.AddToTab(Config.CustomManager, false, false);
+                    control.AddToTab(Config.CustomManager, AddToTabTypeEnum.Regular);
                 }
                 _massAddToCustomTabWatchVarControl = null;
             }

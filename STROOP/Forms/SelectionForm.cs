@@ -86,7 +86,7 @@ namespace STROOP.Forms
                 "Select a Tab",
                 "Add Variable to Tab",
                 Config.GetDataManagers(),
-                dataManager => control.AddToTab(dataManager, false, false));
+                dataManager => control.AddToTab(dataManager, AddToTabTypeEnum.Regular));
             selectionForm.Show();
         }
     }

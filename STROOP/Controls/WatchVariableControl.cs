@@ -312,7 +312,7 @@ namespace STROOP.Controls
 
             if (isCtrlKeyHeld && isFKeyHeld)
             {
-                AddToTab(Config.CustomManager, true, false);
+                AddToTab(Config.CustomManager, AddToTabTypeEnum.Fixed);
                 return;
             }
 
@@ -373,13 +373,13 @@ namespace STROOP.Controls
 
             if (isCtrlKeyHeld && isAKeyHeld)
             {
-                AddToTab(Config.CustomManager, true, true);
+                AddToTab(Config.CustomManager, AddToTabTypeEnum.IndividualFixed);
                 return;
             }
 
             if (isCtrlKeyHeld)
             {
-                AddToTab(Config.CustomManager, false, false);
+                AddToTab(Config.CustomManager, AddToTabTypeEnum.Regular);
                 return;
             }
 
@@ -403,13 +403,13 @@ namespace STROOP.Controls
 
             if (isTKeyHeld)
             {
-                AddToTab(Config.TasManager, false, false);
+                AddToTab(Config.TasManager, AddToTabTypeEnum.Regular);
                 return;
             }
 
             if (isMKeyHeld)
             {
-                AddToTab(Config.MemoryManager, false, false);
+                AddToTab(Config.MemoryManager, AddToTabTypeEnum.Regular);
                 return;
             }
 
@@ -664,22 +664,29 @@ namespace STROOP.Controls
             _watchVariablePanel.ContextMenuStrip.Show(point);
         }
 
-        public void AddToTab(
-            DataManager dataManager, bool useFixedAddress, bool useIndividualAddresses)
+
+
+        public void AddToTab(DataManager dataManager, AddToTabTypeEnum addToTabType)
         {
             List<uint> addressList = FixedAddressList ?? _watchVarWrapper.GetCurrentAddresses();
             List<List<uint>> addressesLists =
-                useIndividualAddresses ?
+                addToTabType == AddToTabTypeEnum.IndividualFixed ?
                     addressList.ConvertAll(address => new List<uint>() { address }) :
                     new List<List<uint>>() { addressList };
             for (int i = 0; i < addressesLists.Count; i++)
             {
                 string name = VarName;
                 if (addressesLists.Count > 1) name += " " + (i + 1);
-                List<uint> constructorAddressList = useFixedAddress ? addressesLists[i] : null;
+                bool useFixed =
+                    addToTabType == AddToTabTypeEnum.Fixed ||
+                    addToTabType == AddToTabTypeEnum.IndividualFixed;
+                List<uint> constructorAddressList = useFixed ? addressesLists[i] : null;
                 WatchVariableControl newControl =
                     WatchVarPrecursor.CreateWatchVariableControl(
-                        name, _baseColor, new List<VariableGroup>() { VariableGroup.Custom }, constructorAddressList);
+                        name,
+                        _baseColor,
+                        new List<VariableGroup>() { VariableGroup.Custom },
+                        constructorAddressList);
                 dataManager.AddVariable(newControl);
             }
             FlashColor(ADD_TO_CUSTOM_TAB_COLOR);
