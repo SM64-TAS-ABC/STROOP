@@ -4,7 +4,14 @@
   <Data type="ushort" offsetUS="0x8038EEE0" offsetJP="0x8038EEE0" base="Relative">RNG Value</Data>
   <Data base="None" specialType="RngIndex" subclass="String">RNG Index</Data>
   <Data base="None" specialType="RngIndexMod4">RNG Index Mod 4</Data>
-  <Data base="LastCoin" offset="0xCA" type="ushort">Coin Yaw Moving</Data>
+  <Data base="LastCoin" offset="0xCA" type="ushort">Coin RNG Value</Data>
+  <Data base="LastCoin" specialType="LastCoinRngIndex">Coin RNG Index</Data>
+  <!--
+  <Data base="LastCoin" specialType="LastCoinRngIndexDiff">Coin RNG Index Diff</Data>
+  <Data base="None" specialType="GoalRngValue">Goal RNG Value</Data>
+  <Data base="None" specialType="GoalRngIndex">Goal RNG Index</Data>
+  <Data base="None" specialType="GoalRngIndexDiff">Goal RNG Index Diff</Data>
+  -->
   <Data base="None" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
   <Data base="None" specialType="PlayTime" subclass="String">Play Time</Data>
   <Data base="None" specialType="NumberOfLoadedObjects">Num Loaded Objs</Data>

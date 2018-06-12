@@ -2386,6 +2386,19 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            _dictionary.Add("LastCoinRngIndex",
+                ((uint coinAddress) =>
+                {
+                    ushort rngValue = Config.Stream.GetUInt16(coinAddress + ObjectConfig.YawMovingOffset);
+                    double rngIndex = RngIndexer.GetRngIndex(rngValue);
+                    return rngIndex;
+                },
+                (int rngIndex, uint coinAddress) =>
+                {
+                    ushort rngValue = RngIndexer.GetRngValue(rngIndex);
+                    return Config.Stream.SetValue(rngValue, coinAddress + ObjectConfig.YawMovingOffset);
+                }));
+
             _dictionary.Add("RngCallsPerFrame",
                 ((uint dummy) =>
                 {
