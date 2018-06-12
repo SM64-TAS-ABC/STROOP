@@ -1059,18 +1059,18 @@ namespace STROOP.Utilities
             switch (camHackMode)
             {
                 case CamHackMode.REGULAR:
-                    return PositionAngle.Camera;
+                    return PositionAngle.Hybrid(PositionAngle.Camera, PositionAngle.CamHackCamera);
                 
                 case CamHackMode.RELATIVE_ANGLE:
                 case CamHackMode.ABSOLUTE_ANGLE:
                 case CamHackMode.FIXED_POS:
                     if (camHackObject == 0) // focused on Mario
                     {
-                        return PositionAngle.Mario;
+                        return PositionAngle.Hybrid(PositionAngle.Mario, PositionAngle.CamHackCamera);
                     }
                     else // focused on object
                     {
-                        return PositionAngle.Obj(camHackObject);
+                        return PositionAngle.Hybrid(PositionAngle.Obj(camHackObject), PositionAngle.CamHackCamera);
                     }
 
                 case CamHackMode.FIXED_ORIENTATION:
