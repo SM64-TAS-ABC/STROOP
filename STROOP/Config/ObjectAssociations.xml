@@ -2106,7 +2106,7 @@
     <Data groupList="ObjectSpecific" type="int" offset="0x150" base="Object">Phase</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xFB" base="Object" subclass="Boolean">Lunging</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Lunging Timer</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="HDistObjHomeToMario">HDist Mario to Home</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="HDistObjHomeToMario">HDist Home to Mario</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xC8" base="Object" subclass="Angle" yaw="true">Yaw Moving</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x160" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="ScuttlebugDeltaAngleToTarget" subclass="Angle" display="short">DAngle to Target</Data>
@@ -2116,7 +2116,7 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="DAngleObjToObjHome" subclass="Angle" display="short">DAngle Obj to Home</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xB0" base="Object">Y Speed</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xA4" base="Object">Y</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="HDistObjHomeToObj">HDist Obj to Home</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="HDistObjHomeToObj">HDist Home to Obj</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xB8" base="Object">H Speed</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002BA0" name="Scuttlebug Spawner">
@@ -2391,8 +2391,8 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="BobombBloatSize">Bloat Size</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="BobombRadius">Radius</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="BobombSpaceBetween">Space Between</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="HDistObjToMario">HDist Mario to Obj</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="DistObjToMario">Dist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="HDistObjToMario">HDist Obj to Mario</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="DistObjToMario">Dist Obj to Mario</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Blinking</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Blinking Timer</Data>
   </Object>
@@ -2408,8 +2408,8 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="BobombBloatSize">Bloat Size</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="BobombRadius">Radius</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="BobombSpaceBetween">Space Between</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="HDistObjToMario">HDist Mario to Obj</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="DistObjToMario">Dist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="HDistObjToMario">HDist Obj to Mario</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="DistObjToMario">Dist Obj to Mario</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Blinking</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Blinking Timer</Data>
   </Object>
@@ -3125,7 +3125,7 @@
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xD4" base="Object" subclass="Angle" yaw="true">Yaw Facing</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x10C" base="Object" subclass="Angle" yaw="true">Yaw to Next WP</Data>
     <Data groupList="ObjectSpecific" type="int" display="short" offset="0x108" base="Object" subclass="Angle">Pitch to Next WP</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="DistObjToMario">Dist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="DistObjToMario">Dist Obj to Mario</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xF4" base="Object">H Speed Multiplier</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xB8" base="Object">H Speed</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="KoopaTheQuickHSpeedTarget">H Speed Target</Data>
@@ -3159,7 +3159,7 @@
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xD4" base="Object" subclass="Angle" yaw="true">Yaw Facing</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x10C" base="Object" subclass="Angle" yaw="true">Yaw to Next WP</Data>
     <Data groupList="ObjectSpecific" type="int" display="short" offset="0x108" base="Object" subclass="Angle">Pitch to Next WP</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="DistObjToMario">Dist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="DistObjToMario">Dist Obj to Mario</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xF4" base="Object">H Speed Multiplier</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xB8" base="Object">H Speed</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="KoopaTheQuickHSpeedTarget">H Speed Target</Data>
@@ -3254,15 +3254,15 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="FlyGuyNextHeightDiff">Next Height Diff</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="FlyGuyMinHeight">Min Height</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="FlyGuyMaxHeight">Max Height</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="DistObjHomeToObj">Dist Obj to Home</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="DistObjToMario">Dist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="DistObjHomeToObj">Dist Home to Obj</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="DistObjToMario">Dist Obj to Mario</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x14C" base="Object">State</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x10A" base="Object">Target Yaw Velocity</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x118" base="Object" subclass="Angle">Yaw Velocity</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xC8" base="Object" subclass="Angle" yaw="true">Yaw Moving</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="AngleObjToObjHome" subclass="Angle" display="ushort" yaw="true">Angle Obj to Home</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="DAngleObjToObjHome" subclass="Angle" display="short">DAngle Obj to Home</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="YDistObjToMario">YDist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="YDistObjToMario">YDist Obj to Mario</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="FlyGuyZone" subclass="String">Zone</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xB0" base="Object">Y Speed</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x100" base="Object">Y Speed Change</Data>
@@ -3279,15 +3279,15 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="FlyGuyNextHeightDiff">Next Height Diff</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="FlyGuyMinHeight">Min Height</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="FlyGuyMaxHeight">Max Height</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="DistObjHomeToObj">Dist Obj to Home</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="DistObjToMario">Dist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="DistObjHomeToObj">Dist Home to Obj</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="DistObjToMario">Dist Obj to Mario</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x14C" base="Object">State</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x10A" base="Object">Target Yaw Velocity</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x118" base="Object" subclass="Angle">Yaw Velocity</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xC8" base="Object" subclass="Angle" yaw="true">Yaw Moving</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="AngleObjToObjHome" subclass="Angle" display="ushort" yaw="true">Angle Obj to Home</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="DAngleObjToObjHome" subclass="Angle" display="short">DAngle Obj to Home</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="YDistObjToMario">YDist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="YDistObjToMario">YDist Obj to Mario</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="FlyGuyZone" subclass="String">Zone</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xB0" base="Object">Y Speed</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x100" base="Object">Y Speed Change</Data>
@@ -4077,7 +4077,7 @@
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xD4" base="Object" subclass="Angle" yaw="true">Yaw Facing</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x10C" base="Object" subclass="Angle" yaw="true">Yaw to Next WP</Data>
     <Data groupList="ObjectSpecific" type="int" display="short" offset="0x108" base="Object" subclass="Angle">Pitch to Next WP</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="YDistObjToMario" coord="Y">YDist Mario to Obj</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="YDistObjToMario" coord="Y">YDist Obj to Mario</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="RacingPenguinEffortTarget">Effort Target</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x110" base="Object">Effort</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="RacingPenguinEffortChange">Effort Change</Data>
