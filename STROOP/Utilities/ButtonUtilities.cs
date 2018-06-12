@@ -15,18 +15,18 @@ namespace STROOP.Utilities
     {        
         private enum Change { SET, ADD, MULTIPLY };
 
-        private static bool ChangeValues(List<PositionAngle> posAddressAngles,
+        private static bool ChangeValues(List<PositionAngle> posAngles,
             float xValue, float yValue, float zValue, Change change, bool useRelative = false,
             (bool affectX, bool affectY, bool affectZ)? affects = null)
         {
-            if (posAddressAngles.Count() == 0)
+            if (posAngles.Count() == 0)
                 return false;
 
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
 
-            foreach (var posAddressAngle in posAddressAngles)
+            foreach (var posAddressAngle in posAngles)
             {
                 float currentXValue = xValue;
                 float currentYValue = yValue;
@@ -105,7 +105,7 @@ namespace STROOP.Utilities
             if (!objects.Any())
                 return false;
 
-            List<PositionAngle> posAddressAngles = new List<PositionAngle> { PositionAngle.Mario };
+            List<PositionAngle> posAngles = new List<PositionAngle> { PositionAngle.Mario };
 
             float xDestination = objects.Average(o => o.X);
             float yDestination = objects.Average(o => o.Y);
@@ -113,12 +113,12 @@ namespace STROOP.Utilities
 
             HandleGotoOffset(ref xDestination, ref yDestination, ref zDestination);
 
-            return ChangeValues(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
+            return ChangeValues(posAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
         }
 
         public static bool RetrieveObjects(List<ObjectDataModel> objects, (bool affectX, bool affectY, bool affectZ)? affects = null)
         {
-            List<PositionAngle> posAddressAngles =
+            List<PositionAngle> posAngles =
                 objects.ConvertAll(o => PositionAngle.Obj(o.Address));
 
             float xDestination = DataModels.Mario.X;
@@ -127,7 +127,7 @@ namespace STROOP.Utilities
 
             HandleRetrieveOffset(ref xDestination, ref yDestination, ref zDestination);
 
-            return ChangeValues(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
+            return ChangeValues(posAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
         }
 
         private static void HandleGotoOffset(ref float xPos, ref float yPos, ref float zPos)
@@ -161,21 +161,21 @@ namespace STROOP.Utilities
         public static bool TranslateObjects(List<ObjectDataModel> objects,
             float xOffset, float yOffset, float zOffset, bool useRelative, bool includeMario)
         {
-            List<PositionAngle> posAddressAngles =
+            List<PositionAngle> posAngles =
                 objects.ConvertAll(o => PositionAngle.Obj(o.Address));
 
-            if (includeMario) posAddressAngles.Add(PositionAngle.Mario);
+            if (includeMario) posAngles.Add(PositionAngle.Mario);
 
-            return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
+            return ChangeValues(posAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
         public static bool TranslateObjectHomes(List<ObjectDataModel> objects,
             float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            List<PositionAngle> posAddressAngles =
+            List<PositionAngle> posAngles =
                 objects.ConvertAll(o => PositionAngle.ObjHome(o.Address));
 
-            return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
+            return ChangeValues(posAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
         public static bool RotateObjects(List<ObjectDataModel> objects,
@@ -220,8 +220,8 @@ namespace STROOP.Utilities
         public static bool ScaleObjects(List<ObjectDataModel> objects,
             float widthChange, float heightChange, float depthChange, bool multiply)
         {
-            List<PositionAngle> posAddressAngles = objects.ConvertAll(o => PositionAngle.ObjScale(o.Address));
-            return ChangeValues(posAddressAngles, widthChange, heightChange, depthChange, multiply ? Change.MULTIPLY : Change.ADD);
+            List<PositionAngle> posAngles = objects.ConvertAll(o => PositionAngle.ObjScale(o.Address));
+            return ChangeValues(posAngles, widthChange, heightChange, depthChange, multiply ? Change.MULTIPLY : Change.ADD);
         }
 
         public static bool GotoObjectsHome(List<ObjectDataModel> objects, (bool affectX, bool affectY, bool affectZ)? affects = null)
@@ -229,7 +229,7 @@ namespace STROOP.Utilities
             if (!objects.Any())
                 return false;
 
-            List<PositionAngle> posAddressAngles = new List<PositionAngle> { PositionAngle.Mario };
+            List<PositionAngle> posAngles = new List<PositionAngle> { PositionAngle.Mario };
 
             float xDestination = objects.Average(o => o.HomeX);
             float yDestination = objects.Average(o => o.HomeY);
@@ -237,12 +237,12 @@ namespace STROOP.Utilities
 
             HandleGotoOffset(ref xDestination, ref yDestination, ref zDestination);
 
-            return ChangeValues(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
+            return ChangeValues(posAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
         }
 
         public static bool RetrieveObjectsHome(List<ObjectDataModel> objects, (bool affectX, bool affectY, bool affectZ)? affects = null)
         {
-            List<PositionAngle> posAddressAngles =
+            List<PositionAngle> posAngles =
                 objects.ConvertAll(o => PositionAngle.ObjHome(o.Address));
 
             float xDestination = DataModels.Mario.X;
@@ -251,7 +251,7 @@ namespace STROOP.Utilities
 
             HandleRetrieveOffset(ref xDestination, ref yDestination, ref zDestination);
 
-            return ChangeValues(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
+            return ChangeValues(posAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
         }
 
         public static bool CloneObject(ObjectDataModel obj, bool updateAction = true)
@@ -496,42 +496,42 @@ namespace STROOP.Utilities
 
         public static bool TranslateMario(float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            List<PositionAngle> posAddressAngles = new List<PositionAngle> { PositionAngle.Mario };
-            return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
+            List<PositionAngle> posAngles = new List<PositionAngle> { PositionAngle.Mario };
+            return ChangeValues(posAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
         public static bool SetMarioPosition(float xValue, float yValue, float zValue)
         {
-            List<PositionAngle> posAddressAngles = new List<PositionAngle> { PositionAngle.Mario };
-            return ChangeValues(posAddressAngles, xValue, yValue, zValue, Change.SET);
+            List<PositionAngle> posAngles = new List<PositionAngle> { PositionAngle.Mario };
+            return ChangeValues(posAngles, xValue, yValue, zValue, Change.SET);
         }
 
         public static bool GotoHOLP((bool affectX, bool affectY, bool affectZ)? affects = null)
         {
-            List<PositionAngle> posAddressAngles = new List<PositionAngle> { PositionAngle.Mario };
+            List<PositionAngle> posAngles = new List<PositionAngle> { PositionAngle.Mario };
 
             float xDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpXOffset);
             float yDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpYOffset);
             float zDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpZOffset);
 
-            return ChangeValues(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
+            return ChangeValues(posAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
         }
 
         public static bool RetrieveHOLP((bool affectX, bool affectY, bool affectZ)? affects = null)
         {
-            List<PositionAngle> posAddressAngles = new List<PositionAngle> { PositionAngle.Holp };
+            List<PositionAngle> posAngles = new List<PositionAngle> { PositionAngle.Holp };
 
             float xDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
             float yDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
             float zDestination = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
 
-            return ChangeValues(posAddressAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
+            return ChangeValues(posAngles, xDestination, yDestination, zDestination, Change.SET, false, affects);
         }
 
         public static bool TranslateHOLP(float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            List<PositionAngle> posAddressAngles = new List<PositionAngle> { PositionAngle.Holp };
-            return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
+            List<PositionAngle> posAngles = new List<PositionAngle> { PositionAngle.Holp };
+            return ChangeValues(posAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
         public static bool MarioChangeYaw(int yawOffset)
@@ -1000,8 +1000,8 @@ namespace STROOP.Utilities
 
         public static bool TranslateCamera(float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            List<PositionAngle> posAddressAngles = new List<PositionAngle> { PositionAngle.Camera };
-            return ChangeValues(posAddressAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
+            List<PositionAngle> posAngles = new List<PositionAngle> { PositionAngle.Camera };
+            return ChangeValues(posAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
         public static bool TranslateCameraSpherically(float radiusOffset, float thetaOffset, float phiOffset, (float, float, float) pivotPoint)
@@ -1162,10 +1162,10 @@ namespace STROOP.Utilities
                 {
                     HandleScaling(ref thetaOffset, ref phiOffset);
 
-                    PositionAngle focusTripleAddressAngle = GetCamHackFocusPosAngle(camHackMode);
-                    float xFocus = (float)focusTripleAddressAngle.X;
-                    float yFocus = (float)focusTripleAddressAngle.Y;
-                    float zFocus = (float)focusTripleAddressAngle.Z;
+                    PositionAngle focusPosAngle = GetCamHackFocusPosAngle(camHackMode);
+                    float xFocus = (float)focusPosAngle.X;
+                    float yFocus = (float)focusPosAngle.Y;
+                    float zFocus = (float)focusPosAngle.Z;
 
                     float xCamPos = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
                     float yCamPos = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
@@ -1244,10 +1244,10 @@ namespace STROOP.Utilities
         {
             HandleScaling(ref thetaOffset, ref phiOffset);
 
-            PositionAngle focusTripleAddressAngle = GetCamHackFocusPosAngle(camHackMode);
-            float xFocus = (float)focusTripleAddressAngle.X;
-            float yFocus = (float)focusTripleAddressAngle.Y;
-            float zFocus = (float)focusTripleAddressAngle.Z;
+            PositionAngle focusPosAngle = GetCamHackFocusPosAngle(camHackMode);
+            float xFocus = (float)focusPosAngle.X;
+            float yFocus = (float)focusPosAngle.Y;
+            float zFocus = (float)focusPosAngle.Z;
 
             float xCamPos = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
             float yCamPos = Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
@@ -1258,7 +1258,7 @@ namespace STROOP.Utilities
                 MoreMath.OffsetSphericallyAboutPivot(xFocus, yFocus, zFocus, radiusOffset, thetaOffset, phiOffset, xCamPos, yCamPos, zCamPos);
 
             return ChangeValues(
-                new List<PositionAngle> { focusTripleAddressAngle },
+                new List<PositionAngle> { focusPosAngle },
                 (float)xDestination,
                 (float)yDestination,
                 (float)zDestination,
