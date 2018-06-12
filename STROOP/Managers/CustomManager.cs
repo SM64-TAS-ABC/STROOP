@@ -41,19 +41,19 @@ namespace STROOP.Managers
             // Panel 1 controls
 
             Button buttonOpenVars = splitContainerCustomControls.Panel1.Controls["buttonOpenVars"] as Button;
-            buttonOpenVars.Click += (sender, e) => OpenVariables();
+            buttonOpenVars.Click += (sender, e) => _variablePanel.OpenVariables();
 
             Button buttonSaveVars = splitContainerCustomControls.Panel1.Controls["buttonSaveVars"] as Button;
-            buttonSaveVars.Click += (sender, e) => SaveVariables();
+            buttonSaveVars.Click += (sender, e) => _variablePanel.SaveVariables();
 
             Button buttonClearVars = splitContainerCustomControls.Panel1.Controls["buttonClearVars"] as Button;
-            buttonClearVars.Click += (sender, e) => ClearVariables();
+            buttonClearVars.Click += (sender, e) => _variablePanel.ClearVariables();
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonClearVars,
                 new List<string>() { "Clear All Vars", "Clear Default Vars" },
                 new List<Action>()
                 {
-                    () => ClearVariables(),
+                    () => _variablePanel.ClearVariables(),
                     () => _variablePanel.RemoveVariableGroup(VariableGroup.NoGroup),
                 });
 

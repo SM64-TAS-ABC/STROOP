@@ -64,21 +64,6 @@ namespace STROOP.Managers
             _variablePanel.AddVariables(watchVarControls);
         }
 
-        public virtual void ClearVariables()
-        {
-            _variablePanel.ClearVariables();
-        }
-
-        public void OpenVariables()
-        {
-            _variablePanel.OpenVariables();
-        }
-
-        public void SaveVariables()
-        {
-            _variablePanel.SaveVariables();
-        }
-
         public void SaveVariablesInPlace()
         {
             if (!DialogUtilities.AskQuestionAboutSavingVariableFileInPlace()) return;
