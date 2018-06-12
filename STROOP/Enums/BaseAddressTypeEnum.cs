@@ -32,6 +32,7 @@ namespace STROOP.Structs
         Waypoint,
         Water,
         Area,
+        LastCoin,
 
         Ghost,
         HackedArea,

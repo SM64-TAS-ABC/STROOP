@@ -118,6 +118,14 @@ namespace STROOP.Structs
                 case BaseAddressTypeEnum.Area:
                     return new List<uint> { Config.AreaManager.SelectedAreaAddress };
 
+                case BaseAddressTypeEnum.LastCoin:
+                    {
+                        List<uint> coinAddresses = Config.ObjectSlotsManager.GetLoadedObjectsWithPredicate(
+                            o => o.BehaviorAssociation?.Name == "Yellow Coin" || o.BehaviorAssociation?.Name == "Blue Coin")
+                            .ConvertAll(objectDataModel => objectDataModel.Address);
+                        return coinAddresses.Count > 0 ? new List<uint>() { coinAddresses.Last() } : BaseAddressListEmpty;
+                    }
+
                 case BaseAddressTypeEnum.Ghost:
                     return Config.ObjectSlotsManager.GetLoadedObjectsWithName("Mario Ghost")
                         .ConvertAll(objectDataModel => objectDataModel.Address);

@@ -337,6 +337,11 @@ namespace STROOP.Managers
                 && o.BehaviorAssociation?.Name == name).ToList();
         }
 
+        public List<ObjectDataModel> GetLoadedObjectsWithPredicate(Func<ObjectDataModel, bool> func)
+        {
+            return DataModels.Objects.Where(o => o != null && o.IsActive && func(o)).ToList();
+        }
+
         public ObjectDataModel GetObjectFromLabel(string name)
         {
             if (name == null) return null;
