@@ -33,193 +33,13 @@ namespace STROOP.Utilities
             Hybrid,
         }
 
-        public double X
+        private bool ShouldHaveAddress(PositionAngleTypeEnum posAngleType)
         {
-            get
-            {
-                switch (PosAngleType)
-                {
-                    case PositionAngleTypeEnum.Custom:
-                        return SpecialConfig.CustomX;
-                    case PositionAngleTypeEnum.Mario:
-                        return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-                    case PositionAngleTypeEnum.Holp:
-                        return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpXOffset);
-                    case PositionAngleTypeEnum.Camera:
-                        return Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.XOffset);
-                    case PositionAngleTypeEnum.CamHackCamera:
-                        return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
-                    case PositionAngleTypeEnum.CamHackFocus:
-                        return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
-                    case PositionAngleTypeEnum.Obj:
-                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.XOffset);
-                    case PositionAngleTypeEnum.ObjHome:
-                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.HomeXOffset);
-                    case PositionAngleTypeEnum.ObjGfx:
-                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.GraphicsXOffset);
-                    case PositionAngleTypeEnum.ObjScale:
-                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.ScaleWidthOffset);
-                    case PositionAngleTypeEnum.Tri:
-                        uint triVertexOffset;
-                        switch (TriVertex.Value)
-                        {
-                            case 1:
-                                triVertexOffset = TriangleOffsetsConfig.X1;
-                                break;
-                            case 2:
-                                triVertexOffset = TriangleOffsetsConfig.X2;
-                                break;
-                            case 3:
-                                triVertexOffset = TriangleOffsetsConfig.X3;
-                                break;
-                            default:
-                                throw new ArgumentOutOfRangeException();
-                        }
-                        return Config.Stream.GetInt16(Address.Value + triVertexOffset);
-                    case PositionAngleTypeEnum.Hybrid:
-                        return PosPA.X;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-            }
-        }
-
-        public double Y
-        {
-            get
-            {
-                switch (PosAngleType)
-                {
-                    case PositionAngleTypeEnum.Custom:
-                        return SpecialConfig.CustomY;
-                    case PositionAngleTypeEnum.Mario:
-                        return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                    case PositionAngleTypeEnum.Holp:
-                        return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpYOffset);
-                    case PositionAngleTypeEnum.Camera:
-                        return Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.YOffset);
-                    case PositionAngleTypeEnum.CamHackCamera:
-                        return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
-                    case PositionAngleTypeEnum.CamHackFocus:
-                        return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
-                    case PositionAngleTypeEnum.Obj:
-                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.YOffset);
-                    case PositionAngleTypeEnum.ObjHome:
-                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.HomeYOffset);
-                    case PositionAngleTypeEnum.ObjGfx:
-                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.GraphicsYOffset);
-                    case PositionAngleTypeEnum.ObjScale:
-                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.ScaleHeightOffset);
-                    case PositionAngleTypeEnum.Tri:
-                        uint triVertexOffset;
-                        switch (TriVertex.Value)
-                        {
-                            case 1:
-                                triVertexOffset = TriangleOffsetsConfig.Y1;
-                                break;
-                            case 2:
-                                triVertexOffset = TriangleOffsetsConfig.Y2;
-                                break;
-                            case 3:
-                                triVertexOffset = TriangleOffsetsConfig.Y3;
-                                break;
-                            default:
-                                throw new ArgumentOutOfRangeException();
-                        }
-                        return Config.Stream.GetInt16(Address.Value + triVertexOffset);
-                    case PositionAngleTypeEnum.Hybrid:
-                        return PosPA.Y;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-            }
-        }
-
-        public double Z
-        {
-            get
-            {
-                switch (PosAngleType)
-                {
-                    case PositionAngleTypeEnum.Custom:
-                        return SpecialConfig.CustomZ;
-                    case PositionAngleTypeEnum.Mario:
-                        return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-                    case PositionAngleTypeEnum.Holp:
-                        return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpZOffset);
-                    case PositionAngleTypeEnum.Camera:
-                        return Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.ZOffset);
-                    case PositionAngleTypeEnum.CamHackCamera:
-                        return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
-                    case PositionAngleTypeEnum.CamHackFocus:
-                        return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
-                    case PositionAngleTypeEnum.Obj:
-                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.ZOffset);
-                    case PositionAngleTypeEnum.ObjHome:
-                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.HomeZOffset);
-                    case PositionAngleTypeEnum.ObjGfx:
-                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.GraphicsZOffset);
-                    case PositionAngleTypeEnum.ObjScale:
-                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.ScaleDepthOffset);
-                    case PositionAngleTypeEnum.Tri:
-                        uint triVertexOffset;
-                        switch (TriVertex.Value)
-                        {
-                            case 1:
-                                triVertexOffset = TriangleOffsetsConfig.Z1;
-                                break;
-                            case 2:
-                                triVertexOffset = TriangleOffsetsConfig.Z2;
-                                break;
-                            case 3:
-                                triVertexOffset = TriangleOffsetsConfig.Z3;
-                                break;
-                            default:
-                                throw new ArgumentOutOfRangeException();
-                        }
-                        return Config.Stream.GetInt16(Address.Value + triVertexOffset);
-                    case PositionAngleTypeEnum.Hybrid:
-                        return PosPA.Z;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-            }
-        }
-
-        public double Angle
-        {
-            get
-            {
-                switch (PosAngleType)
-                {
-                    case PositionAngleTypeEnum.Custom:
-                        return SpecialConfig.CustomAngle;
-                    case PositionAngleTypeEnum.Mario:
-                        return Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
-                    case PositionAngleTypeEnum.Holp:
-                        return Double.NaN;
-                    case PositionAngleTypeEnum.Camera:
-                        return Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
-                    case PositionAngleTypeEnum.CamHackCamera:
-                        return CamHackUtilities.GetCamHackYawFacing();
-                    case PositionAngleTypeEnum.CamHackFocus:
-                        return CamHackUtilities.GetCamHackYawFacing();
-                    case PositionAngleTypeEnum.Obj:
-                        return Config.Stream.GetUInt16(Address.Value + ObjectConfig.YawFacingOffset);
-                    case PositionAngleTypeEnum.ObjHome:
-                        return Double.NaN;
-                    case PositionAngleTypeEnum.ObjGfx:
-                        return Config.Stream.GetUInt16(Address.Value + ObjectConfig.GraphicsYawOffset);
-                    case PositionAngleTypeEnum.ObjScale:
-                        return Double.NaN;
-                    case PositionAngleTypeEnum.Tri:
-                        return Double.NaN;
-                    case PositionAngleTypeEnum.Hybrid:
-                        return AnglePA.Angle;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-            }
+            return posAngleType == PositionAngleTypeEnum.Obj ||
+                posAngleType == PositionAngleTypeEnum.ObjHome ||
+                posAngleType == PositionAngleTypeEnum.ObjGfx ||
+                posAngleType == PositionAngleTypeEnum.ObjScale ||
+                posAngleType == PositionAngleTypeEnum.Tri;
         }
 
         private PositionAngle(
@@ -235,10 +55,7 @@ namespace STROOP.Utilities
             PosPA = posPA;
             AnglePA = anglePA;
 
-            bool shouldHaveAddress =
-                posAngleType == PositionAngleTypeEnum.Obj ||
-                posAngleType == PositionAngleTypeEnum.ObjHome ||
-                posAngleType == PositionAngleTypeEnum.Tri;
+            bool shouldHaveAddress = ShouldHaveAddress(posAngleType);
             if (address.HasValue != shouldHaveAddress)
                 throw new ArgumentOutOfRangeException();
 
@@ -365,10 +182,205 @@ namespace STROOP.Utilities
 
 
 
+        public double X
+        {
+            get
+            {
+                if (ShouldHaveAddress(PosAngleType) && Address == 0) return Double.NaN;
+                switch (PosAngleType)
+                {
+                    case PositionAngleTypeEnum.Custom:
+                        return SpecialConfig.CustomX;
+                    case PositionAngleTypeEnum.Mario:
+                        return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                    case PositionAngleTypeEnum.Holp:
+                        return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpXOffset);
+                    case PositionAngleTypeEnum.Camera:
+                        return Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.XOffset);
+                    case PositionAngleTypeEnum.CamHackCamera:
+                        return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraXOffset);
+                    case PositionAngleTypeEnum.CamHackFocus:
+                        return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusXOffset);
+                    case PositionAngleTypeEnum.Obj:
+                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.XOffset);
+                    case PositionAngleTypeEnum.ObjHome:
+                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.HomeXOffset);
+                    case PositionAngleTypeEnum.ObjGfx:
+                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.GraphicsXOffset);
+                    case PositionAngleTypeEnum.ObjScale:
+                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.ScaleWidthOffset);
+                    case PositionAngleTypeEnum.Tri:
+                        uint triVertexOffset;
+                        switch (TriVertex.Value)
+                        {
+                            case 1:
+                                triVertexOffset = TriangleOffsetsConfig.X1;
+                                break;
+                            case 2:
+                                triVertexOffset = TriangleOffsetsConfig.X2;
+                                break;
+                            case 3:
+                                triVertexOffset = TriangleOffsetsConfig.X3;
+                                break;
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+                        return Config.Stream.GetInt16(Address.Value + triVertexOffset);
+                    case PositionAngleTypeEnum.Hybrid:
+                        return PosPA.X;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
+
+        public double Y
+        {
+            get
+            {
+                if (ShouldHaveAddress(PosAngleType) && Address == 0) return Double.NaN;
+                switch (PosAngleType)
+                {
+                    case PositionAngleTypeEnum.Custom:
+                        return SpecialConfig.CustomY;
+                    case PositionAngleTypeEnum.Mario:
+                        return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    case PositionAngleTypeEnum.Holp:
+                        return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpYOffset);
+                    case PositionAngleTypeEnum.Camera:
+                        return Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.YOffset);
+                    case PositionAngleTypeEnum.CamHackCamera:
+                        return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraYOffset);
+                    case PositionAngleTypeEnum.CamHackFocus:
+                        return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusYOffset);
+                    case PositionAngleTypeEnum.Obj:
+                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.YOffset);
+                    case PositionAngleTypeEnum.ObjHome:
+                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.HomeYOffset);
+                    case PositionAngleTypeEnum.ObjGfx:
+                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.GraphicsYOffset);
+                    case PositionAngleTypeEnum.ObjScale:
+                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.ScaleHeightOffset);
+                    case PositionAngleTypeEnum.Tri:
+                        uint triVertexOffset;
+                        switch (TriVertex.Value)
+                        {
+                            case 1:
+                                triVertexOffset = TriangleOffsetsConfig.Y1;
+                                break;
+                            case 2:
+                                triVertexOffset = TriangleOffsetsConfig.Y2;
+                                break;
+                            case 3:
+                                triVertexOffset = TriangleOffsetsConfig.Y3;
+                                break;
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+                        return Config.Stream.GetInt16(Address.Value + triVertexOffset);
+                    case PositionAngleTypeEnum.Hybrid:
+                        return PosPA.Y;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
+
+        public double Z
+        {
+            get
+            {
+                if (ShouldHaveAddress(PosAngleType) && Address == 0) return Double.NaN;
+                switch (PosAngleType)
+                {
+                    case PositionAngleTypeEnum.Custom:
+                        return SpecialConfig.CustomZ;
+                    case PositionAngleTypeEnum.Mario:
+                        return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                    case PositionAngleTypeEnum.Holp:
+                        return Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpZOffset);
+                    case PositionAngleTypeEnum.Camera:
+                        return Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.ZOffset);
+                    case PositionAngleTypeEnum.CamHackCamera:
+                        return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.CameraZOffset);
+                    case PositionAngleTypeEnum.CamHackFocus:
+                        return Config.Stream.GetSingle(CamHackConfig.StructAddress + CamHackConfig.FocusZOffset);
+                    case PositionAngleTypeEnum.Obj:
+                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.ZOffset);
+                    case PositionAngleTypeEnum.ObjHome:
+                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.HomeZOffset);
+                    case PositionAngleTypeEnum.ObjGfx:
+                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.GraphicsZOffset);
+                    case PositionAngleTypeEnum.ObjScale:
+                        return Config.Stream.GetSingle(Address.Value + ObjectConfig.ScaleDepthOffset);
+                    case PositionAngleTypeEnum.Tri:
+                        uint triVertexOffset;
+                        switch (TriVertex.Value)
+                        {
+                            case 1:
+                                triVertexOffset = TriangleOffsetsConfig.Z1;
+                                break;
+                            case 2:
+                                triVertexOffset = TriangleOffsetsConfig.Z2;
+                                break;
+                            case 3:
+                                triVertexOffset = TriangleOffsetsConfig.Z3;
+                                break;
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+                        return Config.Stream.GetInt16(Address.Value + triVertexOffset);
+                    case PositionAngleTypeEnum.Hybrid:
+                        return PosPA.Z;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
+
+        public double Angle
+        {
+            get
+            {
+                if (ShouldHaveAddress(PosAngleType) && Address == 0) return Double.NaN;
+                switch (PosAngleType)
+                {
+                    case PositionAngleTypeEnum.Custom:
+                        return SpecialConfig.CustomAngle;
+                    case PositionAngleTypeEnum.Mario:
+                        return Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    case PositionAngleTypeEnum.Holp:
+                        return Double.NaN;
+                    case PositionAngleTypeEnum.Camera:
+                        return Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
+                    case PositionAngleTypeEnum.CamHackCamera:
+                        return CamHackUtilities.GetCamHackYawFacing();
+                    case PositionAngleTypeEnum.CamHackFocus:
+                        return CamHackUtilities.GetCamHackYawFacing();
+                    case PositionAngleTypeEnum.Obj:
+                        return Config.Stream.GetUInt16(Address.Value + ObjectConfig.YawFacingOffset);
+                    case PositionAngleTypeEnum.ObjHome:
+                        return Double.NaN;
+                    case PositionAngleTypeEnum.ObjGfx:
+                        return Config.Stream.GetUInt16(Address.Value + ObjectConfig.GraphicsYawOffset);
+                    case PositionAngleTypeEnum.ObjScale:
+                        return Double.NaN;
+                    case PositionAngleTypeEnum.Tri:
+                        return Double.NaN;
+                    case PositionAngleTypeEnum.Hybrid:
+                        return AnglePA.Angle;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
+
+
 
 
         public bool SetX(double value)
         {
+            if (ShouldHaveAddress(PosAngleType) && Address == 0) return false;
             switch (PosAngleType)
             {
                 case PositionAngleTypeEnum.Custom:
@@ -418,6 +430,7 @@ namespace STROOP.Utilities
 
         public bool SetY(double value)
         {
+            if (ShouldHaveAddress(PosAngleType) && Address == 0) return false;
             switch (PosAngleType)
             {
                 case PositionAngleTypeEnum.Custom:
@@ -467,6 +480,7 @@ namespace STROOP.Utilities
 
         public bool SetZ(double value)
         {
+            if (ShouldHaveAddress(PosAngleType) && Address == 0) return false;
             switch (PosAngleType)
             {
                 case PositionAngleTypeEnum.Custom:
@@ -516,6 +530,7 @@ namespace STROOP.Utilities
 
         public bool SetAngle(double value)
         {
+            if (ShouldHaveAddress(PosAngleType) && Address == 0) return false;
             ushort valueUShort = MoreMath.NormalizeAngleUshort(value);
             switch (PosAngleType)
             {
