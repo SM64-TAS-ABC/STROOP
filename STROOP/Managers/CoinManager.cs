@@ -88,7 +88,34 @@ namespace STROOP.Managers
         public void Update(bool updateView)
         {
             if (!updateView) return;
-            
+
+            double? hSpeedScaleNullable = ParsingUtilities.ParseDoubleNullable(_textBoxCoinHSpeedScale.Text);
+            if (hSpeedScaleNullable.HasValue)
+            {
+                double hSpeedScale = hSpeedScaleNullable.Value;
+                double hSpeedMin = 0;
+                double hSpeedMax = hSpeedScale;
+                _labelCoinHSpeedRange.Text = String.Format("HSpeed Range: [{0},{1})", hSpeedMin, hSpeedMax);
+            }
+            else
+            {
+                _labelCoinHSpeedRange.Text = "HSpeed Range:";
+            }
+
+            double? vSpeedScaleNullable = ParsingUtilities.ParseDoubleNullable(_textBoxCoinVSpeedScale.Text);
+            double? vSpeedOffsetNullable = ParsingUtilities.ParseDoubleNullable(_textBoxCoinVSpeedOffset.Text);
+            if (vSpeedScaleNullable.HasValue && vSpeedOffsetNullable.HasValue)
+            {
+                double vSpeedScale = vSpeedScaleNullable.Value;
+                double vSpeedOffset = vSpeedOffsetNullable.Value;
+                double vSpeedMin = vSpeedOffset;
+                double vSpeedMax = vSpeedScale + vSpeedOffset;
+                _labelCoinVSpeedRange.Text = String.Format("VSpeed Range: [{0},{1})", vSpeedMin, vSpeedMax);
+            }
+            else
+            {
+                _labelCoinVSpeedRange.Text = "VSpeed Range:";
+            }
         }
     }
 }
