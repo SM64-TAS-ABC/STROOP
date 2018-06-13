@@ -694,49 +694,63 @@ namespace STROOP.Structs
             _dictionary.Add("BitfsPlatformGroupMinHeight",
                 ((uint objAddress) =>
                 {
-                    int timer = Config.Stream.GetInt32(objAddress + 0xF4);
+                    int timer = Config.Stream.GetInt32(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
                     float height = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
                     return BitfsPlatformGroupTable.GetMinHeight(timer, height);
                 },
-                (double doubleValue, uint objAddress) =>
+                (double newMinHeight, uint objAddress) =>
                 {
-                    return false;
+                    int timer = Config.Stream.GetInt32(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
+                    float height = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    double oldMinHeight = BitfsPlatformGroupTable.GetMinHeight(timer, height);
+                    double heightDiff = newMinHeight - oldMinHeight;
+                    float oldHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    double newHeight = oldHeight + heightDiff;
+                    return Config.Stream.SetValue((float)newHeight, objAddress + ObjectConfig.YOffset);
                 }));
 
             _dictionary.Add("BitfsPlatformGroupMaxHeight",
                 ((uint objAddress) =>
                 {
-                    int timer = Config.Stream.GetInt32(objAddress + 0xF4);
+                    int timer = Config.Stream.GetInt32(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
                     float height = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
                     return BitfsPlatformGroupTable.GetMaxHeight(timer, height);
                 },
-                (double doubleValue, uint objAddress) =>
+                (double newMaxHeight, uint objAddress) =>
                 {
-                    return false;
+                    int timer = Config.Stream.GetInt32(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
+                    float height = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    double oldMaxHeight = BitfsPlatformGroupTable.GetMaxHeight(timer, height);
+                    double heightDiff = newMaxHeight - oldMaxHeight;
+                    float oldHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    double newHeight = oldHeight + heightDiff;
+                    return Config.Stream.SetValue((float)newHeight, objAddress + ObjectConfig.YOffset);
                 }));
 
             _dictionary.Add("BitfsPlatformGroupRelativeHeight",
                 ((uint objAddress) =>
                 {
-                    int timer = Config.Stream.GetInt32(objAddress + 0xF4);
+                    int timer = Config.Stream.GetInt32(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
                     return BitfsPlatformGroupTable.GetRelativeHeightFromMin(timer);
                 },
-                (double doubleValue, uint objAddress) =>
-                {
-                    return false;
-                }));
+                DEFAULT_SETTER));
 
             _dictionary.Add("BitfsPlatformGroupDisplacedHeight",
                 ((uint objAddress) =>
                 {
-                    int timer = Config.Stream.GetInt32(objAddress + 0xF4);
+                    int timer = Config.Stream.GetInt32(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
                     float height = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
                     float homeHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeYOffset);
                     return BitfsPlatformGroupTable.GetDisplacedHeight(timer, height, homeHeight);
                 },
-                (double doubleValue, uint objAddress) =>
+                (double displacedHeight, uint objAddress) =>
                 {
-                    return false;
+                    float homeHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeYOffset);
+                    double newMaxHeight = homeHeight + displacedHeight;
+                    int timer = Config.Stream.GetInt32(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
+                    float relativeHeightFromMax = BitfsPlatformGroupTable.GetRelativeHeightFromMax(timer);
+                    double newHeight = newMaxHeight + relativeHeightFromMax;
+                    return Config.Stream.SetValue((float)newHeight, objAddress + ObjectConfig.YOffset);
                 }));
 
             // Mario vars

@@ -96,5 +96,7 @@ namespace STROOP.Structs
         public static uint SignGraphicsId { get => RomVersionConfig.Switch(SignGraphicsIdUS, SignGraphicsIdJP); }
         public static readonly uint SignGraphicsIdUS = 0x800F8C4C;
         public static readonly uint SignGraphicsIdJP = 0x800F5DCC;
+
+        public static readonly uint BitfsPlatformGroupTimerOffset = 0xF4;
     }
 }
