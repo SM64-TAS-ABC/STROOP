@@ -12,17 +12,17 @@ namespace STROOP.Utilities
     public class CoinObject
     {
         public readonly int NumCoins;
-        public readonly int HSpeedScale;
-        public readonly int VSpeedScale;
-        public readonly int VSpeedOffset;
+        public readonly double HSpeedScale;
+        public readonly double VSpeedScale;
+        public readonly double VSpeedOffset;
         public readonly CoinParamOrder CoinParamOrder;
         public readonly string Name;
 
-        private CoinObject(
+        public CoinObject(
             int numCoins,
-            int hSpeedScale,
-            int vSpeedScale,
-            int vSpeedOffset,
+            double hSpeedScale,
+            double vSpeedScale,
+            double vSpeedOffset,
             CoinParamOrder coinParamOrder,
             string name)
         {
@@ -34,17 +34,17 @@ namespace STROOP.Utilities
             Name = name;
         }
 
-        private float CalculateHSpeed(int rngIndex)
+        private double CalculateHSpeed(int rngIndex)
         {
             ushort rngValue = RngIndexer.GetRngValue(rngIndex);
-            float hSpeed = (rngValue / 65536f) * HSpeedScale;
+            double hSpeed = (rngValue / 65536d) * HSpeedScale;
             return hSpeed;
         }
 
-        private float CalculateVSpeed(int rngIndex)
+        private double CalculateVSpeed(int rngIndex)
         {
             ushort rngValue = RngIndexer.GetRngValue(rngIndex);
-            float vSpeed = (rngValue / 65536f) * VSpeedScale + VSpeedOffset;
+            double vSpeed = (rngValue / 65536d) * VSpeedScale + VSpeedOffset;
             return vSpeed;
         }
 
@@ -68,8 +68,8 @@ namespace STROOP.Utilities
 
         public CoinTrajectory CalculateCoinTrajectory(int rngIndex)
         {
-            float hSpeed;
-            float vSpeed;
+            double hSpeed;
+            double vSpeed;
             ushort angle;
             switch (CoinParamOrder)
             {

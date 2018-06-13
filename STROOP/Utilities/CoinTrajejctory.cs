@@ -11,13 +11,13 @@ namespace STROOP.Utilities
 {
     public class CoinTrajectory
     {
-        public readonly float _hSpeed;
-        public readonly float _vSpeed;
-        public readonly float _angle;
+        public readonly double _hSpeed;
+        public readonly double _vSpeed;
+        public readonly ushort _angle;
 
         public CoinTrajectory(
-            float hSpeed,
-            float vSpeed,
+            double hSpeed,
+            double vSpeed,
             ushort angle)
         {
             _hSpeed = hSpeed;

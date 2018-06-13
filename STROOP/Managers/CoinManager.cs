@@ -92,9 +92,28 @@ namespace STROOP.Managers
 
         private void CalculateCoinTrajectories()
         {
-            List<CoinTrajectory> coinTrajectories = Enumerable.Range(0, 11).ToList().ConvertAll(
-                num => CoinObject.Bobomb.CalculateCoinTrajectory(num));
+            double? hSpeedScale = ParsingUtilities.ParseIntNullable(_textBoxCoinHSpeedScale);
+            double? vSpeedScale = ParsingUtilities.ParseIntNullable(_textBoxCoinVSpeedScale);
+            double? vSpeedOffset = ParsingUtilities.ParseIntNullable(_textBoxCoinVSpeedOffset);
+            bool coinParamOrderParsed = Enum.TryParse(_textBoxCoinParamOrder.Text, out CoinParamOrder coinParamOrder);
 
+            if (hSpeedScale.HasValue && vSpeedScale.HasValue && vSpeedOffset.HasValue && coinParamOrderParsed)
+            {
+                CoinObject coinObject = new CoinObject(
+                    numCoins: 1,
+                    hSpeedScale: hSpeedScale.Value,
+                    vSpeedScale: vSpeedScale.Value,
+                    vSpeedOffset: vSpeedOffset.Value,
+                    coinParamOrder: coinParamOrder,
+                    name: "Dummy");
+                List<CoinTrajectory> coinTrajectories = Enumerable.Range(0, 65114).ToList().ConvertAll(
+                    rngIndex => coinObject.CalculateCoinTrajectory(rngIndex));
+                AddCoinTrajectoriesToTable(coinTrajectories, null);
+            }
+        }
+
+        private void AddCoinTrajectoriesToTable(List<CoinTrajectory> coinTrajectories, int? startingRngIndex)
+        {
 
         }
 
