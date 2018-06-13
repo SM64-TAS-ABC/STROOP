@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <InputImageAssociations>
   <Config>
-    <InputImageDirectory>Resources\Input Images\Classic\</InputImageDirectory>
+    <ClassicInputImageDirectory>Resources\Input Images\Classic\</ClassicInputImageDirectory>
+    <SleekInputImageDirectory>Resources\Input Images\Sleek\</SleekInputImageDirectory>
   </Config>
   <InputImages>
     <ButtonA>

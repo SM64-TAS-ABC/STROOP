@@ -487,7 +487,7 @@ namespace STROOP.Utilities
             return assoc;
         }
 
-        public static void OpenInputImageAssoc(string path, InputImageGui inputImageGui)
+        public static void OpenInputImageAssoc(string path, InputImageGui inputImageGui, bool useSleek)
         {
             var assembly = Assembly.GetExecutingAssembly();
 
@@ -531,8 +531,11 @@ namespace STROOP.Utilities
                         {
                             switch (subElement.Name.ToString())
                             {
-                                case "InputImageDirectory":
-                                    inputImageDir = subElement.Value;
+                                case "ClassicInputImageDirectory":
+                                    if (!useSleek) inputImageDir = subElement.Value;
+                                    break;
+                                case "SleekInputImageDirectory":
+                                    if (useSleek) inputImageDir = subElement.Value;
                                     break;
                             }
                         }

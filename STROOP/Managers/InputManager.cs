@@ -14,18 +14,22 @@ namespace STROOP.Managers
 {
     public class InputManager : DataManager
     {
-        InputImageGui _gui;
+        InputImageGui _classicGui;
+        InputImageGui _sleekGui;
         InputDisplayPanel _inputDisplayPanel;
 
-        public InputManager(string varFilePath, Control inputControl, WatchVariableFlowLayoutPanel variableTable, InputImageGui gui)
+        public InputManager(
+            string varFilePath, Control inputControl, WatchVariableFlowLayoutPanel variableTable,
+            InputImageGui classicGui, InputImageGui sleekGui)
             : base(varFilePath, variableTable)
         {
-            _gui = gui;
+            _classicGui = classicGui;
+            _sleekGui = sleekGui;
 
             SplitContainer splitContainerInput = inputControl.Controls["splitContainerInput"] as SplitContainer;
             _inputDisplayPanel = splitContainerInput.Panel1.Controls["inputDisplayPanel"] as InputDisplayPanel;
 
-            _inputDisplayPanel.setInputDisplayGui(_gui);
+            _inputDisplayPanel.setInputDisplayGui(_classicGui, _sleekGui);
         }
 
         public override void Update(bool updateView)

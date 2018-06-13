@@ -25,7 +25,8 @@ namespace STROOP
         const string _version = "v0.3.0d";
         
         ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();
-        InputImageGui _inputImageGui = new InputImageGui();
+        InputImageGui _classicInputImageGui = new InputImageGui();
+        InputImageGui _sleekInputImageGui = new InputImageGui();
         FileImageGui _fileImageGui = new FileImageGui();
         MapAssociations _mapAssoc;
         ScriptParser _scriptParser;
@@ -255,7 +256,7 @@ namespace STROOP
             Config.ModelManager = new ModelManager(tabPageModel);
             Config.ActionsManager = new ActionsManager(@"Config/ActionsData.xml", watchVariablePanelActions, tabPageActions);
             Config.WaterManager = new WaterManager(@"Config/WaterData.xml", watchVariablePanelWater);
-            Config.InputManager = new InputManager(@"Config/InputData.xml", tabPageInput, watchVariablePanelInput, _inputImageGui);
+            Config.InputManager = new InputManager(@"Config/InputData.xml", tabPageInput, watchVariablePanelInput, _classicInputImageGui, _sleekInputImageGui);
             Config.MarioManager = new MarioManager(@"Config/MarioData.xml", tabPageMario, WatchVariablePanelMario);
             Config.HudManager = new HudManager(@"Config/HudData.xml", tabPageHud, watchVariablePanelHud);
             Config.MiscManager = new MiscManager(@"Config/MiscData.xml", watchVariablePanelMisc, tabPageMisc);
@@ -342,7 +343,8 @@ namespace STROOP
             loadingForm.UpdateStatus("Loading Water Data", statusNum++);
             loadingForm.UpdateStatus("Loading Input Data", statusNum++);
             loadingForm.UpdateStatus("Loading Input Image Associations", statusNum++);
-            XmlConfigParser.OpenInputImageAssoc(@"Config/InputImageAssociations.xml", _inputImageGui);
+            XmlConfigParser.OpenInputImageAssoc(@"Config/InputImageAssociations.xml", _classicInputImageGui, false);
+            XmlConfigParser.OpenInputImageAssoc(@"Config/InputImageAssociations.xml", _sleekInputImageGui, true);
             loadingForm.UpdateStatus("Loading File Data", statusNum++);
             loadingForm.UpdateStatus("Loading File Image Associations", statusNum++);
             XmlConfigParser.OpenFileImageAssoc(@"Config/FileImageAssociations.xml", _fileImageGui);
