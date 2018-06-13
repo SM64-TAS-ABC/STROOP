@@ -535,7 +535,15 @@ namespace STROOP.Structs
                     double minHeight = TableConfig.FlyGuyData.GetMinHeight(oscillationTimer, objY);
                     return minHeight;
                 },
-                DEFAULT_SETTER));
+                (double newMinHeight, uint objAddress) =>
+                {
+                    int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
+                    float oldHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    double oldMinHeight = TableConfig.FlyGuyData.GetMinHeight(oscillationTimer, oldHeight);
+                    double heightDiff = newMinHeight - oldMinHeight;
+                    double newHeight = oldHeight + heightDiff;
+                    return Config.Stream.SetValue((float)newHeight, objAddress + ObjectConfig.YOffset);
+                }));
 
             _dictionary.Add("FlyGuyMaxHeight",
                 ((uint objAddress) =>
@@ -545,7 +553,15 @@ namespace STROOP.Structs
                     double maxHeight = TableConfig.FlyGuyData.GetMaxHeight(oscillationTimer, objY);
                     return maxHeight;
                 },
-                DEFAULT_SETTER));
+                (double newMaxHeight, uint objAddress) =>
+                {
+                    int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
+                    float oldHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    double oldMaxHeight = TableConfig.FlyGuyData.GetMaxHeight(oscillationTimer, oldHeight);
+                    double heightDiff = newMaxHeight - oldMaxHeight;
+                    double newHeight = oldHeight + heightDiff;
+                    return Config.Stream.SetValue((float)newHeight, objAddress + ObjectConfig.YOffset);
+                }));
 
             // Object specific vars - Bob-omb
 
