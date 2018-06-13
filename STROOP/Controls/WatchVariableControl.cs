@@ -651,38 +651,79 @@ namespace STROOP.Controls
             _watchVariablePanel.ContextMenuStrip.Show(point);
         }
 
-        private AddToTabTypeEnum GetAddToTabType()
+        private static AddToTabTypeEnum GetAddToTabType()
         {
-            if (Keyboard.IsKeyDown(Key.A)) return AddToTabTypeEnum.IndividualFixed;
+            if (Keyboard.IsKeyDown(Key.A)) return AddToTabTypeEnum.IndividualSpliced;
+            if (Keyboard.IsKeyDown(Key.G)) return AddToTabTypeEnum.IndividualGrouped;
             if (Keyboard.IsKeyDown(Key.F)) return AddToTabTypeEnum.Fixed;
             return AddToTabTypeEnum.Regular;
         }
 
         public void AddToTab(DataManager dataManager, AddToTabTypeEnum? addToTabTypeNullable = null)
         {
+            AddVarsToTab(new List<WatchVariableControl>() { this }, dataManager, addToTabTypeNullable);
+        }
+
+        public static void AddVarsToTab(
+            List<WatchVariableControl> watchVars, DataManager dataManager, AddToTabTypeEnum? addToTabTypeNullable = null)
+        {
+            List<List<WatchVariableControl>> newVarListList = new List<List<WatchVariableControl>>();
             AddToTabTypeEnum addToTabType = addToTabTypeNullable ?? GetAddToTabType();
-            List<uint> addressList = FixedAddressList ?? _watchVarWrapper.GetCurrentAddresses();
-            List<List<uint>> addressesLists =
-                addToTabType == AddToTabTypeEnum.IndividualFixed ?
-                    addressList.ConvertAll(address => new List<uint>() { address }) :
-                    new List<List<uint>>() { addressList };
-            for (int i = 0; i < addressesLists.Count; i++)
+            
+            foreach (WatchVariableControl watchVar in watchVars)
             {
-                string name = VarName;
-                if (addressesLists.Count > 1) name += " " + (i + 1);
-                bool useFixed =
-                    addToTabType == AddToTabTypeEnum.Fixed ||
-                    addToTabType == AddToTabTypeEnum.IndividualFixed;
-                List<uint> constructorAddressList = useFixed ? addressesLists[i] : null;
-                WatchVariableControl newControl =
-                    WatchVarPrecursor.CreateWatchVariableControl(
-                        name,
-                        _baseColor,
-                        new List<VariableGroup>() { VariableGroup.Custom },
-                        constructorAddressList);
-                dataManager.AddVariable(newControl);
+                List<WatchVariableControl> newVarList = new List<WatchVariableControl>();
+                List<uint> addressList = watchVar.FixedAddressList ?? watchVar._watchVarWrapper.GetCurrentAddresses();
+                List<List<uint>> addressesLists =
+                    addToTabType == AddToTabTypeEnum.IndividualSpliced
+                            || addToTabType == AddToTabTypeEnum.IndividualGrouped
+                        ? addressList.ConvertAll(address => new List<uint>() { address })
+                        : new List<List<uint>>() { addressList };
+                for (int i = 0; i < addressesLists.Count; i++)
+                {
+                    string name = watchVar.VarName;
+                    if (addressesLists.Count > 1) name += " " + (i + 1);
+                    bool useFixed =
+                        addToTabType == AddToTabTypeEnum.Fixed ||
+                        addToTabType == AddToTabTypeEnum.IndividualSpliced ||
+                        addToTabType == AddToTabTypeEnum.IndividualGrouped;
+                    List<uint> constructorAddressList = useFixed ? addressesLists[i] : null;
+                    WatchVariableControl newControl =
+                        watchVar.WatchVarPrecursor.CreateWatchVariableControl(
+                            name,
+                            watchVar._baseColor,
+                            new List<VariableGroup>() { VariableGroup.Custom },
+                            constructorAddressList);
+                    newVarList.Add(newControl);
+                }
+                watchVar.FlashColor(ADD_TO_CUSTOM_TAB_COLOR);
+                newVarListList.Add(newVarList);
             }
-            FlashColor(ADD_TO_CUSTOM_TAB_COLOR);
+
+            if (addToTabType == AddToTabTypeEnum.IndividualGrouped)
+            {
+                int maxListLength = newVarListList.Max(list => list.Count);
+                for (int i = 0; i < maxListLength; i++)
+                {
+                    for (int j = 0; j < newVarListList.Count; j++)
+                    {
+                        List<WatchVariableControl> newVarList = newVarListList[j];
+                        if (i >= newVarList.Count) continue;
+                        WatchVariableControl newVar = newVarList[i];
+                        dataManager.AddVariable(newVar);
+                    }
+                }
+            }
+            else
+            {
+                foreach (List<WatchVariableControl> newVarList in newVarListList)
+                {
+                    foreach (WatchVariableControl newVar in newVarList)
+                    {
+                        dataManager.AddVariable(newVar);
+                    }
+                }
+            }
         }
 
         public void AddToVarHackTab()

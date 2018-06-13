@@ -454,11 +454,13 @@ namespace STROOP.Controls
                 int index2 = Controls.IndexOf(watchVarControl);
                 int minIndex = Math.Min(index1, index2);
                 int maxIndex = Math.Max(index1, index2);
+                List<WatchVariableControl> watchVars = new List<WatchVariableControl>();
                 for (int i = minIndex; i <= maxIndex; i++)
                 {
-                    WatchVariableControl control = Controls[i] as WatchVariableControl;
-                    control.AddToTab(Config.CustomManager);
+                    WatchVariableControl watchVar = Controls[i] as WatchVariableControl;
+                    watchVars.Add(watchVar);
                 }
+                WatchVariableControl.AddVarsToTab(watchVars, Config.CustomManager);
                 _massAddToCustomTabWatchVarControl = null;
             }
         }
