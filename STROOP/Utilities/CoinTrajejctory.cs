@@ -25,5 +25,12 @@ namespace STROOP.Utilities
             _angle = angle;
         }
 
+        public override string ToString()
+        {
+            return String.Format(
+                "HSpeed:{0}, VSpeed:{1}, Angle:{2}",
+                _hSpeed, _vSpeed, _angle);
+        }
+
     }
 }
