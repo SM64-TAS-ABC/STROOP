@@ -75,6 +75,8 @@ namespace STROOP.Managers
             _listBoxCoinObjects.ClearSelected();
             _listBoxCoinObjects.SelectedValueChanged += (sender, e) => ListBoxSelectionChange();
 
+            _buttonCoinCalculate.Click += (sender, e) => CalculateCoinTrajectories();
+
         }
 
         private void ListBoxSelectionChange()
@@ -83,6 +85,12 @@ namespace STROOP.Managers
             _textBoxCoinHSpeedScale.Text = coinObject.HSpeedScale.ToString();
             _textBoxCoinVSpeedScale.Text = coinObject.VSpeedScale.ToString();
             _textBoxCoinVSpeedOffset.Text = coinObject.VSpeedOffset.ToString();
+        }
+
+        private void CalculateCoinTrajectories()
+        {
+            List<CoinTrajectory> coinTrajectories = Enumerable.Range(0, 11).ToList().ConvertAll(
+                num => CoinObject.Bobomb.CalculateCoinTrajectory(num));
         }
 
         public void Update(bool updateView)
