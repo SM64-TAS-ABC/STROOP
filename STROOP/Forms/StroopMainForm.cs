@@ -274,6 +274,7 @@ namespace STROOP
             Config.OptionsManager = new OptionsManager(tabPageOptions);
             Config.TestingManager = new TestingManager(tabPageTesting);
             Config.MemoryManager = new MemoryManager(tabPageMemory, watchVariablePanelMemory, @"Config/ObjectData.xml");
+            Config.CoinManager = new CoinManager(tabPageCoin);
             Config.ScriptManager = new ScriptManager(tabPageScripts);
             Config.GfxManager = new GfxManager(tabPageGfx, watchVariablePanelGfx);
 
@@ -429,6 +430,7 @@ namespace STROOP
                 Config.GfxManager.Update(tabControlMain.SelectedTab == tabPageGfx);
                 Config.OptionsManager.Update(tabControlMain.SelectedTab == tabPageOptions);
                 Config.MemoryManager.Update(tabControlMain.SelectedTab == tabPageMemory);
+                Config.CoinManager.Update(tabControlMain.SelectedTab == tabPageCoin);
                 Config.M64Manager.Update(tabControlMain.SelectedTab == tabPageM64);
                 Config.MapManager?.Update();
                 Config.ModelManager?.Update();
