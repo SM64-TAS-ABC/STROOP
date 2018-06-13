@@ -585,5 +585,16 @@ namespace STROOP.Utilities
             return null;
         }
 
+        public static List<E> GetFieldsOfType<E>(Type classType, object instance)
+        {
+            List<E> valueList = new List<E>();
+            foreach (FieldInfo field in classType.GetFields())
+            {
+                if (TypeUtilities.IsSubtype(field.FieldType, typeof(E)))
+                    valueList.Add((E)field.GetValue(instance));
+            }
+            return valueList;
+        }
+
     }
 }

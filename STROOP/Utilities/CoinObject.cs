@@ -16,6 +16,7 @@ namespace STROOP.Utilities
         private readonly int _vSpeedScale;
         private readonly int _vSpeedOffset;
         private readonly CoinParamsOrder _coinParamsOrder;
+        private readonly string _name;
 
         private enum CoinParamsOrder
         {
@@ -27,13 +28,15 @@ namespace STROOP.Utilities
             int hSpeedScale,
             int vSpeedScale,
             int vSpeedOffset,
-            CoinParamsOrder coinParamsOrder)
+            CoinParamsOrder coinParamsOrder,
+            string name)
         {
             _numCoins = numCoins;
             _hSpeedScale = hSpeedScale;
             _vSpeedScale = vSpeedScale;
             _vSpeedOffset = vSpeedOffset;
             _coinParamsOrder = coinParamsOrder;
+            _name = name;
         }
 
         private float CalculateHSpeed(int rngIndex)
@@ -111,46 +114,66 @@ namespace STROOP.Utilities
             return new CoinTrajectory(hSpeed, vSpeed, angle);
         }
 
+        public override string ToString()
+        {
+            return _name;
+        }
+
+        public static List<CoinObject> GetCoinObjects()
+        {
+            List<CoinObject> coinObjectList =
+                ControlUtilities.GetFieldsOfType<CoinObject>(typeof(CoinObject), null);
+            coinObjectList.Sort((co1, co2) => String.Compare(co1.ToString(), co2.ToString()));
+            return coinObjectList;
+        }
+
         public static CoinObject Bobomb = new CoinObject(
             numCoins: 1,
             hSpeedScale: 20,
             vSpeedScale: 40,
             vSpeedOffset: 17,
-            coinParamsOrder: CoinParamsOrder.HVA);
+            coinParamsOrder: CoinParamsOrder.HVA,
+            name: "Bob-omb");
 
         public static CoinObject Scuttlebug = new CoinObject(
             numCoins: 3,
             hSpeedScale: 10,
             vSpeedScale: 10,
             vSpeedOffset: 46,
-            coinParamsOrder: CoinParamsOrder.VHA);
+            coinParamsOrder: CoinParamsOrder.VHA,
+            name: "Scuttlebug");
 
         public static CoinObject TinyPiranhaPlant = new CoinObject(
             numCoins: 1,
             hSpeedScale: 10, // more like 9.929076195
             vSpeedScale: 10,
             vSpeedOffset: 46,
-            coinParamsOrder: CoinParamsOrder.VHA);
+            coinParamsOrder: CoinParamsOrder.VHA,
+            name: "Tiny Piranha Plant");
 
         public static CoinObject Goomba = new CoinObject(
             numCoins: 1,
             hSpeedScale: 10, // more like 9.936193656
             vSpeedScale: 10,
             vSpeedOffset: 46,
-            coinParamsOrder: CoinParamsOrder.VHA);
+            coinParamsOrder: CoinParamsOrder.VHA,
+            name: "Goomba");
 
         public static CoinObject Moneybag = new CoinObject(
             numCoins: 5,
             hSpeedScale: 20,
             vSpeedScale: 40,
             vSpeedOffset: 17,
-            coinParamsOrder: CoinParamsOrder.HVA);
+            coinParamsOrder: CoinParamsOrder.HVA,
+            name: "Moneybag");
 
         public static CoinObject CorkBox = new CoinObject(
             numCoins: 3,
             hSpeedScale: 20,
             vSpeedScale: 40,
             vSpeedOffset: 17,
-            coinParamsOrder: CoinParamsOrder.HVA);
+            coinParamsOrder: CoinParamsOrder.HVA,
+            name: "Cork Box");
+
     }
 }

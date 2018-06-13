@@ -53,13 +53,8 @@ namespace STROOP.Structs.Configurations
 
         public static List<DataManager> GetDataManagers()
         {
-            Type configType = typeof(Config);
-            List<DataManager> dataManagerList = new List<DataManager>();
-            foreach (FieldInfo field in configType.GetFields())
-            {
-                if (TypeUtilities.IsSubtype(field.FieldType, typeof(DataManager)))
-                    dataManagerList.Add((DataManager)field.GetValue(null));
-            }
+            List<DataManager> dataManagerList =
+                ControlUtilities.GetFieldsOfType<DataManager>(typeof(DataManager), null);
             dataManagerList.Sort((d1, d2) => d1.TabIndex - d2.TabIndex);
             return dataManagerList;
         }
