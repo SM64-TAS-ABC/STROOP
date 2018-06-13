@@ -34,9 +34,9 @@ namespace STROOP
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
@@ -1256,32 +1256,32 @@ namespace STROOP
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.comboBoxYawSigned = new System.Windows.Forms.ComboBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.betterTextbox1 = new STROOP.BetterTextbox();
-            this.betterTextbox2 = new STROOP.BetterTextbox();
-            this.betterTextbox3 = new STROOP.BetterTextbox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.betterTextbox5 = new STROOP.BetterTextbox();
-            this.betterTextbox6 = new STROOP.BetterTextbox();
-            this.betterTextbox7 = new STROOP.BetterTextbox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.betterTextbox8 = new STROOP.BetterTextbox();
-            this.betterTextbox9 = new STROOP.BetterTextbox();
-            this.betterTextbox10 = new STROOP.BetterTextbox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.listBoxCoinObjects = new System.Windows.Forms.ListBox();
+            this.textBoxCoinVSpeedOffset = new STROOP.BetterTextbox();
+            this.textBoxCoinHSpeedOffset = new STROOP.BetterTextbox();
+            this.textBoxCoinHSpeedMultiplier = new STROOP.BetterTextbox();
+            this.labelCoinVSpeedOffset = new System.Windows.Forms.Label();
+            this.labelCoinHSpeedOffset = new System.Windows.Forms.Label();
+            this.labelCoinHSpeedMultiplier = new System.Windows.Forms.Label();
+            this.labelCoinFilterHSpeedFrom = new System.Windows.Forms.Label();
+            this.labelCoinFilterVSpeedFrom = new System.Windows.Forms.Label();
+            this.labelCoinFilterAngleFrom = new System.Windows.Forms.Label();
+            this.textBoxCoinFilterHSpeedMin = new STROOP.BetterTextbox();
+            this.textBoxCoinFilterVSpeedMin = new STROOP.BetterTextbox();
+            this.textBoxCoinFilterAngleMin = new STROOP.BetterTextbox();
+            this.labelCoinFilterHSpeedTo = new System.Windows.Forms.Label();
+            this.labelCoinFilterVSpeedTo = new System.Windows.Forms.Label();
+            this.labelCoinFilterAngleTo = new System.Windows.Forms.Label();
+            this.textBoxCoinFilterHSpeedMax = new STROOP.BetterTextbox();
+            this.textBoxCoinFilterVSpeedMax = new STROOP.BetterTextbox();
+            this.textBoxCoinFilterAngleMax = new STROOP.BetterTextbox();
+            this.labelCoinFilterMin = new System.Windows.Forms.Label();
+            this.labelCoinFilterMax = new System.Windows.Forms.Label();
+            this.groupBoxCoinFilter = new System.Windows.Forms.GroupBox();
+            this.labelCoinHSpeedRange = new System.Windows.Forms.Label();
+            this.labelCoinVSpeedRange = new System.Windows.Forms.Label();
+            this.buttonCoinClear = new System.Windows.Forms.Button();
+            this.buttonCoinCalculate = new System.Windows.Forms.Button();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1672,7 +1672,7 @@ namespace STROOP
             this.groupBoxRecording.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxCoinFilter.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -4065,14 +4065,14 @@ namespace STROOP
             this.dataGridViewM64Inputs.AllowUserToResizeColumns = false;
             this.dataGridViewM64Inputs.AllowUserToResizeRows = false;
             this.dataGridViewM64Inputs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewM64Inputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewM64Inputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnM64Frame,
@@ -4093,14 +4093,14 @@ namespace STROOP
             this.ColumnM64DDown,
             this.ColumnM64DLeft,
             this.ColumnM64DRight});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewM64Inputs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewM64Inputs.EnableHeadersVisualStyles = false;
             this.dataGridViewM64Inputs.Location = new System.Drawing.Point(0, 0);
@@ -4326,18 +4326,18 @@ namespace STROOP
             // splitContainerCoin.Panel1
             // 
             this.splitContainerCoin.Panel1.AutoScroll = true;
-            this.splitContainerCoin.Panel1.Controls.Add(this.button2);
-            this.splitContainerCoin.Panel1.Controls.Add(this.button1);
-            this.splitContainerCoin.Panel1.Controls.Add(this.groupBox1);
-            this.splitContainerCoin.Panel1.Controls.Add(this.betterTextbox1);
-            this.splitContainerCoin.Panel1.Controls.Add(this.betterTextbox2);
-            this.splitContainerCoin.Panel1.Controls.Add(this.betterTextbox3);
-            this.splitContainerCoin.Panel1.Controls.Add(this.label21);
-            this.splitContainerCoin.Panel1.Controls.Add(this.label20);
-            this.splitContainerCoin.Panel1.Controls.Add(this.label8);
-            this.splitContainerCoin.Panel1.Controls.Add(this.label10);
-            this.splitContainerCoin.Panel1.Controls.Add(this.label11);
-            this.splitContainerCoin.Panel1.Controls.Add(this.listBox1);
+            this.splitContainerCoin.Panel1.Controls.Add(this.buttonCoinCalculate);
+            this.splitContainerCoin.Panel1.Controls.Add(this.buttonCoinClear);
+            this.splitContainerCoin.Panel1.Controls.Add(this.groupBoxCoinFilter);
+            this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinVSpeedOffset);
+            this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinHSpeedOffset);
+            this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinHSpeedMultiplier);
+            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinVSpeedRange);
+            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinHSpeedRange);
+            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinVSpeedOffset);
+            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinHSpeedOffset);
+            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinHSpeedMultiplier);
+            this.splitContainerCoin.Panel1.Controls.Add(this.listBoxCoinObjects);
             this.splitContainerCoin.Panel1MinSize = 0;
             // 
             // splitContainerCoin.Panel2
@@ -4356,14 +4356,14 @@ namespace STROOP
             this.dataGridViewCoin.AllowUserToOrderColumns = true;
             this.dataGridViewCoin.AllowUserToResizeRows = false;
             this.dataGridViewCoin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewCoin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCoin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.rngIndex,
@@ -16280,243 +16280,243 @@ namespace STROOP
             this.comboBoxYawSigned.Size = new System.Drawing.Size(69, 21);
             this.comboBoxYawSigned.TabIndex = 22;
             // 
-            // listBox1
+            // listBoxCoinObjects
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(3, 3);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(125, 82);
-            this.listBox1.TabIndex = 17;
+            this.listBoxCoinObjects.FormattingEnabled = true;
+            this.listBoxCoinObjects.Location = new System.Drawing.Point(3, 3);
+            this.listBoxCoinObjects.Name = "listBoxCoinObjects";
+            this.listBoxCoinObjects.Size = new System.Drawing.Size(125, 82);
+            this.listBoxCoinObjects.TabIndex = 17;
             // 
-            // betterTextbox1
+            // textBoxCoinVSpeedOffset
             // 
-            this.betterTextbox1.Location = new System.Drawing.Point(229, 58);
-            this.betterTextbox1.Name = "betterTextbox1";
-            this.betterTextbox1.Size = new System.Drawing.Size(53, 20);
-            this.betterTextbox1.TabIndex = 38;
-            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxCoinVSpeedOffset.Location = new System.Drawing.Point(229, 58);
+            this.textBoxCoinVSpeedOffset.Name = "textBoxCoinVSpeedOffset";
+            this.textBoxCoinVSpeedOffset.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinVSpeedOffset.TabIndex = 38;
+            this.textBoxCoinVSpeedOffset.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // betterTextbox2
+            // textBoxCoinHSpeedOffset
             // 
-            this.betterTextbox2.Location = new System.Drawing.Point(229, 34);
-            this.betterTextbox2.Name = "betterTextbox2";
-            this.betterTextbox2.Size = new System.Drawing.Size(53, 20);
-            this.betterTextbox2.TabIndex = 39;
-            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxCoinHSpeedOffset.Location = new System.Drawing.Point(229, 34);
+            this.textBoxCoinHSpeedOffset.Name = "textBoxCoinHSpeedOffset";
+            this.textBoxCoinHSpeedOffset.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinHSpeedOffset.TabIndex = 39;
+            this.textBoxCoinHSpeedOffset.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // betterTextbox3
+            // textBoxCoinHSpeedMultiplier
             // 
-            this.betterTextbox3.Location = new System.Drawing.Point(229, 10);
-            this.betterTextbox3.Name = "betterTextbox3";
-            this.betterTextbox3.Size = new System.Drawing.Size(53, 20);
-            this.betterTextbox3.TabIndex = 40;
-            this.betterTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxCoinHSpeedMultiplier.Location = new System.Drawing.Point(229, 10);
+            this.textBoxCoinHSpeedMultiplier.Name = "textBoxCoinHSpeedMultiplier";
+            this.textBoxCoinHSpeedMultiplier.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinHSpeedMultiplier.TabIndex = 40;
+            this.textBoxCoinHSpeedMultiplier.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label8
+            // labelCoinVSpeedOffset
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(133, 61);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(79, 13);
-            this.label8.TabIndex = 35;
-            this.label8.Text = "VSpeed Offset:";
+            this.labelCoinVSpeedOffset.AutoSize = true;
+            this.labelCoinVSpeedOffset.Location = new System.Drawing.Point(133, 61);
+            this.labelCoinVSpeedOffset.Name = "labelCoinVSpeedOffset";
+            this.labelCoinVSpeedOffset.Size = new System.Drawing.Size(79, 13);
+            this.labelCoinVSpeedOffset.TabIndex = 35;
+            this.labelCoinVSpeedOffset.Text = "VSpeed Offset:";
             // 
-            // label10
+            // labelCoinHSpeedOffset
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(133, 37);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(80, 13);
-            this.label10.TabIndex = 36;
-            this.label10.Text = "HSpeed Offset:";
+            this.labelCoinHSpeedOffset.AutoSize = true;
+            this.labelCoinHSpeedOffset.Location = new System.Drawing.Point(133, 37);
+            this.labelCoinHSpeedOffset.Name = "labelCoinHSpeedOffset";
+            this.labelCoinHSpeedOffset.Size = new System.Drawing.Size(80, 13);
+            this.labelCoinHSpeedOffset.TabIndex = 36;
+            this.labelCoinHSpeedOffset.Text = "HSpeed Offset:";
             // 
-            // label11
+            // labelCoinHSpeedMultiplier
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(133, 13);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(93, 13);
-            this.label11.TabIndex = 37;
-            this.label11.Text = "HSpeed Multiplier:";
+            this.labelCoinHSpeedMultiplier.AutoSize = true;
+            this.labelCoinHSpeedMultiplier.Location = new System.Drawing.Point(133, 13);
+            this.labelCoinHSpeedMultiplier.Name = "labelCoinHSpeedMultiplier";
+            this.labelCoinHSpeedMultiplier.Size = new System.Drawing.Size(93, 13);
+            this.labelCoinHSpeedMultiplier.TabIndex = 37;
+            this.labelCoinHSpeedMultiplier.Text = "HSpeed Multiplier:";
             // 
-            // label12
+            // labelCoinFilterHSpeedFrom
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(10, 35);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(69, 13);
-            this.label12.TabIndex = 37;
-            this.label12.Text = "HSpeed from";
+            this.labelCoinFilterHSpeedFrom.AutoSize = true;
+            this.labelCoinFilterHSpeedFrom.Location = new System.Drawing.Point(10, 35);
+            this.labelCoinFilterHSpeedFrom.Name = "labelCoinFilterHSpeedFrom";
+            this.labelCoinFilterHSpeedFrom.Size = new System.Drawing.Size(69, 13);
+            this.labelCoinFilterHSpeedFrom.TabIndex = 37;
+            this.labelCoinFilterHSpeedFrom.Text = "HSpeed from";
             // 
-            // label13
+            // labelCoinFilterVSpeedFrom
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(10, 59);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(68, 13);
-            this.label13.TabIndex = 36;
-            this.label13.Text = "VSpeed from";
+            this.labelCoinFilterVSpeedFrom.AutoSize = true;
+            this.labelCoinFilterVSpeedFrom.Location = new System.Drawing.Point(10, 59);
+            this.labelCoinFilterVSpeedFrom.Name = "labelCoinFilterVSpeedFrom";
+            this.labelCoinFilterVSpeedFrom.Size = new System.Drawing.Size(68, 13);
+            this.labelCoinFilterVSpeedFrom.TabIndex = 36;
+            this.labelCoinFilterVSpeedFrom.Text = "VSpeed from";
             // 
-            // label14
+            // labelCoinFilterAngleFrom
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(10, 83);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(57, 13);
-            this.label14.TabIndex = 35;
-            this.label14.Text = "Angle from";
+            this.labelCoinFilterAngleFrom.AutoSize = true;
+            this.labelCoinFilterAngleFrom.Location = new System.Drawing.Point(10, 83);
+            this.labelCoinFilterAngleFrom.Name = "labelCoinFilterAngleFrom";
+            this.labelCoinFilterAngleFrom.Size = new System.Drawing.Size(57, 13);
+            this.labelCoinFilterAngleFrom.TabIndex = 35;
+            this.labelCoinFilterAngleFrom.Text = "Angle from";
             // 
-            // betterTextbox5
+            // textBoxCoinFilterHSpeedMin
             // 
-            this.betterTextbox5.Location = new System.Drawing.Point(80, 32);
-            this.betterTextbox5.Name = "betterTextbox5";
-            this.betterTextbox5.Size = new System.Drawing.Size(53, 20);
-            this.betterTextbox5.TabIndex = 40;
-            this.betterTextbox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxCoinFilterHSpeedMin.Location = new System.Drawing.Point(80, 32);
+            this.textBoxCoinFilterHSpeedMin.Name = "textBoxCoinFilterHSpeedMin";
+            this.textBoxCoinFilterHSpeedMin.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinFilterHSpeedMin.TabIndex = 40;
+            this.textBoxCoinFilterHSpeedMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // betterTextbox6
+            // textBoxCoinFilterVSpeedMin
             // 
-            this.betterTextbox6.Location = new System.Drawing.Point(80, 56);
-            this.betterTextbox6.Name = "betterTextbox6";
-            this.betterTextbox6.Size = new System.Drawing.Size(53, 20);
-            this.betterTextbox6.TabIndex = 39;
-            this.betterTextbox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxCoinFilterVSpeedMin.Location = new System.Drawing.Point(80, 56);
+            this.textBoxCoinFilterVSpeedMin.Name = "textBoxCoinFilterVSpeedMin";
+            this.textBoxCoinFilterVSpeedMin.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinFilterVSpeedMin.TabIndex = 39;
+            this.textBoxCoinFilterVSpeedMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // betterTextbox7
+            // textBoxCoinFilterAngleMin
             // 
-            this.betterTextbox7.Location = new System.Drawing.Point(80, 80);
-            this.betterTextbox7.Name = "betterTextbox7";
-            this.betterTextbox7.Size = new System.Drawing.Size(53, 20);
-            this.betterTextbox7.TabIndex = 38;
-            this.betterTextbox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxCoinFilterAngleMin.Location = new System.Drawing.Point(80, 80);
+            this.textBoxCoinFilterAngleMin.Name = "textBoxCoinFilterAngleMin";
+            this.textBoxCoinFilterAngleMin.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinFilterAngleMin.TabIndex = 38;
+            this.textBoxCoinFilterAngleMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label15
+            // labelCoinFilterHSpeedTo
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(137, 35);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(16, 13);
-            this.label15.TabIndex = 37;
-            this.label15.Text = "to";
+            this.labelCoinFilterHSpeedTo.AutoSize = true;
+            this.labelCoinFilterHSpeedTo.Location = new System.Drawing.Point(137, 35);
+            this.labelCoinFilterHSpeedTo.Name = "labelCoinFilterHSpeedTo";
+            this.labelCoinFilterHSpeedTo.Size = new System.Drawing.Size(16, 13);
+            this.labelCoinFilterHSpeedTo.TabIndex = 37;
+            this.labelCoinFilterHSpeedTo.Text = "to";
             // 
-            // label16
+            // labelCoinFilterVSpeedTo
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(137, 59);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(16, 13);
-            this.label16.TabIndex = 36;
-            this.label16.Text = "to";
+            this.labelCoinFilterVSpeedTo.AutoSize = true;
+            this.labelCoinFilterVSpeedTo.Location = new System.Drawing.Point(137, 59);
+            this.labelCoinFilterVSpeedTo.Name = "labelCoinFilterVSpeedTo";
+            this.labelCoinFilterVSpeedTo.Size = new System.Drawing.Size(16, 13);
+            this.labelCoinFilterVSpeedTo.TabIndex = 36;
+            this.labelCoinFilterVSpeedTo.Text = "to";
             // 
-            // label17
+            // labelCoinFilterAngleTo
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(137, 83);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(16, 13);
-            this.label17.TabIndex = 35;
-            this.label17.Text = "to";
+            this.labelCoinFilterAngleTo.AutoSize = true;
+            this.labelCoinFilterAngleTo.Location = new System.Drawing.Point(137, 83);
+            this.labelCoinFilterAngleTo.Name = "labelCoinFilterAngleTo";
+            this.labelCoinFilterAngleTo.Size = new System.Drawing.Size(16, 13);
+            this.labelCoinFilterAngleTo.TabIndex = 35;
+            this.labelCoinFilterAngleTo.Text = "to";
             // 
-            // betterTextbox8
+            // textBoxCoinFilterHSpeedMax
             // 
-            this.betterTextbox8.Location = new System.Drawing.Point(154, 32);
-            this.betterTextbox8.Name = "betterTextbox8";
-            this.betterTextbox8.Size = new System.Drawing.Size(53, 20);
-            this.betterTextbox8.TabIndex = 40;
-            this.betterTextbox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxCoinFilterHSpeedMax.Location = new System.Drawing.Point(154, 32);
+            this.textBoxCoinFilterHSpeedMax.Name = "textBoxCoinFilterHSpeedMax";
+            this.textBoxCoinFilterHSpeedMax.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinFilterHSpeedMax.TabIndex = 40;
+            this.textBoxCoinFilterHSpeedMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // betterTextbox9
+            // textBoxCoinFilterVSpeedMax
             // 
-            this.betterTextbox9.Location = new System.Drawing.Point(154, 56);
-            this.betterTextbox9.Name = "betterTextbox9";
-            this.betterTextbox9.Size = new System.Drawing.Size(53, 20);
-            this.betterTextbox9.TabIndex = 39;
-            this.betterTextbox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxCoinFilterVSpeedMax.Location = new System.Drawing.Point(154, 56);
+            this.textBoxCoinFilterVSpeedMax.Name = "textBoxCoinFilterVSpeedMax";
+            this.textBoxCoinFilterVSpeedMax.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinFilterVSpeedMax.TabIndex = 39;
+            this.textBoxCoinFilterVSpeedMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // betterTextbox10
+            // textBoxCoinFilterAngleMax
             // 
-            this.betterTextbox10.Location = new System.Drawing.Point(154, 80);
-            this.betterTextbox10.Name = "betterTextbox10";
-            this.betterTextbox10.Size = new System.Drawing.Size(53, 20);
-            this.betterTextbox10.TabIndex = 38;
-            this.betterTextbox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxCoinFilterAngleMax.Location = new System.Drawing.Point(154, 80);
+            this.textBoxCoinFilterAngleMax.Name = "textBoxCoinFilterAngleMax";
+            this.textBoxCoinFilterAngleMax.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinFilterAngleMax.TabIndex = 38;
+            this.textBoxCoinFilterAngleMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label18
+            // labelCoinFilterMin
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(95, 16);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(24, 13);
-            this.label18.TabIndex = 37;
-            this.label18.Text = "Min";
+            this.labelCoinFilterMin.AutoSize = true;
+            this.labelCoinFilterMin.Location = new System.Drawing.Point(95, 16);
+            this.labelCoinFilterMin.Name = "labelCoinFilterMin";
+            this.labelCoinFilterMin.Size = new System.Drawing.Size(24, 13);
+            this.labelCoinFilterMin.TabIndex = 37;
+            this.labelCoinFilterMin.Text = "Min";
             // 
-            // label19
+            // labelCoinFilterMax
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(167, 16);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(27, 13);
-            this.label19.TabIndex = 37;
-            this.label19.Text = "Max";
+            this.labelCoinFilterMax.AutoSize = true;
+            this.labelCoinFilterMax.Location = new System.Drawing.Point(167, 16);
+            this.labelCoinFilterMax.Name = "labelCoinFilterMax";
+            this.labelCoinFilterMax.Size = new System.Drawing.Size(27, 13);
+            this.labelCoinFilterMax.TabIndex = 37;
+            this.labelCoinFilterMax.Text = "Max";
             // 
-            // groupBox1
+            // groupBoxCoinFilter
             // 
-            this.groupBox1.Controls.Add(this.betterTextbox7);
-            this.groupBox1.Controls.Add(this.betterTextbox10);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.betterTextbox9);
-            this.groupBox1.Controls.Add(this.label18);
-            this.groupBox1.Controls.Add(this.label19);
-            this.groupBox1.Controls.Add(this.betterTextbox6);
-            this.groupBox1.Controls.Add(this.label15);
-            this.groupBox1.Controls.Add(this.betterTextbox8);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.betterTextbox5);
-            this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Location = new System.Drawing.Point(33, 142);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(218, 110);
-            this.groupBox1.TabIndex = 41;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Filter";
+            this.groupBoxCoinFilter.Controls.Add(this.textBoxCoinFilterAngleMin);
+            this.groupBoxCoinFilter.Controls.Add(this.textBoxCoinFilterAngleMax);
+            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterHSpeedFrom);
+            this.groupBoxCoinFilter.Controls.Add(this.textBoxCoinFilterVSpeedMax);
+            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterMin);
+            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterMax);
+            this.groupBoxCoinFilter.Controls.Add(this.textBoxCoinFilterVSpeedMin);
+            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterHSpeedTo);
+            this.groupBoxCoinFilter.Controls.Add(this.textBoxCoinFilterHSpeedMax);
+            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterVSpeedFrom);
+            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterVSpeedTo);
+            this.groupBoxCoinFilter.Controls.Add(this.textBoxCoinFilterHSpeedMin);
+            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterAngleFrom);
+            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterAngleTo);
+            this.groupBoxCoinFilter.Location = new System.Drawing.Point(33, 142);
+            this.groupBoxCoinFilter.Name = "groupBoxCoinFilter";
+            this.groupBoxCoinFilter.Size = new System.Drawing.Size(218, 110);
+            this.groupBoxCoinFilter.TabIndex = 41;
+            this.groupBoxCoinFilter.TabStop = false;
+            this.groupBoxCoinFilter.Text = "Filter";
             // 
-            // label20
+            // labelCoinHSpeedRange
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(43, 93);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(84, 13);
-            this.label20.TabIndex = 35;
-            this.label20.Text = "HSpeed Range:";
+            this.labelCoinHSpeedRange.AutoSize = true;
+            this.labelCoinHSpeedRange.Location = new System.Drawing.Point(43, 93);
+            this.labelCoinHSpeedRange.Name = "labelCoinHSpeedRange";
+            this.labelCoinHSpeedRange.Size = new System.Drawing.Size(84, 13);
+            this.labelCoinHSpeedRange.TabIndex = 35;
+            this.labelCoinHSpeedRange.Text = "HSpeed Range:";
             // 
-            // label21
+            // labelCoinVSpeedRange
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(43, 115);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(83, 13);
-            this.label21.TabIndex = 35;
-            this.label21.Text = "VSpeed Range:";
+            this.labelCoinVSpeedRange.AutoSize = true;
+            this.labelCoinVSpeedRange.Location = new System.Drawing.Point(43, 115);
+            this.labelCoinVSpeedRange.Name = "labelCoinVSpeedRange";
+            this.labelCoinVSpeedRange.Size = new System.Drawing.Size(83, 13);
+            this.labelCoinVSpeedRange.TabIndex = 35;
+            this.labelCoinVSpeedRange.Text = "VSpeed Range:";
             // 
-            // button1
+            // buttonCoinClear
             // 
-            this.button1.Location = new System.Drawing.Point(47, 262);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(93, 23);
-            this.button1.TabIndex = 42;
-            this.button1.Text = "Clear";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonCoinClear.Location = new System.Drawing.Point(47, 262);
+            this.buttonCoinClear.Name = "buttonCoinClear";
+            this.buttonCoinClear.Size = new System.Drawing.Size(93, 23);
+            this.buttonCoinClear.TabIndex = 42;
+            this.buttonCoinClear.Text = "Clear";
+            this.buttonCoinClear.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // buttonCoinCalculate
             // 
-            this.button2.Location = new System.Drawing.Point(145, 262);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(93, 23);
-            this.button2.TabIndex = 42;
-            this.button2.Text = "Calculate";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonCoinCalculate.Location = new System.Drawing.Point(145, 262);
+            this.buttonCoinCalculate.Name = "buttonCoinCalculate";
+            this.buttonCoinCalculate.Size = new System.Drawing.Size(93, 23);
+            this.buttonCoinCalculate.TabIndex = 42;
+            this.buttonCoinCalculate.Text = "Calculate";
+            this.buttonCoinCalculate.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -17020,8 +17020,8 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxCoinFilter.ResumeLayout(false);
+            this.groupBoxCoinFilter.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -18247,32 +18247,32 @@ namespace STROOP
         private DataGridViewTextBoxColumn coinAngle;
         private DataGridViewTextBoxColumn coinHSpeed;
         private DataGridViewTextBoxColumn coinVSpeed;
-        private BetterTextbox betterTextbox7;
-        private BetterTextbox betterTextbox6;
-        private BetterTextbox betterTextbox1;
-        private BetterTextbox betterTextbox5;
-        private BetterTextbox betterTextbox2;
-        private Label label14;
-        private BetterTextbox betterTextbox3;
-        private Label label13;
-        private Label label8;
-        private Label label12;
-        private Label label10;
-        private Label label11;
-        private ListBox listBox1;
-        private GroupBox groupBox1;
-        private BetterTextbox betterTextbox10;
-        private BetterTextbox betterTextbox9;
-        private Label label18;
-        private Label label19;
-        private Label label15;
-        private BetterTextbox betterTextbox8;
-        private Label label16;
-        private Label label17;
-        private Label label21;
-        private Label label20;
-        private Button button2;
-        private Button button1;
+        private BetterTextbox textBoxCoinFilterAngleMin;
+        private BetterTextbox textBoxCoinFilterVSpeedMin;
+        private BetterTextbox textBoxCoinVSpeedOffset;
+        private BetterTextbox textBoxCoinFilterHSpeedMin;
+        private BetterTextbox textBoxCoinHSpeedOffset;
+        private Label labelCoinFilterAngleFrom;
+        private BetterTextbox textBoxCoinHSpeedMultiplier;
+        private Label labelCoinFilterVSpeedFrom;
+        private Label labelCoinVSpeedOffset;
+        private Label labelCoinFilterHSpeedFrom;
+        private Label labelCoinHSpeedOffset;
+        private Label labelCoinHSpeedMultiplier;
+        private ListBox listBoxCoinObjects;
+        private GroupBox groupBoxCoinFilter;
+        private BetterTextbox textBoxCoinFilterAngleMax;
+        private BetterTextbox textBoxCoinFilterVSpeedMax;
+        private Label labelCoinFilterMin;
+        private Label labelCoinFilterMax;
+        private Label labelCoinFilterHSpeedTo;
+        private BetterTextbox textBoxCoinFilterHSpeedMax;
+        private Label labelCoinFilterVSpeedTo;
+        private Label labelCoinFilterAngleTo;
+        private Label labelCoinVSpeedRange;
+        private Label labelCoinHSpeedRange;
+        private Button buttonCoinCalculate;
+        private Button buttonCoinClear;
     }
 }
 
