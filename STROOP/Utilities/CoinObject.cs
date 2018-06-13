@@ -131,5 +131,26 @@ namespace STROOP.Utilities
             vSpeedScale: 10,
             vSpeedOffset: 46,
             coinParamsOrder: CoinParamsOrder.VHA);
+
+        public static CoinObject Goomba = new CoinObject(
+            numCoins: 1,
+            hSpeedScale: 10, // more like 9.936193656
+            vSpeedScale: 10,
+            vSpeedOffset: 46,
+            coinParamsOrder: CoinParamsOrder.VHA);
+
+        public static CoinObject Moneybag = new CoinObject(
+            numCoins: 5,
+            hSpeedScale: 20,
+            vSpeedScale: 40,
+            vSpeedOffset: 17,
+            coinParamsOrder: CoinParamsOrder.HVA);
+
+        public static CoinObject CorkBox = new CoinObject(
+            numCoins: 3,
+            hSpeedScale: 20,
+            vSpeedScale: 40,
+            vSpeedOffset: 17,
+            coinParamsOrder: CoinParamsOrder.HVA);
     }
 }
