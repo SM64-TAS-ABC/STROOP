@@ -457,7 +457,7 @@ namespace STROOP.Controls
                 for (int i = minIndex; i <= maxIndex; i++)
                 {
                     WatchVariableControl control = Controls[i] as WatchVariableControl;
-                    control.AddToTab(Config.CustomManager, AddToTabTypeEnum.Regular);
+                    control.AddToTab(Config.CustomManager);
                 }
                 _massAddToCustomTabWatchVarControl = null;
             }
