@@ -267,6 +267,8 @@ namespace STROOP
             this.propertyGridM64Header = new System.Windows.Forms.PropertyGrid();
             this.tabPageM64Stats = new System.Windows.Forms.TabPage();
             this.propertyGridM64Stats = new System.Windows.Forms.PropertyGrid();
+            this.tabPageCoin = new System.Windows.Forms.TabPage();
+            this.splitContainerCoin = new STROOP.BetterSplitContainer();
             this.tabPageHud = new System.Windows.Forms.TabPage();
             this.splitContainerHud = new STROOP.BetterSplitContainer();
             this.checkBoxFullHP = new System.Windows.Forms.CheckBox();
@@ -1246,8 +1248,13 @@ namespace STROOP
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.comboBoxYawSigned = new System.Windows.Forms.ComboBox();
-            this.tabPageCoin = new System.Windows.Forms.TabPage();
-            this.splitContainerCoin = new STROOP.BetterSplitContainer();
+            this.dataGridViewCoin = new System.Windows.Forms.DataGridView();
+            this.rngIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rngValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rngToGo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coinAngle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coinHSpeed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coinVSpeed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1289,6 +1296,10 @@ namespace STROOP
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewM64Inputs)).BeginInit();
             this.tabPageM64Header.SuspendLayout();
             this.tabPageM64Stats.SuspendLayout();
+            this.tabPageCoin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCoin)).BeginInit();
+            this.splitContainerCoin.Panel2.SuspendLayout();
+            this.splitContainerCoin.SuspendLayout();
             this.tabPageHud.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerHud)).BeginInit();
             this.splitContainerHud.Panel1.SuspendLayout();
@@ -1632,9 +1643,7 @@ namespace STROOP
             this.groupBoxRecording.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
-            this.tabPageCoin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCoin)).BeginInit();
-            this.splitContainerCoin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCoin)).BeginInit();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -3993,7 +4002,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(424, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(427, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -4264,6 +4273,40 @@ namespace STROOP
             this.propertyGridM64Stats.Size = new System.Drawing.Size(533, 427);
             this.propertyGridM64Stats.TabIndex = 1;
             this.propertyGridM64Stats.ToolbarVisible = false;
+            // 
+            // tabPageCoin
+            // 
+            this.tabPageCoin.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageCoin.Controls.Add(this.splitContainerCoin);
+            this.tabPageCoin.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCoin.Name = "tabPageCoin";
+            this.tabPageCoin.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageCoin.Size = new System.Drawing.Size(915, 463);
+            this.tabPageCoin.TabIndex = 29;
+            this.tabPageCoin.Text = "Coin";
+            // 
+            // splitContainerCoin
+            // 
+            this.splitContainerCoin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerCoin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerCoin.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerCoin.Location = new System.Drawing.Point(3, 3);
+            this.splitContainerCoin.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerCoin.Name = "splitContainerCoin";
+            // 
+            // splitContainerCoin.Panel1
+            // 
+            this.splitContainerCoin.Panel1.AutoScroll = true;
+            this.splitContainerCoin.Panel1MinSize = 0;
+            // 
+            // splitContainerCoin.Panel2
+            // 
+            this.splitContainerCoin.Panel2.Controls.Add(this.dataGridViewCoin);
+            this.splitContainerCoin.Panel2MinSize = 0;
+            this.splitContainerCoin.Size = new System.Drawing.Size(909, 457);
+            this.splitContainerCoin.SplitterDistance = 460;
+            this.splitContainerCoin.SplitterWidth = 1;
+            this.splitContainerCoin.TabIndex = 38;
             // 
             // tabPageHud
             // 
@@ -5829,7 +5872,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 354F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 355F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -11658,7 +11701,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(237, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(220, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -11690,7 +11733,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(231, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(214, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -11746,7 +11789,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(231, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(214, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -12202,7 +12245,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 707;
+            this.splitContainerMemory.SplitterDistance = 710;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -12226,7 +12269,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(591, 429);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(594, 429);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -12329,7 +12372,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(199, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(196, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPageHacks
@@ -16123,35 +16166,70 @@ namespace STROOP
             this.comboBoxYawSigned.Size = new System.Drawing.Size(69, 21);
             this.comboBoxYawSigned.TabIndex = 22;
             // 
-            // tabPageCoin
+            // dataGridViewCoin
             // 
-            this.tabPageCoin.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageCoin.Controls.Add(this.splitContainerCoin);
-            this.tabPageCoin.Location = new System.Drawing.Point(4, 22);
-            this.tabPageCoin.Name = "tabPageCoin";
-            this.tabPageCoin.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageCoin.Size = new System.Drawing.Size(915, 463);
-            this.tabPageCoin.TabIndex = 29;
-            this.tabPageCoin.Text = "Coin";
+            this.dataGridViewCoin.AllowUserToAddRows = false;
+            this.dataGridViewCoin.AllowUserToDeleteRows = false;
+            this.dataGridViewCoin.AllowUserToOrderColumns = true;
+            this.dataGridViewCoin.AllowUserToResizeRows = false;
+            this.dataGridViewCoin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewCoin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCoin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.rngIndex,
+            this.rngValue,
+            this.rngToGo,
+            this.coinAngle,
+            this.coinHSpeed,
+            this.coinVSpeed});
+            this.dataGridViewCoin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewCoin.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewCoin.Margin = new System.Windows.Forms.Padding(0);
+            this.dataGridViewCoin.MultiSelect = false;
+            this.dataGridViewCoin.Name = "dataGridViewCoin";
+            this.dataGridViewCoin.ReadOnly = true;
+            this.dataGridViewCoin.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewCoin.Size = new System.Drawing.Size(446, 455);
+            this.dataGridViewCoin.TabIndex = 3;
             // 
-            // splitContainerCoin
+            // rngIndex
             // 
-            this.splitContainerCoin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainerCoin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerCoin.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerCoin.Location = new System.Drawing.Point(3, 3);
-            this.splitContainerCoin.Margin = new System.Windows.Forms.Padding(0);
-            this.splitContainerCoin.Name = "splitContainerCoin";
+            this.rngIndex.HeaderText = "RNG Index";
+            this.rngIndex.MinimumWidth = 2;
+            this.rngIndex.Name = "rngIndex";
+            this.rngIndex.ReadOnly = true;
             // 
-            // splitContainerCoin.Panel1
+            // rngValue
             // 
-            this.splitContainerCoin.Panel1.AutoScroll = true;
-            this.splitContainerCoin.Panel1MinSize = 0;
-            this.splitContainerCoin.Panel2MinSize = 0;
-            this.splitContainerCoin.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerCoin.SplitterDistance = 460;
-            this.splitContainerCoin.SplitterWidth = 1;
-            this.splitContainerCoin.TabIndex = 38;
+            this.rngValue.HeaderText = "RNG Value";
+            this.rngValue.MinimumWidth = 2;
+            this.rngValue.Name = "rngValue";
+            this.rngValue.ReadOnly = true;
+            // 
+            // rngToGo
+            // 
+            this.rngToGo.HeaderText = "RNG To Go";
+            this.rngToGo.MinimumWidth = 2;
+            this.rngToGo.Name = "rngToGo";
+            this.rngToGo.ReadOnly = true;
+            // 
+            // coinAngle
+            // 
+            this.coinAngle.HeaderText = "Coin Angle";
+            this.coinAngle.MinimumWidth = 2;
+            this.coinAngle.Name = "coinAngle";
+            this.coinAngle.ReadOnly = true;
+            // 
+            // coinHSpeed
+            // 
+            this.coinHSpeed.HeaderText = "Coin HSpeed";
+            this.coinHSpeed.Name = "coinHSpeed";
+            this.coinHSpeed.ReadOnly = true;
+            // 
+            // coinVSpeed
+            // 
+            this.coinVSpeed.HeaderText = "Coin VSpeed";
+            this.coinVSpeed.Name = "coinVSpeed";
+            this.coinVSpeed.ReadOnly = true;
             // 
             // StroopMainForm
             // 
@@ -16235,6 +16313,10 @@ namespace STROOP
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewM64Inputs)).EndInit();
             this.tabPageM64Header.ResumeLayout(false);
             this.tabPageM64Stats.ResumeLayout(false);
+            this.tabPageCoin.ResumeLayout(false);
+            this.splitContainerCoin.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCoin)).EndInit();
+            this.splitContainerCoin.ResumeLayout(false);
             this.tabPageHud.ResumeLayout(false);
             this.splitContainerHud.Panel1.ResumeLayout(false);
             this.splitContainerHud.Panel1.PerformLayout();
@@ -16648,9 +16730,7 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
-            this.tabPageCoin.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCoin)).EndInit();
-            this.splitContainerCoin.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCoin)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -17869,6 +17949,13 @@ namespace STROOP
         private Button buttonOptionsResetSavedSettings;
         private TabPage tabPageCoin;
         private BetterSplitContainer splitContainerCoin;
+        private DataGridView dataGridViewCoin;
+        private DataGridViewTextBoxColumn rngIndex;
+        private DataGridViewTextBoxColumn rngValue;
+        private DataGridViewTextBoxColumn rngToGo;
+        private DataGridViewTextBoxColumn coinAngle;
+        private DataGridViewTextBoxColumn coinHSpeed;
+        private DataGridViewTextBoxColumn coinVSpeed;
     }
 }
 

@@ -89,6 +89,7 @@ namespace STROOP
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            if (_guiDictionary == null) return;
             InputImageGui gui = _guiDictionary[_inputDisplayType];
 
             e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
