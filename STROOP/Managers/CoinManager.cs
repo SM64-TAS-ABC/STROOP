@@ -20,8 +20,8 @@ namespace STROOP.Managers
 
         private readonly ListBox _listBoxCoinObjects;
 
-        private readonly BetterTextbox _textBoxCoinHSpeedMultiplier;
-        private readonly BetterTextbox _textBoxCoinHSpeedOffset;
+        private readonly BetterTextbox _textBoxCoinHSpeedScale;
+        private readonly BetterTextbox _textBoxCoinVSpeedScale;
         private readonly BetterTextbox _textBoxCoinVSpeedOffset;
 
         private readonly Label _labelCoinHSpeedRange;
@@ -47,8 +47,8 @@ namespace STROOP.Managers
 
             _listBoxCoinObjects = splitContainerCoin.Panel1.Controls["listBoxCoinObjects"] as ListBox;
 
-            _textBoxCoinHSpeedMultiplier = splitContainerCoin.Panel1.Controls["textBoxCoinHSpeedMultiplier"] as BetterTextbox;
-            _textBoxCoinHSpeedOffset = splitContainerCoin.Panel1.Controls["textBoxCoinHSpeedOffset"] as BetterTextbox;
+            _textBoxCoinHSpeedScale = splitContainerCoin.Panel1.Controls["textBoxCoinHSpeedScale"] as BetterTextbox;
+            _textBoxCoinVSpeedScale = splitContainerCoin.Panel1.Controls["textBoxCoinVSpeedScale"] as BetterTextbox;
             _textBoxCoinVSpeedOffset = splitContainerCoin.Panel1.Controls["textBoxCoinVSpeedOffset"] as BetterTextbox;
 
             _labelCoinHSpeedRange = splitContainerCoin.Panel1.Controls["labelCoinHSpeedRange"] as Label;
