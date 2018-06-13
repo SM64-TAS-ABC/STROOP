@@ -19,6 +19,7 @@ namespace STROOP
     {
         InputImageGui _classicGui;
         InputImageGui _sleekGui;
+        InputImageGui _gui;
 
         object _gfxLock = new object();
 
@@ -31,66 +32,67 @@ namespace STROOP
         {
             _classicGui = classicGui;
             _sleekGui = sleekGui;
+            _gui = _classicGui;
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            if (_classicGui == null) return;
+            if (_gui == null) return;
 
             e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
 
-            Rectangle scaledRect = new Rectangle(new Point(), Size).Zoom(_classicGui.ControllerImage.Size);
-            e.Graphics.DrawImage(_classicGui.ControllerImage, scaledRect);
+            Rectangle scaledRect = new Rectangle(new Point(), Size).Zoom(_gui.ControllerImage.Size);
+            e.Graphics.DrawImage(_gui.ControllerImage, scaledRect);
 
             uint inputAddress = InputConfig.CurrentInputAddress;
 
             bool buttonAPressed = (Config.Stream.GetByte(inputAddress + InputConfig.ButtonAOffset) & InputConfig.ButtonAMask) != 0;
-            if (buttonAPressed) e.Graphics.DrawImage(_classicGui.ButtonAImage, scaledRect);
+            if (buttonAPressed) e.Graphics.DrawImage(_gui.ButtonAImage, scaledRect);
 
             bool buttonBPressed = (Config.Stream.GetByte(inputAddress + InputConfig.ButtonBOffset) & InputConfig.ButtonBMask) != 0;
-            if (buttonBPressed) e.Graphics.DrawImage(_classicGui.ButtonBImage, scaledRect);
+            if (buttonBPressed) e.Graphics.DrawImage(_gui.ButtonBImage, scaledRect);
 
             bool buttonZPressed = (Config.Stream.GetByte(inputAddress + InputConfig.ButtonZOffset) & InputConfig.ButtonZMask) != 0;
-            if (buttonZPressed) e.Graphics.DrawImage(_classicGui.ButtonZImage, scaledRect);
+            if (buttonZPressed) e.Graphics.DrawImage(_gui.ButtonZImage, scaledRect);
 
             bool buttonStartPressed = (Config.Stream.GetByte(inputAddress + InputConfig.ButtonStartOffset) & InputConfig.ButtonStartMask) != 0;
-            if (buttonStartPressed) e.Graphics.DrawImage(_classicGui.ButtonStartImage, scaledRect);
+            if (buttonStartPressed) e.Graphics.DrawImage(_gui.ButtonStartImage, scaledRect);
 
             bool buttonRPressed = (Config.Stream.GetByte(inputAddress + InputConfig.ButtonROffset) & InputConfig.ButtonRMask) != 0;
-            if (buttonRPressed) e.Graphics.DrawImage(_classicGui.ButtonRImage, scaledRect);
+            if (buttonRPressed) e.Graphics.DrawImage(_gui.ButtonRImage, scaledRect);
 
             bool buttonLPressed = (Config.Stream.GetByte(inputAddress + InputConfig.ButtonLOffset) & InputConfig.ButtonLMask) != 0;
-            if (buttonLPressed) e.Graphics.DrawImage(_classicGui.ButtonLImage, scaledRect);
+            if (buttonLPressed) e.Graphics.DrawImage(_gui.ButtonLImage, scaledRect);
 
             bool buttonCUpPressed = (Config.Stream.GetByte(inputAddress + InputConfig.ButtonCUpOffset) & InputConfig.ButtonCUpMask) != 0;
-            if (buttonCUpPressed) e.Graphics.DrawImage(_classicGui.ButtonCUpImage, scaledRect);
+            if (buttonCUpPressed) e.Graphics.DrawImage(_gui.ButtonCUpImage, scaledRect);
 
             bool buttonCDownPressed = (Config.Stream.GetByte(inputAddress + InputConfig.ButtonCDownOffset) & InputConfig.ButtonCDownMask) != 0;
-            if (buttonCDownPressed) e.Graphics.DrawImage(_classicGui.ButtonCDownImage, scaledRect);
+            if (buttonCDownPressed) e.Graphics.DrawImage(_gui.ButtonCDownImage, scaledRect);
 
             bool buttonCLeftPressed = (Config.Stream.GetByte(inputAddress + InputConfig.ButtonCLeftOffset) & InputConfig.ButtonCLeftMask) != 0;
-            if (buttonCLeftPressed) e.Graphics.DrawImage(_classicGui.ButtonCLeftImage, scaledRect);
+            if (buttonCLeftPressed) e.Graphics.DrawImage(_gui.ButtonCLeftImage, scaledRect);
 
             bool buttonCRightPressed = (Config.Stream.GetByte(inputAddress + InputConfig.ButtonCRightOffset) & InputConfig.ButtonCRightMask) != 0;
-            if (buttonCRightPressed) e.Graphics.DrawImage(_classicGui.ButtonCRightImage, scaledRect);
+            if (buttonCRightPressed) e.Graphics.DrawImage(_gui.ButtonCRightImage, scaledRect);
 
             bool buttonDUpPressed = (Config.Stream.GetByte(inputAddress + InputConfig.ButtonDUpOffset) & InputConfig.ButtonDUpMask) != 0;
-            if (buttonDUpPressed) e.Graphics.DrawImage(_classicGui.ButtonDUpImage, scaledRect);
+            if (buttonDUpPressed) e.Graphics.DrawImage(_gui.ButtonDUpImage, scaledRect);
 
             bool buttonDDownPressed = (Config.Stream.GetByte(inputAddress + InputConfig.ButtonDDownOffset) & InputConfig.ButtonDDownMask) != 0;
-            if (buttonDDownPressed) e.Graphics.DrawImage(_classicGui.ButtonDDownImage, scaledRect);
+            if (buttonDDownPressed) e.Graphics.DrawImage(_gui.ButtonDDownImage, scaledRect);
 
             bool buttonDLeftPressed = (Config.Stream.GetByte(inputAddress + InputConfig.ButtonDLeftOffset) & InputConfig.ButtonDLeftMask) != 0;
-            if (buttonDLeftPressed) e.Graphics.DrawImage(_classicGui.ButtonDLeftImage, scaledRect);
+            if (buttonDLeftPressed) e.Graphics.DrawImage(_gui.ButtonDLeftImage, scaledRect);
 
             bool buttonDRightPressed = (Config.Stream.GetByte(inputAddress + InputConfig.ButtonDRightOffset) & InputConfig.ButtonDRightMask) != 0;
-            if (buttonDRightPressed) e.Graphics.DrawImage(_classicGui.ButtonDRightImage, scaledRect);
+            if (buttonDRightPressed) e.Graphics.DrawImage(_gui.ButtonDRightImage, scaledRect);
 
             bool buttonU1Pressed = (Config.Stream.GetByte(inputAddress + InputConfig.ButtonU1Offset) & InputConfig.ButtonU1Mask) != 0;
-            if (buttonU1Pressed) e.Graphics.DrawImage(_classicGui.ButtonU1Image, scaledRect);
+            if (buttonU1Pressed) e.Graphics.DrawImage(_gui.ButtonU1Image, scaledRect);
 
             bool buttonU2Pressed = (Config.Stream.GetByte(inputAddress + InputConfig.ButtonU2Offset) & InputConfig.ButtonU2Mask) != 0;
-            if (buttonU2Pressed) e.Graphics.DrawImage(_classicGui.ButtonU2Image, scaledRect);
+            if (buttonU2Pressed) e.Graphics.DrawImage(_gui.ButtonU2Image, scaledRect);
 
             float controlStickOffsetScale = 0.0003f;
             sbyte controlStickH = (sbyte)Config.Stream.GetByte(inputAddress + InputConfig.ControlStickXOffset);
@@ -99,7 +101,7 @@ namespace STROOP
             float vOffset = controlStickV * controlStickOffsetScale * scaledRect.Width;
 
             RectangleF controlStickRectange = new RectangleF(scaledRect.X + hOffset, scaledRect.Y - vOffset, scaledRect.Width, scaledRect.Height);
-            e.Graphics.DrawImage(_classicGui.ControlStickImage, controlStickRectange);
+            e.Graphics.DrawImage(_gui.ControlStickImage, controlStickRectange);
         }
     }
 }
