@@ -54,7 +54,7 @@ namespace STROOP.Structs.Configurations
         public static List<DataManager> GetDataManagers()
         {
             List<DataManager> dataManagerList =
-                ControlUtilities.GetFieldsOfType<DataManager>(typeof(DataManager), null);
+                ControlUtilities.GetFieldsOfType<DataManager>(typeof(Config), null);
             dataManagerList.Sort((d1, d2) => d1.TabIndex - d2.TabIndex);
             return dataManagerList;
         }
