@@ -1256,6 +1256,19 @@ namespace STROOP
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.comboBoxYawSigned = new System.Windows.Forms.ComboBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.betterTextbox1 = new STROOP.BetterTextbox();
+            this.betterTextbox2 = new STROOP.BetterTextbox();
+            this.betterTextbox3 = new STROOP.BetterTextbox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.betterTextbox5 = new STROOP.BetterTextbox();
+            this.betterTextbox6 = new STROOP.BetterTextbox();
+            this.betterTextbox7 = new STROOP.BetterTextbox();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1299,6 +1312,7 @@ namespace STROOP
             this.tabPageM64Stats.SuspendLayout();
             this.tabPageCoin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerCoin)).BeginInit();
+            this.splitContainerCoin.Panel1.SuspendLayout();
             this.splitContainerCoin.Panel2.SuspendLayout();
             this.splitContainerCoin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCoin)).BeginInit();
@@ -4298,6 +4312,19 @@ namespace STROOP
             // splitContainerCoin.Panel1
             // 
             this.splitContainerCoin.Panel1.AutoScroll = true;
+            this.splitContainerCoin.Panel1.Controls.Add(this.betterTextbox7);
+            this.splitContainerCoin.Panel1.Controls.Add(this.betterTextbox6);
+            this.splitContainerCoin.Panel1.Controls.Add(this.betterTextbox1);
+            this.splitContainerCoin.Panel1.Controls.Add(this.betterTextbox5);
+            this.splitContainerCoin.Panel1.Controls.Add(this.betterTextbox2);
+            this.splitContainerCoin.Panel1.Controls.Add(this.label14);
+            this.splitContainerCoin.Panel1.Controls.Add(this.betterTextbox3);
+            this.splitContainerCoin.Panel1.Controls.Add(this.label13);
+            this.splitContainerCoin.Panel1.Controls.Add(this.label8);
+            this.splitContainerCoin.Panel1.Controls.Add(this.label12);
+            this.splitContainerCoin.Panel1.Controls.Add(this.label10);
+            this.splitContainerCoin.Panel1.Controls.Add(this.label11);
+            this.splitContainerCoin.Panel1.Controls.Add(this.listBox1);
             this.splitContainerCoin.Panel1MinSize = 0;
             // 
             // splitContainerCoin.Panel2
@@ -16240,6 +16267,116 @@ namespace STROOP
             this.comboBoxYawSigned.Size = new System.Drawing.Size(69, 21);
             this.comboBoxYawSigned.TabIndex = 22;
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(3, 3);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(125, 82);
+            this.listBox1.TabIndex = 17;
+            // 
+            // betterTextbox1
+            // 
+            this.betterTextbox1.Location = new System.Drawing.Point(229, 58);
+            this.betterTextbox1.Name = "betterTextbox1";
+            this.betterTextbox1.Size = new System.Drawing.Size(53, 20);
+            this.betterTextbox1.TabIndex = 38;
+            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox2
+            // 
+            this.betterTextbox2.Location = new System.Drawing.Point(229, 34);
+            this.betterTextbox2.Name = "betterTextbox2";
+            this.betterTextbox2.Size = new System.Drawing.Size(53, 20);
+            this.betterTextbox2.TabIndex = 39;
+            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox3
+            // 
+            this.betterTextbox3.Location = new System.Drawing.Point(229, 10);
+            this.betterTextbox3.Name = "betterTextbox3";
+            this.betterTextbox3.Size = new System.Drawing.Size(53, 20);
+            this.betterTextbox3.TabIndex = 40;
+            this.betterTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(133, 61);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(79, 13);
+            this.label8.TabIndex = 35;
+            this.label8.Text = "VSpeed Offset:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(133, 37);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(80, 13);
+            this.label10.TabIndex = 36;
+            this.label10.Text = "HSpeed Offset:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(133, 13);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(93, 13);
+            this.label11.TabIndex = 37;
+            this.label11.Text = "HSpeed Multiplier:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(7, 108);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(93, 13);
+            this.label12.TabIndex = 37;
+            this.label12.Text = "HSpeed Multiplier:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(7, 132);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(80, 13);
+            this.label13.TabIndex = 36;
+            this.label13.Text = "HSpeed Offset:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(7, 156);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(79, 13);
+            this.label14.TabIndex = 35;
+            this.label14.Text = "VSpeed Offset:";
+            // 
+            // betterTextbox5
+            // 
+            this.betterTextbox5.Location = new System.Drawing.Point(103, 105);
+            this.betterTextbox5.Name = "betterTextbox5";
+            this.betterTextbox5.Size = new System.Drawing.Size(53, 20);
+            this.betterTextbox5.TabIndex = 40;
+            this.betterTextbox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox6
+            // 
+            this.betterTextbox6.Location = new System.Drawing.Point(103, 129);
+            this.betterTextbox6.Name = "betterTextbox6";
+            this.betterTextbox6.Size = new System.Drawing.Size(53, 20);
+            this.betterTextbox6.TabIndex = 39;
+            this.betterTextbox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox7
+            // 
+            this.betterTextbox7.Location = new System.Drawing.Point(103, 153);
+            this.betterTextbox7.Name = "betterTextbox7";
+            this.betterTextbox7.Size = new System.Drawing.Size(53, 20);
+            this.betterTextbox7.TabIndex = 38;
+            this.betterTextbox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -16323,6 +16460,8 @@ namespace STROOP
             this.tabPageM64Header.ResumeLayout(false);
             this.tabPageM64Stats.ResumeLayout(false);
             this.tabPageCoin.ResumeLayout(false);
+            this.splitContainerCoin.Panel1.ResumeLayout(false);
+            this.splitContainerCoin.Panel1.PerformLayout();
             this.splitContainerCoin.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerCoin)).EndInit();
             this.splitContainerCoin.ResumeLayout(false);
@@ -17965,6 +18104,19 @@ namespace STROOP
         private DataGridViewTextBoxColumn coinAngle;
         private DataGridViewTextBoxColumn coinHSpeed;
         private DataGridViewTextBoxColumn coinVSpeed;
+        private BetterTextbox betterTextbox7;
+        private BetterTextbox betterTextbox6;
+        private BetterTextbox betterTextbox1;
+        private BetterTextbox betterTextbox5;
+        private BetterTextbox betterTextbox2;
+        private Label label14;
+        private BetterTextbox betterTextbox3;
+        private Label label13;
+        private Label label8;
+        private Label label12;
+        private Label label10;
+        private Label label11;
+        private ListBox listBox1;
     }
 }
 
