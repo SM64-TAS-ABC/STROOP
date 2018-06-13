@@ -4,12 +4,17 @@
   <Data groupList="Basic,Rng" type="ushort" offsetUS="0x8038EEE0" offsetJP="0x8038EEE0" base="Relative">RNG Value</Data>
   <Data groupList="Basic,Rng" base="None" specialType="RngIndex">RNG Index</Data>
   <Data groupList="Basic,Rng" base="None" specialType="RngIndexMod4">RNG Index Mod 4</Data>
-  <Data groupList="Rng" base="LastCoin" offset="0xCA" type="ushort" color="Yellow">Coin RNG Value</Data>
-  <Data groupList="Rng" base="LastCoin" specialType="LastCoinRngIndex" color="Yellow">Coin RNG Index</Data>
-  <Data groupList="Rng" base="LastCoin" specialType="LastCoinRngIndexDiff" color="Yellow">Coin RNG Index Diff</Data>
+  
+  <Data groupList="Rng" base="LastCoin" offset="0xCA" type="ushort" color="Orange">Coin RNG Value</Data>
+  <Data groupList="Rng" base="LastCoin" specialType="LastCoinRngIndex" color="Orange">Coin RNG Index</Data>
+  <Data groupList="Rng" base="LastCoin" specialType="LastCoinRngIndexDiff" color="Orange">Coin RNG Index Diff</Data>
+  <Data groupList="Rng" type="float" offset="0xB8" base="LastCoin" coord="X" color="Yellow">Coin H Speed</Data>
+  <Data groupList="Rng" type="float" offset="0xB0" base="LastCoin" coord="Y" color="Yellow">Coin Y Speed</Data>
+  <Data groupList="Rng" base="LastCoin" offset="0xCA" type="ushort" coord="Z" color="Yellow">Coin Angle</Data>
   <Data groupList="Rng" base="None" specialType="GoalRngValue" color="Pink">Goal RNG Value</Data>
   <Data groupList="Rng" base="None" specialType="GoalRngIndex" color="Pink">Goal RNG Index</Data>
   <Data groupList="Rng" base="None" specialType="GoalRngIndexDiff" color="Pink">Goal RNG Index Diff</Data>
+  
   <Data groupList="Basic" base="None" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
   <Data groupList="Basic" base="None" specialType="PlayTime" subclass="String">Play Time</Data>
   <Data groupList="Basic" base="None" specialType="NumberOfLoadedObjects">Num Loaded Objs</Data>

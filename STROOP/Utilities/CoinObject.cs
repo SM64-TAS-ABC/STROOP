@@ -111,8 +111,18 @@ namespace STROOP.Utilities
             return new CoinTrajectory(hSpeed, vSpeed, angle);
         }
 
-        public static CoinObject Bobomb = new CoinObject(1, 20, 40, 17, CoinParamsOrder.HVA);
-        public static CoinObject Scuttlebug = new CoinObject(3, 10, 10, 46, CoinParamsOrder.VHA);
+        public static CoinObject Bobomb = new CoinObject(
+            numCoins: 1,
+            hSpeedScale: 20,
+            vSpeedScale: 40,
+            vSpeedOffset: 17,
+            coinParamsOrder: CoinParamsOrder.HVA);
 
+        public static CoinObject Scuttlebug = new CoinObject(
+            numCoins: 3,
+            hSpeedScale: 10,
+            vSpeedScale: 10,
+            vSpeedOffset: 46,
+            coinParamsOrder: CoinParamsOrder.VHA);
     }
 }
