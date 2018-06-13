@@ -124,5 +124,12 @@ namespace STROOP.Utilities
             vSpeedScale: 10,
             vSpeedOffset: 46,
             coinParamsOrder: CoinParamsOrder.VHA);
+
+        public static CoinObject TinyPiranhaPlant = new CoinObject(
+            numCoins: 1,
+            hSpeedScale: 10, // more like 9.929076195
+            vSpeedScale: 10,
+            vSpeedOffset: 46,
+            coinParamsOrder: CoinParamsOrder.VHA);
     }
 }
