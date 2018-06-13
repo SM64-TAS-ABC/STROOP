@@ -34,9 +34,9 @@ namespace STROOP
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
@@ -1282,6 +1282,8 @@ namespace STROOP
             this.labelCoinVSpeedRange = new System.Windows.Forms.Label();
             this.buttonCoinClear = new System.Windows.Forms.Button();
             this.buttonCoinCalculate = new System.Windows.Forms.Button();
+            this.labelCoinStartingRng = new System.Windows.Forms.Label();
+            this.textBoxCoinStartingRng = new STROOP.BetterTextbox();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -4065,14 +4067,14 @@ namespace STROOP
             this.dataGridViewM64Inputs.AllowUserToResizeColumns = false;
             this.dataGridViewM64Inputs.AllowUserToResizeRows = false;
             this.dataGridViewM64Inputs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewM64Inputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewM64Inputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnM64Frame,
@@ -4093,14 +4095,14 @@ namespace STROOP
             this.ColumnM64DDown,
             this.ColumnM64DLeft,
             this.ColumnM64DRight});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewM64Inputs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewM64Inputs.EnableHeadersVisualStyles = false;
             this.dataGridViewM64Inputs.Location = new System.Drawing.Point(0, 0);
@@ -4331,10 +4333,12 @@ namespace STROOP
             this.splitContainerCoin.Panel1.Controls.Add(this.groupBoxCoinFilter);
             this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinVSpeedOffset);
             this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinHSpeedOffset);
+            this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinStartingRng);
             this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinHSpeedMultiplier);
             this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinVSpeedRange);
             this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinHSpeedRange);
             this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinVSpeedOffset);
+            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinStartingRng);
             this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinHSpeedOffset);
             this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinHSpeedMultiplier);
             this.splitContainerCoin.Panel1.Controls.Add(this.listBoxCoinObjects);
@@ -4356,14 +4360,14 @@ namespace STROOP
             this.dataGridViewCoin.AllowUserToOrderColumns = true;
             this.dataGridViewCoin.AllowUserToResizeRows = false;
             this.dataGridViewCoin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewCoin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCoin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.rngIndex,
@@ -16502,7 +16506,7 @@ namespace STROOP
             // 
             // buttonCoinClear
             // 
-            this.buttonCoinClear.Location = new System.Drawing.Point(47, 262);
+            this.buttonCoinClear.Location = new System.Drawing.Point(48, 289);
             this.buttonCoinClear.Name = "buttonCoinClear";
             this.buttonCoinClear.Size = new System.Drawing.Size(93, 23);
             this.buttonCoinClear.TabIndex = 42;
@@ -16511,12 +16515,29 @@ namespace STROOP
             // 
             // buttonCoinCalculate
             // 
-            this.buttonCoinCalculate.Location = new System.Drawing.Point(145, 262);
+            this.buttonCoinCalculate.Location = new System.Drawing.Point(146, 289);
             this.buttonCoinCalculate.Name = "buttonCoinCalculate";
             this.buttonCoinCalculate.Size = new System.Drawing.Size(93, 23);
             this.buttonCoinCalculate.TabIndex = 42;
             this.buttonCoinCalculate.Text = "Calculate";
             this.buttonCoinCalculate.UseVisualStyleBackColor = true;
+            // 
+            // labelCoinStartingRng
+            // 
+            this.labelCoinStartingRng.AutoSize = true;
+            this.labelCoinStartingRng.Location = new System.Drawing.Point(77, 263);
+            this.labelCoinStartingRng.Name = "labelCoinStartingRng";
+            this.labelCoinStartingRng.Size = new System.Drawing.Size(73, 13);
+            this.labelCoinStartingRng.TabIndex = 37;
+            this.labelCoinStartingRng.Text = "Starting RNG:";
+            // 
+            // textBoxCoinStartingRng
+            // 
+            this.textBoxCoinStartingRng.Location = new System.Drawing.Point(152, 260);
+            this.textBoxCoinStartingRng.Name = "textBoxCoinStartingRng";
+            this.textBoxCoinStartingRng.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinStartingRng.TabIndex = 40;
+            this.textBoxCoinStartingRng.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // StroopMainForm
             // 
@@ -18273,6 +18294,8 @@ namespace STROOP
         private Label labelCoinHSpeedRange;
         private Button buttonCoinCalculate;
         private Button buttonCoinClear;
+        private BetterTextbox textBoxCoinStartingRng;
+        private Label labelCoinStartingRng;
     }
 }
 
