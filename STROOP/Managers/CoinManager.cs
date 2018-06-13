@@ -41,6 +41,8 @@ namespace STROOP.Managers
 
         public CoinManager(TabPage tabControl)
         {
+            // set controls
+
             SplitContainer splitContainerCoin = tabControl.Controls["splitContainerCoin"] as SplitContainer;
 
             _dataGridViewCoin = splitContainerCoin.Panel2.Controls["dataGridViewCoin"] as DataGridView;
@@ -66,8 +68,23 @@ namespace STROOP.Managers
 
             _buttonCoinClear = splitContainerCoin.Panel1.Controls["buttonCoinClear"] as Button;
             _buttonCoinCalculate = splitContainerCoin.Panel1.Controls["buttonCoinCalculate"] as Button;
+
+            // initialize controls
+
+            _listBoxCoinObjects.DataSource = CoinObject.GetCoinObjects();
+            _listBoxCoinObjects.ClearSelected();
+            _listBoxCoinObjects.SelectedValueChanged += (sender, e) => ListBoxSelectionChange();
+
         }
-        
+
+        private void ListBoxSelectionChange()
+        {
+            CoinObject coinObject = _listBoxCoinObjects.SelectedItem as CoinObject;
+            _textBoxCoinHSpeedScale.Text = coinObject.HSpeedScale.ToString();
+            _textBoxCoinVSpeedScale.Text = coinObject.VSpeedScale.ToString();
+            _textBoxCoinVSpeedOffset.Text = coinObject.VSpeedOffset.ToString();
+        }
+
         public void Update(bool updateView)
         {
             if (!updateView) return;

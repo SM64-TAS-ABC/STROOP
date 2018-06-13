@@ -11,10 +11,11 @@ namespace STROOP.Utilities
 {
     public class CoinObject
     {
-        private readonly int _numCoins;
-        private readonly int _hSpeedScale;
-        private readonly int _vSpeedScale;
-        private readonly int _vSpeedOffset;
+        public readonly int NumCoins;
+        public readonly int HSpeedScale;
+        public readonly int VSpeedScale;
+        public readonly int VSpeedOffset;
+
         private readonly CoinParamsOrder _coinParamsOrder;
         private readonly string _name;
 
@@ -31,10 +32,10 @@ namespace STROOP.Utilities
             CoinParamsOrder coinParamsOrder,
             string name)
         {
-            _numCoins = numCoins;
-            _hSpeedScale = hSpeedScale;
-            _vSpeedScale = vSpeedScale;
-            _vSpeedOffset = vSpeedOffset;
+            NumCoins = numCoins;
+            HSpeedScale = hSpeedScale;
+            VSpeedScale = vSpeedScale;
+            VSpeedOffset = vSpeedOffset;
             _coinParamsOrder = coinParamsOrder;
             _name = name;
         }
@@ -42,14 +43,14 @@ namespace STROOP.Utilities
         private float CalculateHSpeed(int rngIndex)
         {
             ushort rngValue = RngIndexer.GetRngValue(rngIndex);
-            float hSpeed = (rngValue / 65536f) * _hSpeedScale;
+            float hSpeed = (rngValue / 65536f) * HSpeedScale;
             return hSpeed;
         }
 
         private float CalculateVSpeed(int rngIndex)
         {
             ushort rngValue = RngIndexer.GetRngValue(rngIndex);
-            float vSpeed = (rngValue / 65536f) * _vSpeedScale + _vSpeedOffset;
+            float vSpeed = (rngValue / 65536f) * VSpeedScale + VSpeedOffset;
             return vSpeed;
         }
 
@@ -63,7 +64,7 @@ namespace STROOP.Utilities
         public List<CoinTrajectory> CalculateCoinTrajectories(int rngIndex)
         {
             List<CoinTrajectory> coinTrajectories = new List<CoinTrajectory>();
-            for (int i = 0; i < _numCoins; i++)
+            for (int i = 0; i < NumCoins; i++)
             {
                 CoinTrajectory coinTrajectory = CalculateCoinTrajectory(rngIndex + 3 * i);
                 coinTrajectories.Add(coinTrajectory);
