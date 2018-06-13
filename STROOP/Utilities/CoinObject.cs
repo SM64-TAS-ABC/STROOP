@@ -15,29 +15,23 @@ namespace STROOP.Utilities
         public readonly int HSpeedScale;
         public readonly int VSpeedScale;
         public readonly int VSpeedOffset;
-
-        private readonly CoinParamsOrder _coinParamsOrder;
-        private readonly string _name;
-
-        private enum CoinParamsOrder
-        {
-            HVA, HAV, VHA, VAH, AHV, AVH
-        }
+        public readonly CoinParamOrder CoinParamOrder;
+        public readonly string Name;
 
         private CoinObject(
             int numCoins,
             int hSpeedScale,
             int vSpeedScale,
             int vSpeedOffset,
-            CoinParamsOrder coinParamsOrder,
+            CoinParamOrder coinParamOrder,
             string name)
         {
             NumCoins = numCoins;
             HSpeedScale = hSpeedScale;
             VSpeedScale = vSpeedScale;
             VSpeedOffset = vSpeedOffset;
-            _coinParamsOrder = coinParamsOrder;
-            _name = name;
+            CoinParamOrder = coinParamOrder;
+            Name = name;
         }
 
         private float CalculateHSpeed(int rngIndex)
@@ -77,34 +71,34 @@ namespace STROOP.Utilities
             float hSpeed;
             float vSpeed;
             ushort angle;
-            switch (_coinParamsOrder)
+            switch (CoinParamOrder)
             {
-                case CoinParamsOrder.HVA:
+                case CoinParamOrder.HVA:
                     hSpeed = CalculateHSpeed(rngIndex + 0);
                     vSpeed = CalculateVSpeed(rngIndex + 1);
                     angle = CalculateAngle(rngIndex + 2);
                     break;
-                case CoinParamsOrder.HAV:
+                case CoinParamOrder.HAV:
                     hSpeed = CalculateHSpeed(rngIndex + 0);
                     angle = CalculateAngle(rngIndex + 1);
                     vSpeed = CalculateVSpeed(rngIndex + 2);
                     break;
-                case CoinParamsOrder.VHA:
+                case CoinParamOrder.VHA:
                     vSpeed = CalculateVSpeed(rngIndex + 0);
                     hSpeed = CalculateHSpeed(rngIndex + 1);
                     angle = CalculateAngle(rngIndex + 2);
                     break;
-                case CoinParamsOrder.VAH:
+                case CoinParamOrder.VAH:
                     vSpeed = CalculateVSpeed(rngIndex + 0);
                     angle = CalculateAngle(rngIndex + 1);
                     hSpeed = CalculateHSpeed(rngIndex + 2);
                     break;
-                case CoinParamsOrder.AHV:
+                case CoinParamOrder.AHV:
                     angle = CalculateAngle(rngIndex + 0);
                     hSpeed = CalculateHSpeed(rngIndex + 1);
                     vSpeed = CalculateVSpeed(rngIndex + 2);
                     break;
-                case CoinParamsOrder.AVH:
+                case CoinParamOrder.AVH:
                     angle = CalculateAngle(rngIndex + 0);
                     vSpeed = CalculateVSpeed(rngIndex + 1);
                     hSpeed = CalculateHSpeed(rngIndex + 2);
@@ -117,7 +111,7 @@ namespace STROOP.Utilities
 
         public override string ToString()
         {
-            return _name;
+            return Name;
         }
 
         public static List<CoinObject> GetCoinObjects()
@@ -133,7 +127,7 @@ namespace STROOP.Utilities
             hSpeedScale: 20,
             vSpeedScale: 40,
             vSpeedOffset: 17,
-            coinParamsOrder: CoinParamsOrder.HVA,
+            coinParamOrder: CoinParamOrder.HVA,
             name: "Bob-omb");
 
         public static CoinObject Scuttlebug = new CoinObject(
@@ -141,7 +135,7 @@ namespace STROOP.Utilities
             hSpeedScale: 10,
             vSpeedScale: 10,
             vSpeedOffset: 46,
-            coinParamsOrder: CoinParamsOrder.VHA,
+            coinParamOrder: CoinParamOrder.VHA,
             name: "Scuttlebug");
 
         public static CoinObject TinyPiranhaPlant = new CoinObject(
@@ -149,7 +143,7 @@ namespace STROOP.Utilities
             hSpeedScale: 10, // more like 9.929076195
             vSpeedScale: 10,
             vSpeedOffset: 46,
-            coinParamsOrder: CoinParamsOrder.VHA,
+            coinParamOrder: CoinParamOrder.VHA,
             name: "Tiny Piranha Plant");
 
         public static CoinObject Goomba = new CoinObject(
@@ -157,7 +151,7 @@ namespace STROOP.Utilities
             hSpeedScale: 10, // more like 9.936193656
             vSpeedScale: 10,
             vSpeedOffset: 46,
-            coinParamsOrder: CoinParamsOrder.VHA,
+            coinParamOrder: CoinParamOrder.VHA,
             name: "Goomba");
 
         public static CoinObject Moneybag = new CoinObject(
@@ -165,7 +159,7 @@ namespace STROOP.Utilities
             hSpeedScale: 20,
             vSpeedScale: 40,
             vSpeedOffset: 17,
-            coinParamsOrder: CoinParamsOrder.HVA,
+            coinParamOrder: CoinParamOrder.HVA,
             name: "Moneybag");
 
         public static CoinObject CorkBox = new CoinObject(
@@ -173,7 +167,7 @@ namespace STROOP.Utilities
             hSpeedScale: 20,
             vSpeedScale: 40,
             vSpeedOffset: 17,
-            coinParamsOrder: CoinParamsOrder.HVA,
+            coinParamOrder: CoinParamOrder.HVA,
             name: "Cork Box");
 
     }

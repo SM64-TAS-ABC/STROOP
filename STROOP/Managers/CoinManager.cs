@@ -87,6 +87,7 @@ namespace STROOP.Managers
             _textBoxCoinHSpeedScale.Text = coinObject.HSpeedScale.ToString();
             _textBoxCoinVSpeedScale.Text = coinObject.VSpeedScale.ToString();
             _textBoxCoinVSpeedOffset.Text = coinObject.VSpeedOffset.ToString();
+            _textBoxCoinParamOrder.Text = coinObject.CoinParamOrder.ToString();
         }
 
         private void CalculateCoinTrajectories()
