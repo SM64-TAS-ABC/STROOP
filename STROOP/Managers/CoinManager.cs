@@ -16,12 +16,56 @@ namespace STROOP.Managers
 {
     public class CoinManager
     {
+        private readonly DataGridView _dataGridViewCoin;
 
-        private static readonly int _memorySize = (int)ObjectConfig.StructSize;
+        private readonly ListBox _listBoxCoinObjects;
+
+        private readonly BetterTextbox _textBoxCoinHSpeedMultiplier;
+        private readonly BetterTextbox _textBoxCoinHSpeedOffset;
+        private readonly BetterTextbox _textBoxCoinVSpeedOffset;
+
+        private readonly Label _labelCoinHSpeedRange;
+        private readonly Label _labelCoinVSpeedRange;
+
+        private readonly BetterTextbox _textBoxCoinFilterHSpeedMin;
+        private readonly BetterTextbox _textBoxCoinFilterHSpeedMax;
+        private readonly BetterTextbox _textBoxCoinFilterVSpeedMin;
+        private readonly BetterTextbox _textBoxCoinFilterVSpeedMax;
+        private readonly BetterTextbox _textBoxCoinFilterAngleMin;
+        private readonly BetterTextbox _textBoxCoinFilterAngleMax;
+
+        private readonly BetterTextbox _textBoxCoinStartingRng;
+
+        private readonly Button _buttonCoinClear;
+        private readonly Button _buttonCoinCalculate;
 
         public CoinManager(TabPage tabControl)
         {
-           
+            SplitContainer splitContainerCoin = tabControl.Controls["splitContainerCoin"] as SplitContainer;
+
+            _dataGridViewCoin = splitContainerCoin.Panel2.Controls["dataGridViewCoin"] as DataGridView;
+
+            _listBoxCoinObjects = splitContainerCoin.Panel1.Controls["listBoxCoinObjects"] as ListBox;
+
+            _textBoxCoinHSpeedMultiplier = splitContainerCoin.Panel1.Controls["textBoxCoinHSpeedMultiplier"] as BetterTextbox;
+            _textBoxCoinHSpeedOffset = splitContainerCoin.Panel1.Controls["textBoxCoinHSpeedOffset"] as BetterTextbox;
+            _textBoxCoinVSpeedOffset = splitContainerCoin.Panel1.Controls["textBoxCoinVSpeedOffset"] as BetterTextbox;
+
+            _labelCoinHSpeedRange = splitContainerCoin.Panel1.Controls["labelCoinHSpeedRange"] as Label;
+            _labelCoinVSpeedRange = splitContainerCoin.Panel1.Controls["labelCoinVSpeedRange"] as Label;
+
+            GroupBox groupBoxCoinFilter = splitContainerCoin.Panel1.Controls["groupBoxCoinFilter"] as GroupBox;
+            _textBoxCoinFilterHSpeedMin = groupBoxCoinFilter.Controls["textBoxCoinFilterHSpeedMin"] as BetterTextbox;
+            _textBoxCoinFilterHSpeedMax = groupBoxCoinFilter.Controls["textBoxCoinFilterHSpeedMax"] as BetterTextbox;
+            _textBoxCoinFilterVSpeedMin = groupBoxCoinFilter.Controls["textBoxCoinFilterVSpeedMin"] as BetterTextbox;
+            _textBoxCoinFilterVSpeedMax = groupBoxCoinFilter.Controls["textBoxCoinFilterVSpeedMax"] as BetterTextbox;
+            _textBoxCoinFilterAngleMin = groupBoxCoinFilter.Controls["textBoxCoinFilterAngleMin"] as BetterTextbox;
+            _textBoxCoinFilterAngleMax = groupBoxCoinFilter.Controls["textBoxCoinFilterAngleMax"] as BetterTextbox;
+
+            _textBoxCoinStartingRng = splitContainerCoin.Panel1.Controls["textBoxCoinStartingRng"] as BetterTextbox;
+
+            _buttonCoinClear = splitContainerCoin.Panel1.Controls["buttonCoinClear"] as Button;
+            _buttonCoinCalculate = splitContainerCoin.Panel1.Controls["buttonCoinCalculate"] as Button;
         }
         
         public void Update(bool updateView)
