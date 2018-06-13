@@ -527,15 +527,6 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
-            _dictionary.Add("FlyGuyNextHeightDiff",
-                ((uint objAddress) =>
-                {
-                    int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
-                    double nextRelativeHeight = TableConfig.FlyGuyData.GetNextHeightDiff(oscillationTimer);
-                    return nextRelativeHeight;
-                },
-                DEFAULT_SETTER));
-
             _dictionary.Add("FlyGuyMinHeight",
                 ((uint objAddress) =>
                 {

@@ -3251,7 +3251,6 @@
     <Data groupList="ObjectSpecific" type="float" offset="0x10C" base="Object">Scale Change</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xF8" base="Object" mask="0x0000003F">Oscillation Timer</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="FlyGuyRelativeHeight">Relative Height</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="FlyGuyNextHeightDiff">Next Height Diff</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="FlyGuyMinHeight">Min Height</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="FlyGuyMaxHeight">Max Height</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="DistObjHomeToObj">Dist Home to Obj</Data>
@@ -3276,7 +3275,6 @@
     <Data groupList="ObjectSpecific" type="float" offset="0x10C" base="Object">Scale Change</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xF8" base="Object" mask="0x0000003F">Oscillation Timer</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="FlyGuyRelativeHeight">Relative Height</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="FlyGuyNextHeightDiff">Next Height Diff</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="FlyGuyMinHeight">Min Height</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="FlyGuyMaxHeight">Max Height</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="DistObjHomeToObj">Dist Home to Obj</Data>
