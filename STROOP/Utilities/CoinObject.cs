@@ -11,8 +11,9 @@ namespace STROOP.Utilities
 {
     public class CoinObject
     {
-        private readonly int _hSpeedMultiplier;
-        private readonly int _hSpeedOffset;
+        private readonly int _numCoins;
+        private readonly int _hSpeedScale;
+        private readonly int _vSpeedScale;
         private readonly int _vSpeedOffset;
         private readonly CoinParamsOrder _coinParamsOrder;
 
@@ -22,18 +23,96 @@ namespace STROOP.Utilities
         }
 
         private CoinObject(
-            int hSpeedMultiplier,
-            int hSpeedOffset,
+            int numCoins,
+            int hSpeedScale,
+            int vSpeedScale,
             int vSpeedOffset,
             CoinParamsOrder coinParamsOrder)
         {
-            _hSpeedMultiplier = hSpeedMultiplier;
-            _hSpeedOffset = hSpeedOffset;
+            _numCoins = numCoins;
+            _hSpeedScale = hSpeedScale;
+            _vSpeedScale = vSpeedScale;
             _vSpeedOffset = vSpeedOffset;
             _coinParamsOrder = coinParamsOrder;
         }
 
-        //public static CoinObject Bobomb = new CoinObject()
+        private float CalculateHSpeed(int rngIndex)
+        {
+            ushort rngValue = RngIndexer.GetRngValue(rngIndex);
+            float hSpeed = (rngValue / 65536f) * _hSpeedScale;
+            return hSpeed;
+        }
+
+        private float CalculateVSpeed(int rngIndex)
+        {
+            ushort rngValue = RngIndexer.GetRngValue(rngIndex);
+            float vSpeed = (rngValue / 65536f) * _vSpeedScale + _vSpeedOffset;
+            return vSpeed;
+        }
+
+        private ushort CalculateAngle(int rngIndex)
+        {
+            ushort rngValue = RngIndexer.GetRngValue(rngIndex);
+            ushort angle = rngValue;
+            return angle;
+        }
+
+        public List<CoinTrajectory> CalculateCoinTrajectories(int rngIndex)
+        {
+            List<CoinTrajectory> coinTrajectories = new List<CoinTrajectory>();
+            for (int i = 0; i < _numCoins; i++)
+            {
+                CoinTrajectory coinTrajectory = CalculateCoinTrajectory(rngIndex + 3 * i);
+                coinTrajectories.Add(coinTrajectory);
+            }
+            return coinTrajectories;
+        }
+
+        public CoinTrajectory CalculateCoinTrajectory(int rngIndex)
+        {
+            float hSpeed;
+            float vSpeed;
+            ushort angle;
+            switch (_coinParamsOrder)
+            {
+                case CoinParamsOrder.HVA:
+                    hSpeed = CalculateHSpeed(rngIndex + 0);
+                    vSpeed = CalculateVSpeed(rngIndex + 1);
+                    angle = CalculateAngle(rngIndex + 2);
+                    break;
+                case CoinParamsOrder.HAV:
+                    hSpeed = CalculateHSpeed(rngIndex + 0);
+                    angle = CalculateAngle(rngIndex + 1);
+                    vSpeed = CalculateVSpeed(rngIndex + 2);
+                    break;
+                case CoinParamsOrder.VHA:
+                    vSpeed = CalculateVSpeed(rngIndex + 0);
+                    hSpeed = CalculateHSpeed(rngIndex + 1);
+                    angle = CalculateAngle(rngIndex + 2);
+                    break;
+                case CoinParamsOrder.VAH:
+                    vSpeed = CalculateVSpeed(rngIndex + 0);
+                    angle = CalculateAngle(rngIndex + 1);
+                    hSpeed = CalculateHSpeed(rngIndex + 2);
+                    break;
+                case CoinParamsOrder.AHV:
+                    angle = CalculateAngle(rngIndex + 0);
+                    hSpeed = CalculateHSpeed(rngIndex + 1);
+                    vSpeed = CalculateVSpeed(rngIndex + 2);
+                    break;
+                case CoinParamsOrder.AVH:
+                    angle = CalculateAngle(rngIndex + 0);
+                    vSpeed = CalculateVSpeed(rngIndex + 1);
+                    hSpeed = CalculateHSpeed(rngIndex + 2);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            return new CoinTrajectory(hSpeed, vSpeed, angle);
+        }
+
+        public static CoinObject Bobomb = new CoinObject(1, 20, 40, 17, CoinParamsOrder.HVA);
+        public static CoinObject Scuttlebug = new CoinObject(3, 10, 10, 46, CoinParamsOrder.VHA);
 
     }
 }
