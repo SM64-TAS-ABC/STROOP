@@ -115,7 +115,7 @@ namespace STROOP
             bool buttonU2Pressed = (Config.Stream.GetByte(inputAddress + InputConfig.ButtonU2Offset) & InputConfig.ButtonU2Mask) != 0;
             if (buttonU2Pressed) e.Graphics.DrawImage(_gui.ButtonU2Image, scaledRect);
 
-            float controlStickOffsetScale = 0.0003f;
+            float controlStickOffsetScale = _gui == _classicGui ? 0.0003f : 0.0006f;
             sbyte controlStickH = (sbyte)Config.Stream.GetByte(inputAddress + InputConfig.ControlStickXOffset);
             sbyte controlStickV = (sbyte)Config.Stream.GetByte(inputAddress + InputConfig.ControlStickYOffset);
             float hOffset = controlStickH * controlStickOffsetScale * scaledRect.Width;
