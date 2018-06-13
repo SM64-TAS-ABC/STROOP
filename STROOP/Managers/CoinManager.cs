@@ -91,6 +91,8 @@ namespace STROOP.Managers
         {
             List<CoinTrajectory> coinTrajectories = Enumerable.Range(0, 11).ToList().ConvertAll(
                 num => CoinObject.Bobomb.CalculateCoinTrajectory(num));
+
+
         }
 
         public void Update(bool updateView)
