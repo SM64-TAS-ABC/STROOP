@@ -23,6 +23,7 @@ namespace STROOP.Managers
         private readonly BetterTextbox _textBoxCoinHSpeedScale;
         private readonly BetterTextbox _textBoxCoinVSpeedScale;
         private readonly BetterTextbox _textBoxCoinVSpeedOffset;
+        private readonly BetterTextbox _textBoxCoinParamOrder;
 
         private readonly Label _labelCoinHSpeedRange;
         private readonly Label _labelCoinVSpeedRange;
@@ -52,6 +53,7 @@ namespace STROOP.Managers
             _textBoxCoinHSpeedScale = splitContainerCoin.Panel1.Controls["textBoxCoinHSpeedScale"] as BetterTextbox;
             _textBoxCoinVSpeedScale = splitContainerCoin.Panel1.Controls["textBoxCoinVSpeedScale"] as BetterTextbox;
             _textBoxCoinVSpeedOffset = splitContainerCoin.Panel1.Controls["textBoxCoinVSpeedOffset"] as BetterTextbox;
+            _textBoxCoinParamOrder = splitContainerCoin.Panel1.Controls["textBoxCoinParamOrder"] as BetterTextbox;
 
             _labelCoinHSpeedRange = splitContainerCoin.Panel1.Controls["labelCoinHSpeedRange"] as Label;
             _labelCoinVSpeedRange = splitContainerCoin.Panel1.Controls["labelCoinVSpeedRange"] as Label;
