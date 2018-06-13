@@ -3,6 +3,7 @@
   <Config>
     <ClassicInputImageDirectory>Resources\Input Images\Classic\</ClassicInputImageDirectory>
     <SleekInputImageDirectory>Resources\Input Images\Sleek\</SleekInputImageDirectory>
+    <VerticalInputImageDirectory>Resources\Input Images\Vertical\</VerticalInputImageDirectory>
   </Config>
   <InputImages>
     <ButtonA>

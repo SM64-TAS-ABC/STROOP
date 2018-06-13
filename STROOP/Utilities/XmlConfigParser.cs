@@ -487,7 +487,52 @@ namespace STROOP.Utilities
             return assoc;
         }
 
-        public static void OpenInputImageAssoc(string path, InputImageGui inputImageGui, bool useSleek)
+        public static List<InputImageGui> CreateInputImageAssocList(string path)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // Create schema set
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
+            schemaSet.Add("http://tempuri.org/InputImageAssociationsSchema.xsd", "InputImageAssociationsSchema.xsd");
+            schemaSet.Compile();
+
+            // Load and validate document
+            var doc = XDocument.Load(path);
+            doc.Validate(schemaSet, Validation);
+
+            List<InputImageGui> guiList = new List<InputImageGui>();
+            foreach (XElement element in doc.Root.Elements())
+            {
+                switch (element.Name.ToString())
+                {
+                    case "Config":
+                        foreach (XElement subElement in element.Elements())
+                        {
+                            switch (subElement.Name.ToString())
+                            {
+                                case "ClassicInputImageDirectory":
+                                    guiList.Add(CreateInputImageAssoc(
+                                        path, subElement.Value, InputDisplayTypeEnum.Classic));
+                                    break;
+                                case "SleekInputImageDirectory":
+                                    guiList.Add(CreateInputImageAssoc(
+                                        path, subElement.Value, InputDisplayTypeEnum.Sleek));
+                                    break;
+                                case "VerticalInputImageDirectory":
+                                    guiList.Add(CreateInputImageAssoc(
+                                        path, subElement.Value, InputDisplayTypeEnum.Vertical));
+                                    break;
+                            }
+                        }
+                        break;
+                }
+            }
+            return guiList;
+        }
+
+        public static InputImageGui CreateInputImageAssoc(
+            string path, string inputImageDir, InputDisplayTypeEnum inputDisplayType)
         {
             var assembly = Assembly.GetExecutingAssembly();
 
@@ -502,8 +547,7 @@ namespace STROOP.Utilities
             doc.Validate(schemaSet, Validation);
 
             // Create path list
-            string inputImageDir = "",
-                   buttonAPath = "",
+            string buttonAPath = "",
                    buttonBPath = "",
                    buttonZPath = "",
                    buttonStartPath = "",
@@ -526,21 +570,6 @@ namespace STROOP.Utilities
             {
                 switch (element.Name.ToString())
                 {
-                    case "Config":
-                        foreach (XElement subElement in element.Elements())
-                        {
-                            switch (subElement.Name.ToString())
-                            {
-                                case "ClassicInputImageDirectory":
-                                    if (!useSleek) inputImageDir = subElement.Value;
-                                    break;
-                                case "SleekInputImageDirectory":
-                                    if (useSleek) inputImageDir = subElement.Value;
-                                    break;
-                            }
-                        }
-                        break;
-
                     case "InputImages":
                         foreach (XElement subElement in element.Elements())
                         {
@@ -625,29 +654,34 @@ namespace STROOP.Utilities
 
             // Load Images
             // TODO: Exceptions
-            inputImageGui.ButtonAImage = Image.FromFile(inputImageDir + buttonAPath);
-            inputImageGui.ButtonBImage = Image.FromFile(inputImageDir + buttonBPath);
-            inputImageGui.ButtonZImage = Image.FromFile(inputImageDir + buttonZPath);
-            inputImageGui.ButtonStartImage = Image.FromFile(inputImageDir + buttonStartPath);
+            return new InputImageGui()
+            {
+                InputDisplayType = inputDisplayType,
 
-            inputImageGui.ButtonRImage = Image.FromFile(inputImageDir + buttonRPath);
-            inputImageGui.ButtonLImage = Image.FromFile(inputImageDir + buttonLPath);
+                ButtonAImage = Image.FromFile(inputImageDir + buttonAPath),
+                ButtonBImage = Image.FromFile(inputImageDir + buttonBPath),
+                ButtonZImage = Image.FromFile(inputImageDir + buttonZPath),
+                ButtonStartImage = Image.FromFile(inputImageDir + buttonStartPath),
 
-            inputImageGui.ButtonCUpImage = Image.FromFile(inputImageDir + buttonCUpPath);
-            inputImageGui.ButtonCDownImage = Image.FromFile(inputImageDir + buttonCDownPath);
-            inputImageGui.ButtonCLeftImage = Image.FromFile(inputImageDir + buttonCLeftPath);
-            inputImageGui.ButtonCRightImage = Image.FromFile(inputImageDir + buttonCRightPath);
+                ButtonRImage = Image.FromFile(inputImageDir + buttonRPath),
+                ButtonLImage = Image.FromFile(inputImageDir + buttonLPath),
 
-            inputImageGui.ButtonDUpImage = Image.FromFile(inputImageDir + buttonDUpPath);
-            inputImageGui.ButtonDDownImage = Image.FromFile(inputImageDir + buttonDDownPath);
-            inputImageGui.ButtonDLeftImage = Image.FromFile(inputImageDir + buttonDLeftPath);
-            inputImageGui.ButtonDRightImage = Image.FromFile(inputImageDir + buttonDRightPath);
+                ButtonCUpImage = Image.FromFile(inputImageDir + buttonCUpPath),
+                ButtonCDownImage = Image.FromFile(inputImageDir + buttonCDownPath),
+                ButtonCLeftImage = Image.FromFile(inputImageDir + buttonCLeftPath),
+                ButtonCRightImage = Image.FromFile(inputImageDir + buttonCRightPath),
 
-            inputImageGui.ButtonU1Image = Image.FromFile(inputImageDir + buttonU1Path);
-            inputImageGui.ButtonU2Image = Image.FromFile(inputImageDir + buttonU2Path);
+                ButtonDUpImage = Image.FromFile(inputImageDir + buttonDUpPath),
+                ButtonDDownImage = Image.FromFile(inputImageDir + buttonDDownPath),
+                ButtonDLeftImage = Image.FromFile(inputImageDir + buttonDLeftPath),
+                ButtonDRightImage = Image.FromFile(inputImageDir + buttonDRightPath),
 
-            inputImageGui.ControlStickImage = Image.FromFile(inputImageDir + controlStickPath);
-            inputImageGui.ControllerImage = Image.FromFile(inputImageDir + controllerPath);
+                ButtonU1Image = Image.FromFile(inputImageDir + buttonU1Path),
+                ButtonU2Image = Image.FromFile(inputImageDir + buttonU2Path),
+
+                ControlStickImage = Image.FromFile(inputImageDir + controlStickPath),
+                ControllerImage = Image.FromFile(inputImageDir + controllerPath)
+            };
         }
 
         public static void OpenFileImageAssoc(string path, FileImageGui fileImageGui)
