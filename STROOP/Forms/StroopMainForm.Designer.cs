@@ -34,9 +34,9 @@ namespace STROOP
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
@@ -1269,6 +1269,19 @@ namespace STROOP
             this.betterTextbox5 = new STROOP.BetterTextbox();
             this.betterTextbox6 = new STROOP.BetterTextbox();
             this.betterTextbox7 = new STROOP.BetterTextbox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.betterTextbox8 = new STROOP.BetterTextbox();
+            this.betterTextbox9 = new STROOP.BetterTextbox();
+            this.betterTextbox10 = new STROOP.BetterTextbox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1659,6 +1672,7 @@ namespace STROOP
             this.groupBoxRecording.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -4051,14 +4065,14 @@ namespace STROOP
             this.dataGridViewM64Inputs.AllowUserToResizeColumns = false;
             this.dataGridViewM64Inputs.AllowUserToResizeRows = false;
             this.dataGridViewM64Inputs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewM64Inputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewM64Inputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnM64Frame,
@@ -4079,14 +4093,14 @@ namespace STROOP
             this.ColumnM64DDown,
             this.ColumnM64DLeft,
             this.ColumnM64DRight});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewM64Inputs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewM64Inputs.EnableHeadersVisualStyles = false;
             this.dataGridViewM64Inputs.Location = new System.Drawing.Point(0, 0);
@@ -4312,16 +4326,15 @@ namespace STROOP
             // splitContainerCoin.Panel1
             // 
             this.splitContainerCoin.Panel1.AutoScroll = true;
-            this.splitContainerCoin.Panel1.Controls.Add(this.betterTextbox7);
-            this.splitContainerCoin.Panel1.Controls.Add(this.betterTextbox6);
+            this.splitContainerCoin.Panel1.Controls.Add(this.button2);
+            this.splitContainerCoin.Panel1.Controls.Add(this.button1);
+            this.splitContainerCoin.Panel1.Controls.Add(this.groupBox1);
             this.splitContainerCoin.Panel1.Controls.Add(this.betterTextbox1);
-            this.splitContainerCoin.Panel1.Controls.Add(this.betterTextbox5);
             this.splitContainerCoin.Panel1.Controls.Add(this.betterTextbox2);
-            this.splitContainerCoin.Panel1.Controls.Add(this.label14);
             this.splitContainerCoin.Panel1.Controls.Add(this.betterTextbox3);
-            this.splitContainerCoin.Panel1.Controls.Add(this.label13);
+            this.splitContainerCoin.Panel1.Controls.Add(this.label21);
+            this.splitContainerCoin.Panel1.Controls.Add(this.label20);
             this.splitContainerCoin.Panel1.Controls.Add(this.label8);
-            this.splitContainerCoin.Panel1.Controls.Add(this.label12);
             this.splitContainerCoin.Panel1.Controls.Add(this.label10);
             this.splitContainerCoin.Panel1.Controls.Add(this.label11);
             this.splitContainerCoin.Panel1.Controls.Add(this.listBox1);
@@ -4332,7 +4345,7 @@ namespace STROOP
             this.splitContainerCoin.Panel2.Controls.Add(this.dataGridViewCoin);
             this.splitContainerCoin.Panel2MinSize = 0;
             this.splitContainerCoin.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerCoin.SplitterDistance = 460;
+            this.splitContainerCoin.SplitterDistance = 305;
             this.splitContainerCoin.SplitterWidth = 1;
             this.splitContainerCoin.TabIndex = 38;
             // 
@@ -4343,14 +4356,14 @@ namespace STROOP
             this.dataGridViewCoin.AllowUserToOrderColumns = true;
             this.dataGridViewCoin.AllowUserToResizeRows = false;
             this.dataGridViewCoin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewCoin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCoin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.rngIndex,
@@ -4366,7 +4379,7 @@ namespace STROOP
             this.dataGridViewCoin.Name = "dataGridViewCoin";
             this.dataGridViewCoin.ReadOnly = true;
             this.dataGridViewCoin.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewCoin.Size = new System.Drawing.Size(446, 455);
+            this.dataGridViewCoin.Size = new System.Drawing.Size(601, 455);
             this.dataGridViewCoin.TabIndex = 3;
             // 
             // rngIndex
@@ -16329,33 +16342,33 @@ namespace STROOP
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(7, 108);
+            this.label12.Location = new System.Drawing.Point(10, 35);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(93, 13);
+            this.label12.Size = new System.Drawing.Size(69, 13);
             this.label12.TabIndex = 37;
-            this.label12.Text = "HSpeed Multiplier:";
+            this.label12.Text = "HSpeed from";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(7, 132);
+            this.label13.Location = new System.Drawing.Point(10, 59);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(80, 13);
+            this.label13.Size = new System.Drawing.Size(68, 13);
             this.label13.TabIndex = 36;
-            this.label13.Text = "HSpeed Offset:";
+            this.label13.Text = "VSpeed from";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(7, 156);
+            this.label14.Location = new System.Drawing.Point(10, 83);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(79, 13);
+            this.label14.Size = new System.Drawing.Size(57, 13);
             this.label14.TabIndex = 35;
-            this.label14.Text = "VSpeed Offset:";
+            this.label14.Text = "Angle from";
             // 
             // betterTextbox5
             // 
-            this.betterTextbox5.Location = new System.Drawing.Point(103, 105);
+            this.betterTextbox5.Location = new System.Drawing.Point(80, 32);
             this.betterTextbox5.Name = "betterTextbox5";
             this.betterTextbox5.Size = new System.Drawing.Size(53, 20);
             this.betterTextbox5.TabIndex = 40;
@@ -16363,7 +16376,7 @@ namespace STROOP
             // 
             // betterTextbox6
             // 
-            this.betterTextbox6.Location = new System.Drawing.Point(103, 129);
+            this.betterTextbox6.Location = new System.Drawing.Point(80, 56);
             this.betterTextbox6.Name = "betterTextbox6";
             this.betterTextbox6.Size = new System.Drawing.Size(53, 20);
             this.betterTextbox6.TabIndex = 39;
@@ -16371,11 +16384,139 @@ namespace STROOP
             // 
             // betterTextbox7
             // 
-            this.betterTextbox7.Location = new System.Drawing.Point(103, 153);
+            this.betterTextbox7.Location = new System.Drawing.Point(80, 80);
             this.betterTextbox7.Name = "betterTextbox7";
             this.betterTextbox7.Size = new System.Drawing.Size(53, 20);
             this.betterTextbox7.TabIndex = 38;
             this.betterTextbox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(137, 35);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(16, 13);
+            this.label15.TabIndex = 37;
+            this.label15.Text = "to";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(137, 59);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(16, 13);
+            this.label16.TabIndex = 36;
+            this.label16.Text = "to";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(137, 83);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(16, 13);
+            this.label17.TabIndex = 35;
+            this.label17.Text = "to";
+            // 
+            // betterTextbox8
+            // 
+            this.betterTextbox8.Location = new System.Drawing.Point(154, 32);
+            this.betterTextbox8.Name = "betterTextbox8";
+            this.betterTextbox8.Size = new System.Drawing.Size(53, 20);
+            this.betterTextbox8.TabIndex = 40;
+            this.betterTextbox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox9
+            // 
+            this.betterTextbox9.Location = new System.Drawing.Point(154, 56);
+            this.betterTextbox9.Name = "betterTextbox9";
+            this.betterTextbox9.Size = new System.Drawing.Size(53, 20);
+            this.betterTextbox9.TabIndex = 39;
+            this.betterTextbox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextbox10
+            // 
+            this.betterTextbox10.Location = new System.Drawing.Point(154, 80);
+            this.betterTextbox10.Name = "betterTextbox10";
+            this.betterTextbox10.Size = new System.Drawing.Size(53, 20);
+            this.betterTextbox10.TabIndex = 38;
+            this.betterTextbox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(95, 16);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(24, 13);
+            this.label18.TabIndex = 37;
+            this.label18.Text = "Min";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(167, 16);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(27, 13);
+            this.label19.TabIndex = 37;
+            this.label19.Text = "Max";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.betterTextbox7);
+            this.groupBox1.Controls.Add(this.betterTextbox10);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.betterTextbox9);
+            this.groupBox1.Controls.Add(this.label18);
+            this.groupBox1.Controls.Add(this.label19);
+            this.groupBox1.Controls.Add(this.betterTextbox6);
+            this.groupBox1.Controls.Add(this.label15);
+            this.groupBox1.Controls.Add(this.betterTextbox8);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.label16);
+            this.groupBox1.Controls.Add(this.betterTextbox5);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.label17);
+            this.groupBox1.Location = new System.Drawing.Point(33, 142);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(218, 110);
+            this.groupBox1.TabIndex = 41;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Filter";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(43, 93);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(84, 13);
+            this.label20.TabIndex = 35;
+            this.label20.Text = "HSpeed Range:";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(43, 115);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(83, 13);
+            this.label21.TabIndex = 35;
+            this.label21.Text = "VSpeed Range:";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(47, 262);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(93, 23);
+            this.button1.TabIndex = 42;
+            this.button1.Text = "Clear";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(145, 262);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(93, 23);
+            this.button2.TabIndex = 42;
+            this.button2.Text = "Calculate";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -16879,6 +17020,8 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -18117,6 +18260,19 @@ namespace STROOP
         private Label label10;
         private Label label11;
         private ListBox listBox1;
+        private GroupBox groupBox1;
+        private BetterTextbox betterTextbox10;
+        private BetterTextbox betterTextbox9;
+        private Label label18;
+        private Label label19;
+        private Label label15;
+        private BetterTextbox betterTextbox8;
+        private Label label16;
+        private Label label17;
+        private Label label21;
+        private Label label20;
+        private Button button2;
+        private Button button1;
     }
 }
 
