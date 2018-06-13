@@ -29,7 +29,7 @@ namespace STROOP.Managers
             SplitContainer splitContainerInput = inputControl.Controls["splitContainerInput"] as SplitContainer;
             _inputDisplayPanel = splitContainerInput.Panel1.Controls["inputDisplayPanel"] as InputDisplayPanel;
 
-            _inputDisplayPanel.setInputDisplayGui(_classicGui, _sleekGui);
+            _inputDisplayPanel.SetInputDisplayGui(_classicGui, _sleekGui);
         }
 
         public override void Update(bool updateView)

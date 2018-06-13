@@ -28,11 +28,32 @@ namespace STROOP
             this.DoubleBuffered = true;
         }
 
-        public void setInputDisplayGui(InputImageGui classicGui, InputImageGui sleekGui)
+        public void SetInputDisplayGui(InputImageGui classicGui, InputImageGui sleekGui)
         {
             _classicGui = classicGui;
             _sleekGui = sleekGui;
             _gui = _classicGui;
+
+            ToolStripMenuItem itemClassicDisplay = new ToolStripMenuItem("Classic Display");
+            ToolStripMenuItem itemSleekDisplay = new ToolStripMenuItem("Sleek Display");
+            itemClassicDisplay.Click += (sender, e) =>
+            {
+                BackColor = SystemColors.Control;
+                _gui = _classicGui;
+                itemClassicDisplay.Checked = true;
+                itemSleekDisplay.Checked = false;
+            };
+            itemSleekDisplay.Click += (sender, e) =>
+            {
+                BackColor = Color.Black;
+                _gui = _sleekGui;
+                itemClassicDisplay.Checked = false;
+                itemSleekDisplay.Checked = true;
+            };
+            itemClassicDisplay.Checked = true;
+            ContextMenuStrip = new ContextMenuStrip();
+            ContextMenuStrip.Items.Add(itemClassicDisplay);
+            ContextMenuStrip.Items.Add(itemSleekDisplay);
         }
 
         protected override void OnPaint(PaintEventArgs e)
