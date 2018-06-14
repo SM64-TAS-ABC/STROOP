@@ -85,6 +85,7 @@ namespace STROOP.Managers
         {
             ["Object"] = TabType.Object,
             ["Map"] = TabType.Map,
+            ["Map2"] = TabType.Map,
             ["Model"] = TabType.Model,
             ["Memory"] = TabType.Memory,
             ["Custom"] = TabType.Custom,

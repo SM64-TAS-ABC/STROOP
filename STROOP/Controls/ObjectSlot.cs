@@ -602,7 +602,7 @@ namespace STROOP
             {
                 // Update map object coordinates and rotation
                 var mapObj = _mapObjects[objAddress];
-                mapObj.Show = true; // SelectedOnMapSlotsAddresses.Contains(objAddress);
+                mapObj.Show = Config.ObjectSlotsManager.SelectedOnMapSlotsAddresses.Contains(objAddress);
                 Show = _mapObjects[objAddress].Show;
                 mapObj.X = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
                 mapObj.Y = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
