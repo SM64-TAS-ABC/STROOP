@@ -289,12 +289,12 @@ namespace STROOP
             this.labelCoinFilterAngleTo = new System.Windows.Forms.Label();
             this.textBoxCoinVSpeedOffset = new STROOP.BetterTextbox();
             this.textBoxCoinVSpeedScale = new STROOP.BetterTextbox();
-            this.textBoxCoinStartingRng = new STROOP.BetterTextbox();
+            this.textBoxCoinStartingRngIndex = new STROOP.BetterTextbox();
             this.textBoxCoinHSpeedScale = new STROOP.BetterTextbox();
             this.labelCoinVSpeedRange = new System.Windows.Forms.Label();
             this.labelCoinHSpeedRange = new System.Windows.Forms.Label();
             this.labelCoinVSpeedOffset = new System.Windows.Forms.Label();
-            this.labelCoinStartingRng = new System.Windows.Forms.Label();
+            this.labelCoinStartingRngIndex = new System.Windows.Forms.Label();
             this.labelCoinVSpeedScale = new System.Windows.Forms.Label();
             this.labelCoinHSpeedScale = new System.Windows.Forms.Label();
             this.listBoxCoinObjects = new System.Windows.Forms.ListBox();
@@ -4336,13 +4336,13 @@ namespace STROOP
             this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinParamOrder);
             this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinVSpeedOffset);
             this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinVSpeedScale);
-            this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinStartingRng);
+            this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinStartingRngIndex);
             this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinHSpeedScale);
             this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinVSpeedRange);
             this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinParamOrder);
             this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinHSpeedRange);
             this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinVSpeedOffset);
-            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinStartingRng);
+            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinStartingRngIndex);
             this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinVSpeedScale);
             this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinHSpeedScale);
             this.splitContainerCoin.Panel1.Controls.Add(this.listBoxCoinObjects);
@@ -4534,13 +4534,13 @@ namespace STROOP
             this.textBoxCoinVSpeedScale.TabIndex = 39;
             this.textBoxCoinVSpeedScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBoxCoinStartingRng
+            // textBoxCoinStartingRngIndex
             // 
-            this.textBoxCoinStartingRng.Location = new System.Drawing.Point(152, 283);
-            this.textBoxCoinStartingRng.Name = "textBoxCoinStartingRng";
-            this.textBoxCoinStartingRng.Size = new System.Drawing.Size(53, 20);
-            this.textBoxCoinStartingRng.TabIndex = 40;
-            this.textBoxCoinStartingRng.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxCoinStartingRngIndex.Location = new System.Drawing.Point(167, 283);
+            this.textBoxCoinStartingRngIndex.Name = "textBoxCoinStartingRngIndex";
+            this.textBoxCoinStartingRngIndex.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinStartingRngIndex.TabIndex = 40;
+            this.textBoxCoinStartingRngIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxCoinHSpeedScale
             // 
@@ -4577,14 +4577,14 @@ namespace STROOP
             this.labelCoinVSpeedOffset.TabIndex = 35;
             this.labelCoinVSpeedOffset.Text = "VSpeed Offset:";
             // 
-            // labelCoinStartingRng
+            // labelCoinStartingRngIndex
             // 
-            this.labelCoinStartingRng.AutoSize = true;
-            this.labelCoinStartingRng.Location = new System.Drawing.Point(77, 286);
-            this.labelCoinStartingRng.Name = "labelCoinStartingRng";
-            this.labelCoinStartingRng.Size = new System.Drawing.Size(73, 13);
-            this.labelCoinStartingRng.TabIndex = 37;
-            this.labelCoinStartingRng.Text = "Starting RNG:";
+            this.labelCoinStartingRngIndex.AutoSize = true;
+            this.labelCoinStartingRngIndex.Location = new System.Drawing.Point(63, 286);
+            this.labelCoinStartingRngIndex.Name = "labelCoinStartingRngIndex";
+            this.labelCoinStartingRngIndex.Size = new System.Drawing.Size(102, 13);
+            this.labelCoinStartingRngIndex.TabIndex = 37;
+            this.labelCoinStartingRngIndex.Text = "Starting RNG Index:";
             // 
             // labelCoinVSpeedScale
             // 
@@ -18315,8 +18315,8 @@ namespace STROOP
         private Label labelCoinHSpeedRange;
         private Button buttonCoinCalculate;
         private Button buttonCoinClear;
-        private BetterTextbox textBoxCoinStartingRng;
-        private Label labelCoinStartingRng;
+        private BetterTextbox textBoxCoinStartingRngIndex;
+        private Label labelCoinStartingRngIndex;
         private BetterTextbox textBoxCoinParamOrder;
         private Label labelCoinParamOrder;
     }

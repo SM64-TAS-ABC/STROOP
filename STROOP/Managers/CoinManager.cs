@@ -35,7 +35,7 @@ namespace STROOP.Managers
         private readonly BetterTextbox _textBoxCoinFilterAngleMin;
         private readonly BetterTextbox _textBoxCoinFilterAngleMax;
 
-        private readonly BetterTextbox _textBoxCoinStartingRng;
+        private readonly BetterTextbox _textBoxCoinStartingRngIndex;
 
         private readonly Button _buttonCoinClear;
         private readonly Button _buttonCoinCalculate;
@@ -66,7 +66,7 @@ namespace STROOP.Managers
             _textBoxCoinFilterAngleMin = groupBoxCoinFilter.Controls["textBoxCoinFilterAngleMin"] as BetterTextbox;
             _textBoxCoinFilterAngleMax = groupBoxCoinFilter.Controls["textBoxCoinFilterAngleMax"] as BetterTextbox;
 
-            _textBoxCoinStartingRng = splitContainerCoin.Panel1.Controls["textBoxCoinStartingRng"] as BetterTextbox;
+            _textBoxCoinStartingRngIndex = splitContainerCoin.Panel1.Controls["textBoxCoinStartingRngIndex"] as BetterTextbox;
 
             _buttonCoinClear = splitContainerCoin.Panel1.Controls["buttonCoinClear"] as Button;
             _buttonCoinCalculate = splitContainerCoin.Panel1.Controls["buttonCoinCalculate"] as Button;
