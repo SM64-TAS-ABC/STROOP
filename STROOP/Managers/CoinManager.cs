@@ -92,30 +92,38 @@ namespace STROOP.Managers
 
         private void CalculateCoinTrajectories()
         {
-            double? hSpeedScale = ParsingUtilities.ParseIntNullable(_textBoxCoinHSpeedScale);
-            double? vSpeedScale = ParsingUtilities.ParseIntNullable(_textBoxCoinVSpeedScale);
-            double? vSpeedOffset = ParsingUtilities.ParseIntNullable(_textBoxCoinVSpeedOffset);
+            double? hSpeedScale = ParsingUtilities.ParseIntNullable(_textBoxCoinHSpeedScale.Text);
+            double? vSpeedScale = ParsingUtilities.ParseIntNullable(_textBoxCoinVSpeedScale.Text);
+            double? vSpeedOffset = ParsingUtilities.ParseIntNullable(_textBoxCoinVSpeedOffset.Text);
             bool coinParamOrderParsed = Enum.TryParse(_textBoxCoinParamOrder.Text, out CoinParamOrder coinParamOrder);
 
-            if (hSpeedScale.HasValue && vSpeedScale.HasValue && vSpeedOffset.HasValue && coinParamOrderParsed)
-            {
-                CoinObject coinObject = new CoinObject(
-                    numCoins: 1,
-                    hSpeedScale: hSpeedScale.Value,
-                    vSpeedScale: vSpeedScale.Value,
-                    vSpeedOffset: vSpeedOffset.Value,
-                    coinParamOrder: coinParamOrder,
-                    name: "Dummy");
-                List<CoinTrajectory> coinTrajectories = Enumerable.Range(0, 65114).ToList().ConvertAll(
-                    rngIndex => coinObject.CalculateCoinTrajectory(rngIndex));
-                int? startingRngIndexNullable = ParsingUtilities.ParseIntNullable(_textBoxCoinStartingRngIndex.Text);
-                AddCoinTrajectoriesToTable(coinTrajectories, startingRngIndexNullable);
-            }
-        }
+            if (!hSpeedScale.HasValue ||
+                !vSpeedScale.HasValue ||
+                !vSpeedOffset.HasValue ||
+                !coinParamOrderParsed) return;
 
-        private void AddCoinTrajectoriesToTable(List<CoinTrajectory> coinTrajectories, int? startingRngIndexNullable)
-        {
+            CoinObject coinObject = new CoinObject(
+                numCoins: 1,
+                hSpeedScale: hSpeedScale.Value,
+                vSpeedScale: vSpeedScale.Value,
+                vSpeedOffset: vSpeedOffset.Value,
+                coinParamOrder: coinParamOrder,
+                name: "Dummy");
+
+            int? startingRngIndexNullable = ParsingUtilities.ParseIntNullable(_textBoxCoinStartingRngIndex.Text);
             int startingRngIndex = startingRngIndexNullable ?? RngIndexer.GetRngIndex();
+
+            List<int> rngIndexes = Enumerable.Range(0, 65114).ToList();
+
+            foreach (int rngIndex in rngIndexes)
+            {
+                ushort rngValue = RngIndexer.GetRngValue(rngIndex);
+                int rngToGo = MoreMath.NonNegativeModulus(rngIndex - startingRngIndex, 65114);
+                CoinTrajectory coinTrajectory = coinObject.CalculateCoinTrajectory(rngIndex);
+                _dataGridViewCoin.Rows.Add(
+                    rngIndex, rngValue, rngToGo,
+                    coinTrajectory.HSpeed, coinTrajectory.VSpeed, coinTrajectory.Angle);
+            }
         }
 
         public void Update(bool updateView)
