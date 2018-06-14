@@ -523,7 +523,7 @@ namespace STROOP.Utilities
 
         public static double GetAngleDifference(double angle1, double angle2)
         {
-            return MaybeNegativeModulus(angle2 - angle1, 32768);
+            return MaybeNegativeModulus(angle2 - angle1, 65536);
         }
 
         public static double Clamp(double value, double min, double max)
