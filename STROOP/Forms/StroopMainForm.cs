@@ -470,6 +470,7 @@ namespace STROOP
                 Config.CoinManager.Update(tabControlMain.SelectedTab == tabPageCoin);
                 Config.M64Manager.Update(tabControlMain.SelectedTab == tabPageM64);
                 Config.MapManager?.Update();
+                Config.Map2Manager?.Update();
                 Config.ModelManager?.Update();
                 Config.InjectionManager.Update();
                 Config.HackManager.Update();
