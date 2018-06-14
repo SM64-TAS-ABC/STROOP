@@ -27,6 +27,7 @@ namespace STROOP.Managers
 
         private readonly Label _labelCoinHSpeedRange;
         private readonly Label _labelCoinVSpeedRange;
+        private readonly Label _labelCoinTableEntries;
 
         private readonly BetterTextbox _textBoxCoinFilterHSpeedMin;
         private readonly BetterTextbox _textBoxCoinFilterHSpeedMax;
@@ -57,7 +58,8 @@ namespace STROOP.Managers
 
             _labelCoinHSpeedRange = splitContainerCoin.Panel1.Controls["labelCoinHSpeedRange"] as Label;
             _labelCoinVSpeedRange = splitContainerCoin.Panel1.Controls["labelCoinVSpeedRange"] as Label;
-
+            _labelCoinTableEntries = splitContainerCoin.Panel1.Controls["labelCoinTableEntries"] as Label;
+            
             GroupBox groupBoxCoinFilter = splitContainerCoin.Panel1.Controls["groupBoxCoinFilter"] as GroupBox;
             _textBoxCoinFilterHSpeedMin = groupBoxCoinFilter.Controls["textBoxCoinFilterHSpeedMin"] as BetterTextbox;
             _textBoxCoinFilterHSpeedMax = groupBoxCoinFilter.Controls["textBoxCoinFilterHSpeedMax"] as BetterTextbox;
@@ -118,7 +120,13 @@ namespace STROOP.Managers
             if (!hSpeedScale.HasValue ||
                 !vSpeedScale.HasValue ||
                 !vSpeedOffset.HasValue ||
-                !coinParamOrderParsed) return;
+                !coinParamOrderParsed)
+            {
+                DialogUtilities.DisplayMessage(
+                    "Could not parse coin param fields. Please fill them in.",
+                    "Parsing Error");
+                return;
+            }
 
             CoinObject coinObject = new CoinObject(
                 numCoins: 1,
@@ -228,6 +236,8 @@ namespace STROOP.Managers
             {
                 _labelCoinVSpeedRange.Text = "VSpeed Range:";
             }
+
+            _labelCoinTableEntries.Text = "Table Entries: " + _dataGridViewCoin.Rows.Count;
         }
     }
 }

@@ -60,6 +60,14 @@ namespace STROOP.Structs
             return result == DialogResult.Yes;
         }
 
+        public static void DisplayMessage(string message, string title)
+        {
+            MessageBox.Show(
+                message,
+                title,
+                MessageBoxButtons.OK);
+        }
+
         public static OpenFileDialog CreateOpenFileDialog(FileType fileType)
         {
             return new OpenFileDialog()
