@@ -357,7 +357,6 @@
     </Compile>
     <Compile Include="Managers\ObjectSlotsManager.cs" />
     <Compile Include="Map2\Map2Object.cs" />
-    <Compile Include="Map2\Map2Map.cs" />
     <Compile Include="Map2\Map2Gui.cs" />
     <Compile Include="Managers\Map2Manager.cs" />
     <Compile Include="Map2\TriangleMap2Object.cs" />
