@@ -139,7 +139,7 @@ namespace STROOP.Managers
             int? startingRngIndexNullable = ParsingUtilities.ParseIntNullable(_textBoxCoinStartingRngIndex.Text);
             int startingRngIndex = startingRngIndexNullable ?? RngIndexer.GetRngIndex();
 
-            List<int> rngIndexes = Enumerable.Range(0, 1000 /* fix this! */).ToList();
+            List<int> rngIndexes = Enumerable.Range(0, 65114).ToList();
 
             foreach (int rngIndex in rngIndexes)
             {
