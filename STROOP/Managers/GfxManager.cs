@@ -124,8 +124,8 @@ namespace STROOP.Managers
         private void RefreshButtonObject_Click(object sender, EventArgs e)
         {
             
-            HashSet<uint> list = Config.ObjectSlotsManager.SelectedSlotsAddresses;
-            if (list != null && list.Count>0)
+            List<uint> list = Config.ObjectSlotsManager.SelectedSlotsAddresses;
+            if (list != null && list.Count > 0)
             {
                 _treeView.Nodes.Clear();
                 foreach (uint address in list)

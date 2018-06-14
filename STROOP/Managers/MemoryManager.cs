@@ -42,7 +42,7 @@ namespace STROOP.Managers
         {
             get
             {
-                HashSet<uint> addresses = Config.ObjectSlotsManager.SelectedSlotsAddresses;
+                List<uint> addresses = Config.ObjectSlotsManager.SelectedSlotsAddresses;
                 if (addresses.Count != 1) return null;
                 return addresses.First();
             }

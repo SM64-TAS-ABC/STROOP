@@ -37,10 +37,9 @@ namespace STROOP.Managers
         Dictionary<ObjectDataModel, Tuple<int?, int?>> _lockedSlotIndices = new Dictionary<ObjectDataModel, Tuple<int?, int?>>();
         public bool LabelsLocked = false;
 
-        uint? _lastSelectedAddress = null;
-        public HashSet<uint> SelectedSlotsAddresses = new HashSet<uint>();
-        public HashSet<uint> SelectedOnMapSlotsAddresses = new HashSet<uint>();
-        public HashSet<uint> MarkedSlotsAddresses = new HashSet<uint>();
+        public List<uint> SelectedSlotsAddresses = new List<uint>();
+        public List<uint> SelectedOnMapSlotsAddresses = new List<uint>();
+        public List<uint> MarkedSlotsAddresses = new List<uint>();
 
         public List<ObjectDataModel> SelectedObjects = new List<ObjectDataModel>();
 
@@ -196,7 +195,7 @@ namespace STROOP.Managers
             }
             else
             {
-                HashSet<uint> selection;
+                List<uint> selection;
                 switch (click)
                 {
                     case ClickType.ObjectClick:
@@ -228,9 +227,9 @@ namespace STROOP.Managers
                     }
                 }
 
-                if (shouldExtendRange && _lastSelectedAddress.HasValue)
+                if (shouldExtendRange && selection.Count > 0)
                 {
-                    int? startRange = ObjectSlots.FirstOrDefault(s => s.CurrentObject.Address == _lastSelectedAddress)?.Index;
+                    int? startRange = ObjectSlots.FirstOrDefault(s => s.CurrentObject.Address == selection.Last())?.Index;
                     int endRange = selectedSlot.Index;
 
                     if (!startRange.HasValue)
@@ -246,7 +245,6 @@ namespace STROOP.Managers
                         if (!selection.Contains(address))
                             selection.Add(address);
                     }
-                    _lastSelectedAddress = selectedSlot.CurrentObject.Address;
                 }
                 else
                 {
@@ -256,12 +254,10 @@ namespace STROOP.Managers
                     if (selection.Contains(selectedSlot.CurrentObject.Address))
                     {
                         selection.Remove(selectedSlot.CurrentObject.Address);
-                        _lastSelectedAddress = null;
                     }
                     else
                     {
                         selection.Add(selectedSlot.CurrentObject.Address);
-                        _lastSelectedAddress = selectedSlot.CurrentObject.Address;
                     }
                 }
             }

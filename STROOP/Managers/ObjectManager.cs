@@ -131,7 +131,7 @@ namespace STROOP.Managers
         }
         #endregion
 
-        private HashSet<uint> _addresses
+        private List<uint> _addresses
         {
             get => Config.ObjectSlotsManager.SelectedSlotsAddresses;
         }
