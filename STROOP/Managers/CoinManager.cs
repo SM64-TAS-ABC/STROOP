@@ -215,7 +215,7 @@ namespace STROOP.Managers
                 double hSpeedScale = hSpeedScaleNullable.Value;
                 double hSpeedMin = 0;
                 double hSpeedMax = hSpeedScale;
-                _labelCoinHSpeedRange.Text = String.Format("HSpeed Range: [{0},{1})", hSpeedMin, hSpeedMax);
+                _labelCoinHSpeedRange.Text = String.Format("HSpeed Range: [{0}, {1})", hSpeedMin, hSpeedMax);
             }
             else
             {
@@ -230,7 +230,7 @@ namespace STROOP.Managers
                 double vSpeedOffset = vSpeedOffsetNullable.Value;
                 double vSpeedMin = vSpeedOffset;
                 double vSpeedMax = vSpeedScale + vSpeedOffset;
-                _labelCoinVSpeedRange.Text = String.Format("VSpeed Range: [{0},{1})", vSpeedMin, vSpeedMax);
+                _labelCoinVSpeedRange.Text = String.Format("VSpeed Range: [{0}, {1})", vSpeedMin, vSpeedMax);
             }
             else
             {
