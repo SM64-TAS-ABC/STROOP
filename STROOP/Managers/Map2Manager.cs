@@ -183,11 +183,121 @@ namespace STROOP.Managers
             _mapGui.GLControl.SetBounds(newX, newY, newWidth, newHeight);
         }
 
+        public void UpdateFromMarioTab()
+        {
+            // Get Mario position and rotation
+            float x = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float y = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float z = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            ushort marioFacing = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            float rot = (float)MoreMath.AngleUnitsToDegrees(marioFacing);
+
+            // Update Mario map object
+            MarioMapObject.X = x;
+            MarioMapObject.Y = y;
+            MarioMapObject.Z = z;
+            MarioMapObject.Rotation = rot;
+            MarioMapObject.Show = true;
+
+            // Get holp position
+            float holpX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpXOffset);
+            float holpY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpYOffset);
+            float holpZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpZOffset);
+
+            // Update holp map object position
+            HolpMapObject.X = holpX;
+            HolpMapObject.Y = holpY;
+            HolpMapObject.Z = holpZ;
+            HolpMapObject.Show = true;
+
+            // Update camera position and rotation
+            float cameraX = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.XOffset);
+            float cameraY = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.YOffset);
+            float cameraZ = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.ZOffset);
+            ushort cameraYaw = Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.FacingYawOffset);
+            float cameraRot = (float)MoreMath.AngleUnitsToDegrees(cameraYaw);
+
+            // Update floor triangle
+            UInt32 floorTriangle = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+            if (floorTriangle != 0x00)
+            {
+                Int16 x1 = Config.Stream.GetInt16(floorTriangle + TriangleOffsetsConfig.X1);
+                Int16 y1 = Config.Stream.GetInt16(floorTriangle + TriangleOffsetsConfig.Y1);
+                Int16 z1 = Config.Stream.GetInt16(floorTriangle + TriangleOffsetsConfig.Z1);
+                Int16 x2 = Config.Stream.GetInt16(floorTriangle + TriangleOffsetsConfig.X2);
+                Int16 y2 = Config.Stream.GetInt16(floorTriangle + TriangleOffsetsConfig.Y2);
+                Int16 z2 = Config.Stream.GetInt16(floorTriangle + TriangleOffsetsConfig.Z2);
+                Int16 x3 = Config.Stream.GetInt16(floorTriangle + TriangleOffsetsConfig.X3);
+                Int16 y3 = Config.Stream.GetInt16(floorTriangle + TriangleOffsetsConfig.Y3);
+                Int16 z3 = Config.Stream.GetInt16(floorTriangle + TriangleOffsetsConfig.Z3);
+                FloorTriangleMapObject.X1 = x1;
+                FloorTriangleMapObject.Z1 = z1;
+                FloorTriangleMapObject.X2 = x2;
+                FloorTriangleMapObject.Z2 = z2;
+                FloorTriangleMapObject.X3 = x3;
+                FloorTriangleMapObject.Z3 = z3;
+                FloorTriangleMapObject.Y = (y1 + y2 + y3) / 3;
+            }
+            FloorTriangleMapObject.Show = (floorTriangle != 0x00);
+
+            // Update ceiling triangle
+            UInt32 ceilingTriangle = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset);
+            if (ceilingTriangle != 0x00)
+            {
+                Int16 x1 = Config.Stream.GetInt16(ceilingTriangle + TriangleOffsetsConfig.X1);
+                Int16 y1 = Config.Stream.GetInt16(ceilingTriangle + TriangleOffsetsConfig.Y1);
+                Int16 z1 = Config.Stream.GetInt16(ceilingTriangle + TriangleOffsetsConfig.Z1);
+                Int16 x2 = Config.Stream.GetInt16(ceilingTriangle + TriangleOffsetsConfig.X2);
+                Int16 y2 = Config.Stream.GetInt16(ceilingTriangle + TriangleOffsetsConfig.Y2);
+                Int16 z2 = Config.Stream.GetInt16(ceilingTriangle + TriangleOffsetsConfig.Z2);
+                Int16 x3 = Config.Stream.GetInt16(ceilingTriangle + TriangleOffsetsConfig.X3);
+                Int16 y3 = Config.Stream.GetInt16(ceilingTriangle + TriangleOffsetsConfig.Y3);
+                Int16 z3 = Config.Stream.GetInt16(ceilingTriangle + TriangleOffsetsConfig.Z3);
+                CeilingTriangleMapObject.X1 = x1;
+                CeilingTriangleMapObject.Z1 = z1;
+                CeilingTriangleMapObject.X2 = x2;
+                CeilingTriangleMapObject.Z2 = z2;
+                CeilingTriangleMapObject.X3 = x3;
+                CeilingTriangleMapObject.Z3 = z3;
+                CeilingTriangleMapObject.Y = (y1 + y2 + y3) / 3;
+            }
+            CeilingTriangleMapObject.Show = (ceilingTriangle != 0x00);
+
+            // Update intended next position map object position
+            float normY = floorTriangle == 0 ? 1 : Config.Stream.GetSingle(floorTriangle + TriangleOffsetsConfig.NormY);
+            float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+            float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
+            bool aboveFloor = y > floorY + 0.001;
+            double multiplier = aboveFloor ? 1 : normY;
+            double defactoSpeed = hSpeed * multiplier;
+            double defactoSpeedQStep = defactoSpeed * 0.25;
+            ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            ushort marioAngleTruncated = MoreMath.NormalizeAngleTruncated(marioAngle);
+            (double xDist, double zDist) = MoreMath.GetComponentsFromVector(defactoSpeedQStep, marioAngleTruncated);
+            double intendedNextPositionX = MoreMath.MaybeNegativeModulus(x + xDist, 65536);
+            double intendedNextPositionZ = MoreMath.MaybeNegativeModulus(z + zDist, 65536);
+            IntendedNextPositionMapObject.X = (float)intendedNextPositionX;
+            IntendedNextPositionMapObject.Z = (float)intendedNextPositionZ;
+            bool marioStationary = x == intendedNextPositionX && z == intendedNextPositionZ;
+            double angleToIntendedNextPosition = MoreMath.AngleTo_AngleUnits(x, z, intendedNextPositionX, intendedNextPositionZ);
+            IntendedNextPositionMapObject.Rotation =
+                marioStationary ? (float)MoreMath.AngleUnitsToDegrees(marioAngle) : (float)MoreMath.AngleUnitsToDegrees(angleToIntendedNextPosition);
+            IntendedNextPositionMapObject.Rotation = rot;
+
+            // Update camera map object position
+            CameraMapObject.X = cameraX;
+            CameraMapObject.Y = cameraY;
+            CameraMapObject.Z = cameraZ;
+            CameraMapObject.Rotation = cameraRot;
+        }
+
         public void Update()
         {
             // Make sure the control has successfully loaded
             if (!_isLoaded)
                 return;
+
+            UpdateFromMarioTab();
 
             // Get level and area
             byte level = Config.Stream.GetByte(MiscConfig.LevelAddress);
