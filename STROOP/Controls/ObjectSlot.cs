@@ -428,7 +428,6 @@ namespace STROOP
         public void Update(ObjectDataModel obj)
         {
             CurrentObject = obj;
-            UpdateMapObject();
 
             uint? address = CurrentObject?.Address;
 
@@ -564,6 +563,8 @@ namespace STROOP
 
             if (redraw)
                 Invalidate();
+
+            UpdateMapObject();
         }
 
         private void UpdateMapObject()
