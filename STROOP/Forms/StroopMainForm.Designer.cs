@@ -37,6 +37,12 @@ namespace STROOP
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
@@ -299,12 +305,6 @@ namespace STROOP
             this.labelCoinHSpeedScale = new System.Windows.Forms.Label();
             this.listBoxCoinObjects = new System.Windows.Forms.ListBox();
             this.dataGridViewCoin = new System.Windows.Forms.DataGridView();
-            this.rngIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rngValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rngToGo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coinAngle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coinHSpeed = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coinVSpeed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageHud = new System.Windows.Forms.TabPage();
             this.splitContainerHud = new STROOP.BetterSplitContainer();
             this.checkBoxFullHP = new System.Windows.Forms.CheckBox();
@@ -1286,6 +1286,12 @@ namespace STROOP
             this.comboBoxYawSigned = new System.Windows.Forms.ComboBox();
             this.labelCoinParamOrder = new System.Windows.Forms.Label();
             this.textBoxCoinParamOrder = new STROOP.BetterTextbox();
+            this.rngIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rngValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rngToGo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coinHSpeed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coinVSpeed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coinAngle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -4619,7 +4625,7 @@ namespace STROOP
             this.dataGridViewCoin.AllowUserToOrderColumns = true;
             this.dataGridViewCoin.AllowUserToResizeRows = false;
             this.dataGridViewCoin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
@@ -4632,9 +4638,9 @@ namespace STROOP
             this.rngIndex,
             this.rngValue,
             this.rngToGo,
-            this.coinAngle,
             this.coinHSpeed,
-            this.coinVSpeed});
+            this.coinVSpeed,
+            this.coinAngle});
             this.dataGridViewCoin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewCoin.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewCoin.Margin = new System.Windows.Forms.Padding(0);
@@ -4644,46 +4650,6 @@ namespace STROOP
             this.dataGridViewCoin.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewCoin.Size = new System.Drawing.Size(616, 455);
             this.dataGridViewCoin.TabIndex = 3;
-            // 
-            // rngIndex
-            // 
-            this.rngIndex.HeaderText = "RNG Index";
-            this.rngIndex.MinimumWidth = 2;
-            this.rngIndex.Name = "rngIndex";
-            this.rngIndex.ReadOnly = true;
-            // 
-            // rngValue
-            // 
-            this.rngValue.HeaderText = "RNG Value";
-            this.rngValue.MinimumWidth = 2;
-            this.rngValue.Name = "rngValue";
-            this.rngValue.ReadOnly = true;
-            // 
-            // rngToGo
-            // 
-            this.rngToGo.HeaderText = "RNG To Go";
-            this.rngToGo.MinimumWidth = 2;
-            this.rngToGo.Name = "rngToGo";
-            this.rngToGo.ReadOnly = true;
-            // 
-            // coinAngle
-            // 
-            this.coinAngle.HeaderText = "Coin Angle";
-            this.coinAngle.MinimumWidth = 2;
-            this.coinAngle.Name = "coinAngle";
-            this.coinAngle.ReadOnly = true;
-            // 
-            // coinHSpeed
-            // 
-            this.coinHSpeed.HeaderText = "Coin HSpeed";
-            this.coinHSpeed.Name = "coinHSpeed";
-            this.coinHSpeed.ReadOnly = true;
-            // 
-            // coinVSpeed
-            // 
-            this.coinVSpeed.HeaderText = "Coin VSpeed";
-            this.coinVSpeed.Name = "coinVSpeed";
-            this.coinVSpeed.ReadOnly = true;
             // 
             // tabPageHud
             // 
@@ -16560,6 +16526,58 @@ namespace STROOP
             this.textBoxCoinParamOrder.TabIndex = 38;
             this.textBoxCoinParamOrder.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // rngIndex
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle4;
+            this.rngIndex.HeaderText = "RNG Index";
+            this.rngIndex.MinimumWidth = 2;
+            this.rngIndex.Name = "rngIndex";
+            this.rngIndex.ReadOnly = true;
+            // 
+            // rngValue
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngValue.DefaultCellStyle = dataGridViewCellStyle5;
+            this.rngValue.HeaderText = "RNG Value";
+            this.rngValue.MinimumWidth = 2;
+            this.rngValue.Name = "rngValue";
+            this.rngValue.ReadOnly = true;
+            // 
+            // rngToGo
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle6;
+            this.rngToGo.HeaderText = "RNG To Go";
+            this.rngToGo.MinimumWidth = 2;
+            this.rngToGo.Name = "rngToGo";
+            this.rngToGo.ReadOnly = true;
+            // 
+            // coinHSpeed
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle7;
+            this.coinHSpeed.HeaderText = "Coin HSpeed";
+            this.coinHSpeed.Name = "coinHSpeed";
+            this.coinHSpeed.ReadOnly = true;
+            // 
+            // coinVSpeed
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle8;
+            this.coinVSpeed.HeaderText = "Coin VSpeed";
+            this.coinVSpeed.Name = "coinVSpeed";
+            this.coinVSpeed.ReadOnly = true;
+            // 
+            // coinAngle
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle9;
+            this.coinAngle.HeaderText = "Coin Angle";
+            this.coinAngle.MinimumWidth = 2;
+            this.coinAngle.Name = "coinAngle";
+            this.coinAngle.ReadOnly = true;
+            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -18283,12 +18301,6 @@ namespace STROOP
         private TabPage tabPageCoin;
         private BetterSplitContainer splitContainerCoin;
         private DataGridView dataGridViewCoin;
-        private DataGridViewTextBoxColumn rngIndex;
-        private DataGridViewTextBoxColumn rngValue;
-        private DataGridViewTextBoxColumn rngToGo;
-        private DataGridViewTextBoxColumn coinAngle;
-        private DataGridViewTextBoxColumn coinHSpeed;
-        private DataGridViewTextBoxColumn coinVSpeed;
         private BetterTextbox textBoxCoinFilterAngleMin;
         private BetterTextbox textBoxCoinFilterVSpeedMin;
         private BetterTextbox textBoxCoinVSpeedOffset;
@@ -18319,6 +18331,12 @@ namespace STROOP
         private Label labelCoinStartingRngIndex;
         private BetterTextbox textBoxCoinParamOrder;
         private Label labelCoinParamOrder;
+        private DataGridViewTextBoxColumn rngIndex;
+        private DataGridViewTextBoxColumn rngValue;
+        private DataGridViewTextBoxColumn rngToGo;
+        private DataGridViewTextBoxColumn coinHSpeed;
+        private DataGridViewTextBoxColumn coinVSpeed;
+        private DataGridViewTextBoxColumn coinAngle;
     }
 }
 
