@@ -140,7 +140,7 @@ namespace STROOP.Structs.Configurations
 
         public static void InvokeRecommendedTabOrder()
         {
-            InvokeTabOrder(_recommendedTabOrder);
+            InvokeTabOrderCleanly(_recommendedTabOrder);
             Save();
         }
 
@@ -165,6 +165,35 @@ namespace STROOP.Structs.Configurations
             {
                 TabPage tabPage = tabPages[i];
                 Config.TabControlMain.TabPages.Remove(tabPage);
+                Config.TabControlMain.TabPages.Insert(i, tabPage);
+            }
+        }
+
+        /** Doesn't remove the currently selected tab. */
+        private static void InvokeTabOrderCleanly(List<TabPage> orderedTabPages)
+        {
+            // Get the selected tab/index
+            TabPage selectedTab = Config.TabControlMain.SelectedTab;
+            int selectedIndex = Config.TabControlMain.SelectedIndex;
+
+            // Get the final combined ordering of tab pages
+            List<TabPage> allTabPages = ControlUtilities.GetTabPages(Config.TabControlMain);
+            List<TabPage> nonOrderedTabPages = allTabPages.FindAll(
+                tabPage => !orderedTabPages.Contains(tabPage));
+            List<TabPage> combinedTabPages = orderedTabPages.Concat(nonOrderedTabPages).ToList();
+
+            // Remove all but the selected tab
+            foreach (TabPage tabPage in allTabPages)
+            {
+                if (tabPage != selectedTab)
+                    Config.TabControlMain.TabPages.Remove(tabPage);
+            }
+
+            // Add back all of the non-selected tabs
+            for (int i = 0; i < combinedTabPages.Count; i++)
+            {
+                TabPage tabPage = combinedTabPages[i];
+                if (tabPage == selectedTab) continue;
                 Config.TabControlMain.TabPages.Insert(i, tabPage);
             }
         }
