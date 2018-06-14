@@ -14,10 +14,10 @@ namespace STROOP.Utilities
 
         bool IsSuspended { get; }
 
-        bool ReadRelative(uint address, byte[] buffer, EndianessType endianess);
-        bool ReadAbsolute(UIntPtr address, byte[] buffer, EndianessType endianess);
-        bool WriteRelative(uint address, byte[] buffer, EndianessType endianess);
-        bool WriteAbsolute(UIntPtr address, byte[] buffer, EndianessType endianess);
+        bool ReadRelative(uint address, byte[] buffer, EndiannessType endianness);
+        bool ReadAbsolute(UIntPtr address, byte[] buffer, EndiannessType endianness);
+        bool WriteRelative(uint address, byte[] buffer, EndiannessType endianness);
+        bool WriteAbsolute(UIntPtr address, byte[] buffer, EndiannessType endianness);
 
         UIntPtr GetAbsoluteAddress(uint n64Address, int size);
         uint GetRelativeAddress(UIntPtr absoluteAddress, int size);

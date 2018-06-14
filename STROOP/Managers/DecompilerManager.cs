@@ -378,7 +378,7 @@ namespace STROOP.Managers
             _ramState = (byte[]) Config.Stream.Ram.Clone();
             using (var file = new FileStream(marioRamPath, FileMode.Create))
             {
-                // Reverse endianess
+                // Reverse endianness
                 for (int i = 0; i < _ramState.Length; i += 4)
                 {
                     file.WriteByte(_ramState[i + 3]);

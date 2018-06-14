@@ -70,8 +70,8 @@ namespace STROOP.Structs
             foreach (var address in _payload)
             {
                 // Read original memory before replacing
-                originalMemory.Add(new Tuple<uint, byte[]>(address.Item1, Config.Stream.ReadRam((UIntPtr)address.Item1, address.Item2.Length, EndianessType.Big)));
-                success &= Config.Stream.WriteRam(address.Item2, address.Item1, EndianessType.Big);
+                originalMemory.Add(new Tuple<uint, byte[]>(address.Item1, Config.Stream.ReadRam((UIntPtr)address.Item1, address.Item2.Length, EndiannessType.Big)));
+                success &= Config.Stream.WriteRam(address.Item2, address.Item1, EndiannessType.Big);
             }
 
             if (suspendStream)
@@ -98,7 +98,7 @@ namespace STROOP.Structs
 
             foreach (var address in _originalMemory)
                 // Read original memory before replacing
-                success &= Config.Stream.WriteRam(address.Item2, address.Item1, EndianessType.Big);
+                success &= Config.Stream.WriteRam(address.Item2, address.Item1, EndiannessType.Big);
 
             Config.Stream.Resume();
 
@@ -111,7 +111,7 @@ namespace STROOP.Structs
         {
             Enabled = true;
             foreach (var address in _payload)
-                Enabled &= address.Item2.SequenceEqual(Config.Stream.ReadRam(address.Item1, address.Item2.Length, EndianessType.Big));
+                Enabled &= address.Item2.SequenceEqual(Config.Stream.ReadRam(address.Item1, address.Item2.Length, EndiannessType.Big));
         }
 
         public override string ToString()

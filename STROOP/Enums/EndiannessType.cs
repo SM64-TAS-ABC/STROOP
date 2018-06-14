@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace STROOP.Structs
 {
-    public enum EndianessType
+    public enum EndiannessType
     {
         Big,
         Little

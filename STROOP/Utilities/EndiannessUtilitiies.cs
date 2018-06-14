@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace STROOP.Utilities
 {
-    public static class EndianessUtilitiies
+    public static class EndiannessUtilitiies
     {
         static readonly byte[] _fixAddress = { 0x00, 0x03, 0x02, 0x01, 0x00 };
 
-        public static UIntPtr SwapAddressEndianess(UIntPtr address, int dataSize)
+        public static UIntPtr SwapAddressEndianness(UIntPtr address, int dataSize)
         {
             switch (dataSize)
             {
@@ -23,7 +23,7 @@ namespace STROOP.Utilities
             }
         }
 
-        public static uint SwapAddressEndianess(uint address, int dataSize)
+        public static uint SwapAddressEndianness(uint address, int dataSize)
         {
             switch (dataSize)
             {
@@ -72,7 +72,7 @@ namespace STROOP.Utilities
             return (UIntPtr)((address.ToUInt64() & ~0x03U) + 4);
         }
 
-        public static byte[] SwapByteEndianess(byte[] bytes)
+        public static byte[] SwapByteEndianness(byte[] bytes)
         {
             if (bytes.Length % 4 != 0)
                 throw new ArgumentException("Bytes are not a multiple of 4");

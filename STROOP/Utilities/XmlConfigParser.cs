@@ -74,8 +74,8 @@ namespace STROOP.Utilities
                                 RamStart = ParsingUtilities.ParseHex(subElement.Attribute(XName.Get("ramStart")).Value),
                                 Dll = subElement.Attribute(XName.Get("offsetDll")) != null
                                     ? subElement.Attribute(XName.Get("offsetDll")).Value : null,
-                                Endianess = subElement.Attribute(XName.Get("endianess")).Value == "big" 
-                                    ? EndianessType.Big : EndianessType.Little,
+                                Endianness = subElement.Attribute(XName.Get("endianness")).Value == "big" 
+                                    ? EndiannessType.Big : EndiannessType.Little,
                                 IOType = special == "dolphin" ? typeof(DolphinProcessIO) : typeof(WindowsProcessRamIO),
                             });
                         }

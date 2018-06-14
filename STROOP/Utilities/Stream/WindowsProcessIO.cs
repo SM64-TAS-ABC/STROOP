@@ -86,18 +86,18 @@ namespace STROOP.Utilities
             return true;
         }
 
-        public bool ReadRelative(uint address, byte[] buffer, EndianessType endianess)
+        public bool ReadRelative(uint address, byte[] buffer, EndiannessType endianness)
         {
-            return ReadAbsolute(GetAbsoluteAddress(address, buffer.Length), buffer, endianess);
+            return ReadAbsolute(GetAbsoluteAddress(address, buffer.Length), buffer, endianness);
         }
 
         static readonly byte[] _swapByteOrder = new byte[] { 0x03, 0x02, 0x01, 0x00 };
-        public bool ReadAbsolute(UIntPtr address, byte[] buffer, EndianessType endianess)
+        public bool ReadAbsolute(UIntPtr address, byte[] buffer, EndiannessType endianness)
         {
             if (_process == null)
                 return false;
 
-            if (_emulator.Endianess == endianess)
+            if (_emulator.Endianness == endianness)
             {
                 int numOfBytes = 0;
                 return ProcessReadMemory(_processHandle, address, buffer, (IntPtr)buffer.Length, ref numOfBytes);
@@ -106,8 +106,8 @@ namespace STROOP.Utilities
             {
                 // Read padded if misaligned address
                 byte[] swapBytes;
-                UIntPtr alignedAddress = EndianessUtilitiies.AlignedAddressFloor(address);
-                if (EndianessUtilitiies.AddressIsMisaligned(address))
+                UIntPtr alignedAddress = EndiannessUtilitiies.AlignedAddressFloor(address);
+                if (EndiannessUtilitiies.AddressIsMisaligned(address))
                     swapBytes = new byte[buffer.Length + 4];
                 else
                     swapBytes = new byte[buffer.Length];
@@ -126,12 +126,12 @@ namespace STROOP.Utilities
             }
         }
 
-        public bool WriteRelative(uint address, byte[] buffer, EndianessType endianess)
+        public bool WriteRelative(uint address, byte[] buffer, EndiannessType endianness)
         {
-            return WriteAbsolute(GetAbsoluteAddress(address, buffer.Length), buffer, endianess);
+            return WriteAbsolute(GetAbsoluteAddress(address, buffer.Length), buffer, endianness);
         }
 
-        public bool WriteAbsolute(UIntPtr address, byte[] buffer, EndianessType endianess)
+        public bool WriteAbsolute(UIntPtr address, byte[] buffer, EndiannessType endianness)
         {
             int numOfBytes = 0;
 
@@ -140,7 +140,7 @@ namespace STROOP.Utilities
                 || address.ToUInt64() + (uint)buffer.Length >= _baseOffset.ToUInt64() + _ramSize)
                 return false;
 
-            if (_emulator.Endianess == endianess)
+            if (_emulator.Endianness == endianness)
             {
                 return ProcessWriteMemory(_processHandle, address,
                     buffer, (IntPtr)buffer.Length, ref numOfBytes);
@@ -150,7 +150,7 @@ namespace STROOP.Utilities
                 bool success = true;
                 IEnumerable<byte> bytes = buffer;
 
-                int numberToWrite = Math.Min(EndianessUtilitiies.NumberOfBytesToAlignment(address), buffer.Length);
+                int numberToWrite = Math.Min(EndiannessUtilitiies.NumberOfBytesToAlignment(address), buffer.Length);
                 if (numberToWrite > 0)
                 {
                     byte[] toWrite = bytes.Take(numberToWrite).Reverse().ToArray();
@@ -158,13 +158,13 @@ namespace STROOP.Utilities
                         toWrite, (IntPtr)toWrite.Length, ref numOfBytes);
 
                     bytes = bytes.Skip(toWrite.Length);
-                    address = EndianessUtilitiies.AlignedAddressCeil(address);
+                    address = EndiannessUtilitiies.AlignedAddressCeil(address);
                 }
 
                 numberToWrite = bytes.Count();
                 if (bytes.Count() >= 4)
                 {
-                    byte[] toWrite = EndianessUtilitiies.SwapByteEndianess(bytes.Take(bytes.Count() & ~0x03).ToArray());
+                    byte[] toWrite = EndiannessUtilitiies.SwapByteEndianness(bytes.Take(bytes.Count() & ~0x03).ToArray());
 
                     success &= ProcessWriteMemory(_processHandle, address,
                         toWrite, (IntPtr)toWrite.Length, ref numOfBytes);
@@ -190,19 +190,19 @@ namespace STROOP.Utilities
         {
             n64Address &= ~0x80000000U;
             UIntPtr absoluteAddress = (UIntPtr)(_baseOffset.ToUInt64() + n64Address);
-            if (_emulator.Endianess == EndianessType.Big)
+            if (_emulator.Endianness == EndiannessType.Big)
                 return absoluteAddress;
             else
-                return EndianessUtilitiies.SwapAddressEndianess(absoluteAddress, size);
+                return EndiannessUtilitiies.SwapAddressEndianness(absoluteAddress, size);
         }
 
         public uint GetRelativeAddress(UIntPtr absoluteAddress, int size)
         {
             uint n64address = 0x80000000 | (uint)(absoluteAddress.ToUInt64() - _baseOffset.ToUInt64());
-            if (_emulator.Endianess == EndianessType.Big)
+            if (_emulator.Endianness == EndiannessType.Big)
                 return n64address;
             else
-                return EndianessUtilitiies.SwapAddressEndianess(n64address, size);
+                return EndiannessUtilitiies.SwapAddressEndianness(n64address, size);
         }
 
         #region IDisposable Support

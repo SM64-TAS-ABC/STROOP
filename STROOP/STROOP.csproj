@@ -381,7 +381,7 @@
     <Compile Include="Structs\Configurations\PositionControllerRelativityConfig.cs" />
     <Compile Include="Structs\Configurations\TriangleConfig.cs" />
     <Compile Include="Structs\Configurations\WaypointConfig.cs" />
-    <Compile Include="Structs\EndianessType.cs" />
+    <Compile Include="Enums\EndiannessType.cs" />
     <Compile Include="Structs\FlyGuyDataTable.cs" />
     <Compile Include="Structs\CourseDataTable.cs" />
     <Compile Include="Structs\Configurations\FileConfig.cs" />
@@ -425,7 +425,7 @@
     <Compile Include="Utilities\CoinTrajejctory.cs" />
     <Compile Include="Utilities\CoinObject.cs" />
     <Compile Include="Utilities\PositionAngle.cs" />
-    <Compile Include="Utilities\EndianessUtilitiies.cs" />
+    <Compile Include="Utilities\EndiannessUtilitiies.cs" />
     <Compile Include="Utilities\EndianUtilities.cs" />
     <Compile Include="Utilities\Stream\DolphinProcessIO.cs" />
     <Compile Include="Utilities\Stream\WindowsProcessIO.cs" />

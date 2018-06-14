@@ -92,7 +92,7 @@ namespace STROOP.Managers
         private void DisassemblyLines(int numberOfLines)
         {
             _output.Visible = false;
-            var instructionBytes = Config.Stream.ReadRam(_lastAddress, 4 * numberOfLines, EndianessType.Little);
+            var instructionBytes = Config.Stream.ReadRam(_lastAddress, 4 * numberOfLines, EndiannessType.Little);
             for (int i = 0; i < numberOfLines; i++, _lastAddress += 4)
             {
                 // Get next bytes

@@ -146,58 +146,58 @@ namespace STROOP.Utilities
 
         public byte GetByte(uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            byte value = ReadRam((UIntPtr)address, 1, EndianessType.Little, absoluteAddress)[0];
+            byte value = ReadRam((UIntPtr)address, 1, EndiannessType.Little, absoluteAddress)[0];
             if (mask.HasValue) value = (byte)(value & mask.Value);
             return value;
         }
 
         public sbyte GetSByte(uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            sbyte value = (sbyte)ReadRam((UIntPtr)address, 1, EndianessType.Little, absoluteAddress)[0];
+            sbyte value = (sbyte)ReadRam((UIntPtr)address, 1, EndiannessType.Little, absoluteAddress)[0];
             if (mask.HasValue) value = (sbyte)(value & mask.Value);
             return value;
         }
 
         public short GetInt16(uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            short value = BitConverter.ToInt16(ReadRam((UIntPtr)address, 2, EndianessType.Little, absoluteAddress), 0);
+            short value = BitConverter.ToInt16(ReadRam((UIntPtr)address, 2, EndiannessType.Little, absoluteAddress), 0);
             if (mask.HasValue) value = (short)(value & mask.Value);
             return value;
         }
 
         public ushort GetUInt16(uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            ushort value = BitConverter.ToUInt16(ReadRam((UIntPtr)address, 2, EndianessType.Little, absoluteAddress), 0);
+            ushort value = BitConverter.ToUInt16(ReadRam((UIntPtr)address, 2, EndiannessType.Little, absoluteAddress), 0);
             if (mask.HasValue) value = (ushort)(value & mask.Value);
             return value;
         }
 
         public int GetInt32(uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            int value = BitConverter.ToInt32(ReadRam((UIntPtr)address, 4, EndianessType.Little, absoluteAddress), 0);
+            int value = BitConverter.ToInt32(ReadRam((UIntPtr)address, 4, EndiannessType.Little, absoluteAddress), 0);
             if (mask.HasValue) value = (int)(value & mask.Value);
             return value;
         }
 
         public uint GetUInt32(uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            uint value = BitConverter.ToUInt32(ReadRam((UIntPtr)address, 4, EndianessType.Little, absoluteAddress), 0);
+            uint value = BitConverter.ToUInt32(ReadRam((UIntPtr)address, 4, EndiannessType.Little, absoluteAddress), 0);
             if (mask.HasValue) value = (uint)(value & mask.Value);
             return value;
         }
 
         public float GetSingle(uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            return BitConverter.ToSingle(ReadRam((UIntPtr)address, 4, EndianessType.Little, absoluteAddress), 0);
+            return BitConverter.ToSingle(ReadRam((UIntPtr)address, 4, EndiannessType.Little, absoluteAddress), 0);
         }
 
-        public byte[] ReadRam(uint address, int length, EndianessType endianess)
+        public byte[] ReadRam(uint address, int length, EndiannessType endianness)
         {
-             return ReadRam((UIntPtr) address, length, endianess, false);
+             return ReadRam((UIntPtr) address, length, endianness, false);
         }
 
         static readonly byte[] _swapByteOrder = new byte[] { 0x03, 0x02, 0x01, 0x00 };
-        public byte[] ReadRam(UIntPtr address, int length, EndianessType endianess, bool absoluteAddress = false)
+        public byte[] ReadRam(UIntPtr address, int length, EndiannessType endianness, bool absoluteAddress = false)
         {
             byte[] readBytes = new byte[length];
 
@@ -209,12 +209,12 @@ namespace STROOP.Utilities
                 localAddress = address.ToUInt32();
             localAddress &= ~0x80000000;
 
-            /// Fix endianess
-            switch (endianess)
+            /// Fix endianness
+            switch (endianness)
             {
-                case EndianessType.Little:
+                case EndiannessType.Little:
                     // Address is not little endian, fix:
-                    localAddress = EndianessUtilitiies.SwapAddressEndianess(localAddress, length);
+                    localAddress = EndiannessUtilitiies.SwapAddressEndianness(localAddress, length);
 
                     if (localAddress + length > _ram.Length)
                         break;
@@ -222,11 +222,11 @@ namespace STROOP.Utilities
                     Buffer.BlockCopy(_ram, (int)localAddress, readBytes, 0, length);
                     break;
 
-                case EndianessType.Big:
+                case EndiannessType.Big:
                     // Read padded if misaligned address
                     byte[] swapBytes;
-                    uint alignedAddress = EndianessUtilitiies.AlignedAddressFloor(localAddress);
-                    if (EndianessUtilitiies.AddressIsMisaligned(localAddress))
+                    uint alignedAddress = EndiannessUtilitiies.AlignedAddressFloor(localAddress);
+                    if (EndiannessUtilitiies.AddressIsMisaligned(localAddress))
                         swapBytes = new byte[readBytes.Length + 4];
                     else
                         swapBytes = new byte[readBytes.Length];
@@ -246,9 +246,9 @@ namespace STROOP.Utilities
             return readBytes;
         }
 
-        public bool ReadProcessMemory(UIntPtr address, byte[] buffer, EndianessType endianess)
+        public bool ReadProcessMemory(UIntPtr address, byte[] buffer, EndiannessType endianness)
         {
-            return _io?.ReadAbsolute(address, buffer, endianess) ?? false;
+            return _io?.ReadAbsolute(address, buffer, endianness) ?? false;
         }
 
         public bool CheckReadonlyOff()
@@ -317,7 +317,7 @@ namespace STROOP.Utilities
                 byte oldValue = GetByte(address, absoluteAddress);
                 value = (byte)((oldValue & ~mask.Value) | (value & mask.Value));
             }
-            bool returnValue = WriteRam(new byte[] { value }, (UIntPtr)address, EndianessType.Little, absoluteAddress);
+            bool returnValue = WriteRam(new byte[] { value }, (UIntPtr)address, EndiannessType.Little, absoluteAddress);
             if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(byte), mask);
             return returnValue;
         }
@@ -329,7 +329,7 @@ namespace STROOP.Utilities
                 sbyte oldValue = GetSByte(address, absoluteAddress);
                 value = (sbyte)((oldValue & ~mask.Value) | (value & mask.Value));
             }
-            bool returnValue = WriteRam(new byte[] { (byte)value }, (UIntPtr)address, EndianessType.Little, absoluteAddress);
+            bool returnValue = WriteRam(new byte[] { (byte)value }, (UIntPtr)address, EndiannessType.Little, absoluteAddress);
             if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(sbyte), mask);
             return returnValue;
         }
@@ -341,7 +341,7 @@ namespace STROOP.Utilities
                 short oldValue = GetInt16(address, absoluteAddress);
                 value = (short)((oldValue & ~mask.Value) | (value & mask.Value));
             }
-            bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndianessType.Little, absoluteAddress);
+            bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndiannessType.Little, absoluteAddress);
             if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(short), mask);
             return returnValue;
         }
@@ -353,7 +353,7 @@ namespace STROOP.Utilities
                 ushort oldValue = GetUInt16(address, absoluteAddress);
                 value = (ushort)((oldValue & ~mask.Value) | (value & mask.Value));
             }
-            bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndianessType.Little, absoluteAddress);
+            bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndiannessType.Little, absoluteAddress);
             if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(ushort), mask);
             return returnValue;
         }
@@ -365,7 +365,7 @@ namespace STROOP.Utilities
                 int oldValue = GetInt32(address, absoluteAddress);
                 value = (int)((oldValue & ~mask.Value) | (value & mask.Value));
             }
-            bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndianessType.Little, absoluteAddress);
+            bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndiannessType.Little, absoluteAddress);
             if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(int), mask);
             return returnValue;
         }
@@ -377,25 +377,25 @@ namespace STROOP.Utilities
                 uint oldValue = GetUInt32(address, absoluteAddress);
                 value = (uint)((oldValue & ~mask.Value) | (value & mask.Value));
             }
-            bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndianessType.Little, absoluteAddress);
+            bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndiannessType.Little, absoluteAddress);
             if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(uint), mask);
             return returnValue;
         }
 
         public bool SetValue(float value, uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndianessType.Little, absoluteAddress);
+            bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndiannessType.Little, absoluteAddress);
             if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(float), mask);
             return returnValue;
         }
 
-        public bool WriteRam(byte[] buffer, uint address, EndianessType endianess,
+        public bool WriteRam(byte[] buffer, uint address, EndiannessType endianness,
            int bufferStart = 0, int? length = null, bool safeWrite = true)
         {
-            return WriteRam(buffer, (UIntPtr)address, endianess, false, bufferStart, length, safeWrite);
+            return WriteRam(buffer, (UIntPtr)address, endianness, false, bufferStart, length, safeWrite);
         }
 
-        public bool WriteRam(byte[] buffer, UIntPtr address, EndianessType endianess, bool absoluteAddress = false, 
+        public bool WriteRam(byte[] buffer, UIntPtr address, EndiannessType endianness, bool absoluteAddress = false, 
             int bufferStart = 0, int? length = null, bool safeWrite = true)
         {
             if (length == null)
@@ -415,9 +415,9 @@ namespace STROOP.Utilities
             // Write memory to game/process
             bool result;
             if (absoluteAddress)
-                result = _io?.WriteAbsolute(address, writeBytes, endianess) ?? false;
+                result = _io?.WriteAbsolute(address, writeBytes, endianness) ?? false;
             else
-                result = _io?.WriteRelative(address.ToUInt32(), writeBytes, endianess) ?? false;
+                result = _io?.WriteRelative(address.ToUInt32(), writeBytes, endianness) ?? false;
 
             // Resume stream 
             if (safeWrite && !preSuspended)
@@ -434,7 +434,7 @@ namespace STROOP.Utilities
                 if (_ram.Length != Config.RamSize)
                     _ram = new byte[Config.RamSize];
 
-                return _io?.ReadRelative(0, _ram, EndianessType.Little) ?? false;
+                return _io?.ReadRelative(0, _ram, EndiannessType.Little) ?? false;
             }
             catch (Exception)
             {
