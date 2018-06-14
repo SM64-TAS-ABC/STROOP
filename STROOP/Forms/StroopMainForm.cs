@@ -17,6 +17,7 @@ using STROOP.Controls;
 using STROOP.Forms;
 using STROOP.Models;
 using STROOP.Structs.Gui;
+using STROOP.Map2;
 
 namespace STROOP
 {
@@ -129,68 +130,103 @@ namespace STROOP
         private void CreateManagers()
         {
             // Create map manager
-            MapGui mapGui = new MapGui();
+            MapGui mapGui = new MapGui()
+            {
+                // Main controls
+                GLControl = glControlMap,
+                MapTrackerFlowLayoutPanel = flowLayoutPanelMapTrackers,
+                TabControlView = tabControlMap,
 
-            // Main controls
-            mapGui.GLControl = glControlMap;
-            mapGui.MapTrackerFlowLayoutPanel = flowLayoutPanelMapTrackers;
-            mapGui.TabControlView = tabControlMap;
+                // Controls in options tab
+                TabPageOptions = tabPageMapOptions,
+                CheckBoxTrackMario = checkBoxMapControlsTrackMario,
+                CheckBoxTrackHolp = checkBoxMapControlsTrackHolp,
+                CheckBoxTrackCamera = checkBoxMapControlsTrackCamera,
+                CheckBoxTrackFloorTriangle = checkBoxMapControlsTrackFloorTriangle,
+                CheckBoxTrackWallTriangle = checkBoxMapControlsTrackWallTriangle,
+                CheckBoxTrackCeilingTriangle = checkBoxMapControlsTrackCeilingTriangle,
+                CheckBoxTrackAllObjects = checkBoxMapControlsTrackAllObjects,
+                CheckBoxTrackGridlines = checkBoxMapControlsTrackGridlines,
 
-            // Controls in options tab
-            mapGui.TabPageOptions = tabPageMapOptions;
-            mapGui.CheckBoxTrackMario = checkBoxMapControlsTrackMario;
-            mapGui.CheckBoxTrackHolp = checkBoxMapControlsTrackHolp;
-            mapGui.CheckBoxTrackCamera = checkBoxMapControlsTrackCamera;
-            mapGui.CheckBoxTrackFloorTriangle = checkBoxMapControlsTrackFloorTriangle;
-            mapGui.CheckBoxTrackWallTriangle = checkBoxMapControlsTrackWallTriangle;
-            mapGui.CheckBoxTrackCeilingTriangle = checkBoxMapControlsTrackCeilingTriangle;
-            mapGui.CheckBoxTrackAllObjects = checkBoxMapControlsTrackAllObjects;
-            mapGui.CheckBoxTrackGridlines = checkBoxMapControlsTrackGridlines;
+                ButtonAddNewTracker = buttonMapControlsAddNewTracker,
+                ButtonClearAllTrackers = buttonMapControlsClearAllTrackers,
+                ButtonTrackSelectedObjects = buttonMapControlsTrackSelectedObjects,
 
-            mapGui.ButtonAddNewTracker = buttonMapControlsAddNewTracker;
-            mapGui.ButtonClearAllTrackers = buttonMapControlsClearAllTrackers;
-            mapGui.ButtonTrackSelectedObjects = buttonMapControlsTrackSelectedObjects;
+                // Controls in 2D tab
+                TabPage2D = tabPageMap2D,
+                RadioButtonScaleCourseDefault = radioButtonMapControlsScaleCourseDefault,
+                RadioButtonScaleMaxCourseSize = radioButtonMapControlsScaleMaxCourseSize,
+                RadioButtonScaleCustom = radioButtonMapControlsScaleCustom,
+                TextBoxScaleCustom = betterTextboxMapControlsScaleCustom,
 
-            // Controls in 2D tab
-            mapGui.TabPage2D = tabPageMap2D;
-            mapGui.RadioButtonScaleCourseDefault = radioButtonMapControlsScaleCourseDefault;
-            mapGui.RadioButtonScaleMaxCourseSize = radioButtonMapControlsScaleMaxCourseSize;
-            mapGui.RadioButtonScaleCustom = radioButtonMapControlsScaleCustom;
-            mapGui.TextBoxScaleCustom = betterTextboxMapControlsScaleCustom;
+                ButtonCenterScaleChangeMinus = buttonMapControlsScaleChangeMinus,
+                ButtonCenterScaleChangePlus = buttonMapControlsScaleChangePlus,
+                TextBoxScaleChange = betterTextboxMapControlsScaleChange,
 
-            mapGui.ButtonCenterScaleChangeMinus = buttonMapControlsScaleChangeMinus;
-            mapGui.ButtonCenterScaleChangePlus = buttonMapControlsScaleChangePlus;
-            mapGui.TextBoxScaleChange = betterTextboxMapControlsScaleChange;
+                RadioButtonCenterBestFit = radioButtonMapControlsCenterBestFit,
+                RadioButtonCenterOrigin = radioButtonMapControlsCenterOrigin,
+                RadioButtonCenterCustom = radioButtonMapControlsCenterCustom,
+                TextBoxCenterCustom = betterTextboxMapControlsCenterCustom,
 
-            mapGui.RadioButtonCenterBestFit = radioButtonMapControlsCenterBestFit;
-            mapGui.RadioButtonCenterOrigin = radioButtonMapControlsCenterOrigin;
-            mapGui.RadioButtonCenterCustom = radioButtonMapControlsCenterCustom;
-            mapGui.TextBoxCenterCustom = betterTextboxMapControlsCenterCustom;
+                ButtonCenterChangeUp = buttonMapControlsCenterChangeUp,
+                ButtonCenterChangeDown = buttonMapControlsCenterChangeDown,
+                ButtonCenterChangeLeft = buttonMapControlsCenterChangeLeft,
+                ButtonCenterChangeRight = buttonMapControlsCenterChangeRight,
+                ButtonCenterChangeUpLeft = buttonMapControlsCenterChangeUpLeft,
+                ButtonCenterChangeUpRight = buttonMapControlsCenterChangeUpRight,
+                ButtonCenterChangeDownLeft = buttonMapControlsCenterChangeDownLeft,
+                ButtonCenterChangeDownRight = buttonMapControlsCenterChangeDownRight,
 
-            mapGui.ButtonCenterChangeUp = buttonMapControlsCenterChangeUp;
-            mapGui.ButtonCenterChangeDown = buttonMapControlsCenterChangeDown;
-            mapGui.ButtonCenterChangeLeft = buttonMapControlsCenterChangeLeft;
-            mapGui.ButtonCenterChangeRight = buttonMapControlsCenterChangeRight;
-            mapGui.ButtonCenterChangeUpLeft = buttonMapControlsCenterChangeUpLeft;
-            mapGui.ButtonCenterChangeUpRight = buttonMapControlsCenterChangeUpRight;
-            mapGui.ButtonCenterChangeDownLeft = buttonMapControlsCenterChangeDownLeft;
-            mapGui.ButtonCenterChangeDownRight = buttonMapControlsCenterChangeDownRight;
+                RadioButtonAngle0 = radioButtonMapControlsAngle0,
+                RadioButtonAngle16384 = radioButtonMapControlsAngle16384,
+                RadioButtonAngle32768 = radioButtonMapControlsAngle32768,
+                RadioButtonAngle49152 = radioButtonMapControlsAngle49152,
+                RadioButtonAngleCustom = radioButtonMapControlsAngleCustom,
+                TextBoxAngleCustom = betterTextboxMapControlsAngleCustom,
 
-            mapGui.RadioButtonAngle0 = radioButtonMapControlsAngle0;
-            mapGui.RadioButtonAngle16384 = radioButtonMapControlsAngle16384;
-            mapGui.RadioButtonAngle32768 = radioButtonMapControlsAngle32768;
-            mapGui.RadioButtonAngle49152 = radioButtonMapControlsAngle49152;
-            mapGui.RadioButtonAngleCustom = radioButtonMapControlsAngleCustom;
-            mapGui.TextBoxAngleCustom = betterTextboxMapControlsAngleCustom;
+                ButtonAngleChangeCounterclockwise = buttonMapControlsAngleChangeCounterclockwise,
+                ButtonAngleChangeClockwise = buttonMapControlsAngleChangeClockwise,
+                TextBoxAngleChange = betterTextboxMapControlsAngleChange,
 
-            mapGui.ButtonAngleChangeCounterclockwise = buttonMapControlsAngleChangeCounterclockwise;
-            mapGui.ButtonAngleChangeClockwise = buttonMapControlsAngleChangeClockwise;
-            mapGui.TextBoxAngleChange = betterTextboxMapControlsAngleChange;
+                // Controls in the 3D map tab
+                TabPage3D = tabPageMap3D,
+                CheckBoxMapGameCamOrientation = checkBoxMapGameCamOrientation,
+                ComboBoxMapColorMethod = comboBoxMapColorMethod
+            };
 
-            // Controls in the 3D map tab
-            mapGui.TabPage3D = tabPageMap3D;
-            mapGui.CheckBoxMapGameCamOrientation = checkBoxMapGameCamOrientation;
-            mapGui.ComboBoxMapColorMethod = comboBoxMapColorMethod;
+            Map2Gui map2Gui = new Map2Gui()
+            {
+                GLControl = glControlMap2,
+                MapIdLabel = labelMap2Id,
+                MapNameLabel = labelMap2Name,
+                MapSubNameLabel = labelMap2SubName,
+                PuValueLabel = labelMap2PuValue,
+                QpuValueLabel = labelMap2QpuValue,
+                MapIconSizeTrackbar = trackBarMap2IconSize,
+                MapShowInactiveObjects = checkBoxMap2ShowInactive,
+                MapShowMario = checkBoxMap2ShowMario,
+                MapShowHolp = checkBoxMap2ShowHolp,
+                MapShowIntendedNextPosition = checkBoxMap2ShowIntendedNextPosition,
+                MapShowCamera = checkBoxMap2ShowCamera,
+                MapShowFloorTriangle = checkBoxMap2ShowFloor,
+                MapShowCeilingTriangle = checkBoxMap2ShowCeiling,
+
+                MapBoundsUpButton = buttonMap2BoundsUp,
+                MapBoundsDownButton = buttonMap2BoundsDown,
+                MapBoundsLeftButton = buttonMap2BoundsLeft,
+                MapBoundsRightButton = buttonMap2BoundsRight,
+                MapBoundsUpLeftButton = buttonMap2BoundsUpLeft,
+                MapBoundsUpRightButton = buttonMap2BoundsUpRight,
+                MapBoundsDownLeftButton = buttonMap2BoundsDownLeft,
+                MapBoundsDownRightButton = buttonMap2BoundsDownRight,
+                MapBoundsPositionTextBox = textBoxMap2BoundsPosition,
+
+                MapBoundsZoomInButton = buttonMap2BoundsZoomIn,
+                MapBoundsZoomOutButton = buttonMap2BoundsZoomOut,
+                MapBoundsZoomTextBox = textBoxMap2BoundsZoom,
+
+                MapArtificialMarioYLabelTextBox = textBoxMap2ArtificialMarioYLabel
+            };
 
             M64Gui m64Gui = new M64Gui()
             {
