@@ -108,13 +108,14 @@ namespace STROOP.Managers
                     name: "Dummy");
                 List<CoinTrajectory> coinTrajectories = Enumerable.Range(0, 65114).ToList().ConvertAll(
                     rngIndex => coinObject.CalculateCoinTrajectory(rngIndex));
-                AddCoinTrajectoriesToTable(coinTrajectories, null);
+                int? startingRngIndexNullable = ParsingUtilities.ParseIntNullable(_textBoxCoinStartingRngIndex.Text);
+                AddCoinTrajectoriesToTable(coinTrajectories, startingRngIndexNullable);
             }
         }
 
-        private void AddCoinTrajectoriesToTable(List<CoinTrajectory> coinTrajectories, int? startingRngIndex)
+        private void AddCoinTrajectoriesToTable(List<CoinTrajectory> coinTrajectories, int? startingRngIndexNullable)
         {
-
+            int startingRngIndex = startingRngIndexNullable ?? RngIndexer.GetRngIndex();
         }
 
         public void Update(bool updateView)
