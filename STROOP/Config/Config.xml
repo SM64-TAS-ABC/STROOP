@@ -7,6 +7,7 @@
     <Emulator name="Mupen 5.0 RR" processName="mupen64-wiivc" ramStart="0x00901920" endianess="little"/>
     <Emulator name="Nemu64 0.8" processName="Nemu64" ramStart="0x10020000" endianess="little"/>
     <Emulator name="BizHawk" processName="EmuHawk" offsetDll="mupen64plus.dll" ramStart="0x6C370" endianess="little"/>
+    <Emulator name="Project64 Debugger 2.4.0.9999" processName="Project64d" ramStart="0x20000000" endianess="little"/>
     <Emulator name="Dolphin" processName="Dolphin" ramStart="0xe6a180" endianess="big" special="dolphin"/>
   </Emulators>
 
