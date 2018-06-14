@@ -32,4 +32,4 @@ Requirements:
   * Visual Studio *(2017 recommended)*
   * OpenTK 1.1 *(Version 1.1.1589.5942 used, others may work)*
   
-Before building Stroop, OpenTK is a prerequisite. This is easiest installed by using the NuGet package manager. Stroop can be easily built from the source code by opening up the solution file in Visual Studio and performing a build. 
+Before building Stroop, OpenTK is a prerequisite. This is easiest installed by using the NuGet package manager. Stroop can be easily be built from the source code by opening up the solution file in Visual Studio and performing a build. 
