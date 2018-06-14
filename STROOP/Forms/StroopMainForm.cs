@@ -647,6 +647,16 @@ namespace STROOP
             }
         }
 
+        private void buttonMoveTabLeft_Click(object sender, EventArgs e)
+        {
+            MoveTab(false);
+        }
+
+        private void buttonMoveTabRight_Click(object sender, EventArgs e)
+        {
+            MoveTab(true);
+        }
+
         private void MoveTab(bool rightwards)
         {
             TabPage currentTab = tabControlMain.SelectedTab;

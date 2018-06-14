@@ -17025,7 +17025,7 @@ namespace STROOP
             this.buttonMoveTabRight.Size = new System.Drawing.Size(21, 21);
             this.buttonMoveTabRight.TabIndex = 20;
             this.buttonMoveTabRight.UseVisualStyleBackColor = true;
-            this.buttonMoveTabRight.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
+            this.buttonMoveTabRight.Click += new System.EventHandler(this.buttonMoveTabRight_Click);
             // 
             // buttonMoveTabLeft
             // 
@@ -17038,7 +17038,7 @@ namespace STROOP
             this.buttonMoveTabLeft.Size = new System.Drawing.Size(21, 21);
             this.buttonMoveTabLeft.TabIndex = 20;
             this.buttonMoveTabLeft.UseVisualStyleBackColor = true;
-            this.buttonMoveTabLeft.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
+            this.buttonMoveTabLeft.Click += new System.EventHandler(this.buttonMoveTabLeft_Click);
             // 
             // StroopMainForm
             // 
