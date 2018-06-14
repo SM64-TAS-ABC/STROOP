@@ -251,6 +251,7 @@ namespace STROOP
 
             // Create managers
             Config.MapManager = new MapManager(_mapAssoc, mapGui);
+            Config.Map2Manager = new Map2Manager();
 
             Config.ModelManager = new ModelManager(tabPageModel);
             Config.ActionsManager = new ActionsManager(@"Config/ActionsData.xml", watchVariablePanelActions, tabPageActions);

@@ -325,6 +325,7 @@
     <Compile Include="Managers\GfxManager.cs" />
     <Compile Include="Managers\M64Manager.cs" />
     <Compile Include="Managers\CoinManager.cs" />
+    <Compile Include="Managers\Map2Manager.cs" />
     <Compile Include="Managers\MemoryManager.cs" />
     <Compile Include="Managers\TasManager.cs" />
     <Compile Include="Managers\VarHackManager.cs" />
