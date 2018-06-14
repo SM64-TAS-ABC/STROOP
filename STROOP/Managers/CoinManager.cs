@@ -78,7 +78,7 @@ namespace STROOP.Managers
             _listBoxCoinObjects.SelectedValueChanged += (sender, e) => ListBoxSelectionChange();
 
             _buttonCoinCalculate.Click += (sender, e) => CalculateCoinTrajectories();
-            _buttonCoinClear.Click += (sender, e) => _dataGridViewCoin.Rows.Clear();
+            _buttonCoinClear.Click += (sender, e) => ClearCoinTrajectories();
 
             Color lightBlue = Color.FromArgb(235, 255, 255);
             Color lightPink = Color.FromArgb(255, 240, 255);
@@ -101,8 +101,15 @@ namespace STROOP.Managers
             _textBoxCoinParamOrder.Text = coinObject.CoinParamOrder.ToString();
         }
 
+        public void ClearCoinTrajectories()
+        {
+            _dataGridViewCoin.Rows.Clear();
+        }
+
         private void CalculateCoinTrajectories()
         {
+            ClearCoinTrajectories();
+
             double? hSpeedScale = ParsingUtilities.ParseIntNullable(_textBoxCoinHSpeedScale.Text);
             double? vSpeedScale = ParsingUtilities.ParseIntNullable(_textBoxCoinVSpeedScale.Text);
             double? vSpeedOffset = ParsingUtilities.ParseIntNullable(_textBoxCoinVSpeedOffset.Text);
@@ -128,15 +135,65 @@ namespace STROOP.Managers
 
             foreach (int rngIndex in rngIndexes)
             {
+                // rng based values
                 ushort rngValue = RngIndexer.GetRngValue(rngIndex);
                 int rngToGo = MoreMath.NonNegativeModulus(rngIndex - startingRngIndex, 65114);
 
+                // coin trajectory values
                 CoinTrajectory coinTrajectory = coinObject.CalculateCoinTrajectory(rngIndex);
                 double hSpeed = Math.Round(coinTrajectory.HSpeed, 3);
                 double vSpeed = Math.Round(coinTrajectory.VSpeed, 3);
                 double angle = coinTrajectory.Angle;
 
-                _dataGridViewCoin.Rows.Add(rngIndex, rngValue, rngToGo, hSpeed, vSpeed, angle);
+                // filter the values
+                double? hSpeedMinNullable = ParsingUtilities.ParseDoubleNullable(_textBoxCoinFilterHSpeedMin.Text);
+                if (hSpeedMinNullable.HasValue)
+                {
+                    double hSpeedMin = hSpeedMinNullable.Value;
+                    if (hSpeed < hSpeedMin) continue;
+                }
+
+                double? hSpeedMaxNullable = ParsingUtilities.ParseDoubleNullable(_textBoxCoinFilterHSpeedMax.Text);
+                if (hSpeedMaxNullable.HasValue)
+                {
+                    double hSpeedMax = hSpeedMaxNullable.Value;
+                    if (hSpeed > hSpeedMax) continue;
+                }
+
+                double? vSpeedMinNullable = ParsingUtilities.ParseDoubleNullable(_textBoxCoinFilterVSpeedMin.Text);
+                if (vSpeedMinNullable.HasValue)
+                {
+                    double vSpeedMin = vSpeedMinNullable.Value;
+                    if (vSpeed < vSpeedMin) continue;
+                }
+
+                double? vSpeedMaxNullable = ParsingUtilities.ParseDoubleNullable(_textBoxCoinFilterVSpeedMax.Text);
+                if (vSpeedMaxNullable.HasValue)
+                {
+                    double vSpeedMax = vSpeedMaxNullable.Value;
+                    if (vSpeed > vSpeedMax) continue;
+                }
+
+                double? angleMinNullable = ParsingUtilities.ParseDoubleNullable(_textBoxCoinFilterAngleMin.Text);
+                if (angleMinNullable.HasValue)
+                {
+                    double angleMin = angleMinNullable.Value;
+                    double diff = MoreMath.GetAngleDifference(angleMin, angle);
+                    if (diff < 0) continue;
+                }
+
+                double? angleMaxNullable = ParsingUtilities.ParseDoubleNullable(_textBoxCoinFilterAngleMax.Text);
+                if (angleMaxNullable.HasValue)
+                {
+                    double angleMax = angleMaxNullable.Value;
+                    double diff = MoreMath.GetAngleDifference(angleMax, angle);
+                    if (diff > 0) continue;
+                }
+
+                // add a new row to the table
+                double hSpeedRounded = Math.Round(hSpeed, 3);
+                double vSpeedRounded = Math.Round(vSpeed, 3);
+                _dataGridViewCoin.Rows.Add(rngIndex, rngValue, rngToGo, hSpeedRounded, vSpeedRounded, angle);
             }
         }
 
