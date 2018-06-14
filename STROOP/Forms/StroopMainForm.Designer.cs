@@ -200,120 +200,6 @@ namespace STROOP
             this.buttonMarioToggleHandsfree = new System.Windows.Forms.Button();
             this.buttonMarioVisibility = new System.Windows.Forms.Button();
             this.WatchVariablePanelMario = new STROOP.Controls.WatchVariableFlowLayoutPanel();
-            this.tabPageM64 = new System.Windows.Forms.TabPage();
-            this.splitContainerM64 = new STROOP.BetterSplitContainer();
-            this.checkBoxMaxOutViCount = new System.Windows.Forms.CheckBox();
-            this.comboBoxM64FrameInputRelation = new System.Windows.Forms.ComboBox();
-            this.textBoxM64PasteMultiplicity = new STROOP.BetterTextbox();
-            this.listBoxM64Copied = new System.Windows.Forms.ListBox();
-            this.groupBoxM64QuickDuplication = new System.Windows.Forms.GroupBox();
-            this.buttonM64QuickDuplicationDuplicate = new System.Windows.Forms.Button();
-            this.textBoxM64QuickDuplicationTotalIterations = new STROOP.BetterTextbox();
-            this.textBoxM64QuickDuplication2ndIterationStart = new STROOP.BetterTextbox();
-            this.textBoxM64QuickDuplication1stIterationStart = new STROOP.BetterTextbox();
-            this.labelM64QuickDuplicationTotalIterations = new System.Windows.Forms.Label();
-            this.labelM64QuickDuplication2ndIterationStart = new System.Windows.Forms.Label();
-            this.labelM64QuickDuplication1stIterationStart = new System.Windows.Forms.Label();
-            this.groupBoxM64Selection = new System.Windows.Forms.GroupBox();
-            this.textBoxM64SelectionInputs = new STROOP.BetterTextbox();
-            this.textBoxM64SelectionEndFrame = new STROOP.BetterTextbox();
-            this.textBoxM64SelectionStartFrame = new STROOP.BetterTextbox();
-            this.labelM64SelectionInputs = new System.Windows.Forms.Label();
-            this.labelM64SelectionEndFrame = new System.Windows.Forms.Label();
-            this.labelM64SelectionStartFrame = new System.Windows.Forms.Label();
-            this.labelM64PasteMultiplicity = new System.Windows.Forms.Label();
-            this.labelM64NumInputsValue = new System.Windows.Forms.Label();
-            this.labelM64OnValue = new System.Windows.Forms.Label();
-            this.labelM64NumInputsLabel = new System.Windows.Forms.Label();
-            this.labelM64FileName = new System.Windows.Forms.Label();
-            this.labelM64FileLabel = new System.Windows.Forms.Label();
-            this.buttonM64Goto = new System.Windows.Forms.Button();
-            this.textBoxM64OnValue = new STROOP.BetterTextbox();
-            this.textBoxM64Goto = new STROOP.BetterTextbox();
-            this.buttonM64PasteOverwrite = new System.Windows.Forms.Button();
-            this.buttonM64PasteInsert = new System.Windows.Forms.Button();
-            this.buttonM64CopyInputRange = new System.Windows.Forms.Button();
-            this.buttonM64TurnOffCells = new System.Windows.Forms.Button();
-            this.buttonM64TurnOffInputRange = new System.Windows.Forms.Button();
-            this.buttonM64TurnOffRowRange = new System.Windows.Forms.Button();
-            this.buttonM64TurnOnCells = new System.Windows.Forms.Button();
-            this.buttonM64TurnOnInputRange = new System.Windows.Forms.Button();
-            this.buttonM64DeleteRowRange = new System.Windows.Forms.Button();
-            this.buttonM64CopyRowRange = new System.Windows.Forms.Button();
-            this.buttonM64SetJpHeader = new System.Windows.Forms.Button();
-            this.buttonM64SetUsHeader = new System.Windows.Forms.Button();
-            this.buttonM64Close = new System.Windows.Forms.Button();
-            this.buttonM64Open = new System.Windows.Forms.Button();
-            this.buttonM64SaveAs = new System.Windows.Forms.Button();
-            this.buttonM64ResetChanges = new System.Windows.Forms.Button();
-            this.buttonM64Save = new System.Windows.Forms.Button();
-            this.labelM64ProgressBar = new System.Windows.Forms.Label();
-            this.progressBarM64 = new System.Windows.Forms.ProgressBar();
-            this.tabControlM64Details = new System.Windows.Forms.TabControl();
-            this.tabPageM64Inputs = new System.Windows.Forms.TabPage();
-            this.dataGridViewM64Inputs = new System.Windows.Forms.DataGridView();
-            this.ColumnM64Frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnM64Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnM64X = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnM64Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnM64A = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64B = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Z = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64S = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64R = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64CUp = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64CDown = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64CLeft = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64CRight = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64L = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64DUp = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64DDown = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64DLeft = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64DRight = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.tabPageM64Header = new System.Windows.Forms.TabPage();
-            this.propertyGridM64Header = new System.Windows.Forms.PropertyGrid();
-            this.tabPageM64Stats = new System.Windows.Forms.TabPage();
-            this.propertyGridM64Stats = new System.Windows.Forms.PropertyGrid();
-            this.tabPageCoin = new System.Windows.Forms.TabPage();
-            this.splitContainerCoin = new STROOP.BetterSplitContainer();
-            this.buttonCoinCalculate = new System.Windows.Forms.Button();
-            this.buttonCoinClear = new System.Windows.Forms.Button();
-            this.groupBoxCoinFilter = new System.Windows.Forms.GroupBox();
-            this.textBoxCoinFilterAngleMin = new STROOP.BetterTextbox();
-            this.textBoxCoinFilterAngleMax = new STROOP.BetterTextbox();
-            this.labelCoinFilterHSpeedFrom = new System.Windows.Forms.Label();
-            this.textBoxCoinFilterVSpeedMax = new STROOP.BetterTextbox();
-            this.labelCoinFilterMin = new System.Windows.Forms.Label();
-            this.labelCoinFilterMax = new System.Windows.Forms.Label();
-            this.textBoxCoinFilterVSpeedMin = new STROOP.BetterTextbox();
-            this.labelCoinFilterHSpeedTo = new System.Windows.Forms.Label();
-            this.textBoxCoinFilterHSpeedMax = new STROOP.BetterTextbox();
-            this.labelCoinFilterVSpeedFrom = new System.Windows.Forms.Label();
-            this.labelCoinFilterVSpeedTo = new System.Windows.Forms.Label();
-            this.textBoxCoinFilterHSpeedMin = new STROOP.BetterTextbox();
-            this.labelCoinFilterAngleFrom = new System.Windows.Forms.Label();
-            this.labelCoinFilterAngleTo = new System.Windows.Forms.Label();
-            this.textBoxCoinParamOrder = new STROOP.BetterTextbox();
-            this.textBoxCoinVSpeedOffset = new STROOP.BetterTextbox();
-            this.textBoxCoinVSpeedScale = new STROOP.BetterTextbox();
-            this.textBoxCoinStartingRngIndex = new STROOP.BetterTextbox();
-            this.textBoxCoinHSpeedScale = new STROOP.BetterTextbox();
-            this.labelCoinVSpeedRange = new System.Windows.Forms.Label();
-            this.labelCoinParamOrder = new System.Windows.Forms.Label();
-            this.labelCoinTableEntries = new System.Windows.Forms.Label();
-            this.labelCoinHSpeedRange = new System.Windows.Forms.Label();
-            this.labelCoinVSpeedOffset = new System.Windows.Forms.Label();
-            this.labelCoinStartingRngIndex = new System.Windows.Forms.Label();
-            this.labelCoinVSpeedScale = new System.Windows.Forms.Label();
-            this.labelCoinHSpeedScale = new System.Windows.Forms.Label();
-            this.listBoxCoinObjects = new System.Windows.Forms.ListBox();
-            this.dataGridViewCoin = new System.Windows.Forms.DataGridView();
-            this.rngIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rngValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rngToGo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coinHSpeed = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coinVSpeed = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coinAngle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageHud = new System.Windows.Forms.TabPage();
             this.splitContainerHud = new STROOP.BetterSplitContainer();
             this.checkBoxFullHP = new System.Windows.Forms.CheckBox();
@@ -410,16 +296,10 @@ namespace STROOP
             this.buttonGotoV1 = new System.Windows.Forms.Button();
             this.buttonGotoV2 = new System.Windows.Forms.Button();
             this.watchVariablePanelTriangles = new STROOP.Controls.WatchVariableFlowLayoutPanel();
-            this.tabPageWater = new System.Windows.Forms.TabPage();
-            this.watchVariablePanelWater = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageActions = new System.Windows.Forms.TabPage();
             this.textBoxAnimationDescription = new STROOP.BetterTextbox();
             this.textBoxActionDescription = new STROOP.BetterTextbox();
             this.watchVariablePanelActions = new STROOP.Controls.WatchVariableFlowLayoutPanel();
-            this.tabPageInput = new System.Windows.Forms.TabPage();
-            this.splitContainerInput = new STROOP.BetterSplitContainer();
-            this.inputDisplayPanel = new STROOP.InputDisplayPanel();
-            this.watchVariablePanelInput = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageFile = new System.Windows.Forms.TabPage();
             this.splitContainerFile = new STROOP.BetterSplitContainer();
             this.checkBoxInGameCopyPaste = new System.Windows.Forms.CheckBox();
@@ -655,6 +535,12 @@ namespace STROOP
             this.radioButtonFileBSaved = new System.Windows.Forms.RadioButton();
             this.buttonFileSave = new System.Windows.Forms.Button();
             this.watchVariablePanelFile = new STROOP.Controls.WatchVariableFlowLayoutPanel();
+            this.tabPageInput = new System.Windows.Forms.TabPage();
+            this.splitContainerInput = new STROOP.BetterSplitContainer();
+            this.inputDisplayPanel = new STROOP.InputDisplayPanel();
+            this.watchVariablePanelInput = new STROOP.Controls.WatchVariableFlowLayoutPanel();
+            this.tabPageWater = new System.Windows.Forms.TabPage();
+            this.watchVariablePanelWater = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageMisc = new System.Windows.Forms.TabPage();
             this.splitContainerMisc = new STROOP.BetterSplitContainer();
             this.groupBoxRNGIndexTester = new System.Windows.Forms.GroupBox();
@@ -664,6 +550,80 @@ namespace STROOP
             this.panelMiscBorder = new System.Windows.Forms.Panel();
             this.pictureBoxMisc = new STROOP.Controls.IntPictureBox();
             this.watchVariablePanelMisc = new STROOP.Controls.WatchVariableFlowLayoutPanel();
+            this.tabPageM64 = new System.Windows.Forms.TabPage();
+            this.splitContainerM64 = new STROOP.BetterSplitContainer();
+            this.checkBoxMaxOutViCount = new System.Windows.Forms.CheckBox();
+            this.comboBoxM64FrameInputRelation = new System.Windows.Forms.ComboBox();
+            this.textBoxM64PasteMultiplicity = new STROOP.BetterTextbox();
+            this.listBoxM64Copied = new System.Windows.Forms.ListBox();
+            this.groupBoxM64QuickDuplication = new System.Windows.Forms.GroupBox();
+            this.buttonM64QuickDuplicationDuplicate = new System.Windows.Forms.Button();
+            this.textBoxM64QuickDuplicationTotalIterations = new STROOP.BetterTextbox();
+            this.textBoxM64QuickDuplication2ndIterationStart = new STROOP.BetterTextbox();
+            this.textBoxM64QuickDuplication1stIterationStart = new STROOP.BetterTextbox();
+            this.labelM64QuickDuplicationTotalIterations = new System.Windows.Forms.Label();
+            this.labelM64QuickDuplication2ndIterationStart = new System.Windows.Forms.Label();
+            this.labelM64QuickDuplication1stIterationStart = new System.Windows.Forms.Label();
+            this.groupBoxM64Selection = new System.Windows.Forms.GroupBox();
+            this.textBoxM64SelectionInputs = new STROOP.BetterTextbox();
+            this.textBoxM64SelectionEndFrame = new STROOP.BetterTextbox();
+            this.textBoxM64SelectionStartFrame = new STROOP.BetterTextbox();
+            this.labelM64SelectionInputs = new System.Windows.Forms.Label();
+            this.labelM64SelectionEndFrame = new System.Windows.Forms.Label();
+            this.labelM64SelectionStartFrame = new System.Windows.Forms.Label();
+            this.labelM64PasteMultiplicity = new System.Windows.Forms.Label();
+            this.labelM64NumInputsValue = new System.Windows.Forms.Label();
+            this.labelM64OnValue = new System.Windows.Forms.Label();
+            this.labelM64NumInputsLabel = new System.Windows.Forms.Label();
+            this.labelM64FileName = new System.Windows.Forms.Label();
+            this.labelM64FileLabel = new System.Windows.Forms.Label();
+            this.buttonM64Goto = new System.Windows.Forms.Button();
+            this.textBoxM64OnValue = new STROOP.BetterTextbox();
+            this.textBoxM64Goto = new STROOP.BetterTextbox();
+            this.buttonM64PasteOverwrite = new System.Windows.Forms.Button();
+            this.buttonM64PasteInsert = new System.Windows.Forms.Button();
+            this.buttonM64CopyInputRange = new System.Windows.Forms.Button();
+            this.buttonM64TurnOffCells = new System.Windows.Forms.Button();
+            this.buttonM64TurnOffInputRange = new System.Windows.Forms.Button();
+            this.buttonM64TurnOffRowRange = new System.Windows.Forms.Button();
+            this.buttonM64TurnOnCells = new System.Windows.Forms.Button();
+            this.buttonM64TurnOnInputRange = new System.Windows.Forms.Button();
+            this.buttonM64DeleteRowRange = new System.Windows.Forms.Button();
+            this.buttonM64CopyRowRange = new System.Windows.Forms.Button();
+            this.buttonM64SetJpHeader = new System.Windows.Forms.Button();
+            this.buttonM64SetUsHeader = new System.Windows.Forms.Button();
+            this.buttonM64Close = new System.Windows.Forms.Button();
+            this.buttonM64Open = new System.Windows.Forms.Button();
+            this.buttonM64SaveAs = new System.Windows.Forms.Button();
+            this.buttonM64ResetChanges = new System.Windows.Forms.Button();
+            this.buttonM64Save = new System.Windows.Forms.Button();
+            this.labelM64ProgressBar = new System.Windows.Forms.Label();
+            this.progressBarM64 = new System.Windows.Forms.ProgressBar();
+            this.tabControlM64Details = new System.Windows.Forms.TabControl();
+            this.tabPageM64Inputs = new System.Windows.Forms.TabPage();
+            this.dataGridViewM64Inputs = new System.Windows.Forms.DataGridView();
+            this.ColumnM64Frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnM64Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnM64X = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnM64Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnM64A = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64B = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Z = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64S = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64R = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64CUp = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64CDown = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64CLeft = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64CRight = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64L = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64DUp = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64DDown = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64DLeft = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64DRight = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tabPageM64Header = new System.Windows.Forms.TabPage();
+            this.propertyGridM64Header = new System.Windows.Forms.PropertyGrid();
+            this.tabPageM64Stats = new System.Windows.Forms.TabPage();
+            this.propertyGridM64Stats = new System.Windows.Forms.PropertyGrid();
             this.tabPageCustom = new System.Windows.Forms.TabPage();
             this.splitContainerCustom = new STROOP.BetterSplitContainer();
             this.splitContainerCustomControls = new STROOP.BetterSplitContainer();
@@ -722,28 +682,6 @@ namespace STROOP
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.watchVariablePanelTas = new STROOP.Controls.WatchVariableFlowLayoutPanel();
-            this.tabPageDebug = new System.Windows.Forms.TabPage();
-            this.splitContainerDebug = new STROOP.BetterSplitContainer();
-            this.panelDebugBorder = new System.Windows.Forms.Panel();
-            this.pictureBoxDebug = new STROOP.Controls.IntPictureBox();
-            this.groupBoxMiscDebug = new System.Windows.Forms.GroupBox();
-            this.checkBoxFreeMovement = new System.Windows.Forms.CheckBox();
-            this.checkBoxSpawnMode = new System.Windows.Forms.CheckBox();
-            this.checkBoxStageSelect = new System.Windows.Forms.CheckBox();
-            this.checkBoxClassicMode = new System.Windows.Forms.CheckBox();
-            this.groupBoxResourceMeter = new System.Windows.Forms.GroupBox();
-            this.radioButtonResourceMeterOff = new System.Windows.Forms.RadioButton();
-            this.radioButtonResourceMeter1 = new System.Windows.Forms.RadioButton();
-            this.radioButtonResourceMeter2 = new System.Windows.Forms.RadioButton();
-            this.groupBoxAdvancedMode = new System.Windows.Forms.GroupBox();
-            this.radioButtonAdvancedModeOff = new System.Windows.Forms.RadioButton();
-            this.radioButtonAdvancedModeEnemyInfo = new System.Windows.Forms.RadioButton();
-            this.radioButtonAdvancedModeObjectCounter = new System.Windows.Forms.RadioButton();
-            this.radioButtonAdvancedModeEffectInfo = new System.Windows.Forms.RadioButton();
-            this.radioButtonAdvancedModeCheckInfo = new System.Windows.Forms.RadioButton();
-            this.radioButtonAdvancedModeStageInfo = new System.Windows.Forms.RadioButton();
-            this.radioButtonAdvancedModeMapInfo = new System.Windows.Forms.RadioButton();
-            this.watchVariablePanelDebug = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageMap = new System.Windows.Forms.TabPage();
             this.splitContainerMap = new STROOP.BetterSplitContainer();
             this.splitContainerMapControls = new STROOP.BetterSplitContainer();
@@ -799,6 +737,86 @@ namespace STROOP
             this.comboBoxMapColorMethod = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanelMapTrackers = new STROOP.Controls.Map.Trackers.MapTrackerFlowLayoutPanel();
             this.glControlMap = new OpenTK.GLControl();
+            this.tabPageMap2 = new System.Windows.Forms.TabPage();
+            this.splitContainerMap2 = new STROOP.BetterSplitContainer();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.betterTextbox1 = new STROOP.BetterTextbox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.betterTextbox2 = new STROOP.BetterTextbox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.glControl1 = new OpenTK.GLControl();
+            this.tabPageOptions = new System.Windows.Forms.TabPage();
+            this.groupBoxPositionControllerRelativeAngle = new System.Windows.Forms.GroupBox();
+            this.textBoxPositionControllerRelativeAngleCustom = new STROOP.BetterTextbox();
+            this.radioButtonPositionControllerRelativeAngleMario = new System.Windows.Forms.RadioButton();
+            this.radioButtonPositionControllerRelativeAngleRecommended = new System.Windows.Forms.RadioButton();
+            this.radioButtonPositionControllerRelativeAngleCustom = new System.Windows.Forms.RadioButton();
+            this.groupBoxOptionsSavedSettings = new System.Windows.Forms.GroupBox();
+            this.buttonOptionsResetSavedSettings = new System.Windows.Forms.Button();
+            this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
+            this.checkBoxMoveCamWithPu = new System.Windows.Forms.CheckBox();
+            this.checkBoxNeutralizeTrianglesWith21 = new System.Windows.Forms.CheckBox();
+            this.checkBoxScaleDiagonalPositionControllerButtons = new System.Windows.Forms.CheckBox();
+            this.checkBoxOptionsUseInGameTrigForAngleLogic = new System.Windows.Forms.CheckBox();
+            this.checkBoxDontRoundValuesToZero = new System.Windows.Forms.CheckBox();
+            this.checkBoxExcludeDustForClosestObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine = new System.Windows.Forms.CheckBox();
+            this.groupBoxFPS = new System.Windows.Forms.GroupBox();
+            this.betterTextboxFPS = new STROOP.BetterTextbox();
+            this.groupBoxGotoRetrieveOffsets = new System.Windows.Forms.GroupBox();
+            this.labelRetrieveInfrontSuffix = new System.Windows.Forms.Label();
+            this.labelRetrieveInfrontPrefix = new System.Windows.Forms.Label();
+            this.textBoxRetrieveInfront = new STROOP.BetterTextbox();
+            this.labelRetrieveAboveSuffix = new System.Windows.Forms.Label();
+            this.labelRetrieveAbovePrefix = new System.Windows.Forms.Label();
+            this.textBoxRetrieveAbove = new STROOP.BetterTextbox();
+            this.labelGotoInfrontSuffix = new System.Windows.Forms.Label();
+            this.labelGotoInfrontPrefix = new System.Windows.Forms.Label();
+            this.textBoxGotoInfront = new STROOP.BetterTextbox();
+            this.labelGotoAboveSuffix = new System.Windows.Forms.Label();
+            this.labelGotoAbovePrefix = new System.Windows.Forms.Label();
+            this.textBoxGotoAbove = new STROOP.BetterTextbox();
+            this.groupBoxShowOverlay = new System.Windows.Forms.GroupBox();
+            this.checkBoxShowOverlayCameraHackObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayChildObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayParentObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayCeilingObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayWallObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayFloorObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayUsedObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayInteractionObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayCameraObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayClosestObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayStoodOnObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayHeldObject = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.checkBoxUseRomHack = new System.Windows.Forms.CheckBox();
+            this.tabPageMemory = new System.Windows.Forms.TabPage();
+            this.splitContainerMemory = new STROOP.BetterSplitContainer();
+            this.comboBoxMemoryTypes = new System.Windows.Forms.ComboBox();
+            this.richTextBoxMemoryValues = new STROOP.Controls.RichTextBoxEx();
+            this.checkBoxMemoryObj = new System.Windows.Forms.CheckBox();
+            this.checkBoxMemoryHex = new System.Windows.Forms.CheckBox();
+            this.checkBoxMemoryRelativeAddresses = new System.Windows.Forms.CheckBox();
+            this.checkBoxMemoryLittleEndian = new System.Windows.Forms.CheckBox();
+            this.checkBoxMemoryUpdateContinuously = new System.Windows.Forms.CheckBox();
+            this.richTextBoxMemoryAddresses = new STROOP.Controls.RichTextBoxEx();
+            this.textBoxMemoryObjAddress = new STROOP.BetterTextbox();
+            this.labelMemoryObjAddress = new System.Windows.Forms.Label();
+            this.watchVariablePanelMemory = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPagePu = new System.Windows.Forms.TabPage();
             this.splitContainerPu = new STROOP.BetterSplitContainer();
             this.groupBoxMarioPu = new System.Windows.Forms.GroupBox();
@@ -923,40 +941,28 @@ namespace STROOP
             this.buttonGfxRefresh = new System.Windows.Forms.Button();
             this.watchVariablePanelGfx = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.richTextBoxGfx = new System.Windows.Forms.RichTextBox();
-            this.tabPageDisassembly = new System.Windows.Forms.TabPage();
-            this.textBoxDisAddress = new System.Windows.Forms.TextBox();
-            this.buttonDisMore = new System.Windows.Forms.Button();
-            this.buttonDisGo = new System.Windows.Forms.Button();
-            this.labelDisStart = new System.Windows.Forms.Label();
-            this.richTextBoxDissasembly = new STROOP.Controls.RichTextBoxEx();
-            this.tabPageDecompiler = new System.Windows.Forms.TabPage();
-            this.buttonDecompilerBack = new System.Windows.Forms.Button();
-            this.buttonDecompilerNext = new System.Windows.Forms.Button();
-            this.textBoxDecompilerAddress = new System.Windows.Forms.TextBox();
-            this.buttonDecompilerDecompile = new System.Windows.Forms.Button();
-            this.labelDecompilerAddress = new System.Windows.Forms.Label();
-            this.splitContainerDecompiler = new STROOP.BetterSplitContainer();
-            this.treeViewDecompile = new System.Windows.Forms.TreeView();
-            this.decompilerViewHost = new System.Windows.Forms.Integration.ElementHost();
-            this.decompilerView = new STROOP.Controls.DecompilerView();
-            this.tabPageScripts = new System.Windows.Forms.TabPage();
-            this.buttonScriptGo = new System.Windows.Forms.Button();
-            this.textBoxScriptAddress = new System.Windows.Forms.TextBox();
-            this.labelScriptAddress = new System.Windows.Forms.Label();
-            this.richTextBoxExScript = new STROOP.Controls.RichTextBoxEx();
-            this.tabPageMemory = new System.Windows.Forms.TabPage();
-            this.splitContainerMemory = new STROOP.BetterSplitContainer();
-            this.comboBoxMemoryTypes = new System.Windows.Forms.ComboBox();
-            this.richTextBoxMemoryValues = new STROOP.Controls.RichTextBoxEx();
-            this.checkBoxMemoryObj = new System.Windows.Forms.CheckBox();
-            this.checkBoxMemoryHex = new System.Windows.Forms.CheckBox();
-            this.checkBoxMemoryRelativeAddresses = new System.Windows.Forms.CheckBox();
-            this.checkBoxMemoryLittleEndian = new System.Windows.Forms.CheckBox();
-            this.checkBoxMemoryUpdateContinuously = new System.Windows.Forms.CheckBox();
-            this.richTextBoxMemoryAddresses = new STROOP.Controls.RichTextBoxEx();
-            this.textBoxMemoryObjAddress = new STROOP.BetterTextbox();
-            this.labelMemoryObjAddress = new System.Windows.Forms.Label();
-            this.watchVariablePanelMemory = new STROOP.Controls.WatchVariableFlowLayoutPanel();
+            this.tabPageDebug = new System.Windows.Forms.TabPage();
+            this.splitContainerDebug = new STROOP.BetterSplitContainer();
+            this.panelDebugBorder = new System.Windows.Forms.Panel();
+            this.pictureBoxDebug = new STROOP.Controls.IntPictureBox();
+            this.groupBoxMiscDebug = new System.Windows.Forms.GroupBox();
+            this.checkBoxFreeMovement = new System.Windows.Forms.CheckBox();
+            this.checkBoxSpawnMode = new System.Windows.Forms.CheckBox();
+            this.checkBoxStageSelect = new System.Windows.Forms.CheckBox();
+            this.checkBoxClassicMode = new System.Windows.Forms.CheckBox();
+            this.groupBoxResourceMeter = new System.Windows.Forms.GroupBox();
+            this.radioButtonResourceMeterOff = new System.Windows.Forms.RadioButton();
+            this.radioButtonResourceMeter1 = new System.Windows.Forms.RadioButton();
+            this.radioButtonResourceMeter2 = new System.Windows.Forms.RadioButton();
+            this.groupBoxAdvancedMode = new System.Windows.Forms.GroupBox();
+            this.radioButtonAdvancedModeOff = new System.Windows.Forms.RadioButton();
+            this.radioButtonAdvancedModeEnemyInfo = new System.Windows.Forms.RadioButton();
+            this.radioButtonAdvancedModeObjectCounter = new System.Windows.Forms.RadioButton();
+            this.radioButtonAdvancedModeEffectInfo = new System.Windows.Forms.RadioButton();
+            this.radioButtonAdvancedModeCheckInfo = new System.Windows.Forms.RadioButton();
+            this.radioButtonAdvancedModeStageInfo = new System.Windows.Forms.RadioButton();
+            this.radioButtonAdvancedModeMapInfo = new System.Windows.Forms.RadioButton();
+            this.watchVariablePanelDebug = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageHacks = new System.Windows.Forms.TabPage();
             this.splitContainerHacks = new STROOP.BetterSplitContainer();
             this.groupBoxHackRam = new System.Windows.Forms.GroupBox();
@@ -1080,52 +1086,67 @@ namespace STROOP
             this.buttonVarHackSaveVars = new System.Windows.Forms.Button();
             this.buttonVarHackClearVars = new System.Windows.Forms.Button();
             this.varHackPanel = new STROOP.Controls.VarHackFlowLayoutPanel();
-            this.tabPageOptions = new System.Windows.Forms.TabPage();
-            this.groupBoxPositionControllerRelativeAngle = new System.Windows.Forms.GroupBox();
-            this.textBoxPositionControllerRelativeAngleCustom = new STROOP.BetterTextbox();
-            this.radioButtonPositionControllerRelativeAngleMario = new System.Windows.Forms.RadioButton();
-            this.radioButtonPositionControllerRelativeAngleRecommended = new System.Windows.Forms.RadioButton();
-            this.radioButtonPositionControllerRelativeAngleCustom = new System.Windows.Forms.RadioButton();
-            this.groupBoxOptionsSavedSettings = new System.Windows.Forms.GroupBox();
-            this.buttonOptionsResetSavedSettings = new System.Windows.Forms.Button();
-            this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
-            this.checkBoxMoveCamWithPu = new System.Windows.Forms.CheckBox();
-            this.checkBoxNeutralizeTrianglesWith21 = new System.Windows.Forms.CheckBox();
-            this.checkBoxScaleDiagonalPositionControllerButtons = new System.Windows.Forms.CheckBox();
-            this.checkBoxOptionsUseInGameTrigForAngleLogic = new System.Windows.Forms.CheckBox();
-            this.checkBoxDontRoundValuesToZero = new System.Windows.Forms.CheckBox();
-            this.checkBoxExcludeDustForClosestObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine = new System.Windows.Forms.CheckBox();
-            this.groupBoxFPS = new System.Windows.Forms.GroupBox();
-            this.betterTextboxFPS = new STROOP.BetterTextbox();
-            this.groupBoxGotoRetrieveOffsets = new System.Windows.Forms.GroupBox();
-            this.labelRetrieveInfrontSuffix = new System.Windows.Forms.Label();
-            this.labelRetrieveInfrontPrefix = new System.Windows.Forms.Label();
-            this.textBoxRetrieveInfront = new STROOP.BetterTextbox();
-            this.labelRetrieveAboveSuffix = new System.Windows.Forms.Label();
-            this.labelRetrieveAbovePrefix = new System.Windows.Forms.Label();
-            this.textBoxRetrieveAbove = new STROOP.BetterTextbox();
-            this.labelGotoInfrontSuffix = new System.Windows.Forms.Label();
-            this.labelGotoInfrontPrefix = new System.Windows.Forms.Label();
-            this.textBoxGotoInfront = new STROOP.BetterTextbox();
-            this.labelGotoAboveSuffix = new System.Windows.Forms.Label();
-            this.labelGotoAbovePrefix = new System.Windows.Forms.Label();
-            this.textBoxGotoAbove = new STROOP.BetterTextbox();
-            this.groupBoxShowOverlay = new System.Windows.Forms.GroupBox();
-            this.checkBoxShowOverlayCameraHackObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayChildObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayParentObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayCeilingObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayWallObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayFloorObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayUsedObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayInteractionObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayCameraObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayClosestObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayStoodOnObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayHeldObject = new System.Windows.Forms.CheckBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.checkBoxUseRomHack = new System.Windows.Forms.CheckBox();
+            this.tabPageCoin = new System.Windows.Forms.TabPage();
+            this.splitContainerCoin = new STROOP.BetterSplitContainer();
+            this.buttonCoinCalculate = new System.Windows.Forms.Button();
+            this.buttonCoinClear = new System.Windows.Forms.Button();
+            this.groupBoxCoinFilter = new System.Windows.Forms.GroupBox();
+            this.textBoxCoinFilterAngleMin = new STROOP.BetterTextbox();
+            this.textBoxCoinFilterAngleMax = new STROOP.BetterTextbox();
+            this.labelCoinFilterHSpeedFrom = new System.Windows.Forms.Label();
+            this.textBoxCoinFilterVSpeedMax = new STROOP.BetterTextbox();
+            this.labelCoinFilterMin = new System.Windows.Forms.Label();
+            this.labelCoinFilterMax = new System.Windows.Forms.Label();
+            this.textBoxCoinFilterVSpeedMin = new STROOP.BetterTextbox();
+            this.labelCoinFilterHSpeedTo = new System.Windows.Forms.Label();
+            this.textBoxCoinFilterHSpeedMax = new STROOP.BetterTextbox();
+            this.labelCoinFilterVSpeedFrom = new System.Windows.Forms.Label();
+            this.labelCoinFilterVSpeedTo = new System.Windows.Forms.Label();
+            this.textBoxCoinFilterHSpeedMin = new STROOP.BetterTextbox();
+            this.labelCoinFilterAngleFrom = new System.Windows.Forms.Label();
+            this.labelCoinFilterAngleTo = new System.Windows.Forms.Label();
+            this.textBoxCoinParamOrder = new STROOP.BetterTextbox();
+            this.textBoxCoinVSpeedOffset = new STROOP.BetterTextbox();
+            this.textBoxCoinVSpeedScale = new STROOP.BetterTextbox();
+            this.textBoxCoinStartingRngIndex = new STROOP.BetterTextbox();
+            this.textBoxCoinHSpeedScale = new STROOP.BetterTextbox();
+            this.labelCoinVSpeedRange = new System.Windows.Forms.Label();
+            this.labelCoinParamOrder = new System.Windows.Forms.Label();
+            this.labelCoinTableEntries = new System.Windows.Forms.Label();
+            this.labelCoinHSpeedRange = new System.Windows.Forms.Label();
+            this.labelCoinVSpeedOffset = new System.Windows.Forms.Label();
+            this.labelCoinStartingRngIndex = new System.Windows.Forms.Label();
+            this.labelCoinVSpeedScale = new System.Windows.Forms.Label();
+            this.labelCoinHSpeedScale = new System.Windows.Forms.Label();
+            this.listBoxCoinObjects = new System.Windows.Forms.ListBox();
+            this.dataGridViewCoin = new System.Windows.Forms.DataGridView();
+            this.rngIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rngValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rngToGo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coinHSpeed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coinVSpeed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coinAngle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageDisassembly = new System.Windows.Forms.TabPage();
+            this.textBoxDisAddress = new System.Windows.Forms.TextBox();
+            this.buttonDisMore = new System.Windows.Forms.Button();
+            this.buttonDisGo = new System.Windows.Forms.Button();
+            this.labelDisStart = new System.Windows.Forms.Label();
+            this.richTextBoxDissasembly = new STROOP.Controls.RichTextBoxEx();
+            this.tabPageDecompiler = new System.Windows.Forms.TabPage();
+            this.buttonDecompilerBack = new System.Windows.Forms.Button();
+            this.buttonDecompilerNext = new System.Windows.Forms.Button();
+            this.textBoxDecompilerAddress = new System.Windows.Forms.TextBox();
+            this.buttonDecompilerDecompile = new System.Windows.Forms.Button();
+            this.labelDecompilerAddress = new System.Windows.Forms.Label();
+            this.splitContainerDecompiler = new STROOP.BetterSplitContainer();
+            this.treeViewDecompile = new System.Windows.Forms.TreeView();
+            this.decompilerViewHost = new System.Windows.Forms.Integration.ElementHost();
+            this.decompilerView = new STROOP.Controls.DecompilerView();
+            this.tabPageScripts = new System.Windows.Forms.TabPage();
+            this.buttonScriptGo = new System.Windows.Forms.Button();
+            this.textBoxScriptAddress = new System.Windows.Forms.TextBox();
+            this.labelScriptAddress = new System.Windows.Forms.Label();
+            this.richTextBoxExScript = new STROOP.Controls.RichTextBoxEx();
             this.tabPageTesting = new System.Windows.Forms.TabPage();
             this.groupBoxTriRooms = new System.Windows.Forms.GroupBox();
             this.textBoxTriRoomsToValue = new STROOP.BetterTextbox();
@@ -1293,27 +1314,11 @@ namespace STROOP
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.comboBoxYawSigned = new System.Windows.Forms.ComboBox();
-            this.tabPageMap2 = new System.Windows.Forms.TabPage();
-            this.splitContainerMap2 = new STROOP.BetterSplitContainer();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
-            this.glControl1 = new OpenTK.GLControl();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.betterTextbox1 = new STROOP.BetterTextbox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.betterTextbox2 = new STROOP.BetterTextbox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.label8 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1343,25 +1348,6 @@ namespace STROOP
             this.panelMarioBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMario)).BeginInit();
             this.groupBoxMarioPos.SuspendLayout();
-            this.tabPageM64.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerM64)).BeginInit();
-            this.splitContainerM64.Panel1.SuspendLayout();
-            this.splitContainerM64.Panel2.SuspendLayout();
-            this.splitContainerM64.SuspendLayout();
-            this.groupBoxM64QuickDuplication.SuspendLayout();
-            this.groupBoxM64Selection.SuspendLayout();
-            this.tabControlM64Details.SuspendLayout();
-            this.tabPageM64Inputs.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewM64Inputs)).BeginInit();
-            this.tabPageM64Header.SuspendLayout();
-            this.tabPageM64Stats.SuspendLayout();
-            this.tabPageCoin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCoin)).BeginInit();
-            this.splitContainerCoin.Panel1.SuspendLayout();
-            this.splitContainerCoin.Panel2.SuspendLayout();
-            this.splitContainerCoin.SuspendLayout();
-            this.groupBoxCoinFilter.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCoin)).BeginInit();
             this.tabPageHud.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerHud)).BeginInit();
             this.splitContainerHud.Panel1.SuspendLayout();
@@ -1385,13 +1371,7 @@ namespace STROOP
             this.splitContainerTriangles.SuspendLayout();
             this.groupBoxTrianglePos.SuspendLayout();
             this.groupBoxTriangleNormal.SuspendLayout();
-            this.tabPageWater.SuspendLayout();
             this.tabPageActions.SuspendLayout();
-            this.tabPageInput.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerInput)).BeginInit();
-            this.splitContainerInput.Panel1.SuspendLayout();
-            this.splitContainerInput.Panel2.SuspendLayout();
-            this.splitContainerInput.SuspendLayout();
             this.tabPageFile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerFile)).BeginInit();
             this.splitContainerFile.Panel1.SuspendLayout();
@@ -1554,6 +1534,12 @@ namespace STROOP
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationSSLGround)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationSnowman)).BeginInit();
             this.groupBoxFile.SuspendLayout();
+            this.tabPageInput.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerInput)).BeginInit();
+            this.splitContainerInput.Panel1.SuspendLayout();
+            this.splitContainerInput.Panel2.SuspendLayout();
+            this.splitContainerInput.SuspendLayout();
+            this.tabPageWater.SuspendLayout();
             this.tabPageMisc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMisc)).BeginInit();
             this.splitContainerMisc.Panel1.SuspendLayout();
@@ -1562,6 +1548,18 @@ namespace STROOP
             this.groupBoxRNGIndexTester.SuspendLayout();
             this.panelMiscBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).BeginInit();
+            this.tabPageM64.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerM64)).BeginInit();
+            this.splitContainerM64.Panel1.SuspendLayout();
+            this.splitContainerM64.Panel2.SuspendLayout();
+            this.splitContainerM64.SuspendLayout();
+            this.groupBoxM64QuickDuplication.SuspendLayout();
+            this.groupBoxM64Selection.SuspendLayout();
+            this.tabControlM64Details.SuspendLayout();
+            this.tabPageM64Inputs.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewM64Inputs)).BeginInit();
+            this.tabPageM64Header.SuspendLayout();
+            this.tabPageM64Stats.SuspendLayout();
             this.tabPageCustom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerCustom)).BeginInit();
             this.splitContainerCustom.Panel1.SuspendLayout();
@@ -1584,16 +1582,6 @@ namespace STROOP
             this.splitContainerTasTable.Panel2.SuspendLayout();
             this.splitContainerTasTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTas)).BeginInit();
-            this.tabPageDebug.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDebug)).BeginInit();
-            this.splitContainerDebug.Panel1.SuspendLayout();
-            this.splitContainerDebug.Panel2.SuspendLayout();
-            this.splitContainerDebug.SuspendLayout();
-            this.panelDebugBorder.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).BeginInit();
-            this.groupBoxMiscDebug.SuspendLayout();
-            this.groupBoxResourceMeter.SuspendLayout();
-            this.groupBoxAdvancedMode.SuspendLayout();
             this.tabPageMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap)).BeginInit();
             this.splitContainerMap.Panel1.SuspendLayout();
@@ -1610,6 +1598,23 @@ namespace STROOP
             this.groupBoxMapControlsCenter.SuspendLayout();
             this.groupBoxMapControlsScale.SuspendLayout();
             this.tabPageMap3D.SuspendLayout();
+            this.tabPageMap2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap2)).BeginInit();
+            this.splitContainerMap2.Panel1.SuspendLayout();
+            this.splitContainerMap2.Panel2.SuspendLayout();
+            this.splitContainerMap2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.tabPageOptions.SuspendLayout();
+            this.groupBoxPositionControllerRelativeAngle.SuspendLayout();
+            this.groupBoxOptionsSavedSettings.SuspendLayout();
+            this.groupBoxFPS.SuspendLayout();
+            this.groupBoxGotoRetrieveOffsets.SuspendLayout();
+            this.groupBoxShowOverlay.SuspendLayout();
+            this.tabPageMemory.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMemory)).BeginInit();
+            this.splitContainerMemory.Panel1.SuspendLayout();
+            this.splitContainerMemory.Panel2.SuspendLayout();
+            this.splitContainerMemory.SuspendLayout();
             this.tabPagePu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerPu)).BeginInit();
             this.splitContainerPu.Panel1.SuspendLayout();
@@ -1650,18 +1655,16 @@ namespace STROOP
             this.splitContainerGfxMiddle.Panel1.SuspendLayout();
             this.splitContainerGfxMiddle.Panel2.SuspendLayout();
             this.splitContainerGfxMiddle.SuspendLayout();
-            this.tabPageDisassembly.SuspendLayout();
-            this.tabPageDecompiler.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDecompiler)).BeginInit();
-            this.splitContainerDecompiler.Panel1.SuspendLayout();
-            this.splitContainerDecompiler.Panel2.SuspendLayout();
-            this.splitContainerDecompiler.SuspendLayout();
-            this.tabPageScripts.SuspendLayout();
-            this.tabPageMemory.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMemory)).BeginInit();
-            this.splitContainerMemory.Panel1.SuspendLayout();
-            this.splitContainerMemory.Panel2.SuspendLayout();
-            this.splitContainerMemory.SuspendLayout();
+            this.tabPageDebug.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDebug)).BeginInit();
+            this.splitContainerDebug.Panel1.SuspendLayout();
+            this.splitContainerDebug.Panel2.SuspendLayout();
+            this.splitContainerDebug.SuspendLayout();
+            this.panelDebugBorder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).BeginInit();
+            this.groupBoxMiscDebug.SuspendLayout();
+            this.groupBoxResourceMeter.SuspendLayout();
+            this.groupBoxAdvancedMode.SuspendLayout();
             this.tabPageHacks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerHacks)).BeginInit();
             this.splitContainerHacks.Panel1.SuspendLayout();
@@ -1685,12 +1688,20 @@ namespace STROOP
             this.splitContainerVarHack.Panel1.SuspendLayout();
             this.splitContainerVarHack.Panel2.SuspendLayout();
             this.splitContainerVarHack.SuspendLayout();
-            this.tabPageOptions.SuspendLayout();
-            this.groupBoxPositionControllerRelativeAngle.SuspendLayout();
-            this.groupBoxOptionsSavedSettings.SuspendLayout();
-            this.groupBoxFPS.SuspendLayout();
-            this.groupBoxGotoRetrieveOffsets.SuspendLayout();
-            this.groupBoxShowOverlay.SuspendLayout();
+            this.tabPageCoin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCoin)).BeginInit();
+            this.splitContainerCoin.Panel1.SuspendLayout();
+            this.splitContainerCoin.Panel2.SuspendLayout();
+            this.splitContainerCoin.SuspendLayout();
+            this.groupBoxCoinFilter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCoin)).BeginInit();
+            this.tabPageDisassembly.SuspendLayout();
+            this.tabPageDecompiler.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDecompiler)).BeginInit();
+            this.splitContainerDecompiler.Panel1.SuspendLayout();
+            this.splitContainerDecompiler.Panel2.SuspendLayout();
+            this.splitContainerDecompiler.SuspendLayout();
+            this.tabPageScripts.SuspendLayout();
             this.tabPageTesting.SuspendLayout();
             this.groupBoxTriRooms.SuspendLayout();
             this.groupBoxScuttlebugStuff.SuspendLayout();
@@ -1705,12 +1716,7 @@ namespace STROOP
             this.groupBoxRecording.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
-            this.tabPageMap2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap2)).BeginInit();
-            this.splitContainerMap2.Panel1.SuspendLayout();
-            this.splitContainerMap2.Panel2.SuspendLayout();
-            this.splitContainerMap2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -3551,1214 +3557,6 @@ namespace STROOP
             this.WatchVariablePanelMario.Size = new System.Drawing.Size(704, 461);
             this.WatchVariablePanelMario.TabIndex = 1;
             // 
-            // tabPageM64
-            // 
-            this.tabPageM64.Controls.Add(this.splitContainerM64);
-            this.tabPageM64.Location = new System.Drawing.Point(4, 22);
-            this.tabPageM64.Name = "tabPageM64";
-            this.tabPageM64.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageM64.Size = new System.Drawing.Size(915, 463);
-            this.tabPageM64.TabIndex = 28;
-            this.tabPageM64.Text = "M64";
-            // 
-            // splitContainerM64
-            // 
-            this.splitContainerM64.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainerM64.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerM64.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerM64.Location = new System.Drawing.Point(3, 3);
-            this.splitContainerM64.Margin = new System.Windows.Forms.Padding(0);
-            this.splitContainerM64.Name = "splitContainerM64";
-            // 
-            // splitContainerM64.Panel1
-            // 
-            this.splitContainerM64.Panel1.AutoScroll = true;
-            this.splitContainerM64.Panel1.Controls.Add(this.checkBoxMaxOutViCount);
-            this.splitContainerM64.Panel1.Controls.Add(this.comboBoxM64FrameInputRelation);
-            this.splitContainerM64.Panel1.Controls.Add(this.textBoxM64PasteMultiplicity);
-            this.splitContainerM64.Panel1.Controls.Add(this.listBoxM64Copied);
-            this.splitContainerM64.Panel1.Controls.Add(this.groupBoxM64QuickDuplication);
-            this.splitContainerM64.Panel1.Controls.Add(this.groupBoxM64Selection);
-            this.splitContainerM64.Panel1.Controls.Add(this.labelM64PasteMultiplicity);
-            this.splitContainerM64.Panel1.Controls.Add(this.labelM64NumInputsValue);
-            this.splitContainerM64.Panel1.Controls.Add(this.labelM64OnValue);
-            this.splitContainerM64.Panel1.Controls.Add(this.labelM64NumInputsLabel);
-            this.splitContainerM64.Panel1.Controls.Add(this.labelM64FileName);
-            this.splitContainerM64.Panel1.Controls.Add(this.labelM64FileLabel);
-            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Goto);
-            this.splitContainerM64.Panel1.Controls.Add(this.textBoxM64OnValue);
-            this.splitContainerM64.Panel1.Controls.Add(this.textBoxM64Goto);
-            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64PasteOverwrite);
-            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64PasteInsert);
-            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64CopyInputRange);
-            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64TurnOffCells);
-            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64TurnOffInputRange);
-            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64TurnOffRowRange);
-            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64TurnOnCells);
-            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64TurnOnInputRange);
-            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64DeleteRowRange);
-            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64CopyRowRange);
-            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64SetJpHeader);
-            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64SetUsHeader);
-            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Close);
-            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Open);
-            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64SaveAs);
-            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64ResetChanges);
-            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Save);
-            this.splitContainerM64.Panel1MinSize = 0;
-            // 
-            // splitContainerM64.Panel2
-            // 
-            this.splitContainerM64.Panel2.Controls.Add(this.labelM64ProgressBar);
-            this.splitContainerM64.Panel2.Controls.Add(this.progressBarM64);
-            this.splitContainerM64.Panel2.Controls.Add(this.tabControlM64Details);
-            this.splitContainerM64.Panel2MinSize = 0;
-            this.splitContainerM64.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerM64.SplitterDistance = 363;
-            this.splitContainerM64.SplitterWidth = 1;
-            this.splitContainerM64.TabIndex = 34;
-            // 
-            // checkBoxMaxOutViCount
-            // 
-            this.checkBoxMaxOutViCount.AutoSize = true;
-            this.checkBoxMaxOutViCount.Checked = true;
-            this.checkBoxMaxOutViCount.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMaxOutViCount.Location = new System.Drawing.Point(212, 71);
-            this.checkBoxMaxOutViCount.Name = "checkBoxMaxOutViCount";
-            this.checkBoxMaxOutViCount.Size = new System.Drawing.Size(110, 17);
-            this.checkBoxMaxOutViCount.TabIndex = 36;
-            this.checkBoxMaxOutViCount.Text = "Max Out VI Count";
-            this.checkBoxMaxOutViCount.UseVisualStyleBackColor = true;
-            // 
-            // comboBoxM64FrameInputRelation
-            // 
-            this.comboBoxM64FrameInputRelation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxM64FrameInputRelation.Location = new System.Drawing.Point(208, 44);
-            this.comboBoxM64FrameInputRelation.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxM64FrameInputRelation.Name = "comboBoxM64FrameInputRelation";
-            this.comboBoxM64FrameInputRelation.Size = new System.Drawing.Size(134, 21);
-            this.comboBoxM64FrameInputRelation.TabIndex = 35;
-            // 
-            // textBoxM64PasteMultiplicity
-            // 
-            this.textBoxM64PasteMultiplicity.Location = new System.Drawing.Point(77, 426);
-            this.textBoxM64PasteMultiplicity.Name = "textBoxM64PasteMultiplicity";
-            this.textBoxM64PasteMultiplicity.Size = new System.Drawing.Size(63, 20);
-            this.textBoxM64PasteMultiplicity.TabIndex = 34;
-            this.textBoxM64PasteMultiplicity.Text = "1";
-            this.textBoxM64PasteMultiplicity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // listBoxM64Copied
-            // 
-            this.listBoxM64Copied.FormattingEnabled = true;
-            this.listBoxM64Copied.Location = new System.Drawing.Point(8, 322);
-            this.listBoxM64Copied.Name = "listBoxM64Copied";
-            this.listBoxM64Copied.Size = new System.Drawing.Size(162, 56);
-            this.listBoxM64Copied.TabIndex = 16;
-            // 
-            // groupBoxM64QuickDuplication
-            // 
-            this.groupBoxM64QuickDuplication.Controls.Add(this.buttonM64QuickDuplicationDuplicate);
-            this.groupBoxM64QuickDuplication.Controls.Add(this.textBoxM64QuickDuplicationTotalIterations);
-            this.groupBoxM64QuickDuplication.Controls.Add(this.textBoxM64QuickDuplication2ndIterationStart);
-            this.groupBoxM64QuickDuplication.Controls.Add(this.textBoxM64QuickDuplication1stIterationStart);
-            this.groupBoxM64QuickDuplication.Controls.Add(this.labelM64QuickDuplicationTotalIterations);
-            this.groupBoxM64QuickDuplication.Controls.Add(this.labelM64QuickDuplication2ndIterationStart);
-            this.groupBoxM64QuickDuplication.Controls.Add(this.labelM64QuickDuplication1stIterationStart);
-            this.groupBoxM64QuickDuplication.Location = new System.Drawing.Point(176, 283);
-            this.groupBoxM64QuickDuplication.Name = "groupBoxM64QuickDuplication";
-            this.groupBoxM64QuickDuplication.Size = new System.Drawing.Size(167, 128);
-            this.groupBoxM64QuickDuplication.TabIndex = 15;
-            this.groupBoxM64QuickDuplication.TabStop = false;
-            this.groupBoxM64QuickDuplication.Text = "Quick Duplication";
-            // 
-            // buttonM64QuickDuplicationDuplicate
-            // 
-            this.buttonM64QuickDuplicationDuplicate.Location = new System.Drawing.Point(15, 93);
-            this.buttonM64QuickDuplicationDuplicate.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64QuickDuplicationDuplicate.Name = "buttonM64QuickDuplicationDuplicate";
-            this.buttonM64QuickDuplicationDuplicate.Size = new System.Drawing.Size(132, 22);
-            this.buttonM64QuickDuplicationDuplicate.TabIndex = 35;
-            this.buttonM64QuickDuplicationDuplicate.Text = "Duplicate";
-            this.buttonM64QuickDuplicationDuplicate.UseVisualStyleBackColor = true;
-            // 
-            // textBoxM64QuickDuplicationTotalIterations
-            // 
-            this.textBoxM64QuickDuplicationTotalIterations.Location = new System.Drawing.Point(79, 66);
-            this.textBoxM64QuickDuplicationTotalIterations.Name = "textBoxM64QuickDuplicationTotalIterations";
-            this.textBoxM64QuickDuplicationTotalIterations.Size = new System.Drawing.Size(81, 20);
-            this.textBoxM64QuickDuplicationTotalIterations.TabIndex = 34;
-            this.textBoxM64QuickDuplicationTotalIterations.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxM64QuickDuplication2ndIterationStart
-            // 
-            this.textBoxM64QuickDuplication2ndIterationStart.Location = new System.Drawing.Point(79, 42);
-            this.textBoxM64QuickDuplication2ndIterationStart.Name = "textBoxM64QuickDuplication2ndIterationStart";
-            this.textBoxM64QuickDuplication2ndIterationStart.Size = new System.Drawing.Size(81, 20);
-            this.textBoxM64QuickDuplication2ndIterationStart.TabIndex = 34;
-            this.textBoxM64QuickDuplication2ndIterationStart.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxM64QuickDuplication1stIterationStart
-            // 
-            this.textBoxM64QuickDuplication1stIterationStart.Location = new System.Drawing.Point(79, 18);
-            this.textBoxM64QuickDuplication1stIterationStart.Name = "textBoxM64QuickDuplication1stIterationStart";
-            this.textBoxM64QuickDuplication1stIterationStart.Size = new System.Drawing.Size(81, 20);
-            this.textBoxM64QuickDuplication1stIterationStart.TabIndex = 34;
-            this.textBoxM64QuickDuplication1stIterationStart.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelM64QuickDuplicationTotalIterations
-            // 
-            this.labelM64QuickDuplicationTotalIterations.AutoSize = true;
-            this.labelM64QuickDuplicationTotalIterations.Location = new System.Drawing.Point(6, 69);
-            this.labelM64QuickDuplicationTotalIterations.Name = "labelM64QuickDuplicationTotalIterations";
-            this.labelM64QuickDuplicationTotalIterations.Size = new System.Drawing.Size(57, 13);
-            this.labelM64QuickDuplicationTotalIterations.TabIndex = 14;
-            this.labelM64QuickDuplicationTotalIterations.Text = "Total Iters:";
-            // 
-            // labelM64QuickDuplication2ndIterationStart
-            // 
-            this.labelM64QuickDuplication2ndIterationStart.AutoSize = true;
-            this.labelM64QuickDuplication2ndIterationStart.Location = new System.Drawing.Point(6, 45);
-            this.labelM64QuickDuplication2ndIterationStart.Name = "labelM64QuickDuplication2ndIterationStart";
-            this.labelM64QuickDuplication2ndIterationStart.Size = new System.Drawing.Size(71, 13);
-            this.labelM64QuickDuplication2ndIterationStart.TabIndex = 14;
-            this.labelM64QuickDuplication2ndIterationStart.Text = "2nd Iter Start:";
-            // 
-            // labelM64QuickDuplication1stIterationStart
-            // 
-            this.labelM64QuickDuplication1stIterationStart.AutoSize = true;
-            this.labelM64QuickDuplication1stIterationStart.Location = new System.Drawing.Point(6, 21);
-            this.labelM64QuickDuplication1stIterationStart.Name = "labelM64QuickDuplication1stIterationStart";
-            this.labelM64QuickDuplication1stIterationStart.Size = new System.Drawing.Size(67, 13);
-            this.labelM64QuickDuplication1stIterationStart.TabIndex = 14;
-            this.labelM64QuickDuplication1stIterationStart.Text = "1st Iter Start:";
-            // 
-            // groupBoxM64Selection
-            // 
-            this.groupBoxM64Selection.Controls.Add(this.textBoxM64SelectionInputs);
-            this.groupBoxM64Selection.Controls.Add(this.textBoxM64SelectionEndFrame);
-            this.groupBoxM64Selection.Controls.Add(this.textBoxM64SelectionStartFrame);
-            this.groupBoxM64Selection.Controls.Add(this.labelM64SelectionInputs);
-            this.groupBoxM64Selection.Controls.Add(this.labelM64SelectionEndFrame);
-            this.groupBoxM64Selection.Controls.Add(this.labelM64SelectionStartFrame);
-            this.groupBoxM64Selection.Location = new System.Drawing.Point(3, 95);
-            this.groupBoxM64Selection.Name = "groupBoxM64Selection";
-            this.groupBoxM64Selection.Size = new System.Drawing.Size(167, 95);
-            this.groupBoxM64Selection.TabIndex = 15;
-            this.groupBoxM64Selection.TabStop = false;
-            this.groupBoxM64Selection.Text = "Selection Range";
-            // 
-            // textBoxM64SelectionInputs
-            // 
-            this.textBoxM64SelectionInputs.Location = new System.Drawing.Point(72, 66);
-            this.textBoxM64SelectionInputs.Name = "textBoxM64SelectionInputs";
-            this.textBoxM64SelectionInputs.Size = new System.Drawing.Size(88, 20);
-            this.textBoxM64SelectionInputs.TabIndex = 34;
-            this.textBoxM64SelectionInputs.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxM64SelectionEndFrame
-            // 
-            this.textBoxM64SelectionEndFrame.Location = new System.Drawing.Point(72, 42);
-            this.textBoxM64SelectionEndFrame.Name = "textBoxM64SelectionEndFrame";
-            this.textBoxM64SelectionEndFrame.Size = new System.Drawing.Size(88, 20);
-            this.textBoxM64SelectionEndFrame.TabIndex = 34;
-            this.textBoxM64SelectionEndFrame.Text = "0";
-            this.textBoxM64SelectionEndFrame.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxM64SelectionStartFrame
-            // 
-            this.textBoxM64SelectionStartFrame.Location = new System.Drawing.Point(72, 18);
-            this.textBoxM64SelectionStartFrame.Name = "textBoxM64SelectionStartFrame";
-            this.textBoxM64SelectionStartFrame.Size = new System.Drawing.Size(88, 20);
-            this.textBoxM64SelectionStartFrame.TabIndex = 34;
-            this.textBoxM64SelectionStartFrame.Text = "0";
-            this.textBoxM64SelectionStartFrame.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelM64SelectionInputs
-            // 
-            this.labelM64SelectionInputs.AutoSize = true;
-            this.labelM64SelectionInputs.Location = new System.Drawing.Point(6, 69);
-            this.labelM64SelectionInputs.Name = "labelM64SelectionInputs";
-            this.labelM64SelectionInputs.Size = new System.Drawing.Size(39, 13);
-            this.labelM64SelectionInputs.TabIndex = 14;
-            this.labelM64SelectionInputs.Text = "Inputs:";
-            // 
-            // labelM64SelectionEndFrame
-            // 
-            this.labelM64SelectionEndFrame.AutoSize = true;
-            this.labelM64SelectionEndFrame.Location = new System.Drawing.Point(6, 45);
-            this.labelM64SelectionEndFrame.Name = "labelM64SelectionEndFrame";
-            this.labelM64SelectionEndFrame.Size = new System.Drawing.Size(61, 13);
-            this.labelM64SelectionEndFrame.TabIndex = 14;
-            this.labelM64SelectionEndFrame.Text = "End Frame:";
-            // 
-            // labelM64SelectionStartFrame
-            // 
-            this.labelM64SelectionStartFrame.AutoSize = true;
-            this.labelM64SelectionStartFrame.Location = new System.Drawing.Point(6, 21);
-            this.labelM64SelectionStartFrame.Name = "labelM64SelectionStartFrame";
-            this.labelM64SelectionStartFrame.Size = new System.Drawing.Size(64, 13);
-            this.labelM64SelectionStartFrame.TabIndex = 14;
-            this.labelM64SelectionStartFrame.Text = "Start Frame:";
-            // 
-            // labelM64PasteMultiplicity
-            // 
-            this.labelM64PasteMultiplicity.AutoSize = true;
-            this.labelM64PasteMultiplicity.Location = new System.Drawing.Point(11, 429);
-            this.labelM64PasteMultiplicity.Name = "labelM64PasteMultiplicity";
-            this.labelM64PasteMultiplicity.Size = new System.Drawing.Size(58, 13);
-            this.labelM64PasteMultiplicity.TabIndex = 14;
-            this.labelM64PasteMultiplicity.Text = "Multiplicity:";
-            // 
-            // labelM64NumInputsValue
-            // 
-            this.labelM64NumInputsValue.AutoSize = true;
-            this.labelM64NumInputsValue.Location = new System.Drawing.Point(74, 24);
-            this.labelM64NumInputsValue.Name = "labelM64NumInputsValue";
-            this.labelM64NumInputsValue.Size = new System.Drawing.Size(13, 13);
-            this.labelM64NumInputsValue.TabIndex = 14;
-            this.labelM64NumInputsValue.Text = "0";
-            // 
-            // labelM64OnValue
-            // 
-            this.labelM64OnValue.AutoSize = true;
-            this.labelM64OnValue.Location = new System.Drawing.Point(277, 240);
-            this.labelM64OnValue.Name = "labelM64OnValue";
-            this.labelM64OnValue.Size = new System.Drawing.Size(54, 13);
-            this.labelM64OnValue.TabIndex = 14;
-            this.labelM64OnValue.Text = "On Value:";
-            // 
-            // labelM64NumInputsLabel
-            // 
-            this.labelM64NumInputsLabel.AutoSize = true;
-            this.labelM64NumInputsLabel.Location = new System.Drawing.Point(9, 24);
-            this.labelM64NumInputsLabel.Name = "labelM64NumInputsLabel";
-            this.labelM64NumInputsLabel.Size = new System.Drawing.Size(64, 13);
-            this.labelM64NumInputsLabel.TabIndex = 14;
-            this.labelM64NumInputsLabel.Text = "Num Inputs:";
-            // 
-            // labelM64FileName
-            // 
-            this.labelM64FileName.AutoSize = true;
-            this.labelM64FileName.Location = new System.Drawing.Point(33, 7);
-            this.labelM64FileName.Name = "labelM64FileName";
-            this.labelM64FileName.Size = new System.Drawing.Size(87, 13);
-            this.labelM64FileName.TabIndex = 14;
-            this.labelM64FileName.Text = "(No File Opened)";
-            // 
-            // labelM64FileLabel
-            // 
-            this.labelM64FileLabel.AutoSize = true;
-            this.labelM64FileLabel.Location = new System.Drawing.Point(9, 7);
-            this.labelM64FileLabel.Name = "labelM64FileLabel";
-            this.labelM64FileLabel.Size = new System.Drawing.Size(26, 13);
-            this.labelM64FileLabel.TabIndex = 14;
-            this.labelM64FileLabel.Text = "File:";
-            // 
-            // buttonM64Goto
-            // 
-            this.buttonM64Goto.Location = new System.Drawing.Point(279, 93);
-            this.buttonM64Goto.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64Goto.Name = "buttonM64Goto";
-            this.buttonM64Goto.Size = new System.Drawing.Size(63, 22);
-            this.buttonM64Goto.TabIndex = 12;
-            this.buttonM64Goto.Text = "Goto";
-            this.buttonM64Goto.UseVisualStyleBackColor = true;
-            // 
-            // textBoxM64OnValue
-            // 
-            this.textBoxM64OnValue.Location = new System.Drawing.Point(273, 255);
-            this.textBoxM64OnValue.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxM64OnValue.Name = "textBoxM64OnValue";
-            this.textBoxM64OnValue.Size = new System.Drawing.Size(63, 20);
-            this.textBoxM64OnValue.TabIndex = 11;
-            this.textBoxM64OnValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxM64Goto
-            // 
-            this.textBoxM64Goto.Location = new System.Drawing.Point(212, 95);
-            this.textBoxM64Goto.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxM64Goto.Name = "textBoxM64Goto";
-            this.textBoxM64Goto.Size = new System.Drawing.Size(63, 20);
-            this.textBoxM64Goto.TabIndex = 11;
-            this.textBoxM64Goto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // buttonM64PasteOverwrite
-            // 
-            this.buttonM64PasteOverwrite.Location = new System.Drawing.Point(91, 383);
-            this.buttonM64PasteOverwrite.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64PasteOverwrite.Name = "buttonM64PasteOverwrite";
-            this.buttonM64PasteOverwrite.Size = new System.Drawing.Size(79, 38);
-            this.buttonM64PasteOverwrite.TabIndex = 8;
-            this.buttonM64PasteOverwrite.Text = "Paste\r\nOverwrite";
-            this.buttonM64PasteOverwrite.UseVisualStyleBackColor = true;
-            // 
-            // buttonM64PasteInsert
-            // 
-            this.buttonM64PasteInsert.Location = new System.Drawing.Point(8, 383);
-            this.buttonM64PasteInsert.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64PasteInsert.Name = "buttonM64PasteInsert";
-            this.buttonM64PasteInsert.Size = new System.Drawing.Size(79, 38);
-            this.buttonM64PasteInsert.TabIndex = 8;
-            this.buttonM64PasteInsert.Text = "Paste\r\nInsert";
-            this.buttonM64PasteInsert.UseVisualStyleBackColor = true;
-            // 
-            // buttonM64CopyInputRange
-            // 
-            this.buttonM64CopyInputRange.Location = new System.Drawing.Point(91, 279);
-            this.buttonM64CopyInputRange.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64CopyInputRange.Name = "buttonM64CopyInputRange";
-            this.buttonM64CopyInputRange.Size = new System.Drawing.Size(79, 38);
-            this.buttonM64CopyInputRange.TabIndex = 8;
-            this.buttonM64CopyInputRange.Text = "Copy\r\nInput Range";
-            this.buttonM64CopyInputRange.UseVisualStyleBackColor = true;
-            // 
-            // buttonM64TurnOffCells
-            // 
-            this.buttonM64TurnOffCells.Location = new System.Drawing.Point(174, 195);
-            this.buttonM64TurnOffCells.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64TurnOffCells.Name = "buttonM64TurnOffCells";
-            this.buttonM64TurnOffCells.Size = new System.Drawing.Size(79, 38);
-            this.buttonM64TurnOffCells.TabIndex = 8;
-            this.buttonM64TurnOffCells.Text = "Turn Off\r\nCells";
-            this.buttonM64TurnOffCells.UseVisualStyleBackColor = true;
-            // 
-            // buttonM64TurnOffInputRange
-            // 
-            this.buttonM64TurnOffInputRange.Location = new System.Drawing.Point(91, 195);
-            this.buttonM64TurnOffInputRange.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64TurnOffInputRange.Name = "buttonM64TurnOffInputRange";
-            this.buttonM64TurnOffInputRange.Size = new System.Drawing.Size(79, 38);
-            this.buttonM64TurnOffInputRange.TabIndex = 8;
-            this.buttonM64TurnOffInputRange.Text = "Turn Off\r\nInput Range";
-            this.buttonM64TurnOffInputRange.UseVisualStyleBackColor = true;
-            // 
-            // buttonM64TurnOffRowRange
-            // 
-            this.buttonM64TurnOffRowRange.Location = new System.Drawing.Point(8, 195);
-            this.buttonM64TurnOffRowRange.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64TurnOffRowRange.Name = "buttonM64TurnOffRowRange";
-            this.buttonM64TurnOffRowRange.Size = new System.Drawing.Size(79, 38);
-            this.buttonM64TurnOffRowRange.TabIndex = 8;
-            this.buttonM64TurnOffRowRange.Text = "Turn Off\r\nRow Range";
-            this.buttonM64TurnOffRowRange.UseVisualStyleBackColor = true;
-            // 
-            // buttonM64TurnOnCells
-            // 
-            this.buttonM64TurnOnCells.Location = new System.Drawing.Point(174, 237);
-            this.buttonM64TurnOnCells.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64TurnOnCells.Name = "buttonM64TurnOnCells";
-            this.buttonM64TurnOnCells.Size = new System.Drawing.Size(79, 38);
-            this.buttonM64TurnOnCells.TabIndex = 8;
-            this.buttonM64TurnOnCells.Text = "Turn On\r\nCells";
-            this.buttonM64TurnOnCells.UseVisualStyleBackColor = true;
-            // 
-            // buttonM64TurnOnInputRange
-            // 
-            this.buttonM64TurnOnInputRange.Location = new System.Drawing.Point(91, 237);
-            this.buttonM64TurnOnInputRange.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64TurnOnInputRange.Name = "buttonM64TurnOnInputRange";
-            this.buttonM64TurnOnInputRange.Size = new System.Drawing.Size(79, 38);
-            this.buttonM64TurnOnInputRange.TabIndex = 8;
-            this.buttonM64TurnOnInputRange.Text = "Turn On\r\nInput Range";
-            this.buttonM64TurnOnInputRange.UseVisualStyleBackColor = true;
-            // 
-            // buttonM64DeleteRowRange
-            // 
-            this.buttonM64DeleteRowRange.Location = new System.Drawing.Point(8, 237);
-            this.buttonM64DeleteRowRange.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64DeleteRowRange.Name = "buttonM64DeleteRowRange";
-            this.buttonM64DeleteRowRange.Size = new System.Drawing.Size(79, 38);
-            this.buttonM64DeleteRowRange.TabIndex = 8;
-            this.buttonM64DeleteRowRange.Text = "Delete\r\nRow Range";
-            this.buttonM64DeleteRowRange.UseVisualStyleBackColor = true;
-            // 
-            // buttonM64CopyRowRange
-            // 
-            this.buttonM64CopyRowRange.Location = new System.Drawing.Point(8, 279);
-            this.buttonM64CopyRowRange.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64CopyRowRange.Name = "buttonM64CopyRowRange";
-            this.buttonM64CopyRowRange.Size = new System.Drawing.Size(79, 38);
-            this.buttonM64CopyRowRange.TabIndex = 8;
-            this.buttonM64CopyRowRange.Text = "Copy\r\nRow Range";
-            this.buttonM64CopyRowRange.UseVisualStyleBackColor = true;
-            // 
-            // buttonM64SetJpHeader
-            // 
-            this.buttonM64SetJpHeader.Location = new System.Drawing.Point(279, 119);
-            this.buttonM64SetJpHeader.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64SetJpHeader.Name = "buttonM64SetJpHeader";
-            this.buttonM64SetJpHeader.Size = new System.Drawing.Size(63, 38);
-            this.buttonM64SetJpHeader.TabIndex = 8;
-            this.buttonM64SetJpHeader.Text = "Set JP Header";
-            this.buttonM64SetJpHeader.UseVisualStyleBackColor = true;
-            // 
-            // buttonM64SetUsHeader
-            // 
-            this.buttonM64SetUsHeader.Location = new System.Drawing.Point(212, 119);
-            this.buttonM64SetUsHeader.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64SetUsHeader.Name = "buttonM64SetUsHeader";
-            this.buttonM64SetUsHeader.Size = new System.Drawing.Size(63, 38);
-            this.buttonM64SetUsHeader.TabIndex = 8;
-            this.buttonM64SetUsHeader.Text = "Set US Header";
-            this.buttonM64SetUsHeader.UseVisualStyleBackColor = true;
-            // 
-            // buttonM64Close
-            // 
-            this.buttonM64Close.Location = new System.Drawing.Point(8, 68);
-            this.buttonM64Close.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64Close.Name = "buttonM64Close";
-            this.buttonM64Close.Size = new System.Drawing.Size(53, 22);
-            this.buttonM64Close.TabIndex = 8;
-            this.buttonM64Close.Text = "Close";
-            this.buttonM64Close.UseVisualStyleBackColor = true;
-            // 
-            // buttonM64Open
-            // 
-            this.buttonM64Open.Location = new System.Drawing.Point(8, 44);
-            this.buttonM64Open.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64Open.Name = "buttonM64Open";
-            this.buttonM64Open.Size = new System.Drawing.Size(53, 22);
-            this.buttonM64Open.TabIndex = 8;
-            this.buttonM64Open.Text = "Open";
-            this.buttonM64Open.UseVisualStyleBackColor = true;
-            // 
-            // buttonM64SaveAs
-            // 
-            this.buttonM64SaveAs.Location = new System.Drawing.Point(133, 68);
-            this.buttonM64SaveAs.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64SaveAs.Name = "buttonM64SaveAs";
-            this.buttonM64SaveAs.Size = new System.Drawing.Size(63, 22);
-            this.buttonM64SaveAs.TabIndex = 10;
-            this.buttonM64SaveAs.Text = "Save As";
-            this.buttonM64SaveAs.UseVisualStyleBackColor = true;
-            // 
-            // buttonM64ResetChanges
-            // 
-            this.buttonM64ResetChanges.Location = new System.Drawing.Point(65, 44);
-            this.buttonM64ResetChanges.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64ResetChanges.Name = "buttonM64ResetChanges";
-            this.buttonM64ResetChanges.Size = new System.Drawing.Size(64, 46);
-            this.buttonM64ResetChanges.TabIndex = 9;
-            this.buttonM64ResetChanges.Text = "Reset\r\nChanges";
-            this.buttonM64ResetChanges.UseVisualStyleBackColor = true;
-            // 
-            // buttonM64Save
-            // 
-            this.buttonM64Save.Location = new System.Drawing.Point(133, 44);
-            this.buttonM64Save.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64Save.Name = "buttonM64Save";
-            this.buttonM64Save.Size = new System.Drawing.Size(63, 22);
-            this.buttonM64Save.TabIndex = 9;
-            this.buttonM64Save.Text = "Save";
-            this.buttonM64Save.UseVisualStyleBackColor = true;
-            // 
-            // labelM64ProgressBar
-            // 
-            this.labelM64ProgressBar.AutoSize = true;
-            this.labelM64ProgressBar.BackColor = System.Drawing.Color.Transparent;
-            this.labelM64ProgressBar.Location = new System.Drawing.Point(290, 5);
-            this.labelM64ProgressBar.Name = "labelM64ProgressBar";
-            this.labelM64ProgressBar.Size = new System.Drawing.Size(26, 13);
-            this.labelM64ProgressBar.TabIndex = 42;
-            this.labelM64ProgressBar.Text = "File:";
-            // 
-            // progressBarM64
-            // 
-            this.progressBarM64.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBarM64.Location = new System.Drawing.Point(134, 0);
-            this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
-            this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(442, 20);
-            this.progressBarM64.TabIndex = 41;
-            // 
-            // tabControlM64Details
-            // 
-            this.tabControlM64Details.Controls.Add(this.tabPageM64Inputs);
-            this.tabControlM64Details.Controls.Add(this.tabPageM64Header);
-            this.tabControlM64Details.Controls.Add(this.tabPageM64Stats);
-            this.tabControlM64Details.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlM64Details.Location = new System.Drawing.Point(0, 0);
-            this.tabControlM64Details.Margin = new System.Windows.Forms.Padding(0);
-            this.tabControlM64Details.Name = "tabControlM64Details";
-            this.tabControlM64Details.SelectedIndex = 0;
-            this.tabControlM64Details.Size = new System.Drawing.Size(543, 455);
-            this.tabControlM64Details.TabIndex = 40;
-            // 
-            // tabPageM64Inputs
-            // 
-            this.tabPageM64Inputs.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageM64Inputs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPageM64Inputs.Controls.Add(this.dataGridViewM64Inputs);
-            this.tabPageM64Inputs.Location = new System.Drawing.Point(4, 22);
-            this.tabPageM64Inputs.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPageM64Inputs.Name = "tabPageM64Inputs";
-            this.tabPageM64Inputs.Size = new System.Drawing.Size(535, 429);
-            this.tabPageM64Inputs.TabIndex = 3;
-            this.tabPageM64Inputs.Text = "Inputs";
-            // 
-            // dataGridViewM64Inputs
-            // 
-            this.dataGridViewM64Inputs.AllowUserToDeleteRows = false;
-            this.dataGridViewM64Inputs.AllowUserToResizeColumns = false;
-            this.dataGridViewM64Inputs.AllowUserToResizeRows = false;
-            this.dataGridViewM64Inputs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewM64Inputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewM64Inputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnM64Frame,
-            this.ColumnM64Id,
-            this.ColumnM64X,
-            this.ColumnM64Y,
-            this.ColumnM64A,
-            this.ColumnM64B,
-            this.ColumnM64Z,
-            this.ColumnM64S,
-            this.ColumnM64R,
-            this.ColumnM64CUp,
-            this.ColumnM64CDown,
-            this.ColumnM64CLeft,
-            this.ColumnM64CRight,
-            this.ColumnM64L,
-            this.ColumnM64DUp,
-            this.ColumnM64DDown,
-            this.ColumnM64DLeft,
-            this.ColumnM64DRight});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewM64Inputs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewM64Inputs.EnableHeadersVisualStyles = false;
-            this.dataGridViewM64Inputs.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewM64Inputs.Margin = new System.Windows.Forms.Padding(0);
-            this.dataGridViewM64Inputs.Name = "dataGridViewM64Inputs";
-            this.dataGridViewM64Inputs.RowHeadersVisible = false;
-            this.dataGridViewM64Inputs.RowTemplate.Height = 20;
-            this.dataGridViewM64Inputs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridViewM64Inputs.Size = new System.Drawing.Size(533, 427);
-            this.dataGridViewM64Inputs.TabIndex = 2;
-            // 
-            // ColumnM64Frame
-            // 
-            this.ColumnM64Frame.DataPropertyName = "Frame";
-            this.ColumnM64Frame.FillWeight = 200F;
-            this.ColumnM64Frame.HeaderText = "Frame";
-            this.ColumnM64Frame.Name = "ColumnM64Frame";
-            this.ColumnM64Frame.ReadOnly = true;
-            this.ColumnM64Frame.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ColumnM64Id
-            // 
-            this.ColumnM64Id.DataPropertyName = "Id";
-            this.ColumnM64Id.FillWeight = 200F;
-            this.ColumnM64Id.HeaderText = "Id";
-            this.ColumnM64Id.Name = "ColumnM64Id";
-            this.ColumnM64Id.ReadOnly = true;
-            this.ColumnM64Id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ColumnM64X
-            // 
-            this.ColumnM64X.DataPropertyName = "X";
-            this.ColumnM64X.FillWeight = 200F;
-            this.ColumnM64X.HeaderText = "X";
-            this.ColumnM64X.Name = "ColumnM64X";
-            this.ColumnM64X.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ColumnM64Y
-            // 
-            this.ColumnM64Y.DataPropertyName = "Y";
-            this.ColumnM64Y.FillWeight = 200F;
-            this.ColumnM64Y.HeaderText = "Y";
-            this.ColumnM64Y.Name = "ColumnM64Y";
-            this.ColumnM64Y.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ColumnM64A
-            // 
-            this.ColumnM64A.DataPropertyName = "A";
-            this.ColumnM64A.HeaderText = "A";
-            this.ColumnM64A.Name = "ColumnM64A";
-            this.ColumnM64A.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64B
-            // 
-            this.ColumnM64B.DataPropertyName = "B";
-            this.ColumnM64B.HeaderText = "B";
-            this.ColumnM64B.Name = "ColumnM64B";
-            this.ColumnM64B.ReadOnly = true;
-            this.ColumnM64B.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64Z
-            // 
-            this.ColumnM64Z.DataPropertyName = "Z";
-            this.ColumnM64Z.HeaderText = "Z";
-            this.ColumnM64Z.Name = "ColumnM64Z";
-            this.ColumnM64Z.ReadOnly = true;
-            this.ColumnM64Z.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64S
-            // 
-            this.ColumnM64S.DataPropertyName = "S";
-            this.ColumnM64S.HeaderText = "S";
-            this.ColumnM64S.Name = "ColumnM64S";
-            this.ColumnM64S.ReadOnly = true;
-            this.ColumnM64S.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64R
-            // 
-            this.ColumnM64R.DataPropertyName = "R";
-            this.ColumnM64R.HeaderText = "R";
-            this.ColumnM64R.Name = "ColumnM64R";
-            this.ColumnM64R.ReadOnly = true;
-            this.ColumnM64R.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64CUp
-            // 
-            this.ColumnM64CUp.DataPropertyName = "C_Up";
-            this.ColumnM64CUp.HeaderText = "C^";
-            this.ColumnM64CUp.Name = "ColumnM64CUp";
-            this.ColumnM64CUp.ReadOnly = true;
-            this.ColumnM64CUp.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64CDown
-            // 
-            this.ColumnM64CDown.DataPropertyName = "C_Down";
-            this.ColumnM64CDown.HeaderText = "Cv";
-            this.ColumnM64CDown.Name = "ColumnM64CDown";
-            this.ColumnM64CDown.ReadOnly = true;
-            this.ColumnM64CDown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64CLeft
-            // 
-            this.ColumnM64CLeft.DataPropertyName = "C_Left";
-            this.ColumnM64CLeft.HeaderText = "C<";
-            this.ColumnM64CLeft.Name = "ColumnM64CLeft";
-            this.ColumnM64CLeft.ReadOnly = true;
-            this.ColumnM64CLeft.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64CRight
-            // 
-            this.ColumnM64CRight.DataPropertyName = "C_Right";
-            this.ColumnM64CRight.HeaderText = "C>";
-            this.ColumnM64CRight.Name = "ColumnM64CRight";
-            this.ColumnM64CRight.ReadOnly = true;
-            this.ColumnM64CRight.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64L
-            // 
-            this.ColumnM64L.DataPropertyName = "L";
-            this.ColumnM64L.HeaderText = "L";
-            this.ColumnM64L.Name = "ColumnM64L";
-            this.ColumnM64L.ReadOnly = true;
-            this.ColumnM64L.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64DUp
-            // 
-            this.ColumnM64DUp.DataPropertyName = "D_Up";
-            this.ColumnM64DUp.HeaderText = "D^";
-            this.ColumnM64DUp.Name = "ColumnM64DUp";
-            this.ColumnM64DUp.ReadOnly = true;
-            this.ColumnM64DUp.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64DDown
-            // 
-            this.ColumnM64DDown.DataPropertyName = "D_Down";
-            this.ColumnM64DDown.HeaderText = "Dv";
-            this.ColumnM64DDown.Name = "ColumnM64DDown";
-            this.ColumnM64DDown.ReadOnly = true;
-            this.ColumnM64DDown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64DLeft
-            // 
-            this.ColumnM64DLeft.DataPropertyName = "D_Left";
-            this.ColumnM64DLeft.HeaderText = "D<";
-            this.ColumnM64DLeft.Name = "ColumnM64DLeft";
-            this.ColumnM64DLeft.ReadOnly = true;
-            this.ColumnM64DLeft.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ColumnM64DRight
-            // 
-            this.ColumnM64DRight.DataPropertyName = "D_Right";
-            this.ColumnM64DRight.HeaderText = "D>";
-            this.ColumnM64DRight.Name = "ColumnM64DRight";
-            this.ColumnM64DRight.ReadOnly = true;
-            this.ColumnM64DRight.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // tabPageM64Header
-            // 
-            this.tabPageM64Header.AutoScroll = true;
-            this.tabPageM64Header.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageM64Header.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPageM64Header.Controls.Add(this.propertyGridM64Header);
-            this.tabPageM64Header.Location = new System.Drawing.Point(4, 22);
-            this.tabPageM64Header.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPageM64Header.Name = "tabPageM64Header";
-            this.tabPageM64Header.Size = new System.Drawing.Size(535, 429);
-            this.tabPageM64Header.TabIndex = 2;
-            this.tabPageM64Header.Text = "Header";
-            // 
-            // propertyGridM64Header
-            // 
-            this.propertyGridM64Header.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.propertyGridM64Header.HelpVisible = false;
-            this.propertyGridM64Header.Location = new System.Drawing.Point(0, 0);
-            this.propertyGridM64Header.Name = "propertyGridM64Header";
-            this.propertyGridM64Header.Size = new System.Drawing.Size(533, 427);
-            this.propertyGridM64Header.TabIndex = 0;
-            this.propertyGridM64Header.ToolbarVisible = false;
-            // 
-            // tabPageM64Stats
-            // 
-            this.tabPageM64Stats.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageM64Stats.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tabPageM64Stats.Controls.Add(this.propertyGridM64Stats);
-            this.tabPageM64Stats.Location = new System.Drawing.Point(4, 22);
-            this.tabPageM64Stats.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPageM64Stats.Name = "tabPageM64Stats";
-            this.tabPageM64Stats.Size = new System.Drawing.Size(535, 429);
-            this.tabPageM64Stats.TabIndex = 4;
-            this.tabPageM64Stats.Text = "Stats";
-            // 
-            // propertyGridM64Stats
-            // 
-            this.propertyGridM64Stats.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.propertyGridM64Stats.HelpVisible = false;
-            this.propertyGridM64Stats.Location = new System.Drawing.Point(0, 0);
-            this.propertyGridM64Stats.Margin = new System.Windows.Forms.Padding(0);
-            this.propertyGridM64Stats.Name = "propertyGridM64Stats";
-            this.propertyGridM64Stats.Size = new System.Drawing.Size(533, 427);
-            this.propertyGridM64Stats.TabIndex = 1;
-            this.propertyGridM64Stats.ToolbarVisible = false;
-            // 
-            // tabPageCoin
-            // 
-            this.tabPageCoin.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageCoin.Controls.Add(this.splitContainerCoin);
-            this.tabPageCoin.Location = new System.Drawing.Point(4, 22);
-            this.tabPageCoin.Name = "tabPageCoin";
-            this.tabPageCoin.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageCoin.Size = new System.Drawing.Size(915, 463);
-            this.tabPageCoin.TabIndex = 29;
-            this.tabPageCoin.Text = "Coin";
-            // 
-            // splitContainerCoin
-            // 
-            this.splitContainerCoin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainerCoin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerCoin.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerCoin.Location = new System.Drawing.Point(3, 3);
-            this.splitContainerCoin.Margin = new System.Windows.Forms.Padding(0);
-            this.splitContainerCoin.Name = "splitContainerCoin";
-            // 
-            // splitContainerCoin.Panel1
-            // 
-            this.splitContainerCoin.Panel1.AutoScroll = true;
-            this.splitContainerCoin.Panel1.Controls.Add(this.buttonCoinCalculate);
-            this.splitContainerCoin.Panel1.Controls.Add(this.buttonCoinClear);
-            this.splitContainerCoin.Panel1.Controls.Add(this.groupBoxCoinFilter);
-            this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinParamOrder);
-            this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinVSpeedOffset);
-            this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinVSpeedScale);
-            this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinStartingRngIndex);
-            this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinHSpeedScale);
-            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinVSpeedRange);
-            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinParamOrder);
-            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinTableEntries);
-            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinHSpeedRange);
-            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinVSpeedOffset);
-            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinStartingRngIndex);
-            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinVSpeedScale);
-            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinHSpeedScale);
-            this.splitContainerCoin.Panel1.Controls.Add(this.listBoxCoinObjects);
-            this.splitContainerCoin.Panel1MinSize = 0;
-            // 
-            // splitContainerCoin.Panel2
-            // 
-            this.splitContainerCoin.Panel2.Controls.Add(this.dataGridViewCoin);
-            this.splitContainerCoin.Panel2MinSize = 0;
-            this.splitContainerCoin.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerCoin.SplitterDistance = 290;
-            this.splitContainerCoin.SplitterWidth = 1;
-            this.splitContainerCoin.TabIndex = 38;
-            // 
-            // buttonCoinCalculate
-            // 
-            this.buttonCoinCalculate.Location = new System.Drawing.Point(146, 312);
-            this.buttonCoinCalculate.Name = "buttonCoinCalculate";
-            this.buttonCoinCalculate.Size = new System.Drawing.Size(93, 23);
-            this.buttonCoinCalculate.TabIndex = 42;
-            this.buttonCoinCalculate.Text = "Calculate";
-            this.buttonCoinCalculate.UseVisualStyleBackColor = true;
-            // 
-            // buttonCoinClear
-            // 
-            this.buttonCoinClear.Location = new System.Drawing.Point(48, 312);
-            this.buttonCoinClear.Name = "buttonCoinClear";
-            this.buttonCoinClear.Size = new System.Drawing.Size(93, 23);
-            this.buttonCoinClear.TabIndex = 42;
-            this.buttonCoinClear.Text = "Clear";
-            this.buttonCoinClear.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxCoinFilter
-            // 
-            this.groupBoxCoinFilter.Controls.Add(this.textBoxCoinFilterAngleMin);
-            this.groupBoxCoinFilter.Controls.Add(this.textBoxCoinFilterAngleMax);
-            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterHSpeedFrom);
-            this.groupBoxCoinFilter.Controls.Add(this.textBoxCoinFilterVSpeedMax);
-            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterMin);
-            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterMax);
-            this.groupBoxCoinFilter.Controls.Add(this.textBoxCoinFilterVSpeedMin);
-            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterHSpeedTo);
-            this.groupBoxCoinFilter.Controls.Add(this.textBoxCoinFilterHSpeedMax);
-            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterVSpeedFrom);
-            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterVSpeedTo);
-            this.groupBoxCoinFilter.Controls.Add(this.textBoxCoinFilterHSpeedMin);
-            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterAngleFrom);
-            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterAngleTo);
-            this.groupBoxCoinFilter.Location = new System.Drawing.Point(33, 165);
-            this.groupBoxCoinFilter.Name = "groupBoxCoinFilter";
-            this.groupBoxCoinFilter.Size = new System.Drawing.Size(218, 110);
-            this.groupBoxCoinFilter.TabIndex = 41;
-            this.groupBoxCoinFilter.TabStop = false;
-            this.groupBoxCoinFilter.Text = "Filter";
-            // 
-            // textBoxCoinFilterAngleMin
-            // 
-            this.textBoxCoinFilterAngleMin.Location = new System.Drawing.Point(80, 80);
-            this.textBoxCoinFilterAngleMin.Name = "textBoxCoinFilterAngleMin";
-            this.textBoxCoinFilterAngleMin.Size = new System.Drawing.Size(53, 20);
-            this.textBoxCoinFilterAngleMin.TabIndex = 38;
-            this.textBoxCoinFilterAngleMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxCoinFilterAngleMax
-            // 
-            this.textBoxCoinFilterAngleMax.Location = new System.Drawing.Point(154, 80);
-            this.textBoxCoinFilterAngleMax.Name = "textBoxCoinFilterAngleMax";
-            this.textBoxCoinFilterAngleMax.Size = new System.Drawing.Size(53, 20);
-            this.textBoxCoinFilterAngleMax.TabIndex = 38;
-            this.textBoxCoinFilterAngleMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelCoinFilterHSpeedFrom
-            // 
-            this.labelCoinFilterHSpeedFrom.AutoSize = true;
-            this.labelCoinFilterHSpeedFrom.Location = new System.Drawing.Point(10, 35);
-            this.labelCoinFilterHSpeedFrom.Name = "labelCoinFilterHSpeedFrom";
-            this.labelCoinFilterHSpeedFrom.Size = new System.Drawing.Size(69, 13);
-            this.labelCoinFilterHSpeedFrom.TabIndex = 37;
-            this.labelCoinFilterHSpeedFrom.Text = "HSpeed from";
-            // 
-            // textBoxCoinFilterVSpeedMax
-            // 
-            this.textBoxCoinFilterVSpeedMax.Location = new System.Drawing.Point(154, 56);
-            this.textBoxCoinFilterVSpeedMax.Name = "textBoxCoinFilterVSpeedMax";
-            this.textBoxCoinFilterVSpeedMax.Size = new System.Drawing.Size(53, 20);
-            this.textBoxCoinFilterVSpeedMax.TabIndex = 39;
-            this.textBoxCoinFilterVSpeedMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelCoinFilterMin
-            // 
-            this.labelCoinFilterMin.AutoSize = true;
-            this.labelCoinFilterMin.Location = new System.Drawing.Point(95, 16);
-            this.labelCoinFilterMin.Name = "labelCoinFilterMin";
-            this.labelCoinFilterMin.Size = new System.Drawing.Size(24, 13);
-            this.labelCoinFilterMin.TabIndex = 37;
-            this.labelCoinFilterMin.Text = "Min";
-            // 
-            // labelCoinFilterMax
-            // 
-            this.labelCoinFilterMax.AutoSize = true;
-            this.labelCoinFilterMax.Location = new System.Drawing.Point(167, 16);
-            this.labelCoinFilterMax.Name = "labelCoinFilterMax";
-            this.labelCoinFilterMax.Size = new System.Drawing.Size(27, 13);
-            this.labelCoinFilterMax.TabIndex = 37;
-            this.labelCoinFilterMax.Text = "Max";
-            // 
-            // textBoxCoinFilterVSpeedMin
-            // 
-            this.textBoxCoinFilterVSpeedMin.Location = new System.Drawing.Point(80, 56);
-            this.textBoxCoinFilterVSpeedMin.Name = "textBoxCoinFilterVSpeedMin";
-            this.textBoxCoinFilterVSpeedMin.Size = new System.Drawing.Size(53, 20);
-            this.textBoxCoinFilterVSpeedMin.TabIndex = 39;
-            this.textBoxCoinFilterVSpeedMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelCoinFilterHSpeedTo
-            // 
-            this.labelCoinFilterHSpeedTo.AutoSize = true;
-            this.labelCoinFilterHSpeedTo.Location = new System.Drawing.Point(137, 35);
-            this.labelCoinFilterHSpeedTo.Name = "labelCoinFilterHSpeedTo";
-            this.labelCoinFilterHSpeedTo.Size = new System.Drawing.Size(16, 13);
-            this.labelCoinFilterHSpeedTo.TabIndex = 37;
-            this.labelCoinFilterHSpeedTo.Text = "to";
-            // 
-            // textBoxCoinFilterHSpeedMax
-            // 
-            this.textBoxCoinFilterHSpeedMax.Location = new System.Drawing.Point(154, 32);
-            this.textBoxCoinFilterHSpeedMax.Name = "textBoxCoinFilterHSpeedMax";
-            this.textBoxCoinFilterHSpeedMax.Size = new System.Drawing.Size(53, 20);
-            this.textBoxCoinFilterHSpeedMax.TabIndex = 40;
-            this.textBoxCoinFilterHSpeedMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelCoinFilterVSpeedFrom
-            // 
-            this.labelCoinFilterVSpeedFrom.AutoSize = true;
-            this.labelCoinFilterVSpeedFrom.Location = new System.Drawing.Point(10, 59);
-            this.labelCoinFilterVSpeedFrom.Name = "labelCoinFilterVSpeedFrom";
-            this.labelCoinFilterVSpeedFrom.Size = new System.Drawing.Size(68, 13);
-            this.labelCoinFilterVSpeedFrom.TabIndex = 36;
-            this.labelCoinFilterVSpeedFrom.Text = "VSpeed from";
-            // 
-            // labelCoinFilterVSpeedTo
-            // 
-            this.labelCoinFilterVSpeedTo.AutoSize = true;
-            this.labelCoinFilterVSpeedTo.Location = new System.Drawing.Point(137, 59);
-            this.labelCoinFilterVSpeedTo.Name = "labelCoinFilterVSpeedTo";
-            this.labelCoinFilterVSpeedTo.Size = new System.Drawing.Size(16, 13);
-            this.labelCoinFilterVSpeedTo.TabIndex = 36;
-            this.labelCoinFilterVSpeedTo.Text = "to";
-            // 
-            // textBoxCoinFilterHSpeedMin
-            // 
-            this.textBoxCoinFilterHSpeedMin.Location = new System.Drawing.Point(80, 32);
-            this.textBoxCoinFilterHSpeedMin.Name = "textBoxCoinFilterHSpeedMin";
-            this.textBoxCoinFilterHSpeedMin.Size = new System.Drawing.Size(53, 20);
-            this.textBoxCoinFilterHSpeedMin.TabIndex = 40;
-            this.textBoxCoinFilterHSpeedMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelCoinFilterAngleFrom
-            // 
-            this.labelCoinFilterAngleFrom.AutoSize = true;
-            this.labelCoinFilterAngleFrom.Location = new System.Drawing.Point(10, 83);
-            this.labelCoinFilterAngleFrom.Name = "labelCoinFilterAngleFrom";
-            this.labelCoinFilterAngleFrom.Size = new System.Drawing.Size(57, 13);
-            this.labelCoinFilterAngleFrom.TabIndex = 35;
-            this.labelCoinFilterAngleFrom.Text = "Angle from";
-            // 
-            // labelCoinFilterAngleTo
-            // 
-            this.labelCoinFilterAngleTo.AutoSize = true;
-            this.labelCoinFilterAngleTo.Location = new System.Drawing.Point(137, 83);
-            this.labelCoinFilterAngleTo.Name = "labelCoinFilterAngleTo";
-            this.labelCoinFilterAngleTo.Size = new System.Drawing.Size(16, 13);
-            this.labelCoinFilterAngleTo.TabIndex = 35;
-            this.labelCoinFilterAngleTo.Text = "to";
-            // 
-            // textBoxCoinParamOrder
-            // 
-            this.textBoxCoinParamOrder.Location = new System.Drawing.Point(214, 78);
-            this.textBoxCoinParamOrder.Name = "textBoxCoinParamOrder";
-            this.textBoxCoinParamOrder.Size = new System.Drawing.Size(53, 20);
-            this.textBoxCoinParamOrder.TabIndex = 38;
-            this.textBoxCoinParamOrder.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxCoinVSpeedOffset
-            // 
-            this.textBoxCoinVSpeedOffset.Location = new System.Drawing.Point(214, 54);
-            this.textBoxCoinVSpeedOffset.Name = "textBoxCoinVSpeedOffset";
-            this.textBoxCoinVSpeedOffset.Size = new System.Drawing.Size(53, 20);
-            this.textBoxCoinVSpeedOffset.TabIndex = 38;
-            this.textBoxCoinVSpeedOffset.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxCoinVSpeedScale
-            // 
-            this.textBoxCoinVSpeedScale.Location = new System.Drawing.Point(214, 30);
-            this.textBoxCoinVSpeedScale.Name = "textBoxCoinVSpeedScale";
-            this.textBoxCoinVSpeedScale.Size = new System.Drawing.Size(53, 20);
-            this.textBoxCoinVSpeedScale.TabIndex = 39;
-            this.textBoxCoinVSpeedScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxCoinStartingRngIndex
-            // 
-            this.textBoxCoinStartingRngIndex.Location = new System.Drawing.Point(167, 283);
-            this.textBoxCoinStartingRngIndex.Name = "textBoxCoinStartingRngIndex";
-            this.textBoxCoinStartingRngIndex.Size = new System.Drawing.Size(53, 20);
-            this.textBoxCoinStartingRngIndex.TabIndex = 40;
-            this.textBoxCoinStartingRngIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxCoinHSpeedScale
-            // 
-            this.textBoxCoinHSpeedScale.Location = new System.Drawing.Point(214, 6);
-            this.textBoxCoinHSpeedScale.Name = "textBoxCoinHSpeedScale";
-            this.textBoxCoinHSpeedScale.Size = new System.Drawing.Size(53, 20);
-            this.textBoxCoinHSpeedScale.TabIndex = 40;
-            this.textBoxCoinHSpeedScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelCoinVSpeedRange
-            // 
-            this.labelCoinVSpeedRange.AutoSize = true;
-            this.labelCoinVSpeedRange.Location = new System.Drawing.Point(73, 138);
-            this.labelCoinVSpeedRange.Name = "labelCoinVSpeedRange";
-            this.labelCoinVSpeedRange.Size = new System.Drawing.Size(83, 13);
-            this.labelCoinVSpeedRange.TabIndex = 35;
-            this.labelCoinVSpeedRange.Text = "VSpeed Range:";
-            // 
-            // labelCoinParamOrder
-            // 
-            this.labelCoinParamOrder.AutoSize = true;
-            this.labelCoinParamOrder.Location = new System.Drawing.Point(133, 81);
-            this.labelCoinParamOrder.Name = "labelCoinParamOrder";
-            this.labelCoinParamOrder.Size = new System.Drawing.Size(69, 13);
-            this.labelCoinParamOrder.TabIndex = 35;
-            this.labelCoinParamOrder.Text = "Param Order:";
-            // 
-            // labelCoinTableEntries
-            // 
-            this.labelCoinTableEntries.AutoSize = true;
-            this.labelCoinTableEntries.Location = new System.Drawing.Point(73, 348);
-            this.labelCoinTableEntries.Name = "labelCoinTableEntries";
-            this.labelCoinTableEntries.Size = new System.Drawing.Size(72, 13);
-            this.labelCoinTableEntries.TabIndex = 35;
-            this.labelCoinTableEntries.Text = "Table Entries:";
-            // 
-            // labelCoinHSpeedRange
-            // 
-            this.labelCoinHSpeedRange.AutoSize = true;
-            this.labelCoinHSpeedRange.Location = new System.Drawing.Point(73, 116);
-            this.labelCoinHSpeedRange.Name = "labelCoinHSpeedRange";
-            this.labelCoinHSpeedRange.Size = new System.Drawing.Size(84, 13);
-            this.labelCoinHSpeedRange.TabIndex = 35;
-            this.labelCoinHSpeedRange.Text = "HSpeed Range:";
-            // 
-            // labelCoinVSpeedOffset
-            // 
-            this.labelCoinVSpeedOffset.AutoSize = true;
-            this.labelCoinVSpeedOffset.Location = new System.Drawing.Point(133, 57);
-            this.labelCoinVSpeedOffset.Name = "labelCoinVSpeedOffset";
-            this.labelCoinVSpeedOffset.Size = new System.Drawing.Size(79, 13);
-            this.labelCoinVSpeedOffset.TabIndex = 35;
-            this.labelCoinVSpeedOffset.Text = "VSpeed Offset:";
-            // 
-            // labelCoinStartingRngIndex
-            // 
-            this.labelCoinStartingRngIndex.AutoSize = true;
-            this.labelCoinStartingRngIndex.Location = new System.Drawing.Point(63, 286);
-            this.labelCoinStartingRngIndex.Name = "labelCoinStartingRngIndex";
-            this.labelCoinStartingRngIndex.Size = new System.Drawing.Size(102, 13);
-            this.labelCoinStartingRngIndex.TabIndex = 37;
-            this.labelCoinStartingRngIndex.Text = "Starting RNG Index:";
-            // 
-            // labelCoinVSpeedScale
-            // 
-            this.labelCoinVSpeedScale.AutoSize = true;
-            this.labelCoinVSpeedScale.Location = new System.Drawing.Point(133, 33);
-            this.labelCoinVSpeedScale.Name = "labelCoinVSpeedScale";
-            this.labelCoinVSpeedScale.Size = new System.Drawing.Size(78, 13);
-            this.labelCoinVSpeedScale.TabIndex = 36;
-            this.labelCoinVSpeedScale.Text = "VSpeed Scale:";
-            // 
-            // labelCoinHSpeedScale
-            // 
-            this.labelCoinHSpeedScale.AutoSize = true;
-            this.labelCoinHSpeedScale.Location = new System.Drawing.Point(133, 9);
-            this.labelCoinHSpeedScale.Name = "labelCoinHSpeedScale";
-            this.labelCoinHSpeedScale.Size = new System.Drawing.Size(79, 13);
-            this.labelCoinHSpeedScale.TabIndex = 37;
-            this.labelCoinHSpeedScale.Text = "HSpeed Scale:";
-            // 
-            // listBoxCoinObjects
-            // 
-            this.listBoxCoinObjects.FormattingEnabled = true;
-            this.listBoxCoinObjects.Location = new System.Drawing.Point(3, 3);
-            this.listBoxCoinObjects.Name = "listBoxCoinObjects";
-            this.listBoxCoinObjects.Size = new System.Drawing.Size(125, 95);
-            this.listBoxCoinObjects.TabIndex = 17;
-            // 
-            // dataGridViewCoin
-            // 
-            this.dataGridViewCoin.AllowUserToAddRows = false;
-            this.dataGridViewCoin.AllowUserToDeleteRows = false;
-            this.dataGridViewCoin.AllowUserToOrderColumns = true;
-            this.dataGridViewCoin.AllowUserToResizeRows = false;
-            this.dataGridViewCoin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewCoin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCoin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.rngIndex,
-            this.rngValue,
-            this.rngToGo,
-            this.coinHSpeed,
-            this.coinVSpeed,
-            this.coinAngle});
-            this.dataGridViewCoin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewCoin.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewCoin.Margin = new System.Windows.Forms.Padding(0);
-            this.dataGridViewCoin.MultiSelect = false;
-            this.dataGridViewCoin.Name = "dataGridViewCoin";
-            this.dataGridViewCoin.ReadOnly = true;
-            this.dataGridViewCoin.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewCoin.Size = new System.Drawing.Size(616, 455);
-            this.dataGridViewCoin.TabIndex = 3;
-            // 
-            // rngIndex
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle4;
-            this.rngIndex.HeaderText = "RNG Index";
-            this.rngIndex.MinimumWidth = 2;
-            this.rngIndex.Name = "rngIndex";
-            this.rngIndex.ReadOnly = true;
-            // 
-            // rngValue
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngValue.DefaultCellStyle = dataGridViewCellStyle5;
-            this.rngValue.HeaderText = "RNG Value";
-            this.rngValue.MinimumWidth = 2;
-            this.rngValue.Name = "rngValue";
-            this.rngValue.ReadOnly = true;
-            // 
-            // rngToGo
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle6;
-            this.rngToGo.HeaderText = "RNG To Go";
-            this.rngToGo.MinimumWidth = 2;
-            this.rngToGo.Name = "rngToGo";
-            this.rngToGo.ReadOnly = true;
-            // 
-            // coinHSpeed
-            // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle7;
-            this.coinHSpeed.HeaderText = "Coin HSpeed";
-            this.coinHSpeed.Name = "coinHSpeed";
-            this.coinHSpeed.ReadOnly = true;
-            // 
-            // coinVSpeed
-            // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle8;
-            this.coinVSpeed.HeaderText = "Coin VSpeed";
-            this.coinVSpeed.Name = "coinVSpeed";
-            this.coinVSpeed.ReadOnly = true;
-            // 
-            // coinAngle
-            // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle9;
-            this.coinAngle.HeaderText = "Coin Angle";
-            this.coinAngle.MinimumWidth = 2;
-            this.coinAngle.Name = "coinAngle";
-            this.coinAngle.ReadOnly = true;
-            // 
             // tabPageHud
             // 
             this.tabPageHud.Controls.Add(this.splitContainerHud);
@@ -5837,29 +4635,6 @@ namespace STROOP
             this.watchVariablePanelTriangles.Size = new System.Drawing.Size(704, 461);
             this.watchVariablePanelTriangles.TabIndex = 7;
             // 
-            // tabPageWater
-            // 
-            this.tabPageWater.Controls.Add(this.watchVariablePanelWater);
-            this.tabPageWater.Location = new System.Drawing.Point(4, 22);
-            this.tabPageWater.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPageWater.Name = "tabPageWater";
-            this.tabPageWater.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPageWater.Size = new System.Drawing.Size(915, 463);
-            this.tabPageWater.TabIndex = 14;
-            this.tabPageWater.Text = "Water";
-            // 
-            // watchVariablePanelWater
-            // 
-            this.watchVariablePanelWater.AutoScroll = true;
-            this.watchVariablePanelWater.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.watchVariablePanelWater.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.watchVariablePanelWater.Location = new System.Drawing.Point(2, 2);
-            this.watchVariablePanelWater.Margin = new System.Windows.Forms.Padding(0);
-            this.watchVariablePanelWater.Name = "watchVariablePanelWater";
-            this.watchVariablePanelWater.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelWater.Size = new System.Drawing.Size(911, 459);
-            this.watchVariablePanelWater.TabIndex = 2;
-            // 
             // tabPageActions
             // 
             this.tabPageActions.Controls.Add(this.textBoxAnimationDescription);
@@ -5908,62 +4683,6 @@ namespace STROOP
             this.watchVariablePanelActions.Name = "watchVariablePanelActions";
             this.watchVariablePanelActions.Size = new System.Drawing.Size(903, 378);
             this.watchVariablePanelActions.TabIndex = 0;
-            // 
-            // tabPageInput
-            // 
-            this.tabPageInput.Controls.Add(this.splitContainerInput);
-            this.tabPageInput.Location = new System.Drawing.Point(4, 22);
-            this.tabPageInput.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPageInput.Name = "tabPageInput";
-            this.tabPageInput.Size = new System.Drawing.Size(915, 463);
-            this.tabPageInput.TabIndex = 14;
-            this.tabPageInput.Text = "Input";
-            // 
-            // splitContainerInput
-            // 
-            this.splitContainerInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainerInput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerInput.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerInput.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerInput.Margin = new System.Windows.Forms.Padding(0);
-            this.splitContainerInput.Name = "splitContainerInput";
-            // 
-            // splitContainerInput.Panel1
-            // 
-            this.splitContainerInput.Panel1.Controls.Add(this.inputDisplayPanel);
-            this.splitContainerInput.Panel1.Padding = new System.Windows.Forms.Padding(2);
-            this.splitContainerInput.Panel1MinSize = 0;
-            // 
-            // splitContainerInput.Panel2
-            // 
-            this.splitContainerInput.Panel2.Controls.Add(this.watchVariablePanelInput);
-            this.splitContainerInput.Panel2MinSize = 0;
-            this.splitContainerInput.Size = new System.Drawing.Size(915, 463);
-            this.splitContainerInput.SplitterDistance = 428;
-            this.splitContainerInput.SplitterWidth = 1;
-            this.splitContainerInput.TabIndex = 17;
-            // 
-            // inputDisplayPanel
-            // 
-            this.inputDisplayPanel.AutoSize = true;
-            this.inputDisplayPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inputDisplayPanel.Location = new System.Drawing.Point(2, 2);
-            this.inputDisplayPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.inputDisplayPanel.Name = "inputDisplayPanel";
-            this.inputDisplayPanel.Size = new System.Drawing.Size(422, 457);
-            this.inputDisplayPanel.TabIndex = 4;
-            // 
-            // watchVariablePanelInput
-            // 
-            this.watchVariablePanelInput.AutoScroll = true;
-            this.watchVariablePanelInput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.watchVariablePanelInput.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.watchVariablePanelInput.Location = new System.Drawing.Point(0, 0);
-            this.watchVariablePanelInput.Margin = new System.Windows.Forms.Padding(0);
-            this.watchVariablePanelInput.Name = "watchVariablePanelInput";
-            this.watchVariablePanelInput.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelInput.Size = new System.Drawing.Size(484, 461);
-            this.watchVariablePanelInput.TabIndex = 2;
             // 
             // tabPageFile
             // 
@@ -6323,7 +5042,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 360F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 361F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -9299,6 +8018,85 @@ namespace STROOP
             this.watchVariablePanelFile.Size = new System.Drawing.Size(254, 461);
             this.watchVariablePanelFile.TabIndex = 2;
             // 
+            // tabPageInput
+            // 
+            this.tabPageInput.Controls.Add(this.splitContainerInput);
+            this.tabPageInput.Location = new System.Drawing.Point(4, 22);
+            this.tabPageInput.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageInput.Name = "tabPageInput";
+            this.tabPageInput.Size = new System.Drawing.Size(915, 463);
+            this.tabPageInput.TabIndex = 14;
+            this.tabPageInput.Text = "Input";
+            // 
+            // splitContainerInput
+            // 
+            this.splitContainerInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerInput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerInput.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerInput.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerInput.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerInput.Name = "splitContainerInput";
+            // 
+            // splitContainerInput.Panel1
+            // 
+            this.splitContainerInput.Panel1.Controls.Add(this.inputDisplayPanel);
+            this.splitContainerInput.Panel1.Padding = new System.Windows.Forms.Padding(2);
+            this.splitContainerInput.Panel1MinSize = 0;
+            // 
+            // splitContainerInput.Panel2
+            // 
+            this.splitContainerInput.Panel2.Controls.Add(this.watchVariablePanelInput);
+            this.splitContainerInput.Panel2MinSize = 0;
+            this.splitContainerInput.Size = new System.Drawing.Size(915, 463);
+            this.splitContainerInput.SplitterDistance = 428;
+            this.splitContainerInput.SplitterWidth = 1;
+            this.splitContainerInput.TabIndex = 17;
+            // 
+            // inputDisplayPanel
+            // 
+            this.inputDisplayPanel.AutoSize = true;
+            this.inputDisplayPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inputDisplayPanel.Location = new System.Drawing.Point(2, 2);
+            this.inputDisplayPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.inputDisplayPanel.Name = "inputDisplayPanel";
+            this.inputDisplayPanel.Size = new System.Drawing.Size(422, 457);
+            this.inputDisplayPanel.TabIndex = 4;
+            // 
+            // watchVariablePanelInput
+            // 
+            this.watchVariablePanelInput.AutoScroll = true;
+            this.watchVariablePanelInput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.watchVariablePanelInput.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.watchVariablePanelInput.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelInput.Margin = new System.Windows.Forms.Padding(0);
+            this.watchVariablePanelInput.Name = "watchVariablePanelInput";
+            this.watchVariablePanelInput.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelInput.Size = new System.Drawing.Size(484, 461);
+            this.watchVariablePanelInput.TabIndex = 2;
+            // 
+            // tabPageWater
+            // 
+            this.tabPageWater.Controls.Add(this.watchVariablePanelWater);
+            this.tabPageWater.Location = new System.Drawing.Point(4, 22);
+            this.tabPageWater.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPageWater.Name = "tabPageWater";
+            this.tabPageWater.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPageWater.Size = new System.Drawing.Size(915, 463);
+            this.tabPageWater.TabIndex = 14;
+            this.tabPageWater.Text = "Water";
+            // 
+            // watchVariablePanelWater
+            // 
+            this.watchVariablePanelWater.AutoScroll = true;
+            this.watchVariablePanelWater.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.watchVariablePanelWater.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.watchVariablePanelWater.Location = new System.Drawing.Point(2, 2);
+            this.watchVariablePanelWater.Margin = new System.Windows.Forms.Padding(0);
+            this.watchVariablePanelWater.Name = "watchVariablePanelWater";
+            this.watchVariablePanelWater.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelWater.Size = new System.Drawing.Size(911, 459);
+            this.watchVariablePanelWater.TabIndex = 2;
+            // 
             // tabPageMisc
             // 
             this.tabPageMisc.Controls.Add(this.splitContainerMisc);
@@ -9410,6 +8208,797 @@ namespace STROOP
             this.watchVariablePanelMisc.Padding = new System.Windows.Forms.Padding(2);
             this.watchVariablePanelMisc.Size = new System.Drawing.Size(782, 461);
             this.watchVariablePanelMisc.TabIndex = 5;
+            // 
+            // tabPageM64
+            // 
+            this.tabPageM64.Controls.Add(this.splitContainerM64);
+            this.tabPageM64.Location = new System.Drawing.Point(4, 22);
+            this.tabPageM64.Name = "tabPageM64";
+            this.tabPageM64.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageM64.Size = new System.Drawing.Size(915, 463);
+            this.tabPageM64.TabIndex = 28;
+            this.tabPageM64.Text = "M64";
+            // 
+            // splitContainerM64
+            // 
+            this.splitContainerM64.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerM64.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerM64.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerM64.Location = new System.Drawing.Point(3, 3);
+            this.splitContainerM64.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerM64.Name = "splitContainerM64";
+            // 
+            // splitContainerM64.Panel1
+            // 
+            this.splitContainerM64.Panel1.AutoScroll = true;
+            this.splitContainerM64.Panel1.Controls.Add(this.checkBoxMaxOutViCount);
+            this.splitContainerM64.Panel1.Controls.Add(this.comboBoxM64FrameInputRelation);
+            this.splitContainerM64.Panel1.Controls.Add(this.textBoxM64PasteMultiplicity);
+            this.splitContainerM64.Panel1.Controls.Add(this.listBoxM64Copied);
+            this.splitContainerM64.Panel1.Controls.Add(this.groupBoxM64QuickDuplication);
+            this.splitContainerM64.Panel1.Controls.Add(this.groupBoxM64Selection);
+            this.splitContainerM64.Panel1.Controls.Add(this.labelM64PasteMultiplicity);
+            this.splitContainerM64.Panel1.Controls.Add(this.labelM64NumInputsValue);
+            this.splitContainerM64.Panel1.Controls.Add(this.labelM64OnValue);
+            this.splitContainerM64.Panel1.Controls.Add(this.labelM64NumInputsLabel);
+            this.splitContainerM64.Panel1.Controls.Add(this.labelM64FileName);
+            this.splitContainerM64.Panel1.Controls.Add(this.labelM64FileLabel);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Goto);
+            this.splitContainerM64.Panel1.Controls.Add(this.textBoxM64OnValue);
+            this.splitContainerM64.Panel1.Controls.Add(this.textBoxM64Goto);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64PasteOverwrite);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64PasteInsert);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64CopyInputRange);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64TurnOffCells);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64TurnOffInputRange);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64TurnOffRowRange);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64TurnOnCells);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64TurnOnInputRange);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64DeleteRowRange);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64CopyRowRange);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64SetJpHeader);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64SetUsHeader);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Close);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Open);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64SaveAs);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64ResetChanges);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Save);
+            this.splitContainerM64.Panel1MinSize = 0;
+            // 
+            // splitContainerM64.Panel2
+            // 
+            this.splitContainerM64.Panel2.Controls.Add(this.labelM64ProgressBar);
+            this.splitContainerM64.Panel2.Controls.Add(this.progressBarM64);
+            this.splitContainerM64.Panel2.Controls.Add(this.tabControlM64Details);
+            this.splitContainerM64.Panel2MinSize = 0;
+            this.splitContainerM64.Size = new System.Drawing.Size(909, 457);
+            this.splitContainerM64.SplitterDistance = 363;
+            this.splitContainerM64.SplitterWidth = 1;
+            this.splitContainerM64.TabIndex = 34;
+            // 
+            // checkBoxMaxOutViCount
+            // 
+            this.checkBoxMaxOutViCount.AutoSize = true;
+            this.checkBoxMaxOutViCount.Checked = true;
+            this.checkBoxMaxOutViCount.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMaxOutViCount.Location = new System.Drawing.Point(212, 71);
+            this.checkBoxMaxOutViCount.Name = "checkBoxMaxOutViCount";
+            this.checkBoxMaxOutViCount.Size = new System.Drawing.Size(110, 17);
+            this.checkBoxMaxOutViCount.TabIndex = 36;
+            this.checkBoxMaxOutViCount.Text = "Max Out VI Count";
+            this.checkBoxMaxOutViCount.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxM64FrameInputRelation
+            // 
+            this.comboBoxM64FrameInputRelation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxM64FrameInputRelation.Location = new System.Drawing.Point(208, 44);
+            this.comboBoxM64FrameInputRelation.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxM64FrameInputRelation.Name = "comboBoxM64FrameInputRelation";
+            this.comboBoxM64FrameInputRelation.Size = new System.Drawing.Size(134, 21);
+            this.comboBoxM64FrameInputRelation.TabIndex = 35;
+            // 
+            // textBoxM64PasteMultiplicity
+            // 
+            this.textBoxM64PasteMultiplicity.Location = new System.Drawing.Point(77, 426);
+            this.textBoxM64PasteMultiplicity.Name = "textBoxM64PasteMultiplicity";
+            this.textBoxM64PasteMultiplicity.Size = new System.Drawing.Size(63, 20);
+            this.textBoxM64PasteMultiplicity.TabIndex = 34;
+            this.textBoxM64PasteMultiplicity.Text = "1";
+            this.textBoxM64PasteMultiplicity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // listBoxM64Copied
+            // 
+            this.listBoxM64Copied.FormattingEnabled = true;
+            this.listBoxM64Copied.Location = new System.Drawing.Point(8, 322);
+            this.listBoxM64Copied.Name = "listBoxM64Copied";
+            this.listBoxM64Copied.Size = new System.Drawing.Size(162, 56);
+            this.listBoxM64Copied.TabIndex = 16;
+            // 
+            // groupBoxM64QuickDuplication
+            // 
+            this.groupBoxM64QuickDuplication.Controls.Add(this.buttonM64QuickDuplicationDuplicate);
+            this.groupBoxM64QuickDuplication.Controls.Add(this.textBoxM64QuickDuplicationTotalIterations);
+            this.groupBoxM64QuickDuplication.Controls.Add(this.textBoxM64QuickDuplication2ndIterationStart);
+            this.groupBoxM64QuickDuplication.Controls.Add(this.textBoxM64QuickDuplication1stIterationStart);
+            this.groupBoxM64QuickDuplication.Controls.Add(this.labelM64QuickDuplicationTotalIterations);
+            this.groupBoxM64QuickDuplication.Controls.Add(this.labelM64QuickDuplication2ndIterationStart);
+            this.groupBoxM64QuickDuplication.Controls.Add(this.labelM64QuickDuplication1stIterationStart);
+            this.groupBoxM64QuickDuplication.Location = new System.Drawing.Point(176, 283);
+            this.groupBoxM64QuickDuplication.Name = "groupBoxM64QuickDuplication";
+            this.groupBoxM64QuickDuplication.Size = new System.Drawing.Size(167, 128);
+            this.groupBoxM64QuickDuplication.TabIndex = 15;
+            this.groupBoxM64QuickDuplication.TabStop = false;
+            this.groupBoxM64QuickDuplication.Text = "Quick Duplication";
+            // 
+            // buttonM64QuickDuplicationDuplicate
+            // 
+            this.buttonM64QuickDuplicationDuplicate.Location = new System.Drawing.Point(15, 93);
+            this.buttonM64QuickDuplicationDuplicate.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64QuickDuplicationDuplicate.Name = "buttonM64QuickDuplicationDuplicate";
+            this.buttonM64QuickDuplicationDuplicate.Size = new System.Drawing.Size(132, 22);
+            this.buttonM64QuickDuplicationDuplicate.TabIndex = 35;
+            this.buttonM64QuickDuplicationDuplicate.Text = "Duplicate";
+            this.buttonM64QuickDuplicationDuplicate.UseVisualStyleBackColor = true;
+            // 
+            // textBoxM64QuickDuplicationTotalIterations
+            // 
+            this.textBoxM64QuickDuplicationTotalIterations.Location = new System.Drawing.Point(79, 66);
+            this.textBoxM64QuickDuplicationTotalIterations.Name = "textBoxM64QuickDuplicationTotalIterations";
+            this.textBoxM64QuickDuplicationTotalIterations.Size = new System.Drawing.Size(81, 20);
+            this.textBoxM64QuickDuplicationTotalIterations.TabIndex = 34;
+            this.textBoxM64QuickDuplicationTotalIterations.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxM64QuickDuplication2ndIterationStart
+            // 
+            this.textBoxM64QuickDuplication2ndIterationStart.Location = new System.Drawing.Point(79, 42);
+            this.textBoxM64QuickDuplication2ndIterationStart.Name = "textBoxM64QuickDuplication2ndIterationStart";
+            this.textBoxM64QuickDuplication2ndIterationStart.Size = new System.Drawing.Size(81, 20);
+            this.textBoxM64QuickDuplication2ndIterationStart.TabIndex = 34;
+            this.textBoxM64QuickDuplication2ndIterationStart.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxM64QuickDuplication1stIterationStart
+            // 
+            this.textBoxM64QuickDuplication1stIterationStart.Location = new System.Drawing.Point(79, 18);
+            this.textBoxM64QuickDuplication1stIterationStart.Name = "textBoxM64QuickDuplication1stIterationStart";
+            this.textBoxM64QuickDuplication1stIterationStart.Size = new System.Drawing.Size(81, 20);
+            this.textBoxM64QuickDuplication1stIterationStart.TabIndex = 34;
+            this.textBoxM64QuickDuplication1stIterationStart.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelM64QuickDuplicationTotalIterations
+            // 
+            this.labelM64QuickDuplicationTotalIterations.AutoSize = true;
+            this.labelM64QuickDuplicationTotalIterations.Location = new System.Drawing.Point(6, 69);
+            this.labelM64QuickDuplicationTotalIterations.Name = "labelM64QuickDuplicationTotalIterations";
+            this.labelM64QuickDuplicationTotalIterations.Size = new System.Drawing.Size(57, 13);
+            this.labelM64QuickDuplicationTotalIterations.TabIndex = 14;
+            this.labelM64QuickDuplicationTotalIterations.Text = "Total Iters:";
+            // 
+            // labelM64QuickDuplication2ndIterationStart
+            // 
+            this.labelM64QuickDuplication2ndIterationStart.AutoSize = true;
+            this.labelM64QuickDuplication2ndIterationStart.Location = new System.Drawing.Point(6, 45);
+            this.labelM64QuickDuplication2ndIterationStart.Name = "labelM64QuickDuplication2ndIterationStart";
+            this.labelM64QuickDuplication2ndIterationStart.Size = new System.Drawing.Size(71, 13);
+            this.labelM64QuickDuplication2ndIterationStart.TabIndex = 14;
+            this.labelM64QuickDuplication2ndIterationStart.Text = "2nd Iter Start:";
+            // 
+            // labelM64QuickDuplication1stIterationStart
+            // 
+            this.labelM64QuickDuplication1stIterationStart.AutoSize = true;
+            this.labelM64QuickDuplication1stIterationStart.Location = new System.Drawing.Point(6, 21);
+            this.labelM64QuickDuplication1stIterationStart.Name = "labelM64QuickDuplication1stIterationStart";
+            this.labelM64QuickDuplication1stIterationStart.Size = new System.Drawing.Size(67, 13);
+            this.labelM64QuickDuplication1stIterationStart.TabIndex = 14;
+            this.labelM64QuickDuplication1stIterationStart.Text = "1st Iter Start:";
+            // 
+            // groupBoxM64Selection
+            // 
+            this.groupBoxM64Selection.Controls.Add(this.textBoxM64SelectionInputs);
+            this.groupBoxM64Selection.Controls.Add(this.textBoxM64SelectionEndFrame);
+            this.groupBoxM64Selection.Controls.Add(this.textBoxM64SelectionStartFrame);
+            this.groupBoxM64Selection.Controls.Add(this.labelM64SelectionInputs);
+            this.groupBoxM64Selection.Controls.Add(this.labelM64SelectionEndFrame);
+            this.groupBoxM64Selection.Controls.Add(this.labelM64SelectionStartFrame);
+            this.groupBoxM64Selection.Location = new System.Drawing.Point(3, 95);
+            this.groupBoxM64Selection.Name = "groupBoxM64Selection";
+            this.groupBoxM64Selection.Size = new System.Drawing.Size(167, 95);
+            this.groupBoxM64Selection.TabIndex = 15;
+            this.groupBoxM64Selection.TabStop = false;
+            this.groupBoxM64Selection.Text = "Selection Range";
+            // 
+            // textBoxM64SelectionInputs
+            // 
+            this.textBoxM64SelectionInputs.Location = new System.Drawing.Point(72, 66);
+            this.textBoxM64SelectionInputs.Name = "textBoxM64SelectionInputs";
+            this.textBoxM64SelectionInputs.Size = new System.Drawing.Size(88, 20);
+            this.textBoxM64SelectionInputs.TabIndex = 34;
+            this.textBoxM64SelectionInputs.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxM64SelectionEndFrame
+            // 
+            this.textBoxM64SelectionEndFrame.Location = new System.Drawing.Point(72, 42);
+            this.textBoxM64SelectionEndFrame.Name = "textBoxM64SelectionEndFrame";
+            this.textBoxM64SelectionEndFrame.Size = new System.Drawing.Size(88, 20);
+            this.textBoxM64SelectionEndFrame.TabIndex = 34;
+            this.textBoxM64SelectionEndFrame.Text = "0";
+            this.textBoxM64SelectionEndFrame.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxM64SelectionStartFrame
+            // 
+            this.textBoxM64SelectionStartFrame.Location = new System.Drawing.Point(72, 18);
+            this.textBoxM64SelectionStartFrame.Name = "textBoxM64SelectionStartFrame";
+            this.textBoxM64SelectionStartFrame.Size = new System.Drawing.Size(88, 20);
+            this.textBoxM64SelectionStartFrame.TabIndex = 34;
+            this.textBoxM64SelectionStartFrame.Text = "0";
+            this.textBoxM64SelectionStartFrame.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelM64SelectionInputs
+            // 
+            this.labelM64SelectionInputs.AutoSize = true;
+            this.labelM64SelectionInputs.Location = new System.Drawing.Point(6, 69);
+            this.labelM64SelectionInputs.Name = "labelM64SelectionInputs";
+            this.labelM64SelectionInputs.Size = new System.Drawing.Size(39, 13);
+            this.labelM64SelectionInputs.TabIndex = 14;
+            this.labelM64SelectionInputs.Text = "Inputs:";
+            // 
+            // labelM64SelectionEndFrame
+            // 
+            this.labelM64SelectionEndFrame.AutoSize = true;
+            this.labelM64SelectionEndFrame.Location = new System.Drawing.Point(6, 45);
+            this.labelM64SelectionEndFrame.Name = "labelM64SelectionEndFrame";
+            this.labelM64SelectionEndFrame.Size = new System.Drawing.Size(61, 13);
+            this.labelM64SelectionEndFrame.TabIndex = 14;
+            this.labelM64SelectionEndFrame.Text = "End Frame:";
+            // 
+            // labelM64SelectionStartFrame
+            // 
+            this.labelM64SelectionStartFrame.AutoSize = true;
+            this.labelM64SelectionStartFrame.Location = new System.Drawing.Point(6, 21);
+            this.labelM64SelectionStartFrame.Name = "labelM64SelectionStartFrame";
+            this.labelM64SelectionStartFrame.Size = new System.Drawing.Size(64, 13);
+            this.labelM64SelectionStartFrame.TabIndex = 14;
+            this.labelM64SelectionStartFrame.Text = "Start Frame:";
+            // 
+            // labelM64PasteMultiplicity
+            // 
+            this.labelM64PasteMultiplicity.AutoSize = true;
+            this.labelM64PasteMultiplicity.Location = new System.Drawing.Point(11, 429);
+            this.labelM64PasteMultiplicity.Name = "labelM64PasteMultiplicity";
+            this.labelM64PasteMultiplicity.Size = new System.Drawing.Size(58, 13);
+            this.labelM64PasteMultiplicity.TabIndex = 14;
+            this.labelM64PasteMultiplicity.Text = "Multiplicity:";
+            // 
+            // labelM64NumInputsValue
+            // 
+            this.labelM64NumInputsValue.AutoSize = true;
+            this.labelM64NumInputsValue.Location = new System.Drawing.Point(74, 24);
+            this.labelM64NumInputsValue.Name = "labelM64NumInputsValue";
+            this.labelM64NumInputsValue.Size = new System.Drawing.Size(13, 13);
+            this.labelM64NumInputsValue.TabIndex = 14;
+            this.labelM64NumInputsValue.Text = "0";
+            // 
+            // labelM64OnValue
+            // 
+            this.labelM64OnValue.AutoSize = true;
+            this.labelM64OnValue.Location = new System.Drawing.Point(277, 240);
+            this.labelM64OnValue.Name = "labelM64OnValue";
+            this.labelM64OnValue.Size = new System.Drawing.Size(54, 13);
+            this.labelM64OnValue.TabIndex = 14;
+            this.labelM64OnValue.Text = "On Value:";
+            // 
+            // labelM64NumInputsLabel
+            // 
+            this.labelM64NumInputsLabel.AutoSize = true;
+            this.labelM64NumInputsLabel.Location = new System.Drawing.Point(9, 24);
+            this.labelM64NumInputsLabel.Name = "labelM64NumInputsLabel";
+            this.labelM64NumInputsLabel.Size = new System.Drawing.Size(64, 13);
+            this.labelM64NumInputsLabel.TabIndex = 14;
+            this.labelM64NumInputsLabel.Text = "Num Inputs:";
+            // 
+            // labelM64FileName
+            // 
+            this.labelM64FileName.AutoSize = true;
+            this.labelM64FileName.Location = new System.Drawing.Point(33, 7);
+            this.labelM64FileName.Name = "labelM64FileName";
+            this.labelM64FileName.Size = new System.Drawing.Size(87, 13);
+            this.labelM64FileName.TabIndex = 14;
+            this.labelM64FileName.Text = "(No File Opened)";
+            // 
+            // labelM64FileLabel
+            // 
+            this.labelM64FileLabel.AutoSize = true;
+            this.labelM64FileLabel.Location = new System.Drawing.Point(9, 7);
+            this.labelM64FileLabel.Name = "labelM64FileLabel";
+            this.labelM64FileLabel.Size = new System.Drawing.Size(26, 13);
+            this.labelM64FileLabel.TabIndex = 14;
+            this.labelM64FileLabel.Text = "File:";
+            // 
+            // buttonM64Goto
+            // 
+            this.buttonM64Goto.Location = new System.Drawing.Point(279, 93);
+            this.buttonM64Goto.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64Goto.Name = "buttonM64Goto";
+            this.buttonM64Goto.Size = new System.Drawing.Size(63, 22);
+            this.buttonM64Goto.TabIndex = 12;
+            this.buttonM64Goto.Text = "Goto";
+            this.buttonM64Goto.UseVisualStyleBackColor = true;
+            // 
+            // textBoxM64OnValue
+            // 
+            this.textBoxM64OnValue.Location = new System.Drawing.Point(273, 255);
+            this.textBoxM64OnValue.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxM64OnValue.Name = "textBoxM64OnValue";
+            this.textBoxM64OnValue.Size = new System.Drawing.Size(63, 20);
+            this.textBoxM64OnValue.TabIndex = 11;
+            this.textBoxM64OnValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxM64Goto
+            // 
+            this.textBoxM64Goto.Location = new System.Drawing.Point(212, 95);
+            this.textBoxM64Goto.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxM64Goto.Name = "textBoxM64Goto";
+            this.textBoxM64Goto.Size = new System.Drawing.Size(63, 20);
+            this.textBoxM64Goto.TabIndex = 11;
+            this.textBoxM64Goto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonM64PasteOverwrite
+            // 
+            this.buttonM64PasteOverwrite.Location = new System.Drawing.Point(91, 383);
+            this.buttonM64PasteOverwrite.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64PasteOverwrite.Name = "buttonM64PasteOverwrite";
+            this.buttonM64PasteOverwrite.Size = new System.Drawing.Size(79, 38);
+            this.buttonM64PasteOverwrite.TabIndex = 8;
+            this.buttonM64PasteOverwrite.Text = "Paste\r\nOverwrite";
+            this.buttonM64PasteOverwrite.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64PasteInsert
+            // 
+            this.buttonM64PasteInsert.Location = new System.Drawing.Point(8, 383);
+            this.buttonM64PasteInsert.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64PasteInsert.Name = "buttonM64PasteInsert";
+            this.buttonM64PasteInsert.Size = new System.Drawing.Size(79, 38);
+            this.buttonM64PasteInsert.TabIndex = 8;
+            this.buttonM64PasteInsert.Text = "Paste\r\nInsert";
+            this.buttonM64PasteInsert.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64CopyInputRange
+            // 
+            this.buttonM64CopyInputRange.Location = new System.Drawing.Point(91, 279);
+            this.buttonM64CopyInputRange.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64CopyInputRange.Name = "buttonM64CopyInputRange";
+            this.buttonM64CopyInputRange.Size = new System.Drawing.Size(79, 38);
+            this.buttonM64CopyInputRange.TabIndex = 8;
+            this.buttonM64CopyInputRange.Text = "Copy\r\nInput Range";
+            this.buttonM64CopyInputRange.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64TurnOffCells
+            // 
+            this.buttonM64TurnOffCells.Location = new System.Drawing.Point(174, 195);
+            this.buttonM64TurnOffCells.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64TurnOffCells.Name = "buttonM64TurnOffCells";
+            this.buttonM64TurnOffCells.Size = new System.Drawing.Size(79, 38);
+            this.buttonM64TurnOffCells.TabIndex = 8;
+            this.buttonM64TurnOffCells.Text = "Turn Off\r\nCells";
+            this.buttonM64TurnOffCells.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64TurnOffInputRange
+            // 
+            this.buttonM64TurnOffInputRange.Location = new System.Drawing.Point(91, 195);
+            this.buttonM64TurnOffInputRange.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64TurnOffInputRange.Name = "buttonM64TurnOffInputRange";
+            this.buttonM64TurnOffInputRange.Size = new System.Drawing.Size(79, 38);
+            this.buttonM64TurnOffInputRange.TabIndex = 8;
+            this.buttonM64TurnOffInputRange.Text = "Turn Off\r\nInput Range";
+            this.buttonM64TurnOffInputRange.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64TurnOffRowRange
+            // 
+            this.buttonM64TurnOffRowRange.Location = new System.Drawing.Point(8, 195);
+            this.buttonM64TurnOffRowRange.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64TurnOffRowRange.Name = "buttonM64TurnOffRowRange";
+            this.buttonM64TurnOffRowRange.Size = new System.Drawing.Size(79, 38);
+            this.buttonM64TurnOffRowRange.TabIndex = 8;
+            this.buttonM64TurnOffRowRange.Text = "Turn Off\r\nRow Range";
+            this.buttonM64TurnOffRowRange.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64TurnOnCells
+            // 
+            this.buttonM64TurnOnCells.Location = new System.Drawing.Point(174, 237);
+            this.buttonM64TurnOnCells.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64TurnOnCells.Name = "buttonM64TurnOnCells";
+            this.buttonM64TurnOnCells.Size = new System.Drawing.Size(79, 38);
+            this.buttonM64TurnOnCells.TabIndex = 8;
+            this.buttonM64TurnOnCells.Text = "Turn On\r\nCells";
+            this.buttonM64TurnOnCells.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64TurnOnInputRange
+            // 
+            this.buttonM64TurnOnInputRange.Location = new System.Drawing.Point(91, 237);
+            this.buttonM64TurnOnInputRange.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64TurnOnInputRange.Name = "buttonM64TurnOnInputRange";
+            this.buttonM64TurnOnInputRange.Size = new System.Drawing.Size(79, 38);
+            this.buttonM64TurnOnInputRange.TabIndex = 8;
+            this.buttonM64TurnOnInputRange.Text = "Turn On\r\nInput Range";
+            this.buttonM64TurnOnInputRange.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64DeleteRowRange
+            // 
+            this.buttonM64DeleteRowRange.Location = new System.Drawing.Point(8, 237);
+            this.buttonM64DeleteRowRange.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64DeleteRowRange.Name = "buttonM64DeleteRowRange";
+            this.buttonM64DeleteRowRange.Size = new System.Drawing.Size(79, 38);
+            this.buttonM64DeleteRowRange.TabIndex = 8;
+            this.buttonM64DeleteRowRange.Text = "Delete\r\nRow Range";
+            this.buttonM64DeleteRowRange.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64CopyRowRange
+            // 
+            this.buttonM64CopyRowRange.Location = new System.Drawing.Point(8, 279);
+            this.buttonM64CopyRowRange.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64CopyRowRange.Name = "buttonM64CopyRowRange";
+            this.buttonM64CopyRowRange.Size = new System.Drawing.Size(79, 38);
+            this.buttonM64CopyRowRange.TabIndex = 8;
+            this.buttonM64CopyRowRange.Text = "Copy\r\nRow Range";
+            this.buttonM64CopyRowRange.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64SetJpHeader
+            // 
+            this.buttonM64SetJpHeader.Location = new System.Drawing.Point(279, 119);
+            this.buttonM64SetJpHeader.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64SetJpHeader.Name = "buttonM64SetJpHeader";
+            this.buttonM64SetJpHeader.Size = new System.Drawing.Size(63, 38);
+            this.buttonM64SetJpHeader.TabIndex = 8;
+            this.buttonM64SetJpHeader.Text = "Set JP Header";
+            this.buttonM64SetJpHeader.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64SetUsHeader
+            // 
+            this.buttonM64SetUsHeader.Location = new System.Drawing.Point(212, 119);
+            this.buttonM64SetUsHeader.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64SetUsHeader.Name = "buttonM64SetUsHeader";
+            this.buttonM64SetUsHeader.Size = new System.Drawing.Size(63, 38);
+            this.buttonM64SetUsHeader.TabIndex = 8;
+            this.buttonM64SetUsHeader.Text = "Set US Header";
+            this.buttonM64SetUsHeader.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64Close
+            // 
+            this.buttonM64Close.Location = new System.Drawing.Point(8, 68);
+            this.buttonM64Close.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64Close.Name = "buttonM64Close";
+            this.buttonM64Close.Size = new System.Drawing.Size(53, 22);
+            this.buttonM64Close.TabIndex = 8;
+            this.buttonM64Close.Text = "Close";
+            this.buttonM64Close.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64Open
+            // 
+            this.buttonM64Open.Location = new System.Drawing.Point(8, 44);
+            this.buttonM64Open.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64Open.Name = "buttonM64Open";
+            this.buttonM64Open.Size = new System.Drawing.Size(53, 22);
+            this.buttonM64Open.TabIndex = 8;
+            this.buttonM64Open.Text = "Open";
+            this.buttonM64Open.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64SaveAs
+            // 
+            this.buttonM64SaveAs.Location = new System.Drawing.Point(133, 68);
+            this.buttonM64SaveAs.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64SaveAs.Name = "buttonM64SaveAs";
+            this.buttonM64SaveAs.Size = new System.Drawing.Size(63, 22);
+            this.buttonM64SaveAs.TabIndex = 10;
+            this.buttonM64SaveAs.Text = "Save As";
+            this.buttonM64SaveAs.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64ResetChanges
+            // 
+            this.buttonM64ResetChanges.Location = new System.Drawing.Point(65, 44);
+            this.buttonM64ResetChanges.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64ResetChanges.Name = "buttonM64ResetChanges";
+            this.buttonM64ResetChanges.Size = new System.Drawing.Size(64, 46);
+            this.buttonM64ResetChanges.TabIndex = 9;
+            this.buttonM64ResetChanges.Text = "Reset\r\nChanges";
+            this.buttonM64ResetChanges.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64Save
+            // 
+            this.buttonM64Save.Location = new System.Drawing.Point(133, 44);
+            this.buttonM64Save.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64Save.Name = "buttonM64Save";
+            this.buttonM64Save.Size = new System.Drawing.Size(63, 22);
+            this.buttonM64Save.TabIndex = 9;
+            this.buttonM64Save.Text = "Save";
+            this.buttonM64Save.UseVisualStyleBackColor = true;
+            // 
+            // labelM64ProgressBar
+            // 
+            this.labelM64ProgressBar.AutoSize = true;
+            this.labelM64ProgressBar.BackColor = System.Drawing.Color.Transparent;
+            this.labelM64ProgressBar.Location = new System.Drawing.Point(290, 5);
+            this.labelM64ProgressBar.Name = "labelM64ProgressBar";
+            this.labelM64ProgressBar.Size = new System.Drawing.Size(26, 13);
+            this.labelM64ProgressBar.TabIndex = 42;
+            this.labelM64ProgressBar.Text = "File:";
+            // 
+            // progressBarM64
+            // 
+            this.progressBarM64.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBarM64.Location = new System.Drawing.Point(134, 0);
+            this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
+            this.progressBarM64.Name = "progressBarM64";
+            this.progressBarM64.Size = new System.Drawing.Size(445, 20);
+            this.progressBarM64.TabIndex = 41;
+            // 
+            // tabControlM64Details
+            // 
+            this.tabControlM64Details.Controls.Add(this.tabPageM64Inputs);
+            this.tabControlM64Details.Controls.Add(this.tabPageM64Header);
+            this.tabControlM64Details.Controls.Add(this.tabPageM64Stats);
+            this.tabControlM64Details.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlM64Details.Location = new System.Drawing.Point(0, 0);
+            this.tabControlM64Details.Margin = new System.Windows.Forms.Padding(0);
+            this.tabControlM64Details.Name = "tabControlM64Details";
+            this.tabControlM64Details.SelectedIndex = 0;
+            this.tabControlM64Details.Size = new System.Drawing.Size(543, 455);
+            this.tabControlM64Details.TabIndex = 40;
+            // 
+            // tabPageM64Inputs
+            // 
+            this.tabPageM64Inputs.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageM64Inputs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageM64Inputs.Controls.Add(this.dataGridViewM64Inputs);
+            this.tabPageM64Inputs.Location = new System.Drawing.Point(4, 22);
+            this.tabPageM64Inputs.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageM64Inputs.Name = "tabPageM64Inputs";
+            this.tabPageM64Inputs.Size = new System.Drawing.Size(535, 429);
+            this.tabPageM64Inputs.TabIndex = 3;
+            this.tabPageM64Inputs.Text = "Inputs";
+            // 
+            // dataGridViewM64Inputs
+            // 
+            this.dataGridViewM64Inputs.AllowUserToDeleteRows = false;
+            this.dataGridViewM64Inputs.AllowUserToResizeColumns = false;
+            this.dataGridViewM64Inputs.AllowUserToResizeRows = false;
+            this.dataGridViewM64Inputs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewM64Inputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewM64Inputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnM64Frame,
+            this.ColumnM64Id,
+            this.ColumnM64X,
+            this.ColumnM64Y,
+            this.ColumnM64A,
+            this.ColumnM64B,
+            this.ColumnM64Z,
+            this.ColumnM64S,
+            this.ColumnM64R,
+            this.ColumnM64CUp,
+            this.ColumnM64CDown,
+            this.ColumnM64CLeft,
+            this.ColumnM64CRight,
+            this.ColumnM64L,
+            this.ColumnM64DUp,
+            this.ColumnM64DDown,
+            this.ColumnM64DLeft,
+            this.ColumnM64DRight});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewM64Inputs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewM64Inputs.EnableHeadersVisualStyles = false;
+            this.dataGridViewM64Inputs.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewM64Inputs.Margin = new System.Windows.Forms.Padding(0);
+            this.dataGridViewM64Inputs.Name = "dataGridViewM64Inputs";
+            this.dataGridViewM64Inputs.RowHeadersVisible = false;
+            this.dataGridViewM64Inputs.RowTemplate.Height = 20;
+            this.dataGridViewM64Inputs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridViewM64Inputs.Size = new System.Drawing.Size(533, 427);
+            this.dataGridViewM64Inputs.TabIndex = 2;
+            // 
+            // ColumnM64Frame
+            // 
+            this.ColumnM64Frame.DataPropertyName = "Frame";
+            this.ColumnM64Frame.FillWeight = 200F;
+            this.ColumnM64Frame.HeaderText = "Frame";
+            this.ColumnM64Frame.Name = "ColumnM64Frame";
+            this.ColumnM64Frame.ReadOnly = true;
+            this.ColumnM64Frame.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ColumnM64Id
+            // 
+            this.ColumnM64Id.DataPropertyName = "Id";
+            this.ColumnM64Id.FillWeight = 200F;
+            this.ColumnM64Id.HeaderText = "Id";
+            this.ColumnM64Id.Name = "ColumnM64Id";
+            this.ColumnM64Id.ReadOnly = true;
+            this.ColumnM64Id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ColumnM64X
+            // 
+            this.ColumnM64X.DataPropertyName = "X";
+            this.ColumnM64X.FillWeight = 200F;
+            this.ColumnM64X.HeaderText = "X";
+            this.ColumnM64X.Name = "ColumnM64X";
+            this.ColumnM64X.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ColumnM64Y
+            // 
+            this.ColumnM64Y.DataPropertyName = "Y";
+            this.ColumnM64Y.FillWeight = 200F;
+            this.ColumnM64Y.HeaderText = "Y";
+            this.ColumnM64Y.Name = "ColumnM64Y";
+            this.ColumnM64Y.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ColumnM64A
+            // 
+            this.ColumnM64A.DataPropertyName = "A";
+            this.ColumnM64A.HeaderText = "A";
+            this.ColumnM64A.Name = "ColumnM64A";
+            this.ColumnM64A.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64B
+            // 
+            this.ColumnM64B.DataPropertyName = "B";
+            this.ColumnM64B.HeaderText = "B";
+            this.ColumnM64B.Name = "ColumnM64B";
+            this.ColumnM64B.ReadOnly = true;
+            this.ColumnM64B.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64Z
+            // 
+            this.ColumnM64Z.DataPropertyName = "Z";
+            this.ColumnM64Z.HeaderText = "Z";
+            this.ColumnM64Z.Name = "ColumnM64Z";
+            this.ColumnM64Z.ReadOnly = true;
+            this.ColumnM64Z.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64S
+            // 
+            this.ColumnM64S.DataPropertyName = "S";
+            this.ColumnM64S.HeaderText = "S";
+            this.ColumnM64S.Name = "ColumnM64S";
+            this.ColumnM64S.ReadOnly = true;
+            this.ColumnM64S.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64R
+            // 
+            this.ColumnM64R.DataPropertyName = "R";
+            this.ColumnM64R.HeaderText = "R";
+            this.ColumnM64R.Name = "ColumnM64R";
+            this.ColumnM64R.ReadOnly = true;
+            this.ColumnM64R.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64CUp
+            // 
+            this.ColumnM64CUp.DataPropertyName = "C_Up";
+            this.ColumnM64CUp.HeaderText = "C^";
+            this.ColumnM64CUp.Name = "ColumnM64CUp";
+            this.ColumnM64CUp.ReadOnly = true;
+            this.ColumnM64CUp.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64CDown
+            // 
+            this.ColumnM64CDown.DataPropertyName = "C_Down";
+            this.ColumnM64CDown.HeaderText = "Cv";
+            this.ColumnM64CDown.Name = "ColumnM64CDown";
+            this.ColumnM64CDown.ReadOnly = true;
+            this.ColumnM64CDown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64CLeft
+            // 
+            this.ColumnM64CLeft.DataPropertyName = "C_Left";
+            this.ColumnM64CLeft.HeaderText = "C<";
+            this.ColumnM64CLeft.Name = "ColumnM64CLeft";
+            this.ColumnM64CLeft.ReadOnly = true;
+            this.ColumnM64CLeft.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64CRight
+            // 
+            this.ColumnM64CRight.DataPropertyName = "C_Right";
+            this.ColumnM64CRight.HeaderText = "C>";
+            this.ColumnM64CRight.Name = "ColumnM64CRight";
+            this.ColumnM64CRight.ReadOnly = true;
+            this.ColumnM64CRight.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64L
+            // 
+            this.ColumnM64L.DataPropertyName = "L";
+            this.ColumnM64L.HeaderText = "L";
+            this.ColumnM64L.Name = "ColumnM64L";
+            this.ColumnM64L.ReadOnly = true;
+            this.ColumnM64L.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64DUp
+            // 
+            this.ColumnM64DUp.DataPropertyName = "D_Up";
+            this.ColumnM64DUp.HeaderText = "D^";
+            this.ColumnM64DUp.Name = "ColumnM64DUp";
+            this.ColumnM64DUp.ReadOnly = true;
+            this.ColumnM64DUp.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64DDown
+            // 
+            this.ColumnM64DDown.DataPropertyName = "D_Down";
+            this.ColumnM64DDown.HeaderText = "Dv";
+            this.ColumnM64DDown.Name = "ColumnM64DDown";
+            this.ColumnM64DDown.ReadOnly = true;
+            this.ColumnM64DDown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64DLeft
+            // 
+            this.ColumnM64DLeft.DataPropertyName = "D_Left";
+            this.ColumnM64DLeft.HeaderText = "D<";
+            this.ColumnM64DLeft.Name = "ColumnM64DLeft";
+            this.ColumnM64DLeft.ReadOnly = true;
+            this.ColumnM64DLeft.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64DRight
+            // 
+            this.ColumnM64DRight.DataPropertyName = "D_Right";
+            this.ColumnM64DRight.HeaderText = "D>";
+            this.ColumnM64DRight.Name = "ColumnM64DRight";
+            this.ColumnM64DRight.ReadOnly = true;
+            this.ColumnM64DRight.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // tabPageM64Header
+            // 
+            this.tabPageM64Header.AutoScroll = true;
+            this.tabPageM64Header.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageM64Header.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageM64Header.Controls.Add(this.propertyGridM64Header);
+            this.tabPageM64Header.Location = new System.Drawing.Point(4, 22);
+            this.tabPageM64Header.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageM64Header.Name = "tabPageM64Header";
+            this.tabPageM64Header.Size = new System.Drawing.Size(535, 429);
+            this.tabPageM64Header.TabIndex = 2;
+            this.tabPageM64Header.Text = "Header";
+            // 
+            // propertyGridM64Header
+            // 
+            this.propertyGridM64Header.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.propertyGridM64Header.HelpVisible = false;
+            this.propertyGridM64Header.Location = new System.Drawing.Point(0, 0);
+            this.propertyGridM64Header.Name = "propertyGridM64Header";
+            this.propertyGridM64Header.Size = new System.Drawing.Size(533, 427);
+            this.propertyGridM64Header.TabIndex = 0;
+            this.propertyGridM64Header.ToolbarVisible = false;
+            // 
+            // tabPageM64Stats
+            // 
+            this.tabPageM64Stats.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageM64Stats.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageM64Stats.Controls.Add(this.propertyGridM64Stats);
+            this.tabPageM64Stats.Location = new System.Drawing.Point(4, 22);
+            this.tabPageM64Stats.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageM64Stats.Name = "tabPageM64Stats";
+            this.tabPageM64Stats.Size = new System.Drawing.Size(535, 429);
+            this.tabPageM64Stats.TabIndex = 4;
+            this.tabPageM64Stats.Text = "Stats";
+            // 
+            // propertyGridM64Stats
+            // 
+            this.propertyGridM64Stats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.propertyGridM64Stats.HelpVisible = false;
+            this.propertyGridM64Stats.Location = new System.Drawing.Point(0, 0);
+            this.propertyGridM64Stats.Margin = new System.Windows.Forms.Padding(0);
+            this.propertyGridM64Stats.Name = "propertyGridM64Stats";
+            this.propertyGridM64Stats.Size = new System.Drawing.Size(533, 427);
+            this.propertyGridM64Stats.TabIndex = 1;
+            this.propertyGridM64Stats.ToolbarVisible = false;
             // 
             // tabPageCustom
             // 
@@ -10110,264 +9699,6 @@ namespace STROOP
             this.watchVariablePanelTas.Size = new System.Drawing.Size(474, 455);
             this.watchVariablePanelTas.TabIndex = 5;
             // 
-            // tabPageDebug
-            // 
-            this.tabPageDebug.Controls.Add(this.splitContainerDebug);
-            this.tabPageDebug.Location = new System.Drawing.Point(4, 22);
-            this.tabPageDebug.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPageDebug.Name = "tabPageDebug";
-            this.tabPageDebug.Size = new System.Drawing.Size(915, 463);
-            this.tabPageDebug.TabIndex = 8;
-            this.tabPageDebug.Text = "Debug";
-            // 
-            // splitContainerDebug
-            // 
-            this.splitContainerDebug.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainerDebug.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerDebug.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerDebug.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerDebug.Margin = new System.Windows.Forms.Padding(0);
-            this.splitContainerDebug.Name = "splitContainerDebug";
-            // 
-            // splitContainerDebug.Panel1
-            // 
-            this.splitContainerDebug.Panel1.AutoScroll = true;
-            this.splitContainerDebug.Panel1.Controls.Add(this.panelDebugBorder);
-            this.splitContainerDebug.Panel1.Controls.Add(this.groupBoxMiscDebug);
-            this.splitContainerDebug.Panel1.Controls.Add(this.groupBoxResourceMeter);
-            this.splitContainerDebug.Panel1.Controls.Add(this.groupBoxAdvancedMode);
-            this.splitContainerDebug.Panel1MinSize = 0;
-            // 
-            // splitContainerDebug.Panel2
-            // 
-            this.splitContainerDebug.Panel2.Controls.Add(this.watchVariablePanelDebug);
-            this.splitContainerDebug.Panel2MinSize = 0;
-            this.splitContainerDebug.Size = new System.Drawing.Size(915, 463);
-            this.splitContainerDebug.SplitterDistance = 388;
-            this.splitContainerDebug.SplitterWidth = 1;
-            this.splitContainerDebug.TabIndex = 39;
-            // 
-            // panelDebugBorder
-            // 
-            this.panelDebugBorder.Controls.Add(this.pictureBoxDebug);
-            this.panelDebugBorder.Location = new System.Drawing.Point(3, 4);
-            this.panelDebugBorder.Margin = new System.Windows.Forms.Padding(2);
-            this.panelDebugBorder.Name = "panelDebugBorder";
-            this.panelDebugBorder.Size = new System.Drawing.Size(55, 55);
-            this.panelDebugBorder.TabIndex = 3;
-            // 
-            // pictureBoxDebug
-            // 
-            this.pictureBoxDebug.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxDebug.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBoxDebug.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxDebug.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBoxDebug.MaximumSize = new System.Drawing.Size(133, 130);
-            this.pictureBoxDebug.Name = "pictureBoxDebug";
-            this.pictureBoxDebug.Size = new System.Drawing.Size(49, 49);
-            this.pictureBoxDebug.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxDebug.TabIndex = 0;
-            this.pictureBoxDebug.TabStop = false;
-            // 
-            // groupBoxMiscDebug
-            // 
-            this.groupBoxMiscDebug.Controls.Add(this.checkBoxFreeMovement);
-            this.groupBoxMiscDebug.Controls.Add(this.checkBoxSpawnMode);
-            this.groupBoxMiscDebug.Controls.Add(this.checkBoxStageSelect);
-            this.groupBoxMiscDebug.Controls.Add(this.checkBoxClassicMode);
-            this.groupBoxMiscDebug.Location = new System.Drawing.Point(247, 64);
-            this.groupBoxMiscDebug.Name = "groupBoxMiscDebug";
-            this.groupBoxMiscDebug.Size = new System.Drawing.Size(117, 125);
-            this.groupBoxMiscDebug.TabIndex = 38;
-            this.groupBoxMiscDebug.TabStop = false;
-            this.groupBoxMiscDebug.Text = "Misc Debug";
-            // 
-            // checkBoxFreeMovement
-            // 
-            this.checkBoxFreeMovement.AutoSize = true;
-            this.checkBoxFreeMovement.Location = new System.Drawing.Point(6, 96);
-            this.checkBoxFreeMovement.Name = "checkBoxFreeMovement";
-            this.checkBoxFreeMovement.Size = new System.Drawing.Size(100, 17);
-            this.checkBoxFreeMovement.TabIndex = 24;
-            this.checkBoxFreeMovement.Text = "Free Movement";
-            this.checkBoxFreeMovement.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxSpawnMode
-            // 
-            this.checkBoxSpawnMode.AutoSize = true;
-            this.checkBoxSpawnMode.Location = new System.Drawing.Point(6, 46);
-            this.checkBoxSpawnMode.Name = "checkBoxSpawnMode";
-            this.checkBoxSpawnMode.Size = new System.Drawing.Size(89, 17);
-            this.checkBoxSpawnMode.TabIndex = 12;
-            this.checkBoxSpawnMode.Text = "Spawn Mode";
-            this.checkBoxSpawnMode.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxStageSelect
-            // 
-            this.checkBoxStageSelect.AutoSize = true;
-            this.checkBoxStageSelect.Location = new System.Drawing.Point(6, 71);
-            this.checkBoxStageSelect.Name = "checkBoxStageSelect";
-            this.checkBoxStageSelect.Size = new System.Drawing.Size(87, 17);
-            this.checkBoxStageSelect.TabIndex = 24;
-            this.checkBoxStageSelect.Text = "Stage Select";
-            this.checkBoxStageSelect.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxClassicMode
-            // 
-            this.checkBoxClassicMode.AutoSize = true;
-            this.checkBoxClassicMode.Location = new System.Drawing.Point(6, 21);
-            this.checkBoxClassicMode.Name = "checkBoxClassicMode";
-            this.checkBoxClassicMode.Size = new System.Drawing.Size(89, 17);
-            this.checkBoxClassicMode.TabIndex = 23;
-            this.checkBoxClassicMode.Text = "Classic Mode";
-            this.checkBoxClassicMode.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxResourceMeter
-            // 
-            this.groupBoxResourceMeter.Controls.Add(this.radioButtonResourceMeterOff);
-            this.groupBoxResourceMeter.Controls.Add(this.radioButtonResourceMeter1);
-            this.groupBoxResourceMeter.Controls.Add(this.radioButtonResourceMeter2);
-            this.groupBoxResourceMeter.Location = new System.Drawing.Point(137, 64);
-            this.groupBoxResourceMeter.Name = "groupBoxResourceMeter";
-            this.groupBoxResourceMeter.Size = new System.Drawing.Size(104, 94);
-            this.groupBoxResourceMeter.TabIndex = 38;
-            this.groupBoxResourceMeter.TabStop = false;
-            this.groupBoxResourceMeter.Text = "Resource Meter";
-            // 
-            // radioButtonResourceMeterOff
-            // 
-            this.radioButtonResourceMeterOff.AutoSize = true;
-            this.radioButtonResourceMeterOff.Checked = true;
-            this.radioButtonResourceMeterOff.Location = new System.Drawing.Point(11, 21);
-            this.radioButtonResourceMeterOff.Name = "radioButtonResourceMeterOff";
-            this.radioButtonResourceMeterOff.Size = new System.Drawing.Size(39, 17);
-            this.radioButtonResourceMeterOff.TabIndex = 7;
-            this.radioButtonResourceMeterOff.TabStop = true;
-            this.radioButtonResourceMeterOff.Text = "Off";
-            this.radioButtonResourceMeterOff.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonResourceMeter1
-            // 
-            this.radioButtonResourceMeter1.AutoSize = true;
-            this.radioButtonResourceMeter1.Location = new System.Drawing.Point(11, 44);
-            this.radioButtonResourceMeter1.Name = "radioButtonResourceMeter1";
-            this.radioButtonResourceMeter1.Size = new System.Drawing.Size(61, 17);
-            this.radioButtonResourceMeter1.TabIndex = 8;
-            this.radioButtonResourceMeter1.Text = "Meter 1";
-            this.radioButtonResourceMeter1.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonResourceMeter2
-            // 
-            this.radioButtonResourceMeter2.AutoSize = true;
-            this.radioButtonResourceMeter2.Location = new System.Drawing.Point(11, 67);
-            this.radioButtonResourceMeter2.Name = "radioButtonResourceMeter2";
-            this.radioButtonResourceMeter2.Size = new System.Drawing.Size(61, 17);
-            this.radioButtonResourceMeter2.TabIndex = 9;
-            this.radioButtonResourceMeter2.Text = "Meter 2";
-            this.radioButtonResourceMeter2.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxAdvancedMode
-            // 
-            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeOff);
-            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeEnemyInfo);
-            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeObjectCounter);
-            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeEffectInfo);
-            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeCheckInfo);
-            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeStageInfo);
-            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeMapInfo);
-            this.groupBoxAdvancedMode.Location = new System.Drawing.Point(6, 64);
-            this.groupBoxAdvancedMode.Name = "groupBoxAdvancedMode";
-            this.groupBoxAdvancedMode.Size = new System.Drawing.Size(125, 184);
-            this.groupBoxAdvancedMode.TabIndex = 38;
-            this.groupBoxAdvancedMode.TabStop = false;
-            this.groupBoxAdvancedMode.Text = "Advanced Mode";
-            // 
-            // radioButtonAdvancedModeOff
-            // 
-            this.radioButtonAdvancedModeOff.AutoSize = true;
-            this.radioButtonAdvancedModeOff.Checked = true;
-            this.radioButtonAdvancedModeOff.Location = new System.Drawing.Point(11, 19);
-            this.radioButtonAdvancedModeOff.Name = "radioButtonAdvancedModeOff";
-            this.radioButtonAdvancedModeOff.Size = new System.Drawing.Size(39, 17);
-            this.radioButtonAdvancedModeOff.TabIndex = 1;
-            this.radioButtonAdvancedModeOff.TabStop = true;
-            this.radioButtonAdvancedModeOff.Text = "Off";
-            this.radioButtonAdvancedModeOff.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAdvancedModeEnemyInfo
-            // 
-            this.radioButtonAdvancedModeEnemyInfo.AutoSize = true;
-            this.radioButtonAdvancedModeEnemyInfo.Location = new System.Drawing.Point(11, 157);
-            this.radioButtonAdvancedModeEnemyInfo.Name = "radioButtonAdvancedModeEnemyInfo";
-            this.radioButtonAdvancedModeEnemyInfo.Size = new System.Drawing.Size(78, 17);
-            this.radioButtonAdvancedModeEnemyInfo.TabIndex = 10;
-            this.radioButtonAdvancedModeEnemyInfo.Text = "Enemy Info";
-            this.radioButtonAdvancedModeEnemyInfo.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAdvancedModeObjectCounter
-            // 
-            this.radioButtonAdvancedModeObjectCounter.AutoSize = true;
-            this.radioButtonAdvancedModeObjectCounter.Location = new System.Drawing.Point(11, 42);
-            this.radioButtonAdvancedModeObjectCounter.Name = "radioButtonAdvancedModeObjectCounter";
-            this.radioButtonAdvancedModeObjectCounter.Size = new System.Drawing.Size(96, 17);
-            this.radioButtonAdvancedModeObjectCounter.TabIndex = 5;
-            this.radioButtonAdvancedModeObjectCounter.Text = "Object Counter";
-            this.radioButtonAdvancedModeObjectCounter.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAdvancedModeEffectInfo
-            // 
-            this.radioButtonAdvancedModeEffectInfo.AutoSize = true;
-            this.radioButtonAdvancedModeEffectInfo.Location = new System.Drawing.Point(11, 134);
-            this.radioButtonAdvancedModeEffectInfo.Name = "radioButtonAdvancedModeEffectInfo";
-            this.radioButtonAdvancedModeEffectInfo.Size = new System.Drawing.Size(74, 17);
-            this.radioButtonAdvancedModeEffectInfo.TabIndex = 9;
-            this.radioButtonAdvancedModeEffectInfo.Text = "Effect Info";
-            this.radioButtonAdvancedModeEffectInfo.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAdvancedModeCheckInfo
-            // 
-            this.radioButtonAdvancedModeCheckInfo.AutoSize = true;
-            this.radioButtonAdvancedModeCheckInfo.Location = new System.Drawing.Point(11, 65);
-            this.radioButtonAdvancedModeCheckInfo.Name = "radioButtonAdvancedModeCheckInfo";
-            this.radioButtonAdvancedModeCheckInfo.Size = new System.Drawing.Size(77, 17);
-            this.radioButtonAdvancedModeCheckInfo.TabIndex = 6;
-            this.radioButtonAdvancedModeCheckInfo.Text = "Check Info";
-            this.radioButtonAdvancedModeCheckInfo.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAdvancedModeStageInfo
-            // 
-            this.radioButtonAdvancedModeStageInfo.AutoSize = true;
-            this.radioButtonAdvancedModeStageInfo.Location = new System.Drawing.Point(11, 111);
-            this.radioButtonAdvancedModeStageInfo.Name = "radioButtonAdvancedModeStageInfo";
-            this.radioButtonAdvancedModeStageInfo.Size = new System.Drawing.Size(74, 17);
-            this.radioButtonAdvancedModeStageInfo.TabIndex = 8;
-            this.radioButtonAdvancedModeStageInfo.Text = "Stage Info";
-            this.radioButtonAdvancedModeStageInfo.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAdvancedModeMapInfo
-            // 
-            this.radioButtonAdvancedModeMapInfo.AutoSize = true;
-            this.radioButtonAdvancedModeMapInfo.Location = new System.Drawing.Point(11, 88);
-            this.radioButtonAdvancedModeMapInfo.Name = "radioButtonAdvancedModeMapInfo";
-            this.radioButtonAdvancedModeMapInfo.Size = new System.Drawing.Size(67, 17);
-            this.radioButtonAdvancedModeMapInfo.TabIndex = 7;
-            this.radioButtonAdvancedModeMapInfo.Text = "Map Info";
-            this.radioButtonAdvancedModeMapInfo.UseVisualStyleBackColor = true;
-            // 
-            // watchVariablePanelDebug
-            // 
-            this.watchVariablePanelDebug.AutoScroll = true;
-            this.watchVariablePanelDebug.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.watchVariablePanelDebug.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.watchVariablePanelDebug.Location = new System.Drawing.Point(0, 0);
-            this.watchVariablePanelDebug.Margin = new System.Windows.Forms.Padding(0);
-            this.watchVariablePanelDebug.Name = "watchVariablePanelDebug";
-            this.watchVariablePanelDebug.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelDebug.Size = new System.Drawing.Size(524, 461);
-            this.watchVariablePanelDebug.TabIndex = 26;
-            // 
             // tabPageMap
             // 
             this.tabPageMap.Controls.Add(this.splitContainerMap);
@@ -11000,6 +10331,969 @@ namespace STROOP
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
+            // 
+            // tabPageMap2
+            // 
+            this.tabPageMap2.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageMap2.Controls.Add(this.splitContainerMap2);
+            this.tabPageMap2.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMap2.Name = "tabPageMap2";
+            this.tabPageMap2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageMap2.Size = new System.Drawing.Size(915, 463);
+            this.tabPageMap2.TabIndex = 30;
+            this.tabPageMap2.Text = "Map2";
+            // 
+            // splitContainerMap2
+            // 
+            this.splitContainerMap2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerMap2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerMap2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerMap2.Location = new System.Drawing.Point(3, 3);
+            this.splitContainerMap2.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerMap2.Name = "splitContainerMap2";
+            // 
+            // splitContainerMap2.Panel1
+            // 
+            this.splitContainerMap2.Panel1.Controls.Add(this.label10);
+            this.splitContainerMap2.Panel1.Controls.Add(this.label8);
+            this.splitContainerMap2.Panel1.Controls.Add(this.groupBox1);
+            this.splitContainerMap2.Panel1.Controls.Add(this.checkBox8);
+            this.splitContainerMap2.Panel1.Controls.Add(this.checkBox7);
+            this.splitContainerMap2.Panel1.Controls.Add(this.checkBox1);
+            this.splitContainerMap2.Panel1.Controls.Add(this.checkBox4);
+            this.splitContainerMap2.Panel1.Controls.Add(this.checkBox2);
+            this.splitContainerMap2.Panel1.Controls.Add(this.checkBox3);
+            this.splitContainerMap2.Panel1.Controls.Add(this.checkBox5);
+            this.splitContainerMap2.Panel1.Controls.Add(this.trackBar1);
+            this.splitContainerMap2.Panel1MinSize = 0;
+            // 
+            // splitContainerMap2.Panel2
+            // 
+            this.splitContainerMap2.Panel2.Controls.Add(this.glControl1);
+            this.splitContainerMap2.Panel2MinSize = 0;
+            this.splitContainerMap2.Size = new System.Drawing.Size(909, 457);
+            this.splitContainerMap2.SplitterDistance = 402;
+            this.splitContainerMap2.SplitterWidth = 1;
+            this.splitContainerMap2.TabIndex = 17;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.betterTextbox1);
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.betterTextbox2);
+            this.groupBox1.Controls.Add(this.button4);
+            this.groupBox1.Controls.Add(this.button5);
+            this.groupBox1.Controls.Add(this.button6);
+            this.groupBox1.Controls.Add(this.button7);
+            this.groupBox1.Controls.Add(this.button10);
+            this.groupBox1.Controls.Add(this.button11);
+            this.groupBox1.Controls.Add(this.button12);
+            this.groupBox1.Location = new System.Drawing.Point(8, 137);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(185, 146);
+            this.groupBox1.TabIndex = 31;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Map Bounds";
+            // 
+            // betterTextbox1
+            // 
+            this.betterTextbox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.betterTextbox1.Location = new System.Drawing.Point(140, 70);
+            this.betterTextbox1.Name = "betterTextbox1";
+            this.betterTextbox1.Size = new System.Drawing.Size(42, 20);
+            this.betterTextbox1.TabIndex = 33;
+            this.betterTextbox1.Text = "100";
+            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(140, 16);
+            this.button1.Margin = new System.Windows.Forms.Padding(0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(42, 42);
+            this.button1.TabIndex = 35;
+            this.button1.Text = "Z+";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(140, 100);
+            this.button2.Margin = new System.Windows.Forms.Padding(0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(42, 42);
+            this.button2.TabIndex = 34;
+            this.button2.Text = "Z-";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(87, 100);
+            this.button3.Margin = new System.Windows.Forms.Padding(0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(42, 42);
+            this.button3.TabIndex = 32;
+            this.button3.Text = "DR";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // betterTextbox2
+            // 
+            this.betterTextbox2.Location = new System.Drawing.Point(45, 70);
+            this.betterTextbox2.Name = "betterTextbox2";
+            this.betterTextbox2.Size = new System.Drawing.Size(42, 20);
+            this.betterTextbox2.TabIndex = 27;
+            this.betterTextbox2.Text = "100";
+            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(87, 58);
+            this.button4.Margin = new System.Windows.Forms.Padding(0);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(42, 42);
+            this.button4.TabIndex = 31;
+            this.button4.Text = "R";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(87, 16);
+            this.button5.Margin = new System.Windows.Forms.Padding(0);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(42, 42);
+            this.button5.TabIndex = 30;
+            this.button5.Text = "UR";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(45, 16);
+            this.button6.Margin = new System.Windows.Forms.Padding(0);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(42, 42);
+            this.button6.TabIndex = 29;
+            this.button6.Text = "U";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(45, 100);
+            this.button7.Margin = new System.Windows.Forms.Padding(0);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(42, 42);
+            this.button7.TabIndex = 28;
+            this.button7.Text = "D";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(3, 100);
+            this.button10.Margin = new System.Windows.Forms.Padding(0);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(42, 42);
+            this.button10.TabIndex = 27;
+            this.button10.Text = "DL";
+            this.button10.UseVisualStyleBackColor = true;
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(3, 58);
+            this.button11.Margin = new System.Windows.Forms.Padding(0);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(42, 42);
+            this.button11.TabIndex = 26;
+            this.button11.Text = "L";
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(3, 16);
+            this.button12.Margin = new System.Windows.Forms.Padding(0);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(42, 42);
+            this.button12.TabIndex = 25;
+            this.button12.Text = "UL";
+            this.button12.UseVisualStyleBackColor = true;
+            // 
+            // checkBox8
+            // 
+            this.checkBox8.AutoSize = true;
+            this.checkBox8.Checked = true;
+            this.checkBox8.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox8.Location = new System.Drawing.Point(117, 54);
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.Size = new System.Drawing.Size(82, 17);
+            this.checkBox8.TabIndex = 19;
+            this.checkBox8.Text = "Show Mario";
+            this.checkBox8.UseVisualStyleBackColor = true;
+            // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Location = new System.Drawing.Point(117, 74);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(85, 17);
+            this.checkBox7.TabIndex = 19;
+            this.checkBox7.Text = "Show HOLP";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(8, 74);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(94, 17);
+            this.checkBox4.TabIndex = 19;
+            this.checkBox4.Text = "Show Floor Tri";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(8, 94);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(102, 17);
+            this.checkBox3.TabIndex = 19;
+            this.checkBox3.Text = "Show Ceiling Tri";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Location = new System.Drawing.Point(117, 94);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(92, 17);
+            this.checkBox5.TabIndex = 19;
+            this.checkBox5.Text = "Show Camera";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            // 
+            // glControl1
+            // 
+            this.glControl1.BackColor = System.Drawing.Color.Black;
+            this.glControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.glControl1.Location = new System.Drawing.Point(0, 0);
+            this.glControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.glControl1.Name = "glControl1";
+            this.glControl1.Size = new System.Drawing.Size(504, 455);
+            this.glControl1.TabIndex = 0;
+            this.glControl1.VSync = false;
+            // 
+            // tabPageOptions
+            // 
+            this.tabPageOptions.AutoScroll = true;
+            this.tabPageOptions.Controls.Add(this.groupBoxPositionControllerRelativeAngle);
+            this.tabPageOptions.Controls.Add(this.groupBoxOptionsSavedSettings);
+            this.tabPageOptions.Controls.Add(this.groupBoxFPS);
+            this.tabPageOptions.Controls.Add(this.groupBoxGotoRetrieveOffsets);
+            this.tabPageOptions.Controls.Add(this.groupBoxShowOverlay);
+            this.tabPageOptions.Controls.Add(this.label3);
+            this.tabPageOptions.Controls.Add(this.checkBoxUseRomHack);
+            this.tabPageOptions.Location = new System.Drawing.Point(4, 22);
+            this.tabPageOptions.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPageOptions.Name = "tabPageOptions";
+            this.tabPageOptions.Size = new System.Drawing.Size(915, 463);
+            this.tabPageOptions.TabIndex = 5;
+            this.tabPageOptions.Text = "Options";
+            // 
+            // groupBoxPositionControllerRelativeAngle
+            // 
+            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.textBoxPositionControllerRelativeAngleCustom);
+            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleMario);
+            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleRecommended);
+            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleCustom);
+            this.groupBoxPositionControllerRelativeAngle.Location = new System.Drawing.Point(447, 184);
+            this.groupBoxPositionControllerRelativeAngle.Name = "groupBoxPositionControllerRelativeAngle";
+            this.groupBoxPositionControllerRelativeAngle.Size = new System.Drawing.Size(141, 99);
+            this.groupBoxPositionControllerRelativeAngle.TabIndex = 39;
+            this.groupBoxPositionControllerRelativeAngle.TabStop = false;
+            this.groupBoxPositionControllerRelativeAngle.Text = "Pos Controller Rel Angle";
+            // 
+            // textBoxPositionControllerRelativeAngleCustom
+            // 
+            this.textBoxPositionControllerRelativeAngleCustom.Location = new System.Drawing.Point(74, 64);
+            this.textBoxPositionControllerRelativeAngleCustom.Name = "textBoxPositionControllerRelativeAngleCustom";
+            this.textBoxPositionControllerRelativeAngleCustom.Size = new System.Drawing.Size(50, 20);
+            this.textBoxPositionControllerRelativeAngleCustom.TabIndex = 38;
+            this.textBoxPositionControllerRelativeAngleCustom.Text = "32768";
+            this.textBoxPositionControllerRelativeAngleCustom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // radioButtonPositionControllerRelativeAngleMario
+            // 
+            this.radioButtonPositionControllerRelativeAngleMario.AutoSize = true;
+            this.radioButtonPositionControllerRelativeAngleMario.Location = new System.Drawing.Point(11, 42);
+            this.radioButtonPositionControllerRelativeAngleMario.Name = "radioButtonPositionControllerRelativeAngleMario";
+            this.radioButtonPositionControllerRelativeAngleMario.Size = new System.Drawing.Size(51, 17);
+            this.radioButtonPositionControllerRelativeAngleMario.TabIndex = 12;
+            this.radioButtonPositionControllerRelativeAngleMario.Text = "Mario";
+            this.radioButtonPositionControllerRelativeAngleMario.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonPositionControllerRelativeAngleRecommended
+            // 
+            this.radioButtonPositionControllerRelativeAngleRecommended.AutoSize = true;
+            this.radioButtonPositionControllerRelativeAngleRecommended.Checked = true;
+            this.radioButtonPositionControllerRelativeAngleRecommended.Location = new System.Drawing.Point(11, 19);
+            this.radioButtonPositionControllerRelativeAngleRecommended.Name = "radioButtonPositionControllerRelativeAngleRecommended";
+            this.radioButtonPositionControllerRelativeAngleRecommended.Size = new System.Drawing.Size(97, 17);
+            this.radioButtonPositionControllerRelativeAngleRecommended.TabIndex = 11;
+            this.radioButtonPositionControllerRelativeAngleRecommended.TabStop = true;
+            this.radioButtonPositionControllerRelativeAngleRecommended.Text = "Recommended";
+            this.radioButtonPositionControllerRelativeAngleRecommended.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonPositionControllerRelativeAngleCustom
+            // 
+            this.radioButtonPositionControllerRelativeAngleCustom.AutoSize = true;
+            this.radioButtonPositionControllerRelativeAngleCustom.Location = new System.Drawing.Point(11, 65);
+            this.radioButtonPositionControllerRelativeAngleCustom.Name = "radioButtonPositionControllerRelativeAngleCustom";
+            this.radioButtonPositionControllerRelativeAngleCustom.Size = new System.Drawing.Size(63, 17);
+            this.radioButtonPositionControllerRelativeAngleCustom.TabIndex = 13;
+            this.radioButtonPositionControllerRelativeAngleCustom.Text = "Custom:";
+            this.radioButtonPositionControllerRelativeAngleCustom.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxOptionsSavedSettings
+            // 
+            this.groupBoxOptionsSavedSettings.Controls.Add(this.buttonOptionsResetSavedSettings);
+            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxStartSlotIndexOne);
+            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxMoveCamWithPu);
+            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxNeutralizeTrianglesWith21);
+            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxScaleDiagonalPositionControllerButtons);
+            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxOptionsUseInGameTrigForAngleLogic);
+            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxDontRoundValuesToZero);
+            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxExcludeDustForClosestObject);
+            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxUseMisalignmentOffsetForDistanceToLine);
+            this.groupBoxOptionsSavedSettings.Location = new System.Drawing.Point(6, 4);
+            this.groupBoxOptionsSavedSettings.Name = "groupBoxOptionsSavedSettings";
+            this.groupBoxOptionsSavedSettings.Size = new System.Drawing.Size(259, 231);
+            this.groupBoxOptionsSavedSettings.TabIndex = 38;
+            this.groupBoxOptionsSavedSettings.TabStop = false;
+            this.groupBoxOptionsSavedSettings.Text = "Saved Settings";
+            // 
+            // buttonOptionsResetSavedSettings
+            // 
+            this.buttonOptionsResetSavedSettings.Location = new System.Drawing.Point(8, 190);
+            this.buttonOptionsResetSavedSettings.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonOptionsResetSavedSettings.Name = "buttonOptionsResetSavedSettings";
+            this.buttonOptionsResetSavedSettings.Size = new System.Drawing.Size(242, 28);
+            this.buttonOptionsResetSavedSettings.TabIndex = 38;
+            this.buttonOptionsResetSavedSettings.Text = "Reset Saved Settings";
+            this.buttonOptionsResetSavedSettings.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxStartSlotIndexOne
+            // 
+            this.checkBoxStartSlotIndexOne.AutoSize = true;
+            this.checkBoxStartSlotIndexOne.Checked = true;
+            this.checkBoxStartSlotIndexOne.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxStartSlotIndexOne.Location = new System.Drawing.Point(12, 21);
+            this.checkBoxStartSlotIndexOne.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxStartSlotIndexOne.Name = "checkBoxStartSlotIndexOne";
+            this.checkBoxStartSlotIndexOne.Size = new System.Drawing.Size(133, 17);
+            this.checkBoxStartSlotIndexOne.TabIndex = 0;
+            this.checkBoxStartSlotIndexOne.Text = "Start Slot Index From 1";
+            this.checkBoxStartSlotIndexOne.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMoveCamWithPu
+            // 
+            this.checkBoxMoveCamWithPu.AutoSize = true;
+            this.checkBoxMoveCamWithPu.Checked = true;
+            this.checkBoxMoveCamWithPu.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMoveCamWithPu.Location = new System.Drawing.Point(12, 61);
+            this.checkBoxMoveCamWithPu.Name = "checkBoxMoveCamWithPu";
+            this.checkBoxMoveCamWithPu.Size = new System.Drawing.Size(162, 17);
+            this.checkBoxMoveCamWithPu.TabIndex = 4;
+            this.checkBoxMoveCamWithPu.Text = "PU Controller Moves Camera";
+            this.checkBoxMoveCamWithPu.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxNeutralizeTrianglesWith21
+            // 
+            this.checkBoxNeutralizeTrianglesWith21.AutoSize = true;
+            this.checkBoxNeutralizeTrianglesWith21.Checked = true;
+            this.checkBoxNeutralizeTrianglesWith21.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxNeutralizeTrianglesWith21.Location = new System.Drawing.Point(12, 101);
+            this.checkBoxNeutralizeTrianglesWith21.Name = "checkBoxNeutralizeTrianglesWith21";
+            this.checkBoxNeutralizeTrianglesWith21.Size = new System.Drawing.Size(156, 17);
+            this.checkBoxNeutralizeTrianglesWith21.TabIndex = 4;
+            this.checkBoxNeutralizeTrianglesWith21.Text = "Neutralize Triangles with 21";
+            this.checkBoxNeutralizeTrianglesWith21.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxScaleDiagonalPositionControllerButtons
+            // 
+            this.checkBoxScaleDiagonalPositionControllerButtons.AutoSize = true;
+            this.checkBoxScaleDiagonalPositionControllerButtons.Checked = true;
+            this.checkBoxScaleDiagonalPositionControllerButtons.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxScaleDiagonalPositionControllerButtons.Location = new System.Drawing.Point(12, 41);
+            this.checkBoxScaleDiagonalPositionControllerButtons.Name = "checkBoxScaleDiagonalPositionControllerButtons";
+            this.checkBoxScaleDiagonalPositionControllerButtons.Size = new System.Drawing.Size(224, 17);
+            this.checkBoxScaleDiagonalPositionControllerButtons.TabIndex = 8;
+            this.checkBoxScaleDiagonalPositionControllerButtons.Text = "Scale Diagonal Position Controller Buttons";
+            this.checkBoxScaleDiagonalPositionControllerButtons.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxOptionsUseInGameTrigForAngleLogic
+            // 
+            this.checkBoxOptionsUseInGameTrigForAngleLogic.AutoSize = true;
+            this.checkBoxOptionsUseInGameTrigForAngleLogic.Location = new System.Drawing.Point(12, 161);
+            this.checkBoxOptionsUseInGameTrigForAngleLogic.Name = "checkBoxOptionsUseInGameTrigForAngleLogic";
+            this.checkBoxOptionsUseInGameTrigForAngleLogic.Size = new System.Drawing.Size(183, 17);
+            this.checkBoxOptionsUseInGameTrigForAngleLogic.TabIndex = 31;
+            this.checkBoxOptionsUseInGameTrigForAngleLogic.Text = "Use In-Game Trig for Angle Logic";
+            this.checkBoxOptionsUseInGameTrigForAngleLogic.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxDontRoundValuesToZero
+            // 
+            this.checkBoxDontRoundValuesToZero.AutoSize = true;
+            this.checkBoxDontRoundValuesToZero.Checked = true;
+            this.checkBoxDontRoundValuesToZero.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxDontRoundValuesToZero.Location = new System.Drawing.Point(12, 141);
+            this.checkBoxDontRoundValuesToZero.Name = "checkBoxDontRoundValuesToZero";
+            this.checkBoxDontRoundValuesToZero.Size = new System.Drawing.Size(142, 17);
+            this.checkBoxDontRoundValuesToZero.TabIndex = 31;
+            this.checkBoxDontRoundValuesToZero.Text = "Don\'t Round Values to 0";
+            this.checkBoxDontRoundValuesToZero.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxExcludeDustForClosestObject
+            // 
+            this.checkBoxExcludeDustForClosestObject.AutoSize = true;
+            this.checkBoxExcludeDustForClosestObject.Checked = true;
+            this.checkBoxExcludeDustForClosestObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxExcludeDustForClosestObject.Location = new System.Drawing.Point(12, 81);
+            this.checkBoxExcludeDustForClosestObject.Name = "checkBoxExcludeDustForClosestObject";
+            this.checkBoxExcludeDustForClosestObject.Size = new System.Drawing.Size(175, 17);
+            this.checkBoxExcludeDustForClosestObject.TabIndex = 31;
+            this.checkBoxExcludeDustForClosestObject.Text = "Exclude Dust for Closest Object";
+            this.checkBoxExcludeDustForClosestObject.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxUseMisalignmentOffsetForDistanceToLine
+            // 
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.AutoSize = true;
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Checked = true;
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Location = new System.Drawing.Point(12, 121);
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Name = "checkBoxUseMisalignmentOffsetForDistanceToLine";
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Size = new System.Drawing.Size(242, 17);
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.TabIndex = 31;
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Text = "Use Misalignment Offset For Distance To Line";
+            this.checkBoxUseMisalignmentOffsetForDistanceToLine.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxFPS
+            // 
+            this.groupBoxFPS.Controls.Add(this.betterTextboxFPS);
+            this.groupBoxFPS.Location = new System.Drawing.Point(447, 131);
+            this.groupBoxFPS.Name = "groupBoxFPS";
+            this.groupBoxFPS.Size = new System.Drawing.Size(62, 47);
+            this.groupBoxFPS.TabIndex = 38;
+            this.groupBoxFPS.TabStop = false;
+            this.groupBoxFPS.Text = "FPS";
+            // 
+            // betterTextboxFPS
+            // 
+            this.betterTextboxFPS.Location = new System.Drawing.Point(6, 19);
+            this.betterTextboxFPS.Name = "betterTextboxFPS";
+            this.betterTextboxFPS.Size = new System.Drawing.Size(50, 20);
+            this.betterTextboxFPS.TabIndex = 39;
+            this.betterTextboxFPS.Text = "30";
+            this.betterTextboxFPS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBoxGotoRetrieveOffsets
+            // 
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelRetrieveInfrontSuffix);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelRetrieveInfrontPrefix);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.textBoxRetrieveInfront);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelRetrieveAboveSuffix);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelRetrieveAbovePrefix);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.textBoxRetrieveAbove);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelGotoInfrontSuffix);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelGotoInfrontPrefix);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.textBoxGotoInfront);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelGotoAboveSuffix);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelGotoAbovePrefix);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.textBoxGotoAbove);
+            this.groupBoxGotoRetrieveOffsets.Location = new System.Drawing.Point(447, 4);
+            this.groupBoxGotoRetrieveOffsets.Name = "groupBoxGotoRetrieveOffsets";
+            this.groupBoxGotoRetrieveOffsets.Size = new System.Drawing.Size(154, 121);
+            this.groupBoxGotoRetrieveOffsets.TabIndex = 32;
+            this.groupBoxGotoRetrieveOffsets.TabStop = false;
+            this.groupBoxGotoRetrieveOffsets.Text = "Go to / Retrieve Offsets";
+            // 
+            // labelRetrieveInfrontSuffix
+            // 
+            this.labelRetrieveInfrontSuffix.AutoSize = true;
+            this.labelRetrieveInfrontSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRetrieveInfrontSuffix.Location = new System.Drawing.Point(106, 98);
+            this.labelRetrieveInfrontSuffix.Name = "labelRetrieveInfrontSuffix";
+            this.labelRetrieveInfrontSuffix.Size = new System.Drawing.Size(39, 13);
+            this.labelRetrieveInfrontSuffix.TabIndex = 39;
+            this.labelRetrieveInfrontSuffix.Text = "in front";
+            // 
+            // labelRetrieveInfrontPrefix
+            // 
+            this.labelRetrieveInfrontPrefix.AutoSize = true;
+            this.labelRetrieveInfrontPrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRetrieveInfrontPrefix.Location = new System.Drawing.Point(11, 98);
+            this.labelRetrieveInfrontPrefix.Name = "labelRetrieveInfrontPrefix";
+            this.labelRetrieveInfrontPrefix.Size = new System.Drawing.Size(47, 13);
+            this.labelRetrieveInfrontPrefix.TabIndex = 38;
+            this.labelRetrieveInfrontPrefix.Text = "Retrieve";
+            // 
+            // textBoxRetrieveInfront
+            // 
+            this.textBoxRetrieveInfront.Location = new System.Drawing.Point(60, 95);
+            this.textBoxRetrieveInfront.Name = "textBoxRetrieveInfront";
+            this.textBoxRetrieveInfront.Size = new System.Drawing.Size(42, 20);
+            this.textBoxRetrieveInfront.TabIndex = 37;
+            this.textBoxRetrieveInfront.Text = "0";
+            this.textBoxRetrieveInfront.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelRetrieveAboveSuffix
+            // 
+            this.labelRetrieveAboveSuffix.AutoSize = true;
+            this.labelRetrieveAboveSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRetrieveAboveSuffix.Location = new System.Drawing.Point(106, 73);
+            this.labelRetrieveAboveSuffix.Name = "labelRetrieveAboveSuffix";
+            this.labelRetrieveAboveSuffix.Size = new System.Drawing.Size(37, 13);
+            this.labelRetrieveAboveSuffix.TabIndex = 36;
+            this.labelRetrieveAboveSuffix.Text = "above";
+            // 
+            // labelRetrieveAbovePrefix
+            // 
+            this.labelRetrieveAbovePrefix.AutoSize = true;
+            this.labelRetrieveAbovePrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRetrieveAbovePrefix.Location = new System.Drawing.Point(11, 73);
+            this.labelRetrieveAbovePrefix.Name = "labelRetrieveAbovePrefix";
+            this.labelRetrieveAbovePrefix.Size = new System.Drawing.Size(47, 13);
+            this.labelRetrieveAbovePrefix.TabIndex = 35;
+            this.labelRetrieveAbovePrefix.Text = "Retrieve";
+            // 
+            // textBoxRetrieveAbove
+            // 
+            this.textBoxRetrieveAbove.Location = new System.Drawing.Point(60, 70);
+            this.textBoxRetrieveAbove.Name = "textBoxRetrieveAbove";
+            this.textBoxRetrieveAbove.Size = new System.Drawing.Size(42, 20);
+            this.textBoxRetrieveAbove.TabIndex = 34;
+            this.textBoxRetrieveAbove.Text = "300";
+            this.textBoxRetrieveAbove.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelGotoInfrontSuffix
+            // 
+            this.labelGotoInfrontSuffix.AutoSize = true;
+            this.labelGotoInfrontSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGotoInfrontSuffix.Location = new System.Drawing.Point(106, 48);
+            this.labelGotoInfrontSuffix.Name = "labelGotoInfrontSuffix";
+            this.labelGotoInfrontSuffix.Size = new System.Drawing.Size(39, 13);
+            this.labelGotoInfrontSuffix.TabIndex = 33;
+            this.labelGotoInfrontSuffix.Text = "in front";
+            // 
+            // labelGotoInfrontPrefix
+            // 
+            this.labelGotoInfrontPrefix.AutoSize = true;
+            this.labelGotoInfrontPrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGotoInfrontPrefix.Location = new System.Drawing.Point(11, 48);
+            this.labelGotoInfrontPrefix.Name = "labelGotoInfrontPrefix";
+            this.labelGotoInfrontPrefix.Size = new System.Drawing.Size(33, 13);
+            this.labelGotoInfrontPrefix.TabIndex = 32;
+            this.labelGotoInfrontPrefix.Text = "Go to";
+            // 
+            // textBoxGotoInfront
+            // 
+            this.textBoxGotoInfront.Location = new System.Drawing.Point(60, 45);
+            this.textBoxGotoInfront.Name = "textBoxGotoInfront";
+            this.textBoxGotoInfront.Size = new System.Drawing.Size(42, 20);
+            this.textBoxGotoInfront.TabIndex = 31;
+            this.textBoxGotoInfront.Text = "0";
+            this.textBoxGotoInfront.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelGotoAboveSuffix
+            // 
+            this.labelGotoAboveSuffix.AutoSize = true;
+            this.labelGotoAboveSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGotoAboveSuffix.Location = new System.Drawing.Point(106, 23);
+            this.labelGotoAboveSuffix.Name = "labelGotoAboveSuffix";
+            this.labelGotoAboveSuffix.Size = new System.Drawing.Size(37, 13);
+            this.labelGotoAboveSuffix.TabIndex = 30;
+            this.labelGotoAboveSuffix.Text = "above";
+            // 
+            // labelGotoAbovePrefix
+            // 
+            this.labelGotoAbovePrefix.AutoSize = true;
+            this.labelGotoAbovePrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGotoAbovePrefix.Location = new System.Drawing.Point(11, 23);
+            this.labelGotoAbovePrefix.Name = "labelGotoAbovePrefix";
+            this.labelGotoAbovePrefix.Size = new System.Drawing.Size(33, 13);
+            this.labelGotoAbovePrefix.TabIndex = 29;
+            this.labelGotoAbovePrefix.Text = "Go to";
+            // 
+            // textBoxGotoAbove
+            // 
+            this.textBoxGotoAbove.Location = new System.Drawing.Point(60, 20);
+            this.textBoxGotoAbove.Name = "textBoxGotoAbove";
+            this.textBoxGotoAbove.Size = new System.Drawing.Size(42, 20);
+            this.textBoxGotoAbove.TabIndex = 28;
+            this.textBoxGotoAbove.Text = "300";
+            this.textBoxGotoAbove.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBoxShowOverlay
+            // 
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayCameraHackObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayChildObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayParentObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayCeilingObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayWallObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayFloorObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayUsedObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayInteractionObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayCameraObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayClosestObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayStoodOnObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayHeldObject);
+            this.groupBoxShowOverlay.Location = new System.Drawing.Point(271, 4);
+            this.groupBoxShowOverlay.Name = "groupBoxShowOverlay";
+            this.groupBoxShowOverlay.Size = new System.Drawing.Size(170, 275);
+            this.groupBoxShowOverlay.TabIndex = 29;
+            this.groupBoxShowOverlay.TabStop = false;
+            this.groupBoxShowOverlay.Text = "Object Slot Overlays to Show";
+            // 
+            // checkBoxShowOverlayCameraHackObject
+            // 
+            this.checkBoxShowOverlayCameraHackObject.AutoSize = true;
+            this.checkBoxShowOverlayCameraHackObject.Checked = true;
+            this.checkBoxShowOverlayCameraHackObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayCameraHackObject.Location = new System.Drawing.Point(5, 146);
+            this.checkBoxShowOverlayCameraHackObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayCameraHackObject.Name = "checkBoxShowOverlayCameraHackObject";
+            this.checkBoxShowOverlayCameraHackObject.Size = new System.Drawing.Size(125, 17);
+            this.checkBoxShowOverlayCameraHackObject.TabIndex = 10;
+            this.checkBoxShowOverlayCameraHackObject.Text = "Camera Hack Object";
+            this.checkBoxShowOverlayCameraHackObject.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowOverlayChildObject
+            // 
+            this.checkBoxShowOverlayChildObject.AutoSize = true;
+            this.checkBoxShowOverlayChildObject.Location = new System.Drawing.Point(5, 251);
+            this.checkBoxShowOverlayChildObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayChildObject.Name = "checkBoxShowOverlayChildObject";
+            this.checkBoxShowOverlayChildObject.Size = new System.Drawing.Size(83, 17);
+            this.checkBoxShowOverlayChildObject.TabIndex = 9;
+            this.checkBoxShowOverlayChildObject.Text = "Child Object";
+            this.checkBoxShowOverlayChildObject.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowOverlayParentObject
+            // 
+            this.checkBoxShowOverlayParentObject.AutoSize = true;
+            this.checkBoxShowOverlayParentObject.Location = new System.Drawing.Point(5, 230);
+            this.checkBoxShowOverlayParentObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayParentObject.Name = "checkBoxShowOverlayParentObject";
+            this.checkBoxShowOverlayParentObject.Size = new System.Drawing.Size(91, 17);
+            this.checkBoxShowOverlayParentObject.TabIndex = 9;
+            this.checkBoxShowOverlayParentObject.Text = "Parent Object";
+            this.checkBoxShowOverlayParentObject.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowOverlayCeilingObject
+            // 
+            this.checkBoxShowOverlayCeilingObject.AutoSize = true;
+            this.checkBoxShowOverlayCeilingObject.Checked = true;
+            this.checkBoxShowOverlayCeilingObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayCeilingObject.Location = new System.Drawing.Point(5, 209);
+            this.checkBoxShowOverlayCeilingObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayCeilingObject.Name = "checkBoxShowOverlayCeilingObject";
+            this.checkBoxShowOverlayCeilingObject.Size = new System.Drawing.Size(91, 17);
+            this.checkBoxShowOverlayCeilingObject.TabIndex = 9;
+            this.checkBoxShowOverlayCeilingObject.Text = "Ceiling Object";
+            this.checkBoxShowOverlayCeilingObject.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowOverlayWallObject
+            // 
+            this.checkBoxShowOverlayWallObject.AutoSize = true;
+            this.checkBoxShowOverlayWallObject.Checked = true;
+            this.checkBoxShowOverlayWallObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayWallObject.Location = new System.Drawing.Point(5, 188);
+            this.checkBoxShowOverlayWallObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayWallObject.Name = "checkBoxShowOverlayWallObject";
+            this.checkBoxShowOverlayWallObject.Size = new System.Drawing.Size(81, 17);
+            this.checkBoxShowOverlayWallObject.TabIndex = 8;
+            this.checkBoxShowOverlayWallObject.Text = "Wall Object";
+            this.checkBoxShowOverlayWallObject.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowOverlayFloorObject
+            // 
+            this.checkBoxShowOverlayFloorObject.AutoSize = true;
+            this.checkBoxShowOverlayFloorObject.Checked = true;
+            this.checkBoxShowOverlayFloorObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayFloorObject.Location = new System.Drawing.Point(5, 167);
+            this.checkBoxShowOverlayFloorObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayFloorObject.Name = "checkBoxShowOverlayFloorObject";
+            this.checkBoxShowOverlayFloorObject.Size = new System.Drawing.Size(83, 17);
+            this.checkBoxShowOverlayFloorObject.TabIndex = 7;
+            this.checkBoxShowOverlayFloorObject.Text = "Floor Object";
+            this.checkBoxShowOverlayFloorObject.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowOverlayUsedObject
+            // 
+            this.checkBoxShowOverlayUsedObject.AutoSize = true;
+            this.checkBoxShowOverlayUsedObject.Checked = true;
+            this.checkBoxShowOverlayUsedObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayUsedObject.Location = new System.Drawing.Point(5, 83);
+            this.checkBoxShowOverlayUsedObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayUsedObject.Name = "checkBoxShowOverlayUsedObject";
+            this.checkBoxShowOverlayUsedObject.Size = new System.Drawing.Size(85, 17);
+            this.checkBoxShowOverlayUsedObject.TabIndex = 4;
+            this.checkBoxShowOverlayUsedObject.Text = "Used Object";
+            this.checkBoxShowOverlayUsedObject.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowOverlayInteractionObject
+            // 
+            this.checkBoxShowOverlayInteractionObject.AutoSize = true;
+            this.checkBoxShowOverlayInteractionObject.Checked = true;
+            this.checkBoxShowOverlayInteractionObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayInteractionObject.Location = new System.Drawing.Point(5, 62);
+            this.checkBoxShowOverlayInteractionObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayInteractionObject.Name = "checkBoxShowOverlayInteractionObject";
+            this.checkBoxShowOverlayInteractionObject.Size = new System.Drawing.Size(110, 17);
+            this.checkBoxShowOverlayInteractionObject.TabIndex = 3;
+            this.checkBoxShowOverlayInteractionObject.Text = "Interaction Object";
+            this.checkBoxShowOverlayInteractionObject.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowOverlayCameraObject
+            // 
+            this.checkBoxShowOverlayCameraObject.AutoSize = true;
+            this.checkBoxShowOverlayCameraObject.Checked = true;
+            this.checkBoxShowOverlayCameraObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayCameraObject.Location = new System.Drawing.Point(5, 125);
+            this.checkBoxShowOverlayCameraObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayCameraObject.Name = "checkBoxShowOverlayCameraObject";
+            this.checkBoxShowOverlayCameraObject.Size = new System.Drawing.Size(96, 17);
+            this.checkBoxShowOverlayCameraObject.TabIndex = 5;
+            this.checkBoxShowOverlayCameraObject.Text = "Camera Object";
+            this.checkBoxShowOverlayCameraObject.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowOverlayClosestObject
+            // 
+            this.checkBoxShowOverlayClosestObject.AutoSize = true;
+            this.checkBoxShowOverlayClosestObject.Checked = true;
+            this.checkBoxShowOverlayClosestObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayClosestObject.Location = new System.Drawing.Point(5, 104);
+            this.checkBoxShowOverlayClosestObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayClosestObject.Name = "checkBoxShowOverlayClosestObject";
+            this.checkBoxShowOverlayClosestObject.Size = new System.Drawing.Size(94, 17);
+            this.checkBoxShowOverlayClosestObject.TabIndex = 6;
+            this.checkBoxShowOverlayClosestObject.Text = "Closest Object";
+            this.checkBoxShowOverlayClosestObject.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowOverlayStoodOnObject
+            // 
+            this.checkBoxShowOverlayStoodOnObject.AutoSize = true;
+            this.checkBoxShowOverlayStoodOnObject.Checked = true;
+            this.checkBoxShowOverlayStoodOnObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayStoodOnObject.Location = new System.Drawing.Point(5, 41);
+            this.checkBoxShowOverlayStoodOnObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayStoodOnObject.Name = "checkBoxShowOverlayStoodOnObject";
+            this.checkBoxShowOverlayStoodOnObject.Size = new System.Drawing.Size(105, 17);
+            this.checkBoxShowOverlayStoodOnObject.TabIndex = 2;
+            this.checkBoxShowOverlayStoodOnObject.Text = "Stood On Object";
+            this.checkBoxShowOverlayStoodOnObject.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowOverlayHeldObject
+            // 
+            this.checkBoxShowOverlayHeldObject.AutoSize = true;
+            this.checkBoxShowOverlayHeldObject.Checked = true;
+            this.checkBoxShowOverlayHeldObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayHeldObject.Location = new System.Drawing.Point(5, 20);
+            this.checkBoxShowOverlayHeldObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayHeldObject.Name = "checkBoxShowOverlayHeldObject";
+            this.checkBoxShowOverlayHeldObject.Size = new System.Drawing.Size(82, 17);
+            this.checkBoxShowOverlayHeldObject.TabIndex = 1;
+            this.checkBoxShowOverlayHeldObject.Text = "Held Object";
+            this.checkBoxShowOverlayHeldObject.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(17, 260);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(129, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "*Requires Pure Interpreter";
+            // 
+            // checkBoxUseRomHack
+            // 
+            this.checkBoxUseRomHack.AutoSize = true;
+            this.checkBoxUseRomHack.Location = new System.Drawing.Point(18, 240);
+            this.checkBoxUseRomHack.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxUseRomHack.Name = "checkBoxUseRomHack";
+            this.checkBoxUseRomHack.Size = new System.Drawing.Size(166, 17);
+            this.checkBoxUseRomHack.TabIndex = 2;
+            this.checkBoxUseRomHack.Text = "Enable STROOP ROM hack*";
+            this.checkBoxUseRomHack.UseVisualStyleBackColor = true;
+            // 
+            // tabPageMemory
+            // 
+            this.tabPageMemory.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageMemory.Controls.Add(this.splitContainerMemory);
+            this.tabPageMemory.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMemory.Name = "tabPageMemory";
+            this.tabPageMemory.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageMemory.Size = new System.Drawing.Size(915, 463);
+            this.tabPageMemory.TabIndex = 27;
+            this.tabPageMemory.Text = "Memory";
+            // 
+            // splitContainerMemory
+            // 
+            this.splitContainerMemory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerMemory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerMemory.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainerMemory.Location = new System.Drawing.Point(3, 3);
+            this.splitContainerMemory.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerMemory.Name = "splitContainerMemory";
+            // 
+            // splitContainerMemory.Panel1
+            // 
+            this.splitContainerMemory.Panel1.AutoScroll = true;
+            this.splitContainerMemory.Panel1.Controls.Add(this.comboBoxMemoryTypes);
+            this.splitContainerMemory.Panel1.Controls.Add(this.richTextBoxMemoryValues);
+            this.splitContainerMemory.Panel1.Controls.Add(this.checkBoxMemoryObj);
+            this.splitContainerMemory.Panel1.Controls.Add(this.checkBoxMemoryHex);
+            this.splitContainerMemory.Panel1.Controls.Add(this.checkBoxMemoryRelativeAddresses);
+            this.splitContainerMemory.Panel1.Controls.Add(this.checkBoxMemoryLittleEndian);
+            this.splitContainerMemory.Panel1.Controls.Add(this.checkBoxMemoryUpdateContinuously);
+            this.splitContainerMemory.Panel1.Controls.Add(this.richTextBoxMemoryAddresses);
+            this.splitContainerMemory.Panel1.Controls.Add(this.textBoxMemoryObjAddress);
+            this.splitContainerMemory.Panel1.Controls.Add(this.labelMemoryObjAddress);
+            this.splitContainerMemory.Panel1MinSize = 0;
+            // 
+            // splitContainerMemory.Panel2
+            // 
+            this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
+            this.splitContainerMemory.Panel2MinSize = 0;
+            this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
+            this.splitContainerMemory.SplitterDistance = 728;
+            this.splitContainerMemory.SplitterWidth = 1;
+            this.splitContainerMemory.TabIndex = 37;
+            // 
+            // comboBoxMemoryTypes
+            // 
+            this.comboBoxMemoryTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMemoryTypes.Location = new System.Drawing.Point(473, 3);
+            this.comboBoxMemoryTypes.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxMemoryTypes.Name = "comboBoxMemoryTypes";
+            this.comboBoxMemoryTypes.Size = new System.Drawing.Size(55, 21);
+            this.comboBoxMemoryTypes.TabIndex = 36;
+            // 
+            // richTextBoxMemoryValues
+            // 
+            this.richTextBoxMemoryValues.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBoxMemoryValues.BackColor = System.Drawing.SystemColors.Control;
+            this.richTextBoxMemoryValues.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxMemoryValues.Location = new System.Drawing.Point(112, 28);
+            this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
+            this.richTextBoxMemoryValues.ReadOnly = true;
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(612, 429);
+            this.richTextBoxMemoryValues.TabIndex = 8;
+            this.richTextBoxMemoryValues.Text = "";
+            // 
+            // checkBoxMemoryObj
+            // 
+            this.checkBoxMemoryObj.AutoSize = true;
+            this.checkBoxMemoryObj.Location = new System.Drawing.Point(584, 7);
+            this.checkBoxMemoryObj.Name = "checkBoxMemoryObj";
+            this.checkBoxMemoryObj.Size = new System.Drawing.Size(42, 17);
+            this.checkBoxMemoryObj.TabIndex = 35;
+            this.checkBoxMemoryObj.Text = "Obj";
+            this.checkBoxMemoryObj.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMemoryHex
+            // 
+            this.checkBoxMemoryHex.AutoSize = true;
+            this.checkBoxMemoryHex.Location = new System.Drawing.Point(535, 7);
+            this.checkBoxMemoryHex.Name = "checkBoxMemoryHex";
+            this.checkBoxMemoryHex.Size = new System.Drawing.Size(45, 17);
+            this.checkBoxMemoryHex.TabIndex = 35;
+            this.checkBoxMemoryHex.Text = "Hex";
+            this.checkBoxMemoryHex.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMemoryRelativeAddresses
+            // 
+            this.checkBoxMemoryRelativeAddresses.AutoSize = true;
+            this.checkBoxMemoryRelativeAddresses.Checked = true;
+            this.checkBoxMemoryRelativeAddresses.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMemoryRelativeAddresses.Location = new System.Drawing.Point(377, 7);
+            this.checkBoxMemoryRelativeAddresses.Name = "checkBoxMemoryRelativeAddresses";
+            this.checkBoxMemoryRelativeAddresses.Size = new System.Drawing.Size(94, 17);
+            this.checkBoxMemoryRelativeAddresses.TabIndex = 35;
+            this.checkBoxMemoryRelativeAddresses.Text = "Rel Addresses";
+            this.checkBoxMemoryRelativeAddresses.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMemoryLittleEndian
+            // 
+            this.checkBoxMemoryLittleEndian.AutoSize = true;
+            this.checkBoxMemoryLittleEndian.Checked = true;
+            this.checkBoxMemoryLittleEndian.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMemoryLittleEndian.Location = new System.Drawing.Point(287, 7);
+            this.checkBoxMemoryLittleEndian.Name = "checkBoxMemoryLittleEndian";
+            this.checkBoxMemoryLittleEndian.Size = new System.Drawing.Size(84, 17);
+            this.checkBoxMemoryLittleEndian.TabIndex = 35;
+            this.checkBoxMemoryLittleEndian.Text = "Little Endian";
+            this.checkBoxMemoryLittleEndian.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMemoryUpdateContinuously
+            // 
+            this.checkBoxMemoryUpdateContinuously.AutoSize = true;
+            this.checkBoxMemoryUpdateContinuously.Checked = true;
+            this.checkBoxMemoryUpdateContinuously.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMemoryUpdateContinuously.Location = new System.Drawing.Point(159, 7);
+            this.checkBoxMemoryUpdateContinuously.Name = "checkBoxMemoryUpdateContinuously";
+            this.checkBoxMemoryUpdateContinuously.Size = new System.Drawing.Size(124, 17);
+            this.checkBoxMemoryUpdateContinuously.TabIndex = 35;
+            this.checkBoxMemoryUpdateContinuously.Text = "Update Continuously";
+            this.checkBoxMemoryUpdateContinuously.UseVisualStyleBackColor = true;
+            // 
+            // richTextBoxMemoryAddresses
+            // 
+            this.richTextBoxMemoryAddresses.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.richTextBoxMemoryAddresses.BackColor = System.Drawing.SystemColors.Control;
+            this.richTextBoxMemoryAddresses.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxMemoryAddresses.Location = new System.Drawing.Point(5, 28);
+            this.richTextBoxMemoryAddresses.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBoxMemoryAddresses.Name = "richTextBoxMemoryAddresses";
+            this.richTextBoxMemoryAddresses.ReadOnly = true;
+            this.richTextBoxMemoryAddresses.Size = new System.Drawing.Size(103, 429);
+            this.richTextBoxMemoryAddresses.TabIndex = 8;
+            this.richTextBoxMemoryAddresses.Text = "";
+            // 
+            // textBoxMemoryObjAddress
+            // 
+            this.textBoxMemoryObjAddress.Location = new System.Drawing.Point(76, 3);
+            this.textBoxMemoryObjAddress.Name = "textBoxMemoryObjAddress";
+            this.textBoxMemoryObjAddress.ReadOnly = true;
+            this.textBoxMemoryObjAddress.Size = new System.Drawing.Size(74, 20);
+            this.textBoxMemoryObjAddress.TabIndex = 34;
+            this.textBoxMemoryObjAddress.Text = "0x00000000";
+            this.textBoxMemoryObjAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelMemoryObjAddress
+            // 
+            this.labelMemoryObjAddress.AutoSize = true;
+            this.labelMemoryObjAddress.Location = new System.Drawing.Point(8, 6);
+            this.labelMemoryObjAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelMemoryObjAddress.Name = "labelMemoryObjAddress";
+            this.labelMemoryObjAddress.Size = new System.Drawing.Size(67, 13);
+            this.labelMemoryObjAddress.TabIndex = 9;
+            this.labelMemoryObjAddress.Text = "Obj Address:";
+            // 
+            // watchVariablePanelMemory
+            // 
+            this.watchVariablePanelMemory.AutoScroll = true;
+            this.watchVariablePanelMemory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.watchVariablePanelMemory.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.watchVariablePanelMemory.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
+            this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
+            this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(178, 455);
+            this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
             // 
@@ -12152,7 +12446,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(135, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(118, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -12184,7 +12478,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(129, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(112, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -12240,7 +12534,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(129, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(112, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -12435,396 +12729,263 @@ namespace STROOP
             this.richTextBoxGfx.TabIndex = 0;
             this.richTextBoxGfx.Text = "";
             // 
-            // tabPageDisassembly
+            // tabPageDebug
             // 
-            this.tabPageDisassembly.BackColor = System.Drawing.Color.Transparent;
-            this.tabPageDisassembly.Controls.Add(this.textBoxDisAddress);
-            this.tabPageDisassembly.Controls.Add(this.buttonDisMore);
-            this.tabPageDisassembly.Controls.Add(this.buttonDisGo);
-            this.tabPageDisassembly.Controls.Add(this.labelDisStart);
-            this.tabPageDisassembly.Controls.Add(this.richTextBoxDissasembly);
-            this.tabPageDisassembly.Location = new System.Drawing.Point(4, 22);
-            this.tabPageDisassembly.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPageDisassembly.Name = "tabPageDisassembly";
-            this.tabPageDisassembly.Size = new System.Drawing.Size(915, 463);
-            this.tabPageDisassembly.TabIndex = 3;
-            this.tabPageDisassembly.Text = "Disassembly";
+            this.tabPageDebug.Controls.Add(this.splitContainerDebug);
+            this.tabPageDebug.Location = new System.Drawing.Point(4, 22);
+            this.tabPageDebug.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageDebug.Name = "tabPageDebug";
+            this.tabPageDebug.Size = new System.Drawing.Size(915, 463);
+            this.tabPageDebug.TabIndex = 8;
+            this.tabPageDebug.Text = "Debug";
             // 
-            // textBoxDisAddress
+            // splitContainerDebug
             // 
-            this.textBoxDisAddress.Location = new System.Drawing.Point(73, 3);
-            this.textBoxDisAddress.Name = "textBoxDisAddress";
-            this.textBoxDisAddress.Size = new System.Drawing.Size(93, 20);
-            this.textBoxDisAddress.TabIndex = 7;
+            this.splitContainerDebug.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerDebug.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerDebug.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerDebug.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerDebug.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerDebug.Name = "splitContainerDebug";
             // 
-            // buttonDisMore
+            // splitContainerDebug.Panel1
             // 
-            this.buttonDisMore.Location = new System.Drawing.Point(237, 2);
-            this.buttonDisMore.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonDisMore.Name = "buttonDisMore";
-            this.buttonDisMore.Size = new System.Drawing.Size(50, 20);
-            this.buttonDisMore.TabIndex = 6;
-            this.buttonDisMore.Text = "More";
-            this.buttonDisMore.UseVisualStyleBackColor = true;
-            this.buttonDisMore.Visible = false;
+            this.splitContainerDebug.Panel1.AutoScroll = true;
+            this.splitContainerDebug.Panel1.Controls.Add(this.panelDebugBorder);
+            this.splitContainerDebug.Panel1.Controls.Add(this.groupBoxMiscDebug);
+            this.splitContainerDebug.Panel1.Controls.Add(this.groupBoxResourceMeter);
+            this.splitContainerDebug.Panel1.Controls.Add(this.groupBoxAdvancedMode);
+            this.splitContainerDebug.Panel1MinSize = 0;
             // 
-            // buttonDisGo
+            // splitContainerDebug.Panel2
             // 
-            this.buttonDisGo.Location = new System.Drawing.Point(171, 2);
-            this.buttonDisGo.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonDisGo.Name = "buttonDisGo";
-            this.buttonDisGo.Size = new System.Drawing.Size(62, 20);
-            this.buttonDisGo.TabIndex = 5;
-            this.buttonDisGo.Text = "Go";
-            this.buttonDisGo.UseVisualStyleBackColor = true;
+            this.splitContainerDebug.Panel2.Controls.Add(this.watchVariablePanelDebug);
+            this.splitContainerDebug.Panel2MinSize = 0;
+            this.splitContainerDebug.Size = new System.Drawing.Size(915, 463);
+            this.splitContainerDebug.SplitterDistance = 388;
+            this.splitContainerDebug.SplitterWidth = 1;
+            this.splitContainerDebug.TabIndex = 39;
             // 
-            // labelDisStart
+            // panelDebugBorder
             // 
-            this.labelDisStart.AutoSize = true;
-            this.labelDisStart.Location = new System.Drawing.Point(2, 6);
-            this.labelDisStart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelDisStart.Name = "labelDisStart";
-            this.labelDisStart.Size = new System.Drawing.Size(73, 13);
-            this.labelDisStart.TabIndex = 3;
-            this.labelDisStart.Text = "Start Address:";
+            this.panelDebugBorder.Controls.Add(this.pictureBoxDebug);
+            this.panelDebugBorder.Location = new System.Drawing.Point(3, 4);
+            this.panelDebugBorder.Margin = new System.Windows.Forms.Padding(2);
+            this.panelDebugBorder.Name = "panelDebugBorder";
+            this.panelDebugBorder.Size = new System.Drawing.Size(55, 55);
+            this.panelDebugBorder.TabIndex = 3;
             // 
-            // richTextBoxDissasembly
+            // pictureBoxDebug
             // 
-            this.richTextBoxDissasembly.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.pictureBoxDebug.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBoxDissasembly.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxDissasembly.Location = new System.Drawing.Point(3, 26);
-            this.richTextBoxDissasembly.Margin = new System.Windows.Forms.Padding(2);
-            this.richTextBoxDissasembly.Name = "richTextBoxDissasembly";
-            this.richTextBoxDissasembly.ReadOnly = true;
-            this.richTextBoxDissasembly.Size = new System.Drawing.Size(910, 435);
-            this.richTextBoxDissasembly.TabIndex = 0;
-            this.richTextBoxDissasembly.Text = "";
+            this.pictureBoxDebug.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+            this.pictureBoxDebug.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxDebug.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxDebug.MaximumSize = new System.Drawing.Size(133, 130);
+            this.pictureBoxDebug.Name = "pictureBoxDebug";
+            this.pictureBoxDebug.Size = new System.Drawing.Size(49, 49);
+            this.pictureBoxDebug.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxDebug.TabIndex = 0;
+            this.pictureBoxDebug.TabStop = false;
             // 
-            // tabPageDecompiler
+            // groupBoxMiscDebug
             // 
-            this.tabPageDecompiler.Controls.Add(this.buttonDecompilerBack);
-            this.tabPageDecompiler.Controls.Add(this.buttonDecompilerNext);
-            this.tabPageDecompiler.Controls.Add(this.textBoxDecompilerAddress);
-            this.tabPageDecompiler.Controls.Add(this.buttonDecompilerDecompile);
-            this.tabPageDecompiler.Controls.Add(this.labelDecompilerAddress);
-            this.tabPageDecompiler.Controls.Add(this.splitContainerDecompiler);
-            this.tabPageDecompiler.Location = new System.Drawing.Point(4, 22);
-            this.tabPageDecompiler.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPageDecompiler.Name = "tabPageDecompiler";
-            this.tabPageDecompiler.Size = new System.Drawing.Size(915, 463);
-            this.tabPageDecompiler.TabIndex = 23;
-            this.tabPageDecompiler.Text = "Decompiler";
+            this.groupBoxMiscDebug.Controls.Add(this.checkBoxFreeMovement);
+            this.groupBoxMiscDebug.Controls.Add(this.checkBoxSpawnMode);
+            this.groupBoxMiscDebug.Controls.Add(this.checkBoxStageSelect);
+            this.groupBoxMiscDebug.Controls.Add(this.checkBoxClassicMode);
+            this.groupBoxMiscDebug.Location = new System.Drawing.Point(247, 64);
+            this.groupBoxMiscDebug.Name = "groupBoxMiscDebug";
+            this.groupBoxMiscDebug.Size = new System.Drawing.Size(117, 125);
+            this.groupBoxMiscDebug.TabIndex = 38;
+            this.groupBoxMiscDebug.TabStop = false;
+            this.groupBoxMiscDebug.Text = "Misc Debug";
             // 
-            // buttonDecompilerBack
+            // checkBoxFreeMovement
             // 
-            this.buttonDecompilerBack.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonDecompilerBack.BackgroundImage = global::STROOP.Properties.Resources.img_arrow_left;
-            this.buttonDecompilerBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonDecompilerBack.Location = new System.Drawing.Point(220, 1);
-            this.buttonDecompilerBack.Name = "buttonDecompilerBack";
-            this.buttonDecompilerBack.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
-            this.buttonDecompilerBack.Size = new System.Drawing.Size(25, 25);
-            this.buttonDecompilerBack.TabIndex = 13;
-            this.buttonDecompilerBack.UseVisualStyleBackColor = true;
+            this.checkBoxFreeMovement.AutoSize = true;
+            this.checkBoxFreeMovement.Location = new System.Drawing.Point(6, 96);
+            this.checkBoxFreeMovement.Name = "checkBoxFreeMovement";
+            this.checkBoxFreeMovement.Size = new System.Drawing.Size(100, 17);
+            this.checkBoxFreeMovement.TabIndex = 24;
+            this.checkBoxFreeMovement.Text = "Free Movement";
+            this.checkBoxFreeMovement.UseVisualStyleBackColor = true;
             // 
-            // buttonDecompilerNext
+            // checkBoxSpawnMode
             // 
-            this.buttonDecompilerNext.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonDecompilerNext.BackgroundImage = global::STROOP.Properties.Resources.img_arrow_right;
-            this.buttonDecompilerNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonDecompilerNext.Location = new System.Drawing.Point(251, 1);
-            this.buttonDecompilerNext.Name = "buttonDecompilerNext";
-            this.buttonDecompilerNext.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
-            this.buttonDecompilerNext.Size = new System.Drawing.Size(25, 25);
-            this.buttonDecompilerNext.TabIndex = 12;
-            this.buttonDecompilerNext.UseVisualStyleBackColor = true;
+            this.checkBoxSpawnMode.AutoSize = true;
+            this.checkBoxSpawnMode.Location = new System.Drawing.Point(6, 46);
+            this.checkBoxSpawnMode.Name = "checkBoxSpawnMode";
+            this.checkBoxSpawnMode.Size = new System.Drawing.Size(89, 17);
+            this.checkBoxSpawnMode.TabIndex = 12;
+            this.checkBoxSpawnMode.Text = "Spawn Mode";
+            this.checkBoxSpawnMode.UseVisualStyleBackColor = true;
             // 
-            // textBoxDecompilerAddress
+            // checkBoxStageSelect
             // 
-            this.textBoxDecompilerAddress.Location = new System.Drawing.Point(55, 3);
-            this.textBoxDecompilerAddress.Name = "textBoxDecompilerAddress";
-            this.textBoxDecompilerAddress.Size = new System.Drawing.Size(93, 20);
-            this.textBoxDecompilerAddress.TabIndex = 10;
+            this.checkBoxStageSelect.AutoSize = true;
+            this.checkBoxStageSelect.Location = new System.Drawing.Point(6, 71);
+            this.checkBoxStageSelect.Name = "checkBoxStageSelect";
+            this.checkBoxStageSelect.Size = new System.Drawing.Size(87, 17);
+            this.checkBoxStageSelect.TabIndex = 24;
+            this.checkBoxStageSelect.Text = "Stage Select";
+            this.checkBoxStageSelect.UseVisualStyleBackColor = true;
             // 
-            // buttonDecompilerDecompile
+            // checkBoxClassicMode
             // 
-            this.buttonDecompilerDecompile.Location = new System.Drawing.Point(153, 3);
-            this.buttonDecompilerDecompile.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonDecompilerDecompile.Name = "buttonDecompilerDecompile";
-            this.buttonDecompilerDecompile.Size = new System.Drawing.Size(62, 20);
-            this.buttonDecompilerDecompile.TabIndex = 9;
-            this.buttonDecompilerDecompile.Text = "Go";
-            this.buttonDecompilerDecompile.UseVisualStyleBackColor = true;
+            this.checkBoxClassicMode.AutoSize = true;
+            this.checkBoxClassicMode.Location = new System.Drawing.Point(6, 21);
+            this.checkBoxClassicMode.Name = "checkBoxClassicMode";
+            this.checkBoxClassicMode.Size = new System.Drawing.Size(89, 17);
+            this.checkBoxClassicMode.TabIndex = 23;
+            this.checkBoxClassicMode.Text = "Classic Mode";
+            this.checkBoxClassicMode.UseVisualStyleBackColor = true;
             // 
-            // labelDecompilerAddress
+            // groupBoxResourceMeter
             // 
-            this.labelDecompilerAddress.AutoSize = true;
-            this.labelDecompilerAddress.Location = new System.Drawing.Point(-1, 3);
-            this.labelDecompilerAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelDecompilerAddress.Name = "labelDecompilerAddress";
-            this.labelDecompilerAddress.Size = new System.Drawing.Size(48, 13);
-            this.labelDecompilerAddress.TabIndex = 8;
-            this.labelDecompilerAddress.Text = "Address:";
+            this.groupBoxResourceMeter.Controls.Add(this.radioButtonResourceMeterOff);
+            this.groupBoxResourceMeter.Controls.Add(this.radioButtonResourceMeter1);
+            this.groupBoxResourceMeter.Controls.Add(this.radioButtonResourceMeter2);
+            this.groupBoxResourceMeter.Location = new System.Drawing.Point(137, 64);
+            this.groupBoxResourceMeter.Name = "groupBoxResourceMeter";
+            this.groupBoxResourceMeter.Size = new System.Drawing.Size(104, 94);
+            this.groupBoxResourceMeter.TabIndex = 38;
+            this.groupBoxResourceMeter.TabStop = false;
+            this.groupBoxResourceMeter.Text = "Resource Meter";
             // 
-            // splitContainerDecompiler
+            // radioButtonResourceMeterOff
             // 
-            this.splitContainerDecompiler.Location = new System.Drawing.Point(6, 27);
-            this.splitContainerDecompiler.Name = "splitContainerDecompiler";
+            this.radioButtonResourceMeterOff.AutoSize = true;
+            this.radioButtonResourceMeterOff.Checked = true;
+            this.radioButtonResourceMeterOff.Location = new System.Drawing.Point(11, 21);
+            this.radioButtonResourceMeterOff.Name = "radioButtonResourceMeterOff";
+            this.radioButtonResourceMeterOff.Size = new System.Drawing.Size(39, 17);
+            this.radioButtonResourceMeterOff.TabIndex = 7;
+            this.radioButtonResourceMeterOff.TabStop = true;
+            this.radioButtonResourceMeterOff.Text = "Off";
+            this.radioButtonResourceMeterOff.UseVisualStyleBackColor = true;
             // 
-            // splitContainerDecompiler.Panel1
+            // radioButtonResourceMeter1
             // 
-            this.splitContainerDecompiler.Panel1.Controls.Add(this.treeViewDecompile);
+            this.radioButtonResourceMeter1.AutoSize = true;
+            this.radioButtonResourceMeter1.Location = new System.Drawing.Point(11, 44);
+            this.radioButtonResourceMeter1.Name = "radioButtonResourceMeter1";
+            this.radioButtonResourceMeter1.Size = new System.Drawing.Size(61, 17);
+            this.radioButtonResourceMeter1.TabIndex = 8;
+            this.radioButtonResourceMeter1.Text = "Meter 1";
+            this.radioButtonResourceMeter1.UseVisualStyleBackColor = true;
             // 
-            // splitContainerDecompiler.Panel2
+            // radioButtonResourceMeter2
             // 
-            this.splitContainerDecompiler.Panel2.Controls.Add(this.decompilerViewHost);
-            this.splitContainerDecompiler.Size = new System.Drawing.Size(903, 430);
-            this.splitContainerDecompiler.SplitterDistance = 301;
-            this.splitContainerDecompiler.TabIndex = 1;
+            this.radioButtonResourceMeter2.AutoSize = true;
+            this.radioButtonResourceMeter2.Location = new System.Drawing.Point(11, 67);
+            this.radioButtonResourceMeter2.Name = "radioButtonResourceMeter2";
+            this.radioButtonResourceMeter2.Size = new System.Drawing.Size(61, 17);
+            this.radioButtonResourceMeter2.TabIndex = 9;
+            this.radioButtonResourceMeter2.Text = "Meter 2";
+            this.radioButtonResourceMeter2.UseVisualStyleBackColor = true;
             // 
-            // treeViewDecompile
+            // groupBoxAdvancedMode
             // 
-            this.treeViewDecompile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewDecompile.Location = new System.Drawing.Point(0, 0);
-            this.treeViewDecompile.Name = "treeViewDecompile";
-            this.treeViewDecompile.Size = new System.Drawing.Size(301, 430);
-            this.treeViewDecompile.TabIndex = 0;
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeOff);
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeEnemyInfo);
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeObjectCounter);
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeEffectInfo);
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeCheckInfo);
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeStageInfo);
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeMapInfo);
+            this.groupBoxAdvancedMode.Location = new System.Drawing.Point(6, 64);
+            this.groupBoxAdvancedMode.Name = "groupBoxAdvancedMode";
+            this.groupBoxAdvancedMode.Size = new System.Drawing.Size(125, 184);
+            this.groupBoxAdvancedMode.TabIndex = 38;
+            this.groupBoxAdvancedMode.TabStop = false;
+            this.groupBoxAdvancedMode.Text = "Advanced Mode";
             // 
-            // decompilerViewHost
+            // radioButtonAdvancedModeOff
             // 
-            this.decompilerViewHost.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.decompilerViewHost.Location = new System.Drawing.Point(3, 3);
-            this.decompilerViewHost.Name = "decompilerViewHost";
-            this.decompilerViewHost.Size = new System.Drawing.Size(592, 424);
-            this.decompilerViewHost.TabIndex = 0;
-            this.decompilerViewHost.Text = "elementHost1";
-            this.decompilerViewHost.Child = this.decompilerView;
+            this.radioButtonAdvancedModeOff.AutoSize = true;
+            this.radioButtonAdvancedModeOff.Checked = true;
+            this.radioButtonAdvancedModeOff.Location = new System.Drawing.Point(11, 19);
+            this.radioButtonAdvancedModeOff.Name = "radioButtonAdvancedModeOff";
+            this.radioButtonAdvancedModeOff.Size = new System.Drawing.Size(39, 17);
+            this.radioButtonAdvancedModeOff.TabIndex = 1;
+            this.radioButtonAdvancedModeOff.TabStop = true;
+            this.radioButtonAdvancedModeOff.Text = "Off";
+            this.radioButtonAdvancedModeOff.UseVisualStyleBackColor = true;
             // 
-            // tabPageScripts
+            // radioButtonAdvancedModeEnemyInfo
             // 
-            this.tabPageScripts.Controls.Add(this.buttonScriptGo);
-            this.tabPageScripts.Controls.Add(this.textBoxScriptAddress);
-            this.tabPageScripts.Controls.Add(this.labelScriptAddress);
-            this.tabPageScripts.Controls.Add(this.richTextBoxExScript);
-            this.tabPageScripts.Location = new System.Drawing.Point(4, 22);
-            this.tabPageScripts.Name = "tabPageScripts";
-            this.tabPageScripts.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageScripts.Size = new System.Drawing.Size(915, 463);
-            this.tabPageScripts.TabIndex = 20;
-            this.tabPageScripts.Text = "Scripts";
+            this.radioButtonAdvancedModeEnemyInfo.AutoSize = true;
+            this.radioButtonAdvancedModeEnemyInfo.Location = new System.Drawing.Point(11, 157);
+            this.radioButtonAdvancedModeEnemyInfo.Name = "radioButtonAdvancedModeEnemyInfo";
+            this.radioButtonAdvancedModeEnemyInfo.Size = new System.Drawing.Size(78, 17);
+            this.radioButtonAdvancedModeEnemyInfo.TabIndex = 10;
+            this.radioButtonAdvancedModeEnemyInfo.Text = "Enemy Info";
+            this.radioButtonAdvancedModeEnemyInfo.UseVisualStyleBackColor = true;
             // 
-            // buttonScriptGo
+            // radioButtonAdvancedModeObjectCounter
             // 
-            this.buttonScriptGo.Location = new System.Drawing.Point(178, 5);
-            this.buttonScriptGo.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonScriptGo.Name = "buttonScriptGo";
-            this.buttonScriptGo.Size = new System.Drawing.Size(62, 20);
-            this.buttonScriptGo.TabIndex = 7;
-            this.buttonScriptGo.Text = "Go";
-            this.buttonScriptGo.UseVisualStyleBackColor = true;
+            this.radioButtonAdvancedModeObjectCounter.AutoSize = true;
+            this.radioButtonAdvancedModeObjectCounter.Location = new System.Drawing.Point(11, 42);
+            this.radioButtonAdvancedModeObjectCounter.Name = "radioButtonAdvancedModeObjectCounter";
+            this.radioButtonAdvancedModeObjectCounter.Size = new System.Drawing.Size(96, 17);
+            this.radioButtonAdvancedModeObjectCounter.TabIndex = 5;
+            this.radioButtonAdvancedModeObjectCounter.Text = "Object Counter";
+            this.radioButtonAdvancedModeObjectCounter.UseVisualStyleBackColor = true;
             // 
-            // textBoxScriptAddress
+            // radioButtonAdvancedModeEffectInfo
             // 
-            this.textBoxScriptAddress.Location = new System.Drawing.Point(73, 6);
-            this.textBoxScriptAddress.Name = "textBoxScriptAddress";
-            this.textBoxScriptAddress.Size = new System.Drawing.Size(100, 20);
-            this.textBoxScriptAddress.TabIndex = 6;
+            this.radioButtonAdvancedModeEffectInfo.AutoSize = true;
+            this.radioButtonAdvancedModeEffectInfo.Location = new System.Drawing.Point(11, 134);
+            this.radioButtonAdvancedModeEffectInfo.Name = "radioButtonAdvancedModeEffectInfo";
+            this.radioButtonAdvancedModeEffectInfo.Size = new System.Drawing.Size(74, 17);
+            this.radioButtonAdvancedModeEffectInfo.TabIndex = 9;
+            this.radioButtonAdvancedModeEffectInfo.Text = "Effect Info";
+            this.radioButtonAdvancedModeEffectInfo.UseVisualStyleBackColor = true;
             // 
-            // labelScriptAddress
+            // radioButtonAdvancedModeCheckInfo
             // 
-            this.labelScriptAddress.AutoSize = true;
-            this.labelScriptAddress.Location = new System.Drawing.Point(2, 9);
-            this.labelScriptAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelScriptAddress.Name = "labelScriptAddress";
-            this.labelScriptAddress.Size = new System.Drawing.Size(73, 13);
-            this.labelScriptAddress.TabIndex = 5;
-            this.labelScriptAddress.Text = "Start Address:";
+            this.radioButtonAdvancedModeCheckInfo.AutoSize = true;
+            this.radioButtonAdvancedModeCheckInfo.Location = new System.Drawing.Point(11, 65);
+            this.radioButtonAdvancedModeCheckInfo.Name = "radioButtonAdvancedModeCheckInfo";
+            this.radioButtonAdvancedModeCheckInfo.Size = new System.Drawing.Size(77, 17);
+            this.radioButtonAdvancedModeCheckInfo.TabIndex = 6;
+            this.radioButtonAdvancedModeCheckInfo.Text = "Check Info";
+            this.radioButtonAdvancedModeCheckInfo.UseVisualStyleBackColor = true;
             // 
-            // richTextBoxExScript
+            // radioButtonAdvancedModeStageInfo
             // 
-            this.richTextBoxExScript.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBoxExScript.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxExScript.Location = new System.Drawing.Point(2, 31);
-            this.richTextBoxExScript.Margin = new System.Windows.Forms.Padding(2);
-            this.richTextBoxExScript.Name = "richTextBoxExScript";
-            this.richTextBoxExScript.ReadOnly = true;
-            this.richTextBoxExScript.Size = new System.Drawing.Size(908, 430);
-            this.richTextBoxExScript.TabIndex = 1;
-            this.richTextBoxExScript.Text = "";
+            this.radioButtonAdvancedModeStageInfo.AutoSize = true;
+            this.radioButtonAdvancedModeStageInfo.Location = new System.Drawing.Point(11, 111);
+            this.radioButtonAdvancedModeStageInfo.Name = "radioButtonAdvancedModeStageInfo";
+            this.radioButtonAdvancedModeStageInfo.Size = new System.Drawing.Size(74, 17);
+            this.radioButtonAdvancedModeStageInfo.TabIndex = 8;
+            this.radioButtonAdvancedModeStageInfo.Text = "Stage Info";
+            this.radioButtonAdvancedModeStageInfo.UseVisualStyleBackColor = true;
             // 
-            // tabPageMemory
+            // radioButtonAdvancedModeMapInfo
             // 
-            this.tabPageMemory.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageMemory.Controls.Add(this.splitContainerMemory);
-            this.tabPageMemory.Location = new System.Drawing.Point(4, 22);
-            this.tabPageMemory.Name = "tabPageMemory";
-            this.tabPageMemory.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMemory.Size = new System.Drawing.Size(915, 463);
-            this.tabPageMemory.TabIndex = 27;
-            this.tabPageMemory.Text = "Memory";
+            this.radioButtonAdvancedModeMapInfo.AutoSize = true;
+            this.radioButtonAdvancedModeMapInfo.Location = new System.Drawing.Point(11, 88);
+            this.radioButtonAdvancedModeMapInfo.Name = "radioButtonAdvancedModeMapInfo";
+            this.radioButtonAdvancedModeMapInfo.Size = new System.Drawing.Size(67, 17);
+            this.radioButtonAdvancedModeMapInfo.TabIndex = 7;
+            this.radioButtonAdvancedModeMapInfo.Text = "Map Info";
+            this.radioButtonAdvancedModeMapInfo.UseVisualStyleBackColor = true;
             // 
-            // splitContainerMemory
+            // watchVariablePanelDebug
             // 
-            this.splitContainerMemory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainerMemory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerMemory.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainerMemory.Location = new System.Drawing.Point(3, 3);
-            this.splitContainerMemory.Margin = new System.Windows.Forms.Padding(0);
-            this.splitContainerMemory.Name = "splitContainerMemory";
-            // 
-            // splitContainerMemory.Panel1
-            // 
-            this.splitContainerMemory.Panel1.AutoScroll = true;
-            this.splitContainerMemory.Panel1.Controls.Add(this.comboBoxMemoryTypes);
-            this.splitContainerMemory.Panel1.Controls.Add(this.richTextBoxMemoryValues);
-            this.splitContainerMemory.Panel1.Controls.Add(this.checkBoxMemoryObj);
-            this.splitContainerMemory.Panel1.Controls.Add(this.checkBoxMemoryHex);
-            this.splitContainerMemory.Panel1.Controls.Add(this.checkBoxMemoryRelativeAddresses);
-            this.splitContainerMemory.Panel1.Controls.Add(this.checkBoxMemoryLittleEndian);
-            this.splitContainerMemory.Panel1.Controls.Add(this.checkBoxMemoryUpdateContinuously);
-            this.splitContainerMemory.Panel1.Controls.Add(this.richTextBoxMemoryAddresses);
-            this.splitContainerMemory.Panel1.Controls.Add(this.textBoxMemoryObjAddress);
-            this.splitContainerMemory.Panel1.Controls.Add(this.labelMemoryObjAddress);
-            this.splitContainerMemory.Panel1MinSize = 0;
-            // 
-            // splitContainerMemory.Panel2
-            // 
-            this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
-            this.splitContainerMemory.Panel2MinSize = 0;
-            this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 725;
-            this.splitContainerMemory.SplitterWidth = 1;
-            this.splitContainerMemory.TabIndex = 37;
-            // 
-            // comboBoxMemoryTypes
-            // 
-            this.comboBoxMemoryTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxMemoryTypes.Location = new System.Drawing.Point(473, 3);
-            this.comboBoxMemoryTypes.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxMemoryTypes.Name = "comboBoxMemoryTypes";
-            this.comboBoxMemoryTypes.Size = new System.Drawing.Size(55, 21);
-            this.comboBoxMemoryTypes.TabIndex = 36;
-            // 
-            // richTextBoxMemoryValues
-            // 
-            this.richTextBoxMemoryValues.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBoxMemoryValues.BackColor = System.Drawing.SystemColors.Control;
-            this.richTextBoxMemoryValues.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxMemoryValues.Location = new System.Drawing.Point(112, 28);
-            this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
-            this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
-            this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(609, 429);
-            this.richTextBoxMemoryValues.TabIndex = 8;
-            this.richTextBoxMemoryValues.Text = "";
-            // 
-            // checkBoxMemoryObj
-            // 
-            this.checkBoxMemoryObj.AutoSize = true;
-            this.checkBoxMemoryObj.Location = new System.Drawing.Point(584, 7);
-            this.checkBoxMemoryObj.Name = "checkBoxMemoryObj";
-            this.checkBoxMemoryObj.Size = new System.Drawing.Size(42, 17);
-            this.checkBoxMemoryObj.TabIndex = 35;
-            this.checkBoxMemoryObj.Text = "Obj";
-            this.checkBoxMemoryObj.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMemoryHex
-            // 
-            this.checkBoxMemoryHex.AutoSize = true;
-            this.checkBoxMemoryHex.Location = new System.Drawing.Point(535, 7);
-            this.checkBoxMemoryHex.Name = "checkBoxMemoryHex";
-            this.checkBoxMemoryHex.Size = new System.Drawing.Size(45, 17);
-            this.checkBoxMemoryHex.TabIndex = 35;
-            this.checkBoxMemoryHex.Text = "Hex";
-            this.checkBoxMemoryHex.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMemoryRelativeAddresses
-            // 
-            this.checkBoxMemoryRelativeAddresses.AutoSize = true;
-            this.checkBoxMemoryRelativeAddresses.Checked = true;
-            this.checkBoxMemoryRelativeAddresses.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMemoryRelativeAddresses.Location = new System.Drawing.Point(377, 7);
-            this.checkBoxMemoryRelativeAddresses.Name = "checkBoxMemoryRelativeAddresses";
-            this.checkBoxMemoryRelativeAddresses.Size = new System.Drawing.Size(94, 17);
-            this.checkBoxMemoryRelativeAddresses.TabIndex = 35;
-            this.checkBoxMemoryRelativeAddresses.Text = "Rel Addresses";
-            this.checkBoxMemoryRelativeAddresses.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMemoryLittleEndian
-            // 
-            this.checkBoxMemoryLittleEndian.AutoSize = true;
-            this.checkBoxMemoryLittleEndian.Checked = true;
-            this.checkBoxMemoryLittleEndian.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMemoryLittleEndian.Location = new System.Drawing.Point(287, 7);
-            this.checkBoxMemoryLittleEndian.Name = "checkBoxMemoryLittleEndian";
-            this.checkBoxMemoryLittleEndian.Size = new System.Drawing.Size(84, 17);
-            this.checkBoxMemoryLittleEndian.TabIndex = 35;
-            this.checkBoxMemoryLittleEndian.Text = "Little Endian";
-            this.checkBoxMemoryLittleEndian.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMemoryUpdateContinuously
-            // 
-            this.checkBoxMemoryUpdateContinuously.AutoSize = true;
-            this.checkBoxMemoryUpdateContinuously.Checked = true;
-            this.checkBoxMemoryUpdateContinuously.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMemoryUpdateContinuously.Location = new System.Drawing.Point(159, 7);
-            this.checkBoxMemoryUpdateContinuously.Name = "checkBoxMemoryUpdateContinuously";
-            this.checkBoxMemoryUpdateContinuously.Size = new System.Drawing.Size(124, 17);
-            this.checkBoxMemoryUpdateContinuously.TabIndex = 35;
-            this.checkBoxMemoryUpdateContinuously.Text = "Update Continuously";
-            this.checkBoxMemoryUpdateContinuously.UseVisualStyleBackColor = true;
-            // 
-            // richTextBoxMemoryAddresses
-            // 
-            this.richTextBoxMemoryAddresses.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.richTextBoxMemoryAddresses.BackColor = System.Drawing.SystemColors.Control;
-            this.richTextBoxMemoryAddresses.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxMemoryAddresses.Location = new System.Drawing.Point(5, 28);
-            this.richTextBoxMemoryAddresses.Margin = new System.Windows.Forms.Padding(2);
-            this.richTextBoxMemoryAddresses.Name = "richTextBoxMemoryAddresses";
-            this.richTextBoxMemoryAddresses.ReadOnly = true;
-            this.richTextBoxMemoryAddresses.Size = new System.Drawing.Size(103, 429);
-            this.richTextBoxMemoryAddresses.TabIndex = 8;
-            this.richTextBoxMemoryAddresses.Text = "";
-            // 
-            // textBoxMemoryObjAddress
-            // 
-            this.textBoxMemoryObjAddress.Location = new System.Drawing.Point(76, 3);
-            this.textBoxMemoryObjAddress.Name = "textBoxMemoryObjAddress";
-            this.textBoxMemoryObjAddress.ReadOnly = true;
-            this.textBoxMemoryObjAddress.Size = new System.Drawing.Size(74, 20);
-            this.textBoxMemoryObjAddress.TabIndex = 34;
-            this.textBoxMemoryObjAddress.Text = "0x00000000";
-            this.textBoxMemoryObjAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelMemoryObjAddress
-            // 
-            this.labelMemoryObjAddress.AutoSize = true;
-            this.labelMemoryObjAddress.Location = new System.Drawing.Point(8, 6);
-            this.labelMemoryObjAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMemoryObjAddress.Name = "labelMemoryObjAddress";
-            this.labelMemoryObjAddress.Size = new System.Drawing.Size(67, 13);
-            this.labelMemoryObjAddress.TabIndex = 9;
-            this.labelMemoryObjAddress.Text = "Obj Address:";
-            // 
-            // watchVariablePanelMemory
-            // 
-            this.watchVariablePanelMemory.AutoScroll = true;
-            this.watchVariablePanelMemory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.watchVariablePanelMemory.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.watchVariablePanelMemory.Location = new System.Drawing.Point(0, 0);
-            this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
-            this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
-            this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(181, 455);
-            this.watchVariablePanelMemory.TabIndex = 7;
+            this.watchVariablePanelDebug.AutoScroll = true;
+            this.watchVariablePanelDebug.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.watchVariablePanelDebug.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.watchVariablePanelDebug.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelDebug.Margin = new System.Windows.Forms.Padding(0);
+            this.watchVariablePanelDebug.Name = "watchVariablePanelDebug";
+            this.watchVariablePanelDebug.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelDebug.Size = new System.Drawing.Size(524, 461);
+            this.watchVariablePanelDebug.TabIndex = 26;
             // 
             // tabPageHacks
             // 
@@ -14202,549 +14363,643 @@ namespace STROOP
             this.varHackPanel.Size = new System.Drawing.Size(695, 461);
             this.varHackPanel.TabIndex = 3;
             // 
-            // tabPageOptions
-            // 
-            this.tabPageOptions.AutoScroll = true;
-            this.tabPageOptions.Controls.Add(this.groupBoxPositionControllerRelativeAngle);
-            this.tabPageOptions.Controls.Add(this.groupBoxOptionsSavedSettings);
-            this.tabPageOptions.Controls.Add(this.groupBoxFPS);
-            this.tabPageOptions.Controls.Add(this.groupBoxGotoRetrieveOffsets);
-            this.tabPageOptions.Controls.Add(this.groupBoxShowOverlay);
-            this.tabPageOptions.Controls.Add(this.label3);
-            this.tabPageOptions.Controls.Add(this.checkBoxUseRomHack);
-            this.tabPageOptions.Location = new System.Drawing.Point(4, 22);
-            this.tabPageOptions.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPageOptions.Name = "tabPageOptions";
-            this.tabPageOptions.Size = new System.Drawing.Size(915, 463);
-            this.tabPageOptions.TabIndex = 5;
-            this.tabPageOptions.Text = "Options";
-            // 
-            // groupBoxPositionControllerRelativeAngle
-            // 
-            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.textBoxPositionControllerRelativeAngleCustom);
-            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleMario);
-            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleRecommended);
-            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleCustom);
-            this.groupBoxPositionControllerRelativeAngle.Location = new System.Drawing.Point(447, 184);
-            this.groupBoxPositionControllerRelativeAngle.Name = "groupBoxPositionControllerRelativeAngle";
-            this.groupBoxPositionControllerRelativeAngle.Size = new System.Drawing.Size(141, 99);
-            this.groupBoxPositionControllerRelativeAngle.TabIndex = 39;
-            this.groupBoxPositionControllerRelativeAngle.TabStop = false;
-            this.groupBoxPositionControllerRelativeAngle.Text = "Pos Controller Rel Angle";
-            // 
-            // textBoxPositionControllerRelativeAngleCustom
-            // 
-            this.textBoxPositionControllerRelativeAngleCustom.Location = new System.Drawing.Point(74, 64);
-            this.textBoxPositionControllerRelativeAngleCustom.Name = "textBoxPositionControllerRelativeAngleCustom";
-            this.textBoxPositionControllerRelativeAngleCustom.Size = new System.Drawing.Size(50, 20);
-            this.textBoxPositionControllerRelativeAngleCustom.TabIndex = 38;
-            this.textBoxPositionControllerRelativeAngleCustom.Text = "32768";
-            this.textBoxPositionControllerRelativeAngleCustom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // radioButtonPositionControllerRelativeAngleMario
-            // 
-            this.radioButtonPositionControllerRelativeAngleMario.AutoSize = true;
-            this.radioButtonPositionControllerRelativeAngleMario.Location = new System.Drawing.Point(11, 42);
-            this.radioButtonPositionControllerRelativeAngleMario.Name = "radioButtonPositionControllerRelativeAngleMario";
-            this.radioButtonPositionControllerRelativeAngleMario.Size = new System.Drawing.Size(51, 17);
-            this.radioButtonPositionControllerRelativeAngleMario.TabIndex = 12;
-            this.radioButtonPositionControllerRelativeAngleMario.Text = "Mario";
-            this.radioButtonPositionControllerRelativeAngleMario.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonPositionControllerRelativeAngleRecommended
-            // 
-            this.radioButtonPositionControllerRelativeAngleRecommended.AutoSize = true;
-            this.radioButtonPositionControllerRelativeAngleRecommended.Checked = true;
-            this.radioButtonPositionControllerRelativeAngleRecommended.Location = new System.Drawing.Point(11, 19);
-            this.radioButtonPositionControllerRelativeAngleRecommended.Name = "radioButtonPositionControllerRelativeAngleRecommended";
-            this.radioButtonPositionControllerRelativeAngleRecommended.Size = new System.Drawing.Size(97, 17);
-            this.radioButtonPositionControllerRelativeAngleRecommended.TabIndex = 11;
-            this.radioButtonPositionControllerRelativeAngleRecommended.TabStop = true;
-            this.radioButtonPositionControllerRelativeAngleRecommended.Text = "Recommended";
-            this.radioButtonPositionControllerRelativeAngleRecommended.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonPositionControllerRelativeAngleCustom
-            // 
-            this.radioButtonPositionControllerRelativeAngleCustom.AutoSize = true;
-            this.radioButtonPositionControllerRelativeAngleCustom.Location = new System.Drawing.Point(11, 65);
-            this.radioButtonPositionControllerRelativeAngleCustom.Name = "radioButtonPositionControllerRelativeAngleCustom";
-            this.radioButtonPositionControllerRelativeAngleCustom.Size = new System.Drawing.Size(63, 17);
-            this.radioButtonPositionControllerRelativeAngleCustom.TabIndex = 13;
-            this.radioButtonPositionControllerRelativeAngleCustom.Text = "Custom:";
-            this.radioButtonPositionControllerRelativeAngleCustom.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxOptionsSavedSettings
-            // 
-            this.groupBoxOptionsSavedSettings.Controls.Add(this.buttonOptionsResetSavedSettings);
-            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxStartSlotIndexOne);
-            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxMoveCamWithPu);
-            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxNeutralizeTrianglesWith21);
-            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxScaleDiagonalPositionControllerButtons);
-            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxOptionsUseInGameTrigForAngleLogic);
-            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxDontRoundValuesToZero);
-            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxExcludeDustForClosestObject);
-            this.groupBoxOptionsSavedSettings.Controls.Add(this.checkBoxUseMisalignmentOffsetForDistanceToLine);
-            this.groupBoxOptionsSavedSettings.Location = new System.Drawing.Point(6, 4);
-            this.groupBoxOptionsSavedSettings.Name = "groupBoxOptionsSavedSettings";
-            this.groupBoxOptionsSavedSettings.Size = new System.Drawing.Size(259, 231);
-            this.groupBoxOptionsSavedSettings.TabIndex = 38;
-            this.groupBoxOptionsSavedSettings.TabStop = false;
-            this.groupBoxOptionsSavedSettings.Text = "Saved Settings";
-            // 
-            // buttonOptionsResetSavedSettings
-            // 
-            this.buttonOptionsResetSavedSettings.Location = new System.Drawing.Point(8, 190);
-            this.buttonOptionsResetSavedSettings.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonOptionsResetSavedSettings.Name = "buttonOptionsResetSavedSettings";
-            this.buttonOptionsResetSavedSettings.Size = new System.Drawing.Size(242, 28);
-            this.buttonOptionsResetSavedSettings.TabIndex = 38;
-            this.buttonOptionsResetSavedSettings.Text = "Reset Saved Settings";
-            this.buttonOptionsResetSavedSettings.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxStartSlotIndexOne
-            // 
-            this.checkBoxStartSlotIndexOne.AutoSize = true;
-            this.checkBoxStartSlotIndexOne.Checked = true;
-            this.checkBoxStartSlotIndexOne.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxStartSlotIndexOne.Location = new System.Drawing.Point(12, 21);
-            this.checkBoxStartSlotIndexOne.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxStartSlotIndexOne.Name = "checkBoxStartSlotIndexOne";
-            this.checkBoxStartSlotIndexOne.Size = new System.Drawing.Size(133, 17);
-            this.checkBoxStartSlotIndexOne.TabIndex = 0;
-            this.checkBoxStartSlotIndexOne.Text = "Start Slot Index From 1";
-            this.checkBoxStartSlotIndexOne.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMoveCamWithPu
-            // 
-            this.checkBoxMoveCamWithPu.AutoSize = true;
-            this.checkBoxMoveCamWithPu.Checked = true;
-            this.checkBoxMoveCamWithPu.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMoveCamWithPu.Location = new System.Drawing.Point(12, 61);
-            this.checkBoxMoveCamWithPu.Name = "checkBoxMoveCamWithPu";
-            this.checkBoxMoveCamWithPu.Size = new System.Drawing.Size(162, 17);
-            this.checkBoxMoveCamWithPu.TabIndex = 4;
-            this.checkBoxMoveCamWithPu.Text = "PU Controller Moves Camera";
-            this.checkBoxMoveCamWithPu.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxNeutralizeTrianglesWith21
-            // 
-            this.checkBoxNeutralizeTrianglesWith21.AutoSize = true;
-            this.checkBoxNeutralizeTrianglesWith21.Checked = true;
-            this.checkBoxNeutralizeTrianglesWith21.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxNeutralizeTrianglesWith21.Location = new System.Drawing.Point(12, 101);
-            this.checkBoxNeutralizeTrianglesWith21.Name = "checkBoxNeutralizeTrianglesWith21";
-            this.checkBoxNeutralizeTrianglesWith21.Size = new System.Drawing.Size(156, 17);
-            this.checkBoxNeutralizeTrianglesWith21.TabIndex = 4;
-            this.checkBoxNeutralizeTrianglesWith21.Text = "Neutralize Triangles with 21";
-            this.checkBoxNeutralizeTrianglesWith21.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxScaleDiagonalPositionControllerButtons
-            // 
-            this.checkBoxScaleDiagonalPositionControllerButtons.AutoSize = true;
-            this.checkBoxScaleDiagonalPositionControllerButtons.Checked = true;
-            this.checkBoxScaleDiagonalPositionControllerButtons.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxScaleDiagonalPositionControllerButtons.Location = new System.Drawing.Point(12, 41);
-            this.checkBoxScaleDiagonalPositionControllerButtons.Name = "checkBoxScaleDiagonalPositionControllerButtons";
-            this.checkBoxScaleDiagonalPositionControllerButtons.Size = new System.Drawing.Size(224, 17);
-            this.checkBoxScaleDiagonalPositionControllerButtons.TabIndex = 8;
-            this.checkBoxScaleDiagonalPositionControllerButtons.Text = "Scale Diagonal Position Controller Buttons";
-            this.checkBoxScaleDiagonalPositionControllerButtons.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxOptionsUseInGameTrigForAngleLogic
-            // 
-            this.checkBoxOptionsUseInGameTrigForAngleLogic.AutoSize = true;
-            this.checkBoxOptionsUseInGameTrigForAngleLogic.Location = new System.Drawing.Point(12, 161);
-            this.checkBoxOptionsUseInGameTrigForAngleLogic.Name = "checkBoxOptionsUseInGameTrigForAngleLogic";
-            this.checkBoxOptionsUseInGameTrigForAngleLogic.Size = new System.Drawing.Size(183, 17);
-            this.checkBoxOptionsUseInGameTrigForAngleLogic.TabIndex = 31;
-            this.checkBoxOptionsUseInGameTrigForAngleLogic.Text = "Use In-Game Trig for Angle Logic";
-            this.checkBoxOptionsUseInGameTrigForAngleLogic.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxDontRoundValuesToZero
-            // 
-            this.checkBoxDontRoundValuesToZero.AutoSize = true;
-            this.checkBoxDontRoundValuesToZero.Checked = true;
-            this.checkBoxDontRoundValuesToZero.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDontRoundValuesToZero.Location = new System.Drawing.Point(12, 141);
-            this.checkBoxDontRoundValuesToZero.Name = "checkBoxDontRoundValuesToZero";
-            this.checkBoxDontRoundValuesToZero.Size = new System.Drawing.Size(142, 17);
-            this.checkBoxDontRoundValuesToZero.TabIndex = 31;
-            this.checkBoxDontRoundValuesToZero.Text = "Don\'t Round Values to 0";
-            this.checkBoxDontRoundValuesToZero.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxExcludeDustForClosestObject
-            // 
-            this.checkBoxExcludeDustForClosestObject.AutoSize = true;
-            this.checkBoxExcludeDustForClosestObject.Checked = true;
-            this.checkBoxExcludeDustForClosestObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxExcludeDustForClosestObject.Location = new System.Drawing.Point(12, 81);
-            this.checkBoxExcludeDustForClosestObject.Name = "checkBoxExcludeDustForClosestObject";
-            this.checkBoxExcludeDustForClosestObject.Size = new System.Drawing.Size(175, 17);
-            this.checkBoxExcludeDustForClosestObject.TabIndex = 31;
-            this.checkBoxExcludeDustForClosestObject.Text = "Exclude Dust for Closest Object";
-            this.checkBoxExcludeDustForClosestObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxUseMisalignmentOffsetForDistanceToLine
-            // 
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.AutoSize = true;
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Checked = true;
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Location = new System.Drawing.Point(12, 121);
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Name = "checkBoxUseMisalignmentOffsetForDistanceToLine";
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Size = new System.Drawing.Size(242, 17);
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.TabIndex = 31;
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Text = "Use Misalignment Offset For Distance To Line";
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxFPS
-            // 
-            this.groupBoxFPS.Controls.Add(this.betterTextboxFPS);
-            this.groupBoxFPS.Location = new System.Drawing.Point(447, 131);
-            this.groupBoxFPS.Name = "groupBoxFPS";
-            this.groupBoxFPS.Size = new System.Drawing.Size(62, 47);
-            this.groupBoxFPS.TabIndex = 38;
-            this.groupBoxFPS.TabStop = false;
-            this.groupBoxFPS.Text = "FPS";
-            // 
-            // betterTextboxFPS
-            // 
-            this.betterTextboxFPS.Location = new System.Drawing.Point(6, 19);
-            this.betterTextboxFPS.Name = "betterTextboxFPS";
-            this.betterTextboxFPS.Size = new System.Drawing.Size(50, 20);
-            this.betterTextboxFPS.TabIndex = 39;
-            this.betterTextboxFPS.Text = "30";
-            this.betterTextboxFPS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // groupBoxGotoRetrieveOffsets
-            // 
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelRetrieveInfrontSuffix);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelRetrieveInfrontPrefix);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.textBoxRetrieveInfront);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelRetrieveAboveSuffix);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelRetrieveAbovePrefix);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.textBoxRetrieveAbove);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelGotoInfrontSuffix);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelGotoInfrontPrefix);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.textBoxGotoInfront);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelGotoAboveSuffix);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelGotoAbovePrefix);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.textBoxGotoAbove);
-            this.groupBoxGotoRetrieveOffsets.Location = new System.Drawing.Point(447, 4);
-            this.groupBoxGotoRetrieveOffsets.Name = "groupBoxGotoRetrieveOffsets";
-            this.groupBoxGotoRetrieveOffsets.Size = new System.Drawing.Size(154, 121);
-            this.groupBoxGotoRetrieveOffsets.TabIndex = 32;
-            this.groupBoxGotoRetrieveOffsets.TabStop = false;
-            this.groupBoxGotoRetrieveOffsets.Text = "Go to / Retrieve Offsets";
-            // 
-            // labelRetrieveInfrontSuffix
-            // 
-            this.labelRetrieveInfrontSuffix.AutoSize = true;
-            this.labelRetrieveInfrontSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRetrieveInfrontSuffix.Location = new System.Drawing.Point(106, 98);
-            this.labelRetrieveInfrontSuffix.Name = "labelRetrieveInfrontSuffix";
-            this.labelRetrieveInfrontSuffix.Size = new System.Drawing.Size(39, 13);
-            this.labelRetrieveInfrontSuffix.TabIndex = 39;
-            this.labelRetrieveInfrontSuffix.Text = "in front";
-            // 
-            // labelRetrieveInfrontPrefix
-            // 
-            this.labelRetrieveInfrontPrefix.AutoSize = true;
-            this.labelRetrieveInfrontPrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRetrieveInfrontPrefix.Location = new System.Drawing.Point(11, 98);
-            this.labelRetrieveInfrontPrefix.Name = "labelRetrieveInfrontPrefix";
-            this.labelRetrieveInfrontPrefix.Size = new System.Drawing.Size(47, 13);
-            this.labelRetrieveInfrontPrefix.TabIndex = 38;
-            this.labelRetrieveInfrontPrefix.Text = "Retrieve";
-            // 
-            // textBoxRetrieveInfront
-            // 
-            this.textBoxRetrieveInfront.Location = new System.Drawing.Point(60, 95);
-            this.textBoxRetrieveInfront.Name = "textBoxRetrieveInfront";
-            this.textBoxRetrieveInfront.Size = new System.Drawing.Size(42, 20);
-            this.textBoxRetrieveInfront.TabIndex = 37;
-            this.textBoxRetrieveInfront.Text = "0";
-            this.textBoxRetrieveInfront.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelRetrieveAboveSuffix
-            // 
-            this.labelRetrieveAboveSuffix.AutoSize = true;
-            this.labelRetrieveAboveSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRetrieveAboveSuffix.Location = new System.Drawing.Point(106, 73);
-            this.labelRetrieveAboveSuffix.Name = "labelRetrieveAboveSuffix";
-            this.labelRetrieveAboveSuffix.Size = new System.Drawing.Size(37, 13);
-            this.labelRetrieveAboveSuffix.TabIndex = 36;
-            this.labelRetrieveAboveSuffix.Text = "above";
-            // 
-            // labelRetrieveAbovePrefix
-            // 
-            this.labelRetrieveAbovePrefix.AutoSize = true;
-            this.labelRetrieveAbovePrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRetrieveAbovePrefix.Location = new System.Drawing.Point(11, 73);
-            this.labelRetrieveAbovePrefix.Name = "labelRetrieveAbovePrefix";
-            this.labelRetrieveAbovePrefix.Size = new System.Drawing.Size(47, 13);
-            this.labelRetrieveAbovePrefix.TabIndex = 35;
-            this.labelRetrieveAbovePrefix.Text = "Retrieve";
-            // 
-            // textBoxRetrieveAbove
-            // 
-            this.textBoxRetrieveAbove.Location = new System.Drawing.Point(60, 70);
-            this.textBoxRetrieveAbove.Name = "textBoxRetrieveAbove";
-            this.textBoxRetrieveAbove.Size = new System.Drawing.Size(42, 20);
-            this.textBoxRetrieveAbove.TabIndex = 34;
-            this.textBoxRetrieveAbove.Text = "300";
-            this.textBoxRetrieveAbove.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelGotoInfrontSuffix
-            // 
-            this.labelGotoInfrontSuffix.AutoSize = true;
-            this.labelGotoInfrontSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGotoInfrontSuffix.Location = new System.Drawing.Point(106, 48);
-            this.labelGotoInfrontSuffix.Name = "labelGotoInfrontSuffix";
-            this.labelGotoInfrontSuffix.Size = new System.Drawing.Size(39, 13);
-            this.labelGotoInfrontSuffix.TabIndex = 33;
-            this.labelGotoInfrontSuffix.Text = "in front";
-            // 
-            // labelGotoInfrontPrefix
-            // 
-            this.labelGotoInfrontPrefix.AutoSize = true;
-            this.labelGotoInfrontPrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGotoInfrontPrefix.Location = new System.Drawing.Point(11, 48);
-            this.labelGotoInfrontPrefix.Name = "labelGotoInfrontPrefix";
-            this.labelGotoInfrontPrefix.Size = new System.Drawing.Size(33, 13);
-            this.labelGotoInfrontPrefix.TabIndex = 32;
-            this.labelGotoInfrontPrefix.Text = "Go to";
-            // 
-            // textBoxGotoInfront
-            // 
-            this.textBoxGotoInfront.Location = new System.Drawing.Point(60, 45);
-            this.textBoxGotoInfront.Name = "textBoxGotoInfront";
-            this.textBoxGotoInfront.Size = new System.Drawing.Size(42, 20);
-            this.textBoxGotoInfront.TabIndex = 31;
-            this.textBoxGotoInfront.Text = "0";
-            this.textBoxGotoInfront.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelGotoAboveSuffix
-            // 
-            this.labelGotoAboveSuffix.AutoSize = true;
-            this.labelGotoAboveSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGotoAboveSuffix.Location = new System.Drawing.Point(106, 23);
-            this.labelGotoAboveSuffix.Name = "labelGotoAboveSuffix";
-            this.labelGotoAboveSuffix.Size = new System.Drawing.Size(37, 13);
-            this.labelGotoAboveSuffix.TabIndex = 30;
-            this.labelGotoAboveSuffix.Text = "above";
-            // 
-            // labelGotoAbovePrefix
-            // 
-            this.labelGotoAbovePrefix.AutoSize = true;
-            this.labelGotoAbovePrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGotoAbovePrefix.Location = new System.Drawing.Point(11, 23);
-            this.labelGotoAbovePrefix.Name = "labelGotoAbovePrefix";
-            this.labelGotoAbovePrefix.Size = new System.Drawing.Size(33, 13);
-            this.labelGotoAbovePrefix.TabIndex = 29;
-            this.labelGotoAbovePrefix.Text = "Go to";
-            // 
-            // textBoxGotoAbove
-            // 
-            this.textBoxGotoAbove.Location = new System.Drawing.Point(60, 20);
-            this.textBoxGotoAbove.Name = "textBoxGotoAbove";
-            this.textBoxGotoAbove.Size = new System.Drawing.Size(42, 20);
-            this.textBoxGotoAbove.TabIndex = 28;
-            this.textBoxGotoAbove.Text = "300";
-            this.textBoxGotoAbove.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // groupBoxShowOverlay
-            // 
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayCameraHackObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayChildObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayParentObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayCeilingObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayWallObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayFloorObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayUsedObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayInteractionObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayCameraObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayClosestObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayStoodOnObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayHeldObject);
-            this.groupBoxShowOverlay.Location = new System.Drawing.Point(271, 4);
-            this.groupBoxShowOverlay.Name = "groupBoxShowOverlay";
-            this.groupBoxShowOverlay.Size = new System.Drawing.Size(170, 275);
-            this.groupBoxShowOverlay.TabIndex = 29;
-            this.groupBoxShowOverlay.TabStop = false;
-            this.groupBoxShowOverlay.Text = "Object Slot Overlays to Show";
-            // 
-            // checkBoxShowOverlayCameraHackObject
-            // 
-            this.checkBoxShowOverlayCameraHackObject.AutoSize = true;
-            this.checkBoxShowOverlayCameraHackObject.Checked = true;
-            this.checkBoxShowOverlayCameraHackObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayCameraHackObject.Location = new System.Drawing.Point(5, 146);
-            this.checkBoxShowOverlayCameraHackObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayCameraHackObject.Name = "checkBoxShowOverlayCameraHackObject";
-            this.checkBoxShowOverlayCameraHackObject.Size = new System.Drawing.Size(125, 17);
-            this.checkBoxShowOverlayCameraHackObject.TabIndex = 10;
-            this.checkBoxShowOverlayCameraHackObject.Text = "Camera Hack Object";
-            this.checkBoxShowOverlayCameraHackObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayChildObject
-            // 
-            this.checkBoxShowOverlayChildObject.AutoSize = true;
-            this.checkBoxShowOverlayChildObject.Location = new System.Drawing.Point(5, 251);
-            this.checkBoxShowOverlayChildObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayChildObject.Name = "checkBoxShowOverlayChildObject";
-            this.checkBoxShowOverlayChildObject.Size = new System.Drawing.Size(83, 17);
-            this.checkBoxShowOverlayChildObject.TabIndex = 9;
-            this.checkBoxShowOverlayChildObject.Text = "Child Object";
-            this.checkBoxShowOverlayChildObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayParentObject
-            // 
-            this.checkBoxShowOverlayParentObject.AutoSize = true;
-            this.checkBoxShowOverlayParentObject.Location = new System.Drawing.Point(5, 230);
-            this.checkBoxShowOverlayParentObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayParentObject.Name = "checkBoxShowOverlayParentObject";
-            this.checkBoxShowOverlayParentObject.Size = new System.Drawing.Size(91, 17);
-            this.checkBoxShowOverlayParentObject.TabIndex = 9;
-            this.checkBoxShowOverlayParentObject.Text = "Parent Object";
-            this.checkBoxShowOverlayParentObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayCeilingObject
-            // 
-            this.checkBoxShowOverlayCeilingObject.AutoSize = true;
-            this.checkBoxShowOverlayCeilingObject.Checked = true;
-            this.checkBoxShowOverlayCeilingObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayCeilingObject.Location = new System.Drawing.Point(5, 209);
-            this.checkBoxShowOverlayCeilingObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayCeilingObject.Name = "checkBoxShowOverlayCeilingObject";
-            this.checkBoxShowOverlayCeilingObject.Size = new System.Drawing.Size(91, 17);
-            this.checkBoxShowOverlayCeilingObject.TabIndex = 9;
-            this.checkBoxShowOverlayCeilingObject.Text = "Ceiling Object";
-            this.checkBoxShowOverlayCeilingObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayWallObject
-            // 
-            this.checkBoxShowOverlayWallObject.AutoSize = true;
-            this.checkBoxShowOverlayWallObject.Checked = true;
-            this.checkBoxShowOverlayWallObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayWallObject.Location = new System.Drawing.Point(5, 188);
-            this.checkBoxShowOverlayWallObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayWallObject.Name = "checkBoxShowOverlayWallObject";
-            this.checkBoxShowOverlayWallObject.Size = new System.Drawing.Size(81, 17);
-            this.checkBoxShowOverlayWallObject.TabIndex = 8;
-            this.checkBoxShowOverlayWallObject.Text = "Wall Object";
-            this.checkBoxShowOverlayWallObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayFloorObject
-            // 
-            this.checkBoxShowOverlayFloorObject.AutoSize = true;
-            this.checkBoxShowOverlayFloorObject.Checked = true;
-            this.checkBoxShowOverlayFloorObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayFloorObject.Location = new System.Drawing.Point(5, 167);
-            this.checkBoxShowOverlayFloorObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayFloorObject.Name = "checkBoxShowOverlayFloorObject";
-            this.checkBoxShowOverlayFloorObject.Size = new System.Drawing.Size(83, 17);
-            this.checkBoxShowOverlayFloorObject.TabIndex = 7;
-            this.checkBoxShowOverlayFloorObject.Text = "Floor Object";
-            this.checkBoxShowOverlayFloorObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayUsedObject
-            // 
-            this.checkBoxShowOverlayUsedObject.AutoSize = true;
-            this.checkBoxShowOverlayUsedObject.Checked = true;
-            this.checkBoxShowOverlayUsedObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayUsedObject.Location = new System.Drawing.Point(5, 83);
-            this.checkBoxShowOverlayUsedObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayUsedObject.Name = "checkBoxShowOverlayUsedObject";
-            this.checkBoxShowOverlayUsedObject.Size = new System.Drawing.Size(85, 17);
-            this.checkBoxShowOverlayUsedObject.TabIndex = 4;
-            this.checkBoxShowOverlayUsedObject.Text = "Used Object";
-            this.checkBoxShowOverlayUsedObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayInteractionObject
-            // 
-            this.checkBoxShowOverlayInteractionObject.AutoSize = true;
-            this.checkBoxShowOverlayInteractionObject.Checked = true;
-            this.checkBoxShowOverlayInteractionObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayInteractionObject.Location = new System.Drawing.Point(5, 62);
-            this.checkBoxShowOverlayInteractionObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayInteractionObject.Name = "checkBoxShowOverlayInteractionObject";
-            this.checkBoxShowOverlayInteractionObject.Size = new System.Drawing.Size(110, 17);
-            this.checkBoxShowOverlayInteractionObject.TabIndex = 3;
-            this.checkBoxShowOverlayInteractionObject.Text = "Interaction Object";
-            this.checkBoxShowOverlayInteractionObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayCameraObject
-            // 
-            this.checkBoxShowOverlayCameraObject.AutoSize = true;
-            this.checkBoxShowOverlayCameraObject.Checked = true;
-            this.checkBoxShowOverlayCameraObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayCameraObject.Location = new System.Drawing.Point(5, 125);
-            this.checkBoxShowOverlayCameraObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayCameraObject.Name = "checkBoxShowOverlayCameraObject";
-            this.checkBoxShowOverlayCameraObject.Size = new System.Drawing.Size(96, 17);
-            this.checkBoxShowOverlayCameraObject.TabIndex = 5;
-            this.checkBoxShowOverlayCameraObject.Text = "Camera Object";
-            this.checkBoxShowOverlayCameraObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayClosestObject
-            // 
-            this.checkBoxShowOverlayClosestObject.AutoSize = true;
-            this.checkBoxShowOverlayClosestObject.Checked = true;
-            this.checkBoxShowOverlayClosestObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayClosestObject.Location = new System.Drawing.Point(5, 104);
-            this.checkBoxShowOverlayClosestObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayClosestObject.Name = "checkBoxShowOverlayClosestObject";
-            this.checkBoxShowOverlayClosestObject.Size = new System.Drawing.Size(94, 17);
-            this.checkBoxShowOverlayClosestObject.TabIndex = 6;
-            this.checkBoxShowOverlayClosestObject.Text = "Closest Object";
-            this.checkBoxShowOverlayClosestObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayStoodOnObject
-            // 
-            this.checkBoxShowOverlayStoodOnObject.AutoSize = true;
-            this.checkBoxShowOverlayStoodOnObject.Checked = true;
-            this.checkBoxShowOverlayStoodOnObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayStoodOnObject.Location = new System.Drawing.Point(5, 41);
-            this.checkBoxShowOverlayStoodOnObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayStoodOnObject.Name = "checkBoxShowOverlayStoodOnObject";
-            this.checkBoxShowOverlayStoodOnObject.Size = new System.Drawing.Size(105, 17);
-            this.checkBoxShowOverlayStoodOnObject.TabIndex = 2;
-            this.checkBoxShowOverlayStoodOnObject.Text = "Stood On Object";
-            this.checkBoxShowOverlayStoodOnObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayHeldObject
-            // 
-            this.checkBoxShowOverlayHeldObject.AutoSize = true;
-            this.checkBoxShowOverlayHeldObject.Checked = true;
-            this.checkBoxShowOverlayHeldObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayHeldObject.Location = new System.Drawing.Point(5, 20);
-            this.checkBoxShowOverlayHeldObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayHeldObject.Name = "checkBoxShowOverlayHeldObject";
-            this.checkBoxShowOverlayHeldObject.Size = new System.Drawing.Size(82, 17);
-            this.checkBoxShowOverlayHeldObject.TabIndex = 1;
-            this.checkBoxShowOverlayHeldObject.Text = "Held Object";
-            this.checkBoxShowOverlayHeldObject.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(17, 260);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(129, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "*Requires Pure Interpreter";
-            // 
-            // checkBoxUseRomHack
-            // 
-            this.checkBoxUseRomHack.AutoSize = true;
-            this.checkBoxUseRomHack.Location = new System.Drawing.Point(18, 240);
-            this.checkBoxUseRomHack.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxUseRomHack.Name = "checkBoxUseRomHack";
-            this.checkBoxUseRomHack.Size = new System.Drawing.Size(166, 17);
-            this.checkBoxUseRomHack.TabIndex = 2;
-            this.checkBoxUseRomHack.Text = "Enable STROOP ROM hack*";
-            this.checkBoxUseRomHack.UseVisualStyleBackColor = true;
+            // tabPageCoin
+            // 
+            this.tabPageCoin.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageCoin.Controls.Add(this.splitContainerCoin);
+            this.tabPageCoin.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCoin.Name = "tabPageCoin";
+            this.tabPageCoin.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageCoin.Size = new System.Drawing.Size(915, 463);
+            this.tabPageCoin.TabIndex = 29;
+            this.tabPageCoin.Text = "Coin";
+            // 
+            // splitContainerCoin
+            // 
+            this.splitContainerCoin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerCoin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerCoin.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerCoin.Location = new System.Drawing.Point(3, 3);
+            this.splitContainerCoin.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerCoin.Name = "splitContainerCoin";
+            // 
+            // splitContainerCoin.Panel1
+            // 
+            this.splitContainerCoin.Panel1.AutoScroll = true;
+            this.splitContainerCoin.Panel1.Controls.Add(this.buttonCoinCalculate);
+            this.splitContainerCoin.Panel1.Controls.Add(this.buttonCoinClear);
+            this.splitContainerCoin.Panel1.Controls.Add(this.groupBoxCoinFilter);
+            this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinParamOrder);
+            this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinVSpeedOffset);
+            this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinVSpeedScale);
+            this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinStartingRngIndex);
+            this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinHSpeedScale);
+            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinVSpeedRange);
+            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinParamOrder);
+            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinTableEntries);
+            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinHSpeedRange);
+            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinVSpeedOffset);
+            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinStartingRngIndex);
+            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinVSpeedScale);
+            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinHSpeedScale);
+            this.splitContainerCoin.Panel1.Controls.Add(this.listBoxCoinObjects);
+            this.splitContainerCoin.Panel1MinSize = 0;
+            // 
+            // splitContainerCoin.Panel2
+            // 
+            this.splitContainerCoin.Panel2.Controls.Add(this.dataGridViewCoin);
+            this.splitContainerCoin.Panel2MinSize = 0;
+            this.splitContainerCoin.Size = new System.Drawing.Size(909, 457);
+            this.splitContainerCoin.SplitterDistance = 290;
+            this.splitContainerCoin.SplitterWidth = 1;
+            this.splitContainerCoin.TabIndex = 38;
+            // 
+            // buttonCoinCalculate
+            // 
+            this.buttonCoinCalculate.Location = new System.Drawing.Point(146, 312);
+            this.buttonCoinCalculate.Name = "buttonCoinCalculate";
+            this.buttonCoinCalculate.Size = new System.Drawing.Size(93, 23);
+            this.buttonCoinCalculate.TabIndex = 42;
+            this.buttonCoinCalculate.Text = "Calculate";
+            this.buttonCoinCalculate.UseVisualStyleBackColor = true;
+            // 
+            // buttonCoinClear
+            // 
+            this.buttonCoinClear.Location = new System.Drawing.Point(48, 312);
+            this.buttonCoinClear.Name = "buttonCoinClear";
+            this.buttonCoinClear.Size = new System.Drawing.Size(93, 23);
+            this.buttonCoinClear.TabIndex = 42;
+            this.buttonCoinClear.Text = "Clear";
+            this.buttonCoinClear.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxCoinFilter
+            // 
+            this.groupBoxCoinFilter.Controls.Add(this.textBoxCoinFilterAngleMin);
+            this.groupBoxCoinFilter.Controls.Add(this.textBoxCoinFilterAngleMax);
+            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterHSpeedFrom);
+            this.groupBoxCoinFilter.Controls.Add(this.textBoxCoinFilterVSpeedMax);
+            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterMin);
+            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterMax);
+            this.groupBoxCoinFilter.Controls.Add(this.textBoxCoinFilterVSpeedMin);
+            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterHSpeedTo);
+            this.groupBoxCoinFilter.Controls.Add(this.textBoxCoinFilterHSpeedMax);
+            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterVSpeedFrom);
+            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterVSpeedTo);
+            this.groupBoxCoinFilter.Controls.Add(this.textBoxCoinFilterHSpeedMin);
+            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterAngleFrom);
+            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterAngleTo);
+            this.groupBoxCoinFilter.Location = new System.Drawing.Point(33, 165);
+            this.groupBoxCoinFilter.Name = "groupBoxCoinFilter";
+            this.groupBoxCoinFilter.Size = new System.Drawing.Size(218, 110);
+            this.groupBoxCoinFilter.TabIndex = 41;
+            this.groupBoxCoinFilter.TabStop = false;
+            this.groupBoxCoinFilter.Text = "Filter";
+            // 
+            // textBoxCoinFilterAngleMin
+            // 
+            this.textBoxCoinFilterAngleMin.Location = new System.Drawing.Point(80, 80);
+            this.textBoxCoinFilterAngleMin.Name = "textBoxCoinFilterAngleMin";
+            this.textBoxCoinFilterAngleMin.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinFilterAngleMin.TabIndex = 38;
+            this.textBoxCoinFilterAngleMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxCoinFilterAngleMax
+            // 
+            this.textBoxCoinFilterAngleMax.Location = new System.Drawing.Point(154, 80);
+            this.textBoxCoinFilterAngleMax.Name = "textBoxCoinFilterAngleMax";
+            this.textBoxCoinFilterAngleMax.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinFilterAngleMax.TabIndex = 38;
+            this.textBoxCoinFilterAngleMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelCoinFilterHSpeedFrom
+            // 
+            this.labelCoinFilterHSpeedFrom.AutoSize = true;
+            this.labelCoinFilterHSpeedFrom.Location = new System.Drawing.Point(10, 35);
+            this.labelCoinFilterHSpeedFrom.Name = "labelCoinFilterHSpeedFrom";
+            this.labelCoinFilterHSpeedFrom.Size = new System.Drawing.Size(69, 13);
+            this.labelCoinFilterHSpeedFrom.TabIndex = 37;
+            this.labelCoinFilterHSpeedFrom.Text = "HSpeed from";
+            // 
+            // textBoxCoinFilterVSpeedMax
+            // 
+            this.textBoxCoinFilterVSpeedMax.Location = new System.Drawing.Point(154, 56);
+            this.textBoxCoinFilterVSpeedMax.Name = "textBoxCoinFilterVSpeedMax";
+            this.textBoxCoinFilterVSpeedMax.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinFilterVSpeedMax.TabIndex = 39;
+            this.textBoxCoinFilterVSpeedMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelCoinFilterMin
+            // 
+            this.labelCoinFilterMin.AutoSize = true;
+            this.labelCoinFilterMin.Location = new System.Drawing.Point(95, 16);
+            this.labelCoinFilterMin.Name = "labelCoinFilterMin";
+            this.labelCoinFilterMin.Size = new System.Drawing.Size(24, 13);
+            this.labelCoinFilterMin.TabIndex = 37;
+            this.labelCoinFilterMin.Text = "Min";
+            // 
+            // labelCoinFilterMax
+            // 
+            this.labelCoinFilterMax.AutoSize = true;
+            this.labelCoinFilterMax.Location = new System.Drawing.Point(167, 16);
+            this.labelCoinFilterMax.Name = "labelCoinFilterMax";
+            this.labelCoinFilterMax.Size = new System.Drawing.Size(27, 13);
+            this.labelCoinFilterMax.TabIndex = 37;
+            this.labelCoinFilterMax.Text = "Max";
+            // 
+            // textBoxCoinFilterVSpeedMin
+            // 
+            this.textBoxCoinFilterVSpeedMin.Location = new System.Drawing.Point(80, 56);
+            this.textBoxCoinFilterVSpeedMin.Name = "textBoxCoinFilterVSpeedMin";
+            this.textBoxCoinFilterVSpeedMin.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinFilterVSpeedMin.TabIndex = 39;
+            this.textBoxCoinFilterVSpeedMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelCoinFilterHSpeedTo
+            // 
+            this.labelCoinFilterHSpeedTo.AutoSize = true;
+            this.labelCoinFilterHSpeedTo.Location = new System.Drawing.Point(137, 35);
+            this.labelCoinFilterHSpeedTo.Name = "labelCoinFilterHSpeedTo";
+            this.labelCoinFilterHSpeedTo.Size = new System.Drawing.Size(16, 13);
+            this.labelCoinFilterHSpeedTo.TabIndex = 37;
+            this.labelCoinFilterHSpeedTo.Text = "to";
+            // 
+            // textBoxCoinFilterHSpeedMax
+            // 
+            this.textBoxCoinFilterHSpeedMax.Location = new System.Drawing.Point(154, 32);
+            this.textBoxCoinFilterHSpeedMax.Name = "textBoxCoinFilterHSpeedMax";
+            this.textBoxCoinFilterHSpeedMax.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinFilterHSpeedMax.TabIndex = 40;
+            this.textBoxCoinFilterHSpeedMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelCoinFilterVSpeedFrom
+            // 
+            this.labelCoinFilterVSpeedFrom.AutoSize = true;
+            this.labelCoinFilterVSpeedFrom.Location = new System.Drawing.Point(10, 59);
+            this.labelCoinFilterVSpeedFrom.Name = "labelCoinFilterVSpeedFrom";
+            this.labelCoinFilterVSpeedFrom.Size = new System.Drawing.Size(68, 13);
+            this.labelCoinFilterVSpeedFrom.TabIndex = 36;
+            this.labelCoinFilterVSpeedFrom.Text = "VSpeed from";
+            // 
+            // labelCoinFilterVSpeedTo
+            // 
+            this.labelCoinFilterVSpeedTo.AutoSize = true;
+            this.labelCoinFilterVSpeedTo.Location = new System.Drawing.Point(137, 59);
+            this.labelCoinFilterVSpeedTo.Name = "labelCoinFilterVSpeedTo";
+            this.labelCoinFilterVSpeedTo.Size = new System.Drawing.Size(16, 13);
+            this.labelCoinFilterVSpeedTo.TabIndex = 36;
+            this.labelCoinFilterVSpeedTo.Text = "to";
+            // 
+            // textBoxCoinFilterHSpeedMin
+            // 
+            this.textBoxCoinFilterHSpeedMin.Location = new System.Drawing.Point(80, 32);
+            this.textBoxCoinFilterHSpeedMin.Name = "textBoxCoinFilterHSpeedMin";
+            this.textBoxCoinFilterHSpeedMin.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinFilterHSpeedMin.TabIndex = 40;
+            this.textBoxCoinFilterHSpeedMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelCoinFilterAngleFrom
+            // 
+            this.labelCoinFilterAngleFrom.AutoSize = true;
+            this.labelCoinFilterAngleFrom.Location = new System.Drawing.Point(10, 83);
+            this.labelCoinFilterAngleFrom.Name = "labelCoinFilterAngleFrom";
+            this.labelCoinFilterAngleFrom.Size = new System.Drawing.Size(57, 13);
+            this.labelCoinFilterAngleFrom.TabIndex = 35;
+            this.labelCoinFilterAngleFrom.Text = "Angle from";
+            // 
+            // labelCoinFilterAngleTo
+            // 
+            this.labelCoinFilterAngleTo.AutoSize = true;
+            this.labelCoinFilterAngleTo.Location = new System.Drawing.Point(137, 83);
+            this.labelCoinFilterAngleTo.Name = "labelCoinFilterAngleTo";
+            this.labelCoinFilterAngleTo.Size = new System.Drawing.Size(16, 13);
+            this.labelCoinFilterAngleTo.TabIndex = 35;
+            this.labelCoinFilterAngleTo.Text = "to";
+            // 
+            // textBoxCoinParamOrder
+            // 
+            this.textBoxCoinParamOrder.Location = new System.Drawing.Point(214, 78);
+            this.textBoxCoinParamOrder.Name = "textBoxCoinParamOrder";
+            this.textBoxCoinParamOrder.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinParamOrder.TabIndex = 38;
+            this.textBoxCoinParamOrder.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxCoinVSpeedOffset
+            // 
+            this.textBoxCoinVSpeedOffset.Location = new System.Drawing.Point(214, 54);
+            this.textBoxCoinVSpeedOffset.Name = "textBoxCoinVSpeedOffset";
+            this.textBoxCoinVSpeedOffset.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinVSpeedOffset.TabIndex = 38;
+            this.textBoxCoinVSpeedOffset.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxCoinVSpeedScale
+            // 
+            this.textBoxCoinVSpeedScale.Location = new System.Drawing.Point(214, 30);
+            this.textBoxCoinVSpeedScale.Name = "textBoxCoinVSpeedScale";
+            this.textBoxCoinVSpeedScale.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinVSpeedScale.TabIndex = 39;
+            this.textBoxCoinVSpeedScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxCoinStartingRngIndex
+            // 
+            this.textBoxCoinStartingRngIndex.Location = new System.Drawing.Point(167, 283);
+            this.textBoxCoinStartingRngIndex.Name = "textBoxCoinStartingRngIndex";
+            this.textBoxCoinStartingRngIndex.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinStartingRngIndex.TabIndex = 40;
+            this.textBoxCoinStartingRngIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxCoinHSpeedScale
+            // 
+            this.textBoxCoinHSpeedScale.Location = new System.Drawing.Point(214, 6);
+            this.textBoxCoinHSpeedScale.Name = "textBoxCoinHSpeedScale";
+            this.textBoxCoinHSpeedScale.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinHSpeedScale.TabIndex = 40;
+            this.textBoxCoinHSpeedScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelCoinVSpeedRange
+            // 
+            this.labelCoinVSpeedRange.AutoSize = true;
+            this.labelCoinVSpeedRange.Location = new System.Drawing.Point(73, 138);
+            this.labelCoinVSpeedRange.Name = "labelCoinVSpeedRange";
+            this.labelCoinVSpeedRange.Size = new System.Drawing.Size(83, 13);
+            this.labelCoinVSpeedRange.TabIndex = 35;
+            this.labelCoinVSpeedRange.Text = "VSpeed Range:";
+            // 
+            // labelCoinParamOrder
+            // 
+            this.labelCoinParamOrder.AutoSize = true;
+            this.labelCoinParamOrder.Location = new System.Drawing.Point(133, 81);
+            this.labelCoinParamOrder.Name = "labelCoinParamOrder";
+            this.labelCoinParamOrder.Size = new System.Drawing.Size(69, 13);
+            this.labelCoinParamOrder.TabIndex = 35;
+            this.labelCoinParamOrder.Text = "Param Order:";
+            // 
+            // labelCoinTableEntries
+            // 
+            this.labelCoinTableEntries.AutoSize = true;
+            this.labelCoinTableEntries.Location = new System.Drawing.Point(73, 348);
+            this.labelCoinTableEntries.Name = "labelCoinTableEntries";
+            this.labelCoinTableEntries.Size = new System.Drawing.Size(72, 13);
+            this.labelCoinTableEntries.TabIndex = 35;
+            this.labelCoinTableEntries.Text = "Table Entries:";
+            // 
+            // labelCoinHSpeedRange
+            // 
+            this.labelCoinHSpeedRange.AutoSize = true;
+            this.labelCoinHSpeedRange.Location = new System.Drawing.Point(73, 116);
+            this.labelCoinHSpeedRange.Name = "labelCoinHSpeedRange";
+            this.labelCoinHSpeedRange.Size = new System.Drawing.Size(84, 13);
+            this.labelCoinHSpeedRange.TabIndex = 35;
+            this.labelCoinHSpeedRange.Text = "HSpeed Range:";
+            // 
+            // labelCoinVSpeedOffset
+            // 
+            this.labelCoinVSpeedOffset.AutoSize = true;
+            this.labelCoinVSpeedOffset.Location = new System.Drawing.Point(133, 57);
+            this.labelCoinVSpeedOffset.Name = "labelCoinVSpeedOffset";
+            this.labelCoinVSpeedOffset.Size = new System.Drawing.Size(79, 13);
+            this.labelCoinVSpeedOffset.TabIndex = 35;
+            this.labelCoinVSpeedOffset.Text = "VSpeed Offset:";
+            // 
+            // labelCoinStartingRngIndex
+            // 
+            this.labelCoinStartingRngIndex.AutoSize = true;
+            this.labelCoinStartingRngIndex.Location = new System.Drawing.Point(63, 286);
+            this.labelCoinStartingRngIndex.Name = "labelCoinStartingRngIndex";
+            this.labelCoinStartingRngIndex.Size = new System.Drawing.Size(102, 13);
+            this.labelCoinStartingRngIndex.TabIndex = 37;
+            this.labelCoinStartingRngIndex.Text = "Starting RNG Index:";
+            // 
+            // labelCoinVSpeedScale
+            // 
+            this.labelCoinVSpeedScale.AutoSize = true;
+            this.labelCoinVSpeedScale.Location = new System.Drawing.Point(133, 33);
+            this.labelCoinVSpeedScale.Name = "labelCoinVSpeedScale";
+            this.labelCoinVSpeedScale.Size = new System.Drawing.Size(78, 13);
+            this.labelCoinVSpeedScale.TabIndex = 36;
+            this.labelCoinVSpeedScale.Text = "VSpeed Scale:";
+            // 
+            // labelCoinHSpeedScale
+            // 
+            this.labelCoinHSpeedScale.AutoSize = true;
+            this.labelCoinHSpeedScale.Location = new System.Drawing.Point(133, 9);
+            this.labelCoinHSpeedScale.Name = "labelCoinHSpeedScale";
+            this.labelCoinHSpeedScale.Size = new System.Drawing.Size(79, 13);
+            this.labelCoinHSpeedScale.TabIndex = 37;
+            this.labelCoinHSpeedScale.Text = "HSpeed Scale:";
+            // 
+            // listBoxCoinObjects
+            // 
+            this.listBoxCoinObjects.FormattingEnabled = true;
+            this.listBoxCoinObjects.Location = new System.Drawing.Point(3, 3);
+            this.listBoxCoinObjects.Name = "listBoxCoinObjects";
+            this.listBoxCoinObjects.Size = new System.Drawing.Size(125, 95);
+            this.listBoxCoinObjects.TabIndex = 17;
+            // 
+            // dataGridViewCoin
+            // 
+            this.dataGridViewCoin.AllowUserToAddRows = false;
+            this.dataGridViewCoin.AllowUserToDeleteRows = false;
+            this.dataGridViewCoin.AllowUserToOrderColumns = true;
+            this.dataGridViewCoin.AllowUserToResizeRows = false;
+            this.dataGridViewCoin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewCoin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCoin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.rngIndex,
+            this.rngValue,
+            this.rngToGo,
+            this.coinHSpeed,
+            this.coinVSpeed,
+            this.coinAngle});
+            this.dataGridViewCoin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewCoin.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewCoin.Margin = new System.Windows.Forms.Padding(0);
+            this.dataGridViewCoin.MultiSelect = false;
+            this.dataGridViewCoin.Name = "dataGridViewCoin";
+            this.dataGridViewCoin.ReadOnly = true;
+            this.dataGridViewCoin.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewCoin.Size = new System.Drawing.Size(616, 455);
+            this.dataGridViewCoin.TabIndex = 3;
+            // 
+            // rngIndex
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle4;
+            this.rngIndex.HeaderText = "RNG Index";
+            this.rngIndex.MinimumWidth = 2;
+            this.rngIndex.Name = "rngIndex";
+            this.rngIndex.ReadOnly = true;
+            // 
+            // rngValue
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngValue.DefaultCellStyle = dataGridViewCellStyle5;
+            this.rngValue.HeaderText = "RNG Value";
+            this.rngValue.MinimumWidth = 2;
+            this.rngValue.Name = "rngValue";
+            this.rngValue.ReadOnly = true;
+            // 
+            // rngToGo
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle6;
+            this.rngToGo.HeaderText = "RNG To Go";
+            this.rngToGo.MinimumWidth = 2;
+            this.rngToGo.Name = "rngToGo";
+            this.rngToGo.ReadOnly = true;
+            // 
+            // coinHSpeed
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle7;
+            this.coinHSpeed.HeaderText = "Coin HSpeed";
+            this.coinHSpeed.Name = "coinHSpeed";
+            this.coinHSpeed.ReadOnly = true;
+            // 
+            // coinVSpeed
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle8;
+            this.coinVSpeed.HeaderText = "Coin VSpeed";
+            this.coinVSpeed.Name = "coinVSpeed";
+            this.coinVSpeed.ReadOnly = true;
+            // 
+            // coinAngle
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle9;
+            this.coinAngle.HeaderText = "Coin Angle";
+            this.coinAngle.MinimumWidth = 2;
+            this.coinAngle.Name = "coinAngle";
+            this.coinAngle.ReadOnly = true;
+            // 
+            // tabPageDisassembly
+            // 
+            this.tabPageDisassembly.BackColor = System.Drawing.Color.Transparent;
+            this.tabPageDisassembly.Controls.Add(this.textBoxDisAddress);
+            this.tabPageDisassembly.Controls.Add(this.buttonDisMore);
+            this.tabPageDisassembly.Controls.Add(this.buttonDisGo);
+            this.tabPageDisassembly.Controls.Add(this.labelDisStart);
+            this.tabPageDisassembly.Controls.Add(this.richTextBoxDissasembly);
+            this.tabPageDisassembly.Location = new System.Drawing.Point(4, 22);
+            this.tabPageDisassembly.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPageDisassembly.Name = "tabPageDisassembly";
+            this.tabPageDisassembly.Size = new System.Drawing.Size(915, 463);
+            this.tabPageDisassembly.TabIndex = 3;
+            this.tabPageDisassembly.Text = "Disassembly";
+            // 
+            // textBoxDisAddress
+            // 
+            this.textBoxDisAddress.Location = new System.Drawing.Point(73, 3);
+            this.textBoxDisAddress.Name = "textBoxDisAddress";
+            this.textBoxDisAddress.Size = new System.Drawing.Size(93, 20);
+            this.textBoxDisAddress.TabIndex = 7;
+            // 
+            // buttonDisMore
+            // 
+            this.buttonDisMore.Location = new System.Drawing.Point(237, 2);
+            this.buttonDisMore.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDisMore.Name = "buttonDisMore";
+            this.buttonDisMore.Size = new System.Drawing.Size(50, 20);
+            this.buttonDisMore.TabIndex = 6;
+            this.buttonDisMore.Text = "More";
+            this.buttonDisMore.UseVisualStyleBackColor = true;
+            this.buttonDisMore.Visible = false;
+            // 
+            // buttonDisGo
+            // 
+            this.buttonDisGo.Location = new System.Drawing.Point(171, 2);
+            this.buttonDisGo.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDisGo.Name = "buttonDisGo";
+            this.buttonDisGo.Size = new System.Drawing.Size(62, 20);
+            this.buttonDisGo.TabIndex = 5;
+            this.buttonDisGo.Text = "Go";
+            this.buttonDisGo.UseVisualStyleBackColor = true;
+            // 
+            // labelDisStart
+            // 
+            this.labelDisStart.AutoSize = true;
+            this.labelDisStart.Location = new System.Drawing.Point(2, 6);
+            this.labelDisStart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelDisStart.Name = "labelDisStart";
+            this.labelDisStart.Size = new System.Drawing.Size(73, 13);
+            this.labelDisStart.TabIndex = 3;
+            this.labelDisStart.Text = "Start Address:";
+            // 
+            // richTextBoxDissasembly
+            // 
+            this.richTextBoxDissasembly.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBoxDissasembly.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxDissasembly.Location = new System.Drawing.Point(3, 26);
+            this.richTextBoxDissasembly.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBoxDissasembly.Name = "richTextBoxDissasembly";
+            this.richTextBoxDissasembly.ReadOnly = true;
+            this.richTextBoxDissasembly.Size = new System.Drawing.Size(910, 435);
+            this.richTextBoxDissasembly.TabIndex = 0;
+            this.richTextBoxDissasembly.Text = "";
+            // 
+            // tabPageDecompiler
+            // 
+            this.tabPageDecompiler.Controls.Add(this.buttonDecompilerBack);
+            this.tabPageDecompiler.Controls.Add(this.buttonDecompilerNext);
+            this.tabPageDecompiler.Controls.Add(this.textBoxDecompilerAddress);
+            this.tabPageDecompiler.Controls.Add(this.buttonDecompilerDecompile);
+            this.tabPageDecompiler.Controls.Add(this.labelDecompilerAddress);
+            this.tabPageDecompiler.Controls.Add(this.splitContainerDecompiler);
+            this.tabPageDecompiler.Location = new System.Drawing.Point(4, 22);
+            this.tabPageDecompiler.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageDecompiler.Name = "tabPageDecompiler";
+            this.tabPageDecompiler.Size = new System.Drawing.Size(915, 463);
+            this.tabPageDecompiler.TabIndex = 23;
+            this.tabPageDecompiler.Text = "Decompiler";
+            // 
+            // buttonDecompilerBack
+            // 
+            this.buttonDecompilerBack.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonDecompilerBack.BackgroundImage = global::STROOP.Properties.Resources.img_arrow_left;
+            this.buttonDecompilerBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonDecompilerBack.Location = new System.Drawing.Point(220, 1);
+            this.buttonDecompilerBack.Name = "buttonDecompilerBack";
+            this.buttonDecompilerBack.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
+            this.buttonDecompilerBack.Size = new System.Drawing.Size(25, 25);
+            this.buttonDecompilerBack.TabIndex = 13;
+            this.buttonDecompilerBack.UseVisualStyleBackColor = true;
+            // 
+            // buttonDecompilerNext
+            // 
+            this.buttonDecompilerNext.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonDecompilerNext.BackgroundImage = global::STROOP.Properties.Resources.img_arrow_right;
+            this.buttonDecompilerNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonDecompilerNext.Location = new System.Drawing.Point(251, 1);
+            this.buttonDecompilerNext.Name = "buttonDecompilerNext";
+            this.buttonDecompilerNext.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
+            this.buttonDecompilerNext.Size = new System.Drawing.Size(25, 25);
+            this.buttonDecompilerNext.TabIndex = 12;
+            this.buttonDecompilerNext.UseVisualStyleBackColor = true;
+            // 
+            // textBoxDecompilerAddress
+            // 
+            this.textBoxDecompilerAddress.Location = new System.Drawing.Point(55, 3);
+            this.textBoxDecompilerAddress.Name = "textBoxDecompilerAddress";
+            this.textBoxDecompilerAddress.Size = new System.Drawing.Size(93, 20);
+            this.textBoxDecompilerAddress.TabIndex = 10;
+            // 
+            // buttonDecompilerDecompile
+            // 
+            this.buttonDecompilerDecompile.Location = new System.Drawing.Point(153, 3);
+            this.buttonDecompilerDecompile.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDecompilerDecompile.Name = "buttonDecompilerDecompile";
+            this.buttonDecompilerDecompile.Size = new System.Drawing.Size(62, 20);
+            this.buttonDecompilerDecompile.TabIndex = 9;
+            this.buttonDecompilerDecompile.Text = "Go";
+            this.buttonDecompilerDecompile.UseVisualStyleBackColor = true;
+            // 
+            // labelDecompilerAddress
+            // 
+            this.labelDecompilerAddress.AutoSize = true;
+            this.labelDecompilerAddress.Location = new System.Drawing.Point(-1, 3);
+            this.labelDecompilerAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelDecompilerAddress.Name = "labelDecompilerAddress";
+            this.labelDecompilerAddress.Size = new System.Drawing.Size(48, 13);
+            this.labelDecompilerAddress.TabIndex = 8;
+            this.labelDecompilerAddress.Text = "Address:";
+            // 
+            // splitContainerDecompiler
+            // 
+            this.splitContainerDecompiler.Location = new System.Drawing.Point(6, 27);
+            this.splitContainerDecompiler.Name = "splitContainerDecompiler";
+            // 
+            // splitContainerDecompiler.Panel1
+            // 
+            this.splitContainerDecompiler.Panel1.Controls.Add(this.treeViewDecompile);
+            // 
+            // splitContainerDecompiler.Panel2
+            // 
+            this.splitContainerDecompiler.Panel2.Controls.Add(this.decompilerViewHost);
+            this.splitContainerDecompiler.Size = new System.Drawing.Size(903, 430);
+            this.splitContainerDecompiler.SplitterDistance = 301;
+            this.splitContainerDecompiler.TabIndex = 1;
+            // 
+            // treeViewDecompile
+            // 
+            this.treeViewDecompile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewDecompile.Location = new System.Drawing.Point(0, 0);
+            this.treeViewDecompile.Name = "treeViewDecompile";
+            this.treeViewDecompile.Size = new System.Drawing.Size(301, 430);
+            this.treeViewDecompile.TabIndex = 0;
+            // 
+            // decompilerViewHost
+            // 
+            this.decompilerViewHost.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.decompilerViewHost.Location = new System.Drawing.Point(3, 3);
+            this.decompilerViewHost.Name = "decompilerViewHost";
+            this.decompilerViewHost.Size = new System.Drawing.Size(592, 424);
+            this.decompilerViewHost.TabIndex = 0;
+            this.decompilerViewHost.Text = "elementHost1";
+            this.decompilerViewHost.Child = this.decompilerView;
+            // 
+            // tabPageScripts
+            // 
+            this.tabPageScripts.Controls.Add(this.buttonScriptGo);
+            this.tabPageScripts.Controls.Add(this.textBoxScriptAddress);
+            this.tabPageScripts.Controls.Add(this.labelScriptAddress);
+            this.tabPageScripts.Controls.Add(this.richTextBoxExScript);
+            this.tabPageScripts.Location = new System.Drawing.Point(4, 22);
+            this.tabPageScripts.Name = "tabPageScripts";
+            this.tabPageScripts.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageScripts.Size = new System.Drawing.Size(915, 463);
+            this.tabPageScripts.TabIndex = 20;
+            this.tabPageScripts.Text = "Scripts";
+            // 
+            // buttonScriptGo
+            // 
+            this.buttonScriptGo.Location = new System.Drawing.Point(178, 5);
+            this.buttonScriptGo.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonScriptGo.Name = "buttonScriptGo";
+            this.buttonScriptGo.Size = new System.Drawing.Size(62, 20);
+            this.buttonScriptGo.TabIndex = 7;
+            this.buttonScriptGo.Text = "Go";
+            this.buttonScriptGo.UseVisualStyleBackColor = true;
+            // 
+            // textBoxScriptAddress
+            // 
+            this.textBoxScriptAddress.Location = new System.Drawing.Point(73, 6);
+            this.textBoxScriptAddress.Name = "textBoxScriptAddress";
+            this.textBoxScriptAddress.Size = new System.Drawing.Size(100, 20);
+            this.textBoxScriptAddress.TabIndex = 6;
+            // 
+            // labelScriptAddress
+            // 
+            this.labelScriptAddress.AutoSize = true;
+            this.labelScriptAddress.Location = new System.Drawing.Point(2, 9);
+            this.labelScriptAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelScriptAddress.Name = "labelScriptAddress";
+            this.labelScriptAddress.Size = new System.Drawing.Size(73, 13);
+            this.labelScriptAddress.TabIndex = 5;
+            this.labelScriptAddress.Text = "Start Address:";
+            // 
+            // richTextBoxExScript
+            // 
+            this.richTextBoxExScript.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBoxExScript.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxExScript.Location = new System.Drawing.Point(2, 31);
+            this.richTextBoxExScript.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBoxExScript.Name = "richTextBoxExScript";
+            this.richTextBoxExScript.ReadOnly = true;
+            this.richTextBoxExScript.Size = new System.Drawing.Size(908, 430);
+            this.richTextBoxExScript.TabIndex = 1;
+            this.richTextBoxExScript.Text = "";
             // 
             // tabPageTesting
             // 
@@ -16617,249 +16872,55 @@ namespace STROOP
             this.comboBoxYawSigned.Size = new System.Drawing.Size(69, 21);
             this.comboBoxYawSigned.TabIndex = 22;
             // 
-            // tabPageMap2
+            // trackBar1
             // 
-            this.tabPageMap2.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageMap2.Controls.Add(this.splitContainerMap2);
-            this.tabPageMap2.Location = new System.Drawing.Point(4, 22);
-            this.tabPageMap2.Name = "tabPageMap2";
-            this.tabPageMap2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMap2.Size = new System.Drawing.Size(915, 463);
-            this.tabPageMap2.TabIndex = 30;
-            this.tabPageMap2.Text = "Map2";
+            this.trackBar1.Location = new System.Drawing.Point(59, 20);
+            this.trackBar1.Maximum = 100;
+            this.trackBar1.Minimum = 15;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(104, 45);
+            this.trackBar1.TabIndex = 32;
+            this.trackBar1.TickFrequency = 10;
+            this.trackBar1.Value = 40;
             // 
-            // splitContainerMap2
+            // label8
             // 
-            this.splitContainerMap2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainerMap2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerMap2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerMap2.Location = new System.Drawing.Point(3, 3);
-            this.splitContainerMap2.Margin = new System.Windows.Forms.Padding(0);
-            this.splitContainerMap2.Name = "splitContainerMap2";
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(3, 2);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(82, 13);
+            this.label8.TabIndex = 33;
+            this.label8.Text = "Course Name";
             // 
-            // splitContainerMap2.Panel1
+            // checkBox1
             // 
-            this.splitContainerMap2.Panel1.Controls.Add(this.groupBox1);
-            this.splitContainerMap2.Panel1.Controls.Add(this.checkBox8);
-            this.splitContainerMap2.Panel1.Controls.Add(this.checkBox7);
-            this.splitContainerMap2.Panel1.Controls.Add(this.checkBox4);
-            this.splitContainerMap2.Panel1.Controls.Add(this.checkBox3);
-            this.splitContainerMap2.Panel1.Controls.Add(this.checkBox5);
-            this.splitContainerMap2.Panel1MinSize = 0;
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(8, 54);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(94, 17);
+            this.checkBox1.TabIndex = 19;
+            this.checkBox1.Text = "Show Inactive";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // splitContainerMap2.Panel2
+            // checkBox2
             // 
-            this.splitContainerMap2.Panel2.Controls.Add(this.glControl1);
-            this.splitContainerMap2.Panel2MinSize = 0;
-            this.splitContainerMap2.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMap2.SplitterDistance = 402;
-            this.splitContainerMap2.SplitterWidth = 1;
-            this.splitContainerMap2.TabIndex = 17;
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(8, 114);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(163, 17);
+            this.checkBox2.TabIndex = 19;
+            this.checkBox2.Text = "Show Intended Next Position";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // label10
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(13, 92);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(103, 17);
-            this.checkBox3.TabIndex = 19;
-            this.checkBox3.Text = "Track Ceiling Tri";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(13, 72);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(95, 17);
-            this.checkBox4.TabIndex = 19;
-            this.checkBox4.Text = "Track Floor Tri";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // checkBox5
-            // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(13, 52);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(93, 17);
-            this.checkBox5.TabIndex = 19;
-            this.checkBox5.Text = "Track Camera";
-            this.checkBox5.UseVisualStyleBackColor = true;
-            // 
-            // checkBox7
-            // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(13, 32);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(86, 17);
-            this.checkBox7.TabIndex = 19;
-            this.checkBox7.Text = "Track HOLP";
-            this.checkBox7.UseVisualStyleBackColor = true;
-            // 
-            // checkBox8
-            // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Checked = true;
-            this.checkBox8.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox8.Location = new System.Drawing.Point(13, 12);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(83, 17);
-            this.checkBox8.TabIndex = 19;
-            this.checkBox8.Text = "Track Mario";
-            this.checkBox8.UseVisualStyleBackColor = true;
-            // 
-            // glControl1
-            // 
-            this.glControl1.BackColor = System.Drawing.Color.Black;
-            this.glControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.glControl1.Location = new System.Drawing.Point(0, 0);
-            this.glControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.glControl1.Name = "glControl1";
-            this.glControl1.Size = new System.Drawing.Size(504, 455);
-            this.glControl1.TabIndex = 0;
-            this.glControl1.VSync = false;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.betterTextbox1);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.betterTextbox2);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.button6);
-            this.groupBox1.Controls.Add(this.button7);
-            this.groupBox1.Controls.Add(this.button10);
-            this.groupBox1.Controls.Add(this.button11);
-            this.groupBox1.Controls.Add(this.button12);
-            this.groupBox1.Location = new System.Drawing.Point(13, 128);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(185, 146);
-            this.groupBox1.TabIndex = 31;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Map Bounds";
-            // 
-            // betterTextbox1
-            // 
-            this.betterTextbox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.betterTextbox1.Location = new System.Drawing.Point(140, 70);
-            this.betterTextbox1.Name = "betterTextbox1";
-            this.betterTextbox1.Size = new System.Drawing.Size(42, 20);
-            this.betterTextbox1.TabIndex = 33;
-            this.betterTextbox1.Text = "1";
-            this.betterTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(140, 16);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(42, 42);
-            this.button1.TabIndex = 35;
-            this.button1.Text = "Y+";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(140, 100);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(42, 42);
-            this.button2.TabIndex = 34;
-            this.button2.Text = "Y-";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(87, 100);
-            this.button3.Margin = new System.Windows.Forms.Padding(0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(42, 42);
-            this.button3.TabIndex = 32;
-            this.button3.Text = "X+Z+";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // betterTextbox2
-            // 
-            this.betterTextbox2.Location = new System.Drawing.Point(45, 70);
-            this.betterTextbox2.Name = "betterTextbox2";
-            this.betterTextbox2.Size = new System.Drawing.Size(42, 20);
-            this.betterTextbox2.TabIndex = 27;
-            this.betterTextbox2.Text = "1";
-            this.betterTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(87, 58);
-            this.button4.Margin = new System.Windows.Forms.Padding(0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(42, 42);
-            this.button4.TabIndex = 31;
-            this.button4.Text = "X+";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(87, 16);
-            this.button5.Margin = new System.Windows.Forms.Padding(0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(42, 42);
-            this.button5.TabIndex = 30;
-            this.button5.Text = "X+Z-";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(45, 16);
-            this.button6.Margin = new System.Windows.Forms.Padding(0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(42, 42);
-            this.button6.TabIndex = 29;
-            this.button6.Text = "Z-";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(45, 100);
-            this.button7.Margin = new System.Windows.Forms.Padding(0);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(42, 42);
-            this.button7.TabIndex = 28;
-            this.button7.Text = "Z+";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button10
-            // 
-            this.button10.Location = new System.Drawing.Point(3, 100);
-            this.button10.Margin = new System.Windows.Forms.Padding(0);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(42, 42);
-            this.button10.TabIndex = 27;
-            this.button10.Text = "X-Z+";
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(3, 58);
-            this.button11.Margin = new System.Windows.Forms.Padding(0);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(42, 42);
-            this.button11.TabIndex = 26;
-            this.button11.Text = "X-";
-            this.button11.UseVisualStyleBackColor = true;
-            // 
-            // button12
-            // 
-            this.button12.Location = new System.Drawing.Point(3, 16);
-            this.button12.Margin = new System.Windows.Forms.Padding(0);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(42, 42);
-            this.button12.TabIndex = 25;
-            this.button12.Text = "X-Z-";
-            this.button12.UseVisualStyleBackColor = true;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(5, 30);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(54, 13);
+            this.label10.TabIndex = 34;
+            this.label10.Text = "Icon Size:";
             // 
             // StroopMainForm
             // 
@@ -16927,31 +16988,6 @@ namespace STROOP
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMario)).EndInit();
             this.groupBoxMarioPos.ResumeLayout(false);
             this.groupBoxMarioPos.PerformLayout();
-            this.tabPageM64.ResumeLayout(false);
-            this.splitContainerM64.Panel1.ResumeLayout(false);
-            this.splitContainerM64.Panel1.PerformLayout();
-            this.splitContainerM64.Panel2.ResumeLayout(false);
-            this.splitContainerM64.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerM64)).EndInit();
-            this.splitContainerM64.ResumeLayout(false);
-            this.groupBoxM64QuickDuplication.ResumeLayout(false);
-            this.groupBoxM64QuickDuplication.PerformLayout();
-            this.groupBoxM64Selection.ResumeLayout(false);
-            this.groupBoxM64Selection.PerformLayout();
-            this.tabControlM64Details.ResumeLayout(false);
-            this.tabPageM64Inputs.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewM64Inputs)).EndInit();
-            this.tabPageM64Header.ResumeLayout(false);
-            this.tabPageM64Stats.ResumeLayout(false);
-            this.tabPageCoin.ResumeLayout(false);
-            this.splitContainerCoin.Panel1.ResumeLayout(false);
-            this.splitContainerCoin.Panel1.PerformLayout();
-            this.splitContainerCoin.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCoin)).EndInit();
-            this.splitContainerCoin.ResumeLayout(false);
-            this.groupBoxCoinFilter.ResumeLayout(false);
-            this.groupBoxCoinFilter.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCoin)).EndInit();
             this.tabPageHud.ResumeLayout(false);
             this.splitContainerHud.Panel1.ResumeLayout(false);
             this.splitContainerHud.Panel1.PerformLayout();
@@ -16981,15 +17017,8 @@ namespace STROOP
             this.groupBoxTrianglePos.PerformLayout();
             this.groupBoxTriangleNormal.ResumeLayout(false);
             this.groupBoxTriangleNormal.PerformLayout();
-            this.tabPageWater.ResumeLayout(false);
             this.tabPageActions.ResumeLayout(false);
             this.tabPageActions.PerformLayout();
-            this.tabPageInput.ResumeLayout(false);
-            this.splitContainerInput.Panel1.ResumeLayout(false);
-            this.splitContainerInput.Panel1.PerformLayout();
-            this.splitContainerInput.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerInput)).EndInit();
-            this.splitContainerInput.ResumeLayout(false);
             this.tabPageFile.ResumeLayout(false);
             this.splitContainerFile.Panel1.ResumeLayout(false);
             this.splitContainerFile.Panel1.PerformLayout();
@@ -17157,6 +17186,13 @@ namespace STROOP
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationSnowman)).EndInit();
             this.groupBoxFile.ResumeLayout(false);
             this.groupBoxFile.PerformLayout();
+            this.tabPageInput.ResumeLayout(false);
+            this.splitContainerInput.Panel1.ResumeLayout(false);
+            this.splitContainerInput.Panel1.PerformLayout();
+            this.splitContainerInput.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerInput)).EndInit();
+            this.splitContainerInput.ResumeLayout(false);
+            this.tabPageWater.ResumeLayout(false);
             this.tabPageMisc.ResumeLayout(false);
             this.splitContainerMisc.Panel1.ResumeLayout(false);
             this.splitContainerMisc.Panel1.PerformLayout();
@@ -17167,6 +17203,22 @@ namespace STROOP
             this.groupBoxRNGIndexTester.PerformLayout();
             this.panelMiscBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).EndInit();
+            this.tabPageM64.ResumeLayout(false);
+            this.splitContainerM64.Panel1.ResumeLayout(false);
+            this.splitContainerM64.Panel1.PerformLayout();
+            this.splitContainerM64.Panel2.ResumeLayout(false);
+            this.splitContainerM64.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerM64)).EndInit();
+            this.splitContainerM64.ResumeLayout(false);
+            this.groupBoxM64QuickDuplication.ResumeLayout(false);
+            this.groupBoxM64QuickDuplication.PerformLayout();
+            this.groupBoxM64Selection.ResumeLayout(false);
+            this.groupBoxM64Selection.PerformLayout();
+            this.tabControlM64Details.ResumeLayout(false);
+            this.tabPageM64Inputs.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewM64Inputs)).EndInit();
+            this.tabPageM64Header.ResumeLayout(false);
+            this.tabPageM64Stats.ResumeLayout(false);
             this.tabPageCustom.ResumeLayout(false);
             this.splitContainerCustom.Panel1.ResumeLayout(false);
             this.splitContainerCustom.Panel2.ResumeLayout(false);
@@ -17195,19 +17247,6 @@ namespace STROOP
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerTasTable)).EndInit();
             this.splitContainerTasTable.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTas)).EndInit();
-            this.tabPageDebug.ResumeLayout(false);
-            this.splitContainerDebug.Panel1.ResumeLayout(false);
-            this.splitContainerDebug.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDebug)).EndInit();
-            this.splitContainerDebug.ResumeLayout(false);
-            this.panelDebugBorder.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).EndInit();
-            this.groupBoxMiscDebug.ResumeLayout(false);
-            this.groupBoxMiscDebug.PerformLayout();
-            this.groupBoxResourceMeter.ResumeLayout(false);
-            this.groupBoxResourceMeter.PerformLayout();
-            this.groupBoxAdvancedMode.ResumeLayout(false);
-            this.groupBoxAdvancedMode.PerformLayout();
             this.tabPageMap.ResumeLayout(false);
             this.splitContainerMap.Panel1.ResumeLayout(false);
             this.splitContainerMap.Panel2.ResumeLayout(false);
@@ -17229,6 +17268,32 @@ namespace STROOP
             this.groupBoxMapControlsScale.PerformLayout();
             this.tabPageMap3D.ResumeLayout(false);
             this.tabPageMap3D.PerformLayout();
+            this.tabPageMap2.ResumeLayout(false);
+            this.splitContainerMap2.Panel1.ResumeLayout(false);
+            this.splitContainerMap2.Panel1.PerformLayout();
+            this.splitContainerMap2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap2)).EndInit();
+            this.splitContainerMap2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.tabPageOptions.ResumeLayout(false);
+            this.tabPageOptions.PerformLayout();
+            this.groupBoxPositionControllerRelativeAngle.ResumeLayout(false);
+            this.groupBoxPositionControllerRelativeAngle.PerformLayout();
+            this.groupBoxOptionsSavedSettings.ResumeLayout(false);
+            this.groupBoxOptionsSavedSettings.PerformLayout();
+            this.groupBoxFPS.ResumeLayout(false);
+            this.groupBoxFPS.PerformLayout();
+            this.groupBoxGotoRetrieveOffsets.ResumeLayout(false);
+            this.groupBoxGotoRetrieveOffsets.PerformLayout();
+            this.groupBoxShowOverlay.ResumeLayout(false);
+            this.groupBoxShowOverlay.PerformLayout();
+            this.tabPageMemory.ResumeLayout(false);
+            this.splitContainerMemory.Panel1.ResumeLayout(false);
+            this.splitContainerMemory.Panel1.PerformLayout();
+            this.splitContainerMemory.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMemory)).EndInit();
+            this.splitContainerMemory.ResumeLayout(false);
             this.tabPagePu.ResumeLayout(false);
             this.splitContainerPu.Panel1.ResumeLayout(false);
             this.splitContainerPu.Panel2.ResumeLayout(false);
@@ -17279,22 +17344,19 @@ namespace STROOP
             this.splitContainerGfxMiddle.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerGfxMiddle)).EndInit();
             this.splitContainerGfxMiddle.ResumeLayout(false);
-            this.tabPageDisassembly.ResumeLayout(false);
-            this.tabPageDisassembly.PerformLayout();
-            this.tabPageDecompiler.ResumeLayout(false);
-            this.tabPageDecompiler.PerformLayout();
-            this.splitContainerDecompiler.Panel1.ResumeLayout(false);
-            this.splitContainerDecompiler.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDecompiler)).EndInit();
-            this.splitContainerDecompiler.ResumeLayout(false);
-            this.tabPageScripts.ResumeLayout(false);
-            this.tabPageScripts.PerformLayout();
-            this.tabPageMemory.ResumeLayout(false);
-            this.splitContainerMemory.Panel1.ResumeLayout(false);
-            this.splitContainerMemory.Panel1.PerformLayout();
-            this.splitContainerMemory.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMemory)).EndInit();
-            this.splitContainerMemory.ResumeLayout(false);
+            this.tabPageDebug.ResumeLayout(false);
+            this.splitContainerDebug.Panel1.ResumeLayout(false);
+            this.splitContainerDebug.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDebug)).EndInit();
+            this.splitContainerDebug.ResumeLayout(false);
+            this.panelDebugBorder.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).EndInit();
+            this.groupBoxMiscDebug.ResumeLayout(false);
+            this.groupBoxMiscDebug.PerformLayout();
+            this.groupBoxResourceMeter.ResumeLayout(false);
+            this.groupBoxResourceMeter.PerformLayout();
+            this.groupBoxAdvancedMode.ResumeLayout(false);
+            this.groupBoxAdvancedMode.PerformLayout();
             this.tabPageHacks.ResumeLayout(false);
             this.splitContainerHacks.Panel1.ResumeLayout(false);
             this.splitContainerHacks.Panel2.ResumeLayout(false);
@@ -17327,18 +17389,25 @@ namespace STROOP
             this.splitContainerVarHack.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerVarHack)).EndInit();
             this.splitContainerVarHack.ResumeLayout(false);
-            this.tabPageOptions.ResumeLayout(false);
-            this.tabPageOptions.PerformLayout();
-            this.groupBoxPositionControllerRelativeAngle.ResumeLayout(false);
-            this.groupBoxPositionControllerRelativeAngle.PerformLayout();
-            this.groupBoxOptionsSavedSettings.ResumeLayout(false);
-            this.groupBoxOptionsSavedSettings.PerformLayout();
-            this.groupBoxFPS.ResumeLayout(false);
-            this.groupBoxFPS.PerformLayout();
-            this.groupBoxGotoRetrieveOffsets.ResumeLayout(false);
-            this.groupBoxGotoRetrieveOffsets.PerformLayout();
-            this.groupBoxShowOverlay.ResumeLayout(false);
-            this.groupBoxShowOverlay.PerformLayout();
+            this.tabPageCoin.ResumeLayout(false);
+            this.splitContainerCoin.Panel1.ResumeLayout(false);
+            this.splitContainerCoin.Panel1.PerformLayout();
+            this.splitContainerCoin.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCoin)).EndInit();
+            this.splitContainerCoin.ResumeLayout(false);
+            this.groupBoxCoinFilter.ResumeLayout(false);
+            this.groupBoxCoinFilter.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCoin)).EndInit();
+            this.tabPageDisassembly.ResumeLayout(false);
+            this.tabPageDisassembly.PerformLayout();
+            this.tabPageDecompiler.ResumeLayout(false);
+            this.tabPageDecompiler.PerformLayout();
+            this.splitContainerDecompiler.Panel1.ResumeLayout(false);
+            this.splitContainerDecompiler.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDecompiler)).EndInit();
+            this.splitContainerDecompiler.ResumeLayout(false);
+            this.tabPageScripts.ResumeLayout(false);
+            this.tabPageScripts.PerformLayout();
             this.tabPageTesting.ResumeLayout(false);
             this.groupBoxTriRooms.ResumeLayout(false);
             this.groupBoxTriRooms.PerformLayout();
@@ -17365,14 +17434,7 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
-            this.tabPageMap2.ResumeLayout(false);
-            this.splitContainerMap2.Panel1.ResumeLayout(false);
-            this.splitContainerMap2.Panel1.PerformLayout();
-            this.splitContainerMap2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap2)).EndInit();
-            this.splitContainerMap2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -18650,6 +18712,11 @@ namespace STROOP
         private CheckBox checkBox3;
         private CheckBox checkBox5;
         private OpenTK.GLControl glControl1;
+        private Label label10;
+        private Label label8;
+        private CheckBox checkBox1;
+        private CheckBox checkBox2;
+        private TrackBar trackBar1;
     }
 }
 
