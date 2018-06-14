@@ -214,7 +214,7 @@ namespace STROOP.Utilities
             {
                 case EndiannessType.Little:
                     // Address is not little endian, fix:
-                    localAddress = EndiannessUtilitiies.SwapAddressEndianness(localAddress, length);
+                    localAddress = EndiannessUtilities.SwapAddressEndianness(localAddress, length);
 
                     if (localAddress + length > _ram.Length)
                         break;
@@ -225,8 +225,8 @@ namespace STROOP.Utilities
                 case EndiannessType.Big:
                     // Read padded if misaligned address
                     byte[] swapBytes;
-                    uint alignedAddress = EndiannessUtilitiies.AlignedAddressFloor(localAddress);
-                    if (EndiannessUtilitiies.AddressIsMisaligned(localAddress))
+                    uint alignedAddress = EndiannessUtilities.AlignedAddressFloor(localAddress);
+                    if (EndiannessUtilities.AddressIsMisaligned(localAddress))
                         swapBytes = new byte[readBytes.Length + 4];
                     else
                         swapBytes = new byte[readBytes.Length];

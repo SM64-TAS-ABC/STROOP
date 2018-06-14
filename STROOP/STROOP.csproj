@@ -425,7 +425,7 @@
     <Compile Include="Utilities\CoinTrajejctory.cs" />
     <Compile Include="Utilities\CoinObject.cs" />
     <Compile Include="Utilities\PositionAngle.cs" />
-    <Compile Include="Utilities\EndiannessUtilitiies.cs" />
+    <Compile Include="Utilities\EndiannessUtilities.cs" />
     <Compile Include="Utilities\EndianUtilities.cs" />
     <Compile Include="Utilities\Stream\DolphinProcessIO.cs" />
     <Compile Include="Utilities\Stream\WindowsProcessIO.cs" />

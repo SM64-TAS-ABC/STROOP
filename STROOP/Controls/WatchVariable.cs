@@ -240,7 +240,7 @@ namespace STROOP.Controls
             uint address;
 
             if (UseAbsoluteAddressing)
-                address = EndiannessUtilitiies.SwapAddressEndianness(
+                address = EndiannessUtilities.SwapAddressEndianness(
                     Config.Stream.GetRelativeAddress(addressPtr, ByteCount.Value), ByteCount.Value);
             else
                 address = addressPtr.ToUInt32();
