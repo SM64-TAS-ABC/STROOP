@@ -572,7 +572,7 @@ namespace STROOP
             if (!Config.Map2Manager.IsLoaded || CurrentObject == null)
                 return;
 
-            Dictionary<uint, Map2Object> _mapObjects = new Dictionary<uint, Map2Object>();
+            Dictionary<uint, Map2Object> _mapObjects = Config.Map2Manager._mapObjectDictionary;
             BehaviorCriteria behaviorCriteria = CurrentObject.BehaviorCriteria;
             uint objAddress = CurrentObject.Address;
 
@@ -594,8 +594,10 @@ namespace STROOP
                 _mapObjects[objAddress] = mapObj;
                 Config.Map2Manager.AddMapObject(mapObj);
             }
-
-            if (CurrentObject.SegmentedBehavior == (Config.ObjectAssociations.MarioBehavior & 0x00FFFFFF) + Config.ObjectAssociations.BehaviorBankStart)
+            
+            if (CurrentObject.SegmentedBehavior ==
+                   (Config.ObjectAssociations.MarioBehavior & 0x00FFFFFF) +
+                   Config.ObjectAssociations.BehaviorBankStart)
             {
                 _mapObjects[objAddress].Show = false;
             }

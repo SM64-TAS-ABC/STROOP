@@ -32,6 +32,7 @@ namespace STROOP.Managers
         TriangleMap2Object _floorTriangleMapObj;
         TriangleMap2Object _ceilingTriangleMapObj;
         List<Map2Object> _mapObjects = new List<Map2Object>();
+        public Dictionary<uint, Map2Object> _mapObjectDictionary = new Dictionary<uint, Map2Object>();
         Map2Gui _mapGui;
         bool _isLoaded = false;
         float? _artificialMarioY = null;
