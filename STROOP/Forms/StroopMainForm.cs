@@ -87,7 +87,17 @@ namespace STROOP
                         Config.TasManager.ShowTaserVariables();
                         tabControlMain.SelectedTab = tabPageTas;
                     },
-                    () => TestUtilities.TestSomething(),
+                    () =>
+                    {
+                        List<TabPage> tabPages = new List<TabPage>();
+                        foreach (TabPage tabPage in tabControlMain.TabPages)
+                        {
+                            tabPages.Add(tabPage);
+                        }
+                        List<string> strings = tabPages.ConvertAll(
+                            tabPage => "<Tab>" + tabPage.Text + "</Tab>");
+                        InfoForm.ShowValue(String.Join("\r\n", strings));
+                    },
                 });
             ControlUtilities.AddCheckableContextMenuStripFunctions(
                 labelVersionNumber,

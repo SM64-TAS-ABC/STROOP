@@ -8,5 +8,38 @@
   <UseMisalignmentOffsetForDistanceToLine>true</UseMisalignmentOffsetForDistanceToLine>
   <DontRoundValuesToZero>true</DontRoundValuesToZero>
   <NeutralizeTrianglesWith21>true</NeutralizeTrianglesWith21>
-  <UseInGameTrigForAngleLogic>false</UseInGameTrigForAngleLogic>  
+  <UseInGameTrigForAngleLogic>false</UseInGameTrigForAngleLogic>
+  <TabOrder>
+    <Tab>Object</Tab>
+    <Tab>Mario</Tab>
+    <Tab>HUD</Tab>
+    <Tab>Camera</Tab>
+    <Tab>Triangles</Tab>
+    <Tab>Actions</Tab>
+    <Tab>File</Tab>
+    <Tab>Input</Tab>
+    <Tab>Water</Tab>
+    <Tab>Misc</Tab>
+    <Tab>M64</Tab>
+    <Tab>Custom</Tab>
+    <Tab>TAS</Tab>
+    <Tab>Map</Tab>
+    <Tab>Map2</Tab>
+    <Tab>Options</Tab>
+    <Tab>Memory</Tab>
+    <Tab>PU</Tab>
+    <Tab>Area</Tab>
+    <Tab>Model</Tab>
+    <Tab>Gfx</Tab>
+    <Tab>Debug</Tab>
+    <Tab>Hacks</Tab>
+    <Tab>Cam Hack</Tab>
+    <Tab>Q Frames</Tab>
+    <Tab>Var Hack</Tab>
+    <Tab>Coin</Tab>
+    <Tab>Disassembly</Tab>
+    <Tab>Decompiler</Tab>
+    <Tab>Scripts</Tab>
+    <Tab>Testing</Tab>
+  </TabOrder>
 </SavedSettings>
