@@ -295,7 +295,7 @@ namespace STROOP
 
         private void _sm64Stream_WarnReadonlyOff(object sender, EventArgs e)
         {
-            Invoke(new Action(() =>
+            this.TryInvoke(new Action(() =>
                 {
                 var dr = MessageBox.Show("Warning! Editing variables and enabling hacks may cause the emulator to freeze. Turn off read-only mode?", 
                     "Turn Off Read-only Mode?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
@@ -403,7 +403,7 @@ namespace STROOP
 
         private void OnUpdate(object sender, EventArgs e)
         {
-            Invoke(new Action(() =>
+            this.TryInvoke(new Action(() =>
             {
                 UpdateComboBoxes();
                 DataModels.Update();
@@ -534,11 +534,6 @@ namespace STROOP
                 }
             });
             Config.MapManager.Load();
-        }
-
-        private void _sm64Stream_OnClose(object sender, EventArgs e)
-        {
-            Invoke(new Action(() => Close()));
         }
 
         private async void glControlModelView_Load(object sender, EventArgs e)
@@ -694,8 +689,13 @@ namespace STROOP
                 Config.Stream.OnDisconnect -= _sm64Stream_OnDisconnect;
                 Config.Stream.WarnReadonlyOff -= _sm64Stream_WarnReadonlyOff;
                 Config.Stream.Dispose();
+                Task.Run(async () =>
+                {       
+                    await Config.Stream.WaitForDispose();
+                    Config.Stream = null;
+                    Invoke(new Action(() => Close()));
+                });
                 e.Cancel = true;
-                Hide();
                 return;
             }
             
