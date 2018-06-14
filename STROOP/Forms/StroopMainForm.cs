@@ -647,6 +647,19 @@ namespace STROOP
             }
         }
 
+        private void MoveTab(bool rightwards)
+        {
+            TabPage currentTab = tabControlMain.SelectedTab;
+            int currentIndex = tabControlMain.TabPages.IndexOf(currentTab);
+            int indexDiff = rightwards ? +1 : -1;
+            int newIndex = currentIndex + indexDiff;
+            if (newIndex < 0 || newIndex >= tabControlMain.TabCount) return;
+
+            TabPage adjacentTab = tabControlMain.TabPages[newIndex];
+            tabControlMain.TabPages.Remove(adjacentTab);
+            tabControlMain.TabPages.Insert(currentIndex, adjacentTab);
+        }
+
         private void StroopMainForm_Resize(object sender, EventArgs e)
         {
             panelConnect.Size = this.Size;
