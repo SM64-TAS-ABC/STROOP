@@ -122,6 +122,8 @@ namespace STROOP
 
             Config.StroopMainForm = this;
             Config.TabControlMain = tabControlMain;
+            SavedSettingsConfig.StoreDefaultTabOrder();
+            SavedSettingsConfig.InvokeInitiallySavedTabOrder();
 
             SetupViews();
 

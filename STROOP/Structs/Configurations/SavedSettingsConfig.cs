@@ -1,4 +1,5 @@
 ﻿using STROOP.Controls;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -127,6 +128,44 @@ namespace STROOP.Structs.Configurations
                 if (_useInGameTrigForAngleLogic == value) return;
                 _useInGameTrigForAngleLogic = value;
                 if (IsLoaded) Save();
+            }
+        }
+
+        public static List<TabPage> _defaultTabOrder;
+
+        public static void StoreDefaultTabOrder()
+        {
+            _defaultTabOrder = ControlUtilities.GetTabPages(Config.TabControlMain);
+        }
+
+        public static void InvokeDefaultTabOrder()
+        {
+            InvokeTabOrder(_defaultTabOrder);
+            Save();
+        }
+
+        public static List<string> InitiallySavedTabOrder;
+
+        public static void InvokeInitiallySavedTabOrder()
+        {
+            List<TabPage> allTabPages = ControlUtilities.GetTabPages(Config.TabControlMain);
+            List<TabPage> initiallySavedTabPages = new List<TabPage>();
+            foreach (string tabName in InitiallySavedTabOrder)
+            {
+                TabPage tabPage = allTabPages.FirstOrDefault(t => t.Text == tabName);
+                if (tabPage == null) continue;
+                initiallySavedTabPages.Add(tabPage);
+            }
+            InvokeTabOrder(initiallySavedTabPages);
+        }
+
+        private static void InvokeTabOrder(List<TabPage> tabPages)
+        {
+            for (int i = 0; i < tabPages.Count; i++)
+            {
+                TabPage tabPage = tabPages[i];
+                Config.TabControlMain.TabPages.Remove(tabPage);
+                Config.TabControlMain.TabPages.Insert(i, tabPage);
             }
         }
 

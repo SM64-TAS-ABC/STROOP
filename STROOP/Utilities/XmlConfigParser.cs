@@ -138,6 +138,15 @@ namespace STROOP.Utilities
                     case "UseInGameTrigForAngleLogic":
                         SavedSettingsConfig.UseInGameTrigForAngleLogic = bool.Parse(element.Value);
                         break;
+
+                    case "TabOrder":
+                        List<string> tabNames = new List<string>();
+                        foreach (var tabName in element.Elements())
+                        {
+                            tabNames.Add(tabName.Value);
+                        }
+                        SavedSettingsConfig.InitiallySavedTabOrder = tabNames;
+                        break;
                 }
             }
             SavedSettingsConfig.IsLoaded = true;

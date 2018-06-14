@@ -595,5 +595,15 @@ namespace STROOP.Utilities
             }
             return valueList;
         }
+
+        public static List<TabPage> GetTabPages(TabControl tabControl)
+        {
+            List<TabPage> tabPages = new List<TabPage>();
+            foreach (TabPage tabPage in tabControl.TabPages)
+            {
+                tabPages.Add(tabPage);
+            }
+            return tabPages;
+        }
     }
 }
