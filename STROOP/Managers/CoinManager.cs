@@ -113,16 +113,19 @@ namespace STROOP.Managers
             int? startingRngIndexNullable = ParsingUtilities.ParseIntNullable(_textBoxCoinStartingRngIndex.Text);
             int startingRngIndex = startingRngIndexNullable ?? RngIndexer.GetRngIndex();
 
-            List<int> rngIndexes = Enumerable.Range(0, 65114).ToList();
+            List<int> rngIndexes = Enumerable.Range(0, 1000 /* fix this! */).ToList();
 
             foreach (int rngIndex in rngIndexes)
             {
                 ushort rngValue = RngIndexer.GetRngValue(rngIndex);
                 int rngToGo = MoreMath.NonNegativeModulus(rngIndex - startingRngIndex, 65114);
+
                 CoinTrajectory coinTrajectory = coinObject.CalculateCoinTrajectory(rngIndex);
-                _dataGridViewCoin.Rows.Add(
-                    rngIndex, rngValue, rngToGo,
-                    coinTrajectory.HSpeed, coinTrajectory.VSpeed, coinTrajectory.Angle);
+                double hSpeed = Math.Round(coinTrajectory.HSpeed, 3);
+                double vSpeed = Math.Round(coinTrajectory.VSpeed, 3);
+                double angle = coinTrajectory.Angle;
+
+                _dataGridViewCoin.Rows.Add(rngIndex, rngValue, rngToGo, hSpeed, vSpeed, angle);
             }
         }
 
