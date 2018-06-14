@@ -123,7 +123,7 @@ namespace STROOP.Managers
                 !coinParamOrderParsed)
             {
                 DialogUtilities.DisplayMessage(
-                    "Could not parse coin param fields. Please fill them in.",
+                    "Could not parse coin param fields.",
                     "Parsing Error");
                 return;
             }
