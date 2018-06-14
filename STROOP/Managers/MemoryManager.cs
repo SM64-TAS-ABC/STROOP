@@ -178,7 +178,9 @@ namespace STROOP.Managers
                 precursorLists.ForEach(precursors =>
                 {
                     List<WatchVariableControlPrecursor> overlapped = GetOverlapped(precursors);
-                    overlapped.ForEach(precursor => Config.MemoryManager.AddVariable(precursor.CreateWatchVariableControl()));
+                    overlapped.ForEach(precursor => Config.MemoryManager.AddVariable(
+                        precursor.CreateWatchVariableControl(
+                            newVariableGroupList: new List<VariableGroup>() { VariableGroup.Custom })));
                 });
             }
 
@@ -239,7 +241,7 @@ namespace STROOP.Managers
                     null /* invertBool */,
                     null /* isYaw */,
                     null /* coordinate */,
-                    new List<VariableGroup>());
+                    new List<VariableGroup>() { VariableGroup.Custom });
             }
         }
 
