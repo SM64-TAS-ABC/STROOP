@@ -573,6 +573,17 @@ namespace STROOP
             Config.MapManager.Load();
         }
 
+        private async void glControlMap2_Load(object sender, EventArgs e)
+        {
+            await Task.Run(() => {
+                while (Config.Map2Manager == null)
+                {
+                    Task.Delay(1).Wait();
+                }
+            });
+            Config.Map2Manager.Load();
+        }
+
         private async void glControlModelView_Load(object sender, EventArgs e)
         {
             await Task.Run(() => {

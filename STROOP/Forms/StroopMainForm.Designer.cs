@@ -10708,6 +10708,7 @@ namespace STROOP
             this.glControlMap2.Size = new System.Drawing.Size(680, 455);
             this.glControlMap2.TabIndex = 0;
             this.glControlMap2.VSync = false;
+            this.glControlMap2.Load += new System.EventHandler(this.glControlMap2_Load);
             // 
             // tabPageOptions
             // 
