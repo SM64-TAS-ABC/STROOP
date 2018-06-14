@@ -165,6 +165,7 @@ namespace STROOP.Managers
 
         private void ChangeMapPosition(int xSign, int ySign)
         {
+            _mapGui.GLControl.Dock = DockStyle.None;
             int positionChange = ParsingUtilities.ParseInt(_mapGui.MapBoundsPositionTextBox.Text);
             int xChange = positionChange * xSign;
             int yChange = positionChange * ySign;
@@ -175,6 +176,7 @@ namespace STROOP.Managers
 
         private void ChangeMapZoom(int sign)
         {
+            _mapGui.GLControl.Dock = DockStyle.None;
             int change = ParsingUtilities.ParseInt(_mapGui.MapBoundsZoomTextBox.Text);
             int zoomChange = change * sign;
             int newX = _mapGui.GLControl.Left - zoomChange;
