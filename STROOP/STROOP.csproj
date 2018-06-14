@@ -357,6 +357,10 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Managers\ObjectSlotsManager.cs" />
+    <Compile Include="Map2\Map2Gui.cs" />
+    <Compile Include="Map2\TriangleMap2Object.cs" />
+    <Compile Include="Map2\Map2BaseObject.cs" />
+    <Compile Include="Map2\Map2Graphics.cs" />
     <Compile Include="Models\CameraDataModel.cs" />
     <Compile Include="Models\MarioDataModel.cs" />
     <Compile Include="Models\DataModels.cs" />
