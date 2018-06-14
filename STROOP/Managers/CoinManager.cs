@@ -79,6 +79,17 @@ namespace STROOP.Managers
 
             _buttonCoinCalculate.Click += (sender, e) => CalculateCoinTrajectories();
 
+            Color lightBlue = Color.FromArgb(235, 255, 255);
+            Color lightPink = Color.FromArgb(255, 240, 255);
+            Color lightYellow = Color.FromArgb(255, 255, 220);
+
+            _dataGridViewCoin.Columns[0].DefaultCellStyle.BackColor = lightBlue;
+            _dataGridViewCoin.Columns[1].DefaultCellStyle.BackColor = lightBlue;
+            _dataGridViewCoin.Columns[2].DefaultCellStyle.BackColor = lightPink;
+            _dataGridViewCoin.Columns[3].DefaultCellStyle.BackColor = lightYellow;
+            _dataGridViewCoin.Columns[4].DefaultCellStyle.BackColor = lightYellow;
+            _dataGridViewCoin.Columns[5].DefaultCellStyle.BackColor = lightYellow;
+
         }
 
         private void ListBoxSelectionChange()
