@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace STROOP.Structs.Configurations
 {
@@ -17,6 +18,7 @@ namespace STROOP.Structs.Configurations
         public static ProcessStream Stream;
         public static ObjectAssociations ObjectAssociations;
         public static StroopMainForm StroopMainForm;
+        public static TabControl TabControlMain;
 
         public static CameraManager CameraManager;
         public static DebugManager DebugManager;

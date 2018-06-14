@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml.Linq;
 
 namespace STROOP.Structs.Configurations
@@ -131,6 +132,13 @@ namespace STROOP.Structs.Configurations
 
         public static List<XElement> ToXML()
         {
+            XElement tabOrderXElement = new XElement("TabOrder");
+            foreach (TabPage tabPage in Config.TabControlMain.TabPages)
+            {
+                XElement tabXElement = new XElement("Tab", tabPage.Text);
+                tabOrderXElement.Add(tabXElement);
+            }
+
             return new List<XElement>
             {
                 new XElement("YawSigned", _yawSigned),
@@ -142,6 +150,7 @@ namespace STROOP.Structs.Configurations
                 new XElement("DontRoundValuesToZero", _dontRoundValuesToZero),
                 new XElement("NeutralizeTrianglesWith21", _neutralizeTrianglesWith21),
                 new XElement("UseInGameTrigForAngleLogic", _useInGameTrigForAngleLogic),
+                tabOrderXElement,
             };
         }
 

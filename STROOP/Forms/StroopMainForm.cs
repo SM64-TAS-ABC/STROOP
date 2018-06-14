@@ -121,6 +121,7 @@ namespace STROOP
                 });
 
             Config.StroopMainForm = this;
+            Config.TabControlMain = tabControlMain;
 
             SetupViews();
 
@@ -678,6 +679,8 @@ namespace STROOP
             TabPage adjacentTab = tabControlMain.TabPages[newIndex];
             tabControlMain.TabPages.Remove(adjacentTab);
             tabControlMain.TabPages.Insert(currentIndex, adjacentTab);
+
+            SavedSettingsConfig.Save();
         }
 
         private void StroopMainForm_Resize(object sender, EventArgs e)
