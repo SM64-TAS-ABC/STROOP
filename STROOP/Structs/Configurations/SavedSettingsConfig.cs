@@ -131,16 +131,16 @@ namespace STROOP.Structs.Configurations
             }
         }
 
-        public static List<TabPage> _defaultTabOrder;
+        public static List<TabPage> _recommendedTabOrder;
 
-        public static void StoreDefaultTabOrder()
+        public static void StoreRecommendedTabOrder()
         {
-            _defaultTabOrder = ControlUtilities.GetTabPages(Config.TabControlMain);
+            _recommendedTabOrder = ControlUtilities.GetTabPages(Config.TabControlMain);
         }
 
-        public static void InvokeDefaultTabOrder()
+        public static void InvokeRecommendedTabOrder()
         {
-            InvokeTabOrder(_defaultTabOrder);
+            InvokeTabOrder(_recommendedTabOrder);
             Save();
         }
 

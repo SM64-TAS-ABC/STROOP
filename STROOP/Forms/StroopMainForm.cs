@@ -69,6 +69,30 @@ namespace STROOP
             comboBoxYawSigned.DataSource = Enum.GetValues(typeof(SignedEnum));
             comboBoxYawSigned.SelectedItem = SavedSettingsConfig.YawSigned ? SignedEnum.Signed : SignedEnum.Unsigned;
 
+            SetUpContextMenuStrips();
+
+            Config.StroopMainForm = this;
+            Config.TabControlMain = tabControlMain;
+            SavedSettingsConfig.StoreRecommendedTabOrder();
+            SavedSettingsConfig.InvokeInitiallySavedTabOrder();
+
+            SetupViews();
+
+            _resizing = false;
+            labelVersionNumber.Text = _version;
+
+            // Collect garbage, we are fully loaded now!
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+
+            // Load process
+            buttonRefresh_Click(this, new EventArgs());
+            panelConnect.Location = new Point();
+            panelConnect.Size = this.Size;
+        }
+
+        private void SetUpContextMenuStrips()
+        {
             ControlUtilities.AddContextMenuStripFunctions(
                 labelVersionNumber,
                 new List<string>()
@@ -99,6 +123,7 @@ namespace STROOP
                         InfoForm.ShowValue(String.Join("\r\n", strings));
                     },
                 });
+
             ControlUtilities.AddCheckableContextMenuStripFunctions(
                 labelVersionNumber,
                 new List<string>()
@@ -120,24 +145,15 @@ namespace STROOP
                     },
                 });
 
-            Config.StroopMainForm = this;
-            Config.TabControlMain = tabControlMain;
-            SavedSettingsConfig.StoreDefaultTabOrder();
-            SavedSettingsConfig.InvokeInitiallySavedTabOrder();
+            ControlUtilities.AddContextMenuStripFunctions(
+                buttonMoveTabLeft,
+                new List<string>() { "Restore Recommended Tab Order" },
+                new List<Action>() { () => SavedSettingsConfig.InvokeRecommendedTabOrder() });
 
-            SetupViews();
-
-            _resizing = false;
-            labelVersionNumber.Text = _version;
-
-            // Collect garbage, we are fully loaded now!
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-
-            // Load process
-            buttonRefresh_Click(this, new EventArgs());
-            panelConnect.Location = new Point();
-            panelConnect.Size = this.Size;
+            ControlUtilities.AddContextMenuStripFunctions(
+                buttonMoveTabRight,
+                new List<string>() { "Restore Recommended Tab Order" },
+                new List<Action>() { () => SavedSettingsConfig.InvokeRecommendedTabOrder() });
         }
 
         private void CreateManagers()
