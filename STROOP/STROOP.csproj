@@ -325,7 +325,6 @@
     <Compile Include="Managers\GfxManager.cs" />
     <Compile Include="Managers\M64Manager.cs" />
     <Compile Include="Managers\CoinManager.cs" />
-    <Compile Include="Managers\Map2Manager.cs" />
     <Compile Include="Managers\MemoryManager.cs" />
     <Compile Include="Managers\TasManager.cs" />
     <Compile Include="Managers\VarHackManager.cs" />
@@ -357,8 +356,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Managers\ObjectSlotsManager.cs" />
+    <Compile Include="Map2\Map2Map.cs" />
     <Compile Include="Map2\Map2Gui.cs" />
-    <Compile Include="Map2\Map2.cs" />
+    <Compile Include="Managers\Map2Manager.cs" />
     <Compile Include="Map2\TriangleMap2Object.cs" />
     <Compile Include="Map2\Map2BaseObject.cs" />
     <Compile Include="Map2\Map2Graphics.cs" />

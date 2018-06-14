@@ -11,26 +11,29 @@ using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 using STROOP.Structs.Configurations;
+using STROOP.Controls.Map;
+using STROOP.Map2;
 
 namespace STROOP.Managers
 {
     public class Map2Manager
     {
         /*
+        public Map2Map map;
         public MapAssociations MapAssoc;
         byte _currentLevel, _currentArea;
         ushort _currentLoadingPoint, _currentMissionLayout;
-        Map _currentMap;
-        List<Map> _currentMapList = null;
-        MapGraphics _mapGraphics;
-        MapObject _marioMapObj;
-        MapObject _holpMapObj;
-        MapObject _intendedNextPositionMapObj;
-        MapObject _cameraMapObj;
-        TriangleMapObject _floorTriangleMapObj;
-        TriangleMapObject _ceilingTriangleMapObj;
-        List<MapObject> _mapObjects = new List<MapObject>();
-        MapGui _mapGui;
+        Map2Map _currentMap;
+        List<Map2Map> _currentMapList = null;
+        Map2Graphics _mapGraphics;
+        Map2Object _marioMapObj;
+        Map2Object _holpMapObj;
+        Map2Object _intendedNextPositionMapObj;
+        Map2Object _cameraMapObj;
+        TriangleMap2Object _floorTriangleMapObj;
+        TriangleMap2Object _ceilingTriangleMapObj;
+        List<Map2Object> _mapObjects = new List<Map2Object>();
+        Map2Gui _mapGui;
         bool _isLoaded = false;
         float? _artificialMarioY = null;
 

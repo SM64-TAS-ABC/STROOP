@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using OpenTK.Graphics.OpenGL;
+using OpenTK;
 using System.Drawing;
 
 namespace STROOP.Map2
 {
-    public struct Map2
+    public struct Map2Map
     {
         public string ImagePath;
         public string BackgroundPath;
@@ -20,23 +23,23 @@ namespace STROOP.Map2
         public string Name;
         public string SubName;
 
-        public static bool operator ==(Map2 a, Map2 b)
+        public static bool operator ==(Map2Map a, Map2Map b)
         {
             return (a.ImagePath == b.ImagePath && a.Area == b.Area && a.Level == b.Level && a.Y == b.Y
                 && a.LoadingPoint == b.LoadingPoint && a.MissionLayout == b.MissionLayout);
         }
 
-        public static bool operator !=(Map2 a, Map2 b)
+        public static bool operator !=(Map2Map a, Map2Map b)
         {
             return !(a == b);
         }
 
         public override bool Equals(object other)
         {
-            if (!(other is Map2))
+            if (!(other is Map2Map))
                 return false;
 
-            return (this == (Map2)other);
+            return (this == (Map2Map)other);
         }
 
         public override int GetHashCode()
