@@ -335,7 +335,7 @@ namespace STROOP
             Config.VarHackManager = new VarHackManager(tabPageVarHack, varHackPanel);
             Config.CamHackManager = new CamHackManager(@"Config/CamHackData.xml", tabPageCamHack, watchVariablePanelCamHack);
             Config.ObjectManager = new ObjectManager(@"Config/ObjectData.xml", tabPageObject, WatchVariablePanelObject);
-            Config.OptionsManager = new OptionsManager(tabPageOptions);
+            Config.OptionsManager = new OptionsManager(tabPageOptions, pictureBoxCog);
             Config.TestingManager = new TestingManager(tabPageTesting);
             Config.MemoryManager = new MemoryManager(tabPageMemory, watchVariablePanelMemory, @"Config/ObjectData.xml");
             Config.CoinManager = new CoinManager(tabPageCoin);

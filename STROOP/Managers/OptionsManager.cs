@@ -21,7 +21,7 @@ namespace STROOP.Managers
         private readonly CheckBox _checkBoxDontRoundValuesToZero;
         private readonly CheckBox _checkBoxOptionsUseInGameTrigForAngleLogic;
 
-        public OptionsManager(TabPage tabControl)
+        public OptionsManager(TabPage tabControl, Control cogControl)
         {
             // saved settings
             GroupBox groupBoxOptionsSavedSettings = tabControl.Controls["groupBoxOptionsSavedSettings"] as GroupBox;
