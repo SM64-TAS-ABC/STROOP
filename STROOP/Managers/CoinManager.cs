@@ -149,8 +149,8 @@ namespace STROOP.Managers
 
                 // coin trajectory values
                 CoinTrajectory coinTrajectory = coinObject.CalculateCoinTrajectory(rngIndex);
-                double hSpeed = Math.Round(coinTrajectory.HSpeed, 3);
-                double vSpeed = Math.Round(coinTrajectory.VSpeed, 3);
+                double hSpeed = coinTrajectory.HSpeed;
+                double vSpeed = coinTrajectory.VSpeed;
                 double angle = coinTrajectory.Angle;
 
                 // filter the values
