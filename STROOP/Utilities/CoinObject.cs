@@ -162,13 +162,21 @@ namespace STROOP.Utilities
             numCoins: 5,
             name: "Moneybag");
 
-        public static CoinObject CorkBox = new CoinObject(
+        public static CoinObject GrabbableCorkBox = new CoinObject(
             hSpeedScale: 20,
             vSpeedScale: 40,
             vSpeedOffset: 17,
             coinParamOrder: CoinParamOrder.HVA,
             numCoins: 3,
-            name: "Cork Box");
+            name: "Grabbable Cork Box");
+
+        public static CoinObject BigCorkBox = new CoinObject(
+            hSpeedScale: 10,
+            vSpeedScale: 10, // more like 9.936193656
+            vSpeedOffset: 46,
+            coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 3,
+            name: "Big Cork Box");
 
     }
 }
