@@ -19,7 +19,6 @@ namespace STROOP.Controls
         private string _varFilePath;
 
         private readonly Object _objectLock;
-        private List<WatchVariableControlPrecursor> _watchVarPrecursors;
         private List<WatchVariableControl> _watchVarControls;
         private readonly List<VariableGroup> _allGroups;
         private readonly List<VariableGroup> _initialVisibleGroups;
@@ -32,7 +31,6 @@ namespace STROOP.Controls
         public WatchVariableFlowLayoutPanel()
         {
             _objectLock = new Object();
-            _watchVarPrecursors = new List<WatchVariableControlPrecursor>();
             _watchVarControls = new List<WatchVariableControl>();
             _allGroups = new List<VariableGroup>();
             _initialVisibleGroups = new List<VariableGroup>();
@@ -46,7 +44,6 @@ namespace STROOP.Controls
 
         public void Initialize(
             string varFilePath,
-            List<WatchVariableControlPrecursor> precursors,
             List<VariableGroup> allGroups,
             List<VariableGroup> visibleGroups)
         {
@@ -54,9 +51,10 @@ namespace STROOP.Controls
             _allGroups.AddRange(allGroups);
             _initialVisibleGroups.AddRange(visibleGroups);
             _visibleGroups.AddRange(visibleGroups);
-            _watchVarPrecursors.AddRange(precursors);
-            AddVariables(_watchVarPrecursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
-
+            List<WatchVariableControlPrecursor> precursors = _varFilePath == null
+                ? new List<WatchVariableControlPrecursor>()
+                : XmlConfigParser.OpenWatchVariableControlPrecursors(_varFilePath);
+            AddVariables(precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
             AddItemsToContextMenuStrip();
         }
 
@@ -340,7 +338,11 @@ namespace STROOP.Controls
             _visibleGroups.Clear();
             _visibleGroups.AddRange(_initialVisibleGroups);
             UpdateFilterItemCheckedStatuses();
-            AddVariables(_watchVarPrecursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
+
+            List<WatchVariableControlPrecursor> precursors = _varFilePath == null
+                ? new List<WatchVariableControlPrecursor>()
+                : XmlConfigParser.OpenWatchVariableControlPrecursors(_varFilePath);
+            AddVariables(precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
         }
 
         private void AddAllVariablesToCustomTab()
