@@ -88,6 +88,7 @@ namespace STROOP.Managers
             }
             cogControl.ContextMenuStrip = new ContextMenuStrip();
             _savedSettingsItemList.ForEach(item => cogControl.ContextMenuStrip.Items.Add(item));
+            cogControl.Click += (sender, e) => cogControl.ContextMenuStrip.Show(Cursor.Position);
 
             // goto/retrieve offsets
             GroupBox groupBoxGotoRetrieveOffsets = tabControl.Controls["groupBoxGotoRetrieveOffsets"] as GroupBox;
