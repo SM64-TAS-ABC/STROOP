@@ -178,5 +178,13 @@ namespace STROOP.Utilities
             numCoins: 3,
             name: "Big Cork Box");
 
+        public static CoinObject CoinBlock = new CoinObject(
+            hSpeedScale: 10,
+            vSpeedScale: 10, // more like 9.936193656
+            vSpeedOffset: 26,
+            coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 10,
+            name: "Coin Block");
+
     }
 }
