@@ -75,7 +75,7 @@ namespace STROOP.Managers
             }
             _savedSettingsTextList = _savedSettingsCheckboxList.ConvertAll(checkbox => checkbox.Text);
             
-            Button buttonOptionsResetSavedSettings = groupBoxOptionsSavedSettings.Controls["buttonOptionsResetSavedSettings"] as Button;
+            Button buttonOptionsResetSavedSettings = tabControl.Controls["buttonOptionsResetSavedSettings"] as Button;
             buttonOptionsResetSavedSettings.Click += (sender, e) => SavedSettingsConfig.ResetSavedSettings();
 
 
