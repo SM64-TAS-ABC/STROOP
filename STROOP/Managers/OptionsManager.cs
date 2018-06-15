@@ -16,6 +16,8 @@ namespace STROOP.Managers
         private readonly List<Action<bool>> _savedSettingsSetterList;
         private readonly List<string> _savedSettingsTextList;
 
+        private readonly CheckedListBox _savedSettingsCheckedListBox;
+
         public OptionsManager(TabPage tabControl, Control cogControl)
         {
             List<string> checkboxNames = new List<string>()
@@ -75,6 +77,17 @@ namespace STROOP.Managers
             
             Button buttonOptionsResetSavedSettings = groupBoxOptionsSavedSettings.Controls["buttonOptionsResetSavedSettings"] as Button;
             buttonOptionsResetSavedSettings.Click += (sender, e) => SavedSettingsConfig.ResetSavedSettings();
+
+
+            _savedSettingsCheckedListBox = tabControl.Controls["checkedListBoxSavedSettings"] as CheckedListBox;
+            for (int i = 0; i < _savedSettingsTextList.Count; i++)
+            {
+                _savedSettingsCheckedListBox.Items.Add(_savedSettingsTextList[i], _savedSettingsGetterList[i]());
+            }
+            _savedSettingsCheckedListBox.ItemCheck += (sender, e) =>
+            {
+                _savedSettingsSetterList[e.Index](e.NewValue == CheckState.Checked);
+            };
 
             // goto/retrieve offsets
             GroupBox groupBoxGotoRetrieveOffsets = tabControl.Controls["groupBoxGotoRetrieveOffsets"] as GroupBox;
@@ -204,6 +217,11 @@ namespace STROOP.Managers
                 CheckBox checkbox = _savedSettingsCheckboxList[i];
                 Func<bool> getter = _savedSettingsGetterList[i];
                 checkbox.Checked = getter();
+            }
+
+            for (int i = 0; i < _savedSettingsCheckedListBox.Items.Count; i++)
+            {
+                _savedSettingsCheckedListBox.SetItemChecked(i, _savedSettingsGetterList[i]());
             }
         }
     }
