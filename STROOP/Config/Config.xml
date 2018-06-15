@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Config>
   <Emulators>
-<<<<<<< HEAD
     <Emulator name="Mupen 5.0 RR" processName="mupen64-rerecording" ramStart="0x008EBA80" endianness="little"/>
     <Emulator name="Mupen 5.0 RR" processName="mupen64-pucrash" ramStart="0x00912300" endianness="little"/>
     <Emulator name="Mupen 5.0 RR" processName="mupen64-lua" ramStart="0x00888F60" endianness="little"/>
@@ -10,12 +9,6 @@
     <Emulator name="BizHawk" processName="EmuHawk" offsetDll="mupen64plus.dll" ramStart="0x6C370" endianness="little"/>
     <Emulator name="Project64 Debugger 2.4.0.9999" processName="Project64d" ramStart="0x20000000" endianness="little"/>
     <Emulator name="Dolphin" processName="Dolphin" ramStart="0xe6a180" endianness="big" special="dolphin"/>
-=======
-    <Emulator name="Mupen 5.0 RR" processName="mupen64-rerecording" ramStart="0x008EBA80"/>
-    <Emulator name="Mupen 5.0 RR" processName="mupen64_lua" ramStart="0x00888F60"/>
-    <Emulator name="Nemu64 0.8" processName="Nemu64" ramStart="0x10020000"/>
-    <Emulator name="BizHawk" processName="EmuHawk" offsetDll="mupen64plus.dll" ramStart="0x691C0"/>
->>>>>>> origin/Development
   </Emulators>
 
   <!-- US, JP, or PAL -->
