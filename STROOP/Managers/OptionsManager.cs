@@ -20,17 +20,17 @@ namespace STROOP.Managers
 
         public OptionsManager(TabPage tabControl, Control cogControl)
         {
-            List<string> checkboxNames = new List<string>()
+            _savedSettingsTextList = new List<string>()
             {
-                "checkBoxDisplayYawAnglesAsUnsigned",
-                "checkBoxStartSlotIndexOne",
-                "checkBoxMoveCamWithPu",
-                "checkBoxScaleDiagonalPositionControllerButtons",
-                "checkBoxExcludeDustForClosestObject",
-                "checkBoxNeutralizeTrianglesWith21",
-                "checkBoxUseMisalignmentOffsetForDistanceToLine",
-                "checkBoxDontRoundValuesToZero",
-                "checkBoxOptionsUseInGameTrigForAngleLogic",
+                "Display Yaw Angles as Unsigned",
+                "Start Slot Index From 1",
+                "PU Controller Moves Camera",
+                "Scale Diagonal Position Controller Buttons",
+                "Exclude Dust for Closest Object",
+                "Neutralize Triangles with 21",
+                "Use Misalignment Offset For Distance To Line",
+                "Don't Round Values to 0",
+                "Use In-Game Trig for Angle Logic",
             };
 
             _savedSettingsGetterList = new List<Func<bool>>()
@@ -59,26 +59,6 @@ namespace STROOP.Managers
                 (bool value) => SavedSettingsConfig.UseInGameTrigForAngleLogic = value,
             };
 
-            GroupBox groupBoxOptionsSavedSettings = tabControl.Controls["groupBoxOptionsSavedSettings"] as GroupBox;
-            _savedSettingsCheckboxList = checkboxNames.ConvertAll(name => groupBoxOptionsSavedSettings.Controls[name] as CheckBox);
-            for (int i = 0; i < _savedSettingsCheckboxList.Count; i++)
-            {
-                CheckBox checkbox = _savedSettingsCheckboxList[i];
-                Action<bool> setter = _savedSettingsSetterList[i];
-                checkbox.Click += (sender, e) => setter(checkbox.Checked);
-            }
-            for (int i = 0; i < _savedSettingsCheckboxList.Count; i++)
-            {
-                CheckBox checkbox = _savedSettingsCheckboxList[i];
-                Func<bool> getter = _savedSettingsGetterList[i];
-                checkbox.Checked = getter();
-            }
-            _savedSettingsTextList = _savedSettingsCheckboxList.ConvertAll(checkbox => checkbox.Text);
-            
-            Button buttonOptionsResetSavedSettings = tabControl.Controls["buttonOptionsResetSavedSettings"] as Button;
-            buttonOptionsResetSavedSettings.Click += (sender, e) => SavedSettingsConfig.ResetSavedSettings();
-
-
             _savedSettingsCheckedListBox = tabControl.Controls["checkedListBoxSavedSettings"] as CheckedListBox;
             for (int i = 0; i < _savedSettingsTextList.Count; i++)
             {
@@ -88,6 +68,9 @@ namespace STROOP.Managers
             {
                 _savedSettingsSetterList[e.Index](e.NewValue == CheckState.Checked);
             };
+
+            Button buttonOptionsResetSavedSettings = tabControl.Controls["buttonOptionsResetSavedSettings"] as Button;
+            buttonOptionsResetSavedSettings.Click += (sender, e) => SavedSettingsConfig.ResetSavedSettings();
 
             // goto/retrieve offsets
             GroupBox groupBoxGotoRetrieveOffsets = tabControl.Controls["groupBoxGotoRetrieveOffsets"] as GroupBox;
@@ -212,13 +195,6 @@ namespace STROOP.Managers
 
         public void Update(bool updateView)
         {
-            for (int i = 0; i < _savedSettingsCheckboxList.Count; i++)
-            {
-                CheckBox checkbox = _savedSettingsCheckboxList[i];
-                Func<bool> getter = _savedSettingsGetterList[i];
-                checkbox.Checked = getter();
-            }
-
             for (int i = 0; i < _savedSettingsCheckedListBox.Items.Count; i++)
             {
                 _savedSettingsCheckedListBox.SetItemChecked(i, _savedSettingsGetterList[i]());
