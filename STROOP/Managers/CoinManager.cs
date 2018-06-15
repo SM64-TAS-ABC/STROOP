@@ -116,6 +116,7 @@ namespace STROOP.Managers
             _textBoxCoinVSpeedScale.Text = coinObject.VSpeedScale.ToString();
             _textBoxCoinVSpeedOffset.Text = coinObject.VSpeedOffset.ToString();
             _textBoxCoinParamOrder.Text = coinObject.CoinParamOrder.ToString();
+            _textBoxCoinNumCoins.Text = coinObject.NumCoins.ToString();
         }
 
         public void ClearCoinTrajectories()
@@ -131,11 +132,13 @@ namespace STROOP.Managers
             double? vSpeedScale = ParsingUtilities.ParseIntNullable(_textBoxCoinVSpeedScale.Text);
             double? vSpeedOffset = ParsingUtilities.ParseIntNullable(_textBoxCoinVSpeedOffset.Text);
             bool coinParamOrderParsed = Enum.TryParse(_textBoxCoinParamOrder.Text, out CoinParamOrder coinParamOrder);
+            int? numCoins = ParsingUtilities.ParseIntNullable(_textBoxCoinNumCoins.Text);
 
             if (!hSpeedScale.HasValue ||
                 !vSpeedScale.HasValue ||
                 !vSpeedOffset.HasValue ||
-                !coinParamOrderParsed)
+                !coinParamOrderParsed ||
+                !numCoins.HasValue)
             {
                 DialogUtilities.DisplayMessage(
                     "Could not parse coin param fields.",
@@ -144,16 +147,20 @@ namespace STROOP.Managers
             }
 
             CoinObject coinObject = new CoinObject(
-                numCoins: 1,
                 hSpeedScale: hSpeedScale.Value,
                 vSpeedScale: vSpeedScale.Value,
                 vSpeedOffset: vSpeedOffset.Value,
                 coinParamOrder: coinParamOrder,
+                numCoins: numCoins.Value,
                 name: "Dummy");
 
             int? startingRngIndexNullable = ParsingUtilities.ParseIntNullable(
                 _textBoxCoinCustomizatonStartingRngIndex.Text);
             int startingRngIndex = startingRngIndexNullable ?? RngIndexer.GetRngIndex();
+
+            int? numDecimalDigitsNullable = ParsingUtilities.ParseIntNullable(
+                _textBoxCoinCustomizatonNumDecimalDigits.Text);
+            int numDecimalDigits = numDecimalDigitsNullable ?? 3;
 
             List<int> rngIndexes = Enumerable.Range(0, 65114).ToList();
 
@@ -164,7 +171,7 @@ namespace STROOP.Managers
                 int rngToGo = MoreMath.NonNegativeModulus(rngIndex - startingRngIndex, 65114);
 
                 // coin trajectory
-                CoinTrajectory coinTrajectory = coinObject.CalculateCoinTrajectory(rngIndex);
+                List<CoinTrajectory> coinTrajectories = coinObject.CalculateCoinTrajectories(rngIndex);
 
                 // filter the values
                 CoinTrajectoryFilter filter = new CoinTrajectoryFilter(
@@ -174,13 +181,29 @@ namespace STROOP.Managers
                     ParsingUtilities.ParseDoubleNullable(_textBoxCoinFilterVSpeedMax.Text),
                     ParsingUtilities.ParseDoubleNullable(_textBoxCoinFilterAngleMin.Text),
                     ParsingUtilities.ParseDoubleNullable(_textBoxCoinFilterAngleMax.Text),
-                    1);
-                if (!filter.Qualifies(coinTrajectory)) continue;
+                    ParsingUtilities.ParseIntNullable(_textBoxCoinFilterRequiredNumOfQualifiedCoins.Text));
+                if (!filter.Qualifies(coinTrajectories)) continue;
+
+                if (!_checkBoxCoinCustomizatonDisplayNonQualifiedCoinsOfAQualifiedCoinGroup.Checked)
+                {
+                    coinTrajectories = coinTrajectories.FindAll(
+                        coinTrajectory => filter.Qualifies(coinTrajectory));
+                }
+
+                List<double> hSpeedList = coinTrajectories.ConvertAll(
+                    coinTrajectory => Math.Round(coinTrajectory.HSpeed, numDecimalDigits));
+                List<double> vSpeedList = coinTrajectories.ConvertAll(
+                    coinTrajectory => Math.Round(coinTrajectory.VSpeed, numDecimalDigits));
+                List<ushort> angleList = coinTrajectories.ConvertAll(
+                    coinTrajectory => coinTrajectory.Angle);
+
+                string hSpeedJoined = String.Join(", ", hSpeedList);
+                string vSpeedJoined = String.Join(", ", vSpeedList);
+                string angleJoined = String.Join(", ", angleList);
 
                 // add a new row to the table
-                double hSpeedRounded = Math.Round(coinTrajectory.HSpeed, 3);
-                double vSpeedRounded = Math.Round(coinTrajectory.VSpeed, 3);
-                _dataGridViewCoin.Rows.Add(rngIndex, rngValue, rngToGo, hSpeedRounded, vSpeedRounded, coinTrajectory.Angle);
+                _dataGridViewCoin.Rows.Add(
+                    rngIndex, rngValue, rngToGo, hSpeedJoined, vSpeedJoined, angleJoined);
             }
         }
 

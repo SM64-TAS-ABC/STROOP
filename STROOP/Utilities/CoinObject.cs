@@ -11,19 +11,19 @@ namespace STROOP.Utilities
 {
     public class CoinObject
     {
-        public readonly int NumCoins;
         public readonly double HSpeedScale;
         public readonly double VSpeedScale;
         public readonly double VSpeedOffset;
         public readonly CoinParamOrder CoinParamOrder;
+        public readonly int NumCoins;
         public readonly string Name;
 
         public CoinObject(
-            int numCoins,
             double hSpeedScale,
             double vSpeedScale,
             double vSpeedOffset,
             CoinParamOrder coinParamOrder,
+            int numCoins,
             string name)
         {
             NumCoins = numCoins;
@@ -123,51 +123,51 @@ namespace STROOP.Utilities
         }
 
         public static CoinObject Bobomb = new CoinObject(
-            numCoins: 1,
             hSpeedScale: 20,
             vSpeedScale: 40,
             vSpeedOffset: 17,
             coinParamOrder: CoinParamOrder.HVA,
+            numCoins: 1,
             name: "Bob-omb");
 
         public static CoinObject Scuttlebug = new CoinObject(
-            numCoins: 3,
             hSpeedScale: 10,
             vSpeedScale: 10,
             vSpeedOffset: 46,
             coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 3,
             name: "Scuttlebug");
 
         public static CoinObject TinyPiranhaPlant = new CoinObject(
-            numCoins: 1,
-            hSpeedScale: 10, // more like 9.929076195
-            vSpeedScale: 10,
+            hSpeedScale: 10,
+            vSpeedScale: 10, // more like 9.929076195
             vSpeedOffset: 46,
             coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 1,
             name: "Tiny Piranha Plant");
 
         public static CoinObject Goomba = new CoinObject(
-            numCoins: 1,
-            hSpeedScale: 10, // more like 9.936193656
-            vSpeedScale: 10,
+            hSpeedScale: 10,
+            vSpeedScale: 10, // more like 9.936193656
             vSpeedOffset: 46,
             coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 1,
             name: "Goomba");
 
         public static CoinObject Moneybag = new CoinObject(
-            numCoins: 5,
             hSpeedScale: 20,
             vSpeedScale: 40,
             vSpeedOffset: 17,
             coinParamOrder: CoinParamOrder.HVA,
+            numCoins: 5,
             name: "Moneybag");
 
         public static CoinObject CorkBox = new CoinObject(
-            numCoins: 3,
             hSpeedScale: 20,
             vSpeedScale: 40,
             vSpeedOffset: 17,
             coinParamOrder: CoinParamOrder.HVA,
+            numCoins: 3,
             name: "Cork Box");
 
     }
