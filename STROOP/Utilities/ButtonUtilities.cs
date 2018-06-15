@@ -132,6 +132,7 @@ namespace STROOP.Utilities
 
         private static void HandleGotoOffset(ref float xPos, ref float yPos, ref float zPos)
         {
+            if (!SavedSettingsConfig.OffsetGotoRetrieveFunctions) return;
             float gotoAbove = GotoRetrieveConfig.GotoAboveOffset;
             float gotoInfront = GotoRetrieveConfig.GotoInfrontOffset;
             ushort marioYaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
@@ -146,6 +147,7 @@ namespace STROOP.Utilities
 
         private static void HandleRetrieveOffset(ref float xPos, ref float yPos, ref float zPos)
         {
+            if (!SavedSettingsConfig.OffsetGotoRetrieveFunctions) return;
             float retrieveAbove = GotoRetrieveConfig.RetrieveAboveOffset;
             float retrieveInfront = GotoRetrieveConfig.RetrieveInfrontOffset;
             ushort marioYaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
