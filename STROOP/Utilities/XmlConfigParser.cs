@@ -111,8 +111,8 @@ namespace STROOP.Utilities
             {
                 switch (element.Name.ToString())
                 {
-                    case "YawSigned":
-                        SavedSettingsConfig.YawSigned = bool.Parse(element.Value);
+                    case "DisplayYawAnglesAsUnsigned":
+                        SavedSettingsConfig.DisplayYawAnglesAsUnsigned = bool.Parse(element.Value);
                         break;
                     case "StartSlotIndexsFromOne":
                         SavedSettingsConfig.StartSlotIndexsFromOne = bool.Parse(element.Value);

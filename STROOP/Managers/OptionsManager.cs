@@ -11,6 +11,7 @@ namespace STROOP.Managers
 {
     public class OptionsManager
     {
+        private readonly CheckBox _checkBoxDisplayYawAnglesAsUnsigned;
         private readonly CheckBox _checkBoxStartSlotIndexOne;
         private readonly CheckBox _checkBoxMoveCamWithPu;
         private readonly CheckBox _checkBoxScaleDiagonalPositionControllerButtons;
@@ -24,6 +25,10 @@ namespace STROOP.Managers
         {
             // saved settings
             GroupBox groupBoxOptionsSavedSettings = tabControl.Controls["groupBoxOptionsSavedSettings"] as GroupBox;
+
+            _checkBoxDisplayYawAnglesAsUnsigned = groupBoxOptionsSavedSettings.Controls["checkBoxDisplayYawAnglesAsUnsigned"] as CheckBox;
+            _checkBoxDisplayYawAnglesAsUnsigned.Click += (sender, e) => SavedSettingsConfig.DisplayYawAnglesAsUnsigned = _checkBoxDisplayYawAnglesAsUnsigned.Checked;
+            _checkBoxDisplayYawAnglesAsUnsigned.Checked = SavedSettingsConfig.DisplayYawAnglesAsUnsigned;
 
             _checkBoxStartSlotIndexOne = groupBoxOptionsSavedSettings.Controls["checkBoxStartSlotIndexOne"] as CheckBox;
             _checkBoxStartSlotIndexOne.Click += (sender, e) => SavedSettingsConfig.StartSlotIndexsFromOne = _checkBoxStartSlotIndexOne.Checked;

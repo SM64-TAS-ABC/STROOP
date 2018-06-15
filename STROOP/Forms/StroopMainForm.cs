@@ -66,8 +66,6 @@ namespace STROOP
 
             comboBoxRomVersion.DataSource = Enum.GetValues(typeof(RomVersion));
             comboBoxReadWriteMode.DataSource = Enum.GetValues(typeof(ReadWriteMode));
-            comboBoxYawSigned.DataSource = Enum.GetValues(typeof(SignedEnum));
-            comboBoxYawSigned.SelectedItem = SavedSettingsConfig.YawSigned ? SignedEnum.Signed : SignedEnum.Unsigned;
 
             SetUpContextMenuStrips();
 
@@ -515,11 +513,6 @@ namespace STROOP
 
             // Readonly / Read+Write
             Config.Stream.Readonly = (ReadWriteMode)comboBoxReadWriteMode.SelectedItem == ReadWriteMode.ReadOnly;
-
-            // Yaw Signed
-            SignedEnum signedEnum = (SignedEnum)comboBoxYawSigned.SelectedItem;
-            bool signedBool = signedEnum == SignedEnum.Signed;
-            SavedSettingsConfig.YawSigned = signedBool;
         }
 
         private void _sm64Stream_FpsUpdated(object sender, EventArgs e)

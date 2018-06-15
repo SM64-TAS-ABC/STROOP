@@ -14,14 +14,14 @@ namespace STROOP.Structs.Configurations
     {
         public static bool IsLoaded = false;
 
-        private static bool _yawSigned;
-        public static bool YawSigned
+        private static bool _displayYawAnglesAsUnsigned;
+        public static bool DisplayYawAnglesAsUnsigned
         {
-            get => _yawSigned;
+            get => _displayYawAnglesAsUnsigned;
             set
             {
-                if (_yawSigned == value) return;
-                _yawSigned = value;
+                if (_displayYawAnglesAsUnsigned == value) return;
+                _displayYawAnglesAsUnsigned = value;
                 WatchVariableControlSettingsManager.AddSettings(
                     new WatchVariableControlSettings(
                         changeYawSigned: true, newYawSigned: value));
@@ -209,7 +209,7 @@ namespace STROOP.Structs.Configurations
 
             return new List<XElement>
             {
-                new XElement("YawSigned", _yawSigned),
+                new XElement("DisplayYawAnglesAsUnsigned", _displayYawAnglesAsUnsigned),
                 new XElement("StartSlotIndexsFromOne", _startSlotIndexsFromOne),
                 new XElement("MoveCameraWithPu", _moveCameraWithPu),
                 new XElement("ScaleDiagonalPositionControllerButtons", _scaleDiagonalPositionControllerButtons),
@@ -230,6 +230,7 @@ namespace STROOP.Structs.Configurations
 
         public static void ResetSavedSettings()
         {
+            _displayYawAnglesAsUnsigned = true;
             _startSlotIndexsFromOne = true;
             _moveCameraWithPu = true;
             _scaleDiagonalPositionControllerButtons = true;

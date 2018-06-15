@@ -161,7 +161,6 @@
     <Compile Include="Enums\MapTrackerDisplayType.cs" />
     <Compile Include="Enums\InputDisplayTypeEnum.cs" />
     <Compile Include="Enums\CoinParamsOrder.cs" />
-    <Compile Include="Enums\SignedEnum.cs" />
     <Compile Include="Enums\AddToTabTypeEnum.cs" />
     <Compile Include="Extensions\FormExtensions.cs" />
     <Compile Include="Forms\SelectionForm.cs">

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SavedSettings>
-  <YawSigned>false</YawSigned>
+  <DisplayYawAnglesAsUnsigned>true</DisplayYawAnglesAsUnsigned>
   <StartSlotIndexsFromOne>true</StartSlotIndexsFromOne>
   <MoveCameraWithPu>true</MoveCameraWithPu>
   <ScaleDiagonalPositionControllerButtons>true</ScaleDiagonalPositionControllerButtons>
