@@ -62,6 +62,8 @@ namespace STROOP
             this.buttonShowLeftPane = new System.Windows.Forms.Button();
             this.comboBoxRomVersion = new System.Windows.Forms.ComboBox();
             this.comboBoxReadWriteMode = new System.Windows.Forms.ComboBox();
+            this.buttonMoveTabRight = new System.Windows.Forms.Button();
+            this.buttonMoveTabLeft = new System.Windows.Forms.Button();
             this.splitContainerMain = new STROOP.BetterSplitContainer();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageObject = new System.Windows.Forms.TabPage();
@@ -779,6 +781,7 @@ namespace STROOP
             this.radioButtonPositionControllerRelativeAngleCustom = new System.Windows.Forms.RadioButton();
             this.groupBoxOptionsSavedSettings = new System.Windows.Forms.GroupBox();
             this.buttonOptionsResetSavedSettings = new System.Windows.Forms.Button();
+            this.checkBoxDisplayYawAnglesAsUnsigned = new System.Windows.Forms.CheckBox();
             this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
             this.checkBoxMoveCamWithPu = new System.Windows.Forms.CheckBox();
             this.checkBoxNeutralizeTrianglesWith21 = new System.Windows.Forms.CheckBox();
@@ -1326,9 +1329,7 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.buttonMoveTabRight = new System.Windows.Forms.Button();
-            this.buttonMoveTabLeft = new System.Windows.Forms.Button();
-            this.checkBoxDisplayYawAnglesAsUnsigned = new System.Windows.Forms.CheckBox();
+            this.pictureBoxCog = new System.Windows.Forms.PictureBox();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
@@ -1727,6 +1728,7 @@ namespace STROOP
             this.groupBoxRecording.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -1852,7 +1854,7 @@ namespace STROOP
             this.buttonShowTopPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonShowTopPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowTopPane.BackgroundImage")));
             this.buttonShowTopPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonShowTopPane.Location = new System.Drawing.Point(866, 11);
+            this.buttonShowTopPane.Location = new System.Drawing.Point(844, 11);
             this.buttonShowTopPane.Margin = new System.Windows.Forms.Padding(2);
             this.buttonShowTopPane.Name = "buttonShowTopPane";
             this.buttonShowTopPane.Size = new System.Drawing.Size(21, 21);
@@ -1865,7 +1867,7 @@ namespace STROOP
             this.buttonShowTopBottomPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonShowTopBottomPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowTopBottomPane.BackgroundImage")));
             this.buttonShowTopBottomPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonShowTopBottomPane.Location = new System.Drawing.Point(841, 11);
+            this.buttonShowTopBottomPane.Location = new System.Drawing.Point(819, 11);
             this.buttonShowTopBottomPane.Margin = new System.Windows.Forms.Padding(2);
             this.buttonShowTopBottomPane.Name = "buttonShowTopBottomPane";
             this.buttonShowTopBottomPane.Size = new System.Drawing.Size(21, 21);
@@ -1878,7 +1880,7 @@ namespace STROOP
             this.buttonShowBottomPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonShowBottomPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowBottomPane.BackgroundImage")));
             this.buttonShowBottomPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonShowBottomPane.Location = new System.Drawing.Point(816, 11);
+            this.buttonShowBottomPane.Location = new System.Drawing.Point(794, 11);
             this.buttonShowBottomPane.Margin = new System.Windows.Forms.Padding(2);
             this.buttonShowBottomPane.Name = "buttonShowBottomPane";
             this.buttonShowBottomPane.Size = new System.Drawing.Size(21, 21);
@@ -1891,7 +1893,7 @@ namespace STROOP
             this.buttonShowRightPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonShowRightPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowRightPane.BackgroundImage")));
             this.buttonShowRightPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonShowRightPane.Location = new System.Drawing.Point(791, 11);
+            this.buttonShowRightPane.Location = new System.Drawing.Point(769, 11);
             this.buttonShowRightPane.Margin = new System.Windows.Forms.Padding(2);
             this.buttonShowRightPane.Name = "buttonShowRightPane";
             this.buttonShowRightPane.Size = new System.Drawing.Size(21, 21);
@@ -1904,7 +1906,7 @@ namespace STROOP
             this.buttonShowLeftRightPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonShowLeftRightPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowLeftRightPane.BackgroundImage")));
             this.buttonShowLeftRightPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonShowLeftRightPane.Location = new System.Drawing.Point(766, 11);
+            this.buttonShowLeftRightPane.Location = new System.Drawing.Point(744, 11);
             this.buttonShowLeftRightPane.Margin = new System.Windows.Forms.Padding(2);
             this.buttonShowLeftRightPane.Name = "buttonShowLeftRightPane";
             this.buttonShowLeftRightPane.Size = new System.Drawing.Size(21, 21);
@@ -1917,7 +1919,7 @@ namespace STROOP
             this.buttonShowLeftPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonShowLeftPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowLeftPane.BackgroundImage")));
             this.buttonShowLeftPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonShowLeftPane.Location = new System.Drawing.Point(741, 11);
+            this.buttonShowLeftPane.Location = new System.Drawing.Point(719, 11);
             this.buttonShowLeftPane.Margin = new System.Windows.Forms.Padding(2);
             this.buttonShowLeftPane.Name = "buttonShowLeftPane";
             this.buttonShowLeftPane.Size = new System.Drawing.Size(21, 21);
@@ -1929,7 +1931,7 @@ namespace STROOP
             // 
             this.comboBoxRomVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxRomVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxRomVersion.Location = new System.Drawing.Point(616, 11);
+            this.comboBoxRomVersion.Location = new System.Drawing.Point(594, 11);
             this.comboBoxRomVersion.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxRomVersion.Name = "comboBoxRomVersion";
             this.comboBoxRomVersion.Size = new System.Drawing.Size(42, 21);
@@ -1939,11 +1941,37 @@ namespace STROOP
             // 
             this.comboBoxReadWriteMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxReadWriteMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxReadWriteMode.Location = new System.Drawing.Point(662, 11);
+            this.comboBoxReadWriteMode.Location = new System.Drawing.Point(640, 11);
             this.comboBoxReadWriteMode.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxReadWriteMode.Name = "comboBoxReadWriteMode";
             this.comboBoxReadWriteMode.Size = new System.Drawing.Size(75, 21);
             this.comboBoxReadWriteMode.TabIndex = 22;
+            // 
+            // buttonMoveTabRight
+            // 
+            this.buttonMoveTabRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMoveTabRight.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonMoveTabRight.BackgroundImage")));
+            this.buttonMoveTabRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonMoveTabRight.Location = new System.Drawing.Point(569, 11);
+            this.buttonMoveTabRight.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonMoveTabRight.Name = "buttonMoveTabRight";
+            this.buttonMoveTabRight.Size = new System.Drawing.Size(21, 21);
+            this.buttonMoveTabRight.TabIndex = 20;
+            this.buttonMoveTabRight.UseVisualStyleBackColor = true;
+            this.buttonMoveTabRight.Click += new System.EventHandler(this.buttonMoveTabRight_Click);
+            // 
+            // buttonMoveTabLeft
+            // 
+            this.buttonMoveTabLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMoveTabLeft.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonMoveTabLeft.BackgroundImage")));
+            this.buttonMoveTabLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonMoveTabLeft.Location = new System.Drawing.Point(544, 11);
+            this.buttonMoveTabLeft.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonMoveTabLeft.Name = "buttonMoveTabLeft";
+            this.buttonMoveTabLeft.Size = new System.Drawing.Size(21, 21);
+            this.buttonMoveTabLeft.TabIndex = 20;
+            this.buttonMoveTabLeft.UseVisualStyleBackColor = true;
+            this.buttonMoveTabLeft.Click += new System.EventHandler(this.buttonMoveTabLeft_Click);
             // 
             // splitContainerMain
             // 
@@ -5052,7 +5080,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 368F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 374F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8738,7 +8766,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(466, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(484, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -10823,6 +10851,19 @@ namespace STROOP
             this.buttonOptionsResetSavedSettings.Text = "Reset Saved Settings";
             this.buttonOptionsResetSavedSettings.UseVisualStyleBackColor = true;
             // 
+            // checkBoxDisplayYawAnglesAsUnsigned
+            // 
+            this.checkBoxDisplayYawAnglesAsUnsigned.AutoSize = true;
+            this.checkBoxDisplayYawAnglesAsUnsigned.Checked = true;
+            this.checkBoxDisplayYawAnglesAsUnsigned.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxDisplayYawAnglesAsUnsigned.Location = new System.Drawing.Point(12, 19);
+            this.checkBoxDisplayYawAnglesAsUnsigned.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxDisplayYawAnglesAsUnsigned.Name = "checkBoxDisplayYawAnglesAsUnsigned";
+            this.checkBoxDisplayYawAnglesAsUnsigned.Size = new System.Drawing.Size(181, 17);
+            this.checkBoxDisplayYawAnglesAsUnsigned.TabIndex = 0;
+            this.checkBoxDisplayYawAnglesAsUnsigned.Text = "Display Yaw Angles as Unsigned";
+            this.checkBoxDisplayYawAnglesAsUnsigned.UseVisualStyleBackColor = true;
+            // 
             // checkBoxStartSlotIndexOne
             // 
             this.checkBoxStartSlotIndexOne.AutoSize = true;
@@ -11308,7 +11349,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 749;
+            this.splitContainerMemory.SplitterDistance = 767;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11332,7 +11373,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(633, 429);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(651, 429);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -11435,7 +11476,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(157, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(139, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -12589,7 +12630,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(374, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(272, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -12621,7 +12662,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(368, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(266, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -12677,7 +12718,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(368, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(266, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -17005,44 +17046,16 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // buttonMoveTabRight
+            // pictureBoxCog
             // 
-            this.buttonMoveTabRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMoveTabRight.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonMoveTabRight.BackgroundImage")));
-            this.buttonMoveTabRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonMoveTabRight.Location = new System.Drawing.Point(591, 11);
-            this.buttonMoveTabRight.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonMoveTabRight.Name = "buttonMoveTabRight";
-            this.buttonMoveTabRight.Size = new System.Drawing.Size(21, 21);
-            this.buttonMoveTabRight.TabIndex = 20;
-            this.buttonMoveTabRight.UseVisualStyleBackColor = true;
-            this.buttonMoveTabRight.Click += new System.EventHandler(this.buttonMoveTabRight_Click);
-            // 
-            // buttonMoveTabLeft
-            // 
-            this.buttonMoveTabLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMoveTabLeft.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonMoveTabLeft.BackgroundImage")));
-            this.buttonMoveTabLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonMoveTabLeft.Location = new System.Drawing.Point(566, 11);
-            this.buttonMoveTabLeft.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonMoveTabLeft.Name = "buttonMoveTabLeft";
-            this.buttonMoveTabLeft.Size = new System.Drawing.Size(21, 21);
-            this.buttonMoveTabLeft.TabIndex = 20;
-            this.buttonMoveTabLeft.UseVisualStyleBackColor = true;
-            this.buttonMoveTabLeft.Click += new System.EventHandler(this.buttonMoveTabLeft_Click);
-            // 
-            // checkBoxDisplayYawAnglesAsUnsigned
-            // 
-            this.checkBoxDisplayYawAnglesAsUnsigned.AutoSize = true;
-            this.checkBoxDisplayYawAnglesAsUnsigned.Checked = true;
-            this.checkBoxDisplayYawAnglesAsUnsigned.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDisplayYawAnglesAsUnsigned.Location = new System.Drawing.Point(12, 19);
-            this.checkBoxDisplayYawAnglesAsUnsigned.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxDisplayYawAnglesAsUnsigned.Name = "checkBoxDisplayYawAnglesAsUnsigned";
-            this.checkBoxDisplayYawAnglesAsUnsigned.Size = new System.Drawing.Size(181, 17);
-            this.checkBoxDisplayYawAnglesAsUnsigned.TabIndex = 0;
-            this.checkBoxDisplayYawAnglesAsUnsigned.Text = "Display Yaw Angles as Unsigned";
-            this.checkBoxDisplayYawAnglesAsUnsigned.UseVisualStyleBackColor = true;
+            this.pictureBoxCog.BackgroundImage = global::STROOP.Properties.Resources.cog;
+            this.pictureBoxCog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxCog.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxCog.Location = new System.Drawing.Point(868, 11);
+            this.pictureBoxCog.Name = "pictureBoxCog";
+            this.pictureBoxCog.Size = new System.Drawing.Size(20, 20);
+            this.pictureBoxCog.TabIndex = 23;
+            this.pictureBoxCog.TabStop = false;
             // 
             // StroopMainForm
             // 
@@ -17065,6 +17078,7 @@ namespace STROOP
             this.Controls.Add(this.splitContainerMain);
             this.Controls.Add(this.labelProcessSelect);
             this.Controls.Add(this.labelFpsCounter);
+            this.Controls.Add(this.pictureBoxCog);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -17558,6 +17572,7 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -18850,6 +18865,7 @@ namespace STROOP
         private Button buttonMoveTabRight;
         private Button buttonMoveTabLeft;
         private CheckBox checkBoxDisplayYawAnglesAsUnsigned;
+        private PictureBox pictureBoxCog;
     }
 }
 
