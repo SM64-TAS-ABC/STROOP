@@ -2,6 +2,7 @@
 <SavedSettings>
   <DisplayYawAnglesAsUnsigned>true</DisplayYawAnglesAsUnsigned>
   <StartSlotIndexsFromOne>true</StartSlotIndexsFromOne>
+  <OffsetGotoRetrieveFunctions>true</OffsetGotoRetrieveFunctions>
   <MoveCameraWithPu>true</MoveCameraWithPu>
   <ScaleDiagonalPositionControllerButtons>true</ScaleDiagonalPositionControllerButtons>
   <ExcludeDustForClosestObject>true</ExcludeDustForClosestObject>

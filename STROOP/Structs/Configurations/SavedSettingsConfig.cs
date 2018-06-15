@@ -41,6 +41,18 @@ namespace STROOP.Structs.Configurations
             }
         }
 
+        private static bool _offsetGotoRetrieveFunctions;
+        public static bool OffsetGotoRetrieveFunctions
+        {
+            get => _offsetGotoRetrieveFunctions;
+            set
+            {
+                if (_offsetGotoRetrieveFunctions == value) return;
+                _offsetGotoRetrieveFunctions = value;
+                if (IsLoaded) Save();
+            }
+        }
+
         private static bool _moveCameraWithPu;
         public static bool MoveCameraWithPu
         {
@@ -211,6 +223,7 @@ namespace STROOP.Structs.Configurations
             {
                 new XElement("DisplayYawAnglesAsUnsigned", _displayYawAnglesAsUnsigned),
                 new XElement("StartSlotIndexsFromOne", _startSlotIndexsFromOne),
+                new XElement("OffsetGotoRetrieveFunctions", _offsetGotoRetrieveFunctions),
                 new XElement("MoveCameraWithPu", _moveCameraWithPu),
                 new XElement("ScaleDiagonalPositionControllerButtons", _scaleDiagonalPositionControllerButtons),
                 new XElement("ExcludeDustForClosestObject", _excludeDustForClosestObject),
@@ -232,6 +245,7 @@ namespace STROOP.Structs.Configurations
         {
             _displayYawAnglesAsUnsigned = true;
             _startSlotIndexsFromOne = true;
+            _offsetGotoRetrieveFunctions = true;
             _moveCameraWithPu = true;
             _scaleDiagonalPositionControllerButtons = true;
             _excludeDustForClosestObject = true;

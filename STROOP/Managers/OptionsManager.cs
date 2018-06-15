@@ -24,6 +24,7 @@ namespace STROOP.Managers
             {
                 "Display Yaw Angles as Unsigned",
                 "Start Slot Index From 1",
+                "Offset Goto/Retrieve Functions",
                 "PU Controller Moves Camera",
                 "Scale Diagonal Position Controller Buttons",
                 "Exclude Dust for Closest Object",
@@ -37,6 +38,7 @@ namespace STROOP.Managers
             {
                 () => SavedSettingsConfig.DisplayYawAnglesAsUnsigned,
                 () => SavedSettingsConfig.StartSlotIndexsFromOne,
+                () => SavedSettingsConfig.OffsetGotoRetrieveFunctions,
                 () => SavedSettingsConfig.MoveCameraWithPu,
                 () => SavedSettingsConfig.ScaleDiagonalPositionControllerButtons,
                 () => SavedSettingsConfig.ExcludeDustForClosestObject,
@@ -50,6 +52,7 @@ namespace STROOP.Managers
             {
                 (bool value) => SavedSettingsConfig.DisplayYawAnglesAsUnsigned = value,
                 (bool value) => SavedSettingsConfig.StartSlotIndexsFromOne = value,
+                (bool value) => SavedSettingsConfig.OffsetGotoRetrieveFunctions = value,
                 (bool value) => SavedSettingsConfig.MoveCameraWithPu = value,
                 (bool value) => SavedSettingsConfig.ScaleDiagonalPositionControllerButtons = value,
                 (bool value) => SavedSettingsConfig.ExcludeDustForClosestObject = value,

@@ -117,6 +117,9 @@ namespace STROOP.Utilities
                     case "StartSlotIndexsFromOne":
                         SavedSettingsConfig.StartSlotIndexsFromOne = bool.Parse(element.Value);
                         break;
+                    case "OffsetGotoRetrieveFunctions":
+                        SavedSettingsConfig.OffsetGotoRetrieveFunctions = bool.Parse(element.Value);
+                        break;
                     case "MoveCameraWithPu":
                         SavedSettingsConfig.MoveCameraWithPu = bool.Parse(element.Value);
                         break;
