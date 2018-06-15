@@ -76,8 +76,9 @@
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
-    <NoWin32Manifest>true</NoWin32Manifest>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ICSharpCode.AvalonEdit, Version=5.0.3.0, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
@@ -507,6 +508,7 @@
     <Compile Include="Forms\VariableViewerForm.Designer.cs">
       <DependentUpon>VariableViewerForm.cs</DependentUpon>
     </Compile>
+    <None Include="app.manifest" />
     <None Include="Resources\lock_blue.png" />
     <None Include="Controls\Map\MapTab.cd" />
     <None Include="Resources\cog.png" />
