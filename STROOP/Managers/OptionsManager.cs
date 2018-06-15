@@ -86,9 +86,16 @@ namespace STROOP.Managers
                 };
                 item.Checked = getter();
             }
+
+            ToolStripMenuItem resetSavedSettingsItem = new ToolStripMenuItem(buttonOptionsResetSavedSettings.Text);
+            resetSavedSettingsItem.Click += (sender, e) => SavedSettingsConfig.ResetSavedSettings();
+
             cogControl.ContextMenuStrip = new ContextMenuStrip();
-            _savedSettingsItemList.ForEach(item => cogControl.ContextMenuStrip.Items.Add(item));
             cogControl.Click += (sender, e) => cogControl.ContextMenuStrip.Show(Cursor.Position);
+
+            _savedSettingsItemList.ForEach(item => cogControl.ContextMenuStrip.Items.Add(item));
+            cogControl.ContextMenuStrip.Items.Add(new ToolStripSeparator());
+            cogControl.ContextMenuStrip.Items.Add(resetSavedSettingsItem);
 
             // goto/retrieve offsets
             GroupBox groupBoxGotoRetrieveOffsets = tabControl.Controls["groupBoxGotoRetrieveOffsets"] as GroupBox;
