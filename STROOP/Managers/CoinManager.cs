@@ -24,6 +24,7 @@ namespace STROOP.Managers
         private readonly BetterTextbox _textBoxCoinVSpeedScale;
         private readonly BetterTextbox _textBoxCoinVSpeedOffset;
         private readonly BetterTextbox _textBoxCoinParamOrder;
+        private readonly BetterTextbox _textBoxCoinNumCoins;
 
         private readonly Label _labelCoinHSpeedRange;
         private readonly Label _labelCoinVSpeedRange;
@@ -35,8 +36,11 @@ namespace STROOP.Managers
         private readonly BetterTextbox _textBoxCoinFilterVSpeedMax;
         private readonly BetterTextbox _textBoxCoinFilterAngleMin;
         private readonly BetterTextbox _textBoxCoinFilterAngleMax;
+        private readonly BetterTextbox _textBoxCoinFilterRequiredNumOfQualifiedCoins;
 
-        private readonly BetterTextbox _textBoxCoinStartingRngIndex;
+        private readonly CheckBox _checkBoxCoinCustomizatonDisplayNonQualifiedCoinsOfAQualifiedCoinGroup;
+        private readonly BetterTextbox _textBoxCoinCustomizatonNumDecimalDigits;
+        private readonly BetterTextbox _textBoxCoinCustomizatonStartingRngIndex;
 
         private readonly Button _buttonCoinClear;
         private readonly Button _buttonCoinCalculate;
@@ -55,6 +59,7 @@ namespace STROOP.Managers
             _textBoxCoinVSpeedScale = splitContainerCoin.Panel1.Controls["textBoxCoinVSpeedScale"] as BetterTextbox;
             _textBoxCoinVSpeedOffset = splitContainerCoin.Panel1.Controls["textBoxCoinVSpeedOffset"] as BetterTextbox;
             _textBoxCoinParamOrder = splitContainerCoin.Panel1.Controls["textBoxCoinParamOrder"] as BetterTextbox;
+            _textBoxCoinNumCoins = splitContainerCoin.Panel1.Controls["textBoxCoinNumCoins"] as BetterTextbox;
 
             _labelCoinHSpeedRange = splitContainerCoin.Panel1.Controls["labelCoinHSpeedRange"] as Label;
             _labelCoinVSpeedRange = splitContainerCoin.Panel1.Controls["labelCoinVSpeedRange"] as Label;
@@ -67,8 +72,18 @@ namespace STROOP.Managers
             _textBoxCoinFilterVSpeedMax = groupBoxCoinFilter.Controls["textBoxCoinFilterVSpeedMax"] as BetterTextbox;
             _textBoxCoinFilterAngleMin = groupBoxCoinFilter.Controls["textBoxCoinFilterAngleMin"] as BetterTextbox;
             _textBoxCoinFilterAngleMax = groupBoxCoinFilter.Controls["textBoxCoinFilterAngleMax"] as BetterTextbox;
+            _textBoxCoinFilterRequiredNumOfQualifiedCoins =
+                groupBoxCoinFilter.Controls["textBoxCoinFilterRequiredNumOfQualifiedCoins"] as BetterTextbox;
 
-            _textBoxCoinStartingRngIndex = splitContainerCoin.Panel1.Controls["textBoxCoinStartingRngIndex"] as BetterTextbox;
+            GroupBox groupBoxCoinCustomization =
+                splitContainerCoin.Panel1.Controls["groupBoxCoinCustomization"] as GroupBox;
+            _checkBoxCoinCustomizatonDisplayNonQualifiedCoinsOfAQualifiedCoinGroup =
+                groupBoxCoinCustomization.Controls[
+                    "checkBoxCoinCustomizatonDisplayNonQualifiedCoinsOfAQualifiedCoinGroup"] as CheckBox;
+            _textBoxCoinCustomizatonNumDecimalDigits =
+                groupBoxCoinCustomization.Controls["textBoxCoinCustomizatonNumDecimalDigits"] as BetterTextbox;
+            _textBoxCoinCustomizatonStartingRngIndex =
+                groupBoxCoinCustomization.Controls["textBoxCoinCustomizatonStartingRngIndex"] as BetterTextbox;
 
             _buttonCoinClear = splitContainerCoin.Panel1.Controls["buttonCoinClear"] as Button;
             _buttonCoinCalculate = splitContainerCoin.Panel1.Controls["buttonCoinCalculate"] as Button;
@@ -136,7 +151,8 @@ namespace STROOP.Managers
                 coinParamOrder: coinParamOrder,
                 name: "Dummy");
 
-            int? startingRngIndexNullable = ParsingUtilities.ParseIntNullable(_textBoxCoinStartingRngIndex.Text);
+            int? startingRngIndexNullable = ParsingUtilities.ParseIntNullable(
+                _textBoxCoinCustomizatonStartingRngIndex.Text);
             int startingRngIndex = startingRngIndexNullable ?? RngIndexer.GetRngIndex();
 
             List<int> rngIndexes = Enumerable.Range(0, 65114).ToList();
