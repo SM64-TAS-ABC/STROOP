@@ -20,11 +20,11 @@ namespace STROOP.Structs.Configurations
             get => _displayYawAnglesAsUnsigned;
             set
             {
-                if (_displayYawAnglesAsUnsigned == value) return;
+                if (_displayYawAnglesAsUnsigned == value && IsLoaded) return;
                 _displayYawAnglesAsUnsigned = value;
                 WatchVariableControlSettingsManager.AddSettings(
                     new WatchVariableControlSettings(
-                        changeYawSigned: true, newYawSigned: value));
+                        changeYawSigned: true, newYawSigned: !value));
                 if (IsLoaded) Save();
             }
         }
