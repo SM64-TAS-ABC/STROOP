@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using System.Windows.Forms;
+using STROOP.Utilities;
 
 namespace STROOP.Managers
 {
     public class OptionsManager
     {
-        private readonly List<CheckBox> _savedSettingsCheckboxList;
         private readonly List<Func<bool>> _savedSettingsGetterList;
         private readonly List<Action<bool>> _savedSettingsSetterList;
         private readonly List<string> _savedSettingsTextList;
-
+        private readonly List<ToolStripMenuItem> _savedSettingsItemList;
         private readonly CheckedListBox _savedSettingsCheckedListBox;
 
         public OptionsManager(TabPage tabControl, Control cogControl)
@@ -71,6 +71,23 @@ namespace STROOP.Managers
 
             Button buttonOptionsResetSavedSettings = tabControl.Controls["buttonOptionsResetSavedSettings"] as Button;
             buttonOptionsResetSavedSettings.Click += (sender, e) => SavedSettingsConfig.ResetSavedSettings();
+
+            _savedSettingsItemList = _savedSettingsTextList.ConvertAll(text => new ToolStripMenuItem(text));
+            for (int i = 0; i < _savedSettingsItemList.Count; i++)
+            {
+                ToolStripMenuItem item = _savedSettingsItemList[i];
+                Action<bool> setter = _savedSettingsSetterList[i];
+                Func<bool> getter = _savedSettingsGetterList[i];
+                item.Click += (sender, e) =>
+                {
+                    bool newValue = !getter();
+                    setter(newValue);
+                    item.Checked = newValue;
+                };
+                item.Checked = getter();
+            }
+            cogControl.ContextMenuStrip = new ContextMenuStrip();
+            _savedSettingsItemList.ForEach(item => cogControl.ContextMenuStrip.Items.Add(item));
 
             // goto/retrieve offsets
             GroupBox groupBoxGotoRetrieveOffsets = tabControl.Controls["groupBoxGotoRetrieveOffsets"] as GroupBox;
@@ -197,7 +214,9 @@ namespace STROOP.Managers
         {
             for (int i = 0; i < _savedSettingsCheckedListBox.Items.Count; i++)
             {
-                _savedSettingsCheckedListBox.SetItemChecked(i, _savedSettingsGetterList[i]());
+                bool value = _savedSettingsGetterList[i]();
+                _savedSettingsCheckedListBox.SetItemChecked(i, value);
+                _savedSettingsItemList[i].Checked = value;
             }
         }
     }
