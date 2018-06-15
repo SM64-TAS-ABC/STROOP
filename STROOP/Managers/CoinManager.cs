@@ -147,61 +147,24 @@ namespace STROOP.Managers
                 ushort rngValue = RngIndexer.GetRngValue(rngIndex);
                 int rngToGo = MoreMath.NonNegativeModulus(rngIndex - startingRngIndex, 65114);
 
-                // coin trajectory values
+                // coin trajectory
                 CoinTrajectory coinTrajectory = coinObject.CalculateCoinTrajectory(rngIndex);
-                double hSpeed = coinTrajectory.HSpeed;
-                double vSpeed = coinTrajectory.VSpeed;
-                double angle = coinTrajectory.Angle;
 
                 // filter the values
-                double? hSpeedMinNullable = ParsingUtilities.ParseDoubleNullable(_textBoxCoinFilterHSpeedMin.Text);
-                if (hSpeedMinNullable.HasValue)
-                {
-                    double hSpeedMin = hSpeedMinNullable.Value;
-                    if (hSpeed < hSpeedMin) continue;
-                }
-
-                double? hSpeedMaxNullable = ParsingUtilities.ParseDoubleNullable(_textBoxCoinFilterHSpeedMax.Text);
-                if (hSpeedMaxNullable.HasValue)
-                {
-                    double hSpeedMax = hSpeedMaxNullable.Value;
-                    if (hSpeed > hSpeedMax) continue;
-                }
-
-                double? vSpeedMinNullable = ParsingUtilities.ParseDoubleNullable(_textBoxCoinFilterVSpeedMin.Text);
-                if (vSpeedMinNullable.HasValue)
-                {
-                    double vSpeedMin = vSpeedMinNullable.Value;
-                    if (vSpeed < vSpeedMin) continue;
-                }
-
-                double? vSpeedMaxNullable = ParsingUtilities.ParseDoubleNullable(_textBoxCoinFilterVSpeedMax.Text);
-                if (vSpeedMaxNullable.HasValue)
-                {
-                    double vSpeedMax = vSpeedMaxNullable.Value;
-                    if (vSpeed > vSpeedMax) continue;
-                }
-
-                double? angleMinNullable = ParsingUtilities.ParseDoubleNullable(_textBoxCoinFilterAngleMin.Text);
-                if (angleMinNullable.HasValue)
-                {
-                    double angleMin = angleMinNullable.Value;
-                    double diff = MoreMath.GetAngleDifference(angleMin, angle);
-                    if (diff < 0) continue;
-                }
-
-                double? angleMaxNullable = ParsingUtilities.ParseDoubleNullable(_textBoxCoinFilterAngleMax.Text);
-                if (angleMaxNullable.HasValue)
-                {
-                    double angleMax = angleMaxNullable.Value;
-                    double diff = MoreMath.GetAngleDifference(angleMax, angle);
-                    if (diff > 0) continue;
-                }
+                CoinTrajectoryFilter filter = new CoinTrajectoryFilter(
+                    ParsingUtilities.ParseDoubleNullable(_textBoxCoinFilterHSpeedMin.Text),
+                    ParsingUtilities.ParseDoubleNullable(_textBoxCoinFilterHSpeedMax.Text),
+                    ParsingUtilities.ParseDoubleNullable(_textBoxCoinFilterVSpeedMin.Text),
+                    ParsingUtilities.ParseDoubleNullable(_textBoxCoinFilterVSpeedMax.Text),
+                    ParsingUtilities.ParseDoubleNullable(_textBoxCoinFilterAngleMin.Text),
+                    ParsingUtilities.ParseDoubleNullable(_textBoxCoinFilterAngleMax.Text),
+                    1);
+                if (!filter.Qualifies(coinTrajectory)) continue;
 
                 // add a new row to the table
-                double hSpeedRounded = Math.Round(hSpeed, 3);
-                double vSpeedRounded = Math.Round(vSpeed, 3);
-                _dataGridViewCoin.Rows.Add(rngIndex, rngValue, rngToGo, hSpeedRounded, vSpeedRounded, angle);
+                double hSpeedRounded = Math.Round(coinTrajectory.HSpeed, 3);
+                double vSpeedRounded = Math.Round(coinTrajectory.VSpeed, 3);
+                _dataGridViewCoin.Rows.Add(rngIndex, rngValue, rngToGo, hSpeedRounded, vSpeedRounded, coinTrajectory.Angle);
             }
         }
 
