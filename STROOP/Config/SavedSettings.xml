@@ -13,6 +13,7 @@
   <TabOrder>
     <Tab>Object</Tab>
     <Tab>Mario</Tab>
+    <Tab>Coin</Tab>
     <Tab>HUD</Tab>
     <Tab>Camera</Tab>
     <Tab>Triangles</Tab>
@@ -37,7 +38,6 @@
     <Tab>Cam Hack</Tab>
     <Tab>Q Frames</Tab>
     <Tab>Var Hack</Tab>
-    <Tab>Coin</Tab>
     <Tab>Disassembly</Tab>
     <Tab>Decompiler</Tab>
     <Tab>Scripts</Tab>
