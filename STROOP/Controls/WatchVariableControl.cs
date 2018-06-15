@@ -478,12 +478,6 @@ namespace STROOP.Controls
 
         public void UpdateControl()
         {
-            if (!EditMode)
-            {
-                if (_valueTextBox.Visible) _valueTextBox.Text = _watchVarWrapper.GetValue(true, true, FixedAddressList).ToString();
-                if (_valueCheckBox.Visible) _valueCheckBox.CheckState = _watchVarWrapper.GetCheckStateValue(FixedAddressList);
-            }
-
             _watchVarWrapper.UpdateItemCheckStates();
 
             UpdateSettings();
@@ -491,6 +485,12 @@ namespace STROOP.Controls
             UpdateSize();
             UpdateColor();
             UpdatePictureBoxes();
+
+            if (!EditMode)
+            {
+                if (_valueTextBox.Visible) _valueTextBox.Text = _watchVarWrapper.GetValue(true, true, FixedAddressList).ToString();
+                if (_valueCheckBox.Visible) _valueCheckBox.CheckState = _watchVarWrapper.GetCheckStateValue(FixedAddressList);
+            }
         }
 
         private void UpdateSettings()
