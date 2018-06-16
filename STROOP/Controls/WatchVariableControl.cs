@@ -274,7 +274,6 @@ namespace STROOP.Controls
         {
             this.Focus();
 
-            bool isCtrlShiftKeyHeld = ModifierKeys == (Keys.Control | Keys.Shift);
             bool isCtrlKeyHeld = ModifierKeys == Keys.Control;
             bool isShiftKeyHeld = ModifierKeys == Keys.Shift;
             bool isAltKeyHeld = ModifierKeys == Keys.Alt;
@@ -296,12 +295,6 @@ namespace STROOP.Controls
             bool isMinusHeld = Keyboard.IsKeyDown(Key.OemMinus);
             bool isPlusHeld = Keyboard.IsKeyDown(Key.OemPlus);
             bool isNumberHeld = KeyboardUtilities.IsCurrentlyInputtedNumber();
-
-            if (isCtrlShiftKeyHeld)
-            {
-                NotifyPanelOfMultiAddToCustomTab();
-                return;
-            }
 
             if (isShiftKeyHeld && isNumberHeld)
             {
@@ -741,11 +734,6 @@ namespace STROOP.Controls
         public void NotifyPanelOfReodering()
         {
             _watchVariablePanel.NotifyOfReordering(this);
-        }
-
-        public void NotifyPanelOfMultiAddToCustomTab()
-        {
-            _watchVariablePanel.NotifyOfMultiAddToCustomTab(this);
         }
 
         public void ToggleFixedAddress()
