@@ -51,9 +51,8 @@ namespace STROOP.Controls
         public static readonly Color REORDER_START_COLOR = Color.DarkGreen;
         public static readonly Color REORDER_END_COLOR = Color.LightGreen;
         public static readonly Color REORDER_RESET_COLOR = Color.Black;
-        public static readonly Color MASS_ADD_TO_CUSTOM_TAB_START_COLOR = Color.Pink;
-        public static readonly Color MASS_ADD_TO_CUSTOM_TAB_RESET_COLOR = Color.Black;
         public static readonly Color ADD_TO_VAR_HACK_TAB_COLOR = Color.SandyBrown;
+        public static readonly Color SELECTED_COLOR = Color.FromArgb(51, 153, 255);
         private static readonly int FLASH_DURATION_MS = 1000;
 
         private Color _baseColor;
@@ -135,6 +134,8 @@ namespace STROOP.Controls
             }
         }
 
+        public bool IsSelected;
+
         public List<uint> FixedAddressList;
 
         private int _settingsLevel = 0;
@@ -195,6 +196,7 @@ namespace STROOP.Controls
             GroupList = groupList;
             _editMode = false;
             _renameMode = false;
+            IsSelected = false;
             FixedAddressList = fixedAddresses;
 
             // Initialize color fields
@@ -226,6 +228,9 @@ namespace STROOP.Controls
             // Add functions
             _namePanel.Click += (sender, e) => OnNameTextBoxClick();
             _nameTextBox.Click += (sender, e) => OnNameTextBoxClick();
+            _namePanel.DoubleClick += (sender, e) => OnNameTextBoxDoubleClick();
+            _nameTextBox.DoubleClick += (sender, e) => OnNameTextBoxDoubleClick();
+
             _nameTextBox.Leave += (sender, e) => { RenameMode = false; };
             _nameTextBox.KeyDown += (sender, e) => OnNameTextValueKeyDown(e);
             _valueTextBox.DoubleClick += (sender, e) => { EditMode = true; };
@@ -436,9 +441,15 @@ namespace STROOP.Controls
 
             // default
             {
-                _watchVarWrapper.ShowVarInfo();
+                IsSelected = !IsSelected;
                 return;
             }
+        }
+
+        private void OnNameTextBoxDoubleClick()
+        {
+            this.Focus();
+            _watchVarWrapper.ShowVarInfo();
         }
 
         private void OnNameTextValueKeyDown(System.Windows.Forms.KeyEventArgs e)
@@ -570,6 +581,7 @@ namespace STROOP.Controls
 
         private void UpdateColor()
         {
+            Color selectedOrBaseColor = IsSelected ? SELECTED_COLOR : _baseColor;
             if (_isFlashing)
             {
                 DateTime currentTime = DateTime.Now;
@@ -577,17 +589,25 @@ namespace STROOP.Controls
                 if (timeSinceFlashStart < FLASH_DURATION_MS)
                 {
                     _currentColor = ColorUtilities.InterpolateColor(
-                        _flashColor, _baseColor, timeSinceFlashStart / FLASH_DURATION_MS);
+                        _flashColor, selectedOrBaseColor, timeSinceFlashStart / FLASH_DURATION_MS);
                 }
                 else
                 {
-                    _currentColor = _baseColor;
+                    _currentColor = selectedOrBaseColor;
                     _isFlashing = false;
                 }
+            }
+            else
+            {
+                _currentColor = selectedOrBaseColor;
             }
             _tableLayoutPanel.BackColor = _currentColor;
             if (!_editMode) _valueTextBox.BackColor = _currentColor;
             if (!_renameMode) _nameTextBox.BackColor = _currentColor;
+
+            Color textColor = IsSelected ? Color.White : Color.Black;
+            _valueTextBox.ForeColor = textColor;
+            _nameTextBox.ForeColor = textColor;
         }
 
         public void FlashColor(Color color)
