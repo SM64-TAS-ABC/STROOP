@@ -93,7 +93,7 @@ namespace STROOP.Managers
             ToolStripMenuItem resetSavedSettingsItem = new ToolStripMenuItem(buttonOptionsResetSavedSettings.Text);
             resetSavedSettingsItem.Click += (sender, e) => SavedSettingsConfig.ResetSavedSettings();
 
-            ToolStripMenuItem goToOptionsTabItem = new ToolStripMenuItem("Go To Options Tab");
+            ToolStripMenuItem goToOptionsTabItem = new ToolStripMenuItem("Go to Options Tab");
             goToOptionsTabItem.Click += (sender, e) =>
                 Config.TabControlMain.SelectedTab = Config.TabControlMain.TabPages["tabPageOptions"];
 
