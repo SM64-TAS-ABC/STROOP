@@ -27,6 +27,8 @@ namespace STROOP.Controls
 
         private WatchVariableControl _reorderingWatchVarControl;
 
+        public ContextMenuStrip SelectedContextMenuStrip;
+
         public WatchVariableFlowLayoutPanel()
         {
             _objectLock = new Object();
@@ -189,6 +191,42 @@ namespace STROOP.Controls
             ContextMenuStrip.Items.Add(setAllAngleUnitsItem);
             ContextMenuStrip.Items.Add(setAllAngleHexItem);
             ContextMenuStrip.Items.Add(filterVariablesItem);
+        }
+
+        private void AddItemsToSelectedContextMenuStrip()
+        {
+            SelectedContextMenuStrip = new ContextMenuStrip();
+
+            ToolStripMenuItem itemHighlight = new ToolStripMenuItem("Highlight...");
+            ToolStripMenuItem itemLock = new ToolStripMenuItem("Lock...");
+            ToolStripMenuItem itemCopy = new ToolStripMenuItem("Copy");
+            ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
+
+            ToolStripMenuItem itemRoundTo = new ToolStripMenuItem("Round to...");
+            ToolStripMenuItem itemDisplayAsHex = new ToolStripMenuItem("Display as Hex...");
+
+            ToolStripMenuItem itemAngleSigned = new ToolStripMenuItem("Angle: Signed...");
+            ToolStripMenuItem itemAngleUnits = new ToolStripMenuItem("Angle: Units...");
+            ToolStripMenuItem itemAngleTruncateToMultipleOf16 = new ToolStripMenuItem("Angle: Truncate to Multiple of 16...");
+            ToolStripMenuItem itemConstrainToOneRevolution = new ToolStripMenuItem("Angle: Constrain to One Revolution...");
+
+            ToolStripMenuItem itemDelete = new ToolStripMenuItem("Delete");
+            ToolStripMenuItem itemOpenController = new ToolStripMenuItem("Open Controller");
+            ToolStripMenuItem itemAddToCustomTab = new ToolStripMenuItem("Add to Custom Tab");
+
+            SelectedContextMenuStrip.Items.Add(itemHighlight);
+            SelectedContextMenuStrip.Items.Add(itemLock);
+            SelectedContextMenuStrip.Items.Add(itemCopy);
+            SelectedContextMenuStrip.Items.Add(itemPaste);
+            SelectedContextMenuStrip.Items.Add(itemRoundTo);
+            SelectedContextMenuStrip.Items.Add(itemDisplayAsHex);
+            SelectedContextMenuStrip.Items.Add(itemAngleSigned);
+            SelectedContextMenuStrip.Items.Add(itemAngleUnits);
+            SelectedContextMenuStrip.Items.Add(itemAngleTruncateToMultipleOf16);
+            SelectedContextMenuStrip.Items.Add(itemConstrainToOneRevolution);
+            SelectedContextMenuStrip.Items.Add(itemDelete);
+            SelectedContextMenuStrip.Items.Add(itemOpenController);
+            SelectedContextMenuStrip.Items.Add(itemAddToCustomTab);
         }
 
         private ToolStripMenuItem CreateFilterItem(VariableGroup varGroup)
