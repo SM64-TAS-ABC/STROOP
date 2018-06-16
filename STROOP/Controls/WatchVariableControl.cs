@@ -451,6 +451,7 @@ namespace STROOP.Controls
         private void OnNameTextBoxDoubleClick()
         {
             this.Focus();
+            _nameTextBox.Select(0, 0);
             _watchVarWrapper.ShowVarInfo();
         }
 
