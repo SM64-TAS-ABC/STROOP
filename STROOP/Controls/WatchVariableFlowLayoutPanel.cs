@@ -38,6 +38,8 @@ namespace STROOP.Controls
             ContextMenuStrip = new ContextMenuStrip();
 
             _reorderingWatchVarControl = null;
+
+            Click += (sender, e) => UnselectAllVariables();
         }
 
         public void Initialize(
@@ -340,6 +342,11 @@ namespace STROOP.Controls
             AddVariables(precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
         }
 
+        private void UnselectAllVariables()
+        {
+            GetCurrentlySelectedVariableControls().ForEach(control => control.IsSelected = false);
+        }
+
         private void AddAllVariablesToCustomTab()
         {
             GetCurrentVariableControls().ForEach(varControl =>
@@ -453,9 +460,15 @@ namespace STROOP.Controls
             }
             else
             {
-                if (!ctrlHeld) currentControls.ForEach(control => control.IsSelected = false);
+                bool toggle = ctrlHeld || (currentlySelected.Count == 1 && currentlySelected[0] == clickedControl);
+                if (!toggle) currentControls.ForEach(control => control.IsSelected = false);
                 clickedControl.IsSelected = !clickedControl.IsSelected;
             }
+        }
+
+        public List<WatchVariableControl> GetCurrentlySelectedVariableControls()
+        {
+            return GetCurrentVariableControls().FindAll(control => control.IsSelected);
         }
 
         public List<WatchVariableControl> GetCurrentVariableControls()
@@ -487,8 +500,12 @@ namespace STROOP.Controls
             return GetCurrentVariableControls().ConvertAll(control => control.VarName);
         }
 
-        public void UpdateControls()
+        public void UpdatePanel()
         {
+            if (!ContainsFocus)
+            {
+                UnselectAllVariables();
+            }
             _watchVarControls.ForEach(watchVarControl => watchVarControl.UpdateControl());
         }
 

@@ -75,7 +75,7 @@ namespace STROOP.Managers
         public virtual void Update(bool updateView)
         {
             if (!updateView) return;
-            _variablePanel.UpdateControls();
+            _variablePanel.UpdatePanel();
         }
 
         public override string ToString()
