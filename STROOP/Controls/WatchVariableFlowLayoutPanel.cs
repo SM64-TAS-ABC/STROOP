@@ -433,6 +433,12 @@ namespace STROOP.Controls
             }
         }
 
+        public void NotifySelectClick(
+            WatchVariableControl watchVarControl, bool ctrlHeld, bool shiftHeld)
+        {
+
+        }
+
         public List<WatchVariableControl> GetCurrentVariableControls()
         {
             List<WatchVariableControl> watchVarControls = new List<WatchVariableControl>();

@@ -290,10 +290,12 @@ namespace STROOP.Controls
             bool isCKeyHeld = Keyboard.IsKeyDown(Key.C);
             bool isBKeyHeld = Keyboard.IsKeyDown(Key.B);
             bool isQKeyHeld = Keyboard.IsKeyDown(Key.Q);
-            bool isXKeyHeld = Keyboard.IsKeyDown(Key.X);
+            bool isOKeyHeld = Keyboard.IsKeyDown(Key.O);
             bool isTKeyHeld = Keyboard.IsKeyDown(Key.T);
             bool isMKeyHeld = Keyboard.IsKeyDown(Key.M);
             bool isPKeyHeld = Keyboard.IsKeyDown(Key.P);
+            bool isXKeyHeld = Keyboard.IsKeyDown(Key.X);
+            bool isSKeyHeld = Keyboard.IsKeyDown(Key.S);
             bool isDeletishKeyHeld = KeyboardUtilities.IsDeletishKeyHeld();
             bool isBacktickHeld = Keyboard.IsKeyDown(Key.OemTilde);
             bool isZHeld = Keyboard.IsKeyDown(Key.Z);
@@ -362,13 +364,13 @@ namespace STROOP.Controls
                 return;
             }
 
-            if (isCtrlKeyHeld)
+            if (isSKeyHeld)
             {
                 AddToTab(Config.CustomManager);
                 return;
             }
 
-            if (isShiftKeyHeld)
+            if (isXKeyHeld)
             {
                 NotifyPanelOfReodering();
                 return;
@@ -433,7 +435,7 @@ namespace STROOP.Controls
                 return;
             }
 
-            if (isXKeyHeld)
+            if (isOKeyHeld)
             {
                 BaseColor = DEFAULT_COLOR;
                 return;
@@ -441,7 +443,7 @@ namespace STROOP.Controls
 
             // default
             {
-                IsSelected = !IsSelected;
+                _watchVariablePanel.NotifySelectClick(this, isCtrlKeyHeld, isShiftKeyHeld);
                 return;
             }
         }
