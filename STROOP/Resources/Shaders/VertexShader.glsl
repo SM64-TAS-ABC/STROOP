@@ -6,8 +6,8 @@ in vec2 texCoords;
 
 uniform mat4 view;
 
-out vec4 Color;
-out vec2 TexCoords;
+varying vec4 Color;
+varying vec2 TexCoords;
 
 void main()
 {

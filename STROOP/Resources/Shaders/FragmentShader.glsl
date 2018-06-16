@@ -1,7 +1,7 @@
 ﻿#version 110
 
-in vec4 Color;
-in vec2 TexCoords;
+varying vec4 Color;
+varying vec2 TexCoords;
 
 uniform sampler2D tex;
 
