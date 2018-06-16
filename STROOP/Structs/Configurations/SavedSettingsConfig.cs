@@ -168,7 +168,7 @@ namespace STROOP.Structs.Configurations
                 if (tabPage == null) continue;
                 initiallySavedTabPages.Add(tabPage);
             }
-            InvokeTabOrder(initiallySavedTabPages);
+            InvokeTabOrderCleanly(initiallySavedTabPages);
         }
 
         private static void InvokeTabOrder(List<TabPage> tabPages)

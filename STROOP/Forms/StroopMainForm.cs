@@ -73,6 +73,7 @@ namespace STROOP
             Config.TabControlMain = tabControlMain;
             SavedSettingsConfig.StoreRecommendedTabOrder();
             SavedSettingsConfig.InvokeInitiallySavedTabOrder();
+            Config.TabControlMain.SelectedIndex = 0;
 
             SetupViews();
 
