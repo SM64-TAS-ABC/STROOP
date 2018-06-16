@@ -279,9 +279,9 @@ namespace STROOP.Controls
         {
             this.Focus();
 
-            bool isCtrlKeyHeld = ModifierKeys == Keys.Control;
-            bool isShiftKeyHeld = ModifierKeys == Keys.Shift;
-            bool isAltKeyHeld = ModifierKeys == Keys.Alt;
+            bool isCtrlKeyHeld = KeyboardUtilities.IsCtrlHeld();
+            bool isShiftKeyHeld = KeyboardUtilities.IsShiftHeld();
+            bool isAltKeyHeld = KeyboardUtilities.IsAltHeld();
             bool isFKeyHeld = Keyboard.IsKeyDown(Key.F);
             bool isHKeyHeld = Keyboard.IsKeyDown(Key.H);
             bool isLKeyHeld = Keyboard.IsKeyDown(Key.L);
