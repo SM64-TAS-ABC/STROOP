@@ -434,9 +434,28 @@ namespace STROOP.Controls
         }
 
         public void NotifySelectClick(
-            WatchVariableControl watchVarControl, bool ctrlHeld, bool shiftHeld)
+            WatchVariableControl clickedControl, bool ctrlHeld, bool shiftHeld)
         {
+            List<WatchVariableControl> currentControls = GetCurrentVariableControls();
+            List<WatchVariableControl> currentlySelected =
+                currentControls.FindAll(control => control.IsSelected);
 
+            if (shiftHeld && currentlySelected.Count > 0)
+            {
+                int index1 = currentControls.IndexOf(currentlySelected.Last());
+                int index2 = currentControls.IndexOf(clickedControl);
+                int indexMin = Math.Min(index1, index2);
+                int indexMax = Math.Max(index1, index2);
+                for (int i = indexMin; i <= indexMax; i++)
+                {
+                    currentControls[i].IsSelected = true;
+                }
+            }
+            else
+            {
+                if (!ctrlHeld) currentControls.ForEach(control => control.IsSelected = false);
+                clickedControl.IsSelected = !clickedControl.IsSelected;
+            }
         }
 
         public List<WatchVariableControl> GetCurrentVariableControls()
