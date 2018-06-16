@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,10 +11,15 @@ namespace STROOP.Controls
 {
     class BorderedTableLayoutPanel : TableLayoutPanel
     {
-        static Random rng = new Random();
-        Pen _borderPen = new Pen(Color.Red, 5);
+        private readonly Pen _borderPen;
 
-        bool _showBorder = true;
+        public BorderedTableLayoutPanel()
+        {
+            _borderPen = new Pen(Color.Black, 1);
+            _borderPen.Alignment = PenAlignment.Inset;
+        }
+
+        bool _showBorder = false;
         public bool ShowBorder
         {
             get
@@ -42,7 +48,9 @@ namespace STROOP.Controls
                     return;
 
                 _borderPen.Color = value;
-                Invalidate();
+
+                if (_showBorder)
+                    Invalidate();
             }
         }
 
@@ -58,18 +66,17 @@ namespace STROOP.Controls
                     return;
 
                 _borderPen.Width = value;
-                Invalidate();
+
+                if (_showBorder)
+                    Invalidate();
             }
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            var rec = DisplayRectangle;
-            rec.Width -= 1;
-            rec.Height -= 1;
             if (_showBorder)
-                e.Graphics.DrawRectangle(_borderPen, rec);
+                e.Graphics.DrawRectangle(_borderPen, DisplayRectangle);
         }
 
         protected override void Dispose(bool disposing)

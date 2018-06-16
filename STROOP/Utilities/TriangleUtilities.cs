@@ -11,7 +11,7 @@ namespace STROOP.Utilities
 {
     public static class TriangleUtilities
     {
-        public static List<TriangleStruct> GetLevelTriangles()
+        public static List<TriangleDataModel> GetLevelTriangles()
         {
             uint triangleListAddress = Config.Stream.GetUInt32(TriangleConfig.TriangleListPointerAddress);
             int numLevelTriangles = Config.Stream.GetInt32(TriangleConfig.LevelTriangleCountAddress);
@@ -25,7 +25,7 @@ namespace STROOP.Utilities
             return GetTriangleAddressesInRange(triangleListAddress, numLevelTriangles);
         }
 
-        public static List<TriangleStruct> GetObjectTriangles()
+        public static List<TriangleDataModel> GetObjectTriangles()
         {
             uint triangleListAddress = Config.Stream.GetUInt32(TriangleConfig.TriangleListPointerAddress);
             int numTotalTriangles = Config.Stream.GetInt32(TriangleConfig.TotalTriangleCountAddress);
@@ -37,20 +37,20 @@ namespace STROOP.Utilities
             return GetTrianglesInRange(objectTriangleListAddress, numObjectTriangles);
         }
 
-        public static List<TriangleStruct> GetAllTriangles()
+        public static List<TriangleDataModel> GetAllTriangles()
         {
             uint triangleListAddress = Config.Stream.GetUInt32(TriangleConfig.TriangleListPointerAddress);
             int numTotalTriangles = Config.Stream.GetInt32(TriangleConfig.TotalTriangleCountAddress);
             return GetTrianglesInRange(triangleListAddress, numTotalTriangles);
         }
 
-        public static List<TriangleStruct> GetTrianglesInRange(uint startAddress, int numTriangles)
+        public static List<TriangleDataModel> GetTrianglesInRange(uint startAddress, int numTriangles)
         {
-            List<TriangleStruct> triangleList = new List<TriangleStruct>();
+            List<TriangleDataModel> triangleList = new List<TriangleDataModel>();
             for (int i = 0; i < numTriangles; i++)
             {
                 uint address = startAddress + (uint)(i * TriangleConfig.TriangleStructSize);
-                TriangleStruct triangle = new TriangleStruct(address);
+                TriangleDataModel triangle = new TriangleDataModel(address);
                 triangleList.Add(triangle);
             }
             return triangleList;
@@ -67,7 +67,7 @@ namespace STROOP.Utilities
             return triangleAddressList;
         }
 
-        public static void ShowTriangles(List<TriangleStruct> triangleList)
+        public static void ShowTriangles(List<TriangleDataModel> triangleList)
         {
             InfoForm infoForm = new InfoForm();
             infoForm.SetTriangles(triangleList);

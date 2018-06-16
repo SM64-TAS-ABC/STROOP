@@ -14,8 +14,14 @@ namespace STROOP.Controls
 {
     public class WatchVariableAngleWrapper : WatchVariableNumberWrapper
     {
+        private readonly bool _defaultSigned;
         private bool _signed;
+        private Action<bool> _setSigned;
+
+        private readonly AngleUnitType _defaultAngleUnitType;
         private AngleUnitType _angleUnitType;
+        private Action<AngleUnitType> _setAngleUnitType;
+
         private bool _truncateToMultipleOf16;
         private bool _constrainToOneRevolution;
 
@@ -29,15 +35,31 @@ namespace STROOP.Controls
             }
         }
 
+        private readonly bool _isYaw;
+
         public WatchVariableAngleWrapper(
             WatchVariable watchVar,
-            WatchVariableControl watchVarControl)
+            WatchVariableControl watchVarControl,
+            Type displayType,
+            bool? isYaw)
             : base(watchVar, watchVarControl, 0)
         {
-            _signed = _watchVar.SignedType.Value;
-            _angleUnitType = AngleUnitType.InGameUnits;
+            Type type = displayType ?? _watchVar.MemoryType;
+            if (type == null) throw new ArgumentOutOfRangeException();
+
+            _defaultSigned = type == typeof(short) || type == typeof(int);
+            _signed = _defaultSigned;
+
+            _defaultAngleUnitType = AngleUnitType.InGameUnits;
+            _angleUnitType = _defaultAngleUnitType;
+
             _truncateToMultipleOf16 = false;
-            _constrainToOneRevolution = false;
+
+            _constrainToOneRevolution =
+                displayType != null && TypeUtilities.TypeSize[displayType] == 2 &&
+                watchVar.MemoryType != null && TypeUtilities.TypeSize[watchVar.MemoryType] == 4;
+
+            _isYaw = isYaw ?? DEFAULT_IS_YAW;
 
             AddAngleContextMenuStripItems();
         }
@@ -45,18 +67,19 @@ namespace STROOP.Controls
         private void AddAngleContextMenuStripItems()
         {
             ToolStripMenuItem itemSigned = new ToolStripMenuItem("Signed");
-            itemSigned.Click += (sender, e) =>
+            _setSigned = (bool signed) =>
             {
-                _signed = !_signed;
-                itemSigned.Checked = _signed;
+                _signed = signed;
+                itemSigned.Checked = signed;
             };
+            itemSigned.Click += (sender, e) => _setSigned(!_signed);
             itemSigned.Checked = _signed;
 
             ToolStripMenuItem itemUnits = new ToolStripMenuItem("Units...");
-            ControlUtilities.AddDropDownItems(
+            _setAngleUnitType = ControlUtilities.AddCheckableDropDownItems(
                 itemUnits,
                 new List<string> { "In-Game Units", "HAU", "Degrees", "Radians", "Revolutions" },
-                new List<object>
+                new List<AngleUnitType>
                 {
                     AngleUnitType.InGameUnits,
                     AngleUnitType.HAU,
@@ -64,7 +87,7 @@ namespace STROOP.Controls
                     AngleUnitType.Radians,
                     AngleUnitType.Revolutions,
                 },
-                (object obj) => { _angleUnitType = (AngleUnitType)obj; },
+                (AngleUnitType angleUnitType) => { _angleUnitType = angleUnitType; },
                 _angleUnitType);
 
             ToolStripMenuItem itemTruncateToMultipleOf16 = new ToolStripMenuItem("Truncate to Multiple of 16");
@@ -126,47 +149,81 @@ namespace STROOP.Controls
             return signed ? -1 * maxValue / 2 : 0;
         }
 
-        protected override string HandleAngleConverting(string stringValue)
+        protected override object HandleAngleConverting(object value)
         {
-            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-            if (!doubleValueNullable.HasValue) return stringValue;
+            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(value);
+            if (!doubleValueNullable.HasValue) return value;
             double doubleValue = doubleValueNullable.Value;
 
-            if (_truncateToMultipleOf16 != (_angleUnitType == AngleUnitType.HAU))
+            if (_truncateToMultipleOf16)
             {
                 doubleValue = MoreMath.TruncateToMultipleOf16(doubleValue);
             }
             doubleValue = MoreMath.NormalizeAngleUsingType(doubleValue, _effectiveType);
             doubleValue = (doubleValue / 65536) * GetAngleUnitTypeMaxValue();
 
-            return doubleValue.ToString();
+            return doubleValue;
         }
 
-        protected override string HandleAngleUnconverting(string stringValue)
+        protected override object HandleAngleUnconverting(object value)
         {
-            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-            if (!doubleValueNullable.HasValue) return stringValue;
+            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(value);
+            if (!doubleValueNullable.HasValue) return value;
             double doubleValue = doubleValueNullable.Value;
 
             doubleValue = (doubleValue / GetAngleUnitTypeMaxValue()) * 65536;
 
-            return doubleValue.ToString();
+            return doubleValue;
         }
 
-        protected override string HandleAngleRoundingOut(string stringValue)
+        protected override object HandleAngleRoundingOut(object value)
         {
-            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-            if (!doubleValueNullable.HasValue) return stringValue;
+            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(value);
+            if (!doubleValueNullable.HasValue) return value;
             double doubleValue = doubleValueNullable.Value;
 
-            if (doubleValue == GetAngleUnitTypeAndMaybeSignedMaxValue()) doubleValue = GetAngleUnitTypeAndMaybeSignedMinValue();
+            if (doubleValue == GetAngleUnitTypeAndMaybeSignedMaxValue())
+                doubleValue = GetAngleUnitTypeAndMaybeSignedMinValue();
 
-            return doubleValue.ToString();
+            return doubleValue;
         }
 
         protected override int? GetHexDigitCount()
         {
             return _constrainToOneRevolution ? 4 : base.GetHexDigitCount();
+        }
+
+        public override void ApplySettings(WatchVariableControlSettings settings)
+        {
+            base.ApplySettings(settings);
+            if (settings.ChangeAngleSigned)
+            {
+                if (settings.ChangeAngleSignedToDefault)
+                    _setSigned(_defaultSigned);
+                else
+                    _setSigned(settings.NewAngleSigned);
+            }
+            if (settings.ChangeYawSigned && _isYaw)
+            {
+                if (settings.ChangeYawSignedToDefault)
+                    _setSigned(_defaultSigned);
+                else
+                    _setSigned(settings.NewYawSigned);
+            }
+            if (settings.ChangeAngleUnits)
+            {
+                if (settings.ChangeAngleUnitsToDefault)
+                    _setAngleUnitType(_defaultAngleUnitType);
+                else
+                    _setAngleUnitType(settings.NewAngleUnits);
+            }
+            if (settings.ChangeAngleHex)
+            {
+                if (settings.ChangeAngleHexToDefault)
+                    _setDisplayAsHex(_defaultDisplayAsHex);
+                else
+                    _setDisplayAsHex(settings.NewAngleHex);
+            }
         }
     }
 }

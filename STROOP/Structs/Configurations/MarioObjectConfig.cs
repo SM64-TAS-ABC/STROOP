@@ -9,7 +9,7 @@ namespace STROOP.Structs
 {
     public static class MarioObjectConfig
     {
-        public static uint PointerAddress { get { return Config.SwitchRomVersion(PointerAddressUS, PointerAddressJP); } }
+        public static uint PointerAddress { get => RomVersionConfig.Switch(PointerAddressUS, PointerAddressJP); }
         public static readonly uint PointerAddressUS = 0x80361158;
         public static readonly uint PointerAddressJP = 0x8035FDE8;
 

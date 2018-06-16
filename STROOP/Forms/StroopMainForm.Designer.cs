@@ -1,4 +1,5 @@
 ﻿using STROOP.Controls;
+using STROOP.Controls.Map.Trackers;
 using System.Windows.Forms;
 
 namespace STROOP
@@ -33,20 +34,40 @@ namespace STROOP
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
-            this.groupBoxObjects = new System.Windows.Forms.GroupBox();
-            this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
-            this.labelLabelMethod = new System.Windows.Forms.Label();
-            this.labelSlotSize = new System.Windows.Forms.Label();
-            this.checkBoxObjLockLabels = new System.Windows.Forms.CheckBox();
-            this.labelSortMethod = new System.Windows.Forms.Label();
-            this.WatchVariablePanelObjects = new STROOP.Controls.WatchVariablePanel();
-            this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
-            this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.splitContainerMain = new System.Windows.Forms.SplitContainer();
+            this.labelVersionNumber = new System.Windows.Forms.Label();
+            this.buttonDisconnect = new System.Windows.Forms.Button();
+            this.panelConnect = new System.Windows.Forms.Panel();
+            this.buttonRefreshAndConnect = new System.Windows.Forms.Button();
+            this.buttonBypass = new System.Windows.Forms.Button();
+            this.buttonRefresh = new System.Windows.Forms.Button();
+            this.labelNotConnected = new System.Windows.Forms.Label();
+            this.buttonConnect = new System.Windows.Forms.Button();
+            this.listBoxProcessesList = new System.Windows.Forms.ListBox();
+            this.labelFpsCounter = new System.Windows.Forms.Label();
+            this.buttonShowTopPane = new System.Windows.Forms.Button();
+            this.buttonShowTopBottomPane = new System.Windows.Forms.Button();
+            this.buttonShowBottomPane = new System.Windows.Forms.Button();
+            this.buttonShowRightPane = new System.Windows.Forms.Button();
+            this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
+            this.buttonShowLeftPane = new System.Windows.Forms.Button();
+            this.comboBoxRomVersion = new System.Windows.Forms.ComboBox();
+            this.comboBoxReadWriteMode = new System.Windows.Forms.ComboBox();
+            this.buttonMoveTabRight = new System.Windows.Forms.Button();
+            this.buttonMoveTabLeft = new System.Windows.Forms.Button();
+            this.splitContainerMain = new STROOP.BetterSplitContainer();
             this.tabControlMain = new System.Windows.Forms.TabControl();
-            this.tabPageObjects = new System.Windows.Forms.TabPage();
-            this.splitContainerObject = new System.Windows.Forms.SplitContainer();
+            this.tabPageObject = new System.Windows.Forms.TabPage();
+            this.splitContainerObject = new STROOP.BetterSplitContainer();
             this.panelObj = new System.Windows.Forms.Panel();
             this.buttonObjRelease = new STROOP.BinaryButton();
             this.buttonObjInteract = new STROOP.BinaryButton();
@@ -120,9 +141,9 @@ namespace STROOP
             this.labelObjSlotPos = new System.Windows.Forms.Label();
             this.labelObjAdd = new System.Windows.Forms.Label();
             this.labelObjSlotInd = new System.Windows.Forms.Label();
-            this.WatchVariablePanelObject = new STROOP.Controls.WatchVariablePanel();
+            this.WatchVariablePanelObject = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageMario = new System.Windows.Forms.TabPage();
-            this.splitContainerMario = new System.Windows.Forms.SplitContainer();
+            this.splitContainerMario = new STROOP.BetterSplitContainer();
             this.groupBoxMarioSlidingSpeed = new System.Windows.Forms.GroupBox();
             this.textBoxMarioSlidingSpeedYaw = new STROOP.BetterTextbox();
             this.textBoxMarioSlidingSpeedH = new STROOP.BetterTextbox();
@@ -180,10 +201,11 @@ namespace STROOP
             this.buttonMarioHOLPGoto = new System.Windows.Forms.Button();
             this.buttonMarioToggleHandsfree = new System.Windows.Forms.Button();
             this.buttonMarioVisibility = new System.Windows.Forms.Button();
-            this.WatchVariablePanelMario = new STROOP.Controls.WatchVariablePanel();
+            this.WatchVariablePanelMario = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageHud = new System.Windows.Forms.TabPage();
-            this.splitContainerHud = new System.Windows.Forms.SplitContainer();
+            this.splitContainerHud = new STROOP.BetterSplitContainer();
             this.checkBoxFullHP = new System.Windows.Forms.CheckBox();
+            this.buttonGameOver = new System.Windows.Forms.Button();
             this.button99Coins = new System.Windows.Forms.Button();
             this.buttonStandardHud = new System.Windows.Forms.Button();
             this.panelHudBorder = new System.Windows.Forms.Panel();
@@ -192,9 +214,9 @@ namespace STROOP
             this.button100Lives = new STROOP.BinaryButton();
             this.buttonTurnOnOffHud = new STROOP.BinaryButton();
             this.buttonFullHp = new System.Windows.Forms.Button();
-            this.watchVariablePanelHud = new STROOP.Controls.WatchVariablePanel();
+            this.watchVariablePanelHud = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageCamera = new System.Windows.Forms.TabPage();
-            this.SplitContainerCamera = new System.Windows.Forms.SplitContainer();
+            this.splitContainerCamera = new STROOP.BetterSplitContainer();
             this.buttonDisableFOVFunctions = new STROOP.BinaryButton();
             this.groupBoxCameraSphericalPos = new System.Windows.Forms.GroupBox();
             this.checkBoxCameraSphericalPosPivotOnFocus = new System.Windows.Forms.CheckBox();
@@ -226,9 +248,9 @@ namespace STROOP
             this.buttonCameraPosXnZp = new System.Windows.Forms.Button();
             this.buttonCameraPosXn = new System.Windows.Forms.Button();
             this.buttonCameraPosXnZn = new System.Windows.Forms.Button();
-            this.watchVariablePanelCamera = new STROOP.Controls.WatchVariablePanel();
+            this.watchVariablePanelCamera = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageTriangles = new System.Windows.Forms.TabPage();
-            this.splitContainerTriangles = new System.Windows.Forms.SplitContainer();
+            this.splitContainerTriangles = new STROOP.BetterSplitContainer();
             this.groupBoxTrianglePos = new System.Windows.Forms.GroupBox();
             this.checkBoxTrianglePosRelative = new System.Windows.Forms.CheckBox();
             this.textBoxTrianglePosY = new STROOP.BetterTextbox();
@@ -275,19 +297,13 @@ namespace STROOP
             this.buttonGotoV3 = new System.Windows.Forms.Button();
             this.buttonGotoV1 = new System.Windows.Forms.Button();
             this.buttonGotoV2 = new System.Windows.Forms.Button();
-            this.watchVariablePanelTriangles = new STROOP.Controls.WatchVariablePanel();
-            this.tabPageWater = new System.Windows.Forms.TabPage();
-            this.watchVariablePanelWater = new STROOP.Controls.WatchVariablePanel();
+            this.watchVariablePanelTriangles = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageActions = new System.Windows.Forms.TabPage();
-            this.labelAnimationDescription = new System.Windows.Forms.Label();
-            this.labelActionDescription = new System.Windows.Forms.Label();
-            this.watchVariablePanelActions = new STROOP.Controls.WatchVariablePanel();
-            this.tabPageInput = new System.Windows.Forms.TabPage();
-            this.splitContainerInput = new System.Windows.Forms.SplitContainer();
-            this.inputDisplayPanel = new STROOP.InputDisplayPanel();
-            this.watchVariablePanelInput = new STROOP.Controls.WatchVariablePanel();
+            this.textBoxAnimationDescription = new STROOP.BetterTextbox();
+            this.textBoxActionDescription = new STROOP.BetterTextbox();
+            this.watchVariablePanelActions = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageFile = new System.Windows.Forms.TabPage();
-            this.splitContainerFile = new System.Windows.Forms.SplitContainer();
+            this.splitContainerFile = new STROOP.BetterSplitContainer();
             this.checkBoxInGameCopyPaste = new System.Windows.Forms.CheckBox();
             this.groupBoxAllCoinsMeaning = new System.Windows.Forms.GroupBox();
             this.radioButtonAllCoinsMeaningMaxWithoutGlitches = new System.Windows.Forms.RadioButton();
@@ -520,19 +536,99 @@ namespace STROOP
             this.radioButtonFileC = new System.Windows.Forms.RadioButton();
             this.radioButtonFileBSaved = new System.Windows.Forms.RadioButton();
             this.buttonFileSave = new System.Windows.Forms.Button();
-            this.watchVariablePanelFile = new STROOP.Controls.WatchVariablePanel();
+            this.watchVariablePanelFile = new STROOP.Controls.WatchVariableFlowLayoutPanel();
+            this.tabPageInput = new System.Windows.Forms.TabPage();
+            this.splitContainerInput = new STROOP.BetterSplitContainer();
+            this.inputDisplayPanel = new STROOP.InputDisplayPanel();
+            this.watchVariablePanelInput = new STROOP.Controls.WatchVariableFlowLayoutPanel();
+            this.tabPageWater = new System.Windows.Forms.TabPage();
+            this.watchVariablePanelWater = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageMisc = new System.Windows.Forms.TabPage();
-            this.splitContainerMisc = new System.Windows.Forms.SplitContainer();
+            this.splitContainerMisc = new STROOP.BetterSplitContainer();
             this.groupBoxRNGIndexTester = new System.Windows.Forms.GroupBox();
             this.textBoxRNGIndexTester = new STROOP.BetterTextbox();
             this.buttonRNGIndexTester = new System.Windows.Forms.Button();
             this.checkBoxTurnOffMusic = new System.Windows.Forms.CheckBox();
             this.panelMiscBorder = new System.Windows.Forms.Panel();
             this.pictureBoxMisc = new STROOP.Controls.IntPictureBox();
-            this.watchVariablePanelMisc = new STROOP.Controls.WatchVariablePanel();
+            this.watchVariablePanelMisc = new STROOP.Controls.WatchVariableFlowLayoutPanel();
+            this.tabPageM64 = new System.Windows.Forms.TabPage();
+            this.splitContainerM64 = new STROOP.BetterSplitContainer();
+            this.checkBoxMaxOutViCount = new System.Windows.Forms.CheckBox();
+            this.comboBoxM64FrameInputRelation = new System.Windows.Forms.ComboBox();
+            this.textBoxM64PasteMultiplicity = new STROOP.BetterTextbox();
+            this.listBoxM64Copied = new System.Windows.Forms.ListBox();
+            this.groupBoxM64QuickDuplication = new System.Windows.Forms.GroupBox();
+            this.buttonM64QuickDuplicationDuplicate = new System.Windows.Forms.Button();
+            this.textBoxM64QuickDuplicationTotalIterations = new STROOP.BetterTextbox();
+            this.textBoxM64QuickDuplication2ndIterationStart = new STROOP.BetterTextbox();
+            this.textBoxM64QuickDuplication1stIterationStart = new STROOP.BetterTextbox();
+            this.labelM64QuickDuplicationTotalIterations = new System.Windows.Forms.Label();
+            this.labelM64QuickDuplication2ndIterationStart = new System.Windows.Forms.Label();
+            this.labelM64QuickDuplication1stIterationStart = new System.Windows.Forms.Label();
+            this.groupBoxM64Selection = new System.Windows.Forms.GroupBox();
+            this.textBoxM64SelectionInputs = new STROOP.BetterTextbox();
+            this.textBoxM64SelectionEndFrame = new STROOP.BetterTextbox();
+            this.textBoxM64SelectionStartFrame = new STROOP.BetterTextbox();
+            this.labelM64SelectionInputs = new System.Windows.Forms.Label();
+            this.labelM64SelectionEndFrame = new System.Windows.Forms.Label();
+            this.labelM64SelectionStartFrame = new System.Windows.Forms.Label();
+            this.labelM64PasteMultiplicity = new System.Windows.Forms.Label();
+            this.labelM64NumInputsValue = new System.Windows.Forms.Label();
+            this.labelM64OnValue = new System.Windows.Forms.Label();
+            this.labelM64NumInputsLabel = new System.Windows.Forms.Label();
+            this.labelM64FileName = new System.Windows.Forms.Label();
+            this.labelM64FileLabel = new System.Windows.Forms.Label();
+            this.buttonM64Goto = new System.Windows.Forms.Button();
+            this.textBoxM64OnValue = new STROOP.BetterTextbox();
+            this.textBoxM64Goto = new STROOP.BetterTextbox();
+            this.buttonM64PasteOverwrite = new System.Windows.Forms.Button();
+            this.buttonM64PasteInsert = new System.Windows.Forms.Button();
+            this.buttonM64CopyInputRange = new System.Windows.Forms.Button();
+            this.buttonM64TurnOffCells = new System.Windows.Forms.Button();
+            this.buttonM64TurnOffInputRange = new System.Windows.Forms.Button();
+            this.buttonM64TurnOffRowRange = new System.Windows.Forms.Button();
+            this.buttonM64TurnOnCells = new System.Windows.Forms.Button();
+            this.buttonM64TurnOnInputRange = new System.Windows.Forms.Button();
+            this.buttonM64DeleteRowRange = new System.Windows.Forms.Button();
+            this.buttonM64CopyRowRange = new System.Windows.Forms.Button();
+            this.buttonM64SetJpHeader = new System.Windows.Forms.Button();
+            this.buttonM64SetUsHeader = new System.Windows.Forms.Button();
+            this.buttonM64Close = new System.Windows.Forms.Button();
+            this.buttonM64Open = new System.Windows.Forms.Button();
+            this.buttonM64SaveAs = new System.Windows.Forms.Button();
+            this.buttonM64ResetChanges = new System.Windows.Forms.Button();
+            this.buttonM64Save = new System.Windows.Forms.Button();
+            this.labelM64ProgressBar = new System.Windows.Forms.Label();
+            this.progressBarM64 = new System.Windows.Forms.ProgressBar();
+            this.tabControlM64Details = new System.Windows.Forms.TabControl();
+            this.tabPageM64Inputs = new System.Windows.Forms.TabPage();
+            this.dataGridViewM64Inputs = new System.Windows.Forms.DataGridView();
+            this.ColumnM64Frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnM64Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnM64X = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnM64Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnM64A = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64B = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64Z = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64S = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64R = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64CUp = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64CDown = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64CLeft = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64CRight = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64L = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64DUp = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64DDown = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64DLeft = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnM64DRight = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tabPageM64Header = new System.Windows.Forms.TabPage();
+            this.propertyGridM64Header = new System.Windows.Forms.PropertyGrid();
+            this.tabPageM64Stats = new System.Windows.Forms.TabPage();
+            this.propertyGridM64Stats = new System.Windows.Forms.PropertyGrid();
             this.tabPageCustom = new System.Windows.Forms.TabPage();
-            this.splitContainerCustom = new System.Windows.Forms.SplitContainer();
-            this.splitContainerCustomControls = new System.Windows.Forms.SplitContainer();
+            this.splitContainerCustom = new STROOP.BetterSplitContainer();
+            this.splitContainerCustomControls = new STROOP.BetterSplitContainer();
             this.labelCustomRecordingGapsValue = new System.Windows.Forms.Label();
             this.labelCustomRecordingFrequencyValue = new System.Windows.Forms.Label();
             this.labelCustomRecordingGapsLabel = new System.Windows.Forms.Label();
@@ -542,7 +638,11 @@ namespace STROOP
             this.buttonCustomClearValues = new System.Windows.Forms.Button();
             this.buttonCustomShowValues = new System.Windows.Forms.Button();
             this.checkBoxCustomRecordValues = new System.Windows.Forms.CheckBox();
-            this.buttonClearVariables = new System.Windows.Forms.Button();
+            this.buttonClearVars = new System.Windows.Forms.Button();
+            this.buttonSaveVars = new System.Windows.Forms.Button();
+            this.buttonOpenVars = new System.Windows.Forms.Button();
+            this.radioButtonCustomTabFlushRight = new System.Windows.Forms.RadioButton();
+            this.radioButtonCustomTabFlushLeft = new System.Windows.Forms.RadioButton();
             this.groupBoxVarHeight = new System.Windows.Forms.GroupBox();
             this.betterTextboxVarHeightGetSet = new STROOP.BetterTextbox();
             this.betterTextboxVarHeightAddSubtract = new STROOP.BetterTextbox();
@@ -565,66 +665,181 @@ namespace STROOP
             this.buttonVarNameWidthSubtract = new System.Windows.Forms.Button();
             this.buttonVarNameWidthSet = new System.Windows.Forms.Button();
             this.buttonVarNameWidthAdd = new System.Windows.Forms.Button();
-            this.watchVariablePanelCustom = new STROOP.Controls.WatchVariablePanel();
-            this.tabPageDebug = new System.Windows.Forms.TabPage();
-            this.splitContainerDebug = new System.Windows.Forms.SplitContainer();
-            this.panelDebugBorder = new System.Windows.Forms.Panel();
-            this.pictureBoxDebug = new STROOP.Controls.IntPictureBox();
-            this.groupBoxMiscDebug = new System.Windows.Forms.GroupBox();
-            this.checkBoxFreeMovement = new System.Windows.Forms.CheckBox();
-            this.checkBoxSpawnMode = new System.Windows.Forms.CheckBox();
-            this.checkBoxStageSelect = new System.Windows.Forms.CheckBox();
-            this.checkBoxClassicMode = new System.Windows.Forms.CheckBox();
-            this.groupBoxResourceMeter = new System.Windows.Forms.GroupBox();
-            this.radioButtonResourceMeterOff = new System.Windows.Forms.RadioButton();
-            this.radioButtonResourceMeter1 = new System.Windows.Forms.RadioButton();
-            this.radioButtonResourceMeter2 = new System.Windows.Forms.RadioButton();
-            this.groupBoxAdvancedMode = new System.Windows.Forms.GroupBox();
-            this.radioButtonAdvancedModeOff = new System.Windows.Forms.RadioButton();
-            this.radioButtonAdvancedModeEnemyInfo = new System.Windows.Forms.RadioButton();
-            this.radioButtonAdvancedModeObjectCounter = new System.Windows.Forms.RadioButton();
-            this.radioButtonAdvancedModeEffectInfo = new System.Windows.Forms.RadioButton();
-            this.radioButtonAdvancedModeCheckInfo = new System.Windows.Forms.RadioButton();
-            this.radioButtonAdvancedModeStageInfo = new System.Windows.Forms.RadioButton();
-            this.radioButtonAdvancedModeMapInfo = new System.Windows.Forms.RadioButton();
-            this.watchVariablePanelDebug = new STROOP.Controls.WatchVariablePanel();
+            this.watchVariablePanelCustom = new STROOP.Controls.WatchVariableFlowLayoutPanel();
+            this.tabPageTas = new System.Windows.Forms.TabPage();
+            this.splitContainerTas = new STROOP.BetterSplitContainer();
+            this.splitContainerTasTable = new STROOP.BetterSplitContainer();
+            this.richTextBoxTasInstructions = new System.Windows.Forms.RichTextBox();
+            this.buttonTasStoreMarioAngle = new System.Windows.Forms.Button();
+            this.buttonTasStoreMarioPosition = new System.Windows.Forms.Button();
+            this.buttonTasClearData = new System.Windows.Forms.Button();
+            this.checkBoxTasRecordData = new System.Windows.Forms.CheckBox();
+            this.dataGridViewTas = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.watchVariablePanelTas = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageMap = new System.Windows.Forms.TabPage();
-            this.splitContainerMap = new System.Windows.Forms.SplitContainer();
-            this.labelMapArtificialMarioYLabel = new System.Windows.Forms.Label();
-            this.groupBoxMapBounds = new System.Windows.Forms.GroupBox();
-            this.textBoxMapBoundsZoom = new STROOP.BetterTextbox();
-            this.buttonMapBoundsZoomIn = new System.Windows.Forms.Button();
-            this.buttonMapBoundsZoomOut = new System.Windows.Forms.Button();
-            this.buttonMapBoundsDownRight = new System.Windows.Forms.Button();
-            this.textBoxMapBoundsPosition = new STROOP.BetterTextbox();
-            this.buttonMapBoundsRight = new System.Windows.Forms.Button();
-            this.buttonMapBoundsUpRight = new System.Windows.Forms.Button();
-            this.buttonMapBoundsUp = new System.Windows.Forms.Button();
-            this.buttonMapBoundsDown = new System.Windows.Forms.Button();
-            this.buttonMapBoundsDownLeft = new System.Windows.Forms.Button();
-            this.buttonMapBoundsLeft = new System.Windows.Forms.Button();
-            this.buttonMapBoundsUpLeft = new System.Windows.Forms.Button();
-            this.labelMapQpu = new System.Windows.Forms.Label();
-            this.labelMapPu = new System.Windows.Forms.Label();
-            this.textBoxMapArtificialMarioYLabel = new STROOP.BetterTextbox();
-            this.labelMapQpuValue = new System.Windows.Forms.Label();
-            this.checkBoxMapShowIntendedNextPosition = new System.Windows.Forms.CheckBox();
-            this.labelMapPuValue = new System.Windows.Forms.Label();
-            this.checkBoxMapShowCeiling = new System.Windows.Forms.CheckBox();
-            this.checkBoxMapShowFloor = new System.Windows.Forms.CheckBox();
-            this.checkBoxMapShowCamera = new System.Windows.Forms.CheckBox();
-            this.checkBoxMapShowHolp = new System.Windows.Forms.CheckBox();
-            this.checkBoxMapShowMario = new System.Windows.Forms.CheckBox();
-            this.labelMapName = new System.Windows.Forms.Label();
-            this.trackBarMapIconSize = new System.Windows.Forms.TrackBar();
-            this.labelMapIconSize = new System.Windows.Forms.Label();
-            this.checkBoxMapShowInactive = new System.Windows.Forms.CheckBox();
-            this.labelMapZoom = new System.Windows.Forms.Label();
-            this.labelMapId = new System.Windows.Forms.Label();
-            this.labelMapSubName = new System.Windows.Forms.Label();
-            this.trackBarMapZoom = new System.Windows.Forms.TrackBar();
+            this.splitContainerMap = new STROOP.BetterSplitContainer();
+            this.splitContainerMapControls = new STROOP.BetterSplitContainer();
+            this.tabControlMap = new System.Windows.Forms.TabControl();
+            this.tabPageMapOptions = new System.Windows.Forms.TabPage();
+            this.buttonMapControlsTrackSelectedObjects = new System.Windows.Forms.Button();
+            this.buttonMapControlsClearAllTrackers = new System.Windows.Forms.Button();
+            this.buttonMapControlsAddNewTracker = new System.Windows.Forms.Button();
+            this.checkBoxMapControlsTrackWallTriangle = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapControlsTrackGridlines = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapControlsTrackCeilingTriangle = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapControlsTrackFloorTriangle = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapControlsTrackCamera = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapControlsTrackAllObjects = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapControlsTrackHolp = new System.Windows.Forms.CheckBox();
+            this.checkBoxMapControlsTrackMario = new System.Windows.Forms.CheckBox();
+            this.tabPageMap2D = new System.Windows.Forms.TabPage();
+            this.groupBoxMapControlsAngle = new System.Windows.Forms.GroupBox();
+            this.betterTextboxMapControlsAngleChange = new STROOP.BetterTextbox();
+            this.betterTextboxMapControlsAngleCustom = new STROOP.BetterTextbox();
+            this.buttonMapControlsAngleChangeCounterclockwise = new System.Windows.Forms.Button();
+            this.radioButtonMapControlsAngle49152 = new System.Windows.Forms.RadioButton();
+            this.buttonMapControlsAngleChangeClockwise = new System.Windows.Forms.Button();
+            this.radioButtonMapControlsAngle16384 = new System.Windows.Forms.RadioButton();
+            this.radioButtonMapControlsAngle0 = new System.Windows.Forms.RadioButton();
+            this.radioButtonMapControlsAngleCustom = new System.Windows.Forms.RadioButton();
+            this.radioButtonMapControlsAngle32768 = new System.Windows.Forms.RadioButton();
+            this.groupBoxMapControlsCenter = new System.Windows.Forms.GroupBox();
+            this.betterTextboxMapControlsCenterCustom = new STROOP.BetterTextbox();
+            this.betterTextboxMapControlsCenterChange = new STROOP.BetterTextbox();
+            this.radioButtonMapControlsCenterOrigin = new System.Windows.Forms.RadioButton();
+            this.buttonMapControlsCenterChangeDownRight = new System.Windows.Forms.Button();
+            this.radioButtonMapControlsCenterBestFit = new System.Windows.Forms.RadioButton();
+            this.buttonMapControlsCenterChangeRight = new System.Windows.Forms.Button();
+            this.radioButtonMapControlsCenterCustom = new System.Windows.Forms.RadioButton();
+            this.buttonMapControlsCenterChangeUpLeft = new System.Windows.Forms.Button();
+            this.buttonMapControlsCenterChangeLeft = new System.Windows.Forms.Button();
+            this.buttonMapControlsCenterChangeDownLeft = new System.Windows.Forms.Button();
+            this.buttonMapControlsCenterChangeDown = new System.Windows.Forms.Button();
+            this.buttonMapControlsCenterChangeUpRight = new System.Windows.Forms.Button();
+            this.buttonMapControlsCenterChangeUp = new System.Windows.Forms.Button();
+            this.groupBoxMapControlsScale = new System.Windows.Forms.GroupBox();
+            this.betterTextboxMapControlsScaleCustom = new STROOP.BetterTextbox();
+            this.betterTextboxMapControlsScaleChange = new STROOP.BetterTextbox();
+            this.radioButtonMapControlsScaleMaxCourseSize = new System.Windows.Forms.RadioButton();
+            this.radioButtonMapControlsScaleCourseDefault = new System.Windows.Forms.RadioButton();
+            this.buttonMapControlsScaleChangeMinus = new System.Windows.Forms.Button();
+            this.radioButtonMapControlsScaleCustom = new System.Windows.Forms.RadioButton();
+            this.buttonMapControlsScaleChangePlus = new System.Windows.Forms.Button();
+            this.tabPageMap3D = new System.Windows.Forms.TabPage();
+            this.labelMapColorMethod = new System.Windows.Forms.Label();
+            this.checkBoxMapGameCamOrientation = new System.Windows.Forms.CheckBox();
+            this.comboBoxMapColorMethod = new System.Windows.Forms.ComboBox();
+            this.flowLayoutPanelMapTrackers = new STROOP.Controls.Map.Trackers.MapTrackerFlowLayoutPanel();
             this.glControlMap = new OpenTK.GLControl();
+            this.tabPageMap2 = new System.Windows.Forms.TabPage();
+            this.splitContainerMap2 = new STROOP.BetterSplitContainer();
+            this.labelMap2Qpu = new System.Windows.Forms.Label();
+            this.textBoxMap2ArtificialMarioYLabel = new STROOP.BetterTextbox();
+            this.labelMap2IconSize = new System.Windows.Forms.Label();
+            this.labelMap2Id = new System.Windows.Forms.Label();
+            this.labelMap2QpuValue = new System.Windows.Forms.Label();
+            this.labelMap2PuValue = new System.Windows.Forms.Label();
+            this.labelMap2SubName = new System.Windows.Forms.Label();
+            this.labelMap2Name = new System.Windows.Forms.Label();
+            this.labelMap2Pu = new System.Windows.Forms.Label();
+            this.labelMap2ArtificialMarioYLabel = new System.Windows.Forms.Label();
+            this.groupBoxMap2Bounds = new System.Windows.Forms.GroupBox();
+            this.textBoxMap2BoundsZoom = new STROOP.BetterTextbox();
+            this.buttonMap2BoundsZoomIn = new System.Windows.Forms.Button();
+            this.buttonMap2BoundsZoomOut = new System.Windows.Forms.Button();
+            this.buttonMap2BoundsDownRight = new System.Windows.Forms.Button();
+            this.textBoxMap2BoundsPosition = new STROOP.BetterTextbox();
+            this.buttonMap2BoundsRight = new System.Windows.Forms.Button();
+            this.buttonMap2BoundsUpRight = new System.Windows.Forms.Button();
+            this.buttonMap2BoundsUp = new System.Windows.Forms.Button();
+            this.buttonMap2BoundsDown = new System.Windows.Forms.Button();
+            this.buttonMap2BoundsDownLeft = new System.Windows.Forms.Button();
+            this.buttonMap2BoundsLeft = new System.Windows.Forms.Button();
+            this.buttonMap2BoundsUpLeft = new System.Windows.Forms.Button();
+            this.checkBoxMap2ShowMario = new System.Windows.Forms.CheckBox();
+            this.checkBoxMap2ShowHolp = new System.Windows.Forms.CheckBox();
+            this.checkBoxMap2ShowInactive = new System.Windows.Forms.CheckBox();
+            this.checkBoxMap2ShowFloor = new System.Windows.Forms.CheckBox();
+            this.checkBoxMap2ShowIntendedNextPosition = new System.Windows.Forms.CheckBox();
+            this.checkBoxMap2ShowCeiling = new System.Windows.Forms.CheckBox();
+            this.checkBoxMap2ShowCamera = new System.Windows.Forms.CheckBox();
+            this.trackBarMap2IconSize = new System.Windows.Forms.TrackBar();
+            this.glControlMap2 = new OpenTK.GLControl();
+            this.tabPageOptions = new System.Windows.Forms.TabPage();
+            this.checkedListBoxSavedSettings = new System.Windows.Forms.CheckedListBox();
+            this.buttonOptionsResetSavedSettings = new System.Windows.Forms.Button();
+            this.groupBoxPositionControllerRelativeAngle = new System.Windows.Forms.GroupBox();
+            this.textBoxPositionControllerRelativeAngleCustom = new STROOP.BetterTextbox();
+            this.radioButtonPositionControllerRelativeAngleMario = new System.Windows.Forms.RadioButton();
+            this.radioButtonPositionControllerRelativeAngleRecommended = new System.Windows.Forms.RadioButton();
+            this.radioButtonPositionControllerRelativeAngleCustom = new System.Windows.Forms.RadioButton();
+            this.groupBoxFPS = new System.Windows.Forms.GroupBox();
+            this.betterTextboxFPS = new STROOP.BetterTextbox();
+            this.groupBoxGotoRetrieveOffsets = new System.Windows.Forms.GroupBox();
+            this.labelRetrieveInfrontSuffix = new System.Windows.Forms.Label();
+            this.labelRetrieveInfrontPrefix = new System.Windows.Forms.Label();
+            this.textBoxRetrieveInfront = new STROOP.BetterTextbox();
+            this.labelRetrieveAboveSuffix = new System.Windows.Forms.Label();
+            this.labelRetrieveAbovePrefix = new System.Windows.Forms.Label();
+            this.textBoxRetrieveAbove = new STROOP.BetterTextbox();
+            this.labelGotoInfrontSuffix = new System.Windows.Forms.Label();
+            this.labelGotoInfrontPrefix = new System.Windows.Forms.Label();
+            this.textBoxGotoInfront = new STROOP.BetterTextbox();
+            this.labelGotoAboveSuffix = new System.Windows.Forms.Label();
+            this.labelGotoAbovePrefix = new System.Windows.Forms.Label();
+            this.textBoxGotoAbove = new STROOP.BetterTextbox();
+            this.groupBoxShowOverlay = new System.Windows.Forms.GroupBox();
+            this.checkBoxShowOverlayCameraHackObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayChildObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayParentObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayCeilingObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayWallObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayFloorObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayUsedObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayInteractionObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayCameraObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayClosestObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayStoodOnObject = new System.Windows.Forms.CheckBox();
+            this.checkBoxShowOverlayHeldObject = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.checkBoxUseRomHack = new System.Windows.Forms.CheckBox();
+            this.tabPageMemory = new System.Windows.Forms.TabPage();
+            this.splitContainerMemory = new STROOP.BetterSplitContainer();
+            this.comboBoxMemoryTypes = new System.Windows.Forms.ComboBox();
+            this.richTextBoxMemoryValues = new STROOP.Controls.RichTextBoxEx();
+            this.checkBoxMemoryObj = new System.Windows.Forms.CheckBox();
+            this.checkBoxMemoryHex = new System.Windows.Forms.CheckBox();
+            this.checkBoxMemoryRelativeAddresses = new System.Windows.Forms.CheckBox();
+            this.checkBoxMemoryLittleEndian = new System.Windows.Forms.CheckBox();
+            this.checkBoxMemoryUpdateContinuously = new System.Windows.Forms.CheckBox();
+            this.richTextBoxMemoryAddresses = new STROOP.Controls.RichTextBoxEx();
+            this.textBoxMemoryObjAddress = new STROOP.BetterTextbox();
+            this.labelMemoryObjAddress = new System.Windows.Forms.Label();
+            this.watchVariablePanelMemory = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPagePu = new System.Windows.Forms.TabPage();
+            this.splitContainerPu = new STROOP.BetterSplitContainer();
+            this.groupBoxMarioPu = new System.Windows.Forms.GroupBox();
+            this.checkBoxMarioPuQpu = new System.Windows.Forms.CheckBox();
+            this.textBoxMarioPuY = new STROOP.BetterTextbox();
+            this.buttonMarioPuYp = new System.Windows.Forms.Button();
+            this.buttonMarioPuYn = new System.Windows.Forms.Button();
+            this.buttonMarioPuXpZp = new System.Windows.Forms.Button();
+            this.textBoxMarioPuXZ = new STROOP.BetterTextbox();
+            this.buttonMarioPuXp = new System.Windows.Forms.Button();
+            this.buttonMarioPuXpZn = new System.Windows.Forms.Button();
+            this.buttonMarioPuZn = new System.Windows.Forms.Button();
+            this.buttonMarioPuZp = new System.Windows.Forms.Button();
+            this.buttonMarioPuXnZp = new System.Windows.Forms.Button();
+            this.buttonMarioPuXn = new System.Windows.Forms.Button();
+            this.buttonMarioPuXnZn = new System.Windows.Forms.Button();
             this.groupBoxPuController = new System.Windows.Forms.GroupBox();
             this.labelPuConPu = new System.Windows.Forms.Label();
             this.labelPuConQpuValue = new System.Windows.Forms.Label();
@@ -643,8 +858,9 @@ namespace STROOP
             this.buttonPuConZpPu = new System.Windows.Forms.Button();
             this.buttonPuConZpQpu = new System.Windows.Forms.Button();
             this.buttonPuConHome = new System.Windows.Forms.Button();
+            this.watchVariablePanelPu = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageArea = new System.Windows.Forms.TabPage();
-            this.splitContainerArea = new System.Windows.Forms.SplitContainer();
+            this.splitContainerArea = new STROOP.BetterSplitContainer();
             this.labelSelectedArea = new System.Windows.Forms.Label();
             this.radioButtonArea7 = new System.Windows.Forms.RadioButton();
             this.radioButtonArea4 = new System.Windows.Forms.RadioButton();
@@ -655,9 +871,9 @@ namespace STROOP
             this.radioButtonArea1 = new System.Windows.Forms.RadioButton();
             this.radioButtonArea2 = new System.Windows.Forms.RadioButton();
             this.checkBoxSelectCurrentArea = new System.Windows.Forms.CheckBox();
-            this.watchVariablePanelArea = new STROOP.Controls.WatchVariablePanel();
+            this.watchVariablePanelArea = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageModel = new System.Windows.Forms.TabPage();
-            this.splitContainerModel = new System.Windows.Forms.SplitContainer();
+            this.splitContainerModel = new STROOP.BetterSplitContainer();
             this.checkBoxModelLevel = new System.Windows.Forms.CheckBox();
             this.groupBoxTransformation = new System.Windows.Forms.GroupBox();
             this.labelTransScaleValue = new System.Windows.Forms.Label();
@@ -704,7 +920,7 @@ namespace STROOP
             this.buttonTransPosXn = new System.Windows.Forms.Button();
             this.buttonTransPosXnZn = new System.Windows.Forms.Button();
             this.buttonTransReset = new System.Windows.Forms.Button();
-            this.splitContainerModelTables = new System.Windows.Forms.SplitContainer();
+            this.splitContainerModelTables = new STROOP.BetterSplitContainer();
             this.labelModelVertices = new System.Windows.Forms.Label();
             this.dataGridViewVertices = new System.Windows.Forms.DataGridView();
             this.Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -721,29 +937,41 @@ namespace STROOP
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxModelAddress = new System.Windows.Forms.TextBox();
             this.glControlModelView = new OpenTK.GLControl();
-            this.tabPageDisassembly = new System.Windows.Forms.TabPage();
-            this.textBoxDisAddress = new System.Windows.Forms.TextBox();
-            this.buttonDisMore = new System.Windows.Forms.Button();
-            this.buttonDisGo = new System.Windows.Forms.Button();
-            this.labelDisStart = new System.Windows.Forms.Label();
-            this.richTextBoxDissasembly = new STROOP.Controls.RichTextBoxEx();
-            this.tabPageDecompiler = new System.Windows.Forms.TabPage();
-            this.buttonDecompilerBack = new System.Windows.Forms.Button();
-            this.buttonDecompilerNext = new System.Windows.Forms.Button();
-            this.textBoxDecompilerAddress = new System.Windows.Forms.TextBox();
-            this.buttonDecompilerDecompile = new System.Windows.Forms.Button();
-            this.labelDecompilerAddress = new System.Windows.Forms.Label();
-            this.splitContainerDecompiler = new System.Windows.Forms.SplitContainer();
-            this.listViewDecompiler = new System.Windows.Forms.ListView();
-            this.decompilerViewHost = new System.Windows.Forms.Integration.ElementHost();
-            this.decompilerView = new STROOP.Controls.DecompilerView();
-            this.tabPageScripts = new System.Windows.Forms.TabPage();
-            this.buttonScriptGo = new System.Windows.Forms.Button();
-            this.textBoxScriptAddress = new System.Windows.Forms.TextBox();
-            this.labelScriptAddress = new System.Windows.Forms.Label();
-            this.richTextBoxExScript = new STROOP.Controls.RichTextBoxEx();
+            this.tabPageGfx = new System.Windows.Forms.TabPage();
+            this.splitContainerGfxLeft = new STROOP.BetterSplitContainer();
+            this.treeViewGfx = new System.Windows.Forms.TreeView();
+            this.splitContainerGfxRight = new STROOP.BetterSplitContainer();
+            this.splitContainerGfxMiddle = new STROOP.BetterSplitContainer();
+            this.buttonGfxHitboxHack = new System.Windows.Forms.Button();
+            this.buttonGfxDumpDisplayList = new System.Windows.Forms.Button();
+            this.buttonGfxRefreshObject = new System.Windows.Forms.Button();
+            this.buttonGfxRefresh = new System.Windows.Forms.Button();
+            this.watchVariablePanelGfx = new STROOP.Controls.WatchVariableFlowLayoutPanel();
+            this.richTextBoxGfx = new System.Windows.Forms.RichTextBox();
+            this.tabPageDebug = new System.Windows.Forms.TabPage();
+            this.splitContainerDebug = new STROOP.BetterSplitContainer();
+            this.panelDebugBorder = new System.Windows.Forms.Panel();
+            this.pictureBoxDebug = new STROOP.Controls.IntPictureBox();
+            this.groupBoxMiscDebug = new System.Windows.Forms.GroupBox();
+            this.checkBoxFreeMovement = new System.Windows.Forms.CheckBox();
+            this.checkBoxSpawnMode = new System.Windows.Forms.CheckBox();
+            this.checkBoxStageSelect = new System.Windows.Forms.CheckBox();
+            this.checkBoxClassicMode = new System.Windows.Forms.CheckBox();
+            this.groupBoxResourceMeter = new System.Windows.Forms.GroupBox();
+            this.radioButtonResourceMeterOff = new System.Windows.Forms.RadioButton();
+            this.radioButtonResourceMeter1 = new System.Windows.Forms.RadioButton();
+            this.radioButtonResourceMeter2 = new System.Windows.Forms.RadioButton();
+            this.groupBoxAdvancedMode = new System.Windows.Forms.GroupBox();
+            this.radioButtonAdvancedModeOff = new System.Windows.Forms.RadioButton();
+            this.radioButtonAdvancedModeEnemyInfo = new System.Windows.Forms.RadioButton();
+            this.radioButtonAdvancedModeObjectCounter = new System.Windows.Forms.RadioButton();
+            this.radioButtonAdvancedModeEffectInfo = new System.Windows.Forms.RadioButton();
+            this.radioButtonAdvancedModeCheckInfo = new System.Windows.Forms.RadioButton();
+            this.radioButtonAdvancedModeStageInfo = new System.Windows.Forms.RadioButton();
+            this.radioButtonAdvancedModeMapInfo = new System.Windows.Forms.RadioButton();
+            this.watchVariablePanelDebug = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageHacks = new System.Windows.Forms.TabPage();
-            this.splitContainerHacks = new System.Windows.Forms.SplitContainer();
+            this.splitContainerHacks = new STROOP.BetterSplitContainer();
             this.groupBoxHackRam = new System.Windows.Forms.GroupBox();
             this.labelPureInterpretterRequire = new System.Windows.Forms.Label();
             this.checkedListBoxHacks = new System.Windows.Forms.CheckedListBox();
@@ -759,7 +987,7 @@ namespace STROOP
             this.buttonHackSpawn = new System.Windows.Forms.Button();
             this.listBoxSpawn = new System.Windows.Forms.ListBox();
             this.tabPageCamHack = new System.Windows.Forms.TabPage();
-            this.splitContainerCamHack = new System.Windows.Forms.SplitContainer();
+            this.splitContainerCamHack = new STROOP.BetterSplitContainer();
             this.groupBoxCameraHackBothPos = new System.Windows.Forms.GroupBox();
             this.checkBoxCameraHackBothPosRelative = new System.Windows.Forms.CheckBox();
             this.textBoxCameraHackBothPosY = new STROOP.BetterTextbox();
@@ -834,11 +1062,11 @@ namespace STROOP
             this.radioButtonCamHackMode2 = new System.Windows.Forms.RadioButton();
             this.radioButtonCamHackMode1AbsoluteAngle = new System.Windows.Forms.RadioButton();
             this.radioButtonCamHackMode1RelativeAngle = new System.Windows.Forms.RadioButton();
-            this.watchVariablePanelCamHack = new STROOP.Controls.WatchVariablePanel();
+            this.watchVariablePanelCamHack = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageQuarterFrame = new System.Windows.Forms.TabPage();
-            this.watchVariablePanelQuarterFrame = new STROOP.Controls.WatchVariablePanel();
+            this.watchVariablePanelQuarterFrame = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageVarHack = new System.Windows.Forms.TabPage();
-            this.splitContainerVarHack = new System.Windows.Forms.SplitContainer();
+            this.splitContainerVarHack = new STROOP.BetterSplitContainer();
             this.buttonVarHackApplyVariablesToMemory = new System.Windows.Forms.Button();
             this.buttonEnableDisableRomHack = new STROOP.BinaryButton();
             this.buttonVarHackClearVariablesInMemory = new System.Windows.Forms.Button();
@@ -861,54 +1089,86 @@ namespace STROOP
             this.buttonVarHackAddNewVariable = new System.Windows.Forms.Button();
             this.buttonVarHackShowVariableBytesInBigEndian = new System.Windows.Forms.Button();
             this.buttonVarHackShowVariableBytesInLittleEndian = new System.Windows.Forms.Button();
-            this.buttonVarHackClearVariables = new System.Windows.Forms.Button();
-            this.varHackPanel = new STROOP.Controls.VarHackPanel();
-            this.tabPageOptions = new System.Windows.Forms.TabPage();
-            this.groupBoxPositionControllerRelativeAngle = new System.Windows.Forms.GroupBox();
-            this.textBoxPositionControllerRelativeAngleCustom = new STROOP.BetterTextbox();
-            this.radioButtonPositionControllerRelativeAngleMario = new System.Windows.Forms.RadioButton();
-            this.radioButtonPositionControllerRelativeAngleRecommended = new System.Windows.Forms.RadioButton();
-            this.radioButtonPositionControllerRelativeAngleCustom = new System.Windows.Forms.RadioButton();
-            this.groupBoxFPS = new System.Windows.Forms.GroupBox();
-            this.betterTextboxFPS = new STROOP.BetterTextbox();
-            this.groupBoxRomVersion = new System.Windows.Forms.GroupBox();
-            this.radioButtonRomVersionJP = new System.Windows.Forms.RadioButton();
-            this.radioButtonRomVersionUS = new System.Windows.Forms.RadioButton();
-            this.radioButtonRomVersionPAL = new System.Windows.Forms.RadioButton();
-            this.groupBoxGotoRetrieveOffsets = new System.Windows.Forms.GroupBox();
-            this.labelRetrieveInfrontSuffix = new System.Windows.Forms.Label();
-            this.labelRetrieveInfrontPrefix = new System.Windows.Forms.Label();
-            this.textBoxRetrieveInfront = new STROOP.BetterTextbox();
-            this.labelRetrieveAboveSuffix = new System.Windows.Forms.Label();
-            this.labelRetrieveAbovePrefix = new System.Windows.Forms.Label();
-            this.textBoxRetrieveAbove = new STROOP.BetterTextbox();
-            this.labelGotoInfrontSuffix = new System.Windows.Forms.Label();
-            this.labelGotoInfrontPrefix = new System.Windows.Forms.Label();
-            this.textBoxGotoInfront = new STROOP.BetterTextbox();
-            this.labelGotoAboveSuffix = new System.Windows.Forms.Label();
-            this.labelGotoAbovePrefix = new System.Windows.Forms.Label();
-            this.textBoxGotoAbove = new STROOP.BetterTextbox();
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine = new System.Windows.Forms.CheckBox();
-            this.checkBoxExcludeDustForClosestObject = new System.Windows.Forms.CheckBox();
-            this.groupBoxShowOverlay = new System.Windows.Forms.GroupBox();
-            this.checkBoxShowOverlayCameraHackObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayParentObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayCeilingObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayWallObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayFloorObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayUsedObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayInteractionObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayCameraObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayClosestObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayStoodOnObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayHeldObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxScaleDiagonalPositionControllerButtons = new System.Windows.Forms.CheckBox();
-            this.checkBoxNeutralizeTrianglesWith21 = new System.Windows.Forms.CheckBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.checkBoxMoveCamWithPu = new System.Windows.Forms.CheckBox();
-            this.checkBoxUseRomHack = new System.Windows.Forms.CheckBox();
-            this.checkBoxStartSlotIndexOne = new System.Windows.Forms.CheckBox();
+            this.buttonVarHackOpenVars = new System.Windows.Forms.Button();
+            this.buttonVarHackSaveVars = new System.Windows.Forms.Button();
+            this.buttonVarHackClearVars = new System.Windows.Forms.Button();
+            this.varHackPanel = new STROOP.Controls.VarHackFlowLayoutPanel();
+            this.tabPageCoin = new System.Windows.Forms.TabPage();
+            this.splitContainerCoin = new STROOP.BetterSplitContainer();
+            this.buttonCoinCalculate = new System.Windows.Forms.Button();
+            this.buttonCoinClear = new System.Windows.Forms.Button();
+            this.groupBoxCoinFilter = new System.Windows.Forms.GroupBox();
+            this.textBoxCoinFilterRequiredNumOfQualifiedCoins = new STROOP.BetterTextbox();
+            this.textBoxCoinFilterAngleMin = new STROOP.BetterTextbox();
+            this.textBoxCoinFilterAngleMax = new STROOP.BetterTextbox();
+            this.labelCoinFilterHSpeedFrom = new System.Windows.Forms.Label();
+            this.textBoxCoinFilterVSpeedMax = new STROOP.BetterTextbox();
+            this.labelCoinFilterMin = new System.Windows.Forms.Label();
+            this.labelCoinFilterMax = new System.Windows.Forms.Label();
+            this.textBoxCoinFilterVSpeedMin = new STROOP.BetterTextbox();
+            this.labelCoinFilterHSpeedTo = new System.Windows.Forms.Label();
+            this.textBoxCoinFilterHSpeedMax = new STROOP.BetterTextbox();
+            this.labelCoinFilterVSpeedFrom = new System.Windows.Forms.Label();
+            this.labelCoinFilterVSpeedTo = new System.Windows.Forms.Label();
+            this.textBoxCoinFilterHSpeedMin = new STROOP.BetterTextbox();
+            this.labelCoinFilterAngleFrom = new System.Windows.Forms.Label();
+            this.labelCoinFilterAngleTo = new System.Windows.Forms.Label();
+            this.labelCoinFilterRequiredNumOfQualifiedCoins = new System.Windows.Forms.Label();
+            this.textBoxCoinNumCoins = new STROOP.BetterTextbox();
+            this.textBoxCoinParamOrder = new STROOP.BetterTextbox();
+            this.textBoxCoinVSpeedOffset = new STROOP.BetterTextbox();
+            this.textBoxCoinVSpeedScale = new STROOP.BetterTextbox();
+            this.textBoxCoinHSpeedScale = new STROOP.BetterTextbox();
+            this.labelCoinNumCoins = new System.Windows.Forms.Label();
+            this.labelCoinVSpeedRange = new System.Windows.Forms.Label();
+            this.labelCoinParamOrder = new System.Windows.Forms.Label();
+            this.labelCoinTableEntries = new System.Windows.Forms.Label();
+            this.labelCoinHSpeedRange = new System.Windows.Forms.Label();
+            this.labelCoinVSpeedOffset = new System.Windows.Forms.Label();
+            this.labelCoinVSpeedScale = new System.Windows.Forms.Label();
+            this.labelCoinHSpeedScale = new System.Windows.Forms.Label();
+            this.listBoxCoinObjects = new System.Windows.Forms.ListBox();
+            this.groupBoxCoinCustomization = new System.Windows.Forms.GroupBox();
+            this.checkBoxCoinCustomizatonDisplayNonQualifiedCoinsOfAQualifiedCoinGroup = new System.Windows.Forms.CheckBox();
+            this.textBoxCoinCustomizatonStartingRngIndex = new STROOP.BetterTextbox();
+            this.labelCoinCustomizatonNumDecimalDigits = new System.Windows.Forms.Label();
+            this.labelCoinCustomizatonStartingRngIndex = new System.Windows.Forms.Label();
+            this.textBoxCoinCustomizatonNumDecimalDigits = new STROOP.BetterTextbox();
+            this.dataGridViewCoin = new System.Windows.Forms.DataGridView();
+            this.rngIndex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rngValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rngToGo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coinHSpeed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coinVSpeed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coinAngle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPageDisassembly = new System.Windows.Forms.TabPage();
+            this.textBoxDisAddress = new System.Windows.Forms.TextBox();
+            this.buttonDisMore = new System.Windows.Forms.Button();
+            this.buttonDisGo = new System.Windows.Forms.Button();
+            this.labelDisStart = new System.Windows.Forms.Label();
+            this.richTextBoxDissasembly = new STROOP.Controls.RichTextBoxEx();
+            this.tabPageDecompiler = new System.Windows.Forms.TabPage();
+            this.buttonDecompilerBack = new System.Windows.Forms.Button();
+            this.buttonDecompilerNext = new System.Windows.Forms.Button();
+            this.textBoxDecompilerAddress = new System.Windows.Forms.TextBox();
+            this.buttonDecompilerDecompile = new System.Windows.Forms.Button();
+            this.labelDecompilerAddress = new System.Windows.Forms.Label();
+            this.splitContainerDecompiler = new STROOP.BetterSplitContainer();
+            this.treeViewDecompile = new System.Windows.Forms.TreeView();
+            this.decompilerViewHost = new System.Windows.Forms.Integration.ElementHost();
+            this.decompilerView = new STROOP.Controls.DecompilerView();
+            this.tabPageScripts = new System.Windows.Forms.TabPage();
+            this.buttonScriptGo = new System.Windows.Forms.Button();
+            this.textBoxScriptAddress = new System.Windows.Forms.TextBox();
+            this.labelScriptAddress = new System.Windows.Forms.Label();
+            this.richTextBoxExScript = new STROOP.Controls.RichTextBoxEx();
             this.tabPageTesting = new System.Windows.Forms.TabPage();
+            this.groupBoxTriRooms = new System.Windows.Forms.GroupBox();
+            this.textBoxTriRoomsToValue = new STROOP.BetterTextbox();
+            this.textBoxTriRoomsFromValue = new STROOP.BetterTextbox();
+            this.buttonTriRoomsConvert = new System.Windows.Forms.Button();
+            this.labelTriRoomsToLabel = new System.Windows.Forms.Label();
+            this.labelTriRoomsFromLabel = new System.Windows.Forms.Label();
             this.groupBoxScuttlebugStuff = new System.Windows.Forms.GroupBox();
             this.buttonScuttlebugStuffGetTris = new STROOP.BinaryButton();
             this.radioButtonScuttlebugStuffHMCRedCoins = new System.Windows.Forms.RadioButton();
@@ -1007,6 +1267,14 @@ namespace STROOP
             this.labelControlStick3 = new System.Windows.Forms.Label();
             this.labelControlStick5 = new System.Windows.Forms.Label();
             this.labelControlStick4 = new System.Windows.Forms.Label();
+            this.groupBoxMemoryReader = new System.Windows.Forms.GroupBox();
+            this.comboBoxMemoryReaderTypeValue = new System.Windows.Forms.ComboBox();
+            this.textBoxMemoryReaderCountValue = new STROOP.BetterTextbox();
+            this.buttonMemoryReaderRead = new System.Windows.Forms.Button();
+            this.labelMemoryReaderCountLabel = new System.Windows.Forms.Label();
+            this.textBoxMemoryReaderAddressValue = new STROOP.BetterTextbox();
+            this.labelMemoryReaderAddressLabel = new System.Windows.Forms.Label();
+            this.labelMemoryReaderTypeLabel = new System.Windows.Forms.Label();
             this.groupBoxObjAtObj = new System.Windows.Forms.GroupBox();
             this.checkBoxObjAtObjOn = new System.Windows.Forms.CheckBox();
             this.betterTextboxObjAtObj2 = new STROOP.BetterTextbox();
@@ -1051,36 +1319,23 @@ namespace STROOP
             this.labelMetric3Value = new System.Windows.Forms.Label();
             this.labelMetric5Value = new System.Windows.Forms.Label();
             this.labelMetric4Value = new System.Windows.Forms.Label();
-            this.labelVersionNumber = new System.Windows.Forms.Label();
-            this.buttonDisconnect = new System.Windows.Forms.Button();
-            this.panelConnect = new System.Windows.Forms.Panel();
-            this.buttonRefreshAndConnect = new System.Windows.Forms.Button();
-            this.buttonRefresh = new System.Windows.Forms.Button();
-            this.labelNotConnected = new System.Windows.Forms.Label();
-            this.buttonConnect = new System.Windows.Forms.Button();
-            this.listBoxProcessesList = new System.Windows.Forms.ListBox();
-            this.labelFpsCounter = new System.Windows.Forms.Label();
-            this.buttonShowTopPane = new System.Windows.Forms.Button();
-            this.buttonShowTopBottomPane = new System.Windows.Forms.Button();
-            this.buttonReadOnly = new System.Windows.Forms.Button();
-            this.buttonShowBottomPane = new System.Windows.Forms.Button();
-            this.buttonShowRightPane = new System.Windows.Forms.Button();
-            this.buttonShowLeftRightPane = new System.Windows.Forms.Button();
-            this.buttonShowLeftPane = new System.Windows.Forms.Button();
-            this.groupBoxTriRooms = new System.Windows.Forms.GroupBox();
-            this.textBoxTriRoomsToValue = new STROOP.BetterTextbox();
-            this.textBoxTriRoomsFromValue = new STROOP.BetterTextbox();
-            this.buttonTriRoomsConvert = new System.Windows.Forms.Button();
-            this.labelTriRoomsToLabel = new System.Windows.Forms.Label();
-            this.labelTriRoomsFromLabel = new System.Windows.Forms.Label();
-            this.groupBoxObjects.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
+            this.groupBoxObjects = new System.Windows.Forms.GroupBox();
+            this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
+            this.labelLabelMethod = new System.Windows.Forms.Label();
+            this.labelSlotSize = new System.Windows.Forms.Label();
+            this.checkBoxObjLockLabels = new System.Windows.Forms.CheckBox();
+            this.labelSortMethod = new System.Windows.Forms.Label();
+            this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
+            this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
+            this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
+            this.pictureBoxCog = new System.Windows.Forms.PictureBox();
+            this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
             this.splitContainerMain.Panel2.SuspendLayout();
             this.splitContainerMain.SuspendLayout();
             this.tabControlMain.SuspendLayout();
-            this.tabPageObjects.SuspendLayout();
+            this.tabPageObject.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerObject)).BeginInit();
             this.splitContainerObject.Panel1.SuspendLayout();
             this.splitContainerObject.Panel2.SuspendLayout();
@@ -1111,10 +1366,10 @@ namespace STROOP
             this.panelHudBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHud)).BeginInit();
             this.tabPageCamera.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SplitContainerCamera)).BeginInit();
-            this.SplitContainerCamera.Panel1.SuspendLayout();
-            this.SplitContainerCamera.Panel2.SuspendLayout();
-            this.SplitContainerCamera.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCamera)).BeginInit();
+            this.splitContainerCamera.Panel1.SuspendLayout();
+            this.splitContainerCamera.Panel2.SuspendLayout();
+            this.splitContainerCamera.SuspendLayout();
             this.groupBoxCameraSphericalPos.SuspendLayout();
             this.panelCameraBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCamera)).BeginInit();
@@ -1126,13 +1381,7 @@ namespace STROOP
             this.splitContainerTriangles.SuspendLayout();
             this.groupBoxTrianglePos.SuspendLayout();
             this.groupBoxTriangleNormal.SuspendLayout();
-            this.tabPageWater.SuspendLayout();
             this.tabPageActions.SuspendLayout();
-            this.tabPageInput.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerInput)).BeginInit();
-            this.splitContainerInput.Panel1.SuspendLayout();
-            this.splitContainerInput.Panel2.SuspendLayout();
-            this.splitContainerInput.SuspendLayout();
             this.tabPageFile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerFile)).BeginInit();
             this.splitContainerFile.Panel1.SuspendLayout();
@@ -1295,6 +1544,12 @@ namespace STROOP
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationSSLGround)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationSnowman)).BeginInit();
             this.groupBoxFile.SuspendLayout();
+            this.tabPageInput.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerInput)).BeginInit();
+            this.splitContainerInput.Panel1.SuspendLayout();
+            this.splitContainerInput.Panel2.SuspendLayout();
+            this.splitContainerInput.SuspendLayout();
+            this.tabPageWater.SuspendLayout();
             this.tabPageMisc.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMisc)).BeginInit();
             this.splitContainerMisc.Panel1.SuspendLayout();
@@ -1303,6 +1558,18 @@ namespace STROOP
             this.groupBoxRNGIndexTester.SuspendLayout();
             this.panelMiscBorder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).BeginInit();
+            this.tabPageM64.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerM64)).BeginInit();
+            this.splitContainerM64.Panel1.SuspendLayout();
+            this.splitContainerM64.Panel2.SuspendLayout();
+            this.splitContainerM64.SuspendLayout();
+            this.groupBoxM64QuickDuplication.SuspendLayout();
+            this.groupBoxM64Selection.SuspendLayout();
+            this.tabControlM64Details.SuspendLayout();
+            this.tabPageM64Inputs.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewM64Inputs)).BeginInit();
+            this.tabPageM64Header.SuspendLayout();
+            this.tabPageM64Stats.SuspendLayout();
             this.tabPageCustom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerCustom)).BeginInit();
             this.splitContainerCustom.Panel1.SuspendLayout();
@@ -1315,25 +1582,55 @@ namespace STROOP
             this.groupBoxVarHeight.SuspendLayout();
             this.groupBoxVarValueWidth.SuspendLayout();
             this.groupBoxVarNameWidth.SuspendLayout();
-            this.tabPageDebug.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDebug)).BeginInit();
-            this.splitContainerDebug.Panel1.SuspendLayout();
-            this.splitContainerDebug.Panel2.SuspendLayout();
-            this.splitContainerDebug.SuspendLayout();
-            this.panelDebugBorder.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).BeginInit();
-            this.groupBoxMiscDebug.SuspendLayout();
-            this.groupBoxResourceMeter.SuspendLayout();
-            this.groupBoxAdvancedMode.SuspendLayout();
+            this.tabPageTas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTas)).BeginInit();
+            this.splitContainerTas.Panel1.SuspendLayout();
+            this.splitContainerTas.Panel2.SuspendLayout();
+            this.splitContainerTas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTasTable)).BeginInit();
+            this.splitContainerTasTable.Panel1.SuspendLayout();
+            this.splitContainerTasTable.Panel2.SuspendLayout();
+            this.splitContainerTasTable.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTas)).BeginInit();
             this.tabPageMap.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap)).BeginInit();
             this.splitContainerMap.Panel1.SuspendLayout();
             this.splitContainerMap.Panel2.SuspendLayout();
             this.splitContainerMap.SuspendLayout();
-            this.groupBoxMapBounds.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarMapIconSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarMapZoom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMapControls)).BeginInit();
+            this.splitContainerMapControls.Panel1.SuspendLayout();
+            this.splitContainerMapControls.Panel2.SuspendLayout();
+            this.splitContainerMapControls.SuspendLayout();
+            this.tabControlMap.SuspendLayout();
+            this.tabPageMapOptions.SuspendLayout();
+            this.tabPageMap2D.SuspendLayout();
+            this.groupBoxMapControlsAngle.SuspendLayout();
+            this.groupBoxMapControlsCenter.SuspendLayout();
+            this.groupBoxMapControlsScale.SuspendLayout();
+            this.tabPageMap3D.SuspendLayout();
+            this.tabPageMap2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap2)).BeginInit();
+            this.splitContainerMap2.Panel1.SuspendLayout();
+            this.splitContainerMap2.Panel2.SuspendLayout();
+            this.splitContainerMap2.SuspendLayout();
+            this.groupBoxMap2Bounds.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarMap2IconSize)).BeginInit();
+            this.tabPageOptions.SuspendLayout();
+            this.groupBoxPositionControllerRelativeAngle.SuspendLayout();
+            this.groupBoxFPS.SuspendLayout();
+            this.groupBoxGotoRetrieveOffsets.SuspendLayout();
+            this.groupBoxShowOverlay.SuspendLayout();
+            this.tabPageMemory.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMemory)).BeginInit();
+            this.splitContainerMemory.Panel1.SuspendLayout();
+            this.splitContainerMemory.Panel2.SuspendLayout();
+            this.splitContainerMemory.SuspendLayout();
             this.tabPagePu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerPu)).BeginInit();
+            this.splitContainerPu.Panel1.SuspendLayout();
+            this.splitContainerPu.Panel2.SuspendLayout();
+            this.splitContainerPu.SuspendLayout();
+            this.groupBoxMarioPu.SuspendLayout();
             this.groupBoxPuController.SuspendLayout();
             this.tabPageArea.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerArea)).BeginInit();
@@ -1355,13 +1652,29 @@ namespace STROOP
             this.splitContainerModelTables.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVertices)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTriangles)).BeginInit();
-            this.tabPageDisassembly.SuspendLayout();
-            this.tabPageDecompiler.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDecompiler)).BeginInit();
-            this.splitContainerDecompiler.Panel1.SuspendLayout();
-            this.splitContainerDecompiler.Panel2.SuspendLayout();
-            this.splitContainerDecompiler.SuspendLayout();
-            this.tabPageScripts.SuspendLayout();
+            this.tabPageGfx.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerGfxLeft)).BeginInit();
+            this.splitContainerGfxLeft.Panel1.SuspendLayout();
+            this.splitContainerGfxLeft.Panel2.SuspendLayout();
+            this.splitContainerGfxLeft.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerGfxRight)).BeginInit();
+            this.splitContainerGfxRight.Panel1.SuspendLayout();
+            this.splitContainerGfxRight.Panel2.SuspendLayout();
+            this.splitContainerGfxRight.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerGfxMiddle)).BeginInit();
+            this.splitContainerGfxMiddle.Panel1.SuspendLayout();
+            this.splitContainerGfxMiddle.Panel2.SuspendLayout();
+            this.splitContainerGfxMiddle.SuspendLayout();
+            this.tabPageDebug.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDebug)).BeginInit();
+            this.splitContainerDebug.Panel1.SuspendLayout();
+            this.splitContainerDebug.Panel2.SuspendLayout();
+            this.splitContainerDebug.SuspendLayout();
+            this.panelDebugBorder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).BeginInit();
+            this.groupBoxMiscDebug.SuspendLayout();
+            this.groupBoxResourceMeter.SuspendLayout();
+            this.groupBoxAdvancedMode.SuspendLayout();
             this.tabPageHacks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerHacks)).BeginInit();
             this.splitContainerHacks.Panel1.SuspendLayout();
@@ -1385,24 +1698,36 @@ namespace STROOP
             this.splitContainerVarHack.Panel1.SuspendLayout();
             this.splitContainerVarHack.Panel2.SuspendLayout();
             this.splitContainerVarHack.SuspendLayout();
-            this.tabPageOptions.SuspendLayout();
-            this.groupBoxPositionControllerRelativeAngle.SuspendLayout();
-            this.groupBoxFPS.SuspendLayout();
-            this.groupBoxRomVersion.SuspendLayout();
-            this.groupBoxGotoRetrieveOffsets.SuspendLayout();
-            this.groupBoxShowOverlay.SuspendLayout();
+            this.tabPageCoin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCoin)).BeginInit();
+            this.splitContainerCoin.Panel1.SuspendLayout();
+            this.splitContainerCoin.Panel2.SuspendLayout();
+            this.splitContainerCoin.SuspendLayout();
+            this.groupBoxCoinFilter.SuspendLayout();
+            this.groupBoxCoinCustomization.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCoin)).BeginInit();
+            this.tabPageDisassembly.SuspendLayout();
+            this.tabPageDecompiler.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDecompiler)).BeginInit();
+            this.splitContainerDecompiler.Panel1.SuspendLayout();
+            this.splitContainerDecompiler.Panel2.SuspendLayout();
+            this.splitContainerDecompiler.SuspendLayout();
+            this.tabPageScripts.SuspendLayout();
             this.tabPageTesting.SuspendLayout();
+            this.groupBoxTriRooms.SuspendLayout();
             this.groupBoxScuttlebugStuff.SuspendLayout();
             this.groupBoxSchedule.SuspendLayout();
             this.groupBoxStateTransfer.SuspendLayout();
             this.groupBoxControlStick.SuspendLayout();
+            this.groupBoxMemoryReader.SuspendLayout();
             this.groupBoxObjAtObj.SuspendLayout();
             this.groupBoxObjAtHome.SuspendLayout();
             this.groupBoxObjAtHOLP.SuspendLayout();
             this.groupBoxGoto.SuspendLayout();
             this.groupBoxRecording.SuspendLayout();
-            this.panelConnect.SuspendLayout();
-            this.groupBoxTriRooms.SuspendLayout();
+            this.groupBoxObjects.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -1415,113 +1740,237 @@ namespace STROOP
             this.labelProcessSelect.TabIndex = 1;
             this.labelProcessSelect.Text = "Connected To:";
             // 
-            // groupBoxObjects
+            // labelVersionNumber
             // 
-            this.groupBoxObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxObjects.Controls.Add(this.comboBoxLabelMethod);
-            this.groupBoxObjects.Controls.Add(this.labelLabelMethod);
-            this.groupBoxObjects.Controls.Add(this.labelSlotSize);
-            this.groupBoxObjects.Controls.Add(this.checkBoxObjLockLabels);
-            this.groupBoxObjects.Controls.Add(this.labelSortMethod);
-            this.groupBoxObjects.Controls.Add(this.WatchVariablePanelObjects);
-            this.groupBoxObjects.Controls.Add(this.comboBoxSortMethod);
-            this.groupBoxObjects.Controls.Add(this.trackBarObjSlotSize);
-            this.groupBoxObjects.Location = new System.Drawing.Point(2, 2);
-            this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Name = "groupBoxObjects";
-            this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(923, 375);
-            this.groupBoxObjects.TabIndex = 2;
-            this.groupBoxObjects.TabStop = false;
-            this.groupBoxObjects.Text = "Objects";
+            this.labelVersionNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelVersionNumber.AutoSize = true;
+            this.labelVersionNumber.Location = new System.Drawing.Point(894, 15);
+            this.labelVersionNumber.Name = "labelVersionNumber";
+            this.labelVersionNumber.Size = new System.Drawing.Size(41, 13);
+            this.labelVersionNumber.TabIndex = 5;
+            this.labelVersionNumber.Text = "version";
+            this.labelVersionNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // comboBoxLabelMethod
+            // buttonDisconnect
             // 
-            this.comboBoxLabelMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxLabelMethod.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBoxLabelMethod.Location = new System.Drawing.Point(641, 15);
-            this.comboBoxLabelMethod.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxLabelMethod.Name = "comboBoxLabelMethod";
-            this.comboBoxLabelMethod.Size = new System.Drawing.Size(102, 21);
-            this.comboBoxLabelMethod.TabIndex = 13;
+            this.buttonDisconnect.Location = new System.Drawing.Point(11, 11);
+            this.buttonDisconnect.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDisconnect.Name = "buttonDisconnect";
+            this.buttonDisconnect.Size = new System.Drawing.Size(72, 21);
+            this.buttonDisconnect.TabIndex = 17;
+            this.buttonDisconnect.Text = "Disconnect";
+            this.buttonDisconnect.UseVisualStyleBackColor = true;
+            this.buttonDisconnect.Click += new System.EventHandler(this.buttonDisconnect_Click);
             // 
-            // labelLabelMethod
+            // panelConnect
             // 
-            this.labelLabelMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelLabelMethod.AutoSize = true;
-            this.labelLabelMethod.Location = new System.Drawing.Point(561, 18);
-            this.labelLabelMethod.Name = "labelLabelMethod";
-            this.labelLabelMethod.Size = new System.Drawing.Size(75, 13);
-            this.labelLabelMethod.TabIndex = 12;
-            this.labelLabelMethod.Text = "Label Method:";
+            this.panelConnect.Controls.Add(this.buttonRefreshAndConnect);
+            this.panelConnect.Controls.Add(this.buttonBypass);
+            this.panelConnect.Controls.Add(this.buttonRefresh);
+            this.panelConnect.Controls.Add(this.labelNotConnected);
+            this.panelConnect.Controls.Add(this.buttonConnect);
+            this.panelConnect.Controls.Add(this.listBoxProcessesList);
+            this.panelConnect.Location = new System.Drawing.Point(246, -3);
+            this.panelConnect.Name = "panelConnect";
+            this.panelConnect.Size = new System.Drawing.Size(441, 10);
+            this.panelConnect.TabIndex = 17;
             // 
-            // labelSlotSize
+            // buttonRefreshAndConnect
             // 
-            this.labelSlotSize.AutoSize = true;
-            this.labelSlotSize.Location = new System.Drawing.Point(110, 19);
-            this.labelSlotSize.Name = "labelSlotSize";
-            this.labelSlotSize.Size = new System.Drawing.Size(51, 13);
-            this.labelSlotSize.TabIndex = 11;
-            this.labelSlotSize.Text = "Slot Size:";
+            this.buttonRefreshAndConnect.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonRefreshAndConnect.Location = new System.Drawing.Point(222, 71);
+            this.buttonRefreshAndConnect.Name = "buttonRefreshAndConnect";
+            this.buttonRefreshAndConnect.Size = new System.Drawing.Size(84, 37);
+            this.buttonRefreshAndConnect.TabIndex = 3;
+            this.buttonRefreshAndConnect.Text = "Refresh && Connect";
+            this.buttonRefreshAndConnect.UseVisualStyleBackColor = true;
+            this.buttonRefreshAndConnect.Click += new System.EventHandler(this.buttonRefreshAndConnect_Click);
             // 
-            // checkBoxObjLockLabels
+            // buttonBypass
             // 
-            this.checkBoxObjLockLabels.AutoSize = true;
-            this.checkBoxObjLockLabels.Location = new System.Drawing.Point(4, 18);
-            this.checkBoxObjLockLabels.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxObjLockLabels.Name = "checkBoxObjLockLabels";
-            this.checkBoxObjLockLabels.Size = new System.Drawing.Size(84, 17);
-            this.checkBoxObjLockLabels.TabIndex = 7;
-            this.checkBoxObjLockLabels.Text = "Lock Labels";
-            this.checkBoxObjLockLabels.UseVisualStyleBackColor = true;
+            this.buttonBypass.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonBypass.Location = new System.Drawing.Point(134, 71);
+            this.buttonBypass.Name = "buttonBypass";
+            this.buttonBypass.Size = new System.Drawing.Size(84, 37);
+            this.buttonBypass.TabIndex = 3;
+            this.buttonBypass.Text = "Bypass";
+            this.buttonBypass.UseVisualStyleBackColor = true;
+            this.buttonBypass.Click += new System.EventHandler(this.buttonBypass_Click);
             // 
-            // labelSortMethod
+            // buttonRefresh
             // 
-            this.labelSortMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelSortMethod.AutoSize = true;
-            this.labelSortMethod.Location = new System.Drawing.Point(747, 18);
-            this.labelSortMethod.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelSortMethod.Name = "labelSortMethod";
-            this.labelSortMethod.Size = new System.Drawing.Size(68, 13);
-            this.labelSortMethod.TabIndex = 5;
-            this.labelSortMethod.Text = "Sort Method:";
+            this.buttonRefresh.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonRefresh.Location = new System.Drawing.Point(134, 30);
+            this.buttonRefresh.Name = "buttonRefresh";
+            this.buttonRefresh.Size = new System.Drawing.Size(84, 37);
+            this.buttonRefresh.TabIndex = 3;
+            this.buttonRefresh.Text = "Refresh";
+            this.buttonRefresh.UseVisualStyleBackColor = true;
+            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
             // 
-            // WatchVariablePanelObjects
+            // labelNotConnected
             // 
-            this.WatchVariablePanelObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.WatchVariablePanelObjects.AutoScroll = true;
-            this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
-            this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
-            this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(915, 153);
-            this.WatchVariablePanelObjects.TabIndex = 0;
-            this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
+            this.labelNotConnected.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelNotConnected.AutoSize = true;
+            this.labelNotConnected.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNotConnected.Location = new System.Drawing.Point(141, -100);
+            this.labelNotConnected.Name = "labelNotConnected";
+            this.labelNotConnected.Size = new System.Drawing.Size(157, 26);
+            this.labelNotConnected.TabIndex = 2;
+            this.labelNotConnected.Text = "Not Connected";
             // 
-            // comboBoxSortMethod
+            // buttonConnect
             // 
-            this.comboBoxSortMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxSortMethod.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBoxSortMethod.Location = new System.Drawing.Point(817, 15);
-            this.comboBoxSortMethod.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxSortMethod.Name = "comboBoxSortMethod";
-            this.comboBoxSortMethod.Size = new System.Drawing.Size(102, 21);
-            this.comboBoxSortMethod.TabIndex = 4;
+            this.buttonConnect.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonConnect.Location = new System.Drawing.Point(222, 30);
+            this.buttonConnect.Name = "buttonConnect";
+            this.buttonConnect.Size = new System.Drawing.Size(84, 37);
+            this.buttonConnect.TabIndex = 1;
+            this.buttonConnect.Text = "Connect";
+            this.buttonConnect.UseVisualStyleBackColor = true;
+            this.buttonConnect.Click += new System.EventHandler(this.buttonConnect_Click);
             // 
-            // trackBarObjSlotSize
+            // listBoxProcessesList
             // 
-            this.trackBarObjSlotSize.Location = new System.Drawing.Point(167, 15);
-            this.trackBarObjSlotSize.Maximum = 100;
-            this.trackBarObjSlotSize.Minimum = 15;
-            this.trackBarObjSlotSize.Name = "trackBarObjSlotSize";
-            this.trackBarObjSlotSize.Size = new System.Drawing.Size(104, 45);
-            this.trackBarObjSlotSize.TabIndex = 3;
-            this.trackBarObjSlotSize.TickFrequency = 10;
-            this.trackBarObjSlotSize.Value = 40;
-            this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
+            this.listBoxProcessesList.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.listBoxProcessesList.FormattingEnabled = true;
+            this.listBoxProcessesList.Location = new System.Drawing.Point(134, -69);
+            this.listBoxProcessesList.Name = "listBoxProcessesList";
+            this.listBoxProcessesList.Size = new System.Drawing.Size(172, 95);
+            this.listBoxProcessesList.TabIndex = 0;
+            // 
+            // labelFpsCounter
+            // 
+            this.labelFpsCounter.AutoSize = true;
+            this.labelFpsCounter.Location = new System.Drawing.Point(88, 15);
+            this.labelFpsCounter.Name = "labelFpsCounter";
+            this.labelFpsCounter.Size = new System.Drawing.Size(39, 13);
+            this.labelFpsCounter.TabIndex = 18;
+            this.labelFpsCounter.Text = "FPS: 0";
+            // 
+            // buttonShowTopPane
+            // 
+            this.buttonShowTopPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonShowTopPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowTopPane.BackgroundImage")));
+            this.buttonShowTopPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonShowTopPane.Location = new System.Drawing.Point(844, 11);
+            this.buttonShowTopPane.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonShowTopPane.Name = "buttonShowTopPane";
+            this.buttonShowTopPane.Size = new System.Drawing.Size(21, 21);
+            this.buttonShowTopPane.TabIndex = 19;
+            this.buttonShowTopPane.UseVisualStyleBackColor = true;
+            this.buttonShowTopPane.Click += new System.EventHandler(this.buttonShowTopPanel_Click);
+            // 
+            // buttonShowTopBottomPane
+            // 
+            this.buttonShowTopBottomPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonShowTopBottomPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowTopBottomPane.BackgroundImage")));
+            this.buttonShowTopBottomPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonShowTopBottomPane.Location = new System.Drawing.Point(819, 11);
+            this.buttonShowTopBottomPane.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonShowTopBottomPane.Name = "buttonShowTopBottomPane";
+            this.buttonShowTopBottomPane.Size = new System.Drawing.Size(21, 21);
+            this.buttonShowTopBottomPane.TabIndex = 20;
+            this.buttonShowTopBottomPane.UseVisualStyleBackColor = true;
+            this.buttonShowTopBottomPane.Click += new System.EventHandler(this.buttonShowTopBottomPanel_Click);
+            // 
+            // buttonShowBottomPane
+            // 
+            this.buttonShowBottomPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonShowBottomPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowBottomPane.BackgroundImage")));
+            this.buttonShowBottomPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonShowBottomPane.Location = new System.Drawing.Point(794, 11);
+            this.buttonShowBottomPane.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonShowBottomPane.Name = "buttonShowBottomPane";
+            this.buttonShowBottomPane.Size = new System.Drawing.Size(21, 21);
+            this.buttonShowBottomPane.TabIndex = 20;
+            this.buttonShowBottomPane.UseVisualStyleBackColor = true;
+            this.buttonShowBottomPane.Click += new System.EventHandler(this.buttonShowBottomPanel_Click);
+            // 
+            // buttonShowRightPane
+            // 
+            this.buttonShowRightPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonShowRightPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowRightPane.BackgroundImage")));
+            this.buttonShowRightPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonShowRightPane.Location = new System.Drawing.Point(769, 11);
+            this.buttonShowRightPane.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonShowRightPane.Name = "buttonShowRightPane";
+            this.buttonShowRightPane.Size = new System.Drawing.Size(21, 21);
+            this.buttonShowRightPane.TabIndex = 19;
+            this.buttonShowRightPane.UseVisualStyleBackColor = true;
+            this.buttonShowRightPane.Click += new System.EventHandler(this.buttonShowRightPanel_Click);
+            // 
+            // buttonShowLeftRightPane
+            // 
+            this.buttonShowLeftRightPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonShowLeftRightPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowLeftRightPane.BackgroundImage")));
+            this.buttonShowLeftRightPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonShowLeftRightPane.Location = new System.Drawing.Point(744, 11);
+            this.buttonShowLeftRightPane.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonShowLeftRightPane.Name = "buttonShowLeftRightPane";
+            this.buttonShowLeftRightPane.Size = new System.Drawing.Size(21, 21);
+            this.buttonShowLeftRightPane.TabIndex = 20;
+            this.buttonShowLeftRightPane.UseVisualStyleBackColor = true;
+            this.buttonShowLeftRightPane.Click += new System.EventHandler(this.buttonShowLeftRightPanel_Click);
+            // 
+            // buttonShowLeftPane
+            // 
+            this.buttonShowLeftPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonShowLeftPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowLeftPane.BackgroundImage")));
+            this.buttonShowLeftPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonShowLeftPane.Location = new System.Drawing.Point(719, 11);
+            this.buttonShowLeftPane.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonShowLeftPane.Name = "buttonShowLeftPane";
+            this.buttonShowLeftPane.Size = new System.Drawing.Size(21, 21);
+            this.buttonShowLeftPane.TabIndex = 20;
+            this.buttonShowLeftPane.UseVisualStyleBackColor = true;
+            this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
+            // 
+            // comboBoxRomVersion
+            // 
+            this.comboBoxRomVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxRomVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxRomVersion.Location = new System.Drawing.Point(594, 11);
+            this.comboBoxRomVersion.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxRomVersion.Name = "comboBoxRomVersion";
+            this.comboBoxRomVersion.Size = new System.Drawing.Size(42, 21);
+            this.comboBoxRomVersion.TabIndex = 22;
+            // 
+            // comboBoxReadWriteMode
+            // 
+            this.comboBoxReadWriteMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxReadWriteMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxReadWriteMode.Location = new System.Drawing.Point(640, 11);
+            this.comboBoxReadWriteMode.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxReadWriteMode.Name = "comboBoxReadWriteMode";
+            this.comboBoxReadWriteMode.Size = new System.Drawing.Size(75, 21);
+            this.comboBoxReadWriteMode.TabIndex = 22;
+            // 
+            // buttonMoveTabRight
+            // 
+            this.buttonMoveTabRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMoveTabRight.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonMoveTabRight.BackgroundImage")));
+            this.buttonMoveTabRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonMoveTabRight.Location = new System.Drawing.Point(569, 11);
+            this.buttonMoveTabRight.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonMoveTabRight.Name = "buttonMoveTabRight";
+            this.buttonMoveTabRight.Size = new System.Drawing.Size(21, 21);
+            this.buttonMoveTabRight.TabIndex = 20;
+            this.buttonMoveTabRight.UseVisualStyleBackColor = true;
+            this.buttonMoveTabRight.Click += new System.EventHandler(this.buttonMoveTabRight_Click);
+            // 
+            // buttonMoveTabLeft
+            // 
+            this.buttonMoveTabLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMoveTabLeft.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonMoveTabLeft.BackgroundImage")));
+            this.buttonMoveTabLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonMoveTabLeft.Location = new System.Drawing.Point(544, 11);
+            this.buttonMoveTabLeft.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonMoveTabLeft.Name = "buttonMoveTabLeft";
+            this.buttonMoveTabLeft.Size = new System.Drawing.Size(21, 21);
+            this.buttonMoveTabLeft.TabIndex = 20;
+            this.buttonMoveTabLeft.UseVisualStyleBackColor = true;
+            this.buttonMoveTabLeft.Click += new System.EventHandler(this.buttonMoveTabLeft_Click);
             // 
             // splitContainerMain
             // 
@@ -1554,31 +2003,38 @@ namespace STROOP
             this.tabControlMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControlMain.Controls.Add(this.tabPageObjects);
+            this.tabControlMain.Controls.Add(this.tabPageObject);
             this.tabControlMain.Controls.Add(this.tabPageMario);
             this.tabControlMain.Controls.Add(this.tabPageHud);
             this.tabControlMain.Controls.Add(this.tabPageCamera);
             this.tabControlMain.Controls.Add(this.tabPageTriangles);
-            this.tabControlMain.Controls.Add(this.tabPageWater);
             this.tabControlMain.Controls.Add(this.tabPageActions);
-            this.tabControlMain.Controls.Add(this.tabPageInput);
             this.tabControlMain.Controls.Add(this.tabPageFile);
+            this.tabControlMain.Controls.Add(this.tabPageInput);
+            this.tabControlMain.Controls.Add(this.tabPageWater);
             this.tabControlMain.Controls.Add(this.tabPageMisc);
+            this.tabControlMain.Controls.Add(this.tabPageM64);
             this.tabControlMain.Controls.Add(this.tabPageCustom);
-            this.tabControlMain.Controls.Add(this.tabPageDebug);
+            this.tabControlMain.Controls.Add(this.tabPageTas);
             this.tabControlMain.Controls.Add(this.tabPageMap);
+            this.tabControlMain.Controls.Add(this.tabPageMap2);
+            this.tabControlMain.Controls.Add(this.tabPageOptions);
+            this.tabControlMain.Controls.Add(this.tabPageMemory);
             this.tabControlMain.Controls.Add(this.tabPagePu);
             this.tabControlMain.Controls.Add(this.tabPageArea);
             this.tabControlMain.Controls.Add(this.tabPageModel);
-            this.tabControlMain.Controls.Add(this.tabPageDisassembly);
-            this.tabControlMain.Controls.Add(this.tabPageDecompiler);
-            this.tabControlMain.Controls.Add(this.tabPageScripts);
+            this.tabControlMain.Controls.Add(this.tabPageGfx);
+            this.tabControlMain.Controls.Add(this.tabPageDebug);
             this.tabControlMain.Controls.Add(this.tabPageHacks);
             this.tabControlMain.Controls.Add(this.tabPageCamHack);
             this.tabControlMain.Controls.Add(this.tabPageQuarterFrame);
             this.tabControlMain.Controls.Add(this.tabPageVarHack);
-            this.tabControlMain.Controls.Add(this.tabPageOptions);
+            this.tabControlMain.Controls.Add(this.tabPageCoin);
+            this.tabControlMain.Controls.Add(this.tabPageDisassembly);
+            this.tabControlMain.Controls.Add(this.tabPageDecompiler);
+            this.tabControlMain.Controls.Add(this.tabPageScripts);
             this.tabControlMain.Controls.Add(this.tabPageTesting);
+            this.tabControlMain.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabControlMain.HotTrack = true;
             this.tabControlMain.Location = new System.Drawing.Point(2, 2);
             this.tabControlMain.Margin = new System.Windows.Forms.Padding(2);
@@ -1587,16 +2043,16 @@ namespace STROOP
             this.tabControlMain.Size = new System.Drawing.Size(923, 489);
             this.tabControlMain.TabIndex = 3;
             // 
-            // tabPageObjects
+            // tabPageObject
             // 
-            this.tabPageObjects.BackColor = System.Drawing.Color.Transparent;
-            this.tabPageObjects.Controls.Add(this.splitContainerObject);
-            this.tabPageObjects.Location = new System.Drawing.Point(4, 22);
-            this.tabPageObjects.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPageObjects.Name = "tabPageObjects";
-            this.tabPageObjects.Size = new System.Drawing.Size(915, 463);
-            this.tabPageObjects.TabIndex = 0;
-            this.tabPageObjects.Text = "Object";
+            this.tabPageObject.BackColor = System.Drawing.Color.Transparent;
+            this.tabPageObject.Controls.Add(this.splitContainerObject);
+            this.tabPageObject.Location = new System.Drawing.Point(4, 22);
+            this.tabPageObject.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageObject.Name = "tabPageObject";
+            this.tabPageObject.Size = new System.Drawing.Size(915, 463);
+            this.tabPageObject.TabIndex = 0;
+            this.tabPageObject.Text = "Object";
             // 
             // splitContainerObject
             // 
@@ -3161,6 +3617,7 @@ namespace STROOP
             // 
             this.splitContainerHud.Panel1.AutoScroll = true;
             this.splitContainerHud.Panel1.Controls.Add(this.checkBoxFullHP);
+            this.splitContainerHud.Panel1.Controls.Add(this.buttonGameOver);
             this.splitContainerHud.Panel1.Controls.Add(this.button99Coins);
             this.splitContainerHud.Panel1.Controls.Add(this.buttonStandardHud);
             this.splitContainerHud.Panel1.Controls.Add(this.panelHudBorder);
@@ -3182,16 +3639,25 @@ namespace STROOP
             // checkBoxFullHP
             // 
             this.checkBoxFullHP.AutoSize = true;
-            this.checkBoxFullHP.Location = new System.Drawing.Point(4, 251);
+            this.checkBoxFullHP.Location = new System.Drawing.Point(4, 252);
             this.checkBoxFullHP.Name = "checkBoxFullHP";
             this.checkBoxFullHP.Size = new System.Drawing.Size(60, 17);
             this.checkBoxFullHP.TabIndex = 18;
             this.checkBoxFullHP.Text = "Full HP";
             this.checkBoxFullHP.UseVisualStyleBackColor = true;
             // 
+            // buttonGameOver
+            // 
+            this.buttonGameOver.Location = new System.Drawing.Point(3, 125);
+            this.buttonGameOver.Name = "buttonGameOver";
+            this.buttonGameOver.Size = new System.Drawing.Size(93, 24);
+            this.buttonGameOver.TabIndex = 6;
+            this.buttonGameOver.Text = "Game Over";
+            this.buttonGameOver.UseVisualStyleBackColor = true;
+            // 
             // button99Coins
             // 
-            this.button99Coins.Location = new System.Drawing.Point(3, 133);
+            this.button99Coins.Location = new System.Drawing.Point(3, 150);
             this.button99Coins.Name = "button99Coins";
             this.button99Coins.Size = new System.Drawing.Size(93, 24);
             this.button99Coins.TabIndex = 6;
@@ -3200,7 +3666,7 @@ namespace STROOP
             // 
             // buttonStandardHud
             // 
-            this.buttonStandardHud.Location = new System.Drawing.Point(3, 192);
+            this.buttonStandardHud.Location = new System.Drawing.Point(3, 200);
             this.buttonStandardHud.Name = "buttonStandardHud";
             this.buttonStandardHud.Size = new System.Drawing.Size(93, 24);
             this.buttonStandardHud.TabIndex = 6;
@@ -3233,7 +3699,7 @@ namespace STROOP
             // 
             // buttonDie
             // 
-            this.buttonDie.Location = new System.Drawing.Point(3, 104);
+            this.buttonDie.Location = new System.Drawing.Point(3, 100);
             this.buttonDie.Name = "buttonDie";
             this.buttonDie.Size = new System.Drawing.Size(93, 23);
             this.buttonDie.TabIndex = 5;
@@ -3242,7 +3708,7 @@ namespace STROOP
             // 
             // button100Lives
             // 
-            this.button100Lives.Location = new System.Drawing.Point(3, 163);
+            this.button100Lives.Location = new System.Drawing.Point(3, 175);
             this.button100Lives.Name = "button100Lives";
             this.button100Lives.Size = new System.Drawing.Size(93, 23);
             this.button100Lives.TabIndex = 4;
@@ -3251,7 +3717,7 @@ namespace STROOP
             // 
             // buttonTurnOnOffHud
             // 
-            this.buttonTurnOnOffHud.Location = new System.Drawing.Point(3, 222);
+            this.buttonTurnOnOffHud.Location = new System.Drawing.Point(3, 225);
             this.buttonTurnOnOffHud.Name = "buttonTurnOnOffHud";
             this.buttonTurnOnOffHud.Size = new System.Drawing.Size(93, 23);
             this.buttonTurnOnOffHud.TabIndex = 4;
@@ -3281,7 +3747,7 @@ namespace STROOP
             // 
             // tabPageCamera
             // 
-            this.tabPageCamera.Controls.Add(this.SplitContainerCamera);
+            this.tabPageCamera.Controls.Add(this.splitContainerCamera);
             this.tabPageCamera.Location = new System.Drawing.Point(4, 22);
             this.tabPageCamera.Margin = new System.Windows.Forms.Padding(0);
             this.tabPageCamera.Name = "tabPageCamera";
@@ -3289,32 +3755,32 @@ namespace STROOP
             this.tabPageCamera.TabIndex = 7;
             this.tabPageCamera.Text = "Camera";
             // 
-            // SplitContainerCamera
+            // splitContainerCamera
             // 
-            this.SplitContainerCamera.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SplitContainerCamera.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SplitContainerCamera.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.SplitContainerCamera.Location = new System.Drawing.Point(0, 0);
-            this.SplitContainerCamera.Margin = new System.Windows.Forms.Padding(0);
-            this.SplitContainerCamera.Name = "SplitContainerCamera";
+            this.splitContainerCamera.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerCamera.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerCamera.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerCamera.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerCamera.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerCamera.Name = "splitContainerCamera";
             // 
-            // SplitContainerCamera.Panel1
+            // splitContainerCamera.Panel1
             // 
-            this.SplitContainerCamera.Panel1.AutoScroll = true;
-            this.SplitContainerCamera.Panel1.Controls.Add(this.buttonDisableFOVFunctions);
-            this.SplitContainerCamera.Panel1.Controls.Add(this.groupBoxCameraSphericalPos);
-            this.SplitContainerCamera.Panel1.Controls.Add(this.panelCameraBorder);
-            this.SplitContainerCamera.Panel1.Controls.Add(this.groupBoxCameraPos);
-            this.SplitContainerCamera.Panel1MinSize = 0;
+            this.splitContainerCamera.Panel1.AutoScroll = true;
+            this.splitContainerCamera.Panel1.Controls.Add(this.buttonDisableFOVFunctions);
+            this.splitContainerCamera.Panel1.Controls.Add(this.groupBoxCameraSphericalPos);
+            this.splitContainerCamera.Panel1.Controls.Add(this.panelCameraBorder);
+            this.splitContainerCamera.Panel1.Controls.Add(this.groupBoxCameraPos);
+            this.splitContainerCamera.Panel1MinSize = 0;
             // 
-            // SplitContainerCamera.Panel2
+            // splitContainerCamera.Panel2
             // 
-            this.SplitContainerCamera.Panel2.Controls.Add(this.watchVariablePanelCamera);
-            this.SplitContainerCamera.Panel2MinSize = 0;
-            this.SplitContainerCamera.Size = new System.Drawing.Size(915, 463);
-            this.SplitContainerCamera.SplitterDistance = 207;
-            this.SplitContainerCamera.SplitterWidth = 1;
-            this.SplitContainerCamera.TabIndex = 31;
+            this.splitContainerCamera.Panel2.Controls.Add(this.watchVariablePanelCamera);
+            this.splitContainerCamera.Panel2MinSize = 0;
+            this.splitContainerCamera.Size = new System.Drawing.Size(915, 463);
+            this.splitContainerCamera.SplitterDistance = 207;
+            this.splitContainerCamera.SplitterWidth = 1;
+            this.splitContainerCamera.TabIndex = 31;
             // 
             // buttonDisableFOVFunctions
             // 
@@ -4206,33 +4672,10 @@ namespace STROOP
             this.watchVariablePanelTriangles.Size = new System.Drawing.Size(704, 461);
             this.watchVariablePanelTriangles.TabIndex = 7;
             // 
-            // tabPageWater
-            // 
-            this.tabPageWater.Controls.Add(this.watchVariablePanelWater);
-            this.tabPageWater.Location = new System.Drawing.Point(4, 22);
-            this.tabPageWater.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPageWater.Name = "tabPageWater";
-            this.tabPageWater.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPageWater.Size = new System.Drawing.Size(915, 463);
-            this.tabPageWater.TabIndex = 14;
-            this.tabPageWater.Text = "Water";
-            // 
-            // watchVariablePanelWater
-            // 
-            this.watchVariablePanelWater.AutoScroll = true;
-            this.watchVariablePanelWater.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.watchVariablePanelWater.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.watchVariablePanelWater.Location = new System.Drawing.Point(2, 2);
-            this.watchVariablePanelWater.Margin = new System.Windows.Forms.Padding(0);
-            this.watchVariablePanelWater.Name = "watchVariablePanelWater";
-            this.watchVariablePanelWater.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelWater.Size = new System.Drawing.Size(911, 459);
-            this.watchVariablePanelWater.TabIndex = 2;
-            // 
             // tabPageActions
             // 
-            this.tabPageActions.Controls.Add(this.labelAnimationDescription);
-            this.tabPageActions.Controls.Add(this.labelActionDescription);
+            this.tabPageActions.Controls.Add(this.textBoxAnimationDescription);
+            this.tabPageActions.Controls.Add(this.textBoxActionDescription);
             this.tabPageActions.Controls.Add(this.watchVariablePanelActions);
             this.tabPageActions.Location = new System.Drawing.Point(4, 22);
             this.tabPageActions.Name = "tabPageActions";
@@ -4241,26 +4684,30 @@ namespace STROOP
             this.tabPageActions.TabIndex = 13;
             this.tabPageActions.Text = "Actions";
             // 
-            // labelAnimationDescription
+            // textBoxAnimationDescription
             // 
-            this.labelAnimationDescription.AutoSize = true;
-            this.labelAnimationDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAnimationDescription.ForeColor = System.Drawing.Color.MediumBlue;
-            this.labelAnimationDescription.Location = new System.Drawing.Point(6, 41);
-            this.labelAnimationDescription.Name = "labelAnimationDescription";
-            this.labelAnimationDescription.Size = new System.Drawing.Size(299, 31);
-            this.labelAnimationDescription.TabIndex = 7;
-            this.labelAnimationDescription.Text = "Animation Description";
+            this.textBoxAnimationDescription.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxAnimationDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxAnimationDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
+            this.textBoxAnimationDescription.ForeColor = System.Drawing.Color.MediumBlue;
+            this.textBoxAnimationDescription.Location = new System.Drawing.Point(12, 41);
+            this.textBoxAnimationDescription.Name = "textBoxAnimationDescription";
+            this.textBoxAnimationDescription.ReadOnly = true;
+            this.textBoxAnimationDescription.Size = new System.Drawing.Size(692, 31);
+            this.textBoxAnimationDescription.TabIndex = 34;
+            this.textBoxAnimationDescription.Text = "Animation Description";
             // 
-            // labelActionDescription
+            // textBoxActionDescription
             // 
-            this.labelActionDescription.AutoSize = true;
-            this.labelActionDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelActionDescription.Location = new System.Drawing.Point(6, 8);
-            this.labelActionDescription.Name = "labelActionDescription";
-            this.labelActionDescription.Size = new System.Drawing.Size(252, 31);
-            this.labelActionDescription.TabIndex = 7;
-            this.labelActionDescription.Text = "Action Description";
+            this.textBoxActionDescription.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxActionDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxActionDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold);
+            this.textBoxActionDescription.Location = new System.Drawing.Point(12, 8);
+            this.textBoxActionDescription.Name = "textBoxActionDescription";
+            this.textBoxActionDescription.ReadOnly = true;
+            this.textBoxActionDescription.Size = new System.Drawing.Size(692, 31);
+            this.textBoxActionDescription.TabIndex = 34;
+            this.textBoxActionDescription.Text = "Action Description";
             // 
             // watchVariablePanelActions
             // 
@@ -4273,62 +4720,6 @@ namespace STROOP
             this.watchVariablePanelActions.Name = "watchVariablePanelActions";
             this.watchVariablePanelActions.Size = new System.Drawing.Size(903, 378);
             this.watchVariablePanelActions.TabIndex = 0;
-            // 
-            // tabPageInput
-            // 
-            this.tabPageInput.Controls.Add(this.splitContainerInput);
-            this.tabPageInput.Location = new System.Drawing.Point(4, 22);
-            this.tabPageInput.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPageInput.Name = "tabPageInput";
-            this.tabPageInput.Size = new System.Drawing.Size(915, 463);
-            this.tabPageInput.TabIndex = 14;
-            this.tabPageInput.Text = "Input";
-            // 
-            // splitContainerInput
-            // 
-            this.splitContainerInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainerInput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerInput.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerInput.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerInput.Margin = new System.Windows.Forms.Padding(0);
-            this.splitContainerInput.Name = "splitContainerInput";
-            // 
-            // splitContainerInput.Panel1
-            // 
-            this.splitContainerInput.Panel1.Controls.Add(this.inputDisplayPanel);
-            this.splitContainerInput.Panel1MinSize = 0;
-            // 
-            // splitContainerInput.Panel2
-            // 
-            this.splitContainerInput.Panel2.Controls.Add(this.watchVariablePanelInput);
-            this.splitContainerInput.Panel2MinSize = 0;
-            this.splitContainerInput.Size = new System.Drawing.Size(915, 463);
-            this.splitContainerInput.SplitterDistance = 428;
-            this.splitContainerInput.SplitterWidth = 1;
-            this.splitContainerInput.TabIndex = 17;
-            // 
-            // inputDisplayPanel
-            // 
-            this.inputDisplayPanel.AutoSize = true;
-            this.inputDisplayPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inputDisplayPanel.Location = new System.Drawing.Point(0, 0);
-            this.inputDisplayPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.inputDisplayPanel.Name = "inputDisplayPanel";
-            this.inputDisplayPanel.Padding = new System.Windows.Forms.Padding(2);
-            this.inputDisplayPanel.Size = new System.Drawing.Size(426, 461);
-            this.inputDisplayPanel.TabIndex = 4;
-            // 
-            // watchVariablePanelInput
-            // 
-            this.watchVariablePanelInput.AutoScroll = true;
-            this.watchVariablePanelInput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.watchVariablePanelInput.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.watchVariablePanelInput.Location = new System.Drawing.Point(0, 0);
-            this.watchVariablePanelInput.Margin = new System.Windows.Forms.Padding(0);
-            this.watchVariablePanelInput.Name = "watchVariablePanelInput";
-            this.watchVariablePanelInput.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelInput.Size = new System.Drawing.Size(484, 461);
-            this.watchVariablePanelInput.TabIndex = 2;
             // 
             // tabPageFile
             // 
@@ -4688,7 +5079,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 219F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 378F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -7664,6 +8055,85 @@ namespace STROOP
             this.watchVariablePanelFile.Size = new System.Drawing.Size(254, 461);
             this.watchVariablePanelFile.TabIndex = 2;
             // 
+            // tabPageInput
+            // 
+            this.tabPageInput.Controls.Add(this.splitContainerInput);
+            this.tabPageInput.Location = new System.Drawing.Point(4, 22);
+            this.tabPageInput.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageInput.Name = "tabPageInput";
+            this.tabPageInput.Size = new System.Drawing.Size(915, 463);
+            this.tabPageInput.TabIndex = 14;
+            this.tabPageInput.Text = "Input";
+            // 
+            // splitContainerInput
+            // 
+            this.splitContainerInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerInput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerInput.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerInput.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerInput.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerInput.Name = "splitContainerInput";
+            // 
+            // splitContainerInput.Panel1
+            // 
+            this.splitContainerInput.Panel1.Controls.Add(this.inputDisplayPanel);
+            this.splitContainerInput.Panel1.Padding = new System.Windows.Forms.Padding(2);
+            this.splitContainerInput.Panel1MinSize = 0;
+            // 
+            // splitContainerInput.Panel2
+            // 
+            this.splitContainerInput.Panel2.Controls.Add(this.watchVariablePanelInput);
+            this.splitContainerInput.Panel2MinSize = 0;
+            this.splitContainerInput.Size = new System.Drawing.Size(915, 463);
+            this.splitContainerInput.SplitterDistance = 428;
+            this.splitContainerInput.SplitterWidth = 1;
+            this.splitContainerInput.TabIndex = 17;
+            // 
+            // inputDisplayPanel
+            // 
+            this.inputDisplayPanel.AutoSize = true;
+            this.inputDisplayPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inputDisplayPanel.Location = new System.Drawing.Point(2, 2);
+            this.inputDisplayPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.inputDisplayPanel.Name = "inputDisplayPanel";
+            this.inputDisplayPanel.Size = new System.Drawing.Size(422, 457);
+            this.inputDisplayPanel.TabIndex = 4;
+            // 
+            // watchVariablePanelInput
+            // 
+            this.watchVariablePanelInput.AutoScroll = true;
+            this.watchVariablePanelInput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.watchVariablePanelInput.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.watchVariablePanelInput.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelInput.Margin = new System.Windows.Forms.Padding(0);
+            this.watchVariablePanelInput.Name = "watchVariablePanelInput";
+            this.watchVariablePanelInput.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelInput.Size = new System.Drawing.Size(484, 461);
+            this.watchVariablePanelInput.TabIndex = 2;
+            // 
+            // tabPageWater
+            // 
+            this.tabPageWater.Controls.Add(this.watchVariablePanelWater);
+            this.tabPageWater.Location = new System.Drawing.Point(4, 22);
+            this.tabPageWater.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPageWater.Name = "tabPageWater";
+            this.tabPageWater.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPageWater.Size = new System.Drawing.Size(915, 463);
+            this.tabPageWater.TabIndex = 14;
+            this.tabPageWater.Text = "Water";
+            // 
+            // watchVariablePanelWater
+            // 
+            this.watchVariablePanelWater.AutoScroll = true;
+            this.watchVariablePanelWater.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.watchVariablePanelWater.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.watchVariablePanelWater.Location = new System.Drawing.Point(2, 2);
+            this.watchVariablePanelWater.Margin = new System.Windows.Forms.Padding(0);
+            this.watchVariablePanelWater.Name = "watchVariablePanelWater";
+            this.watchVariablePanelWater.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelWater.Size = new System.Drawing.Size(911, 459);
+            this.watchVariablePanelWater.TabIndex = 2;
+            // 
             // tabPageMisc
             // 
             this.tabPageMisc.Controls.Add(this.splitContainerMisc);
@@ -7776,6 +8246,797 @@ namespace STROOP
             this.watchVariablePanelMisc.Size = new System.Drawing.Size(782, 461);
             this.watchVariablePanelMisc.TabIndex = 5;
             // 
+            // tabPageM64
+            // 
+            this.tabPageM64.Controls.Add(this.splitContainerM64);
+            this.tabPageM64.Location = new System.Drawing.Point(4, 22);
+            this.tabPageM64.Name = "tabPageM64";
+            this.tabPageM64.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageM64.Size = new System.Drawing.Size(915, 463);
+            this.tabPageM64.TabIndex = 28;
+            this.tabPageM64.Text = "M64";
+            // 
+            // splitContainerM64
+            // 
+            this.splitContainerM64.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerM64.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerM64.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerM64.Location = new System.Drawing.Point(3, 3);
+            this.splitContainerM64.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerM64.Name = "splitContainerM64";
+            // 
+            // splitContainerM64.Panel1
+            // 
+            this.splitContainerM64.Panel1.AutoScroll = true;
+            this.splitContainerM64.Panel1.Controls.Add(this.checkBoxMaxOutViCount);
+            this.splitContainerM64.Panel1.Controls.Add(this.comboBoxM64FrameInputRelation);
+            this.splitContainerM64.Panel1.Controls.Add(this.textBoxM64PasteMultiplicity);
+            this.splitContainerM64.Panel1.Controls.Add(this.listBoxM64Copied);
+            this.splitContainerM64.Panel1.Controls.Add(this.groupBoxM64QuickDuplication);
+            this.splitContainerM64.Panel1.Controls.Add(this.groupBoxM64Selection);
+            this.splitContainerM64.Panel1.Controls.Add(this.labelM64PasteMultiplicity);
+            this.splitContainerM64.Panel1.Controls.Add(this.labelM64NumInputsValue);
+            this.splitContainerM64.Panel1.Controls.Add(this.labelM64OnValue);
+            this.splitContainerM64.Panel1.Controls.Add(this.labelM64NumInputsLabel);
+            this.splitContainerM64.Panel1.Controls.Add(this.labelM64FileName);
+            this.splitContainerM64.Panel1.Controls.Add(this.labelM64FileLabel);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Goto);
+            this.splitContainerM64.Panel1.Controls.Add(this.textBoxM64OnValue);
+            this.splitContainerM64.Panel1.Controls.Add(this.textBoxM64Goto);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64PasteOverwrite);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64PasteInsert);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64CopyInputRange);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64TurnOffCells);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64TurnOffInputRange);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64TurnOffRowRange);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64TurnOnCells);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64TurnOnInputRange);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64DeleteRowRange);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64CopyRowRange);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64SetJpHeader);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64SetUsHeader);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Close);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Open);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64SaveAs);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64ResetChanges);
+            this.splitContainerM64.Panel1.Controls.Add(this.buttonM64Save);
+            this.splitContainerM64.Panel1MinSize = 0;
+            // 
+            // splitContainerM64.Panel2
+            // 
+            this.splitContainerM64.Panel2.Controls.Add(this.labelM64ProgressBar);
+            this.splitContainerM64.Panel2.Controls.Add(this.progressBarM64);
+            this.splitContainerM64.Panel2.Controls.Add(this.tabControlM64Details);
+            this.splitContainerM64.Panel2MinSize = 0;
+            this.splitContainerM64.Size = new System.Drawing.Size(909, 457);
+            this.splitContainerM64.SplitterDistance = 363;
+            this.splitContainerM64.SplitterWidth = 1;
+            this.splitContainerM64.TabIndex = 34;
+            // 
+            // checkBoxMaxOutViCount
+            // 
+            this.checkBoxMaxOutViCount.AutoSize = true;
+            this.checkBoxMaxOutViCount.Checked = true;
+            this.checkBoxMaxOutViCount.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMaxOutViCount.Location = new System.Drawing.Point(212, 71);
+            this.checkBoxMaxOutViCount.Name = "checkBoxMaxOutViCount";
+            this.checkBoxMaxOutViCount.Size = new System.Drawing.Size(110, 17);
+            this.checkBoxMaxOutViCount.TabIndex = 36;
+            this.checkBoxMaxOutViCount.Text = "Max Out VI Count";
+            this.checkBoxMaxOutViCount.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxM64FrameInputRelation
+            // 
+            this.comboBoxM64FrameInputRelation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxM64FrameInputRelation.Location = new System.Drawing.Point(208, 44);
+            this.comboBoxM64FrameInputRelation.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxM64FrameInputRelation.Name = "comboBoxM64FrameInputRelation";
+            this.comboBoxM64FrameInputRelation.Size = new System.Drawing.Size(134, 21);
+            this.comboBoxM64FrameInputRelation.TabIndex = 35;
+            // 
+            // textBoxM64PasteMultiplicity
+            // 
+            this.textBoxM64PasteMultiplicity.Location = new System.Drawing.Point(77, 426);
+            this.textBoxM64PasteMultiplicity.Name = "textBoxM64PasteMultiplicity";
+            this.textBoxM64PasteMultiplicity.Size = new System.Drawing.Size(63, 20);
+            this.textBoxM64PasteMultiplicity.TabIndex = 34;
+            this.textBoxM64PasteMultiplicity.Text = "1";
+            this.textBoxM64PasteMultiplicity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // listBoxM64Copied
+            // 
+            this.listBoxM64Copied.FormattingEnabled = true;
+            this.listBoxM64Copied.Location = new System.Drawing.Point(8, 322);
+            this.listBoxM64Copied.Name = "listBoxM64Copied";
+            this.listBoxM64Copied.Size = new System.Drawing.Size(162, 56);
+            this.listBoxM64Copied.TabIndex = 16;
+            // 
+            // groupBoxM64QuickDuplication
+            // 
+            this.groupBoxM64QuickDuplication.Controls.Add(this.buttonM64QuickDuplicationDuplicate);
+            this.groupBoxM64QuickDuplication.Controls.Add(this.textBoxM64QuickDuplicationTotalIterations);
+            this.groupBoxM64QuickDuplication.Controls.Add(this.textBoxM64QuickDuplication2ndIterationStart);
+            this.groupBoxM64QuickDuplication.Controls.Add(this.textBoxM64QuickDuplication1stIterationStart);
+            this.groupBoxM64QuickDuplication.Controls.Add(this.labelM64QuickDuplicationTotalIterations);
+            this.groupBoxM64QuickDuplication.Controls.Add(this.labelM64QuickDuplication2ndIterationStart);
+            this.groupBoxM64QuickDuplication.Controls.Add(this.labelM64QuickDuplication1stIterationStart);
+            this.groupBoxM64QuickDuplication.Location = new System.Drawing.Point(176, 283);
+            this.groupBoxM64QuickDuplication.Name = "groupBoxM64QuickDuplication";
+            this.groupBoxM64QuickDuplication.Size = new System.Drawing.Size(167, 128);
+            this.groupBoxM64QuickDuplication.TabIndex = 15;
+            this.groupBoxM64QuickDuplication.TabStop = false;
+            this.groupBoxM64QuickDuplication.Text = "Quick Duplication";
+            // 
+            // buttonM64QuickDuplicationDuplicate
+            // 
+            this.buttonM64QuickDuplicationDuplicate.Location = new System.Drawing.Point(15, 93);
+            this.buttonM64QuickDuplicationDuplicate.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64QuickDuplicationDuplicate.Name = "buttonM64QuickDuplicationDuplicate";
+            this.buttonM64QuickDuplicationDuplicate.Size = new System.Drawing.Size(132, 22);
+            this.buttonM64QuickDuplicationDuplicate.TabIndex = 35;
+            this.buttonM64QuickDuplicationDuplicate.Text = "Duplicate";
+            this.buttonM64QuickDuplicationDuplicate.UseVisualStyleBackColor = true;
+            // 
+            // textBoxM64QuickDuplicationTotalIterations
+            // 
+            this.textBoxM64QuickDuplicationTotalIterations.Location = new System.Drawing.Point(79, 66);
+            this.textBoxM64QuickDuplicationTotalIterations.Name = "textBoxM64QuickDuplicationTotalIterations";
+            this.textBoxM64QuickDuplicationTotalIterations.Size = new System.Drawing.Size(81, 20);
+            this.textBoxM64QuickDuplicationTotalIterations.TabIndex = 34;
+            this.textBoxM64QuickDuplicationTotalIterations.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxM64QuickDuplication2ndIterationStart
+            // 
+            this.textBoxM64QuickDuplication2ndIterationStart.Location = new System.Drawing.Point(79, 42);
+            this.textBoxM64QuickDuplication2ndIterationStart.Name = "textBoxM64QuickDuplication2ndIterationStart";
+            this.textBoxM64QuickDuplication2ndIterationStart.Size = new System.Drawing.Size(81, 20);
+            this.textBoxM64QuickDuplication2ndIterationStart.TabIndex = 34;
+            this.textBoxM64QuickDuplication2ndIterationStart.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxM64QuickDuplication1stIterationStart
+            // 
+            this.textBoxM64QuickDuplication1stIterationStart.Location = new System.Drawing.Point(79, 18);
+            this.textBoxM64QuickDuplication1stIterationStart.Name = "textBoxM64QuickDuplication1stIterationStart";
+            this.textBoxM64QuickDuplication1stIterationStart.Size = new System.Drawing.Size(81, 20);
+            this.textBoxM64QuickDuplication1stIterationStart.TabIndex = 34;
+            this.textBoxM64QuickDuplication1stIterationStart.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelM64QuickDuplicationTotalIterations
+            // 
+            this.labelM64QuickDuplicationTotalIterations.AutoSize = true;
+            this.labelM64QuickDuplicationTotalIterations.Location = new System.Drawing.Point(6, 69);
+            this.labelM64QuickDuplicationTotalIterations.Name = "labelM64QuickDuplicationTotalIterations";
+            this.labelM64QuickDuplicationTotalIterations.Size = new System.Drawing.Size(57, 13);
+            this.labelM64QuickDuplicationTotalIterations.TabIndex = 14;
+            this.labelM64QuickDuplicationTotalIterations.Text = "Total Iters:";
+            // 
+            // labelM64QuickDuplication2ndIterationStart
+            // 
+            this.labelM64QuickDuplication2ndIterationStart.AutoSize = true;
+            this.labelM64QuickDuplication2ndIterationStart.Location = new System.Drawing.Point(6, 45);
+            this.labelM64QuickDuplication2ndIterationStart.Name = "labelM64QuickDuplication2ndIterationStart";
+            this.labelM64QuickDuplication2ndIterationStart.Size = new System.Drawing.Size(71, 13);
+            this.labelM64QuickDuplication2ndIterationStart.TabIndex = 14;
+            this.labelM64QuickDuplication2ndIterationStart.Text = "2nd Iter Start:";
+            // 
+            // labelM64QuickDuplication1stIterationStart
+            // 
+            this.labelM64QuickDuplication1stIterationStart.AutoSize = true;
+            this.labelM64QuickDuplication1stIterationStart.Location = new System.Drawing.Point(6, 21);
+            this.labelM64QuickDuplication1stIterationStart.Name = "labelM64QuickDuplication1stIterationStart";
+            this.labelM64QuickDuplication1stIterationStart.Size = new System.Drawing.Size(67, 13);
+            this.labelM64QuickDuplication1stIterationStart.TabIndex = 14;
+            this.labelM64QuickDuplication1stIterationStart.Text = "1st Iter Start:";
+            // 
+            // groupBoxM64Selection
+            // 
+            this.groupBoxM64Selection.Controls.Add(this.textBoxM64SelectionInputs);
+            this.groupBoxM64Selection.Controls.Add(this.textBoxM64SelectionEndFrame);
+            this.groupBoxM64Selection.Controls.Add(this.textBoxM64SelectionStartFrame);
+            this.groupBoxM64Selection.Controls.Add(this.labelM64SelectionInputs);
+            this.groupBoxM64Selection.Controls.Add(this.labelM64SelectionEndFrame);
+            this.groupBoxM64Selection.Controls.Add(this.labelM64SelectionStartFrame);
+            this.groupBoxM64Selection.Location = new System.Drawing.Point(3, 95);
+            this.groupBoxM64Selection.Name = "groupBoxM64Selection";
+            this.groupBoxM64Selection.Size = new System.Drawing.Size(167, 95);
+            this.groupBoxM64Selection.TabIndex = 15;
+            this.groupBoxM64Selection.TabStop = false;
+            this.groupBoxM64Selection.Text = "Selection Range";
+            // 
+            // textBoxM64SelectionInputs
+            // 
+            this.textBoxM64SelectionInputs.Location = new System.Drawing.Point(72, 66);
+            this.textBoxM64SelectionInputs.Name = "textBoxM64SelectionInputs";
+            this.textBoxM64SelectionInputs.Size = new System.Drawing.Size(88, 20);
+            this.textBoxM64SelectionInputs.TabIndex = 34;
+            this.textBoxM64SelectionInputs.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxM64SelectionEndFrame
+            // 
+            this.textBoxM64SelectionEndFrame.Location = new System.Drawing.Point(72, 42);
+            this.textBoxM64SelectionEndFrame.Name = "textBoxM64SelectionEndFrame";
+            this.textBoxM64SelectionEndFrame.Size = new System.Drawing.Size(88, 20);
+            this.textBoxM64SelectionEndFrame.TabIndex = 34;
+            this.textBoxM64SelectionEndFrame.Text = "0";
+            this.textBoxM64SelectionEndFrame.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxM64SelectionStartFrame
+            // 
+            this.textBoxM64SelectionStartFrame.Location = new System.Drawing.Point(72, 18);
+            this.textBoxM64SelectionStartFrame.Name = "textBoxM64SelectionStartFrame";
+            this.textBoxM64SelectionStartFrame.Size = new System.Drawing.Size(88, 20);
+            this.textBoxM64SelectionStartFrame.TabIndex = 34;
+            this.textBoxM64SelectionStartFrame.Text = "0";
+            this.textBoxM64SelectionStartFrame.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelM64SelectionInputs
+            // 
+            this.labelM64SelectionInputs.AutoSize = true;
+            this.labelM64SelectionInputs.Location = new System.Drawing.Point(6, 69);
+            this.labelM64SelectionInputs.Name = "labelM64SelectionInputs";
+            this.labelM64SelectionInputs.Size = new System.Drawing.Size(39, 13);
+            this.labelM64SelectionInputs.TabIndex = 14;
+            this.labelM64SelectionInputs.Text = "Inputs:";
+            // 
+            // labelM64SelectionEndFrame
+            // 
+            this.labelM64SelectionEndFrame.AutoSize = true;
+            this.labelM64SelectionEndFrame.Location = new System.Drawing.Point(6, 45);
+            this.labelM64SelectionEndFrame.Name = "labelM64SelectionEndFrame";
+            this.labelM64SelectionEndFrame.Size = new System.Drawing.Size(61, 13);
+            this.labelM64SelectionEndFrame.TabIndex = 14;
+            this.labelM64SelectionEndFrame.Text = "End Frame:";
+            // 
+            // labelM64SelectionStartFrame
+            // 
+            this.labelM64SelectionStartFrame.AutoSize = true;
+            this.labelM64SelectionStartFrame.Location = new System.Drawing.Point(6, 21);
+            this.labelM64SelectionStartFrame.Name = "labelM64SelectionStartFrame";
+            this.labelM64SelectionStartFrame.Size = new System.Drawing.Size(64, 13);
+            this.labelM64SelectionStartFrame.TabIndex = 14;
+            this.labelM64SelectionStartFrame.Text = "Start Frame:";
+            // 
+            // labelM64PasteMultiplicity
+            // 
+            this.labelM64PasteMultiplicity.AutoSize = true;
+            this.labelM64PasteMultiplicity.Location = new System.Drawing.Point(11, 429);
+            this.labelM64PasteMultiplicity.Name = "labelM64PasteMultiplicity";
+            this.labelM64PasteMultiplicity.Size = new System.Drawing.Size(58, 13);
+            this.labelM64PasteMultiplicity.TabIndex = 14;
+            this.labelM64PasteMultiplicity.Text = "Multiplicity:";
+            // 
+            // labelM64NumInputsValue
+            // 
+            this.labelM64NumInputsValue.AutoSize = true;
+            this.labelM64NumInputsValue.Location = new System.Drawing.Point(74, 24);
+            this.labelM64NumInputsValue.Name = "labelM64NumInputsValue";
+            this.labelM64NumInputsValue.Size = new System.Drawing.Size(13, 13);
+            this.labelM64NumInputsValue.TabIndex = 14;
+            this.labelM64NumInputsValue.Text = "0";
+            // 
+            // labelM64OnValue
+            // 
+            this.labelM64OnValue.AutoSize = true;
+            this.labelM64OnValue.Location = new System.Drawing.Point(277, 240);
+            this.labelM64OnValue.Name = "labelM64OnValue";
+            this.labelM64OnValue.Size = new System.Drawing.Size(54, 13);
+            this.labelM64OnValue.TabIndex = 14;
+            this.labelM64OnValue.Text = "On Value:";
+            // 
+            // labelM64NumInputsLabel
+            // 
+            this.labelM64NumInputsLabel.AutoSize = true;
+            this.labelM64NumInputsLabel.Location = new System.Drawing.Point(9, 24);
+            this.labelM64NumInputsLabel.Name = "labelM64NumInputsLabel";
+            this.labelM64NumInputsLabel.Size = new System.Drawing.Size(64, 13);
+            this.labelM64NumInputsLabel.TabIndex = 14;
+            this.labelM64NumInputsLabel.Text = "Num Inputs:";
+            // 
+            // labelM64FileName
+            // 
+            this.labelM64FileName.AutoSize = true;
+            this.labelM64FileName.Location = new System.Drawing.Point(33, 7);
+            this.labelM64FileName.Name = "labelM64FileName";
+            this.labelM64FileName.Size = new System.Drawing.Size(87, 13);
+            this.labelM64FileName.TabIndex = 14;
+            this.labelM64FileName.Text = "(No File Opened)";
+            // 
+            // labelM64FileLabel
+            // 
+            this.labelM64FileLabel.AutoSize = true;
+            this.labelM64FileLabel.Location = new System.Drawing.Point(9, 7);
+            this.labelM64FileLabel.Name = "labelM64FileLabel";
+            this.labelM64FileLabel.Size = new System.Drawing.Size(26, 13);
+            this.labelM64FileLabel.TabIndex = 14;
+            this.labelM64FileLabel.Text = "File:";
+            // 
+            // buttonM64Goto
+            // 
+            this.buttonM64Goto.Location = new System.Drawing.Point(279, 93);
+            this.buttonM64Goto.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64Goto.Name = "buttonM64Goto";
+            this.buttonM64Goto.Size = new System.Drawing.Size(63, 22);
+            this.buttonM64Goto.TabIndex = 12;
+            this.buttonM64Goto.Text = "Goto";
+            this.buttonM64Goto.UseVisualStyleBackColor = true;
+            // 
+            // textBoxM64OnValue
+            // 
+            this.textBoxM64OnValue.Location = new System.Drawing.Point(273, 255);
+            this.textBoxM64OnValue.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxM64OnValue.Name = "textBoxM64OnValue";
+            this.textBoxM64OnValue.Size = new System.Drawing.Size(63, 20);
+            this.textBoxM64OnValue.TabIndex = 11;
+            this.textBoxM64OnValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxM64Goto
+            // 
+            this.textBoxM64Goto.Location = new System.Drawing.Point(212, 95);
+            this.textBoxM64Goto.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxM64Goto.Name = "textBoxM64Goto";
+            this.textBoxM64Goto.Size = new System.Drawing.Size(63, 20);
+            this.textBoxM64Goto.TabIndex = 11;
+            this.textBoxM64Goto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonM64PasteOverwrite
+            // 
+            this.buttonM64PasteOverwrite.Location = new System.Drawing.Point(91, 383);
+            this.buttonM64PasteOverwrite.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64PasteOverwrite.Name = "buttonM64PasteOverwrite";
+            this.buttonM64PasteOverwrite.Size = new System.Drawing.Size(79, 38);
+            this.buttonM64PasteOverwrite.TabIndex = 8;
+            this.buttonM64PasteOverwrite.Text = "Paste\r\nOverwrite";
+            this.buttonM64PasteOverwrite.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64PasteInsert
+            // 
+            this.buttonM64PasteInsert.Location = new System.Drawing.Point(8, 383);
+            this.buttonM64PasteInsert.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64PasteInsert.Name = "buttonM64PasteInsert";
+            this.buttonM64PasteInsert.Size = new System.Drawing.Size(79, 38);
+            this.buttonM64PasteInsert.TabIndex = 8;
+            this.buttonM64PasteInsert.Text = "Paste\r\nInsert";
+            this.buttonM64PasteInsert.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64CopyInputRange
+            // 
+            this.buttonM64CopyInputRange.Location = new System.Drawing.Point(91, 279);
+            this.buttonM64CopyInputRange.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64CopyInputRange.Name = "buttonM64CopyInputRange";
+            this.buttonM64CopyInputRange.Size = new System.Drawing.Size(79, 38);
+            this.buttonM64CopyInputRange.TabIndex = 8;
+            this.buttonM64CopyInputRange.Text = "Copy\r\nInput Range";
+            this.buttonM64CopyInputRange.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64TurnOffCells
+            // 
+            this.buttonM64TurnOffCells.Location = new System.Drawing.Point(174, 195);
+            this.buttonM64TurnOffCells.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64TurnOffCells.Name = "buttonM64TurnOffCells";
+            this.buttonM64TurnOffCells.Size = new System.Drawing.Size(79, 38);
+            this.buttonM64TurnOffCells.TabIndex = 8;
+            this.buttonM64TurnOffCells.Text = "Turn Off\r\nCells";
+            this.buttonM64TurnOffCells.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64TurnOffInputRange
+            // 
+            this.buttonM64TurnOffInputRange.Location = new System.Drawing.Point(91, 195);
+            this.buttonM64TurnOffInputRange.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64TurnOffInputRange.Name = "buttonM64TurnOffInputRange";
+            this.buttonM64TurnOffInputRange.Size = new System.Drawing.Size(79, 38);
+            this.buttonM64TurnOffInputRange.TabIndex = 8;
+            this.buttonM64TurnOffInputRange.Text = "Turn Off\r\nInput Range";
+            this.buttonM64TurnOffInputRange.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64TurnOffRowRange
+            // 
+            this.buttonM64TurnOffRowRange.Location = new System.Drawing.Point(8, 195);
+            this.buttonM64TurnOffRowRange.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64TurnOffRowRange.Name = "buttonM64TurnOffRowRange";
+            this.buttonM64TurnOffRowRange.Size = new System.Drawing.Size(79, 38);
+            this.buttonM64TurnOffRowRange.TabIndex = 8;
+            this.buttonM64TurnOffRowRange.Text = "Turn Off\r\nRow Range";
+            this.buttonM64TurnOffRowRange.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64TurnOnCells
+            // 
+            this.buttonM64TurnOnCells.Location = new System.Drawing.Point(174, 237);
+            this.buttonM64TurnOnCells.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64TurnOnCells.Name = "buttonM64TurnOnCells";
+            this.buttonM64TurnOnCells.Size = new System.Drawing.Size(79, 38);
+            this.buttonM64TurnOnCells.TabIndex = 8;
+            this.buttonM64TurnOnCells.Text = "Turn On\r\nCells";
+            this.buttonM64TurnOnCells.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64TurnOnInputRange
+            // 
+            this.buttonM64TurnOnInputRange.Location = new System.Drawing.Point(91, 237);
+            this.buttonM64TurnOnInputRange.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64TurnOnInputRange.Name = "buttonM64TurnOnInputRange";
+            this.buttonM64TurnOnInputRange.Size = new System.Drawing.Size(79, 38);
+            this.buttonM64TurnOnInputRange.TabIndex = 8;
+            this.buttonM64TurnOnInputRange.Text = "Turn On\r\nInput Range";
+            this.buttonM64TurnOnInputRange.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64DeleteRowRange
+            // 
+            this.buttonM64DeleteRowRange.Location = new System.Drawing.Point(8, 237);
+            this.buttonM64DeleteRowRange.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64DeleteRowRange.Name = "buttonM64DeleteRowRange";
+            this.buttonM64DeleteRowRange.Size = new System.Drawing.Size(79, 38);
+            this.buttonM64DeleteRowRange.TabIndex = 8;
+            this.buttonM64DeleteRowRange.Text = "Delete\r\nRow Range";
+            this.buttonM64DeleteRowRange.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64CopyRowRange
+            // 
+            this.buttonM64CopyRowRange.Location = new System.Drawing.Point(8, 279);
+            this.buttonM64CopyRowRange.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64CopyRowRange.Name = "buttonM64CopyRowRange";
+            this.buttonM64CopyRowRange.Size = new System.Drawing.Size(79, 38);
+            this.buttonM64CopyRowRange.TabIndex = 8;
+            this.buttonM64CopyRowRange.Text = "Copy\r\nRow Range";
+            this.buttonM64CopyRowRange.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64SetJpHeader
+            // 
+            this.buttonM64SetJpHeader.Location = new System.Drawing.Point(279, 119);
+            this.buttonM64SetJpHeader.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64SetJpHeader.Name = "buttonM64SetJpHeader";
+            this.buttonM64SetJpHeader.Size = new System.Drawing.Size(63, 38);
+            this.buttonM64SetJpHeader.TabIndex = 8;
+            this.buttonM64SetJpHeader.Text = "Set JP Header";
+            this.buttonM64SetJpHeader.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64SetUsHeader
+            // 
+            this.buttonM64SetUsHeader.Location = new System.Drawing.Point(212, 119);
+            this.buttonM64SetUsHeader.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64SetUsHeader.Name = "buttonM64SetUsHeader";
+            this.buttonM64SetUsHeader.Size = new System.Drawing.Size(63, 38);
+            this.buttonM64SetUsHeader.TabIndex = 8;
+            this.buttonM64SetUsHeader.Text = "Set US Header";
+            this.buttonM64SetUsHeader.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64Close
+            // 
+            this.buttonM64Close.Location = new System.Drawing.Point(8, 68);
+            this.buttonM64Close.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64Close.Name = "buttonM64Close";
+            this.buttonM64Close.Size = new System.Drawing.Size(53, 22);
+            this.buttonM64Close.TabIndex = 8;
+            this.buttonM64Close.Text = "Close";
+            this.buttonM64Close.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64Open
+            // 
+            this.buttonM64Open.Location = new System.Drawing.Point(8, 44);
+            this.buttonM64Open.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64Open.Name = "buttonM64Open";
+            this.buttonM64Open.Size = new System.Drawing.Size(53, 22);
+            this.buttonM64Open.TabIndex = 8;
+            this.buttonM64Open.Text = "Open";
+            this.buttonM64Open.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64SaveAs
+            // 
+            this.buttonM64SaveAs.Location = new System.Drawing.Point(133, 68);
+            this.buttonM64SaveAs.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64SaveAs.Name = "buttonM64SaveAs";
+            this.buttonM64SaveAs.Size = new System.Drawing.Size(63, 22);
+            this.buttonM64SaveAs.TabIndex = 10;
+            this.buttonM64SaveAs.Text = "Save As";
+            this.buttonM64SaveAs.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64ResetChanges
+            // 
+            this.buttonM64ResetChanges.Location = new System.Drawing.Point(65, 44);
+            this.buttonM64ResetChanges.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64ResetChanges.Name = "buttonM64ResetChanges";
+            this.buttonM64ResetChanges.Size = new System.Drawing.Size(64, 46);
+            this.buttonM64ResetChanges.TabIndex = 9;
+            this.buttonM64ResetChanges.Text = "Reset\r\nChanges";
+            this.buttonM64ResetChanges.UseVisualStyleBackColor = true;
+            // 
+            // buttonM64Save
+            // 
+            this.buttonM64Save.Location = new System.Drawing.Point(133, 44);
+            this.buttonM64Save.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64Save.Name = "buttonM64Save";
+            this.buttonM64Save.Size = new System.Drawing.Size(63, 22);
+            this.buttonM64Save.TabIndex = 9;
+            this.buttonM64Save.Text = "Save";
+            this.buttonM64Save.UseVisualStyleBackColor = true;
+            // 
+            // labelM64ProgressBar
+            // 
+            this.labelM64ProgressBar.AutoSize = true;
+            this.labelM64ProgressBar.BackColor = System.Drawing.Color.Transparent;
+            this.labelM64ProgressBar.Location = new System.Drawing.Point(290, 5);
+            this.labelM64ProgressBar.Name = "labelM64ProgressBar";
+            this.labelM64ProgressBar.Size = new System.Drawing.Size(26, 13);
+            this.labelM64ProgressBar.TabIndex = 42;
+            this.labelM64ProgressBar.Text = "File:";
+            // 
+            // progressBarM64
+            // 
+            this.progressBarM64.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBarM64.Location = new System.Drawing.Point(134, 0);
+            this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
+            this.progressBarM64.Name = "progressBarM64";
+            this.progressBarM64.Size = new System.Drawing.Size(496, 20);
+            this.progressBarM64.TabIndex = 41;
+            // 
+            // tabControlM64Details
+            // 
+            this.tabControlM64Details.Controls.Add(this.tabPageM64Inputs);
+            this.tabControlM64Details.Controls.Add(this.tabPageM64Header);
+            this.tabControlM64Details.Controls.Add(this.tabPageM64Stats);
+            this.tabControlM64Details.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlM64Details.Location = new System.Drawing.Point(0, 0);
+            this.tabControlM64Details.Margin = new System.Windows.Forms.Padding(0);
+            this.tabControlM64Details.Name = "tabControlM64Details";
+            this.tabControlM64Details.SelectedIndex = 0;
+            this.tabControlM64Details.Size = new System.Drawing.Size(543, 455);
+            this.tabControlM64Details.TabIndex = 40;
+            // 
+            // tabPageM64Inputs
+            // 
+            this.tabPageM64Inputs.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageM64Inputs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageM64Inputs.Controls.Add(this.dataGridViewM64Inputs);
+            this.tabPageM64Inputs.Location = new System.Drawing.Point(4, 22);
+            this.tabPageM64Inputs.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageM64Inputs.Name = "tabPageM64Inputs";
+            this.tabPageM64Inputs.Size = new System.Drawing.Size(535, 429);
+            this.tabPageM64Inputs.TabIndex = 3;
+            this.tabPageM64Inputs.Text = "Inputs";
+            // 
+            // dataGridViewM64Inputs
+            // 
+            this.dataGridViewM64Inputs.AllowUserToDeleteRows = false;
+            this.dataGridViewM64Inputs.AllowUserToResizeColumns = false;
+            this.dataGridViewM64Inputs.AllowUserToResizeRows = false;
+            this.dataGridViewM64Inputs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            this.dataGridViewM64Inputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewM64Inputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnM64Frame,
+            this.ColumnM64Id,
+            this.ColumnM64X,
+            this.ColumnM64Y,
+            this.ColumnM64A,
+            this.ColumnM64B,
+            this.ColumnM64Z,
+            this.ColumnM64S,
+            this.ColumnM64R,
+            this.ColumnM64CUp,
+            this.ColumnM64CDown,
+            this.ColumnM64CLeft,
+            this.ColumnM64CRight,
+            this.ColumnM64L,
+            this.ColumnM64DUp,
+            this.ColumnM64DDown,
+            this.ColumnM64DLeft,
+            this.ColumnM64DRight});
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle20;
+            this.dataGridViewM64Inputs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewM64Inputs.EnableHeadersVisualStyles = false;
+            this.dataGridViewM64Inputs.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewM64Inputs.Margin = new System.Windows.Forms.Padding(0);
+            this.dataGridViewM64Inputs.Name = "dataGridViewM64Inputs";
+            this.dataGridViewM64Inputs.RowHeadersVisible = false;
+            this.dataGridViewM64Inputs.RowTemplate.Height = 20;
+            this.dataGridViewM64Inputs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridViewM64Inputs.Size = new System.Drawing.Size(533, 427);
+            this.dataGridViewM64Inputs.TabIndex = 2;
+            // 
+            // ColumnM64Frame
+            // 
+            this.ColumnM64Frame.DataPropertyName = "Frame";
+            this.ColumnM64Frame.FillWeight = 200F;
+            this.ColumnM64Frame.HeaderText = "Frame";
+            this.ColumnM64Frame.Name = "ColumnM64Frame";
+            this.ColumnM64Frame.ReadOnly = true;
+            this.ColumnM64Frame.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ColumnM64Id
+            // 
+            this.ColumnM64Id.DataPropertyName = "Id";
+            this.ColumnM64Id.FillWeight = 200F;
+            this.ColumnM64Id.HeaderText = "Id";
+            this.ColumnM64Id.Name = "ColumnM64Id";
+            this.ColumnM64Id.ReadOnly = true;
+            this.ColumnM64Id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ColumnM64X
+            // 
+            this.ColumnM64X.DataPropertyName = "X";
+            this.ColumnM64X.FillWeight = 200F;
+            this.ColumnM64X.HeaderText = "X";
+            this.ColumnM64X.Name = "ColumnM64X";
+            this.ColumnM64X.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ColumnM64Y
+            // 
+            this.ColumnM64Y.DataPropertyName = "Y";
+            this.ColumnM64Y.FillWeight = 200F;
+            this.ColumnM64Y.HeaderText = "Y";
+            this.ColumnM64Y.Name = "ColumnM64Y";
+            this.ColumnM64Y.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ColumnM64A
+            // 
+            this.ColumnM64A.DataPropertyName = "A";
+            this.ColumnM64A.HeaderText = "A";
+            this.ColumnM64A.Name = "ColumnM64A";
+            this.ColumnM64A.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64B
+            // 
+            this.ColumnM64B.DataPropertyName = "B";
+            this.ColumnM64B.HeaderText = "B";
+            this.ColumnM64B.Name = "ColumnM64B";
+            this.ColumnM64B.ReadOnly = true;
+            this.ColumnM64B.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64Z
+            // 
+            this.ColumnM64Z.DataPropertyName = "Z";
+            this.ColumnM64Z.HeaderText = "Z";
+            this.ColumnM64Z.Name = "ColumnM64Z";
+            this.ColumnM64Z.ReadOnly = true;
+            this.ColumnM64Z.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64S
+            // 
+            this.ColumnM64S.DataPropertyName = "S";
+            this.ColumnM64S.HeaderText = "S";
+            this.ColumnM64S.Name = "ColumnM64S";
+            this.ColumnM64S.ReadOnly = true;
+            this.ColumnM64S.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64R
+            // 
+            this.ColumnM64R.DataPropertyName = "R";
+            this.ColumnM64R.HeaderText = "R";
+            this.ColumnM64R.Name = "ColumnM64R";
+            this.ColumnM64R.ReadOnly = true;
+            this.ColumnM64R.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64CUp
+            // 
+            this.ColumnM64CUp.DataPropertyName = "C_Up";
+            this.ColumnM64CUp.HeaderText = "C^";
+            this.ColumnM64CUp.Name = "ColumnM64CUp";
+            this.ColumnM64CUp.ReadOnly = true;
+            this.ColumnM64CUp.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64CDown
+            // 
+            this.ColumnM64CDown.DataPropertyName = "C_Down";
+            this.ColumnM64CDown.HeaderText = "Cv";
+            this.ColumnM64CDown.Name = "ColumnM64CDown";
+            this.ColumnM64CDown.ReadOnly = true;
+            this.ColumnM64CDown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64CLeft
+            // 
+            this.ColumnM64CLeft.DataPropertyName = "C_Left";
+            this.ColumnM64CLeft.HeaderText = "C<";
+            this.ColumnM64CLeft.Name = "ColumnM64CLeft";
+            this.ColumnM64CLeft.ReadOnly = true;
+            this.ColumnM64CLeft.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64CRight
+            // 
+            this.ColumnM64CRight.DataPropertyName = "C_Right";
+            this.ColumnM64CRight.HeaderText = "C>";
+            this.ColumnM64CRight.Name = "ColumnM64CRight";
+            this.ColumnM64CRight.ReadOnly = true;
+            this.ColumnM64CRight.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64L
+            // 
+            this.ColumnM64L.DataPropertyName = "L";
+            this.ColumnM64L.HeaderText = "L";
+            this.ColumnM64L.Name = "ColumnM64L";
+            this.ColumnM64L.ReadOnly = true;
+            this.ColumnM64L.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64DUp
+            // 
+            this.ColumnM64DUp.DataPropertyName = "D_Up";
+            this.ColumnM64DUp.HeaderText = "D^";
+            this.ColumnM64DUp.Name = "ColumnM64DUp";
+            this.ColumnM64DUp.ReadOnly = true;
+            this.ColumnM64DUp.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64DDown
+            // 
+            this.ColumnM64DDown.DataPropertyName = "D_Down";
+            this.ColumnM64DDown.HeaderText = "Dv";
+            this.ColumnM64DDown.Name = "ColumnM64DDown";
+            this.ColumnM64DDown.ReadOnly = true;
+            this.ColumnM64DDown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64DLeft
+            // 
+            this.ColumnM64DLeft.DataPropertyName = "D_Left";
+            this.ColumnM64DLeft.HeaderText = "D<";
+            this.ColumnM64DLeft.Name = "ColumnM64DLeft";
+            this.ColumnM64DLeft.ReadOnly = true;
+            this.ColumnM64DLeft.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ColumnM64DRight
+            // 
+            this.ColumnM64DRight.DataPropertyName = "D_Right";
+            this.ColumnM64DRight.HeaderText = "D>";
+            this.ColumnM64DRight.Name = "ColumnM64DRight";
+            this.ColumnM64DRight.ReadOnly = true;
+            this.ColumnM64DRight.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // tabPageM64Header
+            // 
+            this.tabPageM64Header.AutoScroll = true;
+            this.tabPageM64Header.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageM64Header.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageM64Header.Controls.Add(this.propertyGridM64Header);
+            this.tabPageM64Header.Location = new System.Drawing.Point(4, 22);
+            this.tabPageM64Header.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageM64Header.Name = "tabPageM64Header";
+            this.tabPageM64Header.Size = new System.Drawing.Size(535, 429);
+            this.tabPageM64Header.TabIndex = 2;
+            this.tabPageM64Header.Text = "Header";
+            // 
+            // propertyGridM64Header
+            // 
+            this.propertyGridM64Header.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.propertyGridM64Header.HelpVisible = false;
+            this.propertyGridM64Header.Location = new System.Drawing.Point(0, 0);
+            this.propertyGridM64Header.Name = "propertyGridM64Header";
+            this.propertyGridM64Header.Size = new System.Drawing.Size(533, 427);
+            this.propertyGridM64Header.TabIndex = 0;
+            this.propertyGridM64Header.ToolbarVisible = false;
+            // 
+            // tabPageM64Stats
+            // 
+            this.tabPageM64Stats.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageM64Stats.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageM64Stats.Controls.Add(this.propertyGridM64Stats);
+            this.tabPageM64Stats.Location = new System.Drawing.Point(4, 22);
+            this.tabPageM64Stats.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageM64Stats.Name = "tabPageM64Stats";
+            this.tabPageM64Stats.Size = new System.Drawing.Size(535, 429);
+            this.tabPageM64Stats.TabIndex = 4;
+            this.tabPageM64Stats.Text = "Stats";
+            // 
+            // propertyGridM64Stats
+            // 
+            this.propertyGridM64Stats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.propertyGridM64Stats.HelpVisible = false;
+            this.propertyGridM64Stats.Location = new System.Drawing.Point(0, 0);
+            this.propertyGridM64Stats.Margin = new System.Windows.Forms.Padding(0);
+            this.propertyGridM64Stats.Name = "propertyGridM64Stats";
+            this.propertyGridM64Stats.Size = new System.Drawing.Size(533, 427);
+            this.propertyGridM64Stats.TabIndex = 1;
+            this.propertyGridM64Stats.ToolbarVisible = false;
+            // 
             // tabPageCustom
             // 
             this.tabPageCustom.BackColor = System.Drawing.SystemColors.Control;
@@ -7807,7 +9068,7 @@ namespace STROOP
             this.splitContainerCustom.Panel2.Controls.Add(this.watchVariablePanelCustom);
             this.splitContainerCustom.Panel2MinSize = 0;
             this.splitContainerCustom.Size = new System.Drawing.Size(915, 463);
-            this.splitContainerCustom.SplitterDistance = 221;
+            this.splitContainerCustom.SplitterDistance = 218;
             this.splitContainerCustom.SplitterWidth = 1;
             this.splitContainerCustom.TabIndex = 19;
             // 
@@ -7823,6 +9084,7 @@ namespace STROOP
             // 
             // splitContainerCustomControls.Panel1
             // 
+            this.splitContainerCustomControls.Panel1.AutoScroll = true;
             this.splitContainerCustomControls.Panel1.Controls.Add(this.labelCustomRecordingGapsValue);
             this.splitContainerCustomControls.Panel1.Controls.Add(this.labelCustomRecordingFrequencyValue);
             this.splitContainerCustomControls.Panel1.Controls.Add(this.labelCustomRecordingGapsLabel);
@@ -7832,17 +9094,21 @@ namespace STROOP
             this.splitContainerCustomControls.Panel1.Controls.Add(this.buttonCustomClearValues);
             this.splitContainerCustomControls.Panel1.Controls.Add(this.buttonCustomShowValues);
             this.splitContainerCustomControls.Panel1.Controls.Add(this.checkBoxCustomRecordValues);
-            this.splitContainerCustomControls.Panel1.Controls.Add(this.buttonClearVariables);
+            this.splitContainerCustomControls.Panel1.Controls.Add(this.buttonClearVars);
+            this.splitContainerCustomControls.Panel1.Controls.Add(this.buttonSaveVars);
+            this.splitContainerCustomControls.Panel1.Controls.Add(this.buttonOpenVars);
             // 
             // splitContainerCustomControls.Panel2
             // 
             this.splitContainerCustomControls.Panel2.AutoScroll = true;
+            this.splitContainerCustomControls.Panel2.Controls.Add(this.radioButtonCustomTabFlushRight);
+            this.splitContainerCustomControls.Panel2.Controls.Add(this.radioButtonCustomTabFlushLeft);
             this.splitContainerCustomControls.Panel2.Controls.Add(this.groupBoxVarHeight);
             this.splitContainerCustomControls.Panel2.Controls.Add(this.buttonResetVariableSizeToDefault);
             this.splitContainerCustomControls.Panel2.Controls.Add(this.groupBoxVarValueWidth);
             this.splitContainerCustomControls.Panel2.Controls.Add(this.groupBoxVarNameWidth);
-            this.splitContainerCustomControls.Size = new System.Drawing.Size(221, 463);
-            this.splitContainerCustomControls.SplitterDistance = 172;
+            this.splitContainerCustomControls.Size = new System.Drawing.Size(218, 463);
+            this.splitContainerCustomControls.SplitterDistance = 160;
             this.splitContainerCustomControls.SplitterWidth = 1;
             this.splitContainerCustomControls.TabIndex = 31;
             // 
@@ -7850,7 +9116,7 @@ namespace STROOP
             // 
             this.labelCustomRecordingGapsValue.AutoSize = true;
             this.labelCustomRecordingGapsValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelCustomRecordingGapsValue.Location = new System.Drawing.Point(148, 123);
+            this.labelCustomRecordingGapsValue.Location = new System.Drawing.Point(148, 129);
             this.labelCustomRecordingGapsValue.MinimumSize = new System.Drawing.Size(40, 2);
             this.labelCustomRecordingGapsValue.Name = "labelCustomRecordingGapsValue";
             this.labelCustomRecordingGapsValue.Size = new System.Drawing.Size(40, 15);
@@ -7862,7 +9128,7 @@ namespace STROOP
             // 
             this.labelCustomRecordingFrequencyValue.AutoSize = true;
             this.labelCustomRecordingFrequencyValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelCustomRecordingFrequencyValue.Location = new System.Drawing.Point(47, 123);
+            this.labelCustomRecordingFrequencyValue.Location = new System.Drawing.Point(47, 129);
             this.labelCustomRecordingFrequencyValue.MinimumSize = new System.Drawing.Size(40, 2);
             this.labelCustomRecordingFrequencyValue.Name = "labelCustomRecordingFrequencyValue";
             this.labelCustomRecordingFrequencyValue.Size = new System.Drawing.Size(40, 15);
@@ -7873,7 +9139,7 @@ namespace STROOP
             // labelCustomRecordingGapsLabel
             // 
             this.labelCustomRecordingGapsLabel.AutoSize = true;
-            this.labelCustomRecordingGapsLabel.Location = new System.Drawing.Point(106, 124);
+            this.labelCustomRecordingGapsLabel.Location = new System.Drawing.Point(106, 130);
             this.labelCustomRecordingGapsLabel.MinimumSize = new System.Drawing.Size(40, 2);
             this.labelCustomRecordingGapsLabel.Name = "labelCustomRecordingGapsLabel";
             this.labelCustomRecordingGapsLabel.Size = new System.Drawing.Size(40, 13);
@@ -7884,7 +9150,7 @@ namespace STROOP
             // labelCustomRecordingFrequencyLabel
             // 
             this.labelCustomRecordingFrequencyLabel.AutoSize = true;
-            this.labelCustomRecordingFrequencyLabel.Location = new System.Drawing.Point(5, 124);
+            this.labelCustomRecordingFrequencyLabel.Location = new System.Drawing.Point(5, 130);
             this.labelCustomRecordingFrequencyLabel.MinimumSize = new System.Drawing.Size(40, 2);
             this.labelCustomRecordingFrequencyLabel.Name = "labelCustomRecordingFrequencyLabel";
             this.labelCustomRecordingFrequencyLabel.Size = new System.Drawing.Size(40, 13);
@@ -7897,7 +9163,7 @@ namespace STROOP
             this.checkBoxUseValueAtStartOfGlobalTimer.AutoSize = true;
             this.checkBoxUseValueAtStartOfGlobalTimer.Checked = true;
             this.checkBoxUseValueAtStartOfGlobalTimer.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxUseValueAtStartOfGlobalTimer.Location = new System.Drawing.Point(11, 103);
+            this.checkBoxUseValueAtStartOfGlobalTimer.Location = new System.Drawing.Point(11, 109);
             this.checkBoxUseValueAtStartOfGlobalTimer.Name = "checkBoxUseValueAtStartOfGlobalTimer";
             this.checkBoxUseValueAtStartOfGlobalTimer.Size = new System.Drawing.Size(186, 17);
             this.checkBoxUseValueAtStartOfGlobalTimer.TabIndex = 35;
@@ -7906,10 +9172,9 @@ namespace STROOP
             // 
             // textBoxRecordValuesCount
             // 
-            this.textBoxRecordValuesCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxRecordValuesCount.BackColor = System.Drawing.SystemColors.Control;
             this.textBoxRecordValuesCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxRecordValuesCount.Location = new System.Drawing.Point(137, 46);
+            this.textBoxRecordValuesCount.Location = new System.Drawing.Point(137, 52);
             this.textBoxRecordValuesCount.Name = "textBoxRecordValuesCount";
             this.textBoxRecordValuesCount.ReadOnly = true;
             this.textBoxRecordValuesCount.Size = new System.Drawing.Size(51, 20);
@@ -7919,7 +9184,7 @@ namespace STROOP
             // 
             // buttonCustomClearValues
             // 
-            this.buttonCustomClearValues.Location = new System.Drawing.Point(102, 72);
+            this.buttonCustomClearValues.Location = new System.Drawing.Point(102, 78);
             this.buttonCustomClearValues.Name = "buttonCustomClearValues";
             this.buttonCustomClearValues.Size = new System.Drawing.Size(87, 25);
             this.buttonCustomClearValues.TabIndex = 19;
@@ -7928,7 +9193,7 @@ namespace STROOP
             // 
             // buttonCustomShowValues
             // 
-            this.buttonCustomShowValues.Location = new System.Drawing.Point(10, 72);
+            this.buttonCustomShowValues.Location = new System.Drawing.Point(10, 78);
             this.buttonCustomShowValues.Name = "buttonCustomShowValues";
             this.buttonCustomShowValues.Size = new System.Drawing.Size(87, 25);
             this.buttonCustomShowValues.TabIndex = 18;
@@ -7938,21 +9203,61 @@ namespace STROOP
             // checkBoxCustomRecordValues
             // 
             this.checkBoxCustomRecordValues.AutoSize = true;
-            this.checkBoxCustomRecordValues.Location = new System.Drawing.Point(11, 47);
+            this.checkBoxCustomRecordValues.Location = new System.Drawing.Point(11, 53);
             this.checkBoxCustomRecordValues.Name = "checkBoxCustomRecordValues";
             this.checkBoxCustomRecordValues.Size = new System.Drawing.Size(96, 17);
             this.checkBoxCustomRecordValues.TabIndex = 17;
             this.checkBoxCustomRecordValues.Text = "Record Values";
             this.checkBoxCustomRecordValues.UseVisualStyleBackColor = true;
             // 
-            // buttonClearVariables
+            // buttonClearVars
             // 
-            this.buttonClearVariables.Location = new System.Drawing.Point(10, 3);
-            this.buttonClearVariables.Name = "buttonClearVariables";
-            this.buttonClearVariables.Size = new System.Drawing.Size(179, 38);
-            this.buttonClearVariables.TabIndex = 4;
-            this.buttonClearVariables.Text = "Clear Variables";
-            this.buttonClearVariables.UseVisualStyleBackColor = true;
+            this.buttonClearVars.Location = new System.Drawing.Point(131, 6);
+            this.buttonClearVars.Name = "buttonClearVars";
+            this.buttonClearVars.Size = new System.Drawing.Size(58, 38);
+            this.buttonClearVars.TabIndex = 4;
+            this.buttonClearVars.Text = "Clear\r\nVars";
+            this.buttonClearVars.UseVisualStyleBackColor = true;
+            // 
+            // buttonSaveVars
+            // 
+            this.buttonSaveVars.Location = new System.Drawing.Point(71, 6);
+            this.buttonSaveVars.Name = "buttonSaveVars";
+            this.buttonSaveVars.Size = new System.Drawing.Size(58, 38);
+            this.buttonSaveVars.TabIndex = 4;
+            this.buttonSaveVars.Text = "Save\r\nVars";
+            this.buttonSaveVars.UseVisualStyleBackColor = true;
+            // 
+            // buttonOpenVars
+            // 
+            this.buttonOpenVars.Location = new System.Drawing.Point(11, 6);
+            this.buttonOpenVars.Name = "buttonOpenVars";
+            this.buttonOpenVars.Size = new System.Drawing.Size(58, 38);
+            this.buttonOpenVars.TabIndex = 4;
+            this.buttonOpenVars.Text = "Open\r\nVars";
+            this.buttonOpenVars.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonCustomTabFlushRight
+            // 
+            this.radioButtonCustomTabFlushRight.AutoSize = true;
+            this.radioButtonCustomTabFlushRight.Checked = true;
+            this.radioButtonCustomTabFlushRight.Location = new System.Drawing.Point(105, 4);
+            this.radioButtonCustomTabFlushRight.Name = "radioButtonCustomTabFlushRight";
+            this.radioButtonCustomTabFlushRight.Size = new System.Drawing.Size(78, 17);
+            this.radioButtonCustomTabFlushRight.TabIndex = 31;
+            this.radioButtonCustomTabFlushRight.TabStop = true;
+            this.radioButtonCustomTabFlushRight.Text = "Flush Right";
+            this.radioButtonCustomTabFlushRight.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonCustomTabFlushLeft
+            // 
+            this.radioButtonCustomTabFlushLeft.AutoSize = true;
+            this.radioButtonCustomTabFlushLeft.Location = new System.Drawing.Point(18, 4);
+            this.radioButtonCustomTabFlushLeft.Name = "radioButtonCustomTabFlushLeft";
+            this.radioButtonCustomTabFlushLeft.Size = new System.Drawing.Size(71, 17);
+            this.radioButtonCustomTabFlushLeft.TabIndex = 31;
+            this.radioButtonCustomTabFlushLeft.Text = "Flush Left";
+            this.radioButtonCustomTabFlushLeft.UseVisualStyleBackColor = true;
             // 
             // groupBoxVarHeight
             // 
@@ -7962,7 +9267,7 @@ namespace STROOP
             this.groupBoxVarHeight.Controls.Add(this.buttonVarHeightSubtract);
             this.groupBoxVarHeight.Controls.Add(this.buttonVarHeightSet);
             this.groupBoxVarHeight.Controls.Add(this.buttonVarHeightAdd);
-            this.groupBoxVarHeight.Location = new System.Drawing.Point(7, 199);
+            this.groupBoxVarHeight.Location = new System.Drawing.Point(7, 209);
             this.groupBoxVarHeight.Name = "groupBoxVarHeight";
             this.groupBoxVarHeight.Size = new System.Drawing.Size(185, 70);
             this.groupBoxVarHeight.TabIndex = 30;
@@ -8035,9 +9340,9 @@ namespace STROOP
             // 
             // buttonResetVariableSizeToDefault
             // 
-            this.buttonResetVariableSizeToDefault.Location = new System.Drawing.Point(10, 3);
+            this.buttonResetVariableSizeToDefault.Location = new System.Drawing.Point(10, 26);
             this.buttonResetVariableSizeToDefault.Name = "buttonResetVariableSizeToDefault";
-            this.buttonResetVariableSizeToDefault.Size = new System.Drawing.Size(179, 38);
+            this.buttonResetVariableSizeToDefault.Size = new System.Drawing.Size(179, 25);
             this.buttonResetVariableSizeToDefault.TabIndex = 4;
             this.buttonResetVariableSizeToDefault.Text = "Reset Variable Size to Default";
             this.buttonResetVariableSizeToDefault.UseVisualStyleBackColor = true;
@@ -8050,7 +9355,7 @@ namespace STROOP
             this.groupBoxVarValueWidth.Controls.Add(this.buttonVarValueWidthSubtract);
             this.groupBoxVarValueWidth.Controls.Add(this.buttonVarValueWidthSet);
             this.groupBoxVarValueWidth.Controls.Add(this.buttonVarValueWidthAdd);
-            this.groupBoxVarValueWidth.Location = new System.Drawing.Point(7, 123);
+            this.groupBoxVarValueWidth.Location = new System.Drawing.Point(7, 133);
             this.groupBoxVarValueWidth.Name = "groupBoxVarValueWidth";
             this.groupBoxVarValueWidth.Size = new System.Drawing.Size(185, 70);
             this.groupBoxVarValueWidth.TabIndex = 30;
@@ -8129,7 +9434,7 @@ namespace STROOP
             this.groupBoxVarNameWidth.Controls.Add(this.buttonVarNameWidthSubtract);
             this.groupBoxVarNameWidth.Controls.Add(this.buttonVarNameWidthSet);
             this.groupBoxVarNameWidth.Controls.Add(this.buttonVarNameWidthAdd);
-            this.groupBoxVarNameWidth.Location = new System.Drawing.Point(7, 47);
+            this.groupBoxVarNameWidth.Location = new System.Drawing.Point(7, 57);
             this.groupBoxVarNameWidth.Name = "groupBoxVarNameWidth";
             this.groupBoxVarNameWidth.Size = new System.Drawing.Size(185, 70);
             this.groupBoxVarNameWidth.TabIndex = 30;
@@ -8209,266 +9514,227 @@ namespace STROOP
             this.watchVariablePanelCustom.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelCustom.Name = "watchVariablePanelCustom";
             this.watchVariablePanelCustom.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelCustom.Size = new System.Drawing.Size(691, 461);
+            this.watchVariablePanelCustom.Size = new System.Drawing.Size(694, 461);
             this.watchVariablePanelCustom.TabIndex = 3;
             // 
-            // tabPageDebug
+            // tabPageTas
             // 
-            this.tabPageDebug.Controls.Add(this.splitContainerDebug);
-            this.tabPageDebug.Location = new System.Drawing.Point(4, 22);
-            this.tabPageDebug.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPageDebug.Name = "tabPageDebug";
-            this.tabPageDebug.Size = new System.Drawing.Size(915, 463);
-            this.tabPageDebug.TabIndex = 8;
-            this.tabPageDebug.Text = "Debug";
+            this.tabPageTas.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageTas.Controls.Add(this.splitContainerTas);
+            this.tabPageTas.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTas.Name = "tabPageTas";
+            this.tabPageTas.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageTas.Size = new System.Drawing.Size(915, 463);
+            this.tabPageTas.TabIndex = 26;
+            this.tabPageTas.Text = "TAS";
             // 
-            // splitContainerDebug
+            // splitContainerTas
             // 
-            this.splitContainerDebug.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainerDebug.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerDebug.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainerDebug.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerDebug.Margin = new System.Windows.Forms.Padding(0);
-            this.splitContainerDebug.Name = "splitContainerDebug";
+            this.splitContainerTas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerTas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerTas.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerTas.Location = new System.Drawing.Point(3, 3);
+            this.splitContainerTas.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerTas.Name = "splitContainerTas";
             // 
-            // splitContainerDebug.Panel1
+            // splitContainerTas.Panel1
             // 
-            this.splitContainerDebug.Panel1.AutoScroll = true;
-            this.splitContainerDebug.Panel1.Controls.Add(this.panelDebugBorder);
-            this.splitContainerDebug.Panel1.Controls.Add(this.groupBoxMiscDebug);
-            this.splitContainerDebug.Panel1.Controls.Add(this.groupBoxResourceMeter);
-            this.splitContainerDebug.Panel1.Controls.Add(this.groupBoxAdvancedMode);
-            this.splitContainerDebug.Panel1MinSize = 0;
+            this.splitContainerTas.Panel1.AutoScroll = true;
+            this.splitContainerTas.Panel1.Controls.Add(this.splitContainerTasTable);
+            this.splitContainerTas.Panel1MinSize = 0;
             // 
-            // splitContainerDebug.Panel2
+            // splitContainerTas.Panel2
             // 
-            this.splitContainerDebug.Panel2.Controls.Add(this.watchVariablePanelDebug);
-            this.splitContainerDebug.Panel2MinSize = 0;
-            this.splitContainerDebug.Size = new System.Drawing.Size(915, 463);
-            this.splitContainerDebug.SplitterDistance = 388;
-            this.splitContainerDebug.SplitterWidth = 1;
-            this.splitContainerDebug.TabIndex = 39;
+            this.splitContainerTas.Panel2.Controls.Add(this.watchVariablePanelTas);
+            this.splitContainerTas.Panel2MinSize = 0;
+            this.splitContainerTas.Size = new System.Drawing.Size(909, 457);
+            this.splitContainerTas.SplitterDistance = 432;
+            this.splitContainerTas.SplitterWidth = 1;
+            this.splitContainerTas.TabIndex = 19;
             // 
-            // panelDebugBorder
+            // splitContainerTasTable
             // 
-            this.panelDebugBorder.Controls.Add(this.pictureBoxDebug);
-            this.panelDebugBorder.Location = new System.Drawing.Point(3, 4);
-            this.panelDebugBorder.Margin = new System.Windows.Forms.Padding(2);
-            this.panelDebugBorder.Name = "panelDebugBorder";
-            this.panelDebugBorder.Size = new System.Drawing.Size(55, 55);
-            this.panelDebugBorder.TabIndex = 3;
+            this.splitContainerTasTable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerTasTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerTasTable.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerTasTable.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerTasTable.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerTasTable.Name = "splitContainerTasTable";
+            this.splitContainerTasTable.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // pictureBoxDebug
+            // splitContainerTasTable.Panel1
             // 
-            this.pictureBoxDebug.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.splitContainerTasTable.Panel1.AutoScroll = true;
+            this.splitContainerTasTable.Panel1.Controls.Add(this.richTextBoxTasInstructions);
+            this.splitContainerTasTable.Panel1.Controls.Add(this.buttonTasStoreMarioAngle);
+            this.splitContainerTasTable.Panel1.Controls.Add(this.buttonTasStoreMarioPosition);
+            this.splitContainerTasTable.Panel1.Controls.Add(this.buttonTasClearData);
+            this.splitContainerTasTable.Panel1.Controls.Add(this.checkBoxTasRecordData);
+            // 
+            // splitContainerTasTable.Panel2
+            // 
+            this.splitContainerTasTable.Panel2.AutoScroll = true;
+            this.splitContainerTasTable.Panel2.Controls.Add(this.dataGridViewTas);
+            this.splitContainerTasTable.Size = new System.Drawing.Size(432, 457);
+            this.splitContainerTasTable.SplitterDistance = 85;
+            this.splitContainerTasTable.SplitterWidth = 1;
+            this.splitContainerTasTable.TabIndex = 32;
+            // 
+            // richTextBoxTasInstructions
+            // 
+            this.richTextBoxTasInstructions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxDebug.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
-            this.pictureBoxDebug.Location = new System.Drawing.Point(3, 3);
-            this.pictureBoxDebug.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBoxDebug.MaximumSize = new System.Drawing.Size(133, 130);
-            this.pictureBoxDebug.Name = "pictureBoxDebug";
-            this.pictureBoxDebug.Size = new System.Drawing.Size(49, 49);
-            this.pictureBoxDebug.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxDebug.TabIndex = 0;
-            this.pictureBoxDebug.TabStop = false;
+            this.richTextBoxTasInstructions.Location = new System.Drawing.Point(99, 3);
+            this.richTextBoxTasInstructions.Name = "richTextBoxTasInstructions";
+            this.richTextBoxTasInstructions.Size = new System.Drawing.Size(222, 75);
+            this.richTextBoxTasInstructions.TabIndex = 38;
+            this.richTextBoxTasInstructions.Text = "(1)\n(2)\n(3)\n(4)\n(5)";
             // 
-            // groupBoxMiscDebug
+            // buttonTasStoreMarioAngle
             // 
-            this.groupBoxMiscDebug.Controls.Add(this.checkBoxFreeMovement);
-            this.groupBoxMiscDebug.Controls.Add(this.checkBoxSpawnMode);
-            this.groupBoxMiscDebug.Controls.Add(this.checkBoxStageSelect);
-            this.groupBoxMiscDebug.Controls.Add(this.checkBoxClassicMode);
-            this.groupBoxMiscDebug.Location = new System.Drawing.Point(247, 64);
-            this.groupBoxMiscDebug.Name = "groupBoxMiscDebug";
-            this.groupBoxMiscDebug.Size = new System.Drawing.Size(117, 125);
-            this.groupBoxMiscDebug.TabIndex = 38;
-            this.groupBoxMiscDebug.TabStop = false;
-            this.groupBoxMiscDebug.Text = "Misc Debug";
+            this.buttonTasStoreMarioAngle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTasStoreMarioAngle.Location = new System.Drawing.Point(334, 42);
+            this.buttonTasStoreMarioAngle.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasStoreMarioAngle.Name = "buttonTasStoreMarioAngle";
+            this.buttonTasStoreMarioAngle.Size = new System.Drawing.Size(87, 35);
+            this.buttonTasStoreMarioAngle.TabIndex = 37;
+            this.buttonTasStoreMarioAngle.Text = "Store Mario Angle";
+            this.buttonTasStoreMarioAngle.UseVisualStyleBackColor = true;
             // 
-            // checkBoxFreeMovement
+            // buttonTasStoreMarioPosition
             // 
-            this.checkBoxFreeMovement.AutoSize = true;
-            this.checkBoxFreeMovement.Location = new System.Drawing.Point(6, 96);
-            this.checkBoxFreeMovement.Name = "checkBoxFreeMovement";
-            this.checkBoxFreeMovement.Size = new System.Drawing.Size(100, 17);
-            this.checkBoxFreeMovement.TabIndex = 24;
-            this.checkBoxFreeMovement.Text = "Free Movement";
-            this.checkBoxFreeMovement.UseVisualStyleBackColor = true;
+            this.buttonTasStoreMarioPosition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTasStoreMarioPosition.Location = new System.Drawing.Point(334, 5);
+            this.buttonTasStoreMarioPosition.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasStoreMarioPosition.Name = "buttonTasStoreMarioPosition";
+            this.buttonTasStoreMarioPosition.Size = new System.Drawing.Size(87, 35);
+            this.buttonTasStoreMarioPosition.TabIndex = 37;
+            this.buttonTasStoreMarioPosition.Text = "Store Mario Position";
+            this.buttonTasStoreMarioPosition.UseVisualStyleBackColor = true;
             // 
-            // checkBoxSpawnMode
+            // buttonTasClearData
             // 
-            this.checkBoxSpawnMode.AutoSize = true;
-            this.checkBoxSpawnMode.Location = new System.Drawing.Point(6, 46);
-            this.checkBoxSpawnMode.Name = "checkBoxSpawnMode";
-            this.checkBoxSpawnMode.Size = new System.Drawing.Size(89, 17);
-            this.checkBoxSpawnMode.TabIndex = 12;
-            this.checkBoxSpawnMode.Text = "Spawn Mode";
-            this.checkBoxSpawnMode.UseVisualStyleBackColor = true;
+            this.buttonTasClearData.Location = new System.Drawing.Point(3, 23);
+            this.buttonTasClearData.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonTasClearData.Name = "buttonTasClearData";
+            this.buttonTasClearData.Size = new System.Drawing.Size(87, 31);
+            this.buttonTasClearData.TabIndex = 37;
+            this.buttonTasClearData.Text = "Clear Data";
+            this.buttonTasClearData.UseVisualStyleBackColor = true;
             // 
-            // checkBoxStageSelect
+            // checkBoxTasRecordData
             // 
-            this.checkBoxStageSelect.AutoSize = true;
-            this.checkBoxStageSelect.Location = new System.Drawing.Point(6, 71);
-            this.checkBoxStageSelect.Name = "checkBoxStageSelect";
-            this.checkBoxStageSelect.Size = new System.Drawing.Size(87, 17);
-            this.checkBoxStageSelect.TabIndex = 24;
-            this.checkBoxStageSelect.Text = "Stage Select";
-            this.checkBoxStageSelect.UseVisualStyleBackColor = true;
+            this.checkBoxTasRecordData.AutoSize = true;
+            this.checkBoxTasRecordData.Checked = true;
+            this.checkBoxTasRecordData.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxTasRecordData.Location = new System.Drawing.Point(3, 3);
+            this.checkBoxTasRecordData.Name = "checkBoxTasRecordData";
+            this.checkBoxTasRecordData.Size = new System.Drawing.Size(87, 17);
+            this.checkBoxTasRecordData.TabIndex = 33;
+            this.checkBoxTasRecordData.Text = "Record Data";
+            this.checkBoxTasRecordData.UseVisualStyleBackColor = true;
             // 
-            // checkBoxClassicMode
+            // dataGridViewTas
             // 
-            this.checkBoxClassicMode.AutoSize = true;
-            this.checkBoxClassicMode.Location = new System.Drawing.Point(6, 21);
-            this.checkBoxClassicMode.Name = "checkBoxClassicMode";
-            this.checkBoxClassicMode.Size = new System.Drawing.Size(89, 17);
-            this.checkBoxClassicMode.TabIndex = 23;
-            this.checkBoxClassicMode.Text = "Classic Mode";
-            this.checkBoxClassicMode.UseVisualStyleBackColor = true;
+            this.dataGridViewTas.AllowUserToAddRows = false;
+            this.dataGridViewTas.AllowUserToDeleteRows = false;
+            this.dataGridViewTas.AllowUserToOrderColumns = true;
+            this.dataGridViewTas.AllowUserToResizeRows = false;
+            this.dataGridViewTas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewTas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewTas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn6,
+            this.Column2,
+            this.dataGridViewTextBoxColumn5,
+            this.Column3,
+            this.Column4,
+            this.dataGridViewTextBoxColumn7,
+            this.Column1});
+            this.dataGridViewTas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewTas.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewTas.Margin = new System.Windows.Forms.Padding(0);
+            this.dataGridViewTas.MultiSelect = false;
+            this.dataGridViewTas.Name = "dataGridViewTas";
+            this.dataGridViewTas.ReadOnly = true;
+            this.dataGridViewTas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewTas.Size = new System.Drawing.Size(430, 369);
+            this.dataGridViewTas.TabIndex = 2;
             // 
-            // groupBoxResourceMeter
+            // dataGridViewTextBoxColumn1
             // 
-            this.groupBoxResourceMeter.Controls.Add(this.radioButtonResourceMeterOff);
-            this.groupBoxResourceMeter.Controls.Add(this.radioButtonResourceMeter1);
-            this.groupBoxResourceMeter.Controls.Add(this.radioButtonResourceMeter2);
-            this.groupBoxResourceMeter.Location = new System.Drawing.Point(137, 64);
-            this.groupBoxResourceMeter.Name = "groupBoxResourceMeter";
-            this.groupBoxResourceMeter.Size = new System.Drawing.Size(104, 94);
-            this.groupBoxResourceMeter.TabIndex = 38;
-            this.groupBoxResourceMeter.TabStop = false;
-            this.groupBoxResourceMeter.Text = "Resource Meter";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Global Timer";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 2;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // radioButtonResourceMeterOff
+            // dataGridViewTextBoxColumn6
             // 
-            this.radioButtonResourceMeterOff.AutoSize = true;
-            this.radioButtonResourceMeterOff.Checked = true;
-            this.radioButtonResourceMeterOff.Location = new System.Drawing.Point(11, 21);
-            this.radioButtonResourceMeterOff.Name = "radioButtonResourceMeterOff";
-            this.radioButtonResourceMeterOff.Size = new System.Drawing.Size(39, 17);
-            this.radioButtonResourceMeterOff.TabIndex = 7;
-            this.radioButtonResourceMeterOff.TabStop = true;
-            this.radioButtonResourceMeterOff.Text = "Off";
-            this.radioButtonResourceMeterOff.UseVisualStyleBackColor = true;
+            this.dataGridViewTextBoxColumn6.HeaderText = "Current Cam Angle";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 2;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // radioButtonResourceMeter1
+            // Column2
             // 
-            this.radioButtonResourceMeter1.AutoSize = true;
-            this.radioButtonResourceMeter1.Location = new System.Drawing.Point(11, 44);
-            this.radioButtonResourceMeter1.Name = "radioButtonResourceMeter1";
-            this.radioButtonResourceMeter1.Size = new System.Drawing.Size(61, 17);
-            this.radioButtonResourceMeter1.TabIndex = 8;
-            this.radioButtonResourceMeter1.Text = "Meter 1";
-            this.radioButtonResourceMeter1.UseVisualStyleBackColor = true;
+            this.Column2.HeaderText = "Next Cam Angle";
+            this.Column2.MinimumWidth = 2;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // radioButtonResourceMeter2
+            // dataGridViewTextBoxColumn5
             // 
-            this.radioButtonResourceMeter2.AutoSize = true;
-            this.radioButtonResourceMeter2.Location = new System.Drawing.Point(11, 67);
-            this.radioButtonResourceMeter2.Name = "radioButtonResourceMeter2";
-            this.radioButtonResourceMeter2.Size = new System.Drawing.Size(61, 17);
-            this.radioButtonResourceMeter2.TabIndex = 9;
-            this.radioButtonResourceMeter2.Text = "Meter 2";
-            this.radioButtonResourceMeter2.UseVisualStyleBackColor = true;
+            this.dataGridViewTextBoxColumn5.HeaderText = "Mario Facing Angle";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 2;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // groupBoxAdvancedMode
+            // Column3
             // 
-            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeOff);
-            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeEnemyInfo);
-            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeObjectCounter);
-            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeEffectInfo);
-            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeCheckInfo);
-            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeStageInfo);
-            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeMapInfo);
-            this.groupBoxAdvancedMode.Location = new System.Drawing.Point(6, 64);
-            this.groupBoxAdvancedMode.Name = "groupBoxAdvancedMode";
-            this.groupBoxAdvancedMode.Size = new System.Drawing.Size(125, 184);
-            this.groupBoxAdvancedMode.TabIndex = 38;
-            this.groupBoxAdvancedMode.TabStop = false;
-            this.groupBoxAdvancedMode.Text = "Advanced Mode";
+            this.Column3.HeaderText = "Mario Intend Angle";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // radioButtonAdvancedModeOff
+            // Column4
             // 
-            this.radioButtonAdvancedModeOff.AutoSize = true;
-            this.radioButtonAdvancedModeOff.Checked = true;
-            this.radioButtonAdvancedModeOff.Location = new System.Drawing.Point(11, 19);
-            this.radioButtonAdvancedModeOff.Name = "radioButtonAdvancedModeOff";
-            this.radioButtonAdvancedModeOff.Size = new System.Drawing.Size(39, 17);
-            this.radioButtonAdvancedModeOff.TabIndex = 1;
-            this.radioButtonAdvancedModeOff.TabStop = true;
-            this.radioButtonAdvancedModeOff.Text = "Off";
-            this.radioButtonAdvancedModeOff.UseVisualStyleBackColor = true;
+            this.Column4.HeaderText = "DAngle";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // radioButtonAdvancedModeEnemyInfo
+            // dataGridViewTextBoxColumn7
             // 
-            this.radioButtonAdvancedModeEnemyInfo.AutoSize = true;
-            this.radioButtonAdvancedModeEnemyInfo.Location = new System.Drawing.Point(11, 157);
-            this.radioButtonAdvancedModeEnemyInfo.Name = "radioButtonAdvancedModeEnemyInfo";
-            this.radioButtonAdvancedModeEnemyInfo.Size = new System.Drawing.Size(78, 17);
-            this.radioButtonAdvancedModeEnemyInfo.TabIndex = 10;
-            this.radioButtonAdvancedModeEnemyInfo.Text = "Enemy Info";
-            this.radioButtonAdvancedModeEnemyInfo.UseVisualStyleBackColor = true;
+            this.dataGridViewTextBoxColumn7.HeaderText = "X Input";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 2;
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // radioButtonAdvancedModeObjectCounter
+            // Column1
             // 
-            this.radioButtonAdvancedModeObjectCounter.AutoSize = true;
-            this.radioButtonAdvancedModeObjectCounter.Location = new System.Drawing.Point(11, 42);
-            this.radioButtonAdvancedModeObjectCounter.Name = "radioButtonAdvancedModeObjectCounter";
-            this.radioButtonAdvancedModeObjectCounter.Size = new System.Drawing.Size(96, 17);
-            this.radioButtonAdvancedModeObjectCounter.TabIndex = 5;
-            this.radioButtonAdvancedModeObjectCounter.Text = "Object Counter";
-            this.radioButtonAdvancedModeObjectCounter.UseVisualStyleBackColor = true;
+            this.Column1.HeaderText = "Y Input";
+            this.Column1.MinimumWidth = 2;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // radioButtonAdvancedModeEffectInfo
+            // watchVariablePanelTas
             // 
-            this.radioButtonAdvancedModeEffectInfo.AutoSize = true;
-            this.radioButtonAdvancedModeEffectInfo.Location = new System.Drawing.Point(11, 134);
-            this.radioButtonAdvancedModeEffectInfo.Name = "radioButtonAdvancedModeEffectInfo";
-            this.radioButtonAdvancedModeEffectInfo.Size = new System.Drawing.Size(74, 17);
-            this.radioButtonAdvancedModeEffectInfo.TabIndex = 9;
-            this.radioButtonAdvancedModeEffectInfo.Text = "Effect Info";
-            this.radioButtonAdvancedModeEffectInfo.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAdvancedModeCheckInfo
-            // 
-            this.radioButtonAdvancedModeCheckInfo.AutoSize = true;
-            this.radioButtonAdvancedModeCheckInfo.Location = new System.Drawing.Point(11, 65);
-            this.radioButtonAdvancedModeCheckInfo.Name = "radioButtonAdvancedModeCheckInfo";
-            this.radioButtonAdvancedModeCheckInfo.Size = new System.Drawing.Size(77, 17);
-            this.radioButtonAdvancedModeCheckInfo.TabIndex = 6;
-            this.radioButtonAdvancedModeCheckInfo.Text = "Check Info";
-            this.radioButtonAdvancedModeCheckInfo.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAdvancedModeStageInfo
-            // 
-            this.radioButtonAdvancedModeStageInfo.AutoSize = true;
-            this.radioButtonAdvancedModeStageInfo.Location = new System.Drawing.Point(11, 111);
-            this.radioButtonAdvancedModeStageInfo.Name = "radioButtonAdvancedModeStageInfo";
-            this.radioButtonAdvancedModeStageInfo.Size = new System.Drawing.Size(74, 17);
-            this.radioButtonAdvancedModeStageInfo.TabIndex = 8;
-            this.radioButtonAdvancedModeStageInfo.Text = "Stage Info";
-            this.radioButtonAdvancedModeStageInfo.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonAdvancedModeMapInfo
-            // 
-            this.radioButtonAdvancedModeMapInfo.AutoSize = true;
-            this.radioButtonAdvancedModeMapInfo.Location = new System.Drawing.Point(11, 88);
-            this.radioButtonAdvancedModeMapInfo.Name = "radioButtonAdvancedModeMapInfo";
-            this.radioButtonAdvancedModeMapInfo.Size = new System.Drawing.Size(67, 17);
-            this.radioButtonAdvancedModeMapInfo.TabIndex = 7;
-            this.radioButtonAdvancedModeMapInfo.Text = "Map Info";
-            this.radioButtonAdvancedModeMapInfo.UseVisualStyleBackColor = true;
-            // 
-            // watchVariablePanelDebug
-            // 
-            this.watchVariablePanelDebug.AutoScroll = true;
-            this.watchVariablePanelDebug.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.watchVariablePanelDebug.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.watchVariablePanelDebug.Location = new System.Drawing.Point(0, 0);
-            this.watchVariablePanelDebug.Margin = new System.Windows.Forms.Padding(0);
-            this.watchVariablePanelDebug.Name = "watchVariablePanelDebug";
-            this.watchVariablePanelDebug.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelDebug.Size = new System.Drawing.Size(524, 461);
-            this.watchVariablePanelDebug.TabIndex = 26;
+            this.watchVariablePanelTas.AutoScroll = true;
+            this.watchVariablePanelTas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.watchVariablePanelTas.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.watchVariablePanelTas.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelTas.Margin = new System.Windows.Forms.Padding(0);
+            this.watchVariablePanelTas.Name = "watchVariablePanelTas";
+            this.watchVariablePanelTas.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelTas.Size = new System.Drawing.Size(474, 455);
+            this.watchVariablePanelTas.TabIndex = 5;
             // 
             // tabPageMap
             // 
@@ -8491,27 +9757,7 @@ namespace STROOP
             // 
             // splitContainerMap.Panel1
             // 
-            this.splitContainerMap.Panel1.Controls.Add(this.labelMapArtificialMarioYLabel);
-            this.splitContainerMap.Panel1.Controls.Add(this.groupBoxMapBounds);
-            this.splitContainerMap.Panel1.Controls.Add(this.labelMapQpu);
-            this.splitContainerMap.Panel1.Controls.Add(this.labelMapPu);
-            this.splitContainerMap.Panel1.Controls.Add(this.textBoxMapArtificialMarioYLabel);
-            this.splitContainerMap.Panel1.Controls.Add(this.labelMapQpuValue);
-            this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowIntendedNextPosition);
-            this.splitContainerMap.Panel1.Controls.Add(this.labelMapPuValue);
-            this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowCeiling);
-            this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowFloor);
-            this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowCamera);
-            this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowHolp);
-            this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowMario);
-            this.splitContainerMap.Panel1.Controls.Add(this.labelMapName);
-            this.splitContainerMap.Panel1.Controls.Add(this.trackBarMapIconSize);
-            this.splitContainerMap.Panel1.Controls.Add(this.labelMapIconSize);
-            this.splitContainerMap.Panel1.Controls.Add(this.checkBoxMapShowInactive);
-            this.splitContainerMap.Panel1.Controls.Add(this.labelMapZoom);
-            this.splitContainerMap.Panel1.Controls.Add(this.labelMapId);
-            this.splitContainerMap.Panel1.Controls.Add(this.labelMapSubName);
-            this.splitContainerMap.Panel1.Controls.Add(this.trackBarMapZoom);
+            this.splitContainerMap.Panel1.Controls.Add(this.splitContainerMapControls);
             this.splitContainerMap.Panel1MinSize = 0;
             // 
             // splitContainerMap.Panel2
@@ -8519,379 +9765,1606 @@ namespace STROOP
             this.splitContainerMap.Panel2.Controls.Add(this.glControlMap);
             this.splitContainerMap.Panel2MinSize = 0;
             this.splitContainerMap.Size = new System.Drawing.Size(915, 463);
-            this.splitContainerMap.SplitterDistance = 208;
+            this.splitContainerMap.SplitterDistance = 402;
             this.splitContainerMap.SplitterWidth = 1;
             this.splitContainerMap.TabIndex = 16;
             // 
-            // labelMapArtificialMarioYLabel
-            // 
-            this.labelMapArtificialMarioYLabel.AutoSize = true;
-            this.labelMapArtificialMarioYLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMapArtificialMarioYLabel.Location = new System.Drawing.Point(10, 326);
-            this.labelMapArtificialMarioYLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMapArtificialMarioYLabel.Name = "labelMapArtificialMarioYLabel";
-            this.labelMapArtificialMarioYLabel.Size = new System.Drawing.Size(85, 13);
-            this.labelMapArtificialMarioYLabel.TabIndex = 38;
-            this.labelMapArtificialMarioYLabel.Text = "Artificial Mario Y:";
-            // 
-            // groupBoxMapBounds
-            // 
-            this.groupBoxMapBounds.Controls.Add(this.textBoxMapBoundsZoom);
-            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsZoomIn);
-            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsZoomOut);
-            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsDownRight);
-            this.groupBoxMapBounds.Controls.Add(this.textBoxMapBoundsPosition);
-            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsRight);
-            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsUpRight);
-            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsUp);
-            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsDown);
-            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsDownLeft);
-            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsLeft);
-            this.groupBoxMapBounds.Controls.Add(this.buttonMapBoundsUpLeft);
-            this.groupBoxMapBounds.Location = new System.Drawing.Point(7, 171);
-            this.groupBoxMapBounds.Name = "groupBoxMapBounds";
-            this.groupBoxMapBounds.Size = new System.Drawing.Size(185, 146);
-            this.groupBoxMapBounds.TabIndex = 37;
-            this.groupBoxMapBounds.TabStop = false;
-            this.groupBoxMapBounds.Text = "Map Bounds";
-            // 
-            // textBoxMapBoundsZoom
-            // 
-            this.textBoxMapBoundsZoom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxMapBoundsZoom.Location = new System.Drawing.Point(140, 70);
-            this.textBoxMapBoundsZoom.Name = "textBoxMapBoundsZoom";
-            this.textBoxMapBoundsZoom.Size = new System.Drawing.Size(42, 20);
-            this.textBoxMapBoundsZoom.TabIndex = 33;
-            this.textBoxMapBoundsZoom.Text = "100";
-            this.textBoxMapBoundsZoom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // buttonMapBoundsZoomIn
-            // 
-            this.buttonMapBoundsZoomIn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMapBoundsZoomIn.Location = new System.Drawing.Point(140, 16);
-            this.buttonMapBoundsZoomIn.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapBoundsZoomIn.Name = "buttonMapBoundsZoomIn";
-            this.buttonMapBoundsZoomIn.Size = new System.Drawing.Size(42, 42);
-            this.buttonMapBoundsZoomIn.TabIndex = 35;
-            this.buttonMapBoundsZoomIn.Text = "Z+";
-            this.buttonMapBoundsZoomIn.UseVisualStyleBackColor = true;
-            // 
-            // buttonMapBoundsZoomOut
-            // 
-            this.buttonMapBoundsZoomOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMapBoundsZoomOut.Location = new System.Drawing.Point(140, 100);
-            this.buttonMapBoundsZoomOut.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapBoundsZoomOut.Name = "buttonMapBoundsZoomOut";
-            this.buttonMapBoundsZoomOut.Size = new System.Drawing.Size(42, 42);
-            this.buttonMapBoundsZoomOut.TabIndex = 34;
-            this.buttonMapBoundsZoomOut.Text = "Z-";
-            this.buttonMapBoundsZoomOut.UseVisualStyleBackColor = true;
-            // 
-            // buttonMapBoundsDownRight
-            // 
-            this.buttonMapBoundsDownRight.Location = new System.Drawing.Point(87, 100);
-            this.buttonMapBoundsDownRight.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapBoundsDownRight.Name = "buttonMapBoundsDownRight";
-            this.buttonMapBoundsDownRight.Size = new System.Drawing.Size(42, 42);
-            this.buttonMapBoundsDownRight.TabIndex = 32;
-            this.buttonMapBoundsDownRight.Text = "DR";
-            this.buttonMapBoundsDownRight.UseVisualStyleBackColor = true;
-            // 
-            // textBoxMapBoundsPosition
-            // 
-            this.textBoxMapBoundsPosition.Location = new System.Drawing.Point(45, 70);
-            this.textBoxMapBoundsPosition.Name = "textBoxMapBoundsPosition";
-            this.textBoxMapBoundsPosition.Size = new System.Drawing.Size(42, 20);
-            this.textBoxMapBoundsPosition.TabIndex = 27;
-            this.textBoxMapBoundsPosition.Text = "100";
-            this.textBoxMapBoundsPosition.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // buttonMapBoundsRight
-            // 
-            this.buttonMapBoundsRight.Location = new System.Drawing.Point(87, 58);
-            this.buttonMapBoundsRight.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapBoundsRight.Name = "buttonMapBoundsRight";
-            this.buttonMapBoundsRight.Size = new System.Drawing.Size(42, 42);
-            this.buttonMapBoundsRight.TabIndex = 31;
-            this.buttonMapBoundsRight.Text = "R";
-            this.buttonMapBoundsRight.UseVisualStyleBackColor = true;
-            // 
-            // buttonMapBoundsUpRight
-            // 
-            this.buttonMapBoundsUpRight.Location = new System.Drawing.Point(87, 16);
-            this.buttonMapBoundsUpRight.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapBoundsUpRight.Name = "buttonMapBoundsUpRight";
-            this.buttonMapBoundsUpRight.Size = new System.Drawing.Size(42, 42);
-            this.buttonMapBoundsUpRight.TabIndex = 30;
-            this.buttonMapBoundsUpRight.Text = "UR";
-            this.buttonMapBoundsUpRight.UseVisualStyleBackColor = true;
-            // 
-            // buttonMapBoundsUp
-            // 
-            this.buttonMapBoundsUp.Location = new System.Drawing.Point(45, 16);
-            this.buttonMapBoundsUp.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapBoundsUp.Name = "buttonMapBoundsUp";
-            this.buttonMapBoundsUp.Size = new System.Drawing.Size(42, 42);
-            this.buttonMapBoundsUp.TabIndex = 29;
-            this.buttonMapBoundsUp.Text = "U";
-            this.buttonMapBoundsUp.UseVisualStyleBackColor = true;
-            // 
-            // buttonMapBoundsDown
-            // 
-            this.buttonMapBoundsDown.Location = new System.Drawing.Point(45, 100);
-            this.buttonMapBoundsDown.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapBoundsDown.Name = "buttonMapBoundsDown";
-            this.buttonMapBoundsDown.Size = new System.Drawing.Size(42, 42);
-            this.buttonMapBoundsDown.TabIndex = 28;
-            this.buttonMapBoundsDown.Text = "D";
-            this.buttonMapBoundsDown.UseVisualStyleBackColor = true;
-            // 
-            // buttonMapBoundsDownLeft
-            // 
-            this.buttonMapBoundsDownLeft.Location = new System.Drawing.Point(3, 100);
-            this.buttonMapBoundsDownLeft.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapBoundsDownLeft.Name = "buttonMapBoundsDownLeft";
-            this.buttonMapBoundsDownLeft.Size = new System.Drawing.Size(42, 42);
-            this.buttonMapBoundsDownLeft.TabIndex = 27;
-            this.buttonMapBoundsDownLeft.Text = "DL";
-            this.buttonMapBoundsDownLeft.UseVisualStyleBackColor = true;
-            // 
-            // buttonMapBoundsLeft
-            // 
-            this.buttonMapBoundsLeft.Location = new System.Drawing.Point(3, 58);
-            this.buttonMapBoundsLeft.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapBoundsLeft.Name = "buttonMapBoundsLeft";
-            this.buttonMapBoundsLeft.Size = new System.Drawing.Size(42, 42);
-            this.buttonMapBoundsLeft.TabIndex = 26;
-            this.buttonMapBoundsLeft.Text = "L";
-            this.buttonMapBoundsLeft.UseVisualStyleBackColor = true;
-            // 
-            // buttonMapBoundsUpLeft
-            // 
-            this.buttonMapBoundsUpLeft.Location = new System.Drawing.Point(3, 16);
-            this.buttonMapBoundsUpLeft.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMapBoundsUpLeft.Name = "buttonMapBoundsUpLeft";
-            this.buttonMapBoundsUpLeft.Size = new System.Drawing.Size(42, 42);
-            this.buttonMapBoundsUpLeft.TabIndex = 25;
-            this.buttonMapBoundsUpLeft.Text = "UL";
-            this.buttonMapBoundsUpLeft.UseVisualStyleBackColor = true;
-            // 
-            // labelMapQpu
-            // 
-            this.labelMapQpu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelMapQpu.AutoSize = true;
-            this.labelMapQpu.Location = new System.Drawing.Point(0, 444);
-            this.labelMapQpu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMapQpu.Name = "labelMapQpu";
-            this.labelMapQpu.Size = new System.Drawing.Size(69, 13);
-            this.labelMapQpu.TabIndex = 6;
-            this.labelMapQpu.Text = "QPU [X:Y:Z]:";
-            // 
-            // labelMapPu
-            // 
-            this.labelMapPu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelMapPu.AutoSize = true;
-            this.labelMapPu.Location = new System.Drawing.Point(8, 427);
-            this.labelMapPu.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMapPu.Name = "labelMapPu";
-            this.labelMapPu.Size = new System.Drawing.Size(61, 13);
-            this.labelMapPu.TabIndex = 5;
-            this.labelMapPu.Text = "PU [X:Y:Z]:";
-            // 
-            // textBoxMapArtificialMarioYLabel
-            // 
-            this.textBoxMapArtificialMarioYLabel.Location = new System.Drawing.Point(98, 323);
-            this.textBoxMapArtificialMarioYLabel.Name = "textBoxMapArtificialMarioYLabel";
-            this.textBoxMapArtificialMarioYLabel.Size = new System.Drawing.Size(91, 20);
-            this.textBoxMapArtificialMarioYLabel.TabIndex = 27;
-            this.textBoxMapArtificialMarioYLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelMapQpuValue
-            // 
-            this.labelMapQpuValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelMapQpuValue.AutoSize = true;
-            this.labelMapQpuValue.Location = new System.Drawing.Point(73, 444);
-            this.labelMapQpuValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMapQpuValue.Name = "labelMapQpuValue";
-            this.labelMapQpuValue.Size = new System.Drawing.Size(37, 13);
-            this.labelMapQpuValue.TabIndex = 1;
-            this.labelMapQpuValue.Text = "[0:0:0]";
-            // 
-            // checkBoxMapShowIntendedNextPosition
-            // 
-            this.checkBoxMapShowIntendedNextPosition.AutoSize = true;
-            this.checkBoxMapShowIntendedNextPosition.Location = new System.Drawing.Point(5, 145);
-            this.checkBoxMapShowIntendedNextPosition.Name = "checkBoxMapShowIntendedNextPosition";
-            this.checkBoxMapShowIntendedNextPosition.Size = new System.Drawing.Size(163, 17);
-            this.checkBoxMapShowIntendedNextPosition.TabIndex = 19;
-            this.checkBoxMapShowIntendedNextPosition.Text = "Show Intended Next Position";
-            this.checkBoxMapShowIntendedNextPosition.UseVisualStyleBackColor = true;
-            // 
-            // labelMapPuValue
-            // 
-            this.labelMapPuValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.labelMapPuValue.AutoSize = true;
-            this.labelMapPuValue.Location = new System.Drawing.Point(73, 427);
-            this.labelMapPuValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMapPuValue.Name = "labelMapPuValue";
-            this.labelMapPuValue.Size = new System.Drawing.Size(37, 13);
-            this.labelMapPuValue.TabIndex = 8;
-            this.labelMapPuValue.Text = "[0:0:0]";
-            // 
-            // checkBoxMapShowCeiling
-            // 
-            this.checkBoxMapShowCeiling.AutoSize = true;
-            this.checkBoxMapShowCeiling.Location = new System.Drawing.Point(5, 122);
-            this.checkBoxMapShowCeiling.Name = "checkBoxMapShowCeiling";
-            this.checkBoxMapShowCeiling.Size = new System.Drawing.Size(105, 17);
-            this.checkBoxMapShowCeiling.TabIndex = 19;
-            this.checkBoxMapShowCeiling.Text = "Show Ceiling Tri.";
-            this.checkBoxMapShowCeiling.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMapShowFloor
-            // 
-            this.checkBoxMapShowFloor.AutoSize = true;
-            this.checkBoxMapShowFloor.Location = new System.Drawing.Point(5, 101);
-            this.checkBoxMapShowFloor.Name = "checkBoxMapShowFloor";
-            this.checkBoxMapShowFloor.Size = new System.Drawing.Size(97, 17);
-            this.checkBoxMapShowFloor.TabIndex = 19;
-            this.checkBoxMapShowFloor.Text = "Show Floor Tri.";
-            this.checkBoxMapShowFloor.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMapShowCamera
-            // 
-            this.checkBoxMapShowCamera.AutoSize = true;
-            this.checkBoxMapShowCamera.Location = new System.Drawing.Point(112, 122);
-            this.checkBoxMapShowCamera.Name = "checkBoxMapShowCamera";
-            this.checkBoxMapShowCamera.Size = new System.Drawing.Size(92, 17);
-            this.checkBoxMapShowCamera.TabIndex = 18;
-            this.checkBoxMapShowCamera.Text = "Show Camera";
-            this.checkBoxMapShowCamera.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMapShowHolp
-            // 
-            this.checkBoxMapShowHolp.AutoSize = true;
-            this.checkBoxMapShowHolp.Location = new System.Drawing.Point(112, 102);
-            this.checkBoxMapShowHolp.Name = "checkBoxMapShowHolp";
-            this.checkBoxMapShowHolp.Size = new System.Drawing.Size(85, 17);
-            this.checkBoxMapShowHolp.TabIndex = 17;
-            this.checkBoxMapShowHolp.Text = "Show HOLP";
-            this.checkBoxMapShowHolp.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMapShowMario
-            // 
-            this.checkBoxMapShowMario.AutoSize = true;
-            this.checkBoxMapShowMario.Checked = true;
-            this.checkBoxMapShowMario.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMapShowMario.Location = new System.Drawing.Point(112, 81);
-            this.checkBoxMapShowMario.Name = "checkBoxMapShowMario";
-            this.checkBoxMapShowMario.Size = new System.Drawing.Size(82, 17);
-            this.checkBoxMapShowMario.TabIndex = 15;
-            this.checkBoxMapShowMario.Text = "Show Mario";
-            this.checkBoxMapShowMario.UseVisualStyleBackColor = true;
-            // 
-            // labelMapName
-            // 
-            this.labelMapName.AutoSize = true;
-            this.labelMapName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMapName.Location = new System.Drawing.Point(2, 3);
-            this.labelMapName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMapName.Name = "labelMapName";
-            this.labelMapName.Size = new System.Drawing.Size(60, 13);
-            this.labelMapName.TabIndex = 3;
-            this.labelMapName.Text = "Unknown";
-            // 
-            // trackBarMapIconSize
-            // 
-            this.trackBarMapIconSize.Location = new System.Drawing.Point(106, 52);
-            this.trackBarMapIconSize.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarMapIconSize.Maximum = 100;
-            this.trackBarMapIconSize.Minimum = 5;
-            this.trackBarMapIconSize.Name = "trackBarMapIconSize";
-            this.trackBarMapIconSize.Size = new System.Drawing.Size(94, 45);
-            this.trackBarMapIconSize.SmallChange = 5;
-            this.trackBarMapIconSize.TabIndex = 10;
-            this.trackBarMapIconSize.TickFrequency = 10;
-            this.trackBarMapIconSize.Value = 5;
-            // 
-            // labelMapIconSize
-            // 
-            this.labelMapIconSize.AutoSize = true;
-            this.labelMapIconSize.Location = new System.Drawing.Point(129, 37);
-            this.labelMapIconSize.Name = "labelMapIconSize";
-            this.labelMapIconSize.Size = new System.Drawing.Size(54, 13);
-            this.labelMapIconSize.TabIndex = 13;
-            this.labelMapIconSize.Text = "Icon Size:";
-            // 
-            // checkBoxMapShowInactive
-            // 
-            this.checkBoxMapShowInactive.AutoSize = true;
-            this.checkBoxMapShowInactive.Location = new System.Drawing.Point(5, 81);
-            this.checkBoxMapShowInactive.Name = "checkBoxMapShowInactive";
-            this.checkBoxMapShowInactive.Size = new System.Drawing.Size(94, 17);
-            this.checkBoxMapShowInactive.TabIndex = 14;
-            this.checkBoxMapShowInactive.Text = "Show Inactive";
-            this.checkBoxMapShowInactive.UseVisualStyleBackColor = true;
-            // 
-            // labelMapZoom
-            // 
-            this.labelMapZoom.AutoSize = true;
-            this.labelMapZoom.Location = new System.Drawing.Point(28, 37);
-            this.labelMapZoom.Name = "labelMapZoom";
-            this.labelMapZoom.Size = new System.Drawing.Size(37, 13);
-            this.labelMapZoom.TabIndex = 12;
-            this.labelMapZoom.Text = "Zoom:";
-            // 
-            // labelMapId
-            // 
-            this.labelMapId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelMapId.Location = new System.Drawing.Point(94, 444);
-            this.labelMapId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMapId.Name = "labelMapId";
-            this.labelMapId.Size = new System.Drawing.Size(110, 13);
-            this.labelMapId.TabIndex = 4;
-            this.labelMapId.Text = "[0:0:0:0]";
-            this.labelMapId.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // labelMapSubName
-            // 
-            this.labelMapSubName.AutoSize = true;
-            this.labelMapSubName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMapSubName.Location = new System.Drawing.Point(2, 16);
-            this.labelMapSubName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMapSubName.Name = "labelMapSubName";
-            this.labelMapSubName.Size = new System.Drawing.Size(53, 13);
-            this.labelMapSubName.TabIndex = 7;
-            this.labelMapSubName.Text = "Unknown";
-            // 
-            // trackBarMapZoom
-            // 
-            this.trackBarMapZoom.Location = new System.Drawing.Point(5, 52);
-            this.trackBarMapZoom.Margin = new System.Windows.Forms.Padding(2);
-            this.trackBarMapZoom.Maximum = 100;
-            this.trackBarMapZoom.Name = "trackBarMapZoom";
-            this.trackBarMapZoom.Size = new System.Drawing.Size(91, 45);
-            this.trackBarMapZoom.SmallChange = 5;
-            this.trackBarMapZoom.TabIndex = 9;
-            this.trackBarMapZoom.TickFrequency = 10;
+            // splitContainerMapControls
+            // 
+            this.splitContainerMapControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerMapControls.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerMapControls.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerMapControls.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerMapControls.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerMapControls.Name = "splitContainerMapControls";
+            this.splitContainerMapControls.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerMapControls.Panel1
+            // 
+            this.splitContainerMapControls.Panel1.Controls.Add(this.tabControlMap);
+            this.splitContainerMapControls.Panel1MinSize = 0;
+            // 
+            // splitContainerMapControls.Panel2
+            // 
+            this.splitContainerMapControls.Panel2.Controls.Add(this.flowLayoutPanelMapTrackers);
+            this.splitContainerMapControls.Panel2MinSize = 0;
+            this.splitContainerMapControls.Size = new System.Drawing.Size(402, 463);
+            this.splitContainerMapControls.SplitterDistance = 320;
+            this.splitContainerMapControls.SplitterWidth = 1;
+            this.splitContainerMapControls.TabIndex = 40;
+            // 
+            // tabControlMap
+            // 
+            this.tabControlMap.Controls.Add(this.tabPageMapOptions);
+            this.tabControlMap.Controls.Add(this.tabPageMap2D);
+            this.tabControlMap.Controls.Add(this.tabPageMap3D);
+            this.tabControlMap.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlMap.Location = new System.Drawing.Point(0, 0);
+            this.tabControlMap.Margin = new System.Windows.Forms.Padding(0);
+            this.tabControlMap.Name = "tabControlMap";
+            this.tabControlMap.SelectedIndex = 0;
+            this.tabControlMap.Size = new System.Drawing.Size(400, 318);
+            this.tabControlMap.TabIndex = 39;
+            // 
+            // tabPageMapOptions
+            // 
+            this.tabPageMapOptions.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageMapOptions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageMapOptions.Controls.Add(this.buttonMapControlsTrackSelectedObjects);
+            this.tabPageMapOptions.Controls.Add(this.buttonMapControlsClearAllTrackers);
+            this.tabPageMapOptions.Controls.Add(this.buttonMapControlsAddNewTracker);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapControlsTrackWallTriangle);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapControlsTrackGridlines);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapControlsTrackCeilingTriangle);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapControlsTrackFloorTriangle);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapControlsTrackCamera);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapControlsTrackAllObjects);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapControlsTrackHolp);
+            this.tabPageMapOptions.Controls.Add(this.checkBoxMapControlsTrackMario);
+            this.tabPageMapOptions.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMapOptions.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageMapOptions.Name = "tabPageMapOptions";
+            this.tabPageMapOptions.Size = new System.Drawing.Size(392, 292);
+            this.tabPageMapOptions.TabIndex = 3;
+            this.tabPageMapOptions.Text = "Options";
+            // 
+            // buttonMapControlsTrackSelectedObjects
+            // 
+            this.buttonMapControlsTrackSelectedObjects.Location = new System.Drawing.Point(124, 75);
+            this.buttonMapControlsTrackSelectedObjects.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapControlsTrackSelectedObjects.Name = "buttonMapControlsTrackSelectedObjects";
+            this.buttonMapControlsTrackSelectedObjects.Size = new System.Drawing.Size(135, 25);
+            this.buttonMapControlsTrackSelectedObjects.TabIndex = 40;
+            this.buttonMapControlsTrackSelectedObjects.Text = "Track Selected Objects";
+            this.buttonMapControlsTrackSelectedObjects.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapControlsClearAllTrackers
+            // 
+            this.buttonMapControlsClearAllTrackers.Location = new System.Drawing.Point(124, 45);
+            this.buttonMapControlsClearAllTrackers.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapControlsClearAllTrackers.Name = "buttonMapControlsClearAllTrackers";
+            this.buttonMapControlsClearAllTrackers.Size = new System.Drawing.Size(135, 25);
+            this.buttonMapControlsClearAllTrackers.TabIndex = 40;
+            this.buttonMapControlsClearAllTrackers.Text = "Clear All Trackers";
+            this.buttonMapControlsClearAllTrackers.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapControlsAddNewTracker
+            // 
+            this.buttonMapControlsAddNewTracker.Location = new System.Drawing.Point(124, 15);
+            this.buttonMapControlsAddNewTracker.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMapControlsAddNewTracker.Name = "buttonMapControlsAddNewTracker";
+            this.buttonMapControlsAddNewTracker.Size = new System.Drawing.Size(135, 25);
+            this.buttonMapControlsAddNewTracker.TabIndex = 41;
+            this.buttonMapControlsAddNewTracker.Text = "Add New Tracker";
+            this.buttonMapControlsAddNewTracker.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMapControlsTrackWallTriangle
+            // 
+            this.checkBoxMapControlsTrackWallTriangle.AutoSize = true;
+            this.checkBoxMapControlsTrackWallTriangle.Location = new System.Drawing.Point(14, 94);
+            this.checkBoxMapControlsTrackWallTriangle.Name = "checkBoxMapControlsTrackWallTriangle";
+            this.checkBoxMapControlsTrackWallTriangle.Size = new System.Drawing.Size(93, 17);
+            this.checkBoxMapControlsTrackWallTriangle.TabIndex = 19;
+            this.checkBoxMapControlsTrackWallTriangle.Text = "Track Wall Tri";
+            this.checkBoxMapControlsTrackWallTriangle.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMapControlsTrackGridlines
+            // 
+            this.checkBoxMapControlsTrackGridlines.AutoSize = true;
+            this.checkBoxMapControlsTrackGridlines.Location = new System.Drawing.Point(14, 154);
+            this.checkBoxMapControlsTrackGridlines.Name = "checkBoxMapControlsTrackGridlines";
+            this.checkBoxMapControlsTrackGridlines.Size = new System.Drawing.Size(97, 17);
+            this.checkBoxMapControlsTrackGridlines.TabIndex = 19;
+            this.checkBoxMapControlsTrackGridlines.Text = "Track Gridlines";
+            this.checkBoxMapControlsTrackGridlines.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMapControlsTrackCeilingTriangle
+            // 
+            this.checkBoxMapControlsTrackCeilingTriangle.AutoSize = true;
+            this.checkBoxMapControlsTrackCeilingTriangle.Location = new System.Drawing.Point(14, 114);
+            this.checkBoxMapControlsTrackCeilingTriangle.Name = "checkBoxMapControlsTrackCeilingTriangle";
+            this.checkBoxMapControlsTrackCeilingTriangle.Size = new System.Drawing.Size(103, 17);
+            this.checkBoxMapControlsTrackCeilingTriangle.TabIndex = 19;
+            this.checkBoxMapControlsTrackCeilingTriangle.Text = "Track Ceiling Tri";
+            this.checkBoxMapControlsTrackCeilingTriangle.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMapControlsTrackFloorTriangle
+            // 
+            this.checkBoxMapControlsTrackFloorTriangle.AutoSize = true;
+            this.checkBoxMapControlsTrackFloorTriangle.Location = new System.Drawing.Point(14, 74);
+            this.checkBoxMapControlsTrackFloorTriangle.Name = "checkBoxMapControlsTrackFloorTriangle";
+            this.checkBoxMapControlsTrackFloorTriangle.Size = new System.Drawing.Size(95, 17);
+            this.checkBoxMapControlsTrackFloorTriangle.TabIndex = 19;
+            this.checkBoxMapControlsTrackFloorTriangle.Text = "Track Floor Tri";
+            this.checkBoxMapControlsTrackFloorTriangle.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMapControlsTrackCamera
+            // 
+            this.checkBoxMapControlsTrackCamera.AutoSize = true;
+            this.checkBoxMapControlsTrackCamera.Location = new System.Drawing.Point(14, 54);
+            this.checkBoxMapControlsTrackCamera.Name = "checkBoxMapControlsTrackCamera";
+            this.checkBoxMapControlsTrackCamera.Size = new System.Drawing.Size(93, 17);
+            this.checkBoxMapControlsTrackCamera.TabIndex = 19;
+            this.checkBoxMapControlsTrackCamera.Text = "Track Camera";
+            this.checkBoxMapControlsTrackCamera.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMapControlsTrackAllObjects
+            // 
+            this.checkBoxMapControlsTrackAllObjects.AutoSize = true;
+            this.checkBoxMapControlsTrackAllObjects.Location = new System.Drawing.Point(14, 134);
+            this.checkBoxMapControlsTrackAllObjects.Name = "checkBoxMapControlsTrackAllObjects";
+            this.checkBoxMapControlsTrackAllObjects.Size = new System.Drawing.Size(107, 17);
+            this.checkBoxMapControlsTrackAllObjects.TabIndex = 19;
+            this.checkBoxMapControlsTrackAllObjects.Text = "Track All Objects";
+            this.checkBoxMapControlsTrackAllObjects.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMapControlsTrackHolp
+            // 
+            this.checkBoxMapControlsTrackHolp.AutoSize = true;
+            this.checkBoxMapControlsTrackHolp.Location = new System.Drawing.Point(14, 34);
+            this.checkBoxMapControlsTrackHolp.Name = "checkBoxMapControlsTrackHolp";
+            this.checkBoxMapControlsTrackHolp.Size = new System.Drawing.Size(86, 17);
+            this.checkBoxMapControlsTrackHolp.TabIndex = 19;
+            this.checkBoxMapControlsTrackHolp.Text = "Track HOLP";
+            this.checkBoxMapControlsTrackHolp.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMapControlsTrackMario
+            // 
+            this.checkBoxMapControlsTrackMario.AutoSize = true;
+            this.checkBoxMapControlsTrackMario.Checked = true;
+            this.checkBoxMapControlsTrackMario.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMapControlsTrackMario.Location = new System.Drawing.Point(14, 14);
+            this.checkBoxMapControlsTrackMario.Name = "checkBoxMapControlsTrackMario";
+            this.checkBoxMapControlsTrackMario.Size = new System.Drawing.Size(83, 17);
+            this.checkBoxMapControlsTrackMario.TabIndex = 19;
+            this.checkBoxMapControlsTrackMario.Text = "Track Mario";
+            this.checkBoxMapControlsTrackMario.UseVisualStyleBackColor = true;
+            // 
+            // tabPageMap2D
+            // 
+            this.tabPageMap2D.AutoScroll = true;
+            this.tabPageMap2D.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageMap2D.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageMap2D.Controls.Add(this.groupBoxMapControlsAngle);
+            this.tabPageMap2D.Controls.Add(this.groupBoxMapControlsCenter);
+            this.tabPageMap2D.Controls.Add(this.groupBoxMapControlsScale);
+            this.tabPageMap2D.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMap2D.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageMap2D.Name = "tabPageMap2D";
+            this.tabPageMap2D.Size = new System.Drawing.Size(392, 292);
+            this.tabPageMap2D.TabIndex = 1;
+            this.tabPageMap2D.Text = "2D";
+            // 
+            // groupBoxMapControlsAngle
+            // 
+            this.groupBoxMapControlsAngle.Controls.Add(this.betterTextboxMapControlsAngleChange);
+            this.groupBoxMapControlsAngle.Controls.Add(this.betterTextboxMapControlsAngleCustom);
+            this.groupBoxMapControlsAngle.Controls.Add(this.buttonMapControlsAngleChangeCounterclockwise);
+            this.groupBoxMapControlsAngle.Controls.Add(this.radioButtonMapControlsAngle49152);
+            this.groupBoxMapControlsAngle.Controls.Add(this.buttonMapControlsAngleChangeClockwise);
+            this.groupBoxMapControlsAngle.Controls.Add(this.radioButtonMapControlsAngle16384);
+            this.groupBoxMapControlsAngle.Controls.Add(this.radioButtonMapControlsAngle0);
+            this.groupBoxMapControlsAngle.Controls.Add(this.radioButtonMapControlsAngleCustom);
+            this.groupBoxMapControlsAngle.Controls.Add(this.radioButtonMapControlsAngle32768);
+            this.groupBoxMapControlsAngle.Location = new System.Drawing.Point(3, 165);
+            this.groupBoxMapControlsAngle.Name = "groupBoxMapControlsAngle";
+            this.groupBoxMapControlsAngle.Size = new System.Drawing.Size(258, 116);
+            this.groupBoxMapControlsAngle.TabIndex = 38;
+            this.groupBoxMapControlsAngle.TabStop = false;
+            this.groupBoxMapControlsAngle.Text = "Angle";
+            // 
+            // betterTextboxMapControlsAngleChange
+            // 
+            this.betterTextboxMapControlsAngleChange.Location = new System.Drawing.Point(165, 51);
+            this.betterTextboxMapControlsAngleChange.Name = "betterTextboxMapControlsAngleChange";
+            this.betterTextboxMapControlsAngleChange.Size = new System.Drawing.Size(50, 20);
+            this.betterTextboxMapControlsAngleChange.TabIndex = 34;
+            this.betterTextboxMapControlsAngleChange.Text = "8192";
+            this.betterTextboxMapControlsAngleChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextboxMapControlsAngleCustom
+            // 
+            this.betterTextboxMapControlsAngleCustom.Location = new System.Drawing.Point(67, 86);
+            this.betterTextboxMapControlsAngleCustom.Name = "betterTextboxMapControlsAngleCustom";
+            this.betterTextboxMapControlsAngleCustom.Size = new System.Drawing.Size(50, 20);
+            this.betterTextboxMapControlsAngleCustom.TabIndex = 34;
+            this.betterTextboxMapControlsAngleCustom.Text = "0";
+            this.betterTextboxMapControlsAngleCustom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonMapControlsAngleChangeCounterclockwise
+            // 
+            this.buttonMapControlsAngleChangeCounterclockwise.BackgroundImage = global::STROOP.Properties.Resources.image_counterclockwise;
+            this.buttonMapControlsAngleChangeCounterclockwise.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControlsAngleChangeCounterclockwise.Location = new System.Drawing.Point(127, 42);
+            this.buttonMapControlsAngleChangeCounterclockwise.Name = "buttonMapControlsAngleChangeCounterclockwise";
+            this.buttonMapControlsAngleChangeCounterclockwise.Size = new System.Drawing.Size(35, 35);
+            this.buttonMapControlsAngleChangeCounterclockwise.TabIndex = 39;
+            this.buttonMapControlsAngleChangeCounterclockwise.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonMapControlsAngle49152
+            // 
+            this.radioButtonMapControlsAngle49152.AutoSize = true;
+            this.radioButtonMapControlsAngle49152.Location = new System.Drawing.Point(9, 69);
+            this.radioButtonMapControlsAngle49152.Name = "radioButtonMapControlsAngle49152";
+            this.radioButtonMapControlsAngle49152.Size = new System.Drawing.Size(55, 17);
+            this.radioButtonMapControlsAngle49152.TabIndex = 12;
+            this.radioButtonMapControlsAngle49152.Text = "49152";
+            this.radioButtonMapControlsAngle49152.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapControlsAngleChangeClockwise
+            // 
+            this.buttonMapControlsAngleChangeClockwise.BackgroundImage = global::STROOP.Properties.Resources.image_clockwise;
+            this.buttonMapControlsAngleChangeClockwise.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControlsAngleChangeClockwise.Location = new System.Drawing.Point(218, 42);
+            this.buttonMapControlsAngleChangeClockwise.Name = "buttonMapControlsAngleChangeClockwise";
+            this.buttonMapControlsAngleChangeClockwise.Size = new System.Drawing.Size(35, 35);
+            this.buttonMapControlsAngleChangeClockwise.TabIndex = 39;
+            this.buttonMapControlsAngleChangeClockwise.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonMapControlsAngle16384
+            // 
+            this.radioButtonMapControlsAngle16384.AutoSize = true;
+            this.radioButtonMapControlsAngle16384.Location = new System.Drawing.Point(9, 33);
+            this.radioButtonMapControlsAngle16384.Name = "radioButtonMapControlsAngle16384";
+            this.radioButtonMapControlsAngle16384.Size = new System.Drawing.Size(55, 17);
+            this.radioButtonMapControlsAngle16384.TabIndex = 12;
+            this.radioButtonMapControlsAngle16384.Text = "16384";
+            this.radioButtonMapControlsAngle16384.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonMapControlsAngle0
+            // 
+            this.radioButtonMapControlsAngle0.AutoSize = true;
+            this.radioButtonMapControlsAngle0.Location = new System.Drawing.Point(9, 15);
+            this.radioButtonMapControlsAngle0.Name = "radioButtonMapControlsAngle0";
+            this.radioButtonMapControlsAngle0.Size = new System.Drawing.Size(31, 17);
+            this.radioButtonMapControlsAngle0.TabIndex = 11;
+            this.radioButtonMapControlsAngle0.Text = "0";
+            this.radioButtonMapControlsAngle0.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonMapControlsAngleCustom
+            // 
+            this.radioButtonMapControlsAngleCustom.AutoSize = true;
+            this.radioButtonMapControlsAngleCustom.Location = new System.Drawing.Point(9, 87);
+            this.radioButtonMapControlsAngleCustom.Name = "radioButtonMapControlsAngleCustom";
+            this.radioButtonMapControlsAngleCustom.Size = new System.Drawing.Size(63, 17);
+            this.radioButtonMapControlsAngleCustom.TabIndex = 13;
+            this.radioButtonMapControlsAngleCustom.Text = "Custom:";
+            this.radioButtonMapControlsAngleCustom.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonMapControlsAngle32768
+            // 
+            this.radioButtonMapControlsAngle32768.AutoSize = true;
+            this.radioButtonMapControlsAngle32768.Checked = true;
+            this.radioButtonMapControlsAngle32768.Location = new System.Drawing.Point(9, 51);
+            this.radioButtonMapControlsAngle32768.Name = "radioButtonMapControlsAngle32768";
+            this.radioButtonMapControlsAngle32768.Size = new System.Drawing.Size(55, 17);
+            this.radioButtonMapControlsAngle32768.TabIndex = 13;
+            this.radioButtonMapControlsAngle32768.TabStop = true;
+            this.radioButtonMapControlsAngle32768.Text = "32768";
+            this.radioButtonMapControlsAngle32768.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxMapControlsCenter
+            // 
+            this.groupBoxMapControlsCenter.Controls.Add(this.betterTextboxMapControlsCenterCustom);
+            this.groupBoxMapControlsCenter.Controls.Add(this.betterTextboxMapControlsCenterChange);
+            this.groupBoxMapControlsCenter.Controls.Add(this.radioButtonMapControlsCenterOrigin);
+            this.groupBoxMapControlsCenter.Controls.Add(this.buttonMapControlsCenterChangeDownRight);
+            this.groupBoxMapControlsCenter.Controls.Add(this.radioButtonMapControlsCenterBestFit);
+            this.groupBoxMapControlsCenter.Controls.Add(this.buttonMapControlsCenterChangeRight);
+            this.groupBoxMapControlsCenter.Controls.Add(this.radioButtonMapControlsCenterCustom);
+            this.groupBoxMapControlsCenter.Controls.Add(this.buttonMapControlsCenterChangeUpLeft);
+            this.groupBoxMapControlsCenter.Controls.Add(this.buttonMapControlsCenterChangeLeft);
+            this.groupBoxMapControlsCenter.Controls.Add(this.buttonMapControlsCenterChangeDownLeft);
+            this.groupBoxMapControlsCenter.Controls.Add(this.buttonMapControlsCenterChangeDown);
+            this.groupBoxMapControlsCenter.Controls.Add(this.buttonMapControlsCenterChangeUpRight);
+            this.groupBoxMapControlsCenter.Controls.Add(this.buttonMapControlsCenterChangeUp);
+            this.groupBoxMapControlsCenter.Location = new System.Drawing.Point(3, 84);
+            this.groupBoxMapControlsCenter.Name = "groupBoxMapControlsCenter";
+            this.groupBoxMapControlsCenter.Size = new System.Drawing.Size(258, 80);
+            this.groupBoxMapControlsCenter.TabIndex = 38;
+            this.groupBoxMapControlsCenter.TabStop = false;
+            this.groupBoxMapControlsCenter.Text = "Center";
+            // 
+            // betterTextboxMapControlsCenterCustom
+            // 
+            this.betterTextboxMapControlsCenterCustom.Location = new System.Drawing.Point(67, 50);
+            this.betterTextboxMapControlsCenterCustom.Name = "betterTextboxMapControlsCenterCustom";
+            this.betterTextboxMapControlsCenterCustom.Size = new System.Drawing.Size(50, 20);
+            this.betterTextboxMapControlsCenterCustom.TabIndex = 34;
+            this.betterTextboxMapControlsCenterCustom.Text = "0,0";
+            this.betterTextboxMapControlsCenterCustom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextboxMapControlsCenterChange
+            // 
+            this.betterTextboxMapControlsCenterChange.Location = new System.Drawing.Point(163, 33);
+            this.betterTextboxMapControlsCenterChange.Name = "betterTextboxMapControlsCenterChange";
+            this.betterTextboxMapControlsCenterChange.Size = new System.Drawing.Size(50, 20);
+            this.betterTextboxMapControlsCenterChange.TabIndex = 34;
+            this.betterTextboxMapControlsCenterChange.Text = "100";
+            this.betterTextboxMapControlsCenterChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // radioButtonMapControlsCenterOrigin
+            // 
+            this.radioButtonMapControlsCenterOrigin.AutoSize = true;
+            this.radioButtonMapControlsCenterOrigin.Location = new System.Drawing.Point(9, 33);
+            this.radioButtonMapControlsCenterOrigin.Name = "radioButtonMapControlsCenterOrigin";
+            this.radioButtonMapControlsCenterOrigin.Size = new System.Drawing.Size(52, 17);
+            this.radioButtonMapControlsCenterOrigin.TabIndex = 12;
+            this.radioButtonMapControlsCenterOrigin.Text = "Origin";
+            this.radioButtonMapControlsCenterOrigin.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapControlsCenterChangeDownRight
+            // 
+            this.buttonMapControlsCenterChangeDownRight.BackgroundImage = global::STROOP.Properties.Resources.image_downright;
+            this.buttonMapControlsCenterChangeDownRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControlsCenterChangeDownRight.Location = new System.Drawing.Point(214, 55);
+            this.buttonMapControlsCenterChangeDownRight.Name = "buttonMapControlsCenterChangeDownRight";
+            this.buttonMapControlsCenterChangeDownRight.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControlsCenterChangeDownRight.TabIndex = 39;
+            this.buttonMapControlsCenterChangeDownRight.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonMapControlsCenterBestFit
+            // 
+            this.radioButtonMapControlsCenterBestFit.AutoSize = true;
+            this.radioButtonMapControlsCenterBestFit.Checked = true;
+            this.radioButtonMapControlsCenterBestFit.Location = new System.Drawing.Point(9, 15);
+            this.radioButtonMapControlsCenterBestFit.Name = "radioButtonMapControlsCenterBestFit";
+            this.radioButtonMapControlsCenterBestFit.Size = new System.Drawing.Size(60, 17);
+            this.radioButtonMapControlsCenterBestFit.TabIndex = 11;
+            this.radioButtonMapControlsCenterBestFit.TabStop = true;
+            this.radioButtonMapControlsCenterBestFit.Text = "Best Fit";
+            this.radioButtonMapControlsCenterBestFit.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapControlsCenterChangeRight
+            // 
+            this.buttonMapControlsCenterChangeRight.BackgroundImage = global::STROOP.Properties.Resources.image_right;
+            this.buttonMapControlsCenterChangeRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControlsCenterChangeRight.Location = new System.Drawing.Point(214, 30);
+            this.buttonMapControlsCenterChangeRight.Name = "buttonMapControlsCenterChangeRight";
+            this.buttonMapControlsCenterChangeRight.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControlsCenterChangeRight.TabIndex = 39;
+            this.buttonMapControlsCenterChangeRight.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonMapControlsCenterCustom
+            // 
+            this.radioButtonMapControlsCenterCustom.AutoSize = true;
+            this.radioButtonMapControlsCenterCustom.Location = new System.Drawing.Point(9, 51);
+            this.radioButtonMapControlsCenterCustom.Name = "radioButtonMapControlsCenterCustom";
+            this.radioButtonMapControlsCenterCustom.Size = new System.Drawing.Size(63, 17);
+            this.radioButtonMapControlsCenterCustom.TabIndex = 13;
+            this.radioButtonMapControlsCenterCustom.Text = "Custom:";
+            this.radioButtonMapControlsCenterCustom.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapControlsCenterChangeUpLeft
+            // 
+            this.buttonMapControlsCenterChangeUpLeft.BackgroundImage = global::STROOP.Properties.Resources.image_upleft;
+            this.buttonMapControlsCenterChangeUpLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControlsCenterChangeUpLeft.Location = new System.Drawing.Point(137, 5);
+            this.buttonMapControlsCenterChangeUpLeft.Name = "buttonMapControlsCenterChangeUpLeft";
+            this.buttonMapControlsCenterChangeUpLeft.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControlsCenterChangeUpLeft.TabIndex = 39;
+            this.buttonMapControlsCenterChangeUpLeft.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapControlsCenterChangeLeft
+            // 
+            this.buttonMapControlsCenterChangeLeft.BackgroundImage = global::STROOP.Properties.Resources.image_left;
+            this.buttonMapControlsCenterChangeLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControlsCenterChangeLeft.Location = new System.Drawing.Point(137, 30);
+            this.buttonMapControlsCenterChangeLeft.Name = "buttonMapControlsCenterChangeLeft";
+            this.buttonMapControlsCenterChangeLeft.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControlsCenterChangeLeft.TabIndex = 39;
+            this.buttonMapControlsCenterChangeLeft.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapControlsCenterChangeDownLeft
+            // 
+            this.buttonMapControlsCenterChangeDownLeft.BackgroundImage = global::STROOP.Properties.Resources.image_downleft;
+            this.buttonMapControlsCenterChangeDownLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControlsCenterChangeDownLeft.Location = new System.Drawing.Point(137, 55);
+            this.buttonMapControlsCenterChangeDownLeft.Name = "buttonMapControlsCenterChangeDownLeft";
+            this.buttonMapControlsCenterChangeDownLeft.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControlsCenterChangeDownLeft.TabIndex = 39;
+            this.buttonMapControlsCenterChangeDownLeft.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapControlsCenterChangeDown
+            // 
+            this.buttonMapControlsCenterChangeDown.BackgroundImage = global::STROOP.Properties.Resources.image_down;
+            this.buttonMapControlsCenterChangeDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControlsCenterChangeDown.Location = new System.Drawing.Point(176, 55);
+            this.buttonMapControlsCenterChangeDown.Name = "buttonMapControlsCenterChangeDown";
+            this.buttonMapControlsCenterChangeDown.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControlsCenterChangeDown.TabIndex = 39;
+            this.buttonMapControlsCenterChangeDown.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapControlsCenterChangeUpRight
+            // 
+            this.buttonMapControlsCenterChangeUpRight.BackgroundImage = global::STROOP.Properties.Resources.image_upright;
+            this.buttonMapControlsCenterChangeUpRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControlsCenterChangeUpRight.Location = new System.Drawing.Point(214, 5);
+            this.buttonMapControlsCenterChangeUpRight.Name = "buttonMapControlsCenterChangeUpRight";
+            this.buttonMapControlsCenterChangeUpRight.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControlsCenterChangeUpRight.TabIndex = 39;
+            this.buttonMapControlsCenterChangeUpRight.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapControlsCenterChangeUp
+            // 
+            this.buttonMapControlsCenterChangeUp.BackgroundImage = global::STROOP.Properties.Resources.image_up;
+            this.buttonMapControlsCenterChangeUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControlsCenterChangeUp.Location = new System.Drawing.Point(176, 5);
+            this.buttonMapControlsCenterChangeUp.Name = "buttonMapControlsCenterChangeUp";
+            this.buttonMapControlsCenterChangeUp.Size = new System.Drawing.Size(25, 25);
+            this.buttonMapControlsCenterChangeUp.TabIndex = 39;
+            this.buttonMapControlsCenterChangeUp.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxMapControlsScale
+            // 
+            this.groupBoxMapControlsScale.Controls.Add(this.betterTextboxMapControlsScaleCustom);
+            this.groupBoxMapControlsScale.Controls.Add(this.betterTextboxMapControlsScaleChange);
+            this.groupBoxMapControlsScale.Controls.Add(this.radioButtonMapControlsScaleMaxCourseSize);
+            this.groupBoxMapControlsScale.Controls.Add(this.radioButtonMapControlsScaleCourseDefault);
+            this.groupBoxMapControlsScale.Controls.Add(this.buttonMapControlsScaleChangeMinus);
+            this.groupBoxMapControlsScale.Controls.Add(this.radioButtonMapControlsScaleCustom);
+            this.groupBoxMapControlsScale.Controls.Add(this.buttonMapControlsScaleChangePlus);
+            this.groupBoxMapControlsScale.Location = new System.Drawing.Point(3, 3);
+            this.groupBoxMapControlsScale.Name = "groupBoxMapControlsScale";
+            this.groupBoxMapControlsScale.Size = new System.Drawing.Size(258, 80);
+            this.groupBoxMapControlsScale.TabIndex = 38;
+            this.groupBoxMapControlsScale.TabStop = false;
+            this.groupBoxMapControlsScale.Text = "Scale";
+            // 
+            // betterTextboxMapControlsScaleCustom
+            // 
+            this.betterTextboxMapControlsScaleCustom.Location = new System.Drawing.Point(67, 50);
+            this.betterTextboxMapControlsScaleCustom.Name = "betterTextboxMapControlsScaleCustom";
+            this.betterTextboxMapControlsScaleCustom.Size = new System.Drawing.Size(50, 20);
+            this.betterTextboxMapControlsScaleCustom.TabIndex = 34;
+            this.betterTextboxMapControlsScaleCustom.Text = "0";
+            this.betterTextboxMapControlsScaleCustom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // betterTextboxMapControlsScaleChange
+            // 
+            this.betterTextboxMapControlsScaleChange.Location = new System.Drawing.Point(165, 33);
+            this.betterTextboxMapControlsScaleChange.Name = "betterTextboxMapControlsScaleChange";
+            this.betterTextboxMapControlsScaleChange.Size = new System.Drawing.Size(50, 20);
+            this.betterTextboxMapControlsScaleChange.TabIndex = 34;
+            this.betterTextboxMapControlsScaleChange.Text = "1.10";
+            this.betterTextboxMapControlsScaleChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // radioButtonMapControlsScaleMaxCourseSize
+            // 
+            this.radioButtonMapControlsScaleMaxCourseSize.AutoSize = true;
+            this.radioButtonMapControlsScaleMaxCourseSize.Location = new System.Drawing.Point(9, 33);
+            this.radioButtonMapControlsScaleMaxCourseSize.Name = "radioButtonMapControlsScaleMaxCourseSize";
+            this.radioButtonMapControlsScaleMaxCourseSize.Size = new System.Drawing.Size(104, 17);
+            this.radioButtonMapControlsScaleMaxCourseSize.TabIndex = 12;
+            this.radioButtonMapControlsScaleMaxCourseSize.Text = "Max Course Size";
+            this.radioButtonMapControlsScaleMaxCourseSize.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonMapControlsScaleCourseDefault
+            // 
+            this.radioButtonMapControlsScaleCourseDefault.AutoSize = true;
+            this.radioButtonMapControlsScaleCourseDefault.Checked = true;
+            this.radioButtonMapControlsScaleCourseDefault.Location = new System.Drawing.Point(9, 15);
+            this.radioButtonMapControlsScaleCourseDefault.Name = "radioButtonMapControlsScaleCourseDefault";
+            this.radioButtonMapControlsScaleCourseDefault.Size = new System.Drawing.Size(95, 17);
+            this.radioButtonMapControlsScaleCourseDefault.TabIndex = 11;
+            this.radioButtonMapControlsScaleCourseDefault.TabStop = true;
+            this.radioButtonMapControlsScaleCourseDefault.Text = "Course Default";
+            this.radioButtonMapControlsScaleCourseDefault.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapControlsScaleChangeMinus
+            // 
+            this.buttonMapControlsScaleChangeMinus.BackgroundImage = global::STROOP.Properties.Resources.image_minus;
+            this.buttonMapControlsScaleChangeMinus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControlsScaleChangeMinus.Location = new System.Drawing.Point(127, 24);
+            this.buttonMapControlsScaleChangeMinus.Name = "buttonMapControlsScaleChangeMinus";
+            this.buttonMapControlsScaleChangeMinus.Size = new System.Drawing.Size(35, 35);
+            this.buttonMapControlsScaleChangeMinus.TabIndex = 39;
+            this.buttonMapControlsScaleChangeMinus.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonMapControlsScaleCustom
+            // 
+            this.radioButtonMapControlsScaleCustom.AutoSize = true;
+            this.radioButtonMapControlsScaleCustom.Location = new System.Drawing.Point(9, 51);
+            this.radioButtonMapControlsScaleCustom.Name = "radioButtonMapControlsScaleCustom";
+            this.radioButtonMapControlsScaleCustom.Size = new System.Drawing.Size(63, 17);
+            this.radioButtonMapControlsScaleCustom.TabIndex = 13;
+            this.radioButtonMapControlsScaleCustom.Text = "Custom:";
+            this.radioButtonMapControlsScaleCustom.UseVisualStyleBackColor = true;
+            // 
+            // buttonMapControlsScaleChangePlus
+            // 
+            this.buttonMapControlsScaleChangePlus.BackgroundImage = global::STROOP.Properties.Resources.image_plus;
+            this.buttonMapControlsScaleChangePlus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonMapControlsScaleChangePlus.Location = new System.Drawing.Point(218, 24);
+            this.buttonMapControlsScaleChangePlus.Name = "buttonMapControlsScaleChangePlus";
+            this.buttonMapControlsScaleChangePlus.Size = new System.Drawing.Size(35, 35);
+            this.buttonMapControlsScaleChangePlus.TabIndex = 39;
+            this.buttonMapControlsScaleChangePlus.UseVisualStyleBackColor = true;
+            // 
+            // tabPageMap3D
+            // 
+            this.tabPageMap3D.AutoScroll = true;
+            this.tabPageMap3D.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageMap3D.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageMap3D.Controls.Add(this.labelMapColorMethod);
+            this.tabPageMap3D.Controls.Add(this.checkBoxMapGameCamOrientation);
+            this.tabPageMap3D.Controls.Add(this.comboBoxMapColorMethod);
+            this.tabPageMap3D.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMap3D.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageMap3D.Name = "tabPageMap3D";
+            this.tabPageMap3D.Size = new System.Drawing.Size(392, 292);
+            this.tabPageMap3D.TabIndex = 2;
+            this.tabPageMap3D.Text = "3D";
+            // 
+            // labelMapColorMethod
+            // 
+            this.labelMapColorMethod.AutoSize = true;
+            this.labelMapColorMethod.Location = new System.Drawing.Point(3, 23);
+            this.labelMapColorMethod.Name = "labelMapColorMethod";
+            this.labelMapColorMethod.Size = new System.Drawing.Size(112, 13);
+            this.labelMapColorMethod.TabIndex = 2;
+            this.labelMapColorMethod.Text = "Collision color method:";
+            // 
+            // checkBoxMapGameCamOrientation
+            // 
+            this.checkBoxMapGameCamOrientation.AutoSize = true;
+            this.checkBoxMapGameCamOrientation.Checked = true;
+            this.checkBoxMapGameCamOrientation.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMapGameCamOrientation.Location = new System.Drawing.Point(3, 3);
+            this.checkBoxMapGameCamOrientation.Name = "checkBoxMapGameCamOrientation";
+            this.checkBoxMapGameCamOrientation.Size = new System.Drawing.Size(175, 17);
+            this.checkBoxMapGameCamOrientation.TabIndex = 1;
+            this.checkBoxMapGameCamOrientation.Text = "Use in-game camera orientation";
+            this.checkBoxMapGameCamOrientation.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxMapColorMethod
+            // 
+            this.comboBoxMapColorMethod.FormattingEnabled = true;
+            this.comboBoxMapColorMethod.Location = new System.Drawing.Point(3, 39);
+            this.comboBoxMapColorMethod.Name = "comboBoxMapColorMethod";
+            this.comboBoxMapColorMethod.Size = new System.Drawing.Size(175, 21);
+            this.comboBoxMapColorMethod.TabIndex = 0;
+            // 
+            // flowLayoutPanelMapTrackers
+            // 
+            this.flowLayoutPanelMapTrackers.AutoScroll = true;
+            this.flowLayoutPanelMapTrackers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanelMapTrackers.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanelMapTrackers.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanelMapTrackers.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanelMapTrackers.Name = "flowLayoutPanelMapTrackers";
+            this.flowLayoutPanelMapTrackers.Size = new System.Drawing.Size(400, 140);
+            this.flowLayoutPanelMapTrackers.TabIndex = 0;
+            this.flowLayoutPanelMapTrackers.WrapContents = false;
             // 
             // glControlMap
             // 
-            this.glControlMap.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.glControlMap.BackColor = System.Drawing.Color.Black;
-            this.glControlMap.Location = new System.Drawing.Point(4, 3);
+            this.glControlMap.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.glControlMap.Location = new System.Drawing.Point(0, 0);
             this.glControlMap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.glControlMap.Name = "glControlMap";
-            this.glControlMap.Size = new System.Drawing.Size(696, 454);
+            this.glControlMap.Size = new System.Drawing.Size(510, 461);
             this.glControlMap.TabIndex = 0;
             this.glControlMap.VSync = false;
             this.glControlMap.Load += new System.EventHandler(this.glControlMap_Load);
             // 
+            // tabPageMap2
+            // 
+            this.tabPageMap2.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageMap2.Controls.Add(this.splitContainerMap2);
+            this.tabPageMap2.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMap2.Name = "tabPageMap2";
+            this.tabPageMap2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageMap2.Size = new System.Drawing.Size(915, 463);
+            this.tabPageMap2.TabIndex = 30;
+            this.tabPageMap2.Text = "Map2";
+            // 
+            // splitContainerMap2
+            // 
+            this.splitContainerMap2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerMap2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerMap2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerMap2.Location = new System.Drawing.Point(3, 3);
+            this.splitContainerMap2.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerMap2.Name = "splitContainerMap2";
+            // 
+            // splitContainerMap2.Panel1
+            // 
+            this.splitContainerMap2.Panel1.Controls.Add(this.labelMap2Qpu);
+            this.splitContainerMap2.Panel1.Controls.Add(this.textBoxMap2ArtificialMarioYLabel);
+            this.splitContainerMap2.Panel1.Controls.Add(this.labelMap2IconSize);
+            this.splitContainerMap2.Panel1.Controls.Add(this.labelMap2Id);
+            this.splitContainerMap2.Panel1.Controls.Add(this.labelMap2QpuValue);
+            this.splitContainerMap2.Panel1.Controls.Add(this.labelMap2PuValue);
+            this.splitContainerMap2.Panel1.Controls.Add(this.labelMap2SubName);
+            this.splitContainerMap2.Panel1.Controls.Add(this.labelMap2Name);
+            this.splitContainerMap2.Panel1.Controls.Add(this.labelMap2Pu);
+            this.splitContainerMap2.Panel1.Controls.Add(this.labelMap2ArtificialMarioYLabel);
+            this.splitContainerMap2.Panel1.Controls.Add(this.groupBoxMap2Bounds);
+            this.splitContainerMap2.Panel1.Controls.Add(this.checkBoxMap2ShowMario);
+            this.splitContainerMap2.Panel1.Controls.Add(this.checkBoxMap2ShowHolp);
+            this.splitContainerMap2.Panel1.Controls.Add(this.checkBoxMap2ShowInactive);
+            this.splitContainerMap2.Panel1.Controls.Add(this.checkBoxMap2ShowFloor);
+            this.splitContainerMap2.Panel1.Controls.Add(this.checkBoxMap2ShowIntendedNextPosition);
+            this.splitContainerMap2.Panel1.Controls.Add(this.checkBoxMap2ShowCeiling);
+            this.splitContainerMap2.Panel1.Controls.Add(this.checkBoxMap2ShowCamera);
+            this.splitContainerMap2.Panel1.Controls.Add(this.trackBarMap2IconSize);
+            this.splitContainerMap2.Panel1MinSize = 0;
+            // 
+            // splitContainerMap2.Panel2
+            // 
+            this.splitContainerMap2.Panel2.BackColor = System.Drawing.Color.Black;
+            this.splitContainerMap2.Panel2.Controls.Add(this.glControlMap2);
+            this.splitContainerMap2.Panel2MinSize = 0;
+            this.splitContainerMap2.Size = new System.Drawing.Size(909, 457);
+            this.splitContainerMap2.SplitterDistance = 226;
+            this.splitContainerMap2.SplitterWidth = 1;
+            this.splitContainerMap2.TabIndex = 17;
+            // 
+            // labelMap2Qpu
+            // 
+            this.labelMap2Qpu.AutoSize = true;
+            this.labelMap2Qpu.Location = new System.Drawing.Point(2, 351);
+            this.labelMap2Qpu.Name = "labelMap2Qpu";
+            this.labelMap2Qpu.Size = new System.Drawing.Size(69, 13);
+            this.labelMap2Qpu.TabIndex = 35;
+            this.labelMap2Qpu.Text = "QPU [X:Y:Z]:";
+            // 
+            // textBoxMap2ArtificialMarioYLabel
+            // 
+            this.textBoxMap2ArtificialMarioYLabel.Location = new System.Drawing.Point(103, 304);
+            this.textBoxMap2ArtificialMarioYLabel.Name = "textBoxMap2ArtificialMarioYLabel";
+            this.textBoxMap2ArtificialMarioYLabel.Size = new System.Drawing.Size(87, 20);
+            this.textBoxMap2ArtificialMarioYLabel.TabIndex = 33;
+            this.textBoxMap2ArtificialMarioYLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelMap2IconSize
+            // 
+            this.labelMap2IconSize.AutoSize = true;
+            this.labelMap2IconSize.Location = new System.Drawing.Point(5, 48);
+            this.labelMap2IconSize.Name = "labelMap2IconSize";
+            this.labelMap2IconSize.Size = new System.Drawing.Size(54, 13);
+            this.labelMap2IconSize.TabIndex = 34;
+            this.labelMap2IconSize.Text = "Icon Size:";
+            // 
+            // labelMap2Id
+            // 
+            this.labelMap2Id.AutoSize = true;
+            this.labelMap2Id.Location = new System.Drawing.Point(10, 373);
+            this.labelMap2Id.Name = "labelMap2Id";
+            this.labelMap2Id.Size = new System.Drawing.Size(46, 13);
+            this.labelMap2Id.TabIndex = 11;
+            this.labelMap2Id.Text = "[9:1:1:2]";
+            // 
+            // labelMap2QpuValue
+            // 
+            this.labelMap2QpuValue.AutoSize = true;
+            this.labelMap2QpuValue.Location = new System.Drawing.Point(73, 351);
+            this.labelMap2QpuValue.Name = "labelMap2QpuValue";
+            this.labelMap2QpuValue.Size = new System.Drawing.Size(37, 13);
+            this.labelMap2QpuValue.TabIndex = 11;
+            this.labelMap2QpuValue.Text = "[0:0:0]";
+            // 
+            // labelMap2PuValue
+            // 
+            this.labelMap2PuValue.AutoSize = true;
+            this.labelMap2PuValue.Location = new System.Drawing.Point(73, 333);
+            this.labelMap2PuValue.Name = "labelMap2PuValue";
+            this.labelMap2PuValue.Size = new System.Drawing.Size(37, 13);
+            this.labelMap2PuValue.TabIndex = 11;
+            this.labelMap2PuValue.Text = "[0:0:0]";
+            // 
+            // labelMap2SubName
+            // 
+            this.labelMap2SubName.AutoSize = true;
+            this.labelMap2SubName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMap2SubName.Location = new System.Drawing.Point(3, 18);
+            this.labelMap2SubName.Name = "labelMap2SubName";
+            this.labelMap2SubName.Size = new System.Drawing.Size(81, 13);
+            this.labelMap2SubName.TabIndex = 33;
+            this.labelMap2SubName.Text = "Map Sub Name";
+            // 
+            // labelMap2Name
+            // 
+            this.labelMap2Name.AutoSize = true;
+            this.labelMap2Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMap2Name.Location = new System.Drawing.Point(3, 2);
+            this.labelMap2Name.Name = "labelMap2Name";
+            this.labelMap2Name.Size = new System.Drawing.Size(67, 13);
+            this.labelMap2Name.TabIndex = 33;
+            this.labelMap2Name.Text = "Map Name";
+            // 
+            // labelMap2Pu
+            // 
+            this.labelMap2Pu.AutoSize = true;
+            this.labelMap2Pu.Location = new System.Drawing.Point(10, 333);
+            this.labelMap2Pu.Name = "labelMap2Pu";
+            this.labelMap2Pu.Size = new System.Drawing.Size(61, 13);
+            this.labelMap2Pu.TabIndex = 11;
+            this.labelMap2Pu.Text = "PU [X:Y:Z]:";
+            // 
+            // labelMap2ArtificialMarioYLabel
+            // 
+            this.labelMap2ArtificialMarioYLabel.AutoSize = true;
+            this.labelMap2ArtificialMarioYLabel.Location = new System.Drawing.Point(17, 308);
+            this.labelMap2ArtificialMarioYLabel.Name = "labelMap2ArtificialMarioYLabel";
+            this.labelMap2ArtificialMarioYLabel.Size = new System.Drawing.Size(85, 13);
+            this.labelMap2ArtificialMarioYLabel.TabIndex = 11;
+            this.labelMap2ArtificialMarioYLabel.Text = "Artificial Mario Y:";
+            // 
+            // groupBoxMap2Bounds
+            // 
+            this.groupBoxMap2Bounds.Controls.Add(this.textBoxMap2BoundsZoom);
+            this.groupBoxMap2Bounds.Controls.Add(this.buttonMap2BoundsZoomIn);
+            this.groupBoxMap2Bounds.Controls.Add(this.buttonMap2BoundsZoomOut);
+            this.groupBoxMap2Bounds.Controls.Add(this.buttonMap2BoundsDownRight);
+            this.groupBoxMap2Bounds.Controls.Add(this.textBoxMap2BoundsPosition);
+            this.groupBoxMap2Bounds.Controls.Add(this.buttonMap2BoundsRight);
+            this.groupBoxMap2Bounds.Controls.Add(this.buttonMap2BoundsUpRight);
+            this.groupBoxMap2Bounds.Controls.Add(this.buttonMap2BoundsUp);
+            this.groupBoxMap2Bounds.Controls.Add(this.buttonMap2BoundsDown);
+            this.groupBoxMap2Bounds.Controls.Add(this.buttonMap2BoundsDownLeft);
+            this.groupBoxMap2Bounds.Controls.Add(this.buttonMap2BoundsLeft);
+            this.groupBoxMap2Bounds.Controls.Add(this.buttonMap2BoundsUpLeft);
+            this.groupBoxMap2Bounds.Location = new System.Drawing.Point(8, 155);
+            this.groupBoxMap2Bounds.Name = "groupBoxMap2Bounds";
+            this.groupBoxMap2Bounds.Size = new System.Drawing.Size(185, 146);
+            this.groupBoxMap2Bounds.TabIndex = 31;
+            this.groupBoxMap2Bounds.TabStop = false;
+            this.groupBoxMap2Bounds.Text = "Map Bounds";
+            // 
+            // textBoxMap2BoundsZoom
+            // 
+            this.textBoxMap2BoundsZoom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxMap2BoundsZoom.Location = new System.Drawing.Point(140, 70);
+            this.textBoxMap2BoundsZoom.Name = "textBoxMap2BoundsZoom";
+            this.textBoxMap2BoundsZoom.Size = new System.Drawing.Size(42, 20);
+            this.textBoxMap2BoundsZoom.TabIndex = 33;
+            this.textBoxMap2BoundsZoom.Text = "100";
+            this.textBoxMap2BoundsZoom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonMap2BoundsZoomIn
+            // 
+            this.buttonMap2BoundsZoomIn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMap2BoundsZoomIn.Location = new System.Drawing.Point(140, 16);
+            this.buttonMap2BoundsZoomIn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMap2BoundsZoomIn.Name = "buttonMap2BoundsZoomIn";
+            this.buttonMap2BoundsZoomIn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMap2BoundsZoomIn.TabIndex = 35;
+            this.buttonMap2BoundsZoomIn.Text = "Z+";
+            this.buttonMap2BoundsZoomIn.UseVisualStyleBackColor = true;
+            // 
+            // buttonMap2BoundsZoomOut
+            // 
+            this.buttonMap2BoundsZoomOut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMap2BoundsZoomOut.Location = new System.Drawing.Point(140, 100);
+            this.buttonMap2BoundsZoomOut.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMap2BoundsZoomOut.Name = "buttonMap2BoundsZoomOut";
+            this.buttonMap2BoundsZoomOut.Size = new System.Drawing.Size(42, 42);
+            this.buttonMap2BoundsZoomOut.TabIndex = 34;
+            this.buttonMap2BoundsZoomOut.Text = "Z-";
+            this.buttonMap2BoundsZoomOut.UseVisualStyleBackColor = true;
+            // 
+            // buttonMap2BoundsDownRight
+            // 
+            this.buttonMap2BoundsDownRight.Location = new System.Drawing.Point(87, 100);
+            this.buttonMap2BoundsDownRight.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMap2BoundsDownRight.Name = "buttonMap2BoundsDownRight";
+            this.buttonMap2BoundsDownRight.Size = new System.Drawing.Size(42, 42);
+            this.buttonMap2BoundsDownRight.TabIndex = 32;
+            this.buttonMap2BoundsDownRight.Text = "DR";
+            this.buttonMap2BoundsDownRight.UseVisualStyleBackColor = true;
+            // 
+            // textBoxMap2BoundsPosition
+            // 
+            this.textBoxMap2BoundsPosition.Location = new System.Drawing.Point(45, 70);
+            this.textBoxMap2BoundsPosition.Name = "textBoxMap2BoundsPosition";
+            this.textBoxMap2BoundsPosition.Size = new System.Drawing.Size(42, 20);
+            this.textBoxMap2BoundsPosition.TabIndex = 27;
+            this.textBoxMap2BoundsPosition.Text = "100";
+            this.textBoxMap2BoundsPosition.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonMap2BoundsRight
+            // 
+            this.buttonMap2BoundsRight.Location = new System.Drawing.Point(87, 58);
+            this.buttonMap2BoundsRight.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMap2BoundsRight.Name = "buttonMap2BoundsRight";
+            this.buttonMap2BoundsRight.Size = new System.Drawing.Size(42, 42);
+            this.buttonMap2BoundsRight.TabIndex = 31;
+            this.buttonMap2BoundsRight.Text = "R";
+            this.buttonMap2BoundsRight.UseVisualStyleBackColor = true;
+            // 
+            // buttonMap2BoundsUpRight
+            // 
+            this.buttonMap2BoundsUpRight.Location = new System.Drawing.Point(87, 16);
+            this.buttonMap2BoundsUpRight.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMap2BoundsUpRight.Name = "buttonMap2BoundsUpRight";
+            this.buttonMap2BoundsUpRight.Size = new System.Drawing.Size(42, 42);
+            this.buttonMap2BoundsUpRight.TabIndex = 30;
+            this.buttonMap2BoundsUpRight.Text = "UR";
+            this.buttonMap2BoundsUpRight.UseVisualStyleBackColor = true;
+            // 
+            // buttonMap2BoundsUp
+            // 
+            this.buttonMap2BoundsUp.Location = new System.Drawing.Point(45, 16);
+            this.buttonMap2BoundsUp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMap2BoundsUp.Name = "buttonMap2BoundsUp";
+            this.buttonMap2BoundsUp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMap2BoundsUp.TabIndex = 29;
+            this.buttonMap2BoundsUp.Text = "U";
+            this.buttonMap2BoundsUp.UseVisualStyleBackColor = true;
+            // 
+            // buttonMap2BoundsDown
+            // 
+            this.buttonMap2BoundsDown.Location = new System.Drawing.Point(45, 100);
+            this.buttonMap2BoundsDown.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMap2BoundsDown.Name = "buttonMap2BoundsDown";
+            this.buttonMap2BoundsDown.Size = new System.Drawing.Size(42, 42);
+            this.buttonMap2BoundsDown.TabIndex = 28;
+            this.buttonMap2BoundsDown.Text = "D";
+            this.buttonMap2BoundsDown.UseVisualStyleBackColor = true;
+            // 
+            // buttonMap2BoundsDownLeft
+            // 
+            this.buttonMap2BoundsDownLeft.Location = new System.Drawing.Point(3, 100);
+            this.buttonMap2BoundsDownLeft.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMap2BoundsDownLeft.Name = "buttonMap2BoundsDownLeft";
+            this.buttonMap2BoundsDownLeft.Size = new System.Drawing.Size(42, 42);
+            this.buttonMap2BoundsDownLeft.TabIndex = 27;
+            this.buttonMap2BoundsDownLeft.Text = "DL";
+            this.buttonMap2BoundsDownLeft.UseVisualStyleBackColor = true;
+            // 
+            // buttonMap2BoundsLeft
+            // 
+            this.buttonMap2BoundsLeft.Location = new System.Drawing.Point(3, 58);
+            this.buttonMap2BoundsLeft.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMap2BoundsLeft.Name = "buttonMap2BoundsLeft";
+            this.buttonMap2BoundsLeft.Size = new System.Drawing.Size(42, 42);
+            this.buttonMap2BoundsLeft.TabIndex = 26;
+            this.buttonMap2BoundsLeft.Text = "L";
+            this.buttonMap2BoundsLeft.UseVisualStyleBackColor = true;
+            // 
+            // buttonMap2BoundsUpLeft
+            // 
+            this.buttonMap2BoundsUpLeft.Location = new System.Drawing.Point(3, 16);
+            this.buttonMap2BoundsUpLeft.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMap2BoundsUpLeft.Name = "buttonMap2BoundsUpLeft";
+            this.buttonMap2BoundsUpLeft.Size = new System.Drawing.Size(42, 42);
+            this.buttonMap2BoundsUpLeft.TabIndex = 25;
+            this.buttonMap2BoundsUpLeft.Text = "UL";
+            this.buttonMap2BoundsUpLeft.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMap2ShowMario
+            // 
+            this.checkBoxMap2ShowMario.AutoSize = true;
+            this.checkBoxMap2ShowMario.Checked = true;
+            this.checkBoxMap2ShowMario.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMap2ShowMario.Location = new System.Drawing.Point(117, 72);
+            this.checkBoxMap2ShowMario.Name = "checkBoxMap2ShowMario";
+            this.checkBoxMap2ShowMario.Size = new System.Drawing.Size(82, 17);
+            this.checkBoxMap2ShowMario.TabIndex = 19;
+            this.checkBoxMap2ShowMario.Text = "Show Mario";
+            this.checkBoxMap2ShowMario.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMap2ShowHolp
+            // 
+            this.checkBoxMap2ShowHolp.AutoSize = true;
+            this.checkBoxMap2ShowHolp.Location = new System.Drawing.Point(117, 92);
+            this.checkBoxMap2ShowHolp.Name = "checkBoxMap2ShowHolp";
+            this.checkBoxMap2ShowHolp.Size = new System.Drawing.Size(85, 17);
+            this.checkBoxMap2ShowHolp.TabIndex = 19;
+            this.checkBoxMap2ShowHolp.Text = "Show HOLP";
+            this.checkBoxMap2ShowHolp.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMap2ShowInactive
+            // 
+            this.checkBoxMap2ShowInactive.AutoSize = true;
+            this.checkBoxMap2ShowInactive.Location = new System.Drawing.Point(8, 72);
+            this.checkBoxMap2ShowInactive.Name = "checkBoxMap2ShowInactive";
+            this.checkBoxMap2ShowInactive.Size = new System.Drawing.Size(94, 17);
+            this.checkBoxMap2ShowInactive.TabIndex = 19;
+            this.checkBoxMap2ShowInactive.Text = "Show Inactive";
+            this.checkBoxMap2ShowInactive.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMap2ShowFloor
+            // 
+            this.checkBoxMap2ShowFloor.AutoSize = true;
+            this.checkBoxMap2ShowFloor.Location = new System.Drawing.Point(8, 92);
+            this.checkBoxMap2ShowFloor.Name = "checkBoxMap2ShowFloor";
+            this.checkBoxMap2ShowFloor.Size = new System.Drawing.Size(94, 17);
+            this.checkBoxMap2ShowFloor.TabIndex = 19;
+            this.checkBoxMap2ShowFloor.Text = "Show Floor Tri";
+            this.checkBoxMap2ShowFloor.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMap2ShowIntendedNextPosition
+            // 
+            this.checkBoxMap2ShowIntendedNextPosition.AutoSize = true;
+            this.checkBoxMap2ShowIntendedNextPosition.Location = new System.Drawing.Point(8, 132);
+            this.checkBoxMap2ShowIntendedNextPosition.Name = "checkBoxMap2ShowIntendedNextPosition";
+            this.checkBoxMap2ShowIntendedNextPosition.Size = new System.Drawing.Size(163, 17);
+            this.checkBoxMap2ShowIntendedNextPosition.TabIndex = 19;
+            this.checkBoxMap2ShowIntendedNextPosition.Text = "Show Intended Next Position";
+            this.checkBoxMap2ShowIntendedNextPosition.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMap2ShowCeiling
+            // 
+            this.checkBoxMap2ShowCeiling.AutoSize = true;
+            this.checkBoxMap2ShowCeiling.Location = new System.Drawing.Point(8, 112);
+            this.checkBoxMap2ShowCeiling.Name = "checkBoxMap2ShowCeiling";
+            this.checkBoxMap2ShowCeiling.Size = new System.Drawing.Size(102, 17);
+            this.checkBoxMap2ShowCeiling.TabIndex = 19;
+            this.checkBoxMap2ShowCeiling.Text = "Show Ceiling Tri";
+            this.checkBoxMap2ShowCeiling.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMap2ShowCamera
+            // 
+            this.checkBoxMap2ShowCamera.AutoSize = true;
+            this.checkBoxMap2ShowCamera.Location = new System.Drawing.Point(117, 112);
+            this.checkBoxMap2ShowCamera.Name = "checkBoxMap2ShowCamera";
+            this.checkBoxMap2ShowCamera.Size = new System.Drawing.Size(92, 17);
+            this.checkBoxMap2ShowCamera.TabIndex = 19;
+            this.checkBoxMap2ShowCamera.Text = "Show Camera";
+            this.checkBoxMap2ShowCamera.UseVisualStyleBackColor = true;
+            // 
+            // trackBarMap2IconSize
+            // 
+            this.trackBarMap2IconSize.Location = new System.Drawing.Point(59, 38);
+            this.trackBarMap2IconSize.Maximum = 100;
+            this.trackBarMap2IconSize.Minimum = 15;
+            this.trackBarMap2IconSize.Name = "trackBarMap2IconSize";
+            this.trackBarMap2IconSize.Size = new System.Drawing.Size(104, 45);
+            this.trackBarMap2IconSize.TabIndex = 32;
+            this.trackBarMap2IconSize.TickFrequency = 10;
+            this.trackBarMap2IconSize.Value = 40;
+            // 
+            // glControlMap2
+            // 
+            this.glControlMap2.BackColor = System.Drawing.Color.Black;
+            this.glControlMap2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.glControlMap2.Location = new System.Drawing.Point(0, 0);
+            this.glControlMap2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.glControlMap2.Name = "glControlMap2";
+            this.glControlMap2.Size = new System.Drawing.Size(680, 455);
+            this.glControlMap2.TabIndex = 0;
+            this.glControlMap2.VSync = false;
+            this.glControlMap2.Load += new System.EventHandler(this.glControlMap2_Load);
+            // 
+            // tabPageOptions
+            // 
+            this.tabPageOptions.AutoScroll = true;
+            this.tabPageOptions.Controls.Add(this.checkedListBoxSavedSettings);
+            this.tabPageOptions.Controls.Add(this.buttonOptionsResetSavedSettings);
+            this.tabPageOptions.Controls.Add(this.groupBoxPositionControllerRelativeAngle);
+            this.tabPageOptions.Controls.Add(this.groupBoxFPS);
+            this.tabPageOptions.Controls.Add(this.groupBoxGotoRetrieveOffsets);
+            this.tabPageOptions.Controls.Add(this.groupBoxShowOverlay);
+            this.tabPageOptions.Controls.Add(this.label3);
+            this.tabPageOptions.Controls.Add(this.checkBoxUseRomHack);
+            this.tabPageOptions.Location = new System.Drawing.Point(4, 22);
+            this.tabPageOptions.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPageOptions.Name = "tabPageOptions";
+            this.tabPageOptions.Size = new System.Drawing.Size(915, 463);
+            this.tabPageOptions.TabIndex = 5;
+            this.tabPageOptions.Text = "Options";
+            // 
+            // checkedListBoxSavedSettings
+            // 
+            this.checkedListBoxSavedSettings.BackColor = System.Drawing.SystemColors.Control;
+            this.checkedListBoxSavedSettings.CheckOnClick = true;
+            this.checkedListBoxSavedSettings.FormattingEnabled = true;
+            this.checkedListBoxSavedSettings.Location = new System.Drawing.Point(8, 8);
+            this.checkedListBoxSavedSettings.Name = "checkedListBoxSavedSettings";
+            this.checkedListBoxSavedSettings.Size = new System.Drawing.Size(257, 199);
+            this.checkedListBoxSavedSettings.TabIndex = 40;
+            // 
+            // buttonOptionsResetSavedSettings
+            // 
+            this.buttonOptionsResetSavedSettings.Location = new System.Drawing.Point(8, 211);
+            this.buttonOptionsResetSavedSettings.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonOptionsResetSavedSettings.Name = "buttonOptionsResetSavedSettings";
+            this.buttonOptionsResetSavedSettings.Size = new System.Drawing.Size(257, 28);
+            this.buttonOptionsResetSavedSettings.TabIndex = 38;
+            this.buttonOptionsResetSavedSettings.Text = "Reset Saved Settings";
+            this.buttonOptionsResetSavedSettings.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxPositionControllerRelativeAngle
+            // 
+            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.textBoxPositionControllerRelativeAngleCustom);
+            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleMario);
+            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleRecommended);
+            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleCustom);
+            this.groupBoxPositionControllerRelativeAngle.Location = new System.Drawing.Point(447, 184);
+            this.groupBoxPositionControllerRelativeAngle.Name = "groupBoxPositionControllerRelativeAngle";
+            this.groupBoxPositionControllerRelativeAngle.Size = new System.Drawing.Size(141, 99);
+            this.groupBoxPositionControllerRelativeAngle.TabIndex = 39;
+            this.groupBoxPositionControllerRelativeAngle.TabStop = false;
+            this.groupBoxPositionControllerRelativeAngle.Text = "Pos Controller Rel Angle";
+            // 
+            // textBoxPositionControllerRelativeAngleCustom
+            // 
+            this.textBoxPositionControllerRelativeAngleCustom.Location = new System.Drawing.Point(74, 64);
+            this.textBoxPositionControllerRelativeAngleCustom.Name = "textBoxPositionControllerRelativeAngleCustom";
+            this.textBoxPositionControllerRelativeAngleCustom.Size = new System.Drawing.Size(50, 20);
+            this.textBoxPositionControllerRelativeAngleCustom.TabIndex = 38;
+            this.textBoxPositionControllerRelativeAngleCustom.Text = "32768";
+            this.textBoxPositionControllerRelativeAngleCustom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // radioButtonPositionControllerRelativeAngleMario
+            // 
+            this.radioButtonPositionControllerRelativeAngleMario.AutoSize = true;
+            this.radioButtonPositionControllerRelativeAngleMario.Location = new System.Drawing.Point(11, 42);
+            this.radioButtonPositionControllerRelativeAngleMario.Name = "radioButtonPositionControllerRelativeAngleMario";
+            this.radioButtonPositionControllerRelativeAngleMario.Size = new System.Drawing.Size(51, 17);
+            this.radioButtonPositionControllerRelativeAngleMario.TabIndex = 12;
+            this.radioButtonPositionControllerRelativeAngleMario.Text = "Mario";
+            this.radioButtonPositionControllerRelativeAngleMario.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonPositionControllerRelativeAngleRecommended
+            // 
+            this.radioButtonPositionControllerRelativeAngleRecommended.AutoSize = true;
+            this.radioButtonPositionControllerRelativeAngleRecommended.Checked = true;
+            this.radioButtonPositionControllerRelativeAngleRecommended.Location = new System.Drawing.Point(11, 19);
+            this.radioButtonPositionControllerRelativeAngleRecommended.Name = "radioButtonPositionControllerRelativeAngleRecommended";
+            this.radioButtonPositionControllerRelativeAngleRecommended.Size = new System.Drawing.Size(97, 17);
+            this.radioButtonPositionControllerRelativeAngleRecommended.TabIndex = 11;
+            this.radioButtonPositionControllerRelativeAngleRecommended.TabStop = true;
+            this.radioButtonPositionControllerRelativeAngleRecommended.Text = "Recommended";
+            this.radioButtonPositionControllerRelativeAngleRecommended.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonPositionControllerRelativeAngleCustom
+            // 
+            this.radioButtonPositionControllerRelativeAngleCustom.AutoSize = true;
+            this.radioButtonPositionControllerRelativeAngleCustom.Location = new System.Drawing.Point(11, 65);
+            this.radioButtonPositionControllerRelativeAngleCustom.Name = "radioButtonPositionControllerRelativeAngleCustom";
+            this.radioButtonPositionControllerRelativeAngleCustom.Size = new System.Drawing.Size(63, 17);
+            this.radioButtonPositionControllerRelativeAngleCustom.TabIndex = 13;
+            this.radioButtonPositionControllerRelativeAngleCustom.Text = "Custom:";
+            this.radioButtonPositionControllerRelativeAngleCustom.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxFPS
+            // 
+            this.groupBoxFPS.Controls.Add(this.betterTextboxFPS);
+            this.groupBoxFPS.Location = new System.Drawing.Point(447, 131);
+            this.groupBoxFPS.Name = "groupBoxFPS";
+            this.groupBoxFPS.Size = new System.Drawing.Size(62, 47);
+            this.groupBoxFPS.TabIndex = 38;
+            this.groupBoxFPS.TabStop = false;
+            this.groupBoxFPS.Text = "FPS";
+            // 
+            // betterTextboxFPS
+            // 
+            this.betterTextboxFPS.Location = new System.Drawing.Point(6, 19);
+            this.betterTextboxFPS.Name = "betterTextboxFPS";
+            this.betterTextboxFPS.Size = new System.Drawing.Size(50, 20);
+            this.betterTextboxFPS.TabIndex = 39;
+            this.betterTextboxFPS.Text = "30";
+            this.betterTextboxFPS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBoxGotoRetrieveOffsets
+            // 
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelRetrieveInfrontSuffix);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelRetrieveInfrontPrefix);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.textBoxRetrieveInfront);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelRetrieveAboveSuffix);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelRetrieveAbovePrefix);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.textBoxRetrieveAbove);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelGotoInfrontSuffix);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelGotoInfrontPrefix);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.textBoxGotoInfront);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelGotoAboveSuffix);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelGotoAbovePrefix);
+            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.textBoxGotoAbove);
+            this.groupBoxGotoRetrieveOffsets.Location = new System.Drawing.Point(447, 4);
+            this.groupBoxGotoRetrieveOffsets.Name = "groupBoxGotoRetrieveOffsets";
+            this.groupBoxGotoRetrieveOffsets.Size = new System.Drawing.Size(154, 121);
+            this.groupBoxGotoRetrieveOffsets.TabIndex = 32;
+            this.groupBoxGotoRetrieveOffsets.TabStop = false;
+            this.groupBoxGotoRetrieveOffsets.Text = "Go to / Retrieve Offsets";
+            // 
+            // labelRetrieveInfrontSuffix
+            // 
+            this.labelRetrieveInfrontSuffix.AutoSize = true;
+            this.labelRetrieveInfrontSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRetrieveInfrontSuffix.Location = new System.Drawing.Point(106, 98);
+            this.labelRetrieveInfrontSuffix.Name = "labelRetrieveInfrontSuffix";
+            this.labelRetrieveInfrontSuffix.Size = new System.Drawing.Size(39, 13);
+            this.labelRetrieveInfrontSuffix.TabIndex = 39;
+            this.labelRetrieveInfrontSuffix.Text = "in front";
+            // 
+            // labelRetrieveInfrontPrefix
+            // 
+            this.labelRetrieveInfrontPrefix.AutoSize = true;
+            this.labelRetrieveInfrontPrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRetrieveInfrontPrefix.Location = new System.Drawing.Point(11, 98);
+            this.labelRetrieveInfrontPrefix.Name = "labelRetrieveInfrontPrefix";
+            this.labelRetrieveInfrontPrefix.Size = new System.Drawing.Size(47, 13);
+            this.labelRetrieveInfrontPrefix.TabIndex = 38;
+            this.labelRetrieveInfrontPrefix.Text = "Retrieve";
+            // 
+            // textBoxRetrieveInfront
+            // 
+            this.textBoxRetrieveInfront.Location = new System.Drawing.Point(60, 95);
+            this.textBoxRetrieveInfront.Name = "textBoxRetrieveInfront";
+            this.textBoxRetrieveInfront.Size = new System.Drawing.Size(42, 20);
+            this.textBoxRetrieveInfront.TabIndex = 37;
+            this.textBoxRetrieveInfront.Text = "0";
+            this.textBoxRetrieveInfront.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelRetrieveAboveSuffix
+            // 
+            this.labelRetrieveAboveSuffix.AutoSize = true;
+            this.labelRetrieveAboveSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRetrieveAboveSuffix.Location = new System.Drawing.Point(106, 73);
+            this.labelRetrieveAboveSuffix.Name = "labelRetrieveAboveSuffix";
+            this.labelRetrieveAboveSuffix.Size = new System.Drawing.Size(37, 13);
+            this.labelRetrieveAboveSuffix.TabIndex = 36;
+            this.labelRetrieveAboveSuffix.Text = "above";
+            // 
+            // labelRetrieveAbovePrefix
+            // 
+            this.labelRetrieveAbovePrefix.AutoSize = true;
+            this.labelRetrieveAbovePrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRetrieveAbovePrefix.Location = new System.Drawing.Point(11, 73);
+            this.labelRetrieveAbovePrefix.Name = "labelRetrieveAbovePrefix";
+            this.labelRetrieveAbovePrefix.Size = new System.Drawing.Size(47, 13);
+            this.labelRetrieveAbovePrefix.TabIndex = 35;
+            this.labelRetrieveAbovePrefix.Text = "Retrieve";
+            // 
+            // textBoxRetrieveAbove
+            // 
+            this.textBoxRetrieveAbove.Location = new System.Drawing.Point(60, 70);
+            this.textBoxRetrieveAbove.Name = "textBoxRetrieveAbove";
+            this.textBoxRetrieveAbove.Size = new System.Drawing.Size(42, 20);
+            this.textBoxRetrieveAbove.TabIndex = 34;
+            this.textBoxRetrieveAbove.Text = "300";
+            this.textBoxRetrieveAbove.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelGotoInfrontSuffix
+            // 
+            this.labelGotoInfrontSuffix.AutoSize = true;
+            this.labelGotoInfrontSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGotoInfrontSuffix.Location = new System.Drawing.Point(106, 48);
+            this.labelGotoInfrontSuffix.Name = "labelGotoInfrontSuffix";
+            this.labelGotoInfrontSuffix.Size = new System.Drawing.Size(39, 13);
+            this.labelGotoInfrontSuffix.TabIndex = 33;
+            this.labelGotoInfrontSuffix.Text = "in front";
+            // 
+            // labelGotoInfrontPrefix
+            // 
+            this.labelGotoInfrontPrefix.AutoSize = true;
+            this.labelGotoInfrontPrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGotoInfrontPrefix.Location = new System.Drawing.Point(11, 48);
+            this.labelGotoInfrontPrefix.Name = "labelGotoInfrontPrefix";
+            this.labelGotoInfrontPrefix.Size = new System.Drawing.Size(33, 13);
+            this.labelGotoInfrontPrefix.TabIndex = 32;
+            this.labelGotoInfrontPrefix.Text = "Go to";
+            // 
+            // textBoxGotoInfront
+            // 
+            this.textBoxGotoInfront.Location = new System.Drawing.Point(60, 45);
+            this.textBoxGotoInfront.Name = "textBoxGotoInfront";
+            this.textBoxGotoInfront.Size = new System.Drawing.Size(42, 20);
+            this.textBoxGotoInfront.TabIndex = 31;
+            this.textBoxGotoInfront.Text = "0";
+            this.textBoxGotoInfront.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelGotoAboveSuffix
+            // 
+            this.labelGotoAboveSuffix.AutoSize = true;
+            this.labelGotoAboveSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGotoAboveSuffix.Location = new System.Drawing.Point(106, 23);
+            this.labelGotoAboveSuffix.Name = "labelGotoAboveSuffix";
+            this.labelGotoAboveSuffix.Size = new System.Drawing.Size(37, 13);
+            this.labelGotoAboveSuffix.TabIndex = 30;
+            this.labelGotoAboveSuffix.Text = "above";
+            // 
+            // labelGotoAbovePrefix
+            // 
+            this.labelGotoAbovePrefix.AutoSize = true;
+            this.labelGotoAbovePrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGotoAbovePrefix.Location = new System.Drawing.Point(11, 23);
+            this.labelGotoAbovePrefix.Name = "labelGotoAbovePrefix";
+            this.labelGotoAbovePrefix.Size = new System.Drawing.Size(33, 13);
+            this.labelGotoAbovePrefix.TabIndex = 29;
+            this.labelGotoAbovePrefix.Text = "Go to";
+            // 
+            // textBoxGotoAbove
+            // 
+            this.textBoxGotoAbove.Location = new System.Drawing.Point(60, 20);
+            this.textBoxGotoAbove.Name = "textBoxGotoAbove";
+            this.textBoxGotoAbove.Size = new System.Drawing.Size(42, 20);
+            this.textBoxGotoAbove.TabIndex = 28;
+            this.textBoxGotoAbove.Text = "300";
+            this.textBoxGotoAbove.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBoxShowOverlay
+            // 
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayCameraHackObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayChildObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayParentObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayCeilingObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayWallObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayFloorObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayUsedObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayInteractionObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayCameraObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayClosestObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayStoodOnObject);
+            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayHeldObject);
+            this.groupBoxShowOverlay.Location = new System.Drawing.Point(271, 4);
+            this.groupBoxShowOverlay.Name = "groupBoxShowOverlay";
+            this.groupBoxShowOverlay.Size = new System.Drawing.Size(170, 275);
+            this.groupBoxShowOverlay.TabIndex = 29;
+            this.groupBoxShowOverlay.TabStop = false;
+            this.groupBoxShowOverlay.Text = "Object Slot Overlays to Show";
+            // 
+            // checkBoxShowOverlayCameraHackObject
+            // 
+            this.checkBoxShowOverlayCameraHackObject.AutoSize = true;
+            this.checkBoxShowOverlayCameraHackObject.Checked = true;
+            this.checkBoxShowOverlayCameraHackObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayCameraHackObject.Location = new System.Drawing.Point(5, 146);
+            this.checkBoxShowOverlayCameraHackObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayCameraHackObject.Name = "checkBoxShowOverlayCameraHackObject";
+            this.checkBoxShowOverlayCameraHackObject.Size = new System.Drawing.Size(125, 17);
+            this.checkBoxShowOverlayCameraHackObject.TabIndex = 10;
+            this.checkBoxShowOverlayCameraHackObject.Text = "Camera Hack Object";
+            this.checkBoxShowOverlayCameraHackObject.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowOverlayChildObject
+            // 
+            this.checkBoxShowOverlayChildObject.AutoSize = true;
+            this.checkBoxShowOverlayChildObject.Location = new System.Drawing.Point(5, 251);
+            this.checkBoxShowOverlayChildObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayChildObject.Name = "checkBoxShowOverlayChildObject";
+            this.checkBoxShowOverlayChildObject.Size = new System.Drawing.Size(83, 17);
+            this.checkBoxShowOverlayChildObject.TabIndex = 9;
+            this.checkBoxShowOverlayChildObject.Text = "Child Object";
+            this.checkBoxShowOverlayChildObject.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowOverlayParentObject
+            // 
+            this.checkBoxShowOverlayParentObject.AutoSize = true;
+            this.checkBoxShowOverlayParentObject.Location = new System.Drawing.Point(5, 230);
+            this.checkBoxShowOverlayParentObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayParentObject.Name = "checkBoxShowOverlayParentObject";
+            this.checkBoxShowOverlayParentObject.Size = new System.Drawing.Size(91, 17);
+            this.checkBoxShowOverlayParentObject.TabIndex = 9;
+            this.checkBoxShowOverlayParentObject.Text = "Parent Object";
+            this.checkBoxShowOverlayParentObject.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowOverlayCeilingObject
+            // 
+            this.checkBoxShowOverlayCeilingObject.AutoSize = true;
+            this.checkBoxShowOverlayCeilingObject.Checked = true;
+            this.checkBoxShowOverlayCeilingObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayCeilingObject.Location = new System.Drawing.Point(5, 209);
+            this.checkBoxShowOverlayCeilingObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayCeilingObject.Name = "checkBoxShowOverlayCeilingObject";
+            this.checkBoxShowOverlayCeilingObject.Size = new System.Drawing.Size(91, 17);
+            this.checkBoxShowOverlayCeilingObject.TabIndex = 9;
+            this.checkBoxShowOverlayCeilingObject.Text = "Ceiling Object";
+            this.checkBoxShowOverlayCeilingObject.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowOverlayWallObject
+            // 
+            this.checkBoxShowOverlayWallObject.AutoSize = true;
+            this.checkBoxShowOverlayWallObject.Checked = true;
+            this.checkBoxShowOverlayWallObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayWallObject.Location = new System.Drawing.Point(5, 188);
+            this.checkBoxShowOverlayWallObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayWallObject.Name = "checkBoxShowOverlayWallObject";
+            this.checkBoxShowOverlayWallObject.Size = new System.Drawing.Size(81, 17);
+            this.checkBoxShowOverlayWallObject.TabIndex = 8;
+            this.checkBoxShowOverlayWallObject.Text = "Wall Object";
+            this.checkBoxShowOverlayWallObject.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowOverlayFloorObject
+            // 
+            this.checkBoxShowOverlayFloorObject.AutoSize = true;
+            this.checkBoxShowOverlayFloorObject.Checked = true;
+            this.checkBoxShowOverlayFloorObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayFloorObject.Location = new System.Drawing.Point(5, 167);
+            this.checkBoxShowOverlayFloorObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayFloorObject.Name = "checkBoxShowOverlayFloorObject";
+            this.checkBoxShowOverlayFloorObject.Size = new System.Drawing.Size(83, 17);
+            this.checkBoxShowOverlayFloorObject.TabIndex = 7;
+            this.checkBoxShowOverlayFloorObject.Text = "Floor Object";
+            this.checkBoxShowOverlayFloorObject.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowOverlayUsedObject
+            // 
+            this.checkBoxShowOverlayUsedObject.AutoSize = true;
+            this.checkBoxShowOverlayUsedObject.Checked = true;
+            this.checkBoxShowOverlayUsedObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayUsedObject.Location = new System.Drawing.Point(5, 83);
+            this.checkBoxShowOverlayUsedObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayUsedObject.Name = "checkBoxShowOverlayUsedObject";
+            this.checkBoxShowOverlayUsedObject.Size = new System.Drawing.Size(85, 17);
+            this.checkBoxShowOverlayUsedObject.TabIndex = 4;
+            this.checkBoxShowOverlayUsedObject.Text = "Used Object";
+            this.checkBoxShowOverlayUsedObject.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowOverlayInteractionObject
+            // 
+            this.checkBoxShowOverlayInteractionObject.AutoSize = true;
+            this.checkBoxShowOverlayInteractionObject.Checked = true;
+            this.checkBoxShowOverlayInteractionObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayInteractionObject.Location = new System.Drawing.Point(5, 62);
+            this.checkBoxShowOverlayInteractionObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayInteractionObject.Name = "checkBoxShowOverlayInteractionObject";
+            this.checkBoxShowOverlayInteractionObject.Size = new System.Drawing.Size(110, 17);
+            this.checkBoxShowOverlayInteractionObject.TabIndex = 3;
+            this.checkBoxShowOverlayInteractionObject.Text = "Interaction Object";
+            this.checkBoxShowOverlayInteractionObject.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowOverlayCameraObject
+            // 
+            this.checkBoxShowOverlayCameraObject.AutoSize = true;
+            this.checkBoxShowOverlayCameraObject.Checked = true;
+            this.checkBoxShowOverlayCameraObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayCameraObject.Location = new System.Drawing.Point(5, 125);
+            this.checkBoxShowOverlayCameraObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayCameraObject.Name = "checkBoxShowOverlayCameraObject";
+            this.checkBoxShowOverlayCameraObject.Size = new System.Drawing.Size(96, 17);
+            this.checkBoxShowOverlayCameraObject.TabIndex = 5;
+            this.checkBoxShowOverlayCameraObject.Text = "Camera Object";
+            this.checkBoxShowOverlayCameraObject.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowOverlayClosestObject
+            // 
+            this.checkBoxShowOverlayClosestObject.AutoSize = true;
+            this.checkBoxShowOverlayClosestObject.Checked = true;
+            this.checkBoxShowOverlayClosestObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayClosestObject.Location = new System.Drawing.Point(5, 104);
+            this.checkBoxShowOverlayClosestObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayClosestObject.Name = "checkBoxShowOverlayClosestObject";
+            this.checkBoxShowOverlayClosestObject.Size = new System.Drawing.Size(94, 17);
+            this.checkBoxShowOverlayClosestObject.TabIndex = 6;
+            this.checkBoxShowOverlayClosestObject.Text = "Closest Object";
+            this.checkBoxShowOverlayClosestObject.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowOverlayStoodOnObject
+            // 
+            this.checkBoxShowOverlayStoodOnObject.AutoSize = true;
+            this.checkBoxShowOverlayStoodOnObject.Checked = true;
+            this.checkBoxShowOverlayStoodOnObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayStoodOnObject.Location = new System.Drawing.Point(5, 41);
+            this.checkBoxShowOverlayStoodOnObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayStoodOnObject.Name = "checkBoxShowOverlayStoodOnObject";
+            this.checkBoxShowOverlayStoodOnObject.Size = new System.Drawing.Size(105, 17);
+            this.checkBoxShowOverlayStoodOnObject.TabIndex = 2;
+            this.checkBoxShowOverlayStoodOnObject.Text = "Stood On Object";
+            this.checkBoxShowOverlayStoodOnObject.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxShowOverlayHeldObject
+            // 
+            this.checkBoxShowOverlayHeldObject.AutoSize = true;
+            this.checkBoxShowOverlayHeldObject.Checked = true;
+            this.checkBoxShowOverlayHeldObject.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxShowOverlayHeldObject.Location = new System.Drawing.Point(5, 20);
+            this.checkBoxShowOverlayHeldObject.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowOverlayHeldObject.Name = "checkBoxShowOverlayHeldObject";
+            this.checkBoxShowOverlayHeldObject.Size = new System.Drawing.Size(82, 17);
+            this.checkBoxShowOverlayHeldObject.TabIndex = 1;
+            this.checkBoxShowOverlayHeldObject.Text = "Held Object";
+            this.checkBoxShowOverlayHeldObject.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(11, 264);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(129, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "*Requires Pure Interpreter";
+            // 
+            // checkBoxUseRomHack
+            // 
+            this.checkBoxUseRomHack.AutoSize = true;
+            this.checkBoxUseRomHack.Location = new System.Drawing.Point(12, 245);
+            this.checkBoxUseRomHack.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxUseRomHack.Name = "checkBoxUseRomHack";
+            this.checkBoxUseRomHack.Size = new System.Drawing.Size(166, 17);
+            this.checkBoxUseRomHack.TabIndex = 2;
+            this.checkBoxUseRomHack.Text = "Enable STROOP ROM hack*";
+            this.checkBoxUseRomHack.UseVisualStyleBackColor = true;
+            // 
+            // tabPageMemory
+            // 
+            this.tabPageMemory.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageMemory.Controls.Add(this.splitContainerMemory);
+            this.tabPageMemory.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMemory.Name = "tabPageMemory";
+            this.tabPageMemory.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageMemory.Size = new System.Drawing.Size(915, 463);
+            this.tabPageMemory.TabIndex = 27;
+            this.tabPageMemory.Text = "Memory";
+            // 
+            // splitContainerMemory
+            // 
+            this.splitContainerMemory.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerMemory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerMemory.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainerMemory.Location = new System.Drawing.Point(3, 3);
+            this.splitContainerMemory.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerMemory.Name = "splitContainerMemory";
+            // 
+            // splitContainerMemory.Panel1
+            // 
+            this.splitContainerMemory.Panel1.AutoScroll = true;
+            this.splitContainerMemory.Panel1.Controls.Add(this.comboBoxMemoryTypes);
+            this.splitContainerMemory.Panel1.Controls.Add(this.richTextBoxMemoryValues);
+            this.splitContainerMemory.Panel1.Controls.Add(this.checkBoxMemoryObj);
+            this.splitContainerMemory.Panel1.Controls.Add(this.checkBoxMemoryHex);
+            this.splitContainerMemory.Panel1.Controls.Add(this.checkBoxMemoryRelativeAddresses);
+            this.splitContainerMemory.Panel1.Controls.Add(this.checkBoxMemoryLittleEndian);
+            this.splitContainerMemory.Panel1.Controls.Add(this.checkBoxMemoryUpdateContinuously);
+            this.splitContainerMemory.Panel1.Controls.Add(this.richTextBoxMemoryAddresses);
+            this.splitContainerMemory.Panel1.Controls.Add(this.textBoxMemoryObjAddress);
+            this.splitContainerMemory.Panel1.Controls.Add(this.labelMemoryObjAddress);
+            this.splitContainerMemory.Panel1MinSize = 0;
+            // 
+            // splitContainerMemory.Panel2
+            // 
+            this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
+            this.splitContainerMemory.Panel2MinSize = 0;
+            this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
+            this.splitContainerMemory.SplitterDistance = 779;
+            this.splitContainerMemory.SplitterWidth = 1;
+            this.splitContainerMemory.TabIndex = 37;
+            // 
+            // comboBoxMemoryTypes
+            // 
+            this.comboBoxMemoryTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMemoryTypes.Location = new System.Drawing.Point(473, 3);
+            this.comboBoxMemoryTypes.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxMemoryTypes.Name = "comboBoxMemoryTypes";
+            this.comboBoxMemoryTypes.Size = new System.Drawing.Size(55, 21);
+            this.comboBoxMemoryTypes.TabIndex = 36;
+            // 
+            // richTextBoxMemoryValues
+            // 
+            this.richTextBoxMemoryValues.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBoxMemoryValues.BackColor = System.Drawing.SystemColors.Control;
+            this.richTextBoxMemoryValues.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxMemoryValues.Location = new System.Drawing.Point(112, 28);
+            this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
+            this.richTextBoxMemoryValues.ReadOnly = true;
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(663, 429);
+            this.richTextBoxMemoryValues.TabIndex = 8;
+            this.richTextBoxMemoryValues.Text = "";
+            // 
+            // checkBoxMemoryObj
+            // 
+            this.checkBoxMemoryObj.AutoSize = true;
+            this.checkBoxMemoryObj.Location = new System.Drawing.Point(584, 7);
+            this.checkBoxMemoryObj.Name = "checkBoxMemoryObj";
+            this.checkBoxMemoryObj.Size = new System.Drawing.Size(42, 17);
+            this.checkBoxMemoryObj.TabIndex = 35;
+            this.checkBoxMemoryObj.Text = "Obj";
+            this.checkBoxMemoryObj.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMemoryHex
+            // 
+            this.checkBoxMemoryHex.AutoSize = true;
+            this.checkBoxMemoryHex.Location = new System.Drawing.Point(535, 7);
+            this.checkBoxMemoryHex.Name = "checkBoxMemoryHex";
+            this.checkBoxMemoryHex.Size = new System.Drawing.Size(45, 17);
+            this.checkBoxMemoryHex.TabIndex = 35;
+            this.checkBoxMemoryHex.Text = "Hex";
+            this.checkBoxMemoryHex.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMemoryRelativeAddresses
+            // 
+            this.checkBoxMemoryRelativeAddresses.AutoSize = true;
+            this.checkBoxMemoryRelativeAddresses.Checked = true;
+            this.checkBoxMemoryRelativeAddresses.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMemoryRelativeAddresses.Location = new System.Drawing.Point(377, 7);
+            this.checkBoxMemoryRelativeAddresses.Name = "checkBoxMemoryRelativeAddresses";
+            this.checkBoxMemoryRelativeAddresses.Size = new System.Drawing.Size(94, 17);
+            this.checkBoxMemoryRelativeAddresses.TabIndex = 35;
+            this.checkBoxMemoryRelativeAddresses.Text = "Rel Addresses";
+            this.checkBoxMemoryRelativeAddresses.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMemoryLittleEndian
+            // 
+            this.checkBoxMemoryLittleEndian.AutoSize = true;
+            this.checkBoxMemoryLittleEndian.Checked = true;
+            this.checkBoxMemoryLittleEndian.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMemoryLittleEndian.Location = new System.Drawing.Point(287, 7);
+            this.checkBoxMemoryLittleEndian.Name = "checkBoxMemoryLittleEndian";
+            this.checkBoxMemoryLittleEndian.Size = new System.Drawing.Size(84, 17);
+            this.checkBoxMemoryLittleEndian.TabIndex = 35;
+            this.checkBoxMemoryLittleEndian.Text = "Little Endian";
+            this.checkBoxMemoryLittleEndian.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMemoryUpdateContinuously
+            // 
+            this.checkBoxMemoryUpdateContinuously.AutoSize = true;
+            this.checkBoxMemoryUpdateContinuously.Checked = true;
+            this.checkBoxMemoryUpdateContinuously.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMemoryUpdateContinuously.Location = new System.Drawing.Point(159, 7);
+            this.checkBoxMemoryUpdateContinuously.Name = "checkBoxMemoryUpdateContinuously";
+            this.checkBoxMemoryUpdateContinuously.Size = new System.Drawing.Size(124, 17);
+            this.checkBoxMemoryUpdateContinuously.TabIndex = 35;
+            this.checkBoxMemoryUpdateContinuously.Text = "Update Continuously";
+            this.checkBoxMemoryUpdateContinuously.UseVisualStyleBackColor = true;
+            // 
+            // richTextBoxMemoryAddresses
+            // 
+            this.richTextBoxMemoryAddresses.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.richTextBoxMemoryAddresses.BackColor = System.Drawing.SystemColors.Control;
+            this.richTextBoxMemoryAddresses.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxMemoryAddresses.Location = new System.Drawing.Point(5, 28);
+            this.richTextBoxMemoryAddresses.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBoxMemoryAddresses.Name = "richTextBoxMemoryAddresses";
+            this.richTextBoxMemoryAddresses.ReadOnly = true;
+            this.richTextBoxMemoryAddresses.Size = new System.Drawing.Size(103, 429);
+            this.richTextBoxMemoryAddresses.TabIndex = 8;
+            this.richTextBoxMemoryAddresses.Text = "";
+            // 
+            // textBoxMemoryObjAddress
+            // 
+            this.textBoxMemoryObjAddress.Location = new System.Drawing.Point(76, 3);
+            this.textBoxMemoryObjAddress.Name = "textBoxMemoryObjAddress";
+            this.textBoxMemoryObjAddress.ReadOnly = true;
+            this.textBoxMemoryObjAddress.Size = new System.Drawing.Size(74, 20);
+            this.textBoxMemoryObjAddress.TabIndex = 34;
+            this.textBoxMemoryObjAddress.Text = "0x00000000";
+            this.textBoxMemoryObjAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelMemoryObjAddress
+            // 
+            this.labelMemoryObjAddress.AutoSize = true;
+            this.labelMemoryObjAddress.Location = new System.Drawing.Point(8, 6);
+            this.labelMemoryObjAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelMemoryObjAddress.Name = "labelMemoryObjAddress";
+            this.labelMemoryObjAddress.Size = new System.Drawing.Size(67, 13);
+            this.labelMemoryObjAddress.TabIndex = 9;
+            this.labelMemoryObjAddress.Text = "Obj Address:";
+            // 
+            // watchVariablePanelMemory
+            // 
+            this.watchVariablePanelMemory.AutoScroll = true;
+            this.watchVariablePanelMemory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.watchVariablePanelMemory.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.watchVariablePanelMemory.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
+            this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
+            this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(127, 455);
+            this.watchVariablePanelMemory.TabIndex = 7;
+            // 
             // tabPagePu
             // 
-            this.tabPagePu.Controls.Add(this.groupBoxPuController);
+            this.tabPagePu.Controls.Add(this.splitContainerPu);
             this.tabPagePu.Location = new System.Drawing.Point(4, 22);
             this.tabPagePu.Name = "tabPagePu";
             this.tabPagePu.Padding = new System.Windows.Forms.Padding(3);
@@ -8899,9 +11372,186 @@ namespace STROOP
             this.tabPagePu.TabIndex = 15;
             this.tabPagePu.Text = "PU";
             // 
+            // splitContainerPu
+            // 
+            this.splitContainerPu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerPu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerPu.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerPu.Location = new System.Drawing.Point(3, 3);
+            this.splitContainerPu.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerPu.Name = "splitContainerPu";
+            // 
+            // splitContainerPu.Panel1
+            // 
+            this.splitContainerPu.Panel1.AutoScroll = true;
+            this.splitContainerPu.Panel1.Controls.Add(this.groupBoxMarioPu);
+            this.splitContainerPu.Panel1.Controls.Add(this.groupBoxPuController);
+            this.splitContainerPu.Panel1MinSize = 0;
+            // 
+            // splitContainerPu.Panel2
+            // 
+            this.splitContainerPu.Panel2.Controls.Add(this.watchVariablePanelPu);
+            this.splitContainerPu.Panel2MinSize = 0;
+            this.splitContainerPu.Size = new System.Drawing.Size(909, 457);
+            this.splitContainerPu.SplitterDistance = 293;
+            this.splitContainerPu.SplitterWidth = 1;
+            this.splitContainerPu.TabIndex = 19;
+            // 
+            // groupBoxMarioPu
+            // 
+            this.groupBoxMarioPu.Controls.Add(this.checkBoxMarioPuQpu);
+            this.groupBoxMarioPu.Controls.Add(this.textBoxMarioPuY);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuYp);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuYn);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuXpZp);
+            this.groupBoxMarioPu.Controls.Add(this.textBoxMarioPuXZ);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuXp);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuXpZn);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuZn);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuZp);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuXnZp);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuXn);
+            this.groupBoxMarioPu.Controls.Add(this.buttonMarioPuXnZn);
+            this.groupBoxMarioPu.Location = new System.Drawing.Point(32, 237);
+            this.groupBoxMarioPu.Name = "groupBoxMarioPu";
+            this.groupBoxMarioPu.Size = new System.Drawing.Size(185, 146);
+            this.groupBoxMarioPu.TabIndex = 30;
+            this.groupBoxMarioPu.TabStop = false;
+            this.groupBoxMarioPu.Text = "PU";
+            // 
+            // checkBoxMarioPuQpu
+            // 
+            this.checkBoxMarioPuQpu.AutoSize = true;
+            this.checkBoxMarioPuQpu.Location = new System.Drawing.Point(137, 0);
+            this.checkBoxMarioPuQpu.Name = "checkBoxMarioPuQpu";
+            this.checkBoxMarioPuQpu.Size = new System.Drawing.Size(49, 17);
+            this.checkBoxMarioPuQpu.TabIndex = 36;
+            this.checkBoxMarioPuQpu.Text = "QPU";
+            this.checkBoxMarioPuQpu.UseVisualStyleBackColor = true;
+            // 
+            // textBoxMarioPuY
+            // 
+            this.textBoxMarioPuY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxMarioPuY.Location = new System.Drawing.Point(140, 70);
+            this.textBoxMarioPuY.Name = "textBoxMarioPuY";
+            this.textBoxMarioPuY.Size = new System.Drawing.Size(42, 20);
+            this.textBoxMarioPuY.TabIndex = 33;
+            this.textBoxMarioPuY.Text = "1";
+            this.textBoxMarioPuY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonMarioPuYp
+            // 
+            this.buttonMarioPuYp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMarioPuYp.Location = new System.Drawing.Point(140, 16);
+            this.buttonMarioPuYp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuYp.Name = "buttonMarioPuYp";
+            this.buttonMarioPuYp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuYp.TabIndex = 35;
+            this.buttonMarioPuYp.Text = "Y+";
+            this.buttonMarioPuYp.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuYn
+            // 
+            this.buttonMarioPuYn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMarioPuYn.Location = new System.Drawing.Point(140, 100);
+            this.buttonMarioPuYn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuYn.Name = "buttonMarioPuYn";
+            this.buttonMarioPuYn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuYn.TabIndex = 34;
+            this.buttonMarioPuYn.Text = "Y-";
+            this.buttonMarioPuYn.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuXpZp
+            // 
+            this.buttonMarioPuXpZp.Location = new System.Drawing.Point(87, 100);
+            this.buttonMarioPuXpZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuXpZp.Name = "buttonMarioPuXpZp";
+            this.buttonMarioPuXpZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuXpZp.TabIndex = 32;
+            this.buttonMarioPuXpZp.Text = "X+Z+";
+            this.buttonMarioPuXpZp.UseVisualStyleBackColor = true;
+            // 
+            // textBoxMarioPuXZ
+            // 
+            this.textBoxMarioPuXZ.Location = new System.Drawing.Point(45, 70);
+            this.textBoxMarioPuXZ.Name = "textBoxMarioPuXZ";
+            this.textBoxMarioPuXZ.Size = new System.Drawing.Size(42, 20);
+            this.textBoxMarioPuXZ.TabIndex = 27;
+            this.textBoxMarioPuXZ.Text = "1";
+            this.textBoxMarioPuXZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonMarioPuXp
+            // 
+            this.buttonMarioPuXp.Location = new System.Drawing.Point(87, 58);
+            this.buttonMarioPuXp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuXp.Name = "buttonMarioPuXp";
+            this.buttonMarioPuXp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuXp.TabIndex = 31;
+            this.buttonMarioPuXp.Text = "X+";
+            this.buttonMarioPuXp.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuXpZn
+            // 
+            this.buttonMarioPuXpZn.Location = new System.Drawing.Point(87, 16);
+            this.buttonMarioPuXpZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuXpZn.Name = "buttonMarioPuXpZn";
+            this.buttonMarioPuXpZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuXpZn.TabIndex = 30;
+            this.buttonMarioPuXpZn.Text = "X+Z-";
+            this.buttonMarioPuXpZn.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuZn
+            // 
+            this.buttonMarioPuZn.Location = new System.Drawing.Point(45, 16);
+            this.buttonMarioPuZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuZn.Name = "buttonMarioPuZn";
+            this.buttonMarioPuZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuZn.TabIndex = 29;
+            this.buttonMarioPuZn.Text = "Z-";
+            this.buttonMarioPuZn.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuZp
+            // 
+            this.buttonMarioPuZp.Location = new System.Drawing.Point(45, 100);
+            this.buttonMarioPuZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuZp.Name = "buttonMarioPuZp";
+            this.buttonMarioPuZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuZp.TabIndex = 28;
+            this.buttonMarioPuZp.Text = "Z+";
+            this.buttonMarioPuZp.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuXnZp
+            // 
+            this.buttonMarioPuXnZp.Location = new System.Drawing.Point(3, 100);
+            this.buttonMarioPuXnZp.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuXnZp.Name = "buttonMarioPuXnZp";
+            this.buttonMarioPuXnZp.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuXnZp.TabIndex = 27;
+            this.buttonMarioPuXnZp.Text = "X-Z+";
+            this.buttonMarioPuXnZp.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuXn
+            // 
+            this.buttonMarioPuXn.Location = new System.Drawing.Point(3, 58);
+            this.buttonMarioPuXn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuXn.Name = "buttonMarioPuXn";
+            this.buttonMarioPuXn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuXn.TabIndex = 26;
+            this.buttonMarioPuXn.Text = "X-";
+            this.buttonMarioPuXn.UseVisualStyleBackColor = true;
+            // 
+            // buttonMarioPuXnZn
+            // 
+            this.buttonMarioPuXnZn.Location = new System.Drawing.Point(3, 16);
+            this.buttonMarioPuXnZn.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMarioPuXnZn.Name = "buttonMarioPuXnZn";
+            this.buttonMarioPuXnZn.Size = new System.Drawing.Size(42, 42);
+            this.buttonMarioPuXnZn.TabIndex = 25;
+            this.buttonMarioPuXnZn.Text = "X-Z-";
+            this.buttonMarioPuXnZn.UseVisualStyleBackColor = true;
+            // 
             // groupBoxPuController
             // 
-            this.groupBoxPuController.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.groupBoxPuController.Controls.Add(this.labelPuConPu);
             this.groupBoxPuController.Controls.Add(this.labelPuConQpuValue);
             this.groupBoxPuController.Controls.Add(this.labelPuConQpu);
@@ -8919,7 +11569,7 @@ namespace STROOP
             this.groupBoxPuController.Controls.Add(this.buttonPuConZpPu);
             this.groupBoxPuController.Controls.Add(this.buttonPuConZpQpu);
             this.groupBoxPuController.Controls.Add(this.buttonPuConHome);
-            this.groupBoxPuController.Location = new System.Drawing.Point(346, 3);
+            this.groupBoxPuController.Location = new System.Drawing.Point(24, 15);
             this.groupBoxPuController.Name = "groupBoxPuController";
             this.groupBoxPuController.Size = new System.Drawing.Size(222, 206);
             this.groupBoxPuController.TabIndex = 7;
@@ -9117,6 +11767,18 @@ namespace STROOP
             this.buttonPuConHome.Size = new System.Drawing.Size(30, 30);
             this.buttonPuConHome.TabIndex = 1;
             this.buttonPuConHome.UseVisualStyleBackColor = true;
+            // 
+            // watchVariablePanelPu
+            // 
+            this.watchVariablePanelPu.AutoScroll = true;
+            this.watchVariablePanelPu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.watchVariablePanelPu.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.watchVariablePanelPu.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelPu.Margin = new System.Windows.Forms.Padding(0);
+            this.watchVariablePanelPu.Name = "watchVariablePanelPu";
+            this.watchVariablePanelPu.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelPu.Size = new System.Drawing.Size(613, 455);
+            this.watchVariablePanelPu.TabIndex = 5;
             // 
             // tabPageArea
             // 
@@ -9851,7 +12513,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(391, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(204, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -9883,7 +12545,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(380, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(198, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -9939,7 +12601,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(380, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(198, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -10002,231 +12664,395 @@ namespace STROOP
             this.glControlModelView.VSync = false;
             this.glControlModelView.Load += new System.EventHandler(this.glControlModelView_Load);
             // 
-            // tabPageDisassembly
+            // tabPageGfx
             // 
-            this.tabPageDisassembly.BackColor = System.Drawing.Color.Transparent;
-            this.tabPageDisassembly.Controls.Add(this.textBoxDisAddress);
-            this.tabPageDisassembly.Controls.Add(this.buttonDisMore);
-            this.tabPageDisassembly.Controls.Add(this.buttonDisGo);
-            this.tabPageDisassembly.Controls.Add(this.labelDisStart);
-            this.tabPageDisassembly.Controls.Add(this.richTextBoxDissasembly);
-            this.tabPageDisassembly.Location = new System.Drawing.Point(4, 22);
-            this.tabPageDisassembly.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPageDisassembly.Name = "tabPageDisassembly";
-            this.tabPageDisassembly.Size = new System.Drawing.Size(915, 463);
-            this.tabPageDisassembly.TabIndex = 3;
-            this.tabPageDisassembly.Text = "Disassembly";
+            this.tabPageGfx.Controls.Add(this.splitContainerGfxLeft);
+            this.tabPageGfx.Location = new System.Drawing.Point(4, 22);
+            this.tabPageGfx.Name = "tabPageGfx";
+            this.tabPageGfx.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageGfx.Size = new System.Drawing.Size(915, 463);
+            this.tabPageGfx.TabIndex = 25;
+            this.tabPageGfx.Text = "Gfx";
+            this.tabPageGfx.UseVisualStyleBackColor = true;
             // 
-            // textBoxDisAddress
+            // splitContainerGfxLeft
             // 
-            this.textBoxDisAddress.Location = new System.Drawing.Point(73, 3);
-            this.textBoxDisAddress.Name = "textBoxDisAddress";
-            this.textBoxDisAddress.Size = new System.Drawing.Size(93, 20);
-            this.textBoxDisAddress.TabIndex = 7;
+            this.splitContainerGfxLeft.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerGfxLeft.Location = new System.Drawing.Point(3, 3);
+            this.splitContainerGfxLeft.Name = "splitContainerGfxLeft";
             // 
-            // buttonDisMore
+            // splitContainerGfxLeft.Panel1
             // 
-            this.buttonDisMore.Location = new System.Drawing.Point(237, 2);
-            this.buttonDisMore.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonDisMore.Name = "buttonDisMore";
-            this.buttonDisMore.Size = new System.Drawing.Size(50, 20);
-            this.buttonDisMore.TabIndex = 6;
-            this.buttonDisMore.Text = "More";
-            this.buttonDisMore.UseVisualStyleBackColor = true;
-            this.buttonDisMore.Visible = false;
+            this.splitContainerGfxLeft.Panel1.Controls.Add(this.treeViewGfx);
             // 
-            // buttonDisGo
+            // splitContainerGfxLeft.Panel2
             // 
-            this.buttonDisGo.Location = new System.Drawing.Point(171, 2);
-            this.buttonDisGo.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonDisGo.Name = "buttonDisGo";
-            this.buttonDisGo.Size = new System.Drawing.Size(62, 20);
-            this.buttonDisGo.TabIndex = 5;
-            this.buttonDisGo.Text = "Go";
-            this.buttonDisGo.UseVisualStyleBackColor = true;
+            this.splitContainerGfxLeft.Panel2.Controls.Add(this.splitContainerGfxRight);
+            this.splitContainerGfxLeft.Size = new System.Drawing.Size(909, 457);
+            this.splitContainerGfxLeft.SplitterDistance = 300;
+            this.splitContainerGfxLeft.TabIndex = 0;
             // 
-            // labelDisStart
+            // treeViewGfx
             // 
-            this.labelDisStart.AutoSize = true;
-            this.labelDisStart.Location = new System.Drawing.Point(2, 6);
-            this.labelDisStart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelDisStart.Name = "labelDisStart";
-            this.labelDisStart.Size = new System.Drawing.Size(73, 13);
-            this.labelDisStart.TabIndex = 3;
-            this.labelDisStart.Text = "Start Address:";
+            this.treeViewGfx.BackColor = System.Drawing.SystemColors.Control;
+            this.treeViewGfx.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewGfx.Location = new System.Drawing.Point(0, 0);
+            this.treeViewGfx.Name = "treeViewGfx";
+            this.treeViewGfx.Size = new System.Drawing.Size(300, 457);
+            this.treeViewGfx.TabIndex = 0;
             // 
-            // richTextBoxDissasembly
+            // splitContainerGfxRight
             // 
-            this.richTextBoxDissasembly.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.splitContainerGfxRight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerGfxRight.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerGfxRight.Name = "splitContainerGfxRight";
+            // 
+            // splitContainerGfxRight.Panel1
+            // 
+            this.splitContainerGfxRight.Panel1.Controls.Add(this.splitContainerGfxMiddle);
+            // 
+            // splitContainerGfxRight.Panel2
+            // 
+            this.splitContainerGfxRight.Panel2.Controls.Add(this.richTextBoxGfx);
+            this.splitContainerGfxRight.Size = new System.Drawing.Size(605, 457);
+            this.splitContainerGfxRight.SplitterDistance = 323;
+            this.splitContainerGfxRight.TabIndex = 0;
+            // 
+            // splitContainerGfxMiddle
+            // 
+            this.splitContainerGfxMiddle.BackColor = System.Drawing.SystemColors.Control;
+            this.splitContainerGfxMiddle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerGfxMiddle.IsSplitterFixed = true;
+            this.splitContainerGfxMiddle.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerGfxMiddle.Name = "splitContainerGfxMiddle";
+            this.splitContainerGfxMiddle.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerGfxMiddle.Panel1
+            // 
+            this.splitContainerGfxMiddle.Panel1.Controls.Add(this.buttonGfxHitboxHack);
+            this.splitContainerGfxMiddle.Panel1.Controls.Add(this.buttonGfxDumpDisplayList);
+            this.splitContainerGfxMiddle.Panel1.Controls.Add(this.buttonGfxRefreshObject);
+            this.splitContainerGfxMiddle.Panel1.Controls.Add(this.buttonGfxRefresh);
+            // 
+            // splitContainerGfxMiddle.Panel2
+            // 
+            this.splitContainerGfxMiddle.Panel2.Controls.Add(this.watchVariablePanelGfx);
+            this.splitContainerGfxMiddle.Size = new System.Drawing.Size(323, 457);
+            this.splitContainerGfxMiddle.SplitterDistance = 60;
+            this.splitContainerGfxMiddle.TabIndex = 1;
+            // 
+            // buttonGfxHitboxHack
+            // 
+            this.buttonGfxHitboxHack.Location = new System.Drawing.Point(113, 31);
+            this.buttonGfxHitboxHack.Name = "buttonGfxHitboxHack";
+            this.buttonGfxHitboxHack.Size = new System.Drawing.Size(128, 23);
+            this.buttonGfxHitboxHack.TabIndex = 3;
+            this.buttonGfxHitboxHack.Text = "Inject hitbox view code";
+            this.buttonGfxHitboxHack.UseVisualStyleBackColor = true;
+            // 
+            // buttonGfxDumpDisplayList
+            // 
+            this.buttonGfxDumpDisplayList.Location = new System.Drawing.Point(3, 31);
+            this.buttonGfxDumpDisplayList.Name = "buttonGfxDumpDisplayList";
+            this.buttonGfxDumpDisplayList.Size = new System.Drawing.Size(104, 23);
+            this.buttonGfxDumpDisplayList.TabIndex = 2;
+            this.buttonGfxDumpDisplayList.Text = "Export display list";
+            this.buttonGfxDumpDisplayList.UseVisualStyleBackColor = true;
+            // 
+            // buttonGfxRefreshObject
+            // 
+            this.buttonGfxRefreshObject.Location = new System.Drawing.Point(94, 3);
+            this.buttonGfxRefreshObject.Name = "buttonGfxRefreshObject";
+            this.buttonGfxRefreshObject.Size = new System.Drawing.Size(147, 23);
+            this.buttonGfxRefreshObject.TabIndex = 1;
+            this.buttonGfxRefreshObject.Text = "Build from selected objects";
+            this.buttonGfxRefreshObject.UseVisualStyleBackColor = true;
+            // 
+            // buttonGfxRefresh
+            // 
+            this.buttonGfxRefresh.Location = new System.Drawing.Point(3, 3);
+            this.buttonGfxRefresh.Name = "buttonGfxRefresh";
+            this.buttonGfxRefresh.Size = new System.Drawing.Size(85, 23);
+            this.buttonGfxRefresh.TabIndex = 0;
+            this.buttonGfxRefresh.Text = "Build from root";
+            this.buttonGfxRefresh.UseVisualStyleBackColor = true;
+            // 
+            // watchVariablePanelGfx
+            // 
+            this.watchVariablePanelGfx.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.watchVariablePanelGfx.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.watchVariablePanelGfx.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelGfx.Name = "watchVariablePanelGfx";
+            this.watchVariablePanelGfx.Size = new System.Drawing.Size(323, 393);
+            this.watchVariablePanelGfx.TabIndex = 0;
+            // 
+            // richTextBoxGfx
+            // 
+            this.richTextBoxGfx.BackColor = System.Drawing.SystemColors.Control;
+            this.richTextBoxGfx.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxGfx.Location = new System.Drawing.Point(0, 0);
+            this.richTextBoxGfx.Name = "richTextBoxGfx";
+            this.richTextBoxGfx.Size = new System.Drawing.Size(278, 457);
+            this.richTextBoxGfx.TabIndex = 0;
+            this.richTextBoxGfx.Text = "";
+            // 
+            // tabPageDebug
+            // 
+            this.tabPageDebug.Controls.Add(this.splitContainerDebug);
+            this.tabPageDebug.Location = new System.Drawing.Point(4, 22);
+            this.tabPageDebug.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageDebug.Name = "tabPageDebug";
+            this.tabPageDebug.Size = new System.Drawing.Size(915, 463);
+            this.tabPageDebug.TabIndex = 8;
+            this.tabPageDebug.Text = "Debug";
+            // 
+            // splitContainerDebug
+            // 
+            this.splitContainerDebug.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerDebug.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerDebug.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerDebug.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerDebug.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerDebug.Name = "splitContainerDebug";
+            // 
+            // splitContainerDebug.Panel1
+            // 
+            this.splitContainerDebug.Panel1.AutoScroll = true;
+            this.splitContainerDebug.Panel1.Controls.Add(this.panelDebugBorder);
+            this.splitContainerDebug.Panel1.Controls.Add(this.groupBoxMiscDebug);
+            this.splitContainerDebug.Panel1.Controls.Add(this.groupBoxResourceMeter);
+            this.splitContainerDebug.Panel1.Controls.Add(this.groupBoxAdvancedMode);
+            this.splitContainerDebug.Panel1MinSize = 0;
+            // 
+            // splitContainerDebug.Panel2
+            // 
+            this.splitContainerDebug.Panel2.Controls.Add(this.watchVariablePanelDebug);
+            this.splitContainerDebug.Panel2MinSize = 0;
+            this.splitContainerDebug.Size = new System.Drawing.Size(915, 463);
+            this.splitContainerDebug.SplitterDistance = 388;
+            this.splitContainerDebug.SplitterWidth = 1;
+            this.splitContainerDebug.TabIndex = 39;
+            // 
+            // panelDebugBorder
+            // 
+            this.panelDebugBorder.Controls.Add(this.pictureBoxDebug);
+            this.panelDebugBorder.Location = new System.Drawing.Point(3, 4);
+            this.panelDebugBorder.Margin = new System.Windows.Forms.Padding(2);
+            this.panelDebugBorder.Name = "panelDebugBorder";
+            this.panelDebugBorder.Size = new System.Drawing.Size(55, 55);
+            this.panelDebugBorder.TabIndex = 3;
+            // 
+            // pictureBoxDebug
+            // 
+            this.pictureBoxDebug.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBoxDissasembly.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxDissasembly.Location = new System.Drawing.Point(3, 26);
-            this.richTextBoxDissasembly.Margin = new System.Windows.Forms.Padding(2);
-            this.richTextBoxDissasembly.Name = "richTextBoxDissasembly";
-            this.richTextBoxDissasembly.ReadOnly = true;
-            this.richTextBoxDissasembly.Size = new System.Drawing.Size(910, 435);
-            this.richTextBoxDissasembly.TabIndex = 0;
-            this.richTextBoxDissasembly.Text = "";
+            this.pictureBoxDebug.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.High;
+            this.pictureBoxDebug.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxDebug.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBoxDebug.MaximumSize = new System.Drawing.Size(133, 130);
+            this.pictureBoxDebug.Name = "pictureBoxDebug";
+            this.pictureBoxDebug.Size = new System.Drawing.Size(49, 49);
+            this.pictureBoxDebug.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxDebug.TabIndex = 0;
+            this.pictureBoxDebug.TabStop = false;
             // 
-            // tabPageDecompiler
+            // groupBoxMiscDebug
             // 
-            this.tabPageDecompiler.Controls.Add(this.buttonDecompilerBack);
-            this.tabPageDecompiler.Controls.Add(this.buttonDecompilerNext);
-            this.tabPageDecompiler.Controls.Add(this.textBoxDecompilerAddress);
-            this.tabPageDecompiler.Controls.Add(this.buttonDecompilerDecompile);
-            this.tabPageDecompiler.Controls.Add(this.labelDecompilerAddress);
-            this.tabPageDecompiler.Controls.Add(this.splitContainerDecompiler);
-            this.tabPageDecompiler.Location = new System.Drawing.Point(4, 22);
-            this.tabPageDecompiler.Margin = new System.Windows.Forms.Padding(0);
-            this.tabPageDecompiler.Name = "tabPageDecompiler";
-            this.tabPageDecompiler.Size = new System.Drawing.Size(915, 463);
-            this.tabPageDecompiler.TabIndex = 23;
-            this.tabPageDecompiler.Text = "Decompiler";
+            this.groupBoxMiscDebug.Controls.Add(this.checkBoxFreeMovement);
+            this.groupBoxMiscDebug.Controls.Add(this.checkBoxSpawnMode);
+            this.groupBoxMiscDebug.Controls.Add(this.checkBoxStageSelect);
+            this.groupBoxMiscDebug.Controls.Add(this.checkBoxClassicMode);
+            this.groupBoxMiscDebug.Location = new System.Drawing.Point(247, 64);
+            this.groupBoxMiscDebug.Name = "groupBoxMiscDebug";
+            this.groupBoxMiscDebug.Size = new System.Drawing.Size(117, 125);
+            this.groupBoxMiscDebug.TabIndex = 38;
+            this.groupBoxMiscDebug.TabStop = false;
+            this.groupBoxMiscDebug.Text = "Misc Debug";
             // 
-            // buttonDecompilerBack
+            // checkBoxFreeMovement
             // 
-            this.buttonDecompilerBack.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonDecompilerBack.BackgroundImage = global::STROOP.Properties.Resources.img_arrow_left;
-            this.buttonDecompilerBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonDecompilerBack.Location = new System.Drawing.Point(220, -2);
-            this.buttonDecompilerBack.Name = "buttonDecompilerBack";
-            this.buttonDecompilerBack.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
-            this.buttonDecompilerBack.Size = new System.Drawing.Size(25, 25);
-            this.buttonDecompilerBack.TabIndex = 13;
-            this.buttonDecompilerBack.UseVisualStyleBackColor = true;
+            this.checkBoxFreeMovement.AutoSize = true;
+            this.checkBoxFreeMovement.Location = new System.Drawing.Point(6, 96);
+            this.checkBoxFreeMovement.Name = "checkBoxFreeMovement";
+            this.checkBoxFreeMovement.Size = new System.Drawing.Size(100, 17);
+            this.checkBoxFreeMovement.TabIndex = 24;
+            this.checkBoxFreeMovement.Text = "Free Movement";
+            this.checkBoxFreeMovement.UseVisualStyleBackColor = true;
             // 
-            // buttonDecompilerNext
+            // checkBoxSpawnMode
             // 
-            this.buttonDecompilerNext.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonDecompilerNext.BackgroundImage = global::STROOP.Properties.Resources.img_arrow_right;
-            this.buttonDecompilerNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonDecompilerNext.Location = new System.Drawing.Point(251, -2);
-            this.buttonDecompilerNext.Name = "buttonDecompilerNext";
-            this.buttonDecompilerNext.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
-            this.buttonDecompilerNext.Size = new System.Drawing.Size(25, 25);
-            this.buttonDecompilerNext.TabIndex = 12;
-            this.buttonDecompilerNext.UseVisualStyleBackColor = true;
+            this.checkBoxSpawnMode.AutoSize = true;
+            this.checkBoxSpawnMode.Location = new System.Drawing.Point(6, 46);
+            this.checkBoxSpawnMode.Name = "checkBoxSpawnMode";
+            this.checkBoxSpawnMode.Size = new System.Drawing.Size(89, 17);
+            this.checkBoxSpawnMode.TabIndex = 12;
+            this.checkBoxSpawnMode.Text = "Spawn Mode";
+            this.checkBoxSpawnMode.UseVisualStyleBackColor = true;
             // 
-            // textBoxDecompilerAddress
+            // checkBoxStageSelect
             // 
-            this.textBoxDecompilerAddress.Location = new System.Drawing.Point(55, 3);
-            this.textBoxDecompilerAddress.Name = "textBoxDecompilerAddress";
-            this.textBoxDecompilerAddress.Size = new System.Drawing.Size(93, 20);
-            this.textBoxDecompilerAddress.TabIndex = 10;
+            this.checkBoxStageSelect.AutoSize = true;
+            this.checkBoxStageSelect.Location = new System.Drawing.Point(6, 71);
+            this.checkBoxStageSelect.Name = "checkBoxStageSelect";
+            this.checkBoxStageSelect.Size = new System.Drawing.Size(87, 17);
+            this.checkBoxStageSelect.TabIndex = 24;
+            this.checkBoxStageSelect.Text = "Stage Select";
+            this.checkBoxStageSelect.UseVisualStyleBackColor = true;
             // 
-            // buttonDecompilerDecompile
+            // checkBoxClassicMode
             // 
-            this.buttonDecompilerDecompile.Location = new System.Drawing.Point(153, 3);
-            this.buttonDecompilerDecompile.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonDecompilerDecompile.Name = "buttonDecompilerDecompile";
-            this.buttonDecompilerDecompile.Size = new System.Drawing.Size(62, 20);
-            this.buttonDecompilerDecompile.TabIndex = 9;
-            this.buttonDecompilerDecompile.Text = "Go";
-            this.buttonDecompilerDecompile.UseVisualStyleBackColor = true;
+            this.checkBoxClassicMode.AutoSize = true;
+            this.checkBoxClassicMode.Location = new System.Drawing.Point(6, 21);
+            this.checkBoxClassicMode.Name = "checkBoxClassicMode";
+            this.checkBoxClassicMode.Size = new System.Drawing.Size(89, 17);
+            this.checkBoxClassicMode.TabIndex = 23;
+            this.checkBoxClassicMode.Text = "Classic Mode";
+            this.checkBoxClassicMode.UseVisualStyleBackColor = true;
             // 
-            // labelDecompilerAddress
+            // groupBoxResourceMeter
             // 
-            this.labelDecompilerAddress.AutoSize = true;
-            this.labelDecompilerAddress.Location = new System.Drawing.Point(-1, 3);
-            this.labelDecompilerAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelDecompilerAddress.Name = "labelDecompilerAddress";
-            this.labelDecompilerAddress.Size = new System.Drawing.Size(48, 13);
-            this.labelDecompilerAddress.TabIndex = 8;
-            this.labelDecompilerAddress.Text = "Address:";
+            this.groupBoxResourceMeter.Controls.Add(this.radioButtonResourceMeterOff);
+            this.groupBoxResourceMeter.Controls.Add(this.radioButtonResourceMeter1);
+            this.groupBoxResourceMeter.Controls.Add(this.radioButtonResourceMeter2);
+            this.groupBoxResourceMeter.Location = new System.Drawing.Point(137, 64);
+            this.groupBoxResourceMeter.Name = "groupBoxResourceMeter";
+            this.groupBoxResourceMeter.Size = new System.Drawing.Size(104, 94);
+            this.groupBoxResourceMeter.TabIndex = 38;
+            this.groupBoxResourceMeter.TabStop = false;
+            this.groupBoxResourceMeter.Text = "Resource Meter";
             // 
-            // splitContainerDecompiler
+            // radioButtonResourceMeterOff
             // 
-            this.splitContainerDecompiler.Location = new System.Drawing.Point(6, 27);
-            this.splitContainerDecompiler.Name = "splitContainerDecompiler";
+            this.radioButtonResourceMeterOff.AutoSize = true;
+            this.radioButtonResourceMeterOff.Checked = true;
+            this.radioButtonResourceMeterOff.Location = new System.Drawing.Point(11, 21);
+            this.radioButtonResourceMeterOff.Name = "radioButtonResourceMeterOff";
+            this.radioButtonResourceMeterOff.Size = new System.Drawing.Size(39, 17);
+            this.radioButtonResourceMeterOff.TabIndex = 7;
+            this.radioButtonResourceMeterOff.TabStop = true;
+            this.radioButtonResourceMeterOff.Text = "Off";
+            this.radioButtonResourceMeterOff.UseVisualStyleBackColor = true;
             // 
-            // splitContainerDecompiler.Panel1
+            // radioButtonResourceMeter1
             // 
-            this.splitContainerDecompiler.Panel1.Controls.Add(this.listViewDecompiler);
+            this.radioButtonResourceMeter1.AutoSize = true;
+            this.radioButtonResourceMeter1.Location = new System.Drawing.Point(11, 44);
+            this.radioButtonResourceMeter1.Name = "radioButtonResourceMeter1";
+            this.radioButtonResourceMeter1.Size = new System.Drawing.Size(61, 17);
+            this.radioButtonResourceMeter1.TabIndex = 8;
+            this.radioButtonResourceMeter1.Text = "Meter 1";
+            this.radioButtonResourceMeter1.UseVisualStyleBackColor = true;
             // 
-            // splitContainerDecompiler.Panel2
+            // radioButtonResourceMeter2
             // 
-            this.splitContainerDecompiler.Panel2.Controls.Add(this.decompilerViewHost);
-            this.splitContainerDecompiler.Size = new System.Drawing.Size(903, 430);
-            this.splitContainerDecompiler.SplitterDistance = 301;
-            this.splitContainerDecompiler.TabIndex = 1;
+            this.radioButtonResourceMeter2.AutoSize = true;
+            this.radioButtonResourceMeter2.Location = new System.Drawing.Point(11, 67);
+            this.radioButtonResourceMeter2.Name = "radioButtonResourceMeter2";
+            this.radioButtonResourceMeter2.Size = new System.Drawing.Size(61, 17);
+            this.radioButtonResourceMeter2.TabIndex = 9;
+            this.radioButtonResourceMeter2.Text = "Meter 2";
+            this.radioButtonResourceMeter2.UseVisualStyleBackColor = true;
             // 
-            // listViewDecompiler
+            // groupBoxAdvancedMode
             // 
-            this.listViewDecompiler.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewDecompiler.Location = new System.Drawing.Point(4, 4);
-            this.listViewDecompiler.Name = "listViewDecompiler";
-            this.listViewDecompiler.Size = new System.Drawing.Size(294, 423);
-            this.listViewDecompiler.TabIndex = 0;
-            this.listViewDecompiler.UseCompatibleStateImageBehavior = false;
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeOff);
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeEnemyInfo);
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeObjectCounter);
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeEffectInfo);
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeCheckInfo);
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeStageInfo);
+            this.groupBoxAdvancedMode.Controls.Add(this.radioButtonAdvancedModeMapInfo);
+            this.groupBoxAdvancedMode.Location = new System.Drawing.Point(6, 64);
+            this.groupBoxAdvancedMode.Name = "groupBoxAdvancedMode";
+            this.groupBoxAdvancedMode.Size = new System.Drawing.Size(125, 184);
+            this.groupBoxAdvancedMode.TabIndex = 38;
+            this.groupBoxAdvancedMode.TabStop = false;
+            this.groupBoxAdvancedMode.Text = "Advanced Mode";
             // 
-            // decompilerViewHost
+            // radioButtonAdvancedModeOff
             // 
-            this.decompilerViewHost.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.decompilerViewHost.Location = new System.Drawing.Point(3, 3);
-            this.decompilerViewHost.Name = "decompilerViewHost";
-            this.decompilerViewHost.Size = new System.Drawing.Size(592, 424);
-            this.decompilerViewHost.TabIndex = 0;
-            this.decompilerViewHost.Text = "elementHost1";
-            this.decompilerViewHost.Child = this.decompilerView;
+            this.radioButtonAdvancedModeOff.AutoSize = true;
+            this.radioButtonAdvancedModeOff.Checked = true;
+            this.radioButtonAdvancedModeOff.Location = new System.Drawing.Point(11, 19);
+            this.radioButtonAdvancedModeOff.Name = "radioButtonAdvancedModeOff";
+            this.radioButtonAdvancedModeOff.Size = new System.Drawing.Size(39, 17);
+            this.radioButtonAdvancedModeOff.TabIndex = 1;
+            this.radioButtonAdvancedModeOff.TabStop = true;
+            this.radioButtonAdvancedModeOff.Text = "Off";
+            this.radioButtonAdvancedModeOff.UseVisualStyleBackColor = true;
             // 
-            // tabPageScripts
+            // radioButtonAdvancedModeEnemyInfo
             // 
-            this.tabPageScripts.Controls.Add(this.buttonScriptGo);
-            this.tabPageScripts.Controls.Add(this.textBoxScriptAddress);
-            this.tabPageScripts.Controls.Add(this.labelScriptAddress);
-            this.tabPageScripts.Controls.Add(this.richTextBoxExScript);
-            this.tabPageScripts.Location = new System.Drawing.Point(4, 22);
-            this.tabPageScripts.Name = "tabPageScripts";
-            this.tabPageScripts.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageScripts.Size = new System.Drawing.Size(915, 463);
-            this.tabPageScripts.TabIndex = 20;
-            this.tabPageScripts.Text = "Scripts";
+            this.radioButtonAdvancedModeEnemyInfo.AutoSize = true;
+            this.radioButtonAdvancedModeEnemyInfo.Location = new System.Drawing.Point(11, 157);
+            this.radioButtonAdvancedModeEnemyInfo.Name = "radioButtonAdvancedModeEnemyInfo";
+            this.radioButtonAdvancedModeEnemyInfo.Size = new System.Drawing.Size(78, 17);
+            this.radioButtonAdvancedModeEnemyInfo.TabIndex = 10;
+            this.radioButtonAdvancedModeEnemyInfo.Text = "Enemy Info";
+            this.radioButtonAdvancedModeEnemyInfo.UseVisualStyleBackColor = true;
             // 
-            // buttonScriptGo
+            // radioButtonAdvancedModeObjectCounter
             // 
-            this.buttonScriptGo.Location = new System.Drawing.Point(178, 5);
-            this.buttonScriptGo.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonScriptGo.Name = "buttonScriptGo";
-            this.buttonScriptGo.Size = new System.Drawing.Size(62, 20);
-            this.buttonScriptGo.TabIndex = 7;
-            this.buttonScriptGo.Text = "Go";
-            this.buttonScriptGo.UseVisualStyleBackColor = true;
+            this.radioButtonAdvancedModeObjectCounter.AutoSize = true;
+            this.radioButtonAdvancedModeObjectCounter.Location = new System.Drawing.Point(11, 42);
+            this.radioButtonAdvancedModeObjectCounter.Name = "radioButtonAdvancedModeObjectCounter";
+            this.radioButtonAdvancedModeObjectCounter.Size = new System.Drawing.Size(96, 17);
+            this.radioButtonAdvancedModeObjectCounter.TabIndex = 5;
+            this.radioButtonAdvancedModeObjectCounter.Text = "Object Counter";
+            this.radioButtonAdvancedModeObjectCounter.UseVisualStyleBackColor = true;
             // 
-            // textBoxScriptAddress
+            // radioButtonAdvancedModeEffectInfo
             // 
-            this.textBoxScriptAddress.Location = new System.Drawing.Point(73, 6);
-            this.textBoxScriptAddress.Name = "textBoxScriptAddress";
-            this.textBoxScriptAddress.Size = new System.Drawing.Size(100, 20);
-            this.textBoxScriptAddress.TabIndex = 6;
+            this.radioButtonAdvancedModeEffectInfo.AutoSize = true;
+            this.radioButtonAdvancedModeEffectInfo.Location = new System.Drawing.Point(11, 134);
+            this.radioButtonAdvancedModeEffectInfo.Name = "radioButtonAdvancedModeEffectInfo";
+            this.radioButtonAdvancedModeEffectInfo.Size = new System.Drawing.Size(74, 17);
+            this.radioButtonAdvancedModeEffectInfo.TabIndex = 9;
+            this.radioButtonAdvancedModeEffectInfo.Text = "Effect Info";
+            this.radioButtonAdvancedModeEffectInfo.UseVisualStyleBackColor = true;
             // 
-            // labelScriptAddress
+            // radioButtonAdvancedModeCheckInfo
             // 
-            this.labelScriptAddress.AutoSize = true;
-            this.labelScriptAddress.Location = new System.Drawing.Point(2, 9);
-            this.labelScriptAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelScriptAddress.Name = "labelScriptAddress";
-            this.labelScriptAddress.Size = new System.Drawing.Size(73, 13);
-            this.labelScriptAddress.TabIndex = 5;
-            this.labelScriptAddress.Text = "Start Address:";
+            this.radioButtonAdvancedModeCheckInfo.AutoSize = true;
+            this.radioButtonAdvancedModeCheckInfo.Location = new System.Drawing.Point(11, 65);
+            this.radioButtonAdvancedModeCheckInfo.Name = "radioButtonAdvancedModeCheckInfo";
+            this.radioButtonAdvancedModeCheckInfo.Size = new System.Drawing.Size(77, 17);
+            this.radioButtonAdvancedModeCheckInfo.TabIndex = 6;
+            this.radioButtonAdvancedModeCheckInfo.Text = "Check Info";
+            this.radioButtonAdvancedModeCheckInfo.UseVisualStyleBackColor = true;
             // 
-            // richTextBoxExScript
+            // radioButtonAdvancedModeStageInfo
             // 
-            this.richTextBoxExScript.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBoxExScript.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxExScript.Location = new System.Drawing.Point(2, 31);
-            this.richTextBoxExScript.Margin = new System.Windows.Forms.Padding(2);
-            this.richTextBoxExScript.Name = "richTextBoxExScript";
-            this.richTextBoxExScript.ReadOnly = true;
-            this.richTextBoxExScript.Size = new System.Drawing.Size(908, 430);
-            this.richTextBoxExScript.TabIndex = 1;
-            this.richTextBoxExScript.Text = "";
+            this.radioButtonAdvancedModeStageInfo.AutoSize = true;
+            this.radioButtonAdvancedModeStageInfo.Location = new System.Drawing.Point(11, 111);
+            this.radioButtonAdvancedModeStageInfo.Name = "radioButtonAdvancedModeStageInfo";
+            this.radioButtonAdvancedModeStageInfo.Size = new System.Drawing.Size(74, 17);
+            this.radioButtonAdvancedModeStageInfo.TabIndex = 8;
+            this.radioButtonAdvancedModeStageInfo.Text = "Stage Info";
+            this.radioButtonAdvancedModeStageInfo.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonAdvancedModeMapInfo
+            // 
+            this.radioButtonAdvancedModeMapInfo.AutoSize = true;
+            this.radioButtonAdvancedModeMapInfo.Location = new System.Drawing.Point(11, 88);
+            this.radioButtonAdvancedModeMapInfo.Name = "radioButtonAdvancedModeMapInfo";
+            this.radioButtonAdvancedModeMapInfo.Size = new System.Drawing.Size(67, 17);
+            this.radioButtonAdvancedModeMapInfo.TabIndex = 7;
+            this.radioButtonAdvancedModeMapInfo.Text = "Map Info";
+            this.radioButtonAdvancedModeMapInfo.UseVisualStyleBackColor = true;
+            // 
+            // watchVariablePanelDebug
+            // 
+            this.watchVariablePanelDebug.AutoScroll = true;
+            this.watchVariablePanelDebug.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.watchVariablePanelDebug.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.watchVariablePanelDebug.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelDebug.Margin = new System.Windows.Forms.Padding(0);
+            this.watchVariablePanelDebug.Name = "watchVariablePanelDebug";
+            this.watchVariablePanelDebug.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelDebug.Size = new System.Drawing.Size(524, 461);
+            this.watchVariablePanelDebug.TabIndex = 26;
             // 
             // tabPageHacks
             // 
@@ -10292,6 +13118,7 @@ namespace STROOP
             this.checkedListBoxHacks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkedListBoxHacks.CheckOnClick = true;
             this.checkedListBoxHacks.FormattingEnabled = true;
             this.checkedListBoxHacks.Location = new System.Drawing.Point(3, 19);
             this.checkedListBoxHacks.Name = "checkedListBoxHacks";
@@ -11344,7 +14171,9 @@ namespace STROOP
             this.splitContainerVarHack.Panel1.Controls.Add(this.buttonVarHackAddNewVariable);
             this.splitContainerVarHack.Panel1.Controls.Add(this.buttonVarHackShowVariableBytesInBigEndian);
             this.splitContainerVarHack.Panel1.Controls.Add(this.buttonVarHackShowVariableBytesInLittleEndian);
-            this.splitContainerVarHack.Panel1.Controls.Add(this.buttonVarHackClearVariables);
+            this.splitContainerVarHack.Panel1.Controls.Add(this.buttonVarHackOpenVars);
+            this.splitContainerVarHack.Panel1.Controls.Add(this.buttonVarHackSaveVars);
+            this.splitContainerVarHack.Panel1.Controls.Add(this.buttonVarHackClearVars);
             this.splitContainerVarHack.Panel1MinSize = 0;
             // 
             // splitContainerVarHack.Panel2
@@ -11563,14 +14392,32 @@ namespace STROOP
             this.buttonVarHackShowVariableBytesInLittleEndian.Text = "Show Variable Bytes in Little Endian\r\n(for Process Memory)";
             this.buttonVarHackShowVariableBytesInLittleEndian.UseVisualStyleBackColor = true;
             // 
-            // buttonVarHackClearVariables
+            // buttonVarHackOpenVars
             // 
-            this.buttonVarHackClearVariables.Location = new System.Drawing.Point(7, 52);
-            this.buttonVarHackClearVariables.Name = "buttonVarHackClearVariables";
-            this.buttonVarHackClearVariables.Size = new System.Drawing.Size(188, 38);
-            this.buttonVarHackClearVariables.TabIndex = 4;
-            this.buttonVarHackClearVariables.Text = "Clear Variables";
-            this.buttonVarHackClearVariables.UseVisualStyleBackColor = true;
+            this.buttonVarHackOpenVars.Location = new System.Drawing.Point(7, 52);
+            this.buttonVarHackOpenVars.Name = "buttonVarHackOpenVars";
+            this.buttonVarHackOpenVars.Size = new System.Drawing.Size(60, 38);
+            this.buttonVarHackOpenVars.TabIndex = 4;
+            this.buttonVarHackOpenVars.Text = "Open\r\nVars";
+            this.buttonVarHackOpenVars.UseVisualStyleBackColor = true;
+            // 
+            // buttonVarHackSaveVars
+            // 
+            this.buttonVarHackSaveVars.Location = new System.Drawing.Point(71, 52);
+            this.buttonVarHackSaveVars.Name = "buttonVarHackSaveVars";
+            this.buttonVarHackSaveVars.Size = new System.Drawing.Size(60, 38);
+            this.buttonVarHackSaveVars.TabIndex = 4;
+            this.buttonVarHackSaveVars.Text = "Save\r\nVars";
+            this.buttonVarHackSaveVars.UseVisualStyleBackColor = true;
+            // 
+            // buttonVarHackClearVars
+            // 
+            this.buttonVarHackClearVars.Location = new System.Drawing.Point(135, 52);
+            this.buttonVarHackClearVars.Name = "buttonVarHackClearVars";
+            this.buttonVarHackClearVars.Size = new System.Drawing.Size(60, 38);
+            this.buttonVarHackClearVars.TabIndex = 4;
+            this.buttonVarHackClearVars.Text = "Clear\r\nVars";
+            this.buttonVarHackClearVars.UseVisualStyleBackColor = true;
             // 
             // varHackPanel
             // 
@@ -11584,535 +14431,725 @@ namespace STROOP
             this.varHackPanel.Size = new System.Drawing.Size(695, 461);
             this.varHackPanel.TabIndex = 3;
             // 
-            // tabPageOptions
-            // 
-            this.tabPageOptions.AutoScroll = true;
-            this.tabPageOptions.Controls.Add(this.groupBoxPositionControllerRelativeAngle);
-            this.tabPageOptions.Controls.Add(this.groupBoxFPS);
-            this.tabPageOptions.Controls.Add(this.groupBoxRomVersion);
-            this.tabPageOptions.Controls.Add(this.groupBoxGotoRetrieveOffsets);
-            this.tabPageOptions.Controls.Add(this.checkBoxUseMisalignmentOffsetForDistanceToLine);
-            this.tabPageOptions.Controls.Add(this.checkBoxExcludeDustForClosestObject);
-            this.tabPageOptions.Controls.Add(this.groupBoxShowOverlay);
-            this.tabPageOptions.Controls.Add(this.checkBoxScaleDiagonalPositionControllerButtons);
-            this.tabPageOptions.Controls.Add(this.checkBoxNeutralizeTrianglesWith21);
-            this.tabPageOptions.Controls.Add(this.label3);
-            this.tabPageOptions.Controls.Add(this.checkBoxMoveCamWithPu);
-            this.tabPageOptions.Controls.Add(this.checkBoxUseRomHack);
-            this.tabPageOptions.Controls.Add(this.checkBoxStartSlotIndexOne);
-            this.tabPageOptions.Location = new System.Drawing.Point(4, 22);
-            this.tabPageOptions.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPageOptions.Name = "tabPageOptions";
-            this.tabPageOptions.Size = new System.Drawing.Size(915, 463);
-            this.tabPageOptions.TabIndex = 5;
-            this.tabPageOptions.Text = "Options";
-            // 
-            // groupBoxPositionControllerRelativeAngle
-            // 
-            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.textBoxPositionControllerRelativeAngleCustom);
-            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleMario);
-            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleRecommended);
-            this.groupBoxPositionControllerRelativeAngle.Controls.Add(this.radioButtonPositionControllerRelativeAngleCustom);
-            this.groupBoxPositionControllerRelativeAngle.Location = new System.Drawing.Point(16, 192);
-            this.groupBoxPositionControllerRelativeAngle.Name = "groupBoxPositionControllerRelativeAngle";
-            this.groupBoxPositionControllerRelativeAngle.Size = new System.Drawing.Size(141, 99);
-            this.groupBoxPositionControllerRelativeAngle.TabIndex = 39;
-            this.groupBoxPositionControllerRelativeAngle.TabStop = false;
-            this.groupBoxPositionControllerRelativeAngle.Text = "Pos Controller Rel Angle";
-            // 
-            // textBoxPositionControllerRelativeAngleCustom
-            // 
-            this.textBoxPositionControllerRelativeAngleCustom.Location = new System.Drawing.Point(74, 64);
-            this.textBoxPositionControllerRelativeAngleCustom.Name = "textBoxPositionControllerRelativeAngleCustom";
-            this.textBoxPositionControllerRelativeAngleCustom.Size = new System.Drawing.Size(50, 20);
-            this.textBoxPositionControllerRelativeAngleCustom.TabIndex = 38;
-            this.textBoxPositionControllerRelativeAngleCustom.Text = "32768";
-            this.textBoxPositionControllerRelativeAngleCustom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // radioButtonPositionControllerRelativeAngleMario
-            // 
-            this.radioButtonPositionControllerRelativeAngleMario.AutoSize = true;
-            this.radioButtonPositionControllerRelativeAngleMario.Location = new System.Drawing.Point(11, 42);
-            this.radioButtonPositionControllerRelativeAngleMario.Name = "radioButtonPositionControllerRelativeAngleMario";
-            this.radioButtonPositionControllerRelativeAngleMario.Size = new System.Drawing.Size(51, 17);
-            this.radioButtonPositionControllerRelativeAngleMario.TabIndex = 12;
-            this.radioButtonPositionControllerRelativeAngleMario.Text = "Mario";
-            this.radioButtonPositionControllerRelativeAngleMario.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonPositionControllerRelativeAngleRecommended
-            // 
-            this.radioButtonPositionControllerRelativeAngleRecommended.AutoSize = true;
-            this.radioButtonPositionControllerRelativeAngleRecommended.Checked = true;
-            this.radioButtonPositionControllerRelativeAngleRecommended.Location = new System.Drawing.Point(11, 19);
-            this.radioButtonPositionControllerRelativeAngleRecommended.Name = "radioButtonPositionControllerRelativeAngleRecommended";
-            this.radioButtonPositionControllerRelativeAngleRecommended.Size = new System.Drawing.Size(97, 17);
-            this.radioButtonPositionControllerRelativeAngleRecommended.TabIndex = 11;
-            this.radioButtonPositionControllerRelativeAngleRecommended.TabStop = true;
-            this.radioButtonPositionControllerRelativeAngleRecommended.Text = "Recommended";
-            this.radioButtonPositionControllerRelativeAngleRecommended.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonPositionControllerRelativeAngleCustom
-            // 
-            this.radioButtonPositionControllerRelativeAngleCustom.AutoSize = true;
-            this.radioButtonPositionControllerRelativeAngleCustom.Location = new System.Drawing.Point(11, 65);
-            this.radioButtonPositionControllerRelativeAngleCustom.Name = "radioButtonPositionControllerRelativeAngleCustom";
-            this.radioButtonPositionControllerRelativeAngleCustom.Size = new System.Drawing.Size(63, 17);
-            this.radioButtonPositionControllerRelativeAngleCustom.TabIndex = 13;
-            this.radioButtonPositionControllerRelativeAngleCustom.Text = "Custom:";
-            this.radioButtonPositionControllerRelativeAngleCustom.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxFPS
-            // 
-            this.groupBoxFPS.Controls.Add(this.betterTextboxFPS);
-            this.groupBoxFPS.Location = new System.Drawing.Point(560, 137);
-            this.groupBoxFPS.Name = "groupBoxFPS";
-            this.groupBoxFPS.Size = new System.Drawing.Size(62, 47);
-            this.groupBoxFPS.TabIndex = 38;
-            this.groupBoxFPS.TabStop = false;
-            this.groupBoxFPS.Text = "FPS";
-            // 
-            // betterTextboxFPS
-            // 
-            this.betterTextboxFPS.Location = new System.Drawing.Point(6, 19);
-            this.betterTextboxFPS.Name = "betterTextboxFPS";
-            this.betterTextboxFPS.Size = new System.Drawing.Size(50, 20);
-            this.betterTextboxFPS.TabIndex = 39;
-            this.betterTextboxFPS.Text = "30";
-            this.betterTextboxFPS.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // groupBoxRomVersion
-            // 
-            this.groupBoxRomVersion.Controls.Add(this.radioButtonRomVersionJP);
-            this.groupBoxRomVersion.Controls.Add(this.radioButtonRomVersionUS);
-            this.groupBoxRomVersion.Controls.Add(this.radioButtonRomVersionPAL);
-            this.groupBoxRomVersion.Location = new System.Drawing.Point(450, 137);
-            this.groupBoxRomVersion.Name = "groupBoxRomVersion";
-            this.groupBoxRomVersion.Size = new System.Drawing.Size(84, 93);
-            this.groupBoxRomVersion.TabIndex = 38;
-            this.groupBoxRomVersion.TabStop = false;
-            this.groupBoxRomVersion.Text = "Rom Version";
-            // 
-            // radioButtonRomVersionJP
-            // 
-            this.radioButtonRomVersionJP.AutoSize = true;
-            this.radioButtonRomVersionJP.Location = new System.Drawing.Point(11, 42);
-            this.radioButtonRomVersionJP.Name = "radioButtonRomVersionJP";
-            this.radioButtonRomVersionJP.Size = new System.Drawing.Size(37, 17);
-            this.radioButtonRomVersionJP.TabIndex = 12;
-            this.radioButtonRomVersionJP.Text = "JP";
-            this.radioButtonRomVersionJP.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonRomVersionUS
-            // 
-            this.radioButtonRomVersionUS.AutoSize = true;
-            this.radioButtonRomVersionUS.Checked = true;
-            this.radioButtonRomVersionUS.Location = new System.Drawing.Point(11, 19);
-            this.radioButtonRomVersionUS.Name = "radioButtonRomVersionUS";
-            this.radioButtonRomVersionUS.Size = new System.Drawing.Size(40, 17);
-            this.radioButtonRomVersionUS.TabIndex = 11;
-            this.radioButtonRomVersionUS.TabStop = true;
-            this.radioButtonRomVersionUS.Text = "US";
-            this.radioButtonRomVersionUS.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonRomVersionPAL
-            // 
-            this.radioButtonRomVersionPAL.AutoSize = true;
-            this.radioButtonRomVersionPAL.Location = new System.Drawing.Point(11, 65);
-            this.radioButtonRomVersionPAL.Name = "radioButtonRomVersionPAL";
-            this.radioButtonRomVersionPAL.Size = new System.Drawing.Size(45, 17);
-            this.radioButtonRomVersionPAL.TabIndex = 13;
-            this.radioButtonRomVersionPAL.Text = "PAL";
-            this.radioButtonRomVersionPAL.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxGotoRetrieveOffsets
-            // 
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelRetrieveInfrontSuffix);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelRetrieveInfrontPrefix);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.textBoxRetrieveInfront);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelRetrieveAboveSuffix);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelRetrieveAbovePrefix);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.textBoxRetrieveAbove);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelGotoInfrontSuffix);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelGotoInfrontPrefix);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.textBoxGotoInfront);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelGotoAboveSuffix);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.labelGotoAbovePrefix);
-            this.groupBoxGotoRetrieveOffsets.Controls.Add(this.textBoxGotoAbove);
-            this.groupBoxGotoRetrieveOffsets.Location = new System.Drawing.Point(450, 4);
-            this.groupBoxGotoRetrieveOffsets.Name = "groupBoxGotoRetrieveOffsets";
-            this.groupBoxGotoRetrieveOffsets.Size = new System.Drawing.Size(154, 121);
-            this.groupBoxGotoRetrieveOffsets.TabIndex = 32;
-            this.groupBoxGotoRetrieveOffsets.TabStop = false;
-            this.groupBoxGotoRetrieveOffsets.Text = "Go to / Retrieve Offsets";
-            // 
-            // labelRetrieveInfrontSuffix
-            // 
-            this.labelRetrieveInfrontSuffix.AutoSize = true;
-            this.labelRetrieveInfrontSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRetrieveInfrontSuffix.Location = new System.Drawing.Point(106, 98);
-            this.labelRetrieveInfrontSuffix.Name = "labelRetrieveInfrontSuffix";
-            this.labelRetrieveInfrontSuffix.Size = new System.Drawing.Size(39, 13);
-            this.labelRetrieveInfrontSuffix.TabIndex = 39;
-            this.labelRetrieveInfrontSuffix.Text = "in front";
-            // 
-            // labelRetrieveInfrontPrefix
-            // 
-            this.labelRetrieveInfrontPrefix.AutoSize = true;
-            this.labelRetrieveInfrontPrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRetrieveInfrontPrefix.Location = new System.Drawing.Point(11, 98);
-            this.labelRetrieveInfrontPrefix.Name = "labelRetrieveInfrontPrefix";
-            this.labelRetrieveInfrontPrefix.Size = new System.Drawing.Size(47, 13);
-            this.labelRetrieveInfrontPrefix.TabIndex = 38;
-            this.labelRetrieveInfrontPrefix.Text = "Retrieve";
-            // 
-            // textBoxRetrieveInfront
-            // 
-            this.textBoxRetrieveInfront.Location = new System.Drawing.Point(60, 95);
-            this.textBoxRetrieveInfront.Name = "textBoxRetrieveInfront";
-            this.textBoxRetrieveInfront.Size = new System.Drawing.Size(42, 20);
-            this.textBoxRetrieveInfront.TabIndex = 37;
-            this.textBoxRetrieveInfront.Text = "0";
-            this.textBoxRetrieveInfront.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelRetrieveAboveSuffix
-            // 
-            this.labelRetrieveAboveSuffix.AutoSize = true;
-            this.labelRetrieveAboveSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRetrieveAboveSuffix.Location = new System.Drawing.Point(106, 73);
-            this.labelRetrieveAboveSuffix.Name = "labelRetrieveAboveSuffix";
-            this.labelRetrieveAboveSuffix.Size = new System.Drawing.Size(37, 13);
-            this.labelRetrieveAboveSuffix.TabIndex = 36;
-            this.labelRetrieveAboveSuffix.Text = "above";
-            // 
-            // labelRetrieveAbovePrefix
-            // 
-            this.labelRetrieveAbovePrefix.AutoSize = true;
-            this.labelRetrieveAbovePrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRetrieveAbovePrefix.Location = new System.Drawing.Point(11, 73);
-            this.labelRetrieveAbovePrefix.Name = "labelRetrieveAbovePrefix";
-            this.labelRetrieveAbovePrefix.Size = new System.Drawing.Size(47, 13);
-            this.labelRetrieveAbovePrefix.TabIndex = 35;
-            this.labelRetrieveAbovePrefix.Text = "Retrieve";
-            // 
-            // textBoxRetrieveAbove
-            // 
-            this.textBoxRetrieveAbove.Location = new System.Drawing.Point(60, 70);
-            this.textBoxRetrieveAbove.Name = "textBoxRetrieveAbove";
-            this.textBoxRetrieveAbove.Size = new System.Drawing.Size(42, 20);
-            this.textBoxRetrieveAbove.TabIndex = 34;
-            this.textBoxRetrieveAbove.Text = "300";
-            this.textBoxRetrieveAbove.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelGotoInfrontSuffix
-            // 
-            this.labelGotoInfrontSuffix.AutoSize = true;
-            this.labelGotoInfrontSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGotoInfrontSuffix.Location = new System.Drawing.Point(106, 48);
-            this.labelGotoInfrontSuffix.Name = "labelGotoInfrontSuffix";
-            this.labelGotoInfrontSuffix.Size = new System.Drawing.Size(39, 13);
-            this.labelGotoInfrontSuffix.TabIndex = 33;
-            this.labelGotoInfrontSuffix.Text = "in front";
-            // 
-            // labelGotoInfrontPrefix
-            // 
-            this.labelGotoInfrontPrefix.AutoSize = true;
-            this.labelGotoInfrontPrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGotoInfrontPrefix.Location = new System.Drawing.Point(11, 48);
-            this.labelGotoInfrontPrefix.Name = "labelGotoInfrontPrefix";
-            this.labelGotoInfrontPrefix.Size = new System.Drawing.Size(33, 13);
-            this.labelGotoInfrontPrefix.TabIndex = 32;
-            this.labelGotoInfrontPrefix.Text = "Go to";
-            // 
-            // textBoxGotoInfront
-            // 
-            this.textBoxGotoInfront.Location = new System.Drawing.Point(60, 45);
-            this.textBoxGotoInfront.Name = "textBoxGotoInfront";
-            this.textBoxGotoInfront.Size = new System.Drawing.Size(42, 20);
-            this.textBoxGotoInfront.TabIndex = 31;
-            this.textBoxGotoInfront.Text = "0";
-            this.textBoxGotoInfront.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelGotoAboveSuffix
-            // 
-            this.labelGotoAboveSuffix.AutoSize = true;
-            this.labelGotoAboveSuffix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGotoAboveSuffix.Location = new System.Drawing.Point(106, 23);
-            this.labelGotoAboveSuffix.Name = "labelGotoAboveSuffix";
-            this.labelGotoAboveSuffix.Size = new System.Drawing.Size(37, 13);
-            this.labelGotoAboveSuffix.TabIndex = 30;
-            this.labelGotoAboveSuffix.Text = "above";
-            // 
-            // labelGotoAbovePrefix
-            // 
-            this.labelGotoAbovePrefix.AutoSize = true;
-            this.labelGotoAbovePrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGotoAbovePrefix.Location = new System.Drawing.Point(11, 23);
-            this.labelGotoAbovePrefix.Name = "labelGotoAbovePrefix";
-            this.labelGotoAbovePrefix.Size = new System.Drawing.Size(33, 13);
-            this.labelGotoAbovePrefix.TabIndex = 29;
-            this.labelGotoAbovePrefix.Text = "Go to";
-            // 
-            // textBoxGotoAbove
-            // 
-            this.textBoxGotoAbove.Location = new System.Drawing.Point(60, 20);
-            this.textBoxGotoAbove.Name = "textBoxGotoAbove";
-            this.textBoxGotoAbove.Size = new System.Drawing.Size(42, 20);
-            this.textBoxGotoAbove.TabIndex = 28;
-            this.textBoxGotoAbove.Text = "300";
-            this.textBoxGotoAbove.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // checkBoxUseMisalignmentOffsetForDistanceToLine
-            // 
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.AutoSize = true;
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Checked = true;
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Location = new System.Drawing.Point(3, 125);
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Name = "checkBoxUseMisalignmentOffsetForDistanceToLine";
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Size = new System.Drawing.Size(242, 17);
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.TabIndex = 31;
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.Text = "Use Misalignment Offset For Distance To Line";
-            this.checkBoxUseMisalignmentOffsetForDistanceToLine.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxExcludeDustForClosestObject
-            // 
-            this.checkBoxExcludeDustForClosestObject.AutoSize = true;
-            this.checkBoxExcludeDustForClosestObject.Checked = true;
-            this.checkBoxExcludeDustForClosestObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxExcludeDustForClosestObject.Location = new System.Drawing.Point(3, 85);
-            this.checkBoxExcludeDustForClosestObject.Name = "checkBoxExcludeDustForClosestObject";
-            this.checkBoxExcludeDustForClosestObject.Size = new System.Drawing.Size(175, 17);
-            this.checkBoxExcludeDustForClosestObject.TabIndex = 31;
-            this.checkBoxExcludeDustForClosestObject.Text = "Exclude Dust for Closest Object";
-            this.checkBoxExcludeDustForClosestObject.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxShowOverlay
-            // 
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayCameraHackObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayParentObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayCeilingObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayWallObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayFloorObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayUsedObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayInteractionObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayCameraObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayClosestObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayStoodOnObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayHeldObject);
-            this.groupBoxShowOverlay.Location = new System.Drawing.Point(256, 4);
-            this.groupBoxShowOverlay.Name = "groupBoxShowOverlay";
-            this.groupBoxShowOverlay.Size = new System.Drawing.Size(170, 255);
-            this.groupBoxShowOverlay.TabIndex = 29;
-            this.groupBoxShowOverlay.TabStop = false;
-            this.groupBoxShowOverlay.Text = "Object Slot Overlays to Show";
-            // 
-            // checkBoxShowOverlayCameraHackObject
-            // 
-            this.checkBoxShowOverlayCameraHackObject.AutoSize = true;
-            this.checkBoxShowOverlayCameraHackObject.Checked = true;
-            this.checkBoxShowOverlayCameraHackObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayCameraHackObject.Location = new System.Drawing.Point(5, 146);
-            this.checkBoxShowOverlayCameraHackObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayCameraHackObject.Name = "checkBoxShowOverlayCameraHackObject";
-            this.checkBoxShowOverlayCameraHackObject.Size = new System.Drawing.Size(125, 17);
-            this.checkBoxShowOverlayCameraHackObject.TabIndex = 10;
-            this.checkBoxShowOverlayCameraHackObject.Text = "Camera Hack Object";
-            this.checkBoxShowOverlayCameraHackObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayParentObject
-            // 
-            this.checkBoxShowOverlayParentObject.AutoSize = true;
-            this.checkBoxShowOverlayParentObject.Location = new System.Drawing.Point(5, 230);
-            this.checkBoxShowOverlayParentObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayParentObject.Name = "checkBoxShowOverlayParentObject";
-            this.checkBoxShowOverlayParentObject.Size = new System.Drawing.Size(91, 17);
-            this.checkBoxShowOverlayParentObject.TabIndex = 9;
-            this.checkBoxShowOverlayParentObject.Text = "Parent Object";
-            this.checkBoxShowOverlayParentObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayCeilingObject
-            // 
-            this.checkBoxShowOverlayCeilingObject.AutoSize = true;
-            this.checkBoxShowOverlayCeilingObject.Checked = true;
-            this.checkBoxShowOverlayCeilingObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayCeilingObject.Location = new System.Drawing.Point(5, 209);
-            this.checkBoxShowOverlayCeilingObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayCeilingObject.Name = "checkBoxShowOverlayCeilingObject";
-            this.checkBoxShowOverlayCeilingObject.Size = new System.Drawing.Size(91, 17);
-            this.checkBoxShowOverlayCeilingObject.TabIndex = 9;
-            this.checkBoxShowOverlayCeilingObject.Text = "Ceiling Object";
-            this.checkBoxShowOverlayCeilingObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayWallObject
-            // 
-            this.checkBoxShowOverlayWallObject.AutoSize = true;
-            this.checkBoxShowOverlayWallObject.Checked = true;
-            this.checkBoxShowOverlayWallObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayWallObject.Location = new System.Drawing.Point(5, 188);
-            this.checkBoxShowOverlayWallObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayWallObject.Name = "checkBoxShowOverlayWallObject";
-            this.checkBoxShowOverlayWallObject.Size = new System.Drawing.Size(81, 17);
-            this.checkBoxShowOverlayWallObject.TabIndex = 8;
-            this.checkBoxShowOverlayWallObject.Text = "Wall Object";
-            this.checkBoxShowOverlayWallObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayFloorObject
-            // 
-            this.checkBoxShowOverlayFloorObject.AutoSize = true;
-            this.checkBoxShowOverlayFloorObject.Checked = true;
-            this.checkBoxShowOverlayFloorObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayFloorObject.Location = new System.Drawing.Point(5, 167);
-            this.checkBoxShowOverlayFloorObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayFloorObject.Name = "checkBoxShowOverlayFloorObject";
-            this.checkBoxShowOverlayFloorObject.Size = new System.Drawing.Size(83, 17);
-            this.checkBoxShowOverlayFloorObject.TabIndex = 7;
-            this.checkBoxShowOverlayFloorObject.Text = "Floor Object";
-            this.checkBoxShowOverlayFloorObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayUsedObject
-            // 
-            this.checkBoxShowOverlayUsedObject.AutoSize = true;
-            this.checkBoxShowOverlayUsedObject.Checked = true;
-            this.checkBoxShowOverlayUsedObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayUsedObject.Location = new System.Drawing.Point(5, 83);
-            this.checkBoxShowOverlayUsedObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayUsedObject.Name = "checkBoxShowOverlayUsedObject";
-            this.checkBoxShowOverlayUsedObject.Size = new System.Drawing.Size(85, 17);
-            this.checkBoxShowOverlayUsedObject.TabIndex = 4;
-            this.checkBoxShowOverlayUsedObject.Text = "Used Object";
-            this.checkBoxShowOverlayUsedObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayInteractionObject
-            // 
-            this.checkBoxShowOverlayInteractionObject.AutoSize = true;
-            this.checkBoxShowOverlayInteractionObject.Checked = true;
-            this.checkBoxShowOverlayInteractionObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayInteractionObject.Location = new System.Drawing.Point(5, 62);
-            this.checkBoxShowOverlayInteractionObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayInteractionObject.Name = "checkBoxShowOverlayInteractionObject";
-            this.checkBoxShowOverlayInteractionObject.Size = new System.Drawing.Size(110, 17);
-            this.checkBoxShowOverlayInteractionObject.TabIndex = 3;
-            this.checkBoxShowOverlayInteractionObject.Text = "Interaction Object";
-            this.checkBoxShowOverlayInteractionObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayCameraObject
-            // 
-            this.checkBoxShowOverlayCameraObject.AutoSize = true;
-            this.checkBoxShowOverlayCameraObject.Checked = true;
-            this.checkBoxShowOverlayCameraObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayCameraObject.Location = new System.Drawing.Point(5, 125);
-            this.checkBoxShowOverlayCameraObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayCameraObject.Name = "checkBoxShowOverlayCameraObject";
-            this.checkBoxShowOverlayCameraObject.Size = new System.Drawing.Size(96, 17);
-            this.checkBoxShowOverlayCameraObject.TabIndex = 5;
-            this.checkBoxShowOverlayCameraObject.Text = "Camera Object";
-            this.checkBoxShowOverlayCameraObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayClosestObject
-            // 
-            this.checkBoxShowOverlayClosestObject.AutoSize = true;
-            this.checkBoxShowOverlayClosestObject.Checked = true;
-            this.checkBoxShowOverlayClosestObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayClosestObject.Location = new System.Drawing.Point(5, 104);
-            this.checkBoxShowOverlayClosestObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayClosestObject.Name = "checkBoxShowOverlayClosestObject";
-            this.checkBoxShowOverlayClosestObject.Size = new System.Drawing.Size(94, 17);
-            this.checkBoxShowOverlayClosestObject.TabIndex = 6;
-            this.checkBoxShowOverlayClosestObject.Text = "Closest Object";
-            this.checkBoxShowOverlayClosestObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayStoodOnObject
-            // 
-            this.checkBoxShowOverlayStoodOnObject.AutoSize = true;
-            this.checkBoxShowOverlayStoodOnObject.Checked = true;
-            this.checkBoxShowOverlayStoodOnObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayStoodOnObject.Location = new System.Drawing.Point(5, 41);
-            this.checkBoxShowOverlayStoodOnObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayStoodOnObject.Name = "checkBoxShowOverlayStoodOnObject";
-            this.checkBoxShowOverlayStoodOnObject.Size = new System.Drawing.Size(105, 17);
-            this.checkBoxShowOverlayStoodOnObject.TabIndex = 2;
-            this.checkBoxShowOverlayStoodOnObject.Text = "Stood On Object";
-            this.checkBoxShowOverlayStoodOnObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayHeldObject
-            // 
-            this.checkBoxShowOverlayHeldObject.AutoSize = true;
-            this.checkBoxShowOverlayHeldObject.Checked = true;
-            this.checkBoxShowOverlayHeldObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayHeldObject.Location = new System.Drawing.Point(5, 20);
-            this.checkBoxShowOverlayHeldObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayHeldObject.Name = "checkBoxShowOverlayHeldObject";
-            this.checkBoxShowOverlayHeldObject.Size = new System.Drawing.Size(82, 17);
-            this.checkBoxShowOverlayHeldObject.TabIndex = 1;
-            this.checkBoxShowOverlayHeldObject.Text = "Held Object";
-            this.checkBoxShowOverlayHeldObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxScaleDiagonalPositionControllerButtons
-            // 
-            this.checkBoxScaleDiagonalPositionControllerButtons.AutoSize = true;
-            this.checkBoxScaleDiagonalPositionControllerButtons.Location = new System.Drawing.Point(3, 45);
-            this.checkBoxScaleDiagonalPositionControllerButtons.Name = "checkBoxScaleDiagonalPositionControllerButtons";
-            this.checkBoxScaleDiagonalPositionControllerButtons.Size = new System.Drawing.Size(224, 17);
-            this.checkBoxScaleDiagonalPositionControllerButtons.TabIndex = 8;
-            this.checkBoxScaleDiagonalPositionControllerButtons.Text = "Scale Diagonal Position Controller Buttons";
-            this.checkBoxScaleDiagonalPositionControllerButtons.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxNeutralizeTrianglesWith21
-            // 
-            this.checkBoxNeutralizeTrianglesWith21.AutoSize = true;
-            this.checkBoxNeutralizeTrianglesWith21.Checked = true;
-            this.checkBoxNeutralizeTrianglesWith21.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxNeutralizeTrianglesWith21.Location = new System.Drawing.Point(3, 105);
-            this.checkBoxNeutralizeTrianglesWith21.Name = "checkBoxNeutralizeTrianglesWith21";
-            this.checkBoxNeutralizeTrianglesWith21.Size = new System.Drawing.Size(156, 17);
-            this.checkBoxNeutralizeTrianglesWith21.TabIndex = 4;
-            this.checkBoxNeutralizeTrianglesWith21.Text = "Neutralize Triangles with 21";
-            this.checkBoxNeutralizeTrianglesWith21.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 154);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(129, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "*Requires Pure Interpreter";
-            // 
-            // checkBoxMoveCamWithPu
-            // 
-            this.checkBoxMoveCamWithPu.AutoSize = true;
-            this.checkBoxMoveCamWithPu.Checked = true;
-            this.checkBoxMoveCamWithPu.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMoveCamWithPu.Location = new System.Drawing.Point(3, 65);
-            this.checkBoxMoveCamWithPu.Name = "checkBoxMoveCamWithPu";
-            this.checkBoxMoveCamWithPu.Size = new System.Drawing.Size(162, 17);
-            this.checkBoxMoveCamWithPu.TabIndex = 4;
-            this.checkBoxMoveCamWithPu.Text = "PU Controller Moves Camera";
-            this.checkBoxMoveCamWithPu.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxUseRomHack
-            // 
-            this.checkBoxUseRomHack.AutoSize = true;
-            this.checkBoxUseRomHack.Location = new System.Drawing.Point(3, 5);
-            this.checkBoxUseRomHack.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxUseRomHack.Name = "checkBoxUseRomHack";
-            this.checkBoxUseRomHack.Size = new System.Drawing.Size(166, 17);
-            this.checkBoxUseRomHack.TabIndex = 2;
-            this.checkBoxUseRomHack.Text = "Enable STROOP ROM hack*";
-            this.checkBoxUseRomHack.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxStartSlotIndexOne
-            // 
-            this.checkBoxStartSlotIndexOne.AutoSize = true;
-            this.checkBoxStartSlotIndexOne.Checked = true;
-            this.checkBoxStartSlotIndexOne.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxStartSlotIndexOne.Location = new System.Drawing.Point(3, 25);
-            this.checkBoxStartSlotIndexOne.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxStartSlotIndexOne.Name = "checkBoxStartSlotIndexOne";
-            this.checkBoxStartSlotIndexOne.Size = new System.Drawing.Size(133, 17);
-            this.checkBoxStartSlotIndexOne.TabIndex = 0;
-            this.checkBoxStartSlotIndexOne.Text = "Start Slot Index From 1";
-            this.checkBoxStartSlotIndexOne.UseVisualStyleBackColor = true;
+            // tabPageCoin
+            // 
+            this.tabPageCoin.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageCoin.Controls.Add(this.splitContainerCoin);
+            this.tabPageCoin.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCoin.Name = "tabPageCoin";
+            this.tabPageCoin.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageCoin.Size = new System.Drawing.Size(915, 463);
+            this.tabPageCoin.TabIndex = 29;
+            this.tabPageCoin.Text = "Coin";
+            // 
+            // splitContainerCoin
+            // 
+            this.splitContainerCoin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerCoin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerCoin.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerCoin.Location = new System.Drawing.Point(3, 3);
+            this.splitContainerCoin.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerCoin.Name = "splitContainerCoin";
+            // 
+            // splitContainerCoin.Panel1
+            // 
+            this.splitContainerCoin.Panel1.AutoScroll = true;
+            this.splitContainerCoin.Panel1.Controls.Add(this.buttonCoinCalculate);
+            this.splitContainerCoin.Panel1.Controls.Add(this.buttonCoinClear);
+            this.splitContainerCoin.Panel1.Controls.Add(this.groupBoxCoinFilter);
+            this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinNumCoins);
+            this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinParamOrder);
+            this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinVSpeedOffset);
+            this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinVSpeedScale);
+            this.splitContainerCoin.Panel1.Controls.Add(this.textBoxCoinHSpeedScale);
+            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinNumCoins);
+            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinVSpeedRange);
+            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinParamOrder);
+            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinTableEntries);
+            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinHSpeedRange);
+            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinVSpeedOffset);
+            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinVSpeedScale);
+            this.splitContainerCoin.Panel1.Controls.Add(this.labelCoinHSpeedScale);
+            this.splitContainerCoin.Panel1.Controls.Add(this.listBoxCoinObjects);
+            this.splitContainerCoin.Panel1.Controls.Add(this.groupBoxCoinCustomization);
+            this.splitContainerCoin.Panel1MinSize = 0;
+            // 
+            // splitContainerCoin.Panel2
+            // 
+            this.splitContainerCoin.Panel2.Controls.Add(this.dataGridViewCoin);
+            this.splitContainerCoin.Panel2MinSize = 0;
+            this.splitContainerCoin.Size = new System.Drawing.Size(909, 457);
+            this.splitContainerCoin.SplitterDistance = 290;
+            this.splitContainerCoin.SplitterWidth = 1;
+            this.splitContainerCoin.TabIndex = 38;
+            // 
+            // buttonCoinCalculate
+            // 
+            this.buttonCoinCalculate.Location = new System.Drawing.Point(133, 391);
+            this.buttonCoinCalculate.Name = "buttonCoinCalculate";
+            this.buttonCoinCalculate.Size = new System.Drawing.Size(93, 23);
+            this.buttonCoinCalculate.TabIndex = 42;
+            this.buttonCoinCalculate.Text = "Calculate";
+            this.buttonCoinCalculate.UseVisualStyleBackColor = true;
+            // 
+            // buttonCoinClear
+            // 
+            this.buttonCoinClear.Location = new System.Drawing.Point(35, 391);
+            this.buttonCoinClear.Name = "buttonCoinClear";
+            this.buttonCoinClear.Size = new System.Drawing.Size(93, 23);
+            this.buttonCoinClear.TabIndex = 42;
+            this.buttonCoinClear.Text = "Clear";
+            this.buttonCoinClear.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxCoinFilter
+            // 
+            this.groupBoxCoinFilter.Controls.Add(this.textBoxCoinFilterRequiredNumOfQualifiedCoins);
+            this.groupBoxCoinFilter.Controls.Add(this.textBoxCoinFilterAngleMin);
+            this.groupBoxCoinFilter.Controls.Add(this.textBoxCoinFilterAngleMax);
+            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterHSpeedFrom);
+            this.groupBoxCoinFilter.Controls.Add(this.textBoxCoinFilterVSpeedMax);
+            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterMin);
+            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterMax);
+            this.groupBoxCoinFilter.Controls.Add(this.textBoxCoinFilterVSpeedMin);
+            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterHSpeedTo);
+            this.groupBoxCoinFilter.Controls.Add(this.textBoxCoinFilterHSpeedMax);
+            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterVSpeedFrom);
+            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterVSpeedTo);
+            this.groupBoxCoinFilter.Controls.Add(this.textBoxCoinFilterHSpeedMin);
+            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterAngleFrom);
+            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterAngleTo);
+            this.groupBoxCoinFilter.Controls.Add(this.labelCoinFilterRequiredNumOfQualifiedCoins);
+            this.groupBoxCoinFilter.Location = new System.Drawing.Point(3, 148);
+            this.groupBoxCoinFilter.Name = "groupBoxCoinFilter";
+            this.groupBoxCoinFilter.Size = new System.Drawing.Size(264, 128);
+            this.groupBoxCoinFilter.TabIndex = 41;
+            this.groupBoxCoinFilter.TabStop = false;
+            this.groupBoxCoinFilter.Text = "Filter";
+            // 
+            // textBoxCoinFilterRequiredNumOfQualifiedCoins
+            // 
+            this.textBoxCoinFilterRequiredNumOfQualifiedCoins.Location = new System.Drawing.Point(175, 100);
+            this.textBoxCoinFilterRequiredNumOfQualifiedCoins.Name = "textBoxCoinFilterRequiredNumOfQualifiedCoins";
+            this.textBoxCoinFilterRequiredNumOfQualifiedCoins.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinFilterRequiredNumOfQualifiedCoins.TabIndex = 40;
+            this.textBoxCoinFilterRequiredNumOfQualifiedCoins.Text = "1";
+            this.textBoxCoinFilterRequiredNumOfQualifiedCoins.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxCoinFilterAngleMin
+            // 
+            this.textBoxCoinFilterAngleMin.Location = new System.Drawing.Point(101, 76);
+            this.textBoxCoinFilterAngleMin.Name = "textBoxCoinFilterAngleMin";
+            this.textBoxCoinFilterAngleMin.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinFilterAngleMin.TabIndex = 38;
+            this.textBoxCoinFilterAngleMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxCoinFilterAngleMax
+            // 
+            this.textBoxCoinFilterAngleMax.Location = new System.Drawing.Point(175, 76);
+            this.textBoxCoinFilterAngleMax.Name = "textBoxCoinFilterAngleMax";
+            this.textBoxCoinFilterAngleMax.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinFilterAngleMax.TabIndex = 38;
+            this.textBoxCoinFilterAngleMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelCoinFilterHSpeedFrom
+            // 
+            this.labelCoinFilterHSpeedFrom.AutoSize = true;
+            this.labelCoinFilterHSpeedFrom.Location = new System.Drawing.Point(31, 31);
+            this.labelCoinFilterHSpeedFrom.Name = "labelCoinFilterHSpeedFrom";
+            this.labelCoinFilterHSpeedFrom.Size = new System.Drawing.Size(69, 13);
+            this.labelCoinFilterHSpeedFrom.TabIndex = 37;
+            this.labelCoinFilterHSpeedFrom.Text = "HSpeed from";
+            // 
+            // textBoxCoinFilterVSpeedMax
+            // 
+            this.textBoxCoinFilterVSpeedMax.Location = new System.Drawing.Point(175, 52);
+            this.textBoxCoinFilterVSpeedMax.Name = "textBoxCoinFilterVSpeedMax";
+            this.textBoxCoinFilterVSpeedMax.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinFilterVSpeedMax.TabIndex = 39;
+            this.textBoxCoinFilterVSpeedMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelCoinFilterMin
+            // 
+            this.labelCoinFilterMin.AutoSize = true;
+            this.labelCoinFilterMin.Location = new System.Drawing.Point(116, 12);
+            this.labelCoinFilterMin.Name = "labelCoinFilterMin";
+            this.labelCoinFilterMin.Size = new System.Drawing.Size(24, 13);
+            this.labelCoinFilterMin.TabIndex = 37;
+            this.labelCoinFilterMin.Text = "Min";
+            // 
+            // labelCoinFilterMax
+            // 
+            this.labelCoinFilterMax.AutoSize = true;
+            this.labelCoinFilterMax.Location = new System.Drawing.Point(188, 12);
+            this.labelCoinFilterMax.Name = "labelCoinFilterMax";
+            this.labelCoinFilterMax.Size = new System.Drawing.Size(27, 13);
+            this.labelCoinFilterMax.TabIndex = 37;
+            this.labelCoinFilterMax.Text = "Max";
+            // 
+            // textBoxCoinFilterVSpeedMin
+            // 
+            this.textBoxCoinFilterVSpeedMin.Location = new System.Drawing.Point(101, 52);
+            this.textBoxCoinFilterVSpeedMin.Name = "textBoxCoinFilterVSpeedMin";
+            this.textBoxCoinFilterVSpeedMin.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinFilterVSpeedMin.TabIndex = 39;
+            this.textBoxCoinFilterVSpeedMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelCoinFilterHSpeedTo
+            // 
+            this.labelCoinFilterHSpeedTo.AutoSize = true;
+            this.labelCoinFilterHSpeedTo.Location = new System.Drawing.Point(158, 31);
+            this.labelCoinFilterHSpeedTo.Name = "labelCoinFilterHSpeedTo";
+            this.labelCoinFilterHSpeedTo.Size = new System.Drawing.Size(16, 13);
+            this.labelCoinFilterHSpeedTo.TabIndex = 37;
+            this.labelCoinFilterHSpeedTo.Text = "to";
+            // 
+            // textBoxCoinFilterHSpeedMax
+            // 
+            this.textBoxCoinFilterHSpeedMax.Location = new System.Drawing.Point(175, 28);
+            this.textBoxCoinFilterHSpeedMax.Name = "textBoxCoinFilterHSpeedMax";
+            this.textBoxCoinFilterHSpeedMax.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinFilterHSpeedMax.TabIndex = 40;
+            this.textBoxCoinFilterHSpeedMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelCoinFilterVSpeedFrom
+            // 
+            this.labelCoinFilterVSpeedFrom.AutoSize = true;
+            this.labelCoinFilterVSpeedFrom.Location = new System.Drawing.Point(31, 55);
+            this.labelCoinFilterVSpeedFrom.Name = "labelCoinFilterVSpeedFrom";
+            this.labelCoinFilterVSpeedFrom.Size = new System.Drawing.Size(68, 13);
+            this.labelCoinFilterVSpeedFrom.TabIndex = 36;
+            this.labelCoinFilterVSpeedFrom.Text = "VSpeed from";
+            // 
+            // labelCoinFilterVSpeedTo
+            // 
+            this.labelCoinFilterVSpeedTo.AutoSize = true;
+            this.labelCoinFilterVSpeedTo.Location = new System.Drawing.Point(158, 55);
+            this.labelCoinFilterVSpeedTo.Name = "labelCoinFilterVSpeedTo";
+            this.labelCoinFilterVSpeedTo.Size = new System.Drawing.Size(16, 13);
+            this.labelCoinFilterVSpeedTo.TabIndex = 36;
+            this.labelCoinFilterVSpeedTo.Text = "to";
+            // 
+            // textBoxCoinFilterHSpeedMin
+            // 
+            this.textBoxCoinFilterHSpeedMin.Location = new System.Drawing.Point(101, 28);
+            this.textBoxCoinFilterHSpeedMin.Name = "textBoxCoinFilterHSpeedMin";
+            this.textBoxCoinFilterHSpeedMin.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinFilterHSpeedMin.TabIndex = 40;
+            this.textBoxCoinFilterHSpeedMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelCoinFilterAngleFrom
+            // 
+            this.labelCoinFilterAngleFrom.AutoSize = true;
+            this.labelCoinFilterAngleFrom.Location = new System.Drawing.Point(31, 79);
+            this.labelCoinFilterAngleFrom.Name = "labelCoinFilterAngleFrom";
+            this.labelCoinFilterAngleFrom.Size = new System.Drawing.Size(57, 13);
+            this.labelCoinFilterAngleFrom.TabIndex = 35;
+            this.labelCoinFilterAngleFrom.Text = "Angle from";
+            // 
+            // labelCoinFilterAngleTo
+            // 
+            this.labelCoinFilterAngleTo.AutoSize = true;
+            this.labelCoinFilterAngleTo.Location = new System.Drawing.Point(158, 79);
+            this.labelCoinFilterAngleTo.Name = "labelCoinFilterAngleTo";
+            this.labelCoinFilterAngleTo.Size = new System.Drawing.Size(16, 13);
+            this.labelCoinFilterAngleTo.TabIndex = 35;
+            this.labelCoinFilterAngleTo.Text = "to";
+            // 
+            // labelCoinFilterRequiredNumOfQualifiedCoins
+            // 
+            this.labelCoinFilterRequiredNumOfQualifiedCoins.AutoSize = true;
+            this.labelCoinFilterRequiredNumOfQualifiedCoins.Location = new System.Drawing.Point(28, 103);
+            this.labelCoinFilterRequiredNumOfQualifiedCoins.Name = "labelCoinFilterRequiredNumOfQualifiedCoins";
+            this.labelCoinFilterRequiredNumOfQualifiedCoins.Size = new System.Drawing.Size(148, 13);
+            this.labelCoinFilterRequiredNumOfQualifiedCoins.TabIndex = 37;
+            this.labelCoinFilterRequiredNumOfQualifiedCoins.Text = "Req\'d Num of Qualified Coins:";
+            // 
+            // textBoxCoinNumCoins
+            // 
+            this.textBoxCoinNumCoins.Location = new System.Drawing.Point(214, 102);
+            this.textBoxCoinNumCoins.Name = "textBoxCoinNumCoins";
+            this.textBoxCoinNumCoins.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinNumCoins.TabIndex = 38;
+            this.textBoxCoinNumCoins.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxCoinParamOrder
+            // 
+            this.textBoxCoinParamOrder.Location = new System.Drawing.Point(214, 78);
+            this.textBoxCoinParamOrder.Name = "textBoxCoinParamOrder";
+            this.textBoxCoinParamOrder.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinParamOrder.TabIndex = 38;
+            this.textBoxCoinParamOrder.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxCoinVSpeedOffset
+            // 
+            this.textBoxCoinVSpeedOffset.Location = new System.Drawing.Point(214, 54);
+            this.textBoxCoinVSpeedOffset.Name = "textBoxCoinVSpeedOffset";
+            this.textBoxCoinVSpeedOffset.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinVSpeedOffset.TabIndex = 38;
+            this.textBoxCoinVSpeedOffset.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxCoinVSpeedScale
+            // 
+            this.textBoxCoinVSpeedScale.Location = new System.Drawing.Point(214, 30);
+            this.textBoxCoinVSpeedScale.Name = "textBoxCoinVSpeedScale";
+            this.textBoxCoinVSpeedScale.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinVSpeedScale.TabIndex = 39;
+            this.textBoxCoinVSpeedScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxCoinHSpeedScale
+            // 
+            this.textBoxCoinHSpeedScale.Location = new System.Drawing.Point(214, 6);
+            this.textBoxCoinHSpeedScale.Name = "textBoxCoinHSpeedScale";
+            this.textBoxCoinHSpeedScale.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinHSpeedScale.TabIndex = 40;
+            this.textBoxCoinHSpeedScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelCoinNumCoins
+            // 
+            this.labelCoinNumCoins.AutoSize = true;
+            this.labelCoinNumCoins.Location = new System.Drawing.Point(133, 105);
+            this.labelCoinNumCoins.Name = "labelCoinNumCoins";
+            this.labelCoinNumCoins.Size = new System.Drawing.Size(61, 13);
+            this.labelCoinNumCoins.TabIndex = 35;
+            this.labelCoinNumCoins.Text = "Num Coins:";
+            // 
+            // labelCoinVSpeedRange
+            // 
+            this.labelCoinVSpeedRange.AutoSize = true;
+            this.labelCoinVSpeedRange.Location = new System.Drawing.Point(137, 130);
+            this.labelCoinVSpeedRange.Name = "labelCoinVSpeedRange";
+            this.labelCoinVSpeedRange.Size = new System.Drawing.Size(83, 13);
+            this.labelCoinVSpeedRange.TabIndex = 35;
+            this.labelCoinVSpeedRange.Text = "VSpeed Range:";
+            // 
+            // labelCoinParamOrder
+            // 
+            this.labelCoinParamOrder.AutoSize = true;
+            this.labelCoinParamOrder.Location = new System.Drawing.Point(133, 81);
+            this.labelCoinParamOrder.Name = "labelCoinParamOrder";
+            this.labelCoinParamOrder.Size = new System.Drawing.Size(69, 13);
+            this.labelCoinParamOrder.TabIndex = 35;
+            this.labelCoinParamOrder.Text = "Param Order:";
+            // 
+            // labelCoinTableEntries
+            // 
+            this.labelCoinTableEntries.AutoSize = true;
+            this.labelCoinTableEntries.Location = new System.Drawing.Point(68, 419);
+            this.labelCoinTableEntries.Name = "labelCoinTableEntries";
+            this.labelCoinTableEntries.Size = new System.Drawing.Size(72, 13);
+            this.labelCoinTableEntries.TabIndex = 35;
+            this.labelCoinTableEntries.Text = "Table Entries:";
+            // 
+            // labelCoinHSpeedRange
+            // 
+            this.labelCoinHSpeedRange.AutoSize = true;
+            this.labelCoinHSpeedRange.Location = new System.Drawing.Point(5, 130);
+            this.labelCoinHSpeedRange.Name = "labelCoinHSpeedRange";
+            this.labelCoinHSpeedRange.Size = new System.Drawing.Size(84, 13);
+            this.labelCoinHSpeedRange.TabIndex = 35;
+            this.labelCoinHSpeedRange.Text = "HSpeed Range:";
+            // 
+            // labelCoinVSpeedOffset
+            // 
+            this.labelCoinVSpeedOffset.AutoSize = true;
+            this.labelCoinVSpeedOffset.Location = new System.Drawing.Point(133, 57);
+            this.labelCoinVSpeedOffset.Name = "labelCoinVSpeedOffset";
+            this.labelCoinVSpeedOffset.Size = new System.Drawing.Size(79, 13);
+            this.labelCoinVSpeedOffset.TabIndex = 35;
+            this.labelCoinVSpeedOffset.Text = "VSpeed Offset:";
+            // 
+            // labelCoinVSpeedScale
+            // 
+            this.labelCoinVSpeedScale.AutoSize = true;
+            this.labelCoinVSpeedScale.Location = new System.Drawing.Point(133, 33);
+            this.labelCoinVSpeedScale.Name = "labelCoinVSpeedScale";
+            this.labelCoinVSpeedScale.Size = new System.Drawing.Size(78, 13);
+            this.labelCoinVSpeedScale.TabIndex = 36;
+            this.labelCoinVSpeedScale.Text = "VSpeed Scale:";
+            // 
+            // labelCoinHSpeedScale
+            // 
+            this.labelCoinHSpeedScale.AutoSize = true;
+            this.labelCoinHSpeedScale.Location = new System.Drawing.Point(133, 9);
+            this.labelCoinHSpeedScale.Name = "labelCoinHSpeedScale";
+            this.labelCoinHSpeedScale.Size = new System.Drawing.Size(79, 13);
+            this.labelCoinHSpeedScale.TabIndex = 37;
+            this.labelCoinHSpeedScale.Text = "HSpeed Scale:";
+            // 
+            // listBoxCoinObjects
+            // 
+            this.listBoxCoinObjects.FormattingEnabled = true;
+            this.listBoxCoinObjects.Location = new System.Drawing.Point(3, 3);
+            this.listBoxCoinObjects.Name = "listBoxCoinObjects";
+            this.listBoxCoinObjects.Size = new System.Drawing.Size(125, 121);
+            this.listBoxCoinObjects.TabIndex = 17;
+            // 
+            // groupBoxCoinCustomization
+            // 
+            this.groupBoxCoinCustomization.Controls.Add(this.checkBoxCoinCustomizatonDisplayNonQualifiedCoinsOfAQualifiedCoinGroup);
+            this.groupBoxCoinCustomization.Controls.Add(this.textBoxCoinCustomizatonStartingRngIndex);
+            this.groupBoxCoinCustomization.Controls.Add(this.labelCoinCustomizatonNumDecimalDigits);
+            this.groupBoxCoinCustomization.Controls.Add(this.labelCoinCustomizatonStartingRngIndex);
+            this.groupBoxCoinCustomization.Controls.Add(this.textBoxCoinCustomizatonNumDecimalDigits);
+            this.groupBoxCoinCustomization.Location = new System.Drawing.Point(3, 279);
+            this.groupBoxCoinCustomization.Name = "groupBoxCoinCustomization";
+            this.groupBoxCoinCustomization.Size = new System.Drawing.Size(264, 103);
+            this.groupBoxCoinCustomization.TabIndex = 41;
+            this.groupBoxCoinCustomization.TabStop = false;
+            this.groupBoxCoinCustomization.Text = "Customizaton";
+            // 
+            // checkBoxCoinCustomizatonDisplayNonQualifiedCoinsOfAQualifiedCoinGroup
+            // 
+            this.checkBoxCoinCustomizatonDisplayNonQualifiedCoinsOfAQualifiedCoinGroup.AutoSize = true;
+            this.checkBoxCoinCustomizatonDisplayNonQualifiedCoinsOfAQualifiedCoinGroup.Checked = true;
+            this.checkBoxCoinCustomizatonDisplayNonQualifiedCoinsOfAQualifiedCoinGroup.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxCoinCustomizatonDisplayNonQualifiedCoinsOfAQualifiedCoinGroup.Location = new System.Drawing.Point(52, 17);
+            this.checkBoxCoinCustomizatonDisplayNonQualifiedCoinsOfAQualifiedCoinGroup.Name = "checkBoxCoinCustomizatonDisplayNonQualifiedCoinsOfAQualifiedCoinGroup";
+            this.checkBoxCoinCustomizatonDisplayNonQualifiedCoinsOfAQualifiedCoinGroup.Size = new System.Drawing.Size(156, 30);
+            this.checkBoxCoinCustomizatonDisplayNonQualifiedCoinsOfAQualifiedCoinGroup.TabIndex = 43;
+            this.checkBoxCoinCustomizatonDisplayNonQualifiedCoinsOfAQualifiedCoinGroup.Text = "Display Non-Qualified Coins\r\nof a Qualified Coin Group";
+            this.checkBoxCoinCustomizatonDisplayNonQualifiedCoinsOfAQualifiedCoinGroup.UseVisualStyleBackColor = true;
+            // 
+            // textBoxCoinCustomizatonStartingRngIndex
+            // 
+            this.textBoxCoinCustomizatonStartingRngIndex.Location = new System.Drawing.Point(155, 74);
+            this.textBoxCoinCustomizatonStartingRngIndex.Name = "textBoxCoinCustomizatonStartingRngIndex";
+            this.textBoxCoinCustomizatonStartingRngIndex.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinCustomizatonStartingRngIndex.TabIndex = 40;
+            this.textBoxCoinCustomizatonStartingRngIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelCoinCustomizatonNumDecimalDigits
+            // 
+            this.labelCoinCustomizatonNumDecimalDigits.AutoSize = true;
+            this.labelCoinCustomizatonNumDecimalDigits.Location = new System.Drawing.Point(51, 53);
+            this.labelCoinCustomizatonNumDecimalDigits.Name = "labelCoinCustomizatonNumDecimalDigits";
+            this.labelCoinCustomizatonNumDecimalDigits.Size = new System.Drawing.Size(102, 13);
+            this.labelCoinCustomizatonNumDecimalDigits.TabIndex = 37;
+            this.labelCoinCustomizatonNumDecimalDigits.Text = "Num Decimal Digits:";
+            // 
+            // labelCoinCustomizatonStartingRngIndex
+            // 
+            this.labelCoinCustomizatonStartingRngIndex.AutoSize = true;
+            this.labelCoinCustomizatonStartingRngIndex.Location = new System.Drawing.Point(51, 77);
+            this.labelCoinCustomizatonStartingRngIndex.Name = "labelCoinCustomizatonStartingRngIndex";
+            this.labelCoinCustomizatonStartingRngIndex.Size = new System.Drawing.Size(102, 13);
+            this.labelCoinCustomizatonStartingRngIndex.TabIndex = 37;
+            this.labelCoinCustomizatonStartingRngIndex.Text = "Starting RNG Index:";
+            // 
+            // textBoxCoinCustomizatonNumDecimalDigits
+            // 
+            this.textBoxCoinCustomizatonNumDecimalDigits.Location = new System.Drawing.Point(155, 50);
+            this.textBoxCoinCustomizatonNumDecimalDigits.Name = "textBoxCoinCustomizatonNumDecimalDigits";
+            this.textBoxCoinCustomizatonNumDecimalDigits.Size = new System.Drawing.Size(53, 20);
+            this.textBoxCoinCustomizatonNumDecimalDigits.TabIndex = 40;
+            this.textBoxCoinCustomizatonNumDecimalDigits.Text = "3";
+            this.textBoxCoinCustomizatonNumDecimalDigits.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // dataGridViewCoin
+            // 
+            this.dataGridViewCoin.AllowUserToAddRows = false;
+            this.dataGridViewCoin.AllowUserToDeleteRows = false;
+            this.dataGridViewCoin.AllowUserToOrderColumns = true;
+            this.dataGridViewCoin.AllowUserToResizeRows = false;
+            this.dataGridViewCoin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            this.dataGridViewCoin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCoin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.rngIndex,
+            this.rngValue,
+            this.rngToGo,
+            this.coinHSpeed,
+            this.coinVSpeed,
+            this.coinAngle});
+            this.dataGridViewCoin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewCoin.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewCoin.Margin = new System.Windows.Forms.Padding(0);
+            this.dataGridViewCoin.MultiSelect = false;
+            this.dataGridViewCoin.Name = "dataGridViewCoin";
+            this.dataGridViewCoin.ReadOnly = true;
+            this.dataGridViewCoin.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewCoin.Size = new System.Drawing.Size(616, 455);
+            this.dataGridViewCoin.TabIndex = 3;
+            // 
+            // rngIndex
+            // 
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle22;
+            this.rngIndex.HeaderText = "RNG Index";
+            this.rngIndex.MinimumWidth = 2;
+            this.rngIndex.Name = "rngIndex";
+            this.rngIndex.ReadOnly = true;
+            // 
+            // rngValue
+            // 
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngValue.DefaultCellStyle = dataGridViewCellStyle23;
+            this.rngValue.HeaderText = "RNG Value";
+            this.rngValue.MinimumWidth = 2;
+            this.rngValue.Name = "rngValue";
+            this.rngValue.ReadOnly = true;
+            // 
+            // rngToGo
+            // 
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle24;
+            this.rngToGo.HeaderText = "RNG To Go";
+            this.rngToGo.MinimumWidth = 2;
+            this.rngToGo.Name = "rngToGo";
+            this.rngToGo.ReadOnly = true;
+            // 
+            // coinHSpeed
+            // 
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle25;
+            this.coinHSpeed.HeaderText = "Coin HSpeed";
+            this.coinHSpeed.Name = "coinHSpeed";
+            this.coinHSpeed.ReadOnly = true;
+            // 
+            // coinVSpeed
+            // 
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle26;
+            this.coinVSpeed.HeaderText = "Coin VSpeed";
+            this.coinVSpeed.Name = "coinVSpeed";
+            this.coinVSpeed.ReadOnly = true;
+            // 
+            // coinAngle
+            // 
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle27;
+            this.coinAngle.HeaderText = "Coin Angle";
+            this.coinAngle.MinimumWidth = 2;
+            this.coinAngle.Name = "coinAngle";
+            this.coinAngle.ReadOnly = true;
+            // 
+            // tabPageDisassembly
+            // 
+            this.tabPageDisassembly.BackColor = System.Drawing.Color.Transparent;
+            this.tabPageDisassembly.Controls.Add(this.textBoxDisAddress);
+            this.tabPageDisassembly.Controls.Add(this.buttonDisMore);
+            this.tabPageDisassembly.Controls.Add(this.buttonDisGo);
+            this.tabPageDisassembly.Controls.Add(this.labelDisStart);
+            this.tabPageDisassembly.Controls.Add(this.richTextBoxDissasembly);
+            this.tabPageDisassembly.Location = new System.Drawing.Point(4, 22);
+            this.tabPageDisassembly.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPageDisassembly.Name = "tabPageDisassembly";
+            this.tabPageDisassembly.Size = new System.Drawing.Size(915, 463);
+            this.tabPageDisassembly.TabIndex = 3;
+            this.tabPageDisassembly.Text = "Disassembly";
+            // 
+            // textBoxDisAddress
+            // 
+            this.textBoxDisAddress.Location = new System.Drawing.Point(73, 3);
+            this.textBoxDisAddress.Name = "textBoxDisAddress";
+            this.textBoxDisAddress.Size = new System.Drawing.Size(93, 20);
+            this.textBoxDisAddress.TabIndex = 7;
+            // 
+            // buttonDisMore
+            // 
+            this.buttonDisMore.Location = new System.Drawing.Point(237, 2);
+            this.buttonDisMore.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDisMore.Name = "buttonDisMore";
+            this.buttonDisMore.Size = new System.Drawing.Size(50, 20);
+            this.buttonDisMore.TabIndex = 6;
+            this.buttonDisMore.Text = "More";
+            this.buttonDisMore.UseVisualStyleBackColor = true;
+            this.buttonDisMore.Visible = false;
+            // 
+            // buttonDisGo
+            // 
+            this.buttonDisGo.Location = new System.Drawing.Point(171, 2);
+            this.buttonDisGo.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDisGo.Name = "buttonDisGo";
+            this.buttonDisGo.Size = new System.Drawing.Size(62, 20);
+            this.buttonDisGo.TabIndex = 5;
+            this.buttonDisGo.Text = "Go";
+            this.buttonDisGo.UseVisualStyleBackColor = true;
+            // 
+            // labelDisStart
+            // 
+            this.labelDisStart.AutoSize = true;
+            this.labelDisStart.Location = new System.Drawing.Point(2, 6);
+            this.labelDisStart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelDisStart.Name = "labelDisStart";
+            this.labelDisStart.Size = new System.Drawing.Size(73, 13);
+            this.labelDisStart.TabIndex = 3;
+            this.labelDisStart.Text = "Start Address:";
+            // 
+            // richTextBoxDissasembly
+            // 
+            this.richTextBoxDissasembly.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBoxDissasembly.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxDissasembly.Location = new System.Drawing.Point(3, 26);
+            this.richTextBoxDissasembly.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBoxDissasembly.Name = "richTextBoxDissasembly";
+            this.richTextBoxDissasembly.ReadOnly = true;
+            this.richTextBoxDissasembly.Size = new System.Drawing.Size(910, 435);
+            this.richTextBoxDissasembly.TabIndex = 0;
+            this.richTextBoxDissasembly.Text = "";
+            // 
+            // tabPageDecompiler
+            // 
+            this.tabPageDecompiler.Controls.Add(this.buttonDecompilerBack);
+            this.tabPageDecompiler.Controls.Add(this.buttonDecompilerNext);
+            this.tabPageDecompiler.Controls.Add(this.textBoxDecompilerAddress);
+            this.tabPageDecompiler.Controls.Add(this.buttonDecompilerDecompile);
+            this.tabPageDecompiler.Controls.Add(this.labelDecompilerAddress);
+            this.tabPageDecompiler.Controls.Add(this.splitContainerDecompiler);
+            this.tabPageDecompiler.Location = new System.Drawing.Point(4, 22);
+            this.tabPageDecompiler.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageDecompiler.Name = "tabPageDecompiler";
+            this.tabPageDecompiler.Size = new System.Drawing.Size(915, 463);
+            this.tabPageDecompiler.TabIndex = 23;
+            this.tabPageDecompiler.Text = "Decompiler";
+            // 
+            // buttonDecompilerBack
+            // 
+            this.buttonDecompilerBack.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonDecompilerBack.BackgroundImage = global::STROOP.Properties.Resources.img_arrow_left;
+            this.buttonDecompilerBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonDecompilerBack.Location = new System.Drawing.Point(220, 1);
+            this.buttonDecompilerBack.Name = "buttonDecompilerBack";
+            this.buttonDecompilerBack.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
+            this.buttonDecompilerBack.Size = new System.Drawing.Size(25, 25);
+            this.buttonDecompilerBack.TabIndex = 13;
+            this.buttonDecompilerBack.UseVisualStyleBackColor = true;
+            // 
+            // buttonDecompilerNext
+            // 
+            this.buttonDecompilerNext.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonDecompilerNext.BackgroundImage = global::STROOP.Properties.Resources.img_arrow_right;
+            this.buttonDecompilerNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonDecompilerNext.Location = new System.Drawing.Point(251, 1);
+            this.buttonDecompilerNext.Name = "buttonDecompilerNext";
+            this.buttonDecompilerNext.Padding = new System.Windows.Forms.Padding(1, 1, 0, 0);
+            this.buttonDecompilerNext.Size = new System.Drawing.Size(25, 25);
+            this.buttonDecompilerNext.TabIndex = 12;
+            this.buttonDecompilerNext.UseVisualStyleBackColor = true;
+            // 
+            // textBoxDecompilerAddress
+            // 
+            this.textBoxDecompilerAddress.Location = new System.Drawing.Point(55, 3);
+            this.textBoxDecompilerAddress.Name = "textBoxDecompilerAddress";
+            this.textBoxDecompilerAddress.Size = new System.Drawing.Size(93, 20);
+            this.textBoxDecompilerAddress.TabIndex = 10;
+            // 
+            // buttonDecompilerDecompile
+            // 
+            this.buttonDecompilerDecompile.Location = new System.Drawing.Point(153, 3);
+            this.buttonDecompilerDecompile.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDecompilerDecompile.Name = "buttonDecompilerDecompile";
+            this.buttonDecompilerDecompile.Size = new System.Drawing.Size(62, 20);
+            this.buttonDecompilerDecompile.TabIndex = 9;
+            this.buttonDecompilerDecompile.Text = "Go";
+            this.buttonDecompilerDecompile.UseVisualStyleBackColor = true;
+            // 
+            // labelDecompilerAddress
+            // 
+            this.labelDecompilerAddress.AutoSize = true;
+            this.labelDecompilerAddress.Location = new System.Drawing.Point(-1, 3);
+            this.labelDecompilerAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelDecompilerAddress.Name = "labelDecompilerAddress";
+            this.labelDecompilerAddress.Size = new System.Drawing.Size(48, 13);
+            this.labelDecompilerAddress.TabIndex = 8;
+            this.labelDecompilerAddress.Text = "Address:";
+            // 
+            // splitContainerDecompiler
+            // 
+            this.splitContainerDecompiler.Location = new System.Drawing.Point(6, 27);
+            this.splitContainerDecompiler.Name = "splitContainerDecompiler";
+            // 
+            // splitContainerDecompiler.Panel1
+            // 
+            this.splitContainerDecompiler.Panel1.Controls.Add(this.treeViewDecompile);
+            // 
+            // splitContainerDecompiler.Panel2
+            // 
+            this.splitContainerDecompiler.Panel2.Controls.Add(this.decompilerViewHost);
+            this.splitContainerDecompiler.Size = new System.Drawing.Size(903, 430);
+            this.splitContainerDecompiler.SplitterDistance = 301;
+            this.splitContainerDecompiler.TabIndex = 1;
+            // 
+            // treeViewDecompile
+            // 
+            this.treeViewDecompile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewDecompile.Location = new System.Drawing.Point(0, 0);
+            this.treeViewDecompile.Name = "treeViewDecompile";
+            this.treeViewDecompile.Size = new System.Drawing.Size(301, 430);
+            this.treeViewDecompile.TabIndex = 0;
+            // 
+            // decompilerViewHost
+            // 
+            this.decompilerViewHost.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.decompilerViewHost.Location = new System.Drawing.Point(3, 3);
+            this.decompilerViewHost.Name = "decompilerViewHost";
+            this.decompilerViewHost.Size = new System.Drawing.Size(592, 424);
+            this.decompilerViewHost.TabIndex = 0;
+            this.decompilerViewHost.Text = "elementHost1";
+            this.decompilerViewHost.Child = this.decompilerView;
+            // 
+            // tabPageScripts
+            // 
+            this.tabPageScripts.Controls.Add(this.buttonScriptGo);
+            this.tabPageScripts.Controls.Add(this.textBoxScriptAddress);
+            this.tabPageScripts.Controls.Add(this.labelScriptAddress);
+            this.tabPageScripts.Controls.Add(this.richTextBoxExScript);
+            this.tabPageScripts.Location = new System.Drawing.Point(4, 22);
+            this.tabPageScripts.Name = "tabPageScripts";
+            this.tabPageScripts.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageScripts.Size = new System.Drawing.Size(915, 463);
+            this.tabPageScripts.TabIndex = 20;
+            this.tabPageScripts.Text = "Scripts";
+            // 
+            // buttonScriptGo
+            // 
+            this.buttonScriptGo.Location = new System.Drawing.Point(178, 5);
+            this.buttonScriptGo.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonScriptGo.Name = "buttonScriptGo";
+            this.buttonScriptGo.Size = new System.Drawing.Size(62, 20);
+            this.buttonScriptGo.TabIndex = 7;
+            this.buttonScriptGo.Text = "Go";
+            this.buttonScriptGo.UseVisualStyleBackColor = true;
+            // 
+            // textBoxScriptAddress
+            // 
+            this.textBoxScriptAddress.Location = new System.Drawing.Point(73, 6);
+            this.textBoxScriptAddress.Name = "textBoxScriptAddress";
+            this.textBoxScriptAddress.Size = new System.Drawing.Size(100, 20);
+            this.textBoxScriptAddress.TabIndex = 6;
+            // 
+            // labelScriptAddress
+            // 
+            this.labelScriptAddress.AutoSize = true;
+            this.labelScriptAddress.Location = new System.Drawing.Point(2, 9);
+            this.labelScriptAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelScriptAddress.Name = "labelScriptAddress";
+            this.labelScriptAddress.Size = new System.Drawing.Size(73, 13);
+            this.labelScriptAddress.TabIndex = 5;
+            this.labelScriptAddress.Text = "Start Address:";
+            // 
+            // richTextBoxExScript
+            // 
+            this.richTextBoxExScript.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBoxExScript.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxExScript.Location = new System.Drawing.Point(2, 31);
+            this.richTextBoxExScript.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBoxExScript.Name = "richTextBoxExScript";
+            this.richTextBoxExScript.ReadOnly = true;
+            this.richTextBoxExScript.Size = new System.Drawing.Size(908, 430);
+            this.richTextBoxExScript.TabIndex = 1;
+            this.richTextBoxExScript.Text = "";
             // 
             // tabPageTesting
             // 
@@ -12122,6 +15159,7 @@ namespace STROOP
             this.tabPageTesting.Controls.Add(this.groupBoxSchedule);
             this.tabPageTesting.Controls.Add(this.groupBoxStateTransfer);
             this.tabPageTesting.Controls.Add(this.groupBoxControlStick);
+            this.tabPageTesting.Controls.Add(this.groupBoxMemoryReader);
             this.tabPageTesting.Controls.Add(this.groupBoxObjAtObj);
             this.tabPageTesting.Controls.Add(this.groupBoxObjAtHome);
             this.tabPageTesting.Controls.Add(this.groupBoxObjAtHOLP);
@@ -12133,6 +15171,70 @@ namespace STROOP
             this.tabPageTesting.Size = new System.Drawing.Size(915, 463);
             this.tabPageTesting.TabIndex = 19;
             this.tabPageTesting.Text = "Testing";
+            // 
+            // groupBoxTriRooms
+            // 
+            this.groupBoxTriRooms.Controls.Add(this.textBoxTriRoomsToValue);
+            this.groupBoxTriRooms.Controls.Add(this.textBoxTriRoomsFromValue);
+            this.groupBoxTriRooms.Controls.Add(this.buttonTriRoomsConvert);
+            this.groupBoxTriRooms.Controls.Add(this.labelTriRoomsToLabel);
+            this.groupBoxTriRooms.Controls.Add(this.labelTriRoomsFromLabel);
+            this.groupBoxTriRooms.Location = new System.Drawing.Point(760, 259);
+            this.groupBoxTriRooms.Name = "groupBoxTriRooms";
+            this.groupBoxTriRooms.Size = new System.Drawing.Size(116, 99);
+            this.groupBoxTriRooms.TabIndex = 44;
+            this.groupBoxTriRooms.TabStop = false;
+            this.groupBoxTriRooms.Text = "Tri Rooms";
+            // 
+            // textBoxTriRoomsToValue
+            // 
+            this.textBoxTriRoomsToValue.Location = new System.Drawing.Point(40, 42);
+            this.textBoxTriRoomsToValue.Name = "textBoxTriRoomsToValue";
+            this.textBoxTriRoomsToValue.Size = new System.Drawing.Size(67, 20);
+            this.textBoxTriRoomsToValue.TabIndex = 28;
+            this.textBoxTriRoomsToValue.Text = "2";
+            this.textBoxTriRoomsToValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxTriRoomsFromValue
+            // 
+            this.textBoxTriRoomsFromValue.Location = new System.Drawing.Point(40, 16);
+            this.textBoxTriRoomsFromValue.Name = "textBoxTriRoomsFromValue";
+            this.textBoxTriRoomsFromValue.Size = new System.Drawing.Size(67, 20);
+            this.textBoxTriRoomsFromValue.TabIndex = 28;
+            this.textBoxTriRoomsFromValue.Text = "1";
+            this.textBoxTriRoomsFromValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonTriRoomsConvert
+            // 
+            this.buttonTriRoomsConvert.Location = new System.Drawing.Point(12, 67);
+            this.buttonTriRoomsConvert.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTriRoomsConvert.Name = "buttonTriRoomsConvert";
+            this.buttonTriRoomsConvert.Size = new System.Drawing.Size(95, 23);
+            this.buttonTriRoomsConvert.TabIndex = 16;
+            this.buttonTriRoomsConvert.Text = "Convert";
+            this.buttonTriRoomsConvert.UseVisualStyleBackColor = true;
+            // 
+            // labelTriRoomsToLabel
+            // 
+            this.labelTriRoomsToLabel.AutoSize = true;
+            this.labelTriRoomsToLabel.Location = new System.Drawing.Point(8, 45);
+            this.labelTriRoomsToLabel.MinimumSize = new System.Drawing.Size(20, 2);
+            this.labelTriRoomsToLabel.Name = "labelTriRoomsToLabel";
+            this.labelTriRoomsToLabel.Size = new System.Drawing.Size(23, 13);
+            this.labelTriRoomsToLabel.TabIndex = 18;
+            this.labelTriRoomsToLabel.Text = "To:";
+            this.labelTriRoomsToLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelTriRoomsFromLabel
+            // 
+            this.labelTriRoomsFromLabel.AutoSize = true;
+            this.labelTriRoomsFromLabel.Location = new System.Drawing.Point(8, 19);
+            this.labelTriRoomsFromLabel.MinimumSize = new System.Drawing.Size(20, 2);
+            this.labelTriRoomsFromLabel.Name = "labelTriRoomsFromLabel";
+            this.labelTriRoomsFromLabel.Size = new System.Drawing.Size(33, 13);
+            this.labelTriRoomsFromLabel.TabIndex = 18;
+            this.labelTriRoomsFromLabel.Text = "From:";
+            this.labelTriRoomsFromLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // groupBoxScuttlebugStuff
             // 
@@ -12277,7 +15379,7 @@ namespace STROOP
             this.groupBoxSchedule.Controls.Add(this.labelSchedule5);
             this.groupBoxSchedule.Controls.Add(this.labelSchedule7);
             this.groupBoxSchedule.Controls.Add(this.labelSchedule6);
-            this.groupBoxSchedule.Location = new System.Drawing.Point(610, 364);
+            this.groupBoxSchedule.Location = new System.Drawing.Point(610, 409);
             this.groupBoxSchedule.Name = "groupBoxSchedule";
             this.groupBoxSchedule.Size = new System.Drawing.Size(283, 168);
             this.groupBoxSchedule.TabIndex = 42;
@@ -13223,6 +16325,93 @@ namespace STROOP
             this.labelControlStick4.Text = "Value";
             this.labelControlStick4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // groupBoxMemoryReader
+            // 
+            this.groupBoxMemoryReader.Controls.Add(this.comboBoxMemoryReaderTypeValue);
+            this.groupBoxMemoryReader.Controls.Add(this.textBoxMemoryReaderCountValue);
+            this.groupBoxMemoryReader.Controls.Add(this.buttonMemoryReaderRead);
+            this.groupBoxMemoryReader.Controls.Add(this.labelMemoryReaderCountLabel);
+            this.groupBoxMemoryReader.Controls.Add(this.textBoxMemoryReaderAddressValue);
+            this.groupBoxMemoryReader.Controls.Add(this.labelMemoryReaderAddressLabel);
+            this.groupBoxMemoryReader.Controls.Add(this.labelMemoryReaderTypeLabel);
+            this.groupBoxMemoryReader.Location = new System.Drawing.Point(610, 278);
+            this.groupBoxMemoryReader.Name = "groupBoxMemoryReader";
+            this.groupBoxMemoryReader.Size = new System.Drawing.Size(144, 125);
+            this.groupBoxMemoryReader.TabIndex = 40;
+            this.groupBoxMemoryReader.TabStop = false;
+            this.groupBoxMemoryReader.Text = "Memory Reader";
+            // 
+            // comboBoxMemoryReaderTypeValue
+            // 
+            this.comboBoxMemoryReaderTypeValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxMemoryReaderTypeValue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMemoryReaderTypeValue.Location = new System.Drawing.Point(50, 22);
+            this.comboBoxMemoryReaderTypeValue.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxMemoryReaderTypeValue.Name = "comboBoxMemoryReaderTypeValue";
+            this.comboBoxMemoryReaderTypeValue.Size = new System.Drawing.Size(78, 21);
+            this.comboBoxMemoryReaderTypeValue.TabIndex = 29;
+            // 
+            // textBoxMemoryReaderCountValue
+            // 
+            this.textBoxMemoryReaderCountValue.Location = new System.Drawing.Point(50, 67);
+            this.textBoxMemoryReaderCountValue.Name = "textBoxMemoryReaderCountValue";
+            this.textBoxMemoryReaderCountValue.Size = new System.Drawing.Size(78, 20);
+            this.textBoxMemoryReaderCountValue.TabIndex = 28;
+            this.textBoxMemoryReaderCountValue.Text = "100";
+            this.textBoxMemoryReaderCountValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonMemoryReaderRead
+            // 
+            this.buttonMemoryReaderRead.Location = new System.Drawing.Point(14, 92);
+            this.buttonMemoryReaderRead.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonMemoryReaderRead.Name = "buttonMemoryReaderRead";
+            this.buttonMemoryReaderRead.Size = new System.Drawing.Size(117, 23);
+            this.buttonMemoryReaderRead.TabIndex = 16;
+            this.buttonMemoryReaderRead.Text = "Read";
+            this.buttonMemoryReaderRead.UseVisualStyleBackColor = true;
+            // 
+            // labelMemoryReaderCountLabel
+            // 
+            this.labelMemoryReaderCountLabel.AutoSize = true;
+            this.labelMemoryReaderCountLabel.Location = new System.Drawing.Point(14, 70);
+            this.labelMemoryReaderCountLabel.MinimumSize = new System.Drawing.Size(20, 2);
+            this.labelMemoryReaderCountLabel.Name = "labelMemoryReaderCountLabel";
+            this.labelMemoryReaderCountLabel.Size = new System.Drawing.Size(38, 13);
+            this.labelMemoryReaderCountLabel.TabIndex = 18;
+            this.labelMemoryReaderCountLabel.Text = "Count:";
+            this.labelMemoryReaderCountLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // textBoxMemoryReaderAddressValue
+            // 
+            this.textBoxMemoryReaderAddressValue.Location = new System.Drawing.Point(50, 45);
+            this.textBoxMemoryReaderAddressValue.Name = "textBoxMemoryReaderAddressValue";
+            this.textBoxMemoryReaderAddressValue.Size = new System.Drawing.Size(78, 20);
+            this.textBoxMemoryReaderAddressValue.TabIndex = 28;
+            this.textBoxMemoryReaderAddressValue.Text = "0x8018E650";
+            this.textBoxMemoryReaderAddressValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelMemoryReaderAddressLabel
+            // 
+            this.labelMemoryReaderAddressLabel.AutoSize = true;
+            this.labelMemoryReaderAddressLabel.Location = new System.Drawing.Point(14, 48);
+            this.labelMemoryReaderAddressLabel.MinimumSize = new System.Drawing.Size(20, 2);
+            this.labelMemoryReaderAddressLabel.Name = "labelMemoryReaderAddressLabel";
+            this.labelMemoryReaderAddressLabel.Size = new System.Drawing.Size(32, 13);
+            this.labelMemoryReaderAddressLabel.TabIndex = 18;
+            this.labelMemoryReaderAddressLabel.Text = "Addr:";
+            this.labelMemoryReaderAddressLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelMemoryReaderTypeLabel
+            // 
+            this.labelMemoryReaderTypeLabel.AutoSize = true;
+            this.labelMemoryReaderTypeLabel.Location = new System.Drawing.Point(14, 24);
+            this.labelMemoryReaderTypeLabel.MinimumSize = new System.Drawing.Size(20, 2);
+            this.labelMemoryReaderTypeLabel.Name = "labelMemoryReaderTypeLabel";
+            this.labelMemoryReaderTypeLabel.Size = new System.Drawing.Size(34, 13);
+            this.labelMemoryReaderTypeLabel.TabIndex = 18;
+            this.labelMemoryReaderTypeLabel.Text = "Type:";
+            this.labelMemoryReaderTypeLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // groupBoxObjAtObj
             // 
             this.groupBoxObjAtObj.Controls.Add(this.checkBoxObjAtObjOn);
@@ -13717,256 +16906,123 @@ namespace STROOP
             this.labelMetric4Value.Text = "Value";
             this.labelMetric4Value.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // labelVersionNumber
+            // groupBoxObjects
             // 
-            this.labelVersionNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelVersionNumber.AutoSize = true;
-            this.labelVersionNumber.Location = new System.Drawing.Point(894, 15);
-            this.labelVersionNumber.Name = "labelVersionNumber";
-            this.labelVersionNumber.Size = new System.Drawing.Size(41, 13);
-            this.labelVersionNumber.TabIndex = 5;
-            this.labelVersionNumber.Text = "version";
-            this.labelVersionNumber.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.groupBoxObjects.Controls.Add(this.comboBoxLabelMethod);
+            this.groupBoxObjects.Controls.Add(this.labelLabelMethod);
+            this.groupBoxObjects.Controls.Add(this.labelSlotSize);
+            this.groupBoxObjects.Controls.Add(this.checkBoxObjLockLabels);
+            this.groupBoxObjects.Controls.Add(this.labelSortMethod);
+            this.groupBoxObjects.Controls.Add(this.WatchVariablePanelObjects);
+            this.groupBoxObjects.Controls.Add(this.comboBoxSortMethod);
+            this.groupBoxObjects.Controls.Add(this.trackBarObjSlotSize);
+            this.groupBoxObjects.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxObjects.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBoxObjects.Name = "groupBoxObjects";
+            this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBoxObjects.Size = new System.Drawing.Size(927, 204);
+            this.groupBoxObjects.TabIndex = 2;
+            this.groupBoxObjects.TabStop = false;
+            this.groupBoxObjects.Text = "Objects";
             // 
-            // buttonDisconnect
+            // comboBoxLabelMethod
             // 
-            this.buttonDisconnect.Location = new System.Drawing.Point(11, 11);
-            this.buttonDisconnect.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonDisconnect.Name = "buttonDisconnect";
-            this.buttonDisconnect.Size = new System.Drawing.Size(72, 21);
-            this.buttonDisconnect.TabIndex = 17;
-            this.buttonDisconnect.Text = "Disconnect";
-            this.buttonDisconnect.UseVisualStyleBackColor = true;
-            this.buttonDisconnect.Click += new System.EventHandler(this.buttonDisconnect_Click);
+            this.comboBoxLabelMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxLabelMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxLabelMethod.Location = new System.Drawing.Point(645, 15);
+            this.comboBoxLabelMethod.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxLabelMethod.Name = "comboBoxLabelMethod";
+            this.comboBoxLabelMethod.Size = new System.Drawing.Size(102, 21);
+            this.comboBoxLabelMethod.TabIndex = 13;
             // 
-            // panelConnect
+            // labelLabelMethod
             // 
-            this.panelConnect.Controls.Add(this.buttonRefreshAndConnect);
-            this.panelConnect.Controls.Add(this.buttonRefresh);
-            this.panelConnect.Controls.Add(this.labelNotConnected);
-            this.panelConnect.Controls.Add(this.buttonConnect);
-            this.panelConnect.Controls.Add(this.listBoxProcessesList);
-            this.panelConnect.Location = new System.Drawing.Point(246, 12);
-            this.panelConnect.Name = "panelConnect";
-            this.panelConnect.Size = new System.Drawing.Size(441, 20);
-            this.panelConnect.TabIndex = 17;
+            this.labelLabelMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelLabelMethod.AutoSize = true;
+            this.labelLabelMethod.Location = new System.Drawing.Point(565, 18);
+            this.labelLabelMethod.Name = "labelLabelMethod";
+            this.labelLabelMethod.Size = new System.Drawing.Size(75, 13);
+            this.labelLabelMethod.TabIndex = 12;
+            this.labelLabelMethod.Text = "Label Method:";
             // 
-            // buttonRefreshAndConnect
+            // labelSlotSize
             // 
-            this.buttonRefreshAndConnect.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonRefreshAndConnect.Location = new System.Drawing.Point(134, 133);
-            this.buttonRefreshAndConnect.Name = "buttonRefreshAndConnect";
-            this.buttonRefreshAndConnect.Size = new System.Drawing.Size(172, 37);
-            this.buttonRefreshAndConnect.TabIndex = 3;
-            this.buttonRefreshAndConnect.Text = "Refresh && Connect";
-            this.buttonRefreshAndConnect.UseVisualStyleBackColor = true;
-            this.buttonRefreshAndConnect.Click += new System.EventHandler(this.buttonRefreshAndConnect_Click);
+            this.labelSlotSize.AutoSize = true;
+            this.labelSlotSize.Location = new System.Drawing.Point(110, 19);
+            this.labelSlotSize.Name = "labelSlotSize";
+            this.labelSlotSize.Size = new System.Drawing.Size(51, 13);
+            this.labelSlotSize.TabIndex = 11;
+            this.labelSlotSize.Text = "Slot Size:";
             // 
-            // buttonRefresh
+            // checkBoxObjLockLabels
             // 
-            this.buttonRefresh.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonRefresh.Location = new System.Drawing.Point(134, 92);
-            this.buttonRefresh.Name = "buttonRefresh";
-            this.buttonRefresh.Size = new System.Drawing.Size(84, 37);
-            this.buttonRefresh.TabIndex = 3;
-            this.buttonRefresh.Text = "Refresh";
-            this.buttonRefresh.UseVisualStyleBackColor = true;
-            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
+            this.checkBoxObjLockLabels.AutoSize = true;
+            this.checkBoxObjLockLabels.Location = new System.Drawing.Point(4, 18);
+            this.checkBoxObjLockLabels.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxObjLockLabels.Name = "checkBoxObjLockLabels";
+            this.checkBoxObjLockLabels.Size = new System.Drawing.Size(84, 17);
+            this.checkBoxObjLockLabels.TabIndex = 7;
+            this.checkBoxObjLockLabels.Text = "Lock Labels";
+            this.checkBoxObjLockLabels.UseVisualStyleBackColor = true;
             // 
-            // labelNotConnected
+            // labelSortMethod
             // 
-            this.labelNotConnected.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelNotConnected.AutoSize = true;
-            this.labelNotConnected.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNotConnected.Location = new System.Drawing.Point(141, -111);
-            this.labelNotConnected.Name = "labelNotConnected";
-            this.labelNotConnected.Size = new System.Drawing.Size(157, 26);
-            this.labelNotConnected.TabIndex = 2;
-            this.labelNotConnected.Text = "Not Connected";
+            this.labelSortMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelSortMethod.AutoSize = true;
+            this.labelSortMethod.Location = new System.Drawing.Point(751, 18);
+            this.labelSortMethod.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelSortMethod.Name = "labelSortMethod";
+            this.labelSortMethod.Size = new System.Drawing.Size(68, 13);
+            this.labelSortMethod.TabIndex = 5;
+            this.labelSortMethod.Text = "Sort Method:";
             // 
-            // buttonConnect
+            // WatchVariablePanelObjects
             // 
-            this.buttonConnect.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonConnect.Location = new System.Drawing.Point(222, 92);
-            this.buttonConnect.Name = "buttonConnect";
-            this.buttonConnect.Size = new System.Drawing.Size(84, 37);
-            this.buttonConnect.TabIndex = 1;
-            this.buttonConnect.Text = "Connect";
-            this.buttonConnect.UseVisualStyleBackColor = true;
-            this.buttonConnect.Click += new System.EventHandler(this.buttonConnect_Click);
+            this.WatchVariablePanelObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.WatchVariablePanelObjects.AutoScroll = true;
+            this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
+            this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
+            this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(919, 155);
+            this.WatchVariablePanelObjects.TabIndex = 0;
+            this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
             // 
-            // listBoxProcessesList
+            // comboBoxSortMethod
             // 
-            this.listBoxProcessesList.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.listBoxProcessesList.FormattingEnabled = true;
-            this.listBoxProcessesList.Location = new System.Drawing.Point(134, -61);
-            this.listBoxProcessesList.Name = "listBoxProcessesList";
-            this.listBoxProcessesList.Size = new System.Drawing.Size(172, 147);
-            this.listBoxProcessesList.TabIndex = 0;
+            this.comboBoxSortMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxSortMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSortMethod.Location = new System.Drawing.Point(821, 15);
+            this.comboBoxSortMethod.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxSortMethod.Name = "comboBoxSortMethod";
+            this.comboBoxSortMethod.Size = new System.Drawing.Size(102, 21);
+            this.comboBoxSortMethod.TabIndex = 4;
             // 
-            // labelFpsCounter
+            // trackBarObjSlotSize
             // 
-            this.labelFpsCounter.AutoSize = true;
-            this.labelFpsCounter.Location = new System.Drawing.Point(88, 15);
-            this.labelFpsCounter.Name = "labelFpsCounter";
-            this.labelFpsCounter.Size = new System.Drawing.Size(39, 13);
-            this.labelFpsCounter.TabIndex = 18;
-            this.labelFpsCounter.Text = "FPS: 0";
+            this.trackBarObjSlotSize.Location = new System.Drawing.Point(167, 15);
+            this.trackBarObjSlotSize.Maximum = 100;
+            this.trackBarObjSlotSize.Minimum = 15;
+            this.trackBarObjSlotSize.Name = "trackBarObjSlotSize";
+            this.trackBarObjSlotSize.Size = new System.Drawing.Size(104, 45);
+            this.trackBarObjSlotSize.TabIndex = 3;
+            this.trackBarObjSlotSize.TickFrequency = 10;
+            this.trackBarObjSlotSize.Value = 40;
+            this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // buttonShowTopPane
+            // pictureBoxCog
             // 
-            this.buttonShowTopPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonShowTopPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowTopPane.BackgroundImage")));
-            this.buttonShowTopPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonShowTopPane.Location = new System.Drawing.Point(866, 11);
-            this.buttonShowTopPane.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonShowTopPane.Name = "buttonShowTopPane";
-            this.buttonShowTopPane.Size = new System.Drawing.Size(21, 21);
-            this.buttonShowTopPane.TabIndex = 19;
-            this.buttonShowTopPane.UseVisualStyleBackColor = true;
-            this.buttonShowTopPane.Click += new System.EventHandler(this.buttonShowTopPanel_Click);
-            // 
-            // buttonShowTopBottomPane
-            // 
-            this.buttonShowTopBottomPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonShowTopBottomPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowTopBottomPane.BackgroundImage")));
-            this.buttonShowTopBottomPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonShowTopBottomPane.Location = new System.Drawing.Point(841, 11);
-            this.buttonShowTopBottomPane.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonShowTopBottomPane.Name = "buttonShowTopBottomPane";
-            this.buttonShowTopBottomPane.Size = new System.Drawing.Size(21, 21);
-            this.buttonShowTopBottomPane.TabIndex = 20;
-            this.buttonShowTopBottomPane.UseVisualStyleBackColor = true;
-            this.buttonShowTopBottomPane.Click += new System.EventHandler(this.buttonShowTopBottomPanel_Click);
-            // 
-            // buttonReadOnly
-            // 
-            this.buttonReadOnly.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonReadOnly.Location = new System.Drawing.Point(611, 11);
-            this.buttonReadOnly.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonReadOnly.Name = "buttonReadOnly";
-            this.buttonReadOnly.Size = new System.Drawing.Size(126, 21);
-            this.buttonReadOnly.TabIndex = 21;
-            this.buttonReadOnly.Tag = "";
-            this.buttonReadOnly.Text = "Switch to Read-Only";
-            this.buttonReadOnly.UseVisualStyleBackColor = true;
-            this.buttonReadOnly.Click += new System.EventHandler(this.buttonReadOnly_Click);
-            // 
-            // buttonShowBottomPane
-            // 
-            this.buttonShowBottomPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonShowBottomPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowBottomPane.BackgroundImage")));
-            this.buttonShowBottomPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonShowBottomPane.Location = new System.Drawing.Point(816, 11);
-            this.buttonShowBottomPane.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonShowBottomPane.Name = "buttonShowBottomPane";
-            this.buttonShowBottomPane.Size = new System.Drawing.Size(21, 21);
-            this.buttonShowBottomPane.TabIndex = 20;
-            this.buttonShowBottomPane.UseVisualStyleBackColor = true;
-            this.buttonShowBottomPane.Click += new System.EventHandler(this.buttonShowBottomPanel_Click);
-            // 
-            // buttonShowRightPane
-            // 
-            this.buttonShowRightPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonShowRightPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowRightPane.BackgroundImage")));
-            this.buttonShowRightPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonShowRightPane.Location = new System.Drawing.Point(791, 11);
-            this.buttonShowRightPane.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonShowRightPane.Name = "buttonShowRightPane";
-            this.buttonShowRightPane.Size = new System.Drawing.Size(21, 21);
-            this.buttonShowRightPane.TabIndex = 19;
-            this.buttonShowRightPane.UseVisualStyleBackColor = true;
-            this.buttonShowRightPane.Click += new System.EventHandler(this.buttonShowRightPanel_Click);
-            // 
-            // buttonShowLeftRightPane
-            // 
-            this.buttonShowLeftRightPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonShowLeftRightPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowLeftRightPane.BackgroundImage")));
-            this.buttonShowLeftRightPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonShowLeftRightPane.Location = new System.Drawing.Point(766, 11);
-            this.buttonShowLeftRightPane.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonShowLeftRightPane.Name = "buttonShowLeftRightPane";
-            this.buttonShowLeftRightPane.Size = new System.Drawing.Size(21, 21);
-            this.buttonShowLeftRightPane.TabIndex = 20;
-            this.buttonShowLeftRightPane.UseVisualStyleBackColor = true;
-            this.buttonShowLeftRightPane.Click += new System.EventHandler(this.buttonShowLeftRightPanel_Click);
-            // 
-            // buttonShowLeftPane
-            // 
-            this.buttonShowLeftPane.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonShowLeftPane.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonShowLeftPane.BackgroundImage")));
-            this.buttonShowLeftPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonShowLeftPane.Location = new System.Drawing.Point(741, 11);
-            this.buttonShowLeftPane.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonShowLeftPane.Name = "buttonShowLeftPane";
-            this.buttonShowLeftPane.Size = new System.Drawing.Size(21, 21);
-            this.buttonShowLeftPane.TabIndex = 20;
-            this.buttonShowLeftPane.UseVisualStyleBackColor = true;
-            this.buttonShowLeftPane.Click += new System.EventHandler(this.buttonShowLeftPanel_Click);
-            // 
-            // groupBoxTriRooms
-            // 
-            this.groupBoxTriRooms.Controls.Add(this.textBoxTriRoomsToValue);
-            this.groupBoxTriRooms.Controls.Add(this.textBoxTriRoomsFromValue);
-            this.groupBoxTriRooms.Controls.Add(this.buttonTriRoomsConvert);
-            this.groupBoxTriRooms.Controls.Add(this.labelTriRoomsToLabel);
-            this.groupBoxTriRooms.Controls.Add(this.labelTriRoomsFromLabel);
-            this.groupBoxTriRooms.Location = new System.Drawing.Point(760, 259);
-            this.groupBoxTriRooms.Name = "groupBoxTriRooms";
-            this.groupBoxTriRooms.Size = new System.Drawing.Size(116, 99);
-            this.groupBoxTriRooms.TabIndex = 44;
-            this.groupBoxTriRooms.TabStop = false;
-            this.groupBoxTriRooms.Text = "Tri Rooms";
-            // 
-            // textBoxTriRoomsToValue
-            // 
-            this.textBoxTriRoomsToValue.Location = new System.Drawing.Point(40, 42);
-            this.textBoxTriRoomsToValue.Name = "textBoxTriRoomsToValue";
-            this.textBoxTriRoomsToValue.Size = new System.Drawing.Size(67, 20);
-            this.textBoxTriRoomsToValue.TabIndex = 28;
-            this.textBoxTriRoomsToValue.Text = "2";
-            this.textBoxTriRoomsToValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxTriRoomsFromValue
-            // 
-            this.textBoxTriRoomsFromValue.Location = new System.Drawing.Point(40, 16);
-            this.textBoxTriRoomsFromValue.Name = "textBoxTriRoomsFromValue";
-            this.textBoxTriRoomsFromValue.Size = new System.Drawing.Size(67, 20);
-            this.textBoxTriRoomsFromValue.TabIndex = 28;
-            this.textBoxTriRoomsFromValue.Text = "1";
-            this.textBoxTriRoomsFromValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // buttonTriRoomsConvert
-            // 
-            this.buttonTriRoomsConvert.Location = new System.Drawing.Point(12, 67);
-            this.buttonTriRoomsConvert.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonTriRoomsConvert.Name = "buttonTriRoomsConvert";
-            this.buttonTriRoomsConvert.Size = new System.Drawing.Size(95, 23);
-            this.buttonTriRoomsConvert.TabIndex = 16;
-            this.buttonTriRoomsConvert.Text = "Convert";
-            this.buttonTriRoomsConvert.UseVisualStyleBackColor = true;
-            // 
-            // labelTriRoomsToLabel
-            // 
-            this.labelTriRoomsToLabel.AutoSize = true;
-            this.labelTriRoomsToLabel.Location = new System.Drawing.Point(8, 45);
-            this.labelTriRoomsToLabel.MinimumSize = new System.Drawing.Size(20, 2);
-            this.labelTriRoomsToLabel.Name = "labelTriRoomsToLabel";
-            this.labelTriRoomsToLabel.Size = new System.Drawing.Size(23, 13);
-            this.labelTriRoomsToLabel.TabIndex = 18;
-            this.labelTriRoomsToLabel.Text = "To:";
-            this.labelTriRoomsToLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // labelTriRoomsFromLabel
-            // 
-            this.labelTriRoomsFromLabel.AutoSize = true;
-            this.labelTriRoomsFromLabel.Location = new System.Drawing.Point(8, 19);
-            this.labelTriRoomsFromLabel.MinimumSize = new System.Drawing.Size(20, 2);
-            this.labelTriRoomsFromLabel.Name = "labelTriRoomsFromLabel";
-            this.labelTriRoomsFromLabel.Size = new System.Drawing.Size(33, 13);
-            this.labelTriRoomsFromLabel.TabIndex = 18;
-            this.labelTriRoomsFromLabel.Text = "From:";
-            this.labelTriRoomsFromLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.pictureBoxCog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxCog.BackgroundImage = global::STROOP.Properties.Resources.cog;
+            this.pictureBoxCog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxCog.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxCog.Location = new System.Drawing.Point(868, 11);
+            this.pictureBoxCog.Name = "pictureBoxCog";
+            this.pictureBoxCog.Size = new System.Drawing.Size(20, 20);
+            this.pictureBoxCog.TabIndex = 23;
+            this.pictureBoxCog.TabStop = false;
             // 
             // StroopMainForm
             // 
@@ -13974,13 +17030,17 @@ namespace STROOP
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(947, 741);
             this.Controls.Add(this.panelConnect);
+            this.Controls.Add(this.pictureBoxCog);
+            this.Controls.Add(this.comboBoxReadWriteMode);
+            this.Controls.Add(this.comboBoxRomVersion);
             this.Controls.Add(this.buttonShowTopPane);
             this.Controls.Add(this.buttonShowTopBottomPane);
             this.Controls.Add(this.buttonShowBottomPane);
             this.Controls.Add(this.buttonShowRightPane);
             this.Controls.Add(this.buttonShowLeftRightPane);
+            this.Controls.Add(this.buttonMoveTabLeft);
+            this.Controls.Add(this.buttonMoveTabRight);
             this.Controls.Add(this.buttonShowLeftPane);
-            this.Controls.Add(this.buttonReadOnly);
             this.Controls.Add(this.buttonDisconnect);
             this.Controls.Add(this.labelVersionNumber);
             this.Controls.Add(this.splitContainerMain);
@@ -13993,15 +17053,14 @@ namespace STROOP
             this.Text = "STROOP";
             this.Load += new System.EventHandler(this.StroopMainForm_Load);
             this.Resize += new System.EventHandler(this.StroopMainForm_Resize);
-            this.groupBoxObjects.ResumeLayout(false);
-            this.groupBoxObjects.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
+            this.panelConnect.ResumeLayout(false);
+            this.panelConnect.PerformLayout();
             this.splitContainerMain.Panel1.ResumeLayout(false);
             this.splitContainerMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
             this.splitContainerMain.ResumeLayout(false);
             this.tabControlMain.ResumeLayout(false);
-            this.tabPageObjects.ResumeLayout(false);
+            this.tabPageObject.ResumeLayout(false);
             this.splitContainerObject.Panel1.ResumeLayout(false);
             this.splitContainerObject.Panel1.PerformLayout();
             this.splitContainerObject.Panel2.ResumeLayout(false);
@@ -14042,10 +17101,10 @@ namespace STROOP
             this.panelHudBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxHud)).EndInit();
             this.tabPageCamera.ResumeLayout(false);
-            this.SplitContainerCamera.Panel1.ResumeLayout(false);
-            this.SplitContainerCamera.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SplitContainerCamera)).EndInit();
-            this.SplitContainerCamera.ResumeLayout(false);
+            this.splitContainerCamera.Panel1.ResumeLayout(false);
+            this.splitContainerCamera.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCamera)).EndInit();
+            this.splitContainerCamera.ResumeLayout(false);
             this.groupBoxCameraSphericalPos.ResumeLayout(false);
             this.groupBoxCameraSphericalPos.PerformLayout();
             this.panelCameraBorder.ResumeLayout(false);
@@ -14062,15 +17121,8 @@ namespace STROOP
             this.groupBoxTrianglePos.PerformLayout();
             this.groupBoxTriangleNormal.ResumeLayout(false);
             this.groupBoxTriangleNormal.PerformLayout();
-            this.tabPageWater.ResumeLayout(false);
             this.tabPageActions.ResumeLayout(false);
             this.tabPageActions.PerformLayout();
-            this.tabPageInput.ResumeLayout(false);
-            this.splitContainerInput.Panel1.ResumeLayout(false);
-            this.splitContainerInput.Panel1.PerformLayout();
-            this.splitContainerInput.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerInput)).EndInit();
-            this.splitContainerInput.ResumeLayout(false);
             this.tabPageFile.ResumeLayout(false);
             this.splitContainerFile.Panel1.ResumeLayout(false);
             this.splitContainerFile.Panel1.PerformLayout();
@@ -14238,6 +17290,13 @@ namespace STROOP
             ((System.ComponentModel.ISupportInitialize)(this.filePictureBoxHatLocationSnowman)).EndInit();
             this.groupBoxFile.ResumeLayout(false);
             this.groupBoxFile.PerformLayout();
+            this.tabPageInput.ResumeLayout(false);
+            this.splitContainerInput.Panel1.ResumeLayout(false);
+            this.splitContainerInput.Panel1.PerformLayout();
+            this.splitContainerInput.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerInput)).EndInit();
+            this.splitContainerInput.ResumeLayout(false);
+            this.tabPageWater.ResumeLayout(false);
             this.tabPageMisc.ResumeLayout(false);
             this.splitContainerMisc.Panel1.ResumeLayout(false);
             this.splitContainerMisc.Panel1.PerformLayout();
@@ -14248,6 +17307,22 @@ namespace STROOP
             this.groupBoxRNGIndexTester.PerformLayout();
             this.panelMiscBorder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMisc)).EndInit();
+            this.tabPageM64.ResumeLayout(false);
+            this.splitContainerM64.Panel1.ResumeLayout(false);
+            this.splitContainerM64.Panel1.PerformLayout();
+            this.splitContainerM64.Panel2.ResumeLayout(false);
+            this.splitContainerM64.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerM64)).EndInit();
+            this.splitContainerM64.ResumeLayout(false);
+            this.groupBoxM64QuickDuplication.ResumeLayout(false);
+            this.groupBoxM64QuickDuplication.PerformLayout();
+            this.groupBoxM64Selection.ResumeLayout(false);
+            this.groupBoxM64Selection.PerformLayout();
+            this.tabControlM64Details.ResumeLayout(false);
+            this.tabPageM64Inputs.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewM64Inputs)).EndInit();
+            this.tabPageM64Header.ResumeLayout(false);
+            this.tabPageM64Stats.ResumeLayout(false);
             this.tabPageCustom.ResumeLayout(false);
             this.splitContainerCustom.Panel1.ResumeLayout(false);
             this.splitContainerCustom.Panel2.ResumeLayout(false);
@@ -14256,6 +17331,7 @@ namespace STROOP
             this.splitContainerCustomControls.Panel1.ResumeLayout(false);
             this.splitContainerCustomControls.Panel1.PerformLayout();
             this.splitContainerCustomControls.Panel2.ResumeLayout(false);
+            this.splitContainerCustomControls.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerCustomControls)).EndInit();
             this.splitContainerCustomControls.ResumeLayout(false);
             this.groupBoxVarHeight.ResumeLayout(false);
@@ -14264,30 +17340,70 @@ namespace STROOP
             this.groupBoxVarValueWidth.PerformLayout();
             this.groupBoxVarNameWidth.ResumeLayout(false);
             this.groupBoxVarNameWidth.PerformLayout();
-            this.tabPageDebug.ResumeLayout(false);
-            this.splitContainerDebug.Panel1.ResumeLayout(false);
-            this.splitContainerDebug.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDebug)).EndInit();
-            this.splitContainerDebug.ResumeLayout(false);
-            this.panelDebugBorder.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).EndInit();
-            this.groupBoxMiscDebug.ResumeLayout(false);
-            this.groupBoxMiscDebug.PerformLayout();
-            this.groupBoxResourceMeter.ResumeLayout(false);
-            this.groupBoxResourceMeter.PerformLayout();
-            this.groupBoxAdvancedMode.ResumeLayout(false);
-            this.groupBoxAdvancedMode.PerformLayout();
+            this.tabPageTas.ResumeLayout(false);
+            this.splitContainerTas.Panel1.ResumeLayout(false);
+            this.splitContainerTas.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTas)).EndInit();
+            this.splitContainerTas.ResumeLayout(false);
+            this.splitContainerTasTable.Panel1.ResumeLayout(false);
+            this.splitContainerTasTable.Panel1.PerformLayout();
+            this.splitContainerTasTable.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerTasTable)).EndInit();
+            this.splitContainerTasTable.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTas)).EndInit();
             this.tabPageMap.ResumeLayout(false);
             this.splitContainerMap.Panel1.ResumeLayout(false);
-            this.splitContainerMap.Panel1.PerformLayout();
             this.splitContainerMap.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap)).EndInit();
             this.splitContainerMap.ResumeLayout(false);
-            this.groupBoxMapBounds.ResumeLayout(false);
-            this.groupBoxMapBounds.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarMapIconSize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarMapZoom)).EndInit();
+            this.splitContainerMapControls.Panel1.ResumeLayout(false);
+            this.splitContainerMapControls.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMapControls)).EndInit();
+            this.splitContainerMapControls.ResumeLayout(false);
+            this.tabControlMap.ResumeLayout(false);
+            this.tabPageMapOptions.ResumeLayout(false);
+            this.tabPageMapOptions.PerformLayout();
+            this.tabPageMap2D.ResumeLayout(false);
+            this.groupBoxMapControlsAngle.ResumeLayout(false);
+            this.groupBoxMapControlsAngle.PerformLayout();
+            this.groupBoxMapControlsCenter.ResumeLayout(false);
+            this.groupBoxMapControlsCenter.PerformLayout();
+            this.groupBoxMapControlsScale.ResumeLayout(false);
+            this.groupBoxMapControlsScale.PerformLayout();
+            this.tabPageMap3D.ResumeLayout(false);
+            this.tabPageMap3D.PerformLayout();
+            this.tabPageMap2.ResumeLayout(false);
+            this.splitContainerMap2.Panel1.ResumeLayout(false);
+            this.splitContainerMap2.Panel1.PerformLayout();
+            this.splitContainerMap2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMap2)).EndInit();
+            this.splitContainerMap2.ResumeLayout(false);
+            this.groupBoxMap2Bounds.ResumeLayout(false);
+            this.groupBoxMap2Bounds.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarMap2IconSize)).EndInit();
+            this.tabPageOptions.ResumeLayout(false);
+            this.tabPageOptions.PerformLayout();
+            this.groupBoxPositionControllerRelativeAngle.ResumeLayout(false);
+            this.groupBoxPositionControllerRelativeAngle.PerformLayout();
+            this.groupBoxFPS.ResumeLayout(false);
+            this.groupBoxFPS.PerformLayout();
+            this.groupBoxGotoRetrieveOffsets.ResumeLayout(false);
+            this.groupBoxGotoRetrieveOffsets.PerformLayout();
+            this.groupBoxShowOverlay.ResumeLayout(false);
+            this.groupBoxShowOverlay.PerformLayout();
+            this.tabPageMemory.ResumeLayout(false);
+            this.splitContainerMemory.Panel1.ResumeLayout(false);
+            this.splitContainerMemory.Panel1.PerformLayout();
+            this.splitContainerMemory.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMemory)).EndInit();
+            this.splitContainerMemory.ResumeLayout(false);
             this.tabPagePu.ResumeLayout(false);
+            this.splitContainerPu.Panel1.ResumeLayout(false);
+            this.splitContainerPu.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerPu)).EndInit();
+            this.splitContainerPu.ResumeLayout(false);
+            this.groupBoxMarioPu.ResumeLayout(false);
+            this.groupBoxMarioPu.PerformLayout();
             this.groupBoxPuController.ResumeLayout(false);
             this.groupBoxPuController.PerformLayout();
             this.tabPageArea.ResumeLayout(false);
@@ -14318,16 +17434,32 @@ namespace STROOP
             this.splitContainerModelTables.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVertices)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTriangles)).EndInit();
-            this.tabPageDisassembly.ResumeLayout(false);
-            this.tabPageDisassembly.PerformLayout();
-            this.tabPageDecompiler.ResumeLayout(false);
-            this.tabPageDecompiler.PerformLayout();
-            this.splitContainerDecompiler.Panel1.ResumeLayout(false);
-            this.splitContainerDecompiler.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDecompiler)).EndInit();
-            this.splitContainerDecompiler.ResumeLayout(false);
-            this.tabPageScripts.ResumeLayout(false);
-            this.tabPageScripts.PerformLayout();
+            this.tabPageGfx.ResumeLayout(false);
+            this.splitContainerGfxLeft.Panel1.ResumeLayout(false);
+            this.splitContainerGfxLeft.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerGfxLeft)).EndInit();
+            this.splitContainerGfxLeft.ResumeLayout(false);
+            this.splitContainerGfxRight.Panel1.ResumeLayout(false);
+            this.splitContainerGfxRight.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerGfxRight)).EndInit();
+            this.splitContainerGfxRight.ResumeLayout(false);
+            this.splitContainerGfxMiddle.Panel1.ResumeLayout(false);
+            this.splitContainerGfxMiddle.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerGfxMiddle)).EndInit();
+            this.splitContainerGfxMiddle.ResumeLayout(false);
+            this.tabPageDebug.ResumeLayout(false);
+            this.splitContainerDebug.Panel1.ResumeLayout(false);
+            this.splitContainerDebug.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDebug)).EndInit();
+            this.splitContainerDebug.ResumeLayout(false);
+            this.panelDebugBorder.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDebug)).EndInit();
+            this.groupBoxMiscDebug.ResumeLayout(false);
+            this.groupBoxMiscDebug.PerformLayout();
+            this.groupBoxResourceMeter.ResumeLayout(false);
+            this.groupBoxResourceMeter.PerformLayout();
+            this.groupBoxAdvancedMode.ResumeLayout(false);
+            this.groupBoxAdvancedMode.PerformLayout();
             this.tabPageHacks.ResumeLayout(false);
             this.splitContainerHacks.Panel1.ResumeLayout(false);
             this.splitContainerHacks.Panel2.ResumeLayout(false);
@@ -14360,19 +17492,30 @@ namespace STROOP
             this.splitContainerVarHack.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerVarHack)).EndInit();
             this.splitContainerVarHack.ResumeLayout(false);
-            this.tabPageOptions.ResumeLayout(false);
-            this.tabPageOptions.PerformLayout();
-            this.groupBoxPositionControllerRelativeAngle.ResumeLayout(false);
-            this.groupBoxPositionControllerRelativeAngle.PerformLayout();
-            this.groupBoxFPS.ResumeLayout(false);
-            this.groupBoxFPS.PerformLayout();
-            this.groupBoxRomVersion.ResumeLayout(false);
-            this.groupBoxRomVersion.PerformLayout();
-            this.groupBoxGotoRetrieveOffsets.ResumeLayout(false);
-            this.groupBoxGotoRetrieveOffsets.PerformLayout();
-            this.groupBoxShowOverlay.ResumeLayout(false);
-            this.groupBoxShowOverlay.PerformLayout();
+            this.tabPageCoin.ResumeLayout(false);
+            this.splitContainerCoin.Panel1.ResumeLayout(false);
+            this.splitContainerCoin.Panel1.PerformLayout();
+            this.splitContainerCoin.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerCoin)).EndInit();
+            this.splitContainerCoin.ResumeLayout(false);
+            this.groupBoxCoinFilter.ResumeLayout(false);
+            this.groupBoxCoinFilter.PerformLayout();
+            this.groupBoxCoinCustomization.ResumeLayout(false);
+            this.groupBoxCoinCustomization.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCoin)).EndInit();
+            this.tabPageDisassembly.ResumeLayout(false);
+            this.tabPageDisassembly.PerformLayout();
+            this.tabPageDecompiler.ResumeLayout(false);
+            this.tabPageDecompiler.PerformLayout();
+            this.splitContainerDecompiler.Panel1.ResumeLayout(false);
+            this.splitContainerDecompiler.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDecompiler)).EndInit();
+            this.splitContainerDecompiler.ResumeLayout(false);
+            this.tabPageScripts.ResumeLayout(false);
+            this.tabPageScripts.PerformLayout();
             this.tabPageTesting.ResumeLayout(false);
+            this.groupBoxTriRooms.ResumeLayout(false);
+            this.groupBoxTriRooms.PerformLayout();
             this.groupBoxScuttlebugStuff.ResumeLayout(false);
             this.groupBoxScuttlebugStuff.PerformLayout();
             this.groupBoxSchedule.ResumeLayout(false);
@@ -14381,6 +17524,8 @@ namespace STROOP
             this.groupBoxStateTransfer.PerformLayout();
             this.groupBoxControlStick.ResumeLayout(false);
             this.groupBoxControlStick.PerformLayout();
+            this.groupBoxMemoryReader.ResumeLayout(false);
+            this.groupBoxMemoryReader.PerformLayout();
             this.groupBoxObjAtObj.ResumeLayout(false);
             this.groupBoxObjAtObj.PerformLayout();
             this.groupBoxObjAtHome.ResumeLayout(false);
@@ -14391,10 +17536,10 @@ namespace STROOP
             this.groupBoxGoto.PerformLayout();
             this.groupBoxRecording.ResumeLayout(false);
             this.groupBoxRecording.PerformLayout();
-            this.panelConnect.ResumeLayout(false);
-            this.panelConnect.PerformLayout();
-            this.groupBoxTriRooms.ResumeLayout(false);
-            this.groupBoxTriRooms.PerformLayout();
+            this.groupBoxObjects.ResumeLayout(false);
+            this.groupBoxObjects.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -14405,16 +17550,16 @@ namespace STROOP
         private System.Windows.Forms.GroupBox groupBoxObjects;
         private System.Windows.Forms.ComboBox comboBoxSortMethod;
         private System.Windows.Forms.Label labelSortMethod;
-        private WatchVariablePanel WatchVariablePanelObjects;
-        private System.Windows.Forms.SplitContainer splitContainerMain;
+        private ObjectSlotFlowLayoutPanel WatchVariablePanelObjects;
+        private BetterSplitContainer splitContainerMain;
         private System.Windows.Forms.CheckBox checkBoxObjLockLabels;
         private System.Windows.Forms.TabControl tabControlMain;
-        private System.Windows.Forms.TabPage tabPageObjects;
+        private System.Windows.Forms.TabPage tabPageObject;
         private System.Windows.Forms.Label labelObjSlotIndValue;
         private System.Windows.Forms.Label labelObjSlotPosValue;
         private System.Windows.Forms.Label labelObjBhvValue;
         private System.Windows.Forms.Label labelObjAdd;
-        private WatchVariablePanel WatchVariablePanelObject;
+        private WatchVariableFlowLayoutPanel WatchVariablePanelObject;
         private System.Windows.Forms.Label labelObjSlotInd;
         private System.Windows.Forms.Label labelObjSlotPos;
         private System.Windows.Forms.Label labelObjBhv;
@@ -14422,7 +17567,7 @@ namespace STROOP
         private IntPictureBox pictureBoxObject;
         private System.Windows.Forms.Label labelObjAddValue;
         private System.Windows.Forms.TabPage tabPageMario;
-        private WatchVariablePanel WatchVariablePanelMario;
+        private WatchVariableFlowLayoutPanel WatchVariablePanelMario;
         private System.Windows.Forms.Panel panelMarioBorder;
         private IntPictureBox pictureBoxMario;
         private System.Windows.Forms.TabPage tabPageDisassembly;
@@ -14431,39 +17576,23 @@ namespace STROOP
         private RichTextBoxEx richTextBoxDissasembly;
         private System.Windows.Forms.TabPage tabPageMap;
         private System.Windows.Forms.TabPage tabPageOptions;
-        private System.Windows.Forms.CheckBox checkBoxStartSlotIndexOne;
         private OpenTK.GLControl glControlMap;
         private System.Windows.Forms.Button buttonObjRetrieve;
         private BinaryButton buttonObjClone;
         private System.Windows.Forms.Button buttonObjGoto;
         private BinaryButton buttonObjUnload;
-        private System.Windows.Forms.Label labelMapPuValue;
-        private System.Windows.Forms.Label labelMapSubName;
-        private System.Windows.Forms.Label labelMapQpu;
-        private System.Windows.Forms.Label labelMapPu;
-        private System.Windows.Forms.Label labelMapId;
-        private System.Windows.Forms.Label labelMapName;
-        private System.Windows.Forms.Label labelMapQpuValue;
         private System.Windows.Forms.Label labelVersionNumber;
-        private System.Windows.Forms.TrackBar trackBarMapIconSize;
-        private System.Windows.Forms.TrackBar trackBarMapZoom;
-        private System.Windows.Forms.Label labelMapIconSize;
-        private System.Windows.Forms.Label labelMapZoom;
-        private System.Windows.Forms.CheckBox checkBoxMapShowInactive;
-        private System.Windows.Forms.CheckBox checkBoxMapShowMario;
         private System.Windows.Forms.TextBox textBoxObjName;
-        private System.Windows.Forms.SplitContainer splitContainerMap;
-        private System.Windows.Forms.CheckBox checkBoxMapShowHolp;
+        private BetterSplitContainer splitContainerMap;
         private System.Windows.Forms.CheckBox checkBoxUseRomHack;
         private System.Windows.Forms.TabPage tabPageHud;
         private System.Windows.Forms.TabPage tabPageCamera;
-        private WatchVariablePanel watchVariablePanelHud;
+        private WatchVariableFlowLayoutPanel watchVariablePanelHud;
         private System.Windows.Forms.Panel panelHudBorder;
         private IntPictureBox pictureBoxHud;
-        private WatchVariablePanel watchVariablePanelCamera;
+        private WatchVariableFlowLayoutPanel watchVariablePanelCamera;
         private System.Windows.Forms.Panel panelCameraBorder;
         private IntPictureBox pictureBoxCamera;
-        private System.Windows.Forms.CheckBox checkBoxMapShowCamera;
         private System.Windows.Forms.TrackBar trackBarObjSlotSize;
         private System.Windows.Forms.TabPage tabPageDebug;
         private System.Windows.Forms.RadioButton radioButtonAdvancedModeOff;
@@ -14476,13 +17605,11 @@ namespace STROOP
         private System.Windows.Forms.RadioButton radioButtonAdvancedModeObjectCounter;
         private System.Windows.Forms.Panel panelDebugBorder;
         private IntPictureBox pictureBoxDebug;
-        private WatchVariablePanel watchVariablePanelMisc;
+        private WatchVariableFlowLayoutPanel watchVariablePanelMisc;
         private System.Windows.Forms.Panel panelMiscBorder;
         private IntPictureBox pictureBoxMisc;
         private System.Windows.Forms.TabPage tabPageFile;
         private System.Windows.Forms.Label labelSlotSize;
-        private System.Windows.Forms.CheckBox checkBoxMapShowFloor;
-        private CheckBox checkBoxMoveCamWithPu;
         private Label label3;
         private TabPage tabPageTriangles;
         private RadioButton radioButtonTriCeiling;
@@ -14491,7 +17618,7 @@ namespace STROOP
         private Label labelTriangleSelection;
         private MaskedTextBox maskedTextBoxOtherTriangle;
         private RadioButton radioButtonTriOther;
-        private WatchVariablePanel watchVariablePanelTriangles;
+        private WatchVariableFlowLayoutPanel watchVariablePanelTriangles;
         private Button buttonStandardHud;
         private Button buttonDie;
         private Button buttonFullHp;
@@ -14517,7 +17644,7 @@ namespace STROOP
         private Label labelFpsCounter;
         private Button buttonShowTopPane;
         private Button buttonShowTopBottomPane;
-        private SplitContainer splitContainerHacks;
+        private BetterSplitContainer splitContainerHacks;
         private GroupBox groupBoxHackRam;
         private GroupBox groupBoxHackSpawn;
         private ListBox listBoxSpawn;
@@ -14528,7 +17655,6 @@ namespace STROOP
         private BetterTextbox textBoxSpawnGfxId;
         private Label labelSpawnHint;
         private Button buttonSpawnReset;
-        private Button buttonReadOnly;
         private Button buttonDisMore;
         private Button buttonMarioToggleHandsfree;
         private Button buttonMarioVisibility;
@@ -14550,11 +17676,11 @@ namespace STROOP
         private Button buttonObjPosXnZp;
         private Button buttonObjPosXn;
         private TabPage tabPageActions;
-        private WatchVariablePanel watchVariablePanelActions;
+        private WatchVariableFlowLayoutPanel watchVariablePanelActions;
         private TabPage tabPageWater;
-        private WatchVariablePanel watchVariablePanelWater;
+        private WatchVariableFlowLayoutPanel watchVariablePanelWater;
         private TabPage tabPageInput;
-        private WatchVariablePanel watchVariablePanelInput;
+        private WatchVariableFlowLayoutPanel watchVariablePanelInput;
         private TabPage tabPagePu;
         private GroupBox groupBoxPuController;
         private Label labelPuConPu;
@@ -14576,9 +17702,9 @@ namespace STROOP
         private Button buttonPuConHome;
         private TabPage tabPageQuarterFrame;
         private TabPage tabPageCamHack;
-        private WatchVariablePanel watchVariablePanelFile;
-        private WatchVariablePanel watchVariablePanelQuarterFrame;
-        private WatchVariablePanel watchVariablePanelCamHack;
+        private WatchVariableFlowLayoutPanel watchVariablePanelFile;
+        private WatchVariableFlowLayoutPanel watchVariablePanelQuarterFrame;
+        private WatchVariableFlowLayoutPanel watchVariablePanelCamHack;
         private Button buttonAnnihilateTriangle;
         private Button buttonNeutralizeTriangle;
         private GroupBox groupBoxObjAngle;
@@ -14685,7 +17811,6 @@ namespace STROOP
         private Button buttonCameraSphericalPosTnPp;
         private Button buttonCameraSphericalPosTn;
         private Button buttonCameraSphericalPosTnPn;
-        private CheckBox checkBoxScaleDiagonalPositionControllerButtons;
         private CheckBox checkBoxMarioPosRelative;
         private CheckBox checkBoxMarioHOLPRelative;
         private CheckBox checkBoxObjHomeRelative;
@@ -14701,7 +17826,6 @@ namespace STROOP
         private CheckBox checkBoxShowOverlayUsedObject;
         private CheckBox checkBoxShowOverlayInteractionObject;
         private CheckBox checkBoxShowOverlayCameraObject;
-        private CheckBox checkBoxMapShowCeiling;
         private GroupBox groupBoxObjScale;
         private BetterTextbox textBoxObjScaleDepth;
         private BetterTextbox textBoxObjScaleHeight;
@@ -14724,13 +17848,13 @@ namespace STROOP
         private CheckBox checkBoxShowOverlayCeilingObject;
         private CheckBox checkBoxShowOverlayWallObject;
         private CheckBox checkBoxShowOverlayFloorObject;
-        private SplitContainer splitContainerInput;
+        private BetterSplitContainer splitContainerInput;
         private Label labelCamHackMode;
         private RadioButton radioButtonCamHackMode3;
         private RadioButton radioButtonCamHackMode2;
         private RadioButton radioButtonCamHackMode1RelativeAngle;
         private RadioButton radioButtonCamHackMode0;
-        private SplitContainer splitContainerCamHack;
+        private BetterSplitContainer splitContainerCamHack;
         private CheckBox checkBoxShowOverlayCameraHackObject;
         private RadioButton radioButtonCamHackMode1AbsoluteAngle;
         private GroupBox groupBoxCameraHackSphericalFocusPos;
@@ -14800,12 +17924,12 @@ namespace STROOP
         private Label labelGotoAboveSuffix;
         private Label labelGotoAbovePrefix;
         private BetterTextbox textBoxGotoAbove;
-        private SplitContainer splitContainerFile;
-        private SplitContainer SplitContainerCamera;
-        private SplitContainer splitContainerTriangles;
-        private SplitContainer splitContainerHud;
-        private SplitContainer splitContainerMario;
-        private SplitContainer splitContainerObject;
+        private BetterSplitContainer splitContainerFile;
+        private BetterSplitContainer splitContainerCamera;
+        private BetterSplitContainer splitContainerTriangles;
+        private BetterSplitContainer splitContainerHud;
+        private BetterSplitContainer splitContainerMario;
+        private BetterSplitContainer splitContainerObject;
         private InputDisplayPanel inputDisplayPanel;
         private RadioButton radioButtonFileCSaved;
         private RadioButton radioButtonFileDSaved;
@@ -15054,12 +18178,6 @@ namespace STROOP
         private Button buttonCameraHackBothPosXnZp;
         private Button buttonCameraHackBothPosXn;
         private Button buttonCameraHackBothPosXnZn;
-        private Label labelAnimationDescription;
-        private Label labelActionDescription;
-        private GroupBox groupBoxRomVersion;
-        private RadioButton radioButtonRomVersionJP;
-        private RadioButton radioButtonRomVersionUS;
-        private RadioButton radioButtonRomVersionPAL;
         private BinaryButton buttonTurnOnOffHud;
         private Button buttonFilePaste;
         private Button buttonFileCopy;
@@ -15072,9 +18190,9 @@ namespace STROOP
         private Button buttonTriangleShowEquation;
         private Label labelRecordTriangleCount;
         private CheckBox checkBoxRepeatFirstVertex;
-        private WatchVariablePanel watchVariablePanelDebug;
+        private WatchVariableFlowLayoutPanel watchVariablePanelDebug;
         private GroupBox groupBoxAdvancedMode;
-        private SplitContainer splitContainerDebug;
+        private BetterSplitContainer splitContainerDebug;
         private GroupBox groupBoxMiscDebug;
         private GroupBox groupBoxResourceMeter;
         private RadioButton radioButtonResourceMeterOff;
@@ -15082,7 +18200,7 @@ namespace STROOP
         private RadioButton radioButtonResourceMeter2;
         private TabPage tabPageModel;
         private OpenTK.GLControl glControlModelView;
-        private SplitContainer splitContainerModelTables;
+        private BetterSplitContainer splitContainerModelTables;
         private DataGridView dataGridViewVertices;
         private Label label1;
         private TextBox textBoxModelAddress;
@@ -15103,7 +18221,7 @@ namespace STROOP
         private RadioButton radioButtonPositionControllerRelativeAngleRecommended;
         private RadioButton radioButtonPositionControllerRelativeAngleCustom;
         private BetterTextbox textBoxPositionControllerRelativeAngleCustom;
-        private SplitContainer splitContainerModel;
+        private BetterSplitContainer splitContainerModel;
         private BinaryButton button100Lives;
         private Button buttonTriangleClearData;
         private TabPage tabPageTesting;
@@ -15156,7 +18274,6 @@ namespace STROOP
         private Label labelControlStick4;
         private Button buttonMarioHOLPRetrieve;
         private Button buttonMarioHOLPGoto;
-        private CheckBox checkBoxExcludeDustForClosestObject;
         private GroupBox groupBoxStateTransfer;
         private BetterTextbox betterTextboxStateTransferVar2Current;
         private BetterTextbox betterTextboxStateTransferVar1Current;
@@ -15219,7 +18336,7 @@ namespace STROOP
         private Label labelObjAtObj2;
         private Label labelObjAtObj1;
         private CheckBox checkBoxFullHP;
-        private SplitContainer splitContainerMisc;
+        private BetterSplitContainer splitContainerMisc;
         private CheckBox checkBoxTurnOffMusic;
         private BetterTextbox betterTextboxStateTransferVar14Saved;
         private BetterTextbox betterTextboxStateTransferVar14Current;
@@ -15228,11 +18345,8 @@ namespace STROOP
         private Button buttonTriangleShowObjTris;
         private Button buttonTriangleShowLevelTris;
         private Button buttonTriangleShowAllTris;
-        private CheckBox checkBoxMapShowIntendedNextPosition;
         private Button buttonTriangleDisableAllCamCollision;
         private Button buttonTriangleNeutralizeAllTriangles;
-        private CheckBox checkBoxUseMisalignmentOffsetForDistanceToLine;
-        private CheckBox checkBoxNeutralizeTrianglesWith21;
         private Button buttonPasteAndGoto;
         private GroupBox groupBoxSchedule;
         private Button buttonScheduleButtonSet;
@@ -15321,29 +18435,28 @@ namespace STROOP
         private TextBox textBoxScriptAddress;
         private Button buttonScriptGo;
         private TabPage tabPageArea;
-        private SplitContainer splitContainerArea;
+        private BetterSplitContainer splitContainerArea;
         private RadioButton radioButtonArea3;
         private RadioButton radioButtonArea0;
         private RadioButton radioButtonArea1;
         private RadioButton radioButtonArea2;
         private CheckBox checkBoxSelectCurrentArea;
-        private WatchVariablePanel watchVariablePanelArea;
+        private WatchVariableFlowLayoutPanel watchVariablePanelArea;
         private Label labelSelectedArea;
         private RadioButton radioButtonArea7;
         private RadioButton radioButtonArea4;
         private RadioButton radioButtonArea5;
         private RadioButton radioButtonArea6;
         private TabPage tabPageCustom;
-        private WatchVariablePanel watchVariablePanelCustom;
+        private WatchVariableFlowLayoutPanel watchVariablePanelCustom;
         private TabPage tabPageDecompiler;
-        private SplitContainer splitContainerDecompiler;
+        private BetterSplitContainer splitContainerDecompiler;
         private System.Windows.Forms.Integration.ElementHost decompilerViewHost;
         private DecompilerView decompilerView;
         private TextBox textBoxDecompilerAddress;
         private Button buttonDecompilerDecompile;
         private Label labelDecompilerAddress;
-        private ListView listViewDecompiler;
-        private SplitContainer splitContainerCustom;
+        private BetterSplitContainer splitContainerCustom;
         private GroupBox groupBoxVarHeight;
         private BetterTextbox betterTextboxVarHeightGetSet;
         private BetterTextbox betterTextboxVarHeightAddSubtract;
@@ -15365,15 +18478,15 @@ namespace STROOP
         private Button buttonVarNameWidthSubtract;
         private Button buttonVarNameWidthSet;
         private Button buttonVarNameWidthAdd;
-        private Button buttonClearVariables;
+        private Button buttonOpenVars;
         private Button buttonResetVariableSizeToDefault;
         private Button buttonDecompilerBack;
         private Button buttonDecompilerNext;
         private TabPage tabPageVarHack;
-        private SplitContainer splitContainerVarHack;
+        private BetterSplitContainer splitContainerVarHack;
         private Button buttonVarHackAddNewVariable;
-        private Button buttonVarHackClearVariables;
-        private VarHackPanel varHackPanel;
+        private Button buttonVarHackClearVars;
+        private VarHackFlowLayoutPanel varHackPanel;
         private Button buttonVarHackClearVariablesInMemory;
         private Button buttonVarHackApplyVariablesToMemory;
         private Button buttonVarHackShowVariableBytesInBigEndian;
@@ -15398,7 +18511,7 @@ namespace STROOP
         private GroupBox groupBoxRNGIndexTester;
         private BetterTextbox textBoxRNGIndexTester;
         private Button buttonRNGIndexTester;
-        private SplitContainer splitContainerCustomControls;
+        private BetterSplitContainer splitContainerCustomControls;
         private CheckBox checkBoxUseValueAtStartOfGlobalTimer;
         private BetterTextbox textBoxRecordValuesCount;
         private Button buttonCustomClearValues;
@@ -15414,21 +18527,6 @@ namespace STROOP
         private RadioButton radioButtonScuttlebugStuffBBHMerryGoRound;
         private RadioButton radioButtonScuttlebugStuffBBHBalconyEye;
         private Button buttonScuttlebugStuffLungeToHome;
-        private GroupBox groupBoxMapBounds;
-        private BetterTextbox textBoxMapBoundsZoom;
-        private Button buttonMapBoundsZoomIn;
-        private Button buttonMapBoundsZoomOut;
-        private Button buttonMapBoundsDownRight;
-        private BetterTextbox textBoxMapBoundsPosition;
-        private Button buttonMapBoundsRight;
-        private Button buttonMapBoundsUpRight;
-        private Button buttonMapBoundsUp;
-        private Button buttonMapBoundsDown;
-        private Button buttonMapBoundsDownLeft;
-        private Button buttonMapBoundsLeft;
-        private Button buttonMapBoundsUpLeft;
-        private Label labelMapArtificialMarioYLabel;
-        private BetterTextbox textBoxMapArtificialMarioYLabel;
         private BinaryButton buttonDisableFOVFunctions;
         private Button buttonScuttlebugStuffBasement;
         private Button buttonScuttlebugStuff1stFloor;
@@ -15441,6 +18539,299 @@ namespace STROOP
         private Button buttonTriRoomsConvert;
         private Label labelTriRoomsToLabel;
         private Label labelTriRoomsFromLabel;
+        private TabPage tabPageGfx;
+        private BetterSplitContainer splitContainerGfxLeft;
+        private TreeView treeViewGfx;
+        private BetterSplitContainer splitContainerGfxRight;
+        private WatchVariableFlowLayoutPanel watchVariablePanelGfx;
+        private RichTextBox richTextBoxGfx;
+        private BetterSplitContainer splitContainerGfxMiddle;
+        private Button buttonGfxRefresh;
+        private Button buttonGfxRefreshObject;
+        private Button buttonGfxDumpDisplayList;
+        private Button buttonClearVars;
+        private Button buttonSaveVars;
+        private TreeView treeViewDecompile;
+        private Button buttonVarHackOpenVars;
+        private Button buttonVarHackSaveVars;
+        private RadioButton radioButtonCustomTabFlushRight;
+        private RadioButton radioButtonCustomTabFlushLeft;
+        private BetterTextbox textBoxAnimationDescription;
+        private BetterTextbox textBoxActionDescription;
+        private BetterSplitContainer splitContainerPu;
+        private WatchVariableFlowLayoutPanel watchVariablePanelPu;
+        private ComboBox comboBoxRomVersion;
+        private ComboBox comboBoxReadWriteMode;
+        private GroupBox groupBoxMarioPu;
+        private CheckBox checkBoxMarioPuQpu;
+        private BetterTextbox textBoxMarioPuY;
+        private Button buttonMarioPuYp;
+        private Button buttonMarioPuYn;
+        private Button buttonMarioPuXpZp;
+        private BetterTextbox textBoxMarioPuXZ;
+        private Button buttonMarioPuXp;
+        private Button buttonMarioPuXpZn;
+        private Button buttonMarioPuZn;
+        private Button buttonMarioPuZp;
+        private Button buttonMarioPuXnZp;
+        private Button buttonMarioPuXn;
+        private Button buttonMarioPuXnZn;
+        private TabControl tabControlMap;
+        private TabPage tabPageMap2D;
+        private TabPage tabPageMap3D;
+        private BetterSplitContainer splitContainerMapControls;
+        private MapTrackerFlowLayoutPanel flowLayoutPanelMapTrackers;
+        private GroupBox groupBoxMapControlsScale;
+        private RadioButton radioButtonMapControlsScaleMaxCourseSize;
+        private RadioButton radioButtonMapControlsScaleCourseDefault;
+        private BetterTextbox betterTextboxMapControlsScaleCustom;
+        private RadioButton radioButtonMapControlsScaleCustom;
+        private GroupBox groupBoxMapControlsAngle;
+        private BetterTextbox betterTextboxMapControlsAngleCustom;
+        private RadioButton radioButtonMapControlsAngle49152;
+        private RadioButton radioButtonMapControlsAngle16384;
+        private RadioButton radioButtonMapControlsAngle0;
+        private RadioButton radioButtonMapControlsAngleCustom;
+        private RadioButton radioButtonMapControlsAngle32768;
+        private GroupBox groupBoxMapControlsCenter;
+        private BetterTextbox betterTextboxMapControlsCenterCustom;
+        private RadioButton radioButtonMapControlsCenterOrigin;
+        private RadioButton radioButtonMapControlsCenterBestFit;
+        private RadioButton radioButtonMapControlsCenterCustom;
+        private BetterTextbox betterTextboxMapControlsAngleChange;
+        private BetterTextbox betterTextboxMapControlsCenterChange;
+        private BetterTextbox betterTextboxMapControlsScaleChange;
+        private Button buttonMapControlsCenterChangeDownRight;
+        private Button buttonMapControlsCenterChangeRight;
+        private Button buttonMapControlsAngleChangeCounterclockwise;
+        private Button buttonMapControlsScaleChangeMinus;
+        private Button buttonMapControlsAngleChangeClockwise;
+        private Button buttonMapControlsScaleChangePlus;
+        private Button buttonMapControlsCenterChangeUpRight;
+        private Button buttonMapControlsCenterChangeUp;
+        private Button buttonMapControlsCenterChangeDown;
+        private Button buttonMapControlsCenterChangeDownLeft;
+        private Button buttonMapControlsCenterChangeLeft;
+        private Button buttonMapControlsCenterChangeUpLeft;
+        private GroupBox groupBoxMemoryReader;
+        private ComboBox comboBoxMemoryReaderTypeValue;
+        private BetterTextbox textBoxMemoryReaderCountValue;
+        private Button buttonMemoryReaderRead;
+        private Label labelMemoryReaderCountLabel;
+        private BetterTextbox textBoxMemoryReaderAddressValue;
+        private Label labelMemoryReaderAddressLabel;
+        private Label labelMemoryReaderTypeLabel;
+        private TabPage tabPageTas;
+        private BetterSplitContainer splitContainerTas;
+        private WatchVariableFlowLayoutPanel watchVariablePanelTas;
+        private BetterSplitContainer splitContainerTasTable;
+        private DataGridView dataGridViewTas;
+        private Button buttonTasClearData;
+        private CheckBox checkBoxTasRecordData;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private DataGridViewTextBoxColumn Column1;
+        private RichTextBox richTextBoxTasInstructions;
+        private CheckBox checkBoxShowOverlayChildObject;
+        private Button buttonGameOver;
+        private TabPage tabPageMapOptions;
+        private CheckBox checkBoxMapControlsTrackWallTriangle;
+        private CheckBox checkBoxMapControlsTrackGridlines;
+        private CheckBox checkBoxMapControlsTrackCeilingTriangle;
+        private CheckBox checkBoxMapControlsTrackFloorTriangle;
+        private CheckBox checkBoxMapControlsTrackCamera;
+        private CheckBox checkBoxMapControlsTrackHolp;
+        private CheckBox checkBoxMapControlsTrackMario;
+        private Button buttonMapControlsClearAllTrackers;
+        private Button buttonMapControlsAddNewTracker;
+        private CheckBox checkBoxMapControlsTrackAllObjects;
+        private Button buttonMapControlsTrackSelectedObjects;
+        private Button buttonTasStoreMarioAngle;
+        private Button buttonTasStoreMarioPosition;
+        private Label labelMapColorMethod;
+        private CheckBox checkBoxMapGameCamOrientation;
+        private ComboBox comboBoxMapColorMethod;
+        private TabPage tabPageMemory;
+        private BetterTextbox textBoxMemoryObjAddress;
+        private Label labelMemoryObjAddress;
+        private CheckBox checkBoxMemoryUpdateContinuously;
+        private CheckBox checkBoxMemoryLittleEndian;
+        private RichTextBoxEx richTextBoxMemoryAddresses;
+        private RichTextBoxEx richTextBoxMemoryValues;
+        private ComboBox comboBoxMemoryTypes;
+        private BetterSplitContainer splitContainerMemory;
+        private WatchVariableFlowLayoutPanel watchVariablePanelMemory;
+        private CheckBox checkBoxMemoryObj;
+        private CheckBox checkBoxMemoryHex;
+        private CheckBox checkBoxMemoryRelativeAddresses;
+        private TabPage tabPageM64;
+        private Button buttonM64Goto;
+        private BetterTextbox textBoxM64Goto;
+        private Button buttonM64SaveAs;
+        private Button buttonM64Save;
+        private Button buttonM64Open;
+        private DataGridView dataGridViewM64Inputs;
+        private BetterSplitContainer splitContainerM64;
+        private TabControl tabControlM64Details;
+        private TabPage tabPageM64Inputs;
+        private TabPage tabPageM64Header;
+        private PropertyGrid propertyGridM64Header;
+        private TabPage tabPageM64Stats;
+        private Button buttonM64Close;
+        private Label labelM64FileName;
+        private Label labelM64FileLabel;
+        private PropertyGrid propertyGridM64Stats;
+        private Button buttonM64SetJpHeader;
+        private Button buttonM64SetUsHeader;
+        private BetterTextbox textBoxM64PasteMultiplicity;
+        private ListBox listBoxM64Copied;
+        private GroupBox groupBoxM64Selection;
+        private BetterTextbox textBoxM64SelectionInputs;
+        private BetterTextbox textBoxM64SelectionEndFrame;
+        private BetterTextbox textBoxM64SelectionStartFrame;
+        private Label labelM64SelectionInputs;
+        private Label labelM64SelectionEndFrame;
+        private Label labelM64SelectionStartFrame;
+        private Label labelM64PasteMultiplicity;
+        private Button buttonM64PasteOverwrite;
+        private Button buttonM64PasteInsert;
+        private Button buttonM64CopyInputRange;
+        private Button buttonM64CopyRowRange;
+        private Label labelM64NumInputsValue;
+        private Label labelM64NumInputsLabel;
+        private DataGridViewTextBoxColumn ColumnM64Frame;
+        private DataGridViewTextBoxColumn ColumnM64Id;
+        private DataGridViewTextBoxColumn ColumnM64X;
+        private DataGridViewTextBoxColumn ColumnM64Y;
+        private DataGridViewCheckBoxColumn ColumnM64A;
+        private DataGridViewCheckBoxColumn ColumnM64B;
+        private DataGridViewCheckBoxColumn ColumnM64Z;
+        private DataGridViewCheckBoxColumn ColumnM64S;
+        private DataGridViewCheckBoxColumn ColumnM64R;
+        private DataGridViewCheckBoxColumn ColumnM64CUp;
+        private DataGridViewCheckBoxColumn ColumnM64CDown;
+        private DataGridViewCheckBoxColumn ColumnM64CLeft;
+        private DataGridViewCheckBoxColumn ColumnM64CRight;
+        private DataGridViewCheckBoxColumn ColumnM64L;
+        private DataGridViewCheckBoxColumn ColumnM64DUp;
+        private DataGridViewCheckBoxColumn ColumnM64DDown;
+        private DataGridViewCheckBoxColumn ColumnM64DLeft;
+        private DataGridViewCheckBoxColumn ColumnM64DRight;
+        private Button buttonM64TurnOffCells;
+        private Button buttonM64TurnOffInputRange;
+        private Button buttonM64TurnOffRowRange;
+        private Button buttonM64TurnOnCells;
+        private Button buttonM64TurnOnInputRange;
+        private Button buttonM64DeleteRowRange;
+        private ComboBox comboBoxM64FrameInputRelation;
+        private CheckBox checkBoxMaxOutViCount;
+        private GroupBox groupBoxM64QuickDuplication;
+        private Button buttonM64QuickDuplicationDuplicate;
+        private BetterTextbox textBoxM64QuickDuplicationTotalIterations;
+        private BetterTextbox textBoxM64QuickDuplication2ndIterationStart;
+        private BetterTextbox textBoxM64QuickDuplication1stIterationStart;
+        private Label labelM64QuickDuplicationTotalIterations;
+        private Label labelM64QuickDuplication2ndIterationStart;
+        private Label labelM64QuickDuplication1stIterationStart;
+        private Button buttonM64ResetChanges;
+        private Button buttonBypass;
+        private Button buttonGfxHitboxHack;
+        private Label labelM64OnValue;
+        private BetterTextbox textBoxM64OnValue;
+        private ProgressBar progressBarM64;
+        private Label labelM64ProgressBar;
+        private Button buttonOptionsResetSavedSettings;
+        private TabPage tabPageCoin;
+        private BetterSplitContainer splitContainerCoin;
+        private DataGridView dataGridViewCoin;
+        private BetterTextbox textBoxCoinFilterAngleMin;
+        private BetterTextbox textBoxCoinFilterVSpeedMin;
+        private BetterTextbox textBoxCoinVSpeedOffset;
+        private BetterTextbox textBoxCoinFilterHSpeedMin;
+        private BetterTextbox textBoxCoinVSpeedScale;
+        private Label labelCoinFilterAngleFrom;
+        private BetterTextbox textBoxCoinHSpeedScale;
+        private Label labelCoinFilterVSpeedFrom;
+        private Label labelCoinVSpeedOffset;
+        private Label labelCoinFilterHSpeedFrom;
+        private Label labelCoinVSpeedScale;
+        private Label labelCoinHSpeedScale;
+        private ListBox listBoxCoinObjects;
+        private GroupBox groupBoxCoinFilter;
+        private BetterTextbox textBoxCoinFilterAngleMax;
+        private BetterTextbox textBoxCoinFilterVSpeedMax;
+        private Label labelCoinFilterMin;
+        private Label labelCoinFilterMax;
+        private Label labelCoinFilterHSpeedTo;
+        private BetterTextbox textBoxCoinFilterHSpeedMax;
+        private Label labelCoinFilterVSpeedTo;
+        private Label labelCoinFilterAngleTo;
+        private Label labelCoinVSpeedRange;
+        private Label labelCoinHSpeedRange;
+        private Button buttonCoinCalculate;
+        private Button buttonCoinClear;
+        private BetterTextbox textBoxCoinCustomizatonNumDecimalDigits;
+        private Label labelCoinCustomizatonNumDecimalDigits;
+        private BetterTextbox textBoxCoinParamOrder;
+        private Label labelCoinParamOrder;
+        private DataGridViewTextBoxColumn rngIndex;
+        private DataGridViewTextBoxColumn rngValue;
+        private DataGridViewTextBoxColumn rngToGo;
+        private DataGridViewTextBoxColumn coinHSpeed;
+        private DataGridViewTextBoxColumn coinVSpeed;
+        private DataGridViewTextBoxColumn coinAngle;
+        private Label labelCoinTableEntries;
+        private TabPage tabPageMap2;
+        private BetterSplitContainer splitContainerMap2;
+        private GroupBox groupBoxMap2Bounds;
+        private BetterTextbox textBoxMap2BoundsZoom;
+        private Button buttonMap2BoundsZoomIn;
+        private Button buttonMap2BoundsZoomOut;
+        private Button buttonMap2BoundsDownRight;
+        private BetterTextbox textBoxMap2BoundsPosition;
+        private Button buttonMap2BoundsRight;
+        private Button buttonMap2BoundsUpRight;
+        private Button buttonMap2BoundsUp;
+        private Button buttonMap2BoundsDown;
+        private Button buttonMap2BoundsDownLeft;
+        private Button buttonMap2BoundsLeft;
+        private Button buttonMap2BoundsUpLeft;
+        private CheckBox checkBoxMap2ShowMario;
+        private CheckBox checkBoxMap2ShowHolp;
+        private CheckBox checkBoxMap2ShowFloor;
+        private CheckBox checkBoxMap2ShowCeiling;
+        private CheckBox checkBoxMap2ShowCamera;
+        private OpenTK.GLControl glControlMap2;
+        private Label labelMap2IconSize;
+        private Label labelMap2Name;
+        private CheckBox checkBoxMap2ShowInactive;
+        private CheckBox checkBoxMap2ShowIntendedNextPosition;
+        private TrackBar trackBarMap2IconSize;
+        private Label labelMap2Qpu;
+        private BetterTextbox textBoxMap2ArtificialMarioYLabel;
+        private Label labelMap2Id;
+        private Label labelMap2QpuValue;
+        private Label labelMap2PuValue;
+        private Label labelMap2Pu;
+        private Label labelMap2ArtificialMarioYLabel;
+        private Label labelMap2SubName;
+        private Button buttonMoveTabRight;
+        private Button buttonMoveTabLeft;
+        private PictureBox pictureBoxCog;
+        private CheckedListBox checkedListBoxSavedSettings;
+        private BetterTextbox textBoxCoinNumCoins;
+        private Label labelCoinNumCoins;
+        private CheckBox checkBoxCoinCustomizatonDisplayNonQualifiedCoinsOfAQualifiedCoinGroup;
+        private BetterTextbox textBoxCoinFilterRequiredNumOfQualifiedCoins;
+        private Label labelCoinFilterRequiredNumOfQualifiedCoins;
+        private BetterTextbox textBoxCoinCustomizatonStartingRngIndex;
+        private Label labelCoinCustomizatonStartingRngIndex;
+        private GroupBox groupBoxCoinCustomization;
     }
 }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using STROOP.Structs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +19,7 @@ namespace STROOP.Forms
         {
             InitializeComponent();
             _maxStatus = maxStatus;
+            textBoxLoadingHelpfulHint.Text = HelpfulHintUtilities.GetRandomHelpfulHint();
         }
 
         private void LoadingForm_Load(object sender, EventArgs e)

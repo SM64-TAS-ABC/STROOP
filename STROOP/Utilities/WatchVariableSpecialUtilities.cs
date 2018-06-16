@@ -1,2513 +1,2545 @@
 ﻿using STROOP.Managers;
+using STROOP.Models;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace STROOP.Structs
 {
     public static class WatchVariableSpecialUtilities
     {
-        private readonly static Func<uint, string> DEFAULT_GETTER = (uint address) => "NOT IMPL";
-        private readonly static Func<string, uint, bool> DEFAULT_SETTER = (string value, uint address) => false;
+        private readonly static Func<uint, object> DEFAULT_GETTER = (uint address) => Double.NaN;
+        private readonly static Func<object, uint, bool> DEFAULT_SETTER = (object value, uint address) => false;
+        private readonly static WatchVariableSpecialDictionary _dictionary;
 
-        public static (Func<uint, string> getter, Func<string, uint, bool> setter) CreateGetterSetterFunctions(string specialType)
+        static WatchVariableSpecialUtilities()
         {
-            Func<uint, string> getterFunction = DEFAULT_GETTER;
-            Func<string, uint, bool> setterFunction = DEFAULT_SETTER;
+            _dictionary = new WatchVariableSpecialDictionary();
+            AddLiteralEntriesToDictionary();
+            AddGeneratedEntriesToDictionary();
+        }
 
-            switch (specialType)
+        public static (Func<uint, object> getter, Func<object, uint, bool> setter)
+            CreateGetterSetterFunctions(string specialType)
+        {
+            if (_dictionary.ContainsKey(specialType))
+                return _dictionary.Get(specialType);
+            else
+                throw new ArgumentOutOfRangeException();
+        }
+
+        public static void AddGeneratedEntriesToDictionary()
+        {
+            List<Func<uint, PositionAngle>> posAngleFuncs =
+                new List<Func<uint, PositionAngle>>()
+                {
+                    (uint address) => PositionAngle.Custom,
+                    (uint address) => PositionAngle.Mario,
+                    (uint address) => PositionAngle.Holp,
+                    (uint address) => PositionAngle.Camera,
+                    (uint address) => PositionAngle.Obj(address),
+                    (uint address) => PositionAngle.ObjHome(address),
+                    (uint address) => PositionAngle.Ghost(),
+                    (uint address) => PositionAngle.Tri(address, 1),
+                    (uint address) => PositionAngle.Tri(address, 2),
+                    (uint address) => PositionAngle.Tri(address, 3),
+                    (uint address) => SpecialConfig.PointPA,
+                    (uint address) => SpecialConfig.SelfPA,
+                };
+
+            List<string> posAngleStrings =
+                new List<string>()
+                {
+                    "Custom",
+                    "Mario",
+                    "Holp",
+                    "Camera",
+                    "Obj",
+                    "ObjHome",
+                    "Ghost",
+                    "TriV1",
+                    "TriV2",
+                    "TriV3",
+                    "Point",
+                    "Self",
+                };
+
+            for (int i = 0; i < posAngleFuncs.Count; i++)
             {
-                // Object generic vars
+                Func<uint, PositionAngle> func1 = posAngleFuncs[i];
+                string string1 = posAngleStrings[i];
 
-                case "MarioDistanceToObject":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        Position objPos = GetObjectPosition(objAddress);
-                        double dist = MoreMath.GetDistanceBetween(
-                            marioPos.X, marioPos.Y, marioPos.Z, objPos.X, objPos.Y, objPos.Z);
-                        return dist.ToString();
-                    };
-                    setterFunction = (string stringValue, uint objAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        Position objPos = GetObjectPosition(objAddress);
-                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!distAwayNullable.HasValue) return false;
-                        double distAway = distAwayNullable.Value;
-                        (double newMarioX, double newMarioY, double newMarioZ) =
-                            MoreMath.ExtrapolateLine3D(
-                                objPos.X, objPos.Y, objPos.Z, marioPos.X, marioPos.Y, marioPos.Z, distAway);
-                        return SetMarioPosition(newMarioX, newMarioY, newMarioZ);
-                    };
-                    break;
+                for (int j = 0; j < posAngleFuncs.Count; j++)
+                {
+                    if (j == i) continue;
+                    Func<uint, PositionAngle> func2 = posAngleFuncs[j];
+                    string string2 = posAngleStrings[j];
 
-                case "MarioHorizontalDistanceToObject":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        Position objPos = GetObjectPosition(objAddress);
-                        double hDist = MoreMath.GetDistanceBetween(
-                            marioPos.X, marioPos.Z, objPos.X, objPos.Z);
-                        return hDist.ToString();
-                    };
-                    setterFunction = (string stringValue, uint objAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        Position objPos = GetObjectPosition(objAddress);
-                        double? distAway = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!distAway.HasValue) return false;
-                        (double newMarioX, double newMarioZ) =
-                            MoreMath.ExtrapolateLineHorizontally(objPos.X, objPos.Z, marioPos.X, marioPos.Z, distAway.Value);
-                        return SetMarioPosition(newMarioX, null, newMarioZ);
-                    };
-                    break;
-
-                case "MarioVerticalDistanceToObject":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                        float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                        float yDist = marioY - objY;
-                        return yDist.ToString();
-                    };
-                    setterFunction = (string stringValue, uint objAddress) =>
-                    {
-                        float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                        double? distAbove = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!distAbove.HasValue) return false;
-                        double newMarioY = objY + distAbove.Value;
-                        return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
-                    };
-                    break;
-
-                case "MarioDistanceToObjectHome":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        Position homePos = GetObjectHomePosition(objAddress);
-                        double dist = MoreMath.GetDistanceBetween(
-                            marioPos.X, marioPos.Y, marioPos.Z, homePos.X, homePos.Y, homePos.Z);
-                        return dist.ToString();
-                    };
-                    setterFunction = (string stringValue, uint objAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        Position homePos = GetObjectHomePosition(objAddress);
-                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!distAwayNullable.HasValue) return false;
-                        double distAway = distAwayNullable.Value;
-                        (double newMarioX, double newMarioY, double newMarioZ) =
-                            MoreMath.ExtrapolateLine3D(
-                                homePos.X, homePos.Y, homePos.Z, marioPos.X, marioPos.Y, marioPos.Z, distAway);
-                        return SetMarioPosition(newMarioX, newMarioY, newMarioZ);
-                    };
-                    break;
-
-                case "MarioHorizontalDistanceToObjectHome":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        Position homePos = GetObjectHomePosition(objAddress);
-                        double hDist = MoreMath.GetDistanceBetween(
-                            marioPos.X, marioPos.Z, homePos.X, homePos.Z);
-                        return hDist.ToString();
-                    };
-                    setterFunction = (string stringValue, uint objAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        Position homePos = GetObjectHomePosition(objAddress);
-                        double? distAway = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!distAway.HasValue) return false;
-                        (double newMarioX, double newMarioZ) =
-                            MoreMath.ExtrapolateLineHorizontally(homePos.X, homePos.Z, marioPos.X, marioPos.Z, distAway.Value);
-                        return SetMarioPosition(newMarioX, null, newMarioZ);
-                    };
-                    break;
-
-                case "MarioVerticalDistanceToObjectHome":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                        float homeY = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeYOffset);
-                        float yDist = marioY - homeY;
-                        return yDist.ToString();
-                    };
-                    setterFunction = (string stringValue, uint objAddress) =>
-                    {
-                        float homeY = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeYOffset);
-                        double? distAbove = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!distAbove.HasValue) return false;
-                        double newMarioY = homeY + distAbove.Value;
-                        return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
-                    };
-                    break;
-
-                case "ObjectDistanceToHome":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        Position objPos = GetObjectPosition(objAddress);
-                        Position homePos = GetObjectHomePosition(objAddress);
-                        double dist = MoreMath.GetDistanceBetween(
-                            objPos.X, objPos.Y, objPos.Z, homePos.X, homePos.Y, homePos.Z);
-                        return dist.ToString();
-                    };
-                    setterFunction = (string stringValue, uint objAddress) =>
-                    {
-                        Position objPos = GetObjectPosition(objAddress);
-                        Position homePos = GetObjectHomePosition(objAddress);
-                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!distAwayNullable.HasValue) return false;
-                        double distAway = distAwayNullable.Value;
-                        (double newObjX, double newObjY, double newObjZ) =
-                            MoreMath.ExtrapolateLine3D(
-                                homePos.X, homePos.Y, homePos.Z, objPos.X, objPos.Y, objPos.Z, distAway);
-                        return SetObjectPosition(objAddress, newObjX, newObjY, newObjZ);
-                    };
-                    break;
-
-                case "HorizontalObjectDistanceToHome":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        Position objPos = GetObjectPosition(objAddress);
-                        Position homePos = GetObjectHomePosition(objAddress);
-                        double hDist = MoreMath.GetDistanceBetween(
-                            objPos.X, objPos.Z, homePos.X, homePos.Z);
-                        return hDist.ToString();
-                    };
-                    setterFunction = (string stringValue, uint objAddress) =>
-                    {
-                        Position objPos = GetObjectPosition(objAddress);
-                        Position homePos = GetObjectHomePosition(objAddress);
-                        double? distAway = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!distAway.HasValue) return false;
-                        (double newObjX, double newObjZ) =
-                            MoreMath.ExtrapolateLineHorizontally(homePos.X, homePos.Z, objPos.X, objPos.Z, distAway.Value);
-                        return SetObjectPosition(objAddress, newObjX, null, newObjZ);
-                    };
-                    break;
-
-                case "VerticalObjectDistanceToHome":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                        float homeY = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeYOffset);
-                        float yDist = objY - homeY;
-                        return yDist.ToString();
-                    };
-                    setterFunction = (string stringValue, uint objAddress) =>
-                    {
-                        float homeY = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeYOffset);
-                        double? distAbove = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!distAbove.HasValue) return false;
-                        double newObjY = homeY + distAbove.Value;
-                        return Config.Stream.SetValue((float)newObjY, objAddress + ObjectConfig.YOffset);
-                    };
-                    break;
-
-                case "AngleObjectToMario":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        Position objPos = GetObjectPosition(objAddress);
-                        double angleToMario = MoreMath.AngleTo_AngleUnits(
-                            objPos.X, objPos.Z, marioPos.X, marioPos.Z);
-                        return MoreMath.NormalizeAngleDouble(angleToMario).ToString();
-                    };
-                    setterFunction = (string stringValue, uint objAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        Position objPos = GetObjectPosition(objAddress);
-                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!angleNullable.HasValue) return false;
-                        double angle = angleNullable.Value;
-                        (double newObjX, double newObjZ) =
-                            MoreMath.RotatePointAboutPointToAngle(
-                                objPos.X, objPos.Z, marioPos.X, marioPos.Z, angle);
-                        return SetObjectPosition(objAddress, newObjX, null, newObjZ);
-                    };
-                    break;
-
-                case "DeltaAngleObjectToMario":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        Position objPos = GetObjectPosition(objAddress);
-                        double angleToMario = MoreMath.AngleTo_AngleUnits(
-                            objPos.X, objPos.Z, marioPos.X, marioPos.Z);
-                        double angleDiff = objPos.Angle.Value - angleToMario;
-                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
-                    };
-                    setterFunction = (string stringValue, uint objAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        Position objPos = GetObjectPosition(objAddress);
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!angleDiffNullable.HasValue) return false;
-                        double angleDiff = angleDiffNullable.Value;
-                        double angleToMario = MoreMath.AngleTo_AngleUnits(
-                            objPos.X, objPos.Z, marioPos.X, marioPos.Z);
-                        double newObjAngleDouble = angleToMario + angleDiff;
-                        ushort newObjAngleUShort = MoreMath.NormalizeAngleUshort(newObjAngleDouble);
-                        return SetObjectPosition(objAddress, null, null, null, newObjAngleUShort);
-                    };
-                    break;
-
-                case "AngleMarioToObject":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        Position objPos = GetObjectPosition(objAddress);
-                        double angleToObject = MoreMath.AngleTo_AngleUnits(
-                            marioPos.X, marioPos.Z, objPos.X, objPos.Z);
-                        return MoreMath.NormalizeAngleDouble(angleToObject).ToString();
-                    };
-                    setterFunction = (string stringValue, uint objAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        Position objPos = GetObjectPosition(objAddress);
-                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!angleNullable.HasValue) return false;
-                        double angle = angleNullable.Value;
-                        (double newMarioX, double newMarioZ) =
-                            MoreMath.RotatePointAboutPointToAngle(
-                                marioPos.X, marioPos.Z, objPos.X, objPos.Z, angle);
-                        return SetMarioPosition(newMarioX, null, newMarioZ);
-                    };
-                    break;
-
-                case "DeltaAngleMarioToObject":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        Position objPos = GetObjectPosition(objAddress);
-                        double angleToObject = MoreMath.AngleTo_AngleUnits(
-                            marioPos.X, marioPos.Z, objPos.X, objPos.Z);
-                        double angleDiff = marioPos.Angle.Value - angleToObject;
-                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
-                    };
-                    setterFunction = (string stringValue, uint objAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        Position objPos = GetObjectPosition(objAddress);
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!angleDiffNullable.HasValue) return false;
-                        double angleDiff = angleDiffNullable.Value;
-                        double angleToObj = MoreMath.AngleTo_AngleUnits(
-                            marioPos.X, marioPos.Z, objPos.X, objPos.Z);
-                        double newMarioAngleDouble = angleToObj + angleDiff;
-                        ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
-                        return Config.Stream.SetValue(
-                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
-                    };
-                    break;
-
-                case "AngleObjectToHome":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        Position objPos = GetObjectPosition(objAddress);
-                        Position homePos = GetObjectHomePosition(objAddress);
-                        double angleToHome = MoreMath.AngleTo_AngleUnits(
-                            objPos.X, objPos.Z, homePos.X, homePos.Z);
-                        return MoreMath.NormalizeAngleDouble(angleToHome).ToString();
-                    };
-                    setterFunction = (string stringValue, uint objAddress) =>
-                    {
-                        Position objPos = GetObjectPosition(objAddress);
-                        Position homePos = GetObjectHomePosition(objAddress);
-                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!angleNullable.HasValue) return false;
-                        double angle = angleNullable.Value;
-                        (double newObjX, double newObjZ) =
-                            MoreMath.RotatePointAboutPointToAngle(
-                                objPos.X, objPos.Z, homePos.X, homePos.Z, angle);
-                        return SetObjectPosition(objAddress, newObjX, null, newObjZ);
-                    };
-                    break;
-
-                case "DeltaAngleObjectToHome":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        Position objPos = GetObjectPosition(objAddress);
-                        Position homePos = GetObjectHomePosition(objAddress);
-                        double angleToHome = MoreMath.AngleTo_AngleUnits(
-                            objPos.X, objPos.Z, homePos.X, homePos.Z);
-                        double angleDiff = objPos.Angle.Value - angleToHome;
-                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
-                    };
-                    setterFunction = (string stringValue, uint objAddress) =>
-                    {
-                        Position objPos = GetObjectPosition(objAddress);
-                        Position homePos = GetObjectHomePosition(objAddress);
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!angleDiffNullable.HasValue) return false;
-                        double angleDiff = angleDiffNullable.Value;
-                        double angleToHome = MoreMath.AngleTo_AngleUnits(
-                            objPos.X, objPos.Z, homePos.X, homePos.Z);
-                        double newObjAngleDouble = angleToHome + angleDiff;
-                        ushort newObjAngleUShort = MoreMath.NormalizeAngleUshort(newObjAngleDouble);
-                        return SetObjectPosition(objAddress, null, null, null, newObjAngleUShort);
-                    };
-                    break;
-
-                case "AngleHomeToObject":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        Position objPos = GetObjectPosition(objAddress);
-                        Position homePos = GetObjectHomePosition(objAddress);
-                        double angleHomeToObject = MoreMath.AngleTo_AngleUnits(
-                            homePos.X, homePos.Z, objPos.X, objPos.Z);
-                        return MoreMath.NormalizeAngleDouble(angleHomeToObject).ToString();
-                    };
-                    setterFunction = (string stringValue, uint objAddress) =>
-                    {
-                        Position objPos = GetObjectPosition(objAddress);
-                        Position homePos = GetObjectHomePosition(objAddress);
-                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!angleNullable.HasValue) return false;
-                        double angle = angleNullable.Value;
-                        (double newHomeX, double newHomeZ) =
-                            MoreMath.RotatePointAboutPointToAngle(
-                                homePos.X, homePos.Z, objPos.X, objPos.Z, angle);
-                        return SetObjectHomePosition(objAddress, newHomeX, null, newHomeZ);
-                    };
-                    break;
-
-                case "MarioHitboxAwayFromObject":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                        float mObjX = Config.Stream.GetSingle(marioObjRef + ObjectConfig.XOffset);
-                        float mObjZ = Config.Stream.GetSingle(marioObjRef + ObjectConfig.ZOffset);
-                        float mObjHitboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxRadius);
-
-                        float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
-                        float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
-                        float objHitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadius);
-
-                        double marioHitboxAwayFromObject = MoreMath.GetDistanceBetween(mObjX, mObjZ, objX, objZ) - mObjHitboxRadius - objHitboxRadius;
-                        return marioHitboxAwayFromObject.ToString();
-                    };
-                    setterFunction = (string stringValue, uint objAddress) =>
-                    {
-                        uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                        float mObjX = Config.Stream.GetSingle(marioObjRef + ObjectConfig.XOffset);
-                        float mObjZ = Config.Stream.GetSingle(marioObjRef + ObjectConfig.ZOffset);
-                        float mObjHitboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxRadius);
-
-                        float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
-                        float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
-                        float objHitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadius);
-
-                        Position marioPos = GetMarioPosition();
-                        Position objPos = GetObjectPosition(objAddress);
-                        double? hitboxDistAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!hitboxDistAwayNullable.HasValue) return false;
-                        double hitboxDistAway = hitboxDistAwayNullable.Value;
-                        double distAway = hitboxDistAway + mObjHitboxRadius + objHitboxRadius;
-
-                        (double newMarioX, double newMarioZ) =
-                            MoreMath.ExtrapolateLineHorizontally(objPos.X, objPos.Z, marioPos.X, marioPos.Z, distAway);
-                        return SetMarioPositionAndMarioObjectPosition(newMarioX, null, newMarioZ);
-                    };
-                    break;
-
-                case "MarioHitboxAboveObject":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                        float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
-                        float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxHeight);
-                        float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffset);
-                        float mObjHitboxBottom = mObjY - mObjHitboxDownOffset;
-
-                        float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                        float objHitboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxHeight);
-                        float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffset);
-                        float objHitboxTop = objY + objHitboxHeight - objHitboxDownOffset;
-
-                        double marioHitboxAboveObject = mObjHitboxBottom - objHitboxTop;
-                        return marioHitboxAboveObject.ToString();
-                    };
-                    setterFunction = (string stringValue, uint objAddress) =>
-                    {
-                        uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                        float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
-                        float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffset);
-
-                        float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                        float objHitboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxHeight);
-                        float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffset);
-                        float objHitboxTop = objY + objHitboxHeight - objHitboxDownOffset;
-
-                        double? hitboxDistAboveNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!hitboxDistAboveNullable.HasValue) return false;
-                        double hitboxDistAbove = hitboxDistAboveNullable.Value;
-                        double newMarioY = objHitboxTop + mObjHitboxDownOffset + hitboxDistAbove;
-                        return SetMarioPositionAndMarioObjectPosition(null, newMarioY, null);
-                    };
-                    break;
-
-                case "MarioHitboxBelowObject":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                        float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
-                        float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxHeight);
-                        float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffset);
-                        float mObjHitboxTop = mObjY + mObjHitboxHeight - mObjHitboxDownOffset;
-
-                        float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                        float objHitboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxHeight);
-                        float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffset);
-                        float objHitboxBottom = objY - objHitboxDownOffset;
-
-                        double marioHitboxBelowObject = objHitboxBottom - mObjHitboxTop;
-                        return marioHitboxBelowObject.ToString();
-                    };
-                    setterFunction = (string stringValue, uint objAddress) =>
-                    {
-                        uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                        float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
-                        float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxHeight);
-                        float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffset);
-                        float mObjHitboxTop = mObjY + mObjHitboxHeight - mObjHitboxDownOffset;
-
-                        float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                        float objHitboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxHeight);
-                        float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffset);
-                        float objHitboxBottom = objY - objHitboxDownOffset;
-
-                        double? hitboxDistBelowNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!hitboxDistBelowNullable.HasValue) return false;
-                        double hitboxDistBelow = hitboxDistBelowNullable.Value;
-                        double newMarioY = objHitboxBottom - (mObjHitboxTop - mObjY) - hitboxDistBelow;
-                        return SetMarioPositionAndMarioObjectPosition(null, newMarioY, null);
-                    };
-                    break;
-
-                case "MarioHitboxOverlapsObject":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                        float mObjX = Config.Stream.GetSingle(marioObjRef + ObjectConfig.XOffset);
-                        float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
-                        float mObjZ = Config.Stream.GetSingle(marioObjRef + ObjectConfig.ZOffset);
-                        float mObjHitboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxRadius);
-                        float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxHeight);
-                        float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffset);
-                        float mObjHitboxBottom = mObjY - mObjHitboxDownOffset;
-                        float mObjHitboxTop = mObjY + mObjHitboxHeight - mObjHitboxDownOffset;
-
-                        float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
-                        float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                        float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
-                        float objHitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadius);
-                        float objHitboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxHeight);
-                        float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffset);
-                        float objHitboxBottom = objY - objHitboxDownOffset;
-                        float objHitboxTop = objY + objHitboxHeight - objHitboxDownOffset;
-
-                        double marioHitboxAwayFromObject = MoreMath.GetDistanceBetween(mObjX, mObjZ, objX, objZ) - mObjHitboxRadius - objHitboxRadius;
-                        double marioHitboxAboveObject = mObjHitboxBottom - objHitboxTop;
-                        double marioHitboxBelowObject = objHitboxBottom - mObjHitboxTop;
-
-                        bool overlap = marioHitboxAwayFromObject < 0 && marioHitboxAboveObject <= 0 && marioHitboxBelowObject <= 0;
-                        return overlap ? "1" : "0";
-                    };
-                    break;
-
-                case "ObjectRngCallsPerFrame":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        uint numberOfRngObjs = Config.Stream.GetUInt32(MiscConfig.HackedAreaAddress);
-                        int numOfCalls = 0;
-                        for (int i = 0; i < Math.Min(numberOfRngObjs, ObjectSlotsConfig.MaxSlots); i++)
+                    List<string> distTypes = new List<string>() { "X", "Y", "Z", "H", "", "F", "S" };
+                    List<Func<PositionAngle, PositionAngle, double>> distGetters =
+                        new List<Func<PositionAngle, PositionAngle, double>>()
                         {
-                            uint rngStructAdd = (uint)(MiscConfig.HackedAreaAddress + 0x30 + 0x08 * i);
-                            uint address = Config.Stream.GetUInt32(rngStructAdd + 0x04);
-                            if (address != objAddress) continue;
-                            ushort preRng = Config.Stream.GetUInt16(rngStructAdd + 0x00);
-                            ushort postRng = Config.Stream.GetUInt16(rngStructAdd + 0x02);
-                            numOfCalls = RngIndexer.GetRngIndexDiff(preRng, postRng);
-                            break;
-                        }
-                        return numOfCalls.ToString();
-                    };
-                    break;
-
-                // Object specific vars - Pendulum
-
-                case "PendulumAmplitude":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        float pendulumAmplitude = GetPendulumAmplitude(objAddress);
-                        return pendulumAmplitude.ToString();
-                    };
-                    setterFunction = (string stringValue, uint objAddress) =>
-                    {
-                        double? amplitudeNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!amplitudeNullable.HasValue) return false;
-                        double amplitude = amplitudeNullable.Value;
-                        float accelerationDirection = amplitude > 0 ? -1 : 1;
-
-                        bool success = true;
-                        success &= Config.Stream.SetValue(accelerationDirection, objAddress + ObjectConfig.PendulumAccelerationDirectionOffset);
-                        success &= Config.Stream.SetValue(0f, objAddress + ObjectConfig.PendulumAngularVelocityOffset);
-                        success &= Config.Stream.SetValue((float)amplitude, objAddress + ObjectConfig.PendulumAngleOffset);
-                        return success;
-                    };
-                    break;
-
-                case "PendulumSwingIndex":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        string badValue = "Unknown Index";
-                        float pendulumAmplitudeFloat = GetPendulumAmplitude(objAddress);
-                        int? pendulumAmplitudeIntNullable = ParsingUtilities.ParseIntNullable(pendulumAmplitudeFloat);
-                        if (!pendulumAmplitudeIntNullable.HasValue) return badValue;
-                        int pendulumAmplitudeInt = pendulumAmplitudeIntNullable.Value;
-                        int? pendulumSwingIndexNullable = TableConfig.PendulumSwings.GetPendulumSwingIndex(pendulumAmplitudeInt);
-                        if (!pendulumSwingIndexNullable.HasValue) return badValue;
-                        int pendulumSwingIndex = pendulumSwingIndexNullable.Value;
-                        return pendulumSwingIndex.ToString();
-                    };
-                    setterFunction = (string stringValue, uint objAddress) =>
-                    {
-                        int? indexNullable = ParsingUtilities.ParseIntNullable(stringValue);
-                        if (!indexNullable.HasValue) return false;
-                        int index = indexNullable.Value;
-                        float amplitude = TableConfig.PendulumSwings.GetPendulumAmplitude(index);
-                        float accelerationDirection = amplitude > 0 ? -1 : 1;
-
-                        bool success = true;
-                        success &= Config.Stream.SetValue(accelerationDirection, objAddress + ObjectConfig.PendulumAccelerationDirectionOffset);
-                        success &= Config.Stream.SetValue(0f, objAddress + ObjectConfig.PendulumAngularVelocityOffset);
-                        success &= Config.Stream.SetValue(amplitude, objAddress + ObjectConfig.PendulumAngleOffset);
-                        return success;
-                    };
-                    break;
-
-                // Object specific vars - Waypoint
-
-                case "ObjectDotProductToWaypoint":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        (double dotProduct, double distToWaypointPlane, double distToWaypoint) =
-                            GetWaypointSpecialVars(objAddress);
-                        return dotProduct.ToString();
-                    };
-                    break;
-
-                case "ObjectDistanceToWaypointPlane":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        (double dotProduct, double distToWaypointPlane, double distToWaypoint) =
-                            GetWaypointSpecialVars(objAddress);
-                        return distToWaypointPlane.ToString();
-                    };
-                    break;
-
-                case "ObjectDistanceToWaypoint":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        (double dotProduct, double distToWaypointPlane, double distToWaypoint) =
-                            GetWaypointSpecialVars(objAddress);
-                        return distToWaypoint.ToString();
-                    };
-                    break;
-
-                // Object specific vars - Racing Penguin
-
-                case "RacingPenguinEffortTarget":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget) =
-                            GetRacingPenguinSpecialVars(objAddress);
-                        return effortTarget.ToString();
-                    };
-                    break;
-
-                case "RacingPenguinEffortChange":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget) =
-                            GetRacingPenguinSpecialVars(objAddress);
-                        return effortChange.ToString();
-                    };
-                    break;
-
-                case "RacingPenguinMinHSpeed":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget) =
-                            GetRacingPenguinSpecialVars(objAddress);
-                        return minHSpeed.ToString();
-                    };
-                    break;
-
-                case "RacingPenguinHSpeedTarget":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget) =
-                            GetRacingPenguinSpecialVars(objAddress);
-                        return hSpeedTarget.ToString();
-                    };
-                    break;
-
-                case "RacingPenguinDiffHSpeedTarget":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget) =
-                            GetRacingPenguinSpecialVars(objAddress);
-                        float hSpeed = Config.Stream.GetSingle(objAddress + ObjectConfig.HSpeedOffset);
-                        double hSpeedDiff = hSpeed - hSpeedTarget;
-                        return hSpeedDiff.ToString();
-                    };
-                    break;
-
-                case "RacingPenguinProgress":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        double progress = TableConfig.RacingPenguinWaypoints.GetProgress(objAddress);
-                        return progress.ToString();
-                    };
-                    break;
-                    /*
-                case "RacingPenguinProgressDiff":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        Dictionary<int, TestingManager.VarState> dictionary = Config.TestingManager.VarStateDictionary;
-                        var currentTimer = Config.Stream.GetInt32(Config.SwitchRomVersion(0x803493DC, 0x803463EC));
-                        if (!dictionary.ContainsKey(currentTimer))
+                            (PositionAngle p1, PositionAngle p2) => PositionAngle.GetXDistance(p1, p2),
+                            (PositionAngle p1, PositionAngle p2) => PositionAngle.GetYDistance(p1, p2),
+                            (PositionAngle p1, PositionAngle p2) => PositionAngle.GetZDistance(p1, p2),
+                            (PositionAngle p1, PositionAngle p2) => PositionAngle.GetHDistance(p1, p2),
+                            (PositionAngle p1, PositionAngle p2) => PositionAngle.GetDistance(p1, p2),
+                            (PositionAngle p1, PositionAngle p2) => PositionAngle.GetFDistance(p1, p2),
+                            (PositionAngle p1, PositionAngle p2) => PositionAngle.GetSDistance(p1, p2),
+                        };
+                    List<Func<PositionAngle, PositionAngle, double, bool>> distSetters =
+                        new List<Func<PositionAngle, PositionAngle, double, bool>>()
                         {
-                            return double.NaN.ToString();
-                        }
-                        TestingManager.VarState varState = dictionary[currentTimer];
-                        if (!(varState is TestingManager.VarStatePenguin))
-                        {
-                            return double.NaN.ToString();
-                        }
-                        TestingManager.VarStatePenguin varStatePenguin = varState as TestingManager.VarStatePenguin;
-                        double varStateProgress = varStatePenguin.Progress;
-                        double currentProgress = TableConfig.RacingPenguinWaypoints.GetProgress(objAddress);
-                        double progressDiff = currentProgress - varStateProgress;
-                        return progressDiff.ToString();
-                    };
-                    break;
-                    */
-                    /*
-                case "RacingPenguinProgressDiffDelta":
-                    getterFunction = (uint objAddress) =>
+                            (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetXDistance(p1, p2, dist),
+                            (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetYDistance(p1, p2, dist),
+                            (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetZDistance(p1, p2, dist),
+                            (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetHDistance(p1, p2, dist),
+                            (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetDistance(p1, p2, dist),
+                            (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetFDistance(p1, p2, dist),
+                            (PositionAngle p1, PositionAngle p2, double dist) => PositionAngle.SetSDistance(p1, p2, dist),
+                        };
+
+                    for (int k = 0; k < distTypes.Count; k++)
                     {
-                        TestingManager testingManager = TestingManager.Instance;
-                        Dictionary<int, TestingManager.VarState> dictionary = testingManager.VarStateDictionary;
-                        var currentTimer = Config.Stream.GetInt32(Config.SwitchRomVersion(0x803493DC, 0x803463EC));
-                        if (!dictionary.ContainsKey(currentTimer))
-                        {
-                            newText = "N/A";
-                            break;
-                        }
-                        TestingManager.VarState varState = dictionary[currentTimer];
-                        if (!(varState is TestingManager.VarStatePenguin))
-                        {
-                            newText = "N/A";
-                            break;
-                        }
-                        TestingManager.VarStatePenguin varStatePenguin = varState as TestingManager.VarStatePenguin;
-                        double varStateProgress = varStatePenguin.Progress;
+                        string distType = distTypes[k];
+                        Func<PositionAngle, PositionAngle, double> getter = distGetters[k];
+                        Func<PositionAngle, PositionAngle, double, bool> setter = distSetters[k];
 
-                        double currentProgress = Config.RacingPenguinWaypoints.GetProgress(objAddress);
-                        double progressDiff = currentProgress - varStateProgress;
+                        _dictionary.Add(String.Format("{0}Dist{1}To{2}", distType, string1, string2),
+                            ((uint address) =>
+                            {
+                                return getter(func1(address), func2(address));
+                            },
+                            (double dist, uint address) =>
+                            {
+                                return setter(func1(address), func2(address), dist);
+                            }));
+                    }
 
-                        if (currentTimer != _racingPenguinCurrentTimer)
+                    _dictionary.Add(String.Format("Angle{0}To{1}", string1, string2),
+                        ((uint address) =>
                         {
-                            _racingPenguinPreviousTimer = _racingPenguinCurrentTimer;
-                            _racingPenguinPreviousProgressDiff = _racingPenguinCurrentProgressDiff;
-                            _racingPenguinCurrentTimer = currentTimer;
-                            _racingPenguinCurrentProgressDiff = progressDiff;
-                        }
+                            return PositionAngle.GetAngleTo(func1(address), func2(address), null, false);
+                        },
+                        (double angle, uint address) =>
+                        {
+                            return PositionAngle.SetAngleTo(func1(address), func2(address), angle);
+                        }));
 
-                        newText = Math.Round(_racingPenguinCurrentProgressDiff - _racingPenguinPreviousProgressDiff, 3).ToString();
+                    _dictionary.Add(String.Format("DAngle{0}To{1}", string1, string2),
+                        ((uint address) =>
+                        {
+                            return PositionAngle.GetDAngleTo(func1(address), func2(address), null, false);
+                        },
+                        (double angleDiff, uint address) =>
+                        {
+                            return PositionAngle.SetDAngleTo(func1(address), func2(address), angleDiff);
+                        }));
+
+                    _dictionary.Add(String.Format("AngleDiff{0}To{1}", string1, string2),
+                        ((uint address) =>
+                        {
+                            return PositionAngle.GetAngleDifference(func1(address), func2(address), false);
+                        },
+                        (double angleDiff, uint address) =>
+                        {
+                            return PositionAngle.SetAngleDifference(func1(address), func2(address), angleDiff);
+                        }));
+                }
+            }
+        }
+
+        public static void AddLiteralEntriesToDictionary()
+        {
+            _dictionary.Add("MarioHitboxAwayFromObject",
+                ((uint objAddress) =>
+                {
+                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+                    float mObjX = Config.Stream.GetSingle(marioObjRef + ObjectConfig.XOffset);
+                    float mObjZ = Config.Stream.GetSingle(marioObjRef + ObjectConfig.ZOffset);
+                    float mObjHitboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxRadius);
+
+                    float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
+                    float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
+                    float objHitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadius);
+
+                    double marioHitboxAwayFromObject = MoreMath.GetDistanceBetween(mObjX, mObjZ, objX, objZ) - mObjHitboxRadius - objHitboxRadius;
+                    return marioHitboxAwayFromObject;
+                },
+                (double hitboxDistAway, uint objAddress) =>
+                {
+                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+                    float mObjX = Config.Stream.GetSingle(marioObjRef + ObjectConfig.XOffset);
+                    float mObjZ = Config.Stream.GetSingle(marioObjRef + ObjectConfig.ZOffset);
+                    float mObjHitboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxRadius);
+
+                    float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
+                    float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
+                    float objHitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadius);
+
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    PositionAngle objPos = PositionAngle.Obj(objAddress);
+                    double distAway = hitboxDistAway + mObjHitboxRadius + objHitboxRadius;
+
+                    (double newMarioX, double newMarioZ) =
+                        MoreMath.ExtrapolateLine2D(objPos.X, objPos.Z, marioPos.X, marioPos.Z, distAway);
+                    return BoolUtilities.Combine(
+                        marioPos.SetValues(x: newMarioX, z: newMarioZ),
+                        PositionAngle.MarioObj().SetValues(x: newMarioX, z: newMarioZ));
+                }));
+
+            _dictionary.Add("MarioHitboxAboveObject",
+                ((uint objAddress) =>
+                {
+                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+                    float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
+                    float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxHeight);
+                    float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffset);
+                    float mObjHitboxBottom = mObjY - mObjHitboxDownOffset;
+
+                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    float objHitboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxHeight);
+                    float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffset);
+                    float objHitboxTop = objY + objHitboxHeight - objHitboxDownOffset;
+
+                    double marioHitboxAboveObject = mObjHitboxBottom - objHitboxTop;
+                    return marioHitboxAboveObject;
+                },
+                (double hitboxDistAbove, uint objAddress) =>
+                {
+                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+                    float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
+                    float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffset);
+
+                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    float objHitboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxHeight);
+                    float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffset);
+                    float objHitboxTop = objY + objHitboxHeight - objHitboxDownOffset;
+
+                    double newMarioY = objHitboxTop + mObjHitboxDownOffset + hitboxDistAbove;
+                    return BoolUtilities.Combine(
+                        PositionAngle.Mario.SetY(newMarioY),
+                        PositionAngle.MarioObj().SetY(newMarioY));
+                }));
+
+            _dictionary.Add("MarioHitboxBelowObject",
+                ((uint objAddress) =>
+                {
+                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+                    float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
+                    float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxHeight);
+                    float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffset);
+                    float mObjHitboxTop = mObjY + mObjHitboxHeight - mObjHitboxDownOffset;
+
+                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    float objHitboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxHeight);
+                    float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffset);
+                    float objHitboxBottom = objY - objHitboxDownOffset;
+
+                    double marioHitboxBelowObject = objHitboxBottom - mObjHitboxTop;
+                    return marioHitboxBelowObject;
+                }, 
+                (double hitboxDistBelow, uint objAddress) =>
+                {
+                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+                    float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
+                    float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxHeight);
+                    float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffset);
+                    float mObjHitboxTop = mObjY + mObjHitboxHeight - mObjHitboxDownOffset;
+
+                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    float objHitboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxHeight);
+                    float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffset);
+                    float objHitboxBottom = objY - objHitboxDownOffset;
+
+                    double newMarioY = objHitboxBottom - (mObjHitboxTop - mObjY) - hitboxDistBelow;
+                    return BoolUtilities.Combine(
+                        PositionAngle.Mario.SetY(newMarioY),
+                        PositionAngle.MarioObj().SetY(newMarioY));
+                }));
+
+            _dictionary.Add("MarioHitboxOverlapsObject",
+                ((uint objAddress) =>
+                {
+                    uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+                    float mObjX = Config.Stream.GetSingle(marioObjRef + ObjectConfig.XOffset);
+                    float mObjY = Config.Stream.GetSingle(marioObjRef + ObjectConfig.YOffset);
+                    float mObjZ = Config.Stream.GetSingle(marioObjRef + ObjectConfig.ZOffset);
+                    float mObjHitboxRadius = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxRadius);
+                    float mObjHitboxHeight = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxHeight);
+                    float mObjHitboxDownOffset = Config.Stream.GetSingle(marioObjRef + ObjectConfig.HitboxDownOffset);
+                    float mObjHitboxBottom = mObjY - mObjHitboxDownOffset;
+                    float mObjHitboxTop = mObjY + mObjHitboxHeight - mObjHitboxDownOffset;
+
+                    float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
+                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
+                    float objHitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadius);
+                    float objHitboxHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxHeight);
+                    float objHitboxDownOffset = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxDownOffset);
+                    float objHitboxBottom = objY - objHitboxDownOffset;
+                    float objHitboxTop = objY + objHitboxHeight - objHitboxDownOffset;
+
+                    double marioHitboxAwayFromObject = MoreMath.GetDistanceBetween(mObjX, mObjZ, objX, objZ) - mObjHitboxRadius - objHitboxRadius;
+                    double marioHitboxAboveObject = mObjHitboxBottom - objHitboxTop;
+                    double marioHitboxBelowObject = objHitboxBottom - mObjHitboxTop;
+
+                    bool overlap = marioHitboxAwayFromObject < 0 && marioHitboxAboveObject <= 0 && marioHitboxBelowObject <= 0;
+                    return overlap ? "1" : "0";
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("MarioPunchAngleAway",
+                ((uint objAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    PositionAngle objPos = PositionAngle.Obj(objAddress);
+                    ushort angleToObj = InGameTrigUtilities.InGameAngleTo(
+                        marioPos.X, marioPos.Z, objPos.X, objPos.Z);
+                    double angleDiff = marioPos.Angle - angleToObj;
+                    int angleDiffShort = MoreMath.NormalizeAngleShort(angleDiff);
+                    int angleDiffAbs = Math.Abs(angleDiffShort);
+                    int angleAway = angleDiffAbs - 0x2AAA;
+                    return angleAway;
+                },
+                (double angleAway, uint objAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    PositionAngle objPos = PositionAngle.Obj(objAddress);
+                    ushort angleToObj = InGameTrigUtilities.InGameAngleTo(
+                        marioPos.X, marioPos.Z, objPos.X, objPos.Z);
+                    double oldAngleDiff = marioPos.Angle - angleToObj;
+                    int oldAngleDiffShort = MoreMath.NormalizeAngleShort(oldAngleDiff);
+                    int signMultiplier = oldAngleDiffShort >= 0 ? 1 : -1;
+
+                    double angleDiffAbs = angleAway + 0x2AAA;
+                    double angleDiff = angleDiffAbs * signMultiplier;
+                    double marioAngleDouble = angleToObj + angleDiff;
+                    ushort marioAngleUShort = MoreMath.NormalizeAngleUshort(marioAngleDouble);
+
+                    return Config.Stream.SetValue(marioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                }));
+
+            _dictionary.Add("ObjectRngCallsPerFrame",
+                ((uint objAddress) =>
+                {
+                    uint numberOfRngObjs = Config.Stream.GetUInt32(MiscConfig.HackedAreaAddress);
+                    int numOfCalls = 0;
+                    for (int i = 0; i < Math.Min(numberOfRngObjs, ObjectSlotsConfig.MaxSlots); i++)
+                    {
+                        uint rngStructAdd = (uint)(MiscConfig.HackedAreaAddress + 0x30 + 0x08 * i);
+                        uint address = Config.Stream.GetUInt32(rngStructAdd + 0x04);
+                        if (address != objAddress) continue;
+                        ushort preRng = Config.Stream.GetUInt16(rngStructAdd + 0x00);
+                        ushort postRng = Config.Stream.GetUInt16(rngStructAdd + 0x02);
+                        numOfCalls = RngIndexer.GetRngIndexDiff(preRng, postRng);
                         break;
-                    };
-                    break;
-                    */
-
-                // Object specific vars - Koopa the Quick
-
-                case "KoopaTheQuickHSpeedTarget":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        (double hSpeedTarget, double hSpeedChange) = GetKoopaTheQuickSpecialVars(objAddress);
-                        return hSpeedTarget.ToString();
-                    };
-                    break;
-
-                case "KoopaTheQuickHSpeedChange":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        (double hSpeedTarget, double hSpeedChange) = GetKoopaTheQuickSpecialVars(objAddress);
-                        return hSpeedChange.ToString();
-                    };
-                    break;
-
-                case "KoopaTheQuick1Progress":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        double progress = TableConfig.KoopaTheQuick1Waypoints.GetProgress(objAddress);
-                        return progress.ToString();
-                    };
-                    break;
-
-                case "KoopaTheQuick2Progress":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        double progress = TableConfig.KoopaTheQuick2Waypoints.GetProgress(objAddress);
-                        return progress.ToString();
-                    };
-                    break;
-
-                // Object specific vars - Fly Guy
-
-                case "FlyGuyZone":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                        float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                        double heightDiff = marioY - objY;
-                        if (heightDiff < -400) return "Low";
-                        if (heightDiff > -200) return "High";
-                        return "Medium";
-                    };
-                    break;
-
-                case "FlyGuyRelativeHeight":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
-                        double relativeHeight = TableConfig.FlyGuyData.GetRelativeHeight(oscillationTimer);
-                        return relativeHeight.ToString();
-                    };
-                    break;
-
-                case "FlyGuyNextHeightDiff":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
-                        double nextRelativeHeight = TableConfig.FlyGuyData.GetNextHeightDiff(oscillationTimer);
-                        return nextRelativeHeight.ToString();
-                    };
-                    break;
-
-                case "FlyGuyMinHeight":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                        int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
-                        double minHeight = TableConfig.FlyGuyData.GetMinHeight(oscillationTimer, objY);
-                        return minHeight.ToString();
-                    };
-                    break;
-
-                case "FlyGuyMaxHeight":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-                        int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
-                        double maxHeight = TableConfig.FlyGuyData.GetMaxHeight(oscillationTimer, objY);
-                        return maxHeight.ToString();
-                    };
-                    break;
-
-                // Object specific vars - Bob-omb
-
-                case "BobombBloatSize":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        float scale = Config.Stream.GetSingle(objAddress + ObjectConfig.ScaleWidthOffset);
-                        float bloatSize = (scale - 1) * 5;
-                        return bloatSize.ToString();
-                    };
-                    setterFunction = (string stringValue, uint objAddress) =>
-                    {
-                        double? bloatSizeNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!bloatSizeNullable.HasValue) return false;
-                        double bloatSize = bloatSizeNullable.Value;
-                        float scale = (float)(bloatSize / 5 + 1);
-
-                        bool success = true;
-                        success &= Config.Stream.SetValue(scale, objAddress + ObjectConfig.ScaleWidthOffset);
-                        success &= Config.Stream.SetValue(scale, objAddress + ObjectConfig.ScaleHeightOffset);
-                        success &= Config.Stream.SetValue(scale, objAddress + ObjectConfig.ScaleDepthOffset);
-                        return success;
-                    };
-                    break;
-
-                case "BobombRadius":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        float scale = Config.Stream.GetSingle(objAddress + ObjectConfig.ScaleWidthOffset);
-                        float radius = 32 + scale * 65;
-                        return radius.ToString();
-                    };
-                    setterFunction = (string stringValue, uint objAddress) =>
-                    {
-                        double? radiusNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!radiusNullable.HasValue) return false;
-                        double radius = radiusNullable.Value;
-                        float scale = (float)((radius -32) / 65);
-
-                        bool success = true;
-                        success &= Config.Stream.SetValue(scale, objAddress + ObjectConfig.ScaleWidthOffset);
-                        success &= Config.Stream.SetValue(scale, objAddress + ObjectConfig.ScaleHeightOffset);
-                        success &= Config.Stream.SetValue(scale, objAddress + ObjectConfig.ScaleDepthOffset);
-                        return success;
-                    };
-                    break;
-
-                case "BobombSpaceBetween":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        Position objPos = GetObjectPosition(objAddress);
-                        double hDist = MoreMath.GetDistanceBetween(
-                            marioPos.X, marioPos.Z, objPos.X, objPos.Z);
-                        float scale = Config.Stream.GetSingle(objAddress + ObjectConfig.ScaleWidthOffset);
-                        float radius = 32 + scale * 65;
-                        double spaceBetween = hDist - radius;
-                        return spaceBetween.ToString();
-                    };
-                    setterFunction = (string stringValue, uint objAddress) =>
-                    {
-                        double? spaceBetweenNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!spaceBetweenNullable.HasValue) return false;
-                        double spaceBetween = spaceBetweenNullable.Value;
-                        float scale = Config.Stream.GetSingle(objAddress + ObjectConfig.ScaleWidthOffset);
-                        float radius = 32 + scale * 65;
-                        double distAway = spaceBetween + radius;
-
-                        Position marioPos = GetMarioPosition();
-                        Position objPos = GetObjectPosition(objAddress);
-                        (double newMarioX, double newMarioZ) =
-                            MoreMath.ExtrapolateLineHorizontally(objPos.X, objPos.Z, marioPos.X, marioPos.Z, distAway);
-                        return SetMarioPosition(newMarioX, null, newMarioZ);
-                    };
-                    break;
-
-                // Object specific vars - Scuttlebug
-
-                case "ScuttlebugDeltaAngleToTarget":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        ushort facingAngle = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset);
-                        ushort targetAngle = Config.Stream.GetUInt16(objAddress + ObjectConfig.ScuttlebugTargetAngleOffset);
-                        int angleDiff = facingAngle - targetAngle;
-                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
-                    };
-                    setterFunction = (string stringValue, uint objAddress) =>
-                    {
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!angleDiffNullable.HasValue) return false;
-                        double angleDiff = angleDiffNullable.Value;
-                        ushort targetAngle = Config.Stream.GetUInt16(objAddress + ObjectConfig.ScuttlebugTargetAngleOffset);
-                        double newObjAngleDouble = targetAngle + angleDiff;
-                        ushort newObjAngleUShort = MoreMath.NormalizeAngleUshort(newObjAngleDouble);
-                        return SetObjectPosition(objAddress, null, null, null, newObjAngleUShort);
-                    };
-                    break;
-
-                // Object specific vars - Ghost
-
-                case "MarioGhostVerticalDistance":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                        float ghostY = Config.Stream.GetSingle(objAddress + ObjectConfig.GraphicsYOffset);
-                        float yDiff = marioY - ghostY;
-                        return yDiff.ToString();
-                    };
-                    break;
-
-                case "MarioGhostHorizontalDistance":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        Position ghostPos = GetObjectGraphicsPosition(objAddress);
-                        double hDistToGhost = MoreMath.GetDistanceBetween(
-                            marioPos.X, marioPos.Z, ghostPos.X, ghostPos.Z);
-                        return hDistToGhost.ToString();
-                    };
-                    break;
-
-                case "MarioGhostForwardsDistance":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        Position ghostPos = GetObjectGraphicsPosition(objAddress);
-                        double hDistToGhost = MoreMath.GetDistanceBetween(
-                            marioPos.X, marioPos.Z, ghostPos.X, ghostPos.Z);
-                        double angleFromGhost = MoreMath.AngleTo_AngleUnits(
-                            ghostPos.X, ghostPos.Z, marioPos.X, marioPos.Z);
-                        (double movementSideways, double movementForwards) =
-                            MoreMath.GetComponentsFromVectorRelatively(
-                                hDistToGhost, angleFromGhost, marioPos.Angle.Value);
-                        return movementForwards.ToString();
-                    };
-                    break;
-
-                case "MarioGhostSidewaysDistance":
-                    getterFunction = (uint objAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        Position ghostPos = GetObjectGraphicsPosition(objAddress);
-                        double hDistToGhost = MoreMath.GetDistanceBetween(
-                            marioPos.X, marioPos.Z, ghostPos.X, ghostPos.Z);
-                        double angleFromGhost = MoreMath.AngleTo_AngleUnits(
-                            ghostPos.X, ghostPos.Z, marioPos.X, marioPos.Z);
-                        (double movementSideways, double movementForwards) =
-                            MoreMath.GetComponentsFromVectorRelatively(
-                                hDistToGhost, angleFromGhost, marioPos.Angle.Value);
-                        return movementSideways.ToString();
-                    };
-                    break;
-                    
-                // Mario vars
-
-                case "DeFactoSpeed":
-                    getterFunction = (uint dummy) =>
-                    {
-                        return GetMarioDeFactoSpeed().ToString();
-                    };
-                    setterFunction = (string stringValue, uint dummy) =>
-                    {
-                        double? defactoSpeedNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!defactoSpeedNullable.HasValue) return false;
-                        double defactoSpeed = defactoSpeedNullable.Value;
-
-                        uint floorTri = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
-                        float yNorm = floorTri == 0 ? 1 : Config.Stream.GetSingle(floorTri + TriangleOffsetsConfig.NormY);
-                        float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-
-                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                        float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
-                        float distAboveFloor = marioY - floorY;
-
-                        float newHSpeed = distAboveFloor == 0 ? (float)defactoSpeed / yNorm : hSpeed;
-                        return Config.Stream.SetValue(newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-                    };
-                    break;
-
-                case "SlidingSpeed":
-                    getterFunction = (uint dummy) =>
-                    {
-                        float xSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
-                        float zSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
-                        double hSlidingSpeed = MoreMath.GetHypotenuse(xSlidingSpeed, zSlidingSpeed);
-                        return hSlidingSpeed.ToString();
-                    };
-                    setterFunction = (string stringValue, uint dummy) =>
-                    {
-                        float xSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
-                        float zSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
-                        if (xSlidingSpeed == 0 && zSlidingSpeed == 0) xSlidingSpeed = 1;
-                        double hSlidingSpeed = MoreMath.GetHypotenuse(xSlidingSpeed, zSlidingSpeed);
-
-                        double? newHSlidingSpeedNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!newHSlidingSpeedNullable.HasValue) return false;
-                        double newHSlidingSpeed = newHSlidingSpeedNullable.Value;
-
-                        double multiplier = newHSlidingSpeed / hSlidingSpeed;
-                        double newXSlidingSpeed = xSlidingSpeed * multiplier;
-                        double newZSlidingSpeed = zSlidingSpeed * multiplier;
-
-                        bool success = true;
-                        success &= Config.Stream.SetValue((float)newXSlidingSpeed, MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
-                        success &= Config.Stream.SetValue((float)newZSlidingSpeed, MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
-                        return success;
-                    };
-                    break;
-
-                case "SlidingAngle":
-                    getterFunction = (uint dummy) =>
-                    {
-                        float xSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
-                        float zSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
-                        double slidingAngle = MoreMath.AngleTo_AngleUnits(xSlidingSpeed, zSlidingSpeed);
-                        return slidingAngle.ToString();
-                    };
-                    setterFunction = (string stringValue, uint dummy) =>
-                    {
-                        float xSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
-                        float zSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
-                        double hSlidingSpeed = MoreMath.GetHypotenuse(xSlidingSpeed, zSlidingSpeed);
-
-                        double? newHSlidingAngleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!newHSlidingAngleNullable.HasValue) return false;
-                        double newHSlidingAngle = newHSlidingAngleNullable.Value;
-                        (double newXSlidingSpeed, double newZSlidingSpeed) =
-                            MoreMath.GetComponentsFromVector(hSlidingSpeed, newHSlidingAngle);
-
-                        bool success = true;
-                        success &= Config.Stream.SetValue((float)newXSlidingSpeed, MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
-                        success &= Config.Stream.SetValue((float)newZSlidingSpeed, MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
-                        return success;
-                    };
-                    break;
-
-                case "MovementX":
-                    getterFunction = (uint dummy) =>
-                    {
-                        float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
-                        float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
-                        float movementX = endX - startX;
-                        return movementX.ToString();
-                    };
-                    break;
-
-                case "MovementY":
-                    getterFunction = (uint dummy) =>
-                    {
-                        float endY = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x14);
-                        float startY = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x20);
-                        float movementY = endY - startY;
-                        return movementY.ToString();
-                    };
-                    break;
-
-                case "MovementZ":
-                    getterFunction = (uint dummy) =>
-                    {
-                        float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
-                        float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
-                        float movementZ = endZ - startZ;
-                        return movementZ.ToString();
-                    };
-                    break;
-
-                case "MovementForwards":
-                    getterFunction = (uint dummy) =>
-                    {
-                        float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
-                        float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
-                        float movementX = endX - startX;
-                        float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
-                        float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
-                        float movementZ = endZ - startZ;
-                        double movementHorizontal = MoreMath.GetHypotenuse(movementX, movementZ);
-                        double movementAngle = MoreMath.AngleTo_AngleUnits(movementX, movementZ);
-                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
-                        (double movementSideways, double movementForwards) =
-                            MoreMath.GetComponentsFromVectorRelatively(movementHorizontal, movementAngle, marioAngle);
-                        return movementForwards.ToString();
-                    };
-                    break;
-
-                case "MovementSideways":
-                    getterFunction = (uint dummy) =>
-                    {
-                        float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
-                        float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
-                        float movementX = endX - startX;
-                        float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
-                        float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
-                        float movementZ = endZ - startZ;
-                        double movementHorizontal = MoreMath.GetHypotenuse(movementX, movementZ);
-                        double movementAngle = MoreMath.AngleTo_AngleUnits(movementX, movementZ);
-                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
-                        (double movementSideways, double movementForwards) =
-                            MoreMath.GetComponentsFromVectorRelatively(movementHorizontal, movementAngle, marioAngle);
-                        return movementSideways.ToString();
-                    };
-                    break;
-
-                case "MovementHorizontal":
-                    getterFunction = (uint dummy) =>
-                    {
-                        float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
-                        float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
-                        float movementX = endX - startX;
-                        float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
-                        float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
-                        float movementZ = endZ - startZ;
-                        double movementHorizontal = MoreMath.GetHypotenuse(movementX, movementZ);
-                        return movementHorizontal.ToString();
-                    };
-                    break;
-
-                case "MovementTotal":
-                    getterFunction = (uint dummy) =>
-                    {
-                        float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
-                        float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
-                        float movementX = endX - startX;
-                        float endY = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x14);
-                        float startY = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x20);
-                        float movementY = endY - startY;
-                        float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
-                        float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
-                        float movementZ = endZ - startZ;
-                        double movementTotal = MoreMath.GetHypotenuse(movementX, movementY, movementZ);
-                        return movementTotal.ToString();
-                    };
-                    break;
-
-                case "MovementAngle":
-                    getterFunction = (uint dummy) =>
-                    {
-                        float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
-                        float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
-                        float movementX = endX - startX;
-                        float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
-                        float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
-                        float movementZ = endZ - startZ;
-                        double movementAngle = MoreMath.AngleTo_AngleUnits(movementX, movementZ);
-                        return movementAngle.ToString();
-                    };
-                    break;
-
-                case "QFrameCountEstimate":
-                    getterFunction = (uint dummy) =>
-                    {
-                        float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
-                        float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
-                        float movementX = endX - startX;
-                        float endY = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x14);
-                        float startY = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x20);
-                        float movementY = endY - startY;
-                        float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
-                        float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
-                        float movementZ = endZ - startZ;
-                        float oldHSpeed = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x28);
-                        double qframes = Math.Abs(Math.Round(Math.Sqrt(movementX * movementX + movementZ * movementZ) / (oldHSpeed / 4)));
-                        if (qframes > 4) qframes = double.NaN;
-                        return qframes.ToString();
-                    };
-                    break;
-
-                case "DeltaYawIntendedFacing":
-                    getterFunction = (uint dummy) =>
-                    {
-                        ushort marioYawFacing = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
-                        ushort marioYawFacingTruncated = MoreMath.NormalizeAngleTruncated(marioYawFacing);
-                        ushort marioYawIntended = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawIntendedOffset);
-                        ushort marioYawIntendedTruncated = MoreMath.NormalizeAngleTruncated(marioYawIntended);
-                        int deltaYaw = marioYawIntendedTruncated - marioYawFacingTruncated;
-                        return MoreMath.NormalizeAngleDoubleSigned(deltaYaw).ToString();
-                    };
-                    break;
-
-                case "FallHeight":
-                    getterFunction = (uint dummy) =>
-                    {
-                        float peakHeight = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.PeakHeightOffset);
-                        float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
-                        float fallHeight = peakHeight - floorY;
-                        return fallHeight.ToString();
-                    };
-                    setterFunction = (string stringValue, uint dummy) =>
-                    {
-                        double? fallHeightNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!fallHeightNullable.HasValue) return false;
-                        double fallHeight = fallHeightNullable.Value;
-
-                        float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
-                        double newPeakHeight = floorY + fallHeight;
-                        return Config.Stream.SetValue((float)newPeakHeight, MarioConfig.StructAddress + MarioConfig.PeakHeightOffset);
-                    };
-                    break;
-                    
-                // HUD vars
-
-                case "HudTimeText":
-                    getterFunction = (uint dummy) =>
-                    {
-                        ushort time = Config.Stream.GetUInt16(MarioConfig.StructAddress + HudConfig.TimeOffset);
-                        int totalDeciSeconds = time / 3;
-                        int deciSecondComponent = totalDeciSeconds % 10;
-                        int secondComponent = (totalDeciSeconds / 10) % 60;
-                        int minuteComponent = (totalDeciSeconds / 600);
-                        return minuteComponent + "'" + secondComponent.ToString("D2") + "\"" + deciSecondComponent;
-                    };
-                    setterFunction = (string stringValue, uint dummy) =>
-                    {
-                        if (stringValue == null) return false;
-                        if (stringValue.Length == 0) stringValue = "0" + stringValue;
-                        if (stringValue.Length == 1) stringValue = "\"" + stringValue;
-                        if (stringValue.Length == 2) stringValue = "0" + stringValue;
-                        if (stringValue.Length == 3) stringValue = "0" + stringValue;
-                        if (stringValue.Length == 4) stringValue = "'" + stringValue;
-                        if (stringValue.Length == 5) stringValue = "0" + stringValue;
-
-                        string minuteComponentString = stringValue.Substring(0, stringValue.Length - 5);
-                        string leftMarker = stringValue.Substring(stringValue.Length - 5, 1);
-                        string secondComponentString = stringValue.Substring(stringValue.Length - 4, 2);
-                        string rightMarker = stringValue.Substring(stringValue.Length - 2, 1);
-                        string deciSecondComponentString = stringValue.Substring(stringValue.Length - 1, 1);
-
-                        if (leftMarker != "\"" && leftMarker != "'" && leftMarker != ".") return false;
-                        if (rightMarker != "\"" && rightMarker != "'" && rightMarker != ".") return false;
-
-                        int? minuteComponentNullable = ParsingUtilities.ParseIntNullable(minuteComponentString);
-                        int? secondComponentNullable = ParsingUtilities.ParseIntNullable(secondComponentString);
-                        int? deciSecondComponentNullable = ParsingUtilities.ParseIntNullable(deciSecondComponentString);
-
-                        if (!minuteComponentNullable.HasValue ||
-                            !secondComponentNullable.HasValue ||
-                            !deciSecondComponentNullable.HasValue) return false;
-
-                        int totalDeciSeconds =
-                            deciSecondComponentNullable.Value +
-                            secondComponentNullable.Value * 10 +
-                            minuteComponentNullable.Value * 600;
-
-                        int time = totalDeciSeconds * 3;
-                        ushort timeUShort = ParsingUtilities.ParseUShortRoundingCapping(time);
-                        return Config.Stream.SetValue(timeUShort, MarioConfig.StructAddress + HudConfig.TimeOffset);
-                    };
-                    break;
-
-                // Camera vars
-
-                case "CameraDistanceToMario":
-                    getterFunction = (uint dummy) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        Position cameraPos = GetCameraPosition();
-                        double dist = MoreMath.GetDistanceBetween(
-                            marioPos.X, marioPos.Y, marioPos.Z, cameraPos.X, cameraPos.Y, cameraPos.Z);
-                        return dist.ToString();
-                    };
-                    setterFunction = (string stringValue, uint dummy) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        Position cameraPos = GetCameraPosition();
-                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!distAwayNullable.HasValue) return false;
-                        double distAway = distAwayNullable.Value;
-                        (double newCameraX, double newCameraY, double newCameraZ) =
-                            MoreMath.ExtrapolateLine3D(
-                                marioPos.X, marioPos.Y, marioPos.Z, cameraPos.X, cameraPos.Y, cameraPos.Z, distAway);
-                        return SetCameraPosition(newCameraX, newCameraY, newCameraZ);
-                    };
-                    break;
-
-                // Triangle vars
-
-                case "Classification":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        return triStruct.Classification.ToString();
-                    };
-                    break;
-
-                case "ClosestVertex":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        return "V" + GetClosestTriangleVertexIndex(triAddress);
-                    };
-                    break;
-
-                case "ClosestVertexX":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        return GetClosestTriangleVertexPosition(triAddress).X.ToString();
-                    };
-                    break;
-
-                case "ClosestVertexY":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        return GetClosestTriangleVertexPosition(triAddress).Y.ToString();
-                    };
-                    break;
-
-                case "ClosestVertexZ":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        return GetClosestTriangleVertexPosition(triAddress).Z.ToString();
-                    };
-                    break;
-
-                case "Steepness":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double steepness = MoreMath.RadiansToAngleUnits(Math.Acos(triStruct.NormY));
-                        return steepness.ToString();
-                    };
-                    break;
-
-                case "UpHillAngle":
-                    getterFunction = (uint triAddress) =>
-                    {
-
-                        return GetTriangleUphillAngle(triAddress).ToString();
-                    };
-                    break;
-
-                case "DownHillAngle":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        double uphillAngle = GetTriangleUphillAngle(triAddress);
-                        return MoreMath.ReverseAngle(uphillAngle).ToString();
-                    };
-                    break;
-
-                case "LeftHillAngle":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        double uphillAngle = GetTriangleUphillAngle(triAddress);
-                        return MoreMath.RotateAngleCCW(uphillAngle, 16384).ToString();
-                    };
-                    break;
-
-                case "RightHillAngle":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        double uphillAngle = GetTriangleUphillAngle(triAddress);
-                        return MoreMath.RotateAngleCW(uphillAngle, 16384).ToString();
-                    };
-                    break;
-
-                case "UpHillDeltaAngle":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
-                        double uphillAngle = GetTriangleUphillAngle(triAddress);
-                        double angleDiff = marioAngle - uphillAngle;
-                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
-                    };
-                    break;
-
-                case "DownHillDeltaAngle":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
-                        double uphillAngle = GetTriangleUphillAngle(triAddress);
-                        double downhillAngle = MoreMath.ReverseAngle(uphillAngle);
-                        double angleDiff = marioAngle - downhillAngle;
-                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
-                    };
-                    break;
-
-                case "LeftHillDeltaAngle":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
-                        double uphillAngle = GetTriangleUphillAngle(triAddress);
-                        double lefthillAngle = MoreMath.RotateAngleCCW(uphillAngle, 16384);
-                        double angleDiff = marioAngle - lefthillAngle;
-                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
-                    };
-                    break;
-
-                case "RightHillDeltaAngle":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
-                        double uphillAngle = GetTriangleUphillAngle(triAddress);
-                        double righthillAngle = MoreMath.RotateAngleCW(uphillAngle, 16384);
-                        double angleDiff = marioAngle - righthillAngle;
-                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
-                    };
-                    break;
-
-                case "DistanceAboveFloor":
-                    getterFunction = (uint dummy) =>
-                    {
-                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                        float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
-                        float distAboveFloor = marioY - floorY;
-                        return distAboveFloor.ToString();
-                    };
-                    setterFunction = (string stringValue, uint dummy) =>
-                    {
-                        float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
-                        double? distAboveNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!distAboveNullable.HasValue) return false;
-                        double distAbove = distAboveNullable.Value;
-                        double newMarioY = floorY + distAbove;
-                        return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
-                    };
-                    break;
-
-                case "DistanceBelowCeiling":
-                    getterFunction = (uint dummy) =>
-                    {
-                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                        float ceilingY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.CeilingYOffset);
-                        float distBelowCeiling = ceilingY - marioY;
-                        return distBelowCeiling.ToString();
-                    };
-                    setterFunction = (string stringValue, uint dummy) =>
-                    {
-                        float ceilingY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.CeilingYOffset);
-                        double? distBelowNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!distBelowNullable.HasValue) return false;
-                        double distBelow = distBelowNullable.Value;
-                        double newMarioY = ceilingY - distBelow;
-                        return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
-                    };
-                    break;
-
-                case "NormalDistAway":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double normalDistAway =
-                            marioPos.X * triStruct.NormX +
-                            marioPos.Y * triStruct.NormY +
-                            marioPos.Z * triStruct.NormZ +
-                            triStruct.NormOffset;
-                        return normalDistAway.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!distAwayNullable.HasValue) return false;
-                        double distAway = distAwayNullable.Value;
-
-                        double missingDist = distAway -
-                            marioPos.X * triStruct.NormX -
-                            marioPos.Y * triStruct.NormY -
-                            marioPos.Z * triStruct.NormZ -
-                            triStruct.NormOffset;
-
-                        double xDiff = missingDist * triStruct.NormX;
-                        double yDiff = missingDist * triStruct.NormY;
-                        double zDiff = missingDist * triStruct.NormZ;
-
-                        double newMarioX = marioPos.X + xDiff;
-                        double newMarioY = marioPos.Y + yDiff;
-                        double newMarioZ = marioPos.Z + zDiff;
-
-                        return SetMarioPosition(newMarioX, newMarioY, newMarioZ);
-                    };
-                    break;
-
-                case "VerticalDistAway":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double verticalDistAway =
-                            marioPos.Y + (marioPos.X * triStruct.NormX + marioPos.Z * triStruct.NormZ + triStruct.NormOffset) / triStruct.NormY;
-                        return verticalDistAway.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? distAboveNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!distAboveNullable.HasValue) return false;
-                        double distAbove = distAboveNullable.Value;
-                        double newMarioY = distAbove - (marioPos.X * triStruct.NormX + marioPos.Z * triStruct.NormZ + triStruct.NormOffset) / triStruct.NormY;
-                        return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
-                    };
-                    break;
-
-                case "HeightOnSlope":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double heightOnTriangle =
-                            (-marioPos.X * triStruct.NormX - marioPos.Z * triStruct.NormZ - triStruct.NormOffset) / triStruct.NormY;
-                        return heightOnTriangle.ToString();
-                    };
-                    break;
-
-                case "ObjectTriCount":
-                    getterFunction = (uint dummy) =>
-                    {
-                        int totalTriangleCount = Config.Stream.GetInt32(TriangleConfig.TotalTriangleCountAddress);
-                        int levelTriangleCount = Config.Stream.GetInt32(TriangleConfig.LevelTriangleCountAddress);
-                        int objectTriangleCount = totalTriangleCount - levelTriangleCount;
-                        return objectTriangleCount.ToString();
-                    };
-                    break;
-
-                case "ObjectNodeCount":
-                    getterFunction = (uint dummy) =>
-                    {
-                        int totalNodeCount = Config.Stream.GetInt32(TriangleConfig.TotalNodeCountAddress);
-                        int levelNodeCount = Config.Stream.GetInt32(TriangleConfig.LevelNodeCountAddress);
-                        int objectNodeCount = totalNodeCount - levelNodeCount;
-                        return objectNodeCount.ToString();
-                    };
-                    break;
-
-                case "XDistanceToV1":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double xDistToV1 = marioX - triStruct.X1;
-                        return xDistToV1.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? xDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!xDistNullable.HasValue) return false;
-                        double xDist = xDistNullable.Value;
-                        double newMarioX = triStruct.X1 + xDist;
-                        return Config.Stream.SetValue((float)newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
-                    };
-                    break;
-
-                case "YDistanceToV1":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double yDistToV1 = marioY - triStruct.Y1;
-                        return yDistToV1.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? yDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!yDistNullable.HasValue) return false;
-                        double yDist = yDistNullable.Value;
-                        double newMarioY = triStruct.Y1 + yDist;
-                        return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
-                    };
-                    break;
-
-                case "ZDistanceToV1":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double zDistToV1 = marioZ - triStruct.Z1;
-                        return zDistToV1.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? zDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!zDistNullable.HasValue) return false;
-                        double zDist = zDistNullable.Value;
-                        double newMarioZ = triStruct.Z1 + zDist;
-                        return Config.Stream.SetValue((float)newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
-                    };
-                    break;
-
-                case "HDistanceToV1":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double hDistToV1 = MoreMath.GetDistanceBetween(
-                            marioPos.X, marioPos.Z, triStruct.X1, triStruct.Z1);
-                        return hDistToV1.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? hDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!hDistNullable.HasValue) return false;
-                        double hDist = hDistNullable.Value;
-                        (double newMarioX, double newMarioZ) =
-                            MoreMath.ExtrapolateLineHorizontally(triStruct.X1, triStruct.Z1, marioPos.X, marioPos.Z, hDist);
-                        return SetMarioPosition(newMarioX, null, newMarioZ);
-                    };
-                    break;
-
-                case "DistanceToV1":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double distToV1 = MoreMath.GetDistanceBetween(
-                            marioPos.X, marioPos.Y, marioPos.Z, triStruct.X1, triStruct.Y1, triStruct.Z1);
-                        return distToV1.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!distAwayNullable.HasValue) return false;
-                        double distAway = distAwayNullable.Value;
-                        (double newMarioX, double newMarioY, double newMarioZ) =
-                            MoreMath.ExtrapolateLine3D(
-                                triStruct.X1, triStruct.Y1, triStruct.Z1, marioPos.X, marioPos.Y, marioPos.Z, distAway);
-                        return SetMarioPosition(newMarioX, newMarioY, newMarioZ);
-                    };
-                    break;
-
-                case "XDistanceToV2":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double xDistToV2 = marioX - triStruct.X2;
-                        return xDistToV2.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? xDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!xDistNullable.HasValue) return false;
-                        double xDist = xDistNullable.Value;
-                        double newMarioX = triStruct.X2 + xDist;
-                        return Config.Stream.SetValue((float)newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
-                    };
-                    break;
-
-                case "YDistanceToV2":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double yDistToV2 = marioY - triStruct.Y2;
-                        return yDistToV2.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? yDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!yDistNullable.HasValue) return false;
-                        double yDist = yDistNullable.Value;
-                        double newMarioY = triStruct.Y2 + yDist;
-                        return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
-                    };
-                    break;
-
-                case "ZDistanceToV2":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double zDistToV2 = marioZ - triStruct.Z2;
-                        return zDistToV2.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? zDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!zDistNullable.HasValue) return false;
-                        double zDist = zDistNullable.Value;
-                        double newMarioZ = triStruct.Z2 + zDist;
-                        return Config.Stream.SetValue((float)newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
-                    };
-                    break;
-
-                case "HDistanceToV2":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double hDistToV2 = MoreMath.GetDistanceBetween(
-                            marioPos.X, marioPos.Z, triStruct.X2, triStruct.Z2);
-                        return hDistToV2.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? hDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!hDistNullable.HasValue) return false;
-                        double hDist = hDistNullable.Value;
-                        (double newMarioX, double newMarioZ) =
-                            MoreMath.ExtrapolateLineHorizontally(triStruct.X2, triStruct.Z2, marioPos.X, marioPos.Z, hDist);
-                        return SetMarioPosition(newMarioX, null, newMarioZ);
-                    };
-                    break;
-
-                case "DistanceToV2":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double distToV2 = MoreMath.GetDistanceBetween(
-                            marioPos.X, marioPos.Y, marioPos.Z, triStruct.X2, triStruct.Y2, triStruct.Z2);
-                        return distToV2.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!distAwayNullable.HasValue) return false;
-                        double distAway = distAwayNullable.Value;
-                        (double newMarioX, double newMarioY, double newMarioZ) =
-                            MoreMath.ExtrapolateLine3D(
-                                triStruct.X2, triStruct.Y2, triStruct.Z2, marioPos.X, marioPos.Y, marioPos.Z, distAway);
-                        return SetMarioPosition(newMarioX, newMarioY, newMarioZ);
-                    };
-                    break;
-
-                case "XDistanceToV3":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double xDistToV3 = marioX - triStruct.X3;
-                        return xDistToV3.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? xDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!xDistNullable.HasValue) return false;
-                        double xDist = xDistNullable.Value;
-                        double newMarioX = triStruct.X3 + xDist;
-                        return Config.Stream.SetValue((float)newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
-                    };
-                    break;
-
-                case "YDistanceToV3":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double yDistToV3 = marioY - triStruct.Y3;
-                        return yDistToV3.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? yDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!yDistNullable.HasValue) return false;
-                        double yDist = yDistNullable.Value;
-                        double newMarioY = triStruct.Y3 + yDist;
-                        return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
-                    };
-                    break;
-
-                case "ZDistanceToV3":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double zDistToV3 = marioZ - triStruct.Z3;
-                        return zDistToV3.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? zDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!zDistNullable.HasValue) return false;
-                        double zDist = zDistNullable.Value;
-                        double newMarioZ = triStruct.Z3 + zDist;
-                        return Config.Stream.SetValue((float)newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
-                    };
-                    break;
-
-                case "HDistanceToV3":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double hDistToV3 = MoreMath.GetDistanceBetween(
-                            marioPos.X, marioPos.Z, triStruct.X3, triStruct.Z3);
-                        return hDistToV3.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? hDistNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!hDistNullable.HasValue) return false;
-                        double hDist = hDistNullable.Value;
-                        (double newMarioX, double newMarioZ) =
-                            MoreMath.ExtrapolateLineHorizontally(triStruct.X3, triStruct.Z3, marioPos.X, marioPos.Z, hDist);
-                        return SetMarioPosition(newMarioX, null, newMarioZ);
-                    };
-                    break;
-
-                case "DistanceToV3":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double distToV3 = MoreMath.GetDistanceBetween(
-                            marioPos.X, marioPos.Y, marioPos.Z, triStruct.X3, triStruct.Y3, triStruct.Z3);
-                        return distToV3.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? distAwayNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!distAwayNullable.HasValue) return false;
-                        double distAway = distAwayNullable.Value;
-                        (double newMarioX, double newMarioY, double newMarioZ) =
-                            MoreMath.ExtrapolateLine3D(
-                                triStruct.X3, triStruct.Y3, triStruct.Z3, marioPos.X, marioPos.Y, marioPos.Z, distAway);
-                        return SetMarioPosition(newMarioX, newMarioY, newMarioZ);
-                    };
-                    break;
-
-                case "DistanceToLine12":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double signedDistToLine12 = MoreMath.GetSignedDistanceFromPointToLine(
-                            marioPos.X, marioPos.Z,
-                            triStruct.X1, triStruct.Z1,
-                            triStruct.X2, triStruct.Z2,
-                            triStruct.X3, triStruct.Z3, 1, 2);
-                        return signedDistToLine12.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double signedDistToLine12 = MoreMath.GetSignedDistanceFromPointToLine(
-                            marioPos.X, marioPos.Z,
-                            triStruct.X1, triStruct.Z1,
-                            triStruct.X2, triStruct.Z2,
-                            triStruct.X3, triStruct.Z3, 1, 2);
-
-                        double? distNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!distNullable.HasValue) return false;
-                        double dist = distNullable.Value;
-                        double missingDist = dist - signedDistToLine12;
-
-                        double lineAngle = MoreMath.AngleTo_AngleUnits(triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
-                        bool floorTri = MoreMath.IsPointLeftOfLine(triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
-                        double inwardAngle = floorTri ? MoreMath.RotateAngleCCW(lineAngle, 16384) : MoreMath.RotateAngleCW(lineAngle, 16384);
-
-                        (double xDiff, double zDiff) = MoreMath.GetComponentsFromVector(missingDist, inwardAngle);
-                        double newMarioX = marioPos.X + xDiff;
-                        double newMarioZ = marioPos.Z + zDiff;
-                        return SetMarioPosition(newMarioX, null, newMarioZ);
-                    };
-                    break;
-
-                case "DistanceToLine23":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double signedDistToLine23 = MoreMath.GetSignedDistanceFromPointToLine(
-                            marioPos.X, marioPos.Z,
-                            triStruct.X1, triStruct.Z1,
-                            triStruct.X2, triStruct.Z2,
-                            triStruct.X3, triStruct.Z3, 2, 3);
-                        return signedDistToLine23.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double signedDistToLine23 = MoreMath.GetSignedDistanceFromPointToLine(
-                            marioPos.X, marioPos.Z,
-                            triStruct.X1, triStruct.Z1,
-                            triStruct.X2, triStruct.Z2,
-                            triStruct.X3, triStruct.Z3, 2, 3);
-
-                        double? distNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!distNullable.HasValue) return false;
-                        double dist = distNullable.Value;
-                        double missingDist = dist - signedDistToLine23;
-
-                        double lineAngle = MoreMath.AngleTo_AngleUnits(triStruct.X2, triStruct.Z2, triStruct.X3, triStruct.Z3);
-                        bool floorTri = MoreMath.IsPointLeftOfLine(triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
-                        double inwardAngle = floorTri ? MoreMath.RotateAngleCCW(lineAngle, 16384) : MoreMath.RotateAngleCW(lineAngle, 16384);
-
-                        (double xDiff, double zDiff) = MoreMath.GetComponentsFromVector(missingDist, inwardAngle);
-                        double newMarioX = marioPos.X + xDiff;
-                        double newMarioZ = marioPos.Z + zDiff;
-                        return SetMarioPosition(newMarioX, null, newMarioZ);
-                    };
-                    break;
-
-                case "DistanceToLine31":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double signedDistToLine31 = MoreMath.GetSignedDistanceFromPointToLine(
-                            marioPos.X, marioPos.Z,
-                            triStruct.X1, triStruct.Z1,
-                            triStruct.X2, triStruct.Z2,
-                            triStruct.X3, triStruct.Z3, 3, 1);
-                        return signedDistToLine31.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double signedDistToLine31 = MoreMath.GetSignedDistanceFromPointToLine(
-                            marioPos.X, marioPos.Z,
-                            triStruct.X1, triStruct.Z1,
-                            triStruct.X2, triStruct.Z2,
-                            triStruct.X3, triStruct.Z3, 3, 1);
-
-                        double? distNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!distNullable.HasValue) return false;
-                        double dist = distNullable.Value;
-                        double missingDist = dist - signedDistToLine31;
-
-                        double lineAngle = MoreMath.AngleTo_AngleUnits(triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1);
-                        bool floorTri = MoreMath.IsPointLeftOfLine(triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
-                        double inwardAngle = floorTri ? MoreMath.RotateAngleCCW(lineAngle, 16384) : MoreMath.RotateAngleCW(lineAngle, 16384);
-
-                        (double xDiff, double zDiff) = MoreMath.GetComponentsFromVector(missingDist, inwardAngle);
-                        double newMarioX = marioPos.X + xDiff;
-                        double newMarioZ = marioPos.Z + zDiff;
-                        return SetMarioPosition(newMarioX, null, newMarioZ);
-                    };
-                    break;
-
-                case "AngleMarioToV1":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double angleToV1 = MoreMath.AngleTo_AngleUnits(
-                            marioPos.X, marioPos.Z, triStruct.X1, triStruct.Z1);
-                        return angleToV1.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!angleNullable.HasValue) return false;
-                        double angle = angleNullable.Value;
-                        (double newMarioX, double newMarioZ) =
-                            MoreMath.RotatePointAboutPointToAngle(
-                                marioPos.X, marioPos.Z, triStruct.X1, triStruct.Z1, angle);
-                        return SetMarioPosition(newMarioX, null, newMarioZ);
-                    };
-                    break;
-
-                case "DeltaAngleMarioToV1":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double angleToV1 = MoreMath.AngleTo_AngleUnits(
-                            marioPos.X, marioPos.Z, triStruct.X1, triStruct.Z1);
-                        double angleDiff = marioPos.Angle.Value - angleToV1;
-                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!angleDiffNullable.HasValue) return false;
-                        double angleDiff = angleDiffNullable.Value;
-                        double angleToVertex = MoreMath.AngleTo_AngleUnits(
-                            marioPos.X, marioPos.Z, triStruct.X1, triStruct.Z1);
-                        double newMarioAngleDouble = angleToVertex + angleDiff;
-                        ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
-                        return Config.Stream.SetValue(
-                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
-                    };
-                    break;
-
-                case "AngleV1ToMario":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double angleV1ToMario = MoreMath.AngleTo_AngleUnits(
-                            triStruct.X1, triStruct.Z1, marioPos.X, marioPos.Z);
-                        return angleV1ToMario.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!angleNullable.HasValue) return false;
-                        double angle = MoreMath.ReverseAngle(angleNullable.Value);
-                        (double newMarioX, double newMarioZ) =
-                            MoreMath.RotatePointAboutPointToAngle(
-                                marioPos.X, marioPos.Z, triStruct.X1, triStruct.Z1, angle);
-                        return SetMarioPosition(newMarioX, null, newMarioZ);
-                    };
-                    break;
-
-                case "AngleMarioToV2":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double angleToV2 = MoreMath.AngleTo_AngleUnits(
-                            marioPos.X, marioPos.Z, triStruct.X2, triStruct.Z2);
-                        return angleToV2.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!angleNullable.HasValue) return false;
-                        double angle = angleNullable.Value;
-                        (double newMarioX, double newMarioZ) =
-                            MoreMath.RotatePointAboutPointToAngle(
-                                marioPos.X, marioPos.Z, triStruct.X2, triStruct.Z2, angle);
-                        return SetMarioPosition(newMarioX, null, newMarioZ);
-                    };
-                    break;
-
-                case "DeltaAngleMarioToV2":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double angleToV2 = MoreMath.AngleTo_AngleUnits(
-                            marioPos.X, marioPos.Z, triStruct.X2, triStruct.Z2);
-                        double angleDiff = marioPos.Angle.Value - angleToV2;
-                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!angleDiffNullable.HasValue) return false;
-                        double angleDiff = angleDiffNullable.Value;
-                        double angleToVertex = MoreMath.AngleTo_AngleUnits(
-                            marioPos.X, marioPos.Z, triStruct.X2, triStruct.Z2);
-                        double newMarioAngleDouble = angleToVertex + angleDiff;
-                        ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
-                        return Config.Stream.SetValue(
-                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
-                    };
-                    break;
-
-                case "AngleV2ToMario":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double angleV2ToMario = MoreMath.AngleTo_AngleUnits(
-                            triStruct.X2, triStruct.Z2, marioPos.X, marioPos.Z);
-                        return angleV2ToMario.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!angleNullable.HasValue) return false;
-                        double angle = MoreMath.ReverseAngle(angleNullable.Value);
-                        (double newMarioX, double newMarioZ) =
-                            MoreMath.RotatePointAboutPointToAngle(
-                                marioPos.X, marioPos.Z, triStruct.X2, triStruct.Z2, angle);
-                        return SetMarioPosition(newMarioX, null, newMarioZ);
-                    };
-                    break;
-
-                case "AngleMarioToV3":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double angleToV3 = MoreMath.AngleTo_AngleUnits(
-                            marioPos.X, marioPos.Z, triStruct.X3, triStruct.Z3);
-                        return angleToV3.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!angleNullable.HasValue) return false;
-                        double angle = angleNullable.Value;
-                        (double newMarioX, double newMarioZ) =
-                            MoreMath.RotatePointAboutPointToAngle(
-                                marioPos.X, marioPos.Z, triStruct.X3, triStruct.Z3, angle);
-                        return SetMarioPosition(newMarioX, null, newMarioZ);
-                    };
-                    break;
-
-                case "DeltaAngleMarioToV3":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double angleToV3 = MoreMath.AngleTo_AngleUnits(
-                            marioPos.X, marioPos.Z, triStruct.X3, triStruct.Z3);
-                        double angleDiff = marioPos.Angle.Value - angleToV3;
-                        return MoreMath.NormalizeAngleDoubleSigned(angleDiff).ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? angleDiffNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!angleDiffNullable.HasValue) return false;
-                        double angleDiff = angleDiffNullable.Value;
-                        double angleToVertex = MoreMath.AngleTo_AngleUnits(
-                            marioPos.X, marioPos.Z, triStruct.X3, triStruct.Z3);
-                        double newMarioAngleDouble = angleToVertex + angleDiff;
-                        ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
-                        return Config.Stream.SetValue(
-                            newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
-                    };
-                    break;
-
-                case "AngleV3ToMario":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double angleV3ToMario = MoreMath.AngleTo_AngleUnits(
-                            triStruct.X3, triStruct.Z3, marioPos.X, marioPos.Z);
-                        return angleV3ToMario.ToString();
-                    };
-                    setterFunction = (string stringValue, uint triAddress) =>
-                    {
-                        Position marioPos = GetMarioPosition();
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double? angleNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!angleNullable.HasValue) return false;
-                        double angle = MoreMath.ReverseAngle(angleNullable.Value);
-                        (double newMarioX, double newMarioZ) =
-                            MoreMath.RotatePointAboutPointToAngle(
-                                marioPos.X, marioPos.Z, triStruct.X3, triStruct.Z3, angle);
-                        return SetMarioPosition(newMarioX, null, newMarioZ);
-                    };
-                    break;
-
-                case "AngleV1ToV2":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double angleV1ToV2 = MoreMath.AngleTo_AngleUnits(
-                            triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
-                        return angleV1ToV2.ToString();
-                    };
-                    break;
-
-                case "AngleV2ToV1":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double angleV2ToV1 = MoreMath.AngleTo_AngleUnits(
-                            triStruct.X2, triStruct.Z2, triStruct.X1, triStruct.Z1);
-                        return angleV2ToV1.ToString();
-                    };
-                    break;
-
-                case "AngleV2ToV3":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double angleV2ToV3 = MoreMath.AngleTo_AngleUnits(
-                            triStruct.X2, triStruct.Z2, triStruct.X3, triStruct.Z3);
-                        return angleV2ToV3.ToString();
-                    };
-                    break;
-
-                case "AngleV3ToV2":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double angleV3ToV2 = MoreMath.AngleTo_AngleUnits(
-                            triStruct.X3, triStruct.Z3, triStruct.X2, triStruct.Z2);
-                        return angleV3ToV2.ToString();
-                    };
-                    break;
-
-                case "AngleV1ToV3":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double angleV1ToV3 = MoreMath.AngleTo_AngleUnits(
-                            triStruct.X1, triStruct.Z1, triStruct.X3, triStruct.Z3);
-                        return angleV1ToV3.ToString();
-                    };
-                    break;
-
-                case "AngleV3ToV1":
-                    getterFunction = (uint triAddress) =>
-                    {
-                        TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                        double angleV3ToV1 = MoreMath.AngleTo_AngleUnits(
-                            triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1);
-                        return angleV3ToV1.ToString();
-                    };
-                    break;
-
-                // Action vars
-
-                case "ActionDescription":
-                    getterFunction = (uint dummy) =>
-                    {
-                        return TableConfig.MarioActions.GetActionName();
-                    };
-                    break;
-
-                case "PrevActionDescription":
-                    getterFunction = (uint dummy) =>
-                    {
-                        return TableConfig.MarioActions.GetPrevActionName();
-                    };
-                    break;
-
-                case "MarioAnimationDescription":
-                    getterFunction = (uint dummy) =>
-                    {
-                        return TableConfig.MarioAnimations.GetAnimationName();
-                    };
-                    break;
-
-                // Water vars
-
-                case "WaterAboveMedian":
-                    getterFunction = (uint dummy) =>
-                    {
-                        short waterLevel = Config.Stream.GetInt16(MarioConfig.StructAddress + MarioConfig.WaterLevelOffset);
-                        short waterLevelMedian = Config.Stream.GetInt16(MiscConfig.WaterLevelMedianAddress);
-                        double waterAboveMedian = waterLevel - waterLevelMedian;
-                        return waterAboveMedian.ToString();
-                    };
-                    break;
-
-                case "MarioAboveWater":
-                    getterFunction = (uint dummy) =>
-                    {
-                        short waterLevel = Config.Stream.GetInt16(MarioConfig.StructAddress + MarioConfig.WaterLevelOffset);
-                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                        float marioAboveWater = marioY - waterLevel;
-                        return marioAboveWater.ToString();
-                    };
-                    setterFunction = (string stringValue, uint dummy) =>
-                    {
-                        double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-                        if (!doubleValueNullable.HasValue) return false;
-                        double goalMarioAboveWater = doubleValueNullable.Value;
-                        short waterLevel = Config.Stream.GetInt16(MarioConfig.StructAddress + MarioConfig.WaterLevelOffset);
-                        float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-                        double goalMarioY = waterLevel + goalMarioAboveWater;
-                        return Config.Stream.SetValue((float)goalMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
-                    };
-                    break;
-
-                // Misc vars
-
-                case "RngIndex":
-                    getterFunction = (uint dummy) =>
-                    {
-                        ushort rngValue = Config.Stream.GetUInt16(MiscConfig.RngAddress);
-                        string rngIndexString = RngIndexer.GetRngIndexString(rngValue);
-                        return rngIndexString;
-                    };
-                    setterFunction = (string stringValue, uint dummy) =>
-                    {
-                        int? index = ParsingUtilities.ParseIntNullable(stringValue);
-                        if (!index.HasValue) return false;
-                        ushort rngValue = RngIndexer.GetRngValue(index.Value);
-                        return Config.Stream.SetValue(rngValue, MiscConfig.RngAddress);
-                    };
-                    break;
-
-                case "RngCallsPerFrame":
-                    getterFunction = (uint dummy) =>
-                    {
-                        ushort preRng = Config.Stream.GetUInt16(MiscConfig.HackedAreaAddress + 0x0C);
-                        ushort currentRng = Config.Stream.GetUInt16(MiscConfig.HackedAreaAddress + 0x0E);
-                        int rngDiff = RngIndexer.GetRngIndexDiff(preRng, currentRng);
-                        return rngDiff.ToString();
-                    };
-                    break;
-
-                case "NumberOfLoadedObjects":
-                    getterFunction = (uint dummy) =>
-                    {
-                        int numberOfLoadedObjects = Config.ObjectSlotsManager.ActiveObjectCount;
-                        return numberOfLoadedObjects.ToString();
-                    };
-                    break;
-
-                // Area vars
-
-                case "CurrentAreaIndexMario":
-                    getterFunction = (uint dummy) =>
-                    {
-                        uint currentAreaMario = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.AreaPointerOffset);
-                        string currentAreaIndexMario = AreaUtilities.GetAreaIndexString(currentAreaMario);
-                        return currentAreaIndexMario;
-                    };
-                    setterFunction = (string stringValue, uint dummy) =>
-                    {
-                        int? intValueNullable = ParsingUtilities.ParseIntNullable(stringValue);
-                        if (!intValueNullable.HasValue) return false;
-                        int currentAreaIndexMario = intValueNullable.Value;
-                        if (currentAreaIndexMario < 0 || currentAreaIndexMario >= 8) return false;
-                        uint currentAreaAddressMario = AreaUtilities.GetAreaAddress(currentAreaIndexMario);
-                        return Config.Stream.SetValue(currentAreaAddressMario, MarioConfig.StructAddress + MarioConfig.AreaPointerOffset);
-                    };
-                    break;
-
-                case "CurrentAreaIndex":
-                    getterFunction = (uint dummy) =>
-                    {
-                        uint currentArea = Config.Stream.GetUInt32(AreaConfig.CurrentAreaPointerAddress);
-                        string currentAreaIndex = AreaUtilities.GetAreaIndexString(currentArea);
-                        return currentAreaIndex;
-                    };
-                    setterFunction = (string stringValue, uint dummy) =>
-                    {
-                        int? intValueNullable = ParsingUtilities.ParseIntNullable(stringValue);
-                        if (!intValueNullable.HasValue) return false;
-                        int currentAreaIndex = intValueNullable.Value;
-                        if (currentAreaIndex < 0 || currentAreaIndex >= 8) return false;
-                        uint currentAreaAddress = AreaUtilities.GetAreaAddress(currentAreaIndex);
-                        return Config.Stream.SetValue(currentAreaAddress, AreaConfig.CurrentAreaPointerAddress);
-                    };
-                    break;
-
-                case "AreaTerrainDescription":
-                    getterFunction = (uint dummy) =>
-                    {
-                        short terrainType = Config.Stream.GetInt16(Config.AreaManager.SelectedAreaAddress + AreaConfig.TerrainTypeOffset);
-                        string terrainDescription = AreaUtilities.GetTerrainDescription(terrainType);
-                        return terrainDescription;
-                    };
-                    setterFunction = (string stringValue, uint dummy) =>
-                    {
-                        short? terrainTypeNullable = AreaUtilities.GetTerrainType(stringValue);
-                        if (!terrainTypeNullable.HasValue) return false;
-                        short terrainType = terrainTypeNullable.Value;
-                        return Config.Stream.SetValue(terrainType, Config.AreaManager.SelectedAreaAddress + AreaConfig.TerrainTypeOffset);
-                    };
-                    break;
-
-                default:
-                    break;
-            }
-
-            return (getterFunction, setterFunction);
-        }
-
-        // Position logic
-
-        private struct Position
-        {
-            public readonly float X;
-            public readonly float Y;
-            public readonly float Z;
-            public readonly ushort? Angle;
-
-            public Position(float x, float y, float z, ushort? angle = null)
-            {
-                X = x;
-                Y = y;
-                Z = z;
-                Angle = angle;
-            }
-        }
-
-        private static Position GetMarioPosition()
-        {
-            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
-            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
-            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
-            ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
-            return new Position(marioX, marioY, marioZ, marioAngle);
-        }
-
-        private static bool SetMarioPosition(double? x, double? y, double? z, ushort? angle = null)
-        {
-            bool success = true;
-            if (x.HasValue) success &= Config.Stream.SetValue((float)x.Value, MarioConfig.StructAddress + MarioConfig.XOffset);
-            if (y.HasValue) success &= Config.Stream.SetValue((float)y.Value, MarioConfig.StructAddress + MarioConfig.YOffset);
-            if (z.HasValue) success &= Config.Stream.SetValue((float)z.Value, MarioConfig.StructAddress + MarioConfig.ZOffset);
-            if (angle.HasValue) success &= Config.Stream.SetValue(angle.Value, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
-            return success;
-        }
-
-        private static bool SetMarioPositionAndMarioObjectPosition(double? x, double? y, double? z, ushort? angle = null)
-        {
-            uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-            bool success = true;
-            success &= SetMarioPosition(x, y, z, angle);
-            success &= SetObjectPosition(marioObjRef, x, y, z, angle);
-            return success;
-        }
-
-        private static Position GetObjectPosition(uint objAddress)
-        {
-            float objX = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
-            float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
-            float objZ = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
-            ushort objAngle = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset);
-            return new Position(objX, objY, objZ, objAngle);
-        }
-
-        private static bool SetObjectPosition(uint objAddress, double? x, double? y, double? z, ushort? angle = null)
-        {
-            bool success = true;
-            if (x.HasValue) success &= Config.Stream.SetValue((float)x.Value, objAddress + ObjectConfig.XOffset);
-            if (y.HasValue) success &= Config.Stream.SetValue((float)y.Value, objAddress + ObjectConfig.YOffset);
-            if (z.HasValue) success &= Config.Stream.SetValue((float)z.Value, objAddress + ObjectConfig.ZOffset);
-            if (angle.HasValue) success &= Config.Stream.SetValue(angle.Value, objAddress + ObjectConfig.YawFacingOffset);
-            if (angle.HasValue) success &= Config.Stream.SetValue(angle.Value, objAddress + ObjectConfig.YawMovingOffset);
-            return success;
-        }
-
-        private static Position GetObjectHomePosition(uint objAddress)
-        {
-            float homeX = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeXOffset);
-            float homeY = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeYOffset);
-            float homeZ = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeZOffset);
-            return new Position(homeX, homeY, homeZ);
-        }
-
-        private static bool SetObjectHomePosition(uint objAddress, double? x, double? y, double? z)
-        {
-            bool success = true;
-            if (x.HasValue) success &= Config.Stream.SetValue((float)x.Value, objAddress + ObjectConfig.HomeXOffset);
-            if (y.HasValue) success &= Config.Stream.SetValue((float)y.Value, objAddress + ObjectConfig.HomeYOffset);
-            if (z.HasValue) success &= Config.Stream.SetValue((float)z.Value, objAddress + ObjectConfig.HomeZOffset);
-            return success;
-        }
-
-        private static Position GetObjectGraphicsPosition(uint objAddress)
-        {
-            float graphicsX = Config.Stream.GetSingle(objAddress + ObjectConfig.GraphicsXOffset);
-            float graphicsY = Config.Stream.GetSingle(objAddress + ObjectConfig.GraphicsYOffset);
-            float graphicsZ = Config.Stream.GetSingle(objAddress + ObjectConfig.GraphicsZOffset);
-            ushort graphicsAngle = Config.Stream.GetUInt16(objAddress + ObjectConfig.GraphicsYawOffset);
-            return new Position(graphicsX, graphicsY, graphicsZ, graphicsAngle);
-        }
-
-        private static Position GetCameraPosition()
-        {
-            float cameraX = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.XOffset);
-            float cameraY = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.YOffset);
-            float cameraZ = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
-            ushort cameraAngle = Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + CameraConfig.YawFacingOffset);
-            return new Position(cameraX, cameraY, cameraZ, cameraAngle);
-        }
-
-        private static bool SetCameraPosition(double? x, double? y, double? z, ushort? angle = null)
-        {
-            bool success = true;
-            if (x.HasValue) success &= Config.Stream.SetValue((float)x.Value, CameraConfig.CameraStructAddress + CameraConfig.XOffset);
-            if (y.HasValue) success &= Config.Stream.SetValue((float)y.Value, CameraConfig.CameraStructAddress + CameraConfig.YOffset);
-            if (z.HasValue) success &= Config.Stream.SetValue((float)z.Value, CameraConfig.CameraStructAddress + CameraConfig.ZOffset);
-            if (angle.HasValue) success &= Config.Stream.SetValue(angle.Value, CameraConfig.CameraStructAddress + CameraConfig.YawFacingOffset);
-            return success;
+                    }
+                    return numOfCalls;
+                },
+                DEFAULT_SETTER));
+
+            // Object specific vars - Pendulum
+
+            _dictionary.Add("PendulumAmplitude",
+                ((uint objAddress) =>
+                {
+                    float pendulumAmplitude = GetPendulumAmplitude(objAddress);
+                    return pendulumAmplitude;
+                },
+                (double amplitude, uint objAddress) =>
+                {
+                    float accelerationDirection = amplitude > 0 ? -1 : 1;
+
+                    bool success = true;
+                    success &= Config.Stream.SetValue(accelerationDirection, objAddress + ObjectConfig.PendulumAccelerationDirectionOffset);
+                    success &= Config.Stream.SetValue(0f, objAddress + ObjectConfig.PendulumAngularVelocityOffset);
+                    success &= Config.Stream.SetValue((float)amplitude, objAddress + ObjectConfig.PendulumAngleOffset);
+                    return success;
+                }));
+
+            _dictionary.Add("PendulumSwingIndex",
+                ((uint objAddress) =>
+                {
+                    float pendulumAmplitudeFloat = GetPendulumAmplitude(objAddress);
+                    int? pendulumAmplitudeIntNullable = ParsingUtilities.ParseIntNullable(pendulumAmplitudeFloat);
+                    if (!pendulumAmplitudeIntNullable.HasValue) return Double.NaN;
+                    int pendulumAmplitudeInt = pendulumAmplitudeIntNullable.Value;
+                    int? pendulumSwingIndexNullable = TableConfig.PendulumSwings.GetPendulumSwingIndex(pendulumAmplitudeInt);
+                    if (!pendulumSwingIndexNullable.HasValue) return Double.NaN;
+                    int pendulumSwingIndex = pendulumSwingIndexNullable.Value;
+                    return pendulumSwingIndex;
+                },
+                (int index, uint objAddress) =>
+                {
+                    float amplitude = TableConfig.PendulumSwings.GetPendulumAmplitude(index);
+                    float accelerationDirection = amplitude > 0 ? -1 : 1;
+
+                    bool success = true;
+                    success &= Config.Stream.SetValue(accelerationDirection, objAddress + ObjectConfig.PendulumAccelerationDirectionOffset);
+                    success &= Config.Stream.SetValue(0f, objAddress + ObjectConfig.PendulumAngularVelocityOffset);
+                    success &= Config.Stream.SetValue(amplitude, objAddress + ObjectConfig.PendulumAngleOffset);
+                    return success;
+                }));
+
+            // Object specific vars - Waypoint
+
+            _dictionary.Add("ObjectDotProductToWaypoint",
+                ((uint objAddress) =>
+                {
+                    (double dotProduct, double distToWaypointPlane, double distToWaypoint) =
+                        GetWaypointSpecialVars(objAddress);
+                    return dotProduct;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("ObjectDistanceToWaypointPlane",
+                ((uint objAddress) =>
+                {
+                    (double dotProduct, double distToWaypointPlane, double distToWaypoint) =
+                        GetWaypointSpecialVars(objAddress);
+                    return distToWaypointPlane;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("ObjectDistanceToWaypoint",
+                ((uint objAddress) =>
+                {
+                    (double dotProduct, double distToWaypointPlane, double distToWaypoint) =
+                        GetWaypointSpecialVars(objAddress);
+                    return distToWaypoint;
+                },
+                DEFAULT_SETTER));
+
+            // Object specific vars - Racing Penguin
+
+            _dictionary.Add("RacingPenguinEffortTarget",
+                ((uint objAddress) =>
+                {
+                    (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget) =
+                        GetRacingPenguinSpecialVars(objAddress);
+                    return effortTarget;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("RacingPenguinEffortChange",
+                ((uint objAddress) =>
+                {
+                    (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget) =
+                        GetRacingPenguinSpecialVars(objAddress);
+                    return effortChange;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("RacingPenguinMinHSpeed",
+                ((uint objAddress) =>
+                {
+                    (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget) =
+                        GetRacingPenguinSpecialVars(objAddress);
+                    return minHSpeed;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("RacingPenguinHSpeedTarget",
+                ((uint objAddress) =>
+                {
+                    (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget) =
+                        GetRacingPenguinSpecialVars(objAddress);
+                    return hSpeedTarget;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("RacingPenguinDiffHSpeedTarget",
+                ((uint objAddress) =>
+                {
+                    (double effortTarget, double effortChange, double minHSpeed, double hSpeedTarget) =
+                        GetRacingPenguinSpecialVars(objAddress);
+                    float hSpeed = Config.Stream.GetSingle(objAddress + ObjectConfig.HSpeedOffset);
+                    double hSpeedDiff = hSpeed - hSpeedTarget;
+                    return hSpeedDiff;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("RacingPenguinProgress",
+                ((uint objAddress) =>
+                {
+                    double progress = TableConfig.RacingPenguinWaypoints.GetProgress(objAddress);
+                    return progress;
+                },
+                DEFAULT_SETTER));
+
+            // Object specific vars - Koopa the Quick
+
+            _dictionary.Add("KoopaTheQuickHSpeedTarget",
+                ((uint objAddress) =>
+                {
+                    (double hSpeedTarget, double hSpeedChange) = GetKoopaTheQuickSpecialVars(objAddress);
+                    return hSpeedTarget;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("KoopaTheQuickHSpeedChange",
+                ((uint objAddress) =>
+                {
+                    (double hSpeedTarget, double hSpeedChange) = GetKoopaTheQuickSpecialVars(objAddress);
+                    return hSpeedChange;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("KoopaTheQuick1Progress",
+                ((uint objAddress) =>
+                {
+                    double progress = TableConfig.KoopaTheQuick1Waypoints.GetProgress(objAddress);
+                    return progress;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("KoopaTheQuick2Progress",
+                ((uint objAddress) =>
+                {
+                    double progress = TableConfig.KoopaTheQuick2Waypoints.GetProgress(objAddress);
+                    return progress;
+                },
+                DEFAULT_SETTER));
+
+            // Object specific vars - Fly Guy
+
+            _dictionary.Add("FlyGuyZone",
+                ((uint objAddress) =>
+                {
+                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    double heightDiff = marioY - objY;
+                    if (heightDiff < -400) return "Low";
+                    if (heightDiff > -200) return "High";
+                    return "Medium";
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("FlyGuyRelativeHeight",
+                ((uint objAddress) =>
+                {
+                    int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
+                    double relativeHeight = TableConfig.FlyGuyData.GetRelativeHeight(oscillationTimer);
+                    return relativeHeight;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("FlyGuyMinHeight",
+                ((uint objAddress) =>
+                {
+                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
+                    double minHeight = TableConfig.FlyGuyData.GetMinHeight(oscillationTimer, objY);
+                    return minHeight;
+                },
+                (double newMinHeight, uint objAddress) =>
+                {
+                    int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
+                    float oldHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    double oldMinHeight = TableConfig.FlyGuyData.GetMinHeight(oscillationTimer, oldHeight);
+                    double heightDiff = newMinHeight - oldMinHeight;
+                    double newHeight = oldHeight + heightDiff;
+                    return Config.Stream.SetValue((float)newHeight, objAddress + ObjectConfig.YOffset);
+                }));
+
+            _dictionary.Add("FlyGuyMaxHeight",
+                ((uint objAddress) =>
+                {
+                    float objY = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
+                    double maxHeight = TableConfig.FlyGuyData.GetMaxHeight(oscillationTimer, objY);
+                    return maxHeight;
+                },
+                (double newMaxHeight, uint objAddress) =>
+                {
+                    int oscillationTimer = Config.Stream.GetInt32(objAddress + ObjectConfig.FlyGuyOscillationTimerOffset);
+                    float oldHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    double oldMaxHeight = TableConfig.FlyGuyData.GetMaxHeight(oscillationTimer, oldHeight);
+                    double heightDiff = newMaxHeight - oldMaxHeight;
+                    double newHeight = oldHeight + heightDiff;
+                    return Config.Stream.SetValue((float)newHeight, objAddress + ObjectConfig.YOffset);
+                }));
+
+            // Object specific vars - Bob-omb
+
+            _dictionary.Add("BobombBloatSize",
+                ((uint objAddress) =>
+                {
+                    float hitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadius);
+                    float bloatSize = (hitboxRadius - 65) / 13;
+                    return bloatSize;
+                },
+                (float bloatSize, uint objAddress) =>
+                {
+                    float hitboxRadius = bloatSize * 13 + 65;
+                    float hitboxHeight = bloatSize * 22.6f + 113;
+                    float scale = bloatSize / 5 + 1;
+
+                    bool success = true;
+                    success &= Config.Stream.SetValue(hitboxRadius, objAddress + ObjectConfig.HitboxRadius);
+                    success &= Config.Stream.SetValue(hitboxHeight, objAddress + ObjectConfig.HitboxHeight);
+                    success &= Config.Stream.SetValue(scale, objAddress + ObjectConfig.ScaleWidthOffset);
+                    success &= Config.Stream.SetValue(scale, objAddress + ObjectConfig.ScaleHeightOffset);
+                    success &= Config.Stream.SetValue(scale, objAddress + ObjectConfig.ScaleDepthOffset);
+                    return success;
+                }));
+
+            _dictionary.Add("BobombRadius",
+                ((uint objAddress) =>
+                {
+                    float hitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadius);
+                    float radius = hitboxRadius + 32;
+                    return radius;
+                },
+                (float radius, uint objAddress) =>
+                {
+                    float bloatSize = (radius - 97) / 13;
+                    float hitboxRadius = bloatSize * 13 + 65;
+                    float hitboxHeight = bloatSize * 22.6f + 113;
+                    float scale = bloatSize / 5 + 1;
+
+                    bool success = true;
+                    success &= Config.Stream.SetValue(hitboxRadius, objAddress + ObjectConfig.HitboxRadius);
+                    success &= Config.Stream.SetValue(hitboxHeight, objAddress + ObjectConfig.HitboxHeight);
+                    success &= Config.Stream.SetValue(scale, objAddress + ObjectConfig.ScaleWidthOffset);
+                    success &= Config.Stream.SetValue(scale, objAddress + ObjectConfig.ScaleHeightOffset);
+                    success &= Config.Stream.SetValue(scale, objAddress + ObjectConfig.ScaleDepthOffset);
+                    return success;
+                }));
+
+            _dictionary.Add("BobombSpaceBetween",
+                ((uint objAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    PositionAngle objPos = PositionAngle.Obj(objAddress);
+                    double hDist = MoreMath.GetDistanceBetween(
+                        marioPos.X, marioPos.Z, objPos.X, objPos.Z);
+                    float hitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadius);
+                    float radius = hitboxRadius + 32;
+                    double spaceBetween = hDist - radius;
+                    return spaceBetween;
+                },
+                (double spaceBetween, uint objAddress) =>
+                {
+                    float hitboxRadius = Config.Stream.GetSingle(objAddress + ObjectConfig.HitboxRadius);
+                    float radius = hitboxRadius + 32;
+                    double distAway = spaceBetween + radius;
+
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    PositionAngle objPos = PositionAngle.Obj(objAddress);
+                    (double newMarioX, double newMarioZ) =
+                        MoreMath.ExtrapolateLine2D(
+                            objPos.X, objPos.Z, marioPos.X, marioPos.Z, distAway);
+                    return marioPos.SetValues(x: newMarioX, z: newMarioZ);
+                }));
+
+            // Object specific vars - Scuttlebug
+
+            _dictionary.Add("ScuttlebugDeltaAngleToTarget",
+                ((uint objAddress) =>
+                {
+                    ushort facingAngle = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset);
+                    ushort targetAngle = Config.Stream.GetUInt16(objAddress + ObjectConfig.ScuttlebugTargetAngleOffset);
+                    int angleDiff = facingAngle - targetAngle;
+                    return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
+                },
+                (double angleDiff, uint objAddress) =>
+                {
+                    ushort targetAngle = Config.Stream.GetUInt16(objAddress + ObjectConfig.ScuttlebugTargetAngleOffset);
+                    double newObjAngleDouble = targetAngle + angleDiff;
+                    ushort newObjAngleUShort = MoreMath.NormalizeAngleUshort(newObjAngleDouble);
+                    return PositionAngle.Obj(objAddress).SetAngle(newObjAngleUShort);
+                }));
+
+            // Object specific vars - Goomba Triplet Spawner
+
+            _dictionary.Add("GoombaTripletLoadingDistanceDiff",
+                ((uint objAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    PositionAngle objPos = PositionAngle.Obj(objAddress);
+                    double dist = MoreMath.GetDistanceBetween(
+                        marioPos.X, marioPos.Y, marioPos.Z, objPos.X, objPos.Y, objPos.Z);
+                    double distDiff = dist - 3000;
+                    return distDiff;
+                },
+                (double distDiff, uint objAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    PositionAngle objPos = PositionAngle.Obj(objAddress);
+                    double distAway = distDiff + 3000;
+                    (double newMarioX, double newMarioY, double newMarioZ) =
+                        MoreMath.ExtrapolateLine3D(
+                            objPos.X, objPos.Y, objPos.Z, marioPos.X, marioPos.Y, marioPos.Z, distAway);
+                    return marioPos.SetValues(x: newMarioX, y: newMarioY, z: newMarioZ);
+                }));
+
+            _dictionary.Add("GoombaTripletUnloadingDistanceDiff",
+                ((uint objAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    PositionAngle objPos = PositionAngle.Obj(objAddress);
+                    double dist = MoreMath.GetDistanceBetween(
+                        marioPos.X, marioPos.Y, marioPos.Z, objPos.X, objPos.Y, objPos.Z);
+                    double distDiff = dist - 4000;
+                    return distDiff;
+                },
+                (double distDiff, uint objAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    PositionAngle objPos = PositionAngle.Obj(objAddress);
+                    double distAway = distDiff + 4000;
+                    (double newMarioX, double newMarioY, double newMarioZ) =
+                        MoreMath.ExtrapolateLine3D(
+                            objPos.X, objPos.Y, objPos.Z, marioPos.X, marioPos.Y, marioPos.Z, distAway);
+                    return marioPos.SetValues(x: newMarioX, y: newMarioY, z: newMarioZ);
+                }));
+
+            _dictionary.Add("BitfsPlatformGroupMinHeight",
+                ((uint objAddress) =>
+                {
+                    int timer = Config.Stream.GetInt32(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
+                    float height = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    return BitfsPlatformGroupTable.GetMinHeight(timer, height);
+                },
+                (double newMinHeight, uint objAddress) =>
+                {
+                    int timer = Config.Stream.GetInt32(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
+                    float height = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    double oldMinHeight = BitfsPlatformGroupTable.GetMinHeight(timer, height);
+                    double heightDiff = newMinHeight - oldMinHeight;
+                    float oldHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    double newHeight = oldHeight + heightDiff;
+                    return Config.Stream.SetValue((float)newHeight, objAddress + ObjectConfig.YOffset);
+                }));
+
+            _dictionary.Add("BitfsPlatformGroupMaxHeight",
+                ((uint objAddress) =>
+                {
+                    int timer = Config.Stream.GetInt32(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
+                    float height = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    return BitfsPlatformGroupTable.GetMaxHeight(timer, height);
+                },
+                (double newMaxHeight, uint objAddress) =>
+                {
+                    int timer = Config.Stream.GetInt32(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
+                    float height = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    double oldMaxHeight = BitfsPlatformGroupTable.GetMaxHeight(timer, height);
+                    double heightDiff = newMaxHeight - oldMaxHeight;
+                    float oldHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    double newHeight = oldHeight + heightDiff;
+                    return Config.Stream.SetValue((float)newHeight, objAddress + ObjectConfig.YOffset);
+                }));
+
+            _dictionary.Add("BitfsPlatformGroupRelativeHeight",
+                ((uint objAddress) =>
+                {
+                    int timer = Config.Stream.GetInt32(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
+                    return BitfsPlatformGroupTable.GetRelativeHeightFromMin(timer);
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("BitfsPlatformGroupDisplacedHeight",
+                ((uint objAddress) =>
+                {
+                    int timer = Config.Stream.GetInt32(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
+                    float height = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                    float homeHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeYOffset);
+                    return BitfsPlatformGroupTable.GetDisplacedHeight(timer, height, homeHeight);
+                },
+                (double displacedHeight, uint objAddress) =>
+                {
+                    float homeHeight = Config.Stream.GetSingle(objAddress + ObjectConfig.HomeYOffset);
+                    double newMaxHeight = homeHeight + displacedHeight;
+                    int timer = Config.Stream.GetInt32(objAddress + ObjectConfig.BitfsPlatformGroupTimerOffset);
+                    float relativeHeightFromMax = BitfsPlatformGroupTable.GetRelativeHeightFromMax(timer);
+                    double newHeight = newMaxHeight + relativeHeightFromMax;
+                    return Config.Stream.SetValue((float)newHeight, objAddress + ObjectConfig.YOffset);
+                }));
+
+            // Mario vars
+
+            _dictionary.Add("DeFactoSpeed",
+                ((uint dummy) =>
+                {
+                    return GetMarioDeFactoSpeed();
+                },
+                (double newDefactoSpeed, uint dummy) =>
+                {
+                    double newHSpeed = newDefactoSpeed / GetDeFactoMultiplier();
+                    return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                }));
+
+            _dictionary.Add("SlidingSpeed",
+                ((uint dummy) =>
+                {
+                    return GetMarioSlidingSpeed();
+                },
+                (double newHSlidingSpeed, uint dummy) =>
+                {
+                    float xSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
+                    float zSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
+                    if (xSlidingSpeed == 0 && zSlidingSpeed == 0) xSlidingSpeed = 1;
+                    double hSlidingSpeed = MoreMath.GetHypotenuse(xSlidingSpeed, zSlidingSpeed);
+
+                    double multiplier = newHSlidingSpeed / hSlidingSpeed;
+                    double newXSlidingSpeed = xSlidingSpeed * multiplier;
+                    double newZSlidingSpeed = zSlidingSpeed * multiplier;
+
+                    bool success = true;
+                    success &= Config.Stream.SetValue((float)newXSlidingSpeed, MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
+                    success &= Config.Stream.SetValue((float)newZSlidingSpeed, MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
+                    return success;
+                }));
+
+            _dictionary.Add("SlidingAngle",
+                ((uint dummy) =>
+                {
+                    float xSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
+                    float zSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
+                    double slidingAngle = MoreMath.AngleTo_AngleUnits(xSlidingSpeed, zSlidingSpeed);
+                    return slidingAngle;
+                },
+                (double newHSlidingAngle, uint dummy) =>
+                {
+                    float xSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
+                    float zSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
+                    double hSlidingSpeed = MoreMath.GetHypotenuse(xSlidingSpeed, zSlidingSpeed);
+
+                    (double newXSlidingSpeed, double newZSlidingSpeed) =
+                        MoreMath.GetComponentsFromVector(hSlidingSpeed, newHSlidingAngle);
+
+                    bool success = true;
+                    success &= Config.Stream.SetValue((float)newXSlidingSpeed, MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
+                    success &= Config.Stream.SetValue((float)newZSlidingSpeed, MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
+                    return success;
+                }));
+
+            _dictionary.Add("BobombTrajectoryFramesToPoint",
+                ((uint dummy) =>
+                {
+                    PositionAngle holpPos = PositionAngle.Holp;
+                    double yDist = SpecialConfig.PointY - holpPos.Y;
+                    double frames = GetObjectTrajectoryYDistToFrames(yDist);
+                    return frames;
+                },
+                (double frames, uint dummy) =>
+                {
+                    PositionAngle holpPos = PositionAngle.Holp;
+                    double yDist = GetObjectTrajectoryFramesToYDist(frames);
+                    double hDist = Math.Abs(GetBobombTrajectoryFramesToHDist(frames));
+                    double newY = SpecialConfig.PointY - yDist;
+                    (double newX, double newZ) = MoreMath.ExtrapolateLine2D(
+                        SpecialConfig.PointX, SpecialConfig.PointZ, holpPos.X, holpPos.Z, hDist);
+                    return PositionAngle.Holp.SetValues(x: newX, y: newY, z: newZ);
+                }));
+
+            _dictionary.Add("CorkBoxTrajectoryFramesToPoint",
+                ((uint dummy) =>
+                {
+                    PositionAngle holpPos = PositionAngle.Holp;
+                    double yDist = SpecialConfig.PointY - holpPos.Y;
+                    double frames = GetObjectTrajectoryYDistToFrames(yDist);
+                    return frames;
+                },
+                (double frames, uint dummy) =>
+                {
+                    PositionAngle holpPos = PositionAngle.Holp;
+                    double yDist = GetObjectTrajectoryFramesToYDist(frames);
+                    double hDist = Math.Abs(GetCorkBoxTrajectoryFramesToHDist(frames));
+                    double newY = SpecialConfig.PointY - yDist;
+                    (double newX, double newZ) = MoreMath.ExtrapolateLine2D(
+                        SpecialConfig.PointX, SpecialConfig.PointZ, holpPos.X, holpPos.Z, hDist);
+                    return PositionAngle.Holp.SetValues(x: newX, y: newY, z: newZ);
+                }));
+
+            _dictionary.Add("TrajectoryRemainingHeight",
+                ((uint dummy) =>
+                {
+                    float vSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.VSpeedOffset);
+                    double remainingHeight = ComputeHeightChangeFromInitialVerticalSpeed(vSpeed);
+                    return remainingHeight;
+                },
+                (double newRemainingHeight, uint dummy) =>
+                {
+                    double initialVSpeed = ComputeInitialVerticalSpeedFromHeightChange(newRemainingHeight);
+                    return Config.Stream.SetValue((float)initialVSpeed, MarioConfig.StructAddress + MarioConfig.VSpeedOffset);
+                }));
+
+            _dictionary.Add("TrajectoryPeakHeight",
+                ((uint dummy) =>
+                {
+                    float vSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.VSpeedOffset);
+                    double remainingHeight = ComputeHeightChangeFromInitialVerticalSpeed(vSpeed);
+                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    double peakHeight = marioY + remainingHeight;
+                    return peakHeight;
+                },
+                (double newPeakHeight, uint dummy) =>
+                {
+                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    double newRemainingHeight = newPeakHeight - marioY;
+                    double initialVSpeed = ComputeInitialVerticalSpeedFromHeightChange(newRemainingHeight);
+                    return Config.Stream.SetValue((float)initialVSpeed, MarioConfig.StructAddress + MarioConfig.VSpeedOffset);
+                }));
+
+            _dictionary.Add("DoubleJumpVerticalSpeed",
+                ((uint dummy) =>
+                {
+                    float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                    double vSpeed = ConvertDoubleJumpHSpeedToVSpeed(hSpeed);
+                    return vSpeed;
+                },
+                (double newVSpeed, uint dummy) =>
+                {
+                    double newHSpeed = ConvertDoubleJumpVSpeedToHSpeed(newVSpeed);
+                    return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                }));
+
+            _dictionary.Add("DoubleJumpHeight",
+                ((uint dummy) =>
+                {
+                    float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                    double vSpeed = ConvertDoubleJumpHSpeedToVSpeed(hSpeed);
+                    double doubleJumpHeight = ComputeHeightChangeFromInitialVerticalSpeed(vSpeed);
+                    return doubleJumpHeight;
+                },
+                (double newHeight, uint dummy) =>
+                {
+                    double initialVSpeed = ComputeInitialVerticalSpeedFromHeightChange(newHeight);
+                    double newHSpeed = ConvertDoubleJumpVSpeedToHSpeed(initialVSpeed);
+                    return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                }));
+
+            _dictionary.Add("DoubleJumpPeakHeight",
+                ((uint dummy) =>
+                {
+                    float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                    double vSpeed = ConvertDoubleJumpHSpeedToVSpeed(hSpeed);
+                    double doubleJumpHeight = ComputeHeightChangeFromInitialVerticalSpeed(vSpeed);
+                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    double doubleJumpPeakHeight = marioY + doubleJumpHeight;
+                    return doubleJumpPeakHeight;
+                },
+                (double newPeakHeight, uint dummy) =>
+                {
+                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    double newHeight = newPeakHeight - marioY;
+                    double initialVSpeed = ComputeInitialVerticalSpeedFromHeightChange(newHeight);
+                    double newHSpeed = ConvertDoubleJumpVSpeedToHSpeed(initialVSpeed);
+                    return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                }));
+
+            _dictionary.Add("MovementX",
+                ((uint dummy) =>
+                {
+                    float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
+                    float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
+                    float movementX = endX - startX;
+                    return movementX;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("MovementY",
+                ((uint dummy) =>
+                {
+                    float endY = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x14);
+                    float startY = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x20);
+                    float movementY = endY - startY;
+                    return movementY;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("MovementZ",
+                ((uint dummy) =>
+                {
+                    float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
+                    float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
+                    float movementZ = endZ - startZ;
+                    return movementZ;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("MovementForwards",
+                ((uint dummy) =>
+                {
+                    float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
+                    float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
+                    float movementX = endX - startX;
+                    float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
+                    float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
+                    float movementZ = endZ - startZ;
+                    double movementHorizontal = MoreMath.GetHypotenuse(movementX, movementZ);
+                    double movementAngle = MoreMath.AngleTo_AngleUnits(movementX, movementZ);
+                    ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    (double movementSideways, double movementForwards) =
+                        MoreMath.GetComponentsFromVectorRelatively(movementHorizontal, movementAngle, marioAngle);
+                    return movementForwards;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("MovementSideways",
+                ((uint dummy) =>
+                {
+                    float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
+                    float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
+                    float movementX = endX - startX;
+                    float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
+                    float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
+                    float movementZ = endZ - startZ;
+                    double movementHorizontal = MoreMath.GetHypotenuse(movementX, movementZ);
+                    double movementAngle = MoreMath.AngleTo_AngleUnits(movementX, movementZ);
+                    ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    (double movementSideways, double movementForwards) =
+                        MoreMath.GetComponentsFromVectorRelatively(movementHorizontal, movementAngle, marioAngle);
+                    return movementSideways;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("MovementHorizontal",
+                ((uint dummy) =>
+                {
+                    float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
+                    float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
+                    float movementX = endX - startX;
+                    float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
+                    float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
+                    float movementZ = endZ - startZ;
+                    double movementHorizontal = MoreMath.GetHypotenuse(movementX, movementZ);
+                    return movementHorizontal;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("MovementTotal",
+                ((uint dummy) =>
+                {
+                    float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
+                    float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
+                    float movementX = endX - startX;
+                    float endY = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x14);
+                    float startY = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x20);
+                    float movementY = endY - startY;
+                    float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
+                    float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
+                    float movementZ = endZ - startZ;
+                    double movementTotal = MoreMath.GetHypotenuse(movementX, movementY, movementZ);
+                    return movementTotal;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("MovementAngle",
+                ((uint dummy) =>
+                {
+                    float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
+                    float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
+                    float movementX = endX - startX;
+                    float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
+                    float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
+                    float movementZ = endZ - startZ;
+                    double movementAngle = MoreMath.AngleTo_AngleUnits(movementX, movementZ);
+                    return movementAngle;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("QFrameCountEstimate",
+                ((uint dummy) =>
+                {
+                    float endX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x10);
+                    float startX = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x1C);
+                    float movementX = endX - startX;
+                    float endY = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x14);
+                    float startY = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x20);
+                    float movementY = endY - startY;
+                    float endZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x18);
+                    float startZ = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x24);
+                    float movementZ = endZ - startZ;
+                    float oldHSpeed = Config.Stream.GetSingle(MiscConfig.HackedAreaAddress + 0x28);
+                    double qframes = Math.Abs(Math.Round(Math.Sqrt(movementX * movementX + movementZ * movementZ) / (oldHSpeed / 4)));
+                    if (qframes > 4) qframes = double.NaN;
+                    return qframes;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("DeltaYawIntendedFacing",
+                ((uint dummy) =>
+                {
+                    return GetDeltaYawIntendedFacing();
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("FallHeight",
+                ((uint dummy) =>
+                {
+                    float peakHeight = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.PeakHeightOffset);
+                    float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
+                    float fallHeight = peakHeight - floorY;
+                    return fallHeight;
+                },
+                (double fallHeight, uint dummy) =>
+                {
+                    float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
+                    double newPeakHeight = floorY + fallHeight;
+                    return Config.Stream.SetValue((float)newPeakHeight, MarioConfig.StructAddress + MarioConfig.PeakHeightOffset);
+                }));
+            
+            // HUD vars
+
+            _dictionary.Add("HudTimeText",
+                ((uint dummy) =>
+                {
+                    ushort time = Config.Stream.GetUInt16(MarioConfig.StructAddress + HudConfig.TimeOffset);
+                    int totalDeciSeconds = time / 3;
+                    int deciSecondComponent = totalDeciSeconds % 10;
+                    int secondComponent = (totalDeciSeconds / 10) % 60;
+                    int minuteComponent = (totalDeciSeconds / 600);
+                    return minuteComponent + "'" + secondComponent.ToString("D2") + "\"" + deciSecondComponent;
+                },
+                (string timerString, uint dummy) =>
+                {
+                    if (timerString.Length == 0) timerString = "0" + timerString;
+                    if (timerString.Length == 1) timerString = "\"" + timerString;
+                    if (timerString.Length == 2) timerString = "0" + timerString;
+                    if (timerString.Length == 3) timerString = "0" + timerString;
+                    if (timerString.Length == 4) timerString = "'" + timerString;
+                    if (timerString.Length == 5) timerString = "0" + timerString;
+
+                    string minuteComponentString = timerString.Substring(0, timerString.Length - 5);
+                    string leftMarker = timerString.Substring(timerString.Length - 5, 1);
+                    string secondComponentString = timerString.Substring(timerString.Length - 4, 2);
+                    string rightMarker = timerString.Substring(timerString.Length - 2, 1);
+                    string deciSecondComponentString = timerString.Substring(timerString.Length - 1, 1);
+
+                    if (leftMarker != "\"" && leftMarker != "'" && leftMarker != ".") return false;
+                    if (rightMarker != "\"" && rightMarker != "'" && rightMarker != ".") return false;
+
+                    int? minuteComponentNullable = ParsingUtilities.ParseIntNullable(minuteComponentString);
+                    int? secondComponentNullable = ParsingUtilities.ParseIntNullable(secondComponentString);
+                    int? deciSecondComponentNullable = ParsingUtilities.ParseIntNullable(deciSecondComponentString);
+
+                    if (!minuteComponentNullable.HasValue ||
+                        !secondComponentNullable.HasValue ||
+                        !deciSecondComponentNullable.HasValue) return false;
+
+                    int totalDeciSeconds =
+                        deciSecondComponentNullable.Value +
+                        secondComponentNullable.Value * 10 +
+                        minuteComponentNullable.Value * 600;
+
+                    int time = totalDeciSeconds * 3;
+                    ushort timeUShort = ParsingUtilities.ParseUShortRoundingCapping(time);
+                    return Config.Stream.SetValue(timeUShort, MarioConfig.StructAddress + HudConfig.TimeOffset);
+                }));
+
+            // Triangle vars
+
+            _dictionary.Add("Classification",
+                ((uint triAddress) =>
+                {
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    return triStruct.Classification.ToString();
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("ClosestVertex",
+                ((uint triAddress) =>
+                {
+                    return "V" + GetClosestTriangleVertexIndex(triAddress);
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("ClosestVertexX",
+                ((uint triAddress) =>
+                {
+                    return GetClosestTriangleVertexPosition(triAddress).X;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("ClosestVertexY",
+                ((uint triAddress) =>
+                {
+                    return GetClosestTriangleVertexPosition(triAddress).Y;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("ClosestVertexZ",
+                ((uint triAddress) =>
+                {
+                    return GetClosestTriangleVertexPosition(triAddress).Z;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("Steepness",
+                ((uint triAddress) =>
+                {
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double steepness = MoreMath.RadiansToAngleUnits(Math.Acos(triStruct.NormY));
+                    return steepness;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("UpHillAngle",
+                ((uint triAddress) =>
+                {
+
+                    return GetTriangleUphillAngle(triAddress);
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("DownHillAngle",
+                ((uint triAddress) =>
+                {
+                    double uphillAngle = GetTriangleUphillAngle(triAddress);
+                    return MoreMath.ReverseAngle(uphillAngle);
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("LeftHillAngle",
+                ((uint triAddress) =>
+                {
+                    double uphillAngle = GetTriangleUphillAngle(triAddress);
+                    return MoreMath.RotateAngleCCW(uphillAngle, 16384);
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("RightHillAngle",
+                ((uint triAddress) =>
+                {
+                    double uphillAngle = GetTriangleUphillAngle(triAddress);
+                    return MoreMath.RotateAngleCW(uphillAngle, 16384);
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("UpHillDeltaAngle",
+                ((uint triAddress) =>
+                {
+                    ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    double uphillAngle = GetTriangleUphillAngle(triAddress);
+                    double angleDiff = marioAngle - uphillAngle;
+                    return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
+                },
+                (double angleDiff, uint triAddress) =>
+                {
+                    double uphillAngle = GetTriangleUphillAngle(triAddress);
+                    double newMarioAngleDouble = uphillAngle + angleDiff;
+                    ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                    return Config.Stream.SetValue(
+                        newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                }));
+
+            _dictionary.Add("DownHillDeltaAngle",
+                ((uint triAddress) =>
+                {
+                    ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    double uphillAngle = GetTriangleUphillAngle(triAddress);
+                    double downhillAngle = MoreMath.ReverseAngle(uphillAngle);
+                    double angleDiff = marioAngle - downhillAngle;
+                    return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
+                },
+                (double angleDiff, uint triAddress) =>
+                {
+                    double uphillAngle = GetTriangleUphillAngle(triAddress);
+                    double downhillAngle = MoreMath.ReverseAngle(uphillAngle);
+                    double newMarioAngleDouble = downhillAngle + angleDiff;
+                    ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                    return Config.Stream.SetValue(
+                        newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                }));
+
+            _dictionary.Add("LeftHillDeltaAngle",
+                ((uint triAddress) =>
+                {
+                    ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    double uphillAngle = GetTriangleUphillAngle(triAddress);
+                    double lefthillAngle = MoreMath.RotateAngleCCW(uphillAngle, 16384);
+                    double angleDiff = marioAngle - lefthillAngle;
+                    return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
+                },
+                (double angleDiff, uint triAddress) =>
+                {
+                    double uphillAngle = GetTriangleUphillAngle(triAddress);
+                    double lefthillAngle = MoreMath.RotateAngleCCW(uphillAngle, 16384);
+                    double newMarioAngleDouble = lefthillAngle + angleDiff;
+                    ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                    return Config.Stream.SetValue(
+                        newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                }));
+
+            _dictionary.Add("RightHillDeltaAngle",
+                ((uint triAddress) =>
+                {
+                    ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    double uphillAngle = GetTriangleUphillAngle(triAddress);
+                    double righthillAngle = MoreMath.RotateAngleCW(uphillAngle, 16384);
+                    double angleDiff = marioAngle - righthillAngle;
+                    return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
+                },
+                (double angleDiff, uint triAddress) =>
+                {
+                    double uphillAngle = GetTriangleUphillAngle(triAddress);
+                    double righthillAngle = MoreMath.RotateAngleCW(uphillAngle, 16384);
+                    double newMarioAngleDouble = righthillAngle + angleDiff;
+                    ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                    return Config.Stream.SetValue(
+                        newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                }));
+
+            _dictionary.Add("HillStatus",
+                ((uint triAddress) =>
+                {
+                    ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                    double uphillAngle = GetTriangleUphillAngle(triAddress);
+                    if (Double.IsNaN(uphillAngle)) return Double.NaN.ToString();
+                    double angleDiff = marioAngle - uphillAngle;
+                    angleDiff = MoreMath.NormalizeAngleDoubleSigned(angleDiff);
+                    bool uphill = angleDiff >= -16384 && angleDiff <= 16384;
+                    return uphill ? "Uphill" : "Downhill";
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("DistanceAboveFloor",
+                ((uint dummy) =>
+                {
+                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
+                    float distAboveFloor = marioY - floorY;
+                    return distAboveFloor;
+                },
+                (double distAbove, uint dummy) =>
+                {
+                    float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
+                    double newMarioY = floorY + distAbove;
+                    return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
+                }));
+
+            _dictionary.Add("DistanceBelowCeiling",
+                ((uint dummy) =>
+                {
+                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    float ceilingY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.CeilingYOffset);
+                    float distBelowCeiling = ceilingY - marioY;
+                    return distBelowCeiling;
+                },
+                (double distBelow, uint dummy) =>
+                {
+                    float ceilingY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.CeilingYOffset);
+                    double newMarioY = ceilingY - distBelow;
+                    return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
+                }));
+
+            _dictionary.Add("NormalDistAway",
+                ((uint triAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double normalDistAway =
+                        marioPos.X * triStruct.NormX +
+                        marioPos.Y * triStruct.NormY +
+                        marioPos.Z * triStruct.NormZ +
+                        triStruct.NormOffset;
+                    return normalDistAway;
+                },
+                (double distAway, uint triAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+
+                    double missingDist = distAway -
+                        marioPos.X * triStruct.NormX -
+                        marioPos.Y * triStruct.NormY -
+                        marioPos.Z * triStruct.NormZ -
+                        triStruct.NormOffset;
+
+                    double xDiff = missingDist * triStruct.NormX;
+                    double yDiff = missingDist * triStruct.NormY;
+                    double zDiff = missingDist * triStruct.NormZ;
+
+                    double newMarioX = marioPos.X + xDiff;
+                    double newMarioY = marioPos.Y + yDiff;
+                    double newMarioZ = marioPos.Z + zDiff;
+
+                    return marioPos.SetValues(x: newMarioX, y: newMarioY, z: newMarioZ);
+                }));
+
+            _dictionary.Add("VerticalDistAway",
+                ((uint triAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double verticalDistAway =
+                        marioPos.Y + (marioPos.X * triStruct.NormX + marioPos.Z * triStruct.NormZ + triStruct.NormOffset) / triStruct.NormY;
+                    return verticalDistAway;
+                },
+                (double distAbove, uint triAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double newMarioY = distAbove - (marioPos.X * triStruct.NormX + marioPos.Z * triStruct.NormZ + triStruct.NormOffset) / triStruct.NormY;
+                    return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
+                }));
+
+            _dictionary.Add("HeightOnTriangle",
+                ((uint triAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double heightOnTriangle =
+                        (-marioPos.X * triStruct.NormX - marioPos.Z * triStruct.NormZ - triStruct.NormOffset) / triStruct.NormY;
+                    return heightOnTriangle;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("MaxHSpeedUphill",
+                ((uint triAddress) =>
+                {
+                    return GetMaxHorizontalSpeedOnTriangle(triAddress, true, false);
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("MaxHSpeedUphillAtAngle",
+                ((uint triAddress) =>
+                {
+                    return GetMaxHorizontalSpeedOnTriangle(triAddress, true, true);
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("MaxHSpeedDownhill",
+                ((uint triAddress) =>
+                {
+                    return GetMaxHorizontalSpeedOnTriangle(triAddress, false, false);
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("MaxHSpeedDownhillAtAngle",
+                ((uint triAddress) =>
+                {
+                    return GetMaxHorizontalSpeedOnTriangle(triAddress, false, true);
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("ObjectTriCount",
+                ((uint dummy) =>
+                {
+                    int totalTriangleCount = Config.Stream.GetInt32(TriangleConfig.TotalTriangleCountAddress);
+                    int levelTriangleCount = Config.Stream.GetInt32(TriangleConfig.LevelTriangleCountAddress);
+                    int objectTriangleCount = totalTriangleCount - levelTriangleCount;
+                    return objectTriangleCount;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("CurrentTriangleIndex",
+                ((uint triAddress) =>
+                {
+                    uint triangleListStartAddress = Config.Stream.GetUInt32(TriangleConfig.TriangleListPointerAddress);
+                    uint structSize = TriangleConfig.TriangleStructSize;
+                    int addressDiff = triAddress >= triangleListStartAddress
+                        ? (int)(triAddress - triangleListStartAddress)
+                        : (int)(-1 * (triangleListStartAddress - triAddress));
+                    int indexGuess = (int)(addressDiff / structSize);
+                    if (triangleListStartAddress + indexGuess * structSize == triAddress) return indexGuess;
+                    return Double.NaN;
+                },
+                (int index, uint triAddress) =>
+                {
+                    uint triangleListStartAddress = Config.Stream.GetUInt32(TriangleConfig.TriangleListPointerAddress);
+                    uint structSize = TriangleConfig.TriangleStructSize;
+                    uint newTriAddress = (uint)(triangleListStartAddress + index * structSize);
+                    Config.TriangleManager.SetCustomTriangleAddress(newTriAddress);
+                    return true;
+                }));
+
+            _dictionary.Add("CurrentTriangleAddress",
+                ((uint triAddress) =>
+                {
+                    return triAddress;
+                },
+                (uint address, uint triAddress) =>
+                {
+                    Config.TriangleManager.SetCustomTriangleAddress(address);
+                    return true;
+                }));
+
+            _dictionary.Add("ObjectNodeCount",
+                ((uint dummy) =>
+                {
+                    int totalNodeCount = Config.Stream.GetInt32(TriangleConfig.TotalNodeCountAddress);
+                    int levelNodeCount = Config.Stream.GetInt32(TriangleConfig.LevelNodeCountAddress);
+                    int objectNodeCount = totalNodeCount - levelNodeCount;
+                    return objectNodeCount;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("DistanceToLine12",
+                ((uint triAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double signedDistToLine12 = MoreMath.GetSignedDistanceFromPointToLine(
+                        marioPos.X, marioPos.Z,
+                        triStruct.X1, triStruct.Z1,
+                        triStruct.X2, triStruct.Z2,
+                        triStruct.X3, triStruct.Z3, 1, 2);
+                    return signedDistToLine12;
+                },
+                (double dist, uint triAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double signedDistToLine12 = MoreMath.GetSignedDistanceFromPointToLine(
+                        marioPos.X, marioPos.Z,
+                        triStruct.X1, triStruct.Z1,
+                        triStruct.X2, triStruct.Z2,
+                        triStruct.X3, triStruct.Z3, 1, 2);
+
+                    double missingDist = dist - signedDistToLine12;
+                    double lineAngle = MoreMath.AngleTo_AngleUnits(triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
+                    bool floorTri = MoreMath.IsPointLeftOfLine(triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
+                    double inwardAngle = floorTri ? MoreMath.RotateAngleCCW(lineAngle, 16384) : MoreMath.RotateAngleCW(lineAngle, 16384);
+
+                    (double xDiff, double zDiff) = MoreMath.GetComponentsFromVector(missingDist, inwardAngle);
+                    double newMarioX = marioPos.X + xDiff;
+                    double newMarioZ = marioPos.Z + zDiff;
+                    return marioPos.SetValues(x: newMarioX, z: newMarioZ);
+                }));
+
+            _dictionary.Add("DistanceToLine23",
+                ((uint triAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double signedDistToLine23 = MoreMath.GetSignedDistanceFromPointToLine(
+                        marioPos.X, marioPos.Z,
+                        triStruct.X1, triStruct.Z1,
+                        triStruct.X2, triStruct.Z2,
+                        triStruct.X3, triStruct.Z3, 2, 3);
+                    return signedDistToLine23;
+                },
+                (double dist, uint triAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double signedDistToLine23 = MoreMath.GetSignedDistanceFromPointToLine(
+                        marioPos.X, marioPos.Z,
+                        triStruct.X1, triStruct.Z1,
+                        triStruct.X2, triStruct.Z2,
+                        triStruct.X3, triStruct.Z3, 2, 3);
+
+                    double missingDist = dist - signedDistToLine23;
+                    double lineAngle = MoreMath.AngleTo_AngleUnits(triStruct.X2, triStruct.Z2, triStruct.X3, triStruct.Z3);
+                    bool floorTri = MoreMath.IsPointLeftOfLine(triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
+                    double inwardAngle = floorTri ? MoreMath.RotateAngleCCW(lineAngle, 16384) : MoreMath.RotateAngleCW(lineAngle, 16384);
+
+                    (double xDiff, double zDiff) = MoreMath.GetComponentsFromVector(missingDist, inwardAngle);
+                    double newMarioX = marioPos.X + xDiff;
+                    double newMarioZ = marioPos.Z + zDiff;
+                    return marioPos.SetValues(x: newMarioX, z: newMarioZ);
+                }));
+
+            _dictionary.Add("DistanceToLine31",
+                ((uint triAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double signedDistToLine31 = MoreMath.GetSignedDistanceFromPointToLine(
+                        marioPos.X, marioPos.Z,
+                        triStruct.X1, triStruct.Z1,
+                        triStruct.X2, triStruct.Z2,
+                        triStruct.X3, triStruct.Z3, 3, 1);
+                    return signedDistToLine31;
+                },
+                (double dist, uint triAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double signedDistToLine31 = MoreMath.GetSignedDistanceFromPointToLine(
+                        marioPos.X, marioPos.Z,
+                        triStruct.X1, triStruct.Z1,
+                        triStruct.X2, triStruct.Z2,
+                        triStruct.X3, triStruct.Z3, 3, 1);
+
+                    double missingDist = dist - signedDistToLine31;
+                    double lineAngle = MoreMath.AngleTo_AngleUnits(triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1);
+                    bool floorTri = MoreMath.IsPointLeftOfLine(triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
+                    double inwardAngle = floorTri ? MoreMath.RotateAngleCCW(lineAngle, 16384) : MoreMath.RotateAngleCW(lineAngle, 16384);
+
+                    (double xDiff, double zDiff) = MoreMath.GetComponentsFromVector(missingDist, inwardAngle);
+                    double newMarioX = marioPos.X + xDiff;
+                    double newMarioZ = marioPos.Z + zDiff;
+                    return marioPos.SetValues(x: newMarioX, z: newMarioZ);
+                }));
+
+            _dictionary.Add("DeltaAngleLine12",
+                ((uint triAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double angleV1ToV2 = MoreMath.AngleTo_AngleUnits(
+                        triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
+                    double angleDiff = marioPos.Angle - angleV1ToV2;
+                    return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
+                },
+                (double angleDiff, uint triAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);;
+                    double angleV1ToV2 = MoreMath.AngleTo_AngleUnits(
+                        triStruct.X1, triStruct.Z1, triStruct.X2, triStruct.Z2);
+                    double newMarioAngleDouble = angleV1ToV2 + angleDiff;
+                    ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                    return Config.Stream.SetValue(
+                        newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                }));
+
+            _dictionary.Add("DeltaAngleLine21",
+                ((uint triAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double angleV2ToV1 = MoreMath.AngleTo_AngleUnits(
+                        triStruct.X2, triStruct.Z2, triStruct.X1, triStruct.Z1);
+                    double angleDiff = marioPos.Angle - angleV2ToV1;
+                    return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
+                },
+                (double angleDiff, uint triAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double angleV2ToV1 = MoreMath.AngleTo_AngleUnits(
+                        triStruct.X2, triStruct.Z2, triStruct.X1, triStruct.Z1);
+                    double newMarioAngleDouble = angleV2ToV1 + angleDiff;
+                    ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                    return Config.Stream.SetValue(
+                        newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                }));
+
+            _dictionary.Add("DeltaAngleLine23",
+                ((uint triAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double angleV2ToV3 = MoreMath.AngleTo_AngleUnits(
+                        triStruct.X2, triStruct.Z2, triStruct.X3, triStruct.Z3);
+                    double angleDiff = marioPos.Angle - angleV2ToV3;
+                    return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
+                },
+                (double angleDiff, uint triAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double angleV2ToV3 = MoreMath.AngleTo_AngleUnits(
+                        triStruct.X2, triStruct.Z2, triStruct.X3, triStruct.Z3);
+                    double newMarioAngleDouble = angleV2ToV3 + angleDiff;
+                    ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                    return Config.Stream.SetValue(
+                        newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                }));
+
+            _dictionary.Add("DeltaAngleLine32",
+                ((uint triAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double angleV3ToV2 = MoreMath.AngleTo_AngleUnits(
+                        triStruct.X3, triStruct.Z3, triStruct.X2, triStruct.Z2);
+                    double angleDiff = marioPos.Angle - angleV3ToV2;
+                    return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
+                },
+                (double angleDiff, uint triAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double angleV3ToV2 = MoreMath.AngleTo_AngleUnits(
+                        triStruct.X3, triStruct.Z3, triStruct.X2, triStruct.Z2);
+                    double newMarioAngleDouble = angleV3ToV2 + angleDiff;
+                    ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                    return Config.Stream.SetValue(
+                        newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                }));
+
+            _dictionary.Add("DeltaAngleLine31",
+                ((uint triAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double angleV3ToV1 = MoreMath.AngleTo_AngleUnits(
+                        triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1);
+                    double angleDiff = marioPos.Angle - angleV3ToV1;
+                    return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
+                },
+                (double angleDiff, uint triAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double angleV3ToV1 = MoreMath.AngleTo_AngleUnits(
+                        triStruct.X3, triStruct.Z3, triStruct.X1, triStruct.Z1);
+                    double newMarioAngleDouble = angleV3ToV1 + angleDiff;
+                    ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                    return Config.Stream.SetValue(
+                        newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                }));
+
+            _dictionary.Add("DeltaAngleLine13",
+                ((uint triAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double angleV1ToV3 = MoreMath.AngleTo_AngleUnits(
+                        triStruct.X1, triStruct.Z1, triStruct.X3, triStruct.Z3);
+                    double angleDiff = marioPos.Angle - angleV1ToV3;
+                    return MoreMath.NormalizeAngleDoubleSigned(angleDiff);
+                },
+                (double angleDiff, uint triAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    double angleV1ToV3 = MoreMath.AngleTo_AngleUnits(
+                        triStruct.X1, triStruct.Z1, triStruct.X3, triStruct.Z3);
+                    double newMarioAngleDouble = angleV1ToV3 + angleDiff;
+                    ushort newMarioAngleUShort = MoreMath.NormalizeAngleUshort(newMarioAngleDouble);
+                    return Config.Stream.SetValue(
+                        newMarioAngleUShort, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                }));
+
+            // File vars
+
+            _dictionary.Add("StarsInFile",
+                ((uint fileAddress) =>
+                {
+                    return Config.FileManager.CalculateNumStars(fileAddress);
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("ChecksumCalculated",
+                ((uint fileAddress) =>
+                {
+                    return Config.FileManager.GetChecksum(fileAddress);
+                },
+                DEFAULT_SETTER));
+
+            // Action vars
+
+            _dictionary.Add("ActionDescription",
+                ((uint dummy) =>
+                {
+                    return TableConfig.MarioActions.GetActionName();
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("PrevActionDescription",
+                ((uint dummy) =>
+                {
+                    return TableConfig.MarioActions.GetPrevActionName();
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("MarioAnimationDescription",
+                ((uint dummy) =>
+                {
+                    return TableConfig.MarioAnimations.GetAnimationName();
+                },
+                DEFAULT_SETTER));
+
+            // Water vars
+
+            _dictionary.Add("WaterAboveMedian",
+                ((uint dummy) =>
+                {
+                    short waterLevel = Config.Stream.GetInt16(MarioConfig.StructAddress + MarioConfig.WaterLevelOffset);
+                    short waterLevelMedian = Config.Stream.GetInt16(MiscConfig.WaterLevelMedianAddress);
+                    double waterAboveMedian = waterLevel - waterLevelMedian;
+                    return waterAboveMedian;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("MarioAboveWater",
+                ((uint dummy) =>
+                {
+                    short waterLevel = Config.Stream.GetInt16(MarioConfig.StructAddress + MarioConfig.WaterLevelOffset);
+                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    float marioAboveWater = marioY - waterLevel;
+                    return marioAboveWater;
+                },
+                (double goalMarioAboveWater, uint dummy) =>
+                {
+                    short waterLevel = Config.Stream.GetInt16(MarioConfig.StructAddress + MarioConfig.WaterLevelOffset);
+                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    double goalMarioY = waterLevel + goalMarioAboveWater;
+                    return Config.Stream.SetValue((float)goalMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
+                }));
+
+            // PU vars
+
+            _dictionary.Add("MarioXQpuIndex",
+                ((uint dummy) =>
+                {
+                    float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                    int puXIndex = PuUtilities.GetPuIndex(marioX);
+                    double qpuXIndex = puXIndex / 4d;
+                    return qpuXIndex;
+                },
+                (double newQpuXIndex, uint dummy) =>
+                {
+                    int newPuXIndex = (int)Math.Round(newQpuXIndex * 4);
+                    float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                    double newMarioX = PuUtilities.GetCoordinateInPu(marioX, newPuXIndex);
+                    return Config.Stream.SetValue((float)newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
+                }));
+
+            _dictionary.Add("MarioYQpuIndex",
+                ((uint dummy) =>
+                {
+                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    int puYIndex = PuUtilities.GetPuIndex(marioY);
+                    double qpuYIndex = puYIndex / 4d;
+                    return qpuYIndex;
+                },
+                (double newQpuYIndex, uint dummy) =>
+                {
+                    int newPuYIndex = (int)Math.Round(newQpuYIndex * 4);
+                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    double newMarioY = PuUtilities.GetCoordinateInPu(marioY, newPuYIndex);
+                    return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
+                }));
+
+            _dictionary.Add("MarioZQpuIndex",
+                ((uint dummy) =>
+                {
+                    float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                    int puZIndex = PuUtilities.GetPuIndex(marioZ);
+                    double qpuZIndex = puZIndex / 4d;
+                    return qpuZIndex;
+                },
+                (double newQpuZIndex, uint dummy) =>
+                {
+                    int newPuZIndex = (int)Math.Round(newQpuZIndex * 4);
+                    float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                    double newMarioZ = PuUtilities.GetCoordinateInPu(marioZ, newPuZIndex);
+                    return Config.Stream.SetValue((float)newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
+                }));
+
+            _dictionary.Add("MarioXPuIndex",
+                ((uint dummy) =>
+                {
+                    float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                    int puXIndex = PuUtilities.GetPuIndex(marioX);
+                    return puXIndex;
+                },
+                (int newPuXIndex, uint dummy) =>
+                {
+                    float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                    double newMarioX = PuUtilities.GetCoordinateInPu(marioX, newPuXIndex);
+                    return Config.Stream.SetValue((float)newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
+                }));
+
+            _dictionary.Add("MarioYPuIndex",
+                ((uint dummy) =>
+                {
+                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    int puYIndex = PuUtilities.GetPuIndex(marioY);
+                    return puYIndex;
+                },
+                (int newPuYIndex, uint dummy) =>
+                {
+                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    double newMarioY = PuUtilities.GetCoordinateInPu(marioY, newPuYIndex);
+                    return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
+                }));
+
+            _dictionary.Add("MarioZPuIndex",
+                ((uint dummy) =>
+                {
+                    float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                    int puZIndex = PuUtilities.GetPuIndex(marioZ);
+                    return puZIndex;
+                },
+                (int newPuZIndex, uint dummy) =>
+                {
+                    float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                    double newMarioZ = PuUtilities.GetCoordinateInPu(marioZ, newPuZIndex);
+                    return Config.Stream.SetValue((float)newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
+                }));
+
+            _dictionary.Add("MarioXPuRelative",
+                ((uint dummy) =>
+                {
+                    float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                    double relX = PuUtilities.GetRelativeCoordinate(marioX);
+                    return relX;
+                },
+                (double newRelX, uint dummy) =>
+                {
+                    float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+                    int puXIndex = PuUtilities.GetPuIndex(marioX);
+                    double newMarioX = PuUtilities.GetCoordinateInPu(newRelX, puXIndex);
+                    return Config.Stream.SetValue((float)newMarioX, MarioConfig.StructAddress + MarioConfig.XOffset);
+                }));
+
+            _dictionary.Add("MarioYPuRelative",
+                ((uint dummy) =>
+                {
+                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    double relY = PuUtilities.GetRelativeCoordinate(marioY);
+                    return relY;
+                },
+                (double newRelY, uint dummy) =>
+                {
+                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    int puYIndex = PuUtilities.GetPuIndex(marioY);
+                    double newMarioY = PuUtilities.GetCoordinateInPu(newRelY, puYIndex);
+                    return Config.Stream.SetValue((float)newMarioY, MarioConfig.StructAddress + MarioConfig.YOffset);
+                }));
+
+            _dictionary.Add("MarioZPuRelative",
+                ((uint dummy) =>
+                {
+                    float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                    double relZ = PuUtilities.GetRelativeCoordinate(marioZ);
+                    return relZ;
+                },
+                (double newRelZ, uint dummy) =>
+                {
+                    float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+                    int puZIndex = PuUtilities.GetPuIndex(marioZ);
+                    double newMarioZ = PuUtilities.GetCoordinateInPu(newRelZ, puZIndex);
+                    return Config.Stream.SetValue((float)newMarioZ, MarioConfig.StructAddress + MarioConfig.ZOffset);
+                }));
+
+            _dictionary.Add("DeFactoMultiplier",
+                ((uint dummy) =>
+                {
+                    return GetDeFactoMultiplier();
+                },
+                (double newDeFactoMultiplier, uint dummy) =>
+                {
+                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
+                    float distAboveFloor = marioY - floorY;
+                    if (distAboveFloor != 0) return false;
+
+                    uint floorTri = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+                    if (floorTri == 0) return false;
+                    return Config.Stream.SetValue((float)newDeFactoMultiplier, floorTri + TriangleOffsetsConfig.NormY);
+                }));
+
+            _dictionary.Add("SyncingSpeed",
+                ((uint dummy) =>
+                {
+                    return GetSyncingSpeed();
+                },
+                (double newSyncingSpeed, uint dummy) =>
+                {
+                    float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+                    float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
+                    float distAboveFloor = marioY - floorY;
+                    if (distAboveFloor != 0) return false;
+
+                    uint floorTri = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
+                    if (floorTri == 0) return false;
+                    double newYnorm = PuUtilities.QpuSpeed / newSyncingSpeed * SpecialConfig.PuHypotenuse;
+                    return Config.Stream.SetValue((float)newYnorm, floorTri + TriangleOffsetsConfig.NormY);
+                }));
+
+            _dictionary.Add("QpuSpeed",
+                ((uint dummy) =>
+                {
+                    return GetQpuSpeed();
+                },
+                (double newQpuSpeed, uint dummy) =>
+                {
+                    double newHSpeed = newQpuSpeed * GetSyncingSpeed();
+                    return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                }));
+
+            _dictionary.Add("PuSpeed",
+                ((uint dummy) =>
+                {
+                    double puSpeed = GetQpuSpeed() * 4;
+                    return puSpeed;
+                },
+                (double newPuSpeed, uint dummy) =>
+                {
+                    double newQpuSpeed = newPuSpeed / 4;
+                    double newHSpeed = newQpuSpeed * GetSyncingSpeed();
+                    return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                }));
+
+            _dictionary.Add("QpuSpeedComponent",
+                ((uint dummy) =>
+                {
+                    return Math.Round(GetQpuSpeed());
+                },
+                (int newQpuSpeedComp, uint dummy) =>
+                {
+                    double relativeSpeed = GetRelativePuSpeed();
+                    double newHSpeed = newQpuSpeedComp * GetSyncingSpeed() + relativeSpeed / GetDeFactoMultiplier();
+                    return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                }));
+
+            _dictionary.Add("PuSpeedComponent",
+                ((uint dummy) =>
+                {
+                    return Math.Round(GetQpuSpeed() * 4);
+                },
+                (int newPuSpeedComp, uint dummy) =>
+                {
+                    double newQpuSpeedComp = newPuSpeedComp / 4d;
+                    double relativeSpeed = GetRelativePuSpeed();
+                    double newHSpeed = newQpuSpeedComp * GetSyncingSpeed() + relativeSpeed / GetDeFactoMultiplier();
+                    return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                }));
+
+            _dictionary.Add("RelativeSpeed",
+                ((uint dummy) =>
+                {
+                    return GetRelativePuSpeed();
+                },
+                (double newRelativeSpeed, uint dummy) =>
+                {
+                    double puSpeed = GetQpuSpeed() * 4;
+                    double puSpeedRounded = Math.Round(puSpeed);
+                    double newHSpeed = (puSpeedRounded / 4) * GetSyncingSpeed() + newRelativeSpeed / GetDeFactoMultiplier();
+                    return Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                }));
+
+            _dictionary.Add("Qs1RelativeXSpeed",
+                ((uint dummy) =>
+                {
+                    return GetQsRelativeSpeed(1 / 4d, true);
+                },
+                (double newValue, uint dummy) =>
+                {
+                    return GetQsRelativeIntendedNextComponent(newValue, 1 / 4d, true, true);
+                }));
+
+            _dictionary.Add("Qs1RelativeZSpeed",
+                ((uint dummy) =>
+                {
+                    return GetQsRelativeSpeed(1 / 4d, false);
+                },
+                (double newValue, uint dummy) =>
+                {
+                    return GetQsRelativeIntendedNextComponent(newValue, 1 / 4d, false, true);
+                }));
+
+            _dictionary.Add("Qs1RelativeIntendedNextX",
+                ((uint dummy) =>
+                {
+                    return GetQsRelativeIntendedNextComponent(1 / 4d, true);
+                },
+                (double newValue, uint dummy) =>
+                {
+                    return GetQsRelativeIntendedNextComponent(newValue, 1 / 4d, true, false);
+                }));
+
+            _dictionary.Add("Qs1RelativeIntendedNextZ",
+                ((uint dummy) =>
+                {
+                    return GetQsRelativeIntendedNextComponent(1 / 4d, false);
+                },
+                (double newValue, uint dummy) =>
+                {
+                    return GetQsRelativeIntendedNextComponent(newValue, 1 / 4d, false, false);
+                }));
+
+            _dictionary.Add("Qs2RelativeXSpeed",
+                ((uint dummy) =>
+                {
+                    return GetQsRelativeSpeed(2 / 4d, true);
+                },
+                (double newValue, uint dummy) =>
+                {
+                    return GetQsRelativeIntendedNextComponent(newValue, 2 / 4d, true, true);
+                }));
+
+            _dictionary.Add("Qs2RelativeZSpeed",
+                ((uint dummy) =>
+                {
+                    return GetQsRelativeSpeed(2 / 4d, false);
+                },
+                (double newValue, uint dummy) =>
+                {
+                    return GetQsRelativeIntendedNextComponent(newValue, 2 / 4d, false, true);
+                }));
+
+            _dictionary.Add("Qs2RelativeIntendedNextX",
+                ((uint dummy) =>
+                {
+                    return GetQsRelativeIntendedNextComponent(2 / 4d, true);
+                },
+                (double newValue, uint dummy) =>
+                {
+                    return GetQsRelativeIntendedNextComponent(newValue, 2 / 4d, true, false);
+                }));
+
+            _dictionary.Add("Qs2RelativeIntendedNextZ",
+                ((uint dummy) =>
+                {
+                    return GetQsRelativeIntendedNextComponent(2 / 4d, false);
+                },
+                (double newValue, uint dummy) =>
+                {
+                    return GetQsRelativeIntendedNextComponent(newValue, 2 / 4d, false, false);
+                }));
+
+            _dictionary.Add("Qs3RelativeXSpeed",
+                ((uint dummy) =>
+                {
+                    return GetQsRelativeSpeed(3 / 4d, true);
+                },
+                (double newValue, uint dummy) =>
+                {
+                    return GetQsRelativeIntendedNextComponent(newValue, 3 / 4d, true, true);
+                }));
+
+            _dictionary.Add("Qs3RelativeZSpeed",
+                ((uint dummy) =>
+                {
+                    return GetQsRelativeSpeed(3 / 4d, false);
+                },
+                (double newValue, uint dummy) =>
+                {
+                    return GetQsRelativeIntendedNextComponent(newValue, 3 / 4d, false, true);
+                }));
+
+            _dictionary.Add("Qs3RelativeIntendedNextX",
+                ((uint dummy) =>
+                {
+                    return GetQsRelativeIntendedNextComponent(3 / 4d, true);
+                },
+                (double newValue, uint dummy) =>
+                {
+                    return GetQsRelativeIntendedNextComponent(newValue, 3 / 4d, true, false);
+                }));
+
+            _dictionary.Add("Qs3RelativeIntendedNextZ",
+                ((uint dummy) =>
+                {
+                    return GetQsRelativeIntendedNextComponent(3 / 4d, false);
+                },
+                (double newValue, uint dummy) =>
+                {
+                    return GetQsRelativeIntendedNextComponent(newValue, 3 / 4d, false, false);
+                }));
+
+            _dictionary.Add("Qs4RelativeXSpeed",
+                ((uint dummy) =>
+                {
+                    return GetQsRelativeSpeed(4 / 4d, true);
+                },
+                (double newValue, uint dummy) =>
+                {
+                    return GetQsRelativeIntendedNextComponent(newValue, 4 / 4d, true, true);
+                }));
+
+            _dictionary.Add("Qs4RelativeZSpeed",
+                ((uint dummy) =>
+                {
+                    return GetQsRelativeSpeed(4 / 4d, false);
+                },
+                (double newValue, uint dummy) =>
+                {
+                    return GetQsRelativeIntendedNextComponent(newValue, 4 / 4d, false, true);
+                }));
+
+            _dictionary.Add("Qs4RelativeIntendedNextX",
+                ((uint dummy) =>
+                {
+                    return GetQsRelativeIntendedNextComponent(4 / 4d, true);
+                },
+                (double newValue, uint dummy) =>
+                {
+                    return GetQsRelativeIntendedNextComponent(newValue, 4 / 4d, true, false);
+                }));
+
+            _dictionary.Add("Qs4RelativeIntendedNextZ",
+                ((uint dummy) =>
+                {
+                    return GetQsRelativeIntendedNextComponent(4 / 4d, false);
+                },
+                (double newValue, uint dummy) =>
+                {
+                    return GetQsRelativeIntendedNextComponent(newValue, 4 / 4d, false, false);
+                }));
+
+            _dictionary.Add("PuParams",
+                ((uint dummy) =>
+                {
+                    return "(" + SpecialConfig.PuParam1 + "," + SpecialConfig.PuParam2 + ")";
+                },
+                (string puParamsString, uint dummy) =>
+                {
+                    List<string> stringList = ParsingUtilities.ParseStringList(puParamsString);
+                    List<int?> intList = stringList.ConvertAll(
+                        stringVal => ParsingUtilities.ParseIntNullable(stringVal));
+                    if (intList.Count == 1) intList.Insert(0, 0);
+                    if (intList.Count != 2 || intList.Exists(intValue => !intValue.HasValue)) return false;
+                    SpecialConfig.PuParam1 = intList[0].Value;
+                    SpecialConfig.PuParam2 = intList[1].Value;
+                    return true;
+                }));
+
+            // Misc vars
+
+            _dictionary.Add("RngIndex",
+                ((uint dummy) =>
+                {
+                    ushort rngValue = Config.Stream.GetUInt16(MiscConfig.RngAddress);
+                    return RngIndexer.GetRngIndex(rngValue);
+                },
+                (int rngIndex, uint dummy) =>
+                {
+                    ushort rngValue = RngIndexer.GetRngValue(rngIndex);
+                    return Config.Stream.SetValue(rngValue, MiscConfig.RngAddress);
+                }));
+
+            _dictionary.Add("RngIndexMod4",
+                ((uint dummy) =>
+                {
+                    ushort rngValue = Config.Stream.GetUInt16(MiscConfig.RngAddress);
+                    int rngIndex = RngIndexer.GetRngIndex();
+                    return rngIndex % 4;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("LastCoinRngIndex",
+                ((uint coinAddress) =>
+                {
+                    ushort coinRngValue = Config.Stream.GetUInt16(coinAddress + ObjectConfig.YawMovingOffset);
+                    int coinRngIndex = RngIndexer.GetRngIndex(coinRngValue);
+                    return coinRngIndex;
+                },
+                (int rngIndex, uint coinAddress) =>
+                {
+                    ushort coinRngValue = RngIndexer.GetRngValue(rngIndex);
+                    return Config.Stream.SetValue(coinRngValue, coinAddress + ObjectConfig.YawMovingOffset);
+                }));
+
+            _dictionary.Add("LastCoinRngIndexDiff",
+                ((uint coinAddress) =>
+                {
+                    ushort coinRngValue = Config.Stream.GetUInt16(coinAddress + ObjectConfig.YawMovingOffset);
+                    int coinRngIndex = RngIndexer.GetRngIndex(coinRngValue);
+                    int rngIndexDiff = coinRngIndex - SpecialConfig.GoalRngIndex;
+                    return rngIndexDiff;
+                },
+                (int rngIndexDiff, uint coinAddress) =>
+                {
+                    int coinRngIndex = SpecialConfig.GoalRngIndex + rngIndexDiff;
+                    ushort coinRngValue = RngIndexer.GetRngValue(coinRngIndex);
+                    return Config.Stream.SetValue(coinRngValue, coinAddress + ObjectConfig.YawMovingOffset);
+                }));
+            
+            _dictionary.Add("GoalRngValue",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.GoalRngValue;
+                },
+                (ushort goalRngValue, uint coinAddress) =>
+                {
+                    SpecialConfig.GoalRngValue = goalRngValue;
+                    return true;
+                }));
+
+            _dictionary.Add("GoalRngIndex",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.GoalRngIndex;
+                },
+                (ushort goalRngIndex, uint coinAddress) =>
+                {
+                    SpecialConfig.GoalRngIndex = goalRngIndex;
+                    return true;
+                }));
+
+            _dictionary.Add("GoalRngIndexDiff",
+                ((uint dummy) =>
+                {
+                    ushort rngValue = Config.Stream.GetUInt16(MiscConfig.RngAddress);
+                    int rngIndex = RngIndexer.GetRngIndex(rngValue);
+                    int rngIndexDiff = rngIndex - SpecialConfig.GoalRngIndex;
+                    return rngIndexDiff;
+                },
+                (int rngIndexDiff, uint dummy) =>
+                {
+                    int rngIndex = SpecialConfig.GoalRngIndex + rngIndexDiff;
+                    ushort rngValue = RngIndexer.GetRngValue(rngIndex);
+                    return Config.Stream.SetValue(rngValue, MiscConfig.RngAddress);
+                }));
+
+            _dictionary.Add("RngCallsPerFrame",
+                ((uint dummy) =>
+                {
+                    ushort preRng = Config.Stream.GetUInt16(MiscConfig.HackedAreaAddress + 0x0C);
+                    ushort currentRng = Config.Stream.GetUInt16(MiscConfig.HackedAreaAddress + 0x0E);
+                    int rngDiff = RngIndexer.GetRngIndexDiff(preRng, currentRng);
+                    return rngDiff;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("NumberOfLoadedObjects",
+                ((uint dummy) =>
+                {
+                    return DataModels.ObjectProcessor.ActiveObjectCount;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("PlayTime",
+                ((uint dummy) =>
+                {
+                    uint frameConst = 30;
+                    uint secondConst = 60;
+                    uint minuteConst = 60;
+                    uint hourConst = 24;
+                    uint dayConst = 365;
+
+                    uint totalFrames = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                    uint totalSeconds = totalFrames / frameConst;
+                    uint totalMinutes = totalSeconds / secondConst;
+                    uint totalHours = totalMinutes / minuteConst;
+                    uint totalDays = totalHours / hourConst;
+                    uint totalYears = totalDays / dayConst;
+
+                    uint frames = totalFrames % frameConst;
+                    uint seconds = totalSeconds % secondConst;
+                    uint minutes = totalMinutes % minuteConst;
+                    uint hours = totalHours % hourConst;
+                    uint days = totalDays % dayConst;
+                    uint years = totalYears;
+
+                    List<uint> values = new List<uint> { years, days, hours, minutes, seconds, frames };
+                    int firstNonZeroIndex = values.FindIndex(value => value != 0);
+                    if (firstNonZeroIndex == -1) firstNonZeroIndex = values.Count - 1;
+                    int numValuesToShow = values.Count - firstNonZeroIndex;
+
+                    StringBuilder builder = new StringBuilder();
+                    if (numValuesToShow >= 6) builder.Append(years + "y ");
+                    if (numValuesToShow >= 5) builder.Append(days + "d ");
+                    if (numValuesToShow >= 4) builder.Append(hours + "h ");
+                    if (numValuesToShow >= 3) builder.Append(minutes + "m ");
+                    if (numValuesToShow >= 2) builder.Append(seconds + "s ");
+                    if (numValuesToShow >= 1) builder.Append(String.Format("{0:D2}", frames) + "f");
+                    return builder.ToString();
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("TtcSpeedSettingDescription",
+                ((uint dummy) =>
+                {
+                    return TtcSpeedSettingUtilities.GetTtcSpeedSettingDescription();
+                },
+                (short ttcSpeedSetting, uint dummy) =>
+                {
+                    return Config.Stream.SetValue(ttcSpeedSetting, MiscConfig.TtcSpeedSettingAddress);
+                }));
+
+            // Area vars
+
+            _dictionary.Add("CurrentAreaIndexMario",
+                ((uint dummy) =>
+                {
+                    uint currentAreaMario = Config.Stream.GetUInt32(
+                        MarioConfig.StructAddress + MarioConfig.AreaPointerOffset);
+                    double currentAreaIndexMario = AreaUtilities.GetAreaIndex(currentAreaMario) ?? Double.NaN;
+                    return currentAreaIndexMario;
+                },
+                (int currentAreaIndexMario, uint dummy) =>
+                {
+                    if (currentAreaIndexMario < 0 || currentAreaIndexMario >= 8) return false;
+                    uint currentAreaAddressMario = AreaUtilities.GetAreaAddress(currentAreaIndexMario);
+                    return Config.Stream.SetValue(
+                        currentAreaAddressMario, MarioConfig.StructAddress + MarioConfig.AreaPointerOffset);
+                }));
+
+            _dictionary.Add("CurrentAreaIndex",
+                ((uint dummy) =>
+                {
+                    uint currentArea = Config.Stream.GetUInt32(AreaConfig.CurrentAreaPointerAddress);
+                    double currentAreaIndex = AreaUtilities.GetAreaIndex(currentArea) ?? Double.NaN;
+                    return currentAreaIndex;
+                },
+                (int currentAreaIndex, uint dummy) =>
+                {
+                    if (currentAreaIndex < 0 || currentAreaIndex >= 8) return false;
+                    uint currentAreaAddress = AreaUtilities.GetAreaAddress(currentAreaIndex);
+                    return Config.Stream.SetValue(currentAreaAddress, AreaConfig.CurrentAreaPointerAddress);
+                }));
+
+            _dictionary.Add("AreaTerrainDescription",
+                ((uint dummy) =>
+                {
+                    short terrainType = Config.Stream.GetInt16(
+                        Config.AreaManager.SelectedAreaAddress + AreaConfig.TerrainTypeOffset);
+                    string terrainDescription = AreaUtilities.GetTerrainDescription(terrainType);
+                    return terrainDescription;
+                },
+                (short terrainType, uint dummy) =>
+                {
+                    return Config.Stream.SetValue(
+                        terrainType, Config.AreaManager.SelectedAreaAddress + AreaConfig.TerrainTypeOffset);
+                }));
+
+            // Custom point
+
+            _dictionary.Add("SelfPosType",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.SelfPosPA.ToString();
+                },
+                (PositionAngle posAngle, uint dummy) =>
+                {
+                    SpecialConfig.SelfPosPA = posAngle;
+                    return true;
+                }));
+
+            _dictionary.Add("SelfX",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.SelfX;
+                },
+                (double doubleValue, uint dummy) =>
+                {
+                    return SpecialConfig.SelfPosPA.SetX(doubleValue);
+                }));
+
+            _dictionary.Add("SelfY",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.SelfY;
+                },
+                (double doubleValue, uint dummy) =>
+                {
+                    return SpecialConfig.SelfPosPA.SetY(doubleValue);
+                }));
+
+            _dictionary.Add("SelfZ",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.SelfZ;
+                },
+                (double doubleValue, uint dummy) =>
+                {
+                    return SpecialConfig.SelfPosPA.SetZ(doubleValue);
+                }));
+
+            _dictionary.Add("SelfAngleType",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.SelfAnglePA.ToString();
+                },
+                (PositionAngle posAngle, uint dummy) =>
+                {
+                    SpecialConfig.SelfAnglePA = posAngle;
+                    return true;
+                }));
+
+            _dictionary.Add("SelfAngle",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.SelfAngle;
+                },
+                (double doubleValue, uint dummy) =>
+                {
+                    return SpecialConfig.SelfAnglePA.SetAngle(doubleValue);
+                }));
+
+            _dictionary.Add("PointPosType",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.PointPosPA.ToString();
+                },
+                (PositionAngle posAngle, uint dummy) =>
+                {
+                    SpecialConfig.PointPosPA = posAngle;
+                    return true;
+                }));
+
+            _dictionary.Add("PointX",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.PointX;
+                },
+                (double doubleValue, uint dummy) =>
+                {
+                    return SpecialConfig.PointPosPA.SetX(doubleValue);
+                }));
+
+            _dictionary.Add("PointY",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.PointY;
+                },
+                (double doubleValue, uint dummy) =>
+                {
+                    return SpecialConfig.PointPosPA.SetY(doubleValue);
+                }));
+
+            _dictionary.Add("PointZ",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.PointZ;
+                },
+                (double doubleValue, uint dummy) =>
+                {
+                    return SpecialConfig.PointPosPA.SetZ(doubleValue);
+                }));
+
+            _dictionary.Add("PointAngleType",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.PointAnglePA.ToString();
+                },
+                (PositionAngle posAngle, uint dummy) =>
+                {
+                    SpecialConfig.PointAnglePA = posAngle;
+                    return true;
+                }));
+
+            _dictionary.Add("PointAngle",
+                ((uint dummy) =>
+                {
+                    return SpecialConfig.PointAngle;
+                },
+                (double doubleValue, uint dummy) =>
+                {
+                    return SpecialConfig.PointPosPA.SetAngle(doubleValue);
+                }));
+
+            // Mupen vars
+
+            _dictionary.Add("MupenLag",
+                ((uint objAddress) =>
+                {
+                    if (!MupenUtilities.IsUsingMupen()) return Double.NaN;
+                    int lag = MupenUtilities.GetLagCount() + SpecialConfig.MupenLagOffset;
+                    return lag;
+                },
+                (string stringValue, uint dummy) =>
+                {
+                    if (!MupenUtilities.IsUsingMupen()) return false;
+
+                    if (stringValue.ToLower() == "x")
+                    {
+                        SpecialConfig.MupenLagOffset = 0;
+                        return true;
+                    }
+
+                    int? newLagNullable = ParsingUtilities.ParseIntNullable(stringValue);
+                    if (!newLagNullable.HasValue) return false;
+                    int newLag = newLagNullable.Value;
+                    int newLagOffset = newLag - MupenUtilities.GetLagCount();
+                    SpecialConfig.MupenLagOffset = newLagOffset;
+                    return true;
+                }));
         }
 
         // Triangle utilitiy methods
 
         public static int GetClosestTriangleVertexIndex(uint triAddress)
         {
-            Position marioPos = GetMarioPosition();
-            TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+            PositionAngle marioPos = PositionAngle.Mario;
+            TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
             double distToV1 = MoreMath.GetDistanceBetween(
                 marioPos.X, marioPos.Y, marioPos.Z, triStruct.X1, triStruct.Y1, triStruct.Z1);
             double distToV2 = MoreMath.GetDistanceBetween(
@@ -2519,23 +2551,73 @@ namespace STROOP.Structs
             else return distToV2 <= distToV3 ? 2 : 3;
         }
 
-        private static Position GetClosestTriangleVertexPosition(uint triAddress)
+        private static PositionAngle GetClosestTriangleVertexPosition(uint triAddress)
         {
             int closestTriangleVertexIndex = GetClosestTriangleVertexIndex(triAddress);
-            TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-            if (closestTriangleVertexIndex == 1) return new Position(triStruct.X1, triStruct.Y1, triStruct.Z1);
-            if (closestTriangleVertexIndex == 2) return new Position(triStruct.X2, triStruct.Y2, triStruct.Z2);
-            if (closestTriangleVertexIndex == 3) return new Position(triStruct.X3, triStruct.Y3, triStruct.Z3);
+            TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+            if (closestTriangleVertexIndex == 1) return PositionAngle.Tri(triAddress, 1);
+            if (closestTriangleVertexIndex == 2) return PositionAngle.Tri(triAddress, 2);
+            if (closestTriangleVertexIndex == 3) return PositionAngle.Tri(triAddress, 3);
             throw new ArgumentOutOfRangeException();
+        }
+
+        private static double GetTriangleUphillAngleRadians(uint triAddress)
+        {
+            double angle = GetTriangleUphillAngle(triAddress);
+            return MoreMath.AngleUnitsToRadians(angle);
         }
 
         private static double GetTriangleUphillAngle(uint triAddress)
         {
-            TriangleStruct triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+            TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+            double uphillAngle = 32768 + InGameTrigUtilities.InGameAngleTo(triStruct.NormX, triStruct.NormZ);
+            if (triStruct.NormX == 0 && triStruct.NormZ == 0) uphillAngle = double.NaN;
+            if (triStruct.IsCeiling()) uphillAngle += 32768;
+            return MoreMath.NormalizeAngleDouble(uphillAngle);
+        }
+
+        private static double GetTriangleUphillAngleRadiansTrue(uint triAddress)
+        {
+            TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
             double uphillAngleRadians = Math.PI + Math.Atan2(triStruct.NormX, triStruct.NormZ);
             if (triStruct.NormX == 0 && triStruct.NormZ == 0) uphillAngleRadians = double.NaN;
             if (triStruct.IsCeiling()) uphillAngleRadians += Math.PI;
+            return uphillAngleRadians;
+        }
+
+        private static double GetTriangleUphillAngleTrue(uint triAddress)
+        {
+            double uphillAngleRadians = GetTriangleUphillAngleRadiansTrue(triAddress);
             return MoreMath.RadiansToAngleUnits(uphillAngleRadians);
+        }
+
+        private static double GetMaxHorizontalSpeedOnTriangle(uint triAddress, bool uphill, bool atAngle)
+        {
+            TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+            double vDist = uphill ? 78 : 100;
+            if (atAngle)
+            {
+                ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+                double marioAngleRadians = MoreMath.AngleUnitsToRadians(marioAngle);
+                double uphillAngleRadians = GetTriangleUphillAngleRadians(triAddress);
+                double deltaAngle = marioAngleRadians - uphillAngleRadians;
+                double multiplier = Math.Abs(Math.Cos(deltaAngle));
+                vDist /= multiplier;
+            }
+            double steepnessRadians = Math.Acos(triStruct.NormY);
+            double hDist = vDist / Math.Tan(steepnessRadians);
+            double hSpeed = hDist * 4 / triStruct.NormY;
+            return hSpeed;
+        }
+
+        // Mario special methods
+
+        public static double GetMarioSlidingSpeed()
+        {
+            float xSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedXOffset);
+            float zSlidingSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.SlidingSpeedZOffset);
+            double hSlidingSpeed = MoreMath.GetHypotenuse(xSlidingSpeed, zSlidingSpeed);
+            return hSlidingSpeed;
         }
 
         // Object specific utilitiy methods
@@ -2684,20 +2766,203 @@ namespace STROOP.Structs
             return amplitude;
         }
 
-        // public methods
+        private static double GetObjectTrajectoryFramesToYDist(double frames)
+        {
+            bool reflected = false;
+            if (frames < 7.5)
+            {
+                frames = MoreMath.ReflectValueAboutValue(frames, 7.5);
+                reflected = true;
+            }
+            double yDist;
+            if (frames <= 38)
+            {
+                yDist = -1.25 * frames * frames + 18.75 * frames;
+            }
+            else
+            {
+                yDist = -75 * (frames - 38) - 1092.5;
+            }
+            if (reflected) yDist = MoreMath.ReflectValueAboutValue(yDist, 70.3125);
+            return yDist;
+        }
 
-        public static double GetMarioDeFactoSpeed()
+        private static double GetObjectTrajectoryYDistToFrames(double yDist)
+        {
+            bool reflected = false;
+            if (yDist > 70.3125)
+            {
+                yDist = MoreMath.ReflectValueAboutValue(yDist, 70.3125);
+                reflected = true;
+            }
+            double frames;
+            if (yDist >= -1092.5)
+            {
+                double radicand = 351.5625 - 5 * yDist;
+                frames = 7.5 + 0.4 * Math.Sqrt(radicand);
+            }
+            else
+            {
+                frames = (yDist + 1092.5) / -75 + 38;
+            }
+            if (reflected) frames = MoreMath.ReflectValueAboutValue(frames, 7.5);
+            return frames;
+        }
+
+        private static double GetBobombTrajectoryFramesToHDist(double frames)
+        {
+            return 32 + frames * 25;
+        }
+
+        private static double GetBobombTrajectoryHDistToFrames(double hDist)
+        {
+            return (hDist - 32) / 25;
+        }
+
+        private static double GetCorkBoxTrajectoryFramesToHDist(double frames)
+        {
+            return 32 + frames * 40;
+        }
+
+        private static double GetCorkBoxTrajectoryHDistToFrames(double hDist)
+        {
+            return (hDist - 32) / 40;
+        }
+
+        // PU methods
+
+        private static float GetDeFactoMultiplier()
         {
             uint floorTri = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
             float yNorm = floorTri == 0 ? 1 : Config.Stream.GetSingle(floorTri + TriangleOffsetsConfig.NormY);
-            float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
 
             float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
             float floorY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.FloorYOffset);
             float distAboveFloor = marioY - floorY;
 
-            float defactoSpeed = distAboveFloor == 0 ? hSpeed * yNorm : hSpeed;
+            float defactoMultiplier = distAboveFloor == 0 ? yNorm : 1;
+            return defactoMultiplier;
+        }
+
+        public static float GetMarioDeFactoSpeed()
+        {
+            float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+            float defactoSpeed = hSpeed * GetDeFactoMultiplier();
             return defactoSpeed;
+        }
+
+        public static double GetSyncingSpeed()
+        {
+            return PuUtilities.QpuSpeed / GetDeFactoMultiplier() * SpecialConfig.PuHypotenuse;
+        }
+
+        public static double GetQpuSpeed()
+        {
+            float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+            return hSpeed / GetSyncingSpeed();
+        }
+
+        public static double GetRelativePuSpeed()
+        {
+            double puSpeed = GetQpuSpeed() * 4;
+            double puSpeedRounded = Math.Round(puSpeed);
+            double relativeSpeed = (puSpeed - puSpeedRounded) / 4 * GetSyncingSpeed() * GetDeFactoMultiplier();
+            return relativeSpeed;
+        }
+
+        public static (double x, double z) GetIntendedNextPosition(double numFrames)
+        {
+            double deFactoSpeed = GetMarioDeFactoSpeed();
+            ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            ushort marioAngleTruncated = MoreMath.NormalizeAngleTruncated(marioAngle);
+            (double xDiff, double zDiff) = MoreMath.GetComponentsFromVector(deFactoSpeed * numFrames, marioAngleTruncated);
+
+            float currentX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float currentZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            return (currentX + xDiff, currentZ + zDiff);
+        }
+
+        private static double GetQsRelativeSpeed(double numFrames, bool xComp)
+        {
+            uint compOffset = xComp ? MarioConfig.XOffset : MarioConfig.ZOffset;
+            float currentComp = Config.Stream.GetSingle(MarioConfig.StructAddress + compOffset);
+            double relCurrentComp = PuUtilities.GetRelativeCoordinate(currentComp);
+            (double intendedX, double intendedZ) = GetIntendedNextPosition(numFrames);
+            double intendedComp = xComp ? intendedX : intendedZ;
+            double relIntendedComp = PuUtilities.GetRelativeCoordinate(intendedComp);
+            double compDiff = relIntendedComp - relCurrentComp;
+            return compDiff;
+        }
+        
+        private static double GetQsRelativeIntendedNextComponent(double numFrames, bool xComp)
+        {
+            (double intendedX, double intendedZ) = GetIntendedNextPosition(numFrames);
+            double intendedComp = xComp ? intendedX : intendedZ;
+            double relIntendedComp = PuUtilities.GetRelativeCoordinate(intendedComp);
+            return relIntendedComp;
+        }
+        
+        private static bool GetQsRelativeIntendedNextComponent(double newValue, double numFrames, bool xComp, bool relativePosition)
+        {
+            float currentX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float currentZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+            float currentComp = xComp ? currentX : currentZ;
+            (double intendedX, double intendedZ) = GetIntendedNextPosition(numFrames);
+            double intendedComp = xComp ? intendedX : intendedZ;
+            int intendedPuCompIndex = PuUtilities.GetPuIndex(intendedComp);
+            double newRelativeComp = relativePosition ? currentComp + newValue : newValue;
+            double newIntendedComp = PuUtilities.GetCoordinateInPu(newRelativeComp, intendedPuCompIndex);
+
+            float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+            double intendedXComp = xComp ? newIntendedComp : intendedX;
+            double intendedZComp = xComp ? intendedZ : newIntendedComp;
+            (double newDeFactoSpeed, double newAngle) =
+                MoreMath.GetVectorFromCoordinates(
+                    currentX, currentZ, intendedXComp, intendedZComp, hSpeed >= 0);
+            double newHSpeed = newDeFactoSpeed / GetDeFactoMultiplier() / numFrames;
+            ushort newAngleRounded = MoreMath.NormalizeAngleUshort(newAngle);
+
+            bool success = true;
+            success &= Config.Stream.SetValue((float)newHSpeed, MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+            success &= Config.Stream.SetValue(newAngleRounded, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            return success;
+        }
+
+        // Angle methods
+
+        public static short GetDeltaYawIntendedFacing()
+        {
+            ushort marioYawFacing = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            ushort marioYawIntended = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.IntendedYawOffset);
+            return MoreMath.GetDeltaAngleTruncated(marioYawFacing, marioYawIntended);
+        }
+
+        // Mario trajectory methods
+
+        public static double ConvertDoubleJumpHSpeedToVSpeed(double hSpeed)
+        {
+            return (hSpeed / 4) + 52;
+        }
+
+        public static double ConvertDoubleJumpVSpeedToHSpeed(double vSpeed)
+        {
+            return (vSpeed - 52) * 4;
+        }
+
+        public static double ComputeHeightChangeFromInitialVerticalSpeed(double initialVSpeed)
+        {
+            int numFrames = (int) Math.Ceiling(initialVSpeed / 4);
+            double finalVSpeed = initialVSpeed - (numFrames - 1) * 4;
+            double heightChange = numFrames * (initialVSpeed + finalVSpeed) / 2;
+            return heightChange;
+        }
+
+        public static double ComputeInitialVerticalSpeedFromHeightChange(double heightChange)
+        {
+            int numFrames = (int) Math.Ceiling((-2 + Math.Sqrt(4 + 8 * heightChange)) / 4);
+            double triangleConstant = 2 * numFrames * (numFrames - 1);
+            double initialSpeed = (heightChange + triangleConstant) / numFrames;
+            return initialSpeed;
         }
     }
 }

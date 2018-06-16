@@ -28,13 +28,14 @@ namespace STROOP.Structs
         public Image ParentObjectOverlayImage;
         public Image ParentUnusedObjectOverlayImage;
         public Image ParentNoneObjectOverlayImage;
+        public Image ChildObjectOverlayImage;
         public Image MarkedObjectOverlayImage;
 
         public CheckBox LockLabelsCheckbox;
         public TabControl TabControl;
         public ComboBox SortMethodComboBox;
         public ComboBox LabelMethodComboBox;
-        public WatchVariablePanel FlowLayoutContainer;
+        public ObjectSlotFlowLayoutPanel FlowLayoutContainer;
 
         ~ObjectSlotManagerGui()
         {
@@ -55,6 +56,7 @@ namespace STROOP.Structs
             ParentObjectOverlayImage?.Dispose();
             ParentUnusedObjectOverlayImage?.Dispose();
             ParentNoneObjectOverlayImage?.Dispose();
+            ChildObjectOverlayImage?.Dispose();
             MarkedObjectOverlayImage?.Dispose();
         }
     }

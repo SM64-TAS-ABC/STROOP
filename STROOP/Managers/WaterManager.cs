@@ -14,8 +14,8 @@ namespace STROOP.Managers
 {
     public class WaterManager : DataManager
     {
-        public WaterManager(List<WatchVariableControlPrecursor> variables, WatchVariablePanel variableTable)
-            : base(variables, variableTable)
+        public WaterManager(string varFilePath, WatchVariableFlowLayoutPanel variableTable)
+            : base(varFilePath, variableTable)
         {
 
         }

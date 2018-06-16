@@ -15,7 +15,7 @@ namespace STROOP.Managers
 {
     public class TriangleManager : DataManager
     {
-        private Dictionary<uint, TriangleStruct> _triangleCache;
+        private Dictionary<uint, TriangleDataModel> _triangleCache;
 
         MaskedTextBox _addressBox;
         uint _triangleAddress = 0;
@@ -24,6 +24,11 @@ namespace STROOP.Managers
         public enum TriangleMode { Floor, Wall, Ceiling, Other };
         public TriangleMode Mode = TriangleMode.Floor;
 
+        private readonly RadioButton _radioButtonTriFloor;
+        private readonly RadioButton _radioButtonTriWall;
+        private readonly RadioButton _radioButtonTriCeiling;
+        private readonly RadioButton _radioButtonTriOther;
+
         CheckBox _checkBoxNeutralizeTriangle;
 
         CheckBox _recordTriangleDataCheckbox;
@@ -31,7 +36,11 @@ namespace STROOP.Managers
         Label _recordTriangleCountLabel;
         List<short[]> _triangleData;
 
-        public uint TrianglePointerAddress;
+        public uint TrianglePointerAddress
+        {
+            get;
+            private set;
+        }
 
         public uint TriangleAddress
         {
@@ -48,7 +57,7 @@ namespace STROOP.Managers
                     return;
 
                 _triangleAddress = value;
-                _addressBox.Text = String.Format("0x{0:X8}", _triangleAddress);
+                _addressBox.Text = HexUtilities.FormatValue(_triangleAddress, 8);
             }
         }
 
@@ -68,10 +77,10 @@ namespace STROOP.Managers
                 VariableGroup.Advanced,
             };
 
-        public TriangleManager(Control tabControl, List<WatchVariableControlPrecursor> variables, WatchVariablePanel watchVariablePanel) 
-            : base(variables, watchVariablePanel, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
+        public TriangleManager(Control tabControl, string varFilePath, WatchVariableFlowLayoutPanel watchVariablePanel)
+            : base(varFilePath, watchVariablePanel, ALL_VAR_GROUPS, VISIBLE_VAR_GROUPS)
         {
-            _triangleCache = new Dictionary<uint, TriangleStruct>();
+            _triangleCache = new Dictionary<uint, TriangleDataModel>();
 
             _triangleData = new List<short[]>();
 
@@ -81,14 +90,15 @@ namespace STROOP.Managers
             _useMisalignmentOffsetCheckbox = splitContainerTriangles.Panel1.Controls["checkBoxVertexMisalignment"] as CheckBox;
 
             _addressBox.KeyDown += AddressBox_KeyDown;
-            (splitContainerTriangles.Panel1.Controls["radioButtonTriFloor"] as RadioButton).Click 
-                += (sender, e) => Mode_Click(sender, e, TriangleMode.Floor);
-            (splitContainerTriangles.Panel1.Controls["radioButtonTriWall"] as RadioButton).Click
-                += (sender, e) => Mode_Click(sender, e, TriangleMode.Wall);
-            (splitContainerTriangles.Panel1.Controls["radioButtonTriCeiling"] as RadioButton).Click
-                += (sender, e) => Mode_Click(sender, e, TriangleMode.Ceiling);
-            (splitContainerTriangles.Panel1.Controls["radioButtonTriOther"] as RadioButton).Click
-                += (sender, e) => Mode_Click(sender, e, TriangleMode.Other);
+
+            _radioButtonTriFloor = splitContainerTriangles.Panel1.Controls["radioButtonTriFloor"] as RadioButton;
+            _radioButtonTriFloor.Click += (sender, e) => Mode_Click(sender, e, TriangleMode.Floor);
+            _radioButtonTriWall = splitContainerTriangles.Panel1.Controls["radioButtonTriWall"] as RadioButton;
+            _radioButtonTriWall.Click += (sender, e) => Mode_Click(sender, e, TriangleMode.Wall);
+            _radioButtonTriCeiling = splitContainerTriangles.Panel1.Controls["radioButtonTriCeiling"] as RadioButton;
+            _radioButtonTriCeiling.Click += (sender, e) => Mode_Click(sender, e, TriangleMode.Ceiling);
+            _radioButtonTriOther = splitContainerTriangles.Panel1.Controls["radioButtonTriOther"] as RadioButton;
+            _radioButtonTriOther.Click += (sender, e) => Mode_Click(sender, e, TriangleMode.Other);
 
             (splitContainerTriangles.Panel1.Controls["labelTriangleSelection"] as Label).Click
                 += (sender, e) => ShowTriangleCoordinates();
@@ -121,10 +131,11 @@ namespace STROOP.Managers
 
             (splitContainerTriangles.Panel1.Controls["buttonAnnihilateTriangle"] as Button).Click
                 += (sender, e) => ButtonUtilities.AnnihilateTriangle(_triangleAddress);
-            
+
             var trianglePosGroupBox = splitContainerTriangles.Panel1.Controls["groupBoxTrianglePos"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
+                true,
                 trianglePosGroupBox,
                 trianglePosGroupBox.Controls["buttonTrianglePosXn"] as Button,
                 trianglePosGroupBox.Controls["buttonTrianglePosXp"] as Button,
@@ -306,12 +317,20 @@ namespace STROOP.Managers
             (_addressBox.Parent.Controls["radioButtonTriOther"] as RadioButton).Checked = true;
         }
 
-        public TriangleStruct GetTriangleStruct(uint address)
+        public TriangleDataModel GetTriangleStruct(uint address)
         {
             if (_triangleCache.ContainsKey(address)) return _triangleCache[address];
-            TriangleStruct triStruct = new TriangleStruct(address);
+            TriangleDataModel triStruct = new TriangleDataModel(address);
             _triangleCache.Add(address, triStruct);
             return triStruct;
+        }
+
+        public void SetCustomTriangleAddress(uint triAddress)
+        {
+            _radioButtonTriOther.Checked = true;
+            Mode = TriangleMode.Other;
+            TrianglePointerAddress = 0;
+            TriangleAddress = triAddress;
         }
 
         public override void Update(bool updateView)

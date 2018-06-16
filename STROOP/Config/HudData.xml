@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<HudData>
+<VarData>
   <Data type="sbyte" offset="0xAD" base="Mario">Life Count</Data>
   <Data type="short" offset="0xF0" base="Mario">Life Display</Data>
   <Data type="short" offset="0xAE" base="Mario" useHex="true">HP (Hex)</Data>
@@ -16,19 +16,25 @@
   <Data type="short" offset="0xAA" base="Mario">Star Count</Data>
   <Data type="short" offset="0xF4" base="Mario">Star Display</Data>
   <Data type="short" offset="0xB8" base="Mario">Checked Star Count</Data>
-  <Data type="byte" offset="0xEE" mask="0x01" base="Mario" subclass="Boolean">Time Counting</Data>
-  <Data type="ushort" offset="0xFC" base="Mario">Time (Number)</Data>
-  <Data base="None" specialType="HudTimeText" subclass="String">Time (Text)</Data>
+  <Data base="File" specialType="StarsInFile">Stars in File</Data>
 
-  <Data type="byte" offset="0xFB" mask="0x01" base="Mario" subclass="Boolean">HUD On Lives</Data>
-  <Data type="byte" offset="0xFB" mask="0x08" base="Mario" subclass="Boolean">HUD On HP/Camera</Data>
-  <Data type="byte" offset="0xFB" mask="0x02" base="Mario" subclass="Boolean">HUD On Coins</Data>
-  <Data type="byte" offset="0xFB" mask="0x04" base="Mario" subclass="Boolean">HUD On Stars</Data>
-  <Data type="byte" offset="0xFB" mask="0x40" base="Mario" subclass="Boolean">HUD On Time</Data>
-  <Data type="short" offsetUS="0x8033BAC6" offsetJP="0x8033A756" base="Relative">Level Index</Data>
+  <Data type="byte" offset="0xEE" mask="0x01" base="Mario" subclass="Boolean" color="Purple">Time Counting</Data>
+  <Data type="ushort" offset="0xFC" base="Mario" color="Purple">Time (Number)</Data>
+  <Data base="None" specialType="HudTimeText" subclass="String" color="Purple">Time (Text)</Data>
+  <Data type="byte" offsetUS="0x8032DA98" offsetJP="0x8032CB38" base="Relative" subclass="Boolean" color="Purple">PSS Slide Race</Data>
 
-  <Data type="byte" offsetUS="0x803325F0" offsetJP="0x803314E0" base="Relative">HP HUD State</Data>
-  <Data type="int" offsetUS="0x803325FC" offsetJP="0x803314EC" base="Relative">HP HUD Timer</Data>
-  <Data type="short" offsetUS="0x803325F2" offsetJP="0x803314E2" base="Relative">HP HUD X</Data>
-  <Data type="short" offsetUS="0x803325F4" offsetJP="0x803314E4" base="Relative">HP HUD Y</Data>
-</HudData>
+  <Data type="byte" offset="0xFB" mask="0x01" base="Mario" subclass="Boolean" color="Yellow">HUD On Lives</Data>
+  <Data type="byte" offset="0xFB" mask="0x08" base="Mario" subclass="Boolean" color="Yellow">HUD On HP/Camera</Data>
+  <Data type="byte" offset="0xFB" mask="0x02" base="Mario" subclass="Boolean" color="Yellow">HUD On Coins</Data>
+  <Data type="byte" offset="0xFB" mask="0x04" base="Mario" subclass="Boolean" color="Yellow">HUD On Stars</Data>
+  <Data type="byte" offset="0xFB" mask="0x40" base="Mario" subclass="Boolean" color="Yellow">HUD On Time</Data>
+  <Data type="short" offsetUS="0x8033BAC6" offsetJP="0x8033A756" base="Relative" color="Yellow">Level Index</Data>
+
+  <Data type="uint" offsetUS="0x8024B19C" offsetJP="0x8024B01C" base="Relative" useHex="true" color="Green">Enable Coin Display</Data>
+  <Data type="uint" offsetUS="0x8024B1B4" offsetJP="0x8024B034" base="Relative" useHex="true" color="Green">Disable Coin Display</Data>
+
+  <Data type="byte" offsetUS="0x803325F0" offsetJP="0x803314E0" base="Relative" color="Blue">HP HUD State</Data>
+  <Data type="int" offsetUS="0x803325FC" offsetJP="0x803314EC" base="Relative" color="Blue">HP HUD Timer</Data>
+  <Data type="short" offsetUS="0x803325F2" offsetJP="0x803314E2" base="Relative" color="Blue">HP HUD X</Data>
+  <Data type="short" offsetUS="0x803325F4" offsetJP="0x803314E4" base="Relative" color="Blue">HP HUD Y</Data>
+</VarData>

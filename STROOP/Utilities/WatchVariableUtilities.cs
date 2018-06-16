@@ -11,48 +11,6 @@ namespace STROOP.Structs
 {
     public static class WatchVariableUtilities
     {
-        public readonly static Dictionary<String, Type> StringToType = new Dictionary<string, Type>()
-        {
-            { "byte", typeof(byte) },
-            { "sbyte", typeof(sbyte) },
-            { "short", typeof(Int16) },
-            { "ushort", typeof(UInt16) },
-            { "int", typeof(Int32) },
-            { "uint", typeof(UInt32) },
-            { "long", typeof(Int64) },
-            { "ulong", typeof(UInt64) },
-            { "float", typeof(float) },
-            { "double", typeof(double) },
-        };
-
-        public readonly static Dictionary<Type, int> TypeSize = new Dictionary<Type, int>()
-        {
-            {typeof(byte), 1},
-            {typeof(sbyte), 1},
-            {typeof(Int16), 2},
-            {typeof(UInt16), 2},
-            {typeof(Int32), 4},
-            {typeof(UInt32), 4},
-            {typeof(Int64), 8},
-            {typeof(UInt64), 8},
-            {typeof(float), 4},
-            {typeof(double), 4},
-        };
-
-        public readonly static Dictionary<Type, bool> TypeSign = new Dictionary<Type, bool>()
-        {
-            {typeof(byte), false},
-            {typeof(sbyte), true},
-            {typeof(Int16), true},
-            {typeof(UInt16), false},
-            {typeof(Int32), true},
-            {typeof(UInt32), false},
-            {typeof(Int64), true},
-            {typeof(UInt64), false},
-            {typeof(float), true},
-            {typeof(double), true},
-        };
-
         public static BaseAddressTypeEnum GetBaseAddressType(string stringValue)
         {
             return (BaseAddressTypeEnum)Enum.Parse(typeof(BaseAddressTypeEnum), stringValue);
@@ -89,7 +47,7 @@ namespace STROOP.Structs
         }
 
         private static readonly List<uint> BaseAddressListZero = new List<uint> { 0 };
-        private static readonly List<uint> BaseAddressListEmpy = new List<uint> { };
+        private static readonly List<uint> BaseAddressListEmpty = new List<uint> { };
         
         public static List<uint> GetBaseAddressListFromBaseAddressType(BaseAddressTypeEnum baseAddressType)
         {
@@ -111,18 +69,18 @@ namespace STROOP.Structs
                     return new List<uint> { Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress) };
 
                 case BaseAddressTypeEnum.Camera:
-                    return new List<uint> { CameraConfig.CameraStructAddress };
+                    return new List<uint> { CameraConfig.StructAddress };
 
                 case BaseAddressTypeEnum.File:
                     return new List<uint> { Config.FileManager.CurrentFileAddress };
 
                 case BaseAddressTypeEnum.Object:
-                    return Config.ObjectManager.CurrentAddresses;
+                    return Config.ObjectSlotsManager.SelectedSlotsAddresses.ToList();
 
                 case BaseAddressTypeEnum.Triangle:
                     {
                         uint triangleAddress = Config.TriangleManager.TriangleAddress;
-                        return triangleAddress != 0 ? new List<uint>() { triangleAddress } : BaseAddressListEmpy;
+                        return triangleAddress != 0 ? new List<uint>() { triangleAddress } : BaseAddressListEmpty;
                     }
 
                 case BaseAddressTypeEnum.TriangleExertionForceTable:
@@ -160,11 +118,36 @@ namespace STROOP.Structs
                 case BaseAddressTypeEnum.Area:
                     return new List<uint> { Config.AreaManager.SelectedAreaAddress };
 
+                case BaseAddressTypeEnum.LastCoin:
+                    {
+                        List<uint> coinAddresses = Config.ObjectSlotsManager.GetLoadedObjectsWithPredicate(
+                            o => o.BehaviorAssociation?.Name == "Yellow Coin" || o.BehaviorAssociation?.Name == "Blue Coin")
+                            .ConvertAll(objectDataModel => objectDataModel.Address);
+                        return coinAddresses.Count > 0 ? new List<uint>() { coinAddresses.Last() } : BaseAddressListEmpty;
+                    }
+
+                case BaseAddressTypeEnum.Ghost:
+                    return Config.ObjectSlotsManager.GetLoadedObjectsWithName("Mario Ghost")
+                        .ConvertAll(objectDataModel => objectDataModel.Address);
+
                 case BaseAddressTypeEnum.HackedArea:
                     return new List<uint> { MiscConfig.HackedAreaAddress };
 
                 case BaseAddressTypeEnum.CamHack:
-                    return new List<uint> { CameraHackConfig.CameraHackStruct };
+                    return new List<uint> { CamHackConfig.StructAddress };
+
+                case BaseAddressTypeEnum.GfxNode:
+                    {
+                        GfxNode node  = Config.GfxManager.SelectedNode;
+                        return node != null ? new List<uint>() { node.Address } : BaseAddressListEmpty;
+                    }
+                case BaseAddressTypeEnum.GhostHack:
+                    return new List<uint>
+                    {
+                        GhostHackConfig.MemoryAddress +
+                        GhostHackConfig.FrameDataStructSize *
+                            (Config.Stream.GetUInt32(GhostHackConfig.NumFramesAddress) + GhostHackConfig.FrameOffset)
+                    };
 
                 default:
                     throw new ArgumentOutOfRangeException();

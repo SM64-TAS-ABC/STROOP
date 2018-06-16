@@ -45,11 +45,39 @@ namespace STROOP.Utilities
             return (magnitude * xComponent, magnitude * zComponent);
         }
 
-        public static (double sidewaysDist, double forwardsDist) GetComponentsFromVectorRelatively(double magnitude, double vectorAngle, double baseAngle)
+        public static (double sidewaysDist, double forwardsDist) GetComponentsFromVectorRelatively(
+            double magnitude, double vectorAngle, double baseAngle)
         {
             double rotatedAngle = NormalizeAngleDouble(vectorAngle - baseAngle);
             (double xComponent, double zComponent) = GetComponentsFromVector(magnitude, rotatedAngle);
             return (-1 * xComponent, zComponent);
+        }
+
+        public static (double xDist, double zDist) GetAbsoluteComponents(
+            double sidewaysDist, double forwardsDist, double relativeAngle)
+        {
+            double relX = sidewaysDist;
+            double relZ = -1 * forwardsDist;
+            double relDist = GetHypotenuse(relX, relZ);
+            double relAngle = AngleTo_AngleUnits(relX, relZ);
+            double absAngle = relativeAngle + ReverseAngle(relAngle);
+            return GetComponentsFromVector(relDist, absAngle);
+        }
+
+        public static (double newXPos, double newZPos) GetRelativelyOffsettedPosition(
+            double baseX, double baseZ, double baseAngle, double pointX, double pointZ,
+            double? goalSidewaysDistNullable, double? goalForwardsDistNullable)
+        {
+            double hdist = GetDistanceBetween(baseX, baseZ, pointX, pointZ);
+            double angle = AngleTo_AngleUnits(baseX, baseZ, pointX, pointZ);
+            (double currentSidewaysDist, double currentForwardsDist) =
+                GetComponentsFromVectorRelatively(hdist, angle, baseAngle);
+
+            double goalSidewaysDist = goalSidewaysDistNullable ?? currentSidewaysDist;
+            double goalForwardsDist = goalForwardsDistNullable ?? currentForwardsDist;
+
+            (double xDist, double zDist) = GetAbsoluteComponents(goalSidewaysDist, goalForwardsDist, baseAngle);
+            return (baseX + xDist, baseZ + zDist);
         }
 
         public static (double magnitude, double angle) GetVectorFromComponents(double xDist, double zDist)
@@ -57,6 +85,17 @@ namespace STROOP.Utilities
             double magnitude = Math.Sqrt(xDist * xDist + zDist * zDist);
             double angle = AngleTo_AngleUnits(0, 0, xDist, zDist);
             return (magnitude, angle);
+        }
+
+        public static (double magnitude, double angle) GetVectorFromCoordinates(
+            double xFrom, double zFrom, double xTo, double zTo, bool usePositiveMagnitude)
+        {
+            double xDist = xTo - xFrom;
+            double zDist = zTo - zFrom;
+            (double magnitude, double angle) = GetVectorFromComponents(xDist, zDist);
+            double adjustedMagnitude = usePositiveMagnitude ? magnitude : -1 * magnitude;
+            double adjustedAngle = usePositiveMagnitude ? angle : ReverseAngle(angle);
+            return (adjustedMagnitude, adjustedAngle);
         }
 
         public static (double x, double y, double z) ScaleVector3D(
@@ -77,6 +116,12 @@ namespace STROOP.Utilities
             return (xComp * multiplier, zComp * multiplier);
         }
 
+        public static double ScaleVector1D(
+            double xComp, double finalDist)
+        {
+            return xComp >= 0 ? finalDist : -1 * finalDist;
+        }
+
         public static (double x, double y, double z) ExtrapolateLine3D(
             double p1X, double p1Y, double p1Z, double p2X, double p2Y, double p2Z, double finalDist)
         {
@@ -87,7 +132,7 @@ namespace STROOP.Utilities
             return (p1X + scaledX, p1Y + scaledY, p1Z + scaledZ);
         }
 
-        public static (double x, double z) ExtrapolateLineHorizontally(
+        public static (double x, double z) ExtrapolateLine2D(
             double p1X, double p1Z, double p2X, double p2Z, double finalDist)
         {
             double diffX = p2X - p1X;
@@ -100,8 +145,7 @@ namespace STROOP.Utilities
             double p1X, double p1Z, double p2X, double p2Z, double finalAngle)
         {
             double dist = GetDistanceBetween(p1X, p1Z, p2X, p2Z);
-            double reverseAngle = ReverseAngle(finalAngle);
-            (double xDiff, double zDiff) = GetComponentsFromVector(dist, reverseAngle);
+            (double xDiff, double zDiff) = GetComponentsFromVector(dist, finalAngle);
             return (p2X + xDiff, p2Z + zDiff);
         }
 
@@ -130,7 +174,7 @@ namespace STROOP.Utilities
             bool onSideOfLineTowardsTri = floorTri == leftOfLine;
             double signedDist = dist * (onSideOfLineTowardsTri ? 1 : -1);
 
-            bool misalignmentOffset = misalignmentOffsetNullable ?? OptionsConfig.UseMisalignmentOffsetForDistanceToLine;
+            bool misalignmentOffset = misalignmentOffsetNullable ?? SavedSettingsConfig.UseMisalignmentOffsetForDistanceToLine;
             if (misalignmentOffset)
             {
                 if (p1X == p2X)
@@ -184,6 +228,12 @@ namespace STROOP.Utilities
             double planeDistance = dotProduct / prevToNextDist;
 
             return planeDistance;
+        }
+
+        public static double ReflectValueAboutValue(double value, double pivot)
+        {
+            double diff = pivot - value;
+            return pivot + diff;
         }
 
         public static double NormalizeAngleDouble(double angle)
@@ -268,6 +318,14 @@ namespace STROOP.Utilities
         public static ushort AngleTo_AngleUnitsRounded(double xTo, double zTo)
         {
             return AngleTo_AngleUnitsRounded(0, 0, xTo, zTo);
+        }
+
+        public static short GetDeltaAngleTruncated(double angle1, double angle2)
+        {
+            ushort angle1Truncated = NormalizeAngleTruncated(angle1);
+            ushort angle2Truncated = NormalizeAngleTruncated(angle2);
+            int delta = angle2Truncated - angle1Truncated;
+            return NormalizeAngleShort(delta);
         }
 
         public static (double radius, double theta, double phi) EulerToSpherical_Radians(double x, double y, double z)
@@ -465,7 +523,7 @@ namespace STROOP.Utilities
 
         public static double GetAngleDifference(double angle1, double angle2)
         {
-            return MaybeNegativeModulus(angle2 - angle1, 32768);
+            return MaybeNegativeModulus(angle2 - angle1, 65536);
         }
 
         public static double Clamp(double value, double min, double max)
@@ -502,19 +560,6 @@ namespace STROOP.Utilities
             if (normX == 0 && normZ == 0)
                 uphillRadians = 0;
             return RadiansToAngleUnitsRounded(uphillRadians);
-        }
-
-        public static (double effectiveX, double effectiveY) GetEffectiveInput(double rawX, double rawY)
-        {
-            double effectiveX = rawX >= 8 ? rawX - 6 : rawX <= -8 ? rawX + 6 : 0;
-            double effectiveY = rawY >= 8 ? rawY - 6 : rawY <= -8 ? rawY + 6 : 0;
-            double hypotenuse = GetHypotenuse(effectiveX, effectiveY);
-            if (hypotenuse > 64)
-            {
-                effectiveX *= 64 / hypotenuse;
-                effectiveY *= 64 / hypotenuse;
-            }
-            return (effectiveX, effectiveY);
         }
 
         public static byte ApplyValueToMaskedByte(byte currentValue, byte mask, byte valueToSet)
@@ -555,6 +600,250 @@ namespace STROOP.Utilities
         {
             return v1X * v2X + v1Y * v2Y + v1Z * v2Z;
         }
-        
+
+        // Input angle stuff
+
+        public static (float effectiveX, float effectiveY) GetEffectiveInput(int rawX, int rawY)
+        {
+            float effectiveX = rawX >= 8 ? rawX - 6 : rawX <= -8 ? rawX + 6 : 0;
+            float effectiveY = rawY >= 8 ? rawY - 6 : rawY <= -8 ? rawY + 6 : 0;
+            float hypotenuse = (float)Math.Sqrt(effectiveX * effectiveX + effectiveY * effectiveY);
+            if (hypotenuse > 64)
+            {
+                effectiveX *= 64 / hypotenuse;
+                effectiveY *= 64 / hypotenuse;
+            }
+            return (effectiveX, effectiveY);
+        }
+
+        public static float GetEffectiveInputMagnitudeUncapped(int rawX, int rawY)
+        {
+            int effectiveX = rawX >= 8 ? rawX - 6 : rawX <= -8 ? rawX + 6 : 0;
+            int effectiveY = rawY >= 8 ? rawY - 6 : rawY <= -8 ? rawY + 6 : 0;
+            return (float)Math.Sqrt(effectiveX * effectiveX + effectiveY * effectiveY);
+        }
+
+        public static float GetEffectiveInputMagnitude(int rawX, int rawY)
+        {
+            int effectiveX = rawX >= 8 ? rawX - 6 : rawX <= -8 ? rawX + 6 : 0;
+            int effectiveY = rawY >= 8 ? rawY - 6 : rawY <= -8 ? rawY + 6 : 0;
+            float hypotenuse = (float)Math.Sqrt(effectiveX * effectiveX + effectiveY * effectiveY);
+            return Math.Min(hypotenuse, 64f);
+        }
+
+        public static float GetScaledInputMagnitude(int rawX, int rawY, bool squished)
+        {
+            float effectiveMagnitude = GetEffectiveInputMagnitude(rawX, rawY);
+            float scaled = (effectiveMagnitude / 64f) * (effectiveMagnitude / 64f) * 64f;
+            int divider = squished ? 8 : 2;
+            return scaled / divider;
+        }
+
+        public static bool InputIsInDeadZone(int input)
+        {
+            return input > -8 && input < 8 && input != 0;
+        }
+
+        public static (int xInput, int yInput) CalculateInputsForAngle(ushort goalAngle, ushort cameraAngle)
+        {
+            double bestMagnitude = 0;
+            int bestX = 0;
+            int bestY = 0;
+
+            ushort truncatedGoalAngle = NormalizeAngleTruncated(goalAngle);
+            for (int x = -128; x <= 127; x++)
+            {
+                if (InputIsInDeadZone(x)) continue;
+                for (int y = -128; y <= 127; y++)
+                {
+                    if (InputIsInDeadZone(y)) continue;
+                    ushort inputAngle = CalculateAngleFromInputs(x, y, cameraAngle);
+                    ushort truncatedInputAngle = NormalizeAngleTruncated(inputAngle);
+                    if (truncatedInputAngle == truncatedGoalAngle)
+                    {
+                        double magnitude = GetEffectiveInputMagnitudeUncapped(x, y);
+                        if (magnitude > bestMagnitude)
+                        {
+                            bestMagnitude = magnitude;
+                            bestX = x;
+                            bestY = y;
+                        }
+                    }
+                }
+            }
+            return (bestX, bestY);
+        }
+
+        public static (int xInput, int yInput) CalculateInputsForAngleOptimized(ushort goalAngle, ushort cameraAngle)
+        {
+            double bestMagnitude = 0;
+            int bestX = 0;
+            int bestY = 0;
+
+            ushort truncatedGoalAngle = NormalizeAngleTruncated(goalAngle);
+            ushort reversedCameraAngle = NormalizeAngleUshort(ReverseAngle(cameraAngle));
+            ushort goalMarioAngle = NormalizeAngleUshort(goalAngle - reversedCameraAngle);
+            double goalMarioAngleRadians = AngleUnitsToRadians(goalMarioAngle);
+
+            bool useX;
+            bool positiveA;
+            bool positiveB;
+            if (goalMarioAngle < 8192)
+            {
+                useX = false;
+                positiveA = true;
+                positiveB = false;
+            }
+            else if (goalMarioAngle < 16384)
+            {
+                useX = true;
+                positiveA = false;
+                positiveB = true;
+            }
+            else if (goalMarioAngle < 24576)
+            {
+                useX = true;
+                positiveA = false;
+                positiveB = false;
+            }
+            else if (goalMarioAngle < 32768)
+            {
+                useX = false;
+                positiveA = false;
+                positiveB = false;
+            }
+            else if (goalMarioAngle < 40960)
+            {
+                useX = false;
+                positiveA = false;
+                positiveB = true;
+            }
+            else if (goalMarioAngle < 49152)
+            {
+                useX = true;
+                positiveA = true;
+                positiveB = false;
+            }
+            else if (goalMarioAngle < 57344)
+            {
+                useX = true;
+                positiveA = true;
+                positiveB = true;
+            }
+            else
+            {
+                useX = false;
+                positiveA = true;
+                positiveB = true;
+            }
+
+            double ratio = useX ?
+                    Math.Cos(goalMarioAngleRadians) / Math.Sin(goalMarioAngleRadians) :
+                    Math.Sin(goalMarioAngleRadians) / Math.Cos(goalMarioAngleRadians);
+            double ratioAbs = Math.Abs(ratio);
+            int max = positiveA ? 121 : 122;
+
+            for (int aMag = 8; aMag <= max; aMag++)
+            {
+                int a = aMag * (positiveA ? 1 : -1);
+                int bMedianMag = (int)(aMag * ratioAbs);
+                int bMedian = bMedianMag * (positiveB ? 1 : -1);
+
+                int width = 1;
+                for (int b = bMedian - width; b <= bMedian + width; b++)
+                {
+                    int xEffective = useX ? a : b;
+                    int yEffective = useX ? b : a;
+
+                    if (Math.Abs(xEffective) == 1 || Math.Abs(yEffective) == 1) continue;
+
+                    int x = xEffective < 0 ? xEffective - 6 : xEffective > 0 ? xEffective + 6 : 0;
+                    int y = yEffective < 0 ? yEffective - 6 : yEffective > 0 ? yEffective + 6 : 0;
+
+                    ushort inputAngle = CalculateAngleFromInputs(x, y, cameraAngle);
+                    ushort truncatedInputAngle = NormalizeAngleTruncated(inputAngle);
+                    if (truncatedInputAngle == truncatedGoalAngle)
+                    {
+                        double magnitude = GetEffectiveInputMagnitudeUncapped(x, y);
+                        if (magnitude > bestMagnitude)
+                        {
+                            bestMagnitude = magnitude;
+                            bestX = x;
+                            bestY = y;
+                        }
+                    }
+                }
+            }
+
+            return (bestX, bestY);
+        }
+
+        public static ushort CalculateAngleFromInputs(int xInput, int yInput, ushort? cameraAngleNullable = null)
+        {
+            (float effectiveX, float effectiveY) = GetEffectiveInput(xInput, yInput);
+            ushort marioAngle = InGameTrigUtilities.InGameATan(effectiveY, -effectiveX);
+            ushort cameraAngleRaw = cameraAngleNullable ?? Config.Stream.GetUInt16(CameraConfig.StructAddress + CameraConfig.CentripetalAngleOffset);
+            ushort cameraAngle = NormalizeAngleUshort(ReverseAngle(cameraAngleRaw));
+            ushort summedAngle = NormalizeAngleUshort(marioAngle + cameraAngle);
+            return summedAngle;
+        }
+
+        // Float stuff
+
+        public static int GetFloatSign(float floatValue)
+        {
+            string bitString = GetBitString(floatValue);
+            string signChar = bitString.Substring(0, 1);
+            return signChar == "0" ? 1 : -1;
+        }
+
+        public static int GetFloatExponent(float floatValue)
+        {
+            string bitString = GetBitString(floatValue);
+            string exponentString = bitString.Substring(1, 8);
+            int byteValue = 0;
+            for (int i = 0; i < 8; i++)
+            {
+                string bitChar = exponentString.Substring(8 - 1 - i, 1);
+                bool bitBool = bitChar == "1";
+                if (bitBool) byteValue = (byte)(byteValue | (1 << i));
+            }
+            int exponent = byteValue - 127;
+            return exponent;
+        }
+
+        public static double GetFloatMantissa(float floatValue)
+        {
+            string bitString = GetBitString(floatValue);
+            string exponentString = bitString.Substring(9, 23);
+            double sum = 1;
+            double multiplier = 1;
+            for (int i = 0; i < 23; i++)
+            {
+                multiplier *= 0.5;
+                string bitChar = exponentString.Substring(i, 1);
+                bool bitBool = bitChar == "1";
+                if (bitBool) sum += multiplier;
+            }
+            return sum;
+        }
+
+        public static string GetBitString(object value)
+        {
+            List<string> bitStrings = TypeUtilities.GetBytes(value).ToList().ConvertAll(b => GetBitString(b));
+            bitStrings.Reverse();
+            return String.Join("", bitStrings);
+        }
+
+        public static string GetBitString(byte b)
+        {
+            StringBuilder builder = new StringBuilder();
+            for (int i = 7; i >= 0; i--)
+            {
+                bool bit = (b & (1 << i)) != 0;
+                builder.Append(bit ? "1" : "0");
+            }
+            return builder.ToString();
+        }
     }
 }

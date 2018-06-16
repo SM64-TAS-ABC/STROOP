@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="STROOP.Controls.Map.MapObject">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <Members>
+      <Field Name="_visible" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAgAAAAAAAAAAABAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Map\Objects\MapObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="STROOP.Controls.Map.Objects.MapCameraObject" Collapsed="true">
+    <Position X="4" Y="4.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Map\Objects\MapCameraObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="STROOP.Controls.Map.Objects.MapIconObject">
+    <Position X="6" Y="1" Width="1.5" />
+    <Members>
+      <Property Name="_iconGraphics" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAggAAgAAAAAABAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Map\Objects\MapIconObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="STROOP.Controls.Map.Objects.MapLevelObject" Collapsed="true">
+    <Position X="8.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAABgACAAAAEAAQAAAKgAEAAAAQgKAAA=</HashCode>
+      <FileName>Controls\Map\Objects\MapLevelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="STROOP.Controls.Map.Objects.MapTriangleObject">
+    <Position X="10.5" Y="1" Width="1.5" />
+    <Members>
+      <Property Name="_triangleData" Hidden="true" />
+      <Field Name="_triGraphics" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAQAUAAAAAAAAAAgABAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Controls\Map\Objects\MapTriangleObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="STROOP.Controls.Map.Objects.MapCeilingTriObject" Collapsed="true">
+    <Position X="10.25" Y="4.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Map\Objects\MapCeilingTriObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="STROOP.Controls.Map.Objects.MapFloorTriObject" Collapsed="true">
+    <Position X="12.25" Y="4.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Map\Objects\MapFloorTriObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="STROOP.Controls.Map.Objects.MapWallTriObject" Collapsed="true">
+    <Position X="14.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Map\Objects\MapWallTriObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="STROOP.Controls.Map.Objects.MapHolpObject" Collapsed="true">
+    <Position X="2.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Map\Objects\MapHolpObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="STROOP.Controls.Map.Objects.MapMarioObject" Collapsed="true">
+    <Position X="0.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Map\Objects\MapMarioObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="STROOP.Controls.Map.Objects.MapSm64Object" Collapsed="true">
+    <Position X="6" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Map\Objects\MapSm64Object.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="STROOP.Controls.Map.Graphics.Items.MapGraphicsItem">
+    <Position X="8.25" Y="5.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="STROOP.Controls.Map.Graphics.Items.MapGraphicsItem.DrawType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Controls\Map\Graphics\Items\MapGraphicsItem.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAgACAAAAAAgAAAAAAAEAAAAAAAAAoAaAAAAAAAAA=</HashCode>
+      <FileName>Controls\Map\Graphics\Items\MapGraphicsItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="STROOP.Controls.Map.Graphics.Items.MapGraphicsBackgroundItem" Collapsed="true">
+    <Position X="10.5" Y="8.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAgACBAAAAAkAAAAABAEAgAAAAQAAggQgAAAAAAAA=</HashCode>
+      <FileName>Controls\Map\Graphics\Items\MapGraphicsBackgroundItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="STROOP.Controls.Map.Graphics.Items.MapGraphicsIconItem" Collapsed="true">
+    <Position X="10.5" Y="7.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAEkACBAAAAgsAgEAABAEAgAEAAQAAggSgAAAQAAAA=</HashCode>
+      <FileName>Controls\Map\Graphics\Items\MapGraphicsIconItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="STROOP.Controls.Map.Graphics.Items.MapGraphicsImageItem" Collapsed="true">
+    <Position X="10.5" Y="6.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAgACBgAAAAkAAAAABAEAgAAAAQAAggSgAAAAQIAA=</HashCode>
+      <FileName>Controls\Map\Graphics\Items\MapGraphicsImageItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="STROOP.Controls.Map.Graphics.Items.MapGraphicsTrianglesItem" Collapsed="true">
+    <Position X="10.5" Y="5.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAgACAAAEAAgAAAAAAAEAwAEABAAAgASAAAAAAAAg=</HashCode>
+      <FileName>Controls\Map\Graphics\Items\MapGraphicsTrianglesItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="STROOP.Controls.Map.Graphics.MapCameraTopView">
+    <Position X="0.75" Y="7" Width="1.5" />
+    <Members>
+      <Field Name="_projection" Hidden="true" />
+      <Field Name="_view" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAQAAAkAAQAACAAAAgAAAg=</HashCode>
+      <FileName>Controls\Map\Graphics\Cameras\MapCameraTopView.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="STROOP.Controls.Map.Graphics.MapPerspectiveCamera">
+    <Position X="2.75" Y="7" Width="1.5" />
+    <Members>
+      <Field Name="_fov" Hidden="true" />
+      <Field Name="_graphics" Hidden="true" />
+      <Field Name="_projection" Hidden="true" />
+      <Field Name="_viewPos" Hidden="true" />
+      <Field Name="_viewRot" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAABAAAgAAAAAAgQACAkAAwCIAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Map\Graphics\Cameras\MapPerspectiveCamera.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="STROOP.Controls.Map.MapController">
+    <Position X="5.75" Y="5.75" Width="1.5" />
+    <Members>
+      <Field Name="_graphics" Hidden="true" />
+      <Field Name="_mapObjects" Hidden="true" />
+      <Field Name="_perspectiveCamera" Hidden="true" />
+      <Field Name="_topCamera" Hidden="true" />
+    </Members>
+    <NestedTypes>
+      <Enum Name="STROOP.Controls.Map.MapController.MapCameraMode" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Controls\Map\MapController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="STROOP.Controls.Map.MapController.MapScaleMode" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Controls\Map\MapController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="STROOP.Controls.Map.MapController.MapCenterMode" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Controls\Map\MapController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAIAAQAEAAAAAIAACEAAAQACAAACAQCSAAA=</HashCode>
+      <FileName>Controls\Map\MapController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="STROOP.Controls.Map.Graphics.IMapCamera">
+    <Position X="1.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Map\Graphics\Cameras\IMapCamera.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

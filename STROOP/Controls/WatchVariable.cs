@@ -33,8 +33,8 @@ namespace STROOP.Controls
 
         public readonly uint? Mask;
 
-        private readonly Func<uint, string> _getterFunction;
-        private readonly Func<string, uint, bool> _setterFunction;
+        private readonly Func<uint, object> _getterFunction;
+        private readonly Func<object, uint, bool> _setterFunction;
 
         public bool IsSpecial { get { return SpecialType != null; } }
 
@@ -44,7 +44,7 @@ namespace STROOP.Controls
         {
             get
             {
-                switch (Config.Version)
+                switch (RomVersionConfig.Version)
                 {
                     case RomVersion.US:
                         if (OffsetUS.HasValue) return OffsetUS.Value;
@@ -77,10 +77,38 @@ namespace STROOP.Controls
             }
         }
 
-        public WatchVariable(string memoryTypeName, string specialType, BaseAddressTypeEnum baseAddress,
+        public WatchVariable(string memoryTypeName, string specialType, BaseAddressTypeEnum baseAddressType,
             uint? offsetUS, uint? offsetJP, uint? offsetPAL, uint? offsetDefault, uint? mask)
         {
-            BaseAddressType = baseAddress;
+            if (offsetDefault.HasValue && (offsetUS.HasValue || offsetJP.HasValue || offsetPAL.HasValue))
+            {
+                throw new ArgumentOutOfRangeException("Can't have both a default offset value and a rom-specific offset value");
+            }
+
+            if (specialType != null)
+            {
+                if (baseAddressType != BaseAddressTypeEnum.None &&
+                    baseAddressType != BaseAddressTypeEnum.Object &&
+                    baseAddressType != BaseAddressTypeEnum.Ghost &&
+                    baseAddressType != BaseAddressTypeEnum.LastCoin &&
+                    baseAddressType != BaseAddressTypeEnum.File &&
+                    baseAddressType != BaseAddressTypeEnum.Triangle)
+                {
+                    throw new ArgumentOutOfRangeException("Special var cannot have base address type " + baseAddressType);
+                }
+
+                if (offsetDefault.HasValue || offsetUS.HasValue || offsetJP.HasValue || offsetPAL.HasValue)
+                {
+                    throw new ArgumentOutOfRangeException("Special var cannot have any type of offset");
+                }
+
+                if (mask != null)
+                {
+                    throw new ArgumentOutOfRangeException("Special var cannot have mask");
+                }
+            }
+
+            BaseAddressType = baseAddressType;
 
             OffsetUS = offsetUS;
             OffsetJP = offsetJP;
@@ -90,10 +118,10 @@ namespace STROOP.Controls
             SpecialType = specialType;
 
             MemoryTypeName = memoryTypeName;
-            MemoryType = memoryTypeName == null ? null : WatchVariableUtilities.StringToType[MemoryTypeName];
-            ByteCount = memoryTypeName == null ? (int?)null : WatchVariableUtilities.TypeSize[MemoryType];
-            NibbleCount = memoryTypeName == null ? (int?)null : WatchVariableUtilities.TypeSize[MemoryType] * 2;
-            SignedType = memoryTypeName == null ? (bool?)null : WatchVariableUtilities.TypeSign[MemoryType];
+            MemoryType = memoryTypeName == null ? null : TypeUtilities.StringToType[MemoryTypeName];
+            ByteCount = memoryTypeName == null ? (int?)null : TypeUtilities.TypeSize[MemoryType];
+            NibbleCount = memoryTypeName == null ? (int?)null : TypeUtilities.TypeSize[MemoryType] * 2;
+            SignedType = memoryTypeName == null ? (bool?)null : TypeUtilities.TypeSign[MemoryType];
 
             Mask = mask;
             
@@ -106,9 +134,9 @@ namespace STROOP.Controls
             {
                 _getterFunction = (uint address) =>
                 {
-                    return Config.Stream.GetValue(MemoryType, address, UseAbsoluteAddressing, Mask).ToString();
+                    return Config.Stream.GetValue(MemoryType, address, UseAbsoluteAddressing, Mask);
                 };
-                _setterFunction = (string value, uint address) =>
+                _setterFunction = (object value, uint address) =>
                 {
                     return Config.Stream.SetValueRoundingWrapping(
                         MemoryType, value, address, UseAbsoluteAddressing, Mask);
@@ -117,14 +145,14 @@ namespace STROOP.Controls
             }
         }
 
-        public List<string> GetValues(List<uint> addresses = null)
+        public List<object> GetValues(List<uint> addresses = null)
         {
             List<uint> addressList = addresses ?? AddressList;
             return addressList.ConvertAll(
                 address => _getterFunction(address));
         }
 
-        public bool SetValue(string value, List<uint> addresses = null)
+        public bool SetValue(object value, List<uint> addresses = null)
         {
             List<uint> addressList = addresses ?? AddressList;
             if (addressList.Count == 0) return false;
@@ -138,10 +166,28 @@ namespace STROOP.Controls
             return success;
         }
 
+        public bool SetValues(List<object> values, List<uint> addresses = null)
+        {
+            List<uint> addressList = addresses ?? AddressList;
+            if (addressList.Count == 0) return false;
+            if (addressList.Count != values.Count) return false;
+
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
+            bool success = true;
+            for (int i = 0; i < addressList.Count; i++)
+            {
+                if (values[i] == null) continue;
+                success &= _setterFunction(values[i], addressList[i]);
+            }
+            if (!streamAlreadySuspended) Config.Stream.Resume();
+            return success;
+        }
+
         public List<WatchVariableLock> GetLocks(List<uint> addresses = null)
         {
-            List<string> values = GetValues(addresses);
             List<uint> addressList = addresses ?? AddressList;
+            List<object> values = GetValues(addressList);
             if (values.Count != addressList.Count) return new List<WatchVariableLock>();
 
             List<WatchVariableLock> locks = new List<WatchVariableLock>();
@@ -165,7 +211,7 @@ namespace STROOP.Controls
                 string maskString = "";
                 if (Mask != null)
                 {
-                    maskString = " with mask " + String.Format("0x{0:X" + NibbleCount.Value + "}", Mask.Value);
+                    maskString = " with mask " + HexUtilities.FormatValue(Mask.Value, NibbleCount.Value);
                 }
                 return MemoryTypeName + maskString;
             }
@@ -173,7 +219,7 @@ namespace STROOP.Controls
 
         public string GetBaseOffsetDescription()
         {
-            string offsetString = IsSpecial ? SpecialType : String.Format("0x{0:X}", Offset);
+            string offsetString = IsSpecial ? SpecialType : HexUtilities.FormatValue(Offset);
             return BaseAddressType + " + " + offsetString;
         }
 
@@ -182,7 +228,7 @@ namespace STROOP.Controls
             List<uint> addressList = addresses ?? AddressList;
             if (IsSpecial) return "(none)";
             if (addressList.Count == 0) return "(none)";
-            return String.Format("0x{0:X8}", GetRamAddress(addressArea, addresses));
+            return HexUtilities.FormatValue(GetRamAddress(addressArea, addresses), 8);
         }
 
         public uint GetRamAddress(bool addressArea = true, List<uint> addresses = null)
@@ -194,9 +240,8 @@ namespace STROOP.Controls
             uint address;
 
             if (UseAbsoluteAddressing)
-                address = (uint)Config.Stream.ConvertAddressEndianess(
-                    new UIntPtr(addressPtr.ToUInt64() - (ulong)Config.Stream.ProcessMemoryOffset.ToInt64()),
-                    ByteCount.Value);
+                address = EndiannessUtilities.SwapAddressEndianness(
+                    Config.Stream.GetRelativeAddress(addressPtr, ByteCount.Value), ByteCount.Value);
             else
                 address = addressPtr.ToUInt32();
 
@@ -208,14 +253,13 @@ namespace STROOP.Controls
             List<uint> addressList = addresses ?? AddressList;
             if (IsSpecial) return "(none)";
             if (addressList.Count == 0) return "(none)";
-            return String.Format("0x{0:X8}", GetProcessAddress(addresses).ToUInt64());
+            return HexUtilities.FormatValue(GetProcessAddress(addresses).ToUInt32(), 8);
         }
 
         public UIntPtr GetProcessAddress(List<uint> addresses = null)
         {
             uint address = GetRamAddress(false, addresses);
-            return Config.Stream.ConvertAddressEndianess(
-                new UIntPtr(address + (ulong)Config.Stream.ProcessMemoryOffset.ToInt64()), ByteCount.Value);
+            return Config.Stream.GetAbsoluteAddress(address, ByteCount.Value);
         }
     }
 }

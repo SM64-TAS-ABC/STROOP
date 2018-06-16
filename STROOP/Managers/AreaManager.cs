@@ -20,8 +20,8 @@ namespace STROOP.Managers
         List<RadioButton> _selectedAreaRadioButtons;
         CheckBox _selectCurrentAreaCheckbox;
 
-        public AreaManager(Control tabControl, List<WatchVariableControlPrecursor> variables, WatchVariablePanel watchVariableLayoutPanel) 
-            : base(variables, watchVariableLayoutPanel)
+        public AreaManager(Control tabControl, string varFilePath, WatchVariableFlowLayoutPanel watchVariableLayoutPanel) 
+            : base(varFilePath, watchVariableLayoutPanel)
         {
             _selectedAreaAddress = AreaUtilities.GetAreaAddress(0);
 

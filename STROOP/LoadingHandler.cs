@@ -31,7 +31,7 @@ namespace STROOP
 
             static private void ShowForm()
             {
-                LoadingForm = new LoadingForm(22); // TODO update max loading
+                LoadingForm = new LoadingForm(23); // TODO update max loading
                 Application.Run(LoadingForm);
             }
 

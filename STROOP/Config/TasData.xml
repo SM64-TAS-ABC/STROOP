@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<VarData>
+
+  <Data groupList="Basic" type="float" offset="0x3C" base="Mario" color="Red" coord="X">Mario X</Data>
+  <Data groupList="Basic" type="float" offset="0x40" base="Mario" color="Red" coord="Y">Mario Y</Data>
+  <Data groupList="Basic" type="float" offset="0x44" base="Mario" color="Red" coord="Z">Mario Z</Data>
+  <Data groupList="Basic" type="float" offset="0x4C" base="Mario" color="Red">Mario V Speed</Data>
+  <Data groupList="Basic" type="float" offset="0x54" base="Mario" color="Red">Mario H Speed</Data>
+  <Data groupList="Basic" base="None" specialType="DeFactoSpeed" color="Red">De Facto Speed</Data>
+
+  <Data groupList="Basic" type="ushort" offset="0x2E" base="Mario" subclass="Angle" yaw="true" color="Red">Yaw Facing</Data>
+  <Data groupList="Basic" type="ushort" offset="0x24" base="Mario" subclass="Angle" yaw="true" color="Red">Yaw Intended</Data>
+  <Data groupList="Basic" base="None" specialType="DeltaYawIntendedFacing" subclass="Angle" display="short" color="Red">DYaw Intend-Face</Data>
+
+  <Data groupList="Advanced" type="int" offsetUS="0x8032D5D4" offsetJP="0x8032C694" base="Relative" color="Green">Global Timer</Data>
+  <Data groupList="Advanced" type="ushort" offset="0xFC" base="Camera" subclass="Angle" yaw="true" color="Green">Cent Angle</Data>
+  <Data groupList="Advanced" type="sbyte" offset="0x02" base="InputBuffered" color="Green">Buffered X</Data>
+  <Data groupList="Advanced" type="sbyte" offset="0x03" base="InputBuffered" color="Green">Buffered Y</Data>
+  <Data groupList="Advanced" type="sbyte" offset="0x02" base="InputCurrent" color="Green">Current X</Data>
+  <Data groupList="Advanced" type="sbyte" offset="0x03" base="InputCurrent" color="Green">Current Y</Data>
+
+  <Data groupList="TAS" base="Mario" offset="0x54" type="float" color="Red">H Speed</Data>
+  <Data groupList="TAS" base="Mario" offset="0x4C" type="float" color="Red">V Speed</Data>
+  <Data groupList="TAS" base="None" specialType="MovementHorizontal" color="Yellow">Delta Horizontal</Data>
+  <Data groupList="TAS" base="None" specialType="QFrameCountEstimate" color="Yellow">QFrames Est.</Data>
+  <Data groupList="TAS" base="Mario" offset="0x2E" type="ushort" subclass="Angle" yaw="true" color="Red">Yaw Facing</Data>
+  <Data groupList="TAS" base="Mario" offset="0x24" type="ushort" subclass="Angle" yaw="true" color="Red">Yaw Intended</Data>
+  <Data groupList="TAS" base="None" display="short" specialType="DeltaYawIntendedFacing" subclass="Angle" color="Red">DYaw Intend-Face</Data>
+  <Data groupList="TAS" base="Mario" offset="0x3C" type="float" color="Red" coord="X">Mario X</Data>
+  <Data groupList="TAS" base="Mario" offset="0x40" type="float" color="Red" coord="Y">Mario Y</Data>
+  <Data groupList="TAS" base="Mario" offset="0x44" type="float" color="Red" coord="Z">Mario Z</Data>
+  <Data groupList="TAS" base="Ghost" offset="0x1C" type="ushort" subclass="Angle" yaw="true" color="Purple">Ghost Angle</Data>
+  <Data groupList="TAS" base="Ghost" specialType="HDistGhostToMario" color="Purple">Ghost DeltaH</Data>
+  <Data groupList="TAS" base="Ghost" specialType="YDistGhostToMario" color="Purple">Ghost DeltaY</Data>
+  <Data groupList="TAS" base="Ghost" offset="0x20" type="float" color="Purple">Ghost X</Data>
+  <Data groupList="TAS" base="Ghost" offset="0x24" type="float" color="Purple">Ghost Y</Data>
+  <Data groupList="TAS" base="Ghost" offset="0x28" type="float" color="Purple">Ghost Z</Data>
+  <Data groupList="TAS" base="Relative" offset="0x804003FC" type="int" color="Purple">Ghost Frame</Data>
+  <Data groupList="TAS" type="int" offsetUS="0x8032D5D4" offsetJP="0x8032C694" base="Relative" color="Green">Global Timer</Data>
+  <Data groupList="TAS" type="ushort" offsetUS="0x8038EEE0" offsetJP="0x8038EEE0" base="Relative" color="Green">RNG Value</Data>
+  <Data groupList="TAS" base="None" specialType="RngIndex" color="Green">RNG Index</Data>
+  <Data groupList="TAS" type="short" offset="0x34" base="Mario" subclass="Angle" color="Pink">Yaw Velocity</Data>
+  <Data groupList="TAS" type="short" offset="0x2C" base="Mario" subclass="Angle" color="Pink">Pitch</Data>
+  <Data groupList="TAS" type="short" offset="0x32" base="Mario" subclass="Angle" color="Pink">Pitch Velocity</Data>
+  <Data groupList="TAS" base="None" specialType="MupenLag" color="Grey">Lag</Data>
+
+  <Data groupList="Point" base="None" specialType="SelfPosType" subclass="String" color="Blue">Self Pos Type</Data>
+  <Data groupList="Point" base="None" specialType="SelfX" color="Blue" coord="X">Self X</Data>
+  <Data groupList="Point" base="None" specialType="SelfY" color="Blue" coord="Y">Self Y</Data>
+  <Data groupList="Point" base="None" specialType="SelfZ" color="Blue" coord="Z">Self Z</Data>
+
+  <Data groupList="Point" base="None" specialType="SelfAngleType" subclass="String" color="Blue">Self Angle Type</Data>
+  <Data groupList="Point" base="None" specialType="SelfAngle" subclass="Angle" display="ushort" yaw="true" color="Blue">Self Angle</Data>
+  
+  <Data groupList="Point" base="None" specialType="PointPosType" subclass="String" color="Blue">Point Pos Type</Data>
+  <Data groupList="Point" base="None" specialType="PointX" color="Blue" coord="X">Point X</Data>
+  <Data groupList="Point" base="None" specialType="PointY" color="Blue" coord="Y">Point Y</Data>
+  <Data groupList="Point" base="None" specialType="PointZ" color="Blue" coord="Z">Point Z</Data>
+
+  <Data groupList="Point" base="None" specialType="PointAngleType" subclass="String" color="Blue">Point Angle Type</Data>
+  <Data groupList="Point" base="None" specialType="PointAngle" subclass="Angle" display="ushort" yaw="true" color="Blue">Point Angle</Data>
+
+  <Data groupList="Point" base="None" specialType="XDistPointToSelf" color="LightBlue" coord="X">XDist Point to Self</Data>
+  <Data groupList="Point" base="None" specialType="YDistPointToSelf" color="LightBlue" coord="Y">YDist Point to Self</Data>
+  <Data groupList="Point" base="None" specialType="ZDistPointToSelf" color="LightBlue" coord="Z">ZDist Point to Self</Data>
+  <Data groupList="Point" base="None" specialType="HDistPointToSelf" color="LightBlue">HDist Point to Self</Data>
+  <Data groupList="Point" base="None" specialType="DistPointToSelf" color="LightBlue">Dist Point to Self</Data>
+
+  <Data groupList="Point" base="None" specialType="AnglePointToSelf" subclass="Angle" display="ushort" yaw="true" color="LightBlue">Angle Point to Self</Data>
+  <Data groupList="Point" base="None" specialType="DAnglePointToSelf" subclass="Angle" display="short" color="LightBlue">DAngle Point to Self</Data>
+  <Data groupList="Point" base="None" specialType="AngleSelfToPoint" subclass="Angle" display="ushort" yaw="true" color="LightBlue">Angle Self to Point</Data>
+  <Data groupList="Point" base="None" specialType="DAngleSelfToPoint" subclass="Angle" display="short" color="LightBlue">DAngle Self to Point</Data>
+
+  <Data groupList="Point" base="None" specialType="AngleDiffSelfToPoint" subclass="Angle" display="short" color="LightBlue">DAngle Self to Angle</Data>
+  
+  <Data groupList="Point" base="None" specialType="FDistPointToSelf" color="LightBlue">FDist Point to Self</Data>
+  <Data groupList="Point" base="None" specialType="SDistPointToSelf" color="LightBlue">SDist Point to Self</Data>
+
+</VarData>

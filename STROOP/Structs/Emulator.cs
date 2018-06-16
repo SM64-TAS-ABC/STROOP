@@ -12,5 +12,7 @@ namespace STROOP.Structs
         public string ProcessName;
         public uint RamStart;
         public string Dll;
+        public Type IOType; 
+        public EndiannessType Endianness = EndiannessType.Little;
     }
 }

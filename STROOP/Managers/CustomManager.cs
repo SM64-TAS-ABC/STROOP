@@ -10,6 +10,8 @@ using STROOP.Controls;
 using STROOP.Extensions;
 using STROOP.Structs.Configurations;
 using STROOP.Forms;
+using System.IO;
+using System.Xml.Linq;
 
 namespace STROOP.Managers
 {
@@ -23,13 +25,13 @@ namespace STROOP.Managers
         private Label _labelCustomRecordingFrequencyValue;
         private Label _labelCustomRecordingGapsValue;
 
-        private Dictionary<int, List<string>> _recordedValues;
+        private Dictionary<int, List<object>> _recordedValues;
         private int? _lastTimer;
         private int _numGaps;
         private int _recordFreq;
 
-        public CustomManager(List<WatchVariableControlPrecursor> variables, Control customControl, WatchVariablePanel variableTable)
-            : base(variables, variableTable)
+        public CustomManager(string varFilePath, Control customControl, WatchVariableFlowLayoutPanel variableTable)
+            : base(varFilePath, variableTable)
         {
             EnableCustomVariableFunctionality();
 
@@ -38,8 +40,22 @@ namespace STROOP.Managers
 
             // Panel 1 controls
 
-            Button buttonClearVariables = splitContainerCustomControls.Panel1.Controls["buttonClearVariables"] as Button;
-            buttonClearVariables.Click += (sender, e) => ClearVariables();
+            Button buttonOpenVars = splitContainerCustomControls.Panel1.Controls["buttonOpenVars"] as Button;
+            buttonOpenVars.Click += (sender, e) => _variablePanel.OpenVariables();
+
+            Button buttonSaveVars = splitContainerCustomControls.Panel1.Controls["buttonSaveVars"] as Button;
+            buttonSaveVars.Click += (sender, e) => _variablePanel.SaveVariables();
+
+            Button buttonClearVars = splitContainerCustomControls.Panel1.Controls["buttonClearVars"] as Button;
+            buttonClearVars.Click += (sender, e) => _variablePanel.ClearVariables();
+            ControlUtilities.AddContextMenuStripFunctions(
+                buttonClearVars,
+                new List<string>() { "Clear All Vars", "Clear Default Vars" },
+                new List<Action>()
+                {
+                    () => _variablePanel.ClearVariables(),
+                    () => _variablePanel.RemoveVariableGroup(VariableGroup.NoGroup),
+                });
 
             _checkBoxCustomRecordValues = splitContainerCustomControls.Panel1.Controls["checkBoxCustomRecordValues"] as CheckBox;
             _checkBoxCustomRecordValues.Click += (sender, e) => ToggleRecording();
@@ -58,12 +74,18 @@ namespace STROOP.Managers
 
             _labelCustomRecordingGapsValue = splitContainerCustomControls.Panel1.Controls["labelCustomRecordingGapsValue"] as Label;
 
-            _recordedValues = new Dictionary<int, List<string>>();
+            _recordedValues = new Dictionary<int, List<object>>();
             _lastTimer = null;
             _numGaps = 0;
             _recordFreq = 1;
 
             // Panel 2 controls
+
+            RadioButton radioButtonCustomTabFlushLeft = splitContainerCustomControls.Panel2.Controls["radioButtonCustomTabFlushLeft"] as RadioButton;
+            radioButtonCustomTabFlushLeft.Click += (sender, e) => WatchVariableControl.LeftFlush = true;
+
+            RadioButton radioButtonCustomTabFlushRight = splitContainerCustomControls.Panel2.Controls["radioButtonCustomTabFlushRight"] as RadioButton;
+            radioButtonCustomTabFlushRight.Click += (sender, e) => WatchVariableControl.LeftFlush = false;
 
             Button buttonResetVariableSizeToDefault = splitContainerCustomControls.Panel2.Controls["buttonResetVariableSizeToDefault"] as Button;
             buttonResetVariableSizeToDefault.Click += (sender, e) =>
@@ -107,7 +129,7 @@ namespace STROOP.Managers
                 () => WatchVariableControl.VariableHeight);
         }
 
-        public static void InitializeAddSubtractGetSetFuncionality(
+        private static void InitializeAddSubtractGetSetFuncionality(
             Button buttonSubtract,
             Button buttonAdd,
             Button buttonGet,
@@ -153,6 +175,15 @@ namespace STROOP.Managers
         {
             base.AddVariable(watchVarControl);
             watchVarControl.EnableCustomFunctionality();
+        }
+
+        public override void AddVariables(List<WatchVariableControl> watchVarControls)
+        {
+            base.AddVariables(watchVarControls);
+            foreach (WatchVariableControl watchVarControl in watchVarControls)
+            {
+                watchVarControl.EnableCustomFunctionality();
+            }
         }
 
         private void ToggleRecording()
@@ -214,7 +245,7 @@ namespace STROOP.Managers
 
                 if (!alreadyContainsKey || recordEvenIfAlreadyHave)
                 {
-                    List<string> currentValues = GetCurrentVariableValues();
+                    List<object> currentValues = GetCurrentVariableValues();
                     _recordedValues[currentTimer] = currentValues;
                 }
             }

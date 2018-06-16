@@ -20,7 +20,8 @@ namespace STROOP.Structs
             }
         }
 
-        Dictionary<int, AnimationReference> _table = new Dictionary<int, AnimationReference>();
+        Dictionary<int, AnimationReference> _animationTable = new Dictionary<int, AnimationReference>();
+        Dictionary<string, AnimationReference> _animationNameTable = new Dictionary<string, AnimationReference>();
 
         public AnimationTable()
         {
@@ -28,7 +29,23 @@ namespace STROOP.Structs
 
         public void Add(AnimationReference animationRef)
         {
-            _table.Add(animationRef.AnimationValue, animationRef);
+            _animationTable.Add(animationRef.AnimationValue, animationRef);
+            _animationNameTable.Add(animationRef.AnimationName, animationRef);
+        }
+
+        public List<string> GetAnimationNameList()
+        {
+            List<string> animationNameList = _animationTable.Keys.ToList().ConvertAll(
+                animation => _animationTable[animation].AnimationName);
+            animationNameList.Sort();
+            return animationNameList;
+        }
+
+        public int? GetAnimationFromName(string animationName)
+        {
+            if (!_animationNameTable.ContainsKey(animationName))
+                return null;
+            return _animationNameTable[animationName].AnimationValue;
         }
 
         public string GetAnimationName()
@@ -40,10 +57,9 @@ namespace STROOP.Structs
 
         public string GetAnimationName(int animation)
         {
-            if (!_table.ContainsKey(animation))
+            if (!_animationTable.ContainsKey(animation))
                 return "Unknown Animation";
-
-            return _table[animation].AnimationName;
+            return _animationTable[animation].AnimationName;
         }
     }
 }

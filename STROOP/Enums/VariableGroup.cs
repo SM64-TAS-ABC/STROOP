@@ -17,7 +17,19 @@ namespace STROOP.Structs
 
         ObjectSpecific,
 
+        NoGroup,
+        Custom,
+
         Collision,
+        Movement,
+        Transformation,
+
+        HolpMario,
+        HolpPoint,
+        Trajectory,
+        TAS,
+        Point,
+        Rng,
         Hacks,
     };
 }

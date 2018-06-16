@@ -11,34 +11,32 @@ namespace STROOP.Utilities
     public static class RngIndexer
     {
         public static readonly int RNG_COUNT = 65114;
+        public static readonly int NON_RESET_RNG_COUNT = 65534;
 
         private static readonly Dictionary<int, ushort> IndexToRNGDictionary;
         private static readonly Dictionary<ushort, int> RNGToIndexDictionary;
-        private static readonly Dictionary<ushort, string> RNGToIndexStringDictionary;
 
         static RngIndexer()
         {
             IndexToRNGDictionary = new Dictionary<int, ushort>();
             RNGToIndexDictionary = new Dictionary<ushort, int>();
-            RNGToIndexStringDictionary = new Dictionary<ushort, string>();
 
             ushort rngValue = 0;
             for (int index = 0; index < RNG_COUNT; index++)
             {
                 IndexToRNGDictionary.Add(index, rngValue);
                 RNGToIndexDictionary.Add(rngValue, index);
-                RNGToIndexStringDictionary.Add(rngValue, index.ToString());
                 rngValue = GetNextRNG(rngValue, false);
             }
 
             for (int index = RNG_COUNT; rngValue != 0; index++)
             {
-                RNGToIndexStringDictionary.Add(rngValue, "~" + index.ToString());
+                RNGToIndexDictionary.Add(rngValue, index - NON_RESET_RNG_COUNT);
                 rngValue = GetNextRNG(rngValue, false);
             }
 
-            RNGToIndexStringDictionary.Add(58704, "~" + -1);
-            RNGToIndexStringDictionary.Add(22026, "~" + 0);
+            RNGToIndexDictionary.Add(58704, RNG_COUNT - NON_RESET_RNG_COUNT - 2);
+            RNGToIndexDictionary.Add(22026, RNG_COUNT - NON_RESET_RNG_COUNT - 1);
         }
 
         private static ushort GetNextRNG(ushort rng, bool earlyReset = true)
@@ -72,11 +70,6 @@ namespace STROOP.Utilities
         public static int GetRngIndex(ushort rngValue)
         {
             return RNGToIndexDictionary[rngValue];
-        }
-
-        public static string GetRngIndexString(ushort rngValue)
-        {
-            return RNGToIndexStringDictionary[rngValue];
         }
 
         public static ushort GetRngValue(int index)

@@ -65,18 +65,23 @@ namespace STROOP.Utilities
                     case "Emulators":
                         foreach (var subElement in element.Elements())
                         {
+                            string special = subElement.Attribute(XName.Get("special")) != null ?
+                                subElement.Attribute(XName.Get("special")).Value : null;
                             Config.Emulators.Add(new Emulator()
                             {
                                 Name = subElement.Attribute(XName.Get("name")).Value,
                                 ProcessName = subElement.Attribute(XName.Get("processName")).Value,
                                 RamStart = ParsingUtilities.ParseHex(subElement.Attribute(XName.Get("ramStart")).Value),
                                 Dll = subElement.Attribute(XName.Get("offsetDll")) != null
-                                    ? subElement.Attribute(XName.Get("offsetDll")).Value : null
+                                    ? subElement.Attribute(XName.Get("offsetDll")).Value : null,
+                                Endianness = subElement.Attribute(XName.Get("endianness")).Value == "big" 
+                                    ? EndiannessType.Big : EndiannessType.Little,
+                                IOType = special == "dolphin" ? typeof(DolphinProcessIO) : typeof(WindowsProcessRamIO),
                             });
                         }
                         break;
                     case "RomVersion":
-                        Config.Version = (RomVersion)Enum.Parse(typeof(RomVersion), element.Value);
+                        RomVersionConfig.Version = (RomVersion)Enum.Parse(typeof(RomVersion), element.Value);
                         break;
                     case "RefreshRateFreq":
                         RefreshRateConfig.RefreshRateFreq = uint.Parse(element.Value);
@@ -88,14 +93,77 @@ namespace STROOP.Utilities
             }
         }
 
-        public static List<WatchVariableControl> OpenWatchVariableControls(string path, string schemaFile)
+        public static void OpenSavedSettings(string path)
         {
-            return OpenWatchVariableControlPrecursors(path, schemaFile)
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // Create schema set
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
+            schemaSet.Add("http://tempuri.org/ConfigSchema.xsd", "ConfigSchema.xsd");
+            schemaSet.Compile();
+
+            // Load and validate document
+            var doc = XDocument.Load(path);
+            doc.Validate(schemaSet, Validation);
+
+            foreach (var element in doc.Root.Elements())
+            {
+                switch (element.Name.ToString())
+                {
+                    case "DisplayYawAnglesAsUnsigned":
+                        SavedSettingsConfig.DisplayYawAnglesAsUnsigned = bool.Parse(element.Value);
+                        break;
+                    case "StartSlotIndexsFromOne":
+                        SavedSettingsConfig.StartSlotIndexsFromOne = bool.Parse(element.Value);
+                        break;
+                    case "OffsetGotoRetrieveFunctions":
+                        SavedSettingsConfig.OffsetGotoRetrieveFunctions = bool.Parse(element.Value);
+                        break;
+                    case "MoveCameraWithPu":
+                        SavedSettingsConfig.MoveCameraWithPu = bool.Parse(element.Value);
+                        break;
+                    case "ScaleDiagonalPositionControllerButtons":
+                        SavedSettingsConfig.ScaleDiagonalPositionControllerButtons = bool.Parse(element.Value);
+                        break;
+                    case "ExcludeDustForClosestObject":
+                        SavedSettingsConfig.ExcludeDustForClosestObject = bool.Parse(element.Value);
+                        break;
+                    case "UseMisalignmentOffsetForDistanceToLine":
+                        SavedSettingsConfig.UseMisalignmentOffsetForDistanceToLine = bool.Parse(element.Value);
+                        break;
+                    case "DontRoundValuesToZero":
+                        SavedSettingsConfig.DontRoundValuesToZero = bool.Parse(element.Value);
+                        break;
+                    case "NeutralizeTrianglesWith21":
+                        SavedSettingsConfig.NeutralizeTrianglesWith21 = bool.Parse(element.Value);
+                        break;
+                    case "UseInGameTrigForAngleLogic":
+                        SavedSettingsConfig.UseInGameTrigForAngleLogic = bool.Parse(element.Value);
+                        break;
+
+                    case "TabOrder":
+                        List<string> tabNames = new List<string>();
+                        foreach (var tabName in element.Elements())
+                        {
+                            tabNames.Add(tabName.Value);
+                        }
+                        SavedSettingsConfig.InitiallySavedTabOrder = tabNames;
+                        break;
+                }
+            }
+            SavedSettingsConfig.IsLoaded = true;
+        }
+
+        public static List<WatchVariableControl> OpenWatchVariableControls(string path)
+        {
+            return OpenWatchVariableControlPrecursors(path)
                 .ConvertAll(precursor => precursor.CreateWatchVariableControl());
         }
 
-        public static List<WatchVariableControlPrecursor> OpenWatchVariableControlPrecursors(string path, string schemaFile)
+        public static List<WatchVariableControlPrecursor> OpenWatchVariableControlPrecursors(string path)
         {
+            string schemaFile = "MiscDataSchema.xsd";
             var objectData = new List<WatchVariableControlPrecursor>();
             var assembly = Assembly.GetExecutingAssembly();
 
@@ -114,7 +182,7 @@ namespace STROOP.Utilities
                 if (element.Name.ToString() != "Data")
                     continue;
 
-                WatchVariableControlPrecursor watchVarControl = GetWatchVariablePrecursorFromElement(element);
+                WatchVariableControlPrecursor watchVarControl = new WatchVariableControlPrecursor(element);
                 objectData.Add(watchVarControl);
             }
 
@@ -144,7 +212,8 @@ namespace STROOP.Utilities
                 stoodOnOverlayImagePath = "", heldOverlayImagePath = "", interactionOverlayImagePath = "",
                 usedOverlayImagePath = "", closestOverlayImagePath = "", cameraOverlayImagePath = "", cameraHackOverlayImagePath = "",
                 modelOverlayImagePath = "", floorOverlayImagePath = "", wallOverlayImagePath = "", ceilingOverlayImagePath = "",
-                parentOverlayImagePath = "", parentUnusedOverlayImagePath = "", parentNoneOverlayImagePath = "", markedOverlayImagePath = "";
+                parentOverlayImagePath = "", parentUnusedOverlayImagePath = "", parentNoneOverlayImagePath = "", childOverlayImagePath = "",
+                markedOverlayImagePath = "";
             uint marioBehavior = 0;
 
             foreach (XElement element in doc.Root.Elements())
@@ -291,6 +360,10 @@ namespace STROOP.Utilities
                                     parentNoneOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
+                                case "Child":
+                                    childOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
                                 case "Marked":
                                     markedOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
@@ -301,14 +374,13 @@ namespace STROOP.Utilities
                     case "Object":
                         string name = element.Attribute(XName.Get("name")).Value;
                         uint behaviorSegmented = ParsingUtilities.ParseHex(element.Attribute(XName.Get("behaviorScriptAddress")).Value);
-                        uint? gfxId = null;
-                        int? subType = null, appearance = null;
+                        uint? gfxId = null, subType = null, appearance = null;
                         if (element.Attribute(XName.Get("gfxId")) != null)
                             gfxId = ParsingUtilities.ParseHex(element.Attribute(XName.Get("gfxId")).Value) | 0x80000000U;
                         if (element.Attribute(XName.Get("subType")) != null)
-                            subType = ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("subType")).Value);
+                            subType = ParsingUtilities.ParseUIntNullable(element.Attribute(XName.Get("subType")).Value);
                         if (element.Attribute(XName.Get("appearance")) != null)
-                            appearance = ParsingUtilities.ParseIntNullable(element.Attribute(XName.Get("appearance")).Value);
+                            appearance = ParsingUtilities.ParseUIntNullable(element.Attribute(XName.Get("appearance")).Value);
 
                         var spawnElement = element.Element(XName.Get("SpawnCode"));
                         if (spawnElement != null)
@@ -338,13 +410,13 @@ namespace STROOP.Utilities
                         List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
                         foreach (var subElement in element.Elements().Where(x => x.Name == "Data"))
                         {
-                            WatchVariableControlPrecursor precursor = GetWatchVariablePrecursorFromElement(subElement);
+                            WatchVariableControlPrecursor precursor = new WatchVariableControlPrecursor(subElement);
                             precursors.Add(precursor);
                         }
 
                         var newBehavior = new ObjectBehaviorAssociation()
                         {
-                            BehaviorCriteria = new BehaviorCriteria()
+                            Criteria = new BehaviorCriteria()
                             {
                                 BehaviorAddress = behaviorSegmented,
                                 GfxId = gfxId,
@@ -396,6 +468,7 @@ namespace STROOP.Utilities
             objectSlotManagerGui.ParentObjectOverlayImage = Image.FromFile(overlayImageDir + parentOverlayImagePath);
             objectSlotManagerGui.ParentUnusedObjectOverlayImage = Image.FromFile(overlayImageDir + parentUnusedOverlayImagePath);
             objectSlotManagerGui.ParentNoneObjectOverlayImage = Image.FromFile(overlayImageDir + parentNoneOverlayImagePath);
+            objectSlotManagerGui.ChildObjectOverlayImage = Image.FromFile(overlayImageDir + childOverlayImagePath);
             objectSlotManagerGui.MarkedObjectOverlayImage = Image.FromFile(overlayImageDir + markedOverlayImagePath);
 
             foreach (var obj in assoc.BehaviorAssociations)
@@ -426,7 +499,52 @@ namespace STROOP.Utilities
             return assoc;
         }
 
-        public static void OpenInputImageAssoc(string path, InputImageGui inputImageGui)
+        public static List<InputImageGui> CreateInputImageAssocList(string path)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // Create schema set
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/ReusableTypes.xsd", "ReusableTypes.xsd");
+            schemaSet.Add("http://tempuri.org/InputImageAssociationsSchema.xsd", "InputImageAssociationsSchema.xsd");
+            schemaSet.Compile();
+
+            // Load and validate document
+            var doc = XDocument.Load(path);
+            doc.Validate(schemaSet, Validation);
+
+            List<InputImageGui> guiList = new List<InputImageGui>();
+            foreach (XElement element in doc.Root.Elements())
+            {
+                switch (element.Name.ToString())
+                {
+                    case "Config":
+                        foreach (XElement subElement in element.Elements())
+                        {
+                            switch (subElement.Name.ToString())
+                            {
+                                case "ClassicInputImageDirectory":
+                                    guiList.Add(CreateInputImageAssoc(
+                                        path, subElement.Value, InputDisplayTypeEnum.Classic));
+                                    break;
+                                case "SleekInputImageDirectory":
+                                    guiList.Add(CreateInputImageAssoc(
+                                        path, subElement.Value, InputDisplayTypeEnum.Sleek));
+                                    break;
+                                case "VerticalInputImageDirectory":
+                                    guiList.Add(CreateInputImageAssoc(
+                                        path, subElement.Value, InputDisplayTypeEnum.Vertical));
+                                    break;
+                            }
+                        }
+                        break;
+                }
+            }
+            return guiList;
+        }
+
+        public static InputImageGui CreateInputImageAssoc(
+            string path, string inputImageDir, InputDisplayTypeEnum inputDisplayType)
         {
             var assembly = Assembly.GetExecutingAssembly();
 
@@ -441,8 +559,7 @@ namespace STROOP.Utilities
             doc.Validate(schemaSet, Validation);
 
             // Create path list
-            string inputImageDir = "",
-                   buttonAPath = "",
+            string buttonAPath = "",
                    buttonBPath = "",
                    buttonZPath = "",
                    buttonStartPath = "",
@@ -456,6 +573,8 @@ namespace STROOP.Utilities
                    buttonDDownPath = "",
                    buttonDLeftPath = "",
                    buttonDRightPath = "",
+                   buttonU1Path = "",
+                   buttonU2Path = "",
                    controlStickPath = "",
                    controllerPath = "";
 
@@ -463,18 +582,6 @@ namespace STROOP.Utilities
             {
                 switch (element.Name.ToString())
                 {
-                    case "Config":
-                        foreach (XElement subElement in element.Elements())
-                        {
-                            switch (subElement.Name.ToString())
-                            {
-                                case "InputImageDirectory":
-                                    inputImageDir = subElement.Value;
-                                    break;
-                            }
-                        }
-                        break;
-
                     case "InputImages":
                         foreach (XElement subElement in element.Elements())
                         {
@@ -536,6 +643,14 @@ namespace STROOP.Utilities
                                     buttonDRightPath = subElement.Element(XName.Get("InputImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
+                                case "ButtonU1":
+                                    buttonU1Path = subElement.Element(XName.Get("InputImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "ButtonU2":
+                                    buttonU2Path = subElement.Element(XName.Get("InputImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
                                 case "ControlStick":
                                     controlStickPath = subElement.Element(XName.Get("InputImage")).Attribute(XName.Get("path")).Value;
                                     break;
@@ -551,26 +666,34 @@ namespace STROOP.Utilities
 
             // Load Images
             // TODO: Exceptions
-            inputImageGui.ButtonAImage = Image.FromFile(inputImageDir + buttonAPath);
-            inputImageGui.ButtonBImage = Image.FromFile(inputImageDir + buttonBPath);
-            inputImageGui.ButtonZImage = Image.FromFile(inputImageDir + buttonZPath);
-            inputImageGui.ButtonStartImage = Image.FromFile(inputImageDir + buttonStartPath);
+            return new InputImageGui()
+            {
+                InputDisplayType = inputDisplayType,
 
-            inputImageGui.ButtonRImage = Image.FromFile(inputImageDir + buttonRPath);
-            inputImageGui.ButtonLImage = Image.FromFile(inputImageDir + buttonLPath);
+                ButtonAImage = Image.FromFile(inputImageDir + buttonAPath),
+                ButtonBImage = Image.FromFile(inputImageDir + buttonBPath),
+                ButtonZImage = Image.FromFile(inputImageDir + buttonZPath),
+                ButtonStartImage = Image.FromFile(inputImageDir + buttonStartPath),
 
-            inputImageGui.ButtonCUpImage = Image.FromFile(inputImageDir + buttonCUpPath);
-            inputImageGui.ButtonCDownImage = Image.FromFile(inputImageDir + buttonCDownPath);
-            inputImageGui.ButtonCLeftImage = Image.FromFile(inputImageDir + buttonCLeftPath);
-            inputImageGui.ButtonCRightImage = Image.FromFile(inputImageDir + buttonCRightPath);
+                ButtonRImage = Image.FromFile(inputImageDir + buttonRPath),
+                ButtonLImage = Image.FromFile(inputImageDir + buttonLPath),
 
-            inputImageGui.ButtonDUpImage = Image.FromFile(inputImageDir + buttonDUpPath);
-            inputImageGui.ButtonDDownImage = Image.FromFile(inputImageDir + buttonDDownPath);
-            inputImageGui.ButtonDLeftImage = Image.FromFile(inputImageDir + buttonDLeftPath);
-            inputImageGui.ButtonDRightImage = Image.FromFile(inputImageDir + buttonDRightPath);
+                ButtonCUpImage = Image.FromFile(inputImageDir + buttonCUpPath),
+                ButtonCDownImage = Image.FromFile(inputImageDir + buttonCDownPath),
+                ButtonCLeftImage = Image.FromFile(inputImageDir + buttonCLeftPath),
+                ButtonCRightImage = Image.FromFile(inputImageDir + buttonCRightPath),
 
-            inputImageGui.ControlStickImage = Image.FromFile(inputImageDir + controlStickPath);
-            inputImageGui.ControllerImage = Image.FromFile(inputImageDir + controllerPath);
+                ButtonDUpImage = Image.FromFile(inputImageDir + buttonDUpPath),
+                ButtonDDownImage = Image.FromFile(inputImageDir + buttonDDownPath),
+                ButtonDLeftImage = Image.FromFile(inputImageDir + buttonDLeftPath),
+                ButtonDRightImage = Image.FromFile(inputImageDir + buttonDRightPath),
+
+                ButtonU1Image = Image.FromFile(inputImageDir + buttonU1Path),
+                ButtonU2Image = Image.FromFile(inputImageDir + buttonU2Path),
+
+                ControlStickImage = Image.FromFile(inputImageDir + controlStickPath),
+                ControllerImage = Image.FromFile(inputImageDir + controllerPath)
+            };
         }
 
         public static void OpenFileImageAssoc(string path, FileImageGui fileImageGui)
@@ -882,7 +1005,7 @@ namespace STROOP.Utilities
                                     assoc.FolderPath = subElement.Value;
                                     break;
                                 case "DefaultImage":
-                                    var defaultMap = new Map() { ImagePath = subElement.Value };
+                                    var defaultMap = new MapLayout() { ImagePath = subElement.Value };
                                     assoc.DefaultMap = defaultMap;
                                     break;
                                 case "DefaultCoordinates":
@@ -922,7 +1045,7 @@ namespace STROOP.Utilities
 
                         var coordinates = new RectangleF(x1, z1, x2 - x1, z2 - z1);
 
-                        Map map = new Map() { Level = level, Area = area, LoadingPoint = loadingPoint, MissionLayout = missionLayout,
+                        MapLayout map = new MapLayout() { Level = level, Area = area, LoadingPoint = loadingPoint, MissionLayout = missionLayout,
                             Coordinates = coordinates, ImagePath = imagePath, Y = y, Name = name, SubName = subName, BackgroundPath = bgImagePath};
 
                         assoc.AddAssociation(map);
@@ -1029,120 +1152,6 @@ namespace STROOP.Utilities
             }
 
             return hacks;
-        }
-
-        public static WatchVariableControl GetWatchVariableControlFromElement(XElement element)
-        {
-            return GetWatchVariablePrecursorFromElement(element).CreateWatchVariableControl();
-        }
-
-        public static WatchVariableControlPrecursor GetWatchVariablePrecursorFromElement(XElement element)
-        {
-            string name = element.Value;
-
-            BaseAddressTypeEnum baseAddressType = WatchVariableUtilities.GetBaseAddressType(element.Attribute(XName.Get("base")).Value);
-
-            WatchVariableSubclass subclass = WatchVariableUtilities.GetSubclass(element.Attribute(XName.Get("subclass"))?.Value);
-
-            List<VariableGroup> groupList = WatchVariableUtilities.ParseVariableGroupList(element.Attribute(XName.Get("groupList"))?.Value);
-
-            string specialType = element.Attribute(XName.Get("specialType"))?.Value;
-
-            Color? backgroundColor = (element.Attribute(XName.Get("color")) != null) ?
-                ColorTranslator.FromHtml(element.Attribute(XName.Get("color")).Value) : (Color?)null;
-
-            string typeName = (element.Attribute(XName.Get("type"))?.Value);
-
-            uint? mask = element.Attribute(XName.Get("mask")) != null ?
-                (uint?)ParsingUtilities.ParseHex(element.Attribute(XName.Get("mask")).Value) : null;
-
-            uint? offsetUS = ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetUS"))?.Value);
-            uint? offsetJP = ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetJP"))?.Value);
-            uint? offsetPAL = ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offsetPAL"))?.Value);
-            uint? offsetDefault = ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("offset"))?.Value);
-
-            if (offsetDefault.HasValue && (offsetUS.HasValue || offsetJP.HasValue || offsetPAL.HasValue))
-            {
-                throw new ArgumentOutOfRangeException("Can't have both a default offset value and a rom-specific offset value");
-            }
-
-            if (specialType != null)
-            {
-                if (baseAddressType != BaseAddressTypeEnum.None &&
-                    baseAddressType != BaseAddressTypeEnum.Object &&
-                    baseAddressType != BaseAddressTypeEnum.Triangle)
-                {
-                    throw new ArgumentOutOfRangeException("Special var cannot have base address type " + baseAddressType);
-                }
-
-                if (offsetDefault.HasValue || offsetUS.HasValue || offsetJP.HasValue || offsetPAL.HasValue)
-                {
-                    throw new ArgumentOutOfRangeException("Special var cannot have any type of offset");
-                }
-
-                if (mask != null)
-                {
-                    throw new ArgumentOutOfRangeException("Special var cannot have mask");
-                }
-            }
-
-            WatchVariable watchVar =
-                new WatchVariable(
-                    typeName,
-                    specialType,
-                    baseAddressType,
-                    offsetUS,
-                    offsetJP,
-                    offsetPAL,
-                    offsetDefault,
-                    mask);
-
-            bool? useHex = (element.Attribute(XName.Get("useHex")) != null) ?
-                bool.Parse(element.Attribute(XName.Get("useHex")).Value) : (bool?)null;
-
-            bool? invertBool = element.Attribute(XName.Get("invertBool")) != null ?
-                bool.Parse(element.Attribute(XName.Get("invertBool")).Value) : (bool?)null;
-
-            WatchVariableCoordinate? coordinate = element.Attribute(XName.Get("coord")) != null ?
-                WatchVariableUtilities.GetCoordinate(element.Attribute(XName.Get("coord")).Value) : (WatchVariableCoordinate?)null;
-
-            if (subclass == WatchVariableSubclass.Angle && specialType != null)
-            {
-                if (typeName != "ushort" && typeName != "short" && typeName != "uint" && typeName != "int")
-                {
-                    throw new ArgumentOutOfRangeException("Special angle vars must have a good type");
-                }
-            }
-
-            if (useHex.HasValue && (subclass == WatchVariableSubclass.String))
-            {
-                throw new ArgumentOutOfRangeException("useHex cannot be used with var subclass String");
-            }
-
-            if ((useHex == true) && (subclass == WatchVariableSubclass.Object))
-            {
-                throw new ArgumentOutOfRangeException("useHex as true is redundant with var subclass Object");
-            }
-
-            if (invertBool.HasValue && (subclass != WatchVariableSubclass.Boolean))
-            {
-                throw new ArgumentOutOfRangeException("invertBool must be used with var subclass Boolean");
-            }
-
-            if (coordinate.HasValue && (subclass == WatchVariableSubclass.String))
-            {
-                throw new ArgumentOutOfRangeException("coordinate cannot be used with var subclass String");
-            }
-
-            return new WatchVariableControlPrecursor(
-                name,
-                watchVar,
-                subclass,
-                backgroundColor,
-                useHex,
-                invertBool,
-                coordinate,
-                groupList);
         }
 
         public static ActionTable OpenActionTable(string path)
@@ -1349,7 +1358,58 @@ namespace STROOP.Utilities
 
             return missionTable;
         }
-        
+
+        public static List<float> OpenSineData()
+        {
+            string path = @"Config/SineData.xml";
+            List<float> output = new List<float>();
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // Create schema set
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/ValueListSchema.xsd", "ValueListSchema.xsd");
+            schemaSet.Compile();
+
+            // Load and validate document
+            var doc = XDocument.Load(path);
+            doc.Validate(schemaSet, Validation);
+
+            foreach (XElement element in doc.Root.Elements())
+            {
+                string stringValue = element.Attribute(XName.Get("value")).Value;
+                byte[] bytes = TypeUtilities.ConvertHexStringToByteArray(stringValue, true);
+                float floatValue = BitConverter.ToSingle(bytes, 0);
+                output.Add(floatValue);
+            }
+
+            return output;
+        }
+
+        public static List<ushort> OpenArcSineData()
+        {
+            string path = @"Config/ArcSineData.xml";
+            List<ushort> output = new List<ushort>();
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // Create schema set
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/ValueListSchema.xsd", "ValueListSchema.xsd");
+            schemaSet.Compile();
+
+            // Load and validate document
+            var doc = XDocument.Load(path);
+            doc.Validate(schemaSet, Validation);
+
+            foreach (XElement element in doc.Root.Elements())
+            {
+                string stringValue = element.Attribute(XName.Get("value")).Value;
+                ushort ushortValue = ushort.Parse(stringValue);
+                output.Add(ushortValue);
+            }
+
+            return output;
+        }
+
         private static void Validation(object sender, ValidationEventArgs e)
         {
             throw new Exception(e.Message);

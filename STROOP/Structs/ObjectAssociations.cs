@@ -18,7 +18,7 @@ namespace STROOP.Structs
             new ObjectBehaviorAssociation()
             {
                 Name = "Uninitialized Object",
-                BehaviorCriteria = new BehaviorCriteria()
+                Criteria = new BehaviorCriteria()
                 {
                     BehaviorAddress = 0x0000,
                 },
@@ -46,7 +46,7 @@ namespace STROOP.Structs
         public Color MiscColor;
         public Color CameraColor;
         public uint MarioBehavior;
-        public uint SegmentTable { get { return Config.SwitchRomVersion(SegmentTableUS, SegmentTableJP); } }
+        public uint SegmentTable { get => RomVersionConfig.Switch(SegmentTableUS, SegmentTableJP); }
         public uint SegmentTableUS;
         public uint SegmentTableJP;
         public uint BehaviorBankStart;
@@ -105,8 +105,8 @@ namespace STROOP.Structs
 
             var possibleAssoc = _objAssoc.Where(objAssoc => objAssoc.MeetsCriteria(behaviorCriteria));
 
-            if (possibleAssoc.Count() > 1 && possibleAssoc.Any(objAssoc => objAssoc.BehaviorCriteria.BehaviorOnly()))
-                possibleAssoc = possibleAssoc.Where(objAssoc => !objAssoc.BehaviorCriteria.BehaviorOnly());
+            if (possibleAssoc.Count() > 1 && possibleAssoc.Any(objAssoc => objAssoc.Criteria.BehaviorOnly()))
+                possibleAssoc = possibleAssoc.Where(objAssoc => !objAssoc.Criteria.BehaviorOnly());
 
             var behaviorAssoc = possibleAssoc.FirstOrDefault();
 
@@ -115,7 +115,7 @@ namespace STROOP.Structs
             return behaviorAssoc;
         }
 
-        public Image GetObjectImage(BehaviorCriteria behaviorCriteria, bool transparent)
+        public Image GetObjectImage(BehaviorCriteria behaviorCriteria, bool transparent = false)
         {
             if (behaviorCriteria.BehaviorAddress == 0)
                 return EmptyImage;
@@ -195,12 +195,6 @@ namespace STROOP.Structs
                 return new List<WatchVariableControl>();
 
             else return assoc.WatchVariableControls;
-        }
-
-        public bool RecognizedBehavior(BehaviorCriteria behaviorCriteria)
-        {
-            var assoc = FindObjectAssociation(behaviorCriteria);
-            return assoc != null;
         }
 
         public uint AlignJPBehavior(uint segmented)

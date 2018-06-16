@@ -6,24 +6,104 @@ using System.Threading.Tasks;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using System.Windows.Forms;
+using STROOP.Utilities;
 
 namespace STROOP.Managers
 {
     public class OptionsManager
     {
-        public OptionsManager(TabPage tabControl)
+        private readonly List<Func<bool>> _savedSettingsGetterList;
+        private readonly List<Action<bool>> _savedSettingsSetterList;
+        private readonly List<string> _savedSettingsTextList;
+        private readonly List<ToolStripMenuItem> _savedSettingsItemList;
+        private readonly CheckedListBox _savedSettingsCheckedListBox;
+
+        public OptionsManager(TabPage tabControl, Control cogControl)
         {
-            // rom version
-            GroupBox groupBoxRomVersion = tabControl.Controls["groupBoxRomVersion"] as GroupBox;
-            RadioButton radioButtonRomVersionUS = groupBoxRomVersion.Controls["radioButtonRomVersionUS"] as RadioButton;
-            radioButtonRomVersionUS.Checked = Config.Version == RomVersion.US;
-            radioButtonRomVersionUS.Click += (sender, e) => { Config.Version = RomVersion.US; };
-            RadioButton radioButtonRomVersionJP = groupBoxRomVersion.Controls["radioButtonRomVersionJP"] as RadioButton;
-            radioButtonRomVersionJP.Checked = Config.Version == RomVersion.JP;
-            radioButtonRomVersionJP.Click += (sender, e) => { Config.Version = RomVersion.JP; };
-            RadioButton radioButtonRomVersionPAL = groupBoxRomVersion.Controls["radioButtonRomVersionPAL"] as RadioButton;
-            radioButtonRomVersionPAL.Checked = Config.Version == RomVersion.PAL;
-            radioButtonRomVersionPAL.Click += (sender, e) => { Config.Version = RomVersion.PAL; };
+            _savedSettingsTextList = new List<string>()
+            {
+                "Display Yaw Angles as Unsigned",
+                "Start Slot Index From 1",
+                "Offset Goto/Retrieve Functions",
+                "PU Controller Moves Camera",
+                "Scale Diagonal Position Controller Buttons",
+                "Exclude Dust for Closest Object",
+                "Neutralize Triangles with 21",
+                "Use Misalignment Offset For Distance To Line",
+                "Don't Round Values to 0",
+                "Use In-Game Trig for Angle Logic",
+            };
+
+            _savedSettingsGetterList = new List<Func<bool>>()
+            {
+                () => SavedSettingsConfig.DisplayYawAnglesAsUnsigned,
+                () => SavedSettingsConfig.StartSlotIndexsFromOne,
+                () => SavedSettingsConfig.OffsetGotoRetrieveFunctions,
+                () => SavedSettingsConfig.MoveCameraWithPu,
+                () => SavedSettingsConfig.ScaleDiagonalPositionControllerButtons,
+                () => SavedSettingsConfig.ExcludeDustForClosestObject,
+                () => SavedSettingsConfig.NeutralizeTrianglesWith21,
+                () => SavedSettingsConfig.UseMisalignmentOffsetForDistanceToLine,
+                () => SavedSettingsConfig.DontRoundValuesToZero,
+                () => SavedSettingsConfig.UseInGameTrigForAngleLogic,
+            };
+
+            _savedSettingsSetterList = new List<Action<bool>>()
+            {
+                (bool value) => SavedSettingsConfig.DisplayYawAnglesAsUnsigned = value,
+                (bool value) => SavedSettingsConfig.StartSlotIndexsFromOne = value,
+                (bool value) => SavedSettingsConfig.OffsetGotoRetrieveFunctions = value,
+                (bool value) => SavedSettingsConfig.MoveCameraWithPu = value,
+                (bool value) => SavedSettingsConfig.ScaleDiagonalPositionControllerButtons = value,
+                (bool value) => SavedSettingsConfig.ExcludeDustForClosestObject = value,
+                (bool value) => SavedSettingsConfig.NeutralizeTrianglesWith21 = value,
+                (bool value) => SavedSettingsConfig.UseMisalignmentOffsetForDistanceToLine = value,
+                (bool value) => SavedSettingsConfig.DontRoundValuesToZero = value,
+                (bool value) => SavedSettingsConfig.UseInGameTrigForAngleLogic = value,
+            };
+
+            _savedSettingsCheckedListBox = tabControl.Controls["checkedListBoxSavedSettings"] as CheckedListBox;
+            for (int i = 0; i < _savedSettingsTextList.Count; i++)
+            {
+                _savedSettingsCheckedListBox.Items.Add(_savedSettingsTextList[i], _savedSettingsGetterList[i]());
+            }
+            _savedSettingsCheckedListBox.ItemCheck += (sender, e) =>
+            {
+                _savedSettingsSetterList[e.Index](e.NewValue == CheckState.Checked);
+            };
+
+            Button buttonOptionsResetSavedSettings = tabControl.Controls["buttonOptionsResetSavedSettings"] as Button;
+            buttonOptionsResetSavedSettings.Click += (sender, e) => SavedSettingsConfig.ResetSavedSettings();
+
+            _savedSettingsItemList = _savedSettingsTextList.ConvertAll(text => new ToolStripMenuItem(text));
+            for (int i = 0; i < _savedSettingsItemList.Count; i++)
+            {
+                ToolStripMenuItem item = _savedSettingsItemList[i];
+                Action<bool> setter = _savedSettingsSetterList[i];
+                Func<bool> getter = _savedSettingsGetterList[i];
+                item.Click += (sender, e) =>
+                {
+                    bool newValue = !getter();
+                    setter(newValue);
+                    item.Checked = newValue;
+                };
+                item.Checked = getter();
+            }
+
+            ToolStripMenuItem resetSavedSettingsItem = new ToolStripMenuItem(buttonOptionsResetSavedSettings.Text);
+            resetSavedSettingsItem.Click += (sender, e) => SavedSettingsConfig.ResetSavedSettings();
+
+            ToolStripMenuItem goToOptionsTabItem = new ToolStripMenuItem("Go to Options Tab");
+            goToOptionsTabItem.Click += (sender, e) =>
+                Config.TabControlMain.SelectedTab = Config.TabControlMain.TabPages["tabPageOptions"];
+
+            cogControl.ContextMenuStrip = new ContextMenuStrip();
+            cogControl.Click += (sender, e) => cogControl.ContextMenuStrip.Show(Cursor.Position);
+
+            _savedSettingsItemList.ForEach(item => cogControl.ContextMenuStrip.Items.Add(item));
+            cogControl.ContextMenuStrip.Items.Add(new ToolStripSeparator());
+            cogControl.ContextMenuStrip.Items.Add(resetSavedSettingsItem);
+            cogControl.ContextMenuStrip.Items.Add(goToOptionsTabItem);
 
             // goto/retrieve offsets
             GroupBox groupBoxGotoRetrieveOffsets = tabControl.Controls["groupBoxGotoRetrieveOffsets"] as GroupBox;
@@ -105,6 +185,8 @@ namespace STROOP.Managers
 
             CheckBox checkBoxShowOverlayParentObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayParentObject"] as CheckBox;
             checkBoxShowOverlayParentObject.CheckedChanged += (sender, e) => OverlayConfig.ShowOverlayParentObject = checkBoxShowOverlayParentObject.Checked;
+            CheckBox checkBoxShowOverlayChildObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayChildObject"] as CheckBox;
+            checkBoxShowOverlayChildObject.CheckedChanged += (sender, e) => OverlayConfig.ShowOverlayChildObject = checkBoxShowOverlayChildObject.Checked;
 
             groupBoxShowOverlay.Click += (sender, e) =>
             {
@@ -128,21 +210,7 @@ namespace STROOP.Managers
                         betterTextboxFPS.Text = RefreshRateConfig.RefreshRateFreq.ToString();
                     }
                 });
-
-            // miscellaneous
-            CheckBox checkBoxStartSlotIndexOne = tabControl.Controls["checkBoxStartSlotIndexOne"] as CheckBox;
-            checkBoxStartSlotIndexOne.Click += (sender, e) => OptionsConfig.SlotIndexsFromOne = checkBoxStartSlotIndexOne.Checked;
-            CheckBox checkBoxMoveCamWithPu = tabControl.Controls["checkBoxMoveCamWithPu"] as CheckBox;
-            checkBoxMoveCamWithPu.Click += (sender, e) => OptionsConfig.MoveCameraWithPu = checkBoxMoveCamWithPu.Checked;
-            CheckBox checkBoxScaleDiagonalPositionControllerButtons = tabControl.Controls["checkBoxScaleDiagonalPositionControllerButtons"] as CheckBox;
-            checkBoxScaleDiagonalPositionControllerButtons.Click += (sender, e) => OptionsConfig.ScaleDiagonalPositionControllerButtons = checkBoxScaleDiagonalPositionControllerButtons.Checked;
-            CheckBox checkBoxExcludeDustForClosestObject = tabControl.Controls["checkBoxExcludeDustForClosestObject"] as CheckBox;
-            checkBoxExcludeDustForClosestObject.Click += (sender, e) => OptionsConfig.ExcludeDustForClosestObject = checkBoxExcludeDustForClosestObject.Checked;
-            CheckBox checkBoxNeutralizeTrianglesWith21 = tabControl.Controls["checkBoxNeutralizeTrianglesWith21"] as CheckBox;
-            checkBoxNeutralizeTrianglesWith21.Click += (sender, e) => OptionsConfig.NeutralizeTrianglesWith21 = checkBoxNeutralizeTrianglesWith21.Checked;
-            CheckBox checkBoxUseMisalignmentOffsetForDistanceToLine = tabControl.Controls["checkBoxUseMisalignmentOffsetForDistanceToLine"] as CheckBox;
-            checkBoxUseMisalignmentOffsetForDistanceToLine.Click += (sender, e) => OptionsConfig.UseMisalignmentOffsetForDistanceToLine = checkBoxUseMisalignmentOffsetForDistanceToLine.Checked;
-        }
+      }
 
         private void textBoxGotoRetrieve_LostFocus(object sender, ref float offset, float defaultOffset)
         {
@@ -155,6 +223,16 @@ namespace STROOP.Managers
             {
                 offset = defaultOffset;
                 (sender as TextBox).Text = defaultOffset.ToString();
+            }
+        }
+
+        public void Update(bool updateView)
+        {
+            for (int i = 0; i < _savedSettingsCheckedListBox.Items.Count; i++)
+            {
+                bool value = _savedSettingsGetterList[i]();
+                _savedSettingsCheckedListBox.SetItemChecked(i, value);
+                _savedSettingsItemList[i].Checked = value;
             }
         }
     }

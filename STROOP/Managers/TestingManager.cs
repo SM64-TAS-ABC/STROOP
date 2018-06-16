@@ -8,6 +8,7 @@ using STROOP.Structs.Configurations;
 using System.Windows.Forms;
 using STROOP.Utilities;
 using STROOP.Forms;
+using STROOP.Models;
 
 namespace STROOP.Managers
 {
@@ -167,7 +168,15 @@ namespace STROOP.Managers
         }
         ScuttlebugMission _scuttlebugMission = ScuttlebugMission.BBHBalconyEye;
 
-        List<TriangleStruct> _scuttlebugTriangleList = new List<TriangleStruct>();
+        List<TriangleDataModel> _scuttlebugTriangleList = new List<TriangleDataModel>();
+
+        // Memory Reader
+
+        GroupBox _groupBoxMemoryReader;
+        ComboBox _comboBoxMemoryReaderTypeValue;
+        BetterTextbox _textBoxMemoryReaderAddressValue;
+        BetterTextbox _textBoxMemoryReaderCountValue;
+        Button _buttonMemoryReaderRead;
 
         public TestingManager(TabPage tabControl)
         {
@@ -361,7 +370,7 @@ namespace STROOP.Managers
             _buttonTriRoomsConvert.Click += (sender, e) =>
             {
                 bool fromEmpty = _textBoxTriRoomsFromValue.Text == "";
-                List<string> fromListStrings = ParsingUtilities.ParseTextIntoStrings(_textBoxTriRoomsFromValue.Text);
+                List<string> fromListStrings = ParsingUtilities.ParseStringList(_textBoxTriRoomsFromValue.Text);
                 List<byte> fromListBytes = new List<byte>();
                 fromListStrings.ForEach(fromString =>
                 {
@@ -373,7 +382,7 @@ namespace STROOP.Managers
                 if (!toByteNullable.HasValue) return;
                 byte toByte = toByteNullable.Value;
 
-                List<TriangleStruct> tris = TriangleUtilities.GetLevelTriangles();
+                List<TriangleDataModel> tris = TriangleUtilities.GetLevelTriangles();
                 tris.ForEach(tri =>
                 {
                     if (fromEmpty || fromListBytes.Contains(tri.Room))
@@ -381,6 +390,44 @@ namespace STROOP.Managers
                         Config.Stream.SetValue(toByte, tri.Address + TriangleOffsetsConfig.Room);
                     }
                 });
+            };
+
+            // Memory Reader
+
+            _groupBoxMemoryReader = tabControl.Controls["groupBoxMemoryReader"] as GroupBox;
+            _comboBoxMemoryReaderTypeValue = _groupBoxMemoryReader.Controls["comboBoxMemoryReaderTypeValue"] as ComboBox;
+            _textBoxMemoryReaderAddressValue = _groupBoxMemoryReader.Controls["textBoxMemoryReaderAddressValue"] as BetterTextbox;
+            _textBoxMemoryReaderCountValue = _groupBoxMemoryReader.Controls["textBoxMemoryReaderCountValue"] as BetterTextbox;
+            _buttonMemoryReaderRead = _groupBoxMemoryReader.Controls["buttonMemoryReaderRead"] as Button;
+
+            _comboBoxMemoryReaderTypeValue.DataSource = TypeUtilities.StringToType.Keys.ToList();
+
+            _buttonMemoryReaderRead.Click += (sender, e) =>
+            {
+                bool showHex = KeyboardUtilities.IsCtrlHeld();
+                uint address = ParsingUtilities.ParseHex(_textBoxMemoryReaderAddressValue.Text);
+                int count = ParsingUtilities.ParseInt(_textBoxMemoryReaderCountValue.Text);
+                string typeString = _comboBoxMemoryReaderTypeValue.SelectedValue as string;
+                Type type = TypeUtilities.StringToType[typeString];
+                int typeSize = TypeUtilities.TypeSize[type];
+                Type unsignedByteType = TypeUtilities.UnsignedByteType[typeSize];
+                List <object> values = new List<object>();
+                for (int i = 0; i < count; i++)
+                {
+                    uint addr = (uint)(address + i * typeSize);
+                    object value = Config.Stream.GetValue(type, addr);
+                    if (showHex)
+                    {
+                        object hexNumber = Config.Stream.GetValue(unsignedByteType, addr);
+                        string hexString = HexUtilities.FormatValue(hexNumber, 2 * typeSize);
+                        value = hexString + "\t" + value;
+                    }
+                    values.Add(value);
+                }
+                InfoForm.ShowText(
+                    "Memory Reader",
+                    count + " " + typeString + " value(s) at 0x" + String.Format("{0:X}", address),
+                    String.Join("\r\n", values));
             };
         }
 
@@ -460,7 +507,7 @@ namespace STROOP.Managers
         private void HandleScuttlebugRoomTransition(byte newRoom)
         {
             // Convert new room triangles to dummy room value
-            foreach (TriangleStruct triStruct in _scuttlebugTriangleList)
+            foreach (TriangleDataModel triStruct in _scuttlebugTriangleList)
             {
                 if (triStruct.Room == newRoom)
                 {
@@ -469,7 +516,7 @@ namespace STROOP.Managers
             }
             
             // Convert all outside triangles to the new room value
-            foreach (TriangleStruct triStruct in _scuttlebugTriangleList)
+            foreach (TriangleDataModel triStruct in _scuttlebugTriangleList)
             {
                 if (triStruct.Room == Outside_Room)
                 {
@@ -506,7 +553,7 @@ namespace STROOP.Managers
                     X = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset),
                     Y = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset),
                     Z = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset),
-                    Angle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawFacingOffset),
+                    Angle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset),
                     Vspd = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.VSpeedOffset),
                     Hspd = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset),
                 };
@@ -559,7 +606,7 @@ namespace STROOP.Managers
             {
                 return new VarStatePenguin()
                 {
-                    Progress = TableConfig.RacingPenguinWaypoints.GetProgress(Config.SwitchRomVersion(0x80348448, 0x803451F8)),
+                    Progress = TableConfig.RacingPenguinWaypoints.GetProgress(RomVersionConfig.Switch(0x80348448, 0x803451F8)),
                 };
             }
 
@@ -640,18 +687,14 @@ namespace STROOP.Managers
 
         public void Update(bool updateView)
         {
-            // Schedule
+            // Show Invisible Objects as Signs
+            if (TestingConfig.ShowInvisibleObjectsAsSigns)
             {
-                (int frame, double? x, double? y, double? z, double? hspd, string description) = _rollingRocksScheduleList[_rollingRocksScheduleIndex];
-                _labelSchedule1.Text = Config.Stream.GetInt32(MiscConfig.GlobalTimerAddress).ToString();
-                _labelSchedule2.Text = (frame + _rollingRocksScheduleIndexOffset).ToString();
-                if (x.HasValue) _labelSchedule3.Text = x.Value.ToString();
-                if (y.HasValue) _labelSchedule4.Text = y.Value.ToString();
-                if (z.HasValue) _labelSchedule5.Text = z.Value.ToString();
-                _labelSchedule6.Text = (0).ToString();
-                if (hspd.HasValue) _labelSchedule7.Text = hspd.Value.ToString();
-                _labelScheduleIndex.Text = _rollingRocksScheduleIndex.ToString();
-                _labelScheduleDescription.Text = description.ToString();
+                DataModels.Objects.ToList().ForEach(obj =>
+                {
+                    if (obj == null) return;
+                    if (obj.GraphicsID == 0) obj.GraphicsID = ObjectConfig.SignGraphicsId;
+                });
             }
 
             // Obj at HOLP
@@ -660,9 +703,9 @@ namespace STROOP.Managers
                 uint? objAddress = ParsingUtilities.ParseHexNullable(_betterTextboxObjAtHOLP.Text);
                 if (objAddress.HasValue)
                 {
-                    float holpX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPXOffset);
-                    float holpY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPYOffset);
-                    float holpZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPZOffset);
+                    float holpX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpXOffset);
+                    float holpY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpYOffset);
+                    float holpZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpZOffset);
 
                     Config.Stream.SetValue(holpX, objAddress.Value + ObjectConfig.XOffset);
                     Config.Stream.SetValue(holpY, objAddress.Value + ObjectConfig.YOffset);
@@ -706,6 +749,20 @@ namespace STROOP.Managers
 
             if (!updateView) return;
 
+            // Schedule
+            {
+                (int frame, double? x, double? y, double? z, double? hspd, string description) = _rollingRocksScheduleList[_rollingRocksScheduleIndex];
+                _labelSchedule1.Text = Config.Stream.GetInt32(MiscConfig.GlobalTimerAddress).ToString();
+                _labelSchedule2.Text = (frame + _rollingRocksScheduleIndexOffset).ToString();
+                if (x.HasValue) _labelSchedule3.Text = x.Value.ToString();
+                if (y.HasValue) _labelSchedule4.Text = y.Value.ToString();
+                if (z.HasValue) _labelSchedule5.Text = z.Value.ToString();
+                _labelSchedule6.Text = (0).ToString();
+                if (hspd.HasValue) _labelSchedule7.Text = hspd.Value.ToString();
+                _labelScheduleIndex.Text = _rollingRocksScheduleIndex.ToString();
+                _labelScheduleDescription.Text = description.ToString();
+            }
+
             // get current stream values
             switch (_varToRecord)
             {
@@ -714,7 +771,7 @@ namespace STROOP.Managers
                     _currentTimer = Config.Stream.GetInt32(marioObjAddress + ObjectConfig.TimerOffset);
                     break;
                 case VarToRecord.Penguin:
-                    _currentTimer = Config.Stream.GetInt32(Config.SwitchRomVersion(0x803493DC, 0x803463EC));
+                    _currentTimer = Config.Stream.GetInt32(RomVersionConfig.Switch(0x803493DC, 0x803463EC));
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -769,29 +826,40 @@ namespace STROOP.Managers
             _labelMetric5Value.Text = _currentTimer.ToString();
 
             // Control stick
+            sbyte currentX = Config.Stream.GetSByte(InputConfig.CurrentInputAddress + InputConfig.ControlStickXOffset);
+            sbyte currentY = Config.Stream.GetSByte(InputConfig.CurrentInputAddress + InputConfig.ControlStickYOffset);
+
             if (_checkBoxUseInput.Checked)
             {
-                sbyte currentX = Config.Stream.GetSByte(InputConfig.CurrentInputAddress + InputConfig.ControlStickXOffset);
-                sbyte currentY = Config.Stream.GetSByte(InputConfig.CurrentInputAddress + InputConfig.ControlStickYOffset);
                 _betterTextboxControlStick1.Text = currentX.ToString();
-                _betterTextboxControlStick2.Text = currentY.ToString();
+                _betterTextboxControlStick2.Text = (-1 * currentY).ToString();
             }
 
             int rawX = ParsingUtilities.ParseInt(_betterTextboxControlStick1.Text);
             int rawY = ParsingUtilities.ParseInt(_betterTextboxControlStick2.Text);
-            (double effectiveX, double effectiveY) = MoreMath.GetEffectiveInput(rawX, -1 * rawY);
-            _labelControlStick1.Text = Math.Round(effectiveX, 3).ToString();
-            _labelControlStick2.Text = Math.Round(effectiveY, 3).ToString();
-            double angle = MoreMath.AngleTo_AngleUnits(effectiveX, effectiveY);
-            ushort cameraAngle = Config.Stream.GetUInt16(CameraConfig.CameraStructAddress + 0xFC);
-            angle = MoreMath.NormalizeAngleDouble(angle + cameraAngle);
-            _labelControlStick3.Text = Math.Round(angle, 0).ToString();
+            (float effectiveX, float effectiveY) = MoreMath.GetEffectiveInput(rawX, -1 * rawY);
+            _labelControlStick1.Text = effectiveX.ToString();
+            _labelControlStick2.Text = effectiveY.ToString();
+            ushort marioFacingYaw = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            _labelControlStick3.Text = marioFacingYaw.ToString();
+
+            ushort angle = InGameTrigUtilities.InGameATan(effectiveY, -effectiveX);
+            ushort cameraAngle = Config.Stream.GetUInt16(CameraConfig.StructAddress + 0xFC);
+            cameraAngle = MoreMath.NormalizeAngleUshort(MoreMath.ReverseAngle(cameraAngle));
+            //cameraAngle = MoreMath.NormalizeAngleTruncated(cameraAngle);
+            ushort summedAngle = MoreMath.NormalizeAngleUshort(angle + cameraAngle);
+            _labelControlStick4.Text = summedAngle.ToString();
+            _labelControlStick5.Text = InGameTrigUtilities.InGameATan(rawX, rawY).ToString();
+            _labelControlStick6.Text = MoreMath.CalculateAngleFromInputs(currentX, currentY).ToString();
+
+            /*
             int angleGuess = MoreMath.NormalizeAngleUshort(angle);
             _labelControlStick4.Text = angleGuess.ToString();
-            int angleInteded = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.YawIntendedOffset);
+            int angleInteded = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.IntendedYawOffset);
             _labelControlStick5.Text = angleInteded.ToString();
             int diff = angleGuess - angleInteded;
             _labelControlStick6.Text = diff.ToString();
+            */
 
             // State Transfer
             StateTransferUpdate();
@@ -837,12 +905,12 @@ namespace STROOP.Managers
 
                 if (frame == 10060)
                 {
-                    ButtonUtilities.UnloadObject(new List<uint> { 0x8034DC28 });
+                    ButtonUtilities.UnloadObject(new List<ObjectDataModel> { new ObjectDataModel(0x8034DC28) });
                 }
 
                 if (frame == 10475)
                 {
-                    Config.Stream.SetValue((ushort)32832, MarioConfig.StructAddress + MarioConfig.YawFacingOffset);
+                    Config.Stream.SetValue((ushort)32832, MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                 }
 
                 _rollingRocksScheduleIndex++;
@@ -879,7 +947,7 @@ namespace STROOP.Managers
         private void PasteAndGotoClick()
         {
             string clipboardText = Clipboard.GetText();
-            List<string> parsedStrings = ParsingUtilities.ParseTextIntoStrings(clipboardText);
+            List<string> parsedStrings = ParsingUtilities.ParseStringList(clipboardText);
             List<TextBox> textboxes = new List<TextBox>() { _betterTextboxGotoX, _betterTextboxGotoY, _betterTextboxGotoZ };
             for (int i = 0; i < parsedStrings.Count && i < textboxes.Count; i++)
             {
@@ -892,14 +960,14 @@ namespace STROOP.Managers
         {
             _betterTextboxStateTransferVar1Current.Text = Config.Stream.GetInt32(MiscConfig.GlobalTimerAddress).ToString();
             _betterTextboxStateTransferVar2Current.Text = Config.Stream.GetUInt16(MiscConfig.RngAddress).ToString();
-            _betterTextboxStateTransferVar3Current.Text = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPXOffset).ToString();
-            _betterTextboxStateTransferVar4Current.Text = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPYOffset).ToString();
-            _betterTextboxStateTransferVar5Current.Text = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HOLPZOffset).ToString();
+            _betterTextboxStateTransferVar3Current.Text = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpXOffset).ToString();
+            _betterTextboxStateTransferVar4Current.Text = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpYOffset).ToString();
+            _betterTextboxStateTransferVar5Current.Text = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HolpZOffset).ToString();
             _betterTextboxStateTransferVar6Current.Text = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.SlidingYawOffset).ToString();
             _betterTextboxStateTransferVar7Current.Text = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.TwirlYawOffset).ToString();
             _betterTextboxStateTransferVar8Current.Text =
                 ((Config.Stream.GetByte(
-                    CameraConfig.CameraStructAddress + CameraConfig.MarioCamPossibleOffset) & CameraConfig.MarioCamPossibleMask) != 0).ToString();
+                    CameraConfig.StructAddress + CameraConfig.MarioCamPossibleOffset) & CameraConfig.MarioCamPossibleMask) != 0).ToString();
             _betterTextboxStateTransferVar9Current.Text = Config.FileManager.GetChecksum(Config.FileManager.GetInGameFileAddress()).ToString();
             _betterTextboxStateTransferVar10Current.Text = Config.Stream.GetInt16(MarioConfig.StructAddress + HudConfig.HpCountOffset).ToString();
             _betterTextboxStateTransferVar11Current.Text = Config.Stream.GetSByte(MarioConfig.StructAddress + HudConfig.LifeCountOffset).ToString();
@@ -937,13 +1005,13 @@ namespace STROOP.Managers
             if (value2.HasValue) Config.Stream.SetValue(value2.Value, MiscConfig.RngAddress);
 
             float? value3 = ParsingUtilities.ParseFloatNullable(_betterTextboxStateTransferVar3Saved.Text);
-            if (value3.HasValue) Config.Stream.SetValue(value3.Value, MarioConfig.StructAddress + MarioConfig.HOLPXOffset);
+            if (value3.HasValue) Config.Stream.SetValue(value3.Value, MarioConfig.StructAddress + MarioConfig.HolpXOffset);
 
             float? value4 = ParsingUtilities.ParseFloatNullable(_betterTextboxStateTransferVar4Saved.Text);
-            if (value4.HasValue) Config.Stream.SetValue(value4.Value, MarioConfig.StructAddress + MarioConfig.HOLPYOffset);
+            if (value4.HasValue) Config.Stream.SetValue(value4.Value, MarioConfig.StructAddress + MarioConfig.HolpYOffset);
 
             float? value5 = ParsingUtilities.ParseFloatNullable(_betterTextboxStateTransferVar5Saved.Text);
-            if (value5.HasValue) Config.Stream.SetValue(value5.Value, MarioConfig.StructAddress + MarioConfig.HOLPZOffset);
+            if (value5.HasValue) Config.Stream.SetValue(value5.Value, MarioConfig.StructAddress + MarioConfig.HolpZOffset);
 
             ushort? value6 = ParsingUtilities.ParseUShortNullable(_betterTextboxStateTransferVar6Saved.Text);
             if (value6.HasValue) Config.Stream.SetValue(value6.Value, MarioConfig.StructAddress + MarioConfig.SlidingYawOffset);
@@ -954,9 +1022,9 @@ namespace STROOP.Managers
             bool? value8 = ParsingUtilities.ParseBoolNullable(_betterTextboxStateTransferVar8Saved.Text);
             if (value8.HasValue)
             {
-                byte oldByte = Config.Stream.GetByte(CameraConfig.CameraStructAddress + CameraConfig.MarioCamPossibleOffset);
+                byte oldByte = Config.Stream.GetByte(CameraConfig.StructAddress + CameraConfig.MarioCamPossibleOffset);
                 byte newByte = MoreMath.ApplyValueToMaskedByte(oldByte, CameraConfig.MarioCamPossibleMask, value8.Value);
-                Config.Stream.SetValue(newByte, CameraConfig.CameraStructAddress + CameraConfig.MarioCamPossibleOffset);
+                Config.Stream.SetValue(newByte, CameraConfig.StructAddress + CameraConfig.MarioCamPossibleOffset);
             }
 
             if (_stateTransferFileData != null) Config.FileManager.SetBufferedBytes(_stateTransferFileData, Config.FileManager.GetInGameFileAddress());

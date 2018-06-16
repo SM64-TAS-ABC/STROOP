@@ -117,7 +117,7 @@ namespace STROOP.Managers
 
         private void SwitchLevelModel()
         {
-            List<TriangleStruct> triangleStructs = TriangleUtilities.GetLevelTriangles();
+            List<TriangleDataModel> triangleStructs = TriangleUtilities.GetLevelTriangles();
 
             // Build vertice and triangle list from triangle set
             List<int[]> triangles = new List<int[]>();
@@ -205,7 +205,7 @@ namespace STROOP.Managers
             return vertices;
         }
 
-        public List<int[]> GetTrianglesFromContinuedModelPonter(uint contModelPtr)
+        public List<int[]> GetTrianglesFromContinuedModelPointer(uint contModelPtr)
         {
             var triangles = new List<int[]>();
 
@@ -246,11 +246,11 @@ namespace STROOP.Managers
                 return;
             }
 
-            _textBoxAddress.Text = String.Format("0x{0:X8}", ModelPointer);
+            _textBoxAddress.Text = HexUtilities.FormatValue(ModelPointer, 8);
 
             uint modelPtr = ModelPointer;
             List<short[]> vertices = GetVerticesFromModelPointer(ref modelPtr);
-            List<int[]> triangles = GetTrianglesFromContinuedModelPonter(modelPtr);
+            List<int[]> triangles = GetTrianglesFromContinuedModelPointer(modelPtr);
             _modelView?.ChangeModel(vertices, triangles);
 
             // TODO: transformation

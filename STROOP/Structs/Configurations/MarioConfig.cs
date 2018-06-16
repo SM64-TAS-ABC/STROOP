@@ -9,7 +9,7 @@ namespace STROOP.Structs
 {
     public static class MarioConfig
     {
-        public static uint StructAddress { get { return Config.SwitchRomVersion(StructAddressUS, StructAddressJP); } }
+        public static uint StructAddress { get => RomVersionConfig.Switch(StructAddressUS, StructAddressJP); }
         public static readonly uint StructAddressUS = 0x8033B170;
         public static readonly uint StructAddressJP = 0x80339E00;
 
@@ -17,8 +17,13 @@ namespace STROOP.Structs
         public static readonly uint YOffset = 0x40;
         public static readonly uint ZOffset = 0x44;
 
-        public static readonly uint YawFacingOffset = 0x2E;
-        public static readonly uint YawIntendedOffset = 0x24;
+        public static readonly uint FacingYawOffset = 0x2E;
+        public static readonly uint FacingPitchOffset = 0x2C;
+        public static readonly uint FacingRollOffset = 0x30;
+
+        public static readonly uint IntendedYawOffset = 0x24;
+        public static readonly uint IntendedPitchOffset = 0x22;
+        public static readonly uint IntendedRollOffset = 0x26;
 
         public static readonly uint HSpeedOffset = 0x54;
         public static readonly uint VSpeedOffset = 0x4C;
@@ -27,11 +32,11 @@ namespace STROOP.Structs
         public static readonly uint SlidingSpeedZOffset = 0x5C;
         public static readonly uint SlidingYawOffset = 0x38;
 
-        public static readonly uint HOLPXOffset = 0x258;
-        public static readonly uint HOLPYOffset = 0x25C;
-        public static readonly uint HOLPZOffset = 0x260;
+        public static readonly uint HolpXOffset = 0x258;
+        public static readonly uint HolpYOffset = 0x25C;
+        public static readonly uint HolpZOffset = 0x260;
 
-        public static uint StoodOnObjectPointerAddress { get { return Config.SwitchRomVersion(StoodOnObjectPointerAddressUS, StoodOnObjectPointerAddressJP); } }
+        public static uint StoodOnObjectPointerAddress { get => RomVersionConfig.Switch(StoodOnObjectPointerAddressUS, StoodOnObjectPointerAddressJP); }
         public static readonly uint StoodOnObjectPointerAddressUS = 0x80330E34;
         public static readonly uint StoodOnObjectPointerAddressJP = 0x8032FED4;
 

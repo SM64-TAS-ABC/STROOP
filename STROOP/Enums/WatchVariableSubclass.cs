@@ -13,8 +13,9 @@ namespace STROOP.Structs
     {
         Number,
         String,
-        Object,
         Angle,
+        Object,
+        Triangle,
         Boolean,
     };
 }

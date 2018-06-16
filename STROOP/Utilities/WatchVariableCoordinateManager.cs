@@ -13,6 +13,7 @@ namespace STROOP.Structs
     public static class WatchVariableCoordinateManager
     {
         private static List<WatchVariableNumberWrapper> coordinateVarList = new List<WatchVariableNumberWrapper>();
+        private static bool readyToNotify = false;
 
         public static void NotifyCoordinate(WatchVariableCoordinate coordinate, WatchVariableNumberWrapper watchVarWrapper)
         {
@@ -23,16 +24,21 @@ namespace STROOP.Structs
                     coordinateVarList.Add(watchVarWrapper);
                     break;
                 case WatchVariableCoordinate.Y:
-                    if (coordinateVarList.Count == 1) coordinateVarList.Add(watchVarWrapper);
+                    if (coordinateVarList.Count == 1)
+                        coordinateVarList.Add(watchVarWrapper);
                     break;
                 case WatchVariableCoordinate.Z:
-                    if (coordinateVarList.Count == 2) coordinateVarList.Add(watchVarWrapper);
+                    if (coordinateVarList.Count == 1 || coordinateVarList.Count == 2)
+                    {
+                        coordinateVarList.Add(watchVarWrapper);
+                        readyToNotify = true;
+                    }
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
 
-            if (coordinateVarList.Count == 3)
+            if (readyToNotify)
             {
                 foreach (WatchVariableNumberWrapper coordinateVar in coordinateVarList)
                 {
@@ -40,6 +46,7 @@ namespace STROOP.Structs
                     coordinateVar.EnableCoordinateContextMenuStripItemFunctionality(coordinateVarListCopy);
                 }
                 coordinateVarList.Clear();
+                readyToNotify = false;
             }
         }
 

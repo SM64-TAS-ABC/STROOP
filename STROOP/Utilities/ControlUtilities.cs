@@ -8,6 +8,7 @@ using System.Xml;
 using System.Windows.Forms;
 using System.Drawing;
 using STROOP.Structs;
+using System.Reflection;
 
 namespace STROOP.Utilities
 {
@@ -22,6 +23,7 @@ namespace STROOP.Utilities
 
         public static void InitializeThreeDimensionController(
             CoordinateSystem coordinateSystem,
+            bool allowRelativeOptions,
             GroupBox groupbox,
             Button buttonSquareLeft,
             Button buttonSquareRight,
@@ -96,7 +98,7 @@ namespace STROOP.Utilities
             buttonSquareDownRight.Click += (sender, e) => actionSquare(1, -1);
             buttonLineUp.Click += (sender, e) => actionLine(1);
             buttonLineDown.Click += (sender, e) => actionLine(-1);
-            if (coordinateSystem == CoordinateSystem.Euler)
+            if (coordinateSystem == CoordinateSystem.Euler && allowRelativeOptions)
             {
                 checkbox.CheckedChanged += (sender, e) => actionCheckedChanged();
             }
@@ -376,16 +378,83 @@ namespace STROOP.Utilities
                 items[i].Click += (sender, e) => action();
             }
 
-            ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
-            items.ForEach(item => contextMenuStrip.Items.Add(item));
-            control.ContextMenuStrip = contextMenuStrip;
+            if (control.ContextMenuStrip == null)
+                control.ContextMenuStrip = new ContextMenuStrip();
+            items.ForEach(item => control.ContextMenuStrip.Items.Add(item));
         }
 
         public static void AddDropDownItems(
+            ToolStripMenuItem mainItem,
+            List<string> functionNames,
+            List<Action> functions)
+        {
+            if (functionNames.Count != functions.Count) throw new ArgumentOutOfRangeException();
+
+            List<ToolStripMenuItem> items = functionNames.ConvertAll(name => new ToolStripMenuItem(name));
+            for (int i = 0; i < items.Count; i++)
+            {
+                Action action = functions[i];
+                items[i].Click += (sender, e) => action();
+            }
+
+            items.ForEach(item => mainItem.DropDownItems.Add(item));
+        }
+
+        public static void AddCheckableContextMenuStripFunctions(
+            Control control,
+            List<string> functionNames,
+            List<Func<bool>> functions)
+        {
+            if (functionNames.Count != functions.Count) throw new ArgumentOutOfRangeException();
+
+            List<ToolStripMenuItem> items = functionNames.ConvertAll(name => new ToolStripMenuItem(name));
+            for (int i = 0; i < items.Count; i++)
+            {
+                Func<bool> function = functions[i];
+                ToolStripMenuItem item = items[i];
+                item.Click += (sender, e) => item.Checked = function();
+            }
+
+            if (control.ContextMenuStrip == null)
+                control.ContextMenuStrip = new ContextMenuStrip();
+            items.ForEach(item => control.ContextMenuStrip.Items.Add(item));
+        }
+
+        public static Action<T> AddCheckableDropDownItems<T>(
             ToolStripMenuItem topLevelItem,
             List<string> itemNames,
-            List<object> itemValues,
-            Action<object> setterAction,
+            List<T> itemValues,
+            Action<T> setterAction,
+            object startingValue)
+        {
+            if (itemNames.Count != itemValues.Count) throw new ArgumentOutOfRangeException();
+            (List<ToolStripMenuItem> itemList, Action<T> valueAction) =
+                CreateCheckableItems(
+                    itemNames, itemValues, setterAction, startingValue);
+            itemList.ForEach(item => topLevelItem.DropDownItems.Add(item));
+            return valueAction;
+        }
+
+        public static Action<T> AddCheckableContextMenuStripItems<T>(
+            Control topLevelControl,
+            List<string> itemNames,
+            List<T> itemValues,
+            Action<T> setterAction,
+            object startingValue)
+        {
+            if (itemNames.Count != itemValues.Count) throw new ArgumentOutOfRangeException();
+            (List<ToolStripMenuItem> itemList, Action<T> valueAction) =
+                CreateCheckableItems(
+                    itemNames, itemValues, setterAction, startingValue);
+            topLevelControl.ContextMenuStrip = new ContextMenuStrip();
+            itemList.ForEach(item => topLevelControl.ContextMenuStrip.Items.Add(item));
+            return valueAction;
+        }
+
+        private static (List<ToolStripMenuItem>, Action<T>) CreateCheckableItems<T>(
+            List<string> itemNames,
+            List<T> itemValues,
+            Action<T> setterAction,
             object startingValue)
         {
             if (itemNames.Count != itemValues.Count) throw new ArgumentOutOfRangeException();
@@ -396,19 +465,145 @@ namespace STROOP.Utilities
                 itemList.Add(new ToolStripMenuItem(itemNames[i]));
             }
 
+            Dictionary<T, ToolStripMenuItem> dictionary = new Dictionary<T, ToolStripMenuItem>();
+            for (int i = 0; i < itemList.Count; i++)
+            {
+                dictionary.Add(itemValues[i], itemList[i]);
+            }
+            Action<T> valueAction = (T value) =>
+            {
+                setterAction(value);
+                ToolStripMenuItem item = dictionary[value];
+                itemList.ForEach(item2 => item2.Checked = item2 == item);
+            };
+
             for (int i = 0; i < itemList.Count; i++)
             {
                 int index = i;
                 ToolStripMenuItem item = itemList[index];
-                item.Click += (sender, e) =>
-                {
-                    setterAction(itemValues[index]);
-                    itemList.ForEach(item2 => item2.Checked = item2 == item);
-                };
-                if (Object.Equals(itemValues[index],startingValue)) item.Checked = true;
+                item.Click += (sender, e) => valueAction(itemValues[index]);
+                if (Equals(itemValues[index], startingValue)) item.Checked = true;
             }
 
-            itemList.ForEach(item => topLevelItem.DropDownItems.Add(item));
+            return (itemList, valueAction);
+        }
+
+        public static void SetPropertyGridLabelColumnWidth(PropertyGrid grid, int width)
+        {
+            if (grid == null)
+                return;
+
+            FieldInfo fi = grid.GetType().GetField("gridView", BindingFlags.Instance | BindingFlags.NonPublic);
+            if (fi == null)
+                return;
+
+            Control view = fi.GetValue(grid) as Control;
+            if (view == null)
+                return;
+
+            MethodInfo mi = view.GetType().GetMethod("MoveSplitterTo", BindingFlags.Instance | BindingFlags.NonPublic);
+            if (mi == null)
+                return;
+            mi.Invoke(view, new object[] { width });
+        }
+
+        public static int? GetMinSelectedRowIndex(DataGridView table)
+        {
+            if (table.SelectedCells.Count == 0) return null;
+            List<DataGridViewCell> cells = new List<DataGridViewCell>();
+            foreach (DataGridViewCell cell in table.SelectedCells)
+            {
+                cells.Add(cell);
+            }
+            return cells.Min(cell => cell.RowIndex);
+        }
+
+        public static int? GetMaxSelectedRowIndex(DataGridView table)
+        {
+            if (table.SelectedCells.Count == 0) return null;
+            List<DataGridViewCell> cells = new List<DataGridViewCell>();
+            foreach (DataGridViewCell cell in table.SelectedCells)
+            {
+                cells.Add(cell);
+            }
+            return cells.Max(cell => cell.RowIndex);
+        }
+
+        public static int GetTableEffectiveHeight(DataGridView table)
+        {
+            int summedHeight = table.ColumnHeadersHeight;
+            foreach (DataGridViewRow row in table.Rows)
+            {
+                summedHeight += row.Height;
+            }
+            return summedHeight;
+        }
+
+        public static void SetTableDoubleBuffered(DataGridView table, bool doubleBuffered)
+        {
+            Type tableType = table.GetType();
+            PropertyInfo propertyInfo = tableType.GetProperty("DoubleBuffered",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+            propertyInfo.SetValue(table, doubleBuffered, null);
+        }
+
+        public static void TableGoTo(DataGridView table, int row)
+        {
+            row = MoreMath.Clamp(row, 0, table.RowCount - 1);
+            if (row >= 0 && row < table.RowCount)
+                table.FirstDisplayedScrollingRowIndex = row;
+        }
+
+        public static TabPage GetTab(Control control)
+        {
+            while (control != null && !(control is TabPage))
+            {
+                control = control.Parent;
+            }
+            return (TabPage)control;
+        }
+
+        public static string GetTabName(Control control)
+        {
+            TabPage tab = GetTab(control);
+            return tab?.Text ?? "";
+        }
+
+        public static int GetTabIndex(Control control)
+        {
+            TabPage tab = GetTab(control);
+            return tab?.TabIndex ?? Int32.MaxValue;
+        }
+
+        public static SplitContainer GetChildSplitContainer(Control control)
+        {
+            foreach (Control child in control.Controls)
+            {
+                if (child is SplitContainer)
+                    return (SplitContainer)child;
+            }
+            return null;
+        }
+
+        public static List<T> GetFieldsOfType<T>(Type classType, object instance)
+        {
+            List<T> valueList = new List<T>();
+            foreach (FieldInfo field in classType.GetFields())
+            {
+                if (TypeUtilities.IsSubtype(field.FieldType, typeof(T)))
+                    valueList.Add((T)field.GetValue(instance));
+            }
+            return valueList;
+        }
+
+        public static List<TabPage> GetTabPages(TabControl tabControl)
+        {
+            List<TabPage> tabPages = new List<TabPage>();
+            foreach (TabPage tabPage in tabControl.TabPages)
+            {
+                tabPages.Add(tabPage);
+            }
+            return tabPages;
         }
     }
 }

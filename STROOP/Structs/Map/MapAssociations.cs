@@ -11,30 +11,30 @@ namespace STROOP.Structs
 {
     public class MapAssociations
     {
-        Dictionary<Tuple<byte, byte>, List<Map>> _maps = new Dictionary<Tuple<byte, byte>, List<Map>>();
+        Dictionary<Tuple<byte, byte>, List<MapLayout>> _maps = new Dictionary<Tuple<byte, byte>, List<MapLayout>>();
 
-        public Map DefaultMap;
+        public MapLayout DefaultMap;
 
         public string FolderPath;
 
-        public void AddAssociation(Map map)
+        public void AddAssociation(MapLayout map)
         {
             var mapKey = new Tuple<byte, byte>(map.Level, map.Area);
             if (!_maps.ContainsKey(mapKey))
-                _maps.Add(mapKey, new List<Map>());
+                _maps.Add(mapKey, new List<MapLayout>());
             _maps[mapKey].Add(map);
         }
 
-        public List<Map> GetLevelAreaMaps(byte level, byte area)
+        public List<MapLayout> GetLevelAreaMaps(byte level, byte area)
         {
             var mapKey = new Tuple<byte, byte>(level, area);
             if (!_maps.ContainsKey(mapKey))
-                return new List<Map>();
+                return new List<MapLayout>();
 
             return _maps[mapKey];
         }
 
-        public Image GetMapImage(Map map)
+        public Bitmap GetMapImage(MapLayout map)
         {
             var path = Path.Combine(FolderPath, map.ImagePath);
             Bitmap image;
@@ -51,14 +51,14 @@ namespace STROOP.Structs
             return image;
         }
 
-        public Image GetMapBackgroundImage(Map map)
+        public Bitmap GetMapBackgroundImage(MapLayout map)
         {
             if (map.BackgroundPath == null)
                 return null;
 
             var path = Path.Combine(FolderPath, map.BackgroundPath);
             Bitmap image;
-            using (Bitmap preLoad = Bitmap.FromFile(path) as Bitmap)
+            using (Bitmap preLoad = Image.FromFile(path) as Bitmap)
             {
                 int maxSize = 1080;
                 int largest = Math.Max(preLoad.Width, preLoad.Height);

@@ -11,6 +11,7 @@ namespace STROOP.Structs
 {
     public class InputImageGui
     {
+        public InputDisplayTypeEnum InputDisplayType;
         public Image ButtonAImage;
         public Image ButtonBImage;
         public Image ButtonZImage;
@@ -25,6 +26,8 @@ namespace STROOP.Structs
         public Image ButtonDDownImage;
         public Image ButtonDLeftImage;
         public Image ButtonDRightImage;
+        public Image ButtonU1Image;
+        public Image ButtonU2Image;
         public Image ControlStickImage;
         public Image ControllerImage;
 
@@ -44,6 +47,8 @@ namespace STROOP.Structs
             ButtonDDownImage?.Dispose();
             ButtonDLeftImage?.Dispose();
             ButtonDRightImage?.Dispose();
+            ButtonU1Image?.Dispose();
+            ButtonU2Image?.Dispose();
             ControlStickImage?.Dispose();
             ControllerImage?.Dispose();
         }

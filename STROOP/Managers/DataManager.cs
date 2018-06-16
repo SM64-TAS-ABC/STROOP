@@ -14,24 +14,37 @@ namespace STROOP.Managers
 {
     public class DataManager
     {
-        private WatchVariablePanel _variablePanel;
+        protected WatchVariableFlowLayoutPanel _variablePanel;
+        public readonly string TabName;
+        public readonly int TabIndex;
 
         public DataManager(
-            List<WatchVariableControlPrecursor> variables,
-            WatchVariablePanel variablePanel,
-            List<VariableGroup> allVariableGroups = null,
-            List<VariableGroup> visibleVariableGroups = null)
+            string varFilePath,
+            WatchVariableFlowLayoutPanel variablePanel,
+            List<VariableGroup> allVariableGroupsNullable = null,
+            List<VariableGroup> visibleVariableGroupsNullable = null)
         {
             _variablePanel = variablePanel;
+
+            List<VariableGroup> allVariableGroups = allVariableGroupsNullable ?? new List<VariableGroup>();
+            if (allVariableGroups.Contains(VariableGroup.Custom)) throw new ArgumentOutOfRangeException();
+            allVariableGroups.Add(VariableGroup.Custom);
+
+            List<VariableGroup> visibleVariableGroups = visibleVariableGroupsNullable ?? new List<VariableGroup>();
+            if (visibleVariableGroups.Contains(VariableGroup.Custom)) throw new ArgumentOutOfRangeException();
+            visibleVariableGroups.Add(VariableGroup.Custom);
+
             _variablePanel.Initialize(
-                variables,
+                varFilePath,
                 allVariableGroups,
                 visibleVariableGroups);
+            TabName = ControlUtilities.GetTabName(_variablePanel);
+            TabIndex = ControlUtilities.GetTabIndex(_variablePanel);
         }
 
-        public virtual void RemoveObjSpecificVariables()
+        public virtual void RemoveVariableGroup(VariableGroup varGroup)
         {
-            _variablePanel.RemoveVariables(VariableGroup.ObjectSpecific);
+            _variablePanel.RemoveVariableGroup(varGroup);
         }
 
         public virtual void AddVariable(WatchVariableControl watchVarControl)
@@ -44,17 +57,12 @@ namespace STROOP.Managers
             _variablePanel.AddVariables(watchVarControls);
         }
 
-        public virtual void ClearVariables()
-        {
-            _variablePanel.ClearVariables();
-        }
-
         public virtual void EnableCustomVariableFunctionality()
         {
             _variablePanel.EnableCustomVariableFunctionality();
         }
 
-        public virtual List<string> GetCurrentVariableValues(bool useRounding = false)
+        public virtual List<object> GetCurrentVariableValues(bool useRounding = false)
         {
             return _variablePanel.GetCurrentVariableValues(useRounding);
         }
@@ -67,7 +75,12 @@ namespace STROOP.Managers
         public virtual void Update(bool updateView)
         {
             if (!updateView) return;
-            _variablePanel.UpdateControls();
+            _variablePanel.UpdatePanel();
+        }
+
+        public override string ToString()
+        {
+            return TabName;
         }
     }
 }

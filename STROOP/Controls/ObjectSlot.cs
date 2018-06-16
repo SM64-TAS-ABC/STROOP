@@ -12,17 +12,24 @@ using STROOP.Controls;
 using STROOP.Extensions;
 using System.Drawing.Drawing2D;
 using STROOP.Structs.Configurations;
+using STROOP.Models;
+using static STROOP.Managers.ObjectSlotsManager;
+using System.Windows.Input;
+using STROOP.Map2;
 
 namespace STROOP
 {
     public class ObjectSlot : Panel
     {
-        public static TabControl tabControlMain;
         const int BorderSize = 2;
 
         ObjectSlotsManager _manager;
         ObjectSlotManagerGui _gui;
 
+        public int Index { get; private set; }
+        public ObjectDataModel CurrentObject { get; set; }
+
+        #region Drawing Variables
         Color _mainColor, _borderColor, _backColor;
         SolidBrush _borderBrush = new SolidBrush(Color.White), _backBrush = new SolidBrush(Color.White);
         SolidBrush _textBrush = new SolidBrush(Color.Black);
@@ -31,11 +38,10 @@ namespace STROOP
         Point _textLocation = new Point();
         Point _objectImageLocation = new Point();
         string _text;
+        int _fontHeight;
+        #endregion
 
-        bool _selected = false;
         public new bool Show = false;
-        bool _active = false;
-        BehaviorCriteria _behavior;
 
         enum SelectionType { NOT_SELECTED, NORMAL_SELECTION, MAP_SELECTION, MODEL_SELECTION };
         SelectionType _selectionType = SelectionType.NOT_SELECTED;
@@ -44,373 +50,61 @@ namespace STROOP
         object _gfxLock = new object();
 
         public enum MouseStateType {None, Over, Down};
-        public MouseStateType MouseState;
+        private MouseStateType _mouseState;
+        private MouseStateType _mouseEnteredState;
 
-        public bool SelectedOnMap
-        {
-            get
-            {
-                return _selected;
-            }
-            set
-            {
-                _selected = value;
-                UpdateColors();
-            }
-        }
-        public int Index;
-        public uint Address;
-
-        public byte ProcessGroup;
+        private BehaviorCriteria _behavior;
         public BehaviorCriteria Behavior
         {
             get
             {
                 return _behavior;
             }
-            set
-            {
-                if (_behavior == value)
-                    return;
-                _behavior = value;
-                UpdateColors();
-            }
         }
 
-        public bool IsActive
-        {
-            get
-            {
-                return _active;
-            }
-            set
-            {
-                if (_active != value)
-                {
-                    _active = value;
-                    UpdateColors();
-                }
-            }
-        }
+        bool _isActive = false;
 
-        public Image ObjectImage
-        {
-            get
-            {
-                return _objectImage;
-            }
-        }
+        private bool IsHovering;
 
-        public Color TextColor
+        public override string Text => _text;
+        Color _textColor
         {
-            get
-            {
-                return _textBrush.Color;
-            }
-            set
-            {
-                if (_textBrush.Color == value)
-                    return;
-
-                lock (_gfxLock)
-                {
-                    _textBrush.Color = value;
-                }
-                Invalidate();
-            }
-        }
-
-        public new string Text
-        {
-            get
-            {
-                return _text;
-            }
-            set
-            {
-                if (_text == value)
-                    return;
-                lock(_gfxLock)
-                {
-                    _text = value;
-                }
-                Invalidate();
-            }
-        }
-
-        public ObjectSlotsManager Manager
-        {
-            get
-            {
-                return _manager;
-            }
-        }
-
-        public override Color BackColor
-        {
-            get
-            {
-                return _mainColor;
-            }
-            set
-            {
-                _mainColor = value;
-                UpdateColors();
-            }
+            get => _textBrush.Color;
+            set { lock (_gfxLock) { _textBrush.Color = value; } }
         }
 
         bool _drawSelectedOverlay, _drawStoodOnOverlay, _drawHeldOverlay, _drawInteractionOverlay, _drawUsedOverlay,
             _drawClosestOverlay, _drawCameraOverlay, _drawCameraHackOverlay, _drawModelOverlay,
-            _drawFloorObject, _drawWallOverlay, _drawCeilingOverlay,
-            _drawParentOverlay, _drawParentUnusedOverlay, _drawParentNoneOverlay, _drawMarkedOverlay;
-        public bool DrawSelectedOverlay
-        {
-            get
-            {
-                return _drawSelectedOverlay;
-            }
-            set
-            {
-                if (_drawSelectedOverlay == value)
-                    return;
-                _drawSelectedOverlay = value;
-                Invalidate();
-            }
-        }
-        public bool DrawStoodOnOverlay
-        {
-            get
-            {
-                return _drawStoodOnOverlay;
-            }
-            set
-            {
-                if (_drawStoodOnOverlay == value)
-                    return;
-                _drawStoodOnOverlay = value;
-                Invalidate();
-            }
-        }
-        public bool DrawHeldOverlay
-        {
-            get
-            {
-                return _drawHeldOverlay;
-            }
-            set
-            {
-                if (_drawHeldOverlay == value)
-                    return;
-                _drawHeldOverlay = value;
-                Invalidate();
-            }
-        }
-        public bool DrawInteractionOverlay
-        {
-            get
-            {
-                return _drawInteractionOverlay;
-            }
-            set
-            {
-                if (_drawInteractionOverlay == value)
-                    return;
-                _drawInteractionOverlay = value;
-                Invalidate();
-            }
-        }
-        public bool DrawUsedOverlay
-        {
-            get
-            {
-                return _drawUsedOverlay;
-            }
-            set
-            {
-                if (_drawUsedOverlay == value)
-                    return;
-                _drawUsedOverlay = value;
-                Invalidate();
-            }
-        }
-        public bool DrawClosestOverlay
-        {
-            get
-            {
-                return _drawClosestOverlay;
-            }
-            set
-            {
-                if (_drawClosestOverlay == value)
-                    return;
-                _drawClosestOverlay = value;
-                Invalidate();
-            }
-        }
-        public bool DrawCameraOverlay
-        {
-            get
-            {
-                return _drawCameraOverlay;
-            }
-            set
-            {
-                if (_drawCameraOverlay == value)
-                    return;
-                _drawCameraOverlay = value;
-                Invalidate();
-            }
-        }
-        public bool DrawCameraHackOverlay
-        {
-            get
-            {
-                return _drawCameraHackOverlay;
-            }
-            set
-            {
-                if (_drawCameraHackOverlay == value)
-                    return;
-                _drawCameraHackOverlay = value;
-                Invalidate();
-            }
-        }
-        public bool DrawModelOverlay
-        {
-            get
-            {
-                return _drawModelOverlay;
-            }
-            set
-            {
-                if (_drawModelOverlay == value)
-                    return;
-                _drawModelOverlay = value;
-                Invalidate();
-            }
-        }
-        public bool DrawFloorOverlay
-        {
-            get
-            {
-                return _drawFloorObject;
-            }
-            set
-            {
-                if (_drawFloorObject == value)
-                    return;
-                _drawFloorObject = value;
-                Invalidate();
-            }
-        }
-        public bool DrawWallOverlay
-        {
-            get
-            {
-                return _drawWallOverlay;
-            }
-            set
-            {
-                if (_drawWallOverlay == value)
-                    return;
-                _drawWallOverlay = value;
-                Invalidate();
-            }
-        }
-        public bool DrawCeilingOverlay
-        {
-            get
-            {
-                return _drawCeilingOverlay;
-            }
-            set
-            {
-                if (_drawCeilingOverlay == value)
-                    return;
-                _drawCeilingOverlay = value;
-                Invalidate();
-            }
-        }
-        public bool DrawParentOverlay
-        {
-            get
-            {
-                return _drawParentOverlay;
-            }
-            set
-            {
-                if (_drawParentOverlay == value)
-                    return;
-                _drawParentOverlay = value;
-                Invalidate();
-            }
-        }
-        public bool DrawParentUnusedOverlay
-        {
-            get
-            {
-                return _drawParentUnusedOverlay;
-            }
-            set
-            {
-                if (_drawParentUnusedOverlay == value)
-                    return;
-                _drawParentUnusedOverlay = value;
-                Invalidate();
-            }
-        }
-        public bool DrawParentNoneOverlay
-        {
-            get
-            {
-                return _drawParentNoneOverlay;
-            }
-            set
-            {
-                if (_drawParentNoneOverlay == value)
-                    return;
-                _drawParentNoneOverlay = value;
-                Invalidate();
-            }
-        }
-        public bool DrawMarkedOverlay
-        {
-            get
-            {
-                return _drawMarkedOverlay;
-            }
-            set
-            {
-                if (_drawMarkedOverlay == value)
-                    return;
-                _drawMarkedOverlay = value;
-                Invalidate();
-            }
-        }
+            _drawFloorOverlay, _drawWallOverlay, _drawCeilingOverlay,
+            _drawParentOverlay, _drawParentUnusedOverlay, _drawParentNoneOverlay, _drawChildOverlay, _drawMarkedOverlay;
 
-        public ObjectSlot(int index, ObjectSlotsManager manager, ObjectSlotManagerGui gui, Size size)
+        public ObjectSlot(ObjectSlotsManager manager, int index, ObjectSlotManagerGui gui, Size size)
         {
-            Index = index;
             _manager = manager;
             _gui = gui;
             Size = size;
+            Index = index;
             Font = new Font(FontFamily.GenericSansSerif, 6);
 
             this.MouseDown += OnDrag;
-            this.MouseUp += (s, e) => { MouseState = MouseStateType.None; UpdateColors(); };
+            this.MouseUp += (s, e) => { _mouseState = _mouseEnteredState; UpdateColors(); };
             this.MouseEnter += (s, e) =>
             {
-                ObjectSlotsConfig.HoverObjectSlot = this;
-                MouseState = MouseStateType.Over;
+                IsHovering = true;
+                _manager.HoveredObjectAdress = CurrentObject?.Address;
+                _mouseEnteredState = MouseStateType.Over;
+                _mouseState = MouseStateType.Over;
                 UpdateColors();
             };
             this.MouseLeave += (s, e) =>
             {
-                ObjectSlotsConfig.HoverObjectSlot = null;
-                MouseState = MouseStateType.None;
+                IsHovering = false;
+                _manager.HoveredObjectAdress = null;
+                _mouseEnteredState = MouseStateType.None;
+                _mouseState = MouseStateType.None;
                 UpdateColors();
             };
-            this.Cursor = Cursors.Hand;
+            this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DoubleBuffered = true;
 
             SetUpContextMenuStrip();
@@ -418,67 +112,76 @@ namespace STROOP
 
         private void SetUpContextMenuStrip()
         {
-            ToolStripMenuItem itemSelect = new ToolStripMenuItem("Select");
-            itemSelect.Click += (sender, e) =>
+            ToolStripMenuItem itemSelectInObjectTab = new ToolStripMenuItem("Select in Object Tab");
+            itemSelectInObjectTab.Click += (sender, e) =>
             {
                 Config.ObjectSlotsManager.DoSlotClickUsingSpecifications(
-                    this, ObjectSlotsManager.ClickType.ObjectClick, false, false);
+                    this, ClickType.ObjectClick, false, false, TabDestinationType.Object);
             };
 
-            ToolStripMenuItem itemSelectAndSwitch = new ToolStripMenuItem("Select && Switch to Obj Tab");
-            itemSelectAndSwitch.Click += (sender, e) =>
+            ToolStripMenuItem itemSelectInMemoryTab = new ToolStripMenuItem("Select in Memory Tab");
+            itemSelectInMemoryTab.Click += (sender, e) =>
             {
                 Config.ObjectSlotsManager.DoSlotClickUsingSpecifications(
-                    this, ObjectSlotsManager.ClickType.ObjectClick, false, false, true);
-            };
-
-            ToolStripMenuItem itemSelectAndDontSwitch = new ToolStripMenuItem("Select && Don't Switch to Obj Tab");
-            itemSelectAndDontSwitch.Click += (sender, e) =>
-            {
-                Config.ObjectSlotsManager.DoSlotClickUsingSpecifications(
-                    this, ObjectSlotsManager.ClickType.ObjectClick, false, false, false);
+                    this, ClickType.MemoryClick, false, false, TabDestinationType.Memory);
             };
 
             ToolStripMenuItem itemGoto = new ToolStripMenuItem("Go to");
-            itemGoto.Click += (sender, e) => ButtonUtilities.GotoObjects(new List<uint>() { Address });
+            itemGoto.Click += (sender, e) => ButtonUtilities.GotoObjects(new List<ObjectDataModel>() { CurrentObject });
 
             ToolStripMenuItem itemRetrieve = new ToolStripMenuItem("Retrieve");
-            itemRetrieve.Click += (sender, e) => ButtonUtilities.RetrieveObjects(new List<uint>() { Address });
+            itemRetrieve.Click += (sender, e) => ButtonUtilities.RetrieveObjects(new List<ObjectDataModel>() { CurrentObject });
 
             ToolStripMenuItem itemGotoHome = new ToolStripMenuItem("Go to Home");
-            itemGotoHome.Click += (sender, e) => ButtonUtilities.GotoObjectsHome(new List<uint>() { Address });
+            itemGotoHome.Click += (sender, e) => ButtonUtilities.GotoObjectsHome(new List<ObjectDataModel>() { CurrentObject });
 
             ToolStripMenuItem itemRetrieveHome = new ToolStripMenuItem("Retrieve Home");
-            itemRetrieveHome.Click += (sender, e) => ButtonUtilities.RetrieveObjectsHome(new List<uint>() { Address });
+            itemRetrieveHome.Click += (sender, e) => ButtonUtilities.RetrieveObjectsHome(new List<ObjectDataModel>() { CurrentObject });
 
             ToolStripMenuItem itemRelease = new ToolStripMenuItem("Release");
-            itemRelease.Click += (sender, e) => ButtonUtilities.ReleaseObject(new List<uint>() { Address });
+            itemRelease.Click += (sender, e) => ButtonUtilities.ReleaseObject(new List<ObjectDataModel>() { CurrentObject });
 
             ToolStripMenuItem itemUnRelease = new ToolStripMenuItem("UnRelease");
-            itemUnRelease.Click += (sender, e) => ButtonUtilities.UnReleaseObject(new List<uint>() { Address });
+            itemUnRelease.Click += (sender, e) => ButtonUtilities.UnReleaseObject(new List<ObjectDataModel>() { CurrentObject });
 
             ToolStripMenuItem itemInteract = new ToolStripMenuItem("Interact");
-            itemInteract.Click += (sender, e) => ButtonUtilities.ReleaseObject(new List<uint>() { Address });
+            itemInteract.Click += (sender, e) => ButtonUtilities.ReleaseObject(new List<ObjectDataModel>() { CurrentObject });
 
             ToolStripMenuItem itemUnInteract = new ToolStripMenuItem("UnInteract");
-            itemUnInteract.Click += (sender, e) => ButtonUtilities.UnInteractObject(new List<uint>() { Address });
+            itemUnInteract.Click += (sender, e) => ButtonUtilities.UnInteractObject(new List<ObjectDataModel>() { CurrentObject });
 
             ToolStripMenuItem itemClone = new ToolStripMenuItem("Clone");
-            itemClone.Click += (sender, e) => ButtonUtilities.CloneObject(Address);
+            itemClone.Click += (sender, e) => ButtonUtilities.CloneObject(CurrentObject);
 
             ToolStripMenuItem itemUnClone = new ToolStripMenuItem("UnClone");
             itemUnClone.Click += (sender, e) => ButtonUtilities.UnCloneObject();
 
             ToolStripMenuItem itemUnload = new ToolStripMenuItem("Unload");
-            itemUnload.Click += (sender, e) => ButtonUtilities.UnloadObject(new List<uint>() { Address });
+            itemUnload.Click += (sender, e) => ButtonUtilities.UnloadObject(new List<ObjectDataModel>() { CurrentObject });
 
             ToolStripMenuItem itemRevive = new ToolStripMenuItem("Revive");
-            itemRevive.Click += (sender, e) => ButtonUtilities.ReviveObject(new List<uint>() { Address });
+            itemRevive.Click += (sender, e) => ButtonUtilities.ReviveObject(new List<ObjectDataModel>() { CurrentObject });
+
+            ToolStripMenuItem itemCopyAddress = new ToolStripMenuItem("Copy Address");
+            itemCopyAddress.Click += (sender, e) => Clipboard.SetText(HexUtilities.FormatValue(CurrentObject.Address));
+
+            ToolStripMenuItem itemCopyPosition = new ToolStripMenuItem("Copy Position");
+            itemCopyPosition.Click += (sender, e) => Clipboard.SetText(
+                String.Format("{0},{1},{2}", CurrentObject.X, CurrentObject.Y, CurrentObject.Z));
+
+            ToolStripMenuItem itemCopyGraphics = new ToolStripMenuItem("Copy Graphics");
+            itemCopyGraphics.Click += (sender, e) => Clipboard.SetText(HexUtilities.FormatValue(CurrentObject.GraphicsID));
+
+            ToolStripMenuItem itemPasteGraphics = new ToolStripMenuItem("Paste Graphics");
+            itemPasteGraphics.Click += (sender, e) =>
+            {
+                uint? address = ParsingUtilities.ParseHexNullable(Clipboard.GetText());
+                if (address.HasValue) CurrentObject.GraphicsID = address.Value;
+            };
 
             ContextMenuStrip = new ContextMenuStrip();
-            ContextMenuStrip.Items.Add(itemSelect);
-            ContextMenuStrip.Items.Add(itemSelectAndSwitch);
-            ContextMenuStrip.Items.Add(itemSelectAndDontSwitch);
+            ContextMenuStrip.Items.Add(itemSelectInObjectTab);
+            ContextMenuStrip.Items.Add(itemSelectInMemoryTab);
             ContextMenuStrip.Items.Add(new ToolStripSeparator());
             ContextMenuStrip.Items.Add(itemGoto);
             ContextMenuStrip.Items.Add(itemRetrieve);
@@ -494,6 +197,11 @@ namespace STROOP
             ContextMenuStrip.Items.Add(itemUnClone);
             ContextMenuStrip.Items.Add(itemUnload);
             ContextMenuStrip.Items.Add(itemRevive);
+            ContextMenuStrip.Items.Add(new ToolStripSeparator());
+            ContextMenuStrip.Items.Add(itemCopyAddress);
+            ContextMenuStrip.Items.Add(itemCopyPosition);
+            ContextMenuStrip.Items.Add(itemCopyGraphics);
+            ContextMenuStrip.Items.Add(itemPasteGraphics);
         }
 
         private void RebufferObjectImage()
@@ -535,13 +243,13 @@ namespace STROOP
             Config.ObjectAssociations.CreateCachedBufferedObjectImage(_objectImage, _bufferedObjectImage);
         }
 
-        public void UpdateColors()
+        public bool UpdateColors()
         {
             var oldBorderColor = _borderColor;
             var oldBackColor = _backColor;
             bool imageUpdated = false;
             var newColor = _mainColor;
-            switch (MouseState)
+            switch (_mouseState)
             {
                 case MouseStateType.Down:
                     _borderColor = newColor.Darken(0.5);
@@ -556,7 +264,7 @@ namespace STROOP
                     _backColor = newColor.Lighten(0.7);
                     break;
             }
-            Image newImage = Config.ObjectAssociations.GetObjectImage(_behavior, !_active);
+            Image newImage = Config.ObjectAssociations.GetObjectImage(_behavior, !_isActive);
             if (_objectImage != newImage)
             {
                 lock (_gfxLock)
@@ -580,47 +288,45 @@ namespace STROOP
                 }
             }
 
-            SelectionType newSelectionType;
-            switch (_manager.ActiveTab)
-            {
-                case ObjectSlotsManager.TabType.Map:
-                    newSelectionType = Show ? SelectionType.MAP_SELECTION 
-                        : SelectionType.NOT_SELECTED;
-                    break;
 
-                case ObjectSlotsManager.TabType.Model:
-                    newSelectionType = DrawModelOverlay ? SelectionType.MODEL_SELECTION
-                        : SelectionType.NOT_SELECTED;
-                    break;
-
-                case ObjectSlotsManager.TabType.CamHack:
-                    newSelectionType = SelectionType.NOT_SELECTED;
-                    break;
-
-                default:
-                    newSelectionType = DrawSelectedOverlay ? SelectionType.NORMAL_SELECTION 
-                        : SelectionType.NOT_SELECTED;
-                    break;
-            }
-
-            bool selectionTypeUpdated = newSelectionType != _selectionType;
-            _selectionType = newSelectionType;
-
-            if (!imageUpdated && !colorUpdated && !selectionTypeUpdated)
-                return;
+            if (!imageUpdated && !colorUpdated)
+                return false;
 
             Invalidate();
+            return true;
         }
 
-        private void OnDrag(object sender, MouseEventArgs e)
+        private void OnDrag(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left) return;
-            MouseState = MouseStateType.Down;
+            _mouseState = MouseStateType.Down;
             UpdateColors();
-            Refresh();
         }
 
-        int _fontHeight;
+        private List<bool> GetCurrentOverlayValues()
+        {
+            return new List<bool>()
+            {
+                _drawSelectedOverlay,
+                _drawStoodOnOverlay,
+                _drawInteractionOverlay,
+                _drawHeldOverlay,
+                _drawUsedOverlay,
+                _drawClosestOverlay,
+                _drawCameraOverlay,
+                _drawCameraHackOverlay,
+                _drawModelOverlay,
+                _drawWallOverlay,
+                _drawFloorOverlay,
+                _drawCeilingOverlay,
+                _drawParentOverlay,
+                _drawParentUnusedOverlay,
+                _drawParentNoneOverlay,
+                _drawChildOverlay,
+                _drawMarkedOverlay,
+            };
+        }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             e.Graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
@@ -647,7 +353,7 @@ namespace STROOP
                 // Draw Text
                 e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixel;
                 var textLocation = new Point(Width + 1, Height - BorderSize - _fontHeight + 1);
-                TextRenderer.DrawText(e.Graphics, Text, Font, textLocation, TextColor, TextFormatFlags.HorizontalCenter | TextFormatFlags.Top);
+                TextRenderer.DrawText(e.Graphics, _text, Font, textLocation, _textColor, TextFormatFlags.HorizontalCenter | TextFormatFlags.Top);
                 if (textLocation != _textLocation)
                 {
                     _textLocation = textLocation;
@@ -691,7 +397,7 @@ namespace STROOP
             }
             if (_drawWallOverlay)
                 e.Graphics.DrawImage(_gui.WallObjectOverlayImage, new Rectangle(new Point(), Size));
-            if (_drawFloorObject)
+            if (_drawFloorOverlay)
                 e.Graphics.DrawImage(_gui.FloorObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawCeilingOverlay)
                 e.Graphics.DrawImage(_gui.CeilingObjectOverlayImage, new Rectangle(new Point(), Size));
@@ -715,8 +421,207 @@ namespace STROOP
                 e.Graphics.DrawImage(_gui.ParentUnusedObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawParentNoneOverlay)
                 e.Graphics.DrawImage(_gui.ParentNoneObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawChildOverlay)
+                e.Graphics.DrawImage(_gui.ChildObjectOverlayImage, new Rectangle(new Point(), Size));
         }
 
+        public void Update(ObjectDataModel obj)
+        {
+            CurrentObject = obj;
 
+            uint? address = CurrentObject?.Address;
+
+            // Update Overlays
+            List<bool> prevOverlays = GetCurrentOverlayValues();
+            if (address.HasValue)
+            {
+                _drawSelectedOverlay = _manager.SelectedSlotsAddresses.Contains(address.Value);
+                _drawStoodOnOverlay = OverlayConfig.ShowOverlayStoodOnObject && address == DataModels.Mario.StoodOnObject;
+                _drawInteractionOverlay = OverlayConfig.ShowOverlayInteractionObject && address == DataModels.Mario.InteractionObject;
+                _drawHeldOverlay = OverlayConfig.ShowOverlayHeldObject && address == DataModels.Mario.HeldObject;
+                _drawUsedOverlay = OverlayConfig.ShowOverlayUsedObject && address == DataModels.Mario.UsedObject;
+                _drawClosestOverlay = OverlayConfig.ShowOverlayClosestObject && address == DataModels.Mario.ClosestObject;
+                _drawCameraOverlay = OverlayConfig.ShowOverlayCameraObject && address == DataModels.Camera.SecondaryObject;
+                _drawCameraHackOverlay = OverlayConfig.ShowOverlayCameraHackObject && address == DataModels.Camera.HackObject;
+                _drawModelOverlay = address == Config.ModelManager.ModelObjectAddress;
+                _drawWallOverlay = OverlayConfig.ShowOverlayWallObject && address == DataModels.Mario.WallTriangle?.AssociatedObject;
+                _drawFloorOverlay = OverlayConfig.ShowOverlayFloorObject && address == DataModels.Mario.FloorTriangle?.AssociatedObject;
+                _drawCeilingOverlay = OverlayConfig.ShowOverlayCeilingObject && address == DataModels.Mario.CeilingTriangle?.AssociatedObject;
+
+                uint? hoveredAddress = Config.ObjectSlotsManager.HoveredObjectAdress;
+                if (hoveredAddress.HasValue)
+                {
+                    ObjectDataModel hoveredObject = new ObjectDataModel(hoveredAddress.Value);
+                    _drawParentOverlay = (OverlayConfig.ShowOverlayParentObject || Keyboard.IsKeyDown(Key.P)) &&
+                        address == hoveredObject.Parent;
+                    _drawParentNoneOverlay = (OverlayConfig.ShowOverlayParentObject || Keyboard.IsKeyDown(Key.P)) &&
+                        address == hoveredObject.Address &&
+                        hoveredObject.Parent == 0;
+                    _drawParentUnusedOverlay = (OverlayConfig.ShowOverlayParentObject || Keyboard.IsKeyDown(Key.P)) &&
+                        address == hoveredObject.Address &&
+                        hoveredObject.Parent == ObjectSlotsConfig.UnusedSlotAddress;
+                    _drawChildOverlay = (OverlayConfig.ShowOverlayParentObject || Keyboard.IsKeyDown(Key.P)) &&
+                        CurrentObject?.Parent == hoveredObject.Address;
+                }
+
+                _drawMarkedOverlay = _manager.MarkedSlotsAddresses.Contains(address.Value);
+            }
+            else
+            {
+                _drawSelectedOverlay = false;
+                _drawStoodOnOverlay = false;
+                _drawInteractionOverlay = false;
+                _drawHeldOverlay = false;
+                _drawUsedOverlay = false;
+                _drawClosestOverlay = false;
+                _drawCameraOverlay = false;
+                _drawCameraHackOverlay = false;
+                _drawModelOverlay = false;
+                _drawWallOverlay = false;
+                _drawFloorOverlay = false;
+                _drawCeilingOverlay = false;
+                _drawParentOverlay = false;
+                _drawParentUnusedOverlay = false;
+                _drawParentNoneOverlay = false;
+                _drawChildOverlay = false;
+                _drawMarkedOverlay = false;
+            }
+            List<bool> overlays = GetCurrentOverlayValues();
+
+            SelectionType selectionType;
+            switch (_manager.ActiveTab)
+            {
+                case ObjectSlotsManager.TabType.Map:
+                    selectionType = Show ? SelectionType.MAP_SELECTION
+                        : SelectionType.NOT_SELECTED;
+                    break;
+
+                case ObjectSlotsManager.TabType.Model:
+                    selectionType = CurrentObject?.Address == Config.ModelManager.ModelObjectAddress
+                        ? SelectionType.MODEL_SELECTION : SelectionType.NOT_SELECTED;
+                    break;
+
+                case ObjectSlotsManager.TabType.CamHack:
+                    selectionType = SelectionType.NOT_SELECTED;
+                    break;
+
+                default:
+                    selectionType = CurrentObject != null && _manager.SelectedSlotsAddresses.Contains(CurrentObject.Address)
+                        ? SelectionType.NORMAL_SELECTION : SelectionType.NOT_SELECTED;
+                    break;
+            }
+
+            Color mainColor = ObjectSlotsConfig.GetProcessingGroupColor(CurrentObject?.CurrentProcessGroup);
+            Color textColor = _manager.LabelsLocked ? Color.Blue : Color.Black;
+            string text = CurrentObject != null ? _manager.SlotLabelsForObjects[CurrentObject] : "";
+
+            // Update UI element
+
+            bool updateColors = false;
+            bool redraw = false;
+
+            if (text != _text)
+            {
+                _text = text;
+                redraw = true;
+            }
+            if (textColor != _textColor)
+            {
+                _textColor = textColor;
+                redraw = true;
+            }
+            if (mainColor != _mainColor)
+            {
+                _mainColor = mainColor;
+                updateColors = true;
+            }
+
+            if (_selectionType != selectionType)
+            {
+                _selectionType = selectionType;
+                redraw = true;
+            }
+
+            if (_behavior != (CurrentObject?.BehaviorCriteria ?? default(BehaviorCriteria)))
+            {
+                _behavior = CurrentObject?.BehaviorCriteria ?? default(BehaviorCriteria);
+                updateColors = true;
+            }
+            if (_isActive != (CurrentObject?.IsActive ?? false))
+            {
+                _isActive = CurrentObject?.IsActive ?? false;
+                updateColors = true;
+            }         
+            if (!overlays.SequenceEqual(prevOverlays))
+                redraw = true;
+
+            if (updateColors)
+            {
+                if (UpdateColors())
+                    redraw = false; // UpdateColors already calls refresh
+            }
+
+            if (redraw)
+                Invalidate();
+
+            UpdateMapObject();
+        }
+
+        private void UpdateMapObject()
+        {
+            if (!Config.Map2Manager.IsLoaded || CurrentObject == null)
+                return;
+
+            Dictionary<uint, Map2Object> _mapObjects = Config.Map2Manager._mapObjectDictionary;
+            BehaviorCriteria behaviorCriteria = CurrentObject.BehaviorCriteria;
+            uint objAddress = CurrentObject.Address;
+
+            // Update image
+            var mapObjImage = Config.ObjectAssociations.GetObjectMapImage(behaviorCriteria);
+            var mapObjRotates = Config.ObjectAssociations.GetObjectMapRotates(behaviorCriteria);
+            if (!_mapObjects.ContainsKey(objAddress))
+            {
+                var mapObj = new Map2Object(mapObjImage);
+                mapObj.UsesRotation = mapObjRotates;
+                _mapObjects.Add(objAddress, mapObj);
+                Config.Map2Manager.AddMapObject(mapObj);
+            }
+            else if (_mapObjects[objAddress].Image != mapObjImage)
+            {
+                Config.Map2Manager.RemoveMapObject(_mapObjects[objAddress]);
+                var mapObj = new Map2Object(mapObjImage);
+                mapObj.UsesRotation = mapObjRotates;
+                _mapObjects[objAddress] = mapObj;
+                Config.Map2Manager.AddMapObject(mapObj);
+            }
+            
+            if (CurrentObject.SegmentedBehavior ==
+                   (Config.ObjectAssociations.MarioBehavior & 0x00FFFFFF) +
+                   Config.ObjectAssociations.BehaviorBankStart)
+            {
+                _mapObjects[objAddress].Show = false;
+            }
+            else
+            {
+                // Update map object coordinates and rotation
+                var mapObj = _mapObjects[objAddress];
+                mapObj.Show = Config.ObjectSlotsManager.SelectedOnMapSlotsAddresses.Contains(objAddress);
+                Show = _mapObjects[objAddress].Show;
+                mapObj.X = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
+                mapObj.Y = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
+                mapObj.Z = Config.Stream.GetSingle(objAddress + ObjectConfig.ZOffset);
+                mapObj.IsActive = CurrentObject.IsActive;
+                mapObj.Transparent = !mapObj.IsActive;
+                ushort objYaw = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset);
+                mapObj.Rotation = (float)MoreMath.AngleUnitsToDegrees(objYaw);
+                mapObj.UsesRotation = Config.ObjectAssociations.GetObjectMapRotates(behaviorCriteria);
+            }
+        }
+
+        public override string ToString()
+        {
+            string objectString = CurrentObject?.ToString() ?? "(no object)";
+            return objectString + " " + _text;
+        }
     }
 }

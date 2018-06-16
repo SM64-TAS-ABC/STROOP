@@ -10,7 +10,7 @@ namespace STROOP.Structs
 {
     public class ObjectBehaviorAssociation
     {
-        public BehaviorCriteria BehaviorCriteria;
+        public BehaviorCriteria Criteria;
 
         public string Name;
         public bool RotatesOnMap;
@@ -38,7 +38,7 @@ namespace STROOP.Structs
 
         public bool MeetsCriteria(BehaviorCriteria behaviorCriteria)
         {
-            return BehaviorCriteria.CongruentTo(behaviorCriteria);
+            return Criteria.CongruentTo(behaviorCriteria);
         }
 
         public override bool Equals(object obj)
@@ -52,24 +52,32 @@ namespace STROOP.Structs
 
         public override int GetHashCode()
         {
-            return BehaviorCriteria.GetHashCode();
+            return Criteria.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
 
         public static bool operator ==(ObjectBehaviorAssociation a, ObjectBehaviorAssociation b)
         {
             if (object.ReferenceEquals(a, null))
-            {
                 return object.ReferenceEquals(b, null);
-            }
             else if (object.ReferenceEquals(b, null))
                 return false;
 
-            return a.BehaviorCriteria == b.BehaviorCriteria;
+            return a.Criteria == b.Criteria;
         }
 
         public static bool operator !=(ObjectBehaviorAssociation a, ObjectBehaviorAssociation b)
         {
-            return !(a == b);
+            if (object.ReferenceEquals(a, null))
+                return !object.ReferenceEquals(b, null);
+            else if (object.ReferenceEquals(b, null))
+                return true;
+
+            return a.Criteria != b.Criteria;
         }
     }
 }

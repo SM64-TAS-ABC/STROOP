@@ -20,9 +20,13 @@ namespace STROOP.Controls
 
         private static readonly int MAX_ROUNDING_LIMIT = 10;
 
-        private int? _roundingLimit;
-        private bool _displayAsHex;
-        private bool _displayAsNegated;
+        private readonly int _defaultRoundingLimit;
+        private int _roundingLimit;
+        private Action<int> _setRoundingLimit;
+
+        protected readonly bool _defaultDisplayAsHex;
+        protected bool _displayAsHex;
+        protected Action<bool> _setDisplayAsHex;
 
         public WatchVariableNumberWrapper(
             WatchVariable watchVar,
@@ -33,14 +37,13 @@ namespace STROOP.Controls
             WatchVariableCoordinate? coordinate = null)
             : base(watchVar, watchVarControl, useCheckbox)
         {
-            if (roundingLimit.HasValue)
-            {
-                roundingLimit = MoreMath.Clamp(roundingLimit.Value, 0, MAX_ROUNDING_LIMIT);
-            }
+            _defaultRoundingLimit = roundingLimit ?? DEFAULT_ROUNDING_LIMIT;
+            _roundingLimit = _defaultRoundingLimit;
+            if (_roundingLimit < -1 || _roundingLimit > MAX_ROUNDING_LIMIT)
+                throw new ArgumentOutOfRangeException();
 
-            _roundingLimit = roundingLimit;
-            _displayAsHex = displayAsHex ?? DEFAULT_DISPLAY_AS_HEX;
-            _displayAsNegated = false;
+            _defaultDisplayAsHex = displayAsHex ?? DEFAULT_DISPLAY_AS_HEX;
+            _displayAsHex = _defaultDisplayAsHex;
 
             AddCoordinateContextMenuStripItems();
             AddNumberContextMenuStripItems();
@@ -51,34 +54,26 @@ namespace STROOP.Controls
         private void AddNumberContextMenuStripItems()
         {
             ToolStripMenuItem itemRoundTo = new ToolStripMenuItem("Round to ...");
-            List<int> roundingLimitNumbers = Enumerable.Range(0, MAX_ROUNDING_LIMIT + 1).ToList();
-            ControlUtilities.AddDropDownItems(
+            List<int> roundingLimitNumbers = Enumerable.Range(-1, MAX_ROUNDING_LIMIT + 2).ToList();
+            _setRoundingLimit = ControlUtilities.AddCheckableDropDownItems(
                 itemRoundTo,
-                new List<string>() { "No rounding" }.Concat(roundingLimitNumbers.ConvertAll(i => i + " decimal place(s)")).ToList(),
-                new List<object>() { null }.Concat(roundingLimitNumbers.ConvertAll(i => (object)i)).ToList(),
-                (object obj) => { _roundingLimit = (int?)obj; },
+                roundingLimitNumbers.ConvertAll(i => i == -1 ? "No Rounding" : i + " decimal place(s)"),
+                roundingLimitNumbers,
+                (int roundingLimit) => { _roundingLimit = roundingLimit; },
                 _roundingLimit);
 
             ToolStripMenuItem itemDisplayAsHex = new ToolStripMenuItem("Display as Hex");
-            itemDisplayAsHex.Click += (sender, e) =>
+            _setDisplayAsHex = (bool displayAsHex) =>
             {
-                _displayAsHex = !_displayAsHex;
-                itemDisplayAsHex.Checked = _displayAsHex;
+                _displayAsHex = displayAsHex;
+                itemDisplayAsHex.Checked = displayAsHex;
             };
+            itemDisplayAsHex.Click += (sender, e) => _setDisplayAsHex(!_displayAsHex);
             itemDisplayAsHex.Checked = _displayAsHex;
-
-            ToolStripMenuItem itemDisplayAsNegated = new ToolStripMenuItem("Display as Negated");
-            itemDisplayAsNegated.Click += (sender, e) =>
-            {
-                _displayAsNegated = !_displayAsNegated;
-                itemDisplayAsNegated.Checked = _displayAsNegated;
-            };
-            itemDisplayAsNegated.Checked = _displayAsNegated;
 
             _contextMenuStrip.AddToBeginningList(new ToolStripSeparator());
             _contextMenuStrip.AddToBeginningList(itemRoundTo);
             _contextMenuStrip.AddToBeginningList(itemDisplayAsHex);
-            _contextMenuStrip.AddToBeginningList(itemDisplayAsNegated);
         }
 
         private void AddCoordinateContextMenuStripItems()
@@ -99,13 +94,15 @@ namespace STROOP.Controls
 
         public void EnableCoordinateContextMenuStripItemFunctionality(List<WatchVariableNumberWrapper> coordinateVarList)
         {
-            if (coordinateVarList.Count != 3) throw new ArgumentOutOfRangeException();
+            int coordinateCount = coordinateVarList.Count;
+            if (coordinateCount != 2 && coordinateCount != 3)
+                throw new ArgumentOutOfRangeException();
 
             Action<string> copyCoordinatesWithSeparator = (string separator) =>
             {
                 Clipboard.SetText(
                     String.Join(separator, coordinateVarList.ConvertAll(
-                        coord => coord.GetStringValue(false))));
+                        coord => coord.GetValue(false))));
             };
 
             ToolStripMenuItem itemCopyCoordinatesCommas = new ToolStripMenuItem("Copy Coordinates with Commas");
@@ -123,14 +120,15 @@ namespace STROOP.Controls
 
             _itemPasteCoordinates.Click += (sender, e) =>
             {
-                List<string> stringList = ParsingUtilities.ParseTextIntoStrings(Clipboard.GetText());
-                if (stringList.Count < 3) return;
+                List<string> stringList = ParsingUtilities.ParseStringList(Clipboard.GetText());
+                int stringCount = stringList.Count;
+                if (stringCount != 2 && stringCount != 3) return;
 
                 Config.Stream.Suspend();
-                for (int i = 0; i < 3; i++)
-                {
-                    coordinateVarList[i].SetStringValue(stringList[i]);
-                }
+                coordinateVarList[0]._watchVarControl.SetValue(stringList[0]);
+                if (coordinateCount == 3 && stringCount == 3)
+                    coordinateVarList[1]._watchVarControl.SetValue(stringList[1]);
+                coordinateVarList[coordinateCount - 1]._watchVarControl.SetValue(stringList[stringCount - 1]);
                 Config.Stream.Resume();
             };
 
@@ -141,67 +139,43 @@ namespace STROOP.Controls
 
 
 
-        protected override string HandleRounding(string stringValue)
+        protected override void HandleVerification(object value)
         {
-            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-            if (!doubleValueNullable.HasValue) return stringValue;
-            double doubleValue = doubleValueNullable.Value;
-            if (_roundingLimit.HasValue) doubleValue = Math.Round(doubleValue, _roundingLimit.Value);
-            return doubleValue.ToString();
+            base.HandleVerification(value);
+            if (!TypeUtilities.IsNumber(value))
+                throw new ArgumentOutOfRangeException(value + " is not a number");
         }
 
-        protected override string HandleNegating(string stringValue)
+        protected override object HandleRounding(object value, bool handleRounding)
         {
-            double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(stringValue);
-            if (!doubleValueNullable.HasValue) return stringValue;
-            double doubleValue = doubleValueNullable.Value;
-            if (_displayAsNegated) doubleValue = -1 * doubleValue;
-            return doubleValue.ToString();
-        }
-
-        protected override string HandleUnnegating(string stringValue)
-        {
-            return HandleNegating(stringValue);
-        }
-
-        protected override string HandleHexDisplaying(string stringValue)
-        {
-            if (!_displayAsHex) return stringValue;
-
-            int? numHexDigits = GetHexDigitCount();
-            string stringHexDigits = numHexDigits?.ToString() ?? "";
-
-            int? intValueNullable = ParsingUtilities.ParseIntNullable(stringValue);
-            if (intValueNullable.HasValue)
+            int? roundingLimit = handleRounding && _roundingLimit >= 0 ? _roundingLimit : (int?)null;
+            double doubleValue = Convert.ToDouble(value);
+            double roundedValue = roundingLimit.HasValue
+                ? Math.Round(doubleValue, roundingLimit.Value)
+                : doubleValue;
+            if (SavedSettingsConfig.DontRoundValuesToZero &&
+                roundedValue == 0 && doubleValue != 0)
             {
-                string hexFormat = String.Format("{0:X" + stringHexDigits + "}", intValueNullable.Value);
-                if (numHexDigits.HasValue && hexFormat.Length > numHexDigits.Value)
-                {
-                    hexFormat = hexFormat.Substring(hexFormat.Length - numHexDigits.Value);
-                }
-                return "0x" + hexFormat;
+                // Specially print values near zero
+                string digitsString = roundingLimit?.ToString() ?? "";
+                return doubleValue.ToString("E" + digitsString);
             }
-
-            uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(stringValue);
-            if (uintValueNullable.HasValue)
-            {
-                string hexFormat = String.Format("{0:X" + stringHexDigits + "}", uintValueNullable.Value);
-                if (numHexDigits.HasValue && hexFormat.Length > numHexDigits.Value)
-                {
-                    hexFormat = hexFormat.Substring(hexFormat.Length - numHexDigits.Value);
-                }
-                return "0x" + hexFormat;
-            }
-
-            return stringValue;
+            return roundedValue;
         }
 
-        protected override string HandleHexUndisplaying(string value)
+        protected override object HandleHexDisplaying(object value)
         {
-            if (value != null && value.Length >= 2 && value.Substring(0,2) == "0x")
+            if (!_displayAsHex) return value;
+            return HexUtilities.FormatValue(value, GetHexDigitCount(), true);
+        }
+
+        protected override object HandleHexUndisplaying(object value)
+        {
+            string stringValue = value.ToString();
+            if (stringValue.Length >= 2 && stringValue.Substring(0,2) == "0x")
             {
-                uint? parsed = ParsingUtilities.ParseHexNullable(value);
-                if (parsed != null) return parsed.ToString();
+                uint? parsed = ParsingUtilities.ParseHexNullable(stringValue);
+                if (parsed != null) return parsed.Value;
             }
             return value;
         }
@@ -214,6 +188,24 @@ namespace STROOP.Controls
         protected override bool GetUseHex()
         {
             return _displayAsHex;
+        }
+
+        public override void ApplySettings(WatchVariableControlSettings settings)
+        {
+            base.ApplySettings(settings);
+            if (settings.ChangeRoundingLimit && _roundingLimit != 0)
+            {
+                if (settings.ChangeRoundingLimitToDefault)
+                    _setRoundingLimit(_defaultRoundingLimit);
+                else
+                    _setRoundingLimit(settings.NewRoundingLimit);
+            }
+        }
+
+        public override void ToggleDisplayAsHex(bool? displayAsHexNullable = null)
+        {
+            bool displayAsHex = displayAsHexNullable ?? !_displayAsHex;
+            _setDisplayAsHex(displayAsHex);
         }
     }
 }

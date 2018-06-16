@@ -25,8 +25,8 @@ namespace STROOP.Managers
         CheckBox _stageSelectCheckbox;
         CheckBox _freeMovementCheckbox;
 
-        public DebugManager(List<WatchVariableControlPrecursor> variables, Control tabControl, WatchVariablePanel variableTable)
-            : base(variables, variableTable)
+        public DebugManager(string varFilePath, Control tabControl, WatchVariableFlowLayoutPanel variableTable)
+            : base(varFilePath, variableTable)
         {
             SplitContainer splitContainerDebug = tabControl.Controls["splitContainerDebug"] as SplitContainer;
 

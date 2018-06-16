@@ -1,181 +1,294 @@
-﻿using STROOP.Forms;
-using STROOP.Structs;
-using STROOP.Structs.Configurations;
-using STROOP.Utilities;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using STROOP.Structs;
+using STROOP.Utilities;
+using System.Xml.Linq;
+using STROOP.Structs.Configurations;
+using System.Drawing.Drawing2D;
 
 namespace STROOP.Controls
 {
-    public class VarHackContainer : TableLayoutPanel
+    public partial class VarHackContainer : UserControl
     {
-        private CheckBox checkBoxUsePointer;
-        private CheckBox checkBoxNoNumber;
-        private BetterTextbox textBoxNameValue;
-        private BetterTextbox textBoxNameLabel;
-        private BetterTextbox textBoxAddressLabel;
-        private BetterTextbox textBoxAddressValue;
-        private BetterTextbox textBoxPointerOffsetLabel;
-        private BetterTextbox textBoxPointerOffsetValue;
-        private BetterTextbox textBoxXPosLabel;
-        private BetterTextbox textBoxXPosValue;
-        private BetterTextbox textBoxYPosValue;
-        private BetterTextbox textBoxYPosLabel;
-        private CheckBox checkBoxUseHex;
-        private RadioButton radioButtonSByte;
-        private RadioButton radioButtonByte;
-        private RadioButton radioButtonShort;
-        private RadioButton radioButtonUShort;
-        private RadioButton radioButtonInt;
-        private RadioButton radioButtonUInt;
-        private RadioButton radioButtonFloat;
-        private PictureBox pictureBoxUpArrow;
-        private PictureBox pictureBoxDownArrow;
-        private PictureBox pictureBoxRedX;
+        private readonly VarHackFlowLayoutPanel _varHackPanel;
 
+        private string _specialType;
+        private bool _isSpecial;
         private Func<string> _getterFunction;
 
-        private static readonly Pen _borderPen = new Pen(Color.Black, 3);
-
-        private readonly VarHackPanel _varHackPanel;
-
-        public VarHackContainer(VarHackPanel varHackPanel, int creationIndex, bool usePreWrittenVar)
+        private VarHackContainer(
+            VarHackFlowLayoutPanel varHackPanel,
+            int creationIndex,
+            bool useDefaults,
+            string specialTypeIn,
+            bool? noNumIn,
+            string varNameIn,
+            uint? addressIn,
+            Type memoryTypeIn,
+            bool? useHexIn,
+            uint? pointerOffsetIn,
+            int? xPosIn,
+            int? yPosIn)
         {
             InitializeComponent();
-            _varHackPanel = varHackPanel;
-            _getterFunction = null;
+            tableLayoutPanelVarHack.BorderWidth = 2;
+            tableLayoutPanelVarHack.ShowBorder = true;
 
+            _varHackPanel = varHackPanel;
+            VarHackContainerDefaults defaults = new VarHackContainerDefaults(creationIndex);
+
+            string specialType = useDefaults ? defaults.SpecialType : specialTypeIn;
+            bool noNum = useDefaults ? defaults.NoNum : (noNumIn ?? VarHackContainerDefaults.StaticNoNum);
+            string varName = useDefaults ? defaults.VarName : (varNameIn ?? VarHackContainerDefaults.StaticVarName);
+            uint address = useDefaults ? defaults.Address : (addressIn ?? VarHackContainerDefaults.StaticAddres);
+            Type memoryType = useDefaults ? defaults.MemoryType : (memoryTypeIn ?? VarHackContainerDefaults.StaticMemoryType);
+            bool useHex = useDefaults ? defaults.UseHex : (useHexIn ?? VarHackContainerDefaults.StaticUseHex);
+            uint? tempPointerOffset = useDefaults ? defaults.PointerOffset : pointerOffsetIn;
+            bool usePointer = tempPointerOffset.HasValue;
+            uint pointerOffset = tempPointerOffset ?? VarHackContainerDefaults.StaticPointerOffset;
+            int xPos = (useDefaults || !xPosIn.HasValue) ? defaults.XPos : xPosIn.Value;
+            int yPos = (useDefaults || !yPosIn.HasValue) ? defaults.YPos : yPosIn.Value;
+
+            // Special
+            _specialType = specialType;
+            _isSpecial = specialType != null;
+            if (_isSpecial) (varName, _getterFunction) =
+                    VarHackSpecialUtilities.CreateGetterFunction(specialType);
+
+            // Misc
+            textBoxNameValue.Text = varName;
+            textBoxAddressValue.Text = "0x" + String.Format("{0:X}", address);
+            GetRadioButtonForType(memoryType).Checked = true;
+            checkBoxUseHex.Checked = useHex;
+            checkBoxNoNumber.Checked = noNum;
+
+            // Pointer
+            checkBoxUsePointer.Checked = usePointer;
+            textBoxPointerOffsetValue.Enabled = usePointer;
+            textBoxPointerOffsetValue.Text = "0x" + String.Format("{0:X}", pointerOffset);
+
+            // Position
+            textBoxXPosValue.Text = xPos.ToString();
+            textBoxYPosValue.Text = yPos.ToString();
+
+            // Clicking functionality
             pictureBoxUpArrow.Click += (sender, e) => _varHackPanel.MoveUpControl(this);
             pictureBoxDownArrow.Click += (sender, e) => _varHackPanel.MoveDownControl(this);
             pictureBoxRedX.Click += (sender, e) => _varHackPanel.RemoveControl(this);
             checkBoxUsePointer.Click += (sender, e) => textBoxPointerOffsetValue.Enabled = checkBoxUsePointer.Checked;
 
-            SetDefaultValues(creationIndex, usePreWrittenVar);
+            // Pressing enter functionality
+            textBoxNameValue.AddEnterAction(() => _varHackPanel.ApplyVariableToMemory(this));
+            textBoxAddressValue.AddEnterAction(() => _varHackPanel.ApplyVariableToMemory(this));
+            textBoxPointerOffsetValue.AddEnterAction(() => _varHackPanel.ApplyVariableToMemory(this));
+            textBoxXPosValue.AddEnterAction(() => _varHackPanel.ApplyVariableToMemory(this));
+            textBoxYPosValue.AddEnterAction(() => _varHackPanel.ApplyVariableToMemory(this));
+
+            // Context menu strip
+            ContextMenuStrip = new ContextMenuStrip();
+            ToolStripMenuItem itemDuplicate = new ToolStripMenuItem("Duplicate");
+            itemDuplicate.Click += (sender, e) => _varHackPanel.DuplicateControl(this);
+            ContextMenuStrip.Items.Add(itemDuplicate);
+            ToolStripMenuItem itemConvertToHexIntVersions = new ToolStripMenuItem("Convert to Hex Int Versions");
+            itemConvertToHexIntVersions.Click += (sender, e) => _varHackPanel.ConvertToHexIntVersions(this);
+            ContextMenuStrip.Items.Add(itemConvertToHexIntVersions);
         }
 
-        public VarHackContainer(
-            VarHackPanel varHackPanel,
+        public static VarHackContainer CreateDefault(
+            VarHackFlowLayoutPanel varHackPanel,
+            int creationIndex)
+        {
+            return new VarHackContainer(
+                varHackPanel,
+                creationIndex,
+                true /* useDefaults */,
+                null /* specialTypeIn */,
+                null /* noNumIn */,
+                null /* varNameIn */,
+                null /* addressIn */,
+                null /* memoryTypeIn */,
+                null /* useHexIn */,
+                null /* pointerOffsetIn */,
+                null /* xPosIn */,
+                null /* yPosIn */);
+        }
+
+        public static VarHackContainer CreateWithParameters(
+            VarHackFlowLayoutPanel varHackPanel,
             int creationIndex,
             string varName,
             uint address,
             Type memoryType,
             bool useHex,
             uint? pointerOffset)
-            : this(varHackPanel, creationIndex, false)
         {
-            textBoxNameValue.Text = varName + " ";
-            textBoxAddressValue.Text = "0x" + String.Format("{0:X}", address);
-            GetRadioButtonForType(memoryType).Checked = true;
-            checkBoxUseHex.Checked = useHex;
-
-            if (pointerOffset.HasValue)
-            {
-                checkBoxUsePointer.Checked = true;
-                textBoxPointerOffsetValue.Enabled = true;
-                textBoxPointerOffsetValue.Text = "0x" + String.Format("{0:X}", pointerOffset.Value);
-            }
+            return new VarHackContainer(
+                varHackPanel,
+                creationIndex,
+                false /* useDefaults */,
+                null /* specialTypeIn */,
+                false /* noNumIn */,
+                varName,
+                address,
+                memoryType,
+                useHex,
+                pointerOffset,
+                null /* xPosIn */,
+                null /* yPosIn */);
         }
 
-        public VarHackContainer(
-            VarHackPanel varHackPanel,
+        public static VarHackContainer CreateSpecial(
+            VarHackFlowLayoutPanel varHackPanel,
             int creationIndex,
-            Func<string> getterFunction)
-            : this(varHackPanel, creationIndex, false)
+            string specialType)
         {
-            _getterFunction = getterFunction;
-            checkBoxNoNumber.Checked = true;
+            return new VarHackContainer(
+                varHackPanel,
+                creationIndex,
+                false /* useDefaults */,
+                specialType,
+                true /* noNumIn */,
+                null /* varNameIn */,
+                null /* addressIn */,
+                null /* memoryTypeIn */,
+                null /* useHexIn */,
+                null /* pointerOffsetIn */,
+                null /* xPosIn */,
+                null /* yPosIn */);
         }
 
-        private void SetDefaultValues(int creationIndex, bool usePreWrittenVar)
+        public static VarHackContainer CreateFromXml(
+            VarHackFlowLayoutPanel varHackPanel,
+            XElement element)
         {
-            int xPos = VarHackConfig.DefaultXPos;
-            int yPos = VarHackConfig.DefaultYPos - creationIndex * VarHackConfig.DefaultYDelta;
-            textBoxXPosValue.Text = xPos.ToString();
-            textBoxYPosValue.Text = yPos.ToString();
-            if (!usePreWrittenVar) return;
+            int xPos = ParsingUtilities.ParseInt(element.Attribute(XName.Get("xPos")).Value);
+            int yPos = ParsingUtilities.ParseInt(element.Attribute(XName.Get("yPos")).Value);
 
-            string name;
-            uint address;
-            RadioButton typeRadioButton;
-            bool useHex = false;
-            bool usePointer = false;
-            uint pointerOffset = 0;
-
-            switch (creationIndex)
+            string specialType = element.Attribute(XName.Get("specialType"))?.Value;
+            if (specialType != null)
             {
-                case 0:
-                    name = "HSPD ";
-                    address = MarioConfig.StructAddress + MarioConfig.HSpeedOffset;
-                    typeRadioButton = radioButtonFloat;
-                    break;
-                case 1:
-                    name = "Angle ";
-                    address = MarioConfig.StructAddress + MarioConfig.YawFacingOffset;
-                    typeRadioButton = radioButtonUShort;
-                    break;
-                case 2:
-                    name = "HP ";
-                    address = MarioConfig.StructAddress + HudConfig.HpCountOffset;
-                    typeRadioButton = radioButtonShort;
-                    useHex = true;
-                    break;
-                case 3:
-                    name = "Floor Room ";
-                    address = MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset;
-                    typeRadioButton = radioButtonByte;
-                    usePointer = true;
-                    pointerOffset = 0x05;
-                    break;
-                case 4:
-                    name = "X ";
-                    address = MarioConfig.StructAddress + MarioConfig.XOffset;
-                    typeRadioButton = radioButtonFloat;
-                    break;
-                case 5:
-                    name = "Y ";
-                    address = MarioConfig.StructAddress + MarioConfig.YOffset;
-                    typeRadioButton = radioButtonFloat;
-                    break;
-                case 6:
-                    name = "Z ";
-                    address = MarioConfig.StructAddress + MarioConfig.ZOffset;
-                    typeRadioButton = radioButtonFloat;
-                    break;
-                case 7:
-                    name = "HOLP X ";
-                    address = MarioConfig.StructAddress + MarioConfig.HOLPXOffset;
-                    typeRadioButton = radioButtonFloat;
-                    break;
-                case 8:
-                    name = "HOLP Y ";
-                    address = MarioConfig.StructAddress + MarioConfig.HOLPYOffset;
-                    typeRadioButton = radioButtonFloat;
-                    break;
-                case 9:
-                default:
-                    name = "HOLP Z ";
-                    address = MarioConfig.StructAddress + MarioConfig.HOLPZOffset;
-                    typeRadioButton = radioButtonFloat;
-                    break;
+                return new VarHackContainer(
+                    varHackPanel,
+                    0 /* creationIndex */,
+                    false /* useDefaults */,
+                    specialType,
+                    true /* noNumIn */,
+                    null /* varNameIn */,
+                    null /* addressIn */,
+                    null /* memoryTypeIn */,
+                    null /* useHexIn */,
+                    null /* pointerOffsetIn */,
+                    xPos,
+                    yPos);
             }
-
-            textBoxNameValue.Text = name;
-            textBoxAddressValue.Text = "0x" + String.Format("{0:X}", address);
-            typeRadioButton.Checked = true;
-
-            if (useHex) checkBoxUseHex.Checked = true;
-            if (usePointer)
+            else
             {
-                checkBoxUsePointer.Checked = true;
-                textBoxPointerOffsetValue.Enabled = true;
-                textBoxPointerOffsetValue.Text = "0x" + String.Format("{0:X}", pointerOffset);
-            }
+                string varName = element.Attribute(XName.Get("name")).Value;
+                uint address = ParsingUtilities.ParseHex(element.Attribute(XName.Get("address")).Value);
+                Type type = TypeUtilities.StringToType[element.Attribute(XName.Get("type")).Value];
+                bool useHex = ParsingUtilities.ParseBool(element.Attribute(XName.Get("useHex")).Value);
+                uint? pointerOffset = ParsingUtilities.ParseHexNullable(element.Attribute(XName.Get("pointerOffset"))?.Value);
+                bool noNum = ParsingUtilities.ParseBool(element.Attribute(XName.Get("noNum")).Value);
 
+                return new VarHackContainer(
+                    varHackPanel,
+                    0 /* creationIndex */,
+                    false /* useDefaults */,
+                    null /* sepcialTypeIn */,
+                    noNum,
+                    varName,
+                    address,
+                    type,
+                    useHex,
+                    pointerOffset,
+                    xPos,
+                    yPos);
+            }
+        }
+
+        public XElement ToXml()
+        {
+            XElement root = new XElement("Data");
+            root.Add(new XAttribute("xPos", textBoxXPosValue.Text));
+            root.Add(new XAttribute("yPos", textBoxYPosValue.Text));
+            if (_isSpecial)
+            {
+                root.Add(new XAttribute("specialType", _specialType));
+            }
+            else
+            {
+                root.Add(new XAttribute("name", textBoxNameValue.Text));
+                root.Add(new XAttribute("address", textBoxAddressValue.Text));
+                root.Add(new XAttribute("type", TypeUtilities.TypeToString[GetCurrentType()]));
+                root.Add(new XAttribute("useHex", checkBoxUseHex.Checked));
+                if (checkBoxUsePointer.Checked)
+                    root.Add(new XAttribute("pointerOffset", textBoxPointerOffsetValue.Text));
+                root.Add(new XAttribute("noNum", checkBoxNoNumber.Checked));
+            }
+            return root;
+        }
+
+        public VarHackContainer Clone()
+        {
+            return CreateFromXml(_varHackPanel, ToXml());
+        }
+
+        public (VarHackContainer, VarHackContainer) GetHexIntVersions()
+        {
+            string name = GetCurrentName();
+            string name1 = name.Replace(VarHackConfig.EscapeChar, "%04x");
+            string name2 = "%04x";
+
+            uint address = GetCurrentAddress() ?? 0;
+            uint address1 = address;
+            uint address2 = address + 2;
+
+            int index = name.IndexOf(VarHackConfig.EscapeChar);
+            if (index == -1) index = 0;
+            int xPos = GetCurrentXPosition() ?? 0;
+            int xPos1 = xPos;
+            int xPos2 = xPos + (index + 4) * VarHackConfig.CharacterWidth;
+
+            int yPos = GetCurrentYPosition() ?? 0;
+            int yPos1 = yPos;
+            int yPos2 = yPos;
+
+            VarHackContainer v1 = new VarHackContainer(
+                _varHackPanel,
+                0,
+                false /* useDefaults */,
+                null /* specialTypeIn */,
+                true /* noNumIn */,
+                name1 /* varNameIn */,
+                address1 /* addressIn */,
+                typeof(ushort) /* memoryTypeIn */,
+                true /* useHexIn */,
+                null /* pointerOffsetIn */,
+                xPos1 /* xPosIn */,
+                yPos1 /* yPosIn */);
+
+            VarHackContainer v2 = new VarHackContainer(
+                _varHackPanel,
+                0,
+                false /* useDefaults */,
+                null /* specialTypeIn */,
+                true /* noNumIn */,
+                name2 /* varNameIn */,
+                address2 /* addressIn */,
+                typeof(ushort) /* memoryTypeIn */,
+                true /* useHexIn */,
+                null /* pointerOffsetIn */,
+                xPos2 /* xPosIn */,
+                yPos2 /* yPosIn */);
+
+            return (v1, v2);
         }
 
         public byte[] GetBigEndianByteArray()
@@ -211,11 +324,22 @@ namespace STROOP.Controls
             byte[] yPosBytes = BitConverter.GetBytes(yPos);
             WriteBytes(yPosBytes, bytes, VarHackConfig.YPosOffset, true);
 
-            string cappedName = CapString(name, !noNumber);
-            string numberAddon = noNumber ? "" : (useHex ? "%x" : "%d");
-            string cappedNameAndNumberAddon = cappedName + numberAddon;
-            byte[] nameAndNumberAddonBytes = Encoding.ASCII.GetBytes(cappedNameAndNumberAddon);
-            WriteBytes(nameAndNumberAddonBytes, bytes, VarHackConfig.StringOffset, false);
+            name = name.Replace("\\c", VarHackConfig.CoinChar);
+            name = name.Replace("\\m", VarHackConfig.MarioHeadChar);
+            name = name.Replace("\\s", VarHackConfig.StarChar);
+            
+            if (!noNumber)
+            {
+                string formatterString = useHex ? "%x" : "%d";
+                name = name.Replace(VarHackConfig.EscapeChar, formatterString);
+            }
+            if (_isSpecial)
+            {
+                name = name.Replace(VarHackConfig.EscapeChar, _getterFunction());
+            }
+            name = StringUtilities.Cap(name, VarHackConfig.MaxStringLength);
+            byte[] nameBytes = Encoding.ASCII.GetBytes(name);
+            WriteBytes(nameBytes, bytes, VarHackConfig.StringOffset, false);
 
             byte[] usePointerBytes = BitConverter.GetBytes(usePointer);
             WriteBytes(usePointerBytes, bytes, VarHackConfig.UsePointerOffset, true);
@@ -272,12 +396,6 @@ namespace STROOP.Controls
                 if (i % 16 == 15) stringBuilder.Append("\r\n");
             }
             return stringBuilder.ToString();
-        }
-
-        private string CapString(string text, bool factorInNumberAddon = true)
-        {
-            int maxLength = VarHackConfig.MaxStringLength + (factorInNumberAddon ? 0 : 2);
-            return text.Length > maxLength ? text.Substring(0, maxLength) : text;
         }
 
         public void SetPosition(int xPos, int yPos)
@@ -379,389 +497,7 @@ namespace STROOP.Controls
 
         public bool UpdatesContinuously()
         {
-            return _getterFunction != null;
+            return _isSpecial;
         }
-
-        public void UpdateControl()
-        {
-            if (_getterFunction != null)
-            {
-                textBoxNameValue.Text = _getterFunction();
-            }
-        }
-
-        private void InitializeComponent()
-        {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VarHackContainerForm));
-            this.checkBoxUsePointer = new System.Windows.Forms.CheckBox();
-            this.checkBoxNoNumber = new System.Windows.Forms.CheckBox();
-            this.textBoxNameValue = new STROOP.BetterTextbox();
-            this.textBoxNameLabel = new STROOP.BetterTextbox();
-            this.textBoxAddressLabel = new STROOP.BetterTextbox();
-            this.textBoxAddressValue = new STROOP.BetterTextbox();
-            this.textBoxPointerOffsetLabel = new STROOP.BetterTextbox();
-            this.textBoxPointerOffsetValue = new STROOP.BetterTextbox();
-            this.textBoxXPosLabel = new STROOP.BetterTextbox();
-            this.textBoxYPosLabel = new STROOP.BetterTextbox();
-            this.textBoxXPosValue = new STROOP.BetterTextbox();
-            this.textBoxYPosValue = new STROOP.BetterTextbox();
-            this.checkBoxUseHex = new System.Windows.Forms.CheckBox();
-            this.radioButtonSByte = new System.Windows.Forms.RadioButton();
-            this.radioButtonByte = new System.Windows.Forms.RadioButton();
-            this.radioButtonShort = new System.Windows.Forms.RadioButton();
-            this.radioButtonUShort = new System.Windows.Forms.RadioButton();
-            this.radioButtonInt = new System.Windows.Forms.RadioButton();
-            this.radioButtonUInt = new System.Windows.Forms.RadioButton();
-            this.radioButtonFloat = new System.Windows.Forms.RadioButton();
-            this.pictureBoxUpArrow = new System.Windows.Forms.PictureBox();
-            this.pictureBoxDownArrow = new System.Windows.Forms.PictureBox();
-            this.pictureBoxRedX = new System.Windows.Forms.PictureBox();
-            /*
-            this.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpArrow)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRedX)).BeginInit();
-            this.SuspendLayout();
-            */
-            // 
-            // tableLayoutPanel1
-            // 
-            this.ColumnCount = 6;
-            this.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
-            this.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 78F));
-            this.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 107F));
-            this.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
-            this.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 73F));
-            this.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.Controls.Add(this.checkBoxUsePointer, 1, 2);
-            this.Controls.Add(this.checkBoxNoNumber, 0, 2);
-            this.Controls.Add(this.textBoxNameValue, 1, 0);
-            this.Controls.Add(this.textBoxNameLabel, 0, 0);
-            this.Controls.Add(this.textBoxAddressLabel, 0, 1);
-            this.Controls.Add(this.textBoxAddressValue, 1, 1);
-            this.Controls.Add(this.textBoxPointerOffsetLabel, 0, 3);
-            this.Controls.Add(this.textBoxPointerOffsetValue, 1, 3);
-            this.Controls.Add(this.radioButtonSByte, 2, 0);
-            this.Controls.Add(this.radioButtonByte, 3, 0);
-            this.Controls.Add(this.radioButtonShort, 2, 1);
-            this.Controls.Add(this.radioButtonUShort, 3, 1);
-            this.Controls.Add(this.radioButtonInt, 2, 2);
-            this.Controls.Add(this.radioButtonUInt, 3, 2);
-            this.Controls.Add(this.radioButtonFloat, 2, 3);
-            this.Controls.Add(this.checkBoxUseHex, 3, 3);
-            this.Controls.Add(this.textBoxXPosLabel, 4, 2);
-            this.Controls.Add(this.textBoxXPosValue, 5, 2);
-            this.Controls.Add(this.textBoxYPosLabel, 4, 3);
-            this.Controls.Add(this.textBoxYPosValue, 5, 3);
-            this.Controls.Add(this.pictureBoxUpArrow, 4, 0);
-            this.Controls.Add(this.pictureBoxDownArrow, 4, 1);
-            this.Controls.Add(this.pictureBoxRedX, 5, 0);
-            this.Location = new System.Drawing.Point(0, 0);
-            this.Name = "tableLayoutPanel1";
-            this.RowCount = 4;
-            this.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.Size = new System.Drawing.Size(401, 99);
-            this.TabIndex = 39;
-            // 
-            // checkBoxUsePointer
-            // 
-            this.checkBoxUsePointer.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBoxUsePointer.AutoSize = true;
-            this.checkBoxUsePointer.Location = new System.Drawing.Point(81, 51);
-            this.checkBoxUsePointer.Name = "checkBoxUsePointer";
-            this.checkBoxUsePointer.Size = new System.Drawing.Size(81, 17);
-            this.checkBoxUsePointer.TabIndex = 4;
-            this.checkBoxUsePointer.Text = "Use Pointer";
-            this.checkBoxUsePointer.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxNoNumber
-            // 
-            this.checkBoxNoNumber.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBoxNoNumber.AutoSize = true;
-            this.checkBoxNoNumber.Location = new System.Drawing.Point(81, 51);
-            this.checkBoxNoNumber.Name = "checkBoxNoNumber";
-            this.checkBoxNoNumber.Size = new System.Drawing.Size(81, 17);
-            this.checkBoxNoNumber.TabIndex = 4;
-            this.checkBoxNoNumber.Text = "No Num";
-            this.checkBoxNoNumber.UseVisualStyleBackColor = true;
-            this.checkBoxNoNumber.ForeColor = Color.DarkRed;
-            // 
-            // textBoxNameValue
-            // 
-            this.textBoxNameValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxNameValue.BackColor = System.Drawing.Color.White;
-            this.textBoxNameValue.Location = new System.Drawing.Point(81, 3);
-            this.textBoxNameValue.Name = "textBoxNameValue";
-            this.textBoxNameValue.Size = new System.Drawing.Size(100, 20);
-            this.textBoxNameValue.TabIndex = 10;
-            this.textBoxNameValue.Text = "Mario X";
-            this.textBoxNameValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            //this.textBoxNameValue.MaxLength = VarHackConfig.MaxStringLength;
-            // 
-            // textBoxNameLabel
-            // 
-            this.textBoxNameLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.textBoxNameLabel.BackColor = System.Drawing.SystemColors.Control;
-            this.textBoxNameLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxNameLabel.Location = new System.Drawing.Point(3, 5);
-            this.textBoxNameLabel.Name = "textBoxNameLabel";
-            this.textBoxNameLabel.ReadOnly = true;
-            this.textBoxNameLabel.Size = new System.Drawing.Size(72, 13);
-            this.textBoxNameLabel.TabIndex = 10;
-            this.textBoxNameLabel.Text = "Name:";
-            this.textBoxNameLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBoxAddressLabel
-            // 
-            this.textBoxAddressLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.textBoxAddressLabel.BackColor = System.Drawing.SystemColors.Control;
-            this.textBoxAddressLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxAddressLabel.Location = new System.Drawing.Point(3, 29);
-            this.textBoxAddressLabel.Name = "textBoxAddressLabel";
-            this.textBoxAddressLabel.ReadOnly = true;
-            this.textBoxAddressLabel.Size = new System.Drawing.Size(72, 13);
-            this.textBoxAddressLabel.TabIndex = 10;
-            this.textBoxAddressLabel.Text = "Address:";
-            this.textBoxAddressLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBoxAddressValue
-            // 
-            this.textBoxAddressValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxAddressValue.BackColor = System.Drawing.Color.White;
-            this.textBoxAddressValue.Location = new System.Drawing.Point(81, 27);
-            this.textBoxAddressValue.Name = "textBoxAddressValue";
-            this.textBoxAddressValue.Size = new System.Drawing.Size(100, 20);
-            this.textBoxAddressValue.TabIndex = 10;
-            this.textBoxAddressValue.Text = "0x8033B1AC";
-            this.textBoxAddressValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxPointerOffsetLabel
-            // 
-            this.textBoxPointerOffsetLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.textBoxPointerOffsetLabel.BackColor = System.Drawing.SystemColors.Control;
-            this.textBoxPointerOffsetLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxPointerOffsetLabel.Location = new System.Drawing.Point(3, 79);
-            this.textBoxPointerOffsetLabel.Name = "textBoxPointerOffsetLabel";
-            this.textBoxPointerOffsetLabel.ReadOnly = true;
-            this.textBoxPointerOffsetLabel.Size = new System.Drawing.Size(72, 13);
-            this.textBoxPointerOffsetLabel.TabIndex = 10;
-            this.textBoxPointerOffsetLabel.Text = "Pointer Offset:";
-            this.textBoxPointerOffsetLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBoxPointerOffsetValue
-            // 
-            this.textBoxPointerOffsetValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxPointerOffsetValue.BackColor = System.Drawing.Color.White;
-            this.textBoxPointerOffsetValue.Enabled = false;
-            this.textBoxPointerOffsetValue.Location = new System.Drawing.Point(81, 75);
-            this.textBoxPointerOffsetValue.Name = "textBoxPointerOffsetValue";
-            this.textBoxPointerOffsetValue.Size = new System.Drawing.Size(100, 20);
-            this.textBoxPointerOffsetValue.TabIndex = 10;
-            this.textBoxPointerOffsetValue.Text = "0x10";
-            this.textBoxPointerOffsetValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxXPosLabel
-            // 
-            this.textBoxXPosLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.textBoxXPosLabel.BackColor = System.Drawing.SystemColors.Control;
-            this.textBoxXPosLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxXPosLabel.Location = new System.Drawing.Point(317, 5);
-            this.textBoxXPosLabel.Name = "textBoxXPosLabel";
-            this.textBoxXPosLabel.ReadOnly = true;
-            this.textBoxXPosLabel.Size = new System.Drawing.Size(30, 13);
-            this.textBoxXPosLabel.TabIndex = 10;
-            this.textBoxXPosLabel.Text = "X Pos:";
-            this.textBoxXPosLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBoxYPosLabel
-            // 
-            this.textBoxYPosLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.textBoxYPosLabel.BackColor = System.Drawing.SystemColors.Control;
-            this.textBoxYPosLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxYPosLabel.Location = new System.Drawing.Point(317, 29);
-            this.textBoxYPosLabel.Name = "textBoxYPosLabel";
-            this.textBoxYPosLabel.ReadOnly = true;
-            this.textBoxYPosLabel.Size = new System.Drawing.Size(30, 13);
-            this.textBoxYPosLabel.TabIndex = 10;
-            this.textBoxYPosLabel.Text = "Y Pos:";
-            this.textBoxYPosLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // textBoxXPosValue
-            // 
-            this.textBoxXPosValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxXPosValue.BackColor = System.Drawing.Color.White;
-            this.textBoxXPosValue.Location = new System.Drawing.Point(353, 3);
-            this.textBoxXPosValue.Name = "textBoxXPosValue";
-            this.textBoxXPosValue.Size = new System.Drawing.Size(45, 20);
-            this.textBoxXPosValue.TabIndex = 10;
-            this.textBoxXPosValue.Text = "100";
-            this.textBoxXPosValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxYPosValue
-            // 
-            this.textBoxYPosValue.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxYPosValue.BackColor = System.Drawing.Color.White;
-            this.textBoxYPosValue.Location = new System.Drawing.Point(353, 27);
-            this.textBoxYPosValue.Name = "textBoxYPosValue";
-            this.textBoxYPosValue.Size = new System.Drawing.Size(45, 20);
-            this.textBoxYPosValue.TabIndex = 10;
-            this.textBoxYPosValue.Text = "200";
-            this.textBoxYPosValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // checkBoxUseHex
-            // 
-            this.checkBoxUseHex.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBoxUseHex.AutoSize = true;
-            this.checkBoxUseHex.Location = new System.Drawing.Point(244, 77);
-            this.checkBoxUseHex.Name = "checkBoxUseHex";
-            this.checkBoxUseHex.Size = new System.Drawing.Size(67, 17);
-            this.checkBoxUseHex.TabIndex = 4;
-            this.checkBoxUseHex.Text = "Use Hex";
-            this.checkBoxUseHex.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonSByte
-            // 
-            this.radioButtonSByte.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButtonSByte.AutoSize = true;
-            this.radioButtonSByte.Location = new System.Drawing.Point(188, 3);
-            this.radioButtonSByte.Name = "radioButtonSByte";
-            this.radioButtonSByte.Size = new System.Drawing.Size(50, 17);
-            this.radioButtonSByte.TabIndex = 11;
-            this.radioButtonSByte.Text = "sbyte";
-            this.radioButtonSByte.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonByte
-            // 
-            this.radioButtonByte.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButtonByte.AutoSize = true;
-            this.radioButtonByte.Location = new System.Drawing.Point(244, 3);
-            this.radioButtonByte.Name = "radioButtonByte";
-            this.radioButtonByte.Size = new System.Drawing.Size(45, 17);
-            this.radioButtonByte.TabIndex = 11;
-            this.radioButtonByte.Text = "byte";
-            this.radioButtonByte.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonShort
-            // 
-            this.radioButtonShort.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButtonShort.AutoSize = true;
-            this.radioButtonShort.Location = new System.Drawing.Point(188, 27);
-            this.radioButtonShort.Name = "radioButtonShort";
-            this.radioButtonShort.Size = new System.Drawing.Size(48, 17);
-            this.radioButtonShort.TabIndex = 11;
-            this.radioButtonShort.Text = "short";
-            this.radioButtonShort.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonUShort
-            // 
-            this.radioButtonUShort.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButtonUShort.AutoSize = true;
-            this.radioButtonUShort.Location = new System.Drawing.Point(244, 27);
-            this.radioButtonUShort.Name = "radioButtonUShort";
-            this.radioButtonUShort.Size = new System.Drawing.Size(54, 17);
-            this.radioButtonUShort.TabIndex = 11;
-            this.radioButtonUShort.Text = "ushort";
-            this.radioButtonUShort.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonInt
-            // 
-            this.radioButtonInt.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButtonInt.AutoSize = true;
-            this.radioButtonInt.Location = new System.Drawing.Point(188, 51);
-            this.radioButtonInt.Name = "radioButtonInt";
-            this.radioButtonInt.Size = new System.Drawing.Size(36, 17);
-            this.radioButtonInt.TabIndex = 11;
-            this.radioButtonInt.Text = "int";
-            this.radioButtonInt.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonUInt
-            // 
-            this.radioButtonUInt.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButtonUInt.AutoSize = true;
-            this.radioButtonUInt.Location = new System.Drawing.Point(244, 51);
-            this.radioButtonUInt.Name = "radioButtonUInt";
-            this.radioButtonUInt.Size = new System.Drawing.Size(42, 17);
-            this.radioButtonUInt.TabIndex = 11;
-            this.radioButtonUInt.Text = "uint";
-            this.radioButtonUInt.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonFloat
-            // 
-            this.radioButtonFloat.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioButtonFloat.AutoSize = true;
-            this.radioButtonFloat.Checked = true;
-            this.radioButtonFloat.Location = new System.Drawing.Point(188, 77);
-            this.radioButtonFloat.Name = "radioButtonFloat";
-            this.radioButtonFloat.Size = new System.Drawing.Size(45, 17);
-            this.radioButtonFloat.TabIndex = 11;
-            this.radioButtonFloat.TabStop = true;
-            this.radioButtonFloat.Text = "float";
-            this.radioButtonFloat.UseVisualStyleBackColor = true;
-            // 
-            // pictureBoxUpArrow
-            // 
-            this.pictureBoxUpArrow.BackgroundImage = global::STROOP.Properties.Resources.Up_Arrow;
-            this.pictureBoxUpArrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            //this.pictureBoxUpArrow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxUpArrow.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxUpArrow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxUpArrow.Location = new System.Drawing.Point(317, 51);
-            this.pictureBoxUpArrow.Name = "pictureBoxUpArrow";
-            this.pictureBoxUpArrow.Size = new System.Drawing.Size(30, 18);
-            this.pictureBoxUpArrow.TabIndex = 12;
-            this.pictureBoxUpArrow.TabStop = false;
-            // 
-            // pictureBoxDownArrow
-            // 
-            this.pictureBoxDownArrow.BackgroundImage = global::STROOP.Properties.Resources.Down_Arrow;
-            this.pictureBoxDownArrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            //this.pictureBoxDownArrow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxDownArrow.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxDownArrow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxDownArrow.Location = new System.Drawing.Point(317, 75);
-            this.pictureBoxDownArrow.Name = "pictureBoxDownArrow";
-            this.pictureBoxDownArrow.Size = new System.Drawing.Size(30, 21);
-            this.pictureBoxDownArrow.TabIndex = 12;
-            this.pictureBoxDownArrow.TabStop = false;
-            // 
-            // pictureBoxRedX
-            // 
-            this.pictureBoxRedX.BackgroundImage = global::STROOP.Properties.Resources.Red_X;
-            this.pictureBoxRedX.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            //this.pictureBoxRedX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxRedX.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxRedX.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxRedX.Location = new System.Drawing.Point(353, 51);
-            this.pictureBoxRedX.Name = "pictureBoxRedX";
-            this.SetRowSpan(this.pictureBoxRedX, 2);
-            this.pictureBoxRedX.Size = new System.Drawing.Size(45, 45);
-            this.pictureBoxRedX.TabIndex = 12;
-            this.pictureBoxRedX.TabStop = false;
-            // 
-            // VarHackContainerForm
-            // 
-            /*
-            this.ResumeLayout(false);
-            this.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpArrow)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDownArrow)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRedX)).EndInit();
-            */
-        }
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            var rec = DisplayRectangle;
-            rec.Width -= 1;
-            rec.Height -= 1;
-            e.Graphics.DrawRectangle(_borderPen, rec);
-        }
-
     }
 }
-

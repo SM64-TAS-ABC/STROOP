@@ -1,5 +1,6 @@
 ﻿using STROOP.Extensions;
 using STROOP.Managers;
+using STROOP.Models;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
@@ -39,8 +40,8 @@ namespace STROOP.Controls
             ToolStripMenuItem itemSelectObject = new ToolStripMenuItem("Select Object");
             itemSelectObject.Click += (sender, e) =>
             {
-                string stringValue = GetStringValue(true, false);
-                uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(stringValue);
+                object value = GetValue(true, false);
+                uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(value);
                 if (!uintValueNullable.HasValue) return;
                 uint uintValue = uintValueNullable.Value;
                 Config.ObjectSlotsManager.SelectSlotByAddress(uintValue);
@@ -51,40 +52,42 @@ namespace STROOP.Controls
             _contextMenuStrip.AddToBeginningList(itemSelectObject);
         }
 
-        protected override string HandleHexDisplaying(string value)
+        protected override void HandleVerification(object value)
+        {
+            base.HandleVerification(value);
+            if (!(value is uint))
+                throw new ArgumentOutOfRangeException(value + " is not a uint, but represents an object");
+        }
+
+        protected override object HandleHexDisplaying(object value)
         {
             // prevent hex display if we're displaying as object
             return _displayAsObject ? value : base.HandleHexDisplaying(value);
         }
 
-        protected override string HandleObjectDisplaying(string stringValue)
+        protected override object HandleObjectDisplaying(object value)
         {
-            if (!_displayAsObject) return stringValue;
+            if (!_displayAsObject) return value;
 
-            uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(stringValue);
-            if (!uintValueNullable.HasValue) return stringValue;
+            uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(value);
+            if (!uintValueNullable.HasValue) return value;
             uint uintValue = uintValueNullable.Value;
 
-            if (uintValue == 0) return "(no object)";
-            if (uintValue == ObjectSlotsConfig.UnusedSlotAddress) return "(unused object)";
-
-            string slotName = Config.ObjectSlotsManager.GetSlotNameFromAddress(uintValue);
-            if (slotName == null) return "(unknown object)";
-            return "Slot " + slotName;
+            return Config.ObjectSlotsManager.GetDescriptiveSlotLabelFromAddress(uintValue, false);
         }
 
-        protected override string HandleObjectUndisplaying(string stringValue)
+        protected override object HandleObjectUndisplaying(object value)
         {
-            string slotName = stringValue.ToLower();
+            string slotName = value.ToString().ToLower();
 
-            if (slotName == "(no object)" || slotName == "no object") return "0";
-            if (slotName == "(unused object)" || slotName == "unused object") return ObjectSlotsConfig.UnusedSlotAddress.ToString();
+            if (slotName == "(no object)" || slotName == "no object") return 0;
+            if (slotName == "(unused object)" || slotName == "unused object") return ObjectSlotsConfig.UnusedSlotAddress;
 
-            if (!slotName.StartsWith("slot")) return stringValue;
+            if (!slotName.StartsWith("slot")) return value;
             slotName = slotName.Remove(0, "slot".Length);
             slotName = slotName.Trim();
-            uint? address = Config.ObjectSlotsManager.GetSlotAddressFromName(slotName);
-            return address != null ? address.Value.ToString() : stringValue;
+            ObjectDataModel obj = Config.ObjectSlotsManager.GetObjectFromLabel(slotName);
+            return obj != null ? obj.Address : value;
         }
     }
 }

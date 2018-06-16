@@ -9,19 +9,23 @@ using STROOP.Utilities;
 using STROOP.Controls;
 using STROOP.Extensions;
 using STROOP.Structs.Configurations;
+using STROOP.Forms;
 
 namespace STROOP.Managers
 {
     public class ActionsManager : DataManager
     {
-        Label actionDescriptionLabel;
-        Label animationDescriptionLabel;
+        BetterTextbox textBoxActionDescription;
+        BetterTextbox textBoxAnimationDescription;
 
-        public ActionsManager(List<WatchVariableControlPrecursor> variables, WatchVariablePanel variableTable, Control actionsControl)
-            : base(variables, variableTable)
+        public ActionsManager(string varFilePath, WatchVariableFlowLayoutPanel variableTable, Control actionsControl)
+            : base(varFilePath, variableTable)
         {
-            actionDescriptionLabel = actionsControl.Controls["labelActionDescription"] as Label;
-            animationDescriptionLabel = actionsControl.Controls["labelAnimationDescription"] as Label;
+            textBoxActionDescription = actionsControl.Controls["textBoxActionDescription"] as BetterTextbox;
+            textBoxAnimationDescription = actionsControl.Controls["textBoxAnimationDescription"] as BetterTextbox;
+
+            textBoxActionDescription.DoubleClick += (sender, e) => SelectionForm.ShowActionSelectionForm();
+            textBoxAnimationDescription.DoubleClick += (sender, e) => SelectionForm.ShowAnimationSelectionForm();
         }
 
         public override void Update(bool updateView)
@@ -29,8 +33,8 @@ namespace STROOP.Managers
             if (!updateView) return;
             base.Update(updateView);
 
-            actionDescriptionLabel.Text = TableConfig.MarioActions.GetActionName();
-            animationDescriptionLabel.Text = TableConfig.MarioAnimations.GetAnimationName();
+            textBoxActionDescription.Text = TableConfig.MarioActions.GetActionName();
+            textBoxAnimationDescription.Text = TableConfig.MarioAnimations.GetAnimationName();
         }
     }
 }

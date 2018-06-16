@@ -76,8 +76,9 @@
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
-    <NoWin32Manifest>true</NoWin32Manifest>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ICSharpCode.AvalonEdit, Version=5.0.3.0, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
@@ -132,12 +133,96 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\VarHackContainer.cs">
+    <Compile Include="Controls\BetterSplitContainer.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\Map\Graphics\Cameras\MapPerspectiveCamera.cs" />
+    <Compile Include="Controls\Map\Objects\MapSm64Object.cs" />
+    <Compile Include="Controls\Map\Objects\MapWallTriObject.cs" />
+    <Compile Include="Controls\Map\Objects\MapFloorTriObject.cs" />
+    <Compile Include="Controls\Map\Objects\MapCeilingTriObject.cs" />
+    <Compile Include="Controls\Map\Objects\MapHolpObject.cs" />
+    <Compile Include="Controls\Map\Objects\MapIconObject.cs" />
+    <Compile Include="Controls\Map\Objects\MapCameraObject.cs" />
+    <Compile Include="Controls\Map\Objects\MapTriangleObject.cs" />
+    <Compile Include="Controls\Map\Trackers\ColorSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Map\Trackers\ColorSelector.Designer.cs">
+      <DependentUpon>ColorSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ObjectSlotFlowLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\WatchVariableTriangleWrapper.cs" />
+    <Compile Include="Controls\WatchVariableStringWrapper.cs" />
+    <Compile Include="Enums\FrameInputRelationType.cs" />
+    <Compile Include="Enums\CellSelectionType.cs" />
+    <Compile Include="Enums\MapTrackerDisplayType.cs" />
+    <Compile Include="Enums\InputDisplayTypeEnum.cs" />
+    <Compile Include="Enums\CoinParamsOrder.cs" />
+    <Compile Include="Enums\AddToTabTypeEnum.cs" />
+    <Compile Include="Extensions\FormExtensions.cs" />
+    <Compile Include="Forms\SelectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectionForm.Designer.cs">
+      <DependentUpon>SelectionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\VariableBitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\VariableBitForm.Designer.cs">
+      <DependentUpon>VariableBitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\IUpdatable.cs" />
+    <Compile Include="Controls\Map\Trackers\MapTracker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Map\Trackers\MapTracker.Designer.cs">
+      <DependentUpon>MapTracker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Map\Trackers\MapTrackerFlowLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\WatchVariableControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WatchVariableControl.Designer.cs">
+      <DependentUpon>WatchVariableControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\VarHackContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\VarHackContainer.Designer.cs">
+      <DependentUpon>VarHackContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Map\Graphics\Cameras\IMapCamera.cs" />
+    <Compile Include="Controls\Map\Graphics\Items\MapGraphicsImageItem.cs" />
+    <Compile Include="Controls\Map\Graphics\Items\MapGraphicsItem.cs" />
+    <Compile Include="Controls\Map\Graphics\Items\MapGraphicsTrianglesItem.cs" />
+    <Compile Include="Controls\Map\Graphics\Cameras\MapCameraTopView.cs" />
+    <Compile Include="Controls\Map\Graphics\MapGraphics.cs" />
+    <Compile Include="Controls\Map\Graphics\Items\MapGraphicsBackgroundItem.cs" />
+    <Compile Include="Controls\Map\Graphics\Items\MapGraphicsIconItem.cs" />
+    <Compile Include="Controls\Map\Graphics\GraphicsUtilities.cs" />
+    <Compile Include="Controls\Map\Graphics\Vertex.cs" />
+    <Compile Include="Controls\Map\MapController.cs" />
+    <Compile Include="Controls\Map\MapObjectControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Map\MapObjectControl.Designer.cs">
+      <DependentUpon>MapObjectControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Map\Objects\MapLevelObject.cs" />
+    <Compile Include="Controls\Map\Objects\MapMarioObject.cs" />
+    <Compile Include="Controls\Map\Objects\MapObject.cs" />
     <Compile Include="Controls\NoTearFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\VisualLinkLineText.cs" />
+    <Compile Include="Controls\VisualRegexLinkGenerator.cs" />
+    <Compile Include="Controls\WatchVariableControlSettings.cs" />
     <Compile Include="Controls\WatchVariableLock.cs" />
     <Compile Include="Controls\BetterContextMenuStrip.cs">
       <SubType>Component</SubType>
@@ -159,14 +244,11 @@
     </Compile>
     <Compile Include="Controls\WatchVariable.cs" />
     <Compile Include="Controls\WatchVariableControlPrecursor.cs" />
-    <Compile Include="Controls\WatchVariableControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Controls\WatchVariableBooleanWrapper.cs" />
     <Compile Include="Controls\WatchVariableObjectWrapper.cs" />
     <Compile Include="Controls\WatchVariableAngleWrapper.cs" />
     <Compile Include="Controls\WatchVariableNumberWrapper.cs" />
-    <Compile Include="Controls\VarHackPanel.cs">
+    <Compile Include="Controls\VarHackFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\WatchVariableWrapper.cs" />
@@ -204,23 +286,25 @@
     <Compile Include="Controls\IntPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\Map\MapBaseObject.cs" />
-    <Compile Include="Controls\WatchVariablePanel.cs">
+    <Compile Include="Controls\WatchVariableFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\RichTextBoxEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Enums\FileType.cs" />
     <Compile Include="Enums\CoordinateSystem.cs" />
     <Compile Include="Enums\CamHackMode.cs" />
+    <Compile Include="Enums\MapTrackerVisibilityType.cs" />
+    <Compile Include="Enums\ReadWriteMode.cs" />
     <Compile Include="Enums\RomVersion.cs" />
     <Compile Include="Enums\PositionControllerRelativity.cs" />
     <Compile Include="Enums\HatLocation.cs" />
+    <Compile Include="Enums\MapTrackerOrderType.cs" />
     <Compile Include="Extensions\BitmapExtensions.cs" />
     <Compile Include="Extensions\ControlCollectionsExtensions.cs" />
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Extensions\RectangleExtensions.cs" />
-    <Compile Include="Extensions\WatchExpressionExtensions.cs" />
     <Compile Include="Forms\LoadingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,12 +312,26 @@
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoadingHandler.cs" />
+    <Compile Include="M64\M64CopiedFrame.cs" />
+    <Compile Include="M64\M64File.cs" />
+    <Compile Include="M64\M64InputCell.cs" />
+    <Compile Include="M64\M64CopiedData.cs" />
+    <Compile Include="M64\M64Utilities.cs" />
+    <Compile Include="M64\M64Stats.cs" />
+    <Compile Include="M64\M64Header.cs" />
+    <Compile Include="M64\M64InputFrame.cs" />
     <Compile Include="Managers\AreaManager.cs" />
     <Compile Include="Managers\CamHackManager.cs" />
+    <Compile Include="Managers\GfxManager.cs" />
+    <Compile Include="Managers\M64Manager.cs" />
+    <Compile Include="Managers\CoinManager.cs" />
+    <Compile Include="Managers\MemoryManager.cs" />
+    <Compile Include="Managers\TasManager.cs" />
     <Compile Include="Managers\VarHackManager.cs" />
     <Compile Include="Managers\DecompilerManager.cs" />
     <Compile Include="Managers\CustomManager.cs" />
     <Compile Include="Managers\ScriptManager.cs" />
+    <Compile Include="Managers\WatchVariableControlSettingsManager.cs" />
     <Compile Include="Managers\WaterManager.cs" />
     <Compile Include="Managers\ModelManager.cs" />
     <Compile Include="Managers\DebugManager.cs" />
@@ -245,7 +343,6 @@
     <Compile Include="Managers\MiscManager.cs" />
     <Compile Include="Managers\DataManager.cs" />
     <Compile Include="Managers\DisassemblyManager.cs" />
-    <Compile Include="Controls\Map\MapGraphics.cs" />
     <Compile Include="Managers\MapManager.cs" />
     <Compile Include="Managers\CameraManager.cs" />
     <Compile Include="Managers\MarioManager.cs" />
@@ -259,28 +356,52 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Managers\ObjectSlotsManager.cs" />
+    <Compile Include="Map2\Map2Object.cs" />
+    <Compile Include="Map2\Map2Gui.cs" />
+    <Compile Include="Managers\Map2Manager.cs" />
+    <Compile Include="Map2\TriangleMap2Object.cs" />
+    <Compile Include="Map2\Map2BaseObject.cs" />
+    <Compile Include="Map2\Map2Graphics.cs" />
+    <Compile Include="Models\CameraDataModel.cs" />
+    <Compile Include="Models\MarioDataModel.cs" />
+    <Compile Include="Models\DataModels.cs" />
+    <Compile Include="Models\ObjectDataModel.cs" />
+    <Compile Include="Models\IUpdatableDataModel.cs" />
+    <Compile Include="Models\LevelDataModel.cs" />
+    <Compile Include="Models\ObjectProcessorDataModel.cs" />
+    <Compile Include="Models\ByteModel.cs" />
     <Compile Include="Structs\Configurations\AreaConfig.cs" />
+    <Compile Include="Structs\Configurations\TestingConfig.cs" />
+    <Compile Include="Structs\Configurations\LockConfig.cs" />
+    <Compile Include="Structs\Configurations\RomVersionConfig.cs" />
+    <Compile Include="Structs\Configurations\M64Config.cs" />
+    <Compile Include="Structs\Configurations\SavedSettingsConfig.cs" />
+    <Compile Include="Structs\Configurations\SpecialConfig.cs" />
     <Compile Include="Structs\Configurations\RefreshRateConfig.cs" />
     <Compile Include="Structs\Configurations\MarioObjectConfig.cs" />
     <Compile Include="Structs\Configurations\TableConfig.cs" />
     <Compile Include="Structs\Configurations\OverlayConfig.cs" />
     <Compile Include="Structs\Configurations\OptionsConfig.cs" />
     <Compile Include="Structs\Configurations\MiscConfig.cs" />
+    <Compile Include="Structs\Configurations\GhostHackConfig.cs" />
     <Compile Include="Structs\Configurations\VarHackConfig.cs" />
     <Compile Include="Structs\Configurations\PositionControllerRelativityConfig.cs" />
     <Compile Include="Structs\Configurations\TriangleConfig.cs" />
     <Compile Include="Structs\Configurations\WaypointConfig.cs" />
+    <Compile Include="Enums\EndiannessType.cs" />
     <Compile Include="Structs\FlyGuyDataTable.cs" />
     <Compile Include="Structs\CourseDataTable.cs" />
     <Compile Include="Structs\Configurations\FileConfig.cs" />
     <Compile Include="Structs\Configurations\GotoRetrieveConfig.cs" />
-    <Compile Include="Structs\Configurations\CameraHackConfig.cs" />
+    <Compile Include="Structs\Configurations\CamHackConfig.cs" />
     <Compile Include="Structs\Configurations\InputConfig.cs" />
     <Compile Include="Structs\Gui\FileImageGui.cs" />
     <Compile Include="Structs\Gui\InputImageGui.cs" />
+    <Compile Include="Structs\Gui\M64Gui.cs" />
     <Compile Include="Structs\MissionTable.cs" />
     <Compile Include="Enums\TriangleClassification.cs" />
-    <Compile Include="Structs\TriangleStruct.cs" />
+    <Compile Include="Models\TriangleDataModel.cs" />
+    <Compile Include="Controls\VarHackContainerDefaults.cs" />
     <Compile Include="Structs\WaypointTable.cs" />
     <Compile Include="Structs\PendulumSwingTable.cs" />
     <Compile Include="Structs\AnimationTable.cs" />
@@ -295,9 +416,8 @@
     <Compile Include="Structs\GameScript.cs" />
     <Compile Include="Structs\Gui\MapGui.cs" />
     <Compile Include="Structs\Gui\ObjectSlotManagerGui.cs" />
-    <Compile Include="Structs\Map\Map.cs" />
+    <Compile Include="Structs\Map\MapLayout.cs" />
     <Compile Include="Structs\Map\MapAssociations.cs" />
-    <Compile Include="Controls\Map\MapObject.cs" />
     <Compile Include="Structs\Configurations\MarioConfig.cs" />
     <Compile Include="Structs\ObjectBehaviorAssociation.cs" />
     <Compile Include="Structs\ObjectAssociations.cs" />
@@ -307,15 +427,43 @@
     <Compile Include="Structs\RomHack.cs" />
     <Compile Include="Structs\SpawnHack.cs" />
     <Compile Include="Enums\AngleUnitType.cs" />
+    <Compile Include="Utilities\BoolUtilities.cs" />
+    <Compile Include="Utilities\CamHackUtilities.cs" />
+    <Compile Include="Utilities\CoinTrajectoryFilter.cs" />
+    <Compile Include="Utilities\CoinTrajejctory.cs" />
+    <Compile Include="Utilities\CoinObject.cs" />
+    <Compile Include="Utilities\PositionAngle.cs" />
+    <Compile Include="Utilities\EndiannessUtilities.cs" />
+    <Compile Include="Utilities\EndianUtilities.cs" />
+    <Compile Include="Utilities\Stream\DolphinProcessIO.cs" />
+    <Compile Include="Utilities\Stream\WindowsProcessIO.cs" />
+    <Compile Include="Utilities\HexUtilities.cs" />
+    <Compile Include="Utilities\DictionaryUtilities.cs" />
+    <Compile Include="Utilities\Stream\IEmuRamIO.cs" />
+    <Compile Include="Utilities\KeyboardUtilities.cs" />
+    <Compile Include="Utilities\HelpfulHintUtilities.cs" />
     <Compile Include="Utilities\ColorUtilities.cs" />
     <Compile Include="Managers\WatchVariableLockManager.cs" />
     <Compile Include="Enums\WatchVariableCoordinate.cs" />
     <Compile Include="Enums\WatchVariableSubclass.cs" />
     <Compile Include="Enums\VariableGroup.cs" />
     <Compile Include="Enums\BaseAddressTypeEnum.cs" />
+    <Compile Include="Utilities\DecompilerFunctionUtilities.cs" />
+    <Compile Include="Utilities\Fast3DDecoder.cs" />
+    <Compile Include="Utilities\MupenUtilities.cs" />
+    <Compile Include="Utilities\InGameTrigUtilities.cs" />
+    <Compile Include="Utilities\BitfsPlatformGroupTable.cs" />
+    <Compile Include="Utilities\StringUtilities.cs" />
+    <Compile Include="Utilities\TestUtilities.cs" />
+    <Compile Include="Utilities\TtcSpeedSettingUtilities.cs" />
+    <Compile Include="Utilities\MovementCalculator.cs" />
+    <Compile Include="Utilities\VarHackSpecialUtilities.cs" />
+    <Compile Include="Utilities\WatchVariableSpecialDictionary.cs" />
     <Compile Include="Utilities\WatchVariableSpecialUtilities.cs" />
     <Compile Include="Utilities\WatchVariableCoordinateManager.cs" />
     <Compile Include="Utilities\AreaUtilities.cs" />
+    <Compile Include="Utilities\DialogUtilities.cs" />
+    <Compile Include="Utilities\TypeUtilities.cs" />
     <Compile Include="Utilities\WatchVariableUtilities.cs" />
     <Compile Include="Utilities\BehaviorDecoder.cs" />
     <Compile Include="Utilities\Kernal32NativeMethods.cs" />
@@ -323,8 +471,6 @@
     <Compile Include="Utilities\ControlUtilities.cs" />
     <Compile Include="Utilities\TriangleUtilities.cs" />
     <Compile Include="Utilities\ScriptParser.cs" />
-    <Compile Include="Controls\Map\TriangleMapObject.cs" />
-    <Compile Include="Structs\WatchExpression.cs" />
     <Compile Include="Utilities\N64Disassembler.cs" />
     <Compile Include="Utilities\ButtonUtilities.cs" />
     <Compile Include="Structs\ProcessSelection.cs" />
@@ -336,7 +482,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\ProcessStream.cs" />
+    <Compile Include="Utilities\Stream\ProcessStream.cs" />
     <Compile Include="Utilities\ParsingUtilities.cs" />
     <Compile Include="Structs\Configurations\Config.cs" />
     <Compile Include="Extensions\RichTextBoxExtensions.cs" />
@@ -350,12 +496,6 @@
     <Compile Include="Forms\InfoForm.Designer.cs">
       <DependentUpon>InfoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\VarHackContainerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\VarHackContainerForm.Designer.cs">
-      <DependentUpon>VarHackContainerForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\VariableControllerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -368,14 +508,65 @@
     <Compile Include="Forms\VariableViewerForm.Designer.cs">
       <DependentUpon>VariableViewerForm.cs</DependentUpon>
     </Compile>
+    <None Include="app.manifest" />
+    <None Include="Resources\lock_blue.png" />
+    <None Include="Controls\Map\MapTab.cd" />
+    <None Include="Resources\cog.png" />
+    <None Include="Resources\image_eye_closed2.png" />
+    <None Include="Resources\image_eye_open2.png" />
+    <None Include="Resources\image_eye_closed.png" />
+    <None Include="Resources\image_eye_open.png" />
+    <None Include="Resources\image_upright.png" />
+    <None Include="Resources\image_upleft.png" />
+    <None Include="Resources\image_up.png" />
+    <None Include="Resources\image_right.png" />
+    <None Include="Resources\image_plus.png" />
+    <None Include="Resources\image_minus.png" />
+    <None Include="Resources\image_left.png" />
+    <None Include="Resources\image_downright.png" />
+    <None Include="Resources\image_downleft.png" />
+    <None Include="Resources\image_down.png" />
+    <None Include="Resources\image_counterclockwise.png" />
+    <None Include="Resources\image_clockwise.png" />
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <EmbeddedResource Include="Controls\Map\Trackers\ColorSelector.resx">
+      <DependentUpon>ColorSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Map\Trackers\MapTracker.resx">
+      <DependentUpon>MapTracker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\WatchVariableControl.resx">
+      <DependentUpon>WatchVariableControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\VarHackContainer.resx">
+      <DependentUpon>VarHackContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Map\MapObjectControl.resx">
+      <DependentUpon>MapObjectControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectionForm.resx">
+      <DependentUpon>SelectionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Content Include="Config\ArcSineData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\SavedSettings.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\SineData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Config\CourseData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\TasData.xml">
+      <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\FileImageAssociations.xml">
@@ -397,6 +588,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\DebugData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\PuData.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\Missions.xml">
@@ -442,6 +636,9 @@
       <DependentUpon>StroopMainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\VariableBitForm.resx">
+      <DependentUpon>VariableBitForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -460,9 +657,6 @@
     </Content>
     <EmbeddedResource Include="Forms\InfoForm.resx">
       <DependentUpon>InfoForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\VarHackContainerForm.resx">
-      <DependentUpon>VarHackContainerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\VariableControllerForm.resx">
       <DependentUpon>VariableControllerForm.cs</DependentUpon>
@@ -540,6 +734,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Schemas\WaypointTableSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\ValueListSchema.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

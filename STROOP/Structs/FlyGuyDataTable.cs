@@ -43,18 +43,6 @@ namespace STROOP.Structs
             return relativeHeights[oscillationTimer];
         }
 
-        public double GetPrevHeightDiff(int oscillationTimer)
-        {
-            oscillationTimer = NormalizeIndex(oscillationTimer);
-            return prevHeightDiffs[oscillationTimer];
-        }
-
-        public double GetNextHeightDiff(int oscillationTimer)
-        {
-            oscillationTimer = NormalizeIndex(oscillationTimer + 1);
-            return prevHeightDiffs[oscillationTimer];
-        }
-
         public double GetMinHeight(int oscillationTimer, double currentHeight)
         {
             return currentHeight - GetRelativeHeight(oscillationTimer);

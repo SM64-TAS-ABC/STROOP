@@ -16,14 +16,15 @@ namespace STROOP.Managers
     {
         private BinaryButton _buttonDisableFOVFunctions;
 
-        public CameraManager(List<WatchVariableControlPrecursor> cameraData, Control tabControl, WatchVariablePanel variableTable)
-            : base(cameraData, variableTable)
+        public CameraManager(string varFilePath, Control tabControl, WatchVariableFlowLayoutPanel variableTable)
+            : base(varFilePath, variableTable)
         {
             var splitContainer = tabControl.Controls["splitContainerCamera"] as SplitContainer;
 
             var cameraPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraPos"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
+                true,
                 cameraPosGroupBox,
                 cameraPosGroupBox.Controls["buttonCameraPosXn"] as Button,
                 cameraPosGroupBox.Controls["buttonCameraPosXp"] as Button,
@@ -50,6 +51,7 @@ namespace STROOP.Managers
             var cameraSphericalPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraSphericalPos"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Spherical,
+                false,
                 cameraSphericalPosGroupBox,
                 cameraSphericalPosGroupBox.Controls["buttonCameraSphericalPosTn"] as Button,
                 cameraSphericalPosGroupBox.Controls["buttonCameraSphericalPosTp"] as Button,
@@ -115,9 +117,9 @@ namespace STROOP.Managers
 
             if (pivotOnFocus)
             {
-                pivotX = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.FocusXOffset);
-                pivotY = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.FocusYOffset);
-                pivotZ = Config.Stream.GetSingle(CameraConfig.CameraStructAddress + CameraConfig.FocusZOffset);
+                pivotX = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusXOffset);
+                pivotY = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusYOffset);
+                pivotZ = Config.Stream.GetSingle(CameraConfig.StructAddress + CameraConfig.FocusZOffset);
             }
             else // pivot on Mario
             {

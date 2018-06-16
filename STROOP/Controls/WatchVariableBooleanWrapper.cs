@@ -44,7 +44,7 @@ namespace STROOP.Controls
             _contextMenuStrip.AddToBeginningList(itemDisplayAsInverted);
         }
 
-        protected override CheckState ConvertValueToCheckState(string value)
+        protected override CheckState ConvertValueToCheckState(object value)
         {
             double? doubleValueNullable = ParsingUtilities.ParseDoubleNullable(value);
             if (!doubleValueNullable.HasValue) return CheckState.Unchecked;
@@ -52,12 +52,12 @@ namespace STROOP.Controls
             return HandleInverting(doubleValue == 0) ? CheckState.Unchecked : CheckState.Checked;
         }
 
-        protected override string ConvertCheckStateToValue(CheckState checkState)
+        protected override object ConvertCheckStateToValue(CheckState checkState)
         {
             if (checkState == CheckState.Indeterminate) return "";
 
-            string offValue = "0";
-            string onValue = _watchVar.Mask?.ToString() ?? "1";
+            object offValue = 0;
+            object onValue = _watchVar.Mask ?? 1;
 
             return HandleInverting(checkState == CheckState.Unchecked) ? offValue : onValue;
         }

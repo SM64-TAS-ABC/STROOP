@@ -18,7 +18,7 @@ namespace STROOP.Managers
 
         RichTextBoxEx _output;
         TextBox _textBoxStartAdd;
-        uint _lastProcessAddress;
+        uint _lastAddress;
         Button _goButton, _moreButton;
         int _currentLines = NumberOfLinesAdd;
 
@@ -30,7 +30,7 @@ namespace STROOP.Managers
             _moreButton = tabControl.Controls["buttonDisMore"] as Button;
 
             _output.LinkClicked += _output_LinkClicked;
-            _goButton.Click += GoButton_Pressed;
+            _goButton.Click += (sender, e) => Disassemble(_textBoxStartAdd.Text, _currentLines);
             _moreButton.Click += MoreButton_Click;
             _textBoxStartAdd.TextChanged += (sender, e) =>
             {
@@ -45,8 +45,16 @@ namespace STROOP.Managers
             if (!ParsingUtilities.TryParseHex(e.LinkText, out address))
                 return;
 
-            _textBoxStartAdd.Text = e.LinkText;
-            StartShowDisassmbly(address, NumberOfLinesAdd);
+            if (Control.ModifierKeys == Keys.Shift)
+            {
+                Config.DecompilerManager.Decompile(address, false);
+                Config.StroopMainForm.SwitchTab("tabPageDecompiler");
+            }
+            else
+            {
+                _textBoxStartAdd.Text = e.LinkText;
+                StartShowDisassmbly(address, NumberOfLinesAdd);
+            }
         }
 
         private void MoreButton_Click(object sender, EventArgs e)
@@ -55,16 +63,17 @@ namespace STROOP.Managers
             _currentLines += NumberOfLinesAdd;
         }
 
-        private void GoButton_Pressed(object sender, EventArgs e)
+        public void Disassemble(string strAddress, int numberOfLines = NumberOfLinesAdd)
         {
             uint newAddress;
-            if (!ParsingUtilities.TryParseHex(_textBoxStartAdd.Text, out newAddress))
+            if (!ParsingUtilities.TryParseHex(strAddress, out newAddress))
             {
-                MessageBox.Show(String.Format("Address {0} is not valid!", _textBoxStartAdd.Text),
+                MessageBox.Show(String.Format("Address {0} is not valid!", strAddress),
                     "Address Invalid", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
+            _currentLines = NumberOfLinesAdd;
+            _textBoxStartAdd.Text = strAddress;
             StartShowDisassmbly(newAddress, _currentLines);
         }
 
@@ -76,29 +85,29 @@ namespace STROOP.Managers
             _moreButton.Visible = true;
 
             _output.Text = "";
-            _lastProcessAddress = newAddress & 0x0FFFFFFF;
+            _lastAddress = newAddress & 0x0FFFFFFF;
             DisassemblyLines(numberOfLines);
         }
 
         private void DisassemblyLines(int numberOfLines)
         {
             _output.Visible = false;
-            var instructionBytes = Config.Stream.ReadRamLittleEndian(new UIntPtr(_lastProcessAddress), 4 * numberOfLines);
-            for (int i = 0; i < numberOfLines; i++, _lastProcessAddress += 4)
+            var instructionBytes = Config.Stream.ReadRam(_lastAddress, 4 * numberOfLines, EndiannessType.Little);
+            for (int i = 0; i < numberOfLines; i++, _lastAddress += 4)
             {
                 // Get next bytes
                 var nextBytes = new byte[4];
                 Array.Copy(instructionBytes, i * 4, nextBytes, 0, 4);
 
                 // Write Address
-                _output.AppendText(String.Format("0x{0:X8}: ", _lastProcessAddress | 0x80000000), Color.Blue);
+                _output.AppendText(HexUtilities.FormatValue(_lastAddress | 0x80000000, 8) + ": ", Color.Blue);
 
                 // Write byte-code
                 _output.AppendText(BitConverter.ToString(nextBytes.Reverse().ToArray()).Replace('-', ' '), Color.DarkGray);
 
                 // Write Disassembly
                 uint instruction = BitConverter.ToUInt32(nextBytes, 0);
-                uint address = (uint)(((uint)_lastProcessAddress) & 0x0FFFFFFF);
+                uint address = (uint)(((uint)_lastAddress) & 0x0FFFFFFF);
                 string disassembly = "\t" + N64Disassembler.DisassembleInstruction(address, instruction);
                 _output.AppendText(disassembly, Color.Red);
 

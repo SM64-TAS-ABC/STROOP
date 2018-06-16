@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <InputImageAssociations>
   <Config>
-    <InputImageDirectory>Resources\Input Images\</InputImageDirectory>
+    <ClassicInputImageDirectory>Resources\Input Images\Classic\</ClassicInputImageDirectory>
+    <SleekInputImageDirectory>Resources\Input Images\Sleek\</SleekInputImageDirectory>
+    <VerticalInputImageDirectory>Resources\Input Images\Vertical\</VerticalInputImageDirectory>
   </Config>
   <InputImages>
     <ButtonA>
@@ -49,6 +51,13 @@
     <ButtonDRight>
       <InputImage path="ButtonDRight.png"/>
     </ButtonDRight>
+
+    <ButtonU1>
+      <InputImage path="ButtonU1.png"/>
+    </ButtonU1>
+    <ButtonU2>
+      <InputImage path="ButtonU2.png"/>
+    </ButtonU2>
 
     <ControlStick>
       <InputImage path="ControlStick.png"/>

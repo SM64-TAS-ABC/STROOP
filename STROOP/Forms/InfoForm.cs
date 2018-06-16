@@ -19,7 +19,7 @@ namespace STROOP.Forms
         {
             InitializeComponent();
             buttonOk.Click += (sender, e) => Close();
-            textBoxTriangleInfo.Click += (sender, e) => textBoxTriangleInfo.SelectAll();
+            textBoxTriangleInfo.DoubleClick += (sender, e) => textBoxTriangleInfo.SelectAll();
         }
 
         public void SetTriangleCoordinates(short[] coordinates)
@@ -85,11 +85,11 @@ namespace STROOP.Forms
                     coordinate => StringifyCoordinate(coordinate)));
         }
 
-        public void SetTriangles(List<TriangleStruct> triangleList)
+        public void SetTriangles(List<TriangleDataModel> triangleList)
         {
             this.Text = "Triangle Info";
             textBoxTitle.Text = "Triangles";
-            textBoxTriangleInfo.Text = TriangleStruct.GetFieldNameString() + "\n" + String.Join("\n", triangleList);
+            textBoxTriangleInfo.Text = TriangleDataModel.GetFieldNameString() + "\n" + String.Join("\n", triangleList);
         }
 
         private String StringifyCoordinates(short[] coordinates, bool repeatCoordinates = false)
@@ -139,5 +139,18 @@ namespace STROOP.Forms
             textBoxTriangleInfo.Text = text;
         }
 
+        public static void ShowText(string formTitle, string textTitle, string text)
+        {
+            InfoForm infoForm = new InfoForm();
+            infoForm.SetText(formTitle, textTitle, text);
+            infoForm.Show();
+        }
+
+        public static void ShowValue(object value)
+        {
+            InfoForm infoForm = new InfoForm();
+            infoForm.SetText("Info", "Text", value.ToString());
+            infoForm.Show();
+        }
     }
 }

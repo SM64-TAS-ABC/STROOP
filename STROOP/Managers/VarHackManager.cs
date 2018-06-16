@@ -14,14 +14,14 @@ namespace STROOP.Managers
 {
     public class VarHackManager
     {
-        private readonly VarHackPanel _varHackPanel;
+        private readonly VarHackFlowLayoutPanel _varHackPanel;
         private readonly BinaryButton _buttonEnableDisableRomHack;
 
         private readonly BetterTextbox _textBoxXPosValue;
         private readonly BetterTextbox _textBoxYPosValue;
         private readonly BetterTextbox _textBoxYDeltaValue;
 
-        public VarHackManager(Control varHackControlControl, VarHackPanel varHackPanel)
+        public VarHackManager(Control varHackControlControl, VarHackFlowLayoutPanel varHackPanel)
         {
             _varHackPanel = varHackPanel;
 
@@ -42,27 +42,38 @@ namespace STROOP.Managers
                     "RNG Index",
                     "Floor YNorm",
                     "Defacto Speed",
+                    "Sliding Speed",
                     "Mario Action",
                     "Mario Animation",
+                    "DYaw Intended - Facing",
+                    "DYaw Intended - Facing (HAU)",
                 },
                 new List<Action>()
                 {
-                    () => AddVariable(() => "Index " + RngIndexer.GetRngIndex()),
-                    () => AddVariable(() =>
-                    {
-                        uint triFloorAddress = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset);
-                        float yNorm = Config.Stream.GetSingle(triFloorAddress + TriangleOffsetsConfig.NormY);
-                        return "YNorm " + FormatDouble(yNorm, 4, true);
-                    }),
-                    () => AddVariable(() => "Defacto " + FormatInteger(WatchVariableSpecialUtilities.GetMarioDeFactoSpeed())),
-                    () => AddVariable(() => "Action " + TableConfig.MarioActions.GetActionName()),
-                    () => AddVariable(() => "Animation " + TableConfig.MarioAnimations.GetAnimationName()),
+                    () => AddVariable("RngIndex"),
+                    () => AddVariable("FloorYNorm"),
+                    () => AddVariable("DefactoSpeed"),
+                    () => AddVariable("SlidingSpeed"),
+                    () => AddVariable("MarioAction"),
+                    () => AddVariable("MarioAnimation"),
+                    () => AddVariable("DYawIntendFacing"),
+                    () => AddVariable("DYawIntendFacingHau"),
                 });
 
+            Button buttonVarHackOpenVars =
+                splitContainerVarHack.Panel1.Controls["buttonVarHackOpenVars"] as Button;
+            buttonVarHackOpenVars.Click +=
+                (sender, e) => _varHackPanel.OpenVariables();
+
+            Button buttonVarHackSaveVars =
+                splitContainerVarHack.Panel1.Controls["buttonVarHackSaveVars"] as Button;
+            buttonVarHackSaveVars.Click +=
+                (sender, e) => _varHackPanel.SaveVariables();
+
             Button buttonVarHackClearVariables =
-                splitContainerVarHack.Panel1.Controls["buttonVarHackClearVariables"] as Button;
+                splitContainerVarHack.Panel1.Controls["buttonVarHackClearVars"] as Button;
             buttonVarHackClearVariables.Click +=
-                (sender, e) => _varHackPanel.ClearControls();
+                (sender, e) => _varHackPanel.ClearVariables();
 
             Button buttonVarHackShowVariableBytesInLittleEndian =
                 splitContainerVarHack.Panel1.Controls["buttonVarHackShowVariableBytesInLittleEndian"] as Button;
@@ -171,39 +182,12 @@ namespace STROOP.Managers
 
         public void AddVariable(string varName, uint address, Type memoryType, bool useHex, uint? pointerOffset)
         {
-            _varHackPanel.AddNewControlWithParameters(varName, address, memoryType, useHex, pointerOffset);
+            _varHackPanel.AddNewControl(varName, address, memoryType, useHex, pointerOffset);
         }
 
-        public void AddVariable(Func<string> getterFunction)
+        public void AddVariable(string specialType)
         {
-            _varHackPanel.AddNewControlWithGetterFunction(getterFunction);
-        }
-
-        public string FormatDouble(double value, int numDigits = 4, bool usePadding = true)
-        {
-            string stringValue = Math.Round(value, numDigits).ToString();
-            if (usePadding)
-            {
-                int decimalIndex = stringValue.IndexOf(".");
-                if (decimalIndex == -1)
-                {
-                    stringValue += ".";
-                    decimalIndex = stringValue.Length - 1;
-                }
-                while (stringValue.Length <= decimalIndex + numDigits)
-                {
-                    stringValue += "0";
-                }
-            }
-            stringValue = stringValue.Replace(".", VarHackConfig.CoinChar);
-            return stringValue;
-        }
-
-        public string FormatInteger(double value)
-        {
-            string stringValue = Math.Truncate(value).ToString();
-            stringValue = stringValue.Replace("-", "M");
-            return stringValue;
+            _varHackPanel.AddNewControl(specialType);
         }
 
         public void Update(bool updateView)

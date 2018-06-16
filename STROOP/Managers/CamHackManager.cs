@@ -10,7 +10,7 @@ namespace STROOP.Managers
 {
     public class CamHackManager : DataManager
     {
-        public CamHackMode _currentCamHackMode;
+        public CamHackMode CurrentCamHackMode { get; private set; }
 
         RadioButton _mode0RadioButton;
         RadioButton _mode1RadioButtonRelativeAngle;
@@ -18,10 +18,10 @@ namespace STROOP.Managers
         RadioButton _mode2RadioButton;
         RadioButton _mode3RadioButton;
 
-        public CamHackManager(List<WatchVariableControlPrecursor> variables, TabPage camHackControl, WatchVariablePanel variableTable)
-            : base(variables, variableTable)
+        public CamHackManager(string varFilePath, TabPage camHackControl, WatchVariableFlowLayoutPanel variableTable)
+            : base(varFilePath, variableTable)
         {
-            _currentCamHackMode = CamHackMode.REGULAR;
+            CurrentCamHackMode = CamHackMode.REGULAR;
 
             var splitContainer = camHackControl.Controls["splitContainerCamHack"] as SplitContainer;
             _mode0RadioButton = splitContainer.Panel1.Controls["radioButtonCamHackMode0"] as RadioButton;
@@ -30,23 +30,24 @@ namespace STROOP.Managers
             _mode2RadioButton = splitContainer.Panel1.Controls["radioButtonCamHackMode2"] as RadioButton;
             _mode3RadioButton = splitContainer.Panel1.Controls["radioButtonCamHackMode3"] as RadioButton;
 
-            _mode0RadioButton.Click += (sender, e) => Config.Stream.SetValue(0, CameraHackConfig.CameraHackStruct + CameraHackConfig.CameraModeOffset);
+            _mode0RadioButton.Click += (sender, e) => Config.Stream.SetValue(0, CamHackConfig.StructAddress + CamHackConfig.CameraModeOffset);
             _mode1RadioButtonRelativeAngle.Click += (sender, e) =>
             {
-                Config.Stream.SetValue(1, CameraHackConfig.CameraHackStruct + CameraHackConfig.CameraModeOffset);
-                Config.Stream.SetValue((ushort)0, CameraHackConfig.CameraHackStruct + CameraHackConfig.AbsoluteAngleOffset);
+                Config.Stream.SetValue(1, CamHackConfig.StructAddress + CamHackConfig.CameraModeOffset);
+                Config.Stream.SetValue((ushort)0, CamHackConfig.StructAddress + CamHackConfig.AbsoluteAngleOffset);
             };
             _mode1RadioButtonAbsoluteAngle.Click += (sender, e) =>
             {
-                Config.Stream.SetValue(1, CameraHackConfig.CameraHackStruct + CameraHackConfig.CameraModeOffset);
-                Config.Stream.SetValue((ushort)1, CameraHackConfig.CameraHackStruct + CameraHackConfig.AbsoluteAngleOffset);
+                Config.Stream.SetValue(1, CamHackConfig.StructAddress + CamHackConfig.CameraModeOffset);
+                Config.Stream.SetValue((ushort)1, CamHackConfig.StructAddress + CamHackConfig.AbsoluteAngleOffset);
             };
-            _mode2RadioButton.Click += (sender, e) => Config.Stream.SetValue(2, CameraHackConfig.CameraHackStruct + CameraHackConfig.CameraModeOffset);
-            _mode3RadioButton.Click += (sender, e) => Config.Stream.SetValue(3, CameraHackConfig.CameraHackStruct + CameraHackConfig.CameraModeOffset);
+            _mode2RadioButton.Click += (sender, e) => Config.Stream.SetValue(2, CamHackConfig.StructAddress + CamHackConfig.CameraModeOffset);
+            _mode3RadioButton.Click += (sender, e) => Config.Stream.SetValue(3, CamHackConfig.StructAddress + CamHackConfig.CameraModeOffset);
 
             var cameraHackPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraHackPos"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
+                true,
                 cameraHackPosGroupBox,
                 cameraHackPosGroupBox.Controls["buttonCameraHackPosXn"] as Button,
                 cameraHackPosGroupBox.Controls["buttonCameraHackPosXp"] as Button,
@@ -64,7 +65,7 @@ namespace STROOP.Managers
                 (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
                     ButtonUtilities.TranslateCameraHack(
-                        _currentCamHackMode,
+                        CurrentCamHackMode,
                         hOffset,
                         nOffset,
                         -1 * vOffset,
@@ -74,6 +75,7 @@ namespace STROOP.Managers
             var cameraHackSphericalPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraHackSphericalPos"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Spherical,
+                false,
                 cameraHackSphericalPosGroupBox,
                 cameraHackSphericalPosGroupBox.Controls["buttonCameraHackSphericalPosTn"] as Button,
                 cameraHackSphericalPosGroupBox.Controls["buttonCameraHackSphericalPosTp"] as Button,
@@ -91,7 +93,7 @@ namespace STROOP.Managers
                 (float hOffset, float vOffset, float nOffset, bool _) =>
                 {
                     ButtonUtilities.TranslateCameraHackSpherically(
-                        _currentCamHackMode,
+                        CurrentCamHackMode,
                         -1 * nOffset,
                         hOffset,
                         -1 * vOffset);
@@ -100,6 +102,7 @@ namespace STROOP.Managers
             var cameraHackFocusPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraHackFocusPos"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
+                true,
                 cameraHackFocusPosGroupBox,
                 cameraHackFocusPosGroupBox.Controls["buttonCameraHackFocusPosXn"] as Button,
                 cameraHackFocusPosGroupBox.Controls["buttonCameraHackFocusPosXp"] as Button,
@@ -117,7 +120,7 @@ namespace STROOP.Managers
                 (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
                     ButtonUtilities.TranslateCameraHackFocus(
-                        _currentCamHackMode,
+                        CurrentCamHackMode,
                         hOffset,
                         nOffset,
                         -1 * vOffset,
@@ -127,6 +130,7 @@ namespace STROOP.Managers
             var cameraHackSphericalFocusPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraHackSphericalFocusPos"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Spherical,
+                false,
                 cameraHackSphericalFocusPosGroupBox,
                 cameraHackSphericalFocusPosGroupBox.Controls["buttonCameraHackSphericalFocusPosTn"] as Button,
                 cameraHackSphericalFocusPosGroupBox.Controls["buttonCameraHackSphericalFocusPosTp"] as Button,
@@ -144,7 +148,7 @@ namespace STROOP.Managers
                 (float hOffset, float vOffset, float nOffset, bool _) =>
                 {
                     ButtonUtilities.TranslateCameraHackFocusSpherically(
-                        _currentCamHackMode,
+                        CurrentCamHackMode,
                         nOffset,
                         hOffset,
                         -1 * vOffset);
@@ -153,6 +157,7 @@ namespace STROOP.Managers
             var cameraHackBothPosGroupBox = splitContainer.Panel1.Controls["groupBoxCameraHackBothPos"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
+                true,
                 cameraHackBothPosGroupBox,
                 cameraHackBothPosGroupBox.Controls["buttonCameraHackBothPosXn"] as Button,
                 cameraHackBothPosGroupBox.Controls["buttonCameraHackBothPosXp"] as Button,
@@ -170,7 +175,7 @@ namespace STROOP.Managers
                 (float hOffset, float vOffset, float nOffset, bool useRelative) =>
                 {
                     ButtonUtilities.TranslateCameraHackBoth(
-                        _currentCamHackMode,
+                        CurrentCamHackMode,
                         hOffset,
                         nOffset,
                         -1 * vOffset,
@@ -184,9 +189,9 @@ namespace STROOP.Managers
             base.Update(updateView);
 
             CamHackMode correctCamHackMode = getCorrectCamHackMode();
-            if (_currentCamHackMode != correctCamHackMode)
+            if (CurrentCamHackMode != correctCamHackMode)
             {
-                _currentCamHackMode = correctCamHackMode;
+                CurrentCamHackMode = correctCamHackMode;
                 getCorrespondingRadioButton(correctCamHackMode).Checked = true;
             }
 
@@ -197,7 +202,7 @@ namespace STROOP.Managers
 
         private void DoTestingCalculations()
         {
-            uint objAddress = Config.Stream.GetUInt32(CameraHackConfig.CameraHackStruct + CameraHackConfig.ObjectOffset);
+            uint objAddress = Config.Stream.GetUInt32(CamHackConfig.StructAddress + CamHackConfig.ObjectOffset);
             if (objAddress == 0) return;
 
             int currentGlobalTimer = Config.Stream.GetInt32(MiscConfig.GlobalTimerAddress);
@@ -206,19 +211,19 @@ namespace STROOP.Managers
 
             uint swooperTargetOffset = 0xFE;
             ushort swooperTargetAngle = Config.Stream.GetUInt16(objAddress + swooperTargetOffset);
-            ushort cameraAngle = Config.Stream.GetUInt16(CameraHackConfig.CameraHackStruct + CameraHackConfig.ThetaOffset);
+            ushort cameraAngle = Config.Stream.GetUInt16(CamHackConfig.StructAddress + CamHackConfig.ThetaOffset);
 
             double angleCap = 1024;
             ushort newCameraAngle = MoreMath.NormalizeAngleUshort(MoreMath.RotateAngleTowards(cameraAngle, swooperTargetAngle, angleCap));
-            Config.Stream.SetValue(newCameraAngle, CameraHackConfig.CameraHackStruct + CameraHackConfig.ThetaOffset);
+            Config.Stream.SetValue(newCameraAngle, CamHackConfig.StructAddress + CamHackConfig.ThetaOffset);
 
             //Console.WriteLine(currentGlobalTimer.ToString() + ": " + swooperTargetAngle.ToString());
         }
 
         private CamHackMode getCorrectCamHackMode()
         {
-            int cameraMode = Config.Stream.GetInt32(CameraHackConfig.CameraHackStruct + CameraHackConfig.CameraModeOffset);
-            ushort absoluteAngle = Config.Stream.GetUInt16(CameraHackConfig.CameraHackStruct + CameraHackConfig.AbsoluteAngleOffset);
+            int cameraMode = Config.Stream.GetInt32(CamHackConfig.StructAddress + CamHackConfig.CameraModeOffset);
+            ushort absoluteAngle = Config.Stream.GetUInt16(CamHackConfig.StructAddress + CamHackConfig.AbsoluteAngleOffset);
             return cameraMode == 1 && absoluteAngle == 0 ? CamHackMode.RELATIVE_ANGLE :
                    cameraMode == 1 ? CamHackMode.ABSOLUTE_ANGLE :
                    cameraMode == 2 ? CamHackMode.FIXED_POS :
