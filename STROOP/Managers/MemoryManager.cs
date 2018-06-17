@@ -168,19 +168,6 @@ namespace STROOP.Managers
             Address = address.Value;
         }
 
-        private uint? GetObjectRelativeAddress(uint absoluteAddress)
-        {
-            uint objRangeMinAddress = ObjectSlotsConfig.LinkStartAddress;
-            uint objRangeMaxAddress =
-                objRangeMinAddress + (uint)ObjectSlotsConfig.MaxSlots * ObjectConfig.StructSize;
-
-            if (absoluteAddress < objRangeMinAddress ||
-                absoluteAddress >= objRangeMaxAddress) return null;
-
-            uint relativeAddress = (absoluteAddress - objRangeMinAddress) % ObjectConfig.StructSize;
-            return relativeAddress;
-        }
-
         public void SetObjectAddress(uint? address)
         {
             if (!address.HasValue) return;
@@ -246,20 +233,30 @@ namespace STROOP.Managers
             private List<WatchVariableControlPrecursor> GetOverlapped(
                 List<WatchVariableControlPrecursor> precursors)
             {
-                int minIndex = ByteIndex;
-                int maxIndex = ByteIndex + ByteSize - 1;
+                uint minOffset = MemoryAddress;
+                uint maxOffset = MemoryAddress + (uint)ByteSize - 1;
+                uint? minObjOffset = ObjectConfig.GetObjectRelativeAddress(minOffset);
+                uint? maxObjOffset = ObjectConfig.GetObjectRelativeAddress(maxOffset);
 
                 return precursors.FindAll(precursor =>
                 {
                     WatchVariable watchVar = precursor.WatchVar;
-                    if (watchVar.BaseAddressType != BaseAddressTypeEnum.Object) return false;
                     if (watchVar.IsSpecial) return false;
                     if (watchVar.Mask != null) return false;
 
-                    int minPrecursorIndex = (int)watchVar.Offset;
-                    int maxPrecursorIndex = (int)watchVar.Offset + watchVar.ByteCount.Value - 1;
+                    uint minPrecursorOffset = watchVar.Offset;
+                    uint maxPrecursorOffset = watchVar.Offset + (uint)watchVar.ByteCount.Value - 1;
 
-                    return minIndex <= maxPrecursorIndex && maxIndex >= minPrecursorIndex;
+                    if (watchVar.BaseAddressType == BaseAddressTypeEnum.Object)
+                    {
+                        if (!minObjOffset.HasValue || !maxObjOffset.HasValue) return false;
+                        return minObjOffset <= maxPrecursorOffset && maxObjOffset >= minPrecursorOffset;
+                    }
+                    if (watchVar.BaseAddressType == BaseAddressTypeEnum.Relative)
+                    {
+                        return minOffset <= maxPrecursorOffset && maxOffset >= minPrecursorOffset;
+                    }
+                    return false;
                 });
             }
 
@@ -358,7 +355,7 @@ namespace STROOP.Managers
             }
 
             // read from memory
-            if (GetObjectRelativeAddress(address.Value) == 0)
+            if (ObjectConfig.GetObjectRelativeAddress(address.Value) == 0)
             {
                 Behavior = new ObjectDataModel(address.Value).BehaviorCriteria;
             }
