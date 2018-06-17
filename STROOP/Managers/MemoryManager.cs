@@ -132,6 +132,19 @@ namespace STROOP.Managers
             });
         }
 
+        private uint? GetObjectRelativeAddress(uint absoluteAddress)
+        {
+            uint objRangeMinAddress = ObjectSlotsConfig.LinkStartAddress;
+            uint objRangeMaxAddress =
+                objRangeMinAddress + (uint)ObjectSlotsConfig.MaxSlots * ObjectConfig.StructSize;
+
+            if (absoluteAddress < objRangeMinAddress ||
+                absoluteAddress >= objRangeMaxAddress) return null;
+
+            uint relativeAddress = (absoluteAddress - objRangeMinAddress) % ObjectConfig.StructSize;
+            return relativeAddress;
+        }
+
         public void SetObjectAddress(uint? address)
         {
             if (!address.HasValue) return;
