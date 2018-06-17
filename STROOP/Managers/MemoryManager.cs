@@ -43,13 +43,15 @@ namespace STROOP.Managers
             }
         }
 
+        private uint? _address;
         public uint? Address
         {
-            get
+            get => _address;
+            set
             {
-                List<uint> addresses = Config.ObjectSlotsManager.SelectedSlotsAddresses;
-                if (addresses.Count != 1) return null;
-                return addresses.First();
+                _address = value;
+                _textBoxMemoryBaseAddress.Text =
+                    _address.HasValue ? HexUtilities.FormatValue(_address.Value, 8) : "";
             }
         }
 
@@ -80,11 +82,15 @@ namespace STROOP.Managers
         public MemoryManager(TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel, string varFilePath)
             : base(null, watchVariablePanel)
         {
+            // Initialize fields
+            _address = null;
             _behavior = null;
+
             _currentValueTexts = new List<ValueText>();
             _objectPrecursors = XmlConfigParser.OpenWatchVariableControlPrecursors(varFilePath);
             _objectSpecificPrecursors = new List<WatchVariableControlPrecursor>();
 
+            // Get controls
             SplitContainer splitContainer = tabControl.Controls["splitContainerMemory"] as SplitContainer;
             SplitContainer splitContainerMemoryControls =
                 splitContainer.Panel1.Controls["splitContainerMemoryControls"] as SplitContainer;
@@ -107,34 +113,54 @@ namespace STROOP.Managers
             _richTextBoxMemoryAddresses = splitContainerMemoryControlsDisplays.Panel1.Controls["richTextBoxMemoryAddresses"] as RichTextBoxEx;
             _richTextBoxMemoryValues = splitContainerMemoryControlsDisplays.Panel2.Controls["richTextBoxMemoryValues"] as RichTextBoxEx;
 
+            // Set up controls
             _comboBoxMemoryTypes.DataSource = TypeUtilities.SimpleTypeList;
 
             _checkBoxMemoryLittleEndian.Click += (sender, e) => UpdateDisplay();
             _comboBoxMemoryTypes.SelectedValueChanged += (sender, e) => UpdateDisplay();
 
-            _richTextBoxMemoryValues.Click += (sender, e) =>
+            _richTextBoxMemoryValues.Click += (sender, e) => MemoryValueClick();
+
+            _textBoxMemoryBaseAddress.AddEnterAction(() =>
             {
-                bool isCtrlKeyHeld = KeyboardUtilities.IsCtrlHeld();
-                bool isAltKeyHeld = KeyboardUtilities.IsAltHeld();
-                if (!isCtrlKeyHeld) return;
-                int index = _richTextBoxMemoryValues.SelectionStart;
-                bool useHex = _checkBoxMemoryHex.Checked;
-                bool useObj = _checkBoxMemoryObj.Checked;
-                if (isAltKeyHeld)
+                uint? address = ParsingUtilities.ParseHexNullable(_textBoxMemoryBaseAddress.Text);
+                if (address.HasValue)
                 {
-                    List<List<WatchVariableControlPrecursor>> precursorLists =
-                        new List<List<WatchVariableControlPrecursor>>()
-                            { _objectPrecursors, _objectSpecificPrecursors };
-                    _currentValueTexts.ForEach(valueText =>
-                        valueText.AddOverlappedIfSelected(index, precursorLists));
+                    _checkBoxMemoryUseObjAddress.Checked = false;
+                    Address = address;
                 }
-                else
-                {
-                    _currentValueTexts.ForEach(valueText =>
-                        valueText.AddVariableIfSelected(index, useHex, useObj));
-                }
-                _richTextBoxMemoryValues.Parent.Focus();
-            };
+            });
+        }
+
+        public void SetObjectAddress(uint? address)
+        {
+            if (!address.HasValue) return;
+            if (!_checkBoxMemoryUseObjAddress.Checked) return;
+            Address = address.Value;
+        }
+
+        private void MemoryValueClick()
+        {
+            bool isCtrlKeyHeld = KeyboardUtilities.IsCtrlHeld();
+            bool isAltKeyHeld = KeyboardUtilities.IsAltHeld();
+            if (!isCtrlKeyHeld) return;
+            int index = _richTextBoxMemoryValues.SelectionStart;
+            bool useHex = _checkBoxMemoryHex.Checked;
+            bool useObj = _checkBoxMemoryObj.Checked;
+            if (isAltKeyHeld)
+            {
+                List<List<WatchVariableControlPrecursor>> precursorLists =
+                    new List<List<WatchVariableControlPrecursor>>()
+                        { _objectPrecursors, _objectSpecificPrecursors };
+                _currentValueTexts.ForEach(valueText =>
+                    valueText.AddOverlappedIfSelected(index, precursorLists));
+            }
+            else
+            {
+                _currentValueTexts.ForEach(valueText =>
+                    valueText.AddVariableIfSelected(index, useHex, useObj));
+            }
+            _richTextBoxMemoryValues.Parent.Focus();
         }
 
         private class ValueText

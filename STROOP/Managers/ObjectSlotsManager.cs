@@ -264,6 +264,7 @@ namespace STROOP.Managers
 
             if (click == ClickType.MemoryClick)
             {
+                Config.MemoryManager.SetObjectAddress(selectedSlot.CurrentObject?.Address);
                 Config.MemoryManager.UpdateDisplay();
             }
         }
