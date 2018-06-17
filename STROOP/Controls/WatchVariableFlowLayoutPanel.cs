@@ -53,12 +53,15 @@ namespace STROOP.Controls
             _allGroups.AddRange(allGroups);
             _initialVisibleGroups.AddRange(visibleGroups);
             _visibleGroups.AddRange(visibleGroups);
+
+            _selectionContextMenuStrip =
+                WatchVariableSelectionUtilities.CreateSelectionContextMenuStrip(this);
+
             List<WatchVariableControlPrecursor> precursors = _varFilePath == null
                 ? new List<WatchVariableControlPrecursor>()
                 : XmlConfigParser.OpenWatchVariableControlPrecursors(_varFilePath);
             AddVariables(precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
             AddItemsToContextMenuStrip();
-            _selectionContextMenuStrip = WatchVariableSelectionUtilities.CreateSelectionContextMenuStrip(this);
         }
 
         private void AddItemsToContextMenuStrip()
