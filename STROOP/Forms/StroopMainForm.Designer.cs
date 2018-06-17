@@ -824,7 +824,9 @@ namespace STROOP
             this.textBoxMemoryBaseAddress = new STROOP.BetterTextbox();
             this.checkBoxMemoryRelativeAddresses = new System.Windows.Forms.CheckBox();
             this.checkBoxMemoryUseObjAddress = new System.Windows.Forms.CheckBox();
+            this.buttonMemoryMoveUpContinuously = new System.Windows.Forms.Button();
             this.buttonMemoryMoveUpOnce = new System.Windows.Forms.Button();
+            this.buttonMemoryMoveDownContinuously = new System.Windows.Forms.Button();
             this.checkBoxMemoryHighlightObjVars = new System.Windows.Forms.CheckBox();
             this.buttonMemoryMoveDownOnce = new System.Windows.Forms.Button();
             this.checkBoxMemoryUpdateContinuously = new System.Windows.Forms.CheckBox();
@@ -1337,8 +1339,6 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.buttonMemoryMoveDownContinuously = new System.Windows.Forms.Button();
-            this.buttonMemoryMoveUpContinuously = new System.Windows.Forms.Button();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -5109,7 +5109,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 390F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 391F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8795,7 +8795,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(532, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(535, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -11253,7 +11253,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 723;
+            this.splitContainerMemory.SplitterDistance = 692;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11292,7 +11292,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(723, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(692, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -11388,6 +11388,17 @@ namespace STROOP
             this.checkBoxMemoryUseObjAddress.Text = "Use Obj Address";
             this.checkBoxMemoryUseObjAddress.UseVisualStyleBackColor = true;
             // 
+            // buttonMemoryMoveUpContinuously
+            // 
+            this.buttonMemoryMoveUpContinuously.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonMemoryMoveUpContinuously.BackgroundImage")));
+            this.buttonMemoryMoveUpContinuously.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonMemoryMoveUpContinuously.Location = new System.Drawing.Point(641, 3);
+            this.buttonMemoryMoveUpContinuously.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonMemoryMoveUpContinuously.Name = "buttonMemoryMoveUpContinuously";
+            this.buttonMemoryMoveUpContinuously.Size = new System.Drawing.Size(21, 21);
+            this.buttonMemoryMoveUpContinuously.TabIndex = 20;
+            this.buttonMemoryMoveUpContinuously.UseVisualStyleBackColor = true;
+            // 
             // buttonMemoryMoveUpOnce
             // 
             this.buttonMemoryMoveUpOnce.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonMemoryMoveUpOnce.BackgroundImage")));
@@ -11398,6 +11409,17 @@ namespace STROOP
             this.buttonMemoryMoveUpOnce.Size = new System.Drawing.Size(21, 21);
             this.buttonMemoryMoveUpOnce.TabIndex = 20;
             this.buttonMemoryMoveUpOnce.UseVisualStyleBackColor = true;
+            // 
+            // buttonMemoryMoveDownContinuously
+            // 
+            this.buttonMemoryMoveDownContinuously.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonMemoryMoveDownContinuously.BackgroundImage")));
+            this.buttonMemoryMoveDownContinuously.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonMemoryMoveDownContinuously.Location = new System.Drawing.Point(641, 29);
+            this.buttonMemoryMoveDownContinuously.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonMemoryMoveDownContinuously.Name = "buttonMemoryMoveDownContinuously";
+            this.buttonMemoryMoveDownContinuously.Size = new System.Drawing.Size(21, 21);
+            this.buttonMemoryMoveDownContinuously.TabIndex = 20;
+            this.buttonMemoryMoveDownContinuously.UseVisualStyleBackColor = true;
             // 
             // checkBoxMemoryHighlightObjVars
             // 
@@ -11465,8 +11487,8 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(723, 401);
-            this.splitContainerMemoryControlsDisplays.SplitterDistance = 148;
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(692, 401);
+            this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
             // 
@@ -11480,7 +11502,7 @@ namespace STROOP
             this.richTextBoxMemoryAddresses.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryAddresses.Name = "richTextBoxMemoryAddresses";
             this.richTextBoxMemoryAddresses.ReadOnly = true;
-            this.richTextBoxMemoryAddresses.Size = new System.Drawing.Size(146, 399);
+            this.richTextBoxMemoryAddresses.Size = new System.Drawing.Size(96, 399);
             this.richTextBoxMemoryAddresses.TabIndex = 8;
             this.richTextBoxMemoryAddresses.Text = "";
             // 
@@ -11494,7 +11516,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(572, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(591, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -11507,7 +11529,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(183, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(214, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -17159,28 +17181,6 @@ namespace STROOP
             this.trackBarObjSlotSize.TickFrequency = 10;
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
-            // 
-            // buttonMemoryMoveDownContinuously
-            // 
-            this.buttonMemoryMoveDownContinuously.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonMemoryMoveDownContinuously.BackgroundImage")));
-            this.buttonMemoryMoveDownContinuously.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonMemoryMoveDownContinuously.Location = new System.Drawing.Point(641, 29);
-            this.buttonMemoryMoveDownContinuously.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonMemoryMoveDownContinuously.Name = "buttonMemoryMoveDownContinuously";
-            this.buttonMemoryMoveDownContinuously.Size = new System.Drawing.Size(21, 21);
-            this.buttonMemoryMoveDownContinuously.TabIndex = 20;
-            this.buttonMemoryMoveDownContinuously.UseVisualStyleBackColor = true;
-            // 
-            // buttonMemoryMoveUpContinuously
-            // 
-            this.buttonMemoryMoveUpContinuously.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonMemoryMoveUpContinuously.BackgroundImage")));
-            this.buttonMemoryMoveUpContinuously.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonMemoryMoveUpContinuously.Location = new System.Drawing.Point(641, 3);
-            this.buttonMemoryMoveUpContinuously.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonMemoryMoveUpContinuously.Name = "buttonMemoryMoveUpContinuously";
-            this.buttonMemoryMoveUpContinuously.Size = new System.Drawing.Size(21, 21);
-            this.buttonMemoryMoveUpContinuously.TabIndex = 20;
-            this.buttonMemoryMoveUpContinuously.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
