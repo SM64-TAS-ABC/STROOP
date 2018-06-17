@@ -16,7 +16,7 @@ namespace STROOP.Managers
 {
     public class MemoryManager : DataManager
     {
-        private readonly BetterTextbox _textBoxMemoryObjAddress;
+        private readonly BetterTextbox _textBoxMemoryBaseAddress;
         private readonly CheckBox _checkBoxMemoryUpdateContinuously;
         private readonly CheckBox _checkBoxMemoryLittleEndian;
         private readonly CheckBox _checkBoxMemoryRelativeAddresses;
@@ -86,7 +86,7 @@ namespace STROOP.Managers
             SplitContainer splitContainerMemoryControlsDisplays =
                 splitContainerMemoryControls.Panel2.Controls["splitContainerMemoryControlsDisplays"] as SplitContainer;
 
-            _textBoxMemoryObjAddress = splitContainerMemoryControls.Panel1.Controls["textBoxMemoryObjAddress"] as BetterTextbox;
+            _textBoxMemoryBaseAddress = splitContainerMemoryControls.Panel1.Controls["textBoxMemoryBaseAddress"] as BetterTextbox;
             _checkBoxMemoryUpdateContinuously = splitContainerMemoryControls.Panel1.Controls["checkBoxMemoryUpdateContinuously"] as CheckBox;
             _checkBoxMemoryLittleEndian = splitContainerMemoryControls.Panel1.Controls["checkBoxMemoryLittleEndian"] as CheckBox;
             _checkBoxMemoryRelativeAddresses = splitContainerMemoryControls.Panel1.Controls["checkBoxMemoryRelativeAddresses"] as CheckBox;
@@ -254,7 +254,7 @@ namespace STROOP.Managers
             uint? address = Address;
             if (!address.HasValue)
             {
-                _textBoxMemoryObjAddress.Text = HexUtilities.FormatValue(0, 8);
+                _textBoxMemoryBaseAddress.Text = HexUtilities.FormatValue(0, 8);
                 _richTextBoxMemoryAddresses.Text = "";
                 _richTextBoxMemoryValues.Text = "";
                 return;
@@ -273,7 +273,7 @@ namespace STROOP.Managers
             bool useObj = _checkBoxMemoryObj.Checked;
 
             // update control text
-            _textBoxMemoryObjAddress.Text = HexUtilities.FormatValue(address.Value, 8);
+            _textBoxMemoryBaseAddress.Text = HexUtilities.FormatValue(address.Value, 8);
             _richTextBoxMemoryAddresses.Text = FormatAddresses(startAddress, _memorySize);
 
             // highlight value texts
