@@ -79,18 +79,11 @@ namespace STROOP.Utilities
                 if (vSpeed > vSpeedMax) return false;
             }
 
-            if (AngleMinNullable.HasValue)
+            if (AngleMinNullable.HasValue && AngleMaxNullable.HasValue)
             {
                 double angleMin = AngleMinNullable.Value;
-                double diff = MoreMath.GetAngleDifference(angleMin, angle);
-                if (diff < 0) return false;
-            }
-
-            if (AngleMaxNullable.HasValue)
-            {
                 double angleMax = AngleMaxNullable.Value;
-                double diff = MoreMath.GetAngleDifference(angleMax, angle);
-                if (diff > 0) return false;
+                if (!MoreMath.IsAngleBetweenAngles(angle, angleMin, angleMax)) return false;
             }
 
             return true;

@@ -526,6 +526,13 @@ namespace STROOP.Utilities
             return MaybeNegativeModulus(angle2 - angle1, 65536);
         }
 
+        public static bool IsAngleBetweenAngles(double angle, double angleMin, double angleMax)
+        {
+            double effectiveAngle = NonNegativeModulus(angle - angleMin, 65536);
+            double effectiveRange = NonNegativeModulus(angleMax - angleMin, 65536);
+            return effectiveAngle <= effectiveRange;
+        }
+
         public static double Clamp(double value, double min, double max)
         {
             return Math.Min(Math.Max(value, min), max);
