@@ -101,6 +101,7 @@ namespace STROOP.Controls
             }
             set
             {
+                if (_editMode == value) return;
                 _editMode = value;
                 _watchVariablePanel.UnselectAllVariables();
                 _valueTextBox.ReadOnly = !_editMode;
@@ -123,6 +124,7 @@ namespace STROOP.Controls
             }
             set
             {
+                if (_renameMode == value) return;
                 _renameMode = value;
                 _watchVariablePanel.UnselectAllVariables();
                 _nameTextBox.ReadOnly = !_renameMode;
@@ -259,6 +261,7 @@ namespace STROOP.Controls
 
             _valueCheckBox.Click += (sender, e) => OnCheckboxClick();
 
+            ContextMenuStrip.Opening += (sender, e) => OnContextMenuStripOpening();
         }
         
         public void SetUseCheckbox(bool useCheckbox)
@@ -294,6 +297,20 @@ namespace STROOP.Controls
                     this.Focus();
                     return;
                 }
+            }
+        }
+
+        private void OnContextMenuStripOpening()
+        {
+            if (IsSelected && _watchVariablePanel.GetNumSelectedVariables() >= 2)
+            {
+                ContextMenuStrip.Items.Clear();
+                _selectionContextMenuStripItems.ForEach(item => ContextMenuStrip.Items.Add(item));
+            }
+            else
+            {
+                ContextMenuStrip.Items.Clear();
+                _variableContextMenuStripItems.ForEach(item => ContextMenuStrip.Items.Add(item));
             }
         }
 
