@@ -197,9 +197,9 @@ namespace STROOP.Managers
                 List<ushort> angleList = coinTrajectories.ConvertAll(
                     coinTrajectory => coinTrajectory.Angle);
 
-                string hSpeedJoined = String.Join(", ", hSpeedList);
-                string vSpeedJoined = String.Join(", ", vSpeedList);
-                string angleJoined = String.Join(", ", angleList);
+                object hSpeedJoined = hSpeedList.Count == 1 ? hSpeedList[0] : (object)String.Join(", ", hSpeedList);
+                object vSpeedJoined = vSpeedList.Count == 1 ? vSpeedList[0] : (object)String.Join(", ", vSpeedList);
+                object angleJoined = angleList.Count == 1 ? angleList[0] : (object)String.Join(", ", angleList);
 
                 // add a new row to the table
                 _dataGridViewCoin.Rows.Add(
