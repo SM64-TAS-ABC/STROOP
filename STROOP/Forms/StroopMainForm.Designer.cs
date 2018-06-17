@@ -34,15 +34,15 @@ namespace STROOP
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
@@ -64,6 +64,7 @@ namespace STROOP
             this.comboBoxReadWriteMode = new System.Windows.Forms.ComboBox();
             this.buttonMoveTabRight = new System.Windows.Forms.Button();
             this.buttonMoveTabLeft = new System.Windows.Forms.Button();
+            this.pictureBoxCog = new System.Windows.Forms.PictureBox();
             this.splitContainerMain = new STROOP.BetterSplitContainer();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageObject = new System.Windows.Forms.TabPage();
@@ -813,16 +814,18 @@ namespace STROOP
             this.checkBoxUseRomHack = new System.Windows.Forms.CheckBox();
             this.tabPageMemory = new System.Windows.Forms.TabPage();
             this.splitContainerMemory = new STROOP.BetterSplitContainer();
+            this.splitContainerMemoryControls = new STROOP.BetterSplitContainer();
             this.comboBoxMemoryTypes = new System.Windows.Forms.ComboBox();
-            this.richTextBoxMemoryValues = new STROOP.Controls.RichTextBoxEx();
             this.checkBoxMemoryObj = new System.Windows.Forms.CheckBox();
-            this.checkBoxMemoryHex = new System.Windows.Forms.CheckBox();
-            this.checkBoxMemoryRelativeAddresses = new System.Windows.Forms.CheckBox();
-            this.checkBoxMemoryLittleEndian = new System.Windows.Forms.CheckBox();
-            this.checkBoxMemoryUpdateContinuously = new System.Windows.Forms.CheckBox();
-            this.richTextBoxMemoryAddresses = new STROOP.Controls.RichTextBoxEx();
-            this.textBoxMemoryObjAddress = new STROOP.BetterTextbox();
             this.labelMemoryObjAddress = new System.Windows.Forms.Label();
+            this.checkBoxMemoryHex = new System.Windows.Forms.CheckBox();
+            this.textBoxMemoryObjAddress = new STROOP.BetterTextbox();
+            this.checkBoxMemoryRelativeAddresses = new System.Windows.Forms.CheckBox();
+            this.checkBoxMemoryUpdateContinuously = new System.Windows.Forms.CheckBox();
+            this.checkBoxMemoryLittleEndian = new System.Windows.Forms.CheckBox();
+            this.splitContainerMemoryControlsDisplays = new STROOP.BetterSplitContainer();
+            this.richTextBoxMemoryAddresses = new STROOP.Controls.RichTextBoxEx();
+            this.richTextBoxMemoryValues = new STROOP.Controls.RichTextBoxEx();
             this.watchVariablePanelMemory = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPagePu = new System.Windows.Forms.TabPage();
             this.splitContainerPu = new STROOP.BetterSplitContainer();
@@ -1328,8 +1331,8 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.pictureBoxCog = new System.Windows.Forms.PictureBox();
             this.panelConnect.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
             this.splitContainerMain.Panel1.SuspendLayout();
             this.splitContainerMain.Panel2.SuspendLayout();
@@ -1625,6 +1628,14 @@ namespace STROOP
             this.splitContainerMemory.Panel1.SuspendLayout();
             this.splitContainerMemory.Panel2.SuspendLayout();
             this.splitContainerMemory.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMemoryControls)).BeginInit();
+            this.splitContainerMemoryControls.Panel1.SuspendLayout();
+            this.splitContainerMemoryControls.Panel2.SuspendLayout();
+            this.splitContainerMemoryControls.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMemoryControlsDisplays)).BeginInit();
+            this.splitContainerMemoryControlsDisplays.Panel1.SuspendLayout();
+            this.splitContainerMemoryControlsDisplays.Panel2.SuspendLayout();
+            this.splitContainerMemoryControlsDisplays.SuspendLayout();
             this.tabPagePu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerPu)).BeginInit();
             this.splitContainerPu.Panel1.SuspendLayout();
@@ -1727,7 +1738,6 @@ namespace STROOP
             this.groupBoxRecording.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -1971,6 +1981,18 @@ namespace STROOP
             this.buttonMoveTabLeft.TabIndex = 20;
             this.buttonMoveTabLeft.UseVisualStyleBackColor = true;
             this.buttonMoveTabLeft.Click += new System.EventHandler(this.buttonMoveTabLeft_Click);
+            // 
+            // pictureBoxCog
+            // 
+            this.pictureBoxCog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxCog.BackgroundImage = global::STROOP.Properties.Resources.cog;
+            this.pictureBoxCog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBoxCog.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxCog.Location = new System.Drawing.Point(868, 11);
+            this.pictureBoxCog.Name = "pictureBoxCog";
+            this.pictureBoxCog.Size = new System.Drawing.Size(20, 20);
+            this.pictureBoxCog.TabIndex = 23;
+            this.pictureBoxCog.TabStop = false;
             // 
             // splitContainerMain
             // 
@@ -5079,7 +5101,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 379F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 384F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8765,7 +8787,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(499, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(514, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -8799,14 +8821,14 @@ namespace STROOP
             this.dataGridViewM64Inputs.AllowUserToResizeColumns = false;
             this.dataGridViewM64Inputs.AllowUserToResizeRows = false;
             this.dataGridViewM64Inputs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewM64Inputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewM64Inputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnM64Frame,
@@ -8827,14 +8849,14 @@ namespace STROOP
             this.ColumnM64DDown,
             this.ColumnM64DLeft,
             this.ColumnM64DRight});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewM64Inputs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewM64Inputs.EnableHeadersVisualStyles = false;
             this.dataGridViewM64Inputs.Location = new System.Drawing.Point(0, 0);
@@ -11215,16 +11237,7 @@ namespace STROOP
             // splitContainerMemory.Panel1
             // 
             this.splitContainerMemory.Panel1.AutoScroll = true;
-            this.splitContainerMemory.Panel1.Controls.Add(this.comboBoxMemoryTypes);
-            this.splitContainerMemory.Panel1.Controls.Add(this.richTextBoxMemoryValues);
-            this.splitContainerMemory.Panel1.Controls.Add(this.checkBoxMemoryObj);
-            this.splitContainerMemory.Panel1.Controls.Add(this.checkBoxMemoryHex);
-            this.splitContainerMemory.Panel1.Controls.Add(this.checkBoxMemoryRelativeAddresses);
-            this.splitContainerMemory.Panel1.Controls.Add(this.checkBoxMemoryLittleEndian);
-            this.splitContainerMemory.Panel1.Controls.Add(this.checkBoxMemoryUpdateContinuously);
-            this.splitContainerMemory.Panel1.Controls.Add(this.richTextBoxMemoryAddresses);
-            this.splitContainerMemory.Panel1.Controls.Add(this.textBoxMemoryObjAddress);
-            this.splitContainerMemory.Panel1.Controls.Add(this.labelMemoryObjAddress);
+            this.splitContainerMemory.Panel1.Controls.Add(this.splitContainerMemoryControls);
             this.splitContainerMemory.Panel1MinSize = 0;
             // 
             // splitContainerMemory.Panel2
@@ -11232,107 +11245,84 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 782;
+            this.splitContainerMemory.SplitterDistance = 705;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
+            // 
+            // splitContainerMemoryControls
+            // 
+            this.splitContainerMemoryControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerMemoryControls.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerMemoryControls.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerMemoryControls.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerMemoryControls.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerMemoryControls.Name = "splitContainerMemoryControls";
+            this.splitContainerMemoryControls.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerMemoryControls.Panel1
+            // 
+            this.splitContainerMemoryControls.Panel1.AutoScroll = true;
+            this.splitContainerMemoryControls.Panel1.Controls.Add(this.comboBoxMemoryTypes);
+            this.splitContainerMemoryControls.Panel1.Controls.Add(this.checkBoxMemoryObj);
+            this.splitContainerMemoryControls.Panel1.Controls.Add(this.labelMemoryObjAddress);
+            this.splitContainerMemoryControls.Panel1.Controls.Add(this.checkBoxMemoryHex);
+            this.splitContainerMemoryControls.Panel1.Controls.Add(this.textBoxMemoryObjAddress);
+            this.splitContainerMemoryControls.Panel1.Controls.Add(this.checkBoxMemoryRelativeAddresses);
+            this.splitContainerMemoryControls.Panel1.Controls.Add(this.checkBoxMemoryUpdateContinuously);
+            this.splitContainerMemoryControls.Panel1.Controls.Add(this.checkBoxMemoryLittleEndian);
+            this.splitContainerMemoryControls.Panel1MinSize = 0;
+            // 
+            // splitContainerMemoryControls.Panel2
+            // 
+            this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
+            this.splitContainerMemoryControls.Panel2MinSize = 0;
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(705, 457);
+            this.splitContainerMemoryControls.SplitterDistance = 108;
+            this.splitContainerMemoryControls.SplitterWidth = 1;
+            this.splitContainerMemoryControls.TabIndex = 38;
             // 
             // comboBoxMemoryTypes
             // 
             this.comboBoxMemoryTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxMemoryTypes.Location = new System.Drawing.Point(473, 3);
+            this.comboBoxMemoryTypes.Location = new System.Drawing.Point(476, 10);
             this.comboBoxMemoryTypes.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxMemoryTypes.Name = "comboBoxMemoryTypes";
             this.comboBoxMemoryTypes.Size = new System.Drawing.Size(55, 21);
             this.comboBoxMemoryTypes.TabIndex = 36;
             // 
-            // richTextBoxMemoryValues
-            // 
-            this.richTextBoxMemoryValues.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBoxMemoryValues.BackColor = System.Drawing.SystemColors.Control;
-            this.richTextBoxMemoryValues.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxMemoryValues.Location = new System.Drawing.Point(112, 28);
-            this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
-            this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
-            this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(666, 429);
-            this.richTextBoxMemoryValues.TabIndex = 8;
-            this.richTextBoxMemoryValues.Text = "";
-            // 
             // checkBoxMemoryObj
             // 
             this.checkBoxMemoryObj.AutoSize = true;
-            this.checkBoxMemoryObj.Location = new System.Drawing.Point(584, 7);
+            this.checkBoxMemoryObj.Location = new System.Drawing.Point(587, 14);
             this.checkBoxMemoryObj.Name = "checkBoxMemoryObj";
             this.checkBoxMemoryObj.Size = new System.Drawing.Size(42, 17);
             this.checkBoxMemoryObj.TabIndex = 35;
             this.checkBoxMemoryObj.Text = "Obj";
             this.checkBoxMemoryObj.UseVisualStyleBackColor = true;
             // 
+            // labelMemoryObjAddress
+            // 
+            this.labelMemoryObjAddress.AutoSize = true;
+            this.labelMemoryObjAddress.Location = new System.Drawing.Point(11, 13);
+            this.labelMemoryObjAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelMemoryObjAddress.Name = "labelMemoryObjAddress";
+            this.labelMemoryObjAddress.Size = new System.Drawing.Size(67, 13);
+            this.labelMemoryObjAddress.TabIndex = 9;
+            this.labelMemoryObjAddress.Text = "Obj Address:";
+            // 
             // checkBoxMemoryHex
             // 
             this.checkBoxMemoryHex.AutoSize = true;
-            this.checkBoxMemoryHex.Location = new System.Drawing.Point(535, 7);
+            this.checkBoxMemoryHex.Location = new System.Drawing.Point(538, 14);
             this.checkBoxMemoryHex.Name = "checkBoxMemoryHex";
             this.checkBoxMemoryHex.Size = new System.Drawing.Size(45, 17);
             this.checkBoxMemoryHex.TabIndex = 35;
             this.checkBoxMemoryHex.Text = "Hex";
             this.checkBoxMemoryHex.UseVisualStyleBackColor = true;
             // 
-            // checkBoxMemoryRelativeAddresses
-            // 
-            this.checkBoxMemoryRelativeAddresses.AutoSize = true;
-            this.checkBoxMemoryRelativeAddresses.Checked = true;
-            this.checkBoxMemoryRelativeAddresses.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMemoryRelativeAddresses.Location = new System.Drawing.Point(377, 7);
-            this.checkBoxMemoryRelativeAddresses.Name = "checkBoxMemoryRelativeAddresses";
-            this.checkBoxMemoryRelativeAddresses.Size = new System.Drawing.Size(94, 17);
-            this.checkBoxMemoryRelativeAddresses.TabIndex = 35;
-            this.checkBoxMemoryRelativeAddresses.Text = "Rel Addresses";
-            this.checkBoxMemoryRelativeAddresses.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMemoryLittleEndian
-            // 
-            this.checkBoxMemoryLittleEndian.AutoSize = true;
-            this.checkBoxMemoryLittleEndian.Checked = true;
-            this.checkBoxMemoryLittleEndian.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMemoryLittleEndian.Location = new System.Drawing.Point(287, 7);
-            this.checkBoxMemoryLittleEndian.Name = "checkBoxMemoryLittleEndian";
-            this.checkBoxMemoryLittleEndian.Size = new System.Drawing.Size(84, 17);
-            this.checkBoxMemoryLittleEndian.TabIndex = 35;
-            this.checkBoxMemoryLittleEndian.Text = "Little Endian";
-            this.checkBoxMemoryLittleEndian.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMemoryUpdateContinuously
-            // 
-            this.checkBoxMemoryUpdateContinuously.AutoSize = true;
-            this.checkBoxMemoryUpdateContinuously.Checked = true;
-            this.checkBoxMemoryUpdateContinuously.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxMemoryUpdateContinuously.Location = new System.Drawing.Point(159, 7);
-            this.checkBoxMemoryUpdateContinuously.Name = "checkBoxMemoryUpdateContinuously";
-            this.checkBoxMemoryUpdateContinuously.Size = new System.Drawing.Size(124, 17);
-            this.checkBoxMemoryUpdateContinuously.TabIndex = 35;
-            this.checkBoxMemoryUpdateContinuously.Text = "Update Continuously";
-            this.checkBoxMemoryUpdateContinuously.UseVisualStyleBackColor = true;
-            // 
-            // richTextBoxMemoryAddresses
-            // 
-            this.richTextBoxMemoryAddresses.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.richTextBoxMemoryAddresses.BackColor = System.Drawing.SystemColors.Control;
-            this.richTextBoxMemoryAddresses.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxMemoryAddresses.Location = new System.Drawing.Point(5, 28);
-            this.richTextBoxMemoryAddresses.Margin = new System.Windows.Forms.Padding(2);
-            this.richTextBoxMemoryAddresses.Name = "richTextBoxMemoryAddresses";
-            this.richTextBoxMemoryAddresses.ReadOnly = true;
-            this.richTextBoxMemoryAddresses.Size = new System.Drawing.Size(103, 429);
-            this.richTextBoxMemoryAddresses.TabIndex = 8;
-            this.richTextBoxMemoryAddresses.Text = "";
-            // 
             // textBoxMemoryObjAddress
             // 
-            this.textBoxMemoryObjAddress.Location = new System.Drawing.Point(76, 3);
+            this.textBoxMemoryObjAddress.Location = new System.Drawing.Point(79, 10);
             this.textBoxMemoryObjAddress.Name = "textBoxMemoryObjAddress";
             this.textBoxMemoryObjAddress.ReadOnly = true;
             this.textBoxMemoryObjAddress.Size = new System.Drawing.Size(74, 20);
@@ -11340,15 +11330,93 @@ namespace STROOP
             this.textBoxMemoryObjAddress.Text = "0x00000000";
             this.textBoxMemoryObjAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // labelMemoryObjAddress
+            // checkBoxMemoryRelativeAddresses
             // 
-            this.labelMemoryObjAddress.AutoSize = true;
-            this.labelMemoryObjAddress.Location = new System.Drawing.Point(8, 6);
-            this.labelMemoryObjAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelMemoryObjAddress.Name = "labelMemoryObjAddress";
-            this.labelMemoryObjAddress.Size = new System.Drawing.Size(67, 13);
-            this.labelMemoryObjAddress.TabIndex = 9;
-            this.labelMemoryObjAddress.Text = "Obj Address:";
+            this.checkBoxMemoryRelativeAddresses.AutoSize = true;
+            this.checkBoxMemoryRelativeAddresses.Checked = true;
+            this.checkBoxMemoryRelativeAddresses.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMemoryRelativeAddresses.Location = new System.Drawing.Point(380, 14);
+            this.checkBoxMemoryRelativeAddresses.Name = "checkBoxMemoryRelativeAddresses";
+            this.checkBoxMemoryRelativeAddresses.Size = new System.Drawing.Size(94, 17);
+            this.checkBoxMemoryRelativeAddresses.TabIndex = 35;
+            this.checkBoxMemoryRelativeAddresses.Text = "Rel Addresses";
+            this.checkBoxMemoryRelativeAddresses.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMemoryUpdateContinuously
+            // 
+            this.checkBoxMemoryUpdateContinuously.AutoSize = true;
+            this.checkBoxMemoryUpdateContinuously.Checked = true;
+            this.checkBoxMemoryUpdateContinuously.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMemoryUpdateContinuously.Location = new System.Drawing.Point(162, 14);
+            this.checkBoxMemoryUpdateContinuously.Name = "checkBoxMemoryUpdateContinuously";
+            this.checkBoxMemoryUpdateContinuously.Size = new System.Drawing.Size(124, 17);
+            this.checkBoxMemoryUpdateContinuously.TabIndex = 35;
+            this.checkBoxMemoryUpdateContinuously.Text = "Update Continuously";
+            this.checkBoxMemoryUpdateContinuously.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMemoryLittleEndian
+            // 
+            this.checkBoxMemoryLittleEndian.AutoSize = true;
+            this.checkBoxMemoryLittleEndian.Checked = true;
+            this.checkBoxMemoryLittleEndian.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxMemoryLittleEndian.Location = new System.Drawing.Point(290, 14);
+            this.checkBoxMemoryLittleEndian.Name = "checkBoxMemoryLittleEndian";
+            this.checkBoxMemoryLittleEndian.Size = new System.Drawing.Size(84, 17);
+            this.checkBoxMemoryLittleEndian.TabIndex = 35;
+            this.checkBoxMemoryLittleEndian.Text = "Little Endian";
+            this.checkBoxMemoryLittleEndian.UseVisualStyleBackColor = true;
+            // 
+            // splitContainerMemoryControlsDisplays
+            // 
+            this.splitContainerMemoryControlsDisplays.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainerMemoryControlsDisplays.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerMemoryControlsDisplays.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerMemoryControlsDisplays.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerMemoryControlsDisplays.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerMemoryControlsDisplays.Name = "splitContainerMemoryControlsDisplays";
+            // 
+            // splitContainerMemoryControlsDisplays.Panel1
+            // 
+            this.splitContainerMemoryControlsDisplays.Panel1.AutoScroll = true;
+            this.splitContainerMemoryControlsDisplays.Panel1.Controls.Add(this.richTextBoxMemoryAddresses);
+            this.splitContainerMemoryControlsDisplays.Panel1MinSize = 0;
+            // 
+            // splitContainerMemoryControlsDisplays.Panel2
+            // 
+            this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
+            this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(705, 348);
+            this.splitContainerMemoryControlsDisplays.SplitterDistance = 148;
+            this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
+            this.splitContainerMemoryControlsDisplays.TabIndex = 39;
+            // 
+            // richTextBoxMemoryAddresses
+            // 
+            this.richTextBoxMemoryAddresses.BackColor = System.Drawing.SystemColors.Control;
+            this.richTextBoxMemoryAddresses.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxMemoryAddresses.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxMemoryAddresses.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxMemoryAddresses.Location = new System.Drawing.Point(0, 0);
+            this.richTextBoxMemoryAddresses.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBoxMemoryAddresses.Name = "richTextBoxMemoryAddresses";
+            this.richTextBoxMemoryAddresses.ReadOnly = true;
+            this.richTextBoxMemoryAddresses.Size = new System.Drawing.Size(146, 346);
+            this.richTextBoxMemoryAddresses.TabIndex = 8;
+            this.richTextBoxMemoryAddresses.Text = "";
+            // 
+            // richTextBoxMemoryValues
+            // 
+            this.richTextBoxMemoryValues.BackColor = System.Drawing.SystemColors.Control;
+            this.richTextBoxMemoryValues.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxMemoryValues.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxMemoryValues.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxMemoryValues.Location = new System.Drawing.Point(0, 0);
+            this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
+            this.richTextBoxMemoryValues.ReadOnly = true;
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(554, 346);
+            this.richTextBoxMemoryValues.TabIndex = 8;
+            this.richTextBoxMemoryValues.Text = "";
             // 
             // watchVariablePanelMemory
             // 
@@ -11359,7 +11427,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(124, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(201, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -12513,7 +12581,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(187, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(102, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -12545,7 +12613,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(181, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(96, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -12601,7 +12669,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(181, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(96, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -14852,14 +14920,14 @@ namespace STROOP
             this.dataGridViewCoin.AllowUserToOrderColumns = true;
             this.dataGridViewCoin.AllowUserToResizeRows = false;
             this.dataGridViewCoin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewCoin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCoin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.rngIndex,
@@ -14880,8 +14948,8 @@ namespace STROOP
             // 
             // rngIndex
             // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle4;
             this.rngIndex.HeaderText = "RNG Index";
             this.rngIndex.MinimumWidth = 2;
             this.rngIndex.Name = "rngIndex";
@@ -14889,8 +14957,8 @@ namespace STROOP
             // 
             // rngValue
             // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngValue.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngValue.DefaultCellStyle = dataGridViewCellStyle5;
             this.rngValue.HeaderText = "RNG Value";
             this.rngValue.MinimumWidth = 2;
             this.rngValue.Name = "rngValue";
@@ -14898,8 +14966,8 @@ namespace STROOP
             // 
             // rngToGo
             // 
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle6;
             this.rngToGo.HeaderText = "RNG To Go";
             this.rngToGo.MinimumWidth = 2;
             this.rngToGo.Name = "rngToGo";
@@ -14907,24 +14975,24 @@ namespace STROOP
             // 
             // coinHSpeed
             // 
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle7;
             this.coinHSpeed.HeaderText = "Coin HSpeed";
             this.coinHSpeed.Name = "coinHSpeed";
             this.coinHSpeed.ReadOnly = true;
             // 
             // coinVSpeed
             // 
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle8;
             this.coinVSpeed.HeaderText = "Coin VSpeed";
             this.coinVSpeed.Name = "coinVSpeed";
             this.coinVSpeed.ReadOnly = true;
             // 
             // coinAngle
             // 
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle9;
             this.coinAngle.HeaderText = "Coin Angle";
             this.coinAngle.MinimumWidth = 2;
             this.coinAngle.Name = "coinAngle";
@@ -17012,18 +17080,6 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // pictureBoxCog
-            // 
-            this.pictureBoxCog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxCog.BackgroundImage = global::STROOP.Properties.Resources.cog;
-            this.pictureBoxCog.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBoxCog.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBoxCog.Location = new System.Drawing.Point(868, 11);
-            this.pictureBoxCog.Name = "pictureBoxCog";
-            this.pictureBoxCog.Size = new System.Drawing.Size(20, 20);
-            this.pictureBoxCog.TabIndex = 23;
-            this.pictureBoxCog.TabStop = false;
-            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -17055,6 +17111,7 @@ namespace STROOP
             this.Resize += new System.EventHandler(this.StroopMainForm_Resize);
             this.panelConnect.ResumeLayout(false);
             this.panelConnect.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).EndInit();
             this.splitContainerMain.Panel1.ResumeLayout(false);
             this.splitContainerMain.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).EndInit();
@@ -17393,10 +17450,18 @@ namespace STROOP
             this.groupBoxShowOverlay.PerformLayout();
             this.tabPageMemory.ResumeLayout(false);
             this.splitContainerMemory.Panel1.ResumeLayout(false);
-            this.splitContainerMemory.Panel1.PerformLayout();
             this.splitContainerMemory.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMemory)).EndInit();
             this.splitContainerMemory.ResumeLayout(false);
+            this.splitContainerMemoryControls.Panel1.ResumeLayout(false);
+            this.splitContainerMemoryControls.Panel1.PerformLayout();
+            this.splitContainerMemoryControls.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMemoryControls)).EndInit();
+            this.splitContainerMemoryControls.ResumeLayout(false);
+            this.splitContainerMemoryControlsDisplays.Panel1.ResumeLayout(false);
+            this.splitContainerMemoryControlsDisplays.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMemoryControlsDisplays)).EndInit();
+            this.splitContainerMemoryControlsDisplays.ResumeLayout(false);
             this.tabPagePu.ResumeLayout(false);
             this.splitContainerPu.Panel1.ResumeLayout(false);
             this.splitContainerPu.Panel2.ResumeLayout(false);
@@ -17539,7 +17604,6 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -18832,6 +18896,8 @@ namespace STROOP
         private BetterTextbox textBoxCoinCustomizatonStartingRngIndex;
         private Label labelCoinCustomizatonStartingRngIndex;
         private GroupBox groupBoxCoinCustomization;
+        private BetterSplitContainer splitContainerMemoryControls;
+        private BetterSplitContainer splitContainerMemoryControlsDisplays;
     }
 }
 

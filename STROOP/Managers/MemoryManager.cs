@@ -81,17 +81,21 @@ namespace STROOP.Managers
             _objectSpecificPrecursors = new List<WatchVariableControlPrecursor>();
 
             SplitContainer splitContainer = tabControl.Controls["splitContainerMemory"] as SplitContainer;
+            SplitContainer splitContainerMemoryControls =
+                splitContainer.Panel1.Controls["splitContainerMemoryControls"] as SplitContainer;
+            SplitContainer splitContainerMemoryControlsDisplays =
+                splitContainerMemoryControls.Panel2.Controls["splitContainerMemoryControlsDisplays"] as SplitContainer;
 
-            _textBoxMemoryObjAddress = splitContainer.Panel1.Controls["textBoxMemoryObjAddress"] as BetterTextbox;
-            _checkBoxMemoryUpdateContinuously = splitContainer.Panel1.Controls["checkBoxMemoryUpdateContinuously"] as CheckBox;
-            _checkBoxMemoryLittleEndian = splitContainer.Panel1.Controls["checkBoxMemoryLittleEndian"] as CheckBox;
-            _checkBoxMemoryRelativeAddresses = splitContainer.Panel1.Controls["checkBoxMemoryRelativeAddresses"] as CheckBox;
-            _comboBoxMemoryTypes = splitContainer.Panel1.Controls["comboBoxMemoryTypes"] as ComboBox;
-            _checkBoxMemoryHex = splitContainer.Panel1.Controls["checkBoxMemoryHex"] as CheckBox;
-            _checkBoxMemoryObj = splitContainer.Panel1.Controls["checkBoxMemoryObj"] as CheckBox;
+            _textBoxMemoryObjAddress = splitContainerMemoryControls.Panel1.Controls["textBoxMemoryObjAddress"] as BetterTextbox;
+            _checkBoxMemoryUpdateContinuously = splitContainerMemoryControls.Panel1.Controls["checkBoxMemoryUpdateContinuously"] as CheckBox;
+            _checkBoxMemoryLittleEndian = splitContainerMemoryControls.Panel1.Controls["checkBoxMemoryLittleEndian"] as CheckBox;
+            _checkBoxMemoryRelativeAddresses = splitContainerMemoryControls.Panel1.Controls["checkBoxMemoryRelativeAddresses"] as CheckBox;
+            _comboBoxMemoryTypes = splitContainerMemoryControls.Panel1.Controls["comboBoxMemoryTypes"] as ComboBox;
+            _checkBoxMemoryHex = splitContainerMemoryControls.Panel1.Controls["checkBoxMemoryHex"] as CheckBox;
+            _checkBoxMemoryObj = splitContainerMemoryControls.Panel1.Controls["checkBoxMemoryObj"] as CheckBox;
 
-            _richTextBoxMemoryAddresses = splitContainer.Panel1.Controls["richTextBoxMemoryAddresses"] as RichTextBoxEx;
-            _richTextBoxMemoryValues = splitContainer.Panel1.Controls["richTextBoxMemoryValues"] as RichTextBoxEx;
+            _richTextBoxMemoryAddresses = splitContainerMemoryControlsDisplays.Panel1.Controls["richTextBoxMemoryAddresses"] as RichTextBoxEx;
+            _richTextBoxMemoryValues = splitContainerMemoryControlsDisplays.Panel2.Controls["richTextBoxMemoryValues"] as RichTextBoxEx;
 
             _comboBoxMemoryTypes.DataSource = TypeUtilities.SimpleTypeList;
 
