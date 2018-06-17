@@ -453,8 +453,8 @@ namespace STROOP.Managers
             {
                 string whiteSpace = " ";
                 if (i % 4 == 0) whiteSpace = "  ";
-                if (i % 16 == 0) whiteSpace = "\n";
-                if (i == 0) whiteSpace = "";
+                if (i % 16 == 0) whiteSpace = "\n ";
+                if (i == 0) whiteSpace = " ";
                 stringList.Add(whiteSpace);
 
                 object value = TypeUtilities.ConvertBytes(type, bytes, i, isLittleEndian);
