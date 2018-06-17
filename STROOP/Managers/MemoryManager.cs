@@ -194,6 +194,7 @@ namespace STROOP.Managers
             bool isAltKeyHeld = KeyboardUtilities.IsAltHeld();
             if (!isCtrlKeyHeld) return;
             int index = _richTextBoxMemoryValues.SelectionStart;
+            bool useObjAddress = _checkBoxMemoryUseObjAddress.Checked;
             bool useHex = _checkBoxMemoryHex.Checked;
             bool useObj = _checkBoxMemoryObj.Checked;
             if (isAltKeyHeld)
@@ -207,7 +208,7 @@ namespace STROOP.Managers
             else
             {
                 _currentValueTexts.ForEach(valueText =>
-                    valueText.AddVariableIfSelected(index, useHex, useObj));
+                    valueText.AddVariableIfSelected(index, useObjAddress, useHex, useObj));
             }
             _richTextBoxMemoryValues.Parent.Focus();
         }
@@ -218,14 +219,22 @@ namespace STROOP.Managers
             public readonly int ByteSize;
             public readonly int StringIndex;
             public readonly int StringSize;
+            private readonly uint MemoryAddress;
             private readonly Type MemoryType;
             
-            public ValueText(int byteIndex, int byteSize, int stringIndex, int stringSize, Type memoryType)
+            public ValueText(
+                int byteIndex,
+                int byteSize,
+                int stringIndex,
+                int stringSize,
+                uint memoryAddress,
+                Type memoryType)
             {
                 ByteIndex = byteIndex;
                 ByteSize = byteSize;
                 StringIndex = stringIndex;
                 StringSize = stringSize;
+                MemoryAddress = memoryAddress;
                 MemoryType = memoryType;
             }
 
@@ -273,21 +282,21 @@ namespace STROOP.Managers
                 });
             }
 
-            public void AddVariableIfSelected(int selectedIndex, bool useHex, bool useObj)
+            public void AddVariableIfSelected(int selectedIndex, bool useObjAddress, bool useHex, bool useObj)
             {
                 if (selectedIndex >= StringIndex && selectedIndex <= StringIndex + StringSize)
                 {
-                    AddVariable(useHex, useObj);
+                    AddVariable(useObjAddress, useHex, useObj);
                 }
             }
 
-            private void AddVariable(bool useHex, bool useObj)
+            private void AddVariable(bool useObjAddress, bool useHex, bool useObj)
             {
-                WatchVariableControlPrecursor precursor = CreatePrecursor(useHex, useObj);
+                WatchVariableControlPrecursor precursor = CreatePrecursor(useObjAddress, useHex, useObj);
                 Config.MemoryManager.AddVariable(precursor.CreateWatchVariableControl());
             }
 
-            private WatchVariableControlPrecursor CreatePrecursor(bool useHex, bool useObj)
+            private WatchVariableControlPrecursor CreatePrecursor(bool useObjAddress, bool useHex, bool useObj)
             {
                 WatchVariableSubclass subclass = useObj
                     ? WatchVariableSubclass.Object
@@ -307,20 +316,24 @@ namespace STROOP.Managers
                 string typeString = TypeUtilities.TypeToString[effectiveType];
 
                 bool? hexValue = null;
-                if (useHex && MemoryType != typeof(float)) hexValue = true;
+                if (useHex) hexValue = true;
                 if (isObjectOrTriangle) hexValue = null;
+
+                BaseAddressTypeEnum baseAddressType =
+                    useObjAddress ? BaseAddressTypeEnum.Object : BaseAddressTypeEnum.Relative;
+                uint offset = useObjAddress ? (uint)ByteIndex : MemoryAddress; 
 
                 WatchVariable watchVar = new WatchVariable(
                     typeString,
                     null /* specialType */,
-                    BaseAddressTypeEnum.Object,
+                    baseAddressType,
                     null /* offsetUS */,
                     null /* offsetJP */,
                     null /* offsetPAL */,
-                    (uint) ByteIndex,
+                    offset,
                     null /* mask */);
                 return new WatchVariableControlPrecursor(
-                    typeString + " " + HexUtilities.FormatValue(ByteIndex),
+                    typeString + " " + HexUtilities.FormatValue(offset),
                     watchVar,
                     subclass,
                     null /* backgroundColor */,
@@ -370,7 +383,7 @@ namespace STROOP.Managers
             // update memory values + highlighting
             int initialSelectionStart = _richTextBoxMemoryValues.SelectionStart;
             int initialSelectionLength = _richTextBoxMemoryValues.SelectionLength;
-            _richTextBoxMemoryValues.Text = FormatValues(bytes, type, littleEndian, useHex, useObj);
+            _richTextBoxMemoryValues.Text = FormatValues(bytes, address.Value, type, littleEndian, useHex, useObj);
             _currentValueTexts.ForEach(valueText =>
             {
                 // Mem tab var
@@ -434,7 +447,8 @@ namespace STROOP.Managers
             return builder.ToString();
         }
 
-        private string FormatValues(byte[] bytes, Type type, bool isLittleEndian, bool useHex, bool useObj)
+        private string FormatValues(
+            byte[] bytes, uint baseAddress, Type type, bool isLittleEndian, bool useHex, bool useObj)
         {
             int typeSize = TypeUtilities.TypeSize[type];
             List<string> stringList = new List<string>();
@@ -490,6 +504,7 @@ namespace STROOP.Managers
                             typeSize,
                             totalLength - trimmedLength,
                             trimmedLength,
+                            baseAddress + (uint)byteIndexEndian,
                             type);
                     _currentValueTexts.Add(valueText);
                 }
