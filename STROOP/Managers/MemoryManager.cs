@@ -128,14 +128,27 @@ namespace STROOP.Managers
             _richTextBoxMemoryValues.Click += (sender, e) => MemoryValueClick();
 
             _textBoxMemoryBaseAddress.AddEnterAction(() =>
-            {
-                uint? address = ParsingUtilities.ParseHexNullable(_textBoxMemoryBaseAddress.Text);
-                if (address.HasValue)
-                {
-                    _checkBoxMemoryUseObjAddress.Checked = false;
-                    Address = address;
-                }
-            });
+                SetCustomAddress(ParsingUtilities.ParseHexNullable(_textBoxMemoryBaseAddress.Text)));
+
+            _buttonMemoryMoveUp.Click += (sender, e) => ScrollMemory(-1);
+            _buttonMemoryMoveDown.Click += (sender, e) => ScrollMemory(1);
+        }
+
+        private void ScrollMemory(int numLines)
+        {
+            uint? address = Address;
+            if (!address.HasValue) return;
+
+            int addressOffset = numLines * 0x10;
+            uint newAddress = (uint)(address.Value + addressOffset);
+            SetCustomAddress(newAddress);
+        }
+
+        private void SetCustomAddress(uint? address)
+        {
+            if (!address.HasValue) return;
+            _checkBoxMemoryUseObjAddress.Checked = false;
+            Address = address.Value;
         }
 
         private uint? GetObjectRelativeAddress(uint absoluteAddress)
