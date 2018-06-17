@@ -116,8 +116,8 @@ namespace STROOP.Managers
             // Set up controls
             _comboBoxMemoryTypes.DataSource = TypeUtilities.SimpleTypeList;
 
-            _checkBoxMemoryLittleEndian.Click += (sender, e) => UpdateDisplay();
-            _comboBoxMemoryTypes.SelectedValueChanged += (sender, e) => UpdateDisplay();
+            _checkBoxMemoryLittleEndian.Click += (sender, e) => UpdateHexDisplay();
+            _comboBoxMemoryTypes.SelectedValueChanged += (sender, e) => UpdateHexDisplay();
 
             _richTextBoxMemoryValues.Click += (sender, e) => MemoryValueClick();
 
@@ -285,7 +285,7 @@ namespace STROOP.Managers
             }
         }
 
-        public void UpdateDisplay()
+        public void UpdateHexDisplay()
         {
             uint? address = Address;
             if (!address.HasValue)
@@ -453,7 +453,7 @@ namespace STROOP.Managers
 
             if (_checkBoxMemoryUpdateContinuously.Checked)
             {
-                UpdateDisplay();
+                UpdateHexDisplay();
             }
         }
     }
