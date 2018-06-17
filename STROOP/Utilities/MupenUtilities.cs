@@ -18,7 +18,7 @@ namespace STROOP.Utilities
                 {
                     case "mupen64-rerecording":
                         return (UIntPtr)0x0047A7A4;
-                    case "mupen64_lua":
+                    case "mupen64-lua":
                         return (UIntPtr)0x004D614C;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -33,7 +33,7 @@ namespace STROOP.Utilities
                 {
                     case "mupen64-rerecording":
                         return (UIntPtr)0x0047A7A0;
-                    case "mupen64_lua":
+                    case "mupen64-lua":
                         return (UIntPtr)0x004D6150;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -72,7 +72,7 @@ namespace STROOP.Utilities
         public static bool IsUsingMupen()
         {
             return Config.Stream.ProcessName == "mupen64-rerecording" ||
-                Config.Stream.ProcessName == "mupen64_lua";
+                Config.Stream.ProcessName == "mupen64-lua";
         }
 
     }
