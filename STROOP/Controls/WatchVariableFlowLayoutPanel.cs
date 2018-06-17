@@ -211,6 +211,7 @@ namespace STROOP.Controls
             ToolStripMenuItem itemConstrainToOneRevolution = new ToolStripMenuItem("Angle: Constrain to One Revolution...");
 
             ToolStripMenuItem itemDelete = new ToolStripMenuItem("Delete");
+            ToolStripMenuItem itemMove = new ToolStripMenuItem("Move");
             ToolStripMenuItem itemOpenController = new ToolStripMenuItem("Open Controller");
             ToolStripMenuItem itemAddToCustomTab = new ToolStripMenuItem("Add to Custom Tab");
 
@@ -225,6 +226,7 @@ namespace STROOP.Controls
             SelectedContextMenuStrip.Items.Add(itemAngleTruncateToMultipleOf16);
             SelectedContextMenuStrip.Items.Add(itemConstrainToOneRevolution);
             SelectedContextMenuStrip.Items.Add(itemDelete);
+            SelectedContextMenuStrip.Items.Add(itemMove);
             SelectedContextMenuStrip.Items.Add(itemOpenController);
             SelectedContextMenuStrip.Items.Add(itemAddToCustomTab);
         }
