@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using STROOP.Forms;
+using STROOP.Managers;
 using STROOP.Structs;
-using System.Windows.Input;
-using System.Xml.Linq;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
-using System.Drawing.Drawing2D;
-using STROOP.Managers;
-using STROOP.Forms;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
+using System.Windows.Input;
+using System.Xml.Linq;
 
 namespace STROOP.Controls
 {
@@ -145,8 +140,8 @@ namespace STROOP.Controls
         private static readonly Image _disabledLockImage = Properties.Resources.lock_blue;
         private static readonly Image _pinnedImage = Properties.Resources.img_pin;
 
-        public static bool LeftFlush = false;
-        private bool _leftFlush;
+        public static bool RightFlush = true;
+        private bool _rightFlush;
 
         private static readonly int PIN_OUTER_PADDING = 11;
         private static readonly int PIN_INNER_PADDING = 24;
@@ -205,7 +200,7 @@ namespace STROOP.Controls
             _flashStartTime = DateTime.Now;
 
             // Initialize flush/size fields
-            _leftFlush = false;
+            _rightFlush = true;
             _variableNameWidth = 0;
             _variableValueWidth = 0;
             _variableHeight = 0;
@@ -554,13 +549,13 @@ namespace STROOP.Controls
 
         private void UpdateFlush()
         {
-            if (_leftFlush == LeftFlush) return;
+            if (_rightFlush == RightFlush) return;
 
-            _leftFlush = LeftFlush;
+            _rightFlush = RightFlush;
 
-            _valueTextBox.TextAlign = _leftFlush ? HorizontalAlignment.Left : HorizontalAlignment.Right;
-            _valueTextBox.Left = _leftFlush ? VALUE_TEXTBOX_MARGIN : 0;
-            _valueCheckBox.CheckAlign = _leftFlush ? ContentAlignment.MiddleLeft : ContentAlignment.MiddleRight;
+            _valueTextBox.TextAlign = _rightFlush ? HorizontalAlignment.Right : HorizontalAlignment.Left;
+            _valueTextBox.Left = _rightFlush ? 0 : VALUE_TEXTBOX_MARGIN;
+            _valueCheckBox.CheckAlign = _rightFlush ? ContentAlignment.MiddleRight : ContentAlignment.MiddleLeft;
         }
 
         private void UpdateSize()
