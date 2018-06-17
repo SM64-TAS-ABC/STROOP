@@ -17,9 +17,13 @@ namespace STROOP.Managers
     public class MemoryManager : DataManager
     {
         private readonly BetterTextbox _textBoxMemoryBaseAddress;
-        private readonly CheckBox _checkBoxMemoryUpdateContinuously;
+        private readonly BetterTextbox _textBoxMemoryMemorySize;
+
         private readonly CheckBox _checkBoxMemoryLittleEndian;
         private readonly CheckBox _checkBoxMemoryRelativeAddresses;
+        private readonly CheckBox _checkBoxMemoryUpdateContinuously;
+        private readonly CheckBox _checkBoxMemoryHighlightObjVars;
+
         private readonly ComboBox _comboBoxMemoryTypes;
         private readonly CheckBox _checkBoxMemoryHex;
         private readonly CheckBox _checkBoxMemoryObj;
@@ -87,9 +91,13 @@ namespace STROOP.Managers
                 splitContainerMemoryControls.Panel2.Controls["splitContainerMemoryControlsDisplays"] as SplitContainer;
 
             _textBoxMemoryBaseAddress = splitContainerMemoryControls.Panel1.Controls["textBoxMemoryBaseAddress"] as BetterTextbox;
-            _checkBoxMemoryUpdateContinuously = splitContainerMemoryControls.Panel1.Controls["checkBoxMemoryUpdateContinuously"] as CheckBox;
+            _textBoxMemoryMemorySize = splitContainerMemoryControls.Panel1.Controls["textBoxMemoryMemorySize"] as BetterTextbox;
+            
             _checkBoxMemoryLittleEndian = splitContainerMemoryControls.Panel1.Controls["checkBoxMemoryLittleEndian"] as CheckBox;
             _checkBoxMemoryRelativeAddresses = splitContainerMemoryControls.Panel1.Controls["checkBoxMemoryRelativeAddresses"] as CheckBox;
+            _checkBoxMemoryUpdateContinuously = splitContainerMemoryControls.Panel1.Controls["checkBoxMemoryUpdateContinuously"] as CheckBox;
+            _checkBoxMemoryHighlightObjVars = splitContainerMemoryControls.Panel1.Controls["checkBoxMemoryHighlightObjVars"] as CheckBox;
+
             _comboBoxMemoryTypes = splitContainerMemoryControls.Panel1.Controls["comboBoxMemoryTypes"] as ComboBox;
             _checkBoxMemoryHex = splitContainerMemoryControls.Panel1.Controls["checkBoxMemoryHex"] as CheckBox;
             _checkBoxMemoryObj = splitContainerMemoryControls.Panel1.Controls["checkBoxMemoryObj"] as CheckBox;
