@@ -82,7 +82,7 @@ namespace STROOP.Managers
             }
         }
 
-        private static readonly int _memorySize = (int)ObjectConfig.StructSize;
+        private static uint MemorySize = ObjectConfig.StructSize;
 
         public MemoryManager(TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel, string varFilePath)
             : base(null, watchVariablePanel)
@@ -163,7 +163,7 @@ namespace STROOP.Managers
         private void SetCustomAddress(uint? address)
         {
             if (!address.HasValue) return;
-            if (address < 0x80000000 || address + _memorySize >= 0x80000000 + Config.RamSize) return;
+            if (address < 0x80000000 || address + MemorySize >= 0x80000000 + Config.RamSize) return;
             _checkBoxMemoryUseObjAddress.Checked = false;
             Address = address.Value;
         }
@@ -171,8 +171,9 @@ namespace STROOP.Managers
         public void SetObjectAddress(uint? address)
         {
             if (!address.HasValue) return;
-            if (!_checkBoxMemoryUseObjAddress.Checked) return;
+            _checkBoxMemoryUseObjAddress.Checked = true;
             Address = address.Value;
+            MemorySize = ObjectConfig.StructSize;
         }
 
         private void MemoryValueClick()
@@ -363,7 +364,7 @@ namespace STROOP.Managers
             {
                 Behavior = null;
             }
-            byte[] bytes = Config.Stream.ReadRam(address.Value, _memorySize, EndiannessType.Big);
+            byte[] bytes = Config.Stream.ReadRam(address.Value, (int)MemorySize, EndiannessType.Big);
 
             // read settings from controls
             bool littleEndian = _checkBoxMemoryLittleEndian.Checked;
@@ -375,7 +376,7 @@ namespace STROOP.Managers
             bool useObj = _checkBoxMemoryObj.Checked;
 
             // update memory addresses
-            _richTextBoxMemoryAddresses.Text = FormatAddresses(startAddress, _memorySize);
+            _richTextBoxMemoryAddresses.Text = FormatAddresses(startAddress, (int)MemorySize);
 
             // update memory values + highlighting
             int initialSelectionStart = _richTextBoxMemoryValues.SelectionStart;
