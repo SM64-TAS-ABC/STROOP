@@ -42,6 +42,7 @@ namespace STROOP.Controls
             _reorderingWatchVarControl = null;
 
             Click += (sender, e) => UnselectAllVariables();
+            ContextMenuStrip.Opening += (sender, e) => UnselectAllVariables();
         }
 
         public void Initialize(
@@ -382,7 +383,7 @@ namespace STROOP.Controls
             AddVariables(precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
         }
 
-        private void UnselectAllVariables()
+        public void UnselectAllVariables()
         {
             GetCurrentlySelectedVariableControls().ForEach(control => control.IsSelected = false);
         }

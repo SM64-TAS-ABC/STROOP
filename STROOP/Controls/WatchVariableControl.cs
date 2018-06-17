@@ -219,16 +219,21 @@ namespace STROOP.Controls
             SetUseCheckbox(_watchVarWrapper.StartsAsCheckbox());
 
             // Add functions
-            _namePanel.Click += (sender, e) => OnNameTextBoxClick();
-            _nameTextBox.Click += (sender, e) => OnNameTextBoxClick();
+            _namePanel.Click += (sender, e) => OnVariableClick();
             _namePanel.DoubleClick += (sender, e) => OnNameTextBoxDoubleClick();
-            _nameTextBox.DoubleClick += (sender, e) => OnNameTextBoxDoubleClick();
 
+            _nameTextBox.Click += (sender, e) => OnVariableClick();
+            _nameTextBox.DoubleClick += (sender, e) => OnNameTextBoxDoubleClick();
             _nameTextBox.Leave += (sender, e) => { RenameMode = false; };
             _nameTextBox.KeyDown += (sender, e) => OnNameTextValueKeyDown(e);
+
+            _valuePanel.Click += (sender, e) => OnVariableClick();
+
+            _valueTextBox.Click += (sender, e) => _watchVariablePanel.UnselectAllVariables();
             _valueTextBox.DoubleClick += (sender, e) => { EditMode = true; };
             _valueTextBox.KeyDown += (sender, e) => OnValueTextValueKeyDown(e);
             _valueTextBox.Leave += (sender, e) => { EditMode = false; };
+
             _valueCheckBox.Click += (sender, e) => OnCheckboxClick();
         }
         
@@ -268,7 +273,7 @@ namespace STROOP.Controls
             }
         }
 
-        private void OnNameTextBoxClick()
+        private void OnVariableClick()
         {
             this.Focus();
 
