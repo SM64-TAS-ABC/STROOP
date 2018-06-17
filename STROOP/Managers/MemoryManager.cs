@@ -303,29 +303,35 @@ namespace STROOP.Managers
             uint? address = Address;
             if (!address.HasValue)
             {
-                _textBoxMemoryBaseAddress.Text = HexUtilities.FormatValue(0, 8);
                 _richTextBoxMemoryAddresses.Text = "";
                 _richTextBoxMemoryValues.Text = "";
                 return;
             }
 
             // read from memory
-            Behavior = new ObjectDataModel(address.Value).BehaviorCriteria; 
+            if (GetObjectRelativeAddress(address.Value) == 0)
+            {
+                Behavior = new ObjectDataModel(address.Value).BehaviorCriteria;
+            }
+            else
+            {
+                Behavior = null;
+            }
             byte[] bytes = Config.Stream.ReadRam(address.Value, _memorySize, EndiannessType.Big);
 
             // read settings from controls
             bool littleEndian = _checkBoxMemoryLittleEndian.Checked;
             bool relativeAddresses = _checkBoxMemoryRelativeAddresses.Checked;
             uint startAddress = relativeAddresses ? 0 : address.Value;
+            bool highlightObjVars = _checkBoxMemoryHighlightObjVars.Checked;
             Type type = TypeUtilities.StringToType[(string)_comboBoxMemoryTypes.SelectedItem];
             bool useHex = _checkBoxMemoryHex.Checked;
             bool useObj = _checkBoxMemoryObj.Checked;
 
-            // update control text
-            _textBoxMemoryBaseAddress.Text = HexUtilities.FormatValue(address.Value, 8);
+            // update memory addresses
             _richTextBoxMemoryAddresses.Text = FormatAddresses(startAddress, _memorySize);
 
-            // highlight value texts
+            // update memory values + highlighting
             int initialSelectionStart = _richTextBoxMemoryValues.SelectionStart;
             int initialSelectionLength = _richTextBoxMemoryValues.SelectionLength;
             _richTextBoxMemoryValues.Text = FormatValues(bytes, type, littleEndian, useHex, useObj);
@@ -338,13 +344,13 @@ namespace STROOP.Managers
                         valueText.StringIndex, valueText.StringSize, Color.LightBlue);
                 }
                 // Specific object var
-                else if (valueText.OverlapsData(_objectSpecificPrecursors))
+                else if (highlightObjVars && valueText.OverlapsData(_objectSpecificPrecursors))
                 {
                     _richTextBoxMemoryValues.SetBackColor(
                         valueText.StringIndex, valueText.StringSize, Color.LightGreen);
                 }
                 // Generic object var
-                else if (valueText.OverlapsData(_objectPrecursors))
+                else if (highlightObjVars && valueText.OverlapsData(_objectPrecursors))
                 {
                     _richTextBoxMemoryValues.SetBackColor(
                         valueText.StringIndex, valueText.StringSize, Color.LightPink);
