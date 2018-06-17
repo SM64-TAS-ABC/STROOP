@@ -145,8 +145,7 @@ namespace STROOP.Controls
         private static readonly Image _disabledLockImage = Properties.Resources.lock_blue;
         private static readonly Image _pinnedImage = Properties.Resources.img_pin;
 
-        private static readonly bool DEFAULT_LEFT_FLUSH = false;
-        public static bool LeftFlush = DEFAULT_LEFT_FLUSH;
+        public static bool LeftFlush = false;
         private bool _leftFlush;
 
         private static readonly int PIN_OUTER_PADDING = 11;
@@ -206,7 +205,7 @@ namespace STROOP.Controls
             _flashStartTime = DateTime.Now;
 
             // Initialize flush/size fields
-            _leftFlush = DEFAULT_LEFT_FLUSH;
+            _leftFlush = false;
             _variableNameWidth = 0;
             _variableValueWidth = 0;
             _variableHeight = 0;
