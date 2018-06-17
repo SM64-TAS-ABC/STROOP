@@ -24,7 +24,10 @@ namespace STROOP.Controls
         private readonly ContextMenuStrip _valueTextboxContextMenuStrip;
         private readonly ContextMenuStrip _nameTextboxContextMenuStrip;
         private readonly ContextMenuStrip _variableContextMenuStrip;
+        private readonly List<ToolStripItem> _variableContextMenuStripItems;
+
         private ContextMenuStrip _selectionContextMenuStrip;
+        private readonly List<ToolStripItem> _selectionContextMenuStripItems;
 
         // Parent control
         private WatchVariableFlowLayoutPanel _watchVariablePanel;
@@ -224,6 +227,12 @@ namespace STROOP.Controls
             _valueTextboxContextMenuStrip = _valueTextBox.ContextMenuStrip;
             _nameTextboxContextMenuStrip = _nameTextBox.ContextMenuStrip;
             _variableContextMenuStrip = _watchVarWrapper.GetContextMenuStrip();
+            _variableContextMenuStripItems = new List<ToolStripItem>();
+            foreach (ToolStripItem item in _variableContextMenuStrip.Items)
+            {
+                _variableContextMenuStripItems.Add(item);
+            }
+            _selectionContextMenuStripItems = new List<ToolStripItem>();
 
             ContextMenuStrip = _variableContextMenuStrip;
             _nameTextBox.ContextMenuStrip = _variableContextMenuStrip;
@@ -249,6 +258,7 @@ namespace STROOP.Controls
             _valueTextBox.Leave += (sender, e) => { EditMode = false; };
 
             _valueCheckBox.Click += (sender, e) => OnCheckboxClick();
+
         }
         
         public void SetUseCheckbox(bool useCheckbox)
@@ -666,6 +676,14 @@ namespace STROOP.Controls
         {
             _watchVariablePanel = panel;
             _selectionContextMenuStrip = panel?.GetSelectionContextMenuStrip();
+            if (_selectionContextMenuStrip != null)
+            {
+                _selectionContextMenuStripItems.Clear();
+                foreach (ToolStripItem item in _selectionContextMenuStrip.Items)
+                {
+                    _selectionContextMenuStripItems.Add(item);
+                }
+            }
         }
 
         public void DeleteFromPanel()
