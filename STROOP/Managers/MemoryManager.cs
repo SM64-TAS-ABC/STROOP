@@ -55,8 +55,18 @@ namespace STROOP.Managers
             set
             {
                 _address = value;
-                _textBoxMemoryBaseAddress.Text =
-                    _address.HasValue ? HexUtilities.FormatValue(_address.Value, 8) : "";
+                RefreshAddressTextbox();
+            }
+        }
+
+        private uint _memorySize;
+        private uint MemorySize
+        {
+            get => _memorySize;
+            set
+            {
+                _memorySize = value;
+                RefreshMemorySizeTextbox();
             }
         }
 
@@ -82,13 +92,12 @@ namespace STROOP.Managers
             }
         }
 
-        private static uint MemorySize = ObjectConfig.StructSize;
-
         public MemoryManager(TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel, string varFilePath)
             : base(null, watchVariablePanel)
         {
             // Initialize fields
             _address = null;
+            _memorySize = ObjectConfig.StructSize;
             _behavior = null;
 
             _currentValueTexts = new List<ValueText>();
@@ -133,6 +142,8 @@ namespace STROOP.Managers
 
             _textBoxMemoryBaseAddress.AddEnterAction(() =>
                 SetCustomAddress(ParsingUtilities.ParseHexNullable(_textBoxMemoryBaseAddress.Text)));
+            _textBoxMemoryMemorySize.AddEnterAction(() =>
+                SetCustomMemorySize(ParsingUtilities.ParseHexNullable(_textBoxMemoryMemorySize.Text)));
 
             _buttonMemoryMoveUpOnce.Click += (sender, e) => ScrollMemory(-1);
             _buttonMemoryMoveDownOnce.Click += (sender, e) => ScrollMemory(1);
@@ -162,10 +173,40 @@ namespace STROOP.Managers
 
         private void SetCustomAddress(uint? address)
         {
-            if (!address.HasValue) return;
-            if (address < 0x80000000 || address + MemorySize >= 0x80000000 + Config.RamSize) return;
+            if (!address.HasValue) 
+            {
+                RefreshAddressTextbox();
+                return;
+            }
+            if (address < 0x80000000 || address + MemorySize >= 0x80000000 + Config.RamSize)
+            {
+                RefreshAddressTextbox();
+                return;
+            }
             _checkBoxMemoryUseObjAddress.Checked = false;
             Address = address.Value;
+        }
+
+        private void SetCustomMemorySize(uint? memorySize)
+        {
+            if (!memorySize.HasValue)
+            {
+                RefreshMemorySizeTextbox();
+                return;
+            }
+            memorySize = memorySize.Value / 16 * 16;
+            if (memorySize.Value == 0)
+            {
+                RefreshMemorySizeTextbox();
+                return;
+            }
+            if (Address + memorySize.Value >= 0x80000000 + Config.RamSize)
+            {
+                RefreshMemorySizeTextbox();
+                return;
+            }
+            _checkBoxMemoryUseObjAddress.Checked = false;
+            MemorySize = memorySize.Value;
         }
 
         public void SetObjectAddress(uint? address)
@@ -174,6 +215,17 @@ namespace STROOP.Managers
             _checkBoxMemoryUseObjAddress.Checked = true;
             Address = address.Value;
             MemorySize = ObjectConfig.StructSize;
+        }
+
+        private void RefreshAddressTextbox()
+        {
+            _textBoxMemoryBaseAddress.Text =
+                _address.HasValue ? HexUtilities.FormatValue(_address.Value, 8) : "";
+        }
+
+        private void RefreshMemorySizeTextbox()
+        {
+            _textBoxMemoryMemorySize.Text = HexUtilities.FormatValue(_memorySize);
         }
 
         private void MemoryValueClick()
