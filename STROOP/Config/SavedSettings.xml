@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SavedSettings>
   <DisplayYawAnglesAsUnsigned>true</DisplayYawAnglesAsUnsigned>
+  <VariableValuesFlushRight>true</VariableValuesFlushRight>
   <StartSlotIndexsFromOne>true</StartSlotIndexsFromOne>
   <OffsetGotoRetrieveFunctions>true</OffsetGotoRetrieveFunctions>
   <MoveCameraWithPu>true</MoveCameraWithPu>

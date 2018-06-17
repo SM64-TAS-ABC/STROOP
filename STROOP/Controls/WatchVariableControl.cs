@@ -140,7 +140,6 @@ namespace STROOP.Controls
         private static readonly Image _disabledLockImage = Properties.Resources.lock_blue;
         private static readonly Image _pinnedImage = Properties.Resources.img_pin;
 
-        public static bool RightFlush = true;
         private bool _rightFlush;
 
         private static readonly int PIN_OUTER_PADDING = 11;
@@ -549,9 +548,9 @@ namespace STROOP.Controls
 
         private void UpdateFlush()
         {
-            if (_rightFlush == RightFlush) return;
+            if (_rightFlush == SavedSettingsConfig.VariableValuesFlushRight) return;
 
-            _rightFlush = RightFlush;
+            _rightFlush = SavedSettingsConfig.VariableValuesFlushRight;
 
             _valueTextBox.TextAlign = _rightFlush ? HorizontalAlignment.Right : HorizontalAlignment.Left;
             _valueTextBox.Left = _rightFlush ? 0 : VALUE_TEXTBOX_MARGIN;

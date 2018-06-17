@@ -114,6 +114,9 @@ namespace STROOP.Utilities
                     case "DisplayYawAnglesAsUnsigned":
                         SavedSettingsConfig.DisplayYawAnglesAsUnsigned = bool.Parse(element.Value);
                         break;
+                    case "VariableValuesFlushRight":
+                        SavedSettingsConfig.VariableValuesFlushRight = bool.Parse(element.Value);
+                        break;
                     case "StartSlotIndexsFromOne":
                         SavedSettingsConfig.StartSlotIndexsFromOne = bool.Parse(element.Value);
                         break;

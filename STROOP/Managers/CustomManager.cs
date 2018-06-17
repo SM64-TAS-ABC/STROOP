@@ -80,13 +80,7 @@ namespace STROOP.Managers
             _recordFreq = 1;
 
             // Panel 2 controls
-
-            RadioButton radioButtonCustomTabFlushLeft = splitContainerCustomControls.Panel2.Controls["radioButtonCustomTabFlushLeft"] as RadioButton;
-            radioButtonCustomTabFlushLeft.Click += (sender, e) => WatchVariableControl.RightFlush = false;
-
-            RadioButton radioButtonCustomTabFlushRight = splitContainerCustomControls.Panel2.Controls["radioButtonCustomTabFlushRight"] as RadioButton;
-            radioButtonCustomTabFlushRight.Click += (sender, e) => WatchVariableControl.RightFlush = true;
-
+            
             Button buttonResetVariableSizeToDefault = splitContainerCustomControls.Panel2.Controls["buttonResetVariableSizeToDefault"] as Button;
             buttonResetVariableSizeToDefault.Click += (sender, e) =>
             {

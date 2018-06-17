@@ -29,6 +29,18 @@ namespace STROOP.Structs.Configurations
             }
         }
 
+        private static bool _variableValuesFlushRight;
+        public static bool VariableValuesFlushRight
+        {
+            get => _variableValuesFlushRight;
+            set
+            {
+                if (_variableValuesFlushRight == value) return;
+                _variableValuesFlushRight = value;
+                if (IsLoaded) Save();
+            }
+        }
+
         private static bool _startSlotIndexsFromOne;
         public static bool StartSlotIndexsFromOne
         {
@@ -222,6 +234,7 @@ namespace STROOP.Structs.Configurations
             return new List<XElement>
             {
                 new XElement("DisplayYawAnglesAsUnsigned", _displayYawAnglesAsUnsigned),
+                new XElement("VariableValuesFlushRight", _variableValuesFlushRight),
                 new XElement("StartSlotIndexsFromOne", _startSlotIndexsFromOne),
                 new XElement("OffsetGotoRetrieveFunctions", _offsetGotoRetrieveFunctions),
                 new XElement("MoveCameraWithPu", _moveCameraWithPu),
@@ -244,6 +257,7 @@ namespace STROOP.Structs.Configurations
         public static void ResetSavedSettings()
         {
             _displayYawAnglesAsUnsigned = true;
+            _variableValuesFlushRight = true;
             _startSlotIndexsFromOne = true;
             _offsetGotoRetrieveFunctions = true;
             _moveCameraWithPu = true;

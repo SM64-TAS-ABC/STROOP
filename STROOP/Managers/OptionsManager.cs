@@ -23,6 +23,7 @@ namespace STROOP.Managers
             _savedSettingsTextList = new List<string>()
             {
                 "Display Yaw Angles as Unsigned",
+                "Variable Values Flush Right",
                 "Start Slot Index From 1",
                 "Offset Goto/Retrieve Functions",
                 "PU Controller Moves Camera",
@@ -37,6 +38,7 @@ namespace STROOP.Managers
             _savedSettingsGetterList = new List<Func<bool>>()
             {
                 () => SavedSettingsConfig.DisplayYawAnglesAsUnsigned,
+                () => SavedSettingsConfig.VariableValuesFlushRight,
                 () => SavedSettingsConfig.StartSlotIndexsFromOne,
                 () => SavedSettingsConfig.OffsetGotoRetrieveFunctions,
                 () => SavedSettingsConfig.MoveCameraWithPu,
@@ -51,6 +53,7 @@ namespace STROOP.Managers
             _savedSettingsSetterList = new List<Action<bool>>()
             {
                 (bool value) => SavedSettingsConfig.DisplayYawAnglesAsUnsigned = value,
+                (bool value) => SavedSettingsConfig.VariableValuesFlushRight = value,
                 (bool value) => SavedSettingsConfig.StartSlotIndexsFromOne = value,
                 (bool value) => SavedSettingsConfig.OffsetGotoRetrieveFunctions = value,
                 (bool value) => SavedSettingsConfig.MoveCameraWithPu = value,
