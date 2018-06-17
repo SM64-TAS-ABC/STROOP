@@ -26,8 +26,7 @@ namespace STROOP.Controls
         private List<ToolStripMenuItem> _filteringDropDownItems;
 
         private WatchVariableControl _reorderingWatchVarControl;
-
-        public ContextMenuStrip SelectedContextMenuStrip;
+        private ContextMenuStrip _selectionContextMenuStrip;
 
         public WatchVariableFlowLayoutPanel()
         {
@@ -59,6 +58,7 @@ namespace STROOP.Controls
                 : XmlConfigParser.OpenWatchVariableControlPrecursors(_varFilePath);
             AddVariables(precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
             AddItemsToContextMenuStrip();
+            _selectionContextMenuStrip = WatchVariableSelectionUtilities.CreateSelectionContextMenuStrip(this);
         }
 
         private void AddItemsToContextMenuStrip()
@@ -192,6 +192,11 @@ namespace STROOP.Controls
             ContextMenuStrip.Items.Add(setAllAngleUnitsItem);
             ContextMenuStrip.Items.Add(setAllAngleHexItem);
             ContextMenuStrip.Items.Add(filterVariablesItem);
+        }
+
+        public ContextMenuStrip GetSelectionContextMenuStrip()
+        {
+            return _selectionContextMenuStrip;
         }
 
         private ToolStripMenuItem CreateFilterItem(VariableGroup varGroup)
@@ -348,6 +353,11 @@ namespace STROOP.Controls
         public void UnselectAllVariables()
         {
             GetCurrentlySelectedVariableControls().ForEach(control => control.IsSelected = false);
+        }
+
+        public int GetNumSelectedVariables()
+        {
+            return GetCurrentlySelectedVariableControls().Count;
         }
 
         private void AddAllVariablesToCustomTab()

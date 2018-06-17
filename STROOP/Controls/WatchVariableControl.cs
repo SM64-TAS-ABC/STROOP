@@ -21,8 +21,10 @@ namespace STROOP.Controls
         public readonly List<VariableGroup> GroupList;
 
         // Sub controls
-        private readonly ContextMenuStrip _valueTextboxOriginalContextMenuStrip;
-        private readonly ContextMenuStrip _nameTextboxOriginalContextMenuStrip;
+        private readonly ContextMenuStrip _valueTextboxContextMenuStrip;
+        private readonly ContextMenuStrip _nameTextboxContextMenuStrip;
+        private readonly ContextMenuStrip _variableContextMenuStrip;
+        private ContextMenuStrip _selectionContextMenuStrip;
 
         // Parent control
         private WatchVariableFlowLayoutPanel _watchVariablePanel;
@@ -97,9 +99,10 @@ namespace STROOP.Controls
             set
             {
                 _editMode = value;
+                _watchVariablePanel.UnselectAllVariables();
                 _valueTextBox.ReadOnly = !_editMode;
                 _valueTextBox.BackColor = _editMode ? Color.White : _currentColor;
-                _valueTextBox.ContextMenuStrip = _editMode ? _valueTextboxOriginalContextMenuStrip : ContextMenuStrip;
+                _valueTextBox.ContextMenuStrip = _editMode ? _valueTextboxContextMenuStrip : ContextMenuStrip;
                 if (_editMode)
                 {
                     _valueTextBox.Focus();
@@ -118,9 +121,10 @@ namespace STROOP.Controls
             set
             {
                 _renameMode = value;
+                _watchVariablePanel.UnselectAllVariables();
                 _nameTextBox.ReadOnly = !_renameMode;
                 _nameTextBox.BackColor = _renameMode ? Color.White : _currentColor;
-                _nameTextBox.ContextMenuStrip = _renameMode ? _nameTextboxOriginalContextMenuStrip : ContextMenuStrip;
+                _nameTextBox.ContextMenuStrip = _renameMode ? _nameTextboxContextMenuStrip : ContextMenuStrip;
                 if (_renameMode)
                 {
                     _nameTextBox.Focus();
@@ -129,7 +133,15 @@ namespace STROOP.Controls
             }
         }
 
-        public bool IsSelected;
+        private bool _isSelected;
+        public bool IsSelected
+        {
+            get => _isSelected;
+            set
+            {
+                _isSelected = value;
+            }
+        }
 
         public List<uint> FixedAddressList;
 
@@ -189,7 +201,7 @@ namespace STROOP.Controls
             GroupList = groupList;
             _editMode = false;
             _renameMode = false;
-            IsSelected = false;
+            _isSelected = false;
             FixedAddressList = fixedAddresses;
 
             // Initialize color fields
@@ -209,11 +221,13 @@ namespace STROOP.Controls
                 watchVar, this, subclass, displayType, roundingLimit, useHex, invertBool, isYaw, coordinate);
 
             // Initialize context menu strip
-            _valueTextboxOriginalContextMenuStrip = _valueTextBox.ContextMenuStrip;
-            _nameTextboxOriginalContextMenuStrip = _nameTextBox.ContextMenuStrip;
-            ContextMenuStrip = _watchVarWrapper.GetContextMenuStrip();
-            _nameTextBox.ContextMenuStrip = ContextMenuStrip;
-            _valueTextBox.ContextMenuStrip = ContextMenuStrip;
+            _valueTextboxContextMenuStrip = _valueTextBox.ContextMenuStrip;
+            _nameTextboxContextMenuStrip = _nameTextBox.ContextMenuStrip;
+            _variableContextMenuStrip = _watchVarWrapper.GetContextMenuStrip();
+
+            ContextMenuStrip = _variableContextMenuStrip;
+            _nameTextBox.ContextMenuStrip = _variableContextMenuStrip;
+            _valueTextBox.ContextMenuStrip = _variableContextMenuStrip;
 
             // Set whether to start as a checkbox
             SetUseCheckbox(_watchVarWrapper.StartsAsCheckbox());
@@ -651,6 +665,7 @@ namespace STROOP.Controls
         public void SetPanel(WatchVariableFlowLayoutPanel panel)
         {
             _watchVariablePanel = panel;
+            _selectionContextMenuStrip = panel?.GetSelectionContextMenuStrip();
         }
 
         public void DeleteFromPanel()
