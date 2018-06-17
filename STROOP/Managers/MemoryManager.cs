@@ -29,6 +29,9 @@ namespace STROOP.Managers
         private readonly CheckBox _checkBoxMemoryHex;
         private readonly CheckBox _checkBoxMemoryObj;
 
+        private readonly Button _buttonMemoryMoveUp;
+        private readonly Button _buttonMemoryMoveDown;
+
         private readonly RichTextBoxEx _richTextBoxMemoryAddresses;
         private readonly RichTextBoxEx _richTextBoxMemoryValues;
 
@@ -109,6 +112,9 @@ namespace STROOP.Managers
             _comboBoxMemoryTypes = splitContainerMemoryControls.Panel1.Controls["comboBoxMemoryTypes"] as ComboBox;
             _checkBoxMemoryHex = splitContainerMemoryControls.Panel1.Controls["checkBoxMemoryHex"] as CheckBox;
             _checkBoxMemoryObj = splitContainerMemoryControls.Panel1.Controls["checkBoxMemoryObj"] as CheckBox;
+
+            _buttonMemoryMoveUp = splitContainerMemoryControls.Panel1.Controls["buttonMemoryMoveUp"] as Button;
+            _buttonMemoryMoveDown = splitContainerMemoryControls.Panel1.Controls["buttonMemoryMoveDown"] as Button;
 
             _richTextBoxMemoryAddresses = splitContainerMemoryControlsDisplays.Panel1.Controls["richTextBoxMemoryAddresses"] as RichTextBoxEx;
             _richTextBoxMemoryValues = splitContainerMemoryControlsDisplays.Panel2.Controls["richTextBoxMemoryValues"] as RichTextBoxEx;
