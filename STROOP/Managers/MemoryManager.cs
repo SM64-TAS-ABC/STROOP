@@ -29,8 +29,10 @@ namespace STROOP.Managers
         private readonly CheckBox _checkBoxMemoryHex;
         private readonly CheckBox _checkBoxMemoryObj;
 
-        private readonly Button _buttonMemoryMoveUp;
-        private readonly Button _buttonMemoryMoveDown;
+        private readonly Button _buttonMemoryMoveUpOnce;
+        private readonly Button _buttonMemoryMoveDownOnce;
+        private readonly Button _buttonMemoryMoveUpContinuously;
+        private readonly Button _buttonMemoryMoveDownContinuously;
 
         private readonly RichTextBoxEx _richTextBoxMemoryAddresses;
         private readonly RichTextBoxEx _richTextBoxMemoryValues;
@@ -113,8 +115,10 @@ namespace STROOP.Managers
             _checkBoxMemoryHex = splitContainerMemoryControls.Panel1.Controls["checkBoxMemoryHex"] as CheckBox;
             _checkBoxMemoryObj = splitContainerMemoryControls.Panel1.Controls["checkBoxMemoryObj"] as CheckBox;
 
-            _buttonMemoryMoveUp = splitContainerMemoryControls.Panel1.Controls["buttonMemoryMoveUp"] as Button;
-            _buttonMemoryMoveDown = splitContainerMemoryControls.Panel1.Controls["buttonMemoryMoveDown"] as Button;
+            _buttonMemoryMoveUpOnce = splitContainerMemoryControls.Panel1.Controls["buttonMemoryMoveUpOnce"] as Button;
+            _buttonMemoryMoveDownOnce = splitContainerMemoryControls.Panel1.Controls["buttonMemoryMoveDownOnce"] as Button;
+            _buttonMemoryMoveUpContinuously = splitContainerMemoryControls.Panel1.Controls["buttonMemoryMoveUpContinuously"] as Button;
+            _buttonMemoryMoveDownContinuously = splitContainerMemoryControls.Panel1.Controls["buttonMemoryMoveDownContinuously"] as Button;
 
             _richTextBoxMemoryAddresses = splitContainerMemoryControlsDisplays.Panel1.Controls["richTextBoxMemoryAddresses"] as RichTextBoxEx;
             _richTextBoxMemoryValues = splitContainerMemoryControlsDisplays.Panel2.Controls["richTextBoxMemoryValues"] as RichTextBoxEx;
@@ -130,8 +134,20 @@ namespace STROOP.Managers
             _textBoxMemoryBaseAddress.AddEnterAction(() =>
                 SetCustomAddress(ParsingUtilities.ParseHexNullable(_textBoxMemoryBaseAddress.Text)));
 
-            _buttonMemoryMoveUp.Click += (sender, e) => ScrollMemory(-1);
-            _buttonMemoryMoveDown.Click += (sender, e) => ScrollMemory(1);
+            _buttonMemoryMoveUpOnce.Click += (sender, e) => ScrollMemory(-1);
+            _buttonMemoryMoveDownOnce.Click += (sender, e) => ScrollMemory(1);
+
+            int scrollSpeed = 60;
+
+            Timer moveUpContinuouslyTimer = new Timer { Interval = scrollSpeed };
+            moveUpContinuouslyTimer.Tick += (s, e) => ScrollMemory(-1);
+            _buttonMemoryMoveUpContinuously.MouseDown += (sender, e) => moveUpContinuouslyTimer.Start();
+            _buttonMemoryMoveUpContinuously.MouseUp += (sender, e) => moveUpContinuouslyTimer.Stop();
+
+            Timer moveDownContinuouslyTimer = new Timer { Interval = scrollSpeed };
+            moveDownContinuouslyTimer.Tick += (s, e) => ScrollMemory(1);
+            _buttonMemoryMoveDownContinuously.MouseDown += (sender, e) => moveDownContinuouslyTimer.Start();
+            _buttonMemoryMoveDownContinuously.MouseUp += (sender, e) => moveDownContinuouslyTimer.Stop();
         }
 
         private void ScrollMemory(int numLines)
@@ -147,6 +163,7 @@ namespace STROOP.Managers
         private void SetCustomAddress(uint? address)
         {
             if (!address.HasValue) return;
+            if (address < 0x80000000 || address + _memorySize >= 0x80000000 + Config.RamSize) return;
             _checkBoxMemoryUseObjAddress.Checked = false;
             Address = address.Value;
         }
