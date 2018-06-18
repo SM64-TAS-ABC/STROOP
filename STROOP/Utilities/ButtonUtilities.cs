@@ -532,7 +532,8 @@ namespace STROOP.Utilities
 
         public static bool TranslateHOLP(float xOffset, float yOffset, float zOffset, bool useRelative)
         {
-            List<PositionAngle> posAngles = new List<PositionAngle> { PositionAngle.Holp };
+            PositionAngle holpPosMarioAngle = PositionAngle.Hybrid(PositionAngle.Holp, PositionAngle.Mario);
+            List<PositionAngle> posAngles = new List<PositionAngle> { holpPosMarioAngle };
             return ChangeValues(posAngles, xOffset, yOffset, zOffset, Change.ADD, useRelative);
         }
 
