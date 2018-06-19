@@ -88,6 +88,19 @@ namespace STROOP.Structs
                 "float",
             };
 
+        public readonly static List<string> InGameTypeList =
+            new List<string>()
+            {
+                "byte",
+                "sbyte",
+                "short",
+                "ushort",
+                "int",
+                "uint",
+                "float",
+                "double",
+            };
+
         public static object ConvertBytes(Type type, byte[] allBytes, int startIndex, bool littleEndian)
         {
             int typeSize = TypeSize[type];
@@ -136,6 +149,7 @@ namespace STROOP.Structs
             else if (obj is int intValue) bytes = BitConverter.GetBytes(intValue);
             else if (obj is uint uintValue) bytes = BitConverter.GetBytes(uintValue);
             else if (obj is float floatValue) bytes = BitConverter.GetBytes(floatValue);
+            else if (obj is double doubleValue) bytes = BitConverter.GetBytes(doubleValue);
             else if (obj is string stringValue)
             {
                 if (encoding == null) throw new ArgumentOutOfRangeException();

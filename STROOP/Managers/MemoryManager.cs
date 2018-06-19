@@ -133,7 +133,7 @@ namespace STROOP.Managers
             _richTextBoxMemoryValues = splitContainerMemoryControlsDisplays.Panel2.Controls["richTextBoxMemoryValues"] as RichTextBoxEx;
 
             // Set up controls
-            _comboBoxMemoryTypes.DataSource = TypeUtilities.SimpleTypeList;
+            _comboBoxMemoryTypes.DataSource = TypeUtilities.InGameTypeList;
 
             _checkBoxMemoryLittleEndian.Click += (sender, e) => UpdateHexDisplay();
             _comboBoxMemoryTypes.SelectedValueChanged += (sender, e) => UpdateHexDisplay();

@@ -15,7 +15,7 @@ namespace STROOP.Utilities
 
         public static int SwapEndianness(int address, int structSize)
         {
-            if (structSize == 4)
+            if (structSize == 4 || structSize == 8)
             {
                 return address;
             }
@@ -41,7 +41,7 @@ namespace STROOP.Utilities
 
         public static uint SwapEndianness(uint address, int structSize)
         {
-            if (structSize == 4)
+            if (structSize == 4 || structSize == 8)
             {
                 return address;
             }
