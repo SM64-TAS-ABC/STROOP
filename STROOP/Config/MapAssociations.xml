@@ -22,7 +22,7 @@
   </Map>
   <Map name="Castle" subName="Floor 1" level="6" area="1">
     <Image path="Castle Floor 1 Upper.png"/>
-    <Coordinates x1="-7431" x2="4836" z1="-6242" z2="3174" y="-50"/>
+    <Coordinates x1="-7431" x2="4836" z1="-6242" z2="3174" y="-101"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Castle Courtyard" level="26" area="1" >
@@ -37,7 +37,7 @@
   </Map>
   <Map name="Castle" subName="Floor 2" level="6" area="2">
     <Image path="Castle Floor 2.png"/>
-    <Coordinates x1="-7252" x2="7455" z1="-3811" z2="7371"/>
+    <Coordinates x1="-7252" x2="7455" z1="-3811" z2="7641"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Bob-omb Battlefield" level="9" area="1">
@@ -132,7 +132,7 @@
   </Map>
   <Map name="Shifting Sand Land" level="8" area="1">
     <Image path="SSL.png"/>
-    <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192" y="-8191"/>
+    <Coordinates x1="-8447" x2="8192" z1="-8191" z2="8192" y="-8191"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Shifting Sand Land" subName="Pyramid" level="8" area="2" loadingPoint="2">
@@ -147,12 +147,7 @@
   </Map>
   <Map name="Shifting Sand Land" subName="Pyramid" level="8" area="2" loadingPoint="2">
     <Image path="SSL Pyramid 3.png"/>
-    <Coordinates x1="-3993" x2="3994" z1="-4148" z2="6758" y="1229"/>
-    <BackgroundImage path="Black Background.png"/>
-  </Map>
-  <Map name="Shifting Sand Land" subName="Pyramid" level="8" area="2" loadingPoint="2">
-    <Image path="SSL Pyramid 4.png"/>
-    <Coordinates x1="-3993" x2="3994" z1="-4148" z2="6758" y="1920"/>
+    <Coordinates x1="-3993" x2="3994" z1="-4148" z2="6758" y="3840"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Shifting Sand Land" subName="Eyerok Fight" level="8" area="2" loadingPoint="3">
@@ -247,27 +242,27 @@
   </Map>
   <Map name="Tick Tock Clock" level="14" area="1">
     <Image path="TTC 1.png"/>
-    <Coordinates x1="-2080" x2="2081" z1="-2080" z2="2081"/>
+    <Coordinates x1="-2080" x2="3301" z1="-2489" z2="3301"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Tick Tock Clock" level="14" area="1">
     <Image path="TTC 2.png"/>
-    <Coordinates x1="-2080" x2="2081" z1="-2080" z2="2081" y="-2488"/>
+    <Coordinates x1="-2080" x2="3301" z1="-2489" z2="3301" y="-2488"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Tick Tock Clock" level="14" area="1">
     <Image path="TTC 3.png"/>
-    <Coordinates x1="-2080" x2="2081" z1="-2080" z2="2081" y="-71"/>
+    <Coordinates x1="-2080" x2="3301" z1="-2489" z2="3301" y="-71"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Tick Tock Clock" level="14" area="1">
     <Image path="TTC 4.png"/>
-    <Coordinates x1="-2080" x2="2081" z1="-2080" z2="2081" y="1065"/>
+    <Coordinates x1="-2080" x2="3301" z1="-2489" z2="3301" y="1065"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Tick Tock Clock" level="14" area="1">
     <Image path="TTC 5.png"/>
-    <Coordinates x1="-2080" x2="3301" z1="-2080" z2="3301" y="3860"/>
+    <Coordinates x1="-2080" x2="3301" z1="-2489" z2="3301" y="3860"/>
     <BackgroundImage path="Black Background.png"/>
   </Map>
   <Map name="Rainbow Ride" level="15" area="1">
