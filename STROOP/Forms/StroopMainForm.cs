@@ -616,53 +616,62 @@ namespace STROOP
 
         private void buttonShowTopPanel_Click(object sender, EventArgs e)
         {
-            splitContainerMain.Panel1Collapsed = false;
-            splitContainerMain.Panel2Collapsed = true;
+            SplitContainer splitContainer =
+                ControlUtilities.GetDescendantSplitContainer(
+                    splitContainerMain, Orientation.Horizontal);
+            if (splitContainer == null) return;
+            splitContainer.Panel1Collapsed = false;
+            splitContainer.Panel2Collapsed = true;
         }
 
         private void buttonShowBottomPanel_Click(object sender, EventArgs e)
         {
-            splitContainerMain.Panel1Collapsed = true;
-            splitContainerMain.Panel2Collapsed = false;
+            SplitContainer splitContainer =
+                ControlUtilities.GetDescendantSplitContainer(
+                    splitContainerMain, Orientation.Horizontal);
+            if (splitContainer == null) return;
+            splitContainer.Panel1Collapsed = true;
+            splitContainer.Panel2Collapsed = false;
         }
 
         private void buttonShowTopBottomPanel_Click(object sender, EventArgs e)
         {
-            splitContainerMain.Panel1Collapsed = false;
-            splitContainerMain.Panel2Collapsed = false;
+            SplitContainer splitContainer =
+                ControlUtilities.GetDescendantSplitContainer(
+                    splitContainerMain, Orientation.Horizontal);
+            if (splitContainer == null) return;
+            splitContainer.Panel1Collapsed = false;
+            splitContainer.Panel2Collapsed = false;
         }
 
         private void buttonShowLeftPanel_Click(object sender, EventArgs e)
         {
-            SplitContainer selectedTabSplitContainer =
-                ControlUtilities.GetChildSplitContainer(tabControlMain.SelectedTab);
-            if (selectedTabSplitContainer != null)
-            {
-                selectedTabSplitContainer.Panel1Collapsed = false;
-                selectedTabSplitContainer.Panel2Collapsed = true;
-            }
+            SplitContainer splitContainer =
+                ControlUtilities.GetDescendantSplitContainer(
+                    splitContainerMain, Orientation.Vertical);
+            if (splitContainer == null) return;
+            splitContainer.Panel1Collapsed = false;
+            splitContainer.Panel2Collapsed = true;
         }
 
         private void buttonShowRightPanel_Click(object sender, EventArgs e)
         {
-            SplitContainer selectedTabSplitContainer =
-                ControlUtilities.GetChildSplitContainer(tabControlMain.SelectedTab);
-            if (selectedTabSplitContainer != null)
-            {
-                selectedTabSplitContainer.Panel1Collapsed = true;
-                selectedTabSplitContainer.Panel2Collapsed = false;
-            }
+            SplitContainer splitContainer =
+                ControlUtilities.GetDescendantSplitContainer(
+                    splitContainerMain, Orientation.Vertical);
+            if (splitContainer == null) return;
+            splitContainer.Panel1Collapsed = true;
+            splitContainer.Panel2Collapsed = false;
         }
 
         private void buttonShowLeftRightPanel_Click(object sender, EventArgs e)
         {
-            SplitContainer selectedTabSplitContainer =
-                ControlUtilities.GetChildSplitContainer(tabControlMain.SelectedTab);
-            if (selectedTabSplitContainer != null)
-            {
-                selectedTabSplitContainer.Panel1Collapsed = false;
-                selectedTabSplitContainer.Panel2Collapsed = false;
-            }
+            SplitContainer splitContainer =
+                ControlUtilities.GetDescendantSplitContainer(
+                    splitContainerMain, Orientation.Vertical);
+            if (splitContainer == null) return;
+            splitContainer.Panel1Collapsed = false;
+            splitContainer.Panel2Collapsed = false;
         }
 
         private void buttonMoveTabLeft_Click(object sender, EventArgs e)

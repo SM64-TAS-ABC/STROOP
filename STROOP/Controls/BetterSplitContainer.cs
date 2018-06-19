@@ -18,6 +18,7 @@ namespace STROOP
     {
         public BetterSplitContainer()
         {
+            /*
             ToolStripMenuItem itemJustPanel1 = new ToolStripMenuItem("Just Panel 1");
             itemJustPanel1.Click += (sender, e) =>
             {
@@ -43,6 +44,7 @@ namespace STROOP
             ContextMenuStrip.Items.Add(itemJustPanel1);
             ContextMenuStrip.Items.Add(itemJustPanel2);
             ContextMenuStrip.Items.Add(itemBothPanels);
+            */
         }
     }
 }

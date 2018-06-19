@@ -585,10 +585,14 @@ namespace STROOP.Utilities
             return null;
         }
 
-        public static SplitContainer GetDescendantSplitContainer(Control control, int? indexNullable = null)
+        public static SplitContainer GetDescendantSplitContainer(Control control, Orientation orientation, int? indexNullable = null)
         {
-            int index = indexNullable ?? KeyboardUtilities.GetCurrentlyInputtedNumber() ?? 0;
+            int index = indexNullable ?? (KeyboardUtilities.GetCurrentlyInputtedNumber() - 1) ?? 0;
             List<SplitContainer> splitContainerList = GetAllDescendantSplitContainers(control);
+            splitContainerList = splitContainerList.FindAll(
+                splitContainer => splitContainer.Visible);
+            splitContainerList = splitContainerList.FindAll(
+                splitContainer => splitContainer.Orientation == orientation);
             if (index < 0 || index >= splitContainerList.Count) return null;
             return splitContainerList[index];
         }
