@@ -302,6 +302,11 @@ namespace STROOP.Controls
 
         private void OnContextMenuStripOpening()
         {
+            if (!IsSelected)
+            {
+                _watchVariablePanel.UnselectAllVariables();
+            }
+
             if (IsSelected && _watchVariablePanel.GetNumSelectedVariables() >= 2)
             {
                 ContextMenuStrip.Items.Clear();
@@ -344,87 +349,108 @@ namespace STROOP.Controls
 
             if (isShiftKeyHeld && isNumberHeld)
             {
+                _watchVariablePanel.UnselectAllVariables();
                 BaseColor = ColorUtilities.GetColorForVariable();
             }
             else if (isFKeyHeld)
             {
+                _watchVariablePanel.UnselectAllVariables();
                 ToggleFixedAddress();
             }
             else if (isHKeyHeld)
             {
+                _watchVariablePanel.UnselectAllVariables();
                 ToggleHighlighted();
             }
             else if (isNumberHeld)
             {
+                _watchVariablePanel.UnselectAllVariables();
                 Color? color = ColorUtilities.GetColorForHighlight();
                 ToggleHighlighted(color);
             }
             else if (isLKeyHeld)
             {
+                _watchVariablePanel.UnselectAllVariables();
                 _watchVarWrapper.ToggleLocked(FixedAddressList);
             }
             else if (isDKeyHeld)
             {
+                _watchVariablePanel.UnselectAllVariables();
                 _watchVarWrapper.ToggleDisplayAsHex();
             }
             else if (isRKeyHeld)
             {
+                _watchVariablePanel.UnselectAllVariables();
                 RenameMode = true;
             }
             else if (isCKeyHeld)
             {
+                _watchVariablePanel.UnselectAllVariables();
                 _watchVarWrapper.ShowControllerForm();
             }
             else if (isBKeyHeld)
             {
+                _watchVariablePanel.UnselectAllVariables();
                 _watchVarWrapper.ShowBitForm();
             }
             else if (isDeletishKeyHeld)
             {
+                _watchVariablePanel.UnselectAllVariables();
                 DeleteFromPanel();
             }
             else if (isSKeyHeld)
             {
+                _watchVariablePanel.UnselectAllVariables();
                 AddToTab(Config.CustomManager);
             }
             else if (isXKeyHeld)
             {
+                _watchVariablePanel.UnselectAllVariables();
                 NotifyPanelOfReodering();
             }
             else if (isAltKeyHeld)
             {
+                _watchVariablePanel.UnselectAllVariables();
                 EnableCustomFunctionality();
             }
             else if (isBacktickHeld)
             {
+                _watchVariablePanel.UnselectAllVariables();
                 AddToVarHackTab();
             }
             else if (isTKeyHeld)
             {
+                _watchVariablePanel.UnselectAllVariables();
                 AddToTab(Config.TasManager);
             }
             else if (isMKeyHeld)
             {
+                _watchVariablePanel.UnselectAllVariables();
                 AddToTab(Config.MemoryManager);
             }
             else if (isPKeyHeld)
             {
+                _watchVariablePanel.UnselectAllVariables();
                 SelectionForm.ShowDataManagerSelectionForm(this);
             }
             else if (isZHeld)
             {
+                _watchVariablePanel.UnselectAllVariables();
                 SetValue("0");
             }
             else if (isMinusHeld)
             {
+                _watchVariablePanel.UnselectAllVariables();
                 AddValue("1", false);
             }
             else if (isPlusHeld)
             {
+                _watchVariablePanel.UnselectAllVariables();
                 AddValue("1", true);
             }
             else if (isQKeyHeld)
             {
+                _watchVariablePanel.UnselectAllVariables();
                 Color? newColor = ColorUtilities.GetColorFromDialog(BaseColor);
                 if (newColor.HasValue)
                 {
@@ -434,6 +460,7 @@ namespace STROOP.Controls
             }
             else if (isOKeyHeld)
             {
+                _watchVariablePanel.UnselectAllVariables();
                 BaseColor = DEFAULT_COLOR;
             }
             else
