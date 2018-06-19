@@ -48,6 +48,7 @@
   <Data groupList="Advanced" type="short" offsetUS="0x80180B06" offsetJP="0x8017DC86" base="Relative" color="Green">JRB Ship Snow Type</Data>
   <Data groupList="Advanced" type="short" offsetUS="0x80184E8A" offsetJP="0x80181FFA" base="Relative" color="Green">CCM Snow Type</Data>
   <Data groupList="Advanced" type="short" offsetUS="0x80170CF6" offsetJP="0x8016DE76" base="Relative" color="Green">SL Snow Type</Data>
+  <Data groupList="Advanced" type="short" offsetUS="0x80151EB2" offsetJP="0x8014F032" base="Relative" color="Green">SA Snow Type</Data>
 
   <Data groupList="Intermediate" type="byte" offsetUS="0x801A81A4" offsetJP="0x801A8014" base="Relative" color="LightBlue">Mission Selected</Data>
   <Data groupList="Intermediate" type="short" offsetUS="0x8033BAC8" offsetJP="0x8033A758" base="Relative" color="LightBlue">Mission Layout</Data>
