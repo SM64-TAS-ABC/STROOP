@@ -24,7 +24,17 @@ namespace STROOP.Managers
             CurrentCamHackMode = CamHackMode.REGULAR;
 
             var splitContainer = camHackControl.Controls["splitContainerCamHack"] as SplitContainer;
-            _mode0RadioButton = splitContainer.Panel1.Controls["radioButtonCamHackMode0"] as RadioButton;
+
+            Label labelCamHackMode = splitContainer.Panel1.Controls["labelCamHackMode"] as Label;
+            ControlUtilities.AddContextMenuStripFunctions(
+                labelCamHackMode,
+                new List<string>() { "Download Camera Hack ROM" },
+                new List<Action>()
+                {
+                    () => System.Diagnostics.Process.Start("http://download1436.mediafire.com/t3unklq170ag/hdd377v5794u319/Camera+Hack+ROM.z64"),
+                });
+
+        _mode0RadioButton = splitContainer.Panel1.Controls["radioButtonCamHackMode0"] as RadioButton;
             _mode1RadioButtonRelativeAngle = splitContainer.Panel1.Controls["radioButtonCamHackMode1RelativeAngle"] as RadioButton;
             _mode1RadioButtonAbsoluteAngle = splitContainer.Panel1.Controls["radioButtonCamHackMode1AbsoluteAngle"] as RadioButton;
             _mode2RadioButton = splitContainer.Panel1.Controls["radioButtonCamHackMode2"] as RadioButton;
