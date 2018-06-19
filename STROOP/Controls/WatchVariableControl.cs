@@ -345,125 +345,85 @@ namespace STROOP.Controls
             if (isShiftKeyHeld && isNumberHeld)
             {
                 BaseColor = ColorUtilities.GetColorForVariable();
-                return;
             }
-
-            if (isFKeyHeld)
+            else if (isFKeyHeld)
             {
                 ToggleFixedAddress();
-                return;
             }
-
-            if (isHKeyHeld)
+            else if (isHKeyHeld)
             {
                 ToggleHighlighted();
-                return;
             }
-
-            if (isNumberHeld)
+            else if (isNumberHeld)
             {
                 Color? color = ColorUtilities.GetColorForHighlight();
                 ToggleHighlighted(color);
-                return;
             }
-
-            if (isLKeyHeld)
+            else if (isLKeyHeld)
             {
                 _watchVarWrapper.ToggleLocked(FixedAddressList);
-                return;
             }
-
-            if (isDKeyHeld)
+            else if (isDKeyHeld)
             {
                 _watchVarWrapper.ToggleDisplayAsHex();
-                return;
             }
-
-            if (isRKeyHeld)
+            else if (isRKeyHeld)
             {
                 RenameMode = true;
-                return;
             }
-
-            if (isCKeyHeld)
+            else if (isCKeyHeld)
             {
                 _watchVarWrapper.ShowControllerForm();
-                return;
             }
-
-            if (isBKeyHeld)
+            else if (isBKeyHeld)
             {
                 _watchVarWrapper.ShowBitForm();
-                return;
             }
-
-            if (isDeletishKeyHeld)
+            else if (isDeletishKeyHeld)
             {
                 DeleteFromPanel();
-                return;
             }
-
-            if (isSKeyHeld)
+            else if (isSKeyHeld)
             {
                 AddToTab(Config.CustomManager);
-                return;
             }
-
-            if (isXKeyHeld)
+            else if (isXKeyHeld)
             {
                 NotifyPanelOfReodering();
-                return;
             }
-
-            if (isAltKeyHeld)
+            else if (isAltKeyHeld)
             {
                 EnableCustomFunctionality();
-                return;
             }
-
-            if (isBacktickHeld)
+            else if (isBacktickHeld)
             {
                 AddToVarHackTab();
-                return;
             }
-
-            if (isTKeyHeld)
+            else if (isTKeyHeld)
             {
                 AddToTab(Config.TasManager);
-                return;
             }
-
-            if (isMKeyHeld)
+            else if (isMKeyHeld)
             {
                 AddToTab(Config.MemoryManager);
-                return;
             }
-
-            if (isPKeyHeld)
+            else if (isPKeyHeld)
             {
                 SelectionForm.ShowDataManagerSelectionForm(this);
-                return;
             }
-
-            if (isZHeld)
+            else if (isZHeld)
             {
                 SetValue("0");
-                return;
             }
-
-            if (isMinusHeld)
+            else if (isMinusHeld)
             {
                 AddValue("1", false);
-                return;
             }
-
-            if (isPlusHeld)
+            else if (isPlusHeld)
             {
                 AddValue("1", true);
-                return;
             }
-
-            if (isQKeyHeld)
+            else if (isQKeyHeld)
             {
                 Color? newColor = ColorUtilities.GetColorFromDialog(BaseColor);
                 if (newColor.HasValue)
@@ -471,19 +431,14 @@ namespace STROOP.Controls
                     BaseColor = newColor.Value;
                     ColorUtilities.LastSelectedColor = newColor.Value;
                 }
-                return;
             }
-
-            if (isOKeyHeld)
+            else if (isOKeyHeld)
             {
                 BaseColor = DEFAULT_COLOR;
-                return;
             }
-
-            // default
+            else
             {
                 _watchVariablePanel.NotifySelectClick(this, isCtrlKeyHeld, isShiftKeyHeld);
-                return;
             }
         }
 
