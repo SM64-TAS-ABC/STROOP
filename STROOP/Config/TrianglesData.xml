@@ -44,6 +44,7 @@
   <Data groupList="Intermediate" base="Triangle" specialType="LeftHillDeltaAngle" subclass="Angle" display="short" color="Purple">Left Hill DAngle</Data>
   <Data groupList="Intermediate" base="Triangle" specialType="RightHillDeltaAngle" subclass="Angle" display="short" color="Purple">Right Hill DAngle</Data>
   <Data groupList="Intermediate" base="Triangle" specialType="HillStatus" subclass="String" color="Purple">Hill Status</Data>
+  <Data groupList="Intermediate" base="Triangle" specialType="WallKickAngleAway" subclass="Angle" display="short" color="Purple">Wall Kick Angle Away</Data>
 
   <Data groupList="Basic" type="float" offset="0x1C" base="Triangle" round="10" coord="X">Normal X</Data>
   <Data groupList="Basic" type="float" offset="0x20" base="Triangle" round="10" coord="Y">Normal Y</Data>
