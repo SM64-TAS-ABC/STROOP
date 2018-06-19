@@ -149,6 +149,7 @@ namespace STROOP.Utilities
             if (type == typeof(int)) return GetInt32(address, absoluteAddress, mask);
             if (type == typeof(uint)) return GetUInt32(address, absoluteAddress, mask);
             if (type == typeof(float)) return GetSingle(address, absoluteAddress, mask);
+            if (type == typeof(double)) return GetDouble(address, absoluteAddress, mask);
 
             throw new ArgumentOutOfRangeException("Cannot call ProcessStream.GetValue with type " + type);
         }
@@ -198,6 +199,11 @@ namespace STROOP.Utilities
         public float GetSingle(uint address, bool absoluteAddress = false, uint? mask = null)
         {
             return BitConverter.ToSingle(ReadRam((UIntPtr)address, 4, EndiannessType.Little, absoluteAddress), 0);
+        }
+
+        public double GetDouble(uint address, bool absoluteAddress = false, uint? mask = null)
+        {
+            return BitConverter.ToDouble(ReadRam((UIntPtr)address, 8, EndiannessType.Little, absoluteAddress), 0);
         }
 
         public byte[] ReadRam(uint address, int length, EndiannessType endianness)
@@ -279,6 +285,7 @@ namespace STROOP.Utilities
             if (type == typeof(int) && value is int intValue) return SetValue(intValue, address, absoluteAddress, mask);
             if (type == typeof(uint) && value is uint uintValue) return SetValue(uintValue, address, absoluteAddress, mask);
             if (type == typeof(float) && value is float floatValue) return SetValue(floatValue, address, absoluteAddress, mask);
+            if (type == typeof(double) && value is double doubleValue) return SetValue(doubleValue, address, absoluteAddress, mask);
 
             value = ParsingUtilities.ParseDoubleNullable(value);
             if (value == null) return false;
@@ -304,6 +311,7 @@ namespace STROOP.Utilities
                 if (type == typeof(int)) value = ParsingUtilities.ParseIntNullable(value);
                 if (type == typeof(uint)) value = ParsingUtilities.ParseUIntNullable(value);
                 if (type == typeof(float)) value = ParsingUtilities.ParseFloatNullable(value);
+                if (type == typeof(double)) value = ParsingUtilities.ParseDoubleNullable(value);
             }
 
             if (value == null) return false;
@@ -315,6 +323,7 @@ namespace STROOP.Utilities
             if (type == typeof(int)) return SetValue((int)value, address, absoluteAddress, mask);
             if (type == typeof(uint)) return SetValue((uint)value, address, absoluteAddress, mask);
             if (type == typeof(float)) return SetValue((float)value, address, absoluteAddress, mask);
+            if (type == typeof(double)) return SetValue((double)value, address, absoluteAddress, mask);
 
             throw new ArgumentOutOfRangeException("Cannot call ProcessStream.SetValue with type " + type);
         }
@@ -395,6 +404,13 @@ namespace STROOP.Utilities
         {
             bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndiannessType.Little, absoluteAddress);
             if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(float), mask);
+            return returnValue;
+        }
+
+        public bool SetValue(double value, uint address, bool absoluteAddress = false, uint? mask = null)
+        {
+            bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndiannessType.Little, absoluteAddress);
+            if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(double), mask);
             return returnValue;
         }
 
