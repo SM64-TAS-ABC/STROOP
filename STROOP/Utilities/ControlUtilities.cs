@@ -585,6 +585,35 @@ namespace STROOP.Utilities
             return null;
         }
 
+        public static SplitContainer GetDescendantSplitContainer(Control control, int? indexNullable = null)
+        {
+            int index = indexNullable ?? KeyboardUtilities.GetCurrentlyInputtedNumber() ?? 0;
+            List<SplitContainer> splitContainerList = GetAllDescendantSplitContainers(control);
+            if (index < 0 || index >= splitContainerList.Count) return null;
+            return splitContainerList[index];
+        }
+
+        public static List<SplitContainer> GetAllDescendantSplitContainers(Control control)
+        {
+            List<SplitContainer> splitContainerList = new List<SplitContainer>();
+            List<Control> queue = new List<Control>();
+            queue.Add(control);
+            while (queue.Count > 0)
+            {
+                Control dequeue = queue[0];
+                queue.RemoveAt(0);
+                if (dequeue is SplitContainer splitContainer)
+                {
+                    splitContainerList.Add(splitContainer);
+                }
+                foreach (Control child in dequeue.Controls)
+                {
+                    queue.Add(child);
+                }
+            }
+            return splitContainerList;
+        }
+
         public static List<T> GetFieldsOfType<T>(Type classType, object instance)
         {
             List<T> valueList = new List<T>();

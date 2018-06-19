@@ -112,14 +112,9 @@ namespace STROOP
                     },
                     () =>
                     {
-                        List<TabPage> tabPages = new List<TabPage>();
-                        foreach (TabPage tabPage in tabControlMain.TabPages)
-                        {
-                            tabPages.Add(tabPage);
-                        }
-                        List<string> strings = tabPages.ConvertAll(
-                            tabPage => "<Tab>" + tabPage.Text + "</Tab>");
-                        InfoForm.ShowValue(String.Join("\r\n", strings));
+                        TabPage currentTab = Config.TabControlMain.SelectedTab;
+                        int num = ControlUtilities.GetAllDescendantSplitContainers(currentTab).Count;
+                        InfoForm.ShowValue(num);
                     },
                 });
 
