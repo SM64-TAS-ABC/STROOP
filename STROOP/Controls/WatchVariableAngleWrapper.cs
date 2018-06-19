@@ -47,7 +47,7 @@ namespace STROOP.Controls
             Type type = displayType ?? _watchVar.MemoryType;
             if (type == null) throw new ArgumentOutOfRangeException();
 
-            _defaultSigned = type == typeof(short) || type == typeof(int);
+            _defaultSigned = TypeUtilities.TypeSign[type];
             _signed = _defaultSigned;
 
             _defaultAngleUnitType = AngleUnitType.InGameUnits;
