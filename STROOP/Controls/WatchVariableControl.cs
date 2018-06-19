@@ -252,8 +252,6 @@ namespace STROOP.Controls
             _nameTextBox.Leave += (sender, e) => { RenameMode = false; };
             _nameTextBox.KeyDown += (sender, e) => OnNameTextValueKeyDown(e);
 
-            _valuePanel.Click += (sender, e) => OnVariableClick();
-
             _valueTextBox.Click += (sender, e) => _watchVariablePanel.UnselectAllVariables();
             _valueTextBox.DoubleClick += (sender, e) => { EditMode = true; };
             _valueTextBox.KeyDown += (sender, e) => OnValueTextValueKeyDown(e);
