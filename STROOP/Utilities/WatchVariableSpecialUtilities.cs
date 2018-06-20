@@ -563,6 +563,27 @@ namespace STROOP.Structs
                     return Config.Stream.SetValue((float)newHeight, objAddress + ObjectConfig.YOffset);
                 }));
 
+            _dictionary.Add("FlyGuyActivationDistanceDiff",
+                ((uint objAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    PositionAngle objPos = PositionAngle.Obj(objAddress);
+                    double dist = MoreMath.GetDistanceBetween(
+                        marioPos.X, marioPos.Y, marioPos.Z, objPos.X, objPos.Y, objPos.Z);
+                    double distDiff = dist - 4000;
+                    return distDiff;
+                },
+                (double distDiff, uint objAddress) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    PositionAngle objPos = PositionAngle.Obj(objAddress);
+                    double distAway = distDiff + 4000;
+                    (double newMarioX, double newMarioY, double newMarioZ) =
+                        MoreMath.ExtrapolateLine3D(
+                            objPos.X, objPos.Y, objPos.Z, marioPos.X, marioPos.Y, marioPos.Z, distAway);
+                    return marioPos.SetValues(x: newMarioX, y: newMarioY, z: newMarioZ);
+                }));
+
             // Object specific vars - Bob-omb
 
             _dictionary.Add("BobombBloatSize",
