@@ -3196,6 +3196,10 @@
     <Image path="Pokey Spawner.png"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x14F" base="Object" subclass="Boolean">Pokey Loaded</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x103" base="Object" subclass="Boolean">Pokey Dead</Data>
+    <Data groupList="ObjectSpecific" base="Object" offset="0x108" type="int">Countdown</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x104" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
+    <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xC8" base="Object" subclass="Angle" yaw="true">Yaw Moving</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x118" base="Object" subclass="Angle">Yaw Velocity</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004668" name="Pokey Head" subType="0">
     <SpawnCode gfxId="0x54"/>
