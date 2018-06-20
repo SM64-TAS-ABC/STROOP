@@ -63,5 +63,7 @@ namespace STROOP.Structs.Gui
         public BetterTextbox TextBoxQuickDuplication2ndIterationStart;
         public BetterTextbox TextBoxQuickDuplicationTotalIterations;
         public Button ButtonQuickDuplicationDuplicate;
+
+        public Button ButtonAddPauseBufferFrames;
     }
 }

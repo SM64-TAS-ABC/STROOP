@@ -77,6 +77,7 @@ namespace STROOP.Managers
             _gui.ComboBoxFrameInputRelation.SelectedItem = M64Config.FrameInputRelation;
 
             _gui.ButtonQuickDuplicationDuplicate.Click += (sender, e) => PerformQuickDuplication();
+            _gui.ButtonAddPauseBufferFrames.Click += (sender, e) => AddPauseBufferFrames();
 
             _gui.ProgressBar.Visible = false;
             _gui.LabelProgressBar.Visible = false;
@@ -310,6 +311,11 @@ namespace STROOP.Managers
                 _gui.DataGridViewInputs, _m64File.CurrentFileName,
                 iter1Start, iter1End, true /* useRow */);
             _m64File.Paste(copiedData, iter2Start, true /* insert */, multiplicity);
+        }
+
+        private void AddPauseBufferFrames()
+        {
+
         }
 
         private (int? startFrame, int? endFrame) GetFrameBounds()

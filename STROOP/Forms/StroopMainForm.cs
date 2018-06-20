@@ -306,6 +306,8 @@ namespace STROOP
                 TextBoxQuickDuplication2ndIterationStart = textBoxM64QuickDuplication2ndIterationStart,
                 TextBoxQuickDuplicationTotalIterations = textBoxM64QuickDuplicationTotalIterations,
                 ButtonQuickDuplicationDuplicate = buttonM64QuickDuplicationDuplicate,
+
+                ButtonAddPauseBufferFrames = buttonM64AddPauseBufferFrames,
             };
 
             // Create managers
