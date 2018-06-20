@@ -106,6 +106,14 @@ namespace STROOP.M64
                 0, 0, false, false, false, false, false, false,
                 false, false, false, false, false, false, false, false);
 
+        public static readonly M64CopiedFrame OnePauseFrame =
+            new M64CopiedFrame(
+                0, 0, false, false, false, true, false, false,
+                false, false, false, false, false, false, false, false);
+
+        public static readonly M64CopiedFrame OnePauseFrameOverwrite =
+            new M64CopiedFrame(S: true);
+
         public void Apply(M64InputFrame input)
         {
             if (X.HasValue) input.X = X.Value;

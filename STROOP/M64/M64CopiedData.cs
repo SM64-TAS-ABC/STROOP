@@ -57,6 +57,17 @@ namespace STROOP.M64
             new M64CopiedData(0, 0, null, null, "One Empty Frame",
                 new List<M64CopiedFrame>() { M64CopiedFrame.OneEmptyFrame });
 
+        public static readonly M64CopiedData PauseBufferTriplet =
+            new M64CopiedData(0, 2, null, null, "Pause Buffer Triplet",
+                new List<M64CopiedFrame>() {
+                    M64CopiedFrame.OneEmptyFrame,
+                    M64CopiedFrame.OnePauseFrame,
+                    M64CopiedFrame.OneEmptyFrame });
+
+        public static readonly M64CopiedData OnePauseFrameOverwrite =
+            new M64CopiedData(0, 0, null, null, "One Empty Frame",
+                new List<M64CopiedFrame>() { M64CopiedFrame.OnePauseFrameOverwrite });
+
         public void Apply(List<M64InputFrame> inputs)
         {
             for (int i = 0; i < inputs.Count; i++)
