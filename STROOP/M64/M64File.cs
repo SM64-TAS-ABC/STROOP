@@ -227,6 +227,52 @@ namespace STROOP.M64
             Config.M64Manager.UpdateSelectionTextboxes();
         }
 
+        public void AddPauseBufferFrames(int startIndex, int endIndex)
+        {
+            if (RawBytes == null) return;
+            if (startIndex > endIndex) return;
+            startIndex = MoreMath.Clamp(startIndex, 0, Inputs.Count - 1);
+            endIndex = MoreMath.Clamp(endIndex, 0, Inputs.Count - 1);
+
+            for (int index = startIndex; index <= endIndex; index++)
+            {
+                M64CopiedData.OnePauseFrameOverwrite.Apply(Inputs[index]);
+            }
+
+            _gui.DataGridViewInputs.DataSource = null;
+            int currentPosition = _gui.DataGridViewInputs.FirstDisplayedScrollingRowIndex;
+
+            for (int index = startIndex; index <= endIndex; index++)
+            {
+                int currentFrame = startIndex + (index - startIndex) * 4;
+
+                M64InputFrame newInput1 = new M64InputFrame(
+                    currentFrame + 1, M64CopiedData.OneEmptyFrame.GetRawValue(0), false, this, _gui.DataGridViewInputs);
+                Inputs.Insert(currentFrame + 1, newInput1);
+                ModifiedFrames.Add(newInput1);
+
+                M64InputFrame newInput2 = new M64InputFrame(
+                    currentFrame + 2, M64CopiedData.OnePauseFrame.GetRawValue(0), false, this, _gui.DataGridViewInputs);
+                Inputs.Insert(currentFrame + 2, newInput2);
+                ModifiedFrames.Add(newInput2);
+
+                M64InputFrame newInput3 = new M64InputFrame(
+                    currentFrame + 3, M64CopiedData.OneEmptyFrame.GetRawValue(0), false, this, _gui.DataGridViewInputs);
+                Inputs.Insert(currentFrame + 3, newInput3);
+                ModifiedFrames.Add(newInput3);
+            }
+
+            RefreshInputFrames(startIndex);
+            _gui.DataGridViewInputs.DataSource = Inputs;
+            Config.M64Manager.UpdateTableSettings(ModifiedFrames);
+            ControlUtilities.TableGoTo(_gui.DataGridViewInputs, currentPosition);
+
+            IsModified = true;
+            Header.NumInputs = Inputs.Count;
+            _gui.DataGridViewInputs.Refresh();
+            Config.M64Manager.UpdateSelectionTextboxes();
+        }
+
         private void SetPasteProgressVisibility(bool visibility)
         {
             _gui.LabelProgressBar.Visible = visibility;

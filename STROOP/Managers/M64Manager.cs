@@ -319,13 +319,7 @@ namespace STROOP.Managers
             if (!startFrameNullable.HasValue || !endFrameNullable.HasValue) return;
             int startFrame = startFrameNullable.Value;
             int endFrame = endFrameNullable.Value;
-            if (startFrame > endFrame) return;
-
-            for (int frame = endFrame; frame >= startFrame; frame--)
-            {
-                _m64File.Paste(M64CopiedData.PauseBufferTriplet, frame + 1, true /* insert */, 1 /* multiplicity */);
-                _m64File.Paste(M64CopiedData.OnePauseFrameOverwrite, frame, false /* insert */, 1 /* multiplicity */);
-            }
+            _m64File.AddPauseBufferFrames(startFrame, endFrame);
         }
 
         private (int? startFrame, int? endFrame) GetFrameBounds()
