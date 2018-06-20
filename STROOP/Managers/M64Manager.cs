@@ -315,13 +315,17 @@ namespace STROOP.Managers
 
         private void AddPauseBufferFrames()
         {
-            (int? startFrame, int? endFrame) = GetFrameBounds();
-            if (!startFrame.HasValue || !endFrame.HasValue) return;
+            (int? startFrameNullable, int? endFrameNullable) = GetFrameBounds();
+            if (!startFrameNullable.HasValue || !endFrameNullable.HasValue) return;
+            int startFrame = startFrameNullable.Value;
+            int endFrame = endFrameNullable.Value;
+            if (startFrame > endFrame) return;
 
-
-            //M64CopiedData.
-
-            //_m64File.Paste(copiedData, iter2Start, true /* insert */, multiplicity);
+            for (int frame = endFrame; frame >= startFrame; frame--)
+            {
+                _m64File.Paste(M64CopiedData.PauseBufferTriplet, frame + 1, true /* insert */, 1 /* multiplicity */);
+                _m64File.Paste(M64CopiedData.OnePauseFrameOverwrite, frame, false /* insert */, 1 /* multiplicity */);
+            }
         }
 
         private (int? startFrame, int? endFrame) GetFrameBounds()
