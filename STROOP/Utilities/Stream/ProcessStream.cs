@@ -214,6 +214,13 @@ namespace STROOP.Utilities
         static readonly byte[] _swapByteOrder = new byte[] { 0x03, 0x02, 0x01, 0x00 };
         public byte[] ReadRam(UIntPtr address, int length, EndiannessType endianness, bool absoluteAddress = false)
         {
+            if (length == 8)
+            {
+                byte[] bytes1 = ReadRam(address, 4, endianness, absoluteAddress);
+                byte[] bytes2 = ReadRam(address + 4, 4, endianness, absoluteAddress);
+                return bytes2.Concat(bytes1).ToArray();
+            }
+
             byte[] readBytes = new byte[length];
 
             // Get local address
@@ -409,7 +416,12 @@ namespace STROOP.Utilities
 
         public bool SetValue(double value, uint address, bool absoluteAddress = false, uint? mask = null)
         {
-            bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndiannessType.Little, absoluteAddress);
+            byte[] bytes = BitConverter.GetBytes(value);
+            byte[] bytes1 = bytes.Take(4).ToArray();
+            byte[] bytes2 = bytes.Skip(4).Take(4).ToArray();
+            byte[] bytesSwapped = bytes2.Concat(bytes1).ToArray();
+
+            bool returnValue = WriteRam(bytesSwapped, (UIntPtr)address, EndiannessType.Little, absoluteAddress);
             if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(double), mask);
             return returnValue;
         }
