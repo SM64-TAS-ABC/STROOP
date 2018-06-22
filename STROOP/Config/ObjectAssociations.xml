@@ -3814,7 +3814,7 @@
     <Image path="TTC Red Coin Spinner.png"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xF8" base="Object">Timer Max</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Direction</Data>
-    <Data groupList="Basic" type="int" display="short" offset="0xD0" base="Object" subclass="Angle">Pitch Facing</Data>
+    <Data groupList="ObjectSpecific" type="int" display="short" offset="0xD0" base="Object" subclass="Angle">Pitch Facing</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004DBC" name="Mr. Blizzard (in Ground)" subType="0">
     <SpawnCode gfxId="0x55"/>
