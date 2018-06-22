@@ -555,6 +555,7 @@ namespace STROOP
             this.watchVariablePanelMisc = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.tabPageM64 = new System.Windows.Forms.TabPage();
             this.splitContainerM64 = new STROOP.BetterSplitContainer();
+            this.buttonM64AddPauseBufferFrames = new System.Windows.Forms.Button();
             this.checkBoxMaxOutViCount = new System.Windows.Forms.CheckBox();
             this.comboBoxM64FrameInputRelation = new System.Windows.Forms.ComboBox();
             this.textBoxM64PasteMultiplicity = new STROOP.BetterTextbox();
@@ -1337,7 +1338,8 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.buttonM64AddPauseBufferFrames = new System.Windows.Forms.Button();
+            this.buttonMemoryCopyObject = new System.Windows.Forms.Button();
+            this.buttonMemoryPasteObject = new System.Windows.Forms.Button();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -5108,7 +5110,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 396F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 397F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8343,6 +8345,16 @@ namespace STROOP
             this.splitContainerM64.SplitterWidth = 1;
             this.splitContainerM64.TabIndex = 34;
             // 
+            // buttonM64AddPauseBufferFrames
+            // 
+            this.buttonM64AddPauseBufferFrames.Location = new System.Drawing.Point(188, 420);
+            this.buttonM64AddPauseBufferFrames.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonM64AddPauseBufferFrames.Name = "buttonM64AddPauseBufferFrames";
+            this.buttonM64AddPauseBufferFrames.Size = new System.Drawing.Size(137, 22);
+            this.buttonM64AddPauseBufferFrames.TabIndex = 35;
+            this.buttonM64AddPauseBufferFrames.Text = "Add Pause Buffer Frames";
+            this.buttonM64AddPauseBufferFrames.UseVisualStyleBackColor = true;
+            // 
             // checkBoxMaxOutViCount
             // 
             this.checkBoxMaxOutViCount.AutoSize = true;
@@ -8795,7 +8807,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(550, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(553, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -11229,7 +11241,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 707;
+            this.splitContainerMemory.SplitterDistance = 710;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11259,6 +11271,8 @@ namespace STROOP
             this.splitContainerMemoryControls.Panel1.Controls.Add(this.buttonMemoryMoveUpOnce);
             this.splitContainerMemoryControls.Panel1.Controls.Add(this.buttonMemoryMoveDownContinuously);
             this.splitContainerMemoryControls.Panel1.Controls.Add(this.checkBoxMemoryHighlightObjVars);
+            this.splitContainerMemoryControls.Panel1.Controls.Add(this.buttonMemoryPasteObject);
+            this.splitContainerMemoryControls.Panel1.Controls.Add(this.buttonMemoryCopyObject);
             this.splitContainerMemoryControls.Panel1.Controls.Add(this.buttonMemoryMoveDownOnce);
             this.splitContainerMemoryControls.Panel1.Controls.Add(this.checkBoxMemoryUpdateContinuously);
             this.splitContainerMemoryControls.Panel1.Controls.Add(this.checkBoxMemoryLittleEndian);
@@ -11268,7 +11282,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(707, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(710, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -11463,7 +11477,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(707, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(710, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -11492,7 +11506,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(606, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(609, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -11505,7 +11519,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(199, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(196, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -17158,15 +17172,27 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // buttonM64AddPauseBufferFrames
+            // buttonMemoryCopyObject
             // 
-            this.buttonM64AddPauseBufferFrames.Location = new System.Drawing.Point(188, 420);
-            this.buttonM64AddPauseBufferFrames.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonM64AddPauseBufferFrames.Name = "buttonM64AddPauseBufferFrames";
-            this.buttonM64AddPauseBufferFrames.Size = new System.Drawing.Size(137, 22);
-            this.buttonM64AddPauseBufferFrames.TabIndex = 35;
-            this.buttonM64AddPauseBufferFrames.Text = "Add Pause Buffer Frames";
-            this.buttonM64AddPauseBufferFrames.UseVisualStyleBackColor = true;
+            this.buttonMemoryCopyObject.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonMemoryCopyObject.Location = new System.Drawing.Point(266, 29);
+            this.buttonMemoryCopyObject.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonMemoryCopyObject.Name = "buttonMemoryCopyObject";
+            this.buttonMemoryCopyObject.Size = new System.Drawing.Size(58, 21);
+            this.buttonMemoryCopyObject.TabIndex = 20;
+            this.buttonMemoryCopyObject.Text = "Copy Obj";
+            this.buttonMemoryCopyObject.UseVisualStyleBackColor = true;
+            // 
+            // buttonMemoryPasteObject
+            // 
+            this.buttonMemoryPasteObject.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonMemoryPasteObject.Location = new System.Drawing.Point(325, 29);
+            this.buttonMemoryPasteObject.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonMemoryPasteObject.Name = "buttonMemoryPasteObject";
+            this.buttonMemoryPasteObject.Size = new System.Drawing.Size(61, 21);
+            this.buttonMemoryPasteObject.TabIndex = 20;
+            this.buttonMemoryPasteObject.Text = "Paste Obj";
+            this.buttonMemoryPasteObject.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -18992,6 +19018,8 @@ namespace STROOP
         private Button buttonMemoryMoveUpContinuously;
         private Button buttonMemoryMoveDownContinuously;
         private Button buttonM64AddPauseBufferFrames;
+        private Button buttonMemoryPasteObject;
+        private Button buttonMemoryCopyObject;
     }
 }
 
