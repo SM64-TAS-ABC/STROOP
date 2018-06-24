@@ -350,6 +350,26 @@ namespace STROOP.Controls
                 _watchVariablePanel.UnselectAllVariables();
                 BaseColor = ColorUtilities.GetColorForVariable();
             }
+            else if (isSKeyHeld)
+            {
+                _watchVariablePanel.UnselectAllVariables();
+                AddToTab(Config.CustomManager);
+            }
+            else if (isTKeyHeld)
+            {
+                _watchVariablePanel.UnselectAllVariables();
+                AddToTab(Config.TasManager);
+            }
+            else if (isMKeyHeld)
+            {
+                _watchVariablePanel.UnselectAllVariables();
+                AddToTab(Config.MemoryManager);
+            }
+            else if (isPKeyHeld)
+            {
+                _watchVariablePanel.UnselectAllVariables();
+                SelectionForm.ShowDataManagerSelectionForm(this);
+            }
             else if (isFKeyHeld)
             {
                 _watchVariablePanel.UnselectAllVariables();
@@ -396,11 +416,6 @@ namespace STROOP.Controls
                 _watchVariablePanel.UnselectAllVariables();
                 DeleteFromPanel();
             }
-            else if (isSKeyHeld)
-            {
-                _watchVariablePanel.UnselectAllVariables();
-                AddToTab(Config.CustomManager);
-            }
             else if (isXKeyHeld)
             {
                 _watchVariablePanel.UnselectAllVariables();
@@ -415,21 +430,6 @@ namespace STROOP.Controls
             {
                 _watchVariablePanel.UnselectAllVariables();
                 AddToVarHackTab();
-            }
-            else if (isTKeyHeld)
-            {
-                _watchVariablePanel.UnselectAllVariables();
-                AddToTab(Config.TasManager);
-            }
-            else if (isMKeyHeld)
-            {
-                _watchVariablePanel.UnselectAllVariables();
-                AddToTab(Config.MemoryManager);
-            }
-            else if (isPKeyHeld)
-            {
-                _watchVariablePanel.UnselectAllVariables();
-                SelectionForm.ShowDataManagerSelectionForm(this);
             }
             else if (isZHeld)
             {
