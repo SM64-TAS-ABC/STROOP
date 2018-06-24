@@ -13,6 +13,26 @@ namespace STROOP.Utilities
     {
         private readonly List<uint> uintValues;
 
+        private static readonly List<uint> _doNotEditList = new List<uint>()
+        {
+            ObjectConfig.NextLinkOffset,
+            ObjectConfig.PreviousLinkOffset,
+            ObjectConfig.ProcessedNextLinkOffset,
+            ObjectConfig.ProcessedPreviousLinkOffset,
+            ObjectConfig.XOffset,
+            ObjectConfig.YOffset,
+            ObjectConfig.ZOffset,
+            ObjectConfig.HomeXOffset,
+            ObjectConfig.HomeYOffset,
+            ObjectConfig.HomeZOffset,
+            ObjectConfig.YawFacingOffsetUInt,
+            ObjectConfig.PitchFacingOffsetUInt,
+            ObjectConfig.RollFacingOffsetUInt,
+            ObjectConfig.YawMovingOffsetUInt,
+            ObjectConfig.PitchMovingOffsetUInt,
+            ObjectConfig.RollMovingOffsetUInt,
+        };
+
         public ObjectSnapshot(uint address)
         {
             uintValues = new List<uint>();
@@ -27,11 +47,7 @@ namespace STROOP.Utilities
         {
             for (int i = 0; i < ObjectConfig.StructSize; i += 4)
             {
-                if (i == ObjectConfig.NextLinkOffset ||
-                    i == ObjectConfig.PreviousLinkOffset ||
-                    i == ObjectConfig.ProcessedNextLinkOffset ||
-                    i == ObjectConfig.ProcessedPreviousLinkOffset) continue;
-
+                if (_doNotEditList.Any(offset => offset == i)) continue;
                 uint uintValue = uintValues[i / 4];
                 Config.Stream.SetValue(uintValue, address + (uint)i);
             }

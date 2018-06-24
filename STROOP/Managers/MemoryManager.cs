@@ -29,6 +29,9 @@ namespace STROOP.Managers
         private readonly CheckBox _checkBoxMemoryHex;
         private readonly CheckBox _checkBoxMemoryObj;
 
+        private readonly Button _buttonMemoryCopyObject;
+        private readonly Button _buttonMemoryPasteObject;
+
         private readonly Button _buttonMemoryMoveUpOnce;
         private readonly Button _buttonMemoryMoveDownOnce;
         private readonly Button _buttonMemoryMoveUpContinuously;
@@ -42,10 +45,7 @@ namespace STROOP.Managers
         private readonly List<WatchVariableControlPrecursor> _objectSpecificPrecursors;
         private List<WatchVariableControlPrecursor> _memTabPrecursors
         {
-            get
-            {
-                return _variablePanel.GetCurrentVariablePrecursors();
-            }
+            get => _variablePanel.GetCurrentVariablePrecursors();
         }
 
         private uint? _address;
@@ -73,10 +73,7 @@ namespace STROOP.Managers
         private BehaviorCriteria? _behavior;
         private BehaviorCriteria? Behavior
         {
-            get
-            {
-                return _behavior;
-            }
+            get => _behavior;
             set
             {
                 if (value == _behavior) return;
@@ -92,6 +89,8 @@ namespace STROOP.Managers
             }
         }
 
+        private ObjectSnapshot _objectSnapshot;
+
         public MemoryManager(TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel, string varFilePath)
             : base(null, watchVariablePanel)
         {
@@ -99,6 +98,7 @@ namespace STROOP.Managers
             _address = null;
             _memorySize = ObjectConfig.StructSize;
             _behavior = null;
+            _objectSnapshot = null;
 
             _currentValueTexts = new List<ValueText>();
             _objectPrecursors = XmlConfigParser.OpenWatchVariableControlPrecursors(varFilePath);
@@ -124,6 +124,9 @@ namespace STROOP.Managers
             _checkBoxMemoryHex = splitContainerMemoryControls.Panel1.Controls["checkBoxMemoryHex"] as CheckBox;
             _checkBoxMemoryObj = splitContainerMemoryControls.Panel1.Controls["checkBoxMemoryObj"] as CheckBox;
 
+            _buttonMemoryCopyObject = splitContainerMemoryControls.Panel1.Controls["buttonMemoryCopyObject"] as Button;
+            _buttonMemoryPasteObject = splitContainerMemoryControls.Panel1.Controls["buttonMemoryPasteObject"] as Button;
+
             _buttonMemoryMoveUpOnce = splitContainerMemoryControls.Panel1.Controls["buttonMemoryMoveUpOnce"] as Button;
             _buttonMemoryMoveDownOnce = splitContainerMemoryControls.Panel1.Controls["buttonMemoryMoveDownOnce"] as Button;
             _buttonMemoryMoveUpContinuously = splitContainerMemoryControls.Panel1.Controls["buttonMemoryMoveUpContinuously"] as Button;
@@ -144,6 +147,18 @@ namespace STROOP.Managers
                 SetCustomAddress(ParsingUtilities.ParseHexNullable(_textBoxMemoryBaseAddress.Text)));
             _textBoxMemoryMemorySize.AddEnterAction(() =>
                 SetCustomMemorySize(ParsingUtilities.ParseHexNullable(_textBoxMemoryMemorySize.Text)));
+
+            _buttonMemoryCopyObject.Click += (sender, e) =>
+            {
+                if (!Address.HasValue) return;
+                _objectSnapshot = new ObjectSnapshot(Address.Value);
+            };
+
+            _buttonMemoryPasteObject.Click += (sender, e) =>
+            {
+                if (!Address.HasValue || _objectSnapshot == null) return;
+                _objectSnapshot.Apply(Address.Value);
+            };
 
             _buttonMemoryMoveUpOnce.Click += (sender, e) => ScrollMemory(-1);
             _buttonMemoryMoveDownOnce.Click += (sender, e) => ScrollMemory(1);
