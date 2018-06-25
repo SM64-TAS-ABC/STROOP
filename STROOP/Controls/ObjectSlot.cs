@@ -475,7 +475,7 @@ namespace STROOP
                     _drawParentUnusedOverlay = (OverlayConfig.ShowOverlayParentObject || Keyboard.IsKeyDown(Key.P)) &&
                         address == hoveredObject.Address &&
                         hoveredObject.Parent == ObjectSlotsConfig.UnusedSlotAddress;
-                    _drawChildOverlay = (OverlayConfig.ShowOverlayParentObject || Keyboard.IsKeyDown(Key.P)) &&
+                    _drawChildOverlay = (OverlayConfig.ShowOverlayChildObject || Keyboard.IsKeyDown(Key.P)) &&
                         CurrentObject?.Parent == hoveredObject.Address;
                 }
 

@@ -827,6 +827,8 @@ namespace STROOP
             this.buttonMemoryMoveUpOnce = new System.Windows.Forms.Button();
             this.buttonMemoryMoveDownContinuously = new System.Windows.Forms.Button();
             this.checkBoxMemoryHighlightObjVars = new System.Windows.Forms.CheckBox();
+            this.buttonMemoryPasteObject = new System.Windows.Forms.Button();
+            this.buttonMemoryCopyObject = new System.Windows.Forms.Button();
             this.buttonMemoryMoveDownOnce = new System.Windows.Forms.Button();
             this.checkBoxMemoryUpdateContinuously = new System.Windows.Forms.CheckBox();
             this.checkBoxMemoryLittleEndian = new System.Windows.Forms.CheckBox();
@@ -1338,8 +1340,7 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.buttonMemoryCopyObject = new System.Windows.Forms.Button();
-            this.buttonMemoryPasteObject = new System.Windows.Forms.Button();
+            this.checkedListBoxObjectSlotOverlaysToShow = new System.Windows.Forms.CheckedListBox();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -5110,7 +5111,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 397F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 398F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8807,7 +8808,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(553, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(556, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -10771,6 +10772,7 @@ namespace STROOP
             // tabPageOptions
             // 
             this.tabPageOptions.AutoScroll = true;
+            this.tabPageOptions.Controls.Add(this.checkedListBoxObjectSlotOverlaysToShow);
             this.tabPageOptions.Controls.Add(this.checkedListBoxSavedSettings);
             this.tabPageOptions.Controls.Add(this.buttonOptionsResetSavedSettings);
             this.tabPageOptions.Controls.Add(this.groupBoxPositionControllerRelativeAngle);
@@ -11241,7 +11243,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 710;
+            this.splitContainerMemory.SplitterDistance = 713;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11282,7 +11284,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(710, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(713, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -11423,6 +11425,28 @@ namespace STROOP
             this.checkBoxMemoryHighlightObjVars.Text = "Highlight Obj Vars";
             this.checkBoxMemoryHighlightObjVars.UseVisualStyleBackColor = true;
             // 
+            // buttonMemoryPasteObject
+            // 
+            this.buttonMemoryPasteObject.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonMemoryPasteObject.Location = new System.Drawing.Point(325, 29);
+            this.buttonMemoryPasteObject.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonMemoryPasteObject.Name = "buttonMemoryPasteObject";
+            this.buttonMemoryPasteObject.Size = new System.Drawing.Size(61, 21);
+            this.buttonMemoryPasteObject.TabIndex = 20;
+            this.buttonMemoryPasteObject.Text = "Paste Obj";
+            this.buttonMemoryPasteObject.UseVisualStyleBackColor = true;
+            // 
+            // buttonMemoryCopyObject
+            // 
+            this.buttonMemoryCopyObject.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonMemoryCopyObject.Location = new System.Drawing.Point(266, 29);
+            this.buttonMemoryCopyObject.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonMemoryCopyObject.Name = "buttonMemoryCopyObject";
+            this.buttonMemoryCopyObject.Size = new System.Drawing.Size(58, 21);
+            this.buttonMemoryCopyObject.TabIndex = 20;
+            this.buttonMemoryCopyObject.Text = "Copy Obj";
+            this.buttonMemoryCopyObject.UseVisualStyleBackColor = true;
+            // 
             // buttonMemoryMoveDownOnce
             // 
             this.buttonMemoryMoveDownOnce.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonMemoryMoveDownOnce.BackgroundImage")));
@@ -11477,7 +11501,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(710, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(713, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -11506,7 +11530,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(609, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(612, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -11519,7 +11543,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(196, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(193, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -17172,27 +17196,15 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // buttonMemoryCopyObject
+            // checkedListBoxObjectSlotOverlaysToShow
             // 
-            this.buttonMemoryCopyObject.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonMemoryCopyObject.Location = new System.Drawing.Point(266, 29);
-            this.buttonMemoryCopyObject.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonMemoryCopyObject.Name = "buttonMemoryCopyObject";
-            this.buttonMemoryCopyObject.Size = new System.Drawing.Size(58, 21);
-            this.buttonMemoryCopyObject.TabIndex = 20;
-            this.buttonMemoryCopyObject.Text = "Copy Obj";
-            this.buttonMemoryCopyObject.UseVisualStyleBackColor = true;
-            // 
-            // buttonMemoryPasteObject
-            // 
-            this.buttonMemoryPasteObject.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonMemoryPasteObject.Location = new System.Drawing.Point(325, 29);
-            this.buttonMemoryPasteObject.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonMemoryPasteObject.Name = "buttonMemoryPasteObject";
-            this.buttonMemoryPasteObject.Size = new System.Drawing.Size(61, 21);
-            this.buttonMemoryPasteObject.TabIndex = 20;
-            this.buttonMemoryPasteObject.Text = "Paste Obj";
-            this.buttonMemoryPasteObject.UseVisualStyleBackColor = true;
+            this.checkedListBoxObjectSlotOverlaysToShow.BackColor = System.Drawing.SystemColors.Control;
+            this.checkedListBoxObjectSlotOverlaysToShow.CheckOnClick = true;
+            this.checkedListBoxObjectSlotOverlaysToShow.FormattingEnabled = true;
+            this.checkedListBoxObjectSlotOverlaysToShow.Location = new System.Drawing.Point(613, 8);
+            this.checkedListBoxObjectSlotOverlaysToShow.Name = "checkedListBoxObjectSlotOverlaysToShow";
+            this.checkedListBoxObjectSlotOverlaysToShow.Size = new System.Drawing.Size(257, 319);
+            this.checkedListBoxObjectSlotOverlaysToShow.TabIndex = 41;
             // 
             // StroopMainForm
             // 
@@ -19020,6 +19032,7 @@ namespace STROOP
         private Button buttonM64AddPauseBufferFrames;
         private Button buttonMemoryPasteObject;
         private Button buttonMemoryCopyObject;
+        private CheckedListBox checkedListBoxObjectSlotOverlaysToShow;
     }
 }
 

@@ -153,6 +153,68 @@ namespace STROOP.Managers
             };
 
             // object slot overlays
+
+            List<string> objectSlotOverlayTextList = new List<string>()
+            {
+                "Held Object",
+                "Stood On Object",
+                "Interaction Object",
+                "Used Object",
+                "Closest Object",
+                "Camera Object",
+                "Camera Hack Object",
+                "Floor Object",
+                "Wall Object",
+                "Ceiling Object",
+                "Collision Object",
+                "Parent Object",
+                "Child Object",
+            };
+
+            List<Func<bool>> objectSlotOverlayGetterList = new List<Func<bool>>()
+            {
+                () => OverlayConfig.ShowOverlayHeldObject,
+                () => OverlayConfig.ShowOverlayStoodOnObject,
+                () => OverlayConfig.ShowOverlayInteractionObject,
+                () => OverlayConfig.ShowOverlayUsedObject,
+                () => OverlayConfig.ShowOverlayClosestObject,
+                () => OverlayConfig.ShowOverlayCameraObject,
+                () => OverlayConfig.ShowOverlayCameraHackObject,
+                () => OverlayConfig.ShowOverlayFloorObject,
+                () => OverlayConfig.ShowOverlayWallObject,
+                () => OverlayConfig.ShowOverlayCeilingObject,
+                () => OverlayConfig.ShowOverlayCollisionObject,
+                () => OverlayConfig.ShowOverlayParentObject,
+                () => OverlayConfig.ShowOverlayChildObject,
+            };
+
+            List<Action<bool>> objectSlotOverlaySetterList = new List<Action<bool>>()
+            {
+                (bool value) => OverlayConfig.ShowOverlayHeldObject = value,
+                (bool value) => OverlayConfig.ShowOverlayStoodOnObject = value,
+                (bool value) => OverlayConfig.ShowOverlayInteractionObject = value,
+                (bool value) => OverlayConfig.ShowOverlayUsedObject = value,
+                (bool value) => OverlayConfig.ShowOverlayClosestObject = value,
+                (bool value) => OverlayConfig.ShowOverlayCameraObject = value,
+                (bool value) => OverlayConfig.ShowOverlayCameraHackObject = value,
+                (bool value) => OverlayConfig.ShowOverlayFloorObject = value,
+                (bool value) => OverlayConfig.ShowOverlayWallObject = value,
+                (bool value) => OverlayConfig.ShowOverlayCeilingObject = value,
+                (bool value) => OverlayConfig.ShowOverlayCollisionObject = value,
+                (bool value) => OverlayConfig.ShowOverlayParentObject = value,
+                (bool value) => OverlayConfig.ShowOverlayChildObject = value,
+            };
+
+            CheckedListBox checkedListBoxObjectSlotOverlaysToShow = tabControl.Controls["checkedListBoxObjectSlotOverlaysToShow"] as CheckedListBox;
+            for (int i = 0; i < objectSlotOverlayTextList.Count; i++)
+            {
+                checkedListBoxObjectSlotOverlaysToShow.Items.Add(objectSlotOverlayTextList[i], objectSlotOverlayGetterList[i]());
+            }
+            checkedListBoxObjectSlotOverlaysToShow.ItemCheck += (sender, e) =>
+            {
+                objectSlotOverlaySetterList[e.Index](e.NewValue == CheckState.Checked);
+            };
+
             GroupBox groupBoxShowOverlay = tabControl.Controls["groupBoxShowOverlay"] as GroupBox;
             List<CheckBox> overlaysCheckboxes = new List<CheckBox>();
             CheckBox checkBoxShowOverlayHeldObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayHeldObject"] as CheckBox;
