@@ -303,8 +303,8 @@ namespace STROOP.Managers
             {
                 uint minOffset = MemoryAddress;
                 uint maxOffset = MemoryAddress + (uint)ByteSize - 1;
-                uint? minObjOffset = ObjectConfig.GetObjectRelativeAddress(minOffset);
-                uint? maxObjOffset = ObjectConfig.GetObjectRelativeAddress(maxOffset);
+                uint? minObjOffset = ObjectUtilities.GetObjectRelativeAddress(minOffset);
+                uint? maxObjOffset = ObjectUtilities.GetObjectRelativeAddress(maxOffset);
 
                 return precursors.FindAll(precursor =>
                 {
@@ -423,7 +423,7 @@ namespace STROOP.Managers
             }
 
             // read from memory
-            if (ObjectConfig.GetObjectRelativeAddress(address.Value) == 0)
+            if (ObjectUtilities.GetObjectRelativeAddress(address.Value) == 0)
             {
                 Behavior = new ObjectDataModel(address.Value).BehaviorCriteria;
             }

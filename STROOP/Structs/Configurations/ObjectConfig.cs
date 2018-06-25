@@ -105,20 +105,5 @@ namespace STROOP.Structs
         public static readonly uint SignGraphicsIdJP = 0x800F5DCC;
 
         public static readonly uint BitfsPlatformGroupTimerOffset = 0xF4;
-
-        // Utilities
-
-        public static uint? GetObjectRelativeAddress(uint absoluteAddress)
-        {
-            uint objRangeMinAddress = ObjectSlotsConfig.LinkStartAddress;
-            uint objRangeMaxAddress =
-                objRangeMinAddress + (uint)ObjectSlotsConfig.MaxSlots * ObjectConfig.StructSize;
-
-            if (absoluteAddress < objRangeMinAddress ||
-                absoluteAddress >= objRangeMaxAddress) return null;
-
-            uint relativeAddress = (absoluteAddress - objRangeMinAddress) % ObjectConfig.StructSize;
-            return relativeAddress;
-        }
     }
 }
