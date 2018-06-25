@@ -479,10 +479,16 @@ namespace STROOP
                         CurrentObject?.Parent == hoveredObject.Address;
                 }
 
-                _drawCollision1Overlay = address == ObjectUtilities.GetMarioCollisionObject(1);
-                _drawCollision2Overlay = address == ObjectUtilities.GetMarioCollisionObject(2);
-                _drawCollision3Overlay = address == ObjectUtilities.GetMarioCollisionObject(3);
-                _drawCollision4Overlay = address == ObjectUtilities.GetMarioCollisionObject(4);
+                uint collisionObjAddress = hoveredAddress.HasValue && Keyboard.IsKeyDown(Key.C)
+                    ? hoveredAddress.Value : Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+                _drawCollision1Overlay = OverlayConfig.ShowOverlayCollisionObject &&
+                    address == ObjectUtilities.GetCollisionObject(collisionObjAddress, 1);
+                _drawCollision2Overlay = OverlayConfig.ShowOverlayCollisionObject && 
+                    address == ObjectUtilities.GetCollisionObject(collisionObjAddress, 2);
+                _drawCollision3Overlay = OverlayConfig.ShowOverlayCollisionObject && 
+                    address == ObjectUtilities.GetCollisionObject(collisionObjAddress, 3);
+                _drawCollision4Overlay = OverlayConfig.ShowOverlayCollisionObject && 
+                    address == ObjectUtilities.GetCollisionObject(collisionObjAddress, 4);
 
                 _drawMarkedOverlay = _manager.MarkedSlotsAddresses.Contains(address.Value);
             }
