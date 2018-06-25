@@ -34,7 +34,7 @@ namespace STROOP.Utilities
                 return null;
 
             uint collisionObjectOffset = ((uint)collisionIndex - 1) * 4;
-            return Config.Stream.GetUInt32(objAddress + collisionObjectOffset);
+            return Config.Stream.GetUInt32(objAddress + ObjectConfig.CollidedObjectsListStartOffset + collisionObjectOffset);
         }
 
         public static uint? GetMarioCollisionObject(int collisionIndex)

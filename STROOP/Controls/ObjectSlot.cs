@@ -466,6 +466,7 @@ namespace STROOP
                 if (hoveredAddress.HasValue)
                 {
                     ObjectDataModel hoveredObject = new ObjectDataModel(hoveredAddress.Value);
+
                     _drawParentOverlay = (OverlayConfig.ShowOverlayParentObject || Keyboard.IsKeyDown(Key.P)) &&
                         address == hoveredObject.Parent;
                     _drawParentNoneOverlay = (OverlayConfig.ShowOverlayParentObject || Keyboard.IsKeyDown(Key.P)) &&
@@ -477,6 +478,11 @@ namespace STROOP
                     _drawChildOverlay = (OverlayConfig.ShowOverlayParentObject || Keyboard.IsKeyDown(Key.P)) &&
                         CurrentObject?.Parent == hoveredObject.Address;
                 }
+
+                _drawCollision1Overlay = address == ObjectUtilities.GetMarioCollisionObject(1);
+                _drawCollision2Overlay = address == ObjectUtilities.GetMarioCollisionObject(2);
+                _drawCollision3Overlay = address == ObjectUtilities.GetMarioCollisionObject(3);
+                _drawCollision4Overlay = address == ObjectUtilities.GetMarioCollisionObject(4);
 
                 _drawMarkedOverlay = _manager.MarkedSlotsAddresses.Contains(address.Value);
             }
