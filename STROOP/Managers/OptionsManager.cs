@@ -214,6 +214,24 @@ namespace STROOP.Managers
                 objectSlotOverlaySetterList[e.Index](e.NewValue == CheckState.Checked);
             };
 
+            Action<bool> setAllObjectSlotOverlays = (bool value) =>
+            {
+                int specialCount = 2;
+                int totalCount = checkedListBoxObjectSlotOverlaysToShow.Items.Count;
+                for (int i = 0; i < totalCount - specialCount; i++)
+                {
+                    checkedListBoxObjectSlotOverlaysToShow.SetItemChecked(i, value);
+                }
+            };
+            ControlUtilities.AddContextMenuStripFunctions(
+                checkedListBoxObjectSlotOverlaysToShow,
+                new List<string>() { "Set All On", "Set All Off" },
+                new List<Action>()
+                {
+                    () => setAllObjectSlotOverlays(true),
+                    () => setAllObjectSlotOverlays(false),
+                });
+
             // FPS
             GroupBox groupBoxFPS = tabControl.Controls["groupBoxFPS"] as GroupBox;
             BetterTextbox betterTextboxFPS = groupBoxFPS.Controls["betterTextboxFPS"] as BetterTextbox;
