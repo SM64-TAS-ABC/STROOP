@@ -153,7 +153,6 @@ namespace STROOP.Managers
             };
 
             // object slot overlays
-
             List<string> objectSlotOverlayTextList = new List<string>()
             {
                 "Held Object",
@@ -213,50 +212,6 @@ namespace STROOP.Managers
             checkedListBoxObjectSlotOverlaysToShow.ItemCheck += (sender, e) =>
             {
                 objectSlotOverlaySetterList[e.Index](e.NewValue == CheckState.Checked);
-            };
-
-            GroupBox groupBoxShowOverlay = tabControl.Controls["groupBoxShowOverlay"] as GroupBox;
-            List<CheckBox> overlaysCheckboxes = new List<CheckBox>();
-            CheckBox checkBoxShowOverlayHeldObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayHeldObject"] as CheckBox;
-            checkBoxShowOverlayHeldObject.CheckedChanged += (sender, e) => OverlayConfig.ShowOverlayHeldObject = checkBoxShowOverlayHeldObject.Checked;
-            overlaysCheckboxes.Add(checkBoxShowOverlayHeldObject);
-            CheckBox checkBoxShowOverlayStoodOnObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayStoodOnObject"] as CheckBox;
-            checkBoxShowOverlayStoodOnObject.CheckedChanged += (sender, e) => OverlayConfig.ShowOverlayStoodOnObject = checkBoxShowOverlayStoodOnObject.Checked;
-            overlaysCheckboxes.Add(checkBoxShowOverlayStoodOnObject);
-            CheckBox checkBoxShowOverlayInteractionObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayInteractionObject"] as CheckBox;
-            checkBoxShowOverlayInteractionObject.CheckedChanged += (sender, e) => OverlayConfig.ShowOverlayInteractionObject = checkBoxShowOverlayInteractionObject.Checked;
-            overlaysCheckboxes.Add(checkBoxShowOverlayInteractionObject);
-            CheckBox checkBoxShowOverlayUsedObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayUsedObject"] as CheckBox;
-            checkBoxShowOverlayUsedObject.CheckedChanged += (sender, e) => OverlayConfig.ShowOverlayUsedObject = checkBoxShowOverlayUsedObject.Checked;
-            overlaysCheckboxes.Add(checkBoxShowOverlayUsedObject);
-            CheckBox checkBoxShowOverlayClosestObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayClosestObject"] as CheckBox;
-            checkBoxShowOverlayClosestObject.CheckedChanged += (sender, e) => OverlayConfig.ShowOverlayClosestObject = checkBoxShowOverlayClosestObject.Checked;
-            overlaysCheckboxes.Add(checkBoxShowOverlayClosestObject);
-            CheckBox checkBoxShowOverlayCameraObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayCameraObject"] as CheckBox;
-            checkBoxShowOverlayCameraObject.CheckedChanged += (sender, e) => OverlayConfig.ShowOverlayCameraObject = checkBoxShowOverlayCameraObject.Checked;
-            overlaysCheckboxes.Add(checkBoxShowOverlayCameraObject);
-            CheckBox checkBoxShowOverlayCameraHackObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayCameraHackObject"] as CheckBox;
-            checkBoxShowOverlayCameraHackObject.CheckedChanged += (sender, e) => OverlayConfig.ShowOverlayCameraHackObject = checkBoxShowOverlayCameraHackObject.Checked;
-            overlaysCheckboxes.Add(checkBoxShowOverlayCameraHackObject);
-            CheckBox checkBoxShowOverlayFloorObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayFloorObject"] as CheckBox;
-            checkBoxShowOverlayFloorObject.CheckedChanged += (sender, e) => OverlayConfig.ShowOverlayFloorObject = checkBoxShowOverlayFloorObject.Checked;
-            overlaysCheckboxes.Add(checkBoxShowOverlayFloorObject);
-            CheckBox checkBoxShowOverlayWallObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayWallObject"] as CheckBox;
-            checkBoxShowOverlayWallObject.CheckedChanged += (sender, e) => OverlayConfig.ShowOverlayWallObject = checkBoxShowOverlayWallObject.Checked;
-            overlaysCheckboxes.Add(checkBoxShowOverlayWallObject);
-            CheckBox checkBoxShowOverlayCeilingObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayCeilingObject"] as CheckBox;
-            checkBoxShowOverlayCeilingObject.CheckedChanged += (sender, e) => OverlayConfig.ShowOverlayCeilingObject = checkBoxShowOverlayCeilingObject.Checked;
-            overlaysCheckboxes.Add(checkBoxShowOverlayCeilingObject);
-
-            CheckBox checkBoxShowOverlayParentObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayParentObject"] as CheckBox;
-            checkBoxShowOverlayParentObject.CheckedChanged += (sender, e) => OverlayConfig.ShowOverlayParentObject = checkBoxShowOverlayParentObject.Checked;
-            CheckBox checkBoxShowOverlayChildObject = groupBoxShowOverlay.Controls["checkBoxShowOverlayChildObject"] as CheckBox;
-            checkBoxShowOverlayChildObject.CheckedChanged += (sender, e) => OverlayConfig.ShowOverlayChildObject = checkBoxShowOverlayChildObject.Checked;
-
-            groupBoxShowOverlay.Click += (sender, e) =>
-            {
-                bool newChecked = !overlaysCheckboxes.All(checkbox => checkbox.Checked);
-                overlaysCheckboxes.ForEach(checkbox => checkbox.Checked = newChecked);
             };
 
             // FPS

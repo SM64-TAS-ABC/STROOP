@@ -774,6 +774,7 @@ namespace STROOP
             this.trackBarMap2IconSize = new System.Windows.Forms.TrackBar();
             this.glControlMap2 = new OpenTK.GLControl();
             this.tabPageOptions = new System.Windows.Forms.TabPage();
+            this.checkedListBoxObjectSlotOverlaysToShow = new System.Windows.Forms.CheckedListBox();
             this.checkedListBoxSavedSettings = new System.Windows.Forms.CheckedListBox();
             this.buttonOptionsResetSavedSettings = new System.Windows.Forms.Button();
             this.groupBoxPositionControllerRelativeAngle = new System.Windows.Forms.GroupBox();
@@ -796,19 +797,6 @@ namespace STROOP
             this.labelGotoAboveSuffix = new System.Windows.Forms.Label();
             this.labelGotoAbovePrefix = new System.Windows.Forms.Label();
             this.textBoxGotoAbove = new STROOP.BetterTextbox();
-            this.groupBoxShowOverlay = new System.Windows.Forms.GroupBox();
-            this.checkBoxShowOverlayCameraHackObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayChildObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayParentObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayCeilingObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayWallObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayFloorObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayUsedObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayInteractionObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayCameraObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayClosestObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayStoodOnObject = new System.Windows.Forms.CheckBox();
-            this.checkBoxShowOverlayHeldObject = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.checkBoxUseRomHack = new System.Windows.Forms.CheckBox();
             this.tabPageMemory = new System.Windows.Forms.TabPage();
@@ -1340,7 +1328,6 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.checkedListBoxObjectSlotOverlaysToShow = new System.Windows.Forms.CheckedListBox();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1632,7 +1619,6 @@ namespace STROOP
             this.groupBoxPositionControllerRelativeAngle.SuspendLayout();
             this.groupBoxFPS.SuspendLayout();
             this.groupBoxGotoRetrieveOffsets.SuspendLayout();
-            this.groupBoxShowOverlay.SuspendLayout();
             this.tabPageMemory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMemory)).BeginInit();
             this.splitContainerMemory.Panel1.SuspendLayout();
@@ -5111,7 +5097,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 398F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8808,7 +8794,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(556, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(562, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -10778,7 +10764,6 @@ namespace STROOP
             this.tabPageOptions.Controls.Add(this.groupBoxPositionControllerRelativeAngle);
             this.tabPageOptions.Controls.Add(this.groupBoxFPS);
             this.tabPageOptions.Controls.Add(this.groupBoxGotoRetrieveOffsets);
-            this.tabPageOptions.Controls.Add(this.groupBoxShowOverlay);
             this.tabPageOptions.Controls.Add(this.label3);
             this.tabPageOptions.Controls.Add(this.checkBoxUseRomHack);
             this.tabPageOptions.Location = new System.Drawing.Point(4, 22);
@@ -10787,6 +10772,16 @@ namespace STROOP
             this.tabPageOptions.Size = new System.Drawing.Size(915, 463);
             this.tabPageOptions.TabIndex = 5;
             this.tabPageOptions.Text = "Options";
+            // 
+            // checkedListBoxObjectSlotOverlaysToShow
+            // 
+            this.checkedListBoxObjectSlotOverlaysToShow.BackColor = System.Drawing.SystemColors.Control;
+            this.checkedListBoxObjectSlotOverlaysToShow.CheckOnClick = true;
+            this.checkedListBoxObjectSlotOverlaysToShow.FormattingEnabled = true;
+            this.checkedListBoxObjectSlotOverlaysToShow.Location = new System.Drawing.Point(268, 8);
+            this.checkedListBoxObjectSlotOverlaysToShow.Name = "checkedListBoxObjectSlotOverlaysToShow";
+            this.checkedListBoxObjectSlotOverlaysToShow.Size = new System.Drawing.Size(176, 274);
+            this.checkedListBoxObjectSlotOverlaysToShow.TabIndex = 41;
             // 
             // checkedListBoxSavedSettings
             // 
@@ -11018,179 +11013,6 @@ namespace STROOP
             this.textBoxGotoAbove.Text = "300";
             this.textBoxGotoAbove.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // groupBoxShowOverlay
-            // 
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayCameraHackObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayChildObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayParentObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayCeilingObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayWallObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayFloorObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayUsedObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayInteractionObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayCameraObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayClosestObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayStoodOnObject);
-            this.groupBoxShowOverlay.Controls.Add(this.checkBoxShowOverlayHeldObject);
-            this.groupBoxShowOverlay.Location = new System.Drawing.Point(271, 4);
-            this.groupBoxShowOverlay.Name = "groupBoxShowOverlay";
-            this.groupBoxShowOverlay.Size = new System.Drawing.Size(170, 275);
-            this.groupBoxShowOverlay.TabIndex = 29;
-            this.groupBoxShowOverlay.TabStop = false;
-            this.groupBoxShowOverlay.Text = "Object Slot Overlays to Show";
-            // 
-            // checkBoxShowOverlayCameraHackObject
-            // 
-            this.checkBoxShowOverlayCameraHackObject.AutoSize = true;
-            this.checkBoxShowOverlayCameraHackObject.Checked = true;
-            this.checkBoxShowOverlayCameraHackObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayCameraHackObject.Location = new System.Drawing.Point(5, 146);
-            this.checkBoxShowOverlayCameraHackObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayCameraHackObject.Name = "checkBoxShowOverlayCameraHackObject";
-            this.checkBoxShowOverlayCameraHackObject.Size = new System.Drawing.Size(125, 17);
-            this.checkBoxShowOverlayCameraHackObject.TabIndex = 10;
-            this.checkBoxShowOverlayCameraHackObject.Text = "Camera Hack Object";
-            this.checkBoxShowOverlayCameraHackObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayChildObject
-            // 
-            this.checkBoxShowOverlayChildObject.AutoSize = true;
-            this.checkBoxShowOverlayChildObject.Location = new System.Drawing.Point(5, 251);
-            this.checkBoxShowOverlayChildObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayChildObject.Name = "checkBoxShowOverlayChildObject";
-            this.checkBoxShowOverlayChildObject.Size = new System.Drawing.Size(83, 17);
-            this.checkBoxShowOverlayChildObject.TabIndex = 9;
-            this.checkBoxShowOverlayChildObject.Text = "Child Object";
-            this.checkBoxShowOverlayChildObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayParentObject
-            // 
-            this.checkBoxShowOverlayParentObject.AutoSize = true;
-            this.checkBoxShowOverlayParentObject.Location = new System.Drawing.Point(5, 230);
-            this.checkBoxShowOverlayParentObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayParentObject.Name = "checkBoxShowOverlayParentObject";
-            this.checkBoxShowOverlayParentObject.Size = new System.Drawing.Size(91, 17);
-            this.checkBoxShowOverlayParentObject.TabIndex = 9;
-            this.checkBoxShowOverlayParentObject.Text = "Parent Object";
-            this.checkBoxShowOverlayParentObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayCeilingObject
-            // 
-            this.checkBoxShowOverlayCeilingObject.AutoSize = true;
-            this.checkBoxShowOverlayCeilingObject.Checked = true;
-            this.checkBoxShowOverlayCeilingObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayCeilingObject.Location = new System.Drawing.Point(5, 209);
-            this.checkBoxShowOverlayCeilingObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayCeilingObject.Name = "checkBoxShowOverlayCeilingObject";
-            this.checkBoxShowOverlayCeilingObject.Size = new System.Drawing.Size(91, 17);
-            this.checkBoxShowOverlayCeilingObject.TabIndex = 9;
-            this.checkBoxShowOverlayCeilingObject.Text = "Ceiling Object";
-            this.checkBoxShowOverlayCeilingObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayWallObject
-            // 
-            this.checkBoxShowOverlayWallObject.AutoSize = true;
-            this.checkBoxShowOverlayWallObject.Checked = true;
-            this.checkBoxShowOverlayWallObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayWallObject.Location = new System.Drawing.Point(5, 188);
-            this.checkBoxShowOverlayWallObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayWallObject.Name = "checkBoxShowOverlayWallObject";
-            this.checkBoxShowOverlayWallObject.Size = new System.Drawing.Size(81, 17);
-            this.checkBoxShowOverlayWallObject.TabIndex = 8;
-            this.checkBoxShowOverlayWallObject.Text = "Wall Object";
-            this.checkBoxShowOverlayWallObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayFloorObject
-            // 
-            this.checkBoxShowOverlayFloorObject.AutoSize = true;
-            this.checkBoxShowOverlayFloorObject.Checked = true;
-            this.checkBoxShowOverlayFloorObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayFloorObject.Location = new System.Drawing.Point(5, 167);
-            this.checkBoxShowOverlayFloorObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayFloorObject.Name = "checkBoxShowOverlayFloorObject";
-            this.checkBoxShowOverlayFloorObject.Size = new System.Drawing.Size(83, 17);
-            this.checkBoxShowOverlayFloorObject.TabIndex = 7;
-            this.checkBoxShowOverlayFloorObject.Text = "Floor Object";
-            this.checkBoxShowOverlayFloorObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayUsedObject
-            // 
-            this.checkBoxShowOverlayUsedObject.AutoSize = true;
-            this.checkBoxShowOverlayUsedObject.Checked = true;
-            this.checkBoxShowOverlayUsedObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayUsedObject.Location = new System.Drawing.Point(5, 83);
-            this.checkBoxShowOverlayUsedObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayUsedObject.Name = "checkBoxShowOverlayUsedObject";
-            this.checkBoxShowOverlayUsedObject.Size = new System.Drawing.Size(85, 17);
-            this.checkBoxShowOverlayUsedObject.TabIndex = 4;
-            this.checkBoxShowOverlayUsedObject.Text = "Used Object";
-            this.checkBoxShowOverlayUsedObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayInteractionObject
-            // 
-            this.checkBoxShowOverlayInteractionObject.AutoSize = true;
-            this.checkBoxShowOverlayInteractionObject.Checked = true;
-            this.checkBoxShowOverlayInteractionObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayInteractionObject.Location = new System.Drawing.Point(5, 62);
-            this.checkBoxShowOverlayInteractionObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayInteractionObject.Name = "checkBoxShowOverlayInteractionObject";
-            this.checkBoxShowOverlayInteractionObject.Size = new System.Drawing.Size(110, 17);
-            this.checkBoxShowOverlayInteractionObject.TabIndex = 3;
-            this.checkBoxShowOverlayInteractionObject.Text = "Interaction Object";
-            this.checkBoxShowOverlayInteractionObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayCameraObject
-            // 
-            this.checkBoxShowOverlayCameraObject.AutoSize = true;
-            this.checkBoxShowOverlayCameraObject.Checked = true;
-            this.checkBoxShowOverlayCameraObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayCameraObject.Location = new System.Drawing.Point(5, 125);
-            this.checkBoxShowOverlayCameraObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayCameraObject.Name = "checkBoxShowOverlayCameraObject";
-            this.checkBoxShowOverlayCameraObject.Size = new System.Drawing.Size(96, 17);
-            this.checkBoxShowOverlayCameraObject.TabIndex = 5;
-            this.checkBoxShowOverlayCameraObject.Text = "Camera Object";
-            this.checkBoxShowOverlayCameraObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayClosestObject
-            // 
-            this.checkBoxShowOverlayClosestObject.AutoSize = true;
-            this.checkBoxShowOverlayClosestObject.Checked = true;
-            this.checkBoxShowOverlayClosestObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayClosestObject.Location = new System.Drawing.Point(5, 104);
-            this.checkBoxShowOverlayClosestObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayClosestObject.Name = "checkBoxShowOverlayClosestObject";
-            this.checkBoxShowOverlayClosestObject.Size = new System.Drawing.Size(94, 17);
-            this.checkBoxShowOverlayClosestObject.TabIndex = 6;
-            this.checkBoxShowOverlayClosestObject.Text = "Closest Object";
-            this.checkBoxShowOverlayClosestObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayStoodOnObject
-            // 
-            this.checkBoxShowOverlayStoodOnObject.AutoSize = true;
-            this.checkBoxShowOverlayStoodOnObject.Checked = true;
-            this.checkBoxShowOverlayStoodOnObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayStoodOnObject.Location = new System.Drawing.Point(5, 41);
-            this.checkBoxShowOverlayStoodOnObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayStoodOnObject.Name = "checkBoxShowOverlayStoodOnObject";
-            this.checkBoxShowOverlayStoodOnObject.Size = new System.Drawing.Size(105, 17);
-            this.checkBoxShowOverlayStoodOnObject.TabIndex = 2;
-            this.checkBoxShowOverlayStoodOnObject.Text = "Stood On Object";
-            this.checkBoxShowOverlayStoodOnObject.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxShowOverlayHeldObject
-            // 
-            this.checkBoxShowOverlayHeldObject.AutoSize = true;
-            this.checkBoxShowOverlayHeldObject.Checked = true;
-            this.checkBoxShowOverlayHeldObject.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxShowOverlayHeldObject.Location = new System.Drawing.Point(5, 20);
-            this.checkBoxShowOverlayHeldObject.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowOverlayHeldObject.Name = "checkBoxShowOverlayHeldObject";
-            this.checkBoxShowOverlayHeldObject.Size = new System.Drawing.Size(82, 17);
-            this.checkBoxShowOverlayHeldObject.TabIndex = 1;
-            this.checkBoxShowOverlayHeldObject.Text = "Held Object";
-            this.checkBoxShowOverlayHeldObject.UseVisualStyleBackColor = true;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -11243,7 +11065,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 713;
+            this.splitContainerMemory.SplitterDistance = 719;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11284,7 +11106,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(713, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(719, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -11501,7 +11323,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(713, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(719, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -11530,7 +11352,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(612, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(618, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -11543,7 +11365,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(193, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(187, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -17196,16 +17018,6 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // checkedListBoxObjectSlotOverlaysToShow
-            // 
-            this.checkedListBoxObjectSlotOverlaysToShow.BackColor = System.Drawing.SystemColors.Control;
-            this.checkedListBoxObjectSlotOverlaysToShow.CheckOnClick = true;
-            this.checkedListBoxObjectSlotOverlaysToShow.FormattingEnabled = true;
-            this.checkedListBoxObjectSlotOverlaysToShow.Location = new System.Drawing.Point(613, 8);
-            this.checkedListBoxObjectSlotOverlaysToShow.Name = "checkedListBoxObjectSlotOverlaysToShow";
-            this.checkedListBoxObjectSlotOverlaysToShow.Size = new System.Drawing.Size(257, 319);
-            this.checkedListBoxObjectSlotOverlaysToShow.TabIndex = 41;
-            // 
             // StroopMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -17571,8 +17383,6 @@ namespace STROOP
             this.groupBoxFPS.PerformLayout();
             this.groupBoxGotoRetrieveOffsets.ResumeLayout(false);
             this.groupBoxGotoRetrieveOffsets.PerformLayout();
-            this.groupBoxShowOverlay.ResumeLayout(false);
-            this.groupBoxShowOverlay.PerformLayout();
             this.tabPageMemory.ResumeLayout(false);
             this.splitContainerMemory.Panel1.ResumeLayout(false);
             this.splitContainerMemory.Panel2.ResumeLayout(false);
@@ -18008,13 +17818,6 @@ namespace STROOP
         private CheckBox checkBoxCameraPosRelative;
         private CheckBox checkBoxCameraSphericalPosPivotOnFocus;
         private Button buttonRefreshAndConnect;
-        private GroupBox groupBoxShowOverlay;
-        private CheckBox checkBoxShowOverlayClosestObject;
-        private CheckBox checkBoxShowOverlayStoodOnObject;
-        private CheckBox checkBoxShowOverlayHeldObject;
-        private CheckBox checkBoxShowOverlayUsedObject;
-        private CheckBox checkBoxShowOverlayInteractionObject;
-        private CheckBox checkBoxShowOverlayCameraObject;
         private GroupBox groupBoxObjScale;
         private BetterTextbox textBoxObjScaleDepth;
         private BetterTextbox textBoxObjScaleHeight;
@@ -18034,9 +17837,6 @@ namespace STROOP
         private Button buttonShowRightPane;
         private Button buttonShowLeftRightPane;
         private Button buttonShowLeftPane;
-        private CheckBox checkBoxShowOverlayCeilingObject;
-        private CheckBox checkBoxShowOverlayWallObject;
-        private CheckBox checkBoxShowOverlayFloorObject;
         private BetterSplitContainer splitContainerInput;
         private Label labelCamHackMode;
         private RadioButton radioButtonCamHackMode3;
@@ -18044,7 +17844,6 @@ namespace STROOP
         private RadioButton radioButtonCamHackMode1RelativeAngle;
         private RadioButton radioButtonCamHackMode0;
         private BetterSplitContainer splitContainerCamHack;
-        private CheckBox checkBoxShowOverlayCameraHackObject;
         private RadioButton radioButtonCamHackMode1AbsoluteAngle;
         private GroupBox groupBoxCameraHackSphericalFocusPos;
         private BetterTextbox textBoxCameraHackSphericalFocusPosR;
@@ -18345,7 +18144,6 @@ namespace STROOP
         private RadioButton radioButtonAllCoinsMeaning100Coins;
         private RadioButton radioButtonAllCoinsMeaningMaxWithGlitches;
         private Button button99Coins;
-        private CheckBox checkBoxShowOverlayParentObject;
         private Button buttonNoCannons;
         private Button buttonAllCannons;
         private Button buttonNoDoors;
@@ -18824,7 +18622,6 @@ namespace STROOP
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private DataGridViewTextBoxColumn Column1;
         private RichTextBox richTextBoxTasInstructions;
-        private CheckBox checkBoxShowOverlayChildObject;
         private Button buttonGameOver;
         private TabPage tabPageMapOptions;
         private CheckBox checkBoxMapControlsTrackWallTriangle;
