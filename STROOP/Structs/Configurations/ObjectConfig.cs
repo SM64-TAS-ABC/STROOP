@@ -78,6 +78,8 @@ namespace STROOP.Structs
         public static readonly uint InteractionStatusOffset = 0x134;
 
         public static readonly uint NativeRoomOffset = 0x1A0;
+        public static readonly uint NumCollidedObjectsOffset = 0x76;
+        public static readonly uint CollidedObjectsListStartOffset = 0x78;
 
         // Object specific vars
 
