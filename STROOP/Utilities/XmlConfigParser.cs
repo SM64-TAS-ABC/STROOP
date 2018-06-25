@@ -216,6 +216,7 @@ namespace STROOP.Utilities
                 usedOverlayImagePath = "", closestOverlayImagePath = "", cameraOverlayImagePath = "", cameraHackOverlayImagePath = "",
                 modelOverlayImagePath = "", floorOverlayImagePath = "", wallOverlayImagePath = "", ceilingOverlayImagePath = "",
                 parentOverlayImagePath = "", parentUnusedOverlayImagePath = "", parentNoneOverlayImagePath = "", childOverlayImagePath = "",
+                collision1OverlayImagePath = "", collision2OverlayImagePath = "", collision3OverlayImagePath = "", collision4OverlayImagePath = "",
                 markedOverlayImagePath = "";
             uint marioBehavior = 0;
 
@@ -367,6 +368,22 @@ namespace STROOP.Utilities
                                     childOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
+                                case "Collision1":
+                                    collision1OverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "Collision2":
+                                    collision2OverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "Collision3":
+                                    collision3OverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "Collision4":
+                                    collision4OverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
                                 case "Marked":
                                     markedOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
@@ -472,6 +489,10 @@ namespace STROOP.Utilities
             objectSlotManagerGui.ParentUnusedObjectOverlayImage = Image.FromFile(overlayImageDir + parentUnusedOverlayImagePath);
             objectSlotManagerGui.ParentNoneObjectOverlayImage = Image.FromFile(overlayImageDir + parentNoneOverlayImagePath);
             objectSlotManagerGui.ChildObjectOverlayImage = Image.FromFile(overlayImageDir + childOverlayImagePath);
+            objectSlotManagerGui.Collision1OverlayImage = Image.FromFile(overlayImageDir + collision1OverlayImagePath);
+            objectSlotManagerGui.Collision2OverlayImage = Image.FromFile(overlayImageDir + collision2OverlayImagePath);
+            objectSlotManagerGui.Collision3OverlayImage = Image.FromFile(overlayImageDir + collision3OverlayImagePath);
+            objectSlotManagerGui.Collision4OverlayImage = Image.FromFile(overlayImageDir + collision4OverlayImagePath);
             objectSlotManagerGui.MarkedObjectOverlayImage = Image.FromFile(overlayImageDir + markedOverlayImagePath);
 
             foreach (var obj in assoc.BehaviorAssociations)

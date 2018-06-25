@@ -76,7 +76,9 @@ namespace STROOP
         bool _drawSelectedOverlay, _drawStoodOnOverlay, _drawHeldOverlay, _drawInteractionOverlay, _drawUsedOverlay,
             _drawClosestOverlay, _drawCameraOverlay, _drawCameraHackOverlay, _drawModelOverlay,
             _drawFloorOverlay, _drawWallOverlay, _drawCeilingOverlay,
-            _drawParentOverlay, _drawParentUnusedOverlay, _drawParentNoneOverlay, _drawChildOverlay, _drawMarkedOverlay;
+            _drawParentOverlay, _drawParentUnusedOverlay, _drawParentNoneOverlay, _drawChildOverlay,
+            _drawCollision1Overlay, _drawCollision2Overlay, _drawCollision3Overlay, _drawCollision4Overlay,
+            _drawMarkedOverlay;
 
         public ObjectSlot(ObjectSlotsManager manager, int index, ObjectSlotManagerGui gui, Size size)
         {
@@ -323,6 +325,10 @@ namespace STROOP
                 _drawParentUnusedOverlay,
                 _drawParentNoneOverlay,
                 _drawChildOverlay,
+                _drawCollision1Overlay,
+                _drawCollision2Overlay,
+                _drawCollision3Overlay,
+                _drawCollision4Overlay,
                 _drawMarkedOverlay,
             };
         }
@@ -423,6 +429,14 @@ namespace STROOP
                 e.Graphics.DrawImage(_gui.ParentNoneObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawChildOverlay)
                 e.Graphics.DrawImage(_gui.ChildObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawCollision1Overlay)
+                e.Graphics.DrawImage(_gui.Collision1OverlayImage, new Rectangle(new Point(), Size));
+            if (_drawCollision2Overlay)
+                e.Graphics.DrawImage(_gui.Collision2OverlayImage, new Rectangle(new Point(), Size));
+            if (_drawCollision3Overlay)
+                e.Graphics.DrawImage(_gui.Collision3OverlayImage, new Rectangle(new Point(), Size));
+            if (_drawCollision4Overlay)
+                e.Graphics.DrawImage(_gui.Collision4OverlayImage, new Rectangle(new Point(), Size));
         }
 
         public void Update(ObjectDataModel obj)
@@ -484,6 +498,10 @@ namespace STROOP
                 _drawParentUnusedOverlay = false;
                 _drawParentNoneOverlay = false;
                 _drawChildOverlay = false;
+                _drawCollision1Overlay = false;
+                _drawCollision2Overlay = false;
+                _drawCollision3Overlay = false;
+                _drawCollision4Overlay = false;
                 _drawMarkedOverlay = false;
             }
             List<bool> overlays = GetCurrentOverlayValues();

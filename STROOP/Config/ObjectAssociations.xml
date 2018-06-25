@@ -92,6 +92,18 @@
     <Child>
       <OverlayImage path="Child.png"/>
     </Child>
+    <Collision1>
+      <OverlayImage path="Collision1.png"/>
+    </Collision1>
+    <Collision2>
+      <OverlayImage path="Collision2.png"/>
+    </Collision2>
+    <Collision3>
+      <OverlayImage path="Collision3.png"/>
+    </Collision3>
+    <Collision4>
+      <OverlayImage path="Collision4.png"/>
+    </Collision4>
     <Marked>
       <OverlayImage path="Marked.png"/>
     </Marked>
