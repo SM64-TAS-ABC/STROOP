@@ -171,6 +171,30 @@ namespace STROOP
             itemCopyPosition.Click += (sender, e) => Clipboard.SetText(
                 String.Format("{0},{1},{2}", CurrentObject.X, CurrentObject.Y, CurrentObject.Z));
 
+            ToolStripMenuItem itemPastePosition = new ToolStripMenuItem("Paste Position");
+            itemPastePosition.Click += (sender, e) =>
+            {
+                List<string> stringList = ParsingUtilities.ParseStringList(Clipboard.GetText());
+                int count = stringList.Count;
+                if (count != 2 && count != 3) return;
+                if (CurrentObject == null) return;
+
+                List<float?> floatList = stringList.ConvertAll(s => ParsingUtilities.ParseFloatNullable(s));
+                Config.Stream.Suspend();
+                if (count == 2)
+                {
+                    if (floatList[0].HasValue) CurrentObject.X = floatList[0].Value;
+                    if (floatList[1].HasValue) CurrentObject.Z = floatList[1].Value;
+                }
+                else
+                {
+                    if (floatList[0].HasValue) CurrentObject.X = floatList[0].Value;
+                    if (floatList[1].HasValue) CurrentObject.Y = floatList[1].Value;
+                    if (floatList[2].HasValue) CurrentObject.Z = floatList[2].Value;
+                }
+                Config.Stream.Resume();
+            };
+
             ToolStripMenuItem itemCopyGraphics = new ToolStripMenuItem("Copy Graphics");
             itemCopyGraphics.Click += (sender, e) => Clipboard.SetText(HexUtilities.FormatValue(CurrentObject.GraphicsID));
 
@@ -202,6 +226,7 @@ namespace STROOP
             ContextMenuStrip.Items.Add(new ToolStripSeparator());
             ContextMenuStrip.Items.Add(itemCopyAddress);
             ContextMenuStrip.Items.Add(itemCopyPosition);
+            ContextMenuStrip.Items.Add(itemPastePosition);
             ContextMenuStrip.Items.Add(itemCopyGraphics);
             ContextMenuStrip.Items.Add(itemPasteGraphics);
         }
