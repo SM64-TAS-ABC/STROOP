@@ -375,13 +375,13 @@ namespace STROOP.Managers
             string unusedObjectString = concise ? "UU" : "(unused object)";
             string unknownObjectString = concise ? ".." : "(unknown object)";
             string slotLabelPrefix = concise ? "" : "Slot ";
-            string processGroupPrefix = concise ? "PG" : "Process Group ";
+            string processGroupPrefix = concise ? "PG" : "PGroup ";
 
             if (objAddress == 0) return noObjectString;
             if (objAddress == ObjectSlotsConfig.UnusedSlotAddress) return unusedObjectString;
 
             byte? processGroup = ObjectUtilities.GetProcessGroup(objAddress);
-            if (processGroup.HasValue) return processGroupPrefix + processGroup.Value;
+            if (processGroup.HasValue) return processGroupPrefix + HexUtilities.FormatValue(processGroup.Value, 1, false);
 
             string slotLabel = GetSlotLabelFromAddress(objAddress);
             if (slotLabel == null) return unknownObjectString;
