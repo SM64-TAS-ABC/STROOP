@@ -678,12 +678,26 @@ namespace STROOP
 
         private void buttonMoveTabLeft_Click(object sender, EventArgs e)
         {
-            MoveTab(false);
+            if (KeyboardUtilities.IsCtrlHeld())
+            {
+                ButtonUtilities.MoveObjectSlot(Config.ObjectSlotsManager.SelectedObjects, false);
+            }
+            else
+            {
+                MoveTab(false);
+            }
         }
 
         private void buttonMoveTabRight_Click(object sender, EventArgs e)
         {
-            MoveTab(true);
+            if (KeyboardUtilities.IsCtrlHeld())
+            {
+                ButtonUtilities.MoveObjectSlot(Config.ObjectSlotsManager.SelectedObjects, true);
+            }
+            else
+            {
+                MoveTab(true);
+            }
         }
 
         private void MoveTab(bool rightwards)

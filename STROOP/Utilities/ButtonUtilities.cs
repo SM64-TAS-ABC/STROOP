@@ -8,6 +8,7 @@ using STROOP.Extensions;
 using STROOP.Structs.Configurations;
 using STROOP.Managers;
 using STROOP.Models;
+using STROOP.Forms;
 
 namespace STROOP.Utilities
 {
@@ -378,6 +379,12 @@ namespace STROOP.Utilities
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
+        }
+
+        public static bool MoveObjectSlot(List<ObjectDataModel> objects, bool rightwards)
+        {
+            InfoForm.ShowValue("MoveObjectSlot rightwards=" + rightwards + " x " + objects.Count);
+            return false;
         }
 
         public static bool ReleaseObject(List<ObjectDataModel> objects, bool useThrownValue = true)
