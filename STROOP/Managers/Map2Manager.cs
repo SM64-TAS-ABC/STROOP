@@ -349,14 +349,10 @@ namespace STROOP.Managers
             _mapGui.MapNameLabel.Text = _currentMap.Name;
             _mapGui.MapSubNameLabel.Text = (_currentMap.SubName != null) ? _currentMap.SubName : "";
 
-            // Adjust mario coordinates relative from current PU
-            float marioRelX = (float)PuUtilities.GetCoordinateInPu(_marioMapObj.X, puX);
-            float marioRelY = _artificialMarioY ?? (float)PuUtilities.GetCoordinateInPu(_marioMapObj.Y, puY);
-            float marioRelZ = (float)PuUtilities.GetCoordinateInPu(_marioMapObj.Z, puZ);
-            var marioCoord = new PointF(marioRelX, marioRelZ);
+            var marioCoord = new PointF(_marioMapObj.RelX, _marioMapObj.RelZ);
 
             // Filter out all maps that are lower than Mario
-            var mapListYFiltered = _currentMapList.Where((map) => map.Y <= marioRelY).ToList();
+            var mapListYFiltered = _currentMapList.Where((map) => map.Y <= _marioMapObj.RelY).ToList();
 
             // If no map is available display the default image
             if (mapListYFiltered.Count <= 0)
@@ -381,51 +377,26 @@ namespace STROOP.Managers
             _marioMapObj.LocationOnContol = CalculateLocationOnControl(marioCoord, mapView);
             _marioMapObj.Draw = _mapGui.MapShowMario.Checked;
 
-            int holpPuX = PuUtilities.GetPuIndex(_holpMapObj.X);
-            int holpPuZ = PuUtilities.GetPuIndex(_holpMapObj.Z);
-            float holpRelX = (float)PuUtilities.GetCoordinateInPu(_holpMapObj.X, holpPuX);
-            float holpRelZ = (float)PuUtilities.GetCoordinateInPu(_holpMapObj.Z, holpPuZ);
-            var holpCoord = new PointF(holpRelX, holpRelZ);
+            var holpCoord = new PointF(_holpMapObj.RelX, _holpMapObj.RelZ);
             _holpMapObj.Draw = _mapGui.MapShowHolp.Checked;
             _holpMapObj.LocationOnContol = CalculateLocationOnControl(holpCoord, mapView);
 
-            int intendedNextPositionPuX = PuUtilities.GetPuIndex(_intendedNextPositionMapObj.X);
-            int intendedNextPositionPuZ = PuUtilities.GetPuIndex(_intendedNextPositionMapObj.Z);
-            float intendedNextPositionRelX = (float)PuUtilities.GetCoordinateInPu(_intendedNextPositionMapObj.X, intendedNextPositionPuX);
-            float intendedNextPositionRelZ = (float)PuUtilities.GetCoordinateInPu(_intendedNextPositionMapObj.Z, intendedNextPositionPuZ);
-            var intendedNextPositionCoord = new PointF(intendedNextPositionRelX, intendedNextPositionRelZ);
+            var intendedNextPositionCoord = new PointF(_intendedNextPositionMapObj.RelX, _intendedNextPositionMapObj.RelZ);
             _intendedNextPositionMapObj.Draw = _mapGui.MapShowIntendedNextPosition.Checked;
             _intendedNextPositionMapObj.LocationOnContol = CalculateLocationOnControl(intendedNextPositionCoord, mapView);
 
-            int cameraPuX = PuUtilities.GetPuIndex(_cameraMapObj.X);
-            int cameraPuY = PuUtilities.GetPuIndex(_cameraMapObj.Y);
-            int cameraPuZ = PuUtilities.GetPuIndex(_cameraMapObj.Z);
-            float cameraRelX = (float)PuUtilities.GetCoordinateInPu(_cameraMapObj.X, cameraPuX);
-            float cameraRelZ = (float)PuUtilities.GetCoordinateInPu(_cameraMapObj.Z, cameraPuZ);
-            var cameraCoord = new PointF(cameraRelX, cameraRelZ);
+            var cameraCoord = new PointF(_cameraMapObj.RelX, _cameraMapObj.RelZ);
             _cameraMapObj.Draw = _mapGui.MapShowCamera.Checked;
             _cameraMapObj.LocationOnContol = CalculateLocationOnControl(cameraCoord, mapView);
 
-            float floorTrianglePuX1 = (float)PuUtilities.GetRelativeCoordinate(_floorTriangleMapObj.X1);
-            float floorTrianglePuZ1 = (float)PuUtilities.GetRelativeCoordinate(_floorTriangleMapObj.Z1);
-            float floorTrianglePuX2 = (float)PuUtilities.GetRelativeCoordinate(_floorTriangleMapObj.X2);
-            float floorTrianglePuZ2 = (float)PuUtilities.GetRelativeCoordinate(_floorTriangleMapObj.Z2);
-            float floorTrianglePuX3 = (float)PuUtilities.GetRelativeCoordinate(_floorTriangleMapObj.X3);
-            float floorTrianglePuZ3 = (float)PuUtilities.GetRelativeCoordinate(_floorTriangleMapObj.Z3);
-            _floorTriangleMapObj.P1OnControl = CalculateLocationOnControl(new PointF(floorTrianglePuX1, floorTrianglePuZ1), mapView);
-            _floorTriangleMapObj.P2OnControl = CalculateLocationOnControl(new PointF(floorTrianglePuX2, floorTrianglePuZ2), mapView);
-            _floorTriangleMapObj.P3OnControl = CalculateLocationOnControl(new PointF(floorTrianglePuX3, floorTrianglePuZ3), mapView);
+            _floorTriangleMapObj.P1OnControl = CalculateLocationOnControl(new PointF(_floorTriangleMapObj.RelX1, _floorTriangleMapObj.RelZ1), mapView);
+            _floorTriangleMapObj.P2OnControl = CalculateLocationOnControl(new PointF(_floorTriangleMapObj.RelX2, _floorTriangleMapObj.RelZ2), mapView);
+            _floorTriangleMapObj.P3OnControl = CalculateLocationOnControl(new PointF(_floorTriangleMapObj.RelX3, _floorTriangleMapObj.RelZ3), mapView);
             _floorTriangleMapObj.Draw = _floorTriangleMapObj.Show & _mapGui.MapShowFloorTriangle.Checked;
 
-            float ceilingTrianglePuX1 = (float)PuUtilities.GetRelativeCoordinate(_ceilingTriangleMapObj.X1);
-            float ceilingTrianglePuZ1 = (float)PuUtilities.GetRelativeCoordinate(_ceilingTriangleMapObj.Z1);
-            float ceilingTrianglePuX2 = (float)PuUtilities.GetRelativeCoordinate(_ceilingTriangleMapObj.X2);
-            float ceilingTrianglePuZ2 = (float)PuUtilities.GetRelativeCoordinate(_ceilingTriangleMapObj.Z2);
-            float ceilingTrianglePuX3 = (float)PuUtilities.GetRelativeCoordinate(_ceilingTriangleMapObj.X3);
-            float ceilingTrianglePuZ3 = (float)PuUtilities.GetRelativeCoordinate(_ceilingTriangleMapObj.Z3);
-            _ceilingTriangleMapObj.P1OnControl = CalculateLocationOnControl(new PointF(ceilingTrianglePuX1, ceilingTrianglePuZ1), mapView);
-            _ceilingTriangleMapObj.P2OnControl = CalculateLocationOnControl(new PointF(ceilingTrianglePuX2, ceilingTrianglePuZ2), mapView);
-            _ceilingTriangleMapObj.P3OnControl = CalculateLocationOnControl(new PointF(ceilingTrianglePuX3, ceilingTrianglePuZ3), mapView);
+            _ceilingTriangleMapObj.P1OnControl = CalculateLocationOnControl(new PointF(_ceilingTriangleMapObj.RelX1, _ceilingTriangleMapObj.RelZ1), mapView);
+            _ceilingTriangleMapObj.P2OnControl = CalculateLocationOnControl(new PointF(_ceilingTriangleMapObj.RelX2, _ceilingTriangleMapObj.RelZ2), mapView);
+            _ceilingTriangleMapObj.P3OnControl = CalculateLocationOnControl(new PointF(_ceilingTriangleMapObj.RelX3, _ceilingTriangleMapObj.RelZ3), mapView);
             _ceilingTriangleMapObj.Draw = _ceilingTriangleMapObj.Show & _mapGui.MapShowCeilingTriangle.Checked;
 
             // Calculate object slot's cooridnates
@@ -435,12 +406,7 @@ namespace STROOP.Managers
                 if (!mapObj.Draw)
                     continue;
 
-                // Adjust object coordinates relative from current PU
-                var objPuX = PuUtilities.GetPuIndex(mapObj.X);
-                var objPuZ = PuUtilities.GetPuIndex(mapObj.Z);
-                float objPosX = (float)PuUtilities.GetCoordinateInPu(mapObj.X, objPuX);
-                float objPosZ = (float)PuUtilities.GetCoordinateInPu(mapObj.Z, objPuZ);
-                var objCoords = new PointF(objPosX, objPosZ);
+                var objCoords = new PointF(mapObj.RelX, mapObj.RelZ);
 
                 // Calculate object's location on control
                 mapObj.LocationOnContol = CalculateLocationOnControl(objCoords, mapView);

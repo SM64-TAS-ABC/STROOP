@@ -1,5 +1,6 @@
 ﻿using OpenTK.Graphics.OpenGL;
 using STROOP.Controls.Map;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -14,6 +15,14 @@ namespace STROOP.Map2
 
         public float X1, X2, X3;
         public float Z1, Z2, Z3;
+
+        public float RelX1 { get => (float)PuUtilities.GetRelativeCoordinate(X1); }
+        public float RelX2 { get => (float)PuUtilities.GetRelativeCoordinate(X2); }
+        public float RelX3 { get => (float)PuUtilities.GetRelativeCoordinate(X3); }
+        public float RelZ1 { get => (float)PuUtilities.GetRelativeCoordinate(Z1); }
+        public float RelZ2 { get => (float)PuUtilities.GetRelativeCoordinate(Z2); }
+        public float RelZ3 { get => (float)PuUtilities.GetRelativeCoordinate(Z3); }
+
         public float Y;
         public bool Show;
         public Color Color;

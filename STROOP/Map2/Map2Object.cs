@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using STROOP.Controls.Map;
 using OpenTK.Graphics.OpenGL;
+using STROOP.Utilities;
 
 namespace STROOP.Map2
 {
@@ -16,6 +17,11 @@ namespace STROOP.Map2
         public float X;
         public float Y;
         public float Z;
+
+        public float RelX { get => (float)PuUtilities.GetRelativeCoordinate(X); }
+        public float RelY { get => (float)PuUtilities.GetRelativeCoordinate(Y); }
+        public float RelZ { get => (float)PuUtilities.GetRelativeCoordinate(Z); }
+
         public bool IsActive;
         public float Rotation;
         public bool UsesRotation;
