@@ -28,7 +28,8 @@
   <Data groupList="Basic" type="byte" offsetUS="0x80332618" offsetJP="0x80331508" base="Relative" subclass="Boolean">Talked to Yoshi</Data>
   <Data groupList="Basic" type="byte" offsetUS="0x8033B26E" offsetJP="0x80339EFE" base="Relative" subclass="Boolean">Never Entered Castle</Data>
   <Data groupList="Basic" type="short" offsetUS="0x8032DDF4" offsetJP="0x8032CE94" base="Relative">Current File</Data>
-  <Data groupList="Basic" type="byte" offsetUS="0x8032D5F5" offsetJP="0x8032C6B5" base="Relative">Demo Counter</Data>
+  <Data groupList="Basic" type="short" offsetUS="0x8032D5F4" offsetJP="0x8032C6B4" base="Relative">Demo Counter</Data>
+  <Data groupList="Basic" base="None" specialType="DemoCounterDescription" subclass="String">Demo Description</Data>
   <Data groupList="Basic" type="short" offsetUS="0x801A7C30" offsetJP="0x801A7AF0" base="Relative">Demo Timer</Data>
   <Data groupList="Basic" type="byte" offsetUS="0x80226B7F" offsetJP="0x80226D7F" base="Relative">Sound Selection</Data>
   <Data groupList="Basic" type="uint" offsetUS="0x8033D480" offsetJP="0x8033C110" base="Relative" subclass="Boolean" mask="0x02">Timestop Enabled</Data>

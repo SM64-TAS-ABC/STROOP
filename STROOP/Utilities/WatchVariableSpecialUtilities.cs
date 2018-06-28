@@ -2373,14 +2373,29 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            _dictionary.Add("DemoCounterDescription",
+                ((uint dummy) =>
+                {
+                    return DemoCounterUtilities.GetDemoCounterDescription();
+                },
+                (string description, uint dummy) =>
+                {
+                    short? demoCounterNullable = DemoCounterUtilities.GetDemoCounter(description);
+                    if (!demoCounterNullable.HasValue) return false;
+                    return Config.Stream.SetValue(demoCounterNullable.Value, MiscConfig.DemoCounterAddress);
+                }
+            ));
+
             _dictionary.Add("TtcSpeedSettingDescription",
                 ((uint dummy) =>
                 {
                     return TtcSpeedSettingUtilities.GetTtcSpeedSettingDescription();
                 },
-                (short ttcSpeedSetting, uint dummy) =>
+                (string description, uint dummy) =>
                 {
-                    return Config.Stream.SetValue(ttcSpeedSetting, MiscConfig.TtcSpeedSettingAddress);
+                    short? ttcSpeedSettingNullable = TtcSpeedSettingUtilities.GetTtcSpeedSetting(description);
+                    if (!ttcSpeedSettingNullable.HasValue) return false;
+                    return Config.Stream.SetValue(ttcSpeedSettingNullable.Value, MiscConfig.TtcSpeedSettingAddress);
                 }));
 
             // Area vars

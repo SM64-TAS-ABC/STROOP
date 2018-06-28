@@ -457,6 +457,7 @@
     <Compile Include="Utilities\BitfsPlatformGroupTable.cs" />
     <Compile Include="Utilities\StringUtilities.cs" />
     <Compile Include="Utilities\TestUtilities.cs" />
+    <Compile Include="Utilities\DemoCounterUtilities.cs" />
     <Compile Include="Utilities\TtcSpeedSettingUtilities.cs" />
     <Compile Include="Utilities\MovementCalculator.cs" />
     <Compile Include="Utilities\VarHackSpecialUtilities.cs" />
