@@ -42,5 +42,15 @@ namespace STROOP.Utilities
             uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
             return GetCollisionObject(marioObjRef, collisionIndex);
         }
+
+        public static byte? GetProcessGroup(uint address)
+        {
+            foreach (byte processGroup in ObjectSlotsConfig.ProcessingGroups)
+            {
+                uint processGroupStructAddress = ObjectSlotsConfig.FirstGroupingAddress + processGroup * ObjectSlotsConfig.ProcessGroupStructSize;
+                if (address == processGroupStructAddress) return processGroup;
+            }
+            return null;
+        }
     }
 }
