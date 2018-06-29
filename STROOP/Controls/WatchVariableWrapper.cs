@@ -111,7 +111,7 @@ namespace STROOP.Controls
             _itemHighlight.Checked = _watchVarControl.Highlighted;
 
             _itemLock = new ToolStripMenuItem("Lock");
-            _itemLock.Click += (sender, e) => ToggleLocked(_watchVarControl.FixedAddressList);
+            _itemLock.Click += (sender, e) => ToggleLocked(null, _watchVarControl.FixedAddressList);
 
             _itemRemoveAllLocks = new ToolStripMenuItem("Remove All Locks");
             _itemRemoveAllLocks.Click += (sender, e) => WatchVariableLockManager.RemoveAllLocks();
@@ -252,15 +252,19 @@ namespace STROOP.Controls
             _itemFixAddress.Checked = _watchVarControl.FixedAddressList != null;
         }
 
-        public void ToggleLocked(List<uint> addresses = null)
+        public void ToggleLocked(bool? newLockedValueNullable, List<uint> addresses = null)
         {
-            if (WatchVariableLockManager.ContainsLocksBool(_watchVar, addresses))
+            bool currentLockedValue = WatchVariableLockManager.ContainsLocksBool(_watchVar, addresses);
+            bool newLockedValue = newLockedValueNullable ?? !currentLockedValue;
+            if (newLockedValue == currentLockedValue) return;
+
+            if (newLockedValue)
             {
-                WatchVariableLockManager.RemoveLocks(_watchVar, addresses);
+                WatchVariableLockManager.AddLocks(_watchVar, addresses);
             }
             else
             {
-                WatchVariableLockManager.AddLocks(_watchVar, addresses);
+                WatchVariableLockManager.RemoveLocks(_watchVar, addresses);
             }
         }
 

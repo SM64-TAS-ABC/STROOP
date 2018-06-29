@@ -389,7 +389,7 @@ namespace STROOP.Controls
             else if (isLKeyHeld)
             {
                 _watchVariablePanel.UnselectAllVariables();
-                _watchVarWrapper.ToggleLocked(FixedAddressList);
+                _watchVarWrapper.ToggleLocked(null, FixedAddressList);
             }
             else if (isDKeyHeld)
             {

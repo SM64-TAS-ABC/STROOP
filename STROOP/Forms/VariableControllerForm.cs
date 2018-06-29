@@ -40,7 +40,7 @@ namespace STROOP.Forms
             _buttonSet.Click += (s, e) => _watchVarWrapper.SetValue(_textBoxGetSet.Text, _fixedAddressList);
             _textBoxGetSet.AddEnterAction(() => _watchVarWrapper.SetValue(_textBoxGetSet.Text, _fixedAddressList));
             _checkBoxFixAddress.Click += (s, e) => ToggleFixedAddress();
-            _checkBoxLock.Click += (s, e) => _watchVarWrapper.ToggleLocked(_fixedAddressList);
+            _checkBoxLock.Click += (s, e) => _watchVarWrapper.ToggleLocked(null, _fixedAddressList);
 
             _checkBoxFixAddress.Checked = fixedAddressList != null;
             _textBoxCurrentValue.BackColor = fixedAddressList == null ? COLOR_BLUE : COLOR_RED;
