@@ -383,8 +383,66 @@ namespace STROOP.Utilities
 
         public static bool MoveObjectSlot(List<ObjectDataModel> objects, bool rightwards)
         {
-            InfoForm.ShowValue("MoveObjectSlot rightwards=" + rightwards + " x " + objects.Count);
-            return false;
+            if (objects.Count != 1) return false;
+
+            bool success = true;
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
+
+            ObjectDataModel obj = objects[0];
+            uint otherAddress = rightwards ? obj.ProcessedNextLink : obj.ProcessedPrevLink;
+            if (ObjectUtilities.IsObjectAddress(otherAddress))
+            {
+                ObjectDataModel otherObj = new ObjectDataModel(otherAddress);
+                success &= SwitchObjectSlots(obj, otherObj);
+            }
+
+            if (!streamAlreadySuspended) Config.Stream.Resume();
+            return success;
+        }
+
+        private static bool SwitchObjectSlots(ObjectDataModel obj1, ObjectDataModel obj2)
+        {
+            ObjectDataModel left, right;
+            if (obj1.ProcessedNextLink == obj2.Address)
+            {
+                left = obj1;
+                right = obj2;
+            }
+            else if (obj2.ProcessedNextLink == obj1.Address)
+            {
+                left = obj2;
+                right = obj1;
+            }
+            else
+            {
+                return false;
+            }
+
+            uint leftPrev = left.ProcessedPrevLink;
+            uint leftNext = left.ProcessedNextLink;
+            uint rightPrev = right.ProcessedPrevLink;
+            uint rightNext = right.ProcessedNextLink;
+
+            right.ProcessedPrevLink = leftPrev;
+            left.ProcessedNextLink = rightNext;
+
+            left.ProcessedPrevLink = leftNext;
+            right.ProcessedNextLink = rightPrev;
+
+            if (ObjectUtilities.IsObjectAddress(leftPrev))
+            {
+                ObjectDataModel leftPrevObject = new ObjectDataModel(leftPrev);
+                leftPrevObject.ProcessedNextLink = right.Address;
+            }
+
+            if (ObjectUtilities.IsObjectAddress(rightNext))
+            {
+                ObjectDataModel rightNextObject = new ObjectDataModel(rightNext);
+                rightNextObject.ProcessedPrevLink = left.Address;
+            }
+
+            return true;
         }
 
         public static bool ReleaseObject(List<ObjectDataModel> objects, bool useThrownValue = true)

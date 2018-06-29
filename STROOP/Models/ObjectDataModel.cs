@@ -180,7 +180,7 @@ namespace STROOP.Models
             get => _facingPitch;
             set
             {
-                if (Config.Stream.SetValue(value, Address + CameraConfig.FacingPitchOffset))
+                if (Config.Stream.SetValue(value, Address + ObjectConfig.PitchFacingOffset))
                     _facingPitch = value;
             }
         }
@@ -190,7 +190,7 @@ namespace STROOP.Models
             get => _facingRoll;
             set
             {
-                if (Config.Stream.SetValue(value, Address + CameraConfig.FacingRollOffset))
+                if (Config.Stream.SetValue(value, Address + ObjectConfig.RollFacingOffset))
                     _facingRoll = value;
             }
         }
@@ -218,6 +218,28 @@ namespace STROOP.Models
             }
         }
         #endregion
+
+        private uint _processedNextLink;
+        public uint ProcessedNextLink
+        {
+            get => _processedNextLink;
+            set
+            {
+                if (Config.Stream.SetValue(value, Address + ObjectConfig.ProcessedNextLinkOffset))
+                    _processedNextLink = value;
+            }
+        }
+
+        private uint _processedPrevLink;
+        public uint ProcessedPrevLink
+        {
+            get => _processedPrevLink;
+            set
+            {
+                if (Config.Stream.SetValue(value, Address + ObjectConfig.ProcessedPreviousLinkOffset))
+                    _processedPrevLink = value;
+            }
+        }
 
         public ObjectDataModel(uint address, bool update = true)
         {
@@ -265,6 +287,9 @@ namespace STROOP.Models
             _facingYaw = Config.Stream.GetUInt16(Address + ObjectConfig.YawFacingOffset);
             _facingPitch = Config.Stream.GetUInt16(Address + ObjectConfig.PitchFacingOffset);
             _facingRoll = Config.Stream.GetUInt16(Address + ObjectConfig.RollFacingOffset);
+
+            _processedNextLink = Config.Stream.GetUInt32(Address + ObjectConfig.ProcessedNextLinkOffset);
+            _processedPrevLink = Config.Stream.GetUInt32(Address + ObjectConfig.ProcessedPreviousLinkOffset);
         }
 
         public void Update2()

@@ -11,6 +11,11 @@ namespace STROOP.Utilities
 {
     public static class ObjectUtilities
     {
+        public static bool IsObjectAddress(uint address)
+        {
+            return GetObjectRelativeAddress(address) == 0;
+        }
+
         public static uint? GetObjectRelativeAddress(uint absoluteAddress)
         {
             uint objRangeMinAddress = ObjectSlotsConfig.LinkStartAddress;
