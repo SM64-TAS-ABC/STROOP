@@ -50,24 +50,35 @@ namespace STROOP.Controls
         public readonly bool ChangeHighlighted;
         public readonly bool NewHighlighted;
 
+        public readonly bool ChangeLocked;
+        public readonly bool NewLocked;
+
         public WatchVariableControlSettings(
             bool changeRoundingLimit = false,
             bool changeRoundingLimitToDefault = false,
             int newRoundingLimit = 0,
+
             bool changeAngleSigned = false,
             bool changeAngleSignedToDefault = false,
             bool newAngleSigned = false,
+
             bool changeYawSigned = false,
             bool changeYawSignedToDefault = false,
             bool newYawSigned = false,
+
             bool changeAngleUnits = false,
             bool changeAngleUnitsToDefault = false,
             AngleUnitType newAngleUnits = AngleUnitType.InGameUnits,
+
             bool changeAngleHex = false,
             bool changeAngleHexToDefault = false,
             bool newAngleHex = false,
+
             bool changeHighlighted = false,
-            bool newHighlighted = false)
+            bool newHighlighted = false,
+
+            bool changeLocked = false,
+            bool newLocked = false)
         {
             ChangeRoundingLimit = changeRoundingLimit;
             ChangeRoundingLimitToDefault = changeRoundingLimitToDefault;
@@ -91,6 +102,9 @@ namespace STROOP.Controls
 
             ChangeHighlighted = changeHighlighted;
             NewHighlighted = newHighlighted;
+
+            ChangeLocked = changeLocked;
+            NewLocked = newLocked;
         }
     }
 }

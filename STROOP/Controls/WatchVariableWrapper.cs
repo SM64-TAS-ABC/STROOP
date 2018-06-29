@@ -505,7 +505,10 @@ namespace STROOP.Controls
 
         public virtual void ApplySettings(WatchVariableControlSettings settings)
         {
-
+            if (settings.ChangeLocked)
+            {
+                ToggleLocked(settings.NewLocked, _watchVarControl.FixedAddressList);
+            }
         }
 
         public virtual void ToggleDisplayAsHex(bool? displayAsHexNullable = null)

@@ -28,6 +28,15 @@ namespace STROOP.Structs
                 });
 
             ToolStripMenuItem itemLock = new ToolStripMenuItem("Lock...");
+            ControlUtilities.AddDropDownItems(
+                itemLock,
+                new List<string>() { "Set Locked", "Set Not Locked" },
+                new List<Action>()
+                {
+                    () => panel.ApplySettingsToSelected(new WatchVariableControlSettings(changeLocked: true, newLocked: true)),
+                    () => panel.ApplySettingsToSelected(new WatchVariableControlSettings(changeLocked: true, newLocked: false)),
+                });
+
             ToolStripMenuItem itemCopy = new ToolStripMenuItem("Copy");
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
 
