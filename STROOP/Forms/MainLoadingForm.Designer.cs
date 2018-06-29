@@ -1,6 +1,6 @@
 ﻿namespace STROOP.Forms
 {
-    partial class LoadingForm
+    partial class MainLoadingForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoadingForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainLoadingForm));
             this.progressBarLoading = new System.Windows.Forms.ProgressBar();
             this.labelLoading = new System.Windows.Forms.Label();
             this.labelLoadingStatus = new System.Windows.Forms.Label();

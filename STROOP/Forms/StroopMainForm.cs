@@ -387,7 +387,7 @@ namespace STROOP
             }));
         }
 
-        public void LoadConfig(LoadingForm loadingForm)
+        public void LoadConfig(MainLoadingForm loadingForm)
         {
             int statusNum = 0;
 

@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace STROOP.Forms
 {
-    public partial class LoadingForm : Form
+    public partial class MainLoadingForm : Form
     {
         int _maxStatus;
 
-        public LoadingForm(int maxStatus)
+        public MainLoadingForm(int maxStatus)
         {
             InitializeComponent();
             _maxStatus = maxStatus;

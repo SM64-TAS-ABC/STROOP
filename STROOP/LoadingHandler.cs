@@ -15,7 +15,7 @@ namespace STROOP
             private delegate void CloseDelegate();
 
             //The type of form to be displayed as the splash screen.
-            public static LoadingForm LoadingForm;
+            public static MainLoadingForm LoadingForm;
 
             static public void ShowLoadingForm()
             {
@@ -31,7 +31,7 @@ namespace STROOP
 
             static private void ShowForm()
             {
-                LoadingForm = new LoadingForm(23); // TODO update max loading
+                LoadingForm = new MainLoadingForm(23); // TODO update max loading
                 Application.Run(LoadingForm);
             }
 
