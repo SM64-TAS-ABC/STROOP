@@ -430,17 +430,11 @@ namespace STROOP.Utilities
             left.ProcessedPrevLink = leftNext;
             right.ProcessedNextLink = rightPrev;
 
-            if (ObjectUtilities.IsObjectAddress(leftPrev))
-            {
-                ObjectDataModel leftPrevObject = new ObjectDataModel(leftPrev);
-                leftPrevObject.ProcessedNextLink = right.Address;
-            }
+            ObjectDataModel leftPrevObject = new ObjectDataModel(leftPrev);
+            leftPrevObject.ProcessedNextLink = right.Address;
 
-            if (ObjectUtilities.IsObjectAddress(rightNext))
-            {
-                ObjectDataModel rightNextObject = new ObjectDataModel(rightNext);
-                rightNextObject.ProcessedPrevLink = left.Address;
-            }
+            ObjectDataModel rightNextObject = new ObjectDataModel(rightNext);
+            rightNextObject.ProcessedPrevLink = left.Address;
 
             return true;
         }
