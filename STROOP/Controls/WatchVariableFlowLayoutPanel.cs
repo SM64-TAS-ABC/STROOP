@@ -363,6 +363,12 @@ namespace STROOP.Controls
             return GetCurrentlySelectedVariableControls().Count;
         }
 
+        public void ApplySettingsToSelected(WatchVariableControlSettings settings)
+        {
+            GetCurrentlySelectedVariableControls().ForEach(
+                control => control.ApplySettings(settings));
+        }
+
         private void AddAllVariablesToCustomTab()
         {
             GetCurrentVariableControls().ForEach(varControl =>

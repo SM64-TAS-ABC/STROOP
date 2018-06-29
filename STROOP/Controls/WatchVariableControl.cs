@@ -666,6 +666,10 @@ namespace STROOP.Controls
 
         public void ApplySettings(WatchVariableControlSettings settings)
         {
+            if (settings.ChangeHighlighted)
+            {
+                Highlighted = settings.NewHighlighted;
+            }
             _watchVarWrapper.ApplySettings(settings);
         }
 

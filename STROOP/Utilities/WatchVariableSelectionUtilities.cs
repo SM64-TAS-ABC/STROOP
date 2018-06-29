@@ -18,6 +18,15 @@ namespace STROOP.Structs
             ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
 
             ToolStripMenuItem itemHighlight = new ToolStripMenuItem("Highlight...");
+            ControlUtilities.AddDropDownItems(
+                itemHighlight,
+                new List<string>() { "Set Highlighted", "Set Not Highlighted" },
+                new List<Action>()
+                {
+                    () => panel.ApplySettingsToSelected(new WatchVariableControlSettings(changeHighlighted: true, newHighlighted: true)),
+                    () => panel.ApplySettingsToSelected(new WatchVariableControlSettings(changeHighlighted: true, newHighlighted: false)),
+                });
+
             ToolStripMenuItem itemLock = new ToolStripMenuItem("Lock...");
             ToolStripMenuItem itemCopy = new ToolStripMenuItem("Copy");
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
