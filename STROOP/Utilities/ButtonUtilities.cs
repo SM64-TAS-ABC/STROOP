@@ -79,6 +79,11 @@ namespace STROOP.Utilities
 
         public static void HandleRelativeAngle(ref float xOffset, ref float zOffset, bool useRelative, double? relativeAngle)
         {
+            if (KeyboardUtilities.IsShiftHeld())
+            {
+                relativeAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
+            }
+
             if (useRelative)
             {
                 if (!relativeAngle.HasValue)
