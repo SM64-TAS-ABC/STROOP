@@ -112,12 +112,12 @@ namespace STROOP.Structs
             NoCamCollision = (Flags & TriangleOffsetsConfig.NoCamCollisionMask) != 0;
 
             FieldValueList = new List<object> {
-                "0x" + Address.ToString("X8"),
+                HexUtilities.FormatValue(Address, 8),
                 Classification,
                 SurfaceType,
                 ExertionForceIndex,
                 ExertionAngle,
-                "0x" + Flags.ToString("X2"),
+                HexUtilities.FormatValue(Flags, 2),
                 XProjection,
                 BelongsToObject,
                 NoCamCollision,
@@ -137,7 +137,7 @@ namespace STROOP.Structs
                 NormY,
                 NormZ,
                 NormOffset,
-                "0x" + AssociatedObject.ToString("X8"),
+                HexUtilities.FormatValue(AssociatedObject, 8),
             };
         }
 

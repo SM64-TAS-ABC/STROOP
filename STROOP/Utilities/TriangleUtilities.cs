@@ -37,6 +37,11 @@ namespace STROOP.Utilities
             return GetTrianglesInRange(objectTriangleListAddress, numObjectTriangles);
         }
 
+        public static List<TriangleDataModel> GetObjectTrianglesForObject(uint objAddress)
+        {
+            return GetObjectTriangles().FindAll(tri => tri.AssociatedObject == objAddress);
+        }
+
         public static List<TriangleDataModel> GetAllTriangles()
         {
             uint triangleListAddress = Config.Stream.GetUInt32(TriangleConfig.TriangleListPointerAddress);
