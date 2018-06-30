@@ -33,7 +33,7 @@ namespace STROOP.Utilities
             if (!TypeUtilities.IsIntegerNumber(numberFormatted)) return number.ToString();
 
             string numDigitsString = numDigits.HasValue ? numDigits.Value.ToString() : "";
-            string hexString = String.Format("{X" + numDigitsString + "}", numberFormatted);
+            string hexString = String.Format("{0:X" + numDigitsString + "}", numberFormatted);
             string prefix = usePrefix ? "0x" : "";
             if (numDigits.HasValue && hexString.Length > numDigits.Value)
             {
