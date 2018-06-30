@@ -56,7 +56,7 @@ namespace STROOP.Controls
 
             _selectionToolStripItems =
                 WatchVariableSelectionUtilities.CreateSelectionToolStripItems(
-                    () => GetCurrentlySelectedVariableControls());
+                    () => GetCurrentlySelectedVariableControls(), this);
 
             List<WatchVariableControlPrecursor> precursors = _varFilePath == null
                 ? new List<WatchVariableControlPrecursor>()
@@ -92,7 +92,8 @@ namespace STROOP.Controls
                 });
 
             ToolStripMenuItem doToAllVariablesItem = new ToolStripMenuItem("Do to all variables...");
-            WatchVariableSelectionUtilities.CreateSelectionToolStripItems(() => GetCurrentVariableControls())
+            WatchVariableSelectionUtilities.CreateSelectionToolStripItems(
+                () => GetCurrentVariableControls(), this)
                 .ForEach(item => doToAllVariablesItem.DropDownItems.Add(item));
 
             ToolStripMenuItem filterVariablesItem = new ToolStripMenuItem("Filter Variables...");
@@ -341,7 +342,7 @@ namespace STROOP.Controls
 
         public void EnableCustomVariableFunctionality()
         {
-            _watchVarControls.ForEach(control => control.EnableCustomFunctionality());
+            _watchVarControls.ForEach(control => control.EnableCustomization());
         }
 
         public void NotifyOfReordering(WatchVariableControl watchVarControl)

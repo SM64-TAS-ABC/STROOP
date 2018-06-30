@@ -365,7 +365,7 @@ namespace STROOP.Controls
             return _watchVar.AddressList;
         }
 
-        public void EnableCustomFunctionality()
+        public void EnableCustomization()
         {
             _separatorCustom.Visible = true;
             _itemFixAddress.Visible = true;

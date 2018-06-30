@@ -168,7 +168,7 @@ namespace STROOP.Managers
         public override void AddVariable(WatchVariableControl watchVarControl)
         {
             base.AddVariable(watchVarControl);
-            watchVarControl.EnableCustomFunctionality();
+            watchVarControl.EnableCustomization();
         }
 
         public override void AddVariables(List<WatchVariableControl> watchVarControls)
@@ -176,7 +176,7 @@ namespace STROOP.Managers
             base.AddVariables(watchVarControls);
             foreach (WatchVariableControl watchVarControl in watchVarControls)
             {
-                watchVarControl.EnableCustomFunctionality();
+                watchVarControl.EnableCustomization();
             }
         }
 

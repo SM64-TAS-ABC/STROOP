@@ -13,7 +13,9 @@ namespace STROOP.Structs
     public static class WatchVariableSelectionUtilities
     {
 
-        public static List<ToolStripItem> CreateSelectionToolStripItems(Func<List<WatchVariableControl>> getVars)
+        public static List<ToolStripItem> CreateSelectionToolStripItems(
+            Func<List<WatchVariableControl>> getVars,
+            WatchVariableFlowLayoutPanel panel)
         {
             Action<WatchVariableControlSettings> apply =
                 (WatchVariableControlSettings settings) => getVars().ForEach(control => control.ApplySettings(settings));
@@ -173,10 +175,17 @@ namespace STROOP.Structs
                 });
 
             ToolStripMenuItem itemMove = new ToolStripMenuItem("Move");
-            ToolStripMenuItem itemDelete = new ToolStripMenuItem("Delete");
+
+            ToolStripMenuItem itemRemove = new ToolStripMenuItem("Remove");
+            itemRemove.Click += (sender, e) => panel.RemoveVariables(getVars());
+
             ToolStripMenuItem itemEnableCustomization = new ToolStripMenuItem("Enable Customization");
+            itemEnableCustomization.Click += (sender, e) => apply(new WatchVariableControlSettings(enableCustomization: true));
+
             ToolStripMenuItem itemOpenController = new ToolStripMenuItem("Open Controller");
+
             ToolStripMenuItem itemAddToCustomTab = new ToolStripMenuItem("Add to Custom Tab");
+            itemAddToCustomTab.Click += (sender, e) => WatchVariableControl.AddVarsToTab(getVars(), Config.CustomManager);
 
             return new List<ToolStripItem>
             {
@@ -195,7 +204,7 @@ namespace STROOP.Structs
                 itemAngleDisplayAsHex,
                 new ToolStripSeparator(),
                 itemMove,
-                itemDelete,
+                itemRemove,
                 itemEnableCustomization,
                 itemOpenController,
                 itemAddToCustomTab,
