@@ -17,7 +17,7 @@ namespace STROOP.Controls
     {
         // Main objects
         public readonly WatchVariableControlPrecursor WatchVarPrecursor;
-        private readonly WatchVariableWrapper _watchVarWrapper;
+        public readonly WatchVariableWrapper WatchVarWrapper;
         public readonly List<VariableGroup> GroupList;
 
         // Sub controls
@@ -221,13 +221,13 @@ namespace STROOP.Controls
             _variableHeight = 0;
 
             // Create watch var wrapper
-            _watchVarWrapper = WatchVariableWrapper.CreateWatchVariableWrapper(
+            WatchVarWrapper = WatchVariableWrapper.CreateWatchVariableWrapper(
                 watchVar, this, subclass, displayType, roundingLimit, useHex, invertBool, isYaw, coordinate);
 
             // Initialize context menu strip
             _valueTextboxContextMenuStrip = _valueTextBox.ContextMenuStrip;
             _nameTextboxContextMenuStrip = _nameTextBox.ContextMenuStrip;
-            _variableContextMenuStrip = _watchVarWrapper.GetContextMenuStrip();
+            _variableContextMenuStrip = WatchVarWrapper.GetContextMenuStrip();
             _variableContextMenuStripItems = new List<ToolStripItem>();
             foreach (ToolStripItem item in _variableContextMenuStrip.Items)
             {
@@ -240,7 +240,7 @@ namespace STROOP.Controls
             _valueTextBox.ContextMenuStrip = _variableContextMenuStrip;
 
             // Set whether to start as a checkbox
-            SetUseCheckbox(_watchVarWrapper.StartsAsCheckbox());
+            SetUseCheckbox(WatchVarWrapper.StartsAsCheckbox());
 
             // Add functions
             _namePanel.Click += (sender, e) => OnVariableClick();
@@ -388,12 +388,12 @@ namespace STROOP.Controls
             else if (isLKeyHeld)
             {
                 _watchVariablePanel.UnselectAllVariables();
-                _watchVarWrapper.ToggleLocked(null, FixedAddressList);
+                WatchVarWrapper.ToggleLocked(null, FixedAddressList);
             }
             else if (isDKeyHeld)
             {
                 _watchVariablePanel.UnselectAllVariables();
-                _watchVarWrapper.ToggleDisplayAsHex();
+                WatchVarWrapper.ToggleDisplayAsHex();
             }
             else if (isRKeyHeld)
             {
@@ -403,12 +403,12 @@ namespace STROOP.Controls
             else if (isCKeyHeld)
             {
                 _watchVariablePanel.UnselectAllVariables();
-                _watchVarWrapper.ShowControllerForm();
+                WatchVarWrapper.ShowControllerForm();
             }
             else if (isBKeyHeld)
             {
                 _watchVariablePanel.UnselectAllVariables();
-                _watchVarWrapper.ShowBitForm();
+                WatchVarWrapper.ShowBitForm();
             }
             else if (isDeletishKeyHeld)
             {
@@ -470,7 +470,7 @@ namespace STROOP.Controls
         {
             this.Focus();
             _nameTextBox.Select(0, 0);
-            _watchVarWrapper.ShowVarInfo();
+            WatchVarWrapper.ShowVarInfo();
         }
 
         private void OnNameTextValueKeyDown(System.Windows.Forms.KeyEventArgs e)
@@ -497,13 +497,13 @@ namespace STROOP.Controls
 
         private void OnCheckboxClick()
         {
-            bool success = _watchVarWrapper.SetCheckStateValue(_valueCheckBox.CheckState, FixedAddressList);
+            bool success = WatchVarWrapper.SetCheckStateValue(_valueCheckBox.CheckState, FixedAddressList);
             if (!success) FlashColor(FAILURE_COLOR);
         }
 
         public void UpdateControl()
         {
-            _watchVarWrapper.UpdateItemCheckStates();
+            WatchVarWrapper.UpdateItemCheckStates();
 
             UpdateSettings();
             UpdateFlush();
@@ -513,8 +513,8 @@ namespace STROOP.Controls
 
             if (!EditMode)
             {
-                if (_valueTextBox.Visible) _valueTextBox.Text = _watchVarWrapper.GetValue(true, true, FixedAddressList).ToString();
-                if (_valueCheckBox.Visible) _valueCheckBox.CheckState = _watchVarWrapper.GetCheckStateValue(FixedAddressList);
+                if (_valueTextBox.Visible) _valueTextBox.Text = WatchVarWrapper.GetValue(true, true, FixedAddressList).ToString();
+                if (_valueCheckBox.Visible) _valueCheckBox.CheckState = WatchVarWrapper.GetCheckStateValue(FixedAddressList);
             }
         }
 
@@ -530,7 +530,7 @@ namespace STROOP.Controls
 
         private void UpdatePictureBoxes()
         {
-            Image currentLockImage = GetImageForCheckState(_watchVarWrapper.GetLockedCheckState(FixedAddressList));
+            Image currentLockImage = GetImageForCheckState(WatchVarWrapper.GetLockedCheckState(FixedAddressList));
             bool isLocked = currentLockImage != null;
             bool isFixedAddress = FixedAddressList != null;
 
@@ -673,7 +673,7 @@ namespace STROOP.Controls
             {
                 EnableCustomization();
             }
-            _watchVarWrapper.ApplySettings(settings);
+            WatchVarWrapper.ApplySettings(settings);
         }
 
         public void SetPanel(WatchVariableFlowLayoutPanel panel)
@@ -716,7 +716,7 @@ namespace STROOP.Controls
             foreach (WatchVariableControl watchVar in watchVars)
             {
                 List<WatchVariableControl> newVarList = new List<WatchVariableControl>();
-                List<uint> addressList = watchVar.FixedAddressList ?? watchVar._watchVarWrapper.GetCurrentAddresses();
+                List<uint> addressList = watchVar.FixedAddressList ?? watchVar.WatchVarWrapper.GetCurrentAddresses();
                 List<List<uint>> addressesLists =
                     addToTabType == AddToTabTypeEnum.IndividualSpliced
                             || addToTabType == AddToTabTypeEnum.IndividualGrouped
@@ -771,13 +771,13 @@ namespace STROOP.Controls
 
         public void AddToVarHackTab()
         {
-            _watchVarWrapper.AddToVarHackTab(FixedAddressList);
+            WatchVarWrapper.AddToVarHackTab(FixedAddressList);
             FlashColor(ADD_TO_VAR_HACK_TAB_COLOR);
         }
 
         public void EnableCustomization()
         {
-            _watchVarWrapper.EnableCustomization();
+            WatchVarWrapper.EnableCustomization();
             FlashColor(ENABLE_CUSTOMIZATION_COLOR);
         }
 
@@ -790,7 +790,7 @@ namespace STROOP.Controls
         {
             if (FixedAddressList == null)
             {
-                FixedAddressList = _watchVarWrapper.GetCurrentAddresses();
+                FixedAddressList = WatchVarWrapper.GetCurrentAddresses();
             }
             else
             {
@@ -835,18 +835,18 @@ namespace STROOP.Controls
 
         public object GetValue(bool useRounding)
         {
-            return _watchVarWrapper.GetValue(useRounding);
+            return WatchVarWrapper.GetValue(useRounding);
         }
 
         public void SetValue(string value)
         {
-            bool success = _watchVarWrapper.SetValue(value, FixedAddressList);
+            bool success = WatchVarWrapper.SetValue(value, FixedAddressList);
             if (!success) FlashColor(FAILURE_COLOR);
         }
 
         public void AddValue(string value, bool add)
         {
-            bool success = _watchVarWrapper.AddValue(value, add, FixedAddressList);
+            bool success = WatchVarWrapper.AddValue(value, add, FixedAddressList);
             if (!success) FlashColor(FAILURE_COLOR);
         }
 
@@ -862,7 +862,7 @@ namespace STROOP.Controls
 
         public List<string> GetVarInfo()
         {
-            return _watchVarWrapper.GetVarInfo();
+            return WatchVarWrapper.GetVarInfo();
         }
 
         public override string ToString()

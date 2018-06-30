@@ -45,14 +45,16 @@ namespace STROOP.Forms
             _textBoxVarName.Text = String.Join(",", _varNames);
             _buttonAdd.Click += (s, e) =>
             {
+                List<string> values = ParsingUtilities.ParseStringList(_textBoxAddSubtract.Text);
                 for (int i = 0; i < _watchVarWrappers.Count; i++)
-                    _watchVarWrappers[i].AddValue(_textBoxAddSubtract.Text, true, _fixedAddressLists[i]);
+                    _watchVarWrappers[i].AddValue(values[i % values.Count], true, _fixedAddressLists[i]);
             };
 
             _buttonSubtract.Click += (s, e) =>
             {
+                List<string> values = ParsingUtilities.ParseStringList(_textBoxAddSubtract.Text);
                 for (int i = 0; i < _watchVarWrappers.Count; i++)
-                    _watchVarWrappers[i].AddValue(_textBoxAddSubtract.Text, false, _fixedAddressLists[i]);
+                    _watchVarWrappers[i].AddValue(values[i % values.Count], false, _fixedAddressLists[i]);
             };
 
             _buttonGet.Click += (s, e) => _textBoxGetSet.Text = GetValues();
@@ -94,9 +96,8 @@ namespace STROOP.Forms
         private void SetValues()
         {
             List<string> values = ParsingUtilities.ParseStringList(_textBoxGetSet.Text);
-            if (values.Count != _watchVarWrappers.Count) return;
             for (int i = 0; i < _watchVarWrappers.Count; i++)
-                _watchVarWrappers[i].SetValue(values[i], _fixedAddressLists[i]);
+                _watchVarWrappers[i].SetValue(values[i % values.Count], _fixedAddressLists[i]);
         }
 
         private Color GetColorForCheckState(CheckState checkState)

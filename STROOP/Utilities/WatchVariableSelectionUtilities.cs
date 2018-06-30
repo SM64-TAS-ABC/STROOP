@@ -1,4 +1,5 @@
 ﻿using STROOP.Controls;
+using STROOP.Forms;
 using STROOP.Managers;
 using STROOP.Models;
 using STROOP.Structs.Configurations;
@@ -197,6 +198,16 @@ namespace STROOP.Structs
             itemEnableCustomization.Click += (sender, e) => apply(new WatchVariableControlSettings(enableCustomization: true));
 
             ToolStripMenuItem itemOpenController = new ToolStripMenuItem("Open Controller");
+            itemOpenController.Click += (sender, e) =>
+            {
+                List<WatchVariableControl> vars = getVars();
+                VariableControllerForm varController =
+                    new VariableControllerForm(
+                        vars.ConvertAll(control => control.VarName),
+                        vars.ConvertAll(control => control.WatchVarWrapper),
+                        vars.ConvertAll(control => control.FixedAddressList));
+                varController.Show();
+            };
 
             ToolStripMenuItem itemAddToCustomTab = new ToolStripMenuItem("Add to Custom Tab");
             itemAddToCustomTab.Click += (sender, e) => WatchVariableControl.AddVarsToTab(getVars(), Config.CustomManager);
