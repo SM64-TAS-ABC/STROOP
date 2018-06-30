@@ -47,9 +47,9 @@ namespace STROOP.Controls
         public readonly bool ChangeAngleUnitsToDefault;
         public readonly AngleUnitType NewAngleUnits;
 
-        public readonly bool ChangeAngleHex;
-        public readonly bool ChangeAngleHexToDefault;
-        public readonly bool NewAngleHex;
+        public readonly bool ChangeAngleDisplayAsHex;
+        public readonly bool ChangeAngleDisplayAsHexToDefault;
+        public readonly bool NewAngleDisplayAsHex;
 
         public readonly bool ChangeHighlighted;
         public readonly bool NewHighlighted;
@@ -78,9 +78,9 @@ namespace STROOP.Controls
             bool changeAngleUnitsToDefault = false,
             AngleUnitType newAngleUnits = AngleUnitType.InGameUnits,
 
-            bool changeAngleHex = false,
-            bool changeAngleHexToDefault = false,
-            bool newAngleHex = false,
+            bool changeAngleDisplayAsHex = false,
+            bool changeAngleDisplayAsHexToDefault = false,
+            bool newAngleDisplayAsHex = false,
 
             bool changeHighlighted = false,
             bool newHighlighted = false,
@@ -108,9 +108,9 @@ namespace STROOP.Controls
             ChangeAngleUnitsToDefault = changeAngleUnitsToDefault;
             NewAngleUnits = newAngleUnits;
 
-            ChangeAngleHex = changeAngleHex;
-            ChangeAngleHexToDefault = changeAngleHexToDefault;
-            NewAngleHex = newAngleHex;
+            ChangeAngleDisplayAsHex = changeAngleDisplayAsHex;
+            ChangeAngleDisplayAsHexToDefault = changeAngleDisplayAsHexToDefault;
+            NewAngleDisplayAsHex = newAngleDisplayAsHex;
 
             ChangeHighlighted = changeHighlighted;
             NewHighlighted = newHighlighted;

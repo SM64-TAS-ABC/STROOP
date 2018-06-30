@@ -218,12 +218,12 @@ namespace STROOP.Controls
                 else
                     _setAngleUnitType(settings.NewAngleUnits);
             }
-            if (settings.ChangeAngleHex)
+            if (settings.ChangeAngleDisplayAsHex)
             {
-                if (settings.ChangeAngleHexToDefault)
+                if (settings.ChangeAngleDisplayAsHexToDefault)
                     _setDisplayAsHex(_defaultDisplayAsHex);
                 else
-                    _setDisplayAsHex(settings.NewAngleHex);
+                    _setDisplayAsHex(settings.NewAngleDisplayAsHex);
             }
         }
     }

@@ -163,15 +163,15 @@ namespace STROOP.Controls
             ToolStripMenuItem setAllAngleHexDefaultItem = new ToolStripMenuItem("Default");
             setAllAngleHexDefaultItem.Click += (sender, e) =>
                 ApplySettings(new WatchVariableControlSettings(
-                    changeAngleHex: true, changeAngleHexToDefault: true));
+                    changeAngleDisplayAsHex: true, changeAngleDisplayAsHexToDefault: true));
             ToolStripMenuItem setAllAngleHexHexItem = new ToolStripMenuItem("Hex");
             setAllAngleHexHexItem.Click += (sender, e) =>
                 ApplySettings(new WatchVariableControlSettings(
-                    changeAngleHex: true, newAngleHex: true));
+                    changeAngleDisplayAsHex: true, newAngleDisplayAsHex: true));
             ToolStripMenuItem setAllAngleHexDecimalItem = new ToolStripMenuItem("Decimal");
             setAllAngleHexDecimalItem.Click += (sender, e) =>
                 ApplySettings(new WatchVariableControlSettings(
-                    changeAngleHex: true, newAngleHex: false));
+                    changeAngleDisplayAsHex: true, newAngleDisplayAsHex: false));
             setAllAngleHexItem.DropDownItems.Add(setAllAngleHexDefaultItem);
             setAllAngleHexItem.DropDownItems.Add(setAllAngleHexHexItem);
             setAllAngleHexItem.DropDownItems.Add(setAllAngleHexDecimalItem);

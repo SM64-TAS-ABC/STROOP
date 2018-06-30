@@ -80,21 +80,15 @@ namespace STROOP.Structs
                 });
 
             ToolStripMenuItem itemAngleSigned = new ToolStripMenuItem("Angle: Signed...");
-            ToolStripMenuItem itemAngleSignedDefault = new ToolStripMenuItem("Default");
-            itemAngleSignedDefault.Click += (sender, e) =>
-                apply(new WatchVariableControlSettings(
-                    changeAngleSigned: true, changeAngleSignedToDefault: true));
-            ToolStripMenuItem itemAngleSignedUnsigned = new ToolStripMenuItem("Unsigned");
-            itemAngleSignedUnsigned.Click += (sender, e) =>
-                apply(new WatchVariableControlSettings(
-                    changeAngleSigned: true, newAngleSigned: false));
-            ToolStripMenuItem itemAngleSignedSigned = new ToolStripMenuItem("Signed");
-            itemAngleSignedSigned.Click += (sender, e) =>
-                apply(new WatchVariableControlSettings(
-                    changeAngleSigned: true, newAngleSigned: true));
-            itemAngleSigned.DropDownItems.Add(itemAngleSignedDefault);
-            itemAngleSigned.DropDownItems.Add(itemAngleSignedUnsigned);
-            itemAngleSigned.DropDownItems.Add(itemAngleSignedSigned);
+            ControlUtilities.AddDropDownItems(
+                itemAngleSigned,
+                new List<string>() { "Default", "Unsigned", "Signed" },
+                new List<Action>()
+                {
+                    () => apply(new WatchVariableControlSettings(changeAngleSigned: true, changeAngleSignedToDefault: true)),
+                    () => apply(new WatchVariableControlSettings(changeAngleSigned: true, newAngleSigned: false)),
+                    () => apply(new WatchVariableControlSettings(changeAngleSigned: true, newAngleSigned: true)),
+                });
 
             ToolStripMenuItem itemAngleUnits = new ToolStripMenuItem("Angle: Units...");
             ToolStripMenuItem itemAngleUnitsDefault = new ToolStripMenuItem("Default");
@@ -121,21 +115,15 @@ namespace STROOP.Structs
             ToolStripMenuItem itemAngleConstrainToOneRevolution = new ToolStripMenuItem("Angle: Constrain to One Revolution...");
 
             ToolStripMenuItem itemAngleDisplayAsHex = new ToolStripMenuItem("Angle: Display as Hex...");
-            ToolStripMenuItem itemAngleDisplayAsHexDefault = new ToolStripMenuItem("Default");
-            itemAngleDisplayAsHexDefault.Click += (sender, e) =>
-                apply(new WatchVariableControlSettings(
-                    changeAngleHex: true, changeAngleHexToDefault: true));
-            ToolStripMenuItem itemAngleDisplayAsHexHex = new ToolStripMenuItem("Hex");
-            itemAngleDisplayAsHexHex.Click += (sender, e) =>
-                apply(new WatchVariableControlSettings(
-                    changeAngleHex: true, newAngleHex: true));
-            ToolStripMenuItem itemAngleDisplayAsHexDecimal = new ToolStripMenuItem("Decimal");
-            itemAngleDisplayAsHexDecimal.Click += (sender, e) =>
-                apply(new WatchVariableControlSettings(
-                    changeAngleHex: true, newAngleHex: false));
-            itemAngleDisplayAsHex.DropDownItems.Add(itemAngleDisplayAsHexDefault);
-            itemAngleDisplayAsHex.DropDownItems.Add(itemAngleDisplayAsHexHex);
-            itemAngleDisplayAsHex.DropDownItems.Add(itemAngleDisplayAsHexDecimal);
+            ControlUtilities.AddDropDownItems(
+                itemAngleDisplayAsHex,
+                new List<string>() { "Default", "Hex", "Decimal" },
+                new List<Action>()
+                {
+                    () => apply(new WatchVariableControlSettings(changeAngleDisplayAsHex: true, changeAngleDisplayAsHexToDefault: true)),
+                    () => apply(new WatchVariableControlSettings(changeAngleDisplayAsHex: true, newAngleDisplayAsHex: true)),
+                    () => apply(new WatchVariableControlSettings(changeAngleDisplayAsHex: true, newAngleDisplayAsHex: false)),
+                });
 
             ToolStripMenuItem itemMove = new ToolStripMenuItem("Move");
             ToolStripMenuItem itemDelete = new ToolStripMenuItem("Delete");
