@@ -35,9 +35,9 @@ namespace STROOP.Utilities
             string numDigitsString = numDigits.HasValue ? numDigits.Value.ToString() : "";
             string hexString = String.Format("{0:X" + numDigitsString + "}", numberFormatted);
             string prefix = usePrefix ? "0x" : "";
-            if (numDigits.HasValue && hexString.Length > numDigits.Value)
+            if (numDigits.HasValue)
             {
-                hexString = hexString.Substring(hexString.Length - numDigits.Value);
+                hexString = StringUtilities.ExactLength(hexString, numDigits.Value, true, '0');
             }
             return prefix + hexString;
         }

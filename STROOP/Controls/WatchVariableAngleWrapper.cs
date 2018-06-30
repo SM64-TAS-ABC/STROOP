@@ -30,17 +30,17 @@ namespace STROOP.Controls
         private bool _constrainToOneRevolution;
         private Action<bool> _setConstrainToOneRevolution;
 
+        private readonly Type _defaultEffectiveType;
         private Type _effectiveType
         {
             get
             {
-                if (TypeUtilities.TypeSize[_displayType] == 2 || _constrainToOneRevolution)
+                if (TypeUtilities.TypeSize[_defaultEffectiveType] == 2 || _constrainToOneRevolution)
                     return _signed ? typeof(short) : typeof(ushort);
                 else return _signed ? typeof(int) : typeof(uint);
             }
         }
 
-        private readonly Type _displayType;
         private readonly bool _isYaw;
 
         public WatchVariableAngleWrapper(
@@ -50,10 +50,10 @@ namespace STROOP.Controls
             bool? isYaw)
             : base(watchVar, watchVarControl, 0)
         {
-            _displayType = displayType ?? _watchVar.MemoryType;
-            if (_displayType == null) throw new ArgumentOutOfRangeException();
+            _defaultEffectiveType = displayType ?? _watchVar.MemoryType;
+            if (_defaultEffectiveType == null) throw new ArgumentOutOfRangeException();
 
-            _defaultSigned = TypeUtilities.TypeSign[_displayType];
+            _defaultSigned = TypeUtilities.TypeSign[_defaultEffectiveType];
             _signed = _defaultSigned;
 
             _defaultAngleUnitType = AngleUnitType.InGameUnits;
@@ -199,7 +199,7 @@ namespace STROOP.Controls
 
         protected override int? GetHexDigitCount()
         {
-            return _constrainToOneRevolution ? 4 : base.GetHexDigitCount();
+            return TypeUtilities.TypeSize[_effectiveType] * 2;
         }
 
         public override void ApplySettings(WatchVariableControlSettings settings)
