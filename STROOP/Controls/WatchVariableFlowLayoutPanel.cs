@@ -358,17 +358,6 @@ namespace STROOP.Controls
             GetCurrentlySelectedVariableControls().ForEach(control => control.IsSelected = false);
         }
 
-        public int GetNumSelectedVariables()
-        {
-            return GetCurrentlySelectedVariableControls().Count;
-        }
-
-        public void ApplySettingsToSelected(WatchVariableControlSettings settings)
-        {
-            GetCurrentlySelectedVariableControls().ForEach(
-                control => control.ApplySettings(settings));
-        }
-
         private void AddAllVariablesToCustomTab()
         {
             GetCurrentVariableControls().ForEach(varControl =>
