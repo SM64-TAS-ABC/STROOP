@@ -26,7 +26,9 @@ namespace STROOP.Controls
         private bool _truncateToMultipleOf16;
         private Action<bool> _setTruncateToMultipleOf16;
 
+        private readonly bool _defaultConstrainToOneRevolution;
         private bool _constrainToOneRevolution;
+        private Action<bool> _setConstrainToOneRevolution;
 
         private Type _effectiveType
         {
@@ -105,11 +107,12 @@ namespace STROOP.Controls
             itemTruncateToMultipleOf16.Checked = _truncateToMultipleOf16;
 
             ToolStripMenuItem itemConstrainToOneRevolution = new ToolStripMenuItem("Constrain to One Revolution");
-            itemConstrainToOneRevolution.Click += (sender, e) =>
+            _setConstrainToOneRevolution = (bool constrainToOneRevolution) =>
             {
-                _constrainToOneRevolution = !_constrainToOneRevolution;
-                itemConstrainToOneRevolution.Checked = _constrainToOneRevolution;
+                _constrainToOneRevolution = constrainToOneRevolution;
+                itemConstrainToOneRevolution.Checked = constrainToOneRevolution;
             };
+            itemConstrainToOneRevolution.Click += (sender, e) => _setConstrainToOneRevolution(!_constrainToOneRevolution);
             itemConstrainToOneRevolution.Checked = _constrainToOneRevolution;
 
             _contextMenuStrip.AddToBeginningList(new ToolStripSeparator());
@@ -229,6 +232,13 @@ namespace STROOP.Controls
                     _setTruncateToMultipleOf16(_defaultTruncateToMultipleOf16);
                 else
                     _setTruncateToMultipleOf16(settings.NewAngleTruncateToMultipleOf16);
+            }
+            if (settings.ChangeAngleConstrainToOneRevolution)
+            {
+                if (settings.ChangeAngleConstrainToOneRevolutionToDefault)
+                    _setConstrainToOneRevolution(_defaultConstrainToOneRevolution);
+                else
+                    _setConstrainToOneRevolution(settings.NewAngleConstrainToOneRevolution);
             }
             if (settings.ChangeAngleDisplayAsHex)
             {

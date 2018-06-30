@@ -123,6 +123,15 @@ namespace STROOP.Structs
                 });
 
             ToolStripMenuItem itemAngleConstrainToOneRevolution = new ToolStripMenuItem("Angle: Constrain to One Revolution...");
+            ControlUtilities.AddDropDownItems(
+                itemAngleConstrainToOneRevolution,
+                new List<string>() { "Default", "Constrain to One Revolution", "Don't Constrain to One Revolution" },
+                new List<Action>()
+                {
+                    () => apply(new WatchVariableControlSettings(changeAngleConstrainToOneRevolution: true, changeAngleConstrainToOneRevolutionToDefault: true)),
+                    () => apply(new WatchVariableControlSettings(changeAngleConstrainToOneRevolution: true, newAngleConstrainToOneRevolution: true)),
+                    () => apply(new WatchVariableControlSettings(changeAngleConstrainToOneRevolution: true, newAngleConstrainToOneRevolution: false)),
+                });
 
             ToolStripMenuItem itemAngleDisplayAsHex = new ToolStripMenuItem("Angle: Display as Hex...");
             ControlUtilities.AddDropDownItems(
