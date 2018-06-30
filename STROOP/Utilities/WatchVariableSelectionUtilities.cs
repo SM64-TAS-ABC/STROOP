@@ -41,6 +41,30 @@ namespace STROOP.Structs
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
 
             ToolStripMenuItem itemRoundTo = new ToolStripMenuItem("Round to...");
+            ToolStripMenuItem itemRoundToDefault = new ToolStripMenuItem("Default");
+            itemRoundToDefault.Click += (sender, e) =>
+                panel.ApplySettingsToSelected(new WatchVariableControlSettings(
+                    changeRoundingLimit: true, changeRoundingLimitToDefault: true));
+            ToolStripMenuItem itemRoundToNoRounding = new ToolStripMenuItem("No Rounding");
+            itemRoundToNoRounding.Click += (sender, e) =>
+                panel.ApplySettingsToSelected(new WatchVariableControlSettings(
+                    changeRoundingLimit: true, newRoundingLimit: -1));
+            List<ToolStripMenuItem> itemsRoundToNumDecimalPlaces = new List<ToolStripMenuItem>();
+            for (int i = 0; i <= 10; i++)
+            {
+                int index = i;
+                itemsRoundToNumDecimalPlaces.Add(new ToolStripMenuItem(index + " decimal place(s)"));
+                itemsRoundToNumDecimalPlaces[index].Click += (sender, e) =>
+                    panel.ApplySettingsToSelected(new WatchVariableControlSettings(
+                        changeRoundingLimit: true, newRoundingLimit: index));
+            }
+            itemRoundTo.DropDownItems.Add(itemRoundToDefault);
+            itemRoundTo.DropDownItems.Add(itemRoundToNoRounding);
+            itemsRoundToNumDecimalPlaces.ForEach(setAllRoundingLimitsNumberItem =>
+            {
+                itemRoundTo.DropDownItems.Add(setAllRoundingLimitsNumberItem);
+            });
+
             ToolStripMenuItem itemDisplayAsHex = new ToolStripMenuItem("Display as Hex...");
 
             ToolStripMenuItem itemAngleSigned = new ToolStripMenuItem("Angle: Signed...");
