@@ -1,5 +1,6 @@
 ﻿using OpenTK.Graphics.OpenGL;
 using STROOP.Controls.Map;
+using STROOP.Structs;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
@@ -57,6 +58,17 @@ namespace STROOP.Map2
         public override double GetDepthScore()
         {
             return Y + Depth * 65536d;
+        }
+
+        public void Update(TriangleDataModel tri)
+        {
+            X1 = tri.X1;
+            Z1 = tri.Z1;
+            X2 = tri.X2;
+            Z2 = tri.Z2;
+            X3 = tri.X3;
+            Z3 = tri.Z3;
+            Y = (tri.Y1 + tri.Y2 + tri.Y3) / 3f;
         }
     }
 }

@@ -105,6 +105,8 @@ namespace STROOP.Managers
             }
         }
 
+        List<TriangleMap2Object> _cogFloorTris;
+
         public Map2Manager(MapAssociations mapAssoc, Map2Gui mapGui)
         {
             MapAssoc = mapAssoc;
@@ -121,6 +123,12 @@ namespace STROOP.Managers
             _cameraMapObj.UsesRotation = true;
             _floorTriangleMapObj = new TriangleMap2Object(Color.FromArgb(200, Color.Cyan), 3);
             _ceilingTriangleMapObj = new TriangleMap2Object(Color.FromArgb(200, Color.Red), 2);
+
+            _cogFloorTris = new List<TriangleMap2Object>();
+            for (int i = 0; i < 4; i++)
+            {
+                _cogFloorTris.Add(new TriangleMap2Object(Color.FromArgb(200, Color.Cyan), 3));
+            }
         }
 
         public void Load()
@@ -141,6 +149,7 @@ namespace STROOP.Managers
             _mapGraphics.AddMapObject(_cameraMapObj);
             _mapGraphics.AddMapObject(_floorTriangleMapObj);
             _mapGraphics.AddMapObject(_ceilingTriangleMapObj);
+            _cogFloorTris.ForEach(tri => _mapGraphics.AddMapObject(tri));
 
             //----- Register events ------
             // Set image
@@ -265,6 +274,21 @@ namespace STROOP.Managers
                 CeilingTriangleMapObject.Y = (y1 + y2 + y3) / 3;
             }
             CeilingTriangleMapObject.Show = (ceilingTriangle != 0x00);
+
+            List<TriangleDataModel> cogFloorTris = TriangleUtilities.GetObjectTrianglesForObject(0x80341E28)
+                .FindAll(tri => tri.Classification == TriangleClassification.Floor);
+            for (int i = 0; i < _cogFloorTris.Count; i++)
+            {
+                if (i < cogFloorTris.Count)
+                {
+                    _cogFloorTris[i].Update(cogFloorTris[i]);
+                    _cogFloorTris[i].Show = true;
+                }
+                else
+                {
+                    _cogFloorTris[i].Show = false;
+                }
+            }
 
             // Update intended next position map object position
             float normY = floorTriangle == 0 ? 1 : Config.Stream.GetSingle(floorTriangle + TriangleOffsetsConfig.NormY);
@@ -398,6 +422,14 @@ namespace STROOP.Managers
             _ceilingTriangleMapObj.P2OnControl = CalculateLocationOnControl(new PointF(_ceilingTriangleMapObj.RelX2, _ceilingTriangleMapObj.RelZ2), mapView);
             _ceilingTriangleMapObj.P3OnControl = CalculateLocationOnControl(new PointF(_ceilingTriangleMapObj.RelX3, _ceilingTriangleMapObj.RelZ3), mapView);
             _ceilingTriangleMapObj.Draw = _ceilingTriangleMapObj.Show & _mapGui.MapShowCeilingTriangle.Checked;
+
+            foreach (TriangleMap2Object cogFloorTri in _cogFloorTris)
+            {
+                cogFloorTri.P1OnControl = CalculateLocationOnControl(new PointF(cogFloorTri.RelX1, cogFloorTri.RelZ1), mapView);
+                cogFloorTri.P2OnControl = CalculateLocationOnControl(new PointF(cogFloorTri.RelX2, cogFloorTri.RelZ2), mapView);
+                cogFloorTri.P3OnControl = CalculateLocationOnControl(new PointF(cogFloorTri.RelX3, cogFloorTri.RelZ3), mapView);
+                cogFloorTri.Draw = cogFloorTri.Show;
+            }
 
             // Calculate object slot's cooridnates
             foreach (var mapObj in _mapObjects)
