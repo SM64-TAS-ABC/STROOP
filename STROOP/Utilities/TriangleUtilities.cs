@@ -113,5 +113,10 @@ namespace STROOP.Utilities
             if (yNorm < -0.01) return TriangleClassification.Ceiling;
             return TriangleClassification.Wall;
         }
+
+        public static List<TriangleShape> GetWallTriangleHitboxComponents(TriangleDataModel wallTriangle)
+        {
+            return null;
+        }
     }
 } 
