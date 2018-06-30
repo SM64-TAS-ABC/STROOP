@@ -29,12 +29,13 @@ namespace STROOP.Controls
         {
             get
             {
-                if (_watchVar.ByteCount == 2 || _constrainToOneRevolution)
+                if (TypeUtilities.TypeSize[_displayType] == 2 || _constrainToOneRevolution)
                     return _signed ? typeof(short) : typeof(ushort);
                 else return _signed ? typeof(int) : typeof(uint);
             }
         }
 
+        private readonly Type _displayType;
         private readonly bool _isYaw;
 
         public WatchVariableAngleWrapper(
@@ -44,10 +45,10 @@ namespace STROOP.Controls
             bool? isYaw)
             : base(watchVar, watchVarControl, 0)
         {
-            Type type = displayType ?? _watchVar.MemoryType;
-            if (type == null) throw new ArgumentOutOfRangeException();
+            _displayType = displayType ?? _watchVar.MemoryType;
+            if (_displayType == null) throw new ArgumentOutOfRangeException();
 
-            _defaultSigned = TypeUtilities.TypeSign[type];
+            _defaultSigned = TypeUtilities.TypeSign[_displayType];
             _signed = _defaultSigned;
 
             _defaultAngleUnitType = AngleUnitType.InGameUnits;
