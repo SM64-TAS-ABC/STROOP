@@ -336,20 +336,28 @@ namespace STROOP.Controls
 
         public void NotifyOfReordering(WatchVariableControl watchVarControl)
         {
+            NotifyOfReordering(new List<WatchVariableControl> { watchVarControl });
+        }
+
+        public void NotifyOfReordering(List<WatchVariableControl> watchVarControls)
+        {
+            if (watchVarControls.Count == 0)
+                throw new ArgumentOutOfRangeException();
+
             if (_reorderingWatchVarControls.Count == 0)
             {
-                _reorderingWatchVarControls.Add(watchVarControl);
-                watchVarControl.FlashColor(WatchVariableControl.REORDER_START_COLOR);
+                _reorderingWatchVarControls.AddRange(watchVarControls);
+                watchVarControls.ForEach(control => control.FlashColor(WatchVariableControl.REORDER_START_COLOR));
             }
-            else if (_reorderingWatchVarControls.Count == 1 &&
-                _reorderingWatchVarControls[0] == watchVarControl)
+            else if (_reorderingWatchVarControls.Count == 1 && watchVarControls.Count == 1 &&
+                _reorderingWatchVarControls[0] == watchVarControls[0])
             {
-                watchVarControl.FlashColor(WatchVariableControl.REORDER_RESET_COLOR);
+                watchVarControls[0].FlashColor(WatchVariableControl.REORDER_RESET_COLOR);
                 _reorderingWatchVarControls.Clear();
             }
             else
             {
-                int newIndex = Controls.IndexOf(watchVarControl);
+                int newIndex = Controls.IndexOf(watchVarControls[0]);
                 _reorderingWatchVarControls.ForEach(control => Controls.Remove(control));
                 _reorderingWatchVarControls.ForEach(control => Controls.Add(control));
                 for (int i = 0; i < _reorderingWatchVarControls.Count; i++)

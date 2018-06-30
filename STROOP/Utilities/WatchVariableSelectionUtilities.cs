@@ -180,6 +180,7 @@ namespace STROOP.Structs
                 });
 
             ToolStripMenuItem itemMove = new ToolStripMenuItem("Move");
+            itemMove.Click += (sender, e) => panel.NotifyOfReordering(getVars());
 
             ToolStripMenuItem itemRemove = new ToolStripMenuItem("Remove");
             itemRemove.Click += (sender, e) => panel.RemoveVariables(getVars());
