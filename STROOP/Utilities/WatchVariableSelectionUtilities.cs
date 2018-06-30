@@ -97,6 +97,26 @@ namespace STROOP.Structs
             itemAngleSigned.DropDownItems.Add(itemAngleSignedSigned);
 
             ToolStripMenuItem itemAngleUnits = new ToolStripMenuItem("Angle: Units...");
+            ToolStripMenuItem itemAngleUnitsDefault = new ToolStripMenuItem("Default");
+            itemAngleUnitsDefault.Click += (sender, e) =>
+                apply(new WatchVariableControlSettings(
+                    changeAngleUnits: true, changeAngleUnitsToDefault: true));
+            List<ToolStripMenuItem> itemsAngleUnitsValue = new List<ToolStripMenuItem>();
+            foreach (AngleUnitType angleUnitType in Enum.GetValues(typeof(AngleUnitType)))
+            {
+                AngleUnitType angleUnitTypeFixed = angleUnitType;
+                ToolStripMenuItem itemAngleUnitsValue = new ToolStripMenuItem(angleUnitTypeFixed.ToString());
+                itemAngleUnitsValue.Click += (sender, e) =>
+                    apply(new WatchVariableControlSettings(
+                        changeAngleUnits: true, newAngleUnits: angleUnitTypeFixed));
+                itemsAngleUnitsValue.Add(itemAngleUnitsValue);
+            }
+            itemAngleUnits.DropDownItems.Add(itemAngleUnitsDefault);
+            itemsAngleUnitsValue.ForEach(setAllAngleUnitsValuesItem =>
+            {
+                itemAngleUnits.DropDownItems.Add(setAllAngleUnitsValuesItem);
+            });
+
             ToolStripMenuItem itemAngleTruncateToMultipleOf16 = new ToolStripMenuItem("Angle: Truncate to Multiple of 16...");
             ToolStripMenuItem itemAngleConstrainToOneRevolution = new ToolStripMenuItem("Angle: Constrain to One Revolution...");
             ToolStripMenuItem itemAngleDisplayAsHex = new ToolStripMenuItem("Angle: Display as Hex...");
