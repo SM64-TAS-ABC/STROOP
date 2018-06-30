@@ -174,6 +174,7 @@ namespace STROOP.Structs
 
             ToolStripMenuItem itemMove = new ToolStripMenuItem("Move");
             ToolStripMenuItem itemDelete = new ToolStripMenuItem("Delete");
+            ToolStripMenuItem itemEnableCustomization = new ToolStripMenuItem("Enable Customization");
             ToolStripMenuItem itemOpenController = new ToolStripMenuItem("Open Controller");
             ToolStripMenuItem itemAddToCustomTab = new ToolStripMenuItem("Add to Custom Tab");
 
@@ -195,6 +196,7 @@ namespace STROOP.Structs
                 new ToolStripSeparator(),
                 itemMove,
                 itemDelete,
+                itemEnableCustomization,
                 itemOpenController,
                 itemAddToCustomTab
             };
