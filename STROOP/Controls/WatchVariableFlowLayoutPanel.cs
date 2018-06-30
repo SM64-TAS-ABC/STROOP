@@ -163,18 +163,6 @@ namespace STROOP.Controls
             }
         }
 
-        private void ApplySettings(WatchVariableControlSettings settings)
-        {
-            if (KeyboardUtilities.IsCtrlHeld())
-            {
-                WatchVariableControlSettingsManager.AddSettings(settings);
-            }
-            else
-            {
-                _watchVarControls.ForEach(control => control.ApplySettings(settings));
-            }
-        }
-
         public void AddVariable(WatchVariableControl watchVarControl)
         {
             lock (_objectLock)
