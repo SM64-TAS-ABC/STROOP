@@ -97,6 +97,7 @@ namespace STROOP
                 new List<string>()
                 {
                     "Enable TASer Settings",
+                    "Download Latest STROOP Release",
                     "Test Something",
                 },
                 new List<Action>()
@@ -110,6 +111,7 @@ namespace STROOP
                         Config.TasManager.ShowTaserVariables();
                         tabControlMain.SelectedTab = tabPageTas;
                     },
+                    () => Process.Start("https://github.com/SM64-TAS-ABC/STROOP/archive/vDev.zip"),
                     () =>
                     {
                         TabPage currentTab = Config.TabControlMain.SelectedTab;
@@ -123,7 +125,7 @@ namespace STROOP
                 new List<string>()
                 {
                     "Disable Locking",
-                    "Show Invisible Objects as Signs"
+                    "Show Invisible Objects as Signs",
                 },
                 new List<Func<bool>>()
                 {
