@@ -13,9 +13,8 @@ namespace STROOP.Structs
     public static class WatchVariableSelectionUtilities
     {
 
-        public static ContextMenuStrip CreateSelectionContextMenuStrip(WatchVariableFlowLayoutPanel panel)
+        public static ContextMenuStrip CreateMutliVarToolStripItemList(Func<List<WatchVariableControl>> getVars)
         {
-            Func<List<WatchVariableControl>> getVars = () => panel.GetCurrentlySelectedVariableControls();
             Action<WatchVariableControlSettings> apply =
                 (WatchVariableControlSettings settings) => getVars().ForEach(control => control.ApplySettings(settings));
 
