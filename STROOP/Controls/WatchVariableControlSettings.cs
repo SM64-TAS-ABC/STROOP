@@ -47,6 +47,10 @@ namespace STROOP.Controls
         public readonly bool ChangeAngleUnitsToDefault;
         public readonly AngleUnitType NewAngleUnits;
 
+        public readonly bool ChangeAngleTruncateToMultipleOf16;
+        public readonly bool ChangeAngleTruncateToMultipleOf16ToDefault;
+        public readonly bool NewAngleTruncateToMultipleOf16;
+
         public readonly bool ChangeAngleDisplayAsHex;
         public readonly bool ChangeAngleDisplayAsHexToDefault;
         public readonly bool NewAngleDisplayAsHex;
@@ -78,6 +82,10 @@ namespace STROOP.Controls
             bool changeAngleUnitsToDefault = false,
             AngleUnitType newAngleUnits = AngleUnitType.InGameUnits,
 
+            bool changeAngleTruncateToMultipleOf16 = false,
+            bool changeAngleTruncateToMultipleOf16ToDefault = false,
+            bool newAngleTruncateToMultipleOf16 = false,
+
             bool changeAngleDisplayAsHex = false,
             bool changeAngleDisplayAsHexToDefault = false,
             bool newAngleDisplayAsHex = false,
@@ -107,6 +115,10 @@ namespace STROOP.Controls
             ChangeAngleUnits = changeAngleUnits;
             ChangeAngleUnitsToDefault = changeAngleUnitsToDefault;
             NewAngleUnits = newAngleUnits;
+
+            ChangeAngleTruncateToMultipleOf16 = changeAngleTruncateToMultipleOf16;
+            ChangeAngleTruncateToMultipleOf16ToDefault = changeAngleTruncateToMultipleOf16ToDefault;
+            NewAngleTruncateToMultipleOf16 = newAngleTruncateToMultipleOf16;
 
             ChangeAngleDisplayAsHex = changeAngleDisplayAsHex;
             ChangeAngleDisplayAsHexToDefault = changeAngleDisplayAsHexToDefault;

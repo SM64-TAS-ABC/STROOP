@@ -22,7 +22,10 @@ namespace STROOP.Controls
         private AngleUnitType _angleUnitType;
         private Action<AngleUnitType> _setAngleUnitType;
 
+        private readonly bool _defaultTruncateToMultipleOf16;
         private bool _truncateToMultipleOf16;
+        private Action<bool> _setTruncateToMultipleOf16;
+
         private bool _constrainToOneRevolution;
 
         private Type _effectiveType
@@ -54,7 +57,8 @@ namespace STROOP.Controls
             _defaultAngleUnitType = AngleUnitType.InGameUnits;
             _angleUnitType = _defaultAngleUnitType;
 
-            _truncateToMultipleOf16 = false;
+            _defaultTruncateToMultipleOf16 = false;
+            _truncateToMultipleOf16 = _defaultTruncateToMultipleOf16;
 
             _constrainToOneRevolution =
                 displayType != null && TypeUtilities.TypeSize[displayType] == 2 &&
@@ -92,11 +96,12 @@ namespace STROOP.Controls
                 _angleUnitType);
 
             ToolStripMenuItem itemTruncateToMultipleOf16 = new ToolStripMenuItem("Truncate to Multiple of 16");
-            itemTruncateToMultipleOf16.Click += (sender, e) =>
+            _setTruncateToMultipleOf16 = (bool truncateToMultipleOf16) =>
             {
-                _truncateToMultipleOf16 = !_truncateToMultipleOf16;
-                itemTruncateToMultipleOf16.Checked = _truncateToMultipleOf16;
+                _truncateToMultipleOf16 = truncateToMultipleOf16;
+                itemTruncateToMultipleOf16.Checked = truncateToMultipleOf16;
             };
+            itemTruncateToMultipleOf16.Click += (sender, e) => _setTruncateToMultipleOf16(!_truncateToMultipleOf16);
             itemTruncateToMultipleOf16.Checked = _truncateToMultipleOf16;
 
             ToolStripMenuItem itemConstrainToOneRevolution = new ToolStripMenuItem("Constrain to One Revolution");
@@ -217,6 +222,13 @@ namespace STROOP.Controls
                     _setAngleUnitType(_defaultAngleUnitType);
                 else
                     _setAngleUnitType(settings.NewAngleUnits);
+            }
+            if (settings.ChangeAngleTruncateToMultipleOf16)
+            {
+                if (settings.ChangeAngleTruncateToMultipleOf16ToDefault)
+                    _setTruncateToMultipleOf16(_defaultTruncateToMultipleOf16);
+                else
+                    _setTruncateToMultipleOf16(settings.NewAngleTruncateToMultipleOf16);
             }
             if (settings.ChangeAngleDisplayAsHex)
             {
