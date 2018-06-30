@@ -26,7 +26,7 @@ namespace STROOP.Controls
         private List<ToolStripMenuItem> _filteringDropDownItems;
 
         private WatchVariableControl _reorderingWatchVarControl;
-        private ContextMenuStrip _selectionContextMenuStrip;
+        private List<ToolStripItem> _selectionToolStripItems;
 
         public WatchVariableFlowLayoutPanel()
         {
@@ -54,8 +54,8 @@ namespace STROOP.Controls
             _initialVisibleGroups.AddRange(visibleGroups);
             _visibleGroups.AddRange(visibleGroups);
 
-            _selectionContextMenuStrip =
-                WatchVariableSelectionUtilities.CreateMutliVarToolStripItemList(
+            _selectionToolStripItems =
+                WatchVariableSelectionUtilities.CreateSelectionToolStripItems(
                     () => GetCurrentlySelectedVariableControls());
 
             List<WatchVariableControlPrecursor> precursors = _varFilePath == null
@@ -198,9 +198,9 @@ namespace STROOP.Controls
             ContextMenuStrip.Items.Add(filterVariablesItem);
         }
 
-        public ContextMenuStrip GetSelectionContextMenuStrip()
+        public List<ToolStripItem> GetSelectionToolStripItems()
         {
-            return _selectionContextMenuStrip;
+            return _selectionToolStripItems;
         }
 
         private ToolStripMenuItem CreateFilterItem(VariableGroup varGroup)

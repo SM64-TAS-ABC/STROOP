@@ -26,8 +26,7 @@ namespace STROOP.Controls
         private readonly ContextMenuStrip _variableContextMenuStrip;
         private readonly List<ToolStripItem> _variableContextMenuStripItems;
 
-        private ContextMenuStrip _selectionContextMenuStrip;
-        private readonly List<ToolStripItem> _selectionContextMenuStripItems;
+        private List<ToolStripItem> _selectionToolStripItems;
 
         // Parent control
         private WatchVariableFlowLayoutPanel _watchVariablePanel;
@@ -234,7 +233,7 @@ namespace STROOP.Controls
             {
                 _variableContextMenuStripItems.Add(item);
             }
-            _selectionContextMenuStripItems = new List<ToolStripItem>();
+            _selectionToolStripItems = new List<ToolStripItem>();
 
             ContextMenuStrip = _variableContextMenuStrip;
             _nameTextBox.ContextMenuStrip = _variableContextMenuStrip;
@@ -308,7 +307,7 @@ namespace STROOP.Controls
             if (IsSelected)
             {
                 ContextMenuStrip.Items.Clear();
-                _selectionContextMenuStripItems.ForEach(item => ContextMenuStrip.Items.Add(item));
+                _selectionToolStripItems.ForEach(item => ContextMenuStrip.Items.Add(item));
             }
             else
             {
@@ -676,15 +675,7 @@ namespace STROOP.Controls
         public void SetPanel(WatchVariableFlowLayoutPanel panel)
         {
             _watchVariablePanel = panel;
-            _selectionContextMenuStrip = panel?.GetSelectionContextMenuStrip();
-            if (_selectionContextMenuStrip != null)
-            {
-                _selectionContextMenuStripItems.Clear();
-                foreach (ToolStripItem item in _selectionContextMenuStrip.Items)
-                {
-                    _selectionContextMenuStripItems.Add(item);
-                }
-            }
+            _selectionToolStripItems = panel?.GetSelectionToolStripItems();
         }
 
         public void DeleteFromPanel()

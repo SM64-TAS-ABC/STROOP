@@ -13,12 +13,10 @@ namespace STROOP.Structs
     public static class WatchVariableSelectionUtilities
     {
 
-        public static ContextMenuStrip CreateMutliVarToolStripItemList(Func<List<WatchVariableControl>> getVars)
+        public static List<ToolStripItem> CreateSelectionToolStripItems(Func<List<WatchVariableControl>> getVars)
         {
             Action<WatchVariableControlSettings> apply =
                 (WatchVariableControlSettings settings) => getVars().ForEach(control => control.ApplySettings(settings));
-
-            ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
 
             ToolStripMenuItem itemHighlight = new ToolStripMenuItem("Highlight...");
             ControlUtilities.AddDropDownItems(
@@ -179,26 +177,27 @@ namespace STROOP.Structs
             ToolStripMenuItem itemOpenController = new ToolStripMenuItem("Open Controller");
             ToolStripMenuItem itemAddToCustomTab = new ToolStripMenuItem("Add to Custom Tab");
 
-            contextMenuStrip.Items.Add(itemHighlight);
-            contextMenuStrip.Items.Add(itemLock);
-            contextMenuStrip.Items.Add(itemCopy);
-            contextMenuStrip.Items.Add(itemPaste);
-            contextMenuStrip.Items.Add(new ToolStripSeparator());
-            contextMenuStrip.Items.Add(itemRoundTo);
-            contextMenuStrip.Items.Add(itemDisplayAsHex);
-            contextMenuStrip.Items.Add(new ToolStripSeparator());
-            contextMenuStrip.Items.Add(itemAngleSigned);
-            contextMenuStrip.Items.Add(itemAngleUnits);
-            contextMenuStrip.Items.Add(itemAngleTruncateToMultipleOf16);
-            contextMenuStrip.Items.Add(itemAngleConstrainToOneRevolution);
-            contextMenuStrip.Items.Add(itemAngleDisplayAsHex);
-            contextMenuStrip.Items.Add(new ToolStripSeparator());
-            contextMenuStrip.Items.Add(itemMove);
-            contextMenuStrip.Items.Add(itemDelete);
-            contextMenuStrip.Items.Add(itemOpenController);
-            contextMenuStrip.Items.Add(itemAddToCustomTab);
-
-            return contextMenuStrip;
+            return new List<ToolStripItem>
+            {
+                itemHighlight,
+                itemLock,
+                itemCopy,
+                itemPaste,
+                new ToolStripSeparator(),
+                itemRoundTo,
+                itemDisplayAsHex,
+                new ToolStripSeparator(),
+                itemAngleSigned,
+                itemAngleUnits,
+                itemAngleTruncateToMultipleOf16,
+                itemAngleConstrainToOneRevolution,
+                itemAngleDisplayAsHex,
+                new ToolStripSeparator(),
+                itemMove,
+                itemDelete,
+                itemOpenController,
+                itemAddToCustomTab
+            };
         }
         
     }
