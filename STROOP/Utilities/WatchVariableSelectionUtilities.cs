@@ -71,7 +71,7 @@ namespace STROOP.Structs
             ToolStripMenuItem itemDisplayAsHex = new ToolStripMenuItem("Display as Hex...");
             ControlUtilities.AddDropDownItems(
                 itemDisplayAsHex,
-                new List<string>() { "Default", "Hex", "Not Hex" },
+                new List<string>() { "Default", "Hex", "Decimal" },
                 new List<Action>()
                 {
                     () => apply(new WatchVariableControlSettings(changeDisplayAsHex: true, changeDisplayAsHexToDefault: true)),
@@ -119,7 +119,23 @@ namespace STROOP.Structs
 
             ToolStripMenuItem itemAngleTruncateToMultipleOf16 = new ToolStripMenuItem("Angle: Truncate to Multiple of 16...");
             ToolStripMenuItem itemAngleConstrainToOneRevolution = new ToolStripMenuItem("Angle: Constrain to One Revolution...");
+
             ToolStripMenuItem itemAngleDisplayAsHex = new ToolStripMenuItem("Angle: Display as Hex...");
+            ToolStripMenuItem itemAngleDisplayAsHexDefault = new ToolStripMenuItem("Default");
+            itemAngleDisplayAsHexDefault.Click += (sender, e) =>
+                apply(new WatchVariableControlSettings(
+                    changeAngleHex: true, changeAngleHexToDefault: true));
+            ToolStripMenuItem itemAngleDisplayAsHexHex = new ToolStripMenuItem("Hex");
+            itemAngleDisplayAsHexHex.Click += (sender, e) =>
+                apply(new WatchVariableControlSettings(
+                    changeAngleHex: true, newAngleHex: true));
+            ToolStripMenuItem itemAngleDisplayAsHexDecimal = new ToolStripMenuItem("Decimal");
+            itemAngleDisplayAsHexDecimal.Click += (sender, e) =>
+                apply(new WatchVariableControlSettings(
+                    changeAngleHex: true, newAngleHex: false));
+            itemAngleDisplayAsHex.DropDownItems.Add(itemAngleDisplayAsHexDefault);
+            itemAngleDisplayAsHex.DropDownItems.Add(itemAngleDisplayAsHexHex);
+            itemAngleDisplayAsHex.DropDownItems.Add(itemAngleDisplayAsHexDecimal);
 
             ToolStripMenuItem itemMove = new ToolStripMenuItem("Move");
             ToolStripMenuItem itemDelete = new ToolStripMenuItem("Delete");
