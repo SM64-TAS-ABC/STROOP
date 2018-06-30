@@ -41,51 +41,38 @@ namespace STROOP.Structs
                     () => apply(new WatchVariableControlSettings(changeLocked: true, newLocked: false)),
                 });
 
-            ToolStripMenuItem itemCopy = new ToolStripMenuItem("Copy");
-
-            /*
-            Action<string> copyCoordinatesWithSeparator = (string separator) =>
+            ToolStripMenuItem itemCopy = new ToolStripMenuItem("Copy...");
+            Action<List<WatchVariableControl>, string> copyValues =
+                (List<WatchVariableControl> controls, string separator) =>
             {
                 Clipboard.SetText(
-                    String.Join(separator, coordinateVarList.ConvertAll(
-                        coord => coord.GetValue(false))));
+                    String.Join(separator, controls.ConvertAll(
+                        control => control.GetValue(false))));
             };
-
-            ToolStripMenuItem itemCopyCoordinatesCommas = new ToolStripMenuItem("Copy Coordinates with Commas");
-            itemCopyCoordinatesCommas.Click += (sender, e) => copyCoordinatesWithSeparator(",");
-
-            ToolStripMenuItem itemCopyCoordinatesTabs = new ToolStripMenuItem("Copy Coordinates with Tabs");
-            itemCopyCoordinatesTabs.Click += (sender, e) => copyCoordinatesWithSeparator("\t");
-
-            ToolStripMenuItem itemCopyCoordinatesLineBreaks = new ToolStripMenuItem("Copy Coordinates with Line Breaks");
-            itemCopyCoordinatesLineBreaks.Click += (sender, e) => copyCoordinatesWithSeparator("\r\n");
-
-            _itemCopyCoordinates.DropDownItems.Add(itemCopyCoordinatesCommas);
-            _itemCopyCoordinates.DropDownItems.Add(itemCopyCoordinatesTabs);
-            _itemCopyCoordinates.DropDownItems.Add(itemCopyCoordinatesLineBreaks);
-
-            _itemPasteCoordinates.Click += (sender, e) =>
-            {
-                List<string> stringList = ParsingUtilities.ParseStringList(Clipboard.GetText());
-                int stringCount = stringList.Count;
-                if (stringCount != 2 && stringCount != 3) return;
-
-                Config.Stream.Suspend();
-                coordinateVarList[0]._watchVarControl.SetValue(stringList[0]);
-                if (coordinateCount == 3 && stringCount == 3)
-                    coordinateVarList[1]._watchVarControl.SetValue(stringList[1]);
-                coordinateVarList[coordinateCount - 1]._watchVarControl.SetValue(stringList[stringCount - 1]);
-                Config.Stream.Resume();
-            };
-            */
-
-
-
-
-
-
+            ControlUtilities.AddDropDownItems(
+                itemCopy,
+                new List<string>() { "Copy with Commas", "Copy with Tabs", "Copy with Line Breaks" },
+                new List<Action>()
+                {
+                    () => copyValues(getVars(), ","),
+                    () => copyValues(getVars(), "\t"),
+                    () => copyValues(getVars(), "\r\n"),
+                });
 
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
+            itemPaste.Click += (sender, e) =>
+            {
+                List<string> stringList = ParsingUtilities.ParseStringList(Clipboard.GetText());
+                List<WatchVariableControl> varList = getVars();
+                if (stringList.Count != varList.Count) return;
+
+                Config.Stream.Suspend();
+                for (int i = 0; i < stringList.Count; i++)
+                {
+                    varList[i].SetValue(stringList[i]);
+                }
+                Config.Stream.Resume();
+            };
 
             ToolStripMenuItem itemRoundTo = new ToolStripMenuItem("Round to...");
             ToolStripMenuItem itemRoundToDefault = new ToolStripMenuItem("Default");
