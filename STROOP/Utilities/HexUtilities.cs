@@ -30,11 +30,16 @@ namespace STROOP.Utilities
                 if (uintValueNullable.HasValue) numberFormatted = uintValueNullable.Value;
             }
 
-            if (!TypeUtilities.IsIntegerNumber(numberFormatted)) number.ToString();
+            if (!TypeUtilities.IsIntegerNumber(numberFormatted)) return number.ToString();
 
             string numDigitsString = numDigits.HasValue ? numDigits.Value.ToString() : "";
+            string hexString = String.Format("{X" + numDigitsString + "}", numberFormatted);
             string prefix = usePrefix ? "0x" : "";
-            return prefix + String.Format("{0:X" + numDigitsString + "}", numberFormatted);
+            if (numDigits.HasValue && hexString.Length > numDigits.Value)
+            {
+                hexString = hexString.Substring(hexString.Length - numDigits.Value);
+            }
+            return prefix + hexString;
         }
 
         public static string FormatMemory(object number, int? numDigits = null, bool usePrefix = true)
