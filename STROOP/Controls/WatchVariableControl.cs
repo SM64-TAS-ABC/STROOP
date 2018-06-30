@@ -305,7 +305,7 @@ namespace STROOP.Controls
                 _watchVariablePanel.UnselectAllVariables();
             }
 
-            if (IsSelected && _watchVariablePanel.GetNumSelectedVariables() >= 2)
+            if (IsSelected)
             {
                 ContextMenuStrip.Items.Clear();
                 _selectionContextMenuStripItems.ForEach(item => ContextMenuStrip.Items.Add(item));
