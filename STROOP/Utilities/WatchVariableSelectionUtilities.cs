@@ -23,7 +23,7 @@ namespace STROOP.Structs
             ToolStripMenuItem itemHighlight = new ToolStripMenuItem("Highlight...");
             ControlUtilities.AddDropDownItems(
                 itemHighlight,
-                new List<string>() { "Highlighted", "Not Highlighted" },
+                new List<string>() { "Highlight", "Don't Highlight" },
                 new List<Action>()
                 {
                     () => apply(new WatchVariableControlSettings(changeHighlighted: true, newHighlighted: true)),
@@ -33,7 +33,7 @@ namespace STROOP.Structs
             ToolStripMenuItem itemLock = new ToolStripMenuItem("Lock...");
             ControlUtilities.AddDropDownItems(
                 itemLock,
-                new List<string>() { "Locked", "Not Locked" },
+                new List<string>() { "Lock", "Don't Lock" },
                 new List<Action>()
                 {
                     () => apply(new WatchVariableControlSettings(changeLocked: true, newLocked: true)),
