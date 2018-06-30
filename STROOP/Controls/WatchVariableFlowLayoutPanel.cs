@@ -336,37 +336,54 @@ namespace STROOP.Controls
 
         public void NotifyOfReordering(WatchVariableControl watchVarControl)
         {
-            NotifyOfReordering(new List<WatchVariableControl> { watchVarControl });
+            if (_reorderingWatchVarControls.Count == 1 && _reorderingWatchVarControls[0] == watchVarControl)
+            {
+                NotifyOfReorderingClear();
+            }
+            else
+            {
+                if (_reorderingWatchVarControls.Count == 0)
+                {
+                    NotifyOfReorderingStart(new List<WatchVariableControl>() { watchVarControl });
+                }
+                else
+                {
+                    NotifyOfReorderingEnd(new List<WatchVariableControl>() { watchVarControl });
+                }
+            }
         }
 
-        public void NotifyOfReordering(List<WatchVariableControl> watchVarControls)
+        public void NotifyOfReorderingStart(List<WatchVariableControl> watchVarControls)
         {
             if (watchVarControls.Count == 0)
                 throw new ArgumentOutOfRangeException();
 
-            if (_reorderingWatchVarControls.Count == 0)
+            _reorderingWatchVarControls.Clear();
+            _reorderingWatchVarControls.AddRange(watchVarControls);
+            _reorderingWatchVarControls.ForEach(control => control.FlashColor(WatchVariableControl.REORDER_START_COLOR));
+        }
+
+        public void NotifyOfReorderingEnd(List<WatchVariableControl> watchVarControls)
+        {
+            if (watchVarControls.Count == 0)
+                throw new ArgumentOutOfRangeException();
+
+            int newIndex = Controls.IndexOf(watchVarControls[0]);
+            _reorderingWatchVarControls.ForEach(control => Controls.Remove(control));
+            _reorderingWatchVarControls.ForEach(control => Controls.Add(control));
+            for (int i = 0; i < _reorderingWatchVarControls.Count; i++)
             {
-                _reorderingWatchVarControls.AddRange(watchVarControls);
-                watchVarControls.ForEach(control => control.FlashColor(WatchVariableControl.REORDER_START_COLOR));
+                Controls.SetChildIndex(_reorderingWatchVarControls[i], newIndex + i);
+                _reorderingWatchVarControls[i].FlashColor(WatchVariableControl.REORDER_END_COLOR);
             }
-            else if (_reorderingWatchVarControls.Count == 1 && watchVarControls.Count == 1 &&
-                _reorderingWatchVarControls[0] == watchVarControls[0])
-            {
-                watchVarControls[0].FlashColor(WatchVariableControl.REORDER_RESET_COLOR);
-                _reorderingWatchVarControls.Clear();
-            }
-            else
-            {
-                int newIndex = Controls.IndexOf(watchVarControls[0]);
-                _reorderingWatchVarControls.ForEach(control => Controls.Remove(control));
-                _reorderingWatchVarControls.ForEach(control => Controls.Add(control));
-                for (int i = 0; i < _reorderingWatchVarControls.Count; i++)
-                {
-                    Controls.SetChildIndex(_reorderingWatchVarControls[i], newIndex + i);
-                    _reorderingWatchVarControls[i].FlashColor(WatchVariableControl.REORDER_END_COLOR);
-                }
-                _reorderingWatchVarControls.Clear();
-            }
+            _reorderingWatchVarControls.Clear();
+        }
+
+        public void NotifyOfReorderingClear()
+        {
+            _reorderingWatchVarControls.ForEach(
+                control => control.FlashColor(WatchVariableControl.REORDER_RESET_COLOR));
+            _reorderingWatchVarControls.Clear();
         }
 
         public void NotifySelectClick(

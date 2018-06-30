@@ -179,8 +179,16 @@ namespace STROOP.Structs
                     () => apply(new WatchVariableControlSettings(changeAngleDisplayAsHex: true, newAngleDisplayAsHex: false)),
                 });
 
-            ToolStripMenuItem itemMove = new ToolStripMenuItem("Move");
-            itemMove.Click += (sender, e) => panel.NotifyOfReordering(getVars());
+            ToolStripMenuItem itemMove = new ToolStripMenuItem("Move...");
+            ControlUtilities.AddDropDownItems(
+                itemMove,
+                new List<string>() { "Start Move", "End Move", "Clear Move" },
+                new List<Action>()
+                {
+                    () => panel.NotifyOfReorderingStart(getVars()),
+                    () => panel.NotifyOfReorderingEnd(getVars()),
+                    () => panel.NotifyOfReorderingClear(),
+                });
 
             ToolStripMenuItem itemRemove = new ToolStripMenuItem("Remove");
             itemRemove.Click += (sender, e) => panel.RemoveVariables(getVars());
