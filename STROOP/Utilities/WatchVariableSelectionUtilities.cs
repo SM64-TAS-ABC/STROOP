@@ -198,7 +198,7 @@ namespace STROOP.Structs
                 itemDelete,
                 itemEnableCustomization,
                 itemOpenController,
-                itemAddToCustomTab
+                itemAddToCustomTab,
             };
         }
         
