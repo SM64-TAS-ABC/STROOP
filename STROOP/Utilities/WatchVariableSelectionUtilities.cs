@@ -80,9 +80,26 @@ namespace STROOP.Structs
                 });
 
             ToolStripMenuItem itemAngleSigned = new ToolStripMenuItem("Angle: Signed...");
+            ToolStripMenuItem itemAngleSignedDefault = new ToolStripMenuItem("Default");
+            itemAngleSignedDefault.Click += (sender, e) =>
+                apply(new WatchVariableControlSettings(
+                    changeAngleSigned: true, changeAngleSignedToDefault: true));
+            ToolStripMenuItem itemAngleSignedUnsigned = new ToolStripMenuItem("Unsigned");
+            itemAngleSignedUnsigned.Click += (sender, e) =>
+                apply(new WatchVariableControlSettings(
+                    changeAngleSigned: true, newAngleSigned: false));
+            ToolStripMenuItem itemAngleSignedSigned = new ToolStripMenuItem("Signed");
+            itemAngleSignedSigned.Click += (sender, e) =>
+                apply(new WatchVariableControlSettings(
+                    changeAngleSigned: true, newAngleSigned: true));
+            itemAngleSigned.DropDownItems.Add(itemAngleSignedDefault);
+            itemAngleSigned.DropDownItems.Add(itemAngleSignedUnsigned);
+            itemAngleSigned.DropDownItems.Add(itemAngleSignedSigned);
+
             ToolStripMenuItem itemAngleUnits = new ToolStripMenuItem("Angle: Units...");
             ToolStripMenuItem itemAngleTruncateToMultipleOf16 = new ToolStripMenuItem("Angle: Truncate to Multiple of 16...");
             ToolStripMenuItem itemAngleConstrainToOneRevolution = new ToolStripMenuItem("Angle: Constrain to One Revolution...");
+            ToolStripMenuItem itemAngleDisplayAsHex = new ToolStripMenuItem("Angle: Display as Hex...");
 
             ToolStripMenuItem itemMove = new ToolStripMenuItem("Move");
             ToolStripMenuItem itemDelete = new ToolStripMenuItem("Delete");
@@ -101,6 +118,7 @@ namespace STROOP.Structs
             contextMenuStrip.Items.Add(itemAngleUnits);
             contextMenuStrip.Items.Add(itemAngleTruncateToMultipleOf16);
             contextMenuStrip.Items.Add(itemAngleConstrainToOneRevolution);
+            contextMenuStrip.Items.Add(itemAngleDisplayAsHex);
             contextMenuStrip.Items.Add(new ToolStripSeparator());
             contextMenuStrip.Items.Add(itemMove);
             contextMenuStrip.Items.Add(itemDelete);
