@@ -25,7 +25,8 @@ namespace STROOP.Controls
         private readonly List<VariableGroup> _visibleGroups;
         private List<ToolStripMenuItem> _filteringDropDownItems;
 
-        private WatchVariableControl _reorderingWatchVarControl;
+        private List<WatchVariableControl> _reorderingWatchVarControls;
+
         private List<ToolStripItem> _selectionToolStripItems;
 
         public WatchVariableFlowLayoutPanel()
@@ -38,7 +39,7 @@ namespace STROOP.Controls
 
             ContextMenuStrip = new ContextMenuStrip();
 
-            _reorderingWatchVarControl = null;
+            _reorderingWatchVarControls = new List<WatchVariableControl>();
 
             Click += (sender, e) => UnselectAllVariables();
             ContextMenuStrip.Opening += (sender, e) => UnselectAllVariables();
@@ -196,8 +197,8 @@ namespace STROOP.Controls
             {
                 foreach (WatchVariableControl watchVarControl in watchVarControls)
                 {
-                    if (_reorderingWatchVarControl == watchVarControl)
-                        _reorderingWatchVarControl = null;
+                    if (_reorderingWatchVarControls.Contains(watchVarControl))
+                        _reorderingWatchVarControls.Remove(watchVarControl);
 
                     _watchVarControls.Remove(watchVarControl);
                     if (ShouldShow(watchVarControl)) Controls.Remove(watchVarControl);
@@ -335,22 +336,28 @@ namespace STROOP.Controls
 
         public void NotifyOfReordering(WatchVariableControl watchVarControl)
         {
-            if (_reorderingWatchVarControl == null)
+            if (_reorderingWatchVarControls.Count == 0)
             {
-                _reorderingWatchVarControl = watchVarControl;
-                _reorderingWatchVarControl.FlashColor(WatchVariableControl.REORDER_START_COLOR);
+                _reorderingWatchVarControls.Add(watchVarControl);
+                watchVarControl.FlashColor(WatchVariableControl.REORDER_START_COLOR);
             }
-            else if (watchVarControl == _reorderingWatchVarControl)
+            else if (_reorderingWatchVarControls.Count == 1 &&
+                _reorderingWatchVarControls[0] == watchVarControl)
             {
-                _reorderingWatchVarControl.FlashColor(WatchVariableControl.REORDER_RESET_COLOR);
-                _reorderingWatchVarControl = null;
+                watchVarControl.FlashColor(WatchVariableControl.REORDER_RESET_COLOR);
+                _reorderingWatchVarControls.Clear();
             }
             else
             {
                 int newIndex = Controls.IndexOf(watchVarControl);
-                Controls.SetChildIndex(_reorderingWatchVarControl, newIndex);
-                _reorderingWatchVarControl.FlashColor(WatchVariableControl.REORDER_END_COLOR);
-                _reorderingWatchVarControl = null;
+                _reorderingWatchVarControls.ForEach(control => Controls.Remove(control));
+                _reorderingWatchVarControls.ForEach(control => Controls.Add(control));
+                for (int i = 0; i < _reorderingWatchVarControls.Count; i++)
+                {
+                    Controls.SetChildIndex(_reorderingWatchVarControls[i], newIndex + i);
+                    _reorderingWatchVarControls[i].FlashColor(WatchVariableControl.REORDER_END_COLOR);
+                }
+                _reorderingWatchVarControls.Clear();
             }
         }
 
