@@ -17,5 +17,13 @@ namespace STROOP.Utilities
             }
             return success;
         }
+
+        public static CheckState GetCheckState(List<bool> bools)
+        {
+            if (bools.Count == 0) return CheckState.Indeterminate;
+            if (bools.All(b => b)) return CheckState.Checked;
+            if (bools.All(b => !b)) return CheckState.Unchecked;
+            return CheckState.Indeterminate;
+        }
     }
 }
