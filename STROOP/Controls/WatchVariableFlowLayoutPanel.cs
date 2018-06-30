@@ -177,6 +177,10 @@ namespace STROOP.Controls
             setAllAngleHexItem.DropDownItems.Add(setAllAngleHexHexItem);
             setAllAngleHexItem.DropDownItems.Add(setAllAngleHexDecimalItem);
 
+            ToolStripMenuItem doToAllVariablesItem = new ToolStripMenuItem("Do to all variables...");
+            WatchVariableSelectionUtilities.CreateSelectionToolStripItems(() => GetCurrentVariableControls())
+                .ForEach(item => doToAllVariablesItem.DropDownItems.Add(item));
+
             ToolStripMenuItem filterVariablesItem = new ToolStripMenuItem("Filter Variables...");
             _filteringDropDownItems = _allGroups.ConvertAll(varGroup => CreateFilterItem(varGroup));
             UpdateFilterItemCheckedStatuses();
@@ -195,6 +199,7 @@ namespace STROOP.Controls
             ContextMenuStrip.Items.Add(setAllAngleSignedItem);
             ContextMenuStrip.Items.Add(setAllAngleUnitsItem);
             ContextMenuStrip.Items.Add(setAllAngleHexItem);
+            ContextMenuStrip.Items.Add(doToAllVariablesItem);
             ContextMenuStrip.Items.Add(filterVariablesItem);
         }
 
