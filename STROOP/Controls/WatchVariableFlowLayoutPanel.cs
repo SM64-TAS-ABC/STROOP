@@ -73,12 +73,6 @@ namespace STROOP.Controls
             ToolStripMenuItem clearAllButHighlightedItem = new ToolStripMenuItem("Clear All But Highlighted");
             clearAllButHighlightedItem.Click += (sender, e) => ClearAllButHighlightedVariables();
 
-            ToolStripMenuItem addAllToCustomTabItem = new ToolStripMenuItem("Add All to Custom Tab");
-            addAllToCustomTabItem.Click += (sender, e) => AddAllVariablesToCustomTab();
-
-            ToolStripMenuItem enableCustomizationItem = new ToolStripMenuItem("Enable Customization");
-            enableCustomizationItem.Click += (sender, e) => EnableCustomVariableFunctionality();
-
             ToolStripMenuItem showVariableXmlItem = new ToolStripMenuItem("Show Variable XML");
             showVariableXmlItem.Click += (sender, e) => ShowVariableXml();
 
@@ -97,86 +91,6 @@ namespace STROOP.Controls
                     () => ClearVariables(),
                 });
 
-            ToolStripMenuItem setAllRoundingLimitsItem = new ToolStripMenuItem("Set all rounding limits...");
-            ToolStripMenuItem setAllRoundingLimitsDefaultItem = new ToolStripMenuItem("Default");
-            setAllRoundingLimitsDefaultItem.Click += (sender, e) =>
-                ApplySettings(new WatchVariableControlSettings(
-                    changeRoundingLimit: true, changeRoundingLimitToDefault: true));
-            ToolStripMenuItem setAllRoundingLimitsNoRoundingItem = new ToolStripMenuItem("No Rounding");
-            setAllRoundingLimitsNoRoundingItem.Click += (sender, e) =>
-                ApplySettings(new WatchVariableControlSettings(
-                    changeRoundingLimit: true, newRoundingLimit: -1));
-            List<ToolStripMenuItem> setAllRoundingLimitsNumberItems = new List<ToolStripMenuItem>();
-            for (int i = 0; i <= 10; i++)
-            {
-                int index = i;
-                setAllRoundingLimitsNumberItems.Add(new ToolStripMenuItem(index + " decimal place(s)"));
-                setAllRoundingLimitsNumberItems[index].Click += (sender, e) =>
-                    ApplySettings(new WatchVariableControlSettings(
-                        changeRoundingLimit: true, newRoundingLimit: index));
-            }
-            setAllRoundingLimitsItem.DropDownItems.Add(setAllRoundingLimitsDefaultItem);
-            setAllRoundingLimitsItem.DropDownItems.Add(setAllRoundingLimitsNoRoundingItem);
-            setAllRoundingLimitsNumberItems.ForEach(setAllRoundingLimitsNumberItem =>
-            {
-                setAllRoundingLimitsItem.DropDownItems.Add(setAllRoundingLimitsNumberItem);
-            });
-
-            ToolStripMenuItem setAllAngleSignedItem = new ToolStripMenuItem("Set all angle signed...");
-            ToolStripMenuItem setAllAngleSignedDefaultItem = new ToolStripMenuItem("Default");
-            setAllAngleSignedDefaultItem.Click += (sender, e) =>
-                ApplySettings(new WatchVariableControlSettings(
-                    changeAngleSigned: true, changeAngleSignedToDefault: true));
-            ToolStripMenuItem setAllAngleSignedUnsignedItem = new ToolStripMenuItem("Unsigned");
-            setAllAngleSignedUnsignedItem.Click += (sender, e) =>
-                ApplySettings(new WatchVariableControlSettings(
-                    changeAngleSigned: true, newAngleSigned: false));
-            ToolStripMenuItem setAllAngleSignedSignedItem = new ToolStripMenuItem("Signed");
-            setAllAngleSignedSignedItem.Click += (sender, e) =>
-                ApplySettings(new WatchVariableControlSettings(
-                    changeAngleSigned: true, newAngleSigned: true));
-            setAllAngleSignedItem.DropDownItems.Add(setAllAngleSignedDefaultItem);
-            setAllAngleSignedItem.DropDownItems.Add(setAllAngleSignedUnsignedItem);
-            setAllAngleSignedItem.DropDownItems.Add(setAllAngleSignedSignedItem);
-
-            ToolStripMenuItem setAllAngleUnitsItem = new ToolStripMenuItem("Set all angle units...");
-            ToolStripMenuItem setAllAngleUnitsDefaultItem = new ToolStripMenuItem("Default");
-            setAllAngleUnitsDefaultItem.Click += (sender, e) =>
-                ApplySettings(new WatchVariableControlSettings(
-                    changeAngleUnits: true, changeAngleUnitsToDefault: true));
-            List<ToolStripMenuItem> setAllAngleUnitsValuesItems = new List<ToolStripMenuItem>();
-            foreach (AngleUnitType angleUnitType in Enum.GetValues(typeof(AngleUnitType)))
-            {
-                AngleUnitType angleUnitTypeFixed = angleUnitType;
-                ToolStripMenuItem setAllAngleUnitsValuesItem = new ToolStripMenuItem(angleUnitTypeFixed.ToString());
-                setAllAngleUnitsValuesItem.Click += (sender, e) =>
-                    ApplySettings(new WatchVariableControlSettings(
-                        changeAngleUnits: true, newAngleUnits: angleUnitTypeFixed));
-                setAllAngleUnitsValuesItems.Add(setAllAngleUnitsValuesItem);
-            }
-            setAllAngleUnitsItem.DropDownItems.Add(setAllAngleUnitsDefaultItem);
-            setAllAngleUnitsValuesItems.ForEach(setAllAngleUnitsValuesItem =>
-            {
-                setAllAngleUnitsItem.DropDownItems.Add(setAllAngleUnitsValuesItem);
-            });
-
-            ToolStripMenuItem setAllAngleHexItem = new ToolStripMenuItem("Set all angle hex...");
-            ToolStripMenuItem setAllAngleHexDefaultItem = new ToolStripMenuItem("Default");
-            setAllAngleHexDefaultItem.Click += (sender, e) =>
-                ApplySettings(new WatchVariableControlSettings(
-                    changeAngleDisplayAsHex: true, changeAngleDisplayAsHexToDefault: true));
-            ToolStripMenuItem setAllAngleHexHexItem = new ToolStripMenuItem("Hex");
-            setAllAngleHexHexItem.Click += (sender, e) =>
-                ApplySettings(new WatchVariableControlSettings(
-                    changeAngleDisplayAsHex: true, newAngleDisplayAsHex: true));
-            ToolStripMenuItem setAllAngleHexDecimalItem = new ToolStripMenuItem("Decimal");
-            setAllAngleHexDecimalItem.Click += (sender, e) =>
-                ApplySettings(new WatchVariableControlSettings(
-                    changeAngleDisplayAsHex: true, newAngleDisplayAsHex: false));
-            setAllAngleHexItem.DropDownItems.Add(setAllAngleHexDefaultItem);
-            setAllAngleHexItem.DropDownItems.Add(setAllAngleHexHexItem);
-            setAllAngleHexItem.DropDownItems.Add(setAllAngleHexDecimalItem);
-
             ToolStripMenuItem doToAllVariablesItem = new ToolStripMenuItem("Do to all variables...");
             WatchVariableSelectionUtilities.CreateSelectionToolStripItems(() => GetCurrentVariableControls())
                 .ForEach(item => doToAllVariablesItem.DropDownItems.Add(item));
@@ -190,15 +104,9 @@ namespace STROOP.Controls
 
             ContextMenuStrip.Items.Add(resetVariablesItem);
             ContextMenuStrip.Items.Add(clearAllButHighlightedItem);
-            ContextMenuStrip.Items.Add(addAllToCustomTabItem);
-            ContextMenuStrip.Items.Add(enableCustomizationItem);
             ContextMenuStrip.Items.Add(showVariableXmlItem);
             ContextMenuStrip.Items.Add(showVariableInfoItem);
             ContextMenuStrip.Items.Add(openSaveClearItem);
-            ContextMenuStrip.Items.Add(setAllRoundingLimitsItem);
-            ContextMenuStrip.Items.Add(setAllAngleSignedItem);
-            ContextMenuStrip.Items.Add(setAllAngleUnitsItem);
-            ContextMenuStrip.Items.Add(setAllAngleHexItem);
             ContextMenuStrip.Items.Add(doToAllVariablesItem);
             ContextMenuStrip.Items.Add(filterVariablesItem);
         }
