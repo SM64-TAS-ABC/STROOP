@@ -31,6 +31,10 @@ namespace STROOP.Controls
         public readonly bool ChangeRoundingLimitToDefault;
         public readonly int NewRoundingLimit;
 
+        public readonly bool ChangeDisplayAsHex;
+        public readonly bool ChangeDisplayAsHexToDefault;
+        public readonly bool NewDisplayAsHex;
+
         public readonly bool ChangeAngleSigned;
         public readonly bool ChangeAngleSignedToDefault;
         public readonly bool NewAngleSigned;
@@ -58,6 +62,10 @@ namespace STROOP.Controls
             bool changeRoundingLimitToDefault = false,
             int newRoundingLimit = 0,
 
+            bool changeDisplayAsHex = false,
+            bool changeDisplayAsHexToDefault = false,
+            bool newDisplayAsHex = false,
+
             bool changeAngleSigned = false,
             bool changeAngleSignedToDefault = false,
             bool newAngleSigned = false,
@@ -83,6 +91,10 @@ namespace STROOP.Controls
             ChangeRoundingLimit = changeRoundingLimit;
             ChangeRoundingLimitToDefault = changeRoundingLimitToDefault;
             NewRoundingLimit = newRoundingLimit;
+
+            ChangeDisplayAsHex = changeDisplayAsHex;
+            ChangeDisplayAsHexToDefault = changeDisplayAsHexToDefault;
+            NewDisplayAsHex = newDisplayAsHex;
 
             ChangeAngleSigned = changeAngleSigned;
             ChangeAngleSignedToDefault = changeAngleSignedToDefault;

@@ -15,6 +15,9 @@ namespace STROOP.Structs
 
         public static ContextMenuStrip CreateSelectionContextMenuStrip(WatchVariableFlowLayoutPanel panel)
         {
+            Action<WatchVariableControlSettings> apply =
+                (WatchVariableControlSettings settings) => panel.ApplySettingsToSelected(settings);
+
             ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
 
             ToolStripMenuItem itemHighlight = new ToolStripMenuItem("Highlight...");
@@ -23,8 +26,8 @@ namespace STROOP.Structs
                 new List<string>() { "Set Highlighted", "Set Not Highlighted" },
                 new List<Action>()
                 {
-                    () => panel.ApplySettingsToSelected(new WatchVariableControlSettings(changeHighlighted: true, newHighlighted: true)),
-                    () => panel.ApplySettingsToSelected(new WatchVariableControlSettings(changeHighlighted: true, newHighlighted: false)),
+                    () => apply(new WatchVariableControlSettings(changeHighlighted: true, newHighlighted: true)),
+                    () => apply(new WatchVariableControlSettings(changeHighlighted: true, newHighlighted: false)),
                 });
 
             ToolStripMenuItem itemLock = new ToolStripMenuItem("Lock...");
@@ -33,8 +36,8 @@ namespace STROOP.Structs
                 new List<string>() { "Set Locked", "Set Not Locked" },
                 new List<Action>()
                 {
-                    () => panel.ApplySettingsToSelected(new WatchVariableControlSettings(changeLocked: true, newLocked: true)),
-                    () => panel.ApplySettingsToSelected(new WatchVariableControlSettings(changeLocked: true, newLocked: false)),
+                    () => apply(new WatchVariableControlSettings(changeLocked: true, newLocked: true)),
+                    () => apply(new WatchVariableControlSettings(changeLocked: true, newLocked: false)),
                 });
 
             ToolStripMenuItem itemCopy = new ToolStripMenuItem("Copy");
@@ -43,11 +46,11 @@ namespace STROOP.Structs
             ToolStripMenuItem itemRoundTo = new ToolStripMenuItem("Round to...");
             ToolStripMenuItem itemRoundToDefault = new ToolStripMenuItem("Default");
             itemRoundToDefault.Click += (sender, e) =>
-                panel.ApplySettingsToSelected(new WatchVariableControlSettings(
+                apply(new WatchVariableControlSettings(
                     changeRoundingLimit: true, changeRoundingLimitToDefault: true));
             ToolStripMenuItem itemRoundToNoRounding = new ToolStripMenuItem("No Rounding");
             itemRoundToNoRounding.Click += (sender, e) =>
-                panel.ApplySettingsToSelected(new WatchVariableControlSettings(
+                apply(new WatchVariableControlSettings(
                     changeRoundingLimit: true, newRoundingLimit: -1));
             List<ToolStripMenuItem> itemsRoundToNumDecimalPlaces = new List<ToolStripMenuItem>();
             for (int i = 0; i <= 10; i++)
@@ -55,7 +58,7 @@ namespace STROOP.Structs
                 int index = i;
                 itemsRoundToNumDecimalPlaces.Add(new ToolStripMenuItem(index + " decimal place(s)"));
                 itemsRoundToNumDecimalPlaces[index].Click += (sender, e) =>
-                    panel.ApplySettingsToSelected(new WatchVariableControlSettings(
+                    apply(new WatchVariableControlSettings(
                         changeRoundingLimit: true, newRoundingLimit: index));
             }
             itemRoundTo.DropDownItems.Add(itemRoundToDefault);
@@ -66,6 +69,15 @@ namespace STROOP.Structs
             });
 
             ToolStripMenuItem itemDisplayAsHex = new ToolStripMenuItem("Display as Hex...");
+            ControlUtilities.AddDropDownItems(
+                itemDisplayAsHex,
+                new List<string>() { "Default", "Hex", "Not Hex" },
+                new List<Action>()
+                {
+                    () => apply(new WatchVariableControlSettings(changeDisplayAsHex: true, changeDisplayAsHexToDefault: true)),
+                    () => apply(new WatchVariableControlSettings(changeDisplayAsHex: true, newDisplayAsHex: true)),
+                    () => apply(new WatchVariableControlSettings(changeDisplayAsHex: true, newDisplayAsHex: false)),
+                });
 
             ToolStripMenuItem itemAngleSigned = new ToolStripMenuItem("Angle: Signed...");
             ToolStripMenuItem itemAngleUnits = new ToolStripMenuItem("Angle: Units...");

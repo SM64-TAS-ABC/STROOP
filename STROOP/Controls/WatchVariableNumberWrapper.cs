@@ -200,6 +200,13 @@ namespace STROOP.Controls
                 else
                     _setRoundingLimit(settings.NewRoundingLimit);
             }
+            if (settings.ChangeDisplayAsHex)
+            {
+                if (settings.ChangeDisplayAsHexToDefault)
+                    _setDisplayAsHex(_defaultDisplayAsHex);
+                else
+                    _setDisplayAsHex(settings.NewDisplayAsHex);
+            }
         }
 
         public override void ToggleDisplayAsHex(bool? displayAsHexNullable = null)
