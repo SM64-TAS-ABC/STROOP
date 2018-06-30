@@ -340,7 +340,7 @@ namespace STROOP.Controls
                 FileType.StroopVariables, "VarData", GetCurrentVarXmlElements(), fileName);
         }
 
-        public void EnableCustomVariableFunctionality()
+        public void EnableCustomization()
         {
             _watchVarControls.ForEach(control => control.EnableCustomization());
         }

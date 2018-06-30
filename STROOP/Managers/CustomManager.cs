@@ -33,7 +33,7 @@ namespace STROOP.Managers
         public CustomManager(string varFilePath, Control customControl, WatchVariableFlowLayoutPanel variableTable)
             : base(varFilePath, variableTable)
         {
-            EnableCustomVariableFunctionality();
+            EnableCustomization();
 
             SplitContainer splitContainerCustom = customControl.Controls["splitContainerCustom"] as SplitContainer;
             SplitContainer splitContainerCustomControls = splitContainerCustom.Panel1.Controls["splitContainerCustomControls"] as SplitContainer;
