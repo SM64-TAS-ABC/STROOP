@@ -70,5 +70,16 @@ namespace STROOP.Map2
             Z3 = tri.Z3;
             Y = (tri.Y1 + tri.Y2 + tri.Y3) / 3f;
         }
+
+        public void Update(TriangleShape tri)
+        {
+            X1 = (float)tri.X1;
+            Z1 = (float)tri.Z1;
+            X2 = (float)tri.X2;
+            Z2 = (float)tri.Z2;
+            X3 = (float)tri.X3;
+            Z3 = (float)tri.Z3;
+            Y = (float)(tri.Y1 + tri.Y2 + tri.Y3) / 3f;
+        }
     }
 }

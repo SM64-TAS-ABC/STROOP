@@ -45,6 +45,13 @@ namespace STROOP.Utilities
             return (magnitude * xComponent, magnitude * zComponent);
         }
 
+        public static (double xDist, double zDist) AddVectorToPoint(
+            double magnitude, double angle, double x1, double z1)
+        {
+            (double xDist, double zDist) = GetComponentsFromVector(magnitude, angle);
+            return (x1 + xDist, z1 + zDist);
+        }
+
         public static (double sidewaysDist, double forwardsDist) GetComponentsFromVectorRelatively(
             double magnitude, double vectorAngle, double baseAngle)
         {

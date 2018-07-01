@@ -31,6 +31,10 @@ namespace STROOP.Managers
         Map2Object _cameraMapObj;
         TriangleMap2Object _floorTriangleMapObj;
         TriangleMap2Object _ceilingTriangleMapObj;
+
+        List<TriangleMap2Object> _cogFloorTris;
+        List<TriangleMap2Object> _cogWallTris;
+
         List<Map2Object> _mapObjects = new List<Map2Object>();
         public Dictionary<uint, Map2Object> _mapObjectDictionary = new Dictionary<uint, Map2Object>();
         Map2Gui _mapGui;
@@ -105,8 +109,6 @@ namespace STROOP.Managers
             }
         }
 
-        List<TriangleMap2Object> _cogFloorTris;
-
         public Map2Manager(MapAssociations mapAssoc, Map2Gui mapGui)
         {
             MapAssoc = mapAssoc;
@@ -129,6 +131,12 @@ namespace STROOP.Managers
             {
                 _cogFloorTris.Add(new TriangleMap2Object(Color.FromArgb(200, Color.Cyan), 3));
             }
+
+            _cogWallTris = new List<TriangleMap2Object>();
+            for (int i = 0; i < 12; i++)
+            {
+                _cogWallTris.Add(new TriangleMap2Object(Color.FromArgb(200, Color.Green), 3));
+            }
         }
 
         public void Load()
@@ -149,7 +157,9 @@ namespace STROOP.Managers
             _mapGraphics.AddMapObject(_cameraMapObj);
             _mapGraphics.AddMapObject(_floorTriangleMapObj);
             _mapGraphics.AddMapObject(_ceilingTriangleMapObj);
+
             _cogFloorTris.ForEach(tri => _mapGraphics.AddMapObject(tri));
+            _cogWallTris.ForEach(tri => _mapGraphics.AddMapObject(tri));
 
             //----- Register events ------
             // Set image
@@ -287,6 +297,22 @@ namespace STROOP.Managers
                 else
                 {
                     _cogFloorTris[i].Show = false;
+                }
+            }
+
+            List<TriangleShape> cogWallTris = TriangleUtilities.GetWallTriangleHitboxComponents(
+                TriangleUtilities.GetObjectTrianglesForObject(0x80341E28)
+                    .FindAll(tri => tri.Classification == TriangleClassification.Wall));
+            for (int i = 0; i < _cogWallTris.Count; i++)
+            {
+                if (i < cogWallTris.Count)
+                {
+                    _cogWallTris[i].Update(cogWallTris[i]);
+                    _cogWallTris[i].Show = true;
+                }
+                else
+                {
+                    _cogWallTris[i].Show = false;
                 }
             }
 
@@ -429,6 +455,14 @@ namespace STROOP.Managers
                 cogFloorTri.P2OnControl = CalculateLocationOnControl(new PointF(cogFloorTri.RelX2, cogFloorTri.RelZ2), mapView);
                 cogFloorTri.P3OnControl = CalculateLocationOnControl(new PointF(cogFloorTri.RelX3, cogFloorTri.RelZ3), mapView);
                 cogFloorTri.Draw = cogFloorTri.Show;
+            }
+
+            foreach (TriangleMap2Object cogWallTri in _cogWallTris)
+            {
+                cogWallTri.P1OnControl = CalculateLocationOnControl(new PointF(cogWallTri.RelX1, cogWallTri.RelZ1), mapView);
+                cogWallTri.P2OnControl = CalculateLocationOnControl(new PointF(cogWallTri.RelX2, cogWallTri.RelZ2), mapView);
+                cogWallTri.P3OnControl = CalculateLocationOnControl(new PointF(cogWallTri.RelX3, cogWallTri.RelZ3), mapView);
+                cogWallTri.Draw = cogWallTri.Show;
             }
 
             // Calculate object slot's cooridnates

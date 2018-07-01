@@ -114,9 +114,68 @@ namespace STROOP.Utilities
             return TriangleClassification.Wall;
         }
 
-        public static List<TriangleShape> GetWallTriangleHitboxComponents(TriangleDataModel wallTriangle)
+        public static List<TriangleShape> GetWallTriangleHitboxComponents(List<TriangleDataModel> wallTriangles)
         {
-            return null;
+            List<((short, short), (short, short))> vertexPairs = new List<((short, short), (short, short))>();
+            foreach (TriangleDataModel wallTriangle in wallTriangles)
+            {
+                List<(short, short)> vertices = new List<(short, short)>()
+                {
+                    (wallTriangle.X1, wallTriangle.Z1),
+                    (wallTriangle.X2, wallTriangle.Z2),
+                    (wallTriangle.X3, wallTriangle.Z3),
+                };
+
+                for (int i = 0; i < vertices.Count; i++)
+                {
+                    (short x1, short z1) = vertices[i];
+                    (short x2, short z2) = vertices[(i + 1) % vertices.Count];
+                    vertexPairs.Add(((x1, z1), (x2, z2)));
+                }
+            }
+
+            List<int> badVertexPairIndexes = new List<int>();
+            for (int i = 0; i < vertexPairs.Count; i++)
+            {
+                ((short x1, short z1), (short x2, short z2)) = vertexPairs[i];
+                if (x1 == x2 && z1 == z2) badVertexPairIndexes.Add(i);
+            }
+            for (int i = 0; i < vertexPairs.Count; i++)
+            {
+                for (int j = i + 1; j < vertexPairs.Count; j++)
+                {
+                    var vertexPair1 = vertexPairs[i];
+                    var vertexPair2 = vertexPairs[j];
+                    ((short vp1x1, short vp1z1), (short vp1x2, short vp1z2)) = vertexPair1;
+                    ((short vp2x1, short vp2z1), (short vp2x2, short vp2z2)) = vertexPair2;
+                    if ((vp1x1 == vp2x1 && vp1z1 == vp2z1 && vp1x2 == vp2x2 && vp1z2 == vp2z2) ||
+                        (vp1x1 == vp2x2 && vp1z1 == vp2z2 && vp1x2 == vp2x1 && vp1z2 == vp2z1))
+                    {
+                        badVertexPairIndexes.Add(j);
+                    }
+                }
+            }
+
+            badVertexPairIndexes = badVertexPairIndexes.Distinct().ToList();
+            badVertexPairIndexes.Sort();
+            badVertexPairIndexes.Reverse();
+            badVertexPairIndexes.ForEach(index => vertexPairs.RemoveAt(index));
+
+            List<TriangleShape> triShapes = new List<TriangleShape>();
+            foreach (var ((x1,z1),(x2,z2)) in vertexPairs)
+            {
+                double angle = MoreMath.AngleTo_AngleUnits(x1, z1, x2, z2);
+                double anglePerp = MoreMath.RotateAngleCCW(angle, 16384);
+                (double p1X, double p1Z) = MoreMath.AddVectorToPoint(50, anglePerp, x1, z1);
+                (double p2X, double p2Z) = MoreMath.AddVectorToPoint(-50, anglePerp, x1, z1);
+                (double p3X, double p3Z) = MoreMath.AddVectorToPoint(50, anglePerp, x2, z2);
+                (double p4X, double p4Z) = MoreMath.AddVectorToPoint(-50, anglePerp, x2, z2);
+                TriangleShape triShape1 = new TriangleShape(p1X, 0, p1Z, p2X, 0, p2Z, p3X, 0, p3Z);
+                TriangleShape triShape2 = new TriangleShape(p2X, 0, p2Z, p3X, 0, p3Z, p4X, 0, p4Z);
+                triShapes.Add(triShape1);
+                triShapes.Add(triShape2);
+            }
+            return triShapes;
         }
     }
 } 
