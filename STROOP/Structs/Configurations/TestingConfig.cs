@@ -9,5 +9,6 @@ namespace STROOP.Structs.Configurations
     public static class TestingConfig
     {
         public static bool ShowInvisibleObjectsAsSigns = false;
+        public static bool ShowCogTris = false;
     }
 }

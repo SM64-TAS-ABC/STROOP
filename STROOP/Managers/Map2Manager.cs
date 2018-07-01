@@ -477,7 +477,7 @@ namespace STROOP.Managers
                 cogFloorTri.P1OnControl = CalculateLocationOnControl(new PointF(cogFloorTri.RelX1, cogFloorTri.RelZ1), mapView);
                 cogFloorTri.P2OnControl = CalculateLocationOnControl(new PointF(cogFloorTri.RelX2, cogFloorTri.RelZ2), mapView);
                 cogFloorTri.P3OnControl = CalculateLocationOnControl(new PointF(cogFloorTri.RelX3, cogFloorTri.RelZ3), mapView);
-                cogFloorTri.Draw = cogFloorTri.Show;
+                cogFloorTri.Draw = cogFloorTri.Show && TestingConfig.ShowCogTris;
             }
 
             foreach (TriangleMap2Object cogFloorTri in _cog2FloorTris)
@@ -485,7 +485,7 @@ namespace STROOP.Managers
                 cogFloorTri.P1OnControl = CalculateLocationOnControl(new PointF(cogFloorTri.RelX1, cogFloorTri.RelZ1), mapView);
                 cogFloorTri.P2OnControl = CalculateLocationOnControl(new PointF(cogFloorTri.RelX2, cogFloorTri.RelZ2), mapView);
                 cogFloorTri.P3OnControl = CalculateLocationOnControl(new PointF(cogFloorTri.RelX3, cogFloorTri.RelZ3), mapView);
-                cogFloorTri.Draw = cogFloorTri.Show;
+                cogFloorTri.Draw = cogFloorTri.Show && TestingConfig.ShowCogTris;
             }
 
             foreach (TriangleMap2Object cogWallTri in _cogWallTris)
@@ -493,7 +493,7 @@ namespace STROOP.Managers
                 cogWallTri.P1OnControl = CalculateLocationOnControl(new PointF(cogWallTri.RelX1, cogWallTri.RelZ1), mapView);
                 cogWallTri.P2OnControl = CalculateLocationOnControl(new PointF(cogWallTri.RelX2, cogWallTri.RelZ2), mapView);
                 cogWallTri.P3OnControl = CalculateLocationOnControl(new PointF(cogWallTri.RelX3, cogWallTri.RelZ3), mapView);
-                cogWallTri.Draw = cogWallTri.Show;
+                cogWallTri.Draw = cogWallTri.Show && TestingConfig.ShowCogTris;
             }
 
             // Calculate object slot's cooridnates
