@@ -425,7 +425,8 @@ namespace STROOP.Managers
             var marioCoord = new PointF(_marioMapObj.RelX, _marioMapObj.RelZ);
 
             // Filter out all maps that are lower than Mario
-            var mapListYFiltered = _currentMapList.Where((map) => map.Y <= _marioMapObj.RelY).ToList();
+            float marioY = _artificialMarioY ?? _marioMapObj.RelY;
+            var mapListYFiltered = _currentMapList.Where((map) => map.Y <= marioY).ToList();
 
             // If no map is available display the default image
             if (mapListYFiltered.Count <= 0)
