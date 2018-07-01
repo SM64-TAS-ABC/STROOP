@@ -33,6 +33,7 @@ namespace STROOP.Managers
         TriangleMap2Object _ceilingTriangleMapObj;
 
         List<TriangleMap2Object> _cogFloorTris;
+        List<TriangleMap2Object> _cog2FloorTris;
         List<TriangleMap2Object> _cogWallTris;
 
         List<Map2Object> _mapObjects = new List<Map2Object>();
@@ -132,6 +133,12 @@ namespace STROOP.Managers
                 _cogFloorTris.Add(new TriangleMap2Object(Color.FromArgb(200, Color.Cyan), 3));
             }
 
+            _cog2FloorTris = new List<TriangleMap2Object>();
+            for (int i = 0; i < 4; i++)
+            {
+                _cog2FloorTris.Add(new TriangleMap2Object(Color.FromArgb(200, Color.Magenta), 3));
+            }
+
             _cogWallTris = new List<TriangleMap2Object>();
             for (int i = 0; i < 12; i++)
             {
@@ -159,6 +166,7 @@ namespace STROOP.Managers
             _mapGraphics.AddMapObject(_ceilingTriangleMapObj);
 
             _cogFloorTris.ForEach(tri => _mapGraphics.AddMapObject(tri));
+            _cog2FloorTris.ForEach(tri => _mapGraphics.AddMapObject(tri));
             _cogWallTris.ForEach(tri => _mapGraphics.AddMapObject(tri));
 
             //----- Register events ------
@@ -297,6 +305,21 @@ namespace STROOP.Managers
                 else
                 {
                     _cogFloorTris[i].Show = false;
+                }
+            }
+
+            List<TriangleDataModel> cog2FloorTris = TriangleUtilities.GetObjectTrianglesForObject(0x80342088)
+                .FindAll(tri => tri.Classification == TriangleClassification.Floor);
+            for (int i = 0; i < _cog2FloorTris.Count; i++)
+            {
+                if (i < cog2FloorTris.Count)
+                {
+                    _cog2FloorTris[i].Update(cog2FloorTris[i]);
+                    _cog2FloorTris[i].Show = true;
+                }
+                else
+                {
+                    _cog2FloorTris[i].Show = false;
                 }
             }
 
@@ -450,6 +473,14 @@ namespace STROOP.Managers
             _ceilingTriangleMapObj.Draw = _ceilingTriangleMapObj.Show & _mapGui.MapShowCeilingTriangle.Checked;
 
             foreach (TriangleMap2Object cogFloorTri in _cogFloorTris)
+            {
+                cogFloorTri.P1OnControl = CalculateLocationOnControl(new PointF(cogFloorTri.RelX1, cogFloorTri.RelZ1), mapView);
+                cogFloorTri.P2OnControl = CalculateLocationOnControl(new PointF(cogFloorTri.RelX2, cogFloorTri.RelZ2), mapView);
+                cogFloorTri.P3OnControl = CalculateLocationOnControl(new PointF(cogFloorTri.RelX3, cogFloorTri.RelZ3), mapView);
+                cogFloorTri.Draw = cogFloorTri.Show;
+            }
+
+            foreach (TriangleMap2Object cogFloorTri in _cog2FloorTris)
             {
                 cogFloorTri.P1OnControl = CalculateLocationOnControl(new PointF(cogFloorTri.RelX1, cogFloorTri.RelZ1), mapView);
                 cogFloorTri.P2OnControl = CalculateLocationOnControl(new PointF(cogFloorTri.RelX2, cogFloorTri.RelZ2), mapView);
