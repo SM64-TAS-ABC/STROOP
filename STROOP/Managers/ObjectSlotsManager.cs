@@ -34,7 +34,7 @@ namespace STROOP.Managers
 
         ObjectSlotManagerGui _gui;
 
-        Dictionary<ObjectDataModel, Tuple<int?, int?>> _lockedSlotIndices = new Dictionary<ObjectDataModel, Tuple<int?, int?>>();
+        Dictionary<uint, Tuple<int?, int?>> _lockedSlotIndices = new Dictionary<uint, Tuple<int?, int?>>();
         public bool LabelsLocked = false;
 
         public List<uint> SelectedSlotsAddresses = new List<uint>();
@@ -316,7 +316,7 @@ namespace STROOP.Managers
             {
                 _lockedSlotIndices.Clear();
                 foreach (ObjectDataModel obj in DataModels.Objects.Where(o => o != null))
-                    _lockedSlotIndices[obj] = new Tuple<int?, int?>(obj.ProcessIndex, obj.VacantSlotIndex);
+                    _lockedSlotIndices[obj.Address] = new Tuple<int?, int?>(obj.ProcessIndex, obj.VacantSlotIndex);
             }
             _slotLabels.Clear();
             foreach (ObjectDataModel obj in sortedObjects.Where(o => o != null))
@@ -404,11 +404,11 @@ namespace STROOP.Managers
                         / ObjectConfig.StructSize + (SavedSettingsConfig.StartSlotIndexsFromOne ? 1 : 0));
 
                 case SlotLabelType.SlotPos:
-                    return String.Format("{0}", _lockedSlotIndices[obj].Item1
+                    return String.Format("{0}", _lockedSlotIndices[obj.Address].Item1
                         + (SavedSettingsConfig.StartSlotIndexsFromOne ? 1 : 0));
 
                 case SlotLabelType.SlotPosVs:
-                    var vacantSlotIndex = _lockedSlotIndices[obj].Item2;
+                    var vacantSlotIndex = _lockedSlotIndices[obj.Address].Item2;
                     if (!vacantSlotIndex.HasValue)
                         goto case SlotLabelType.SlotPos;
 
