@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using STROOP.Structs;
+using STROOP.Models;
 using STROOP.Utilities;
 using System.Windows.Forms;
 using System.Drawing;
