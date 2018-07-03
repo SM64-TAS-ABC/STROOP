@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace STROOP.Structs
+namespace STROOP.Models
 {
     public class TriangleShape
     {

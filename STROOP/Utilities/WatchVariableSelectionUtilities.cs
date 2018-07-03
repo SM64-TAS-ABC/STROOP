@@ -180,6 +180,34 @@ namespace STROOP.Structs
                     () => apply(new WatchVariableControlSettings(changeAngleDisplayAsHex: true, newAngleDisplayAsHex: false)),
                 });
 
+            ToolStripMenuItem itemShowVariableXml = new ToolStripMenuItem("Show Variable XML");
+            itemShowVariableXml.Click += (sender, e) =>
+            {
+                InfoForm infoForm = new InfoForm();
+                infoForm.SetText(
+                    "Variable Info",
+                    "Variable XML",
+                    String.Join("\r\n", getVars().ConvertAll(control => control.ToXml(true))));
+                infoForm.Show();
+            };
+
+            ToolStripMenuItem itemShowVariableInfo = new ToolStripMenuItem("Show Variable Info");
+            itemShowVariableInfo.Click += (sender, e) =>
+            {
+                InfoForm infoForm = new InfoForm();
+                infoForm.SetText(
+                    "Variable Info",
+                    "Variable Info",
+                    String.Join("\t",
+                        WatchVariableWrapper.GetVarInfoLabels()) +
+                        "\r\n" +
+                        String.Join(
+                            "\r\n",
+                            getVars().ConvertAll(control => control.GetVarInfo())
+                                .ConvertAll(infoList => String.Join("\t", infoList))));
+                infoForm.Show();
+            };
+
             ToolStripMenuItem itemMove = new ToolStripMenuItem("Move...");
             ControlUtilities.AddDropDownItems(
                 itemMove,
@@ -209,6 +237,9 @@ namespace STROOP.Structs
                 varController.Show();
             };
 
+            ToolStripMenuItem itemAddToTab = new ToolStripMenuItem("Add to Tab...");
+            itemAddToTab.Click += (sender, e) => SelectionForm.ShowDataManagerSelectionForm(getVars());
+
             ToolStripMenuItem itemAddToCustomTab = new ToolStripMenuItem("Add to Custom Tab");
             itemAddToCustomTab.Click += (sender, e) => WatchVariableControl.AddVarsToTab(getVars(), Config.CustomManager);
 
@@ -228,10 +259,14 @@ namespace STROOP.Structs
                 itemAngleConstrainToOneRevolution,
                 itemAngleDisplayAsHex,
                 new ToolStripSeparator(),
+                itemShowVariableXml,
+                itemShowVariableInfo,
+                new ToolStripSeparator(),
                 itemMove,
                 itemRemove,
                 itemEnableCustomization,
                 itemOpenController,
+                itemAddToTab,
                 itemAddToCustomTab,
             };
         }

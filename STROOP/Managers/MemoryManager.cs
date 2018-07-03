@@ -176,6 +176,21 @@ namespace STROOP.Managers
             _buttonMemoryMoveDownContinuously.MouseUp += (sender, e) => moveDownContinuouslyTimer.Stop();
         }
 
+        public override void AddVariable(WatchVariableControl watchVarControl)
+        {
+            base.AddVariable(watchVarControl);
+            watchVarControl.EnableCustomization(false);
+        }
+
+        public override void AddVariables(List<WatchVariableControl> watchVarControls)
+        {
+            base.AddVariables(watchVarControls);
+            foreach (WatchVariableControl watchVarControl in watchVarControls)
+            {
+                watchVarControl.EnableCustomization(false);
+            }
+        }
+
         private void ScrollMemory(int numLines)
         {
             uint? address = Address;

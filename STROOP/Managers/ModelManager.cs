@@ -11,6 +11,7 @@ using System.Drawing;
 using STROOP.Structs.Configurations;
 using OpenTK;
 using System.Data;
+using STROOP.Models;
 
 namespace STROOP.Managers
 {

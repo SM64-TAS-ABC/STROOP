@@ -318,6 +318,26 @@
       <DependentUpon>MainLoadingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoadingHandler.cs" />
+    <Compile Include="Ttc\TtcSimulation.cs" />
+    <Compile Include="Ttc\TtcRng.cs" />
+    <Compile Include="Ttc\TtcMain.cs" />
+    <Compile Include="Ttc\TtcWheel.cs" />
+    <Compile Include="Ttc\TtcTreadmill.cs" />
+    <Compile Include="Ttc\TtcThwomp.cs" />
+    <Compile Include="Ttc\TtcSpinningTriangle.cs" />
+    <Compile Include="Ttc\TtcSpinner.cs" />
+    <Compile Include="Ttc\TtcRotatingTriangularPrism.cs" />
+    <Compile Include="Ttc\TtcPusher.cs" />
+    <Compile Include="Ttc\TtcRotatingBlock.cs" />
+    <Compile Include="Ttc\TtcPitBlock.cs" />
+    <Compile Include="Ttc\TtcPendulum.cs" />
+    <Compile Include="Ttc\TtcHand.cs" />
+    <Compile Include="Ttc\TtcElevator.cs" />
+    <Compile Include="Ttc\TtcDust.cs" />
+    <Compile Include="Ttc\TtcCog.cs" />
+    <Compile Include="Ttc\TtcBobomb.cs" />
+    <Compile Include="Ttc\TtcAmp.cs" />
+    <Compile Include="Ttc\TtcObject.cs" />
     <Compile Include="M64\M64CopiedFrame.cs" />
     <Compile Include="M64\M64File.cs" />
     <Compile Include="M64\M64InputCell.cs" />

@@ -1,12 +1,14 @@
 ﻿using STROOP.Structs.Configurations;
 using STROOP.Utilities;
+using STROOP.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using STROOP.Structs;
 
-namespace STROOP.Structs
+namespace STROOP.Models
 {
     public class TriangleDataModel
     {

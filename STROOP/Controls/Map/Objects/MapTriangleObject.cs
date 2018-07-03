@@ -2,7 +2,7 @@
 using OpenTK.Graphics;
 using STROOP.Controls.Map.Graphics;
 using STROOP.Controls.Map.Graphics.Items;
-using STROOP.Structs;
+using STROOP.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

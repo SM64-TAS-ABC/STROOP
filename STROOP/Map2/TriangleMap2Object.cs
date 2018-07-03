@@ -1,5 +1,6 @@
 ﻿using OpenTK.Graphics.OpenGL;
 using STROOP.Controls.Map;
+using STROOP.Models;
 using STROOP.Structs;
 using STROOP.Utilities;
 using System;

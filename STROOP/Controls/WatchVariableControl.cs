@@ -367,7 +367,8 @@ namespace STROOP.Controls
             else if (isPKeyHeld)
             {
                 _watchVariablePanel.UnselectAllVariables();
-                SelectionForm.ShowDataManagerSelectionForm(this);
+                SelectionForm.ShowDataManagerSelectionForm(
+                    new List<WatchVariableControl>() { this });
             }
             else if (isFKeyHeld)
             {
@@ -775,10 +776,10 @@ namespace STROOP.Controls
             FlashColor(ADD_TO_VAR_HACK_TAB_COLOR);
         }
 
-        public void EnableCustomization()
+        public void EnableCustomization(bool flashColor = true)
         {
             WatchVarWrapper.EnableCustomization();
-            FlashColor(ENABLE_CUSTOMIZATION_COLOR);
+            if (flashColor) FlashColor(ENABLE_CUSTOMIZATION_COLOR);
         }
 
         public void NotifyPanelOfReodering()
