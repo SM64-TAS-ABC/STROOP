@@ -43,12 +43,12 @@ namespace STROOP.Ttc
             while (frame < endingFrame)
             {
                 frame++;
+                counter++;
                 foreach (TtcObject rngObject in _rngObjects)
                 {
                     rngObject.SetFrame(frame);
                     rngObject.Update();
                 }
-                counter++;
             }
 
             //print frame, RNG, and index
@@ -74,6 +74,33 @@ namespace STROOP.Ttc
                 StringUtilities.WriteLine("frame = " + frame);
                 StringUtilities.WriteLine("");
             }
+        }
+
+        public int? LookForIdealCogConfiguration(int numFrames)
+        {
+            TtcCog upperCog = _rngObjects[31] as TtcCog;
+            TtcCog lowerCog = _rngObjects[32] as TtcCog;
+
+            //iterate through frames to update objects
+            int frame = _startingFrame;
+            int counter = 0;
+            while (frame < _startingFrame + numFrames)
+            {
+                frame++;
+                counter++;
+                foreach (TtcObject rngObject in _rngObjects)
+                {
+                    rngObject.SetFrame(frame);
+                    rngObject.Update();
+                }
+
+                if (upperCog._currentAngularVelocity == 0 && lowerCog._currentAngularVelocity == 0)
+                {
+                    return frame;
+                }
+            }
+
+            return null;
         }
 
         private static List<TtcObject> CreateRngObjects(TtcRng rng, List<int> dustFrames)
