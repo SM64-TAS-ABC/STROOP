@@ -28,14 +28,14 @@ namespace STROOP.Ttc
             _dustFrames = new List<int>();
         }
 
-        public override void update()
+        public override void Update()
         {
             if (_dustFrames.Contains(_currentFrame))
             {
-                pollRNG();
-                pollRNG();
-                pollRNG();
-                pollRNG();
+                PollRNG();
+                PollRNG();
+                PollRNG();
+                PollRNG();
             }
         }
 
@@ -46,12 +46,9 @@ namespace STROOP.Ttc
 
         /** Add an arbitrary number of dust frames.
 	     */
-        public void addDustFrames(params int[] frames)
+        public void AddDustFrames(params int[] frames)
         {
-            foreach (int frame in frames)
-            {
-                _dustFrames.Add(frame);
-            }
+            _dustFrames.AddRange(frames);
         }
 
     }

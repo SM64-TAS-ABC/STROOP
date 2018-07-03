@@ -36,7 +36,7 @@ namespace STROOP.Ttc
             _withinMarioRange = true;
         }
 
-        public override void update()
+        public override void Update()
         {
             //don't update at all if not within mario range
             if (!_withinMarioRange) return;
@@ -47,7 +47,7 @@ namespace STROOP.Ttc
             }
             else
             { //not currently blinking
-                if (pollRNG() <= 655)
+                if (PollRNG() <= 655)
                 {
                     _blinkingTimer++;
                 }
@@ -57,7 +57,7 @@ namespace STROOP.Ttc
         /** Change whether Mario is within the bob-omb's
 	     *  4000 unit radius.
 	     */
-        public void setWithinMarioRange(bool withinMarioRange)
+        public void SetWithinMarioRange(bool withinMarioRange)
         {
             _withinMarioRange = withinMarioRange;
         }

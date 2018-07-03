@@ -32,7 +32,7 @@ namespace STROOP.Ttc
             _waitingTimer = 0;
         }
 
-        public override void update()
+        public override void Update()
         {
 
             if (_waitingTimer > 0)
@@ -55,10 +55,10 @@ namespace STROOP.Ttc
 
                 if (_angularVelocity == 0)
                 { //reached peak of swing
-                    _accelerationMagnitude = (pollRNG() % 3 == 0) ? 42 : 13; // = 13, 42
-                    if (pollRNG() % 2 == 0)
+                    _accelerationMagnitude = (PollRNG() % 3 == 0) ? 42 : 13; // = 13, 42
+                    if (PollRNG() % 2 == 0)
                     { //stop for some time
-                        _waitingTimer = (int)(pollRNG() / 65536.0 * 30 + 5); // = [5,35)
+                        _waitingTimer = (int)(PollRNG() / 65536.0 * 30 + 5); // = [5,35)
                     }
                 }
             }

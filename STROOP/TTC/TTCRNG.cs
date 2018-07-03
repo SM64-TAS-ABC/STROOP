@@ -25,14 +25,14 @@ namespace STROOP.Ttc
 
         /** Get the current RNG (will not update RNG).
          */
-        public ushort getCurrentRNG()
+        public ushort GetRng()
         {
             return RngIndexer.GetRngValue(_index);
         }
 
         /** Get the current index (will not update RNG).
          */
-        public int getCurrentIndex()
+        public int GetIndex()
         {
             return _index;
         }
@@ -41,22 +41,22 @@ namespace STROOP.Ttc
          *  next RNG value and returns that new value,
          *  exactly mimicking the in-game RNG.
          */
-        public ushort pollRNG()
+        public ushort PollRNG()
         {
             _index = (_index + 1) % 65114;
-            return getCurrentRNG();
+            return GetRng();
         }
 
         /** Sets the RNG/index using an inputted index.
          */
-        public void setOrder(int index)
+        public void SetIndex(int index)
         {
             _index = index;
         }
 
         /** Sets the RNG/index using an inputted RNG value.
          */
-        public void setRNG(ushort rngValue)
+        public void SetRng(ushort rngValue)
         {
             _index = RngIndexer.GetRngIndex(rngValue);
         }

@@ -29,7 +29,7 @@ namespace STROOP.Ttc
             _timer = 0;
         }
 
-        public override void update()
+        public override void Update()
         {
             if (_timer < _max + TURNING_TIME)
             { //waiting
@@ -37,7 +37,7 @@ namespace STROOP.Ttc
             }
             else
             { //done waiting
-                _max = (pollRNG() % 7) * 20 + 5; // = 5, 25, 45, 65, 85, 105, 125
+                _max = (PollRNG() % 7) * 20 + 5; // = 5, 25, 45, 65, 85, 105, 125
                 _timer = 0;
                 _timer++;
             }

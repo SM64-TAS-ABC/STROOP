@@ -38,7 +38,7 @@ namespace STROOP.Ttc
             _counter = 0;
         }
 
-        public override void update()
+        public override void Update()
         {
             if (!_isFirstTreadmill)
             { //if not first treadmill, do nothing
@@ -54,17 +54,17 @@ namespace STROOP.Ttc
                 }
                 else
                 { //accelerate/move
-                    _currentSpeed = moveNumberTowards(_currentSpeed, _targetSpeed, 10);
+                    _currentSpeed = MoveNumberTowards(_currentSpeed, _targetSpeed, 10);
                     _counter++;
                 }
             }
             else
             { //slow down
-                _currentSpeed = moveNumberTowards(_currentSpeed, 0, 10);
+                _currentSpeed = MoveNumberTowards(_currentSpeed, 0, 10);
                 if (_currentSpeed == 0)
                 { //came to a stop
-                    _max = (pollRNG() % 7) * 20 + 10; // = 10, 30, 50, 70, 90, 110, 130
-                    _targetSpeed = (pollRNG() <= 32766) ? -50 : 50; // = -50, 50
+                    _max = (PollRNG() % 7) * 20 + 10; // = 10, 30, 50, 70, 90, 110, 130
+                    _targetSpeed = (PollRNG() <= 32766) ? -50 : 50; // = -50, 50
                     _counter = 0;
                 }
                 _counter++;

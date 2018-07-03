@@ -34,7 +34,7 @@ namespace STROOP.Ttc
             _counter = 0;
         }
 
-        public override void update()
+        public override void Update()
         {
             if (_counter <= _max)
             { //don't move
@@ -50,7 +50,7 @@ namespace STROOP.Ttc
                         _verticalSpeed = -9;
                         _state = 1;
                         _counter = 0;
-                        _max = (pollRNG() % 6) * 20 + 10; // = 10, 30, 50, 70, 90, 110
+                        _max = (PollRNG() % 6) * 20 + 10; // = 10, 30, 50, 70, 90, 110
                     }
                     _counter++;
                 }

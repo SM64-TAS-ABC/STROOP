@@ -33,7 +33,7 @@ namespace STROOP.Ttc
             _timer = 0;
         }
 
-        public override void update()
+        public override void Update()
         {
 
             if (_max == 0)
@@ -42,7 +42,7 @@ namespace STROOP.Ttc
                 _displacement = -1 * DISPLACEMENT_MAGNITUDE;
             }
 
-            _angle = this.moveAngleTowards(_angle, _targetAngle, 200);
+            _angle = this.MoveAngleTowards(_angle, _targetAngle, 200);
 
             _directionTimer = Math.Max(0, _directionTimer - 1);
 
@@ -53,23 +53,23 @@ namespace STROOP.Ttc
             else if (_angle == _targetAngle)
             { //done waiting and reached target
                 _targetAngle = _targetAngle + _displacement;
-                _targetAngle = normalize(_targetAngle);
+                _targetAngle = Normalize(_targetAngle);
 
                 if (_directionTimer == 0)
                 { //time to maybe switch directions
-                    if (pollRNG() % 4 == 0)
+                    if (PollRNG() % 4 == 0)
                     { //time to move CCW
                         _displacement = DISPLACEMENT_MAGNITUDE;
-                        _directionTimer = (pollRNG() % 3) * 30 + 30; // = 30, 60, 90
+                        _directionTimer = (PollRNG() % 3) * 30 + 30; // = 30, 60, 90
                     }
                     else
                     { //time to move CW
                         _displacement = -1 * DISPLACEMENT_MAGNITUDE;
-                        _directionTimer = (pollRNG() % 4) * 60 + 90; // = 90, 150, 210, 270
+                        _directionTimer = (PollRNG() % 4) * 60 + 90; // = 90, 150, 210, 270
                     }
                 }
 
-                _max = (pollRNG() % 3) * 20 + 10; // = 10, 30, 50
+                _max = (PollRNG() % 3) * 20 + 10; // = 10, 30, 50
                 _timer = 0;
                 _timer++;
             }

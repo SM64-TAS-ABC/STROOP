@@ -33,7 +33,7 @@ namespace STROOP.Ttc
             _counter = 0;
         }
 
-        public override void update()
+        public override void Update()
         {
 
             if (_counter <= _max)
@@ -45,7 +45,7 @@ namespace STROOP.Ttc
                 else
                 { //spin
                     _angle += _direction * 200;
-                    _angle = normalize(_angle);
+                    _angle = Normalize(_angle);
                     _counter++;
                 }
             }
@@ -53,11 +53,11 @@ namespace STROOP.Ttc
             { //start a new spin
               //do a CCW spin
                 _angle += 200;
-                _angle = normalize(_angle);
+                _angle = Normalize(_angle);
 
                 //calculate new spin
-                _direction = (pollRNG() <= 32766) ? -1 : 1; // = -1, 1
-                _max = (pollRNG() % 4) * 30 + 30; // = 30, 60, 90, 120
+                _direction = (PollRNG() <= 32766) ? -1 : 1; // = -1, 1
+                _max = (PollRNG() % 4) * 30 + 30; // = 30, 60, 90, 120
                 _counter = 0;
                 _counter++;
             }

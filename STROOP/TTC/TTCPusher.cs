@@ -35,7 +35,7 @@ namespace STROOP.Ttc
             _counter = 0;
         }
 
-        public override void update()
+        public override void Update()
         {
             if (_state == 0)
             { //flush with wall
@@ -50,16 +50,16 @@ namespace STROOP.Ttc
                 }
                 else
                 {
-                    int rand = pollRNG();
+                    int rand = PollRNG();
                     if (rand % 4 == 0) _max = 1;
                     if (rand % 4 == 1) _max = 12;
                     if (rand % 4 == 2) _max = 55;
                     if (rand % 4 == 3) _max = 100;
 
                     // countdown = 0 or [20,120)
-                    if (pollRNG() % 2 == 0)
+                    if (PollRNG() % 2 == 0)
                     {
-                        _countdown = (int)(pollRNG() / 65536.0 * 100 + 20); // = [20,120)
+                        _countdown = (int)(PollRNG() / 65536.0 * 100 + 20); // = [20,120)
                     }
 
                     _state = 1;
@@ -94,7 +94,7 @@ namespace STROOP.Ttc
                 }
                 else if (_counter == 1)
                 { //either extend out or fake it
-                    if (pollRNG() % 4 == 0)
+                    if (PollRNG() % 4 == 0)
                     { //fake extend
                         _state = 0;
                         _counter = 0;

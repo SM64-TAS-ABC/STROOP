@@ -38,7 +38,7 @@ namespace STROOP.Ttc
             _counter = 0;
         }
 
-        public override void update()
+        public override void Update()
         {
             if (_counter <= 4)
             {
@@ -53,8 +53,8 @@ namespace STROOP.Ttc
 
             if (_counter > _max)
             {
-                _direction = (pollRNG() <= 32766) ? -1 : 1; // = -1, 1
-                _max = (pollRNG() % 6) * 30 + 30; // = 30, 60, 90, 120, 150, 180
+                _direction = (PollRNG() <= 32766) ? -1 : 1; // = -1, 1
+                _max = (PollRNG() % 6) * 30 + 30; // = 30, 60, 90, 120, 150, 180
                 _counter = 0;
             }
 

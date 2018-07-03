@@ -35,7 +35,7 @@ namespace STROOP.Ttc
             _counter = 0;
         }
 
-        public override void update()
+        public override void Update()
         {
             if (_state == 0)
             { //going up
@@ -51,7 +51,7 @@ namespace STROOP.Ttc
             { //at top
                 if (_counter == 0)
                 { //just reached top
-                    _max = (int)(pollRNG() / 65536.0 * 30 + 10); // = [10,40)
+                    _max = (int)(PollRNG() / 65536.0 * 30 + 10); // = [10,40)
                 }
                 if (_counter <= _max)
                 { //waiting
@@ -91,7 +91,7 @@ namespace STROOP.Ttc
             { //at bottom (2/2)
                 if (_counter == 0)
                 { //just reached bottom
-                    _max = (int)(pollRNG() / 65536.0 * 10 + 20); // = [20,30)
+                    _max = (int)(PollRNG() / 65536.0 * 10 + 20); // = [20,30)
                 }
                 if (_counter <= _max)
                 { //waiting

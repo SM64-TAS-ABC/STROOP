@@ -19,11 +19,11 @@ namespace STROOP.Ttc
             _initializedYet = false;
         }
 
-        public override void update()
+        public override void Update()
         {
             if (!_initializedYet)
             {
-                pollRNG();
+                PollRNG();
                 _initializedYet = true;
             }
         }

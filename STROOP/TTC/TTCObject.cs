@@ -36,7 +36,7 @@ namespace STROOP.Ttc
 
         /** Update the object exactly one frame.
          */
-        public abstract void update();
+        public abstract void Update();
 
         /** Return a string representation of the object, used for
          *  debugging purposes and to see the internal state.
@@ -47,7 +47,7 @@ namespace STROOP.Ttc
          *  objects when printing them (e.g. helps make the distinction
          *  between "Bobomb 1" and "Bobomb 2").
          */
-        public TtcObject setIndex(int index)
+        public TtcObject SetIndex(int index)
         {
             _id = GetType().Name.ToString() + index;
             return this;
@@ -55,14 +55,14 @@ namespace STROOP.Ttc
 
         /** Poll RNG from the RNG manager.
          */
-        protected int pollRNG()
+        protected int PollRNG()
         {
-            return _rng.pollRNG();
+            return _rng.PollRNG();
         }
 
         /** Sets the frame that the object should be updating to.
          */
-        public void setFrame(int currentFrame)
+        public void SetFrame(int currentFrame)
         {
             this._currentFrame = currentFrame;
         }
@@ -70,7 +70,7 @@ namespace STROOP.Ttc
         /** Returns an angle between 0 and 65535 inclusive
          *  by using mods.
          */
-        protected int normalize(int angle)
+        protected int Normalize(int angle)
         {
             return ((angle % 65536) + 65536) % 65536;
         }
@@ -79,7 +79,7 @@ namespace STROOP.Ttc
         /** Returns a new number that is the current number moved towards
          * the target number by at most max displacement.
          */
-        protected int moveNumberTowards(int currentNumber, int targetNumber, int maxDisplacement)
+        protected int MoveNumberTowards(int currentNumber, int targetNumber, int maxDisplacement)
         {
             if (currentNumber == targetNumber)
             { //exactly equal to target
@@ -102,7 +102,7 @@ namespace STROOP.Ttc
         /** Returns a new angle that is the current angle moved towards the target angle
          *  in the closer direction by at most max displacement. Normalization is included.
          */
-        protected int moveAngleTowards(int currentAngle, int targetAngle, int maxDisplacement)
+        protected int MoveAngleTowards(int currentAngle, int targetAngle, int maxDisplacement)
         {
             if (currentAngle == targetAngle) return currentAngle;
             int diff = targetAngle - currentAngle;
@@ -117,7 +117,7 @@ namespace STROOP.Ttc
             { //target is slightly below current
                 newAngle = currentAngle - Math.Min(65536 - diff, maxDisplacement);
             }
-            return normalize(newAngle);
+            return Normalize(newAngle);
         }
     }
 }
