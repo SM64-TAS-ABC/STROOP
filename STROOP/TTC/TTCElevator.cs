@@ -27,15 +27,22 @@ namespace STROOP.Ttc
         public int _max;
         public int _counter;
 
-        public TtcElevator(TtcRng rng, int minHeight, int maxHeight) : base(rng)
+        public TtcElevator(TtcRng rng, int minHeight, int maxHeight) :
+            this(rng, minHeight, maxHeight, minHeight, 0, 1, 0, 0)
+        {
+        }
+
+        public TtcElevator(
+            TtcRng rng, int minHeight, int maxHeight, int height,
+            int verticalSpeed, int direction, int max, int counter) : base(rng)
         {
             MIN_HEIGHT = minHeight;
             MAX_HEIGHT = maxHeight;
-            _height = MIN_HEIGHT;
-            _verticalSpeed = 0;
-            _direction = 1;
-            _max = 0;
-            _counter = 0;
+            _height = height;
+            _verticalSpeed = verticalSpeed;
+            _direction = direction;
+            _max = max;
+            _counter = counter;
         }
 
         public override void Update()

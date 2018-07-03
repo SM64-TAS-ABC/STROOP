@@ -31,14 +31,20 @@ namespace STROOP.Ttc
         public int _directionTimer;
         public int _timer;
 
-        public TtcHand(TtcRng rng, int startingAngle) : base(rng)
+        public TtcHand(TtcRng rng, int angle) :
+            this(rng, angle, 0, 0, 0, 0, 0)
         {
-            _angle = startingAngle;
-            _max = 0;
-            _targetAngle = 0;
-            _displacement = 0;
-            _directionTimer = 0;
-            _timer = 0;
+        }
+
+        public TtcHand(TtcRng rng, int angle, int max, int targetAngle,
+            int displacement, int directionTimer, int timer) : base(rng)
+        {
+            _angle = angle;
+            _max = max;
+            _targetAngle = targetAngle;
+            _displacement = displacement;
+            _directionTimer = directionTimer;
+            _timer = timer;
         }
 
         public override void Update()

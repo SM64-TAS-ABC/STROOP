@@ -25,7 +25,7 @@ namespace STROOP.Ttc
 
             //set up testing variables
             int startingFrame = 0; //the frame directly preceding any object initialization
-            int endingFrame = 100; //the frame you want to see printed
+            int endingFrame = 200; //the frame you want to see printed
             bool printRNG = false; //whether to print frame/RNG/index
             bool printObjects = true; //whether to print the state of every object
             // dust.addDustFrames(); //which frames dust is present on (empty parameters = no dust)

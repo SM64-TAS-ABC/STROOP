@@ -22,11 +22,15 @@ namespace STROOP.Ttc
         public int _currentAngularVelocity;
         public int _targetAngularVelocity;
 
-        public TtcCog(TtcRng rng) : base(rng)
+        public TtcCog(TtcRng rng) : this(rng, 0, 0, 0)
         {
-            _angle = 0;
-            _currentAngularVelocity = 0;
-            _targetAngularVelocity = 0;
+        }
+
+        public TtcCog(TtcRng rng, int angle, int currentAngularVelocity, int targetAngularVelocity) : base(rng)
+        {
+            _angle = angle;
+            _currentAngularVelocity = currentAngularVelocity;
+            _targetAngularVelocity = targetAngularVelocity;
         }
 
         public override void Update()

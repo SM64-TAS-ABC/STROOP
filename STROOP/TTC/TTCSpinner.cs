@@ -25,12 +25,16 @@ namespace STROOP.Ttc
         public int _max;
         public int _counter;
 
-        public TtcSpinner(TtcRng rng) : base(rng)
+        public TtcSpinner(TtcRng rng) : this(rng, 0, 0, 0, 0)
         {
-            _angle = 0;
-            _direction = 0;
-            _max = 0;
-            _counter = 0;
+        }
+
+        public TtcSpinner(TtcRng rng, int angle, int direction, int max, int counter) : base(rng)
+        {
+            _angle = angle;
+            _direction = direction;
+            _max = max;
+            _counter = counter;
         }
 
         public override void Update()

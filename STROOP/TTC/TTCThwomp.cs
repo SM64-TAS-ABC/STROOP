@@ -26,13 +26,18 @@ namespace STROOP.Ttc
         public int _state; //0 = going up, 1 = at top, 2 = going down, 3/4 = at bottom
         public int _counter;
 
-        public TtcThwomp(TtcRng rng) : base(rng)
+        public TtcThwomp(TtcRng rng) : this(rng, MIN_HEIGHT, 0, 0, 0, 0)
         {
-            _height = MIN_HEIGHT;
-            _verticalSpeed = 0;
-            _max = 0;
-            _state = 0;
-            _counter = 0;
+        }
+
+        public TtcThwomp(TtcRng rng, int height, int verticalSpeed,
+            int max, int state, int counter) : base(rng)
+        {
+            _height = height;
+            _verticalSpeed = verticalSpeed;
+            _max = max;
+            _state = state;
+            _counter = counter;
         }
 
         public override void Update()

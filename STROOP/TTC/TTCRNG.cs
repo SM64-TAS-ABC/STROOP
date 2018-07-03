@@ -18,9 +18,9 @@ namespace STROOP.Ttc
         //start off with RNG 0 by default
         private int _index;
 
-        public TtcRng(int indexIn)
+        public TtcRng(int index)
         {
-            _index = indexIn;
+            _index = index;
         }
 
         /** Get the current RNG (will not update RNG).

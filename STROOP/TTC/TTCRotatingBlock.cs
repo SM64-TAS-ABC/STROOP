@@ -19,33 +19,37 @@ namespace STROOP.Ttc
         //the turning time for rotating blocks
         public static readonly int TURNING_TIME = 40;
 
-        public int max;
-        public int timer;
+        public int _max;
+        public int _timer;
 
-        public TtcRotatingBlock(TtcRng rng) : base(rng)
+        public TtcRotatingBlock(TtcRng rng) : this(rng, 0, 0)
         {
-            max = 0;
-            timer = 0;
+        }
+
+        public TtcRotatingBlock(TtcRng rng, int max, int timer) : base(rng)
+        {
+            _max = max;
+            _timer = timer;
         }
 
         public override void Update()
         {
-            if (timer < max + TURNING_TIME)
+            if (_timer < _max + TURNING_TIME)
             { //waiting
-                timer++;
+                _timer++;
             }
             else
             { //done waiting
-                max = (PollRNG() % 7) * 20 + 5; // = 5, 25, 45, 65, 85, 105, 125
-                timer = 0;
-                timer++;
+                _max = (PollRNG() % 7) * 20 + 5; // = 5, 25, 45, 65, 85, 105, 125
+                _timer = 0;
+                _timer++;
             }
         }
 
         public override string ToString()
         {
-            return _id + OPENER + max + SEPARATOR +
-                    timer + CLOSER;
+            return _id + OPENER + _max + SEPARATOR +
+                    _timer + CLOSER;
         }
 
     }

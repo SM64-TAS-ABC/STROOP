@@ -23,10 +23,14 @@ namespace STROOP.Ttc
         public int _max;
         public int _timer;
 
-        public TtcRotatingTriangularPrism(TtcRng rng) : base(rng)
+        public TtcRotatingTriangularPrism(TtcRng rng) : this(rng, 0, 0)
         {
-            _max = 0;
-            _timer = 0;
+        }
+
+        public TtcRotatingTriangularPrism(TtcRng rng, int max, int timer) : base(rng)
+        {
+            _max = max;
+            _timer = timer;
         }
 
         public override void Update()

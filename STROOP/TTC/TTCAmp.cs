@@ -14,9 +14,13 @@ namespace STROOP.Ttc
 
         public bool _initializedYet;
 
-        public TtcAmp(TtcRng rng) : base(rng)
+        public TtcAmp(TtcRng rng) : this(rng, false)
         {
-            _initializedYet = false;
+        }
+
+        public TtcAmp(TtcRng rng, bool initializedYet) : base(rng)
+        {
+            _initializedYet = initializedYet;
         }
 
         public override void Update()

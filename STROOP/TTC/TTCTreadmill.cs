@@ -29,13 +29,19 @@ namespace STROOP.Ttc
         public int _max;
         public int _counter;
 
-        public TtcTreadmill(TtcRng rng, bool isFirstTreadmill) : base(rng)
+        public TtcTreadmill(TtcRng rng, bool isFirstTreadmill) :
+            this(rng, isFirstTreadmill, 0, 0, 0, 0)
+        {
+        }
+
+        public TtcTreadmill(TtcRng rng, bool isFirstTreadmill,
+            int currentSpeed, int targetSpeed, int max, int counter) : base(rng)
         {
             _isFirstTreadmill = isFirstTreadmill;
-            _currentSpeed = 0;
-            _targetSpeed = 0;
-            _max = 0;
-            _counter = 0;
+            _currentSpeed = currentSpeed;
+            _targetSpeed = targetSpeed;
+            _max = max;
+            _counter = counter;
         }
 
         public override void Update()

@@ -16,11 +16,16 @@ namespace STROOP.Ttc
         public int _currentAngularVelocity;
         public int _targetAngularVelocity;
 
-        public TtcSpinningTriangle(TtcRng rng, int startingAngle) : base(rng)
+        public TtcSpinningTriangle(TtcRng rng, int angle) : this(rng, angle, 0, 0)
         {
-            _angle = startingAngle;
-            _currentAngularVelocity = 0;
-            _targetAngularVelocity = 0;
+        }
+
+        public TtcSpinningTriangle(TtcRng rng, int angle,
+            int currentAngularVelocity, int targetAngularVelocity) : base(rng)
+        {
+            _angle = angle;
+            _currentAngularVelocity = currentAngularVelocity;
+            _targetAngularVelocity = targetAngularVelocity;
         }
 
         public override void Update()

@@ -23,13 +23,19 @@ namespace STROOP.Ttc
         public int _accelerationMagnitude;
         public int _waitingTimer;
 
-        public TtcPendulum(TtcRng rng) : base(rng)
+        public TtcPendulum(TtcRng rng) :
+            this(rng, 0, 6500, 0, 0, 0)
         {
-            _accelerationDirection = 0;
-            _angle = 6500;
-            _angularVelocity = 0;
-            _accelerationMagnitude = 0;
-            _waitingTimer = 0;
+        }
+
+        public TtcPendulum(TtcRng rng, int accelerationDirection, int angle,
+            int angularVelocity, int accelerationMagnitude, int waitingTimer) : base(rng)
+        {
+            _accelerationDirection = accelerationDirection;
+            _angle = angle;
+            _angularVelocity = angularVelocity;
+            _accelerationMagnitude = accelerationMagnitude;
+            _waitingTimer = waitingTimer;
         }
 
         public override void Update()

@@ -27,12 +27,17 @@ namespace STROOP.Ttc
         public int _state; //0 = flush with wall, 1 = retracted, 2 = extending, 3 = retracting
         public int _counter;
 
-        public TtcPusher(TtcRng rng, int countdown) : base(rng)
+        public TtcPusher(TtcRng rng, int countdown) :
+            this(rng, 55, countdown, 0, 0)
         {
-            _max = 55;
+        }
+
+        public TtcPusher(TtcRng rng, int max, int countdown, int state, int counter) : base(rng)
+        {
+            _max = max;
             _countdown = countdown;
-            _state = 0;
-            _counter = 0;
+            _state = state;
+            _counter = counter;
         }
 
         public override void Update()

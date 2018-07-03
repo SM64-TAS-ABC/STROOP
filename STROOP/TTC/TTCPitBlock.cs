@@ -25,13 +25,19 @@ namespace STROOP.Ttc
         public int _max;
         public int _counter;
 
-        public TtcPitBlock(TtcRng rng) : base(rng)
+        public TtcPitBlock(TtcRng rng) :
+            this(rng, MIN_HEIGHT, 0, 0, 0, 0)
         {
-            _height = MIN_HEIGHT;
-            _verticalSpeed = 0;
-            _state = 0;
-            _max = 0;
-            _counter = 0;
+        }
+
+        public TtcPitBlock(TtcRng rng, int height, int verticalSpeed,
+            int state, int max, int counter) : base(rng)
+        {
+            _height = height;
+            _verticalSpeed = verticalSpeed;
+            _state = state;
+            _max = max;
+            _counter = counter;
         }
 
         public override void Update()
