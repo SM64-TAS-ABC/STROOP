@@ -1,4 +1,5 @@
-﻿using System;
+﻿using STROOP.Structs.Configurations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -24,11 +25,19 @@ namespace STROOP.Ttc
         public int _height;
         public int _verticalSpeed;
         public int _direction;
-        public int _max;
-        public int _counter;
+        public int _timerMax;
+        public int _timer;
 
         public TtcElevator(TtcRng rng, uint address) :
-            this(rng, -100, -100, -100, 0, 1, 0, 0)
+            this(
+                rng: rng,
+                minHeight: (int)Config.Stream.GetSingle(address + 0x168),
+                maxHeight: (int)Config.Stream.GetSingle(address + 0xF8),
+                height: (int)Config.Stream.GetSingle(address + 0xA4),
+                verticalSpeed: (int)Config.Stream.GetSingle(address + 0xB0),
+                direction: (int)Config.Stream.GetSingle(address + 0xF4),
+                timerMax: Config.Stream.GetInt32(address + 0xFC),
+                timer: Config.Stream.GetInt32(address + 0x154))
         {
         }
 
@@ -39,20 +48,20 @@ namespace STROOP.Ttc
 
         public TtcElevator(
             TtcRng rng, int minHeight, int maxHeight, int height,
-            int verticalSpeed, int direction, int max, int counter) : base(rng)
+            int verticalSpeed, int direction, int timerMax, int timer) : base(rng)
         {
             MIN_HEIGHT = minHeight;
             MAX_HEIGHT = maxHeight;
             _height = height;
             _verticalSpeed = verticalSpeed;
             _direction = direction;
-            _max = max;
-            _counter = counter;
+            _timerMax = timerMax;
+            _timer = timer;
         }
 
         public override void Update()
         {
-            if (_counter <= 4)
+            if (_timer <= 4)
             {
                 _verticalSpeed = 0;
             }
@@ -63,11 +72,11 @@ namespace STROOP.Ttc
 
             _height = _height + _verticalSpeed;
 
-            if (_counter > _max)
+            if (_timer > _timerMax)
             {
                 _direction = (PollRNG() <= 32766) ? -1 : 1; // = -1, 1
-                _max = (PollRNG() % 6) * 30 + 30; // = 30, 60, 90, 120, 150, 180
-                _counter = 0;
+                _timerMax = (PollRNG() % 6) * 30 + 30; // = 30, 60, 90, 120, 150, 180
+                _timer = 0;
             }
 
             _height = Math.Max(_height, MIN_HEIGHT);
@@ -76,7 +85,7 @@ namespace STROOP.Ttc
             {
                 _direction *= -1;
             }
-            _counter++;
+            _timer++;
         }
 
         public override string ToString()
@@ -84,8 +93,8 @@ namespace STROOP.Ttc
             return _id + OPENER + _height + SEPARATOR +
                       _verticalSpeed + SEPARATOR +
                       _direction + SEPARATOR +
-                      _max + SEPARATOR +
-                      _counter + CLOSER;
+                      _timerMax + SEPARATOR +
+                      _timer + CLOSER;
         }
 
     }

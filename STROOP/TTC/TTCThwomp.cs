@@ -1,4 +1,5 @@
-﻿using System;
+﻿using STROOP.Structs.Configurations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -22,11 +23,18 @@ namespace STROOP.Ttc
 
         public int _height;
         public int _verticalSpeed;
-        public int _max;
+        public int _timerMax;
         public int _state; //0 = going up, 1 = at top, 2 = going down, 3/4 = at bottom
-        public int _counter;
+        public int _timer;
 
-        public TtcThwomp(TtcRng rng, uint address) : this(rng, -100, 0, 0, 0, 0)
+        public TtcThwomp(TtcRng rng, uint address) :
+            this(
+                rng: rng,
+                height: (int)Config.Stream.GetSingle(address + 0xA4),
+                verticalSpeed: (int)Config.Stream.GetSingle(address + 0xB0),
+                timerMax: Config.Stream.GetInt32(address + 0xF4),
+                state: Config.Stream.GetInt32(address + 0x14C),
+                timer: Config.Stream.GetInt32(address + 0x154))
         {
         }
 
@@ -35,13 +43,13 @@ namespace STROOP.Ttc
         }
 
         public TtcThwomp(TtcRng rng, int height, int verticalSpeed,
-            int max, int state, int counter) : base(rng)
+            int timerMax, int state, int timer) : base(rng)
         {
             _height = height;
             _verticalSpeed = verticalSpeed;
-            _max = max;
+            _timerMax = timerMax;
             _state = state;
-            _counter = counter;
+            _timer = timer;
         }
 
         public override void Update()
@@ -49,67 +57,67 @@ namespace STROOP.Ttc
             if (_state == 0)
             { //going up
                 _height = Math.Min(MAX_HEIGHT, _height + RISING_SPEED);
-                _counter++;
+                _timer++;
                 if (_height == MAX_HEIGHT)
                 { //reached top
                     _state = 1;
-                    _counter = 0;
+                    _timer = 0;
                 }
             }
             else if (_state == 1)
             { //at top
-                if (_counter == 0)
+                if (_timer == 0)
                 { //just reached top
-                    _max = (int)(PollRNG() / 65536.0 * 30 + 10); // = [10,40)
+                    _timerMax = (int)(PollRNG() / 65536.0 * 30 + 10); // = [10,40)
                 }
-                if (_counter <= _max)
+                if (_timer <= _timerMax)
                 { //waiting
-                    _counter++;
+                    _timer++;
                 }
                 else
                 { //done waiting
                     _state = 2;
-                    _counter = 0;
+                    _timer = 0;
                 }
             }
             else if (_state == 2)
             { //going down
                 _verticalSpeed -= 4;
                 _height = Math.Max(MIN_HEIGHT, _height + _verticalSpeed);
-                _counter++;
+                _timer++;
                 if (_height == MIN_HEIGHT)
                 { //reached bottom
                     _verticalSpeed = 0;
                     _state = 3;
-                    _counter = 0;
+                    _timer = 0;
                 }
             }
             else if (_state == 3)
             { //at bottom (1/2)
-                if (_counter < 10)
+                if (_timer < 10)
                 { //waiting
-                    _counter++;
+                    _timer++;
                 }
                 else
                 { //done waiting
                     _state = 4;
-                    _counter = 0;
+                    _timer = 0;
                 }
             }
             else
             { //at bottom (2/2)
-                if (_counter == 0)
+                if (_timer == 0)
                 { //just reached bottom
-                    _max = (int)(PollRNG() / 65536.0 * 10 + 20); // = [20,30)
+                    _timerMax = (int)(PollRNG() / 65536.0 * 10 + 20); // = [20,30)
                 }
-                if (_counter <= _max)
+                if (_timer <= _timerMax)
                 { //waiting
-                    _counter++;
+                    _timer++;
                 }
                 else
                 { //done waiting
                     _state = 0;
-                    _counter = 0;
+                    _timer = 0;
                 }
             }
         }
@@ -118,9 +126,9 @@ namespace STROOP.Ttc
         {
             return _id + OPENER + _height + SEPARATOR +
                     _verticalSpeed + SEPARATOR +
-                    _max + SEPARATOR +
+                    _timerMax + SEPARATOR +
                     _state + SEPARATOR +
-                    _counter + CLOSER;
+                    _timer + CLOSER;
         }
 
     }

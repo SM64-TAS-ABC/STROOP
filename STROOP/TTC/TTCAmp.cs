@@ -1,4 +1,6 @@
-﻿using System;
+﻿using STROOP.Structs;
+using STROOP.Structs.Configurations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -14,7 +16,10 @@ namespace STROOP.Ttc
 
         public bool _initializedYet;
 
-        public TtcAmp(TtcRng rng, uint address) : this(rng, false)
+        public TtcAmp(TtcRng rng, uint address) :
+            this(
+                rng: rng,
+                initializedYet: Config.Stream.GetInt32(address + 0x14C) == 2)
         {
         }
 

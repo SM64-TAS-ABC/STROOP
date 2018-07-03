@@ -1,4 +1,5 @@
-﻿using System;
+﻿using STROOP.Structs.Configurations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -20,11 +21,14 @@ namespace STROOP.Ttc
         //the turning time for rotating triangular prisms
         public static readonly int TURNING_TIME = 45;
 
-        public int _max;
+        public int _timerMax;
         public int _timer;
 
         public TtcRotatingTriangularPrism(TtcRng rng, uint address) :
-            this(rng, 0, 0)
+            this(
+                rng: rng,
+                timerMax: Config.Stream.GetInt32(address + 0xFC),
+                timer: Config.Stream.GetInt32(address + 0x154))
         {
         }
 
@@ -32,21 +36,21 @@ namespace STROOP.Ttc
         {
         }
 
-        public TtcRotatingTriangularPrism(TtcRng rng, int max, int timer) : base(rng)
+        public TtcRotatingTriangularPrism(TtcRng rng, int timerMax, int timer) : base(rng)
         {
-            _max = max;
+            _timerMax = timerMax;
             _timer = timer;
         }
 
         public override void Update()
         {
-            if (_timer < _max + TURNING_TIME)
+            if (_timer < _timerMax + TURNING_TIME)
             { //waiting
                 _timer++;
             }
             else
             { //done waiting
-                _max = (PollRNG() % 7) * 20 + 5; // = 5, 25, 45, 65, 85, 105, 125
+                _timerMax = (PollRNG() % 7) * 20 + 5; // = 5, 25, 45, 65, 85, 105, 125
                 _timer = 0;
                 _timer++;
             }
@@ -54,7 +58,7 @@ namespace STROOP.Ttc
 
         public override string ToString()
         {
-            return _id + OPENER + _max + SEPARATOR +
+            return _id + OPENER + _timerMax + SEPARATOR +
                     _timer + CLOSER;
         }
 

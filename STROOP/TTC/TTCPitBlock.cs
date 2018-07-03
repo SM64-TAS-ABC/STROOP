@@ -1,4 +1,5 @@
-﻿using System;
+﻿using STROOP.Structs.Configurations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -22,11 +23,17 @@ namespace STROOP.Ttc
         public int _height;
         public int _verticalSpeed;
         public int _state; //0 = going up, 1 = going down
-        public int _max;
-        public int _counter;
+        public int _timerMax;
+        public int _timer;
 
         public TtcPitBlock(TtcRng rng, uint address) :
-            this(rng, MIN_HEIGHT, 0, 0, 0, 0)
+            this(
+                rng: rng,
+                height: (int)Config.Stream.GetSingle(address + 0xA4),
+                verticalSpeed: (int)Config.Stream.GetSingle(address + 0xB0),
+                state: Config.Stream.GetInt32(address + 0x14C),
+                timerMax: Config.Stream.GetInt32(address + 0xFC),
+                timer: Config.Stream.GetInt32(address + 0x154))
         {
         }
 
@@ -36,20 +43,20 @@ namespace STROOP.Ttc
         }
 
         public TtcPitBlock(TtcRng rng, int height, int verticalSpeed,
-            int state, int max, int counter) : base(rng)
+            int state, int timerMax, int timer) : base(rng)
         {
             _height = height;
             _verticalSpeed = verticalSpeed;
             _state = state;
-            _max = max;
-            _counter = counter;
+            _timerMax = timerMax;
+            _timer = timer;
         }
 
         public override void Update()
         {
-            if (_counter <= _max)
+            if (_timer <= _timerMax)
             { //don't move
-                _counter++;
+                _timer++;
             }
             else
             { //move
@@ -60,10 +67,10 @@ namespace STROOP.Ttc
                     { //reached top
                         _verticalSpeed = -9;
                         _state = 1;
-                        _counter = 0;
-                        _max = (PollRNG() % 6) * 20 + 10; // = 10, 30, 50, 70, 90, 110
+                        _timer = 0;
+                        _timerMax = (PollRNG() % 6) * 20 + 10; // = 10, 30, 50, 70, 90, 110
                     }
-                    _counter++;
+                    _timer++;
                 }
                 else
                 { //move down
@@ -72,10 +79,10 @@ namespace STROOP.Ttc
                     { //reached bottom
                         _verticalSpeed = 11;
                         _state = 0;
-                        _counter = 0;
-                        _max = 20;
+                        _timer = 0;
+                        _timerMax = 20;
                     }
-                    _counter++;
+                    _timer++;
                 }
             }
         }
@@ -85,8 +92,8 @@ namespace STROOP.Ttc
             return _id + OPENER + _height + SEPARATOR +
                     _verticalSpeed + SEPARATOR +
                     _state + SEPARATOR +
-                    _max + SEPARATOR +
-                    _counter + CLOSER;
+                    _timerMax + SEPARATOR +
+                    _timer + CLOSER;
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using STROOP.Structs.Configurations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -24,7 +25,13 @@ namespace STROOP.Ttc
         public int _waitingTimer;
 
         public TtcPendulum(TtcRng rng, uint address) :
-            this(rng, 0, 6500, 0, 0, 0)
+            this(
+                rng: rng,
+                accelerationDirection: (int)Config.Stream.GetSingle(address + 0xF4),
+                angle: (int)Config.Stream.GetSingle(address + 0xF8),
+                angularVelocity: (int)Config.Stream.GetSingle(address + 0xFC),
+                accelerationMagnitude: (int)Config.Stream.GetSingle(address + 0x100),
+                waitingTimer: Config.Stream.GetInt32(address + 0x104))
         {
         }
 

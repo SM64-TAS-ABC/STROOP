@@ -1,4 +1,5 @@
-﻿using System;
+﻿using STROOP.Structs.Configurations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -22,11 +23,16 @@ namespace STROOP.Ttc
 
         public int _angle;
         public int _direction; //1 = CCW, -1 = CW
-        public int _max;
-        public int _counter;
+        public int _timerMax;
+        public int _timer;
 
         public TtcSpinner(TtcRng rng, uint address) :
-            this(rng, 0, 0, 0, 0)
+            this(
+                rng: rng,
+                angle: Config.Stream.GetInt32(address + 0xD0),
+                direction: Config.Stream.GetInt32(address + 0xF4),
+                timerMax: Config.Stream.GetInt32(address + 0xF8),
+                timer: Config.Stream.GetInt32(address + 0x154))
         {
         }
 
@@ -34,28 +40,28 @@ namespace STROOP.Ttc
         {
         }
 
-        public TtcSpinner(TtcRng rng, int angle, int direction, int max, int counter) : base(rng)
+        public TtcSpinner(TtcRng rng, int angle, int direction, int timerMax, int timer) : base(rng)
         {
             _angle = angle;
             _direction = direction;
-            _max = max;
-            _counter = counter;
+            _timerMax = timerMax;
+            _timer = timer;
         }
 
         public override void Update()
         {
 
-            if (_counter <= _max)
+            if (_timer <= _timerMax)
             { //spin normal
-                if (_counter <= 5)
+                if (_timer <= 5)
                 { //don't spin
-                    _counter++;
+                    _timer++;
                 }
                 else
                 { //spin
                     _angle += _direction * 200;
                     _angle = Normalize(_angle);
-                    _counter++;
+                    _timer++;
                 }
             }
             else
@@ -66,9 +72,9 @@ namespace STROOP.Ttc
 
                 //calculate new spin
                 _direction = (PollRNG() <= 32766) ? -1 : 1; // = -1, 1
-                _max = (PollRNG() % 4) * 30 + 30; // = 30, 60, 90, 120
-                _counter = 0;
-                _counter++;
+                _timerMax = (PollRNG() % 4) * 30 + 30; // = 30, 60, 90, 120
+                _timer = 0;
+                _timer++;
             }
 
         }
@@ -77,8 +83,8 @@ namespace STROOP.Ttc
         {
             return _id + OPENER + _angle + SEPARATOR +
                     _direction + SEPARATOR +
-                    _max + SEPARATOR +
-                    _counter + CLOSER;
+                    _timerMax + SEPARATOR +
+                    _timer + CLOSER;
         }
 
     }

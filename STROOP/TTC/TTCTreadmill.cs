@@ -1,4 +1,5 @@
-﻿using System;
+﻿using STROOP.Structs.Configurations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -26,11 +27,17 @@ namespace STROOP.Ttc
 	
 	    public int _currentSpeed;
         public int _targetSpeed;
-        public int _max;
-        public int _counter;
+        public int _timerMax;
+        public int _timer;
 
         public TtcTreadmill(TtcRng rng, uint address) :
-             this(rng, false, 0, 0, 0, 0)
+             this(
+                 rng: rng,
+                 isFirstTreadmill: Config.Stream.GetInt32(address + 0x144) == 0,
+                 currentSpeed: (int)Config.Stream.GetSingle(address + 0xFC),
+                 targetSpeed: (int)Config.Stream.GetSingle(address + 0x100),
+                 timerMax: Config.Stream.GetInt32(address + 0x104),
+                 timer: Config.Stream.GetInt32(address + 0x154))
         {
         }
 
@@ -40,33 +47,33 @@ namespace STROOP.Ttc
         }
 
         public TtcTreadmill(TtcRng rng, bool isFirstTreadmill,
-            int currentSpeed, int targetSpeed, int max, int counter) : base(rng)
+            int currentSpeed, int targetSpeed, int timerMax, int timer) : base(rng)
         {
             _isFirstTreadmill = isFirstTreadmill;
             _currentSpeed = currentSpeed;
             _targetSpeed = targetSpeed;
-            _max = max;
-            _counter = counter;
+            _timerMax = timerMax;
+            _timer = timer;
         }
 
         public override void Update()
         {
             if (!_isFirstTreadmill)
             { //if not first treadmill, do nothing
-                _counter++;
+                _timer++;
                 return;
             }
 
-            if (_counter <= _max)
+            if (_timer <= _timerMax)
             { //still/accelerate/move
-                if (_counter <= 5)
+                if (_timer <= 5)
                 { //be still
-                    _counter++;
+                    _timer++;
                 }
                 else
                 { //accelerate/move
                     _currentSpeed = MoveNumberTowards(_currentSpeed, _targetSpeed, 10);
-                    _counter++;
+                    _timer++;
                 }
             }
             else
@@ -74,11 +81,11 @@ namespace STROOP.Ttc
                 _currentSpeed = MoveNumberTowards(_currentSpeed, 0, 10);
                 if (_currentSpeed == 0)
                 { //came to a stop
-                    _max = (PollRNG() % 7) * 20 + 10; // = 10, 30, 50, 70, 90, 110, 130
+                    _timerMax = (PollRNG() % 7) * 20 + 10; // = 10, 30, 50, 70, 90, 110, 130
                     _targetSpeed = (PollRNG() <= 32766) ? -50 : 50; // = -50, 50
-                    _counter = 0;
+                    _timer = 0;
                 }
-                _counter++;
+                _timer++;
             }
         }
 
@@ -86,8 +93,8 @@ namespace STROOP.Ttc
         {
             return _id + OPENER + _currentSpeed + SEPARATOR +
                       _targetSpeed + SEPARATOR +
-                      _max + SEPARATOR +
-                      _counter + CLOSER;
+                      _timerMax + SEPARATOR +
+                      _timer + CLOSER;
         }
 
     }

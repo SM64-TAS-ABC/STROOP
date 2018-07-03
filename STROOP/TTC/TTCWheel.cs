@@ -1,4 +1,5 @@
-﻿using System;
+﻿using STROOP.Structs.Configurations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -17,14 +18,21 @@ namespace STROOP.Ttc
         public readonly static int INITIAL_MAX = 5;
 
         public int _angle;
-        public int _max;
+        public int _timerMax;
         public int _targetAngle;
         public int _displacement;
-        public int _directionTimer;
+        public int _directionCountdown;
         public int _timer;
 
         public TtcWheel(TtcRng rng, uint address) :
-            this(rng, 0, 0, 0, 0, 0, 0)
+            this(
+                rng: rng,
+                angle: Config.Stream.GetInt32(address + 0xD4),
+                timerMax: Config.Stream.GetInt32(address + 0xF4),
+                targetAngle: Config.Stream.GetInt32(address + 0xF8),
+                displacement: Config.Stream.GetInt32(address + 0xFC),
+                directionCountdown: Config.Stream.GetInt32(address + 0x104),
+                timer: Config.Stream.GetInt32(address + 0x154))
         {
         }
 
@@ -32,31 +40,31 @@ namespace STROOP.Ttc
         {
         }
 
-        public TtcWheel(TtcRng rng, int angle, int max, int targetAngle,
-            int displacement, int directionTimer, int timer) : base(rng)
+        public TtcWheel(TtcRng rng, int angle, int timerMax, int targetAngle,
+            int displacement, int directionCountdown, int timer) : base(rng)
         {
             _angle = angle;
-            _max = max;
+            _timerMax = timerMax;
             _targetAngle = targetAngle;
             _displacement = displacement;
-            _directionTimer = directionTimer;
+            _directionCountdown = directionCountdown;
             _timer = timer;
         }
 
         public override void Update()
         {
 
-            if (_max == 0)
+            if (_timerMax == 0)
             { //course just started
-                _max = INITIAL_MAX;
+                _timerMax = INITIAL_MAX;
                 _displacement = -1 * DISPLACEMENT_MAGNITUDE;
             }
 
             _angle = this.MoveAngleTowards(_angle, _targetAngle, 200);
 
-            _directionTimer = Math.Max(0, _directionTimer - 1);
+            _directionCountdown = Math.Max(0, _directionCountdown - 1);
 
-            if (_timer <= _max)
+            if (_timer <= _timerMax)
             { //waiting
                 _timer++;
             }
@@ -65,21 +73,21 @@ namespace STROOP.Ttc
                 _targetAngle = _targetAngle + _displacement;
                 _targetAngle = Normalize(_targetAngle);
 
-                if (_directionTimer == 0)
+                if (_directionCountdown == 0)
                 { //time to maybe switch directions
                     if (PollRNG() % 4 == 0)
                     { //time to move CCW
                         _displacement = DISPLACEMENT_MAGNITUDE;
-                        _directionTimer = (PollRNG() % 3) * 30 + 30; // = 30, 60, 90
+                        _directionCountdown = (PollRNG() % 3) * 30 + 30; // = 30, 60, 90
                     }
                     else
                     { //time to move CW
                         _displacement = -1 * DISPLACEMENT_MAGNITUDE;
-                        _directionTimer = (PollRNG() % 4) * 60 + 90; // = 90, 150, 210, 270
+                        _directionCountdown = (PollRNG() % 4) * 60 + 90; // = 90, 150, 210, 270
                     }
                 }
 
-                _max = (PollRNG() % 3) * 20 + 10; // = 10, 30, 50
+                _timerMax = (PollRNG() % 3) * 20 + 10; // = 10, 30, 50
                 _timer = 0;
                 _timer++;
             }
@@ -92,10 +100,10 @@ namespace STROOP.Ttc
         public override string ToString()
         {
             return _id + OPENER + _angle + SEPARATOR +
-                          _max + SEPARATOR +
+                          _timerMax + SEPARATOR +
                           _targetAngle + SEPARATOR +
                           _displacement + SEPARATOR +
-                          _directionTimer + SEPARATOR +
+                          _directionCountdown + SEPARATOR +
                           _timer + CLOSER;
         }
 

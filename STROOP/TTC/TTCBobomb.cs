@@ -1,4 +1,6 @@
-﻿using System;
+﻿using STROOP.Structs.Configurations;
+using STROOP.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -30,7 +32,11 @@ namespace STROOP.Ttc
         //whether Mario is within 4000 units of the bob-omb
         public bool _withinMarioRange;
 
-        public TtcBobomb(TtcRng rng, uint address) : this(rng, 0, true)
+        public TtcBobomb(TtcRng rng, uint address) :
+            this(
+                rng: rng,
+                blinkingTimer: Config.Stream.GetInt32(address + 0xF4),
+                withinMarioRange: PositionAngle.GetDistance(PositionAngle.Obj(address), PositionAngle.Mario) <= 2000)
         {
         }
 
