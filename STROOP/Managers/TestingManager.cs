@@ -439,9 +439,9 @@ namespace STROOP.Managers
             // TTC Simulator
 
             GroupBox groupBoxTestingTtcSimulator = tabControl.Controls["groupBoxTestingTtcSimulator"] as GroupBox;
-            _textBoxTestingTtcSimulatorEndFrame = tabControl.Controls["textBoxTestingTtcSimulatorEndFrame"] as BetterTextbox;
-            _textBoxTestingTtcSimulatorDustFrames = tabControl.Controls["textBoxTestingTtcSimulatorDustFrames"] as BetterTextbox;
-            _buttonTestingTtcSimulatorCalculate = tabControl.Controls["buttonTestingTtcSimulatorCalculate"] as Button;
+            _textBoxTestingTtcSimulatorEndFrame = groupBoxTestingTtcSimulator.Controls["textBoxTestingTtcSimulatorEndFrame"] as BetterTextbox;
+            _textBoxTestingTtcSimulatorDustFrames = groupBoxTestingTtcSimulator.Controls["textBoxTestingTtcSimulatorDustFrames"] as BetterTextbox;
+            _buttonTestingTtcSimulatorCalculate = groupBoxTestingTtcSimulator.Controls["buttonTestingTtcSimulatorCalculate"] as Button;
             _buttonTestingTtcSimulatorCalculate.Click += (sender, e) =>
             {
                 int? endFrameNullable = ParsingUtilities.ParseIntNullable(_textBoxTestingTtcSimulatorEndFrame.Text);
