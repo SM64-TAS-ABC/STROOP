@@ -17,144 +17,15 @@ namespace STROOP.Ttc
 
         public static void TtcMainMethod()
         {
+            TtcSimulation simulation = new TtcSimulation(
+                rngValue: 0,
+                startingFrame: 0,
+                dustFrames: new List<int>());
 
-            //set up objects
-            TtcRng rng = new TtcRng(0); //initial RNG during star selection screen
-            List<TtcObject> rngObjects = GetRNGObjectsForRandomSetting(rng);
-            //Dust dust = (Dust)rngObjects.get(rngObjects.size()-1);
-
-            //set up testing variables
-            int startingFrame = 0; //the frame directly preceding any object initialization
-            int endingFrame = 200; //the frame you want to see printed
-            bool printRNG = false; //whether to print frame/RNG/index
-            bool printObjects = true; //whether to print the state of every object
-            // dust.addDustFrames(); //which frames dust is present on (empty parameters = no dust)
-
-            //iterate through frames to update objects
-            int frame = startingFrame;
-		    while (frame<endingFrame)
-            {
-			    frame++;
-                foreach (TtcObject rngObject in rngObjects)
-                {
-                    rngObject.SetFrame(frame);
-                    rngObject.Update();
-                }
-		    }
-		
-		    //print frame, RNG, and index
-		    if (printRNG)
-            {
-			    StringUtilities.WriteLine(endingFrame + "\n");
-                StringUtilities.WriteLine(rng.GetRng() + "\n");
-                StringUtilities.WriteLine("[" + rng.GetIndex() + "]\n");
-		    }
-		
-		    //print each object's state
-		    if (printObjects)
-            {
-                StringUtilities.WriteLine("");
-                StringUtilities.WriteLine("");
-                foreach (TtcObject rngObject in rngObjects)
-                {
-			        if (rngObject is TtcAmp) continue;
-                    StringUtilities.WriteLine(rngObject + "\n");
-		        }
-                StringUtilities.WriteLine("");
-                StringUtilities.WriteLine("");
-            }
-        }
-		
-        private static List<TtcObject> GetRNGObjectsForRandomSetting(TtcRng rng)
-        {
-            List<TtcObject> rngObjects = new List<TtcObject>();
-            for (int i = 0; i < 6; i++)
-            {
-                rngObjects.Add(new TtcRotatingBlock(rng).SetIndex(i + 1));
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rngObjects.Add(new TtcRotatingTriangularPrism(rng).SetIndex(i + 1));
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rngObjects.Add(new TtcPendulum(rng).SetIndex(i + 1));
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rngObjects.Add(new TtcTreadmill(rng, i == 0).SetIndex(i + 1));
-            }
-            for (int i = 0; i < 12; i++)
-            {
-                if (i == 0) rngObjects.Add(new TtcPusher(rng, 20).SetIndex(i + 1));
-                if (i == 1) rngObjects.Add(new TtcPusher(rng, 0).SetIndex(i + 1));
-                if (i == 2) rngObjects.Add(new TtcPusher(rng, 50).SetIndex(i + 1));
-                if (i == 3) rngObjects.Add(new TtcPusher(rng, 100).SetIndex(i + 1));
-                if (i == 4) rngObjects.Add(new TtcPusher(rng, 0).SetIndex(i + 1));
-                if (i == 5) rngObjects.Add(new TtcPusher(rng, 10).SetIndex(i + 1));
-                if (i == 6) rngObjects.Add(new TtcPusher(rng, 0).SetIndex(i + 1));
-                if (i == 7) rngObjects.Add(new TtcPusher(rng, 0).SetIndex(i + 1));
-                if (i == 8) rngObjects.Add(new TtcPusher(rng, 0).SetIndex(i + 1));
-                if (i == 9) rngObjects.Add(new TtcPusher(rng, 30).SetIndex(i + 1));
-                if (i == 10) rngObjects.Add(new TtcPusher(rng, 10).SetIndex(i + 1));
-                if (i == 11) rngObjects.Add(new TtcPusher(rng, 20).SetIndex(i + 1));
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rngObjects.Add(new TtcCog(rng).SetIndex(i + 1));
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                if (i == 0) rngObjects.Add(new TtcSpinningTriangle(rng, 40960).SetIndex(i + 1));
-                if (i == 1) rngObjects.Add(new TtcSpinningTriangle(rng, 57344).SetIndex(i + 1));
-            }
-            for (int i = 0; i < 1; i++)
-            {
-                rngObjects.Add(new TtcPitBlock(rng).SetIndex(i + 1));
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                if (i == 0) rngObjects.Add(new TtcHand(rng, 40960).SetIndex(i + 1));
-                if (i == 1) rngObjects.Add(new TtcHand(rng, 8192).SetIndex(i + 1));
-            }
-            for (int i = 0; i < 14; i++)
-            {
-                rngObjects.Add(new TtcSpinner(rng).SetIndex(i + 1));
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rngObjects.Add(new TtcWheel(rng).SetIndex(i + 1));
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                if (i == 0) rngObjects.Add(new TtcElevator(rng, 445, 1045).SetIndex(i + 1));
-                if (i == 1) rngObjects.Add(new TtcElevator(rng , - 1454, -1254).SetIndex(i + 1));
-            }
-            for (int i = 0; i < 1; i++)
-            {
-                rngObjects.Add(new TtcCog(rng).SetIndex(i + 6));
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rngObjects.Add(new TtcTreadmill(rng, false).SetIndex(i + 6));
-            }
-            for (int i = 0; i < 1; i++)
-            {
-                rngObjects.Add(new TtcThwomp(rng).SetIndex(i + 1));
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rngObjects.Add(new TtcAmp(rng).SetIndex(i + 1));
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rngObjects.Add(new TtcBobomb(rng).SetIndex(i + 1));
-            }
-            for (int i = 0; i < 1; i++)
-            {
-                rngObjects.Add(new TtcDust(rng).SetIndex(i + 1));
-            }
-            return rngObjects;
+            simulation.Print(
+                endingFrame: 1070 - 100,
+                printRng: false,
+                printObjects: true);
         }
     }
 

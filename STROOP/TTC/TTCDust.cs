@@ -46,9 +46,9 @@ namespace STROOP.Ttc
 
         /** Add an arbitrary number of dust frames.
 	     */
-        public void AddDustFrames(params int[] frames)
+        public void AddDustFrames(List<int> dustFrames)
         {
-            _dustFrames.AddRange(frames);
+            _dustFrames.AddRange(dustFrames);
         }
 
     }

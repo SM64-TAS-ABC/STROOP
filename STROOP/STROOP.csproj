@@ -318,6 +318,7 @@
       <DependentUpon>MainLoadingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoadingHandler.cs" />
+    <Compile Include="Ttc\TtcSimulation.cs" />
     <Compile Include="Ttc\TtcRng.cs" />
     <Compile Include="Ttc\TtcMain.cs" />
     <Compile Include="Ttc\TtcWheel.cs" />
