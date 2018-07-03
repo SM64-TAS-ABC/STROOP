@@ -318,6 +318,7 @@
       <DependentUpon>MainLoadingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoadingHandler.cs" />
+    <Compile Include="TTC\TTCObject.cs" />
     <Compile Include="M64\M64CopiedFrame.cs" />
     <Compile Include="M64\M64File.cs" />
     <Compile Include="M64\M64InputCell.cs" />
