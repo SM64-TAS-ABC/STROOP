@@ -19,7 +19,8 @@ namespace STROOP.Ttc
         {
             int earliestDustFrame = 229234;
             int dustFrameRange = 25;
-            int numFramesToBruteForce = 1500;
+            int numFramesMin = 150;
+            int numFramesMax = 500;
 
             List<List<int>> dustFrameLists = GetDustFrameLists(earliestDustFrame, dustFrameRange);
             int counter = 0;
@@ -30,11 +31,13 @@ namespace STROOP.Ttc
                     StringUtilities.WriteLine("counter = {0} / {1}", counter, dustFrameLists.Count);
 
                 TtcSimulation simulation = new TtcSimulation(dustFrames);
-                int? idealCogConfigurationFrame = simulation.LookForIdealCogConfiguration(numFramesToBruteForce);
+                int? idealCogConfigurationFrame = simulation.FindIdealCogConfiguration(numFramesMin, numFramesMax);
                 if (idealCogConfigurationFrame.HasValue)
                 {
+                    List<int> dustInputFrames = dustFrames.ConvertAll(dustFrame => dustFrame - 2);
+                    string dustInputFramesString = "[" + String.Join(", ", dustInputFrames) + "]";
                     string dustFramesString = "[" + String.Join(", ", dustFrames) + "]";
-                    StringUtilities.WriteLine(dustFramesString + " => " + idealCogConfigurationFrame.Value);
+                    StringUtilities.WriteLine(dustInputFramesString + " => " + dustFramesString + " => " + idealCogConfigurationFrame.Value);
                     StringUtilities.WriteLine("Success");
                     return;
                 }

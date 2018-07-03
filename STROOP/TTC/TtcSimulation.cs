@@ -67,7 +67,7 @@ namespace STROOP.Ttc
             return String.Join("\r\n", lines);
         }
 
-        public int? LookForIdealCogConfiguration(int numFrames)
+        public int? FindIdealCogConfiguration(int numFramesMin, int numFramesMax)
         {
             TtcCog upperCog = _rngObjects[31] as TtcCog;
             TtcCog lowerCog = _rngObjects[32] as TtcCog;
@@ -75,7 +75,7 @@ namespace STROOP.Ttc
             //iterate through frames to update objects
             int frame = _startingFrame;
             int counter = 0;
-            while (frame < _startingFrame + numFrames)
+            while (frame < _startingFrame + numFramesMax)
             {
                 frame++;
                 counter++;
@@ -85,9 +85,12 @@ namespace STROOP.Ttc
                     rngObject.Update();
                 }
 
-                if (upperCog._currentAngularVelocity == 0 && lowerCog._currentAngularVelocity == 0)
+                if (frame >= numFramesMin)
                 {
-                    return frame;
+                    if (upperCog._currentAngularVelocity == 200 && lowerCog._currentAngularVelocity == 200)
+                    {
+                        return frame;
+                    }
                 }
             }
 
