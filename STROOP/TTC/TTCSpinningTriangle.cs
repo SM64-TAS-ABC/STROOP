@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace STROOP.TTC
+namespace STROOP.Ttc
 {
     /** A spinning triangle is the triangle platform that spins about
      *  a vertical axis (i.e. changes its yaw).
      *  It functions exactly as the cog does.
      */
-    public class TTCSpinningTriangle : TTCObject
+    public class TtcSpinningTriangle : TtcObject
     {
 
         public int angle;
         public int currentAngularVelocity;
         public int targetAngularVelocity;
 
-        public TTCSpinningTriangle(int startingAngle)
+        public TtcSpinningTriangle(int startingAngle)
         {
             angle = startingAngle;
             currentAngularVelocity = 0;

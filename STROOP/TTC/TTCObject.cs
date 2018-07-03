@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace STROOP.TTC
+namespace STROOP.Ttc
 {
     /** RNGObject is an abstract class that applies to
      *  every object that calls RNG. An RNGObject has an
      *  update method that updates the object's state
      *  exactly 1 frame forward, during which it may call RNG.
      */
-    public abstract class TTCObject
+    public abstract class TtcObject
     {
 
         //variables to tweak how objects are printed
@@ -26,7 +26,7 @@ namespace STROOP.TTC
 
         /** id begins as the object's class name by default.
          */
-        public TTCObject()
+        public TtcObject()
         {
             id = GetType().Name.ToString();
         }
@@ -44,7 +44,7 @@ namespace STROOP.TTC
          *  objects when printing them (e.g. helps make the distinction
          *  between "Bobomb 1" and "Bobomb 2").
          */
-        public TTCObject setIndex(int index)
+        public TtcObject setIndex(int index)
         {
             id = GetType().Name.ToString() + index;
             return this;
@@ -54,7 +54,7 @@ namespace STROOP.TTC
          */
         protected int pollRNG()
         {
-            return TTCRng.pollRNG();
+            return TtcRng.pollRNG();
         }
 
         /** Sets the frame that the object should be updating to.

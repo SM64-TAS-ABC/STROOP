@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace STROOP.TTC
+namespace STROOP.Ttc
 {
     /** A spinner is the rectangle platform that spins about
       *  a horizontal axis (i.e. changes its pitch).
@@ -17,7 +17,7 @@ namespace STROOP.TTC
       *  intended direction.
       *  Then for 1 frame, the spinner spins counterclockwise.
       */
-    public class TTCSpinner : TTCObject
+    public class TtcSpinner : TtcObject
     {
 
         public int angle;
@@ -25,7 +25,7 @@ namespace STROOP.TTC
         public int max;
         public int counter;
 
-        public TTCSpinner()
+        public TtcSpinner()
         {
             angle = 0;
             direction = 0;

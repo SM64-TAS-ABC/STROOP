@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace STROOP.TTC
+namespace STROOP.Ttc
 {
     /** Rotating block is the triangular prism that rotates around a
      *  horizontal axis (i.e. changes its pitch). They look like
@@ -14,7 +14,7 @@ namespace STROOP.TTC
      *  Once it has waited this long, it begins rotating
      *  and the process repeats.
      */
-    public class TTCRotatingTriangularPrism : TTCObject
+    public class TtcRotatingTriangularPrism : TtcObject
     {
 
         //the turning time for rotating triangular prisms
@@ -23,7 +23,7 @@ namespace STROOP.TTC
         public int max;
         public int timer;
 
-        public TTCRotatingTriangularPrism()
+        public TtcRotatingTriangularPrism()
         {
             max = 0;
             timer = 0;

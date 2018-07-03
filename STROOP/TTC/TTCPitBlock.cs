@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace STROOP.TTC
+namespace STROOP.Ttc
 {
     /** The pit block is the cube platform that moves up and down
      *  near the pit and the pendulums star. There is only 1 pit block.
@@ -13,7 +13,7 @@ namespace STROOP.TTC
      *  it should wait for. It does not do this at the bottom,
      *  since the time it waits there is always 20 frames.
      */
-    public class TTCPitBlock : TTCObject
+    public class TtcPitBlock : TtcObject
     {
 
         public readonly static int MIN_HEIGHT = -71;
@@ -25,7 +25,7 @@ namespace STROOP.TTC
         public int max;
         public int counter;
 
-        public TTCPitBlock()
+        public TtcPitBlock()
         {
             height = MIN_HEIGHT;
             verticalSpeed = 0;

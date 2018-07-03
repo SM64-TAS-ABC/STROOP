@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace STROOP.TTC
+namespace STROOP.Ttc
 {
     /** A thwomp is the blue cube-like enemy that moves up and down
      *  in an attempt to squish Mario. There is only one Thwomp
@@ -13,7 +13,7 @@ namespace STROOP.TTC
      *  It calls RNG when it reaches the top to determine how long
      *  it should wait for, and it also does this at the bottom.
      */
-    public class TTCThwomp : TTCObject
+    public class TtcThwomp : TtcObject
     {
 
         public readonly static int MIN_HEIGHT = 6192;
@@ -26,7 +26,7 @@ namespace STROOP.TTC
         public int state; //0 = going up, 1 = at top, 2 = going down, 3/4 = at bottom
         public int counter;
 
-        public TTCThwomp()
+        public TtcThwomp()
         {
             height = MIN_HEIGHT;
             verticalSpeed = 0;

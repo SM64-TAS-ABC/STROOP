@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace STROOP.TTC
+namespace STROOP.Ttc
 {
     /** A pusher is rectangular prism that extends from and
      *  retracts into the wall. They are referred to as
@@ -19,7 +19,7 @@ namespace STROOP.TTC
      *  the way out, then it eventually comes to a stop and then
      *  retracts until it's flush with the wall.
      */
-    public class TTCPusher : TTCObject
+    public class TtcPusher : TtcObject
     {
 
         public int max;
@@ -27,7 +27,7 @@ namespace STROOP.TTC
         public int state; //0 = flush with wall, 1 = retracted, 2 = extending, 3 = retracting
         public int counter;
 
-        public TTCPusher(int countdownIn)
+        public TtcPusher(int countdownIn)
         {
             max = 55;
             countdown = countdownIn;

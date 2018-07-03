@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace STROOP.TTC
+namespace STROOP.Ttc
 {
     /** A treadmill is the yellow treadmill that periodically
      *  reverses directions. Although there are 7 treadmills
@@ -18,7 +18,7 @@ namespace STROOP.TTC
      *  in that direction for the allotted time, it decelerates to
      *  a stop, and the process repeats.
      */
-    public class TTCTreadmill : TTCObject
+    public class TtcTreadmill : TtcObject
     {
 
         //whether this treadmill is the first treadmill
@@ -29,7 +29,7 @@ namespace STROOP.TTC
         public int max;
         public int counter;
 
-        public TTCTreadmill(bool isFirstTreadmillIn)
+        public TtcTreadmill(bool isFirstTreadmillIn)
         {
             isFirstTreadmill = isFirstTreadmillIn;
             currentSpeed = 0;

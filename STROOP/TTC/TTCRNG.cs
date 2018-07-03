@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace STROOP.TTC
+namespace STROOP.Ttc
 {
     /** RNGManger is a static class that manages the RNG.
  *  This includes keeping track of the RNG and its index,
@@ -13,7 +13,7 @@ namespace STROOP.TTC
  *  to set any RNG or index.
  */
 
-    public class TTCRng
+    public class TtcRng
     {
 
         //start off with RNG 0 by default

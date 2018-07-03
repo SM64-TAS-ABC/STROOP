@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace STROOP.TTC
+namespace STROOP.Ttc
 {
     /** A wheel is the little cog-like structure that is found
      *  slightly under the floor in various parts of TTC.
      *  They appear in pairs. They function exactly as the hands do,
      *  except that their ticks are greater in magnitude.
      */
-    public class TTCWheel : TTCObject
+    public class TtcWheel : TtcObject
     {
 
         public readonly static int DISPLACEMENT_MAGNITUDE = 3276;
@@ -23,7 +23,7 @@ namespace STROOP.TTC
         public int directionTimer;
         public int timer;
 
-        public TTCWheel()
+        public TtcWheel()
         {
             angle = 0;
             max = 0;

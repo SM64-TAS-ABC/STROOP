@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace STROOP.TTC
+namespace STROOP.Ttc
 {
     /** A bob-omb is the black bomb enemy. There are
     *  two of them in TTC, near the start of the course.
@@ -20,7 +20,7 @@ namespace STROOP.TTC
     *  not be visible, but will still update and call RNG
     *  just as normal.
     */
-    public class TTCBobomb : TTCObject
+    public class TtcBobomb : TtcObject
     {
 
         //how deep into the blink the bob-omb is
@@ -30,7 +30,7 @@ namespace STROOP.TTC
         //whether Mario is within 4000 units of the bob-omb
         public bool withinMarioRange;
 
-        public TTCBobomb()
+        public TtcBobomb()
         {
             blinkingTimer = 0;
             withinMarioRange = true;

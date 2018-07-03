@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace STROOP.TTC
+namespace STROOP.Ttc
 {
     /** An elevator is the yellow rectangle platform that moves up and down
      *  and will periodically stops and switches directions.
@@ -15,7 +15,7 @@ namespace STROOP.TTC
      *  direction (up or down) and how long until the next
      *  possible direction switch.
      */
-    public class TTCElevator : TTCObject
+    public class TtcElevator : TtcObject
     {
 
         public readonly int MIN_HEIGHT;
@@ -27,7 +27,7 @@ namespace STROOP.TTC
         public int max;
         public int counter;
 
-        public TTCElevator(int minHeightIn, int maxHeightIn)
+        public TtcElevator(int minHeightIn, int maxHeightIn)
         {
             MIN_HEIGHT = minHeightIn;
             MAX_HEIGHT = maxHeightIn;

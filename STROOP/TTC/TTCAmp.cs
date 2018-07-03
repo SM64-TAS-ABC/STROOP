@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace STROOP.TTC
+namespace STROOP.Ttc
 {
     /** Amp is the electric metal ball enemy that goes in a circle.
      *  He only calls RNG once when he is first initialized.
      *  After that, he no longer calls RNG.
      */
-    public class TTCAmp : TTCObject
+    public class TtcAmp : TtcObject
     {
 
         public bool initializedYet;
 
-        public TTCAmp()
+        public TtcAmp()
         {
             initializedYet = false;
         }

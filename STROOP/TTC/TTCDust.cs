@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace STROOP.TTC
+namespace STROOP.Ttc
 {
     /** Dust is the dust created at Mario's feet when he accelerates
     *  or decelerates or does any other dust making technique.
@@ -18,12 +18,12 @@ namespace STROOP.TTC
     *  that Mario moves and the dust is present. So in that case,
     *  you'd add 100 as a dust frame.
     */
-    public class TTCDust : TTCObject
+    public class TtcDust : TtcObject
     {
 
         public List<int> dustFrames;
 
-        public TTCDust()
+        public TtcDust()
         {
             dustFrames = new List<int>();
         }

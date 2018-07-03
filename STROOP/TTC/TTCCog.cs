@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace STROOP.TTC
+namespace STROOP.Ttc
 {
         /** A cog is the hexagon platform that spins about
          *  a vertical axis (i.e. changes its yaw).
@@ -15,14 +15,14 @@ namespace STROOP.TTC
          *  reaches the target angular velocity, a new target angular velocity
          *  is calculated.
          */
-        public class TTCCog : TTCObject
+        public class TtcCog : TtcObject
         {
 
         public int angle;
         public int currentAngularVelocity;
         public int targetAngularVelocity;
 
-        public TTCCog()
+        public TtcCog()
         {
             angle = 0;
             currentAngularVelocity = 0;

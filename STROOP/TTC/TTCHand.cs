@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace STROOP.TTC
+namespace STROOP.Ttc
 {
     /** A hand is the long horizontal clock hand that rotates
       *  in a circle and that Mario is supposed to ride on to
@@ -18,7 +18,7 @@ namespace STROOP.TTC
       *  how long it should be until it has the chance to change
       *  direction again (i.e. what value its direction timer will be).
       */
-    public class TTCHand : TTCObject
+    public class TtcHand : TtcObject
     {
 
 
@@ -32,7 +32,7 @@ namespace STROOP.TTC
         public int directionTimer;
         public int timer;
 
-        public TTCHand(int startingAngle)
+        public TtcHand(int startingAngle)
         {
             angle = startingAngle;
             max = 0;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace STROOP.TTC
+namespace STROOP.Ttc
 {
     /** Rotating block is the cube that rotates around a
      *  horizontal axis (i.e. changes its pitch).
@@ -13,7 +13,7 @@ namespace STROOP.TTC
      *  Once it has waited this long, it begins rotating
      *  and the process repeats.
      */
-    public class TTCRotatingBlock : TTCObject
+    public class TtcRotatingBlock : TtcObject
     {
 
         //the turning time for rotating blocks
@@ -22,7 +22,7 @@ namespace STROOP.TTC
         public int max;
         public int timer;
 
-        public TTCRotatingBlock()
+        public TtcRotatingBlock()
         {
             max = 0;
             timer = 0;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace STROOP.TTC
+namespace STROOP.Ttc
 {
     /** A pendulum is the pendulum that swings back and forth.
       *  
@@ -14,7 +14,7 @@ namespace STROOP.TTC
       *  past the vertical (i.e. angle 0), the pendulum decelerates
       *  by that same acceleration until it comes to a stop.
       */
-    public class TTCPendulum : TTCObject
+    public class TtcPendulum : TtcObject
     {
 
 
@@ -24,7 +24,7 @@ namespace STROOP.TTC
         public int accelerationMagnitude;
         public int waitingTimer;
 
-        public TTCPendulum()
+        public TtcPendulum()
         {
             accelerationDirection = 0;
             angle = 6500;
