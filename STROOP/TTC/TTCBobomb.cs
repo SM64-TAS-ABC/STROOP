@@ -25,31 +25,31 @@ namespace STROOP.Ttc
 
         //how deep into the blink the bob-omb is
         //this variable is 0 when the bob-omb is not blinking
-        public int blinkingTimer;
+        public int _blinkingTimer;
 
         //whether Mario is within 4000 units of the bob-omb
-        public bool withinMarioRange;
+        public bool _withinMarioRange;
 
         public TtcBobomb(TtcRng rng) : base(rng)
         {
-            blinkingTimer = 0;
-            withinMarioRange = true;
+            _blinkingTimer = 0;
+            _withinMarioRange = true;
         }
 
         public override void update()
         {
             //don't update at all if not within mario range
-            if (!withinMarioRange) return;
+            if (!_withinMarioRange) return;
 
-            if (blinkingTimer > 0)
+            if (_blinkingTimer > 0)
             { //currently blinking
-                blinkingTimer = (blinkingTimer + 1) % 16;
+                _blinkingTimer = (_blinkingTimer + 1) % 16;
             }
             else
             { //not currently blinking
                 if (pollRNG() <= 655)
                 {
-                    blinkingTimer++;
+                    _blinkingTimer++;
                 }
             }
         }
@@ -57,14 +57,14 @@ namespace STROOP.Ttc
         /** Change whether Mario is within the bob-omb's
 	     *  4000 unit radius.
 	     */
-        public void setWithinMarioRange(bool b)
+        public void setWithinMarioRange(bool withinMarioRange)
         {
-            withinMarioRange = b;
+            _withinMarioRange = withinMarioRange;
         }
 
         public override string ToString()
         {
-            return id + OPENER + blinkingTimer + CLOSER;
+            return _id + OPENER + _blinkingTimer + CLOSER;
         }
 
     }

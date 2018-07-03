@@ -12,25 +12,25 @@ namespace STROOP.Ttc
     public class TtcAmp : TtcObject
     {
 
-        public bool initializedYet;
+        public bool _initializedYet;
 
         public TtcAmp(TtcRng rng) : base(rng)
         {
-            initializedYet = false;
+            _initializedYet = false;
         }
 
         public override void update()
         {
-            if (!initializedYet)
+            if (!_initializedYet)
             {
                 pollRNG();
-                initializedYet = true;
+                _initializedYet = true;
             }
         }
 
         public override string ToString()
         {
-            return id + OPENER + initializedYet + CLOSER;
+            return _id + OPENER + _initializedYet + CLOSER;
         }
     }
 }

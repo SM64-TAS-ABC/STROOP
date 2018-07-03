@@ -22,118 +22,118 @@ namespace STROOP.Ttc
     public class TtcPusher : TtcObject
     {
 
-        public int max;
-        public int countdown;
-        public int state; //0 = flush with wall, 1 = retracted, 2 = extending, 3 = retracting
-        public int counter;
+        public int _max;
+        public int _countdown;
+        public int _state; //0 = flush with wall, 1 = retracted, 2 = extending, 3 = retracting
+        public int _counter;
 
-        public TtcPusher(TtcRng rng, int countdownIn) : base(rng)
+        public TtcPusher(TtcRng rng, int countdown) : base(rng)
         {
-            max = 55;
-            countdown = countdownIn;
-            state = 0;
-            counter = 0;
+            _max = 55;
+            _countdown = countdown;
+            _state = 0;
+            _counter = 0;
         }
 
         public override void update()
         {
-            if (state == 0)
+            if (_state == 0)
             { //flush with wall
-                if (counter <= max)
+                if (_counter <= _max)
                 {
-                    counter++;
+                    _counter++;
                 }
-                else if (countdown > 0)
+                else if (_countdown > 0)
                 {
-                    countdown--;
-                    counter++;
+                    _countdown--;
+                    _counter++;
                 }
                 else
                 {
                     int rand = pollRNG();
-                    if (rand % 4 == 0) max = 1;
-                    if (rand % 4 == 1) max = 12;
-                    if (rand % 4 == 2) max = 55;
-                    if (rand % 4 == 3) max = 100;
+                    if (rand % 4 == 0) _max = 1;
+                    if (rand % 4 == 1) _max = 12;
+                    if (rand % 4 == 2) _max = 55;
+                    if (rand % 4 == 3) _max = 100;
 
                     // countdown = 0 or [20,120)
                     if (pollRNG() % 2 == 0)
                     {
-                        countdown = (int)(pollRNG() / 65536.0 * 100 + 20); // = [20,120)
+                        _countdown = (int)(pollRNG() / 65536.0 * 100 + 20); // = [20,120)
                     }
 
-                    state = 1;
-                    counter = 0;
+                    _state = 1;
+                    _counter = 0;
                 }
             }
-            else if (state == 1)
+            else if (_state == 1)
             { //retracted
-                if (counter < 10)
+                if (_counter < 10)
                 { //waiting
-                    counter++;
+                    _counter++;
                 }
                 else
                 {
-                    if (countdown > 0)
+                    if (_countdown > 0)
                     { //moving back in
-                        countdown--;
-                        counter++;
+                        _countdown--;
+                        _counter++;
                     }
                     else
                     { //moving back in
-                        state = 2;
-                        counter = 0;
+                        _state = 2;
+                        _counter = 0;
                     }
                 }
             }
-            else if (state == 2)
+            else if (_state == 2)
             { //extending
-                if (counter == 0)
+                if (_counter == 0)
                 { //wait one frame
-                    counter++;
+                    _counter++;
                 }
-                else if (counter == 1)
+                else if (_counter == 1)
                 { //either extend out or fake it
                     if (pollRNG() % 4 == 0)
                     { //fake extend
-                        state = 0;
-                        counter = 0;
+                        _state = 0;
+                        _counter = 0;
                     }
                     else
                     { //actually extend
-                        counter++;
+                        _counter++;
                     }
                 }
-                else if (counter < 36)
+                else if (_counter < 36)
                 { //continue extending out
-                    counter++;
+                    _counter++;
                 }
                 else
                 { //finished extending out
-                    state = 3;
-                    counter = 0;
+                    _state = 3;
+                    _counter = 0;
                 }
             }
             else
             { //retracting
-                if (counter < 82)
+                if (_counter < 82)
                 { //still retracting
-                    counter++;
+                    _counter++;
                 }
                 else
                 { //finished retracting
-                    state = 0;
-                    counter = 0;
+                    _state = 0;
+                    _counter = 0;
                 }
             }
         }
 
         public override string ToString()
         {
-            return id + OPENER + max + SEPARATOR +
-                          countdown + SEPARATOR +
-                          state + SEPARATOR +
-                          counter + CLOSER;
+            return _id + OPENER + _max + SEPARATOR +
+                          _countdown + SEPARATOR +
+                          _state + SEPARATOR +
+                          _counter + CLOSER;
         }
 
     }

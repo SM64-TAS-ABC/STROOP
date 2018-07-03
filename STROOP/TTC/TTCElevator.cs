@@ -21,59 +21,59 @@ namespace STROOP.Ttc
         public readonly int MIN_HEIGHT;
         public readonly int MAX_HEIGHT;
 
-        public int height;
-        public int verticalSpeed;
-        public int direction;
-        public int max;
-        public int counter;
+        public int _height;
+        public int _verticalSpeed;
+        public int _direction;
+        public int _max;
+        public int _counter;
 
-        public TtcElevator(TtcRng rng, int minHeightIn, int maxHeightIn) : base(rng)
+        public TtcElevator(TtcRng rng, int minHeight, int maxHeight) : base(rng)
         {
-            MIN_HEIGHT = minHeightIn;
-            MAX_HEIGHT = maxHeightIn;
-            height = MIN_HEIGHT;
-            verticalSpeed = 0;
-            direction = 1;
-            max = 0;
-            counter = 0;
+            MIN_HEIGHT = minHeight;
+            MAX_HEIGHT = maxHeight;
+            _height = MIN_HEIGHT;
+            _verticalSpeed = 0;
+            _direction = 1;
+            _max = 0;
+            _counter = 0;
         }
 
         public override void update()
         {
-            if (counter <= 4)
+            if (_counter <= 4)
             {
-                verticalSpeed = 0;
+                _verticalSpeed = 0;
             }
             else
             {
-                verticalSpeed = direction * 6;
+                _verticalSpeed = _direction * 6;
             }
 
-            height = height + verticalSpeed;
+            _height = _height + _verticalSpeed;
 
-            if (counter > max)
+            if (_counter > _max)
             {
-                direction = (pollRNG() <= 32766) ? -1 : 1; // = -1, 1
-                max = (pollRNG() % 6) * 30 + 30; // = 30, 60, 90, 120, 150, 180
-                counter = 0;
+                _direction = (pollRNG() <= 32766) ? -1 : 1; // = -1, 1
+                _max = (pollRNG() % 6) * 30 + 30; // = 30, 60, 90, 120, 150, 180
+                _counter = 0;
             }
 
-            height = Math.Max(height, MIN_HEIGHT);
-            height = Math.Min(height, MAX_HEIGHT);
-            if (height == MIN_HEIGHT || height == MAX_HEIGHT)
+            _height = Math.Max(_height, MIN_HEIGHT);
+            _height = Math.Min(_height, MAX_HEIGHT);
+            if (_height == MIN_HEIGHT || _height == MAX_HEIGHT)
             {
-                direction *= -1;
+                _direction *= -1;
             }
-            counter++;
+            _counter++;
         }
 
         public override string ToString()
         {
-            return id + OPENER + height + SEPARATOR +
-                      verticalSpeed + SEPARATOR +
-                      direction + SEPARATOR +
-                      max + SEPARATOR +
-                      counter + CLOSER;
+            return _id + OPENER + _height + SEPARATOR +
+                      _verticalSpeed + SEPARATOR +
+                      _direction + SEPARATOR +
+                      _max + SEPARATOR +
+                      _counter + CLOSER;
         }
 
     }

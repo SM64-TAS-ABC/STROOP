@@ -20,56 +20,56 @@ namespace STROOP.Ttc
     public class TtcSpinner : TtcObject
     {
 
-        public int angle;
-        public int direction; //1 = CCW, -1 = CW
-        public int max;
-        public int counter;
+        public int _angle;
+        public int _direction; //1 = CCW, -1 = CW
+        public int _max;
+        public int _counter;
 
         public TtcSpinner(TtcRng rng) : base(rng)
         {
-            angle = 0;
-            direction = 0;
-            max = 0;
-            counter = 0;
+            _angle = 0;
+            _direction = 0;
+            _max = 0;
+            _counter = 0;
         }
 
         public override void update()
         {
 
-            if (counter <= max)
+            if (_counter <= _max)
             { //spin normal
-                if (counter <= 5)
+                if (_counter <= 5)
                 { //don't spin
-                    counter++;
+                    _counter++;
                 }
                 else
                 { //spin
-                    angle += direction * 200;
-                    angle = normalize(angle);
-                    counter++;
+                    _angle += _direction * 200;
+                    _angle = normalize(_angle);
+                    _counter++;
                 }
             }
             else
             { //start a new spin
               //do a CCW spin
-                angle += 200;
-                angle = normalize(angle);
+                _angle += 200;
+                _angle = normalize(_angle);
 
                 //calculate new spin
-                direction = (pollRNG() <= 32766) ? -1 : 1; // = -1, 1
-                max = (pollRNG() % 4) * 30 + 30; // = 30, 60, 90, 120
-                counter = 0;
-                counter++;
+                _direction = (pollRNG() <= 32766) ? -1 : 1; // = -1, 1
+                _max = (pollRNG() % 4) * 30 + 30; // = 30, 60, 90, 120
+                _counter = 0;
+                _counter++;
             }
 
         }
 
         public override string ToString()
         {
-            return id + OPENER + angle + SEPARATOR +
-                    direction + SEPARATOR +
-                    max + SEPARATOR +
-                    counter + CLOSER;
+            return _id + OPENER + _angle + SEPARATOR +
+                    _direction + SEPARATOR +
+                    _max + SEPARATOR +
+                    _counter + CLOSER;
         }
 
     }

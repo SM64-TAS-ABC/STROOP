@@ -21,16 +21,16 @@ namespace STROOP.Ttc
     public class TtcDust : TtcObject
     {
 
-        public List<int> dustFrames;
+        public List<int> _dustFrames;
 
         public TtcDust(TtcRng rng) : base(rng)
         {
-            dustFrames = new List<int>();
+            _dustFrames = new List<int>();
         }
 
         public override void update()
         {
-            if (dustFrames.Contains(currentFrame))
+            if (_dustFrames.Contains(_currentFrame))
             {
                 pollRNG();
                 pollRNG();
@@ -41,7 +41,7 @@ namespace STROOP.Ttc
 
         public override string ToString()
         {
-            return id + OPENER + dustFrames.Contains(currentFrame) + CLOSER;
+            return _id + OPENER + _dustFrames.Contains(_currentFrame) + CLOSER;
         }
 
         /** Add an arbitrary number of dust frames.
@@ -50,7 +50,7 @@ namespace STROOP.Ttc
         {
             foreach (int frame in frames)
             {
-                dustFrames.Add(frame);
+                _dustFrames.Add(frame);
             }
         }
 

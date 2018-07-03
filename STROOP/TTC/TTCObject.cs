@@ -21,17 +21,17 @@ namespace STROOP.Ttc
         public TtcRng _rng;
 
 	    //id is an identifier for this object (e.g. "Cog 2")
-	    public string id;
+	    public string _id;
 
         //the frame that the objects are updating to
-        public int currentFrame;
+        public int _currentFrame;
 
         /** id begins as the object's class name by default.
          */
         public TtcObject(TtcRng rng)
         {
             _rng = rng;
-            id = GetType().Name.ToString();
+            _id = GetType().Name.ToString();
         }
 
         /** Update the object exactly one frame.
@@ -49,7 +49,7 @@ namespace STROOP.Ttc
          */
         public TtcObject setIndex(int index)
         {
-            id = GetType().Name.ToString() + index;
+            _id = GetType().Name.ToString() + index;
             return this;
         }
 
@@ -64,7 +64,7 @@ namespace STROOP.Ttc
          */
         public void setFrame(int currentFrame)
         {
-            this.currentFrame = currentFrame;
+            this._currentFrame = currentFrame;
         }
 
         /** Returns an angle between 0 and 65535 inclusive

@@ -12,38 +12,38 @@ namespace STROOP.Ttc
     public class TtcSpinningTriangle : TtcObject
     {
 
-        public int angle;
-        public int currentAngularVelocity;
-        public int targetAngularVelocity;
+        public int _angle;
+        public int _currentAngularVelocity;
+        public int _targetAngularVelocity;
 
         public TtcSpinningTriangle(TtcRng rng, int startingAngle) : base(rng)
         {
-            angle = startingAngle;
-            currentAngularVelocity = 0;
-            targetAngularVelocity = 0;
+            _angle = startingAngle;
+            _currentAngularVelocity = 0;
+            _targetAngularVelocity = 0;
         }
 
         public override void update()
         {
-            if (currentAngularVelocity > targetAngularVelocity) currentAngularVelocity -= 50;
-            else if (currentAngularVelocity < targetAngularVelocity) currentAngularVelocity += 50;
+            if (_currentAngularVelocity > _targetAngularVelocity) _currentAngularVelocity -= 50;
+            else if (_currentAngularVelocity < _targetAngularVelocity) _currentAngularVelocity += 50;
 
-            angle += currentAngularVelocity;
-            angle = normalize(angle);
+            _angle += _currentAngularVelocity;
+            _angle = normalize(_angle);
 
-            if (currentAngularVelocity == targetAngularVelocity)
+            if (_currentAngularVelocity == _targetAngularVelocity)
             {
                 int magnitude = (pollRNG() % 7) * 200; // = 0, 200, 400, 600, 800, 1000, 1200
                 int sign = (pollRNG() <= 32766) ? -1 : 1; // = -1, 1
-                targetAngularVelocity = magnitude * sign; // = -1200, -1000, ... , 1000, 1200
+                _targetAngularVelocity = magnitude * sign; // = -1200, -1000, ... , 1000, 1200
             }
         }
 
         public override string ToString()
         {
-            return id + OPENER + angle + SEPARATOR +
-                    currentAngularVelocity + SEPARATOR +
-                    targetAngularVelocity + CLOSER;
+            return _id + OPENER + _angle + SEPARATOR +
+                    _currentAngularVelocity + SEPARATOR +
+                    _targetAngularVelocity + CLOSER;
         }
 
     }

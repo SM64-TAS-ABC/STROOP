@@ -16,25 +16,25 @@ namespace STROOP.Ttc
     {
 
         //start off with RNG 0 by default
-        private int index;
+        private int _index;
 
         public TtcRng(int indexIn)
         {
-            index = indexIn;
+            _index = indexIn;
         }
 
         /** Get the current RNG (will not update RNG).
          */
         public ushort getCurrentRNG()
         {
-            return RngIndexer.GetRngValue(index);
+            return RngIndexer.GetRngValue(_index);
         }
 
         /** Get the current index (will not update RNG).
          */
         public int getCurrentIndex()
         {
-            return index;
+            return _index;
         }
 
         /** Poll (or call) RNG. This method updates RNG to the
@@ -43,22 +43,22 @@ namespace STROOP.Ttc
          */
         public ushort pollRNG()
         {
-            index = (index + 1) % 65114;
+            _index = (_index + 1) % 65114;
             return getCurrentRNG();
         }
 
         /** Sets the RNG/index using an inputted index.
          */
-        public void setOrder(int indexIn)
+        public void setOrder(int index)
         {
-            index = indexIn;
+            _index = index;
         }
 
         /** Sets the RNG/index using an inputted RNG value.
          */
-        public void setRNG(ushort rngValueIn)
+        public void setRNG(ushort rngValue)
         {
-            index = RngIndexer.GetRngIndex(rngValueIn);
+            _index = RngIndexer.GetRngIndex(rngValue);
         }
 
     }

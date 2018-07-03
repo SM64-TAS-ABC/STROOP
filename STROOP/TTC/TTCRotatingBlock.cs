@@ -44,7 +44,7 @@ namespace STROOP.Ttc
 
         public override string ToString()
         {
-            return id + OPENER + max + SEPARATOR +
+            return _id + OPENER + max + SEPARATOR +
                     timer + CLOSER;
         }
 

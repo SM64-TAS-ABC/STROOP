@@ -22,61 +22,61 @@ namespace STROOP.Ttc
     {
 
         //whether this treadmill is the first treadmill
-        public readonly bool isFirstTreadmill;
+        public readonly bool _isFirstTreadmill;
 	
-	    public int currentSpeed;
-        public int targetSpeed;
-        public int max;
-        public int counter;
+	    public int _currentSpeed;
+        public int _targetSpeed;
+        public int _max;
+        public int _counter;
 
-        public TtcTreadmill(TtcRng rng, bool isFirstTreadmillIn) : base(rng)
+        public TtcTreadmill(TtcRng rng, bool isFirstTreadmill) : base(rng)
         {
-            isFirstTreadmill = isFirstTreadmillIn;
-            currentSpeed = 0;
-            targetSpeed = 0;
-            max = 0;
-            counter = 0;
+            _isFirstTreadmill = isFirstTreadmill;
+            _currentSpeed = 0;
+            _targetSpeed = 0;
+            _max = 0;
+            _counter = 0;
         }
 
         public override void update()
         {
-            if (!isFirstTreadmill)
+            if (!_isFirstTreadmill)
             { //if not first treadmill, do nothing
-                counter++;
+                _counter++;
                 return;
             }
 
-            if (counter <= max)
+            if (_counter <= _max)
             { //still/accelerate/move
-                if (counter <= 5)
+                if (_counter <= 5)
                 { //be still
-                    counter++;
+                    _counter++;
                 }
                 else
                 { //accelerate/move
-                    currentSpeed = moveNumberTowards(currentSpeed, targetSpeed, 10);
-                    counter++;
+                    _currentSpeed = moveNumberTowards(_currentSpeed, _targetSpeed, 10);
+                    _counter++;
                 }
             }
             else
             { //slow down
-                currentSpeed = moveNumberTowards(currentSpeed, 0, 10);
-                if (currentSpeed == 0)
+                _currentSpeed = moveNumberTowards(_currentSpeed, 0, 10);
+                if (_currentSpeed == 0)
                 { //came to a stop
-                    max = (pollRNG() % 7) * 20 + 10; // = 10, 30, 50, 70, 90, 110, 130
-                    targetSpeed = (pollRNG() <= 32766) ? -50 : 50; // = -50, 50
-                    counter = 0;
+                    _max = (pollRNG() % 7) * 20 + 10; // = 10, 30, 50, 70, 90, 110, 130
+                    _targetSpeed = (pollRNG() <= 32766) ? -50 : 50; // = -50, 50
+                    _counter = 0;
                 }
-                counter++;
+                _counter++;
             }
         }
 
         public override string ToString()
         {
-            return id + OPENER + currentSpeed + SEPARATOR +
-                      targetSpeed + SEPARATOR +
-                      max + SEPARATOR +
-                      counter + CLOSER;
+            return _id + OPENER + _currentSpeed + SEPARATOR +
+                      _targetSpeed + SEPARATOR +
+                      _max + SEPARATOR +
+                      _counter + CLOSER;
         }
 
     }

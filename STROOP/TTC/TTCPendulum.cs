@@ -17,49 +17,48 @@ namespace STROOP.Ttc
     public class TtcPendulum : TtcObject
     {
 
-
-        public int accelerationDirection;
-        public int angle;
-        public int angularVelocity;
-        public int accelerationMagnitude;
-        public int waitingTimer;
+        public int _accelerationDirection;
+        public int _angle;
+        public int _angularVelocity;
+        public int _accelerationMagnitude;
+        public int _waitingTimer;
 
         public TtcPendulum(TtcRng rng) : base(rng)
         {
-            accelerationDirection = 0;
-            angle = 6500;
-            angularVelocity = 0;
-            accelerationMagnitude = 0;
-            waitingTimer = 0;
+            _accelerationDirection = 0;
+            _angle = 6500;
+            _angularVelocity = 0;
+            _accelerationMagnitude = 0;
+            _waitingTimer = 0;
         }
 
         public override void update()
         {
 
-            if (waitingTimer > 0)
+            if (_waitingTimer > 0)
             { //waiting
-                waitingTimer--;
+                _waitingTimer--;
             }
             else
             { //swinging
 
-                if (accelerationMagnitude == 0)
+                if (_accelerationMagnitude == 0)
                 { //give initial acceleration on start
-                    accelerationMagnitude = 13;
+                    _accelerationMagnitude = 13;
                 }
 
-                if (angle > 0) accelerationDirection = -1;
-                else if (angle < 0) accelerationDirection = 1;
+                if (_angle > 0) _accelerationDirection = -1;
+                else if (_angle < 0) _accelerationDirection = 1;
 
-                angularVelocity = angularVelocity + accelerationDirection * accelerationMagnitude;
-                angle = angle + angularVelocity;
+                _angularVelocity = _angularVelocity + _accelerationDirection * _accelerationMagnitude;
+                _angle = _angle + _angularVelocity;
 
-                if (angularVelocity == 0)
+                if (_angularVelocity == 0)
                 { //reached peak of swing
-                    accelerationMagnitude = (pollRNG() % 3 == 0) ? 42 : 13; // = 13, 42
+                    _accelerationMagnitude = (pollRNG() % 3 == 0) ? 42 : 13; // = 13, 42
                     if (pollRNG() % 2 == 0)
                     { //stop for some time
-                        waitingTimer = (int)(pollRNG() / 65536.0 * 30 + 5); // = [5,35)
+                        _waitingTimer = (int)(pollRNG() / 65536.0 * 30 + 5); // = [5,35)
                     }
                 }
             }
@@ -68,11 +67,11 @@ namespace STROOP.Ttc
 
         public override string ToString()
         {
-            return id + OPENER + accelerationDirection + SEPARATOR +
-                      angle + SEPARATOR +
-                      angularVelocity + SEPARATOR +
-                      accelerationMagnitude + SEPARATOR +
-                      waitingTimer + CLOSER;
+            return _id + OPENER + _accelerationDirection + SEPARATOR +
+                      _angle + SEPARATOR +
+                      _angularVelocity + SEPARATOR +
+                      _accelerationMagnitude + SEPARATOR +
+                      _waitingTimer + CLOSER;
         }
 
     }

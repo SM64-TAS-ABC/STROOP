@@ -20,98 +20,98 @@ namespace STROOP.Ttc
         public readonly static int MAX_HEIGHT = 6607;
         public readonly static int RISING_SPEED = 10;
 
-        public int height;
-        public int verticalSpeed;
-        public int max;
-        public int state; //0 = going up, 1 = at top, 2 = going down, 3/4 = at bottom
-        public int counter;
+        public int _height;
+        public int _verticalSpeed;
+        public int _max;
+        public int _state; //0 = going up, 1 = at top, 2 = going down, 3/4 = at bottom
+        public int _counter;
 
         public TtcThwomp(TtcRng rng) : base(rng)
         {
-            height = MIN_HEIGHT;
-            verticalSpeed = 0;
-            max = 0;
-            state = 0;
-            counter = 0;
+            _height = MIN_HEIGHT;
+            _verticalSpeed = 0;
+            _max = 0;
+            _state = 0;
+            _counter = 0;
         }
 
         public override void update()
         {
-            if (state == 0)
+            if (_state == 0)
             { //going up
-                height = Math.Min(MAX_HEIGHT, height + RISING_SPEED);
-                counter++;
-                if (height == MAX_HEIGHT)
+                _height = Math.Min(MAX_HEIGHT, _height + RISING_SPEED);
+                _counter++;
+                if (_height == MAX_HEIGHT)
                 { //reached top
-                    state = 1;
-                    counter = 0;
+                    _state = 1;
+                    _counter = 0;
                 }
             }
-            else if (state == 1)
+            else if (_state == 1)
             { //at top
-                if (counter == 0)
+                if (_counter == 0)
                 { //just reached top
-                    max = (int)(pollRNG() / 65536.0 * 30 + 10); // = [10,40)
+                    _max = (int)(pollRNG() / 65536.0 * 30 + 10); // = [10,40)
                 }
-                if (counter <= max)
+                if (_counter <= _max)
                 { //waiting
-                    counter++;
+                    _counter++;
                 }
                 else
                 { //done waiting
-                    state = 2;
-                    counter = 0;
+                    _state = 2;
+                    _counter = 0;
                 }
             }
-            else if (state == 2)
+            else if (_state == 2)
             { //going down
-                verticalSpeed -= 4;
-                height = Math.Max(MIN_HEIGHT, height + verticalSpeed);
-                counter++;
-                if (height == MIN_HEIGHT)
+                _verticalSpeed -= 4;
+                _height = Math.Max(MIN_HEIGHT, _height + _verticalSpeed);
+                _counter++;
+                if (_height == MIN_HEIGHT)
                 { //reached bottom
-                    verticalSpeed = 0;
-                    state = 3;
-                    counter = 0;
+                    _verticalSpeed = 0;
+                    _state = 3;
+                    _counter = 0;
                 }
             }
-            else if (state == 3)
+            else if (_state == 3)
             { //at bottom (1/2)
-                if (counter < 10)
+                if (_counter < 10)
                 { //waiting
-                    counter++;
+                    _counter++;
                 }
                 else
                 { //done waiting
-                    state = 4;
-                    counter = 0;
+                    _state = 4;
+                    _counter = 0;
                 }
             }
             else
             { //at bottom (2/2)
-                if (counter == 0)
+                if (_counter == 0)
                 { //just reached bottom
-                    max = (int)(pollRNG() / 65536.0 * 10 + 20); // = [20,30)
+                    _max = (int)(pollRNG() / 65536.0 * 10 + 20); // = [20,30)
                 }
-                if (counter <= max)
+                if (_counter <= _max)
                 { //waiting
-                    counter++;
+                    _counter++;
                 }
                 else
                 { //done waiting
-                    state = 0;
-                    counter = 0;
+                    _state = 0;
+                    _counter = 0;
                 }
             }
         }
 
         public override string ToString()
         {
-            return id + OPENER + height + SEPARATOR +
-                    verticalSpeed + SEPARATOR +
-                    max + SEPARATOR +
-                    state + SEPARATOR +
-                    counter + CLOSER;
+            return _id + OPENER + _height + SEPARATOR +
+                    _verticalSpeed + SEPARATOR +
+                    _max + SEPARATOR +
+                    _state + SEPARATOR +
+                    _counter + CLOSER;
         }
 
     }

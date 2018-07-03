@@ -21,81 +21,80 @@ namespace STROOP.Ttc
     public class TtcHand : TtcObject
     {
 
-
         public readonly static int DISPLACEMENT_MAGNITUDE = 1092;
         public readonly static int INITIAL_MAX = 10;
 
-        public int angle;
-        public int max;
-        public int targetAngle;
-        public int displacement;
-        public int directionTimer;
-        public int timer;
+        public int _angle;
+        public int _max;
+        public int _targetAngle;
+        public int _displacement;
+        public int _directionTimer;
+        public int _timer;
 
         public TtcHand(TtcRng rng, int startingAngle) : base(rng)
         {
-            angle = startingAngle;
-            max = 0;
-            targetAngle = 0;
-            displacement = 0;
-            directionTimer = 0;
-            timer = 0;
+            _angle = startingAngle;
+            _max = 0;
+            _targetAngle = 0;
+            _displacement = 0;
+            _directionTimer = 0;
+            _timer = 0;
         }
 
         public override void update()
         {
 
-            if (max == 0)
+            if (_max == 0)
             { //course just started
-                max = INITIAL_MAX;
-                displacement = -1 * DISPLACEMENT_MAGNITUDE;
+                _max = INITIAL_MAX;
+                _displacement = -1 * DISPLACEMENT_MAGNITUDE;
             }
 
-            angle = this.moveAngleTowards(angle, targetAngle, 200);
+            _angle = this.moveAngleTowards(_angle, _targetAngle, 200);
 
-            directionTimer = Math.Max(0, directionTimer - 1);
+            _directionTimer = Math.Max(0, _directionTimer - 1);
 
-            if (timer <= max)
+            if (_timer <= _max)
             { //waiting
-                timer++;
+                _timer++;
             }
-            else if (angle == targetAngle)
+            else if (_angle == _targetAngle)
             { //done waiting and reached target
-                targetAngle = targetAngle + displacement;
-                targetAngle = normalize(targetAngle);
+                _targetAngle = _targetAngle + _displacement;
+                _targetAngle = normalize(_targetAngle);
 
-                if (directionTimer == 0)
+                if (_directionTimer == 0)
                 { //time to maybe switch directions
                     if (pollRNG() % 4 == 0)
                     {
-                        displacement = DISPLACEMENT_MAGNITUDE;
-                        directionTimer = (pollRNG() % 3) * 30 + 30; // = 30, 60, 90
+                        _displacement = DISPLACEMENT_MAGNITUDE;
+                        _directionTimer = (pollRNG() % 3) * 30 + 30; // = 30, 60, 90
                     }
                     else
                     {
-                        displacement = -1 * DISPLACEMENT_MAGNITUDE;
-                        directionTimer = (pollRNG() % 4) * 60 + 90; // = 90, 150, 210, 270
+                        _displacement = -1 * DISPLACEMENT_MAGNITUDE;
+                        _directionTimer = (pollRNG() % 4) * 60 + 90; // = 90, 150, 210, 270
                     }
                 }
 
-                max = (pollRNG() % 3) * 20 + 10; // = 10, 30, 50
-                timer = 0;
-                timer++;
+                _max = (pollRNG() % 3) * 20 + 10; // = 10, 30, 50
+                _timer = 0;
+                _timer++;
             }
             else
             { //timer high enough, but not at target angle (will only happen at level start)
-                timer++;
+                _timer++;
             }
         }
 
         public override string ToString()
         {
-            return id + OPENER + angle + SEPARATOR +
-                          max + SEPARATOR +
-                          targetAngle + SEPARATOR +
-                          displacement + SEPARATOR +
-                          directionTimer + SEPARATOR +
-                          timer + CLOSER;
+            return _id + OPENER + _angle + SEPARATOR +
+                          _max + SEPARATOR +
+                          _targetAngle + SEPARATOR +
+                          _displacement + SEPARATOR +
+                          _directionTimer + SEPARATOR +
+                          _timer + CLOSER;
         }
 
     }

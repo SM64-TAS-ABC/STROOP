@@ -19,63 +19,63 @@ namespace STROOP.Ttc
         public readonly static int MIN_HEIGHT = -71;
         public readonly static int MAX_HEIGHT = 259;
 
-        public int height;
-        public int verticalSpeed;
-        public int state; //0 = going up, 1 = going down
-        public int max;
-        public int counter;
+        public int _height;
+        public int _verticalSpeed;
+        public int _state; //0 = going up, 1 = going down
+        public int _max;
+        public int _counter;
 
         public TtcPitBlock(TtcRng rng) : base(rng)
         {
-            height = MIN_HEIGHT;
-            verticalSpeed = 0;
-            state = 0;
-            max = 0;
-            counter = 0;
+            _height = MIN_HEIGHT;
+            _verticalSpeed = 0;
+            _state = 0;
+            _max = 0;
+            _counter = 0;
         }
 
         public override void update()
         {
-            if (counter <= max)
+            if (_counter <= _max)
             { //don't move
-                counter++;
+                _counter++;
             }
             else
             { //move
-                if (state == 0)
+                if (_state == 0)
                 { //move up
-                    height = Math.Min(MAX_HEIGHT, height + verticalSpeed);
-                    if (height == MIN_HEIGHT || height == MAX_HEIGHT)
+                    _height = Math.Min(MAX_HEIGHT, _height + _verticalSpeed);
+                    if (_height == MIN_HEIGHT || _height == MAX_HEIGHT)
                     { //reached top
-                        verticalSpeed = -9;
-                        state = 1;
-                        counter = 0;
-                        max = (pollRNG() % 6) * 20 + 10; // = 10, 30, 50, 70, 90, 110
+                        _verticalSpeed = -9;
+                        _state = 1;
+                        _counter = 0;
+                        _max = (pollRNG() % 6) * 20 + 10; // = 10, 30, 50, 70, 90, 110
                     }
-                    counter++;
+                    _counter++;
                 }
                 else
                 { //move down
-                    height = Math.Max(MIN_HEIGHT, height + verticalSpeed);
-                    if (height == MIN_HEIGHT || height == MAX_HEIGHT)
+                    _height = Math.Max(MIN_HEIGHT, _height + _verticalSpeed);
+                    if (_height == MIN_HEIGHT || _height == MAX_HEIGHT)
                     { //reached bottom
-                        verticalSpeed = 11;
-                        state = 0;
-                        counter = 0;
-                        max = 20;
+                        _verticalSpeed = 11;
+                        _state = 0;
+                        _counter = 0;
+                        _max = 20;
                     }
-                    counter++;
+                    _counter++;
                 }
             }
         }
 
         public override string ToString()
         {
-            return id + OPENER + height + SEPARATOR +
-                    verticalSpeed + SEPARATOR +
-                    state + SEPARATOR +
-                    max + SEPARATOR +
-                    counter + CLOSER;
+            return _id + OPENER + _height + SEPARATOR +
+                    _verticalSpeed + SEPARATOR +
+                    _state + SEPARATOR +
+                    _max + SEPARATOR +
+                    _counter + CLOSER;
         }
 
     }
