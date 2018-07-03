@@ -237,6 +237,9 @@ namespace STROOP.Structs
                 varController.Show();
             };
 
+            ToolStripMenuItem itemAddToTab = new ToolStripMenuItem("Add to Tab...");
+            itemAddToTab.Click += (sender, e) => SelectionForm.ShowDataManagerSelectionForm(getVars());
+
             ToolStripMenuItem itemAddToCustomTab = new ToolStripMenuItem("Add to Custom Tab");
             itemAddToCustomTab.Click += (sender, e) => WatchVariableControl.AddVarsToTab(getVars(), Config.CustomManager);
 
@@ -263,6 +266,7 @@ namespace STROOP.Structs
                 itemRemove,
                 itemEnableCustomization,
                 itemOpenController,
+                itemAddToTab,
                 itemAddToCustomTab,
             };
         }
