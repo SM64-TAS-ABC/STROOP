@@ -318,7 +318,25 @@
       <DependentUpon>MainLoadingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoadingHandler.cs" />
-    <Compile Include="TTC\TTCObject.cs" />
+    <Compile Include="TTC\RNGManager.cs" />
+    <Compile Include="TTC\TTCMain.cs" />
+    <Compile Include="TTC\Wheel.cs" />
+    <Compile Include="TTC\Treadmill.cs" />
+    <Compile Include="TTC\Thwomp.cs" />
+    <Compile Include="TTC\SpinningTriangle.cs" />
+    <Compile Include="TTC\Spinner.cs" />
+    <Compile Include="TTC\RotatingTriangularPrism.cs" />
+    <Compile Include="TTC\RotatingBlock.cs" />
+    <Compile Include="TTC\Pusher.cs" />
+    <Compile Include="TTC\PitBlock.cs" />
+    <Compile Include="TTC\Pendulum.cs" />
+    <Compile Include="TTC\Hand.cs" />
+    <Compile Include="TTC\Elevator.cs" />
+    <Compile Include="TTC\Dust.cs" />
+    <Compile Include="TTC\Cog.cs" />
+    <Compile Include="TTC\Bobomb.cs" />
+    <Compile Include="TTC\Amp.cs" />
+    <Compile Include="TTC\RNGObject.cs" />
     <Compile Include="M64\M64CopiedFrame.cs" />
     <Compile Include="M64\M64File.cs" />
     <Compile Include="M64\M64InputCell.cs" />

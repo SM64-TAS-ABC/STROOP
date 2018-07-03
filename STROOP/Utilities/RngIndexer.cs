@@ -39,7 +39,7 @@ namespace STROOP.Utilities
             RNGToIndexDictionary.Add(22026, RNG_COUNT - NON_RESET_RNG_COUNT - 1);
         }
 
-        private static ushort GetNextRNG(ushort rng, bool earlyReset = true)
+        public static ushort GetNextRNG(ushort rng, bool earlyReset = true)
         {
             if (rng == 0x560A)
                 rng = 0;

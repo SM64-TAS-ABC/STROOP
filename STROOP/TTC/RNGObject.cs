@@ -14,12 +14,12 @@ namespace STROOP.TTC
     {
 
         //variables to tweak how objects are printed
-        public static readonly String OPENER = "(";
-	    public static readonly String SEPARATOR = ",";
-	    public static readonly String CLOSER = ")";
+        public static readonly string OPENER = "(";
+	    public static readonly string SEPARATOR = ",";
+	    public static readonly string CLOSER = ")";
 	
 	    //id is an identifier for this object (e.g. "Cog 2")
-	    public String id;
+	    public string id;
 
         //the frame that the objects are updating to
         public int currentFrame;
@@ -38,7 +38,7 @@ namespace STROOP.TTC
         /** Return a string representation of the object, used for
          *  debugging purposes and to see the internal state.
          */
-        public override abstract String ToString();
+        public override abstract string ToString();
 
         /** Set the index of the object. This helps distinguish
          *  objects when printing them (e.g. helps make the distinction
@@ -54,13 +54,12 @@ namespace STROOP.TTC
          */
         protected int pollRNG()
         {
-            return 0;
-            //return RNGManager.pollRNG();
+            return RNGManager.pollRNG();
         }
 
         /** Sets the frame that the object should be updating to.
          */
-        protected void setFrame(int currentFrame)
+        public void setFrame(int currentFrame)
         {
             this.currentFrame = currentFrame;
         }
