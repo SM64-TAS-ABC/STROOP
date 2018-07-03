@@ -17,7 +17,16 @@ namespace STROOP.Ttc
 
         public static void TtcMainMethod()
         {
-            TtcSimulation simulation = new TtcSimulation();
+            TtcSimulation simulation;
+
+            if (KeyboardUtilities.IsCtrlHeld())
+            {
+                simulation = new TtcSimulation(0, 100);
+            }
+            else
+            {
+                simulation = new TtcSimulation();
+            }
 
             simulation.Print(
                 endingFrame: (int)GotoRetrieveConfig.GotoAboveOffset,
