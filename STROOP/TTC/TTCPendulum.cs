@@ -23,6 +23,11 @@ namespace STROOP.Ttc
         public int _accelerationMagnitude;
         public int _waitingTimer;
 
+        public TtcPendulum(TtcRng rng, uint address) :
+            this(rng, 0, 6500, 0, 0, 0)
+        {
+        }
+
         public TtcPendulum(TtcRng rng) :
             this(rng, 0, 6500, 0, 0, 0)
         {

@@ -31,6 +31,11 @@ namespace STROOP.Ttc
         public int _directionTimer;
         public int _timer;
 
+        public TtcHand(TtcRng rng, uint address) :
+            this(rng, -100, 0, 0, 0, 0, 0)
+        {
+        }
+
         public TtcHand(TtcRng rng, int angle) :
             this(rng, angle, 0, 0, 0, 0, 0)
         {

@@ -23,6 +23,11 @@ namespace STROOP.Ttc
         public int _max;
         public int _timer;
 
+        public TtcRotatingTriangularPrism(TtcRng rng, uint address) :
+            this(rng, 0, 0)
+        {
+        }
+
         public TtcRotatingTriangularPrism(TtcRng rng) : this(rng, 0, 0)
         {
         }

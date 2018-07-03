@@ -14,6 +14,10 @@ namespace STROOP.Ttc
 
         public bool _initializedYet;
 
+        public TtcAmp(TtcRng rng, uint address) : this(rng, false)
+        {
+        }
+
         public TtcAmp(TtcRng rng) : this(rng, false)
         {
         }

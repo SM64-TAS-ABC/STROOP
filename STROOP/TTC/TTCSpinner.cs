@@ -25,6 +25,11 @@ namespace STROOP.Ttc
         public int _max;
         public int _counter;
 
+        public TtcSpinner(TtcRng rng, uint address) :
+            this(rng, 0, 0, 0, 0)
+        {
+        }
+
         public TtcSpinner(TtcRng rng) : this(rng, 0, 0, 0, 0)
         {
         }

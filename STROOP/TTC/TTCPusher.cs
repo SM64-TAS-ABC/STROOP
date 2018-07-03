@@ -27,6 +27,11 @@ namespace STROOP.Ttc
         public int _state; //0 = flush with wall, 1 = retracted, 2 = extending, 3 = retracting
         public int _counter;
 
+        public TtcPusher(TtcRng rng, uint address) :
+            this(rng, 55, -100, 0, 0)
+        {
+        }
+
         public TtcPusher(TtcRng rng, int countdown) :
             this(rng, 55, countdown, 0, 0)
         {

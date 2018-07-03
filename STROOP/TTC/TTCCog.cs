@@ -22,6 +22,10 @@ namespace STROOP.Ttc
         public int _currentAngularVelocity;
         public int _targetAngularVelocity;
 
+        public TtcCog(TtcRng rng, uint address) : this(rng, 0, 0, 0)
+        {
+        }
+
         public TtcCog(TtcRng rng) : this(rng, 0, 0, 0)
         {
         }

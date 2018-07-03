@@ -25,6 +25,11 @@ namespace STROOP.Ttc
         public int _max;
         public int _counter;
 
+        public TtcPitBlock(TtcRng rng, uint address) :
+            this(rng, MIN_HEIGHT, 0, 0, 0, 0)
+        {
+        }
+
         public TtcPitBlock(TtcRng rng) :
             this(rng, MIN_HEIGHT, 0, 0, 0, 0)
         {

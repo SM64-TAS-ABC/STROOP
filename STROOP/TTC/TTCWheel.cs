@@ -23,6 +23,11 @@ namespace STROOP.Ttc
         public int _directionTimer;
         public int _timer;
 
+        public TtcWheel(TtcRng rng, uint address) :
+            this(rng, 0, 0, 0, 0, 0, 0)
+        {
+        }
+
         public TtcWheel(TtcRng rng) : this(rng, 0, 0, 0, 0, 0, 0)
         {
         }

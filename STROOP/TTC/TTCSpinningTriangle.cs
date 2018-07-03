@@ -16,6 +16,11 @@ namespace STROOP.Ttc
         public int _currentAngularVelocity;
         public int _targetAngularVelocity;
 
+        public TtcSpinningTriangle(TtcRng rng, uint address) :
+            this(rng, -100, 0, 0)
+        {
+        }
+
         public TtcSpinningTriangle(TtcRng rng, int angle) : this(rng, angle, 0, 0)
         {
         }

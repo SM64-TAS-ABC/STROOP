@@ -22,6 +22,11 @@ namespace STROOP.Ttc
         public int _max;
         public int _timer;
 
+        public TtcRotatingBlock(TtcRng rng, uint address) :
+            this(rng, 0, 0)
+        {
+        }
+
         public TtcRotatingBlock(TtcRng rng) : this(rng, 0, 0)
         {
         }

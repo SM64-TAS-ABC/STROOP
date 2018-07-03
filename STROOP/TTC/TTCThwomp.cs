@@ -26,6 +26,10 @@ namespace STROOP.Ttc
         public int _state; //0 = going up, 1 = at top, 2 = going down, 3/4 = at bottom
         public int _counter;
 
+        public TtcThwomp(TtcRng rng, uint address) : this(rng, -100, 0, 0, 0, 0)
+        {
+        }
+
         public TtcThwomp(TtcRng rng) : this(rng, MIN_HEIGHT, 0, 0, 0, 0)
         {
         }

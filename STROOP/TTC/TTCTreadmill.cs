@@ -29,6 +29,11 @@ namespace STROOP.Ttc
         public int _max;
         public int _counter;
 
+        public TtcTreadmill(TtcRng rng, uint address) :
+             this(rng, false, 0, 0, 0, 0)
+        {
+        }
+
         public TtcTreadmill(TtcRng rng, bool isFirstTreadmill) :
             this(rng, isFirstTreadmill, 0, 0, 0, 0)
         {

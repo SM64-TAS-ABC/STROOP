@@ -27,6 +27,11 @@ namespace STROOP.Ttc
         public int _max;
         public int _counter;
 
+        public TtcElevator(TtcRng rng, uint address) :
+            this(rng, -100, -100, -100, 0, 1, 0, 0)
+        {
+        }
+
         public TtcElevator(TtcRng rng, int minHeight, int maxHeight) :
             this(rng, minHeight, maxHeight, minHeight, 0, 1, 0, 0)
         {
