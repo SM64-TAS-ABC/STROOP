@@ -22,7 +22,7 @@ namespace STROOP.Ttc
 
         public int _height;
         public int _verticalSpeed;
-        public int _state; //0 = going up, 1 = going down
+        public int _direction; //0 = going up, 1 = going down
         public int _timerMax;
         public int _timer;
 
@@ -31,7 +31,7 @@ namespace STROOP.Ttc
                 rng: rng,
                 height: (int)Config.Stream.GetSingle(address + 0xA4),
                 verticalSpeed: (int)Config.Stream.GetSingle(address + 0xB0),
-                state: Config.Stream.GetInt32(address + 0x14C),
+                direction: Config.Stream.GetInt32(address + 0xF8),
                 timerMax: Config.Stream.GetInt32(address + 0xFC),
                 timer: Config.Stream.GetInt32(address + 0x154))
         {
@@ -43,11 +43,11 @@ namespace STROOP.Ttc
         }
 
         public TtcPitBlock(TtcRng rng, int height, int verticalSpeed,
-            int state, int timerMax, int timer) : base(rng)
+            int direction, int timerMax, int timer) : base(rng)
         {
             _height = height;
             _verticalSpeed = verticalSpeed;
-            _state = state;
+            _direction = direction;
             _timerMax = timerMax;
             _timer = timer;
         }
@@ -60,13 +60,13 @@ namespace STROOP.Ttc
             }
             else
             { //move
-                if (_state == 0)
+                if (_direction == 0)
                 { //move up
                     _height = Math.Min(MAX_HEIGHT, _height + _verticalSpeed);
                     if (_height == MIN_HEIGHT || _height == MAX_HEIGHT)
                     { //reached top
                         _verticalSpeed = -9;
-                        _state = 1;
+                        _direction = 1;
                         _timer = 0;
                         _timerMax = (PollRNG() % 6) * 20 + 10; // = 10, 30, 50, 70, 90, 110
                     }
@@ -78,7 +78,7 @@ namespace STROOP.Ttc
                     if (_height == MIN_HEIGHT || _height == MAX_HEIGHT)
                     { //reached bottom
                         _verticalSpeed = 11;
-                        _state = 0;
+                        _direction = 0;
                         _timer = 0;
                         _timerMax = 20;
                     }
@@ -91,7 +91,7 @@ namespace STROOP.Ttc
         {
             return _id + OPENER + _height + SEPARATOR +
                     _verticalSpeed + SEPARATOR +
-                    _state + SEPARATOR +
+                    _direction + SEPARATOR +
                     _timerMax + SEPARATOR +
                     _timer + CLOSER;
         }

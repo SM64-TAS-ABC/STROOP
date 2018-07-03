@@ -17,21 +17,71 @@ namespace STROOP.Ttc
 
         public static void TtcMainMethod()
         {
-            TtcSimulation simulation;
+            int earliestDustFrame = 229234;
+            int dustFrameRange = 25;
+            int numFramesMin = 150;
+            int numFramesMax = 500;
 
-            if (KeyboardUtilities.IsCtrlHeld())
+            List<List<int>> dustFrameLists = GetDustFrameLists(earliestDustFrame, dustFrameRange);
+            int counter = 0;
+            foreach (List<int> dustFrames in dustFrameLists)
             {
-                simulation = new TtcSimulation(0, 100);
-            }
-            else
-            {
-                simulation = new TtcSimulation();
-            }
+                counter++;
+                if (counter % 100 == 0)
+                    StringUtilities.WriteLine("counter = {0} / {1}", counter, dustFrameLists.Count);
 
-            simulation.Print(
-                endingFrame: (int)GotoRetrieveConfig.GotoAboveOffset,
-                printRng: false,
-                printObjects: true);
+                TtcSimulation simulation = new TtcSimulation(dustFrames);
+                int? idealCogConfigurationFrame = simulation.FindIdealCogConfiguration(numFramesMin, numFramesMax);
+                if (idealCogConfigurationFrame.HasValue)
+                {
+                    List<int> dustInputFrames = dustFrames.ConvertAll(dustFrame => dustFrame - 2);
+                    string dustInputFramesString = "[" + String.Join(", ", dustInputFrames) + "]";
+                    string dustFramesString = "[" + String.Join(", ", dustFrames) + "]";
+                    StringUtilities.WriteLine(dustInputFramesString + " => " + dustFramesString + " => " + idealCogConfigurationFrame.Value);
+                    StringUtilities.WriteLine("Success");
+                    return;
+                }
+            }
+            StringUtilities.WriteLine("Failure");
+        }
+
+        public static string Simulate(int endFrame, List<int> dustFrames)
+        {
+            TtcSimulation simulation = new TtcSimulation(dustFrames);
+            return simulation.GetObjectsString(endFrame);
+        }
+
+        private static List<List<int>> GetDustFrameLists(int earliestDustFrame, int dustFrameRange)
+        {
+            List<List<int>> dustFrameLists = new List<List<int>>();
+            AddDustFrameListRecursion(new bool[dustFrameRange], 0, dustFrameLists, earliestDustFrame);
+            return dustFrameLists;
+        }
+
+        private static void AddDustFrameListRecursion(bool[] bools, int index, List<List<int>> dustFrameLists, int earliestDustFrame)
+        {
+            if (index == bools.Length)
+            {
+                dustFrameLists.Add(ConvertBoolsToDustFrames(bools, earliestDustFrame));
+                return;
+            }
+            bools[index] = false;
+            AddDustFrameListRecursion(bools, index + 1, dustFrameLists, earliestDustFrame);
+            if (index == 0 || bools[index - 1] == false)
+            {
+                bools[index] = true;
+                AddDustFrameListRecursion(bools, index + 1, dustFrameLists, earliestDustFrame);
+            }
+        }
+
+        private static List<int> ConvertBoolsToDustFrames(bool[] bools, int earliestDustFrame)
+        {
+            List<int> dustFrames = new List<int>();
+            for (int i = 0; i < bools.Length; i++)
+            {
+                if (bools[i]) dustFrames.Add(earliestDustFrame + i);
+            }
+            return dustFrames;
         }
     }
 

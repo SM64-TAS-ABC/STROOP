@@ -1,4 +1,5 @@
-﻿using System;
+﻿using STROOP.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -57,6 +58,7 @@ namespace STROOP.Ttc
          */
         protected int PollRNG()
         {
+            //StringUtilities.WriteLine("RNG => " + this);
             return _rng.PollRNG();
         }
 

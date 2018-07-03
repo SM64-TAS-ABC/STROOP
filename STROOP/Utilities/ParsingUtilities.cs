@@ -255,6 +255,10 @@ namespace STROOP.Utilities
 
         public static List<string> ParseStringList(string text)
         {
+            if (text == null || text == "")
+            {
+                return new List<string>();
+            }
             text = text
                 .Replace('\n', ' ')
                 .Replace('\r', ' ')

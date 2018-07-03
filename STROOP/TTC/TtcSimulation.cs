@@ -1,9 +1,11 @@
-﻿using STROOP.Structs;
+﻿using STROOP.Models;
+using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace STROOP.Ttc
@@ -35,7 +37,7 @@ namespace STROOP.Ttc
             _startingFrame = MupenUtilities.GetFrameCount(); //the frame directly preceding any object initialization
         }
 
-        public void Print(int endingFrame, bool printRng, bool printObjects)
+        public string GetObjectsString(int endingFrame)
         {
             //iterate through frames to update objects
             int frame = _startingFrame;
@@ -43,37 +45,56 @@ namespace STROOP.Ttc
             while (frame < endingFrame)
             {
                 frame++;
+                counter++;
                 foreach (TtcObject rngObject in _rngObjects)
                 {
                     rngObject.SetFrame(frame);
                     rngObject.Update();
                 }
+            }
+
+            List<string> lines = new List<string>();
+            foreach (TtcObject rngObject in _rngObjects)
+            {
+                lines.Add(rngObject.ToString());
+            }
+            lines.Add("RNG Value = " + _rng.GetRng());
+            lines.Add("RNG Index = " + _rng.GetIndex());
+            lines.Add("");
+            lines.Add(String.Format("iterated through {0} frames, from {1} to {2}", counter, _startingFrame, endingFrame));
+            lines.Add("frame = " + frame);
+            lines.Add("");
+            return String.Join("\r\n", lines);
+        }
+
+        public int? FindIdealCogConfiguration(int numFramesMin, int numFramesMax)
+        {
+            TtcCog upperCog = _rngObjects[31] as TtcCog;
+            TtcCog lowerCog = _rngObjects[32] as TtcCog;
+
+            //iterate through frames to update objects
+            int frame = _startingFrame;
+            int counter = 0;
+            while (frame < _startingFrame + numFramesMax)
+            {
+                frame++;
                 counter++;
-            }
-
-            //print frame, RNG, and index
-            if (printRng)
-            {
-                StringUtilities.WriteLine(endingFrame + "\n");
-                StringUtilities.WriteLine(_rng.GetRng() + "\n");
-                StringUtilities.WriteLine("[" + _rng.GetIndex() + "]\n");
-            }
-
-            //print each object's state
-            if (printObjects)
-            {
-                StringUtilities.WriteLine("");
                 foreach (TtcObject rngObject in _rngObjects)
                 {
-                    StringUtilities.WriteLine(rngObject);
+                    rngObject.SetFrame(frame);
+                    rngObject.Update();
                 }
-                StringUtilities.WriteLine("RNG Value = " + _rng.GetRng());
-                StringUtilities.WriteLine("RNG Index = " + _rng.GetIndex());
-                StringUtilities.WriteLine("");
-                StringUtilities.WriteLine("iterated through {0} frames, from {1} to {2}", counter, _startingFrame, endingFrame);
-                StringUtilities.WriteLine("frame = " + frame);
-                StringUtilities.WriteLine("");
+
+                if (frame >= numFramesMin)
+                {
+                    if (upperCog._currentAngularVelocity == 200 && lowerCog._currentAngularVelocity == 200)
+                    {
+                        return frame;
+                    }
+                }
             }
+
+            return null;
         }
 
         private static List<TtcObject> CreateRngObjects(TtcRng rng, List<int> dustFrames)
@@ -240,9 +261,18 @@ namespace STROOP.Ttc
                 if (i == 0) rngObjects.Add(new TtcAmp(rng, 0x80347AC8).SetIndex(i + 1));
                 if (i == 1) rngObjects.Add(new TtcAmp(rng, 0x8034A328).SetIndex(i + 1));
             }
-            for (int i = 0; i < 2; i++)
+            List<ObjectDataModel> bobombs = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Bob-omb");
+            bobombs.Sort((obj1, obj2) =>
             {
-                rngObjects.Add(new TtcBobomb(rng, 0x8034ACA8 + getOffset(i)).SetIndex(i + 1));
+                string label1 = Config.ObjectSlotsManager.GetSlotLabelFromObject(obj1);
+                string label2 = Config.ObjectSlotsManager.GetSlotLabelFromObject(obj2);
+                int pos1 = ParsingUtilities.ParseInt(label1);
+                int pos2 = ParsingUtilities.ParseInt(label2);
+                return pos1 - pos2;
+            });
+            for (int i = 0; i < bobombs.Count; i++)
+            {
+                rngObjects.Add(new TtcBobomb(rng, bobombs[i].Address).SetIndex(i + 1));
             }
             for (int i = 0; i < 1; i++)
             {

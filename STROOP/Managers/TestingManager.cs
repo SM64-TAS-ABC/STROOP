@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using STROOP.Utilities;
 using STROOP.Forms;
 using STROOP.Models;
+using STROOP.Ttc;
 
 namespace STROOP.Managers
 {
@@ -177,6 +178,11 @@ namespace STROOP.Managers
         BetterTextbox _textBoxMemoryReaderAddressValue;
         BetterTextbox _textBoxMemoryReaderCountValue;
         Button _buttonMemoryReaderRead;
+
+        // TTC Simulator
+        BetterTextbox _textBoxTestingTtcSimulatorEndFrame;
+        BetterTextbox _textBoxTestingTtcSimulatorDustFrames;
+        Button _buttonTestingTtcSimulatorCalculate;
 
         public TestingManager(TabPage tabControl)
         {
@@ -429,6 +435,23 @@ namespace STROOP.Managers
                     count + " " + typeString + " value(s) at 0x" + String.Format("{0:X}", address),
                     String.Join("\r\n", values));
             };
+
+            // TTC Simulator
+
+            GroupBox groupBoxTestingTtcSimulator = tabControl.Controls["groupBoxTestingTtcSimulator"] as GroupBox;
+            _textBoxTestingTtcSimulatorEndFrame = groupBoxTestingTtcSimulator.Controls["textBoxTestingTtcSimulatorEndFrame"] as BetterTextbox;
+            _textBoxTestingTtcSimulatorDustFrames = groupBoxTestingTtcSimulator.Controls["textBoxTestingTtcSimulatorDustFrames"] as BetterTextbox;
+            _buttonTestingTtcSimulatorCalculate = groupBoxTestingTtcSimulator.Controls["buttonTestingTtcSimulatorCalculate"] as Button;
+            _buttonTestingTtcSimulatorCalculate.Click += (sender, e) =>
+            {
+                int? endFrameNullable = ParsingUtilities.ParseIntNullable(_textBoxTestingTtcSimulatorEndFrame.Text);
+                List<int?> dustFramesNullable = ParsingUtilities.ParseIntList(_textBoxTestingTtcSimulatorDustFrames.Text);
+                if (!endFrameNullable.HasValue || dustFramesNullable.Any(dustFrame => !dustFrame.HasValue)) return;
+                int endFrame = endFrameNullable.Value;
+                List<int> dustFrames = dustFramesNullable.ConvertAll(dustFrameNullable => dustFrameNullable.Value);
+                InfoForm.ShowValue(TtcMain.Simulate(endFrame, dustFrames));
+            };
+            
         }
 
         private List<uint> GetScuttlebugAddresses()
