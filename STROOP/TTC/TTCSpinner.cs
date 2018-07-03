@@ -17,7 +17,7 @@ namespace STROOP.TTC
       *  intended direction.
       *  Then for 1 frame, the spinner spins counterclockwise.
       */
-    public class Spinner : RNGObject
+    public class TTCSpinner : TTCObject
     {
 
         public int angle;
@@ -25,7 +25,7 @@ namespace STROOP.TTC
         public int max;
         public int counter;
 
-        public Spinner()
+        public TTCSpinner()
         {
             angle = 0;
             direction = 0;

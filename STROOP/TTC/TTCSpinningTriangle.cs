@@ -9,14 +9,14 @@ namespace STROOP.TTC
      *  a vertical axis (i.e. changes its yaw).
      *  It functions exactly as the cog does.
      */
-    public class SpinningTriangle : RNGObject
+    public class TTCSpinningTriangle : TTCObject
     {
 
         public int angle;
         public int currentAngularVelocity;
         public int targetAngularVelocity;
 
-        public SpinningTriangle(int startingAngle)
+        public TTCSpinningTriangle(int startingAngle)
         {
             angle = startingAngle;
             currentAngularVelocity = 0;

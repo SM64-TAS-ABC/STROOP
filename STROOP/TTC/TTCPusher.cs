@@ -19,7 +19,7 @@ namespace STROOP.TTC
      *  the way out, then it eventually comes to a stop and then
      *  retracts until it's flush with the wall.
      */
-    public class Pusher : RNGObject
+    public class TTCPusher : TTCObject
     {
 
         public int max;
@@ -27,7 +27,7 @@ namespace STROOP.TTC
         public int state; //0 = flush with wall, 1 = retracted, 2 = extending, 3 = retracting
         public int counter;
 
-        public Pusher(int countdownIn)
+        public TTCPusher(int countdownIn)
         {
             max = 55;
             countdown = countdownIn;

@@ -14,7 +14,7 @@ namespace STROOP.TTC
       *  past the vertical (i.e. angle 0), the pendulum decelerates
       *  by that same acceleration until it comes to a stop.
       */
-    public class Pendulum : RNGObject
+    public class TTCPendulum : TTCObject
     {
 
 
@@ -24,7 +24,7 @@ namespace STROOP.TTC
         public int accelerationMagnitude;
         public int waitingTimer;
 
-        public Pendulum()
+        public TTCPendulum()
         {
             accelerationDirection = 0;
             angle = 6500;

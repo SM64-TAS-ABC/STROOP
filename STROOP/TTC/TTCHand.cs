@@ -18,7 +18,7 @@ namespace STROOP.TTC
       *  how long it should be until it has the chance to change
       *  direction again (i.e. what value its direction timer will be).
       */
-    public class Hand : RNGObject
+    public class TTCHand : TTCObject
     {
 
 
@@ -32,7 +32,7 @@ namespace STROOP.TTC
         public int directionTimer;
         public int timer;
 
-        public Hand(int startingAngle)
+        public TTCHand(int startingAngle)
         {
             angle = startingAngle;
             max = 0;

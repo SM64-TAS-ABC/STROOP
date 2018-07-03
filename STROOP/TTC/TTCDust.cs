@@ -18,12 +18,12 @@ namespace STROOP.TTC
     *  that Mario moves and the dust is present. So in that case,
     *  you'd add 100 as a dust frame.
     */
-    public class Dust : RNGObject
+    public class TTCDust : TTCObject
     {
 
         public List<int> dustFrames;
 
-        public Dust()
+        public TTCDust()
         {
             dustFrames = new List<int>();
         }

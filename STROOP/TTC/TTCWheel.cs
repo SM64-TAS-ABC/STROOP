@@ -10,7 +10,7 @@ namespace STROOP.TTC
      *  They appear in pairs. They function exactly as the hands do,
      *  except that their ticks are greater in magnitude.
      */
-    public class Wheel : RNGObject
+    public class TTCWheel : TTCObject
     {
 
         public readonly static int DISPLACEMENT_MAGNITUDE = 3276;
@@ -23,7 +23,7 @@ namespace STROOP.TTC
         public int directionTimer;
         public int timer;
 
-        public Wheel()
+        public TTCWheel()
         {
             angle = 0;
             max = 0;

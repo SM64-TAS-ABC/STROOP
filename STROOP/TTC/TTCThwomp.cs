@@ -13,7 +13,7 @@ namespace STROOP.TTC
      *  It calls RNG when it reaches the top to determine how long
      *  it should wait for, and it also does this at the bottom.
      */
-    public class Thwomp : RNGObject
+    public class TTCThwomp : TTCObject
     {
 
         public readonly static int MIN_HEIGHT = 6192;
@@ -26,7 +26,7 @@ namespace STROOP.TTC
         public int state; //0 = going up, 1 = at top, 2 = going down, 3/4 = at bottom
         public int counter;
 
-        public Thwomp()
+        public TTCThwomp()
         {
             height = MIN_HEIGHT;
             verticalSpeed = 0;

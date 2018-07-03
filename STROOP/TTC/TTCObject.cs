@@ -10,7 +10,7 @@ namespace STROOP.TTC
      *  update method that updates the object's state
      *  exactly 1 frame forward, during which it may call RNG.
      */
-    public abstract class RNGObject
+    public abstract class TTCObject
     {
 
         //variables to tweak how objects are printed
@@ -26,7 +26,7 @@ namespace STROOP.TTC
 
         /** id begins as the object's class name by default.
          */
-        public RNGObject()
+        public TTCObject()
         {
             id = GetType().Name.ToString();
         }
@@ -44,7 +44,7 @@ namespace STROOP.TTC
          *  objects when printing them (e.g. helps make the distinction
          *  between "Bobomb 1" and "Bobomb 2").
          */
-        public RNGObject setIndex(int index)
+        public TTCObject setIndex(int index)
         {
             id = GetType().Name.ToString() + index;
             return this;
@@ -54,7 +54,7 @@ namespace STROOP.TTC
          */
         protected int pollRNG()
         {
-            return RNGManager.pollRNG();
+            return TTCRng.pollRNG();
         }
 
         /** Sets the frame that the object should be updating to.

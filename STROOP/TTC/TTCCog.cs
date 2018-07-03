@@ -15,14 +15,14 @@ namespace STROOP.TTC
          *  reaches the target angular velocity, a new target angular velocity
          *  is calculated.
          */
-        public class Cog : RNGObject
+        public class TTCCog : TTCObject
         {
 
         public int angle;
         public int currentAngularVelocity;
         public int targetAngularVelocity;
 
-        public Cog()
+        public TTCCog()
         {
             angle = 0;
             currentAngularVelocity = 0;

@@ -13,7 +13,7 @@ namespace STROOP.TTC
      *  Once it has waited this long, it begins rotating
      *  and the process repeats.
      */
-    public class RotatingBlock : RNGObject
+    public class TTCRotatingBlock : TTCObject
     {
 
         //the turning time for rotating blocks
@@ -22,7 +22,7 @@ namespace STROOP.TTC
         public int max;
         public int timer;
 
-        public RotatingBlock()
+        public TTCRotatingBlock()
         {
             max = 0;
             timer = 0;

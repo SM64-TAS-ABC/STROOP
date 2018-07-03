@@ -18,7 +18,7 @@ namespace STROOP.TTC
      *  in that direction for the allotted time, it decelerates to
      *  a stop, and the process repeats.
      */
-    public class Treadmill : RNGObject
+    public class TTCTreadmill : TTCObject
     {
 
         //whether this treadmill is the first treadmill
@@ -29,7 +29,7 @@ namespace STROOP.TTC
         public int max;
         public int counter;
 
-        public Treadmill(bool isFirstTreadmillIn)
+        public TTCTreadmill(bool isFirstTreadmillIn)
         {
             isFirstTreadmill = isFirstTreadmillIn;
             currentSpeed = 0;

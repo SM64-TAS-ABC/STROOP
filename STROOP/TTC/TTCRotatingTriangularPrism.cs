@@ -14,7 +14,7 @@ namespace STROOP.TTC
      *  Once it has waited this long, it begins rotating
      *  and the process repeats.
      */
-    public class RotatingTriangularPrism : RNGObject
+    public class TTCRotatingTriangularPrism : TTCObject
     {
 
         //the turning time for rotating triangular prisms
@@ -23,7 +23,7 @@ namespace STROOP.TTC
         public int max;
         public int timer;
 
-        public RotatingTriangularPrism()
+        public TTCRotatingTriangularPrism()
         {
             max = 0;
             timer = 0;

@@ -15,7 +15,7 @@ namespace STROOP.TTC
      *  direction (up or down) and how long until the next
      *  possible direction switch.
      */
-    public class Elevator : RNGObject
+    public class TTCElevator : TTCObject
     {
 
         public readonly int MIN_HEIGHT;
@@ -27,7 +27,7 @@ namespace STROOP.TTC
         public int max;
         public int counter;
 
-        public Elevator(int minHeightIn, int maxHeightIn)
+        public TTCElevator(int minHeightIn, int maxHeightIn)
         {
             MIN_HEIGHT = minHeightIn;
             MAX_HEIGHT = maxHeightIn;

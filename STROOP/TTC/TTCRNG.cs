@@ -13,7 +13,7 @@ namespace STROOP.TTC
  *  to set any RNG or index.
  */
 
-    public class RNGManager
+    public class TTCRng
     {
 
         //start off with RNG 0 by default

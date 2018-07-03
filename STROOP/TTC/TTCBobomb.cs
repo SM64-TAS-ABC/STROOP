@@ -20,7 +20,7 @@ namespace STROOP.TTC
     *  not be visible, but will still update and call RNG
     *  just as normal.
     */
-    public class Bobomb : RNGObject
+    public class TTCBobomb : TTCObject
     {
 
         //how deep into the blink the bob-omb is
@@ -30,7 +30,7 @@ namespace STROOP.TTC
         //whether Mario is within 4000 units of the bob-omb
         public bool withinMarioRange;
 
-        public Bobomb()
+        public TTCBobomb()
         {
             blinkingTimer = 0;
             withinMarioRange = true;

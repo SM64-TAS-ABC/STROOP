@@ -13,7 +13,7 @@ namespace STROOP.TTC
      *  it should wait for. It does not do this at the bottom,
      *  since the time it waits there is always 20 frames.
      */
-    public class PitBlock : RNGObject
+    public class TTCPitBlock : TTCObject
     {
 
         public readonly static int MIN_HEIGHT = -71;
@@ -25,7 +25,7 @@ namespace STROOP.TTC
         public int max;
         public int counter;
 
-        public PitBlock()
+        public TTCPitBlock()
         {
             height = MIN_HEIGHT;
             verticalSpeed = 0;

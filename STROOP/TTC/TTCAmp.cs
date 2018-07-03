@@ -9,12 +9,12 @@ namespace STROOP.TTC
      *  He only calls RNG once when he is first initialized.
      *  After that, he no longer calls RNG.
      */
-    public class Amp : RNGObject
+    public class TTCAmp : TTCObject
     {
 
         public bool initializedYet;
 
-        public Amp()
+        public TTCAmp()
         {
             initializedYet = false;
         }
