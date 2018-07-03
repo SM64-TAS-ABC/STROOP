@@ -4,6 +4,7 @@ using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace STROOP.Ttc
@@ -35,7 +36,7 @@ namespace STROOP.Ttc
             _startingFrame = MupenUtilities.GetFrameCount(); //the frame directly preceding any object initialization
         }
 
-        public void Print(int endingFrame, bool printRng, bool printObjects)
+        public string GetObjectsString(int endingFrame)
         {
             //iterate through frames to update objects
             int frame = _startingFrame;
@@ -51,29 +52,18 @@ namespace STROOP.Ttc
                 }
             }
 
-            //print frame, RNG, and index
-            if (printRng)
+            List<string> lines = new List<string>();
+            foreach (TtcObject rngObject in _rngObjects)
             {
-                StringUtilities.WriteLine(endingFrame + "\n");
-                StringUtilities.WriteLine(_rng.GetRng() + "\n");
-                StringUtilities.WriteLine("[" + _rng.GetIndex() + "]\n");
+                lines.Add(rngObject.ToString());
             }
-
-            //print each object's state
-            if (printObjects)
-            {
-                StringUtilities.WriteLine("");
-                foreach (TtcObject rngObject in _rngObjects)
-                {
-                    StringUtilities.WriteLine(rngObject);
-                }
-                StringUtilities.WriteLine("RNG Value = " + _rng.GetRng());
-                StringUtilities.WriteLine("RNG Index = " + _rng.GetIndex());
-                StringUtilities.WriteLine("");
-                StringUtilities.WriteLine("iterated through {0} frames, from {1} to {2}", counter, _startingFrame, endingFrame);
-                StringUtilities.WriteLine("frame = " + frame);
-                StringUtilities.WriteLine("");
-            }
+            lines.Add("RNG Value = " + _rng.GetRng());
+            lines.Add("RNG Index = " + _rng.GetIndex());
+            lines.Add("");
+            lines.Add(String.Format("iterated through {0} frames, from {1} to {2}", counter, _startingFrame, endingFrame));
+            lines.Add("frame = " + frame);
+            lines.Add("");
+            return String.Join("\r\n", lines);
         }
 
         public int? LookForIdealCogConfiguration(int numFrames)

@@ -42,6 +42,12 @@ namespace STROOP.Ttc
             StringUtilities.WriteLine("Failure");
         }
 
+        public static string Simulate(int endFrame, List<int> dustFrames)
+        {
+            TtcSimulation simulation = new TtcSimulation(dustFrames);
+            return simulation.GetObjectsString(endFrame);
+        }
+
         private static List<List<int>> GetDustFrameLists(int earliestDustFrame, int dustFrameRange)
         {
             List<List<int>> dustFrameLists = new List<List<int>>();
