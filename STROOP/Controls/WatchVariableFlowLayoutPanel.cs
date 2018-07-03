@@ -321,9 +321,9 @@ namespace STROOP.Controls
                 FileType.StroopVariables, "VarData", GetCurrentVarXmlElements(), fileName);
         }
 
-        public void EnableCustomization()
+        public void EnableCustomization(bool flashColor)
         {
-            _watchVarControls.ForEach(control => control.EnableCustomization());
+            _watchVarControls.ForEach(control => control.EnableCustomization(flashColor));
         }
 
         public void NotifyOfReordering(WatchVariableControl watchVarControl)
