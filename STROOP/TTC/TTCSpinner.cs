@@ -29,7 +29,7 @@ namespace STROOP.Ttc
         public TtcSpinner(TtcRng rng, uint address) :
             this(
                 rng: rng,
-                angle: Config.Stream.GetInt32(address + 0xD0),
+                angle: Normalize(Config.Stream.GetInt32(address + 0xD0)),
                 direction: Config.Stream.GetInt32(address + 0xF4),
                 timerMax: Config.Stream.GetInt32(address + 0xF8),
                 timer: Config.Stream.GetInt32(address + 0x154))

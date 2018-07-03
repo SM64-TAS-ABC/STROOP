@@ -70,7 +70,7 @@ namespace STROOP.Ttc
         /** Returns an angle between 0 and 65535 inclusive
          *  by using mods.
          */
-        protected int Normalize(int angle)
+        protected static int Normalize(int angle)
         {
             return ((angle % 65536) + 65536) % 65536;
         }
@@ -79,7 +79,7 @@ namespace STROOP.Ttc
         /** Returns a new number that is the current number moved towards
          * the target number by at most max displacement.
          */
-        protected int MoveNumberTowards(int currentNumber, int targetNumber, int maxDisplacement)
+        protected static int MoveNumberTowards(int currentNumber, int targetNumber, int maxDisplacement)
         {
             if (currentNumber == targetNumber)
             { //exactly equal to target
@@ -102,7 +102,7 @@ namespace STROOP.Ttc
         /** Returns a new angle that is the current angle moved towards the target angle
          *  in the closer direction by at most max displacement. Normalization is included.
          */
-        protected int MoveAngleTowards(int currentAngle, int targetAngle, int maxDisplacement)
+        protected static int MoveAngleTowards(int currentAngle, int targetAngle, int maxDisplacement)
         {
             if (currentAngle == targetAngle) return currentAngle;
             int diff = targetAngle - currentAngle;

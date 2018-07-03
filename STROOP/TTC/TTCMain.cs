@@ -17,13 +17,19 @@ namespace STROOP.Ttc
 
         public static void TtcMainMethod()
         {
-            TtcSimulation simulation = new TtcSimulation(
-                rngValue: 0,
-                startingFrame: 0,
-                dustFrames: new List<int>());
+            TtcSimulation simulation;
+
+            if (KeyboardUtilities.IsCtrlHeld())
+            {
+                simulation = new TtcSimulation(0, 100);
+            }
+            else
+            {
+                simulation = new TtcSimulation();
+            }
 
             simulation.Print(
-                endingFrame: 1070 - 100,
+                endingFrame: (int)GotoRetrieveConfig.GotoAboveOffset,
                 printRng: false,
                 printObjects: true);
         }
