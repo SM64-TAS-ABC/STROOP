@@ -74,12 +74,6 @@ namespace STROOP.Controls
             ToolStripMenuItem clearAllButHighlightedItem = new ToolStripMenuItem("Clear All But Highlighted");
             clearAllButHighlightedItem.Click += (sender, e) => ClearAllButHighlightedVariables();
 
-            ToolStripMenuItem showVariableXmlItem = new ToolStripMenuItem("Show Variable XML");
-            showVariableXmlItem.Click += (sender, e) => ShowVariableXml();
-
-            ToolStripMenuItem showVariableInfoItem = new ToolStripMenuItem("Show Variable Info");
-            showVariableInfoItem.Click += (sender, e) => ShowVariableInfo();
-
             ToolStripMenuItem openSaveClearItem = new ToolStripMenuItem("Open / Save / Clear ...");
             ControlUtilities.AddDropDownItems(
                 openSaveClearItem,
@@ -106,8 +100,6 @@ namespace STROOP.Controls
 
             ContextMenuStrip.Items.Add(resetVariablesItem);
             ContextMenuStrip.Items.Add(clearAllButHighlightedItem);
-            ContextMenuStrip.Items.Add(showVariableXmlItem);
-            ContextMenuStrip.Items.Add(showVariableInfoItem);
             ContextMenuStrip.Items.Add(openSaveClearItem);
             ContextMenuStrip.Items.Add(doToAllVariablesItem);
             ContextMenuStrip.Items.Add(filterVariablesItem);
