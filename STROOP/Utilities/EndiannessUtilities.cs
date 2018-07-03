@@ -52,6 +52,11 @@ namespace STROOP.Utilities
             return _bytesToAlignment[address.ToUInt64() & 0x03];
         }
 
+        public static int NumberOfBytesToAlignment(uint address)
+        {
+            return _bytesToAlignment[address & 0x03];
+        }
+
         public static uint AlignedAddressFloor(uint address)
         {
             return (address & ~0x03U);

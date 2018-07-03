@@ -52,6 +52,9 @@ namespace STROOP.Models
             _objects.ForEach(o => o?.Update2());
         }
 
+        int successiveFails = 0;
+        const int successiveFailsThreshold = 5;
+
         private int? UpdateGetProcessedObjects()
         {
             int slotIndex = 0;
@@ -69,7 +72,8 @@ namespace STROOP.Models
                     if (objAddress == 0 ||
                         Config.Stream.GetUInt16(objAddress + ObjectConfig.HeaderOffset) != 0x18)
                     {
-                        ClearAllObjectSlots();
+                        if (successiveFails++ > successiveFailsThreshold)
+                            ClearAllObjectSlots();
                         return null;
                     }
 
@@ -102,7 +106,8 @@ namespace STROOP.Models
                 if (objAddress == 0 ||
                     Config.Stream.GetUInt16(objAddress + ObjectConfig.HeaderOffset) != 0x18)
                 {
-                    ClearAllObjectSlots();
+                    if (successiveFails++ > successiveFailsThreshold)
+                        ClearAllObjectSlots();
                     return;
                 }
 
@@ -115,6 +120,8 @@ namespace STROOP.Models
 
                 objAddress = Config.Stream.GetUInt32(objAddress + ObjectConfig.ProcessedNextLinkOffset);
             }
+
+            successiveFails = 0;
         }
 
         private void ClearAllObjectSlots()

@@ -248,17 +248,22 @@ namespace STROOP.Utilities
                     // Read padded if misaligned address
                     byte[] swapBytes;
                     uint alignedAddress = EndiannessUtilities.AlignedAddressFloor(localAddress);
-                    if (EndiannessUtilities.AddressIsMisaligned(localAddress))
-                        swapBytes = new byte[readBytes.Length + 4];
-                    else
-                        swapBytes = new byte[readBytes.Length];
+
+                    // TODO: optimize lookup by not having to read excess if memroy is aligned.
+                    // if (EndiannessUtilities.AddressIsMisaligned(localAddress))
+                    swapBytes = new byte[(readBytes.Length / 4) * 4 + 8];
 
                     // Read memory
                     Buffer.BlockCopy(_ram, (int)alignedAddress, swapBytes, 0, swapBytes.Length);
 
+                    // Un-aligned
+                    int i = Math.Min(EndiannessUtilities.NumberOfBytesToAlignment(localAddress), readBytes.Length);
+                    if (i > 0)
+                        swapBytes.Take(i).Reverse().ToArray().CopyTo(readBytes, 0);
+
                     // Copy and swap bytes
-                    int index = (int)(localAddress - alignedAddress);
-                    for (int i = 0; i < readBytes.Length; i++, index++)
+                    int index = i == 0 ? 0 : 4;
+                    for (; i < readBytes.Length; i++, index++)
                         readBytes[i] = swapBytes[index & ~0x03 | _swapByteOrder[index & 0x03]]; // Swap bytes
 
                     break;
