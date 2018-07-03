@@ -1,4 +1,5 @@
-﻿using STROOP.Structs.Configurations;
+﻿using STROOP.Structs;
+using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace STROOP.Ttc
         private readonly List<TtcObject> _rngObjects;
         private readonly int _startingFrame;
 
-        public TtcSimulation(int rngValue, int startingFrame, List<int> dustFrames)
+        public TtcSimulation(ushort rngValue, int startingFrame, List<int> dustFrames = null)
         {
             //set up objects
             _rng = new TtcRng(rngValue); //initial RNG during star selection screen
@@ -24,10 +25,21 @@ namespace STROOP.Ttc
             _startingFrame = startingFrame; //the frame directly preceding any object initialization
         }
 
+        public TtcSimulation(List<int> dustFrames = null)
+        {
+            //set up objects
+            _rng = new TtcRng(Config.Stream.GetUInt16(MiscConfig.RngAddress));
+            _rngObjects = CreateRngObjectsFromGame(_rng, dustFrames);
+
+            //set up testing variables
+            _startingFrame = MupenUtilities.GetFrameCount(); //the frame directly preceding any object initialization
+        }
+
         public void Print(int endingFrame, bool printRng, bool printObjects)
         {
             //iterate through frames to update objects
             int frame = _startingFrame;
+            int counter = 0;
             while (frame < endingFrame)
             {
                 frame++;
@@ -36,6 +48,7 @@ namespace STROOP.Ttc
                     rngObject.SetFrame(frame);
                     rngObject.Update();
                 }
+                counter++;
             }
 
             //print frame, RNG, and index
@@ -50,13 +63,15 @@ namespace STROOP.Ttc
             if (printObjects)
             {
                 StringUtilities.WriteLine("");
-                StringUtilities.WriteLine("");
                 foreach (TtcObject rngObject in _rngObjects)
                 {
-                    if (rngObject is TtcAmp) continue;
-                    StringUtilities.WriteLine(rngObject + "\n");
+                    StringUtilities.WriteLine(rngObject);
                 }
+                StringUtilities.WriteLine("RNG Value = " + _rng.GetRng());
+                StringUtilities.WriteLine("RNG Index = " + _rng.GetIndex());
                 StringUtilities.WriteLine("");
+                StringUtilities.WriteLine("iterated through {0} frames, from {1} to {2}", counter, _startingFrame, endingFrame);
+                StringUtilities.WriteLine("frame = " + frame);
                 StringUtilities.WriteLine("");
             }
         }

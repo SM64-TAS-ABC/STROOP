@@ -18,9 +18,9 @@ namespace STROOP.Ttc
         //start off with RNG 0 by default
         private int _index;
 
-        public TtcRng(int index)
+        public TtcRng(ushort rng)
         {
-            _index = index;
+            SetRng(rng);
         }
 
         /** Get the current RNG (will not update RNG).

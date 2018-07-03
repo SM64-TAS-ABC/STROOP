@@ -20,7 +20,7 @@ namespace STROOP.Ttc
         public TtcSpinningTriangle(TtcRng rng, uint address) :
             this(
                 rng: rng,
-                angle: Config.Stream.GetInt32(address + 0xD4),
+                angle: Normalize(Config.Stream.GetInt32(address + 0xD4)),
                 currentAngularVelocity: (int)Config.Stream.GetSingle(address + 0xF8),
                 targetAngularVelocity: (int)Config.Stream.GetSingle(address + 0xFC))
         {

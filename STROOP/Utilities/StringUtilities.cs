@@ -41,9 +41,9 @@ namespace STROOP.Utilities
             return (num > 0 ? "+" : "") + num;
         }
 
-        public static void WriteLine(string format, params object[] args)
+        public static void WriteLine(object format, params object[] args)
         {
-            string formatted = String.Format(format, args);
+            string formatted = String.Format(format.ToString(), args);
             System.Diagnostics.Trace.WriteLine(formatted);
         }
 
