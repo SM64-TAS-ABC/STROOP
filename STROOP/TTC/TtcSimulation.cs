@@ -1,4 +1,5 @@
-﻿using STROOP.Structs;
+﻿using STROOP.Models;
+using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System;
@@ -257,9 +258,10 @@ namespace STROOP.Ttc
                 if (i == 0) rngObjects.Add(new TtcAmp(rng, 0x80347AC8).SetIndex(i + 1));
                 if (i == 1) rngObjects.Add(new TtcAmp(rng, 0x8034A328).SetIndex(i + 1));
             }
-            for (int i = 0; i < 2; i++)
+            List<ObjectDataModel> bobombs = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Bob-omb");
+            for (int i = 0; i < bobombs.Count; i++)
             {
-                rngObjects.Add(new TtcBobomb(rng, 0x8034ACA8 + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcBobomb(rng, bobombs[i].Address + getOffset(i)).SetIndex(i + 1));
             }
             for (int i = 0; i < 1; i++)
             {
