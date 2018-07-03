@@ -19,10 +19,6 @@
   <Data groupList="Basic" type="int" offset="0x114" base="Object" subclass="Angle">Pitch Velocity</Data>
   <Data groupList="Basic" type="int" offset="0x11C" base="Object" subclass="Angle">Roll Velocity</Data>
 
-  <Data groupList="Advanced" type="float" offset="0xF4" base="Object" coord="X">Normal X</Data>
-  <Data groupList="Advanced" type="float" offset="0xF8" base="Object" coord="Y">Normal Y</Data>
-  <Data groupList="Advanced" type="float" offset="0xFC" base="Object" coord="Z">Normal Z</Data>
-
   <Data groupList="Advanced" type="float" offset="0x20" base="Object" coord="X">Graphics X</Data>
   <Data groupList="Advanced" type="float" offset="0x24" base="Object" coord="Y">Graphics Y</Data>
   <Data groupList="Advanced" type="float" offset="0x28" base="Object" coord="Z">Graphics Z</Data>
