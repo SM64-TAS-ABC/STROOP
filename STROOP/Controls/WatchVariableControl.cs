@@ -367,7 +367,8 @@ namespace STROOP.Controls
             else if (isPKeyHeld)
             {
                 _watchVariablePanel.UnselectAllVariables();
-                SelectionForm.ShowDataManagerSelectionForm(this);
+                SelectionForm.ShowDataManagerSelectionForm(
+                    new List<WatchVariableControl>() { this });
             }
             else if (isFKeyHeld)
             {

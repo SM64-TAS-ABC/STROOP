@@ -79,14 +79,14 @@ namespace STROOP.Forms
             selectionForm.Show();
         }
 
-        public static void ShowDataManagerSelectionForm(WatchVariableControl control)
+        public static void ShowDataManagerSelectionForm(List<WatchVariableControl> controls)
         {
             SelectionForm selectionForm = new SelectionForm();
             selectionForm.Initialize(
                 "Select a Tab",
-                "Add Variable to Tab",
+                "Add Variable(s) to Tab",
                 Config.GetDataManagers(),
-                dataManager => control.AddToTab(dataManager));
+                dataManager => WatchVariableControl.AddVarsToTab(controls, dataManager));
             selectionForm.Show();
         }
     }
