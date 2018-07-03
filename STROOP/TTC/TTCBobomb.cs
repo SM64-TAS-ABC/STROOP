@@ -38,6 +38,7 @@ namespace STROOP.Ttc
                 blinkingTimer: Config.Stream.GetInt32(address + 0xF4),
                 withinMarioRange: PositionAngle.GetDistance(PositionAngle.Obj(address), PositionAngle.Mario) < 4000)
         {
+            StringUtilities.WriteLine("Bob-omb at " + HexUtilities.FormatValue(address));
         }
 
         public TtcBobomb(TtcRng rng) : this(rng, 0, true)

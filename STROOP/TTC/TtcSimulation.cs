@@ -259,9 +259,17 @@ namespace STROOP.Ttc
                 if (i == 1) rngObjects.Add(new TtcAmp(rng, 0x8034A328).SetIndex(i + 1));
             }
             List<ObjectDataModel> bobombs = Config.ObjectSlotsManager.GetLoadedObjectsWithName("Bob-omb");
+            bobombs.Sort((obj1, obj2) =>
+            {
+                string label1 = Config.ObjectSlotsManager.GetSlotLabelFromObject(obj1);
+                string label2 = Config.ObjectSlotsManager.GetSlotLabelFromObject(obj2);
+                int pos1 = ParsingUtilities.ParseInt(label1);
+                int pos2 = ParsingUtilities.ParseInt(label2);
+                return pos1 - pos2;
+            });
             for (int i = 0; i < bobombs.Count; i++)
             {
-                rngObjects.Add(new TtcBobomb(rng, bobombs[i].Address + getOffset(i)).SetIndex(i + 1));
+                rngObjects.Add(new TtcBobomb(rng, bobombs[i].Address).SetIndex(i + 1));
             }
             for (int i = 0; i < 1; i++)
             {
