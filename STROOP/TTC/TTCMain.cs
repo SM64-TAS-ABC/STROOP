@@ -19,15 +19,15 @@ namespace STROOP.TTC
         {
 
             //set up objects
-            List<RNGObject> rngObjects = new List<RNGObject>();
+            List<RNGObject> rngObjects = getRNGObjectsForRandomSetting();
             //Dust dust = (Dust)rngObjects.get(rngObjects.size()-1);
 
             //set up testing variables
             RNGManager.setRNG(0); //initial RNG during star selection screen
             int startingFrame = 0; //the frame directly preceding any object initialization
-            int endingFrame = Int32.MaxValue; //the frame you want to see printed
+            int endingFrame = 100; //the frame you want to see printed
             bool printRNG = false; //whether to print frame/RNG/index
-            bool printObjects = false; //whether to print the state of every object
+            bool printObjects = true; //whether to print the state of every object
             // dust.addDustFrames(); //which frames dust is present on (empty parameters = no dust)
 
             //iterate through frames to update objects

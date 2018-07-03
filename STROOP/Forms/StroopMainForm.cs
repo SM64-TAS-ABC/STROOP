@@ -114,9 +114,7 @@ namespace STROOP
                     () => Process.Start("https://github.com/SM64-TAS-ABC/STROOP/archive/vDev.zip"),
                     () =>
                     {
-                        TabPage currentTab = Config.TabControlMain.SelectedTab;
-                        int num = ControlUtilities.GetAllDescendantSplitContainers(currentTab).Count;
-                        InfoForm.ShowValue(num);
+                        TestUtilities.TestSomething();
                     },
                 });
 

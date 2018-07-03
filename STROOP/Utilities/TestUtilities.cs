@@ -2,6 +2,7 @@
 using STROOP.Managers;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
+using STROOP.TTC;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,11 @@ namespace STROOP.Utilities
     {
 
         public static void TestSomething()
+        {
+            TTCMain.TTCMainMethod();
+        }
+
+        public static void TestSomething3()
         {
             List<DataManager> dataManagerList = Config.GetDataManagers();
             InfoForm.ShowValue(String.Join("\r\n\r\n", dataManagerList));
