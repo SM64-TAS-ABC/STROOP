@@ -36,7 +36,7 @@ namespace STROOP.Ttc
             this(
                 rng: rng,
                 blinkingTimer: Config.Stream.GetInt32(address + 0xF4),
-                withinMarioRange: PositionAngle.GetDistance(PositionAngle.Obj(address), PositionAngle.Mario) <= 2000)
+                withinMarioRange: PositionAngle.GetDistance(PositionAngle.Obj(address), PositionAngle.Mario) < 4000)
         {
         }
 
