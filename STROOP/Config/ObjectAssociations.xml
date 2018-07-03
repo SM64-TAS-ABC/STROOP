@@ -3688,12 +3688,16 @@
     <Image path="TTC Rotating Block.png"/>
     <MapImage path="TTC Rotating Block Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Timer Max</Data>
+    <Data groupList="ObjectSpecific" base="Object" offset="0xF8" type="int">Num Sides</Data>
+    <Data groupList="ObjectSpecific" base="Object" offset="0xF4" type="int">Phase</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004BF0" name="TTC Rotating Triangular Prism" subType="1">
     <SpawnCode gfxId="0x37"/>
     <Image path="TTC Rotating Triangular Prism.png"/>
     <MapImage path="TTC Rotating Triangular Prism Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Timer Max</Data>
+    <Data groupList="ObjectSpecific" base="Object" offset="0xF8" type="int">Num Sides</Data>
+    <Data groupList="ObjectSpecific" base="Object" offset="0xF4" type="int">Phase</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004C24" name="TTC Pendulum">
     <SpawnCode gfxId="0x38"/>
@@ -3764,6 +3768,9 @@
     <Data groupList="ObjectSpecific" type="int" offset="0xFC" base="Object">Timer Max</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xB0" base="Object">V Speed</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xA4" base="Object">Height</Data>
+    <Data groupList="ObjectSpecific" base="Object" offset="0xF8" type="int">Direction</Data>
+    <Data groupList="ObjectSpecific" base="Object" offset="0x168" type="float">Min Height</Data>
+    <Data groupList="ObjectSpecific" base="Object" offset="0xF4" type="float">Max Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004CF8" name="TTC Pit Block (Unused Graphic)" subType="1">
     <SpawnCode gfxId="0x3f"/>
