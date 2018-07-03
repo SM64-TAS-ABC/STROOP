@@ -23,7 +23,7 @@ namespace STROOP.Ttc
         public int directionTimer;
         public int timer;
 
-        public TtcWheel()
+        public TtcWheel(TtcRng rng) : base(rng)
         {
             angle = 0;
             max = 0;

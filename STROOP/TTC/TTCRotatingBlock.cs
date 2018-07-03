@@ -22,7 +22,7 @@ namespace STROOP.Ttc
         public int max;
         public int timer;
 
-        public TtcRotatingBlock()
+        public TtcRotatingBlock(TtcRng rng) : base(rng)
         {
             max = 0;
             timer = 0;

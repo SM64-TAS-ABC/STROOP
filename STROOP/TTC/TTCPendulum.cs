@@ -24,7 +24,7 @@ namespace STROOP.Ttc
         public int accelerationMagnitude;
         public int waitingTimer;
 
-        public TtcPendulum()
+        public TtcPendulum(TtcRng rng) : base(rng)
         {
             accelerationDirection = 0;
             angle = 6500;

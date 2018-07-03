@@ -22,7 +22,7 @@ namespace STROOP.Ttc
         public int currentAngularVelocity;
         public int targetAngularVelocity;
 
-        public TtcCog()
+        public TtcCog(TtcRng rng) : base(rng)
         {
             angle = 0;
             currentAngularVelocity = 0;

@@ -16,7 +16,7 @@ namespace STROOP.Ttc
         public int currentAngularVelocity;
         public int targetAngularVelocity;
 
-        public TtcSpinningTriangle(int startingAngle)
+        public TtcSpinningTriangle(TtcRng rng, int startingAngle) : base(rng)
         {
             angle = startingAngle;
             currentAngularVelocity = 0;

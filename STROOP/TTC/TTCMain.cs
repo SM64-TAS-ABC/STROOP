@@ -19,11 +19,11 @@ namespace STROOP.Ttc
         {
 
             //set up objects
-            List<TtcObject> rngObjects = getRNGObjectsForRandomSetting();
+            TtcRng rng = new TtcRng(0); //initial RNG during star selection screen
+            List<TtcObject> rngObjects = getRNGObjectsForRandomSetting(rng);
             //Dust dust = (Dust)rngObjects.get(rngObjects.size()-1);
 
             //set up testing variables
-            TtcRng.setRNG(0); //initial RNG during star selection screen
             int startingFrame = 0; //the frame directly preceding any object initialization
             int endingFrame = 100; //the frame you want to see printed
             bool printRNG = false; //whether to print frame/RNG/index
@@ -46,8 +46,8 @@ namespace STROOP.Ttc
 		    if (printRNG)
             {
 			    StringUtilities.WriteLine(endingFrame + "\n");
-                StringUtilities.WriteLine(TtcRng.getCurrentRNG() + "\n");
-                StringUtilities.WriteLine("[" + TtcRng.getCurrentIndex() + "]\n");
+                StringUtilities.WriteLine(rng.getCurrentRNG() + "\n");
+                StringUtilities.WriteLine("[" + rng.getCurrentIndex() + "]\n");
 		    }
 		
 		    //print each object's state
@@ -65,116 +65,94 @@ namespace STROOP.Ttc
             }
         }
 		
-	    private static List<TtcObject> getRNGObjectsForStillSetting()
-        {
-            List<TtcObject> rngObjects = new List<TtcObject>();
-            for (int i = 0; i < 1; i++)
-            {
-                rngObjects.Add(new TtcThwomp());
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rngObjects.Add(new TtcAmp());
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rngObjects.Add(new TtcBobomb());
-            }
-            for (int i = 0; i < 1; i++)
-            {
-                rngObjects.Add(new TtcDust().setIndex(i + 1));
-            }
-            return rngObjects;
-        }
-
-        private static List<TtcObject> getRNGObjectsForRandomSetting()
+        private static List<TtcObject> getRNGObjectsForRandomSetting(TtcRng rng)
         {
             List<TtcObject> rngObjects = new List<TtcObject>();
             for (int i = 0; i < 6; i++)
             {
-                rngObjects.Add(new TtcRotatingBlock().setIndex(i + 1));
+                rngObjects.Add(new TtcRotatingBlock(rng).setIndex(i + 1));
             }
             for (int i = 0; i < 2; i++)
             {
-                rngObjects.Add(new TtcRotatingTriangularPrism().setIndex(i + 1));
+                rngObjects.Add(new TtcRotatingTriangularPrism(rng).setIndex(i + 1));
             }
             for (int i = 0; i < 4; i++)
             {
-                rngObjects.Add(new TtcPendulum().setIndex(i + 1));
+                rngObjects.Add(new TtcPendulum(rng).setIndex(i + 1));
             }
             for (int i = 0; i < 5; i++)
             {
-                rngObjects.Add(new TtcTreadmill(i == 0).setIndex(i + 1));
+                rngObjects.Add(new TtcTreadmill(rng, i == 0).setIndex(i + 1));
             }
             for (int i = 0; i < 12; i++)
             {
-                if (i == 0) rngObjects.Add(new TtcPusher(20).setIndex(i + 1));
-                if (i == 1) rngObjects.Add(new TtcPusher(0).setIndex(i + 1));
-                if (i == 2) rngObjects.Add(new TtcPusher(50).setIndex(i + 1));
-                if (i == 3) rngObjects.Add(new TtcPusher(100).setIndex(i + 1));
-                if (i == 4) rngObjects.Add(new TtcPusher(0).setIndex(i + 1));
-                if (i == 5) rngObjects.Add(new TtcPusher(10).setIndex(i + 1));
-                if (i == 6) rngObjects.Add(new TtcPusher(0).setIndex(i + 1));
-                if (i == 7) rngObjects.Add(new TtcPusher(0).setIndex(i + 1));
-                if (i == 8) rngObjects.Add(new TtcPusher(0).setIndex(i + 1));
-                if (i == 9) rngObjects.Add(new TtcPusher(30).setIndex(i + 1));
-                if (i == 10) rngObjects.Add(new TtcPusher(10).setIndex(i + 1));
-                if (i == 11) rngObjects.Add(new TtcPusher(20).setIndex(i + 1));
+                if (i == 0) rngObjects.Add(new TtcPusher(rng, 20).setIndex(i + 1));
+                if (i == 1) rngObjects.Add(new TtcPusher(rng, 0).setIndex(i + 1));
+                if (i == 2) rngObjects.Add(new TtcPusher(rng, 50).setIndex(i + 1));
+                if (i == 3) rngObjects.Add(new TtcPusher(rng, 100).setIndex(i + 1));
+                if (i == 4) rngObjects.Add(new TtcPusher(rng, 0).setIndex(i + 1));
+                if (i == 5) rngObjects.Add(new TtcPusher(rng, 10).setIndex(i + 1));
+                if (i == 6) rngObjects.Add(new TtcPusher(rng, 0).setIndex(i + 1));
+                if (i == 7) rngObjects.Add(new TtcPusher(rng, 0).setIndex(i + 1));
+                if (i == 8) rngObjects.Add(new TtcPusher(rng, 0).setIndex(i + 1));
+                if (i == 9) rngObjects.Add(new TtcPusher(rng, 30).setIndex(i + 1));
+                if (i == 10) rngObjects.Add(new TtcPusher(rng, 10).setIndex(i + 1));
+                if (i == 11) rngObjects.Add(new TtcPusher(rng, 20).setIndex(i + 1));
             }
             for (int i = 0; i < 5; i++)
             {
-                rngObjects.Add(new TtcCog().setIndex(i + 1));
+                rngObjects.Add(new TtcCog(rng).setIndex(i + 1));
             }
             for (int i = 0; i < 2; i++)
             {
-                if (i == 0) rngObjects.Add(new TtcSpinningTriangle(40960).setIndex(i + 1));
-                if (i == 1) rngObjects.Add(new TtcSpinningTriangle(57344).setIndex(i + 1));
+                if (i == 0) rngObjects.Add(new TtcSpinningTriangle(rng, 40960).setIndex(i + 1));
+                if (i == 1) rngObjects.Add(new TtcSpinningTriangle(rng, 57344).setIndex(i + 1));
             }
             for (int i = 0; i < 1; i++)
             {
-                rngObjects.Add(new TtcPitBlock().setIndex(i + 1));
+                rngObjects.Add(new TtcPitBlock(rng).setIndex(i + 1));
             }
             for (int i = 0; i < 2; i++)
             {
-                if (i == 0) rngObjects.Add(new TtcHand(40960).setIndex(i + 1));
-                if (i == 1) rngObjects.Add(new TtcHand(8192).setIndex(i + 1));
+                if (i == 0) rngObjects.Add(new TtcHand(rng, 40960).setIndex(i + 1));
+                if (i == 1) rngObjects.Add(new TtcHand(rng, 8192).setIndex(i + 1));
             }
             for (int i = 0; i < 14; i++)
             {
-                rngObjects.Add(new TtcSpinner().setIndex(i + 1));
+                rngObjects.Add(new TtcSpinner(rng).setIndex(i + 1));
             }
             for (int i = 0; i < 6; i++)
             {
-                rngObjects.Add(new TtcWheel().setIndex(i + 1));
+                rngObjects.Add(new TtcWheel(rng).setIndex(i + 1));
             }
             for (int i = 0; i < 2; i++)
             {
-                if (i == 0) rngObjects.Add(new TtcElevator(445, 1045).setIndex(i + 1));
-                if (i == 1) rngObjects.Add(new TtcElevator(-1454, -1254).setIndex(i + 1));
+                if (i == 0) rngObjects.Add(new TtcElevator(rng, 445, 1045).setIndex(i + 1));
+                if (i == 1) rngObjects.Add(new TtcElevator(rng , - 1454, -1254).setIndex(i + 1));
             }
             for (int i = 0; i < 1; i++)
             {
-                rngObjects.Add(new TtcCog().setIndex(i + 6));
+                rngObjects.Add(new TtcCog(rng).setIndex(i + 6));
             }
             for (int i = 0; i < 2; i++)
             {
-                rngObjects.Add(new TtcTreadmill(false).setIndex(i + 6));
+                rngObjects.Add(new TtcTreadmill(rng, false).setIndex(i + 6));
             }
             for (int i = 0; i < 1; i++)
             {
-                rngObjects.Add(new TtcThwomp().setIndex(i + 1));
+                rngObjects.Add(new TtcThwomp(rng).setIndex(i + 1));
             }
             for (int i = 0; i < 2; i++)
             {
-                rngObjects.Add(new TtcAmp().setIndex(i + 1));
+                rngObjects.Add(new TtcAmp(rng).setIndex(i + 1));
             }
             for (int i = 0; i < 2; i++)
             {
-                rngObjects.Add(new TtcBobomb().setIndex(i + 1));
+                rngObjects.Add(new TtcBobomb(rng).setIndex(i + 1));
             }
             for (int i = 0; i < 1; i++)
             {
-                rngObjects.Add(new TtcDust().setIndex(i + 1));
+                rngObjects.Add(new TtcDust(rng).setIndex(i + 1));
             }
             return rngObjects;
         }

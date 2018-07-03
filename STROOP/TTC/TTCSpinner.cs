@@ -25,7 +25,7 @@ namespace STROOP.Ttc
         public int max;
         public int counter;
 
-        public TtcSpinner()
+        public TtcSpinner(TtcRng rng) : base(rng)
         {
             angle = 0;
             direction = 0;

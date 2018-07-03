@@ -14,7 +14,7 @@ namespace STROOP.Ttc
 
         public bool initializedYet;
 
-        public TtcAmp()
+        public TtcAmp(TtcRng rng) : base(rng)
         {
             initializedYet = false;
         }

@@ -23,7 +23,7 @@ namespace STROOP.Ttc
 
         public List<int> dustFrames;
 
-        public TtcDust()
+        public TtcDust(TtcRng rng) : base(rng)
         {
             dustFrames = new List<int>();
         }

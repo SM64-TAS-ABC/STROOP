@@ -27,7 +27,7 @@ namespace STROOP.Ttc
         public int max;
         public int counter;
 
-        public TtcElevator(int minHeightIn, int maxHeightIn)
+        public TtcElevator(TtcRng rng, int minHeightIn, int maxHeightIn) : base(rng)
         {
             MIN_HEIGHT = minHeightIn;
             MAX_HEIGHT = maxHeightIn;

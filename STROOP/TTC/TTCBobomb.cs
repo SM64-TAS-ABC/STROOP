@@ -30,7 +30,7 @@ namespace STROOP.Ttc
         //whether Mario is within 4000 units of the bob-omb
         public bool withinMarioRange;
 
-        public TtcBobomb()
+        public TtcBobomb(TtcRng rng) : base(rng)
         {
             blinkingTimer = 0;
             withinMarioRange = true;

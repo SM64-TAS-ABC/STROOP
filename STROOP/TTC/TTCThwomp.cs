@@ -26,7 +26,7 @@ namespace STROOP.Ttc
         public int state; //0 = going up, 1 = at top, 2 = going down, 3/4 = at bottom
         public int counter;
 
-        public TtcThwomp()
+        public TtcThwomp(TtcRng rng) : base(rng)
         {
             height = MIN_HEIGHT;
             verticalSpeed = 0;

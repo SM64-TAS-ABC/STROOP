@@ -17,7 +17,9 @@ namespace STROOP.Ttc
         public static readonly string OPENER = "(";
 	    public static readonly string SEPARATOR = ",";
 	    public static readonly string CLOSER = ")";
-	
+
+        public TtcRng _rng;
+
 	    //id is an identifier for this object (e.g. "Cog 2")
 	    public string id;
 
@@ -26,8 +28,9 @@ namespace STROOP.Ttc
 
         /** id begins as the object's class name by default.
          */
-        public TtcObject()
+        public TtcObject(TtcRng rng)
         {
+            _rng = rng;
             id = GetType().Name.ToString();
         }
 
@@ -54,7 +57,7 @@ namespace STROOP.Ttc
          */
         protected int pollRNG()
         {
-            return TtcRng.pollRNG();
+            return _rng.pollRNG();
         }
 
         /** Sets the frame that the object should be updating to.

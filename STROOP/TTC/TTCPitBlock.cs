@@ -25,7 +25,7 @@ namespace STROOP.Ttc
         public int max;
         public int counter;
 
-        public TtcPitBlock()
+        public TtcPitBlock(TtcRng rng) : base(rng)
         {
             height = MIN_HEIGHT;
             verticalSpeed = 0;

@@ -29,7 +29,7 @@ namespace STROOP.Ttc
         public int max;
         public int counter;
 
-        public TtcTreadmill(bool isFirstTreadmillIn)
+        public TtcTreadmill(TtcRng rng, bool isFirstTreadmillIn) : base(rng)
         {
             isFirstTreadmill = isFirstTreadmillIn;
             currentSpeed = 0;

@@ -32,7 +32,7 @@ namespace STROOP.Ttc
         public int directionTimer;
         public int timer;
 
-        public TtcHand(int startingAngle)
+        public TtcHand(TtcRng rng, int startingAngle) : base(rng)
         {
             angle = startingAngle;
             max = 0;
