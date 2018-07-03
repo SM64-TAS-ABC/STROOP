@@ -18,7 +18,7 @@ namespace STROOP.Ttc
         {
             //set up objects
             _rng = new TtcRng(rngValue); //initial RNG during star selection screen
-            _rngObjects = GetRNGObjectsForRandomSetting(_rng, dustFrames);
+            _rngObjects = CreateRngObjects(_rng, dustFrames);
 
             //set up testing variables
             _startingFrame = startingFrame; //the frame directly preceding any object initialization
@@ -61,7 +61,101 @@ namespace STROOP.Ttc
             }
         }
 
-        private static List<TtcObject> GetRNGObjectsForRandomSetting(TtcRng rng, List<int> dustFrames)
+        private static List<TtcObject> CreateRngObjects(TtcRng rng, List<int> dustFrames)
+        {
+            List<TtcObject> rngObjects = new List<TtcObject>();
+            for (int i = 0; i < 6; i++)
+            {
+                rngObjects.Add(new TtcRotatingBlock(rng).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rngObjects.Add(new TtcRotatingTriangularPrism(rng).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rngObjects.Add(new TtcPendulum(rng).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rngObjects.Add(new TtcTreadmill(rng, i == 0).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 12; i++)
+            {
+                if (i == 0) rngObjects.Add(new TtcPusher(rng, 20).SetIndex(i + 1));
+                if (i == 1) rngObjects.Add(new TtcPusher(rng, 0).SetIndex(i + 1));
+                if (i == 2) rngObjects.Add(new TtcPusher(rng, 50).SetIndex(i + 1));
+                if (i == 3) rngObjects.Add(new TtcPusher(rng, 100).SetIndex(i + 1));
+                if (i == 4) rngObjects.Add(new TtcPusher(rng, 0).SetIndex(i + 1));
+                if (i == 5) rngObjects.Add(new TtcPusher(rng, 10).SetIndex(i + 1));
+                if (i == 6) rngObjects.Add(new TtcPusher(rng, 0).SetIndex(i + 1));
+                if (i == 7) rngObjects.Add(new TtcPusher(rng, 0).SetIndex(i + 1));
+                if (i == 8) rngObjects.Add(new TtcPusher(rng, 0).SetIndex(i + 1));
+                if (i == 9) rngObjects.Add(new TtcPusher(rng, 30).SetIndex(i + 1));
+                if (i == 10) rngObjects.Add(new TtcPusher(rng, 10).SetIndex(i + 1));
+                if (i == 11) rngObjects.Add(new TtcPusher(rng, 20).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rngObjects.Add(new TtcCog(rng).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                if (i == 0) rngObjects.Add(new TtcSpinningTriangle(rng, 40960).SetIndex(i + 1));
+                if (i == 1) rngObjects.Add(new TtcSpinningTriangle(rng, 57344).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 1; i++)
+            {
+                rngObjects.Add(new TtcPitBlock(rng).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                if (i == 0) rngObjects.Add(new TtcHand(rng, 40960).SetIndex(i + 1));
+                if (i == 1) rngObjects.Add(new TtcHand(rng, 8192).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 14; i++)
+            {
+                rngObjects.Add(new TtcSpinner(rng).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rngObjects.Add(new TtcWheel(rng).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                if (i == 0) rngObjects.Add(new TtcElevator(rng, 445, 1045).SetIndex(i + 1));
+                if (i == 1) rngObjects.Add(new TtcElevator(rng, -1454, -1254).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 1; i++)
+            {
+                rngObjects.Add(new TtcCog(rng).SetIndex(i + 6));
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rngObjects.Add(new TtcTreadmill(rng, false).SetIndex(i + 6));
+            }
+            for (int i = 0; i < 1; i++)
+            {
+                rngObjects.Add(new TtcThwomp(rng).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rngObjects.Add(new TtcAmp(rng).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rngObjects.Add(new TtcBobomb(rng).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 1; i++)
+            {
+                TtcDust dust = new TtcDust(rng).SetIndex(i + 1) as TtcDust;
+                if (dustFrames != null) dust.AddDustFrames(dustFrames);
+                rngObjects.Add(dust);
+            }
+            return rngObjects;
+        }
+
+        private static List<TtcObject> CreateRngObjectsFromGame(TtcRng rng, List<int> dustFrames)
         {
             List<TtcObject> rngObjects = new List<TtcObject>();
             for (int i = 0; i < 6; i++)
