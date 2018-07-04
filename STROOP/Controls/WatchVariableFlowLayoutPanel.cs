@@ -25,6 +25,7 @@ namespace STROOP.Controls
         private readonly List<VariableGroup> _visibleGroups;
         private List<ToolStripMenuItem> _filteringDropDownItems;
 
+        private List<WatchVariableControl> _selectedWatchVarControls;
         private List<WatchVariableControl> _reorderingWatchVarControls;
 
         private List<ToolStripItem> _selectionToolStripItems;
@@ -39,6 +40,7 @@ namespace STROOP.Controls
 
             ContextMenuStrip = new ContextMenuStrip();
 
+            _selectedWatchVarControls = new List<WatchVariableControl>();
             _reorderingWatchVarControls = new List<WatchVariableControl>();
 
             Click += (sender, e) => UnselectAllVariables();
@@ -57,7 +59,7 @@ namespace STROOP.Controls
 
             _selectionToolStripItems =
                 WatchVariableSelectionUtilities.CreateSelectionToolStripItems(
-                    () => GetCurrentlySelectedVariableControls(), this);
+                    () => _selectedWatchVarControls, this);
 
             List<WatchVariableControlPrecursor> precursors = _varFilePath == null
                 ? new List<WatchVariableControlPrecursor>()
@@ -251,7 +253,8 @@ namespace STROOP.Controls
 
         public void UnselectAllVariables()
         {
-            GetCurrentlySelectedVariableControls().ForEach(control => control.IsSelected = false);
+            _selectedWatchVarControls.ForEach(control => control.IsSelected = false);
+            _selectedWatchVarControls.Clear();
         }
 
         private void AddAllVariablesToCustomTab()
@@ -382,31 +385,39 @@ namespace STROOP.Controls
             WatchVariableControl clickedControl, bool ctrlHeld, bool shiftHeld)
         {
             List<WatchVariableControl> currentControls = GetCurrentVariableControls();
-            List<WatchVariableControl> currentlySelected =
-                currentControls.FindAll(control => control.IsSelected);
 
-            if (shiftHeld && currentlySelected.Count > 0)
+            if (shiftHeld && _selectedWatchVarControls.Count > 0)
             {
-                int index1 = currentControls.IndexOf(currentlySelected.Last());
+                int index1 = currentControls.IndexOf(_selectedWatchVarControls.Last());
                 int index2 = currentControls.IndexOf(clickedControl);
-                int indexMin = Math.Min(index1, index2);
-                int indexMax = Math.Max(index1, index2);
-                for (int i = indexMin; i <= indexMax; i++)
+                int diff = Math.Abs(index2 - index1);
+                int diffSign = index2 > index1 ? 1 : -1;
+                for (int i = 0; i <= diff; i++)
                 {
-                    currentControls[i].IsSelected = true;
+                    int index = index1 + diffSign * i;
+                    WatchVariableControl control = currentControls[index];
+                    if (!_selectedWatchVarControls.Contains(control))
+                    {
+                        control.IsSelected = true;
+                        _selectedWatchVarControls.Add(control);
+                    }
                 }
             }
             else
             {
-                bool toggle = ctrlHeld || (currentlySelected.Count == 1 && currentlySelected[0] == clickedControl);
-                if (!toggle) currentControls.ForEach(control => control.IsSelected = false);
-                clickedControl.IsSelected = !clickedControl.IsSelected;
+                bool toggle = ctrlHeld ||(_selectedWatchVarControls.Count == 1 && _selectedWatchVarControls[0] == clickedControl);
+                if (!toggle) UnselectAllVariables();
+                if (clickedControl.IsSelected)
+                {
+                    clickedControl.IsSelected = false;
+                    _selectedWatchVarControls.Remove(clickedControl);
+                }
+                else
+                {
+                    clickedControl.IsSelected = true;
+                    _selectedWatchVarControls.Add(clickedControl);
+                }
             }
-        }
-
-        public List<WatchVariableControl> GetCurrentlySelectedVariableControls()
-        {
-            return GetCurrentVariableControls().FindAll(control => control.IsSelected);
         }
 
         public List<WatchVariableControl> GetCurrentVariableControls()
