@@ -71,7 +71,9 @@ namespace STROOP.Ttc
         {
             TtcCog upperCog = _rngObjects[31] as TtcCog;
             TtcCog lowerCog = _rngObjects[32] as TtcCog;
+            List<CogConfiguration> cogConfigurations = new List<CogConfiguration>();
 
+            int numCogConfigurations = 5;
             int lowerCogGoodAngle = 62988;
             List<int> lowerCogGoodAngles = Enumerable.Range(0, 6).ToList()
                 .ConvertAll(index => lowerCogGoodAngle + 65536 / 6 * index)
@@ -90,15 +92,26 @@ namespace STROOP.Ttc
                     rngObject.Update();
                 }
 
+                if (cogConfigurations.Count >= numCogConfigurations)
+                    cogConfigurations.RemoveAt(0);
+                cogConfigurations.Add(new CogConfiguration(upperCog, lowerCog));
+
                 if (frame >= numFramesMin)
                 {
-                    if (MoreMath.TruncateToMultipleOf16(upperCog._angle) == 46432 &&
+                    if (cogConfigurations.Count < 2) continue;
+                    CogConfiguration lastCogConfiguration = cogConfigurations[cogConfigurations.Count - 1];
+                    CogConfiguration secondToLastCogConfiguration = cogConfigurations[cogConfigurations.Count - 2];
+                    /*if (MoreMath.TruncateToMultipleOf16(upperCog._angle) == 46432 &&
                         upperCog._targetAngularVelocity == 1200 &&
                         upperCog._currentAngularVelocity == 1150 &&
                         lowerCogGoodAngles.Min(angle => MoreMath.GetAngleDistance(angle, lowerCog._angle)) < 500 &&
                         lowerCog._currentAngularVelocity >= 0 &&
                         lowerCog._currentAngularVelocity <= 600 &&
-                        lowerCog._targetAngularVelocity < lowerCog._currentAngularVelocity)
+                        lowerCog._targetAngularVelocity < lowerCog._currentAngularVelocity)*/
+                    if (lastCogConfiguration.UpperCogCurrentAngularVelocity == 0 &&
+                        lastCogConfiguration.LowerCogCurrentAngularVelocity == 0 &&
+                        secondToLastCogConfiguration.UpperCogCurrentAngularVelocity == 0 &&
+                        secondToLastCogConfiguration.LowerCogCurrentAngularVelocity == 0)
                     {
                         return frame;
                     }
@@ -106,6 +119,26 @@ namespace STROOP.Ttc
             }
 
             return null;
+        }
+
+        private class CogConfiguration
+        {
+            public readonly int UpperCogAngle;
+            public readonly int UpperCogCurrentAngularVelocity;
+            public readonly int UpperCogTargetAngularVelocity;
+            public readonly int LowerCogAngle;
+            public readonly int LowerCogCurrentAngularVelocity;
+            public readonly int LowerCogTargetAngularVelocity;
+
+            public CogConfiguration(TtcCog upperCog, TtcCog lowerCog)
+            {
+                UpperCogAngle = upperCog._angle;
+                UpperCogCurrentAngularVelocity = upperCog._currentAngularVelocity;
+                UpperCogTargetAngularVelocity = upperCog._targetAngularVelocity;
+                LowerCogAngle = lowerCog._angle;
+                LowerCogCurrentAngularVelocity = lowerCog._currentAngularVelocity;
+                LowerCogTargetAngularVelocity = lowerCog._targetAngularVelocity;
+            }
         }
 
         private static List<TtcObject> CreateRngObjects(TtcRng rng, List<int> dustFrames)
