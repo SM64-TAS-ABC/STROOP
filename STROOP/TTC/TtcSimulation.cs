@@ -72,6 +72,11 @@ namespace STROOP.Ttc
             TtcCog upperCog = _rngObjects[31] as TtcCog;
             TtcCog lowerCog = _rngObjects[32] as TtcCog;
 
+            int lowerCogGoodAngle = 62988;
+            List<int> lowerCogGoodAngles = Enumerable.Range(0, 6).ToList()
+                .ConvertAll(index => lowerCogGoodAngle + 65536 / 6 * index)
+                .ConvertAll(angle => (int)MoreMath.NormalizeAngleUshort(angle));
+
             //iterate through frames to update objects
             int frame = _startingFrame;
             int counter = 0;
@@ -89,7 +94,11 @@ namespace STROOP.Ttc
                 {
                     if (MoreMath.TruncateToMultipleOf16(upperCog._angle) == 46432 &&
                         upperCog._targetAngularVelocity == 1200 &&
-                        upperCog._currentAngularVelocity == 1150)
+                        upperCog._currentAngularVelocity == 1150 &&
+                        lowerCogGoodAngles.Min(angle => MoreMath.GetAngleDistance(angle, lowerCog._angle)) < 500 &&
+                        lowerCog._currentAngularVelocity >= 0 &&
+                        lowerCog._currentAngularVelocity <= 600 &&
+                        lowerCog._targetAngularVelocity < lowerCog._currentAngularVelocity)
                     {
                         return frame;
                     }
