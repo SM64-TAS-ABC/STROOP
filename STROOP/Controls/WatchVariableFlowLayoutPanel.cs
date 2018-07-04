@@ -76,6 +76,9 @@ namespace STROOP.Controls
             ToolStripMenuItem clearAllButHighlightedItem = new ToolStripMenuItem("Clear All But Highlighted");
             clearAllButHighlightedItem.Click += (sender, e) => ClearAllButHighlightedVariables();
 
+            ToolStripMenuItem fixVerticalScrollItem = new ToolStripMenuItem("Fix Vertical Scroll");
+            fixVerticalScrollItem.Click += (sender, e) => FixVerticalScroll();
+
             ToolStripMenuItem openSaveClearItem = new ToolStripMenuItem("Open / Save / Clear ...");
             ControlUtilities.AddDropDownItems(
                 openSaveClearItem,
@@ -102,6 +105,7 @@ namespace STROOP.Controls
 
             ContextMenuStrip.Items.Add(resetVariablesItem);
             ContextMenuStrip.Items.Add(clearAllButHighlightedItem);
+            ContextMenuStrip.Items.Add(fixVerticalScrollItem);
             ContextMenuStrip.Items.Add(openSaveClearItem);
             ContextMenuStrip.Items.Add(doToAllVariablesItem);
             ContextMenuStrip.Items.Add(filterVariablesItem);
@@ -236,6 +240,13 @@ namespace STROOP.Controls
                 _watchVarControls.FindAll(control => !control.Highlighted);
             RemoveVariables(nonHighlighted);
             _watchVarControls.ForEach(control => control.Highlighted = false);
+        }
+
+        public void FixVerticalScroll()
+        {
+            List<WatchVariableControl> controls = GetCurrentVariableControls();
+            RemoveVariables(controls);
+            AddVariables(controls);
         }
 
         private void ResetVariables()
