@@ -63,6 +63,12 @@ namespace STROOP.Structs.Configurations
             return dataManagerList;
         }
 
+        public static void Print(object format, params object[] args)
+        {
+            string formatted = String.Format(format.ToString(), args);
+            System.Diagnostics.Trace.WriteLine(formatted);
+        }
+
         public static void SetDebugText(object obj)
         {
             DebugText.Visible = true;
