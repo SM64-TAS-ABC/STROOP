@@ -71,6 +71,7 @@ namespace STROOP
 
             Config.StroopMainForm = this;
             Config.TabControlMain = tabControlMain;
+            Config.DebugText = labelDebugText;
             SavedSettingsConfig.StoreRecommendedTabOrder();
             SavedSettingsConfig.InvokeInitiallySavedTabOrder();
             Config.TabControlMain.SelectedIndex = 0;

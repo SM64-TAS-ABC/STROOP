@@ -19,6 +19,7 @@ namespace STROOP.Structs.Configurations
         public static ObjectAssociations ObjectAssociations;
         public static StroopMainForm StroopMainForm;
         public static TabControl TabControlMain;
+        public static Label DebugText;
 
         public static CameraManager CameraManager;
         public static DebugManager DebugManager;
@@ -60,6 +61,12 @@ namespace STROOP.Structs.Configurations
                 ControlUtilities.GetFieldsOfType<DataManager>(typeof(Config), null);
             dataManagerList.Sort((d1, d2) => d1.TabIndex - d2.TabIndex);
             return dataManagerList;
+        }
+
+        public static void SetDebugText(object obj)
+        {
+            DebugText.Visible = true;
+            DebugText.Text = obj.ToString();
         }
     }
 }
