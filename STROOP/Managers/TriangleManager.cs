@@ -314,8 +314,7 @@ namespace STROOP.Managers
                 return;
             }
 
-            TriangleAddress = newAddress;
-            (_addressBox.Parent.Controls["radioButtonTriOther"] as RadioButton).Checked = true;
+            SetCustomTriangleAddress(newAddress);
         }
 
         public TriangleDataModel GetTriangleStruct(uint address)
