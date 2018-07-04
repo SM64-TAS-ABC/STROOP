@@ -36,8 +36,7 @@ namespace STROOP.Ttc
                 {
                     List<int> dustInputFrames = dustFrames.ConvertAll(dustFrame => dustFrame - 2);
                     string dustInputFramesString = "[" + String.Join(", ", dustInputFrames) + "]";
-                    string dustFramesString = "[" + String.Join(", ", dustFrames) + "]";
-                    StringUtilities.WriteLine(dustInputFramesString + " => " + dustFramesString + " => " + idealCogConfigurationFrame.Value);
+                    StringUtilities.WriteLine(dustInputFramesString + " => " + idealCogConfigurationFrame.Value);
                     StringUtilities.WriteLine("Success");
                     return;
                 }

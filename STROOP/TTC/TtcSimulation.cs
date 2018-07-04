@@ -87,7 +87,9 @@ namespace STROOP.Ttc
 
                 if (frame >= numFramesMin)
                 {
-                    if (upperCog._currentAngularVelocity == 200 && lowerCog._currentAngularVelocity == 200)
+                    if (MoreMath.TruncateToMultipleOf16(upperCog._angle) == 46432 &&
+                        upperCog._targetAngularVelocity == 1200 &&
+                        upperCog._currentAngularVelocity == 1150)
                     {
                         return frame;
                     }
