@@ -338,7 +338,7 @@ namespace STROOP.Managers
                 objAngleGroupBox.Controls["textBoxObjAngleYaw"] as TextBox,
                 (float yawValue) =>
                 {
-                    ButtonUtilities.RotateObjects(_objects, (int)Math.Round(yawValue), 0, 0);
+                    ButtonUtilities.RotateObjects(_objects, (int)Math.Round(yawValue), 0, 0, KeyboardUtilities.IsCtrlHeld());
                 });
             ControlUtilities.InitializeScalarController(
                 objAngleGroupBox.Controls["buttonObjAnglePitchN"] as Button,
@@ -346,7 +346,7 @@ namespace STROOP.Managers
                 objAngleGroupBox.Controls["textBoxObjAnglePitch"] as TextBox,
                 (float pitchValue) =>
                 {
-                    ButtonUtilities.RotateObjects(_objects, 0, (int)Math.Round(pitchValue), 0);
+                    ButtonUtilities.RotateObjects(_objects, 0, (int)Math.Round(pitchValue), 0, KeyboardUtilities.IsCtrlHeld());
                 });
             ControlUtilities.InitializeScalarController(
                 objAngleGroupBox.Controls["buttonObjAngleRollN"] as Button,
@@ -354,7 +354,7 @@ namespace STROOP.Managers
                 objAngleGroupBox.Controls["textBoxObjAngleRoll"] as TextBox,
                 (float rollValue) =>
                 {
-                    ButtonUtilities.RotateObjects(_objects, 0, 0, (int)Math.Round(rollValue));
+                    ButtonUtilities.RotateObjects(_objects, 0, 0, (int)Math.Round(rollValue), KeyboardUtilities.IsCtrlHeld());
                 });
 
             var objScaleGroupBox = objPanel.Controls["groupBoxObjScale"] as GroupBox;
