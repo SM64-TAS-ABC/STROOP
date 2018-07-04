@@ -72,8 +72,11 @@ namespace STROOP.Ttc
             TtcCog upperCog = _rngObjects[31] as TtcCog;
             TtcCog lowerCog = _rngObjects[32] as TtcCog;
             List<CogConfiguration> cogConfigurations = new List<CogConfiguration>();
+            List<int> goodUpperCogAngles = new List<int>() { 46432, 57360, 2752, 13664, 24592, 35536 };
+            List<int> goodLowerCogAngles = new List<int>() { 42576, 53504, 64416, 9808, 20736, 31648 };
+            List<int> goodLowerCogAnglesAdjusted = goodLowerCogAngles.ConvertAll(angle => angle + 16);
 
-            int numCogConfigurations = 5;
+            int numCogConfigurations = 4;
             int lowerCogGoodAngle = 62988;
             List<int> lowerCogGoodAngles = Enumerable.Range(0, 6).ToList()
                 .ConvertAll(index => lowerCogGoodAngle + 65536 / 6 * index)
@@ -98,20 +101,24 @@ namespace STROOP.Ttc
 
                 if (frame >= numFramesMin)
                 {
-                    if (cogConfigurations.Count < 2) continue;
+                    if (cogConfigurations.Count < 4) continue;
                     CogConfiguration lastCogConfiguration = cogConfigurations[cogConfigurations.Count - 1];
-                    CogConfiguration secondToLastCogConfiguration = cogConfigurations[cogConfigurations.Count - 2];
-                    /*if (MoreMath.TruncateToMultipleOf16(upperCog._angle) == 46432 &&
-                        upperCog._targetAngularVelocity == 1200 &&
-                        upperCog._currentAngularVelocity == 1150 &&
-                        lowerCogGoodAngles.Min(angle => MoreMath.GetAngleDistance(angle, lowerCog._angle)) < 500 &&
-                        lowerCog._currentAngularVelocity >= 0 &&
-                        lowerCog._currentAngularVelocity <= 600 &&
-                        lowerCog._targetAngularVelocity < lowerCog._currentAngularVelocity)*/
-                    if (lastCogConfiguration.UpperCogCurrentAngularVelocity == 0 &&
-                        lastCogConfiguration.LowerCogCurrentAngularVelocity == 0 &&
-                        secondToLastCogConfiguration.UpperCogCurrentAngularVelocity == 0 &&
-                        secondToLastCogConfiguration.LowerCogCurrentAngularVelocity == 0)
+                    CogConfiguration fourthToLastCogConfiguration = cogConfigurations[cogConfigurations.Count - 4];
+
+                    int upperCogAngleDist = goodUpperCogAngles.Min(
+                        angle => (int)MoreMath.GetAngleDistance(
+                            angle, MoreMath.NormalizeAngleTruncated(lastCogConfiguration.UpperCogAngle)));
+                    int lowerCogAngleDist = goodLowerCogAnglesAdjusted.Min(
+                        angle => (int)MoreMath.GetAngleDistance(
+                            angle, MoreMath.NormalizeAngleTruncated(fourthToLastCogConfiguration.LowerCogAngle)));
+
+                    if (upperCogAngleDist == 0 &&
+                        lastCogConfiguration.UpperCogTargetAngularVelocity == 1200 &&
+                        lastCogConfiguration.UpperCogCurrentAngularVelocity == 1150 &&
+                        lowerCogAngleDist <= 16 &&
+                        fourthToLastCogConfiguration.LowerCogCurrentAngularVelocity >= 50 &&
+                        fourthToLastCogConfiguration.LowerCogCurrentAngularVelocity <= 400 &&
+                        fourthToLastCogConfiguration.LowerCogTargetAngularVelocity > fourthToLastCogConfiguration.LowerCogCurrentAngularVelocity)
                     {
                         return frame;
                     }
