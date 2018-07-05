@@ -74,9 +74,9 @@ namespace STROOP.Ttc
             List<CogConfiguration> cogConfigurations = new List<CogConfiguration>();
             List<int> goodUpperCogAngles = new List<int>() { 46432, 57360, 2752, 13664, 24592, 35536 };
             List<int> goodLowerCogAngles = new List<int>() { 42576, 53504, 64416, 9808, 20736, 31648 };
-            List<int> goodLowerCogAnglesAdjusted = goodLowerCogAngles.ConvertAll(angle => angle + 16);
+            List<int> goodLowerCogAnglesAdjusted = goodLowerCogAngles.ConvertAll(angle => angle + 32);
 
-            int numCogConfigurations = 4;
+            int numCogConfigurations = 9;
             int lowerCogGoodAngle = 62988;
             List<int> lowerCogGoodAngles = Enumerable.Range(0, 6).ToList()
                 .ConvertAll(index => lowerCogGoodAngle + 65536 / 6 * index)
@@ -101,9 +101,10 @@ namespace STROOP.Ttc
 
                 if (frame >= numFramesMin)
                 {
-                    if (cogConfigurations.Count < 4) continue;
+                    if (cogConfigurations.Count < numCogConfigurations) continue;
                     CogConfiguration lastCogConfiguration = cogConfigurations[cogConfigurations.Count - 1];
                     CogConfiguration fourthToLastCogConfiguration = cogConfigurations[cogConfigurations.Count - 4];
+                    CogConfiguration ninthToLastCogConfiguration = cogConfigurations[cogConfigurations.Count - 4];
 
                     int upperCogAngleDist = goodUpperCogAngles.Min(
                         angle => (int)MoreMath.GetAngleDistance(
@@ -114,11 +115,11 @@ namespace STROOP.Ttc
 
                     if (upperCogAngleDist == 0 &&
                         lastCogConfiguration.UpperCogTargetAngularVelocity == 1200 &&
-                        lastCogConfiguration.UpperCogCurrentAngularVelocity == 1150 &&
-                        lowerCogAngleDist <= 16 &&
-                        fourthToLastCogConfiguration.LowerCogCurrentAngularVelocity >= 50 &&
-                        fourthToLastCogConfiguration.LowerCogCurrentAngularVelocity <= 400 &&
-                        fourthToLastCogConfiguration.LowerCogTargetAngularVelocity > fourthToLastCogConfiguration.LowerCogCurrentAngularVelocity)
+                        lastCogConfiguration.UpperCogCurrentAngularVelocity >= 1100 &&
+                        ninthToLastCogConfiguration.UpperCogTargetAngularVelocity == 1200 &&
+                        lowerCogAngleDist <= 48 &&
+                        fourthToLastCogConfiguration.LowerCogCurrentAngularVelocity >= 100 &&
+                        fourthToLastCogConfiguration.LowerCogCurrentAngularVelocity <= 400)
                     {
                         return frame;
                     }

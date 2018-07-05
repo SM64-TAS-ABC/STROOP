@@ -17,17 +17,18 @@ namespace STROOP.Ttc
 
         public static void TtcMainMethod()
         {
-            int earliestDustFrame = 229234;
-            int dustFrameRange = 30;
+            int earliestDustFrame = 229234 + 30;
+            int dustFrameRange = 32;
             int numFramesMin = 150;
-            int numFramesMax = 600;
+            int numFramesMax = 800;
 
             List<List<int>> dustFrameLists = GetDustFrameLists(earliestDustFrame, dustFrameRange);
             int counter = 0;
+            List<string> outputStrings = new List<string>();
             foreach (List<int> dustFrames in dustFrameLists)
             {
                 counter++;
-                if (counter % 100 == 0)
+                if (counter % 1000 == 0)
                 {
                     double percent = Math.Round(100d * counter / dustFrameLists.Count, 1);
                     string percentString = percent.ToString("N1");
@@ -42,12 +43,13 @@ namespace STROOP.Ttc
                 {
                     List<int> dustInputFrames = dustFrames.ConvertAll(dustFrame => dustFrame - 2);
                     string dustInputFramesString = "[" + String.Join(", ", dustInputFrames) + "]";
-                    Config.Print(dustInputFramesString + " => " + idealCogConfigurationFrame.Value);
-                    Config.Print("Success");
-                    //return;
+                    string outputString = dustInputFramesString + " => " + idealCogConfigurationFrame.Value;
+                    outputStrings.Add(outputString);
+                    Config.Print(outputString);
                 }
             }
-            Config.Print("Failure");
+            Config.Print("In total, there were {0} successes:", outputStrings.Count);
+            outputStrings.ForEach(output => Config.Print(output));
         }
 
         public static string Simulate(int endFrame, List<int> dustFrames)

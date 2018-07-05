@@ -239,8 +239,8 @@ namespace STROOP.M64
                 M64CopiedData.OnePauseFrameOverwrite.Apply(Inputs[index]);
             }
 
-            _gui.DataGridViewInputs.DataSource = null;
             int currentPosition = _gui.DataGridViewInputs.FirstDisplayedScrollingRowIndex;
+            _gui.DataGridViewInputs.DataSource = null;
 
             for (int index = startIndex; index <= endIndex; index++)
             {
