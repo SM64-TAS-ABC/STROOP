@@ -386,6 +386,14 @@ namespace STROOP.Structs
 
             // Object specific vars - Cog
 
+            _dictionary.Add("CogCountdown",
+                ((uint objAddress) =>
+                {
+                    int cogCountdown = GetCogNumFramesInRotation(objAddress);
+                    return cogCountdown;
+                },
+                DEFAULT_SETTER));
+
             _dictionary.Add("CogEndingYaw",
                 ((uint objAddress) =>
                 {
