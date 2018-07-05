@@ -92,6 +92,9 @@ namespace STROOP.Structs
         public static readonly uint PendulumAngularVelocityOffset = 0xFC;
         public static readonly uint PendulumAngleOffset = 0xF8;
 
+        public static readonly uint CogCurrentYawVelocity = 0xF8;
+        public static readonly uint CogTargetYawVelocity = 0xFC;
+
         public static readonly uint WaypointOffset = 0x100;
         public static readonly uint PitchToWaypointOffset = 0x10A;
         public static readonly uint RacingPenguinEffortOffset = 0x110;

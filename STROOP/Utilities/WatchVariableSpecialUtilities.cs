@@ -2842,6 +2842,9 @@ namespace STROOP.Structs
 
         private static ushort GetCogEndingYaw(uint cogAddress)
         {
+            ushort yawFacing = Config.Stream.GetUInt16(cogAddress + ObjectConfig.YawFacingOffset);
+            float currentYawVel = Config.Stream.GetSingle(cogAddress + ObjectConfig.CogCurrentYawVelocity);
+            float targetYawVel = Config.Stream.GetSingle(cogAddress + ObjectConfig.CogTargetYawVelocity);
             return 1;
         }
 
