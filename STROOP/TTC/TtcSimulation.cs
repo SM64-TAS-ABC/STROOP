@@ -99,27 +99,33 @@ namespace STROOP.Ttc
                     cogConfigurations.RemoveAt(0);
                 cogConfigurations.Add(new CogConfiguration(upperCog, lowerCog));
 
-                if (frame >= numFramesMin)
+                if (counter >= numFramesMin)
                 {
                     if (cogConfigurations.Count < numCogConfigurations) continue;
-                    CogConfiguration lastCogConfiguration = cogConfigurations[cogConfigurations.Count - 1];
-                    CogConfiguration fourthToLastCogConfiguration = cogConfigurations[cogConfigurations.Count - 4];
-                    CogConfiguration ninthToLastCogConfiguration = cogConfigurations[cogConfigurations.Count - 4];
 
                     int upperCogAngleDist = goodUpperCogAngles.Min(
                         angle => (int)MoreMath.GetAngleDistance(
-                            angle, MoreMath.NormalizeAngleTruncated(lastCogConfiguration.UpperCogAngle)));
+                            angle, MoreMath.NormalizeAngleTruncated(cogConfigurations[8].UpperCogAngle)));
                     int lowerCogAngleDist = goodLowerCogAnglesAdjusted.Min(
                         angle => (int)MoreMath.GetAngleDistance(
-                            angle, MoreMath.NormalizeAngleTruncated(fourthToLastCogConfiguration.LowerCogAngle)));
+                            angle, MoreMath.NormalizeAngleTruncated(cogConfigurations[5].LowerCogAngle)));
+
+                    int lowerCogMinAngularVelocity = 50;
+                    int lowerCogMaxAngularVelocity = 400;
 
                     if (upperCogAngleDist == 0 &&
-                        lastCogConfiguration.UpperCogTargetAngularVelocity == 1200 &&
-                        lastCogConfiguration.UpperCogCurrentAngularVelocity >= 1100 &&
-                        ninthToLastCogConfiguration.UpperCogTargetAngularVelocity == 1200 &&
+                        cogConfigurations[8].UpperCogTargetAngularVelocity == 1200 &&
+                        cogConfigurations[8].UpperCogCurrentAngularVelocity == 1200 &&
+                        cogConfigurations[0].UpperCogTargetAngularVelocity == 1200 &&
                         lowerCogAngleDist <= 48 &&
-                        fourthToLastCogConfiguration.LowerCogCurrentAngularVelocity >= 100 &&
-                        fourthToLastCogConfiguration.LowerCogCurrentAngularVelocity <= 400)
+                        cogConfigurations[4].LowerCogCurrentAngularVelocity >= lowerCogMinAngularVelocity &&
+                        cogConfigurations[4].LowerCogCurrentAngularVelocity <= lowerCogMaxAngularVelocity &&
+                        cogConfigurations[5].LowerCogCurrentAngularVelocity >= lowerCogMinAngularVelocity &&
+                        cogConfigurations[5].LowerCogCurrentAngularVelocity <= lowerCogMaxAngularVelocity &&
+                        cogConfigurations[6].LowerCogCurrentAngularVelocity >= lowerCogMinAngularVelocity &&
+                        cogConfigurations[6].LowerCogCurrentAngularVelocity <= lowerCogMaxAngularVelocity &&
+                        cogConfigurations[7].LowerCogCurrentAngularVelocity >= lowerCogMinAngularVelocity &&
+                        cogConfigurations[7].LowerCogCurrentAngularVelocity <= lowerCogMaxAngularVelocity)
                     {
                         return frame;
                     }

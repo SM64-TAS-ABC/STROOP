@@ -17,10 +17,10 @@ namespace STROOP.Ttc
 
         public static void TtcMainMethod()
         {
-            int earliestDustFrame = 229234 + 30;
-            int dustFrameRange = 32;
-            int numFramesMin = 150;
-            int numFramesMax = 800;
+            int earliestDustFrame = 863 + 2 + 60;
+            int dustFrameRange = 30;
+            int numFramesMin = 120;
+            int numFramesMax = 1000;
 
             List<List<int>> dustFrameLists = GetDustFrameLists(earliestDustFrame, dustFrameRange);
             int counter = 0;
