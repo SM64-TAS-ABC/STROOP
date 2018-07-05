@@ -2840,12 +2840,30 @@ namespace STROOP.Structs
             return amplitude;
         }
 
+        private static int GetCogNumFramesInRotation(uint cogAddress)
+        {
+            ushort yawFacing = Config.Stream.GetUInt16(cogAddress + ObjectConfig.YawFacingOffset);
+            int currentYawVel = (int)Config.Stream.GetSingle(cogAddress + ObjectConfig.CogCurrentYawVelocity);
+            int targetYawVel = (int)Config.Stream.GetSingle(cogAddress + ObjectConfig.CogTargetYawVelocity);
+
+            int diff = Math.Abs(targetYawVel - currentYawVel);
+            int numFrames = diff / 50;
+
+            return numFrames;
+        }
+
         private static ushort GetCogEndingYaw(uint cogAddress)
         {
             ushort yawFacing = Config.Stream.GetUInt16(cogAddress + ObjectConfig.YawFacingOffset);
-            float currentYawVel = Config.Stream.GetSingle(cogAddress + ObjectConfig.CogCurrentYawVelocity);
-            float targetYawVel = Config.Stream.GetSingle(cogAddress + ObjectConfig.CogTargetYawVelocity);
-            return 1;
+            int currentYawVel = (int)Config.Stream.GetSingle(cogAddress + ObjectConfig.CogCurrentYawVelocity);
+            int targetYawVel = (int)Config.Stream.GetSingle(cogAddress + ObjectConfig.CogTargetYawVelocity);
+
+            int diff = Math.Abs(targetYawVel - currentYawVel);
+            int numFrames = diff / 50;
+
+            int remainingRotation = (currentYawVel + targetYawVel) * (numFrames + 1) / 2 - currentYawVel;
+            int endingYaw = yawFacing + remainingRotation;
+            return MoreMath.NormalizeAngleUshort(endingYaw);
         }
 
         private static double GetObjectTrajectoryFramesToYDist(double frames)
