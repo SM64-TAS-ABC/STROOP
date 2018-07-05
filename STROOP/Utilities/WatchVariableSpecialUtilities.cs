@@ -2856,6 +2856,7 @@ namespace STROOP.Structs
 
             int diff = Math.Abs(targetYawVel - currentYawVel);
             int numFrames = diff / 50;
+            if (numFrames == 0) numFrames = 1;
 
             return numFrames;
         }
@@ -2868,6 +2869,7 @@ namespace STROOP.Structs
 
             int diff = Math.Abs(targetYawVel - currentYawVel);
             int numFrames = diff / 50;
+            if (numFrames == 0) numFrames = 1;
 
             int remainingRotation = (currentYawVel + targetYawVel) * (numFrames + 1) / 2 - currentYawVel;
             int endingYaw = yawFacing + remainingRotation;
