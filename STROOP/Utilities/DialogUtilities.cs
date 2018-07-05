@@ -131,13 +131,22 @@ namespace STROOP.Structs
             return root.Elements().ToList();
         }
 
-        public static byte[] FileToByteArray(string filePath)
+        public static byte[] ReadFileBytes(string filePath)
         {
             using (FileStream fs = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
-                byte[] buff = new byte[fs.Length];
-                fs.Read(buff, 0, buff.Length);
-                return buff;
+                byte[] bytes = new byte[fs.Length];
+                fs.Read(bytes, 0, bytes.Length);
+                return bytes;
+            }
+        }
+
+        public static void WriteFileBytes(string filePath, byte[] bytes)
+        {
+            using (FileStream fs = File.Open(filePath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
+            {
+                fs.Write(bytes, 0, bytes.Length);
+                fs.SetLength(bytes.Length);
             }
         }
 

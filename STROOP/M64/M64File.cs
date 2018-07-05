@@ -49,7 +49,7 @@ namespace STROOP.M64
             byte[] movieBytes;
             try
             {
-                movieBytes = DialogUtilities.FileToByteArray(filePath);
+                movieBytes = DialogUtilities.ReadFileBytes(filePath);
             }
             catch (IOException)
             {
@@ -118,7 +118,7 @@ namespace STROOP.M64
             {
                 if (_gui.CheckBoxMaxOutViCount.Checked)
                     Header.NumVis = int.MaxValue;
-                File.WriteAllBytes(filePath, ToBytes());
+                DialogUtilities.WriteFileBytes(filePath, ToBytes());
                 int currentPosition = _gui.DataGridViewInputs.FirstDisplayedScrollingRowIndex;
                 Config.M64Manager.Open(filePath, fileName);
                 Config.M64Manager.Goto(currentPosition);
