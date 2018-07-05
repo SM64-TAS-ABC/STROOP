@@ -4,6 +4,7 @@ using STROOP.Structs.Configurations;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -128,6 +129,16 @@ namespace STROOP.Structs
         {
             XElement root = doc.Root;
             return root.Elements().ToList();
+        }
+
+        public static byte[] FileToByteArray(string filePath)
+        {
+            using (FileStream fs = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            {
+                byte[] buff = new byte[fs.Length];
+                fs.Read(buff, 0, buff.Length);
+                return buff;
+            }
         }
 
     }

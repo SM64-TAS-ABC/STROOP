@@ -49,7 +49,7 @@ namespace STROOP.M64
             byte[] movieBytes;
             try
             {
-                movieBytes = File.ReadAllBytes(filePath);
+                movieBytes = DialogUtilities.FileToByteArray(filePath);
             }
             catch (IOException)
             {
