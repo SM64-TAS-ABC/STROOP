@@ -384,6 +384,16 @@ namespace STROOP.Structs
                     return success;
                 }));
 
+            // Object specific vars - Cog
+
+            _dictionary.Add("CogEndingYaw",
+                ((uint objAddress) =>
+                {
+                    ushort cogEndingYaw = GetCogEndingYaw(objAddress);
+                    return cogEndingYaw;
+                },
+                DEFAULT_SETTER));
+
             // Object specific vars - Waypoint
 
             _dictionary.Add("ObjectDotProductToWaypoint",
@@ -2828,6 +2838,11 @@ namespace STROOP.Structs
             float totalDistance = speedUpDistance + slowDownDistance;
             float amplitude = angle + totalDistance;
             return amplitude;
+        }
+
+        private static ushort GetCogEndingYaw(uint cogAddress)
+        {
+            return 1;
         }
 
         private static double GetObjectTrajectoryFramesToYDist(double frames)
