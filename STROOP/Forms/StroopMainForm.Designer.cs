@@ -1180,6 +1180,12 @@ namespace STROOP
             this.buttonScuttlebugStuff2ndFloor = new System.Windows.Forms.Button();
             this.buttonScuttlebugStuff3rdFloor = new System.Windows.Forms.Button();
             this.buttonScuttlebugStuffLungeToHome = new System.Windows.Forms.Button();
+            this.groupBoxTestingTtcSimulator = new System.Windows.Forms.GroupBox();
+            this.buttonTestingTtcSimulatorCalculate = new System.Windows.Forms.Button();
+            this.textBoxTestingTtcSimulatorDustFrames = new STROOP.BetterTextbox();
+            this.labelTestingTtcSimulatorEndFrame = new System.Windows.Forms.Label();
+            this.labelTestingTtcSimulatorDustFrames = new System.Windows.Forms.Label();
+            this.textBoxTestingTtcSimulatorEndFrame = new STROOP.BetterTextbox();
             this.groupBoxSchedule = new System.Windows.Forms.GroupBox();
             this.buttonScheduleButtonSet = new System.Windows.Forms.Button();
             this.buttonScheduleNext = new System.Windows.Forms.Button();
@@ -1328,12 +1334,7 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.groupBoxTestingTtcSimulator = new System.Windows.Forms.GroupBox();
-            this.buttonTestingTtcSimulatorCalculate = new System.Windows.Forms.Button();
-            this.labelTestingTtcSimulatorEndFrame = new System.Windows.Forms.Label();
-            this.labelTestingTtcSimulatorDustFrames = new System.Windows.Forms.Label();
-            this.textBoxTestingTtcSimulatorEndFrame = new STROOP.BetterTextbox();
-            this.textBoxTestingTtcSimulatorDustFrames = new STROOP.BetterTextbox();
+            this.labelDebugText = new System.Windows.Forms.Label();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1729,6 +1730,7 @@ namespace STROOP
             this.tabPageTesting.SuspendLayout();
             this.groupBoxTriRooms.SuspendLayout();
             this.groupBoxScuttlebugStuff.SuspendLayout();
+            this.groupBoxTestingTtcSimulator.SuspendLayout();
             this.groupBoxSchedule.SuspendLayout();
             this.groupBoxStateTransfer.SuspendLayout();
             this.groupBoxControlStick.SuspendLayout();
@@ -1740,7 +1742,6 @@ namespace STROOP
             this.groupBoxRecording.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
-            this.groupBoxTestingTtcSimulator.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -5104,7 +5105,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 401F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 402F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8801,7 +8802,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(565, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(568, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -11072,7 +11073,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 722;
+            this.splitContainerMemory.SplitterDistance = 725;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11113,7 +11114,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(722, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(725, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -11330,7 +11331,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(722, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(725, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -11359,7 +11360,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(621, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(624, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -11372,7 +11373,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(184, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(181, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -15371,6 +15372,68 @@ namespace STROOP
             this.buttonScuttlebugStuffLungeToHome.Text = "Lunge to Home";
             this.buttonScuttlebugStuffLungeToHome.UseVisualStyleBackColor = true;
             // 
+            // groupBoxTestingTtcSimulator
+            // 
+            this.groupBoxTestingTtcSimulator.Controls.Add(this.buttonTestingTtcSimulatorCalculate);
+            this.groupBoxTestingTtcSimulator.Controls.Add(this.textBoxTestingTtcSimulatorDustFrames);
+            this.groupBoxTestingTtcSimulator.Controls.Add(this.labelTestingTtcSimulatorEndFrame);
+            this.groupBoxTestingTtcSimulator.Controls.Add(this.labelTestingTtcSimulatorDustFrames);
+            this.groupBoxTestingTtcSimulator.Controls.Add(this.textBoxTestingTtcSimulatorEndFrame);
+            this.groupBoxTestingTtcSimulator.Location = new System.Drawing.Point(6, 442);
+            this.groupBoxTestingTtcSimulator.Name = "groupBoxTestingTtcSimulator";
+            this.groupBoxTestingTtcSimulator.Size = new System.Drawing.Size(159, 105);
+            this.groupBoxTestingTtcSimulator.TabIndex = 42;
+            this.groupBoxTestingTtcSimulator.TabStop = false;
+            this.groupBoxTestingTtcSimulator.Text = "Ttc Simulator";
+            // 
+            // buttonTestingTtcSimulatorCalculate
+            // 
+            this.buttonTestingTtcSimulatorCalculate.Location = new System.Drawing.Point(12, 69);
+            this.buttonTestingTtcSimulatorCalculate.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTestingTtcSimulatorCalculate.Name = "buttonTestingTtcSimulatorCalculate";
+            this.buttonTestingTtcSimulatorCalculate.Size = new System.Drawing.Size(133, 23);
+            this.buttonTestingTtcSimulatorCalculate.TabIndex = 43;
+            this.buttonTestingTtcSimulatorCalculate.Text = "Calculate";
+            this.buttonTestingTtcSimulatorCalculate.UseVisualStyleBackColor = true;
+            // 
+            // textBoxTestingTtcSimulatorDustFrames
+            // 
+            this.textBoxTestingTtcSimulatorDustFrames.Location = new System.Drawing.Point(85, 44);
+            this.textBoxTestingTtcSimulatorDustFrames.Name = "textBoxTestingTtcSimulatorDustFrames";
+            this.textBoxTestingTtcSimulatorDustFrames.Size = new System.Drawing.Size(60, 20);
+            this.textBoxTestingTtcSimulatorDustFrames.TabIndex = 28;
+            this.textBoxTestingTtcSimulatorDustFrames.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelTestingTtcSimulatorEndFrame
+            // 
+            this.labelTestingTtcSimulatorEndFrame.AutoSize = true;
+            this.labelTestingTtcSimulatorEndFrame.Location = new System.Drawing.Point(9, 22);
+            this.labelTestingTtcSimulatorEndFrame.MinimumSize = new System.Drawing.Size(70, 2);
+            this.labelTestingTtcSimulatorEndFrame.Name = "labelTestingTtcSimulatorEndFrame";
+            this.labelTestingTtcSimulatorEndFrame.Size = new System.Drawing.Size(70, 13);
+            this.labelTestingTtcSimulatorEndFrame.TabIndex = 18;
+            this.labelTestingTtcSimulatorEndFrame.Text = "End Frame:";
+            this.labelTestingTtcSimulatorEndFrame.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelTestingTtcSimulatorDustFrames
+            // 
+            this.labelTestingTtcSimulatorDustFrames.AutoSize = true;
+            this.labelTestingTtcSimulatorDustFrames.Location = new System.Drawing.Point(9, 47);
+            this.labelTestingTtcSimulatorDustFrames.MinimumSize = new System.Drawing.Size(70, 2);
+            this.labelTestingTtcSimulatorDustFrames.Name = "labelTestingTtcSimulatorDustFrames";
+            this.labelTestingTtcSimulatorDustFrames.Size = new System.Drawing.Size(70, 13);
+            this.labelTestingTtcSimulatorDustFrames.TabIndex = 18;
+            this.labelTestingTtcSimulatorDustFrames.Text = "Dust Frames:";
+            this.labelTestingTtcSimulatorDustFrames.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // textBoxTestingTtcSimulatorEndFrame
+            // 
+            this.textBoxTestingTtcSimulatorEndFrame.Location = new System.Drawing.Point(85, 19);
+            this.textBoxTestingTtcSimulatorEndFrame.Name = "textBoxTestingTtcSimulatorEndFrame";
+            this.textBoxTestingTtcSimulatorEndFrame.Size = new System.Drawing.Size(60, 20);
+            this.textBoxTestingTtcSimulatorEndFrame.TabIndex = 28;
+            this.textBoxTestingTtcSimulatorEndFrame.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // groupBoxSchedule
             // 
             this.groupBoxSchedule.Controls.Add(this.buttonScheduleButtonSet);
@@ -17026,67 +17089,17 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // groupBoxTestingTtcSimulator
+            // labelDebugText
             // 
-            this.groupBoxTestingTtcSimulator.Controls.Add(this.buttonTestingTtcSimulatorCalculate);
-            this.groupBoxTestingTtcSimulator.Controls.Add(this.textBoxTestingTtcSimulatorDustFrames);
-            this.groupBoxTestingTtcSimulator.Controls.Add(this.labelTestingTtcSimulatorEndFrame);
-            this.groupBoxTestingTtcSimulator.Controls.Add(this.labelTestingTtcSimulatorDustFrames);
-            this.groupBoxTestingTtcSimulator.Controls.Add(this.textBoxTestingTtcSimulatorEndFrame);
-            this.groupBoxTestingTtcSimulator.Location = new System.Drawing.Point(6, 442);
-            this.groupBoxTestingTtcSimulator.Name = "groupBoxTestingTtcSimulator";
-            this.groupBoxTestingTtcSimulator.Size = new System.Drawing.Size(159, 105);
-            this.groupBoxTestingTtcSimulator.TabIndex = 42;
-            this.groupBoxTestingTtcSimulator.TabStop = false;
-            this.groupBoxTestingTtcSimulator.Text = "Ttc Simulator";
-            // 
-            // buttonTestingTtcSimulatorCalculate
-            // 
-            this.buttonTestingTtcSimulatorCalculate.Location = new System.Drawing.Point(12, 69);
-            this.buttonTestingTtcSimulatorCalculate.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonTestingTtcSimulatorCalculate.Name = "buttonTestingTtcSimulatorCalculate";
-            this.buttonTestingTtcSimulatorCalculate.Size = new System.Drawing.Size(133, 23);
-            this.buttonTestingTtcSimulatorCalculate.TabIndex = 43;
-            this.buttonTestingTtcSimulatorCalculate.Text = "Calculate";
-            this.buttonTestingTtcSimulatorCalculate.UseVisualStyleBackColor = true;
-            // 
-            // labelTestingTtcSimulatorEndFrame
-            // 
-            this.labelTestingTtcSimulatorEndFrame.AutoSize = true;
-            this.labelTestingTtcSimulatorEndFrame.Location = new System.Drawing.Point(9, 22);
-            this.labelTestingTtcSimulatorEndFrame.MinimumSize = new System.Drawing.Size(70, 2);
-            this.labelTestingTtcSimulatorEndFrame.Name = "labelTestingTtcSimulatorEndFrame";
-            this.labelTestingTtcSimulatorEndFrame.Size = new System.Drawing.Size(70, 13);
-            this.labelTestingTtcSimulatorEndFrame.TabIndex = 18;
-            this.labelTestingTtcSimulatorEndFrame.Text = "End Frame:";
-            this.labelTestingTtcSimulatorEndFrame.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // labelTestingTtcSimulatorDustFrames
-            // 
-            this.labelTestingTtcSimulatorDustFrames.AutoSize = true;
-            this.labelTestingTtcSimulatorDustFrames.Location = new System.Drawing.Point(9, 47);
-            this.labelTestingTtcSimulatorDustFrames.MinimumSize = new System.Drawing.Size(70, 2);
-            this.labelTestingTtcSimulatorDustFrames.Name = "labelTestingTtcSimulatorDustFrames";
-            this.labelTestingTtcSimulatorDustFrames.Size = new System.Drawing.Size(70, 13);
-            this.labelTestingTtcSimulatorDustFrames.TabIndex = 18;
-            this.labelTestingTtcSimulatorDustFrames.Text = "Dust Frames:";
-            this.labelTestingTtcSimulatorDustFrames.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // textBoxTestingTtcSimulatorEndFrame
-            // 
-            this.textBoxTestingTtcSimulatorEndFrame.Location = new System.Drawing.Point(85, 19);
-            this.textBoxTestingTtcSimulatorEndFrame.Name = "textBoxTestingTtcSimulatorEndFrame";
-            this.textBoxTestingTtcSimulatorEndFrame.Size = new System.Drawing.Size(60, 20);
-            this.textBoxTestingTtcSimulatorEndFrame.TabIndex = 28;
-            this.textBoxTestingTtcSimulatorEndFrame.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxTestingTtcSimulatorDustFrames
-            // 
-            this.textBoxTestingTtcSimulatorDustFrames.Location = new System.Drawing.Point(85, 44);
-            this.textBoxTestingTtcSimulatorDustFrames.Name = "textBoxTestingTtcSimulatorDustFrames";
-            this.textBoxTestingTtcSimulatorDustFrames.Size = new System.Drawing.Size(60, 20);
-            this.textBoxTestingTtcSimulatorDustFrames.TabIndex = 28;
-            this.textBoxTestingTtcSimulatorDustFrames.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.labelDebugText.AutoSize = true;
+            this.labelDebugText.BackColor = System.Drawing.Color.White;
+            this.labelDebugText.Location = new System.Drawing.Point(325, 15);
+            this.labelDebugText.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelDebugText.Name = "labelDebugText";
+            this.labelDebugText.Size = new System.Drawing.Size(63, 13);
+            this.labelDebugText.TabIndex = 1;
+            this.labelDebugText.Text = "Debug Text";
+            this.labelDebugText.Visible = false;
             // 
             // StroopMainForm
             // 
@@ -17108,6 +17121,7 @@ namespace STROOP
             this.Controls.Add(this.buttonDisconnect);
             this.Controls.Add(this.labelVersionNumber);
             this.Controls.Add(this.splitContainerMain);
+            this.Controls.Add(this.labelDebugText);
             this.Controls.Add(this.labelProcessSelect);
             this.Controls.Add(this.labelFpsCounter);
             this.DoubleBuffered = true;
@@ -17588,6 +17602,8 @@ namespace STROOP
             this.groupBoxTriRooms.PerformLayout();
             this.groupBoxScuttlebugStuff.ResumeLayout(false);
             this.groupBoxScuttlebugStuff.PerformLayout();
+            this.groupBoxTestingTtcSimulator.ResumeLayout(false);
+            this.groupBoxTestingTtcSimulator.PerformLayout();
             this.groupBoxSchedule.ResumeLayout(false);
             this.groupBoxSchedule.PerformLayout();
             this.groupBoxStateTransfer.ResumeLayout(false);
@@ -17609,8 +17625,6 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
-            this.groupBoxTestingTtcSimulator.ResumeLayout(false);
-            this.groupBoxTestingTtcSimulator.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -18908,6 +18922,7 @@ namespace STROOP
         private Label labelTestingTtcSimulatorEndFrame;
         private Label labelTestingTtcSimulatorDustFrames;
         private BetterTextbox textBoxTestingTtcSimulatorEndFrame;
+        private Label labelDebugText;
     }
 }
 

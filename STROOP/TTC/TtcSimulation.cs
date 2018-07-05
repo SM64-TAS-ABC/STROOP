@@ -71,6 +71,16 @@ namespace STROOP.Ttc
         {
             TtcCog upperCog = _rngObjects[31] as TtcCog;
             TtcCog lowerCog = _rngObjects[32] as TtcCog;
+            List<CogConfiguration> cogConfigurations = new List<CogConfiguration>();
+            List<int> goodUpperCogAngles = new List<int>() { 46432, 57360, 2752, 13664, 24592, 35536 };
+            List<int> goodLowerCogAngles = new List<int>() { 42576, 53504, 64416, 9808, 20736, 31648 };
+            List<int> goodLowerCogAnglesAdjusted = goodLowerCogAngles.ConvertAll(angle => angle + 32);
+
+            int numCogConfigurations = 9;
+            int lowerCogGoodAngle = 62988;
+            List<int> lowerCogGoodAngles = Enumerable.Range(0, 6).ToList()
+                .ConvertAll(index => lowerCogGoodAngle + 65536 / 6 * index)
+                .ConvertAll(angle => (int)MoreMath.NormalizeAngleUshort(angle));
 
             //iterate through frames to update objects
             int frame = _startingFrame;
@@ -85,9 +95,31 @@ namespace STROOP.Ttc
                     rngObject.Update();
                 }
 
+                if (cogConfigurations.Count >= numCogConfigurations)
+                    cogConfigurations.RemoveAt(0);
+                cogConfigurations.Add(new CogConfiguration(upperCog, lowerCog));
+
                 if (frame >= numFramesMin)
                 {
-                    if (upperCog._currentAngularVelocity == 200 && lowerCog._currentAngularVelocity == 200)
+                    if (cogConfigurations.Count < numCogConfigurations) continue;
+                    CogConfiguration lastCogConfiguration = cogConfigurations[cogConfigurations.Count - 1];
+                    CogConfiguration fourthToLastCogConfiguration = cogConfigurations[cogConfigurations.Count - 4];
+                    CogConfiguration ninthToLastCogConfiguration = cogConfigurations[cogConfigurations.Count - 4];
+
+                    int upperCogAngleDist = goodUpperCogAngles.Min(
+                        angle => (int)MoreMath.GetAngleDistance(
+                            angle, MoreMath.NormalizeAngleTruncated(lastCogConfiguration.UpperCogAngle)));
+                    int lowerCogAngleDist = goodLowerCogAnglesAdjusted.Min(
+                        angle => (int)MoreMath.GetAngleDistance(
+                            angle, MoreMath.NormalizeAngleTruncated(fourthToLastCogConfiguration.LowerCogAngle)));
+
+                    if (upperCogAngleDist == 0 &&
+                        lastCogConfiguration.UpperCogTargetAngularVelocity == 1200 &&
+                        lastCogConfiguration.UpperCogCurrentAngularVelocity >= 1100 &&
+                        ninthToLastCogConfiguration.UpperCogTargetAngularVelocity == 1200 &&
+                        lowerCogAngleDist <= 48 &&
+                        fourthToLastCogConfiguration.LowerCogCurrentAngularVelocity >= 100 &&
+                        fourthToLastCogConfiguration.LowerCogCurrentAngularVelocity <= 400)
                     {
                         return frame;
                     }
@@ -95,6 +127,26 @@ namespace STROOP.Ttc
             }
 
             return null;
+        }
+
+        private class CogConfiguration
+        {
+            public readonly int UpperCogAngle;
+            public readonly int UpperCogCurrentAngularVelocity;
+            public readonly int UpperCogTargetAngularVelocity;
+            public readonly int LowerCogAngle;
+            public readonly int LowerCogCurrentAngularVelocity;
+            public readonly int LowerCogTargetAngularVelocity;
+
+            public CogConfiguration(TtcCog upperCog, TtcCog lowerCog)
+            {
+                UpperCogAngle = upperCog._angle;
+                UpperCogCurrentAngularVelocity = upperCog._currentAngularVelocity;
+                UpperCogTargetAngularVelocity = upperCog._targetAngularVelocity;
+                LowerCogAngle = lowerCog._angle;
+                LowerCogCurrentAngularVelocity = lowerCog._currentAngularVelocity;
+                LowerCogTargetAngularVelocity = lowerCog._targetAngularVelocity;
+            }
         }
 
         private static List<TtcObject> CreateRngObjects(TtcRng rng, List<int> dustFrames)

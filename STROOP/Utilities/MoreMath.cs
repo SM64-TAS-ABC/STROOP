@@ -533,6 +533,11 @@ namespace STROOP.Utilities
             return MaybeNegativeModulus(angle2 - angle1, 65536);
         }
 
+        public static double GetAngleDistance(double angle1, double angle2)
+        {
+            return Math.Abs(GetAngleDifference(angle1, angle2));
+        }
+
         public static bool IsAngleBetweenAngles(double angle, double angleMin, double angleMax)
         {
             double effectiveAngle = NonNegativeModulus(angle - angleMin, 65536);

@@ -71,6 +71,7 @@ namespace STROOP
 
             Config.StroopMainForm = this;
             Config.TabControlMain = tabControlMain;
+            Config.DebugText = labelDebugText;
             SavedSettingsConfig.StoreRecommendedTabOrder();
             SavedSettingsConfig.InvokeInitiallySavedTabOrder();
             Config.TabControlMain.SelectedIndex = 0;
@@ -111,7 +112,7 @@ namespace STROOP
                         Config.TasManager.ShowTaserVariables();
                         tabControlMain.SelectedTab = tabPageTas;
                     },
-                    () => Process.Start("https://github.com/SM64-TAS-ABC/STROOP/archive/vDev.zip"),
+                    () => Process.Start("https://github.com/SM64-TAS-ABC/STROOP/releases/download/vDev/STROOP.zip"),
                     () =>
                     {
                         TestUtilities.TestSomething();

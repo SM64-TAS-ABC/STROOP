@@ -17,18 +17,25 @@ namespace STROOP.Ttc
 
         public static void TtcMainMethod()
         {
-            int earliestDustFrame = 229234;
-            int dustFrameRange = 25;
+            int earliestDustFrame = 229234 + 30;
+            int dustFrameRange = 32;
             int numFramesMin = 150;
-            int numFramesMax = 500;
+            int numFramesMax = 800;
 
             List<List<int>> dustFrameLists = GetDustFrameLists(earliestDustFrame, dustFrameRange);
             int counter = 0;
+            List<string> outputStrings = new List<string>();
             foreach (List<int> dustFrames in dustFrameLists)
             {
                 counter++;
-                if (counter % 100 == 0)
-                    StringUtilities.WriteLine("counter = {0} / {1}", counter, dustFrameLists.Count);
+                if (counter % 1000 == 0)
+                {
+                    double percent = Math.Round(100d * counter / dustFrameLists.Count, 1);
+                    string percentString = percent.ToString("N1");
+                    Config.Print(
+                        "counter = {0} / {1} ({2}%)",
+                        counter, dustFrameLists.Count, percentString);
+                }
 
                 TtcSimulation simulation = new TtcSimulation(dustFrames);
                 int? idealCogConfigurationFrame = simulation.FindIdealCogConfiguration(numFramesMin, numFramesMax);
@@ -36,13 +43,13 @@ namespace STROOP.Ttc
                 {
                     List<int> dustInputFrames = dustFrames.ConvertAll(dustFrame => dustFrame - 2);
                     string dustInputFramesString = "[" + String.Join(", ", dustInputFrames) + "]";
-                    string dustFramesString = "[" + String.Join(", ", dustFrames) + "]";
-                    StringUtilities.WriteLine(dustInputFramesString + " => " + dustFramesString + " => " + idealCogConfigurationFrame.Value);
-                    StringUtilities.WriteLine("Success");
-                    return;
+                    string outputString = dustInputFramesString + " => " + idealCogConfigurationFrame.Value;
+                    outputStrings.Add(outputString);
+                    Config.Print(outputString);
                 }
             }
-            StringUtilities.WriteLine("Failure");
+            Config.Print("In total, there were {0} successes:", outputStrings.Count);
+            outputStrings.ForEach(output => Config.Print(output));
         }
 
         public static string Simulate(int endFrame, List<int> dustFrames)
