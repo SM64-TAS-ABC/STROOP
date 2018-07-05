@@ -117,7 +117,8 @@ namespace STROOP.Controls
             _itemRemoveAllLocks.Click += (sender, e) => WatchVariableLockManager.RemoveAllLocks();
 
             ToolStripMenuItem itemCopyUnrounded = new ToolStripMenuItem("Copy");
-            itemCopyUnrounded.Click += (sender, e) => Clipboard.SetText(GetValue(false).ToString());
+            itemCopyUnrounded.Click += (sender, e) => Clipboard.SetText(
+                GetValue(false, true, _watchVarControl.FixedAddressList).ToString());
 
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
             itemPaste.Click += (sender, e) => _watchVarControl.SetValue(Clipboard.GetText());

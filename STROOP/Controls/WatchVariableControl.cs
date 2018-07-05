@@ -836,7 +836,7 @@ namespace STROOP.Controls
 
         public object GetValue(bool useRounding)
         {
-            return WatchVarWrapper.GetValue(useRounding);
+            return WatchVarWrapper.GetValue(useRounding, true, FixedAddressList);
         }
 
         public void SetValue(string value)
