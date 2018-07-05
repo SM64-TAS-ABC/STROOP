@@ -2848,29 +2848,33 @@ namespace STROOP.Structs
             return amplitude;
         }
 
-        private static int GetCogNumFramesInRotation(uint cogAddress)
+        public static int GetCogNumFramesInRotation(uint cogAddress)
         {
             ushort yawFacing = Config.Stream.GetUInt16(cogAddress + ObjectConfig.YawFacingOffset);
             int currentYawVel = (int)Config.Stream.GetSingle(cogAddress + ObjectConfig.CogCurrentYawVelocity);
             int targetYawVel = (int)Config.Stream.GetSingle(cogAddress + ObjectConfig.CogTargetYawVelocity);
+            return GetCogNumFramesInRotation(yawFacing, currentYawVel, targetYawVel);
+        }
 
+        public static int GetCogNumFramesInRotation(ushort yawFacing, int currentYawVel, int targetYawVel)
+        {
             int diff = Math.Abs(targetYawVel - currentYawVel);
             int numFrames = diff / 50;
             if (numFrames == 0) numFrames = 1;
-
             return numFrames;
         }
 
-        private static ushort GetCogEndingYaw(uint cogAddress)
+        public static ushort GetCogEndingYaw(uint cogAddress)
         {
             ushort yawFacing = Config.Stream.GetUInt16(cogAddress + ObjectConfig.YawFacingOffset);
             int currentYawVel = (int)Config.Stream.GetSingle(cogAddress + ObjectConfig.CogCurrentYawVelocity);
             int targetYawVel = (int)Config.Stream.GetSingle(cogAddress + ObjectConfig.CogTargetYawVelocity);
+            return GetCogEndingYaw(yawFacing, currentYawVel, targetYawVel);
+        }
 
-            int diff = Math.Abs(targetYawVel - currentYawVel);
-            int numFrames = diff / 50;
-            if (numFrames == 0) numFrames = 1;
-
+        public static ushort GetCogEndingYaw(ushort yawFacing, int currentYawVel, int targetYawVel)
+        {
+            int numFrames = GetCogNumFramesInRotation(yawFacing, currentYawVel, targetYawVel);
             int remainingRotation = (currentYawVel + targetYawVel) * (numFrames + 1) / 2 - currentYawVel;
             int endingYaw = yawFacing + remainingRotation;
             return MoreMath.NormalizeAngleUshort(endingYaw);
