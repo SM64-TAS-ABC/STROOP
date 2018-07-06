@@ -695,6 +695,15 @@ namespace STROOP.Controls
             _watchVariablePanel.ContextMenuStrip.Show(point);
         }
 
+        public WatchVariableControl CreateCopy()
+        {
+            return WatchVarPrecursor.CreateWatchVariableControl(
+                VarName,
+                _baseColor,
+                new List<VariableGroup>() { VariableGroup.Custom },
+                FixedAddressList);
+        }
+
         private static AddToTabTypeEnum GetAddToTabType()
         {
             if (Keyboard.IsKeyDown(Key.A)) return AddToTabTypeEnum.IndividualSpliced;

@@ -4,6 +4,7 @@ using STROOP.Structs.Configurations;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace STROOP.Forms
 {
@@ -24,9 +25,16 @@ namespace STROOP.Forms
             };
         }
 
-        public void Initialize()
+        public void Initialize(List<WatchVariableControl> controls)
         {
-            
+            _watchVariablePanel.Initialize();
+            _watchVariablePanel.AddVariables(controls);
+            Timer timer = new Timer { Interval = 30 };
+            timer.Tick += (s, e) =>
+            {
+                _watchVariablePanel.UpdatePanel();
+            };
+            timer.Start();
         }
         
     }

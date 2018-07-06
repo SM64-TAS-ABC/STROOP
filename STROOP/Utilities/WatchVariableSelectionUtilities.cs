@@ -237,6 +237,14 @@ namespace STROOP.Structs
                 varController.Show();
             };
 
+            ToolStripMenuItem itemOpenPopOut = new ToolStripMenuItem("Open Pop Out");
+            itemOpenPopOut.Click += (sender, e) =>
+            {
+                VariablePopOutForm form = new VariablePopOutForm();
+                form.Initialize(getVars().ConvertAll(control => control.CreateCopy()));
+                form.Show();
+            };
+
             ToolStripMenuItem itemAddToTab = new ToolStripMenuItem("Add to Tab...");
             itemAddToTab.Click += (sender, e) => SelectionForm.ShowDataManagerSelectionForm(getVars());
 
@@ -266,6 +274,7 @@ namespace STROOP.Structs
                 itemRemove,
                 itemEnableCustomization,
                 itemOpenController,
+                itemOpenPopOut,
                 itemAddToTab,
                 itemAddToCustomTab,
             };

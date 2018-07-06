@@ -30,27 +30,27 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VariablePopOutForm));
-            this.watchVariablePanelWater = new STROOP.Controls.WatchVariableFlowLayoutPanel();
+            this._watchVariablePanel = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.SuspendLayout();
             // 
-            // watchVariablePanelWater
+            // _watchVariablePanel
             // 
-            this.watchVariablePanelWater.AutoScroll = true;
-            this.watchVariablePanelWater.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.watchVariablePanelWater.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.watchVariablePanelWater.Location = new System.Drawing.Point(0, 0);
-            this.watchVariablePanelWater.Margin = new System.Windows.Forms.Padding(0);
-            this.watchVariablePanelWater.Name = "watchVariablePanelWater";
-            this.watchVariablePanelWater.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelWater.Size = new System.Drawing.Size(284, 174);
-            this.watchVariablePanelWater.TabIndex = 3;
+            this._watchVariablePanel.AutoScroll = true;
+            this._watchVariablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._watchVariablePanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this._watchVariablePanel.Location = new System.Drawing.Point(0, 0);
+            this._watchVariablePanel.Margin = new System.Windows.Forms.Padding(0);
+            this._watchVariablePanel.Name = "_watchVariablePanel";
+            this._watchVariablePanel.Padding = new System.Windows.Forms.Padding(2);
+            this._watchVariablePanel.Size = new System.Drawing.Size(284, 174);
+            this._watchVariablePanel.TabIndex = 3;
             // 
             // VariablePopOutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 174);
-            this.Controls.Add(this.watchVariablePanelWater);
+            this.Controls.Add(this._watchVariablePanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(10000, 10000);
@@ -64,6 +64,6 @@
 
         #endregion
 
-        private Controls.WatchVariableFlowLayoutPanel watchVariablePanelWater;
+        private Controls.WatchVariableFlowLayoutPanel _watchVariablePanel;
     }
 }
