@@ -17,12 +17,14 @@ namespace STROOP.Ttc
 
         public static void TtcMainMethod()
         {
-            int earliestDustFrame = 863 + 2 + 60;
-            int dustFrameRange = 30;
-            int numFramesMin = 120;
-            int numFramesMax = 1000;
+            int earliestDustFrame = 901 + 2 + 0;
+            int dustFrameRange = 65;
+            int maxDustFrames = 5;
 
-            List<List<int>> dustFrameLists = GetDustFrameLists(earliestDustFrame, dustFrameRange);
+            int numFramesMin = 120;
+            int numFramesMax = 3000;
+
+            List<List<int>> dustFrameLists = GetDustFrameLists(earliestDustFrame, dustFrameRange, maxDustFrames);
             int counter = 0;
             List<string> outputStrings = new List<string>();
             foreach (List<int> dustFrames in dustFrameLists)
@@ -58,26 +60,35 @@ namespace STROOP.Ttc
             return simulation.GetObjectsString(endFrame);
         }
 
-        private static List<List<int>> GetDustFrameLists(int earliestDustFrame, int dustFrameRange)
+        private static List<List<int>> GetDustFrameLists(int earliestDustFrame, int dustFrameRange, int maxDustFrames)
         {
             List<List<int>> dustFrameLists = new List<List<int>>();
-            AddDustFrameListRecursion(new bool[dustFrameRange], 0, dustFrameLists, earliestDustFrame);
+            AddDustFrameListRecursion(new bool[dustFrameRange], 0, 0, maxDustFrames, dustFrameLists, earliestDustFrame);
             return dustFrameLists;
         }
 
-        private static void AddDustFrameListRecursion(bool[] bools, int index, List<List<int>> dustFrameLists, int earliestDustFrame)
+        private static void AddDustFrameListRecursion(
+            bool[] bools, int index, int numDustFrames, int maxDustFrames,
+            List<List<int>> dustFrameLists, int earliestDustFrame)
         {
+            // ending condition
             if (index == bools.Length)
             {
                 dustFrameLists.Add(ConvertBoolsToDustFrames(bools, earliestDustFrame));
                 return;
             }
+
+            // false case
             bools[index] = false;
-            AddDustFrameListRecursion(bools, index + 1, dustFrameLists, earliestDustFrame);
-            if (index == 0 || bools[index - 1] == false)
+            AddDustFrameListRecursion(bools, index + 1, numDustFrames, maxDustFrames, dustFrameLists, earliestDustFrame);
+
+            // true case
+            bool precedingIsDust = index > 0 && bools[index - 1];
+            bool lessThanMaxDusts = numDustFrames < maxDustFrames;
+            if (!precedingIsDust && lessThanMaxDusts)
             {
                 bools[index] = true;
-                AddDustFrameListRecursion(bools, index + 1, dustFrameLists, earliestDustFrame);
+                AddDustFrameListRecursion(bools, index + 1, numDustFrames + 1, maxDustFrames, dustFrameLists, earliestDustFrame);
             }
         }
 

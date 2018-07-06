@@ -76,6 +76,8 @@ namespace STROOP.Ttc
             List<int> goodLowerCogAngles = new List<int>() { 42576, 53504, 64416, 9808, 20736, 31648 };
             List<int> goodLowerCogAnglesAdjusted = goodLowerCogAngles.ConvertAll(angle => angle + 32);
 
+            List<int> upperCogEndingYaws = new List<int>() { 46432, 45232 };
+
             int numCogConfigurations = 9;
             int lowerCogGoodAngle = 62988;
             List<int> lowerCogGoodAngles = Enumerable.Range(0, 6).ToList()
@@ -114,22 +116,22 @@ namespace STROOP.Ttc
                     int lowerCogMaxAngularVelocity = 400;
 
                     if (upperCogAngleDist == 0 &&
-                        cogConfigurations[8].UpperCogTargetAngularVelocity == 1200 &&
+                        cogConfigurations[8].UpperCogAngle == 46432 &&
+                        cogConfigurations[7].UpperCogTargetAngularVelocity == 1200 &&
                         cogConfigurations[8].UpperCogCurrentAngularVelocity == 1200 &&
                         cogConfigurations[0].UpperCogTargetAngularVelocity == 1200 &&
                         lowerCogAngleDist <= 48 &&
-                        cogConfigurations[4].LowerCogCurrentAngularVelocity >= lowerCogMinAngularVelocity &&
-                        cogConfigurations[4].LowerCogCurrentAngularVelocity <= lowerCogMaxAngularVelocity &&
-                        cogConfigurations[5].LowerCogCurrentAngularVelocity >= lowerCogMinAngularVelocity &&
-                        cogConfigurations[5].LowerCogCurrentAngularVelocity <= lowerCogMaxAngularVelocity &&
-                        cogConfigurations[6].LowerCogCurrentAngularVelocity >= lowerCogMinAngularVelocity &&
-                        cogConfigurations[6].LowerCogCurrentAngularVelocity <= lowerCogMaxAngularVelocity &&
-                        cogConfigurations[7].LowerCogCurrentAngularVelocity >= lowerCogMinAngularVelocity &&
-                        cogConfigurations[7].LowerCogCurrentAngularVelocity <= lowerCogMaxAngularVelocity)
+                        cogConfigurations[2].LowerCogCurrentAngularVelocity == 200 &&
+                        cogConfigurations[3].LowerCogCurrentAngularVelocity == 150 &&
+                        cogConfigurations[4].LowerCogCurrentAngularVelocity == 100 &&
+                        cogConfigurations[5].LowerCogCurrentAngularVelocity == 50)
                     {
                         return frame;
                     }
                 }
+
+                //if (!upperCogEndingYaws.Any(yaw => yaw == upperCog._endingYaw))
+                //    return null;
             }
 
             return null;
