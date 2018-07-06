@@ -121,10 +121,23 @@ namespace STROOP.Ttc
                         cogConfigurations[8].UpperCogCurrentAngularVelocity == 1200 &&
                         cogConfigurations[0].UpperCogTargetAngularVelocity == 1200 &&
                         lowerCogAngleDist <= 48 &&
+
+                        cogConfigurations[2].LowerCogCurrentAngularVelocity <= 200 &&
+                        cogConfigurations[3].LowerCogCurrentAngularVelocity <= 200 &&
+                        cogConfigurations[4].LowerCogCurrentAngularVelocity <= 200 &&
+                        cogConfigurations[5].LowerCogCurrentAngularVelocity <= 200 &&
+
+                        cogConfigurations[2].LowerCogCurrentAngularVelocity >= 50 &&
+                        cogConfigurations[3].LowerCogCurrentAngularVelocity >= 50 &&
+                        cogConfigurations[4].LowerCogCurrentAngularVelocity >= 50 &&
+                        cogConfigurations[5].LowerCogCurrentAngularVelocity >= 50
+
+                        /*
                         cogConfigurations[2].LowerCogCurrentAngularVelocity == 200 &&
                         cogConfigurations[3].LowerCogCurrentAngularVelocity == 150 &&
                         cogConfigurations[4].LowerCogCurrentAngularVelocity == 100 &&
-                        cogConfigurations[5].LowerCogCurrentAngularVelocity == 50)
+                        cogConfigurations[5].LowerCogCurrentAngularVelocity == 50
+                        */)
                     {
                         return frame;
                     }

@@ -22,7 +22,7 @@ namespace STROOP.Ttc
             int maxDustFrames = 5;
 
             int numFramesMin = 120;
-            int numFramesMax = 3000;
+            int numFramesMax = 10000;
 
             List<List<int>> dustFrameLists = GetDustFrameLists(earliestDustFrame, dustFrameRange, maxDustFrames);
             int counter = 0;
