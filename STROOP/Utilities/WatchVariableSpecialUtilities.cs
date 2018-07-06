@@ -343,6 +343,14 @@ namespace STROOP.Structs
 
             // Object specific vars - Pendulum
 
+            _dictionary.Add("PendulumCountdown",
+                ((uint objAddress) =>
+                {
+                    int pendulumCountdown = GetPendulumCountdown(objAddress);
+                    return pendulumCountdown;
+                },
+                DEFAULT_SETTER));
+
             _dictionary.Add("PendulumAmplitude",
                 ((uint objAddress) =>
                 {
@@ -2806,7 +2814,23 @@ namespace STROOP.Structs
             return (hSpeedTarget, hSpeedChange);
         }
 
-        public static float GetPendulumAmplitude(uint pendulumAddress)
+        public static int GetPendulumCountdown(uint pendulumAddress)
+        {
+            // Get pendulum variables
+            float accelerationDirection = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAccelerationDirectionOffset);
+            float accelerationMagnitude = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAccelerationMagnitudeOffset);
+            float angularVelocity = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAngularVelocityOffset);
+            float angle = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAngleOffset);
+            return GetPendulumCountdown(accelerationDirection, accelerationMagnitude, angularVelocity, angle);
+        }
+
+        public static int GetPendulumCountdown(
+             float accelerationDirection, float accelerationMagnitude, float angularVelocity, float angle)
+        {
+            return 10;
+        }
+
+            public static float GetPendulumAmplitude(uint pendulumAddress)
         {
             // Get pendulum variables
             float accelerationDirection = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAccelerationDirectionOffset);

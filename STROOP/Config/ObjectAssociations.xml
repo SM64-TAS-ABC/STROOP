@@ -3706,6 +3706,7 @@
     <Data groupList="ObjectSpecific" type="float" offset="0x100" base="Object">Acceleration Magnitude</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xFC" base="Object" subclass="Angle">Angular Velocity</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xF8" base="Object" subclass="Angle">Angle</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="PendulumCountdown">Countdown</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x104" base="Object">Waiting Timer</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="PendulumAmplitude" subclass="Angle" display="int">Amplitude</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="PendulumSwingIndex">Swing Index</Data>
