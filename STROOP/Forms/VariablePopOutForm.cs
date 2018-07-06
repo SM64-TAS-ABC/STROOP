@@ -71,12 +71,19 @@ namespace STROOP.Forms
 
             // set up timer
             Timer timer = new Timer { Interval = 30 };
-            timer.Tick += (s, e) =>
-            {
-                _watchVariablePanel.UpdatePanel();
-            };
+            timer.Tick += (s, e) => UpdateForm();
             timer.Start();
+
+            FormClosed += (sender, e) =>
+            {
+                timer.Stop();
+            };
         }
-        
+
+        private void UpdateForm()
+        {
+            _watchVariablePanel.UpdatePanel();
+        }
+
     }
 }
