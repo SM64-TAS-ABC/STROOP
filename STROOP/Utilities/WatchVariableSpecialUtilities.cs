@@ -1123,6 +1123,18 @@ namespace STROOP.Structs
                     double newPeakHeight = floorY + fallHeight;
                     return Config.Stream.SetValue((float)newPeakHeight, MarioConfig.StructAddress + MarioConfig.PeakHeightOffset);
                 }));
+
+            _dictionary.Add("WalkingDistance",
+                ((uint dummy) =>
+                {
+                    double hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                    double remainder = hSpeed % 1;
+                    int numFrames = (int)Math.Abs(Math.Truncate(hSpeed)) + 1;
+                    double sum = (hSpeed + remainder) * numFrames / 2;
+                    double distance = sum - hSpeed;
+                    return distance;
+                },
+                DEFAULT_SETTER));
             
             // HUD vars
 
