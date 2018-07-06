@@ -1136,22 +1136,14 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
-            _dictionary.Add("TurnedWalkingDistanceDifferenceMarioToPoint",
+            _dictionary.Add("WalkingDistanceDifferenceMarioToPoint",
                 ((uint dummy) =>
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
                     PositionAngle pointPos = SpecialConfig.PointPA;
                     float walkingDistance = (float)_dictionary.Get("WalkingDistance").Item1(0);
-
-                    float initialHSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
-                    float hSpeed = initialHSpeed;
-                    while (Math.Abs(hSpeed) > 1)
-                    {
-
-
-                        hSpeed -= Math.Sign(hSpeed);
-                    }
-                    return walkingDistance - PositionAngle.GetHDistance(marioPos, pointPos);
+                    double diff = walkingDistance - PositionAngle.GetHDistance(marioPos, pointPos);
+                    return diff;
                 },
                 DEFAULT_SETTER));
             
