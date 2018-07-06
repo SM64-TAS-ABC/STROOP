@@ -63,8 +63,9 @@ namespace STROOP.Structs.Configurations
             return dataManagerList;
         }
 
-        public static void Print(object format, params object[] args)
+        public static void Print(object formatNullable = null, params object[] args)
         {
+            object format = formatNullable ?? "";
             string formatted = String.Format(format.ToString(), args);
             System.Diagnostics.Trace.WriteLine(formatted);
         }

@@ -150,6 +150,47 @@ namespace STROOP.Ttc
             return null;
         }
 
+        public bool FindIdealPendulumManipulation()
+        {
+            TtcPendulum pendulum = _rngObjects[8] as TtcPendulum;
+            int pendulumAmplitudeStart = (int)WatchVariableSpecialUtilities.GetPendulumAmplitude(
+                pendulum._accelerationDirection, pendulum._accelerationMagnitude, pendulum._angularVelocity, pendulum._angle);
+            int? pendulumSwingIndexStartNullable = TableConfig.PendulumSwings.GetPendulumSwingIndex(pendulumAmplitudeStart);
+            if (!pendulumSwingIndexStartNullable.HasValue) return false;
+            int pendulumSwingIndexStart = pendulumSwingIndexStartNullable.Value;
+
+            //iterate through frames to update objects
+            int frame = _startingFrame;
+            int counter = 0;
+            while (frame < _startingFrame + 300)
+            {
+                frame++;
+                counter++;
+                foreach (TtcObject rngObject in _rngObjects)
+                {
+                    rngObject.SetFrame(frame);
+                    rngObject.Update();
+                }
+
+                int pendulumAmplitude = (int)WatchVariableSpecialUtilities.GetPendulumAmplitude(
+                    pendulum._accelerationDirection, pendulum._accelerationMagnitude, pendulum._angularVelocity, pendulum._angle);
+                int? pendulumSwingIndexNullable = TableConfig.PendulumSwings.GetPendulumSwingIndex(pendulumAmplitude);
+                if (!pendulumSwingIndexNullable.HasValue) return false;
+                int pendulumSwingIndex = pendulumSwingIndexNullable.Value;
+
+                if (pendulumSwingIndex > pendulumSwingIndexStart)
+                {
+                    return pendulum._waitingTimer == 0;
+                }
+                else if (pendulumSwingIndex < pendulumSwingIndexStart)
+                {
+                    return false;
+                }
+            }
+
+            return false;
+        }
+
         private class CogConfiguration
         {
             public readonly int UpperCogAngle;

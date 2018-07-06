@@ -1,4 +1,5 @@
-﻿using STROOP.Structs.Configurations;
+﻿using STROOP.Structs;
+using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,23 @@ namespace STROOP.Ttc
     {
 
         public static void TtcMainMethod()
+        {
+            List<List<int>> dustFrameLists = GetDustFrameLists(MupenUtilities.GetFrameCount() + 2, 25, 25);
+            foreach (List<int> dustFrames in dustFrameLists)
+            {
+                TtcSimulation simulation = new TtcSimulation(dustFrames);
+                bool success = simulation.FindIdealPendulumManipulation();
+                if (success)
+                {
+                    List<int> dustInputFrames = dustFrames.ConvertAll(dustFrame => dustFrame - 2);
+                    string dustInputFramesString = "[" + String.Join(", ", dustInputFrames) + "]";
+                    Config.Print(dustInputFramesString);
+                    break;
+                }
+            }
+        }
+
+        public static void TtcMainMethod2()
         {
             int earliestDustFrame = 901 + 2 + 0;
             int dustFrameRange = 65;

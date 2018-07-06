@@ -2806,13 +2806,20 @@ namespace STROOP.Structs
             return (hSpeedTarget, hSpeedChange);
         }
 
-        private static float GetPendulumAmplitude(uint pendulumAddress)
+        public static float GetPendulumAmplitude(uint pendulumAddress)
         {
             // Get pendulum variables
             float accelerationDirection = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAccelerationDirectionOffset);
             float accelerationMagnitude = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAccelerationMagnitudeOffset);
             float angularVelocity = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAngularVelocityOffset);
             float angle = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAngleOffset);
+            return GetPendulumAmplitude(accelerationDirection, accelerationMagnitude, angularVelocity, angle);
+        }
+
+        public static float GetPendulumAmplitude(
+            float accelerationDirection, float accelerationMagnitude, float angularVelocity, float angle)
+        {
+            // Get pendulum variables
             float acceleration = accelerationDirection * accelerationMagnitude;
 
             // Calculate one frame forwards to see if pendulum is speeding up or slowing down
