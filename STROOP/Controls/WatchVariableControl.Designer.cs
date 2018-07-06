@@ -32,9 +32,9 @@
             this._namePanel = new System.Windows.Forms.Panel();
             this._pinPictureBox = new System.Windows.Forms.PictureBox();
             this._lockPictureBox = new System.Windows.Forms.PictureBox();
-            this._nameTextBox = new System.Windows.Forms.TextBox();
+            this._nameTextBox = new CarretlessTextBox();
             this._valuePanel = new System.Windows.Forms.Panel();
-            this._valueTextBox = new System.Windows.Forms.TextBox();
+            this._valueTextBox = new CarretlessTextBox();
             this._valueCheckBox = new System.Windows.Forms.CheckBox();
             this._tableLayoutPanel.SuspendLayout();
             this._namePanel.SuspendLayout();
@@ -177,8 +177,8 @@
         private BorderedTableLayoutPanel _tableLayoutPanel;
         private System.Windows.Forms.Panel _namePanel;
         private System.Windows.Forms.Panel _valuePanel;
-        private System.Windows.Forms.TextBox _nameTextBox;
-        private System.Windows.Forms.TextBox _valueTextBox;
+        private CarretlessTextBox _nameTextBox;
+        private CarretlessTextBox _valueTextBox;
         private System.Windows.Forms.PictureBox _pinPictureBox;
         private System.Windows.Forms.PictureBox _lockPictureBox;
         private System.Windows.Forms.CheckBox _valueCheckBox;

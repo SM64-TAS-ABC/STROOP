@@ -136,6 +136,9 @@
     <Compile Include="Controls\BetterSplitContainer.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\CarretlessTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\Map\Graphics\Cameras\MapPerspectiveCamera.cs" />
     <Compile Include="Controls\Map\Objects\MapSm64Object.cs" />
     <Compile Include="Controls\Map\Objects\MapWallTriObject.cs" />

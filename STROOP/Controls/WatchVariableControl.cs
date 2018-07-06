@@ -517,6 +517,12 @@ namespace STROOP.Controls
                 if (_valueTextBox.Visible) _valueTextBox.Text = WatchVarWrapper.GetValue(true, true, FixedAddressList).ToString();
                 if (_valueCheckBox.Visible) _valueCheckBox.CheckState = WatchVarWrapper.GetCheckStateValue(FixedAddressList);
             }
+
+            if (EditMode) _valueTextBox.ShowTheCaret();
+            else _valueTextBox.HideTheCaret();
+
+            if (RenameMode) _nameTextBox.ShowTheCaret();
+            else _nameTextBox.HideTheCaret();
         }
 
         private void UpdateSettings()
