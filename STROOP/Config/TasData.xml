@@ -76,7 +76,7 @@
   <Data groupList="Point" base="None" specialType="FDistPointToSelf" color="LightBlue">FDist Point to Self</Data>
   <Data groupList="Point" base="None" specialType="SDistPointToSelf" color="LightBlue">SDist Point to Self</Data>
 
-  <Data groupList="Point" base="None" specialType="WalkingDistance" color="LightBlue">Walking Distance</Data>
-  <Data groupList="Point" base="None" specialType="WalkingDistanceDifferenceMarioToPoint" color="LightBlue">Walking Distance Diff</Data>
+  <Data groupList="Point" base="None" specialType="WalkingDistance" color="Pink">Walking Distance</Data>
+  <Data groupList="Point" base="None" specialType="WalkingDistanceDifferenceMarioToPoint" color="Pink">Walking Distance Diff</Data>
 
 </VarData>
