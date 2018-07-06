@@ -14,6 +14,9 @@ namespace STROOP.Forms
         public static int? HEIGHT = null;
 
         private bool _borderless = false;
+        private bool _isDragging = false;
+        private int _dragX = 0;
+        private int _dragY = 0;
 
         public VariablePopOutForm()
         {
@@ -29,9 +32,11 @@ namespace STROOP.Forms
 
         public void Initialize(List<WatchVariableControl> controls)
         {
+            // initialize panel
             _watchVariablePanel.Initialize();
             _watchVariablePanel.AddVariables(controls);
 
+            // add borderless item to panel
             ToolStripMenuItem itemBorderless = new ToolStripMenuItem("Borderless");
             itemBorderless.Click += (sender, e) =>
             {
@@ -42,6 +47,29 @@ namespace STROOP.Forms
             itemBorderless.Checked = _borderless;
             _watchVariablePanel.ContextMenuStrip.Items.Insert(0, itemBorderless);
 
+            // make panel draggable when borderless
+            _watchVariablePanel.MouseDown += (sender, e) =>
+            {
+                if (!_borderless) return;
+                _isDragging = true;
+                _dragX = e.X;
+                _dragY = e.Y;
+            };
+            _watchVariablePanel.MouseUp += (sender, e) =>
+            {
+                if (!_borderless) return;
+                _isDragging = false;
+            };
+            _watchVariablePanel.MouseMove += (sender, e) =>
+            {
+                if (!_borderless) return;
+                if (_isDragging)
+                {
+                    SetDesktopLocation(MousePosition.X - _dragX, MousePosition.Y - _dragY);
+                }
+            };
+
+            // set up timer
             Timer timer = new Timer { Interval = 30 };
             timer.Tick += (s, e) =>
             {
