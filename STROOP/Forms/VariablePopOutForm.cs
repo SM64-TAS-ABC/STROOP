@@ -13,6 +13,8 @@ namespace STROOP.Forms
         public static int? WIDTH = null;
         public static int? HEIGHT = null;
 
+        private bool _borderless = false;
+
         public VariablePopOutForm()
         {
             InitializeComponent();
@@ -29,6 +31,17 @@ namespace STROOP.Forms
         {
             _watchVariablePanel.Initialize();
             _watchVariablePanel.AddVariables(controls);
+
+            ToolStripMenuItem itemBorderless = new ToolStripMenuItem("Borderless");
+            itemBorderless.Click += (sender, e) =>
+            {
+                _borderless = !_borderless;
+                itemBorderless.Checked = _borderless;
+                FormBorderStyle = _borderless ? FormBorderStyle.None : FormBorderStyle.Sizable;
+            };
+            itemBorderless.Checked = _borderless;
+            _watchVariablePanel.ContextMenuStrip.Items.Insert(0, itemBorderless);
+
             Timer timer = new Timer { Interval = 30 };
             timer.Tick += (s, e) =>
             {
