@@ -18,6 +18,8 @@ namespace STROOP.Forms
         private int _dragX = 0;
         private int _dragY = 0;
 
+        private bool _alwaysOnTop = false;
+
         public VariablePopOutForm()
         {
             InitializeComponent();
@@ -46,6 +48,17 @@ namespace STROOP.Forms
             };
             itemBorderless.Checked = _borderless;
             _watchVariablePanel.ContextMenuStrip.Items.Insert(0, itemBorderless);
+
+            // add always on top item to panel
+            ToolStripMenuItem itemAlwaysOnTop = new ToolStripMenuItem("Always On Top");
+            itemAlwaysOnTop.Click += (sender, e) =>
+            {
+                _alwaysOnTop = !_alwaysOnTop;
+                itemAlwaysOnTop.Checked = _alwaysOnTop;
+                TopMost = _alwaysOnTop;
+            };
+            itemBorderless.Checked = _alwaysOnTop;
+            _watchVariablePanel.ContextMenuStrip.Items.Insert(1, itemAlwaysOnTop);
 
             // make panel draggable when borderless
             _watchVariablePanel.MouseDown += (sender, e) =>
