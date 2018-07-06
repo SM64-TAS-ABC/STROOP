@@ -2827,10 +2827,10 @@ namespace STROOP.Structs
         public static int GetPendulumCountdown(
              float accelerationDirection, float accelerationMagnitude, float angularVelocity, float angle)
         {
-            return 10;
+            return GetPendulumVars(accelerationDirection, accelerationMagnitude, angularVelocity, angle).ToTuple().Item2;
         }
 
-            public static float GetPendulumAmplitude(uint pendulumAddress)
+        public static float GetPendulumAmplitude(uint pendulumAddress)
         {
             // Get pendulum variables
             float accelerationDirection = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAccelerationDirectionOffset);
@@ -2841,6 +2841,12 @@ namespace STROOP.Structs
         }
 
         public static float GetPendulumAmplitude(
+            float accelerationDirection, float accelerationMagnitude, float angularVelocity, float angle)
+        {
+            return GetPendulumVars(accelerationDirection, accelerationMagnitude, angularVelocity, angle).ToTuple().Item1;
+        }
+
+        public static (float amplitude, int countdown) GetPendulumVars(
             float accelerationDirection, float accelerationMagnitude, float angularVelocity, float angle)
         {
             // Get pendulum variables
@@ -2897,9 +2903,10 @@ namespace STROOP.Structs
             float slowDownDistance = (slowDownDuration + 1) * inflectionAngularVelocity / 2;
 
             // Combine the results from the speeding up phase and the slowing down phase
+            int totalDuration = speedUpDuration + slowDownDuration;
             float totalDistance = speedUpDistance + slowDownDistance;
             float amplitude = angle + totalDistance;
-            return amplitude;
+            return (amplitude, totalDuration);
         }
 
         public static int GetCogNumFramesInRotation(uint cogAddress)
