@@ -766,6 +766,7 @@ namespace STROOP
         private void buttonDisconnect_Click(object sender, EventArgs e)
         {
             Task.Run(() => Config.Stream.SwitchProcess(null, null));
+            buttonRefresh_Click(this, new EventArgs());
             panelConnect.Size = this.Size;
             panelConnect.Visible = true;
         }
