@@ -37,6 +37,12 @@ namespace STROOP.Ttc
             _startingFrame = MupenUtilities.GetFrameCount(); //the frame directly preceding any object initialization
         }
 
+        public TtcSimulation(TtcSaveState saveState)
+        {
+            (_rng, _rngObjects) = TtcUtilities.CreateRngObjectsFromSaveState(saveState);
+            _startingFrame = 0;
+        }
+
         public string GetObjectsString(int endingFrame)
         {
             //iterate through frames to update objects

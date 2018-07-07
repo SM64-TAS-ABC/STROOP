@@ -199,6 +199,11 @@ namespace STROOP.Ttc
             }
             return rngObjects;
         }
+
+        public static (TtcRng, List<TtcObject>) CreateRngObjectsFromSaveState(TtcSaveState saveState)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

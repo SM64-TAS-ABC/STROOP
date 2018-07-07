@@ -14,22 +14,26 @@ namespace STROOP.Ttc
 
         private readonly List<byte> _bytes;
 
-        public TtcSaveState() : this(TtcUtilities.CreateRngObjectsFromGame(new TtcRng(0)))
+        public TtcSaveState() : this(
+            Config.Stream.GetUInt16(MiscConfig.RngAddress),
+            TtcUtilities.CreateRngObjectsFromGame(new TtcRng(Config.Stream.GetUInt16(MiscConfig.RngAddress))))
         {
         }
 
-        public TtcSaveState(List<TtcObject> objects)
+        public TtcSaveState(ushort rng, List<TtcObject> objects)
         {
-            List<object> fields = objects.SelectMany(obj => obj.GetFields()).ToList();
-            _bytes = fields.SelectMany(field => TypeUtilities.GetBytes(field)).ToList();
+            List<byte> rngBytes = TypeUtilities.GetBytes(rng).ToList();
+            List < object> fields = objects.SelectMany(obj => obj.GetFields()).ToList();
+            List<byte> fieldBytes = fields.SelectMany(field => TypeUtilities.GetBytes(field)).ToList();
+            _bytes = rngBytes.Concat(fieldBytes).ToList();
         }
 
-        public TtcSaveState(string stringValue)
+        public TtcSaveState(string saveStateString)
         {
             _bytes = new List<byte>();
-            for (int i = 0; i < stringValue.Length; i += 2)
+            for (int i = 0; i < saveStateString.Length; i += 2)
             {
-                string substring = stringValue.Substring(i, 2);
+                string substring = saveStateString.Substring(i, 2);
                 byte b = Convert.ToByte(substring, 16);
                 _bytes.Add(b);
             }
