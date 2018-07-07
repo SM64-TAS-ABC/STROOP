@@ -80,10 +80,34 @@ namespace STROOP.Utilities
         [DllImport("user32.dll")]
         static extern bool SetForegroundWindow(IntPtr hWnd);
 
-        public void FocusOnEmulator()
+        [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
+        private static extern IntPtr GetForegroundWindow();
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        private static extern int GetWindowThreadProcessId(IntPtr handle, out int processId);
+
+        public void FocusOnEmulatorIfInFocus()
         {
             if (_process == null) return;
-            SetForegroundWindow(_process.MainWindowHandle);
+            if (StroopIsInFocus())
+            {
+                SetForegroundWindow(_process.MainWindowHandle);
+            }
+        }
+
+        public static bool StroopIsInFocus()
+        {
+            var activatedHandle = GetForegroundWindow();
+            if (activatedHandle == IntPtr.Zero)
+            {
+                return false; // No window is currently activated
+            }
+
+            int procId = Process.GetCurrentProcess().Id;
+            int activeProcId;
+            GetWindowThreadProcessId(activatedHandle, out activeProcId);
+
+            return activeProcId == procId;
         }
 
         public bool SwitchProcess(Process newProcess, Emulator emulator)
