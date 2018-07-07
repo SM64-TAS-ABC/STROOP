@@ -45,6 +45,11 @@ namespace STROOP.Ttc
             return String.Join("", byteStrings);
         }
 
+        public TtcSaveStateByteIterator GetIterator()
+        {
+            return new TtcSaveStateByteIterator(_bytes);
+        }
+
     }
 
 

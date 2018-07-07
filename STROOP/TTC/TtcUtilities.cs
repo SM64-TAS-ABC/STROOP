@@ -31,7 +31,7 @@ namespace STROOP.Ttc
             }
             for (int i = 0; i < 5; i++)
             {
-                rngObjects.Add(new TtcTreadmill(rng, i == 0).SetIndex(i + 1));
+                rngObjects.Add(new TtcTreadmill(rng, i == 0 ? 0 : 1).SetIndex(i + 1));
             }
             for (int i = 0; i < 12; i++)
             {
@@ -85,7 +85,7 @@ namespace STROOP.Ttc
             }
             for (int i = 0; i < 2; i++)
             {
-                rngObjects.Add(new TtcTreadmill(rng, false).SetIndex(i + 6));
+                rngObjects.Add(new TtcTreadmill(rng, 1).SetIndex(i + 6));
             }
             for (int i = 0; i < 1; i++)
             {
@@ -202,7 +202,82 @@ namespace STROOP.Ttc
 
         public static (TtcRng, List<TtcObject>) CreateRngObjectsFromSaveState(TtcSaveState saveState)
         {
-            throw new NotImplementedException();
+            TtcSaveStateByteIterator iter = saveState.GetIterator();
+            TtcRng rng = new TtcRng(iter.GetUShort());
+
+            List<TtcObject> rngObjects = new List<TtcObject>();
+            for (int i = 0; i < 6; i++)
+            {
+                rngObjects.Add(new TtcRotatingBlock(rng, iter.GetInt(), iter.GetInt()).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rngObjects.Add(new TtcRotatingTriangularPrism(rng, iter.GetInt(), iter.GetInt()).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rngObjects.Add(new TtcPendulum(rng, iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt()).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rngObjects.Add(new TtcTreadmill(rng, iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt()).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 12; i++)
+            {
+                rngObjects.Add(new TtcPusher(rng, iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt()).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rngObjects.Add(new TtcCog(rng, iter.GetInt(), iter.GetInt(), iter.GetInt()).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rngObjects.Add(new TtcSpinningTriangle(rng, iter.GetInt(), iter.GetInt(), iter.GetInt()).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 1; i++)
+            {
+                rngObjects.Add(new TtcPitBlock(rng, iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt()).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rngObjects.Add(new TtcHand(rng, iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt()).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 14; i++)
+            {
+                rngObjects.Add(new TtcSpinner(rng, iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt()).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rngObjects.Add(new TtcWheel(rng, iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt()).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rngObjects.Add(new TtcElevator(rng, iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt()).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 1; i++)
+            {
+                rngObjects.Add(new TtcCog(rng, iter.GetInt(), iter.GetInt(), iter.GetInt()).SetIndex(i + 6));
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rngObjects.Add(new TtcTreadmill(rng, iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt()).SetIndex(i + 6));
+            }
+            for (int i = 0; i < 1; i++)
+            {
+                rngObjects.Add(new TtcThwomp(rng, iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt()).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rngObjects.Add(new TtcAmp(rng, iter.GetInt(), iter.GetInt()).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rngObjects.Add(new TtcBobomb(rng, iter.GetInt(), iter.GetInt()).SetIndex(i + 1));
+            }
+
+            if (!iter.IsDone()) throw new ArgumentOutOfRangeException();
+
+            return (rng, rngObjects);
         }
     }
 
