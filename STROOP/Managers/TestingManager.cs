@@ -10,6 +10,7 @@ using STROOP.Utilities;
 using STROOP.Forms;
 using STROOP.Models;
 using STROOP.Ttc;
+using STROOP.Controls;
 
 namespace STROOP.Managers
 {
@@ -183,6 +184,11 @@ namespace STROOP.Managers
         BetterTextbox _textBoxTestingTtcSimulatorEndFrame;
         BetterTextbox _textBoxTestingTtcSimulatorDustFrames;
         Button _buttonTestingTtcSimulatorCalculate;
+
+        // Pendulum Manipulation
+        BetterTextbox _textBoxTestingPendulumManipulation;
+        Button _buttonTestingPendulumManipulation;
+        RichTextBoxEx _richTextBoxTestingPendulumManipulation;
 
         public TestingManager(TabPage tabControl)
         {
@@ -451,7 +457,17 @@ namespace STROOP.Managers
                 List<int> dustFrames = dustFramesNullable.ConvertAll(dustFrameNullable => dustFrameNullable.Value);
                 InfoForm.ShowValue(TtcMain.Simulate(endFrame, dustFrames));
             };
-            
+
+            // Pendulum Manipulation
+
+            GroupBox groupBoxTestingPendulumManipulation = tabControl.Controls["groupBoxTestingPendulumManipulation"] as GroupBox;
+            _textBoxTestingPendulumManipulation = groupBoxTestingPendulumManipulation.Controls["textBoxTestingPendulumManipulation"] as BetterTextbox;
+            _buttonTestingPendulumManipulation = groupBoxTestingPendulumManipulation.Controls["buttonTestingPendulumManipulation"] as Button;
+            _richTextBoxTestingPendulumManipulation = groupBoxTestingPendulumManipulation.Controls["richTextBoxTestingPendulumManipulation"] as RichTextBoxEx;
+            _buttonTestingPendulumManipulation.Click += (sender, e) =>
+            {
+                _richTextBoxTestingPendulumManipulation.Text = _textBoxTestingPendulumManipulation.Text;
+            };
         }
 
         private List<uint> GetScuttlebugAddresses()
