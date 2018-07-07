@@ -56,7 +56,7 @@ namespace STROOP.Ttc
 
         public override void Update()
         {
-            if (_subType == 1)
+            if (_subType != 0)
             { //if not first treadmill, do nothing
                 _timer++;
                 return;

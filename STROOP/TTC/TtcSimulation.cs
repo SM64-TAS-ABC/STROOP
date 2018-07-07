@@ -74,6 +74,7 @@ namespace STROOP.Ttc
             lines.Add(String.Format("iterated through {0} frames, from {1} to {2}", counter, _startingFrame, endingFrame));
             lines.Add("frame = " + frame);
             lines.Add("");
+            lines.Add(new TtcSaveState(_rng.GetRng(), _rngObjects).ToString());
             return String.Join("\r\n", lines);
         }
 

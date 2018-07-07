@@ -85,7 +85,7 @@ namespace STROOP.Ttc
             }
             for (int i = 0; i < 2; i++)
             {
-                rngObjects.Add(new TtcTreadmill(rng, 1).SetIndex(i + 6));
+                rngObjects.Add(new TtcTreadmill(rng, i + 2).SetIndex(i + 6));
             }
             for (int i = 0; i < 1; i++)
             {
@@ -274,6 +274,12 @@ namespace STROOP.Ttc
             for (int i = 0; i < 2; i++)
             {
                 rngObjects.Add(new TtcBobomb(rng, iter.GetInt(), iter.GetInt()).SetIndex(i + 1));
+            }
+            for (int i = 0; i < 1; i++)
+            {
+                TtcDust dust = new TtcDust(rng).SetIndex(i + 1) as TtcDust;
+                // if (dustFrames != null) dust.AddDustFrames(dustFrames);
+                rngObjects.Add(dust);
             }
 
             if (!iter.IsDone()) throw new ArgumentOutOfRangeException();
