@@ -78,7 +78,12 @@ namespace STROOP.Ttc
 
         public override string ToString()
         {
-            return _id + OPENER + _blinkingTimer + CLOSER;
+            return _id + OPENER + _blinkingTimer + SEPARATOR + _withinMarioRange + CLOSER;
+        }
+
+        public override List<object> GetFields()
+        {
+            return new List<object>() { _blinkingTimer, _withinMarioRange };
         }
 
     }

@@ -74,6 +74,11 @@ namespace STROOP.Ttc
                     _targetAngularVelocity + CLOSER;
         }
 
+        public override List<object> GetFields()
+        {
+            return new List<object>() { _angle, _currentAngularVelocity, _targetAngularVelocity };
+        }
+
     }
 
 }

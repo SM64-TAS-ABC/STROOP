@@ -49,5 +49,10 @@ namespace STROOP.Ttc
         {
             return _id + OPENER + _state + SEPARATOR + _angle + CLOSER;
         }
+
+        public override List<object> GetFields()
+        {
+            return new List<object>() { _state, _angle };
+        }
     }
 }

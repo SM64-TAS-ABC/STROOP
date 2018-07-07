@@ -51,6 +51,11 @@ namespace STROOP.Ttc
             _dustFrames.AddRange(dustFrames);
         }
 
+        public override List<object> GetFields()
+        {
+            return new List<object>() { };
+        }
+
     }
 
 

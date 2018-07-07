@@ -107,6 +107,14 @@ namespace STROOP.Ttc
                           _timer + CLOSER;
         }
 
+        public override List<object> GetFields()
+        {
+            return new List<object>()
+            {
+                _angle, _timerMax, _targetAngle, _displacement, _directionCountdown, _timer
+            };
+        }
+
     }
 
 }

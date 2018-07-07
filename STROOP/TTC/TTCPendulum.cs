@@ -92,6 +92,14 @@ namespace STROOP.Ttc
                       _waitingTimer + CLOSER;
         }
 
+        public override List<object> GetFields()
+        {
+            return new List<object>()
+            {
+                _accelerationDirection, _angle, _angularVelocity, _accelerationMagnitude, _waitingTimer
+            };
+        }
+
     }
 
 }
