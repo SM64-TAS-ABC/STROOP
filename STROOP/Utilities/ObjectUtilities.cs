@@ -29,6 +29,13 @@ namespace STROOP.Utilities
             return relativeAddress;
         }
 
+        public static int? GetObjectIndex(uint absoluteAddress)
+        {
+            if (!IsObjectAddress(absoluteAddress)) return null;
+            int index = (int)((absoluteAddress - ObjectSlotsConfig.LinkStartAddress) / ObjectConfig.StructSize);
+            return index;
+        }
+
         public static uint? GetCollisionObject(uint objAddress, int collisionIndex)
         {
             if (collisionIndex < 1 || collisionIndex > 4)

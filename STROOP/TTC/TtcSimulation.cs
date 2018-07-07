@@ -150,9 +150,13 @@ namespace STROOP.Ttc
             return null;
         }
 
-        public bool FindIdealPendulumManipulation()
+        public bool FindIdealPendulumManipulation(uint pendulumAddress)
         {
-            TtcPendulum pendulum = _rngObjects[8] as TtcPendulum;
+            int? objectIndexNullable = ObjectUtilities.GetObjectIndex(pendulumAddress);
+            if (!objectIndexNullable.HasValue) return false;
+            int objectIndex = objectIndexNullable.Value;
+
+            TtcPendulum pendulum = _rngObjects[objectIndex] as TtcPendulum;
             int pendulumAmplitudeStart = (int)WatchVariableSpecialUtilities.GetPendulumAmplitude(
                 pendulum._accelerationDirection, pendulum._accelerationMagnitude, pendulum._angularVelocity, pendulum._angle);
             int? pendulumSwingIndexStartNullable = TableConfig.PendulumSwings.GetPendulumSwingIndex(pendulumAmplitudeStart);

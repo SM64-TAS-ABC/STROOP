@@ -466,7 +466,8 @@ namespace STROOP.Managers
             _richTextBoxTestingPendulumManipulation = groupBoxTestingPendulumManipulation.Controls["richTextBoxTestingPendulumManipulation"] as RichTextBoxEx;
             _buttonTestingPendulumManipulation.Click += (sender, e) =>
             {
-                List<int> dustFrames = TtcMain.FindIdealPendulumManipulation();
+                uint pendulumAddress = ParsingUtilities.ParseHexNullable(_textBoxTestingPendulumManipulation.Text) ?? 0;
+                List<int> dustFrames = TtcMain.FindIdealPendulumManipulation(pendulumAddress);
                 string solution;
                 if (dustFrames == null)
                 {
@@ -475,7 +476,7 @@ namespace STROOP.Managers
                 else
                 {
                     List<int> dustInputFrames = dustFrames.ConvertAll(dustFrame => dustFrame - 2);
-                    solution = String.Join(", ", dustInputFrames);
+                    solution = "[" + String.Join(", ", dustInputFrames) + "]";
                 }
                 _richTextBoxTestingPendulumManipulation.Text = solution;
             };

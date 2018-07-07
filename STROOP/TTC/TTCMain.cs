@@ -19,20 +19,20 @@ namespace STROOP.Ttc
 
         public static void TtcMainMethod()
         {
-            List<int> dustFrames = FindIdealPendulumManipulation();
+            List<int> dustFrames = FindIdealPendulumManipulation(0x8033E788);
             if (dustFrames == null) return;
             List<int> dustInputFrames = dustFrames.ConvertAll(dustFrame => dustFrame - 2);
             string dustInputFramesString = "[" + String.Join(", ", dustInputFrames) + "]";
             Config.Print(dustInputFramesString);
         }
 
-        public static List<int> FindIdealPendulumManipulation()
+        public static List<int> FindIdealPendulumManipulation(uint pendulumAddress)
         {
             List<List<int>> dustFrameLists = GetDustFrameLists(MupenUtilities.GetFrameCount() + 2, 25, 25);
             foreach (List<int> dustFrames in dustFrameLists)
             {
                 TtcSimulation simulation = new TtcSimulation(dustFrames);
-                bool success = simulation.FindIdealPendulumManipulation();
+                bool success = simulation.FindIdealPendulumManipulation(pendulumAddress);
                 if (success)
                 {
                     return dustFrames;
