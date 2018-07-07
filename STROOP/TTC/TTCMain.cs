@@ -1,4 +1,5 @@
-﻿using STROOP.Structs;
+﻿using STROOP.Forms;
+using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System;
@@ -18,6 +19,13 @@ namespace STROOP.Ttc
 
         public static void TtcMainMethod()
         {
+            // TODO remove this
+            List<List<int>> dustFramesTest = GetDustFrameLists(1, 5, 2);
+            List<string> stringList = dustFramesTest.ConvertAll(dustList => "[" + String.Join(", ", dustList) + "]");
+            string stringValue = String.Join("\r\n", stringList);
+            InfoForm.ShowValue(stringValue);
+            return;
+
             List<List<int>> dustFrameLists = GetDustFrameLists(MupenUtilities.GetFrameCount() + 2, 25, 25);
             foreach (List<int> dustFrames in dustFrameLists)
             {
@@ -81,32 +89,44 @@ namespace STROOP.Ttc
         private static List<List<int>> GetDustFrameLists(int earliestDustFrame, int dustFrameRange, int maxDustFrames)
         {
             List<List<int>> dustFrameLists = new List<List<int>>();
-            AddDustFrameListRecursion(new bool[dustFrameRange], 0, 0, maxDustFrames, dustFrameLists, earliestDustFrame);
+            for (int numDustFrames = 0; numDustFrames <= maxDustFrames; numDustFrames++)
+            {
+                AddDustFrameListRecursion(new bool[dustFrameRange], 0, 0, numDustFrames, dustFrameLists, earliestDustFrame);
+            }
             return dustFrameLists;
         }
 
         private static void AddDustFrameListRecursion(
-            bool[] bools, int index, int numDustFrames, int maxDustFrames,
+            bool[] bools, int index, int numDustFrames, int exactDustFrames,
             List<List<int>> dustFrameLists, int earliestDustFrame)
         {
             // ending condition
             if (index == bools.Length)
             {
-                dustFrameLists.Add(ConvertBoolsToDustFrames(bools, earliestDustFrame));
+                if (numDustFrames == exactDustFrames)
+                {
+                    dustFrameLists.Add(ConvertBoolsToDustFrames(bools, earliestDustFrame));
+                }
                 return;
             }
 
-            // false case
-            bools[index] = false;
-            AddDustFrameListRecursion(bools, index + 1, numDustFrames, maxDustFrames, dustFrameLists, earliestDustFrame);
-
             // true case
             bool precedingIsDust = index > 0 && bools[index - 1];
-            bool lessThanMaxDusts = numDustFrames < maxDustFrames;
-            if (!precedingIsDust && lessThanMaxDusts)
+            bool lessThanExactDusts = numDustFrames < exactDustFrames;
+            if (!precedingIsDust && lessThanExactDusts)
             {
                 bools[index] = true;
-                AddDustFrameListRecursion(bools, index + 1, numDustFrames + 1, maxDustFrames, dustFrameLists, earliestDustFrame);
+                AddDustFrameListRecursion(bools, index + 1, numDustFrames + 1, exactDustFrames, dustFrameLists, earliestDustFrame);
+            }
+
+            // false case
+            int numRemainingBools = bools.Length - index;
+            int dustFramesToGo = exactDustFrames - numDustFrames;
+            bool canAffordFalse = numRemainingBools > dustFramesToGo;
+            if (canAffordFalse)
+            {
+                bools[index] = false;
+                AddDustFrameListRecursion(bools, index + 1, numDustFrames, exactDustFrames, dustFrameLists, earliestDustFrame);
             }
         }
 
