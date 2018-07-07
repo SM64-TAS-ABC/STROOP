@@ -1,6 +1,7 @@
 ﻿using STROOP.Managers;
 using STROOP.Models;
 using STROOP.Structs.Configurations;
+using STROOP.Ttc;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
@@ -2446,6 +2447,13 @@ namespace STROOP.Structs
                     if (!ttcSpeedSettingNullable.HasValue) return false;
                     return Config.Stream.SetValue(ttcSpeedSettingNullable.Value, MiscConfig.TtcSpeedSettingAddress);
                 }));
+
+            _dictionary.Add("TtcSaveState",
+                ((uint dummy) =>
+                {
+                    return new TtcSaveState().ToString();
+                },
+                DEFAULT_SETTER));            
 
             // Area vars
 

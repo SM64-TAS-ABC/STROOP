@@ -1,4 +1,5 @@
-﻿using STROOP.Structs.Configurations;
+﻿using STROOP.Structs;
+using STROOP.Structs.Configurations;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
@@ -19,8 +20,8 @@ namespace STROOP.Ttc
 
         public TtcSaveState(List<TtcObject> objects)
         {
-            List<object> fields = objects.ConvertAll(obj => obj.GetFields())
-                .SelectMany(list => list).ToList();
+            List<object> fields = objects.SelectMany(obj => obj.GetFields()).ToList();
+            _bytes = fields.SelectMany(field => TypeUtilities.GetBytes(field)).ToList();
         }
 
         public TtcSaveState(string stringValue)
