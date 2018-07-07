@@ -466,7 +466,18 @@ namespace STROOP.Managers
             _richTextBoxTestingPendulumManipulation = groupBoxTestingPendulumManipulation.Controls["richTextBoxTestingPendulumManipulation"] as RichTextBoxEx;
             _buttonTestingPendulumManipulation.Click += (sender, e) =>
             {
-                _richTextBoxTestingPendulumManipulation.Text = _textBoxTestingPendulumManipulation.Text;
+                List<int> dustFrames = TtcMain.FindIdealPendulumManipulation();
+                string solution;
+                if (dustFrames == null)
+                {
+                    solution = "null";
+                }
+                else
+                {
+                    List<int> dustInputFrames = dustFrames.ConvertAll(dustFrame => dustFrame - 2);
+                    solution = String.Join(", ", dustInputFrames);
+                }
+                _richTextBoxTestingPendulumManipulation.Text = solution;
             };
         }
 

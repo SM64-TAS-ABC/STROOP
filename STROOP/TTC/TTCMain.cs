@@ -19,13 +19,15 @@ namespace STROOP.Ttc
 
         public static void TtcMainMethod()
         {
-            // TODO remove this
-            List<List<int>> dustFramesTest = GetDustFrameLists(1, 5, 2);
-            List<string> stringList = dustFramesTest.ConvertAll(dustList => "[" + String.Join(", ", dustList) + "]");
-            string stringValue = String.Join("\r\n", stringList);
-            InfoForm.ShowValue(stringValue);
-            return;
+            List<int> dustFrames = FindIdealPendulumManipulation();
+            if (dustFrames == null) return;
+            List<int> dustInputFrames = dustFrames.ConvertAll(dustFrame => dustFrame - 2);
+            string dustInputFramesString = "[" + String.Join(", ", dustInputFrames) + "]";
+            Config.Print(dustInputFramesString);
+        }
 
+        public static List<int> FindIdealPendulumManipulation()
+        {
             List<List<int>> dustFrameLists = GetDustFrameLists(MupenUtilities.GetFrameCount() + 2, 25, 25);
             foreach (List<int> dustFrames in dustFrameLists)
             {
@@ -33,12 +35,10 @@ namespace STROOP.Ttc
                 bool success = simulation.FindIdealPendulumManipulation();
                 if (success)
                 {
-                    List<int> dustInputFrames = dustFrames.ConvertAll(dustFrame => dustFrame - 2);
-                    string dustInputFramesString = "[" + String.Join(", ", dustInputFrames) + "]";
-                    Config.Print(dustInputFramesString);
-                    break;
+                    return dustFrames;
                 }
             }
+            return null;
         }
 
         public static void TtcMainMethod2()
