@@ -252,7 +252,8 @@ namespace STROOP.Ttc
             }
             for (int i = 0; i < 2; i++)
             {
-                rngObjects.Add(new TtcElevator(rng, iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt()).SetIndex(i + 1));
+                if (i == 0) rngObjects.Add(new TtcElevator(rng, 445, 1045, iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt()).SetIndex(i + 1));
+                if (i == 1) rngObjects.Add(new TtcElevator(rng, -1454, -1254, iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt(), iter.GetInt()).SetIndex(i + 1));
             }
             for (int i = 0; i < 1; i++)
             {

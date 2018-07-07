@@ -22,10 +22,8 @@ namespace STROOP.Ttc
     public class TtcTreadmill : TtcObject
     {
 
-        //whether this treadmill is the first treadmill
         public readonly int _subType;
-	
-	    public int _currentSpeed;
+		public int _currentSpeed;
         public int _targetSpeed;
         public int _timerMax;
         public int _timer;

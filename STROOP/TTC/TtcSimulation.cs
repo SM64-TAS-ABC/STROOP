@@ -43,6 +43,10 @@ namespace STROOP.Ttc
             _startingFrame = 0;
         }
 
+        public TtcSimulation(string saveStateString) : this(new TtcSaveState(saveStateString))
+        {
+        }
+
         public string GetObjectsString(int endingFrame)
         {
             //iterate through frames to update objects
