@@ -18,6 +18,8 @@ namespace STROOP.Structs.Configurations
         public static readonly uint CoinDisplayOffset = 0xF2;
         public static readonly uint StarDisplayOffset = 0xF4;
 
+        public static readonly uint CheckedStarCountOffset = 0xB8;
+
         public static readonly uint TimeOffset = 0xFC;
 
         public static readonly uint VisibilityOffset = 0xFB;
