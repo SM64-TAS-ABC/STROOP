@@ -333,6 +333,7 @@
     <Compile Include="Ttc\TtcSimulation.cs" />
     <Compile Include="Ttc\TtcRng.cs" />
     <Compile Include="Ttc\TtcMain.cs" />
+    <Compile Include="Ttc\TtcSaveState.cs" />
     <Compile Include="Ttc\TtcWheel.cs" />
     <Compile Include="Ttc\TtcTreadmill.cs" />
     <Compile Include="Ttc\TtcThwomp.cs" />
