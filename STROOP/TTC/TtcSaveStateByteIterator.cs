@@ -21,16 +21,23 @@ namespace STROOP.Ttc
 
         public int GetInt()
         {
-            int value = (int)TypeUtilities.ConvertBytes(typeof(int), _bytes.ToArray(), index, false);
-            index += TypeUtilities.TypeSize[typeof(int)];
-            return value;
+            return (int)TypeUtilities.ConvertBytes(
+                typeof(int),
+                GetBytes(TypeUtilities.TypeSize[typeof(int)]));
         }
 
         public ushort GetUShort()
         {
-            ushort value = (ushort)TypeUtilities.ConvertBytes(typeof(ushort), _bytes.ToArray(), index, false);
-            index += TypeUtilities.TypeSize[typeof(ushort)];
-            return value;
+            return (ushort)TypeUtilities.ConvertBytes(
+                typeof(ushort),
+                GetBytes(TypeUtilities.TypeSize[typeof(ushort)]));
+        }
+
+        private byte[] GetBytes(int numBytes)
+        {
+            byte[] bytes = _bytes.Skip(index).Take(numBytes).ToArray();
+            index += numBytes;
+            return bytes;
         }
 
         public bool IsDone()
