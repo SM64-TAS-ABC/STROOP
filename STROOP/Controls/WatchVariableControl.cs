@@ -881,6 +881,12 @@ namespace STROOP.Controls
             return WatchVarWrapper.GetVarInfo();
         }
 
+        public void UnselectText()
+        {
+            _nameTextBox.SelectionLength = 0;
+            _valueTextBox.SelectionLength = 0;
+        }
+
         public override string ToString()
         {
             return WatchVarPrecursor.ToString();

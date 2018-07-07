@@ -98,5 +98,11 @@ namespace STROOP.Forms
             _watchVariablePanel.UpdatePanel();
         }
 
+        public void ShowForm()
+        {
+            Show();
+            _watchVariablePanel.UnselectText();
+        }
+
     }
 }

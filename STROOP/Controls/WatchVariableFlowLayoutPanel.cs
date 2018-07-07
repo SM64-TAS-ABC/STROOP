@@ -276,6 +276,14 @@ namespace STROOP.Controls
             _selectedWatchVarControls.Clear();
         }
 
+        public void UnselectText()
+        {
+            foreach (WatchVariableControl control in _watchVarControls)
+            {
+                control.UnselectText();
+            }
+        }
+
         private void AddAllVariablesToCustomTab()
         {
             GetCurrentVariableControls().ForEach(varControl =>

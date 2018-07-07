@@ -242,7 +242,7 @@ namespace STROOP.Structs
             {
                 VariablePopOutForm form = new VariablePopOutForm();
                 form.Initialize(getVars().ConvertAll(control => control.CreateCopy()));
-                form.Show();
+                form.ShowForm();
             };
 
             ToolStripMenuItem itemAddToTab = new ToolStripMenuItem("Add to Tab...");
