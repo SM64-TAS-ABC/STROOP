@@ -10,6 +10,11 @@ namespace STROOP.Ttc
     public class TtcSaveState
     {
 
+        public TtcSaveState()
+        {
+
+        }
+
         public TtcSaveState(List<TtcObject> objects)
         {
 
