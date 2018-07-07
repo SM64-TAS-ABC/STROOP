@@ -70,7 +70,7 @@ namespace STROOP
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPageObject = new System.Windows.Forms.TabPage();
             this.splitContainerObject = new STROOP.BetterSplitContainer();
-            this.panelObj = new System.Windows.Forms.Panel();
+            this.panelObj = new PanelEx();
             this.buttonObjRelease = new STROOP.BinaryButton();
             this.buttonObjInteract = new STROOP.BinaryButton();
             this.groupBoxObjHome = new System.Windows.Forms.GroupBox();
@@ -17811,7 +17811,7 @@ namespace STROOP
         private CheckBox checkBoxStageSelect;
         private CheckBox checkBoxClassicMode;
         private CheckBox checkBoxSpawnMode;
-        private Panel panelObj;
+        private PanelEx panelObj;
         private BetterTextbox textBoxObjPosXZ;
         private Button buttonObjPosXnZn;
         private GroupBox groupBoxObjPos;
