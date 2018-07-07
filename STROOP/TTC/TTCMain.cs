@@ -19,6 +19,13 @@ namespace STROOP.Ttc
 
         public static void TtcMainMethod()
         {
+            TtcSimulation simulation = new TtcSimulation(0, 4000);
+            string result = simulation.GetObjectsString((int)GotoRetrieveConfig.GotoAboveOffset);
+            Config.Print(result);
+        }
+
+        public static void TtcMainMethod3()
+        {
             List<int> dustFrames = FindIdealPendulumManipulation(0x8033E788);
             if (dustFrames == null) return;
             List<int> dustInputFrames = dustFrames.ConvertAll(dustFrame => dustFrame - 2);
@@ -80,7 +87,7 @@ namespace STROOP.Ttc
             outputStrings.ForEach(output => Config.Print(output));
         }
 
-        public static string Simulate(int endFrame, List<int> dustFrames)
+        public static string Simulate(int endFrame, List<int> dustFrames = null)
         {
             TtcSimulation simulation = new TtcSimulation(dustFrames);
             return simulation.GetObjectsString(endFrame);
