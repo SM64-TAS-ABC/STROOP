@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -15,6 +16,8 @@ namespace STROOP.Utilities
     public class ProcessStream : IDisposable
     {
         Emulator _emulator;
+        Process _process;
+
         IEmuRamIO _io;
         ConcurrentQueue<double> _fpsTimes = new ConcurrentQueue<double>();
         byte[] _ram;
@@ -74,6 +77,15 @@ namespace STROOP.Utilities
             { typeof(DolphinProcessIO),     (p, e, s) => new DolphinProcessIO(p, e, s) },
         };
 
+        [DllImport("user32.dll")]
+        static extern bool SetForegroundWindow(IntPtr hWnd);
+
+        public void FocusOnEmulator()
+        {
+            if (_process == null) return;
+            SetForegroundWindow(_process.MainWindowHandle);
+        }
+
         public bool SwitchProcess(Process newProcess, Emulator emulator)
         {
             lock (_mStreamProcess)
@@ -95,6 +107,7 @@ namespace STROOP.Utilities
                     _io = _ioCreationTable[emulator.IOType](newProcess, emulator, Config.RamSize);
                     _io.OnClose += ProcessClosed;
                     _emulator = emulator;
+                    _process = newProcess;
                 }
                 catch (Exception) // Failed to create process
                 {
@@ -109,6 +122,7 @@ namespace STROOP.Utilities
                 Error:
                 _io = null;
                 _emulator = null;
+                _process = null;
                 return false;
             }
         }
