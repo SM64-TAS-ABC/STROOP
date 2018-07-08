@@ -19,6 +19,9 @@ namespace STROOP.Managers
         private readonly M64File _m64File;
         private readonly M64Gui _gui;
 
+        private ushort? _copiedCountryCode = null;
+        private uint? _copiedCrc32 = null;
+
         public M64Manager(M64Gui gui)
         {
             _gui = gui;
@@ -34,6 +37,8 @@ namespace STROOP.Managers
 
             _gui.ButtonSetUsRom.Click += (sender, e) => SetHeaderRomVersion(RomVersion.US);
             _gui.ButtonSetJpRom.Click += (sender, e) => SetHeaderRomVersion(RomVersion.JP);
+            _gui.ButtonCopyRom.Click += (sender, e) => CopyHeaderRomVersion();
+            _gui.ButtonPasteRom.Click += (sender, e) => PasteHeaderRomVersion();
 
             _gui.DataGridViewInputs.DataError += (sender, e) => _gui.DataGridViewInputs.CancelEdit();
             _gui.DataGridViewInputs.SelectionChanged += (sender, e) => UpdateSelectionTextboxes();
@@ -114,8 +119,25 @@ namespace STROOP.Managers
             _gui.ListBoxCopied.SelectedItem = copiedData;
         }
 
+        private void CopyHeaderRomVersion()
+        {
+            if (_m64File.RawBytes == null) return;
+            _copiedCountryCode = _m64File.Header.CountryCode;
+            _copiedCrc32 = _m64File.Header.Crc32;
+        }
+
+        private void PasteHeaderRomVersion()
+        {
+            if (_m64File.RawBytes == null) return;
+            if (!_copiedCountryCode.HasValue || !_copiedCrc32.HasValue) return;
+            _m64File.Header.CountryCode = _copiedCountryCode.Value;
+            _m64File.Header.Crc32 = _copiedCrc32.Value;
+            _gui.PropertyGridHeader.Refresh();
+        }
+
         private void SetHeaderRomVersion(RomVersion romVersion)
         {
+            if (_m64File.RawBytes == null) return;
             switch (romVersion)
             {
                 case RomVersion.US:
