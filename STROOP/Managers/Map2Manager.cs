@@ -294,7 +294,8 @@ namespace STROOP.Managers
             }
             CeilingTriangleMapObject.Show = (ceilingTriangle != 0x00);
 
-            List<TriangleDataModel> cogFloorTris = TriangleUtilities.GetObjectTrianglesForObject(0x80341E28)
+            //List<TriangleDataModel> cogFloorTris = TriangleUtilities.GetObjectTrianglesForObject(0x80341E28)
+            List<TriangleDataModel> cogFloorTris = TriangleUtilities.GetTrianglesInRange(0x8016DE30, 20)
                 .FindAll(tri => tri.Classification == TriangleClassification.Floor);
             for (int i = 0; i < _cogFloorTris.Count; i++)
             {
@@ -309,7 +310,8 @@ namespace STROOP.Managers
                 }
             }
 
-            List<TriangleDataModel> cog2FloorTris = TriangleUtilities.GetObjectTrianglesForObject(0x80342088)
+            //List<TriangleDataModel> cog2FloorTris = TriangleUtilities.GetObjectTrianglesForObject(0x80342088)
+            List<TriangleDataModel> cog2FloorTris = TriangleUtilities.GetTrianglesInRange(0x8016E1F0, 20)
                 .FindAll(tri => tri.Classification == TriangleClassification.Floor);
             for (int i = 0; i < _cog2FloorTris.Count; i++)
             {
