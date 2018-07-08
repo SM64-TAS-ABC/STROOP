@@ -286,8 +286,10 @@ namespace STROOP
                 ProgressBar = progressBarM64,
                 LabelProgressBar = labelM64ProgressBar,
 
-                ButtonSetUsHeader = buttonM64SetUsHeader,
-                ButtonSetJpHeader = buttonM64SetJpHeader,
+                ButtonSetUsRom = buttonM64SetUsRom,
+                ButtonSetJpRom = buttonM64SetJpRom,
+                ButtonCopyRom = buttonM64CopyRom,
+                ButtonPasteRom = buttonM64PasteRom,
 
                 TextBoxOnValue = textBoxM64OnValue,
 

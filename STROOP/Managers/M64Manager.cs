@@ -32,8 +32,8 @@ namespace STROOP.Managers
             _gui.ButtonGoto.Click += (sender, e) => Goto();
             _gui.TextBoxGoto.AddEnterAction(() => Goto());
 
-            _gui.ButtonSetUsHeader.Click += (sender, e) => SetHeaderRomVersion(RomVersion.US);
-            _gui.ButtonSetJpHeader.Click += (sender, e) => SetHeaderRomVersion(RomVersion.JP);
+            _gui.ButtonSetUsRom.Click += (sender, e) => SetHeaderRomVersion(RomVersion.US);
+            _gui.ButtonSetJpRom.Click += (sender, e) => SetHeaderRomVersion(RomVersion.JP);
 
             _gui.DataGridViewInputs.DataError += (sender, e) => _gui.DataGridViewInputs.CancelEdit();
             _gui.DataGridViewInputs.SelectionChanged += (sender, e) => UpdateSelectionTextboxes();
