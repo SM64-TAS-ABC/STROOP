@@ -11,10 +11,10 @@ namespace STROOP.Structs
     {
         public struct TriangleInfoReference
         {
-            public readonly ushort Type;
-            public readonly string Description;
-            public readonly byte Slipperiness;
-            public readonly bool Exertion;
+            public ushort Type;
+            public string Description;
+            public ushort Slipperiness;
+            public bool Exertion;
 
             public override int GetHashCode()
             {
@@ -40,7 +40,7 @@ namespace STROOP.Structs
             return _table[type].Description;
         }
 
-        public byte? GetSlipperiness(ushort type)
+        public ushort? GetSlipperiness(ushort type)
         {
             if (!_table.ContainsKey(type))
                 return null;
@@ -49,7 +49,7 @@ namespace STROOP.Structs
 
         public string GetSlipperinessDescription(ushort type)
         {
-            byte? slipperiness = GetSlipperiness(type);
+            ushort? slipperiness = GetSlipperiness(type);
             switch (slipperiness)
             {
                 case 0x00:

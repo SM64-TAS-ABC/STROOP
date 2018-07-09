@@ -1259,6 +1259,41 @@ namespace STROOP.Utilities
             return animationTable;
         }
 
+        public static TriangleInfoTable OpenTriangleInfoTable(string path)
+        {
+            TriangleInfoTable table = null;
+            var assembly = Assembly.GetExecutingAssembly();
+
+            // Create schema set
+            var schemaSet = new XmlSchemaSet() { XmlResolver = new ResourceXmlResolver() };
+            schemaSet.Add("http://tempuri.org/TriangleInfoTableSchema.xsd", "TriangleInfoTableSchema.xsd");
+            schemaSet.Compile();
+
+            // Load and validate document
+            var doc = XDocument.Load(path);
+            doc.Validate(schemaSet, Validation);
+
+            foreach (XElement element in doc.Root.Elements())
+            {
+                ushort type = (ushort)ParsingUtilities.ParseHex(
+                    element.Attribute(XName.Get("type")).Value);
+                string description = element.Attribute(XName.Get("description")).Value;
+                ushort slipperiness = (ushort)ParsingUtilities.ParseHex(
+                    element.Attribute(XName.Get("slipperiness")).Value);
+                bool exertion = bool.Parse(element.Attribute(XName.Get("exertion")).Value);
+
+                table.Add(new TriangleInfoTable.TriangleInfoReference()
+                {
+                    Type = type,
+                    Description = description,
+                    Slipperiness = slipperiness,
+                    Exertion = exertion,
+                });
+            }
+
+            return table;
+        }
+
         public static CourseDataTable OpenCourseDataTable(string path)
         {
             CourseDataTable courseDataTable = new CourseDataTable();
