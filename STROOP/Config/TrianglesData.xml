@@ -4,7 +4,7 @@
 
   <Data groupList="Basic" type="short" offset="0x00" base="Triangle" useHex="true">Surface Type</Data>
   <Data groupList="Basic" base="Triangle" specialType="TriangleDescription" subclass="String">Description</Data>
-  <Data groupList="Basic" base="Triangle" specialType="TriangleSlipperiness">Slipperiness</Data>
+  <Data groupList="Basic" base="Triangle" specialType="TriangleSlipperiness" useHex="true">Slipperiness</Data>
   <Data groupList="Basic" base="Triangle" specialType="TriangleSlipperinessDescription" subclass="String">Slipperiness Description</Data>
 
   <Data groupList="Basic" type="byte" offset="0x04" base="Triangle" useHex="true">Flags</Data>
