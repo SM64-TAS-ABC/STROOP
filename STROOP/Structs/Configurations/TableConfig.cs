@@ -11,6 +11,7 @@ namespace STROOP.Structs
     {
         public static ActionTable MarioActions;
         public static AnimationTable MarioAnimations;
+        public static TriangleInfoTable TriangleInfo;
         public static PendulumSwingTable PendulumSwings;
         public static WaypointTable RacingPenguinWaypoints;
         public static WaypointTable KoopaTheQuick1Waypoints;

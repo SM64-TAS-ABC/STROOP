@@ -1261,7 +1261,7 @@ namespace STROOP.Utilities
 
         public static TriangleInfoTable OpenTriangleInfoTable(string path)
         {
-            TriangleInfoTable table = null;
+            TriangleInfoTable table = new TriangleInfoTable();
             var assembly = Assembly.GetExecutingAssembly();
 
             // Create schema set
@@ -1282,7 +1282,7 @@ namespace STROOP.Utilities
                     element.Attribute(XName.Get("slipperiness")).Value);
                 bool exertion = bool.Parse(element.Attribute(XName.Get("exertion")).Value);
 
-                table.Add(new TriangleInfoTable.TriangleInfoReference()
+                table?.Add(new TriangleInfoTable.TriangleInfoReference()
                 {
                     Type = type,
                     Description = description,
