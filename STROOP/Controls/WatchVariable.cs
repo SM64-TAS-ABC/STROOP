@@ -203,8 +203,7 @@ namespace STROOP.Controls
         {
             if (IsSpecial)
             {
-                string memoryTypeString = MemoryTypeName != null ? " (" + MemoryTypeName + ")" : "";
-                return "special" + memoryTypeString;
+                return "special";
             }
             else
             {
