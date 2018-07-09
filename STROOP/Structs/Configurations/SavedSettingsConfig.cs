@@ -125,22 +125,22 @@ namespace STROOP.Structs.Configurations
             }
         }
 
-        private static bool _neutralizeTrianglesWith21;
-        public static bool NeutralizeTrianglesWith21
+        private static bool _neutralizeTrianglesWith0x15;
+        public static bool NeutralizeTrianglesWith0x15
         {
-            get => _neutralizeTrianglesWith21;
+            get => _neutralizeTrianglesWith0x15;
             set
             {
-                if (_neutralizeTrianglesWith21 == value) return;
-                _neutralizeTrianglesWith21 = value;
+                if (_neutralizeTrianglesWith0x15 == value) return;
+                _neutralizeTrianglesWith0x15 = value;
                 if (IsLoaded) Save();
             }
         }
 
-        public static short NeutralizeTriangleValue(bool? use21Nullable = null)
+        public static short NeutralizeTriangleValue(bool? use0x15Nullable = null)
         {
-            bool use21 = use21Nullable ?? NeutralizeTrianglesWith21;
-            return (short)(use21 ? 21 : 0);
+            bool use0x15 = use0x15Nullable ?? NeutralizeTrianglesWith0x15;
+            return (short)(use0x15 ? 0x15 : 0);
         }
 
         private static bool _useInGameTrigForAngleLogic;
@@ -242,7 +242,7 @@ namespace STROOP.Structs.Configurations
                 new XElement("ExcludeDustForClosestObject", _excludeDustForClosestObject),
                 new XElement("UseMisalignmentOffsetForDistanceToLine", _useMisalignmentOffsetForDistanceToLine),
                 new XElement("DontRoundValuesToZero", _dontRoundValuesToZero),
-                new XElement("NeutralizeTrianglesWith21", _neutralizeTrianglesWith21),
+                new XElement("NeutralizeTrianglesWith0x15", _neutralizeTrianglesWith0x15),
                 new XElement("UseInGameTrigForAngleLogic", _useInGameTrigForAngleLogic),
                 tabOrderXElement,
             };
@@ -265,7 +265,7 @@ namespace STROOP.Structs.Configurations
             _excludeDustForClosestObject = true;
             _useMisalignmentOffsetForDistanceToLine = true;
             _dontRoundValuesToZero = true;
-            _neutralizeTrianglesWith21 = true;
+            _neutralizeTrianglesWith0x15 = true;
             _useInGameTrigForAngleLogic = false;
             Save();
         }

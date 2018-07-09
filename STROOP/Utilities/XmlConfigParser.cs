@@ -138,8 +138,8 @@ namespace STROOP.Utilities
                     case "DontRoundValuesToZero":
                         SavedSettingsConfig.DontRoundValuesToZero = bool.Parse(element.Value);
                         break;
-                    case "NeutralizeTrianglesWith21":
-                        SavedSettingsConfig.NeutralizeTrianglesWith21 = bool.Parse(element.Value);
+                    case "NeutralizeTrianglesWith0x15":
+                        SavedSettingsConfig.NeutralizeTrianglesWith0x15 = bool.Parse(element.Value);
                         break;
                     case "UseInGameTrigForAngleLogic":
                         SavedSettingsConfig.UseInGameTrigForAngleLogic = bool.Parse(element.Value);

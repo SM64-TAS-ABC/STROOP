@@ -891,13 +891,13 @@ namespace STROOP.Utilities
             return success;
         }
 
-        public static bool NeutralizeTriangle(uint triangleAddress, bool? use21Nullable = null)
+        public static bool NeutralizeTriangle(uint triangleAddress, bool? use0x15Nullable = null)
         {
             if (triangleAddress == 0x0000)
                 return false;
 
 
-            short neutralizeValue = SavedSettingsConfig.NeutralizeTriangleValue(use21Nullable);
+            short neutralizeValue = SavedSettingsConfig.NeutralizeTriangleValue(use0x15Nullable);
 
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
