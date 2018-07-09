@@ -52,12 +52,19 @@ namespace STROOP.Ttc
             Config.Print(dustInputFramesString);
         }
 
-        public static void PrintIdealPendulumManipulation(uint pendulumAddress, int numIterations)
+        public static void PrintIdealPendulumManipulation(uint pendulumAddress, int numIterations, bool useForm)
         {
             List<List<int>> dustFrameLists = TtcMain.FindIdealPendulumManipulation(pendulumAddress, numIterations);
             List<string> outputList = dustFrameLists.ConvertAll(dustFrameList => "[" + String.Join(", ", dustFrameList) + "]");
             string output = String.Join("\r\n", outputList);
-            Config.Print(output);
+            if (useForm)
+            {
+                InfoForm.ShowText("Pendulum Manipulation", "Dust Frames", output);
+            }
+            else
+            {
+                Config.Print(output);
+            }
         }
 
         public static List<List<int>> FindIdealPendulumManipulation(uint pendulumAddress, int numIterations)

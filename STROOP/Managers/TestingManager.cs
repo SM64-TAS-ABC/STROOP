@@ -185,11 +185,6 @@ namespace STROOP.Managers
         BetterTextbox _textBoxTestingTtcSimulatorDustFrames;
         Button _buttonTestingTtcSimulatorCalculate;
 
-        // Pendulum Manipulation
-        BetterTextbox _textBoxTestingPendulumManipulation;
-        Button _buttonTestingPendulumManipulation;
-        RichTextBoxEx _richTextBoxTestingPendulumManipulation;
-
         public TestingManager(TabPage tabControl)
         {
             // Recording
@@ -461,24 +456,14 @@ namespace STROOP.Managers
             // Pendulum Manipulation
 
             GroupBox groupBoxTestingPendulumManipulation = tabControl.Controls["groupBoxTestingPendulumManipulation"] as GroupBox;
-            _textBoxTestingPendulumManipulation = groupBoxTestingPendulumManipulation.Controls["textBoxTestingPendulumManipulation"] as BetterTextbox;
-            _buttonTestingPendulumManipulation = groupBoxTestingPendulumManipulation.Controls["buttonTestingPendulumManipulation"] as Button;
-            _richTextBoxTestingPendulumManipulation = groupBoxTestingPendulumManipulation.Controls["richTextBoxTestingPendulumManipulation"] as RichTextBoxEx;
-            _buttonTestingPendulumManipulation.Click += (sender, e) =>
+            BetterTextbox textBoxTestingPendulumManipulationPendulum = groupBoxTestingPendulumManipulation.Controls["textBoxTestingPendulumManipulationPendulum"] as BetterTextbox;
+            BetterTextbox textBoxTestingPendulumManipulationIterations = groupBoxTestingPendulumManipulation.Controls["textBoxTestingPendulumManipulationIterations"] as BetterTextbox;
+            Button buttonTestingPendulumManipulationCalculate = groupBoxTestingPendulumManipulation.Controls["buttonTestingPendulumManipulationCalculate"] as Button;
+            buttonTestingPendulumManipulationCalculate.Click += (sender, e) =>
             {
-                uint pendulumAddress = ParsingUtilities.ParseHexNullable(_textBoxTestingPendulumManipulation.Text) ?? 0;
-                List<int> dustFrames = TtcMain.FindIdealPendulumManipulation(pendulumAddress);
-                string solution;
-                if (dustFrames == null)
-                {
-                    solution = "null";
-                }
-                else
-                {
-                    List<int> dustInputFrames = dustFrames.ConvertAll(dustFrame => dustFrame - 2);
-                    solution = "[" + String.Join(", ", dustInputFrames) + "]";
-                }
-                _richTextBoxTestingPendulumManipulation.Text = solution;
+                uint pendulumAddress = ParsingUtilities.ParseHexNullable(textBoxTestingPendulumManipulationPendulum.Text) ?? 0;
+                int numIterations = ParsingUtilities.ParseInt(textBoxTestingPendulumManipulationIterations.Text);
+                TtcMain.PrintIdealPendulumManipulation(pendulumAddress, numIterations, true);
             };
         }
 
