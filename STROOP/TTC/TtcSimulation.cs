@@ -47,6 +47,18 @@ namespace STROOP.Ttc
         {
         }
 
+        public TtcSaveState GetSaveState()
+        {
+            return new TtcSaveState(_rng.GetRng(), _rngObjects);
+        }
+
+        public void AddDustFrames(List<int> dustFrames)
+        {
+            TtcDust dust = (TtcDust)_rngObjects.FirstOrDefault(obj => obj is TtcDust);
+            if (dust == null) throw new ArgumentOutOfRangeException();
+            dust.AddDustFrames(dustFrames);
+        }
+
         public string GetObjectsString(int endingFrame)
         {
             //iterate through frames to update objects
@@ -161,17 +173,17 @@ namespace STROOP.Ttc
             return null;
         }
 
-        public bool FindIdealPendulumManipulation(uint pendulumAddress)
+        public (bool success, TtcSaveState saveState, int endFrame) FindIdealPendulumManipulation(uint pendulumAddress)
         {
             int? objectIndexNullable = ObjectUtilities.GetObjectIndex(pendulumAddress);
-            if (!objectIndexNullable.HasValue) return false;
+            if (!objectIndexNullable.HasValue) return (false, null, 0);
             int objectIndex = objectIndexNullable.Value;
 
             TtcPendulum pendulum = _rngObjects[objectIndex] as TtcPendulum;
             int pendulumAmplitudeStart = (int)WatchVariableSpecialUtilities.GetPendulumAmplitude(
                 pendulum._accelerationDirection, pendulum._accelerationMagnitude, pendulum._angularVelocity, pendulum._angle);
             int? pendulumSwingIndexStartNullable = TableConfig.PendulumSwings.GetPendulumSwingIndex(pendulumAmplitudeStart);
-            if (!pendulumSwingIndexStartNullable.HasValue) return false;
+            if (!pendulumSwingIndexStartNullable.HasValue) return (false, null, 0);
             int pendulumSwingIndexStart = pendulumSwingIndexStartNullable.Value;
 
             //iterate through frames to update objects
@@ -190,20 +202,27 @@ namespace STROOP.Ttc
                 int pendulumAmplitude = (int)WatchVariableSpecialUtilities.GetPendulumAmplitude(
                     pendulum._accelerationDirection, pendulum._accelerationMagnitude, pendulum._angularVelocity, pendulum._angle);
                 int? pendulumSwingIndexNullable = TableConfig.PendulumSwings.GetPendulumSwingIndex(pendulumAmplitude);
-                if (!pendulumSwingIndexNullable.HasValue) return false;
+                if (!pendulumSwingIndexNullable.HasValue) return (false, null, 0);
                 int pendulumSwingIndex = pendulumSwingIndexNullable.Value;
 
                 if (pendulumSwingIndex > pendulumSwingIndexStart)
                 {
-                    return pendulum._waitingTimer == 0;
+                    if (pendulum._waitingTimer == 0)
+                    {
+                        return (true, GetSaveState(), frame);
+                    }
+                    else
+                    {
+                        return (false, null, 0);
+                    }
                 }
                 else if (pendulumSwingIndex < pendulumSwingIndexStart)
                 {
-                    return false;
+                    return (false, null, 0);
                 }
             }
 
-            return false;
+            return (false, null, 0);
         }
 
         private class CogConfiguration

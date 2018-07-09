@@ -17,6 +17,14 @@ namespace STROOP.Utilities
 
         public static void TestSomething()
         {
+            List<List<int>> dustFrameLists = TtcMain.FindIdealPendulumManipulation(0x8033E788, 5);
+            List<string> outputList = dustFrameLists.ConvertAll(dustFrameList => "[" + String.Join(", ", dustFrameList) + "]");
+            string output = String.Join("\r\n", outputList);
+            Config.Print(output);
+        }
+
+        public static void TestSomething5()
+        {
             List<double> qSteps = new List<double>();
             for (int i = 0; i < marioPositions.Count - 1; i++)
             {
