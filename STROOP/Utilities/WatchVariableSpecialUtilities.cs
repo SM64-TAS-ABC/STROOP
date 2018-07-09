@@ -2861,13 +2861,14 @@ namespace STROOP.Structs
             float accelerationMagnitude = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAccelerationMagnitudeOffset);
             float angularVelocity = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAngularVelocityOffset);
             float angle = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAngleOffset);
-            return GetPendulumCountdown(accelerationDirection, accelerationMagnitude, angularVelocity, angle);
+            int waitingTimer = Config.Stream.GetInt32(pendulumAddress + ObjectConfig.PendulumWaitingTimerOffset);
+            return GetPendulumCountdown(accelerationDirection, accelerationMagnitude, angularVelocity, angle, waitingTimer);
         }
 
         public static int GetPendulumCountdown(
-             float accelerationDirection, float accelerationMagnitude, float angularVelocity, float angle)
+             float accelerationDirection, float accelerationMagnitude, float angularVelocity, float angle, int waitingTimer)
         {
-            return GetPendulumVars(accelerationDirection, accelerationMagnitude, angularVelocity, angle).ToTuple().Item2;
+            return GetPendulumVars(accelerationDirection, accelerationMagnitude, angularVelocity, angle).ToTuple().Item2 + waitingTimer;
         }
 
         public static float GetPendulumAmplitude(uint pendulumAddress)
