@@ -1394,14 +1394,13 @@ namespace STROOP.Structs
                 {
                     ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                     double uphillAngle = GetTriangleUphillAngle(triAddress);
-                    if (Double.IsNaN(uphillAngle)) return Double.NaN.ToString();
+                    if (Double.IsNaN(uphillAngle)) return "No Hill";
                     double angleDiff = marioAngle - uphillAngle;
                     angleDiff = MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                     bool uphill = angleDiff >= -16384 && angleDiff <= 16384;
                     return uphill ? "Uphill" : "Downhill";
                 },
                 DEFAULT_SETTER));
-
 
             _dictionary.Add("WallKickAngleAway",
                 ((uint triAddress) =>
