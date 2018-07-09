@@ -20,6 +20,8 @@ namespace STROOP.Controls
 
         private static readonly int MAX_ROUNDING_LIMIT = 10;
 
+        private readonly Type _displayType;
+
         private readonly int _defaultRoundingLimit;
         private int _roundingLimit;
         private Action<int> _setRoundingLimit;
@@ -38,6 +40,8 @@ namespace STROOP.Controls
             WatchVariableCoordinate? coordinate = null)
             : base(watchVar, watchVarControl, useCheckbox)
         {
+            _displayType = displayType;
+
             _defaultRoundingLimit = roundingLimit ?? DEFAULT_ROUNDING_LIMIT;
             _roundingLimit = _defaultRoundingLimit;
             if (_roundingLimit < -1 || _roundingLimit > MAX_ROUNDING_LIMIT)
@@ -183,6 +187,7 @@ namespace STROOP.Controls
 
         protected virtual int? GetHexDigitCount()
         {
+            if (_displayType != null) return TypeUtilities.TypeSize[_displayType] * 2;
             return _watchVar.NibbleCount;
         }
 
