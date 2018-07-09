@@ -1214,6 +1214,38 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            _dictionary.Add("TriangleDescription",
+                ((uint triAddress) =>
+                {
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    return "TriangleDescription";
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("TriangleSlipperiness",
+                ((uint triAddress) =>
+                {
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    return 1;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("TriangleSlipperinessDescription",
+                ((uint triAddress) =>
+                {
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    return "TriangleSlipperinessDescription";
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("TriangleExertion",
+                ((uint triAddress) =>
+                {
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    return 1;
+                },
+                DEFAULT_SETTER));
+
             _dictionary.Add("ClosestVertex",
                 ((uint triAddress) =>
                 {

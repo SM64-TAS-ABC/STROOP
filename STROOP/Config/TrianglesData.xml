@@ -2,13 +2,21 @@
 <VarData>
   <Data groupList="Basic" base="Triangle" specialType="Classification" subclass="String">Classification</Data>
 
-  <Data groupList="Basic" type="ushort" offset="0x00" base="Triangle">Surface Type</Data>
+  <Data groupList="Basic" type="ushort" offset="0x00" base="Triangle">Surface Type (Dec)</Data>
+  <Data groupList="Basic" type="ushort" offset="0x00" base="Triangle" useHex="true">Surface Type (Hex)</Data>
+
+  <Data groupList="Basic" base="Triangle" specialType="TriangleDescription" subclass="String">Description</Data>
+  <Data groupList="Basic" base="Triangle" specialType="TriangleSlipperiness">Slipperiness</Data>
+  <Data groupList="Basic" base="Triangle" specialType="TriangleSlipperinessDescription" subclass="String">Slipperiness Description</Data>
+
   <Data groupList="Basic" type="byte" offset="0x04" base="Triangle" useHex="true">Flags</Data>
   <Data groupList="Basic" type="byte" offset="0x04" base="Triangle" subclass="Boolean" mask="0x08">X Projection</Data>
   <Data groupList="Basic" type="byte" offset="0x04" base="Triangle" subclass="Boolean" invertBool="true" mask="0x08">Z Projection</Data>
   <Data groupList="Basic" type="byte" offset="0x04" base="Triangle" subclass="Boolean" mask="0x01">Belongs to Object</Data>
   <Data groupList="Basic" type="byte" offset="0x04" base="Triangle" subclass="Boolean" mask="0x02">No Cam Collision</Data>
   <Data groupList="Basic" type="byte" offset="0x05" base="Triangle">Room</Data>
+  
+  <Data groupList="Basic" base="Triangle" specialType="TriangleExertion" subclass="Boolean">Exertion</Data>
   <Data groupList="Basic" type="byte" offset="0x03" base="Triangle">Exertion Angle</Data>
   <Data groupList="Basic" type="byte" offset="0x02" base="Triangle">Exertion Force Index</Data>
   <Data groupList="Basic" type="short" offset="0x00" base="TriangleExertionForceTable">Exertion Force</Data>
