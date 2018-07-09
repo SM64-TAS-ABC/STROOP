@@ -1275,9 +1275,9 @@ namespace STROOP.Utilities
 
             foreach (XElement element in doc.Root.Elements())
             {
-                ushort type = ushort.Parse(element.Attribute(XName.Get("type")).Value);
+                short type = short.Parse(element.Attribute(XName.Get("type")).Value);
                 string description = element.Attribute(XName.Get("description")).Value;
-                ushort slipperiness = (ushort)ParsingUtilities.ParseHex(
+                short slipperiness = (short)ParsingUtilities.ParseHex(
                     element.Attribute(XName.Get("slipperiness")).Value);
                 bool exertion = bool.Parse(element.Attribute(XName.Get("exertion")).Value);
 

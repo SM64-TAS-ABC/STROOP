@@ -11,9 +11,9 @@ namespace STROOP.Structs
     {
         public struct TriangleInfoReference
         {
-            public ushort Type;
+            public short Type;
             public string Description;
-            public ushort Slipperiness;
+            public short Slipperiness;
             public bool Exertion;
 
             public override int GetHashCode()
@@ -22,7 +22,7 @@ namespace STROOP.Structs
             }
         }
 
-        Dictionary<ushort, TriangleInfoReference> _table = new Dictionary<ushort, TriangleInfoReference>();
+        Dictionary<short, TriangleInfoReference> _table = new Dictionary<short, TriangleInfoReference>();
 
         public TriangleInfoTable()
         {
@@ -33,23 +33,23 @@ namespace STROOP.Structs
             _table.Add(triangleInfoRef.Type, triangleInfoRef);
         }
         
-        public string GetDescription(ushort type)
+        public string GetDescription(short type)
         {
             if (!_table.ContainsKey(type))
                 return "Unknown Type";
             return _table[type].Description;
         }
 
-        public ushort? GetSlipperiness(ushort type)
+        public short? GetSlipperiness(short type)
         {
             if (!_table.ContainsKey(type))
                 return null;
             return _table[type].Slipperiness;
         }
 
-        public string GetSlipperinessDescription(ushort type)
+        public string GetSlipperinessDescription(short type)
         {
-            ushort? slipperiness = GetSlipperiness(type);
+            short? slipperiness = GetSlipperiness(type);
             switch (slipperiness)
             {
                 case 0x00:
@@ -65,7 +65,7 @@ namespace STROOP.Structs
             }
         }
 
-        public bool? GetExertion(ushort type)
+        public bool? GetExertion(short type)
         {
             if (!_table.ContainsKey(type))
                 return null;

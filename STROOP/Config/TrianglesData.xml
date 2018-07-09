@@ -2,8 +2,8 @@
 <VarData>
   <Data groupList="Basic" base="Triangle" specialType="Classification" subclass="String">Classification</Data>
 
-  <Data groupList="Basic" type="ushort" offset="0x00" base="Triangle">Surface Type (Dec)</Data>
-  <Data groupList="Basic" type="ushort" offset="0x00" base="Triangle" useHex="true">Surface Type (Hex)</Data>
+  <Data groupList="Basic" type="short" offset="0x00" base="Triangle">Surface Type (Dec)</Data>
+  <Data groupList="Basic" type="short" offset="0x00" base="Triangle" useHex="true">Surface Type (Hex)</Data>
 
   <Data groupList="Basic" base="Triangle" specialType="TriangleDescription" subclass="String">Description</Data>
   <Data groupList="Basic" base="Triangle" specialType="TriangleSlipperiness">Slipperiness</Data>

@@ -14,7 +14,7 @@ namespace STROOP.Models
     {
         public readonly uint Address;
 
-        public readonly ushort SurfaceType;
+        public readonly short SurfaceType;
         public readonly byte ExertionForceIndex;
         public readonly byte ExertionAngle;
         public readonly byte Flags;
@@ -47,7 +47,7 @@ namespace STROOP.Models
         public readonly bool NoCamCollision;
 
         public readonly string Description;
-        public readonly ushort Slipperiness;
+        public readonly short Slipperiness;
         public readonly string SlipperinessDescription;
         public readonly bool Exertion;
 
@@ -90,7 +90,7 @@ namespace STROOP.Models
         {
             Address = triangleAddress;
 
-            SurfaceType = Config.Stream.GetUInt16(triangleAddress + TriangleOffsetsConfig.SurfaceType);
+            SurfaceType = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.SurfaceType);
             ExertionForceIndex = Config.Stream.GetByte(triangleAddress + TriangleOffsetsConfig.ExertionForceIndex);
             ExertionAngle = Config.Stream.GetByte(triangleAddress + TriangleOffsetsConfig.ExertionAngle);
             Flags = Config.Stream.GetByte(triangleAddress + TriangleOffsetsConfig.Flags);
