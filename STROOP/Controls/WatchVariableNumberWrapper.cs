@@ -31,6 +31,7 @@ namespace STROOP.Controls
         public WatchVariableNumberWrapper(
             WatchVariable watchVar,
             WatchVariableControl watchVarControl,
+            Type displayType = DEFAULT_DISPLAY_TYPE,
             int? roundingLimit = DEFAULT_ROUNDING_LIMIT,
             bool? displayAsHex = DEFAULT_DISPLAY_AS_HEX,
             bool useCheckbox = DEFAULT_USE_CHECKBOX,

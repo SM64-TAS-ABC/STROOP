@@ -12,7 +12,7 @@ namespace STROOP.Controls
             WatchVariable watchVar,
             WatchVariableControl watchVarControl,
             bool? displayAsInverted)
-            : base(watchVar, watchVarControl, DEFAULT_ROUNDING_LIMIT, DEFAULT_DISPLAY_AS_HEX, true)
+            : base(watchVar, watchVarControl, DEFAULT_DISPLAY_TYPE, DEFAULT_ROUNDING_LIMIT, DEFAULT_DISPLAY_AS_HEX, true)
         {
             _displayAsCheckbox = true;
             _displayAsInverted = displayAsInverted ?? false;

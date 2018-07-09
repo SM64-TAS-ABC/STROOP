@@ -16,6 +16,7 @@ namespace STROOP.Controls
     public abstract class WatchVariableWrapper
     {
         // Defaults
+        protected const Type DEFAULT_DISPLAY_TYPE = null;
         protected const int DEFAULT_ROUNDING_LIMIT = 3;
         protected const bool DEFAULT_DISPLAY_AS_HEX = false;
         protected const bool DEFAULT_USE_CHECKBOX = false;
@@ -60,6 +61,7 @@ namespace STROOP.Controls
                     return new WatchVariableNumberWrapper(
                         watchVar,
                         watchVarControl,
+                        displayType,
                         roundingLimit,
                         useHex,
                         DEFAULT_USE_CHECKBOX,

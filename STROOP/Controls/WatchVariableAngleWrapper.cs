@@ -37,7 +37,8 @@ namespace STROOP.Controls
             {
                 if (TypeUtilities.TypeSize[_defaultEffectiveType] == 2 || _constrainToOneRevolution)
                     return _signed ? typeof(short) : typeof(ushort);
-                else return _signed ? typeof(int) : typeof(uint);
+                else
+                    return _signed ? typeof(int) : typeof(uint);
             }
         }
 
@@ -48,7 +49,7 @@ namespace STROOP.Controls
             WatchVariableControl watchVarControl,
             Type displayType,
             bool? isYaw)
-            : base(watchVar, watchVarControl, 0)
+            : base(watchVar, watchVarControl, displayType, 0)
         {
             _defaultEffectiveType = displayType ?? _watchVar.MemoryType;
             if (_defaultEffectiveType == null) throw new ArgumentOutOfRangeException();
