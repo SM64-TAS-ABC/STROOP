@@ -1218,7 +1218,7 @@ namespace STROOP.Structs
                 ((uint triAddress) =>
                 {
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                    return "TriangleDescription";
+                    return triStruct.Description;
                 },
                 DEFAULT_SETTER));
 
@@ -1226,7 +1226,7 @@ namespace STROOP.Structs
                 ((uint triAddress) =>
                 {
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                    return 1;
+                    return triStruct.Slipperiness;
                 },
                 DEFAULT_SETTER));
 
@@ -1234,7 +1234,7 @@ namespace STROOP.Structs
                 ((uint triAddress) =>
                 {
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                    return "TriangleSlipperinessDescription";
+                    return triStruct.SlipperinessDescription;
                 },
                 DEFAULT_SETTER));
 
@@ -1242,7 +1242,7 @@ namespace STROOP.Structs
                 ((uint triAddress) =>
                 {
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                    return 1;
+                    return triStruct.Exertion ? 1 : 0;
                 },
                 DEFAULT_SETTER));
 
