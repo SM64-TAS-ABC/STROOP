@@ -135,16 +135,9 @@ namespace STROOP.Controls
 
             if (DisplayType != null)
             {
-                if (Subclass != WatchVariableSubclass.Angle)
+                if (Subclass == WatchVariableSubclass.String)
                 {
-                    throw new ArgumentOutOfRangeException("DisplayType is only valid for Angle");
-                }
-                if (DisplayType != typeof(ushort) &&
-                    DisplayType != typeof(short) &&
-                    DisplayType != typeof(uint) &&
-                    DisplayType != typeof(int))
-                {
-                    throw new ArgumentOutOfRangeException("DisplayType for Angle must be either ushort/short/uint/int");
+                    throw new ArgumentOutOfRangeException("DisplayType is not valid for String");
                 }
             }
 
