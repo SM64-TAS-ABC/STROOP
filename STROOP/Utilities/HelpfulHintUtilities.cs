@@ -22,6 +22,7 @@ namespace STROOP.Structs
                 "Right click on an angle variable to change its units. You can choose In-Game Angle Units, HAU (Hexadecimal Angle Units), Degrees, Radians, or Revolutions.",
                 "Right click on a variable that's part of an x,y,z coordinate triple for options to copy/paste 3 coordinate values at once. Especially helpful when inputting data " +
                     "into a spreadsheet, or applying data from a spreadsheet.",
+                "When variables are locked, you can right click on any variable and choose \"Remove All Locks\" to remove all locks, including those not currently visible.",
 
                 // Left clicking while holding a key
                 "Click on a variable while holding Z to zero that variable.",
@@ -53,14 +54,12 @@ namespace STROOP.Structs
                 "In the Options tab, you can turn off which object overlays are shown, such as the Held Object or Interaction Object.",
                 "In the Options tab, you can how the \"Goto\" and \"Retrieve\" buttons work. For example, you can set whether you want to go to objects 300 units above or exactly at them.",
                 "In the Options tab, you can set a specific angle for relative position controllers. For example, you could set the Mario position controller's relative settings to consider " +
-                    "angle 1000 as forwards",
+                    "angle 1000 as forwards.",
                 "In the custom tab, you can show whatever variables you want and record their values as well. You can add variables to the Custom tab either by right clicking and choose " +
                     "\"Add to Custom Tab\" or clicking on a variable while holding Ctrl.",
                 "In the custom tab, you can change the size of variables, which applies to all tabs. This is helpful if you want to show several variables on screen while screen recording.",
                 "In the custom tab, you can save your current list of variables as a file to your computer. Then later you can open that file to show those same variables.",
 
-                // Misc
-                "When variables are locked, you can right click on any variable and choose \"Remove All Locks\" to remove all locks, including those not currently visible.",
             };
 
         public static string GetRandomHelpfulHint()
