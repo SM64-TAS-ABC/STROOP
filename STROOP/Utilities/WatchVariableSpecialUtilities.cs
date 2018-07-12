@@ -2312,6 +2312,14 @@ namespace STROOP.Structs
 
             // Misc vars
 
+            _dictionary.Add("GlobalTimerMod64",
+                ((uint dummy) =>
+                {
+                    uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                    return globalTimer % 64;
+                },
+                DEFAULT_SETTER));
+
             _dictionary.Add("RngIndex",
                 ((uint dummy) =>
                 {
