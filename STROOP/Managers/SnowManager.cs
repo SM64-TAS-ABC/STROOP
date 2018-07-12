@@ -104,7 +104,13 @@ namespace STROOP.Managers
             }
             else if (numSnowParticles < _numSnowParticles) // need to remove controls
             {
-
+                for (int i = _numSnowParticles - 1; i >= numSnowParticles; i--)
+                {
+                    List<WatchVariableControl> snowParticle = _snowParticleControls[i];
+                    _snowParticleControls.Remove(snowParticle);
+                    _variablePanel.RemoveVariables(snowParticle);
+                }
+                _numSnowParticles = numSnowParticles;
             }
 
             base.Update(updateView);
