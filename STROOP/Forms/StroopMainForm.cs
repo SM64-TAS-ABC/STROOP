@@ -326,6 +326,7 @@ namespace STROOP
             Config.ModelManager = new ModelManager(tabPageModel);
             Config.ActionsManager = new ActionsManager(@"Config/ActionsData.xml", watchVariablePanelActions, tabPageActions);
             Config.WaterManager = new WaterManager(@"Config/WaterData.xml", watchVariablePanelWater);
+            Config.SnowManager = new SnowManager(@"Config/SnowData.xml", watchVariablePanelSnow);
             Config.InputManager = new InputManager(@"Config/InputData.xml", tabPageInput, watchVariablePanelInput, _inputImageGuiList);
             Config.MarioManager = new MarioManager(@"Config/MarioData.xml", tabPageMario, WatchVariablePanelMario);
             Config.HudManager = new HudManager(@"Config/HudData.xml", tabPageHud, watchVariablePanelHud);
@@ -486,6 +487,7 @@ namespace STROOP
                 Config.HudManager.Update(tabControlMain.SelectedTab == tabPageHud);
                 Config.ActionsManager.Update(tabControlMain.SelectedTab == tabPageActions);
                 Config.WaterManager.Update(tabControlMain.SelectedTab == tabPageWater);
+                Config.SnowManager.Update(tabControlMain.SelectedTab == tabPageSnow);
                 Config.InputManager.Update(tabControlMain.SelectedTab == tabPageInput);
                 Config.FileManager.Update(tabControlMain.SelectedTab == tabPageFile);
                 Config.QuarterFrameManager.Update(tabControlMain.SelectedTab == tabPageQuarterFrame);

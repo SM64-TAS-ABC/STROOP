@@ -38,7 +38,8 @@ namespace STROOP.Structs.Configurations
         public static TestingManager TestingManager;
         public static InjectionManager InjectionManager;
         public static TriangleManager TriangleManager;
-        public static DataManager WaterManager;
+        public static WaterManager WaterManager;
+        public static SnowManager SnowManager;
         public static InputManager InputManager;
         public static ActionsManager ActionsManager;
         public static PuManager PuManager;
