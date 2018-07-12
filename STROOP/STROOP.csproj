@@ -331,6 +331,7 @@
     </Compile>
     <Compile Include="LoadingHandler.cs" />
     <Compile Include="Managers\SnowManager.cs" />
+    <Compile Include="Structs\Configurations\SnowConfig.cs" />
     <Compile Include="Structs\TriangleInfoTable.cs" />
     <Compile Include="Ttc\TtcSaveStateByteIterator.cs" />
     <Compile Include="Ttc\TtcUtilities.cs" />
