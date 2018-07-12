@@ -31,6 +31,7 @@ namespace STROOP.Structs
         Animation,
         Waypoint,
         Water,
+        Snow,
         Area,
         LastCoin,
 

@@ -43,7 +43,6 @@ namespace STROOP.Managers
             if (!updateView) return;
 
 
-            int numSnow = 
 
 
             base.Update(updateView);
