@@ -41,6 +41,11 @@ namespace STROOP.Managers
         public override void Update(bool updateView)
         {
             if (!updateView) return;
+
+
+            int numSnow = 
+
+
             base.Update(updateView);
         }
 
