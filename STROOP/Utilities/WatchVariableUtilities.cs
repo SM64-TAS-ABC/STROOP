@@ -116,7 +116,7 @@ namespace STROOP.Structs
                     return new List<uint> { Config.Stream.GetUInt32(MiscConfig.WaterPointerAddress) };
 
                 case BaseAddressTypeEnum.Snow:
-                    return new List<uint> { Config.Stream.GetUInt32(SnowConfig.CounterAddress) };
+                    return new List<uint> { Config.Stream.GetUInt32(SnowConfig.SnowArrayPointerAddress) };
 
                 case BaseAddressTypeEnum.Area:
                     return new List<uint> { Config.AreaManager.SelectedAreaAddress };
