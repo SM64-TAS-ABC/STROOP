@@ -21,27 +21,27 @@
   <Data type="uint" offset="0x0C" base="Mario" mask="0x000001FF" display="ushort" useHex="true" color="Pink">Action ID</Data>
   <Data type="uint" offset="0x0C" base="Mario" mask="0x000001C0" display="ushort" useHex="true" color="Pink">Action Group</Data>
 
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000200">09 stationary</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000400">10 moving</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000800">11 airborne</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00001000">12 intangible</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00002000">13 swimming</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00004000">14 metal water</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00008000">15 short hitbox</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00010000">16 riding shell</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00020000">17 invulnerable</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00040000">18 butt/stomach slide</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00080000">19 diving</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00100000">20 on pole</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00200000">21 hanging</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00400000">22 idle</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00800000">23 attacking</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x01000000">24 interruptable by wind</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x02000000">25 control jump height</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x04000000">26 allow first person</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x08000000">27 pause exit</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x10000000">28 swimming/flying</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x20000000">29 water/text</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x40000000">30 (never)</Data>
-  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x80000000">31 throwing</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000200">09 Stationary</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000400">10 Moving</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000800">11 Airborne</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00001000">12 Intangible</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00002000">13 Swimming</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00004000">14 Metal Water</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00008000">15 Short Hitbox</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00010000">16 Riding Shell</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00020000">17 Invulnerable</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00040000">18 Butt/Stomach Slide</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00080000">19 Diving</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00100000">20 On Pole</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00200000">21 Hanging</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00400000">22 Idle</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00800000">23 Attacking</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x01000000">24 Interruptable by Wind</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x02000000">25 Control Jump Height</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x04000000">26 Allow First Person</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x08000000">27 Pause Exit</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x10000000">28 Swimming/Flying</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x20000000">29 Water/Text</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x40000000">30 (Never)</Data>
+  <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x80000000">31 Throwing</Data>
 </VarData>
