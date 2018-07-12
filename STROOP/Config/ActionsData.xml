@@ -18,7 +18,9 @@
   <Data base="None" specialType="MarioAnimationDescription" subclass="String" color="LightBlue">Animation Description</Data>
   <Data type="short" offset="0x40" base="MarioObj" color="LightBlue">Animation Timer</Data>
 
-  <Data type="uint" offset="0x0C" base="Mario" mask="0x000001FF">Id</Data>
+  <Data type="uint" offset="0x0C" base="Mario" mask="0x000001FF" display="ushort" useHex="true" color="Pink">Action ID</Data>
+  <Data type="uint" offset="0x0C" base="Mario" mask="0x000001C0" display="ushort" useHex="true" color="Pink">Action Group</Data>
+
   <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000200">09 stationary</Data>
   <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000400">10 moving</Data>
   <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000800">11 airborne</Data>
