@@ -1185,7 +1185,9 @@ namespace STROOP
             this.buttonScuttlebugStuffLungeToHome = new System.Windows.Forms.Button();
             this.groupBoxTestingPendulumManipulation = new System.Windows.Forms.GroupBox();
             this.buttonTestingPendulumManipulationCalculate = new System.Windows.Forms.Button();
+            this.labelTestingPendulumManipulationIterations = new System.Windows.Forms.Label();
             this.labelTestingPendulumManipulationPendulum = new System.Windows.Forms.Label();
+            this.textBoxTestingPendulumManipulationIterations = new STROOP.BetterTextbox();
             this.textBoxTestingPendulumManipulationPendulum = new STROOP.BetterTextbox();
             this.groupBoxTestingTtcSimulator = new System.Windows.Forms.GroupBox();
             this.buttonTestingTtcSimulatorCalculate = new System.Windows.Forms.Button();
@@ -1341,8 +1343,8 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.textBoxTestingPendulumManipulationIterations = new STROOP.BetterTextbox();
-            this.labelTestingPendulumManipulationIterations = new System.Windows.Forms.Label();
+            this.tabPageSnow = new System.Windows.Forms.TabPage();
+            this.watchVariablePanelSnow = new STROOP.Controls.WatchVariableFlowLayoutPanel();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1751,6 +1753,7 @@ namespace STROOP
             this.groupBoxRecording.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
+            this.tabPageSnow.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -2081,6 +2084,7 @@ namespace STROOP
             this.tabControlMain.Controls.Add(this.tabPageDecompiler);
             this.tabControlMain.Controls.Add(this.tabPageScripts);
             this.tabControlMain.Controls.Add(this.tabPageTesting);
+            this.tabControlMain.Controls.Add(this.tabPageSnow);
             this.tabControlMain.Cursor = System.Windows.Forms.Cursors.Default;
             this.tabControlMain.HotTrack = true;
             this.tabControlMain.Location = new System.Drawing.Point(2, 2);
@@ -5126,7 +5130,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 408F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 409F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8845,7 +8849,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(409, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(412, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -11116,7 +11120,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 690;
+            this.splitContainerMemory.SplitterDistance = 693;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11157,7 +11161,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(690, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(693, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -11374,7 +11378,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(690, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(693, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -11403,7 +11407,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(589, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(592, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -11416,7 +11420,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(216, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(213, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -12570,7 +12574,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(357, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(340, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -12602,7 +12606,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(351, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(334, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -12658,7 +12662,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(351, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(334, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -15440,6 +15444,17 @@ namespace STROOP
             this.buttonTestingPendulumManipulationCalculate.Text = "Calculate";
             this.buttonTestingPendulumManipulationCalculate.UseVisualStyleBackColor = true;
             // 
+            // labelTestingPendulumManipulationIterations
+            // 
+            this.labelTestingPendulumManipulationIterations.AutoSize = true;
+            this.labelTestingPendulumManipulationIterations.Location = new System.Drawing.Point(8, 48);
+            this.labelTestingPendulumManipulationIterations.MinimumSize = new System.Drawing.Size(60, 2);
+            this.labelTestingPendulumManipulationIterations.Name = "labelTestingPendulumManipulationIterations";
+            this.labelTestingPendulumManipulationIterations.Size = new System.Drawing.Size(60, 13);
+            this.labelTestingPendulumManipulationIterations.TabIndex = 18;
+            this.labelTestingPendulumManipulationIterations.Text = "Iterations:";
+            this.labelTestingPendulumManipulationIterations.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // labelTestingPendulumManipulationPendulum
             // 
             this.labelTestingPendulumManipulationPendulum.AutoSize = true;
@@ -15450,6 +15465,15 @@ namespace STROOP
             this.labelTestingPendulumManipulationPendulum.TabIndex = 18;
             this.labelTestingPendulumManipulationPendulum.Text = "Pendulum:";
             this.labelTestingPendulumManipulationPendulum.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // textBoxTestingPendulumManipulationIterations
+            // 
+            this.textBoxTestingPendulumManipulationIterations.Location = new System.Drawing.Point(70, 45);
+            this.textBoxTestingPendulumManipulationIterations.Name = "textBoxTestingPendulumManipulationIterations";
+            this.textBoxTestingPendulumManipulationIterations.Size = new System.Drawing.Size(77, 20);
+            this.textBoxTestingPendulumManipulationIterations.TabIndex = 28;
+            this.textBoxTestingPendulumManipulationIterations.Text = "100";
+            this.textBoxTestingPendulumManipulationIterations.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxTestingPendulumManipulationPendulum
             // 
@@ -17177,25 +17201,28 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // textBoxTestingPendulumManipulationIterations
+            // tabPageSnow
             // 
-            this.textBoxTestingPendulumManipulationIterations.Location = new System.Drawing.Point(70, 45);
-            this.textBoxTestingPendulumManipulationIterations.Name = "textBoxTestingPendulumManipulationIterations";
-            this.textBoxTestingPendulumManipulationIterations.Size = new System.Drawing.Size(77, 20);
-            this.textBoxTestingPendulumManipulationIterations.TabIndex = 28;
-            this.textBoxTestingPendulumManipulationIterations.Text = "100";
-            this.textBoxTestingPendulumManipulationIterations.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tabPageSnow.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageSnow.Controls.Add(this.watchVariablePanelSnow);
+            this.tabPageSnow.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSnow.Margin = new System.Windows.Forms.Padding(0);
+            this.tabPageSnow.Name = "tabPageSnow";
+            this.tabPageSnow.Size = new System.Drawing.Size(915, 463);
+            this.tabPageSnow.TabIndex = 31;
+            this.tabPageSnow.Text = "Snow";
             // 
-            // labelTestingPendulumManipulationIterations
+            // watchVariablePanelSnow
             // 
-            this.labelTestingPendulumManipulationIterations.AutoSize = true;
-            this.labelTestingPendulumManipulationIterations.Location = new System.Drawing.Point(8, 48);
-            this.labelTestingPendulumManipulationIterations.MinimumSize = new System.Drawing.Size(60, 2);
-            this.labelTestingPendulumManipulationIterations.Name = "labelTestingPendulumManipulationIterations";
-            this.labelTestingPendulumManipulationIterations.Size = new System.Drawing.Size(60, 13);
-            this.labelTestingPendulumManipulationIterations.TabIndex = 18;
-            this.labelTestingPendulumManipulationIterations.Text = "Iterations:";
-            this.labelTestingPendulumManipulationIterations.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.watchVariablePanelSnow.AutoScroll = true;
+            this.watchVariablePanelSnow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.watchVariablePanelSnow.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.watchVariablePanelSnow.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelSnow.Margin = new System.Windows.Forms.Padding(0);
+            this.watchVariablePanelSnow.Name = "watchVariablePanelSnow";
+            this.watchVariablePanelSnow.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelSnow.Size = new System.Drawing.Size(915, 463);
+            this.watchVariablePanelSnow.TabIndex = 3;
             // 
             // StroopMainForm
             // 
@@ -17723,6 +17750,7 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
+            this.tabPageSnow.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -19029,6 +19057,8 @@ namespace STROOP
         private Button buttonM64CopyRom;
         private Label labelTestingPendulumManipulationIterations;
         private BetterTextbox textBoxTestingPendulumManipulationIterations;
+        private TabPage tabPageSnow;
+        private WatchVariableFlowLayoutPanel watchVariablePanelSnow;
     }
 }
 
