@@ -43,16 +43,6 @@
   <Data groupList="Intermediate" base="None" specialType="TtcSpeedSettingDescription" subclass="String" color="Yellow">TTC Speed Desc</Data>
   <Data groupList="Intermediate" base="None" specialType="TtcSaveState" subclass="String" color="Yellow">TTC Save State</Data>
 
-  <Data groupList="Advanced" type="short" offsetUS="0x80361414" offsetJP="0x803600A4" base="Relative" color="Green">Snow Counter</Data>
-  <Data groupList="Advanced" type="short" offsetUS="0x80361416" offsetJP="0x803600A6" base="Relative" color="Green">Snow Max</Data>
-  <Data groupList="Advanced" type="int" offsetUS="0x80361408" offsetJP="0x80360098" base="Relative" coord="X" color="Green">Snow Center X</Data>
-  <Data groupList="Advanced" type="int" offsetUS="0x8036140C" offsetJP="0x8036009C" base="Relative" coord="Y" color="Green">Snow Center Y</Data>
-  <Data groupList="Advanced" type="int" offsetUS="0x80361410" offsetJP="0x803600A0" base="Relative" coord="Z" color="Green">Snow Center Z</Data>
-  <Data groupList="Advanced" type="short" offsetUS="0x80180B06" offsetJP="0x8017DC86" base="Relative" color="Green">JRB Ship Snow Type</Data>
-  <Data groupList="Advanced" type="short" offsetUS="0x80184E8A" offsetJP="0x80181FFA" base="Relative" color="Green">CCM Snow Type</Data>
-  <Data groupList="Advanced" type="short" offsetUS="0x80170CF6" offsetJP="0x8016DE76" base="Relative" color="Green">SL Snow Type</Data>
-  <Data groupList="Advanced" type="short" offsetUS="0x80151EB2" offsetJP="0x8014F032" base="Relative" color="Green">SA Snow Type</Data>
-
   <Data groupList="Intermediate" type="byte" offsetUS="0x801A81A4" offsetJP="0x801A8014" base="Relative" color="LightBlue">Mission Selected</Data>
   <Data groupList="Intermediate" type="short" offsetUS="0x8033BAC8" offsetJP="0x8033A758" base="Relative" color="LightBlue">Mission Layout</Data>
   <Data groupList="Intermediate" type="byte" offsetUS="0x80331620" offsetJP="0x80330534" base="Relative" color="LightBlue">Mission Name</Data>

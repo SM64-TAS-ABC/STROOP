@@ -19,6 +19,7 @@ namespace STROOP.Managers
             {
                 VariableGroup.Basic,
                 VariableGroup.Intermediate,
+                VariableGroup.Advanced,
                 VariableGroup.Snow,
             };
 
@@ -27,6 +28,7 @@ namespace STROOP.Managers
             {
                 VariableGroup.Basic,
                 VariableGroup.Intermediate,
+                VariableGroup.Advanced,
                 VariableGroup.Snow,
             };
 
