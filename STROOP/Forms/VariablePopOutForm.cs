@@ -60,6 +60,11 @@ namespace STROOP.Forms
             itemBorderless.Checked = _alwaysOnTop;
             _watchVariablePanel.ContextMenuStrip.Items.Insert(1, itemAlwaysOnTop);
 
+            // add close item to panel
+            ToolStripMenuItem itemClose = new ToolStripMenuItem("Close");
+            itemClose.Click += (sender, e) => Close();
+            _watchVariablePanel.ContextMenuStrip.Items.Insert(2, itemClose);
+
             // make panel draggable when borderless
             _watchVariablePanel.MouseDown += (sender, e) =>
             {
