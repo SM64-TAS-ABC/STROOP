@@ -136,7 +136,8 @@ namespace STROOP.Controls
             {
                 _getterFunction = (uint address) =>
                 {
-                    return Config.Stream.GetValue(MemoryType, address, UseAbsoluteAddressing, Mask, Shift);
+                    return Config.Stream.GetValue(
+                        MemoryType, address, UseAbsoluteAddressing, Mask, Shift);
                 };
                 _setterFunction = (object value, uint address) =>
                 {

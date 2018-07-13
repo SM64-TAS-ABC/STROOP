@@ -353,7 +353,7 @@ namespace STROOP.Utilities
             if (type == typeof(int)) value = ParsingUtilities.ParseIntRoundingWrapping(value);
             if (type == typeof(uint)) value = ParsingUtilities.ParseUIntRoundingWrapping(value);
 
-            return SetValue(type, value.ToString(), address, absoluteAddress, mask);
+            return SetValue(type, value.ToString(), address, absoluteAddress, mask, shift);
         }
 
         public bool SetValue(Type type, object value, uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
@@ -386,6 +386,10 @@ namespace STROOP.Utilities
 
         public bool SetValue(byte value, uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
+            if (shift.HasValue)
+            {
+                value = (byte)(value << shift.Value);
+            }
             if (mask.HasValue)
             {
                 byte oldValue = GetByte(address, absoluteAddress);
@@ -398,6 +402,10 @@ namespace STROOP.Utilities
 
         public bool SetValue(sbyte value, uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
+            if (shift.HasValue)
+            {
+                value = (sbyte)(value << shift.Value);
+            }
             if (mask.HasValue)
             {
                 sbyte oldValue = GetSByte(address, absoluteAddress);
@@ -410,6 +418,10 @@ namespace STROOP.Utilities
 
         public bool SetValue(Int16 value, uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
+            if (shift.HasValue)
+            {
+                value = (short)(value << shift.Value);
+            }
             if (mask.HasValue)
             {
                 short oldValue = GetInt16(address, absoluteAddress);
@@ -422,6 +434,10 @@ namespace STROOP.Utilities
 
         public bool SetValue(UInt16 value, uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
+            if (shift.HasValue)
+            {
+                value = (ushort)(value << shift.Value);
+            }
             if (mask.HasValue)
             {
                 ushort oldValue = GetUInt16(address, absoluteAddress);
@@ -434,6 +450,10 @@ namespace STROOP.Utilities
 
         public bool SetValue(Int32 value, uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
+            if (shift.HasValue)
+            {
+                value = (int)(value << shift.Value);
+            }
             if (mask.HasValue)
             {
                 int oldValue = GetInt32(address, absoluteAddress);
@@ -446,6 +466,10 @@ namespace STROOP.Utilities
 
         public bool SetValue(UInt32 value, uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
+            if (shift.HasValue)
+            {
+                value = (uint)(value << shift.Value);
+            }
             if (mask.HasValue)
             {
                 uint oldValue = GetUInt32(address, absoluteAddress);
