@@ -34,15 +34,15 @@ namespace STROOP
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
@@ -1347,21 +1347,21 @@ namespace STROOP
             this.radioButtonMainSaveSoundModeMono = new System.Windows.Forms.RadioButton();
             this.radioButtonMainSaveSoundModeStereo = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanelMainSaveCoinRank = new System.Windows.Forms.TableLayoutPanel();
-            this.mainSaveCourseLabel1 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
+            this.labelMainSaveCoinRankRow1 = new System.Windows.Forms.Label();
+            this.labelMainSaveCoinRankRow2 = new System.Windows.Forms.Label();
+            this.labelMainSaveCoinRankRow3 = new System.Windows.Forms.Label();
+            this.labelMainSaveCoinRankRow4 = new System.Windows.Forms.Label();
+            this.labelMainSaveCoinRankRow5 = new System.Windows.Forms.Label();
+            this.labelMainSaveCoinRankRow6 = new System.Windows.Forms.Label();
+            this.labelMainSaveCoinRankRow7 = new System.Windows.Forms.Label();
+            this.labelMainSaveCoinRankRow8 = new System.Windows.Forms.Label();
+            this.labelMainSaveCoinRankRow9 = new System.Windows.Forms.Label();
+            this.labelMainSaveCoinRankRow10 = new System.Windows.Forms.Label();
+            this.labelMainSaveCoinRankRow11 = new System.Windows.Forms.Label();
+            this.labelMainSaveCoinRankRow12 = new System.Windows.Forms.Label();
+            this.labelMainSaveCoinRankRow13 = new System.Windows.Forms.Label();
+            this.labelMainSaveCoinRankRow14 = new System.Windows.Forms.Label();
+            this.labelMainSaveCoinRankRow15 = new System.Windows.Forms.Label();
             this.textBoxMainSaveCoinRankRow15Col2 = new STROOP.MainSaveTextbox();
             this.textBoxMainSaveCoinRankRow14Col2 = new STROOP.MainSaveTextbox();
             this.textBoxMainSaveCoinRankRow13Col2 = new STROOP.MainSaveTextbox();
@@ -1380,7 +1380,7 @@ namespace STROOP
             this.textBoxMainSaveCoinRankRow15Col3 = new STROOP.MainSaveTextbox();
             this.textBoxMainSaveCoinRankRow14Col3 = new STROOP.MainSaveTextbox();
             this.textBoxMainSaveCoinRankRow13Col3 = new STROOP.MainSaveTextbox();
-            this.mainSaveTextbox18 = new STROOP.MainSaveTextbox();
+            this.textBoxMainSaveCoinRankRow12Col3 = new STROOP.MainSaveTextbox();
             this.mainSaveTextbox19 = new STROOP.MainSaveTextbox();
             this.textBoxMainSaveCoinRankRow10Col3 = new STROOP.MainSaveTextbox();
             this.textBoxMainSaveCoinRankRow9Col3 = new STROOP.MainSaveTextbox();
@@ -1395,7 +1395,7 @@ namespace STROOP
             this.textBoxMainSaveCoinRankRow15Col4 = new STROOP.MainSaveTextbox();
             this.textBoxMainSaveCoinRankRow14Col4 = new STROOP.MainSaveTextbox();
             this.textBoxMainSaveCoinRankRow13Col4 = new STROOP.MainSaveTextbox();
-            this.mainSaveTextbox33 = new STROOP.MainSaveTextbox();
+            this.textBoxMainSaveCoinRankRow12Col4 = new STROOP.MainSaveTextbox();
             this.mainSaveTextbox34 = new STROOP.MainSaveTextbox();
             this.textBoxMainSaveCoinRankRow10Col4 = new STROOP.MainSaveTextbox();
             this.textBoxMainSaveCoinRankRow9Col4 = new STROOP.MainSaveTextbox();
@@ -1410,7 +1410,7 @@ namespace STROOP
             this.textBoxMainSaveCoinRankRow15Col5 = new STROOP.MainSaveTextbox();
             this.textBoxMainSaveCoinRankRow14Col5 = new STROOP.MainSaveTextbox();
             this.textBoxMainSaveCoinRankRow13Col5 = new STROOP.MainSaveTextbox();
-            this.mainSaveTextbox48 = new STROOP.MainSaveTextbox();
+            this.textBoxMainSaveCoinRankRow12Col5 = new STROOP.MainSaveTextbox();
             this.mainSaveTextbox49 = new STROOP.MainSaveTextbox();
             this.textBoxMainSaveCoinRankRow10Col5 = new STROOP.MainSaveTextbox();
             this.textBoxMainSaveCoinRankRow9Col5 = new STROOP.MainSaveTextbox();
@@ -5231,7 +5231,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 416F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 417F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8950,7 +8950,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(433, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(436, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -8984,14 +8984,14 @@ namespace STROOP
             this.dataGridViewM64Inputs.AllowUserToResizeColumns = false;
             this.dataGridViewM64Inputs.AllowUserToResizeRows = false;
             this.dataGridViewM64Inputs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewM64Inputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewM64Inputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnM64Frame,
@@ -9012,14 +9012,14 @@ namespace STROOP
             this.ColumnM64DDown,
             this.ColumnM64DLeft,
             this.ColumnM64DRight});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewM64Inputs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewM64Inputs.EnableHeadersVisualStyles = false;
             this.dataGridViewM64Inputs.Location = new System.Drawing.Point(0, 0);
@@ -11221,7 +11221,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 714;
+            this.splitContainerMemory.SplitterDistance = 717;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11262,7 +11262,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(714, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(717, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -11479,7 +11479,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(714, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(717, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -11508,7 +11508,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(613, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(616, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -11521,7 +11521,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(192, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(189, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -12675,7 +12675,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(221, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(204, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -12707,7 +12707,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(215, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(198, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -12763,7 +12763,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(215, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(198, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -15014,14 +15014,14 @@ namespace STROOP
             this.dataGridViewCoin.AllowUserToOrderColumns = true;
             this.dataGridViewCoin.AllowUserToResizeRows = false;
             this.dataGridViewCoin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridViewCoin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCoin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.rngIndex,
@@ -15042,8 +15042,8 @@ namespace STROOP
             // 
             // rngIndex
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle13;
             this.rngIndex.HeaderText = "RNG Index";
             this.rngIndex.MinimumWidth = 2;
             this.rngIndex.Name = "rngIndex";
@@ -15051,8 +15051,8 @@ namespace STROOP
             // 
             // rngValue
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngValue.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngValue.DefaultCellStyle = dataGridViewCellStyle14;
             this.rngValue.HeaderText = "RNG Value";
             this.rngValue.MinimumWidth = 2;
             this.rngValue.Name = "rngValue";
@@ -15060,8 +15060,8 @@ namespace STROOP
             // 
             // rngToGo
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle15;
             this.rngToGo.HeaderText = "RNG To Go";
             this.rngToGo.MinimumWidth = 2;
             this.rngToGo.Name = "rngToGo";
@@ -15069,24 +15069,24 @@ namespace STROOP
             // 
             // coinHSpeed
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle16;
             this.coinHSpeed.HeaderText = "Coin HSpeed";
             this.coinHSpeed.Name = "coinHSpeed";
             this.coinHSpeed.ReadOnly = true;
             // 
             // coinVSpeed
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle17;
             this.coinVSpeed.HeaderText = "Coin VSpeed";
             this.coinVSpeed.Name = "coinVSpeed";
             this.coinVSpeed.ReadOnly = true;
             // 
             // coinAngle
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle18;
             this.coinAngle.HeaderText = "Coin Angle";
             this.coinAngle.MinimumWidth = 2;
             this.coinAngle.Name = "coinAngle";
@@ -17354,22 +17354,22 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.mainSaveCourseLabel1, 0, 0);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.label8, 0, 1);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.label10, 0, 2);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.label11, 0, 3);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.label12, 0, 4);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.label13, 0, 5);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.label14, 0, 6);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.label15, 0, 7);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.label16, 0, 8);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.label17, 0, 9);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.label18, 0, 10);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.label19, 0, 11);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.label20, 0, 12);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.label21, 0, 13);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.label22, 0, 14);
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow1, 0, 0);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow2, 0, 1);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow3, 0, 2);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow4, 0, 3);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow5, 0, 4);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow6, 0, 5);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow7, 0, 6);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow8, 0, 7);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow9, 0, 8);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow10, 0, 9);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow11, 0, 10);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow12, 0, 11);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow13, 0, 12);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow14, 0, 13);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow15, 0, 14);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow15Col2, 1, 14);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow14Col2, 1, 13);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow13Col2, 1, 12);
@@ -17388,7 +17388,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow15Col3, 2, 14);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow14Col3, 2, 13);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow13Col3, 2, 12);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.mainSaveTextbox18, 2, 11);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow12Col3, 2, 11);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.mainSaveTextbox19, 2, 10);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow10Col3, 2, 9);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow9Col3, 2, 8);
@@ -17403,7 +17403,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow15Col4, 3, 14);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow14Col4, 3, 13);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow13Col4, 3, 12);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.mainSaveTextbox33, 3, 11);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow12Col4, 3, 11);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.mainSaveTextbox34, 3, 10);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow10Col4, 3, 9);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow9Col4, 3, 8);
@@ -17418,7 +17418,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow15Col5, 4, 14);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow14Col5, 4, 13);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow13Col5, 4, 12);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.mainSaveTextbox48, 4, 11);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow12Col5, 4, 11);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.mainSaveTextbox49, 4, 10);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow10Col5, 4, 9);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow9Col5, 4, 8);
@@ -17451,200 +17451,200 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.Size = new System.Drawing.Size(176, 227);
             this.tableLayoutPanelMainSaveCoinRank.TabIndex = 39;
             // 
-            // mainSaveCourseLabel1
+            // labelMainSaveCoinRankRow1
             // 
-            this.mainSaveCourseLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelMainSaveCoinRankRow1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainSaveCourseLabel1.AutoSize = true;
-            this.mainSaveCourseLabel1.Location = new System.Drawing.Point(4, 1);
-            this.mainSaveCourseLabel1.Name = "mainSaveCourseLabel1";
-            this.mainSaveCourseLabel1.Size = new System.Drawing.Size(44, 14);
-            this.mainSaveCourseLabel1.TabIndex = 8;
-            this.mainSaveCourseLabel1.Text = "BoB";
-            this.mainSaveCourseLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelMainSaveCoinRankRow1.AutoSize = true;
+            this.labelMainSaveCoinRankRow1.Location = new System.Drawing.Point(4, 1);
+            this.labelMainSaveCoinRankRow1.Name = "labelMainSaveCoinRankRow1";
+            this.labelMainSaveCoinRankRow1.Size = new System.Drawing.Size(44, 14);
+            this.labelMainSaveCoinRankRow1.TabIndex = 8;
+            this.labelMainSaveCoinRankRow1.Text = "BoB";
+            this.labelMainSaveCoinRankRow1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label8
+            // labelMainSaveCoinRankRow2
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelMainSaveCoinRankRow2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(4, 16);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 14);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "WF";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelMainSaveCoinRankRow2.AutoSize = true;
+            this.labelMainSaveCoinRankRow2.Location = new System.Drawing.Point(4, 16);
+            this.labelMainSaveCoinRankRow2.Name = "labelMainSaveCoinRankRow2";
+            this.labelMainSaveCoinRankRow2.Size = new System.Drawing.Size(44, 14);
+            this.labelMainSaveCoinRankRow2.TabIndex = 8;
+            this.labelMainSaveCoinRankRow2.Text = "WF";
+            this.labelMainSaveCoinRankRow2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label10
+            // labelMainSaveCoinRankRow3
             // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelMainSaveCoinRankRow3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(4, 31);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(44, 14);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "JRB";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelMainSaveCoinRankRow3.AutoSize = true;
+            this.labelMainSaveCoinRankRow3.Location = new System.Drawing.Point(4, 31);
+            this.labelMainSaveCoinRankRow3.Name = "labelMainSaveCoinRankRow3";
+            this.labelMainSaveCoinRankRow3.Size = new System.Drawing.Size(44, 14);
+            this.labelMainSaveCoinRankRow3.TabIndex = 8;
+            this.labelMainSaveCoinRankRow3.Text = "JRB";
+            this.labelMainSaveCoinRankRow3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label11
+            // labelMainSaveCoinRankRow4
             // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelMainSaveCoinRankRow4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(4, 46);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(44, 14);
-            this.label11.TabIndex = 8;
-            this.label11.Text = "CCM";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelMainSaveCoinRankRow4.AutoSize = true;
+            this.labelMainSaveCoinRankRow4.Location = new System.Drawing.Point(4, 46);
+            this.labelMainSaveCoinRankRow4.Name = "labelMainSaveCoinRankRow4";
+            this.labelMainSaveCoinRankRow4.Size = new System.Drawing.Size(44, 14);
+            this.labelMainSaveCoinRankRow4.TabIndex = 8;
+            this.labelMainSaveCoinRankRow4.Text = "CCM";
+            this.labelMainSaveCoinRankRow4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label12
+            // labelMainSaveCoinRankRow5
             // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelMainSaveCoinRankRow5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(4, 61);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(44, 14);
-            this.label12.TabIndex = 8;
-            this.label12.Text = "BBH";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelMainSaveCoinRankRow5.AutoSize = true;
+            this.labelMainSaveCoinRankRow5.Location = new System.Drawing.Point(4, 61);
+            this.labelMainSaveCoinRankRow5.Name = "labelMainSaveCoinRankRow5";
+            this.labelMainSaveCoinRankRow5.Size = new System.Drawing.Size(44, 14);
+            this.labelMainSaveCoinRankRow5.TabIndex = 8;
+            this.labelMainSaveCoinRankRow5.Text = "BBH";
+            this.labelMainSaveCoinRankRow5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label13
+            // labelMainSaveCoinRankRow6
             // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelMainSaveCoinRankRow6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(4, 76);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(44, 14);
-            this.label13.TabIndex = 8;
-            this.label13.Text = "HMC";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelMainSaveCoinRankRow6.AutoSize = true;
+            this.labelMainSaveCoinRankRow6.Location = new System.Drawing.Point(4, 76);
+            this.labelMainSaveCoinRankRow6.Name = "labelMainSaveCoinRankRow6";
+            this.labelMainSaveCoinRankRow6.Size = new System.Drawing.Size(44, 14);
+            this.labelMainSaveCoinRankRow6.TabIndex = 8;
+            this.labelMainSaveCoinRankRow6.Text = "HMC";
+            this.labelMainSaveCoinRankRow6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label14
+            // labelMainSaveCoinRankRow7
             // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelMainSaveCoinRankRow7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(4, 91);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(44, 14);
-            this.label14.TabIndex = 8;
-            this.label14.Text = "LLL";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelMainSaveCoinRankRow7.AutoSize = true;
+            this.labelMainSaveCoinRankRow7.Location = new System.Drawing.Point(4, 91);
+            this.labelMainSaveCoinRankRow7.Name = "labelMainSaveCoinRankRow7";
+            this.labelMainSaveCoinRankRow7.Size = new System.Drawing.Size(44, 14);
+            this.labelMainSaveCoinRankRow7.TabIndex = 8;
+            this.labelMainSaveCoinRankRow7.Text = "LLL";
+            this.labelMainSaveCoinRankRow7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label15
+            // labelMainSaveCoinRankRow8
             // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelMainSaveCoinRankRow8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(4, 106);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(44, 14);
-            this.label15.TabIndex = 8;
-            this.label15.Text = "SSL";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelMainSaveCoinRankRow8.AutoSize = true;
+            this.labelMainSaveCoinRankRow8.Location = new System.Drawing.Point(4, 106);
+            this.labelMainSaveCoinRankRow8.Name = "labelMainSaveCoinRankRow8";
+            this.labelMainSaveCoinRankRow8.Size = new System.Drawing.Size(44, 14);
+            this.labelMainSaveCoinRankRow8.TabIndex = 8;
+            this.labelMainSaveCoinRankRow8.Text = "SSL";
+            this.labelMainSaveCoinRankRow8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label16
+            // labelMainSaveCoinRankRow9
             // 
-            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelMainSaveCoinRankRow9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(4, 121);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(44, 14);
-            this.label16.TabIndex = 8;
-            this.label16.Text = "DDD";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelMainSaveCoinRankRow9.AutoSize = true;
+            this.labelMainSaveCoinRankRow9.Location = new System.Drawing.Point(4, 121);
+            this.labelMainSaveCoinRankRow9.Name = "labelMainSaveCoinRankRow9";
+            this.labelMainSaveCoinRankRow9.Size = new System.Drawing.Size(44, 14);
+            this.labelMainSaveCoinRankRow9.TabIndex = 8;
+            this.labelMainSaveCoinRankRow9.Text = "DDD";
+            this.labelMainSaveCoinRankRow9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label17
+            // labelMainSaveCoinRankRow10
             // 
-            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelMainSaveCoinRankRow10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(4, 136);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(44, 14);
-            this.label17.TabIndex = 8;
-            this.label17.Text = "SL";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelMainSaveCoinRankRow10.AutoSize = true;
+            this.labelMainSaveCoinRankRow10.Location = new System.Drawing.Point(4, 136);
+            this.labelMainSaveCoinRankRow10.Name = "labelMainSaveCoinRankRow10";
+            this.labelMainSaveCoinRankRow10.Size = new System.Drawing.Size(44, 14);
+            this.labelMainSaveCoinRankRow10.TabIndex = 8;
+            this.labelMainSaveCoinRankRow10.Text = "SL";
+            this.labelMainSaveCoinRankRow10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label18
+            // labelMainSaveCoinRankRow11
             // 
-            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelMainSaveCoinRankRow11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(4, 151);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(44, 14);
-            this.label18.TabIndex = 8;
-            this.label18.Text = "WDW";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelMainSaveCoinRankRow11.AutoSize = true;
+            this.labelMainSaveCoinRankRow11.Location = new System.Drawing.Point(4, 151);
+            this.labelMainSaveCoinRankRow11.Name = "labelMainSaveCoinRankRow11";
+            this.labelMainSaveCoinRankRow11.Size = new System.Drawing.Size(44, 14);
+            this.labelMainSaveCoinRankRow11.TabIndex = 8;
+            this.labelMainSaveCoinRankRow11.Text = "WDW";
+            this.labelMainSaveCoinRankRow11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label19
+            // labelMainSaveCoinRankRow12
             // 
-            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelMainSaveCoinRankRow12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(4, 166);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(44, 14);
-            this.label19.TabIndex = 8;
-            this.label19.Text = "TTM";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelMainSaveCoinRankRow12.AutoSize = true;
+            this.labelMainSaveCoinRankRow12.Location = new System.Drawing.Point(4, 166);
+            this.labelMainSaveCoinRankRow12.Name = "labelMainSaveCoinRankRow12";
+            this.labelMainSaveCoinRankRow12.Size = new System.Drawing.Size(44, 14);
+            this.labelMainSaveCoinRankRow12.TabIndex = 8;
+            this.labelMainSaveCoinRankRow12.Text = "TTM";
+            this.labelMainSaveCoinRankRow12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label20
+            // labelMainSaveCoinRankRow13
             // 
-            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelMainSaveCoinRankRow13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(4, 181);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(44, 14);
-            this.label20.TabIndex = 8;
-            this.label20.Text = "THI";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelMainSaveCoinRankRow13.AutoSize = true;
+            this.labelMainSaveCoinRankRow13.Location = new System.Drawing.Point(4, 181);
+            this.labelMainSaveCoinRankRow13.Name = "labelMainSaveCoinRankRow13";
+            this.labelMainSaveCoinRankRow13.Size = new System.Drawing.Size(44, 14);
+            this.labelMainSaveCoinRankRow13.TabIndex = 8;
+            this.labelMainSaveCoinRankRow13.Text = "THI";
+            this.labelMainSaveCoinRankRow13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label21
+            // labelMainSaveCoinRankRow14
             // 
-            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelMainSaveCoinRankRow14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(4, 196);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(44, 14);
-            this.label21.TabIndex = 8;
-            this.label21.Text = "TTC";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelMainSaveCoinRankRow14.AutoSize = true;
+            this.labelMainSaveCoinRankRow14.Location = new System.Drawing.Point(4, 196);
+            this.labelMainSaveCoinRankRow14.Name = "labelMainSaveCoinRankRow14";
+            this.labelMainSaveCoinRankRow14.Size = new System.Drawing.Size(44, 14);
+            this.labelMainSaveCoinRankRow14.TabIndex = 8;
+            this.labelMainSaveCoinRankRow14.Text = "TTC";
+            this.labelMainSaveCoinRankRow14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label22
+            // labelMainSaveCoinRankRow15
             // 
-            this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelMainSaveCoinRankRow15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(4, 211);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(44, 15);
-            this.label22.TabIndex = 8;
-            this.label22.Text = "RR";
-            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelMainSaveCoinRankRow15.AutoSize = true;
+            this.labelMainSaveCoinRankRow15.Location = new System.Drawing.Point(4, 211);
+            this.labelMainSaveCoinRankRow15.Name = "labelMainSaveCoinRankRow15";
+            this.labelMainSaveCoinRankRow15.Size = new System.Drawing.Size(44, 15);
+            this.labelMainSaveCoinRankRow15.TabIndex = 8;
+            this.labelMainSaveCoinRankRow15.Text = "RR";
+            this.labelMainSaveCoinRankRow15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // textBoxMainSaveCoinRankRow15Col2
             // 
@@ -17898,19 +17898,19 @@ namespace STROOP
             this.textBoxMainSaveCoinRankRow13Col3.Text = "0";
             this.textBoxMainSaveCoinRankRow13Col3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // mainSaveTextbox18
+            // textBoxMainSaveCoinRankRow12Col3
             // 
-            this.mainSaveTextbox18.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxMainSaveCoinRankRow12Col3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainSaveTextbox18.Location = new System.Drawing.Point(83, 166);
-            this.mainSaveTextbox18.Margin = new System.Windows.Forms.Padding(0);
-            this.mainSaveTextbox18.MaximumSize = new System.Drawing.Size(30, 15);
-            this.mainSaveTextbox18.Name = "mainSaveTextbox18";
-            this.mainSaveTextbox18.Size = new System.Drawing.Size(30, 20);
-            this.mainSaveTextbox18.TabIndex = 41;
-            this.mainSaveTextbox18.Text = "0";
-            this.mainSaveTextbox18.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMainSaveCoinRankRow12Col3.Location = new System.Drawing.Point(83, 166);
+            this.textBoxMainSaveCoinRankRow12Col3.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxMainSaveCoinRankRow12Col3.MaximumSize = new System.Drawing.Size(30, 15);
+            this.textBoxMainSaveCoinRankRow12Col3.Name = "textBoxMainSaveCoinRankRow12Col3";
+            this.textBoxMainSaveCoinRankRow12Col3.Size = new System.Drawing.Size(30, 20);
+            this.textBoxMainSaveCoinRankRow12Col3.TabIndex = 41;
+            this.textBoxMainSaveCoinRankRow12Col3.Text = "0";
+            this.textBoxMainSaveCoinRankRow12Col3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // mainSaveTextbox19
             // 
@@ -18108,19 +18108,19 @@ namespace STROOP
             this.textBoxMainSaveCoinRankRow13Col4.Text = "0";
             this.textBoxMainSaveCoinRankRow13Col4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // mainSaveTextbox33
+            // textBoxMainSaveCoinRankRow12Col4
             // 
-            this.mainSaveTextbox33.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxMainSaveCoinRankRow12Col4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainSaveTextbox33.Location = new System.Drawing.Point(114, 166);
-            this.mainSaveTextbox33.Margin = new System.Windows.Forms.Padding(0);
-            this.mainSaveTextbox33.MaximumSize = new System.Drawing.Size(30, 15);
-            this.mainSaveTextbox33.Name = "mainSaveTextbox33";
-            this.mainSaveTextbox33.Size = new System.Drawing.Size(30, 20);
-            this.mainSaveTextbox33.TabIndex = 41;
-            this.mainSaveTextbox33.Text = "0";
-            this.mainSaveTextbox33.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMainSaveCoinRankRow12Col4.Location = new System.Drawing.Point(114, 166);
+            this.textBoxMainSaveCoinRankRow12Col4.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxMainSaveCoinRankRow12Col4.MaximumSize = new System.Drawing.Size(30, 15);
+            this.textBoxMainSaveCoinRankRow12Col4.Name = "textBoxMainSaveCoinRankRow12Col4";
+            this.textBoxMainSaveCoinRankRow12Col4.Size = new System.Drawing.Size(30, 20);
+            this.textBoxMainSaveCoinRankRow12Col4.TabIndex = 41;
+            this.textBoxMainSaveCoinRankRow12Col4.Text = "0";
+            this.textBoxMainSaveCoinRankRow12Col4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // mainSaveTextbox34
             // 
@@ -18318,19 +18318,19 @@ namespace STROOP
             this.textBoxMainSaveCoinRankRow13Col5.Text = "0";
             this.textBoxMainSaveCoinRankRow13Col5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // mainSaveTextbox48
+            // textBoxMainSaveCoinRankRow12Col5
             // 
-            this.mainSaveTextbox48.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxMainSaveCoinRankRow12Col5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainSaveTextbox48.Location = new System.Drawing.Point(145, 166);
-            this.mainSaveTextbox48.Margin = new System.Windows.Forms.Padding(0);
-            this.mainSaveTextbox48.MaximumSize = new System.Drawing.Size(30, 15);
-            this.mainSaveTextbox48.Name = "mainSaveTextbox48";
-            this.mainSaveTextbox48.Size = new System.Drawing.Size(30, 15);
-            this.mainSaveTextbox48.TabIndex = 41;
-            this.mainSaveTextbox48.Text = "0";
-            this.mainSaveTextbox48.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMainSaveCoinRankRow12Col5.Location = new System.Drawing.Point(145, 166);
+            this.textBoxMainSaveCoinRankRow12Col5.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxMainSaveCoinRankRow12Col5.MaximumSize = new System.Drawing.Size(30, 15);
+            this.textBoxMainSaveCoinRankRow12Col5.Name = "textBoxMainSaveCoinRankRow12Col5";
+            this.textBoxMainSaveCoinRankRow12Col5.Size = new System.Drawing.Size(30, 15);
+            this.textBoxMainSaveCoinRankRow12Col5.TabIndex = 41;
+            this.textBoxMainSaveCoinRankRow12Col5.Text = "0";
+            this.textBoxMainSaveCoinRankRow12Col5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // mainSaveTextbox49
             // 
@@ -20511,21 +20511,21 @@ namespace STROOP
         private RadioButton radioButtonMainSaveLanguageGerman;
         private RadioButton radioButtonMainSaveLanguageFrench;
         private RadioButton radioButtonMainSaveLanguageEnglish;
-        private Label mainSaveCourseLabel1;
-        private Label label8;
-        private Label label10;
-        private Label label11;
-        private Label label12;
-        private Label label13;
-        private Label label14;
-        private Label label15;
-        private Label label16;
-        private Label label17;
-        private Label label18;
-        private Label label19;
-        private Label label20;
-        private Label label21;
-        private Label label22;
+        private Label labelMainSaveCoinRankRow1;
+        private Label labelMainSaveCoinRankRow2;
+        private Label labelMainSaveCoinRankRow3;
+        private Label labelMainSaveCoinRankRow4;
+        private Label labelMainSaveCoinRankRow5;
+        private Label labelMainSaveCoinRankRow6;
+        private Label labelMainSaveCoinRankRow7;
+        private Label labelMainSaveCoinRankRow8;
+        private Label labelMainSaveCoinRankRow9;
+        private Label labelMainSaveCoinRankRow10;
+        private Label labelMainSaveCoinRankRow11;
+        private Label labelMainSaveCoinRankRow12;
+        private Label labelMainSaveCoinRankRow13;
+        private Label labelMainSaveCoinRankRow14;
+        private Label labelMainSaveCoinRankRow15;
         private MainSaveTextbox textBoxMainSaveCoinRankRow15Col2;
         private MainSaveTextbox textBoxMainSaveCoinRankRow14Col2;
         private MainSaveTextbox textBoxMainSaveCoinRankRow13Col2;
@@ -20544,7 +20544,7 @@ namespace STROOP
         private MainSaveTextbox textBoxMainSaveCoinRankRow15Col3;
         private MainSaveTextbox textBoxMainSaveCoinRankRow14Col3;
         private MainSaveTextbox textBoxMainSaveCoinRankRow13Col3;
-        private MainSaveTextbox mainSaveTextbox18;
+        private MainSaveTextbox textBoxMainSaveCoinRankRow12Col3;
         private MainSaveTextbox mainSaveTextbox19;
         private MainSaveTextbox textBoxMainSaveCoinRankRow10Col3;
         private MainSaveTextbox textBoxMainSaveCoinRankRow9Col3;
@@ -20559,7 +20559,7 @@ namespace STROOP
         private MainSaveTextbox textBoxMainSaveCoinRankRow15Col4;
         private MainSaveTextbox textBoxMainSaveCoinRankRow14Col4;
         private MainSaveTextbox textBoxMainSaveCoinRankRow13Col4;
-        private MainSaveTextbox mainSaveTextbox33;
+        private MainSaveTextbox textBoxMainSaveCoinRankRow12Col4;
         private MainSaveTextbox mainSaveTextbox34;
         private MainSaveTextbox textBoxMainSaveCoinRankRow10Col4;
         private MainSaveTextbox textBoxMainSaveCoinRankRow9Col4;
@@ -20574,7 +20574,7 @@ namespace STROOP
         private MainSaveTextbox textBoxMainSaveCoinRankRow15Col5;
         private MainSaveTextbox textBoxMainSaveCoinRankRow14Col5;
         private MainSaveTextbox textBoxMainSaveCoinRankRow13Col5;
-        private MainSaveTextbox mainSaveTextbox48;
+        private MainSaveTextbox textBoxMainSaveCoinRankRow12Col5;
         private MainSaveTextbox mainSaveTextbox49;
         private MainSaveTextbox textBoxMainSaveCoinRankRow10Col5;
         private MainSaveTextbox textBoxMainSaveCoinRankRow9Col5;
