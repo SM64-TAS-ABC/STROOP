@@ -178,68 +178,68 @@ namespace STROOP.Utilities
             return _io?.GetRelativeAddress(relativeAddress, size) ?? 0;
         }
 
-        public object GetValue(Type type, uint address, bool absoluteAddress = false, uint? mask = null)
+        public object GetValue(Type type, uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
-            if (type == typeof(byte)) return GetByte(address, absoluteAddress, mask);
-            if (type == typeof(sbyte)) return GetSByte(address, absoluteAddress, mask);
-            if (type == typeof(short)) return GetInt16(address, absoluteAddress, mask);
-            if (type == typeof(ushort)) return GetUInt16(address, absoluteAddress, mask);
-            if (type == typeof(int)) return GetInt32(address, absoluteAddress, mask);
-            if (type == typeof(uint)) return GetUInt32(address, absoluteAddress, mask);
-            if (type == typeof(float)) return GetSingle(address, absoluteAddress, mask);
-            if (type == typeof(double)) return GetDouble(address, absoluteAddress, mask);
+            if (type == typeof(byte)) return GetByte(address, absoluteAddress, mask, shift);
+            if (type == typeof(sbyte)) return GetSByte(address, absoluteAddress, mask, shift);
+            if (type == typeof(short)) return GetInt16(address, absoluteAddress, mask, shift);
+            if (type == typeof(ushort)) return GetUInt16(address, absoluteAddress, mask, shift);
+            if (type == typeof(int)) return GetInt32(address, absoluteAddress, mask, shift);
+            if (type == typeof(uint)) return GetUInt32(address, absoluteAddress, mask, shift);
+            if (type == typeof(float)) return GetSingle(address, absoluteAddress, mask, shift);
+            if (type == typeof(double)) return GetDouble(address, absoluteAddress, mask, shift);
 
             throw new ArgumentOutOfRangeException("Cannot call ProcessStream.GetValue with type " + type);
         }
 
-        public byte GetByte(uint address, bool absoluteAddress = false, uint? mask = null)
+        public byte GetByte(uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
             byte value = ReadRam((UIntPtr)address, 1, EndiannessType.Little, absoluteAddress)[0];
             if (mask.HasValue) value = (byte)(value & mask.Value);
             return value;
         }
 
-        public sbyte GetSByte(uint address, bool absoluteAddress = false, uint? mask = null)
+        public sbyte GetSByte(uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
             sbyte value = (sbyte)ReadRam((UIntPtr)address, 1, EndiannessType.Little, absoluteAddress)[0];
             if (mask.HasValue) value = (sbyte)(value & mask.Value);
             return value;
         }
 
-        public short GetInt16(uint address, bool absoluteAddress = false, uint? mask = null)
+        public short GetInt16(uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
             short value = BitConverter.ToInt16(ReadRam((UIntPtr)address, 2, EndiannessType.Little, absoluteAddress), 0);
             if (mask.HasValue) value = (short)(value & mask.Value);
             return value;
         }
 
-        public ushort GetUInt16(uint address, bool absoluteAddress = false, uint? mask = null)
+        public ushort GetUInt16(uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
             ushort value = BitConverter.ToUInt16(ReadRam((UIntPtr)address, 2, EndiannessType.Little, absoluteAddress), 0);
             if (mask.HasValue) value = (ushort)(value & mask.Value);
             return value;
         }
 
-        public int GetInt32(uint address, bool absoluteAddress = false, uint? mask = null)
+        public int GetInt32(uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
             int value = BitConverter.ToInt32(ReadRam((UIntPtr)address, 4, EndiannessType.Little, absoluteAddress), 0);
             if (mask.HasValue) value = (int)(value & mask.Value);
             return value;
         }
 
-        public uint GetUInt32(uint address, bool absoluteAddress = false, uint? mask = null)
+        public uint GetUInt32(uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
             uint value = BitConverter.ToUInt32(ReadRam((UIntPtr)address, 4, EndiannessType.Little, absoluteAddress), 0);
             if (mask.HasValue) value = (uint)(value & mask.Value);
             return value;
         }
 
-        public float GetSingle(uint address, bool absoluteAddress = false, uint? mask = null)
+        public float GetSingle(uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
             return BitConverter.ToSingle(ReadRam((UIntPtr)address, 4, EndiannessType.Little, absoluteAddress), 0);
         }
 
-        public double GetDouble(uint address, bool absoluteAddress = false, uint? mask = null)
+        public double GetDouble(uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
             return BitConverter.ToDouble(ReadRam((UIntPtr)address, 8, EndiannessType.Little, absoluteAddress), 0);
         }
@@ -325,17 +325,17 @@ namespace STROOP.Utilities
         }
 
         public bool SetValueRoundingWrapping (
-            Type type, object value, uint address, bool absoluteAddress = false, uint? mask = null)
+            Type type, object value, uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
             // Allow short circuiting if object is already of type
-            if (type == typeof(byte) && value is byte byteValue) return SetValue(byteValue, address, absoluteAddress, mask);
-            if (type == typeof(sbyte) && value is sbyte sbyteValue) return SetValue(sbyteValue, address, absoluteAddress, mask);
-            if (type == typeof(short) && value is short shortValue) return SetValue(shortValue, address, absoluteAddress, mask);
-            if (type == typeof(ushort) && value is ushort ushortValue) return SetValue(ushortValue, address, absoluteAddress, mask);
-            if (type == typeof(int) && value is int intValue) return SetValue(intValue, address, absoluteAddress, mask);
-            if (type == typeof(uint) && value is uint uintValue) return SetValue(uintValue, address, absoluteAddress, mask);
-            if (type == typeof(float) && value is float floatValue) return SetValue(floatValue, address, absoluteAddress, mask);
-            if (type == typeof(double) && value is double doubleValue) return SetValue(doubleValue, address, absoluteAddress, mask);
+            if (type == typeof(byte) && value is byte byteValue) return SetValue(byteValue, address, absoluteAddress, mask, shift);
+            if (type == typeof(sbyte) && value is sbyte sbyteValue) return SetValue(sbyteValue, address, absoluteAddress, mask, shift);
+            if (type == typeof(short) && value is short shortValue) return SetValue(shortValue, address, absoluteAddress, mask, shift);
+            if (type == typeof(ushort) && value is ushort ushortValue) return SetValue(ushortValue, address, absoluteAddress, mask, shift);
+            if (type == typeof(int) && value is int intValue) return SetValue(intValue, address, absoluteAddress, mask, shift);
+            if (type == typeof(uint) && value is uint uintValue) return SetValue(uintValue, address, absoluteAddress, mask, shift);
+            if (type == typeof(float) && value is float floatValue) return SetValue(floatValue, address, absoluteAddress, mask, shift);
+            if (type == typeof(double) && value is double doubleValue) return SetValue(doubleValue, address, absoluteAddress, mask, shift);
 
             value = ParsingUtilities.ParseDoubleNullable(value);
             if (value == null) return false;
@@ -350,7 +350,7 @@ namespace STROOP.Utilities
             return SetValue(type, value.ToString(), address, absoluteAddress, mask);
         }
 
-        public bool SetValue(Type type, object value, uint address, bool absoluteAddress = false, uint? mask = null)
+        public bool SetValue(Type type, object value, uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
             if (value is string)
             {
@@ -366,19 +366,19 @@ namespace STROOP.Utilities
 
             if (value == null) return false;
 
-            if (type == typeof(byte)) return SetValue((byte)value, address, absoluteAddress, mask);
-            if (type == typeof(sbyte)) return SetValue((sbyte)value, address, absoluteAddress, mask);
-            if (type == typeof(short)) return SetValue((short)value, address, absoluteAddress, mask);
-            if (type == typeof(ushort)) return SetValue((ushort)value, address, absoluteAddress, mask);
-            if (type == typeof(int)) return SetValue((int)value, address, absoluteAddress, mask);
-            if (type == typeof(uint)) return SetValue((uint)value, address, absoluteAddress, mask);
-            if (type == typeof(float)) return SetValue((float)value, address, absoluteAddress, mask);
-            if (type == typeof(double)) return SetValue((double)value, address, absoluteAddress, mask);
+            if (type == typeof(byte)) return SetValue((byte)value, address, absoluteAddress, mask, shift);
+            if (type == typeof(sbyte)) return SetValue((sbyte)value, address, absoluteAddress, mask, shift);
+            if (type == typeof(short)) return SetValue((short)value, address, absoluteAddress, mask, shift);
+            if (type == typeof(ushort)) return SetValue((ushort)value, address, absoluteAddress, mask, shift);
+            if (type == typeof(int)) return SetValue((int)value, address, absoluteAddress, mask, shift);
+            if (type == typeof(uint)) return SetValue((uint)value, address, absoluteAddress, mask, shift);
+            if (type == typeof(float)) return SetValue((float)value, address, absoluteAddress, mask, shift);
+            if (type == typeof(double)) return SetValue((double)value, address, absoluteAddress, mask, shift);
 
             throw new ArgumentOutOfRangeException("Cannot call ProcessStream.SetValue with type " + type);
         }
 
-        public bool SetValue(byte value, uint address, bool absoluteAddress = false, uint? mask = null)
+        public bool SetValue(byte value, uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
             if (mask.HasValue)
             {
@@ -390,7 +390,7 @@ namespace STROOP.Utilities
             return returnValue;
         }
 
-        public bool SetValue(sbyte value, uint address, bool absoluteAddress = false, uint? mask = null)
+        public bool SetValue(sbyte value, uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
             if (mask.HasValue)
             {
@@ -402,7 +402,7 @@ namespace STROOP.Utilities
             return returnValue;
         }
 
-        public bool SetValue(Int16 value, uint address, bool absoluteAddress = false, uint? mask = null)
+        public bool SetValue(Int16 value, uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
             if (mask.HasValue)
             {
@@ -414,7 +414,7 @@ namespace STROOP.Utilities
             return returnValue;
         }
 
-        public bool SetValue(UInt16 value, uint address, bool absoluteAddress = false, uint? mask = null)
+        public bool SetValue(UInt16 value, uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
             if (mask.HasValue)
             {
@@ -426,7 +426,7 @@ namespace STROOP.Utilities
             return returnValue;
         }
 
-        public bool SetValue(Int32 value, uint address, bool absoluteAddress = false, uint? mask = null)
+        public bool SetValue(Int32 value, uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
             if (mask.HasValue)
             {
@@ -438,7 +438,7 @@ namespace STROOP.Utilities
             return returnValue;
         }
 
-        public bool SetValue(UInt32 value, uint address, bool absoluteAddress = false, uint? mask = null)
+        public bool SetValue(UInt32 value, uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
             if (mask.HasValue)
             {
@@ -450,14 +450,14 @@ namespace STROOP.Utilities
             return returnValue;
         }
 
-        public bool SetValue(float value, uint address, bool absoluteAddress = false, uint? mask = null)
+        public bool SetValue(float value, uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
             bool returnValue = WriteRam(BitConverter.GetBytes(value), (UIntPtr)address, EndiannessType.Little, absoluteAddress);
             if (returnValue) WatchVariableLockManager.UpdateMemoryLockValue(value, address, typeof(float), mask);
             return returnValue;
         }
 
-        public bool SetValue(double value, uint address, bool absoluteAddress = false, uint? mask = null)
+        public bool SetValue(double value, uint address, bool absoluteAddress = false, uint? mask = null, int? shift = null)
         {
             byte[] bytes = BitConverter.GetBytes(value);
             byte[] bytes1 = bytes.Take(4).ToArray();

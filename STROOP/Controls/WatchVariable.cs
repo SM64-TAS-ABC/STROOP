@@ -136,12 +136,12 @@ namespace STROOP.Controls
             {
                 _getterFunction = (uint address) =>
                 {
-                    return Config.Stream.GetValue(MemoryType, address, UseAbsoluteAddressing, Mask);
+                    return Config.Stream.GetValue(MemoryType, address, UseAbsoluteAddressing, Mask, Shift);
                 };
                 _setterFunction = (object value, uint address) =>
                 {
                     return Config.Stream.SetValueRoundingWrapping(
-                        MemoryType, value, address, UseAbsoluteAddressing, Mask);
+                        MemoryType, value, address, UseAbsoluteAddressing, Mask, Shift);
                 };
 
             }
