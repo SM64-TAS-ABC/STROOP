@@ -87,7 +87,6 @@
   <Data type="byte" offset="0x09" base="File" subclass="Boolean" mask="0x02" color="Red">Hat on Klepto</Data>
   <Data type="byte" offset="0x09" base="File" subclass="Boolean" mask="0x08" color="Red">Hat on Snowman</Data>
   <Data type="byte" offset="0x09" base="File" subclass="Boolean" mask="0x04" color="Red">Hat on Ukiki</Data>
-  <Data type="ushort" offset="0x00" base="File" color="Red">Hat Course (SSL=2049,SL=2561,TTM=9217)</Data>
   <Data type="byte" offset="0x00" base="File" color="Red">Hat Level</Data>
   <Data type="byte" offset="0x01" base="File" color="Red">Hat Area</Data>
 

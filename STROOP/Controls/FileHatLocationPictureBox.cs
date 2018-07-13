@@ -36,7 +36,7 @@ namespace STROOP
 
         private HatLocation? GetCurrentHatLocation()
         {
-            ushort hatLocationCourse = Config.Stream.GetUInt16(Config.FileManager.CurrentFileAddress + FileConfig.HatLocationCourseOffset);
+            byte hatLocationLevel = Config.Stream.GetByte(Config.FileManager.CurrentFileAddress + FileConfig.HatLocationLevelOffset);
             byte hatLocationMode = (byte)(Config.Stream.GetByte(Config.FileManager.CurrentFileAddress + FileConfig.HatLocationModeOffset) & FileConfig.HatLocationModeMask);
 
             return hatLocationMode == FileConfig.HatLocationMarioMask ? HatLocation.Mario :
@@ -44,9 +44,9 @@ namespace STROOP
                    hatLocationMode == FileConfig.HatLocationSnowmanMask ? HatLocation.SLSnowman :
                    hatLocationMode == FileConfig.HatLocationUkikiMask ? HatLocation.TTMUkiki :
                    hatLocationMode == FileConfig.HatLocationGroundMask ?
-                       (hatLocationCourse == FileConfig.HatLocationCourseSSLValue ? HatLocation.SSLGround :
-                        hatLocationCourse == FileConfig.HatLocationCourseSLValue ? HatLocation.SLGround :
-                        hatLocationCourse == FileConfig.HatLocationCourseTTMValue ? HatLocation.TTMGround :
+                       (hatLocationLevel == FileConfig.HatLocationLevelSSLValue ? HatLocation.SSLGround :
+                        hatLocationLevel == FileConfig.HatLocationLevelSLValue ? HatLocation.SLGround :
+                        hatLocationLevel == FileConfig.HatLocationLevelTTMValue ? HatLocation.TTMGround :
                         (HatLocation?)null) :
                    null;
         }
@@ -74,7 +74,8 @@ namespace STROOP
 
                 case HatLocation.SSLGround:
                     SetHatMode(FileConfig.HatLocationGroundMask);
-                    Config.Stream.SetValue(FileConfig.HatLocationCourseSSLValue, Config.FileManager.CurrentFileAddress + FileConfig.HatLocationCourseOffset);
+                    Config.Stream.SetValue(FileConfig.HatLocationLevelSSLValue, Config.FileManager.CurrentFileAddress + FileConfig.HatLocationLevelOffset);
+                    Config.Stream.SetValue(FileConfig.HatLocationAreaSSLValue, Config.FileManager.CurrentFileAddress + FileConfig.HatLocationAreaOffset);
                     break;
 
                 case HatLocation.SLSnowman:
@@ -83,7 +84,8 @@ namespace STROOP
 
                 case HatLocation.SLGround:
                     SetHatMode(FileConfig.HatLocationGroundMask);
-                    Config.Stream.SetValue(FileConfig.HatLocationCourseSLValue, Config.FileManager.CurrentFileAddress + FileConfig.HatLocationCourseOffset);
+                    Config.Stream.SetValue(FileConfig.HatLocationLevelSLValue, Config.FileManager.CurrentFileAddress + FileConfig.HatLocationLevelOffset);
+                    Config.Stream.SetValue(FileConfig.HatLocationAreaSLValue, Config.FileManager.CurrentFileAddress + FileConfig.HatLocationAreaOffset);
                     break;
 
                 case HatLocation.TTMUkiki:
@@ -92,7 +94,8 @@ namespace STROOP
 
                 case HatLocation.TTMGround:
                     SetHatMode(FileConfig.HatLocationGroundMask);
-                    Config.Stream.SetValue(FileConfig.HatLocationCourseTTMValue, Config.FileManager.CurrentFileAddress + FileConfig.HatLocationCourseOffset);
+                    Config.Stream.SetValue(FileConfig.HatLocationLevelTTMValue, Config.FileManager.CurrentFileAddress + FileConfig.HatLocationLevelOffset);
+                    Config.Stream.SetValue(FileConfig.HatLocationAreaTTMValue, Config.FileManager.CurrentFileAddress + FileConfig.HatLocationAreaOffset);
                     break;
             }
         }
