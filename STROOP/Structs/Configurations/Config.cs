@@ -45,6 +45,7 @@ namespace STROOP.Structs.Configurations
         public static PuManager PuManager;
         public static TasManager TasManager;
         public static FileManager FileManager;
+        public static MainSaveManager MainSaveManager;
         public static AreaManager AreaManager;
         public static DataManager QuarterFrameManager;
         public static DataManager CustomManager;

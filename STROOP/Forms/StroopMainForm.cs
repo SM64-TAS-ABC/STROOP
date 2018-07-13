@@ -337,6 +337,7 @@ namespace STROOP
             Config.PuManager = new PuManager(@"Config/PuData.xml", tabPagePu, watchVariablePanelPu);
             Config.TasManager = new TasManager(@"Config/TasData.xml", tabPageTas, watchVariablePanelTas);
             Config.FileManager = new FileManager(@"Config/FileData.xml", tabPageFile, watchVariablePanelFile, _fileImageGui);
+            Config.MainSaveManager = new MainSaveManager(@"Config/MainSaveData.xml", tabPageMainSave, watchVariablePanelMainSave);
             Config.AreaManager = new AreaManager(tabPageArea, @"Config/AreaData.xml", watchVariablePanelArea);
             Config.QuarterFrameManager = new DataManager(@"Config/QuarterFrameData.xml", watchVariablePanelQuarterFrame);
             Config.CustomManager = new CustomManager(@"Config/CustomData.xml", tabPageCustom, watchVariablePanelCustom);
@@ -490,6 +491,7 @@ namespace STROOP
                 Config.SnowManager.Update(tabControlMain.SelectedTab == tabPageSnow);
                 Config.InputManager.Update(tabControlMain.SelectedTab == tabPageInput);
                 Config.FileManager.Update(tabControlMain.SelectedTab == tabPageFile);
+                Config.MainSaveManager.Update(tabControlMain.SelectedTab == tabPageMainSave);
                 Config.QuarterFrameManager.Update(tabControlMain.SelectedTab == tabPageQuarterFrame);
                 Config.CustomManager.Update(tabControlMain.SelectedTab == tabPageCustom);
                 Config.VarHackManager.Update(tabControlMain.SelectedTab == tabPageVarHack);

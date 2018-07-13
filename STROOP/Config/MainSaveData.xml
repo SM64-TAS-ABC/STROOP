@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <VarData>
 
-  <Data groupList="Basic" type="byte" offsetUS="0x80226B7F" offsetJP="0x80226D7F" base="Relative">Sound Selection</Data>
+  <Data type="byte" offsetUS="0x80226B7F" offsetJP="0x80226D7F" base="Relative">Sound Mode</Data>
   
 </VarData>

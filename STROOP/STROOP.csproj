@@ -330,6 +330,7 @@
       <DependentUpon>MainLoadingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoadingHandler.cs" />
+    <Compile Include="Managers\MainSaveManager.cs" />
     <Compile Include="Managers\SnowManager.cs" />
     <Compile Include="Structs\Configurations\SnowConfig.cs" />
     <Compile Include="Structs\TriangleInfoTable.cs" />
