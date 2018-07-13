@@ -34,15 +34,15 @@ namespace STROOP
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
@@ -1366,7 +1366,7 @@ namespace STROOP
             this.textBoxMainSaveCoinRankRow14Col2 = new STROOP.MainSaveTextbox();
             this.textBoxMainSaveCoinRankRow13Col2 = new STROOP.MainSaveTextbox();
             this.textBoxMainSaveCoinRankRow12Col2 = new STROOP.MainSaveTextbox();
-            this.mainSaveTextbox4 = new STROOP.MainSaveTextbox();
+            this.textBoxMainSaveCoinRankRow11Col2 = new STROOP.MainSaveTextbox();
             this.textBoxMainSaveCoinRankRow10Col2 = new STROOP.MainSaveTextbox();
             this.textBoxMainSaveCoinRankRow9Col2 = new STROOP.MainSaveTextbox();
             this.textBoxMainSaveCoinRankRow8Col2 = new STROOP.MainSaveTextbox();
@@ -5231,7 +5231,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 417F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 418F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8950,7 +8950,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(436, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(439, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -8984,14 +8984,14 @@ namespace STROOP
             this.dataGridViewM64Inputs.AllowUserToResizeColumns = false;
             this.dataGridViewM64Inputs.AllowUserToResizeRows = false;
             this.dataGridViewM64Inputs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewM64Inputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewM64Inputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnM64Frame,
@@ -9012,14 +9012,14 @@ namespace STROOP
             this.ColumnM64DDown,
             this.ColumnM64DLeft,
             this.ColumnM64DRight});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewM64Inputs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewM64Inputs.EnableHeadersVisualStyles = false;
             this.dataGridViewM64Inputs.Location = new System.Drawing.Point(0, 0);
@@ -11221,7 +11221,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 717;
+            this.splitContainerMemory.SplitterDistance = 720;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11262,7 +11262,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(717, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(720, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -11479,7 +11479,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(717, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(720, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -11508,7 +11508,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(616, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(619, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -11521,7 +11521,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(189, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(186, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -12675,7 +12675,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(204, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(187, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -12707,7 +12707,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(198, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(181, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -12763,7 +12763,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(198, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(181, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -15014,14 +15014,14 @@ namespace STROOP
             this.dataGridViewCoin.AllowUserToOrderColumns = true;
             this.dataGridViewCoin.AllowUserToResizeRows = false;
             this.dataGridViewCoin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewCoin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCoin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.rngIndex,
@@ -15042,8 +15042,8 @@ namespace STROOP
             // 
             // rngIndex
             // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle4;
             this.rngIndex.HeaderText = "RNG Index";
             this.rngIndex.MinimumWidth = 2;
             this.rngIndex.Name = "rngIndex";
@@ -15051,8 +15051,8 @@ namespace STROOP
             // 
             // rngValue
             // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngValue.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngValue.DefaultCellStyle = dataGridViewCellStyle5;
             this.rngValue.HeaderText = "RNG Value";
             this.rngValue.MinimumWidth = 2;
             this.rngValue.Name = "rngValue";
@@ -15060,8 +15060,8 @@ namespace STROOP
             // 
             // rngToGo
             // 
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle6;
             this.rngToGo.HeaderText = "RNG To Go";
             this.rngToGo.MinimumWidth = 2;
             this.rngToGo.Name = "rngToGo";
@@ -15069,24 +15069,24 @@ namespace STROOP
             // 
             // coinHSpeed
             // 
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle7;
             this.coinHSpeed.HeaderText = "Coin HSpeed";
             this.coinHSpeed.Name = "coinHSpeed";
             this.coinHSpeed.ReadOnly = true;
             // 
             // coinVSpeed
             // 
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle8;
             this.coinVSpeed.HeaderText = "Coin VSpeed";
             this.coinVSpeed.Name = "coinVSpeed";
             this.coinVSpeed.ReadOnly = true;
             // 
             // coinAngle
             // 
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle9;
             this.coinAngle.HeaderText = "Coin Angle";
             this.coinAngle.MinimumWidth = 2;
             this.coinAngle.Name = "coinAngle";
@@ -17354,7 +17354,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow1, 0, 0);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow2, 0, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow3, 0, 2);
@@ -17374,7 +17374,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow14Col2, 1, 13);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow13Col2, 1, 12);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow12Col2, 1, 11);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.mainSaveTextbox4, 1, 10);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow11Col2, 1, 10);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow10Col2, 1, 9);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow9Col2, 1, 8);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow8Col2, 1, 7);
@@ -17702,19 +17702,19 @@ namespace STROOP
             this.textBoxMainSaveCoinRankRow12Col2.Text = "0";
             this.textBoxMainSaveCoinRankRow12Col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // mainSaveTextbox4
+            // textBoxMainSaveCoinRankRow11Col2
             // 
-            this.mainSaveTextbox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxMainSaveCoinRankRow11Col2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainSaveTextbox4.Location = new System.Drawing.Point(52, 151);
-            this.mainSaveTextbox4.Margin = new System.Windows.Forms.Padding(0);
-            this.mainSaveTextbox4.MaximumSize = new System.Drawing.Size(30, 15);
-            this.mainSaveTextbox4.Name = "mainSaveTextbox4";
-            this.mainSaveTextbox4.Size = new System.Drawing.Size(30, 20);
-            this.mainSaveTextbox4.TabIndex = 41;
-            this.mainSaveTextbox4.Text = "0";
-            this.mainSaveTextbox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMainSaveCoinRankRow11Col2.Location = new System.Drawing.Point(52, 151);
+            this.textBoxMainSaveCoinRankRow11Col2.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxMainSaveCoinRankRow11Col2.MaximumSize = new System.Drawing.Size(30, 15);
+            this.textBoxMainSaveCoinRankRow11Col2.Name = "textBoxMainSaveCoinRankRow11Col2";
+            this.textBoxMainSaveCoinRankRow11Col2.Size = new System.Drawing.Size(30, 20);
+            this.textBoxMainSaveCoinRankRow11Col2.TabIndex = 41;
+            this.textBoxMainSaveCoinRankRow11Col2.Text = "0";
+            this.textBoxMainSaveCoinRankRow11Col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxMainSaveCoinRankRow10Col2
             // 
@@ -20530,7 +20530,7 @@ namespace STROOP
         private MainSaveTextbox textBoxMainSaveCoinRankRow14Col2;
         private MainSaveTextbox textBoxMainSaveCoinRankRow13Col2;
         private MainSaveTextbox textBoxMainSaveCoinRankRow12Col2;
-        private MainSaveTextbox mainSaveTextbox4;
+        private MainSaveTextbox textBoxMainSaveCoinRankRow11Col2;
         private MainSaveTextbox textBoxMainSaveCoinRankRow10Col2;
         private MainSaveTextbox textBoxMainSaveCoinRankRow9Col2;
         private MainSaveTextbox textBoxMainSaveCoinRankRow8Col2;
