@@ -34,15 +34,15 @@ namespace STROOP
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
@@ -1347,139 +1347,6 @@ namespace STROOP
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.fileCoinScoreTextbox1 = new STROOP.FileCoinScoreTextbox();
-            this.fileCoinScoreTextbox2 = new STROOP.FileCoinScoreTextbox();
-            this.fileCoinScoreTextbox3 = new STROOP.FileCoinScoreTextbox();
-            this.fileCoinScoreTextbox4 = new STROOP.FileCoinScoreTextbox();
-            this.fileCoinScoreTextbox5 = new STROOP.FileCoinScoreTextbox();
-            this.fileCoinScoreTextbox6 = new STROOP.FileCoinScoreTextbox();
-            this.fileCoinScoreTextbox7 = new STROOP.FileCoinScoreTextbox();
-            this.fileCoinScoreTextbox8 = new STROOP.FileCoinScoreTextbox();
-            this.fileCoinScoreTextbox9 = new STROOP.FileCoinScoreTextbox();
-            this.fileCoinScoreTextbox10 = new STROOP.FileCoinScoreTextbox();
-            this.fileCoinScoreTextbox11 = new STROOP.FileCoinScoreTextbox();
-            this.fileCoinScoreTextbox12 = new STROOP.FileCoinScoreTextbox();
-            this.fileCoinScoreTextbox13 = new STROOP.FileCoinScoreTextbox();
-            this.fileCoinScoreTextbox14 = new STROOP.FileCoinScoreTextbox();
-            this.fileCoinScoreTextbox15 = new STROOP.FileCoinScoreTextbox();
-            this.fileBinaryPictureBox10 = new STROOP.FileBinaryPictureBox();
-            this.fileBinaryPictureBox11 = new STROOP.FileBinaryPictureBox();
-            this.fileBinaryPictureBox12 = new STROOP.FileBinaryPictureBox();
-            this.fileBinaryPictureBox14 = new STROOP.FileBinaryPictureBox();
-            this.fileBinaryPictureBox15 = new STROOP.FileBinaryPictureBox();
-            this.fileBinaryPictureBox16 = new STROOP.FileBinaryPictureBox();
-            this.fileBinaryPictureBox17 = new STROOP.FileBinaryPictureBox();
-            this.fileBinaryPictureBox18 = new STROOP.FileBinaryPictureBox();
-            this.fileBinaryPictureBox19 = new STROOP.FileBinaryPictureBox();
-            this.fileBinaryPictureBox20 = new STROOP.FileBinaryPictureBox();
-            this.fileBinaryPictureBox21 = new STROOP.FileBinaryPictureBox();
-            this.fileBinaryPictureBox22 = new STROOP.FileBinaryPictureBox();
-            this.fileStarPictureBox16 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox17 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox18 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox19 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox20 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox21 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox22 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox23 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox24 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox25 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox26 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox27 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox28 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox29 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox30 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox31 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox32 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox33 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox34 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox35 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox36 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox37 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox38 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox39 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox40 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox41 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox42 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox43 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox44 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox45 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox46 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox47 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox48 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox49 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox50 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox51 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox52 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox53 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox54 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox55 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox56 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox57 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox58 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox59 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox60 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox61 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox62 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox63 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox64 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox65 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox66 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox67 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox68 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox69 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox70 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox71 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox72 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox73 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox74 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox75 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox76 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox77 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox78 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox79 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox80 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox81 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox82 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox83 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox84 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox85 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox86 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox87 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox88 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox89 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox90 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox91 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox92 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox93 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox94 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox95 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox96 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox97 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox98 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox99 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox100 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox101 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox102 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox103 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox104 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox105 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox106 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox107 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox108 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox109 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox110 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox111 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox112 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox113 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox114 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox115 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox116 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox117 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox118 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox119 = new STROOP.FileStarPictureBox();
-            this.fileStarPictureBox120 = new STROOP.FileStarPictureBox();
-            this.fileBinaryPictureBox23 = new STROOP.FileBinaryPictureBox();
             this.mainSaveCourseLabel1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
@@ -1509,6 +1376,7 @@ namespace STROOP
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
+            this.fileCoinScoreTextbox1 = new STROOP.FileCoinScoreTextbox();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1924,124 +1792,6 @@ namespace STROOP
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fileBinaryPictureBox10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileBinaryPictureBox11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileBinaryPictureBox12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileBinaryPictureBox14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileBinaryPictureBox15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileBinaryPictureBox16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileBinaryPictureBox17)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileBinaryPictureBox18)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileBinaryPictureBox19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileBinaryPictureBox20)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileBinaryPictureBox21)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileBinaryPictureBox22)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox16)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox17)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox18)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox20)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox21)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox22)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox23)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox24)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox25)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox26)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox27)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox28)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox29)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox30)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox31)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox32)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox33)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox34)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox35)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox36)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox37)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox38)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox39)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox40)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox41)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox42)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox43)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox44)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox45)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox46)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox47)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox48)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox49)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox50)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox51)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox52)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox53)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox54)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox55)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox56)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox57)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox58)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox59)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox60)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox61)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox62)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox63)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox64)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox65)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox66)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox67)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox68)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox69)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox70)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox71)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox72)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox73)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox74)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox75)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox76)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox77)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox78)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox79)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox80)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox81)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox82)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox83)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox84)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox85)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox86)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox87)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox88)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox89)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox90)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox91)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox92)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox93)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox94)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox95)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox96)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox97)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox98)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox99)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox100)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox101)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox102)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox103)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox104)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox105)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox106)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox107)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox108)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox109)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox110)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox111)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox112)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox113)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox114)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox115)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox116)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox117)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox118)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox119)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox120)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileBinaryPictureBox23)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
@@ -9175,14 +8925,14 @@ namespace STROOP
             this.dataGridViewM64Inputs.AllowUserToResizeColumns = false;
             this.dataGridViewM64Inputs.AllowUserToResizeRows = false;
             this.dataGridViewM64Inputs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewM64Inputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewM64Inputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnM64Frame,
@@ -9203,14 +8953,14 @@ namespace STROOP
             this.ColumnM64DDown,
             this.ColumnM64DLeft,
             this.ColumnM64DRight});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewM64Inputs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewM64Inputs.EnableHeadersVisualStyles = false;
             this.dataGridViewM64Inputs.Location = new System.Drawing.Point(0, 0);
@@ -15205,14 +14955,14 @@ namespace STROOP
             this.dataGridViewCoin.AllowUserToOrderColumns = true;
             this.dataGridViewCoin.AllowUserToResizeRows = false;
             this.dataGridViewCoin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridViewCoin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCoin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.rngIndex,
@@ -15233,8 +14983,8 @@ namespace STROOP
             // 
             // rngIndex
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle13;
             this.rngIndex.HeaderText = "RNG Index";
             this.rngIndex.MinimumWidth = 2;
             this.rngIndex.Name = "rngIndex";
@@ -15242,8 +14992,8 @@ namespace STROOP
             // 
             // rngValue
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngValue.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngValue.DefaultCellStyle = dataGridViewCellStyle14;
             this.rngValue.HeaderText = "RNG Value";
             this.rngValue.MinimumWidth = 2;
             this.rngValue.Name = "rngValue";
@@ -15251,8 +15001,8 @@ namespace STROOP
             // 
             // rngToGo
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle15;
             this.rngToGo.HeaderText = "RNG To Go";
             this.rngToGo.MinimumWidth = 2;
             this.rngToGo.Name = "rngToGo";
@@ -15260,24 +15010,24 @@ namespace STROOP
             // 
             // coinHSpeed
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle16;
             this.coinHSpeed.HeaderText = "Coin HSpeed";
             this.coinHSpeed.Name = "coinHSpeed";
             this.coinHSpeed.ReadOnly = true;
             // 
             // coinVSpeed
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle17;
             this.coinVSpeed.HeaderText = "Coin VSpeed";
             this.coinVSpeed.Name = "coinVSpeed";
             this.coinVSpeed.ReadOnly = true;
             // 
             // coinAngle
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle18;
             this.coinAngle.HeaderText = "Coin Angle";
             this.coinAngle.MinimumWidth = 2;
             this.coinAngle.Name = "coinAngle";
@@ -17540,156 +17290,18 @@ namespace STROOP
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel1.ColumnCount = 11;
+            this.tableLayoutPanel1.ColumnCount = 5;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 412F));
-            this.tableLayoutPanel1.Controls.Add(this.fileCoinScoreTextbox1, 10, 14);
-            this.tableLayoutPanel1.Controls.Add(this.fileCoinScoreTextbox2, 10, 13);
-            this.tableLayoutPanel1.Controls.Add(this.fileCoinScoreTextbox3, 10, 12);
-            this.tableLayoutPanel1.Controls.Add(this.fileCoinScoreTextbox4, 10, 11);
-            this.tableLayoutPanel1.Controls.Add(this.fileCoinScoreTextbox5, 10, 10);
-            this.tableLayoutPanel1.Controls.Add(this.fileCoinScoreTextbox6, 10, 9);
-            this.tableLayoutPanel1.Controls.Add(this.fileCoinScoreTextbox7, 10, 8);
-            this.tableLayoutPanel1.Controls.Add(this.fileCoinScoreTextbox8, 10, 7);
-            this.tableLayoutPanel1.Controls.Add(this.fileCoinScoreTextbox9, 10, 6);
-            this.tableLayoutPanel1.Controls.Add(this.fileCoinScoreTextbox10, 10, 5);
-            this.tableLayoutPanel1.Controls.Add(this.fileCoinScoreTextbox11, 10, 4);
-            this.tableLayoutPanel1.Controls.Add(this.fileCoinScoreTextbox12, 10, 3);
-            this.tableLayoutPanel1.Controls.Add(this.fileCoinScoreTextbox13, 10, 2);
-            this.tableLayoutPanel1.Controls.Add(this.fileCoinScoreTextbox14, 10, 1);
-            this.tableLayoutPanel1.Controls.Add(this.fileCoinScoreTextbox15, 10, 0);
-            this.tableLayoutPanel1.Controls.Add(this.fileBinaryPictureBox10, 9, 3);
-            this.tableLayoutPanel1.Controls.Add(this.fileBinaryPictureBox11, 9, 2);
-            this.tableLayoutPanel1.Controls.Add(this.fileBinaryPictureBox12, 9, 1);
-            this.tableLayoutPanel1.Controls.Add(this.fileBinaryPictureBox14, 8, 14);
-            this.tableLayoutPanel1.Controls.Add(this.fileBinaryPictureBox15, 8, 12);
-            this.tableLayoutPanel1.Controls.Add(this.fileBinaryPictureBox16, 8, 11);
-            this.tableLayoutPanel1.Controls.Add(this.fileBinaryPictureBox17, 8, 10);
-            this.tableLayoutPanel1.Controls.Add(this.fileBinaryPictureBox18, 8, 9);
-            this.tableLayoutPanel1.Controls.Add(this.fileBinaryPictureBox19, 8, 3);
-            this.tableLayoutPanel1.Controls.Add(this.fileBinaryPictureBox20, 8, 2);
-            this.tableLayoutPanel1.Controls.Add(this.fileBinaryPictureBox21, 8, 1);
-            this.tableLayoutPanel1.Controls.Add(this.fileBinaryPictureBox22, 8, 0);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox16, 7, 14);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox17, 7, 13);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox18, 7, 12);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox19, 7, 11);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox20, 7, 10);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox21, 7, 9);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox22, 7, 8);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox23, 7, 7);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox24, 7, 6);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox25, 7, 5);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox26, 7, 4);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox27, 7, 3);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox28, 7, 2);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox29, 7, 1);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox30, 7, 0);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox31, 6, 14);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox32, 6, 13);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox33, 6, 12);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox34, 6, 11);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox35, 6, 10);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox36, 6, 9);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox37, 6, 8);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox38, 6, 7);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox39, 6, 6);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox40, 6, 5);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox41, 6, 4);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox42, 6, 3);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox43, 6, 2);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox44, 6, 1);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox45, 6, 0);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox46, 5, 14);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox47, 5, 13);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox48, 5, 12);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox49, 5, 11);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox50, 5, 10);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox51, 5, 9);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox52, 5, 8);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox53, 5, 7);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox54, 5, 6);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox55, 5, 5);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox56, 5, 4);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox57, 5, 3);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox58, 5, 2);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox59, 5, 1);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox60, 5, 0);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox61, 4, 14);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox62, 4, 13);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox63, 4, 12);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox64, 4, 11);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox65, 4, 10);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox66, 4, 9);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox67, 4, 8);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox68, 4, 7);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox69, 4, 6);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox70, 4, 5);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox71, 4, 4);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox72, 4, 3);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox73, 4, 2);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox74, 4, 1);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox75, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox76, 3, 14);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox77, 3, 13);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox78, 3, 12);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox79, 3, 11);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox80, 3, 10);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox81, 3, 9);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox82, 3, 8);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox83, 3, 7);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox84, 3, 6);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox85, 3, 5);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox86, 3, 4);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox87, 3, 3);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox88, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox89, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox90, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox91, 2, 14);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox92, 2, 13);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox93, 2, 12);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox94, 2, 11);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox95, 2, 10);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox96, 2, 9);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox97, 2, 8);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox98, 2, 7);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox99, 2, 6);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox100, 2, 5);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox101, 2, 4);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox102, 2, 3);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox103, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox104, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox105, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox106, 1, 14);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox107, 1, 13);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox108, 1, 12);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox109, 1, 11);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox110, 1, 10);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox111, 1, 9);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox112, 1, 8);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox113, 1, 7);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox114, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox115, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox116, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox117, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox118, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox119, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.fileStarPictureBox120, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.fileBinaryPictureBox23, 8, 7);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.Controls.Add(this.mainSaveCourseLabel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label8, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label10, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label11, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.label12, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.fileCoinScoreTextbox1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label13, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.label14, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.label15, 0, 7);
@@ -17703,1896 +17315,23 @@ namespace STROOP
             this.tableLayoutPanel1.Location = new System.Drawing.Point(351, 18);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 15;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(280, 417);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666666F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666666F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666666F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666666F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666666F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666666F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666666F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666666F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666666F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666666F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666666F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666666F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666666F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666666F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.666666F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(176, 227);
             this.tableLayoutPanel1.TabIndex = 39;
-            // 
-            // fileCoinScoreTextbox1
-            // 
-            this.fileCoinScoreTextbox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileCoinScoreTextbox1.Location = new System.Drawing.Point(241, 379);
-            this.fileCoinScoreTextbox1.Margin = new System.Windows.Forms.Padding(0);
-            this.fileCoinScoreTextbox1.MaximumSize = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox1.Name = "fileCoinScoreTextbox1";
-            this.fileCoinScoreTextbox1.Size = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox1.TabIndex = 41;
-            this.fileCoinScoreTextbox1.Text = "100";
-            this.fileCoinScoreTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // fileCoinScoreTextbox2
-            // 
-            this.fileCoinScoreTextbox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileCoinScoreTextbox2.Location = new System.Drawing.Point(241, 352);
-            this.fileCoinScoreTextbox2.Margin = new System.Windows.Forms.Padding(0);
-            this.fileCoinScoreTextbox2.MaximumSize = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox2.Name = "fileCoinScoreTextbox2";
-            this.fileCoinScoreTextbox2.Size = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox2.TabIndex = 41;
-            this.fileCoinScoreTextbox2.Text = "100";
-            this.fileCoinScoreTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // fileCoinScoreTextbox3
-            // 
-            this.fileCoinScoreTextbox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileCoinScoreTextbox3.Location = new System.Drawing.Point(241, 325);
-            this.fileCoinScoreTextbox3.Margin = new System.Windows.Forms.Padding(0);
-            this.fileCoinScoreTextbox3.MaximumSize = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox3.Name = "fileCoinScoreTextbox3";
-            this.fileCoinScoreTextbox3.Size = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox3.TabIndex = 41;
-            this.fileCoinScoreTextbox3.Text = "100";
-            this.fileCoinScoreTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // fileCoinScoreTextbox4
-            // 
-            this.fileCoinScoreTextbox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileCoinScoreTextbox4.Location = new System.Drawing.Point(241, 298);
-            this.fileCoinScoreTextbox4.Margin = new System.Windows.Forms.Padding(0);
-            this.fileCoinScoreTextbox4.MaximumSize = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox4.Name = "fileCoinScoreTextbox4";
-            this.fileCoinScoreTextbox4.Size = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox4.TabIndex = 41;
-            this.fileCoinScoreTextbox4.Text = "100";
-            this.fileCoinScoreTextbox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // fileCoinScoreTextbox5
-            // 
-            this.fileCoinScoreTextbox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileCoinScoreTextbox5.Location = new System.Drawing.Point(241, 271);
-            this.fileCoinScoreTextbox5.Margin = new System.Windows.Forms.Padding(0);
-            this.fileCoinScoreTextbox5.MaximumSize = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox5.Name = "fileCoinScoreTextbox5";
-            this.fileCoinScoreTextbox5.Size = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox5.TabIndex = 41;
-            this.fileCoinScoreTextbox5.Text = "100";
-            this.fileCoinScoreTextbox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // fileCoinScoreTextbox6
-            // 
-            this.fileCoinScoreTextbox6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileCoinScoreTextbox6.Location = new System.Drawing.Point(241, 244);
-            this.fileCoinScoreTextbox6.Margin = new System.Windows.Forms.Padding(0);
-            this.fileCoinScoreTextbox6.MaximumSize = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox6.Name = "fileCoinScoreTextbox6";
-            this.fileCoinScoreTextbox6.Size = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox6.TabIndex = 41;
-            this.fileCoinScoreTextbox6.Text = "100";
-            this.fileCoinScoreTextbox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // fileCoinScoreTextbox7
-            // 
-            this.fileCoinScoreTextbox7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileCoinScoreTextbox7.Location = new System.Drawing.Point(241, 217);
-            this.fileCoinScoreTextbox7.Margin = new System.Windows.Forms.Padding(0);
-            this.fileCoinScoreTextbox7.MaximumSize = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox7.Name = "fileCoinScoreTextbox7";
-            this.fileCoinScoreTextbox7.Size = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox7.TabIndex = 41;
-            this.fileCoinScoreTextbox7.Text = "100";
-            this.fileCoinScoreTextbox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // fileCoinScoreTextbox8
-            // 
-            this.fileCoinScoreTextbox8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileCoinScoreTextbox8.Location = new System.Drawing.Point(241, 190);
-            this.fileCoinScoreTextbox8.Margin = new System.Windows.Forms.Padding(0);
-            this.fileCoinScoreTextbox8.MaximumSize = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox8.Name = "fileCoinScoreTextbox8";
-            this.fileCoinScoreTextbox8.Size = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox8.TabIndex = 41;
-            this.fileCoinScoreTextbox8.Text = "100";
-            this.fileCoinScoreTextbox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // fileCoinScoreTextbox9
-            // 
-            this.fileCoinScoreTextbox9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileCoinScoreTextbox9.Location = new System.Drawing.Point(241, 163);
-            this.fileCoinScoreTextbox9.Margin = new System.Windows.Forms.Padding(0);
-            this.fileCoinScoreTextbox9.MaximumSize = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox9.Name = "fileCoinScoreTextbox9";
-            this.fileCoinScoreTextbox9.Size = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox9.TabIndex = 41;
-            this.fileCoinScoreTextbox9.Text = "100";
-            this.fileCoinScoreTextbox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // fileCoinScoreTextbox10
-            // 
-            this.fileCoinScoreTextbox10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileCoinScoreTextbox10.Location = new System.Drawing.Point(241, 136);
-            this.fileCoinScoreTextbox10.Margin = new System.Windows.Forms.Padding(0);
-            this.fileCoinScoreTextbox10.MaximumSize = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox10.Name = "fileCoinScoreTextbox10";
-            this.fileCoinScoreTextbox10.Size = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox10.TabIndex = 41;
-            this.fileCoinScoreTextbox10.Text = "100";
-            this.fileCoinScoreTextbox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // fileCoinScoreTextbox11
-            // 
-            this.fileCoinScoreTextbox11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileCoinScoreTextbox11.Location = new System.Drawing.Point(241, 109);
-            this.fileCoinScoreTextbox11.Margin = new System.Windows.Forms.Padding(0);
-            this.fileCoinScoreTextbox11.MaximumSize = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox11.Name = "fileCoinScoreTextbox11";
-            this.fileCoinScoreTextbox11.Size = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox11.TabIndex = 41;
-            this.fileCoinScoreTextbox11.Text = "100";
-            this.fileCoinScoreTextbox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // fileCoinScoreTextbox12
-            // 
-            this.fileCoinScoreTextbox12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileCoinScoreTextbox12.Location = new System.Drawing.Point(241, 82);
-            this.fileCoinScoreTextbox12.Margin = new System.Windows.Forms.Padding(0);
-            this.fileCoinScoreTextbox12.MaximumSize = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox12.Name = "fileCoinScoreTextbox12";
-            this.fileCoinScoreTextbox12.Size = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox12.TabIndex = 41;
-            this.fileCoinScoreTextbox12.Text = "100";
-            this.fileCoinScoreTextbox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // fileCoinScoreTextbox13
-            // 
-            this.fileCoinScoreTextbox13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileCoinScoreTextbox13.Location = new System.Drawing.Point(241, 55);
-            this.fileCoinScoreTextbox13.Margin = new System.Windows.Forms.Padding(0);
-            this.fileCoinScoreTextbox13.MaximumSize = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox13.Name = "fileCoinScoreTextbox13";
-            this.fileCoinScoreTextbox13.Size = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox13.TabIndex = 41;
-            this.fileCoinScoreTextbox13.Text = "100";
-            this.fileCoinScoreTextbox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // fileCoinScoreTextbox14
-            // 
-            this.fileCoinScoreTextbox14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileCoinScoreTextbox14.Location = new System.Drawing.Point(241, 28);
-            this.fileCoinScoreTextbox14.Margin = new System.Windows.Forms.Padding(0);
-            this.fileCoinScoreTextbox14.MaximumSize = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox14.Name = "fileCoinScoreTextbox14";
-            this.fileCoinScoreTextbox14.Size = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox14.TabIndex = 41;
-            this.fileCoinScoreTextbox14.Text = "100";
-            this.fileCoinScoreTextbox14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // fileCoinScoreTextbox15
-            // 
-            this.fileCoinScoreTextbox15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileCoinScoreTextbox15.Location = new System.Drawing.Point(241, 1);
-            this.fileCoinScoreTextbox15.Margin = new System.Windows.Forms.Padding(0);
-            this.fileCoinScoreTextbox15.MaximumSize = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox15.Name = "fileCoinScoreTextbox15";
-            this.fileCoinScoreTextbox15.Size = new System.Drawing.Size(38, 15);
-            this.fileCoinScoreTextbox15.TabIndex = 40;
-            this.fileCoinScoreTextbox15.Text = "100";
-            this.fileCoinScoreTextbox15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // fileBinaryPictureBox10
-            // 
-            this.fileBinaryPictureBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileBinaryPictureBox10.Image = ((System.Drawing.Image)(resources.GetObject("fileBinaryPictureBox10.Image")));
-            this.fileBinaryPictureBox10.Location = new System.Drawing.Point(220, 82);
-            this.fileBinaryPictureBox10.Margin = new System.Windows.Forms.Padding(0);
-            this.fileBinaryPictureBox10.Name = "fileBinaryPictureBox10";
-            this.fileBinaryPictureBox10.Size = new System.Drawing.Size(20, 26);
-            this.fileBinaryPictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileBinaryPictureBox10.TabIndex = 49;
-            this.fileBinaryPictureBox10.TabStop = false;
-            // 
-            // fileBinaryPictureBox11
-            // 
-            this.fileBinaryPictureBox11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileBinaryPictureBox11.Image = ((System.Drawing.Image)(resources.GetObject("fileBinaryPictureBox11.Image")));
-            this.fileBinaryPictureBox11.Location = new System.Drawing.Point(220, 55);
-            this.fileBinaryPictureBox11.Margin = new System.Windows.Forms.Padding(0);
-            this.fileBinaryPictureBox11.Name = "fileBinaryPictureBox11";
-            this.fileBinaryPictureBox11.Size = new System.Drawing.Size(20, 26);
-            this.fileBinaryPictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileBinaryPictureBox11.TabIndex = 49;
-            this.fileBinaryPictureBox11.TabStop = false;
-            // 
-            // fileBinaryPictureBox12
-            // 
-            this.fileBinaryPictureBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileBinaryPictureBox12.Image = ((System.Drawing.Image)(resources.GetObject("fileBinaryPictureBox12.Image")));
-            this.fileBinaryPictureBox12.Location = new System.Drawing.Point(220, 28);
-            this.fileBinaryPictureBox12.Margin = new System.Windows.Forms.Padding(0);
-            this.fileBinaryPictureBox12.Name = "fileBinaryPictureBox12";
-            this.fileBinaryPictureBox12.Size = new System.Drawing.Size(20, 26);
-            this.fileBinaryPictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileBinaryPictureBox12.TabIndex = 49;
-            this.fileBinaryPictureBox12.TabStop = false;
-            // 
-            // fileBinaryPictureBox14
-            // 
-            this.fileBinaryPictureBox14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileBinaryPictureBox14.Image = ((System.Drawing.Image)(resources.GetObject("fileBinaryPictureBox14.Image")));
-            this.fileBinaryPictureBox14.Location = new System.Drawing.Point(199, 379);
-            this.fileBinaryPictureBox14.Margin = new System.Windows.Forms.Padding(0);
-            this.fileBinaryPictureBox14.Name = "fileBinaryPictureBox14";
-            this.fileBinaryPictureBox14.Size = new System.Drawing.Size(20, 37);
-            this.fileBinaryPictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileBinaryPictureBox14.TabIndex = 49;
-            this.fileBinaryPictureBox14.TabStop = false;
-            // 
-            // fileBinaryPictureBox15
-            // 
-            this.fileBinaryPictureBox15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileBinaryPictureBox15.Image = ((System.Drawing.Image)(resources.GetObject("fileBinaryPictureBox15.Image")));
-            this.fileBinaryPictureBox15.Location = new System.Drawing.Point(199, 325);
-            this.fileBinaryPictureBox15.Margin = new System.Windows.Forms.Padding(0);
-            this.fileBinaryPictureBox15.Name = "fileBinaryPictureBox15";
-            this.fileBinaryPictureBox15.Size = new System.Drawing.Size(20, 26);
-            this.fileBinaryPictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileBinaryPictureBox15.TabIndex = 49;
-            this.fileBinaryPictureBox15.TabStop = false;
-            // 
-            // fileBinaryPictureBox16
-            // 
-            this.fileBinaryPictureBox16.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileBinaryPictureBox16.Image = ((System.Drawing.Image)(resources.GetObject("fileBinaryPictureBox16.Image")));
-            this.fileBinaryPictureBox16.Location = new System.Drawing.Point(199, 298);
-            this.fileBinaryPictureBox16.Margin = new System.Windows.Forms.Padding(0);
-            this.fileBinaryPictureBox16.Name = "fileBinaryPictureBox16";
-            this.fileBinaryPictureBox16.Size = new System.Drawing.Size(20, 26);
-            this.fileBinaryPictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileBinaryPictureBox16.TabIndex = 49;
-            this.fileBinaryPictureBox16.TabStop = false;
-            // 
-            // fileBinaryPictureBox17
-            // 
-            this.fileBinaryPictureBox17.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileBinaryPictureBox17.Image = ((System.Drawing.Image)(resources.GetObject("fileBinaryPictureBox17.Image")));
-            this.fileBinaryPictureBox17.Location = new System.Drawing.Point(199, 271);
-            this.fileBinaryPictureBox17.Margin = new System.Windows.Forms.Padding(0);
-            this.fileBinaryPictureBox17.Name = "fileBinaryPictureBox17";
-            this.fileBinaryPictureBox17.Size = new System.Drawing.Size(20, 26);
-            this.fileBinaryPictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileBinaryPictureBox17.TabIndex = 49;
-            this.fileBinaryPictureBox17.TabStop = false;
-            // 
-            // fileBinaryPictureBox18
-            // 
-            this.fileBinaryPictureBox18.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileBinaryPictureBox18.Image = ((System.Drawing.Image)(resources.GetObject("fileBinaryPictureBox18.Image")));
-            this.fileBinaryPictureBox18.Location = new System.Drawing.Point(199, 244);
-            this.fileBinaryPictureBox18.Margin = new System.Windows.Forms.Padding(0);
-            this.fileBinaryPictureBox18.Name = "fileBinaryPictureBox18";
-            this.fileBinaryPictureBox18.Size = new System.Drawing.Size(20, 26);
-            this.fileBinaryPictureBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileBinaryPictureBox18.TabIndex = 49;
-            this.fileBinaryPictureBox18.TabStop = false;
-            // 
-            // fileBinaryPictureBox19
-            // 
-            this.fileBinaryPictureBox19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileBinaryPictureBox19.Image = ((System.Drawing.Image)(resources.GetObject("fileBinaryPictureBox19.Image")));
-            this.fileBinaryPictureBox19.Location = new System.Drawing.Point(199, 82);
-            this.fileBinaryPictureBox19.Margin = new System.Windows.Forms.Padding(0);
-            this.fileBinaryPictureBox19.Name = "fileBinaryPictureBox19";
-            this.fileBinaryPictureBox19.Size = new System.Drawing.Size(20, 26);
-            this.fileBinaryPictureBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileBinaryPictureBox19.TabIndex = 49;
-            this.fileBinaryPictureBox19.TabStop = false;
-            // 
-            // fileBinaryPictureBox20
-            // 
-            this.fileBinaryPictureBox20.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileBinaryPictureBox20.Image = ((System.Drawing.Image)(resources.GetObject("fileBinaryPictureBox20.Image")));
-            this.fileBinaryPictureBox20.Location = new System.Drawing.Point(199, 55);
-            this.fileBinaryPictureBox20.Margin = new System.Windows.Forms.Padding(0);
-            this.fileBinaryPictureBox20.Name = "fileBinaryPictureBox20";
-            this.fileBinaryPictureBox20.Size = new System.Drawing.Size(20, 26);
-            this.fileBinaryPictureBox20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileBinaryPictureBox20.TabIndex = 49;
-            this.fileBinaryPictureBox20.TabStop = false;
-            // 
-            // fileBinaryPictureBox21
-            // 
-            this.fileBinaryPictureBox21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileBinaryPictureBox21.Image = ((System.Drawing.Image)(resources.GetObject("fileBinaryPictureBox21.Image")));
-            this.fileBinaryPictureBox21.Location = new System.Drawing.Point(199, 28);
-            this.fileBinaryPictureBox21.Margin = new System.Windows.Forms.Padding(0);
-            this.fileBinaryPictureBox21.Name = "fileBinaryPictureBox21";
-            this.fileBinaryPictureBox21.Size = new System.Drawing.Size(20, 26);
-            this.fileBinaryPictureBox21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileBinaryPictureBox21.TabIndex = 49;
-            this.fileBinaryPictureBox21.TabStop = false;
-            // 
-            // fileBinaryPictureBox22
-            // 
-            this.fileBinaryPictureBox22.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileBinaryPictureBox22.Image = ((System.Drawing.Image)(resources.GetObject("fileBinaryPictureBox22.Image")));
-            this.fileBinaryPictureBox22.Location = new System.Drawing.Point(199, 1);
-            this.fileBinaryPictureBox22.Margin = new System.Windows.Forms.Padding(0);
-            this.fileBinaryPictureBox22.Name = "fileBinaryPictureBox22";
-            this.fileBinaryPictureBox22.Size = new System.Drawing.Size(20, 26);
-            this.fileBinaryPictureBox22.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileBinaryPictureBox22.TabIndex = 48;
-            this.fileBinaryPictureBox22.TabStop = false;
-            // 
-            // fileStarPictureBox16
-            // 
-            this.fileStarPictureBox16.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox16.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox16.Image")));
-            this.fileStarPictureBox16.Location = new System.Drawing.Point(178, 379);
-            this.fileStarPictureBox16.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox16.Name = "fileStarPictureBox16";
-            this.fileStarPictureBox16.Size = new System.Drawing.Size(20, 37);
-            this.fileStarPictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox16.TabIndex = 47;
-            this.fileStarPictureBox16.TabStop = false;
-            // 
-            // fileStarPictureBox17
-            // 
-            this.fileStarPictureBox17.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox17.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox17.Image")));
-            this.fileStarPictureBox17.Location = new System.Drawing.Point(178, 352);
-            this.fileStarPictureBox17.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox17.Name = "fileStarPictureBox17";
-            this.fileStarPictureBox17.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox17.TabIndex = 47;
-            this.fileStarPictureBox17.TabStop = false;
-            // 
-            // fileStarPictureBox18
-            // 
-            this.fileStarPictureBox18.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox18.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox18.Image")));
-            this.fileStarPictureBox18.Location = new System.Drawing.Point(178, 325);
-            this.fileStarPictureBox18.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox18.Name = "fileStarPictureBox18";
-            this.fileStarPictureBox18.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox18.TabIndex = 47;
-            this.fileStarPictureBox18.TabStop = false;
-            // 
-            // fileStarPictureBox19
-            // 
-            this.fileStarPictureBox19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox19.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox19.Image")));
-            this.fileStarPictureBox19.Location = new System.Drawing.Point(178, 298);
-            this.fileStarPictureBox19.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox19.Name = "fileStarPictureBox19";
-            this.fileStarPictureBox19.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox19.TabIndex = 47;
-            this.fileStarPictureBox19.TabStop = false;
-            // 
-            // fileStarPictureBox20
-            // 
-            this.fileStarPictureBox20.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox20.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox20.Image")));
-            this.fileStarPictureBox20.Location = new System.Drawing.Point(178, 271);
-            this.fileStarPictureBox20.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox20.Name = "fileStarPictureBox20";
-            this.fileStarPictureBox20.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox20.TabIndex = 47;
-            this.fileStarPictureBox20.TabStop = false;
-            // 
-            // fileStarPictureBox21
-            // 
-            this.fileStarPictureBox21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox21.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox21.Image")));
-            this.fileStarPictureBox21.Location = new System.Drawing.Point(178, 244);
-            this.fileStarPictureBox21.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox21.Name = "fileStarPictureBox21";
-            this.fileStarPictureBox21.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox21.TabIndex = 47;
-            this.fileStarPictureBox21.TabStop = false;
-            // 
-            // fileStarPictureBox22
-            // 
-            this.fileStarPictureBox22.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox22.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox22.Image")));
-            this.fileStarPictureBox22.Location = new System.Drawing.Point(178, 217);
-            this.fileStarPictureBox22.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox22.Name = "fileStarPictureBox22";
-            this.fileStarPictureBox22.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox22.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox22.TabIndex = 47;
-            this.fileStarPictureBox22.TabStop = false;
-            // 
-            // fileStarPictureBox23
-            // 
-            this.fileStarPictureBox23.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox23.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox23.Image")));
-            this.fileStarPictureBox23.Location = new System.Drawing.Point(178, 190);
-            this.fileStarPictureBox23.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox23.Name = "fileStarPictureBox23";
-            this.fileStarPictureBox23.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox23.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox23.TabIndex = 47;
-            this.fileStarPictureBox23.TabStop = false;
-            // 
-            // fileStarPictureBox24
-            // 
-            this.fileStarPictureBox24.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox24.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox24.Image")));
-            this.fileStarPictureBox24.Location = new System.Drawing.Point(178, 163);
-            this.fileStarPictureBox24.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox24.Name = "fileStarPictureBox24";
-            this.fileStarPictureBox24.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox24.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox24.TabIndex = 47;
-            this.fileStarPictureBox24.TabStop = false;
-            // 
-            // fileStarPictureBox25
-            // 
-            this.fileStarPictureBox25.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox25.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox25.Image")));
-            this.fileStarPictureBox25.Location = new System.Drawing.Point(178, 136);
-            this.fileStarPictureBox25.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox25.Name = "fileStarPictureBox25";
-            this.fileStarPictureBox25.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox25.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox25.TabIndex = 47;
-            this.fileStarPictureBox25.TabStop = false;
-            // 
-            // fileStarPictureBox26
-            // 
-            this.fileStarPictureBox26.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox26.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox26.Image")));
-            this.fileStarPictureBox26.Location = new System.Drawing.Point(178, 109);
-            this.fileStarPictureBox26.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox26.Name = "fileStarPictureBox26";
-            this.fileStarPictureBox26.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox26.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox26.TabIndex = 47;
-            this.fileStarPictureBox26.TabStop = false;
-            // 
-            // fileStarPictureBox27
-            // 
-            this.fileStarPictureBox27.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox27.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox27.Image")));
-            this.fileStarPictureBox27.Location = new System.Drawing.Point(178, 82);
-            this.fileStarPictureBox27.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox27.Name = "fileStarPictureBox27";
-            this.fileStarPictureBox27.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox27.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox27.TabIndex = 47;
-            this.fileStarPictureBox27.TabStop = false;
-            // 
-            // fileStarPictureBox28
-            // 
-            this.fileStarPictureBox28.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox28.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox28.Image")));
-            this.fileStarPictureBox28.Location = new System.Drawing.Point(178, 55);
-            this.fileStarPictureBox28.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox28.Name = "fileStarPictureBox28";
-            this.fileStarPictureBox28.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox28.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox28.TabIndex = 47;
-            this.fileStarPictureBox28.TabStop = false;
-            // 
-            // fileStarPictureBox29
-            // 
-            this.fileStarPictureBox29.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox29.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox29.Image")));
-            this.fileStarPictureBox29.Location = new System.Drawing.Point(178, 28);
-            this.fileStarPictureBox29.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox29.Name = "fileStarPictureBox29";
-            this.fileStarPictureBox29.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox29.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox29.TabIndex = 47;
-            this.fileStarPictureBox29.TabStop = false;
-            // 
-            // fileStarPictureBox30
-            // 
-            this.fileStarPictureBox30.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox30.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox30.Image")));
-            this.fileStarPictureBox30.Location = new System.Drawing.Point(178, 1);
-            this.fileStarPictureBox30.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox30.Name = "fileStarPictureBox30";
-            this.fileStarPictureBox30.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox30.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox30.TabIndex = 47;
-            this.fileStarPictureBox30.TabStop = false;
-            // 
-            // fileStarPictureBox31
-            // 
-            this.fileStarPictureBox31.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox31.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox31.Image")));
-            this.fileStarPictureBox31.Location = new System.Drawing.Point(157, 379);
-            this.fileStarPictureBox31.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox31.Name = "fileStarPictureBox31";
-            this.fileStarPictureBox31.Size = new System.Drawing.Size(20, 37);
-            this.fileStarPictureBox31.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox31.TabIndex = 46;
-            this.fileStarPictureBox31.TabStop = false;
-            // 
-            // fileStarPictureBox32
-            // 
-            this.fileStarPictureBox32.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox32.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox32.Image")));
-            this.fileStarPictureBox32.Location = new System.Drawing.Point(157, 352);
-            this.fileStarPictureBox32.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox32.Name = "fileStarPictureBox32";
-            this.fileStarPictureBox32.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox32.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox32.TabIndex = 46;
-            this.fileStarPictureBox32.TabStop = false;
-            // 
-            // fileStarPictureBox33
-            // 
-            this.fileStarPictureBox33.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox33.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox33.Image")));
-            this.fileStarPictureBox33.Location = new System.Drawing.Point(157, 325);
-            this.fileStarPictureBox33.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox33.Name = "fileStarPictureBox33";
-            this.fileStarPictureBox33.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox33.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox33.TabIndex = 46;
-            this.fileStarPictureBox33.TabStop = false;
-            // 
-            // fileStarPictureBox34
-            // 
-            this.fileStarPictureBox34.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox34.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox34.Image")));
-            this.fileStarPictureBox34.Location = new System.Drawing.Point(157, 298);
-            this.fileStarPictureBox34.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox34.Name = "fileStarPictureBox34";
-            this.fileStarPictureBox34.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox34.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox34.TabIndex = 46;
-            this.fileStarPictureBox34.TabStop = false;
-            // 
-            // fileStarPictureBox35
-            // 
-            this.fileStarPictureBox35.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox35.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox35.Image")));
-            this.fileStarPictureBox35.Location = new System.Drawing.Point(157, 271);
-            this.fileStarPictureBox35.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox35.Name = "fileStarPictureBox35";
-            this.fileStarPictureBox35.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox35.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox35.TabIndex = 46;
-            this.fileStarPictureBox35.TabStop = false;
-            // 
-            // fileStarPictureBox36
-            // 
-            this.fileStarPictureBox36.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox36.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox36.Image")));
-            this.fileStarPictureBox36.Location = new System.Drawing.Point(157, 244);
-            this.fileStarPictureBox36.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox36.Name = "fileStarPictureBox36";
-            this.fileStarPictureBox36.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox36.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox36.TabIndex = 46;
-            this.fileStarPictureBox36.TabStop = false;
-            // 
-            // fileStarPictureBox37
-            // 
-            this.fileStarPictureBox37.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox37.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox37.Image")));
-            this.fileStarPictureBox37.Location = new System.Drawing.Point(157, 217);
-            this.fileStarPictureBox37.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox37.Name = "fileStarPictureBox37";
-            this.fileStarPictureBox37.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox37.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox37.TabIndex = 46;
-            this.fileStarPictureBox37.TabStop = false;
-            // 
-            // fileStarPictureBox38
-            // 
-            this.fileStarPictureBox38.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox38.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox38.Image")));
-            this.fileStarPictureBox38.Location = new System.Drawing.Point(157, 190);
-            this.fileStarPictureBox38.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox38.Name = "fileStarPictureBox38";
-            this.fileStarPictureBox38.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox38.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox38.TabIndex = 46;
-            this.fileStarPictureBox38.TabStop = false;
-            // 
-            // fileStarPictureBox39
-            // 
-            this.fileStarPictureBox39.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox39.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox39.Image")));
-            this.fileStarPictureBox39.Location = new System.Drawing.Point(157, 163);
-            this.fileStarPictureBox39.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox39.Name = "fileStarPictureBox39";
-            this.fileStarPictureBox39.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox39.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox39.TabIndex = 46;
-            this.fileStarPictureBox39.TabStop = false;
-            // 
-            // fileStarPictureBox40
-            // 
-            this.fileStarPictureBox40.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox40.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox40.Image")));
-            this.fileStarPictureBox40.Location = new System.Drawing.Point(157, 136);
-            this.fileStarPictureBox40.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox40.Name = "fileStarPictureBox40";
-            this.fileStarPictureBox40.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox40.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox40.TabIndex = 46;
-            this.fileStarPictureBox40.TabStop = false;
-            // 
-            // fileStarPictureBox41
-            // 
-            this.fileStarPictureBox41.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox41.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox41.Image")));
-            this.fileStarPictureBox41.Location = new System.Drawing.Point(157, 109);
-            this.fileStarPictureBox41.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox41.Name = "fileStarPictureBox41";
-            this.fileStarPictureBox41.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox41.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox41.TabIndex = 46;
-            this.fileStarPictureBox41.TabStop = false;
-            // 
-            // fileStarPictureBox42
-            // 
-            this.fileStarPictureBox42.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox42.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox42.Image")));
-            this.fileStarPictureBox42.Location = new System.Drawing.Point(157, 82);
-            this.fileStarPictureBox42.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox42.Name = "fileStarPictureBox42";
-            this.fileStarPictureBox42.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox42.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox42.TabIndex = 46;
-            this.fileStarPictureBox42.TabStop = false;
-            // 
-            // fileStarPictureBox43
-            // 
-            this.fileStarPictureBox43.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox43.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox43.Image")));
-            this.fileStarPictureBox43.Location = new System.Drawing.Point(157, 55);
-            this.fileStarPictureBox43.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox43.Name = "fileStarPictureBox43";
-            this.fileStarPictureBox43.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox43.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox43.TabIndex = 46;
-            this.fileStarPictureBox43.TabStop = false;
-            // 
-            // fileStarPictureBox44
-            // 
-            this.fileStarPictureBox44.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox44.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox44.Image")));
-            this.fileStarPictureBox44.Location = new System.Drawing.Point(157, 28);
-            this.fileStarPictureBox44.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox44.Name = "fileStarPictureBox44";
-            this.fileStarPictureBox44.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox44.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox44.TabIndex = 46;
-            this.fileStarPictureBox44.TabStop = false;
-            // 
-            // fileStarPictureBox45
-            // 
-            this.fileStarPictureBox45.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox45.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox45.Image")));
-            this.fileStarPictureBox45.Location = new System.Drawing.Point(157, 1);
-            this.fileStarPictureBox45.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox45.Name = "fileStarPictureBox45";
-            this.fileStarPictureBox45.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox45.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox45.TabIndex = 46;
-            this.fileStarPictureBox45.TabStop = false;
-            // 
-            // fileStarPictureBox46
-            // 
-            this.fileStarPictureBox46.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox46.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox46.Image")));
-            this.fileStarPictureBox46.Location = new System.Drawing.Point(136, 379);
-            this.fileStarPictureBox46.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox46.Name = "fileStarPictureBox46";
-            this.fileStarPictureBox46.Size = new System.Drawing.Size(20, 37);
-            this.fileStarPictureBox46.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox46.TabIndex = 46;
-            this.fileStarPictureBox46.TabStop = false;
-            // 
-            // fileStarPictureBox47
-            // 
-            this.fileStarPictureBox47.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox47.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox47.Image")));
-            this.fileStarPictureBox47.Location = new System.Drawing.Point(136, 352);
-            this.fileStarPictureBox47.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox47.Name = "fileStarPictureBox47";
-            this.fileStarPictureBox47.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox47.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox47.TabIndex = 46;
-            this.fileStarPictureBox47.TabStop = false;
-            // 
-            // fileStarPictureBox48
-            // 
-            this.fileStarPictureBox48.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox48.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox48.Image")));
-            this.fileStarPictureBox48.Location = new System.Drawing.Point(136, 325);
-            this.fileStarPictureBox48.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox48.Name = "fileStarPictureBox48";
-            this.fileStarPictureBox48.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox48.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox48.TabIndex = 46;
-            this.fileStarPictureBox48.TabStop = false;
-            // 
-            // fileStarPictureBox49
-            // 
-            this.fileStarPictureBox49.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox49.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox49.Image")));
-            this.fileStarPictureBox49.Location = new System.Drawing.Point(136, 298);
-            this.fileStarPictureBox49.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox49.Name = "fileStarPictureBox49";
-            this.fileStarPictureBox49.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox49.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox49.TabIndex = 46;
-            this.fileStarPictureBox49.TabStop = false;
-            // 
-            // fileStarPictureBox50
-            // 
-            this.fileStarPictureBox50.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox50.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox50.Image")));
-            this.fileStarPictureBox50.Location = new System.Drawing.Point(136, 271);
-            this.fileStarPictureBox50.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox50.Name = "fileStarPictureBox50";
-            this.fileStarPictureBox50.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox50.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox50.TabIndex = 46;
-            this.fileStarPictureBox50.TabStop = false;
-            // 
-            // fileStarPictureBox51
-            // 
-            this.fileStarPictureBox51.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox51.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox51.Image")));
-            this.fileStarPictureBox51.Location = new System.Drawing.Point(136, 244);
-            this.fileStarPictureBox51.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox51.Name = "fileStarPictureBox51";
-            this.fileStarPictureBox51.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox51.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox51.TabIndex = 46;
-            this.fileStarPictureBox51.TabStop = false;
-            // 
-            // fileStarPictureBox52
-            // 
-            this.fileStarPictureBox52.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox52.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox52.Image")));
-            this.fileStarPictureBox52.Location = new System.Drawing.Point(136, 217);
-            this.fileStarPictureBox52.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox52.Name = "fileStarPictureBox52";
-            this.fileStarPictureBox52.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox52.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox52.TabIndex = 46;
-            this.fileStarPictureBox52.TabStop = false;
-            // 
-            // fileStarPictureBox53
-            // 
-            this.fileStarPictureBox53.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox53.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox53.Image")));
-            this.fileStarPictureBox53.Location = new System.Drawing.Point(136, 190);
-            this.fileStarPictureBox53.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox53.Name = "fileStarPictureBox53";
-            this.fileStarPictureBox53.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox53.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox53.TabIndex = 46;
-            this.fileStarPictureBox53.TabStop = false;
-            // 
-            // fileStarPictureBox54
-            // 
-            this.fileStarPictureBox54.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox54.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox54.Image")));
-            this.fileStarPictureBox54.Location = new System.Drawing.Point(136, 163);
-            this.fileStarPictureBox54.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox54.Name = "fileStarPictureBox54";
-            this.fileStarPictureBox54.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox54.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox54.TabIndex = 46;
-            this.fileStarPictureBox54.TabStop = false;
-            // 
-            // fileStarPictureBox55
-            // 
-            this.fileStarPictureBox55.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox55.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox55.Image")));
-            this.fileStarPictureBox55.Location = new System.Drawing.Point(136, 136);
-            this.fileStarPictureBox55.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox55.Name = "fileStarPictureBox55";
-            this.fileStarPictureBox55.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox55.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox55.TabIndex = 46;
-            this.fileStarPictureBox55.TabStop = false;
-            // 
-            // fileStarPictureBox56
-            // 
-            this.fileStarPictureBox56.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox56.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox56.Image")));
-            this.fileStarPictureBox56.Location = new System.Drawing.Point(136, 109);
-            this.fileStarPictureBox56.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox56.Name = "fileStarPictureBox56";
-            this.fileStarPictureBox56.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox56.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox56.TabIndex = 46;
-            this.fileStarPictureBox56.TabStop = false;
-            // 
-            // fileStarPictureBox57
-            // 
-            this.fileStarPictureBox57.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox57.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox57.Image")));
-            this.fileStarPictureBox57.Location = new System.Drawing.Point(136, 82);
-            this.fileStarPictureBox57.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox57.Name = "fileStarPictureBox57";
-            this.fileStarPictureBox57.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox57.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox57.TabIndex = 46;
-            this.fileStarPictureBox57.TabStop = false;
-            // 
-            // fileStarPictureBox58
-            // 
-            this.fileStarPictureBox58.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox58.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox58.Image")));
-            this.fileStarPictureBox58.Location = new System.Drawing.Point(136, 55);
-            this.fileStarPictureBox58.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox58.Name = "fileStarPictureBox58";
-            this.fileStarPictureBox58.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox58.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox58.TabIndex = 46;
-            this.fileStarPictureBox58.TabStop = false;
-            // 
-            // fileStarPictureBox59
-            // 
-            this.fileStarPictureBox59.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox59.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox59.Image")));
-            this.fileStarPictureBox59.Location = new System.Drawing.Point(136, 28);
-            this.fileStarPictureBox59.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox59.Name = "fileStarPictureBox59";
-            this.fileStarPictureBox59.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox59.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox59.TabIndex = 45;
-            this.fileStarPictureBox59.TabStop = false;
-            // 
-            // fileStarPictureBox60
-            // 
-            this.fileStarPictureBox60.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox60.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox60.Image")));
-            this.fileStarPictureBox60.Location = new System.Drawing.Point(136, 1);
-            this.fileStarPictureBox60.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox60.Name = "fileStarPictureBox60";
-            this.fileStarPictureBox60.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox60.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox60.TabIndex = 45;
-            this.fileStarPictureBox60.TabStop = false;
-            // 
-            // fileStarPictureBox61
-            // 
-            this.fileStarPictureBox61.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox61.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox61.Image")));
-            this.fileStarPictureBox61.Location = new System.Drawing.Point(115, 379);
-            this.fileStarPictureBox61.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox61.Name = "fileStarPictureBox61";
-            this.fileStarPictureBox61.Size = new System.Drawing.Size(20, 37);
-            this.fileStarPictureBox61.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox61.TabIndex = 44;
-            this.fileStarPictureBox61.TabStop = false;
-            // 
-            // fileStarPictureBox62
-            // 
-            this.fileStarPictureBox62.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox62.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox62.Image")));
-            this.fileStarPictureBox62.Location = new System.Drawing.Point(115, 352);
-            this.fileStarPictureBox62.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox62.Name = "fileStarPictureBox62";
-            this.fileStarPictureBox62.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox62.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox62.TabIndex = 44;
-            this.fileStarPictureBox62.TabStop = false;
-            // 
-            // fileStarPictureBox63
-            // 
-            this.fileStarPictureBox63.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox63.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox63.Image")));
-            this.fileStarPictureBox63.Location = new System.Drawing.Point(115, 325);
-            this.fileStarPictureBox63.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox63.Name = "fileStarPictureBox63";
-            this.fileStarPictureBox63.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox63.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox63.TabIndex = 44;
-            this.fileStarPictureBox63.TabStop = false;
-            // 
-            // fileStarPictureBox64
-            // 
-            this.fileStarPictureBox64.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox64.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox64.Image")));
-            this.fileStarPictureBox64.Location = new System.Drawing.Point(115, 298);
-            this.fileStarPictureBox64.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox64.Name = "fileStarPictureBox64";
-            this.fileStarPictureBox64.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox64.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox64.TabIndex = 44;
-            this.fileStarPictureBox64.TabStop = false;
-            // 
-            // fileStarPictureBox65
-            // 
-            this.fileStarPictureBox65.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox65.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox65.Image")));
-            this.fileStarPictureBox65.Location = new System.Drawing.Point(115, 271);
-            this.fileStarPictureBox65.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox65.Name = "fileStarPictureBox65";
-            this.fileStarPictureBox65.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox65.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox65.TabIndex = 44;
-            this.fileStarPictureBox65.TabStop = false;
-            // 
-            // fileStarPictureBox66
-            // 
-            this.fileStarPictureBox66.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox66.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox66.Image")));
-            this.fileStarPictureBox66.Location = new System.Drawing.Point(115, 244);
-            this.fileStarPictureBox66.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox66.Name = "fileStarPictureBox66";
-            this.fileStarPictureBox66.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox66.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox66.TabIndex = 44;
-            this.fileStarPictureBox66.TabStop = false;
-            // 
-            // fileStarPictureBox67
-            // 
-            this.fileStarPictureBox67.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox67.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox67.Image")));
-            this.fileStarPictureBox67.Location = new System.Drawing.Point(115, 217);
-            this.fileStarPictureBox67.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox67.Name = "fileStarPictureBox67";
-            this.fileStarPictureBox67.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox67.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox67.TabIndex = 44;
-            this.fileStarPictureBox67.TabStop = false;
-            // 
-            // fileStarPictureBox68
-            // 
-            this.fileStarPictureBox68.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox68.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox68.Image")));
-            this.fileStarPictureBox68.Location = new System.Drawing.Point(115, 190);
-            this.fileStarPictureBox68.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox68.Name = "fileStarPictureBox68";
-            this.fileStarPictureBox68.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox68.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox68.TabIndex = 44;
-            this.fileStarPictureBox68.TabStop = false;
-            // 
-            // fileStarPictureBox69
-            // 
-            this.fileStarPictureBox69.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox69.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox69.Image")));
-            this.fileStarPictureBox69.Location = new System.Drawing.Point(115, 163);
-            this.fileStarPictureBox69.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox69.Name = "fileStarPictureBox69";
-            this.fileStarPictureBox69.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox69.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox69.TabIndex = 44;
-            this.fileStarPictureBox69.TabStop = false;
-            // 
-            // fileStarPictureBox70
-            // 
-            this.fileStarPictureBox70.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox70.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox70.Image")));
-            this.fileStarPictureBox70.Location = new System.Drawing.Point(115, 136);
-            this.fileStarPictureBox70.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox70.Name = "fileStarPictureBox70";
-            this.fileStarPictureBox70.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox70.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox70.TabIndex = 44;
-            this.fileStarPictureBox70.TabStop = false;
-            // 
-            // fileStarPictureBox71
-            // 
-            this.fileStarPictureBox71.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox71.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox71.Image")));
-            this.fileStarPictureBox71.Location = new System.Drawing.Point(115, 109);
-            this.fileStarPictureBox71.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox71.Name = "fileStarPictureBox71";
-            this.fileStarPictureBox71.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox71.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox71.TabIndex = 44;
-            this.fileStarPictureBox71.TabStop = false;
-            // 
-            // fileStarPictureBox72
-            // 
-            this.fileStarPictureBox72.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox72.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox72.Image")));
-            this.fileStarPictureBox72.Location = new System.Drawing.Point(115, 82);
-            this.fileStarPictureBox72.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox72.Name = "fileStarPictureBox72";
-            this.fileStarPictureBox72.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox72.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox72.TabIndex = 44;
-            this.fileStarPictureBox72.TabStop = false;
-            // 
-            // fileStarPictureBox73
-            // 
-            this.fileStarPictureBox73.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox73.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox73.Image")));
-            this.fileStarPictureBox73.Location = new System.Drawing.Point(115, 55);
-            this.fileStarPictureBox73.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox73.Name = "fileStarPictureBox73";
-            this.fileStarPictureBox73.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox73.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox73.TabIndex = 44;
-            this.fileStarPictureBox73.TabStop = false;
-            // 
-            // fileStarPictureBox74
-            // 
-            this.fileStarPictureBox74.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox74.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox74.Image")));
-            this.fileStarPictureBox74.Location = new System.Drawing.Point(115, 28);
-            this.fileStarPictureBox74.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox74.Name = "fileStarPictureBox74";
-            this.fileStarPictureBox74.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox74.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox74.TabIndex = 44;
-            this.fileStarPictureBox74.TabStop = false;
-            // 
-            // fileStarPictureBox75
-            // 
-            this.fileStarPictureBox75.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox75.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox75.Image")));
-            this.fileStarPictureBox75.Location = new System.Drawing.Point(115, 1);
-            this.fileStarPictureBox75.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox75.Name = "fileStarPictureBox75";
-            this.fileStarPictureBox75.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox75.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox75.TabIndex = 44;
-            this.fileStarPictureBox75.TabStop = false;
-            // 
-            // fileStarPictureBox76
-            // 
-            this.fileStarPictureBox76.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox76.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox76.Image")));
-            this.fileStarPictureBox76.Location = new System.Drawing.Point(94, 379);
-            this.fileStarPictureBox76.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox76.Name = "fileStarPictureBox76";
-            this.fileStarPictureBox76.Size = new System.Drawing.Size(20, 37);
-            this.fileStarPictureBox76.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox76.TabIndex = 43;
-            this.fileStarPictureBox76.TabStop = false;
-            // 
-            // fileStarPictureBox77
-            // 
-            this.fileStarPictureBox77.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox77.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox77.Image")));
-            this.fileStarPictureBox77.Location = new System.Drawing.Point(94, 352);
-            this.fileStarPictureBox77.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox77.Name = "fileStarPictureBox77";
-            this.fileStarPictureBox77.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox77.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox77.TabIndex = 43;
-            this.fileStarPictureBox77.TabStop = false;
-            // 
-            // fileStarPictureBox78
-            // 
-            this.fileStarPictureBox78.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox78.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox78.Image")));
-            this.fileStarPictureBox78.Location = new System.Drawing.Point(94, 325);
-            this.fileStarPictureBox78.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox78.Name = "fileStarPictureBox78";
-            this.fileStarPictureBox78.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox78.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox78.TabIndex = 43;
-            this.fileStarPictureBox78.TabStop = false;
-            // 
-            // fileStarPictureBox79
-            // 
-            this.fileStarPictureBox79.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox79.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox79.Image")));
-            this.fileStarPictureBox79.Location = new System.Drawing.Point(94, 298);
-            this.fileStarPictureBox79.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox79.Name = "fileStarPictureBox79";
-            this.fileStarPictureBox79.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox79.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox79.TabIndex = 43;
-            this.fileStarPictureBox79.TabStop = false;
-            // 
-            // fileStarPictureBox80
-            // 
-            this.fileStarPictureBox80.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox80.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox80.Image")));
-            this.fileStarPictureBox80.Location = new System.Drawing.Point(94, 271);
-            this.fileStarPictureBox80.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox80.Name = "fileStarPictureBox80";
-            this.fileStarPictureBox80.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox80.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox80.TabIndex = 43;
-            this.fileStarPictureBox80.TabStop = false;
-            // 
-            // fileStarPictureBox81
-            // 
-            this.fileStarPictureBox81.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox81.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox81.Image")));
-            this.fileStarPictureBox81.Location = new System.Drawing.Point(94, 244);
-            this.fileStarPictureBox81.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox81.Name = "fileStarPictureBox81";
-            this.fileStarPictureBox81.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox81.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox81.TabIndex = 43;
-            this.fileStarPictureBox81.TabStop = false;
-            // 
-            // fileStarPictureBox82
-            // 
-            this.fileStarPictureBox82.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox82.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox82.Image")));
-            this.fileStarPictureBox82.Location = new System.Drawing.Point(94, 217);
-            this.fileStarPictureBox82.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox82.Name = "fileStarPictureBox82";
-            this.fileStarPictureBox82.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox82.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox82.TabIndex = 43;
-            this.fileStarPictureBox82.TabStop = false;
-            // 
-            // fileStarPictureBox83
-            // 
-            this.fileStarPictureBox83.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox83.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox83.Image")));
-            this.fileStarPictureBox83.Location = new System.Drawing.Point(94, 190);
-            this.fileStarPictureBox83.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox83.Name = "fileStarPictureBox83";
-            this.fileStarPictureBox83.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox83.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox83.TabIndex = 43;
-            this.fileStarPictureBox83.TabStop = false;
-            // 
-            // fileStarPictureBox84
-            // 
-            this.fileStarPictureBox84.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox84.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox84.Image")));
-            this.fileStarPictureBox84.Location = new System.Drawing.Point(94, 163);
-            this.fileStarPictureBox84.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox84.Name = "fileStarPictureBox84";
-            this.fileStarPictureBox84.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox84.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox84.TabIndex = 43;
-            this.fileStarPictureBox84.TabStop = false;
-            // 
-            // fileStarPictureBox85
-            // 
-            this.fileStarPictureBox85.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox85.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox85.Image")));
-            this.fileStarPictureBox85.Location = new System.Drawing.Point(94, 136);
-            this.fileStarPictureBox85.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox85.Name = "fileStarPictureBox85";
-            this.fileStarPictureBox85.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox85.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox85.TabIndex = 43;
-            this.fileStarPictureBox85.TabStop = false;
-            // 
-            // fileStarPictureBox86
-            // 
-            this.fileStarPictureBox86.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox86.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox86.Image")));
-            this.fileStarPictureBox86.Location = new System.Drawing.Point(94, 109);
-            this.fileStarPictureBox86.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox86.Name = "fileStarPictureBox86";
-            this.fileStarPictureBox86.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox86.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox86.TabIndex = 43;
-            this.fileStarPictureBox86.TabStop = false;
-            // 
-            // fileStarPictureBox87
-            // 
-            this.fileStarPictureBox87.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox87.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox87.Image")));
-            this.fileStarPictureBox87.Location = new System.Drawing.Point(94, 82);
-            this.fileStarPictureBox87.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox87.Name = "fileStarPictureBox87";
-            this.fileStarPictureBox87.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox87.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox87.TabIndex = 43;
-            this.fileStarPictureBox87.TabStop = false;
-            // 
-            // fileStarPictureBox88
-            // 
-            this.fileStarPictureBox88.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox88.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox88.Image")));
-            this.fileStarPictureBox88.Location = new System.Drawing.Point(94, 55);
-            this.fileStarPictureBox88.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox88.Name = "fileStarPictureBox88";
-            this.fileStarPictureBox88.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox88.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox88.TabIndex = 43;
-            this.fileStarPictureBox88.TabStop = false;
-            // 
-            // fileStarPictureBox89
-            // 
-            this.fileStarPictureBox89.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox89.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox89.Image")));
-            this.fileStarPictureBox89.Location = new System.Drawing.Point(94, 28);
-            this.fileStarPictureBox89.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox89.Name = "fileStarPictureBox89";
-            this.fileStarPictureBox89.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox89.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox89.TabIndex = 43;
-            this.fileStarPictureBox89.TabStop = false;
-            // 
-            // fileStarPictureBox90
-            // 
-            this.fileStarPictureBox90.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox90.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox90.Image")));
-            this.fileStarPictureBox90.Location = new System.Drawing.Point(94, 1);
-            this.fileStarPictureBox90.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox90.Name = "fileStarPictureBox90";
-            this.fileStarPictureBox90.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox90.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox90.TabIndex = 43;
-            this.fileStarPictureBox90.TabStop = false;
-            // 
-            // fileStarPictureBox91
-            // 
-            this.fileStarPictureBox91.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox91.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox91.Image")));
-            this.fileStarPictureBox91.Location = new System.Drawing.Point(73, 379);
-            this.fileStarPictureBox91.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox91.Name = "fileStarPictureBox91";
-            this.fileStarPictureBox91.Size = new System.Drawing.Size(20, 37);
-            this.fileStarPictureBox91.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox91.TabIndex = 42;
-            this.fileStarPictureBox91.TabStop = false;
-            // 
-            // fileStarPictureBox92
-            // 
-            this.fileStarPictureBox92.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox92.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox92.Image")));
-            this.fileStarPictureBox92.Location = new System.Drawing.Point(73, 352);
-            this.fileStarPictureBox92.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox92.Name = "fileStarPictureBox92";
-            this.fileStarPictureBox92.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox92.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox92.TabIndex = 42;
-            this.fileStarPictureBox92.TabStop = false;
-            // 
-            // fileStarPictureBox93
-            // 
-            this.fileStarPictureBox93.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox93.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox93.Image")));
-            this.fileStarPictureBox93.Location = new System.Drawing.Point(73, 325);
-            this.fileStarPictureBox93.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox93.Name = "fileStarPictureBox93";
-            this.fileStarPictureBox93.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox93.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox93.TabIndex = 42;
-            this.fileStarPictureBox93.TabStop = false;
-            // 
-            // fileStarPictureBox94
-            // 
-            this.fileStarPictureBox94.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox94.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox94.Image")));
-            this.fileStarPictureBox94.Location = new System.Drawing.Point(73, 298);
-            this.fileStarPictureBox94.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox94.Name = "fileStarPictureBox94";
-            this.fileStarPictureBox94.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox94.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox94.TabIndex = 42;
-            this.fileStarPictureBox94.TabStop = false;
-            // 
-            // fileStarPictureBox95
-            // 
-            this.fileStarPictureBox95.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox95.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox95.Image")));
-            this.fileStarPictureBox95.Location = new System.Drawing.Point(73, 271);
-            this.fileStarPictureBox95.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox95.Name = "fileStarPictureBox95";
-            this.fileStarPictureBox95.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox95.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox95.TabIndex = 42;
-            this.fileStarPictureBox95.TabStop = false;
-            // 
-            // fileStarPictureBox96
-            // 
-            this.fileStarPictureBox96.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox96.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox96.Image")));
-            this.fileStarPictureBox96.Location = new System.Drawing.Point(73, 244);
-            this.fileStarPictureBox96.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox96.Name = "fileStarPictureBox96";
-            this.fileStarPictureBox96.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox96.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox96.TabIndex = 42;
-            this.fileStarPictureBox96.TabStop = false;
-            // 
-            // fileStarPictureBox97
-            // 
-            this.fileStarPictureBox97.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox97.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox97.Image")));
-            this.fileStarPictureBox97.Location = new System.Drawing.Point(73, 217);
-            this.fileStarPictureBox97.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox97.Name = "fileStarPictureBox97";
-            this.fileStarPictureBox97.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox97.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox97.TabIndex = 42;
-            this.fileStarPictureBox97.TabStop = false;
-            // 
-            // fileStarPictureBox98
-            // 
-            this.fileStarPictureBox98.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox98.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox98.Image")));
-            this.fileStarPictureBox98.Location = new System.Drawing.Point(73, 190);
-            this.fileStarPictureBox98.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox98.Name = "fileStarPictureBox98";
-            this.fileStarPictureBox98.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox98.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox98.TabIndex = 42;
-            this.fileStarPictureBox98.TabStop = false;
-            // 
-            // fileStarPictureBox99
-            // 
-            this.fileStarPictureBox99.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox99.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox99.Image")));
-            this.fileStarPictureBox99.Location = new System.Drawing.Point(73, 163);
-            this.fileStarPictureBox99.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox99.Name = "fileStarPictureBox99";
-            this.fileStarPictureBox99.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox99.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox99.TabIndex = 42;
-            this.fileStarPictureBox99.TabStop = false;
-            // 
-            // fileStarPictureBox100
-            // 
-            this.fileStarPictureBox100.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox100.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox100.Image")));
-            this.fileStarPictureBox100.Location = new System.Drawing.Point(73, 136);
-            this.fileStarPictureBox100.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox100.Name = "fileStarPictureBox100";
-            this.fileStarPictureBox100.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox100.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox100.TabIndex = 42;
-            this.fileStarPictureBox100.TabStop = false;
-            // 
-            // fileStarPictureBox101
-            // 
-            this.fileStarPictureBox101.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox101.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox101.Image")));
-            this.fileStarPictureBox101.Location = new System.Drawing.Point(73, 109);
-            this.fileStarPictureBox101.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox101.Name = "fileStarPictureBox101";
-            this.fileStarPictureBox101.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox101.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox101.TabIndex = 42;
-            this.fileStarPictureBox101.TabStop = false;
-            // 
-            // fileStarPictureBox102
-            // 
-            this.fileStarPictureBox102.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox102.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox102.Image")));
-            this.fileStarPictureBox102.Location = new System.Drawing.Point(73, 82);
-            this.fileStarPictureBox102.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox102.Name = "fileStarPictureBox102";
-            this.fileStarPictureBox102.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox102.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox102.TabIndex = 42;
-            this.fileStarPictureBox102.TabStop = false;
-            // 
-            // fileStarPictureBox103
-            // 
-            this.fileStarPictureBox103.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox103.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox103.Image")));
-            this.fileStarPictureBox103.Location = new System.Drawing.Point(73, 55);
-            this.fileStarPictureBox103.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox103.Name = "fileStarPictureBox103";
-            this.fileStarPictureBox103.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox103.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox103.TabIndex = 42;
-            this.fileStarPictureBox103.TabStop = false;
-            // 
-            // fileStarPictureBox104
-            // 
-            this.fileStarPictureBox104.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox104.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox104.Image")));
-            this.fileStarPictureBox104.Location = new System.Drawing.Point(73, 28);
-            this.fileStarPictureBox104.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox104.Name = "fileStarPictureBox104";
-            this.fileStarPictureBox104.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox104.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox104.TabIndex = 42;
-            this.fileStarPictureBox104.TabStop = false;
-            // 
-            // fileStarPictureBox105
-            // 
-            this.fileStarPictureBox105.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox105.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox105.Image")));
-            this.fileStarPictureBox105.Location = new System.Drawing.Point(73, 1);
-            this.fileStarPictureBox105.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox105.Name = "fileStarPictureBox105";
-            this.fileStarPictureBox105.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox105.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox105.TabIndex = 42;
-            this.fileStarPictureBox105.TabStop = false;
-            // 
-            // fileStarPictureBox106
-            // 
-            this.fileStarPictureBox106.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox106.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox106.Image")));
-            this.fileStarPictureBox106.Location = new System.Drawing.Point(52, 379);
-            this.fileStarPictureBox106.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox106.Name = "fileStarPictureBox106";
-            this.fileStarPictureBox106.Size = new System.Drawing.Size(20, 37);
-            this.fileStarPictureBox106.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox106.TabIndex = 43;
-            this.fileStarPictureBox106.TabStop = false;
-            // 
-            // fileStarPictureBox107
-            // 
-            this.fileStarPictureBox107.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox107.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox107.Image")));
-            this.fileStarPictureBox107.Location = new System.Drawing.Point(52, 352);
-            this.fileStarPictureBox107.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox107.Name = "fileStarPictureBox107";
-            this.fileStarPictureBox107.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox107.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox107.TabIndex = 43;
-            this.fileStarPictureBox107.TabStop = false;
-            // 
-            // fileStarPictureBox108
-            // 
-            this.fileStarPictureBox108.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox108.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox108.Image")));
-            this.fileStarPictureBox108.Location = new System.Drawing.Point(52, 325);
-            this.fileStarPictureBox108.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox108.Name = "fileStarPictureBox108";
-            this.fileStarPictureBox108.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox108.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox108.TabIndex = 43;
-            this.fileStarPictureBox108.TabStop = false;
-            // 
-            // fileStarPictureBox109
-            // 
-            this.fileStarPictureBox109.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox109.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox109.Image")));
-            this.fileStarPictureBox109.Location = new System.Drawing.Point(52, 298);
-            this.fileStarPictureBox109.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox109.Name = "fileStarPictureBox109";
-            this.fileStarPictureBox109.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox109.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox109.TabIndex = 43;
-            this.fileStarPictureBox109.TabStop = false;
-            // 
-            // fileStarPictureBox110
-            // 
-            this.fileStarPictureBox110.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox110.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox110.Image")));
-            this.fileStarPictureBox110.Location = new System.Drawing.Point(52, 271);
-            this.fileStarPictureBox110.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox110.Name = "fileStarPictureBox110";
-            this.fileStarPictureBox110.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox110.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox110.TabIndex = 43;
-            this.fileStarPictureBox110.TabStop = false;
-            // 
-            // fileStarPictureBox111
-            // 
-            this.fileStarPictureBox111.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox111.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox111.Image")));
-            this.fileStarPictureBox111.Location = new System.Drawing.Point(52, 244);
-            this.fileStarPictureBox111.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox111.Name = "fileStarPictureBox111";
-            this.fileStarPictureBox111.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox111.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox111.TabIndex = 43;
-            this.fileStarPictureBox111.TabStop = false;
-            // 
-            // fileStarPictureBox112
-            // 
-            this.fileStarPictureBox112.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox112.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox112.Image")));
-            this.fileStarPictureBox112.Location = new System.Drawing.Point(52, 217);
-            this.fileStarPictureBox112.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox112.Name = "fileStarPictureBox112";
-            this.fileStarPictureBox112.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox112.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox112.TabIndex = 43;
-            this.fileStarPictureBox112.TabStop = false;
-            // 
-            // fileStarPictureBox113
-            // 
-            this.fileStarPictureBox113.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox113.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox113.Image")));
-            this.fileStarPictureBox113.Location = new System.Drawing.Point(52, 190);
-            this.fileStarPictureBox113.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox113.Name = "fileStarPictureBox113";
-            this.fileStarPictureBox113.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox113.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox113.TabIndex = 43;
-            this.fileStarPictureBox113.TabStop = false;
-            // 
-            // fileStarPictureBox114
-            // 
-            this.fileStarPictureBox114.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox114.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox114.Image")));
-            this.fileStarPictureBox114.Location = new System.Drawing.Point(52, 163);
-            this.fileStarPictureBox114.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox114.Name = "fileStarPictureBox114";
-            this.fileStarPictureBox114.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox114.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox114.TabIndex = 43;
-            this.fileStarPictureBox114.TabStop = false;
-            // 
-            // fileStarPictureBox115
-            // 
-            this.fileStarPictureBox115.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox115.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox115.Image")));
-            this.fileStarPictureBox115.Location = new System.Drawing.Point(52, 136);
-            this.fileStarPictureBox115.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox115.Name = "fileStarPictureBox115";
-            this.fileStarPictureBox115.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox115.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox115.TabIndex = 43;
-            this.fileStarPictureBox115.TabStop = false;
-            // 
-            // fileStarPictureBox116
-            // 
-            this.fileStarPictureBox116.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox116.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox116.Image")));
-            this.fileStarPictureBox116.Location = new System.Drawing.Point(52, 109);
-            this.fileStarPictureBox116.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox116.Name = "fileStarPictureBox116";
-            this.fileStarPictureBox116.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox116.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox116.TabIndex = 42;
-            this.fileStarPictureBox116.TabStop = false;
-            // 
-            // fileStarPictureBox117
-            // 
-            this.fileStarPictureBox117.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox117.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox117.Image")));
-            this.fileStarPictureBox117.Location = new System.Drawing.Point(52, 82);
-            this.fileStarPictureBox117.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox117.Name = "fileStarPictureBox117";
-            this.fileStarPictureBox117.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox117.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox117.TabIndex = 42;
-            this.fileStarPictureBox117.TabStop = false;
-            // 
-            // fileStarPictureBox118
-            // 
-            this.fileStarPictureBox118.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox118.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox118.Image")));
-            this.fileStarPictureBox118.Location = new System.Drawing.Point(52, 55);
-            this.fileStarPictureBox118.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox118.Name = "fileStarPictureBox118";
-            this.fileStarPictureBox118.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox118.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox118.TabIndex = 42;
-            this.fileStarPictureBox118.TabStop = false;
-            // 
-            // fileStarPictureBox119
-            // 
-            this.fileStarPictureBox119.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox119.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox119.Image")));
-            this.fileStarPictureBox119.Location = new System.Drawing.Point(52, 28);
-            this.fileStarPictureBox119.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox119.Name = "fileStarPictureBox119";
-            this.fileStarPictureBox119.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox119.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox119.TabIndex = 42;
-            this.fileStarPictureBox119.TabStop = false;
-            // 
-            // fileStarPictureBox120
-            // 
-            this.fileStarPictureBox120.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileStarPictureBox120.Image = ((System.Drawing.Image)(resources.GetObject("fileStarPictureBox120.Image")));
-            this.fileStarPictureBox120.Location = new System.Drawing.Point(52, 1);
-            this.fileStarPictureBox120.Margin = new System.Windows.Forms.Padding(0);
-            this.fileStarPictureBox120.Name = "fileStarPictureBox120";
-            this.fileStarPictureBox120.Size = new System.Drawing.Size(20, 26);
-            this.fileStarPictureBox120.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileStarPictureBox120.TabIndex = 41;
-            this.fileStarPictureBox120.TabStop = false;
-            // 
-            // fileBinaryPictureBox23
-            // 
-            this.fileBinaryPictureBox23.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileBinaryPictureBox23.Image = ((System.Drawing.Image)(resources.GetObject("fileBinaryPictureBox23.Image")));
-            this.fileBinaryPictureBox23.Location = new System.Drawing.Point(199, 190);
-            this.fileBinaryPictureBox23.Margin = new System.Windows.Forms.Padding(0);
-            this.fileBinaryPictureBox23.Name = "fileBinaryPictureBox23";
-            this.fileBinaryPictureBox23.Size = new System.Drawing.Size(20, 26);
-            this.fileBinaryPictureBox23.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.fileBinaryPictureBox23.TabIndex = 49;
-            this.fileBinaryPictureBox23.TabStop = false;
             // 
             // mainSaveCourseLabel1
             // 
@@ -19602,7 +17341,7 @@ namespace STROOP
             this.mainSaveCourseLabel1.AutoSize = true;
             this.mainSaveCourseLabel1.Location = new System.Drawing.Point(4, 1);
             this.mainSaveCourseLabel1.Name = "mainSaveCourseLabel1";
-            this.mainSaveCourseLabel1.Size = new System.Drawing.Size(44, 26);
+            this.mainSaveCourseLabel1.Size = new System.Drawing.Size(44, 14);
             this.mainSaveCourseLabel1.TabIndex = 8;
             this.mainSaveCourseLabel1.Text = "BoB";
             this.mainSaveCourseLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -19774,9 +17513,9 @@ namespace STROOP
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(4, 28);
+            this.label8.Location = new System.Drawing.Point(4, 16);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 26);
+            this.label8.Size = new System.Drawing.Size(44, 14);
             this.label8.TabIndex = 8;
             this.label8.Text = "WF";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -19787,9 +17526,9 @@ namespace STROOP
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(4, 55);
+            this.label10.Location = new System.Drawing.Point(4, 31);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(44, 26);
+            this.label10.Size = new System.Drawing.Size(44, 14);
             this.label10.TabIndex = 8;
             this.label10.Text = "JRB";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -19800,9 +17539,9 @@ namespace STROOP
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(4, 82);
+            this.label11.Location = new System.Drawing.Point(4, 46);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(44, 26);
+            this.label11.Size = new System.Drawing.Size(44, 14);
             this.label11.TabIndex = 8;
             this.label11.Text = "CCM";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -19813,9 +17552,9 @@ namespace STROOP
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(4, 109);
+            this.label12.Location = new System.Drawing.Point(4, 61);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(44, 26);
+            this.label12.Size = new System.Drawing.Size(44, 14);
             this.label12.TabIndex = 8;
             this.label12.Text = "BBH";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -19826,9 +17565,9 @@ namespace STROOP
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(4, 136);
+            this.label13.Location = new System.Drawing.Point(4, 76);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(44, 26);
+            this.label13.Size = new System.Drawing.Size(44, 14);
             this.label13.TabIndex = 8;
             this.label13.Text = "HMC";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -19839,9 +17578,9 @@ namespace STROOP
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(4, 163);
+            this.label14.Location = new System.Drawing.Point(4, 91);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(44, 26);
+            this.label14.Size = new System.Drawing.Size(44, 14);
             this.label14.TabIndex = 8;
             this.label14.Text = "LLL";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -19852,9 +17591,9 @@ namespace STROOP
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(4, 190);
+            this.label15.Location = new System.Drawing.Point(4, 106);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(44, 26);
+            this.label15.Size = new System.Drawing.Size(44, 14);
             this.label15.TabIndex = 8;
             this.label15.Text = "SSL";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -19865,9 +17604,9 @@ namespace STROOP
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(4, 217);
+            this.label16.Location = new System.Drawing.Point(4, 121);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(44, 26);
+            this.label16.Size = new System.Drawing.Size(44, 14);
             this.label16.TabIndex = 8;
             this.label16.Text = "DDD";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -19878,9 +17617,9 @@ namespace STROOP
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(4, 244);
+            this.label17.Location = new System.Drawing.Point(4, 136);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(44, 26);
+            this.label17.Size = new System.Drawing.Size(44, 14);
             this.label17.TabIndex = 8;
             this.label17.Text = "SL";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -19891,9 +17630,9 @@ namespace STROOP
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(4, 271);
+            this.label18.Location = new System.Drawing.Point(4, 151);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(44, 26);
+            this.label18.Size = new System.Drawing.Size(44, 14);
             this.label18.TabIndex = 8;
             this.label18.Text = "WDW";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -19904,9 +17643,9 @@ namespace STROOP
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(4, 298);
+            this.label19.Location = new System.Drawing.Point(4, 166);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(44, 26);
+            this.label19.Size = new System.Drawing.Size(44, 14);
             this.label19.TabIndex = 8;
             this.label19.Text = "TTM";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -19917,9 +17656,9 @@ namespace STROOP
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(4, 325);
+            this.label20.Location = new System.Drawing.Point(4, 181);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(44, 26);
+            this.label20.Size = new System.Drawing.Size(44, 14);
             this.label20.TabIndex = 8;
             this.label20.Text = "THI";
             this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -19930,9 +17669,9 @@ namespace STROOP
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(4, 352);
+            this.label21.Location = new System.Drawing.Point(4, 196);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(44, 26);
+            this.label21.Size = new System.Drawing.Size(44, 14);
             this.label21.TabIndex = 8;
             this.label21.Text = "TTC";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -19943,12 +17682,26 @@ namespace STROOP
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(4, 379);
+            this.label22.Location = new System.Drawing.Point(4, 211);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(44, 37);
+            this.label22.Size = new System.Drawing.Size(44, 15);
             this.label22.TabIndex = 8;
             this.label22.Text = "RR";
             this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // fileCoinScoreTextbox1
+            // 
+            this.fileCoinScoreTextbox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.fileCoinScoreTextbox1.Location = new System.Drawing.Point(52, 0);
+            this.fileCoinScoreTextbox1.Margin = new System.Windows.Forms.Padding(0);
+            this.fileCoinScoreTextbox1.MaximumSize = new System.Drawing.Size(30, 15);
+            this.fileCoinScoreTextbox1.Name = "fileCoinScoreTextbox1";
+            this.fileCoinScoreTextbox1.Size = new System.Drawing.Size(30, 15);
+            this.fileCoinScoreTextbox1.TabIndex = 41;
+            this.fileCoinScoreTextbox1.Text = "0";
+            this.fileCoinScoreTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // StroopMainForm
             // 
@@ -20485,124 +18238,6 @@ namespace STROOP
             this.groupBox1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fileBinaryPictureBox10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileBinaryPictureBox11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileBinaryPictureBox12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileBinaryPictureBox14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileBinaryPictureBox15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileBinaryPictureBox16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileBinaryPictureBox17)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileBinaryPictureBox18)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileBinaryPictureBox19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileBinaryPictureBox20)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileBinaryPictureBox21)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileBinaryPictureBox22)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox16)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox17)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox18)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox20)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox21)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox22)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox23)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox24)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox25)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox26)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox27)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox28)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox29)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox30)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox31)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox32)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox33)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox34)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox35)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox36)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox37)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox38)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox39)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox40)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox41)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox42)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox43)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox44)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox45)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox46)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox47)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox48)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox49)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox50)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox51)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox52)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox53)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox54)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox55)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox56)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox57)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox58)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox59)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox60)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox61)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox62)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox63)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox64)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox65)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox66)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox67)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox68)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox69)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox70)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox71)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox72)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox73)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox74)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox75)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox76)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox77)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox78)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox79)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox80)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox81)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox82)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox83)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox84)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox85)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox86)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox87)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox88)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox89)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox90)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox91)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox92)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox93)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox94)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox95)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox96)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox97)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox98)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox99)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox100)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox101)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox102)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox103)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox104)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox105)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox106)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox107)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox108)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox109)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox110)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox111)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox112)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox113)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox114)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox115)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox116)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox117)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox118)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox119)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileStarPictureBox120)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fileBinaryPictureBox23)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBoxObjects.ResumeLayout(false);
@@ -21922,139 +19557,6 @@ namespace STROOP
         private RadioButton radioButton2;
         private RadioButton radioButton3;
         private TableLayoutPanel tableLayoutPanel1;
-        private FileCoinScoreTextbox fileCoinScoreTextbox1;
-        private FileCoinScoreTextbox fileCoinScoreTextbox2;
-        private FileCoinScoreTextbox fileCoinScoreTextbox3;
-        private FileCoinScoreTextbox fileCoinScoreTextbox4;
-        private FileCoinScoreTextbox fileCoinScoreTextbox5;
-        private FileCoinScoreTextbox fileCoinScoreTextbox6;
-        private FileCoinScoreTextbox fileCoinScoreTextbox7;
-        private FileCoinScoreTextbox fileCoinScoreTextbox8;
-        private FileCoinScoreTextbox fileCoinScoreTextbox9;
-        private FileCoinScoreTextbox fileCoinScoreTextbox10;
-        private FileCoinScoreTextbox fileCoinScoreTextbox11;
-        private FileCoinScoreTextbox fileCoinScoreTextbox12;
-        private FileCoinScoreTextbox fileCoinScoreTextbox13;
-        private FileCoinScoreTextbox fileCoinScoreTextbox14;
-        private FileCoinScoreTextbox fileCoinScoreTextbox15;
-        private FileBinaryPictureBox fileBinaryPictureBox10;
-        private FileBinaryPictureBox fileBinaryPictureBox11;
-        private FileBinaryPictureBox fileBinaryPictureBox12;
-        private FileBinaryPictureBox fileBinaryPictureBox14;
-        private FileBinaryPictureBox fileBinaryPictureBox15;
-        private FileBinaryPictureBox fileBinaryPictureBox16;
-        private FileBinaryPictureBox fileBinaryPictureBox17;
-        private FileBinaryPictureBox fileBinaryPictureBox18;
-        private FileBinaryPictureBox fileBinaryPictureBox19;
-        private FileBinaryPictureBox fileBinaryPictureBox20;
-        private FileBinaryPictureBox fileBinaryPictureBox21;
-        private FileBinaryPictureBox fileBinaryPictureBox22;
-        private FileStarPictureBox fileStarPictureBox16;
-        private FileStarPictureBox fileStarPictureBox17;
-        private FileStarPictureBox fileStarPictureBox18;
-        private FileStarPictureBox fileStarPictureBox19;
-        private FileStarPictureBox fileStarPictureBox20;
-        private FileStarPictureBox fileStarPictureBox21;
-        private FileStarPictureBox fileStarPictureBox22;
-        private FileStarPictureBox fileStarPictureBox23;
-        private FileStarPictureBox fileStarPictureBox24;
-        private FileStarPictureBox fileStarPictureBox25;
-        private FileStarPictureBox fileStarPictureBox26;
-        private FileStarPictureBox fileStarPictureBox27;
-        private FileStarPictureBox fileStarPictureBox28;
-        private FileStarPictureBox fileStarPictureBox29;
-        private FileStarPictureBox fileStarPictureBox30;
-        private FileStarPictureBox fileStarPictureBox31;
-        private FileStarPictureBox fileStarPictureBox32;
-        private FileStarPictureBox fileStarPictureBox33;
-        private FileStarPictureBox fileStarPictureBox34;
-        private FileStarPictureBox fileStarPictureBox35;
-        private FileStarPictureBox fileStarPictureBox36;
-        private FileStarPictureBox fileStarPictureBox37;
-        private FileStarPictureBox fileStarPictureBox38;
-        private FileStarPictureBox fileStarPictureBox39;
-        private FileStarPictureBox fileStarPictureBox40;
-        private FileStarPictureBox fileStarPictureBox41;
-        private FileStarPictureBox fileStarPictureBox42;
-        private FileStarPictureBox fileStarPictureBox43;
-        private FileStarPictureBox fileStarPictureBox44;
-        private FileStarPictureBox fileStarPictureBox45;
-        private FileStarPictureBox fileStarPictureBox46;
-        private FileStarPictureBox fileStarPictureBox47;
-        private FileStarPictureBox fileStarPictureBox48;
-        private FileStarPictureBox fileStarPictureBox49;
-        private FileStarPictureBox fileStarPictureBox50;
-        private FileStarPictureBox fileStarPictureBox51;
-        private FileStarPictureBox fileStarPictureBox52;
-        private FileStarPictureBox fileStarPictureBox53;
-        private FileStarPictureBox fileStarPictureBox54;
-        private FileStarPictureBox fileStarPictureBox55;
-        private FileStarPictureBox fileStarPictureBox56;
-        private FileStarPictureBox fileStarPictureBox57;
-        private FileStarPictureBox fileStarPictureBox58;
-        private FileStarPictureBox fileStarPictureBox59;
-        private FileStarPictureBox fileStarPictureBox60;
-        private FileStarPictureBox fileStarPictureBox61;
-        private FileStarPictureBox fileStarPictureBox62;
-        private FileStarPictureBox fileStarPictureBox63;
-        private FileStarPictureBox fileStarPictureBox64;
-        private FileStarPictureBox fileStarPictureBox65;
-        private FileStarPictureBox fileStarPictureBox66;
-        private FileStarPictureBox fileStarPictureBox67;
-        private FileStarPictureBox fileStarPictureBox68;
-        private FileStarPictureBox fileStarPictureBox69;
-        private FileStarPictureBox fileStarPictureBox70;
-        private FileStarPictureBox fileStarPictureBox71;
-        private FileStarPictureBox fileStarPictureBox72;
-        private FileStarPictureBox fileStarPictureBox73;
-        private FileStarPictureBox fileStarPictureBox74;
-        private FileStarPictureBox fileStarPictureBox75;
-        private FileStarPictureBox fileStarPictureBox76;
-        private FileStarPictureBox fileStarPictureBox77;
-        private FileStarPictureBox fileStarPictureBox78;
-        private FileStarPictureBox fileStarPictureBox79;
-        private FileStarPictureBox fileStarPictureBox80;
-        private FileStarPictureBox fileStarPictureBox81;
-        private FileStarPictureBox fileStarPictureBox82;
-        private FileStarPictureBox fileStarPictureBox83;
-        private FileStarPictureBox fileStarPictureBox84;
-        private FileStarPictureBox fileStarPictureBox85;
-        private FileStarPictureBox fileStarPictureBox86;
-        private FileStarPictureBox fileStarPictureBox87;
-        private FileStarPictureBox fileStarPictureBox88;
-        private FileStarPictureBox fileStarPictureBox89;
-        private FileStarPictureBox fileStarPictureBox90;
-        private FileStarPictureBox fileStarPictureBox91;
-        private FileStarPictureBox fileStarPictureBox92;
-        private FileStarPictureBox fileStarPictureBox93;
-        private FileStarPictureBox fileStarPictureBox94;
-        private FileStarPictureBox fileStarPictureBox95;
-        private FileStarPictureBox fileStarPictureBox96;
-        private FileStarPictureBox fileStarPictureBox97;
-        private FileStarPictureBox fileStarPictureBox98;
-        private FileStarPictureBox fileStarPictureBox99;
-        private FileStarPictureBox fileStarPictureBox100;
-        private FileStarPictureBox fileStarPictureBox101;
-        private FileStarPictureBox fileStarPictureBox102;
-        private FileStarPictureBox fileStarPictureBox103;
-        private FileStarPictureBox fileStarPictureBox104;
-        private FileStarPictureBox fileStarPictureBox105;
-        private FileStarPictureBox fileStarPictureBox106;
-        private FileStarPictureBox fileStarPictureBox107;
-        private FileStarPictureBox fileStarPictureBox108;
-        private FileStarPictureBox fileStarPictureBox109;
-        private FileStarPictureBox fileStarPictureBox110;
-        private FileStarPictureBox fileStarPictureBox111;
-        private FileStarPictureBox fileStarPictureBox112;
-        private FileStarPictureBox fileStarPictureBox113;
-        private FileStarPictureBox fileStarPictureBox114;
-        private FileStarPictureBox fileStarPictureBox115;
-        private FileStarPictureBox fileStarPictureBox116;
-        private FileStarPictureBox fileStarPictureBox117;
-        private FileStarPictureBox fileStarPictureBox118;
-        private FileStarPictureBox fileStarPictureBox119;
-        private FileStarPictureBox fileStarPictureBox120;
-        private FileBinaryPictureBox fileBinaryPictureBox23;
         private GroupBox groupBox3;
         private RadioButton radioButton6;
         private RadioButton radioButton8;
@@ -22080,6 +19582,7 @@ namespace STROOP
         private Label label20;
         private Label label21;
         private Label label22;
+        private FileCoinScoreTextbox fileCoinScoreTextbox1;
     }
 }
 
