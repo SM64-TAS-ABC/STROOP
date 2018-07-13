@@ -2,5 +2,9 @@
 <VarData>
 
   <Data type="byte" offsetUS="0x80226B7F" offsetJP="0x80226D7F" base="Relative">Sound Mode</Data>
+  <Data type="ushort" offsetUS="0x802078D0" base="Relative">Sound Mode</Data>
+
+
   
+
 </VarData>
