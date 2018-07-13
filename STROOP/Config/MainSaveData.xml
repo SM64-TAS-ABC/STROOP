@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <VarData>
 
-  <Data type="uint" offsetUS="0x0" base="MainSave" useHex="true">File A Coin Ranks</Data>
-  <Data type="uint" offsetUS="0x4" base="MainSave" useHex="true">File B Coin Ranks</Data>
-  <Data type="uint" offsetUS="0x8" base="MainSave" useHex="true">File C Coin Ranks</Data>
-  <Data type="uint" offsetUS="0xC" base="MainSave" useHex="true">File D Coin Ranks</Data>
-  <Data type="ushort" offsetUS="0x10" base="MainSave">Sound Mode</Data>
+  <Data type="uint" offset="0x0" base="MainSave" useHex="true">File A Coin Ranks</Data>
+  <Data type="uint" offset="0x4" base="MainSave" useHex="true">File B Coin Ranks</Data>
+  <Data type="uint" offset="0x8" base="MainSave" useHex="true">File C Coin Ranks</Data>
+  <Data type="uint" offset="0xC" base="MainSave" useHex="true">File D Coin Ranks</Data>
+  <Data type="ushort" offset="0x10" base="MainSave">Sound Mode</Data>
   <Data type="byte" offsetUS="0x80226B7F" offsetJP="0x80226D7F" base="Relative">In-Game Sound Mode</Data>
 
-
-
+  <Data type="ushort" offset="0x1C" base="MainSave" useHex="true">Checksum Constant</Data>
+  <Data type="ushort" offset="0x1E" base="MainSave" useHex="true">Checksum</Data>
 
 </VarData>
