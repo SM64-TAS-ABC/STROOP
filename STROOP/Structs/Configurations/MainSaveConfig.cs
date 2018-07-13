@@ -17,8 +17,13 @@ namespace STROOP.Structs.Configurations
         public static uint MainSaveAddress { get { return MainSaveStructAddress + 0 * MainSaveStructSize; } }
         public static uint MainSaveSavedAddress { get { return MainSaveStructAddress + 1 * MainSaveStructSize; } }
 
-        public static readonly uint ChecksumConstantOffset = 0x34;
-        public static readonly ushort ChecksumConstantValue = 0x4441;
-        public static readonly uint ChecksumOffset = 0x36;
-    }
+        public static readonly uint SoundModeOffset = 0x10;
+        public static readonly ushort SoundModeStereoValue = 0;
+        public static readonly ushort SoundModeMonoValue = 1;
+        public static readonly ushort SoundModeHeadsetValue = 2;
+
+        public static readonly uint ChecksumConstantOffset = 0x1C;
+        public static readonly ushort ChecksumConstantValue = 0x4849;
+        public static readonly uint ChecksumOffset = 0x1E;
+  }
 }
