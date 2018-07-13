@@ -196,6 +196,7 @@ namespace STROOP.Utilities
         {
             byte value = ReadRam((UIntPtr)address, 1, EndiannessType.Little, absoluteAddress)[0];
             if (mask.HasValue) value = (byte)(value & mask.Value);
+            if (shift.HasValue) value = (byte)(value >> shift.Value);
             return value;
         }
 
@@ -203,6 +204,7 @@ namespace STROOP.Utilities
         {
             sbyte value = (sbyte)ReadRam((UIntPtr)address, 1, EndiannessType.Little, absoluteAddress)[0];
             if (mask.HasValue) value = (sbyte)(value & mask.Value);
+            if (shift.HasValue) value = (sbyte)(value >> shift.Value);
             return value;
         }
 
@@ -210,6 +212,7 @@ namespace STROOP.Utilities
         {
             short value = BitConverter.ToInt16(ReadRam((UIntPtr)address, 2, EndiannessType.Little, absoluteAddress), 0);
             if (mask.HasValue) value = (short)(value & mask.Value);
+            if (shift.HasValue) value = (short)(value >> shift.Value);
             return value;
         }
 
@@ -217,6 +220,7 @@ namespace STROOP.Utilities
         {
             ushort value = BitConverter.ToUInt16(ReadRam((UIntPtr)address, 2, EndiannessType.Little, absoluteAddress), 0);
             if (mask.HasValue) value = (ushort)(value & mask.Value);
+            if (shift.HasValue) value = (ushort)(value >> shift.Value);
             return value;
         }
 
@@ -224,6 +228,7 @@ namespace STROOP.Utilities
         {
             int value = BitConverter.ToInt32(ReadRam((UIntPtr)address, 4, EndiannessType.Little, absoluteAddress), 0);
             if (mask.HasValue) value = (int)(value & mask.Value);
+            if (shift.HasValue) value = (int)(value >> shift.Value);
             return value;
         }
 
@@ -231,6 +236,7 @@ namespace STROOP.Utilities
         {
             uint value = BitConverter.ToUInt32(ReadRam((UIntPtr)address, 4, EndiannessType.Little, absoluteAddress), 0);
             if (mask.HasValue) value = (uint)(value & mask.Value);
+            if (shift.HasValue) value = (uint)(value >> shift.Value);
             return value;
         }
 
