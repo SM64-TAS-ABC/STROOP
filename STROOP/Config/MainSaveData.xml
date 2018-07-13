@@ -12,14 +12,14 @@
   <Data type="ushort" offset="0x1C" base="MainSave" useHex="true" color="Grey">Checksum Constant</Data>
   <Data type="ushort" offset="0x1E" base="MainSave" useHex="true" color="Grey">Checksum</Data>
   
-  <Data type="uint" offset="0x0" mask="0x00000003" base="MainSave">File A BoB Coin Rank</Data>
-  <Data type="uint" offset="0x4" mask="0x00000003" base="MainSave">File B BoB Coin Rank</Data>
-  <Data type="uint" offset="0x8" mask="0x00000003" base="MainSave">File C BoB Coin Rank</Data>
-  <Data type="uint" offset="0xC" mask="0x00000003" base="MainSave">File D BoB Coin Rank</Data>
+  <Data type="uint" offset="0x0" mask="0x00000003" shift="0" base="MainSave">File A BoB Coin Rank</Data>
+  <Data type="uint" offset="0x4" mask="0x00000003" shift="0" base="MainSave">File B BoB Coin Rank</Data>
+  <Data type="uint" offset="0x8" mask="0x00000003" shift="0" base="MainSave">File C BoB Coin Rank</Data>
+  <Data type="uint" offset="0xC" mask="0x00000003" shift="0" base="MainSave">File D BoB Coin Rank</Data>
   
-  <Data type="uint" offset="0x0" mask="0x0000000C" base="MainSave">File A WF Coin Rank</Data>
-  <Data type="uint" offset="0x4" mask="0x0000000C" base="MainSave">File B WF Coin Rank</Data>
-  <Data type="uint" offset="0x8" mask="0x0000000C" base="MainSave">File C WF Coin Rank</Data>
-  <Data type="uint" offset="0xC" mask="0x0000000C" base="MainSave">File D WF Coin Rank</Data>
+  <Data type="uint" offset="0x0" mask="0x0000000C" shift="2" base="MainSave">File A WF Coin Rank</Data>
+  <Data type="uint" offset="0x4" mask="0x0000000C" shift="2" base="MainSave">File B WF Coin Rank</Data>
+  <Data type="uint" offset="0x8" mask="0x0000000C" shift="2" base="MainSave">File C WF Coin Rank</Data>
+  <Data type="uint" offset="0xC" mask="0x0000000C" shift="2" base="MainSave">File D WF Coin Rank</Data>
 
 </VarData>

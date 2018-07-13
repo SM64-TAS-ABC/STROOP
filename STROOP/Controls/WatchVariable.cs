@@ -32,6 +32,7 @@ namespace STROOP.Controls
         public readonly uint? OffsetDefault;
 
         public readonly uint? Mask;
+        public readonly int? Shift;
 
         private readonly Func<uint, object> _getterFunction;
         private readonly Func<object, uint, bool> _setterFunction;
@@ -78,7 +79,7 @@ namespace STROOP.Controls
         }
 
         public WatchVariable(string memoryTypeName, string specialType, BaseAddressTypeEnum baseAddressType,
-            uint? offsetUS, uint? offsetJP, uint? offsetPAL, uint? offsetDefault, uint? mask)
+            uint? offsetUS, uint? offsetJP, uint? offsetPAL, uint? offsetDefault, uint? mask, int? shift)
         {
             if (offsetDefault.HasValue && (offsetUS.HasValue || offsetJP.HasValue || offsetPAL.HasValue))
             {
@@ -124,6 +125,7 @@ namespace STROOP.Controls
             SignedType = memoryTypeName == null ? (bool?)null : TypeUtilities.TypeSign[MemoryType];
 
             Mask = mask;
+            Shift = shift;
             
             // Created getter/setter functions
             if (IsSpecial)

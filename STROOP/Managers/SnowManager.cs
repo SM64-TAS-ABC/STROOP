@@ -69,7 +69,8 @@ namespace STROOP.Managers
                     offsetJP: null,
                     offsetPAL: null,
                     offsetDefault: offsets[i],
-                    mask: null);
+                    mask: null,
+                    shift: null);
                 WatchVariableControlPrecursor precursor = new WatchVariableControlPrecursor(
                     name: names[i],
                     watchVar: watchVar,

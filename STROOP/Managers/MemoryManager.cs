@@ -411,7 +411,8 @@ namespace STROOP.Managers
                     null /* offsetJP */,
                     null /* offsetPAL */,
                     offset,
-                    null /* mask */);
+                    null /* mask */,
+                    null /* shift */);
                 return new WatchVariableControlPrecursor(
                     typeString + " " + HexUtilities.FormatValue(offset),
                     watchVar,

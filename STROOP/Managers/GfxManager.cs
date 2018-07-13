@@ -315,7 +315,8 @@ namespace STROOP.Managers
                 null /* offsetJP */,
                 null /* offsetPAL */,
                 offset,
-                mask);
+                mask,
+                null);
             WatchVariableControlPrecursor precursor = new WatchVariableControlPrecursor(
                 name,
                 watchVar,
