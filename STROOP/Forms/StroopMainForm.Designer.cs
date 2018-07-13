@@ -34,15 +34,15 @@ namespace STROOP
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
@@ -1352,7 +1352,6 @@ namespace STROOP
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.textBoxMainSaveTableRow1Col2 = new STROOP.MainSaveTextbox();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -1363,33 +1362,20 @@ namespace STROOP
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.groupBoxMainSaveStruct = new System.Windows.Forms.GroupBox();
-            this.radioButtonMainSaveStructMainSaveSaved = new System.Windows.Forms.RadioButton();
-            this.radioButtonMainSaveStructMainSave = new System.Windows.Forms.RadioButton();
-            this.buttonMainSaveSave = new System.Windows.Forms.Button();
-            this.watchVariablePanelMainSave = new STROOP.Controls.WatchVariableFlowLayoutPanel();
-            this.groupBoxObjects = new System.Windows.Forms.GroupBox();
-            this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
-            this.labelLabelMethod = new System.Windows.Forms.Label();
-            this.labelSlotSize = new System.Windows.Forms.Label();
-            this.checkBoxObjLockLabels = new System.Windows.Forms.CheckBox();
-            this.labelSortMethod = new System.Windows.Forms.Label();
-            this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
-            this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
-            this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
+            this.textBoxMainSaveTableRow1Col2 = new STROOP.MainSaveTextbox();
             this.mainSaveTextbox1 = new STROOP.MainSaveTextbox();
             this.mainSaveTextbox2 = new STROOP.MainSaveTextbox();
             this.mainSaveTextbox3 = new STROOP.MainSaveTextbox();
             this.mainSaveTextbox4 = new STROOP.MainSaveTextbox();
-            this.mainSaveTextbox5 = new STROOP.MainSaveTextbox();
-            this.mainSaveTextbox6 = new STROOP.MainSaveTextbox();
-            this.mainSaveTextbox7 = new STROOP.MainSaveTextbox();
-            this.mainSaveTextbox8 = new STROOP.MainSaveTextbox();
-            this.mainSaveTextbox9 = new STROOP.MainSaveTextbox();
-            this.mainSaveTextbox10 = new STROOP.MainSaveTextbox();
-            this.mainSaveTextbox11 = new STROOP.MainSaveTextbox();
-            this.mainSaveTextbox12 = new STROOP.MainSaveTextbox();
-            this.mainSaveTextbox13 = new STROOP.MainSaveTextbox();
+            this.textBoxMainSaveCoinRankRow10Col2 = new STROOP.MainSaveTextbox();
+            this.textBoxMainSaveCoinRankRow9Col2 = new STROOP.MainSaveTextbox();
+            this.textBoxMainSaveCoinRankRow8Col2 = new STROOP.MainSaveTextbox();
+            this.textBoxMainSaveCoinRankRow7Col2 = new STROOP.MainSaveTextbox();
+            this.textBoxMainSaveCoinRankRow6Col2 = new STROOP.MainSaveTextbox();
+            this.textBoxMainSaveCoinRankRow5Col2 = new STROOP.MainSaveTextbox();
+            this.textBoxMainSaveCoinRankRow4Col2 = new STROOP.MainSaveTextbox();
+            this.textBoxMainSaveCoinRankRow3Col2 = new STROOP.MainSaveTextbox();
+            this.textBoxMainSaveCoinRankRow2Col2 = new STROOP.MainSaveTextbox();
             this.textBoxMainSaveCoinRankRow1Col2 = new STROOP.MainSaveTextbox();
             this.mainSaveTextbox15 = new STROOP.MainSaveTextbox();
             this.mainSaveTextbox16 = new STROOP.MainSaveTextbox();
@@ -1436,6 +1422,20 @@ namespace STROOP
             this.mainSaveTextbox57 = new STROOP.MainSaveTextbox();
             this.mainSaveTextbox58 = new STROOP.MainSaveTextbox();
             this.textBoxMainSaveCoinRankRow1Col5 = new STROOP.MainSaveTextbox();
+            this.groupBoxMainSaveStruct = new System.Windows.Forms.GroupBox();
+            this.radioButtonMainSaveStructMainSaveSaved = new System.Windows.Forms.RadioButton();
+            this.radioButtonMainSaveStructMainSave = new System.Windows.Forms.RadioButton();
+            this.buttonMainSaveSave = new System.Windows.Forms.Button();
+            this.watchVariablePanelMainSave = new STROOP.Controls.WatchVariableFlowLayoutPanel();
+            this.groupBoxObjects = new System.Windows.Forms.GroupBox();
+            this.comboBoxLabelMethod = new System.Windows.Forms.ComboBox();
+            this.labelLabelMethod = new System.Windows.Forms.Label();
+            this.labelSlotSize = new System.Windows.Forms.Label();
+            this.checkBoxObjLockLabels = new System.Windows.Forms.CheckBox();
+            this.labelSortMethod = new System.Windows.Forms.Label();
+            this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
+            this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
+            this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -5231,7 +5231,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 413F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 414F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8950,7 +8950,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(424, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(427, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -8984,14 +8984,14 @@ namespace STROOP
             this.dataGridViewM64Inputs.AllowUserToResizeColumns = false;
             this.dataGridViewM64Inputs.AllowUserToResizeRows = false;
             this.dataGridViewM64Inputs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewM64Inputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewM64Inputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnM64Frame,
@@ -9012,14 +9012,14 @@ namespace STROOP
             this.ColumnM64DDown,
             this.ColumnM64DLeft,
             this.ColumnM64DRight});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewM64Inputs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewM64Inputs.EnableHeadersVisualStyles = false;
             this.dataGridViewM64Inputs.Location = new System.Drawing.Point(0, 0);
@@ -11221,7 +11221,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 705;
+            this.splitContainerMemory.SplitterDistance = 708;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11262,7 +11262,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(705, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(708, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -11479,7 +11479,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(705, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(708, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -11508,7 +11508,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(604, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(607, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -11521,7 +11521,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(201, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(198, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -12675,7 +12675,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(272, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(255, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -12707,7 +12707,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(266, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(249, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -12763,7 +12763,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(266, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(249, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -15014,14 +15014,14 @@ namespace STROOP
             this.dataGridViewCoin.AllowUserToOrderColumns = true;
             this.dataGridViewCoin.AllowUserToResizeRows = false;
             this.dataGridViewCoin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewCoin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCoin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.rngIndex,
@@ -15042,8 +15042,8 @@ namespace STROOP
             // 
             // rngIndex
             // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle4;
             this.rngIndex.HeaderText = "RNG Index";
             this.rngIndex.MinimumWidth = 2;
             this.rngIndex.Name = "rngIndex";
@@ -15051,8 +15051,8 @@ namespace STROOP
             // 
             // rngValue
             // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngValue.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngValue.DefaultCellStyle = dataGridViewCellStyle5;
             this.rngValue.HeaderText = "RNG Value";
             this.rngValue.MinimumWidth = 2;
             this.rngValue.Name = "rngValue";
@@ -15060,8 +15060,8 @@ namespace STROOP
             // 
             // rngToGo
             // 
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle6;
             this.rngToGo.HeaderText = "RNG To Go";
             this.rngToGo.MinimumWidth = 2;
             this.rngToGo.Name = "rngToGo";
@@ -15069,24 +15069,24 @@ namespace STROOP
             // 
             // coinHSpeed
             // 
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle7;
             this.coinHSpeed.HeaderText = "Coin HSpeed";
             this.coinHSpeed.Name = "coinHSpeed";
             this.coinHSpeed.ReadOnly = true;
             // 
             // coinVSpeed
             // 
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle8;
             this.coinVSpeed.HeaderText = "Coin VSpeed";
             this.coinVSpeed.Name = "coinVSpeed";
             this.coinVSpeed.ReadOnly = true;
             // 
             // coinAngle
             // 
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle9;
             this.coinAngle.HeaderText = "Coin Angle";
             this.coinAngle.MinimumWidth = 2;
             this.coinAngle.Name = "coinAngle";
@@ -17354,7 +17354,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.mainSaveCourseLabel1, 0, 0);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.label8, 0, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.label10, 0, 2);
@@ -17375,15 +17375,15 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.mainSaveTextbox2, 1, 12);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.mainSaveTextbox3, 1, 11);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.mainSaveTextbox4, 1, 10);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.mainSaveTextbox5, 1, 9);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.mainSaveTextbox6, 1, 8);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.mainSaveTextbox7, 1, 7);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.mainSaveTextbox8, 1, 6);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.mainSaveTextbox9, 1, 5);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.mainSaveTextbox10, 1, 4);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.mainSaveTextbox11, 1, 3);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.mainSaveTextbox12, 1, 2);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.mainSaveTextbox13, 1, 1);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow10Col2, 1, 9);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow9Col2, 1, 8);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow8Col2, 1, 7);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow7Col2, 1, 6);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow6Col2, 1, 5);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow5Col2, 1, 4);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow4Col2, 1, 3);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow3Col2, 1, 2);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow2Col2, 1, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow1Col2, 1, 0);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.mainSaveTextbox15, 2, 14);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.mainSaveTextbox16, 2, 13);
@@ -17516,20 +17516,6 @@ namespace STROOP
             this.label12.Text = "BBH";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBoxMainSaveTableRow1Col2
-            // 
-            this.textBoxMainSaveTableRow1Col2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxMainSaveTableRow1Col2.Location = new System.Drawing.Point(52, 211);
-            this.textBoxMainSaveTableRow1Col2.Margin = new System.Windows.Forms.Padding(0);
-            this.textBoxMainSaveTableRow1Col2.MaximumSize = new System.Drawing.Size(30, 15);
-            this.textBoxMainSaveTableRow1Col2.Name = "textBoxMainSaveTableRow1Col2";
-            this.textBoxMainSaveTableRow1Col2.Size = new System.Drawing.Size(30, 15);
-            this.textBoxMainSaveTableRow1Col2.TabIndex = 41;
-            this.textBoxMainSaveTableRow1Col2.Text = "0";
-            this.textBoxMainSaveTableRow1Col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // label13
             // 
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -17660,166 +17646,19 @@ namespace STROOP
             this.label22.Text = "RR";
             this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // groupBoxMainSaveStruct
+            // textBoxMainSaveTableRow1Col2
             // 
-            this.groupBoxMainSaveStruct.Controls.Add(this.radioButtonMainSaveStructMainSaveSaved);
-            this.groupBoxMainSaveStruct.Controls.Add(this.radioButtonMainSaveStructMainSave);
-            this.groupBoxMainSaveStruct.Location = new System.Drawing.Point(20, 18);
-            this.groupBoxMainSaveStruct.Name = "groupBoxMainSaveStruct";
-            this.groupBoxMainSaveStruct.Size = new System.Drawing.Size(134, 61);
-            this.groupBoxMainSaveStruct.TabIndex = 37;
-            this.groupBoxMainSaveStruct.TabStop = false;
-            this.groupBoxMainSaveStruct.Text = "Struct";
-            // 
-            // radioButtonMainSaveStructMainSaveSaved
-            // 
-            this.radioButtonMainSaveStructMainSaveSaved.AutoSize = true;
-            this.radioButtonMainSaveStructMainSaveSaved.Location = new System.Drawing.Point(9, 36);
-            this.radioButtonMainSaveStructMainSaveSaved.Name = "radioButtonMainSaveStructMainSaveSaved";
-            this.radioButtonMainSaveStructMainSaveSaved.Size = new System.Drawing.Size(110, 17);
-            this.radioButtonMainSaveStructMainSaveSaved.TabIndex = 12;
-            this.radioButtonMainSaveStructMainSaveSaved.Text = "Main Save Saved";
-            this.radioButtonMainSaveStructMainSaveSaved.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonMainSaveStructMainSave
-            // 
-            this.radioButtonMainSaveStructMainSave.AutoSize = true;
-            this.radioButtonMainSaveStructMainSave.Checked = true;
-            this.radioButtonMainSaveStructMainSave.Location = new System.Drawing.Point(9, 16);
-            this.radioButtonMainSaveStructMainSave.Name = "radioButtonMainSaveStructMainSave";
-            this.radioButtonMainSaveStructMainSave.Size = new System.Drawing.Size(76, 17);
-            this.radioButtonMainSaveStructMainSave.TabIndex = 11;
-            this.radioButtonMainSaveStructMainSave.TabStop = true;
-            this.radioButtonMainSaveStructMainSave.Text = "Main Save";
-            this.radioButtonMainSaveStructMainSave.UseVisualStyleBackColor = true;
-            // 
-            // buttonMainSaveSave
-            // 
-            this.buttonMainSaveSave.Location = new System.Drawing.Point(162, 34);
-            this.buttonMainSaveSave.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonMainSaveSave.Name = "buttonMainSaveSave";
-            this.buttonMainSaveSave.Size = new System.Drawing.Size(56, 30);
-            this.buttonMainSaveSave.TabIndex = 36;
-            this.buttonMainSaveSave.Text = "Save";
-            this.buttonMainSaveSave.UseVisualStyleBackColor = true;
-            // 
-            // watchVariablePanelMainSave
-            // 
-            this.watchVariablePanelMainSave.AutoScroll = true;
-            this.watchVariablePanelMainSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.watchVariablePanelMainSave.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.watchVariablePanelMainSave.Location = new System.Drawing.Point(0, 0);
-            this.watchVariablePanelMainSave.Margin = new System.Windows.Forms.Padding(0);
-            this.watchVariablePanelMainSave.Name = "watchVariablePanelMainSave";
-            this.watchVariablePanelMainSave.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMainSave.Size = new System.Drawing.Size(480, 461);
-            this.watchVariablePanelMainSave.TabIndex = 2;
-            // 
-            // groupBoxObjects
-            // 
-            this.groupBoxObjects.Controls.Add(this.comboBoxLabelMethod);
-            this.groupBoxObjects.Controls.Add(this.labelLabelMethod);
-            this.groupBoxObjects.Controls.Add(this.labelSlotSize);
-            this.groupBoxObjects.Controls.Add(this.checkBoxObjLockLabels);
-            this.groupBoxObjects.Controls.Add(this.labelSortMethod);
-            this.groupBoxObjects.Controls.Add(this.WatchVariablePanelObjects);
-            this.groupBoxObjects.Controls.Add(this.comboBoxSortMethod);
-            this.groupBoxObjects.Controls.Add(this.trackBarObjSlotSize);
-            this.groupBoxObjects.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxObjects.Location = new System.Drawing.Point(0, 0);
-            this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Name = "groupBoxObjects";
-            this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxObjects.Size = new System.Drawing.Size(927, 204);
-            this.groupBoxObjects.TabIndex = 2;
-            this.groupBoxObjects.TabStop = false;
-            this.groupBoxObjects.Text = "Objects";
-            // 
-            // comboBoxLabelMethod
-            // 
-            this.comboBoxLabelMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxLabelMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxLabelMethod.Location = new System.Drawing.Point(645, 15);
-            this.comboBoxLabelMethod.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxLabelMethod.Name = "comboBoxLabelMethod";
-            this.comboBoxLabelMethod.Size = new System.Drawing.Size(102, 21);
-            this.comboBoxLabelMethod.TabIndex = 13;
-            // 
-            // labelLabelMethod
-            // 
-            this.labelLabelMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelLabelMethod.AutoSize = true;
-            this.labelLabelMethod.Location = new System.Drawing.Point(565, 18);
-            this.labelLabelMethod.Name = "labelLabelMethod";
-            this.labelLabelMethod.Size = new System.Drawing.Size(75, 13);
-            this.labelLabelMethod.TabIndex = 12;
-            this.labelLabelMethod.Text = "Label Method:";
-            // 
-            // labelSlotSize
-            // 
-            this.labelSlotSize.AutoSize = true;
-            this.labelSlotSize.Location = new System.Drawing.Point(110, 19);
-            this.labelSlotSize.Name = "labelSlotSize";
-            this.labelSlotSize.Size = new System.Drawing.Size(51, 13);
-            this.labelSlotSize.TabIndex = 11;
-            this.labelSlotSize.Text = "Slot Size:";
-            // 
-            // checkBoxObjLockLabels
-            // 
-            this.checkBoxObjLockLabels.AutoSize = true;
-            this.checkBoxObjLockLabels.Location = new System.Drawing.Point(4, 18);
-            this.checkBoxObjLockLabels.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxObjLockLabels.Name = "checkBoxObjLockLabels";
-            this.checkBoxObjLockLabels.Size = new System.Drawing.Size(84, 17);
-            this.checkBoxObjLockLabels.TabIndex = 7;
-            this.checkBoxObjLockLabels.Text = "Lock Labels";
-            this.checkBoxObjLockLabels.UseVisualStyleBackColor = true;
-            // 
-            // labelSortMethod
-            // 
-            this.labelSortMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelSortMethod.AutoSize = true;
-            this.labelSortMethod.Location = new System.Drawing.Point(751, 18);
-            this.labelSortMethod.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.labelSortMethod.Name = "labelSortMethod";
-            this.labelSortMethod.Size = new System.Drawing.Size(68, 13);
-            this.labelSortMethod.TabIndex = 5;
-            this.labelSortMethod.Text = "Sort Method:";
-            // 
-            // WatchVariablePanelObjects
-            // 
-            this.WatchVariablePanelObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxMainSaveTableRow1Col2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.WatchVariablePanelObjects.AutoScroll = true;
-            this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
-            this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
-            this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
-            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(919, 155);
-            this.WatchVariablePanelObjects.TabIndex = 0;
-            this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
-            // 
-            // comboBoxSortMethod
-            // 
-            this.comboBoxSortMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxSortMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSortMethod.Location = new System.Drawing.Point(821, 15);
-            this.comboBoxSortMethod.Margin = new System.Windows.Forms.Padding(2);
-            this.comboBoxSortMethod.Name = "comboBoxSortMethod";
-            this.comboBoxSortMethod.Size = new System.Drawing.Size(102, 21);
-            this.comboBoxSortMethod.TabIndex = 4;
-            // 
-            // trackBarObjSlotSize
-            // 
-            this.trackBarObjSlotSize.Location = new System.Drawing.Point(167, 15);
-            this.trackBarObjSlotSize.Maximum = 100;
-            this.trackBarObjSlotSize.Minimum = 15;
-            this.trackBarObjSlotSize.Name = "trackBarObjSlotSize";
-            this.trackBarObjSlotSize.Size = new System.Drawing.Size(104, 45);
-            this.trackBarObjSlotSize.TabIndex = 3;
-            this.trackBarObjSlotSize.TickFrequency = 10;
-            this.trackBarObjSlotSize.Value = 40;
-            this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
+            this.textBoxMainSaveTableRow1Col2.Location = new System.Drawing.Point(52, 211);
+            this.textBoxMainSaveTableRow1Col2.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxMainSaveTableRow1Col2.MaximumSize = new System.Drawing.Size(30, 15);
+            this.textBoxMainSaveTableRow1Col2.Name = "textBoxMainSaveTableRow1Col2";
+            this.textBoxMainSaveTableRow1Col2.Size = new System.Drawing.Size(30, 20);
+            this.textBoxMainSaveTableRow1Col2.TabIndex = 41;
+            this.textBoxMainSaveTableRow1Col2.Text = "0";
+            this.textBoxMainSaveTableRow1Col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // mainSaveTextbox1
             // 
@@ -17830,7 +17669,7 @@ namespace STROOP
             this.mainSaveTextbox1.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox1.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox1.Name = "mainSaveTextbox1";
-            this.mainSaveTextbox1.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox1.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox1.TabIndex = 41;
             this.mainSaveTextbox1.Text = "0";
             this.mainSaveTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -17844,7 +17683,7 @@ namespace STROOP
             this.mainSaveTextbox2.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox2.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox2.Name = "mainSaveTextbox2";
-            this.mainSaveTextbox2.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox2.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox2.TabIndex = 41;
             this.mainSaveTextbox2.Text = "0";
             this.mainSaveTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -17858,7 +17697,7 @@ namespace STROOP
             this.mainSaveTextbox3.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox3.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox3.Name = "mainSaveTextbox3";
-            this.mainSaveTextbox3.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox3.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox3.TabIndex = 41;
             this.mainSaveTextbox3.Text = "0";
             this.mainSaveTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -17872,136 +17711,136 @@ namespace STROOP
             this.mainSaveTextbox4.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox4.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox4.Name = "mainSaveTextbox4";
-            this.mainSaveTextbox4.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox4.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox4.TabIndex = 41;
             this.mainSaveTextbox4.Text = "0";
             this.mainSaveTextbox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // mainSaveTextbox5
+            // textBoxMainSaveCoinRankRow10Col2
             // 
-            this.mainSaveTextbox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxMainSaveCoinRankRow10Col2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainSaveTextbox5.Location = new System.Drawing.Point(52, 136);
-            this.mainSaveTextbox5.Margin = new System.Windows.Forms.Padding(0);
-            this.mainSaveTextbox5.MaximumSize = new System.Drawing.Size(30, 15);
-            this.mainSaveTextbox5.Name = "mainSaveTextbox5";
-            this.mainSaveTextbox5.Size = new System.Drawing.Size(30, 15);
-            this.mainSaveTextbox5.TabIndex = 41;
-            this.mainSaveTextbox5.Text = "0";
-            this.mainSaveTextbox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMainSaveCoinRankRow10Col2.Location = new System.Drawing.Point(52, 136);
+            this.textBoxMainSaveCoinRankRow10Col2.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxMainSaveCoinRankRow10Col2.MaximumSize = new System.Drawing.Size(30, 15);
+            this.textBoxMainSaveCoinRankRow10Col2.Name = "textBoxMainSaveCoinRankRow10Col2";
+            this.textBoxMainSaveCoinRankRow10Col2.Size = new System.Drawing.Size(30, 20);
+            this.textBoxMainSaveCoinRankRow10Col2.TabIndex = 41;
+            this.textBoxMainSaveCoinRankRow10Col2.Text = "0";
+            this.textBoxMainSaveCoinRankRow10Col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // mainSaveTextbox6
+            // textBoxMainSaveCoinRankRow9Col2
             // 
-            this.mainSaveTextbox6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxMainSaveCoinRankRow9Col2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainSaveTextbox6.Location = new System.Drawing.Point(52, 121);
-            this.mainSaveTextbox6.Margin = new System.Windows.Forms.Padding(0);
-            this.mainSaveTextbox6.MaximumSize = new System.Drawing.Size(30, 15);
-            this.mainSaveTextbox6.Name = "mainSaveTextbox6";
-            this.mainSaveTextbox6.Size = new System.Drawing.Size(30, 15);
-            this.mainSaveTextbox6.TabIndex = 41;
-            this.mainSaveTextbox6.Text = "0";
-            this.mainSaveTextbox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMainSaveCoinRankRow9Col2.Location = new System.Drawing.Point(52, 121);
+            this.textBoxMainSaveCoinRankRow9Col2.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxMainSaveCoinRankRow9Col2.MaximumSize = new System.Drawing.Size(30, 15);
+            this.textBoxMainSaveCoinRankRow9Col2.Name = "textBoxMainSaveCoinRankRow9Col2";
+            this.textBoxMainSaveCoinRankRow9Col2.Size = new System.Drawing.Size(30, 20);
+            this.textBoxMainSaveCoinRankRow9Col2.TabIndex = 41;
+            this.textBoxMainSaveCoinRankRow9Col2.Text = "0";
+            this.textBoxMainSaveCoinRankRow9Col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // mainSaveTextbox7
+            // textBoxMainSaveCoinRankRow8Col2
             // 
-            this.mainSaveTextbox7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxMainSaveCoinRankRow8Col2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainSaveTextbox7.Location = new System.Drawing.Point(52, 106);
-            this.mainSaveTextbox7.Margin = new System.Windows.Forms.Padding(0);
-            this.mainSaveTextbox7.MaximumSize = new System.Drawing.Size(30, 15);
-            this.mainSaveTextbox7.Name = "mainSaveTextbox7";
-            this.mainSaveTextbox7.Size = new System.Drawing.Size(30, 15);
-            this.mainSaveTextbox7.TabIndex = 41;
-            this.mainSaveTextbox7.Text = "0";
-            this.mainSaveTextbox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMainSaveCoinRankRow8Col2.Location = new System.Drawing.Point(52, 106);
+            this.textBoxMainSaveCoinRankRow8Col2.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxMainSaveCoinRankRow8Col2.MaximumSize = new System.Drawing.Size(30, 15);
+            this.textBoxMainSaveCoinRankRow8Col2.Name = "textBoxMainSaveCoinRankRow8Col2";
+            this.textBoxMainSaveCoinRankRow8Col2.Size = new System.Drawing.Size(30, 20);
+            this.textBoxMainSaveCoinRankRow8Col2.TabIndex = 41;
+            this.textBoxMainSaveCoinRankRow8Col2.Text = "0";
+            this.textBoxMainSaveCoinRankRow8Col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // mainSaveTextbox8
+            // textBoxMainSaveCoinRankRow7Col2
             // 
-            this.mainSaveTextbox8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxMainSaveCoinRankRow7Col2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainSaveTextbox8.Location = new System.Drawing.Point(52, 91);
-            this.mainSaveTextbox8.Margin = new System.Windows.Forms.Padding(0);
-            this.mainSaveTextbox8.MaximumSize = new System.Drawing.Size(30, 15);
-            this.mainSaveTextbox8.Name = "mainSaveTextbox8";
-            this.mainSaveTextbox8.Size = new System.Drawing.Size(30, 15);
-            this.mainSaveTextbox8.TabIndex = 41;
-            this.mainSaveTextbox8.Text = "0";
-            this.mainSaveTextbox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMainSaveCoinRankRow7Col2.Location = new System.Drawing.Point(52, 91);
+            this.textBoxMainSaveCoinRankRow7Col2.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxMainSaveCoinRankRow7Col2.MaximumSize = new System.Drawing.Size(30, 15);
+            this.textBoxMainSaveCoinRankRow7Col2.Name = "textBoxMainSaveCoinRankRow7Col2";
+            this.textBoxMainSaveCoinRankRow7Col2.Size = new System.Drawing.Size(30, 20);
+            this.textBoxMainSaveCoinRankRow7Col2.TabIndex = 41;
+            this.textBoxMainSaveCoinRankRow7Col2.Text = "0";
+            this.textBoxMainSaveCoinRankRow7Col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // mainSaveTextbox9
+            // textBoxMainSaveCoinRankRow6Col2
             // 
-            this.mainSaveTextbox9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxMainSaveCoinRankRow6Col2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainSaveTextbox9.Location = new System.Drawing.Point(52, 76);
-            this.mainSaveTextbox9.Margin = new System.Windows.Forms.Padding(0);
-            this.mainSaveTextbox9.MaximumSize = new System.Drawing.Size(30, 15);
-            this.mainSaveTextbox9.Name = "mainSaveTextbox9";
-            this.mainSaveTextbox9.Size = new System.Drawing.Size(30, 15);
-            this.mainSaveTextbox9.TabIndex = 41;
-            this.mainSaveTextbox9.Text = "0";
-            this.mainSaveTextbox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMainSaveCoinRankRow6Col2.Location = new System.Drawing.Point(52, 76);
+            this.textBoxMainSaveCoinRankRow6Col2.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxMainSaveCoinRankRow6Col2.MaximumSize = new System.Drawing.Size(30, 15);
+            this.textBoxMainSaveCoinRankRow6Col2.Name = "textBoxMainSaveCoinRankRow6Col2";
+            this.textBoxMainSaveCoinRankRow6Col2.Size = new System.Drawing.Size(30, 20);
+            this.textBoxMainSaveCoinRankRow6Col2.TabIndex = 41;
+            this.textBoxMainSaveCoinRankRow6Col2.Text = "0";
+            this.textBoxMainSaveCoinRankRow6Col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // mainSaveTextbox10
+            // textBoxMainSaveCoinRankRow5Col2
             // 
-            this.mainSaveTextbox10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxMainSaveCoinRankRow5Col2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainSaveTextbox10.Location = new System.Drawing.Point(52, 61);
-            this.mainSaveTextbox10.Margin = new System.Windows.Forms.Padding(0);
-            this.mainSaveTextbox10.MaximumSize = new System.Drawing.Size(30, 15);
-            this.mainSaveTextbox10.Name = "mainSaveTextbox10";
-            this.mainSaveTextbox10.Size = new System.Drawing.Size(30, 15);
-            this.mainSaveTextbox10.TabIndex = 41;
-            this.mainSaveTextbox10.Text = "0";
-            this.mainSaveTextbox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMainSaveCoinRankRow5Col2.Location = new System.Drawing.Point(52, 61);
+            this.textBoxMainSaveCoinRankRow5Col2.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxMainSaveCoinRankRow5Col2.MaximumSize = new System.Drawing.Size(30, 15);
+            this.textBoxMainSaveCoinRankRow5Col2.Name = "textBoxMainSaveCoinRankRow5Col2";
+            this.textBoxMainSaveCoinRankRow5Col2.Size = new System.Drawing.Size(30, 20);
+            this.textBoxMainSaveCoinRankRow5Col2.TabIndex = 41;
+            this.textBoxMainSaveCoinRankRow5Col2.Text = "0";
+            this.textBoxMainSaveCoinRankRow5Col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // mainSaveTextbox11
+            // textBoxMainSaveCoinRankRow4Col2
             // 
-            this.mainSaveTextbox11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxMainSaveCoinRankRow4Col2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainSaveTextbox11.Location = new System.Drawing.Point(52, 46);
-            this.mainSaveTextbox11.Margin = new System.Windows.Forms.Padding(0);
-            this.mainSaveTextbox11.MaximumSize = new System.Drawing.Size(30, 15);
-            this.mainSaveTextbox11.Name = "mainSaveTextbox11";
-            this.mainSaveTextbox11.Size = new System.Drawing.Size(30, 15);
-            this.mainSaveTextbox11.TabIndex = 41;
-            this.mainSaveTextbox11.Text = "0";
-            this.mainSaveTextbox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMainSaveCoinRankRow4Col2.Location = new System.Drawing.Point(52, 46);
+            this.textBoxMainSaveCoinRankRow4Col2.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxMainSaveCoinRankRow4Col2.MaximumSize = new System.Drawing.Size(30, 15);
+            this.textBoxMainSaveCoinRankRow4Col2.Name = "textBoxMainSaveCoinRankRow4Col2";
+            this.textBoxMainSaveCoinRankRow4Col2.Size = new System.Drawing.Size(30, 20);
+            this.textBoxMainSaveCoinRankRow4Col2.TabIndex = 41;
+            this.textBoxMainSaveCoinRankRow4Col2.Text = "0";
+            this.textBoxMainSaveCoinRankRow4Col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // mainSaveTextbox12
+            // textBoxMainSaveCoinRankRow3Col2
             // 
-            this.mainSaveTextbox12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxMainSaveCoinRankRow3Col2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainSaveTextbox12.Location = new System.Drawing.Point(52, 31);
-            this.mainSaveTextbox12.Margin = new System.Windows.Forms.Padding(0);
-            this.mainSaveTextbox12.MaximumSize = new System.Drawing.Size(30, 15);
-            this.mainSaveTextbox12.Name = "mainSaveTextbox12";
-            this.mainSaveTextbox12.Size = new System.Drawing.Size(30, 15);
-            this.mainSaveTextbox12.TabIndex = 41;
-            this.mainSaveTextbox12.Text = "0";
-            this.mainSaveTextbox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMainSaveCoinRankRow3Col2.Location = new System.Drawing.Point(52, 31);
+            this.textBoxMainSaveCoinRankRow3Col2.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxMainSaveCoinRankRow3Col2.MaximumSize = new System.Drawing.Size(30, 15);
+            this.textBoxMainSaveCoinRankRow3Col2.Name = "textBoxMainSaveCoinRankRow3Col2";
+            this.textBoxMainSaveCoinRankRow3Col2.Size = new System.Drawing.Size(30, 20);
+            this.textBoxMainSaveCoinRankRow3Col2.TabIndex = 41;
+            this.textBoxMainSaveCoinRankRow3Col2.Text = "0";
+            this.textBoxMainSaveCoinRankRow3Col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // mainSaveTextbox13
+            // textBoxMainSaveCoinRankRow2Col2
             // 
-            this.mainSaveTextbox13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.textBoxMainSaveCoinRankRow2Col2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainSaveTextbox13.Location = new System.Drawing.Point(52, 16);
-            this.mainSaveTextbox13.Margin = new System.Windows.Forms.Padding(0);
-            this.mainSaveTextbox13.MaximumSize = new System.Drawing.Size(30, 15);
-            this.mainSaveTextbox13.Name = "mainSaveTextbox13";
-            this.mainSaveTextbox13.Size = new System.Drawing.Size(30, 15);
-            this.mainSaveTextbox13.TabIndex = 41;
-            this.mainSaveTextbox13.Text = "0";
-            this.mainSaveTextbox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxMainSaveCoinRankRow2Col2.Location = new System.Drawing.Point(52, 16);
+            this.textBoxMainSaveCoinRankRow2Col2.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxMainSaveCoinRankRow2Col2.MaximumSize = new System.Drawing.Size(30, 15);
+            this.textBoxMainSaveCoinRankRow2Col2.Name = "textBoxMainSaveCoinRankRow2Col2";
+            this.textBoxMainSaveCoinRankRow2Col2.Size = new System.Drawing.Size(30, 20);
+            this.textBoxMainSaveCoinRankRow2Col2.TabIndex = 41;
+            this.textBoxMainSaveCoinRankRow2Col2.Text = "0";
+            this.textBoxMainSaveCoinRankRow2Col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxMainSaveCoinRankRow1Col2
             // 
@@ -18012,7 +17851,7 @@ namespace STROOP
             this.textBoxMainSaveCoinRankRow1Col2.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxMainSaveCoinRankRow1Col2.MaximumSize = new System.Drawing.Size(30, 15);
             this.textBoxMainSaveCoinRankRow1Col2.Name = "textBoxMainSaveCoinRankRow1Col2";
-            this.textBoxMainSaveCoinRankRow1Col2.Size = new System.Drawing.Size(30, 15);
+            this.textBoxMainSaveCoinRankRow1Col2.Size = new System.Drawing.Size(30, 20);
             this.textBoxMainSaveCoinRankRow1Col2.TabIndex = 41;
             this.textBoxMainSaveCoinRankRow1Col2.Text = "0";
             this.textBoxMainSaveCoinRankRow1Col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18026,7 +17865,7 @@ namespace STROOP
             this.mainSaveTextbox15.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox15.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox15.Name = "mainSaveTextbox15";
-            this.mainSaveTextbox15.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox15.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox15.TabIndex = 41;
             this.mainSaveTextbox15.Text = "0";
             this.mainSaveTextbox15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18040,7 +17879,7 @@ namespace STROOP
             this.mainSaveTextbox16.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox16.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox16.Name = "mainSaveTextbox16";
-            this.mainSaveTextbox16.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox16.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox16.TabIndex = 41;
             this.mainSaveTextbox16.Text = "0";
             this.mainSaveTextbox16.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18054,7 +17893,7 @@ namespace STROOP
             this.mainSaveTextbox17.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox17.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox17.Name = "mainSaveTextbox17";
-            this.mainSaveTextbox17.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox17.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox17.TabIndex = 41;
             this.mainSaveTextbox17.Text = "0";
             this.mainSaveTextbox17.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18068,7 +17907,7 @@ namespace STROOP
             this.mainSaveTextbox18.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox18.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox18.Name = "mainSaveTextbox18";
-            this.mainSaveTextbox18.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox18.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox18.TabIndex = 41;
             this.mainSaveTextbox18.Text = "0";
             this.mainSaveTextbox18.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18082,7 +17921,7 @@ namespace STROOP
             this.mainSaveTextbox19.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox19.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox19.Name = "mainSaveTextbox19";
-            this.mainSaveTextbox19.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox19.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox19.TabIndex = 41;
             this.mainSaveTextbox19.Text = "0";
             this.mainSaveTextbox19.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18096,7 +17935,7 @@ namespace STROOP
             this.mainSaveTextbox20.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox20.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox20.Name = "mainSaveTextbox20";
-            this.mainSaveTextbox20.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox20.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox20.TabIndex = 41;
             this.mainSaveTextbox20.Text = "0";
             this.mainSaveTextbox20.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18110,7 +17949,7 @@ namespace STROOP
             this.mainSaveTextbox21.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox21.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox21.Name = "mainSaveTextbox21";
-            this.mainSaveTextbox21.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox21.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox21.TabIndex = 41;
             this.mainSaveTextbox21.Text = "0";
             this.mainSaveTextbox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18124,7 +17963,7 @@ namespace STROOP
             this.mainSaveTextbox22.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox22.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox22.Name = "mainSaveTextbox22";
-            this.mainSaveTextbox22.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox22.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox22.TabIndex = 41;
             this.mainSaveTextbox22.Text = "0";
             this.mainSaveTextbox22.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18138,7 +17977,7 @@ namespace STROOP
             this.mainSaveTextbox23.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox23.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox23.Name = "mainSaveTextbox23";
-            this.mainSaveTextbox23.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox23.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox23.TabIndex = 41;
             this.mainSaveTextbox23.Text = "0";
             this.mainSaveTextbox23.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18152,7 +17991,7 @@ namespace STROOP
             this.mainSaveTextbox24.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox24.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox24.Name = "mainSaveTextbox24";
-            this.mainSaveTextbox24.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox24.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox24.TabIndex = 41;
             this.mainSaveTextbox24.Text = "0";
             this.mainSaveTextbox24.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18166,7 +18005,7 @@ namespace STROOP
             this.mainSaveTextbox25.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox25.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox25.Name = "mainSaveTextbox25";
-            this.mainSaveTextbox25.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox25.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox25.TabIndex = 41;
             this.mainSaveTextbox25.Text = "0";
             this.mainSaveTextbox25.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18180,7 +18019,7 @@ namespace STROOP
             this.mainSaveTextbox26.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox26.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox26.Name = "mainSaveTextbox26";
-            this.mainSaveTextbox26.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox26.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox26.TabIndex = 41;
             this.mainSaveTextbox26.Text = "0";
             this.mainSaveTextbox26.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18194,7 +18033,7 @@ namespace STROOP
             this.mainSaveTextbox27.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox27.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox27.Name = "mainSaveTextbox27";
-            this.mainSaveTextbox27.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox27.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox27.TabIndex = 41;
             this.mainSaveTextbox27.Text = "0";
             this.mainSaveTextbox27.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18208,7 +18047,7 @@ namespace STROOP
             this.mainSaveTextbox28.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox28.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox28.Name = "mainSaveTextbox28";
-            this.mainSaveTextbox28.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox28.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox28.TabIndex = 41;
             this.mainSaveTextbox28.Text = "0";
             this.mainSaveTextbox28.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18222,7 +18061,7 @@ namespace STROOP
             this.textBoxMainSaveCoinRankRow1Col3.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxMainSaveCoinRankRow1Col3.MaximumSize = new System.Drawing.Size(30, 15);
             this.textBoxMainSaveCoinRankRow1Col3.Name = "textBoxMainSaveCoinRankRow1Col3";
-            this.textBoxMainSaveCoinRankRow1Col3.Size = new System.Drawing.Size(30, 15);
+            this.textBoxMainSaveCoinRankRow1Col3.Size = new System.Drawing.Size(30, 20);
             this.textBoxMainSaveCoinRankRow1Col3.TabIndex = 41;
             this.textBoxMainSaveCoinRankRow1Col3.Text = "0";
             this.textBoxMainSaveCoinRankRow1Col3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18236,7 +18075,7 @@ namespace STROOP
             this.mainSaveTextbox30.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox30.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox30.Name = "mainSaveTextbox30";
-            this.mainSaveTextbox30.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox30.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox30.TabIndex = 41;
             this.mainSaveTextbox30.Text = "0";
             this.mainSaveTextbox30.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18250,7 +18089,7 @@ namespace STROOP
             this.mainSaveTextbox31.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox31.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox31.Name = "mainSaveTextbox31";
-            this.mainSaveTextbox31.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox31.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox31.TabIndex = 41;
             this.mainSaveTextbox31.Text = "0";
             this.mainSaveTextbox31.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18264,7 +18103,7 @@ namespace STROOP
             this.mainSaveTextbox32.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox32.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox32.Name = "mainSaveTextbox32";
-            this.mainSaveTextbox32.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox32.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox32.TabIndex = 41;
             this.mainSaveTextbox32.Text = "0";
             this.mainSaveTextbox32.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18278,7 +18117,7 @@ namespace STROOP
             this.mainSaveTextbox33.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox33.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox33.Name = "mainSaveTextbox33";
-            this.mainSaveTextbox33.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox33.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox33.TabIndex = 41;
             this.mainSaveTextbox33.Text = "0";
             this.mainSaveTextbox33.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18292,7 +18131,7 @@ namespace STROOP
             this.mainSaveTextbox34.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox34.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox34.Name = "mainSaveTextbox34";
-            this.mainSaveTextbox34.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox34.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox34.TabIndex = 41;
             this.mainSaveTextbox34.Text = "0";
             this.mainSaveTextbox34.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18306,7 +18145,7 @@ namespace STROOP
             this.mainSaveTextbox35.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox35.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox35.Name = "mainSaveTextbox35";
-            this.mainSaveTextbox35.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox35.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox35.TabIndex = 41;
             this.mainSaveTextbox35.Text = "0";
             this.mainSaveTextbox35.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18320,7 +18159,7 @@ namespace STROOP
             this.mainSaveTextbox36.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox36.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox36.Name = "mainSaveTextbox36";
-            this.mainSaveTextbox36.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox36.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox36.TabIndex = 41;
             this.mainSaveTextbox36.Text = "0";
             this.mainSaveTextbox36.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18334,7 +18173,7 @@ namespace STROOP
             this.mainSaveTextbox37.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox37.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox37.Name = "mainSaveTextbox37";
-            this.mainSaveTextbox37.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox37.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox37.TabIndex = 41;
             this.mainSaveTextbox37.Text = "0";
             this.mainSaveTextbox37.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18348,7 +18187,7 @@ namespace STROOP
             this.mainSaveTextbox38.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox38.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox38.Name = "mainSaveTextbox38";
-            this.mainSaveTextbox38.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox38.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox38.TabIndex = 41;
             this.mainSaveTextbox38.Text = "0";
             this.mainSaveTextbox38.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18362,7 +18201,7 @@ namespace STROOP
             this.mainSaveTextbox39.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox39.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox39.Name = "mainSaveTextbox39";
-            this.mainSaveTextbox39.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox39.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox39.TabIndex = 41;
             this.mainSaveTextbox39.Text = "0";
             this.mainSaveTextbox39.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18376,7 +18215,7 @@ namespace STROOP
             this.mainSaveTextbox40.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox40.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox40.Name = "mainSaveTextbox40";
-            this.mainSaveTextbox40.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox40.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox40.TabIndex = 41;
             this.mainSaveTextbox40.Text = "0";
             this.mainSaveTextbox40.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18390,7 +18229,7 @@ namespace STROOP
             this.mainSaveTextbox41.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox41.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox41.Name = "mainSaveTextbox41";
-            this.mainSaveTextbox41.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox41.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox41.TabIndex = 41;
             this.mainSaveTextbox41.Text = "0";
             this.mainSaveTextbox41.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18404,7 +18243,7 @@ namespace STROOP
             this.mainSaveTextbox42.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox42.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox42.Name = "mainSaveTextbox42";
-            this.mainSaveTextbox42.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox42.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox42.TabIndex = 41;
             this.mainSaveTextbox42.Text = "0";
             this.mainSaveTextbox42.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18418,7 +18257,7 @@ namespace STROOP
             this.mainSaveTextbox43.Margin = new System.Windows.Forms.Padding(0);
             this.mainSaveTextbox43.MaximumSize = new System.Drawing.Size(30, 15);
             this.mainSaveTextbox43.Name = "mainSaveTextbox43";
-            this.mainSaveTextbox43.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox43.Size = new System.Drawing.Size(30, 20);
             this.mainSaveTextbox43.TabIndex = 41;
             this.mainSaveTextbox43.Text = "0";
             this.mainSaveTextbox43.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18432,7 +18271,7 @@ namespace STROOP
             this.textBoxMainSaveCoinRankRow1Col4.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxMainSaveCoinRankRow1Col4.MaximumSize = new System.Drawing.Size(30, 15);
             this.textBoxMainSaveCoinRankRow1Col4.Name = "textBoxMainSaveCoinRankRow1Col4";
-            this.textBoxMainSaveCoinRankRow1Col4.Size = new System.Drawing.Size(30, 15);
+            this.textBoxMainSaveCoinRankRow1Col4.Size = new System.Drawing.Size(30, 20);
             this.textBoxMainSaveCoinRankRow1Col4.TabIndex = 41;
             this.textBoxMainSaveCoinRankRow1Col4.Text = "0";
             this.textBoxMainSaveCoinRankRow1Col4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -18646,6 +18485,167 @@ namespace STROOP
             this.textBoxMainSaveCoinRankRow1Col5.TabIndex = 41;
             this.textBoxMainSaveCoinRankRow1Col5.Text = "0";
             this.textBoxMainSaveCoinRankRow1Col5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBoxMainSaveStruct
+            // 
+            this.groupBoxMainSaveStruct.Controls.Add(this.radioButtonMainSaveStructMainSaveSaved);
+            this.groupBoxMainSaveStruct.Controls.Add(this.radioButtonMainSaveStructMainSave);
+            this.groupBoxMainSaveStruct.Location = new System.Drawing.Point(20, 18);
+            this.groupBoxMainSaveStruct.Name = "groupBoxMainSaveStruct";
+            this.groupBoxMainSaveStruct.Size = new System.Drawing.Size(134, 61);
+            this.groupBoxMainSaveStruct.TabIndex = 37;
+            this.groupBoxMainSaveStruct.TabStop = false;
+            this.groupBoxMainSaveStruct.Text = "Struct";
+            // 
+            // radioButtonMainSaveStructMainSaveSaved
+            // 
+            this.radioButtonMainSaveStructMainSaveSaved.AutoSize = true;
+            this.radioButtonMainSaveStructMainSaveSaved.Location = new System.Drawing.Point(9, 36);
+            this.radioButtonMainSaveStructMainSaveSaved.Name = "radioButtonMainSaveStructMainSaveSaved";
+            this.radioButtonMainSaveStructMainSaveSaved.Size = new System.Drawing.Size(110, 17);
+            this.radioButtonMainSaveStructMainSaveSaved.TabIndex = 12;
+            this.radioButtonMainSaveStructMainSaveSaved.Text = "Main Save Saved";
+            this.radioButtonMainSaveStructMainSaveSaved.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonMainSaveStructMainSave
+            // 
+            this.radioButtonMainSaveStructMainSave.AutoSize = true;
+            this.radioButtonMainSaveStructMainSave.Checked = true;
+            this.radioButtonMainSaveStructMainSave.Location = new System.Drawing.Point(9, 16);
+            this.radioButtonMainSaveStructMainSave.Name = "radioButtonMainSaveStructMainSave";
+            this.radioButtonMainSaveStructMainSave.Size = new System.Drawing.Size(76, 17);
+            this.radioButtonMainSaveStructMainSave.TabIndex = 11;
+            this.radioButtonMainSaveStructMainSave.TabStop = true;
+            this.radioButtonMainSaveStructMainSave.Text = "Main Save";
+            this.radioButtonMainSaveStructMainSave.UseVisualStyleBackColor = true;
+            // 
+            // buttonMainSaveSave
+            // 
+            this.buttonMainSaveSave.Location = new System.Drawing.Point(162, 34);
+            this.buttonMainSaveSave.Margin = new System.Windows.Forms.Padding(0);
+            this.buttonMainSaveSave.Name = "buttonMainSaveSave";
+            this.buttonMainSaveSave.Size = new System.Drawing.Size(56, 30);
+            this.buttonMainSaveSave.TabIndex = 36;
+            this.buttonMainSaveSave.Text = "Save";
+            this.buttonMainSaveSave.UseVisualStyleBackColor = true;
+            // 
+            // watchVariablePanelMainSave
+            // 
+            this.watchVariablePanelMainSave.AutoScroll = true;
+            this.watchVariablePanelMainSave.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.watchVariablePanelMainSave.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.watchVariablePanelMainSave.Location = new System.Drawing.Point(0, 0);
+            this.watchVariablePanelMainSave.Margin = new System.Windows.Forms.Padding(0);
+            this.watchVariablePanelMainSave.Name = "watchVariablePanelMainSave";
+            this.watchVariablePanelMainSave.Padding = new System.Windows.Forms.Padding(2);
+            this.watchVariablePanelMainSave.Size = new System.Drawing.Size(480, 461);
+            this.watchVariablePanelMainSave.TabIndex = 2;
+            // 
+            // groupBoxObjects
+            // 
+            this.groupBoxObjects.Controls.Add(this.comboBoxLabelMethod);
+            this.groupBoxObjects.Controls.Add(this.labelLabelMethod);
+            this.groupBoxObjects.Controls.Add(this.labelSlotSize);
+            this.groupBoxObjects.Controls.Add(this.checkBoxObjLockLabels);
+            this.groupBoxObjects.Controls.Add(this.labelSortMethod);
+            this.groupBoxObjects.Controls.Add(this.WatchVariablePanelObjects);
+            this.groupBoxObjects.Controls.Add(this.comboBoxSortMethod);
+            this.groupBoxObjects.Controls.Add(this.trackBarObjSlotSize);
+            this.groupBoxObjects.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxObjects.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxObjects.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBoxObjects.Name = "groupBoxObjects";
+            this.groupBoxObjects.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBoxObjects.Size = new System.Drawing.Size(927, 204);
+            this.groupBoxObjects.TabIndex = 2;
+            this.groupBoxObjects.TabStop = false;
+            this.groupBoxObjects.Text = "Objects";
+            // 
+            // comboBoxLabelMethod
+            // 
+            this.comboBoxLabelMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxLabelMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxLabelMethod.Location = new System.Drawing.Point(645, 15);
+            this.comboBoxLabelMethod.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxLabelMethod.Name = "comboBoxLabelMethod";
+            this.comboBoxLabelMethod.Size = new System.Drawing.Size(102, 21);
+            this.comboBoxLabelMethod.TabIndex = 13;
+            // 
+            // labelLabelMethod
+            // 
+            this.labelLabelMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelLabelMethod.AutoSize = true;
+            this.labelLabelMethod.Location = new System.Drawing.Point(565, 18);
+            this.labelLabelMethod.Name = "labelLabelMethod";
+            this.labelLabelMethod.Size = new System.Drawing.Size(75, 13);
+            this.labelLabelMethod.TabIndex = 12;
+            this.labelLabelMethod.Text = "Label Method:";
+            // 
+            // labelSlotSize
+            // 
+            this.labelSlotSize.AutoSize = true;
+            this.labelSlotSize.Location = new System.Drawing.Point(110, 19);
+            this.labelSlotSize.Name = "labelSlotSize";
+            this.labelSlotSize.Size = new System.Drawing.Size(51, 13);
+            this.labelSlotSize.TabIndex = 11;
+            this.labelSlotSize.Text = "Slot Size:";
+            // 
+            // checkBoxObjLockLabels
+            // 
+            this.checkBoxObjLockLabels.AutoSize = true;
+            this.checkBoxObjLockLabels.Location = new System.Drawing.Point(4, 18);
+            this.checkBoxObjLockLabels.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxObjLockLabels.Name = "checkBoxObjLockLabels";
+            this.checkBoxObjLockLabels.Size = new System.Drawing.Size(84, 17);
+            this.checkBoxObjLockLabels.TabIndex = 7;
+            this.checkBoxObjLockLabels.Text = "Lock Labels";
+            this.checkBoxObjLockLabels.UseVisualStyleBackColor = true;
+            // 
+            // labelSortMethod
+            // 
+            this.labelSortMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelSortMethod.AutoSize = true;
+            this.labelSortMethod.Location = new System.Drawing.Point(751, 18);
+            this.labelSortMethod.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelSortMethod.Name = "labelSortMethod";
+            this.labelSortMethod.Size = new System.Drawing.Size(68, 13);
+            this.labelSortMethod.TabIndex = 5;
+            this.labelSortMethod.Text = "Sort Method:";
+            // 
+            // WatchVariablePanelObjects
+            // 
+            this.WatchVariablePanelObjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.WatchVariablePanelObjects.AutoScroll = true;
+            this.WatchVariablePanelObjects.Location = new System.Drawing.Point(4, 45);
+            this.WatchVariablePanelObjects.Margin = new System.Windows.Forms.Padding(2);
+            this.WatchVariablePanelObjects.Name = "WatchVariablePanelObjects";
+            this.WatchVariablePanelObjects.Size = new System.Drawing.Size(919, 155);
+            this.WatchVariablePanelObjects.TabIndex = 0;
+            this.WatchVariablePanelObjects.Resize += new System.EventHandler(this.WatchVariablePanelObjects_Resize);
+            // 
+            // comboBoxSortMethod
+            // 
+            this.comboBoxSortMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxSortMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSortMethod.Location = new System.Drawing.Point(821, 15);
+            this.comboBoxSortMethod.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxSortMethod.Name = "comboBoxSortMethod";
+            this.comboBoxSortMethod.Size = new System.Drawing.Size(102, 21);
+            this.comboBoxSortMethod.TabIndex = 4;
+            // 
+            // trackBarObjSlotSize
+            // 
+            this.trackBarObjSlotSize.Location = new System.Drawing.Point(167, 15);
+            this.trackBarObjSlotSize.Maximum = 100;
+            this.trackBarObjSlotSize.Minimum = 15;
+            this.trackBarObjSlotSize.Name = "trackBarObjSlotSize";
+            this.trackBarObjSlotSize.Size = new System.Drawing.Size(104, 45);
+            this.trackBarObjSlotSize.TabIndex = 3;
+            this.trackBarObjSlotSize.TickFrequency = 10;
+            this.trackBarObjSlotSize.Value = 40;
+            this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
             // StroopMainForm
             // 
@@ -20531,15 +20531,15 @@ namespace STROOP
         private MainSaveTextbox mainSaveTextbox2;
         private MainSaveTextbox mainSaveTextbox3;
         private MainSaveTextbox mainSaveTextbox4;
-        private MainSaveTextbox mainSaveTextbox5;
-        private MainSaveTextbox mainSaveTextbox6;
-        private MainSaveTextbox mainSaveTextbox7;
-        private MainSaveTextbox mainSaveTextbox8;
-        private MainSaveTextbox mainSaveTextbox9;
-        private MainSaveTextbox mainSaveTextbox10;
-        private MainSaveTextbox mainSaveTextbox11;
-        private MainSaveTextbox mainSaveTextbox12;
-        private MainSaveTextbox mainSaveTextbox13;
+        private MainSaveTextbox textBoxMainSaveCoinRankRow10Col2;
+        private MainSaveTextbox textBoxMainSaveCoinRankRow9Col2;
+        private MainSaveTextbox textBoxMainSaveCoinRankRow8Col2;
+        private MainSaveTextbox textBoxMainSaveCoinRankRow7Col2;
+        private MainSaveTextbox textBoxMainSaveCoinRankRow6Col2;
+        private MainSaveTextbox textBoxMainSaveCoinRankRow5Col2;
+        private MainSaveTextbox textBoxMainSaveCoinRankRow4Col2;
+        private MainSaveTextbox textBoxMainSaveCoinRankRow3Col2;
+        private MainSaveTextbox textBoxMainSaveCoinRankRow2Col2;
         private MainSaveTextbox textBoxMainSaveCoinRankRow1Col2;
         private MainSaveTextbox mainSaveTextbox15;
         private MainSaveTextbox mainSaveTextbox16;
