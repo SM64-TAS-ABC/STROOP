@@ -34,15 +34,15 @@ namespace STROOP
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StroopMainForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle73 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle74 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle75 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle76 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle77 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle78 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle79 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle80 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle81 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelProcessSelect = new System.Windows.Forms.Label();
             this.labelVersionNumber = new System.Windows.Forms.Label();
             this.buttonDisconnect = new System.Windows.Forms.Button();
@@ -1348,6 +1348,21 @@ namespace STROOP
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.mainSaveCourseLabel1 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBoxMainSaveTableRow1Col2 = new STROOP.MainSaveTextbox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.radioButton8 = new System.Windows.Forms.RadioButton();
@@ -1362,21 +1377,65 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.textBoxMainSaveTableRow1Col2 = new MainSaveTextbox();
+            this.mainSaveTextbox1 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox2 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox3 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox4 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox5 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox6 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox7 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox8 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox9 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox10 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox11 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox12 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox13 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox14 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox15 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox16 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox17 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox18 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox19 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox20 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox21 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox22 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox23 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox24 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox25 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox26 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox27 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox28 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox29 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox30 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox31 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox32 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox33 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox34 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox35 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox36 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox37 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox38 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox39 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox40 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox41 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox42 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox43 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox44 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox45 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox46 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox47 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox48 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox49 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox50 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox51 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox52 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox53 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox54 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox55 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox56 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox57 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox58 = new STROOP.MainSaveTextbox();
+            this.mainSaveTextbox59 = new STROOP.MainSaveTextbox();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -5172,7 +5231,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 412F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 413F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8891,7 +8950,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(421, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(424, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -8925,14 +8984,14 @@ namespace STROOP
             this.dataGridViewM64Inputs.AllowUserToResizeColumns = false;
             this.dataGridViewM64Inputs.AllowUserToResizeRows = false;
             this.dataGridViewM64Inputs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle73.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle73.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle73.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle73.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle73.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle73.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle73.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle73;
             this.dataGridViewM64Inputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewM64Inputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnM64Frame,
@@ -8953,14 +9012,14 @@ namespace STROOP
             this.ColumnM64DDown,
             this.ColumnM64DLeft,
             this.ColumnM64DRight});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle74.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle74.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle74.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle74.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle74.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle74.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle74.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle74;
             this.dataGridViewM64Inputs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewM64Inputs.EnableHeadersVisualStyles = false;
             this.dataGridViewM64Inputs.Location = new System.Drawing.Point(0, 0);
@@ -11162,7 +11221,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 702;
+            this.splitContainerMemory.SplitterDistance = 705;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11203,7 +11262,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(702, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(705, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -11420,7 +11479,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(702, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(705, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -11449,7 +11508,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(601, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(604, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -11462,7 +11521,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(204, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(201, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -12616,7 +12675,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(289, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(272, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -12648,7 +12707,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(283, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(266, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -12704,7 +12763,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(283, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(266, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -14955,14 +15014,14 @@ namespace STROOP
             this.dataGridViewCoin.AllowUserToOrderColumns = true;
             this.dataGridViewCoin.AllowUserToResizeRows = false;
             this.dataGridViewCoin.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle75.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle75.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle75.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle75.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle75.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle75.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle75.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCoin.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle75;
             this.dataGridViewCoin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCoin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.rngIndex,
@@ -14983,8 +15042,8 @@ namespace STROOP
             // 
             // rngIndex
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle76.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngIndex.DefaultCellStyle = dataGridViewCellStyle76;
             this.rngIndex.HeaderText = "RNG Index";
             this.rngIndex.MinimumWidth = 2;
             this.rngIndex.Name = "rngIndex";
@@ -14992,8 +15051,8 @@ namespace STROOP
             // 
             // rngValue
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngValue.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle77.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngValue.DefaultCellStyle = dataGridViewCellStyle77;
             this.rngValue.HeaderText = "RNG Value";
             this.rngValue.MinimumWidth = 2;
             this.rngValue.Name = "rngValue";
@@ -15001,8 +15060,8 @@ namespace STROOP
             // 
             // rngToGo
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle78.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.rngToGo.DefaultCellStyle = dataGridViewCellStyle78;
             this.rngToGo.HeaderText = "RNG To Go";
             this.rngToGo.MinimumWidth = 2;
             this.rngToGo.Name = "rngToGo";
@@ -15010,24 +15069,24 @@ namespace STROOP
             // 
             // coinHSpeed
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle79.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinHSpeed.DefaultCellStyle = dataGridViewCellStyle79;
             this.coinHSpeed.HeaderText = "Coin HSpeed";
             this.coinHSpeed.Name = "coinHSpeed";
             this.coinHSpeed.ReadOnly = true;
             // 
             // coinVSpeed
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle80.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinVSpeed.DefaultCellStyle = dataGridViewCellStyle80;
             this.coinVSpeed.HeaderText = "Coin VSpeed";
             this.coinVSpeed.Name = "coinVSpeed";
             this.coinVSpeed.ReadOnly = true;
             // 
             // coinAngle
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle81.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.coinAngle.DefaultCellStyle = dataGridViewCellStyle81;
             this.coinAngle.HeaderText = "Coin Angle";
             this.coinAngle.MinimumWidth = 2;
             this.coinAngle.Name = "coinAngle";
@@ -17295,13 +17354,12 @@ namespace STROOP
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel1.Controls.Add(this.mainSaveCourseLabel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label8, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label10, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.label11, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.label12, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.textBoxMainSaveTableRow1Col2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label13, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.label14, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.label15, 0, 7);
@@ -17312,6 +17370,66 @@ namespace STROOP
             this.tableLayoutPanel1.Controls.Add(this.label20, 0, 12);
             this.tableLayoutPanel1.Controls.Add(this.label21, 0, 13);
             this.tableLayoutPanel1.Controls.Add(this.label22, 0, 14);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxMainSaveTableRow1Col2, 1, 14);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox1, 1, 13);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox2, 1, 12);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox3, 1, 11);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox4, 1, 10);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox5, 1, 9);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox6, 1, 8);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox7, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox8, 1, 6);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox9, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox10, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox11, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox12, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox13, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox14, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox15, 2, 14);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox16, 2, 13);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox17, 2, 12);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox18, 2, 11);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox19, 2, 10);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox20, 2, 9);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox21, 2, 8);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox22, 2, 7);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox23, 2, 6);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox24, 2, 5);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox25, 2, 4);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox26, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox27, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox28, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox29, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox30, 3, 14);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox31, 3, 13);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox32, 3, 12);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox33, 3, 11);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox34, 3, 10);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox35, 3, 9);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox36, 3, 8);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox37, 3, 7);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox38, 3, 6);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox39, 3, 5);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox40, 3, 4);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox41, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox42, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox43, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox44, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox45, 4, 14);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox46, 4, 13);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox47, 4, 12);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox48, 4, 11);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox49, 4, 10);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox50, 4, 9);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox51, 4, 8);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox52, 4, 7);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox53, 4, 6);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox54, 4, 5);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox55, 4, 4);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox56, 4, 3);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox57, 4, 2);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox58, 4, 1);
+            this.tableLayoutPanel1.Controls.Add(this.mainSaveTextbox59, 4, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(351, 18);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 15;
@@ -17345,6 +17463,202 @@ namespace STROOP
             this.mainSaveCourseLabel1.TabIndex = 8;
             this.mainSaveCourseLabel1.Text = "BoB";
             this.mainSaveCourseLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(4, 16);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(44, 14);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "WF";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(4, 31);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(44, 14);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "JRB";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(4, 46);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(44, 14);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "CCM";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(4, 61);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(44, 14);
+            this.label12.TabIndex = 8;
+            this.label12.Text = "BBH";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBoxMainSaveTableRow1Col2
+            // 
+            this.textBoxMainSaveTableRow1Col2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxMainSaveTableRow1Col2.Location = new System.Drawing.Point(52, 211);
+            this.textBoxMainSaveTableRow1Col2.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxMainSaveTableRow1Col2.MaximumSize = new System.Drawing.Size(30, 15);
+            this.textBoxMainSaveTableRow1Col2.Name = "textBoxMainSaveTableRow1Col2";
+            this.textBoxMainSaveTableRow1Col2.Size = new System.Drawing.Size(30, 15);
+            this.textBoxMainSaveTableRow1Col2.TabIndex = 41;
+            this.textBoxMainSaveTableRow1Col2.Text = "0";
+            this.textBoxMainSaveTableRow1Col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label13
+            // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(4, 76);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(44, 14);
+            this.label13.TabIndex = 8;
+            this.label13.Text = "HMC";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label14
+            // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(4, 91);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(44, 14);
+            this.label14.TabIndex = 8;
+            this.label14.Text = "LLL";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label15
+            // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(4, 106);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(44, 14);
+            this.label15.TabIndex = 8;
+            this.label15.Text = "SSL";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label16
+            // 
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(4, 121);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(44, 14);
+            this.label16.TabIndex = 8;
+            this.label16.Text = "DDD";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label17
+            // 
+            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(4, 136);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(44, 14);
+            this.label17.TabIndex = 8;
+            this.label17.Text = "SL";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label18
+            // 
+            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(4, 151);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(44, 14);
+            this.label18.TabIndex = 8;
+            this.label18.Text = "WDW";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label19
+            // 
+            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(4, 166);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(44, 14);
+            this.label19.TabIndex = 8;
+            this.label19.Text = "TTM";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label20
+            // 
+            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(4, 181);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(44, 14);
+            this.label20.TabIndex = 8;
+            this.label20.Text = "THI";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label21
+            // 
+            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(4, 196);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(44, 14);
+            this.label21.TabIndex = 8;
+            this.label21.Text = "TTC";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label22
+            // 
+            this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(4, 211);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(44, 15);
+            this.label22.TabIndex = 8;
+            this.label22.Text = "RR";
+            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // groupBox3
             // 
@@ -17507,201 +17821,831 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // label8
+            // mainSaveTextbox1
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.mainSaveTextbox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(4, 16);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 14);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "WF";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.mainSaveTextbox1.Location = new System.Drawing.Point(52, 196);
+            this.mainSaveTextbox1.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox1.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox1.Name = "mainSaveTextbox1";
+            this.mainSaveTextbox1.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox1.TabIndex = 41;
+            this.mainSaveTextbox1.Text = "0";
+            this.mainSaveTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label10
+            // mainSaveTextbox2
             // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.mainSaveTextbox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(4, 31);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(44, 14);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "JRB";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.mainSaveTextbox2.Location = new System.Drawing.Point(52, 181);
+            this.mainSaveTextbox2.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox2.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox2.Name = "mainSaveTextbox2";
+            this.mainSaveTextbox2.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox2.TabIndex = 41;
+            this.mainSaveTextbox2.Text = "0";
+            this.mainSaveTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label11
+            // mainSaveTextbox3
             // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.mainSaveTextbox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(4, 46);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(44, 14);
-            this.label11.TabIndex = 8;
-            this.label11.Text = "CCM";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.mainSaveTextbox3.Location = new System.Drawing.Point(52, 166);
+            this.mainSaveTextbox3.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox3.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox3.Name = "mainSaveTextbox3";
+            this.mainSaveTextbox3.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox3.TabIndex = 41;
+            this.mainSaveTextbox3.Text = "0";
+            this.mainSaveTextbox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label12
+            // mainSaveTextbox4
             // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.mainSaveTextbox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(4, 61);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(44, 14);
-            this.label12.TabIndex = 8;
-            this.label12.Text = "BBH";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.mainSaveTextbox4.Location = new System.Drawing.Point(52, 151);
+            this.mainSaveTextbox4.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox4.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox4.Name = "mainSaveTextbox4";
+            this.mainSaveTextbox4.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox4.TabIndex = 41;
+            this.mainSaveTextbox4.Text = "0";
+            this.mainSaveTextbox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label13
+            // mainSaveTextbox5
             // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.mainSaveTextbox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(4, 76);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(44, 14);
-            this.label13.TabIndex = 8;
-            this.label13.Text = "HMC";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.mainSaveTextbox5.Location = new System.Drawing.Point(52, 136);
+            this.mainSaveTextbox5.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox5.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox5.Name = "mainSaveTextbox5";
+            this.mainSaveTextbox5.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox5.TabIndex = 41;
+            this.mainSaveTextbox5.Text = "0";
+            this.mainSaveTextbox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label14
+            // mainSaveTextbox6
             // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.mainSaveTextbox6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(4, 91);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(44, 14);
-            this.label14.TabIndex = 8;
-            this.label14.Text = "LLL";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.mainSaveTextbox6.Location = new System.Drawing.Point(52, 121);
+            this.mainSaveTextbox6.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox6.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox6.Name = "mainSaveTextbox6";
+            this.mainSaveTextbox6.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox6.TabIndex = 41;
+            this.mainSaveTextbox6.Text = "0";
+            this.mainSaveTextbox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label15
+            // mainSaveTextbox7
             // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.mainSaveTextbox7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(4, 106);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(44, 14);
-            this.label15.TabIndex = 8;
-            this.label15.Text = "SSL";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.mainSaveTextbox7.Location = new System.Drawing.Point(52, 106);
+            this.mainSaveTextbox7.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox7.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox7.Name = "mainSaveTextbox7";
+            this.mainSaveTextbox7.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox7.TabIndex = 41;
+            this.mainSaveTextbox7.Text = "0";
+            this.mainSaveTextbox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label16
+            // mainSaveTextbox8
             // 
-            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.mainSaveTextbox8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(4, 121);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(44, 14);
-            this.label16.TabIndex = 8;
-            this.label16.Text = "DDD";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.mainSaveTextbox8.Location = new System.Drawing.Point(52, 91);
+            this.mainSaveTextbox8.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox8.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox8.Name = "mainSaveTextbox8";
+            this.mainSaveTextbox8.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox8.TabIndex = 41;
+            this.mainSaveTextbox8.Text = "0";
+            this.mainSaveTextbox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label17
+            // mainSaveTextbox9
             // 
-            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.mainSaveTextbox9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(4, 136);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(44, 14);
-            this.label17.TabIndex = 8;
-            this.label17.Text = "SL";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.mainSaveTextbox9.Location = new System.Drawing.Point(52, 76);
+            this.mainSaveTextbox9.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox9.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox9.Name = "mainSaveTextbox9";
+            this.mainSaveTextbox9.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox9.TabIndex = 41;
+            this.mainSaveTextbox9.Text = "0";
+            this.mainSaveTextbox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label18
+            // mainSaveTextbox10
             // 
-            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.mainSaveTextbox10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(4, 151);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(44, 14);
-            this.label18.TabIndex = 8;
-            this.label18.Text = "WDW";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.mainSaveTextbox10.Location = new System.Drawing.Point(52, 61);
+            this.mainSaveTextbox10.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox10.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox10.Name = "mainSaveTextbox10";
+            this.mainSaveTextbox10.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox10.TabIndex = 41;
+            this.mainSaveTextbox10.Text = "0";
+            this.mainSaveTextbox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label19
+            // mainSaveTextbox11
             // 
-            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.mainSaveTextbox11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(4, 166);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(44, 14);
-            this.label19.TabIndex = 8;
-            this.label19.Text = "TTM";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.mainSaveTextbox11.Location = new System.Drawing.Point(52, 46);
+            this.mainSaveTextbox11.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox11.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox11.Name = "mainSaveTextbox11";
+            this.mainSaveTextbox11.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox11.TabIndex = 41;
+            this.mainSaveTextbox11.Text = "0";
+            this.mainSaveTextbox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label20
+            // mainSaveTextbox12
             // 
-            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.mainSaveTextbox12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(4, 181);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(44, 14);
-            this.label20.TabIndex = 8;
-            this.label20.Text = "THI";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.mainSaveTextbox12.Location = new System.Drawing.Point(52, 31);
+            this.mainSaveTextbox12.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox12.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox12.Name = "mainSaveTextbox12";
+            this.mainSaveTextbox12.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox12.TabIndex = 41;
+            this.mainSaveTextbox12.Text = "0";
+            this.mainSaveTextbox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label21
+            // mainSaveTextbox13
             // 
-            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.mainSaveTextbox13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(4, 196);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(44, 14);
-            this.label21.TabIndex = 8;
-            this.label21.Text = "TTC";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.mainSaveTextbox13.Location = new System.Drawing.Point(52, 16);
+            this.mainSaveTextbox13.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox13.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox13.Name = "mainSaveTextbox13";
+            this.mainSaveTextbox13.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox13.TabIndex = 41;
+            this.mainSaveTextbox13.Text = "0";
+            this.mainSaveTextbox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label22
+            // mainSaveTextbox14
             // 
-            this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.mainSaveTextbox14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(4, 211);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(44, 15);
-            this.label22.TabIndex = 8;
-            this.label22.Text = "RR";
-            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.mainSaveTextbox14.Location = new System.Drawing.Point(52, 1);
+            this.mainSaveTextbox14.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox14.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox14.Name = "mainSaveTextbox14";
+            this.mainSaveTextbox14.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox14.TabIndex = 41;
+            this.mainSaveTextbox14.Text = "0";
+            this.mainSaveTextbox14.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBoxMainSaveTableRow1Col2
+            // mainSaveTextbox15
             // 
-            this.textBoxMainSaveTableRow1Col2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.mainSaveTextbox15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxMainSaveTableRow1Col2.Location = new System.Drawing.Point(52, 0);
-            this.textBoxMainSaveTableRow1Col2.Margin = new System.Windows.Forms.Padding(0);
-            this.textBoxMainSaveTableRow1Col2.MaximumSize = new System.Drawing.Size(30, 15);
-            this.textBoxMainSaveTableRow1Col2.Name = "textBoxMainSaveTableRow1Col2";
-            this.textBoxMainSaveTableRow1Col2.Size = new System.Drawing.Size(30, 15);
-            this.textBoxMainSaveTableRow1Col2.TabIndex = 41;
-            this.textBoxMainSaveTableRow1Col2.Text = "0";
-            this.textBoxMainSaveTableRow1Col2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.mainSaveTextbox15.Location = new System.Drawing.Point(83, 211);
+            this.mainSaveTextbox15.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox15.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox15.Name = "mainSaveTextbox15";
+            this.mainSaveTextbox15.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox15.TabIndex = 41;
+            this.mainSaveTextbox15.Text = "0";
+            this.mainSaveTextbox15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox16
+            // 
+            this.mainSaveTextbox16.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox16.Location = new System.Drawing.Point(83, 196);
+            this.mainSaveTextbox16.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox16.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox16.Name = "mainSaveTextbox16";
+            this.mainSaveTextbox16.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox16.TabIndex = 41;
+            this.mainSaveTextbox16.Text = "0";
+            this.mainSaveTextbox16.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox17
+            // 
+            this.mainSaveTextbox17.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox17.Location = new System.Drawing.Point(83, 181);
+            this.mainSaveTextbox17.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox17.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox17.Name = "mainSaveTextbox17";
+            this.mainSaveTextbox17.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox17.TabIndex = 41;
+            this.mainSaveTextbox17.Text = "0";
+            this.mainSaveTextbox17.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox18
+            // 
+            this.mainSaveTextbox18.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox18.Location = new System.Drawing.Point(83, 166);
+            this.mainSaveTextbox18.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox18.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox18.Name = "mainSaveTextbox18";
+            this.mainSaveTextbox18.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox18.TabIndex = 41;
+            this.mainSaveTextbox18.Text = "0";
+            this.mainSaveTextbox18.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox19
+            // 
+            this.mainSaveTextbox19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox19.Location = new System.Drawing.Point(83, 151);
+            this.mainSaveTextbox19.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox19.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox19.Name = "mainSaveTextbox19";
+            this.mainSaveTextbox19.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox19.TabIndex = 41;
+            this.mainSaveTextbox19.Text = "0";
+            this.mainSaveTextbox19.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox20
+            // 
+            this.mainSaveTextbox20.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox20.Location = new System.Drawing.Point(83, 136);
+            this.mainSaveTextbox20.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox20.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox20.Name = "mainSaveTextbox20";
+            this.mainSaveTextbox20.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox20.TabIndex = 41;
+            this.mainSaveTextbox20.Text = "0";
+            this.mainSaveTextbox20.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox21
+            // 
+            this.mainSaveTextbox21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox21.Location = new System.Drawing.Point(83, 121);
+            this.mainSaveTextbox21.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox21.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox21.Name = "mainSaveTextbox21";
+            this.mainSaveTextbox21.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox21.TabIndex = 41;
+            this.mainSaveTextbox21.Text = "0";
+            this.mainSaveTextbox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox22
+            // 
+            this.mainSaveTextbox22.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox22.Location = new System.Drawing.Point(83, 106);
+            this.mainSaveTextbox22.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox22.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox22.Name = "mainSaveTextbox22";
+            this.mainSaveTextbox22.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox22.TabIndex = 41;
+            this.mainSaveTextbox22.Text = "0";
+            this.mainSaveTextbox22.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox23
+            // 
+            this.mainSaveTextbox23.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox23.Location = new System.Drawing.Point(83, 91);
+            this.mainSaveTextbox23.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox23.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox23.Name = "mainSaveTextbox23";
+            this.mainSaveTextbox23.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox23.TabIndex = 41;
+            this.mainSaveTextbox23.Text = "0";
+            this.mainSaveTextbox23.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox24
+            // 
+            this.mainSaveTextbox24.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox24.Location = new System.Drawing.Point(83, 76);
+            this.mainSaveTextbox24.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox24.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox24.Name = "mainSaveTextbox24";
+            this.mainSaveTextbox24.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox24.TabIndex = 41;
+            this.mainSaveTextbox24.Text = "0";
+            this.mainSaveTextbox24.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox25
+            // 
+            this.mainSaveTextbox25.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox25.Location = new System.Drawing.Point(83, 61);
+            this.mainSaveTextbox25.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox25.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox25.Name = "mainSaveTextbox25";
+            this.mainSaveTextbox25.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox25.TabIndex = 41;
+            this.mainSaveTextbox25.Text = "0";
+            this.mainSaveTextbox25.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox26
+            // 
+            this.mainSaveTextbox26.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox26.Location = new System.Drawing.Point(83, 46);
+            this.mainSaveTextbox26.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox26.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox26.Name = "mainSaveTextbox26";
+            this.mainSaveTextbox26.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox26.TabIndex = 41;
+            this.mainSaveTextbox26.Text = "0";
+            this.mainSaveTextbox26.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox27
+            // 
+            this.mainSaveTextbox27.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox27.Location = new System.Drawing.Point(83, 31);
+            this.mainSaveTextbox27.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox27.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox27.Name = "mainSaveTextbox27";
+            this.mainSaveTextbox27.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox27.TabIndex = 41;
+            this.mainSaveTextbox27.Text = "0";
+            this.mainSaveTextbox27.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox28
+            // 
+            this.mainSaveTextbox28.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox28.Location = new System.Drawing.Point(83, 16);
+            this.mainSaveTextbox28.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox28.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox28.Name = "mainSaveTextbox28";
+            this.mainSaveTextbox28.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox28.TabIndex = 41;
+            this.mainSaveTextbox28.Text = "0";
+            this.mainSaveTextbox28.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox29
+            // 
+            this.mainSaveTextbox29.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox29.Location = new System.Drawing.Point(83, 1);
+            this.mainSaveTextbox29.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox29.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox29.Name = "mainSaveTextbox29";
+            this.mainSaveTextbox29.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox29.TabIndex = 41;
+            this.mainSaveTextbox29.Text = "0";
+            this.mainSaveTextbox29.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox30
+            // 
+            this.mainSaveTextbox30.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox30.Location = new System.Drawing.Point(114, 211);
+            this.mainSaveTextbox30.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox30.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox30.Name = "mainSaveTextbox30";
+            this.mainSaveTextbox30.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox30.TabIndex = 41;
+            this.mainSaveTextbox30.Text = "0";
+            this.mainSaveTextbox30.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox31
+            // 
+            this.mainSaveTextbox31.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox31.Location = new System.Drawing.Point(114, 196);
+            this.mainSaveTextbox31.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox31.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox31.Name = "mainSaveTextbox31";
+            this.mainSaveTextbox31.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox31.TabIndex = 41;
+            this.mainSaveTextbox31.Text = "0";
+            this.mainSaveTextbox31.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox32
+            // 
+            this.mainSaveTextbox32.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox32.Location = new System.Drawing.Point(114, 181);
+            this.mainSaveTextbox32.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox32.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox32.Name = "mainSaveTextbox32";
+            this.mainSaveTextbox32.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox32.TabIndex = 41;
+            this.mainSaveTextbox32.Text = "0";
+            this.mainSaveTextbox32.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox33
+            // 
+            this.mainSaveTextbox33.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox33.Location = new System.Drawing.Point(114, 166);
+            this.mainSaveTextbox33.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox33.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox33.Name = "mainSaveTextbox33";
+            this.mainSaveTextbox33.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox33.TabIndex = 41;
+            this.mainSaveTextbox33.Text = "0";
+            this.mainSaveTextbox33.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox34
+            // 
+            this.mainSaveTextbox34.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox34.Location = new System.Drawing.Point(114, 151);
+            this.mainSaveTextbox34.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox34.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox34.Name = "mainSaveTextbox34";
+            this.mainSaveTextbox34.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox34.TabIndex = 41;
+            this.mainSaveTextbox34.Text = "0";
+            this.mainSaveTextbox34.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox35
+            // 
+            this.mainSaveTextbox35.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox35.Location = new System.Drawing.Point(114, 136);
+            this.mainSaveTextbox35.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox35.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox35.Name = "mainSaveTextbox35";
+            this.mainSaveTextbox35.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox35.TabIndex = 41;
+            this.mainSaveTextbox35.Text = "0";
+            this.mainSaveTextbox35.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox36
+            // 
+            this.mainSaveTextbox36.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox36.Location = new System.Drawing.Point(114, 121);
+            this.mainSaveTextbox36.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox36.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox36.Name = "mainSaveTextbox36";
+            this.mainSaveTextbox36.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox36.TabIndex = 41;
+            this.mainSaveTextbox36.Text = "0";
+            this.mainSaveTextbox36.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox37
+            // 
+            this.mainSaveTextbox37.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox37.Location = new System.Drawing.Point(114, 106);
+            this.mainSaveTextbox37.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox37.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox37.Name = "mainSaveTextbox37";
+            this.mainSaveTextbox37.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox37.TabIndex = 41;
+            this.mainSaveTextbox37.Text = "0";
+            this.mainSaveTextbox37.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox38
+            // 
+            this.mainSaveTextbox38.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox38.Location = new System.Drawing.Point(114, 91);
+            this.mainSaveTextbox38.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox38.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox38.Name = "mainSaveTextbox38";
+            this.mainSaveTextbox38.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox38.TabIndex = 41;
+            this.mainSaveTextbox38.Text = "0";
+            this.mainSaveTextbox38.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox39
+            // 
+            this.mainSaveTextbox39.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox39.Location = new System.Drawing.Point(114, 76);
+            this.mainSaveTextbox39.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox39.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox39.Name = "mainSaveTextbox39";
+            this.mainSaveTextbox39.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox39.TabIndex = 41;
+            this.mainSaveTextbox39.Text = "0";
+            this.mainSaveTextbox39.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox40
+            // 
+            this.mainSaveTextbox40.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox40.Location = new System.Drawing.Point(114, 61);
+            this.mainSaveTextbox40.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox40.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox40.Name = "mainSaveTextbox40";
+            this.mainSaveTextbox40.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox40.TabIndex = 41;
+            this.mainSaveTextbox40.Text = "0";
+            this.mainSaveTextbox40.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox41
+            // 
+            this.mainSaveTextbox41.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox41.Location = new System.Drawing.Point(114, 46);
+            this.mainSaveTextbox41.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox41.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox41.Name = "mainSaveTextbox41";
+            this.mainSaveTextbox41.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox41.TabIndex = 41;
+            this.mainSaveTextbox41.Text = "0";
+            this.mainSaveTextbox41.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox42
+            // 
+            this.mainSaveTextbox42.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox42.Location = new System.Drawing.Point(114, 31);
+            this.mainSaveTextbox42.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox42.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox42.Name = "mainSaveTextbox42";
+            this.mainSaveTextbox42.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox42.TabIndex = 41;
+            this.mainSaveTextbox42.Text = "0";
+            this.mainSaveTextbox42.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox43
+            // 
+            this.mainSaveTextbox43.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox43.Location = new System.Drawing.Point(114, 16);
+            this.mainSaveTextbox43.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox43.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox43.Name = "mainSaveTextbox43";
+            this.mainSaveTextbox43.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox43.TabIndex = 41;
+            this.mainSaveTextbox43.Text = "0";
+            this.mainSaveTextbox43.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox44
+            // 
+            this.mainSaveTextbox44.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox44.Location = new System.Drawing.Point(114, 1);
+            this.mainSaveTextbox44.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox44.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox44.Name = "mainSaveTextbox44";
+            this.mainSaveTextbox44.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox44.TabIndex = 41;
+            this.mainSaveTextbox44.Text = "0";
+            this.mainSaveTextbox44.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox45
+            // 
+            this.mainSaveTextbox45.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox45.Location = new System.Drawing.Point(145, 211);
+            this.mainSaveTextbox45.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox45.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox45.Name = "mainSaveTextbox45";
+            this.mainSaveTextbox45.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox45.TabIndex = 41;
+            this.mainSaveTextbox45.Text = "0";
+            this.mainSaveTextbox45.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox46
+            // 
+            this.mainSaveTextbox46.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox46.Location = new System.Drawing.Point(145, 196);
+            this.mainSaveTextbox46.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox46.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox46.Name = "mainSaveTextbox46";
+            this.mainSaveTextbox46.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox46.TabIndex = 41;
+            this.mainSaveTextbox46.Text = "0";
+            this.mainSaveTextbox46.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox47
+            // 
+            this.mainSaveTextbox47.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox47.Location = new System.Drawing.Point(145, 181);
+            this.mainSaveTextbox47.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox47.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox47.Name = "mainSaveTextbox47";
+            this.mainSaveTextbox47.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox47.TabIndex = 41;
+            this.mainSaveTextbox47.Text = "0";
+            this.mainSaveTextbox47.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox48
+            // 
+            this.mainSaveTextbox48.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox48.Location = new System.Drawing.Point(145, 166);
+            this.mainSaveTextbox48.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox48.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox48.Name = "mainSaveTextbox48";
+            this.mainSaveTextbox48.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox48.TabIndex = 41;
+            this.mainSaveTextbox48.Text = "0";
+            this.mainSaveTextbox48.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox49
+            // 
+            this.mainSaveTextbox49.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox49.Location = new System.Drawing.Point(145, 151);
+            this.mainSaveTextbox49.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox49.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox49.Name = "mainSaveTextbox49";
+            this.mainSaveTextbox49.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox49.TabIndex = 41;
+            this.mainSaveTextbox49.Text = "0";
+            this.mainSaveTextbox49.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox50
+            // 
+            this.mainSaveTextbox50.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox50.Location = new System.Drawing.Point(145, 136);
+            this.mainSaveTextbox50.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox50.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox50.Name = "mainSaveTextbox50";
+            this.mainSaveTextbox50.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox50.TabIndex = 41;
+            this.mainSaveTextbox50.Text = "0";
+            this.mainSaveTextbox50.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox51
+            // 
+            this.mainSaveTextbox51.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox51.Location = new System.Drawing.Point(145, 121);
+            this.mainSaveTextbox51.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox51.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox51.Name = "mainSaveTextbox51";
+            this.mainSaveTextbox51.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox51.TabIndex = 41;
+            this.mainSaveTextbox51.Text = "0";
+            this.mainSaveTextbox51.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox52
+            // 
+            this.mainSaveTextbox52.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox52.Location = new System.Drawing.Point(145, 106);
+            this.mainSaveTextbox52.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox52.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox52.Name = "mainSaveTextbox52";
+            this.mainSaveTextbox52.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox52.TabIndex = 41;
+            this.mainSaveTextbox52.Text = "0";
+            this.mainSaveTextbox52.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox53
+            // 
+            this.mainSaveTextbox53.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox53.Location = new System.Drawing.Point(145, 91);
+            this.mainSaveTextbox53.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox53.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox53.Name = "mainSaveTextbox53";
+            this.mainSaveTextbox53.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox53.TabIndex = 41;
+            this.mainSaveTextbox53.Text = "0";
+            this.mainSaveTextbox53.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox54
+            // 
+            this.mainSaveTextbox54.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox54.Location = new System.Drawing.Point(145, 76);
+            this.mainSaveTextbox54.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox54.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox54.Name = "mainSaveTextbox54";
+            this.mainSaveTextbox54.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox54.TabIndex = 41;
+            this.mainSaveTextbox54.Text = "0";
+            this.mainSaveTextbox54.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox55
+            // 
+            this.mainSaveTextbox55.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox55.Location = new System.Drawing.Point(145, 61);
+            this.mainSaveTextbox55.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox55.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox55.Name = "mainSaveTextbox55";
+            this.mainSaveTextbox55.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox55.TabIndex = 41;
+            this.mainSaveTextbox55.Text = "0";
+            this.mainSaveTextbox55.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox56
+            // 
+            this.mainSaveTextbox56.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox56.Location = new System.Drawing.Point(145, 46);
+            this.mainSaveTextbox56.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox56.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox56.Name = "mainSaveTextbox56";
+            this.mainSaveTextbox56.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox56.TabIndex = 41;
+            this.mainSaveTextbox56.Text = "0";
+            this.mainSaveTextbox56.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox57
+            // 
+            this.mainSaveTextbox57.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox57.Location = new System.Drawing.Point(145, 31);
+            this.mainSaveTextbox57.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox57.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox57.Name = "mainSaveTextbox57";
+            this.mainSaveTextbox57.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox57.TabIndex = 41;
+            this.mainSaveTextbox57.Text = "0";
+            this.mainSaveTextbox57.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox58
+            // 
+            this.mainSaveTextbox58.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox58.Location = new System.Drawing.Point(145, 16);
+            this.mainSaveTextbox58.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox58.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox58.Name = "mainSaveTextbox58";
+            this.mainSaveTextbox58.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox58.TabIndex = 41;
+            this.mainSaveTextbox58.Text = "0";
+            this.mainSaveTextbox58.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // mainSaveTextbox59
+            // 
+            this.mainSaveTextbox59.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainSaveTextbox59.Location = new System.Drawing.Point(145, 1);
+            this.mainSaveTextbox59.Margin = new System.Windows.Forms.Padding(0);
+            this.mainSaveTextbox59.MaximumSize = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox59.Name = "mainSaveTextbox59";
+            this.mainSaveTextbox59.Size = new System.Drawing.Size(30, 15);
+            this.mainSaveTextbox59.TabIndex = 41;
+            this.mainSaveTextbox59.Text = "0";
+            this.mainSaveTextbox59.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // StroopMainForm
             // 
@@ -19583,6 +20527,65 @@ namespace STROOP
         private Label label21;
         private Label label22;
         private MainSaveTextbox textBoxMainSaveTableRow1Col2;
+        private MainSaveTextbox mainSaveTextbox1;
+        private MainSaveTextbox mainSaveTextbox2;
+        private MainSaveTextbox mainSaveTextbox3;
+        private MainSaveTextbox mainSaveTextbox4;
+        private MainSaveTextbox mainSaveTextbox5;
+        private MainSaveTextbox mainSaveTextbox6;
+        private MainSaveTextbox mainSaveTextbox7;
+        private MainSaveTextbox mainSaveTextbox8;
+        private MainSaveTextbox mainSaveTextbox9;
+        private MainSaveTextbox mainSaveTextbox10;
+        private MainSaveTextbox mainSaveTextbox11;
+        private MainSaveTextbox mainSaveTextbox12;
+        private MainSaveTextbox mainSaveTextbox13;
+        private MainSaveTextbox mainSaveTextbox14;
+        private MainSaveTextbox mainSaveTextbox15;
+        private MainSaveTextbox mainSaveTextbox16;
+        private MainSaveTextbox mainSaveTextbox17;
+        private MainSaveTextbox mainSaveTextbox18;
+        private MainSaveTextbox mainSaveTextbox19;
+        private MainSaveTextbox mainSaveTextbox20;
+        private MainSaveTextbox mainSaveTextbox21;
+        private MainSaveTextbox mainSaveTextbox22;
+        private MainSaveTextbox mainSaveTextbox23;
+        private MainSaveTextbox mainSaveTextbox24;
+        private MainSaveTextbox mainSaveTextbox25;
+        private MainSaveTextbox mainSaveTextbox26;
+        private MainSaveTextbox mainSaveTextbox27;
+        private MainSaveTextbox mainSaveTextbox28;
+        private MainSaveTextbox mainSaveTextbox29;
+        private MainSaveTextbox mainSaveTextbox30;
+        private MainSaveTextbox mainSaveTextbox31;
+        private MainSaveTextbox mainSaveTextbox32;
+        private MainSaveTextbox mainSaveTextbox33;
+        private MainSaveTextbox mainSaveTextbox34;
+        private MainSaveTextbox mainSaveTextbox35;
+        private MainSaveTextbox mainSaveTextbox36;
+        private MainSaveTextbox mainSaveTextbox37;
+        private MainSaveTextbox mainSaveTextbox38;
+        private MainSaveTextbox mainSaveTextbox39;
+        private MainSaveTextbox mainSaveTextbox40;
+        private MainSaveTextbox mainSaveTextbox41;
+        private MainSaveTextbox mainSaveTextbox42;
+        private MainSaveTextbox mainSaveTextbox43;
+        private MainSaveTextbox mainSaveTextbox44;
+        private MainSaveTextbox mainSaveTextbox45;
+        private MainSaveTextbox mainSaveTextbox46;
+        private MainSaveTextbox mainSaveTextbox47;
+        private MainSaveTextbox mainSaveTextbox48;
+        private MainSaveTextbox mainSaveTextbox49;
+        private MainSaveTextbox mainSaveTextbox50;
+        private MainSaveTextbox mainSaveTextbox51;
+        private MainSaveTextbox mainSaveTextbox52;
+        private MainSaveTextbox mainSaveTextbox53;
+        private MainSaveTextbox mainSaveTextbox54;
+        private MainSaveTextbox mainSaveTextbox55;
+        private MainSaveTextbox mainSaveTextbox56;
+        private MainSaveTextbox mainSaveTextbox57;
+        private MainSaveTextbox mainSaveTextbox58;
+        private MainSaveTextbox mainSaveTextbox59;
     }
 }
 
