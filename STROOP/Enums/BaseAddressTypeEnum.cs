@@ -21,6 +21,7 @@ namespace STROOP.Structs
         MarioObj,
         Camera,
         File,
+        MainSave,
         Object,
         Triangle,
         TriangleExertionForceTable,

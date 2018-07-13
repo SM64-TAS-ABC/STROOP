@@ -14,23 +14,17 @@ namespace STROOP.Managers
 {
     public class MainSaveManager : DataManager
     {
-        /*
-        public enum FileMode { FileA, FileB, FileC, FileD, FileASaved, FileBSaved, FileCSaved, FileDSaved };
-        private enum AllCoinsMeaning { Coins100, Coins255, MaxWithoutGlitches, MaxWithGlitches };
-        private enum FileCategory { Stars, Cannons, Doors, Coins, Misc };
+        public enum MainSaveMode { MainSave, MainSaveSaved };
 
-        TabPage _tabControl;
-        FileImageGui _gui;
-
-        public FileMode CurrentFileMode { get; private set; }
-        public uint CurrentFileAddress
+        public MainSaveMode CurrentMainSaveMode { get; private set; }
+        public uint CurrentMainSaveAddress
         {
             get
             {
-                return getFileAddress();
+                return GetMainSaveAddress();
             }
         }
-
+        /*
         private AllCoinsMeaning currentAllCoinsMeaning;
 
         List<FilePictureBox> _filePictureBoxList;
@@ -54,6 +48,7 @@ namespace STROOP.Managers
         public MainSaveManager(string varFilePath, TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel)
             : base(varFilePath, watchVariablePanel)
         {
+            CurrentMainSaveMode = MainSaveMode.MainSave;
 
             /*
 
@@ -66,7 +61,6 @@ namespace STROOP.Managers
             _courseDoorAddressOffsets = new uint?[numRows];
             _courseDoorMasks = new byte?[numRows];
 
-            CurrentFileMode = FileMode.FileA;
             currentAllCoinsMeaning = AllCoinsMeaning.Coins100;
 
             SplitContainer splitContainerFile = tabControl.Controls["splitContainerFile"] as SplitContainer;
@@ -670,33 +664,23 @@ namespace STROOP.Managers
                     throw new ArgumentOutOfRangeException();
             }
         }
+        */
 
-        private uint getFileAddress(FileMode? nullableMode = null)
+        private uint GetMainSaveAddress(MainSaveMode? nullableMode = null)
         {
-            FileMode mode = nullableMode ?? CurrentFileMode;
+            MainSaveMode mode = nullableMode ?? CurrentMainSaveMode;
             switch (mode)
             {
-                case FileMode.FileA:
-                    return FileConfig.FileAAddress;
-                case FileMode.FileB:
-                    return FileConfig.FileBAddress;
-                case FileMode.FileC:
-                    return FileConfig.FileCAddress;
-                case FileMode.FileD:
-                    return FileConfig.FileDAddress;
-                case FileMode.FileASaved:
-                    return FileConfig.FileASavedAddress;
-                case FileMode.FileBSaved:
-                    return FileConfig.FileBSavedAddress;
-                case FileMode.FileCSaved:
-                    return FileConfig.FileCSavedAddress;
-                case FileMode.FileDSaved:
-                    return FileConfig.FileDSavedAddress;
+                case MainSaveMode.MainSave:
+                    return MainSaveConfig.MainSaveAddress;
+                case MainSaveMode.MainSaveSaved:
+                    return MainSaveConfig.MainSaveSavedAddress;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
 
+        /*
         public uint GetInGameFileAddress()
         {
             short inGameFile = Config.Stream.GetInt16(MiscConfig.CurrentFileAddress);
