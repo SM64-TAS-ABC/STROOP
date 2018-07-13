@@ -1,14 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <VarData>
 
-  <Data type="uint" offset="0x0" base="MainSave" useHex="true">File A Coin Ranks</Data>
-  <Data type="uint" offset="0x4" base="MainSave" useHex="true">File B Coin Ranks</Data>
-  <Data type="uint" offset="0x8" base="MainSave" useHex="true">File C Coin Ranks</Data>
-  <Data type="uint" offset="0xC" base="MainSave" useHex="true">File D Coin Ranks</Data>
-  <Data type="ushort" offset="0x10" base="MainSave">Sound Mode</Data>
-  <Data type="byte" offsetUS="0x80226B7F" offsetJP="0x80226D7F" base="Relative">In-Game Sound Mode</Data>
+  <Data type="uint" offset="0x0" base="MainSave" useHex="true" color="LightBlue">File A Coin Ranks</Data>
+  <Data type="uint" offset="0x4" base="MainSave" useHex="true" color="LightBlue">File B Coin Ranks</Data>
+  <Data type="uint" offset="0x8" base="MainSave" useHex="true" color="LightBlue">File C Coin Ranks</Data>
+  <Data type="uint" offset="0xC" base="MainSave" useHex="true" color="LightBlue">File D Coin Ranks</Data>
+  
+  <Data type="ushort" offset="0x10" base="MainSave" color="Pink">Sound Mode</Data>
+  <Data type="byte" offsetUS="0x80226B7F" offsetJP="0x80226D7F" base="Relative" color="Pink">In-Game Sound Mode</Data>
 
-  <Data type="ushort" offset="0x1C" base="MainSave" useHex="true">Checksum Constant</Data>
-  <Data type="ushort" offset="0x1E" base="MainSave" useHex="true">Checksum</Data>
+  <Data type="ushort" offset="0x1C" base="MainSave" useHex="true" color="Grey">Checksum Constant</Data>
+  <Data type="ushort" offset="0x1E" base="MainSave" useHex="true" color="Grey">Checksum</Data>
+  
+  <Data type="uint" offset="0x0" mask="0x00000003" base="MainSave">File A BoB Coin Rank</Data>
+  <Data type="uint" offset="0x4" mask="0x00000003" base="MainSave">File B BoB Coin Rank</Data>
+  <Data type="uint" offset="0x8" mask="0x00000003" base="MainSave">File C BoB Coin Rank</Data>
+  <Data type="uint" offset="0xC" mask="0x00000003" base="MainSave">File D BoB Coin Rank</Data>
+  
+  <Data type="uint" offset="0x0" mask="0x0000000C" base="MainSave">File A WF Coin Rank</Data>
+  <Data type="uint" offset="0x4" mask="0x0000000C" base="MainSave">File B WF Coin Rank</Data>
+  <Data type="uint" offset="0x8" mask="0x0000000C" base="MainSave">File C WF Coin Rank</Data>
+  <Data type="uint" offset="0xC" mask="0x0000000C" base="MainSave">File D WF Coin Rank</Data>
 
 </VarData>
