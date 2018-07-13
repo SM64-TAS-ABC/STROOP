@@ -9,8 +9,8 @@ namespace STROOP.Structs.Configurations
     public static class MainSaveConfig
     {
         public static uint MainSaveStructAddress { get => RomVersionConfig.Switch(MainSaveStructAddressUS, MainSaveStructAddressJP); }
-        public static readonly uint MainSaveStructAddressUS = 0x80207700;
-        public static readonly uint MainSaveStructAddressJP = 0x80207B00;
+        public static readonly uint MainSaveStructAddressUS = 0x802078C4;
+        public static readonly uint MainSaveStructAddressJP = 0x802078D0;
 
         public static readonly uint MainSaveStructSize = 0x20;
 
