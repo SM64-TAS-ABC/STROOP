@@ -83,7 +83,7 @@ namespace STROOP.Forms
             };
 
             // set up timer
-            Timer timer = new Timer { Interval = 30 };
+            Timer timer = new Timer { Interval = 10 };
             timer.Tick += (s, e) => UpdateForm();
             timer.Start();
 
