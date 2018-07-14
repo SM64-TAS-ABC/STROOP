@@ -98,9 +98,9 @@
   <Data type="byte" offset="0x0A" base="File" subclass="Boolean" mask="0x01" color="Pink">DDD Moved Back</Data>
   <Data type="byte" offset="0x0A" base="File" subclass="Boolean" mask="0x02" color="Pink">Moat Drained</Data>
 
-  <Data type="ushort" offset="0x34" base="File" color="Grey">Checksum Constant</Data>
-  <Data type="ushort" offset="0x36" base="File" color="Grey">Checksum</Data>
-  <Data base="File" specialType="ChecksumCalculated" color="Grey">Checksum Calculated</Data>
+  <Data type="ushort" offset="0x34" base="File" useHex="true" color="Grey">Checksum Constant</Data>
+  <Data type="ushort" offset="0x36" base="File" useHex="true" color="Grey">Checksum</Data>
+  <Data base="File" specialType="FileChecksumCalculated" display="ushort" useHex="true" color="Grey">Checksum Calculated</Data>
 
   <Data type="byte" offset="0x0C" base="File" subclass="Boolean" mask="0x01">BoB: Big Bob-omb on the Summit</Data>
   <Data type="byte" offset="0x0C" base="File" subclass="Boolean" mask="0x02">BoB: Footrace with Koopa the Quick</Data>

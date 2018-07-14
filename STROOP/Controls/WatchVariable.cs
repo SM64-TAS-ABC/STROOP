@@ -93,6 +93,7 @@ namespace STROOP.Controls
                     baseAddressType != BaseAddressTypeEnum.Ghost &&
                     baseAddressType != BaseAddressTypeEnum.LastCoin &&
                     baseAddressType != BaseAddressTypeEnum.File &&
+                    baseAddressType != BaseAddressTypeEnum.MainSave &&
                     baseAddressType != BaseAddressTypeEnum.Triangle)
                 {
                     throw new ArgumentOutOfRangeException("Special var cannot have base address type " + baseAddressType);

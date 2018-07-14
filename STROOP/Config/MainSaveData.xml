@@ -13,7 +13,8 @@
 
   <Data type="ushort" offset="0x1C" base="MainSave" useHex="true" color="Grey">Checksum Constant</Data>
   <Data type="ushort" offset="0x1E" base="MainSave" useHex="true" color="Grey">Checksum</Data>
-  
+  <Data base="MainSave" specialType="MainSaveChecksumCalculated" display="ushort" useHex="true" color="Grey">Checksum Calculated</Data>
+
   <Data type="uint" offset="0x0" mask="0x00000003" shift="0" base="MainSave">File A BoB Coin Rank</Data>
   <Data type="uint" offset="0x4" mask="0x00000003" shift="0" base="MainSave">File B BoB Coin Rank</Data>
   <Data type="uint" offset="0x8" mask="0x00000003" shift="0" base="MainSave">File C BoB Coin Rank</Data>

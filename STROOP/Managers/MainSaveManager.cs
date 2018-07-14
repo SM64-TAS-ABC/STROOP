@@ -510,19 +510,19 @@ namespace STROOP.Managers
             Config.Stream.SetValue(numStars, MarioConfig.StructAddress + HudConfig.StarDisplayOffset);
             Config.Stream.SetValue(numStars, MarioConfig.StructAddress + HudConfig.CheckedStarCountOffset);
         }
-
-        public ushort GetChecksum(uint? nullableFileAddress = null)
+        */
+        public ushort GetChecksum(uint? nullableMainSaveAddress = null)
         {
-            uint fileAddress = nullableFileAddress ?? CurrentFileAddress;
-            ushort checksum = (ushort)(FileConfig.ChecksumConstantValue % 256 + FileConfig.ChecksumConstantValue / 256);
-            for (uint i = 0; i < FileConfig.FileStructSize - 4; i++)
+            uint mainSaveAddress = nullableMainSaveAddress ?? CurrentMainSaveAddress;
+            ushort checksum = (ushort)(MainSaveConfig.ChecksumConstantValue % 256 + MainSaveConfig.ChecksumConstantValue / 256);
+            for (uint i = 0; i < MainSaveConfig.MainSaveStructSize - 4; i++)
             {
-                byte b = Config.Stream.GetByte(fileAddress + i);
+                byte b = Config.Stream.GetByte(mainSaveAddress + i);
                 checksum += b;
             }
             return checksum;
         }
-
+        /*
         private void FileSaveButton_Click(object sender, EventArgs e)
         {
             // Get the corresponding unsaved file struct address

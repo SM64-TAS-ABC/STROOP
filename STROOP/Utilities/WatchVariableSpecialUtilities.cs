@@ -1841,10 +1841,19 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
-            _dictionary.Add("ChecksumCalculated",
+            _dictionary.Add("FileChecksumCalculated",
                 ((uint fileAddress) =>
                 {
                     return Config.FileManager.GetChecksum(fileAddress);
+                },
+                DEFAULT_SETTER));
+
+            // Main Save vars
+
+            _dictionary.Add("MainSaveChecksumCalculated",
+                ((uint mainSaveAddress) =>
+                {
+                    return Config.MainSaveManager.GetChecksum(mainSaveAddress);
                 },
                 DEFAULT_SETTER));
 
