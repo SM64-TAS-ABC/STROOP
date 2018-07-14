@@ -100,6 +100,7 @@ namespace STROOP.Managers
                 Config.Stream.SetValue(MainSaveConfig.SoundModeHeadsetValue, CurrentMainSaveAddress + MainSaveConfig.SoundModeOffset);
 
             _buttonMainSaveSave = splitContainerMainSave.Panel1.Controls["buttonMainSaveSave"] as Button;
+            _buttonMainSaveSave.Click += (sender, e) => Save();
 
             /*
 
@@ -522,37 +523,24 @@ namespace STROOP.Managers
             }
             return checksum;
         }
-        /*
-        private void FileSaveButton_Click(object sender, EventArgs e)
+
+        private void Save()
         {
-            // Get the corresponding unsaved file struct address
-            uint nonSavedAddress = GetNonSavedFileAddress();
+            ushort checksum = GetChecksum(MainSaveConfig.MainSaveAddress);
 
-            // Set the checksum constant
-            Config.Stream.SetValue(FileConfig.ChecksumConstantValue, nonSavedAddress + FileConfig.ChecksumConstantOffset);
+            Config.Stream.SetValue(MainSaveConfig.ChecksumConstantValue, MainSaveConfig.MainSaveAddress + MainSaveConfig.ChecksumConstantOffset);
+            Config.Stream.SetValue(checksum, MainSaveConfig.MainSaveAddress + MainSaveConfig.ChecksumOffset);
 
-            // Sum up all bytes to calculate the checksum
-            ushort checksum = (ushort)(FileConfig.ChecksumConstantValue % 256 + FileConfig.ChecksumConstantValue / 256);
-            for (uint i = 0; i < FileConfig.FileStructSize-4; i++)
+            Config.Stream.SetValue(MainSaveConfig.ChecksumConstantValue, MainSaveConfig.MainSaveSavedAddress + MainSaveConfig.ChecksumConstantOffset);
+            Config.Stream.SetValue(checksum, MainSaveConfig.MainSaveSavedAddress + MainSaveConfig.ChecksumOffset);
+
+            for (int i = 0; i < MainSaveConfig.MainSaveStructSize - 4; i++)
             {
-                byte b = Config.Stream.GetByte(nonSavedAddress + i);
-                checksum += b;
+                byte b = Config.Stream.GetByte(MainSaveConfig.MainSaveAddress + (uint)i);
+                Config.Stream.SetValue(b, MainSaveConfig.MainSaveSavedAddress + (uint)i);
             }
-
-            // Set the checksum
-            Config.Stream.SetValue(checksum, nonSavedAddress + FileConfig.ChecksumOffset);
-
-            // Copy all values from the unsaved struct to the saved struct
-            uint savedAddress = nonSavedAddress + FileConfig.FileStructSize;
-            for (uint i = 0; i < FileConfig.FileStructSize - 4; i++)
-            {
-                byte b = Config.Stream.GetByte(nonSavedAddress + i);
-                Config.Stream.SetValue(b, savedAddress + i);
-            }
-            Config.Stream.SetValue(FileConfig.ChecksumConstantValue, savedAddress + FileConfig.ChecksumConstantOffset);
-            Config.Stream.SetValue(checksum, savedAddress + FileConfig.ChecksumOffset);
         }
-
+        /*
         private void FileEraseButton_Click(object sender, EventArgs e)
         {
             // Get the corresponding unsaved and saved file struct address
