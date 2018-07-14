@@ -27,6 +27,15 @@ namespace STROOP.Managers
 
         private List<MainSaveTextbox> _mainSaveTextboxes;
 
+        private RadioButton _radioButtonMainSaveStructMainSave;
+        private RadioButton _radioButtonMainSaveStructMainSaveSaved;
+
+        private RadioButton _radioButtonMainSaveSoundModeStereo;
+        private RadioButton _radioButtonMainSaveSoundModeMono;
+        private RadioButton _radioButtonMainSaveSoundModeHeadset;
+
+        private Button _buttonMainSaveSave;
+
         /*
         private AllCoinsMeaning currentAllCoinsMeaning;
 
@@ -67,6 +76,17 @@ namespace STROOP.Managers
                     _mainSaveTextboxes.Add(mainSaveTextbox);
                 }
             }
+
+            GroupBox groupBoxMainSaveStruct = splitContainerMainSave.Panel1.Controls["groupBoxMainSaveStruct"] as GroupBox;
+            _radioButtonMainSaveStructMainSave = groupBoxMainSaveStruct.Controls["radioButtonMainSaveStructMainSave"] as RadioButton;
+            _radioButtonMainSaveStructMainSaveSaved = groupBoxMainSaveStruct.Controls["radioButtonMainSaveStructMainSaveSaved"] as RadioButton;
+
+            GroupBox groupBoxMainSaveSoundMode = splitContainerMainSave.Panel1.Controls["groupBoxMainSaveSoundMode"] as GroupBox;
+            _radioButtonMainSaveSoundModeStereo = groupBoxMainSaveSoundMode.Controls["radioButtonMainSaveSoundModeStereo"] as RadioButton;
+            _radioButtonMainSaveSoundModeMono = groupBoxMainSaveSoundMode.Controls["radioButtonMainSaveSoundModeMono"] as RadioButton;
+            _radioButtonMainSaveSoundModeHeadset = groupBoxMainSaveSoundMode.Controls["radioButtonMainSaveSoundModeHeadset"] as RadioButton;
+
+            _buttonMainSaveSave = splitContainerMainSave.Panel1.Controls["buttonMainSaveSave"] as Button;
 
             /*
 
