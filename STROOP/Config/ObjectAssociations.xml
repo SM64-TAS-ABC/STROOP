@@ -150,10 +150,12 @@
   <Object behaviorScriptAddress="0x13000118" name="WF Big Pole">
     <SpawnCode gfxId="0x0D"/>
     <Image path="WF Big Pole.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000144" name="Pole">
     <SpawnCode gfxId="0x00"/>
     <Image path="Pole.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000174" name="THI Wiggler's Cave Cover (Large)">
     <SpawnCode gfxId="0x36"/>
@@ -901,6 +903,7 @@
     <SpawnCode gfxId="0x39"/>
     <Image path="Rising and Lowering Pole.png"/>
     <Data groupList="ObjectSpecific" type="uint" offset="0x68" base="Object" subclass="Object">Host Object</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001030" name="BitFS Tilting Inverted Pyramid Platform">
     <SpawnCode gfxId="0x37"/>
@@ -2067,37 +2070,47 @@
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Tree">
     <Image path="Tree Standard.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxId="0x80195C84">
     <Image path="Tree Standard.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxId="0x8018F2A0">
     <SpawnCode gfxId="0x17"/>
     <Image path="Tree Standard.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxId="0x80194604">
     <Image path="Tree Standard.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxId="0x8018CCE4">
     <Image path="Tree Standard.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxId="0x8019257C">
     <Image path="Tree Standard.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Pine Tree" gfxId="0x8015D22C">
     <SpawnCode gfxId="0x18"/>
     <Image path="Tree Pine.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Snowy Pine Tree" gfxId="0x80184AB8">
     <SpawnCode gfxId="0x19"/>
     <Image path="Tree Pine Snowy.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Snowy Pine Tree" gfxId="0x801709B4">
     <Image path="Tree Pine Snowy.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Palm Tree" gfxId="0x80184864">
     <SpawnCode gfxId="0x1B"/>
     <Image path="Tree Palm.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002AD0" name="Glow">
     <SpawnCode gfxId="0x8F"/>
@@ -4200,6 +4213,7 @@
     <SpawnCode gfxId="0x38"/>
     <Image path="DDD Pole.png"/>
     <MapImage path="DDD Pole Top.png" rotates="true"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300556C" name="Star Marker">
     <SpawnCode gfxId="0x79"/>
