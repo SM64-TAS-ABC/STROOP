@@ -78,13 +78,26 @@ namespace STROOP.Managers
             }
 
             GroupBox groupBoxMainSaveStruct = splitContainerMainSave.Panel1.Controls["groupBoxMainSaveStruct"] as GroupBox;
+
             _radioButtonMainSaveStructMainSave = groupBoxMainSaveStruct.Controls["radioButtonMainSaveStructMainSave"] as RadioButton;
+            _radioButtonMainSaveStructMainSave.Click += (sender, e) => CurrentMainSaveMode = MainSaveMode.MainSave;
+
             _radioButtonMainSaveStructMainSaveSaved = groupBoxMainSaveStruct.Controls["radioButtonMainSaveStructMainSaveSaved"] as RadioButton;
+            _radioButtonMainSaveStructMainSaveSaved.Click += (sender, e) => CurrentMainSaveMode = MainSaveMode.MainSaveSaved;
 
             GroupBox groupBoxMainSaveSoundMode = splitContainerMainSave.Panel1.Controls["groupBoxMainSaveSoundMode"] as GroupBox;
+
             _radioButtonMainSaveSoundModeStereo = groupBoxMainSaveSoundMode.Controls["radioButtonMainSaveSoundModeStereo"] as RadioButton;
+            _radioButtonMainSaveSoundModeStereo.Click += (sender, e) =>
+                Config.Stream.SetValue(MainSaveConfig.SoundModeStereoValue, CurrentMainSaveAddress + MainSaveConfig.SoundModeOffset);
+
             _radioButtonMainSaveSoundModeMono = groupBoxMainSaveSoundMode.Controls["radioButtonMainSaveSoundModeMono"] as RadioButton;
+            _radioButtonMainSaveSoundModeMono.Click += (sender, e) =>
+                Config.Stream.SetValue(MainSaveConfig.SoundModeMonoValue, CurrentMainSaveAddress + MainSaveConfig.SoundModeOffset);
+
             _radioButtonMainSaveSoundModeHeadset = groupBoxMainSaveSoundMode.Controls["radioButtonMainSaveSoundModeHeadset"] as RadioButton;
+            _radioButtonMainSaveSoundModeHeadset.Click += (sender, e) =>
+                Config.Stream.SetValue(MainSaveConfig.SoundModeHeadsetValue, CurrentMainSaveAddress + MainSaveConfig.SoundModeOffset);
 
             _buttonMainSaveSave = splitContainerMainSave.Panel1.Controls["buttonMainSaveSave"] as Button;
 
