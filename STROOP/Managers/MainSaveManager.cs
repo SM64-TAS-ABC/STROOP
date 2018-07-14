@@ -24,6 +24,9 @@ namespace STROOP.Managers
                 return GetMainSaveAddress();
             }
         }
+
+        private List<MainSaveTextbox> _mainSaveTextboxes;
+
         /*
         private AllCoinsMeaning currentAllCoinsMeaning;
 
@@ -45,10 +48,25 @@ namespace STROOP.Managers
 
         byte[] _copiedFile;
         */
-        public MainSaveManager(string varFilePath, TabPage tabControl, WatchVariableFlowLayoutPanel watchVariablePanel)
+        public MainSaveManager(string varFilePath, TabPage tabPage, WatchVariableFlowLayoutPanel watchVariablePanel)
             : base(varFilePath, watchVariablePanel)
         {
             CurrentMainSaveMode = MainSaveMode.MainSave;
+
+            SplitContainer splitContainerMainSave = tabPage.Controls["splitContainerMainSave"] as SplitContainer;
+            TableLayoutPanel tableLayoutPanelMainSaveCoinRank = splitContainerMainSave.Panel1.Controls["tableLayoutPanelMainSaveCoinRank"] as TableLayoutPanel;
+
+            _mainSaveTextboxes = new List<MainSaveTextbox>();
+            for (int row = 1; row <= 15; row++)
+            {
+                for (int col = 1; col <= 4; col++)
+                {
+                    string controlName = String.Format("textBoxMainSaveCoinRankRow{0}Col{1}", row, col);
+                    MainSaveTextbox mainSaveTextbox = tableLayoutPanelMainSaveCoinRank.Controls[controlName] as MainSaveTextbox;
+                    mainSaveTextbox.Initialize(row - 1, col - 1);
+                    _mainSaveTextboxes.Add(mainSaveTextbox);
+                }
+            }
 
             /*
 
@@ -723,6 +741,11 @@ namespace STROOP.Managers
                 fileTextbox.UpdateText();
             }
             */
+
+            foreach (MainSaveTextbox mainSaveTextbox in _mainSaveTextboxes)
+            {
+                mainSaveTextbox.UpdateText();
+            }
 
             base.Update(updateView);
         }

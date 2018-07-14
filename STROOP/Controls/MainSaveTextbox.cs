@@ -15,47 +15,74 @@ using STROOP.Structs.Configurations;
 
 namespace STROOP
 {
-    public class MainSaveTextbox : FileTextbox
+    public class MainSaveTextbox : TextBox
     {
-        private byte _currentValue;
+        private uint _currentValue;
+
+        private uint _offset;
+        private uint _mask;
+        private int _shift;
 
         public MainSaveTextbox()
         {
         }
 
-        public override void Initialize(uint addressOffset)
+        public void Initialize(int level, int file)
         {
-            base.Initialize(addressOffset);
+            _offset = (uint)(4 * file);
+            _mask = (uint)(0x3 << (2 * level));
+            _shift = 2 * level;
+
             this.Text = _currentValue.ToString();
+            this.DoubleClick += (sender, e) => this.SelectAll();
+            this.KeyDown += (sender, e) =>
+            {
+                if (e.KeyData == Keys.Enter)
+                {
+                    SubmitValue();
+                    this.Parent.Focus();
+                }
+                else if (e.KeyData == Keys.Escape)
+                {
+                    ResetText();
+                    this.Parent.Focus();
+                }
+            };
+            this.LostFocus += (sender, e) => SubmitValue();
         }
 
-        private byte GetCoinScoreFromMemory()
+        private uint GetValueFromMemory()
         {
-            return Config.Stream.GetByte(Config.FileManager.CurrentFileAddress + _addressOffset);
+            return Config.Stream.GetUInt32(Config.MainSaveManager.CurrentMainSaveAddress + _offset, false, _mask, _shift);
         }
 
-        protected override void SubmitValue()
+        private void SetValueInMemory(uint value)
+        {
+            Config.Stream.SetValue(value, Config.MainSaveManager.CurrentMainSaveAddress + _offset, false, _mask, _shift);
+        }
+
+        private void SubmitValue()
         {
             byte value;
             if (!byte.TryParse(this.Text, out value))
             {
-                this.Text = GetCoinScoreFromMemory().ToString();
+                this.Text = GetValueFromMemory().ToString();
                 return;
             }
 
-            Config.Stream.SetValue(value, Config.FileManager.CurrentFileAddress + _addressOffset);
+            SetValueInMemory(value);
         }
 
-        protected override void ResetValue()
+        private void ResetValue()
         {
-            byte value = GetCoinScoreFromMemory();
+            uint value = GetValueFromMemory();
             this._currentValue = value;
             this.Text = value.ToString();
         }
 
-        public override void UpdateText()
+        public void UpdateText()
         {
-            byte value = GetCoinScoreFromMemory();
+            uint value = GetValueFromMemory();
             if (_currentValue != value)
             {
                 this.Text = value.ToString();
