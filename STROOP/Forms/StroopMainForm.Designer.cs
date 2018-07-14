@@ -1422,10 +1422,10 @@ namespace STROOP
             this.textBoxMainSaveCoinRankRow3Col4 = new STROOP.MainSaveTextbox();
             this.textBoxMainSaveCoinRankRow2Col4 = new STROOP.MainSaveTextbox();
             this.textBoxMainSaveCoinRankRow1Col4 = new STROOP.MainSaveTextbox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.labelMainSaveCoinRankCol1 = new System.Windows.Forms.Label();
+            this.labelMainSaveCoinRankCol2 = new System.Windows.Forms.Label();
+            this.labelMainSaveCoinRankCol3 = new System.Windows.Forms.Label();
+            this.labelMainSaveCoinRankCol4 = new System.Windows.Forms.Label();
             this.groupBoxMainSaveStruct = new System.Windows.Forms.GroupBox();
             this.radioButtonMainSaveStructMainSaveSaved = new System.Windows.Forms.RadioButton();
             this.radioButtonMainSaveStructMainSave = new System.Windows.Forms.RadioButton();
@@ -17434,10 +17434,10 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow3Col4, 4, 3);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow2Col4, 4, 2);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.textBoxMainSaveCoinRankRow1Col4, 4, 1);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.label8, 1, 0);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.label10, 2, 0);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.label11, 3, 0);
-            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.label12, 4, 0);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankCol1, 1, 0);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankCol2, 2, 0);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankCol3, 3, 0);
+            this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankCol4, 4, 0);
             this.tableLayoutPanelMainSaveCoinRank.Location = new System.Drawing.Point(227, 18);
             this.tableLayoutPanelMainSaveCoinRank.Name = "tableLayoutPanelMainSaveCoinRank";
             this.tableLayoutPanelMainSaveCoinRank.RowCount = 16;
@@ -18495,57 +18495,57 @@ namespace STROOP
             this.textBoxMainSaveCoinRankRow1Col4.Text = "0";
             this.textBoxMainSaveCoinRankRow1Col4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label8
+            // labelMainSaveCoinRankCol1
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelMainSaveCoinRankCol1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(55, 1);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(24, 14);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "A";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelMainSaveCoinRankCol1.AutoSize = true;
+            this.labelMainSaveCoinRankCol1.Location = new System.Drawing.Point(55, 1);
+            this.labelMainSaveCoinRankCol1.Name = "labelMainSaveCoinRankCol1";
+            this.labelMainSaveCoinRankCol1.Size = new System.Drawing.Size(24, 14);
+            this.labelMainSaveCoinRankCol1.TabIndex = 8;
+            this.labelMainSaveCoinRankCol1.Text = "A";
+            this.labelMainSaveCoinRankCol1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label10
+            // labelMainSaveCoinRankCol2
             // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelMainSaveCoinRankCol2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(86, 1);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(24, 14);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "B";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelMainSaveCoinRankCol2.AutoSize = true;
+            this.labelMainSaveCoinRankCol2.Location = new System.Drawing.Point(86, 1);
+            this.labelMainSaveCoinRankCol2.Name = "labelMainSaveCoinRankCol2";
+            this.labelMainSaveCoinRankCol2.Size = new System.Drawing.Size(24, 14);
+            this.labelMainSaveCoinRankCol2.TabIndex = 8;
+            this.labelMainSaveCoinRankCol2.Text = "B";
+            this.labelMainSaveCoinRankCol2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label11
+            // labelMainSaveCoinRankCol3
             // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelMainSaveCoinRankCol3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(117, 1);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(24, 14);
-            this.label11.TabIndex = 8;
-            this.label11.Text = "C";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelMainSaveCoinRankCol3.AutoSize = true;
+            this.labelMainSaveCoinRankCol3.Location = new System.Drawing.Point(117, 1);
+            this.labelMainSaveCoinRankCol3.Name = "labelMainSaveCoinRankCol3";
+            this.labelMainSaveCoinRankCol3.Size = new System.Drawing.Size(24, 14);
+            this.labelMainSaveCoinRankCol3.TabIndex = 8;
+            this.labelMainSaveCoinRankCol3.Text = "C";
+            this.labelMainSaveCoinRankCol3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label12
+            // labelMainSaveCoinRankCol4
             // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.labelMainSaveCoinRankCol4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(148, 1);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(35, 14);
-            this.label12.TabIndex = 8;
-            this.label12.Text = "D";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelMainSaveCoinRankCol4.AutoSize = true;
+            this.labelMainSaveCoinRankCol4.Location = new System.Drawing.Point(148, 1);
+            this.labelMainSaveCoinRankCol4.Name = "labelMainSaveCoinRankCol4";
+            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(35, 14);
+            this.labelMainSaveCoinRankCol4.TabIndex = 8;
+            this.labelMainSaveCoinRankCol4.Text = "D";
+            this.labelMainSaveCoinRankCol4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBoxMainSaveStruct
             // 
@@ -20647,10 +20647,10 @@ namespace STROOP
         private MainSaveTextbox textBoxMainSaveCoinRankRow3Col4;
         private MainSaveTextbox textBoxMainSaveCoinRankRow2Col4;
         private MainSaveTextbox textBoxMainSaveCoinRankRow1Col4;
-        private Label label8;
-        private Label label10;
-        private Label label11;
-        private Label label12;
+        private Label labelMainSaveCoinRankCol1;
+        private Label labelMainSaveCoinRankCol2;
+        private Label labelMainSaveCoinRankCol3;
+        private Label labelMainSaveCoinRankCol4;
     }
 }
 
