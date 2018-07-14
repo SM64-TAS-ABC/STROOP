@@ -3208,6 +3208,8 @@
     <Image path="Pokey Spawner.png"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x14F" base="Object" subclass="Boolean">Pokey Loaded</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x103" base="Object" subclass="Boolean">Pokey Dead</Data>
+    <Data groupList="ObjectSpecific" base="Object" offset="0xF8" type="int">Num Parts</Data>
+    <Data groupList="ObjectSpecific" base="Object" offset="0xFC" type="float">New Part Scale</Data>
     <Data groupList="ObjectSpecific" base="Object" offset="0x108" type="int">Countdown</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x104" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xC8" base="Object" subclass="Angle" yaw="true">Yaw Moving</Data>
