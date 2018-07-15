@@ -11,6 +11,8 @@ namespace STROOP.Controls.Map.Semaphores
 {
     public static class MapSemaphoreManager
     {
+        public static MapSemaphore Mario = new MapSemaphore();
         public static MapSemaphore Holp = new MapSemaphore();
+        public static MapSemaphore Camera = new MapSemaphore();
     }
 }

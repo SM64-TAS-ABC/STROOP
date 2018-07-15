@@ -90,29 +90,42 @@ namespace STROOP.Managers
                     */
             _mapGui.ButtonClearAllTrackers.Click += (sender, e) => _mapGui.MapTrackerFlowLayoutPanel.ClearControls();
 
-            _mapGui.CheckBoxTrackHolp.CheckedChanged += (sender, e) =>
-            {
-                MapSemaphore semaphore = MapSemaphoreManager.Holp;
-                semaphore.Toggle();
-                if (semaphore.IsUsed)
-                {
-                    MapTracker tracker = new MapTracker(
-                        _mapGui.MapTrackerFlowLayoutPanel,
-                        new List<MapIconObject>() { _mapObjHolp },
-                        new List<MapSemaphore>() { semaphore });
-                    _mapGui.MapTrackerFlowLayoutPanel.AddNewControl(tracker);
-                }
-            };
+            InitializeCheckboxSemaphore(_mapGui.CheckBoxTrackMario, MapSemaphoreManager.Mario, _mapObjMario, true);
+            InitializeCheckboxSemaphore(_mapGui.CheckBoxTrackHolp, MapSemaphoreManager.Holp, _mapObjHolp, false);
+            InitializeCheckboxSemaphore(_mapGui.CheckBoxTrackCamera, MapSemaphoreManager.Camera, _mapObjCamera, false);
 
             // Test
             _mapObjLevel = new MapLevelObject(_mapAssoc);
             Config.MapController.AddMapObject(_mapObjLevel);
             Config.MapController.AddMapObject(_mapObjMario);
             Config.MapController.AddMapObject(_mapObjHolp);
-            //Config.MapController.AddMapObject(_mapObjCamera);
+            Config.MapController.AddMapObject(_mapObjCamera);
             //Config.MapController.AddMapObject(_mapObjWallTri);
             //Config.MapController.AddMapObject(_mapObjFloorTri);
             //Config.MapController.AddMapObject(_mapObjCeilTri);
+        }
+
+        private void InitializeCheckboxSemaphore(
+            CheckBox checkBox, MapSemaphore semaphore, MapIconObject mapIconObj, bool startAsOn)
+        {
+            Action clickAction = () =>
+            {
+                semaphore.Toggle();
+                if (semaphore.IsUsed)
+                {
+                    MapTracker tracker = new MapTracker(
+                        _mapGui.MapTrackerFlowLayoutPanel,
+                        new List<MapIconObject>() { mapIconObj },
+                        new List<MapSemaphore>() { semaphore });
+                    _mapGui.MapTrackerFlowLayoutPanel.AddNewControl(tracker);
+                }
+            };
+            checkBox.Click += (sender, e) => clickAction();
+            if (startAsOn)
+            {
+                checkBox.Checked = true;
+                clickAction();
+            }
         }
 
         private void TabControlView_SelectedIndexChanged(object sender, EventArgs e)
@@ -131,7 +144,9 @@ namespace STROOP.Managers
 
         public void Update()
         {
+            _mapGui.CheckBoxTrackMario.Checked = MapSemaphoreManager.Mario.IsUsed;
             _mapGui.CheckBoxTrackHolp.Checked = MapSemaphoreManager.Holp.IsUsed;
+            _mapGui.CheckBoxTrackCamera.Checked = MapSemaphoreManager.Camera.IsUsed;
 
             List<int> currentSm64ObjIndexes = Config.ObjectSlotsManager.SelectedOnMapSlotsAddresses
                 .ConvertAll(address => ObjectUtilities.GetObjectIndex(address))
