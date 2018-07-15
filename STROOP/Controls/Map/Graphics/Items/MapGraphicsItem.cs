@@ -14,7 +14,7 @@ namespace STROOP.Controls.Map.Graphics.Items
         /// </summary>
         public bool Visible { get; set; }
 
-        public readonly string Name;
+        public string Name { get; set; }
 
         /// <summary>
         /// Drawing type

@@ -20,7 +20,7 @@ namespace STROOP.Controls.Map.Objects
 
         public MapSm64Object(int slotIndex)
         {
-            _iconGraphics = new MapGraphicsIconItem(null, "Object");
+            _iconGraphics = new MapGraphicsIconItem(null, "");
             _slotIndex = slotIndex;
         }
 
@@ -29,6 +29,11 @@ namespace STROOP.Controls.Map.Objects
             ObjectDataModel obj = DataModels.Objects[_slotIndex];
             if (obj == null)
                 return;
+
+            string objectName = Config.ObjectAssociations.GetObjectName(obj.BehaviorCriteria);
+            uint address = ObjectUtilities.GetObjectAddress(_slotIndex);
+            string slotLabel = Config.ObjectSlotsManager.GetDescriptiveSlotLabelFromAddress(address, true);
+            _iconGraphics.Name = String.Format("{0} [{1}]", objectName, slotLabel);
 
             Bitmap currentGraphics = Config.ObjectAssociations.GetObjectMapImage(obj.BehaviorCriteria) as Bitmap;
             if (currentGraphics != _lastGraphic)
