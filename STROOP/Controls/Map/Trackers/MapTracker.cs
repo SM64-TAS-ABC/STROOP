@@ -43,6 +43,9 @@ namespace STROOP.Controls.Map.Trackers
                 obj.Shown = true;
                 obj.Opacity = 1;
             });
+
+            MapObject mapObj = mapObjectList.FirstOrDefault();
+            textBoxName.Text = mapObj.Name;
         }
 
         private void MapTracker_Load(object sender, EventArgs e)

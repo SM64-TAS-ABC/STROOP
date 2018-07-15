@@ -20,7 +20,7 @@ namespace STROOP.Controls.Map.Objects
 
         public MapSm64Object(int slotIndex)
         {
-            _iconGraphics = new MapGraphicsIconItem(null);
+            _iconGraphics = new MapGraphicsIconItem(null, "Object");
             _slotIndex = slotIndex;
         }
 

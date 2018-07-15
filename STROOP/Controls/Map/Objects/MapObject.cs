@@ -55,6 +55,11 @@ namespace STROOP.Controls.Map
             }
         }
 
+        public string Name
+        {
+            get => GraphicsItems.FirstOrDefault()?.Name ?? "(no name)";
+        }
+
         public virtual double GetDepth()
         {
             return 0;
