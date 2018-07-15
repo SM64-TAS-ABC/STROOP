@@ -35,7 +35,7 @@ namespace STROOP.Controls.Map.Graphics.Items
 
         public override DrawType Type => DrawType.Background;
 
-        public MapGraphicsBackgroundItem(Bitmap image)
+        public MapGraphicsBackgroundItem(Bitmap image) : base(true)
         {
             ChangeImage(image);
         }

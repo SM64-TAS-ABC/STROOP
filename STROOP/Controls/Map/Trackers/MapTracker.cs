@@ -24,7 +24,6 @@ namespace STROOP.Controls.Map.Trackers
         public readonly List<MapIconObject> MapObjectList;
         public readonly List<MapSemaphore> SemaphoreList;
 
-        private bool _visible;
         private static readonly Image ImageEyeOpen = Properties.Resources.image_eye_open2;
         private static readonly Image ImageEyeClosed = Properties.Resources.image_eye_closed2;
 
@@ -38,9 +37,12 @@ namespace STROOP.Controls.Map.Trackers
             _flowLayoutPanel = flowLayoutPanel;
             MapObjectList = new List<MapIconObject>(mapObjectList);
             SemaphoreList = new List<MapSemaphore>(semaphoreList);
-            MapObjectList.ForEach(obj => Config.MapController.AddMapObject(obj));
-
-            _visible = true;
+            MapObjectList.ForEach(obj =>
+            {
+                obj.Tracked = true;
+                obj.Shown = true;
+                obj.Opacity = 1;
+            });
         }
 
         private void MapTracker_Load(object sender, EventArgs e)
@@ -110,8 +112,10 @@ namespace STROOP.Controls.Map.Trackers
 
         private void pictureBoxEye_Click(object sender, EventArgs e)
         {
-            _visible = !_visible;
-            pictureBoxEye.BackgroundImage = _visible ? ImageEyeOpen : ImageEyeClosed;
+            bool oldShown = MapObjectList.Any(obj => obj.Shown);
+            bool newShown = !oldShown;
+            MapObjectList.ForEach(obj => obj.Shown = newShown);
+            pictureBoxEye.BackgroundImage = newShown ? ImageEyeOpen : ImageEyeClosed;
         }
 
         private void pictureBoxUpArrow_Click(object sender, EventArgs e)
@@ -134,7 +138,7 @@ namespace STROOP.Controls.Map.Trackers
 
         public void CleanUp()
         {
-            MapObjectList.ForEach(obj => Config.MapController.RemoveMapObject(obj));
+            MapObjectList.ForEach(obj => obj.Tracked = false);
             SemaphoreList.ForEach(semaphore => semaphore.IsUsed = false);
         }
     }

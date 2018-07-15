@@ -94,14 +94,6 @@ namespace STROOP.Managers
             {
                 MapSemaphore semaphore = MapSemaphoreManager.Holp;
                 semaphore.Toggle();
-
-                // dane look at this part
-                if (semaphore.IsUsed)
-                    Config.MapController.AddMapObject(_mapObjHolp);
-                else
-                    Config.MapController.RemoveMapObject(_mapObjHolp);
-
-                /*
                 if (semaphore.IsUsed)
                 {
                     MapTracker tracker = new MapTracker(
@@ -110,14 +102,13 @@ namespace STROOP.Managers
                         new List<MapSemaphore>() { semaphore });
                     _mapGui.MapTrackerFlowLayoutPanel.AddNewControl(tracker);
                 }
-                */
             };
 
             // Test
             _mapObjLevel = new MapLevelObject(_mapAssoc);
             Config.MapController.AddMapObject(_mapObjLevel);
             Config.MapController.AddMapObject(_mapObjMario);
-            //Config.MapController.AddMapObject(_mapObjHolp);
+            Config.MapController.AddMapObject(_mapObjHolp);
             //Config.MapController.AddMapObject(_mapObjCamera);
             //Config.MapController.AddMapObject(_mapObjWallTri);
             //Config.MapController.AddMapObject(_mapObjFloorTri);
