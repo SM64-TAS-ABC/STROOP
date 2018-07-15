@@ -151,6 +151,8 @@
     <Compile Include="Controls\Map\Objects\MapIconObject.cs" />
     <Compile Include="Controls\Map\Objects\MapCameraObject.cs" />
     <Compile Include="Controls\Map\Objects\MapTriangleObject.cs" />
+    <Compile Include="Controls\Map\Semaphores\MapSemaphoreManager.cs" />
+    <Compile Include="Controls\Map\Semaphores\MapSemaphore.cs" />
     <Compile Include="Controls\Map\Trackers\ColorSelector.cs">
       <SubType>UserControl</SubType>
     </Compile>
