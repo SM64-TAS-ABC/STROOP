@@ -14,6 +14,7 @@ using STROOP.Structs.Configurations;
 using System.Drawing.Drawing2D;
 using STROOP.Interfaces;
 using STROOP.Controls.Map.Objects;
+using STROOP.Controls.Map.Semaphores;
 
 namespace STROOP.Controls.Map.Trackers
 {
@@ -21,6 +22,7 @@ namespace STROOP.Controls.Map.Trackers
     {
         private readonly MapTrackerFlowLayoutPanel _flowLayoutPanel;
         public readonly List<MapIconObject> MapObjectList;
+        public readonly List<MapSemaphore> SemaphoreList;
 
         private bool _visible;
         private static readonly Image ImageEyeOpen = Properties.Resources.image_eye_open2;
@@ -28,12 +30,14 @@ namespace STROOP.Controls.Map.Trackers
 
         public MapTracker(
             MapTrackerFlowLayoutPanel flowLayoutPanel,
-            List<MapIconObject> mapObjectList)
+            List<MapIconObject> mapObjectList,
+            List<MapSemaphore> semaphoreList)
         {
             InitializeComponent();
 
             _flowLayoutPanel = flowLayoutPanel;
             MapObjectList = new List<MapIconObject>(mapObjectList);
+            SemaphoreList = new List<MapSemaphore>(semaphoreList);
             MapObjectList.ForEach(obj => Config.MapController.AddMapObject(obj));
 
             _visible = true;
@@ -120,9 +124,18 @@ namespace STROOP.Controls.Map.Trackers
             _flowLayoutPanel.MoveDownControl(this);
         }
 
+        public void UpdateTracker()
+        {
+            if (SemaphoreList.Any(semaphore => !semaphore.IsUsed))
+            {
+                _flowLayoutPanel.RemoveControl(this);
+            }
+        }
+
         public void CleanUp()
         {
             MapObjectList.ForEach(obj => Config.MapController.RemoveMapObject(obj));
+            SemaphoreList.ForEach(semaphore => semaphore.IsUsed = false);
         }
     }
 }

@@ -67,13 +67,18 @@ namespace STROOP.Controls.Map.Trackers
         
         public void UpdateControls()
         {
+            foreach (MapTracker tracker in Controls)
+            {
+                tracker.UpdateTracker();
+            }
+
             List<MapObject> listOrderOnTop = new List<MapObject>();
             List<MapObject> listOrderOnBottom = new List<MapObject>();
             List<MapObject> listOrderByDepth = new List<MapObject>();
 
             lock (_objectLock)
             {
-                foreach (MapTracker mapTracker in Controls.OfType<MapTracker>())
+                foreach (MapTracker mapTracker in Controls)
                 {
                     if (!mapTracker.Visible) continue;
                     switch (mapTracker.GetOrderType())

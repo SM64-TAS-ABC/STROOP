@@ -83,12 +83,26 @@ namespace STROOP.Managers
             _mapGui.RadioButtonAngle32768.Click += (sender, e) => Config.MapController.MapAngle = (float) Math.PI;
             _mapGui.RadioButtonAngle49152.Click += (sender, e) => Config.MapController.MapAngle = (float) (3 * Math.PI / 2);
 
+            /*
             _mapGui.ButtonAddNewTracker.Click += (sender, e) =>
                 _mapGui.MapTrackerFlowLayoutPanel.AddNewControl(
                     new MapTracker(_mapGui.MapTrackerFlowLayoutPanel, new List<MapIconObject>() { _mapObjMario }));
+                    */
             _mapGui.ButtonClearAllTrackers.Click += (sender, e) => _mapGui.MapTrackerFlowLayoutPanel.ClearControls();
 
-            _mapGui.CheckBoxTrackHolp.Click += (sender, e) => MapSemaphoreManager.Holp.Toggle();
+            _mapGui.CheckBoxTrackHolp.Click += (sender, e) =>
+            {
+                MapSemaphore semaphore = MapSemaphoreManager.Holp;
+                semaphore.Toggle();
+                if (semaphore.IsUsed)
+                {
+                    MapTracker tracker = new MapTracker(
+                        _mapGui.MapTrackerFlowLayoutPanel,
+                        new List<MapIconObject>() { _mapObjHolp },
+                        new List<MapSemaphore>() { semaphore });
+                    _mapGui.MapTrackerFlowLayoutPanel.AddNewControl(tracker);
+                }
+            };
 
             // Test
             _mapObjLevel = new MapLevelObject(_mapAssoc);
@@ -138,7 +152,7 @@ namespace STROOP.Managers
             {
                 MapSm64Object sm64Obj = new MapSm64Object(index);
                 MapTracker tracker = new MapTracker(
-                    _mapGui.MapTrackerFlowLayoutPanel, new List<MapIconObject>() { sm64Obj });
+                    _mapGui.MapTrackerFlowLayoutPanel, new List<MapIconObject>() { sm64Obj }, new List<MapSemaphore>());
                 _currentMapSm64ObjDictionary.Add(index, tracker);
                 _mapGui.MapTrackerFlowLayoutPanel.AddNewControl(tracker);
             }
