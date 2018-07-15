@@ -28,6 +28,9 @@ namespace STROOP.Managers
         private MapGraphics _graphics;
         private MapAssociations _mapAssoc;
 
+        private List<int> _currentMapSm64ObjIndexes;
+        private List<MapSm64Object> _currentMapSm64Objects;
+
         #region Objects
         private MapLevelObject _mapObjLevel;
         private MapMarioObject _mapObjMario = new MapMarioObject();
@@ -43,6 +46,8 @@ namespace STROOP.Managers
         {
             _mapAssoc = mapAssoc;
             _mapGui = mapGui;
+            _currentMapSm64ObjIndexes = new List<int>();
+            _currentMapSm64Objects = new List<MapSm64Object>();
         }
 
         public void Load()
@@ -85,15 +90,13 @@ namespace STROOP.Managers
 
             // Test
             _mapObjLevel = new MapLevelObject(_mapAssoc);
-            _mapSm64Objs = Enumerable.Range(0, ObjectSlotsConfig.MaxSlots).Select(i => new MapSm64Object(i)).ToList();
             _controller.AddMapObject(_mapObjLevel);
             _controller.AddMapObject(_mapObjMario);
-            _controller.AddMapObject(_mapObjHolp);
-            _controller.AddMapObject(_mapObjCamera);
-            _controller.AddMapObject(_mapObjWallTri);
-            _controller.AddMapObject(_mapObjFloorTri);
-            _controller.AddMapObject(_mapObjCeilTri);
-            _mapSm64Objs.ForEach(o => _controller.AddMapObject(o));
+            //_controller.AddMapObject(_mapObjHolp);
+            //_controller.AddMapObject(_mapObjCamera);
+            //_controller.AddMapObject(_mapObjWallTri);
+            //_controller.AddMapObject(_mapObjFloorTri);
+            //_controller.AddMapObject(_mapObjCeilTri);
         }
 
         private void TabControlView_SelectedIndexChanged(object sender, EventArgs e)
@@ -112,6 +115,21 @@ namespace STROOP.Managers
 
         public void Update()
         {
+            List<int> newSm64ObjIndexes = Config.ObjectSlotsManager.SelectedOnMapSlotsAddresses
+                .ConvertAll(address => ObjectUtilities.GetObjectIndex(address))
+                .FindAll(address => address.HasValue)
+                .ConvertAll(address => address.Value);
+            if (!newSm64ObjIndexes.SequenceEqual(_currentMapSm64ObjIndexes))
+            {
+                _currentMapSm64ObjIndexes = newSm64ObjIndexes;
+                _currentMapSm64Objects.ForEach(obj => _controller.RemoveMapObject(obj));
+                _currentMapSm64Objects = _currentMapSm64ObjIndexes.ConvertAll(i => new MapSm64Object(i));
+                _currentMapSm64Objects.ForEach(obj => _controller.AddMapObject(obj));
+            }
+
+            //_mapSm64Objs = Enumerable.Range(0, ObjectSlotsConfig.MaxSlots).Select(i => new MapSm64Object(i)).ToList();
+            //_mapSm64Objs.ForEach(o => _controller.AddMapObject(o));
+
             _mapGui.MapTrackerFlowLayoutPanel.UpdateControls();
 
             // Make sure the control has successfully loaded
