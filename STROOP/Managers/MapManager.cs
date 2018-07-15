@@ -94,6 +94,14 @@ namespace STROOP.Managers
             {
                 MapSemaphore semaphore = MapSemaphoreManager.Holp;
                 semaphore.Toggle();
+
+                // dane look at this part
+                if (semaphore.IsUsed)
+                    Config.MapController.AddMapObject(_mapObjHolp);
+                else
+                    Config.MapController.RemoveMapObject(_mapObjHolp);
+
+                /*
                 if (semaphore.IsUsed)
                 {
                     MapTracker tracker = new MapTracker(
@@ -102,6 +110,7 @@ namespace STROOP.Managers
                         new List<MapSemaphore>() { semaphore });
                     _mapGui.MapTrackerFlowLayoutPanel.AddNewControl(tracker);
                 }
+                */
             };
 
             // Test
