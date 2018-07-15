@@ -18,7 +18,7 @@ namespace STROOP.Controls.Map.Trackers
     {
         private readonly Object _objectLock = new Object();
 
-        public void MoveUpControl(Control mapTracker)
+        public void MoveUpControl(MapTracker mapTracker)
         {
             lock (_objectLock)
             {
@@ -29,7 +29,7 @@ namespace STROOP.Controls.Map.Trackers
             }
         }
 
-        public void MoveDownControl(Control mapTracker)
+        public void MoveDownControl(MapTracker mapTracker)
         {
             lock (_objectLock)
             {
@@ -40,15 +40,16 @@ namespace STROOP.Controls.Map.Trackers
             }
         }
 
-        public void RemoveControl(Control mapTracker)
+        public void RemoveControl(MapTracker mapTracker)
         {
             lock (_objectLock)
             {
+                mapTracker.CleanUp();
                 Controls.Remove(mapTracker);
             }
         }
 
-        public void AddNewControl(Control mapTracker)
+        public void AddNewControl(MapTracker mapTracker)
         {
             lock (_objectLock)
             {

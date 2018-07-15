@@ -34,6 +34,7 @@ namespace STROOP.Controls.Map.Trackers
 
             _flowLayoutPanel = flowLayoutPanel;
             MapObjectList = new List<MapIconObject>(mapObjectList);
+            MapObjectList.ForEach(obj => Config.MapController.AddMapObject(obj));
 
             _visible = true;
         }
@@ -117,6 +118,11 @@ namespace STROOP.Controls.Map.Trackers
         private void pictureBoxDownArrow_Click(object sender, EventArgs e)
         {
             _flowLayoutPanel.MoveDownControl(this);
+        }
+
+        public void CleanUp()
+        {
+            MapObjectList.ForEach(obj => Config.MapController.RemoveMapObject(obj));
         }
     }
 }

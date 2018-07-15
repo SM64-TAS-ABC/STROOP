@@ -28,7 +28,7 @@ namespace STROOP.Managers
         private MapAssociations _mapAssoc;
 
         private List<int> _currentMapSm64ObjIndexes;
-        private List<MapSm64Object> _currentMapSm64Objects;
+        private Dictionary<int, MapTracker> _currentMapSm64ObjDictionary;
 
         #region Objects
         private MapLevelObject _mapObjLevel;
@@ -46,7 +46,7 @@ namespace STROOP.Managers
             _mapAssoc = mapAssoc;
             _mapGui = mapGui;
             _currentMapSm64ObjIndexes = new List<int>();
-            _currentMapSm64Objects = new List<MapSm64Object>();
+            _currentMapSm64ObjDictionary = new Dictionary<int, MapTracker>();
         }
 
         public void Load()
@@ -114,17 +114,39 @@ namespace STROOP.Managers
 
         public void Update()
         {
-            List<int> newSm64ObjIndexes = Config.ObjectSlotsManager.SelectedOnMapSlotsAddresses
+            List<int> currentSm64ObjIndexes = Config.ObjectSlotsManager.SelectedOnMapSlotsAddresses
                 .ConvertAll(address => ObjectUtilities.GetObjectIndex(address))
                 .FindAll(address => address.HasValue)
                 .ConvertAll(address => address.Value);
-            if (!newSm64ObjIndexes.SequenceEqual(_currentMapSm64ObjIndexes))
+            List<int> toBeRemovedIndexes = _currentMapSm64ObjIndexes.FindAll(i => !currentSm64ObjIndexes.Contains(i));
+            List<int> toBeAddedIndexes = currentSm64ObjIndexes.FindAll(i => !_currentMapSm64ObjIndexes.Contains(i));
+            _currentMapSm64ObjIndexes = currentSm64ObjIndexes;
+
+            foreach (int index in toBeRemovedIndexes)
             {
-                _currentMapSm64ObjIndexes = newSm64ObjIndexes;
+                MapTracker tracker = _currentMapSm64ObjDictionary[index];
+                _currentMapSm64ObjDictionary.Remove(index);
+                _mapGui.MapTrackerFlowLayoutPanel.RemoveControl(tracker);
+            }
+
+            foreach (int index in toBeAddedIndexes)
+            {
+                MapSm64Object sm64Obj = new MapSm64Object(index);
+                MapTracker tracker = new MapTracker(
+                    _mapGui.MapTrackerFlowLayoutPanel, new List<MapIconObject>() { sm64Obj });
+                _currentMapSm64ObjDictionary.Add(index, tracker);
+                _mapGui.MapTrackerFlowLayoutPanel.AddNewControl(tracker);
+            }
+
+            /*
+            if (!currentSm64ObjIndexes.SequenceEqual(_currentMapSm64ObjIndexes))
+            {
+                _currentMapSm64ObjIndexes = currentSm64ObjIndexes;
                 _currentMapSm64Objects.ForEach(obj => Config.MapController.RemoveMapObject(obj));
                 _currentMapSm64Objects = _currentMapSm64ObjIndexes.ConvertAll(i => new MapSm64Object(i));
                 _currentMapSm64Objects.ForEach(obj => Config.MapController.AddMapObject(obj));
             }
+            */
 
             //_mapSm64Objs = Enumerable.Range(0, ObjectSlotsConfig.MaxSlots).Select(i => new MapSm64Object(i)).ToList();
             //_mapSm64Objs.ForEach(o => _controller.AddMapObject(o));
