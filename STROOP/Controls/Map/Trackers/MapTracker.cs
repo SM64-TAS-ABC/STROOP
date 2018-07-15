@@ -46,6 +46,7 @@ namespace STROOP.Controls.Map.Trackers
 
             MapObject mapObj = mapObjectList.FirstOrDefault();
             textBoxName.Text = mapObj.Name;
+            pictureBoxPicture.Image = mapObj.BitmapImage == null ? null : new Bitmap(mapObj.BitmapImage);
         }
 
         private void MapTracker_Load(object sender, EventArgs e)

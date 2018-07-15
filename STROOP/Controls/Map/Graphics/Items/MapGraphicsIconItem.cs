@@ -15,6 +15,11 @@ namespace STROOP.Controls.Map.Graphics.Items
         bool _imageUpdated;
         SizeF _imageNormalizedSize;
 
+        public override Bitmap BitmapImage
+        {
+            get => _image;
+        }
+
         int _imageTexID = -1;
         int _vertexBuffer = -1;
 

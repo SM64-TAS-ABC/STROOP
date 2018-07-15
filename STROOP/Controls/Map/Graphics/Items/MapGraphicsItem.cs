@@ -1,6 +1,7 @@
 ﻿using OpenTK;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,8 @@ namespace STROOP.Controls.Map.Graphics.Items
         public bool Visible { get; set; }
 
         public string Name { get; set; }
+
+        public virtual Bitmap BitmapImage { get; set; }
 
         /// <summary>
         /// Drawing type

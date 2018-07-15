@@ -60,6 +60,11 @@ namespace STROOP.Controls.Map
             get => GraphicsItems.FirstOrDefault()?.Name ?? "(no name)";
         }
 
+        public Bitmap BitmapImage
+        {
+            get => GraphicsItems.FirstOrDefault()?.BitmapImage;
+        }
+
         public virtual double GetDepth()
         {
             return 0;
