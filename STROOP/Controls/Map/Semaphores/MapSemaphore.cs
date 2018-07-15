@@ -12,5 +12,10 @@ namespace STROOP.Controls.Map.Semaphores
     public class MapSemaphore
     {
         public bool IsUsed = false;
+
+        public void Toggle()
+        {
+            IsUsed = !IsUsed;
+        }
     }
 }

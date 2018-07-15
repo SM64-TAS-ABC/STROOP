@@ -15,6 +15,7 @@ using STROOP.Controls.Map.Graphics;
 using STROOP.Controls.Map;
 using STROOP.Controls.Map.Objects;
 using STROOP.Controls.Map.Trackers;
+using STROOP.Controls.Map.Semaphores;
 
 namespace STROOP.Managers
 {
@@ -87,6 +88,8 @@ namespace STROOP.Managers
                     new MapTracker(_mapGui.MapTrackerFlowLayoutPanel, new List<MapIconObject>() { _mapObjMario }));
             _mapGui.ButtonClearAllTrackers.Click += (sender, e) => _mapGui.MapTrackerFlowLayoutPanel.ClearControls();
 
+            _mapGui.CheckBoxTrackHolp.Click += (sender, e) => MapSemaphoreManager.Holp.Toggle();
+
             // Test
             _mapObjLevel = new MapLevelObject(_mapAssoc);
             Config.MapController.AddMapObject(_mapObjLevel);
@@ -114,6 +117,8 @@ namespace STROOP.Managers
 
         public void Update()
         {
+            _mapGui.CheckBoxTrackHolp.Checked = MapSemaphoreManager.Holp.IsUsed;
+
             List<int> currentSm64ObjIndexes = Config.ObjectSlotsManager.SelectedOnMapSlotsAddresses
                 .ConvertAll(address => ObjectUtilities.GetObjectIndex(address))
                 .FindAll(address => address.HasValue)
