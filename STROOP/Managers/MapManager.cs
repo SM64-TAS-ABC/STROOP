@@ -24,7 +24,6 @@ namespace STROOP.Managers
         public bool Visible { get => _graphics.Visible; set => _graphics.Visible = value; }
 
         private MapGui _mapGui;
-        private MapController _controller;
         private MapGraphics _graphics;
         private MapAssociations _mapAssoc;
 
@@ -55,7 +54,7 @@ namespace STROOP.Managers
             // Create new graphics control
             _graphics = new MapGraphics(_mapGui.GLControl);
             _graphics.Load();
-            _controller = new MapController(_graphics);
+            Config.MapController = new MapController(_graphics);
 
             IsLoaded = true;
 
@@ -65,23 +64,23 @@ namespace STROOP.Managers
             _mapGui.CheckBoxMapGameCamOrientation.CheckedChanged += (sender, e) =>
             {
                 if (_mapGui.CheckBoxMapGameCamOrientation.Checked)
-                    _controller.CameraMode = MapController.MapCameraMode.Game;
+                    Config.MapController.CameraMode = MapController.MapCameraMode.Game;
                 else
-                    _controller.CameraMode = MapController.MapCameraMode.Fly;
+                    Config.MapController.CameraMode = MapController.MapCameraMode.Fly;
             };
 
-            _mapGui.RadioButtonScaleCourseDefault.Click += (sender, e) => _controller.ScaleMode = MapController.MapScaleMode.CourseDefault;
-            _mapGui.RadioButtonScaleMaxCourseSize.Click += (sender, e) => _controller.ScaleMode = MapController.MapScaleMode.MaxCourseSize;
-            _mapGui.RadioButtonScaleCustom.Click += (sender, e) => _controller.ScaleMode = MapController.MapScaleMode.Custom;
+            _mapGui.RadioButtonScaleCourseDefault.Click += (sender, e) => Config.MapController.ScaleMode = MapController.MapScaleMode.CourseDefault;
+            _mapGui.RadioButtonScaleMaxCourseSize.Click += (sender, e) => Config.MapController.ScaleMode = MapController.MapScaleMode.MaxCourseSize;
+            _mapGui.RadioButtonScaleCustom.Click += (sender, e) => Config.MapController.ScaleMode = MapController.MapScaleMode.Custom;
 
-            _mapGui.RadioButtonCenterBestFit.Click += (sender, e) => _controller.CenterMode = MapController.MapCenterMode.BestFit;
-            _mapGui.RadioButtonCenterOrigin.Click += (sender, e) => _controller.CenterMode = MapController.MapCenterMode.Origin;
-            _mapGui.RadioButtonCenterCustom.Click += (sender, e) => _controller.CenterMode = MapController.MapCenterMode.Custom;
+            _mapGui.RadioButtonCenterBestFit.Click += (sender, e) => Config.MapController.CenterMode = MapController.MapCenterMode.BestFit;
+            _mapGui.RadioButtonCenterOrigin.Click += (sender, e) => Config.MapController.CenterMode = MapController.MapCenterMode.Origin;
+            _mapGui.RadioButtonCenterCustom.Click += (sender, e) => Config.MapController.CenterMode = MapController.MapCenterMode.Custom;
 
-            _mapGui.RadioButtonAngle0.Click += (sender, e) => _controller.MapAngle = 0;
-            _mapGui.RadioButtonAngle16384.Click += (sender, e) => _controller.MapAngle = (float) Math.PI / 2;
-            _mapGui.RadioButtonAngle32768.Click += (sender, e) => _controller.MapAngle = (float) Math.PI;
-            _mapGui.RadioButtonAngle49152.Click += (sender, e) => _controller.MapAngle = (float) (3 * Math.PI / 2);
+            _mapGui.RadioButtonAngle0.Click += (sender, e) => Config.MapController.MapAngle = 0;
+            _mapGui.RadioButtonAngle16384.Click += (sender, e) => Config.MapController.MapAngle = (float) Math.PI / 2;
+            _mapGui.RadioButtonAngle32768.Click += (sender, e) => Config.MapController.MapAngle = (float) Math.PI;
+            _mapGui.RadioButtonAngle49152.Click += (sender, e) => Config.MapController.MapAngle = (float) (3 * Math.PI / 2);
 
             _mapGui.ButtonAddNewTracker.Click += (sender, e) =>
                 _mapGui.MapTrackerFlowLayoutPanel.AddNewControl(
@@ -90,26 +89,26 @@ namespace STROOP.Managers
 
             // Test
             _mapObjLevel = new MapLevelObject(_mapAssoc);
-            _controller.AddMapObject(_mapObjLevel);
-            _controller.AddMapObject(_mapObjMario);
-            //_controller.AddMapObject(_mapObjHolp);
-            //_controller.AddMapObject(_mapObjCamera);
-            //_controller.AddMapObject(_mapObjWallTri);
-            //_controller.AddMapObject(_mapObjFloorTri);
-            //_controller.AddMapObject(_mapObjCeilTri);
+            Config.MapController.AddMapObject(_mapObjLevel);
+            Config.MapController.AddMapObject(_mapObjMario);
+            //Config.MapController.AddMapObject(_mapObjHolp);
+            //Config.MapController.AddMapObject(_mapObjCamera);
+            //Config.MapController.AddMapObject(_mapObjWallTri);
+            //Config.MapController.AddMapObject(_mapObjFloorTri);
+            //Config.MapController.AddMapObject(_mapObjCeilTri);
         }
 
         private void TabControlView_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_mapGui.TabControlView.SelectedTab == _mapGui.TabPage2D)
             {
-                _controller.CameraMode = MapController.MapCameraMode.TopDown;
+                Config.MapController.CameraMode = MapController.MapCameraMode.TopDown;
             }
             else if (_mapGui.TabControlView.SelectedTab == _mapGui.TabPage3D) {
                 if (_mapGui.CheckBoxMapGameCamOrientation.Checked)
-                    _controller.CameraMode = MapController.MapCameraMode.Game;
+                    Config.MapController.CameraMode = MapController.MapCameraMode.Game;
                 else
-                    _controller.CameraMode = MapController.MapCameraMode.Fly;
+                    Config.MapController.CameraMode = MapController.MapCameraMode.Fly;
             }
         }
 
@@ -122,9 +121,9 @@ namespace STROOP.Managers
             if (!newSm64ObjIndexes.SequenceEqual(_currentMapSm64ObjIndexes))
             {
                 _currentMapSm64ObjIndexes = newSm64ObjIndexes;
-                _currentMapSm64Objects.ForEach(obj => _controller.RemoveMapObject(obj));
+                _currentMapSm64Objects.ForEach(obj => Config.MapController.RemoveMapObject(obj));
                 _currentMapSm64Objects = _currentMapSm64ObjIndexes.ConvertAll(i => new MapSm64Object(i));
-                _currentMapSm64Objects.ForEach(obj => _controller.AddMapObject(obj));
+                _currentMapSm64Objects.ForEach(obj => Config.MapController.AddMapObject(obj));
             }
 
             //_mapSm64Objs = Enumerable.Range(0, ObjectSlotsConfig.MaxSlots).Select(i => new MapSm64Object(i)).ToList();
@@ -140,7 +139,7 @@ namespace STROOP.Managers
                 _mapObjLevel.ColorMethod = (MapLevelObject.ColorMethodType)_mapGui.ComboBoxMapColorMethod.SelectedItem;
 
             // Update gui by drawing images (invokes _mapGraphics.OnPaint())
-            _controller.Update();
+            Config.MapController.Update();
 
             // Update labels
             /*_mapGui.PuValueLabel.Text = string.Format("[{0}:{1}:{2}]", puX, puY, puZ);

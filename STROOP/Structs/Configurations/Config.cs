@@ -1,4 +1,5 @@
-﻿using STROOP.Managers;
+﻿using STROOP.Controls.Map;
+using STROOP.Managers;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace STROOP.Structs.Configurations
         public static List<Emulator> Emulators = new List<Emulator>();
         public static ProcessStream Stream;
         public static ObjectAssociations ObjectAssociations;
+        public static MapController MapController;
         public static StroopMainForm StroopMainForm;
         public static TabControl TabControlMain;
         public static Label DebugText;
