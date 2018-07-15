@@ -43,7 +43,7 @@ namespace STROOP
 
         public new bool Show = false;
 
-        enum SelectionType { NOT_SELECTED, NORMAL_SELECTION, MAP_SELECTION, MODEL_SELECTION };
+        enum SelectionType { NOT_SELECTED, NORMAL_SELECTION, MAP_SELECTION, MAP2_SELECTION, MODEL_SELECTION };
         SelectionType _selectionType = SelectionType.NOT_SELECTED;
 
         int prevHeight;
@@ -436,6 +436,17 @@ namespace STROOP
                 case SelectionType.MAP_SELECTION:
                     e.Graphics.DrawImage(_gui.TrackedAndShownObjectOverlayImage, new Rectangle(new Point(), Size));
                     break;
+
+                case SelectionType.MAP2_SELECTION:
+                    e.Graphics.DrawImage(_gui.TrackedAndShownObjectOverlayImage, new Rectangle(new Point(), Size));
+                    break;
+
+                case SelectionType.NOT_SELECTED:
+                    // do nothing
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
             if (_drawWallOverlay)
                 e.Graphics.DrawImage(_gui.WallObjectOverlayImage, new Rectangle(new Point(), Size));
@@ -558,7 +569,13 @@ namespace STROOP
             switch (_manager.ActiveTab)
             {
                 case ObjectSlotsManager.TabType.Map:
-                    selectionType = Show ? SelectionType.MAP_SELECTION
+                    selectionType = address.HasValue && Config.ObjectSlotsManager.SelectedOnMapSlotsAddresses.Contains(address.Value)
+                        ? SelectionType.MAP_SELECTION
+                        : SelectionType.NOT_SELECTED;
+                    break;
+
+                case ObjectSlotsManager.TabType.Map2:
+                    selectionType = Show ? SelectionType.MAP2_SELECTION
                         : SelectionType.NOT_SELECTED;
                     break;
 
@@ -671,7 +688,7 @@ namespace STROOP
             {
                 // Update map object coordinates and rotation
                 var mapObj = _mapObjects[objAddress];
-                mapObj.Show = Config.ObjectSlotsManager.SelectedOnMapSlotsAddresses.Contains(objAddress);
+                mapObj.Show = Config.ObjectSlotsManager.SelectedOnMap2SlotsAddresses.Contains(objAddress);
                 Show = _mapObjects[objAddress].Show;
                 mapObj.X = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
                 mapObj.Y = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);
