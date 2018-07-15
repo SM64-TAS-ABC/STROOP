@@ -28,9 +28,6 @@ namespace STROOP.Managers
         private MapGraphics _graphics;
         private MapAssociations _mapAssoc;
 
-        private List<int> _currentMapSm64ObjIndexes;
-        private Dictionary<int, MapTracker> _currentMapSm64ObjDictionary;
-
         #region Objects
         private MapLevelObject _mapObjLevel;
         private MapMarioObject _mapObjMario = new MapMarioObject();
@@ -39,7 +36,9 @@ namespace STROOP.Managers
         private MapWallTriObject _mapObjWallTri = new MapWallTriObject();
         private MapFloorTriObject _mapObjFloorTri = new MapFloorTriObject();
         private MapCeilingTriObject _mapObjCeilTri = new MapCeilingTriObject();
+
         private List<MapSm64Object> _mapSm64Objs = new List<MapSm64Object>();
+        private List<int> _currentMapSm64ObjIndexes;
         #endregion
 
         public MapManager(MapAssociations mapAssoc, MapGui mapGui)
@@ -47,7 +46,6 @@ namespace STROOP.Managers
             _mapAssoc = mapAssoc;
             _mapGui = mapGui;
             _currentMapSm64ObjIndexes = new List<int>();
-            _currentMapSm64ObjDictionary = new Dictionary<int, MapTracker>();
         }
 
         public void Load()
@@ -90,19 +88,24 @@ namespace STROOP.Managers
                     */
             _mapGui.ButtonClearAllTrackers.Click += (sender, e) => _mapGui.MapTrackerFlowLayoutPanel.ClearControls();
 
-            InitializeCheckboxSemaphore(_mapGui.CheckBoxTrackMario, MapSemaphoreManager.Mario, _mapObjMario, true);
-            InitializeCheckboxSemaphore(_mapGui.CheckBoxTrackHolp, MapSemaphoreManager.Holp, _mapObjHolp, false);
-            InitializeCheckboxSemaphore(_mapGui.CheckBoxTrackCamera, MapSemaphoreManager.Camera, _mapObjCamera, false);
-
             // Test
             _mapObjLevel = new MapLevelObject(_mapAssoc);
             Config.MapController.AddMapObject(_mapObjLevel);
             Config.MapController.AddMapObject(_mapObjMario);
             Config.MapController.AddMapObject(_mapObjHolp);
             Config.MapController.AddMapObject(_mapObjCamera);
+
+            _mapSm64Objs = Enumerable.Range(0, ObjectSlotsConfig.MaxSlots).ToList()
+                .ConvertAll(i => new MapSm64Object(i));
+            _mapSm64Objs.ForEach(obj => Config.MapController.AddMapObject(obj));
+
             //Config.MapController.AddMapObject(_mapObjWallTri);
             //Config.MapController.AddMapObject(_mapObjFloorTri);
             //Config.MapController.AddMapObject(_mapObjCeilTri);
+
+            InitializeCheckboxSemaphore(_mapGui.CheckBoxTrackMario, MapSemaphoreManager.Mario, _mapObjMario, true);
+            InitializeCheckboxSemaphore(_mapGui.CheckBoxTrackHolp, MapSemaphoreManager.Holp, _mapObjHolp, false);
+            InitializeCheckboxSemaphore(_mapGui.CheckBoxTrackCamera, MapSemaphoreManager.Camera, _mapObjCamera, false);
         }
 
         private void InitializeCheckboxSemaphore(
@@ -144,10 +147,7 @@ namespace STROOP.Managers
 
         public void Update()
         {
-            _mapGui.CheckBoxTrackMario.Checked = MapSemaphoreManager.Mario.IsUsed;
-            _mapGui.CheckBoxTrackHolp.Checked = MapSemaphoreManager.Holp.IsUsed;
-            _mapGui.CheckBoxTrackCamera.Checked = MapSemaphoreManager.Camera.IsUsed;
-
+            // Determine which obj slots have been checked/unchecked since the last update
             List<int> currentSm64ObjIndexes = Config.ObjectSlotsManager.SelectedOnMapSlotsAddresses
                 .ConvertAll(address => ObjectUtilities.GetObjectIndex(address))
                 .FindAll(address => address.HasValue)
@@ -156,21 +156,36 @@ namespace STROOP.Managers
             List<int> toBeAddedIndexes = currentSm64ObjIndexes.FindAll(i => !_currentMapSm64ObjIndexes.Contains(i));
             _currentMapSm64ObjIndexes = currentSm64ObjIndexes;
 
+            // Newly unchecked slots have their semaphore turned off
             foreach (int index in toBeRemovedIndexes)
             {
-                MapTracker tracker = _currentMapSm64ObjDictionary[index];
-                _currentMapSm64ObjDictionary.Remove(index);
-                _mapGui.MapTrackerFlowLayoutPanel.RemoveControl(tracker);
+                MapSemaphore semaphore = MapSemaphoreManager.Objects[index];
+                semaphore.IsUsed = false;
             }
 
+            // Newly checked slots have their semaphore turned on and a tracker is created
             foreach (int index in toBeAddedIndexes)
             {
-                MapSm64Object sm64Obj = new MapSm64Object(index);
+                MapSm64Object sm64Obj = _mapSm64Objs[index];
+                MapSemaphore semaphore = MapSemaphoreManager.Objects[index];
+                semaphore.IsUsed = true;
                 MapTracker tracker = new MapTracker(
-                    _mapGui.MapTrackerFlowLayoutPanel, new List<MapIconObject>() { sm64Obj }, new List<MapSemaphore>());
-                _currentMapSm64ObjDictionary.Add(index, tracker);
+                    _mapGui.MapTrackerFlowLayoutPanel, new List<MapIconObject>() { sm64Obj }, new List<MapSemaphore>() { semaphore });
                 _mapGui.MapTrackerFlowLayoutPanel.AddNewControl(tracker);
             }
+
+            // Update checkboxes/object slots based on the current semaphore states
+            // This keeps these controls consistent when the user manually exits the tracker
+            _mapGui.CheckBoxTrackMario.Checked = MapSemaphoreManager.Mario.IsUsed;
+            _mapGui.CheckBoxTrackHolp.Checked = MapSemaphoreManager.Holp.IsUsed;
+            _mapGui.CheckBoxTrackCamera.Checked = MapSemaphoreManager.Camera.IsUsed;
+            List<uint> toBeUnselected = Config.ObjectSlotsManager.SelectedOnMapSlotsAddresses
+                .ConvertAll(address => ObjectUtilities.GetObjectIndex(address))
+                .FindAll(index => index.HasValue)
+                .ConvertAll(index => index.Value)
+                .FindAll(index => !MapSemaphoreManager.Objects[index].IsUsed)
+                .ConvertAll(index => ObjectUtilities.GetObjectAddress(index));
+            toBeUnselected.ForEach(address => Config.ObjectSlotsManager.SelectedOnMapSlotsAddresses.Remove(address));
 
             /*
             if (!currentSm64ObjIndexes.SequenceEqual(_currentMapSm64ObjIndexes))

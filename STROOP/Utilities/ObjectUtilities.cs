@@ -36,6 +36,14 @@ namespace STROOP.Utilities
             return index;
         }
 
+        public static uint GetObjectAddress(int index)
+        {
+            if (index < 0 || index >= ObjectSlotsConfig.MaxSlots)
+                throw new ArgumentOutOfRangeException();
+
+            return ObjectSlotsConfig.LinkStartAddress + (uint)index * ObjectConfig.StructSize;
+        }
+
         public static uint? GetCollisionObject(uint objAddress, int collisionIndex)
         {
             if (collisionIndex < 1 || collisionIndex > 4)
