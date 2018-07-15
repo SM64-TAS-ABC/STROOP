@@ -16,20 +16,41 @@ namespace STROOP.Controls.Map
         /// </summary>
         public abstract IEnumerable<MapGraphicsItem> GraphicsItems { get; }
 
+        private bool _tracked = true;
+        public bool Tracked
+        {
+            get => _tracked;
+            set
+            {
+                _tracked = value;
+                UpdateItemVisibility();
+            }
+        }
+
+        private bool _shown = true;
+        public bool Shown
+        {
+            get => _shown;
+            set
+            {
+                _shown = value;
+                UpdateItemVisibility();
+            }
+        }
+
         /// <summary>
         /// Is the item visible or not 
         /// </summary>
-        private bool _visible = true;
         public bool Visible
         {
-            get => _visible;
-            set
+            get => _tracked && _shown;
+        }
+
+        private void UpdateItemVisibility()
+        {
+            foreach (MapGraphicsItem item in GraphicsItems)
             {
-                _visible = value;
-                foreach (MapGraphicsItem item in GraphicsItems)
-                {
-                    item.Visible = value;
-                }
+                item.Visible = Visible;
             }
         }
 
