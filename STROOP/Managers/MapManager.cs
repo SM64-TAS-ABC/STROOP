@@ -90,7 +90,7 @@ namespace STROOP.Managers
                     */
             _mapGui.ButtonClearAllTrackers.Click += (sender, e) => _mapGui.MapTrackerFlowLayoutPanel.ClearControls();
 
-            _mapGui.CheckBoxTrackHolp.Click += (sender, e) =>
+            _mapGui.CheckBoxTrackHolp.CheckedChanged += (sender, e) =>
             {
                 MapSemaphore semaphore = MapSemaphoreManager.Holp;
                 semaphore.Toggle();
