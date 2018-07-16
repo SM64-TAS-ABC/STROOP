@@ -41,7 +41,7 @@ namespace STROOP.Controls.Map.Graphics.Items
 
         public override DrawType Type => DrawType.Perspective;
 
-        public MapGraphicsImageItem(Bitmap image) : base(true, "Map")
+        public MapGraphicsImageItem(Bitmap image) : base(true)
         {
             ChangeImage(image);
         }

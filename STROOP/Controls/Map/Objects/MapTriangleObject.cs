@@ -22,9 +22,8 @@ namespace STROOP.Controls.Map.Objects
 
         public override IEnumerable<MapGraphicsItem> GraphicsItems => new MapGraphicsItem[] { _triGraphics };
 
-        public MapTriangleObject(string name)
+        public MapTriangleObject(string name) : base(name)
         {
-            _triGraphics.Name = name;
         }
 
         public override void Update()

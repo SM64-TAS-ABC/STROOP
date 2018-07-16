@@ -59,10 +59,7 @@ namespace STROOP.Controls.Map
         public virtual bool Rotates { get; set; }
         public virtual int DisplayLayer { get; set; }
 
-        public string Name
-        {
-            get => GraphicsItems.FirstOrDefault()?.Name ?? "(no name)";
-        }
+        public string Name { get; set; }
 
         public Bitmap BitmapImage
         {
@@ -72,6 +69,11 @@ namespace STROOP.Controls.Map
         public virtual double GetDepth()
         {
             return 0;
+        }
+
+        public MapObject(string name)
+        {
+            Name = name;
         }
 
         /// <summary>

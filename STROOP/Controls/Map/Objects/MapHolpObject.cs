@@ -16,9 +16,9 @@ namespace STROOP.Controls.Map.Objects
     {
         protected override MapGraphicsIconItem _iconGraphics { get; set; }
 
-        public MapHolpObject()
+        public MapHolpObject() : base("HOLP")
         {
-            _iconGraphics = new MapGraphicsIconItem(Config.ObjectAssociations.HolpImage as Bitmap, "HOLP");
+            _iconGraphics = new MapGraphicsIconItem(Config.ObjectAssociations.HolpImage as Bitmap);
         }
 
         public override void Update()

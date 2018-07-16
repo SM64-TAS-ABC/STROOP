@@ -15,8 +15,6 @@ namespace STROOP.Controls.Map.Graphics.Items
         /// </summary>
         public bool Visible { get; set; }
 
-        public string Name { get; set; }
-
         public virtual Bitmap BitmapImage { get; set; }
 
         /// <summary>
@@ -42,10 +40,9 @@ namespace STROOP.Controls.Map.Graphics.Items
         /// </summary>
         public abstract float? Depth { get; }
 
-        public MapGraphicsItem(bool visible, string name)
+        public MapGraphicsItem(bool visible)
         {
             Visible = visible;
-            Name = name;
         }
 
         /// <summary>

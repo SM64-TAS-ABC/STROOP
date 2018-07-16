@@ -50,7 +50,7 @@ namespace STROOP.Controls.Map.Graphics.Items
 
         public override DrawType Type => DrawType.Overlay;
 
-        public MapGraphicsIconItem(Bitmap image, string name) : base(false, name)
+        public MapGraphicsIconItem(Bitmap image) : base(false)
         {
             ChangeImage(image);
         }

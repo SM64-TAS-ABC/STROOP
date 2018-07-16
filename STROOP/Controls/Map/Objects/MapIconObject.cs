@@ -9,6 +9,10 @@ namespace STROOP.Controls.Map.Objects
 {
     public abstract class MapIconObject : MapObject
     {
+        public MapIconObject(string name) : base(name)
+        {
+        }
+
         public override IEnumerable<MapGraphicsItem> GraphicsItems => new List<MapGraphicsItem>() { _iconGraphics };
         protected abstract MapGraphicsIconItem _iconGraphics { get; set; }
 

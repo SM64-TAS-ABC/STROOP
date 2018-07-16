@@ -18,9 +18,9 @@ namespace STROOP.Controls.Map.Objects
         protected override MapGraphicsIconItem _iconGraphics { get; set; }
         Bitmap _lastGraphic = null;
 
-        public MapSm64Object(int slotIndex)
+        public MapSm64Object(int slotIndex) : base("Object")
         {
-            _iconGraphics = new MapGraphicsIconItem(null, "");
+            _iconGraphics = new MapGraphicsIconItem(null);
             _slotIndex = slotIndex;
         }
 
@@ -33,7 +33,7 @@ namespace STROOP.Controls.Map.Objects
             string objectName = Config.ObjectAssociations.GetObjectName(obj.BehaviorCriteria);
             uint address = ObjectUtilities.GetObjectAddress(_slotIndex);
             string slotLabel = Config.ObjectSlotsManager.GetDescriptiveSlotLabelFromAddress(address, true);
-            _iconGraphics.Name = String.Format("{0} [{1}]", objectName, slotLabel);
+            Name = String.Format("{0} [{1}]", objectName, slotLabel);
 
             Bitmap currentGraphics = Config.ObjectAssociations.GetObjectMapImage(obj.BehaviorCriteria) as Bitmap;
             if (currentGraphics != _lastGraphic)

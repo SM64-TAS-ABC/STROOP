@@ -23,7 +23,7 @@ namespace STROOP.Controls.Map.Graphics.Items
 
         public override DrawType Type => DrawType.Perspective;
 
-        public MapGraphicsTrianglesItem() : base(false, "Triangle")
+        public MapGraphicsTrianglesItem() : base(false)
         {
         }
 
