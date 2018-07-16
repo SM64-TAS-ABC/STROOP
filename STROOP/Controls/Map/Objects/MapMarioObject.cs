@@ -16,7 +16,7 @@ namespace STROOP.Controls.Map.Objects
     {
         protected override MapGraphicsIconItem _iconGraphics { get; set; }
 
-        public MapMarioObject() : base("Mario")
+        public MapMarioObject() : base("Mario", Config.ObjectAssociations.MarioMapImage as Bitmap)
         {
             _iconGraphics = new MapGraphicsIconItem(Config.ObjectAssociations.MarioMapImage as Bitmap);
         }

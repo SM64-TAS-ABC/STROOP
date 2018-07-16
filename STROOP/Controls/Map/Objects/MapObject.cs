@@ -74,16 +74,26 @@ namespace STROOP.Controls.Map
             }
         }
 
-        public abstract Bitmap BitmapImage { get; }
+        private Bitmap _bitmapImage;
+        public virtual Bitmap BitmapImage
+        {
+            get => _bitmapImage;
+            set
+            {
+                _bitmapImage = value;
+                Tracker?.UpdateImage(_bitmapImage);
+            }
+        }
 
         public virtual double GetDepth()
         {
             return 0;
         }
 
-        public MapObject(string name)
+        public MapObject(string name, Bitmap bitmapImage)
         {
             Name = name;
+            BitmapImage = bitmapImage;
         }
 
         /// <summary>

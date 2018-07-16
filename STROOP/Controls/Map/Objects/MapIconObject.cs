@@ -10,13 +10,8 @@ namespace STROOP.Controls.Map.Objects
 {
     public abstract class MapIconObject : MapObject
     {
-        public MapIconObject(string name) : base(name)
+        public MapIconObject(string name, Bitmap bitmapImage) : base(name, bitmapImage)
         {
-        }
-
-        public override Bitmap BitmapImage
-        {
-            get => GraphicsItems.FirstOrDefault()?.BitmapImage;
         }
 
         public override IEnumerable<MapGraphicsItem> GraphicsItems => new List<MapGraphicsItem>() { _iconGraphics };

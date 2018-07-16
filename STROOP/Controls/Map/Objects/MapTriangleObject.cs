@@ -23,15 +23,8 @@ namespace STROOP.Controls.Map.Objects
 
         public override IEnumerable<MapGraphicsItem> GraphicsItems => new MapGraphicsItem[] { _triGraphics };
 
-        private readonly Bitmap _bitmapImage;
-        public override Bitmap BitmapImage
+        public MapTriangleObject(string name, Bitmap bitmapImage) : base(name, bitmapImage)
         {
-            get => null;
-        }
-
-        public MapTriangleObject(string name, Bitmap bitmapImage) : base(name)
-        {
-            _bitmapImage = bitmapImage;
         }
 
         public override void Update()

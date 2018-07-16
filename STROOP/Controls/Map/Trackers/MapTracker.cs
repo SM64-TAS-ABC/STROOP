@@ -46,7 +46,7 @@ namespace STROOP.Controls.Map.Trackers
             });
 
             UpdateName();
-            UpdateImage();
+            UpdateImage(MapObjectList.FirstOrDefault()?.BitmapImage);
         }
 
         private void MapTracker_Load(object sender, EventArgs e)
@@ -138,10 +138,9 @@ namespace STROOP.Controls.Map.Trackers
             textBoxName.Text = mapObj?.Name ?? "(Unknown)";
         }
 
-        public void UpdateImage()
+        public void UpdateImage(Bitmap image)
         {
-            MapObject mapObj = MapObjectList.FirstOrDefault();
-            pictureBoxPicture.Image = mapObj.BitmapImage == null ? null : new Bitmap(mapObj.BitmapImage);
+            pictureBoxPicture.Image = image == null ? null : new Bitmap(image);
         }
 
         public void UpdateTracker()
