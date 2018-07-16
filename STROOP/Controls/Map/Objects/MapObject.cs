@@ -70,7 +70,7 @@ namespace STROOP.Controls.Map
             {
                 if (_name == value) return;
                 _name = value;
-                Tracker?.UpdateName();
+                Tracker?.UpdateName(_name);
             }
         }
 
