@@ -85,15 +85,28 @@ namespace STROOP.Controls.Map
             }
         }
 
+        private Color? _backColor;
+        public Color? BackColor
+        {
+            get => _backColor;
+            set
+            {
+                if (_backColor == value) return;
+                _backColor = value;
+                Tracker?.UpdateBackColor(_backColor);
+            }
+        }
+
         public virtual double GetDepth()
         {
             return 0;
         }
 
-        public MapObject(string name, Bitmap bitmapImage)
+        public MapObject(string name, Bitmap bitmapImage, Color? backColor = null)
         {
             Name = name;
             BitmapImage = bitmapImage;
+            BackColor = backColor;
         }
 
         /// <summary>

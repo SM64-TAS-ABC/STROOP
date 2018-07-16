@@ -72,5 +72,13 @@ namespace STROOP.Utilities
             }
             return null;
         }
+
+        public static Color GetProcessingGroupColorForObjAddress(uint address)
+        {
+            ObjectDataModel obj = Config.ObjectSlotsManager.GetObjectFromAddress(address);
+            byte? processGroup = obj?.CurrentProcessGroup;
+            Color color = ObjectSlotsConfig.GetProcessingGroupColor(processGroup);
+            return color;
+        }
     }
 }

@@ -33,6 +33,7 @@ namespace STROOP.Controls.Map.Objects
             uint address = ObjectUtilities.GetObjectAddress(_slotIndex);
             string slotLabel = Config.ObjectSlotsManager.GetDescriptiveSlotLabelFromAddress(address, true);
             Name = String.Format("[{0}] {1}", slotLabel, objectName);
+            BackColor = ObjectUtilities.GetProcessingGroupColorForObjAddress(address);
 
             Bitmap currentGraphics = Config.ObjectAssociations.GetObjectMapImage(obj.BehaviorCriteria) as Bitmap;
             if (currentGraphics != BitmapImage)

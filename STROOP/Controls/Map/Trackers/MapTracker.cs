@@ -47,8 +47,7 @@ namespace STROOP.Controls.Map.Trackers
 
             UpdateName(MapObjectList.FirstOrDefault()?.Name);
             UpdateImage(MapObjectList.FirstOrDefault()?.BitmapImage);
-            //UpdateBackColor(MapObjectList.FirstOrDefault()?.BackColor);
-            UpdateBackColor(Color.Green);
+            UpdateBackColor(MapObjectList.FirstOrDefault()?.BackColor);
 
             textBoxOpacity.AddEnterAction(() => textBoxOpacity_EnterAction());
             textBoxSize.AddEnterAction(() => textBoxSize_EnterAction());
@@ -194,8 +193,9 @@ namespace STROOP.Controls.Map.Trackers
             pictureBoxPicture.Image = image == null ? null : new Bitmap(image);
         }
 
-        public void UpdateBackColor(Color color)
+        public void UpdateBackColor(Color? colorNullable)
         {
+            Color color = colorNullable ?? ObjectSlotsConfig.VacantSlotColor;
             panelPicture.BackColor = color;
             pictureBoxPicture.BackColor = color.Lighten(0.7);
         }
