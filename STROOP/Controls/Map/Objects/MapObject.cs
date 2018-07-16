@@ -1,5 +1,6 @@
 ﻿using STROOP.Controls.Map.Graphics;
 using STROOP.Controls.Map.Graphics.Items;
+using STROOP.Controls.Map.Trackers;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -11,6 +12,8 @@ namespace STROOP.Controls.Map
 {
     public abstract class MapObject
     {
+        public MapTracker Tracker;
+
         /// <summary>
         /// List of graphics items for the object
         /// </summary>
@@ -64,6 +67,11 @@ namespace STROOP.Controls.Map
         public Bitmap BitmapImage
         {
             get => GraphicsItems.FirstOrDefault()?.BitmapImage;
+        }
+
+        public void ChangeImageAndName()
+        {
+            Tracker?.UpdateImageAndName();
         }
 
         public virtual double GetDepth()

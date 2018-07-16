@@ -39,14 +39,13 @@ namespace STROOP.Controls.Map.Trackers
             SemaphoreList = new List<MapSemaphore>(semaphoreList);
             MapObjectList.ForEach(obj =>
             {
+                obj.Tracker = this;
                 obj.Tracked = true;
                 obj.Shown = true;
                 obj.Opacity = 1;
             });
 
-            MapObject mapObj = mapObjectList.FirstOrDefault();
-            textBoxName.Text = mapObj.Name;
-            pictureBoxPicture.Image = mapObj.BitmapImage == null ? null : new Bitmap(mapObj.BitmapImage);
+            UpdateImageAndName();
         }
 
         private void MapTracker_Load(object sender, EventArgs e)
@@ -130,6 +129,13 @@ namespace STROOP.Controls.Map.Trackers
         private void pictureBoxDownArrow_Click(object sender, EventArgs e)
         {
             _flowLayoutPanel.MoveDownControl(this);
+        }
+
+        public void UpdateImageAndName()
+        {
+            MapObject mapObj = MapObjectList.FirstOrDefault();
+            pictureBoxPicture.Image = mapObj.BitmapImage == null ? null : new Bitmap(mapObj.BitmapImage);
+            textBoxName.Text = mapObj?.Name ?? "(Unknown)";
         }
 
         public void UpdateTracker()

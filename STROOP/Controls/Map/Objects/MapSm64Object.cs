@@ -40,6 +40,7 @@ namespace STROOP.Controls.Map.Objects
             {
                 _lastGraphic = currentGraphics;
                 _iconGraphics.ChangeImage(currentGraphics);
+                ChangeImageAndName();
             }
 
             _iconGraphics.Rotation = (float) MoreMath.AngleUnitsToRadians(obj.FacingYaw);
