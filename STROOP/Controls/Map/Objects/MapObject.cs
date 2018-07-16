@@ -15,12 +15,11 @@ namespace STROOP.Controls.Map
         /// List of graphics items for the object
         /// </summary>
         public abstract IEnumerable<MapGraphicsItem> GraphicsItems { get; }
-        protected virtual bool _implicitlyTracked { get; } = false;
 
-        private bool _tracked = true;
+        private bool _tracked = false;
         public bool Tracked
         {
-            get => _implicitlyTracked || _tracked;
+            get => _tracked;
             set
             {
                 _tracked = value;

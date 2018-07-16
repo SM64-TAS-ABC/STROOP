@@ -31,7 +31,6 @@ namespace STROOP.Controls.Map.Objects
         MapAssociations _mapAssoc;
 
         public override IEnumerable<MapGraphicsItem> GraphicsItems => new List<MapGraphicsItem>() { _background, _layout, _triangles };
-        protected override bool _implicitlyTracked { get; } = true;
 
         public ColorMethodType ColorMethod;
 

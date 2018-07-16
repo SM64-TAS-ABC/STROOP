@@ -61,7 +61,10 @@ namespace STROOP.Controls.Map.Trackers
         {
             lock (_objectLock)
             {
-                Controls.Clear();
+                while (Controls.Count > 0)
+                {
+                    RemoveControl(Controls[0] as MapTracker);
+                }
             }
         }
         

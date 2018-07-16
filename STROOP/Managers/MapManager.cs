@@ -99,9 +99,9 @@ namespace STROOP.Managers
                 .ConvertAll(i => new MapSm64Object(i));
             _mapSm64Objs.ForEach(obj => Config.MapController.AddMapObject(obj));
 
-            //Config.MapController.AddMapObject(_mapObjWallTri);
-            //Config.MapController.AddMapObject(_mapObjFloorTri);
-            //Config.MapController.AddMapObject(_mapObjCeilTri);
+            Config.MapController.AddMapObject(_mapObjWallTri);
+            Config.MapController.AddMapObject(_mapObjFloorTri);
+            Config.MapController.AddMapObject(_mapObjCeilTri);
 
             InitializeCheckboxSemaphore(_mapGui.CheckBoxTrackMario, MapSemaphoreManager.Mario, _mapObjMario, true);
             InitializeCheckboxSemaphore(_mapGui.CheckBoxTrackHolp, MapSemaphoreManager.Holp, _mapObjHolp, false);
