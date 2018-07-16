@@ -211,6 +211,7 @@ namespace STROOP.Utilities
             string defaultImagePath = "", emptyImagePath = "", imageDir = "", mapImageDir = "", overlayImageDir = "",
                 marioImagePath = "", holpMapImagePath = "", intendedNextPositionImagePath = "", hudImagePath = "", debugImagePath = "",
                 miscImagePath = "", cameraImagePath = "", marioMapImagePath = "", cameraMapImagePath = "",
+                triangleFloorImagePath = "", triangleWallImagePath = "", triangleCeilingImagePath = "", triangleOtherImagePath = "",
                 selectedOverlayImagePath = "", trackedAndShownOverlayImagePath = "", trackedNotShownOverlayImagePath = "",
                 stoodOnOverlayImagePath = "", heldOverlayImagePath = "", interactionOverlayImagePath = "",
                 usedOverlayImagePath = "", closestOverlayImagePath = "", cameraOverlayImagePath = "", cameraHackOverlayImagePath = "",
@@ -290,7 +291,23 @@ namespace STROOP.Utilities
                     case "IntendedNextPosition":
                         intendedNextPositionImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
                         break;
-                    
+
+                    case "TriangleFloor":
+                        triangleFloorImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "TriangleWall":
+                        triangleWallImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "TriangleCeiling":
+                        triangleCeilingImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
+                    case "TriangleOther":
+                        triangleOtherImagePath = element.Element(XName.Get("MapImage")).Attribute(XName.Get("path")).Value;
+                        break;
+
                     case "Overlays":
                         foreach (XElement subElement in element.Elements())
                         {
@@ -470,7 +487,14 @@ namespace STROOP.Utilities
             assoc.HolpImage = Image.FromFile(mapImageDir + holpMapImagePath);
             assoc.IntendedNextPositionImage = Image.FromFile(mapImageDir + intendedNextPositionImagePath);
             assoc.CameraMapImage = Image.FromFile(mapImageDir + cameraMapImagePath);
+
+            assoc.TriangleFloorImage = Image.FromFile(mapImageDir + triangleFloorImagePath);
+            assoc.TriangleWallImage = Image.FromFile(mapImageDir + triangleWallImagePath);
+            assoc.TriangleCeilingImage = Image.FromFile(mapImageDir + triangleCeilingImagePath);
+            assoc.TriangleOtherImage = Image.FromFile(mapImageDir + triangleOtherImagePath);
+
             assoc.MarioBehavior = marioBehavior;
+
             objectSlotManagerGui.SelectedObjectOverlayImage = Image.FromFile(overlayImageDir + selectedOverlayImagePath);
             objectSlotManagerGui.TrackedAndShownObjectOverlayImage = Image.FromFile(overlayImageDir + trackedAndShownOverlayImagePath);
             objectSlotManagerGui.TrackedNotShownObjectOverlayImage = Image.FromFile(overlayImageDir + trackedNotShownOverlayImagePath);

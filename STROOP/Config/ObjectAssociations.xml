@@ -20,6 +20,18 @@
   <IntendedNextPosition>
     <MapImage path="Intended Next Position.png"/>
   </IntendedNextPosition>
+  <TriangleFloor>
+    <MapImage path="Triangle Floor.png"/>
+  </TriangleFloor>
+  <TriangleWall>
+    <MapImage path="Triangle Wall.png"/>
+  </TriangleWall>
+  <TriangleCeiling>
+    <MapImage path="Triangle Ceiling.png"/>
+  </TriangleCeiling>
+  <TriangleOther>
+    <MapImage path="Triangle Other.png"/>
+  </TriangleOther>
   <Hud>
     <Image path="HUD.png"/>
     <Color>#aaaaaa</Color>
