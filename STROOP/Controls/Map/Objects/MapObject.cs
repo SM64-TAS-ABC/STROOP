@@ -62,16 +62,21 @@ namespace STROOP.Controls.Map
         public virtual bool Rotates { get; set; }
         public virtual int DisplayLayer { get; set; }
 
-        public string Name { get; set; }
+        private string _name;
+        public string Name
+        {
+            get => _name;
+            set
+            {
+                if (_name == value) return;
+                _name = value;
+                Tracker?.UpdateName();
+            }
+        }
 
         public Bitmap BitmapImage
         {
             get => GraphicsItems.FirstOrDefault()?.BitmapImage;
-        }
-
-        public void ChangeImageAndName()
-        {
-            Tracker?.UpdateImageAndName();
         }
 
         public virtual double GetDepth()

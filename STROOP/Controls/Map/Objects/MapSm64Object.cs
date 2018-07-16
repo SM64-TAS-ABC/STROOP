@@ -33,14 +33,14 @@ namespace STROOP.Controls.Map.Objects
             string objectName = Config.ObjectAssociations.GetObjectName(obj.BehaviorCriteria);
             uint address = ObjectUtilities.GetObjectAddress(_slotIndex);
             string slotLabel = Config.ObjectSlotsManager.GetDescriptiveSlotLabelFromAddress(address, true);
-            Name = String.Format("{0} [{1}]", objectName, slotLabel);
+            Name = String.Format("[{0}] {1}", slotLabel, objectName);
 
             Bitmap currentGraphics = Config.ObjectAssociations.GetObjectMapImage(obj.BehaviorCriteria) as Bitmap;
             if (currentGraphics != _lastGraphic)
             {
                 _lastGraphic = currentGraphics;
                 _iconGraphics.ChangeImage(currentGraphics);
-                ChangeImageAndName();
+                Tracker?.UpdateImage();
             }
 
             _iconGraphics.Rotation = (float) MoreMath.AngleUnitsToRadians(obj.FacingYaw);

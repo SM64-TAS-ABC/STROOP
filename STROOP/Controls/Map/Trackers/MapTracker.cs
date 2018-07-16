@@ -45,7 +45,8 @@ namespace STROOP.Controls.Map.Trackers
                 obj.Opacity = 1;
             });
 
-            UpdateImageAndName();
+            UpdateName();
+            UpdateImage();
         }
 
         private void MapTracker_Load(object sender, EventArgs e)
@@ -131,11 +132,16 @@ namespace STROOP.Controls.Map.Trackers
             _flowLayoutPanel.MoveDownControl(this);
         }
 
-        public void UpdateImageAndName()
+        public void UpdateName()
+        {
+            MapObject mapObj = MapObjectList.FirstOrDefault();
+            textBoxName.Text = mapObj?.Name ?? "(Unknown)";
+        }
+
+        public void UpdateImage()
         {
             MapObject mapObj = MapObjectList.FirstOrDefault();
             pictureBoxPicture.Image = mapObj.BitmapImage == null ? null : new Bitmap(mapObj.BitmapImage);
-            textBoxName.Text = mapObj?.Name ?? "(Unknown)";
         }
 
         public void UpdateTracker()
