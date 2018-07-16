@@ -54,6 +54,11 @@ namespace STROOP.Controls.Map
             }
         }
 
+        public virtual float Opacity { get; set; }
+        public virtual float Size { get; set; }
+        public virtual bool Rotates { get; set; }
+        public virtual int DisplayLayer { get; set; }
+
         public string Name
         {
             get => GraphicsItems.FirstOrDefault()?.Name ?? "(no name)";

@@ -14,7 +14,7 @@ namespace STROOP.Controls.Map.Objects
     {
         protected override TriangleDataModel _triangleData => DataModels.Mario.CeilingTriangle;
 
-        public MapCeilingTriObject()
+        public MapCeilingTriObject() : base("Ceiling Tri")
         {
             Color = Color4.Red;
         }

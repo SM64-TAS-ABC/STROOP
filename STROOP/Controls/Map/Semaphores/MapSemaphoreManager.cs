@@ -25,5 +25,10 @@ namespace STROOP.Controls.Map.Semaphores
                 Objects.Add(new MapSemaphore());
             }
         }
+
+        public static MapSemaphore FloorTri = new MapSemaphore();
+        public static MapSemaphore WallTri = new MapSemaphore();
+        public static MapSemaphore CeilingTri = new MapSemaphore();
+
     }
 }

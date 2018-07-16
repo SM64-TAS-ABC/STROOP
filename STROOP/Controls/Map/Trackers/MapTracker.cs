@@ -21,7 +21,7 @@ namespace STROOP.Controls.Map.Trackers
     public partial class MapTracker : UserControl
     {
         private readonly MapTrackerFlowLayoutPanel _flowLayoutPanel;
-        public readonly List<MapIconObject> MapObjectList;
+        public readonly List<MapObject> MapObjectList;
         public readonly List<MapSemaphore> SemaphoreList;
 
         private static readonly Image ImageEyeOpen = Properties.Resources.image_eye_open2;
@@ -29,13 +29,13 @@ namespace STROOP.Controls.Map.Trackers
 
         public MapTracker(
             MapTrackerFlowLayoutPanel flowLayoutPanel,
-            List<MapIconObject> mapObjectList,
+            List<MapObject> mapObjectList,
             List<MapSemaphore> semaphoreList)
         {
             InitializeComponent();
 
             _flowLayoutPanel = flowLayoutPanel;
-            MapObjectList = new List<MapIconObject>(mapObjectList);
+            MapObjectList = new List<MapObject>(mapObjectList);
             SemaphoreList = new List<MapSemaphore>(semaphoreList);
             MapObjectList.ForEach(obj =>
             {

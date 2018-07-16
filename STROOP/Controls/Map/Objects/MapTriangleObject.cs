@@ -15,12 +15,17 @@ namespace STROOP.Controls.Map.Objects
     {
         private MapGraphicsTrianglesItem _triGraphics = new MapGraphicsTrianglesItem();
 
-        public float Opacity { get; set; } = 0.5f;
+        public override float Opacity { get; set; } = 0.5f;
         public Color4 Color { get; set; }
 
         protected abstract TriangleDataModel _triangleData { get; }
 
         public override IEnumerable<MapGraphicsItem> GraphicsItems => new MapGraphicsItem[] { _triGraphics };
+
+        public MapTriangleObject(string name)
+        {
+            _triGraphics.Name = name;
+        }
 
         public override void Update()
         {
