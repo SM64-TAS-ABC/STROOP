@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using OpenTK.Graphics;
 using STROOP.Models;
 using STROOP.Structs;
+using STROOP.Structs.Configurations;
 
 namespace STROOP.Controls.Map.Objects
 {
@@ -14,7 +15,7 @@ namespace STROOP.Controls.Map.Objects
     {
         protected override TriangleDataModel _triangleData => DataModels.Mario.CeilingTriangle;
 
-        public MapCeilingTriObject() : base("Ceiling Tri", null)
+        public MapCeilingTriObject() : base("Ceiling Tri", Config.ObjectAssociations.TriangleCeilingImage as Bitmap)
         {
             Color = Color4.Red;
         }

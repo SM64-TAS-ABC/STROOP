@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using OpenTK.Graphics;
 using STROOP.Models;
 using STROOP.Structs;
+using STROOP.Structs.Configurations;
 
 namespace STROOP.Controls.Map.Objects
 {
@@ -14,7 +15,7 @@ namespace STROOP.Controls.Map.Objects
     {
         protected override TriangleDataModel _triangleData => DataModels.Mario.WallTriangle;
 
-        public MapWallTriObject() : base("Wall Tri", null)
+        public MapWallTriObject() : base("Wall Tri", Config.ObjectAssociations.TriangleWallImage as Bitmap)
         {
             Color = Color4.Green;
         }
