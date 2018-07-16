@@ -32,6 +32,11 @@ namespace STROOP.Controls.Map.Objects
 
         public override IEnumerable<MapGraphicsItem> GraphicsItems => new List<MapGraphicsItem>() { _background, _layout, _triangles };
 
+        public override Bitmap BitmapImage
+        {
+            get => null;
+        }
+
         public ColorMethodType ColorMethod;
 
         public MapLevelObject(MapAssociations mapAssoc) : base("Level")

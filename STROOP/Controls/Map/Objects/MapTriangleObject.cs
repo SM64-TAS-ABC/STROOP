@@ -5,6 +5,7 @@ using STROOP.Controls.Map.Graphics.Items;
 using STROOP.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,8 +23,15 @@ namespace STROOP.Controls.Map.Objects
 
         public override IEnumerable<MapGraphicsItem> GraphicsItems => new MapGraphicsItem[] { _triGraphics };
 
-        public MapTriangleObject(string name) : base(name)
+        private readonly Bitmap _bitmapImage;
+        public override Bitmap BitmapImage
         {
+            get => null;
+        }
+
+        public MapTriangleObject(string name, Bitmap bitmapImage) : base(name)
+        {
+            _bitmapImage = bitmapImage;
         }
 
         public override void Update()

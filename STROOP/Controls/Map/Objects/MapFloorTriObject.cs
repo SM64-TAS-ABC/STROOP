@@ -14,7 +14,7 @@ namespace STROOP.Controls.Map.Objects
     {
         protected override TriangleDataModel _triangleData => DataModels.Mario.FloorTriangle;
 
-        public MapFloorTriObject() : base("Floor Tri")
+        public MapFloorTriObject() : base("Floor Tri", null)
         {
             Color = Color4.Blue;
         }

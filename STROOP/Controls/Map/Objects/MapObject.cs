@@ -74,10 +74,7 @@ namespace STROOP.Controls.Map
             }
         }
 
-        public Bitmap BitmapImage
-        {
-            get => GraphicsItems.FirstOrDefault()?.BitmapImage;
-        }
+        public abstract Bitmap BitmapImage { get; }
 
         public virtual double GetDepth()
         {
