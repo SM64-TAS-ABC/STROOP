@@ -47,6 +47,12 @@ namespace STROOP.Controls.Map.Trackers
 
             UpdateName(MapObjectList.FirstOrDefault()?.Name);
             UpdateImage(MapObjectList.FirstOrDefault()?.BitmapImage);
+
+            textBoxOpacity.AddEnterAction(() => textBoxOpacity_EnterAction());
+            textBoxSize.AddEnterAction(() => textBoxSize_EnterAction());
+
+            SetSize(50);
+            SetOpacity(100);
         }
 
         private void MapTracker_Load(object sender, EventArgs e)
@@ -82,23 +88,67 @@ namespace STROOP.Controls.Map.Trackers
 
         private void trackBarSize_ValueChanged(object sender, EventArgs e)
         {
-            const float minSize = 0.01f;
-            const float maxSize = 0.20f;
+            SetSize(trackBarSize.Value);
+        }
+
+        private void textBoxSize_EnterAction()
+        {
+            SetSize(ParsingUtilities.ParseFloatNullable(textBoxSize.Text));
+        }
+
+        // sizeNullable is from 0 to 100, or null if controls should be refreshed
+        private void SetSize(float? sizeNullable)
+        {
+            float scale = 0.2f;
+
+            float backupValue = 50;
+            float? oldValue = MapObjectList.FirstOrDefault()?.Size;
+            if (oldValue.HasValue)
+            {
+                backupValue = oldValue.Value / scale * 100;
+            }
+
+            float size = sizeNullable ?? backupValue;
+            if (size < 0) size = 0;
+            float scaledSize = (size / 100) * scale;
             MapObjectList.ForEach(icon =>
             {
-                icon.Size = minSize + (maxSize - minSize) *
-                    (trackBarSize.Value - trackBarSize.Minimum)
-                    / (trackBarSize.Maximum - trackBarSize.Minimum);
+                icon.Size = scaledSize;
             });
+            ControlUtilities.SetTrackBarValueCapped(trackBarSize, size);
+            textBoxSize.Text = size.ToString();
         }
 
         private void trackBarOpacity_ValueChanged(object sender, EventArgs e)
         {
+            SetOpacity(trackBarOpacity.Value);
+        }
+
+        private void textBoxOpacity_EnterAction()
+        {
+            SetOpacity(ParsingUtilities.ParseFloatNullable(textBoxOpacity.Text));
+        }
+
+        // opacityNullable is from 0 to 100, or null if controls should be refreshed
+        private void SetOpacity(float? opacityNullable)
+        {
+            float backupValue = 100;
+            float? oldValue = MapObjectList.FirstOrDefault()?.Opacity;
+            if (oldValue.HasValue)
+            {
+                backupValue = oldValue.Value * 100;
+            }
+
+            float opacity = opacityNullable ?? backupValue;
+            if (opacity < 0) opacity = 0;
+            if (opacity > 100) opacity = 100;
+            float scaledOpacity = opacity / 100;
             MapObjectList.ForEach(icon =>
             {
-                icon.Opacity = (float)(trackBarOpacity.Value - trackBarOpacity.Minimum)
-                    / (trackBarOpacity.Maximum - trackBarOpacity.Minimum);
+                icon.Opacity = scaledOpacity;
             });
+            ControlUtilities.SetTrackBarValueCapped(trackBarOpacity, opacity);
+            textBoxOpacity.Text = opacity.ToString();
         }
 
         private void checkBoxRotates_CheckedChanged(object sender, EventArgs e)

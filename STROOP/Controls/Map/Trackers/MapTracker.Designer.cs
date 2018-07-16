@@ -71,7 +71,7 @@
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 106F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 68F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 69F));
             this.tableLayoutPanel.Controls.Add(this.pictureBoxDownArrow, 4, 3);
             this.tableLayoutPanel.Controls.Add(this.pictureBoxUpArrow, 4, 2);
             this.tableLayoutPanel.Controls.Add(this.pictureBoxRedX, 4, 0);
@@ -230,7 +230,6 @@
             this.trackBarOpacity.Dock = System.Windows.Forms.DockStyle.Fill;
             this.trackBarOpacity.Location = new System.Drawing.Point(83, 73);
             this.trackBarOpacity.Maximum = 100;
-            this.trackBarOpacity.Minimum = 15;
             this.trackBarOpacity.Name = "trackBarOpacity";
             this.trackBarOpacity.Size = new System.Drawing.Size(140, 16);
             this.trackBarOpacity.TabIndex = 19;
@@ -244,7 +243,6 @@
             this.trackBarSize.Dock = System.Windows.Forms.DockStyle.Fill;
             this.trackBarSize.Location = new System.Drawing.Point(83, 27);
             this.trackBarSize.Maximum = 100;
-            this.trackBarSize.Minimum = 15;
             this.trackBarSize.Name = "trackBarSize";
             this.trackBarSize.Size = new System.Drawing.Size(140, 16);
             this.trackBarSize.TabIndex = 19;
