@@ -85,9 +85,10 @@ namespace STROOP.Controls.Map.Objects
             var mapListYFiltered = _currentMapList.Where((map) => map.Y <= marioRelY).ToList();
 
             // If no map is available display the default image
+            MapLayout newMap;
             if (mapListYFiltered.Count <= 0)
             {
-                ChangeCurrentMap(Config.MapAssociations.DefaultMap);
+                newMap = Config.MapAssociations.DefaultMap;
             }
             else
             {
@@ -98,9 +99,9 @@ namespace STROOP.Controls.Map.Objects
                     if (map.Y > bestMap.Y)
                         bestMap = map;
                 }
-
-                ChangeCurrentMap(bestMap);
+                newMap = bestMap;
             }
+            ChangeCurrentMap(newMap);
         }
 
         void UpdateTriangles()
