@@ -522,8 +522,7 @@ namespace STROOP.Managers
                 return;
 
             // Change and set a new map
-            using (var mapImage = Config.MapAssociations.GetMapImage(map))
-                _mapGraphics.SetMap(mapImage);
+            _mapGraphics.SetMap(map.MapImage);
 
             using (var mapBackground = Config.MapAssociations.GetMapBackgroundImage(map))
                 _mapGraphics.SetBackground(mapBackground);

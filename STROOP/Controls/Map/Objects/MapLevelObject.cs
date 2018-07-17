@@ -141,8 +141,7 @@ namespace STROOP.Controls.Map.Objects
             using (var mapBackground = Config.MapAssociations.GetMapBackgroundImage(map))
                 _background.ChangeImage(mapBackground);
 
-            using (var mapLayout = Config.MapAssociations.GetMapImage(map))
-                _layout.ChangeImage(mapLayout);
+            _layout.ChangeImage(map.MapImage);
 
             _layout.Region = map.Coordinates;
             _layout.Y = map.Y != float.MinValue ? map.Y : 0.0f;
