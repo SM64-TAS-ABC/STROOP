@@ -1068,6 +1068,20 @@ namespace STROOP.Utilities
                         }
                         break;
 
+                    case "Background":
+                        {
+                            string name = element.Attribute(XName.Get("name")).Value;
+                            string imagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
+                            Bitmap image = Image.FromFile(assoc.FolderPath + imagePath) as Bitmap;
+                            BackgroundImage backgroundImage = new BackgroundImage()
+                            {
+                                Name = name,
+                                Image = image,
+                            };
+                            assoc.AddBackgroundImage(backgroundImage);
+                        }
+                        break;
+
                     case "Map":
                         {
                             string id = element.Attribute(XName.Get("id")).Value;
@@ -1078,8 +1092,10 @@ namespace STROOP.Utilities
                             ushort? missionLayout = element.Attribute(XName.Get("missionLayout")) != null ?
                                 (ushort?)ushort.Parse(element.Attribute(XName.Get("missionLayout")).Value) : null;
                             string imagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
-                            string bgImagePath = (element.Element(XName.Get("BackgroundImage")) != null) ?
-                              element.Element(XName.Get("BackgroundImage")).Attribute(XName.Get("path")).Value : null;
+
+                            string backgroundImageName = (element.Element(XName.Get("BackgroundImage")) != null) ?
+                              element.Element(XName.Get("BackgroundImage")).Attribute(XName.Get("name")).Value : null;
+                            BackgroundImage? backgroundImage = assoc.GetBackgroundImage(backgroundImageName);
 
                             var coordinatesElement = element.Element(XName.Get("Coordinates"));
                             float x1 = float.Parse(coordinatesElement.Attribute(XName.Get("x1")).Value);
@@ -1107,24 +1123,10 @@ namespace STROOP.Utilities
                                 Y = y,
                                 Name = name,
                                 SubName = subName,
-                                BackgroundPath = bgImagePath
+                                Background = backgroundImage,
                             };
 
                             assoc.AddAssociation(map);
-                        }
-                        break;
-
-                    case "Background":
-                        {
-                            string name = element.Attribute(XName.Get("name")).Value;
-                            string imagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
-                            Bitmap image = Image.FromFile(assoc.FolderPath + imagePath) as Bitmap;
-                            BackgroundImage backgroundImage = new BackgroundImage()
-                            {
-                                Name = name,
-                                Image = image,
-                            };
-                            assoc.AddBackgroundImage(backgroundImage);
                         }
                         break;
                 }

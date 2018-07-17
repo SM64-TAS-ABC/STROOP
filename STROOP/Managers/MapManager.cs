@@ -114,7 +114,7 @@ namespace STROOP.Managers
             mapLayouts.ForEach(mapLayout => mapLayoutChoices.Add(mapLayout));
             Config.MapGui.ComboBoxLevel.DataSource = mapLayoutChoices;
 
-            List<BackgroundImage> backgroundImages = Config.MapAssociations.GetBackgroundImages();
+            List<BackgroundImage> backgroundImages = Config.MapAssociations.GetAllBackgroundImages();
             List<object> backgroundImageChoices = new List<object>() { "Recommended" };
             backgroundImages.ForEach(backgroundImage => backgroundImageChoices.Add(backgroundImage));
             Config.MapGui.ComboBoxBackground.DataSource = backgroundImageChoices;

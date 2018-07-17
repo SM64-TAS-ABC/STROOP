@@ -69,7 +69,16 @@ namespace STROOP.Structs
             _backgroundImageDictionary.Add(backgroundImage.Name, backgroundImage);
         }
 
-        public List<BackgroundImage> GetBackgroundImages()
+        public BackgroundImage? GetBackgroundImage(string name)
+        {
+            if (name == null) return null;
+            if (_backgroundImageDictionary.ContainsKey(name))
+                return _backgroundImageDictionary[name];
+            else
+                return null;
+        }
+
+        public List<BackgroundImage> GetAllBackgroundImages()
         {
             return _backgroundImageDictionary.Values.ToList();
         }
