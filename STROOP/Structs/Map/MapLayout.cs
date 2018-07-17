@@ -82,5 +82,29 @@ namespace STROOP.Structs
                 return _mapImage;
             }
         }
+
+        private Bitmap _backgroundImage;
+        public Bitmap BackgroundImage
+        {
+            get
+            {
+                if (BackgroundPath == null) return null;
+                if (_backgroundImage != null) return _backgroundImage;
+
+                var path = Path.Combine(Config.MapAssociations.FolderPath, BackgroundPath);
+                using (Bitmap preLoad = Image.FromFile(path) as Bitmap)
+                {
+                    int maxSize = 1080;
+                    int largest = Math.Max(preLoad.Width, preLoad.Height);
+                    float scale = 1;
+                    if (largest > maxSize)
+                        scale = largest / maxSize;
+
+                    _backgroundImage = new Bitmap(preLoad, new Size((int)(preLoad.Width / scale), (int)(preLoad.Height / scale)));
+                }
+                return _backgroundImage;
+            }
+
+        }
     }
 }

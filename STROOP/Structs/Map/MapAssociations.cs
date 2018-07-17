@@ -64,26 +64,6 @@ namespace STROOP.Structs
             return maps;
         }
 
-        public Bitmap GetMapBackgroundImage(MapLayout map)
-        {
-            if (map.BackgroundPath == null)
-                return null;
-
-            var path = Path.Combine(FolderPath, map.BackgroundPath);
-            Bitmap image;
-            using (Bitmap preLoad = Image.FromFile(path) as Bitmap)
-            {
-                int maxSize = 1080;
-                int largest = Math.Max(preLoad.Width, preLoad.Height);
-                float scale = 1;
-                if (largest > maxSize)
-                    scale = largest / maxSize;
-
-                image = new Bitmap(preLoad, new Size((int)(preLoad.Width / scale), (int)(preLoad.Height / scale)));
-            }
-            return image;
-        }
-
         public void AddBackgroundImage(BackgroundImage backgroundImage)
         {
             _backgroundImageDictionary.Add(backgroundImage.Name, backgroundImage);

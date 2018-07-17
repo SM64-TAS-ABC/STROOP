@@ -79,7 +79,7 @@ namespace STROOP.Controls.Map.Objects
             }
             else
             {
-                ChangeBackground(Config.MapAssociations.GetMapBackgroundImage(bestMap));
+                ChangeBackground(bestMap.BackgroundImage);
             }
         }
 
@@ -138,9 +138,7 @@ namespace STROOP.Controls.Map.Objects
                 return;
 
             // Change and set a new map
-            using (var mapBackground = Config.MapAssociations.GetMapBackgroundImage(map))
-                _background.ChangeImage(mapBackground);
-
+            _background.ChangeImage(map.BackgroundImage);
             _layout.ChangeImage(map.MapImage);
 
             _layout.Region = map.Coordinates;
