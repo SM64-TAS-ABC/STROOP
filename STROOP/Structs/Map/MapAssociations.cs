@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using STROOP.Structs.Configurations;
 
 namespace STROOP.Structs
 {
@@ -32,6 +33,14 @@ namespace STROOP.Structs
                 return new List<MapLayout>();
 
             return _maps[mapKey];
+        }
+
+        public List<MapLayout> GetLevelAreaMaps(byte level, byte area, ushort loadingPoint, ushort missionLayout)
+        {
+            List<MapLayout> mapList = GetLevelAreaMaps(level, area);
+            mapList = mapList.FindAll(map => map.LoadingPoint == null || map.LoadingPoint == loadingPoint);
+            mapList = mapList.FindAll(map => map.MissionLayout == null || map.MissionLayout == missionLayout);
+            return mapList;
         }
 
         public List<MapLayout> GetAllMaps()

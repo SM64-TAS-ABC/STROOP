@@ -66,20 +66,7 @@ namespace STROOP.Controls.Map.Objects
                 _currentLoadingPoint = level.LoadingPoint;
                 _currentMissionLayout = level.MissionLayout;
                 _currentSelectedItem = Config.MapGui.ComboBoxLevel.SelectedItem;
-                _currentMapList = Config.MapAssociations.GetLevelAreaMaps(level.Index, level.Area);
-
-                // Look for maps with correct loading points
-                var mapListLPFiltered = _currentMapList.Where((map) => map.LoadingPoint == level.LoadingPoint).ToList();
-                if (mapListLPFiltered.Count > 0)
-                    _currentMapList = mapListLPFiltered;
-                else
-                    _currentMapList = _currentMapList.Where((map) => !map.LoadingPoint.HasValue).ToList();
-
-                var mapListMLFiltered = _currentMapList.Where((map) => map.MissionLayout == level.MissionLayout).ToList();
-                if (mapListMLFiltered.Count > 0)
-                    _currentMapList = mapListMLFiltered;
-                else
-                    _currentMapList = _currentMapList.Where((map) => !map.MissionLayout.HasValue).ToList();
+                _currentMapList = Config.MapAssociations.GetLevelAreaMaps(level.Index, level.Area, level.LoadingPoint, level.MissionLayout);
             }
 
             float marioRelY = DataModels.Mario.PURelative_Y;
