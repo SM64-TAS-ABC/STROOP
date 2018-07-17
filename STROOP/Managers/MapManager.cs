@@ -24,7 +24,6 @@ namespace STROOP.Managers
         public bool IsLoaded { get; private set; }
         public bool Visible { get => _graphics.Visible; set => _graphics.Visible = value; }
 
-        private MapGui _mapGui;
         private MapGraphics _graphics;
 
         #region Objects
@@ -42,51 +41,50 @@ namespace STROOP.Managers
         private List<int> _currentMapSm64ObjIndexes;
         #endregion
 
-        public MapManager(MapGui mapGui)
+        public MapManager()
         {
-            _mapGui = mapGui;
             _currentMapSm64ObjIndexes = new List<int>();
         }
 
         public void Load()
         {
             // Create new graphics control
-            _graphics = new MapGraphics(_mapGui.GLControl);
+            _graphics = new MapGraphics(Config.MapGui.GLControl);
             _graphics.Load();
             Config.MapController = new MapController(_graphics);
 
             IsLoaded = true;
 
-            _mapGui.ComboBoxMapColorMethod.DataSource = Enum.GetValues(typeof(MapLevelObject.ColorMethodType));
+            Config.MapGui.ComboBoxMapColorMethod.DataSource = Enum.GetValues(typeof(MapLevelObject.ColorMethodType));
 
-            _mapGui.TabControlView.SelectedIndexChanged += TabControlView_SelectedIndexChanged;
-            _mapGui.CheckBoxMapGameCamOrientation.CheckedChanged += (sender, e) =>
+            Config.MapGui.TabControlView.SelectedIndexChanged += TabControlView_SelectedIndexChanged;
+            Config.MapGui.CheckBoxMapGameCamOrientation.CheckedChanged += (sender, e) =>
             {
-                if (_mapGui.CheckBoxMapGameCamOrientation.Checked)
+                if (Config.MapGui.CheckBoxMapGameCamOrientation.Checked)
                     Config.MapController.CameraMode = MapController.MapCameraMode.Game;
                 else
                     Config.MapController.CameraMode = MapController.MapCameraMode.Fly;
             };
 
-            _mapGui.RadioButtonScaleCourseDefault.Click += (sender, e) => Config.MapController.ScaleMode = MapController.MapScaleMode.CourseDefault;
-            _mapGui.RadioButtonScaleMaxCourseSize.Click += (sender, e) => Config.MapController.ScaleMode = MapController.MapScaleMode.MaxCourseSize;
-            _mapGui.RadioButtonScaleCustom.Click += (sender, e) => Config.MapController.ScaleMode = MapController.MapScaleMode.Custom;
+            Config.MapGui.RadioButtonScaleCourseDefault.Click += (sender, e) => Config.MapController.ScaleMode = MapController.MapScaleMode.CourseDefault;
+            Config.MapGui.RadioButtonScaleMaxCourseSize.Click += (sender, e) => Config.MapController.ScaleMode = MapController.MapScaleMode.MaxCourseSize;
+            Config.MapGui.RadioButtonScaleCustom.Click += (sender, e) => Config.MapController.ScaleMode = MapController.MapScaleMode.Custom;
 
-            _mapGui.RadioButtonCenterBestFit.Click += (sender, e) => Config.MapController.CenterMode = MapController.MapCenterMode.BestFit;
-            _mapGui.RadioButtonCenterOrigin.Click += (sender, e) => Config.MapController.CenterMode = MapController.MapCenterMode.Origin;
-            _mapGui.RadioButtonCenterCustom.Click += (sender, e) => Config.MapController.CenterMode = MapController.MapCenterMode.Custom;
+            Config.MapGui.RadioButtonCenterBestFit.Click += (sender, e) => Config.MapController.CenterMode = MapController.MapCenterMode.BestFit;
+            Config.MapGui.RadioButtonCenterOrigin.Click += (sender, e) => Config.MapController.CenterMode = MapController.MapCenterMode.Origin;
+            Config.MapGui.RadioButtonCenterCustom.Click += (sender, e) => Config.MapController.CenterMode = MapController.MapCenterMode.Custom;
 
-            _mapGui.RadioButtonAngle0.Click += (sender, e) => Config.MapController.MapAngle = 0;
-            _mapGui.RadioButtonAngle16384.Click += (sender, e) => Config.MapController.MapAngle = (float) Math.PI / 2;
-            _mapGui.RadioButtonAngle32768.Click += (sender, e) => Config.MapController.MapAngle = (float) Math.PI;
-            _mapGui.RadioButtonAngle49152.Click += (sender, e) => Config.MapController.MapAngle = (float) (3 * Math.PI / 2);
+            Config.MapGui.RadioButtonAngle0.Click += (sender, e) => Config.MapController.MapAngle = 0;
+            Config.MapGui.RadioButtonAngle16384.Click += (sender, e) => Config.MapController.MapAngle = (float) Math.PI / 2;
+            Config.MapGui.RadioButtonAngle32768.Click += (sender, e) => Config.MapController.MapAngle = (float) Math.PI;
+            Config.MapGui.RadioButtonAngle49152.Click += (sender, e) => Config.MapController.MapAngle = (float) (3 * Math.PI / 2);
 
             /*
             _mapGui.ButtonAddNewTracker.Click += (sender, e) =>
                 _mapGui.MapTrackerFlowLayoutPanel.AddNewControl(
                     new MapTracker(_mapGui.MapTrackerFlowLayoutPanel, new List<MapIconObject>() { _mapObjMario }));
                     */
-            _mapGui.ButtonClearAllTrackers.Click += (sender, e) => _mapGui.MapTrackerFlowLayoutPanel.ClearControls();
+            Config.MapGui.ButtonClearAllTrackers.Click += (sender, e) => Config.MapGui.MapTrackerFlowLayoutPanel.ClearControls();
 
             // Test
             _mapObjLevel = new MapLevelObject();
@@ -103,18 +101,18 @@ namespace STROOP.Managers
             Config.MapController.AddMapObject(_mapObjWallTri);
             Config.MapController.AddMapObject(_mapObjCeilTri);
 
-            InitializeCheckboxSemaphore(_mapGui.CheckBoxTrackMario, MapSemaphoreManager.Mario, _mapObjMario, true);
-            InitializeCheckboxSemaphore(_mapGui.CheckBoxTrackHolp, MapSemaphoreManager.Holp, _mapObjHolp, false);
-            InitializeCheckboxSemaphore(_mapGui.CheckBoxTrackCamera, MapSemaphoreManager.Camera, _mapObjCamera, false);
+            InitializeCheckboxSemaphore(Config.MapGui.CheckBoxTrackMario, MapSemaphoreManager.Mario, _mapObjMario, true);
+            InitializeCheckboxSemaphore(Config.MapGui.CheckBoxTrackHolp, MapSemaphoreManager.Holp, _mapObjHolp, false);
+            InitializeCheckboxSemaphore(Config.MapGui.CheckBoxTrackCamera, MapSemaphoreManager.Camera, _mapObjCamera, false);
 
-            InitializeCheckboxSemaphore(_mapGui.CheckBoxTrackFloorTriangle, MapSemaphoreManager.FloorTri, _mapObjFloorTri, false);
-            InitializeCheckboxSemaphore(_mapGui.CheckBoxTrackWallTriangle, MapSemaphoreManager.WallTri, _mapObjWallTri, false);
-            InitializeCheckboxSemaphore(_mapGui.CheckBoxTrackCeilingTriangle, MapSemaphoreManager.CeilingTri, _mapObjCeilTri, false);
+            InitializeCheckboxSemaphore(Config.MapGui.CheckBoxTrackFloorTriangle, MapSemaphoreManager.FloorTri, _mapObjFloorTri, false);
+            InitializeCheckboxSemaphore(Config.MapGui.CheckBoxTrackWallTriangle, MapSemaphoreManager.WallTri, _mapObjWallTri, false);
+            InitializeCheckboxSemaphore(Config.MapGui.CheckBoxTrackCeilingTriangle, MapSemaphoreManager.CeilingTri, _mapObjCeilTri, false);
 
             List<MapLayout> mapLayouts = Config.MapAssociations.GetAllMaps();
             List<object> mapLayoutChoices = new List<object>() { "Recommended" };
             mapLayouts.ForEach(mapLayout => mapLayoutChoices.Add(mapLayout));
-            _mapGui.ComboBoxLevel.DataSource = mapLayoutChoices;
+            Config.MapGui.ComboBoxLevel.DataSource = mapLayoutChoices;
         }
 
         private void InitializeCheckboxSemaphore(
@@ -126,10 +124,10 @@ namespace STROOP.Managers
                 if (semaphore.IsUsed)
                 {
                     MapTracker tracker = new MapTracker(
-                        _mapGui.MapTrackerFlowLayoutPanel,
+                        Config.MapGui.MapTrackerFlowLayoutPanel,
                         new List<MapObject>() { mapObj },
                         new List<MapSemaphore>() { semaphore });
-                    _mapGui.MapTrackerFlowLayoutPanel.AddNewControl(tracker);
+                    Config.MapGui.MapTrackerFlowLayoutPanel.AddNewControl(tracker);
                 }
             };
             checkBox.Click += (sender, e) => clickAction();
@@ -142,12 +140,12 @@ namespace STROOP.Managers
 
         private void TabControlView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_mapGui.TabControlView.SelectedTab == _mapGui.TabPage2D)
+            if (Config.MapGui.TabControlView.SelectedTab == Config.MapGui.TabPage2D)
             {
                 Config.MapController.CameraMode = MapController.MapCameraMode.TopDown;
             }
-            else if (_mapGui.TabControlView.SelectedTab == _mapGui.TabPage3D) {
-                if (_mapGui.CheckBoxMapGameCamOrientation.Checked)
+            else if (Config.MapGui.TabControlView.SelectedTab == Config.MapGui.TabPage3D) {
+                if (Config.MapGui.CheckBoxMapGameCamOrientation.Checked)
                     Config.MapController.CameraMode = MapController.MapCameraMode.Game;
                 else
                     Config.MapController.CameraMode = MapController.MapCameraMode.Fly;
@@ -179,8 +177,8 @@ namespace STROOP.Managers
                 MapSemaphore semaphore = MapSemaphoreManager.Objects[index];
                 semaphore.IsUsed = true;
                 MapTracker tracker = new MapTracker(
-                    _mapGui.MapTrackerFlowLayoutPanel, new List<MapObject>() { sm64Obj }, new List<MapSemaphore>() { semaphore });
-                _mapGui.MapTrackerFlowLayoutPanel.AddNewControl(tracker);
+                    Config.MapGui.MapTrackerFlowLayoutPanel, new List<MapObject>() { sm64Obj }, new List<MapSemaphore>() { semaphore });
+                Config.MapGui.MapTrackerFlowLayoutPanel.AddNewControl(tracker);
             }
         }
 
@@ -188,9 +186,9 @@ namespace STROOP.Managers
         {
             // Update checkboxes/object slots based on the current semaphore states
             // This keeps these controls consistent when the user manually exits the tracker
-            _mapGui.CheckBoxTrackMario.Checked = MapSemaphoreManager.Mario.IsUsed;
-            _mapGui.CheckBoxTrackHolp.Checked = MapSemaphoreManager.Holp.IsUsed;
-            _mapGui.CheckBoxTrackCamera.Checked = MapSemaphoreManager.Camera.IsUsed;
+            Config.MapGui.CheckBoxTrackMario.Checked = MapSemaphoreManager.Mario.IsUsed;
+            Config.MapGui.CheckBoxTrackHolp.Checked = MapSemaphoreManager.Holp.IsUsed;
+            Config.MapGui.CheckBoxTrackCamera.Checked = MapSemaphoreManager.Camera.IsUsed;
 
             List<uint> toBeUnselected = Config.ObjectSlotsManager.SelectedOnMapSlotsAddresses
                 .ConvertAll(address => ObjectUtilities.GetObjectIndex(address))
@@ -200,9 +198,9 @@ namespace STROOP.Managers
                 .ConvertAll(index => ObjectUtilities.GetObjectAddress(index));
             toBeUnselected.ForEach(address => Config.ObjectSlotsManager.SelectedOnMapSlotsAddresses.Remove(address));
 
-            _mapGui.CheckBoxTrackFloorTriangle.Checked = MapSemaphoreManager.FloorTri.IsUsed;
-            _mapGui.CheckBoxTrackWallTriangle.Checked = MapSemaphoreManager.WallTri.IsUsed;
-            _mapGui.CheckBoxTrackCeilingTriangle.Checked = MapSemaphoreManager.CeilingTri.IsUsed;
+            Config.MapGui.CheckBoxTrackFloorTriangle.Checked = MapSemaphoreManager.FloorTri.IsUsed;
+            Config.MapGui.CheckBoxTrackWallTriangle.Checked = MapSemaphoreManager.WallTri.IsUsed;
+            Config.MapGui.CheckBoxTrackCeilingTriangle.Checked = MapSemaphoreManager.CeilingTri.IsUsed;
         }
 
         public void Update()
@@ -224,14 +222,14 @@ namespace STROOP.Managers
             //_mapSm64Objs = Enumerable.Range(0, ObjectSlotsConfig.MaxSlots).Select(i => new MapSm64Object(i)).ToList();
             //_mapSm64Objs.ForEach(o => _controller.AddMapObject(o));
 
-            _mapGui.MapTrackerFlowLayoutPanel.UpdateControls();
+            Config.MapGui.MapTrackerFlowLayoutPanel.UpdateControls();
 
             // Make sure the control has successfully loaded
             if (!IsLoaded)
                 return;
 
-            if (_mapGui.ComboBoxMapColorMethod.SelectedItem != null)
-                _mapObjLevel.ColorMethod = (MapLevelObject.ColorMethodType)_mapGui.ComboBoxMapColorMethod.SelectedItem;
+            if (Config.MapGui.ComboBoxMapColorMethod.SelectedItem != null)
+                _mapObjLevel.ColorMethod = (MapLevelObject.ColorMethodType)Config.MapGui.ComboBoxMapColorMethod.SelectedItem;
 
             // Update gui by drawing images (invokes _mapGraphics.OnPaint())
             Config.MapController.Update();

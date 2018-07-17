@@ -23,6 +23,7 @@ namespace STROOP.Structs.Configurations
         public static StroopMainForm StroopMainForm;
         public static TabControl TabControlMain;
         public static Label DebugText;
+        public static MapGui MapGui;
 
         public static CameraManager CameraManager;
         public static DebugManager DebugManager;

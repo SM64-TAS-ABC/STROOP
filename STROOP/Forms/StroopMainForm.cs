@@ -159,7 +159,7 @@ namespace STROOP
         private void CreateManagers()
         {
             // Create map manager
-            MapGui mapGui = new MapGui()
+            Config.MapGui = new MapGui()
             {
                 // Main controls
                 GLControl = glControlMap,
@@ -322,7 +322,7 @@ namespace STROOP
             };
 
             // Create managers
-            Config.MapManager = new MapManager(mapGui);
+            Config.MapManager = new MapManager();
             Config.Map2Manager = new Map2Manager(map2Gui);
 
             Config.ModelManager = new ModelManager(tabPageModel);
