@@ -13,7 +13,7 @@ namespace STROOP.Structs
     public class MapAssociations
     {
         Dictionary<Tuple<byte, byte>, List<MapLayout>> _maps = new Dictionary<Tuple<byte, byte>, List<MapLayout>>();
-        List<BackgroundImage> _backgroundImages = new List<BackgroundImage>();
+        Dictionary<string, BackgroundImage> _backgroundImageDictionary = new Dictionary<string, BackgroundImage>();
 
         public MapLayout DefaultMap;
 
@@ -86,12 +86,12 @@ namespace STROOP.Structs
 
         public void AddBackgroundImage(BackgroundImage backgroundImage)
         {
-            _backgroundImages.Add(backgroundImage);
+            _backgroundImageDictionary.Add(backgroundImage.Name, backgroundImage);
         }
 
         public List<BackgroundImage> GetBackgroundImages()
         {
-            return _backgroundImages;
+            return _backgroundImageDictionary.Values.ToList();
         }
     }
 }
