@@ -39,7 +39,7 @@ namespace STROOP.Controls.Map.Objects
 
         public ColorMethodType ColorMethod;
 
-        public MapLevelObject(MapAssociations mapAssoc) : base("Level", null)
+        public MapLevelObject(MapAssociations mapAssoc) : base("Level", null, null, false)
         {
             _mapAssoc = mapAssoc;
             _background = new MapGraphicsBackgroundItem(null);

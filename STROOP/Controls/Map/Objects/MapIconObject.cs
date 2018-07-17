@@ -10,7 +10,8 @@ namespace STROOP.Controls.Map.Objects
 {
     public abstract class MapIconObject : MapObject
     {
-        public MapIconObject(string name, Bitmap bitmapImage) : base(name, bitmapImage)
+        public MapIconObject(string name, Bitmap bitmapImage, Color? backColor, bool rotates)
+            : base(name, bitmapImage, backColor, rotates)
         {
         }
 
@@ -19,7 +20,6 @@ namespace STROOP.Controls.Map.Objects
 
         public override float Opacity { get => _iconGraphics.Opacity; set => _iconGraphics.Opacity = value; }
         public override float Size { get => _iconGraphics.Size; set => _iconGraphics.Size = value; }
-        public override bool Rotates { get; set; } = true;
         public override int DisplayLayer { get => _iconGraphics.DisplayLayer; set => DisplayLayer = value; }
     }
 }

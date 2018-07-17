@@ -17,7 +17,7 @@ namespace STROOP.Controls.Map.Objects
         int _slotIndex;
         protected override MapGraphicsIconItem _iconGraphics { get; set; }
 
-        public MapSm64Object(int slotIndex) : base("Object", null)
+        public MapSm64Object(int slotIndex) : base("Object", null, null, false)
         {
             _iconGraphics = new MapGraphicsIconItem(null);
             _slotIndex = slotIndex;
@@ -40,6 +40,7 @@ namespace STROOP.Controls.Map.Objects
             {
                 BitmapImage = currentGraphics;
                 _iconGraphics.ChangeImage(currentGraphics);
+                Rotates = Config.ObjectAssociations.GetObjectMapRotates(obj.BehaviorCriteria);
             }
 
             _iconGraphics.Rotation = Rotates ? (float)MoreMath.AngleUnitsToRadians(obj.FacingYaw) : 0;

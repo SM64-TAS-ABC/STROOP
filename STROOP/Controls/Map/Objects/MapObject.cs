@@ -59,7 +59,6 @@ namespace STROOP.Controls.Map
 
         public virtual float Opacity { get; set; }
         public virtual float Size { get; set; }
-        public virtual bool Rotates { get; set; }
         public virtual int DisplayLayer { get; set; }
 
         private string _name;
@@ -97,16 +96,29 @@ namespace STROOP.Controls.Map
             }
         }
 
+        private bool _rotates;
+        public bool Rotates
+        {
+            get => _rotates;
+            set
+            {
+                if (_rotates == value) return;
+                _rotates = value;
+                Tracker?.SetRotates(_rotates);
+            }
+        }
+
         public virtual double GetDepth()
         {
             return 0;
         }
 
-        public MapObject(string name, Bitmap bitmapImage, Color? backColor = null)
+        public MapObject(string name, Bitmap bitmapImage, Color? backColor, bool rotates)
         {
             Name = name;
             BitmapImage = bitmapImage;
             BackColor = backColor;
+            Rotates = rotates;
         }
 
         /// <summary>
