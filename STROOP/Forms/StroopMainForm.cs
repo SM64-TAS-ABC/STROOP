@@ -731,6 +731,11 @@ namespace STROOP
             SavedSettingsConfig.Save();
         }
 
+        private void buttonTabAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void StroopMainForm_Resize(object sender, EventArgs e)
         {
             panelConnect.Size = this.Size;
