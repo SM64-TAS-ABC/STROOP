@@ -43,6 +43,13 @@ namespace STROOP.Structs
             return mapList;
         }
 
+        public List<MapLayout> GetLevelAreaMaps(byte level, byte area, ushort loadingPoint, ushort missionLayout, float y)
+        {
+            List<MapLayout> mapList = GetLevelAreaMaps(level, area, loadingPoint, missionLayout);
+            mapList = mapList.FindAll(map => map.Y <= y);
+            return mapList;
+        }
+
         public List<MapLayout> GetAllMaps()
         {
             List<MapLayout> maps = _maps.Values.SelectMany(list => list).ToList();

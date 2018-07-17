@@ -57,22 +57,18 @@ namespace STROOP.Controls.Map.Objects
             LevelDataModel level = DataModels.Level;
 
             // Find new map list
-            if (_currentMapList == null || _currentLevel != level.Index || _currentArea != level.Area
-                || _currentLoadingPoint != level.LoadingPoint || _currentMissionLayout != level.MissionLayout
-                || _currentSelectedItem != Config.MapGui.ComboBoxLevel.SelectedItem)
-            {
+
                 _currentLevel = level.Index;
                 _currentArea = level.Area;
                 _currentLoadingPoint = level.LoadingPoint;
                 _currentMissionLayout = level.MissionLayout;
                 _currentSelectedItem = Config.MapGui.ComboBoxLevel.SelectedItem;
-                _currentMapList = Config.MapAssociations.GetLevelAreaMaps(level.Index, level.Area, level.LoadingPoint, level.MissionLayout);
-            }
+                float marioRelY = DataModels.Mario.PURelative_Y;
+                _currentMapList = Config.MapAssociations.GetLevelAreaMaps(level.Index, level.Area, level.LoadingPoint, level.MissionLayout, marioRelY);
 
-            float marioRelY = DataModels.Mario.PURelative_Y;
 
             // Filter out all maps that are lower than Mario
-            var mapListYFiltered = _currentMapList.Where((map) => map.Y <= marioRelY).ToList();
+            var mapListYFiltered = _currentMapList;
 
             // If no map is available display the default image
             MapLayout newMap;
