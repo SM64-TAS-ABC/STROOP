@@ -34,6 +34,9 @@ namespace STROOP.Structs
         public Button ButtonClearAllTrackers;
         public Button ButtonTrackSelectedObjects;
 
+        public ComboBox ComboBoxLevel;
+        public ComboBox ComboBoxBackground;
+
         // Controls in 2D tab
         public TabPage TabPage2D;
         public RadioButton RadioButtonScaleCourseDefault;

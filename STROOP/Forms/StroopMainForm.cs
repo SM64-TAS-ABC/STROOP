@@ -182,6 +182,9 @@ namespace STROOP
                 ButtonClearAllTrackers = buttonMapControlsClearAllTrackers,
                 ButtonTrackSelectedObjects = buttonMapControlsTrackSelectedObjects,
 
+                ComboBoxLevel = comboBoxMapOptionsLevel,
+                ComboBoxBackground = comboBoxMapOptionsBackground,
+
                 // Controls in 2D tab
                 TabPage2D = tabPageMap2D,
                 RadioButtonScaleCourseDefault = radioButtonMapControlsScaleCourseDefault,

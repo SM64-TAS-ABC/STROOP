@@ -112,6 +112,9 @@ namespace STROOP.Managers
             InitializeCheckboxSemaphore(_mapGui.CheckBoxTrackFloorTriangle, MapSemaphoreManager.FloorTri, _mapObjFloorTri, false);
             InitializeCheckboxSemaphore(_mapGui.CheckBoxTrackWallTriangle, MapSemaphoreManager.WallTri, _mapObjWallTri, false);
             InitializeCheckboxSemaphore(_mapGui.CheckBoxTrackCeilingTriangle, MapSemaphoreManager.CeilingTri, _mapObjCeilTri, false);
+
+            //var x = Config.Ass
+            //_mapGui.ComboBoxLevel.DataSource = ;
         }
 
         private void InitializeCheckboxSemaphore(
