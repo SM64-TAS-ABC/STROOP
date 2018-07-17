@@ -26,6 +26,7 @@ namespace STROOP.Controls.Map.Objects
 
         byte _currentLevel, _currentArea;
         ushort _currentLoadingPoint, _currentMissionLayout;
+        object _currentSelectedItem;
         MapLayout _currentMap;
         List<MapLayout> _currentMapList = null;
 
@@ -57,12 +58,14 @@ namespace STROOP.Controls.Map.Objects
 
             // Find new map list
             if (_currentMapList == null || _currentLevel != level.Index || _currentArea != level.Area
-                || _currentLoadingPoint != level.LoadingPoint || _currentMissionLayout != level.MissionLayout)
+                || _currentLoadingPoint != level.LoadingPoint || _currentMissionLayout != level.MissionLayout
+                || _currentSelectedItem != Config.MapGui.ComboBoxLevel.SelectedItem)
             {
                 _currentLevel = level.Index;
                 _currentArea = level.Area;
                 _currentLoadingPoint = level.LoadingPoint;
                 _currentMissionLayout = level.MissionLayout;
+                _currentSelectedItem = Config.MapGui.ComboBoxLevel.SelectedItem;
                 _currentMapList = Config.MapAssociations.GetLevelAreaMaps(level.Index, level.Area);
 
                 // Look for maps with correct loading points
@@ -101,6 +104,13 @@ namespace STROOP.Controls.Map.Objects
                 }
                 newMap = bestMap;
             }
+
+            object mapLayoutChoice = Config.MapGui.ComboBoxLevel.SelectedItem;
+            if (mapLayoutChoice is MapLayout)
+            {
+                newMap = (MapLayout)mapLayoutChoice;
+            }
+
             ChangeCurrentMap(newMap);
         }
 
