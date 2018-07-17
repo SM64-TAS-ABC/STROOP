@@ -24,11 +24,7 @@ namespace STROOP.Controls.Map.Objects
         MapGraphicsImageItem _layout;
         MapGraphicsTrianglesItem _triangles;
 
-        byte _currentLevel, _currentArea;
-        ushort _currentLoadingPoint, _currentMissionLayout;
-        object _currentSelectedItem;
         MapLayout _currentMap;
-        List<MapLayout> _currentMapList = null;
 
         public override IEnumerable<MapGraphicsItem> GraphicsItems => new List<MapGraphicsItem>() { _background, _layout, _triangles };
 
@@ -55,15 +51,9 @@ namespace STROOP.Controls.Map.Objects
         private void UpdateMap()
         {
             LevelDataModel level = DataModels.Level;
-
-            // Find new map list
-            _currentLevel = level.Index;
-            _currentArea = level.Area;
-            _currentLoadingPoint = level.LoadingPoint;
-            _currentMissionLayout = level.MissionLayout;
-            _currentSelectedItem = Config.MapGui.ComboBoxLevel.SelectedItem;
             float marioRelY = DataModels.Mario.PURelative_Y;
-            MapLayout bestMap = Config.MapAssociations.GetBestMap(level.Index, level.Area, level.LoadingPoint, level.MissionLayout, marioRelY);
+            MapLayout bestMap = Config.MapAssociations.GetBestMap(
+                level.Index, level.Area, level.LoadingPoint, level.MissionLayout, marioRelY);
 
             object mapLayoutChoice = Config.MapGui.ComboBoxLevel.SelectedItem;
             if (mapLayoutChoice is MapLayout)
