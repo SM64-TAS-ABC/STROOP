@@ -1069,6 +1069,7 @@ namespace STROOP.Utilities
                         break;
 
                     case "Map":
+                        string id = element.Attribute(XName.Get("id")).Value;
                         byte level = byte.Parse(element.Attribute(XName.Get("level")).Value);
                         byte area = byte.Parse(element.Attribute(XName.Get("area")).Value);
                         ushort? loadingPoint = element.Attribute(XName.Get("loadingPoint")) != null ?
@@ -1093,7 +1094,7 @@ namespace STROOP.Utilities
 
                         var coordinates = new RectangleF(x1, z1, x2 - x1, z2 - z1);
 
-                        MapLayout map = new MapLayout() { Level = level, Area = area, LoadingPoint = loadingPoint, MissionLayout = missionLayout,
+                        MapLayout map = new MapLayout() { Id = id, Level = level, Area = area, LoadingPoint = loadingPoint, MissionLayout = missionLayout,
                             Coordinates = coordinates, ImagePath = imagePath, Y = y, Name = name, SubName = subName, BackgroundPath = bgImagePath};
 
                         assoc.AddAssociation(map);

@@ -11,6 +11,7 @@ namespace STROOP.Structs
     {
         public string ImagePath;
         public string BackgroundPath;
+        public string Id;
         public byte Level;
         public byte Area;
         public ushort? LoadingPoint;
@@ -47,44 +48,16 @@ namespace STROOP.Structs
 
         public override string ToString()
         {
-            return Name + ": " + SubName;
-        }
-
-        private List<object> GetFieldList()
-        {
-            return new List<object>() { Level, Area, LoadingPoint, MissionLayout, Y };
+            string subNameString = SubName != null ? ": " + SubName : "";
+            string yString = Y != float.MinValue ? String.Format(" (y ≥ {0})", Y) : "";
+            return Name + subNameString + yString;
         }
 
         public int CompareTo(object obj)
         {
             if (!(obj is MapLayout)) return -1;
             MapLayout other = (MapLayout)obj;
-            if (Level != other.Level) return Level.CompareTo(other.Level);
-            if (Area != other.Area) return Area.CompareTo(other.Area);
-            if (LoadingPoint != other.LoadingPoint)
-            {
-                if (LoadingPoint == null || other.LoadingPoint == null)
-                {
-                    return LoadingPoint == null ? -1 : 1;
-                }
-                else
-                {
-                    return LoadingPoint.Value.CompareTo(other.LoadingPoint.Value);
-                }
-            }
-            if (MissionLayout != other.MissionLayout)
-            {
-                if (MissionLayout == null || other.MissionLayout == null)
-                {
-                    return MissionLayout == null ? -1 : 1;
-                }
-                else
-                {
-                    return MissionLayout.Value.CompareTo(other.MissionLayout.Value);
-                }
-            }
-            if (Y != other.Y) return Y.CompareTo(other.Y);
-            return 0;
+            return Id.CompareTo(other.Id);
         }
     }
 }
