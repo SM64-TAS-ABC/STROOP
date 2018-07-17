@@ -1069,35 +1069,57 @@ namespace STROOP.Utilities
                         break;
 
                     case "Map":
-                        string id = element.Attribute(XName.Get("id")).Value;
-                        byte level = byte.Parse(element.Attribute(XName.Get("level")).Value);
-                        byte area = byte.Parse(element.Attribute(XName.Get("area")).Value);
-                        ushort? loadingPoint = element.Attribute(XName.Get("loadingPoint")) != null ?
-                            (ushort?)ushort.Parse(element.Attribute(XName.Get("loadingPoint")).Value) : null;
-                        ushort? missionLayout = element.Attribute(XName.Get("missionLayout")) != null ?
-                            (ushort?)ushort.Parse(element.Attribute(XName.Get("missionLayout")).Value) : null;
-                        string imagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
-                        string bgImagePath = (element.Element(XName.Get("BackgroundImage")) != null) ?
-                          element.Element(XName.Get("BackgroundImage")).Attribute(XName.Get("path")).Value : null;
+                        {
+                            string id = element.Attribute(XName.Get("id")).Value;
+                            byte level = byte.Parse(element.Attribute(XName.Get("level")).Value);
+                            byte area = byte.Parse(element.Attribute(XName.Get("area")).Value);
+                            ushort? loadingPoint = element.Attribute(XName.Get("loadingPoint")) != null ?
+                                (ushort?)ushort.Parse(element.Attribute(XName.Get("loadingPoint")).Value) : null;
+                            ushort? missionLayout = element.Attribute(XName.Get("missionLayout")) != null ?
+                                (ushort?)ushort.Parse(element.Attribute(XName.Get("missionLayout")).Value) : null;
+                            string imagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
+                            string bgImagePath = (element.Element(XName.Get("BackgroundImage")) != null) ?
+                              element.Element(XName.Get("BackgroundImage")).Attribute(XName.Get("path")).Value : null;
 
-                        var coordinatesElement = element.Element(XName.Get("Coordinates"));
-                        float x1 = float.Parse(coordinatesElement.Attribute(XName.Get("x1")).Value);
-                        float x2 = float.Parse(coordinatesElement.Attribute(XName.Get("x2")).Value);
-                        float z1 = float.Parse(coordinatesElement.Attribute(XName.Get("z1")).Value);
-                        float z2 = float.Parse(coordinatesElement.Attribute(XName.Get("z2")).Value);
-                        float y = (coordinatesElement.Attribute(XName.Get("y")) != null) ?
-                            float.Parse(coordinatesElement.Attribute(XName.Get("y")).Value) : float.MinValue;
+                            var coordinatesElement = element.Element(XName.Get("Coordinates"));
+                            float x1 = float.Parse(coordinatesElement.Attribute(XName.Get("x1")).Value);
+                            float x2 = float.Parse(coordinatesElement.Attribute(XName.Get("x2")).Value);
+                            float z1 = float.Parse(coordinatesElement.Attribute(XName.Get("z1")).Value);
+                            float z2 = float.Parse(coordinatesElement.Attribute(XName.Get("z2")).Value);
+                            float y = (coordinatesElement.Attribute(XName.Get("y")) != null) ?
+                                float.Parse(coordinatesElement.Attribute(XName.Get("y")).Value) : float.MinValue;
 
-                        string name = element.Attribute(XName.Get("name")).Value;
-                        string subName = (element.Attribute(XName.Get("subName")) != null) ?
-                            element.Attribute(XName.Get("subName")).Value : null;
+                            string name = element.Attribute(XName.Get("name")).Value;
+                            string subName = (element.Attribute(XName.Get("subName")) != null) ?
+                                element.Attribute(XName.Get("subName")).Value : null;
 
-                        var coordinates = new RectangleF(x1, z1, x2 - x1, z2 - z1);
+                            var coordinates = new RectangleF(x1, z1, x2 - x1, z2 - z1);
 
-                        MapLayout map = new MapLayout() { Id = id, Level = level, Area = area, LoadingPoint = loadingPoint, MissionLayout = missionLayout,
-                            Coordinates = coordinates, ImagePath = imagePath, Y = y, Name = name, SubName = subName, BackgroundPath = bgImagePath};
+                            MapLayout map = new MapLayout()
+                            {
+                                Id = id,
+                                Level = level,
+                                Area = area,
+                                LoadingPoint = loadingPoint,
+                                MissionLayout = missionLayout,
+                                Coordinates = coordinates,
+                                ImagePath = imagePath,
+                                Y = y,
+                                Name = name,
+                                SubName = subName,
+                                BackgroundPath = bgImagePath
+                            };
 
-                        assoc.AddAssociation(map);
+                            assoc.AddAssociation(map);
+                        }
+                        break;
+
+                    case "Background":
+                        {
+                            string imagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
+                            Bitmap image = Image.FromFile(assoc.FolderPath + imagePath) as Bitmap;
+                            assoc.AddBackgroundImage(image);
+                        }
                         break;
                 }
             }

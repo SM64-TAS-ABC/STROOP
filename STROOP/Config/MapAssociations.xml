@@ -365,4 +365,25 @@
     <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192"/>
     <BackgroundImage path="Purple Background.png"/>
   </Map>
+  <Background>
+    <Image path="Black Background.png"/>
+  </Background>
+  <Background>
+    <Image path="Blue Background.png"/>
+  </Background>
+  <Background>
+    <Image path="Cloud Background.png"/>
+  </Background>
+  <Background>
+    <Image path="Lava Background.png"/>
+  </Background>
+  <Background>
+    <Image path="Purple Background.png"/>
+  </Background>
+  <Background>
+    <Image path="Snow Background.png"/>
+  </Background>
+  <Background>
+    <Image path="Stalagmite Background.png"/>
+  </Background>
 </MapAssociations>

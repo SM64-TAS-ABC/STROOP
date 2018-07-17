@@ -13,6 +13,7 @@ namespace STROOP.Structs
     public class MapAssociations
     {
         Dictionary<Tuple<byte, byte>, List<MapLayout>> _maps = new Dictionary<Tuple<byte, byte>, List<MapLayout>>();
+        List<Bitmap> _backgroundImages = new List<Bitmap>();
 
         public MapLayout DefaultMap;
 
@@ -98,6 +99,16 @@ namespace STROOP.Structs
                 image = new Bitmap(preLoad, new Size((int)(preLoad.Width / scale), (int)(preLoad.Height / scale)));
             }
             return image;
+        }
+
+        public void AddBackgroundImage(Bitmap image)
+        {
+            _backgroundImages.Add(image);
+        }
+
+        public List<Bitmap> GetBackgroundImages()
+        {
+            return _backgroundImages;
         }
     }
 }
