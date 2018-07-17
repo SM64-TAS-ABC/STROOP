@@ -36,7 +36,9 @@ namespace STROOP.Structs
 
         public List<MapLayout> GetAllMaps()
         {
-            return _maps.Values.SelectMany(list => list).ToList();
+            List<MapLayout> maps = _maps.Values.SelectMany(list => list).ToList();
+            maps.Sort();
+            return maps;
         }
 
         public Bitmap GetMapImage(MapLayout map)

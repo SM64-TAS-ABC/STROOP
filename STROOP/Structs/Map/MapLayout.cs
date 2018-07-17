@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace STROOP.Structs
 {
-    public struct MapLayout
+    public struct MapLayout : IComparable
     {
         public string ImagePath;
         public string BackgroundPath;
@@ -43,6 +43,48 @@ namespace STROOP.Structs
         {
             return ImagePath.GetHashCode() * 127 + Level.GetHashCode() * 31 + Area.GetHashCode() * 17 + Y.GetHashCode()
                 + 257 * MissionLayout.GetHashCode() + 67 * LoadingPoint.GetHashCode(); 
+        }
+
+        public override string ToString()
+        {
+            return Name + ": " + SubName;
+        }
+
+        private List<object> GetFieldList()
+        {
+            return new List<object>() { Level, Area, LoadingPoint, MissionLayout, Y };
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (!(obj is MapLayout)) return -1;
+            MapLayout other = (MapLayout)obj;
+            if (Level != other.Level) return Level.CompareTo(other.Level);
+            if (Area != other.Area) return Area.CompareTo(other.Area);
+            if (LoadingPoint != other.LoadingPoint)
+            {
+                if (LoadingPoint == null || other.LoadingPoint == null)
+                {
+                    return LoadingPoint == null ? -1 : 1;
+                }
+                else
+                {
+                    return LoadingPoint.Value.CompareTo(other.LoadingPoint.Value);
+                }
+            }
+            if (MissionLayout != other.MissionLayout)
+            {
+                if (MissionLayout == null || other.MissionLayout == null)
+                {
+                    return MissionLayout == null ? -1 : 1;
+                }
+                else
+                {
+                    return MissionLayout.Value.CompareTo(other.MissionLayout.Value);
+                }
+            }
+            if (Y != other.Y) return Y.CompareTo(other.Y);
+            return 0;
         }
     }
 }
