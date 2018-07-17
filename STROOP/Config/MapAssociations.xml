@@ -140,7 +140,7 @@
   </Map>
   <Map name="Lethal Lava Land" id="07A" level="22" area="1">
     <Image path="LLL.png"/>
-    <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192" y="-8191"/>
+    <Coordinates x1="-8191" x2="8192" z1="-8191" z2="8192"/>
     <BackgroundImage name="Black Background"/>
   </Map>
   <Map name="Lethal Lava Land" subName="Volcano" id="07B" level="22" area="2">
@@ -155,7 +155,7 @@
   </Map>
   <Map name="Shifting Sand Land" id="08A" level="8" area="1">
     <Image path="SSL.png"/>
-    <Coordinates x1="-8447" x2="8192" z1="-8191" z2="8192" y="-8191"/>
+    <Coordinates x1="-8447" x2="8192" z1="-8191" z2="8192"/>
     <BackgroundImage name="Black Background"/>
   </Map>
   <Map name="Shifting Sand Land" subName="Pyramid" id="08B" level="8" area="2" loadingPoint="2">
