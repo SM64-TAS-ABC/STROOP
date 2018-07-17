@@ -57,44 +57,21 @@ namespace STROOP.Controls.Map.Objects
             LevelDataModel level = DataModels.Level;
 
             // Find new map list
-
-                _currentLevel = level.Index;
-                _currentArea = level.Area;
-                _currentLoadingPoint = level.LoadingPoint;
-                _currentMissionLayout = level.MissionLayout;
-                _currentSelectedItem = Config.MapGui.ComboBoxLevel.SelectedItem;
-                float marioRelY = DataModels.Mario.PURelative_Y;
-                _currentMapList = Config.MapAssociations.GetLevelAreaMaps(level.Index, level.Area, level.LoadingPoint, level.MissionLayout, marioRelY);
-
-
-            // Filter out all maps that are lower than Mario
-            var mapListYFiltered = _currentMapList;
-
-            // If no map is available display the default image
-            MapLayout newMap;
-            if (mapListYFiltered.Count <= 0)
-            {
-                newMap = Config.MapAssociations.DefaultMap;
-            }
-            else
-            {
-                // Pick the map closest to mario (yet still above Mario)
-                MapLayout bestMap = mapListYFiltered.First();
-                foreach (MapLayout map in mapListYFiltered)
-                {
-                    if (map.Y > bestMap.Y)
-                        bestMap = map;
-                }
-                newMap = bestMap;
-            }
+            _currentLevel = level.Index;
+            _currentArea = level.Area;
+            _currentLoadingPoint = level.LoadingPoint;
+            _currentMissionLayout = level.MissionLayout;
+            _currentSelectedItem = Config.MapGui.ComboBoxLevel.SelectedItem;
+            float marioRelY = DataModels.Mario.PURelative_Y;
+            MapLayout bestMap = Config.MapAssociations.GetBestMap(level.Index, level.Area, level.LoadingPoint, level.MissionLayout, marioRelY);
 
             object mapLayoutChoice = Config.MapGui.ComboBoxLevel.SelectedItem;
             if (mapLayoutChoice is MapLayout)
             {
-                newMap = (MapLayout)mapLayoutChoice;
+                bestMap = (MapLayout)mapLayoutChoice;
             }
 
-            ChangeCurrentMap(newMap);
+            ChangeCurrentMap(bestMap);
         }
 
         void UpdateTriangles()

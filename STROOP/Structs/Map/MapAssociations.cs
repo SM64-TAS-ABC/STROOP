@@ -43,11 +43,17 @@ namespace STROOP.Structs
             return mapList;
         }
 
-        public List<MapLayout> GetLevelAreaMaps(byte level, byte area, ushort loadingPoint, ushort missionLayout, float y)
+        public MapLayout GetBestMap(byte level, byte area, ushort loadingPoint, ushort missionLayout, float y)
         {
             List<MapLayout> mapList = GetLevelAreaMaps(level, area, loadingPoint, missionLayout);
             mapList = mapList.FindAll(map => map.Y <= y);
-            return mapList;
+            if (mapList.Count == 0) return Config.MapAssociations.DefaultMap;
+            MapLayout bestMap = mapList.First();
+            foreach (MapLayout map in mapList)
+            {
+                if (map.Y > bestMap.Y) bestMap = map;
+            }
+            return bestMap;
         }
 
         public List<MapLayout> GetAllMaps()
