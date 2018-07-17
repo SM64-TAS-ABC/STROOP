@@ -339,6 +339,7 @@
     <Compile Include="Managers\SnowManager.cs" />
     <Compile Include="Structs\Configurations\MainSaveConfig.cs" />
     <Compile Include="Structs\Configurations\SnowConfig.cs" />
+    <Compile Include="Structs\Map\BackgroundImage.cs" />
     <Compile Include="Structs\TriangleInfoTable.cs" />
     <Compile Include="Ttc\TtcSaveStateByteIterator.cs" />
     <Compile Include="Ttc\TtcUtilities.cs" />

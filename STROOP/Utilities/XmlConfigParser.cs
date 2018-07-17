@@ -1116,9 +1116,15 @@ namespace STROOP.Utilities
 
                     case "Background":
                         {
+                            string name = element.Attribute(XName.Get("name")).Value;
                             string imagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
                             Bitmap image = Image.FromFile(assoc.FolderPath + imagePath) as Bitmap;
-                            assoc.AddBackgroundImage(image);
+                            BackgroundImage backgroundImage = new BackgroundImage()
+                            {
+                                Name = name,
+                                Image = image,
+                            };
+                            assoc.AddBackgroundImage(backgroundImage);
                         }
                         break;
                 }
