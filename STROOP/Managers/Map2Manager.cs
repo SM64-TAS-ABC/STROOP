@@ -20,7 +20,6 @@ namespace STROOP.Managers
     public class Map2Manager
     {
         public MapLayout map;
-        public MapAssociations MapAssoc;
         byte _currentLevel, _currentArea;
         ushort _currentLoadingPoint, _currentMissionLayout;
         MapLayout _currentMap;
@@ -111,9 +110,8 @@ namespace STROOP.Managers
             }
         }
 
-        public Map2Manager(MapAssociations mapAssoc, Map2Gui mapGui)
+        public Map2Manager(Map2Gui mapGui)
         {
-            MapAssoc = mapAssoc;
             _mapGui = mapGui;
 
             _marioMapObj = new Map2Object(Config.ObjectAssociations.MarioMapImage, 1);
@@ -156,7 +154,7 @@ namespace STROOP.Managers
             _isLoaded = true;
 
             // Set the default map
-            ChangeCurrentMap(MapAssoc.DefaultMap);
+            ChangeCurrentMap(Config.MapAssociations.DefaultMap);
 
             // Add Mario's map object
             _mapGraphics.AddMapObject(_marioMapObj);
@@ -392,7 +390,7 @@ namespace STROOP.Managers
                 _currentArea = area;
                 _currentLoadingPoint = loadingPoint;
                 _currentMissionLayout = missionLayout;
-                _currentMapList = MapAssoc.GetLevelAreaMaps(level, area);
+                _currentMapList = Config.MapAssociations.GetLevelAreaMaps(level, area);
 
                 // Look for maps with correct loading points
                 var mapListLPFiltered = _currentMapList.Where((map) => map.LoadingPoint == loadingPoint).ToList();
@@ -434,7 +432,7 @@ namespace STROOP.Managers
             // If no map is available display the default image
             if (mapListYFiltered.Count <= 0)
             {
-                ChangeCurrentMap(MapAssoc.DefaultMap);
+                ChangeCurrentMap(Config.MapAssociations.DefaultMap);
             }
             else
             {
@@ -524,10 +522,10 @@ namespace STROOP.Managers
                 return;
 
             // Change and set a new map
-            using (var mapImage = MapAssoc.GetMapImage(map))
+            using (var mapImage = Config.MapAssociations.GetMapImage(map))
                 _mapGraphics.SetMap(mapImage);
 
-            using (var mapBackground = MapAssoc.GetMapBackgroundImage(map))
+            using (var mapBackground = Config.MapAssociations.GetMapBackgroundImage(map))
                 _mapGraphics.SetBackground(mapBackground);
 
             _currentMap = map;

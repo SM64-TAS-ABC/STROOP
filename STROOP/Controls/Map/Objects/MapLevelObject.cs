@@ -28,7 +28,6 @@ namespace STROOP.Controls.Map.Objects
         ushort _currentLoadingPoint, _currentMissionLayout;
         MapLayout _currentMap;
         List<MapLayout> _currentMapList = null;
-        MapAssociations _mapAssoc;
 
         public override IEnumerable<MapGraphicsItem> GraphicsItems => new List<MapGraphicsItem>() { _background, _layout, _triangles };
 
@@ -39,9 +38,8 @@ namespace STROOP.Controls.Map.Objects
 
         public ColorMethodType ColorMethod;
 
-        public MapLevelObject(MapAssociations mapAssoc) : base("Level", null, null, false)
+        public MapLevelObject() : base("Level", null, null, false)
         {
-            _mapAssoc = mapAssoc;
             _background = new MapGraphicsBackgroundItem(null);
             _layout = new MapGraphicsImageItem(null);
             _triangles = new MapGraphicsTrianglesItem();
@@ -65,7 +63,7 @@ namespace STROOP.Controls.Map.Objects
                 _currentArea = level.Area;
                 _currentLoadingPoint = level.LoadingPoint;
                 _currentMissionLayout = level.MissionLayout;
-                _currentMapList = _mapAssoc.GetLevelAreaMaps(level.Index, level.Area);
+                _currentMapList = Config.MapAssociations.GetLevelAreaMaps(level.Index, level.Area);
 
                 // Look for maps with correct loading points
                 var mapListLPFiltered = _currentMapList.Where((map) => map.LoadingPoint == level.LoadingPoint).ToList();
@@ -89,7 +87,7 @@ namespace STROOP.Controls.Map.Objects
             // If no map is available display the default image
             if (mapListYFiltered.Count <= 0)
             {
-                ChangeCurrentMap(_mapAssoc.DefaultMap);
+                ChangeCurrentMap(Config.MapAssociations.DefaultMap);
             }
             else
             {
@@ -160,10 +158,10 @@ namespace STROOP.Controls.Map.Objects
                 return;
 
             // Change and set a new map
-            using (var mapBackground = _mapAssoc.GetMapBackgroundImage(map))
+            using (var mapBackground = Config.MapAssociations.GetMapBackgroundImage(map))
                 _background.ChangeImage(mapBackground);
 
-            using (var mapLayout = _mapAssoc.GetMapImage(map))
+            using (var mapLayout = Config.MapAssociations.GetMapImage(map))
                 _layout.ChangeImage(mapLayout);
 
             _layout.Region = map.Coordinates;

@@ -26,7 +26,6 @@ namespace STROOP.Managers
 
         private MapGui _mapGui;
         private MapGraphics _graphics;
-        private MapAssociations _mapAssoc;
 
         #region Objects
         private MapLevelObject _mapObjLevel;
@@ -43,9 +42,8 @@ namespace STROOP.Managers
         private List<int> _currentMapSm64ObjIndexes;
         #endregion
 
-        public MapManager(MapAssociations mapAssoc, MapGui mapGui)
+        public MapManager(MapGui mapGui)
         {
-            _mapAssoc = mapAssoc;
             _mapGui = mapGui;
             _currentMapSm64ObjIndexes = new List<int>();
         }
@@ -91,7 +89,7 @@ namespace STROOP.Managers
             _mapGui.ButtonClearAllTrackers.Click += (sender, e) => _mapGui.MapTrackerFlowLayoutPanel.ClearControls();
 
             // Test
-            _mapObjLevel = new MapLevelObject(_mapAssoc);
+            _mapObjLevel = new MapLevelObject();
             Config.MapController.AddMapObject(_mapObjLevel);
             Config.MapController.AddMapObject(_mapObjMario);
             Config.MapController.AddMapObject(_mapObjHolp);

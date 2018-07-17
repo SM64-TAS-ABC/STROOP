@@ -18,6 +18,7 @@ namespace STROOP.Structs.Configurations
         public static List<Emulator> Emulators = new List<Emulator>();
         public static ProcessStream Stream;
         public static ObjectAssociations ObjectAssociations;
+        public static MapAssociations MapAssociations;
         public static MapController MapController;
         public static StroopMainForm StroopMainForm;
         public static TabControl TabControlMain;

@@ -28,7 +28,6 @@ namespace STROOP
         ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();
         List<InputImageGui> _inputImageGuiList = new List<Structs.InputImageGui>();
         FileImageGui _fileImageGui = new FileImageGui();
-        MapAssociations _mapAssoc;
         ScriptParser _scriptParser;
         List<RomHack> _romHacks;
 
@@ -323,8 +322,8 @@ namespace STROOP
             };
 
             // Create managers
-            Config.MapManager = new MapManager(_mapAssoc, mapGui);
-            Config.Map2Manager = new Map2Manager(_mapAssoc, map2Gui);
+            Config.MapManager = new MapManager(mapGui);
+            Config.Map2Manager = new Map2Manager(map2Gui);
 
             Config.ModelManager = new ModelManager(tabPageModel);
             Config.ActionsManager = new ActionsManager(@"Config/ActionsData.xml", watchVariablePanelActions, tabPageActions);
@@ -430,7 +429,7 @@ namespace STROOP
             loadingForm.UpdateStatus("Loading Debug Data", statusNum++);
             loadingForm.UpdateStatus("Loading HUD Data", statusNum++);
             loadingForm.UpdateStatus("Loading Map Associations", statusNum++);
-            _mapAssoc = XmlConfigParser.OpenMapAssoc(@"Config/MapAssociations.xml");
+            Config.MapAssociations = XmlConfigParser.OpenMapAssoc(@"Config/MapAssociations.xml");
             loadingForm.UpdateStatus("Loading Scripts", statusNum++);
             _scriptParser = XmlConfigParser.OpenScripts(@"Config/Scripts.xml");
             loadingForm.UpdateStatus("Loading Hacks", statusNum++);
