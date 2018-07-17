@@ -42,7 +42,7 @@ namespace STROOP.Controls.Map.Objects
                 _iconGraphics.ChangeImage(currentGraphics);
             }
 
-            _iconGraphics.Rotation = (float) MoreMath.AngleUnitsToRadians(obj.FacingYaw);
+            _iconGraphics.Rotation = Rotates ? (float)MoreMath.AngleUnitsToRadians(obj.FacingYaw) : 0;
             _iconGraphics.Position = new OpenTK.Vector3(obj.X, obj.Y, obj.Z);
         }
     }

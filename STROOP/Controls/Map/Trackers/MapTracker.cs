@@ -48,6 +48,7 @@ namespace STROOP.Controls.Map.Trackers
             UpdateName(MapObjectList.FirstOrDefault()?.Name);
             UpdateImage(MapObjectList.FirstOrDefault()?.BitmapImage);
             UpdateBackColor(MapObjectList.FirstOrDefault()?.BackColor);
+            SetRotates(MapObjectList.FirstOrDefault()?.Rotates);
 
             textBoxOpacity.AddEnterAction(() => textBoxOpacity_EnterAction());
             textBoxSize.AddEnterAction(() => textBoxSize_EnterAction());
@@ -154,9 +155,16 @@ namespace STROOP.Controls.Map.Trackers
 
         private void checkBoxRotates_CheckedChanged(object sender, EventArgs e)
         {
+            SetRotates(checkBoxRotates.Checked);
+        }
+
+        public void SetRotates(bool? rotates)
+        {
+            if (!rotates.HasValue) return;
+            checkBoxRotates.Checked = rotates.Value;
             MapObjectList.ForEach(icon =>
             {
-                icon.Rotates = checkBoxRotates.Checked;
+                icon.Rotates = rotates.Value;
             });
         }
 
