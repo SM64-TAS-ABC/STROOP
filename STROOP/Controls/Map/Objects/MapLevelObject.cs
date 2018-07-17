@@ -25,6 +25,7 @@ namespace STROOP.Controls.Map.Objects
         MapGraphicsTrianglesItem _triangles;
 
         MapLayout _currentMap;
+        Bitmap _currentBackground;
 
         public override IEnumerable<MapGraphicsItem> GraphicsItems => new List<MapGraphicsItem>() { _background, _layout, _triangles };
 
@@ -62,6 +63,24 @@ namespace STROOP.Controls.Map.Objects
             }
 
             ChangeCurrentMap(bestMap);
+        }
+
+        private void UpdateBackground()
+        {
+            LevelDataModel level = DataModels.Level;
+            float marioRelY = DataModels.Mario.PURelative_Y;
+            MapLayout bestMap = Config.MapAssociations.GetBestMap(
+                level.Index, level.Area, level.LoadingPoint, level.MissionLayout, marioRelY);
+
+            object backgroundChoice = Config.MapGui.ComboBoxBackground.SelectedItem;
+            if (backgroundChoice is Bitmap)
+            {
+                ChangeBackground((Bitmap)backgroundChoice);
+            }
+            else
+            {
+                ChangeBackground(Config.MapAssociations.GetMapBackgroundImage(bestMap));
+            }
         }
 
         void UpdateTriangles()
@@ -129,6 +148,17 @@ namespace STROOP.Controls.Map.Objects
             _layout.Y = map.Y != float.MinValue ? map.Y : 0.0f;
 
             _currentMap = map;
+        }
+
+        private void ChangeBackground(Bitmap background)
+        {
+            // Don't change the map if it isn't different
+            if (_currentBackground == background)
+                return;
+
+            // Change and set a new map
+            using (var mapBackground = background)
+                _background.ChangeImage(mapBackground);
         }
     }
 }
