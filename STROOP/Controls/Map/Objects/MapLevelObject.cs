@@ -46,6 +46,7 @@ namespace STROOP.Controls.Map.Objects
         public override void Update()
         {
             UpdateMap();
+            UpdateBackground();
             UpdateTriangles();
         }
 
@@ -73,9 +74,9 @@ namespace STROOP.Controls.Map.Objects
                 level.Index, level.Area, level.LoadingPoint, level.MissionLayout, marioRelY);
 
             object backgroundChoice = Config.MapGui.ComboBoxBackground.SelectedItem;
-            if (backgroundChoice is Bitmap)
+            if (backgroundChoice is BackgroundImage background)
             {
-                ChangeBackground((Bitmap)backgroundChoice);
+                ChangeBackground(background.Image);
             }
             else
             {
@@ -137,25 +138,21 @@ namespace STROOP.Controls.Map.Objects
             if (_currentMap == map)
                 return;
 
-            // Change and set a new map
-            _background.ChangeImage(map.BackgroundImage);
             _layout.ChangeImage(map.MapImage);
+            _currentMap = map;
 
             _layout.Region = map.Coordinates;
             _layout.Y = map.Y != float.MinValue ? map.Y : 0.0f;
-
-            _currentMap = map;
         }
 
         private void ChangeBackground(Bitmap background)
         {
-            // Don't change the map if it isn't different
+            // Don't change the background if it isn't different
             if (_currentBackground == background)
                 return;
 
-            // Change and set a new map
-            using (var mapBackground = background)
-                _background.ChangeImage(mapBackground);
+            _background.ChangeImage(background);
+            _currentBackground = background;
         }
     }
 }
