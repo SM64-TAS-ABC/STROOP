@@ -34,6 +34,11 @@ namespace STROOP.Structs
             return _maps[mapKey];
         }
 
+        public List<MapLayout> GetAllMaps()
+        {
+            return _maps.Values.SelectMany(list => list).ToList();
+        }
+
         public Bitmap GetMapImage(MapLayout map)
         {
             var path = Path.Combine(FolderPath, map.ImagePath);
