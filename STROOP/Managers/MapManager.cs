@@ -113,6 +113,11 @@ namespace STROOP.Managers
             List<object> mapLayoutChoices = new List<object>() { "Recommended" };
             mapLayouts.ForEach(mapLayout => mapLayoutChoices.Add(mapLayout));
             Config.MapGui.ComboBoxLevel.DataSource = mapLayoutChoices;
+
+            List<BackgroundImage> backgroundImages = Config.MapAssociations.GetBackgroundImages();
+            List<object> backgroundImageChoices = new List<object>() { "Recommended" };
+            backgroundImages.ForEach(backgroundImage => backgroundImageChoices.Add(backgroundImage));
+            Config.MapGui.ComboBoxBackground.DataSource = backgroundImageChoices;
         }
 
         private void InitializeCheckboxSemaphore(
