@@ -216,7 +216,12 @@ namespace STROOP.Controls
                 {
                     maskString = " with mask " + HexUtilities.FormatValue(Mask.Value, NibbleCount.Value);
                 }
-                return MemoryTypeName + maskString;
+                string shiftString = "";
+                if (Shift != null)
+                {
+                    shiftString = " right shifted by " + Shift.Value;
+                }
+                return MemoryTypeName + maskString + shiftString;
             }
         }
 
