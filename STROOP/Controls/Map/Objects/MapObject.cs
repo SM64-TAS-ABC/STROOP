@@ -19,6 +19,7 @@ namespace STROOP.Controls.Map
         /// </summary>
         public abstract IEnumerable<MapGraphicsItem> GraphicsItems { get; }
 
+        /** Whether the object is on the tracked list or is implicitly tracked. */
         private bool _tracked = false;
         public bool Tracked
         {
@@ -30,6 +31,7 @@ namespace STROOP.Controls.Map
             }
         }
 
+        /** Whether the object has its eye icon open. */
         private bool _shown = true;
         public bool Shown
         {
@@ -41,12 +43,26 @@ namespace STROOP.Controls.Map
             }
         }
 
+        /** Whether the object is internally meant to be displayed.
+         *  For example, whether an object is loaded or a triangle address is non-zero.
+         */
+        private bool _displayed = true;
+        public bool Displayed
+        {
+            get => _displayed;
+            set
+            {
+                _displayed = value;
+                UpdateItemVisibility();
+            }
+        }
+
         /// <summary>
         /// Is the item visible or not 
         /// </summary>
         public bool Visible
         {
-            get => _tracked && _shown;
+            get => _tracked && _shown && _displayed;
         }
 
         private void UpdateItemVisibility()

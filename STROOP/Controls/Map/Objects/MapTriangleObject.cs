@@ -30,7 +30,7 @@ namespace STROOP.Controls.Map.Objects
         public override void Update()
         {
             TriangleDataModel tri = _triangleData;
-            Shown = tri != null;
+            Displayed = tri != null;
             if (tri == null)
                 return;
 
