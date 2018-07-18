@@ -69,7 +69,7 @@ namespace STROOP.Structs
             get
             {
                 if (_mapImage != null) return _mapImage;
-                var path = Path.Combine(Config.MapAssociations.FolderPath, ImagePath);
+                var path = Path.Combine(Config.MapAssociations.MapImageFolderPath, ImagePath);
                 using (Bitmap preLoad = Bitmap.FromFile(path) as Bitmap)
                 {
                     int maxSize = 1080;

@@ -17,7 +17,8 @@ namespace STROOP.Structs
 
         public MapLayout DefaultMap;
 
-        public string FolderPath;
+        public string MapImageFolderPath;
+        public string BackgroundImageFolderPath;
 
         public void AddAssociation(MapLayout map)
         {

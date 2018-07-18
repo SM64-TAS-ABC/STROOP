@@ -1049,8 +1049,11 @@ namespace STROOP.Utilities
                         {
                             switch (subElement.Name.ToString())
                             {
-                                case "ImageDirectory":
-                                    assoc.FolderPath = subElement.Value;
+                                case "MapImageDirectory":
+                                    assoc.MapImageFolderPath = subElement.Value;
+                                    break;
+                                case "BackgroundImageDirectory":
+                                    assoc.BackgroundImageFolderPath = subElement.Value;
                                     break;
                                 case "DefaultImage":
                                     var defaultMap = new MapLayout() { ImagePath = subElement.Value };
@@ -1072,7 +1075,7 @@ namespace STROOP.Utilities
                         {
                             string name = element.Attribute(XName.Get("name")).Value;
                             string imagePath = element.Element(XName.Get("Image")).Attribute(XName.Get("path")).Value;
-                            Bitmap image = Image.FromFile(assoc.FolderPath + imagePath) as Bitmap;
+                            Bitmap image = Image.FromFile(assoc.BackgroundImageFolderPath + imagePath) as Bitmap;
                             BackgroundImage backgroundImage = new BackgroundImage()
                             {
                                 Name = name,
