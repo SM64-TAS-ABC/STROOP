@@ -33,7 +33,11 @@ namespace STROOP.Controls.Map.Objects
             if (tri == null)
                 return;
 
-            Color4 color = new Color4(MyColor.Value.R, MyColor.Value.G, MyColor.Value.B, Opacity);
+            Color4 color = new Color4(
+                MyColor.Value.R / 255f,
+                MyColor.Value.G / 255f,
+                MyColor.Value.B / 255f,
+                Opacity);
 
             _triGraphics.SetTriangles(new Vertex[]
             {

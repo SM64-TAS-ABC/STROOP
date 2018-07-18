@@ -49,11 +49,13 @@ namespace STROOP.Controls.Map.Trackers
             UpdateImage(MapObjectList.FirstOrDefault()?.BitmapImage);
             UpdateBackColor(MapObjectList.FirstOrDefault()?.BackColor);
             SetRotates(MapObjectList.FirstOrDefault()?.Rotates);
+            SetColor(MapObjectList.FirstOrDefault()?.MyColor);
 
             textBoxOpacity.AddEnterAction(() => textBoxOpacity_EnterAction());
             textBoxSize.AddEnterAction(() => textBoxSize_EnterAction());
             comboBoxVisibilityType.SelectedValueChanged += (sender, e) =>
                 SetVisibilityType((MapTrackerVisibilityType)comboBoxVisibilityType.SelectedItem);
+            colorSelector.AddColorChangeAction((Color color) => SetColor(color));
 
             SetSize(50);
             SetOpacity(100);
@@ -117,9 +119,9 @@ namespace STROOP.Controls.Map.Trackers
             float size = sizeNullable ?? backupValue;
             if (size < 0) size = 0;
             float scaledSize = (size / 100) * scale;
-            MapObjectList.ForEach(icon =>
+            MapObjectList.ForEach(obj =>
             {
-                icon.Size = scaledSize;
+                obj.Size = scaledSize;
             });
             ControlUtilities.SetTrackBarValueCapped(trackBarSize, size);
             textBoxSize.Text = size.ToString();
@@ -149,9 +151,9 @@ namespace STROOP.Controls.Map.Trackers
             if (opacity < 0) opacity = 0;
             if (opacity > 100) opacity = 100;
             float scaledOpacity = opacity / 100;
-            MapObjectList.ForEach(icon =>
+            MapObjectList.ForEach(obj =>
             {
-                icon.Opacity = scaledOpacity;
+                obj.Opacity = scaledOpacity;
             });
             ControlUtilities.SetTrackBarValueCapped(trackBarOpacity, opacity);
             textBoxOpacity.Text = opacity.ToString();
@@ -166,18 +168,28 @@ namespace STROOP.Controls.Map.Trackers
         {
             if (!rotates.HasValue) return;
             checkBoxRotates.Checked = rotates.Value;
-            MapObjectList.ForEach(icon =>
+            MapObjectList.ForEach(obj =>
             {
-                icon.Rotates = rotates.Value;
+                obj.Rotates = rotates.Value;
+            });
+        }
+
+        public void SetColor(Color? color)
+        {
+            if (!color.HasValue) return;
+            colorSelector.SelectedColor = color.Value;
+            MapObjectList.ForEach(obj =>
+            {
+                obj.MyColor = color.Value;
             });
         }
 
         public void SetVisibilityType(MapTrackerVisibilityType visibilityType)
         {
             comboBoxVisibilityType.SelectedItem = visibilityType;
-            MapObjectList.ForEach(icon =>
+            MapObjectList.ForEach(obj =>
             {
-                icon.VisibilityType = visibilityType;
+                obj.VisibilityType = visibilityType;
             });
         }
 
