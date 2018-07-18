@@ -231,12 +231,14 @@ namespace STROOP.Structs.Configurations
             _removedTabs.Add(removeTab);
             Config.TabControlMain.TabPages.Remove(removeTab);
             Config.TabControlMain.SelectedTab = previousTab;
+            Save();
         }
 
         public static void AddTab(TabPage tab)
         {
             _removedTabs.Remove(tab);
             Config.TabControlMain.TabPages.Add(tab);
+            Save();
         }
 
         public static List<ToolStripItem> GetRemovedTabItems()
@@ -270,6 +272,13 @@ namespace STROOP.Structs.Configurations
                 tabOrderXElement.Add(tabXElement);
             }
 
+            XElement removedTabsXElement = new XElement("RemovedTabs");
+            foreach (TabPage tabPage in _removedTabs)
+            {
+                XElement tabXElement = new XElement("Tab", tabPage.Text);
+                removedTabsXElement.Add(tabXElement);
+            }
+
             return new List<XElement>
             {
                 new XElement("DisplayYawAnglesAsUnsigned", _displayYawAnglesAsUnsigned),
@@ -284,6 +293,7 @@ namespace STROOP.Structs.Configurations
                 new XElement("NeutralizeTrianglesWith0x15", _neutralizeTrianglesWith0x15),
                 new XElement("UseInGameTrigForAngleLogic", _useInGameTrigForAngleLogic),
                 tabOrderXElement,
+                removedTabsXElement,
             };
         }
 
