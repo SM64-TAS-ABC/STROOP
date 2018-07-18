@@ -75,6 +75,16 @@ namespace STROOP
             SavedSettingsConfig.InvokeInitiallySavedTabOrder();
             Config.TabControlMain.SelectedIndex = 0;
 
+            tabControlMain.Click += (se, ev) =>
+            {
+                if (KeyboardUtilities.IsCtrlHeld())
+                {
+                    TabPage previousTab = tabControlMain.PreviousTab;
+                    tabControlMain.TabPages.Remove(tabControlMain.SelectedTab);
+                    tabControlMain.SelectedTab = previousTab;
+                }
+            };
+
             SetupViews();
 
             _resizing = false;
