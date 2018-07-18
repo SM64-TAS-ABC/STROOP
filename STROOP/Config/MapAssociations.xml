@@ -2,7 +2,7 @@
 <MapAssociations>
   <Config>
     <MapImageDirectory>Resources\Maps\Map Images\</MapImageDirectory>
-    <BackgroundImageDirectory>Resources\Maps\Map Images\</BackgroundImageDirectory>
+    <BackgroundImageDirectory>Resources\Maps\Background Images\</BackgroundImageDirectory>
     <DefaultImage>default.png</DefaultImage>
     <DefaultCoordinates x1="-8191" x2="8192" z1="-8191" z2="8192"/>
   </Config>
@@ -27,6 +27,12 @@
   </Background>
   <Background name="Stalagmite Background">
     <Image path="Stalagmite Background.png"/>
+  </Background>
+  <Background name="Transparent Background">
+    <Image path="Transparent Background.png"/>
+  </Background>
+  <Background name="White Background">
+    <Image path="White Background.png"/>
   </Background>
   
   <Map name="Castle Grounds" id="00A" level="16" area="1">
