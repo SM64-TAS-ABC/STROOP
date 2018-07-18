@@ -753,7 +753,7 @@ namespace STROOP
 
         private void buttonTabAdd_Click(object sender, EventArgs e)
         {
-
+            buttonTabAdd.ContextMenuStrip.Show(Cursor.Position);
         }
 
         private void StroopMainForm_Resize(object sender, EventArgs e)

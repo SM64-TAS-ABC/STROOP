@@ -229,17 +229,29 @@ namespace STROOP.Structs.Configurations
             _removedTabs.Add(tabPage);
         }
 
-        public static List<ToolStripMenuItem> GetRemovedTabItems()
+        public static List<ToolStripItem> GetRemovedTabItems()
         {
-            List<ToolStripMenuItem> items = new List<ToolStripMenuItem>();
+            List<ToolStripItem> items = new List<ToolStripItem>();
+
+            Action<TabPage> restoreTab = (TabPage tab) =>
+            {
+                _removedTabs.Remove(tab);
+                Config.TabControlMain.TabPages.Add(tab);
+            };
+
+            ToolStripMenuItem itemRestoreAllTabs = new ToolStripMenuItem("Restore All Tabs");
+            itemRestoreAllTabs.Click += (sender, e) =>
+            {
+                List<TabPage> removedTabs = new List<TabPage>(_removedTabs);
+                removedTabs.ForEach(tab => restoreTab(tab));
+            };
+            items.Add(itemRestoreAllTabs);
+            items.Add(new ToolStripSeparator());
+
             foreach (TabPage tab in _removedTabs)
             {
                 ToolStripMenuItem item = new ToolStripMenuItem(tab.Text + " Tab");
-                item.Click += (sender, e) =>
-                {
-                    _removedTabs.Remove(tab);
-                    Config.TabControlMain.TabPages.Add(tab);
-                };
+                item.Click += (sender, e) => restoreTab(tab);
                 items.Add(item);
             }
             return items;
