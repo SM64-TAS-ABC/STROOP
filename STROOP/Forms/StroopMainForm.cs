@@ -80,9 +80,19 @@ namespace STROOP
                 if (KeyboardUtilities.IsCtrlHeld())
                 {
                     TabPage previousTab = tabControlMain.PreviousTab;
-                    tabControlMain.TabPages.Remove(tabControlMain.SelectedTab);
+                    TabPage removeTab = tabControlMain.SelectedTab;
+                    SavedSettingsConfig.AddRemovedTab(removeTab);
+                    tabControlMain.TabPages.Remove(removeTab);
                     tabControlMain.SelectedTab = previousTab;
                 }
+            };
+
+            buttonTabAdd.ContextMenuStrip = new ContextMenuStrip();
+            buttonTabAdd.ContextMenuStrip.Opening += (se, ev) =>
+            {
+                buttonTabAdd.ContextMenuStrip.Items.Clear();
+                SavedSettingsConfig.GetRemovedTabItems().ForEach(
+                    item => buttonTabAdd.ContextMenuStrip.Items.Add(item));
             };
 
             SetupViews();

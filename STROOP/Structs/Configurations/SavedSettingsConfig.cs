@@ -222,6 +222,29 @@ namespace STROOP.Structs.Configurations
             }
         }
 
+        public static List<TabPage> _removedTabs = new List<TabPage>();
+
+        public static void AddRemovedTab(TabPage tabPage)
+        {
+            _removedTabs.Add(tabPage);
+        }
+
+        public static List<ToolStripMenuItem> GetRemovedTabItems()
+        {
+            List<ToolStripMenuItem> items = new List<ToolStripMenuItem>();
+            foreach (TabPage tab in _removedTabs)
+            {
+                ToolStripMenuItem item = new ToolStripMenuItem(tab.Text + " Tab");
+                item.Click += (sender, e) =>
+                {
+                    _removedTabs.Remove(tab);
+                    Config.TabControlMain.TabPages.Add(tab);
+                };
+                items.Add(item);
+            }
+            return items;
+        }
+
         public static List<XElement> ToXML()
         {
             XElement tabOrderXElement = new XElement("TabOrder");
