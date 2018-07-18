@@ -52,6 +52,8 @@ namespace STROOP.Controls.Map.Trackers
 
             textBoxOpacity.AddEnterAction(() => textBoxOpacity_EnterAction());
             textBoxSize.AddEnterAction(() => textBoxSize_EnterAction());
+            comboBoxVisibilityType.SelectedValueChanged += (sender, e) =>
+                SetVisibilityType((MapTrackerVisibilityType)comboBoxVisibilityType.SelectedItem);
 
             SetSize(50);
             SetOpacity(100);
@@ -165,6 +167,15 @@ namespace STROOP.Controls.Map.Trackers
             MapObjectList.ForEach(icon =>
             {
                 icon.Rotates = rotates.Value;
+            });
+        }
+
+        public void SetVisibilityType(MapTrackerVisibilityType visibilityType)
+        {
+            comboBoxVisibilityType.SelectedItem = visibilityType;
+            MapObjectList.ForEach(icon =>
+            {
+                icon.VisibilityType = visibilityType;
             });
         }
 

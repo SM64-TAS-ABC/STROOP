@@ -1,6 +1,7 @@
 ﻿using STROOP.Controls.Map.Graphics;
 using STROOP.Controls.Map.Graphics.Items;
 using STROOP.Controls.Map.Trackers;
+using STROOP.Structs;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -76,6 +77,7 @@ namespace STROOP.Controls.Map
         public virtual float Opacity { get; set; }
         public virtual float Size { get; set; }
         public virtual int DisplayLayer { get; set; }
+        public virtual MapTrackerVisibilityType VisibilityType { get; set; }
 
         private string _name;
         public string Name
