@@ -76,6 +76,7 @@ namespace STROOP.Controls.Map
 
         public virtual float Opacity { get; set; }
         public virtual float Size { get; set; }
+        public virtual Color? MyColor { get; set; }
         public virtual int DisplayLayer { get; set; }
         public virtual MapTrackerVisibilityType VisibilityType { get; set; } = MapTrackerVisibilityType.VisibleWhenLoaded;
 
@@ -131,12 +132,13 @@ namespace STROOP.Controls.Map
             return 0;
         }
 
-        public MapObject(string name, Bitmap bitmapImage, Color? backColor, bool rotates)
+        public MapObject(string name, Bitmap bitmapImage, Color? backColor, bool rotates, Color? color)
         {
             Name = name;
             BitmapImage = bitmapImage;
             BackColor = backColor;
             Rotates = rotates;
+            MyColor = color;
         }
 
         /// <summary>

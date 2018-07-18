@@ -11,7 +11,7 @@ namespace STROOP.Controls.Map.Objects
     public abstract class MapIconObject : MapObject
     {
         public MapIconObject(string name, Bitmap bitmapImage, Color? backColor, bool rotates)
-            : base(name, bitmapImage, backColor, rotates)
+            : base(name, bitmapImage, backColor, rotates, null)
         {
         }
 
