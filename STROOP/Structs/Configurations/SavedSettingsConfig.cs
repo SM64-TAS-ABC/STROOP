@@ -222,15 +222,26 @@ namespace STROOP.Structs.Configurations
             }
         }
 
+        public static List<string> InitiallySavedRemovedTabs;
+
         public static List<TabPage> _removedTabs = new List<TabPage>();
 
-        public static void RemoveCurrentTab()
+        public static void InvokeInitiallySavedRemovedTabs()
+        {
+            List<TabPage> removedTabs =
+                ControlUtilities.GetTabPages(Config.TabControlMain)
+                .FindAll(tab => InitiallySavedRemovedTabs.Contains(tab.Text));
+            removedTabs.ForEach(tab => RemoveTab(tab));
+        }
+
+        public static void RemoveTab(TabPage removeTab)
         {
             TabPage previousTab = Config.TabControlMain.PreviousTab;
-            TabPage removeTab = Config.TabControlMain.SelectedTab;
+            TabPage currentTab = Config.TabControlMain.SelectedTab;
             _removedTabs.Add(removeTab);
             Config.TabControlMain.TabPages.Remove(removeTab);
-            Config.TabControlMain.SelectedTab = previousTab;
+            if (removeTab == currentTab)
+                Config.TabControlMain.SelectedTab = previousTab;
             Save();
         }
 

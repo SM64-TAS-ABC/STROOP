@@ -146,12 +146,25 @@ namespace STROOP.Utilities
                         break;
 
                     case "TabOrder":
-                        List<string> tabNames = new List<string>();
-                        foreach (var tabName in element.Elements())
                         {
-                            tabNames.Add(tabName.Value);
+                            List<string> tabNames = new List<string>();
+                            foreach (var tabName in element.Elements())
+                            {
+                                tabNames.Add(tabName.Value);
+                            }
+                            SavedSettingsConfig.InitiallySavedTabOrder = tabNames;
                         }
-                        SavedSettingsConfig.InitiallySavedTabOrder = tabNames;
+                        break;
+
+                    case "RemovedTabs":
+                        {
+                            List<string> tabNames = new List<string>();
+                            foreach (var tabName in element.Elements())
+                            {
+                                tabNames.Add(tabName.Value);
+                            }
+                            SavedSettingsConfig.InitiallySavedRemovedTabs = tabNames;
+                        }
                         break;
                 }
             }

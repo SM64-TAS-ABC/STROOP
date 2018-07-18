@@ -74,22 +74,7 @@ namespace STROOP
             SavedSettingsConfig.StoreRecommendedTabOrder();
             SavedSettingsConfig.InvokeInitiallySavedTabOrder();
             Config.TabControlMain.SelectedIndex = 0;
-
-            tabControlMain.Click += (se, ev) =>
-            {
-                if (KeyboardUtilities.IsCtrlHeld())
-                {
-                    SavedSettingsConfig.RemoveCurrentTab();
-                }
-            };
-
-            buttonTabAdd.ContextMenuStrip = new ContextMenuStrip();
-            buttonTabAdd.ContextMenuStrip.Opening += (se, ev) =>
-            {
-                buttonTabAdd.ContextMenuStrip.Items.Clear();
-                SavedSettingsConfig.GetRemovedTabItems().ForEach(
-                    item => buttonTabAdd.ContextMenuStrip.Items.Add(item));
-            };
+            InitializeTabRemoval();
 
             SetupViews();
 
@@ -104,6 +89,27 @@ namespace STROOP
             buttonRefresh_Click(this, new EventArgs());
             panelConnect.Location = new Point();
             panelConnect.Size = this.Size;
+        }
+
+        private void InitializeTabRemoval()
+        {
+            tabControlMain.Click += (se, ev) =>
+            {
+                if (KeyboardUtilities.IsCtrlHeld())
+                {
+                    SavedSettingsConfig.RemoveTab(tabControlMain.SelectedTab);
+                }
+            };
+
+            buttonTabAdd.ContextMenuStrip = new ContextMenuStrip();
+            buttonTabAdd.ContextMenuStrip.Opening += (se, ev) =>
+            {
+                buttonTabAdd.ContextMenuStrip.Items.Clear();
+                SavedSettingsConfig.GetRemovedTabItems().ForEach(
+                    item => buttonTabAdd.ContextMenuStrip.Items.Add(item));
+            };
+
+            SavedSettingsConfig.InvokeInitiallySavedRemovedTabs();
         }
 
         private void SetUpContextMenuStrips()
