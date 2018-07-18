@@ -65,6 +65,8 @@ namespace STROOP.Controls.Map.Trackers
             tableLayoutPanel.ShowBorder = true;
 
             comboBoxVisibilityType.DataSource = Enum.GetValues(typeof(MapTrackerVisibilityType));
+            comboBoxVisibilityType.SelectedItem = MapTrackerVisibilityType.VisibleWhenLoaded;
+
             comboBoxOrderType.DataSource = Enum.GetValues(typeof(MapTrackerOrderType));
             comboBoxDisplayType.DataSource = Enum.GetValues(typeof(MapTrackerDisplayType));
 

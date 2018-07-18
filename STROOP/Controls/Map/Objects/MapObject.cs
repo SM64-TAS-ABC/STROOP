@@ -77,7 +77,7 @@ namespace STROOP.Controls.Map
         public virtual float Opacity { get; set; }
         public virtual float Size { get; set; }
         public virtual int DisplayLayer { get; set; }
-        public virtual MapTrackerVisibilityType VisibilityType { get; set; }
+        public virtual MapTrackerVisibilityType VisibilityType { get; set; } = MapTrackerVisibilityType.VisibleWhenLoaded;
 
         private string _name;
         public string Name
