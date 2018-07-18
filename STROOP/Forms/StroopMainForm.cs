@@ -79,11 +79,7 @@ namespace STROOP
             {
                 if (KeyboardUtilities.IsCtrlHeld())
                 {
-                    TabPage previousTab = tabControlMain.PreviousTab;
-                    TabPage removeTab = tabControlMain.SelectedTab;
-                    SavedSettingsConfig.AddRemovedTab(removeTab);
-                    tabControlMain.TabPages.Remove(removeTab);
-                    tabControlMain.SelectedTab = previousTab;
+                    SavedSettingsConfig.RemoveCurrentTab();
                 }
             };
 

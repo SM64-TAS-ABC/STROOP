@@ -224,26 +224,30 @@ namespace STROOP.Structs.Configurations
 
         public static List<TabPage> _removedTabs = new List<TabPage>();
 
-        public static void AddRemovedTab(TabPage tabPage)
+        public static void RemoveCurrentTab()
         {
-            _removedTabs.Add(tabPage);
+            TabPage previousTab = Config.TabControlMain.PreviousTab;
+            TabPage removeTab = Config.TabControlMain.SelectedTab;
+            _removedTabs.Add(removeTab);
+            Config.TabControlMain.TabPages.Remove(removeTab);
+            Config.TabControlMain.SelectedTab = previousTab;
+        }
+
+        public static void AddTab(TabPage tab)
+        {
+            _removedTabs.Remove(tab);
+            Config.TabControlMain.TabPages.Add(tab);
         }
 
         public static List<ToolStripItem> GetRemovedTabItems()
         {
             List<ToolStripItem> items = new List<ToolStripItem>();
 
-            Action<TabPage> restoreTab = (TabPage tab) =>
-            {
-                _removedTabs.Remove(tab);
-                Config.TabControlMain.TabPages.Add(tab);
-            };
-
             ToolStripMenuItem itemRestoreAllTabs = new ToolStripMenuItem("Restore All Tabs");
             itemRestoreAllTabs.Click += (sender, e) =>
             {
                 List<TabPage> removedTabs = new List<TabPage>(_removedTabs);
-                removedTabs.ForEach(tab => restoreTab(tab));
+                removedTabs.ForEach(tab => AddTab(tab));
             };
             items.Add(itemRestoreAllTabs);
             items.Add(new ToolStripSeparator());
@@ -251,7 +255,7 @@ namespace STROOP.Structs.Configurations
             foreach (TabPage tab in _removedTabs)
             {
                 ToolStripMenuItem item = new ToolStripMenuItem(tab.Text + " Tab");
-                item.Click += (sender, e) => restoreTab(tab);
+                item.Click += (sender, e) => AddTab(tab);
                 items.Add(item);
             }
             return items;
