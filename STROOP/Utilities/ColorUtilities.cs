@@ -53,7 +53,7 @@ namespace STROOP.Utilities
         {
             int? inputtedNumber = KeyboardUtilities.GetCurrentlyInputtedNumber();
 
-            if (inputtedNumber == 0) return LastSelectedColor;
+            if (inputtedNumber == 0) return SystemColors.Control;
 
             if (inputtedNumber.HasValue &&
                 inputtedNumber.Value > 0 &&

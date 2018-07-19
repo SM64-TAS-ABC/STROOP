@@ -459,7 +459,7 @@ namespace STROOP.Controls
             else if (isOKeyHeld)
             {
                 _watchVariablePanel.UnselectAllVariables();
-                BaseColor = DEFAULT_COLOR;
+                BaseColor = ColorUtilities.LastSelectedColor;
             }
             else
             {
