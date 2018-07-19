@@ -22,6 +22,8 @@ namespace STROOP.Controls.Map.Objects
 
         public override IEnumerable<MapGraphicsItem> GraphicsItems => new MapGraphicsItem[] { _triGraphics };
 
+        public override float DefaultOpacity { get; } = 0.5f;
+
         public MapTriangleObject(string name, Bitmap bitmapImage, Color color) : base(name, bitmapImage, null, false, color)
         {
         }

@@ -127,6 +127,9 @@ namespace STROOP.Controls.Map
             }
         }
 
+        public virtual float DefaultSize { get; } = 50f;
+        public virtual float DefaultOpacity { get; } = 1f;
+
         public virtual double GetDepth()
         {
             return 0;

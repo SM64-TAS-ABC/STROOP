@@ -57,8 +57,8 @@ namespace STROOP.Controls.Map.Trackers
                 SetVisibilityType((MapTrackerVisibilityType)comboBoxVisibilityType.SelectedItem);
             colorSelector.AddColorChangeAction((Color color) => SetColor(color));
 
-            SetSize(50);
-            SetOpacity(100);
+            SetSize(MapObjectList.FirstOrDefault()?.DefaultSize);
+            SetOpacity(MapObjectList.FirstOrDefault()?.DefaultOpacity, true);
         }
 
         private void MapTracker_Load(object sender, EventArgs e)
@@ -129,17 +129,22 @@ namespace STROOP.Controls.Map.Trackers
 
         private void trackBarOpacity_ValueChanged(object sender, EventArgs e)
         {
-            SetOpacity(trackBarOpacity.Value);
+            SetOpacity(trackBarOpacity.Value, false);
         }
 
         private void textBoxOpacity_EnterAction()
         {
-            SetOpacity(ParsingUtilities.ParseFloatNullable(textBoxOpacity.Text));
+            SetOpacity(ParsingUtilities.ParseFloatNullable(textBoxOpacity.Text), false);
         }
 
         // opacityNullable is from 0 to 100, or null if controls should be refreshed
-        private void SetOpacity(float? opacityNullable)
+        private void SetOpacity(float? opacityNullable, bool scaled)
         {
+            if (opacityNullable.HasValue && scaled)
+            {
+                opacityNullable = opacityNullable.Value * 100;
+            }
+
             float backupValue = 100;
             float? oldValue = MapObjectList.FirstOrDefault()?.Opacity;
             if (oldValue.HasValue)
