@@ -181,5 +181,48 @@ namespace STROOP.Utilities
             }
             return triShapes;
         }
+
+        public static List<TriangleShape> GetTrianglesForShape(
+            int numSides, double shapeRadius, double shapeAngle, int shapeX, int shapeZ)
+        {
+            List<(double, double)> vertices = new List<(double, double)>();
+            for (int i = 0; i < numSides; i++)
+            {
+                double angle = 65536 / numSides * i + shapeAngle;
+                (double, double) vertex = MoreMath.AddVectorToPoint(shapeRadius, angle, shapeX, shapeZ);
+                vertices.Add(vertex);
+            }
+
+            List<((double, double), (double, double), bool)> vertexPairs =
+                new List<((double, double), (double, double), bool)>();
+            for (int i = 0; i < vertices.Count; i++)
+            {
+                (double v1X, double v1Z) = vertices[i];
+                (double v2X, double v2Z) = vertices[(i + 1) % vertices.Count];
+                ushort angle = MoreMath.AngleTo_AngleUnitsRounded(v1X, v1Z, v2X, v2Z);
+                bool xProj = (angle <= 8192) ||
+                             (angle >= 24576 && angle <= 40960) ||
+                             (angle >= 57344);
+                vertexPairs.Add(((v1X, v1Z), (v2X, v2Z), xProj));
+            }
+
+            List<TriangleShape> triShapes = new List<TriangleShape>();
+            foreach (var ((x1, z1), (x2, z2), proj) in vertexPairs)
+            {
+                double angle = MoreMath.AngleTo_AngleUnits(x1, z1, x2, z2);
+                double projAngle = proj ? 16384 : 0;
+                double projDist = 50 / Math.Sin(MoreMath.AngleUnitsToRadians(angle - projAngle));
+                (double p1X, double p1Z) = MoreMath.AddVectorToPoint(projDist, projAngle, x1, z1);
+                (double p2X, double p2Z) = MoreMath.AddVectorToPoint(-1 * projDist, projAngle, x1, z1);
+                (double p3X, double p3Z) = MoreMath.AddVectorToPoint(projDist, projAngle, x2, z2);
+                (double p4X, double p4Z) = MoreMath.AddVectorToPoint(-1 * projDist, projAngle, x2, z2);
+
+                TriangleShape triShape1 = new TriangleShape(p1X, 0, p1Z, p2X, 0, p2Z, p3X, 0, p3Z);
+                TriangleShape triShape2 = new TriangleShape(p2X, 0, p2Z, p3X, 0, p3Z, p4X, 0, p4Z);
+                triShapes.Add(triShape1);
+                triShapes.Add(triShape2);
+            }
+            return triShapes;
+        }
     }
 } 
