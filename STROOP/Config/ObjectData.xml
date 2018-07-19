@@ -228,6 +228,8 @@
   <Data groupList="Advanced" type="ushort" offset="0x74" base="Object" useHex="true">Loaded</Data>
 
   <Data groupList="Basic" type="int" offset="0x144" base="Object">Subtype</Data>
-  <Data groupList="Basic" type="int" offset="0x14C" base="Object">State</Data>
+  <Data groupList="Basic" type="int" offset="0x14C" base="Object">Action</Data>
+  <Data groupList="Advanced" type="int" offset="0x18C" base="Object">Action 2</Data>
+  <Data groupList="Basic" type="int" offset="0x150" base="Object">Phase</Data>
   <Data groupList="Basic" type="int" offset="0x154" base="Object">Timer</Data>
 </VarData>
