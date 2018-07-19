@@ -110,7 +110,7 @@ namespace STROOP.Controls.Map.Graphics
             
             IEnumerable<MapGraphicsItem> drawItemsPerspective, drawItemsOverlay, drawItemsBackground;
             drawItemsPerspective = drawItems.Where(i => i.Type == MapGraphicsItem.DrawType.Perspective);
-            drawItemsOverlay = drawItems.Where(i => i.Type == MapGraphicsItem.DrawType.Overlay).OrderByDescending(i => i.Depth);
+            drawItemsOverlay = drawItems.Where(i => i.Type == MapGraphicsItem.DrawType.Overlay).OrderBy(i => i.Depth);
             drawItemsBackground = drawItems.Where(i => i.Type == MapGraphicsItem.DrawType.Background);
 
             // Setup Background
