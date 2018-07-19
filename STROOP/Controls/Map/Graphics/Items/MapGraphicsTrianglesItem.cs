@@ -19,7 +19,18 @@ namespace STROOP.Controls.Map.Graphics.Items
 
         public override IEnumerable<Type> DrawOnCameraTypes => CameraTypeAny;
 
-        public override float? Depth => null;
+        public override float? Depth => Y.HasValue ? DisplayLayer + Y.Value : (float?)null;
+
+        public float? Y
+        {
+            get
+            {
+                if (_newVertices == null) return null;
+                return (_newVertices[0].Position.Y + 
+                        _newVertices[1].Position.Y + 
+                        _newVertices[2].Position.Y) / 3;
+            }
+        }
 
         public override DrawType Type => DrawType.Perspective;
 
