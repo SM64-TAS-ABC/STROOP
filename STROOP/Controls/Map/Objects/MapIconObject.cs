@@ -20,6 +20,6 @@ namespace STROOP.Controls.Map.Objects
 
         public override float Opacity { get => _iconGraphics.Opacity; set => _iconGraphics.Opacity = value; }
         public override float Size { get => _iconGraphics.Size; set => _iconGraphics.Size = value; }
-        public override int DisplayLayer { get => _iconGraphics.DisplayLayer; set => DisplayLayer = value; }
+        public override int DisplayLayer { get => _iconGraphics.DisplayLayer; set => _iconGraphics.DisplayLayer = value; }
     }
 }

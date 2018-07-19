@@ -130,11 +130,6 @@ namespace STROOP.Controls.Map
         public virtual float DefaultSize { get; } = 50f;
         public virtual float DefaultOpacity { get; } = 1f;
 
-        public virtual double GetDepth()
-        {
-            return 0;
-        }
-
         public MapObject(string name, Bitmap bitmapImage, Color? backColor, bool rotates, Color? color)
         {
             Name = name;

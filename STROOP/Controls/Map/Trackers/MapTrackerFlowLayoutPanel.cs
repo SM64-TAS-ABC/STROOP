@@ -102,14 +102,21 @@ namespace STROOP.Controls.Map.Trackers
             }
 
             listOrderOnTop.Reverse();
-            listOrderOnBottom.Reverse();
-            listOrderByDepth.OrderBy(mapObj => mapObj.GetDepth());
 
-            List<MapObject> listMapObjects = new List<MapObject>();
-            listMapObjects.AddRange(listOrderOnBottom);
-            listMapObjects.AddRange(listOrderByDepth);
-            listMapObjects.AddRange(listOrderOnTop);
-            listMapObjects.ForEach(mapObject => mapObject.Update());
+            for (int i = 0; i < listOrderByDepth.Count; i++)
+            {
+                listOrderByDepth[i].DisplayLayer = 0;
+            }
+
+            for (int i = 0; i < listOrderOnTop.Count; i++)
+            {
+                listOrderOnTop[i].DisplayLayer = i + 1;
+            }
+
+            for (int i = 0; i < listOrderOnBottom.Count; i++)
+            {
+                listOrderOnBottom[i].DisplayLayer = -1 * (i + 1);
+            }
         }
 
     }

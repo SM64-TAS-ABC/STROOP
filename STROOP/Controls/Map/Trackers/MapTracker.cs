@@ -70,6 +70,8 @@ namespace STROOP.Controls.Map.Trackers
             comboBoxVisibilityType.SelectedItem = MapTrackerVisibilityType.VisibleWhenLoaded;
 
             comboBoxOrderType.DataSource = Enum.GetValues(typeof(MapTrackerOrderType));
+            comboBoxOrderType.SelectedItem = MapTrackerOrderType.OrderByDepth;
+
             comboBoxDisplayType.DataSource = Enum.GetValues(typeof(MapTrackerDisplayType));
 
             ControlUtilities.AddContextMenuStripFunctions(
