@@ -3552,14 +3552,14 @@
     <Data groupList="ObjectSpecific" type="byte" offset="0xFF" base="Object" subclass="Boolean">Blowing</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x100" base="Object">Scale Change</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x2C" base="Object">Scale</Data>
+    <Data groupList="ObjectSpecific" base="Object" offset="0xF4" type="float">X Center</Data>
+    <Data groupList="ObjectSpecific" base="Object" offset="0xF8" type="float">Y Center</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004988" name="Lakitu Cloud Spawner" subType="1">
     <SpawnCode gfxId="0x00"/>
     <Image path="Cloud Spawner.png"/>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x1AC" base="Object" subclass="Angle">Rev Angle</Data>
-    <Data groupList="ObjectSpecific" type="byte" offset="0xFF" base="Object" subclass="Boolean">Blowing</Data>
-    <Data groupList="ObjectSpecific" type="float" offset="0x100" base="Object">Scale Change</Data>
-    <Data groupList="ObjectSpecific" type="float" offset="0x2C" base="Object">Scale</Data>
+    <Data groupList="ObjectSpecific" base="Object" offset="0xF4" type="float">X Center</Data>
+    <Data groupList="ObjectSpecific" base="Object" offset="0xF8" type="float">Y Center</Data>
   </Object>
   <Object behaviorScriptAddress="0x130049AC" name="Cloud Puff">
     <SpawnCode gfxId="0x8E"/>
