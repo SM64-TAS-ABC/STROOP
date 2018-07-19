@@ -12,23 +12,22 @@ namespace STROOP.Controls.Map.Graphics.Items
     {
         int _vertexBuffer = -1;
 
-        Vertex[] _loadedVertices = new Vertex[0];
+        Vertex[] _loadedVertices = new Vertex[] { new Vertex(), new Vertex(), new Vertex() };
         Vertex[] _newVertices = null;
 
         public int DisplayLayer { get; set; }
 
         public override IEnumerable<Type> DrawOnCameraTypes => CameraTypeAny;
 
-        public override float? Depth => Y.HasValue ? DisplayLayer + Y.Value : (float?)null;
+        public override float? Depth => 0x10000 * DisplayLayer + Y;
 
-        public float? Y
+        public float Y
         {
             get
             {
-                if (_newVertices == null) return null;
-                return (_newVertices[0].Position.Y + 
-                        _newVertices[1].Position.Y + 
-                        _newVertices[2].Position.Y) / 3;
+                return (_loadedVertices[0].Position.Y +
+                        _loadedVertices[1].Position.Y +
+                        _loadedVertices[2].Position.Y) / 3;
             }
         }
 
