@@ -183,12 +183,12 @@ namespace STROOP.Utilities
         }
 
         public static (List<TriangleShape> floors, List<TriangleShape> walls) GetWallFoorTrianglesForShape(
-            int numSides, double shapeRadius, double shapeAngle, int shapeX, int shapeZ)
+            int numSides, double shapeRadius, double shapeAngle, double shapeX, double shapeZ)
         {
             List<(double, double)> vertices = new List<(double, double)>();
             for (int i = 0; i < numSides; i++)
             {
-                double angle = 65536 / numSides * i + shapeAngle;
+                double angle = 65536d / numSides * i + shapeAngle;
                 (double, double) vertex = MoreMath.AddVectorToPoint(shapeRadius, angle, shapeX, shapeZ);
                 vertices.Add(vertex);
             }

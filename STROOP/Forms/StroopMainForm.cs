@@ -147,6 +147,7 @@ namespace STROOP
                     "Disable Locking",
                     "Show Invisible Objects as Signs",
                     "Show Cog Tris",
+                    "Show Shapes",
                 },
                 new List<Func<bool>>()
                 {
@@ -164,6 +165,11 @@ namespace STROOP
                     {
                         TestingConfig.ShowCogTris = !TestingConfig.ShowCogTris;
                         return TestingConfig.ShowCogTris;
+                    },
+                    () =>
+                    {
+                        TestingConfig.ShowShapes = !TestingConfig.ShowShapes;
+                        return TestingConfig.ShowShapes;
                     },
                 });
 

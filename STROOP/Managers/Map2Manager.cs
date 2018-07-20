@@ -257,7 +257,15 @@ namespace STROOP.Managers
 
         private (List<TriangleShape> floors, List<TriangleShape> walls) GetTriShapes(int numSides)
         {
-            return TriangleUtilities.GetWallFoorTrianglesForShape(numSides, 300, 0, 0, numSides * 1000);
+            double dist = 800;
+            double radius = 300;
+            double xOffset = 1000;
+            double zOffset = 0;
+
+            int index = numSides - SHAPE_MIN_SIDES;
+            double x = (index % 3) * dist + xOffset;
+            double z = (index / 3) * dist + zOffset;
+            return TriangleUtilities.GetWallFoorTrianglesForShape(numSides, radius, 0, x, z);
         }
 
         public void UpdateFromMarioTab()
@@ -571,7 +579,7 @@ namespace STROOP.Managers
                     tri.P1OnControl = CalculateLocationOnControl(new PointF(tri.RelX1, tri.RelZ1), mapView);
                     tri.P2OnControl = CalculateLocationOnControl(new PointF(tri.RelX2, tri.RelZ2), mapView);
                     tri.P3OnControl = CalculateLocationOnControl(new PointF(tri.RelX3, tri.RelZ3), mapView);
-                    tri.Draw = tri.Show && TestingConfig.ShowCogTris;
+                    tri.Draw = tri.Show && TestingConfig.ShowShapes;
                 }
             }
 
@@ -582,7 +590,7 @@ namespace STROOP.Managers
                     tri.P1OnControl = CalculateLocationOnControl(new PointF(tri.RelX1, tri.RelZ1), mapView);
                     tri.P2OnControl = CalculateLocationOnControl(new PointF(tri.RelX2, tri.RelZ2), mapView);
                     tri.P3OnControl = CalculateLocationOnControl(new PointF(tri.RelX3, tri.RelZ3), mapView);
-                    tri.Draw = tri.Show && TestingConfig.ShowCogTris;
+                    tri.Draw = tri.Show && TestingConfig.ShowShapes;
                 }
             }
 
