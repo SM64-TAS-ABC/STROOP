@@ -257,15 +257,28 @@ namespace STROOP.Managers
 
         private (List<TriangleShape> floors, List<TriangleShape> walls) GetTriShapes(int numSides)
         {
-            double dist = 800;
+            double dist = 900;
             double radius = 300;
-            double xOffset = 1000;
+            double xOffset = 1300;
             double zOffset = 0;
+            double angleScale = 256;
+
+            double globalTimerAngle;
+            if (Config.Stream != null)
+            {
+                uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                ushort globalTimerUShort = (ushort)(globalTimer % 65536);
+                globalTimerAngle = -1 * globalTimerUShort * angleScale;
+            }
+            else
+            {
+                globalTimerAngle = 0;
+            }
 
             int index = numSides - SHAPE_MIN_SIDES;
             double x = (index % 3) * dist + xOffset;
             double z = (index / 3) * dist + zOffset;
-            return TriangleUtilities.GetWallFoorTrianglesForShape(numSides, radius, 0, x, z);
+            return TriangleUtilities.GetWallFoorTrianglesForShape(numSides, radius, globalTimerAngle, x, z);
         }
 
         public void UpdateFromMarioTab()
