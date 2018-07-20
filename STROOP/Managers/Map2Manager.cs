@@ -36,6 +36,12 @@ namespace STROOP.Managers
         List<TriangleMap2Object> _cog2FloorTris;
         List<TriangleMap2Object> _cogWallTris;
 
+        int SHAPE_MIN_SIDES = 3;
+        int SHAPE_MAX_SIDSE = 8;
+
+        List<List<TriangleMap2Object>> _triObjectWalls;
+        List<List<TriangleMap2Object>> _triObjectFloors;
+
         List<Map2Object> _mapObjects = new List<Map2Object>();
         public Dictionary<uint, Map2Object> _mapObjectDictionary = new Dictionary<uint, Map2Object>();
         Map2Gui _mapGui;
@@ -143,6 +149,27 @@ namespace STROOP.Managers
             {
                 _cogWallTris.Add(new TriangleMap2Object(Color.FromArgb(200, Color.Green), 3));
             }
+
+            _triObjectWalls = new List<List<TriangleMap2Object>>();
+            _triObjectFloors = new List<List<TriangleMap2Object>>();
+            for (int numSides = SHAPE_MIN_SIDES; numSides <= SHAPE_MAX_SIDSE; numSides++)
+            {
+                (List<TriangleShape> floors, List<TriangleShape> walls) = GetTriShapes(numSides);
+
+                List<TriangleMap2Object> wallTris = new List<TriangleMap2Object>();
+                foreach (TriangleShape tri in walls)
+                {
+                    wallTris.Add(new TriangleMap2Object(Color.FromArgb(200, Color.Green), 3));
+                }
+                _triObjectWalls.Add(wallTris);
+
+                List<TriangleMap2Object> floorTris = new List<TriangleMap2Object>();
+                foreach (TriangleShape tri in floors)
+                {
+                    floorTris.Add(new TriangleMap2Object(Color.FromArgb(200, Color.Cyan), 3));
+                }
+                _triObjectFloors.Add(floorTris);
+            }
         }
 
         public void Load()
@@ -167,6 +194,22 @@ namespace STROOP.Managers
             _cogFloorTris.ForEach(tri => _mapGraphics.AddMapObject(tri));
             _cog2FloorTris.ForEach(tri => _mapGraphics.AddMapObject(tri));
             _cogWallTris.ForEach(tri => _mapGraphics.AddMapObject(tri));
+
+            foreach (List<TriangleMap2Object> floorTris in _triObjectFloors)
+            {
+                foreach (TriangleMap2Object floorTri in floorTris)
+                {
+                    _mapGraphics.AddMapObject(floorTri);
+                }
+            }
+
+            foreach (List<TriangleMap2Object> wallTris in _triObjectWalls)
+            {
+                foreach (TriangleMap2Object wallTri in wallTris)
+                {
+                    _mapGraphics.AddMapObject(wallTri);
+                }
+            }
 
             //----- Register events ------
             // Set image
@@ -210,6 +253,11 @@ namespace STROOP.Managers
             int newWidth = _mapGui.GLControl.Width + 2 * zoomChange;
             int newHeight = _mapGui.GLControl.Height + 2 * zoomChange;
             _mapGui.GLControl.SetBounds(newX, newY, newWidth, newHeight);
+        }
+
+        private (List<TriangleShape> floors, List<TriangleShape> walls) GetTriShapes(int numSides)
+        {
+            return TriangleUtilities.GetWallFoorTrianglesForShape(numSides, 300, 0, 0, numSides * 1000);
         }
 
         public void UpdateFromMarioTab()
@@ -337,6 +385,24 @@ namespace STROOP.Managers
                 else
                 {
                     _cogWallTris[i].Show = false;
+                }
+            }
+
+            for (int numSides = SHAPE_MIN_SIDES; numSides <= SHAPE_MAX_SIDSE; numSides++)
+            {
+                (List<TriangleShape> floors, List<TriangleShape> walls) = GetTriShapes(numSides);
+                int index = numSides - SHAPE_MIN_SIDES;
+                List<TriangleMap2Object> floorTris = _triObjectFloors[index];
+                List<TriangleMap2Object> wallTris = _triObjectWalls[index];
+                for (int i = 0; i < floorTris.Count; i++)
+                {
+                    floorTris[i].Update(floors[i]);
+                    floorTris[i].Show = true;
+                }
+                for (int i = 0; i < wallTris.Count; i++)
+                {
+                    wallTris[i].Update(walls[i]);
+                    wallTris[i].Show = true;
                 }
             }
 
@@ -496,6 +562,28 @@ namespace STROOP.Managers
                 cogWallTri.P2OnControl = CalculateLocationOnControl(new PointF(cogWallTri.RelX2, cogWallTri.RelZ2), mapView);
                 cogWallTri.P3OnControl = CalculateLocationOnControl(new PointF(cogWallTri.RelX3, cogWallTri.RelZ3), mapView);
                 cogWallTri.Draw = cogWallTri.Show && TestingConfig.ShowCogTris;
+            }
+
+            foreach (List<TriangleMap2Object> tris in _triObjectFloors)
+            {
+                foreach (TriangleMap2Object tri in tris)
+                {
+                    tri.P1OnControl = CalculateLocationOnControl(new PointF(tri.RelX1, tri.RelZ1), mapView);
+                    tri.P2OnControl = CalculateLocationOnControl(new PointF(tri.RelX2, tri.RelZ2), mapView);
+                    tri.P3OnControl = CalculateLocationOnControl(new PointF(tri.RelX3, tri.RelZ3), mapView);
+                    tri.Draw = tri.Show && TestingConfig.ShowCogTris;
+                }
+            }
+
+            foreach (List<TriangleMap2Object> tris in _triObjectWalls)
+            {
+                foreach (TriangleMap2Object tri in tris)
+                {
+                    tri.P1OnControl = CalculateLocationOnControl(new PointF(tri.RelX1, tri.RelZ1), mapView);
+                    tri.P2OnControl = CalculateLocationOnControl(new PointF(tri.RelX2, tri.RelZ2), mapView);
+                    tri.P3OnControl = CalculateLocationOnControl(new PointF(tri.RelX3, tri.RelZ3), mapView);
+                    tri.Draw = tri.Show && TestingConfig.ShowCogTris;
+                }
             }
 
             // Calculate object slot's cooridnates

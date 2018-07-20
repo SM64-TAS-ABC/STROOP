@@ -182,7 +182,7 @@ namespace STROOP.Utilities
             return triShapes;
         }
 
-        public static List<TriangleShape> GetTrianglesForShape(
+        public static (List<TriangleShape> floors, List<TriangleShape> walls) GetWallFoorTrianglesForShape(
             int numSides, double shapeRadius, double shapeAngle, int shapeX, int shapeZ)
         {
             List<(double, double)> vertices = new List<(double, double)>();
@@ -206,7 +206,7 @@ namespace STROOP.Utilities
                 vertexPairs.Add(((v1X, v1Z), (v2X, v2Z), xProj));
             }
 
-            List<TriangleShape> triShapes = new List<TriangleShape>();
+            List<TriangleShape> wallTris = new List<TriangleShape>();
             foreach (var ((x1, z1), (x2, z2), proj) in vertexPairs)
             {
                 double angle = MoreMath.AngleTo_AngleUnits(x1, z1, x2, z2);
@@ -219,10 +219,18 @@ namespace STROOP.Utilities
 
                 TriangleShape triShape1 = new TriangleShape(p1X, 0, p1Z, p2X, 0, p2Z, p3X, 0, p3Z);
                 TriangleShape triShape2 = new TriangleShape(p2X, 0, p2Z, p3X, 0, p3Z, p4X, 0, p4Z);
-                triShapes.Add(triShape1);
-                triShapes.Add(triShape2);
+                wallTris.Add(triShape1);
+                wallTris.Add(triShape2);
             }
-            return triShapes;
+
+            List<TriangleShape> floorTris = new List<TriangleShape>();
+            foreach (var ((x1, z1), (x2, z2), proj) in vertexPairs)
+            {
+                TriangleShape triShape = new TriangleShape(x1, 0, z1, x2, 0, z2, shapeX, 0, shapeZ);
+                floorTris.Add(triShape);
+            }
+
+            return (floorTris, wallTris);
         }
     }
 } 
