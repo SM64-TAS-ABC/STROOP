@@ -128,26 +128,31 @@
             // 
             // Column1
             // 
+            this.Column1.FillWeight = 600F;
             this.Column1.HeaderText = "Name";
             this.Column1.Name = "Column1";
             // 
             // Column2
             // 
+            this.Column2.FillWeight = 300F;
             this.Column2.HeaderText = "Value";
             this.Column2.Name = "Column2";
             // 
             // Column3
             // 
+            this.Column3.FillWeight = 200F;
             this.Column3.HeaderText = "Group";
             this.Column3.Name = "Column3";
             // 
             // Column4
             // 
+            this.Column4.FillWeight = 300F;
             this.Column4.HeaderText = "Group Name";
             this.Column4.Name = "Column4";
             // 
             // Column5
             // 
+            this.Column5.FillWeight = 200F;
             this.Column5.HeaderText = "Id";
             this.Column5.Name = "Column5";
             // 
