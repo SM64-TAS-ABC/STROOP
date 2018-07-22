@@ -32,24 +32,34 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ActionForm));
             this.dataGridViewM64Inputs = new System.Windows.Forms.DataGridView();
-            this.ColumnM64Frame = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnM64Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnM64X = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnM64Y = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnM64A = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64B = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64Z = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64S = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64R = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64CUp = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64CDown = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64CLeft = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64CRight = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64L = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64DUp = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64DDown = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64DLeft = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnM64DRight = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column17 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column18 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column19 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column20 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column21 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column22 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column23 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column24 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column25 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column26 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column27 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Column28 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewM64Inputs)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,24 +78,34 @@
             this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewM64Inputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewM64Inputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnM64Frame,
-            this.ColumnM64Id,
-            this.ColumnM64X,
-            this.ColumnM64Y,
-            this.ColumnM64A,
-            this.ColumnM64B,
-            this.ColumnM64Z,
-            this.ColumnM64S,
-            this.ColumnM64R,
-            this.ColumnM64CUp,
-            this.ColumnM64CDown,
-            this.ColumnM64CLeft,
-            this.ColumnM64CRight,
-            this.ColumnM64L,
-            this.ColumnM64DUp,
-            this.ColumnM64DDown,
-            this.ColumnM64DLeft,
-            this.ColumnM64DRight});
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column8,
+            this.Column9,
+            this.Column10,
+            this.Column11,
+            this.Column12,
+            this.Column13,
+            this.Column14,
+            this.Column15,
+            this.Column16,
+            this.Column17,
+            this.Column18,
+            this.Column19,
+            this.Column20,
+            this.Column21,
+            this.Column22,
+            this.Column23,
+            this.Column24,
+            this.Column25,
+            this.Column26,
+            this.Column27,
+            this.Column28});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -105,150 +125,145 @@
             this.dataGridViewM64Inputs.Size = new System.Drawing.Size(1061, 453);
             this.dataGridViewM64Inputs.TabIndex = 3;
             // 
-            // ColumnM64Frame
+            // Column1
             // 
-            this.ColumnM64Frame.DataPropertyName = "Frame";
-            this.ColumnM64Frame.FillWeight = 200F;
-            this.ColumnM64Frame.HeaderText = "Frame";
-            this.ColumnM64Frame.Name = "ColumnM64Frame";
-            this.ColumnM64Frame.ReadOnly = true;
-            this.ColumnM64Frame.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column1.HeaderText = "Name";
+            this.Column1.Name = "Column1";
             // 
-            // ColumnM64Id
+            // Column2
             // 
-            this.ColumnM64Id.DataPropertyName = "Id";
-            this.ColumnM64Id.FillWeight = 200F;
-            this.ColumnM64Id.HeaderText = "Id";
-            this.ColumnM64Id.Name = "ColumnM64Id";
-            this.ColumnM64Id.ReadOnly = true;
-            this.ColumnM64Id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column2.HeaderText = "Value";
+            this.Column2.Name = "Column2";
             // 
-            // ColumnM64X
+            // Column3
             // 
-            this.ColumnM64X.DataPropertyName = "X";
-            this.ColumnM64X.FillWeight = 200F;
-            this.ColumnM64X.HeaderText = "X";
-            this.ColumnM64X.Name = "ColumnM64X";
-            this.ColumnM64X.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column3.HeaderText = "Group";
+            this.Column3.Name = "Column3";
             // 
-            // ColumnM64Y
+            // Column4
             // 
-            this.ColumnM64Y.DataPropertyName = "Y";
-            this.ColumnM64Y.FillWeight = 200F;
-            this.ColumnM64Y.HeaderText = "Y";
-            this.ColumnM64Y.Name = "ColumnM64Y";
-            this.ColumnM64Y.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column4.HeaderText = "Group Name";
+            this.Column4.Name = "Column4";
             // 
-            // ColumnM64A
+            // Column5
             // 
-            this.ColumnM64A.DataPropertyName = "A";
-            this.ColumnM64A.HeaderText = "A";
-            this.ColumnM64A.Name = "ColumnM64A";
-            this.ColumnM64A.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column5.HeaderText = "Id";
+            this.Column5.Name = "Column5";
             // 
-            // ColumnM64B
+            // Column6
             // 
-            this.ColumnM64B.DataPropertyName = "B";
-            this.ColumnM64B.HeaderText = "B";
-            this.ColumnM64B.Name = "ColumnM64B";
-            this.ColumnM64B.ReadOnly = true;
-            this.ColumnM64B.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column6.HeaderText = "09 Stationary";
+            this.Column6.Name = "Column6";
             // 
-            // ColumnM64Z
+            // Column7
             // 
-            this.ColumnM64Z.DataPropertyName = "Z";
-            this.ColumnM64Z.HeaderText = "Z";
-            this.ColumnM64Z.Name = "ColumnM64Z";
-            this.ColumnM64Z.ReadOnly = true;
-            this.ColumnM64Z.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column7.HeaderText = "10 Moving";
+            this.Column7.Name = "Column7";
             // 
-            // ColumnM64S
+            // Column8
             // 
-            this.ColumnM64S.DataPropertyName = "S";
-            this.ColumnM64S.HeaderText = "S";
-            this.ColumnM64S.Name = "ColumnM64S";
-            this.ColumnM64S.ReadOnly = true;
-            this.ColumnM64S.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column8.HeaderText = "11 Airborne";
+            this.Column8.Name = "Column8";
             // 
-            // ColumnM64R
+            // Column9
             // 
-            this.ColumnM64R.DataPropertyName = "R";
-            this.ColumnM64R.HeaderText = "R";
-            this.ColumnM64R.Name = "ColumnM64R";
-            this.ColumnM64R.ReadOnly = true;
-            this.ColumnM64R.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column9.HeaderText = "12 Intangible";
+            this.Column9.Name = "Column9";
             // 
-            // ColumnM64CUp
+            // Column10
             // 
-            this.ColumnM64CUp.DataPropertyName = "C_Up";
-            this.ColumnM64CUp.HeaderText = "C^";
-            this.ColumnM64CUp.Name = "ColumnM64CUp";
-            this.ColumnM64CUp.ReadOnly = true;
-            this.ColumnM64CUp.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column10.HeaderText = "13 Swimming";
+            this.Column10.Name = "Column10";
             // 
-            // ColumnM64CDown
+            // Column11
             // 
-            this.ColumnM64CDown.DataPropertyName = "C_Down";
-            this.ColumnM64CDown.HeaderText = "Cv";
-            this.ColumnM64CDown.Name = "ColumnM64CDown";
-            this.ColumnM64CDown.ReadOnly = true;
-            this.ColumnM64CDown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column11.HeaderText = "14 Metal Water";
+            this.Column11.Name = "Column11";
             // 
-            // ColumnM64CLeft
+            // Column12
             // 
-            this.ColumnM64CLeft.DataPropertyName = "C_Left";
-            this.ColumnM64CLeft.HeaderText = "C<";
-            this.ColumnM64CLeft.Name = "ColumnM64CLeft";
-            this.ColumnM64CLeft.ReadOnly = true;
-            this.ColumnM64CLeft.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column12.HeaderText = "15 Short Hitbox";
+            this.Column12.Name = "Column12";
             // 
-            // ColumnM64CRight
+            // Column13
             // 
-            this.ColumnM64CRight.DataPropertyName = "C_Right";
-            this.ColumnM64CRight.HeaderText = "C>";
-            this.ColumnM64CRight.Name = "ColumnM64CRight";
-            this.ColumnM64CRight.ReadOnly = true;
-            this.ColumnM64CRight.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column13.HeaderText = "16 Riding Shell";
+            this.Column13.Name = "Column13";
             // 
-            // ColumnM64L
+            // Column14
             // 
-            this.ColumnM64L.DataPropertyName = "L";
-            this.ColumnM64L.HeaderText = "L";
-            this.ColumnM64L.Name = "ColumnM64L";
-            this.ColumnM64L.ReadOnly = true;
-            this.ColumnM64L.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column14.HeaderText = "17 Invulnerable";
+            this.Column14.Name = "Column14";
             // 
-            // ColumnM64DUp
+            // Column15
             // 
-            this.ColumnM64DUp.DataPropertyName = "D_Up";
-            this.ColumnM64DUp.HeaderText = "D^";
-            this.ColumnM64DUp.Name = "ColumnM64DUp";
-            this.ColumnM64DUp.ReadOnly = true;
-            this.ColumnM64DUp.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column15.HeaderText = "18 Butt/ Stomach Slide";
+            this.Column15.Name = "Column15";
             // 
-            // ColumnM64DDown
+            // Column16
             // 
-            this.ColumnM64DDown.DataPropertyName = "D_Down";
-            this.ColumnM64DDown.HeaderText = "Dv";
-            this.ColumnM64DDown.Name = "ColumnM64DDown";
-            this.ColumnM64DDown.ReadOnly = true;
-            this.ColumnM64DDown.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column16.HeaderText = "19 Diving";
+            this.Column16.Name = "Column16";
             // 
-            // ColumnM64DLeft
+            // Column17
             // 
-            this.ColumnM64DLeft.DataPropertyName = "D_Left";
-            this.ColumnM64DLeft.HeaderText = "D<";
-            this.ColumnM64DLeft.Name = "ColumnM64DLeft";
-            this.ColumnM64DLeft.ReadOnly = true;
-            this.ColumnM64DLeft.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column17.HeaderText = "20 On Pole";
+            this.Column17.Name = "Column17";
             // 
-            // ColumnM64DRight
+            // Column18
             // 
-            this.ColumnM64DRight.DataPropertyName = "D_Right";
-            this.ColumnM64DRight.HeaderText = "D>";
-            this.ColumnM64DRight.Name = "ColumnM64DRight";
-            this.ColumnM64DRight.ReadOnly = true;
-            this.ColumnM64DRight.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column18.HeaderText = "21 Hanging";
+            this.Column18.Name = "Column18";
+            // 
+            // Column19
+            // 
+            this.Column19.HeaderText = "22 Idle";
+            this.Column19.Name = "Column19";
+            // 
+            // Column20
+            // 
+            this.Column20.HeaderText = "23 Attacking";
+            this.Column20.Name = "Column20";
+            // 
+            // Column21
+            // 
+            this.Column21.HeaderText = "24 Interruptable by Wind";
+            this.Column21.Name = "Column21";
+            // 
+            // Column22
+            // 
+            this.Column22.HeaderText = "25 Control Jump Height";
+            this.Column22.Name = "Column22";
+            // 
+            // Column23
+            // 
+            this.Column23.HeaderText = "26 Allow First Person";
+            this.Column23.Name = "Column23";
+            // 
+            // Column24
+            // 
+            this.Column24.HeaderText = "27 Pause Exit";
+            this.Column24.Name = "Column24";
+            // 
+            // Column25
+            // 
+            this.Column25.HeaderText = "28 Swimming/ Flying";
+            this.Column25.Name = "Column25";
+            // 
+            // Column26
+            // 
+            this.Column26.HeaderText = "29 Water/ Text";
+            this.Column26.Name = "Column26";
+            // 
+            // Column27
+            // 
+            this.Column27.HeaderText = "30 (Never)";
+            this.Column27.Name = "Column27";
+            // 
+            // Column28
+            // 
+            this.Column28.HeaderText = "31 Throwing";
+            this.Column28.Name = "Column28";
             // 
             // ActionForm
             // 
@@ -271,23 +286,33 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridViewM64Inputs;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnM64Frame;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnM64Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnM64X;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnM64Y;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnM64A;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnM64B;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnM64Z;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnM64S;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnM64R;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnM64CUp;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnM64CDown;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnM64CLeft;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnM64CRight;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnM64L;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnM64DUp;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnM64DDown;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnM64DLeft;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnM64DRight;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column15;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column16;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column17;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column18;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column19;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column20;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column21;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column22;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column23;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column24;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column25;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column26;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column27;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column28;
     }
 }
