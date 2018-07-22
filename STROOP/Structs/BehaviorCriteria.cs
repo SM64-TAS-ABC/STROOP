@@ -13,6 +13,7 @@ namespace STROOP.Structs
         public uint? GfxId;
         public uint? SubType;
         public uint? Appearance;
+        public uint? SpawnObj;
 
         public override bool Equals(object obj)
         {
@@ -26,7 +27,7 @@ namespace STROOP.Structs
 
         public bool BehaviorOnly()
         {
-            return (!GfxId.HasValue && !SubType.HasValue && !Appearance.HasValue);
+            return (!GfxId.HasValue && !SubType.HasValue && !Appearance.HasValue && !SpawnObj.HasValue);
         }
 
         public bool CongruentTo(BehaviorCriteria otherCriteria)
@@ -41,6 +42,9 @@ namespace STROOP.Structs
                 return false;
 
             if (Appearance.HasValue && otherCriteria.Appearance.HasValue && Appearance.Value != otherCriteria.Appearance.Value)
+                return false;
+
+            if (SpawnObj.HasValue && otherCriteria.SpawnObj.HasValue && SpawnObj.Value != otherCriteria.SpawnObj.Value)
                 return false;
 
             return true;
@@ -60,13 +64,16 @@ namespace STROOP.Structs
             if (Appearance.HasValue && otherCriteria.Appearance.HasValue && Appearance.Value != otherCriteria.Appearance.Value)
                 return new BehaviorCriteria() { BehaviorAddress = BehaviorAddress, GfxId = GfxId, SubType = SubType };
 
+            if (SpawnObj.HasValue && otherCriteria.SpawnObj.HasValue && SpawnObj.Value != otherCriteria.SpawnObj.Value)
+                return new BehaviorCriteria() { BehaviorAddress = BehaviorAddress, GfxId = GfxId, SubType = SubType, Appearance = Appearance };
+
             return this;
         }
 
         public static bool operator ==(BehaviorCriteria a, BehaviorCriteria b)
         {
             return (a.BehaviorAddress == b.BehaviorAddress && a.GfxId == b.GfxId
-                && a.SubType == b.SubType && a.Appearance == b.Appearance);
+                && a.SubType == b.SubType && a.Appearance == b.Appearance && a.SpawnObj == b.SpawnObj);
         }
 
         public static bool operator !=(BehaviorCriteria a, BehaviorCriteria b)
@@ -81,6 +88,7 @@ namespace STROOP.Structs
             hash = hash * 23 + GfxId.GetHashCode();
             hash = hash * 23 + SubType.GetHashCode();
             hash = hash * 23 + Appearance.GetHashCode();
+            hash = hash * 23 + SpawnObj.GetHashCode();
             return hash;
         }
 
