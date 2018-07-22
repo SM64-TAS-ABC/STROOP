@@ -130,6 +130,13 @@ namespace STROOP.Structs
             return id;
         }
 
+        public ushort GetGroup(uint? actionNullable = null)
+        {
+            uint action = actionNullable ?? Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.ActionOffset);
+            ushort actionGroup = (ushort)(action & 0x000001C0);
+            return actionGroup;
+        }
+
         public string GetGroupName(uint? actionNullable = null)
         {
             uint action = actionNullable ?? Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.ActionOffset);
