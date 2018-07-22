@@ -110,5 +110,30 @@ namespace STROOP.Structs
                 return _defaultHandsfree;
             return _actionTable[action].Handsfree.Value;
         }
+
+        public string GetGroupName(uint? actionNullable = null)
+        {
+            uint action = actionNullable ?? Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.ActionOffset);
+            uint actionGroup = action & 0x000001C0;
+            switch (actionGroup)
+            {
+                case 0x000:
+                    return "Stationary";
+                case 0x040:
+                    return "Moving";
+                case 0x080:
+                    return "Airborne";
+                case 0x0C0:
+                    return "Submerged";
+                case 0x100:
+                    return "Cutscene";
+                case 0x140:
+                    return "Automatic";
+                case 0x180:
+                    return "Object";
+                default:
+                    return "Unknown Group";
+            }
+        }
     }
 }

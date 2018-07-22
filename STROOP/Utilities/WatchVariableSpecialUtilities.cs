@@ -1873,6 +1873,13 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            _dictionary.Add("ActionGroupDescription",
+                ((uint dummy) =>
+                {
+                    return TableConfig.MarioActions.GetGroupName();
+                },
+                DEFAULT_SETTER));
+
             _dictionary.Add("MarioAnimationDescription",
                 ((uint dummy) =>
                 {

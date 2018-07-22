@@ -20,6 +20,7 @@
 
   <Data type="uint" offset="0x0C" base="Mario" mask="0x000001FF" display="ushort" useHex="true" color="Pink">Action ID</Data>
   <Data type="uint" offset="0x0C" base="Mario" mask="0x000001C0" display="ushort" useHex="true" color="Pink">Action Group</Data>
+  <Data base="None" specialType="ActionGroupDescription" subclass="String" color="Pink">Action Group Desc.</Data>
 
   <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000200">09 Stationary</Data>
   <Data type="uint" offset="0x0C" base="Mario" subclass="Boolean" mask="0x00000400">10 Moving</Data>
