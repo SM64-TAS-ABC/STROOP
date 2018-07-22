@@ -65,6 +65,7 @@
             // 
             // dataGridViewActions
             // 
+            this.dataGridViewActions.AllowUserToAddRows = false;
             this.dataGridViewActions.AllowUserToDeleteRows = false;
             this.dataGridViewActions.AllowUserToOrderColumns = true;
             this.dataGridViewActions.AllowUserToResizeRows = false;
