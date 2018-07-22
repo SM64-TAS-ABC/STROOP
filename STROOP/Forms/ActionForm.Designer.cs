@@ -132,145 +132,196 @@
             this.Column1.FillWeight = 600F;
             this.Column1.HeaderText = "Name";
             this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Column2
             // 
             this.Column2.FillWeight = 300F;
             this.Column2.HeaderText = "Value";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // Column3
             // 
             this.Column3.FillWeight = 200F;
             this.Column3.HeaderText = "Group";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // Column4
             // 
             this.Column4.FillWeight = 300F;
             this.Column4.HeaderText = "Group Name";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // Column5
             // 
             this.Column5.FillWeight = 200F;
             this.Column5.HeaderText = "Id";
             this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // Column6
             // 
             this.Column6.HeaderText = "09 Stationary";
             this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Column7
             // 
             this.Column7.HeaderText = "10 Moving";
             this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Column8
             // 
             this.Column8.HeaderText = "11 Airborne";
             this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Column9
             // 
             this.Column9.HeaderText = "12 Intangible";
             this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Column10
             // 
             this.Column10.HeaderText = "13 Swimming";
             this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Column11
             // 
             this.Column11.HeaderText = "14 Metal Water";
             this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Column12
             // 
             this.Column12.HeaderText = "15 Short Hitbox";
             this.Column12.Name = "Column12";
+            this.Column12.ReadOnly = true;
+            this.Column12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Column13
             // 
             this.Column13.HeaderText = "16 Riding Shell";
             this.Column13.Name = "Column13";
+            this.Column13.ReadOnly = true;
+            this.Column13.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Column14
             // 
             this.Column14.HeaderText = "17 Invulnerable";
             this.Column14.Name = "Column14";
+            this.Column14.ReadOnly = true;
+            this.Column14.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Column15
             // 
             this.Column15.HeaderText = "18 Butt/ Stomach Slide";
             this.Column15.Name = "Column15";
+            this.Column15.ReadOnly = true;
+            this.Column15.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Column16
             // 
             this.Column16.HeaderText = "19 Diving";
             this.Column16.Name = "Column16";
+            this.Column16.ReadOnly = true;
+            this.Column16.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Column17
             // 
             this.Column17.HeaderText = "20 On Pole";
             this.Column17.Name = "Column17";
+            this.Column17.ReadOnly = true;
+            this.Column17.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Column18
             // 
             this.Column18.HeaderText = "21 Hanging";
             this.Column18.Name = "Column18";
+            this.Column18.ReadOnly = true;
+            this.Column18.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Column19
             // 
             this.Column19.HeaderText = "22 Idle";
             this.Column19.Name = "Column19";
+            this.Column19.ReadOnly = true;
+            this.Column19.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Column20
             // 
             this.Column20.HeaderText = "23 Attacking";
             this.Column20.Name = "Column20";
+            this.Column20.ReadOnly = true;
+            this.Column20.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Column21
             // 
             this.Column21.HeaderText = "24 Interruptable by Wind";
             this.Column21.Name = "Column21";
+            this.Column21.ReadOnly = true;
+            this.Column21.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Column22
             // 
             this.Column22.HeaderText = "25 Control Jump Height";
             this.Column22.Name = "Column22";
+            this.Column22.ReadOnly = true;
+            this.Column22.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Column23
             // 
             this.Column23.HeaderText = "26 Allow First Person";
             this.Column23.Name = "Column23";
+            this.Column23.ReadOnly = true;
+            this.Column23.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Column24
             // 
             this.Column24.HeaderText = "27 Pause Exit";
             this.Column24.Name = "Column24";
+            this.Column24.ReadOnly = true;
+            this.Column24.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Column25
             // 
             this.Column25.HeaderText = "28 Swimming/ Flying";
             this.Column25.Name = "Column25";
+            this.Column25.ReadOnly = true;
+            this.Column25.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Column26
             // 
             this.Column26.HeaderText = "29 Water/ Text";
             this.Column26.Name = "Column26";
+            this.Column26.ReadOnly = true;
+            this.Column26.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Column27
             // 
             this.Column27.HeaderText = "30 (Never)";
             this.Column27.Name = "Column27";
+            this.Column27.ReadOnly = true;
+            this.Column27.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Column28
             // 
             this.Column28.HeaderText = "31 Throwing";
             this.Column28.Name = "Column28";
+            this.Column28.ReadOnly = true;
+            this.Column28.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // ActionForm
             // 
@@ -284,7 +335,7 @@
             this.MinimizeBox = false;
             this.Name = "ActionForm";
             this.ShowIcon = false;
-            this.Text = "Info";
+            this.Text = "Action Form";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActions)).EndInit();
             this.ResumeLayout(false);
 
