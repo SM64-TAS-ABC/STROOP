@@ -177,6 +177,12 @@
     <Compile Include="Enums\CoinParamsOrder.cs" />
     <Compile Include="Enums\AddToTabTypeEnum.cs" />
     <Compile Include="Extensions\FormExtensions.cs" />
+    <Compile Include="Forms\ActionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ActionForm.Designer.cs">
+      <DependentUpon>ActionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\LoadingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -605,6 +611,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Map\MapObjectControl.resx">
       <DependentUpon>MapObjectControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ActionForm.resx">
+      <DependentUpon>ActionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>
