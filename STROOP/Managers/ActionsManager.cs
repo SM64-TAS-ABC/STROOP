@@ -26,6 +26,11 @@ namespace STROOP.Managers
 
             textBoxActionDescription.DoubleClick += (sender, e) => SelectionForm.ShowActionSelectionForm();
             textBoxAnimationDescription.DoubleClick += (sender, e) => SelectionForm.ShowAnimationSelectionForm();
+
+            ControlUtilities.AddContextMenuStripFunctions(
+                textBoxActionDescription,
+                new List<string>() { "Open Action Form" },
+                new List<Action>() { () => { new ActionForm().Show(); }});
         }
 
         public override void Update(bool updateView)
