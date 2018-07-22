@@ -31,7 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ActionForm));
-            this.dataGridViewM64Inputs = new System.Windows.Forms.DataGridView();
+            this.dataGridViewActions = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,14 +60,15 @@
             this.Column26 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Column27 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Column28 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewM64Inputs)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActions)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridViewM64Inputs
+            // dataGridViewActions
             // 
-            this.dataGridViewM64Inputs.AllowUserToDeleteRows = false;
-            this.dataGridViewM64Inputs.AllowUserToOrderColumns = true;
-            this.dataGridViewM64Inputs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewActions.AllowUserToDeleteRows = false;
+            this.dataGridViewActions.AllowUserToOrderColumns = true;
+            this.dataGridViewActions.AllowUserToResizeRows = false;
+            this.dataGridViewActions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -75,9 +76,9 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewM64Inputs.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewM64Inputs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewM64Inputs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewActions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewActions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewActions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3,
@@ -113,17 +114,17 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewM64Inputs.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewM64Inputs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewM64Inputs.EnableHeadersVisualStyles = false;
-            this.dataGridViewM64Inputs.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewM64Inputs.Margin = new System.Windows.Forms.Padding(0);
-            this.dataGridViewM64Inputs.Name = "dataGridViewM64Inputs";
-            this.dataGridViewM64Inputs.RowHeadersVisible = false;
-            this.dataGridViewM64Inputs.RowTemplate.Height = 20;
-            this.dataGridViewM64Inputs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridViewM64Inputs.Size = new System.Drawing.Size(1061, 453);
-            this.dataGridViewM64Inputs.TabIndex = 3;
+            this.dataGridViewActions.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewActions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewActions.EnableHeadersVisualStyles = false;
+            this.dataGridViewActions.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewActions.Margin = new System.Windows.Forms.Padding(0);
+            this.dataGridViewActions.Name = "dataGridViewActions";
+            this.dataGridViewActions.RowHeadersVisible = false;
+            this.dataGridViewActions.RowTemplate.Height = 20;
+            this.dataGridViewActions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridViewActions.Size = new System.Drawing.Size(1061, 453);
+            this.dataGridViewActions.TabIndex = 3;
             // 
             // Column1
             // 
@@ -270,7 +271,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1061, 453);
-            this.Controls.Add(this.dataGridViewM64Inputs);
+            this.Controls.Add(this.dataGridViewActions);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(10000, 10000);
@@ -278,14 +279,14 @@
             this.Name = "ActionForm";
             this.ShowIcon = false;
             this.Text = "Info";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewM64Inputs)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewActions)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridViewM64Inputs;
+        private System.Windows.Forms.DataGridView dataGridViewActions;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;

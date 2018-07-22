@@ -64,6 +64,18 @@ namespace STROOP.Structs
             return actionNameList;
         }
 
+        public List<uint> GetActionList()
+        {
+            List<uint> actions = _actionTable.Keys.ToList();
+            actions.Sort((uint a, uint b) =>
+            {
+                uint aId = GetId(a);
+                uint bId = GetId(b);
+                return aId.CompareTo(bId);
+            });
+            return actions;
+        }
+
         public uint? GetActionFromName(string actionName)
         {
             if (!_actionNameTable.ContainsKey(actionName))
@@ -109,6 +121,13 @@ namespace STROOP.Structs
             if (!_actionTable.ContainsKey(action))
                 return _defaultHandsfree;
             return _actionTable[action].Handsfree.Value;
+        }
+
+        public ushort GetId(uint? actionNullable = null)
+        {
+            uint action = actionNullable ?? Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.ActionOffset);
+            ushort id = (ushort)(action & 0x000001FF);
+            return id;
         }
 
         public string GetGroupName(uint? actionNullable = null)
