@@ -6,16 +6,19 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using STROOP.Structs.Configurations;
 
 namespace STROOP.Structs
 {
     public class MapAssociations
     {
         Dictionary<Tuple<byte, byte>, List<MapLayout>> _maps = new Dictionary<Tuple<byte, byte>, List<MapLayout>>();
+        Dictionary<string, BackgroundImage> _backgroundImageDictionary = new Dictionary<string, BackgroundImage>();
 
         public MapLayout DefaultMap;
 
-        public string FolderPath;
+        public string MapImageFolderPath;
+        public string BackgroundImageFolderPath;
 
         public void AddAssociation(MapLayout map)
         {
@@ -34,41 +37,51 @@ namespace STROOP.Structs
             return _maps[mapKey];
         }
 
-        public Bitmap GetMapImage(MapLayout map)
+        public List<MapLayout> GetLevelAreaMaps(byte level, byte area, ushort loadingPoint, ushort missionLayout)
         {
-            var path = Path.Combine(FolderPath, map.ImagePath);
-            Bitmap image;
-            using (Bitmap preLoad = Bitmap.FromFile(path) as Bitmap)
-            {
-                int maxSize = 1080;
-                int largest = Math.Max(preLoad.Width, preLoad.Height);
-                float scale = 1;
-                if (largest > maxSize)
-                    scale = largest / maxSize;
-                
-                image = new Bitmap(preLoad, new Size((int) (preLoad.Width / scale), (int) (preLoad.Height / scale)));
-            }
-            return image;
+            List<MapLayout> mapList = GetLevelAreaMaps(level, area);
+            mapList = mapList.FindAll(map => map.LoadingPoint == null || map.LoadingPoint == loadingPoint);
+            mapList = mapList.FindAll(map => map.MissionLayout == null || map.MissionLayout == missionLayout);
+            return mapList;
         }
 
-        public Bitmap GetMapBackgroundImage(MapLayout map)
+        public MapLayout GetBestMap(byte level, byte area, ushort loadingPoint, ushort missionLayout, float y)
         {
-            if (map.BackgroundPath == null)
-                return null;
-
-            var path = Path.Combine(FolderPath, map.BackgroundPath);
-            Bitmap image;
-            using (Bitmap preLoad = Image.FromFile(path) as Bitmap)
+            List<MapLayout> mapList = GetLevelAreaMaps(level, area, loadingPoint, missionLayout);
+            mapList = mapList.FindAll(map => map.Y <= y);
+            if (mapList.Count == 0) return Config.MapAssociations.DefaultMap;
+            MapLayout bestMap = mapList.First();
+            foreach (MapLayout map in mapList)
             {
-                int maxSize = 1080;
-                int largest = Math.Max(preLoad.Width, preLoad.Height);
-                float scale = 1;
-                if (largest > maxSize)
-                    scale = largest / maxSize;
-
-                image = new Bitmap(preLoad, new Size((int)(preLoad.Width / scale), (int)(preLoad.Height / scale)));
+                if (map.Y > bestMap.Y) bestMap = map;
             }
-            return image;
+            return bestMap;
+        }
+
+        public List<MapLayout> GetAllMaps()
+        {
+            List<MapLayout> maps = _maps.Values.SelectMany(list => list).ToList();
+            maps.Sort();
+            return maps;
+        }
+
+        public void AddBackgroundImage(BackgroundImage backgroundImage)
+        {
+            _backgroundImageDictionary.Add(backgroundImage.Name, backgroundImage);
+        }
+
+        public BackgroundImage? GetBackgroundImage(string name)
+        {
+            if (name == null) return null;
+            if (_backgroundImageDictionary.ContainsKey(name))
+                return _backgroundImageDictionary[name];
+            else
+                return null;
+        }
+
+        public List<BackgroundImage> GetAllBackgroundImages()
+        {
+            return _backgroundImageDictionary.Values.ToList();
         }
     }
 }

@@ -10,6 +10,7 @@ using STROOP.Utilities;
 using STROOP.Forms;
 using STROOP.Models;
 using STROOP.Ttc;
+using STROOP.Controls;
 
 namespace STROOP.Managers
 {
@@ -451,7 +452,19 @@ namespace STROOP.Managers
                 List<int> dustFrames = dustFramesNullable.ConvertAll(dustFrameNullable => dustFrameNullable.Value);
                 InfoForm.ShowValue(TtcMain.Simulate(endFrame, dustFrames));
             };
-            
+
+            // Pendulum Manipulation
+
+            GroupBox groupBoxTestingPendulumManipulation = tabControl.Controls["groupBoxTestingPendulumManipulation"] as GroupBox;
+            BetterTextbox textBoxTestingPendulumManipulationPendulum = groupBoxTestingPendulumManipulation.Controls["textBoxTestingPendulumManipulationPendulum"] as BetterTextbox;
+            BetterTextbox textBoxTestingPendulumManipulationIterations = groupBoxTestingPendulumManipulation.Controls["textBoxTestingPendulumManipulationIterations"] as BetterTextbox;
+            Button buttonTestingPendulumManipulationCalculate = groupBoxTestingPendulumManipulation.Controls["buttonTestingPendulumManipulationCalculate"] as Button;
+            buttonTestingPendulumManipulationCalculate.Click += (sender, e) =>
+            {
+                uint pendulumAddress = ParsingUtilities.ParseHexNullable(textBoxTestingPendulumManipulationPendulum.Text) ?? 0;
+                int numIterations = ParsingUtilities.ParseInt(textBoxTestingPendulumManipulationIterations.Text);
+                TtcMain.PrintIdealPendulumManipulation(pendulumAddress, numIterations, true);
+            };
         }
 
         private List<uint> GetScuttlebugAddresses()

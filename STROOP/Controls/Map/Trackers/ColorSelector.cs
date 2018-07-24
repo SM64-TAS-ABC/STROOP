@@ -25,12 +25,19 @@ namespace STROOP.Controls.Map.Trackers
             {
                 return panelColorSelector.BackColor;
             }
-            private set
+            set
             {
+                Color originalColor = SelectedColor;
                 panelColorSelector.BackColor = value;
                 textBoxColorSelector.Text = ColorUtilities.ConvertColorToDecimal(value);
+                if (value != originalColor)
+                {
+                    _colorChangeActions.ForEach(action => action(value));
+                }
             }
         }
+
+        private List<Action<Color>> _colorChangeActions = new List<Action<Color>>();
 
         public ColorSelector()
         {
@@ -44,6 +51,11 @@ namespace STROOP.Controls.Map.Trackers
                 Color? newColor = ColorUtilities.GetColorFromDialog(SelectedColor);
                 if (newColor.HasValue) SelectedColor = newColor.Value;
             };
+        }
+
+        public void AddColorChangeAction(Action<Color> action)
+        {
+            _colorChangeActions.Add(action);
         }
 
         private void SubmitColorText()

@@ -24,19 +24,20 @@ namespace STROOP.Controls.Map.Objects
         MapGraphicsImageItem _layout;
         MapGraphicsTrianglesItem _triangles;
 
-        byte _currentLevel, _currentArea;
-        ushort _currentLoadingPoint, _currentMissionLayout;
         MapLayout _currentMap;
-        List<MapLayout> _currentMapList = null;
-        MapAssociations _mapAssoc;
+        Bitmap _currentBackground;
 
         public override IEnumerable<MapGraphicsItem> GraphicsItems => new List<MapGraphicsItem>() { _background, _layout, _triangles };
 
+        public override Bitmap BitmapImage
+        {
+            get => null;
+        }
+
         public ColorMethodType ColorMethod;
 
-        public MapLevelObject(MapAssociations mapAssoc)
+        public MapLevelObject() : base("Level", null, null, false, null)
         {
-            _mapAssoc = mapAssoc;
             _background = new MapGraphicsBackgroundItem(null);
             _layout = new MapGraphicsImageItem(null);
             _triangles = new MapGraphicsTrianglesItem();
@@ -45,58 +46,41 @@ namespace STROOP.Controls.Map.Objects
         public override void Update()
         {
             UpdateMap();
+            UpdateBackground();
             UpdateTriangles();
         }
 
         private void UpdateMap()
         {
             LevelDataModel level = DataModels.Level;
+            float marioRelY = DataModels.Mario.PURelative_Y;
+            MapLayout bestMap = Config.MapAssociations.GetBestMap(
+                level.Index, level.Area, level.LoadingPoint, level.MissionLayout, marioRelY);
 
-            // Find new map list
-            if (_currentMapList == null || _currentLevel != level.Index || _currentArea != level.Area
-                || _currentLoadingPoint != level.LoadingPoint || _currentMissionLayout != level.MissionLayout)
+            object mapLayoutChoice = Config.MapGui.ComboBoxLevel.SelectedItem;
+            if (mapLayoutChoice is MapLayout)
             {
-                _currentLevel = level.Index;
-                _currentArea = level.Area;
-                _currentLoadingPoint = level.LoadingPoint;
-                _currentMissionLayout = level.MissionLayout;
-                _currentMapList = _mapAssoc.GetLevelAreaMaps(level.Index, level.Area);
-
-                // Look for maps with correct loading points
-                var mapListLPFiltered = _currentMapList.Where((map) => map.LoadingPoint == level.LoadingPoint).ToList();
-                if (mapListLPFiltered.Count > 0)
-                    _currentMapList = mapListLPFiltered;
-                else
-                    _currentMapList = _currentMapList.Where((map) => !map.LoadingPoint.HasValue).ToList();
-
-                var mapListMLFiltered = _currentMapList.Where((map) => map.MissionLayout == level.MissionLayout).ToList();
-                if (mapListMLFiltered.Count > 0)
-                    _currentMapList = mapListMLFiltered;
-                else
-                    _currentMapList = _currentMapList.Where((map) => !map.MissionLayout.HasValue).ToList();
+                bestMap = (MapLayout)mapLayoutChoice;
             }
 
+            ChangeCurrentMap(bestMap);
+        }
+
+        private void UpdateBackground()
+        {
+            LevelDataModel level = DataModels.Level;
             float marioRelY = DataModels.Mario.PURelative_Y;
+            MapLayout bestMap = Config.MapAssociations.GetBestMap(
+                level.Index, level.Area, level.LoadingPoint, level.MissionLayout, marioRelY);
 
-            // Filter out all maps that are lower than Mario
-            var mapListYFiltered = _currentMapList.Where((map) => map.Y <= marioRelY).ToList();
-
-            // If no map is available display the default image
-            if (mapListYFiltered.Count <= 0)
+            object backgroundChoice = Config.MapGui.ComboBoxBackground.SelectedItem;
+            if (backgroundChoice is BackgroundImage background)
             {
-                ChangeCurrentMap(_mapAssoc.DefaultMap);
+                ChangeBackground(background.Image);
             }
             else
             {
-                // Pick the map closest to mario (yet still above Mario)
-                MapLayout bestMap = mapListYFiltered.First();
-                foreach (MapLayout map in mapListYFiltered)
-                {
-                    if (map.Y > bestMap.Y)
-                        bestMap = map;
-                }
-
-                ChangeCurrentMap(bestMap);
+                ChangeBackground(bestMap.BackgroundImage);
             }
         }
 
@@ -154,17 +138,21 @@ namespace STROOP.Controls.Map.Objects
             if (_currentMap == map)
                 return;
 
-            // Change and set a new map
-            using (var mapBackground = _mapAssoc.GetMapBackgroundImage(map))
-                _background.ChangeImage(mapBackground);
-
-            using (var mapLayout = _mapAssoc.GetMapImage(map))
-                _layout.ChangeImage(mapLayout);
+            _layout.ChangeImage(map.MapImage);
+            _currentMap = map;
 
             _layout.Region = map.Coordinates;
             _layout.Y = map.Y != float.MinValue ? map.Y : 0.0f;
+        }
 
-            _currentMap = map;
+        private void ChangeBackground(Bitmap background)
+        {
+            // Don't change the background if it isn't different
+            if (_currentBackground == background)
+                return;
+
+            _background.ChangeImage(background);
+            _currentBackground = background;
         }
     }
 }

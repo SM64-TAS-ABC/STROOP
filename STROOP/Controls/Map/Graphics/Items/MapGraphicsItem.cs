@@ -1,6 +1,7 @@
 ﻿using OpenTK;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,9 @@ namespace STROOP.Controls.Map.Graphics.Items
         /// <summary>
         /// Should the item be drawn
         /// </summary>
-        public bool Visible { get; set; } = true;
+        public bool Visible { get; set; }
+
+        public virtual Bitmap BitmapImage { get; set; }
 
         /// <summary>
         /// Drawing type
@@ -36,6 +39,11 @@ namespace STROOP.Controls.Map.Graphics.Items
         /// Make null for 3D items.
         /// </summary>
         public abstract float? Depth { get; }
+
+        public MapGraphicsItem(bool visible)
+        {
+            Visible = visible;
+        }
 
         /// <summary>
         /// Model transformtation matrix

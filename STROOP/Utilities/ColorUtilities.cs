@@ -11,7 +11,7 @@ namespace STROOP.Utilities
         private static readonly Dictionary<string, string> ColorToParamsDictionary =
             new Dictionary<string, string>()
             {
-                ["Red"] = "#FFCCCC",
+                ["Red"] = "#FFD7D7",
                 ["Orange"] = "#FFE2B7",
                 ["Yellow"] = "#FFFFD0",
                 ["Green"] = "#CFFFCC",
@@ -53,7 +53,7 @@ namespace STROOP.Utilities
         {
             int? inputtedNumber = KeyboardUtilities.GetCurrentlyInputtedNumber();
 
-            if (inputtedNumber == 0) return LastSelectedColor;
+            if (inputtedNumber == 0) return SystemColors.Control;
 
             if (inputtedNumber.HasValue &&
                 inputtedNumber.Value > 0 &&

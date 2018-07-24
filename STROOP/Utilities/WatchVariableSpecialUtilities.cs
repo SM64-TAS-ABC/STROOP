@@ -1,6 +1,7 @@
 ﻿using STROOP.Managers;
 using STROOP.Models;
 using STROOP.Structs.Configurations;
+using STROOP.Ttc;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
@@ -343,6 +344,14 @@ namespace STROOP.Structs
 
             // Object specific vars - Pendulum
 
+            _dictionary.Add("PendulumCountdown",
+                ((uint objAddress) =>
+                {
+                    int pendulumCountdown = GetPendulumCountdown(objAddress);
+                    return pendulumCountdown;
+                },
+                DEFAULT_SETTER));
+
             _dictionary.Add("PendulumAmplitude",
                 ((uint objAddress) =>
                 {
@@ -383,6 +392,24 @@ namespace STROOP.Structs
                     success &= Config.Stream.SetValue(amplitude, objAddress + ObjectConfig.PendulumAngleOffset);
                     return success;
                 }));
+
+            // Object specific vars - Cog
+
+            _dictionary.Add("CogCountdown",
+                ((uint objAddress) =>
+                {
+                    int cogCountdown = GetCogNumFramesInRotation(objAddress);
+                    return cogCountdown;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("CogEndingYaw",
+                ((uint objAddress) =>
+                {
+                    ushort cogEndingYaw = GetCogEndingYaw(objAddress);
+                    return cogEndingYaw;
+                },
+                DEFAULT_SETTER));
 
             // Object specific vars - Waypoint
 
@@ -1105,6 +1132,29 @@ namespace STROOP.Structs
                     double newPeakHeight = floorY + fallHeight;
                     return Config.Stream.SetValue((float)newPeakHeight, MarioConfig.StructAddress + MarioConfig.PeakHeightOffset);
                 }));
+
+            _dictionary.Add("WalkingDistance",
+                ((uint dummy) =>
+                {
+                    float hSpeed = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.HSpeedOffset);
+                    float remainder = hSpeed % 1;
+                    int numFrames = (int)Math.Abs(Math.Truncate(hSpeed)) + 1;
+                    float sum = (hSpeed + remainder) * numFrames / 2;
+                    float distance = sum - hSpeed;
+                    return distance;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("WalkingDistanceDifferenceMarioToPoint",
+                ((uint dummy) =>
+                {
+                    PositionAngle marioPos = PositionAngle.Mario;
+                    PositionAngle pointPos = SpecialConfig.PointPA;
+                    float walkingDistance = (float)_dictionary.Get("WalkingDistance").Item1(0);
+                    double diff = walkingDistance - PositionAngle.GetHDistance(marioPos, pointPos);
+                    return diff;
+                },
+                DEFAULT_SETTER));
             
             // HUD vars
 
@@ -1161,6 +1211,38 @@ namespace STROOP.Structs
                 {
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
                     return triStruct.Classification.ToString();
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("TriangleDescription",
+                ((uint triAddress) =>
+                {
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    return triStruct.Description;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("TriangleSlipperiness",
+                ((uint triAddress) =>
+                {
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    return triStruct.Slipperiness;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("TriangleSlipperinessDescription",
+                ((uint triAddress) =>
+                {
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    return triStruct.SlipperinessDescription;
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("TriangleExertion",
+                ((uint triAddress) =>
+                {
+                    TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
+                    return triStruct.Exertion ? 1 : 0;
                 },
                 DEFAULT_SETTER));
 
@@ -1312,14 +1394,13 @@ namespace STROOP.Structs
                 {
                     ushort marioAngle = Config.Stream.GetUInt16(MarioConfig.StructAddress + MarioConfig.FacingYawOffset);
                     double uphillAngle = GetTriangleUphillAngle(triAddress);
-                    if (Double.IsNaN(uphillAngle)) return Double.NaN.ToString();
+                    if (Double.IsNaN(uphillAngle)) return "No Hill";
                     double angleDiff = marioAngle - uphillAngle;
                     angleDiff = MoreMath.NormalizeAngleDoubleSigned(angleDiff);
                     bool uphill = angleDiff >= -16384 && angleDiff <= 16384;
                     return uphill ? "Uphill" : "Downhill";
                 },
                 DEFAULT_SETTER));
-
 
             _dictionary.Add("WallKickAngleAway",
                 ((uint triAddress) =>
@@ -1760,10 +1841,19 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
-            _dictionary.Add("ChecksumCalculated",
+            _dictionary.Add("FileChecksumCalculated",
                 ((uint fileAddress) =>
                 {
                     return Config.FileManager.GetChecksum(fileAddress);
+                },
+                DEFAULT_SETTER));
+
+            // Main Save vars
+
+            _dictionary.Add("MainSaveChecksumCalculated",
+                ((uint mainSaveAddress) =>
+                {
+                    return Config.MainSaveManager.GetChecksum(mainSaveAddress);
                 },
                 DEFAULT_SETTER));
 
@@ -1780,6 +1870,13 @@ namespace STROOP.Structs
                 ((uint dummy) =>
                 {
                     return TableConfig.MarioActions.GetPrevActionName();
+                },
+                DEFAULT_SETTER));
+
+            _dictionary.Add("ActionGroupDescription",
+                ((uint dummy) =>
+                {
+                    return TableConfig.MarioActions.GetGroupName();
                 },
                 DEFAULT_SETTER));
 
@@ -2231,6 +2328,14 @@ namespace STROOP.Structs
 
             // Misc vars
 
+            _dictionary.Add("GlobalTimerMod64",
+                ((uint dummy) =>
+                {
+                    uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                    return globalTimer % 64;
+                },
+                DEFAULT_SETTER));
+
             _dictionary.Add("RngIndex",
                 ((uint dummy) =>
                 {
@@ -2397,6 +2502,13 @@ namespace STROOP.Structs
                     if (!ttcSpeedSettingNullable.HasValue) return false;
                     return Config.Stream.SetValue(ttcSpeedSettingNullable.Value, MiscConfig.TtcSpeedSettingAddress);
                 }));
+
+            _dictionary.Add("TtcSaveState",
+                ((uint dummy) =>
+                {
+                    return new TtcSaveState().ToString();
+                },
+                DEFAULT_SETTER));            
 
             // Area vars
 
@@ -2765,13 +2877,43 @@ namespace STROOP.Structs
             return (hSpeedTarget, hSpeedChange);
         }
 
-        private static float GetPendulumAmplitude(uint pendulumAddress)
+        public static int GetPendulumCountdown(uint pendulumAddress)
         {
             // Get pendulum variables
             float accelerationDirection = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAccelerationDirectionOffset);
             float accelerationMagnitude = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAccelerationMagnitudeOffset);
             float angularVelocity = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAngularVelocityOffset);
             float angle = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAngleOffset);
+            int waitingTimer = Config.Stream.GetInt32(pendulumAddress + ObjectConfig.PendulumWaitingTimerOffset);
+            return GetPendulumCountdown(accelerationDirection, accelerationMagnitude, angularVelocity, angle, waitingTimer);
+        }
+
+        public static int GetPendulumCountdown(
+             float accelerationDirection, float accelerationMagnitude, float angularVelocity, float angle, int waitingTimer)
+        {
+            return GetPendulumVars(accelerationDirection, accelerationMagnitude, angularVelocity, angle).ToTuple().Item2 + waitingTimer;
+        }
+
+        public static float GetPendulumAmplitude(uint pendulumAddress)
+        {
+            // Get pendulum variables
+            float accelerationDirection = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAccelerationDirectionOffset);
+            float accelerationMagnitude = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAccelerationMagnitudeOffset);
+            float angularVelocity = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAngularVelocityOffset);
+            float angle = Config.Stream.GetSingle(pendulumAddress + ObjectConfig.PendulumAngleOffset);
+            return GetPendulumAmplitude(accelerationDirection, accelerationMagnitude, angularVelocity, angle);
+        }
+
+        public static float GetPendulumAmplitude(
+            float accelerationDirection, float accelerationMagnitude, float angularVelocity, float angle)
+        {
+            return GetPendulumVars(accelerationDirection, accelerationMagnitude, angularVelocity, angle).ToTuple().Item1;
+        }
+
+        public static (float amplitude, int countdown) GetPendulumVars(
+            float accelerationDirection, float accelerationMagnitude, float angularVelocity, float angle)
+        {
+            // Get pendulum variables
             float acceleration = accelerationDirection * accelerationMagnitude;
 
             // Calculate one frame forwards to see if pendulum is speeding up or slowing down
@@ -2825,9 +2967,42 @@ namespace STROOP.Structs
             float slowDownDistance = (slowDownDuration + 1) * inflectionAngularVelocity / 2;
 
             // Combine the results from the speeding up phase and the slowing down phase
+            int totalDuration = speedUpDuration + slowDownDuration;
             float totalDistance = speedUpDistance + slowDownDistance;
             float amplitude = angle + totalDistance;
-            return amplitude;
+            return (amplitude, totalDuration);
+        }
+
+        public static int GetCogNumFramesInRotation(uint cogAddress)
+        {
+            ushort yawFacing = Config.Stream.GetUInt16(cogAddress + ObjectConfig.YawFacingOffset);
+            int currentYawVel = (int)Config.Stream.GetSingle(cogAddress + ObjectConfig.CogCurrentYawVelocity);
+            int targetYawVel = (int)Config.Stream.GetSingle(cogAddress + ObjectConfig.CogTargetYawVelocity);
+            return GetCogNumFramesInRotation(yawFacing, currentYawVel, targetYawVel);
+        }
+
+        public static int GetCogNumFramesInRotation(ushort yawFacing, int currentYawVel, int targetYawVel)
+        {
+            int diff = Math.Abs(targetYawVel - currentYawVel);
+            int numFrames = diff / 50;
+            if (numFrames == 0) numFrames = 1;
+            return numFrames;
+        }
+
+        public static ushort GetCogEndingYaw(uint cogAddress)
+        {
+            ushort yawFacing = Config.Stream.GetUInt16(cogAddress + ObjectConfig.YawFacingOffset);
+            int currentYawVel = (int)Config.Stream.GetSingle(cogAddress + ObjectConfig.CogCurrentYawVelocity);
+            int targetYawVel = (int)Config.Stream.GetSingle(cogAddress + ObjectConfig.CogTargetYawVelocity);
+            return GetCogEndingYaw(yawFacing, currentYawVel, targetYawVel);
+        }
+
+        public static ushort GetCogEndingYaw(ushort yawFacing, int currentYawVel, int targetYawVel)
+        {
+            int numFrames = GetCogNumFramesInRotation(yawFacing, currentYawVel, targetYawVel);
+            int remainingRotation = (currentYawVel + targetYawVel) * (numFrames + 1) / 2 - currentYawVel;
+            int endingYaw = yawFacing + remainingRotation;
+            return MoreMath.NormalizeAngleUshort(endingYaw);
         }
 
         private static double GetObjectTrajectoryFramesToYDist(double frames)

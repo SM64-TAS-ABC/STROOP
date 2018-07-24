@@ -36,8 +36,10 @@ namespace STROOP.Structs.Gui
         public ProgressBar ProgressBar;
         public Label LabelProgressBar;
 
-        public Button ButtonSetUsHeader;
-        public Button ButtonSetJpHeader;
+        public Button ButtonSetUsRom;
+        public Button ButtonSetJpRom;
+        public Button ButtonCopyRom;
+        public Button ButtonPasteRom;
 
         public BetterTextbox TextBoxOnValue;
 

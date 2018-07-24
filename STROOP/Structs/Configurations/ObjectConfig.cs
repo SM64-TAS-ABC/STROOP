@@ -20,8 +20,9 @@ namespace STROOP.Structs
 
         public static readonly uint BehaviorScriptOffset = 0x020C;
         public static readonly uint BehaviorGfxOffset = 0x14;
-        public static readonly uint BehaviorAppearanceOffset = 0xF0;
         public static readonly uint BehaviorSubtypeOffset = 0x0144;
+        public static readonly uint BehaviorAppearanceOffset = 0xF0;
+        public static readonly uint BehaviorSpawnObjOffset = 0xFC;
 
         public static readonly uint ModelPointerOffset = 0x218;
         public static readonly uint AnimationOffset = 0x3C;
@@ -91,6 +92,10 @@ namespace STROOP.Structs
         public static readonly uint PendulumAccelerationMagnitudeOffset = 0x100;
         public static readonly uint PendulumAngularVelocityOffset = 0xFC;
         public static readonly uint PendulumAngleOffset = 0xF8;
+        public static readonly uint PendulumWaitingTimerOffset = 0x104;
+
+        public static readonly uint CogCurrentYawVelocity = 0xF8;
+        public static readonly uint CogTargetYawVelocity = 0xFC;
 
         public static readonly uint WaypointOffset = 0x100;
         public static readonly uint PitchToWaypointOffset = 0x10A;

@@ -18,7 +18,7 @@ namespace STROOP.Controls.Map.Trackers
     {
         private readonly Object _objectLock = new Object();
 
-        public void MoveUpControl(Control mapTracker)
+        public void MoveUpControl(MapTracker mapTracker)
         {
             lock (_objectLock)
             {
@@ -29,7 +29,7 @@ namespace STROOP.Controls.Map.Trackers
             }
         }
 
-        public void MoveDownControl(Control mapTracker)
+        public void MoveDownControl(MapTracker mapTracker)
         {
             lock (_objectLock)
             {
@@ -40,15 +40,16 @@ namespace STROOP.Controls.Map.Trackers
             }
         }
 
-        public void RemoveControl(Control mapTracker)
+        public void RemoveControl(MapTracker mapTracker)
         {
             lock (_objectLock)
             {
+                mapTracker.CleanUp();
                 Controls.Remove(mapTracker);
             }
         }
 
-        public void AddNewControl(Control mapTracker)
+        public void AddNewControl(MapTracker mapTracker)
         {
             lock (_objectLock)
             {
@@ -60,19 +61,27 @@ namespace STROOP.Controls.Map.Trackers
         {
             lock (_objectLock)
             {
-                Controls.Clear();
+                while (Controls.Count > 0)
+                {
+                    RemoveControl(Controls[0] as MapTracker);
+                }
             }
         }
         
         public void UpdateControls()
         {
+            foreach (MapTracker tracker in Controls)
+            {
+                tracker.UpdateTracker();
+            }
+
             List<MapObject> listOrderOnTop = new List<MapObject>();
             List<MapObject> listOrderOnBottom = new List<MapObject>();
             List<MapObject> listOrderByDepth = new List<MapObject>();
 
             lock (_objectLock)
             {
-                foreach (MapTracker mapTracker in Controls.OfType<MapTracker>())
+                foreach (MapTracker mapTracker in Controls)
                 {
                     if (!mapTracker.Visible) continue;
                     switch (mapTracker.GetOrderType())
@@ -93,14 +102,21 @@ namespace STROOP.Controls.Map.Trackers
             }
 
             listOrderOnTop.Reverse();
-            listOrderOnBottom.Reverse();
-            listOrderByDepth.OrderBy(mapObj => mapObj.GetDepth());
 
-            List<MapObject> listMapObjects = new List<MapObject>();
-            listMapObjects.AddRange(listOrderOnBottom);
-            listMapObjects.AddRange(listOrderByDepth);
-            listMapObjects.AddRange(listOrderOnTop);
-            listMapObjects.ForEach(mapObject => mapObject.Update());
+            for (int i = 0; i < listOrderByDepth.Count; i++)
+            {
+                listOrderByDepth[i].DisplayLayer = 0;
+            }
+
+            for (int i = 0; i < listOrderOnTop.Count; i++)
+            {
+                listOrderOnTop[i].DisplayLayer = i + 1;
+            }
+
+            for (int i = 0; i < listOrderOnBottom.Count; i++)
+            {
+                listOrderOnBottom[i].DisplayLayer = -1 * (i + 1);
+            }
         }
 
     }

@@ -30,21 +30,21 @@ namespace STROOP.Ttc
         public int _blinkingTimer;
 
         //whether Mario is within 4000 units of the bob-omb
-        public bool _withinMarioRange;
+        public int _withinMarioRange;
 
         public TtcBobomb(TtcRng rng, uint address) :
             this(
                 rng: rng,
                 blinkingTimer: Config.Stream.GetInt32(address + 0xF4),
-                withinMarioRange: PositionAngle.GetDistance(PositionAngle.Obj(address), PositionAngle.Mario) < 4000)
+                withinMarioRange: PositionAngle.GetDistance(PositionAngle.Obj(address), PositionAngle.Mario) < 4000 ? 1 : 0)
         {
         }
 
-        public TtcBobomb(TtcRng rng) : this(rng, 0, true)
+        public TtcBobomb(TtcRng rng) : this(rng, 0, 1)
         {
         }
 
-        public TtcBobomb(TtcRng rng, int blinkingTimer, bool withinMarioRange) : base(rng)
+        public TtcBobomb(TtcRng rng, int blinkingTimer, int withinMarioRange) : base(rng)
         {
             _blinkingTimer = blinkingTimer;
             _withinMarioRange = withinMarioRange;
@@ -53,7 +53,7 @@ namespace STROOP.Ttc
         public override void Update()
         {
             //don't update at all if not within mario range
-            if (!_withinMarioRange) return;
+            if (_withinMarioRange == 0) return;
 
             if (_blinkingTimer > 0)
             { //currently blinking
@@ -71,14 +71,19 @@ namespace STROOP.Ttc
         /** Change whether Mario is within the bob-omb's
 	     *  4000 unit radius.
 	     */
-        public void SetWithinMarioRange(bool withinMarioRange)
+        public void SetWithinMarioRange(int withinMarioRange)
         {
             _withinMarioRange = withinMarioRange;
         }
 
         public override string ToString()
         {
-            return _id + OPENER + _blinkingTimer + CLOSER;
+            return _id + OPENER + _blinkingTimer + SEPARATOR + _withinMarioRange + CLOSER;
+        }
+
+        public override List<object> GetFields()
+        {
+            return new List<object>() { _blinkingTimer, _withinMarioRange };
         }
 
     }

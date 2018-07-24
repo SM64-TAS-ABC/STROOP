@@ -1,20 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="MissionTableSchema"
+<xs:schema id="TriangleInfoTableSchema"
     elementFormDefault="qualified"
-    xmlns="http://tempuri.org/MissionTableSchema.xsd"
-    xmlns:mstns="http://tempuri.org/MissionTableSchema.xsd"
+    xmlns="http://tempuri.org/TriangleInfoTableSchema.xsd"
+    xmlns:mstns="http://tempuri.org/TriangleInfoTableSchema.xsd"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:types="http://tempuri.org/ReusableTypes.xsd"
 >
   <xs:import namespace="http://tempuri.org/ReusableTypes.xsd" schemaLocation="ReusableTypes.xsd"/>
-  <xs:element name ="Missions">
+  <xs:element name ="TriangleInfo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="Mission" minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Triangle" minOccurs="0" maxOccurs="unbounded">
           <xs:complexType>
-            <xs:attribute name="courseIndex" use="required" type="xs:int"/>
-            <xs:attribute name="missionIndex" use="required" type="xs:int"/>
-            <xs:attribute name="missionName" use="required" type="xs:string"/>
+            <xs:attribute name="type" use="required" type="xs:int"/>
+            <xs:attribute name="description" use="required" type="xs:string"/>
+            <xs:attribute name="slipperiness" use="required" type="xs:string"/>
+            <xs:attribute name="exertion" use="required" type="xs:boolean"/>
           </xs:complexType>
         </xs:element>
       </xs:sequence>

@@ -85,10 +85,15 @@ namespace STROOP.Structs.Configurations
         public static readonly byte HatLocationUkikiMask = 0x04;
         public static readonly byte HatLocationSnowmanMask = 0x08;
 
-        public static readonly uint HatLocationCourseOffset = 0x00;
-        public static readonly ushort HatLocationCourseSSLValue = 0x0801;
-        public static readonly ushort HatLocationCourseSLValue = 0x0A01;
-        public static readonly ushort HatLocationCourseTTMValue = 0x2401;
+        public static readonly uint HatLocationLevelOffset = 0x00;
+        public static readonly byte HatLocationLevelSSLValue = 0x08;
+        public static readonly byte HatLocationLevelSLValue = 0x0A;
+        public static readonly byte HatLocationLevelTTMValue = 0x24;
+
+        public static readonly uint HatLocationAreaOffset = 0x01;
+        public static readonly byte HatLocationAreaSSLValue = 0x01;
+        public static readonly byte HatLocationAreaSLValue = 0x01;
+        public static readonly byte HatLocationAreaTTMValue = 0x01;
 
         public static readonly uint HatPositionXOffset = 0x02;
         public static readonly uint HatPositionYOffset = 0x04;

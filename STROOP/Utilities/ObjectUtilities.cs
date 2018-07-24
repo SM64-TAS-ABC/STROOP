@@ -29,6 +29,21 @@ namespace STROOP.Utilities
             return relativeAddress;
         }
 
+        public static int? GetObjectIndex(uint absoluteAddress)
+        {
+            if (!IsObjectAddress(absoluteAddress)) return null;
+            int index = (int)((absoluteAddress - ObjectSlotsConfig.LinkStartAddress) / ObjectConfig.StructSize);
+            return index;
+        }
+
+        public static uint GetObjectAddress(int index)
+        {
+            if (index < 0 || index >= ObjectSlotsConfig.MaxSlots)
+                throw new ArgumentOutOfRangeException();
+
+            return ObjectSlotsConfig.LinkStartAddress + (uint)index * ObjectConfig.StructSize;
+        }
+
         public static uint? GetCollisionObject(uint objAddress, int collisionIndex)
         {
             if (collisionIndex < 1 || collisionIndex > 4)
@@ -56,6 +71,14 @@ namespace STROOP.Utilities
                 if (address == processGroupStructAddress) return processGroup;
             }
             return null;
+        }
+
+        public static Color GetProcessingGroupColorForObjAddress(uint address)
+        {
+            ObjectDataModel obj = Config.ObjectSlotsManager.GetObjectFromAddress(address);
+            byte? processGroup = obj?.CurrentProcessGroup;
+            Color color = ObjectSlotsConfig.GetProcessingGroupColor(processGroup);
+            return color;
         }
     }
 }

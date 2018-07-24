@@ -43,7 +43,7 @@ namespace STROOP
 
         public new bool Show = false;
 
-        enum SelectionType { NOT_SELECTED, NORMAL_SELECTION, MAP_SELECTION, MODEL_SELECTION };
+        enum SelectionType { NOT_SELECTED, NORMAL_SELECTION, MAP_SELECTION, MAP2_SELECTION, MODEL_SELECTION };
         SelectionType _selectionType = SelectionType.NOT_SELECTED;
 
         int prevHeight;
@@ -128,29 +128,33 @@ namespace STROOP
                     this, ClickType.MemoryClick, false, false, TabDestinationType.Memory);
             };
 
+            Func<List<ObjectDataModel>> getObjects = () => KeyboardUtilities.IsCtrlHeld()
+                ? Config.ObjectSlotsManager.SelectedObjects
+                : new List<ObjectDataModel>() { CurrentObject };
+
             ToolStripMenuItem itemGoto = new ToolStripMenuItem("Go to");
-            itemGoto.Click += (sender, e) => ButtonUtilities.GotoObjects(new List<ObjectDataModel>() { CurrentObject });
+            itemGoto.Click += (sender, e) => ButtonUtilities.GotoObjects(getObjects());
 
             ToolStripMenuItem itemRetrieve = new ToolStripMenuItem("Retrieve");
-            itemRetrieve.Click += (sender, e) => ButtonUtilities.RetrieveObjects(new List<ObjectDataModel>() { CurrentObject });
+            itemRetrieve.Click += (sender, e) => ButtonUtilities.RetrieveObjects(getObjects());
 
             ToolStripMenuItem itemGotoHome = new ToolStripMenuItem("Go to Home");
-            itemGotoHome.Click += (sender, e) => ButtonUtilities.GotoObjectsHome(new List<ObjectDataModel>() { CurrentObject });
+            itemGotoHome.Click += (sender, e) => ButtonUtilities.GotoObjectsHome(getObjects());
 
             ToolStripMenuItem itemRetrieveHome = new ToolStripMenuItem("Retrieve Home");
-            itemRetrieveHome.Click += (sender, e) => ButtonUtilities.RetrieveObjectsHome(new List<ObjectDataModel>() { CurrentObject });
+            itemRetrieveHome.Click += (sender, e) => ButtonUtilities.RetrieveObjectsHome(getObjects());
 
             ToolStripMenuItem itemRelease = new ToolStripMenuItem("Release");
-            itemRelease.Click += (sender, e) => ButtonUtilities.ReleaseObject(new List<ObjectDataModel>() { CurrentObject });
+            itemRelease.Click += (sender, e) => ButtonUtilities.ReleaseObject(getObjects());
 
             ToolStripMenuItem itemUnRelease = new ToolStripMenuItem("UnRelease");
-            itemUnRelease.Click += (sender, e) => ButtonUtilities.UnReleaseObject(new List<ObjectDataModel>() { CurrentObject });
+            itemUnRelease.Click += (sender, e) => ButtonUtilities.UnReleaseObject(getObjects());
 
             ToolStripMenuItem itemInteract = new ToolStripMenuItem("Interact");
-            itemInteract.Click += (sender, e) => ButtonUtilities.ReleaseObject(new List<ObjectDataModel>() { CurrentObject });
+            itemInteract.Click += (sender, e) => ButtonUtilities.ReleaseObject(getObjects());
 
             ToolStripMenuItem itemUnInteract = new ToolStripMenuItem("UnInteract");
-            itemUnInteract.Click += (sender, e) => ButtonUtilities.UnInteractObject(new List<ObjectDataModel>() { CurrentObject });
+            itemUnInteract.Click += (sender, e) => ButtonUtilities.UnInteractObject(getObjects());
 
             ToolStripMenuItem itemClone = new ToolStripMenuItem("Clone");
             itemClone.Click += (sender, e) => ButtonUtilities.CloneObject(CurrentObject);
@@ -159,10 +163,10 @@ namespace STROOP
             itemUnClone.Click += (sender, e) => ButtonUtilities.UnCloneObject();
 
             ToolStripMenuItem itemUnload = new ToolStripMenuItem("Unload");
-            itemUnload.Click += (sender, e) => ButtonUtilities.UnloadObject(new List<ObjectDataModel>() { CurrentObject });
+            itemUnload.Click += (sender, e) => ButtonUtilities.UnloadObject(getObjects());
 
             ToolStripMenuItem itemRevive = new ToolStripMenuItem("Revive");
-            itemRevive.Click += (sender, e) => ButtonUtilities.ReviveObject(new List<ObjectDataModel>() { CurrentObject });
+            itemRevive.Click += (sender, e) => ButtonUtilities.ReviveObject(getObjects());
 
             ToolStripMenuItem itemCopyAddress = new ToolStripMenuItem("Copy Address");
             itemCopyAddress.Click += (sender, e) => Clipboard.SetText(HexUtilities.FormatValue(CurrentObject.Address));
@@ -177,22 +181,25 @@ namespace STROOP
                 List<string> stringList = ParsingUtilities.ParseStringList(Clipboard.GetText());
                 int count = stringList.Count;
                 if (count != 2 && count != 3) return;
-                if (CurrentObject == null) return;
+                getObjects().ForEach(obj =>
+                {
+                    if (obj == null) return;
 
-                List<float?> floatList = stringList.ConvertAll(s => ParsingUtilities.ParseFloatNullable(s));
-                Config.Stream.Suspend();
-                if (count == 2)
-                {
-                    if (floatList[0].HasValue) CurrentObject.X = floatList[0].Value;
-                    if (floatList[1].HasValue) CurrentObject.Z = floatList[1].Value;
-                }
-                else
-                {
-                    if (floatList[0].HasValue) CurrentObject.X = floatList[0].Value;
-                    if (floatList[1].HasValue) CurrentObject.Y = floatList[1].Value;
-                    if (floatList[2].HasValue) CurrentObject.Z = floatList[2].Value;
-                }
-                Config.Stream.Resume();
+                    List<float?> floatList = stringList.ConvertAll(s => ParsingUtilities.ParseFloatNullable(s));
+                    Config.Stream.Suspend();
+                    if (count == 2)
+                    {
+                        if (floatList[0].HasValue) obj.X = floatList[0].Value;
+                        if (floatList[1].HasValue) obj.Z = floatList[1].Value;
+                    }
+                    else
+                    {
+                        if (floatList[0].HasValue) obj.X = floatList[0].Value;
+                        if (floatList[1].HasValue) obj.Y = floatList[1].Value;
+                        if (floatList[2].HasValue) obj.Z = floatList[2].Value;
+                    }
+                    Config.Stream.Resume();
+                });
             };
 
             ToolStripMenuItem itemCopyGraphics = new ToolStripMenuItem("Copy Graphics");
@@ -202,7 +209,11 @@ namespace STROOP
             itemPasteGraphics.Click += (sender, e) =>
             {
                 uint? address = ParsingUtilities.ParseHexNullable(Clipboard.GetText());
-                if (address.HasValue) CurrentObject.GraphicsID = address.Value;
+                if (!address.HasValue) return;
+                getObjects().ForEach(obj =>
+                {
+                    obj.GraphicsID = address.Value;
+                });
             };
 
             ContextMenuStrip = new ContextMenuStrip();
@@ -425,6 +436,17 @@ namespace STROOP
                 case SelectionType.MAP_SELECTION:
                     e.Graphics.DrawImage(_gui.TrackedAndShownObjectOverlayImage, new Rectangle(new Point(), Size));
                     break;
+
+                case SelectionType.MAP2_SELECTION:
+                    e.Graphics.DrawImage(_gui.TrackedAndShownObjectOverlayImage, new Rectangle(new Point(), Size));
+                    break;
+
+                case SelectionType.NOT_SELECTED:
+                    // do nothing
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
             if (_drawWallOverlay)
                 e.Graphics.DrawImage(_gui.WallObjectOverlayImage, new Rectangle(new Point(), Size));
@@ -547,7 +569,13 @@ namespace STROOP
             switch (_manager.ActiveTab)
             {
                 case ObjectSlotsManager.TabType.Map:
-                    selectionType = Show ? SelectionType.MAP_SELECTION
+                    selectionType = address.HasValue && Config.ObjectSlotsManager.SelectedOnMapSlotsAddresses.Contains(address.Value)
+                        ? SelectionType.MAP_SELECTION
+                        : SelectionType.NOT_SELECTED;
+                    break;
+
+                case ObjectSlotsManager.TabType.Map2:
+                    selectionType = Show ? SelectionType.MAP2_SELECTION
                         : SelectionType.NOT_SELECTED;
                     break;
 
@@ -660,7 +688,7 @@ namespace STROOP
             {
                 // Update map object coordinates and rotation
                 var mapObj = _mapObjects[objAddress];
-                mapObj.Show = Config.ObjectSlotsManager.SelectedOnMapSlotsAddresses.Contains(objAddress);
+                mapObj.Show = Config.ObjectSlotsManager.SelectedOnMap2SlotsAddresses.Contains(objAddress);
                 Show = _mapObjects[objAddress].Show;
                 mapObj.X = Config.Stream.GetSingle(objAddress + ObjectConfig.XOffset);
                 mapObj.Y = Config.Stream.GetSingle(objAddress + ObjectConfig.YOffset);

@@ -48,14 +48,22 @@ namespace STROOP.Controls
         }
 
         public void Initialize(
-            string varFilePath,
-            List<VariableGroup> allGroups,
-            List<VariableGroup> visibleGroups)
+            string varFilePath = null,
+            List<VariableGroup> allVariableGroupsNullable = null,
+            List<VariableGroup> visibleVariableGroupsNullable = null)
         {
+            List<VariableGroup> allVariableGroups = allVariableGroupsNullable ?? new List<VariableGroup>();
+            if (allVariableGroups.Contains(VariableGroup.Custom)) throw new ArgumentOutOfRangeException();
+            allVariableGroups.Add(VariableGroup.Custom);
+
+            List<VariableGroup> visibleVariableGroups = visibleVariableGroupsNullable ?? new List<VariableGroup>();
+            if (visibleVariableGroups.Contains(VariableGroup.Custom)) throw new ArgumentOutOfRangeException();
+            visibleVariableGroups.Add(VariableGroup.Custom);
+
             _varFilePath = varFilePath;
-            _allGroups.AddRange(allGroups);
-            _initialVisibleGroups.AddRange(visibleGroups);
-            _visibleGroups.AddRange(visibleGroups);
+            _allGroups.AddRange(allVariableGroups);
+            _initialVisibleGroups.AddRange(visibleVariableGroups);
+            _visibleGroups.AddRange(visibleVariableGroups);
 
             _selectionToolStripItems =
                 WatchVariableSelectionUtilities.CreateSelectionToolStripItems(
@@ -268,6 +276,14 @@ namespace STROOP.Controls
             _selectedWatchVarControls.Clear();
         }
 
+        public void UnselectText()
+        {
+            foreach (WatchVariableControl control in _watchVarControls)
+            {
+                control.UnselectText();
+            }
+        }
+
         private void AddAllVariablesToCustomTab()
         {
             GetCurrentVariableControls().ForEach(varControl =>
@@ -318,6 +334,11 @@ namespace STROOP.Controls
         public void OpenVariables()
         {
             List<XElement> elements = DialogUtilities.OpenXmlElements(FileType.StroopVariables);
+            OpenVariables(elements);
+        }
+
+        public void OpenVariables(List<XElement> elements)
+        {
             List<WatchVariableControlPrecursor> precursors =
                 elements.ConvertAll(element => new WatchVariableControlPrecursor(element));
             AddVariables(precursors.ConvertAll(w => w.CreateWatchVariableControl()));
@@ -325,6 +346,7 @@ namespace STROOP.Controls
 
         public void SaveVariablesInPlace()
         {
+            if (_varFilePath == null) return;
             if (!DialogUtilities.AskQuestionAboutSavingVariableFileInPlace()) return;
             SaveVariables(_varFilePath);
         }

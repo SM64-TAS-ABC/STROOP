@@ -32,6 +32,7 @@ namespace STROOP.Controls
         public readonly uint? OffsetDefault;
 
         public readonly uint? Mask;
+        public readonly int? Shift;
 
         private readonly Func<uint, object> _getterFunction;
         private readonly Func<object, uint, bool> _setterFunction;
@@ -78,7 +79,7 @@ namespace STROOP.Controls
         }
 
         public WatchVariable(string memoryTypeName, string specialType, BaseAddressTypeEnum baseAddressType,
-            uint? offsetUS, uint? offsetJP, uint? offsetPAL, uint? offsetDefault, uint? mask)
+            uint? offsetUS, uint? offsetJP, uint? offsetPAL, uint? offsetDefault, uint? mask, int? shift)
         {
             if (offsetDefault.HasValue && (offsetUS.HasValue || offsetJP.HasValue || offsetPAL.HasValue))
             {
@@ -92,6 +93,7 @@ namespace STROOP.Controls
                     baseAddressType != BaseAddressTypeEnum.Ghost &&
                     baseAddressType != BaseAddressTypeEnum.LastCoin &&
                     baseAddressType != BaseAddressTypeEnum.File &&
+                    baseAddressType != BaseAddressTypeEnum.MainSave &&
                     baseAddressType != BaseAddressTypeEnum.Triangle)
                 {
                     throw new ArgumentOutOfRangeException("Special var cannot have base address type " + baseAddressType);
@@ -124,6 +126,7 @@ namespace STROOP.Controls
             SignedType = memoryTypeName == null ? (bool?)null : TypeUtilities.TypeSign[MemoryType];
 
             Mask = mask;
+            Shift = shift;
             
             // Created getter/setter functions
             if (IsSpecial)
@@ -134,12 +137,13 @@ namespace STROOP.Controls
             {
                 _getterFunction = (uint address) =>
                 {
-                    return Config.Stream.GetValue(MemoryType, address, UseAbsoluteAddressing, Mask);
+                    return Config.Stream.GetValue(
+                        MemoryType, address, UseAbsoluteAddressing, Mask, Shift);
                 };
                 _setterFunction = (object value, uint address) =>
                 {
                     return Config.Stream.SetValueRoundingWrapping(
-                        MemoryType, value, address, UseAbsoluteAddressing, Mask);
+                        MemoryType, value, address, UseAbsoluteAddressing, Mask, Shift);
                 };
 
             }
@@ -203,8 +207,7 @@ namespace STROOP.Controls
         {
             if (IsSpecial)
             {
-                string memoryTypeString = MemoryTypeName != null ? " (" + MemoryTypeName + ")" : "";
-                return "special" + memoryTypeString;
+                return "special";
             }
             else
             {
@@ -213,7 +216,12 @@ namespace STROOP.Controls
                 {
                     maskString = " with mask " + HexUtilities.FormatValue(Mask.Value, NibbleCount.Value);
                 }
-                return MemoryTypeName + maskString;
+                string shiftString = "";
+                if (Shift != null)
+                {
+                    shiftString = " right shifted by " + Shift.Value;
+                }
+                return MemoryTypeName + maskString + shiftString;
             }
         }
 

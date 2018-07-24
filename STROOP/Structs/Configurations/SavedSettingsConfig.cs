@@ -125,22 +125,22 @@ namespace STROOP.Structs.Configurations
             }
         }
 
-        private static bool _neutralizeTrianglesWith21;
-        public static bool NeutralizeTrianglesWith21
+        private static bool _neutralizeTrianglesWith0x15;
+        public static bool NeutralizeTrianglesWith0x15
         {
-            get => _neutralizeTrianglesWith21;
+            get => _neutralizeTrianglesWith0x15;
             set
             {
-                if (_neutralizeTrianglesWith21 == value) return;
-                _neutralizeTrianglesWith21 = value;
+                if (_neutralizeTrianglesWith0x15 == value) return;
+                _neutralizeTrianglesWith0x15 = value;
                 if (IsLoaded) Save();
             }
         }
 
-        public static short NeutralizeTriangleValue(bool? use21Nullable = null)
+        public static short NeutralizeTriangleValue(bool? use0x15Nullable = null)
         {
-            bool use21 = use21Nullable ?? NeutralizeTrianglesWith21;
-            return (short)(use21 ? 21 : 0);
+            bool use0x15 = use0x15Nullable ?? NeutralizeTrianglesWith0x15;
+            return (short)(use0x15 ? 0x15 : 0);
         }
 
         private static bool _useInGameTrigForAngleLogic;
@@ -222,6 +222,58 @@ namespace STROOP.Structs.Configurations
             }
         }
 
+        public static List<string> InitiallySavedRemovedTabs;
+
+        public static List<TabPage> _removedTabs = new List<TabPage>();
+
+        public static void InvokeInitiallySavedRemovedTabs()
+        {
+            List<TabPage> removedTabs =
+                ControlUtilities.GetTabPages(Config.TabControlMain)
+                .FindAll(tab => InitiallySavedRemovedTabs.Contains(tab.Text));
+            removedTabs.ForEach(tab => RemoveTab(tab));
+        }
+
+        public static void RemoveTab(TabPage removeTab)
+        {
+            TabPage previousTab = Config.TabControlMain.PreviousTab;
+            TabPage currentTab = Config.TabControlMain.SelectedTab;
+            _removedTabs.Add(removeTab);
+            Config.TabControlMain.TabPages.Remove(removeTab);
+            if (removeTab == currentTab)
+                Config.TabControlMain.SelectedTab = previousTab;
+            Save();
+        }
+
+        public static void AddTab(TabPage tab)
+        {
+            _removedTabs.Remove(tab);
+            Config.TabControlMain.TabPages.Add(tab);
+            Save();
+        }
+
+        public static List<ToolStripItem> GetRemovedTabItems()
+        {
+            List<ToolStripItem> items = new List<ToolStripItem>();
+
+            ToolStripMenuItem itemRestoreAllTabs = new ToolStripMenuItem("Restore All Tabs");
+            itemRestoreAllTabs.Click += (sender, e) =>
+            {
+                List<TabPage> removedTabs = new List<TabPage>(_removedTabs);
+                removedTabs.ForEach(tab => AddTab(tab));
+            };
+            items.Add(itemRestoreAllTabs);
+            items.Add(new ToolStripSeparator());
+
+            foreach (TabPage tab in _removedTabs)
+            {
+                ToolStripMenuItem item = new ToolStripMenuItem(tab.Text + " Tab");
+                item.Click += (sender, e) => AddTab(tab);
+                items.Add(item);
+            }
+            return items;
+        }
+
         public static List<XElement> ToXML()
         {
             XElement tabOrderXElement = new XElement("TabOrder");
@@ -229,6 +281,13 @@ namespace STROOP.Structs.Configurations
             {
                 XElement tabXElement = new XElement("Tab", tabPage.Text);
                 tabOrderXElement.Add(tabXElement);
+            }
+
+            XElement removedTabsXElement = new XElement("RemovedTabs");
+            foreach (TabPage tabPage in _removedTabs)
+            {
+                XElement tabXElement = new XElement("Tab", tabPage.Text);
+                removedTabsXElement.Add(tabXElement);
             }
 
             return new List<XElement>
@@ -242,9 +301,10 @@ namespace STROOP.Structs.Configurations
                 new XElement("ExcludeDustForClosestObject", _excludeDustForClosestObject),
                 new XElement("UseMisalignmentOffsetForDistanceToLine", _useMisalignmentOffsetForDistanceToLine),
                 new XElement("DontRoundValuesToZero", _dontRoundValuesToZero),
-                new XElement("NeutralizeTrianglesWith21", _neutralizeTrianglesWith21),
+                new XElement("NeutralizeTrianglesWith0x15", _neutralizeTrianglesWith0x15),
                 new XElement("UseInGameTrigForAngleLogic", _useInGameTrigForAngleLogic),
                 tabOrderXElement,
+                removedTabsXElement,
             };
         }
 
@@ -265,7 +325,7 @@ namespace STROOP.Structs.Configurations
             _excludeDustForClosestObject = true;
             _useMisalignmentOffsetForDistanceToLine = true;
             _dontRoundValuesToZero = true;
-            _neutralizeTrianglesWith21 = true;
+            _neutralizeTrianglesWith0x15 = true;
             _useInGameTrigForAngleLogic = false;
             Save();
         }

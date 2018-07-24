@@ -15,6 +15,11 @@ namespace STROOP.Controls.Map.Graphics.Items
         bool _imageUpdated;
         SizeF _imageNormalizedSize;
 
+        public override Bitmap BitmapImage
+        {
+            get => _image;
+        }
+
         int _imageTexID = -1;
         int _vertexBuffer = -1;
 
@@ -45,7 +50,7 @@ namespace STROOP.Controls.Map.Graphics.Items
 
         public override DrawType Type => DrawType.Overlay;
 
-        public MapGraphicsIconItem(Bitmap image)
+        public MapGraphicsIconItem(Bitmap image) : base(false)
         {
             ChangeImage(image);
         }

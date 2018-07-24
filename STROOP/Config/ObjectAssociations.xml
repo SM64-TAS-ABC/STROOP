@@ -20,6 +20,18 @@
   <IntendedNextPosition>
     <MapImage path="Intended Next Position.png"/>
   </IntendedNextPosition>
+  <TriangleFloor>
+    <MapImage path="Triangle Floor.png"/>
+  </TriangleFloor>
+  <TriangleWall>
+    <MapImage path="Triangle Wall.png"/>
+  </TriangleWall>
+  <TriangleCeiling>
+    <MapImage path="Triangle Ceiling.png"/>
+  </TriangleCeiling>
+  <TriangleOther>
+    <MapImage path="Triangle Other.png"/>
+  </TriangleOther>
   <Hud>
     <Image path="HUD.png"/>
     <Color>#aaaaaa</Color>
@@ -150,10 +162,12 @@
   <Object behaviorScriptAddress="0x13000118" name="WF Big Pole">
     <SpawnCode gfxId="0x0D"/>
     <Image path="WF Big Pole.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000144" name="Pole">
     <SpawnCode gfxId="0x00"/>
     <Image path="Pole.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000174" name="THI Wiggler's Cave Cover (Large)">
     <SpawnCode gfxId="0x36"/>
@@ -901,6 +915,7 @@
     <SpawnCode gfxId="0x39"/>
     <Image path="Rising and Lowering Pole.png"/>
     <Data groupList="ObjectSpecific" type="uint" offset="0x68" base="Object" subclass="Object">Host Object</Data>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001030" name="BitFS Tilting Inverted Pyramid Platform">
     <SpawnCode gfxId="0x37"/>
@@ -2067,37 +2082,47 @@
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Tree">
     <Image path="Tree Standard.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxId="0x80195C84">
     <Image path="Tree Standard.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxId="0x8018F2A0">
     <SpawnCode gfxId="0x17"/>
     <Image path="Tree Standard.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxId="0x80194604">
     <Image path="Tree Standard.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxId="0x8018CCE4">
     <Image path="Tree Standard.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Standard Tree" gfxId="0x8019257C">
     <Image path="Tree Standard.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Pine Tree" gfxId="0x8015D22C">
     <SpawnCode gfxId="0x18"/>
     <Image path="Tree Pine.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Snowy Pine Tree" gfxId="0x80184AB8">
     <SpawnCode gfxId="0x19"/>
     <Image path="Tree Pine Snowy.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Snowy Pine Tree" gfxId="0x801709B4">
     <Image path="Tree Pine Snowy.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002AA4" name="Palm Tree" gfxId="0x80184864">
     <SpawnCode gfxId="0x1B"/>
     <Image path="Tree Palm.png"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002AD0" name="Glow">
     <SpawnCode gfxId="0x8F"/>
@@ -2523,12 +2548,24 @@
   <Object behaviorScriptAddress="0x130035B0" name="Bob-omb Explosion Bubble">
     <Image path="Splash Bubble.png"/>
   </Object>
-  <Object behaviorScriptAddress="0x13003614" name="Grabbable Cork Box / Bob-omb Spawner">
+  <Object behaviorScriptAddress="0x13003614" name="Cork Box Spawner" spawnObj="0x13004218">
     <SpawnCode gfxId="0x00"/>
-    <Image path="Grabbable Cork Box Bob-omb Spawner.png"/>
+    <Image path="Cork Box Spawner.png"/>
+    <Data groupList="ObjectSpecific" type="uint" offset="0xF4" base="Object" useHex="true">Spawn Obj Graphic</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0xFC" base="Object" useHex="true">Spawn Obj Behavior</Data>
+  </Object>
+    <Object behaviorScriptAddress="0x13003614" name="Bob-omb Spawner" spawnObj="0x13003174">
+    <SpawnCode gfxId="0x00"/>
+    <Image path="Bob-omb Spawner.png"/>
     <Data groupList="ObjectSpecific" type="uint" offset="0xF4" base="Object" useHex="true">Spawn Obj Graphic</Data>
     <Data groupList="ObjectSpecific" type="uint" offset="0xFC" base="Object" useHex="true">Spawn Obj Behavior</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x18A" base="Object" subclass="Boolean" invertBool="true">Bob-omb Has Coin</Data>
+  </Object>
+    <Object behaviorScriptAddress="0x13003614" name="Snowman's Body Spawner" spawnObj="0x13003CE4">
+    <SpawnCode gfxId="0x00"/>
+    <Image path="Snowman's Body Spawner.png"/>
+    <Data groupList="ObjectSpecific" type="uint" offset="0xF4" base="Object" useHex="true">Spawn Obj Graphic</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0xFC" base="Object" useHex="true">Spawn Obj Behavior</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300362C" name="Small Bully">
     <SpawnCode gfxId="0x56"/>
@@ -3208,6 +3245,8 @@
     <Image path="Pokey Spawner.png"/>
     <Data groupList="ObjectSpecific" type="byte" offset="0x14F" base="Object" subclass="Boolean">Pokey Loaded</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x103" base="Object" subclass="Boolean">Pokey Dead</Data>
+    <Data groupList="ObjectSpecific" base="Object" offset="0xF8" type="int">Num Parts</Data>
+    <Data groupList="ObjectSpecific" base="Object" offset="0xFC" type="float">New Part Scale</Data>
     <Data groupList="ObjectSpecific" base="Object" offset="0x108" type="int">Countdown</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x104" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xC8" base="Object" subclass="Angle" yaw="true">Yaw Moving</Data>
@@ -3525,14 +3564,14 @@
     <Data groupList="ObjectSpecific" type="byte" offset="0xFF" base="Object" subclass="Boolean">Blowing</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x100" base="Object">Scale Change</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x2C" base="Object">Scale</Data>
+    <Data groupList="ObjectSpecific" base="Object" offset="0xF4" type="float">X Center</Data>
+    <Data groupList="ObjectSpecific" base="Object" offset="0xF8" type="float">Y Center</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004988" name="Lakitu Cloud Spawner" subType="1">
     <SpawnCode gfxId="0x00"/>
     <Image path="Cloud Spawner.png"/>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0x1AC" base="Object" subclass="Angle">Rev Angle</Data>
-    <Data groupList="ObjectSpecific" type="byte" offset="0xFF" base="Object" subclass="Boolean">Blowing</Data>
-    <Data groupList="ObjectSpecific" type="float" offset="0x100" base="Object">Scale Change</Data>
-    <Data groupList="ObjectSpecific" type="float" offset="0x2C" base="Object">Scale</Data>
+    <Data groupList="ObjectSpecific" base="Object" offset="0xF4" type="float">X Center</Data>
+    <Data groupList="ObjectSpecific" base="Object" offset="0xF8" type="float">Y Center</Data>
   </Object>
   <Object behaviorScriptAddress="0x130049AC" name="Cloud Puff">
     <SpawnCode gfxId="0x8E"/>
@@ -3706,6 +3745,7 @@
     <Data groupList="ObjectSpecific" type="float" offset="0x100" base="Object">Acceleration Magnitude</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xFC" base="Object" subclass="Angle">Angular Velocity</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xF8" base="Object" subclass="Angle">Angle</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="PendulumCountdown">Countdown</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x104" base="Object">Waiting Timer</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="PendulumAmplitude" subclass="Angle" display="int">Amplitude</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="PendulumSwingIndex">Swing Index</Data>
@@ -3753,6 +3793,8 @@
     <Data groupList="ObjectSpecific" type="float" offset="0xFC" base="Object">Target Yaw Vel</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xF8" base="Object">Current Yaw Vel</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xD4" base="Object" subclass="Angle" yaw="true">Yaw Facing</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="CogCountdown">Countdown</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="CogEndingYaw">Ending Yaw</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004CCC" name="TTC Rotating Triangle" subType="2">
     <SpawnCode gfxId="0x3d"/>
@@ -4195,6 +4237,7 @@
     <SpawnCode gfxId="0x38"/>
     <Image path="DDD Pole.png"/>
     <MapImage path="DDD Pole Top.png" rotates="true"/>
+    <Data groupList="ObjectSpecific" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300556C" name="Star Marker">
     <SpawnCode gfxId="0x79"/>

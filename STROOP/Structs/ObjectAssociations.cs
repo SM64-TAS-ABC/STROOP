@@ -40,6 +40,11 @@ namespace STROOP.Structs
         public Image HolpImage;
         public Image IntendedNextPositionImage;
         public Image MarioMapImage;
+        public Image TriangleFloorImage;
+        public Image TriangleWallImage;
+        public Image TriangleCeilingImage;
+        public Image TriangleOtherImage;
+
         public Color MarioColor;
         public Color HudColor;
         public Color DebugColor;
@@ -237,6 +242,10 @@ namespace STROOP.Structs
             MiscImage?.Dispose();
             CameraImage?.Dispose();
             CameraMapImage?.Dispose();
+            TriangleFloorImage?.Dispose();
+            TriangleWallImage?.Dispose();
+            TriangleCeilingImage?.Dispose();
+            TriangleOtherImage?.Dispose();
         }
     }
 }

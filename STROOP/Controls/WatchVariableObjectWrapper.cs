@@ -20,7 +20,7 @@ namespace STROOP.Controls
         public WatchVariableObjectWrapper(
             WatchVariable watchVar,
             WatchVariableControl watchVarControl)
-            : base(watchVar, watchVarControl, DEFAULT_ROUNDING_LIMIT, true)
+            : base(watchVar, watchVarControl, DEFAULT_DISPLAY_TYPE, DEFAULT_ROUNDING_LIMIT, true)
         {
             _displayAsObject = true;
 

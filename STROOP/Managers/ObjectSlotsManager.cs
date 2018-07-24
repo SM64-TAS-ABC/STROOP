@@ -22,11 +22,11 @@ namespace STROOP.Managers
         /// </summary>
         const int DefaultSlotSize = 36;
 
-        public enum TabType { Object, Map, Model, Memory, Custom, CamHack, Other };
+        public enum TabType { Object, Map, Map2, Model, Memory, Custom, CamHack, Other };
         public enum TabDestinationType { Object, Memory };
         public enum SortMethodType { ProcessingOrder, MemoryOrder, DistanceToMario };
         public enum SlotLabelType { Recommended, SlotPosVs, SlotPos, SlotIndex }
-        public enum ClickType { ObjectClick, MapClick, ModelClick, MemoryClick, CamHackClick, MarkClick };
+        public enum ClickType { ObjectClick, MapClick, Map2Click, ModelClick, MemoryClick, CamHackClick, MarkClick };
 
         public uint? HoveredObjectAdress;
 
@@ -39,6 +39,7 @@ namespace STROOP.Managers
 
         public List<uint> SelectedSlotsAddresses = new List<uint>();
         public List<uint> SelectedOnMapSlotsAddresses = new List<uint>();
+        public List<uint> SelectedOnMap2SlotsAddresses = new List<uint>();
         public List<uint> MarkedSlotsAddresses = new List<uint>();
 
         public List<ObjectDataModel> SelectedObjects = new List<ObjectDataModel>();
@@ -84,7 +85,7 @@ namespace STROOP.Managers
         {
             ["Object"] = TabType.Object,
             ["Map"] = TabType.Map,
-            ["Map2"] = TabType.Map,
+            ["Map2"] = TabType.Map2,
             ["Model"] = TabType.Model,
             ["Memory"] = TabType.Memory,
             ["Custom"] = TabType.Custom,
@@ -144,6 +145,8 @@ namespace STROOP.Managers
                         return ClickType.CamHackClick;
                     case TabType.Map:
                         return ClickType.MapClick;
+                    case TabType.Map2:
+                        return ClickType.Map2Click;
                     case TabType.Model:
                         return ClickType.ModelClick;
                     case TabType.Memory:
@@ -160,7 +163,7 @@ namespace STROOP.Managers
 
         private bool ShouldToggle(bool isCtrlKeyHeld, bool isAltKeyHeld)
         {
-            bool isTogglingTab = ActiveTab == TabType.Map || ActiveTab == TabType.CamHack;
+            bool isTogglingTab = ActiveTab == TabType.Map || ActiveTab == TabType.Map2 || ActiveTab == TabType.CamHack;
             bool isToggleState = isAltKeyHeld ? true : isTogglingTab;
             return isToggleState != isCtrlKeyHeld;
         }
@@ -204,6 +207,9 @@ namespace STROOP.Managers
                         break;
                     case ClickType.MapClick:
                         selection = SelectedOnMapSlotsAddresses;
+                        break;
+                    case ClickType.Map2Click:
+                        selection = SelectedOnMap2SlotsAddresses;
                         break;
                     case ClickType.MarkClick:
                         selection = MarkedSlotsAddresses;

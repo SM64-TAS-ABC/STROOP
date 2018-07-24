@@ -1,8 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <VarData>
   <Data type="short" offsetUS="0x8032DDF4" offsetJP="0x8032CE94" base="Relative">Current File</Data>
-  <Data base="File" specialType="StarsInFile">Stars in File</Data>
-  <Data type="short" offset="0xAA" base="Mario">Star Count</Data>
+  
+  <Data type="short" offset="0xAA" base="Mario" color="Yellow">Star Count</Data>
+  <Data type="short" offset="0xF4" base="Mario" color="Yellow">Star Display</Data>
+  <Data type="short" offset="0xB8" base="Mario" color="Yellow">Checked Star Count</Data>
+  <Data base="File" specialType="StarsInFile" color="Yellow">Stars in File</Data>
 
   <Data type="byte" offset="0x0C" base="File" mask="0x7F" color="LightBlue">BoB Stars</Data>
   <Data type="byte" offset="0x0D" base="File" mask="0x7F" color="LightBlue">WF Stars</Data>
@@ -84,7 +87,9 @@
   <Data type="byte" offset="0x09" base="File" subclass="Boolean" mask="0x02" color="Red">Hat on Klepto</Data>
   <Data type="byte" offset="0x09" base="File" subclass="Boolean" mask="0x08" color="Red">Hat on Snowman</Data>
   <Data type="byte" offset="0x09" base="File" subclass="Boolean" mask="0x04" color="Red">Hat on Ukiki</Data>
-  <Data type="ushort" offset="0x00" base="File" color="Red">Hat Course (SSL=2049,SL=2561,TTM=9217)</Data>
+  <Data type="byte" offset="0x00" base="File" color="Red">Hat Level</Data>
+  <Data type="byte" offset="0x01" base="File" color="Red">Hat Area</Data>
+
   <Data type="short" offset="0x02" base="File" color="Red">Hat X</Data>
   <Data type="short" offset="0x04" base="File" color="Red">Hat Y</Data>
   <Data type="short" offset="0x06" base="File" color="Red">Hat Z</Data>
@@ -93,9 +98,9 @@
   <Data type="byte" offset="0x0A" base="File" subclass="Boolean" mask="0x01" color="Pink">DDD Moved Back</Data>
   <Data type="byte" offset="0x0A" base="File" subclass="Boolean" mask="0x02" color="Pink">Moat Drained</Data>
 
-  <Data type="ushort" offset="0x34" base="File" color="Grey">Checksum Constant</Data>
-  <Data type="ushort" offset="0x36" base="File" color="Grey">Checksum</Data>
-  <Data base="File" specialType="ChecksumCalculated" color="Grey">Checksum Calculated</Data>
+  <Data type="ushort" offset="0x34" base="File" useHex="true" color="Grey">Checksum Constant</Data>
+  <Data type="ushort" offset="0x36" base="File" useHex="true" color="Grey">Checksum</Data>
+  <Data base="File" specialType="FileChecksumCalculated" display="ushort" useHex="true" color="Grey">Checksum Calculated</Data>
 
   <Data type="byte" offset="0x0C" base="File" subclass="Boolean" mask="0x01">BoB: Big Bob-omb on the Summit</Data>
   <Data type="byte" offset="0x0C" base="File" subclass="Boolean" mask="0x02">BoB: Footrace with Koopa the Quick</Data>

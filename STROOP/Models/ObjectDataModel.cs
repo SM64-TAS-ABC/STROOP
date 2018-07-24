@@ -61,6 +61,17 @@ namespace STROOP.Models
             }
         }
 
+        private UInt32 _spawnObj;
+        public UInt32 SpawnObj
+        {
+            get => _spawnObj;
+            set
+            {
+                if (Config.Stream.SetValue(value, Address + ObjectConfig.BehaviorSpawnObjOffset))
+                    _spawnObj = value;
+            }
+        }
+
         public BehaviorCriteria BehaviorCriteria { get; private set; }
         public ObjectBehaviorAssociation BehaviorAssociation { get; private set; }
 
@@ -259,6 +270,7 @@ namespace STROOP.Models
             _gfxId = Config.Stream.GetUInt32(Address + ObjectConfig.BehaviorGfxOffset);
             _subType = Config.Stream.GetUInt32(Address + ObjectConfig.BehaviorSubtypeOffset);
             _appearance = Config.Stream.GetUInt32(Address + ObjectConfig.BehaviorAppearanceOffset);
+            _spawnObj = Config.Stream.GetUInt32(Address + ObjectConfig.BehaviorSpawnObjOffset);
 
             long behaviorOffset = (long)AbsoluteBehavior - Config.ObjectAssociations.BehaviorBankStart;
             if (AbsoluteBehavior == 0 || behaviorOffset < 0) // Behavior is 0 or is appears to be stored below the start
@@ -271,7 +283,8 @@ namespace STROOP.Models
                 BehaviorAddress = RomVersionConfig.Switch(SegmentedBehavior, Config.ObjectAssociations.AlignJPBehavior(SegmentedBehavior)),
                 GfxId = _gfxId,
                 SubType = _subType,
-                Appearance = _appearance
+                Appearance = _appearance,
+                SpawnObj = _spawnObj,
             };
 
             BehaviorAssociation = Config.ObjectAssociations.FindObjectAssociation(BehaviorCriteria);

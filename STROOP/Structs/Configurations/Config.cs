@@ -1,4 +1,5 @@
-﻿using STROOP.Managers;
+﻿using STROOP.Controls.Map;
+using STROOP.Managers;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
@@ -17,9 +18,12 @@ namespace STROOP.Structs.Configurations
         public static List<Emulator> Emulators = new List<Emulator>();
         public static ProcessStream Stream;
         public static ObjectAssociations ObjectAssociations;
+        public static MapAssociations MapAssociations;
+        public static MapController MapController;
         public static StroopMainForm StroopMainForm;
-        public static TabControl TabControlMain;
+        public static TabControlEx TabControlMain;
         public static Label DebugText;
+        public static MapGui MapGui;
 
         public static CameraManager CameraManager;
         public static DebugManager DebugManager;
@@ -38,12 +42,14 @@ namespace STROOP.Structs.Configurations
         public static TestingManager TestingManager;
         public static InjectionManager InjectionManager;
         public static TriangleManager TriangleManager;
-        public static DataManager WaterManager;
+        public static WaterManager WaterManager;
+        public static SnowManager SnowManager;
         public static InputManager InputManager;
         public static ActionsManager ActionsManager;
         public static PuManager PuManager;
         public static TasManager TasManager;
         public static FileManager FileManager;
+        public static MainSaveManager MainSaveManager;
         public static AreaManager AreaManager;
         public static DataManager QuarterFrameManager;
         public static DataManager CustomManager;
@@ -63,8 +69,9 @@ namespace STROOP.Structs.Configurations
             return dataManagerList;
         }
 
-        public static void Print(object format, params object[] args)
+        public static void Print(object formatNullable = null, params object[] args)
         {
+            object format = formatNullable ?? "";
             string formatted = String.Format(format.ToString(), args);
             System.Diagnostics.Trace.WriteLine(formatted);
         }

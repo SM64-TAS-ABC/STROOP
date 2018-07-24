@@ -20,7 +20,6 @@ namespace STROOP.Managers
     public class Map2Manager
     {
         public MapLayout map;
-        public MapAssociations MapAssoc;
         byte _currentLevel, _currentArea;
         ushort _currentLoadingPoint, _currentMissionLayout;
         MapLayout _currentMap;
@@ -36,6 +35,12 @@ namespace STROOP.Managers
         List<TriangleMap2Object> _cogFloorTris;
         List<TriangleMap2Object> _cog2FloorTris;
         List<TriangleMap2Object> _cogWallTris;
+
+        int SHAPE_MIN_SIDES = 3;
+        int SHAPE_MAX_SIDSE = 8;
+
+        List<List<TriangleMap2Object>> _triObjectWalls;
+        List<List<TriangleMap2Object>> _triObjectFloors;
 
         List<Map2Object> _mapObjects = new List<Map2Object>();
         public Dictionary<uint, Map2Object> _mapObjectDictionary = new Dictionary<uint, Map2Object>();
@@ -111,9 +116,8 @@ namespace STROOP.Managers
             }
         }
 
-        public Map2Manager(MapAssociations mapAssoc, Map2Gui mapGui)
+        public Map2Manager(Map2Gui mapGui)
         {
-            MapAssoc = mapAssoc;
             _mapGui = mapGui;
 
             _marioMapObj = new Map2Object(Config.ObjectAssociations.MarioMapImage, 1);
@@ -145,6 +149,27 @@ namespace STROOP.Managers
             {
                 _cogWallTris.Add(new TriangleMap2Object(Color.FromArgb(200, Color.Green), 3));
             }
+
+            _triObjectWalls = new List<List<TriangleMap2Object>>();
+            _triObjectFloors = new List<List<TriangleMap2Object>>();
+            for (int numSides = SHAPE_MIN_SIDES; numSides <= SHAPE_MAX_SIDSE; numSides++)
+            {
+                (List<TriangleShape> floors, List<TriangleShape> walls) = GetTriShapes(numSides);
+
+                List<TriangleMap2Object> wallTris = new List<TriangleMap2Object>();
+                foreach (TriangleShape tri in walls)
+                {
+                    wallTris.Add(new TriangleMap2Object(Color.FromArgb(200, Color.Green), 3));
+                }
+                _triObjectWalls.Add(wallTris);
+
+                List<TriangleMap2Object> floorTris = new List<TriangleMap2Object>();
+                foreach (TriangleShape tri in floors)
+                {
+                    floorTris.Add(new TriangleMap2Object(Color.FromArgb(200, Color.Cyan), 3));
+                }
+                _triObjectFloors.Add(floorTris);
+            }
         }
 
         public void Load()
@@ -156,7 +181,7 @@ namespace STROOP.Managers
             _isLoaded = true;
 
             // Set the default map
-            ChangeCurrentMap(MapAssoc.DefaultMap);
+            ChangeCurrentMap(Config.MapAssociations.DefaultMap);
 
             // Add Mario's map object
             _mapGraphics.AddMapObject(_marioMapObj);
@@ -169,6 +194,22 @@ namespace STROOP.Managers
             _cogFloorTris.ForEach(tri => _mapGraphics.AddMapObject(tri));
             _cog2FloorTris.ForEach(tri => _mapGraphics.AddMapObject(tri));
             _cogWallTris.ForEach(tri => _mapGraphics.AddMapObject(tri));
+
+            foreach (List<TriangleMap2Object> floorTris in _triObjectFloors)
+            {
+                foreach (TriangleMap2Object floorTri in floorTris)
+                {
+                    _mapGraphics.AddMapObject(floorTri);
+                }
+            }
+
+            foreach (List<TriangleMap2Object> wallTris in _triObjectWalls)
+            {
+                foreach (TriangleMap2Object wallTri in wallTris)
+                {
+                    _mapGraphics.AddMapObject(wallTri);
+                }
+            }
 
             //----- Register events ------
             // Set image
@@ -212,6 +253,32 @@ namespace STROOP.Managers
             int newWidth = _mapGui.GLControl.Width + 2 * zoomChange;
             int newHeight = _mapGui.GLControl.Height + 2 * zoomChange;
             _mapGui.GLControl.SetBounds(newX, newY, newWidth, newHeight);
+        }
+
+        private (List<TriangleShape> floors, List<TriangleShape> walls) GetTriShapes(int numSides)
+        {
+            double dist = 900;
+            double radius = 300;
+            double xOffset = 1300;
+            double zOffset = 0;
+            double angleScale = 256;
+
+            double globalTimerAngle;
+            if (Config.Stream != null)
+            {
+                uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                ushort globalTimerUShort = (ushort)(globalTimer % 65536);
+                globalTimerAngle = -1 * globalTimerUShort * angleScale;
+            }
+            else
+            {
+                globalTimerAngle = 0;
+            }
+
+            int index = numSides - SHAPE_MIN_SIDES;
+            double x = (index % 3) * dist + xOffset;
+            double z = (index / 3) * dist + zOffset;
+            return TriangleUtilities.GetWallFoorTrianglesForShape(numSides, radius, globalTimerAngle, x, z);
         }
 
         public void UpdateFromMarioTab()
@@ -294,7 +361,8 @@ namespace STROOP.Managers
             }
             CeilingTriangleMapObject.Show = (ceilingTriangle != 0x00);
 
-            List<TriangleDataModel> cogFloorTris = TriangleUtilities.GetObjectTrianglesForObject(0x80341E28)
+            //List<TriangleDataModel> cogFloorTris = TriangleUtilities.GetObjectTrianglesForObject(0x80341E28)
+            List<TriangleDataModel> cogFloorTris = TriangleUtilities.GetTrianglesInRange(0x8016DE30, 20)
                 .FindAll(tri => tri.Classification == TriangleClassification.Floor);
             for (int i = 0; i < _cogFloorTris.Count; i++)
             {
@@ -309,7 +377,8 @@ namespace STROOP.Managers
                 }
             }
 
-            List<TriangleDataModel> cog2FloorTris = TriangleUtilities.GetObjectTrianglesForObject(0x80342088)
+            //List<TriangleDataModel> cog2FloorTris = TriangleUtilities.GetObjectTrianglesForObject(0x80342088)
+            List<TriangleDataModel> cog2FloorTris = TriangleUtilities.GetTrianglesInRange(0x8016E1F0, 20)
                 .FindAll(tri => tri.Classification == TriangleClassification.Floor);
             for (int i = 0; i < _cog2FloorTris.Count; i++)
             {
@@ -337,6 +406,24 @@ namespace STROOP.Managers
                 else
                 {
                     _cogWallTris[i].Show = false;
+                }
+            }
+
+            for (int numSides = SHAPE_MIN_SIDES; numSides <= SHAPE_MAX_SIDSE; numSides++)
+            {
+                (List<TriangleShape> floors, List<TriangleShape> walls) = GetTriShapes(numSides);
+                int index = numSides - SHAPE_MIN_SIDES;
+                List<TriangleMap2Object> floorTris = _triObjectFloors[index];
+                List<TriangleMap2Object> wallTris = _triObjectWalls[index];
+                for (int i = 0; i < floorTris.Count; i++)
+                {
+                    floorTris[i].Update(floors[i]);
+                    floorTris[i].Show = true;
+                }
+                for (int i = 0; i < wallTris.Count; i++)
+                {
+                    wallTris[i].Update(walls[i]);
+                    wallTris[i].Show = true;
                 }
             }
 
@@ -390,7 +477,7 @@ namespace STROOP.Managers
                 _currentArea = area;
                 _currentLoadingPoint = loadingPoint;
                 _currentMissionLayout = missionLayout;
-                _currentMapList = MapAssoc.GetLevelAreaMaps(level, area);
+                _currentMapList = Config.MapAssociations.GetLevelAreaMaps(level, area);
 
                 // Look for maps with correct loading points
                 var mapListLPFiltered = _currentMapList.Where((map) => map.LoadingPoint == loadingPoint).ToList();
@@ -432,7 +519,7 @@ namespace STROOP.Managers
             // If no map is available display the default image
             if (mapListYFiltered.Count <= 0)
             {
-                ChangeCurrentMap(MapAssoc.DefaultMap);
+                ChangeCurrentMap(Config.MapAssociations.DefaultMap);
             }
             else
             {
@@ -498,6 +585,28 @@ namespace STROOP.Managers
                 cogWallTri.Draw = cogWallTri.Show && TestingConfig.ShowCogTris;
             }
 
+            foreach (List<TriangleMap2Object> tris in _triObjectFloors)
+            {
+                foreach (TriangleMap2Object tri in tris)
+                {
+                    tri.P1OnControl = CalculateLocationOnControl(new PointF(tri.RelX1, tri.RelZ1), mapView);
+                    tri.P2OnControl = CalculateLocationOnControl(new PointF(tri.RelX2, tri.RelZ2), mapView);
+                    tri.P3OnControl = CalculateLocationOnControl(new PointF(tri.RelX3, tri.RelZ3), mapView);
+                    tri.Draw = tri.Show && TestingConfig.ShowShapes;
+                }
+            }
+
+            foreach (List<TriangleMap2Object> tris in _triObjectWalls)
+            {
+                foreach (TriangleMap2Object tri in tris)
+                {
+                    tri.P1OnControl = CalculateLocationOnControl(new PointF(tri.RelX1, tri.RelZ1), mapView);
+                    tri.P2OnControl = CalculateLocationOnControl(new PointF(tri.RelX2, tri.RelZ2), mapView);
+                    tri.P3OnControl = CalculateLocationOnControl(new PointF(tri.RelX3, tri.RelZ3), mapView);
+                    tri.Draw = tri.Show && TestingConfig.ShowShapes;
+                }
+            }
+
             // Calculate object slot's cooridnates
             foreach (var mapObj in _mapObjects)
             {
@@ -522,11 +631,8 @@ namespace STROOP.Managers
                 return;
 
             // Change and set a new map
-            using (var mapImage = MapAssoc.GetMapImage(map))
-                _mapGraphics.SetMap(mapImage);
-
-            using (var mapBackground = MapAssoc.GetMapBackgroundImage(map))
-                _mapGraphics.SetBackground(mapBackground);
+            _mapGraphics.SetMap(map.MapImage);
+            _mapGraphics.SetBackground(map.BackgroundImage);
 
             _currentMap = map;
         }

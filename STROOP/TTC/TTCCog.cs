@@ -1,4 +1,6 @@
-﻿using STROOP.Structs.Configurations;
+﻿using STROOP.Structs;
+using STROOP.Structs.Configurations;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +24,12 @@ namespace STROOP.Ttc
         public int _angle;
         public int _currentAngularVelocity;
         public int _targetAngularVelocity;
+
+        public int _endingYaw
+        {
+            get => WatchVariableSpecialUtilities.GetCogEndingYaw(
+                MoreMath.NormalizeAngleUshort(_angle), _currentAngularVelocity, _targetAngularVelocity);
+        }
 
         public TtcCog(TtcRng rng, uint address) :
             this(
@@ -64,6 +72,11 @@ namespace STROOP.Ttc
             return _id + OPENER + _angle + SEPARATOR +
                     _currentAngularVelocity + SEPARATOR +
                     _targetAngularVelocity + CLOSER;
+        }
+
+        public override List<object> GetFields()
+        {
+            return new List<object>() { _angle, _currentAngularVelocity, _targetAngularVelocity };
         }
 
     }

@@ -136,6 +136,15 @@
     <Compile Include="Controls\BetterSplitContainer.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\TabControlEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CarretlessTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\MainSaveTextbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\Map\Graphics\Cameras\MapPerspectiveCamera.cs" />
     <Compile Include="Controls\Map\Objects\MapSm64Object.cs" />
     <Compile Include="Controls\Map\Objects\MapWallTriObject.cs" />
@@ -145,6 +154,8 @@
     <Compile Include="Controls\Map\Objects\MapIconObject.cs" />
     <Compile Include="Controls\Map\Objects\MapCameraObject.cs" />
     <Compile Include="Controls\Map\Objects\MapTriangleObject.cs" />
+    <Compile Include="Controls\Map\Semaphores\MapSemaphoreManager.cs" />
+    <Compile Include="Controls\Map\Semaphores\MapSemaphore.cs" />
     <Compile Include="Controls\Map\Trackers\ColorSelector.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -152,6 +163,9 @@
       <DependentUpon>ColorSelector.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\ObjectSlotFlowLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\PanelEx.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\WatchVariableTriangleWrapper.cs" />
@@ -163,11 +177,23 @@
     <Compile Include="Enums\CoinParamsOrder.cs" />
     <Compile Include="Enums\AddToTabTypeEnum.cs" />
     <Compile Include="Extensions\FormExtensions.cs" />
+    <Compile Include="Forms\ActionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ActionForm.Designer.cs">
+      <DependentUpon>ActionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\LoadingForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\LoadingForm.Designer.cs">
       <DependentUpon>LoadingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\VariablePopOutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\VariablePopOutForm.Designer.cs">
+      <DependentUpon>VariablePopOutForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SelectionForm.cs">
       <SubType>Form</SubType>
@@ -318,9 +344,18 @@
       <DependentUpon>MainLoadingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoadingHandler.cs" />
+    <Compile Include="Managers\MainSaveManager.cs" />
+    <Compile Include="Managers\SnowManager.cs" />
+    <Compile Include="Structs\Configurations\MainSaveConfig.cs" />
+    <Compile Include="Structs\Configurations\SnowConfig.cs" />
+    <Compile Include="Structs\Map\BackgroundImage.cs" />
+    <Compile Include="Structs\TriangleInfoTable.cs" />
+    <Compile Include="Ttc\TtcSaveStateByteIterator.cs" />
+    <Compile Include="Ttc\TtcUtilities.cs" />
     <Compile Include="Ttc\TtcSimulation.cs" />
     <Compile Include="Ttc\TtcRng.cs" />
     <Compile Include="Ttc\TtcMain.cs" />
+    <Compile Include="Ttc\TtcSaveState.cs" />
     <Compile Include="Ttc\TtcWheel.cs" />
     <Compile Include="Ttc\TtcTreadmill.cs" />
     <Compile Include="Ttc\TtcThwomp.cs" />
@@ -577,9 +612,15 @@
     <EmbeddedResource Include="Controls\Map\MapObjectControl.resx">
       <DependentUpon>MapObjectControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ActionForm.resx">
+      <DependentUpon>ActionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\VariablePopOutForm.resx">
+      <DependentUpon>VariablePopOutForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SelectionForm.resx">
       <DependentUpon>SelectionForm.cs</DependentUpon>
@@ -589,6 +630,14 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Content Include="Config\ArcSineData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\MainSaveData.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\SnowData.xml">
+      <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\SavedSettings.xml">
@@ -653,6 +702,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\AreaData.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\TriangleInfo.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -772,6 +825,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Schemas\ValueListSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\TriangleInfoTableSchema.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

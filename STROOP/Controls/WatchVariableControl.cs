@@ -459,7 +459,7 @@ namespace STROOP.Controls
             else if (isOKeyHeld)
             {
                 _watchVariablePanel.UnselectAllVariables();
-                BaseColor = DEFAULT_COLOR;
+                BaseColor = ColorUtilities.LastSelectedColor;
             }
             else
             {
@@ -517,6 +517,12 @@ namespace STROOP.Controls
                 if (_valueTextBox.Visible) _valueTextBox.Text = WatchVarWrapper.GetValue(true, true, FixedAddressList).ToString();
                 if (_valueCheckBox.Visible) _valueCheckBox.CheckState = WatchVarWrapper.GetCheckStateValue(FixedAddressList);
             }
+
+            if (EditMode) _valueTextBox.ShowTheCaret();
+            else _valueTextBox.HideTheCaret();
+
+            if (RenameMode) _nameTextBox.ShowTheCaret();
+            else _nameTextBox.HideTheCaret();
         }
 
         private void UpdateSettings()
@@ -695,6 +701,15 @@ namespace STROOP.Controls
             _watchVariablePanel.ContextMenuStrip.Show(point);
         }
 
+        public WatchVariableControl CreateCopy()
+        {
+            return WatchVarPrecursor.CreateWatchVariableControl(
+                VarName,
+                _baseColor,
+                new List<VariableGroup>() { VariableGroup.Custom },
+                FixedAddressList);
+        }
+
         private static AddToTabTypeEnum GetAddToTabType()
         {
             if (Keyboard.IsKeyDown(Key.A)) return AddToTabTypeEnum.IndividualSpliced;
@@ -864,6 +879,12 @@ namespace STROOP.Controls
         public List<string> GetVarInfo()
         {
             return WatchVarWrapper.GetVarInfo();
+        }
+
+        public void UnselectText()
+        {
+            _nameTextBox.SelectionLength = 0;
+            _valueTextBox.SelectionLength = 0;
         }
 
         public override string ToString()

@@ -44,6 +44,13 @@ namespace STROOP.Ttc
          */
         public override abstract string ToString();
 
+        public abstract List<object> GetFields();
+
+        public int GetNumFields()
+        {
+            return GetFields().Count;
+        }
+
         /** Set the index of the object. This helps distinguish
          *  objects when printing them (e.g. helps make the distinction
          *  between "Bobomb 1" and "Bobomb 2").

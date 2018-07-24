@@ -61,8 +61,8 @@
   <Data groupList="Advanced" base="Object" specialType="AngleObjHomeToObj" subclass="Angle" display="ushort" yaw="true">Angle Home to Obj</Data>
   
   <Data groupList="Advanced" type="uint" offset="0x218" base="Object" useHex="true">Hitbox Pointer</Data>
-  <Data groupList="Advanced" type="float" offset="0x1f8" base="Object">Hitbox Radius</Data>
-  <Data groupList="Advanced" type="float" offset="0x1fc" base="Object">Hitbox Height</Data>
+  <Data groupList="Advanced" type="float" offset="0x1F8" base="Object">Hitbox Radius</Data>
+  <Data groupList="Advanced" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   <Data groupList="Advanced" type="float" offset="0x208" base="Object">Hitbox Down Offset</Data>
   <Data groupList="Intermediate" base="Object" specialType="MarioHitboxAwayFromObject">Mario Hitbox Away</Data>
   <Data groupList="Intermediate" base="Object" specialType="MarioHitboxAboveObject">Mario Hitbox Above</Data>
@@ -228,6 +228,8 @@
   <Data groupList="Advanced" type="ushort" offset="0x74" base="Object" useHex="true">Loaded</Data>
 
   <Data groupList="Basic" type="int" offset="0x144" base="Object">Subtype</Data>
-  <Data groupList="Basic" type="int" offset="0x14C" base="Object">State</Data>
+  <Data groupList="Basic" type="int" offset="0x14C" base="Object">Action</Data>
+  <Data groupList="Advanced" type="int" offset="0x18C" base="Object">Action 2</Data>
+  <Data groupList="Basic" type="int" offset="0x150" base="Object">Phase</Data>
   <Data groupList="Basic" type="int" offset="0x154" base="Object">Timer</Data>
 </VarData>

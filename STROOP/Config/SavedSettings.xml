@@ -9,21 +9,20 @@
   <ExcludeDustForClosestObject>true</ExcludeDustForClosestObject>
   <UseMisalignmentOffsetForDistanceToLine>true</UseMisalignmentOffsetForDistanceToLine>
   <DontRoundValuesToZero>true</DontRoundValuesToZero>
-  <NeutralizeTrianglesWith21>true</NeutralizeTrianglesWith21>
+  <NeutralizeTrianglesWith0x15>true</NeutralizeTrianglesWith0x15>
   <UseInGameTrigForAngleLogic>false</UseInGameTrigForAngleLogic>
   <TabOrder>
     <Tab>Object</Tab>
     <Tab>Mario</Tab>
-    <Tab>Coin</Tab>
     <Tab>HUD</Tab>
     <Tab>Camera</Tab>
     <Tab>Triangles</Tab>
-    <Tab>Actions</Tab>
     <Tab>File</Tab>
+    <Tab>M64</Tab>
+    <Tab>Actions</Tab>
     <Tab>Input</Tab>
     <Tab>Water</Tab>
     <Tab>Misc</Tab>
-    <Tab>M64</Tab>
     <Tab>Custom</Tab>
     <Tab>TAS</Tab>
     <Tab>Map</Tab>
@@ -42,6 +41,11 @@
     <Tab>Disassembly</Tab>
     <Tab>Decompiler</Tab>
     <Tab>Scripts</Tab>
+    <Tab>Coin</Tab>
+    <Tab>Snow</Tab>
+    <Tab>Main Save</Tab>
     <Tab>Testing</Tab>
   </TabOrder>
+  <RemovedTabs>
+  </RemovedTabs>
 </SavedSettings>

@@ -638,5 +638,11 @@ namespace STROOP.Utilities
             }
             return tabPages;
         }
+
+        public static void SetTrackBarValueCapped(TrackBar trackBar, double value)
+        {
+            int newValue = (int)MoreMath.Clamp(value, trackBar.Minimum, trackBar.Maximum);
+            trackBar.Value = newValue;
+        }
     }
 }

@@ -152,6 +152,11 @@ namespace STROOP.Ttc
                           _timer + CLOSER;
         }
 
+        public override List<object> GetFields()
+        {
+            return new List<object>() { _timerMax, _countdown, _state, _timer };
+        }
+
     }
 
 }

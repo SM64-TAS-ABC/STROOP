@@ -28,7 +28,6 @@ namespace STROOP
         ObjectSlotManagerGui _slotManagerGui = new ObjectSlotManagerGui();
         List<InputImageGui> _inputImageGuiList = new List<Structs.InputImageGui>();
         FileImageGui _fileImageGui = new FileImageGui();
-        MapAssociations _mapAssoc;
         ScriptParser _scriptParser;
         List<RomHack> _romHacks;
 
@@ -75,6 +74,7 @@ namespace STROOP
             SavedSettingsConfig.StoreRecommendedTabOrder();
             SavedSettingsConfig.InvokeInitiallySavedTabOrder();
             Config.TabControlMain.SelectedIndex = 0;
+            InitializeTabRemoval();
 
             SetupViews();
 
@@ -89,6 +89,27 @@ namespace STROOP
             buttonRefresh_Click(this, new EventArgs());
             panelConnect.Location = new Point();
             panelConnect.Size = this.Size;
+        }
+
+        private void InitializeTabRemoval()
+        {
+            tabControlMain.Click += (se, ev) =>
+            {
+                if (KeyboardUtilities.IsCtrlHeld())
+                {
+                    SavedSettingsConfig.RemoveTab(tabControlMain.SelectedTab);
+                }
+            };
+
+            buttonTabAdd.ContextMenuStrip = new ContextMenuStrip();
+            buttonTabAdd.ContextMenuStrip.Opening += (se, ev) =>
+            {
+                buttonTabAdd.ContextMenuStrip.Items.Clear();
+                SavedSettingsConfig.GetRemovedTabItems().ForEach(
+                    item => buttonTabAdd.ContextMenuStrip.Items.Add(item));
+            };
+
+            SavedSettingsConfig.InvokeInitiallySavedRemovedTabs();
         }
 
         private void SetUpContextMenuStrips()
@@ -126,6 +147,7 @@ namespace STROOP
                     "Disable Locking",
                     "Show Invisible Objects as Signs",
                     "Show Cog Tris",
+                    "Show Shapes",
                 },
                 new List<Func<bool>>()
                 {
@@ -144,6 +166,11 @@ namespace STROOP
                         TestingConfig.ShowCogTris = !TestingConfig.ShowCogTris;
                         return TestingConfig.ShowCogTris;
                     },
+                    () =>
+                    {
+                        TestingConfig.ShowShapes = !TestingConfig.ShowShapes;
+                        return TestingConfig.ShowShapes;
+                    },
                 });
 
             ControlUtilities.AddContextMenuStripFunctions(
@@ -160,7 +187,7 @@ namespace STROOP
         private void CreateManagers()
         {
             // Create map manager
-            MapGui mapGui = new MapGui()
+            Config.MapGui = new MapGui()
             {
                 // Main controls
                 GLControl = glControlMap,
@@ -181,6 +208,9 @@ namespace STROOP
                 ButtonAddNewTracker = buttonMapControlsAddNewTracker,
                 ButtonClearAllTrackers = buttonMapControlsClearAllTrackers,
                 ButtonTrackSelectedObjects = buttonMapControlsTrackSelectedObjects,
+
+                ComboBoxLevel = comboBoxMapOptionsLevel,
+                ComboBoxBackground = comboBoxMapOptionsBackground,
 
                 // Controls in 2D tab
                 TabPage2D = tabPageMap2D,
@@ -286,8 +316,10 @@ namespace STROOP
                 ProgressBar = progressBarM64,
                 LabelProgressBar = labelM64ProgressBar,
 
-                ButtonSetUsHeader = buttonM64SetUsHeader,
-                ButtonSetJpHeader = buttonM64SetJpHeader,
+                ButtonSetUsRom = buttonM64SetUsRom,
+                ButtonSetJpRom = buttonM64SetJpRom,
+                ButtonCopyRom = buttonM64CopyRom,
+                ButtonPasteRom = buttonM64PasteRom,
 
                 TextBoxOnValue = textBoxM64OnValue,
 
@@ -318,12 +350,13 @@ namespace STROOP
             };
 
             // Create managers
-            Config.MapManager = new MapManager(_mapAssoc, mapGui);
-            Config.Map2Manager = new Map2Manager(_mapAssoc, map2Gui);
+            Config.MapManager = new MapManager();
+            Config.Map2Manager = new Map2Manager(map2Gui);
 
             Config.ModelManager = new ModelManager(tabPageModel);
             Config.ActionsManager = new ActionsManager(@"Config/ActionsData.xml", watchVariablePanelActions, tabPageActions);
             Config.WaterManager = new WaterManager(@"Config/WaterData.xml", watchVariablePanelWater);
+            Config.SnowManager = new SnowManager(@"Config/SnowData.xml", watchVariablePanelSnow);
             Config.InputManager = new InputManager(@"Config/InputData.xml", tabPageInput, watchVariablePanelInput, _inputImageGuiList);
             Config.MarioManager = new MarioManager(@"Config/MarioData.xml", tabPageMario, WatchVariablePanelMario);
             Config.HudManager = new HudManager(@"Config/HudData.xml", tabPageHud, watchVariablePanelHud);
@@ -334,6 +367,7 @@ namespace STROOP
             Config.PuManager = new PuManager(@"Config/PuData.xml", tabPagePu, watchVariablePanelPu);
             Config.TasManager = new TasManager(@"Config/TasData.xml", tabPageTas, watchVariablePanelTas);
             Config.FileManager = new FileManager(@"Config/FileData.xml", tabPageFile, watchVariablePanelFile, _fileImageGui);
+            Config.MainSaveManager = new MainSaveManager(@"Config/MainSaveData.xml", tabPageMainSave, watchVariablePanelMainSave);
             Config.AreaManager = new AreaManager(tabPageArea, @"Config/AreaData.xml", watchVariablePanelArea);
             Config.QuarterFrameManager = new DataManager(@"Config/QuarterFrameData.xml", watchVariablePanelQuarterFrame);
             Config.CustomManager = new CustomManager(@"Config/CustomData.xml", tabPageCustom, watchVariablePanelCustom);
@@ -423,7 +457,7 @@ namespace STROOP
             loadingForm.UpdateStatus("Loading Debug Data", statusNum++);
             loadingForm.UpdateStatus("Loading HUD Data", statusNum++);
             loadingForm.UpdateStatus("Loading Map Associations", statusNum++);
-            _mapAssoc = XmlConfigParser.OpenMapAssoc(@"Config/MapAssociations.xml");
+            Config.MapAssociations = XmlConfigParser.OpenMapAssoc(@"Config/MapAssociations.xml");
             loadingForm.UpdateStatus("Loading Scripts", statusNum++);
             _scriptParser = XmlConfigParser.OpenScripts(@"Config/Scripts.xml");
             loadingForm.UpdateStatus("Loading Hacks", statusNum++);
@@ -432,6 +466,7 @@ namespace STROOP
 
             TableConfig.MarioActions = XmlConfigParser.OpenActionTable(@"Config/MarioActions.xml");
             TableConfig.MarioAnimations = XmlConfigParser.OpenAnimationTable(@"Config/MarioAnimations.xml");
+            TableConfig.TriangleInfo = XmlConfigParser.OpenTriangleInfoTable(@"Config/TriangleInfo.xml");
             TableConfig.PendulumSwings = XmlConfigParser.OpenPendulumSwingTable(@"Config/PendulumSwings.xml");
             TableConfig.RacingPenguinWaypoints = XmlConfigParser.OpenWaypointTable(@"Config/RacingPenguinWaypoints.xml");
             TableConfig.KoopaTheQuick1Waypoints = XmlConfigParser.OpenWaypointTable(@"Config/KoopaTheQuick1Waypoints.xml");
@@ -483,8 +518,10 @@ namespace STROOP
                 Config.HudManager.Update(tabControlMain.SelectedTab == tabPageHud);
                 Config.ActionsManager.Update(tabControlMain.SelectedTab == tabPageActions);
                 Config.WaterManager.Update(tabControlMain.SelectedTab == tabPageWater);
+                Config.SnowManager.Update(tabControlMain.SelectedTab == tabPageSnow);
                 Config.InputManager.Update(tabControlMain.SelectedTab == tabPageInput);
                 Config.FileManager.Update(tabControlMain.SelectedTab == tabPageFile);
+                Config.MainSaveManager.Update(tabControlMain.SelectedTab == tabPageMainSave);
                 Config.QuarterFrameManager.Update(tabControlMain.SelectedTab == tabPageQuarterFrame);
                 Config.CustomManager.Update(tabControlMain.SelectedTab == tabPageCustom);
                 Config.VarHackManager.Update(tabControlMain.SelectedTab == tabPageVarHack);
@@ -722,6 +759,11 @@ namespace STROOP
             SavedSettingsConfig.Save();
         }
 
+        private void buttonTabAdd_Click(object sender, EventArgs e)
+        {
+            buttonTabAdd.ContextMenuStrip.Show(Cursor.Position);
+        }
+
         private void StroopMainForm_Resize(object sender, EventArgs e)
         {
             panelConnect.Size = this.Size;
@@ -766,6 +808,7 @@ namespace STROOP
         private void buttonDisconnect_Click(object sender, EventArgs e)
         {
             Task.Run(() => Config.Stream.SwitchProcess(null, null));
+            buttonRefresh_Click(this, new EventArgs());
             panelConnect.Size = this.Size;
             panelConnect.Visible = true;
         }

@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VarData>
+
+  <Data type="short" offsetUS="0x8032DDF4" offsetJP="0x8032CE94" base="Relative">Current File</Data>
+
+  <Data type="uint" offset="0x0" base="MainSave" useHex="true" color="LightBlue">File A Coin Ranks</Data>
+  <Data type="uint" offset="0x4" base="MainSave" useHex="true" color="LightBlue">File B Coin Ranks</Data>
+  <Data type="uint" offset="0x8" base="MainSave" useHex="true" color="LightBlue">File C Coin Ranks</Data>
+  <Data type="uint" offset="0xC" base="MainSave" useHex="true" color="LightBlue">File D Coin Ranks</Data>
+  
+  <Data type="ushort" offset="0x10" base="MainSave" color="Pink">Sound Mode</Data>
+  <Data type="byte" offsetUS="0x80226B7F" offsetJP="0x80226D7F" base="Relative" color="Pink">In-Game Sound Mode</Data>
+
+  <Data type="ushort" offset="0x1C" base="MainSave" useHex="true" color="Grey">Checksum Constant</Data>
+  <Data type="ushort" offset="0x1E" base="MainSave" useHex="true" color="Grey">Checksum</Data>
+  <Data base="MainSave" specialType="MainSaveChecksumCalculated" display="ushort" useHex="true" color="Grey">Checksum Calculated</Data>
+
+  <Data type="uint" offset="0x0" mask="0x00000003" shift="0" base="MainSave">File A BoB Coin Rank</Data>
+  <Data type="uint" offset="0x4" mask="0x00000003" shift="0" base="MainSave">File B BoB Coin Rank</Data>
+  <Data type="uint" offset="0x8" mask="0x00000003" shift="0" base="MainSave">File C BoB Coin Rank</Data>
+  <Data type="uint" offset="0xC" mask="0x00000003" shift="0" base="MainSave">File D BoB Coin Rank</Data>
+  
+  <Data type="uint" offset="0x0" mask="0x0000000C" shift="2" base="MainSave">File A WF Coin Rank</Data>
+  <Data type="uint" offset="0x4" mask="0x0000000C" shift="2" base="MainSave">File B WF Coin Rank</Data>
+  <Data type="uint" offset="0x8" mask="0x0000000C" shift="2" base="MainSave">File C WF Coin Rank</Data>
+  <Data type="uint" offset="0xC" mask="0x0000000C" shift="2" base="MainSave">File D WF Coin Rank</Data>
+
+  <Data type="uint" offset="0x0" mask="0x00000030" shift="4" base="MainSave">File A JRB Coin Rank</Data>
+  <Data type="uint" offset="0x4" mask="0x00000030" shift="4" base="MainSave">File B JRB Coin Rank</Data>
+  <Data type="uint" offset="0x8" mask="0x00000030" shift="4" base="MainSave">File C JRB Coin Rank</Data>
+  <Data type="uint" offset="0xC" mask="0x00000030" shift="4" base="MainSave">File D JRB Coin Rank</Data>
+
+  <Data type="uint" offset="0x0" mask="0x000000C0" shift="6" base="MainSave">File A CCM Coin Rank</Data>
+  <Data type="uint" offset="0x4" mask="0x000000C0" shift="6" base="MainSave">File B CCM Coin Rank</Data>
+  <Data type="uint" offset="0x8" mask="0x000000C0" shift="6" base="MainSave">File C CCM Coin Rank</Data>
+  <Data type="uint" offset="0xC" mask="0x000000C0" shift="6" base="MainSave">File D CCM Coin Rank</Data>
+
+  <Data type="uint" offset="0x0" mask="0x00000300" shift="8" base="MainSave">File A BBH Coin Rank</Data>
+  <Data type="uint" offset="0x4" mask="0x00000300" shift="8" base="MainSave">File B BBH Coin Rank</Data>
+  <Data type="uint" offset="0x8" mask="0x00000300" shift="8" base="MainSave">File C BBH Coin Rank</Data>
+  <Data type="uint" offset="0xC" mask="0x00000300" shift="8" base="MainSave">File D BBH Coin Rank</Data>
+
+  <Data type="uint" offset="0x0" mask="0x00000C00" shift="10" base="MainSave">File A HMC Coin Rank</Data>
+  <Data type="uint" offset="0x4" mask="0x00000C00" shift="10" base="MainSave">File B HMC Coin Rank</Data>
+  <Data type="uint" offset="0x8" mask="0x00000C00" shift="10" base="MainSave">File C HMC Coin Rank</Data>
+  <Data type="uint" offset="0xC" mask="0x00000C00" shift="10" base="MainSave">File D HMC Coin Rank</Data>
+
+  <Data type="uint" offset="0x0" mask="0x00003000" shift="12" base="MainSave">File A LLL Coin Rank</Data>
+  <Data type="uint" offset="0x4" mask="0x00003000" shift="12" base="MainSave">File B LLL Coin Rank</Data>
+  <Data type="uint" offset="0x8" mask="0x00003000" shift="12" base="MainSave">File C LLL Coin Rank</Data>
+  <Data type="uint" offset="0xC" mask="0x00003000" shift="12" base="MainSave">File D LLL Coin Rank</Data>
+
+  <Data type="uint" offset="0x0" mask="0x0000C000" shift="14" base="MainSave">File A SSL Coin Rank</Data>
+  <Data type="uint" offset="0x4" mask="0x0000C000" shift="14" base="MainSave">File B SSL Coin Rank</Data>
+  <Data type="uint" offset="0x8" mask="0x0000C000" shift="14" base="MainSave">File C SSL Coin Rank</Data>
+  <Data type="uint" offset="0xC" mask="0x0000C000" shift="14" base="MainSave">File D SSL Coin Rank</Data>
+
+  <Data type="uint" offset="0x0" mask="0x00030000" shift="16" base="MainSave">File A DDD Coin Rank</Data>
+  <Data type="uint" offset="0x4" mask="0x00030000" shift="16" base="MainSave">File B DDD Coin Rank</Data>
+  <Data type="uint" offset="0x8" mask="0x00030000" shift="16" base="MainSave">File C DDD Coin Rank</Data>
+  <Data type="uint" offset="0xC" mask="0x00030000" shift="16" base="MainSave">File D DDD Coin Rank</Data>
+
+  <Data type="uint" offset="0x0" mask="0x000C0000" shift="18" base="MainSave">File A SL Coin Rank</Data>
+  <Data type="uint" offset="0x4" mask="0x000C0000" shift="18" base="MainSave">File B SL Coin Rank</Data>
+  <Data type="uint" offset="0x8" mask="0x000C0000" shift="18" base="MainSave">File C SL Coin Rank</Data>
+  <Data type="uint" offset="0xC" mask="0x000C0000" shift="18" base="MainSave">File D SL Coin Rank</Data>
+
+  <Data type="uint" offset="0x0" mask="0x00300000" shift="20" base="MainSave">File A WDW Coin Rank</Data>
+  <Data type="uint" offset="0x4" mask="0x00300000" shift="20" base="MainSave">File B WDW Coin Rank</Data>
+  <Data type="uint" offset="0x8" mask="0x00300000" shift="20" base="MainSave">File C WDW Coin Rank</Data>
+  <Data type="uint" offset="0xC" mask="0x00300000" shift="20" base="MainSave">File D WDW Coin Rank</Data>
+
+  <Data type="uint" offset="0x0" mask="0x00C00000" shift="22" base="MainSave">File A TTM Coin Rank</Data>
+  <Data type="uint" offset="0x4" mask="0x00C00000" shift="22" base="MainSave">File B TTM Coin Rank</Data>
+  <Data type="uint" offset="0x8" mask="0x00C00000" shift="22" base="MainSave">File C TTM Coin Rank</Data>
+  <Data type="uint" offset="0xC" mask="0x00C00000" shift="22" base="MainSave">File D TTM Coin Rank</Data>
+
+  <Data type="uint" offset="0x0" mask="0x03000000" shift="24" base="MainSave">File A THI Coin Rank</Data>
+  <Data type="uint" offset="0x4" mask="0x03000000" shift="24" base="MainSave">File B THI Coin Rank</Data>
+  <Data type="uint" offset="0x8" mask="0x03000000" shift="24" base="MainSave">File C THI Coin Rank</Data>
+  <Data type="uint" offset="0xC" mask="0x03000000" shift="24" base="MainSave">File D THI Coin Rank</Data>
+
+  <Data type="uint" offset="0x0" mask="0x0C000000" shift="26" base="MainSave">File A TTC Coin Rank</Data>
+  <Data type="uint" offset="0x4" mask="0x0C000000" shift="26" base="MainSave">File B TTC Coin Rank</Data>
+  <Data type="uint" offset="0x8" mask="0x0C000000" shift="26" base="MainSave">File C TTC Coin Rank</Data>
+  <Data type="uint" offset="0xC" mask="0x0C000000" shift="26" base="MainSave">File D TTC Coin Rank</Data>
+
+  <Data type="uint" offset="0x0" mask="0x30000000" shift="28" base="MainSave">File A RR Coin Rank</Data>
+  <Data type="uint" offset="0x4" mask="0x30000000" shift="28" base="MainSave">File B RR Coin Rank</Data>
+  <Data type="uint" offset="0x8" mask="0x30000000" shift="28" base="MainSave">File C RR Coin Rank</Data>
+  <Data type="uint" offset="0xC" mask="0x30000000" shift="28" base="MainSave">File D RR Coin Rank</Data>
+
+</VarData>

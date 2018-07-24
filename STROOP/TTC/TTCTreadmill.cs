@@ -22,10 +22,8 @@ namespace STROOP.Ttc
     public class TtcTreadmill : TtcObject
     {
 
-        //whether this treadmill is the first treadmill
-        public readonly bool _isFirstTreadmill;
-	
-	    public int _currentSpeed;
+        public readonly int _subType;
+		public int _currentSpeed;
         public int _targetSpeed;
         public int _timerMax;
         public int _timer;
@@ -33,7 +31,7 @@ namespace STROOP.Ttc
         public TtcTreadmill(TtcRng rng, uint address) :
              this(
                  rng: rng,
-                 isFirstTreadmill: Config.Stream.GetInt32(address + 0x144) == 0,
+                 subType: Config.Stream.GetInt32(address + 0x144),
                  currentSpeed: (int)Config.Stream.GetSingle(address + 0xFC),
                  targetSpeed: (int)Config.Stream.GetSingle(address + 0x100),
                  timerMax: Config.Stream.GetInt32(address + 0x104),
@@ -41,15 +39,15 @@ namespace STROOP.Ttc
         {
         }
 
-        public TtcTreadmill(TtcRng rng, bool isFirstTreadmill) :
-            this(rng, isFirstTreadmill, 0, 0, 0, 0)
+        public TtcTreadmill(TtcRng rng, int subType) :
+            this(rng, subType, 0, 0, 0, 0)
         {
         }
 
-        public TtcTreadmill(TtcRng rng, bool isFirstTreadmill,
+        public TtcTreadmill(TtcRng rng, int subType,
             int currentSpeed, int targetSpeed, int timerMax, int timer) : base(rng)
         {
-            _isFirstTreadmill = isFirstTreadmill;
+            _subType = subType;
             _currentSpeed = currentSpeed;
             _targetSpeed = targetSpeed;
             _timerMax = timerMax;
@@ -58,7 +56,7 @@ namespace STROOP.Ttc
 
         public override void Update()
         {
-            if (!_isFirstTreadmill)
+            if (_subType != 0)
             { //if not first treadmill, do nothing
                 _timer++;
                 return;
@@ -95,6 +93,11 @@ namespace STROOP.Ttc
                       _targetSpeed + SEPARATOR +
                       _timerMax + SEPARATOR +
                       _timer + CLOSER;
+        }
+
+        public override List<object> GetFields()
+        {
+            return new List<object>() { _subType, _currentSpeed, _targetSpeed, _timerMax, _timer };
         }
 
     }

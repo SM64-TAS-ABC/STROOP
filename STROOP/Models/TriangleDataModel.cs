@@ -14,7 +14,7 @@ namespace STROOP.Models
     {
         public readonly uint Address;
 
-        public readonly ushort SurfaceType;
+        public readonly short SurfaceType;
         public readonly byte ExertionForceIndex;
         public readonly byte ExertionAngle;
         public readonly byte Flags;
@@ -46,10 +46,19 @@ namespace STROOP.Models
         public readonly bool BelongsToObject;
         public readonly bool NoCamCollision;
 
+        public readonly string Description;
+        public readonly short Slipperiness;
+        public readonly string SlipperinessDescription;
+        public readonly bool Exertion;
+
         public readonly static List<string> FieldNameList = new List<string> {
                 "Address",
                 "Classification",
                 "SurfaceType",
+                "Description",
+                "Slipperiness",
+                "SlipperinessDescription",
+                "Exertion",
                 "ExertionForceIndex",
                 "ExertionAngle",
                 "Flags",
@@ -81,7 +90,7 @@ namespace STROOP.Models
         {
             Address = triangleAddress;
 
-            SurfaceType = Config.Stream.GetUInt16(triangleAddress + TriangleOffsetsConfig.SurfaceType);
+            SurfaceType = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.SurfaceType);
             ExertionForceIndex = Config.Stream.GetByte(triangleAddress + TriangleOffsetsConfig.ExertionForceIndex);
             ExertionAngle = Config.Stream.GetByte(triangleAddress + TriangleOffsetsConfig.ExertionAngle);
             Flags = Config.Stream.GetByte(triangleAddress + TriangleOffsetsConfig.Flags);
@@ -113,10 +122,19 @@ namespace STROOP.Models
             BelongsToObject = (Flags & TriangleOffsetsConfig.BelongsToObjectMask) != 0;
             NoCamCollision = (Flags & TriangleOffsetsConfig.NoCamCollisionMask) != 0;
 
+            Description = TableConfig.TriangleInfo.GetDescription(SurfaceType);
+            Slipperiness = TableConfig.TriangleInfo.GetSlipperiness(SurfaceType) ?? 0;
+            SlipperinessDescription = TableConfig.TriangleInfo.GetSlipperinessDescription(SurfaceType);
+            Exertion = TableConfig.TriangleInfo.GetExertion(SurfaceType) ?? false;
+
             FieldValueList = new List<object> {
                 HexUtilities.FormatValue(Address, 8),
                 Classification,
                 SurfaceType,
+                Description,
+                Slipperiness,
+                SlipperinessDescription,
+                Exertion,
                 ExertionForceIndex,
                 ExertionAngle,
                 HexUtilities.FormatValue(Flags, 2),

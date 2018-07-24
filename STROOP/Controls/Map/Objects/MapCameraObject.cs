@@ -16,7 +16,7 @@ namespace STROOP.Controls.Map.Objects
     {
         protected override MapGraphicsIconItem _iconGraphics { get; set; }
 
-        public MapCameraObject()
+        public MapCameraObject() : base("Camera", Config.ObjectAssociations.CameraMapImage as Bitmap, null, true)
         {
             _iconGraphics = new MapGraphicsIconItem(Config.ObjectAssociations.CameraMapImage as Bitmap);
         }
