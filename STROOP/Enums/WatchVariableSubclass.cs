@@ -16,6 +16,7 @@ namespace STROOP.Structs
         Angle,
         Object,
         Triangle,
+        Address,
         Boolean,
     };
 }
