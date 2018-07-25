@@ -159,6 +159,11 @@ namespace STROOP.Controls
                 throw new ArgumentOutOfRangeException("useHex is redundant with var subclass Triangle");
             }
 
+            if (UseHex.HasValue && (Subclass == WatchVariableSubclass.Address))
+            {
+                throw new ArgumentOutOfRangeException("useHex is redundant with var subclass Address");
+            }
+
             if (InvertBool.HasValue && (Subclass != WatchVariableSubclass.Boolean))
             {
                 throw new ArgumentOutOfRangeException("invertBool must be used with var subclass Boolean");
