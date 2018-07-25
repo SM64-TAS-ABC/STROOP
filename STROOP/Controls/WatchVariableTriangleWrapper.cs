@@ -28,7 +28,7 @@ namespace STROOP.Controls
             ToolStripMenuItem itemSelectTriangle = new ToolStripMenuItem("Select Triangle");
             itemSelectTriangle.Click += (sender, e) =>
             {
-                object value = GetValue(true, false);
+                object value = GetValue(true, false, _watchVar.AddressList);
                 uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(value);
                 if (!uintValueNullable.HasValue) return;
                 uint uintValue = uintValueNullable.Value;

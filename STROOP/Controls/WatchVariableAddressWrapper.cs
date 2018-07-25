@@ -25,21 +25,26 @@ namespace STROOP.Controls
 
         private void AddAddressContextMenuStripItems()
         {
-            ToolStripMenuItem itemViewAddressInMemoryTab = new ToolStripMenuItem("View Address in Memory Tab");
-            itemViewAddressInMemoryTab.Click += (sender, e) =>
+            ToolStripMenuItem itemViewAddress = new ToolStripMenuItem("View Address");
+            itemViewAddress.Click += (sender, e) =>
             {
-                /*
-                object value = GetValue(true, false);
+                object value = GetValue(true, false, _watchVar.AddressList);
                 uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(value);
                 if (!uintValueNullable.HasValue) return;
                 uint uintValue = uintValueNullable.Value;
-                Config.TriangleManager.SetCustomTriangleAddress(uintValue);
-                // TODO switch to triangle tab
-                */
+                if (ObjectUtilities.IsObjectAddress(uintValue))
+                {
+                    Config.MemoryManager.SetObjectAddress(uintValue);
+                }
+                else
+                {
+                    Config.MemoryManager.SetCustomAddress(uintValue);
+                }
+                Config.TabControlMain.SelectedTab = Config.TabControlMain.TabPages["tabPageMemory"];
             };
 
             _contextMenuStrip.AddToBeginningList(new ToolStripSeparator());
-            _contextMenuStrip.AddToBeginningList(itemViewAddressInMemoryTab);
+            _contextMenuStrip.AddToBeginningList(itemViewAddress);
         }
 
         protected override void HandleVerification(object value)
