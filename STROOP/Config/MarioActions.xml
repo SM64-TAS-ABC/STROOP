@@ -207,7 +207,7 @@
   <Action name="text / cutscene" value="0x20001306" afterCloneValue="0x08000207" afterUncloneValue="0x20001306" handsfreeValue="0x08000207"/>
   <Action name="reading text (sign)" value="0x00001308" afterCloneValue="0x08000207" afterUncloneValue="0x00001308" handsfreeValue="0x08000207"/>
   <Action name="waiting for text" value="0x0000130A" afterCloneValue="0x08000207" afterUncloneValue="0x0000130A" handsfreeValue="0x08000207"/>
-  <Action name="unknown action" value="0x0000130F" afterCloneValue="0x08000207" afterUncloneValue="0x0000130F" handsfreeValue="0x08000207"/>
+  <Action name="free movement" value="0x0000130F" afterCloneValue="0x08000207" afterUncloneValue="0x0000130F" handsfreeValue="0x08000207"/>
   <Action name="credits" value="0x00001319" afterCloneValue="0x08000207" afterUncloneValue="0x00001319" handsfreeValue="0x08000207"/>
   <Action name="waving" value="0x0000131A" afterCloneValue="0x08000207" afterUncloneValue="0x0000131A" handsfreeValue="0x08000207"/>
   <Action name="pulling door" value="0x00001320" afterCloneValue="0x08000207" afterUncloneValue="0x00001320" handsfreeValue="0x08000207"/>
