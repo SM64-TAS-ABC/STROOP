@@ -168,6 +168,7 @@
     <Compile Include="Controls\PanelEx.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\WatchVariableAddressWrapper.cs" />
     <Compile Include="Controls\WatchVariableTriangleWrapper.cs" />
     <Compile Include="Controls\WatchVariableStringWrapper.cs" />
     <Compile Include="Enums\FrameInputRelationType.cs" />

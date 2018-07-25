@@ -13,31 +13,40 @@ using System.Windows.Forms;
 
 namespace STROOP.Controls
 {
-    public class WatchVariableTriangleWrapper : WatchVariableAddressWrapper
+    public class WatchVariableAddressWrapper : WatchVariableNumberWrapper
     {
-        public WatchVariableTriangleWrapper(
+        public WatchVariableAddressWrapper(
             WatchVariable watchVar,
             WatchVariableControl watchVarControl)
-            : base(watchVar, watchVarControl)
+            : base(watchVar, watchVarControl, DEFAULT_DISPLAY_TYPE, DEFAULT_ROUNDING_LIMIT, true)
         {
-            AddTriangleContextMenuStripItems();
+            AddAddressContextMenuStripItems();
         }
 
-        private void AddTriangleContextMenuStripItems()
+        private void AddAddressContextMenuStripItems()
         {
-            ToolStripMenuItem itemSelectTriangle = new ToolStripMenuItem("Select Triangle");
-            itemSelectTriangle.Click += (sender, e) =>
+            ToolStripMenuItem itemViewAddressInMemoryTab = new ToolStripMenuItem("View Address in Memory Tab");
+            itemViewAddressInMemoryTab.Click += (sender, e) =>
             {
+                /*
                 object value = GetValue(true, false);
                 uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(value);
                 if (!uintValueNullable.HasValue) return;
                 uint uintValue = uintValueNullable.Value;
                 Config.TriangleManager.SetCustomTriangleAddress(uintValue);
                 // TODO switch to triangle tab
+                */
             };
 
             _contextMenuStrip.AddToBeginningList(new ToolStripSeparator());
-            _contextMenuStrip.AddToBeginningList(itemSelectTriangle);
+            _contextMenuStrip.AddToBeginningList(itemViewAddressInMemoryTab);
+        }
+
+        protected override void HandleVerification(object value)
+        {
+            base.HandleVerification(value);
+            if (!(value is uint))
+                throw new ArgumentOutOfRangeException(value + " is not a uint, but represents an address");
         }
     }
 }
