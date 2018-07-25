@@ -55,6 +55,7 @@
   <Action name="lava boost landing" value="0x08000239" afterCloneValue="0x08000207" afterUncloneValue="0x08000239" handsfreeValue="0x08000207"/>
   <Action name="quicksand jump landing" value="0x00000476" afterCloneValue="0x08000207" afterUncloneValue="0x00000476" handsfreeValue="0x08000207"/>
   <Action name="riding owl" value="0x000004A8" afterCloneValue="0x010008A1" afterUncloneValue="0x000004A8" handsfreeValue="0x010008A1"/>
+  <Action name="start sliding" value="0x00000050" afterCloneValue="0x08000207" afterUncloneValue="0x00000050" handsfreeValue="0x08000207"/>
   <Action name="air sitting" value="0x0300088E" afterCloneValue="0x010008A1" afterUncloneValue="0x0300088E" handsfreeValue="0x010008A1"/>
   <Action name="ground sitting" value="0x00840452" afterCloneValue="0x08000207" afterUncloneValue="0x00840452" handsfreeValue="0x08000207"/>
   <Action name="stop sitting" value="0x0C00023E" afterCloneValue="0x08000207" afterUncloneValue="0x0C00023E" handsfreeValue="0x08000207"/>
@@ -97,6 +98,7 @@
   <Action name="flying" value="0x10880899" afterCloneValue="0x010008A1" afterUncloneValue="0x10880899" handsfreeValue="0x010008A1"/>
   <Action name="vertical wind" value="0x1008089C" afterCloneValue="0x010008A1" afterUncloneValue="0x1008089C" handsfreeValue="0x010008A1"/>
   <Action name="in quicksand" value="0x0002020D" afterCloneValue="0x08000207" afterUncloneValue="0x0002020D" handsfreeValue="0x08000207"/>
+  <Action name="mystery action" value="0x0002020E" afterCloneValue="0x08000207" afterUncloneValue="0x0002020E" handsfreeValue="0x08000207"/>
   <Action name="shockwave bouncing" value="0x00020226" afterCloneValue="0x010008A1" afterUncloneValue="0x00020226" handsfreeValue="0x010008A1"/>
   <Action name="shocked" value="0x00020338" afterCloneValue="0x08000207" afterUncloneValue="0x00020338" handsfreeValue="0x08000207"/>
   <Action name="squished" value="0x00020339" afterCloneValue="0x08000207" afterUncloneValue="0x00020339" handsfreeValue="0x08000207"/>
@@ -151,6 +153,7 @@
   <Action name="metal water fall landing" value="0x000042F6" afterCloneValue="0x080042F1" afterUncloneValue="0x000042F6" handsfreeValue="0x080042F1"/>
   <Action name="metal water jump" value="0x000044F8" afterCloneValue="0x000044F9" afterUncloneValue="0x000044F8" handsfreeValue="0x000044F9"/>
   <Action name="metal water jump landing" value="0x000044FA" afterCloneValue="0x080042F1" afterUncloneValue="0x000044FA" handsfreeValue="0x080042F1"/>
+  <Action name="'start sliding" value="0x00000051" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
   <Action name="'panting" value="0x08000206" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
   <Action name="'standing" value="0x08000207" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
   <Action name="'heavy standing" value="0x08000208" afterCloneValue="0x08000207" afterUncloneValue="0x0C400201" handsfreeValue="0x04000471"/>
@@ -204,6 +207,7 @@
   <Action name="text / cutscene" value="0x20001306" afterCloneValue="0x08000207" afterUncloneValue="0x20001306" handsfreeValue="0x08000207"/>
   <Action name="reading text (sign)" value="0x00001308" afterCloneValue="0x08000207" afterUncloneValue="0x00001308" handsfreeValue="0x08000207"/>
   <Action name="waiting for text" value="0x0000130A" afterCloneValue="0x08000207" afterUncloneValue="0x0000130A" handsfreeValue="0x08000207"/>
+  <Action name="unknown action" value="0x0000130F" afterCloneValue="0x08000207" afterUncloneValue="0x0000130F" handsfreeValue="0x08000207"/>
   <Action name="credits" value="0x00001319" afterCloneValue="0x08000207" afterUncloneValue="0x00001319" handsfreeValue="0x08000207"/>
   <Action name="waving" value="0x0000131A" afterCloneValue="0x08000207" afterUncloneValue="0x0000131A" handsfreeValue="0x08000207"/>
   <Action name="pulling door" value="0x00001320" afterCloneValue="0x08000207" afterUncloneValue="0x00001320" handsfreeValue="0x08000207"/>
