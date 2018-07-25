@@ -546,28 +546,28 @@
     <Image path="Yellow Coin.png"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x9C" base="Object">Collectable</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x180" base="Object">Value</Data>
-    <Data groupList="ObjectSpecific" type="uint" offset="0x1D4" base="Object" useHex="true">Disappear Bhvr</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0x1D4" base="Object" subclass="Address">Disappear Bhvr</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0x16" base="Object">Shadow</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300091C" name="Blue Coin" gfxId="0x800F9464">
     <Image path="Blue Coin.png"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x9C" base="Object">Collectable</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x180" base="Object">Value</Data>
-    <Data groupList="ObjectSpecific" type="uint" offset="0x1D4" base="Object" useHex="true">Disappear Bhvr</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0x1D4" base="Object" subclass="Address">Disappear Bhvr</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0x16" base="Object">Shadow</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300091C" name="Yellow Coin" gfxId="0x800F8AA4">
     <Image path="Yellow Coin.png"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x9C" base="Object">Collectable</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x180" base="Object">Value</Data>
-    <Data groupList="ObjectSpecific" type="uint" offset="0x1D4" base="Object" useHex="true">Disappear Bhvr</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0x1D4" base="Object" subclass="Address">Disappear Bhvr</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0x16" base="Object">Shadow</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300091C" name="Yellow / Blue Coin">
     <Image path="Yellow Coin.png"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x9C" base="Object">Collectable</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x180" base="Object">Value</Data>
-    <Data groupList="ObjectSpecific" type="uint" offset="0x1D4" base="Object" useHex="true">Disappear Bhvr</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0x1D4" base="Object" subclass="Address">Disappear Bhvr</Data>
     <Data groupList="ObjectSpecific" type="ushort" offset="0x16" base="Object">Shadow</Data>
   </Object>
   <Object behaviorScriptAddress="0x13000940" name="Temporary Coin?">
@@ -587,7 +587,7 @@
     <Image path="Yellow Coin.png"/>
     <Data groupList="ObjectSpecific" type="int" offset="0x9C" base="Object">Collectable</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x180" base="Object">Value</Data>
-    <Data groupList="ObjectSpecific" type="uint" offset="0x1D4" base="Object" useHex="true">Disappear Bhvr</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0x1D4" base="Object" subclass="Address">Disappear Bhvr</Data>
   </Object>
   <Object behaviorScriptAddress="0x130009E0" name="Sparkles (Big)">
     <SpawnCode gfxId="0x95"/>
@@ -1275,7 +1275,7 @@
   <Object behaviorScriptAddress="0x13001C34" name="DDD Painting Floor Manager">
     <SpawnCode gfxId="0x00"/>
     <Image path="DDD Painting Floor Manager.png"/>
-    <Data groupList="ObjectSpecific" type="uint" offset="0x218" base="Object" useHex="true">DDD Moved Back</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0x218" base="Object" subclass="Address">DDD Moved Back</Data>
   </Object>
   <Object behaviorScriptAddress="0x13001C58" name="Moat Grills">
     <SpawnCode gfxId="0x36"/>
@@ -2551,21 +2551,21 @@
   <Object behaviorScriptAddress="0x13003614" name="Cork Box Spawner" spawnObj="0x13004218">
     <SpawnCode gfxId="0x00"/>
     <Image path="Cork Box Spawner.png"/>
-    <Data groupList="ObjectSpecific" type="uint" offset="0xF4" base="Object" useHex="true">Spawn Obj Graphic</Data>
-    <Data groupList="ObjectSpecific" type="uint" offset="0xFC" base="Object" useHex="true">Spawn Obj Behavior</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0xF4" base="Object" subclass="Address">Spawn Obj Graphic</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0xFC" base="Object" subclass="Address">Spawn Obj Behavior</Data>
   </Object>
     <Object behaviorScriptAddress="0x13003614" name="Bob-omb Spawner" spawnObj="0x13003174">
     <SpawnCode gfxId="0x00"/>
     <Image path="Bob-omb Spawner.png"/>
-    <Data groupList="ObjectSpecific" type="uint" offset="0xF4" base="Object" useHex="true">Spawn Obj Graphic</Data>
-    <Data groupList="ObjectSpecific" type="uint" offset="0xFC" base="Object" useHex="true">Spawn Obj Behavior</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0xF4" base="Object" subclass="Address">Spawn Obj Graphic</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0xFC" base="Object" subclass="Address">Spawn Obj Behavior</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x18A" base="Object" subclass="Boolean" invertBool="true">Bob-omb Has Coin</Data>
   </Object>
     <Object behaviorScriptAddress="0x13003614" name="Snowman's Body Spawner" spawnObj="0x13003CE4">
     <SpawnCode gfxId="0x00"/>
     <Image path="Snowman's Body Spawner.png"/>
-    <Data groupList="ObjectSpecific" type="uint" offset="0xF4" base="Object" useHex="true">Spawn Obj Graphic</Data>
-    <Data groupList="ObjectSpecific" type="uint" offset="0xFC" base="Object" useHex="true">Spawn Obj Behavior</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0xF4" base="Object" subclass="Address">Spawn Obj Graphic</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0xFC" base="Object" subclass="Address">Spawn Obj Behavior</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300362C" name="Small Bully">
     <SpawnCode gfxId="0x56"/>
@@ -3084,8 +3084,8 @@
     <MapImage path="MIPS Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="uint" offset="0x144" base="Object" subclass="Boolean">Second Occurrence</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x127" base="Object" subclass="Boolean">Grabbed</Data>
-    <Data groupList="ObjectSpecific" type="uint" offset="0xFC" base="Object" useHex="true">Starter WP</Data>
-    <Data groupList="ObjectSpecific" type="uint" offset="0x100" base="Object" useHex="true">Current WP</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0xFC" base="Object" subclass="Address">Starter WP</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0x100" base="Object" subclass="Address">Current WP</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x104" base="Object">Prev WP ID</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x00" base="Waypoint">Prev WP Index</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x02" base="Waypoint" coord="X">Prev WP X</Data>
@@ -3109,8 +3109,8 @@
     <MapImage path="MIPS Top.png" rotates="true"/>
     <Data groupList="ObjectSpecific" type="uint" offset="0x144" base="Object" subclass="Boolean">Second Occurrence</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x127" base="Object" subclass="Boolean">Grabbed</Data>
-    <Data groupList="ObjectSpecific" type="uint" offset="0xFC" base="Object" useHex="true">Starter WP</Data>
-    <Data groupList="ObjectSpecific" type="uint" offset="0x100" base="Object" useHex="true">Current WP</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0xFC" base="Object" subclass="Address">Starter WP</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0x100" base="Object" subclass="Address">Current WP</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x104" base="Object">Prev WP ID</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x00" base="Waypoint">Prev WP Index</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x02" base="Waypoint" coord="X">Prev WP X</Data>
@@ -3157,8 +3157,8 @@
     <Data groupList="ObjectSpecific" type="float" offset="0xE4" base="Object">Gravity</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Blinking</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x110" base="Object">Blinking Countdown</Data>
-    <Data groupList="ObjectSpecific" type="uint" offset="0xFC" base="Object" useHex="true">Starter WP</Data>
-    <Data groupList="ObjectSpecific" type="uint" offset="0x100" base="Object" useHex="true">Current WP</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0xFC" base="Object" subclass="Address">Starter WP</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0x100" base="Object" subclass="Address">Current WP</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x104" base="Object">Prev WP ID</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x00" base="Waypoint">Prev WP Index</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x02" base="Waypoint" coord="X">Prev WP X</Data>
@@ -3191,8 +3191,8 @@
     <Data groupList="ObjectSpecific" type="float" offset="0xE4" base="Object">Gravity</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0xF3" base="Object" subclass="Boolean">Blinking</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x110" base="Object">Blinking Countdown</Data>
-    <Data groupList="ObjectSpecific" type="uint" offset="0xFC" base="Object" useHex="true">Starter WP</Data>
-    <Data groupList="ObjectSpecific" type="uint" offset="0x100" base="Object" useHex="true">Current WP</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0xFC" base="Object" subclass="Address">Starter WP</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0x100" base="Object" subclass="Address">Current WP</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x104" base="Object">Prev WP ID</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x00" base="Waypoint">Prev WP Index</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x02" base="Waypoint" coord="X">Prev WP X</Data>
@@ -4129,8 +4129,8 @@
     <Data groupList="ObjectSpecific" type="short" offset="0x1AE" base="Object" subclass="Boolean">Mario Finished First</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x1B0" base="Object" subclass="Boolean">Penguin Finished</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x1AC" base="Object">Message</Data>
-    <Data groupList="ObjectSpecific" type="uint" offset="0xFC" base="Object" useHex="true">Starter WP</Data>
-    <Data groupList="ObjectSpecific" type="uint" offset="0x100" base="Object" useHex="true">Current WP</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0xFC" base="Object" subclass="Address">Starter WP</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0x100" base="Object" subclass="Address">Current WP</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x104" base="Object">Prev WP ID</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x00" base="Waypoint">Prev WP Index</Data>
     <Data groupList="ObjectSpecific" type="short" offset="0x02" base="Waypoint" coord="X">Prev WP X</Data>

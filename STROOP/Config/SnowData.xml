@@ -11,7 +11,7 @@
   <Data groupList="Advanced" type="short" offsetUS="0x80184E8A" offsetJP="0x80181FFA" base="Relative" color="Green">CCM Snow Type</Data>
   <Data groupList="Advanced" type="short" offsetUS="0x80170CF6" offsetJP="0x8016DE76" base="Relative" color="Green">SL Snow Type</Data>
   <Data groupList="Advanced" type="short" offsetUS="0x80151EB2" offsetJP="0x8014F032" base="Relative" color="Green">SA Snow Type</Data>
-  <Data groupList="Advanced" type="uint" offsetUS="0x80361400" offsetJP="0x80360090" base="Relative" useHex="true" color="Green">Snow Array Address</Data>
+  <Data groupList="Advanced" type="uint" offsetUS="0x80361400" offsetJP="0x80360090" base="Relative" subclass="Address" color="Green">Snow Array Address</Data>
 
   <Data groupList="Intermediate" type="short" offsetUS="0x80361414" offsetJP="0x803600A4" base="Relative" color="LightBlue">Snow Counter</Data>
   <Data groupList="Intermediate" type="short" offsetUS="0x80361416" offsetJP="0x803600A6" base="Relative" color="LightBlue">Snow Max</Data>
