@@ -180,7 +180,15 @@ namespace STROOP.Controls
         protected override object HandleHexUndisplaying(object value)
         {
             string stringValue = value.ToString();
-            if (stringValue.Length >= 2 && stringValue.Substring(0,2) == "0x")
+            if (stringValue.Length < 2 || stringValue.Substring(0, 2) != "0x") return value;
+
+            if (SavedSettingsConfig.DisplayAsHexUsesMemory)
+            {
+                if (_watchVar.MemoryType == null) return value;
+                object obj = TypeUtilities.ConvertBytes(_watchVar.MemoryType, stringValue, true);
+                if (obj != null) return obj;
+            }
+            else
             {
                 uint? parsed = ParsingUtilities.ParseHexNullable(stringValue);
                 if (parsed != null) return parsed.Value;
