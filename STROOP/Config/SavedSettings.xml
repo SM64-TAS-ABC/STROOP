@@ -9,6 +9,7 @@
   <ExcludeDustForClosestObject>true</ExcludeDustForClosestObject>
   <UseMisalignmentOffsetForDistanceToLine>true</UseMisalignmentOffsetForDistanceToLine>
   <DontRoundValuesToZero>true</DontRoundValuesToZero>
+  <DisplayAsHexUsesMemory>true</DisplayAsHexUsesMemory>
   <NeutralizeTrianglesWith0x15>true</NeutralizeTrianglesWith0x15>
   <UseInGameTrigForAngleLogic>false</UseInGameTrigForAngleLogic>
   <TabOrder>

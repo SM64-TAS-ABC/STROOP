@@ -138,6 +138,9 @@ namespace STROOP.Utilities
                     case "DontRoundValuesToZero":
                         SavedSettingsConfig.DontRoundValuesToZero = bool.Parse(element.Value);
                         break;
+                    case "DisplayAsHexUsesMemory":
+                        SavedSettingsConfig.DisplayAsHexUsesMemory = bool.Parse(element.Value);
+                        break;
                     case "NeutralizeTrianglesWith0x15":
                         SavedSettingsConfig.NeutralizeTrianglesWith0x15 = bool.Parse(element.Value);
                         break;
