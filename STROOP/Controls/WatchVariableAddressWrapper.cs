@@ -32,6 +32,7 @@ namespace STROOP.Controls
                 uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(value);
                 if (!uintValueNullable.HasValue) return;
                 uint uintValue = uintValueNullable.Value;
+                if (uintValue == 0) return;
                 if (ObjectUtilities.IsObjectAddress(uintValue))
                 {
                     Config.MemoryManager.SetObjectAddress(uintValue);
