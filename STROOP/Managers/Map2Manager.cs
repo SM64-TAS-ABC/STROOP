@@ -257,7 +257,7 @@ namespace STROOP.Managers
 
         private (List<TriangleShape> floors, List<TriangleShape> walls) GetTriShapes(int numSides)
         {
-            double dist = 900;
+            double dist = 850;
             double radius = 300;
             double xOffset = 1300;
             double zOffset = 0;
