@@ -67,7 +67,7 @@ namespace STROOP.Controls
 
             _selectionToolStripItems =
                 WatchVariableSelectionUtilities.CreateSelectionToolStripItems(
-                    () => _selectedWatchVarControls, this);
+                    () => new List<WatchVariableControl>(_selectedWatchVarControls), this);
 
             List<WatchVariableControlPrecursor> precursors = _varFilePath == null
                 ? new List<WatchVariableControlPrecursor>()
