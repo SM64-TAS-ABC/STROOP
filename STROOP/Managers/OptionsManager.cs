@@ -32,6 +32,7 @@ namespace STROOP.Managers
                 "Neutralize Triangles with 0x15",
                 "Use Misalignment Offset For Distance To Line",
                 "Don't Round Values to 0",
+                "Display as Hex Uses Memory",
                 "Use In-Game Trig for Angle Logic",
             };
 
@@ -47,6 +48,7 @@ namespace STROOP.Managers
                 () => SavedSettingsConfig.NeutralizeTrianglesWith0x15,
                 () => SavedSettingsConfig.UseMisalignmentOffsetForDistanceToLine,
                 () => SavedSettingsConfig.DontRoundValuesToZero,
+                () => SavedSettingsConfig.DisplayAsHexUsesMemory,
                 () => SavedSettingsConfig.UseInGameTrigForAngleLogic,
             };
 
@@ -62,6 +64,7 @@ namespace STROOP.Managers
                 (bool value) => SavedSettingsConfig.NeutralizeTrianglesWith0x15 = value,
                 (bool value) => SavedSettingsConfig.UseMisalignmentOffsetForDistanceToLine = value,
                 (bool value) => SavedSettingsConfig.DontRoundValuesToZero = value,
+                (bool value) => SavedSettingsConfig.DisplayAsHexUsesMemory = value,
                 (bool value) => SavedSettingsConfig.UseInGameTrigForAngleLogic = value,
             };
 

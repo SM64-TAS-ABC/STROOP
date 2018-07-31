@@ -13,12 +13,12 @@ using System.Windows.Forms;
 
 namespace STROOP.Controls
 {
-    public class WatchVariableTriangleWrapper : WatchVariableNumberWrapper
+    public class WatchVariableTriangleWrapper : WatchVariableAddressWrapper
     {
         public WatchVariableTriangleWrapper(
             WatchVariable watchVar,
             WatchVariableControl watchVarControl)
-            : base(watchVar, watchVarControl, DEFAULT_DISPLAY_TYPE, DEFAULT_ROUNDING_LIMIT, true)
+            : base(watchVar, watchVarControl)
         {
             AddTriangleContextMenuStripItems();
         }
@@ -28,7 +28,7 @@ namespace STROOP.Controls
             ToolStripMenuItem itemSelectTriangle = new ToolStripMenuItem("Select Triangle");
             itemSelectTriangle.Click += (sender, e) =>
             {
-                object value = GetValue(true, false);
+                object value = GetValue(true, false, _watchVar.AddressList);
                 uint? uintValueNullable = ParsingUtilities.ParseUIntNullable(value);
                 if (!uintValueNullable.HasValue) return;
                 uint uintValue = uintValueNullable.Value;
@@ -38,13 +38,6 @@ namespace STROOP.Controls
 
             _contextMenuStrip.AddToBeginningList(new ToolStripSeparator());
             _contextMenuStrip.AddToBeginningList(itemSelectTriangle);
-        }
-
-        protected override void HandleVerification(object value)
-        {
-            base.HandleVerification(value);
-            if (!(value is uint))
-                throw new ArgumentOutOfRangeException(value + " is not a uint, but represents a triangle");
         }
     }
 }

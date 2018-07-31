@@ -153,6 +153,7 @@ namespace STROOP.Controls
 
         protected override object HandleRounding(object value, bool handleRounding)
         {
+            if (_displayAsHex) return value;
             int? roundingLimit = handleRounding && _roundingLimit >= 0 ? _roundingLimit : (int?)null;
             double doubleValue = Convert.ToDouble(value);
             double roundedValue = roundingLimit.HasValue
@@ -171,13 +172,23 @@ namespace STROOP.Controls
         protected override object HandleHexDisplaying(object value)
         {
             if (!_displayAsHex) return value;
-            return HexUtilities.FormatValue(value, GetHexDigitCount() ?? 8, true);
+            return SavedSettingsConfig.DisplayAsHexUsesMemory
+                ? HexUtilities.FormatMemory(value, GetHexDigitCount() ?? 8, true)
+                : HexUtilities.FormatValue(value, GetHexDigitCount() ?? 8, true);
         }
 
         protected override object HandleHexUndisplaying(object value)
         {
             string stringValue = value.ToString();
-            if (stringValue.Length >= 2 && stringValue.Substring(0,2) == "0x")
+            if (stringValue.Length < 2 || stringValue.Substring(0, 2) != "0x") return value;
+
+            if (SavedSettingsConfig.DisplayAsHexUsesMemory)
+            {
+                if (_watchVar.MemoryType == null) return value;
+                object obj = TypeUtilities.ConvertBytes(_watchVar.MemoryType, stringValue, true);
+                if (obj != null) return obj;
+            }
+            else
             {
                 uint? parsed = ParsingUtilities.ParseHexNullable(stringValue);
                 if (parsed != null) return parsed.Value;

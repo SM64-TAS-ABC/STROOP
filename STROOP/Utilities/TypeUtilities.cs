@@ -101,6 +101,26 @@ namespace STROOP.Structs
                 "double",
             };
 
+        public static object ConvertBytes(Type type, string hexString, bool littleEndian)
+        {
+            if (hexString == null) return null;
+            if (hexString.Length >= 2 && hexString.Substring(0, 2) == "0x") hexString = hexString.Substring(2);
+
+            try
+            {
+                byte[] bytes = Enumerable.Range(0, hexString.Length)
+                                            .ToList()
+                                            .FindAll(i => i % 2 == 0)
+                                            .ConvertAll(i => Convert.ToByte(hexString.Substring(i, 2), 16))
+                                            .ToArray();
+                return ConvertBytes(type, bytes, 0, littleEndian);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
         public static object ConvertBytes(Type type, byte[] allBytes, int startIndex, bool littleEndian)
         {
             int typeSize = TypeSize[type];

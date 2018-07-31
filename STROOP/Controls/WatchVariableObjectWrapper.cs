@@ -13,14 +13,14 @@ using System.Windows.Forms;
 
 namespace STROOP.Controls
 {
-    public class WatchVariableObjectWrapper : WatchVariableNumberWrapper
+    public class WatchVariableObjectWrapper : WatchVariableAddressWrapper
     {
         private bool _displayAsObject;
 
         public WatchVariableObjectWrapper(
             WatchVariable watchVar,
             WatchVariableControl watchVarControl)
-            : base(watchVar, watchVarControl, DEFAULT_DISPLAY_TYPE, DEFAULT_ROUNDING_LIMIT, true)
+            : base(watchVar, watchVarControl)
         {
             _displayAsObject = true;
 
@@ -50,13 +50,6 @@ namespace STROOP.Controls
             _contextMenuStrip.AddToBeginningList(new ToolStripSeparator());
             _contextMenuStrip.AddToBeginningList(itemDisplayAsObject);
             _contextMenuStrip.AddToBeginningList(itemSelectObject);
-        }
-
-        protected override void HandleVerification(object value)
-        {
-            base.HandleVerification(value);
-            if (!(value is uint))
-                throw new ArgumentOutOfRangeException(value + " is not a uint, but represents an object");
         }
 
         protected override object HandleHexDisplaying(object value)

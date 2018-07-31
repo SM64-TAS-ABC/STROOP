@@ -125,6 +125,18 @@ namespace STROOP.Structs.Configurations
             }
         }
 
+        private static bool _displayAsHexUsesMemory;
+        public static bool DisplayAsHexUsesMemory
+        {
+            get => _displayAsHexUsesMemory;
+            set
+            {
+                if (_displayAsHexUsesMemory == value) return;
+                _displayAsHexUsesMemory = value;
+                if (IsLoaded) Save();
+            }
+        }
+
         private static bool _neutralizeTrianglesWith0x15;
         public static bool NeutralizeTrianglesWith0x15
         {
@@ -301,6 +313,7 @@ namespace STROOP.Structs.Configurations
                 new XElement("ExcludeDustForClosestObject", _excludeDustForClosestObject),
                 new XElement("UseMisalignmentOffsetForDistanceToLine", _useMisalignmentOffsetForDistanceToLine),
                 new XElement("DontRoundValuesToZero", _dontRoundValuesToZero),
+                new XElement("DisplayAsHexUsesMemory", _displayAsHexUsesMemory),
                 new XElement("NeutralizeTrianglesWith0x15", _neutralizeTrianglesWith0x15),
                 new XElement("UseInGameTrigForAngleLogic", _useInGameTrigForAngleLogic),
                 tabOrderXElement,
@@ -325,6 +338,7 @@ namespace STROOP.Structs.Configurations
             _excludeDustForClosestObject = true;
             _useMisalignmentOffsetForDistanceToLine = true;
             _dontRoundValuesToZero = true;
+            _displayAsHexUsesMemory = true;
             _neutralizeTrianglesWith0x15 = true;
             _useInGameTrigForAngleLogic = false;
             Save();

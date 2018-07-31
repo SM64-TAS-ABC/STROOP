@@ -60,7 +60,7 @@
   <Data groupList="Advanced" base="Object" specialType="DAngleObjToObjHome" subclass="Angle" display="short">DAngle Obj to Home</Data>
   <Data groupList="Advanced" base="Object" specialType="AngleObjHomeToObj" subclass="Angle" display="ushort" yaw="true">Angle Home to Obj</Data>
   
-  <Data groupList="Advanced" type="uint" offset="0x218" base="Object" useHex="true">Hitbox Pointer</Data>
+  <Data groupList="Advanced" type="uint" offset="0x218" base="Object" subclass="Address">Hitbox Pointer</Data>
   <Data groupList="Advanced" type="float" offset="0x1F8" base="Object">Hitbox Radius</Data>
   <Data groupList="Advanced" type="float" offset="0x1FC" base="Object">Hitbox Height</Data>
   <Data groupList="Advanced" type="float" offset="0x208" base="Object">Hitbox Down Offset</Data>
@@ -90,9 +90,9 @@
   <Data groupList="Advanced" type="uint" offset="0x60" base="Object" subclass="Object">Next Processed Obj</Data>
   <Data groupList="Advanced" type="uint" offset="0x68" base="Object" subclass="Object">Parent Obj</Data>
 
-  <Data groupList="Advanced" type="uint" offset="0x020C" base="Object" useHex="true">Behavior Script</Data>
-  <Data groupList="Intermediate" type="uint" offset="0x14" base="Object" useHex="true">Graphics</Data>
-  <Data groupList="Intermediate" type="uint" offset="0x218" base="Object" useHex="true">Model</Data>
+  <Data groupList="Advanced" type="uint" offset="0x020C" base="Object" subclass="Address">Behavior Script</Data>
+  <Data groupList="Intermediate" type="uint" offset="0x14" base="Object" subclass="Address">Graphics</Data>
+  <Data groupList="Intermediate" type="uint" offset="0x218" base="Object" subclass="Address">Model</Data>
   
   <Data groupList="Advanced" type="short" offset="0x14" base="Graphics">Shadow Radius</Data>
   <Data groupList="Advanced" type="byte" offset="0x16" base="Graphics">Shadow Opacity</Data>
@@ -186,7 +186,7 @@
   <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x40000000">30</Data>
   <Data groupList="Movement" type="uint" offset="0xEC" base="Object" subclass="Boolean" mask="0x80000000">31</Data>
 
-  <Data groupList="Intermediate" type="uint" offset="0x3C" base="Object" useHex="true">Animation</Data>
+  <Data groupList="Intermediate" type="uint" offset="0x3C" base="Object" subclass="Address">Animation</Data>
   <Data groupList="Advanced" type="short" offset="0x00" base="Animation" mask="0x0001" subclass="Boolean">Don't Loop Animation</Data>
   <Data groupList="Advanced" type="short" offset="0x00" base="Animation" mask="0x0002" subclass="Boolean">Reverse Animation</Data>
   <Data groupList="Advanced" type="short" offset="0x00" base="Animation" mask="0x0004" subclass="Boolean">Freeze Animation</Data>
@@ -220,8 +220,8 @@
   <Data groupList="Basic" type="float" offset="0x168" base="Object" coord="Y">Home Y</Data>
   <Data groupList="Basic" type="float" offset="0x16C" base="Object" coord="Z">Home Z</Data>
 
-  <Data groupList="Advanced" type="uint" offset="0x1D4" base="Object" useHex="true">Initial Release Status</Data>
-  <Data groupList="Basic" type="uint" offset="0x1CC" base="Object" useHex="true">Release Status</Data>
+  <Data groupList="Advanced" type="uint" offset="0x1D4" base="Object" subclass="Address">Initial Release Status</Data>
+  <Data groupList="Basic" type="uint" offset="0x1CC" base="Object" subclass="Address">Release Status</Data>
   <Data groupList="Advanced" type="int" offset="0x1D0" base="Object">Stack Index</Data>
   <Data groupList="Basic" type="uint" offset="0x134" base="Object" useHex="true">Interaction Status</Data>
 

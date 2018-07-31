@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<VarData>
+  <Data type="ushort" offset="0x2E" base="Mario" subclass="Angle" yaw="true" color="Yellow">Yaw Facing</Data>
+  <Data type="ushort" offset="0x24" base="Mario" subclass="Angle" yaw="true" color="Yellow">Yaw Intended</Data>
+  <Data base="None" specialType="DeltaYawIntendedFacing" subclass="Angle" display="short" color="Yellow">DYaw Intend-Face</Data>
+  <Data type="float" offset="0x3C" base="Mario" coord="X" color="Red">X</Data>
+  <Data type="float" offset="0x40" base="Mario" coord="Y" color="Red">Y</Data>
+  <Data type="float" offset="0x44" base="Mario" coord="Z" color="Red">Z</Data>
+  <Data type="float" offset="0x4C" base="Mario" color="LightBlue">V Speed</Data>
+  <Data type="float" offset="0x54" base="Mario" color="LightBlue">H Speed</Data>
+  <Data type="float" offset="0x58" base="Mario" color="Purple">X Sliding Speed</Data>
+  <Data type="float" offset="0x5C" base="Mario" color="Purple">Z Sliding Speed</Data>
+</VarData>

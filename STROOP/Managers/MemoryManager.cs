@@ -201,7 +201,7 @@ namespace STROOP.Managers
             SetCustomAddress(newAddress);
         }
 
-        private void SetCustomAddress(uint? address)
+        public void SetCustomAddress(uint? address)
         {
             if (!address.HasValue) 
             {
