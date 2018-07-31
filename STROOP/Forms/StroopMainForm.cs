@@ -119,6 +119,7 @@ namespace STROOP
                 new List<string>()
                 {
                     "Enable TASer Settings",
+                    "Show MHS Vars",
                     "Download Latest STROOP Release",
                     "Test Something",
                 },
@@ -132,6 +133,17 @@ namespace STROOP
                         splitContainerTas.Panel2Collapsed = false;
                         Config.TasManager.ShowTaserVariables();
                         tabControlMain.SelectedTab = tabPageTas;
+                    },
+                    () =>
+                    {
+                        string varFilePath = @"Config/MhsData.xml";
+                        List<WatchVariableControlPrecursor> precursors =
+                            XmlConfigParser.OpenWatchVariableControlPrecursors(varFilePath);
+                        List<WatchVariableControl> controls = precursors.ConvertAll(
+                            precursor => precursor.CreateWatchVariableControl());
+                        VariablePopOutForm form = new VariablePopOutForm();
+                        form.Initialize(controls);
+                        form.ShowForm();
                     },
                     () => Process.Start("https://github.com/SM64-TAS-ABC/STROOP/releases/download/vDev/STROOP.zip"),
                     () =>
