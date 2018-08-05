@@ -1841,11 +1841,13 @@
   </Object>
   <Object behaviorScriptAddress="0x130023D0" name="JRB Floating Ship Visual">
     <Image path="JRB Ship Visual.png"/>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xF6" base="Object">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" type="byte" offset="0xF6" base="Object">Oscillation Timer (Byte)</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Oscillation Timer (Int)</Data>
   </Object>
   <Object behaviorScriptAddress="0x130023EC" name="JRB Floating Ship Hitbox">
     <Image path="JRB Ship Hitbox.png"/>
-    <Data groupList="ObjectSpecific" type="ushort" offset="0xF6" base="Object">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" type="byte" offset="0xF6" base="Object">Oscillation Timer (Byte)</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Oscillation Timer (Int)</Data>
   </Object>
   <Object behaviorScriptAddress="0x1300241C" name="JRB Ghost Ship">
     <Image path="JRB Ghost Ship.png"/>
@@ -1917,7 +1919,8 @@
   <Object behaviorScriptAddress="0x13002620" name="Water Level Manager">
     <SpawnCode gfxId="0x00"/>
     <Image path="Water Level Manager.png"/>
-    <Data groupList="ObjectSpecific" type="byte" offset="0xF6" base="Object">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" type="byte" offset="0xF6" base="Object">Oscillation Timer (Byte)</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Oscillation Timer (Int)</Data>
   </Object>
   <Object behaviorScriptAddress="0x13002634" name="Tornado Sand">
     <SpawnCode gfxId="0x9F"/>
@@ -2960,20 +2963,20 @@
     <SpawnCode gfxId="0x36"/>
     <Image path="Short Wooden Board.png"/>
     <MapImage path="Short Wooden Board Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="byte" offset="0x14F" base="Object" subclass="Boolean" invertBool="true">Floating</Data>
-    <Data groupList="ObjectSpecific" type="byte" offset="0x103" base="Object">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x14F" base="Object" subclass="Boolean" invertBool="true">Floating</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x100" base="Object">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x130042B4" name="Long Wooden Board">
     <SpawnCode gfxId="0x3B"/>
     <Image path="Long Wooden Board.png"/>
     <MapImage path="Long Wooden Board Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="byte" offset="0x14F" base="Object" subclass="Boolean" invertBool="true">Floating</Data>
-    <Data groupList="ObjectSpecific" type="byte" offset="0x103" base="Object">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x14F" base="Object" subclass="Boolean" invertBool="true">Floating</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x100" base="Object">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x130042E4" name="JRB Wooden Board">
     <SpawnCode gfxId="0x3F"/>
     <Image path="JRB Wooden Board.png"/>
-    <Data groupList="ObjectSpecific" type="byte" offset="0x103" base="Object">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x100" base="Object">Oscillation Timer</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004314" name="Arrow Lift">
     <SpawnCode gfxId="0x37"/>
@@ -3304,7 +3307,8 @@
     <Data groupList="ObjectSpecific" type="uint" offset="0x144" base="Object" subclass="Boolean">Shoots Fire</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x2C" base="Object">Scale</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x10C" base="Object">Scale Change</Data>
-    <Data groupList="ObjectSpecific" type="int" offset="0xF8" base="Object" mask="0x0000003F">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xF8" base="Object" mask="0x0000003F">Oscillation Timer (Masked)</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xF8" base="Object">Oscillation Timer</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="FlyGuyRelativeHeight">Relative Height</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="FlyGuyMinHeight">Min Height</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="FlyGuyMaxHeight">Max Height</Data>
@@ -3331,7 +3335,8 @@
     <Data groupList="ObjectSpecific" type="uint" offset="0x144" base="Object" subclass="Boolean">Shoots Fire</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x2C" base="Object">Scale</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0x10C" base="Object">Scale Change</Data>
-    <Data groupList="ObjectSpecific" type="int" offset="0xF8" base="Object" mask="0x0000003F">Oscillation Timer</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xF8" base="Object" mask="0x0000003F">Oscillation Timer (Masked)</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0xF8" base="Object">Oscillation Timer</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="FlyGuyRelativeHeight">Relative Height</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="FlyGuyMinHeight">Min Height</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="FlyGuyMaxHeight">Max Height</Data>
