@@ -380,6 +380,9 @@
   <Object behaviorScriptAddress="0x130007DC" name="Bubble" gfxId="0x800F874C">
     <Image path="Bubble.png"/>
   </Object>
+  <Object behaviorScriptAddress="0x130007DC" name="Pebble Particle" gfxId="0x800F9280">
+    <Image path="Pebble.png"/>
+  </Object>
   <Object behaviorScriptAddress="0x130007DC" name="White Puff / Sand / Dirt / Snow / Bubble">
     <Image path="White Puff.png"/>
   </Object>
