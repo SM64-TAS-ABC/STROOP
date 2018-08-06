@@ -473,7 +473,7 @@ namespace STROOP.Managers
             {
                 ObjectDataModel obj = _objects.First();
                 var newBehavior = obj.BehaviorCriteria;
-                if (_lastGeneralizedBehavior != newBehavior)
+                if (!BehaviorCriteria.HasSameAssociation(_lastGeneralizedBehavior, newBehavior))
                 {
                     Behavior = $"0x{obj.SegmentedBehavior & 0x00FFFFFF:X4}";
                     Name = Config.ObjectAssociations.GetObjectName(newBehavior);

@@ -81,6 +81,15 @@ namespace STROOP.Structs
             return !(a == b);
         }
 
+        public static bool HasSameAssociation(BehaviorCriteria? beh1, BehaviorCriteria? beh2)
+        {
+            if (beh1 == null && beh2 == null) return true;
+            if (beh1 == null || beh2 == null) return false;
+            ObjectBehaviorAssociation assoc1 = Config.ObjectAssociations.FindObjectAssociation(beh1.Value);
+            ObjectBehaviorAssociation assoc2 = Config.ObjectAssociations.FindObjectAssociation(beh2.Value);
+            return assoc1 == assoc2;
+        }
+
         public override int GetHashCode()
         {
             int hash = 17;
