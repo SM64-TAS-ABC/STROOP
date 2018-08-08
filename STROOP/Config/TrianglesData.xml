@@ -19,8 +19,8 @@
   <Data groupList="Basic" type="byte" offset="0x02" base="Triangle">Exertion Force Index</Data>
   <Data groupList="Basic" type="short" offset="0x00" base="TriangleExertionForceTable">Exertion Force</Data>
 
-  <Data groupList="Basic" type="short" offset="0x06" base="Triangle">Y Min</Data>
-  <Data groupList="Basic" type="short" offset="0x08" base="Triangle">Y Max</Data>
+  <Data groupList="Basic" type="short" offset="0x06" base="Triangle">Y Min - 5</Data>
+  <Data groupList="Basic" type="short" offset="0x08" base="Triangle">Y Max + 5</Data>
   <Data groupList="Basic" type="short" offset="0x0A" base="Triangle" coord="X">X1</Data>
   <Data groupList="Basic" type="short" offset="0x0C" base="Triangle" coord="Y">Y1</Data>
   <Data groupList="Basic" type="short" offset="0x0E" base="Triangle" coord="Z">Z1</Data>
