@@ -15,8 +15,12 @@ namespace STROOP.Utilities
 {
     public static class TestUtilities
     {
-
         public static void TestSomething()
+        {
+
+        }
+
+        public static void AddGraphicsTriangleVerticesToTriangleTab()
         {
             uint triangleAddress = Config.TriangleManager.TriangleAddress;
             if (triangleAddress == 0) return;

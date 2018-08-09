@@ -121,6 +121,7 @@ namespace STROOP
                     "Enable TASer Settings",
                     "Show MHS Vars",
                     "Download Latest STROOP Release",
+                    "Add Gfx Vertices",
                     "Test Something",
                 },
                 new List<Action>()
@@ -146,10 +147,8 @@ namespace STROOP
                         form.ShowForm();
                     },
                     () => Process.Start("https://github.com/SM64-TAS-ABC/STROOP/releases/download/vDev/STROOP.zip"),
-                    () =>
-                    {
-                        TestUtilities.TestSomething();
-                    },
+                    () => TestUtilities.AddGraphicsTriangleVerticesToTriangleTab(),
+                    () => TestUtilities.TestSomething(),
                 });
 
             ControlUtilities.AddCheckableContextMenuStripFunctions(
