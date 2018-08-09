@@ -35,13 +35,8 @@ namespace STROOP.Utilities
                 return Config.Stream.GetInt16(address);
             };
 
-            Config.Print("V-------------------V");
             for (uint address = ramStart; address < ramStart + Config.RamSize - structSize; address += 2)
             {
-                if (address == 0x80101370)
-                {
-                    Config.Print("test");
-                }
                 uint v1x = address + 0x00;
                 uint v1y = address + 0x02;
                 uint v1z = address + 0x04;
@@ -57,16 +52,10 @@ namespace STROOP.Utilities
                     new List<short>() { getShort(v1x), getShort(v1y), getShort(v1z) },
                     new List<short>() { getShort(v2x), getShort(v2y), getShort(v2z) },
                     new List<short>() { getShort(v3x), getShort(v3y), getShort(v3z) },
-                    /*
-                      <Data type="short" offset="0x80101392" base="Absolute">X</Data>
-                      <Data type="short" offset="0x80101390" base="Absolute">Y</Data>
-                      <Data type="short" offset="0x80101396" base="Absolute">Z</Data>
-                    */
                 };
 
                 if (AreVerticesEqual(triangleVertices, newVertices))
                 {
-                    Config.Print(address + "\t" + newVertices);
                     List<uint> addresses = new List<uint>()
                     {
                         v1x, v1y, v1z,
@@ -112,7 +101,6 @@ namespace STROOP.Utilities
                         precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
                 }
             }
-            Config.Print("^-------------------^");
         }
 
         public static bool AreVerticesEqual(List<List<short>> vertices1, List<List<short>> vertices2)

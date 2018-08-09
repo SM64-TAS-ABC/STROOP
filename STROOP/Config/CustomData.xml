@@ -9,16 +9,4 @@
   <Data type="ushort" offset="0x2E" base="Mario" subclass="Angle" yaw="true">Yaw Facing</Data>
   <Data type="ushort" offset="0x24" base="Mario" subclass="Angle" yaw="true">Yaw Intended</Data>
 
-  <Data type="short" offset="0x80101370" base="Relative">X1</Data>
-  <Data type="short" offset="0x80101372" base="Relative">Y1</Data>
-  <Data type="short" offset="0x80101374" base="Relative">Z1</Data>
-
-  <Data type="short" offset="0x80101380" base="Relative">X2</Data>
-  <Data type="short" offset="0x80101382" base="Relative">Y2</Data>
-  <Data type="short" offset="0x80101384" base="Relative">Z2</Data>
-
-  <Data type="short" offset="0x80101390" base="Relative">X3</Data>
-  <Data type="short" offset="0x80101392" base="Relative">Y3</Data>
-  <Data type="short" offset="0x80101394" base="Relative">Z3</Data>
-
 </VarData>
