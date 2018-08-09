@@ -1,4 +1,5 @@
-﻿using STROOP.Forms;
+﻿using STROOP.Controls;
+using STROOP.Forms;
 using STROOP.Managers;
 using STROOP.Models;
 using STROOP.Structs;
@@ -15,6 +16,122 @@ namespace STROOP.Utilities
     public static class TestUtilities
     {
 
+        public static void TestSomething()
+        {
+            uint triangleAddress = Config.TriangleManager.TriangleAddress;
+            if (triangleAddress == 0) return;
+            TriangleDataModel triangle = new TriangleDataModel(triangleAddress);
+            List<List<short>> triangleVertices = new List<List<short>>()
+            {
+                new List<short>() { triangle.X1, triangle.Y1, triangle.Z1 },
+                new List<short>() { triangle.X2, triangle.Y2, triangle.Z2 },
+                new List<short>() { triangle.X3, triangle.Y3, triangle.Z3 },
+            };
+
+            int structSize = 0x30;
+            uint ramStart = 0x80000000;
+            Func<uint, short> getShort = (uint address) =>
+            {
+                return Config.Stream.GetInt16(address);
+            };
+
+            Config.Print("V-------------------V");
+            for (uint address = ramStart; address < ramStart + Config.RamSize - structSize; address += 2)
+            {
+                if (address == 0x80101370)
+                {
+                    Config.Print("test");
+                }
+                uint v1x = address + 0x00;
+                uint v1y = address + 0x02;
+                uint v1z = address + 0x04;
+                uint v2x = address + 0x10;
+                uint v2y = address + 0x12;
+                uint v2z = address + 0x14;
+                uint v3x = address + 0x20;
+                uint v3y = address + 0x22;
+                uint v3z = address + 0x24;
+
+                List<List<short>> newVertices = new List<List<short>>()
+                {
+                    new List<short>() { getShort(v1x), getShort(v1y), getShort(v1z) },
+                    new List<short>() { getShort(v2x), getShort(v2y), getShort(v2z) },
+                    new List<short>() { getShort(v3x), getShort(v3y), getShort(v3z) },
+                    /*
+                      <Data type="short" offset="0x80101392" base="Absolute">X</Data>
+                      <Data type="short" offset="0x80101390" base="Absolute">Y</Data>
+                      <Data type="short" offset="0x80101396" base="Absolute">Z</Data>
+                    */
+                };
+
+                if (AreVerticesEqual(triangleVertices, newVertices))
+                {
+                    Config.Print(address + "\t" + newVertices);
+                    List<uint> addresses = new List<uint>()
+                    {
+                        v1x, v1y, v1z,
+                        v2x, v2y, v2z,
+                        v3x, v3y, v3z,
+                    };
+                    List<string> names = new List<string>()
+                    {
+                        "v1x", "v1y", "v1z",
+                        "v2x", "v2y", "v2z",
+                        "v3x", "v3y", "v3z",
+                    };
+
+                    List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
+                    for (int i = 0; i < addresses.Count; i++)
+                    {
+                        WatchVariable watchVar = new WatchVariable(
+                            memoryTypeName: "short",
+                            specialType: null,
+                            baseAddressType: BaseAddressTypeEnum.Relative,
+                            offsetUS: null,
+                            offsetJP: null,
+                            offsetPAL: null,
+                            offsetDefault: addresses[i],
+                            mask: null,
+                            shift: null);
+                        WatchVariableControlPrecursor precursor = new WatchVariableControlPrecursor(
+                            name: names[i],
+                            watchVar: watchVar,
+                            subclass: WatchVariableSubclass.Number,
+                            backgroundColor: null,
+                            displayType: null,
+                            roundingLimit: null,
+                            useHex: null,
+                            invertBool: null,
+                            isYaw: null,
+                            coordinate: null,
+                            groupList: new List<VariableGroup>() { VariableGroup.Custom });
+                        precursors.Add(precursor);
+                    }
+
+                    Config.TriangleManager.AddVariables(
+                        precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
+                }
+            }
+            Config.Print("^-------------------^");
+        }
+
+        public static bool AreVerticesEqual(List<List<short>> vertices1, List<List<short>> vertices2)
+        {
+            List<short> v1_0 = vertices1[0];
+            List<short> v1_1 = vertices1[1];
+            List<short> v1_2 = vertices1[2];
+            List<short> v2_0 = vertices2[0];
+            List<short> v2_1 = vertices2[1];
+            List<short> v2_2 = vertices2[2];
+            return
+                Enumerable.SequenceEqual(v1_0, v2_0) && Enumerable.SequenceEqual(v1_1, v2_1) && Enumerable.SequenceEqual(v1_2, v2_2) ||
+                Enumerable.SequenceEqual(v1_0, v2_0) && Enumerable.SequenceEqual(v1_1, v2_2) && Enumerable.SequenceEqual(v1_2, v2_1) ||
+                Enumerable.SequenceEqual(v1_0, v2_1) && Enumerable.SequenceEqual(v1_1, v2_0) && Enumerable.SequenceEqual(v1_2, v2_2) ||
+                Enumerable.SequenceEqual(v1_0, v2_1) && Enumerable.SequenceEqual(v1_1, v2_2) && Enumerable.SequenceEqual(v1_2, v2_0) ||
+                Enumerable.SequenceEqual(v1_0, v2_2) && Enumerable.SequenceEqual(v1_1, v2_0) && Enumerable.SequenceEqual(v1_2, v2_1) ||
+                Enumerable.SequenceEqual(v1_0, v2_2) && Enumerable.SequenceEqual(v1_1, v2_1) && Enumerable.SequenceEqual(v1_2, v2_0);
+        }
+
         public static void TestSomething6()
         {
             List<List<int>> dustFrameLists = TtcMain.FindIdealPendulumManipulation(0x8033E788, 5);
@@ -23,7 +140,7 @@ namespace STROOP.Utilities
             Config.Print(output);
         }
 
-        public static void TestSomething()
+        public static void TestSomething7()
         {
             MoveBoxes(false);
         }
