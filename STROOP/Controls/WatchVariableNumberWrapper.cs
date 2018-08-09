@@ -185,7 +185,7 @@ namespace STROOP.Controls
             if (SavedSettingsConfig.DisplayAsHexUsesMemory)
             {
                 if (_watchVar.MemoryType == null) return value;
-                object obj = TypeUtilities.ConvertBytes(_watchVar.MemoryType, stringValue, true);
+                object obj = TypeUtilities.ConvertBytes(_watchVar.MemoryType, stringValue, false);
                 if (obj != null) return obj;
             }
             else

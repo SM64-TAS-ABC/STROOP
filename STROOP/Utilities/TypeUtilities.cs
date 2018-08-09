@@ -1,5 +1,6 @@
 ﻿using STROOP.Managers;
 using STROOP.Structs.Configurations;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -105,6 +106,7 @@ namespace STROOP.Structs
         {
             if (hexString == null) return null;
             if (hexString.Length >= 2 && hexString.Substring(0, 2) == "0x") hexString = hexString.Substring(2);
+            hexString = StringUtilities.ExactLength(hexString, 2 * TypeSize[type], true, '0');
 
             try
             {
