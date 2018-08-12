@@ -22,6 +22,7 @@ namespace STROOP.Utilities
 
         public static void AddGraphicsTriangleVerticesToTriangleTab()
         {
+            int numVertices = KeyboardUtilities.IsCtrlHeld() ? 4 : 3;
             uint triangleAddress = Config.TriangleManager.TriangleAddress;
             if (triangleAddress == 0) return;
             TriangleDataModel triangle = new TriangleDataModel(triangleAddress);
@@ -32,81 +33,73 @@ namespace STROOP.Utilities
                 new List<short>() { triangle.X3, triangle.Y3, triangle.Z3 },
             };
 
-            int structSize = 0x30;
+            int structSize = numVertices * 0x10;
             uint ramStart = 0x80000000;
-            Func<uint, short> getShort = (uint address) =>
+
+            for (uint baseAddress = ramStart; baseAddress < ramStart + Config.RamSize - structSize; baseAddress += 2)
             {
-                return Config.Stream.GetInt16(address);
-            };
+                List<uint> addresses = new List<uint>();
+                List<string> names = new List<string>();
+                List<List<short>> vertices = new List<List<short>>();
 
-            for (uint address = ramStart; address < ramStart + Config.RamSize - structSize; address += 2)
-            {
-                uint v1x = address + 0x00;
-                uint v1y = address + 0x02;
-                uint v1z = address + 0x04;
-                uint v2x = address + 0x10;
-                uint v2y = address + 0x12;
-                uint v2z = address + 0x14;
-                uint v3x = address + 0x20;
-                uint v3y = address + 0x22;
-                uint v3z = address + 0x24;
-
-                List<List<short>> newVertices = new List<List<short>>()
+                for (int i = 0; i < numVertices; i++)
                 {
-                    new List<short>() { getShort(v1x), getShort(v1y), getShort(v1z) },
-                    new List<short>() { getShort(v2x), getShort(v2y), getShort(v2z) },
-                    new List<short>() { getShort(v3x), getShort(v3y), getShort(v3z) },
-                };
+                    List<short> vertex = new List<short>();
+                    for (int j = 0; j < 3; j++)
+                    {
+                        uint offset = (uint)(i * 0x10 + j * 0x02);
+                        uint address = baseAddress + offset;
+                        short value = Config.Stream.GetInt16(address);
+                        string component = j == 0 ? "x" : j == 1 ? "y" : "z";
+                        string name = "v" + (i + 1) + component;
 
-                if (AreVerticesEqual(triangleVertices, newVertices))
-                {
-                    List<uint> addresses = new List<uint>()
-                    {
-                        v1x, v1y, v1z,
-                        v2x, v2y, v2z,
-                        v3x, v3y, v3z,
-                    };
-                    List<string> names = new List<string>()
-                    {
-                        "v1x", "v1y", "v1z",
-                        "v2x", "v2y", "v2z",
-                        "v3x", "v3y", "v3z",
-                    };
-
-                    List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
-                    for (int i = 0; i < addresses.Count; i++)
-                    {
-                        WatchVariable watchVar = new WatchVariable(
-                            memoryTypeName: "short",
-                            specialType: null,
-                            baseAddressType: BaseAddressTypeEnum.Relative,
-                            offsetUS: null,
-                            offsetJP: null,
-                            offsetPAL: null,
-                            offsetDefault: addresses[i],
-                            mask: null,
-                            shift: null);
-                        WatchVariableControlPrecursor precursor = new WatchVariableControlPrecursor(
-                            name: names[i],
-                            watchVar: watchVar,
-                            subclass: WatchVariableSubclass.Number,
-                            backgroundColor: null,
-                            displayType: null,
-                            roundingLimit: null,
-                            useHex: null,
-                            invertBool: null,
-                            isYaw: null,
-                            coordinate: null,
-                            groupList: new List<VariableGroup>() { VariableGroup.Custom });
-                        precursors.Add(precursor);
+                        addresses.Add(address);
+                        names.Add(name);
+                        vertex.Add(value);
                     }
+                    vertices.Add(vertex);
+                }
 
-                    Config.TriangleManager.AddVariables(
-                        precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
+                List<List<List<short>>> vertexSubsets = ControlUtilities.GetSubsets(vertices, 3);
+                foreach (List<List<short>> vertexSubset in vertexSubsets)
+                {
+                    if (AreVerticesEqual(triangleVertices, vertexSubset))
+                    {
+                        List<WatchVariableControlPrecursor> precursors = new List<WatchVariableControlPrecursor>();
+                        for (int i = 0; i < addresses.Count; i++)
+                        {
+                            WatchVariable watchVar = new WatchVariable(
+                                memoryTypeName: "short",
+                                specialType: null,
+                                baseAddressType: BaseAddressTypeEnum.Relative,
+                                offsetUS: null,
+                                offsetJP: null,
+                                offsetPAL: null,
+                                offsetDefault: addresses[i],
+                                mask: null,
+                                shift: null);
+                            WatchVariableControlPrecursor precursor = new WatchVariableControlPrecursor(
+                                name: names[i],
+                                watchVar: watchVar,
+                                subclass: WatchVariableSubclass.Number,
+                                backgroundColor: null,
+                                displayType: null,
+                                roundingLimit: null,
+                                useHex: null,
+                                invertBool: null,
+                                isYaw: null,
+                                coordinate: null,
+                                groupList: new List<VariableGroup>() { VariableGroup.Custom });
+                            precursors.Add(precursor);
+                        }
+
+                        Config.TriangleManager.AddVariables(
+                            precursors.ConvertAll(precursor => precursor.CreateWatchVariableControl()));
+                    }
                 }
             }
         }
-
+        
         public static bool AreVerticesEqual(List<List<short>> vertices1, List<List<short>> vertices2)
         {
             List<short> v1_0 = vertices1[0];

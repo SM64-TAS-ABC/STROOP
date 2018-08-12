@@ -644,5 +644,38 @@ namespace STROOP.Utilities
             int newValue = (int)MoreMath.Clamp(value, trackBar.Minimum, trackBar.Maximum);
             trackBar.Value = newValue;
         }
+
+        public static List<List<T>> GetSubsets<T>(List<T> masterList, int size)
+        {
+            if (size < 0 || size > masterList.Count)
+                throw new ArgumentOutOfRangeException();
+
+            List<List<T>> subsetList = new List<List<T>>();
+            GetSubsetsRecursively(masterList, size, 0, new List<T>(), subsetList);
+            return subsetList;
+        }
+
+        private static void GetSubsetsRecursively<T>(
+            List<T> masterList, int size, int index, List<T> list, List<List<T>> subsetList)
+        {
+            if (list.Count == size)
+            {
+                List<T> copy = new List<T>(list);
+                subsetList.Add(copy);
+                return;
+            }
+
+            T t = masterList[index];
+            list.Add(t);
+            GetSubsetsRecursively(masterList, size, index + 1, list, subsetList);
+            list.Remove(t);
+
+            int remainingNeeded = size - list.Count;
+            int remainingHave = masterList.Count - index;
+            if (remainingHave > remainingNeeded)
+            {
+                GetSubsetsRecursively(masterList, size, index + 1, list, subsetList);
+            }
+        }
     }
 }
