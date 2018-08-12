@@ -334,6 +334,7 @@ namespace STROOP.Controls
             bool isOKeyHeld = Keyboard.IsKeyDown(Key.O);
             bool isTKeyHeld = Keyboard.IsKeyDown(Key.T);
             bool isMKeyHeld = Keyboard.IsKeyDown(Key.M);
+            bool isNKeyHeld = Keyboard.IsKeyDown(Key.N);
             bool isPKeyHeld = Keyboard.IsKeyDown(Key.P);
             bool isXKeyHeld = Keyboard.IsKeyDown(Key.X);
             bool isSKeyHeld = Keyboard.IsKeyDown(Key.S);
@@ -369,6 +370,11 @@ namespace STROOP.Controls
                 _watchVariablePanel.UnselectAllVariables();
                 SelectionForm.ShowDataManagerSelectionForm(
                     new List<WatchVariableControl>() { this });
+            }
+            else if (isNKeyHeld)
+            {
+                _watchVariablePanel.UnselectAllVariables();
+                WatchVarWrapper.ViewInMemoryTab();
             }
             else if (isFKeyHeld)
             {

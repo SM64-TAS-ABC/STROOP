@@ -240,6 +240,17 @@ namespace STROOP.Controls
             varController.Show();
         }
 
+        public void ViewInMemoryTab()
+        {
+            if (_watchVar.IsSpecial) return;
+            List<uint> addressList = _watchVar.AddressList;
+            if (addressList.Count == 0) return;
+            uint address = addressList[0];
+            Config.TabControlMain.SelectedTab = Config.TabControlMain.TabPages["tabPageMemory"];
+            Config.MemoryManager.SetCustomAddress(address);
+            Config.MemoryManager.UpdateHexDisplay();
+        }
+
         public CheckState GetLockedCheckState(List<uint> addresses = null)
         {
             return WatchVariableLockManager.ContainsLocksCheckState(_watchVar, addresses);
