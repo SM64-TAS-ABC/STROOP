@@ -192,8 +192,18 @@ namespace STROOP.Managers
 
             (splitContainerTriangles.Panel1.Controls["buttonTriangleShowLevelTris"] as Button).Click
                 += (sender, e) => TriangleUtilities.ShowTriangles(TriangleUtilities.GetLevelTriangles());
-            (splitContainerTriangles.Panel1.Controls["buttonTriangleShowObjTris"] as Button).Click
-                += (sender, e) => TriangleUtilities.ShowTriangles(TriangleUtilities.GetObjectTriangles());
+
+            Button buttonTriangleShowObjTris = splitContainerTriangles.Panel1.Controls["buttonTriangleShowObjTris"] as Button;
+            buttonTriangleShowObjTris.Click += (sender, e) => TriangleUtilities.ShowTriangles(TriangleUtilities.GetObjectTriangles());
+            ControlUtilities.AddContextMenuStripFunctions(
+                buttonTriangleShowObjTris,
+                new List<string>() { "Show All Object Tris", "Show Selected Object Tris" },
+                new List<Action>()
+                {
+                    () => TriangleUtilities.ShowTriangles(TriangleUtilities.GetObjectTriangles()),
+                    () => TriangleUtilities.ShowTriangles(TriangleUtilities.GetSelectedObjectTriangles()),
+                });
+
             (splitContainerTriangles.Panel1.Controls["buttonTriangleShowAllTris"] as Button).Click
                 += (sender, e) => TriangleUtilities.ShowTriangles(TriangleUtilities.GetAllTriangles());
 

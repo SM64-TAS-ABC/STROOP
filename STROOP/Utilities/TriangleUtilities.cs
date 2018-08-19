@@ -43,6 +43,15 @@ namespace STROOP.Utilities
             return GetObjectTriangles().FindAll(tri => tri.AssociatedObject == objAddress);
         }
 
+        public static List<TriangleDataModel> GetSelectedObjectTriangles()
+        {
+            List<TriangleDataModel> allObjectTriangles = GetObjectTriangles();
+            List<uint> selectedAddresses = Config.ObjectSlotsManager.SelectedSlotsAddresses;
+            List<TriangleDataModel> selectedObjectTriangles = allObjectTriangles.FindAll(
+                tri => selectedAddresses.Contains(tri.AssociatedObject));
+            return selectedObjectTriangles;
+        }
+
         public static List<TriangleDataModel> GetAllTriangles()
         {
             uint triangleListAddress = Config.Stream.GetUInt32(TriangleConfig.TriangleListPointerAddress);
