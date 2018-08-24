@@ -431,7 +431,7 @@ namespace STROOP.Managers
                     }
                     values.Add(value);
                 }
-                InfoForm.ShowText(
+                InfoForm.ShowValue(
                     "Memory Reader",
                     count + " " + typeString + " value(s) at 0x" + String.Format("{0:X}", address),
                     String.Join("\r\n", values));

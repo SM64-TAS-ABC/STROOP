@@ -11,7 +11,7 @@ namespace STROOP.Structs
 {
     public static class HelpfulHintUtilities
     {
-        private static readonly List<string> helpfulHints =
+        private static readonly List<string> _helpfulHints =
             new List<string>()
             {
                 // Right clicking
@@ -98,8 +98,13 @@ namespace STROOP.Structs
         public static string GetRandomHelpfulHint()
         {
             Random random = new Random();
-            int randomIndex = (int)(helpfulHints.Count * random.NextDouble());
-            return helpfulHints[randomIndex];
+            int randomIndex = (int)(_helpfulHints.Count * random.NextDouble());
+            return _helpfulHints[randomIndex];
+        }
+
+        public static List<string> GetAllHelpfulHints()
+        {
+            return new List<string>(_helpfulHints);
         }
     }
 }

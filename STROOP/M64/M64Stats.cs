@@ -236,7 +236,7 @@ namespace STROOP.M64
                     Func<M64InputFrame, bool> isPressedFunction = M64Utilities.IsButtonPressedFunctionList[index];
                     List<(int, int)> buttonPresses = FindPresses(isPressedFunction);
                     string buttonPressesString = FormatButtonPressesString(buttonPresses, buttonName);
-                    InfoForm.ShowText(
+                    InfoForm.ShowValue(
                         "Num Button Presses",
                         String.Format("Num {0} Presses", buttonName),
                         buttonPressesString);
@@ -246,7 +246,7 @@ namespace STROOP.M64
             ToolStripMenuItem itemShowAllInputChanges = new ToolStripMenuItem("Show All Input Changes");
             itemShowAllInputChanges.Click += (sender, e) =>
             {
-                InfoForm.ShowText(
+                InfoForm.ShowValue(
                     "Input Changes",
                     "Input Changes",
                     FormatInputChangesString(FindInputChanges()));

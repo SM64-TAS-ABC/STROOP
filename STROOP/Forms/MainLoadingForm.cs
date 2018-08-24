@@ -1,4 +1,5 @@
 ﻿using STROOP.Structs;
+using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +21,16 @@ namespace STROOP.Forms
             InitializeComponent();
             _maxStatus = maxStatus;
             textBoxLoadingHelpfulHint.Text = HelpfulHintUtilities.GetRandomHelpfulHint();
+            ControlUtilities.AddContextMenuStripFunctions(
+                textBoxLoadingHelpfulHint,
+                new List<string>() { "Show All Helpful Hints" },
+                new List<Action>()
+                {
+                    () => InfoForm.ShowValue(
+                        "Helpful Hints",
+                        "Helpful Hints",
+                        String.Join("\r\n", HelpfulHintUtilities.GetAllHelpfulHints()))
+                });
         }
 
         private void LoadingForm_Load(object sender, EventArgs e)
