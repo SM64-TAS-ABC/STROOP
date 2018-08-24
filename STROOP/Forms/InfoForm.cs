@@ -141,7 +141,7 @@ namespace STROOP.Forms
 
         public static void ShowValue(object value)
         {
-            ShowValue("Info", "Text", value.ToString());
+            ShowValue("Info", "Text", value);
         }
     }
 }
