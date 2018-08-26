@@ -24,13 +24,7 @@ namespace STROOP.Forms
             ControlUtilities.AddContextMenuStripFunctions(
                 textBoxLoadingHelpfulHint,
                 new List<string>() { "Show All Helpful Hints" },
-                new List<Action>()
-                {
-                    () => InfoForm.ShowValue(
-                        "Helpful Hints",
-                        "Helpful Hints",
-                        String.Join("\r\n", HelpfulHintUtilities.GetAllHelpfulHints()))
-                });
+                new List<Action>() { () => HelpfulHintUtilities.ShowAllHelpfulHints() });
         }
 
         private void LoadingForm_Load(object sender, EventArgs e)

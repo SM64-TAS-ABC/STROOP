@@ -1,4 +1,5 @@
-﻿using STROOP.Managers;
+﻿using STROOP.Forms;
+using STROOP.Managers;
 using STROOP.Structs.Configurations;
 using System;
 using System.Collections.Generic;
@@ -105,6 +106,14 @@ namespace STROOP.Structs
         public static List<string> GetAllHelpfulHints()
         {
             return new List<string>(_helpfulHints);
+        }
+
+        public static void ShowAllHelpfulHints()
+        {
+            InfoForm.ShowValue(
+                "Helpful Hints",
+                "Helpful Hints",
+                String.Join("\r\n", GetAllHelpfulHints()));
         }
     }
 }

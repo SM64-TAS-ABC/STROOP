@@ -49,7 +49,7 @@ namespace STROOP
 
             if (emulators.Count > 1)
             {
-                MessageBox.Show("Ambigous emulator type", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Ambiguous emulator type", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
             return Config.Stream.SwitchProcess(process, emulators[0]);
@@ -121,6 +121,7 @@ namespace STROOP
                     "Enable TASer Settings",
                     "Show MHS Vars",
                     "Download Latest STROOP Release",
+                    "Show All Helpful Hints",
                     "Add Gfx Vertices",
                     "Test Something",
                 },
@@ -147,6 +148,7 @@ namespace STROOP
                         form.ShowForm();
                     },
                     () => Process.Start("https://github.com/SM64-TAS-ABC/STROOP/releases/download/vDev/STROOP.zip"),
+                    () => HelpfulHintUtilities.ShowAllHelpfulHints(),
                     () => TestUtilities.AddGraphicsTriangleVerticesToTriangleTab(),
                     () => TestUtilities.TestSomething(),
                 });
