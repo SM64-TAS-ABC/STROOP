@@ -425,7 +425,7 @@ namespace STROOP.Utilities
             List<string> itemNames,
             List<T> itemValues,
             Action<T> setterAction,
-            object startingValue)
+            T startingValue)
         {
             if (itemNames.Count != itemValues.Count) throw new ArgumentOutOfRangeException();
             (List<ToolStripMenuItem> itemList, Action<T> valueAction) =
@@ -440,7 +440,7 @@ namespace STROOP.Utilities
             List<string> itemNames,
             List<T> itemValues,
             Action<T> setterAction,
-            object startingValue)
+            T startingValue)
         {
             if (itemNames.Count != itemValues.Count) throw new ArgumentOutOfRangeException();
             (List<ToolStripMenuItem> itemList, Action<T> valueAction) =
@@ -455,7 +455,7 @@ namespace STROOP.Utilities
             List<string> itemNames,
             List<T> itemValues,
             Action<T> setterAction,
-            object startingValue)
+            T startingValue)
         {
             if (itemNames.Count != itemValues.Count) throw new ArgumentOutOfRangeException();
 
