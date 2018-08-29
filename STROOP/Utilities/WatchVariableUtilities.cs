@@ -116,7 +116,10 @@ namespace STROOP.Structs
                         .ConvertAll(objAddress => Config.Stream.GetUInt32(objAddress + ObjectConfig.WaypointOffset));
 
                 case BaseAddressTypeEnum.Water:
-                    return new List<uint> { Config.Stream.GetUInt32(MiscConfig.WaterPointerAddress) };
+                    {
+                        uint waterAddress = Config.Stream.GetUInt32(MiscConfig.WaterPointerAddress);
+                        return waterAddress != 0 ? new List<uint>() { waterAddress } : BaseAddressListEmpty;
+                    }
 
                 case BaseAddressTypeEnum.Snow:
                     return new List<uint> { Config.Stream.GetUInt32(SnowConfig.SnowArrayPointerAddress) };
