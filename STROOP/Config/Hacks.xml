@@ -8,6 +8,7 @@
   <Hack name="Camera 45 Degrees" path="Camera45Hack.hck" />
   <Hack name="Quarter Frame Info" path="QFrameInfoHack.hck" />
   <Hack name="Display Variable" path="DisplayVariable.hck" />
+  <Hack name="Display Variable 2" path="DisplayVariable2.hck" />
   <Hack name="Re-enable Debug Controls (J)" path="ReenableDebugControlsJ.hck" /> 
   <Hack name="Re-enable Debug Controls (U)" path="ReenableDebugControlsU.hck" /> 
 </Hacks>

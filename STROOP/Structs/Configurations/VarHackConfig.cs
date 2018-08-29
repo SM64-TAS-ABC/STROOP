@@ -37,5 +37,6 @@ namespace STROOP.Structs.Configurations
         public static readonly int MaxStringLength = 19;
 
         public static RomHack ShowVarRomHack;
+        public static RomHack ShowVarRomHack2;
     }
 }

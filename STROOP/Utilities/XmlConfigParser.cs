@@ -1248,6 +1248,7 @@ namespace STROOP.Utilities
                         RomHack romHack = new RomHack(hackPath, name);
                         hacks.Add(romHack);
                         if (name == "Display Variable") VarHackConfig.ShowVarRomHack = romHack;
+                        if (name == "Display Variable 2") VarHackConfig.ShowVarRomHack2 = romHack;
                         break;
                 }
             }

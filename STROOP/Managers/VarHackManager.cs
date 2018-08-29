@@ -106,6 +106,15 @@ namespace STROOP.Managers
                 () => VarHackConfig.ShowVarRomHack.ClearPayload(),
                 () => VarHackConfig.ShowVarRomHack.Enabled);
 
+            ControlUtilities.AddContextMenuStripFunctions(
+                _buttonEnableDisableRomHack,
+                new List<string>() { "1f Delay Hack (Standard)", "0f Delay Hack (Experimental)" },
+                new List<Action>()
+                {
+                    () => VarHackConfig.ShowVarRomHack.LoadPayload(),
+                    () => VarHackConfig.ShowVarRomHack2.LoadPayload(),
+                });
+
             // Middle buttons
 
             _textBoxXPosValue = splitContainerVarHack.Panel1.Controls["textBoxXPosValue"] as BetterTextbox;
