@@ -103,17 +103,12 @@ namespace STROOP.Structs
             return _helpfulHints[randomIndex];
         }
 
-        public static List<string> GetAllHelpfulHints()
-        {
-            return new List<string>(_helpfulHints);
-        }
-
         public static void ShowAllHelpfulHints()
         {
             InfoForm.ShowValue(
                 "Helpful Hints",
                 "Helpful Hints",
-                String.Join("\r\n", GetAllHelpfulHints()));
+                String.Join("\r\n", _helpfulHints));
         }
     }
 }
