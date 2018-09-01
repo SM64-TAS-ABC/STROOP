@@ -29,8 +29,13 @@ namespace STROOP.Managers
 
             ControlUtilities.AddContextMenuStripFunctions(
                 textBoxActionDescription,
-                new List<string>() { "Open Action Form" },
-                new List<Action>() { () => { new ActionForm().Show(); }});
+                new List<string>() { "Select Action", "Free Movement Action", "Open Action Form" },
+                new List<Action>()
+                {
+                    () => SelectionForm.ShowActionSelectionForm(),
+                    () => Config.Stream.SetValue(MarioConfig.FreeMovementAction, MarioConfig.StructAddress + MarioConfig.ActionOffset),
+                    () => new ActionForm().Show(),
+                });
         }
 
         public override void Update(bool updateView)
