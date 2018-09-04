@@ -518,6 +518,7 @@
     <Compile Include="Utilities\MupenUtilities.cs" />
     <Compile Include="Utilities\InGameTrigUtilities.cs" />
     <Compile Include="Utilities\BitfsPlatformGroupTable.cs" />
+    <Compile Include="Utilities\ZipUtilities.cs" />
     <Compile Include="Utilities\StringUtilities.cs" />
     <Compile Include="Utilities\TestUtilities.cs" />
     <Compile Include="Utilities\DemoCounterUtilities.cs" />
