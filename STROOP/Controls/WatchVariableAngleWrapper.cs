@@ -30,12 +30,13 @@ namespace STROOP.Controls
         private bool _constrainToOneRevolution;
         private Action<bool> _setConstrainToOneRevolution;
 
+        private readonly Type _baseType;
         private readonly Type _defaultEffectiveType;
         private Type _effectiveType
         {
             get
             {
-                if (TypeUtilities.TypeSize[_defaultEffectiveType] == 2 || _constrainToOneRevolution)
+                if (_constrainToOneRevolution || TypeUtilities.TypeSize[_baseType] == 2)
                     return _signed ? typeof(short) : typeof(ushort);
                 else
                     return _signed ? typeof(int) : typeof(uint);
@@ -51,8 +52,9 @@ namespace STROOP.Controls
             bool? isYaw)
             : base(watchVar, watchVarControl, displayType, 0)
         {
+            _baseType = _watchVar.MemoryType ?? displayType;
             _defaultEffectiveType = displayType ?? _watchVar.MemoryType;
-            if (_defaultEffectiveType == null) throw new ArgumentOutOfRangeException();
+            if (_baseType == null || _defaultEffectiveType == null) throw new ArgumentOutOfRangeException();
 
             _defaultSigned = TypeUtilities.TypeSign[_defaultEffectiveType];
             _signed = _defaultSigned;
@@ -63,9 +65,10 @@ namespace STROOP.Controls
             _defaultTruncateToMultipleOf16 = false;
             _truncateToMultipleOf16 = _defaultTruncateToMultipleOf16;
 
-            _constrainToOneRevolution =
+            _defaultConstrainToOneRevolution =
                 displayType != null && TypeUtilities.TypeSize[displayType] == 2 &&
                 watchVar.MemoryType != null && TypeUtilities.TypeSize[watchVar.MemoryType] == 4;
+            _constrainToOneRevolution = _defaultConstrainToOneRevolution;
 
             _isYaw = isYaw ?? DEFAULT_IS_YAW;
 
