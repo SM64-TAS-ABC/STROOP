@@ -74,9 +74,15 @@ namespace STROOP.Structs
         public static readonly uint StackIndexReleasedValue = 0;
         public static readonly uint StackIndexUnReleasedValue = 1;
         public static readonly uint InitialReleaseStatusOffset = 0x1D4;
-        public static readonly uint ReleaseStatusThrownValue = 0x800EE5F8;
-        public static readonly uint ReleaseStatusDroppedValue = 0x800EE5F0;
         public static readonly uint InteractionStatusOffset = 0x134;
+
+        public static uint ReleaseStatusThrownValue { get => RomVersionConfig.Switch(ReleaseStatusThrownValueUS, ReleaseStatusThrownValueJP); }
+        public static readonly uint ReleaseStatusThrownValueUS = 0x800EE5F8;
+        public static readonly uint ReleaseStatusThrownValueJP = 0x800EB778;
+
+        public static uint ReleaseStatusDroppedValue { get => RomVersionConfig.Switch(ReleaseStatusDroppedValueUS, ReleaseStatusDroppedValueJP); }
+        public static readonly uint ReleaseStatusDroppedValueUS = 0x800EE5F0;
+        public static readonly uint ReleaseStatusDroppedValueJP = 0x800EB770;
 
         public static readonly uint NativeRoomOffset = 0x1A0;
         public static readonly uint NumCollidedObjectsOffset = 0x76;
