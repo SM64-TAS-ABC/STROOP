@@ -217,12 +217,16 @@ namespace STROOP.Managers
                     "Neutralize Wall Triangles",
                     "Neutralize Floor Triangles",
                     "Neutralize Ceiling Triangles",
+                    "Neutralize Death Barriers",
+                    "Neutralize Lava",
                 },
                 new List<Action>() {
                     () => TriangleUtilities.NeutralizeTriangles(),
                     () => TriangleUtilities.NeutralizeTriangles(TriangleClassification.Wall),
                     () => TriangleUtilities.NeutralizeTriangles(TriangleClassification.Floor),
                     () => TriangleUtilities.NeutralizeTriangles(TriangleClassification.Ceiling),
+                    () => TriangleUtilities.NeutralizeTriangles(0x0A),
+                    () => TriangleUtilities.NeutralizeTriangles(0x01),
                 });
 
             var buttonTriangleDisableAllCamCollision = splitContainerTriangles.Panel1.Controls["buttonTriangleDisableAllCamCollision"] as Button;

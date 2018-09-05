@@ -103,6 +103,19 @@ namespace STROOP.Utilities
             });
         }
 
+        public static void NeutralizeTriangles(short surfaceType)
+        {
+            List<uint> triangleAddresses = GetLevelTriangleAddresses();
+            triangleAddresses.ForEach(address =>
+            {
+                short type = Config.Stream.GetInt16(address + TriangleOffsetsConfig.SurfaceType);
+                if (type == surfaceType)
+                {
+                    ButtonUtilities.NeutralizeTriangle(address);
+                }
+            });
+        }
+
         public static void DisableCamCollision(TriangleClassification? classification = null)
         {
             List<uint> triangleAddresses = GetLevelTriangleAddresses();
