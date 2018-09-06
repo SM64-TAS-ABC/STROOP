@@ -90,6 +90,7 @@ namespace STROOP.Controls
             {
                 if (baseAddressType != BaseAddressTypeEnum.None &&
                     baseAddressType != BaseAddressTypeEnum.Object &&
+                    baseAddressType != BaseAddressTypeEnum.ProcessGroup &&
                     baseAddressType != BaseAddressTypeEnum.Ghost &&
                     baseAddressType != BaseAddressTypeEnum.LastCoin &&
                     baseAddressType != BaseAddressTypeEnum.File &&

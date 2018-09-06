@@ -342,6 +342,14 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            _dictionary.Add("ObjectProcessGroup",
+                ((uint processGroupUint) =>
+                {
+                    sbyte processGroupByte = processGroupUint == uint.MaxValue ? (sbyte)(-1) : (sbyte)processGroupUint;
+                    return processGroupByte;
+                },
+                DEFAULT_SETTER));
+
             // Object specific vars - Pendulum
 
             _dictionary.Add("PendulumCountdown",

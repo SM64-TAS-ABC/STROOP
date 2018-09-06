@@ -23,6 +23,7 @@ namespace STROOP.Structs
         File,
         MainSave,
         Object,
+        ProcessGroup,
         Triangle,
         TriangleExertionForceTable,
         InputCurrent,

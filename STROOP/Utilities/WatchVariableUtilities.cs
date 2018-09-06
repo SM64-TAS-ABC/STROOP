@@ -80,6 +80,10 @@ namespace STROOP.Structs
                 case BaseAddressTypeEnum.Object:
                     return Config.ObjectSlotsManager.SelectedSlotsAddresses.ToList();
 
+                case BaseAddressTypeEnum.ProcessGroup:
+                    return Config.ObjectSlotsManager.SelectedObjects.ConvertAll(
+                        obj => obj.CurrentProcessGroup ?? uint.MaxValue);
+
                 case BaseAddressTypeEnum.Triangle:
                     {
                         uint triangleAddress = Config.TriangleManager.TriangleAddress;
