@@ -84,7 +84,7 @@
 
   <Data groupList="Advanced" base="Object" specialType="ObjectRngCallsPerFrame">RNG Calls/Frame</Data>
 
-  <Data groupList="Advanced" base="ProcessGroup" specialType="ObjectProcessGroup">Process Group</Data>
+  <Data groupList="Advanced" base="ProcessGroup" specialType="ObjectProcessGroup" display="sbyte">Process Group</Data>
   <Data groupList="Advanced" type="uint" offset="0x04" base="Object" subclass="Object">Prev Memory Obj</Data>
   <Data groupList="Advanced" type="uint" offset="0x08" base="Object" subclass="Object">Next Memory Obj</Data>
   <Data groupList="Advanced" type="uint" offset="0x64" base="Object" subclass="Object">Prev Processed Obj</Data>
