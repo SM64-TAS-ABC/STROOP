@@ -350,6 +350,13 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            _dictionary.Add("ObjectProcessGroupDescription",
+                ((uint processGroupUint) =>
+                {
+                    return ProcessGroupUtilities.GetProcessGroupDescription(processGroupUint);
+                },
+                DEFAULT_SETTER));
+
             // Object specific vars - Pendulum
 
             _dictionary.Add("PendulumCountdown",
