@@ -2,19 +2,19 @@
 <VarData>
   <Data groupList="Basic" type="uint" offsetUS="0x8032D5D4" offsetJP="0x8032C694" base="Relative">Global Timer</Data>
   <Data groupList="Basic" base="None" specialType="GlobalTimerMod64">Global Timer Mod 64</Data>
-  <Data groupList="Basic,Rng" type="ushort" offsetUS="0x8038EEE0" offsetJP="0x8038EEE0" base="Relative">RNG Value</Data>
-  <Data groupList="Basic,Rng" base="None" specialType="RngIndex">RNG Index</Data>
-  <Data groupList="Basic,Rng" base="None" specialType="RngIndexMod4">RNG Index Mod 4</Data>
+  <Data groupList="Basic,Coin" type="ushort" offsetUS="0x8038EEE0" offsetJP="0x8038EEE0" base="Relative">RNG Value</Data>
+  <Data groupList="Basic,Coin" base="None" specialType="RngIndex">RNG Index</Data>
+  <Data groupList="Basic" base="None" specialType="RngIndexMod4">RNG Index Mod 4</Data>
   
-  <Data groupList="Rng" base="LastCoin" offset="0xCA" type="ushort" color="Orange">Coin RNG Value</Data>
-  <Data groupList="Rng" base="LastCoin" specialType="LastCoinRngIndex" color="Orange">Coin RNG Index</Data>
-  <Data groupList="Rng" base="LastCoin" specialType="LastCoinRngIndexDiff" color="Orange">Coin RNG Index Diff</Data>
-  <Data groupList="Rng" type="float" offset="0xB8" base="LastCoin" coord="X" color="Yellow">Coin H Speed</Data>
-  <Data groupList="Rng" type="float" offset="0xB0" base="LastCoin" coord="Y" color="Yellow">Coin Y Speed</Data>
-  <Data groupList="Rng" base="LastCoin" offset="0xCA" type="ushort" coord="Z" color="Yellow">Coin Angle</Data>
-  <Data groupList="Rng" base="None" specialType="GoalRngValue" color="Pink">Goal RNG Value</Data>
-  <Data groupList="Rng" base="None" specialType="GoalRngIndex" color="Pink">Goal RNG Index</Data>
-  <Data groupList="Rng" base="None" specialType="GoalRngIndexDiff" color="Pink">Goal RNG Index Diff</Data>
+  <Data groupList="Coin" base="LastCoin" offset="0xCA" type="ushort" color="Orange">Coin RNG Value</Data>
+  <Data groupList="Coin" base="LastCoin" specialType="LastCoinRngIndex" color="Orange">Coin RNG Index</Data>
+  <Data groupList="Coin" base="LastCoin" specialType="LastCoinRngIndexDiff" color="Orange">Coin RNG Index Diff</Data>
+  <Data groupList="Coin" type="float" offset="0xB8" base="LastCoin" coord="X" color="Yellow">Coin H Speed</Data>
+  <Data groupList="Coin" type="float" offset="0xB0" base="LastCoin" coord="Y" color="Yellow">Coin Y Speed</Data>
+  <Data groupList="Coin" base="LastCoin" offset="0xCA" type="ushort" coord="Z" color="Yellow">Coin Angle</Data>
+  <Data groupList="Coin" base="None" specialType="GoalRngValue" color="Pink">Goal RNG Value</Data>
+  <Data groupList="Coin" base="None" specialType="GoalRngIndex" color="Pink">Goal RNG Index</Data>
+  <Data groupList="Coin" base="None" specialType="GoalRngIndexDiff" color="Pink">Goal RNG Index Diff</Data>
   
   <Data groupList="Basic" base="None" specialType="RngCallsPerFrame">RNG Calls/Frame</Data>
   <Data groupList="Basic" base="None" specialType="PlayTime" subclass="String">Play Time</Data>

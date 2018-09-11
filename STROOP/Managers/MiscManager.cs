@@ -22,7 +22,7 @@ namespace STROOP.Managers
                 VariableGroup.Basic,
                 VariableGroup.Intermediate,
                 VariableGroup.Advanced,
-                VariableGroup.Rng,
+                VariableGroup.Coin,
             };
 
         private static readonly List<VariableGroup> VISIBLE_VAR_GROUPS =
