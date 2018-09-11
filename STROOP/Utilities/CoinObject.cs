@@ -154,6 +154,14 @@ namespace STROOP.Utilities
             numCoins: 1,
             name: "Goomba");
 
+        public static CoinObject Lakitu = new CoinObject(
+            hSpeedScale: 10,
+            vSpeedScale: 10, // more like 9.936193656
+            vSpeedOffset: 46,
+            coinParamOrder: CoinParamOrder.VHA,
+            numCoins: 5,
+            name: "Lakitu");
+
         public static CoinObject Moneybag = new CoinObject(
             hSpeedScale: 20,
             vSpeedScale: 40,
