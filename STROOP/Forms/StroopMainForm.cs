@@ -738,7 +738,6 @@ namespace STROOP
             if (KeyboardUtilities.IsCtrlHeld())
             {
                 ObjectOrderingUtilities.Move(false);
-                //ButtonUtilities.MoveObjectSlot(Config.ObjectSlotsManager.SelectedObjects, false);
             }
             else
             {
@@ -751,7 +750,6 @@ namespace STROOP
             if (KeyboardUtilities.IsCtrlHeld())
             {
                 ObjectOrderingUtilities.Move(true);
-                //ButtonUtilities.MoveObjectSlot(Config.ObjectSlotsManager.SelectedObjects, true);
             }
             else
             {

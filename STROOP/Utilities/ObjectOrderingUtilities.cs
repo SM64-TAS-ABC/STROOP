@@ -88,40 +88,6 @@ namespace STROOP.Utilities
             }
         }
 
-        public static void Debug()
-        {
-            List<List<string>> labelLists = GetProcessGroups().ConvertAll(
-                processGroup => processGroup.ConvertAll(
-                    objAddress => Config.ObjectSlotsManager.GetDescriptiveSlotLabelFromAddress(objAddress, true)));
-            string output = String.Join("\r\n", labelLists.ConvertAll(labelList => String.Join(", ", labelList)));
-            InfoForm.ShowValue(output);
-        }
-
-        public static void Debug2()
-        {
-            List<string> outputList = new List<string>();
-            foreach (byte processGroupByte in ObjectSlotsConfig.ProcessingGroups)
-            {
-                uint processGroupStructAddress = ObjectSlotsConfig.FirstGroupingAddress + processGroupByte * ObjectSlotsConfig.ProcessGroupStructSize;
-                uint nextAddress = processGroupStructAddress + ObjectConfig.ProcessedNextLinkOffset;
-                uint prevAddress = processGroupStructAddress + ObjectConfig.ProcessedPreviousLinkOffset;
-
-                string nextString = processGroupByte + "\t" + "next" + "\t" + HexUtilities.FormatValue(nextAddress);
-                string prevString = processGroupByte + "\t" + "prev" + "\t" + HexUtilities.FormatValue(prevAddress);
-
-                outputList.Add(nextString);
-                outputList.Add(prevString);
-            }
-            outputList.Add("vacant\t\t" + HexUtilities.FormatValue(ObjectSlotsConfig.VacantPointerAddress));
-            InfoForm.ShowValue(String.Join("\r\n", outputList));
-        }
-
-        public static void Debug3()
-        {
-            List<List<uint>> processGroups = GetProcessGroups();
-            Apply(processGroups);
-        }
-
         public static void Move(bool rightwards)
         {
             List<ObjectDataModel> selectedObjects = Config.ObjectSlotsManager.SelectedObjects;
@@ -179,6 +145,40 @@ namespace STROOP.Utilities
                 processGroups[i].Insert(newJ, objAddressToMove);
             }
 
+            Apply(processGroups);
+        }
+
+        public static void Debug()
+        {
+            List<List<string>> labelLists = GetProcessGroups().ConvertAll(
+                processGroup => processGroup.ConvertAll(
+                    objAddress => Config.ObjectSlotsManager.GetDescriptiveSlotLabelFromAddress(objAddress, true)));
+            string output = String.Join("\r\n", labelLists.ConvertAll(labelList => String.Join(", ", labelList)));
+            InfoForm.ShowValue(output);
+        }
+
+        public static void Debug2()
+        {
+            List<string> outputList = new List<string>();
+            foreach (byte processGroupByte in ObjectSlotsConfig.ProcessingGroups)
+            {
+                uint processGroupStructAddress = ObjectSlotsConfig.FirstGroupingAddress + processGroupByte * ObjectSlotsConfig.ProcessGroupStructSize;
+                uint nextAddress = processGroupStructAddress + ObjectConfig.ProcessedNextLinkOffset;
+                uint prevAddress = processGroupStructAddress + ObjectConfig.ProcessedPreviousLinkOffset;
+
+                string nextString = processGroupByte + "\t" + "next" + "\t" + HexUtilities.FormatValue(nextAddress);
+                string prevString = processGroupByte + "\t" + "prev" + "\t" + HexUtilities.FormatValue(prevAddress);
+
+                outputList.Add(nextString);
+                outputList.Add(prevString);
+            }
+            outputList.Add("vacant\t\t" + HexUtilities.FormatValue(ObjectSlotsConfig.VacantPointerAddress));
+            InfoForm.ShowValue(String.Join("\r\n", outputList));
+        }
+
+        public static void Debug3()
+        {
+            List<List<uint>> processGroups = GetProcessGroups();
             Apply(processGroups);
         }
 
