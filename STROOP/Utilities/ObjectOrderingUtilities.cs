@@ -155,13 +155,25 @@ namespace STROOP.Utilities
 
             // if moving before start or after end, then return
             if (i == 0 && j == 0 && !rightwards) return;
-            if (i == processGroups.Count - 1 && j == processGroups[processGroups.Count - 1].Count - 1 && rightwards) return;
+            if (i == processGroups.Count - 1 && j == processGroups[i].Count - 1 && rightwards) return;
 
             // moving to previous list
             if (j == 0 && !rightwards)
             {
                 processGroups[i].Remove(objAddressToMove);
                 processGroups[i - 1].Add(objAddressToMove);
+            }
+
+            // moving to next list
+            else if (j == processGroups[i].Count - 1 && rightwards)
+            {
+                processGroups[i].Remove(objAddressToMove);
+                processGroups[i + 1].Insert(0, objAddressToMove);
+            }
+
+            else
+            {
+
             }
 
             Apply(processGroups);
