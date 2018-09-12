@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
 using STROOP.Forms;
+using STROOP.Models;
 
 namespace STROOP.Utilities
 {
@@ -118,6 +119,51 @@ namespace STROOP.Utilities
         public static void Debug3()
         {
             List<List<uint>> processGroups = GetProcessGroups();
+            Apply(processGroups);
+        }
+
+        public static void Move(bool rightwards)
+        {
+            List<ObjectDataModel> selectedObjects = Config.ObjectSlotsManager.SelectedObjects;
+            List<uint> selectedAddresses = selectedObjects.ConvertAll(obj => obj.Address);
+            if (selectedAddresses.Count != 1) return;
+            Move(selectedAddresses[0], rightwards);
+        }
+
+        public static void Move(uint objAddressToMove, bool rightwards)
+        {
+            List<List<uint>> processGroups = GetProcessGroups();
+            int i = 0;
+            int j = 0;
+            bool foundAddress = false;
+            for (i = 0; i < processGroups.Count; i++)
+            {
+                for (j = 0; j < processGroups[i].Count; j++)
+                {
+                    uint objAddress = processGroups[i][j];
+                    string objAddressLabel = Config.ObjectSlotsManager.GetDescriptiveSlotLabelFromAddress(objAddress, true);
+                    string objAddressToMoveLabel = Config.ObjectSlotsManager.GetDescriptiveSlotLabelFromAddress(objAddressToMove, true);
+                    if (objAddress == objAddressToMove)
+                    {
+                        foundAddress = true;
+                        break;
+                    }
+                }
+                if (foundAddress) break;
+            }
+            if (!foundAddress) return;
+
+            // if moving before start or after end, then return
+            if (i == 0 && j == 0 && !rightwards) return;
+            if (i == processGroups.Count - 1 && j == processGroups[processGroups.Count - 1].Count - 1 && rightwards) return;
+
+            // moving to previous list
+            if (j == 0 && !rightwards)
+            {
+                processGroups[i].Remove(objAddressToMove);
+                processGroups[i - 1].Add(objAddressToMove);
+            }
+
             Apply(processGroups);
         }
 
