@@ -51,13 +51,42 @@ namespace STROOP.Utilities
             return processGroups;
         }
 
+        private static void Apply(List<List<uint>> processGroups)
+        {
+            for (int i = 0; i < ObjectSlotsConfig.ProcessingGroups.Count; i++)
+            {
+                byte processGroupByte = ObjectSlotsConfig.ProcessingGroups[i];
+                uint processGroupStructAddress = ObjectSlotsConfig.FirstGroupingAddress + processGroupByte * ObjectSlotsConfig.ProcessGroupStructSize;
+
+            }
+        }
+
         public static void Debug()
         {
+            List<string> outputList = new List<string>();
+            foreach (byte processGroupByte in ObjectSlotsConfig.ProcessingGroups)
+            {
+                uint processGroupStructAddress = ObjectSlotsConfig.FirstGroupingAddress + processGroupByte * ObjectSlotsConfig.ProcessGroupStructSize;
+                uint nextAddress = processGroupStructAddress + ObjectConfig.ProcessedNextLinkOffset;
+                uint prevAddress = processGroupStructAddress + ObjectConfig.ProcessedPreviousLinkOffset;
+
+                string nextString = processGroupByte + "\t" + "next" + "\t" + HexUtilities.FormatValue(nextAddress);
+                string prevString = processGroupByte + "\t" + "prev" + "\t" + HexUtilities.FormatValue(prevAddress);
+
+                outputList.Add(nextString);
+                outputList.Add(prevString);
+            }
+            outputList.Add("vacant\t\t" + HexUtilities.FormatValue(ObjectSlotsConfig.VactantPointerAddress));
+            InfoForm.ShowValue(String.Join("\r\n", outputList));
+
+
+            /*
             List<List<string>> labelLists = GetProcessGroups().ConvertAll(
                 processGroup => processGroup.ConvertAll(
                     objAddress => Config.ObjectSlotsManager.GetDescriptiveSlotLabelFromAddress(objAddress, true)));
             string output = String.Join("\r\n", labelLists.ConvertAll(labelList => String.Join(", ", labelList)));
             InfoForm.ShowValue(output);
+            */
         }
 
     }
