@@ -63,6 +63,15 @@ namespace STROOP.Utilities
 
         public static void Debug()
         {
+            List<List<string>> labelLists = GetProcessGroups().ConvertAll(
+                processGroup => processGroup.ConvertAll(
+                    objAddress => Config.ObjectSlotsManager.GetDescriptiveSlotLabelFromAddress(objAddress, true)));
+            string output = String.Join("\r\n", labelLists.ConvertAll(labelList => String.Join(", ", labelList)));
+            InfoForm.ShowValue(output);
+        }
+
+        public static void Debug2()
+        {
             List<string> outputList = new List<string>();
             foreach (byte processGroupByte in ObjectSlotsConfig.ProcessingGroups)
             {
@@ -78,15 +87,6 @@ namespace STROOP.Utilities
             }
             outputList.Add("vacant\t\t" + HexUtilities.FormatValue(ObjectSlotsConfig.VactantPointerAddress));
             InfoForm.ShowValue(String.Join("\r\n", outputList));
-
-
-            /*
-            List<List<string>> labelLists = GetProcessGroups().ConvertAll(
-                processGroup => processGroup.ConvertAll(
-                    objAddress => Config.ObjectSlotsManager.GetDescriptiveSlotLabelFromAddress(objAddress, true)));
-            string output = String.Join("\r\n", labelLists.ConvertAll(labelList => String.Join(", ", labelList)));
-            InfoForm.ShowValue(output);
-            */
         }
 
     }
