@@ -171,9 +171,12 @@ namespace STROOP.Utilities
                 processGroups[i + 1].Insert(0, objAddressToMove);
             }
 
+            // moving within list
             else
             {
-
+                int newJ = j + (rightwards ? +1 : -1);
+                processGroups[i].Remove(objAddressToMove);
+                processGroups[i].Insert(newJ, objAddressToMove);
             }
 
             Apply(processGroups);
