@@ -38,7 +38,7 @@ namespace STROOP.Utilities
             // vacant slots
             {
                 List<uint> processGroup = new List<uint>();
-                uint objAddress = Config.Stream.GetUInt32(ObjectSlotsConfig.VactantPointerAddress);
+                uint objAddress = Config.Stream.GetUInt32(ObjectSlotsConfig.VacantPointerAddress);
                 while ((objAddress != 0 && slotIndex < ObjectSlotsConfig.MaxSlots))
                 {
                     processGroup.Add(objAddress);
@@ -53,11 +53,37 @@ namespace STROOP.Utilities
 
         private static void Apply(List<List<uint>> processGroups)
         {
+            // processed slots
             for (int i = 0; i < ObjectSlotsConfig.ProcessingGroups.Count; i++)
             {
                 byte processGroupByte = ObjectSlotsConfig.ProcessingGroups[i];
                 uint processGroupStructAddress = ObjectSlotsConfig.FirstGroupingAddress + processGroupByte * ObjectSlotsConfig.ProcessGroupStructSize;
+                List<uint> expandedProcessGroup = new List<uint>(processGroups[i]);
+                expandedProcessGroup.Insert(0, processGroupStructAddress);
+                expandedProcessGroup.Add(processGroupStructAddress);
 
+                for (int j = 0; j < expandedProcessGroup.Count - 1; j++)
+                {
+                    uint address1 = expandedProcessGroup[j];
+                    uint address2 = expandedProcessGroup[j + 1];
+                    Config.Stream.SetValue(address2, address1 + ObjectConfig.ProcessedNextLinkOffset);
+                    Config.Stream.SetValue(address1, address2 + ObjectConfig.ProcessedPreviousLinkOffset);
+                }
+            }
+
+            // vacant slots
+            {
+                List<uint> expandedProcessGroup = new List<uint>(processGroups[processGroups.Count - 1]);
+                expandedProcessGroup.Insert(0, ObjectSlotsConfig.VacantPointerAddress);
+                expandedProcessGroup.Add(0);
+
+                for (int j = 0; j < expandedProcessGroup.Count - 1; j++)
+                {
+                    uint address1 = expandedProcessGroup[j];
+                    uint address2 = expandedProcessGroup[j + 1];
+                    uint nextLinkOffset = j == 0 ? 0 : ObjectConfig.ProcessedNextLinkOffset;
+                    Config.Stream.SetValue(address2, address1 + nextLinkOffset);
+                }
             }
         }
 
@@ -85,8 +111,14 @@ namespace STROOP.Utilities
                 outputList.Add(nextString);
                 outputList.Add(prevString);
             }
-            outputList.Add("vacant\t\t" + HexUtilities.FormatValue(ObjectSlotsConfig.VactantPointerAddress));
+            outputList.Add("vacant\t\t" + HexUtilities.FormatValue(ObjectSlotsConfig.VacantPointerAddress));
             InfoForm.ShowValue(String.Join("\r\n", outputList));
+        }
+
+        public static void Debug3()
+        {
+            List<List<uint>> processGroups = GetProcessGroups();
+            Apply(processGroups);
         }
 
     }

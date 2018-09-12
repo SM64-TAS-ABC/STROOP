@@ -17,7 +17,7 @@ namespace STROOP.Utilities
     {
         public static void TestSomething()
         {
-            ObjectOrderingUtilities.Debug();
+            ObjectOrderingUtilities.Debug3();
         }
 
         public static void AddGraphicsTriangleVerticesToTriangleTab()

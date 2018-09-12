@@ -361,11 +361,11 @@ namespace STROOP.Utilities
 
                 // Remove object from current group
                 uint nextObj = Config.Stream.GetUInt32(obj.Address + ObjectConfig.ProcessedNextLinkOffset);
-                uint prevObj = Config.Stream.GetUInt32(ObjectSlotsConfig.VactantPointerAddress);
+                uint prevObj = Config.Stream.GetUInt32(ObjectSlotsConfig.VacantPointerAddress);
                 if (prevObj == obj.Address)
                 {
                     // Set new vacant pointer
-                    success &= Config.Stream.SetValue(nextObj, ObjectSlotsConfig.VactantPointerAddress);
+                    success &= Config.Stream.SetValue(nextObj, ObjectSlotsConfig.VacantPointerAddress);
                 }
                 else
                 {

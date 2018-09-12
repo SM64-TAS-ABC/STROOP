@@ -47,9 +47,9 @@ namespace STROOP.Structs
         public static readonly uint LinkStartAddressUS = 0x8033D488;
         public static readonly uint LinkStartAddressJP = 0x8033C118;
 
-        public static uint VactantPointerAddress { get => RomVersionConfig.Switch(VactantPointerAddressUS, VactantPointerAddressJP); }
-        public static readonly uint VactantPointerAddressUS = 0x80361150;
-        public static readonly uint VactantPointerAddressJP = 0x8035FDE0;
+        public static uint VacantPointerAddress { get => RomVersionConfig.Switch(VacantPointerAddressUS, VacantPointerAddressJP); }
+        public static readonly uint VacantPointerAddressUS = 0x80361150;
+        public static readonly uint VacantPointerAddressJP = 0x8035FDE0;
 
         public static uint UnusedSlotAddress { get => RomVersionConfig.Switch(UnusedSlotAddressUS, UnusedSlotAddressJP); }
         public static readonly uint UnusedSlotAddressUS = 0x80360E88;

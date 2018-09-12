@@ -99,7 +99,7 @@ namespace STROOP.Models
         private void UpdateGetVacantObjects(int slotIndex)
         {
             // Now calculate vacant addresses
-            uint objAddress = Config.Stream.GetUInt32(ObjectSlotsConfig.VactantPointerAddress);
+            uint objAddress = Config.Stream.GetUInt32(ObjectSlotsConfig.VacantPointerAddress);
             for (int vacantSlotIndex = 0; slotIndex < ObjectSlotsConfig.MaxSlots; slotIndex++, vacantSlotIndex++)
             {
                 // Validate current object
