@@ -88,17 +88,41 @@ namespace STROOP.Utilities
             }
         }
 
+        private static int GetProcessedIndex(uint objAddressToFind)
+        {
+            List<List<uint>> processGroups = GetProcessGroups();
+            int index = 0;
+            for (int i = 0; i < processGroups.Count; i++)
+            {
+                for (int j = 0; j < processGroups[i].Count; j++)
+                {
+                    uint objAddress = processGroups[i][j];
+                    if (objAddress == objAddressToFind) return index;
+                    index++;
+                }
+            }
+            return -1;
+        }
+
         public static void Move(bool rightwards)
         {
             List<ObjectDataModel> selectedObjects = Config.ObjectSlotsManager.SelectedObjects;
             List<uint> selectedAddresses = selectedObjects.ConvertAll(obj => obj.Address);
-            if (selectedAddresses.Count != 1) return;
+            selectedAddresses.Sort((uint objAddress1, uint objAddress2) =>
+            {
+                int multiplier = rightwards ? -1 : +1;
+                int diff = GetProcessedIndex(objAddress1) - GetProcessedIndex(objAddress2);
+                return multiplier * diff;
+            });
             int multiplicity = KeyboardUtilities.GetCurrentlyInputtedNumber() ?? 1;
 
             List<List<uint>> processGroups = GetProcessGroups();
-            for (int i = 0; i < multiplicity; i++)
+            foreach (uint address in selectedAddresses)
             {
-                processGroups = Move(selectedAddresses[0], rightwards, processGroups);
+                for (int i = 0; i < multiplicity; i++)
+                {
+                    processGroups = Move(address, rightwards, processGroups);
+                }
             }
             Apply(processGroups);
         }
@@ -113,8 +137,6 @@ namespace STROOP.Utilities
                 for (j = 0; j < processGroups[i].Count; j++)
                 {
                     uint objAddress = processGroups[i][j];
-                    string objAddressLabel = Config.ObjectSlotsManager.GetDescriptiveSlotLabelFromAddress(objAddress, true);
-                    string objAddressToMoveLabel = Config.ObjectSlotsManager.GetDescriptiveSlotLabelFromAddress(objAddressToMove, true);
                     if (objAddress == objAddressToMove)
                     {
                         foundAddress = true;
