@@ -435,9 +435,9 @@ namespace STROOP.Managers
                     values.Add(value);
                 }
                 InfoForm.ShowValue(
+                    String.Join("\r\n", values),
                     "Memory Reader",
-                    count + " " + typeString + " value(s) at 0x" + String.Format("{0:X}", address),
-                    String.Join("\r\n", values));
+                    count + " " + typeString + " value(s) at 0x" + String.Format("{0:X}", address));
             };
 
             // TTC Simulator
@@ -997,7 +997,14 @@ namespace STROOP.Managers
 
         private void StateTransferInstructions()
         {
-
+            List<string> instructionList = new List<string>()
+            {
+                "(1) Something",
+                "(2) Something",
+                "(3) Something",
+            };
+            string instructions = String.Join("\r\n", instructionList);
+            InfoForm.ShowValue(instructions, "State Transfer", "Instructions");
         }
 
         private void StateTransferUpdate()

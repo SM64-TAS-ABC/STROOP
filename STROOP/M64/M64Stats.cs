@@ -237,9 +237,9 @@ namespace STROOP.M64
                     List<(int, int)> buttonPresses = FindPresses(isPressedFunction);
                     string buttonPressesString = FormatButtonPressesString(buttonPresses, buttonName);
                     InfoForm.ShowValue(
+                        buttonPressesString,
                         "Num Button Presses",
-                        String.Format("Num {0} Presses", buttonName),
-                        buttonPressesString);
+                        String.Format("Num {0} Presses", buttonName));
                 };
             }
 
@@ -247,9 +247,9 @@ namespace STROOP.M64
             itemShowAllInputChanges.Click += (sender, e) =>
             {
                 InfoForm.ShowValue(
+                    FormatInputChangesString(FindInputChanges()),
                     "Input Changes",
-                    "Input Changes",
-                    FormatInputChangesString(FindInputChanges()));
+                    "Input Changes");
             };
             items.Add(itemShowAllInputChanges);
 

@@ -59,7 +59,7 @@ namespace STROOP.Ttc
             string output = String.Join("\r\n", outputList);
             if (useForm)
             {
-                InfoForm.ShowValue("Pendulum Manipulation", "Dust Frames", output);
+                InfoForm.ShowValue(output, "Pendulum Manipulation", "Dust Frames");
             }
             else
             {

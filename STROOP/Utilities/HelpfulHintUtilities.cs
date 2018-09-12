@@ -106,9 +106,9 @@ namespace STROOP.Structs
         public static void ShowAllHelpfulHints()
         {
             InfoForm.ShowValue(
+                String.Join("\r\n", _helpfulHints),
                 "Helpful Hints",
-                "Helpful Hints",
-                String.Join("\r\n", _helpfulHints));
+                "Helpful Hints");
         }
     }
 }
