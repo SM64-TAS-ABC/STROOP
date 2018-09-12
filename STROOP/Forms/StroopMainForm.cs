@@ -735,7 +735,7 @@ namespace STROOP
 
         private void buttonMoveTabLeft_Click(object sender, EventArgs e)
         {
-            if (KeyboardUtilities.IsCtrlHeld())
+            if (KeyboardUtilities.IsCtrlHeld() || KeyboardUtilities.IsNumberHeld())
             {
                 ObjectOrderingUtilities.Move(false);
             }
@@ -747,7 +747,7 @@ namespace STROOP
 
         private void buttonMoveTabRight_Click(object sender, EventArgs e)
         {
-            if (KeyboardUtilities.IsCtrlHeld())
+            if (KeyboardUtilities.IsCtrlHeld() || KeyboardUtilities.IsNumberHeld())
             {
                 ObjectOrderingUtilities.Move(true);
             }

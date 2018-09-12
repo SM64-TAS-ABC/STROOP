@@ -343,7 +343,7 @@ namespace STROOP.Controls
             bool isZHeld = Keyboard.IsKeyDown(Key.Z);
             bool isMinusHeld = Keyboard.IsKeyDown(Key.OemMinus);
             bool isPlusHeld = Keyboard.IsKeyDown(Key.OemPlus);
-            bool isNumberHeld = KeyboardUtilities.IsCurrentlyInputtedNumber();
+            bool isNumberHeld = KeyboardUtilities.IsNumberHeld();
 
             if (isShiftKeyHeld && isNumberHeld)
             {

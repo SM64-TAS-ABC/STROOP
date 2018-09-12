@@ -93,12 +93,18 @@ namespace STROOP.Utilities
             List<ObjectDataModel> selectedObjects = Config.ObjectSlotsManager.SelectedObjects;
             List<uint> selectedAddresses = selectedObjects.ConvertAll(obj => obj.Address);
             if (selectedAddresses.Count != 1) return;
-            Move(selectedAddresses[0], rightwards);
+            int multiplicity = KeyboardUtilities.GetCurrentlyInputtedNumber() ?? 1;
+
+            List<List<uint>> processGroups = GetProcessGroups();
+            for (int i = 0; i < multiplicity; i++)
+            {
+                processGroups = Move(selectedAddresses[0], rightwards, processGroups);
+            }
+            Apply(processGroups);
         }
 
-        public static void Move(uint objAddressToMove, bool rightwards)
+        public static List<List<uint>> Move(uint objAddressToMove, bool rightwards, List<List<uint>> processGroups)
         {
-            List<List<uint>> processGroups = GetProcessGroups();
             int i = 0;
             int j = 0;
             bool foundAddress = false;
@@ -117,11 +123,11 @@ namespace STROOP.Utilities
                 }
                 if (foundAddress) break;
             }
-            if (!foundAddress) return;
+            if (!foundAddress) return processGroups;
 
             // if moving before start or after end, then return
-            if (i == 0 && j == 0 && !rightwards) return;
-            if (i == processGroups.Count - 1 && j == processGroups[i].Count - 1 && rightwards) return;
+            if (i == 0 && j == 0 && !rightwards) return processGroups;
+            if (i == processGroups.Count - 1 && j == processGroups[i].Count - 1 && rightwards) return processGroups;
 
             // moving to previous list
             if (j == 0 && !rightwards)
@@ -145,7 +151,7 @@ namespace STROOP.Utilities
                 processGroups[i].Insert(newJ, objAddressToMove);
             }
 
-            Apply(processGroups);
+            return processGroups;
         }
 
         public static void Debug()

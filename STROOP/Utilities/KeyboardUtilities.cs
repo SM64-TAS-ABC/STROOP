@@ -28,7 +28,7 @@ namespace STROOP.Utilities
             return null;
         }
 
-        public static bool IsCurrentlyInputtedNumber()
+        public static bool IsNumberHeld()
         {
             return GetCurrentlyInputtedNumber() != null;
         }
