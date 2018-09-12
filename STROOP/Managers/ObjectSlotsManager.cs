@@ -381,7 +381,7 @@ namespace STROOP.Managers
             string unusedObjectString = concise ? "UU" : "(unused object)";
             string unknownObjectString = concise ? ".." : "(unknown object)";
             string slotLabelPrefix = concise ? "" : "Slot ";
-            string processGroupPrefix = concise ? "PG" : "PGroup ";
+            string processGroupPrefix = concise ? "PG" : "PG ";
 
             if (objAddress == 0) return noObjectString;
             if (objAddress == ObjectSlotsConfig.UnusedSlotAddress) return unusedObjectString;

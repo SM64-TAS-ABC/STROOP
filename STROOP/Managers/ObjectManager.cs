@@ -147,6 +147,7 @@ namespace STROOP.Managers
                 VariableGroup.Intermediate,
                 VariableGroup.Advanced,
                 VariableGroup.ObjectSpecific,
+                VariableGroup.ProcessGroup,
                 VariableGroup.Collision,
                 VariableGroup.Movement,
                 VariableGroup.Transformation,
