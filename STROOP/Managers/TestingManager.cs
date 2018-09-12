@@ -75,6 +75,7 @@ namespace STROOP.Managers
 
         // State Transfer
         GroupBox _groupBoxStateTransfer;
+        Button _buttonStateTransferInstructions;
         Button _buttonStateTransferSave;
         Button _buttonStateTransferApply;
         CheckBox _checkBoxStateTransferOffsetTimers;
@@ -265,6 +266,8 @@ namespace STROOP.Managers
 
             // State Transfer
             _groupBoxStateTransfer = tabControl.Controls["groupBoxStateTransfer"] as GroupBox;
+            _buttonStateTransferInstructions = _groupBoxStateTransfer.Controls["buttonStateTransferInstructions"] as Button;
+            _buttonStateTransferInstructions.Click += (sender, e) => StateTransferInstructions();
             _buttonStateTransferSave = _groupBoxStateTransfer.Controls["buttonStateTransferSave"] as Button;
             _buttonStateTransferSave.Click += (sender, e) => StateTransferSave();
             _buttonStateTransferApply = _groupBoxStateTransfer.Controls["buttonStateTransferApply"] as Button;
@@ -990,6 +993,11 @@ namespace STROOP.Managers
                 textboxes[i].Text = parsedStrings[i];
             }
             GotoClick();
+        }
+
+        private void StateTransferInstructions()
+        {
+
         }
 
         private void StateTransferUpdate()
