@@ -117,9 +117,9 @@ namespace STROOP.Utilities
             int multiplicity = KeyboardUtilities.GetCurrentlyInputtedNumber() ?? 1;
 
             List<List<uint>> processGroups = GetProcessGroups();
-            foreach (uint address in selectedAddresses)
+            for (int i = 0; i < multiplicity; i++)
             {
-                for (int i = 0; i < multiplicity; i++)
+                foreach (uint address in selectedAddresses)
                 {
                     processGroups = Move(address, rightwards, processGroups);
                 }
