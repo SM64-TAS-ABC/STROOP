@@ -280,16 +280,21 @@ namespace STROOP.Utilities
             bool success = true;
             bool streamAlreadySuspended = Config.Stream.IsSuspended;
             if (!streamAlreadySuspended) Config.Stream.Suspend();
-            
-            // Set clone action flags
-            if (DataModels.Mario.HeldObject == 0x00000000U && updateAction)
+
+            // Update action if going from not holding to holding
+            if (updateAction && DataModels.Mario.HeldObject == 0)
             {
-                // Set Next action
-                uint nextAction = TableConfig.MarioActions.GetAfterCloneValue(DataModels.Mario.Action);
-                DataModels.Mario.Action = nextAction;
+                DataModels.Mario.Action = TableConfig.MarioActions.GetAfterCloneValue(DataModels.Mario.Action);
             }
 
-            // Set new held value
+            // Update HOLP type if it's 0
+            if (SavedSettingsConfig.CloningUpdatesHolpType &&
+                Config.Stream.GetByte(MarioConfig.StructAddress + MarioConfig.HolpTypeOffset) == 0)
+            {
+                success &= Config.Stream.SetValue((byte)1, MarioConfig.StructAddress + MarioConfig.HolpTypeOffset);
+            }
+
+            // Update held value
             success &= Config.Stream.SetValue(obj.Address, MarioConfig.StructAddress + MarioConfig.HeldObjectPointerOffset);
 
             if (!streamAlreadySuspended) Config.Stream.Resume();

@@ -35,6 +35,7 @@ namespace STROOP.Structs
         public static readonly uint HolpXOffset = 0x258;
         public static readonly uint HolpYOffset = 0x25C;
         public static readonly uint HolpZOffset = 0x260;
+        public static readonly uint HolpTypeOffset = 0x24A;
 
         public static uint StoodOnObjectPointerAddress { get => RomVersionConfig.Switch(StoodOnObjectPointerAddressUS, StoodOnObjectPointerAddressJP); }
         public static readonly uint StoodOnObjectPointerAddressUS = 0x80330E34;
