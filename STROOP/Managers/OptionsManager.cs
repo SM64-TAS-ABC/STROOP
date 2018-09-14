@@ -29,10 +29,11 @@ namespace STROOP.Managers
                 "PU Controller Moves Camera",
                 "Scale Diagonal Position Controller Buttons",
                 "Exclude Dust for Closest Object",
-                "Neutralize Triangles with 0x15",
                 "Use Misalignment Offset For Distance To Line",
                 "Don't Round Values to 0",
                 "Display as Hex Uses Memory",
+                "Neutralize Triangles with 0x15",
+                "Cloning Updates Holp Type",
                 "Use In-Game Trig for Angle Logic",
             };
 
@@ -45,10 +46,11 @@ namespace STROOP.Managers
                 () => SavedSettingsConfig.MoveCameraWithPu,
                 () => SavedSettingsConfig.ScaleDiagonalPositionControllerButtons,
                 () => SavedSettingsConfig.ExcludeDustForClosestObject,
-                () => SavedSettingsConfig.NeutralizeTrianglesWith0x15,
                 () => SavedSettingsConfig.UseMisalignmentOffsetForDistanceToLine,
                 () => SavedSettingsConfig.DontRoundValuesToZero,
                 () => SavedSettingsConfig.DisplayAsHexUsesMemory,
+                () => SavedSettingsConfig.NeutralizeTrianglesWith0x15,
+                () => SavedSettingsConfig.CloningUpdatesHolpType,
                 () => SavedSettingsConfig.UseInGameTrigForAngleLogic,
             };
 
@@ -61,10 +63,11 @@ namespace STROOP.Managers
                 (bool value) => SavedSettingsConfig.MoveCameraWithPu = value,
                 (bool value) => SavedSettingsConfig.ScaleDiagonalPositionControllerButtons = value,
                 (bool value) => SavedSettingsConfig.ExcludeDustForClosestObject = value,
-                (bool value) => SavedSettingsConfig.NeutralizeTrianglesWith0x15 = value,
                 (bool value) => SavedSettingsConfig.UseMisalignmentOffsetForDistanceToLine = value,
                 (bool value) => SavedSettingsConfig.DontRoundValuesToZero = value,
                 (bool value) => SavedSettingsConfig.DisplayAsHexUsesMemory = value,
+                (bool value) => SavedSettingsConfig.NeutralizeTrianglesWith0x15 = value,
+                (bool value) => SavedSettingsConfig.CloningUpdatesHolpType = value,
                 (bool value) => SavedSettingsConfig.UseInGameTrigForAngleLogic = value,
             };
 

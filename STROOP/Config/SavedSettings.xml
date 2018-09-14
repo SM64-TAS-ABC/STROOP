@@ -11,6 +11,7 @@
   <DontRoundValuesToZero>true</DontRoundValuesToZero>
   <DisplayAsHexUsesMemory>true</DisplayAsHexUsesMemory>
   <NeutralizeTrianglesWith0x15>true</NeutralizeTrianglesWith0x15>
+  <CloningUpdatesHolpType>true</CloningUpdatesHolpType>
   <UseInGameTrigForAngleLogic>false</UseInGameTrigForAngleLogic>
   <TabOrder>
     <Tab>Object</Tab>

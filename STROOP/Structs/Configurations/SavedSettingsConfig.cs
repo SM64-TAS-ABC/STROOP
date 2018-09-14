@@ -155,6 +155,18 @@ namespace STROOP.Structs.Configurations
             return (short)(use0x15 ? 0x15 : 0);
         }
 
+        private static bool _cloningUpdatesHolpType;
+        public static bool CloningUpdatesHolpType
+        {
+            get => _cloningUpdatesHolpType;
+            set
+            {
+                if (_cloningUpdatesHolpType == value) return;
+                _cloningUpdatesHolpType = value;
+                if (IsLoaded) Save();
+            }
+        }
+
         private static bool _useInGameTrigForAngleLogic;
         public static bool UseInGameTrigForAngleLogic
         {
@@ -315,6 +327,7 @@ namespace STROOP.Structs.Configurations
                 new XElement("DontRoundValuesToZero", _dontRoundValuesToZero),
                 new XElement("DisplayAsHexUsesMemory", _displayAsHexUsesMemory),
                 new XElement("NeutralizeTrianglesWith0x15", _neutralizeTrianglesWith0x15),
+                new XElement("CloningUpdatesHolpType", _cloningUpdatesHolpType),
                 new XElement("UseInGameTrigForAngleLogic", _useInGameTrigForAngleLogic),
                 tabOrderXElement,
                 removedTabsXElement,
@@ -340,6 +353,7 @@ namespace STROOP.Structs.Configurations
             _dontRoundValuesToZero = true;
             _displayAsHexUsesMemory = true;
             _neutralizeTrianglesWith0x15 = true;
+            _cloningUpdatesHolpType = true;
             _useInGameTrigForAngleLogic = false;
             Save();
         }

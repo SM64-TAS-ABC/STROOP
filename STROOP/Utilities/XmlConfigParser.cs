@@ -144,6 +144,9 @@ namespace STROOP.Utilities
                     case "NeutralizeTrianglesWith0x15":
                         SavedSettingsConfig.NeutralizeTrianglesWith0x15 = bool.Parse(element.Value);
                         break;
+                    case "CloningUpdatesHolpType":
+                        SavedSettingsConfig.CloningUpdatesHolpType = bool.Parse(element.Value);
+                        break;
                     case "UseInGameTrigForAngleLogic":
                         SavedSettingsConfig.UseInGameTrigForAngleLogic = bool.Parse(element.Value);
                         break;
