@@ -22,7 +22,10 @@ namespace STROOP.Utilities
 
         public static void AddGraphicsTriangleVerticesToTriangleTab()
         {
-            int numVertices = KeyboardUtilities.IsCtrlHeld() ? 4 : 3;
+            int numVertices = 3;
+            if (KeyboardUtilities.IsCtrlHeld()) numVertices = 4;
+            if (KeyboardUtilities.IsNumberHeld()) numVertices = KeyboardUtilities.GetCurrentlyInputtedNumber().Value;
+
             uint triangleAddress = Config.TriangleManager.TriangleAddress;
             if (triangleAddress == 0) return;
             TriangleDataModel triangle = new TriangleDataModel(triangleAddress);
