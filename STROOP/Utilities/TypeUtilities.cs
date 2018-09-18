@@ -202,6 +202,8 @@ namespace STROOP.Structs
                    obj is ushort ||
                    obj is int ||
                    obj is uint ||
+                   obj is long ||
+                   obj is ulong ||
                    obj is float ||
                    obj is double;
         }
@@ -213,7 +215,9 @@ namespace STROOP.Structs
                    obj is short ||
                    obj is ushort ||
                    obj is int ||
-                   obj is uint;
+                   obj is uint ||
+                   obj is long ||
+                   obj is ulong;
         }
 
         public static byte[] ConvertHexStringToByteArray(string stringValue, bool swapEndianness)

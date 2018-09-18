@@ -262,7 +262,8 @@ namespace STROOP.Controls
             List<uint> addressList = addresses ?? AddressList;
             if (IsSpecial) return "(none)";
             if (addressList.Count == 0) return "(none)";
-            return HexUtilities.FormatValue(GetProcessAddress(addresses).ToUInt32(), 8);
+            var address = GetProcessAddress(addresses).ToUInt64();
+            return HexUtilities.FormatValue(address, address > 0xFFFFFFFFU ? 16 : 8);
         }
 
         public UIntPtr GetProcessAddress(List<uint> addresses = null)
