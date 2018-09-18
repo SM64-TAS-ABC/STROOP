@@ -7,7 +7,7 @@ using STROOP.Structs;
 
 namespace STROOP.Utilities
 {
-    interface IEmuRamIO : IDisposable
+    interface IEmuRamIO
     {
         bool Suspend();
         bool Resume();

@@ -117,7 +117,7 @@ namespace STROOP.Utilities
                 IsRunning = false;
 
                 // Dipose of old process
-                _io?.Dispose();
+                (_io as IDisposable)?.Dispose();
                 if (_io != null)
                     _io.OnClose -= ProcessClosed;
 
@@ -616,7 +616,7 @@ namespace STROOP.Utilities
                     if (_io != null)
                     {
                         _io.OnClose -= ProcessClosed;
-                        _io.Dispose();
+                        (_io as IDisposable)?.Dispose();
                     }
                 }
 
