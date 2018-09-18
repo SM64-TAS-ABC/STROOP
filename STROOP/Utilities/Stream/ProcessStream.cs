@@ -15,7 +15,6 @@ namespace STROOP.Utilities
 {
     public class ProcessStream : IDisposable
     {
-        Emulator _emulator;
         Process _process;
 
         IEmuRamIO _io;
@@ -36,7 +35,7 @@ namespace STROOP.Utilities
         public bool IsRunning { get; private set; } = false;
 
         public byte[] Ram => _ram;
-        public string ProcessName => _emulator == null ? "(No Emulator)" : _emulator.ProcessName;
+        public string ProcessName => _io?.Name ?? "(No Emulator)";
         public bool IsSuspended => _io?.IsSuspended ?? false;
         public double FpsInPractice => _fpsTimes.Count == 0 ? 0 : 1000 / _fpsTimes.Average();
         Task _mainTask;
@@ -110,7 +109,7 @@ namespace STROOP.Utilities
             return activeProcId == procId;
         }
 
-        public bool SwitchProcess(Process newProcess, Emulator emulator)
+        private bool SwitchIO(IEmuRamIO newIO, Process newProcess = null)
         {
             lock (_mStreamProcess)
             {
@@ -122,15 +121,14 @@ namespace STROOP.Utilities
                     _io.OnClose -= ProcessClosed;
 
                 // Check for no process
-                if (newProcess == null)
+                if (newIO == null)
                     goto Error;
 
                 try
                 {
                     // Open and set new process
-                    _io = _ioCreationTable[emulator.IOType](newProcess, emulator, Config.RamSize);
+                    _io = newIO;
                     _io.OnClose += ProcessClosed;
-                    _emulator = emulator;
                     _process = newProcess;
                 }
                 catch (Exception) // Failed to create process
@@ -145,10 +143,21 @@ namespace STROOP.Utilities
 
                 Error:
                 _io = null;
-                _emulator = null;
                 _process = null;
                 return false;
             }
+        }
+
+        public bool OpenSTFile(string fileName)
+        {
+            StFileIO fileIO = new StFileIO(fileName, Config.RamSize);
+            return SwitchIO(fileIO);
+        }
+
+        public bool SwitchProcess(Process newProcess, Emulator emulator)
+        {
+            IEmuRamIO newIo = newProcess != null ? _ioCreationTable[emulator.IOType](newProcess, emulator, Config.RamSize) : null;
+            return SwitchIO(newIo, newProcess);
         }
 
         public void Suspend()

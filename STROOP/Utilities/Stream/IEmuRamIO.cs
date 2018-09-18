@@ -9,6 +9,7 @@ namespace STROOP.Utilities
 {
     interface IEmuRamIO
     {
+        string Name { get; }
         bool Suspend();
         bool Resume();
 

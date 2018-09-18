@@ -21,6 +21,9 @@ namespace STROOP.Utilities
         protected abstract EndiannessType Endianness { get; }
 
         public abstract bool IsSuspended { get; }
+
+        public abstract string Name { get; }
+
         public abstract bool Suspend();
         public abstract bool Resume();
 

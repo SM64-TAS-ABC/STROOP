@@ -22,6 +22,8 @@ namespace STROOP.Utilities
         protected override EndiannessType Endianness => _emulator.Endianness;
         protected override UIntPtr BaseOffset => _baseOffset;
 
+        public override string Name => _process.ProcessName;
+
         public override event EventHandler OnClose;
 
         public WindowsProcessRamIO(Process process, Emulator emulator, uint ramSize) : base(ramSize)
