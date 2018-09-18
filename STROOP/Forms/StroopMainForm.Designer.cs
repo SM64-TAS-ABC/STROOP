@@ -1235,6 +1235,7 @@ namespace STROOP
             this.betterTextboxStateTransferVar10Saved = new STROOP.BetterTextbox();
             this.betterTextboxStateTransferVar8Current = new STROOP.BetterTextbox();
             this.buttonStateTransferApply = new System.Windows.Forms.Button();
+            this.buttonStateTransferInstructions = new System.Windows.Forms.Button();
             this.buttonStateTransferSave = new System.Windows.Forms.Button();
             this.betterTextboxStateTransferVar7Saved = new STROOP.BetterTextbox();
             this.betterTextboxStateTransferVar10Current = new STROOP.BetterTextbox();
@@ -1446,7 +1447,7 @@ namespace STROOP
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.buttonTabAdd = new System.Windows.Forms.Button();
-            this.buttonStateTransferInstructions = new System.Windows.Forms.Button();
+            this.openFileDialogSt = new System.Windows.Forms.OpenFileDialog();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1944,7 +1945,7 @@ namespace STROOP
             this.buttonOpenSavestate.TabIndex = 3;
             this.buttonOpenSavestate.Text = "Open Savestate";
             this.buttonOpenSavestate.UseVisualStyleBackColor = true;
-            this.buttonOpenSavestate.Click += new System.EventHandler(this.buttonRefresh_Click);
+            this.buttonOpenSavestate.Click += new System.EventHandler(this.buttonOpenSavestate_Click);
             // 
             // buttonRefresh
             // 
@@ -1983,7 +1984,7 @@ namespace STROOP
             // 
             this.listBoxProcessesList.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.listBoxProcessesList.FormattingEnabled = true;
-            this.listBoxProcessesList.Location = new System.Drawing.Point(134, -90);
+            this.listBoxProcessesList.Location = new System.Drawing.Point(130, -95);
             this.listBoxProcessesList.Name = "listBoxProcessesList";
             this.listBoxProcessesList.Size = new System.Drawing.Size(172, 95);
             this.listBoxProcessesList.TabIndex = 0;
@@ -16128,6 +16129,16 @@ namespace STROOP
             this.buttonStateTransferApply.Text = "Apply";
             this.buttonStateTransferApply.UseVisualStyleBackColor = true;
             // 
+            // buttonStateTransferInstructions
+            // 
+            this.buttonStateTransferInstructions.Location = new System.Drawing.Point(5, 13);
+            this.buttonStateTransferInstructions.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonStateTransferInstructions.Name = "buttonStateTransferInstructions";
+            this.buttonStateTransferInstructions.Size = new System.Drawing.Size(108, 25);
+            this.buttonStateTransferInstructions.TabIndex = 16;
+            this.buttonStateTransferInstructions.Text = "Instructions";
+            this.buttonStateTransferInstructions.UseVisualStyleBackColor = true;
+            // 
             // buttonStateTransferSave
             // 
             this.buttonStateTransferSave.Location = new System.Drawing.Point(117, 13);
@@ -18773,15 +18784,9 @@ namespace STROOP
             this.buttonTabAdd.UseVisualStyleBackColor = true;
             this.buttonTabAdd.Click += new System.EventHandler(this.buttonTabAdd_Click);
             // 
-            // buttonStateTransferInstructions
+            // openFileDialogSt
             // 
-            this.buttonStateTransferInstructions.Location = new System.Drawing.Point(5, 13);
-            this.buttonStateTransferInstructions.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonStateTransferInstructions.Name = "buttonStateTransferInstructions";
-            this.buttonStateTransferInstructions.Size = new System.Drawing.Size(108, 25);
-            this.buttonStateTransferInstructions.TabIndex = 16;
-            this.buttonStateTransferInstructions.Text = "Instructions";
-            this.buttonStateTransferInstructions.UseVisualStyleBackColor = true;
+            this.openFileDialogSt.Filter = "ST files |*.st|All files|*";
             // 
             // StroopMainForm
             // 
@@ -20734,6 +20739,7 @@ namespace STROOP
         private Button buttonTabAdd;
         private Button buttonOpenSavestate;
         private Button buttonStateTransferInstructions;
+        private OpenFileDialog openFileDialogSt;
     }
 }
 

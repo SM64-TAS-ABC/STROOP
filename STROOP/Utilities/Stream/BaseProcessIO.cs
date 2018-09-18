@@ -54,7 +54,7 @@ namespace STROOP.Utilities
 
                 // Read memory
                 int numOfBytes = 0;
-                if (!WriteFunc(address, buffer))
+                if (!ReadFunc(address, buffer))
                     return false;
 
                 // Un-aligned

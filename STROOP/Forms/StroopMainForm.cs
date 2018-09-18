@@ -855,6 +855,15 @@ namespace STROOP
             _objSlotResizing = false;
         }
 
+        private void buttonOpenSavestate_Click(object sender, EventArgs e)
+        {
+            if (openFileDialogSt.ShowDialog() != DialogResult.OK)
+                return;
+
+            Config.Stream.OpenSTFile(openFileDialogSt.FileName);
+            panelConnect.Visible = false;
+        }
+
         public void SwitchTab(string name)
         {
             tabControlMain.SelectTab(name);

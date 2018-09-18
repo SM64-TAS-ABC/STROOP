@@ -20,8 +20,8 @@ namespace STROOP.Utilities
         private string _path;
         public string Path => _path;
 
-        protected override UIntPtr BaseOffset => new UIntPtr(0x1B3);
-        protected override EndiannessType Endianness => EndiannessType.Big;
+        protected override UIntPtr BaseOffset => new UIntPtr(0x1B0);
+        protected override EndiannessType Endianness => EndiannessType.Little;
 
         public override string Name => System.IO.Path.GetFileName(_path);
 
@@ -40,7 +40,11 @@ namespace STROOP.Utilities
             {
                 using (var gzipStream = new GZipInputStream(fileStream))
                 {
-                    gzipStream.Read(_data, 0, (int)Config.RamSize);
+                    using (MemoryStream unzip = new MemoryStream())
+                    {
+                        gzipStream.CopyTo(unzip);
+                        _data = unzip.GetBuffer();
+                    }
                 }
             }
         }
@@ -51,7 +55,7 @@ namespace STROOP.Utilities
             {
                 using (var gzipStream = new GZipOutputStream(fileStream))
                 {
-                    gzipStream.Write(_data, 0, (int)Config.RamSize);
+                    gzipStream.Write(_data, 0, _data.Length);
                 }
             }
         }
