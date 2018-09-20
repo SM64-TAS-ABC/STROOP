@@ -4271,6 +4271,7 @@
     <Data groupList="ObjectSpecific" type="int" offset="0x108" base="Object">Activation Type</Data>
     <Data groupList="ObjectSpecific" type="float" offset="0xFC" base="Object">Final Target Angle</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x104" base="Object" subclass="Angle" yaw="true">Current Target Yaw</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x110" base="Object">1-Up Butterfly</Data>
   </Object>
   <Object behaviorScriptAddress="0x13005598" name="Butterfly (Spawned)" subType="1">
     <SpawnCode gfxId="0xBB"/>
@@ -4291,6 +4292,7 @@
     <Data groupList="ObjectSpecific" type="int" offset="0x108" base="Object">Activation Type</Data>
     <Data groupList="ObjectSpecific" type="float" display="ushort" offset="0xFC" base="Object" subclass="Angle" yaw="true">Final Target Yaw</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0x104" base="Object" subclass="Angle" yaw="true">Current Target Yaw</Data>
+    <Data groupList="ObjectSpecific" type="int" offset="0x110" base="Object">1-Up Butterfly</Data>
   </Object>
   <Object behaviorScriptAddress="0x130055DC" name="Bubba">
     <SpawnCode gfxId="0x59"/>
