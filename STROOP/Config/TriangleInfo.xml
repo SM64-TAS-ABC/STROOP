@@ -18,7 +18,7 @@
   <Triangle type="29" description="Loading Zone" slipperiness="0x00" exertion="false"/>
   <Triangle type="30" description="Loading Zone" slipperiness="0x00" exertion="false"/>
   <Triangle type="33" description="Shallow Quicksand" slipperiness="0x00" exertion="false"/>
-  <Triangle type="34" description="Deep Quicksand (in Pyramid)" slipperiness="0x00" exertion="false"/>
+  <Triangle type="34" description="Deep Quicksand" slipperiness="0x00" exertion="false"/>
   <Triangle type="35" description="Instant Quicksand" slipperiness="0x00" exertion="false"/>
   <Triangle type="36" description="Deep Moving Quicksand" slipperiness="0x00" exertion="true"/>
   <Triangle type="37" description="Shallow Moving Quicksand" slipperiness="0x00" exertion="true"/>
