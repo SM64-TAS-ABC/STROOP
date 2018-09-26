@@ -895,8 +895,11 @@ namespace STROOP.Structs
                     double yDist = GetObjectTrajectoryFramesToYDist(frames);
                     double hDist = Math.Abs(GetBobombTrajectoryFramesToHDist(frames));
                     double newY = SpecialConfig.PointY - yDist;
-                    (double newX, double newZ) = MoreMath.ExtrapolateLine2D(
-                        SpecialConfig.PointX, SpecialConfig.PointZ, holpPos.X, holpPos.Z, hDist);
+                    (double newX, double newZ) = MoreMath.AddVectorToPoint(
+                        hDist,
+                        MoreMath.ReverseAngle(SpecialConfig.PointAngle),
+                        SpecialConfig.PointX,
+                        SpecialConfig.PointZ);
                     return PositionAngle.Holp.SetValues(x: newX, y: newY, z: newZ);
                 }));
 
@@ -914,8 +917,11 @@ namespace STROOP.Structs
                     double yDist = GetObjectTrajectoryFramesToYDist(frames);
                     double hDist = Math.Abs(GetCorkBoxTrajectoryFramesToHDist(frames));
                     double newY = SpecialConfig.PointY - yDist;
-                    (double newX, double newZ) = MoreMath.ExtrapolateLine2D(
-                        SpecialConfig.PointX, SpecialConfig.PointZ, holpPos.X, holpPos.Z, hDist);
+                    (double newX, double newZ) = MoreMath.AddVectorToPoint(
+                        hDist,
+                        MoreMath.ReverseAngle(SpecialConfig.PointAngle),
+                        SpecialConfig.PointX,
+                        SpecialConfig.PointZ);
                     return PositionAngle.Holp.SetValues(x: newX, y: newY, z: newZ);
                 }));
 
