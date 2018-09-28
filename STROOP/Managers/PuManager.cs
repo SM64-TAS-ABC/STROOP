@@ -54,7 +54,7 @@ namespace STROOP.Managers
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
                 false,
-                splitContainerFile.Panel1.Controls["groupBoxPuController"] as GroupBox,
+                groupBoxMarioPu,
                 groupBoxMarioPu.Controls["buttonMarioPuXn"] as Button,
                 groupBoxMarioPu.Controls["buttonMarioPuXp"] as Button,
                 groupBoxMarioPu.Controls["buttonMarioPuZn"] as Button,
