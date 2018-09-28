@@ -426,6 +426,15 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
+            _dictionary.Add("CogRotationIndex",
+                ((uint objAddress) =>
+                {
+                    ushort yawFacing = Config.Stream.GetUInt16(objAddress + ObjectConfig.YawFacingOffset);
+                    double rotationIndex = CogUtilities.GetRotationIndex(yawFacing) ?? Double.NaN;
+                    return rotationIndex;
+                },
+                DEFAULT_SETTER));
+
             // Object specific vars - Waypoint
 
             _dictionary.Add("ObjectDotProductToWaypoint",

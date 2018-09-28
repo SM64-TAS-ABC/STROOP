@@ -3816,7 +3816,8 @@
     <Data groupList="ObjectSpecific" type="float" offset="0xF8" base="Object">Current Yaw Vel</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xD4" base="Object" subclass="Angle" yaw="true">Yaw Facing</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="CogCountdown">Countdown</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="CogEndingYaw">Ending Yaw</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="CogEndingYaw" display="ushort" subclass="Angle" yaw="true">Ending Yaw</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="CogRotationIndex">Rotation Index</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004CCC" name="TTC Rotating Triangle" subType="2">
     <SpawnCode gfxId="0x3d"/>

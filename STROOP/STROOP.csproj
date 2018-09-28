@@ -504,6 +504,7 @@
     <Compile Include="Utilities\PositionAngle.cs" />
     <Compile Include="Utilities\EndiannessUtilities.cs" />
     <Compile Include="Utilities\EndianUtilities.cs" />
+    <Compile Include="Utilities\CogUtilities.cs" />
     <Compile Include="Utilities\Stream\DolphinProcessIO.cs" />
     <Compile Include="Utilities\Stream\BaseProcessIO.cs" />
     <Compile Include="Utilities\Stream\StFileIO.cs" />
