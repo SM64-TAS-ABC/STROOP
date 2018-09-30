@@ -20,8 +20,8 @@ namespace STROOP.Models
         public readonly byte Flags;
         public readonly byte Room;
 
-        public readonly short YMin;
-        public readonly short YMax;
+        public readonly short YMinMinus5;
+        public readonly short YMaxPlus5;
 
         public readonly short X1;
         public readonly short Y1;
@@ -66,8 +66,8 @@ namespace STROOP.Models
                 "BelongsToObject",
                 "NoCamCollision",
                 "Room",
-                "YMin",
-                "YMax",
+                "YMin-5",
+                "YMax+5",
                 "X1",
                 "Y1",
                 "Z1",
@@ -96,8 +96,8 @@ namespace STROOP.Models
             Flags = Config.Stream.GetByte(triangleAddress + TriangleOffsetsConfig.Flags);
             Room = Config.Stream.GetByte(triangleAddress + TriangleOffsetsConfig.Room);
 
-            YMin = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.YMin);
-            YMax = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.YMax);
+            YMinMinus5 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.YMin);
+            YMaxPlus5 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.YMax);
 
             X1 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.X1);
             Y1 = Config.Stream.GetInt16(triangleAddress + TriangleOffsetsConfig.Y1);
@@ -142,8 +142,8 @@ namespace STROOP.Models
                 BelongsToObject,
                 NoCamCollision,
                 Room,
-                YMin,
-                YMax,
+                YMinMinus5,
+                YMaxPlus5,
                 X1,
                 Y1,
                 Z1,
@@ -173,17 +173,17 @@ namespace STROOP.Models
 
         public bool IsWall()
         {
-            return this.Classification == TriangleClassification.Wall;
+            return Classification == TriangleClassification.Wall;
         }
 
         public bool IsFloor()
         {
-            return this.Classification == TriangleClassification.Floor;
+            return Classification == TriangleClassification.Floor;
         }
 
         public bool IsCeiling()
         {
-            return this.Classification == TriangleClassification.Ceiling;
+            return Classification == TriangleClassification.Ceiling;
         }
     }
 }
