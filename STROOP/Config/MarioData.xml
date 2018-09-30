@@ -68,9 +68,11 @@
   <Data groupList="HolpMario" base="None" specialType="DAngleMarioToHolp" subclass="Angle" display="short">DAngle Mario to HOLP</Data>
   <Data groupList="HolpMario" base="None" specialType="AngleHolpToMario" subclass="Angle" display="ushort" yaw="true">Angle HOLP to Mario</Data>
   
+  <Data groupList="HolpPoint" base="None" specialType="PointPosType" subclass="String">Point Pos Type</Data>
   <Data groupList="HolpPoint" base="None" specialType="PointX" coord="X">Point X</Data>
   <Data groupList="HolpPoint" base="None" specialType="PointY" coord="Y">Point Y</Data>
   <Data groupList="HolpPoint" base="None" specialType="PointZ" coord="Z">Point Z</Data>
+  <Data groupList="HolpPoint" base="None" specialType="PointAngleType" subclass="String">Point Angle Type</Data>
   <Data groupList="HolpPoint" base="None" specialType="PointAngle" subclass="Angle" display="ushort" yaw="true">Point Angle</Data>
   <Data groupList="HolpPoint" base="None" specialType="XDistPointToHolp" coord="X">XDist Point to HOLP</Data>
   <Data groupList="HolpPoint" base="None" specialType="YDistPointToHolp" coord="Y">YDist Point to HOLP</Data>
