@@ -38,6 +38,7 @@
   <Data groupList="Advanced" type="short" offsetUS="0x801A7D20" offsetJP="0x801A7BE0" base="Relative" color="Yellow">Hand Y</Data>
   <Data groupList="Advanced" type="byte" offset="0x8033161C" base="Relative" subclass="Boolean" mask="0x01" color="Yellow">Mario Cam Selected</Data>
   <Data groupList="Advanced" type="byte" offset="0x8033161C" base="Relative" subclass="Boolean" mask="0x02" color="Yellow">Fixed Cam Selected</Data>
+  <Data groupList="Intermediate" type="int" offsetUS="0x80361460" offsetJP="0x803600F0" base="Relative" color="Yellow">THI Active Piranhas</Data>
   <Data groupList="Intermediate" type="short" offsetUS="0x80361258" offsetJP="0x8035FEE8" base="Relative" color="Yellow">TTC Speed Setting</Data>
   <Data groupList="Intermediate" base="None" specialType="TtcSpeedSettingDescription" subclass="String" color="Yellow">TTC Speed Desc</Data>
   <Data groupList="Intermediate" base="None" specialType="TtcSaveState" subclass="String" color="Yellow">TTC Save State</Data>
