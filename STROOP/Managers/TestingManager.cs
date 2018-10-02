@@ -192,6 +192,8 @@ namespace STROOP.Managers
         Label _labelTtcLoggerStatus;
         BetterTextbox _textBoxTtcLoggerState;
         BetterTextbox _textBoxTtcLoggerLogs;
+        string _lastTtcSaveState;
+        HashSet<string> _ttcSaveStates;
 
         public TestingManager(TabPage tabControl)
         {
@@ -479,6 +481,8 @@ namespace STROOP.Managers
             _labelTtcLoggerStatus = _groupBoxTtcLogger.Controls["labelTtcLoggerStatus"] as Label;
             _textBoxTtcLoggerState = _groupBoxTtcLogger.Controls["textBoxTtcLoggerState"] as BetterTextbox;
             _textBoxTtcLoggerLogs = _groupBoxTtcLogger.Controls["textBoxTtcLoggerLogs"] as BetterTextbox;
+            _lastTtcSaveState = null;
+            _ttcSaveStates = new HashSet<string>();
         }
 
         private List<uint> GetScuttlebugAddresses()
@@ -794,6 +798,20 @@ namespace STROOP.Managers
                     Config.Stream.SetValue(posX, obj1Address.Value + ObjectConfig.XOffset);
                     Config.Stream.SetValue(posY, obj1Address.Value + ObjectConfig.YOffset);
                     Config.Stream.SetValue(posZ, obj1Address.Value + ObjectConfig.ZOffset);
+                }
+            }
+
+            if (_checkBoxTtcLoggerLogStates.Checked)
+            {
+                string saveStateString = new TtcSaveState().ToString();
+                if (saveStateString != _lastTtcSaveState)
+                {
+                    _lastTtcSaveState = saveStateString;
+                    _textBoxTtcLoggerState.Text = saveStateString;
+                    bool newStatus = _ttcSaveStates.Contains(saveStateString);
+                    _ttcSaveStates.Add(saveStateString);
+                    _labelTtcLoggerStatus.Text = newStatus ? "NEW" : "OLD";
+                    _textBoxTtcLoggerLogs.Text = _ttcSaveStates.Count.ToString();
                 }
             }
 

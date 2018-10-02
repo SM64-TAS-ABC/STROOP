@@ -23,7 +23,7 @@ namespace STROOP.Ttc
         public TtcSaveState(ushort rng, List<TtcObject> objects)
         {
             List<byte> rngBytes = TypeUtilities.GetBytes(rng).ToList();
-            List < object> fields = objects.SelectMany(obj => obj.GetFields()).ToList();
+            List<object> fields = objects.SelectMany(obj => obj.GetFields()).ToList();
             List<byte> fieldBytes = fields.SelectMany(field => TypeUtilities.GetBytes(field)).ToList();
             _bytes = rngBytes.Concat(fieldBytes).ToList();
         }
