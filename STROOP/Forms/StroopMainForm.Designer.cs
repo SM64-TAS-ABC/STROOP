@@ -1188,6 +1188,13 @@ namespace STROOP
             this.buttonScuttlebugStuff2ndFloor = new System.Windows.Forms.Button();
             this.buttonScuttlebugStuff3rdFloor = new System.Windows.Forms.Button();
             this.buttonScuttlebugStuffLungeToHome = new System.Windows.Forms.Button();
+            this.groupBoxTtcLogger = new System.Windows.Forms.GroupBox();
+            this.checkBoxTtcLoggerLogStates = new System.Windows.Forms.CheckBox();
+            this.textBoxTtcLoggerLogs = new STROOP.BetterTextbox();
+            this.textBoxTtcLoggerState = new STROOP.BetterTextbox();
+            this.labelTtcLoggerStatus = new System.Windows.Forms.Label();
+            this.labelTtcLoggerLogs = new System.Windows.Forms.Label();
+            this.labelTtcLoggerState = new System.Windows.Forms.Label();
             this.groupBoxTestingPendulumManipulation = new System.Windows.Forms.GroupBox();
             this.buttonTestingPendulumManipulationCalculate = new System.Windows.Forms.Button();
             this.labelTestingPendulumManipulationIterations = new System.Windows.Forms.Label();
@@ -1448,13 +1455,7 @@ namespace STROOP
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.buttonTabAdd = new System.Windows.Forms.Button();
             this.openFileDialogSt = new System.Windows.Forms.OpenFileDialog();
-            this.groupBoxTtcLogger = new System.Windows.Forms.GroupBox();
-            this.checkBoxTtcLoggerLogStates = new System.Windows.Forms.CheckBox();
-            this.textBoxTtcLoggerState = new STROOP.BetterTextbox();
-            this.labelTtcLoggerState = new System.Windows.Forms.Label();
-            this.textBoxTtcLoggerLogs = new STROOP.BetterTextbox();
-            this.labelTtcLoggerLogs = new System.Windows.Forms.Label();
-            this.labelTtcLoggerStatus = new System.Windows.Forms.Label();
+            this.buttonTtcLoggerClear = new System.Windows.Forms.Button();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1850,6 +1851,7 @@ namespace STROOP
             this.tabPageTesting.SuspendLayout();
             this.groupBoxTriRooms.SuspendLayout();
             this.groupBoxScuttlebugStuff.SuspendLayout();
+            this.groupBoxTtcLogger.SuspendLayout();
             this.groupBoxTestingPendulumManipulation.SuspendLayout();
             this.groupBoxTestingTtcSimulator.SuspendLayout();
             this.groupBoxSchedule.SuspendLayout();
@@ -1873,7 +1875,6 @@ namespace STROOP
             this.groupBoxMainSaveStruct.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
-            this.groupBoxTtcLogger.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -5263,7 +5264,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 439F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 440F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8982,7 +8983,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(427, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(430, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -11291,7 +11292,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 679;
+            this.splitContainerMemory.SplitterDistance = 682;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11332,7 +11333,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(679, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(682, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -11549,7 +11550,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(679, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(682, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -11578,7 +11579,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(578, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(581, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -11591,7 +11592,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(227, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(224, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -12745,7 +12746,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(340, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(323, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -12777,7 +12778,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(334, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(317, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -12833,7 +12834,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(334, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(317, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -15586,6 +15587,81 @@ namespace STROOP
             this.buttonScuttlebugStuffLungeToHome.Text = "Lunge to Home";
             this.buttonScuttlebugStuffLungeToHome.UseVisualStyleBackColor = true;
             // 
+            // groupBoxTtcLogger
+            // 
+            this.groupBoxTtcLogger.Controls.Add(this.buttonTtcLoggerClear);
+            this.groupBoxTtcLogger.Controls.Add(this.checkBoxTtcLoggerLogStates);
+            this.groupBoxTtcLogger.Controls.Add(this.textBoxTtcLoggerLogs);
+            this.groupBoxTtcLogger.Controls.Add(this.textBoxTtcLoggerState);
+            this.groupBoxTtcLogger.Controls.Add(this.labelTtcLoggerStatus);
+            this.groupBoxTtcLogger.Controls.Add(this.labelTtcLoggerLogs);
+            this.groupBoxTtcLogger.Controls.Add(this.labelTtcLoggerState);
+            this.groupBoxTtcLogger.Location = new System.Drawing.Point(343, 447);
+            this.groupBoxTtcLogger.Name = "groupBoxTtcLogger";
+            this.groupBoxTtcLogger.Size = new System.Drawing.Size(261, 92);
+            this.groupBoxTtcLogger.TabIndex = 42;
+            this.groupBoxTtcLogger.TabStop = false;
+            this.groupBoxTtcLogger.Text = "TTC Logger";
+            // 
+            // checkBoxTtcLoggerLogStates
+            // 
+            this.checkBoxTtcLoggerLogStates.AutoSize = true;
+            this.checkBoxTtcLoggerLogStates.Location = new System.Drawing.Point(8, 19);
+            this.checkBoxTtcLoggerLogStates.Name = "checkBoxTtcLoggerLogStates";
+            this.checkBoxTtcLoggerLogStates.Size = new System.Drawing.Size(77, 17);
+            this.checkBoxTtcLoggerLogStates.TabIndex = 17;
+            this.checkBoxTtcLoggerLogStates.Text = "Log States";
+            this.checkBoxTtcLoggerLogStates.UseVisualStyleBackColor = true;
+            // 
+            // textBoxTtcLoggerLogs
+            // 
+            this.textBoxTtcLoggerLogs.Location = new System.Drawing.Point(142, 39);
+            this.textBoxTtcLoggerLogs.Name = "textBoxTtcLoggerLogs";
+            this.textBoxTtcLoggerLogs.Size = new System.Drawing.Size(77, 20);
+            this.textBoxTtcLoggerLogs.TabIndex = 28;
+            this.textBoxTtcLoggerLogs.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBoxTtcLoggerState
+            // 
+            this.textBoxTtcLoggerState.Location = new System.Drawing.Point(142, 16);
+            this.textBoxTtcLoggerState.Name = "textBoxTtcLoggerState";
+            this.textBoxTtcLoggerState.Size = new System.Drawing.Size(77, 20);
+            this.textBoxTtcLoggerState.TabIndex = 28;
+            this.textBoxTtcLoggerState.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelTtcLoggerStatus
+            // 
+            this.labelTtcLoggerStatus.AutoSize = true;
+            this.labelTtcLoggerStatus.Location = new System.Drawing.Point(26, 43);
+            this.labelTtcLoggerStatus.MinimumSize = new System.Drawing.Size(40, 2);
+            this.labelTtcLoggerStatus.Name = "labelTtcLoggerStatus";
+            this.labelTtcLoggerStatus.Size = new System.Drawing.Size(40, 13);
+            this.labelTtcLoggerStatus.TabIndex = 18;
+            this.labelTtcLoggerStatus.Text = "Status";
+            this.labelTtcLoggerStatus.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelTtcLoggerLogs
+            // 
+            this.labelTtcLoggerLogs.AutoSize = true;
+            this.labelTtcLoggerLogs.Location = new System.Drawing.Point(100, 42);
+            this.labelTtcLoggerLogs.MinimumSize = new System.Drawing.Size(40, 2);
+            this.labelTtcLoggerLogs.Name = "labelTtcLoggerLogs";
+            this.labelTtcLoggerLogs.Size = new System.Drawing.Size(40, 13);
+            this.labelTtcLoggerLogs.TabIndex = 18;
+            this.labelTtcLoggerLogs.Text = "Logs:";
+            this.labelTtcLoggerLogs.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // labelTtcLoggerState
+            // 
+            this.labelTtcLoggerState.AutoSize = true;
+            this.labelTtcLoggerState.Location = new System.Drawing.Point(100, 19);
+            this.labelTtcLoggerState.MinimumSize = new System.Drawing.Size(40, 2);
+            this.labelTtcLoggerState.Name = "labelTtcLoggerState";
+            this.labelTtcLoggerState.Size = new System.Drawing.Size(40, 13);
+            this.labelTtcLoggerState.TabIndex = 18;
+            this.labelTtcLoggerState.Text = "State:";
+            this.labelTtcLoggerState.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // groupBoxTestingPendulumManipulation
             // 
             this.groupBoxTestingPendulumManipulation.Controls.Add(this.buttonTestingPendulumManipulationCalculate);
@@ -17430,7 +17506,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow1, 0, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow2, 0, 2);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow3, 0, 3);
@@ -18614,7 +18690,7 @@ namespace STROOP
             this.labelMainSaveCoinRankCol4.AutoSize = true;
             this.labelMainSaveCoinRankCol4.Location = new System.Drawing.Point(141, 1);
             this.labelMainSaveCoinRankCol4.Name = "labelMainSaveCoinRankCol4";
-            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(39, 14);
+            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(40, 14);
             this.labelMainSaveCoinRankCol4.TabIndex = 8;
             this.labelMainSaveCoinRankCol4.Text = "D";
             this.labelMainSaveCoinRankCol4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -18797,79 +18873,15 @@ namespace STROOP
             // 
             this.openFileDialogSt.Filter = "ST files |*.st|All files|*";
             // 
-            // groupBoxTtcLogger
+            // buttonTtcLoggerClear
             // 
-            this.groupBoxTtcLogger.Controls.Add(this.checkBoxTtcLoggerLogStates);
-            this.groupBoxTtcLogger.Controls.Add(this.textBoxTtcLoggerLogs);
-            this.groupBoxTtcLogger.Controls.Add(this.textBoxTtcLoggerState);
-            this.groupBoxTtcLogger.Controls.Add(this.labelTtcLoggerStatus);
-            this.groupBoxTtcLogger.Controls.Add(this.labelTtcLoggerLogs);
-            this.groupBoxTtcLogger.Controls.Add(this.labelTtcLoggerState);
-            this.groupBoxTtcLogger.Location = new System.Drawing.Point(343, 447);
-            this.groupBoxTtcLogger.Name = "groupBoxTtcLogger";
-            this.groupBoxTtcLogger.Size = new System.Drawing.Size(261, 64);
-            this.groupBoxTtcLogger.TabIndex = 42;
-            this.groupBoxTtcLogger.TabStop = false;
-            this.groupBoxTtcLogger.Text = "TTC Logger";
-            // 
-            // checkBoxTtcLoggerLogStates
-            // 
-            this.checkBoxTtcLoggerLogStates.AutoSize = true;
-            this.checkBoxTtcLoggerLogStates.Location = new System.Drawing.Point(8, 19);
-            this.checkBoxTtcLoggerLogStates.Name = "checkBoxTtcLoggerLogStates";
-            this.checkBoxTtcLoggerLogStates.Size = new System.Drawing.Size(77, 17);
-            this.checkBoxTtcLoggerLogStates.TabIndex = 17;
-            this.checkBoxTtcLoggerLogStates.Text = "Log States";
-            this.checkBoxTtcLoggerLogStates.UseVisualStyleBackColor = true;
-            // 
-            // textBoxTtcLoggerState
-            // 
-            this.textBoxTtcLoggerState.Location = new System.Drawing.Point(142, 16);
-            this.textBoxTtcLoggerState.Name = "textBoxTtcLoggerState";
-            this.textBoxTtcLoggerState.Size = new System.Drawing.Size(77, 20);
-            this.textBoxTtcLoggerState.TabIndex = 28;
-            this.textBoxTtcLoggerState.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelTtcLoggerState
-            // 
-            this.labelTtcLoggerState.AutoSize = true;
-            this.labelTtcLoggerState.Location = new System.Drawing.Point(100, 19);
-            this.labelTtcLoggerState.MinimumSize = new System.Drawing.Size(40, 2);
-            this.labelTtcLoggerState.Name = "labelTtcLoggerState";
-            this.labelTtcLoggerState.Size = new System.Drawing.Size(40, 13);
-            this.labelTtcLoggerState.TabIndex = 18;
-            this.labelTtcLoggerState.Text = "State:";
-            this.labelTtcLoggerState.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // textBoxTtcLoggerLogs
-            // 
-            this.textBoxTtcLoggerLogs.Location = new System.Drawing.Point(142, 39);
-            this.textBoxTtcLoggerLogs.Name = "textBoxTtcLoggerLogs";
-            this.textBoxTtcLoggerLogs.Size = new System.Drawing.Size(77, 20);
-            this.textBoxTtcLoggerLogs.TabIndex = 28;
-            this.textBoxTtcLoggerLogs.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // labelTtcLoggerLogs
-            // 
-            this.labelTtcLoggerLogs.AutoSize = true;
-            this.labelTtcLoggerLogs.Location = new System.Drawing.Point(100, 42);
-            this.labelTtcLoggerLogs.MinimumSize = new System.Drawing.Size(40, 2);
-            this.labelTtcLoggerLogs.Name = "labelTtcLoggerLogs";
-            this.labelTtcLoggerLogs.Size = new System.Drawing.Size(40, 13);
-            this.labelTtcLoggerLogs.TabIndex = 18;
-            this.labelTtcLoggerLogs.Text = "Logs:";
-            this.labelTtcLoggerLogs.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // labelTtcLoggerStatus
-            // 
-            this.labelTtcLoggerStatus.AutoSize = true;
-            this.labelTtcLoggerStatus.Location = new System.Drawing.Point(26, 43);
-            this.labelTtcLoggerStatus.MinimumSize = new System.Drawing.Size(40, 2);
-            this.labelTtcLoggerStatus.Name = "labelTtcLoggerStatus";
-            this.labelTtcLoggerStatus.Size = new System.Drawing.Size(40, 13);
-            this.labelTtcLoggerStatus.TabIndex = 18;
-            this.labelTtcLoggerStatus.Text = "Status";
-            this.labelTtcLoggerStatus.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.buttonTtcLoggerClear.Location = new System.Drawing.Point(107, 64);
+            this.buttonTtcLoggerClear.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTtcLoggerClear.Name = "buttonTtcLoggerClear";
+            this.buttonTtcLoggerClear.Size = new System.Drawing.Size(112, 23);
+            this.buttonTtcLoggerClear.TabIndex = 43;
+            this.buttonTtcLoggerClear.Text = "Clear";
+            this.buttonTtcLoggerClear.UseVisualStyleBackColor = true;
             // 
             // StroopMainForm
             // 
@@ -19373,6 +19385,8 @@ namespace STROOP
             this.groupBoxTriRooms.PerformLayout();
             this.groupBoxScuttlebugStuff.ResumeLayout(false);
             this.groupBoxScuttlebugStuff.PerformLayout();
+            this.groupBoxTtcLogger.ResumeLayout(false);
+            this.groupBoxTtcLogger.PerformLayout();
             this.groupBoxTestingPendulumManipulation.ResumeLayout(false);
             this.groupBoxTestingPendulumManipulation.PerformLayout();
             this.groupBoxTestingTtcSimulator.ResumeLayout(false);
@@ -19412,8 +19426,6 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
-            this.groupBoxTtcLogger.ResumeLayout(false);
-            this.groupBoxTtcLogger.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -20832,6 +20844,7 @@ namespace STROOP
         private Label labelTtcLoggerStatus;
         private Label labelTtcLoggerLogs;
         private Label labelTtcLoggerState;
+        private Button buttonTtcLoggerClear;
     }
 }
 

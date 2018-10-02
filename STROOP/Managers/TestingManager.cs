@@ -192,6 +192,7 @@ namespace STROOP.Managers
         Label _labelTtcLoggerStatus;
         BetterTextbox _textBoxTtcLoggerState;
         BetterTextbox _textBoxTtcLoggerLogs;
+        Button _buttonTtcLoggerClear;
         string _lastTtcSaveState;
         HashSet<string> _ttcSaveStates;
 
@@ -481,8 +482,14 @@ namespace STROOP.Managers
             _labelTtcLoggerStatus = _groupBoxTtcLogger.Controls["labelTtcLoggerStatus"] as Label;
             _textBoxTtcLoggerState = _groupBoxTtcLogger.Controls["textBoxTtcLoggerState"] as BetterTextbox;
             _textBoxTtcLoggerLogs = _groupBoxTtcLogger.Controls["textBoxTtcLoggerLogs"] as BetterTextbox;
+            _buttonTtcLoggerClear = _groupBoxTtcLogger.Controls["buttonTtcLoggerClear"] as Button;
             _lastTtcSaveState = null;
             _ttcSaveStates = new HashSet<string>();
+            _buttonTtcLoggerClear.Click += (sender, e) =>
+            {
+                _lastTtcSaveState = null;
+                _ttcSaveStates = new HashSet<string>();
+            };
         }
 
         private List<uint> GetScuttlebugAddresses()
@@ -808,7 +815,7 @@ namespace STROOP.Managers
                 {
                     _lastTtcSaveState = saveStateString;
                     _textBoxTtcLoggerState.Text = saveStateString;
-                    bool newStatus = _ttcSaveStates.Contains(saveStateString);
+                    bool newStatus = !_ttcSaveStates.Contains(saveStateString);
                     _ttcSaveStates.Add(saveStateString);
                     _labelTtcLoggerStatus.Text = newStatus ? "NEW" : "OLD";
                     _textBoxTtcLoggerLogs.Text = _ttcSaveStates.Count.ToString();
