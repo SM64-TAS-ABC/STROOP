@@ -186,6 +186,13 @@ namespace STROOP.Managers
         BetterTextbox _textBoxTestingTtcSimulatorDustFrames;
         Button _buttonTestingTtcSimulatorCalculate;
 
+        // TTC Logger
+        GroupBox _groupBoxTtcLogger;
+        CheckBox _checkBoxTtcLoggerLogStates;
+        Label _labelTtcLoggerStatus;
+        BetterTextbox _textBoxTtcLoggerState;
+        BetterTextbox _textBoxTtcLoggerLogs;
+
         public TestingManager(TabPage tabControl)
         {
             // Recording
@@ -403,7 +410,6 @@ namespace STROOP.Managers
             };
 
             // Memory Reader
-
             _groupBoxMemoryReader = tabControl.Controls["groupBoxMemoryReader"] as GroupBox;
             _comboBoxMemoryReaderTypeValue = _groupBoxMemoryReader.Controls["comboBoxMemoryReaderTypeValue"] as ComboBox;
             _textBoxMemoryReaderAddressValue = _groupBoxMemoryReader.Controls["textBoxMemoryReaderAddressValue"] as BetterTextbox;
@@ -441,7 +447,6 @@ namespace STROOP.Managers
             };
 
             // TTC Simulator
-
             GroupBox groupBoxTestingTtcSimulator = tabControl.Controls["groupBoxTestingTtcSimulator"] as GroupBox;
             _textBoxTestingTtcSimulatorEndFrame = groupBoxTestingTtcSimulator.Controls["textBoxTestingTtcSimulatorEndFrame"] as BetterTextbox;
             _textBoxTestingTtcSimulatorDustFrames = groupBoxTestingTtcSimulator.Controls["textBoxTestingTtcSimulatorDustFrames"] as BetterTextbox;
@@ -457,7 +462,6 @@ namespace STROOP.Managers
             };
 
             // Pendulum Manipulation
-
             GroupBox groupBoxTestingPendulumManipulation = tabControl.Controls["groupBoxTestingPendulumManipulation"] as GroupBox;
             BetterTextbox textBoxTestingPendulumManipulationPendulum = groupBoxTestingPendulumManipulation.Controls["textBoxTestingPendulumManipulationPendulum"] as BetterTextbox;
             BetterTextbox textBoxTestingPendulumManipulationIterations = groupBoxTestingPendulumManipulation.Controls["textBoxTestingPendulumManipulationIterations"] as BetterTextbox;
@@ -468,6 +472,13 @@ namespace STROOP.Managers
                 int numIterations = ParsingUtilities.ParseInt(textBoxTestingPendulumManipulationIterations.Text);
                 TtcMain.PrintIdealPendulumManipulation(pendulumAddress, numIterations, true);
             };
+
+            // TTC Logger
+            _groupBoxTtcLogger = tabControl.Controls["groupBoxTtcLogger"] as GroupBox;
+            _checkBoxTtcLoggerLogStates = _groupBoxTtcLogger.Controls["checkBoxTtcLoggerLogStates"] as CheckBox;
+            _labelTtcLoggerStatus = _groupBoxTtcLogger.Controls["labelTtcLoggerStatus"] as Label;
+            _textBoxTtcLoggerState = _groupBoxTtcLogger.Controls["textBoxTtcLoggerState"] as BetterTextbox;
+            _textBoxTtcLoggerLogs = _groupBoxTtcLogger.Controls["textBoxTtcLoggerLogs"] as BetterTextbox;
         }
 
         private List<uint> GetScuttlebugAddresses()
