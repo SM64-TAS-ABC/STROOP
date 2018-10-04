@@ -14,6 +14,7 @@ namespace STROOP.Utilities
         private readonly PositionAngleTypeEnum PosAngleType;
         public readonly uint? Address;
         public readonly int? TriVertex;
+        public readonly Dictionary<uint, (double, double, double, double)> Schedule;
         public readonly PositionAngle PosPA;
         public readonly PositionAngle AnglePA;
 
@@ -31,6 +32,7 @@ namespace STROOP.Utilities
             ObjGfx,
             ObjScale,
             Tri,
+            Schedule,
             Hybrid,
         }
 
@@ -47,12 +49,14 @@ namespace STROOP.Utilities
             PositionAngleTypeEnum posAngleType,
             uint? address = null,
             int? triVertex = null,
+            Dictionary<uint, (double, double, double, double)> schedule = null,
             PositionAngle posPA = null,
             PositionAngle anglePA = null)
         {
             PosAngleType = posAngleType;
             Address = address;
             TriVertex = triVertex;
+            Schedule = schedule;
             PosPA = posPA;
             AnglePA = anglePA;
 
@@ -63,6 +67,11 @@ namespace STROOP.Utilities
             bool shouldHaveTriVertex =
                 posAngleType == PositionAngleTypeEnum.Tri;
             if (triVertex.HasValue != shouldHaveTriVertex)
+                throw new ArgumentOutOfRangeException();
+
+            bool shouldHaveSchedule =
+                posAngleType == PositionAngleTypeEnum.Schedule;
+            if ((schedule != null) != shouldHaveSchedule)
                 throw new ArgumentOutOfRangeException();
 
             bool shouldHavePAs =
@@ -94,8 +103,10 @@ namespace STROOP.Utilities
             new PositionAngle(PositionAngleTypeEnum.ObjScale, address);
         public static PositionAngle Tri(uint address, int triVertex) =>
             new PositionAngle(PositionAngleTypeEnum.Tri, address, triVertex);
+        public static PositionAngle Scheduler(Dictionary<uint, (double, double, double, double)> schedule) =>
+            new PositionAngle(PositionAngleTypeEnum.Schedule, schedule: schedule);
         public static PositionAngle Hybrid(PositionAngle posPA, PositionAngle anglePA) =>
-            new PositionAngle(PositionAngleTypeEnum.Hybrid, null, null, posPA, anglePA);
+            new PositionAngle(PositionAngleTypeEnum.Hybrid, null, null, null, posPA, anglePA);
 
         public static PositionAngle FromString(string stringValue)
         {
@@ -234,6 +245,10 @@ namespace STROOP.Utilities
                                 throw new ArgumentOutOfRangeException();
                         }
                         return Config.Stream.GetInt16(Address.Value + triVertexOffset);
+                    case PositionAngleTypeEnum.Schedule:
+                        uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                        if (Schedule.ContainsKey(globalTimer)) return Schedule[globalTimer].Item1;
+                        return Double.NaN;
                     case PositionAngleTypeEnum.Hybrid:
                         return PosPA.X;
                     default:
@@ -288,6 +303,10 @@ namespace STROOP.Utilities
                                 throw new ArgumentOutOfRangeException();
                         }
                         return Config.Stream.GetInt16(Address.Value + triVertexOffset);
+                    case PositionAngleTypeEnum.Schedule:
+                        uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                        if (Schedule.ContainsKey(globalTimer)) return Schedule[globalTimer].Item2;
+                        return Double.NaN;
                     case PositionAngleTypeEnum.Hybrid:
                         return PosPA.Y;
                     default:
@@ -342,6 +361,10 @@ namespace STROOP.Utilities
                                 throw new ArgumentOutOfRangeException();
                         }
                         return Config.Stream.GetInt16(Address.Value + triVertexOffset);
+                    case PositionAngleTypeEnum.Schedule:
+                        uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                        if (Schedule.ContainsKey(globalTimer)) return Schedule[globalTimer].Item3;
+                        return Double.NaN;
                     case PositionAngleTypeEnum.Hybrid:
                         return PosPA.Z;
                     default:
@@ -380,6 +403,10 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.ObjScale:
                         return Double.NaN;
                     case PositionAngleTypeEnum.Tri:
+                        return Double.NaN;
+                    case PositionAngleTypeEnum.Schedule:
+                        uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
+                        if (Schedule.ContainsKey(globalTimer)) return Schedule[globalTimer].Item4;
                         return Double.NaN;
                     case PositionAngleTypeEnum.Hybrid:
                         return AnglePA.Angle;
@@ -437,6 +464,8 @@ namespace STROOP.Utilities
                             throw new ArgumentOutOfRangeException();
                     }
                     return Config.Stream.SetValue((float)value, Address.Value + triVertexOffset);
+                case PositionAngleTypeEnum.Schedule:
+                    return false;
                 case PositionAngleTypeEnum.Hybrid:
                     return PosPA.SetX(value);
                 default:
@@ -489,6 +518,8 @@ namespace STROOP.Utilities
                             throw new ArgumentOutOfRangeException();
                     }
                     return Config.Stream.SetValue((float)value, Address.Value + triVertexOffset);
+                case PositionAngleTypeEnum.Schedule:
+                    return false;
                 case PositionAngleTypeEnum.Hybrid:
                     return PosPA.SetY(value);
                 default:
@@ -541,6 +572,8 @@ namespace STROOP.Utilities
                             throw new ArgumentOutOfRangeException();
                     }
                     return Config.Stream.SetValue((float)value, Address.Value + triVertexOffset);
+                case PositionAngleTypeEnum.Schedule:
+                    return false;
                 case PositionAngleTypeEnum.Hybrid:
                     return PosPA.SetZ(value);
                 default:
@@ -581,6 +614,8 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.ObjScale:
                     return false;
                 case PositionAngleTypeEnum.Tri:
+                    return false;
+                case PositionAngleTypeEnum.Schedule:
                     return false;
                 case PositionAngleTypeEnum.Hybrid:
                     return AnglePA.SetAngle(value);
