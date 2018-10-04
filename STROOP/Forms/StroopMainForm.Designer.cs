@@ -67,6 +67,8 @@ namespace STROOP
             this.buttonMoveTabLeft = new System.Windows.Forms.Button();
             this.pictureBoxCog = new System.Windows.Forms.PictureBox();
             this.labelDebugText = new System.Windows.Forms.Label();
+            this.buttonTabAdd = new System.Windows.Forms.Button();
+            this.openFileDialogSt = new System.Windows.Forms.OpenFileDialog();
             this.splitContainerMain = new STROOP.BetterSplitContainer();
             this.tabControlMain = new STROOP.TabControlEx();
             this.tabPageObject = new System.Windows.Forms.TabPage();
@@ -1189,6 +1191,7 @@ namespace STROOP
             this.buttonScuttlebugStuff3rdFloor = new System.Windows.Forms.Button();
             this.buttonScuttlebugStuffLungeToHome = new System.Windows.Forms.Button();
             this.groupBoxTtcLogger = new System.Windows.Forms.GroupBox();
+            this.buttonTtcLoggerClear = new System.Windows.Forms.Button();
             this.checkBoxTtcLoggerLogStates = new System.Windows.Forms.CheckBox();
             this.textBoxTtcLoggerLogs = new STROOP.BetterTextbox();
             this.textBoxTtcLoggerState = new STROOP.BetterTextbox();
@@ -1453,9 +1456,9 @@ namespace STROOP
             this.WatchVariablePanelObjects = new STROOP.Controls.ObjectSlotFlowLayoutPanel();
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
-            this.buttonTabAdd = new System.Windows.Forms.Button();
-            this.openFileDialogSt = new System.Windows.Forms.OpenFileDialog();
-            this.buttonTtcLoggerClear = new System.Windows.Forms.Button();
+            this.groupBoxTestingScheduler = new System.Windows.Forms.GroupBox();
+            this.buttonTestingScheduler = new System.Windows.Forms.Button();
+            this.richTextBoxTestingScheduler = new STROOP.Controls.RichTextBoxEx();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -1875,6 +1878,7 @@ namespace STROOP
             this.groupBoxMainSaveStruct.SuspendLayout();
             this.groupBoxObjects.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).BeginInit();
+            this.groupBoxTestingScheduler.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelProcessSelect
@@ -2154,6 +2158,23 @@ namespace STROOP
             this.labelDebugText.TabIndex = 1;
             this.labelDebugText.Text = "Debug Text";
             this.labelDebugText.Visible = false;
+            // 
+            // buttonTabAdd
+            // 
+            this.buttonTabAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTabAdd.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonTabAdd.BackgroundImage")));
+            this.buttonTabAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.buttonTabAdd.Location = new System.Drawing.Point(569, 11);
+            this.buttonTabAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTabAdd.Name = "buttonTabAdd";
+            this.buttonTabAdd.Size = new System.Drawing.Size(21, 21);
+            this.buttonTabAdd.TabIndex = 20;
+            this.buttonTabAdd.UseVisualStyleBackColor = true;
+            this.buttonTabAdd.Click += new System.EventHandler(this.buttonTabAdd_Click);
+            // 
+            // openFileDialogSt
+            // 
+            this.openFileDialogSt.Filter = "ST files |*.st|All files|*";
             // 
             // splitContainerMain
             // 
@@ -5264,7 +5285,7 @@ namespace STROOP
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 440F));
+            this.tableLayoutPanelFile.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 442F));
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow15Col10, 10, 14);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow14Col10, 10, 13);
             this.tableLayoutPanelFile.Controls.Add(this.textBoxTableRow13Col10, 10, 12);
@@ -8983,7 +9004,7 @@ namespace STROOP
             this.progressBarM64.Location = new System.Drawing.Point(134, 0);
             this.progressBarM64.Margin = new System.Windows.Forms.Padding(2);
             this.progressBarM64.Name = "progressBarM64";
-            this.progressBarM64.Size = new System.Drawing.Size(430, 20);
+            this.progressBarM64.Size = new System.Drawing.Size(436, 20);
             this.progressBarM64.TabIndex = 41;
             // 
             // tabControlM64Details
@@ -11292,7 +11313,7 @@ namespace STROOP
             this.splitContainerMemory.Panel2.Controls.Add(this.watchVariablePanelMemory);
             this.splitContainerMemory.Panel2MinSize = 0;
             this.splitContainerMemory.Size = new System.Drawing.Size(909, 457);
-            this.splitContainerMemory.SplitterDistance = 682;
+            this.splitContainerMemory.SplitterDistance = 688;
             this.splitContainerMemory.SplitterWidth = 1;
             this.splitContainerMemory.TabIndex = 37;
             // 
@@ -11333,7 +11354,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControls.Panel2.Controls.Add(this.splitContainerMemoryControlsDisplays);
             this.splitContainerMemoryControls.Panel2MinSize = 0;
-            this.splitContainerMemoryControls.Size = new System.Drawing.Size(682, 457);
+            this.splitContainerMemoryControls.Size = new System.Drawing.Size(688, 457);
             this.splitContainerMemoryControls.SplitterDistance = 55;
             this.splitContainerMemoryControls.SplitterWidth = 1;
             this.splitContainerMemoryControls.TabIndex = 38;
@@ -11550,7 +11571,7 @@ namespace STROOP
             // 
             this.splitContainerMemoryControlsDisplays.Panel2.Controls.Add(this.richTextBoxMemoryValues);
             this.splitContainerMemoryControlsDisplays.Panel2MinSize = 0;
-            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(682, 401);
+            this.splitContainerMemoryControlsDisplays.Size = new System.Drawing.Size(688, 401);
             this.splitContainerMemoryControlsDisplays.SplitterDistance = 98;
             this.splitContainerMemoryControlsDisplays.SplitterWidth = 1;
             this.splitContainerMemoryControlsDisplays.TabIndex = 39;
@@ -11579,7 +11600,7 @@ namespace STROOP
             this.richTextBoxMemoryValues.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBoxMemoryValues.Name = "richTextBoxMemoryValues";
             this.richTextBoxMemoryValues.ReadOnly = true;
-            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(581, 399);
+            this.richTextBoxMemoryValues.Size = new System.Drawing.Size(587, 399);
             this.richTextBoxMemoryValues.TabIndex = 8;
             this.richTextBoxMemoryValues.Text = "";
             // 
@@ -11592,7 +11613,7 @@ namespace STROOP
             this.watchVariablePanelMemory.Margin = new System.Windows.Forms.Padding(0);
             this.watchVariablePanelMemory.Name = "watchVariablePanelMemory";
             this.watchVariablePanelMemory.Padding = new System.Windows.Forms.Padding(2);
-            this.watchVariablePanelMemory.Size = new System.Drawing.Size(224, 455);
+            this.watchVariablePanelMemory.Size = new System.Drawing.Size(218, 455);
             this.watchVariablePanelMemory.TabIndex = 7;
             // 
             // tabPagePu
@@ -12746,7 +12767,7 @@ namespace STROOP
             // 
             this.splitContainerModelTables.Panel2.Controls.Add(this.labelModelTriangles);
             this.splitContainerModelTables.Panel2.Controls.Add(this.dataGridViewTriangles);
-            this.splitContainerModelTables.Size = new System.Drawing.Size(323, 412);
+            this.splitContainerModelTables.Size = new System.Drawing.Size(289, 412);
             this.splitContainerModelTables.SplitterDistance = 200;
             this.splitContainerModelTables.TabIndex = 2;
             // 
@@ -12778,7 +12799,7 @@ namespace STROOP
             this.dataGridViewVertices.Name = "dataGridViewVertices";
             this.dataGridViewVertices.ReadOnly = true;
             this.dataGridViewVertices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewVertices.Size = new System.Drawing.Size(317, 181);
+            this.dataGridViewVertices.Size = new System.Drawing.Size(283, 181);
             this.dataGridViewVertices.TabIndex = 1;
             // 
             // Index
@@ -12834,7 +12855,7 @@ namespace STROOP
             this.dataGridViewTriangles.Name = "dataGridViewTriangles";
             this.dataGridViewTriangles.ReadOnly = true;
             this.dataGridViewTriangles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTriangles.Size = new System.Drawing.Size(317, 189);
+            this.dataGridViewTriangles.Size = new System.Drawing.Size(283, 189);
             this.dataGridViewTriangles.TabIndex = 2;
             // 
             // Group
@@ -15385,6 +15406,7 @@ namespace STROOP
             this.tabPageTesting.Controls.Add(this.groupBoxScuttlebugStuff);
             this.tabPageTesting.Controls.Add(this.groupBoxTtcLogger);
             this.tabPageTesting.Controls.Add(this.groupBoxTestingPendulumManipulation);
+            this.tabPageTesting.Controls.Add(this.groupBoxTestingScheduler);
             this.tabPageTesting.Controls.Add(this.groupBoxTestingTtcSimulator);
             this.tabPageTesting.Controls.Add(this.groupBoxSchedule);
             this.tabPageTesting.Controls.Add(this.groupBoxStateTransfer);
@@ -15602,6 +15624,16 @@ namespace STROOP
             this.groupBoxTtcLogger.TabIndex = 42;
             this.groupBoxTtcLogger.TabStop = false;
             this.groupBoxTtcLogger.Text = "TTC Logger";
+            // 
+            // buttonTtcLoggerClear
+            // 
+            this.buttonTtcLoggerClear.Location = new System.Drawing.Point(107, 64);
+            this.buttonTtcLoggerClear.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTtcLoggerClear.Name = "buttonTtcLoggerClear";
+            this.buttonTtcLoggerClear.Size = new System.Drawing.Size(112, 23);
+            this.buttonTtcLoggerClear.TabIndex = 43;
+            this.buttonTtcLoggerClear.Text = "Clear";
+            this.buttonTtcLoggerClear.UseVisualStyleBackColor = true;
             // 
             // checkBoxTtcLoggerLogStates
             // 
@@ -17506,7 +17538,7 @@ namespace STROOP
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 46F));
+            this.tableLayoutPanelMainSaveCoinRank.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 48F));
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow1, 0, 1);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow2, 0, 2);
             this.tableLayoutPanelMainSaveCoinRank.Controls.Add(this.labelMainSaveCoinRankRow3, 0, 3);
@@ -18690,7 +18722,7 @@ namespace STROOP
             this.labelMainSaveCoinRankCol4.AutoSize = true;
             this.labelMainSaveCoinRankCol4.Location = new System.Drawing.Point(141, 1);
             this.labelMainSaveCoinRankCol4.Name = "labelMainSaveCoinRankCol4";
-            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(40, 14);
+            this.labelMainSaveCoinRankCol4.Size = new System.Drawing.Size(42, 14);
             this.labelMainSaveCoinRankCol4.TabIndex = 8;
             this.labelMainSaveCoinRankCol4.Text = "D";
             this.labelMainSaveCoinRankCol4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -18856,32 +18888,39 @@ namespace STROOP
             this.trackBarObjSlotSize.Value = 40;
             this.trackBarObjSlotSize.ValueChanged += new System.EventHandler(this.trackBarObjSlotSize_ValueChanged);
             // 
-            // buttonTabAdd
+            // groupBoxTestingScheduler
             // 
-            this.buttonTabAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonTabAdd.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonTabAdd.BackgroundImage")));
-            this.buttonTabAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.buttonTabAdd.Location = new System.Drawing.Point(569, 11);
-            this.buttonTabAdd.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonTabAdd.Name = "buttonTabAdd";
-            this.buttonTabAdd.Size = new System.Drawing.Size(21, 21);
-            this.buttonTabAdd.TabIndex = 20;
-            this.buttonTabAdd.UseVisualStyleBackColor = true;
-            this.buttonTabAdd.Click += new System.EventHandler(this.buttonTabAdd_Click);
+            this.groupBoxTestingScheduler.Controls.Add(this.richTextBoxTestingScheduler);
+            this.groupBoxTestingScheduler.Controls.Add(this.buttonTestingScheduler);
+            this.groupBoxTestingScheduler.Location = new System.Drawing.Point(6, 553);
+            this.groupBoxTestingScheduler.Name = "groupBoxTestingScheduler";
+            this.groupBoxTestingScheduler.Size = new System.Drawing.Size(325, 119);
+            this.groupBoxTestingScheduler.TabIndex = 42;
+            this.groupBoxTestingScheduler.TabStop = false;
+            this.groupBoxTestingScheduler.Text = "Scheduler";
             // 
-            // openFileDialogSt
+            // buttonTestingScheduler
             // 
-            this.openFileDialogSt.Filter = "ST files |*.st|All files|*";
+            this.buttonTestingScheduler.Location = new System.Drawing.Point(5, 91);
+            this.buttonTestingScheduler.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTestingScheduler.Name = "buttonTestingScheduler";
+            this.buttonTestingScheduler.Size = new System.Drawing.Size(315, 23);
+            this.buttonTestingScheduler.TabIndex = 43;
+            this.buttonTestingScheduler.Text = "Set";
+            this.buttonTestingScheduler.UseVisualStyleBackColor = true;
             // 
-            // buttonTtcLoggerClear
+            // richTextBoxTestingScheduler
             // 
-            this.buttonTtcLoggerClear.Location = new System.Drawing.Point(107, 64);
-            this.buttonTtcLoggerClear.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonTtcLoggerClear.Name = "buttonTtcLoggerClear";
-            this.buttonTtcLoggerClear.Size = new System.Drawing.Size(112, 23);
-            this.buttonTtcLoggerClear.TabIndex = 43;
-            this.buttonTtcLoggerClear.Text = "Clear";
-            this.buttonTtcLoggerClear.UseVisualStyleBackColor = true;
+            this.richTextBoxTestingScheduler.BackColor = System.Drawing.SystemColors.Control;
+            this.richTextBoxTestingScheduler.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.richTextBoxTestingScheduler.Font = new System.Drawing.Font("Courier New", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxTestingScheduler.Location = new System.Drawing.Point(5, 18);
+            this.richTextBoxTestingScheduler.Margin = new System.Windows.Forms.Padding(2);
+            this.richTextBoxTestingScheduler.Name = "richTextBoxTestingScheduler";
+            this.richTextBoxTestingScheduler.ReadOnly = true;
+            this.richTextBoxTestingScheduler.Size = new System.Drawing.Size(315, 69);
+            this.richTextBoxTestingScheduler.TabIndex = 44;
+            this.richTextBoxTestingScheduler.Text = "";
             // 
             // StroopMainForm
             // 
@@ -19426,6 +19465,7 @@ namespace STROOP
             this.groupBoxObjects.ResumeLayout(false);
             this.groupBoxObjects.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarObjSlotSize)).EndInit();
+            this.groupBoxTestingScheduler.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -20845,6 +20885,9 @@ namespace STROOP
         private Label labelTtcLoggerLogs;
         private Label labelTtcLoggerState;
         private Button buttonTtcLoggerClear;
+        private GroupBox groupBoxTestingScheduler;
+        private RichTextBoxEx richTextBoxTestingScheduler;
+        private Button buttonTestingScheduler;
     }
 }
 
