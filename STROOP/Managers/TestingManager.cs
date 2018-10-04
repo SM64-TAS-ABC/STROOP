@@ -505,7 +505,29 @@ namespace STROOP.Managers
 
         private void SetScheduler()
         {
+            List<string> lines = _richTextBoxTestingScheduler.Text.Split('\n').ToList();
+            List<List<string>> linePartsList = lines.ConvertAll(line => ParsingUtilities.ParseStringList(line));
 
+            Dictionary<uint, (double, double, double, double)> schedule =
+                new Dictionary<uint, (double, double, double, double)>();
+            foreach (List<string> lineParts in linePartsList)
+            {
+                if (lineParts.Count == 0) continue;
+                uint? globalTimerNullable = ParsingUtilities.ParseUIntNullable(lineParts[0]);
+                if (!globalTimerNullable.HasValue) continue;
+                uint globalTimer = globalTimerNullable.Value;
+
+                double x = lineParts.Count >= 2 ? ParsingUtilities.ParseDoubleNullable(lineParts[1]) ?? Double.NaN : Double.NaN;
+                double y = lineParts.Count >= 3 ? ParsingUtilities.ParseDoubleNullable(lineParts[2]) ?? Double.NaN : Double.NaN;
+                double z = lineParts.Count >= 4 ? ParsingUtilities.ParseDoubleNullable(lineParts[3]) ?? Double.NaN : Double.NaN;
+                double angle = lineParts.Count >= 5 ? ParsingUtilities.ParseDoubleNullable(lineParts[4]) ?? Double.NaN : Double.NaN;
+
+                schedule[globalTimer] = (x, y, z, angle);
+            }
+
+            PositionAngle posAngle = PositionAngle.Scheduler(schedule);
+            SpecialConfig.PointPosPA = posAngle;
+            SpecialConfig.PointAnglePA = posAngle;
         }
 
         private List<uint> GetScuttlebugAddresses()
