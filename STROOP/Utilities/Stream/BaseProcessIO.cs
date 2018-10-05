@@ -53,20 +53,14 @@ namespace STROOP.Utilities
                 swapBytes = new byte[(buffer.Length / 4) * 4 + 8];
 
                 // Read memory
-                int numOfBytes = 0;
-                if (!ReadFunc(address, buffer))
+                if (!ReadFunc(address, swapBytes))
                     return false;
 
-                // Un-aligned
-                int i = Math.Min(EndiannessUtilities.NumberOfBytesToAlignment(address), buffer.Length);
-                if (i > 0) 
-                    swapBytes.Take(i).Reverse().ToArray().CopyTo(buffer, 0);
+                swapBytes = EndiannessUtilities.SwapByteEndianness(swapBytes);
 
-                // Copy and swap bytes
-                int index = i == 0 ? 0 : 4;
-                for (; i < buffer.Length; i++, index++)
-                    buffer[i] = swapBytes[index & ~0x03 | _swapByteOrder[index & 0x03]]; // Swap bytes
-
+                // Copy memory
+                Buffer.BlockCopy(swapBytes, (int)(address.ToUInt64() - alignedAddress.ToUInt64()), buffer, 0, buffer.Length);
+                
                 return true;
             }
         }

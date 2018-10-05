@@ -263,17 +263,9 @@ namespace STROOP.Utilities
         {
              return ReadRam((UIntPtr) address, length, endianness, false);
         }
-
-        static readonly byte[] _swapByteOrder = new byte[] { 0x03, 0x02, 0x01, 0x00 };
+        
         public byte[] ReadRam(UIntPtr address, int length, EndiannessType endianness, bool absoluteAddress = false)
         {
-            if (length == 8)
-            {
-                byte[] bytes1 = ReadRam(address, 4, endianness, absoluteAddress);
-                byte[] bytes2 = ReadRam(address + 4, 4, endianness, absoluteAddress);
-                return bytes2.Concat(bytes1).ToArray();
-            }
-
             byte[] readBytes = new byte[length];
 
             // Get local address
@@ -302,22 +294,17 @@ namespace STROOP.Utilities
                     byte[] swapBytes;
                     uint alignedAddress = EndiannessUtilities.AlignedAddressFloor(localAddress);
 
-                    // TODO: optimize lookup by not having to read excess if memroy is aligned.
+                    // TODO: optimize lookup by not having to read excess if memoryligned.
                     // if (EndiannessUtilities.AddressIsMisaligned(localAddress))
-                    swapBytes = new byte[(readBytes.Length / 4) * 4 + 8];
+                    int alignedReadByteCount = (readBytes.Length / 4) * 4 + 8;
+                    swapBytes = new byte[alignedReadByteCount];
 
                     // Read memory
                     Buffer.BlockCopy(_ram, (int)alignedAddress, swapBytes, 0, swapBytes.Length);
+                    swapBytes = EndiannessUtilities.SwapByteEndianness(swapBytes);
 
-                    // Un-aligned
-                    int i = Math.Min(EndiannessUtilities.NumberOfBytesToAlignment(localAddress), readBytes.Length);
-                    if (i > 0)
-                        swapBytes.Take(i).Reverse().ToArray().CopyTo(readBytes, 0);
-
-                    // Copy and swap bytes
-                    int index = i == 0 ? 0 : 4;
-                    for (; i < readBytes.Length; i++, index++)
-                        readBytes[i] = swapBytes[index & ~0x03 | _swapByteOrder[index & 0x03]]; // Swap bytes
+                    // Copy memory
+                    Buffer.BlockCopy(swapBytes, (int)(localAddress - alignedAddress), readBytes, 0, readBytes.Length);
 
                     break;
             }
