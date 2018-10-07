@@ -120,16 +120,21 @@ namespace STROOP.Ttc
             return null;
         }
 
-        public static void TtcMainMethod2()
+        public static void FindIdealCogManipulation()
         {
-            int earliestDustFrame = 901 + 2 + 0;
-            int dustFrameRange = 65;
-            int maxDustFrames = 5;
+            // 221076 = start
+            int earliestDustFrame = MupenUtilities.GetFrameCount() + 2;
+            int dustFrameRange = 40;
+            int maxDustFrames = 6;
+            int minDustFrames = 6;
 
             int numFramesMin = 120;
-            int numFramesMax = 10000;
+            int numFramesMax = 7000;
 
-            List<List<int>> dustFrameLists = GetDustFrameLists(earliestDustFrame, dustFrameRange, maxDustFrames);
+            //int numFramesMin = 0;
+            //int numFramesMax = 3000;
+
+            List<List<int>> dustFrameLists = GetDustFrameLists(earliestDustFrame, dustFrameRange, maxDustFrames, minDustFrames);
             int counter = 0;
             List<string> outputStrings = new List<string>();
             foreach (List<int> dustFrames in dustFrameLists)
@@ -165,10 +170,10 @@ namespace STROOP.Ttc
             return simulation.GetObjectsString(endFrame);
         }
 
-        private static List<List<int>> GetDustFrameLists(int earliestDustFrame, int dustFrameRange, int maxDustFrames)
+        private static List<List<int>> GetDustFrameLists(int earliestDustFrame, int dustFrameRange, int maxDustFrames, int minDustFrames = 0)
         {
             List<List<int>> dustFrameLists = new List<List<int>>();
-            for (int numDustFrames = 0; numDustFrames <= maxDustFrames; numDustFrames++)
+            for (int numDustFrames = minDustFrames; numDustFrames <= maxDustFrames; numDustFrames++)
             {
                 AddDustFrameListRecursion(new bool[dustFrameRange], 0, 0, numDustFrames, dustFrameLists, earliestDustFrame);
             }

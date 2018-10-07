@@ -59,6 +59,17 @@ namespace STROOP.Ttc
             dust.AddDustFrames(dustFrames);
         }
 
+        public void TurnOffBobombs()
+        {
+            foreach (TtcObject obj in _rngObjects)
+            {
+                if (obj is TtcBobomb bobomb)
+                {
+                    bobomb.SetWithinMarioRange(0);
+                }
+            }
+        }
+
         public string GetObjectsString(int endingFrame)
         {
             //iterate through frames to update objects
@@ -95,17 +106,12 @@ namespace STROOP.Ttc
             TtcCog upperCog = _rngObjects[31] as TtcCog;
             TtcCog lowerCog = _rngObjects[32] as TtcCog;
             List<CogConfiguration> cogConfigurations = new List<CogConfiguration>();
-            List<int> goodUpperCogAngles = new List<int>() { 46432, 57360, 2752, 13664, 24592, 35536 };
-            List<int> goodLowerCogAngles = new List<int>() { 42576, 53504, 64416, 9808, 20736, 31648 };
-            List<int> goodLowerCogAnglesAdjusted = goodLowerCogAngles.ConvertAll(angle => angle + 32);
-
-            List<int> upperCogEndingYaws = new List<int>() { 46432, 45232 };
 
             int numCogConfigurations = 9;
-            int lowerCogGoodAngle = 62988;
+            int lowerCogGoodAngle = 9892;
             List<int> lowerCogGoodAngles = Enumerable.Range(0, 6).ToList()
                 .ConvertAll(index => lowerCogGoodAngle + 65536 / 6 * index)
-                .ConvertAll(angle => (int)MoreMath.NormalizeAngleUshort(angle));
+                .ConvertAll(angle => (int)MoreMath.NormalizeAngleTruncated(angle));
 
             //iterate through frames to update objects
             int frame = _startingFrame;
@@ -128,39 +134,40 @@ namespace STROOP.Ttc
                 {
                     if (cogConfigurations.Count < numCogConfigurations) continue;
 
-                    int upperCogAngleDist = goodUpperCogAngles.Min(
-                        angle => (int)MoreMath.GetAngleDistance(
-                            angle, MoreMath.NormalizeAngleTruncated(cogConfigurations[8].UpperCogAngle)));
-                    int lowerCogAngleDist = goodLowerCogAnglesAdjusted.Min(
+                    int lowerCogAngleDist = lowerCogGoodAngles.Min(
                         angle => (int)MoreMath.GetAngleDistance(
                             angle, MoreMath.NormalizeAngleTruncated(cogConfigurations[5].LowerCogAngle)));
 
-                    int lowerCogMinAngularVelocity = 50;
+                    bool upperCogPreGoal =
+                        cogConfigurations[8].UpperCogAngle == 46432 && // right angle
+                        cogConfigurations[7].UpperCogTargetAngularVelocity == 1200 && // was targeting 1200
+                        cogConfigurations[8].UpperCogCurrentAngularVelocity == 1200; // moved at 1200 speed
+
+                    bool upperCogGoal =
+                        cogConfigurations[8].UpperCogAngle == 46432 && // right angle
+                        cogConfigurations[7].UpperCogTargetAngularVelocity == 1200 && // was targeting 1200
+                        cogConfigurations[8].UpperCogCurrentAngularVelocity == 1200 && // moved at 1200 speed
+                        cogConfigurations[0].UpperCogTargetAngularVelocity == 1200; // had been targeting 1200 for some time
+
+                    int lowerCogMinAngularVelocity = 0;
                     int lowerCogMaxAngularVelocity = 400;
 
-                    if (upperCogAngleDist == 0 &&
-                        cogConfigurations[8].UpperCogAngle == 46432 &&
-                        cogConfigurations[7].UpperCogTargetAngularVelocity == 1200 &&
-                        cogConfigurations[8].UpperCogCurrentAngularVelocity == 1200 &&
-                        cogConfigurations[0].UpperCogTargetAngularVelocity == 1200 &&
-                        lowerCogAngleDist <= 48 &&
+                    bool lowerCogGoal =
+                        lowerCogAngleDist <= 64 && // close to some right angle
+                        // was moving slowly leading up to right angle
+                        cogConfigurations[1].LowerCogCurrentAngularVelocity <= lowerCogMaxAngularVelocity &&
+                        cogConfigurations[2].LowerCogCurrentAngularVelocity <= lowerCogMaxAngularVelocity &&
+                        cogConfigurations[3].LowerCogCurrentAngularVelocity <= lowerCogMaxAngularVelocity &&
+                        cogConfigurations[4].LowerCogCurrentAngularVelocity <= lowerCogMaxAngularVelocity &&
+                        cogConfigurations[5].LowerCogCurrentAngularVelocity <= lowerCogMaxAngularVelocity &&
+                        cogConfigurations[1].LowerCogCurrentAngularVelocity >= lowerCogMinAngularVelocity &&
+                        cogConfigurations[2].LowerCogCurrentAngularVelocity >= lowerCogMinAngularVelocity &&
+                        cogConfigurations[3].LowerCogCurrentAngularVelocity >= lowerCogMinAngularVelocity &&
+                        cogConfigurations[4].LowerCogCurrentAngularVelocity >= lowerCogMinAngularVelocity &&
+                        cogConfigurations[5].LowerCogCurrentAngularVelocity >= lowerCogMinAngularVelocity;
 
-                        cogConfigurations[2].LowerCogCurrentAngularVelocity <= 200 &&
-                        cogConfigurations[3].LowerCogCurrentAngularVelocity <= 200 &&
-                        cogConfigurations[4].LowerCogCurrentAngularVelocity <= 200 &&
-                        cogConfigurations[5].LowerCogCurrentAngularVelocity <= 200 &&
-
-                        cogConfigurations[2].LowerCogCurrentAngularVelocity >= 50 &&
-                        cogConfigurations[3].LowerCogCurrentAngularVelocity >= 50 &&
-                        cogConfigurations[4].LowerCogCurrentAngularVelocity >= 50 &&
-                        cogConfigurations[5].LowerCogCurrentAngularVelocity >= 50
-
-                        /*
-                        cogConfigurations[2].LowerCogCurrentAngularVelocity == 200 &&
-                        cogConfigurations[3].LowerCogCurrentAngularVelocity == 150 &&
-                        cogConfigurations[4].LowerCogCurrentAngularVelocity == 100 &&
-                        cogConfigurations[5].LowerCogCurrentAngularVelocity == 50
-                        */)
+                    if (upperCogGoal && lowerCogGoal)
+                    //if (upperCogPreGoal)
                     {
                         return frame;
                     }
