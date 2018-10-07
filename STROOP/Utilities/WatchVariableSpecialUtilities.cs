@@ -2940,6 +2940,13 @@ namespace STROOP.Structs
             return GetPendulumVars(accelerationDirection, accelerationMagnitude, angularVelocity, angle).ToTuple().Item1;
         }
 
+        public static float GetPendulumAmplitude(float angle, float accelerationMagnitude)
+        {
+            float accelerationDirection = -1 * Math.Sign(angle);
+            float angularVelocity = 0;
+            return GetPendulumAmplitude(accelerationDirection, accelerationMagnitude, angularVelocity, angle);
+        }
+
         public static (float amplitude, int countdown) GetPendulumVars(
             float accelerationDirection, float accelerationMagnitude, float angularVelocity, float angle)
         {

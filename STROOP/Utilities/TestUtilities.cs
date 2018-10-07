@@ -17,7 +17,21 @@ namespace STROOP.Utilities
     {
         public static void TestSomething()
         {
-            TtcMain.FindIdealCogManipulation();
+            List<int> pendulumAngles = new List<int>() { 6975, -6633, 6679 };
+            List<int> pendulumAccelerations = new List<int>() { 13, 42 };
+            List<string> outputList = new List<string>();
+
+            foreach (int angle in pendulumAngles)
+            {
+                foreach (int acceleration in pendulumAccelerations)
+                {
+                    float amplitude = WatchVariableSpecialUtilities.GetPendulumAmplitude(angle, acceleration);
+                    outputList.Add(String.Format("{0} + {1} = {2}", angle, acceleration, amplitude));
+                }
+            }
+
+            string output = String.Join("\r\n", outputList);
+            InfoForm.ShowValue(output);
         }
 
         public static void AddGraphicsTriangleVerticesToTriangleTab()
