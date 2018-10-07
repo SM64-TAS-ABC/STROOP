@@ -8,6 +8,7 @@
     <Emulator name="Nemu64 0.8" processName="Nemu64" ramStart="0x10020000" endianness="little"/>
     <Emulator name="BizHawk" processName="EmuHawk" offsetDll="mupen64plus.dll" ramStart="0x6C370" endianness="little"/>
     <Emulator name="Project64 Debugger 2.4.0.9999" processName="Project64d" ramStart="0x20000000" endianness="little"/>
+    <Emulator name="Project64" processName="Project64" ramStart="0x4BAF0000" endianness="little"/>
     <Emulator name="Dolphin" processName="Dolphin" ramStart="0xe6a180" endianness="big" special="dolphin"/>
   </Emulators>
 
