@@ -17,21 +17,59 @@ namespace STROOP.Utilities
     {
         public static void TestSomething()
         {
-            List<int> pendulumAngles = new List<int>() { 6975, -6633, 6679 };
-            List<int> pendulumAccelerations = new List<int>() { 13, 42 };
-            List<string> outputList = new List<string>();
+            HashSet<int> seenAmplitudes = new HashSet<int>();
+            Queue<PendulumSwing> queue = new Queue<PendulumSwing>();
 
-            foreach (int angle in pendulumAngles)
+            int startingAmplitude = -43470; // index 315
+            PendulumSwing startingPendulumSwing = new PendulumSwing(startingAmplitude, 0, null);
+            queue.Enqueue(startingPendulumSwing);
+            seenAmplitudes.Add(startingPendulumSwing.Amplitude);
+
+            while (queue.Count > 0)
             {
-                foreach (int acceleration in pendulumAccelerations)
+                PendulumSwing dequeue = queue.Dequeue();
+                List<PendulumSwing> successors = dequeue.GetSuccessors();
+                foreach (PendulumSwing pendulumSwing in successors)
                 {
-                    float amplitude = WatchVariableSpecialUtilities.GetPendulumAmplitude(angle, acceleration);
-                    outputList.Add(String.Format("{0} + {1} = {2}", angle, acceleration, amplitude));
+                    if (pendulumSwing.Amplitude == -57330)
+                    {
+                        InfoForm.ShowValue(pendulumSwing);
+                        return;
+                    }
+                    if (seenAmplitudes.Contains(pendulumSwing.Amplitude)) continue;
+                    queue.Enqueue(pendulumSwing);
+                    seenAmplitudes.Add(pendulumSwing.Amplitude);
                 }
             }
+        }
 
-            string output = String.Join("\r\n", outputList);
-            InfoForm.ShowValue(output);
+        public class PendulumSwing
+        {
+            public readonly int Amplitude;
+            public readonly int Acceleration;
+            public readonly PendulumSwing Predecessor;
+
+            public PendulumSwing(int amplitude, int acceleration, PendulumSwing predecessor)
+            {
+                Amplitude = amplitude;
+                Acceleration = acceleration;
+                Predecessor = predecessor;
+            }
+
+            public List<PendulumSwing> GetSuccessors()
+            {
+                return new List<PendulumSwing>()
+                {
+                    new PendulumSwing((int)WatchVariableSpecialUtilities.GetPendulumAmplitude(Amplitude, 13), 13, this),
+                    new PendulumSwing((int)WatchVariableSpecialUtilities.GetPendulumAmplitude(Amplitude, 42), 42, this),
+                };
+            }
+
+            public override string ToString()
+            {
+                string predecessorString = Predecessor?.ToString() ?? "";
+                return predecessorString + " =>" + Acceleration + "=> " + Amplitude;
+            }
         }
 
         public static void AddGraphicsTriangleVerticesToTriangleTab()
