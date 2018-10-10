@@ -17,6 +17,11 @@ namespace STROOP.Utilities
     {
         public static void TestSomething()
         {
+            MovementCalculator.MainMethod();
+        }
+
+        public static void TestSomething10()
+        {
             HashSet<int> seenAmplitudes = new HashSet<int>();
             Queue<PendulumSwing> queue = new Queue<PendulumSwing>();
 

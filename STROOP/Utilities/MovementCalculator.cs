@@ -284,6 +284,85 @@ namespace STROOP.Structs
 
         public static void MainMethod()
         {
+            float startX = 435.913696289063f;
+            float startY = 4474f;
+            float startZ = -1854.50500488281f;
+            float startXSpeed = -16.1702556610107f;
+            float startYSpeed = -75f;
+            float startZSpeed = -17.676326751709f;
+            float startHSpeed = 23.8997459411621f;
+
+            ushort marioAngle = 39780;
+            ushort cameraAngle = 16384;
+
+            float goalX = 392.857605f;
+            float goalY = 4249f;
+            float goalZ = -1901.016846f;
+
+            int xInput = -56;
+            int zInput = -31;
+            int xRadius = 10;
+            int zRadius = 10;
+
+            MarioState startState = new MarioState(
+                            startX,
+                            startY,
+                            startZ,
+                            startXSpeed,
+                            startYSpeed,
+                            startZSpeed,
+                            startHSpeed,
+                            marioAngle,
+                            cameraAngle,
+                            null,
+                            null,
+                            0);
+
+            int lastIndex = -1;
+            List<Input> inputs = GetInputRange(xInput - xRadius, xInput + xRadius, zInput - zRadius, zInput + zRadius);
+            float bestDiff = float.MaxValue;
+            MarioState bestState = null;
+            Queue<MarioState> queue = new Queue<MarioState>();
+            HashSet<MarioState> alreadySeen = new HashSet<MarioState>();
+            queue.Enqueue(startState);
+            alreadySeen.Add(startState);
+
+            while (queue.Count != 0)
+            {
+                MarioState dequeue = queue.Dequeue();
+                List<MarioState> nextStates = inputs.ConvertAll(input => dequeue.ApplyInput(input));
+                foreach (MarioState state in nextStates)
+                {
+                    if (alreadySeen.Contains(state)) continue;
+                    if (state.Index > 3) continue;
+
+                    if (state.Index != lastIndex)
+                    {
+                        lastIndex = state.Index;
+                        System.Diagnostics.Trace.WriteLine("Now at index " + lastIndex);
+                    }
+
+                    if (state.Index == 3)
+                    {
+                        float diff = (float)MoreMath.GetDistanceBetween(state.X, state.Z, goalX, goalZ);
+
+                        if (diff < bestDiff)
+                        {
+                            bestDiff = diff;
+                            bestState = state;
+                            System.Diagnostics.Trace.WriteLine("Diff of " + bestDiff + " is: " + bestState.GetLineage());
+                        }
+                    }
+
+                    alreadySeen.Add(state);
+                    queue.Enqueue(state);
+                }
+            }
+            System.Diagnostics.Trace.WriteLine("Done");
+        }
+
+        public static void MainMethod2()
+        {
             /*
             float startX = -6842.04736328125f;
             float startY = 2358;
