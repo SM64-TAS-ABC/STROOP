@@ -185,5 +185,20 @@ namespace STROOP.Models
         {
             return Classification == TriangleClassification.Ceiling;
         }
+
+        public int GetClosestVertex()
+        {
+            float marioX = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.XOffset);
+            float marioY = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.YOffset);
+            float marioZ = Config.Stream.GetSingle(MarioConfig.StructAddress + MarioConfig.ZOffset);
+
+            double dist1 = MoreMath.GetDistanceBetween(X1, Y1, Z1, marioX, marioY, marioZ);
+            double dist2 = MoreMath.GetDistanceBetween(X2, Y2, Z2, marioX, marioY, marioZ);
+            double dist3 = MoreMath.GetDistanceBetween(X3, Y3, Z3, marioX, marioY, marioZ);
+
+            if (dist1 <= dist2 && dist1 <= dist3) return 1;
+            if (dist2 <= dist3) return 2;
+            return 3;
+        }
     }
 }

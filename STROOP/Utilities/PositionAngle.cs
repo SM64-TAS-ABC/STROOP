@@ -193,19 +193,19 @@ namespace STROOP.Utilities
             else if (parts.Count == 2 && parts[0] == "wall")
             {
                 int? triVertex = ParsingUtilities.ParseIntNullable(parts[1]);
-                if (!triVertex.HasValue || triVertex.Value < 1 || triVertex.Value > 3) return null;
+                if (!triVertex.HasValue || triVertex.Value < 0 || triVertex.Value > 3) return null;
                 return Wall(triVertex.Value);
             }
             else if (parts.Count == 2 && parts[0] == "floor")
             {
                 int? triVertex = ParsingUtilities.ParseIntNullable(parts[1]);
-                if (!triVertex.HasValue || triVertex.Value < 1 || triVertex.Value > 3) return null;
+                if (!triVertex.HasValue || triVertex.Value < 0 || triVertex.Value > 3) return null;
                 return Floor(triVertex.Value);
             }
             else if (parts.Count == 2 && parts[0] == "ceiling")
             {
                 int? triVertex = ParsingUtilities.ParseIntNullable(parts[1]);
-                if (!triVertex.HasValue || triVertex.Value < 1 || triVertex.Value > 3) return null;
+                if (!triVertex.HasValue || triVertex.Value < 0 || triVertex.Value > 3) return null;
                 return Ceiling(triVertex.Value);
             }
 
@@ -438,6 +438,9 @@ namespace STROOP.Utilities
             if (address == 0) return Double.NaN;
             switch (triVertex)
             {
+                case 0:
+                    int closestVertex = new TriangleDataModel(address).GetClosestVertex();
+                    return GetTriangleVertexComponent(address, closestVertex, coordinate);
                 case 1:
                     switch (coordinate)
                     {
@@ -676,6 +679,9 @@ namespace STROOP.Utilities
             if (address == 0) return false;
             switch (triVertex)
             {
+                case 0:
+                    int closestVertex = new TriangleDataModel(address).GetClosestVertex();
+                    return SetTriangleVertexComponent(value, address, closestVertex, coordinate);
                 case 1:
                     switch (coordinate)
                     {
