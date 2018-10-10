@@ -22,9 +22,9 @@ namespace STROOP.Structs
             return (WatchVariableSubclass)Enum.Parse(typeof(WatchVariableSubclass), stringValue);
         }
 
-        public static WatchVariableCoordinate GetCoordinate(string stringValue)
+        public static Coordinate GetCoordinate(string stringValue)
         {
-            return (WatchVariableCoordinate)Enum.Parse(typeof(WatchVariableCoordinate), stringValue);
+            return (Coordinate)Enum.Parse(typeof(Coordinate), stringValue);
         }
 
         public static VariableGroup GetVariableGroup(string stringValue)

@@ -37,7 +37,7 @@ namespace STROOP.Controls
             int? roundingLimit = DEFAULT_ROUNDING_LIMIT,
             bool? displayAsHex = DEFAULT_DISPLAY_AS_HEX,
             bool useCheckbox = DEFAULT_USE_CHECKBOX,
-            WatchVariableCoordinate? coordinate = null)
+            Coordinate? coordinate = null)
             : base(watchVar, watchVarControl, useCheckbox)
         {
             _displayType = displayType;

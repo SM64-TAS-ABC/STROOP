@@ -32,6 +32,9 @@ namespace STROOP.Utilities
             ObjGfx,
             ObjScale,
             Tri,
+            Wall,
+            Floor,
+            Ceiling,
             Schedule,
             Hybrid,
         }
@@ -65,7 +68,10 @@ namespace STROOP.Utilities
                 throw new ArgumentOutOfRangeException();
 
             bool shouldHaveTriVertex =
-                posAngleType == PositionAngleTypeEnum.Tri;
+                posAngleType == PositionAngleTypeEnum.Tri ||
+                posAngleType == PositionAngleTypeEnum.Wall ||
+                posAngleType == PositionAngleTypeEnum.Floor ||
+                posAngleType == PositionAngleTypeEnum.Ceiling;
             if (triVertex.HasValue != shouldHaveTriVertex)
                 throw new ArgumentOutOfRangeException();
 
@@ -103,6 +109,12 @@ namespace STROOP.Utilities
             new PositionAngle(PositionAngleTypeEnum.ObjScale, address);
         public static PositionAngle Tri(uint address, int triVertex) =>
             new PositionAngle(PositionAngleTypeEnum.Tri, address, triVertex);
+        public static PositionAngle Wall(int triVertex) =>
+            new PositionAngle(PositionAngleTypeEnum.Wall, null, triVertex);
+        public static PositionAngle Floor(int triVertex) =>
+            new PositionAngle(PositionAngleTypeEnum.Floor, null, triVertex);
+        public static PositionAngle Ceiling(int triVertex) =>
+            new PositionAngle(PositionAngleTypeEnum.Ceiling, null, triVertex);
         public static PositionAngle Scheduler(Dictionary<uint, (double, double, double, double)> schedule) =>
             new PositionAngle(PositionAngleTypeEnum.Schedule, schedule: schedule);
         public static PositionAngle Hybrid(PositionAngle posPA, PositionAngle anglePA) =>
@@ -174,10 +186,27 @@ namespace STROOP.Utilities
             {
                 uint? address = ParsingUtilities.ParseHexNullable(parts[1]);
                 if (!address.HasValue) return null;
-                if (parts[2].Length >= 1 && parts[2].Substring(0, 1) == "v") parts[2] = parts[2].Substring(1);
                 int? triVertex = ParsingUtilities.ParseIntNullable(parts[2]);
                 if (!triVertex.HasValue || triVertex.Value < 1 || triVertex.Value > 3) return null;
                 return Tri(address.Value, triVertex.Value);
+            }
+            else if (parts.Count == 2 && parts[0] == "wall")
+            {
+                int? triVertex = ParsingUtilities.ParseIntNullable(parts[1]);
+                if (!triVertex.HasValue || triVertex.Value < 1 || triVertex.Value > 3) return null;
+                return Wall(triVertex.Value);
+            }
+            else if (parts.Count == 2 && parts[0] == "floor")
+            {
+                int? triVertex = ParsingUtilities.ParseIntNullable(parts[1]);
+                if (!triVertex.HasValue || triVertex.Value < 1 || triVertex.Value > 3) return null;
+                return Floor(triVertex.Value);
+            }
+            else if (parts.Count == 2 && parts[0] == "ceiling")
+            {
+                int? triVertex = ParsingUtilities.ParseIntNullable(parts[1]);
+                if (!triVertex.HasValue || triVertex.Value < 1 || triVertex.Value > 3) return null;
+                return Ceiling(triVertex.Value);
             }
 
             return null;
@@ -185,13 +214,13 @@ namespace STROOP.Utilities
 
         public override string ToString()
         {
-            List<string> strings = new List<string>();
-            strings.Add(PosAngleType.ToString());
-            if (Address.HasValue) strings.Add(HexUtilities.FormatValue(Address.Value, 8));
-            if (TriVertex.HasValue) strings.Add("V" + TriVertex.Value);
-            if (PosPA != null) strings.Add("[" + PosPA + "]");
-            if (AnglePA != null) strings.Add("[" + AnglePA + "]");
-            return String.Join(" ", strings);
+            List<object> parts = new List<object>();
+            parts.Add(PosAngleType);
+            if (Address.HasValue) parts.Add(HexUtilities.FormatValue(Address.Value, 8));
+            if (TriVertex.HasValue) parts.Add(TriVertex.Value);
+            if (PosPA != null) parts.Add("[" + PosPA + "]");
+            if (AnglePA != null) parts.Add("[" + AnglePA + "]");
+            return String.Join(" ", parts);
         }
 
 
@@ -229,22 +258,16 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.ObjScale:
                         return Config.Stream.GetSingle(Address.Value + ObjectConfig.ScaleWidthOffset);
                     case PositionAngleTypeEnum.Tri:
-                        uint triVertexOffset;
-                        switch (TriVertex.Value)
-                        {
-                            case 1:
-                                triVertexOffset = TriangleOffsetsConfig.X1;
-                                break;
-                            case 2:
-                                triVertexOffset = TriangleOffsetsConfig.X2;
-                                break;
-                            case 3:
-                                triVertexOffset = TriangleOffsetsConfig.X3;
-                                break;
-                            default:
-                                throw new ArgumentOutOfRangeException();
-                        }
-                        return Config.Stream.GetInt16(Address.Value + triVertexOffset);
+                        return GetTriangleVertexComponent(Address.Value, TriVertex.Value, Coordinate.X);
+                    case PositionAngleTypeEnum.Wall:
+                        return GetTriangleVertexComponent(
+                            Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset), TriVertex.Value, Coordinate.X);
+                    case PositionAngleTypeEnum.Floor:
+                        return GetTriangleVertexComponent(
+                            Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), TriVertex.Value, Coordinate.X);
+                    case PositionAngleTypeEnum.Ceiling:
+                        return GetTriangleVertexComponent(
+                            Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), TriVertex.Value, Coordinate.X);
                     case PositionAngleTypeEnum.Schedule:
                         uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
                         if (Schedule.ContainsKey(globalTimer)) return Schedule[globalTimer].Item1;
@@ -287,22 +310,16 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.ObjScale:
                         return Config.Stream.GetSingle(Address.Value + ObjectConfig.ScaleHeightOffset);
                     case PositionAngleTypeEnum.Tri:
-                        uint triVertexOffset;
-                        switch (TriVertex.Value)
-                        {
-                            case 1:
-                                triVertexOffset = TriangleOffsetsConfig.Y1;
-                                break;
-                            case 2:
-                                triVertexOffset = TriangleOffsetsConfig.Y2;
-                                break;
-                            case 3:
-                                triVertexOffset = TriangleOffsetsConfig.Y3;
-                                break;
-                            default:
-                                throw new ArgumentOutOfRangeException();
-                        }
-                        return Config.Stream.GetInt16(Address.Value + triVertexOffset);
+                        return GetTriangleVertexComponent(Address.Value, TriVertex.Value, Coordinate.Y);
+                    case PositionAngleTypeEnum.Wall:
+                        return GetTriangleVertexComponent(
+                            Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset), TriVertex.Value, Coordinate.Y);
+                    case PositionAngleTypeEnum.Floor:
+                        return GetTriangleVertexComponent(
+                            Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), TriVertex.Value, Coordinate.Y);
+                    case PositionAngleTypeEnum.Ceiling:
+                        return GetTriangleVertexComponent(
+                            Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), TriVertex.Value, Coordinate.Y);
                     case PositionAngleTypeEnum.Schedule:
                         uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
                         if (Schedule.ContainsKey(globalTimer)) return Schedule[globalTimer].Item2;
@@ -345,22 +362,16 @@ namespace STROOP.Utilities
                     case PositionAngleTypeEnum.ObjScale:
                         return Config.Stream.GetSingle(Address.Value + ObjectConfig.ScaleDepthOffset);
                     case PositionAngleTypeEnum.Tri:
-                        uint triVertexOffset;
-                        switch (TriVertex.Value)
-                        {
-                            case 1:
-                                triVertexOffset = TriangleOffsetsConfig.Z1;
-                                break;
-                            case 2:
-                                triVertexOffset = TriangleOffsetsConfig.Z2;
-                                break;
-                            case 3:
-                                triVertexOffset = TriangleOffsetsConfig.Z3;
-                                break;
-                            default:
-                                throw new ArgumentOutOfRangeException();
-                        }
-                        return Config.Stream.GetInt16(Address.Value + triVertexOffset);
+                        return GetTriangleVertexComponent(Address.Value, TriVertex.Value, Coordinate.Z);
+                    case PositionAngleTypeEnum.Wall:
+                        return GetTriangleVertexComponent(
+                            Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset), TriVertex.Value, Coordinate.Z);
+                    case PositionAngleTypeEnum.Floor:
+                        return GetTriangleVertexComponent(
+                            Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), TriVertex.Value, Coordinate.Z);
+                    case PositionAngleTypeEnum.Ceiling:
+                        return GetTriangleVertexComponent(
+                            Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), TriVertex.Value, Coordinate.Z);
                     case PositionAngleTypeEnum.Schedule:
                         uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
                         if (Schedule.ContainsKey(globalTimer)) return Schedule[globalTimer].Item3;
@@ -404,6 +415,12 @@ namespace STROOP.Utilities
                         return Double.NaN;
                     case PositionAngleTypeEnum.Tri:
                         return Double.NaN;
+                    case PositionAngleTypeEnum.Wall:
+                        return Double.NaN;
+                    case PositionAngleTypeEnum.Floor:
+                        return Double.NaN;
+                    case PositionAngleTypeEnum.Ceiling:
+                        return Double.NaN;
                     case PositionAngleTypeEnum.Schedule:
                         uint globalTimer = Config.Stream.GetUInt32(MiscConfig.GlobalTimerAddress);
                         if (Schedule.ContainsKey(globalTimer)) return Schedule[globalTimer].Item4;
@@ -414,6 +431,48 @@ namespace STROOP.Utilities
                         throw new ArgumentOutOfRangeException();
                 }
             }
+        }
+
+        private static double GetTriangleVertexComponent(uint address, int triVertex, Coordinate coordinate)
+        {
+            if (address == 0) return Double.NaN;
+            switch (triVertex)
+            {
+                case 1:
+                    switch (coordinate)
+                    {
+                        case Coordinate.X:
+                            return Config.Stream.GetInt16(address + TriangleOffsetsConfig.X1);
+                        case Coordinate.Y:
+                            return Config.Stream.GetInt16(address + TriangleOffsetsConfig.Y1);
+                        case Coordinate.Z:
+                            return Config.Stream.GetInt16(address + TriangleOffsetsConfig.Z1);
+                    }
+                    break;
+                case 2:
+                    switch (coordinate)
+                    {
+                        case Coordinate.X:
+                            return Config.Stream.GetInt16(address + TriangleOffsetsConfig.X2);
+                        case Coordinate.Y:
+                            return Config.Stream.GetInt16(address + TriangleOffsetsConfig.Y2);
+                        case Coordinate.Z:
+                            return Config.Stream.GetInt16(address + TriangleOffsetsConfig.Z2);
+                    }
+                    break;
+                case 3:
+                    switch (coordinate)
+                    {
+                        case Coordinate.X:
+                            return Config.Stream.GetInt16(address + TriangleOffsetsConfig.X3);
+                        case Coordinate.Y:
+                            return Config.Stream.GetInt16(address + TriangleOffsetsConfig.Y3);
+                        case Coordinate.Z:
+                            return Config.Stream.GetInt16(address + TriangleOffsetsConfig.Z3);
+                    }
+                    break;
+            }
+            throw new ArgumentOutOfRangeException();
         }
 
 
@@ -448,22 +507,16 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.ObjScale:
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.ScaleWidthOffset);
                 case PositionAngleTypeEnum.Tri:
-                    uint triVertexOffset;
-                    switch (TriVertex.Value)
-                    {
-                        case 1:
-                            triVertexOffset = TriangleOffsetsConfig.X1;
-                            break;
-                        case 2:
-                            triVertexOffset = TriangleOffsetsConfig.X2;
-                            break;
-                        case 3:
-                            triVertexOffset = TriangleOffsetsConfig.X3;
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
-                    return Config.Stream.SetValue((float)value, Address.Value + triVertexOffset);
+                    return SetTriangleVertexComponent((short)value, Address.Value, TriVertex.Value, Coordinate.X);
+                case PositionAngleTypeEnum.Wall:
+                    return SetTriangleVertexComponent(
+                        (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset), TriVertex.Value, Coordinate.X);
+                case PositionAngleTypeEnum.Floor:
+                    return SetTriangleVertexComponent(
+                        (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), TriVertex.Value, Coordinate.X);
+                case PositionAngleTypeEnum.Ceiling:
+                    return SetTriangleVertexComponent(
+                        (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), TriVertex.Value, Coordinate.X);
                 case PositionAngleTypeEnum.Schedule:
                     return false;
                 case PositionAngleTypeEnum.Hybrid:
@@ -502,22 +555,16 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.ObjScale:
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.ScaleHeightOffset);
                 case PositionAngleTypeEnum.Tri:
-                    uint triVertexOffset;
-                    switch (TriVertex.Value)
-                    {
-                        case 1:
-                            triVertexOffset = TriangleOffsetsConfig.Y1;
-                            break;
-                        case 2:
-                            triVertexOffset = TriangleOffsetsConfig.Y2;
-                            break;
-                        case 3:
-                            triVertexOffset = TriangleOffsetsConfig.Y3;
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
-                    return Config.Stream.SetValue((float)value, Address.Value + triVertexOffset);
+                    return SetTriangleVertexComponent((short)value, Address.Value, TriVertex.Value, Coordinate.Y);
+                case PositionAngleTypeEnum.Wall:
+                    return SetTriangleVertexComponent(
+                        (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset), TriVertex.Value, Coordinate.Y);
+                case PositionAngleTypeEnum.Floor:
+                    return SetTriangleVertexComponent(
+                        (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), TriVertex.Value, Coordinate.Y);
+                case PositionAngleTypeEnum.Ceiling:
+                    return SetTriangleVertexComponent(
+                        (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), TriVertex.Value, Coordinate.Y);
                 case PositionAngleTypeEnum.Schedule:
                     return false;
                 case PositionAngleTypeEnum.Hybrid:
@@ -556,22 +603,16 @@ namespace STROOP.Utilities
                 case PositionAngleTypeEnum.ObjScale:
                     return Config.Stream.SetValue((float)value, Address.Value + ObjectConfig.ScaleDepthOffset);
                 case PositionAngleTypeEnum.Tri:
-                    uint triVertexOffset;
-                    switch (TriVertex.Value)
-                    {
-                        case 1:
-                            triVertexOffset = TriangleOffsetsConfig.Z1;
-                            break;
-                        case 2:
-                            triVertexOffset = TriangleOffsetsConfig.Z2;
-                            break;
-                        case 3:
-                            triVertexOffset = TriangleOffsetsConfig.Z3;
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
-                    return Config.Stream.SetValue((float)value, Address.Value + triVertexOffset);
+                    return SetTriangleVertexComponent((short)value, Address.Value, TriVertex.Value, Coordinate.Z);
+                case PositionAngleTypeEnum.Wall:
+                    return SetTriangleVertexComponent(
+                        (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.WallTriangleOffset), TriVertex.Value, Coordinate.Z);
+                case PositionAngleTypeEnum.Floor:
+                    return SetTriangleVertexComponent(
+                        (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.FloorTriangleOffset), TriVertex.Value, Coordinate.Z);
+                case PositionAngleTypeEnum.Ceiling:
+                    return SetTriangleVertexComponent(
+                        (short)value, Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.CeilingTriangleOffset), TriVertex.Value, Coordinate.Z);
                 case PositionAngleTypeEnum.Schedule:
                     return false;
                 case PositionAngleTypeEnum.Hybrid:
@@ -615,6 +656,12 @@ namespace STROOP.Utilities
                     return false;
                 case PositionAngleTypeEnum.Tri:
                     return false;
+                case PositionAngleTypeEnum.Wall:
+                    return false;
+                case PositionAngleTypeEnum.Floor:
+                    return false;
+                case PositionAngleTypeEnum.Ceiling:
+                    return false;
                 case PositionAngleTypeEnum.Schedule:
                     return false;
                 case PositionAngleTypeEnum.Hybrid:
@@ -622,6 +669,48 @@ namespace STROOP.Utilities
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+
+        private static bool SetTriangleVertexComponent(short value, uint address, int triVertex, Coordinate coordinate)
+        {
+            if (address == 0) return false;
+            switch (triVertex)
+            {
+                case 1:
+                    switch (coordinate)
+                    {
+                        case Coordinate.X:
+                            return Config.Stream.SetValue(value, address + TriangleOffsetsConfig.X1);
+                        case Coordinate.Y:
+                            return Config.Stream.SetValue(value, address + TriangleOffsetsConfig.Y1);
+                        case Coordinate.Z:
+                            return Config.Stream.SetValue(value, address + TriangleOffsetsConfig.Z1);
+                    }
+                    break;
+                case 2:
+                    switch (coordinate)
+                    {
+                        case Coordinate.X:
+                            return Config.Stream.SetValue(value, address + TriangleOffsetsConfig.X2);
+                        case Coordinate.Y:
+                            return Config.Stream.SetValue(value, address + TriangleOffsetsConfig.Y2);
+                        case Coordinate.Z:
+                            return Config.Stream.SetValue(value, address + TriangleOffsetsConfig.Z2);
+                    }
+                    break;
+                case 3:
+                    switch (coordinate)
+                    {
+                        case Coordinate.X:
+                            return Config.Stream.SetValue(value, address + TriangleOffsetsConfig.X3);
+                        case Coordinate.Y:
+                            return Config.Stream.SetValue(value, address + TriangleOffsetsConfig.Y3);
+                        case Coordinate.Z:
+                            return Config.Stream.SetValue(value, address + TriangleOffsetsConfig.Z3);
+                    }
+                    break;
+            }
+            throw new ArgumentOutOfRangeException();
         }
 
         public bool SetValues(double? x = null, double? y = null, double? z = null, double? angle = null)

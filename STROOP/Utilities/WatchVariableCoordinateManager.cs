@@ -15,19 +15,19 @@ namespace STROOP.Structs
         private static List<WatchVariableNumberWrapper> coordinateVarList = new List<WatchVariableNumberWrapper>();
         private static bool readyToNotify = false;
 
-        public static void NotifyCoordinate(WatchVariableCoordinate coordinate, WatchVariableNumberWrapper watchVarWrapper)
+        public static void NotifyCoordinate(Coordinate coordinate, WatchVariableNumberWrapper watchVarWrapper)
         {
             switch (coordinate)
             {
-                case WatchVariableCoordinate.X:
+                case Coordinate.X:
                     coordinateVarList.Clear();
                     coordinateVarList.Add(watchVarWrapper);
                     break;
-                case WatchVariableCoordinate.Y:
+                case Coordinate.Y:
                     if (coordinateVarList.Count == 1)
                         coordinateVarList.Add(watchVarWrapper);
                     break;
-                case WatchVariableCoordinate.Z:
+                case Coordinate.Z:
                     if (coordinateVarList.Count == 1 || coordinateVarList.Count == 2)
                     {
                         coordinateVarList.Add(watchVarWrapper);

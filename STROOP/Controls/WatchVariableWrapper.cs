@@ -50,7 +50,7 @@ namespace STROOP.Controls
             bool? useHex,
             bool? invertBool,
             bool? isYaw,
-            WatchVariableCoordinate? coordinate)
+            Coordinate? coordinate)
         {
             switch (subclass)
             {

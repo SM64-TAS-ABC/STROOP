@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace STROOP.Structs
 {
-    public enum WatchVariableCoordinate
+    public enum Coordinate
     {
         X,
         Y,

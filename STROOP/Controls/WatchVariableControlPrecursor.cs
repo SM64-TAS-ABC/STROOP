@@ -24,7 +24,7 @@ namespace STROOP.Controls
         public readonly bool? UseHex;
         public readonly bool? InvertBool;
         public readonly bool? IsYaw;
-        public readonly WatchVariableCoordinate? Coordinate;
+        public readonly Coordinate? Coordinate;
         public readonly List<VariableGroup> GroupList;
         public readonly List<uint> FixedAddresses;
 
@@ -38,7 +38,7 @@ namespace STROOP.Controls
             bool? useHex,
             bool? invertBool,
             bool? isYaw,
-            WatchVariableCoordinate? coordinate,
+            Coordinate? coordinate,
             List<VariableGroup> groupList,
             List<uint> fixedAddresses = null)
         {
@@ -101,7 +101,7 @@ namespace STROOP.Controls
             IsYaw = (element.Attribute(XName.Get("yaw")) != null) ?
                 bool.Parse(element.Attribute(XName.Get("yaw")).Value) : (bool?)null;
             Coordinate = element.Attribute(XName.Get("coord")) != null ?
-                WatchVariableUtilities.GetCoordinate(element.Attribute(XName.Get("coord")).Value) : (WatchVariableCoordinate?)null;
+                WatchVariableUtilities.GetCoordinate(element.Attribute(XName.Get("coord")).Value) : (Coordinate?)null;
             FixedAddresses = element.Attribute(XName.Get("fixed")) != null ?
                 ParsingUtilities.ParseHexList(element.Attribute(XName.Get("fixed")).Value) : null;
 
