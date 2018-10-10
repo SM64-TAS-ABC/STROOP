@@ -28,6 +28,7 @@ namespace STROOP.Managers
         Map2Object _marioMapObj;
         Map2Object _holpMapObj;
         Map2Object _intendedNextPositionMapObj;
+        Map2Object _pointMapObj;
         Map2Object _cameraMapObj;
         TriangleMap2Object _floorTriangleMapObj;
         TriangleMap2Object _ceilingTriangleMapObj;
@@ -80,6 +81,14 @@ namespace STROOP.Managers
             }
         }
 
+        public Map2Object PointMapObj
+        {
+            get
+            {
+                return _pointMapObj;
+            }
+        }
+
         public Map2Object CameraMapObject
         {
             get
@@ -124,8 +133,12 @@ namespace STROOP.Managers
             _marioMapObj.UsesRotation = true;
 
             _holpMapObj = new Map2Object(Config.ObjectAssociations.HolpImage, 2);
+
             _intendedNextPositionMapObj = new Map2Object(Config.ObjectAssociations.IntendedNextPositionImage, 2);
             _intendedNextPositionMapObj.UsesRotation = true;
+
+            _pointMapObj = new Map2Object(Config.ObjectAssociations.IntendedNextPositionImage, 2);
+            _pointMapObj.UsesRotation = true;
 
             _cameraMapObj = new Map2Object(Config.ObjectAssociations.CameraMapImage, 1);
             _cameraMapObj.UsesRotation = true;
@@ -187,6 +200,7 @@ namespace STROOP.Managers
             _mapGraphics.AddMapObject(_marioMapObj);
             _mapGraphics.AddMapObject(_holpMapObj);
             _mapGraphics.AddMapObject(_intendedNextPositionMapObj);
+            _mapGraphics.AddMapObject(_pointMapObj);
             _mapGraphics.AddMapObject(_cameraMapObj);
             _mapGraphics.AddMapObject(_floorTriangleMapObj);
             _mapGraphics.AddMapObject(_ceilingTriangleMapObj);
@@ -448,6 +462,12 @@ namespace STROOP.Managers
                 marioStationary ? (float)MoreMath.AngleUnitsToDegrees(marioAngle) : (float)MoreMath.AngleUnitsToDegrees(angleToIntendedNextPosition);
             IntendedNextPositionMapObject.Rotation = rot;
 
+            // Update point
+            PointMapObj.X = (float)SpecialConfig.PointX;
+            PointMapObj.Y = (float)SpecialConfig.PointY;
+            PointMapObj.Z = (float)SpecialConfig.PointZ;
+            PointMapObj.Rotation = (float)MoreMath.AngleUnitsToDegrees(SpecialConfig.PointAngle);
+
             // Update camera map object position
             CameraMapObject.X = cameraX;
             CameraMapObject.Y = cameraY;
@@ -546,6 +566,10 @@ namespace STROOP.Managers
             var intendedNextPositionCoord = new PointF(_intendedNextPositionMapObj.RelX, _intendedNextPositionMapObj.RelZ);
             _intendedNextPositionMapObj.Draw = _mapGui.MapShowIntendedNextPosition.Checked;
             _intendedNextPositionMapObj.LocationOnContol = CalculateLocationOnControl(intendedNextPositionCoord, mapView);
+
+            var pointCoord = new PointF(_pointMapObj.RelX, _pointMapObj.RelZ);
+            _pointMapObj.Draw = _mapGui.MapShowPoint.Checked;
+            _pointMapObj.LocationOnContol = CalculateLocationOnControl(pointCoord, mapView);
 
             var cameraCoord = new PointF(_cameraMapObj.RelX, _cameraMapObj.RelZ);
             _cameraMapObj.Draw = _mapGui.MapShowCamera.Checked;

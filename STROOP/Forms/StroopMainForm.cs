@@ -280,6 +280,7 @@ namespace STROOP
                 MapShowMario = checkBoxMap2ShowMario,
                 MapShowHolp = checkBoxMap2ShowHolp,
                 MapShowIntendedNextPosition = checkBoxMap2ShowIntendedNextPosition,
+                MapShowPoint = checkBoxMap2ShowPoint,
                 MapShowCamera = checkBoxMap2ShowCamera,
                 MapShowFloorTriangle = checkBoxMap2ShowFloor,
                 MapShowCeilingTriangle = checkBoxMap2ShowCeiling,
