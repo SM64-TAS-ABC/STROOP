@@ -14,9 +14,11 @@ namespace STROOP.Utilities
         private readonly PositionAngleTypeEnum PosAngleType;
         public readonly uint? Address;
         public readonly int? TriVertex;
-        public readonly Dictionary<uint, (double, double, double, double)> Schedule;
         public readonly PositionAngle PosPA;
         public readonly PositionAngle AnglePA;
+
+        public static Dictionary<uint, (double, double, double, double)> Schedule =
+            new Dictionary<uint, (double, double, double, double)>();
 
         private enum PositionAngleTypeEnum
         {
@@ -52,14 +54,12 @@ namespace STROOP.Utilities
             PositionAngleTypeEnum posAngleType,
             uint? address = null,
             int? triVertex = null,
-            Dictionary<uint, (double, double, double, double)> schedule = null,
             PositionAngle posPA = null,
             PositionAngle anglePA = null)
         {
             PosAngleType = posAngleType;
             Address = address;
             TriVertex = triVertex;
-            Schedule = schedule;
             PosPA = posPA;
             AnglePA = anglePA;
 
@@ -73,11 +73,6 @@ namespace STROOP.Utilities
                 posAngleType == PositionAngleTypeEnum.Floor ||
                 posAngleType == PositionAngleTypeEnum.Ceiling;
             if (triVertex.HasValue != shouldHaveTriVertex)
-                throw new ArgumentOutOfRangeException();
-
-            bool shouldHaveSchedule =
-                posAngleType == PositionAngleTypeEnum.Schedule;
-            if ((schedule != null) != shouldHaveSchedule)
                 throw new ArgumentOutOfRangeException();
 
             bool shouldHavePAs =
@@ -95,6 +90,8 @@ namespace STROOP.Utilities
         public static PositionAngle CameraFocus = new PositionAngle(PositionAngleTypeEnum.CameraFocus);
         public static PositionAngle CamHackCamera = new PositionAngle(PositionAngleTypeEnum.CamHackCamera);
         public static PositionAngle CamHackFocus = new PositionAngle(PositionAngleTypeEnum.CamHackFocus);
+        public static PositionAngle Scheduler = new PositionAngle(PositionAngleTypeEnum.Schedule);
+
         public static PositionAngle Obj(uint address) =>
             new PositionAngle(PositionAngleTypeEnum.Obj, address);
         public static PositionAngle ObjHome(uint address) =>
@@ -115,10 +112,8 @@ namespace STROOP.Utilities
             new PositionAngle(PositionAngleTypeEnum.Floor, null, triVertex);
         public static PositionAngle Ceiling(int triVertex) =>
             new PositionAngle(PositionAngleTypeEnum.Ceiling, null, triVertex);
-        public static PositionAngle Scheduler(Dictionary<uint, (double, double, double, double)> schedule) =>
-            new PositionAngle(PositionAngleTypeEnum.Schedule, schedule: schedule);
         public static PositionAngle Hybrid(PositionAngle posPA, PositionAngle anglePA) =>
-            new PositionAngle(PositionAngleTypeEnum.Hybrid, null, null, null, posPA, anglePA);
+            new PositionAngle(PositionAngleTypeEnum.Hybrid, null, null, posPA, anglePA);
 
         public static PositionAngle FromString(string stringValue)
         {
@@ -207,6 +202,10 @@ namespace STROOP.Utilities
                 int? triVertex = ParsingUtilities.ParseIntNullable(parts[1]);
                 if (!triVertex.HasValue || triVertex.Value < 0 || triVertex.Value > 3) return null;
                 return Ceiling(triVertex.Value);
+            }
+            else if (parts.Count == 1 && parts[0] == "schedule")
+            {
+                return Scheduler;
             }
 
             return null;

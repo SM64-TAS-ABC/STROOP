@@ -525,9 +525,9 @@ namespace STROOP.Managers
                 schedule[globalTimer] = (x, y, z, angle);
             }
 
-            PositionAngle posAngle = PositionAngle.Scheduler(schedule);
-            SpecialConfig.PointPosPA = posAngle;
-            SpecialConfig.PointAnglePA = posAngle;
+            PositionAngle.Schedule = schedule;
+            SpecialConfig.PointPosPA = PositionAngle.Scheduler;
+            SpecialConfig.PointAnglePA = PositionAngle.Scheduler;
         }
 
         private List<uint> GetScuttlebugAddresses()
