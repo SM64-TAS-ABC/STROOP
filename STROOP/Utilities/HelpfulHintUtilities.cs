@@ -86,7 +86,7 @@ namespace STROOP.Structs
                 "In the HUD tab, there are buttons for \"Full HP\", \"Die\", \"Game Over\", \"Standard HUD\", and more.",
                 "In the HUD tab, you can toggle whether the HUD is displayed using the \"Turn Off HUD\" button. Right click on it for even more options.",
                 "In the Misc tab, you can turn off the music by checking the \"Turn Off Music\" checkbox.",
-                "In the Misc tab, you can see many miscellanious variables, such as the global timer, RNG value, and RNG index.",
+                "In the Misc tab, you can see many miscellaneous variables, such as the global timer, RNG value, and RNG index.",
                 
                 // Buttons on top
                 "Use the rectangle/line buttons on top to control which panels of STROOP are currently open or closed. Hold a number n to have these buttons affect the nth embedded panel.",
