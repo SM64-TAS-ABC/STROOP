@@ -130,9 +130,9 @@ namespace STROOP.Models
             FieldValueList = new List<object> {
                 HexUtilities.FormatValue(Address, 8),
                 Classification,
-                SurfaceType,
+                HexUtilities.FormatValue(SurfaceType, 2),
                 Description,
-                Slipperiness,
+                HexUtilities.FormatValue(Slipperiness, 2),
                 SlipperinessDescription,
                 Exertion,
                 ExertionForceIndex,
