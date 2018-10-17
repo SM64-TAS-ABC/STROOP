@@ -17,7 +17,7 @@ namespace STROOP.Utilities
     {
         public static void TestSomething()
         {
-            MovementCalculator.MainMethod();
+            TtcMain.FindHandMovement();
         }
 
         public static void TestSomething10()

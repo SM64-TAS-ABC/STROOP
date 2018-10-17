@@ -164,6 +164,12 @@ namespace STROOP.Ttc
             outputStrings.ForEach(output => Config.Print(output));
         }
 
+        public static void FindHandMovement()
+        {
+            TtcSimulation simulation = new TtcSimulation();
+            simulation.FindHandMovement();
+        }
+
         public static string Simulate(int endFrame, List<int> dustFrames = null)
         {
             TtcSimulation simulation = new TtcSimulation(dustFrames);

@@ -563,6 +563,13 @@ namespace STROOP.Utilities
             return multipled;
         }
 
+        public static string GetPercentString(double count, double total, int decimalPlaces)
+        {
+            double percent = Math.Round(100 * count / total, decimalPlaces);
+            string percentString = percent.ToString("N" + decimalPlaces) + "%";
+            return percentString;
+        }
+
         public static (double scaledX, double scaledZ) ScaleValues(double xValue, double zValue)
         {
             double magnitude = Math.Max(Math.Abs(xValue), Math.Abs(zValue));

@@ -251,6 +251,94 @@ namespace STROOP.Ttc
                 LowerCogTargetAngularVelocity = lowerCog._targetAngularVelocity;
             }
         }
+
+        public void FindHandMovement()
+        {
+            ushort startAngle = 48700;
+            ushort endAngle = 3912;
+            ushort resetAngle = 44000;
+            int margin = 100;
+
+            TtcHand hand = _rngObjects[37] as TtcHand;
+
+            bool goingForItBool = false;
+            int goingForItFrame = 0;
+            int bestDist = int.MinValue;
+            int totalDist = (int)MoreMath.GetAngleDistance(startAngle, endAngle);
+
+            int frame = _startingFrame;
+            for (int counter = 0; true; counter++)
+            {
+                if (frame % 10000000 == 0)
+                {
+                    Config.Print("...frame {0}", frame);
+                }
+
+                frame++;
+                foreach (TtcObject rngObject in _rngObjects)
+                {
+                    rngObject.SetFrame(frame);
+                    rngObject.Update();
+                }
+
+                bool atStartAngle = MoreMath.GetAngleDistance(hand._angle, startAngle) <= margin;
+                bool atEndAngle = MoreMath.GetAngleDistance(hand._angle, endAngle) <= margin;
+                bool atResetAngle = MoreMath.GetAngleDistance(hand._angle, resetAngle) <= margin;
+
+                if (goingForItBool)
+                {
+                    if (atStartAngle)
+                    {
+                        goingForItBool = true;
+                        goingForItFrame = frame;
+                        //Config.Print("Start again on frame {0}", frame);
+                    }
+                    else if (atEndAngle)
+                    {
+                        //Config.Print("End on frame {0}", frame);
+                        Config.Print("Success from {0} to {1}", goingForItFrame, frame);
+                        return;
+                    }
+                    else if (atResetAngle)
+                    {
+                        goingForItBool = false;
+                        //Config.Print("Reset on frame {0}", frame);
+                    }
+                }
+                else
+                {
+                    if (atStartAngle)
+                    {
+                        goingForItBool = true;
+                        goingForItFrame = frame;
+                        //Config.Print("Start on frame {0}", frame);
+                    }
+                    else if (atEndAngle)
+                    {
+
+                    }
+                    else if (atResetAngle)
+                    {
+
+                    }
+                }
+
+                if (goingForItBool)
+                {
+                    int currentDist = (int)MoreMath.GetAngleDifference(startAngle, hand._angle);
+                    if (currentDist > bestDist)
+                    {
+                        bestDist = currentDist;
+                        Config.Print(
+                            "Frame {0} has dist {1} of {2} ({3})",
+                            frame,
+                            currentDist,
+                            totalDist,
+                            MoreMath.GetPercentString(currentDist, totalDist, 2));
+                    }
+                }
+            }
+        }
         
     }
 
