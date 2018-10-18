@@ -1,4 +1,5 @@
-﻿using STROOP.Structs.Configurations;
+﻿using STROOP.Structs;
+using STROOP.Structs.Configurations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -98,6 +99,12 @@ namespace STROOP.Ttc
             {
                 _accelerationDirection, _angle, _angularVelocity, _accelerationMagnitude, _waitingTimer
             };
+        }
+
+        public int GetAmplitude()
+        {
+            return (int)WatchVariableSpecialUtilities.GetPendulumAmplitude(
+                _accelerationDirection, _accelerationMagnitude, _angularVelocity, _angle);
         }
 
     }

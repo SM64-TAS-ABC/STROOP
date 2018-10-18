@@ -120,6 +120,12 @@ namespace STROOP.Ttc
             return null;
         }
 
+        public static void FindIdealHandManipulation()
+        {
+            List<int> keyFrames = new TtcSimulation().FindKeyHandFrames();
+            InfoForm.ShowValue(String.Join(", ", keyFrames));
+        }
+
         public static void FindIdealCogManipulation()
         {
             // 221076 = start

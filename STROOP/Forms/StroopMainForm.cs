@@ -124,6 +124,7 @@ namespace STROOP
                     "Show All Helpful Hints",
                     "Add Gfx Vertices",
                     "Test Something",
+                    "Test Something Else",
                 },
                 new List<Action>()
                 {
@@ -151,6 +152,7 @@ namespace STROOP
                     () => HelpfulHintUtilities.ShowAllHelpfulHints(),
                     () => TestUtilities.AddGraphicsTriangleVerticesToTriangleTab(),
                     () => TestUtilities.TestSomething(),
+                    () => TestUtilities.TestSomethingElse(),
                 });
 
             ControlUtilities.AddCheckableContextMenuStripFunctions(

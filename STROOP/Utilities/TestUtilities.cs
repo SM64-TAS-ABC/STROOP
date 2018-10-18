@@ -17,6 +17,11 @@ namespace STROOP.Utilities
     {
         public static void TestSomething()
         {
+            TtcMain.FindIdealHandManipulation();
+        }
+
+        public static void TestSomethingElse()
+        {
             TtcMain.FindHandMovement();
         }
 

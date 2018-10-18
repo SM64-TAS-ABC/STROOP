@@ -269,9 +269,10 @@ namespace STROOP.Ttc
             int frame = _startingFrame;
             for (int counter = 0; true; counter++)
             {
-                if (frame % 10000000 == 0)
+                if (frame % 4000000 == 0)
                 {
                     Config.Print("...frame {0}", frame);
+                    return;
                 }
 
                 frame++;
@@ -339,7 +340,51 @@ namespace STROOP.Ttc
                 }
             }
         }
-        
+
+        public List<int> FindKeyHandFrames()
+        {
+            List<int> pendulumAnglesForDust = new List<int>()
+            {
+                -103861, -37756, 26919, 93440,
+            };
+            List<int> output = new List<int>();
+
+            TtcPendulum pendulum = GetClosePendulum();
+            int initialAmplitude = pendulum.GetAmplitude();
+
+            int frame = _startingFrame;
+            for (int counter = 0; true; counter++)
+            {
+                frame++;
+                foreach (TtcObject rngObject in _rngObjects)
+                {
+                    rngObject.SetFrame(frame);
+                    rngObject.Update();
+                }
+                
+                if (pendulumAnglesForDust.Contains(pendulum._angle))
+                {
+                    output.Add(frame);
+                }
+
+                if (pendulum.GetAmplitude() != initialAmplitude)
+                {
+                    output.Add(frame);
+                    if (output.Count != 5) throw new ArgumentOutOfRangeException();
+                    return output;
+                }
+            }
+        }
+
+        public TtcPendulum GetClosePendulum()
+        {
+            return _rngObjects[8] as TtcPendulum;
+        }
+
+        public TtcHand GetUpperHand()
+        {
+            return _rngObjects[37] as TtcHand;
+        }
     }
 
 }
