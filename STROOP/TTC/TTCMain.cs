@@ -122,8 +122,83 @@ namespace STROOP.Ttc
 
         public static void FindIdealHandManipulation()
         {
-            List<int> keyFrames = new TtcSimulation().FindKeyHandFrames();
-            InfoForm.ShowValue(String.Join(", ", keyFrames));
+            HandManipulationProgress startingProgress =
+                new HandManipulationProgress(
+                    new TtcSaveState(), MupenUtilities.GetFrameCount(), new List<int>());
+
+            Queue<HandManipulationProgress> queue = new Queue<HandManipulationProgress>();
+            queue.Enqueue(startingProgress);
+
+            while (queue.Count > 0)
+            {
+                HandManipulationProgress dequeue = queue.Dequeue();
+                int handMovementFrame = dequeue.GetHandMovementFrame();
+                if (handMovementFrame < 1000000) Config.Print(dequeue + " => " + handMovementFrame);
+
+                List<HandManipulationProgress> successors = dequeue.GetSuccessors();
+                successors.ForEach(successor => queue.Enqueue(successor));
+            }
+        }
+
+        public class HandManipulationProgress
+        {
+            public readonly TtcSaveState SaveState;
+            public readonly int Frame;
+            public readonly List<int> DustFrames;
+
+            public HandManipulationProgress(
+                TtcSaveState saveState,
+                int frame,
+                List<int> dustFrames)
+            {
+                SaveState = saveState;
+                Frame = frame;
+                DustFrames = dustFrames;
+            }
+
+            public override string ToString()
+            {
+                return String.Join(",", DustFrames);
+            }
+
+            public int GetHandMovementFrame()
+            {
+                return TtcSimulation.FindHandMovement(SaveState, Frame);
+            }
+
+            public bool IsValid()
+            {
+                TtcSimulation simulation = new TtcSimulation(SaveState);
+                bool isValid = simulation.GetClosePendulum()._accelerationMagnitude == 13;
+                return isValid;
+            }
+
+            public List<HandManipulationProgress> GetSuccessors()
+            {
+                if (!IsValid()) return new List<HandManipulationProgress>();
+
+                List<int> keyFrames = new TtcSimulation(
+                    SaveState, Frame, new List<int>()).FindKeyHandFrames();
+                int endingFrame = keyFrames[4];
+                List<int> potentialDustFrames = new List<int>()
+                {
+                    keyFrames[0], keyFrames[1], keyFrames[2], keyFrames[3]
+                };
+
+                List<List<int>> dustFrameConfigurations =
+                    ControlUtilities.GetSubsetsRanged<int>(potentialDustFrames, 0, 4);
+
+                List<HandManipulationProgress> successors = new List<HandManipulationProgress>();
+                foreach (List<int> dustFrameConfiguration in dustFrameConfigurations)
+                {
+                    TtcSimulation simulation = new TtcSimulation(SaveState, Frame, dustFrameConfiguration);
+                    simulation.SimulateUntilFrame(endingFrame);
+                    HandManipulationProgress progress = new HandManipulationProgress(
+                        simulation.GetSaveState(), endingFrame, DustFrames.Concat(dustFrameConfiguration).ToList());
+                    successors.Add(progress);
+                }
+                return successors;
+            }
         }
 
         public static void FindIdealCogManipulation()
@@ -170,10 +245,10 @@ namespace STROOP.Ttc
             outputStrings.ForEach(output => Config.Print(output));
         }
 
-        public static void FindHandMovement()
+        public static int FindHandMovement()
         {
             TtcSimulation simulation = new TtcSimulation();
-            simulation.FindHandMovement();
+            return simulation.FindHandMovement();
         }
 
         public static string Simulate(int endFrame, List<int> dustFrames = null)

@@ -645,6 +645,17 @@ namespace STROOP.Utilities
             trackBar.Value = newValue;
         }
 
+        public static List<List<T>> GetSubsetsRanged<T>(List<T> masterList, int minSize, int maxSize)
+        {
+            List<List<T>> output = new List<List<T>>();
+            for (int i = minSize; i <= maxSize; i++)
+            {
+                List<List<T>> subsets = GetSubsets<T>(masterList, i);
+                output.AddRange(subsets);
+            }
+            return output;
+        }
+
         public static List<List<T>> GetSubsets<T>(List<T> masterList, int size)
         {
             if (size < 0 || size > masterList.Count)

@@ -22,7 +22,7 @@ namespace STROOP.Utilities
 
         public static void TestSomethingElse()
         {
-            TtcMain.FindHandMovement();
+            Config.Print(TtcMain.FindHandMovement());
         }
 
         public static void TestSomething10()

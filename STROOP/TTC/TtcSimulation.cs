@@ -16,6 +16,7 @@ namespace STROOP.Ttc
         private readonly TtcRng _rng;
         private readonly List<TtcObject> _rngObjects;
         private readonly int _startingFrame;
+        private int _currentFrame;
 
         public TtcSimulation(ushort rngValue, int startingFrame, List<int> dustFrames = null)
         {
@@ -25,6 +26,7 @@ namespace STROOP.Ttc
 
             //set up testing variables
             _startingFrame = startingFrame; //the frame directly preceding any object initialization
+            _currentFrame = _startingFrame;
         }
 
         public TtcSimulation(List<int> dustFrames = null)
@@ -35,12 +37,22 @@ namespace STROOP.Ttc
 
             //set up testing variables
             _startingFrame = MupenUtilities.GetFrameCount(); //the frame directly preceding any object initialization
+            _currentFrame = _startingFrame;
         }
 
         public TtcSimulation(TtcSaveState saveState)
         {
             (_rng, _rngObjects) = TtcUtilities.CreateRngObjectsFromSaveState(saveState);
             _startingFrame = 0;
+            _currentFrame = _startingFrame;
+        }
+
+        public TtcSimulation(TtcSaveState saveState, int startingFrame, List<int> dustFrames)
+        {
+            (_rng, _rngObjects) = TtcUtilities.CreateRngObjectsFromSaveState(saveState);
+            _startingFrame = startingFrame;
+            _currentFrame = _startingFrame;
+            AddDustFrames(dustFrames);
         }
 
         public TtcSimulation(string saveStateString) : this(new TtcSaveState(saveStateString))
@@ -252,7 +264,13 @@ namespace STROOP.Ttc
             }
         }
 
-        public void FindHandMovement()
+        public static int FindHandMovement(TtcSaveState saveState, int startingFrame)
+        {
+            TtcSimulation simulation = new TtcSimulation(saveState, startingFrame, new List<int>());
+            return simulation.FindHandMovement();
+        }
+
+        public int FindHandMovement()
         {
             ushort startAngle = 48700;
             ushort endAngle = 3912;
@@ -269,10 +287,10 @@ namespace STROOP.Ttc
             int frame = _startingFrame;
             for (int counter = 0; true; counter++)
             {
-                if (frame % 4000000 == 0)
+                if (frame % 1000000 == 0)
                 {
-                    Config.Print("...frame {0}", frame);
-                    return;
+                    //Config.Print("...frame {0}", frame);
+                    return 1000000;
                 }
 
                 frame++;
@@ -297,8 +315,8 @@ namespace STROOP.Ttc
                     else if (atEndAngle)
                     {
                         //Config.Print("End on frame {0}", frame);
-                        Config.Print("Success from {0} to {1}", goingForItFrame, frame);
-                        return;
+                        //Config.Print("Success from {0} to {1}", goingForItFrame, frame);
+                        return goingForItFrame;
                     }
                     else if (atResetAngle)
                     {
@@ -330,12 +348,14 @@ namespace STROOP.Ttc
                     if (currentDist > bestDist)
                     {
                         bestDist = currentDist;
+                        /*
                         Config.Print(
                             "Frame {0} has dist {1} of {2} ({3})",
                             frame,
                             currentDist,
                             totalDist,
                             MoreMath.GetPercentString(currentDist, totalDist, 2));
+                            */
                     }
                 }
             }
@@ -376,6 +396,21 @@ namespace STROOP.Ttc
             }
         }
 
+        public void SimulateUntilFrame(int endingFrame)
+        {
+            while (true)
+            {
+                _currentFrame++;
+                foreach (TtcObject rngObject in _rngObjects)
+                {
+                    rngObject.SetFrame(_currentFrame);
+                    rngObject.Update();
+                }
+
+                if (_currentFrame == endingFrame) return;
+            }
+        }
+
         public TtcPendulum GetClosePendulum()
         {
             return _rngObjects[8] as TtcPendulum;
@@ -384,6 +419,11 @@ namespace STROOP.Ttc
         public TtcHand GetUpperHand()
         {
             return _rngObjects[37] as TtcHand;
+        }
+
+        public ushort GetRng()
+        {
+            return _rng.GetRng();
         }
     }
 
