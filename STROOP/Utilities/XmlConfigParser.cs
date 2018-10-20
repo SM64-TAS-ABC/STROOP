@@ -1433,6 +1433,8 @@ namespace STROOP.Utilities
                 });
             }
 
+            pendulumSwingTable.FillInExtras();
+
             return pendulumSwingTable;
         }
 

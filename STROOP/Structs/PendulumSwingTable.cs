@@ -69,5 +69,61 @@ namespace STROOP.Structs
             int sign = index % 2 == 0 ? 1 : -1;
             return amplitudeMagnitude * sign;
         }
+
+        public void FillInExtras()
+        {
+            HashSet<int> seenAmplitudes = new HashSet<int>();
+            Queue<PendulumSwing> queue = new Queue<PendulumSwing>();
+
+            int startingAmplitude = -43470; // index 315
+            PendulumSwing startingPendulumSwing = new PendulumSwing(startingAmplitude, 0, null);
+            queue.Enqueue(startingPendulumSwing);
+            seenAmplitudes.Add(startingPendulumSwing.Amplitude);
+
+            while (queue.Count > 0)
+            {
+                PendulumSwing dequeue = queue.Dequeue();
+                List<PendulumSwing> successors = dequeue.GetSuccessors();
+                foreach (PendulumSwing pendulumSwing in successors)
+                {
+                    if (pendulumSwing.Amplitude == -57330)
+                    {
+                        return;
+                    }
+                    if (seenAmplitudes.Contains(pendulumSwing.Amplitude)) continue;
+                    queue.Enqueue(pendulumSwing);
+                    seenAmplitudes.Add(pendulumSwing.Amplitude);
+                }
+            }
+        }
+
+        public class PendulumSwing
+        {
+            public readonly int Amplitude;
+            public readonly int Acceleration;
+            public readonly PendulumSwing Predecessor;
+
+            public PendulumSwing(int amplitude, int acceleration, PendulumSwing predecessor)
+            {
+                Amplitude = amplitude;
+                Acceleration = acceleration;
+                Predecessor = predecessor;
+            }
+
+            public List<PendulumSwing> GetSuccessors()
+            {
+                return new List<PendulumSwing>()
+                {
+                    new PendulumSwing((int)WatchVariableSpecialUtilities.GetPendulumAmplitude(Amplitude, 13), 13, this),
+                    new PendulumSwing((int)WatchVariableSpecialUtilities.GetPendulumAmplitude(Amplitude, 42), 42, this),
+                };
+            }
+
+            public override string ToString()
+            {
+                string predecessorString = Predecessor?.ToString() ?? "";
+                return predecessorString + " =>" + Acceleration + "=> " + Amplitude;
+            }
+        }
     }
 }
