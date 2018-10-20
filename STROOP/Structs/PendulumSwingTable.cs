@@ -88,28 +88,40 @@ namespace STROOP.Structs
 
         public void FillInExtended()
         {
-            HashSet<int> seenAmplitudes = new HashSet<int>();
-            Queue<PendulumSwing> queue = new Queue<PendulumSwing>();
+            int range = 100;
 
-            int startingAmplitude = -43470; // index 315
-            PendulumSwing startingPendulumSwing = new PendulumSwing(startingAmplitude, 0, null);
-            queue.Enqueue(startingPendulumSwing);
-            seenAmplitudes.Add(startingPendulumSwing.Amplitude);
+            List<int> startingIndexes = new List<int>();
+            for (int i = 0; i < range; i++)
+            {
+                startingIndexes.Add(289 + i);
+            }
+            for (int i = 0; i < range; i++)
+            {
+                startingIndexes.Add(-382 - i);
+            }
+
+            List<PendulumSwing> startingSwings = startingIndexes.ConvertAll(
+                index => new PendulumSwing(GetPendulumAmplitude(index), 0, null, index, 0));
+            Queue<PendulumSwing> queue = new Queue<PendulumSwing>();
+            foreach (PendulumSwing swing in startingSwings)
+            {
+                List<PendulumSwing> successors = swing.GetSuccessors();
+                successors.ForEach(successor => queue.Enqueue(successor));
+            }
 
             while (queue.Count > 0)
             {
                 PendulumSwing dequeue = queue.Dequeue();
+                if (GetPendulumSwingIndexExtended(dequeue.Amplitude) != Double.NaN.ToString())
+                    continue;
+                if (dequeue.SecondaryIndex > range)
+                    continue;
+
+                string extendedIndex = dequeue.PrimaryIndex + "-" + dequeue.SecondaryIndex;
+                _extendedAmplitudeDictionary[dequeue.Amplitude] = extendedIndex;
+
                 List<PendulumSwing> successors = dequeue.GetSuccessors();
-                foreach (PendulumSwing pendulumSwing in successors)
-                {
-                    if (pendulumSwing.Amplitude == -57330)
-                    {
-                        return;
-                    }
-                    if (seenAmplitudes.Contains(pendulumSwing.Amplitude)) continue;
-                    queue.Enqueue(pendulumSwing);
-                    seenAmplitudes.Add(pendulumSwing.Amplitude);
-                }
+                successors.ForEach(successor => queue.Enqueue(successor));
             }
         }
 
@@ -118,20 +130,29 @@ namespace STROOP.Structs
             public readonly int Amplitude;
             public readonly int Acceleration;
             public readonly PendulumSwing Predecessor;
+            public readonly int PrimaryIndex;
+            public readonly int SecondaryIndex;
 
-            public PendulumSwing(int amplitude, int acceleration, PendulumSwing predecessor)
+            public PendulumSwing(
+                int amplitude,
+                int acceleration,
+                PendulumSwing predecessor,
+                int primaryIndex,
+                int secondaryIndex)
             {
                 Amplitude = amplitude;
                 Acceleration = acceleration;
                 Predecessor = predecessor;
+                PrimaryIndex = primaryIndex;
+                SecondaryIndex = secondaryIndex;
             }
 
             public List<PendulumSwing> GetSuccessors()
             {
                 return new List<PendulumSwing>()
                 {
-                    new PendulumSwing((int)WatchVariableSpecialUtilities.GetPendulumAmplitude(Amplitude, 13), 13, this),
-                    new PendulumSwing((int)WatchVariableSpecialUtilities.GetPendulumAmplitude(Amplitude, 42), 42, this),
+                    new PendulumSwing((int)WatchVariableSpecialUtilities.GetPendulumAmplitude(Amplitude, 13), 13, this, PrimaryIndex, SecondaryIndex + 1),
+                    new PendulumSwing((int)WatchVariableSpecialUtilities.GetPendulumAmplitude(Amplitude, 42), 42, this, PrimaryIndex, SecondaryIndex + 1),
                 };
             }
 
