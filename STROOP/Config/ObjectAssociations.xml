@@ -3770,7 +3770,7 @@
     <Data groupList="ObjectSpecific" base="Object" specialType="PendulumCountdown">Countdown</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0x104" base="Object">Waiting Timer</Data>
     <Data groupList="ObjectSpecific" base="Object" specialType="PendulumAmplitude" subclass="Angle" display="int">Amplitude</Data>
-    <Data groupList="ObjectSpecific" base="Object" specialType="PendulumSwingIndex">Swing Index</Data>
+    <Data groupList="ObjectSpecific" base="Object" specialType="PendulumSwingIndex" subclass="String">Swing Index</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004C5C" name="TTC Treadmill (Long)" subType="0">
     <SpawnCode gfxId="0x39"/>

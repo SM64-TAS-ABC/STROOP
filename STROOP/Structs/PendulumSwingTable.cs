@@ -22,6 +22,8 @@ namespace STROOP.Structs
         Dictionary<int, PendulumSwingReference> _amplitudeDictionary = new Dictionary<int, PendulumSwingReference>();
         Dictionary<int, PendulumSwingReference> _indexDictionary = new Dictionary<int, PendulumSwingReference>();
 
+        Dictionary<int, string> _extendedAmplitudeDictionary = new Dictionary<int, string>();
+
         public PendulumSwingTable()
         {
         }
@@ -30,6 +32,8 @@ namespace STROOP.Structs
         {
             _amplitudeDictionary.Add(pendulumSwingRef.Amplitude, pendulumSwingRef);
             _indexDictionary.Add(pendulumSwingRef.Index, pendulumSwingRef);
+
+            _extendedAmplitudeDictionary.Add(pendulumSwingRef.Amplitude, pendulumSwingRef.Index.ToString());
         }
 
         public int? GetPendulumSwingIndex(int amplitude)
@@ -70,7 +74,19 @@ namespace STROOP.Structs
             return amplitudeMagnitude * sign;
         }
 
-        public void FillInExtras()
+        public string GetPendulumSwingIndexExtended(int amplitude)
+        {
+            int? pendulumIndex = GetPendulumSwingIndex(amplitude);
+            if (pendulumIndex.HasValue)
+                return pendulumIndex.Value.ToString();
+
+            if (_extendedAmplitudeDictionary.ContainsKey(amplitude))
+                return _extendedAmplitudeDictionary[amplitude];
+
+            return Double.NaN.ToString();
+        }
+
+        public void FillInExtended()
         {
             HashSet<int> seenAmplitudes = new HashSet<int>();
             Queue<PendulumSwing> queue = new Queue<PendulumSwing>();
