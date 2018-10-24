@@ -200,5 +200,10 @@ namespace STROOP.Models
             if (dist2 <= dist3) return 2;
             return 3;
         }
+
+        public double GetHeightOnTriangle(double x, double z)
+        {
+            return (-x * NormX - z * NormZ - NormOffset) / NormY;
+        }
     }
 }

@@ -1542,8 +1542,7 @@ namespace STROOP.Structs
                 {
                     PositionAngle marioPos = PositionAngle.Mario;
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
-                    double heightOnTriangle =
-                        (-marioPos.X * triStruct.NormX - marioPos.Z * triStruct.NormZ - triStruct.NormOffset) / triStruct.NormY;
+                    double heightOnTriangle = triStruct.GetHeightOnTriangle(marioPos.X, marioPos.Z);
                     return heightOnTriangle;
                 },
                 DEFAULT_SETTER));
