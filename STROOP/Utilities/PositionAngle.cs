@@ -443,7 +443,8 @@ namespace STROOP.Utilities
             switch (triVertex)
             {
                 case 0:
-                    int closestVertex = new TriangleDataModel(address).GetClosestVertex();
+                    int closestVertex = new TriangleDataModel(address).GetClosestVertex(
+                        SpecialConfig.SelfX, SpecialConfig.SelfY, SpecialConfig.SelfZ);
                     return GetTriangleVertexComponent(address, closestVertex, coordinate);
                 case 1:
                     switch (coordinate)
@@ -695,7 +696,8 @@ namespace STROOP.Utilities
             switch (triVertex)
             {
                 case 0:
-                    int closestVertex = new TriangleDataModel(address).GetClosestVertex();
+                    int closestVertex = new TriangleDataModel(address).GetClosestVertex(
+                        SpecialConfig.SelfX, SpecialConfig.SelfY, SpecialConfig.SelfZ);
                     return SetTriangleVertexComponent(value, address, closestVertex, coordinate);
                 case 1:
                     switch (coordinate)
