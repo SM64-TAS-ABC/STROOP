@@ -182,25 +182,30 @@ namespace STROOP.Utilities
                 uint? address = ParsingUtilities.ParseHexNullable(parts[1]);
                 if (!address.HasValue) return null;
                 int? triVertex = ParsingUtilities.ParseIntNullable(parts[2]);
-                if (!triVertex.HasValue || triVertex.Value < 1 || triVertex.Value > 3) return null;
+                if (!triVertex.HasValue || triVertex.Value < 0 || triVertex.Value > 4) return null;
+                // 0 = closest vertex
+                // 1 = vertex 1
+                // 2 = vertex 2
+                // 3 = vertex 3
+                // 4 = point on triangle
                 return Tri(address.Value, triVertex.Value);
             }
             else if (parts.Count == 2 && parts[0] == "wall")
             {
                 int? triVertex = ParsingUtilities.ParseIntNullable(parts[1]);
-                if (!triVertex.HasValue || triVertex.Value < 0 || triVertex.Value > 3) return null;
+                if (!triVertex.HasValue || triVertex.Value < 0 || triVertex.Value > 4) return null;
                 return Wall(triVertex.Value);
             }
             else if (parts.Count == 2 && parts[0] == "floor")
             {
                 int? triVertex = ParsingUtilities.ParseIntNullable(parts[1]);
-                if (!triVertex.HasValue || triVertex.Value < 0 || triVertex.Value > 3) return null;
+                if (!triVertex.HasValue || triVertex.Value < 0 || triVertex.Value > 4) return null;
                 return Floor(triVertex.Value);
             }
             else if (parts.Count == 2 && parts[0] == "ceiling")
             {
                 int? triVertex = ParsingUtilities.ParseIntNullable(parts[1]);
-                if (!triVertex.HasValue || triVertex.Value < 0 || triVertex.Value > 3) return null;
+                if (!triVertex.HasValue || triVertex.Value < 0 || triVertex.Value > 4) return null;
                 return Ceiling(triVertex.Value);
             }
             else if (parts.Count == 1 && parts[0] == "schedule")
@@ -473,6 +478,17 @@ namespace STROOP.Utilities
                             return Config.Stream.GetInt16(address + TriangleOffsetsConfig.Z3);
                     }
                     break;
+                case 4:
+                    switch (coordinate)
+                    {
+                        case Coordinate.X:
+                            return SpecialConfig.SelfX;
+                        case Coordinate.Y:
+                            return new TriangleDataModel(address).GetHeightOnTriangle(SpecialConfig.SelfX, SpecialConfig.SelfZ);
+                        case Coordinate.Z:
+                            return SpecialConfig.SelfZ;
+                    }
+                    break;
             }
             throw new ArgumentOutOfRangeException();
         }
@@ -714,6 +730,8 @@ namespace STROOP.Utilities
                             return Config.Stream.SetValue(value, address + TriangleOffsetsConfig.Z3);
                     }
                     break;
+                case 4:
+                    return false;
             }
             throw new ArgumentOutOfRangeException();
         }
