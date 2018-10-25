@@ -256,6 +256,25 @@ namespace STROOP.Structs
                 initialState.Index + 1);
         }
 
+        private static float ComputeAirHSpeed(float initialHSpeed)
+        {
+            int maxSpeed = 32;
+            float newHSpeed = ApproachHSpeed(initialHSpeed, 0, 0.35f, 0.35f);
+            if (newHSpeed > maxSpeed) newHSpeed -= 1;
+            if (newHSpeed < -16) newHSpeed += 2;
+            return newHSpeed;
+        }
+
+        private static float ComputePosition(float position, float hSpeed, int frames)
+        {
+            for (int i = 0; i < frames; i++)
+            {
+                hSpeed = ComputeAirHSpeed(hSpeed);
+                position += hSpeed;
+            }
+            return position;
+        }
+
         private static MarioState ComputeAirYSpeed(MarioState initialState)
         {
             float newYSpeed = Math.Max(initialState.YSpeed - 4, -75);
@@ -361,7 +380,7 @@ namespace STROOP.Structs
             System.Diagnostics.Trace.WriteLine("Done");
         }
 
-        public static void MainMethod2()
+        public static void CalculateMovementForBully()
         {
             /*
             float startX = -6842.04736328125f;
@@ -445,6 +464,126 @@ namespace STROOP.Structs
                 }
             }
             System.Diagnostics.Trace.WriteLine("FAILED");
+        }
+
+        public static void CalculateMovementForWallGap()
+        {
+            float startX = -258.926910400391f;
+            float startY = 2373f;
+            float startZ = 5770.876953125f;
+            float startXSpeed = 30.5356960296631f;
+            float startYSpeed = -10f;
+            float startZSpeed = 0f;
+            float startHSpeed = 30.5356960296631f;
+
+            float goalX = -89.956619262695313f;
+
+            int listLength = 1000;
+
+            List<float> floats = new List<float>();
+            List<int> counts = new List<int>();
+            float f = goalX;
+            for (int i = 0; i < listLength; i++)
+            {
+                floats.Add(f);
+                f += 0.00001f;
+                counts.Add(0);
+            }
+
+            ushort marioAngle = 16384;
+            ushort cameraAngle = 49152;
+
+            int inputRadius = 8;
+
+            MarioState startState = new MarioState(
+                startX,
+                startY,
+                startZ,
+                startXSpeed,
+                startYSpeed,
+                startZSpeed,
+                startHSpeed,
+                marioAngle,
+                cameraAngle,
+                null,
+                null,
+                0);
+
+            int lastIndex = -1;
+            List<Input> inputs = GetInputRange(0, 0, -38 - inputRadius, -38 + inputRadius);
+
+            float bestDiff = float.MaxValue;
+            MarioState bestState = null;
+
+            Queue<MarioState> queue = new Queue<MarioState>();
+            HashSet<MarioState> alreadySeen = new HashSet<MarioState>();
+            queue.Enqueue(startState);
+            alreadySeen.Add(startState);
+
+            while (queue.Count != 0)
+            {
+                MarioState dequeue = queue.Dequeue();
+                List<MarioState> nextStates = inputs.ConvertAll(input => dequeue.ApplyInput(input));
+                foreach (MarioState state in nextStates)
+                {
+                    if (alreadySeen.Contains(state)) continue;
+
+                    if (state.Index > lastIndex)
+                    {
+                        lastIndex = state.Index;
+                        Config.Print("Now at index " + state.Index + " with queue size " + queue.Count);
+                        /*
+                        if (queue.Count > 100000)
+                        {
+                            Config.Print("Commence pruning");
+                            List<MarioState> states = queue.ToList();
+                            queue.Clear();
+                            Random random = new Random();
+                            while (queue.Count < 100000)
+                            {
+                                int index = random.Next(0, states.Count);
+                                MarioState enqueue = states[index];
+                                states.RemoveAt(index);
+                                queue.Enqueue(enqueue);
+                            }
+                            Config.Print("Now at index " + state.Index + " with queue size " + queue.Count);
+                        }
+                        */
+                    }
+
+                    int numFramesRemaining = ((int)state.YSpeed + 34) / 4;
+                    float expectedX = ComputePosition(state.X, state.XSpeed, numFramesRemaining);
+                    float expectedDiff = Math.Abs(expectedX - goalX);
+                    float threshold = (float)Math.Pow(2, numFramesRemaining) * 2;
+                    if (expectedDiff > threshold) continue;
+
+                    if (state.YSpeed == -34)
+                    {
+                        float diff = Math.Abs(state.X - goalX);
+                        if (diff <= bestDiff / 1.1f || diff == 0)
+                        {
+                            bestDiff = diff;
+                            bestState = state;
+                            Config.Print("New best diff of " + diff + " with state:\r\n" + state.GetLineage());
+                        }
+
+                        for (int i = 0; i < floats.Count; i++)
+                        {
+                            if (state.X == floats[i]) counts[i]++;
+                        }
+                    }
+                    else
+                    {
+                        queue.Enqueue(state);
+                        alreadySeen.Add(state);
+                    }
+                }
+            }
+            Config.Print("END");
+            for (int i = 0; i < floats.Count; i++)
+            {
+                Config.Print(i + "\t" + counts[i] + "\t" + floats[i]);
+            }
         }
 
         private static List<Input> GetAllInputs()
