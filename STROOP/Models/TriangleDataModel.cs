@@ -209,5 +209,11 @@ namespace STROOP.Models
         {
             return (-x * NormX - z * NormZ - NormOffset) / NormY;
         }
+
+        public static double GetHeightOnTriangle(
+            double x, double z, double normX, double normY, double normZ, double normOffset)
+        {
+            return (-x * normX - z * normZ - normOffset) / normY;
+        }
     }
 }

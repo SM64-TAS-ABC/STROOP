@@ -17,7 +17,7 @@ namespace STROOP.Utilities
     {
         public static void TestSomething()
         {
-            MovementCalculator.CalculateMovementForWallGap();
+            CoinMovementCalculator.CalculateMovement();
         }
 
         public static void TestSomethingElse()
