@@ -157,7 +157,7 @@ namespace STROOP.Utilities
         public static CoinObject Lakitu = new CoinObject(
             hSpeedScale: 10,
             vSpeedScale: 10, // more like 9.936193656
-            vSpeedOffset: 46,
+            vSpeedOffset: 46 + 4,
             coinParamOrder: CoinParamOrder.VHA,
             numCoins: 5,
             name: "Lakitu");
