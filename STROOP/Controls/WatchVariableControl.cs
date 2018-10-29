@@ -855,6 +855,11 @@ namespace STROOP.Controls
             }
         }
 
+        public Type GetMemoryType()
+        {
+            return WatchVarWrapper.GetMemoryType();
+        }
+
         public object GetValue(bool useRounding)
         {
             return WatchVarWrapper.GetValue(useRounding, true, FixedAddressList);

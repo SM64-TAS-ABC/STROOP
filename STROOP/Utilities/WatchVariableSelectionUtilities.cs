@@ -56,12 +56,31 @@ namespace STROOP.Structs
             };
             ControlUtilities.AddDropDownItems(
                 itemCopy,
-                new List<string>() { "Copy with Commas", "Copy with Tabs", "Copy with Line Breaks" },
+                new List<string>() {
+                    "Copy with Commas",
+                    "Copy with Tabs",
+                    "Copy with Line Breaks",
+                    "Copy for Code",
+                },
                 new List<Action>()
                 {
                     () => copyValues(getVars(), ","),
                     () => copyValues(getVars(), "\t"),
                     () => copyValues(getVars(), "\r\n"),
+                    () =>
+                    {
+                        List<string> lines = new List<string>();
+                        foreach (WatchVariableControl watchVar in getVars())
+                        {
+                            string line = String.Format(
+                                "{0} = {1}{2};",
+                                watchVar.VarName.Replace(" ", ""),
+                                watchVar.GetValue(false),
+                                watchVar.GetMemoryType() == typeof(float) ? "f" : "");
+                            lines.Add(line);
+                        }
+                        Clipboard.SetText(String.Join("\r\n", lines));
+                    },
                 });
 
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");

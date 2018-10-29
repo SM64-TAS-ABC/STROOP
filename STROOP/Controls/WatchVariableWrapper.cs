@@ -287,6 +287,10 @@ namespace STROOP.Controls
 
 
 
+        public Type GetMemoryType()
+        {
+            return _watchVar.MemoryType;
+        }
 
         public object GetValue(
             bool handleRounding = true,

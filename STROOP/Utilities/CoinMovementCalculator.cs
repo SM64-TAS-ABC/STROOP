@@ -15,12 +15,12 @@ namespace STROOP.Utilities
             float lakituX = -1332.55432128906f;
 
             float lakituYCenter = -2657.80029296875f;
-            float lakituYRadius = 50;
-            float lakituYEntries = 10;
+            float lakituYRadius = 200;
+            float lakituYEntries = 150;
 
             float lakituZCenter = 4721.93310546875f;
-            float lakituZRadius = 50;
-            float lakituZEntries = 10;
+            float lakituZRadius = 200;
+            float lakituZEntries = 150;
 
             float lakituYMin = lakituYCenter - lakituYRadius;
             float lakituYMax = lakituYCenter + lakituYRadius;
@@ -40,7 +40,7 @@ namespace STROOP.Utilities
                         int numCoinsPassingThroughFloor =
                             CalculateNumCoinsPassingThroughFloor(
                                 lakituX, lakituY, lakituZ, rngIndex);
-                        if (numCoinsPassingThroughFloor > 1)
+                        if (numCoinsPassingThroughFloor > 2)
                         {
                             Config.Print(
                                 "{0} coins for rng index {1}, Ly = {2}, Lz = {3}",
