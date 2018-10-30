@@ -69,17 +69,23 @@ namespace STROOP.Structs
                     () => copyValues(getVars(), "\r\n"),
                     () =>
                     {
+                        List<WatchVariableControl> watchVars = getVars();
+                        string prefix = KeyboardUtilities.IsCtrlHeld() ? DialogUtilities.GetStringFromDialog() : "";
                         List<string> lines = new List<string>();
-                        foreach (WatchVariableControl watchVar in getVars())
+                        foreach (WatchVariableControl watchVar in watchVars)
                         {
                             string line = String.Format(
-                                "{0} = {1}{2};",
+                                "{0}{1} = {2}{3};",
+                                prefix,
                                 watchVar.VarName.Replace(" ", ""),
                                 watchVar.GetValue(false),
                                 watchVar.GetMemoryType() == typeof(float) ? "f" : "");
                             lines.Add(line);
                         }
-                        Clipboard.SetText(String.Join("\r\n", lines));
+                        if (lines.Count > 0)
+                        {
+                            Clipboard.SetText(String.Join("\r\n", lines));
+                        }
                     },
                 });
 
