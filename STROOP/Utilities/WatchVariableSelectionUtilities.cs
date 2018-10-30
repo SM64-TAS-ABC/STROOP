@@ -74,12 +74,14 @@ namespace STROOP.Structs
                         List<string> lines = new List<string>();
                         foreach (WatchVariableControl watchVar in watchVars)
                         {
+                            Type type = watchVar.GetMemoryType();
                             string line = String.Format(
-                                "{0}{1} = {2}{3};",
+                                "{0} {1}{2} = {3}{4};",
+                                type != null ? TypeUtilities.TypeToString[watchVar.GetMemoryType()] : "double",
                                 prefix,
                                 watchVar.VarName.Replace(" ", ""),
                                 watchVar.GetValue(false),
-                                watchVar.GetMemoryType() == typeof(float) ? "f" : "");
+                                type == typeof(float) ? "f" : "");
                             lines.Add(line);
                         }
                         if (lines.Count > 0)
