@@ -27,7 +27,7 @@ namespace STROOP.Structs
                 [0x02] = ColorTranslator.FromHtml("#00FFE9"),
                 [0x06] = ColorTranslator.FromHtml("#0015FF"),
                 [0x08] = ColorTranslator.FromHtml("#8000FF"),
-                [0x0C] = ColorTranslator.FromHtml("#FF00FF"),
+                [0x0C] = ColorTranslator.FromHtml("#9B5F1C"),
             };
         public static readonly Color VacantSlotColor = ColorTranslator.FromHtml("#AAAAAA");
         public static Color GetProcessingGroupColor(byte? group)
