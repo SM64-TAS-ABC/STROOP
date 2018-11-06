@@ -172,7 +172,7 @@ namespace STROOP.Structs
                 return GetFields().GetHashCode();
             }
 
-            internal string GetLineage()
+            public string GetLineage()
             {
                 if (PreviousState == null)
                 {
@@ -182,6 +182,15 @@ namespace STROOP.Structs
                 {
                     return PreviousState.GetLineage() + "\n" + ToStringWithInput();
                 }
+            }
+
+            public MarioState WithCameraAngle(ushort cameraAngle)
+            {
+                return new MarioState(
+                    X, Y, Z,
+                    XSpeed, YSpeed, ZSpeed, HSpeed,
+                    MarioAngle, cameraAngle,
+                    PreviousState, LastInput, Index);
             }
         }
 
@@ -301,7 +310,7 @@ namespace STROOP.Structs
                 return Math.Max(maxSpeed, speed - decrease);
         }
 
-        public static void MainMethod()
+        public static void CalculateMovementForBitsHolp()
         {
             float startX = 435.913696289063f;
             float startY = 4474f;
@@ -362,6 +371,98 @@ namespace STROOP.Structs
                     }
 
                     if (state.Index == 3)
+                    {
+                        float diff = (float)MoreMath.GetDistanceBetween(state.X, state.Z, goalX, goalZ);
+
+                        if (diff < bestDiff)
+                        {
+                            bestDiff = diff;
+                            bestState = state;
+                            System.Diagnostics.Trace.WriteLine("Diff of " + bestDiff + " is: " + bestState.GetLineage());
+                        }
+                    }
+
+                    alreadySeen.Add(state);
+                    queue.Enqueue(state);
+                }
+            }
+            System.Diagnostics.Trace.WriteLine("Done");
+        }
+
+        public static void CalculateMovementForWfHolp()
+        {
+            float startX = 310.128448486328f;
+            float startY = 4384f;
+            float startZ = -1721.65405273438f;
+            float startXSpeed = 15.5246114730835f;
+            float startYSpeed = -24f;
+            float startZSpeed = -12.4710474014282f;
+            float startHSpeed = 19.8780212402344f;
+
+            ushort marioAngle = 24066;
+
+            Dictionary<int, ushort> cameraAngles =
+                new Dictionary<int, ushort>()
+                {
+                    //[0] = 32707,
+                    [0] = 32768,
+                    [1] = 32839,
+                    [2] = 32900,
+                    [3] = 32972,
+                    [4] = 33063,
+                    [5] = 33135,
+                    [6] = 33216,
+                };
+
+            float goalX = 374.529907226563f;
+            float goalY = 4264f;
+            float goalZ = -1773.07543945313f;
+
+            int xInput = -45;
+            int zInput = -27;
+            int xRadius = 5;
+            int zRadius = 5;
+
+            MarioState startState = new MarioState(
+                startX,
+                startY,
+                startZ,
+                startXSpeed,
+                startYSpeed,
+                startZSpeed,
+                startHSpeed,
+                marioAngle,
+                cameraAngles[0],
+                null,
+                null,
+                0);
+
+            int lastIndex = -1;
+            List<Input> inputs = GetInputRange(xInput - xRadius, xInput + xRadius, zInput - zRadius, zInput + zRadius);
+            float bestDiff = float.MaxValue;
+            MarioState bestState = null;
+            Queue<MarioState> queue = new Queue<MarioState>();
+            HashSet<MarioState> alreadySeen = new HashSet<MarioState>();
+            queue.Enqueue(startState);
+            alreadySeen.Add(startState);
+
+            while (queue.Count != 0)
+            {
+                MarioState dequeue = queue.Dequeue();
+                List<MarioState> nextStates = inputs.ConvertAll(input => dequeue.ApplyInput(input));
+                nextStates = nextStates.ConvertAll(state => state.WithCameraAngle(cameraAngles[state.Index]));
+                foreach (MarioState state in nextStates)
+                {
+                    if (alreadySeen.Contains(state)) continue;
+                    if (state.Index > 4) continue;
+
+                    if (state.Index != lastIndex)
+                    {
+                        lastIndex = state.Index;
+                        System.Diagnostics.Trace.WriteLine("Now at index " + lastIndex);
+                    }
+
+                    if (state.Index == 4)
                     {
                         float diff = (float)MoreMath.GetDistanceBetween(state.X, state.Z, goalX, goalZ);
 
