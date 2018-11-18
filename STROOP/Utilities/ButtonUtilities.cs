@@ -332,7 +332,7 @@ namespace STROOP.Utilities
 
             if (updateAction)
             {
-                DataModels.Mario.Action = 0x20810446;
+                DataModels.Mario.Action = MarioConfig.RidingShellAction;
             }
 
             success &= Config.Stream.SetValue(obj.Address, MarioConfig.StructAddress + MarioConfig.RiddenObjectPointerOffset);
