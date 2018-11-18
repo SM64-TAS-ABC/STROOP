@@ -73,7 +73,7 @@ namespace STROOP
             set { lock (_gfxLock) { _textBrush.Color = value; } }
         }
 
-        bool _drawSelectedOverlay, _drawStoodOnOverlay, _drawHeldOverlay, _drawInteractionOverlay, _drawUsedOverlay,
+        bool _drawSelectedOverlay, _drawStoodOnOverlay, _drawRiddenOverlay, _drawHeldOverlay, _drawInteractionOverlay, _drawUsedOverlay,
             _drawClosestOverlay, _drawCameraOverlay, _drawCameraHackOverlay, _drawModelOverlay,
             _drawFloorOverlay, _drawWallOverlay, _drawCeilingOverlay,
             _drawParentOverlay, _drawParentUnusedOverlay, _drawParentNoneOverlay, _drawChildOverlay,
@@ -347,6 +347,7 @@ namespace STROOP
             {
                 _drawSelectedOverlay,
                 _drawStoodOnOverlay,
+                _drawRiddenOverlay,
                 _drawInteractionOverlay,
                 _drawHeldOverlay,
                 _drawUsedOverlay,
@@ -460,6 +461,8 @@ namespace STROOP
                 e.Graphics.DrawImage(_gui.HeldObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawStoodOnOverlay)
                 e.Graphics.DrawImage(_gui.StoodOnObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawRiddenOverlay)
+                e.Graphics.DrawImage(_gui.RiddenObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawUsedOverlay)
                 e.Graphics.DrawImage(_gui.UsedObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawClosestOverlay)
@@ -498,6 +501,7 @@ namespace STROOP
             {
                 _drawSelectedOverlay = _manager.SelectedSlotsAddresses.Contains(address.Value);
                 _drawStoodOnOverlay = OverlayConfig.ShowOverlayStoodOnObject && address == DataModels.Mario.StoodOnObject;
+                _drawRiddenOverlay = OverlayConfig.ShowOverlayRiddenObject && address == DataModels.Mario.RiddenObject;
                 _drawInteractionOverlay = OverlayConfig.ShowOverlayInteractionObject && address == DataModels.Mario.InteractionObject;
                 _drawHeldOverlay = OverlayConfig.ShowOverlayHeldObject && address == DataModels.Mario.HeldObject;
                 _drawUsedOverlay = OverlayConfig.ShowOverlayUsedObject && address == DataModels.Mario.UsedObject;
@@ -543,6 +547,7 @@ namespace STROOP
             {
                 _drawSelectedOverlay = false;
                 _drawStoodOnOverlay = false;
+                _drawRiddenOverlay = false;
                 _drawInteractionOverlay = false;
                 _drawHeldOverlay = false;
                 _drawUsedOverlay = false;

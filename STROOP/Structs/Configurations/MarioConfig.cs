@@ -44,6 +44,7 @@ namespace STROOP.Structs
         public static readonly uint InteractionObjectPointerOffset = 0x78;
         public static readonly uint HeldObjectPointerOffset = 0x7C;
         public static readonly uint UsedObjectPointerOffset = 0x80;
+        public static readonly uint RiddenObjectPointerOffset = 0x84;
 
         public static readonly uint WallTriangleOffset = 0x60;
         public static readonly uint FloorTriangleOffset = 0x68;

@@ -306,8 +306,19 @@ namespace STROOP.Models
             get => _stoodOnObject;
             set
             {
-                if (Config.Stream.SetValue(value, MarioConfig.StructAddress + MarioConfig.StoodOnObjectPointerAddress))
+                if (Config.Stream.SetValue(value, MarioConfig.StoodOnObjectPointerAddress))
                     _stoodOnObject = value;
+            }
+        }
+
+        private uint _riddenObject;
+        public uint RiddenObject
+        {
+            get => _riddenObject;
+            set
+            {
+                if (Config.Stream.SetValue(value, MarioConfig.StructAddress + MarioConfig.RiddenObjectPointerOffset))
+                    _riddenObject = value;
             }
         }
 
@@ -351,6 +362,7 @@ namespace STROOP.Models
 
             _heldObject = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.HeldObjectPointerOffset);
             _stoodOnObject = Config.Stream.GetUInt32(MarioConfig.StoodOnObjectPointerAddress);
+            _riddenObject = Config.Stream.GetUInt32(MarioConfig.StructAddress + MarioConfig.RiddenObjectPointerOffset);
             _interactionObject = Config.Stream.GetUInt32(MarioConfig.InteractionObjectPointerOffset + MarioConfig.StructAddress);
             _usedObject = Config.Stream.GetUInt32(MarioConfig.UsedObjectPointerOffset + MarioConfig.StructAddress);
 

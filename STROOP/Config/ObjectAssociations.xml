@@ -62,6 +62,9 @@
     <StoodOn>
       <OverlayImage path="StoodOn.png"/>
     </StoodOn>
+    <Ridden>
+      <OverlayImage path="Ridden.png"/>
+    </Ridden>
     <Held>
       <OverlayImage path="Held.png"/>
     </Held>

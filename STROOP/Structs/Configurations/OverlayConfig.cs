@@ -11,6 +11,7 @@ namespace STROOP.Structs
     {
         public static bool ShowOverlayHeldObject = true;
         public static bool ShowOverlayStoodOnObject = true;
+        public static bool ShowOverlayRiddenObject = true;
         public static bool ShowOverlayInteractionObject = true;
         public static bool ShowOverlayUsedObject = true;
         public static bool ShowOverlayCameraObject = true;

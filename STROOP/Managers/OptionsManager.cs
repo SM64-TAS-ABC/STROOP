@@ -163,6 +163,7 @@ namespace STROOP.Managers
             {
                 "Held Object",
                 "Stood On Object",
+                "Ridden Object",
                 "Interaction Object",
                 "Used Object",
                 "Closest Object",
@@ -180,6 +181,7 @@ namespace STROOP.Managers
             {
                 () => OverlayConfig.ShowOverlayHeldObject,
                 () => OverlayConfig.ShowOverlayStoodOnObject,
+                () => OverlayConfig.ShowOverlayRiddenObject,
                 () => OverlayConfig.ShowOverlayInteractionObject,
                 () => OverlayConfig.ShowOverlayUsedObject,
                 () => OverlayConfig.ShowOverlayClosestObject,
@@ -197,6 +199,7 @@ namespace STROOP.Managers
             {
                 (bool value) => OverlayConfig.ShowOverlayHeldObject = value,
                 (bool value) => OverlayConfig.ShowOverlayStoodOnObject = value,
+                (bool value) => OverlayConfig.ShowOverlayRiddenObject = value,
                 (bool value) => OverlayConfig.ShowOverlayInteractionObject = value,
                 (bool value) => OverlayConfig.ShowOverlayUsedObject = value,
                 (bool value) => OverlayConfig.ShowOverlayClosestObject = value,
