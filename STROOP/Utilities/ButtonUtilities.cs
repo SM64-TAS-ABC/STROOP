@@ -321,6 +321,26 @@ namespace STROOP.Utilities
             return success;
         }
 
+        public static bool RideObject(ObjectDataModel obj, bool updateAction = true)
+        {
+            if (obj == null)
+                return false;
+
+            bool success = true;
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
+
+            if (updateAction)
+            {
+                DataModels.Mario.Action = 0x20810446;
+            }
+
+            success &= Config.Stream.SetValue(obj.Address, MarioConfig.StructAddress + MarioConfig.RiddenObjectPointerOffset);
+
+            if (!streamAlreadySuspended) Config.Stream.Resume();
+            return success;
+        }
+
         public static bool UnloadObject(List<ObjectDataModel> objects)
         {
             if (!objects.Any())
