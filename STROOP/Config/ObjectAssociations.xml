@@ -3617,6 +3617,7 @@
     <SpawnCode gfxId="0x55"/>
     <Image path="Monty Mole.png"/>
     <MapImage path="Monty Mole Top.png" rotates="true"/>
+    <Data groupList="ObjectSpecific" type="uint" offset="0x80361478" base="Relative">Total Kills</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004A58" name="Monty Mole Hole">
     <SpawnCode gfxId="0x54"/>
