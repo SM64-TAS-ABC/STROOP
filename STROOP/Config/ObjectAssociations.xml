@@ -3617,7 +3617,7 @@
     <SpawnCode gfxId="0x55"/>
     <Image path="Monty Mole.png"/>
     <MapImage path="Monty Mole Top.png" rotates="true"/>
-    <Data groupList="ObjectSpecific" type="uint" offsetUS="0x80361478" offsetJP="0x80360108" base="Relative">Total Kills</Data>
+    <Data groupList="ObjectSpecific" type="int" offsetUS="0x80361478" offsetJP="0x80360108" base="Relative">Total Kills</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004A58" name="Monty Mole Hole">
     <SpawnCode gfxId="0x54"/>
@@ -4074,6 +4074,7 @@
     <Data groupList="ObjectSpecific" type="int" offset="0x198" base="Object">Num Coins</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x187" base="Object" subclass="Boolean">Spin when Hit</Data>
     <Data groupList="ObjectSpecific" type="byte" offset="0x189" base="Object" subclass="Boolean">Die if Shrink w/o Spin</Data>
+    <Data groupList="ObjectSpecific" type="int" offsetUS="0x80361460" offsetJP="0x803600F0" base="Relative">Num Active Piranhas</Data>
   </Object>
   <Object behaviorScriptAddress="0x13005158" name="Fire (Inner)" subType="0">
     <SpawnCode gfxId="0xCB"/>
