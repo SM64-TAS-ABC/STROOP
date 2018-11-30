@@ -3612,6 +3612,7 @@
     <Data groupList="ObjectSpecific" type="int" offset="0xEC" base="Object">Ground/Air State</Data>
     <Data groupList="ObjectSpecific" type="int" offset="0xF4" base="Object">Countdown</Data>
     <Data groupList="ObjectSpecific" type="int" display="ushort" offset="0xF8" base="Object" subclass="Angle" yaw="true">Target Yaw</Data>
+    <Data groupList="ObjectSpecific" type="uint" offset="0x68" base="Object" subclass="Object">Parent Obj</Data>
   </Object>
   <Object behaviorScriptAddress="0x13004A00" name="Monty Mole">
     <SpawnCode gfxId="0x55"/>
