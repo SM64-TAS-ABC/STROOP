@@ -146,11 +146,11 @@
   <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00000020">05 Cap</Data>
   <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00000040">06 Pole</Data>
   <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00000080">07 Koopa</Data>
-  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00000100">08 (unused)</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00000100">08 Spiny</Data>
   <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00000200">09 Breakable Block</Data>
   <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00000400">10 Wind</Data>
   <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00000800">11 Warp Door</Data>
-  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00001000">12 Power Star</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00001000">12 Star / Key</Data>
   <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00002000">13 Warp</Data>
   <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00004000">14 Cannon Base</Data>
   <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00008000">15 Bounce Top</Data>
@@ -159,14 +159,14 @@
   <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00040000">18 Burns</Data>
   <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00080000">19 Koopa Shell</Data>
   <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00100000">20 (unused)</Data>
-  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00200000">21 Mr. Blizzard</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00200000">21 Hurtbox 2</Data>
   <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00400000">22 Bounce Top/Bottom</Data>
   <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x00800000">23 Text</Data>
   <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x01000000">24 Tornado</Data>
   <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x02000000">25 Whirlpool</Data>
   <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x04000000">26 Clam / Bubba</Data>
   <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x08000000">27 BBH Entrance</Data>
-  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x10000000">28 (unused)</Data>
+  <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x10000000">28 Snufit Bullet</Data>
   <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x20000000">29 Shocks</Data>
   <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x40000000">30 Igloo Barrier</Data>
   <Data groupList="Collision" type="uint" offset="0x130" base="Object" subclass="Boolean" mask="0x80000000">31 (unused)</Data>
