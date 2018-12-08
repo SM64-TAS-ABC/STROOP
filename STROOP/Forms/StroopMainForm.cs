@@ -197,6 +197,11 @@ namespace STROOP
                 buttonMoveTabRight,
                 new List<string>() { "Restore Recommended Tab Order" },
                 new List<Action>() { () => SavedSettingsConfig.InvokeRecommendedTabOrder() });
+
+            ControlUtilities.AddContextMenuStripFunctions(
+                buttonDisconnect,
+                new List<string>() { "Save as Savestate" },
+                new List<Action>() { () => saveAsSavestate() });
         }
 
         private void CreateManagers()
@@ -865,6 +870,11 @@ namespace STROOP
 
             Config.Stream.OpenSTFile(openFileDialogSt.FileName);
             panelConnect.Visible = false;
+        }
+
+        private void saveAsSavestate()
+        {
+            // TODO(dane bouchie): Implement this
         }
 
         public void SwitchTab(string name)
