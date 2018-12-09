@@ -9,7 +9,7 @@
   <ExcludeDustForClosestObject>true</ExcludeDustForClosestObject>
   <UseMisalignmentOffsetForDistanceToLine>true</UseMisalignmentOffsetForDistanceToLine>
   <DontRoundValuesToZero>true</DontRoundValuesToZero>
-  <DisplayAsHexUsesMemory>true</DisplayAsHexUsesMemory>
+  <DisplayAsHexUsesMemory>false</DisplayAsHexUsesMemory>
   <NeutralizeTrianglesWith0x15>true</NeutralizeTrianglesWith0x15>
   <CloningUpdatesHolpType>true</CloningUpdatesHolpType>
   <UseInGameTrigForAngleLogic>false</UseInGameTrigForAngleLogic>
