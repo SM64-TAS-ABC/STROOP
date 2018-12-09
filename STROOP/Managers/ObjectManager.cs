@@ -482,9 +482,9 @@ namespace STROOP.Managers
                         Config.ObjectAssociations.GetWatchVarControls(newBehavior),
                         ObjectSlotsConfig.GetProcessingGroupColor(obj.BehaviorProcessGroup)
                         .Lighten(0.8));
-                    Image = Config.ObjectAssociations.GetObjectImage(newBehavior);
                     _lastGeneralizedBehavior = newBehavior;
                 }
+                Image = Config.ObjectAssociations.GetObjectImage(newBehavior);
                 BackColor = ObjectSlotsConfig.GetProcessingGroupColor(obj.CurrentProcessGroup);
                 int slotPos = obj.VacantSlotIndex ?? obj.ProcessIndex;
                 SlotIndex = (Config.ObjectSlotsManager.GetSlotIndexFromObj(obj) 
