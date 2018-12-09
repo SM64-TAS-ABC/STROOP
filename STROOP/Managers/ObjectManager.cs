@@ -477,13 +477,13 @@ namespace STROOP.Managers
                 if (!BehaviorCriteria.HasSameAssociation(_lastGeneralizedBehavior, newBehavior))
                 {
                     Behavior = $"0x{obj.SegmentedBehavior & 0x00FFFFFF:X4}";
-                    Name = Config.ObjectAssociations.GetObjectName(newBehavior);
                     SetBehaviorWatchVariables(
                         Config.ObjectAssociations.GetWatchVarControls(newBehavior),
                         ObjectSlotsConfig.GetProcessingGroupColor(obj.BehaviorProcessGroup)
                         .Lighten(0.8));
                     _lastGeneralizedBehavior = newBehavior;
                 }
+                Name = Config.ObjectAssociations.GetObjectName(newBehavior);
                 Image = Config.ObjectAssociations.GetObjectImage(newBehavior);
                 BackColor = ObjectSlotsConfig.GetProcessingGroupColor(obj.CurrentProcessGroup);
                 int slotPos = obj.VacantSlotIndex ?? obj.ProcessIndex;
