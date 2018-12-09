@@ -533,6 +533,13 @@ namespace STROOP
                     _drawChildOverlay = (OverlayConfig.ShowOverlayChildObject || Keyboard.IsKeyDown(Key.P)) &&
                         CurrentObject?.Parent == hoveredObject.Address;
                 }
+                else
+                {
+                    _drawParentOverlay = false;
+                    _drawParentNoneOverlay = false;
+                    _drawParentUnusedOverlay = false;
+                    _drawChildOverlay = false;
+                }
 
                 uint collisionObjAddress = hoveredAddress.HasValue && Keyboard.IsKeyDown(Key.C)
                     ? hoveredAddress.Value : Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
