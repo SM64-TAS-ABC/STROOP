@@ -1460,6 +1460,7 @@ namespace STROOP
             this.comboBoxSortMethod = new System.Windows.Forms.ComboBox();
             this.trackBarObjSlotSize = new System.Windows.Forms.TrackBar();
             this.checkBoxMap2ShowPoint = new System.Windows.Forms.CheckBox();
+            this.saveFileDialogSt = new System.Windows.Forms.SaveFileDialog();
             this.panelConnect.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerMain)).BeginInit();
@@ -10952,6 +10953,16 @@ namespace STROOP
             this.checkBoxMap2ShowFloor.Text = "Show Floor Tri";
             this.checkBoxMap2ShowFloor.UseVisualStyleBackColor = true;
             // 
+            // checkBoxMap2ShowPoint
+            // 
+            this.checkBoxMap2ShowPoint.AutoSize = true;
+            this.checkBoxMap2ShowPoint.Location = new System.Drawing.Point(8, 152);
+            this.checkBoxMap2ShowPoint.Name = "checkBoxMap2ShowPoint";
+            this.checkBoxMap2ShowPoint.Size = new System.Drawing.Size(80, 17);
+            this.checkBoxMap2ShowPoint.TabIndex = 19;
+            this.checkBoxMap2ShowPoint.Text = "Show Point";
+            this.checkBoxMap2ShowPoint.UseVisualStyleBackColor = true;
+            // 
             // checkBoxMap2ShowIntendedNextPosition
             // 
             this.checkBoxMap2ShowIntendedNextPosition.AutoSize = true;
@@ -18932,6 +18943,10 @@ namespace STROOP
             this.checkBoxMap2ShowPoint.TabIndex = 19;
             this.checkBoxMap2ShowPoint.Text = "Show Point";
             this.checkBoxMap2ShowPoint.UseVisualStyleBackColor = true;
+	     //
+            // saveFileDialogSt
+            //
+            this.saveFileDialogSt.Filter = "ST files |*.st";
             // 
             // StroopMainForm
             // 
@@ -20900,6 +20915,7 @@ namespace STROOP
         private RichTextBoxEx richTextBoxTestingScheduler;
         private Button buttonTestingScheduler;
         private CheckBox checkBoxMap2ShowPoint;
+        private SaveFileDialog saveFileDialogSt;
     }
 }
 

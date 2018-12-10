@@ -7,7 +7,7 @@ using STROOP.Structs;
 
 namespace STROOP.Utilities
 {
-    interface IEmuRamIO
+    public interface IEmuRamIO
     {
         string Name { get; }
         bool Suspend();

@@ -874,7 +874,18 @@ namespace STROOP
 
         private void saveAsSavestate()
         {
-            // TODO(dane bouchie): Implement this
+            StFileIO io = Config.Stream.IO as StFileIO;
+            if (io == null)
+            {
+                MessageBox.Show("The current connection is not an ST file. Open an savestate file to save the savestate.", "Connection not a savestate", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult dr = saveFileDialogSt.ShowDialog();
+            if (dr != DialogResult.OK)
+                return;
+
+            io.SaveMemory(saveFileDialogSt.FileName);
         }
 
         public void SwitchTab(string name)
