@@ -207,6 +207,11 @@ namespace STROOP.Controls
             return _displayAsHex;
         }
 
+        protected override bool GetUseHexExactly()
+        {
+            return _displayAsHex;
+        }
+
         public override void ApplySettings(WatchVariableControlSettings settings)
         {
             base.ApplySettings(settings);

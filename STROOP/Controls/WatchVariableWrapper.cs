@@ -311,6 +311,10 @@ namespace STROOP.Controls
             bool handleFormatting = true)
         {
             HandleVerification(value);
+            if (handleFormatting && GetUseHexExactly() && SavedSettingsConfig.DisplayAsHexUsesMemory)
+            {
+                return HandleHexDisplaying(value);
+            }
             value = HandleAngleConverting(value);
             value = HandleRounding(value, handleRounding);
             value = HandleAngleRoundingOut(value);
@@ -520,6 +524,11 @@ namespace STROOP.Controls
         // Virtual methods
 
         protected virtual bool GetUseHex()
+        {
+            return false;
+        }
+
+        protected virtual bool GetUseHexExactly()
         {
             return false;
         }
