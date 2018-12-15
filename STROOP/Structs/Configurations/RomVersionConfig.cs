@@ -16,10 +16,27 @@ namespace STROOP.Structs.Configurations
         public static uint RomVersionTellValueUS = 0x8FA6001C;
         public static uint RomVersionTellValueJP = 0x46006004;
 
-        public static void UpdateRomVersionUsingTell()
+        public static void UpdateRomVersion(RomVersionSelection romVersionSelection)
         {
-            RomVersion? romVersion = GetRomVersionUsingTell();
-            if (romVersion.HasValue) Version = romVersion.Value;
+            switch (romVersionSelection)
+            {
+                case RomVersionSelection.AUTO:
+                    RomVersion? autoRomVersion = GetRomVersionUsingTell();
+                    if (autoRomVersion.HasValue)
+                        Version = autoRomVersion.Value;
+                    break;
+                case RomVersionSelection.US:
+                    Version = RomVersion.US;
+                    break;
+                case RomVersionSelection.JP:
+                    Version = RomVersion.JP;
+                    break;
+                case RomVersionSelection.PAL:
+                    Version = RomVersion.PAL;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         private static RomVersion? GetRomVersionUsingTell()
