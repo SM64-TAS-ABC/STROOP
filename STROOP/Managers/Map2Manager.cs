@@ -262,10 +262,24 @@ namespace STROOP.Managers
             _mapGui.GLControl.Dock = DockStyle.None;
             int change = ParsingUtilities.ParseInt(_mapGui.MapBoundsZoomTextBox.Text);
             int zoomChange = change * sign;
-            int newX = _mapGui.GLControl.Left - zoomChange;
-            int newY = _mapGui.GLControl.Top - zoomChange;
-            int newWidth = _mapGui.GLControl.Width + 2 * zoomChange;
-            int newHeight = _mapGui.GLControl.Height + 2 * zoomChange;
+            double zoomMultiply = (zoomChange + 100d) / 100d;
+            if (zoomMultiply <= 0) return;
+            int newWidth = (int)(_mapGui.GLControl.Width * zoomMultiply);
+            int newHeight = (int)(_mapGui.GLControl.Height * zoomMultiply);
+            if (newWidth > 30000 || newHeight > 30000) return;
+            if (newWidth <= 1 || newHeight <= 1) return;
+
+            Control parent = _mapGui.GLControl.Parent;
+            int centerX = parent.Width / 2;
+            int centerY = parent.Height / 2;
+            double percentageX = (centerX - _mapGui.GLControl.Left) / (double) _mapGui.GLControl.Width;
+            double percentageY = (centerY - _mapGui.GLControl.Top) / (double) _mapGui.GLControl.Height;
+
+            int newCenterX = (int)(percentageX * newWidth);
+            int newCenterY = (int)(percentageY * newHeight);
+            int newX = centerX - newCenterX;
+            int newY = centerY - newCenterY;
+
             _mapGui.GLControl.SetBounds(newX, newY, newWidth, newHeight);
         }
 
