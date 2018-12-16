@@ -10801,7 +10801,7 @@ namespace STROOP
             this.textBoxMap2BoundsZoom.Name = "textBoxMap2BoundsZoom";
             this.textBoxMap2BoundsZoom.Size = new System.Drawing.Size(42, 20);
             this.textBoxMap2BoundsZoom.TabIndex = 33;
-            this.textBoxMap2BoundsZoom.Text = "100";
+            this.textBoxMap2BoundsZoom.Text = "50";
             this.textBoxMap2BoundsZoom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // buttonMap2BoundsZoomIn
