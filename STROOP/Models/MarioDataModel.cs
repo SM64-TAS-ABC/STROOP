@@ -391,7 +391,9 @@ namespace STROOP.Models
                     closestObjectCandidates.Where(o =>
                         o.BehaviorCriteria.BehaviorAddress != ObjectConfig.DustSpawnerBehaviorValue
                         && o.BehaviorCriteria.BehaviorAddress != ObjectConfig.DustBallBehaviorValue
-                        && o.BehaviorCriteria.BehaviorAddress != ObjectConfig.DustBehaviorValue);
+                        && o.BehaviorCriteria.BehaviorAddress != ObjectConfig.DustBehaviorValue
+                        && o.BehaviorCriteria.BehaviorAddress != ObjectConfig.UnderwaterBubbleSpawnerBehaviorValue
+                        && o.BehaviorCriteria.BehaviorAddress != ObjectConfig.UnderwaterBubbleBehaviorValue);
             }
             ClosestObject = closestObjectCandidates.OrderBy(o => o.DistanceToMarioCalculated).FirstOrDefault()?.Address ?? 0;
         }
