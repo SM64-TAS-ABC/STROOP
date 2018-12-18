@@ -241,6 +241,11 @@ namespace STROOP.Managers
             _mapGui.MapBoundsZoomInButton.Click += (sender, e) => ChangeMapZoom(1);
             _mapGui.MapBoundsZoomOutButton.Click += (sender, e) => ChangeMapZoom(-1);
 
+            ControlUtilities.AddContextMenuStripFunctions(
+                _mapGui.MapBoundsUpButton.Parent,
+                new List<string>() { "Fill Screen " },
+                new List<Action>() { () => ChangeMapFillScreen() });
+
             _mapGui.MapArtificialMarioYLabelTextBox.AddEnterAction(() =>
                 _artificialMarioY = ParsingUtilities.ParseFloatNullable(
                     _mapGui.MapArtificialMarioYLabelTextBox.Text));
@@ -281,6 +286,11 @@ namespace STROOP.Managers
             int newY = centerY - newCenterY;
 
             _mapGui.GLControl.SetBounds(newX, newY, newWidth, newHeight);
+        }
+
+        private void ChangeMapFillScreen()
+        {
+            _mapGui.GLControl.Dock = DockStyle.Fill;
         }
 
         private (List<TriangleShape> floors, List<TriangleShape> walls) GetTriShapes(int numSides)
