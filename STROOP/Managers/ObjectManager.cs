@@ -1,4 +1,4 @@
-﻿using STROOP.Structs;
+using STROOP.Structs;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
@@ -13,6 +13,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Forms;
 using STROOP.Models;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace STROOP.Managers
 {
@@ -22,6 +23,7 @@ namespace STROOP.Managers
         BinaryButton _interactButton;
         BinaryButton _cloneButton;
         BinaryButton _unloadButton;
+        BinaryButton _ukikiButton;
 
         Label _objAddressLabelValue;
         Label _objAddressLabel;
@@ -301,6 +303,21 @@ namespace STROOP.Managers
                 new List<Action>() {
                     () => ButtonUtilities.UnloadObject(_objects),
                     () => ButtonUtilities.ReviveObject(_objects),
+                });
+
+            _ukikiButton = objPanel.Controls["buttonObjUkiki"] as BinaryButton;
+            _ukikiButton.Initialize(
+                "Ukikipedia",
+                "Ukikipedia",
+                () => System.Diagnostics.Process.Start(("https://ukikipedia.net/wiki/" + _objects.First()).Substring(0, ("" + _objects.First()).Length + 18)),
+                () => System.Diagnostics.Process.Start(("https://ukikipedia.net/wiki/" + _objects.First()).Substring(0, ("" + _objects.First()).Length + 18)),
+                () => _objects.Count == 1);
+            ControlUtilities.AddContextMenuStripFunctions(
+                _ukikiButton,
+                new List<string>() { "Ukikipedia", "Ukikipedia" },
+                new List<Action>() {
+                    () => System.Diagnostics.Process.Start(("https://ukikipedia.net/wiki/" + _objects.First()).Substring(0, ("" + _objects.First()).Length + 18)),
+                    () => System.Diagnostics.Process.Start(("https://ukikipedia.net/wiki/" + _objects.First()).Substring(0, ("" + _objects.First()).Length + 18)),
                 });
 
             var objPosGroupBox = objPanel.Controls["groupBoxObjPos"] as GroupBox;
