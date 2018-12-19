@@ -510,7 +510,7 @@ namespace STROOP
             {
                 try
                 {
-                    if (!Config.Emulators.Select(e => e.ProcessName.ToLower()).Any(s => s.Contains(p.ProcessName.ToLower())))
+                    if (!Config.Emulators.Any(e => e.ProcessName.ToLower() == p.ProcessName.ToLower()))
                         continue;
 
                     if (p.HasExited)
