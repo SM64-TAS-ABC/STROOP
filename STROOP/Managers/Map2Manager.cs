@@ -241,14 +241,19 @@ namespace STROOP.Managers
             _mapGui.MapBoundsZoomInButton.Click += (sender, e) => ChangeMapZoom(1);
             _mapGui.MapBoundsZoomOutButton.Click += (sender, e) => ChangeMapZoom(-1);
 
-            ControlUtilities.AddContextMenuStripFunctions(
-                _mapGui.MapBoundsUpButton.Parent,
-                new List<string>() { "Fill Screen " },
-                new List<Action>() { () => ChangeMapFillScreen() });
-
             _mapGui.MapArtificialMarioYLabelTextBox.AddEnterAction(() =>
                 _artificialMarioY = ParsingUtilities.ParseFloatNullable(
                     _mapGui.MapArtificialMarioYLabelTextBox.Text));
+
+            ControlUtilities.AddContextMenuStripFunctions(
+                _mapGui.GLControl,
+                new List<string>() { "Fill Screen", "Copy Map Settings", "Paste Map Settings" },
+                new List<Action>()
+                {
+                    () => ChangeMapFillScreen(),
+                    () => CopyMapSettings(),
+                    () => PasteMapSettings(),
+                });
         }
 
         private void ChangeMapPosition(int xSign, int ySign)
@@ -291,6 +296,57 @@ namespace STROOP.Managers
         private void ChangeMapFillScreen()
         {
             _mapGui.GLControl.Dock = DockStyle.Fill;
+        }
+
+        private void CopyMapSettings()
+        {
+            SplitContainer innerSplitContainer = ControlUtilities.GetAncestorSplitContainer(_mapGui.MapNameLabel);
+            SplitContainer outerSplitContainer = ControlUtilities.GetAncestorSplitContainer(innerSplitContainer);
+            List<object> values = new List<object>()
+            {
+                _mapGui.GLControl.Bounds.X,
+                _mapGui.GLControl.Bounds.Y,
+                _mapGui.GLControl.Bounds.Width,
+                _mapGui.GLControl.Bounds.Height,
+                innerSplitContainer.Panel1Collapsed,
+                innerSplitContainer.Panel2Collapsed,
+                innerSplitContainer.SplitterDistance,
+                outerSplitContainer.Panel1Collapsed,
+                outerSplitContainer.Panel2Collapsed,
+                outerSplitContainer.SplitterDistance,
+                Config.StroopMainForm.Bounds.X,
+                Config.StroopMainForm.Bounds.Y,
+                Config.StroopMainForm.Bounds.Width,
+                Config.StroopMainForm.Bounds.Height,
+            };
+            Clipboard.SetText(string.Join(",", values));
+        }
+
+        private void PasteMapSettings()
+        {
+            List<string> values = ParsingUtilities.ParseStringList(Clipboard.GetText());
+            if (values.Count != 14) return;
+
+            SplitContainer innerSplitContainer = ControlUtilities.GetAncestorSplitContainer(_mapGui.MapNameLabel);
+            SplitContainer outerSplitContainer = ControlUtilities.GetAncestorSplitContainer(innerSplitContainer);
+
+            _mapGui.GLControl.Dock = DockStyle.None;
+            _mapGui.GLControl.SetBounds(
+                ParsingUtilities.ParseInt(values[0]),
+                ParsingUtilities.ParseInt(values[1]),
+                ParsingUtilities.ParseInt(values[2]),
+                ParsingUtilities.ParseInt(values[3]));
+            innerSplitContainer.Panel1Collapsed = ParsingUtilities.ParseBool(values[4]);
+            innerSplitContainer.Panel2Collapsed = ParsingUtilities.ParseBool(values[5]);
+            innerSplitContainer.SplitterDistance = ParsingUtilities.ParseInt(values[6]);
+            outerSplitContainer.Panel1Collapsed = ParsingUtilities.ParseBool(values[7]);
+            outerSplitContainer.Panel2Collapsed = ParsingUtilities.ParseBool(values[8]);
+            outerSplitContainer.SplitterDistance = ParsingUtilities.ParseInt(values[9]);
+            Config.StroopMainForm.SetBounds(
+                ParsingUtilities.ParseInt(values[10]),
+                ParsingUtilities.ParseInt(values[11]),
+                ParsingUtilities.ParseInt(values[12]),
+                ParsingUtilities.ParseInt(values[13]));
         }
 
         private (List<TriangleShape> floors, List<TriangleShape> walls) GetTriShapes(int numSides)
