@@ -5,15 +5,15 @@
  
   
        
-## Downloading Stroop
+## Downloading STROOP
 
-The latest release of Stroop can be downloaded from our [Releases Page](https://github.com/SM64-STROOP/STROOP/releases). From here .zip files of recent builds can be found. The files can then be extracted and stroop.exe can be started.
+The latest release of STROOP can be downloaded from our [Releases Page](https://github.com/SM64-TAS-ABC/STROOP/releases). From here .zip files of recent builds can be found. The files can then be extracted and stroop.exe can be started.
 
-Latest development builds with the newest features, bug fixes (...I mean bug introductions) can be found on the continuous [Development Release](https://github.com/SM64-STROOP/STROOP/releases/vDev). Likewise, stroop.exe can be started.
+Latest development builds with the newest features, bug fixes (...I mean bug introductions) can be found on the continuous [Development Release](https://github.com/SM64-TAS-ABC/STROOP/releases/vDev). Likewise, stroop.exe can be started.
   
 ## Requirements
 
-  As of the current build, Stroop has the following system requirements:
+  As of the current build, STROOP has the following system requirements:
   * Windows 10 / Windows 8.1 / Windows 7 64-bit or 32-bit
   * OpenGL 3.0 or greater (3.0 requirement for map tab, 1.0 requirement for model tab only) 
   * .NET Framework 4.7 (See [.NET Framework System Requirements](https://msdn.microsoft.com/en-us/library/8z6watww(v=vs.110).aspx) for more information)
@@ -23,7 +23,7 @@ Latest development builds with the newest features, bug fixes (...I mean bug int
   
 ## Status 
  
-  Stroop is currently under a development phase; however, pre-releases have been made.
+  STROOP is currently under a development phase; however, pre-releases have been made.
  
 ## Building
 
