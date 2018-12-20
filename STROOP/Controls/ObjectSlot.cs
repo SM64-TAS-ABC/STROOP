@@ -171,6 +171,9 @@ namespace STROOP
             ToolStripMenuItem itemRide = new ToolStripMenuItem("Ride");
             itemRide.Click += (sender, e) => ButtonUtilities.RideObject(CurrentObject);
 
+            ToolStripMenuItem itemUkikipedia = new ToolStripMenuItem("Ukikipedia");
+            itemUkikipedia.Click += (sender, e) => ButtonUtilities.UkikipediaObject(CurrentObject);
+
             ToolStripMenuItem itemCopyAddress = new ToolStripMenuItem("Copy Address");
             itemCopyAddress.Click += (sender, e) => Clipboard.SetText(HexUtilities.FormatValue(CurrentObject.Address));
 
@@ -238,6 +241,7 @@ namespace STROOP
             ContextMenuStrip.Items.Add(itemUnload);
             ContextMenuStrip.Items.Add(itemRevive);
             ContextMenuStrip.Items.Add(itemRide);
+            ContextMenuStrip.Items.Add(itemUkikipedia);
             ContextMenuStrip.Items.Add(new ToolStripSeparator());
             ContextMenuStrip.Items.Add(itemCopyAddress);
             ContextMenuStrip.Items.Add(itemCopyPosition);
