@@ -9,6 +9,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Managers;
 using STROOP.Models;
 using STROOP.Forms;
+using System.Diagnostics;
 
 namespace STROOP.Utilities
 {
@@ -339,6 +340,15 @@ namespace STROOP.Utilities
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
+        }
+
+        public static bool UkikipediaObject(ObjectDataModel obj)
+        {
+            if (obj == null)
+                return false;
+
+            Process.Start(("https://ukikipedia.net/wiki/" + obj).Substring(0, ("" + obj).Length + 18));
+            return true;
         }
 
         public static bool UnloadObject(List<ObjectDataModel> objects)
