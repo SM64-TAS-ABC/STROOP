@@ -102,6 +102,7 @@ namespace STROOP.Forms
         private void SetValues()
         {
             List<string> values = ParsingUtilities.ParseStringList(_textBoxGetSet.Text);
+            if (values.Count == 0) return;
             for (int i = 0; i < _watchVarWrappers.Count; i++)
                 _watchVarWrappers[i].SetValue(values[i % values.Count], _fixedAddressLists[i]);
         }
