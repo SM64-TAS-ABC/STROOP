@@ -271,7 +271,7 @@ namespace STROOP.Managers
             _cloneButton.Initialize(
                 "Clone",
                 "UnClone",
-                () => ButtonUtilities.CloneObject(_objects.First()),
+                () => ButtonUtilities.CloneObject(_objects.FirstOrDefault()),
                 () => ButtonUtilities.UnCloneObject(),
                 () => _objects.Count == 1 && _objects.Any(o => o.Address == DataModels.Mario.HeldObject));
             ControlUtilities.AddContextMenuStripFunctions(
@@ -283,8 +283,8 @@ namespace STROOP.Managers
                     "UnClone without Action Update",
                 },
                 new List<Action>() {
-                    () => ButtonUtilities.CloneObject(_objects.First(), true),
-                    () => ButtonUtilities.CloneObject(_objects.First(), false),
+                    () => ButtonUtilities.CloneObject(_objects.FirstOrDefault(), true),
+                    () => ButtonUtilities.CloneObject(_objects.FirstOrDefault(), false),
                     () => ButtonUtilities.UnCloneObject(true),
                     () => ButtonUtilities.UnCloneObject(false),
                 });
@@ -473,7 +473,6 @@ namespace STROOP.Managers
                 SlotIndex = "";
                 SlotPos = "";
                 _objAddressLabelValue.Text = "";
-                _cloneButton.Enabled = false;
                 _lastGeneralizedBehavior = null;
                 SetBehaviorWatchVariables(new List<WatchVariableControl>(), Color.White);
             }
@@ -498,7 +497,6 @@ namespace STROOP.Managers
                     + (SavedSettingsConfig.StartSlotIndexsFromOne ? 1 : 0))?.ToString() ?? "";
                 SlotPos = $"{(obj.VacantSlotIndex.HasValue ? "VS " : "")}{slotPos + (SavedSettingsConfig.StartSlotIndexsFromOne ? 1 : 0)}";
                 _objAddressLabelValue.Text = $"0x{_objects.First().Address:X8}";
-                _cloneButton.Enabled = true;
             }
             else
             {
@@ -545,7 +543,6 @@ namespace STROOP.Managers
                 SlotIndex = "";
                 SlotPos = "";
                 _objAddressLabelValue.Text = "";
-                _cloneButton.Enabled = false;
             }
         }
 
