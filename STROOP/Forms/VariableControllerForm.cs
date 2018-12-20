@@ -53,6 +53,16 @@ namespace STROOP.Forms
             _buttonAdd.Click += (s, e) => addAction(true);
             _buttonSubtract.Click += (s, e) => addAction(false);
 
+            Timer addTimer = new Timer { Interval = 30 };
+            addTimer.Tick += (s, e) => { if (KeyboardUtilities.IsCtrlHeld()) addAction(true); };
+            _buttonAdd.MouseDown += (sender, e) => addTimer.Start();
+            _buttonAdd.MouseUp += (sender, e) => addTimer.Stop();
+
+            Timer subtractTimer = new Timer { Interval = 30 };
+            subtractTimer.Tick += (s, e) => { if (KeyboardUtilities.IsCtrlHeld()) addAction(false); };
+            _buttonSubtract.MouseDown += (sender, e) => subtractTimer.Start();
+            _buttonSubtract.MouseUp += (sender, e) => subtractTimer.Stop();
+
             _buttonGet.Click += (s, e) => _textBoxGetSet.Text = GetValues();
 
             _buttonSet.Click += (s, e) => SetValues();
