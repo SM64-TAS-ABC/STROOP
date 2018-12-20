@@ -306,6 +306,16 @@ namespace STROOP.Managers
 
             Button rideButton = objPanel.Controls["buttonObjRide"] as Button;
             rideButton.Click += (sender, e) => ButtonUtilities.RideObject(_objects.FirstOrDefault());
+            ControlUtilities.AddContextMenuStripFunctions(
+                rideButton,
+                new List<string>() {
+                    "Ride with Action Update",
+                    "Ride without Action Update",
+                },
+                new List<Action>() {
+                    () => ButtonUtilities.RideObject(_objects.FirstOrDefault(), true),
+                    () => ButtonUtilities.RideObject(_objects.FirstOrDefault(), false),
+                });
 
             Button ukikipediaButton = objPanel.Controls["buttonObjUkikipedia"] as Button;
             ukikipediaButton.Click += (sender, e) => ButtonUtilities.UkikipediaObject(_objects.FirstOrDefault());
