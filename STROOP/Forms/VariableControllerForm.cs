@@ -43,19 +43,15 @@ namespace STROOP.Forms
             InitializeComponent();
 
             _textBoxVarName.Text = String.Join(",", _varNames);
-            _buttonAdd.Click += (s, e) =>
-            {
-                List<string> values = ParsingUtilities.ParseStringList(_textBoxAddSubtract.Text);
-                for (int i = 0; i < _watchVarWrappers.Count; i++)
-                    _watchVarWrappers[i].AddValue(values[i % values.Count], true, _fixedAddressLists[i]);
-            };
 
-            _buttonSubtract.Click += (s, e) =>
+            Action<bool> addAction = (bool add) =>
             {
                 List<string> values = ParsingUtilities.ParseStringList(_textBoxAddSubtract.Text);
                 for (int i = 0; i < _watchVarWrappers.Count; i++)
-                    _watchVarWrappers[i].AddValue(values[i % values.Count], false, _fixedAddressLists[i]);
+                    _watchVarWrappers[i].AddValue(values[i % values.Count], add, _fixedAddressLists[i]);
             };
+            _buttonAdd.Click += (s, e) => addAction(true);
+            _buttonSubtract.Click += (s, e) => addAction(false);
 
             _buttonGet.Click += (s, e) => _textBoxGetSet.Text = GetValues();
 
