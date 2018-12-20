@@ -116,6 +116,17 @@ namespace STROOP.Utilities
             });
         }
 
+        public static void NeutralizeSleeping()
+        {
+            List<uint> triangleAddresses = GetLevelTriangleAddresses();
+            triangleAddresses.ForEach(address =>
+            {
+                byte oldFlags = Config.Stream.GetByte(address + TriangleOffsetsConfig.Flags);
+                byte newFlags = (byte)(oldFlags | TriangleOffsetsConfig.BelongsToObjectMask);
+                Config.Stream.SetValue(newFlags, address + TriangleOffsetsConfig.Flags);
+            });
+        }
+
         public static void DisableCamCollision(TriangleClassification? classification = null)
         {
             List<uint> triangleAddresses = GetLevelTriangleAddresses();
