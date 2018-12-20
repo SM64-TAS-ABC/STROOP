@@ -304,6 +304,9 @@ namespace STROOP.Managers
                     () => ButtonUtilities.ReviveObject(_objects),
                 });
 
+            Button rideButton = objPanel.Controls["buttonObjRide"] as Button;
+            rideButton.Click += (sender, e) => ButtonUtilities.RideObject(_objects.FirstOrDefault());
+
             Button ukikipediaButton = objPanel.Controls["buttonObjUkikipedia"] as Button;
             ukikipediaButton.Click += (sender, e) => ButtonUtilities.UkikipediaObject(_objects.FirstOrDefault());
             

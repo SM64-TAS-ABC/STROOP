@@ -347,7 +347,7 @@ namespace STROOP.Utilities
             if (obj == null)
                 return false;
 
-            Process.Start(("https://ukikipedia.net/wiki/" + obj).Substring(0, ("" + obj).Length + 18));
+            Process.Start("https://ukikipedia.net/wiki/" + obj.BehaviorAssociation.Name);
             return true;
         }
 
