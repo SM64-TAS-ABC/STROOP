@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -220,6 +220,7 @@ namespace STROOP.Managers
                     "Neutralize Death Barriers",
                     "Neutralize Lava",
                     "Neutralize Sleeping",
+                    "Neutralize Loading Zones"
                 },
                 new List<Action>() {
                     () => TriangleUtilities.NeutralizeTriangles(),
@@ -229,6 +230,12 @@ namespace STROOP.Managers
                     () => TriangleUtilities.NeutralizeTriangles(0x0A),
                     () => TriangleUtilities.NeutralizeTriangles(0x01),
                     () => TriangleUtilities.NeutralizeSleeping(),
+                    () => {
+                        TriangleUtilities.NeutralizeTriangles(0x1B);
+                        TriangleUtilities.NeutralizeTriangles(0x1C);
+                        TriangleUtilities.NeutralizeTriangles(0x1D);
+                        TriangleUtilities.NeutralizeTriangles(0x1E);
+                    },
                 });
 
             var buttonTriangleDisableAllCamCollision = splitContainerTriangles.Panel1.Controls["buttonTriangleDisableAllCamCollision"] as Button;
