@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -170,6 +170,8 @@ namespace STROOP
 
             ToolStripMenuItem itemRide = new ToolStripMenuItem("Ride");
             itemRide.Click += (sender, e) => ButtonUtilities.RideObject(CurrentObject);
+            ToolStripMenuItem itemUnRide = new ToolStripMenuItem("UnRide");
+            itemUnRide.Click += (sender, e) => ButtonUtilities.UnRideObject();
 
             ToolStripMenuItem itemUkikipedia = new ToolStripMenuItem("Ukikipedia");
             itemUkikipedia.Click += (sender, e) => ButtonUtilities.UkikipediaObject(CurrentObject);
@@ -241,6 +243,7 @@ namespace STROOP
             ContextMenuStrip.Items.Add(itemUnload);
             ContextMenuStrip.Items.Add(itemRevive);
             ContextMenuStrip.Items.Add(itemRide);
+            ContextMenuStrip.Items.Add(itemUnRide);
             ContextMenuStrip.Items.Add(itemUkikipedia);
             ContextMenuStrip.Items.Add(new ToolStripSeparator());
             ContextMenuStrip.Items.Add(itemCopyAddress);
