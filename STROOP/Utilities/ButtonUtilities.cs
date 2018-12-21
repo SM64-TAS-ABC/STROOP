@@ -342,6 +342,22 @@ namespace STROOP.Utilities
             return success;
         }
 
+        public static bool UnRideObject(bool updateAction = true)
+        {
+            bool success = true;
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
+
+            if (updateAction)
+            {
+                DataModels.Mario.Action = MarioConfig.IdleAction;
+            }
+
+            success &= Config.Stream.SetValue(0, MarioConfig.StructAddress + MarioConfig.RiddenObjectPointerOffset);
+
+            if (!streamAlreadySuspended) Config.Stream.Resume();
+            return success;
+        }
         public static bool UkikipediaObject(ObjectDataModel obj)
         {
             if (obj == null)

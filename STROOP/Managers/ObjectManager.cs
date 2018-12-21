@@ -23,6 +23,7 @@ namespace STROOP.Managers
         BinaryButton _interactButton;
         BinaryButton _cloneButton;
         BinaryButton _unloadButton;
+        BinaryButton _rideButton;
 
         Label _objAddressLabelValue;
         Label _objAddressLabel;
@@ -304,18 +305,27 @@ namespace STROOP.Managers
                     () => ButtonUtilities.ReviveObject(_objects),
                 });
 
-            Button rideButton = objPanel.Controls["buttonObjRide"] as Button;
-            rideButton.Click += (sender, e) => ButtonUtilities.RideObject(_objects.FirstOrDefault());
+            _rideButton = objPanel.Controls["buttonObjRide"] as BinaryButton;
+            _rideButton.Initialize(
+                "Ride",
+                "UnRide",
+                () => ButtonUtilities.RideObject(_objects.FirstOrDefault()),
+                () => ButtonUtilities.UnRideObject(),
+                () => _objects.Count == 1 && _objects.Any(o => o.Address == DataModels.Mario.RiddenObject));
             ControlUtilities.AddContextMenuStripFunctions(
-                rideButton,
+                _rideButton,
                 new List<string>() {
                     "Ride with Action Update",
                     "Ride without Action Update",
+                    "UnRide with Action Update",
+                    "UnRide without Action Update",
                 },
                 new List<Action>() {
                     () => ButtonUtilities.RideObject(_objects.FirstOrDefault(), true),
                     () => ButtonUtilities.RideObject(_objects.FirstOrDefault(), false),
-                });
+                    () => ButtonUtilities.UnRideObject(true),
+                   () => ButtonUtilities.UnRideObject(false),
+        });
 
             Button ukikipediaButton = objPanel.Controls["buttonObjUkikipedia"] as Button;
             ukikipediaButton.Click += (sender, e) => ButtonUtilities.UkikipediaObject(_objects.FirstOrDefault());
@@ -466,6 +476,7 @@ namespace STROOP.Managers
             _interactButton.UpdateButton();
             _cloneButton.UpdateButton();
             _unloadButton.UpdateButton();
+            _rideButton.UpdateButton();
 
             UpdateUI();
 

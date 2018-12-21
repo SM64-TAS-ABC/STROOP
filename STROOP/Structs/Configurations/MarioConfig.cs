@@ -57,6 +57,7 @@ namespace STROOP.Structs
         public static readonly uint PrevActionOffset = 0x10;
         public static readonly uint FreeMovementAction = 0x0000130F;
         public static readonly uint RidingShellAction = 0x20810446;
+        public static readonly uint IdleAction = 0x0C400201;
 
         public static readonly uint TwirlYawOffset = 0x3A;
         public static readonly uint PeakHeightOffset = 0xBC;
