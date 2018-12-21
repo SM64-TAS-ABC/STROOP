@@ -14,9 +14,9 @@ Latest development builds with the newest features, bug fixes (...I mean bug int
 ## Requirements
 
   As of the current build, STROOP has the following system requirements:
-  * Windows 10 / Windows 8.1 / Windows 7 64-bit or 32-bit
+  * Windows 10 / Windows 8.1 / Windows 8 / Windows 7 64-bit or 32-bit
   * OpenGL 3.0 or greater (3.0 requirement for map tab, 1.0 requirement for model tab only) 
-  * .NET Framework 4.7 (See [.NET Framework System Requirements](https://msdn.microsoft.com/en-us/library/8z6watww(v=vs.110).aspx) for more information)
+  * .NET Framework 4.6.1 (See [.NET Framework System Requirements](https://msdn.microsoft.com/en-us/library/8z6watww(v=vs.110).aspx) for more information)
   * [Mupen 0.5 rerecording](http://adelikat.tasvideos.org/emulatordownloads/mupen64-rr/Mupen64%20v8%20installer.zip) (0.5.1 will not work) (Bizhawk + Nemu partially supported on Development branch)
   * 64 Marios (Must be super)
   * Marios must be American, Japanese or PAL
