@@ -383,8 +383,7 @@ namespace STROOP.Controls
 
         public void NotifyOfReorderingStart(List<WatchVariableControl> watchVarControls)
         {
-            if (watchVarControls.Count == 0)
-                throw new ArgumentOutOfRangeException();
+            if (watchVarControls.Count == 0) return;
 
             _reorderingWatchVarControls.Clear();
             _reorderingWatchVarControls.AddRange(watchVarControls);
@@ -393,8 +392,7 @@ namespace STROOP.Controls
 
         public void NotifyOfReorderingEnd(List<WatchVariableControl> watchVarControls)
         {
-            if (watchVarControls.Count == 0)
-                throw new ArgumentOutOfRangeException();
+            if (watchVarControls.Count == 0) return;
 
             int newIndex = Controls.IndexOf(watchVarControls[0]);
             _reorderingWatchVarControls.ForEach(control => Controls.Remove(control));

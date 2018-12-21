@@ -47,6 +47,7 @@ namespace STROOP.Forms
             Action<bool> addAction = (bool add) =>
             {
                 List<string> values = ParsingUtilities.ParseStringList(_textBoxAddSubtract.Text);
+                if (values.Count == 0) return;
                 for (int i = 0; i < _watchVarWrappers.Count; i++)
                     _watchVarWrappers[i].AddValue(values[i % values.Count], add, _fixedAddressLists[i]);
             };

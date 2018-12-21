@@ -50,6 +50,7 @@ namespace STROOP.Structs
             Action<List<WatchVariableControl>, string> copyValues =
                 (List<WatchVariableControl> controls, string separator) =>
             {
+                if (controls.Count == 0) return;
                 Clipboard.SetText(
                     String.Join(separator, controls.ConvertAll(
                         control => control.GetValue(false))));
