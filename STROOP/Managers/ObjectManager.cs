@@ -274,7 +274,7 @@ namespace STROOP.Managers
                 "UnClone",
                 () => ButtonUtilities.CloneObject(_objects.FirstOrDefault()),
                 () => ButtonUtilities.UnCloneObject(),
-                () => _objects.Count == 1 && _objects.Any(o => o.Address == DataModels.Mario.HeldObject));
+                () => _objects.Count > 0 && _objects.FirstOrDefault().Address == DataModels.Mario.HeldObject);
             ControlUtilities.AddContextMenuStripFunctions(
                 _cloneButton,
                 new List<string>() {
@@ -311,7 +311,7 @@ namespace STROOP.Managers
                 "UnRide",
                 () => ButtonUtilities.RideObject(_objects.FirstOrDefault()),
                 () => ButtonUtilities.UnRideObject(),
-                () => _objects.Count == 1 && _objects.Any(o => o.Address == DataModels.Mario.RiddenObject));
+                () => _objects.Count > 0 && _objects.FirstOrDefault().Address == DataModels.Mario.RiddenObject);
             ControlUtilities.AddContextMenuStripFunctions(
                 _rideButton,
                 new List<string>() {
@@ -324,7 +324,7 @@ namespace STROOP.Managers
                     () => ButtonUtilities.RideObject(_objects.FirstOrDefault(), true),
                     () => ButtonUtilities.RideObject(_objects.FirstOrDefault(), false),
                     () => ButtonUtilities.UnRideObject(true),
-                   () => ButtonUtilities.UnRideObject(false),
+                    () => ButtonUtilities.UnRideObject(false),
         });
 
             Button ukikipediaButton = objPanel.Controls["buttonObjUkikipedia"] as Button;

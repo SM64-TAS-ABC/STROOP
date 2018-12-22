@@ -170,6 +170,7 @@ namespace STROOP
 
             ToolStripMenuItem itemRide = new ToolStripMenuItem("Ride");
             itemRide.Click += (sender, e) => ButtonUtilities.RideObject(CurrentObject);
+
             ToolStripMenuItem itemUnRide = new ToolStripMenuItem("UnRide");
             itemUnRide.Click += (sender, e) => ButtonUtilities.UnRideObject();
 
