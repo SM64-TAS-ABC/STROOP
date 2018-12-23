@@ -243,13 +243,15 @@ namespace STROOP.Managers
 
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonTriangleDisableAllCamCollision,
-                new List<string>() {
+                new List<string>()
+                {
                     "Disable Cam Collision for All Triangles",
                     "Disable Cam Collision for Wall Triangles",
                     "Disable Cam Collision for Floor Triangles",
                     "Disable Cam Collision for Ceiling Triangles",
                 },
-                new List<Action>() {
+                new List<Action>()
+                {
                     () => TriangleUtilities.DisableCamCollision(),
                     () => TriangleUtilities.DisableCamCollision(TriangleClassification.Wall),
                     () => TriangleUtilities.DisableCamCollision(TriangleClassification.Floor),

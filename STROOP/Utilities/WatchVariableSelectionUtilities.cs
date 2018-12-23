@@ -279,7 +279,7 @@ namespace STROOP.Structs
             ToolStripMenuItem itemAddToCustomTab = new ToolStripMenuItem("Add to Custom Tab");
             itemAddToCustomTab.Click += (sender, e) => WatchVariableControl.AddVarsToTab(getVars(), Config.CustomManager);
 
-            return new List<ToolStripItem>
+            return new List<ToolStripItem>()
             {
                 itemHighlight,
                 itemLock,
