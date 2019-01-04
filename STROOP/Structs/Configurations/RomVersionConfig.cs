@@ -34,6 +34,9 @@ namespace STROOP.Structs.Configurations
                 case RomVersionSelection.PAL:
                     Version = RomVersion.PAL;
                     break;
+                case RomVersionSelection.Shindou:
+                    Version = RomVersion.Shindou;
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -60,6 +63,9 @@ namespace STROOP.Structs.Configurations
                 case RomVersion.PAL:
                     if (valPAL.HasValue) return valPAL.Value;
                     break;
+                case RomVersion.Shindou:
+                    if (valShindou.HasValue) return valShindou.Value;
+                    break;
             }
             return 0;
         }
@@ -75,6 +81,9 @@ namespace STROOP.Structs.Configurations
                     break;
                 case RomVersion.PAL:
                     if (valPAL.HasValue) return valPAL.Value;
+                    break;
+                case RomVersion.Shindou:
+                    if (valShindou.HasValue) return valShindou.Value;
                     break;
             }
             return 0;
