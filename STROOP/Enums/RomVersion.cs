@@ -14,5 +14,6 @@ namespace STROOP.Structs
         US,
         JP,
         PAL,
+        Shindou,
     };
 }
