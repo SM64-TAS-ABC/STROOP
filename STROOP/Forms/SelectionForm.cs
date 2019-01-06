@@ -101,14 +101,15 @@ namespace STROOP.Forms
             selectionForm.Initialize(
                 "Select an Triangle Type",
                 "Set Triangle Type",
-                TableConfig.MarioAnimations.GetAnimationNameList(),
-                animationName =>
+                TableConfig.TriangleInfo.GetAllDescriptions(),
+                triangleTypeDescription =>
                 {
-                    int? animation = TableConfig.MarioAnimations.GetAnimationFromName(animationName);
-                    if (animation.HasValue)
+                    short? triangleType = TableConfig.TriangleInfo.GetType(triangleTypeDescription);
+                    if (triangleType.HasValue)
                     {
-                        uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                        Config.Stream.SetValue((short)animation.Value, marioObjRef + MarioObjectConfig.AnimationOffset);
+                        Config.Stream.SetValue(
+                            triangleType.Value,
+                            Config.TriangleManager.TriangleAddress + TriangleOffsetsConfig.SurfaceType);
                     }
                 });
             selectionForm.Show();
