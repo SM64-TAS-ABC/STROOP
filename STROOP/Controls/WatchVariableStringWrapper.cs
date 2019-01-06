@@ -31,15 +31,31 @@ namespace STROOP.Controls
             switch (specialType)
             {
                 case "ActionDescription":
-                    itemSelectValue.Click += (sender, e) => SelectionForm.ShowActionSelectionForm();
+                    itemSelectValue.Click += (sender, e) => SelectionForm.ShowActionDescriptionSelectionForm();
                     addedClickAction = true;
                     break;
                 case "PrevActionDescription":
-                    itemSelectValue.Click += (sender, e) => SelectionForm.ShowPreviousActionSelectionForm();
+                    itemSelectValue.Click += (sender, e) => SelectionForm.ShowPreviousActionDescriptionSelectionForm();
                     addedClickAction = true;
                     break;
                 case "AnimationDescription":
-                    itemSelectValue.Click += (sender, e) => SelectionForm.ShowAnimationSelectionForm();
+                    itemSelectValue.Click += (sender, e) => SelectionForm.ShowAnimationDescriptionSelectionForm();
+                    addedClickAction = true;
+                    break;
+                case "TriangleDescription":
+                    itemSelectValue.Click += (sender, e) => SelectionForm.ShowTriangleDescriptionSelectionForm();
+                    addedClickAction = true;
+                    break;
+                case "DemoCounterDescription":
+                    itemSelectValue.Click += (sender, e) => SelectionForm.ShowDemoCounterDescriptionSelectionForm();
+                    addedClickAction = true;
+                    break;
+                case "TtcSpeedSettingDescription":
+                    itemSelectValue.Click += (sender, e) => SelectionForm.ShowTtcSpeedSettingDescriptionSelectionForm();
+                    addedClickAction = true;
+                    break;
+                case "AreaTerrainDescription":
+                    itemSelectValue.Click += (sender, e) => SelectionForm.ShowAreaTerrainDescriptionSelectionForm();
                     addedClickAction = true;
                     break;
             }

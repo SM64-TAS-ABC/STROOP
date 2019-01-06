@@ -44,7 +44,7 @@ namespace STROOP.Forms
             listBoxSelections.DoubleClick += (sender, e) => enterAction();
         }
 
-        public static void ShowActionSelectionForm()
+        public static void ShowActionDescriptionSelectionForm()
         {
             SelectionForm selectionForm = new SelectionForm();
             selectionForm.Initialize(
@@ -60,7 +60,7 @@ namespace STROOP.Forms
             selectionForm.Show();
         }
 
-        public static void ShowPreviousActionSelectionForm()
+        public static void ShowPreviousActionDescriptionSelectionForm()
         {
             SelectionForm selectionForm = new SelectionForm();
             selectionForm.Initialize(
@@ -76,7 +76,83 @@ namespace STROOP.Forms
             selectionForm.Show();
         }
 
-        public static void ShowAnimationSelectionForm()
+        public static void ShowAnimationDescriptionSelectionForm()
+        {
+            SelectionForm selectionForm = new SelectionForm();
+            selectionForm.Initialize(
+                "Select an Animation",
+                "Set Animation",
+                TableConfig.MarioAnimations.GetAnimationNameList(),
+                animationName =>
+                {
+                    int? animation = TableConfig.MarioAnimations.GetAnimationFromName(animationName);
+                    if (animation.HasValue)
+                    {
+                        uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+                        Config.Stream.SetValue((short)animation.Value, marioObjRef + MarioObjectConfig.AnimationOffset);
+                    }
+                });
+            selectionForm.Show();
+        }
+
+        public static void ShowTriangleDescriptionSelectionForm()
+        {
+            SelectionForm selectionForm = new SelectionForm();
+            selectionForm.Initialize(
+                "Select an Animation",
+                "Set Animation",
+                TableConfig.MarioAnimations.GetAnimationNameList(),
+                animationName =>
+                {
+                    int? animation = TableConfig.MarioAnimations.GetAnimationFromName(animationName);
+                    if (animation.HasValue)
+                    {
+                        uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+                        Config.Stream.SetValue((short)animation.Value, marioObjRef + MarioObjectConfig.AnimationOffset);
+                    }
+                });
+            selectionForm.Show();
+        }
+
+        public static void ShowDemoCounterDescriptionSelectionForm()
+        {
+            SelectionForm selectionForm = new SelectionForm();
+            selectionForm.Initialize(
+                "Select an Animation",
+                "Set Animation",
+                TableConfig.MarioAnimations.GetAnimationNameList(),
+                animationName =>
+                {
+                    int? animation = TableConfig.MarioAnimations.GetAnimationFromName(animationName);
+                    if (animation.HasValue)
+                    {
+                        uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+                        Config.Stream.SetValue((short)animation.Value, marioObjRef + MarioObjectConfig.AnimationOffset);
+                    }
+                });
+            selectionForm.Show();
+        }
+
+        public static void ShowTtcSpeedSettingDescriptionSelectionForm()
+        {
+            SelectionForm selectionForm = new SelectionForm();
+            selectionForm.Initialize(
+                "Select an Animation",
+                "Set Animation",
+                TableConfig.MarioAnimations.GetAnimationNameList(),
+                animationName =>
+                {
+                    int? animation = TableConfig.MarioAnimations.GetAnimationFromName(animationName);
+                    if (animation.HasValue)
+                    {
+                        uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
+                        Config.Stream.SetValue((short)animation.Value, marioObjRef + MarioObjectConfig.AnimationOffset);
+                    }
+                });
+            selectionForm.Show();
+        }
+
+        public static void ShowAreaTerrainDescriptionSelectionForm()
         {
             SelectionForm selectionForm = new SelectionForm();
             selectionForm.Initialize(
