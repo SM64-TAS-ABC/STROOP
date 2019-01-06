@@ -64,7 +64,7 @@ namespace STROOP.Forms
         {
             SelectionForm selectionForm = new SelectionForm();
             selectionForm.Initialize(
-                "Select an Action",
+                "Select a Previous Action",
                 "Set Previous Action",
                 TableConfig.MarioActions.GetActionNameList(),
                 actionName =>
@@ -99,7 +99,7 @@ namespace STROOP.Forms
         {
             SelectionForm selectionForm = new SelectionForm();
             selectionForm.Initialize(
-                "Select an Triangle Type",
+                "Select a Triangle Type",
                 "Set Triangle Type",
                 TableConfig.TriangleInfo.GetAllDescriptions(),
                 triangleTypeDescription =>
@@ -119,16 +119,15 @@ namespace STROOP.Forms
         {
             SelectionForm selectionForm = new SelectionForm();
             selectionForm.Initialize(
-                "Select an Animation",
-                "Set Animation",
-                TableConfig.MarioAnimations.GetAnimationNameList(),
-                animationName =>
+                "Select a Demo Counter",
+                "Set Demo Counter",
+                DemoCounterUtilities.GetDescriptions(),
+                demoCounterDescription =>
                 {
-                    int? animation = TableConfig.MarioAnimations.GetAnimationFromName(animationName);
-                    if (animation.HasValue)
+                    short? demoCounter = DemoCounterUtilities.GetDemoCounter(demoCounterDescription);
+                    if (demoCounter.HasValue)
                     {
-                        uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                        Config.Stream.SetValue((short)animation.Value, marioObjRef + MarioObjectConfig.AnimationOffset);
+                        Config.Stream.SetValue(demoCounter.Value, MiscConfig.DemoCounterAddress);
                     }
                 });
             selectionForm.Show();
