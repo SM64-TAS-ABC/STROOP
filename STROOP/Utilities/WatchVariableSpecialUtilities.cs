@@ -1906,7 +1906,7 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
-            _dictionary.Add("MarioAnimationDescription",
+            _dictionary.Add("AnimationDescription",
                 ((uint dummy) =>
                 {
                     return TableConfig.MarioAnimations.GetAnimationName();

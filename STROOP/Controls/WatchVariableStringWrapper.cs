@@ -34,6 +34,14 @@ namespace STROOP.Controls
                     itemSelectValue.Click += (sender, e) => SelectionForm.ShowActionSelectionForm();
                     addedClickAction = true;
                     break;
+                case "PrevActionDescription":
+                    itemSelectValue.Click += (sender, e) => SelectionForm.ShowPreviousActionSelectionForm();
+                    addedClickAction = true;
+                    break;
+                case "AnimationDescription":
+                    itemSelectValue.Click += (sender, e) => SelectionForm.ShowAnimationSelectionForm();
+                    addedClickAction = true;
+                    break;
             }
 
             if (addedClickAction)

@@ -60,6 +60,22 @@ namespace STROOP.Forms
             selectionForm.Show();
         }
 
+        public static void ShowPreviousActionSelectionForm()
+        {
+            SelectionForm selectionForm = new SelectionForm();
+            selectionForm.Initialize(
+                "Select an Action",
+                "Set Previous Action",
+                TableConfig.MarioActions.GetActionNameList(),
+                actionName =>
+                {
+                    uint? action = TableConfig.MarioActions.GetActionFromName(actionName);
+                    if (action.HasValue)
+                        Config.Stream.SetValue(action.Value, MarioConfig.StructAddress + MarioConfig.PrevActionOffset);
+                });
+            selectionForm.Show();
+        }
+
         public static void ShowAnimationSelectionForm()
         {
             SelectionForm selectionForm = new SelectionForm();
