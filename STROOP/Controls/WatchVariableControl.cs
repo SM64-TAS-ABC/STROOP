@@ -187,6 +187,7 @@ namespace STROOP.Controls
             bool? useHex,
             bool? invertBool,
             bool? isYaw,
+            WatchVariableOptions? options,
             Coordinate? coordinate,
             List<VariableGroup> groupList,
             List<uint> fixedAddresses)

@@ -24,6 +24,7 @@ namespace STROOP.Controls
         public readonly bool? UseHex;
         public readonly bool? InvertBool;
         public readonly bool? IsYaw;
+        public readonly WatchVariableOptions? Options;
         public readonly Coordinate? Coordinate;
         public readonly List<VariableGroup> GroupList;
         public readonly List<uint> FixedAddresses;
@@ -38,6 +39,7 @@ namespace STROOP.Controls
             bool? useHex,
             bool? invertBool,
             bool? isYaw,
+            WatchVariableOptions? options,
             Coordinate? coordinate,
             List<VariableGroup> groupList,
             List<uint> fixedAddresses = null)
@@ -51,6 +53,7 @@ namespace STROOP.Controls
             UseHex = useHex;
             InvertBool = invertBool;
             IsYaw = isYaw;
+            Options = options;
             Coordinate = coordinate;
             GroupList = groupList;
             FixedAddresses = fixedAddresses;
@@ -100,6 +103,8 @@ namespace STROOP.Controls
                 bool.Parse(element.Attribute(XName.Get("invertBool")).Value) : (bool?)null;
             IsYaw = (element.Attribute(XName.Get("yaw")) != null) ?
                 bool.Parse(element.Attribute(XName.Get("yaw")).Value) : (bool?)null;
+            Options = element.Attribute(XName.Get("options")) != null ?
+                WatchVariableUtilities.GetOptions(element.Attribute(XName.Get("options")).Value) : (WatchVariableOptions?)null;
             Coordinate = element.Attribute(XName.Get("coord")) != null ?
                 WatchVariableUtilities.GetCoordinate(element.Attribute(XName.Get("coord")).Value) : (Coordinate?)null;
             FixedAddresses = element.Attribute(XName.Get("fixed")) != null ?
@@ -215,6 +220,7 @@ namespace STROOP.Controls
                 UseHex,
                 InvertBool,
                 IsYaw,
+                Options,
                 Coordinate,
                 newVariableGroupList ?? GroupList,
                 newFixedAddresses ?? FixedAddresses);
@@ -280,6 +286,9 @@ namespace STROOP.Controls
 
             if (UseHex.HasValue)
                 xElement.Add(new XAttribute("useHex", UseHex.Value.ToString().ToLower()));
+
+            if (Options.HasValue)
+                xElement.Add(new XAttribute("options", Options.Value.ToString()));
 
             if (Coordinate.HasValue)
                 xElement.Add(new XAttribute("coord", Coordinate.Value.ToString()));

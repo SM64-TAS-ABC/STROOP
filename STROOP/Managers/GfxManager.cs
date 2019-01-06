@@ -326,6 +326,7 @@ namespace STROOP.Managers
                 null /* roundingLimit */,
                 (type == "uint" || type == "ushort") ? true : (bool?)null,
                 null /* invertBool */,
+                null /* options */,
                 null /* coordinate */,
                 null /* isYaw */,
                 new List<Structs.VariableGroup>());
