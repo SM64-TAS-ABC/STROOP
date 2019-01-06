@@ -157,16 +157,17 @@ namespace STROOP.Forms
         {
             SelectionForm selectionForm = new SelectionForm();
             selectionForm.Initialize(
-                "Select an Animation",
-                "Set Animation",
-                TableConfig.MarioAnimations.GetAnimationNameList(),
-                animationName =>
+                "Select a Terrain Type",
+                "Set Terrain Type",
+                AreaUtilities.GetDescriptions(),
+                terrainTypeDescription =>
                 {
-                    int? animation = TableConfig.MarioAnimations.GetAnimationFromName(animationName);
-                    if (animation.HasValue)
+                    short? terrainType = AreaUtilities.GetTerrainType(terrainTypeDescription);
+                    if (terrainType.HasValue)
                     {
-                        uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                        Config.Stream.SetValue((short)animation.Value, marioObjRef + MarioObjectConfig.AnimationOffset);
+                        Config.Stream.SetValue(
+                            terrainType.Value,
+                            Config.AreaManager.SelectedAreaAddress + AreaConfig.TerrainTypeOffset);
                     }
                 });
             selectionForm.Show();

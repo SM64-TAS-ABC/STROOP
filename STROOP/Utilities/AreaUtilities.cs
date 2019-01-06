@@ -73,5 +73,19 @@ namespace STROOP.Structs
             }
         }
 
+        public static List<string> GetDescriptions()
+        {
+            return new List<string>()
+            {
+                "Grassy",
+                "Normal",
+                "Cold",
+                "Sandy",
+                "Spooky",
+                "Aquatic",
+                "Slide",
+            };
+        }
+
     }
 }
