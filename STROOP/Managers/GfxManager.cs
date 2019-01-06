@@ -308,27 +308,27 @@ namespace STROOP.Managers
                 ? ColorUtilities.GetColorFromString("Yellow")
                 : ColorUtilities.GetColorFromString("LightBlue");
             WatchVariable watchVar = new WatchVariable(
-                type,
-                null /* specialType */,
-                Structs.BaseAddressTypeEnum.GfxNode,
-                null /* offsetUS */,
-                null /* offsetJP */,
-                null /* offsetPAL */,
-                offset,
-                mask,
-                null);
+                memoryTypeName: type,
+                specialType: null,
+                baseAddressType: BaseAddressTypeEnum.GfxNode,
+                offsetUS: null,
+                offsetJP: null,
+                offsetPAL: null,
+                offsetDefault: offset,
+                mask: mask,
+                shift: null);
             WatchVariableControlPrecursor precursor = new WatchVariableControlPrecursor(
-                name,
-                watchVar,
-                subclass,
-                color,
-                null /* displayType */,
-                null /* roundingLimit */,
-                (type == "uint" || type == "ushort") ? true : (bool?)null,
-                null /* invertBool */,
-                null /* coordinate */,
-                null /* isYaw */,
-                new List<Structs.VariableGroup>());
+                name: name,
+                watchVar: watchVar,
+                subclass: subclass,
+                backgroundColor: color,
+                displayType: null,
+                roundingLimit: null,
+                useHex: (type == "uint" || type == "ushort") ? true : (bool?)null,
+                invertBool: null,
+                coordinate: null,
+                isYaw: null,
+                groupList: new List<VariableGroup>());
             return precursor;
         }
 

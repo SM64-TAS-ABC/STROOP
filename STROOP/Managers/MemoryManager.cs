@@ -404,27 +404,27 @@ namespace STROOP.Managers
                 uint offset = useObjAddress ? (uint)ByteIndex : MemoryAddress; 
 
                 WatchVariable watchVar = new WatchVariable(
-                    typeString,
-                    null /* specialType */,
-                    baseAddressType,
-                    null /* offsetUS */,
-                    null /* offsetJP */,
-                    null /* offsetPAL */,
-                    offset,
-                    null /* mask */,
-                    null /* shift */);
+                    memoryTypeName: typeString,
+                    specialType: null,
+                    baseAddressType: baseAddressType,
+                    offsetUS: null,
+                    offsetJP: null,
+                    offsetPAL: null,
+                    offsetDefault: offset,
+                    mask: null,
+                    shift: null);
                 return new WatchVariableControlPrecursor(
-                    typeString + " " + HexUtilities.FormatValue(offset),
-                    watchVar,
-                    subclass,
-                    null /* backgroundColor */,
-                    null /* displayType */,
-                    null /* roundingLimit */,
-                    hexValue,
-                    null /* invertBool */,
-                    null /* isYaw */,
-                    null /* coordinate */,
-                    new List<VariableGroup>() { VariableGroup.Custom });
+                    name: typeString + " " + HexUtilities.FormatValue(offset),
+                    watchVar: watchVar,
+                    subclass: subclass,
+                    backgroundColor: null,
+                    displayType: null,
+                    roundingLimit: null,
+                    useHex: hexValue,
+                    invertBool: null,
+                    isYaw: null,
+                    coordinate: null,
+                    groupList: new List<VariableGroup>() { VariableGroup.Custom });
             }
         }
 
