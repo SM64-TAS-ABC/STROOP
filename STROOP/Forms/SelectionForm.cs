@@ -95,12 +95,12 @@ namespace STROOP.Forms
             selectionForm.Show();
         }
 
-        public static void ShowTriangleDescriptionSelectionForm()
+        public static void ShowTriangleTypeDescriptionSelectionForm()
         {
             SelectionForm selectionForm = new SelectionForm();
             selectionForm.Initialize(
-                "Select an Animation",
-                "Set Animation",
+                "Select an Triangle Type",
+                "Set Triangle Type",
                 TableConfig.MarioAnimations.GetAnimationNameList(),
                 animationName =>
                 {

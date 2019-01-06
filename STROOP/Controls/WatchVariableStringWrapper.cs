@@ -42,8 +42,8 @@ namespace STROOP.Controls
                     itemSelectValue.Click += (sender, e) => SelectionForm.ShowAnimationDescriptionSelectionForm();
                     addedClickAction = true;
                     break;
-                case "TriangleDescription":
-                    itemSelectValue.Click += (sender, e) => SelectionForm.ShowTriangleDescriptionSelectionForm();
+                case "TriangleTypeDescription":
+                    itemSelectValue.Click += (sender, e) => SelectionForm.ShowTriangleTypeDescriptionSelectionForm();
                     addedClickAction = true;
                     break;
                 case "DemoCounterDescription":

@@ -1241,7 +1241,7 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
-            _dictionary.Add("TriangleDescription",
+            _dictionary.Add("TriangleTypeDescription",
                 ((uint triAddress) =>
                 {
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
