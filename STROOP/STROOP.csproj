@@ -177,7 +177,6 @@
     <Compile Include="Controls\WatchVariableAddressWrapper.cs" />
     <Compile Include="Controls\WatchVariableTriangleWrapper.cs" />
     <Compile Include="Controls\WatchVariableStringWrapper.cs" />
-    <Compile Include="Enums\WatchVariableOptions.cs" />
     <Compile Include="Enums\FrameInputRelationType.cs" />
     <Compile Include="Enums\CellSelectionType.cs" />
     <Compile Include="Enums\MapTrackerDisplayType.cs" />

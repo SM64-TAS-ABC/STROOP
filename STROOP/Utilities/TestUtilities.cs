@@ -153,7 +153,6 @@ namespace STROOP.Utilities
                                 useHex: null,
                                 invertBool: null,
                                 isYaw: null,
-                                options: null,
                                 coordinate: null,
                                 groupList: new List<VariableGroup>() { VariableGroup.Custom });
                             precursors.Add(precursor);

@@ -81,7 +81,6 @@ namespace STROOP.Managers
                     useHex: null,
                     invertBool: null,
                     isYaw: null,
-                    options: null,
                     coordinate: null,
                     groupList: new List<VariableGroup>() { VariableGroup.Snow });
                 controls.Add(precursor.CreateWatchVariableControl());

@@ -423,7 +423,6 @@ namespace STROOP.Managers
                     hexValue,
                     null /* invertBool */,
                     null /* isYaw */,
-                    null /* options */,
                     null /* coordinate */,
                     new List<VariableGroup>() { VariableGroup.Custom });
             }
