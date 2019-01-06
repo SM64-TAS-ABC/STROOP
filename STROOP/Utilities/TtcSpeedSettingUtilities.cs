@@ -52,5 +52,16 @@ namespace STROOP.Structs
             return null;
         }
 
+        public static List<string> GetDescriptions()
+        {
+            return new List<string>()
+            {
+                "Slow",
+                "Fast",
+                "Random",
+                "Still",
+            };
+        }
+
     }
 }

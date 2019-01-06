@@ -138,16 +138,15 @@ namespace STROOP.Forms
         {
             SelectionForm selectionForm = new SelectionForm();
             selectionForm.Initialize(
-                "Select an Animation",
-                "Set Animation",
-                TableConfig.MarioAnimations.GetAnimationNameList(),
-                animationName =>
+                "Select a TTC Speed Setting",
+                "Set TTC Speed Setting",
+                TtcSpeedSettingUtilities.GetDescriptions(),
+                ttcSpeedSettingDescription =>
                 {
-                    int? animation = TableConfig.MarioAnimations.GetAnimationFromName(animationName);
-                    if (animation.HasValue)
+                    short? ttcSpeedSetting = TtcSpeedSettingUtilities.GetTtcSpeedSetting(ttcSpeedSettingDescription);
+                    if (ttcSpeedSetting.HasValue)
                     {
-                        uint marioObjRef = Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
-                        Config.Stream.SetValue((short)animation.Value, marioObjRef + MarioObjectConfig.AnimationOffset);
+                        Config.Stream.SetValue(ttcSpeedSetting.Value, MiscConfig.TtcSpeedSettingAddress);
                     }
                 });
             selectionForm.Show();
