@@ -15,7 +15,7 @@
   <Data type="byte" offset="0x29" base="Mario" color="Green">B Press Timer</Data>
 
   <Data type="short" offset="0x38" base="MarioObj" color="LightBlue">Animation</Data>
-  <Data base="None" specialType="MarioAnimationDescription" subclass="String" color="LightBlue">Animation Description</Data>
+  <Data base="None" specialType="AnimationDescription" subclass="String" color="LightBlue">Animation Description</Data>
   <Data type="short" offset="0x40" base="MarioObj" color="LightBlue">Animation Timer</Data>
 
   <Data type="uint" offset="0x0C" base="Mario" mask="0x000001FF" display="ushort" useHex="true" color="Pink">Action ID</Data>

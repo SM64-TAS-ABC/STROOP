@@ -527,7 +527,7 @@
     <Compile Include="Utilities\HelpfulHintUtilities.cs" />
     <Compile Include="Utilities\ColorUtilities.cs" />
     <Compile Include="Managers\WatchVariableLockManager.cs" />
-    <Compile Include="Enums\WatchVariableCoordinate.cs" />
+    <Compile Include="Enums\Coordinate.cs" />
     <Compile Include="Enums\WatchVariableSubclass.cs" />
     <Compile Include="Enums\VariableGroup.cs" />
     <Compile Include="Enums\BaseAddressTypeEnum.cs" />

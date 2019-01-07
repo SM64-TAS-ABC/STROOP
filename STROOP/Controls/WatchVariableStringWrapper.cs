@@ -1,4 +1,5 @@
 ﻿using STROOP.Extensions;
+using STROOP.Forms;
 using STROOP.Managers;
 using STROOP.Structs;
 using STROOP.Structs.Configurations;
@@ -19,9 +20,53 @@ namespace STROOP.Controls
             WatchVariableControl watchVarControl)
             : base(watchVar, watchVarControl, DEFAULT_USE_CHECKBOX)
         {
-            
+            AddStringContextMenuStripItems(watchVar.SpecialType);
         }
-        
+
+        private void AddStringContextMenuStripItems(string specialType)
+        {
+            ToolStripMenuItem itemSelectValue = new ToolStripMenuItem("Select Value...");
+            bool addedClickAction = false;
+
+            switch (specialType)
+            {
+                case "ActionDescription":
+                    itemSelectValue.Click += (sender, e) => SelectionForm.ShowActionDescriptionSelectionForm();
+                    addedClickAction = true;
+                    break;
+                case "PrevActionDescription":
+                    itemSelectValue.Click += (sender, e) => SelectionForm.ShowPreviousActionDescriptionSelectionForm();
+                    addedClickAction = true;
+                    break;
+                case "AnimationDescription":
+                    itemSelectValue.Click += (sender, e) => SelectionForm.ShowAnimationDescriptionSelectionForm();
+                    addedClickAction = true;
+                    break;
+                case "TriangleTypeDescription":
+                    itemSelectValue.Click += (sender, e) => SelectionForm.ShowTriangleTypeDescriptionSelectionForm();
+                    addedClickAction = true;
+                    break;
+                case "DemoCounterDescription":
+                    itemSelectValue.Click += (sender, e) => SelectionForm.ShowDemoCounterDescriptionSelectionForm();
+                    addedClickAction = true;
+                    break;
+                case "TtcSpeedSettingDescription":
+                    itemSelectValue.Click += (sender, e) => SelectionForm.ShowTtcSpeedSettingDescriptionSelectionForm();
+                    addedClickAction = true;
+                    break;
+                case "AreaTerrainDescription":
+                    itemSelectValue.Click += (sender, e) => SelectionForm.ShowAreaTerrainDescriptionSelectionForm();
+                    addedClickAction = true;
+                    break;
+            }
+
+            if (addedClickAction)
+            {
+                _contextMenuStrip.AddToBeginningList(new ToolStripSeparator());
+                _contextMenuStrip.AddToBeginningList(itemSelectValue);
+            }
+        }
+
         protected override void HandleVerification(object value)
         {
             base.HandleVerification(value);
