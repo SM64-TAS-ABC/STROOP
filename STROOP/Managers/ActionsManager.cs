@@ -24,15 +24,15 @@ namespace STROOP.Managers
             textBoxActionDescription = actionsControl.Controls["textBoxActionDescription"] as BetterTextbox;
             textBoxAnimationDescription = actionsControl.Controls["textBoxAnimationDescription"] as BetterTextbox;
 
-            textBoxActionDescription.DoubleClick += (sender, e) => SelectionForm.ShowActionSelectionForm();
-            textBoxAnimationDescription.DoubleClick += (sender, e) => SelectionForm.ShowAnimationSelectionForm();
+            textBoxActionDescription.DoubleClick += (sender, e) => SelectionForm.ShowActionDescriptionSelectionForm();
+            textBoxAnimationDescription.DoubleClick += (sender, e) => SelectionForm.ShowAnimationDescriptionSelectionForm();
 
             ControlUtilities.AddContextMenuStripFunctions(
                 textBoxActionDescription,
                 new List<string>() { "Select Action", "Free Movement Action", "Open Action Form" },
                 new List<Action>()
                 {
-                    () => SelectionForm.ShowActionSelectionForm(),
+                    () => SelectionForm.ShowActionDescriptionSelectionForm(),
                     () => Config.Stream.SetValue(MarioConfig.FreeMovementAction, MarioConfig.StructAddress + MarioConfig.ActionOffset),
                     () => new ActionForm().Show(),
                 });

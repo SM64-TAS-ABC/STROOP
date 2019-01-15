@@ -15,6 +15,7 @@ namespace STROOP.Structs
         public Image TrackedAndShownObjectOverlayImage;
         public Image TrackedNotShownObjectOverlayImage;
         public Image StoodOnObjectOverlayImage;
+        public Image RiddenObjectOverlayImage;
         public Image HeldObjectOverlayImage;
         public Image InteractionObjectOverlayImage;
         public Image UsedObjectOverlayImage;
@@ -47,6 +48,7 @@ namespace STROOP.Structs
             TrackedAndShownObjectOverlayImage?.Dispose();
             TrackedNotShownObjectOverlayImage?.Dispose();
             StoodOnObjectOverlayImage?.Dispose();
+            RiddenObjectOverlayImage?.Dispose();
             HeldObjectOverlayImage?.Dispose();
             InteractionObjectOverlayImage?.Dispose();
             UsedObjectOverlayImage?.Dispose();

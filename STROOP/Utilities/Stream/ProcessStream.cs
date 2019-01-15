@@ -18,6 +18,8 @@ namespace STROOP.Utilities
         Process _process;
 
         IEmuRamIO _io;
+        public IEmuRamIO IO => _io;
+
         ConcurrentQueue<double> _fpsTimes = new ConcurrentQueue<double>();
         byte[] _ram;
         bool _lastUpdateBeforePausing = false;

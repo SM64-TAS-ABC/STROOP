@@ -9,6 +9,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Managers;
 using STROOP.Models;
 using STROOP.Forms;
+using System.Diagnostics;
 
 namespace STROOP.Utilities
 {
@@ -319,6 +320,51 @@ namespace STROOP.Utilities
 
             if (!streamAlreadySuspended) Config.Stream.Resume();
             return success;
+        }
+
+        public static bool RideObject(ObjectDataModel obj, bool updateAction = true)
+        {
+            if (obj == null)
+                return false;
+
+            bool success = true;
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
+
+            if (updateAction)
+            {
+                DataModels.Mario.Action = MarioConfig.RidingShellAction;
+            }
+
+            success &= Config.Stream.SetValue(obj.Address, MarioConfig.StructAddress + MarioConfig.RiddenObjectPointerOffset);
+
+            if (!streamAlreadySuspended) Config.Stream.Resume();
+            return success;
+        }
+
+        public static bool UnRideObject(bool updateAction = true)
+        {
+            bool success = true;
+            bool streamAlreadySuspended = Config.Stream.IsSuspended;
+            if (!streamAlreadySuspended) Config.Stream.Suspend();
+
+            if (updateAction)
+            {
+                DataModels.Mario.Action = MarioConfig.IdleAction;
+            }
+
+            success &= Config.Stream.SetValue(0, MarioConfig.StructAddress + MarioConfig.RiddenObjectPointerOffset);
+
+            if (!streamAlreadySuspended) Config.Stream.Resume();
+            return success;
+        }
+        public static bool UkikipediaObject(ObjectDataModel obj)
+        {
+            if (obj == null)
+                return false;
+
+            Process.Start("https://ukikipedia.net/wiki/" + obj.BehaviorAssociation.Name);
+            return true;
         }
 
         public static bool UnloadObject(List<ObjectDataModel> objects)

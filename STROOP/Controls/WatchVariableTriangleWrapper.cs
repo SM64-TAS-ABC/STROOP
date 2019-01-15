@@ -33,7 +33,6 @@ namespace STROOP.Controls
                 if (!uintValueNullable.HasValue) return;
                 uint uintValue = uintValueNullable.Value;
                 Config.TriangleManager.SetCustomTriangleAddress(uintValue);
-                // TODO switch to triangle tab
             };
 
             _contextMenuStrip.AddToBeginningList(new ToolStripSeparator());

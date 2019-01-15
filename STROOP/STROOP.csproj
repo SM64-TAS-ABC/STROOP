@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>STROOP</RootNamespace>
     <AssemblyName>STROOP</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -121,6 +121,9 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -180,7 +183,14 @@
     <Compile Include="Enums\InputDisplayTypeEnum.cs" />
     <Compile Include="Enums\CoinParamsOrder.cs" />
     <Compile Include="Enums\AddToTabTypeEnum.cs" />
+    <Compile Include="Enums\RomVersionSelection.cs" />
     <Compile Include="Extensions\FormExtensions.cs" />
+    <Compile Include="Forms\TextForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TextForm.Designer.cs">
+      <DependentUpon>TextForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ActionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -498,6 +508,7 @@
     <Compile Include="Utilities\CoinTrajectoryFilter.cs" />
     <Compile Include="Utilities\CoinTrajejctory.cs" />
     <Compile Include="Utilities\CoinObject.cs" />
+    <Compile Include="Utilities\CoinMovementCalculator.cs" />
     <Compile Include="Utilities\ObjectUtilities.cs" />
     <Compile Include="Utilities\ObjectSnapshot.cs" />
     <Compile Include="Utilities\ObjectOrderingUtilities.cs" />
@@ -516,7 +527,7 @@
     <Compile Include="Utilities\HelpfulHintUtilities.cs" />
     <Compile Include="Utilities\ColorUtilities.cs" />
     <Compile Include="Managers\WatchVariableLockManager.cs" />
-    <Compile Include="Enums\WatchVariableCoordinate.cs" />
+    <Compile Include="Enums\Coordinate.cs" />
     <Compile Include="Enums\WatchVariableSubclass.cs" />
     <Compile Include="Enums\VariableGroup.cs" />
     <Compile Include="Enums\BaseAddressTypeEnum.cs" />
@@ -621,6 +632,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Map\MapObjectControl.resx">
       <DependentUpon>MapObjectControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TextForm.resx">
+      <DependentUpon>TextForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ActionForm.resx">
       <DependentUpon>ActionForm.cs</DependentUpon>

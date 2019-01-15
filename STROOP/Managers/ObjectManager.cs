@@ -1,4 +1,4 @@
-﻿using STROOP.Structs;
+using STROOP.Structs;
 using STROOP.Utilities;
 using System;
 using System.Collections.Generic;
@@ -13,6 +13,7 @@ using STROOP.Structs.Configurations;
 using STROOP.Forms;
 using STROOP.Models;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace STROOP.Managers
 {
@@ -22,6 +23,7 @@ namespace STROOP.Managers
         BinaryButton _interactButton;
         BinaryButton _cloneButton;
         BinaryButton _unloadButton;
+        BinaryButton _rideButton;
 
         Label _objAddressLabelValue;
         Label _objAddressLabel;
@@ -270,9 +272,9 @@ namespace STROOP.Managers
             _cloneButton.Initialize(
                 "Clone",
                 "UnClone",
-                () => ButtonUtilities.CloneObject(_objects.First()),
+                () => ButtonUtilities.CloneObject(_objects.FirstOrDefault()),
                 () => ButtonUtilities.UnCloneObject(),
-                () => _objects.Count == 1 && _objects.Any(o => o.Address == DataModels.Mario.HeldObject));
+                () => _objects.Count > 0 && _objects.FirstOrDefault().Address == DataModels.Mario.HeldObject);
             ControlUtilities.AddContextMenuStripFunctions(
                 _cloneButton,
                 new List<string>() {
@@ -282,8 +284,8 @@ namespace STROOP.Managers
                     "UnClone without Action Update",
                 },
                 new List<Action>() {
-                    () => ButtonUtilities.CloneObject(_objects.First(), true),
-                    () => ButtonUtilities.CloneObject(_objects.First(), false),
+                    () => ButtonUtilities.CloneObject(_objects.FirstOrDefault(), true),
+                    () => ButtonUtilities.CloneObject(_objects.FirstOrDefault(), false),
                     () => ButtonUtilities.UnCloneObject(true),
                     () => ButtonUtilities.UnCloneObject(false),
                 });
@@ -303,6 +305,31 @@ namespace STROOP.Managers
                     () => ButtonUtilities.ReviveObject(_objects),
                 });
 
+            _rideButton = objPanel.Controls["buttonObjRide"] as BinaryButton;
+            _rideButton.Initialize(
+                "Ride",
+                "UnRide",
+                () => ButtonUtilities.RideObject(_objects.FirstOrDefault()),
+                () => ButtonUtilities.UnRideObject(),
+                () => _objects.Count > 0 && _objects.FirstOrDefault().Address == DataModels.Mario.RiddenObject);
+            ControlUtilities.AddContextMenuStripFunctions(
+                _rideButton,
+                new List<string>() {
+                    "Ride with Action Update",
+                    "Ride without Action Update",
+                    "UnRide with Action Update",
+                    "UnRide without Action Update",
+                },
+                new List<Action>() {
+                    () => ButtonUtilities.RideObject(_objects.FirstOrDefault(), true),
+                    () => ButtonUtilities.RideObject(_objects.FirstOrDefault(), false),
+                    () => ButtonUtilities.UnRideObject(true),
+                    () => ButtonUtilities.UnRideObject(false),
+        });
+
+            Button ukikipediaButton = objPanel.Controls["buttonObjUkikipedia"] as Button;
+            ukikipediaButton.Click += (sender, e) => ButtonUtilities.UkikipediaObject(_objects.FirstOrDefault());
+            
             var objPosGroupBox = objPanel.Controls["groupBoxObjPos"] as GroupBox;
             ControlUtilities.InitializeThreeDimensionController(
                 CoordinateSystem.Euler,
@@ -449,6 +476,7 @@ namespace STROOP.Managers
             _interactButton.UpdateButton();
             _cloneButton.UpdateButton();
             _unloadButton.UpdateButton();
+            _rideButton.UpdateButton();
 
             UpdateUI();
 
@@ -466,7 +494,6 @@ namespace STROOP.Managers
                 SlotIndex = "";
                 SlotPos = "";
                 _objAddressLabelValue.Text = "";
-                _cloneButton.Enabled = false;
                 _lastGeneralizedBehavior = null;
                 SetBehaviorWatchVariables(new List<WatchVariableControl>(), Color.White);
             }
@@ -477,21 +504,20 @@ namespace STROOP.Managers
                 if (!BehaviorCriteria.HasSameAssociation(_lastGeneralizedBehavior, newBehavior))
                 {
                     Behavior = $"0x{obj.SegmentedBehavior & 0x00FFFFFF:X4}";
-                    Name = Config.ObjectAssociations.GetObjectName(newBehavior);
                     SetBehaviorWatchVariables(
                         Config.ObjectAssociations.GetWatchVarControls(newBehavior),
                         ObjectSlotsConfig.GetProcessingGroupColor(obj.BehaviorProcessGroup)
                         .Lighten(0.8));
-                    Image = Config.ObjectAssociations.GetObjectImage(newBehavior);
                     _lastGeneralizedBehavior = newBehavior;
                 }
+                Name = Config.ObjectAssociations.GetObjectName(newBehavior);
+                Image = Config.ObjectAssociations.GetObjectImage(newBehavior);
                 BackColor = ObjectSlotsConfig.GetProcessingGroupColor(obj.CurrentProcessGroup);
                 int slotPos = obj.VacantSlotIndex ?? obj.ProcessIndex;
                 SlotIndex = (Config.ObjectSlotsManager.GetSlotIndexFromObj(obj) 
                     + (SavedSettingsConfig.StartSlotIndexsFromOne ? 1 : 0))?.ToString() ?? "";
                 SlotPos = $"{(obj.VacantSlotIndex.HasValue ? "VS " : "")}{slotPos + (SavedSettingsConfig.StartSlotIndexsFromOne ? 1 : 0)}";
                 _objAddressLabelValue.Text = $"0x{_objects.First().Address:X8}";
-                _cloneButton.Enabled = true;
             }
             else
             {
@@ -538,7 +564,6 @@ namespace STROOP.Managers
                 SlotIndex = "";
                 SlotPos = "";
                 _objAddressLabelValue.Text = "";
-                _cloneButton.Enabled = false;
             }
         }
 

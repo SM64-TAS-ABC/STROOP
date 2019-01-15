@@ -93,6 +93,8 @@ namespace STROOP.Structs
         public static readonly uint DustSpawnerBehaviorValue = 0x130024AC;
         public static readonly uint DustBallBehaviorValue = 0x130024DC;
         public static readonly uint DustBehaviorValue = 0x13002500;
+        public static readonly uint UnderwaterBubbleSpawnerBehaviorValue = 0x130002B8;
+        public static readonly uint UnderwaterBubbleBehaviorValue = 0x13000338;
 
         public static readonly uint PendulumAccelerationDirectionOffset = 0xF4;
         public static readonly uint PendulumAccelerationMagnitudeOffset = 0x100;

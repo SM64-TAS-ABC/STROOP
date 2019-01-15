@@ -82,5 +82,10 @@ namespace STROOP.Controls
             ObjectDataModel obj = Config.ObjectSlotsManager.GetObjectFromLabel(slotName);
             return obj != null ? obj.Address : value;
         }
+
+        protected override bool GetUseHexExactly()
+        {
+            return _displayAsHex && !_displayAsObject;
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using STROOP.Controls;
+using STROOP.Forms;
 using STROOP.Managers;
 using STROOP.Structs.Configurations;
 using System;
@@ -148,6 +149,14 @@ namespace STROOP.Structs
                 fs.Write(bytes, 0, bytes.Length);
                 fs.SetLength(bytes.Length);
             }
+        }
+
+        public static string GetStringFromDialog()
+        {
+            TextForm stringForm = new TextForm();
+            if (stringForm.ShowDialog() == DialogResult.OK)
+                return stringForm.StringValue;
+            return "";
         }
 
     }

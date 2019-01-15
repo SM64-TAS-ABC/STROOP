@@ -244,6 +244,16 @@ namespace STROOP.Managers
             _mapGui.MapArtificialMarioYLabelTextBox.AddEnterAction(() =>
                 _artificialMarioY = ParsingUtilities.ParseFloatNullable(
                     _mapGui.MapArtificialMarioYLabelTextBox.Text));
+
+            ControlUtilities.AddContextMenuStripFunctions(
+                _mapGui.GLControl,
+                new List<string>() { "Fill Screen", "Copy Map Settings", "Paste Map Settings" },
+                new List<Action>()
+                {
+                    () => ChangeMapFillScreen(),
+                    () => CopyMapSettings(),
+                    () => PasteMapSettings(),
+                });
         }
 
         private void ChangeMapPosition(int xSign, int ySign)
@@ -262,11 +272,82 @@ namespace STROOP.Managers
             _mapGui.GLControl.Dock = DockStyle.None;
             int change = ParsingUtilities.ParseInt(_mapGui.MapBoundsZoomTextBox.Text);
             int zoomChange = change * sign;
-            int newX = _mapGui.GLControl.Left - zoomChange;
-            int newY = _mapGui.GLControl.Top - zoomChange;
-            int newWidth = _mapGui.GLControl.Width + 2 * zoomChange;
-            int newHeight = _mapGui.GLControl.Height + 2 * zoomChange;
+            double zoomMultiply = (zoomChange + 100d) / 100d;
+            if (zoomMultiply <= 0) return;
+            int newWidth = (int)(_mapGui.GLControl.Width * zoomMultiply);
+            int newHeight = (int)(_mapGui.GLControl.Height * zoomMultiply);
+            if (newWidth > 30000 || newHeight > 30000) return;
+            if (newWidth <= 1 || newHeight <= 1) return;
+
+            Control parent = _mapGui.GLControl.Parent;
+            int centerX = parent.Width / 2;
+            int centerY = parent.Height / 2;
+            double percentageX = (centerX - _mapGui.GLControl.Left) / (double) _mapGui.GLControl.Width;
+            double percentageY = (centerY - _mapGui.GLControl.Top) / (double) _mapGui.GLControl.Height;
+
+            int newCenterX = (int)(percentageX * newWidth);
+            int newCenterY = (int)(percentageY * newHeight);
+            int newX = centerX - newCenterX;
+            int newY = centerY - newCenterY;
+
             _mapGui.GLControl.SetBounds(newX, newY, newWidth, newHeight);
+        }
+
+        private void ChangeMapFillScreen()
+        {
+            _mapGui.GLControl.Dock = DockStyle.Fill;
+        }
+
+        private void CopyMapSettings()
+        {
+            SplitContainer innerSplitContainer = ControlUtilities.GetAncestorSplitContainer(_mapGui.MapNameLabel);
+            SplitContainer outerSplitContainer = ControlUtilities.GetAncestorSplitContainer(innerSplitContainer);
+            List<object> values = new List<object>()
+            {
+                _mapGui.GLControl.Dock == DockStyle.Fill,
+                _mapGui.GLControl.Bounds.X,
+                _mapGui.GLControl.Bounds.Y,
+                _mapGui.GLControl.Bounds.Width,
+                _mapGui.GLControl.Bounds.Height,
+                innerSplitContainer.Panel1Collapsed,
+                innerSplitContainer.Panel2Collapsed,
+                innerSplitContainer.SplitterDistance,
+                outerSplitContainer.Panel1Collapsed,
+                outerSplitContainer.Panel2Collapsed,
+                outerSplitContainer.SplitterDistance,
+                Config.StroopMainForm.Bounds.X,
+                Config.StroopMainForm.Bounds.Y,
+                Config.StroopMainForm.Bounds.Width,
+                Config.StroopMainForm.Bounds.Height,
+            };
+            Clipboard.SetText(string.Join(",", values));
+        }
+
+        private void PasteMapSettings()
+        {
+            List<string> values = ParsingUtilities.ParseStringList(Clipboard.GetText());
+            if (values.Count != 15) return;
+
+            SplitContainer innerSplitContainer = ControlUtilities.GetAncestorSplitContainer(_mapGui.MapNameLabel);
+            SplitContainer outerSplitContainer = ControlUtilities.GetAncestorSplitContainer(innerSplitContainer);
+
+            _mapGui.GLControl.Dock = ParsingUtilities.ParseBool(values[0]) ? DockStyle.Fill : DockStyle.None;
+            _mapGui.GLControl.SetBounds(
+                ParsingUtilities.ParseInt(values[1]),
+                ParsingUtilities.ParseInt(values[2]),
+                ParsingUtilities.ParseInt(values[3]),
+                ParsingUtilities.ParseInt(values[4]));
+            innerSplitContainer.Panel1Collapsed = ParsingUtilities.ParseBool(values[5]);
+            innerSplitContainer.Panel2Collapsed = ParsingUtilities.ParseBool(values[6]);
+            innerSplitContainer.SplitterDistance = ParsingUtilities.ParseInt(values[7]);
+            outerSplitContainer.Panel1Collapsed = ParsingUtilities.ParseBool(values[8]);
+            outerSplitContainer.Panel2Collapsed = ParsingUtilities.ParseBool(values[9]);
+            outerSplitContainer.SplitterDistance = ParsingUtilities.ParseInt(values[10]);
+            Config.StroopMainForm.SetBounds(
+                ParsingUtilities.ParseInt(values[11]),
+                ParsingUtilities.ParseInt(values[12]),
+                ParsingUtilities.ParseInt(values[13]),
+                ParsingUtilities.ParseInt(values[14]));
         }
 
         private (List<TriangleShape> floors, List<TriangleShape> walls) GetTriShapes(int numSides)

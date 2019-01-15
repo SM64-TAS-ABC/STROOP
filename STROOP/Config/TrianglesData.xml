@@ -3,7 +3,7 @@
   <Data groupList="Basic" base="Triangle" specialType="Classification" subclass="String">Classification</Data>
 
   <Data groupList="Basic" type="short" display="byte" offset="0x00" base="Triangle" useHex="true">Surface Type</Data>
-  <Data groupList="Basic" base="Triangle" specialType="TriangleDescription" subclass="String">Description</Data>
+  <Data groupList="Basic" base="Triangle" specialType="TriangleTypeDescription" subclass="String">Description</Data>
   <Data groupList="Basic" base="Triangle" specialType="TriangleSlipperiness" display="byte" useHex="true">Slipperiness</Data>
   <Data groupList="Basic" base="Triangle" specialType="TriangleSlipperinessDescription" subclass="String">Slipperiness Description</Data>
 

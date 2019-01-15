@@ -1,0 +1,1426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D309A4ED-54AF-4BC7-83CA-BCD38543AEB3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>STROOP</RootNamespace>
+    <AssemblyName>STROOP</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Windows Build|AnyCPU'">
+    <OutputPath>..\..\Windows Build\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\BetterSplitContainer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\TabControlEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\CarretlessTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\MainSaveTextbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Map\Graphics\Cameras\MapPerspectiveCamera.cs" />
+    <Compile Include="Controls\Map\Objects\MapSm64Object.cs" />
+    <Compile Include="Controls\Map\Objects\MapWallTriObject.cs" />
+    <Compile Include="Controls\Map\Objects\MapFloorTriObject.cs" />
+    <Compile Include="Controls\Map\Objects\MapCeilingTriObject.cs" />
+    <Compile Include="Controls\Map\Objects\MapHolpObject.cs" />
+    <Compile Include="Controls\Map\Objects\MapIconObject.cs" />
+    <Compile Include="Controls\Map\Objects\MapCameraObject.cs" />
+    <Compile Include="Controls\Map\Objects\MapTriangleObject.cs" />
+    <Compile Include="Controls\Map\Semaphores\MapSemaphoreManager.cs" />
+    <Compile Include="Controls\Map\Semaphores\MapSemaphore.cs" />
+    <Compile Include="Controls\Map\Trackers\ColorSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Map\Trackers\ColorSelector.Designer.cs">
+      <DependentUpon>ColorSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ObjectSlotFlowLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\PanelEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\WatchVariableAddressWrapper.cs" />
+    <Compile Include="Controls\WatchVariableTriangleWrapper.cs" />
+    <Compile Include="Controls\WatchVariableStringWrapper.cs" />
+    <Compile Include="Enums\FrameInputRelationType.cs" />
+    <Compile Include="Enums\CellSelectionType.cs" />
+    <Compile Include="Enums\MapTrackerDisplayType.cs" />
+    <Compile Include="Enums\InputDisplayTypeEnum.cs" />
+    <Compile Include="Enums\CoinParamsOrder.cs" />
+    <Compile Include="Enums\AddToTabTypeEnum.cs" />
+    <Compile Include="Enums\RomVersionSelection.cs" />
+    <Compile Include="Extensions\FormExtensions.cs" />
+    <Compile Include="Forms\TextForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TextForm.Designer.cs">
+      <DependentUpon>TextForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ActionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ActionForm.Designer.cs">
+      <DependentUpon>ActionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LoadingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoadingForm.Designer.cs">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\VariablePopOutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\VariablePopOutForm.Designer.cs">
+      <DependentUpon>VariablePopOutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SelectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectionForm.Designer.cs">
+      <DependentUpon>SelectionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\VariableBitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\VariableBitForm.Designer.cs">
+      <DependentUpon>VariableBitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\IUpdatable.cs" />
+    <Compile Include="Controls\Map\Trackers\MapTracker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Map\Trackers\MapTracker.Designer.cs">
+      <DependentUpon>MapTracker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Map\Trackers\MapTrackerFlowLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\WatchVariableControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WatchVariableControl.Designer.cs">
+      <DependentUpon>WatchVariableControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\VarHackContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\VarHackContainer.Designer.cs">
+      <DependentUpon>VarHackContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Map\Graphics\Cameras\IMapCamera.cs" />
+    <Compile Include="Controls\Map\Graphics\Items\MapGraphicsImageItem.cs" />
+    <Compile Include="Controls\Map\Graphics\Items\MapGraphicsItem.cs" />
+    <Compile Include="Controls\Map\Graphics\Items\MapGraphicsTrianglesItem.cs" />
+    <Compile Include="Controls\Map\Graphics\Cameras\MapCameraTopView.cs" />
+    <Compile Include="Controls\Map\Graphics\MapGraphics.cs" />
+    <Compile Include="Controls\Map\Graphics\Items\MapGraphicsBackgroundItem.cs" />
+    <Compile Include="Controls\Map\Graphics\Items\MapGraphicsIconItem.cs" />
+    <Compile Include="Controls\Map\Graphics\GraphicsUtilities.cs" />
+    <Compile Include="Controls\Map\Graphics\Vertex.cs" />
+    <Compile Include="Controls\Map\MapController.cs" />
+    <Compile Include="Controls\Map\MapObjectControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Map\MapObjectControl.Designer.cs">
+      <DependentUpon>MapObjectControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Map\Objects\MapLevelObject.cs" />
+    <Compile Include="Controls\Map\Objects\MapMarioObject.cs" />
+    <Compile Include="Controls\Map\Objects\MapObject.cs" />
+    <Compile Include="Controls\NoTearFlowLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\VisualLinkLineText.cs" />
+    <Compile Include="Controls\VisualRegexLinkGenerator.cs" />
+    <Compile Include="Controls\WatchVariableControlSettings.cs" />
+    <Compile Include="Controls\WatchVariableLock.cs" />
+    <Compile Include="Controls\BetterContextMenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\TransparentTextbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\BorderedTableLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\BinaryButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\BetterTextbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\DecompilerView.xaml.cs">
+      <DependentUpon>DecompilerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WatchVariable.cs" />
+    <Compile Include="Controls\WatchVariableControlPrecursor.cs" />
+    <Compile Include="Controls\WatchVariableBooleanWrapper.cs" />
+    <Compile Include="Controls\WatchVariableObjectWrapper.cs" />
+    <Compile Include="Controls\WatchVariableAngleWrapper.cs" />
+    <Compile Include="Controls\WatchVariableNumberWrapper.cs" />
+    <Compile Include="Controls\VarHackFlowLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\WatchVariableWrapper.cs" />
+    <Compile Include="Controls\InputDisplayPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FileHatPositionTextbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FileTextbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FileHatLocationPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FileKeyDoorPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FileCourseLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FileCoinScoreTextbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FilePictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FileBinaryPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FileStarPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ModelGraphics.cs" />
+    <Compile Include="Controls\IntPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\WatchVariableFlowLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\RichTextBoxEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Enums\FileType.cs" />
+    <Compile Include="Enums\CoordinateSystem.cs" />
+    <Compile Include="Enums\CamHackMode.cs" />
+    <Compile Include="Enums\MapTrackerVisibilityType.cs" />
+    <Compile Include="Enums\ReadWriteMode.cs" />
+    <Compile Include="Enums\RomVersion.cs" />
+    <Compile Include="Enums\PositionControllerRelativity.cs" />
+    <Compile Include="Enums\HatLocation.cs" />
+    <Compile Include="Enums\MapTrackerOrderType.cs" />
+    <Compile Include="Extensions\BitmapExtensions.cs" />
+    <Compile Include="Extensions\ControlCollectionsExtensions.cs" />
+    <Compile Include="Extensions\IEnumerableExtensions.cs" />
+    <Compile Include="Extensions\RectangleExtensions.cs" />
+    <Compile Include="Forms\MainLoadingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainLoadingForm.Designer.cs">
+      <DependentUpon>MainLoadingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoadingHandler.cs" />
+    <Compile Include="Managers\MainSaveManager.cs" />
+    <Compile Include="Managers\SnowManager.cs" />
+    <Compile Include="Structs\Configurations\MainSaveConfig.cs" />
+    <Compile Include="Structs\Configurations\SnowConfig.cs" />
+    <Compile Include="Structs\Map\BackgroundImage.cs" />
+    <Compile Include="Structs\TriangleInfoTable.cs" />
+    <Compile Include="Ttc\TtcSaveStateByteIterator.cs" />
+    <Compile Include="Ttc\TtcUtilities.cs" />
+    <Compile Include="Ttc\TtcSimulation.cs" />
+    <Compile Include="Ttc\TtcRng.cs" />
+    <Compile Include="Ttc\TtcMain.cs" />
+    <Compile Include="Ttc\TtcSaveState.cs" />
+    <Compile Include="Ttc\TtcWheel.cs" />
+    <Compile Include="Ttc\TtcTreadmill.cs" />
+    <Compile Include="Ttc\TtcThwomp.cs" />
+    <Compile Include="Ttc\TtcSpinningTriangle.cs" />
+    <Compile Include="Ttc\TtcSpinner.cs" />
+    <Compile Include="Ttc\TtcRotatingTriangularPrism.cs" />
+    <Compile Include="Ttc\TtcPusher.cs" />
+    <Compile Include="Ttc\TtcRotatingBlock.cs" />
+    <Compile Include="Ttc\TtcPitBlock.cs" />
+    <Compile Include="Ttc\TtcPendulum.cs" />
+    <Compile Include="Ttc\TtcHand.cs" />
+    <Compile Include="Ttc\TtcElevator.cs" />
+    <Compile Include="Ttc\TtcDust.cs" />
+    <Compile Include="Ttc\TtcCog.cs" />
+    <Compile Include="Ttc\TtcBobomb.cs" />
+    <Compile Include="Ttc\TtcAmp.cs" />
+    <Compile Include="Ttc\TtcObject.cs" />
+    <Compile Include="M64\M64CopiedFrame.cs" />
+    <Compile Include="M64\M64File.cs" />
+    <Compile Include="M64\M64InputCell.cs" />
+    <Compile Include="M64\M64CopiedData.cs" />
+    <Compile Include="M64\M64Utilities.cs" />
+    <Compile Include="M64\M64Stats.cs" />
+    <Compile Include="M64\M64Header.cs" />
+    <Compile Include="M64\M64InputFrame.cs" />
+    <Compile Include="Managers\AreaManager.cs" />
+    <Compile Include="Managers\CamHackManager.cs" />
+    <Compile Include="Managers\GfxManager.cs" />
+    <Compile Include="Managers\M64Manager.cs" />
+    <Compile Include="Managers\CoinManager.cs" />
+    <Compile Include="Managers\MemoryManager.cs" />
+    <Compile Include="Managers\TasManager.cs" />
+    <Compile Include="Managers\VarHackManager.cs" />
+    <Compile Include="Managers\DecompilerManager.cs" />
+    <Compile Include="Managers\CustomManager.cs" />
+    <Compile Include="Managers\ScriptManager.cs" />
+    <Compile Include="Managers\WatchVariableControlSettingsManager.cs" />
+    <Compile Include="Managers\WaterManager.cs" />
+    <Compile Include="Managers\ModelManager.cs" />
+    <Compile Include="Managers\DebugManager.cs" />
+    <Compile Include="Managers\FileManager.cs" />
+    <Compile Include="Managers\HudManager.cs" />
+    <Compile Include="Managers\HackManager.cs" />
+    <Compile Include="Managers\ActionsManager.cs" />
+    <Compile Include="Managers\InputManager.cs" />
+    <Compile Include="Managers\MiscManager.cs" />
+    <Compile Include="Managers\DataManager.cs" />
+    <Compile Include="Managers\DisassemblyManager.cs" />
+    <Compile Include="Managers\MapManager.cs" />
+    <Compile Include="Managers\CameraManager.cs" />
+    <Compile Include="Managers\MarioManager.cs" />
+    <Compile Include="Managers\ObjectManager.cs" />
+    <Compile Include="Managers\TestingManager.cs" />
+    <Compile Include="Managers\OptionsManager.cs" />
+    <Compile Include="Managers\PuManager.cs" />
+    <Compile Include="Managers\InjectionManager.cs" />
+    <Compile Include="Managers\TriangleManager.cs" />
+    <Compile Include="Controls\ObjectSlot.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Managers\ObjectSlotsManager.cs" />
+    <Compile Include="Map2\Map2Object.cs" />
+    <Compile Include="Map2\Map2Gui.cs" />
+    <Compile Include="Managers\Map2Manager.cs" />
+    <Compile Include="Map2\TriangleMap2Object.cs" />
+    <Compile Include="Map2\Map2BaseObject.cs" />
+    <Compile Include="Map2\Map2Graphics.cs" />
+    <Compile Include="Models\CameraDataModel.cs" />
+    <Compile Include="Models\MarioDataModel.cs" />
+    <Compile Include="Models\DataModels.cs" />
+    <Compile Include="Models\ObjectDataModel.cs" />
+    <Compile Include="Models\IUpdatableDataModel.cs" />
+    <Compile Include="Models\LevelDataModel.cs" />
+    <Compile Include="Models\ObjectProcessorDataModel.cs" />
+    <Compile Include="Models\ByteModel.cs" />
+    <Compile Include="Models\TriangleShape.cs" />
+    <Compile Include="Structs\Configurations\AreaConfig.cs" />
+    <Compile Include="Structs\Configurations\TestingConfig.cs" />
+    <Compile Include="Structs\Configurations\LockConfig.cs" />
+    <Compile Include="Structs\Configurations\RomVersionConfig.cs" />
+    <Compile Include="Structs\Configurations\M64Config.cs" />
+    <Compile Include="Structs\Configurations\SavedSettingsConfig.cs" />
+    <Compile Include="Structs\Configurations\SpecialConfig.cs" />
+    <Compile Include="Structs\Configurations\RefreshRateConfig.cs" />
+    <Compile Include="Structs\Configurations\MarioObjectConfig.cs" />
+    <Compile Include="Structs\Configurations\TableConfig.cs" />
+    <Compile Include="Structs\Configurations\OverlayConfig.cs" />
+    <Compile Include="Structs\Configurations\OptionsConfig.cs" />
+    <Compile Include="Structs\Configurations\MiscConfig.cs" />
+    <Compile Include="Structs\Configurations\GhostHackConfig.cs" />
+    <Compile Include="Structs\Configurations\VarHackConfig.cs" />
+    <Compile Include="Structs\Configurations\PositionControllerRelativityConfig.cs" />
+    <Compile Include="Structs\Configurations\TriangleConfig.cs" />
+    <Compile Include="Structs\Configurations\WaypointConfig.cs" />
+    <Compile Include="Enums\EndiannessType.cs" />
+    <Compile Include="Structs\FlyGuyDataTable.cs" />
+    <Compile Include="Structs\CourseDataTable.cs" />
+    <Compile Include="Structs\Configurations\FileConfig.cs" />
+    <Compile Include="Structs\Configurations\GotoRetrieveConfig.cs" />
+    <Compile Include="Structs\Configurations\CamHackConfig.cs" />
+    <Compile Include="Structs\Configurations\InputConfig.cs" />
+    <Compile Include="Structs\Gui\FileImageGui.cs" />
+    <Compile Include="Structs\Gui\InputImageGui.cs" />
+    <Compile Include="Structs\Gui\M64Gui.cs" />
+    <Compile Include="Structs\MissionTable.cs" />
+    <Compile Include="Enums\TriangleClassification.cs" />
+    <Compile Include="Models\TriangleDataModel.cs" />
+    <Compile Include="Controls\VarHackContainerDefaults.cs" />
+    <Compile Include="Structs\WaypointTable.cs" />
+    <Compile Include="Structs\PendulumSwingTable.cs" />
+    <Compile Include="Structs\AnimationTable.cs" />
+    <Compile Include="Structs\ActionTable.cs" />
+    <Compile Include="Structs\BehaviorCriteria.cs" />
+    <Compile Include="Structs\Configurations\CameraConfig.cs" />
+    <Compile Include="Structs\Configurations\DebugConfig.cs" />
+    <Compile Include="Structs\Configurations\HackConfig.cs" />
+    <Compile Include="Structs\Configurations\HudConfig.cs" />
+    <Compile Include="Structs\Configurations\TriangleOffsetsConfig.cs" />
+    <Compile Include="Structs\Emulator.cs" />
+    <Compile Include="Structs\GameScript.cs" />
+    <Compile Include="Structs\Gui\MapGui.cs" />
+    <Compile Include="Structs\Gui\ObjectSlotManagerGui.cs" />
+    <Compile Include="Structs\Map\MapLayout.cs" />
+    <Compile Include="Structs\Map\MapAssociations.cs" />
+    <Compile Include="Structs\Configurations\MarioConfig.cs" />
+    <Compile Include="Structs\ObjectBehaviorAssociation.cs" />
+    <Compile Include="Structs\ObjectAssociations.cs" />
+    <Compile Include="Structs\Configurations\ObjectConfig.cs" />
+    <Compile Include="Structs\Configurations\ObjectSlotsConfig.cs" />
+    <Compile Include="Extensions\ColorExtensions.cs" />
+    <Compile Include="Structs\RomHack.cs" />
+    <Compile Include="Structs\SpawnHack.cs" />
+    <Compile Include="Enums\AngleUnitType.cs" />
+    <Compile Include="Utilities\BoolUtilities.cs" />
+    <Compile Include="Utilities\CamHackUtilities.cs" />
+    <Compile Include="Utilities\CoinTrajectoryFilter.cs" />
+    <Compile Include="Utilities\CoinTrajejctory.cs" />
+    <Compile Include="Utilities\CoinObject.cs" />
+    <Compile Include="Utilities\CoinMovementCalculator.cs" />
+    <Compile Include="Utilities\ObjectUtilities.cs" />
+    <Compile Include="Utilities\ObjectSnapshot.cs" />
+    <Compile Include="Utilities\ObjectOrderingUtilities.cs" />
+    <Compile Include="Utilities\PositionAngle.cs" />
+    <Compile Include="Utilities\EndiannessUtilities.cs" />
+    <Compile Include="Utilities\EndianUtilities.cs" />
+    <Compile Include="Utilities\CogUtilities.cs" />
+    <Compile Include="Utilities\Stream\DolphinProcessIO.cs" />
+    <Compile Include="Utilities\Stream\BaseProcessIO.cs" />
+    <Compile Include="Utilities\Stream\StFileIO.cs" />
+    <Compile Include="Utilities\Stream\WindowsProcessIO.cs" />
+    <Compile Include="Utilities\HexUtilities.cs" />
+    <Compile Include="Utilities\DictionaryUtilities.cs" />
+    <Compile Include="Utilities\Stream\IEmuRamIO.cs" />
+    <Compile Include="Utilities\KeyboardUtilities.cs" />
+    <Compile Include="Utilities\HelpfulHintUtilities.cs" />
+    <Compile Include="Utilities\ColorUtilities.cs" />
+    <Compile Include="Managers\WatchVariableLockManager.cs" />
+    <Compile Include="Enums\WatchVariableCoordinate.cs" />
+    <Compile Include="Enums\WatchVariableSubclass.cs" />
+    <Compile Include="Enums\VariableGroup.cs" />
+    <Compile Include="Enums\BaseAddressTypeEnum.cs" />
+    <Compile Include="Utilities\DecompilerFunctionUtilities.cs" />
+    <Compile Include="Utilities\Fast3DDecoder.cs" />
+    <Compile Include="Utilities\MupenUtilities.cs" />
+    <Compile Include="Utilities\InGameTrigUtilities.cs" />
+    <Compile Include="Utilities\BitfsPlatformGroupTable.cs" />
+    <Compile Include="Utilities\ProcessGroupUtilities.cs" />
+    <Compile Include="Utilities\ZipUtilities.cs" />
+    <Compile Include="Utilities\StringUtilities.cs" />
+    <Compile Include="Utilities\TestUtilities.cs" />
+    <Compile Include="Utilities\DemoCounterUtilities.cs" />
+    <Compile Include="Utilities\TtcSpeedSettingUtilities.cs" />
+    <Compile Include="Utilities\MovementCalculator.cs" />
+    <Compile Include="Utilities\VarHackSpecialUtilities.cs" />
+    <Compile Include="Utilities\WatchVariableSpecialDictionary.cs" />
+    <Compile Include="Utilities\WatchVariableSelectionUtilities.cs" />
+    <Compile Include="Utilities\WatchVariableSpecialUtilities.cs" />
+    <Compile Include="Utilities\WatchVariableCoordinateManager.cs" />
+    <Compile Include="Utilities\AreaUtilities.cs" />
+    <Compile Include="Utilities\DialogUtilities.cs" />
+    <Compile Include="Utilities\TypeUtilities.cs" />
+    <Compile Include="Utilities\WatchVariableUtilities.cs" />
+    <Compile Include="Utilities\BehaviorDecoder.cs" />
+    <Compile Include="Utilities\Kernal32NativeMethods.cs" />
+    <Compile Include="Utilities\MoreMath.cs" />
+    <Compile Include="Utilities\ControlUtilities.cs" />
+    <Compile Include="Utilities\TriangleUtilities.cs" />
+    <Compile Include="Utilities\ScriptParser.cs" />
+    <Compile Include="Utilities\N64Disassembler.cs" />
+    <Compile Include="Utilities\ButtonUtilities.cs" />
+    <Compile Include="Structs\ProcessSelection.cs" />
+    <Compile Include="Forms\StroopMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StroopMainForm.Designer.cs">
+      <DependentUpon>StroopMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\Stream\ProcessStream.cs" />
+    <Compile Include="Utilities\ParsingUtilities.cs" />
+    <Compile Include="Structs\Configurations\Config.cs" />
+    <Compile Include="Extensions\RichTextBoxExtensions.cs" />
+    <Compile Include="Extensions\SizeExtensions.cs" />
+    <Compile Include="Utilities\PuUtilities.cs" />
+    <Compile Include="Utilities\RngIndexer.cs" />
+    <Compile Include="Utilities\XmlConfigParser.cs" />
+    <Compile Include="Forms\InfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InfoForm.Designer.cs">
+      <DependentUpon>InfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\VariableControllerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\VariableControllerForm.Designer.cs">
+      <DependentUpon>VariableControllerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\VariableViewerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\VariableViewerForm.Designer.cs">
+      <DependentUpon>VariableViewerForm.cs</DependentUpon>
+    </Compile>
+    <None Include="app.manifest" />
+    <None Include="Resources\lock_blue.png" />
+    <None Include="Controls\Map\MapTab.cd" />
+    <None Include="Resources\cog.png" />
+    <None Include="Resources\image_eye_closed2.png" />
+    <None Include="Resources\image_eye_open2.png" />
+    <None Include="Resources\image_eye_closed.png" />
+    <None Include="Resources\image_eye_open.png" />
+    <None Include="Resources\image_upright.png" />
+    <None Include="Resources\image_upleft.png" />
+    <None Include="Resources\image_up.png" />
+    <None Include="Resources\image_right.png" />
+    <None Include="Resources\image_plus.png" />
+    <None Include="Resources\image_minus.png" />
+    <None Include="Resources\image_left.png" />
+    <None Include="Resources\image_downright.png" />
+    <None Include="Resources\image_downleft.png" />
+    <None Include="Resources\image_down.png" />
+    <None Include="Resources\image_counterclockwise.png" />
+    <None Include="Resources\image_clockwise.png" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EmbeddedResource Include="Controls\Map\Trackers\ColorSelector.resx">
+      <DependentUpon>ColorSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Map\Trackers\MapTracker.resx">
+      <DependentUpon>MapTracker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\WatchVariableControl.resx">
+      <DependentUpon>WatchVariableControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\VarHackContainer.resx">
+      <DependentUpon>VarHackContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Map\MapObjectControl.resx">
+      <DependentUpon>MapObjectControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TextForm.resx">
+      <DependentUpon>TextForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ActionForm.resx">
+      <DependentUpon>ActionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoadingForm.resx">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\VariablePopOutForm.resx">
+      <DependentUpon>VariablePopOutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectionForm.resx">
+      <DependentUpon>SelectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainLoadingForm.resx">
+      <DependentUpon>MainLoadingForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="Config\ArcSineData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\MainSaveData.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\MhsData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\SnowData.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\SavedSettings.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\SineData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\CourseData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\TasData.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\FileImageAssociations.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\InputImageAssociations.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\MarioAnimations.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\ActionsData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\CamHackData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\FileData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\DebugData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\PuData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\Missions.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\KoopaTheQuick1Waypoints.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\KoopaTheQuick2Waypoints.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\RacingPenguinWaypoints.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\QuarterFrameData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\MarioActions.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\InputData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\PendulumSwings.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\AreaData.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\TriangleInfo.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\TrianglesData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Config\CustomData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Config\WaterData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Forms\StroopMainForm.resx">
+      <DependentUpon>StroopMainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\VariableBitForm.resx">
+      <DependentUpon>VariableBitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Schemas\ConfigSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="Config\Hacks.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Forms\InfoForm.resx">
+      <DependentUpon>InfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\VariableControllerForm.resx">
+      <DependentUpon>VariableControllerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\VariableViewerForm.resx">
+      <DependentUpon>VariableViewerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Lib\ensurepip\_bundled\pip-8.1.1-py2.py3-none-any.whl" />
+    <None Include="Lib\ensurepip\_bundled\setuptools-20.10.1-py2.py3-none-any.whl" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Schemas\MiscDataSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\ObjectAssociationsSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\MarioDataSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\ObjectDataSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\ReusableTypes.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\MapAssociationsSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\ScriptsSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\CameraDataSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\HudDataSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\HacksSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\TrianglesDataSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\ActionTableSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\AnimationTableSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\PendulumSwingTableSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\InputImageAssociationsSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\FileDataSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\FileImageAssociationsSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\MissionTableSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\CourseDataTableSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\WaypointTableSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\ValueListSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Schemas\TriangleInfoTableSchema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\CameraData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Config\Config.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Config\HudData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Config\ObjectData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Config\Scripts.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\MapAssociations.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\MarioData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\ObjectAssociations.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Config\MiscData.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="icon.ico" />
+    <Content Include="Lib\abc.py" />
+    <Content Include="Lib\aifc.py" />
+    <Content Include="Lib\antigravity.py" />
+    <Content Include="Lib\anydbm.py" />
+    <Content Include="Lib\argparse.py" />
+    <Content Include="Lib\ast.py" />
+    <Content Include="Lib\asynchat.py" />
+    <Content Include="Lib\asyncore.py" />
+    <Content Include="Lib\atexit.py" />
+    <Content Include="Lib\audiodev.py" />
+    <Content Include="Lib\base64.py" />
+    <Content Include="Lib\BaseHTTPServer.py" />
+    <Content Include="Lib\Bastion.py" />
+    <Content Include="Lib\bdb.py" />
+    <Content Include="Lib\binhex.py" />
+    <Content Include="Lib\bisect.py" />
+    <Content Include="Lib\calendar.py" />
+    <Content Include="Lib\cgi.py" />
+    <Content Include="Lib\CGIHTTPServer.py" />
+    <Content Include="Lib\cgitb.py" />
+    <Content Include="Lib\chunk.py" />
+    <Content Include="Lib\cmd.py" />
+    <Content Include="Lib\code.py" />
+    <Content Include="Lib\codecs.py" />
+    <Content Include="Lib\codeop.py" />
+    <Content Include="Lib\collections.py" />
+    <Content Include="Lib\colorsys.py" />
+    <Content Include="Lib\commands.py" />
+    <Content Include="Lib\compileall.py" />
+    <Content Include="Lib\ConfigParser.py" />
+    <Content Include="Lib\contextlib.py" />
+    <Content Include="Lib\Cookie.py" />
+    <Content Include="Lib\cookielib.py" />
+    <Content Include="Lib\copy.py" />
+    <Content Include="Lib\csv.py" />
+    <Content Include="Lib\ctypes\macholib\dyld.py" />
+    <Content Include="Lib\ctypes\macholib\dylib.py" />
+    <Content Include="Lib\ctypes\macholib\framework.py" />
+    <Content Include="Lib\ctypes\macholib\__init__.py" />
+    <Content Include="Lib\ctypes\util.py" />
+    <Content Include="Lib\ctypes\wintypes.py" />
+    <Content Include="Lib\ctypes\_endian.py" />
+    <Content Include="Lib\ctypes\__init__.py" />
+    <Content Include="Lib\decimal.py" />
+    <Content Include="Lib\difflib.py" />
+    <Content Include="Lib\dircache.py" />
+    <Content Include="Lib\dis.py" />
+    <Content Include="Lib\distutils\archive_util.py" />
+    <Content Include="Lib\distutils\bcppcompiler.py" />
+    <Content Include="Lib\distutils\ccompiler.py" />
+    <Content Include="Lib\distutils\cmd.py" />
+    <Content Include="Lib\distutils\command\bdist.py" />
+    <Content Include="Lib\distutils\command\bdist_dumb.py" />
+    <Content Include="Lib\distutils\command\bdist_rpm.py" />
+    <Content Include="Lib\distutils\command\bdist_wininst.py" />
+    <Content Include="Lib\distutils\command\build.py" />
+    <Content Include="Lib\distutils\command\build_clib.py" />
+    <Content Include="Lib\distutils\command\build_ext.py" />
+    <Content Include="Lib\distutils\command\build_py.py" />
+    <Content Include="Lib\distutils\command\build_scripts.py" />
+    <Content Include="Lib\distutils\command\check.py" />
+    <Content Include="Lib\distutils\command\clean.py" />
+    <Content Include="Lib\distutils\command\config.py" />
+    <Content Include="Lib\distutils\command\install.py" />
+    <Content Include="Lib\distutils\command\install_data.py" />
+    <Content Include="Lib\distutils\command\install_egg_info.py" />
+    <Content Include="Lib\distutils\command\install_headers.py" />
+    <Content Include="Lib\distutils\command\install_lib.py" />
+    <Content Include="Lib\distutils\command\install_scripts.py" />
+    <Content Include="Lib\distutils\command\register.py" />
+    <Content Include="Lib\distutils\command\sdist.py" />
+    <Content Include="Lib\distutils\command\upload.py" />
+    <Content Include="Lib\distutils\command\__init__.py" />
+    <Content Include="Lib\distutils\config.py" />
+    <Content Include="Lib\distutils\core.py" />
+    <Content Include="Lib\distutils\cygwinccompiler.py" />
+    <Content Include="Lib\distutils\debug.py" />
+    <Content Include="Lib\distutils\dep_util.py" />
+    <Content Include="Lib\distutils\dir_util.py" />
+    <Content Include="Lib\distutils\dist.py" />
+    <Content Include="Lib\distutils\emxccompiler.py" />
+    <Content Include="Lib\distutils\errors.py" />
+    <Content Include="Lib\distutils\extension.py" />
+    <Content Include="Lib\distutils\fancy_getopt.py" />
+    <Content Include="Lib\distutils\filelist.py" />
+    <Content Include="Lib\distutils\file_util.py" />
+    <Content Include="Lib\distutils\log.py" />
+    <Content Include="Lib\distutils\msvccompiler.py" />
+    <Content Include="Lib\distutils\spawn.py" />
+    <Content Include="Lib\distutils\sysconfig.py" />
+    <Content Include="Lib\distutils\text_file.py" />
+    <Content Include="Lib\distutils\unixccompiler.py" />
+    <Content Include="Lib\distutils\util.py" />
+    <Content Include="Lib\distutils\version.py" />
+    <Content Include="Lib\distutils\versionpredicate.py" />
+    <Content Include="Lib\distutils\__init__.py" />
+    <Content Include="Lib\doctest.py" />
+    <Content Include="Lib\DocXMLRPCServer.py" />
+    <Content Include="Lib\dumbdbm.py" />
+    <Content Include="Lib\dummy_thread.py" />
+    <Content Include="Lib\dummy_threading.py" />
+    <Content Include="Lib\email\base64mime.py" />
+    <Content Include="Lib\email\charset.py" />
+    <Content Include="Lib\email\encoders.py" />
+    <Content Include="Lib\email\errors.py" />
+    <Content Include="Lib\email\feedparser.py" />
+    <Content Include="Lib\email\generator.py" />
+    <Content Include="Lib\email\header.py" />
+    <Content Include="Lib\email\iterators.py" />
+    <Content Include="Lib\email\message.py" />
+    <Content Include="Lib\email\mime\application.py" />
+    <Content Include="Lib\email\mime\audio.py" />
+    <Content Include="Lib\email\mime\base.py" />
+    <Content Include="Lib\email\mime\image.py" />
+    <Content Include="Lib\email\mime\message.py" />
+    <Content Include="Lib\email\mime\multipart.py" />
+    <Content Include="Lib\email\mime\nonmultipart.py" />
+    <Content Include="Lib\email\mime\text.py" />
+    <Content Include="Lib\email\mime\__init__.py" />
+    <Content Include="Lib\email\parser.py" />
+    <Content Include="Lib\email\quoprimime.py" />
+    <Content Include="Lib\email\utils.py" />
+    <Content Include="Lib\email\_parseaddr.py" />
+    <Content Include="Lib\email\__init__.py" />
+    <Content Include="Lib\encodings\aliases.py" />
+    <Content Include="Lib\encodings\ascii.py" />
+    <Content Include="Lib\encodings\base64_codec.py" />
+    <Content Include="Lib\encodings\bz2_codec.py" />
+    <Content Include="Lib\encodings\charmap.py" />
+    <Content Include="Lib\encodings\cp037.py" />
+    <Content Include="Lib\encodings\cp1006.py" />
+    <Content Include="Lib\encodings\cp1026.py" />
+    <Content Include="Lib\encodings\cp1140.py" />
+    <Content Include="Lib\encodings\cp1250.py" />
+    <Content Include="Lib\encodings\cp1251.py" />
+    <Content Include="Lib\encodings\cp1252.py" />
+    <Content Include="Lib\encodings\cp1253.py" />
+    <Content Include="Lib\encodings\cp1254.py" />
+    <Content Include="Lib\encodings\cp1255.py" />
+    <Content Include="Lib\encodings\cp1256.py" />
+    <Content Include="Lib\encodings\cp1257.py" />
+    <Content Include="Lib\encodings\cp1258.py" />
+    <Content Include="Lib\encodings\cp424.py" />
+    <Content Include="Lib\encodings\cp437.py" />
+    <Content Include="Lib\encodings\cp500.py" />
+    <Content Include="Lib\encodings\cp720.py" />
+    <Content Include="Lib\encodings\cp737.py" />
+    <Content Include="Lib\encodings\cp775.py" />
+    <Content Include="Lib\encodings\cp850.py" />
+    <Content Include="Lib\encodings\cp852.py" />
+    <Content Include="Lib\encodings\cp855.py" />
+    <Content Include="Lib\encodings\cp856.py" />
+    <Content Include="Lib\encodings\cp857.py" />
+    <Content Include="Lib\encodings\cp858.py" />
+    <Content Include="Lib\encodings\cp860.py" />
+    <Content Include="Lib\encodings\cp861.py" />
+    <Content Include="Lib\encodings\cp862.py" />
+    <Content Include="Lib\encodings\cp863.py" />
+    <Content Include="Lib\encodings\cp864.py" />
+    <Content Include="Lib\encodings\cp865.py" />
+    <Content Include="Lib\encodings\cp866.py" />
+    <Content Include="Lib\encodings\cp869.py" />
+    <Content Include="Lib\encodings\cp874.py" />
+    <Content Include="Lib\encodings\cp875.py" />
+    <Content Include="Lib\encodings\hex_codec.py" />
+    <Content Include="Lib\encodings\hp_roman8.py" />
+    <Content Include="Lib\encodings\idna.py" />
+    <Content Include="Lib\encodings\iso8859_1.py" />
+    <Content Include="Lib\encodings\iso8859_10.py" />
+    <Content Include="Lib\encodings\iso8859_11.py" />
+    <Content Include="Lib\encodings\iso8859_13.py" />
+    <Content Include="Lib\encodings\iso8859_14.py" />
+    <Content Include="Lib\encodings\iso8859_15.py" />
+    <Content Include="Lib\encodings\iso8859_16.py" />
+    <Content Include="Lib\encodings\iso8859_2.py" />
+    <Content Include="Lib\encodings\iso8859_3.py" />
+    <Content Include="Lib\encodings\iso8859_4.py" />
+    <Content Include="Lib\encodings\iso8859_5.py" />
+    <Content Include="Lib\encodings\iso8859_6.py" />
+    <Content Include="Lib\encodings\iso8859_7.py" />
+    <Content Include="Lib\encodings\iso8859_8.py" />
+    <Content Include="Lib\encodings\iso8859_9.py" />
+    <Content Include="Lib\encodings\koi8_r.py" />
+    <Content Include="Lib\encodings\koi8_u.py" />
+    <Content Include="Lib\encodings\latin_1.py" />
+    <Content Include="Lib\encodings\mac_arabic.py" />
+    <Content Include="Lib\encodings\mac_centeuro.py" />
+    <Content Include="Lib\encodings\mac_croatian.py" />
+    <Content Include="Lib\encodings\mac_cyrillic.py" />
+    <Content Include="Lib\encodings\mac_farsi.py" />
+    <Content Include="Lib\encodings\mac_greek.py" />
+    <Content Include="Lib\encodings\mac_iceland.py" />
+    <Content Include="Lib\encodings\mac_latin2.py" />
+    <Content Include="Lib\encodings\mac_roman.py" />
+    <Content Include="Lib\encodings\mac_romanian.py" />
+    <Content Include="Lib\encodings\mac_turkish.py" />
+    <Content Include="Lib\encodings\mbcs.py" />
+    <Content Include="Lib\encodings\palmos.py" />
+    <Content Include="Lib\encodings\ptcp154.py" />
+    <Content Include="Lib\encodings\punycode.py" />
+    <Content Include="Lib\encodings\quopri_codec.py" />
+    <Content Include="Lib\encodings\raw_unicode_escape.py" />
+    <Content Include="Lib\encodings\rot_13.py" />
+    <Content Include="Lib\encodings\string_escape.py" />
+    <Content Include="Lib\encodings\tis_620.py" />
+    <Content Include="Lib\encodings\undefined.py" />
+    <Content Include="Lib\encodings\unicode_escape.py" />
+    <Content Include="Lib\encodings\unicode_internal.py" />
+    <Content Include="Lib\encodings\utf_16.py" />
+    <Content Include="Lib\encodings\utf_16_be.py" />
+    <Content Include="Lib\encodings\utf_16_le.py" />
+    <Content Include="Lib\encodings\utf_32.py" />
+    <Content Include="Lib\encodings\utf_32_be.py" />
+    <Content Include="Lib\encodings\utf_32_le.py" />
+    <Content Include="Lib\encodings\utf_7.py" />
+    <Content Include="Lib\encodings\utf_8.py" />
+    <Content Include="Lib\encodings\utf_8_sig.py" />
+    <Content Include="Lib\encodings\uu_codec.py" />
+    <Content Include="Lib\encodings\zlib_codec.py" />
+    <Content Include="Lib\encodings\__init__.py" />
+    <Content Include="Lib\ensurepip\_uninstall.py" />
+    <Content Include="Lib\ensurepip\__init__.py" />
+    <Content Include="Lib\ensurepip\__main__.py" />
+    <Content Include="Lib\filecmp.py" />
+    <Content Include="Lib\fileinput.py" />
+    <Content Include="Lib\fnmatch.py" />
+    <Content Include="Lib\formatter.py" />
+    <Content Include="Lib\fpformat.py" />
+    <Content Include="Lib\fractions.py" />
+    <Content Include="Lib\ftplib.py" />
+    <Content Include="Lib\functools.py" />
+    <Content Include="Lib\genericpath.py" />
+    <Content Include="Lib\getopt.py" />
+    <Content Include="Lib\getpass.py" />
+    <Content Include="Lib\gettext.py" />
+    <Content Include="Lib\glob.py" />
+    <Content Include="Lib\gzip.py" />
+    <Content Include="Lib\hashlib.py" />
+    <Content Include="Lib\heapq.py" />
+    <Content Include="Lib\hmac.py" />
+    <Content Include="Lib\htmlentitydefs.py" />
+    <Content Include="Lib\htmllib.py" />
+    <Content Include="Lib\HTMLParser.py" />
+    <Content Include="Lib\httplib.py" />
+    <Content Include="Lib\ihooks.py" />
+    <Content Include="Lib\imaplib.py" />
+    <Content Include="Lib\imghdr.py" />
+    <Content Include="Lib\importlib\__init__.py" />
+    <Content Include="Lib\imputil.py" />
+    <Content Include="Lib\inspect.py" />
+    <Content Include="Lib\io.py" />
+    <Content Include="Lib\json\decoder.py" />
+    <Content Include="Lib\json\encoder.py" />
+    <Content Include="Lib\json\scanner.py" />
+    <Content Include="Lib\json\tool.py" />
+    <Content Include="Lib\json\__init__.py" />
+    <Content Include="Lib\keyword.py" />
+    <Content Include="Lib\lib2to3\btm_matcher.py" />
+    <Content Include="Lib\lib2to3\btm_utils.py" />
+    <Content Include="Lib\lib2to3\fixer_base.py" />
+    <Content Include="Lib\lib2to3\fixer_util.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_apply.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_asserts.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_basestring.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_buffer.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_callable.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_dict.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_except.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_exec.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_execfile.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_exitfunc.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_filter.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_funcattrs.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_future.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_getcwdu.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_has_key.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_idioms.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_import.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_imports.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_imports2.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_input.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_intern.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_isinstance.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_itertools.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_itertools_imports.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_long.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_map.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_metaclass.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_methodattrs.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_ne.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_next.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_nonzero.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_numliterals.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_operator.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_paren.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_print.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_raise.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_raw_input.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_reduce.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_renames.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_repr.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_set_literal.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_standarderror.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_sys_exc.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_throw.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_tuple_params.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_types.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_unicode.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_urllib.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_ws_comma.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_xrange.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_xreadlines.py" />
+    <Content Include="Lib\lib2to3\fixes\fix_zip.py" />
+    <Content Include="Lib\lib2to3\fixes\__init__.py" />
+    <Content Include="Lib\lib2to3\main.py" />
+    <Content Include="Lib\lib2to3\patcomp.py" />
+    <Content Include="Lib\lib2to3\pgen2\conv.py" />
+    <Content Include="Lib\lib2to3\pgen2\driver.py" />
+    <Content Include="Lib\lib2to3\pgen2\grammar.py" />
+    <Content Include="Lib\lib2to3\pgen2\literals.py" />
+    <Content Include="Lib\lib2to3\pgen2\parse.py" />
+    <Content Include="Lib\lib2to3\pgen2\pgen.py" />
+    <Content Include="Lib\lib2to3\pgen2\token.py" />
+    <Content Include="Lib\lib2to3\pgen2\tokenize.py" />
+    <Content Include="Lib\lib2to3\pgen2\__init__.py" />
+    <Content Include="Lib\lib2to3\pygram.py" />
+    <Content Include="Lib\lib2to3\pytree.py" />
+    <Content Include="Lib\lib2to3\refactor.py" />
+    <Content Include="Lib\lib2to3\__init__.py" />
+    <Content Include="Lib\lib2to3\__main__.py" />
+    <Content Include="Lib\linecache.py" />
+    <Content Include="Lib\locale.py" />
+    <Content Include="Lib\logging\config.py" />
+    <Content Include="Lib\logging\handlers.py" />
+    <Content Include="Lib\logging\__init__.py" />
+    <Content Include="Lib\macpath.py" />
+    <Content Include="Lib\macurl2path.py" />
+    <Content Include="Lib\mailbox.py" />
+    <Content Include="Lib\mailcap.py" />
+    <Content Include="Lib\markupbase.py" />
+    <Content Include="Lib\md5.py" />
+    <Content Include="Lib\mhlib.py" />
+    <Content Include="Lib\mimetools.py" />
+    <Content Include="Lib\mimetypes.py" />
+    <Content Include="Lib\MimeWriter.py" />
+    <Content Include="Lib\mimify.py" />
+    <Content Include="Lib\modulefinder.py" />
+    <Content Include="Lib\multifile.py" />
+    <Content Include="Lib\multiprocessing\connection.py" />
+    <Content Include="Lib\multiprocessing\dummy\connection.py" />
+    <Content Include="Lib\multiprocessing\dummy\__init__.py" />
+    <Content Include="Lib\multiprocessing\forking.py" />
+    <Content Include="Lib\multiprocessing\heap.py" />
+    <Content Include="Lib\multiprocessing\managers.py" />
+    <Content Include="Lib\multiprocessing\pool.py" />
+    <Content Include="Lib\multiprocessing\process.py" />
+    <Content Include="Lib\multiprocessing\queues.py" />
+    <Content Include="Lib\multiprocessing\reduction.py" />
+    <Content Include="Lib\multiprocessing\sharedctypes.py" />
+    <Content Include="Lib\multiprocessing\synchronize.py" />
+    <Content Include="Lib\multiprocessing\util.py" />
+    <Content Include="Lib\multiprocessing\__init__.py" />
+    <Content Include="Lib\mutex.py" />
+    <Content Include="Lib\netrc.py" />
+    <Content Include="Lib\new.py" />
+    <Content Include="Lib\nntplib.py" />
+    <Content Include="Lib\ntpath.py" />
+    <Content Include="Lib\nturl2path.py" />
+    <Content Include="Lib\numbers.py" />
+    <Content Include="Lib\opcode.py" />
+    <Content Include="Lib\optparse.py" />
+    <Content Include="Lib\os.py" />
+    <Content Include="Lib\os2emxpath.py" />
+    <Content Include="Lib\pdb.py" />
+    <Content Include="Lib\pickle.py" />
+    <Content Include="Lib\pickletools.py" />
+    <Content Include="Lib\pipes.py" />
+    <Content Include="Lib\pkgutil.py" />
+    <Content Include="Lib\platform.py" />
+    <Content Include="Lib\plistlib.py" />
+    <Content Include="Lib\popen2.py" />
+    <Content Include="Lib\poplib.py" />
+    <Content Include="Lib\posixfile.py" />
+    <Content Include="Lib\posixpath.py" />
+    <Content Include="Lib\pprint.py" />
+    <Content Include="Lib\profile.py" />
+    <Content Include="Lib\pstats.py" />
+    <Content Include="Lib\pyclbr.py" />
+    <Content Include="Lib\pydoc.py" />
+    <Content Include="Lib\pydoc_data\topics.py" />
+    <Content Include="Lib\pydoc_data\__init__.py" />
+    <Content Include="Lib\py_compile.py" />
+    <Content Include="Lib\Queue.py" />
+    <Content Include="Lib\quopri.py" />
+    <Content Include="Lib\random.py" />
+    <Content Include="Lib\repr.py" />
+    <Content Include="Lib\rexec.py" />
+    <Content Include="Lib\rfc822.py" />
+    <Content Include="Lib\rlcompleter.py" />
+    <Content Include="Lib\robotparser.py" />
+    <Content Include="Lib\runpy.py" />
+    <Content Include="Lib\sched.py" />
+    <Content Include="Lib\sets.py" />
+    <Content Include="Lib\sgmllib.py" />
+    <Content Include="Lib\sha.py" />
+    <Content Include="Lib\shelve.py" />
+    <Content Include="Lib\shlex.py" />
+    <Content Include="Lib\shutil.py" />
+    <Content Include="Lib\SimpleHTTPServer.py" />
+    <Content Include="Lib\SimpleXMLRPCServer.py" />
+    <Content Include="Lib\site-packages\README.txt" />
+    <Content Include="Lib\site.py" />
+    <Content Include="Lib\smtpd.py" />
+    <Content Include="Lib\smtplib.py" />
+    <Content Include="Lib\sndhdr.py" />
+    <Content Include="Lib\SocketServer.py" />
+    <Content Include="Lib\sqlite3\dbapi2.py" />
+    <Content Include="Lib\sqlite3\dump.py" />
+    <Content Include="Lib\sqlite3\__init__.py" />
+    <Content Include="Lib\sre_compile.py" />
+    <Content Include="Lib\sre_constants.py" />
+    <Content Include="Lib\sre_parse.py" />
+    <Content Include="Lib\ssl.py" />
+    <Content Include="Lib\stat.py" />
+    <Content Include="Lib\statvfs.py" />
+    <Content Include="Lib\string.py" />
+    <Content Include="Lib\StringIO.py" />
+    <Content Include="Lib\stringold.py" />
+    <Content Include="Lib\stringprep.py" />
+    <Content Include="Lib\struct.py" />
+    <Content Include="Lib\subprocess.py" />
+    <Content Include="Lib\sunau.py" />
+    <Content Include="Lib\sunaudio.py" />
+    <Content Include="Lib\symbol.py" />
+    <Content Include="Lib\sysconfig.py" />
+    <Content Include="Lib\tabnanny.py" />
+    <Content Include="Lib\tarfile.py" />
+    <Content Include="Lib\telnetlib.py" />
+    <Content Include="Lib\tempfile.py" />
+    <Content Include="Lib\textwrap.py" />
+    <Content Include="Lib\this.py" />
+    <Content Include="Lib\threading.py" />
+    <Content Include="Lib\timeit.py" />
+    <Content Include="Lib\toaiff.py" />
+    <Content Include="Lib\token.py" />
+    <Content Include="Lib\tokenize.py" />
+    <Content Include="Lib\trace.py" />
+    <Content Include="Lib\traceback.py" />
+    <Content Include="Lib\types.py" />
+    <Content Include="Lib\unittest\case.py" />
+    <Content Include="Lib\unittest\loader.py" />
+    <Content Include="Lib\unittest\main.py" />
+    <Content Include="Lib\unittest\result.py" />
+    <Content Include="Lib\unittest\runner.py" />
+    <Content Include="Lib\unittest\signals.py" />
+    <Content Include="Lib\unittest\suite.py" />
+    <Content Include="Lib\unittest\util.py" />
+    <Content Include="Lib\unittest\__init__.py" />
+    <Content Include="Lib\unittest\__main__.py" />
+    <Content Include="Lib\urllib.py" />
+    <Content Include="Lib\urllib2.py" />
+    <Content Include="Lib\urlparse.py" />
+    <Content Include="Lib\user.py" />
+    <Content Include="Lib\UserDict.py" />
+    <Content Include="Lib\UserList.py" />
+    <Content Include="Lib\UserString.py" />
+    <Content Include="Lib\uu.py" />
+    <Content Include="Lib\uuid.py" />
+    <Content Include="Lib\warnings.py" />
+    <Content Include="Lib\wave.py" />
+    <Content Include="Lib\weakref.py" />
+    <Content Include="Lib\webbrowser.py" />
+    <Content Include="Lib\whichdb.py" />
+    <Content Include="Lib\wsgiref\handlers.py" />
+    <Content Include="Lib\wsgiref\headers.py" />
+    <Content Include="Lib\wsgiref\simple_server.py" />
+    <Content Include="Lib\wsgiref\util.py" />
+    <Content Include="Lib\wsgiref\validate.py" />
+    <Content Include="Lib\wsgiref\__init__.py" />
+    <Content Include="Lib\xdrlib.py" />
+    <Content Include="Lib\xmllib.py" />
+    <Content Include="Lib\xmlrpclib.py" />
+    <Content Include="Lib\xml\dom\domreg.py" />
+    <Content Include="Lib\xml\dom\minicompat.py" />
+    <Content Include="Lib\xml\dom\minidom.py" />
+    <Content Include="Lib\xml\dom\NodeFilter.py" />
+    <Content Include="Lib\xml\dom\pulldom.py" />
+    <Content Include="Lib\xml\dom\xmlbuilder.py" />
+    <Content Include="Lib\xml\dom\__init__.py" />
+    <Content Include="Lib\xml\etree\ElementInclude.py" />
+    <Content Include="Lib\xml\etree\ElementPath.py" />
+    <Content Include="Lib\xml\etree\ElementTree.py" />
+    <Content Include="Lib\xml\etree\SimpleXMLTreeBuilder.py" />
+    <Content Include="Lib\xml\etree\__init__.py" />
+    <Content Include="Lib\xml\parsers\__init__.py" />
+    <Content Include="Lib\xml\sax\handler.py" />
+    <Content Include="Lib\xml\sax\saxutils.py" />
+    <Content Include="Lib\xml\sax\xmlreader.py" />
+    <Content Include="Lib\xml\sax\_exceptions.py" />
+    <Content Include="Lib\xml\sax\__init__.py" />
+    <Content Include="Lib\xml\__init__.py" />
+    <Content Include="Lib\zipfile.py" />
+    <Content Include="Lib\_abcoll.py" />
+    <Content Include="Lib\_LWPCookieJar.py" />
+    <Content Include="Lib\_MozillaCookieJar.py" />
+    <Content Include="Lib\_osx_support.py" />
+    <Content Include="Lib\_pyio.py" />
+    <Content Include="Lib\_strptime.py" />
+    <Content Include="Lib\_threading_local.py" />
+    <Content Include="Lib\_weakrefset.py" />
+    <Content Include="Lib\__future__.py" />
+    <Content Include="Lib\__phello__.foo.py" />
+    <Content Include="Licenses.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>del "$(TargetDir)OpenTK.dll.config"
+del "$(TargetDir)OpenTK.GLControl.xml"
+del "$(TargetDir)OpenTK.xml"
+del "$(TargetDir)STROOP.exe.config"
+</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>xcopy /E /Y /I "$(ProjectDir)Resources" "$(TargetDir)Resources" /D
+xcopy /E /Y /I "$(ProjectDir)Lib" "$(TargetDir)Lib" /D</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup>
+    <ReferencePath Include="C:\Users\Scott\Dropbox\My Documents\SM64\STROOP\github\STROOP\packages\AvalonEdit.5.0.4\lib\Net40\ICSharpCode.AvalonEdit.dll" />
+    <ReferencePath Include="C:\Users\Scott\Dropbox\My Documents\SM64\STROOP\github\STROOP\packages\SharpZipLib.1.0.0\lib\net45\ICSharpCode.SharpZipLib.dll" />
+    <ReferencePath Include="C:\Users\Scott\Dropbox\My Documents\SM64\STROOP\github\STROOP\packages\IronPython.2.7.7\lib\Net45\IronPython.dll" />
+    <ReferencePath Include="C:\Users\Scott\Dropbox\My Documents\SM64\STROOP\github\STROOP\packages\IronPython.2.7.7\lib\Net45\IronPython.Modules.dll" />
+    <ReferencePath Include="C:\Users\Scott\Dropbox\My Documents\SM64\STROOP\github\STROOP\packages\IronPython.2.7.7\lib\Net45\IronPython.SQLite.dll" />
+    <ReferencePath Include="C:\Users\Scott\Dropbox\My Documents\SM64\STROOP\github\STROOP\packages\IronPython.2.7.7\lib\Net45\IronPython.Wpf.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7\Microsoft.CSharp.dll" />
+    <ReferencePath Include="C:\Users\Scott\Dropbox\My Documents\SM64\STROOP\github\STROOP\packages\DynamicLanguageRuntime.1.1.2\lib\Net45\Microsoft.Dynamic.dll" />
+    <ReferencePath Include="C:\Users\Scott\Dropbox\My Documents\SM64\STROOP\github\STROOP\packages\DynamicLanguageRuntime.1.1.2\lib\Net45\Microsoft.Scripting.AspNet.dll" />
+    <ReferencePath Include="C:\Users\Scott\Dropbox\My Documents\SM64\STROOP\github\STROOP\packages\DynamicLanguageRuntime.1.1.2\lib\Net45\Microsoft.Scripting.dll" />
+    <ReferencePath Include="C:\Users\Scott\Dropbox\My Documents\SM64\STROOP\github\STROOP\packages\DynamicLanguageRuntime.1.1.2\lib\Net45\Microsoft.Scripting.Metadata.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7\mscorlib.dll" />
+    <ReferencePath Include="C:\Users\Scott\Dropbox\My Documents\SM64\STROOP\github\STROOP\packages\OpenTK.1.1.1589.5942\lib\NET40\OpenTK.dll" />
+    <ReferencePath Include="C:\Users\Scott\Dropbox\My Documents\SM64\STROOP\github\STROOP\packages\OpenTK.GLControl.1.1.1589.5942\lib\NET40\OpenTK.GLControl.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7\PresentationCore.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7\PresentationFramework.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7\System.Core.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7\System.Data.DataSetExtensions.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7\System.Data.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7\System.Deployment.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7\System.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7\System.Drawing.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7\System.Net.Http.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7\System.Windows.Forms.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7\System.Xaml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7\System.Xml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7\System.Xml.Linq.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7\UIAutomationProvider.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7\WindowsBase.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7\WindowsFormsIntegration.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="C:\Users\Scott\Dropbox\My Documents\SM64\STROOP\github\STROOP\STROOP\obj\Release\Controls\DecompilerView.g.cs" />
+    <Compile Include="C:\Users\Scott\Dropbox\My Documents\SM64\STROOP\github\STROOP\STROOP\obj\Release\STROOP_Content.g.cs" />
+  </ItemGroup>
+</Project>

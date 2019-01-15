@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -219,6 +219,8 @@ namespace STROOP.Managers
                     "Neutralize Ceiling Triangles",
                     "Neutralize Death Barriers",
                     "Neutralize Lava",
+                    "Neutralize Sleeping",
+                    "Neutralize Loading Zones"
                 },
                 new List<Action>() {
                     () => TriangleUtilities.NeutralizeTriangles(),
@@ -227,6 +229,13 @@ namespace STROOP.Managers
                     () => TriangleUtilities.NeutralizeTriangles(TriangleClassification.Ceiling),
                     () => TriangleUtilities.NeutralizeTriangles(0x0A),
                     () => TriangleUtilities.NeutralizeTriangles(0x01),
+                    () => TriangleUtilities.NeutralizeSleeping(),
+                    () => {
+                        TriangleUtilities.NeutralizeTriangles(0x1B);
+                        TriangleUtilities.NeutralizeTriangles(0x1C);
+                        TriangleUtilities.NeutralizeTriangles(0x1D);
+                        TriangleUtilities.NeutralizeTriangles(0x1E);
+                    },
                 });
 
             var buttonTriangleDisableAllCamCollision = splitContainerTriangles.Panel1.Controls["buttonTriangleDisableAllCamCollision"] as Button;
@@ -234,13 +243,15 @@ namespace STROOP.Managers
 
             ControlUtilities.AddContextMenuStripFunctions(
                 buttonTriangleDisableAllCamCollision,
-                new List<string>() {
+                new List<string>()
+                {
                     "Disable Cam Collision for All Triangles",
                     "Disable Cam Collision for Wall Triangles",
                     "Disable Cam Collision for Floor Triangles",
                     "Disable Cam Collision for Ceiling Triangles",
                 },
-                new List<Action>() {
+                new List<Action>()
+                {
                     () => TriangleUtilities.DisableCamCollision(),
                     () => TriangleUtilities.DisableCamCollision(TriangleClassification.Wall),
                     () => TriangleUtilities.DisableCamCollision(TriangleClassification.Floor),

@@ -73,7 +73,7 @@ namespace STROOP
             set { lock (_gfxLock) { _textBrush.Color = value; } }
         }
 
-        bool _drawSelectedOverlay, _drawStoodOnOverlay, _drawHeldOverlay, _drawInteractionOverlay, _drawUsedOverlay,
+        bool _drawSelectedOverlay, _drawStoodOnOverlay, _drawRiddenOverlay, _drawHeldOverlay, _drawInteractionOverlay, _drawUsedOverlay,
             _drawClosestOverlay, _drawCameraOverlay, _drawCameraHackOverlay, _drawModelOverlay,
             _drawFloorOverlay, _drawWallOverlay, _drawCeilingOverlay,
             _drawParentOverlay, _drawParentUnusedOverlay, _drawParentNoneOverlay, _drawChildOverlay,
@@ -168,6 +168,15 @@ namespace STROOP
             ToolStripMenuItem itemRevive = new ToolStripMenuItem("Revive");
             itemRevive.Click += (sender, e) => ButtonUtilities.ReviveObject(getObjects());
 
+            ToolStripMenuItem itemRide = new ToolStripMenuItem("Ride");
+            itemRide.Click += (sender, e) => ButtonUtilities.RideObject(CurrentObject);
+
+            ToolStripMenuItem itemUnRide = new ToolStripMenuItem("UnRide");
+            itemUnRide.Click += (sender, e) => ButtonUtilities.UnRideObject();
+
+            ToolStripMenuItem itemUkikipedia = new ToolStripMenuItem("Ukikipedia");
+            itemUkikipedia.Click += (sender, e) => ButtonUtilities.UkikipediaObject(CurrentObject);
+
             ToolStripMenuItem itemCopyAddress = new ToolStripMenuItem("Copy Address");
             itemCopyAddress.Click += (sender, e) => Clipboard.SetText(HexUtilities.FormatValue(CurrentObject.Address));
 
@@ -234,6 +243,9 @@ namespace STROOP
             ContextMenuStrip.Items.Add(itemUnClone);
             ContextMenuStrip.Items.Add(itemUnload);
             ContextMenuStrip.Items.Add(itemRevive);
+            ContextMenuStrip.Items.Add(itemRide);
+            ContextMenuStrip.Items.Add(itemUnRide);
+            ContextMenuStrip.Items.Add(itemUkikipedia);
             ContextMenuStrip.Items.Add(new ToolStripSeparator());
             ContextMenuStrip.Items.Add(itemCopyAddress);
             ContextMenuStrip.Items.Add(itemCopyPosition);
@@ -347,6 +359,7 @@ namespace STROOP
             {
                 _drawSelectedOverlay,
                 _drawStoodOnOverlay,
+                _drawRiddenOverlay,
                 _drawInteractionOverlay,
                 _drawHeldOverlay,
                 _drawUsedOverlay,
@@ -460,6 +473,8 @@ namespace STROOP
                 e.Graphics.DrawImage(_gui.HeldObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawStoodOnOverlay)
                 e.Graphics.DrawImage(_gui.StoodOnObjectOverlayImage, new Rectangle(new Point(), Size));
+            if (_drawRiddenOverlay)
+                e.Graphics.DrawImage(_gui.RiddenObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawUsedOverlay)
                 e.Graphics.DrawImage(_gui.UsedObjectOverlayImage, new Rectangle(new Point(), Size));
             if (_drawClosestOverlay)
@@ -498,6 +513,7 @@ namespace STROOP
             {
                 _drawSelectedOverlay = _manager.SelectedSlotsAddresses.Contains(address.Value);
                 _drawStoodOnOverlay = OverlayConfig.ShowOverlayStoodOnObject && address == DataModels.Mario.StoodOnObject;
+                _drawRiddenOverlay = OverlayConfig.ShowOverlayRiddenObject && address == DataModels.Mario.RiddenObject;
                 _drawInteractionOverlay = OverlayConfig.ShowOverlayInteractionObject && address == DataModels.Mario.InteractionObject;
                 _drawHeldOverlay = OverlayConfig.ShowOverlayHeldObject && address == DataModels.Mario.HeldObject;
                 _drawUsedOverlay = OverlayConfig.ShowOverlayUsedObject && address == DataModels.Mario.UsedObject;
@@ -525,6 +541,13 @@ namespace STROOP
                     _drawChildOverlay = (OverlayConfig.ShowOverlayChildObject || Keyboard.IsKeyDown(Key.P)) &&
                         CurrentObject?.Parent == hoveredObject.Address;
                 }
+                else
+                {
+                    _drawParentOverlay = false;
+                    _drawParentNoneOverlay = false;
+                    _drawParentUnusedOverlay = false;
+                    _drawChildOverlay = false;
+                }
 
                 uint collisionObjAddress = hoveredAddress.HasValue && Keyboard.IsKeyDown(Key.C)
                     ? hoveredAddress.Value : Config.Stream.GetUInt32(MarioObjectConfig.PointerAddress);
@@ -543,6 +566,7 @@ namespace STROOP
             {
                 _drawSelectedOverlay = false;
                 _drawStoodOnOverlay = false;
+                _drawRiddenOverlay = false;
                 _drawInteractionOverlay = false;
                 _drawHeldOverlay = false;
                 _drawUsedOverlay = false;

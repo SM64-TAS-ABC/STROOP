@@ -1241,7 +1241,7 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
-            _dictionary.Add("TriangleDescription",
+            _dictionary.Add("TriangleTypeDescription",
                 ((uint triAddress) =>
                 {
                     TriangleDataModel triStruct = Config.TriangleManager.GetTriangleStruct(triAddress);
@@ -1906,7 +1906,7 @@ namespace STROOP.Structs
                 },
                 DEFAULT_SETTER));
 
-            _dictionary.Add("MarioAnimationDescription",
+            _dictionary.Add("AnimationDescription",
                 ((uint dummy) =>
                 {
                     return TableConfig.MarioAnimations.GetAnimationName();

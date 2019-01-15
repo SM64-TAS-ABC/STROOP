@@ -63,7 +63,7 @@ namespace STROOP
             Config.Stream.OnDisconnect += _sm64Stream_OnDisconnect;
             Config.Stream.WarnReadonlyOff += _sm64Stream_WarnReadonlyOff;
 
-            comboBoxRomVersion.DataSource = Enum.GetValues(typeof(RomVersion));
+            comboBoxRomVersion.DataSource = Enum.GetValues(typeof(RomVersionSelection));
             comboBoxReadWriteMode.DataSource = Enum.GetValues(typeof(ReadWriteMode));
 
             SetUpContextMenuStrips();
@@ -197,6 +197,11 @@ namespace STROOP
                 buttonMoveTabRight,
                 new List<string>() { "Restore Recommended Tab Order" },
                 new List<Action>() { () => SavedSettingsConfig.InvokeRecommendedTabOrder() });
+
+            ControlUtilities.AddContextMenuStripFunctions(
+                buttonDisconnect,
+                new List<string>() { "Save as Savestate" },
+                new List<Action>() { () => saveAsSavestate() });
         }
 
         private void CreateManagers()
@@ -505,7 +510,7 @@ namespace STROOP
             {
                 try
                 {
-                    if (!Config.Emulators.Select(e => e.ProcessName.ToLower()).Any(s => s.Contains(p.ProcessName.ToLower())))
+                    if (!Config.Emulators.Any(e => e.ProcessName.ToLower() == p.ProcessName.ToLower()))
                         continue;
 
                     if (p.HasExited)
@@ -566,8 +571,7 @@ namespace STROOP
         private void UpdateComboBoxes()
         {
             // Rom Version
-            RomVersionConfig.UpdateRomVersionUsingTell();
-            comboBoxRomVersion.SelectedItem = RomVersionConfig.Version;
+            RomVersionConfig.UpdateRomVersion((RomVersionSelection)comboBoxRomVersion.SelectedItem);
 
             // Readonly / Read+Write
             Config.Stream.Readonly = (ReadWriteMode)comboBoxReadWriteMode.SelectedItem == ReadWriteMode.ReadOnly;
@@ -865,6 +869,22 @@ namespace STROOP
 
             Config.Stream.OpenSTFile(openFileDialogSt.FileName);
             panelConnect.Visible = false;
+        }
+
+        private void saveAsSavestate()
+        {
+            StFileIO io = Config.Stream.IO as StFileIO;
+            if (io == null)
+            {
+                MessageBox.Show("The current connection is not an ST file. Open an savestate file to save the savestate.", "Connection not a savestate", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult dr = saveFileDialogSt.ShowDialog();
+            if (dr != DialogResult.OK)
+                return;
+
+            io.SaveMemory(saveFileDialogSt.FileName);
         }
 
         public void SwitchTab(string name)

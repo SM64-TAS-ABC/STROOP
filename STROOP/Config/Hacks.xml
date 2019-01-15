@@ -4,8 +4,9 @@
     <HackDirectory>Resources\Hacks\</HackDirectory>
   </Config>
   <SpawnHack path="SpawnHack.hck" behavior="0x8033D3D0" gfxId="0x8033D3D4" extra="0x8033D3D8"/>
-  <Hack name="Pu Visibility (by Peter Fedak)" path="PuVisible.hck" />
+  <Hack name="Pu Visibility" path="PuVisible.hck" />
   <Hack name="Camera 45 Degrees" path="Camera45Hack.hck" />
+  <Hack name="Camera Control" path="CameraControl.hck" />
   <Hack name="Quarter Frame Info" path="QFrameInfoHack.hck" />
   <Hack name="Display Variable" path="DisplayVariable.hck" />
   <Hack name="Display Variable 2" path="DisplayVariable2.hck" />

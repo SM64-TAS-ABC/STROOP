@@ -43,19 +43,40 @@ namespace STROOP.Forms
             InitializeComponent();
 
             _textBoxVarName.Text = String.Join(",", _varNames);
-            _buttonAdd.Click += (s, e) =>
-            {
-                List<string> values = ParsingUtilities.ParseStringList(_textBoxAddSubtract.Text);
-                for (int i = 0; i < _watchVarWrappers.Count; i++)
-                    _watchVarWrappers[i].AddValue(values[i % values.Count], true, _fixedAddressLists[i]);
-            };
 
-            _buttonSubtract.Click += (s, e) =>
+            Action<bool> addAction = (bool add) =>
             {
                 List<string> values = ParsingUtilities.ParseStringList(_textBoxAddSubtract.Text);
+                if (values.Count == 0) return;
                 for (int i = 0; i < _watchVarWrappers.Count; i++)
-                    _watchVarWrappers[i].AddValue(values[i % values.Count], false, _fixedAddressLists[i]);
+                    _watchVarWrappers[i].AddValue(values[i % values.Count], add, _fixedAddressLists[i]);
             };
+            _buttonAdd.Click += (s, e) => addAction(true);
+            _buttonSubtract.Click += (s, e) => addAction(false);
+
+            Timer addTimer = new Timer { Interval = 30 };
+            addTimer.Tick += (s, e) => { if (KeyboardUtilities.IsCtrlHeld()) addAction(true); };
+            _buttonAdd.MouseDown += (sender, e) => addTimer.Start();
+            _buttonAdd.MouseUp += (sender, e) => addTimer.Stop();
+
+            Timer addTimer2 = new Timer { Interval = 30 };
+            addTimer2.Tick += (s, e) => { addAction(true); };
+            ControlUtilities.AddContextMenuStripFunctions(
+                _buttonAdd,
+                new List<string>() { "Start Continuous Add", "Stop Continuous Add" },
+                new List<Action>() { () => addTimer2.Start(), () => addTimer2.Stop() });
+
+            Timer subtractTimer = new Timer { Interval = 30 };
+            subtractTimer.Tick += (s, e) => { if (KeyboardUtilities.IsCtrlHeld()) addAction(false); };
+            _buttonSubtract.MouseDown += (sender, e) => subtractTimer.Start();
+            _buttonSubtract.MouseUp += (sender, e) => subtractTimer.Stop();
+
+            Timer subtractTimer2 = new Timer { Interval = 30 };
+            subtractTimer2.Tick += (s, e) => { addAction(false); };
+            ControlUtilities.AddContextMenuStripFunctions(
+                _buttonSubtract,
+                new List<string>() { "Start Continuous Subtract", "Stop Continuous Subtract" },
+                new List<Action>() { () => subtractTimer2.Start(), () => subtractTimer2.Stop() });
 
             _buttonGet.Click += (s, e) => _textBoxGetSet.Text = GetValues();
 
@@ -96,6 +117,7 @@ namespace STROOP.Forms
         private void SetValues()
         {
             List<string> values = ParsingUtilities.ParseStringList(_textBoxGetSet.Text);
+            if (values.Count == 0) return;
             for (int i = 0; i < _watchVarWrappers.Count; i++)
                 _watchVarWrappers[i].SetValue(values[i % values.Count], _fixedAddressLists[i]);
         }

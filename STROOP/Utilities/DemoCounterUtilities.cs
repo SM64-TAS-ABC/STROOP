@@ -136,5 +136,19 @@ namespace STROOP.Structs
             }
         }
 
+        public static List<string> GetDescriptions()
+        {
+            return new List<string>()
+            {
+                "Bowser 1",
+                "WF",
+                "CCM",
+                "BBH",
+                "JRB",
+                "HMC",
+                "PSS",
+            };
+        }
+
     }
 }

@@ -50,18 +50,46 @@ namespace STROOP.Structs
             Action<List<WatchVariableControl>, string> copyValues =
                 (List<WatchVariableControl> controls, string separator) =>
             {
+                if (controls.Count == 0) return;
                 Clipboard.SetText(
                     String.Join(separator, controls.ConvertAll(
                         control => control.GetValue(false))));
             };
             ControlUtilities.AddDropDownItems(
                 itemCopy,
-                new List<string>() { "Copy with Commas", "Copy with Tabs", "Copy with Line Breaks" },
+                new List<string>() {
+                    "Copy with Commas",
+                    "Copy with Tabs",
+                    "Copy with Line Breaks",
+                    "Copy for Code",
+                },
                 new List<Action>()
                 {
                     () => copyValues(getVars(), ","),
                     () => copyValues(getVars(), "\t"),
                     () => copyValues(getVars(), "\r\n"),
+                    () =>
+                    {
+                        List<WatchVariableControl> watchVars = getVars();
+                        string prefix = KeyboardUtilities.IsCtrlHeld() ? DialogUtilities.GetStringFromDialog() : "";
+                        List<string> lines = new List<string>();
+                        foreach (WatchVariableControl watchVar in watchVars)
+                        {
+                            Type type = watchVar.GetMemoryType();
+                            string line = String.Format(
+                                "{0} {1}{2} = {3}{4};",
+                                type != null ? TypeUtilities.TypeToString[watchVar.GetMemoryType()] : "double",
+                                prefix,
+                                watchVar.VarName.Replace(" ", ""),
+                                watchVar.GetValue(false),
+                                type == typeof(float) ? "f" : "");
+                            lines.Add(line);
+                        }
+                        if (lines.Count > 0)
+                        {
+                            Clipboard.SetText(String.Join("\r\n", lines));
+                        }
+                    },
                 });
 
             ToolStripMenuItem itemPaste = new ToolStripMenuItem("Paste");
@@ -251,7 +279,7 @@ namespace STROOP.Structs
             ToolStripMenuItem itemAddToCustomTab = new ToolStripMenuItem("Add to Custom Tab");
             itemAddToCustomTab.Click += (sender, e) => WatchVariableControl.AddVarsToTab(getVars(), Config.CustomManager);
 
-            return new List<ToolStripItem>
+            return new List<ToolStripItem>()
             {
                 itemHighlight,
                 itemLock,

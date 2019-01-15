@@ -232,7 +232,7 @@ namespace STROOP.Utilities
                 miscImagePath = "", cameraImagePath = "", marioMapImagePath = "", cameraMapImagePath = "",
                 triangleFloorImagePath = "", triangleWallImagePath = "", triangleCeilingImagePath = "", triangleOtherImagePath = "",
                 selectedOverlayImagePath = "", trackedAndShownOverlayImagePath = "", trackedNotShownOverlayImagePath = "",
-                stoodOnOverlayImagePath = "", heldOverlayImagePath = "", interactionOverlayImagePath = "",
+                stoodOnOverlayImagePath = "", riddenOverlayImagePath = "", heldOverlayImagePath = "", interactionOverlayImagePath = "",
                 usedOverlayImagePath = "", closestOverlayImagePath = "", cameraOverlayImagePath = "", cameraHackOverlayImagePath = "",
                 modelOverlayImagePath = "", floorOverlayImagePath = "", wallOverlayImagePath = "", ceilingOverlayImagePath = "",
                 parentOverlayImagePath = "", parentUnusedOverlayImagePath = "", parentNoneOverlayImagePath = "", childOverlayImagePath = "",
@@ -346,6 +346,10 @@ namespace STROOP.Utilities
 
                                 case "StoodOn":
                                     stoodOnOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
+                                    break;
+
+                                case "Ridden":
+                                    riddenOverlayImagePath = subElement.Element(XName.Get("OverlayImage")).Attribute(XName.Get("path")).Value;
                                     break;
 
                                 case "Held":
@@ -521,6 +525,7 @@ namespace STROOP.Utilities
             objectSlotManagerGui.TrackedAndShownObjectOverlayImage = Image.FromFile(overlayImageDir + trackedAndShownOverlayImagePath);
             objectSlotManagerGui.TrackedNotShownObjectOverlayImage = Image.FromFile(overlayImageDir + trackedNotShownOverlayImagePath);
             objectSlotManagerGui.StoodOnObjectOverlayImage = Image.FromFile(overlayImageDir + stoodOnOverlayImagePath);
+            objectSlotManagerGui.RiddenObjectOverlayImage = Image.FromFile(overlayImageDir + riddenOverlayImagePath);
             objectSlotManagerGui.HeldObjectOverlayImage = Image.FromFile(overlayImageDir + heldOverlayImagePath);
             objectSlotManagerGui.InteractionObjectOverlayImage = Image.FromFile(overlayImageDir + interactionOverlayImagePath);
             objectSlotManagerGui.UsedObjectOverlayImage = Image.FromFile(overlayImageDir + usedOverlayImagePath);

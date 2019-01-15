@@ -66,6 +66,10 @@ namespace STROOP.Utilities
 
         protected override bool WriteFunc(UIntPtr address, byte[] buffer)
         {
+            if ((uint)address + buffer.Length > _data.Length)
+                return false;
+
+            Array.Copy(buffer, 0, _data, (uint)address, buffer.Length);
             return true;
         }
 
