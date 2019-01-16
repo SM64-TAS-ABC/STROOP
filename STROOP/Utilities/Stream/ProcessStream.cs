@@ -14,10 +14,7 @@ using System.Threading.Tasks;
 namespace STROOP.Utilities
 {
     public class ProcessStream : IDisposable
-    {
-        Process _process;
-
-        IEmuRamIO _io;
+    {   IEmuRamIO _io;
         public IEmuRamIO IO => _io;
 
         ConcurrentQueue<double> _fpsTimes = new ConcurrentQueue<double>();
@@ -87,31 +84,7 @@ namespace STROOP.Utilities
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         private static extern int GetWindowThreadProcessId(IntPtr handle, out int processId);
 
-        public void FocusOnEmulatorIfInFocus()
-        {
-            if (_process == null) return;
-            if (StroopIsInFocus())
-            {
-                SetForegroundWindow(_process.MainWindowHandle);
-            }
-        }
-
-        public static bool StroopIsInFocus()
-        {
-            var activatedHandle = GetForegroundWindow();
-            if (activatedHandle == IntPtr.Zero)
-            {
-                return false; // No window is currently activated
-            }
-
-            int procId = Process.GetCurrentProcess().Id;
-            int activeProcId;
-            GetWindowThreadProcessId(activatedHandle, out activeProcId);
-
-            return activeProcId == procId;
-        }
-
-        private bool SwitchIO(IEmuRamIO newIO, Process newProcess = null)
+        public bool SwitchIO(IEmuRamIO newIO)
         {
             lock (_mStreamProcess)
             {
@@ -131,7 +104,6 @@ namespace STROOP.Utilities
                     // Open and set new process
                     _io = newIO;
                     _io.OnClose += ProcessClosed;
-                    _process = newProcess;
                 }
                 catch (Exception) // Failed to create process
                 {
@@ -145,7 +117,6 @@ namespace STROOP.Utilities
 
                 Error:
                 _io = null;
-                _process = null;
                 return false;
             }
         }
@@ -159,7 +130,7 @@ namespace STROOP.Utilities
         public bool SwitchProcess(Process newProcess, Emulator emulator)
         {
             IEmuRamIO newIo = newProcess != null ? _ioCreationTable[emulator.IOType](newProcess, emulator, Config.RamSize) : null;
-            return SwitchIO(newIo, newProcess);
+            return SwitchIO(newIo);
         }
 
         public void Suspend()
@@ -278,6 +249,9 @@ namespace STROOP.Utilities
                 localAddress = address.ToUInt32();
             localAddress &= ~0x80000000;
 
+            if (EndiannessUtilities.DataIsMisaligned(address, length, EndiannessType.Big))
+                return readBytes;
+            
             /// Fix endianness
             switch (endianness)
             {
@@ -296,8 +270,6 @@ namespace STROOP.Utilities
                     byte[] swapBytes;
                     uint alignedAddress = EndiannessUtilities.AlignedAddressFloor(localAddress);
 
-                    // TODO: optimize lookup by not having to read excess if memoryligned.
-                    // if (EndiannessUtilities.AddressIsMisaligned(localAddress))
                     int alignedReadByteCount = (readBytes.Length / 4) * 4 + 8;
                     swapBytes = new byte[alignedReadByteCount];
 
@@ -520,6 +492,9 @@ namespace STROOP.Utilities
             if (safeWrite)
                 _io?.Suspend();
 
+            if (EndiannessUtilities.DataIsMisaligned(address, length.Value, EndiannessType.Big))
+                throw new Exception("Misaligned data");
+
             // Write memory to game/process
             bool result;
             if (absoluteAddress)
@@ -536,17 +511,20 @@ namespace STROOP.Utilities
 
         public bool RefreshRam()
         {
-            try
+            lock (_ram)
             {
-                // Read whole ram value to buffer
-                if (_ram.Length != Config.RamSize)
-                    _ram = new byte[Config.RamSize];
+                try
+                {
+                    // Read whole ram value to buffer
+                    if (_ram.Length != Config.RamSize)
+                        _ram = new byte[Config.RamSize];
 
-                return _io?.ReadRelative(0, _ram, EndiannessType.Little) ?? false;
-            }
-            catch (Exception)
-            {
-                return false;
+                    return _io?.ReadRelative(0, _ram, EndiannessType.Little) ?? false;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
             }
         }
 

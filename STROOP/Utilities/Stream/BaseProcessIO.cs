@@ -9,7 +9,7 @@ using static STROOP.Utilities.Kernal32NativeMethods;
 
 namespace STROOP.Utilities
 {
-    abstract class BaseProcessIO : IEmuRamIO
+    public abstract class BaseProcessIO : IEmuRamIO
     {
         protected uint _ramSize;
 
@@ -42,24 +42,21 @@ namespace STROOP.Utilities
         {
             if (Endianness == endianness)
             {
-                int numOfBytes = 0;
                 return ReadFunc(address, buffer);
             }
             else
             {
-                // Read padded if misaligned address
-                byte[] swapBytes;
-                UIntPtr alignedAddress = EndiannessUtilities.AlignedAddressFloor(address);
-                swapBytes = new byte[(buffer.Length / 4) * 4 + 8];
+                // Not a between alignment, or aligned write
+                if (buffer.Length >= 4 && (buffer.Length % 4 != 0))
+                    throw new Exception("Misaligned data");
 
-                // Read memory
-                if (!ReadFunc(address, swapBytes))
+                address = EndiannessUtilities.SwapAddressEndianness(address, buffer.Length);
+                byte[] readBytes = new byte[buffer.Length];
+                if (!ReadFunc(address, readBytes))
                     return false;
 
-                swapBytes = EndiannessUtilities.SwapByteEndianness(swapBytes);
-
-                // Copy memory
-                Buffer.BlockCopy(swapBytes, (int)(address.ToUInt64() - alignedAddress.ToUInt64()), buffer, 0, buffer.Length);
+                readBytes = EndiannessUtilities.SwapByteEndianness(readBytes);
+                Buffer.BlockCopy(readBytes, 0, buffer, 0, buffer.Length);
                 
                 return true;
             }
@@ -72,13 +69,11 @@ namespace STROOP.Utilities
 
         public bool WriteAbsolute(UIntPtr address, byte[] buffer, EndiannessType endianness)
         {
-            int numOfBytes = 0;
-
             // Safety bounds check
             if (address.ToUInt64() < BaseOffset.ToUInt64()
                 || address.ToUInt64() + (uint)buffer.Length >= BaseOffset.ToUInt64() + _ramSize)
                 return false;
-
+            
             if (Endianness == endianness)
             {
                 return WriteFunc(address, buffer);
@@ -86,36 +81,21 @@ namespace STROOP.Utilities
             else
             {
                 bool success = true;
-                IEnumerable<byte> bytes = buffer;
+                byte[] toWrite = EndiannessUtilities.SwapByteEndianness(buffer);
 
-                int numberToWrite = Math.Min(EndiannessUtilities.NumberOfBytesToAlignment(address), buffer.Length);
-                if (numberToWrite > 0)
+                // Between alignment writes
+                if (buffer.Length < 4)
                 {
-                    byte[] toWrite = bytes.Take(numberToWrite).Reverse().ToArray();
-                    success &= WriteFunc(EndiannessUtilities.AlignedAddressFloor(address), toWrite);
-
-                    bytes = bytes.Skip(toWrite.Length);
-                    address += toWrite.Length;
-                }
-
-                numberToWrite = bytes.Count();
-                if (bytes.Count() >= 4)
-                {
-                    byte[] toWrite = EndiannessUtilities.SwapByteEndianness(bytes.Take(bytes.Count() & ~0x03).ToArray());
-
-                    success &= WriteFunc(address, toWrite);
-
-                    bytes = bytes.Skip(toWrite.Length);
-                    address += toWrite.Length;
-                }
-
-                numberToWrite = bytes.Count();
-                if (numberToWrite > 0)
-                {
-                    byte[] toWrite = bytes.Reverse().ToArray();
                     address = EndiannessUtilities.SwapAddressEndianness(address, toWrite.Length);
-
                     success &= WriteFunc(address, toWrite);
+                }
+                else if (buffer.Length % 4 == 0) // Full alignment writes
+                { 
+                    success &= WriteFunc(address, toWrite);
+                }
+                else 
+                {
+                    throw new Exception("Misaligned data");
                 }
 
                 return success;

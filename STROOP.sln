@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STROOP", "STROOP\STROOP.csproj", "{D309A4ED-54AF-4BC7-83CA-BCD38543AEB3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STROOPUnitTests", "STROOPUnitTests\STROOPUnitTests.csproj", "{14542232-E0B6-4FDD-8B35-8F3EAE889C51}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +17,16 @@ Global
 		{D309A4ED-54AF-4BC7-83CA-BCD38543AEB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D309A4ED-54AF-4BC7-83CA-BCD38543AEB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D309A4ED-54AF-4BC7-83CA-BCD38543AEB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14542232-E0B6-4FDD-8B35-8F3EAE889C51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14542232-E0B6-4FDD-8B35-8F3EAE889C51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14542232-E0B6-4FDD-8B35-8F3EAE889C51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14542232-E0B6-4FDD-8B35-8F3EAE889C51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2F31358D-6897-4BF6-B890-DBAA7250A49D}
 	EndGlobalSection
 	GlobalSection(Performance) = preSolution
 		HasPerformanceSessions = true
