@@ -699,5 +699,22 @@ namespace STROOP.Utilities
                 GetSubsetsRecursively(masterList, size, index + 1, list, subsetList);
             }
         }
+
+        public static List<T> Randomize<T>(List<T> originalList)
+        {
+            List<T> list = new List<T>(originalList);
+            Random rng = new Random();
+
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                T temp = list[k];
+                list[k] = list[n];
+                list[n] = temp;
+            }
+            return list;
+        }
     }
 }

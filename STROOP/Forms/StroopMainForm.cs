@@ -123,6 +123,7 @@ namespace STROOP
                     "Download Latest STROOP Release",
                     "Show All Helpful Hints",
                     "Add Gfx Vertices",
+                    "Show Skribblio Words",
                     "Test Something",
                     "Test Something Else",
                 },
@@ -151,6 +152,7 @@ namespace STROOP
                     () => Process.Start("https://github.com/SM64-TAS-ABC/STROOP/releases/download/vDev/STROOP.zip"),
                     () => HelpfulHintUtilities.ShowAllHelpfulHints(),
                     () => TestUtilities.AddGraphicsTriangleVerticesToTriangleTab(),
+                    () => SkribblioUtilities.ShowWords(),
                     () => TestUtilities.TestSomething(),
                     () => TestUtilities.TestSomethingElse(),
                 });
