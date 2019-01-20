@@ -283,6 +283,9 @@ namespace STROOP.Structs
                 "HUD",
                 "Object Slot",
                 "Vacant Slot",
+                "Child",
+                "Parent",
+                "Object",
                 "Triangle",
                 "Debug",
                 "Collision",
@@ -319,6 +322,12 @@ namespace STROOP.Structs
                 "Cutscene",
                 "Angle",
                 "Terrain",
+                "Hitbox",
+                "Speed",
+                "Graphics",
+                "Animation",
+                "Velocity",
+                "FOV",
 
                 // Memes
                 "Bait",
@@ -633,6 +642,7 @@ namespace STROOP.Structs
                 "Ledge Grab",
                 "Knockback",
                 "Skid",
+                "Release",
 
                 // Miscellaneous Terms
                 "Mesh",
