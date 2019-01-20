@@ -546,6 +546,7 @@ namespace STROOP.Structs
                 "Fly",
                 "Jump Kick",
                 "Slide Kick",
+                "Trip",
                 "Breakdance",
                 "Throw",
                 "Pick Up",
