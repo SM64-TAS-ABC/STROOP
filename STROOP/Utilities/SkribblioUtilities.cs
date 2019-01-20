@@ -322,6 +322,7 @@ namespace STROOP.Structs
 
                 // Memes
                 "Bait",
+                "Half A Press",
 
                 // Menu
                 "Copy",
