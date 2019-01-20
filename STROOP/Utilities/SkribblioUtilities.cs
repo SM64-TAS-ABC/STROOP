@@ -253,7 +253,6 @@ namespace STROOP.Structs
                 "Competition",
                 "Freerun",
                 "Community Freerun",
-                "Emulator",
                 "Cartridge Tilting",
                 "Decomp",
                 "MHS",
@@ -497,7 +496,6 @@ namespace STROOP.Structs
                 "Pole",
                 "Power Star",
                 "Pushable Block",
-                "Pyramid",
                 "Pyramid Top",
                 "Racing Penguin",
                 "Red Coin",
@@ -599,7 +597,6 @@ namespace STROOP.Structs
                 "Backflip",
                 "Side Somersault",
                 "Backward Somersault",
-                "Swing",
                 "Climb",
                 "Fly",
                 "Jump Kick",
@@ -616,7 +613,6 @@ namespace STROOP.Structs
                 "Wake Up",
                 "Open",
                 "Close",
-                "Fly",
                 "Transparent",
                 "Intangible",
                 "Invincible",
@@ -625,7 +621,6 @@ namespace STROOP.Structs
                 "Shiver",
                 "Dive",
                 "Rollout",
-                "Crouch",
                 "Hop",
                 "Death",
                 "Eaten",
@@ -636,9 +631,7 @@ namespace STROOP.Structs
                 "Lava Boost",
                 "Ledge Grab",
                 "Knockback",
-                "Shiver",
                 "Skid",
-                "Throw",
 
                 // Miscellaneous Terms
                 "Mesh",
@@ -685,7 +678,6 @@ namespace STROOP.Structs
                 "Race",
                 "Field",
                 "Fortress",
-                "Tower",
                 "Block",
                 "Blue",
                 "Float",
@@ -703,7 +695,6 @@ namespace STROOP.Structs
                 "Break",
                 "Oscillate",
                 "Window",
-                "Balcony",
                 "Cage",
                 "Exit",
                 "Ship",
@@ -757,7 +748,6 @@ namespace STROOP.Structs
                 "Toxic",
                 "Toxic Maze",
                 "Emergency",
-                "Roll",
                 "Maze",
                 "Death Barrier",
                 "Black Room of Death",
@@ -766,7 +756,6 @@ namespace STROOP.Structs
                 "Underground",
                 "Lunge",
                 "Mole",
-                "Swing",
                 "Bat",
                 "Saddle",
                 "Talon",
@@ -785,13 +774,11 @@ namespace STROOP.Structs
                 "Board",
                 "Current",
                 "Jet Stream",
-                "Manta Ray",
                 "Reward",
                 "Dock",
                 "Tunnel",
                 "Mirror",
                 "Freeze",
-                "Shell",
                 "Igloo",
                 "Wet",
                 "Dry",
@@ -837,11 +824,24 @@ namespace STROOP.Structs
 
         public static void ShowWords()
         {
+            for (int i = 0; i < _words.Count; i++)
+            {
+                string word1 = _words[i];
+                for (int j = i + 1; j < _words.Count; j++)
+                {
+                    string word2 = _words[j];
+                    if (word1 == word2)
+                        Config.Print(word1);
+                }
+            }
+
+            /*
             List<string> randomWords = ControlUtilities.Randomize(_words);
             InfoForm.ShowValue(
                 String.Join(",", randomWords),
                 "Skribbl.io Words",
                 "Skribbl.io Words");
+            */
         }
     }
 }
