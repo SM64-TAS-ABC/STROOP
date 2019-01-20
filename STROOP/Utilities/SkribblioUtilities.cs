@@ -824,24 +824,11 @@ namespace STROOP.Structs
 
         public static void ShowWords()
         {
-            for (int i = 0; i < _words.Count; i++)
-            {
-                string word1 = _words[i];
-                for (int j = i + 1; j < _words.Count; j++)
-                {
-                    string word2 = _words[j];
-                    if (word1 == word2)
-                        Config.Print(word1);
-                }
-            }
-
-            /*
             List<string> randomWords = ControlUtilities.Randomize(_words);
             InfoForm.ShowValue(
                 String.Join(",", randomWords),
                 "Skribbl.io Words",
                 "Skribbl.io Words");
-            */
         }
     }
 }
