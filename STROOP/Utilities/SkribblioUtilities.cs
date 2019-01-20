@@ -512,6 +512,7 @@ namespace STROOP.Structs
                 "Yellow Coin",
                 "Yellow Triangle",
                 "Yoshi",
+                 "Yoshi Egg",
   
                 "A Button Challenge",
                 "B Button Challenge",
