@@ -16,6 +16,7 @@ namespace STROOP.Structs
         private static readonly List<string> _words =
             new List<string>()
             {
+                // Mission Names
                 "Big Bob-omb on the Summit",
                 "Footrace with Koopa the Quick",
                 "Shoot to the Island in the Sky",
@@ -122,6 +123,7 @@ namespace STROOP.Structs
 
                 "100 Coin Star",
 
+                // Course Names
                 "Bob-omb Battlefield",
                 "Whomp's Fortress",
                 "Jolly Roger Bay",
@@ -153,6 +155,7 @@ namespace STROOP.Structs
                 "Upstairs",
                 "Courtyard",
 
+                // Glitches & Tricks
                 "Parallel Universe",
                 "Pedro Spot",
                 "Hyperspeed Walking",
@@ -202,6 +205,7 @@ namespace STROOP.Structs
                 "Spawning Displacement",
                 "Clip",
 
+                // Meta SM64
                 "Super Mario 64",
                 "Console",
                 "Nintendo 64",
@@ -232,6 +236,7 @@ namespace STROOP.Structs
                 "Cartridge Tilting",
                 "Decomp",
 
+                // People
                 "pannenkoek2012",
                 "Ethan White",
                 "thestickman391",
@@ -241,6 +246,7 @@ namespace STROOP.Structs
                 "Nathaniel Bandy",
                 "Dom Dunc",
 
+                // Abstract Things
                 "Camera",
                 "Mario Cam",
                 "Lakitu Cam",
@@ -276,6 +282,7 @@ namespace STROOP.Structs
                 "Water",
                 "Lava",
 
+                // Menu
                 "Copy",
                 "Paste",
                 "Score",
@@ -289,6 +296,7 @@ namespace STROOP.Structs
                 "Headset",
                 "Return",
 
+                // Controller
                 "A Button",
                 "B Button",
                 "C Buttons",
@@ -300,6 +308,7 @@ namespace STROOP.Structs
                 "Joystick",
                 "Analog Stick",
 
+                // Objects
                 "! Switch",
                 "1-Up",
                 "Amp",
@@ -512,8 +521,9 @@ namespace STROOP.Structs
                 "Yellow Coin",
                 "Yellow Triangle",
                 "Yoshi",
-                 "Yoshi Egg",
+                "Yoshi Egg",
   
+                // Challanges
                 "A Button Challenge",
                 "B Button Challenge",
                 "Z Button Challenge",
@@ -523,6 +533,7 @@ namespace STROOP.Structs
                 "No Joystick Allowed",
                 "No Buttons Allowed",
 
+                // Moves & Actions
                 "Single Jump",
                 "Double Jump",
                 "Triple Jump",
