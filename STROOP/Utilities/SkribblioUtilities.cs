@@ -328,6 +328,7 @@ namespace STROOP.Structs
                 "Animation",
                 "Velocity",
                 "FOV",
+                "Out of Bounds",
 
                 // Memes
                 "Bait",
